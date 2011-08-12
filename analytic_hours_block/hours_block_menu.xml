@@ -1,0 +1,26 @@
+<?xml version="1.0" ?>
+<openerp>
+    <data>
+
+
+        #---------------------------------------------------------------------------------------------------------
+        #  Hours block menu
+        #---------------------------------------------------------------------------------------------------------
+
+        <record model="ir.actions.act_window" id="action_all_block_hour">
+            <field name="name">Hours Block</field>
+            <field name="res_model">account.hours.block</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field eval="False" name="view_id"/>
+        </record>
+
+        <menuitem
+            name="Hours Block"
+            parent="account.menu_finance_receivables"
+            id="action_all_block_hour_account"
+            action="action_all_block_hour" />
+
+    </data>
+</openerp>
+
