@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+       
+        <record model="ir.ui.view" id="view_project_classification_form">
+            <field name="name">project.classification.form</field>
+            <field name="model">project.classification</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Project classification">
+                    <field name="name" select="1"/>
+                    <field name="project_id" select="1"/>
+                    <field name="to_invoice"/>
+                    <field name="currency_id"/>
+                    <field name="user_id"/>
+                    <field name="pricelist_id" select="1"/>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_project_classification_list">
+            <field name="name">project.classification.list</field>
+            <field name="model">project.classification</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Project classification">
+                    <field name="name" select="1"/>
+                    <field name="project_id" select="1"/>
+                    <field name="to_invoice"/>
+                    <field name="currency_id"/>
+                    <field name="user_id"/>
+                    <field name="pricelist_id" select="1"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_project_classification_form">
+            <field name="name">Project Classification</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">project.classification</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_project_classification_list"/>
+        </record>
+        
+        <menuitem id="menu_project_classification" action="action_project_classification_form" parent="project.menu_definitions"/>
+        
+        <record id="edit_project" model="ir.ui.view">
+            <field name="name">project.project.form</field>
+            <field name="model">project.project</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="project.edit_project" />
+            <field name="arch" type="xml">
+                <xpath expr="/form/group/field[@name='parent_id']" position="replace">
+                    <field name="classification_id" widget="selection" on_change="onchange_classification_id(classification_id)"/>
+                </xpath>
+                <xpath expr="/form/notebook/page/field[@name='currency_id']" position="after">
+                    <field name="pricelist_id" domain="[('type','=','sale')]" widget="selection"/>
+                    <!-- <field name="to_invoice" /> -->
+                    <field name="parent_id" string="Parent Project" domain="[('id','!=',active_id)]" context="{'current_model': 'project.project'}" />
+                    <field name="to_invoice"/>
+                </xpath>
+            </field>
+        </record>
+        
+        <record id="view_project" model="ir.ui.view">
+            <field name="name">project.project.tree</field>
+            <field name="model">project.project</field>
+            <field name="type">tree</field>
+            <field name="inherit_id" ref="project.view_project" />
+            <field name="arch" type="xml">
+                <xpath expr="/tree/field[@name='parent_id']" position="after">
+                    <field name="classification_id"/>
+                </xpath>
+            </field>
+        </record>
+        
+        <record id="view_project_project_filter" model="ir.ui.view">
+             <field name="name">project.project.select</field>
+             <field name="model">project.project</field>
+             <field name="inherit_id" ref="project.view_project_project_filter" />
+             <field name="type">search</field>
+             <field name="arch" type="xml">
+                   <xpath expr="/search/group/field[@name='partner_id']" position="before">
+                      <field name="classification_id" widget="selection" />
+                   </xpath>
+                   <xpath expr="/search/group/filter[@string='Manager']" position="after">
+                      <filter string="Classification" icon="terp-folder-orange" domain="[]" context="{'group_by':'classification_id'}"/>
+                   </xpath>
+             </field>
+         </record>
+        
+         <record id="view_account_analytic_account_tree" model="ir.ui.view">
+             <field name="name">project.project.tree</field>
+             <field name="model">project.project</field>
+             <field name="type">tree</field>
+             <field name="field_parent">child_project_complete_ids</field>
+             <field name="arch" type="xml">
+                 <tree colors="red:date and (date&lt;current_date) and (state in ('open'));blue:state in ('draft','pending');grey: state in ('close','cancelled')" string="Projects" toolbar="1">
+                     <field name="sequence" invisible="1"/>
+                     <field name="date" invisible="1"/>
+                     <field name="name" string="Project Name"/>
+                     <field name="user_id" string="Project Manager"/>
+                     <field name="partner_id" string="Partner"/>
+                     <field name="parent_id" string="Parent Project" invisible="1"/>
+                     <field name="planned_hours" widget="float_time"/>
+                     <field name="total_hours" widget="float_time"/>
+                     <field name="effective_hours" widget="float_time"/>
+                     <field name="progress_rate" widget="progressbar"/>
+                     <field name="state"/>
+                 </tree>
+             </field>
+         </record>
+         
+         <record id="action_project_account_tree2" model="ir.actions.act_window">
+             <field name="name">Projects Tree</field>
+             <field name="res_model">project.project</field>
+             <field name="view_type">tree</field>
+             <field name="view_id" ref="view_account_analytic_account_tree"/>
+             <field name="domain">[('parent_id','=',False)]</field>
+         </record>
+         
+         <menuitem action="action_project_account_tree2" id="menu_open_view_project_all" parent="project.menu_project_management" sequence="1"/>
+    </data>
+</openerp>

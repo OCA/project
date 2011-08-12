@@ -1,0 +1,3 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+access_project_classification_user_pj,project.classification,model_project_classification,project.group_project_user,1,0,0,0
+access_project_classification_manager_pj,project.classification,model_project_classification,project.group_project_manager,1,1,1,1
