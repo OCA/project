@@ -1,7 +1,11 @@
 # -*- coding: utf-8 -*- 
 ##############################################################################
 #
-# @author Bessi Nicolas
+# Copyright (c) 2010 Camptocamp SA
+# All Rights Reserved
+#
+# Author : Vincent Renaville, ported by Joel Grand-Guillaume
+#
 # WARNING: This program as such is intended to be used by professional
 # programmers who take the whole responsability of assessing all potential
 # consequences resulting from its eventual inadequacies and bugs
@@ -25,11 +29,12 @@
 #
 ##############################################################################
 
-from osv import osv, fields
 import time
-from mx import DateTime
-import netsvc
 import string
+
+from osv import osv, fields
+import netsvc
+
 
 ############################################################################
 ## Add hours blocks on invoice
@@ -38,24 +43,32 @@ import string
 class AccountHoursBlock(osv.osv):
     _name = "account.hours.block"
 
-    def _get_last_action(self, cr, uid, ids, name, arg, context={}):
+    def _get_last_action(self, cr, uid, ids, name, arg, context=None):
+        """TODO"""
+        context = context or {}
         res = {}
         for block in self.browse(cr, uid, ids):
-            cr.execute('SELECT max(al.date) FROM account_analytic_line AS al WHERE al.invoice_id = ' + str(block.invoice_id.id))
-            date = map(lambda x: x[0], cr.fetchall() or [])
-            res[block.id] = date[0]
+            cr.execute("SELECT max(al.date) FROM account_analytic_line AS al"
+                       " WHERE al.invoice_id = %s", (block.invoice_id.id,))
+            fetch_res = cr.fetchone()
+            if fetch_res:
+                date = fetch_res[0]
+            else:
+                date = False
+            res[block.id] = date
         return res
 
-    def _compute_hours(self, cr, uid, ids, fields, args, context):
-        # Return a dict of [id][fields]
+    def _compute_hours(self, cr, uid, ids, fields, args, context=None):
+        """Return a dict of [id][fields]"""
+        context = context or {}
+        if not isinstance(ids, list):
+            ids=[ids]
         result = {}
         aal_obj = self.pool.get('account.analytic.line')
         for block in self.browse(cr,uid,ids):
-            result[block.id] = {
-                'amount_hours_block' : 0.0,
-                'amount_hours_block_done' : 0.0,
-                'amount_hours_block_delta' : 0.0
-            }
+            result[block.id] = {'amount_hours_block' : 0.0,
+                                'amount_hours_block_done' : 0.0,
+                                'amount_hours_block_delta' : 0.0}
             # Compute hours bought
             for line in block.invoice_id.invoice_line:
                 hours_bought = 0.0
@@ -70,13 +83,16 @@ class AccountHoursBlock(osv.osv):
             # Compute hours spent
             hours_used = 0.0
             # Get ids of analytic line generated from timesheet associated to current block
-            cr.execute("SELECT al.id \
-                        FROM account_analytic_line AS al,account_analytic_journal AS aj \
-                        WHERE aj.id = al.journal_id AND\
-                         aj.type='general' AND\
-                         al.invoice_id = " + str(block.invoice_id.id)
-                      )
-            ids2 = map(lambda x: x[0], cr.fetchall() or [])
+            cr.execute("SELECT al.id "
+                       " FROM account_analytic_line AS al,account_analytic_journal AS aj"
+                       "  WHERE aj.id = al.journal_id AND"
+                       "   aj.type='general' AND"
+                       "   al.invoice_id = %s", (block.invoice_id.id,))
+            res2 = cr.fetchall()
+            if res2:
+                ids2 = [x[0] for x in res2]
+            else:
+                ids2 = []
             for line in aal_obj.browse(cr, uid, ids2, context):
                 if line.product_uom_id:
                     factor = line.product_uom_id.factor
@@ -96,11 +112,9 @@ class AccountHoursBlock(osv.osv):
         aal_obj = self.pool.get('account.analytic.line')
         pricelist_obj = self.pool.get('product.pricelist')
         for block in self.browse(cr,uid,ids):
-            result[block.id] = {
-                'amount_hours_block' : 0.0,
-                'amount_hours_block_done' : 0.0,
-                'amount_hours_block_delta' : 0.0
-            }
+            result[block.id] = {'amount_hours_block' : 0.0,
+                                'amount_hours_block_done' : 0.0,
+                                'amount_hours_block_delta' : 0.0}
 
             # Compute amount bought
             for line in block.invoice_id.invoice_line:
@@ -116,13 +130,16 @@ class AccountHoursBlock(osv.osv):
 
             # Compute total amount
             # Get ids of analytic line generated from timesheet associated to current block
-            cr.execute("SELECT al.id \
-                        FROM account_analytic_line AS al,account_analytic_journal AS aj \
-                        WHERE aj.id = al.journal_id AND\
-                         aj.type='general' AND\
-                         al.invoice_id = " + str(block.invoice_id.id)
-                      )
-            ids2 = map(lambda x: x[0], cr.fetchall() or [])
+            cr.execute("SELECT al.id FROM account_analytic_line AS al,"
+                       " account_analytic_journal AS aj"
+                       " WHERE aj.id = al.journal_id"
+                       "  AND aj.type='general'"
+                       "  AND al.invoice_id = %s", (block.invoice_id.id,))
+            res2 = cr.fetchall()
+            if res2:
+                ids2 = [x[0] for x in res2]
+            else:
+                ids2 = []
             total_amount = 0.0
             for line in aal_obj.browse(cr, uid, ids2, context):
                 factor_invoicing = 1.0
@@ -149,9 +166,10 @@ class AccountHoursBlock(osv.osv):
                 block_per_types[block.type] = []
             block_per_types[block.type].append(block.id)
         
-        for block_type in block_per_types.keys():
+        for block_type in block_per_types:
             if block_type:
-                result.update(eval("self._compute_%s" % (block_type,))(cr, uid, ids, fields, args, context))
+                func = getattr(self, "_compute_%s" % (block_type,))
+                result.update(func(cr, uid, ids, fields, args, context))
 
         for block in result:
             result[block]['amount_hours_block_delta'] = \

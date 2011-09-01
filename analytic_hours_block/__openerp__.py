@@ -1,6 +1,11 @@
 # -*- coding: utf-8 -*- 
 ##############################################################################
-## @author Bessi Nicolas, ported by Joel Grand-Guillaume
+#
+# Copyright (c) 2011 Camptocamp SA (http://www.camptocamp.com) 
+# All Right Reserved
+#
+# Author : Joël Grand-Guillaume (Camptocamp)
+#
 # WARNING: This program as such is intended to be used by professional
 # programmers who take the whole responsability of assessing all potential
 # consequences resulting from its eventual inadequacies and bugs
@@ -27,6 +32,7 @@
 {
     "name" : "Project Hours Blocks Management",
     "description" : """
+
 This module allows you to handle hours blocks, to follow for example the user support contracts. 
 This means, you sell a product of type "hours block" then you input the spent hours on the hours block and 
 you can track and follow how much has been used.
@@ -37,18 +43,18 @@ you can track and follow how much has been used.
     "category" : "Generic Modules/Projects & Services",
     "website": "http://www.camptocamp.com",
     "depends" : [
-        "account",
-        "hr_timesheet_invoice",
-        "analytic"
-        ],
+                 "account",
+                 "hr_timesheet_invoice",
+                 "analytic"
+                ],
     "init_xml" : [],
     "update_xml" : [
-        "hours_block_view.xml",
-        "hours_block_menu.xml",
-        "report.xml",
-        "security/hours_block_security.xml",
-        "security/ir.model.access.csv",
-    ],
+                    "hours_block_view.xml",
+                    "hours_block_menu.xml",
+                    "report.xml",
+                    "security/hours_block_security.xml",
+                    "security/ir.model.access.csv",
+                   ],
     "active": False,
     "installable": True
 }
