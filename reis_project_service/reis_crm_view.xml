@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+		<!-- crm.case.category form -->
+        <record id="crm_case_categ-view_dreis" model="ir.ui.view">
+            <field name="name">crm.case.categ.form.dreis</field>
+            <field name="model">crm.case.categ</field>
+            <field name="inherit_id" ref="crm.crm_case_categ-view"/>
+            <field name="arch" type="xml">
+                <field name="section_id" position="after">
+                    <field name="parent_id"/>
+                    <field name="allow_issues"/>
+					<field name="code"/>
+                    <field name="note" colspan="4"/>
+                </field>
+            </field>
+        </record>
+
+        <!-- crm.case.category  tree (replacement) -->
+        <record id="crm_case_categ_tree-view_dreis" model="ir.ui.view">
+            <field name="name">crm.case.categ.tree.dreis</field>
+            <field name="model">crm.case.categ</field>
+            <field name="type">tree</field>
+			<field name="field_parent">child_ids</field>
+            <field name="arch" type="xml">
+                <tree string="Case Category">
+                    <field name="complete_name"/>
+                    <field name="parent_id"/>
+                    <field name="section_id"/>
+                </tree>
+            </field>
+        </record>
+
+	   </data>
+</openerp>
+
+

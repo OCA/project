@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_department_form" model="ir.ui.view">
+            <field name="name">view_department_form_dreisprof</field>
+            <field name="model">hr.department</field>
+            <field name="inherit_id" ref="hr.view_department_form"/>
+            <field name="arch" type="xml">
+				<!-- Code -->
+				<field name="name" position="after">
+					<field name="ref"/>
+				</field>
+				 <!-- Issue Profiling tab-->
+                <field name="company_id" position="after">
+					<notebook colspan="6">
+                    <page string="Issue Profiling Rules">
+                        <field name="issue_profiling" nolabel="1">
+							<tree editable="top">
+								<field name="section_id" completion="1"/>
+								<field name="user_id" completion="1"/>
+								<field name="notes"/>
+							</tree>
+						</field>
+                    </page>
+					</notebook>
+                 </field>
+            </field>
+		</record>
+
+       <record model="ir.ui.view" id="view_users_form_reisprof">
+            <field name="name">res.users.form.reis</field>
+            <field name="type">form</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="Issue Profiling Rules">
+                        <field name="issue_profiling" nolabel="1">
+							<tree editable="top">
+								<field name="section_id" completion="1"/>
+								<field name="department_id" completion="1"/>
+								<field name="notes"/>
+							</tree>
+						</field>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+
+    </data>
+</openerp>
+		

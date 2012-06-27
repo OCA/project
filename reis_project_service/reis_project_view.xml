@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+	
+		<!-- PROJECT FORM -->
+        <record id="project_project_form_dreis" model="ir.ui.view">
+            <field name="name">project_project_form_dreis</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="arch" type="xml">
+				<!-- Project Code -->
+				<field name="name" position="after">
+					<field name="project_code" string="Project Code"/>
+				</field>
+				<!-- Project specific info -->
+				<field name="date" position="after">
+					<!--DISCONTINUED:  <field name="location_id"/> -->
+					<field name="department_id"/>
+					<field name="code" string="Internal Code"/>
+				</field>
+            </field>
+		</record>
+
+		<!-- PROJECT SEARCH -->
+        <record id="view_project_project_filter_dreis" model="ir.ui.view">
+            <field name="name">view_project_project_filter_dreis</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.view_project_project_filter"/>
+            <field name="arch" type="xml">
+				<field name="partner_id" position="after">
+                    <field name="department_id" widget="selection" operator="child_of">
+                    <filter icon="terp-personal+" domain="[('department_id','=',context.get('department_id',False))]" string="My Department"/>
+                    </field>
+				</field>
+            </field>
+		</record>
+
+		<!-- PROJECT TREE -->
+        <record id="view_project_dreis" model="ir.ui.view">
+            <field name="name">project.project.tree.dreis</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.view_project"/>
+            <field name="arch" type="xml">
+				<field name="name" position="after">
+                    <field name="code"/>
+				</field>
+            </field>
+        </record>
+		
+        <!-- Task types -->
+        <record id="task_type_edit_dreis" model="ir.ui.view">
+            <field name="name">project.task.type.form.dreis</field>
+            <field name="model">project.task.type</field>
+            <field name="inherit_id" ref="project.task_type_edit"/>
+            <field name="arch" type="xml">
+				<field name="sequence" position="after">
+					<field name="use_group" select="1"/>
+					<field name="code"/>
+				</field>
+            </field>
+        </record>
+        <record id="task_type_tree_dreis" model="ir.ui.view">
+            <field name="name">project.task.type.tree.dreis</field>
+            <field name="model">project.task.type</field>
+            <field name="inherit_id" ref="project.task_type_tree"/>
+            <field name="arch" type="xml">
+				<field name="name" position="after">
+					<field name="use_group"/>
+					<field name="code"/>
+				</field>
+            </field>
+        </record>
+
+		<!-- Functional block CODE -->
+		<record model="ir.ui.view" id="funct_categ_form_view_reis">
+			<field name="name">project.functional_block.form.reis</field>
+			<field name="model">project.functional_block</field>
+            <field name="inherit_id" ref="project_functional_blocks.funct_categ_form_view"/>
+			<field name="arch" type="xml">
+				<field name="parent_id" position="after">
+					<field name="code"/>
+				</field>
+			</field>			   
+		</record>
+		
+		
+		<!-- TASK FORM -->
+        <record id="view_project_task_functionalblock_form_dreis_" model="ir.ui.view">
+            <field name="name">project.task.functionalblock.form.dreis</field>
+            <field name="model">project.task</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="project_functional_blocks.view_task_functional_block_form"/>
+            <field name="arch" type="xml">
+				<data>
+				<field name="functional_block_id" position="replace"/>
+				<field position="before" name="total_hours">
+					<field name="functional_block_id" select="1"/>
+				</field>
+				</data>
+            </field>
+        </record>
+		<!-- 
+		==Base structure:==
+		 name			project_id	total_hours
+		 date_deadline	user_id		progress
+
+		 ==Changed to: (copy-paste to spreadsheet)==
+		1name	…	ref
+		2project_id	…	issue_id
+		date_start	categ_id	section_id
+		date_end	8func_block	3total_hours
+		4date_deadline	5user_id	6progress
+		7Recurr		
+		-->
+        <record id="view_project_task_form_dreis" model="ir.ui.view">
+            <field name="name">project.task.form.dreis</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+				<field name="project_id" position="replace"/>
+				<field name="date_start" position="replace"/>
+				<field name="date_end" position="replace" readonly="1"/>
+				<field name="name" position="replace">
+					<field name="name" colspan="4"/>
+					<field name="ref" string="Service Order Id" readonly="1"/>
+					
+					<field name="project_id" colspan="4"/>
+					<field name="issue_id"/>
+					
+					<field name="date_start"/>
+					<field name="categ_id" required="1"/><!--domain="[('parent_id', '!=', None)]"  attrs="{'readonly':[('state','!=','draft')]}"-->
+					<field name="section_id" select="1" attrs="{'readonly':[('state','in',['done', 'cancelled'])]}"/>
+
+					<field name="date_end"/>
+				</field>
+				
+				<!-- State buttons -->
+				<button name="do_draft" position="attributes">
+					<attribute name="states">close</attribute>
+				</button>
+				<button name="do_pending" position="attributes">
+					<attribute name="states">draft,open</attribute>
+				</button>
+				<!-- States: OPEN:draft,pending; CLOSE:open,pending -->
+				<button name="do_open" position="attributes">
+					<attribute name="states">draft,pending</attribute>
+					<attribute name="string">Open Task</attribute>
+				</button>
+				<button name="action_close" position="attributes">
+					<attribute name="states">open,pending</attribute>
+				</button>
+
+				<!--TASK REPORT page-->
+				<field position="replace" name="work_ids"/> <!--Move Work Lines out of Information page -->
+                <field position="replace" name="type_id"/>
+				<button position="replace" name="prev_type"/>
+				<button position="replace" name="next_type"/>
+                <notebook position="inside">
+                    <page string="Task Report" attrs="{'invisible':[('state','in',['draft'])],'readonly':[('state','!=','open')]}">
+						<!--Materials used-->
+						<field colspan="4" name="material_ids" nolabel="1">
+							<tree string="Materials used" editable="top">
+								<field name="product_id" required="1"/>
+								<field name="unit_amount" string="Qty."/>
+								<field name="product_uom_id" readonly="1"/>
+							</tree>
+						</field>
+						<!--Work spent -->
+						<field colspan="4" name="work_ids" nolabel="1">
+							<tree string="Task Work" editable="top">
+								<field name="date" string="Start Datetime"/>
+								<field name="hours" widget="float_time"/>
+								<field name="name"/>
+								<field name="user_id"/>
+							</tree>
+						</field>
+						<!--Written report and to-do description-->
+						<separator string="Task Report" colspan="4"/>
+
+						<!--Cause and Resolution -->
+						<field name="reason_id" widget="selection" domain="[('use_group', '=', 'cause')]"/>
+						<group col="4" colspan="2">
+							<field name="type_id" widget="selection" domain="[('use_group', '=', 'resolution')]"/>
+						<!--TODO:
+							<button name="prev_type" string="Previous" type="object" icon="gtk-go-back" help="Change to Previous Stage"/>
+							<button name="next_type" string="Next" type="object" icon="gtk-go-forward" help="Change to Next Stage"/>
+						-->
+						</group>
+
+						<field name="report_desc" nolabel="1" colspan="4"/>
+						<separator string="Issues to be adressed" colspan="4"/>
+						<field name="todo_desc" nolabel="1" colspan="4"/>
+                        <button colspan="4" name="action_close" states="pending,open" string="Done" type="object" icon="terp-dialog-close"/>
+
+					</page>
+                </notebook>
+
+            </field>
+		</record>
+		
+		<!-- TASK TREE -->
+        <record id="view_project_task_tree_dreis" model="ir.ui.view">
+            <field name="name">project.task.tree.dreis</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_tree2"/>
+            <field name="arch" type="xml">
+				<!-- Add "related issue" -->
+				<field position="after" name="project_id">
+					<field name="issue_id"/>
+				</field>
+				<!-- States: OPEN:draft,pending; CLOSE:open,pending -->
+				<button name="do_open" position="attributes">
+					<attribute name="states">draft,pending</attribute>
+					<attribute name="string">Open Task</attribute>
+				</button>
+				<button name="action_close" position="attributes">
+					<attribute name="states">open,pending</attribute>
+				</button>
+
+			</field>
+		</record>
+
+		<!-- TASK SEARCH -->
+        <record id="view_project_task_search_dreis" model="ir.ui.view">
+            <field name="name">project.task.search.dreis</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_search_form"/>
+            <field name="arch" type="xml">
+				<!--Draft button-->
+<!--TODO 61				
+                <xpath expr="/search/group/filter[@name='current']" position="replace">
+                        <filter string="Active" domain="[('state','in',('draft','open','pending'))]" name="current" help="All active tasks (draft/new, open/in progress, pending)" icon="terp-go-today" />
+                        <filter string="New" domain="[('state','=','draft')]" help="New tasks to plan" icon="terp-mail-message-new"/>
+                </xpath>
+-->
+				<field name="project_id" position="replace">
+                        <field name="project_id"
+                               filter_domain="['|','|', ('project_id','ilike',self), ('partner_id','ilike',self), ('name','ilike',self)]"/>
+				</field>
+				<field name="user_id" position="after">
+                    <field name="department_id" widget="selection" operator="child_of"/>
+				</field>
+			</field>
+		</record>
+
+		<!--Task Calendar: project_id before name, uses date_start, not date_deadline-->
+        <record id="view_task_calendar_reis1" model="ir.ui.view">
+            <field name="name">project.task.calendar.reis</field>
+            <field name="model">project.task</field>
+            <field name="type">calendar</field>
+            <field eval="1" name="priority"/>
+            <field name="arch" type="xml">
+                <calendar color="user_id" date_start="date_start" date_delay="planned_hours" string="Tasks">
+                    <field name="project_id"/>
+                    <field name="name"/>
+                </calendar>
+            </field>
+        </record>
+        
+		<!--TASK MENU ACTION:
+			* No filter buttons activated by default
+			* User's "Department_id" selected by default
+			* Kanban view sequence moved to last  									-->
+        <record id="project.action_view_task" model="ir.actions.act_window">
+            <field name="name">Tasks</field>
+            <field name="res_model">project.task</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar,gantt,graph,kanban</field>
+            <field eval="False" name="filter"/>
+            <field name="view_id" eval="False"/>
+            <field name="context">{"search_default_project_id": project_id, "search_default_department_id": department_id}</field>
+            <field name="search_view_id" ref="project.view_task_search_form"/>
+            <field name="help">A task represents a work that has to be done. Each user works in his own list of tasks where he can record his task work in hours. He can work and close the task itself or delegate it to another user. If you delegate a task to another user, you get a new task in pending state, which will be reopened when you have to review the work achieved. If you install the project_timesheet module, task work can be invoiced based on the project configuration. With the project_mrp module, sales orders can create tasks automatically when they are confirmed.</field>
+        </record>
+        <record id="project.open_view_task_list_kanban" model="ir.actions.act_window.view">
+            <field name="sequence" eval="10"/>
+        </record>
+
+
+		<!-- account.analytic.line TREE -->
+<!--TODO		
+        <record id="view_account_analytic_line_tree_inherit_account_id_reis" model="ir.ui.view">
+            <field name="name">account.analytic.line.tree.account_id_reis</field>
+            <field name="model">account.analytic.line</field>
+            <field name="type">tree</field>
+            <field name="inherit_id" ref="project_timesheet.view_account_analytic_line_tree_inherit_account_id"/>
+            <field name="arch" type="xml">
+                <field name="to_invoice" position="replace">
+                    <field name="to_invoice" widget="selection"/>
+                </field>
+            </field>
+        </record>
+-->
+		<!--### REPORT -->
+        <report auto="False" id="project_task_webkitreport" 
+		model="project.task" 
+		name="project_task_webkitreport"  
+		file="reis_project_service/report/report_project_task.mako" 
+		string="Print Task Report" report_type="webkit" />
+		
+
+		<!--
+		#### DATA ####
+		-->
+        <record id="hr_timesheet_invoice.timesheet_invoice_factor_tobedefined" model="project.task.type">
+            <field name="name">To be defined</field>
+            <field name="customer_name">Default</field>
+            <field name="factor">100.0</field>
+        </record>
+
+		</data>
+</openerp>
+		
+
+
+
+
+
+
+
