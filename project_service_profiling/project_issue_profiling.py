@@ -125,45 +125,6 @@ res_users()
 
 class project_issue(osv.osv):
     _inherit = 'project.issue'
-    
-#OLD
-#    def _get_issueobj_responsible(self, cr, uid, issue_obj, context={}):
-#        res_obj = None
-#        #1 Try Project's Manager, other than 1=admin
-#        if issue_obj.project_id and issue_obj.project_id.user_id and issue_obj.project_id.user_id.id > 1:
-#            res_obj = issue_obj.project_id.user_id
-#        #2 Try Department/Service Team profiling rules
-#        if not res_obj and issue_obj.department_id and issue_obj.section_id:
-#            dept = issue_obj.department_id.id
-#            team = issue_obj.section_id.id
-#            rules_model = self.pool.get('project.issue.profiling')
-#            rule = rules_model.search(cr, uid,\
-#                [('department_id', '=', dept), ('section_id', '=', team)], context=context)
-#            res_obj = rule and rules_model.browse(cr, uid, rule[0], context=context).user_id
-#        #3 Try Team's responsible
-#        if not res_obj and issue_obj.section_id:
-#            team_model = self.pool.get('crm.case.section')
-#            team = team_model.browse(cr, uid, issue_obj.section_id.id, context=context)
-#            res_obj = team and team.user_id
-#        #Return result
-#        return res_obj
-#
-#    def action_profile(self, cr, uid, ids, context={}, ):
-#        res = False
-#        issue_model = self.pool.get('project.issue')
-#        for issue in issue_model.browse(cr, uid, ids, context):
-#            #Only assign Responsible if none is given
-#            if not issue.user_id:
-#                resp = self._get_issueobj_responsible(cr, uid, issue, context=context)
-#                if resp:
-#                    issue_model.write(cr, uid, issue.id, {'user_id': resp.id}, context=context)
-#                    res = True
-#        return res
-#
-#    def create(self, cr, uid, vals, context={}):
-#        issue_id = super(project_issue, self).create(cr, uid, vals, context)
-#        self.action_profile(cr, uid, [issue_id], context=context) ##TODO: prevent firing action rules
-#        return issue_id
 
     def create(self, cr, uid, vals, context={}):
         rec_id = super(project_issue, self).create(cr, uid, vals, context)

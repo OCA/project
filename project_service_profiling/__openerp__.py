@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
-#    
+#
 #    Daniel Reis
 #    2011
 #
@@ -15,16 +15,37 @@
 #    GNU Affero General Public License for more details.
 #
 #    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.     
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
 
-import reis_base
-import reis_hr
-import reis_project
-import reis_project_issue
-import reis_project_issue_profiling
-###import reis_crm_action_rule
-import report
 
+{
+    'name': 'Project specific developments',
+    'version': '6.1-1',
+    "category": "Project Management",
+    'description': """\
+Service Management extension for the Project modules.
+Projects: (...)
+Issues: (...)
+Tasks: (...)
+Billing: (...)
+Stock: (...)
+""",
+    'author': 'Daniel Reis',
+    'website': 'daniel.reis@securitas.pt',
+    'depends': [
+        'project_service',	
+    ],
+    'init_xml': [
+	],
+    'update_xml': [
+		'project_issue_profiling_view.xml',
+        'security/ir.model.access.csv',
+    ],
+    'demo_xml': [],
+    'test': [],
+    'installable': True,
+    'application': True,
+}
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

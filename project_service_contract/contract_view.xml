@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+    	<menuitem name="Contract" id="base.menu_contract" parent="base.menu_base_partner" sequence="10"/>
+    	
+    	<!-- 
+		""""""""""""""""""""""
+		Contract Configuration
+		""""""""""""""""""""""
+		-->
+		
+		<menuitem name="Contract" id="base.menu_contract_configuration" parent="base.menu_base_config" sequence="21"/>
+		
+		<record model="ir.ui.view" id="view_contract_line_state_tree">
+		      <field name="name">contract.line.state.tree</field>
+		      <field name="model">contract.line.state</field>
+		      <field name="type">tree</field>
+		      <field name="arch" type="xml">
+					<tree string="Contracts Lines State">
+	                    <field name="name"/>
+	                    <field name="description"/>
+	                </tree>
+			</field>
+		</record>
+		
+		<record model="ir.ui.view" id="view_contract_line_state_form">
+		      <field name="name">contract.line.state.form</field>
+		      <field name="model">contract.line.state</field>
+		      <field name="type">form</field>
+		      <field name="arch" type="xml">
+					<form string="Contracts Lines State">
+	                    <field name="name"/>
+	                    <field name="description"/>
+	                </form>
+			</field>
+		</record>
+	
+		<record id="action_contract_line_state_form" model="ir.actions.act_window">
+		    <field name="name">contract_line_state</field>
+		    <field name="type">ir.actions.act_window</field>
+		    <field name="res_model">contract.line.state</field>
+		    <field name="view_type">form</field>
+		    <field name="view_mode">tree,form</field>
+		    <field name="view_id" ref="view_contract_line_state_tree"/>
+		    <field name="help"></field>
+	    </record>
+	    
+		<menuitem name="Contract Line State" id="menu_contract_line_state" parent="base.menu_contract_configuration" action="action_contract_line_state_form" sequence="1"/>
+		
+    	<!-- 
+		""""""""""""""""""""""
+		Contract Sub Line
+		""""""""""""""""""""""
+		-->
+		
+		<record id="view_sub_contract_line_search" model="ir.ui.view">
+	        <field name="name">contract.sub.line.search</field>
+	        <field name="model">contract.sub.line</field>
+	        <field name="type">search</field>
+	        <field name="arch" type="xml">
+	            <search string="Subcontract Line">
+				    <field name="product_id"/>
+				    <field name="stock_production_lot_id"/>
+	            </search>
+	        </field>
+	    </record>
+	    
+		<record model="ir.ui.view" id="view_sub_contract_line_tree"> 
+	        <field name="name">.contract.sub.line.tree</field>
+	        <field name="model">contract.sub.line</field>
+	        <field name="type">tree</field>
+	        <field name="arch" type="xml">
+	            <tree string="Subcontract Line" editable="top">
+				    <field name="product_id"/>
+				    <field name="qty"/>
+				    <field name="stock_production_lot_id"/>
+	            </tree>
+	        </field>
+	    </record>
+	    
+	    
+	    <record id="view_sub_contract_line_form" model="ir.ui.view">
+	        <field name="name">contract.sub.line.form</field>
+	        <field name="model">contract.sub.line</field>
+	        <field name="type">form</field>
+	        <field name="arch" type="xml">
+	            <form string="Subcontract Line">
+				    <field name="product_id"/>
+				    <field name="qty"/>
+				    <field name="stock_production_lot_id"/>
+	            </form>
+	        </field>
+	    </record>
+	    
+	    <record id="action_sub_contract_line_form" model="ir.actions.act_window">
+		    <field name="name">contract_sub_line</field>
+		    <field name="type">ir.actions.act_window</field>
+		    <field name="res_model">contract.sub.line</field>
+		    <field name="view_type">form</field>
+		    <field name="view_mode">tree,form</field>
+		    <field name="view_id" ref="view_sub_contract_line_tree"/>
+		    <field name="help"></field>
+	    </record>
+	
+		<menuitem name="Subcontract Line" id="menu_contract_sub_line" action="action_sub_contract_line_form" parent="base.menu_contract" sequence="3"/>
+		
+        <!-- 
+		""""""""""""""""""""""
+		Contract Line
+		""""""""""""""""""""""
+		-->
+		
+		<record model="ir.ui.view" id="view_contract_line_tree">
+		      <field name="name">contract.line.tree</field>
+		      <field name="model">contract.line</field>
+		      <field name="type">tree</field>
+		      <field name="arch" type="xml">
+				<tree string="Contracts Lines">
+					<field name="product_id"/>
+					<field name="stock_production_lot_id"/>
+					<field name="start_date"/>
+					<field name="state_id"/>
+				</tree>
+			</field>
+		</record>
+	
+		<record model="ir.ui.view" id="view_contract_line_form">
+		      <field name="name">contract.line.form</field>
+		      <field name="model">contract.line</field>
+		      <field name="type">form</field>
+		      <field name="arch" type="xml">
+	       		<form string="Contracts Lines">
+	       			<group  colspan="4" col="6">
+	       				<field name="name"/>
+		       			<field name="product_id"/>
+	                    <field name="stock_production_lot_id"/>
+	                    <group colspan="1" col="2">
+		        			<field name="current_location"/>
+		        			<field name="delivery_location_id"/>
+			        		<field name="customer_contact_address_id"/>
+		        		</group>
+		        		<group colspan="1" col="2">
+		                    <field name="state_id"/>
+		                    <field name="start_date"/>
+		                    <field name="end_date"/>
+		                    <field name="gti" widget="float_time"/>
+		                    <field name="gtr" widget="float_time"/>
+		                    <field name="attendance_id"/>
+		        		</group>
+	       			</group>
+                    <newline/>
+                    <field name="sub_contract_line_ids" nolabel="1"/>
+                    <field name="note" colspan="6"/>
+                </form>	         	
+        	</field>
+		</record>
+		
+		<record id="action_contract_line_form" model="ir.actions.act_window">
+		    <field name="name">contract_line</field>
+		    <field name="type">ir.actions.act_window</field>
+		    <field name="res_model">contract.line</field>
+		    <field name="view_type">form</field>
+		    <field name="view_mode">tree,form</field>
+		    <field name="view_id" ref="view_contract_line_tree"/>
+		    <field name="help"></field>
+	    </record>
+		
+		<menuitem name="Contract Line" id="menu_contract_line" action="action_contract_line_form" parent="base.menu_contract" sequence="2"/>
+		
+        <!-- 
+		""""""""""""""""""""""
+		Contract Contract
+		""""""""""""""""""""""
+		-->  
+		
+		<record model="ir.ui.view" id="view_contract_contract_form_inherit">
+			<field name="name">contract.contract.form.inherit</field>
+			<field name="model">contract.contract</field>
+			<field name="type">form</field>
+			<field name="inherit_id" ref="base_contract.view_contract_contract_form"/>
+			<field name="arch" type="xml">
+				<field name="link" position="after">
+					<newline/>
+					<group colspan="4" col="4">
+						<field name="contract_number"/>
+						<field name="contract_version"/>
+					</group>
+				</field>
+				<field name="active" position="after">
+					<newline/>
+					<field name="order_address_id"/>
+				 	<field name="order_date"/>
+				</field>
+				<field name="interval_type" position="after">
+					<field name="invoice_address_id"/>
+					<newline/>
+					<field name="invoice_specification"/>
+				</field>
+				<page string="Misc" position="before">
+					<page string="Contracts Lines">
+						<field colspan="4" name="line_ids" nolabel="1" widget="one2many_list"/>
+					</page>
+				</page>
+				<page string="Misc" position="inside">
+					<field name="pre_sales_owner_id"/>
+					<field name="sale_odrer_id"/>
+					<field name="salesman_id"/>
+				</page>
+			</field>
+		</record>
+		
+		<menuitem id="base.contract" action="base_contract.action_contract_contract_form" parent="base.menu_contract" sequence="1"/>    
+
+	</data>
+</openerp>

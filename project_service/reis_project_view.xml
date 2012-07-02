@@ -295,7 +295,7 @@
         <report auto="False" id="project_task_webkitreport" 
 		model="project.task" 
 		name="project_task_webkitreport"  
-		file="reis_project_service/report/report_project_task.mako" 
+		file="project_service/report/report_project_task.mako" 
 		string="Print Task Report" report_type="webkit" />
 		
 
