@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #    
-#    Daniel Reis
-#    2012
+#    Daniel Reis, 2012
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -19,6 +18,5 @@
 #
 ##############################################################################
 
-import project_issue_profiling
-
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
+

@@ -2,7 +2,7 @@
 ##############################################################################
 #
 #    Daniel Reis
-#    2011
+#    2012
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -21,40 +21,33 @@
 
 
 {
-    'name': 'Project specific developments',
+    'name': 'Project & Service - base settings and security enhancements',
     'version': '6.1.1',
     "category": "Project Management",
     'description': """\
-Service Management extension for the Project modules.
-Projects: (...)
-Issues: (...)
-Tasks: (...)
-Billing: (...)
-Stock: (...)
+"Project" module renamed to "Project & Service".
+Security levels:
+    Project Basic User (new group): can create Issues and view Tasks.
+    Project User: can edit Issues and create & edit Tasks.
+    Project manager: can create and edit Projects.
 """,
     'author': 'Daniel Reis',
     'website': 'daniel.reis@securitas.pt',
     'depends': [
-        'report_webkit',
-        'hr',
-        'project',              #=> "product", "analytic", "board"
-        'project_functional_blocks',
-        'project_issue',        #=> 'crm', 'project'
-        'project_timesheet',    #=> 'project', 'hr_timesheet_sheet', 'hr_timesheet_invoice'
-        'project_service_base',
+        'account', 
+        'crm', 
+        'project_issue', 
+        'project_timesheet',
     ],
-    'init_xml': [
-        'reis_project_issue_data.xml',
-    ],
+    'init_xml': [],
     'update_xml': [
-        'reis_project_view.xml',
-        'reis_project_issue_view.xml',
-        'reis_crm_view.xml',
+        'project_view.xml',
+        'security/project_security.xml',
         'security/ir.model.access.csv',
     ],
     'demo_xml': [],
     'test': [],
     'installable': True,
-    'application': True,
+    'application': False,
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

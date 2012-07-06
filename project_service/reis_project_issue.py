@@ -164,51 +164,24 @@ class project_issue(osv.osv):
     }
     
     def create(self, cr, uid, vals, context={}):
-          vals['ref'] = self.pool.get('ir.sequence').next_by_code(cr, uid, 'project.issue')
-          return super(project_issue, self).create(cr, uid, vals, context)        
+        vals['ref'] = self.pool.get('ir.sequence').next_by_code(cr, uid, 'project.issue')
+        return super(project_issue, self).create(cr, uid, vals, context)        
 
-    #FIX to allow record_rules on states: write is done before changing state
-    #BUG report pending
     def case_open(self, cr, uid, ids, *args):
-        """Opens Case"""
-        ###Copy from project_issue.project_issue
-        self.write(cr, uid, ids, {'date_open': time.strftime('%Y-%m-%d %H:%M:%S'), 'user_id' : uid})
-        for (id, name) in self.name_get(cr, uid, ids):
-            message = _("Issue '%s' has been opened.") % name
-            self.log(cr, uid, id, message)
+        """Open Issue preserving the assigned user_id.
         
-        ###Copy from crm.crm_base
-        cases = self.browse(cr, uid, ids)
-        self.message_append(cr, uid, cases, _('Open'))
-        for case in cases:
-            data = {'state': 'open', 'active': True }
-            if not case.user_id:
-                data['user_id'] = uid
-            self.write(cr, uid, case.id, data)
-        self._action(cr, uid, cases, 'open')
-        return True
-
-    #FIX to allow record_rules on states: write is done before changing state
-    #BUG report pending
-    def case_close(self, cr, uid, ids, *args):
-        """Closes Case"""
-        ###Copy from project_issue.project_issue
-        for (id, name) in self.name_get(cr, uid, ids):
-            message = _("Issue '%s' has been closed.") % name
-            self.log(cr, uid, id, message)
-
-        ###Copy from crm.crm_base
-        cases = self.browse(cr, uid, ids)
-        cases[0].state # to fill the browse record cache
-        self.message_append(cr, uid, cases, _('Close'))
-        self.write(cr, uid, ids, {'state': 'done',
-                                  'date_closed': time.strftime('%Y-%m-%d %H:%M:%S'),
-                                  })
-        #
-        # We use the cache of cases to keep the old case state
-        #
-        self._action(cr, uid, cases, 'done')
-        return True
+        Standard project_issue.case_open() method forces user_id to the current user.
+        This is not appropriate in the case where am administrative user is updating issue status.
+        With this enhancement, the original user_id is preserved.
+        """
+        orig = self.read(cr, uid, ids, ['id', 'user_id'])
+        res = super(project_issue, self).case_open(cr, uid, ids, *args)
+        for rec in orig:
+            if rec['user_id'] and rec['user_id'][0]:
+                #Write both 'user_id' and 'date_open' to allow Action Rule Triggers to ignore these changes using "... and not vals.get('date_open')"
+                print {'date_open': time.strftime('%Y-%m-%d %H:%M:%S'), 'user_id' : rec['user_id'][0]} ###
+                self.write(cr, uid, [rec['id']], {'date_open': time.strftime('%Y-%m-%d %H:%M:%S'), 'user_id' : rec['user_id'][0]} )
+        return res
 
     def onchange_partner_id(self, cr, uid, ids, part, email=False, proj_id=None, context=None):
         """This function returns value of partner address based on partner
@@ -282,12 +255,10 @@ class project_issue(osv.osv):
             if bug.task_id.id and bug.task_id.state not in ['cancelled', 'done']:
                 new_task_id  = bug.task_id.id
             else:
-                #import pdb; pdb.set_trace()
+                #Task,user_id must be current user; otherwise Task Access Rules may stop task.create
+                #Task date start defaults to tomorrow 00:00h
                 now = datetime.now()
-                hrs = 1
-                dt1 = datetime( now.year, now.month, now.day, 0) + timedelta(days=+1)
-                #In calendar view, duration takes precedence over date_end:
-                dt2 = None #dt1 + timedelta(hours=hrs) 
+                date_start = datetime( now.year, now.month, now.day, 0) + timedelta(days=+1)
                 new_task_id = task_obj.create(cr, uid, {
                     'section_id': bug.section_id.id,
                     'project_id': bug.project_id.id,
@@ -295,16 +266,13 @@ class project_issue(osv.osv):
                     'categ_id': bug.categ_id.id,
                     'functional_block_id': bug.functional_block_id.id,
                     'date_deadline': bug.date_deadline,
-                    'date_start': dt1, #datetime.now(), #dreis: date without time
-                    'date_end': dt2, 
-                    'planned_hours': hrs, #dreis
+                    'date_start': date_start, #changed from standard
+                    'planned_hours': 1, #added to standard
                     'name': bug.name,
                     'description':bug.description,
-                    'issue_id': bug.id, #dreis
+                    'issue_id': bug.id, #added
                     'priority': bug.priority,
-                    'user_id': bug.user_id.id, 
-                    #'state': 'open',
-                    #'date': bug.date, #removed in 61 standard
+                    'user_id': uid, #changed
                 })
                 vals = {'task_id': new_task_id}
                 case_obj.write(cr, uid, [bug.id], vals)
@@ -327,15 +295,6 @@ class project_issue(osv.osv):
         """Create Task from Issue, without opening it's form"""
         self.convert_issue_task(cr, uid, ids, context=context)
         return True
-
-#    ###FIX for bug 933569: "Creation date" Action Rules incorrectly fired when changing State 
-#    ###(https://bugs.launchpad.net/openobject-addons/+bug/933569)
-#    def _action(self, cr, uid, cases, state_to, scrit=None, context={}):
-#        context['state_to'] = state_to
-#        rule_obj = self.pool.get('base.action.rule')
-#        for case in cases:
-#            rule_obj.post_action(cr, uid, [case.id], case._name, context=context)
-#        return True
 
 project_issue()
 

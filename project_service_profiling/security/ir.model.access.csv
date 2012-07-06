@@ -1,5 +1,6 @@
-"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
-"access_project_issue_profiling_project_viewer","reis.project.issue.profiling project_viewer","model_project_issue_profiling","group_project_viewer",1,0,0,0
-"access_project_issue_profiling_projectmanager","reis.project.issue.profiling","model_project_issue_profiling","project.group_project_manager",1,1,1,1
-"access_project_issue_profiling_projectuser","reis.project.issue.profiling_user","model_project_issue_profiling","project.group_project_user",1,0,0,0
-"access_project_issue_profiling_employee","reis.project.issue.profiling employee","model_project_issue_profiling","base.group_user",1,0,0,0
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_crm_case_section_projectuser,crm.case.section_projectuser,crm.model_crm_case_section,base.group_user,1,0,0,0
+access_hr_department_project_user,hr_department_project_user,hr.model_hr_department,base.group_user,1,0,0,0
+access_project_issue_profiling_projectmanager,reis.project.issue.profiling,model_project_issue_profiling,project.group_project_manager,1,1,1,1
+access_project_issue_profiling_projectuser,reis.project.issue.profiling_user,model_project_issue_profiling,project.group_project_user,1,0,0,0
+access_project_issue_profiling_employee,reis.project.issue.profiling employee,model_project_issue_profiling,base.group_user,1,0,0,0

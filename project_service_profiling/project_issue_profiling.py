@@ -19,6 +19,10 @@
 ##############################################################################
 
 from osv import fields, osv
+from openerp import SUPERUSER_ID
+import logging
+_logger = logging.getLogger(__name__)
+
 
 class project_issue_profiling(osv.osv):
     _name = "project.issue.profiling"
@@ -34,51 +38,67 @@ class project_issue_profiling(osv.osv):
 
     def get_user_id(self, cr, uid, ids, model_name, override_flds=[], default_flds=[], user_fld='user_id', force=False, context={}):
         """Get user_ids responsible for a list of documents
+        If there is already an assigned user, it does nothing. Use 'force' if you want to override this.
+        Superuser (admin) is ignored (considered equivalent to None) when checking override_flds and default_flds.
+        
         Input parameters:
             ids:            database ids of the objects
             model_name:     target model, eg. 'project.issue' or 'crm.claim'
-            override_flds:  fields to try getting a user_id, beforr trying profiling rules. This overrides the rules.
-            default_flds:   fields to try getting a user_id, id none is found by rules or override_flds:
-            user_fld:       field in the model storing the user. Defaults to 'user_id'.
+            override_flds:  fields to try getting a user_id, before trying profiling rules. This overrides the rules.
+            default_flds:   fields to try getting a user_id, id none is found by rules or override_flds.:
+                            Default to the Team manager (section_id.user_id), if available.
+            user_fld:       field in the model to store the assigned user. Defaults to 'user_id'.
             force:          force profiling rules, even if user_id is not empty
-        
-        Note: User admin(id=1) is ignored when checking.
         
         Returns a list of dictionaries with:
             'id':   the object id
             'vals': dictionay of values containing the user id, that can be passed to a write operation
-            Example: [ {'id': 22, vals: { 'user_id': 2}} 
-                     , {'id': 23, vals: { 'user_id': 2}} ]
+        Example: 
+            [ { 'id': 22,
+                ''vals'': { 'user_id': 2} 
+              }, 
+              {'id': 23, 
+               ''vals'': { 'user_id': 2}
+              } ]
         """
-        obj_model = self.pool.get(model_name)
-        if type(ids) == int : ids = [ids] #Ensure ids is a list
+        #Ensure ids is a list        
+        if type(ids) == int : 
+            ids = [ids] 
+        #Ensure model_name is provided and browse object
+        if not model_name: 
+            raise('ERROR: Model name must be provided.')
+        else:
+            obj_model = self.pool.get(model_name)
+        #default_flds defaults to section_id.user_id
+        if not default_flds:
+            default_flds = ['section_id.user_id']
+        #For each record, calculate the user_id to assign
         res = []
         for item in obj_model.browse(cr, uid, ids, context=context):
-            #0. Check forcing rule: step over if no forcea nd user_id already assigned
+            user = None
+            #0. Stop if user_id already assigned; unless 'force' is specified
             if not force and item[user_fld]:
                 break
-
-            user = None
-            #1. Evaluate fields overriding rules
+            #1. Check override field
             if not user:
                 for f in override_flds:
                     try:
                         user = eval('item.' + f + '.id')
-                        if user==1: user = None #Ignore admin user
+                        if user == SUPERUSER_ID: user = None #Ignore admin user
                     finally:
                         if user: break
-            #2. Evaluate profiling rules
+            #2. Check profiling rules
             if not user:
                 dept = item.department_id and item.department_id.id
                 team = item.section_id and item.section_id.id
                 rule = self.search(cr, uid, [('department_id', '=', dept), ('section_id', '=', team)], context=context)
                 user = rule and self.browse(cr, uid, rule[0], context=context).user_id.id
-            #3. Evaluate fields defaults
+            #3. Check fields for defaults, if no user found until now
             if not user:
                 for f in default_flds:
                     try:
                         user = eval('item.' + f + '.id')
-                        if user==1: user = None #Ignore admin user
+                        if user == SUPERUSER_ID: user = None #Ignore admin user
                     finally:
                         if user: break
             #4. Update result list
@@ -90,18 +110,22 @@ class project_issue_profiling(osv.osv):
         """Gets and writes user_ids responsible for a list of documents
         Inputs:  see "get_user_id"
         Returns: True if executed
-        
-        Intended to be used from Server Actions.
-        Warning: do not call from write() method - it will cause infinite recursion.
+        Intended to be used from Server Actions. Example:
+                Object:         project.issue.profiling
+                Action Type:    Python Code
+                Python Code:    self.set_user_id(cr, uid, [context.get('active_id')], 'project.issue', override_flds=['project_id.user_id'], context=context)
         """
-        if not context: context = {}
+        if not context: 
+            context = {}
+        #Prevent infinite recursion from the obj_model.write()
         if context.get('__profiling_action'):
-            return False #Prevent infinite recursion from the obj_model.write() call below
+            return False 
         context.update( { '__profiling_action':1 } )
         obj_model = self.pool.get(model_name)
         recs = self.get_user_id(cr, uid, ids, model_name, user_fld=user_fld, override_flds=override_flds, default_flds=default_flds, force=force, context=context)
         for item in recs:
             obj_model.write(cr, uid, [ item['id'] ], item['vals'], context=context)
+            _logger.debug('Profiling responsible assigned on model %s, id %d' % (model_name, item['id']) )
         return True
 
 project_issue_profiling()
@@ -123,30 +147,21 @@ class res_users(osv.osv):
 res_users()
 
 
-class project_issue(osv.osv):
-    _inherit = 'project.issue'
-
-    def create(self, cr, uid, vals, context={}):
-        rec_id = super(project_issue, self).create(cr, uid, vals, context)
-        #Profiling applied after record is created
-        self.pool.get('project.issue.profiling').set_user_id(
-            cr, uid, [rec_id], 'project.issue', 
-            override_flds = ['project_id.user_id'], #Project manager overrides rules
-            default_flds  = ['section_id.user_id'], #Assign to Team Manager if no rule found
-            context=context)
-        return rec_id
-
-    def write(self, cr, uid, ids, vals, context=None):
-        res = super(project_issue, self).write(cr, uid, ids, vals, context)
-        #Profiling applied after record is updated
-        self.pool.get('project.issue.profiling').set_user_id(
-            cr, uid, ids, 'project.issue', 
-            override_flds = ['project_id.user_id'], #Project manager overrides rules
-            default_flds  = ['section_id.user_id'], #Assign to Team Manager if no rule found
-            context=context)
-        return res
-
-project_issue()
+#class project_issue(osv.osv):
+#    _inherit = 'project.issue'
+#    
+#    def action_profile(self, cr, uid, ids, context={}):
+#        #Profiling applied after record is created
+#        #Use in a Server Action with code: self.action_profile(cr, uid, [context.get('active_id')], context=context)
+#        profiler_obj = self.pool.get('project.issue.profiling')
+#        res = profiler_obj.set_user_id(
+#            cr, uid, ids, 'project.issue', 
+#            override_flds = ['project_id.user_id'], #Project manager overrides rules
+#            #default_flds  = ['section_id.user_id'], #Assign to Team Manager if no rule found
+#            context=context)
+#        return res
+#
+#project_issue()
 
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

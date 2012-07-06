@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <menuitem
+            icon="terp-project" id="base.menu_main_pm"
+            name="Project &amp; Service" sequence="10"
+            groups="project.group_project_manager,project.group_project_user"
+            web_icon="../project/images/project.png"
+            web_icon_hover="../project/images/project-hover.png"/>
+
+    </data>
+</openerp>
+

@@ -227,14 +227,10 @@ task()
 class project_work(osv.osv):
     _inherit = "project.task.work"
 
-    #Deprecated: now using Start Dtateime + Duratuin instead, to avoid issues with UTC Time 
-    #_columns = {
-    #    'time_from': fields.float('Time From'),
-    #    'time_to': fields.float('Time To'),
-    #}
     _defaults = {
         'date': lambda *a: datetime.now().strftime('%Y-%m-%d'), #Changed default
     }
+
 project_work()
 
 

@@ -14,15 +14,15 @@
 				 <!-- Issue Profiling tab-->
                 <field name="company_id" position="after">
 					<notebook colspan="6">
-	                    <page string="Issue Profiling Rules">
-	                        <field name="issue_profiling" nolabel="1">
-								<tree editable="top">
-									<field name="section_id" completion="1"/>
-									<field name="user_id" completion="1"/>
-									<field name="notes"/>
-								</tree>
-							</field>
-	                    </page>
+                    <page string="Issue Profiling Rules">
+                        <field name="issue_profiling" nolabel="1">
+							<tree editable="top">
+								<field name="section_id" completion="1"/>
+								<field name="user_id" completion="1"/>
+								<field name="notes"/>
+							</tree>
+						</field>
+                    </page>
 					</notebook>
                  </field>
             </field>
