@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+
+	    <menuitem id="menu_contract_type" name="Contracts" parent = "base.menu_config" sequence="10"/>
+    <!-- Views for Contract Types Tree View -->
+
+		<record id="view_contract_type_tree" model="ir.ui.view">
+		    <field name="name">contract.type.tree</field>
+		    <field name="model">contract.type</field>
+		    <field name="type">tree</field>
+		    <field name="arch" type="xml">
+		        <tree string="Contract Type">
+		            <field name="name"/>
+		            <field name="code"/>
+		            <field name="model_id"/>
+		            <field name="contract_ids"/>
+		        </tree>
+		    </field>
+		</record>
+
+	<!-- Views for Contract Types From View -->
+	
+		<record id="view_contract_type_form" model="ir.ui.view">
+		    <field name="name">contract.type.form</field>
+		    <field name="model">contract.type</field>
+		    <field name="type">tree</field>
+		    <field name="arch" type="xml">
+		        <form string="Contract Type">
+		            <field name="name"/>
+		            <field name="code"/>
+		            <field name="model_id"/>
+		            <newline/>
+		            <field name="contract_ids" colspan="4"/>
+		        </form>
+		    </field>
+		</record>
+
+	<!-- Views for Contacts Search View -->
+
+	    <record id="view_contract_type_search" model="ir.ui.view">
+	        <field name="name">contract.type.search</field>
+	        <field name="model">contract.type</field>
+	        <field name="type">search</field>
+	        <field name="arch" type="xml">
+	            <search string="Contract Type">
+		            <field name="name"/>
+		            <field name="code"/>
+		            <field name="model_id"/>
+	            </search>
+	        </field>
+	    </record>
+	
+	<!-- Action for Contract Types -->
+	
+	    <record id="action_contract_type_form" model="ir.actions.act_window">
+	        <field name="name">Contract Types</field>
+	        <field name="res_model">contract.type</field>
+	        <field name="view_type">form</field>
+	        <field name="view_mode">tree,form</field>
+	        <field name="view_id" ref="view_contract_type_tree"/>
+	        <field name="search_view_id" ref="view_contract_type_search"/>
+	    </record>
+	    
+	    <menuitem id="menu_action_contract_type_form" action="action_contract_type_form" parent = "menu_contract_type" sequence="10"/>
+	    
+	    
+	
+	<!-- Views for Contract Tree View -->
+	
+		<record id="view_contract_contract_tree" model="ir.ui.view">
+		    <field name="name">contract.contract.tree</field>
+		    <field name="model">contract.contract</field>
+		    <field name="type">tree</field>
+		    <field name="arch" type="xml">
+		        <tree string="Contract">
+		            <field name="name"/>
+		            <field name="ref"/>
+		            <field name="date_start"/>
+		            <field name="date"/>
+		        </tree>
+		    </field>
+		</record>
+	
+	<!-- Views for Contract From View -->
+	
+		<record id="view_contract_contract_form" model="ir.ui.view">
+		    <field name="name">contract.contract.form</field>
+		    <field name="model">contract.contract</field>
+		    <field name="type">form</field>
+		    <field name="arch" type="xml">
+		        <form string="Contract">
+		            <field name="name"/>
+		            <field name="ref"/>
+		            <field name="category_id" widget="selection"/>
+		            <newline/>
+		            <notebook colspan="4">
+                        <page string="Account Data">
+                            <group colspan="2" col="2">
+                                <separator colspan="2" string="Contacts"/>
+                                <field name="partner_id"/>
+                                <field name="contact_id"/>
+                                <field name="user_id"/>
+                            </group>
+                            <group colspan="2" col="2" name="contract">
+                                <separator colspan="2" string="Contract Data"/>
+                                <field name="date_start"/>
+                                <field name="date"/>
+				            	<field name="date_init"/>
+                                <field name="quantity_max"/>
+                            </group>
+                            <group colspan="2" col="2" name="billing">
+                                <separator colspan="2" string="Billing"/>
+					            <field name="interval_number"/>
+					            <field name="interval_type"/>
+                            </group>
+                        </page>
+		            	<page string="Misc">
+		            		<field name="company_id"/>
+				            <field name="active"/>
+				            <field name="type_id" invisible="True"/>
+				            <field name="obj_id" invisible="True"/>
+		            		<field name="link" widget="reference"/>
+		            	</page>
+                        <page string="Description">
+                            <field colspan="4" name="description" nolabel="1"/>
+                        </page>
+		            </notebook>
+		        </form>
+		    </field>
+		</record>
+	
+	
+	<!-- Views for Contacts Search View -->
+	
+	    <record id="view_contract_contract_search" model="ir.ui.view">
+	        <field name="name">contract.contract.search</field>
+	        <field name="model">contract.contract</field>
+	        <field name="type">search</field>
+	        <field name="arch" type="xml">
+	            <search string="Contract">
+		            <field name="name"/>
+		            <field name="ref"/>
+		            <field name="type_id"/>
+		            <field name="company_id"/>
+	            </search>
+	        </field>
+	    </record>
+	
+	<!-- Action for Contract Types -->
+	
+	    <record id="action_contract_contract_form" model="ir.actions.act_window">
+	        <field name="name">Contract</field>
+	        <field name="res_model">contract.contract</field>
+	        <field name="view_type">form</field>
+	        <field name="view_mode">tree,form</field>
+	        <field name="view_id" ref="view_contract_contract_tree"/>
+	        <field name="search_view_id" ref="view_contract_contract_search"/>
+	    </record>
+	    
+	    
+	<!-- Views for Contract kind Tree View -->
+	
+		<record id="view_contract_category_tree" model="ir.ui.view">
+		    <field name="name">contract.category.tree</field>
+		    <field name="model">contract.category</field>
+		    <field name="type">tree</field>
+		    <field name="arch" type="xml">
+		        <tree string="Contract category">
+		            <field name="name"/>
+		            <field name="code"/>
+		        </tree>
+		    </field>
+		</record>
+	
+	<!-- Views for Contract kind From View -->
+	
+		<record id="view_contract_category_form" model="ir.ui.view">
+		    <field name="name">contract.category.form</field>
+		    <field name="model">contract.category</field>
+		    <field name="type">form</field>
+		    <field name="arch" type="xml">
+		        <form string="Contract category">
+		            <field name="code"/>
+		            <field name="name"/>
+		        </form>
+		    </field>
+		</record>
+	
+	<!-- Action for Contract Types -->
+	
+	    <record id="action_contract_category_form" model="ir.actions.act_window">
+	        <field name="name">Contract category</field>
+	        <field name="res_model">contract.category</field>
+	        <field name="view_type">form</field>
+	        <field name="view_mode">tree,form</field>
+	        <field name="view_id" ref="view_contract_category_tree"/>
+	    </record>
+	    <menuitem id="menu_action_contract_category_form" action="action_contract_category_form" parent="menu_contract_type" sequence="15"/>
+
+	</data>
+</openerp>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+
+	<!-- Views for Contract Types From View -->
+	
+		<record id="view_generate_contract_type_form" model="ir.ui.view">
+		    <field name="name">generate.contract.type.form</field>
+		    <field name="model">generate.contract.type</field>
+		    <field name="type">form</field>
+		    <field name="arch" type="xml">
+		        <form string="Generate Contract Type">
+					<group width="660" height="275">
+						<group colspan="4">
+				            <field name="model_id" on_change="on_change_model_id(model_id)"/>
+							<field name="name"/>
+		            		<field name="code"/>
+				            <newline/>
+			                <separator colspan="4"/>
+							<group colspan="4" col="6">
+								<button icon='gtk-cancel' special="cancel" string="Cancel" />
+								<button name="generate_type" string="Generate Contract Type" type="object" icon="gtk-ok"/>
+							</group>
+						</group>
+					</group>
+		        </form>
+		    </field>
+		</record>
+	
+	<!-- Action for Contract Types -->
+	
+		<record id="generate_contract_type" model="ir.actions.act_window">
+			<field name="name">Generate Contract Types</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">generate.contract.type</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+	    
+	    <menuitem id="menu_generate_contract_type" action="generate_contract_type" parent = "menu_contract_type" sequence="5"/>
+
+	<!-- Views for Contract From View -->
+	
+		<record id="view_generate_contract_form" model="ir.ui.view">
+		    <field name="name">generate.contract.form</field>
+		    <field name="model">generate.contract</field>
+		    <field name="type">form</field>
+		    <field name="arch" type="xml">
+		        <form string="Generate Contract">
+					<group width="660" height="275">
+						<group colspan="4">
+				            <field name="name"/>
+				            <field name="ref"/>
+				            <field name="type_id" invisible="True"/>
+				            <field name="obj_id" invisible="True"/>
+				            <field name="date_start"/>
+				            <field name="date_end"/>
+				            <field name="company_id"/>
+				            <newline/>
+				            <separator string="Notes" colspan="4"/>
+				            <field name="notes" colspan="4"/>
+				            <newline/>
+			                <separator colspan="4"/>
+							<group colspan="4" col="6">
+								<button icon='gtk-cancel' special="cancel" string="Cancel" />
+								<button name="generate_contract" string="Generate Contract" type="object" icon="gtk-ok"/>
+							</group>
+						</group>
+					</group>
+		        </form>
+		    </field>
+		</record>
+
+
+	</data>
+</openerp>

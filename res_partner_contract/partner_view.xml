@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+
+		<record id="view_partner_form_contract_inherit" model="ir.ui.view">
+			<field name="name">res.partner.form.contract.inherit</field>
+			<field name="model">res.partner</field>
+			<field name="inherit_id" ref="base.view_partner_form" />
+            <field name="priority">18</field>
+			<field name="arch" type="xml">
+				<page string="Notes" position="after">
+					<page string="Contracts">
+						<separator string="Partner Contract" colspan="4"/>
+						<field name="x_contract_partner_ids" nolabel="1" colspan="4" readonly="1"/>
+						<newline/>
+						<button name="%(res_partner_contract.action_partner_contract_new)d" string="New contract" type="action" colspan="4"
+							icon="gtk-index" context="{'obj_id': active_id, 'module': 'res_partner_contract', 'xml_name': 'type_partner_contract'}"/>
+					</page>
+				</page>
+			</field>
+		</record>
+
+	</data>
+</openerp>

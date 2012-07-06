@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+    
+	    <record id="field_partner_contract" model="ir.model.fields">
+	        <field name="model">contract.contract</field>
+	        <field name="model_id" ref="base_contract.model_contract_contract"/>
+	        <field name="name">x_contract_partner_id</field>
+	        <field name="relation">res.partner</field>
+	        <field name="field_description">Partner</field>
+	        <field name="ttype">many2one</field>
+	        <field name="state">manual</field>
+	        <field name="on_delete">set null</field>
+		</record>
+    
+	    <record id="field_o2m_partner_contract" model="ir.model.fields">
+	        <field name="model">res.partner</field>
+	        <field name="model_id" ref="base.model_res_partner"/>
+	        <field name="name">x_contract_partner_ids</field>
+	        <field name="relation">contract.contract</field>
+	        <field name="field_description">Partner Contract</field>
+	        <field name="ttype">one2many</field>
+	        <field name="relation_field">x_contract_partner_id</field>
+	        <field name="state">manual</field>
+	        <field name="on_delete">set null</field>
+	        <field name="domain"></field>
+		</record>
+    
+    </data>
+</openerp>

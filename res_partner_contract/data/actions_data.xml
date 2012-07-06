@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+	    <record id="action_partner_contract" model="ir.actions.act_window">
+	        <field name="name">Partner Contract</field>
+	        <field name="type">ir.actions.act_window</field>
+	        <field name="res_model">contract.contract</field>
+	        <field name="view_type">form</field>
+	        <field name="domain" eval="'[(\'obj_id\', \'=\', active_id), (\'type_id\', \'=\', ' + str(ref('type_partner_contract')) + ')]'"/>
+	        <field name="view_mode">tree,form</field>
+	        <field name="target">current</field>
+	        <field name="src_model">res.partner</field>
+	        <field name="context" eval="'{\'obj_id\': active_id, \'type_id\': ' + str(ref('type_partner_contract')) + '}'"/>
+		</record>
+    
+	    <record id="value_partner_contract" model="ir.values">
+	        <field name="name">act_contract_partner</field>
+	        <field name="key">action</field>
+	        <field name="key2">client_action_relate</field>
+	        <field name="model">res.partner</field>
+	        <field name="value" eval="'ir.actions.act_window,' + str(ref('action_partner_contract'))"/>
+	        <field name="object">True</field>
+		</record>
+    	
+    	<record id="action_partner_contract_new" model="ir.actions.act_window">
+	        <field name="name">Partner Contract</field>
+	        <field name="type">ir.actions.act_window</field>
+	        <field name="res_model">contract.contract</field>
+	        <field name="view_type">form</field>
+	        <field name="domain" eval="'[(\'type_id\', \'=\', ' + str(ref('type_partner_contract')) + ')]'"/>
+	        <field name="view_mode">form,tree</field>
+	        <field name="target">current</field>
+	        <field name="context" eval="'{\'obj_id\': active_id, \'type_id\': ' + str(ref('type_partner_contract')) + '}'"/>
+		</record>
+    </data>
+</openerp>

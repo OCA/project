@@ -1,0 +1,295 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* base_contract
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 6.0.3\n"
+"Report-Msgid-Bugs-To: support@openerp.com\n"
+"POT-Creation-Date: 2011-11-10 16:08+0000\n"
+"PO-Revision-Date: 2011-11-10 16:08+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: base_contract
+#: view:generate.contract.type:0
+msgid "Generate Contract Type"
+msgstr "Générer Type de contrat"
+
+#. module: base_contract
+#: view:contract.contract:0
+msgid "Billing"
+msgstr "Facturation"
+
+#. module: base_contract
+#: view:contract.category:0
+#: field:contract.contract,category_id:0
+#: model:ir.actions.act_window,name:base_contract.action_contract_category_form
+#: model:ir.ui.menu,name:base_contract.menu_action_contract_category_form
+msgid "Contract category"
+msgstr "Catégorie de contrat"
+
+#. module: base_contract
+#: model:ir.module.module,shortdesc:base_contract.module_meta_information
+msgid "Base Contract"
+msgstr "Contrat de base"
+
+#. module: base_contract
+#: selection:contract.contract,interval_type:0
+msgid "Weeks"
+msgstr "Semaines"
+
+#. module: base_contract
+#: model:ir.actions.act_window,name:base_contract.generate_contract_type
+#: model:ir.ui.menu,name:base_contract.menu_generate_contract_type
+msgid "Generate Contract Types"
+msgstr "Générer des types de contrat"
+
+#. module: base_contract
+#: field:contract.category,name:0
+#: field:contract.contract,name:0
+#: field:contract.type,name:0
+#: field:generate.contract,name:0
+#: field:generate.contract.type,name:0
+msgid "Name"
+msgstr "Nom"
+
+#. module: base_contract
+#: model:ir.model,name:base_contract.model_generate_contract_type
+msgid "Contract Type Generator"
+msgstr "Générateur Type de contrat"
+
+#. module: base_contract
+#: field:contract.contract,date_start:0
+#: field:generate.contract,date_start:0
+msgid "Begin Date"
+msgstr "Date de début"
+
+#. module: base_contract
+#: model:ir.model,name:base_contract.model_contract_contract
+#: model:ir.model,name:base_contract.model_contract_type
+#: model:ir.ui.menu,name:base_contract.menu_contract_type
+msgid "Contracts"
+msgstr "Contrats"
+
+#. module: base_contract
+#: field:contract.contract,company_id:0
+#: field:generate.contract,company_id:0
+msgid "Company"
+msgstr "Société"
+
+#. module: base_contract
+#: field:contract.contract,interval_number:0
+msgid "Interval Qty"
+msgstr "Quantité intervalle"
+
+#. module: base_contract
+#: model:ir.module.module,description:base_contract.module_meta_information
+msgid "\n"
+"Presentation:"
+"\n"
+"This module allows you to manage your contracts entirely.\n"
+"It allows you to define the model you want to add to a contract.\n"
+"It automatically adds a link to the contracts on the model view.\n"
+"\n"
+"\n"
+"Configuration:\n"
+"\n"
+"Administration>Configuration>Contracts\n"
+"\n"
+"* Generate Contract Types:\n"
+"Inform the model which you would like to create the type of contract, name and code of the type of contract to automatically generate the type of contract.\n"
+"\n"
+"* Contract Types:\n"
+"Contract types generated are listed here.\n"
+"\n"
+"* Contract category:"
+"Creating the type of contract with a code and a name.\n"
+"\n"
+"\n"
+"Links of the contract in the model informed:\n"
+"\n"
+"* The link of the contract is put in the links column on the menu of the selected model when generating the model contract.\n"
+"\n"
+"* Example: Sales Order Contract:"
+"Learn the name, ref, date of start and end of the contract, the Kind of contract, the bond, the date of the first billing, the amount, the Company ...\n"
+"    "
+msgstr "\n"
+"Présentation:"
+"\n"
+"Ce module vous permet de gérer vos contrats entièrement.\n"
+"Il vous permet de définir le modèle que vous souhaitez ajouter à un contrat.\n"
+"Il ajoute automatiquement un lien vers les contrats sur la vue du modèle.\n"
+"\n"
+"\n"
+"Configuration:\n"
+"\n"
+"Administration>Configuration>Contrats\n"
+"\n"
+"* Générer Types de contrat:\n"
+"Informer le modèle que vous souhaitez créer le type de contrat, le nom et le code du type de contrat pour générer automatiquement le type de contrat.\n"
+"\n"
+"* Types de contrat:\n"
+"Types de contrats générés sont répertoriés ici.\n"
+"\n"
+"* Catégorie de contrat:"
+"Création du type de contrat avec un code et un nom .\n"
+"\n"
+"\n"
+"Liens du contrat dans le modèle courant:\n"
+"\n"
+"* Le lien du contrat est mis dans la colonne de liens sur le menu du modèle choisi lors de la génération du modèle de contrat.\n"
+"\n"
+"* Exemple: Contrat du Sales Order:"
+"Apprenez le nom, réf, date de début et de fin du contrat, le type de contrat, la caution, la date de la première facturation, le montant, la société ...\n"
+"    "
+
+#. module: base_contract
+#: field:contract.contract,link:0
+msgid "Link"
+msgstr "Lien"
+
+#. module: base_contract
+#: field:contract.contract,interval_type:0
+msgid "Interval Unit"
+msgstr "Unité d'intervalle"
+
+#. module: base_contract
+#: field:contract.contract,active:0
+#: field:contract.type,active:0
+msgid "Active"
+msgstr "Actif"
+
+#. module: base_contract
+#: model:ir.actions.act_window,name:base_contract.action_contract_type_form
+#: model:ir.ui.menu,name:base_contract.menu_action_contract_type_form
+msgid "Contract Types"
+msgstr "Type de contrat"
+
+#. module: base_contract
+#: field:contract.contract,date_end:0
+#: field:generate.contract,date_end:0
+msgid "End Date"
+msgstr "Date de fin"
+
+#. module: base_contract
+#: help:contract.contract,active:0
+msgid "If the active field is set to False,                 it will allow you to hide the contract without removing it."
+msgstr "Si le champ actif est défini comme False,                il vous permettra de cacher le contrat sans le supprimer."
+
+#. module: base_contract
+#: model:ir.model,name:base_contract.model_contract_category
+msgid "Contracts category"
+msgstr "Catégorie des contrats"
+
+#. module: base_contract
+#: field:contract.type,field_id:0
+msgid "Fields"
+msgstr "Champs"
+
+#. module: base_contract
+#: view:contract.contract:0
+#: field:contract.contract,notes:0
+#: view:generate.contract:0
+#: field:generate.contract,note:0
+msgid "Notes"
+msgstr "Notes"
+
+#. module: base_contract
+#: field:contract.type,contract_ids:0
+msgid "Contract list"
+msgstr "Liste des contrats"
+
+#. module: base_contract
+#: selection:contract.contract,interval_type:0
+msgid "Days"
+msgstr "Jours"
+
+#. module: base_contract
+#: view:contract.contract:0
+#: model:ir.actions.act_window,name:base_contract.action_contract_contract_form
+msgid "Contract"
+msgstr "Contrat"
+
+#. module: base_contract
+#: field:contract.contract,type_id:0
+#: view:contract.type:0
+#: field:generate.contract,type_id:0
+msgid "Contract Type"
+msgstr "Type de contrat"
+
+#. module: base_contract
+#: view:generate.contract:0
+msgid "Generate Contract"
+msgstr "Générer contrat"
+
+#. module: base_contract
+#: field:contract.contract,amount:0
+msgid "Amount"
+msgstr "Montant"
+
+#. module: base_contract
+#: sql_constraint:contract.category:0
+msgid "The code must be unique !"
+msgstr "Le code doit être unique !"
+
+#. module: base_contract
+#: field:contract.type,model_id:0
+#: field:generate.contract.type,model_id:0
+msgid "Model"
+msgstr "Modèle"
+
+#. module: base_contract
+#: model:ir.model,name:base_contract.model_generate_contract
+msgid "Contract Generator"
+msgstr "Générateur de contrat"
+
+#. module: base_contract
+#: field:contract.contract,date_init:0
+msgid "First Billing Date"
+msgstr "Date de première facturation"
+
+#. module: base_contract
+#: field:contract.category,code:0
+#: field:contract.type,code:0
+#: field:generate.contract.type,code:0
+msgid "Code"
+msgstr "Code"
+
+#. module: base_contract
+#: field:contract.contract,ref:0
+#: field:generate.contract,ref:0
+msgid "Reference"
+msgstr "Référence"
+
+#. module: base_contract
+#: help:contract.type,active:0
+msgid "If the active field is set to False,                 it will allow you to hide the contract type without removing it."
+msgstr "Si le champ actif est défini à False,                il vous permettra de cacher le type de contrat sans le supprimer."
+
+#. module: base_contract
+#: view:contract.contract:0
+msgid "Misc"
+msgstr "Divers"
+
+#. module: base_contract
+#: view:generate.contract:0
+#: view:generate.contract.type:0
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: base_contract
+#: field:contract.contract,obj_id:0
+#: field:generate.contract,obj_id:0
+msgid "Object ID"
+msgstr "Objet ID"
+
+#. module: base_contract
+#: selection:contract.contract,interval_type:0
+msgid "Months"
+msgstr "Mois"
+
