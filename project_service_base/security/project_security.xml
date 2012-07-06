@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data noupdate="0">
+    <record id="group_project_viewer" model="res.groups">
+        <field name="name">Basic user</field>
+        <field name="category_id" ref="base.module_category_project_management"/>
+    </record>
+
+    <record model="ir.ui.menu" id="reis_menu_main_project_viewer">
+        <field name="groups_id" eval="(4,ref('group_project_viewer'))"/>
+    </record>
+
+    <record model="ir.rule" id="project_basic_user_edit_draft_cancel_rule">
+        <field name="name">Project Issues: Basic User can edit draft and cancel states</field>
+        <field name="model_id" ref="project_issue.model_project_issue"/>
+        <field name="domain_force">[('state','in',('draft','cancel'))]</field>
+        <field name="groups" eval="[(4,ref('group_project_viewer'))]"/>
+        <field name="perm_read">1</field>
+        <field name="perm_write">1</field>
+        <field name="perm_create">1</field>
+        <field name="perm_unlink">1</field>
+    </record>
+
+    <record model="ir.rule" id="project_basic_user_readonly_other_states_rule">
+        <field name="name">Project Issues: Basic User readonly non draft and cancel states</field>
+        <field name="model_id" ref="project_issue.model_project_issue"/>
+        <field name="domain_force">[('state','not in',('draft','cancel'))]</field>
+        <field name="groups" eval="[(4,ref('group_project_viewer'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record model="ir.rule" id="project_user_write_all_issue_states">
+        <field name="name">Project Issues: Project User writes in all states</field>
+        <field name="model_id" ref="project_issue.model_project_issue"/>
+        <field name="domain_force">[(1,'=',1)]</field>
+        <field name="groups" eval="[(6,0,[ref('project.group_project_user'),ref('project.group_project_manager')])]"/>
+        <field name="perm_read">1</field>
+        <field name="perm_write">1</field>
+        <field name="perm_create">1</field>
+        <field name="perm_unlink">1</field>
+    </record>
+
+  </data>
+</openerp>
+
+
+
+
