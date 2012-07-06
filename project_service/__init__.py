@@ -23,7 +23,6 @@ import reis_base
 import reis_hr
 import reis_project
 import reis_project_issue
-###import reis_crm_action_rule
 import report
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

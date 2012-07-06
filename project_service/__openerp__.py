@@ -41,6 +41,7 @@ Stock: (...)
         'project_functional_blocks',
         'project_issue',        #=> 'crm', 'project'
         'project_timesheet',    #=> 'project', 'hr_timesheet_sheet', 'hr_timesheet_invoice'
+        'project_service_base',
     ],
     'init_xml': [
         'reis_project_issue_data.xml',
@@ -49,7 +50,6 @@ Stock: (...)
         'reis_project_view.xml',
         'reis_project_issue_view.xml',
         'reis_crm_view.xml',
-        'security/reis_project_security.xml',
         'security/ir.model.access.csv',
     ],
     'demo_xml': [],
