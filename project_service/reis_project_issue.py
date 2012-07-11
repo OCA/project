@@ -44,8 +44,8 @@ class project_issue(osv.osv):
     _inherit = 'project.issue'
 
 ##TODO: needs further fixing?
-    #FIXED, based on 6.1 trunk @ 2012-02-06
-    #Allow optional project_id and project_id.resource_id
+#    #FIXED, based on 6.1 trunk @ 2012-02-06
+#    #Allow optional project_id and project_id.resource_id
 #    def _compute_day(self, cr, uid, ids, fields, args, context=None):
 #        """
 #        @param cr: the current row, from the database cursor,
@@ -139,16 +139,13 @@ class project_issue(osv.osv):
     _columns = {
     #standard fields (changing texts or domains):
         'functional_block_id': fields.many2one('project.functional_block', 'Component', help = "Component (system, module, function) to be adressed"),
-#added fields:
+    #added fields:
         'assigned_to': fields.related('task_id', 'user_id', string = 'Task Assigned to', type="many2one", relation="res.users", store=True, help='This is the current user to whom the related task was assigned'),
         'ref': fields.char('Code', size=10, readonly=True, select=True, help="Issue sequence number"),
         'tasks': fields.one2many('project.task', 'issue_id', 'Related tasks', help="Task history for the issue"),
         'create_uid': fields.many2one('res.users', 'Created by', help = "Person who reported the issue"),
-        'department_id': fields.related('project_id', 'department_id', string = 'Department', type="many2one", relation="hr.department", store=True, select=True),
-        ###'project_description': fields.related('project_id', 'description', string = 'Project Comments', type="text"),
-        ###'project_date': fields.related('project_id', 'date', string = 'Project Close date', type="date"),
-        #No changes, repeated to force link to new version of _compute_day()
 #TODO:
+#        #No changes, repeated to force link to new version of _compute_day()
 #        'days_since_creation': fields.function(_compute_day, string='Days since creation date', \
 #                                               multi='compute_day', type="integer", help="Difference in days between creation date and current date"),
 #        'day_open': fields.function(_compute_day, string='Days to Open', \
@@ -205,14 +202,15 @@ class project_issue(osv.osv):
         #else:
         return super(project_issue, self).onchange_partner_id(cr, uid, ids, part, email)        
         
-    def onchange_project(self, cr, uid, ids, proj_id=False, context=None):
+    def on_change_project(self, cr, uid, ids, proj_id=False, context=None):
         """When changing the Issue's Project:
             - the Issue Partner is copied from the project's Partner
             - cascades the change to the Address and e-mail
         """
         if not proj_id:
             return {'value':{}}
-        data = {}
+        super_res = super(project_issue, self).on_change_project(cr, uid, ids, proj_id, context = context)
+        data = super_res.get('value', {})
         #the Issue Partner is copied from the project's Partner
         proj_obj = self.pool.get('project.project').browse(cr, uid, proj_id, context)
         if proj_obj.partner_id:
@@ -244,13 +242,7 @@ class project_issue(osv.osv):
         if id3:
             id3 = data_obj.browse(cr, uid, id3, context=context).res_id
 
-        #2012-02-08,dreis: deprecated        
-        #Find "TBD" user_id (only Taks with issues are shown in Calendar view)
-        #tbd_id = self.pool.get('res.users').search(cr, uid, [('name','=','TBD')])
-        #tbd_id =  tbd_id[0] if tbd_id != [] else None
         for bug in case_obj.browse(cr, uid, ids, context=context):
-            #dreis:
-            #Check if Issue already has an assigned task
             #Only create new task if none is assigned, or if it's done/cancelled
             if bug.task_id.id and bug.task_id.state not in ['cancelled', 'done']:
                 new_task_id  = bug.task_id.id
