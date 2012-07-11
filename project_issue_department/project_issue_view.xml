@@ -2,21 +2,63 @@
 <openerp>
     <data>
 
+		<!--PROJECT ISSUE SEARCH -->
+        <record id="view_project_issue_filter_dreis" model="ir.ui.view">
+            <field name="name">Project Issue Tracker Search</field>
+            <field name="model">project.issue</field>
+            <field name="inherit_id" ref="project_issue.view_project_issue_filter"/>
+            <field name="arch" type="xml">
+                    <field name="id" position="after">
+						<field name="department_id" widget="selection" operator="child_of"/>
+                    </field>
+                    <!--  GROUP BY -->
+                    <filter string="Partner" position="after">
+                        <filter string="Department" icon="terp-partner" domain="[]" context="{'group_by':'department_id'}"/>
+                    </filter>
+            </field>
+		</record>
+
+		<!--PROJECT ISSUE TREE -->
+        <record model="ir.ui.view" id="project_issue_tree_view_reis">
+            <field name="name">Project Issue Tracker Tree</field>
+            <field name="model">project.issue</field>
+            <field name="inherit_id" ref="project_issue.project_issue_tree_view"/>
+            <field name="arch" type="xml">
+              <data>
+                <field name="user_id" position="after">
+					<field name="department_id" groups="base.group_extended"/>
+				</field>
+              </data>
+            </field>
+        </record>
+
         <record id="project_issue_department_form_view" model="ir.ui.view">
             <field name="name">project_issue_department_form_view</field>
             <field name="model">project.issue</field>
             <field name="inherit_id" ref="project_issue.project_issue_form_view"/>
             <field name="arch" type="xml">
-
 				<field name="project_id" position="after">
 					<field name="department_id" required="True"/>
  				</field>
-
             </field>
 		</record>
 
+    <!-- PROJECT ISSUE MENU ACTION: [-]no default pressed buttons and user; [+] default department -->
+    <record model="ir.actions.act_window" id="project_issue.project_issue_categ_act0">
+        <field name="name">Issues</field>
+        <field name="res_model">project.issue</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">kanban,tree,calendar</field>
+        <field name="view_id" eval="False"/>
+        <field name="domain" eval=""/>
+        <field name="context">{"search_default_project_id":project_id, "search_default_department_id":department_id}</field>
+        <field name="search_view_id" ref="project_issue.view_project_issue_filter"/>
+        <field name="help">Issues such as system bugs, customer complaints, and material breakdowns are collected here. You can define the stages assigned when solving the project issue (analysis, development, done). With the mailgateway module, issues can be integrated through an email address (example: support@mycompany.com)</field>
+    </record>
+
     </data>
 </openerp>
+
 
 
 

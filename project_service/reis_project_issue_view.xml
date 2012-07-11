@@ -128,14 +128,12 @@
                     </field>
                     <field name="project_id" position="replace"/>
 
-                    <!-- Search by "ref" instead of "id"; add section_id (Team) and department_id -->
+                    <!-- Search by "ref" instead of "id"; add section_id (Team) -->
                     <field name="id" position="replace">
 						<field name="section_id" string="Team" widget="selection" groups="base.group_extended"/>
-						<field name="department_id" widget="selection" operator="child_of"/>
 				    </field>
                     <!--  GROUP BY -->
                     <filter string="Partner" position="after">
-                        <filter string="Department" icon="terp-partner" domain="[]" context="{'group_by':'department_id'}"/>
                         <filter string="Team" icon="STOCK_SELECT_COLOR" domain="[]" context="{'group_by':'section_id'}"/>
                     </filter>
 			</field>
@@ -160,12 +158,11 @@
                 <button name="next_type" position="attributes"><attribute name="groups">base.group_extended</attribute></button>
                 <field name="version_id" position="attributes"><attribute name="groups">base.group_extended</attribute></field>
                 <field name="categ_id" position="attributes"><attribute name="groups">base.group_extended</attribute></field>
-                <!-- Ref and Category visible after issue name; add Department after responsible -->
+                <!-- Ref and Category visible after issue name -->
                 <field name="create_date" position="before">
                     <field name="ref"/>
 				</field>
                 <field name="user_id" position="after">
-					<field name="department_id" groups="base.group_extended"/>
 					<field name="section_id" groups="base.group_extended"/>
 					<field name="create_uid"/>
 				</field>
@@ -186,19 +183,6 @@
             </field>
         </record>
 
-    <!-- PROJECT ISSUE MENU ACTION: [-]no default pressed buttons and user; [+] default department -->
-    <record model="ir.actions.act_window" id="project_issue.project_issue_categ_act0">
-        <field name="name">Issues</field>
-        <field name="res_model">project.issue</field>
-        <field name="view_type">form</field>
-        <field name="view_mode">kanban,tree,calendar</field>
-        <field name="view_id" eval="False"/>
-        <field name="domain" eval=""/>
-        <field name="context">{"search_default_project_id":project_id, "search_default_department_id":department_id}</field>
-        <field name="search_view_id" ref="project_issue.view_project_issue_filter"/>
-        <field name="help">Issues such as system bugs, customer complaints, and material breakdowns are collected here. You can define the stages assigned when solving the project issue (analysis, development, done). With the mailgateway module, issues can be integrated through an email address (example: support@mycompany.com)</field>
-    </record>
-
 	<!-- ISSUE KANBAN VIEW: moving from firest to last position-->
     <record model="ir.actions.act_window.view" id="project_issue.action_crm_tag_kanban_view0">
         <field name="sequence" eval="10"/>
@@ -216,6 +200,7 @@
 
     </data>
 </openerp>
+
 
 
 
