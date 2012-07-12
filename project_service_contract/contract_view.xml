@@ -144,9 +144,6 @@
 		                    <field name="state_id"/>
 		                    <field name="start_date"/>
 		                    <field name="end_date"/>
-		                    <field name="gti" widget="float_time"/>
-		                    <field name="gtr" widget="float_time"/>
-		                    <field name="attendance_id"/>
 		        		</group>
 	       			</group>
                     <newline/>
@@ -185,6 +182,7 @@
 					<group colspan="4" col="4">
 						<field name="contract_number"/>
 						<field name="contract_version"/>
+						<field name="contract_revision"/>
 					</group>
 				</field>
 				<field name="active" position="after">
@@ -204,7 +202,7 @@
 				</page>
 				<page string="Misc" position="inside">
 					<field name="pre_sales_owner_id"/>
-					<field name="sale_odrer_id"/>
+					<field name="sale_order_id"/>
 					<field name="salesman_id"/>
 				</page>
 			</field>

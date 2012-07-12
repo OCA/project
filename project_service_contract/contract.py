@@ -97,10 +97,8 @@ class contract_line(osv.osv):
         'current_location': fields.function(_get_location, method=True, type='many2one',relation='stock.location', string='Current Location', store=True),
         'delivery_location_id': fields.many2one('stock.location', 'Delivery Location'),
         'state_id': fields.many2one('contract.line.state', 'State'),
-        'attendance_id' : fields.many2one('resource.calendar', 'Working Time'),
-        'gti': fields.float('GTI',  digits=(16,2)),
-        'gtr': fields.float('GTR',  digits=(16,2)),
         'note': fields.text('Note'),
+        'configuration': fields.text('Configuration'),
     }
 contract_line()
 
@@ -108,8 +106,9 @@ class contract_contract(osv.osv):
     _inherit = "contract.contract"    
     _columns = {
         'contract_number': fields.char('Contract Number', size=64),
-        'contract_version': fields.char('Version', size=64),
-        'sale_odrer_id': fields.many2one('sale.order', 'Sale Order'),
+        'contract_version': fields.integer('Version'),
+        'contract_revision': fields.integer('Revision'),
+        'sale_order_id': fields.many2one('sale.order', 'Sale Order'),
         'order_address_id': fields.many2one('res.partner.address', 'Order Address'),        
         'invoice_address_id': fields.many2one('res.partner.address', 'Invoice Address'),
         'line_ids': fields.one2many('contract.line', 'contract_id', 'Contract Line'),

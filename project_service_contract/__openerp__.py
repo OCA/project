@@ -34,12 +34,14 @@
 		'project_functional_blocks',
         'project_issue',		#=> 'crm', 'project'
         'project_timesheet',	#=> 'project', 'hr_timesheet_sheet', 'hr_timesheet_invoice'
-        'base_contract',        #=> 'Julius Network Solution module (under construction)'
+        'base_contract',
         'project_service',
     ],
     'init_xml': [],
     'update_xml': [
         'contract_view.xml',
+        'security/contract_security.xml',
+#        'security/ir.model.access.csv',
     ],
     'demo_xml': [],
     'test': [],

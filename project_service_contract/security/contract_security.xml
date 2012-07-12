@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data>
+	
+	    <record id="group_contract_user" model="res.groups">
+	        <field name="name">Contract User</field>
+	    </record>
+	
+	    <record id="group_contract_manager" model="res.groups">
+	        <field name="name">Contract Manager</field>
+	    </record>
+	
+	</data>
+</openerp>

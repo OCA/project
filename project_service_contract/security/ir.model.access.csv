@@ -1,0 +1,9 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_contract_contract_manager","contract.contract","base_contract.model_contract_contract","project_service_contract.group_contract_manager",1,1,1,1
+"access_contract_contract_user","contract.contract","base_contract.model_contract_contract","project_service_contract.group_contract_user",1,0,0,0
+"access_contract_line_state_manager","contract.line.state","model_contract_line_state","project_service_contract.group_contract_manager",1,1,1,1
+"access_contract_line_state_user","contract.line.state","model_contract_line_state","project_service_contract.group_contract_user",1,0,0,0
+"access_contract_sub_line_manager","contract.sub.line","model_contract_sub_line","project_service_contract.group_contract_manager",1,1,1,1
+"access_contract_sub_line_user","contract.sub.line","model_contract_sub_line","project_service_contract.group_contract_user",1,0,0,0
+"access_contract_line_manager","contract.line","model_contract_line","project_service_contract.group_contract_manager",1,1,1,1
+"access_contract_line_user","contract.line","model_contract_line","project_service_contract.group_contract_user",1,0,0,0

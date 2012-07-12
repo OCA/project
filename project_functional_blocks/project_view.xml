@@ -1,0 +1,107 @@
+<openerp>
+    <data>
+<!-- FUNCTIONAL BLOCK TO TASK -->
+        <record id="view_task_functional_block_form" model="ir.ui.view">
+            <field name="name">project.task.functional_block.form</field>
+            <field name="model">project.task</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/group/field[@name='progress']" position="after">
+                    <field name="functional_block_id" select="1"/>
+                </xpath>
+            </field>
+        </record>
+        
+        <record id="view_task_tree2" model="ir.ui.view">
+            <field name="name">project.task.tree.functional_block</field>
+            <field name="model">project.task</field>
+            <field name="type">tree</field>
+            <field name="inherit_id" ref="project.view_task_tree2"/>
+            <field name="arch" type="xml">
+                <field name="user_id" position="after">
+                    <field name="functional_block_id" select="1"/>
+                </field>
+            </field>
+        </record>
+        
+        <record id="view_task_search_form_fb" model="ir.ui.view">
+            <field name="name">project.task.functional.search</field>
+            <field name="model">project.task</field>
+            <field name="type">search</field>
+            <field name="inherit_id" ref="project.view_task_search_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="/search/group/field[@name='name']" position="after">
+                    <field name="functional_block_id" select="1"/>
+                </xpath>
+                <xpath expr="/search/group[@string='Group By...']/filter[@string='Project']" position="after">
+                	<separator orientation="vertical"/>
+                    <filter string="Functional Block" icon="terp-gtk-jump-to-ltr" domain="[]" context="{'group_by':'functional_block_id'}"/>
+                </xpath>
+            </field>
+        </record>
+
+<!-- FUNCTIONAL BLOCK -->
+		<!-- Search view for software module -->
+		<record id="funct_block_search_view" model="ir.ui.view">
+            <field name="name">project.functional_block.search</field>
+            <field name="model">project.functional_block</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Search software's module">                
+                    <separator orientation="vertical"/>                 
+                    <field name="name" select='1'/>                    
+                    <field name="parent_id" select='1'/>
+                    <newline/>
+                    <group expand="0" string="Group By...">
+                        <filter string="Parent" icon="terp-partner"
+                            domain="[]" help="Parent"
+                            context="{'group_by':'parent_id'}" />                            
+                    </group>                                    
+                </search>
+            </field>
+        </record>
+        
+		<!-- tree view for functional block -->
+		<record model="ir.ui.view" id="funct_block_list_view">
+			<field name="name">project.functional_block.list</field>
+			<field name="model">project.functional_block</field>
+			<field name="type">tree</field>
+			<field name="arch" type="xml">
+			   <tree string="Functionality categories" >				
+					<field name="name"/>	
+					<field name="parent_id"/>				
+			   </tree>
+			</field>			   
+		</record>
+		
+		<!-- Form view for functional block -->
+		<record model="ir.ui.view" id="funct_categ_form_view">
+			<field name="name">project.functional_block.form</field>
+			<field name="model">project.functional_block</field>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+			   <form string="Functional block">
+					<field name="name" select="1" />
+					<field name="parent_id"/>
+					<separator colspan="4" string="Block description"/>
+					<field name="category_description" colspan="4" nolabel="1" widget="text_wiki"/>	
+			   </form>
+			</field>			   
+		</record>
+		
+		<!-- OPEN BLOCK LIST -->	
+		<record model="ir.actions.act_window" id="action_funct_block_list">
+			<field name="name">Functional block list</field>
+			<field name="res_model">project.functional_block</field>
+			<field name="view_type">form</field> 
+			<field name="view_mode">tree,form</field> 
+			<field name="view_id" ref="funct_block_list_view"/>
+			<field name="search_view_id" ref="funct_block_search_view"/>
+		</record> 
+
+	<menuitem name="Functional blocks" parent="project.menu_definitions" id="menu_functional_blocks"/>		
+	<menuitem name="Functional blocks" parent="menu_functional_blocks" id="menu_functional_blocks_list" action="action_funct_block_list" sequence="10"/> 				
+		
+    </data>
+</openerp>
