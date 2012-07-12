@@ -44,7 +44,7 @@ Stock: (...)
         'project_service_base',
     ],
     'init_xml': [
-        'reis_project_issue_data.xml',
+#        'reis_project_issue_data.xml',
     ],
     'update_xml': [
         'reis_project_view.xml',
