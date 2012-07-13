@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
   <data noupdate="0">
+    <!-- GROUPS  -->
     <record id="group_project_viewer" model="res.groups">
         <field name="name">Basic user</field>
         <field name="category_id" ref="base.module_category_project_management"/>
@@ -10,6 +11,14 @@
         <field name="groups_id" eval="(4,ref('group_project_viewer'))"/>
     </record>
 
+    <record id="group_project_user_all_tasks" model="res.groups">
+        <field name="name">Project User - All Tasks</field>
+        <field name="category_id" ref="base.module_category_project_management"/>
+        <field name="implied_ids" eval="[(4, ref('project.group_project_user'))]"/>
+    </record>
+
+
+    <!-- RECORD RULES  -->
     <record model="ir.rule" id="project_basic_user_edit_draft_cancel_rule">
         <field name="name">Project Issues: Basic User can edit draft and cancel states</field>
         <field name="model_id" ref="project_issue.model_project_issue"/>
@@ -43,8 +52,20 @@
         <field name="perm_unlink">1</field>
     </record>
 
+    <record model="ir.rule" id="project_group_project_user_all_tasks">
+        <field name="name">Project Issues: User sees all Tasks</field>
+        <field name="model_id" ref="project.model_project_task"/>
+        <field name="domain_force">[(1,'=',1)]</field>
+        <field name="groups" eval="[(4,ref('group_project_user_all_tasks'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="True"/>
+    </record>
+
   </data>
 </openerp>
+
 
 
 
