@@ -72,18 +72,18 @@ contract_sub_line()
 class contract_line(osv.osv):
     _name = "contract.line"    
     
-    def _get_location(self, cr, uid, ids, product_id, arg, context=None):
-        result = {}
-        stock_obj = self.pool.get('stock.move')
-        for contract_line_id in ids:
-            location_id = False
-            prod_lot_id = self.browse(cr, uid, contract_line_id, context).stock_production_lot_id
-            if prod_lot_id:
-                move_ids = stock_obj.search(cr, uid, [('prodlot_id', '=', prod_lot_id.id),('state','=','done')], order='location desc', limit=1)
-                if move_ids:
-                    location_id = stock_obj.browse(cr, uid, move_ids[0], context).location_dest_id.id
-            result[contract_line_id] = location_id
-        return result
+#    def _get_location(self, cr, uid, ids, product_id, arg, context=None):
+#        result = {}
+#        stock_obj = self.pool.get('stock.move')
+#        for contract_line_id in ids:
+#            location_id = False
+#            prod_lot_id = self.browse(cr, uid, contract_line_id, context).stock_production_lot_id
+#            if prod_lot_id:
+#                move_ids = stock_obj.search(cr, uid, [('prodlot_id', '=', prod_lot_id.id),('state','=','done')], order='location desc', limit=1)
+#                if move_ids:
+#                    location_id = stock_obj.browse(cr, uid, move_ids[0], context).location_dest_id.id
+#            result[contract_line_id] = location_id
+#        return result
     
     _columns = {
         'name': fields.related('product_id', 'name', type='char', relation='product.product', string='Name', store=True),
@@ -94,8 +94,10 @@ class contract_line(osv.osv):
         'customer_contact_address_id': fields.many2one('res.partner.address', 'Technical contact customer'),
         'start_date': fields.date('Start date'),
         'end_date': fields.date('End date'),
-        'current_location': fields.function(_get_location, method=True, type='many2one',relation='stock.location', string='Current Location', store=True),
-        'delivery_location_id': fields.many2one('stock.location', 'Delivery Location'),
+        'current_location': fields.many2one('res.partner.address', 'Current Location'),
+        'delivery_location_id': fields.many2one('res.partner.address', 'Delivery Location'),
+#        'current_location': fields.function(_get_location, method=True, type='many2one',relation='stock.location', string='Current Location', store=True),
+#        'delivery_location_id': fields.many2one('stock.location', 'Delivery Location'),
         'state_id': fields.many2one('contract.line.state', 'State'),
         'note': fields.text('Note'),
         'configuration': fields.text('Configuration'),
