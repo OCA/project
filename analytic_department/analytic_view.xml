@@ -37,7 +37,7 @@
             <field name="inherit_id" ref="account.view_account_analytic_account_form" />
             <field name="type">form</field>
             <field name="arch" type="xml">
-                <xpath expr="/form/notebook/page/field[@name='partner_id']" position="after">
+                <xpath expr="/form/notebook/page/group/field[@name='partner_id']" position="after">
                     <field name="department_id" />
                 </xpath>
             </field>
