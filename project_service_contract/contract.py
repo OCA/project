@@ -72,22 +72,10 @@ contract_sub_line()
 class contract_line(osv.osv):
     _name = "contract.line"    
     
-#    def _get_location(self, cr, uid, ids, product_id, arg, context=None):
-#        result = {}
-#        stock_obj = self.pool.get('stock.move')
-#        for contract_line_id in ids:
-#            location_id = False
-#            prod_lot_id = self.browse(cr, uid, contract_line_id, context).stock_production_lot_id
-#            if prod_lot_id:
-#                move_ids = stock_obj.search(cr, uid, [('prodlot_id', '=', prod_lot_id.id),('state','=','done')], order='location desc', limit=1)
-#                if move_ids:
-#                    location_id = stock_obj.browse(cr, uid, move_ids[0], context).location_dest_id.id
-#            result[contract_line_id] = location_id
-#        return result
-    
     _columns = {
         'name': fields.related('product_id', 'name', type='char', relation='product.product', string='Name', store=True),
         'contract_id': fields.many2one('contract.contract', 'Contract'),
+#        'contract_ids': fields.many2many('contract.contract', 'contract_line_rel', 'line_id', 'contract_id', 'Contract'),
         'product_id': fields.many2one('product.product', 'Material Name'),
         'stock_production_lot_id': fields.many2one('stock.production.lot', 'Serial Number', domain="[('product_id','=',product_id)]"),
         'sub_contract_line_ids': fields.one2many('contract.sub.line', 'contract_line_id', string='Related Products'),
@@ -96,8 +84,6 @@ class contract_line(osv.osv):
         'end_date': fields.date('End date'),
         'current_location': fields.many2one('res.partner.address', 'Current Location'),
         'delivery_location_id': fields.many2one('res.partner.address', 'Delivery Location'),
-#        'current_location': fields.function(_get_location, method=True, type='many2one',relation='stock.location', string='Current Location', store=True),
-#        'delivery_location_id': fields.many2one('stock.location', 'Delivery Location'),
         'state_id': fields.many2one('contract.line.state', 'State'),
         'note': fields.text('Note'),
         'configuration': fields.text('Configuration'),
@@ -113,8 +99,9 @@ class contract_contract(osv.osv):
         'sale_order_id': fields.many2one('sale.order', 'Sale Order'),
         'order_address_id': fields.many2one('res.partner.address', 'Order Address'),        
         'invoice_address_id': fields.many2one('res.partner.address', 'Invoice Address'),
-        'line_id': fields.many2one('contract.line', 'Contract Line'),
-        'line_ids': fields.many2many('contract.line', 'contract_line_rel', 'contract_id', 'line_id', 'Contract Lines'),
+#        'line_id': fields.many2one('contract.line', 'Contract Line'),
+#        'line_ids': fields.many2many('contract.line', 'contract_line_rel', 'contract_id', 'line_id', 'Contract Lines'),
+        'line_ids': fields.one2many('contract.line', 'contract_id','Contract Line'),
         'salesman_id': fields.many2one('res.users', 'Salesman'),
         'pre_sales_owner_id': fields.many2one('res.users', 'Pre Sales Responsible'),
         'order_date': fields.date('Date order'),
