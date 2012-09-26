@@ -59,7 +59,7 @@ class contract_sub_line(osv.osv):
         'contract_id': fields.many2one('contract.contract', 'Contract'),
         'product_id': fields.many2one('product.product', 'Product Name'),
         'qty': fields.integer('Quantity'),
-        'stock_production_lot_id': fields.many2one('stock.production.lot', 'Serial Number', domain="[('product_id','=',product_id)]"),
+        'stock_production_lot_id': fields.many2one('stock.production.lot', 'Serial Number'),
         'contract_line_id': fields.many2one('contract.line', 'Contract Line'),
         'current_location': fields.function(_get_location, method=True, type='many2one',relation='stock.location', string='Current Location', store=True),
     }
@@ -77,7 +77,7 @@ class contract_line(osv.osv):
         'contract_id': fields.many2one('contract.contract', 'Contract'),
 #        'contract_ids': fields.many2many('contract.contract', 'contract_line_rel', 'line_id', 'contract_id', 'Contract'),
         'product_id': fields.many2one('product.product', 'Material Name'),
-        'stock_production_lot_id': fields.many2one('stock.production.lot', 'Serial Number', domain="[('product_id','=',product_id)]"),
+        'stock_production_lot_id': fields.many2one('stock.production.lot', 'Serial Number'),
         'sub_contract_line_ids': fields.one2many('contract.sub.line', 'contract_line_id', string='Related Products'),
         'customer_contact_address_id': fields.many2one('res.partner.address', 'Technical contact customer'),
         'start_date': fields.date('Start date'),
