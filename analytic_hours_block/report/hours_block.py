@@ -26,7 +26,6 @@
 ##############################################################################
 
 import time
-from datetime import *
 from report import report_sxw
 
 #import xml.dom.minidom
