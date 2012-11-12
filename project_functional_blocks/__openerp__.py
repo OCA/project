@@ -27,7 +27,6 @@
     "category" : "Generic Modules/Projects & Services",
     "depends" : ["project"],
     "description": """
-
         Adds functional blocks to organize the projects tasks.
     """,
     "init_xml" : [],
