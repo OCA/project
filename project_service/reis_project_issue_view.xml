@@ -129,7 +129,7 @@
                     <field name="project_id" position="replace"/>
 
                     <!-- Search by "ref" instead of "id"; add section_id (Team) -->
-                    <field name="id" position="replace">
+                    <field name="id" position="after">
 						<field name="section_id" string="Team" widget="selection" groups="base.group_extended"/>
 				    </field>
                     <!--  GROUP BY -->
