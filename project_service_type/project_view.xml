@@ -1,0 +1,50 @@
+<terp>
+<data>
+    
+    <record model="ir.ui.view" id="view_service_type_form">
+        <field name="name">project.service_type.form</field>
+        <field name="model">project.service_type</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form string="Service type">
+                <field name="name" select="1"/>
+            </form>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="view_service_type_list">
+        <field name="name">project.service_type.list</field>
+        <field name="model">project.service_type</field>
+        <field name="type">tree</field>
+        <field name="priority" eval="6"/>
+        <field name="arch" type="xml">
+            <tree string="Service type">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+    
+    <record model="ir.actions.act_window" id="action_service_type">
+        <field name="name">Service types</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">project.service_type</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_service_type_list"/>
+    </record>
+    
+    <menuitem parent="project.menu_definitions" id="menu_service_type" action="action_service_type"/>
+    
+    <record id="edit_project" model="ir.ui.view">
+        <field name="name">project.project.form</field>
+        <field name="model">project.project</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="project.edit_project" />
+        <field name="arch" type="xml">
+            <xpath expr="/form/notebook/page/group/field[@name='warn_manager']" position="before">
+                <field name="project_service_id" widget="selection" />
+                <field name="project_type" />
+            </xpath>
+        </field>
+    </record>
+</data>
+</terp>
