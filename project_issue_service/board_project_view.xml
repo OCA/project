@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+    <record id="project.action_project_vs_remaining_hours_graph" model="ir.actions.act_window">
+        <!-- Exclude admin's projects from graph -->
+        <field name="domain">[('user_id','!=',1),('user_id','=',uid),('state','=','open')]</field>
+    </record>
+    
+    </data>
+</openerp>
+    

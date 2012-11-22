@@ -1,0 +1,3 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_project_task_cause_project_manager","project_task_cause_project_manager","model_project_task_cause","project.group_project_manager",1,1,1,1
+"access_project_task_cause_project_user","project_task_cause_project_user","model_project_task_cause","project.group_project_user",1,0,0,0

@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
-#
-#    Daniel Reis, 2011
 #    
+#    Copyright (C) 2012 Daniel Reis
+#
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
 #    published by the Free Software Foundation, either version 3 of the
@@ -19,22 +19,22 @@
 ##############################################################################
 
 from osv import fields, osv
-import reis_base as util
 
-class hr_department(osv.osv):
-    _inherit = 'hr.department'
+class project_task_cause(osv.osv):
+    _name = 'project.task.cause'
+    _description = 'Incident Cause'
+    _order = 'sequence'
     _columns = {
-        'ref': fields.char('Internal code', size=20, help='Department internal code'),
+        'name': fields.char('Cause', required=True, size=64, translate=True),
+        'description': fields.text('Description'),
+        'sequence': fields.integer('Sequence'),
+        'code': fields.char('Code', size=10),
     }
-    _order = 'ref'
-
-    def name_get(self, cr, uid, ids, context=None):
-        return util.ext_name_get(self, cr, uid, ids, '[%(ref)s] %(name)s', ['ref','name', 'parent_id'], context=context)
+    _defaults = {
+        'sequence': 10
+    }
+project_task_cause()
     
-    def name_search(self, cr, user, name='', args=None, operator='ilike', context=None, limit=100):
-        return util.ext_name_search(self, cr, user, name, args, operator, context=context, limit=limit, 
-                                keys=['ref','name'])
-    
-hr_department()
-
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
+
+

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <!--PROJECT ISSUE FORM -->
+        <record id="project_issue_form_view_dreis" model="ir.ui.view">
+            <field name="name">project_issue_form_view_dreis</field>
+            <field name="model">project.issue</field>
+            <field name="inherit_id" ref="project_issue.project_issue_form_view"/>
+            <field name="arch" type="xml">
+
+                <field name="categ_id" position="replace"/>
+                <field name="name" position="replace">
+                    <field name="name" colspan="4"/>
+                    <field name="ref"/>
+                    <field name="functional_block_id" select="1" required="1" widget="selection"/>
+                    <field name="categ_id" widget="selection" domain="[('object_id.model', '=', 'project.issue'),('parent_id','!=',None)]"/>
+                    <field name="create_uid" readonly="1"/>
+                </field>
+                <field name="project_id" position="attributes">
+                    <attribute name="colspan">4</attribute>
+                </field>
+                
+                <field name="version_id" position="attributes">
+                    <attribute name="groups">base.group_extended</attribute>
+                </field>
+
+                <!-- Partner Address: add domain -->
+                <field name="partner_id" position="replace">
+                    <field name="partner_id"  on_change="onchange_partner_id(partner_id, email_from, project_id)" required="1"/>
+                </field>
+                <field name="partner_address_id" position="replace">
+                    <field name="partner_address_id"  string="Address" required="1" 
+                           on_change="onchange_partner_address_id(partner_address_id, email_from)"
+                           domain="[('partner_id','=',partner_id)]"/>
+                </field>
+                <field name="priority" position="after">
+                    <field name="section_id" string="Service Team" groups="base.group_extended"/>
+                </field>
+
+                <!-- Create task Button -->
+                <field name="task_id" position="attributes">
+                    <attribute name="string">Current Task</attribute>
+                </field>
+                <xpath expr='//button[@name="convert_issue_task"]' position="replace">
+                    <button name="convert_issue_task" string="Create Task" icon="gtk-index" type="object" attrs="{'invisible':['|',('task_id','!=',False), ('state','in',['cancel','done'])]}"/>
+                </xpath>
+                
+                <!-- Modify existing buttons -->
+                <button name="case_cancel" position="attributes">
+                    <attribute name="states">draft,open</attribute>
+                    <!--attribute name="type">workflow</attribute-->
+                </button>
+                <button name="case_open" position="attributes">
+                    <attribute name="states">draft,pending</attribute>
+                    <!--attribute name="type">workflow</attribute-->
+                </button>
+                <button name="case_pending" position="attributes">
+                    <attribute name="states">open</attribute>
+                    <!--attribute name="type">workflow</attribute-->
+                </button>
+                <button name="case_close" position="attributes">
+                    <attribute name="states">open</attribute>
+                    <!--attribute name="type">workflow</attribute-->
+                </button>
+                <!-- button name="case_reset" position="replace"/> -->
+                
+                <xpath expr='//page[@string="Communication &amp; History"]' position="attributes">
+                    <attribute name="groups"/>
+                </xpath>
+                <!-- ###BUG https://bugs.launchpad.net/openobject-addons/+bug/944879 -->
+                <field name="email_cc" position="attributes">
+                    <attribute name="widget">email</attribute>
+                </field>
+
+                 <!-- Task History tab-->
+                 <xpath expr='//page[@string="Extra Info"]' position="before">
+                    <page string="Task History">
+                        <field name="tasks" nolabel="1" readonly="1"/>
+                    </page>
+                 </xpath>
+                
+            </field>
+        </record>
+
+        <!--PROJECT ISSUE SEARCH -->
+        <record id="view_project_issue_filter_dreis" model="ir.ui.view">
+            <field name="name">Project Issue Tracker Search</field>
+            <field name="model">project.issue</field>
+            <field name="inherit_id" ref="project_issue.view_project_issue_filter"/>
+            <field name="arch" type="xml">
+
+                   <!-- "To-Do" button relabeled to "In Progress" -->
+                   <filter name="todo" position="attributes">
+                           <attribute name="string">Open</attribute>
+                   </filter>
+                    <!--  name filter -->
+                    <field name="name" position="replace">
+                        <field name="name" string="Issue" colspan="2"
+                               filter_domain="['|','|','|','|', ('ref','ilike',self), ('project_id','ilike',self), ('partner_id','ilike',self), ('email_from','ilike',self), ('name','ilike',self)]"
+                        />
+                    </field>
+                    <!--  user_id buttons with same order as Tasks  (BUGFIX to report) -->
+                    <field name="user_id" position="replace">
+                        <field name="user_id" filter_domain="['|',('user_id','=',self),('create_uid','=',self)]" string="User">
+                            <filter domain="['|',('user_id','=',uid),('create_uid','=',uid)]"  help="My Issues" icon="terp-personal" />
+                            <filter domain="[('user_id','=',False)]" help="Unassigned Issues" icon="terp-personal-" groups="project.group_project_manager"/>
+                        </field>
+                    </field>
+                    <field name="project_id" position="replace"/>
+
+                    <!-- Search by "ref" instead of "id"; add section_id (Team) -->
+                    <field name="id" position="replace">
+                        <field name="section_id" string="Team" widget="selection" groups="base.group_extended"/>
+                    </field>
+                    <!--  GROUP BY -->
+                    <filter string="Partner" position="after">
+                        <filter string="Team" icon="STOCK_SELECT_COLOR" domain="[]" context="{'group_by':'section_id'}"/>
+                    </filter>
+            </field>
+        </record>
+
+        <!--PROJECT ISSUE TREE -->
+        <record model="ir.ui.view" id="project_issue_tree_view_reis">
+            <field name="name">Project Issue Tracker Tree</field>
+            <field name="model">project.issue</field>
+            <field name="inherit_id" ref="project_issue.project_issue_tree_view"/>
+            <field name="arch" type="xml">
+              <data>
+                <!-- Colors like Task Tree -->
+                <!-- TODO: red for surpassed dealines  -->
+                <tree position="attributes">
+                      <attribute name="colors">grey:state in ('cancel','done');blue:state == 'pending'</attribute>
+                </tree>
+                <!-- Internal ID, Version and Stage visible only in Extended mode -->
+                <field name="id" position="attributes"><attribute name="invisible">1</attribute></field>
+                <field name="type_id" position="attributes"><attribute name="groups">base.group_extended</attribute></field>
+                <button name="prev_type" position="attributes"><attribute name="groups">base.group_extended</attribute></button>
+                <button name="next_type" position="attributes"><attribute name="groups">base.group_extended</attribute></button>
+                <field name="version_id" position="attributes"><attribute name="groups">base.group_extended</attribute></field>
+                <field name="categ_id" position="attributes"><attribute name="groups">base.group_extended</attribute></field>
+                <!-- Ref and Category visible after issue name -->
+                <field name="id" position="before">
+                    <field name="ref"/>
+                </field>
+                <field name="user_id" position="after">
+                    <field name="section_id" groups="base.group_extended"/>
+                    <field name="create_uid"/>
+                </field>
+                <!-- State buttons equal to Task Tree -->
+                <button name="case_cancel" position="replace"/>
+                <button name="case_close" position="replace"/>
+                <button name="case_pending" position="replace"/>
+                <button name="case_escalate" position="replace"/>
+                <button name="case_reset" position="replace"/>
+                <button name="case_open" position="replace">
+                    <button name="convert_issue_task_tree" string="Create Task" icon="gtk-index" type="object" 
+                            attrs="{'invisible':['|',('task_id','!=',False), ('state','in',['cancel','done'])]}"/>
+                    <button name="case_open" string="Open" states="draft,pending" type="object" 
+                            icon="gtk-media-play" help="Moves to state In Progress" groups="base.group_extended"/>
+                    <button name="case_close" string="Done" states="open" type="object"  
+                            icon="terp-dialog-close"/>
+                </button>
+
+              </data>
+            </field>
+        </record>
+
+    <!-- ISSUE KANBAN VIEW: moving from first to last position-->
+    <record model="ir.actions.act_window.view" id="project_issue.action_crm_tag_kanban_view0">
+        <field name="sequence" eval="10"/>
+    </record>
+    <!-- -->
+
+    </data>
+</openerp>
+
