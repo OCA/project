@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
-#
-#    Daniel Reis
-#    2012
+#    
+#    Copyright (C) 2012 Daniel Reis
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -19,27 +18,28 @@
 #
 ##############################################################################
 
-
 {
-    'name': 'Email default template for Teams',
-    'version': '6.1-1',
+    'name': 'CRM Team default template for new e-mails',
+    'version': '1',
     "category": "Tools",
     'description': """\
-New messages, created from the "Communication & History" tab, use a default template.
-This default is defined by at (Sales/Service) Team level.
+When a a new message is created, from the "Communication & History" tab, a blank message is displayed.
+This module allows the definition of an e-mail template to use as default, so you can include company stationery
+and even personalize with data from commonly used fields.
+Definitions are made at: CRM -> Configuration -> Sales -> Sales Teams.
+
+Known issues:
+- It will only work correctly for the model for which the e-mail template was created.
 """,
     'author': 'Daniel Reis',
     'website': 'daniel.reis@securitas.pt',
     'depends': [
-        'crm', #depends on Sales Teams
-        'email_template', #extends the Compose Mail wizard
+        'crm',              #depends on Sales Teams
+        'email_template',   #extends the Compose Mail wizard
     ],
-    'init_xml': [],
     'update_xml': [
         'crm_view.xml',
     ],
-    'demo_xml': [],
-    'test': [],
     'installable': True,
     'application': False,
 }
