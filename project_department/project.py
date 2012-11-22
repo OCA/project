@@ -20,16 +20,22 @@
 
 from osv import fields, osv
 
-    
-class project_issue(osv.osv):
-    _inherit = 'project.issue'
+class project(osv.osv):
+    _inherit = 'project.project'
     _columns = {
-        'department_id': fields.many2one('hr.department', 'Department'),
+        'department_id': fields.many2one('hr.department', 'Department', help="Organization unit owner of the project"),
     }
-    
+project()
+
+class task(osv.osv):
+    _inherit = "project.task"
+    _columns = {
+        'department_id': fields.related('project_id', 'department_id', string = 'Department', type="many2one", relation="hr.department", store=True, select=True),
+    }
+
     def on_change_project(self, cr, uid, ids, proj_id=False, context=None):
         """When Project is changed: copy it's Department to the issue."""
-        res = super(project_issue, self).on_change_project(cr, uid, ids, proj_id, context = context)
+        res = super(task, self).on_change_project(cr, uid, ids, proj_id, context = context)
         data = res.get('value', {})
         if proj_id:
             proj_obj = self.pool.get('project.project').browse(cr, uid, proj_id, context)
@@ -37,8 +43,7 @@ class project_issue(osv.osv):
                 data.update( {'department_id': proj_obj.department_id.id} )
         return {'value': data}
 
-project_issue()
-
+task()
     
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
 

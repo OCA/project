@@ -20,25 +20,20 @@
 
 from osv import fields, osv
 
-    
-class project_issue(osv.osv):
-    _inherit = 'project.issue'
+class project_task_cause(osv.osv):
+    _name = 'project.task.cause'
+    _description = 'Incident Cause'
+    _order = 'sequence'
     _columns = {
-        'department_id': fields.many2one('hr.department', 'Department'),
+        'name': fields.char('Cause', required=True, size=64, translate=True),
+        'description': fields.text('Description'),
+        'sequence': fields.integer('Sequence'),
+        'code': fields.char('Code', size=10),
     }
-    
-    def on_change_project(self, cr, uid, ids, proj_id=False, context=None):
-        """When Project is changed: copy it's Department to the issue."""
-        res = super(project_issue, self).on_change_project(cr, uid, ids, proj_id, context = context)
-        data = res.get('value', {})
-        if proj_id:
-            proj_obj = self.pool.get('project.project').browse(cr, uid, proj_id, context)
-            if proj_obj.department_id:
-                data.update( {'department_id': proj_obj.department_id.id} )
-        return {'value': data}
-
-project_issue()
-
+    _defaults = {
+        'sequence': 10
+    }
+project_task_cause()
     
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
 

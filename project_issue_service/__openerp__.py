@@ -17,21 +17,37 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
+
 {
-    'name': 'Project Issue with Department',
-    'version': '1',
+    'name': 'Project Issue and Task integration',
+    'version': '1.0',
     "category": "Project Management",
     'description': """\
-Add Department field to Project Issues.
+Integrate Issues and Tasks in a common workflow, as is common in service management scenarios.
+
+1. End user creates new Issue
+2. Service Desk User reviews the new Issue: 
+    If a technical person intervention is needed, creates a Task for it.
+    If not, it's closed without the need for an intervention Task.
+3. Service Team User schedules the new Task
+4. Service Team User completes the Task. The issue is automatically closed.
+   
 """,
     'author': 'Daniel Reis',
     'website': 'daniel.reis@securitas.pt',
-    'depends': ['project_issue', 'hr'], 
+    'depends': [
+        'project', 'project_functional_blocks',
+        'project_issue', 'project_issue_department',
+        'crm_categ_hierarchy', 
+        'crm', 'crm_routing',
+        ],
     'update_xml': [
         'project_issue_view.xml',
-        'security/ir.model.access.csv',
-    ],
+        'project_task_view.xml',
+        'board_project_view.xml',
+        #'project_issue_workflow.xml', #<= not using it, to avoid migrating former Issues to the new workflow
+        ],
     'installable': True,
-    'application': False,
+    'application': True,
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

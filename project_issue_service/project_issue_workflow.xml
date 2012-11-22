@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <record model="workflow" id="wkf_project_issue">
+            <field name="name">Project Issue Workflow</field>
+            <field name="osv">project.issue</field>
+            <field name="on_create">True</field>
+        </record>
+
+        <record model="workflow.activity" id="act_draft">
+            <field name="wkf_id" ref="wkf_project_issue"/>
+            <field name="flow_start">True</field>
+            <field name="name">draft</field>
+            <field name="kind">function</field>
+            <field name="action">write({'state': 'draft'})
+do_routing()</field>
+        </record>
+
+        <record model="workflow.activity" id="act_open">
+            <field name="wkf_id" ref="wkf_project_issue"/>
+            <field name="name">open</field>
+            <field name="kind">function</field>
+            <field name="action">write({'state': 'open'})
+do_routing()</field>
+        </record>
+
+        <record model="workflow.activity" id="act_pending">
+            <field name="wkf_id" ref="wkf_project_issue"/>
+            <field name="name">pending</field>
+            <field name="kind">function</field>
+            <field name="action">write({'state': 'pending'})</field>
+        </record>
+
+        <record model="workflow.activity" id="act_done">
+            <field name="wkf_id" ref="wkf_project_issue"/>
+            <field name="name">done</field>
+            <field name="kind">function</field>
+            <field name="action">write({'state': 'done'})</field>
+            <field name="flow_stop">True</field>
+        </record>
+
+        <record model="workflow.activity" id="act_cancel">
+            <field name="wkf_id" ref="wkf_project_issue"/>
+            <field name="name">cancel</field>
+            <field name="kind">function</field>
+            <field name="action">write({'state': 'cancel'})</field>
+            <field name="flow_stop">True</field>
+        </record>
+
+
+<!-- == TRANSITIONS ==  -->
+        <!-- DRAFT -->
+        <record model="workflow.transition" id="t_draft2cancel">
+            <field name="act_from" ref="act_draft"/>
+            <field name="act_to" ref="act_cancel"/>
+            <field name="signal">case_cancel</field>
+        </record>
+        <record model="workflow.transition" id="t_draft2open">
+            <field name="act_from" ref="act_draft"/>
+            <field name="act_to" ref="act_open"/>
+            <field name="signal">case_open</field>
+        </record>
+
+        <!-- OPEN -->
+        <record model="workflow.transition" id="t_open2done">
+            <field name="act_from" ref="act_open"/>
+            <field name="act_to" ref="act_done"/>
+            <field name="signal">case_close</field>
+        </record>
+        <record model="workflow.transition" id="t_open2pending">
+            <field name="act_from" ref="act_open"/>
+            <field name="act_to" ref="act_pending"/>
+            <field name="signal">case_pending</field>
+        </record>
+        <record model="workflow.transition" id="t_open2cancel">
+            <field name="act_from" ref="act_open"/>
+            <field name="act_to" ref="act_cancel"/>
+            <field name="signal">case_cancel</field>
+        </record>
+
+        <!-- PENDING -->
+        <record model="workflow.transition" id="t_pending2open">
+            <field name="act_from" ref="act_pending"/>
+            <field name="act_to" ref="act_open"/>
+            <field name="signal">case_open</field>
+        </record>
+
+        <!-- not valid
+        <record model="workflow.transition" id="t_done2draft">
+            <field name="act_from" ref="act_done"/>
+            <field name="act_to" ref="act_draft"/>
+            <field name="signal">case_reset</field>
+        </record>
+        <record model="workflow.transition" id="t_cancel2draft">
+            <field name="act_from" ref="act_cancel"/>
+            <field name="act_to" ref="act_draft"/>
+            <field name="signal">case_reset</field>
+        </record>
+        -->
+
+    </data>
+</openerp>
+
+
+
+
+
+

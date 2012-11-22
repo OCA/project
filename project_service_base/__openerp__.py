@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
-#
-#    Daniel Reis
-#    2012
+#    
+#    Copyright (C) 2012 Daniel Reis
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -19,34 +18,28 @@
 #
 ##############################################################################
 
-
 {
     'name': 'Project & Service - base settings and security enhancements',
-    'version': '6.1.1',
+    'version': '1.0',
     "category": "Project Management",
     'description': """\
 "Project" module renamed to "Project & Service".
-Security levels:
-    Project Basic User (new group): can create Issues and view Tasks.
-    Project User: can edit Issues and create & edit Tasks.
-    Project manager: can create and edit Projects.
+
+Standard security groups:
+    User:     creates issues; reads tasks and projects; sees only own project's tasks.
+    Manager:  writes issues, tasks and projects; can see all projects.
+
+New security groups:
+    Team Member: writes issues and tasks; reads projects; sees only own project's tasks.
 """,
     'author': 'Daniel Reis',
     'website': 'daniel.reis@securitas.pt',
-    'depends': [
-        'account', 
-        'crm', 
-        'project_issue', 
-        'project_timesheet',
-    ],
+    'depends': ['account', 'crm'],
     'init_xml': [],
     'update_xml': [
         'project_view.xml',
         'security/project_security.xml',
-        'security/ir.model.access.csv',
     ],
-    'demo_xml': [],
-    'test': [],
     'installable': True,
     'application': False,
 }

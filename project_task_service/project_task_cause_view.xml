@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Task types -->
+        <record id="task_cause_edit" model="ir.ui.view">
+            <field name="name">project.task.cause.form</field>
+            <field name="model">project.task.cause</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Task Incident Causes">
+                    <field name="name"/>
+                    <field name="sequence"/>
+                    <field name="code"/>
+                    <separator string="Description" colspan="4"/>
+                    <field colspan="4" name="description" nolabel="1"/>
+                </form>
+            </field>
+        </record>
+
+        <record id="task_cause_tree" model="ir.ui.view">
+            <field name="name">project.task.cause.tree</field>
+            <field name="model">project.cause.type</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Task Incident Causes">
+                    <field name="sequence"/>
+                    <field name="code"/>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="open_task_cause_form" model="ir.actions.act_window">
+            <field name="name">Causes</field>
+            <field name="res_model">project.task.cause</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="task_cause_tree"/>
+        </record>
+
+        <menuitem action="open_task_cause_form" id="menu_task_cause_view" parent="project.menu_project_config_project" sequence="3"/>
+
+    </data>
+</openerp>

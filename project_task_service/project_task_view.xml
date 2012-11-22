@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    
+        <!-- Task type CODE -->
+        <record id="task_type_edit_dreis" model="ir.ui.view">
+            <field name="name">project.task.type.form.dreis</field>
+            <field name="model">project.task.type</field>
+            <field name="inherit_id" ref="project.task_type_edit"/>
+            <field name="arch" type="xml">
+                <field name="sequence" position="after">
+                    <field name="code"/>
+                </field>
+            </field>
+        </record>
+
+        <!-- Task FORM -->
+        <record id="view_project_task_form_dreis" model="ir.ui.view">
+            <field name="name">project.task.form.dreis</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <field name="progress" position="after">
+                    <field name="ref" string="Service Order Id"/>
+                </field>
+                <!-- State allowed transitions: 
+                      draft   -> open, cancel
+                      open    -> draft, pending, close 
+                      pending -> open
+                      close   -> draft ("reset"
+                -->
+                <button name="do_cancel" position="attributes">
+                    <attribute name="states">draft, open</attribute>
+                </button>
+                <button name="do_draft" position="attributes">
+                    <attribute name="states">close,cancel</attribute>
+                </button>
+                <button name="do_pending" position="attributes">
+                    <attribute name="states">open</attribute>
+                </button>
+                <button name="do_open" position="attributes">
+                    <attribute name="states">draft,pending</attribute>
+                </button>
+                <button name="action_close" position="attributes">
+                    <attribute name="states">open</attribute>
+                </button>
+
+                <field name="type_id" position="replace"/>
+                <button name="prev_type" position="replace"/>
+                <button name="next_type" position="replace"/>
+
+                <field name="work_ids" position="replace">
+                    <!-- Task Time spent -->
+                    <field colspan="4" name="work_ids" nolabel="1" 
+                           attrs="{'readonly':[('state','in',['done','draft'])]}">
+                        <tree string="Task Work" editable="top">
+                            <field name="date" string="Start Datetime"/>
+                            <field name="hours" widget="float_time" sum="Spent Hours" string="Spent Hours (hh:mm)"/>
+                            <field name="user_id"/>
+                            <field name="name" string="Comments"/>
+                        </tree>
+                    </field>
+                    <!-- Task Work Description -->
+                    <group col="4" colspan="4" attrs="{'invisible':[('state','in',['draft','cancel'])]}">
+                        <separator string="Work Description" colspan="4"/>
+                        <field name="report_desc" nolabel="1" colspan="4"/>
+                        <field name="reason_id" widget="selection"/>
+                        <group col="4" colspan="2">
+                            <field name="type_id" widget="selection" domain="[('code','!=',None)]"/>
+                            <button name="prev_type" string="Previous" type="object" icon="gtk-go-back" help="Change to Previous Stage"/>
+                            <button name="next_type" string="Next" type="object" icon="gtk-go-forward" help="Change to Next Stage"/>
+                        </group>
+                        <label string="Issues to be adressed" colspan="4"/>
+                        <field name="todo_desc" nolabel="1" colspan="4"/>
+                    </group>
+                </field>
+            </field>
+        </record>
+        
+        <!-- TASK TREE -->
+        <record id="view_project_task_tree_dreis" model="ir.ui.view">
+            <field name="name">project.task.tree.dreis</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_tree2"/>
+            <field name="arch" type="xml">
+                <!-- States: OPEN:draft,pending; CLOSE:open,pending -->
+                <button name="do_open" position="attributes">
+                    <attribute name="states">draft,pending</attribute>
+                </button>
+                <button name="action_close" position="attributes">
+                    <attribute name="states">open</attribute>
+                </button>
+            </field>
+        </record>
+
+        <!-- TASK SEARCH -->
+        <record id="view_project_task_search_dreis" model="ir.ui.view">
+            <field name="name">project.task.search.dreis</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_search_form"/>
+            <field name="arch" type="xml">
+                <field name="project_id" position="replace">
+                        <field name="project_id"
+                               filter_domain="['|','|', ('project_id','ilike',self), ('partner_id','ilike',self), ('name','ilike',self)]"/>
+                </field>
+            </field>
+        </record>
+
+        <!--Task Calendar: project_id before name, uses date_start, not date_deadline-->
+        <record id="view_task_calendar_reis1" model="ir.ui.view">
+            <field name="name">project.task.calendar.reis</field>
+            <field name="model">project.task</field>
+            <field name="type">calendar</field>
+            <field eval="1" name="priority"/>
+            <field name="arch" type="xml">
+                <calendar color="user_id" date_start="date_start" date_delay="planned_hours" string="Tasks">
+                    <field name="project_id"/>
+                    <field name="name"/>
+                </calendar>
+            </field>
+        </record>
+        
+        <!-- TASK MENU ACTION:
+            * No filter buttons activated by default
+            * User's "Department_id" selected by default
+            * Kanban view sequence moved to last   
+        -->
+        <record id="project.action_view_task" model="ir.actions.act_window">
+            <field name="name">Tasks</field>
+            <field name="res_model">project.task</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar,gantt,graph,kanban</field>
+            <field eval="False" name="filter"/>
+            <field name="view_id" eval="False"/>
+            <field name="context">{"search_default_project_id": project_id, "search_default_department_id": department_id}</field>
+            <field name="search_view_id" ref="project.view_task_search_form"/>
+            <field name="help">A task represents a work that has to be done. Each user works in his own list of tasks where he can record his task work in hours. He can work and close the task itself or delegate it to another user. If you delegate a task to another user, you get a new task in pending state, which will be reopened when you have to review the work achieved. If you install the project_timesheet module, task work can be invoiced based on the project configuration. With the project_mrp module, sales orders can create tasks automatically when they are confirmed.</field>
+        </record>
+        <record id="project.open_view_task_list_kanban" model="ir.actions.act_window.view">
+            <field name="sequence" eval="10"/>
+        </record>
+
+        <!--### REPORT 
+        <report auto="False" id="project_task_webkitreport" 
+        model="project.task" 
+        name="project_task_webkitreport"  
+        file="project_service/report/report_project_task.mako" 
+        string="Print Task Report" report_type="webkit" />
+        -->
+
+        </data>
+</openerp>

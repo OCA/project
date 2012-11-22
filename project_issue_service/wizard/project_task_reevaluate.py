@@ -17,29 +17,22 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-
 from osv import fields, osv
+from tools.translate import _
 
-    
-class project_issue(osv.osv):
-    _inherit = 'project.issue'
-    _columns = {
-        'department_id': fields.many2one('hr.department', 'Department'),
-    }
-    
-    def on_change_project(self, cr, uid, ids, proj_id=False, context=None):
-        """When Project is changed: copy it's Department to the issue."""
-        res = super(project_issue, self).on_change_project(cr, uid, ids, proj_id, context = context)
-        data = res.get('value', {})
-        if proj_id:
-            proj_obj = self.pool.get('project.project').browse(cr, uid, proj_id, context)
-            if proj_obj.department_id:
-                data.update( {'department_id': proj_obj.department_id.id} )
-        return {'value': data}
+class project_task_reevaluate(osv.osv_memory):
+    _inherit = 'project.task.reevaluate'
 
-project_issue()
+    def compute_hours(self, cr, uid, ids, context=None):
+        """
+        Reevaluate relinks the Issue's current Task
+        """
+        task_pool  = self.pool.get('project.task')
+        issue_pool = self.pool.get('project.issue')
+        for o in task_pool.browse(cr, uid, context.get('active_ids', list()), context=context):
+            if o.issue_id and not o.issue_id.task_id:
+                issue_pool.write(cr, uid, [o.issue_id.id], {'task_id': o.id}, context=context)  
+        return super(project_task_reevaluate, self).compute_hours(cr, uid, ids, context)
+project_task_reevaluate()
 
-    
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
-
-

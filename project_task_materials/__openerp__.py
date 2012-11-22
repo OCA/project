@@ -18,28 +18,19 @@
 #
 ##############################################################################
 
-from osv import fields, osv
-
-    
-class project_issue(osv.osv):
-    _inherit = 'project.issue'
-    _columns = {
-        'department_id': fields.many2one('hr.department', 'Department'),
-    }
-    
-    def on_change_project(self, cr, uid, ids, proj_id=False, context=None):
-        """When Project is changed: copy it's Department to the issue."""
-        res = super(project_issue, self).on_change_project(cr, uid, ids, proj_id, context = context)
-        data = res.get('value', {})
-        if proj_id:
-            proj_obj = self.pool.get('project.project').browse(cr, uid, proj_id, context)
-            if proj_obj.department_id:
-                data.update( {'department_id': proj_obj.department_id.id} )
-        return {'value': data}
-
-project_issue()
-
-    
+{
+    'name': 'Project task materials',
+    'version': '1',
+    "category": "Project Management",
+    'author': 'Daniel Reis',
+    'website': 'daniel.reis@securitas.pt',
+    'depends': ['project', 'account'],
+    'update_xml': [
+        'project_view.xml',
+        'project_materials_data.xml',
+        'security/ir.model.access.csv',
+    ],
+    'installable': True,
+    'application': False,
+}
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
-
-
