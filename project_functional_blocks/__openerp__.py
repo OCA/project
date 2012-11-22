@@ -3,7 +3,6 @@
 #
 #    OpenERP, Open Source Management Solution
 #    Copyright (C) 2010 Akretion LDTA (<http://www.akretion.com>).
-#    
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -21,23 +20,20 @@
 ##############################################################################
 {
     "name" : "Project requiring functional blocks",
-    "version": "1.0",
+    "version": "1.1dr",
     "author" : "Akretion",
     "website" : "http://www.openerp.com",
-    "category" : "Generic Modules/Projects & Services",
+    "category" : "project Management",
     "depends" : ["project"],
-    "description": """
-        Adds functional blocks to organize the projects tasks.
+    "description": """\
+Adds functional blocks to organize the projects tasks.
+(fork from lp:~akretion-team/+junk/advanced-project-management)
     """,
-    "init_xml" : [],
     "demo_xml" : [],
-    "test" : [],
     "update_xml": [
             "security/ir.model.access.csv",
             "project_view.xml",
             ],
     'installable': True,
-    'active': False,
-    'certificate': None,
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
