@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
-#
-#    Daniel Reis, 2011
 #    
+#    Copyright (C) 2012 Daniel Reis
+#
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
 #    published by the Free Software Foundation, either version 3 of the
@@ -28,11 +28,9 @@ class project_issue(osv.osv):
     }
     
     def on_change_project(self, cr, uid, ids, proj_id=False, context=None):
-        """When changing the Issue's Project:
-            - the Department is copied from the Project
-        """
-        super_res = super(project_issue, self).on_change_project(cr, uid, ids, proj_id, context = context)
-        data = super_res.get('value', {})
+        """When Project is changed: copy it's Department to the issue."""
+        res = super(project_issue, self).on_change_project(cr, uid, ids, proj_id, context = context)
+        data = res.get('value', {})
         if proj_id:
             proj_obj = self.pool.get('project.project').browse(cr, uid, proj_id, context)
             if proj_obj.department_id:

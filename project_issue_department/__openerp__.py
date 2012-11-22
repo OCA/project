@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
-#
-#    Daniel Reis
-#    2012
+#    
+#    Copyright (C) 2012 Daniel Reis
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -18,28 +17,20 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-
-
 {
     'name': 'Project Issue with Department',
-    'version': '6.1.1',
+    'version': '1',
     "category": "Project Management",
     'description': """\
 Add Department field to Project Issues.
 """,
     'author': 'Daniel Reis',
     'website': 'daniel.reis@securitas.pt',
-    'depends': [
-        'project_issue',
-        #'project_department', #from lp:c2c-addons/6.1
-    ],
-    'init_xml': [
-    ],
+    'depends': ['project_issue', 'hr'], 
     'update_xml': [
         'project_issue_view.xml',
+        'security/ir.model.access.csv',
     ],
-    'demo_xml': [],
-    'test': [],
     'installable': True,
     'application': False,
 }
