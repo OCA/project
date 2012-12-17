@@ -40,33 +40,45 @@
             <field name="name">account.hours.block.form</field>
             <field name="model">account.hours.block</field>
             <field name="arch" type="xml">
-                <form string="Invoice">
-                    <field name="type" />
-                    <field name="invoice_id" />
-                    <field name="last_action_date" />
-                    <field name="close_date" />
-                    <group col="6" colspan="4">
-                        <separator colspan="6" string="Hours Quantity / Amount"/>
+                <form string="Hours Blocks" version="7.0">
+                <sheet>
+                    <h1>
+                      <field name="invoice_id" placeholder="Choose an invoice..."/>
+                      <label for="type" string="Based on:" class="oe_inline"/>
+                      <field name="type" class="oe_inline"/>
+                    </h1>
+
+                    <group>
+                        <field name="last_action_date" />
+                        <field name="close_date" />
+                    </group>
+
+                    <group>
+                        <separator colspan="4" string="Hours Quantity / Amount"/>
                         <field name="amount_hours_block" string="Bought"/>
                         <field name="amount_hours_block_done" string="Used"/>
                         <field name="amount_hours_block_delta" string="Difference"/>
                     </group>
-                    <separator colspan="4" string="Invoice's related information"/>
-                    <field name="date_invoice"/>
-                    <field name="name"/>
-                    <field name="number"/>
-                    <field name="partner_id" groups="base.group_user"/>
-                    <field name="user_id"/>
-                    <field name="company_id" groups="base.group_multi_company" widget="selection"/>
 
-                    <field name="journal_id" invisible="1"/>
-                    <field name="period_id" invisible="1" groups="account.group_account_user"/>
+                    <group>
+                        <separator colspan="4" string="Invoice's related information"/>
+                        <field name="date_invoice"/>
+                        <field name="name"/>
+                        <field name="number"/>
+                        <field name="partner_id" groups="base.group_user"/>
+                        <field name="user_id"/>
+                        <field name="company_id" groups="base.group_multi_company" widget="selection"/>
 
-                    <field name="currency_id"/>
-                    <newline/>
-                    <field name="residual" sum="Residual Amount"/>
-                    <field name="amount_total" sum="Total Amount"/>
-                    <field name="state"/>
+                        <field name="journal_id" invisible="1"/>
+                        <field name="period_id" invisible="1" groups="account.group_account_user"/>
+
+                        <field name="currency_id"/>
+                        <newline/>
+                        <field name="residual" sum="Residual Amount"/>
+                        <field name="amount_total" sum="Total Amount"/>
+                        <field name="state"/>
+                    </group>
+                </sheet>
                 </form>
             </field>
         </record>
