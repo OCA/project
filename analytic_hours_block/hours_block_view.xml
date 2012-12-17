@@ -2,13 +2,12 @@
 <openerp>
     <data>
 
-        #---------------------------------------------------------------------
-        # Hours block search form
-        #---------------------------------------------------------------------
+        <!--
+        Hours block search form
+        -->
         <record id="view_account_invoice_filter" model="ir.ui.view">
             <field name="name">account.hours.block.select</field>
             <field name="model">account.hours.block</field>
-            <field name="type">search</field>
             <field name="arch" type="xml">
                 <search string="Search Invoice">
                    <group col="7" colspan="4">
@@ -33,14 +32,13 @@
                </search>
             </field>
         </record>
-        
-        #------------------------------------------------------------------------
-        # Hours Block View
-        #------------------------------------------------------------------------
+
+        <!--
+        Hours Block View
+        -->
         <record id="hours_block_invoice_form" model="ir.ui.view">
             <field name="name">account.hours.block.form</field>
             <field name="model">account.hours.block</field>
-            <field name="type">form</field>
             <field name="arch" type="xml">
                 <form string="Invoice">
                     <field name="type" />
@@ -60,10 +58,10 @@
                     <field name="partner_id" groups="base.group_user"/>
                     <field name="user_id"/>
                     <field name="company_id" groups="base.group_multi_company" widget="selection"/>
-                    
+
                     <field name="journal_id" invisible="1"/>
                     <field name="period_id" invisible="1" groups="account.group_account_user"/>
-                    
+
                     <field name="currency_id"/>
                     <newline/>
                     <field name="residual" sum="Residual Amount"/>
@@ -72,23 +70,22 @@
                 </form>
             </field>
         </record>
-        
+
         <record model="ir.ui.view" id="invoice_tree_hour_block">
             <field name="name">account.hours.block.tree</field>
             <field name="model">account.hours.block</field>
-            <field name="type">tree</field>
             <field name="arch" type="xml">
                 <tree colors="blue:state in ('draft');black:state in ('proforma','proforma2','open');gray:state in ('cancel')" string="Invoice">
                     <field name="date_invoice"/>
                     <field name="partner_id" groups="base.group_user"/>
                     <field name="name"/>
-                    
+
                     <field name="amount_hours_block" sum="Quantity of hours bought"/>
                     <field name="amount_hours_block_done" sum="Quantity of hours used" />
                     <field name="amount_hours_block_delta" sum="Quantity of hours difference"/>
                     <field name="last_action_date" />
                     <field name="close_date" />
-                    
+
                     <field name="journal_id" invisible="1"/>
                     <field name="period_id" invisible="1" groups="account.group_account_user"/>
                     <field name="company_id" groups="base.group_multi_company" widget="selection"/>
@@ -100,21 +97,20 @@
                 </tree>
             </field>
         </record>
-    
-    
-        #---------------------------------------------------------------------------------------------------------
-        #  Add related act_window from partner and Hours Block
-        #---------------------------------------------------------------------------------------------------------
+
+
+        <!--
+          Add related act_window from partner and Hours Block
+        -->
         <act_window name="All blocks hours"
                 domain="[('partner_id', '=', active_id)]"
                 res_model="account.hours.block"
                 src_model="res.partner"
                 id="act_block_hour_from_partner"/>
-    
 
-        #---------------------------------------------------------------------------------------------------------
-        #   Link to invoice on hours block view
-        #---------------------------------------------------------------------------------------------------------
+        <!--
+          Link to invoice on hours block view
+        -->
         <act_window
             domain="[('account_hours_block_ids', '=', active_id)]"
             id="act_invoice_from_hours_block"
@@ -124,9 +120,9 @@
             view_mode="tree,form"
             view_type="form"/>
 
-        #---------------------------------------------------------------------------------------------------------
-        #   Link to analytic lines on hours block view
-        #---------------------------------------------------------------------------------------------------------
+        <!--
+          Link to analytic lines on hours block view
+        -->
         <act_window
             domain="[('invoice_id.account_hours_block_ids', '=', active_id)]"
             id="act_analytic_lines_from_hours_block"
@@ -136,9 +132,9 @@
             view_mode="tree,form"
             view_type="form"/>
 
-        #---------------------------------------------------------------------------------------------------------
-        #   Link to hours block on invoice view
-        #---------------------------------------------------------------------------------------------------------
+        <!--
+          Link to hours block on invoice view
+        -->
         <act_window
             domain="[('invoice_id', '=', active_id)]"
             id="act_hours_block_from_invoice"
@@ -147,7 +143,6 @@
             src_model="account.invoice"
             view_mode="tree,form,calendar,graph"
             view_type="form"/>
-
 
     </data>
 </openerp>
