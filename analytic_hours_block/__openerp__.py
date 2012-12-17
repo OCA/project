@@ -20,31 +20,35 @@
 ##############################################################################
 
 {
-    "name" : "Project Hours Blocks Management",
-    "description" : """
+    "name": "Project Hours Blocks Management",
+    "description": """
+Project Hours Blocks Management
+===============================
 
-This module allows you to handle hours blocks, to follow for example the user support contracts. 
-This means, you sell a product of type "hours block" then you input the spent hours on the hours block and 
+This module allows you to handle hours blocks,
+to follow for example the user support contracts.
+This means, you sell a product of type "hours block"
+then you input the spent hours on the hours block and
 you can track and follow how much has been used.
 
  """,
-    "version" : "1.2",
-    "author" : "Camptocamp",
-    "category" : "Generic Modules/Projects & Services",
+    "version": "1.3",
+    "author": "Camptocamp",
+    "license": 'AGPL-3',
+    "category": "Generic Modules/Projects & Services",
     "website": "http://www.camptocamp.com",
-    "depends" : [
-                 "account",
-                 "hr_timesheet_invoice",
-                 "analytic"
-                ],
-    "init_xml" : [],
-    "update_xml" : [
-                    "hours_block_view.xml",
-                    "hours_block_menu.xml",
-                    "report.xml",
-                    "security/hours_block_security.xml",
-                    "security/ir.model.access.csv",
-                   ],
+    "depends": [
+        "account",
+        "hr_timesheet_invoice",
+        "analytic"
+        ],
+    "data": [
+        "hours_block_view.xml",
+        "hours_block_menu.xml",
+        "report.xml",
+        "security/hours_block_security.xml",
+        "security/ir.model.access.csv",
+        ],
     "active": False,
     "installable": True
 }

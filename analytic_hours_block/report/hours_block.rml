@@ -184,7 +184,7 @@
               <para style="P12a">Invoice Date : </para>
             </td>
             <td>
-              <para style="P2">[[ o.date_invoice and format_date(o.date_invoice) or '' ]]</para>
+              <para style="P2">[[ o.date_invoice and formatLang(o.date_invoice, date=True) or '' ]]</para>
             </td>
         </tr>
         <tr>
@@ -243,7 +243,7 @@
        <tr>
            [[ repeatIn(analytic_lines(o),'l') ]]
          <td>
-           <para style="P2">[[ l.date and format_date(l.date) or '' ]]</para>
+           <para style="P2">[[ l.date and formatLang(l.date, date=True) or '' ]]</para>
          </td>
          <td>
            <para style="P2">[[ l.name or '' ]]</para>

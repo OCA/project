@@ -20,31 +20,26 @@
 ##############################################################################
 
 import time
-from report import report_sxw
+from openerp.report import report_sxw
 
 
 class account_hours_block(report_sxw.rml_parse):
     def __init__(self, cr, uid, name, context=None):
-        super(account_hours_block, self).__init__(cr, uid, name, context)
+        super(account_hours_block, self).__init__(cr, uid, name, context=context)
         self.localcontext.update({
             'time': time,
-            'format_date': self._get_and_change_date_format_for_swiss,
             'analytic_lines': self._get_analytic_lines,
         })
         self.context = context
 
     def _get_analytic_lines(self, hours_block):
         al_pool = self.pool.get('account.analytic.line')
-        al_ids = al_pool.search(self.cr, self.uid,
-                               [['invoice_id', '=', hours_block.invoice_id.id]],
-                               order='date desc')
-        res = al_pool.browse(self.cr, self.uid, al_ids)
-        return res
-
-    def _get_and_change_date_format_for_swiss(self, date_to_format):
-        date_formatted = ''
-        if date_to_format:
-            date_formatted = strptime(date_to_format, '%Y-%m-%d').strftime('%d.%m.%Y')
-        return date_formatted
+        al_ids = al_pool.search(
+                self.cr,
+                self.uid,
+                [('invoice_id', '=', hours_block.invoice_id.id)],
+                order='date desc',
+                context=self.context)
+        return al_pool.browse(self.cr, self.uid, al_ids, context=self.context)
 
 report_sxw.report_sxw('report.account.hours.block', 'account.hours.block', 'addons/analytic_hours_block/report/hours_block.rml', parser=account_hours_block)
