@@ -10,13 +10,13 @@
                <drawString x="17.7cm" y="28.1cm">Maintenance And Support Summary</drawString>
 
                <setFont name="Helvetica" size="9"/>
-               <drawString x="1.0cm" y="2cm"> [[ time.strftime("%m-%d-%y %H:%M", time.localtime()) ]]</drawString>
+               <drawString x="1.0cm" y="2cm"> [[ formatLang(time.strftime(date_format), date=True) ]]</drawString>
                <drawString x="17.7cm" y="2cm">Page <pageNumber/></drawString>
 
                <lineMode width="0.7"/>
                <lines>0.6cm 27.9cm 20.3cm 27.9cm</lines>
                <setFont name="Helvetica" size="8"/>
-             </pageGraphics>   
+             </pageGraphics>
 
     </pageTemplate>
   </template>
@@ -35,7 +35,7 @@
       <blockBackground colorName="#e6e6e6" start="0,1" stop="0,-1"/>
       <blockBackground colorName="#e6e6e6" start="1,1" stop="1,-1"/>
       <blockBackground colorName="#e6e6e6" start="2,1" stop="2,-1"/>
-      
+
     </blockTableStyle>
     <blockTableStyle id="Table6">
       <blockAlignment value="LEFT"/>
@@ -165,7 +165,7 @@
     <blockTable colWidths="258.0,259.0" style="Table1" repeatRows="1">
         <tr>
               <td>
-                <para style="P12a">Description :</para>
+                <para style="P12a">Description: </para>
               </td>
               <td>
                 <para style="P2">[[ o.name ]]</para>
@@ -173,15 +173,15 @@
           </tr>
         <tr>
             <td>
-              <para style="P12a">Report Date : </para>
+              <para style="P12a">Report Date: </para>
             </td>
             <td>
-              <para style="P2">[[ time.strftime("%d.%m.%Y", time.localtime()) ]]</para>
+              <para style="P2">[[ formatLang(time.strftime(date_format), date=True) ]]</para>
             </td>
         </tr>
         <tr>
             <td>
-              <para style="P12a">Invoice Date : </para>
+              <para style="P12a">Invoice Date: </para>
             </td>
             <td>
               <para style="P2">[[ o.date_invoice and formatLang(o.date_invoice, date=True) or '' ]]</para>
@@ -189,8 +189,8 @@
         </tr>
         <tr>
             <td>
-              <para style="P12a">Amount bought : [[ (o.type == 'amount' or removeParentNode('para')) and '' ]]</para>
-              <para style="P12a">Quantity of hours bought : [[ (o.type == 'hours' or removeParentNode('para')) and '' ]]</para>
+              <para style="P12a">Amount bought: [[ (o.type == 'amount' or removeParentNode('para')) and '' ]]</para>
+              <para style="P12a">Quantity of hours bought: [[ (o.type == 'hours' or removeParentNode('para')) and '' ]]</para>
             </td>
             <td>
               <para style="P2">[[ o.amount_hours_block ]]</para>
@@ -198,9 +198,8 @@
         </tr>
         <tr>
             <td>
-              <!-- <para style="P12a">[[ o.type == 'hours' and "Quantity of hours" or "Amount"]] used : </para> -->
-              <para style="P12a">Amount used : [[ (o.type == 'amount' or removeParentNode('para')) and '' ]]</para>
-              <para style="P12a">Quantity of hours used : [[ (o.type == 'hours' or removeParentNode('para')) and '' ]]</para>
+              <para style="P12a">Amount used: [[ (o.type == 'amount' or removeParentNode('para')) and '' ]]</para>
+              <para style="P12a">Quantity of hours used: [[ (o.type == 'hours' or removeParentNode('para')) and '' ]]</para>
             </td>
             <td>
               <para style="P2">[[ round(o.amount_hours_block_done, 2) ]]</para>
@@ -208,10 +207,9 @@
         </tr>
         <tr>
             <td>
-              <!-- <para style="P12a">Remaining [[ o.type == 'hours' and "hours" or "amount"]]  : </para> -->
-              <para style="P12a">Remaining amount : [[ (o.type == 'amount' or removeParentNode('para')) and '' ]]</para>
-              <para style="P12a">Remaining hours : [[ (o.type == 'hours' or removeParentNode('para')) and '' ]]</para>
-              
+              <para style="P12a">Remaining amount: [[ (o.type == 'amount' or removeParentNode('para')) and '' ]]</para>
+              <para style="P12a">Remaining hours: [[ (o.type == 'hours' or removeParentNode('para')) and '' ]]</para>
+
             </td>
             <td>
               <para style="P2">[[ o.amount_hours_block and round(o.amount_hours_block_delta, 2) or '' ]]</para>
@@ -239,23 +237,23 @@
           <para style="P12a">Deduced</para>
         </td>
       </tr>
-      
+
        <tr>
-           [[ repeatIn(analytic_lines(o),'l') ]]
+           [[ repeatIn(analytic_lines(o), 'l') ]]
          <td>
-           <para style="P2">[[ l.date and formatLang(l.date, date=True) or '' ]]</para>
+           <para style="P2">[[ l.date if formatLang(l.date, date=True) else '' ]]</para>
          </td>
          <td>
            <para style="P2">[[ l.name or '' ]]</para>
          </td>
          <td>
-           <para style="P2c">[[ round(l.unit_amount or '0.0', 2) ]]</para>
+           <para style="P2c">[[ round(l.unit_amount, 2) or '0.0' ]]</para>
          </td>
          <td>
            <para style="P2c">[[ l.to_invoice.customer_name ]]</para>
          </td>
          <td>
-           <para style="P2c">[[ round((l.unit_amount and l.to_invoice) and (l.unit_amount - (l.unit_amount * l.to_invoice.factor) / 100 ) or '0.0', 2) ]]</para>
+           <para style="P2c">[[ round((l.unit_amount and l.to_invoice) and (l.unit_amount - (l.unit_amount * l.to_invoice.factor) / 100 ), 2) or '0.0' ]]</para>
          </td>
        </tr>
     </blockTable>

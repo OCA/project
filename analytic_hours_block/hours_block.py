@@ -86,8 +86,8 @@ class AccountHoursBlock(orm.Model):
         aal_obj = self.pool.get('account.analytic.line')
         pricelist_obj = self.pool.get('product.pricelist')
         for block in self.browse(cr, uid, ids, context=context):
-            result[block.id] = {'amount_hours_block' : 0.0,
-                                'amount_hours_block_done' : 0.0}
+            result[block.id] = {'amount_hours_block': 0.0,
+                                'amount_hours_block_done': 0.0}
 
             # Compute amount bought
             for line in block.invoice_id.invoice_line:
@@ -269,7 +269,7 @@ class AccountHoursBlock(orm.Model):
             string="Total",
             store=True,
             readonly=True),
-        'state':fields.related(
+        'state': fields.related(
             'invoice_id','state',
             type='selection',
             selection=[
