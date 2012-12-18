@@ -187,8 +187,8 @@ class AccountHoursBlock(orm.Model):
             ondelete='cascade',
             required=True),
         'type': fields.selection(
-            [('hours','Hours'),
-             ('amount','Amount')],
+            [('hours', 'Hours'),
+             ('amount', 'Amount')],
             string='Type of Block',
             required=True,
             help="The block is based on the quantity of hours "
@@ -270,15 +270,15 @@ class AccountHoursBlock(orm.Model):
             store=True,
             readonly=True),
         'state': fields.related(
-            'invoice_id','state',
+            'invoice_id', 'state',
             type='selection',
             selection=[
-                ('draft','Draft'),
-                ('proforma','Pro-forma'),
-                ('proforma2','Pro-forma'),
-                ('open','Open'),
-                ('paid','Paid'),
-                ('cancel','Cancelled'),
+                ('draft', 'Draft'),
+                ('proforma', 'Pro-forma'),
+                ('proforma2', 'Pro-forma'),
+                ('open', 'Open'),
+                ('paid', 'Paid'),
+                ('cancel', 'Cancelled'),
             ],
             string='State',
             readonly=True,
