@@ -146,12 +146,39 @@ class AccountHoursBlock(orm.Model):
                 result[block]['amount_hours_block_done']
         return result
 
+    def _get_analytic_line(self, cr, uid, ids, context=None):
+        invoice_ids = []
+        an_lines_obj = self.pool.get('account.analytic.line')
+        block_obj = self.pool.get('account.hours.block')
+        for line in an_lines_obj.browse(cr, uid, ids, context=context):
+            if line.invoice_id:
+                invoice_ids.append(line.invoice_id.id)
+        return block_obj.search(
+                cr, uid, [('invoice_id', 'in', invoice_ids)], context=context)
+
+    def _get_invoice(self, cr, uid, ids, context=None):
+        block_ids = set()
+        inv_obj = self.pool.get('account.invoice')
+        for invoice in inv_obj.browse(cr, uid, ids, context=context):
+            block_ids.update([inv.id for inv in invoice.account_hours_block_ids])
+        return list(block_ids)
+
+    _recompute_triggers = {
+        'account.hours.block': (lambda self, cr, uid, ids, c=None:
+                                    ids, ['invoice_id', 'type'], 10),
+        'account.invoice': (_get_invoice, ['analytic_line_ids'], 10),
+        'account.analytic.line': (
+            _get_analytic_line,
+            ['product_uom_id', 'unit_amount', 'to_invoice', 'invoice_id'],
+            10),
+    }
+
     _columns = {
         'amount_hours_block': fields.function(
             _compute,
             type='float',
             string='Quantity / Amount bought',
-            store=True,
+            store=_recompute_triggers,
             multi='amount_hours_block_delta',
             help="Amount bought by the customer. "
                  "This amount is expressed in the base Unit of Measure "
@@ -160,7 +187,7 @@ class AccountHoursBlock(orm.Model):
             _compute,
             type='float',
             string='Quantity / Amount used',
-            store=True,
+            store=_recompute_triggers,
             multi='amount_hours_block_delta',
             help="Amount done by the staff. "
                  "This amount is expressed in the base Unit of Measure "
@@ -169,7 +196,7 @@ class AccountHoursBlock(orm.Model):
             _compute,
             type='float',
             string='Difference',
-            store=True,
+            store=_recompute_triggers,
             multi='amount_hours_block_delta',
             help="Difference between bought and used. "
                  "This amount is expressed in the base Unit of Measure "
