@@ -218,14 +218,12 @@ class AccountHoursBlock(orm.Model):
         'name': fields.related(
             'invoice_id', 'name',
             type="char",
-            size=64,
             string="Description",
             store=True,
             readonly=True),
         'number': fields.related(
             'invoice_id', 'number',
             type="char",
-            size=64,
             string="Number",
             store=True,
             readonly=True),
