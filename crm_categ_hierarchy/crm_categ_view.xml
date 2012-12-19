@@ -11,7 +11,6 @@
                 <field name="section_id" position="after">
                     <field name="parent_id"/>
                     <field name="code"/>
-                    <field name="note" colspan="4"/>
                 </field>
             </field>
         </record>
@@ -33,3 +32,4 @@
 
     </data>
 </openerp>
+

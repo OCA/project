@@ -36,7 +36,6 @@ class crm_case_categ(orm.Model):
         return dict(res)
 
     _columns = {
-        'note': fields.text('Description', size=64),
         'parent_id': fields.many2one('crm.case.categ', 'Parent'),
         'child_ids': fields.many2many('crm.case.categ', 'crm_case_categ_parent_rel', 'parent_id', 'categ_id', 'Child Categories'),
         'complete_name': fields.function(_name_get_fnc, method=True, type="char", string='Name'),
