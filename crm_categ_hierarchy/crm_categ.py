@@ -18,9 +18,9 @@
 #
 ##############################################################################
 
-from osv import fields, osv
+from openerp.osv import fields, orm
 
-class crm_case_categ(osv.osv):
+class crm_case_categ(orm.Model):
     _inherit = "crm.case.categ"
     _order   = 'parent_id, name' 
     
@@ -36,18 +36,15 @@ class crm_case_categ(osv.osv):
         return dict(res)
 
     _columns = {
-        'note': fields.text('Description', size=64),
         'parent_id': fields.many2one('crm.case.categ', 'Parent'),
         'child_ids': fields.many2many('crm.case.categ', 'crm_case_categ_parent_rel', 'parent_id', 'categ_id', 'Child Categories'),
         'complete_name': fields.function(_name_get_fnc, method=True, type="char", string='Name'),
         'code': fields.char('Code', size=10),
     }
     _constraints = [
-        (osv.osv._check_recursion, 'Error! Cannot create recursive cycle.', ['parent_id'])
+        (orm.Model._check_recursion, 'Error! Cannot create recursive cycle.', ['parent_id'])
     ]
 
-crm_case_categ()
-    
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
 
 
