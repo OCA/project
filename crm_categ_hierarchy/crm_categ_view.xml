@@ -2,7 +2,7 @@
 <openerp>
     <data>
 
-		<!-- crm.case.category form -->
+        <!-- crm.case.category form -->
         <record id="crm_case_categ-view_dreis" model="ir.ui.view">
             <field name="name">crm.case.categ.form.dreis</field>
             <field name="model">crm.case.categ</field>
@@ -10,7 +10,7 @@
             <field name="arch" type="xml">
                 <field name="section_id" position="after">
                     <field name="parent_id"/>
-					<field name="code"/>
+                    <field name="code"/>
                     <field name="note" colspan="4"/>
                 </field>
             </field>
@@ -21,7 +21,7 @@
             <field name="name">crm.case.categ.tree.dreis</field>
             <field name="model">crm.case.categ</field>
             <field name="type">tree</field>
-			<field name="field_parent">child_ids</field>
+            <field name="field_parent">child_ids</field>
             <field name="arch" type="xml">
                 <tree string="Case Category">
                     <field name="complete_name"/>
@@ -31,9 +31,5 @@
             </field>
         </record>
 
-	   </data>
+    </data>
 </openerp>
-
-
-
-

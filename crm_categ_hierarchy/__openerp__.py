@@ -19,7 +19,7 @@
 ##############################################################################
 {
     'name': 'Category hierarchical structure',
-    'version': '1.0',
+    'version': '1',
     "category": "Customer Relationship Management",
     'description': """Add a tree-like structure to CRM categories""",
     'author': 'Daniel Reis',
