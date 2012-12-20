@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <!--PROJECT ISSUE FORM -->
+        <record id="project_issue_form_view_ref" model="ir.ui.view">
+            <field name="name">project_issue_form_view_ref</field>
+            <field name="model">project.issue</field>
+            <field name="inherit_id" ref="project_issue.project_issue_form_view"/>
+            <field name="arch" type="xml">
+
+                <field name="name" position="after">
+                    <field name="ref"/>
+                </field>
+                
+            </field>
+        </record>
+
+        <!--PROJECT ISSUE SEARCH -->
+        <record id="view_project_issue_filter_ref" model="ir.ui.view">
+            <field name="name">view_project_issue_filter_ref</field>
+            <field name="model">project.issue</field>
+            <field name="inherit_id" ref="project_issue.view_project_issue_filter"/>
+            <field name="arch" type="xml">
+
+                    <field name="name" position="before">
+                        <field name="ref" filter_domain="[('ref','ilike',self)]"/>
+                    </field>
+
+            </field>
+        </record>
+
+        <!--PROJECT ISSUE TREE -->
+        <record model="ir.ui.view" id="project_issue_tree_view_ref">
+            <field name="name">project_issue_tree_view_ref</field>
+            <field name="model">project.issue</field>
+            <field name="inherit_id" ref="project_issue.project_issue_tree_view"/>
+            <field name="arch" type="xml">
+              <data>
+
+                <field name="id" position="replace">
+                    <field name="ref"/>
+                    <field name="id" invisible="1"/>
+                </field>
+
+              </data>
+            </field>
+        </record>
+
+    </data>
+</openerp>
+

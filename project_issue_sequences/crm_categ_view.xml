@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <!--CRM CATEGORYFORM -->
+        <record id="crm_case_categ_view_seq" model="ir.ui.view">
+            <field name="name">crm.case.categ.form.seq</field>
+            <field name="model">crm.case.categ</field>
+            <field name="inherit_id" ref="crm.crm_case_categ-view"/>
+            <field name="arch" type="xml">
+
+                <field name="name" position="after">
+                    <field name="sequence_id"/>
+                </field>
+                
+            </field>
+        </record>
+
+    </data>
+</openerp>
+
