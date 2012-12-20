@@ -20,8 +20,8 @@
 
 {
     'name': 'Project Issue and Task integration',
-    'version': '1.0',
-    "category": "Project Management",
+    'version': '1.1',
+    'category': 'Project Management',
     'description': """\
 Integrate Issues and Tasks in a common workflow, as is common in service management scenarios.
 
@@ -31,13 +31,19 @@ Integrate Issues and Tasks in a common workflow, as is common in service managem
     If not, it's closed without the need for an intervention Task.
 3. Service Team User schedules the new Task
 4. Service Team User completes the Task. The issue is automatically closed.
-   
+
+CHANGE LOG
+============
+1.1    Reference sequence (`ref` field) moved to module `project_issue_sequences`.
+
 """,
     'author': 'Daniel Reis',
     'website': 'daniel.reis@securitas.pt',
     'depends': [
         'project', 'project_functional_blocks',
-        'project_issue', 'project_issue_department',
+        'project_issue', 
+        'project_issue_department',
+        'project_issue_sequences', 
         'crm_categ_hierarchy', 
         'crm', 'crm_routing',
         ],

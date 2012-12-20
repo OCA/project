@@ -23,15 +23,6 @@ from tools.translate import _
 from datetime import datetime, timedelta
 import time
 
-#FUTURE: create a module to assign working calendars per team
-#class crm_case_section(osv.osv):
-#    _inherit = "crm.case.section"
-#    _columns = {
-#        'resource_calendar_id' : fields.many2one('resource.calendar', 'Working Time',\
-#            help="Timetable working hours to calculate issue open time", ),
-#    }
-#crm_case_section()
-
 
 class project_issue(osv.osv):
     _inherit = 'project.issue'
@@ -39,19 +30,13 @@ class project_issue(osv.osv):
     #added fields:
         'functional_block_id': fields.many2one('project.functional_block', 'Component', help = "Component (system, module, function) to be adressed"),
         'assigned_to': fields.related('task_id', 'user_id', string = 'Task Assigned to', type="many2one", relation="res.users", store=True, help='This is the current user to whom the related task was assigned'),
-        'ref': fields.char('Code', size=10, readonly=True, select=True, help="Issue sequence number"),
         'tasks': fields.one2many('project.task', 'issue_id', 'Related tasks', help="Task history for the issue"),
         'create_uid': fields.many2one('res.users', 'Created by', help = "Person who reported the issue"),
     #modified fields:
         'categ_id': fields.many2one('crm.case.categ', 'Category', required=True, 
-            domain="[('object_id.model', '=', 'project.issue'),('parent_id','!=',None)]",
+            domain="[('object_id.model','=','project.issue')]", #domain="[('object_id.model', '=', 'project.issue'),('parent_id','!=',None)]",
             help="Only categories with a parent will be selectable in the Issues form."),
     }
-    
-    def create(self, cr, uid, vals, context={}):
-        """Issue sequence"""
-        vals['ref'] = self.pool.get('ir.sequence').next_by_code(cr, uid, 'project.issue')
-        return super(project_issue, self).create(cr, uid, vals, context)        
 
     def case_open(self, cr, uid, ids, *args):
         """Open Issue preserving the assigned user_id.

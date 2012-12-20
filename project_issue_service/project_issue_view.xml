@@ -12,9 +12,9 @@
                 <field name="categ_id" position="replace"/>
                 <field name="name" position="replace">
                     <field name="name" colspan="4"/>
-                    <field name="ref"/>
                     <field name="functional_block_id" select="1" required="1" widget="selection"/>
-                    <field name="categ_id" widget="selection" domain="[('object_id.model', '=', 'project.issue'),('parent_id','!=',None)]"/>
+                    <field name="categ_id" widget="selection" domain="[('object_id.model','=','project.issue')]"/>
+                        <!--... domain="[('object_id.model', '=', 'project.issue'),('parent_id','!=',None)]" -->
                     <field name="create_uid" readonly="1"/>
                 </field>
                 <field name="project_id" position="attributes">
@@ -97,7 +97,7 @@
                     <!--  name filter -->
                     <field name="name" position="replace">
                         <field name="name" string="Issue" colspan="2"
-                               filter_domain="['|','|','|','|', ('ref','ilike',self), ('project_id','ilike',self), ('partner_id','ilike',self), ('email_from','ilike',self), ('name','ilike',self)]"
+                               filter_domain="['|','|','|',('project_id','ilike',self), ('partner_id','ilike',self), ('email_from','ilike',self), ('name','ilike',self)]"
                         />
                     </field>
                     <!--  user_id buttons with same order as Tasks  (BUGFIX to report) -->
@@ -140,9 +140,6 @@
                 <field name="version_id" position="attributes"><attribute name="groups">base.group_extended</attribute></field>
                 <field name="categ_id" position="attributes"><attribute name="groups">base.group_extended</attribute></field>
                 <!-- Ref and Category visible after issue name -->
-                <field name="id" position="before">
-                    <field name="ref"/>
-                </field>
                 <field name="user_id" position="after">
                     <field name="section_id" groups="base.group_extended"/>
                     <field name="create_uid"/>
