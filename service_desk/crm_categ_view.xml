@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- FORM crm.case.category -->
+        <record id="crm_case_categ_view_icon" model="ir.ui.view">
+            <field name="name">crm.case.categ.form.icon</field>
+            <field name="model">crm.case.categ</field>
+            <field name="inherit_id" ref="crm_categ_hierarchy.crm_case_categ-view_dreis"/>
+            <field name="arch" type="xml">
+                <field name="note" position="replace">
+                    <separator colspan="4" string="Service Desk"/>
+                    <group colspan="2" col="2">
+                        <field name="act_window_id"/>
+                        <field name="show_service_desk"/>
+                        <field name="note"/>
+                    </group>
+                    <group colspan="2" col="1">
+                        <field name="icon" widget='image' nolabel="1"/>
+                    </group>
+                </field>
+            </field>
+        </record>
+
+        <!-- KANBAN crm.case.categories -->
+        <record model="ir.ui.view" id="categ_view_kanban">
+            <field name="name">categ_view_kanban</field>
+            <field name="model">crm.case.categ</field>
+            <field name="type">kanban</field>
+            <field name="arch" type="xml">
+
+              <kanban>
+                  <field name="name"/>
+                  <field name="note"/>
+                  <field name="section_id"/>
+                  <templates>
+                    <t t-name="kanban-box">
+                      <div class="oe_module_vignette">
+                        <a type="object" name="open_issue_form">
+                          <img t-att-src="kanban_image('crm.case.categ', 'icon', record.id.value)" class="oe_module_icon"/>
+                        </a>
+                        <div class="oe_module_desc">
+                          <h4><a type="edit"><field name="name"/></a></h4>
+                          <p><field name="note"/></p>
+                          <button type="object" name="open_issue_form" class="oe_button">Create</button>
+                        </div>
+                      </div>
+                    </t>
+                  </templates>
+
+              </kanban>
+
+            </field>
+        </record>
+
+
+        <record id="open_categ_view" model="ir.actions.act_window">
+            <field name="name">Service Desk</field>
+            <field name="res_model">crm.case.categ</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban</field>
+            <field name="domain">[('object_id.model','=','project.issue'),('show_service_desk','=',True)]</field>
+            <field name="context">{'group_by':'section_id'}</field>
+        </record>
+        <menuitem action="open_categ_view" id="menu_categ_view" parent="project.menu_project_management"/>
+
+
+    </data>
+</openerp>
+
+
+
+
+
+
