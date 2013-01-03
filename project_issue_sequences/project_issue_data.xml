@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+
+        <!-- PROJECT ISSUE SEQUENCE -->
+        <record id="project_issue_sequence_code" model="ir.sequence.type">
+            <field name="name">Project Issue</field>
+            <field name="code">project.issue</field>
+        </record>
+        <record id="project_issue_sequence" model="ir.sequence">
+            <field name="name">Project Issue</field>
+            <field name="code">project.issue</field>
+            <field name="prefix">T%(y)s/</field>
+            <field name="padding">5</field>
+        </record>
+
+    </data>
+</openerp>
+
+
+
