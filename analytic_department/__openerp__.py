@@ -51,5 +51,5 @@
         "analytic_view.xml",
     ],
     "active": False,
-    "installable": True
+    'installable': False
 }
