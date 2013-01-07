@@ -41,7 +41,7 @@ class project_task_materials(osv.osv):
     def _getAnalyticJournal(self, cr, uid, context=None):
         md = self.pool.get('ir.model.data')
         try:
-            return  md.get_object_reference(cr, uid, 'project_materials', 'materials_analytic_journal')[1]
+            return  md.get_object_reference(cr, uid, 'project_task_materials', 'materials_analytic_journal')[1]
         except ValueError:
             pass
         return False
