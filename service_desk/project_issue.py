@@ -25,8 +25,9 @@ from datetime import datetime
 class project_issue(orm.Model):
     _inherit = 'project.issue'
 
-    #`_compute_day` backported from v7.0 (just copied actually)
-    #Allows the Issue's `project_id` to be optional.
+    # `_compute_day` backported from v7.0 (just copied actually)
+    # Allows the Issue's `project_id` to be optional.
+    #---- START ----
     def _compute_day(self, cr, uid, ids, fields, args, context=None):
         """
         @param cr: the current row, from the database cursor,
@@ -108,11 +109,15 @@ class project_issue(orm.Model):
                     res[issue.id][field] = abs(float(duration))
 
         return res
+    #---- END ----
 
     _columns = {
         'regarding_uid': fields.many2one('res.users', 'Regarding User',
             help="User affected by the Issue"),
-        #_compute_day backport: rebuild references for the replaced method
+            
+        # `_compute_day` backport: redeclaring columns in order to 
+        # rebuild references for the replaced method
+        #---- START ----
         'days_since_creation': fields.function(_compute_day, string='Days since creation date', \
                                                multi='compute_day', type="integer", help="Difference in days between creation date and current date"),
         'day_open': fields.function(_compute_day, string='Days to Open', \
@@ -125,6 +130,7 @@ class project_issue(orm.Model):
                                 multi='compute_day', type="float", store=True),
         'inactivity_days': fields.function(_compute_day, string='Days since last action', \
                                 multi='compute_day', type="integer", help="Difference in days between last action and current date"),
+        #---- END ----
     }
     _defaults = {
         'regarding_uid': lambda s, cr, uid, c: uid,
