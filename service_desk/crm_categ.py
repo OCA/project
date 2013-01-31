@@ -69,7 +69,6 @@ class crm_case_categ(orm.Model):
                    },
                 ),
             })
-        ###print "******\n", action['views'], action['view_mode'], action['domain'], action['context']
         return action
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

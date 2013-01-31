@@ -102,7 +102,7 @@ class project_issue(orm.Model):
                                 break
                         duration = len(no_days)
 
-                if field in ['working_hours_open','working_hours_close']:
+                if field in ['working_hours_open', 'working_hours_close']:
                     res[issue.id][field] = hours
                 else:
                     res[issue.id][field] = abs(float(duration))
