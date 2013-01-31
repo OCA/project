@@ -20,6 +20,7 @@
 
 from openerp.osv import fields, orm
 
+
 class crm_case_categ(orm.Model):
     _inherit = 'crm.case.categ'
     _columns = {
@@ -31,42 +32,44 @@ class crm_case_categ(orm.Model):
 
     def open_issue_form(self, cr, uid, ids, context=None):
 
-        def get_action_dict(categ_res):
-            """Get Category's Action details dict"""
-            _obj = self.pool.get('ir.actions.act_window')
-            _id = categ_res.act_window_id.id or self.pool.get('ir.model.data').get_object_reference(cr, uid, 'service_desk', 'action_newissue_wizard')[1]
-            _cols = ['name','view_type','view_mode','res_model','view_id','views','type','search_view_id','target', 'domain', 'context']
-            return _obj.read(cr, uid, _id, _cols, context=context)
-
         def get_categ_section_id(categ_res):
-            """Get Category's Team, searching in parents if necessary"""
-            #recursively find parent section_id, if hierarchy is installed
+            """Get Category Team, searching parents upward if necessary"""
             return categ_res.section_id.id or (
-                     hasattr(categ_res, 'parent_id')
-                     and categ_res.parent_id
-                     and get_categ_section_id(categ_res.parent_id)
-                   )
+                    hasattr(categ_res, 'parent_id') and
+                    categ_res.parent_id and
+                    get_categ_section_id(categ_res.parent_id))
 
-        def get_action_addcontext(categ_res):
-            """Return Category's context text to use in the Action"""
-            return '"default_master_categ_id":%s,"default_section_id":%s' \
-                    % (categ_res.id, get_categ_section_id(categ_res) or None)
+        def get_custom_action_dict(categ_res):
+            """Get dict with the custom Action details for a Category
+            If none, use the standard Project Issue form."""
+            action_id = categ_res.act_window_id.id \
+                or self.pool.get('ir.model.data').get_object_reference(
+                    cr, uid, 'project_issue', 'project_issue_categ_act0')[1]
+            return self.pool.get('ir.actions.act_window')\
+                    .read(cr, uid, action_id, context=context)
 
-        def get_action_context(action, addcontext):
-            """Get Action Context updated with additional values"""
-            if addcontext and ':' in action['context']:
-                end = action.get('context', '').rfind('}') or 0
-                return {'context': action['context'][:end] + ',' + addcontext + "}"}
+        def merge_dict_into_text(text, add_dict):
+            """Return the text string with the dict contents added to it.
+            Ex: `"{'a':1}"` merged with `{'b': 2}` returns `"{'a':1, 'b':2}"`.
+            """
+            if ':' not in text:
+                return str(add_dict)
             else:
-                return {'context': action.get('context')}
+                return '{%s, %s}' % (text.strip()[1:-1], str(add_dict)[1:-1])
 
-        _res = self.browse(cr, uid, ids[0], context=context)
-        action = get_action_dict(_res)
-        addcontext = get_action_addcontext(_res)
-        action.update(get_action_context(action, addcontext))
-        action.update({'view_mode': 'form', 'views': None, 'id': None})
+        obj = self.browse(cr, uid, ids, context=context)[0]
+        action = get_custom_action_dict(obj)
+        action.update({
+            'domain': [('categ_id', 'child_of', obj.id)],
+            'context': merge_dict_into_text(
+                action.get('context', ''),
+                {'default_master_categ_id': obj.id,
+                 'default_section_id': get_categ_section_id(obj) or False,
+                 'group_by': False,  # remove inherited section_id grouping
+                   },
+                ),
+            })
+        ###print "******\n", action['views'], action['view_mode'], action['domain'], action['context']
         return action
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
-
-

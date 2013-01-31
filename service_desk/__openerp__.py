@@ -23,35 +23,41 @@
     "category": "Project Management",
     'description': """\
 Concentrates all request forms in a single place.
-These can be broad Categories for Project Issues or forms from other modules, such as CRM Claims or HR Leave requests.
+These can be broad Categories for Project Issues or forms from other modules,
+such as CRM Claims or HR Leave requests.
 
-The items/categories available are defined in Project » Configuration » Issue » Categories.
+The items/categories available are defined in:
+Project -> Configuration -> Issue -> Categories.
+
 Each one is representend by an icon and a description.
-When clicking on a Service Desk item, the module will find what Action should be executed.
-It this defition is found on it's form or on a parent, it will be used. 
-If not, it an Action opening the Project Issue's default form will be used.
+When clicking on a Service Desk item, the module will find what Action should
+be executed. It this defition is found on it's form or on a parent, it will be
+used. If not, it an Action opening the Project Issue's default form will be
+used.
 
 When opening the Action, two variables are set in the "context":
-  * A default master Category (`default_master_categ_id`), the id of the selected Category.
-  * A default Service Team (`default_section_id`), from the selected Category or it's parents.
+  * A default master Category (`default_master_categ_id`), the id for the
+    selected Category.
+  * A default Service Team (`default_section_id`), from the selected Category
+    or it's parent tree.
 
 For a quick start the module installs two Actions to be used here:
-  * "Standard Issues": opens the form installed with the Project Issue module.
-  * "New Issues": opens a showcase Project Issue form installed with this module.
+  * "Issues": opens the standard Project Issue form.
+  * "New Incident": opens a showcase simple Issue form.
 
-The showcase form demonstrates the usage of these two default values: 
-the Issue's Category selection list is limited to the Service Desk category children, 
-and the Service Team is automatically selected.
+The showcase form demonstrates the usage of these two default values:
+the Issue's Category selection list is limited to the Service Desk category
+children, and the Service Team is automatically selected.
 """,
     'author': 'Daniel Reis',
-    'website': 'daniel.reis@securitas.pt',
+    'website': '',
     'depends': [
         'project_issue',
         'project_issue_department',
         'project_issue_sequences',
         'crm_categ_hierarchy',
     ],
-    'update_xml': [
+    'data': [
         'project_issue_view.xml',
         'crm_categ_view.xml',
     ],

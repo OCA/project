@@ -7,15 +7,17 @@
             <field name="name">project_issue_form_view_simple</field>
             <field name="model">project.issue</field>
             <field name="type">form</field>
+            <field name="priority" eval="20"/>
             <field name="arch" type="xml">
 
                 <field name="name"/>
                 <field name="ref"/>
-                <field name="categ_id"
+                <field name="categ_id" required="1"
                        domain="[('parent_id','=', default_master_categ_id)]"/>
-                <field name="section_id" readonly="1"/>
+                <field name="section_id" readonly="1" string="Service Team"/>
                 <field name="regarding_uid"/>
-                <field name="department_id"/>
+                <field name="user_id"/>
+                <!--  field name="department_id"/ -->
                 <field name="priority"/>
 
                     <notebook colspan="4">
@@ -34,24 +36,31 @@
                             </group>
                         </page>
                         <page string="Communication &amp; History" groups="base.group_extended">
-                            <group colspan="4">
-                            <field colspan="4" name="email_cc" string="Global CC" widget="email"/>
-                            </group>
+                           <group colspan="4">
+                               <field colspan="4" name="email_cc" widget="char" size="512"/>
+                           </group>
                             <field name="message_ids" colspan="4" nolabel="1" mode="tree" readonly="1">
                                 <tree string="History">
                                     <field name="display_text" string="History Information"/>
                                     <field name="email_from" invisible="1"/>
-                                    <button string="Reply" attrs="{'invisible': [('email_from', '=', False)]}" name="111" context="{'mail.compose.message.mode':'reply', 'message_id':active_id}" icon="terp-mail-replied" type="action"/>
+                                    <button
+                                        string="Reply" attrs="{'invisible': [('email_from', '=', False)]}"
+                                        name="%(mail.action_email_compose_message_wizard)d"
+                                        context="{'mail.compose.message.mode':'reply', 'message_id':active_id}"
+                                        icon="terp-mail-replied" type="action" />
                                 </tree>
                             </field>
-                           <separator colspan="4"/>
-                            <button string="Add Internal Note" name="194" context="{'model': 'crm.lead' }" icon="terp-document-new" type="action"/>
-                            <button string="Send New Email" name="111" icon="terp-mail-message-new" type="action"/>
+                            <button string="Add Internal Note"
+                                name="%(crm.action_crm_add_note)d"
+                                context="{'model': 'crm.lead' }"
+                                icon="terp-document-new" type="action" />
+                            <button string="Send New Email"
+                                name="%(mail.action_email_compose_message_wizard)d"
+                                icon="terp-mail-message-new" type="action"/>
                         </page>
                         <page string="Extra Info" groups="base.group_extended">
                             <group col="2" colspan="2">
                             <separator colspan="2" string="Date"/>
-                            <field name="create_uid"/>
                             <field name="create_date"/>
                             <field name="write_date"/>
                             <field name="date_closed"/>
@@ -79,29 +88,46 @@
 
         <!-- ACTION to open New Issue form -->
         <record id="action_newissue_wizard" model="ir.actions.act_window">
-            <field name="name">New Issue</field>
-            <field name="res_model">project.issue</field>
-            <field name="src_model">project.issue</field>
-            <field name="type">ir.actions.act_window</field>
-            <field name="view_type">form</field>
-            <field name="view_mode">form</field>
-            <field name="view_id" ref="project_issue_form_view_simple"/>
-            <field name="target">current</field>
-        </record>
-        <!-- ACTION to open Standard Issue form -->
-        <record id="action_stdissue_wizard" model="ir.actions.act_window">
-            <field name="name">Standard Issue</field>
+            <field name="name">Incidents</field>
             <field name="res_model">project.issue</field>
             <field name="view_type">form</field>
-            <field name="view_mode">form</field>
-            <field name="view_id" ref="project_issue.project_issue_form_view"/>
-            <field name="target" eval="current"/>
-            <field name="context">{"search_default_user_id": uid, "search_default_draft": 1,"search_default_todo": 1, "search_default_project_id":project_id}</field>
+            <field name="view_mode">tree,calendar</field>
+            <field name="view_id" eval="False"/>
+            <field name="domain" eval=""/>
+            <field name="context">{}</field>
+            <field name="search_view_id" ref="project_issue.view_project_issue_filter"/>
         </record>
 
+        <record model="ir.actions.act_window.view" id="action_newissue_wizard_viewtree">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="project_issue.project_issue_tree_view"/>
+            <field name="act_window_id" ref="action_newissue_wizard"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="action_newissue_wizard_viewform">
+            <field name="sequence" eval="2"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="project_issue_form_view_simple"/>
+            <field name="act_window_id" ref="action_newissue_wizard"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="action_newissue_wizard_viewcal">
+            <field name="sequence" eval="3"/>
+            <field name="view_mode">calendar</field>
+            <field name="view_id" ref="project_issue.project_issue_calendar_view"/>
+            <field name="act_window_id" ref="action_newissue_wizard"/>
+        </record>
 
     </data>
 </openerp>
+
+
+
+
+
+
+
 
 
 
