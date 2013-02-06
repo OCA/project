@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        
+        <!--PROJECT ISSUE FORM -->
+        <record id="project_issue_form_view_simple" model="ir.ui.view">
+            <field name="name">project_issue_form_view_simple</field>
+            <field name="model">project.issue</field>
+            <field name="type">form</field>
+            <field name="priority" eval="20"/>
+            <field name="arch" type="xml">
+
+                <field name="name"/>
+                <field name="ref"/>
+                <field name="categ_id" required="1"
+                       domain="[('parent_id','=', default_master_categ_id)]"/>
+                <field name="section_id" readonly="1" string="Service Team"/>
+                <field name="regarding_uid"/>
+                <field name="user_id"/>
+                <!--  field name="department_id"/ -->
+                <field name="priority"/>
+
+                    <notebook colspan="4">
+                        <page string="General">
+                            <separator string="Description" colspan="4"/>
+                            <field name="description" nolabel="1" colspan="4"/>
+                            <separator colspan="4"/>
+                            <group col="8" colspan="4">
+                            <field name="state" widget="statusbar" statusbar_visible="draft,open,done" statusbar_colors="{&quot;pending&quot;:&quot;blue&quot;}"/>
+                            <button name="case_cancel" string="Cancel" states="draft,open,pending" type="object" icon="gtk-cancel"/>
+                            <button name="case_open" string="Open" states="draft,pending" type="object" icon="gtk-go-forward"/>
+                            <button name="case_close" string="Done" states="open,draft,pending" type="object" icon="terp-dialog-close"/>
+                            <button name="case_pending" string="Pending" states="draft,open" type="object" icon="gtk-media-pause"/>
+                            <button name="case_escalate" string="Escalate" states="open,draft,pending" type="object" icon="gtk-go-up"/>
+                            <button name="case_reset" string="Reset to New" states="done,cancel" type="object" icon="gtk-convert"/>
+                            </group>
+                        </page>
+                        <page string="Communication &amp; History" groups="base.group_extended">
+                           <group colspan="4">
+                               <field colspan="4" name="email_cc" widget="char" size="512"/>
+                           </group>
+                            <field name="message_ids" colspan="4" nolabel="1" mode="tree" readonly="1">
+                                <tree string="History">
+                                    <field name="display_text" string="History Information"/>
+                                    <field name="email_from" invisible="1"/>
+                                    <button
+                                        string="Reply" attrs="{'invisible': [('email_from', '=', False)]}"
+                                        name="%(mail.action_email_compose_message_wizard)d"
+                                        context="{'mail.compose.message.mode':'reply', 'message_id':active_id}"
+                                        icon="terp-mail-replied" type="action" />
+                                </tree>
+                            </field>
+                            <button string="Add Internal Note"
+                                name="%(crm.action_crm_add_note)d"
+                                context="{'model': 'crm.lead' }"
+                                icon="terp-document-new" type="action" />
+                            <button string="Send New Email"
+                                name="%(mail.action_email_compose_message_wizard)d"
+                                icon="terp-mail-message-new" type="action"/>
+                        </page>
+                        <page string="Extra Info" groups="base.group_extended">
+                            <group col="2" colspan="2">
+                            <separator colspan="2" string="Date"/>
+                            <field name="create_date"/>
+                            <field name="write_date"/>
+                            <field name="date_closed"/>
+                            <field name="date_open"/>
+                            <field name="date_action_last"/>
+                            </group>
+                            <group colspan="2" col="2">
+                            <separator string="Statistics" colspan="2" col="2"/>
+                            <field name="day_open"/>
+                            <field name="day_close"/>
+                            <field name="working_hours_open" widget="float_time"/>
+                            <field name="working_hours_close" widget="float_time"/>
+                            <field name="inactivity_days"/>
+                            <field name="days_since_creation"/>
+                            </group>
+                            <group colspan="2" col="2">
+                            <separator string="References" colspan="2"/>
+                            <field name="id"/>
+                            <field name="active"/>
+                            </group>
+                        </page>
+                    </notebook>
+               </field>
+        </record>
+
+        <!-- ACTION to open New Issue form -->
+        <record id="action_newissue_wizard" model="ir.actions.act_window">
+            <field name="name">Incidents</field>
+            <field name="res_model">project.issue</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,calendar</field>
+            <field name="view_id" eval="False"/>
+            <field name="domain" eval=""/>
+            <field name="context">{}</field>
+            <field name="search_view_id" ref="project_issue.view_project_issue_filter"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="action_newissue_wizard_viewtree">
+            <field name="sequence" eval="1"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="project_issue.project_issue_tree_view"/>
+            <field name="act_window_id" ref="action_newissue_wizard"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="action_newissue_wizard_viewform">
+            <field name="sequence" eval="2"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="project_issue_form_view_simple"/>
+            <field name="act_window_id" ref="action_newissue_wizard"/>
+        </record>
+
+        <record model="ir.actions.act_window.view" id="action_newissue_wizard_viewcal">
+            <field name="sequence" eval="3"/>
+            <field name="view_mode">calendar</field>
+            <field name="view_id" ref="project_issue.project_issue_calendar_view"/>
+            <field name="act_window_id" ref="action_newissue_wizard"/>
+        </record>
+
+    </data>
+</openerp>
+
+
+
+
+
+
+
+
+
+
+
