@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-# Copyright (c) 2011 Camptocamp SA (http://www.camptocamp.com) 
+# Copyright (c) 2011 Camptocamp SA (http://www.camptocamp.com)
 # All Right Reserved
 #
 # Author : Joel Grand-guillaume (Camptocamp)
@@ -30,26 +30,15 @@
 ##############################################################################
 
 {
-    "name" : "Analytic Account Department Categorization",
-    "version" : "1.0",
-    "author" : "Camptocamp",
-    "category" : "Generic Modules/Projects & Services",
-    "description":
-"""
-    Add the department on Analytic Account and Analytical line as well as the related filter and button in the search form of
-    both object.
-    
+    "name": "Analytic Account Department Categorization",
+    "version": "1.0",
+    "author": "Camptocamp",
+    "category": "Generic Modules/Projects & Services",
+    "description": """\
+Add Department to Analytic Account and Analytical Line models, and to
+corresponding tree, search and form  views.
 """,
     "website": "http://camptocamp.com",
-    "depends" : [
-        "account",
-        "hr",
-                ],
-    "init_xml" : [],
-    "demo_xml" : [],
-    "update_xml" : [
-        "analytic_view.xml",
-    ],
-    "active": False,
-    'installable': False
+    "depends": ["account", "hr"],
+    "data": ["analytic_view.xml"],
 }
