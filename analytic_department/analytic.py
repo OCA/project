@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-# Copyright (c) 2010 Camptocamp SA (http://www.camptocamp.com) 
+# Copyright (c) 2010 Camptocamp SA (http://www.camptocamp.com)
 # All Right Reserved
 #
 # Author : Joel Grand-guillaume (Camptocamp)
@@ -29,30 +29,18 @@
 #
 ##############################################################################
 
-from osv import osv
-from osv import fields
+from openerp.osv import fields, orm
 
-class analytic_account(osv.osv):
+
+class AnalyticAccount(orm.Model):
     _inherit = "account.analytic.account"
-
     _columns = {
         'department_id': fields.many2one('hr.department', 'Department'),
     }
-    _defaults = {
-        'department_id': lambda s,cr,uid,c: s.pool.get('res.users').browse(cr,uid,uid).context_department_id.id,
-    }
 
-analytic_account()
 
-class analytic_line(osv.osv):
+class AnalyticLine(orm.Model):
     _inherit = "account.analytic.line"
-
     _columns = {
         'department_id': fields.many2one('hr.department', 'Department'),
     }
-    _defaults = {
-        'department_id': lambda s,cr,uid,c: s.pool.get('res.users').browse(cr,uid,uid).context_department_id.id,
-    }
-
-analytic_line()
-
