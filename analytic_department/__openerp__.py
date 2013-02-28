@@ -2,7 +2,8 @@
 {
     "name": "Analytic Account Department Categorization",
     "version": "1.0",
-    "author": "Joel Grand-guillaume (Camptocamp), Daniel Reis (SECURITAS)",
+    "author": "Camptocamp, Daniel Reis",
+    "license": "AGPL-3",
     "category": "Generic Modules/Projects & Services",
     "description": """\
 Add Department to Analytic Account and Analytical Line models, and to
