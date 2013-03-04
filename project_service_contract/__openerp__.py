@@ -29,11 +29,11 @@
     'website': 'www.julius.fr',
     'depends': [
         'report_webkit',
-		'hr',
-		'project',  			#=> "product", "analytic", "board"
-		'project_functional_blocks',
-        'project_issue',		#=> 'crm', 'project'
-        'project_timesheet',	#=> 'project', 'hr_timesheet_sheet', 'hr_timesheet_invoice'
+        'hr',
+        'project',              #=> "product", "analytic", "board"
+        'project_functional_blocks',
+        'project_issue',        #=> 'crm', 'project'
+        'project_timesheet',    #=> 'project', 'hr_timesheet_sheet', 'hr_timesheet_invoice'
         'base_contract',
         'project_service',
     ],
@@ -45,7 +45,7 @@
     ],
     'demo_xml': [],
     'test': [],
-    'installable': True,
+    'installable': False,
     'application': True,
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

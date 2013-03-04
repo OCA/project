@@ -61,7 +61,7 @@ children, and the Service Team is automatically selected.
         'project_issue_view.xml',
         'crm_categ_view.xml',
     ],
-    'installable': True,
+    'installable': False,
     'application': True,
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

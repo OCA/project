@@ -67,10 +67,10 @@ Learn the name, ref, date of start and end of the contract, the Kind of contract
         'base_contract_view.xml',
         'wizard/generate_view.xml',
     ],
-    'demo_xml': [], 
+    'demo_xml': [],
     'images' : ['images/Contract category.png','images/Contract Sales Order.png','images/Contract Types.png','images/Generate Contract Types.png'],
     'test': [],
-    'installable': True,
+    'installable': False,
     'active': False,
     'certificate': '',
 }

@@ -24,12 +24,12 @@
     'version': '6.1',
     "category": "Project Management",
     'description': """
-    Automatically assign a responsible when creating a new Issue, or other type of document. 
+    Automatically assign a responsible when creating a new Issue, or other type of document.
     Responsible person is looked up on a "profiling" table based on Sales Team and Department.
     "Sales Teams" allow to define different target teams. Originally are ment for Sales people, but here are (re)used also for Service Teams handling Issues, Claims, Tasks, etc.
-    Initially was ment to on Issues, but currently it's generic enough to work on any object: crm.case, crm.claim, project.task, etc. 
+    Initially was ment to on Issues, but currently it's generic enough to work on any object: crm.case, crm.claim, project.task, etc.
     This module doesn't even require for Project to be installed. The names used are project related for historic reasons.
-    
+
     Usage:
     - Profiling rules are defined either on Department form or on User form.
     - User is assigned by a Server Action. Example using Project Issues:
@@ -41,8 +41,8 @@
     'author': 'Daniel Reis',
     'website': 'daniel.reis@securitas.pt',
     'depends': [
-        'hr', #hr.department
-        'crm', #case.section
+        'hr',  # hr.department
+        'crm',  # case.section
     ],
     'init_xml': [],
     'update_xml': [
@@ -51,7 +51,7 @@
     ],
     'demo_xml': [],
     'test': [],
-    'installable': True,
+    'installable': False,
     'application': False,
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

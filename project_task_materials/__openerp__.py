@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
-#    
+#
 #    Copyright (C) 2012 Daniel Reis
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -30,7 +30,7 @@
         'project_materials_data.xml',
         'security/ir.model.access.csv',
     ],
-    'installable': True,
+    'installable': False,
     'application': False,
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

@@ -26,23 +26,23 @@
 ##############################################################################
 
 {
-     "name" : "Add type of service on project",
-     "version" : "1.0",
-     "author" : "Camptocamp",
-     "category" : "Generic Modules/Projects & Services",
+     "name": "Add type of service on project",
+     "version": "1.0",
+     "author": "Camptocamp",
+     "category": "Generic Modules/Projects & Services",
      "description":
 """
 This will add a type of service on project allowing you to categorize them.
 """,
      "website": "http://camptocamp.com",
-     "depends" : [
+     "depends": [
             "project",
                 ],
-     "init_xml" : [],
-     "demo_xml" : [],
-     "update_xml" : [
+     "init_xml": [],
+     "demo_xml": [],
+     "update_xml": [
         "project_view.xml"
      ],
      "active": False,
-     "installable": True
+     "installable": False
 }

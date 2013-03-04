@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
-#    
+#
 #    Copyright (C) 2012 Daniel Reis
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -36,7 +36,7 @@ Before creating new Projects, review the following configurations::
 * Functional Blocks: the sub-components or sub-systems for projects.
 
 Contributions are appreciated. Some ideas to develop:
-* add a 'crm_category_stages' module, to make configurable the stages (type_ids) valid for each Category.  
+* add a 'crm_category_stages' module, to make configurable the stages (type_ids) valid for each Category.
 """,
     'author': 'Daniel Reis',
     'website': 'daniel.reis@securitas.pt',
@@ -46,7 +46,7 @@ Contributions are appreciated. Some ideas to develop:
         'project_task_view.xml',
         'security/ir.model.access.csv',
     ],
-    'installable': True,
+    'installable': False,
     'application': False,
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
-#    
+#
 #    Copyright (C) 2012 Daniel Reis
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -25,9 +25,9 @@
     'description': """Add Department field to Projects.""",
     'author': 'Daniel Reis',
     'website': 'daniel.reis@securitas.pt',
-    'depends': ['project'], 
+    'depends': ['project'],
     'update_xml': ['project_view.xml'],
-    'installable': True,
+    'installable': False,
     'application': False,
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

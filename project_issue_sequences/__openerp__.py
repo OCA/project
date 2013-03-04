@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
-#    
+#
 #    Copyright (C) 2012 Daniel Reis
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -23,19 +23,19 @@
     "category": "Project Management",
     'description': """\
 Reference sequences for Issues, configurable by Category.
-For example: an IT Management related issue might have a "IT-xxxxx" sequence, and a Building maintenance issue an independent "B-xxxx" sequence.  
+For example: an IT Management related issue might have a "IT-xxxxx" sequence, and a Building maintenance issue an independent "B-xxxx" sequence.
 If no specific Sequence is specified, the default "Project Issue" sequence will be used.
-If the crm_categ_hierarchy module is also installed, specific sequences will apply to all child categories. 
+If the crm_categ_hierarchy module is also installed, specific sequences will apply to all child categories.
 """,
     'author': 'Daniel Reis',
     'website': 'daniel.reis@securitas.pt',
-    'depends': ['project_issue'], 
+    'depends': ['project_issue'],
     'data': [
-        'crm_categ_view.xml', 
-        'project_issue_view.xml', 
+        'crm_categ_view.xml',
+        'project_issue_view.xml',
         'project_issue_data.xml',
     ],
-    'installable': True,
+    'installable': False,
     'application': False,
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

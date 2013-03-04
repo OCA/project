@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
-#    
+#
 #    Copyright (C) 2012 Daniel Reis
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -26,7 +26,7 @@
 Integrate Issues and Tasks in a common workflow, as is common in service management scenarios.
 
 1. End user creates new Issue
-2. Service Desk User reviews the new Issue: 
+2. Service Desk User reviews the new Issue:
     If a technical person intervention is needed, creates a Task for it.
     If not, it's closed without the need for an intervention Task.
 3. Service Team User schedules the new Task
@@ -41,10 +41,10 @@ CHANGE LOG
     'website': 'daniel.reis@securitas.pt',
     'depends': [
         'project', 'project_functional_blocks',
-        'project_issue', 
+        'project_issue',
         'project_issue_department',
-        'project_issue_sequences', 
-        'crm_categ_hierarchy', 
+        'project_issue_sequences',
+        'crm_categ_hierarchy',
         'crm', 'crm_routing',
         ],
     'update_xml': [
@@ -53,7 +53,7 @@ CHANGE LOG
         'board_project_view.xml',
         #'project_issue_workflow.xml', #<= not using it, to avoid migrating former Issues to the new workflow
         ],
-    'installable': True,
+    'installable': False,
     'application': True,
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

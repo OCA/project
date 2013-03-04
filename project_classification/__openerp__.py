@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-# Copyright (c) 2011 Camptocamp SA (http://www.camptocamp.com) 
+# Copyright (c) 2011 Camptocamp SA (http://www.camptocamp.com)
 # All Right Reserved
 #
 # Author : Joel Grand-guillaume (Camptocamp)
@@ -35,7 +35,7 @@
     'version': '1.0',
     'category': 'Generic Modules/Projects & Services',
     'description': """
-    
+
 This Module allow you to setup different project classification to ease the data entry of
 new project. The parent project will be set as readonly to forbid users to change it.
 The parent is still available through the analytic account object. This is useful because
@@ -50,13 +50,13 @@ A project classification is composed by :
  * An optional Account Manager
  * An optional Pricelist
  * An optional Currency
- 
+
 Those values will be set on a project when selecting a classification.
 
 """,
     'author': 'Camptocamp',
     'website': 'http://www.camptocamp.com',
-    'depends': ['project','hr_timesheet_invoice','analytic'],
+    'depends': ['project', 'hr_timesheet_invoice', 'analytic'],
     'init_xml': [],
     'update_xml': [
             'project_classification_view.xml',
@@ -64,7 +64,7 @@ Those values will be set on a project when selecting a classification.
         ],
     'demo_xml': [],
     'test': [],
-    'installable': True,
+    'installable': False,
     'active': False,
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

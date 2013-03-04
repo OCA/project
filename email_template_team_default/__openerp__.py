@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
-#    
+#
 #    Copyright (C) 2012 Daniel Reis
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -20,7 +20,7 @@
 
 {
     'name': 'CRM Team default template for new e-mails',
-    'version': '1',
+    'version': '1.0',
     "category": "Tools",
     'description': """\
 When a a new message is created, from the "Communication & History" tab, a blank message is displayed.
@@ -40,7 +40,7 @@ Known issues:
     'update_xml': [
         'crm_view.xml',
     ],
-    'installable': True,
+    'installable': False,
     'application': False,
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
