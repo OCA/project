@@ -6,7 +6,6 @@
             <field name="name">account.analytic.account.search</field>
             <field name="model">account.analytic.account</field>
             <field name="inherit_id" ref="account.view_account_analytic_account_search"/>
-            <field name="type">search</field>
             <field name="arch" type="xml">
                 <field name="user_id" position="after">
                     <field name="department_id"/>
@@ -21,7 +20,6 @@
             <field name="name">account.analytic.account.tree</field>
             <field name="model">account.analytic.account</field>
             <field name="inherit_id" ref="account.view_account_analytic_account_tree"/>
-            <field name="type">tree</field>
             <field name="arch" type="xml">
                 <field name="code" position="after">
                     <field name="department_id"/>
@@ -33,7 +31,6 @@
             <field name="name">account.analytic.line.form</field>
             <field name="model">account.analytic.line</field>
             <field name="inherit_id" ref="account.view_account_analytic_line_form"/>
-            <field name="type">form</field>
             <field name="arch" type="xml">
                 <field name="company_id" position="after">
                     <field name="department_id"/>
@@ -45,7 +42,6 @@
             <field name="name">account.analytic.line.tree</field>
             <field name="model">account.analytic.line</field>
             <field name="inherit_id" ref="account.view_account_analytic_line_tree"/>
-            <field name="type">tree</field>
             <field name="arch" type="xml">
                 <field name="company_id" position="after">
                     <field name="department_id"/>
@@ -57,7 +53,6 @@
             <field name="name">account.analytic.line.select</field>
             <field name="model">account.analytic.line</field>
             <field name="inherit_id" ref="account.view_account_analytic_line_filter"/>
-            <field name="type">search</field>
             <field name="arch" type="xml">
                 <field name="user_id" position="before">
                     <field name="department_id" widget="selection"/>
