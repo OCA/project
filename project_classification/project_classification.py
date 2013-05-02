@@ -29,7 +29,6 @@
 #
 ##############################################################################
 from openerp.osv import orm, fields
-import netsvc
 
 class ProjectClassification(orm.Model):
     _name = "project.classification"
