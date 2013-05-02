@@ -28,12 +28,10 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #
 ##############################################################################
-
-from osv import fields, osv
+from openerp.osv import orm, fields
 import netsvc
 
-
-class project_classification(osv.osv):
+class ProjectClassification(orm.Model):
     _name = "project.classification"
     _description = "Project classification"
 
@@ -47,11 +45,9 @@ class project_classification(osv.osv):
         'currency_id': fields.many2one('res.currency', 'Currency'),
         'user_id': fields.many2one('res.users', 'Account Manager'),
         'pricelist_id': fields.many2one('product.pricelist', 'Sale Pricelist',),
-    }
+        }
 
-project_classification()
-
-class project_project(osv.osv):
+class ProjectProject(orm.Model):
     _inherit = "project.project"
 
     def _child_project_compute(self, cr, uid, ids, name, arg, context=None):
@@ -85,8 +81,6 @@ class project_project(osv.osv):
             "project as well as other default values define for this kind project (like pricelist, invoice factor,..)", required=True),
         'child_project_complete_ids': fields.function(_child_project_compute,
             relation='project.project', method=True, string="Project Hierarchy", type='many2many'),
-    }
-
-project_project()
+        }
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
