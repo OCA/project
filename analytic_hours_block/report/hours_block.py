@@ -36,10 +36,12 @@ class account_hours_block(report_sxw.rml_parse):
 
     def _get_analytic_lines(self, hours_block):
         al_pool = self.pool.get('account.analytic.line')
+        aj_pool = self.pool.get('account.analytic.journal')
+        tcj_ids = aj_pool.search(self.cr,self.uid,[('type','=','general')])
         al_ids = al_pool.search(
                 self.cr,
                 self.uid,
-                [('invoice_id', '=', hours_block.invoice_id.id)],
+                [('invoice_id', '=', hours_block.invoice_id.id),('journal_id','in',tcj_ids)],
                 order='date desc',
                 context=self.context)
         return al_pool.browse(self.cr, self.uid, al_ids, context=self.context)
