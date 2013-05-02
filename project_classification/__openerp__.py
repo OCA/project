@@ -57,14 +57,15 @@ Those values will be set on a project when selecting a classification.
     'author': 'Camptocamp',
     'website': 'http://www.camptocamp.com',
     'depends': ['project', 'hr_timesheet_invoice', 'analytic'],
-    'init_xml': [],
-    'update_xml': [
-            'project_classification_view.xml',
-            'security/ir.model.access.csv',
-        ],
+    'data': [
+        'project_classification_view.xml',
+        'security/ir.model.access.csv',
+    ],
     'demo_xml': [],
     'test': [],
-    'installable': False,
-    'active': False,
+    'installable': True,
+    'auto_install': False,
+    'application': True,
 }
+
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

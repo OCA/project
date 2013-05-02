@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-# Copyright (c) 2011 Camptocamp SA (http://www.camptocamp.com) 
+# Copyright (c) 2011 Camptocamp SA (http://www.camptocamp.com)
 # All Right Reserved
 #
 # Author : Joel Grand-guillaume (Camptocamp)
@@ -36,7 +36,7 @@ import netsvc
 class project_classification(osv.osv):
     _name = "project.classification"
     _description = "Project classification"
-        
+
     _columns ={
         'name': fields.char('Classification Name', required=True, size=64),
         'project_id':fields.many2one('account.analytic.account', 'Parent project', help="The parent\
@@ -66,12 +66,12 @@ class project_project(osv.osv):
                 if not account_child.project_ids:
                     continue
                 child_projects += account_child.project_ids
-            
+
             result[project.id] = [child_project.id for child_project in child_projects]
         return result
 
     def onchange_classification_id(self, cr, uid, ids, classification_id):
-        classification = self.pool.get('project.classification').browse(cr,uid,classification_id)
+        classification = self.pool.get('project.classification').browse(cr, uid, classification_id)
         return {'value':{
                 'parent_id': classification.project_id.id,
                 'to_invoice': classification.to_invoice.id or False,
@@ -79,14 +79,14 @@ class project_project(osv.osv):
                 'user_id': classification.user_id.id or False,
                 'pricelist_id': classification.pricelist_id.id or False,
                 }}
-    
+
     _columns ={
         'classification_id':fields.many2one('project.classification', 'Classification', help="This will automatically set the parent "\
             "project as well as other default values define for this kind project (like pricelist, invoice factor,..)", required=True),
         'child_project_complete_ids': fields.function(_child_project_compute,
             relation='project.project', method=True, string="Project Hierarchy", type='many2many'),
     }
-    
+
 project_project()
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

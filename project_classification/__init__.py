@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-# Copyright (c) 2011 Camptocamp SA (http://www.camptocamp.com) 
+# Copyright (c) 2011 Camptocamp SA (http://www.camptocamp.com)
 # All Right Reserved
 #
 # Author : Joel Grand-guillaume (Camptocamp)
@@ -28,4 +28,7 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #
 ##############################################################################
+
 import project_classification
+
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
