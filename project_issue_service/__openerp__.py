@@ -45,7 +45,7 @@ CHANGE LOG
         'project_issue_department',
         'project_issue_sequences',
         'crm_categ_hierarchy',
-        'crm', 'crm_routing',
+        'crm',
         ],
     'update_xml': [
         'project_issue_view.xml',
