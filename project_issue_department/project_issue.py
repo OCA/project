@@ -21,7 +21,7 @@
 from osv import fields, orm
 
 
-class project_issue(orm.Model):
+class ProjectIssue(orm.Model):
     _inherit = 'project.issue'
     _columns = {
         'department_id': fields.many2one('hr.department', 'Department'),
@@ -29,20 +29,20 @@ class project_issue(orm.Model):
 
     def on_change_project(self, cr, uid, ids, proj_id=False, context=None):
         """When Project is changed: copy it's Department to the issue."""
-        res = super(project_issue, self)\
-            .on_change_project(cr, uid, ids, proj_id, context=context)
-        dept = proj_id and \
-            self.pool.get('project.project')\
-            .browse(cr, uid, proj_id, context)\
-            .getattr('department_id')
-        if dept:
-            res.setdefault('value', {})\
-                .update({'department_id': dept.id})
-        return res
+        res = super(ProjectIssue, self).on_change_project(
+            cr, uid, ids, proj_id, context=context)
+        res.setdefault('value', {})
 
-project_issue()
+        if proj_id:
+            proj = self.pool.get('project.project').browse(
+                cr, uid, proj_id, context)
+            dept = getattr(proj, 'department_id', None)
+            if dept:
+                res['value'].update({'department_id': dept.id})
+            else:
+                res['value'].update({'department_id': None})
+
+        return res
 
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
-
-
