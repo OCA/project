@@ -19,20 +19,27 @@
 ##############################################################################
 {
     'name': 'Project Issue with Department',
-    'version': '1.0',
+    'version': '1.1',
     "category": "Project Management",
     'description': """\
 Add Department field to Project Issues.
 
+Selecting a Project for an issue will automatically populate this with the
+Project's defined Department.
+
 """,
     'author': 'Daniel Reis',
     'website': 'daniel.reis@securitas.pt',
-    'depends': ['project_issue', 'hr'],
+    'depends': [
+        'project_issue',
+        'project_department',
+        ],
     'update_xml': [
         'project_issue_view.xml',
         'security/ir.model.access.csv',
     ],
     'installable': True,
     'application': False,
+    'auto_install': True, 
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
