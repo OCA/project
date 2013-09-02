@@ -18,7 +18,7 @@
 #
 ##############################################################################
 
-from osv import fields, orm
+from openerp.osv import fields, orm
 
 
 class ProjectIssue(orm.Model):
