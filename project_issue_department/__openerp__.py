@@ -26,7 +26,6 @@ Add Department field to Project Issues.
 
 Selecting a Project for an issue will automatically populate this with the
 Project's defined Department.
-
 """,
     'author': 'Daniel Reis',
     'website': 'daniel.reis@securitas.pt',
@@ -40,6 +39,6 @@ Project's defined Department.
     ],
     'installable': True,
     'application': False,
-    'auto_install': True, 
+    'auto_install': True,
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
