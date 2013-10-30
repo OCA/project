@@ -20,3 +20,4 @@
 ##############################################################################
 import hours_block
 import report
+import project

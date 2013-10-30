@@ -294,6 +294,14 @@ class AccountHoursBlock(orm.Model):
             string="Total",
             store=True,
             readonly=True),
+        'department_id': fields.related(
+            'invoice_id', 'department_id',
+             type='many2one',
+             relation='hr.department',
+             string='Department',
+             store=True,
+             readonly=True),
+
         'state': fields.related(
             'invoice_id', 'state',
             type='selection',

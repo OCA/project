@@ -18,15 +18,18 @@
                         <separator orientation="vertical"/>
                         <field name="number"/>
                         <field name="partner_id"/>
+                        <field name="department_id" string="Department"/>
                         <field name="user_id" select="1" widget="selection" string="Salesman">
                         <filter domain="[('user_id','=',uid)]" help="My invoices" icon="terp-personal" separator="1"/>
                         </field>
+                        
                         <field name="company_id" widget="selection"/>
                     </group>
                     <newline/>
                     <group expand="0" string="Group By...">
                         <filter string="Partner" icon="terp-partner" domain="[]" context="{'group_by':'partner_id'}"/>
                         <filter string="Responsible" icon="terp-personal" domain="[]"  context="{'group_by':'user_id'}"/>
+                        <filter string="Department" icon="terp-personal" domain="[]"  context="{'group_by':'department_id'}"/>
                         <filter string="Invoice State" icon="terp-stock_effects-object-colorize" domain="[]"  context="{'group_by':'state'}"/>
                     </group>
                </search>
@@ -68,6 +71,7 @@
                         <field name="partner_id" groups="base.group_user"/>
                         <field name="user_id"/>
                         <field name="company_id" groups="base.group_multi_company" widget="selection"/>
+	                    <field name="department_id" widget="selection"/>
 
                         <field name="journal_id" invisible="1"/>
                         <field name="period_id" invisible="1" groups="account.group_account_user"/>
@@ -101,6 +105,7 @@
                     <field name="journal_id" invisible="1"/>
                     <field name="period_id" invisible="1" groups="account.group_account_user"/>
                     <field name="company_id" groups="base.group_multi_company" widget="selection"/>
+                    <field name="department_id" widget="selection"/>
                     <field name="user_id"/>
                     <field name="currency_id"/>
                     <field name="residual" sum="Residual Amount"/>
