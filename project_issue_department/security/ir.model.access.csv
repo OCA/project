@@ -1,3 +1,0 @@
-"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
-"access_hr_department_project_manager","hr_department_project_manager","hr.model_hr_department","project.group_project_manager",1,0,0,0
-"access_hr_department_project_user","hr_department_project_user","hr.model_hr_department","project.group_project_user",1,0,0,0
