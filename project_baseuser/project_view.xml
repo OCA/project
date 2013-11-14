@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <!-- Maken top menu item also visible for Employees -->
+        <menuitem name="Project"
+            id="base.menu_main_pm"
+            groups="project.group_project_manager,project.group_project_user,base.group_user"
+            sequence="40"/>
+
+    </data>
+</openerp>
