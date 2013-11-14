@@ -96,7 +96,7 @@
         </record>
 
 
-        <!-- Employees (new, for limited edit access): can edit public or followed/member, if in "draft" or "cancelled" states -->
+        <!-- Employees (new,  for limited edit access): can edit public or followed/member, if in "draft" or "cancelled" states -->
         <record model="ir.rule" id="task_visibility_rule_write">
             <field name="name">Project/Task: employees WRITE: public or followed/member</field>
             <field name="model_id" ref="project.model_project_task"/>
