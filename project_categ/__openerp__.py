@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Copyright (C) 2012 Daniel Reis
+#    Copyright (C) 2013 Daniel Reis
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -18,15 +18,27 @@
 #
 ##############################################################################
 {
-    'name': 'Category hierarchical structure',
-    'version': '1.0',
-    "category": "Customer Relationship Management",
-    'description': """Add a tree-like structure to CRM categories""",
+    'name': 'Per Project Configurable Categories',
+    'summary': 'Projects can have an allowed category list',
+    'version': '0.1',
+    "category": "Project Management",
+    'description': """\
+To use:
+  1. Create a parent Category (Tag). E.g. "System Type".
+  2. Create categories to be made available as child. E.g. "Computer", "Printer", ...
+  3. On the Project form, Other Info tab, set the "Root Category".
+
+Now, Tasks for that Project will require you to set a Tag and it will only
+be selectable from the Project's list.
+""",
     'author': 'Daniel Reis',
-    'website': 'daniel.reis@securitas.pt',
-    'depends': ['crm'],
-    'update_xml': ['crm_categ_view.xml'],
-    'installable': False,
+    'depends': [
+        'project',
+        ],
+    'data': [
+        'project_categ_view.xml',
+        ],
+    'installable': True,
     'application': False,
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
