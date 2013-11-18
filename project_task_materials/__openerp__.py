@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Copyright (C) 2012 Daniel Reis
+#    Copyright (C) 2012 - 2013 Daniel Reis
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -19,18 +19,24 @@
 ##############################################################################
 
 {
-    'name': 'Project task materials',
-    'version': '1',
-    "category": "Project Management",
+    'name': 'Project Task Materials',
+    'summary': 'Record products spend in a Task',
+    'version': '1.0',
+    'category': "Project Management",
     'author': 'Daniel Reis',
-    'website': 'daniel.reis@securitas.pt',
-    'depends': ['project', 'account'],
-    'update_xml': [
+    'description': """\
+Project Tasks allow to record time spent, if the "Log work activities on tasks"
+setting is activated.
+This nodules allows to also record materials spent, as is often needed in the
+case of field service activities.
+
+Important note: this implementation module does not integrate with stocks o
+r accounting.""",
+    'depends': ['project', 'product'],
+    'data': [
         'project_view.xml',
-        'project_materials_data.xml',
         'security/ir.model.access.csv',
     ],
-    'installable': False,
-    'application': False,
+    'installable': True,
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
