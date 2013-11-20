@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+
+
+        <record model="ir.rule" id="issue_related_task_employee">
+            <field name="name">Project/Task: Employees can view Issue's related Task</field>
+            <field name="model_id" ref="project.model_project_task"/>
+            <field name="groups" eval="[(4,ref('base.group_user'))]"/>
+            <field name="domain_force">[('issue_id.message_follower_ids', 'in', [user.partner_id.id])]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <record model="ir.rule" id="issue_related_task_project_user">
+            <field name="name">Project/Task: Project Users can edit Issue's related Task</field>
+            <field name="model_id" ref="project.model_project_task"/>
+            <field name="groups" eval="[(4,ref('project.group_project_user'))]"/>
+            <field name="domain_force">[('issue_id.message_follower_ids', 'in', [user.partner_id.id])]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+
+
+    </data>
+</openerp>
