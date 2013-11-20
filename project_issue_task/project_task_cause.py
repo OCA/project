@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
-#    
+#
 #    Copyright (C) 2012 Daniel Reis
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -18,11 +18,12 @@
 #
 ##############################################################################
 
-from osv import fields, osv
+from openerp.osv import fields, orm
 
-class project_task_cause(osv.osv):
+
+class project_task_cause(orm.Model):
     _name = 'project.task.cause'
-    _description = 'Incident Cause'
+    _description = 'Issue Cause'
     _order = 'sequence'
     _columns = {
         'name': fields.char('Cause', required=True, size=64, translate=True),
@@ -33,8 +34,3 @@ class project_task_cause(osv.osv):
     _defaults = {
         'sequence': 10
     }
-project_task_cause()
-    
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
-
-

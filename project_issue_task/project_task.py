@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
-#    
-#    Copyright (C) 2012 Daniel Reis
+#
+#    Copyright (C) 2012 - 2013 Daniel Reis
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -17,22 +17,24 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from osv import fields, osv
-from tools.translate import _
 
-class project_task_reevaluate(osv.osv_memory):
-    _inherit = 'project.task.reevaluate'
+from openerp.osv import fields, orm
 
-    def compute_hours(self, cr, uid, ids, context=None):
-        """
-        Reevaluate relinks the Issue's current Task
-        """
-        task_pool  = self.pool.get('project.task')
-        issue_pool = self.pool.get('project.issue')
-        for o in task_pool.browse(cr, uid, context.get('active_ids', list()), context=context):
-            if o.issue_id and not o.issue_id.task_id:
-                issue_pool.write(cr, uid, [o.issue_id.id], {'task_id': o.id}, context=context)  
-        return super(project_task_reevaluate, self).compute_hours(cr, uid, ids, context)
-project_task_reevaluate()
 
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
+class task(orm.Model):
+    _inherit = "project.task"
+    _columns = {
+        'issue_id': fields.many2one(
+            'project.issue', 'Related Issue', readonly=True),
+        'ref': fields.char('Reference', 20),
+        'reason_id': fields.many2one('project.task.cause', 'Problem Cause'),
+        }
+
+    def action_close(self, cr, uid, ids, context=None):
+        """ On Task Close, also close Issue """
+        issue_ids = [x.issue_id.id
+                     for x in self.browse(cr, uid, ids, context=context)
+                     if x.issue_id]
+        self.pool.get('project.issue').case_close(
+            cr, uid, issue_ids, context=context)
+        return super(task, self).action_close(cr, uid, ids, context=context)

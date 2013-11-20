@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!--PROJECT ISSUE FORM -->
+        <record id="project_issue_form_view_task" model="ir.ui.view">
+            <field name="name">project_issue_form_view_task</field>
+            <field name="model">project.issue</field>
+            <field name="inherit_id" ref="project_issue.project_issue_form_view"/>
+            <field name="arch" type="xml">
+
+               <field name="task_id" position="after">
+                    <button type="object" name="action_create_task" string="Task Report" attrs="{'invisible': [('task_id', '!=', False)]}"/>
+               </field>
+
+            </field>
+        </record>
+
+    </data>
+</openerp>
