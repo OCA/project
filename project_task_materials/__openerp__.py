@@ -20,18 +20,20 @@
 
 {
     'name': 'Project Task Materials',
-    'summary': 'Record products spend in a Task',
+    'summary': 'Record products spent in a Task',
     'version': '1.0',
     'category': "Project Management",
     'author': 'Daniel Reis',
     'description': """\
-Project Tasks allow to record time spent, if the "Log work activities on tasks"
-setting is activated.
-This nodules allows to also record materials spent, as is often needed in the
-case of field service activities.
+Project Tasks allow to record time spent, but some activities, such as
+Field Service, often require you to keep a record of the materials spent.
 
-Important note: this implementation module does not integrate with stocks o
-r accounting.""",
+This module adds the ability to also this material spending.
+To use it, make sure the "Log work activities on tasks" Project setting is
+activated.
+
+Note that only a simple record is made and no accounting or moves moves ar
+actually performed.""",
     'depends': ['project', 'product'],
     'data': [
         'project_view.xml',
@@ -39,4 +41,3 @@ r accounting.""",
     ],
     'installable': True,
 }
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
