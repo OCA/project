@@ -32,7 +32,7 @@ This module adds the ability to also this material spending.
 To use it, make sure the "Log work activities on tasks" Project setting is
 activated.
 
-Note that only a simple record is made and no accounting or moves moves ar
+Note that only a simple record is made and no accounting or moves are
 actually performed.""",
     'depends': ['project', 'product'],
     'data': [
