@@ -69,10 +69,14 @@
             <field name="inherit_id" ref="project_issue.view_project_issue_filter"/>
             <field name="arch" type="xml">
 
-                <!-- Filter by Analytic Account -->
+                <!-- Filter and group by Analytic Account -->
                 <field name="id" position="after">
+                    <field name="analytic_partner_id"/>
                     <field name="analytic_account_id" string="Contract"/>
                 </field>
+                <filter string="Responsible" position="after">
+                    <filter string="Contract Customer" context="{'group_by':'analytic_partner_id'}" />
+                </filter>
 
            </field>
         </record>

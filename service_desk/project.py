@@ -35,11 +35,11 @@ class ProjectProject(orm.Model):
 
 class ProjectTask(orm.Model):
     """
-    Add related `Analytic Account` and service `Location`.
+    Add related ``Analytic Account`` and service ``Location``.
     A Location can be any Contact Partner of the AA's Partner.
     Other logic is possible, such as maintaining a specific list of service
-    addresses for each Contract, but that's out of scpoce here.
-    Modules implementing these other possibilities are very welcome..
+    addresses for each Contract, but that's out of scope herea -
+    modules implementing these other possibilities are very welcome.
     """
     _inherit = 'project.task'
     _columns = {
@@ -59,7 +59,7 @@ class ProjectTask(orm.Model):
         try:
             # try applying a parent's onchange, may it exist
             res = super(ProjectTask, self).onchange_project(
-                cr, uid, id, project_id, context) or {}
+                cr, uid, id, project_id, context=context) or {}
         except AttributeError:
             res = {}
 

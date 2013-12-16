@@ -19,7 +19,6 @@
 ##############################################################################
 
 from openerp.osv import fields, orm
-from openerp.tools.translate import _
 
 
 class ProjectIssue(orm.Model):
@@ -31,7 +30,7 @@ class ProjectIssue(orm.Model):
             domain="[('type','in',['normal','contract'])]"),
         'analytic_partner_id': fields.related(
             'analytic_account_id', 'partner_id', relation='res.partner',
-            type='many2one', string="Analytic Account Partner"),
+            type='many2one', string="Analytic Account Partner", store=True),
         'location_id': fields.many2one(
             'res.partner', 'Location',
             domain="[('parent_id','child_of',analytic_partner_id)]"),
@@ -46,7 +45,7 @@ class ProjectIssue(orm.Model):
         # on_change is necessary to populate fields on Create, before saving
         try:
             res = super(ProjectIssue, self).onchange_project(
-                cr, uid, id, project_id, context) or {}
+                cr, uid, id, project_id, contex=tcontext) or {}
         except AttributeError:
             res = {}
 
