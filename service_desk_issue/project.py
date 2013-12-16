@@ -45,7 +45,7 @@ class ProjectIssue(orm.Model):
         # on_change is necessary to populate fields on Create, before saving
         try:
             res = super(ProjectIssue, self).onchange_project(
-                cr, uid, id, project_id, contex=tcontext) or {}
+                cr, uid, id, project_id, contex=context) or {}
         except AttributeError:
             res = {}
 
