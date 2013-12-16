@@ -38,7 +38,7 @@ class ProjectTask(orm.Model):
     Add related ``Analytic Account`` and service ``Location``.
     A Location can be any Contact Partner of the AA's Partner.
     Other logic is possible, such as maintaining a specific list of service
-    addresses for each Contract, but that's out of scope herea -
+    addresses for each Contract, but that's out of scope here -
     modules implementing these other possibilities are very welcome.
     """
     _inherit = 'project.task'
