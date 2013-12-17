@@ -23,9 +23,22 @@ from openerp.osv import fields, orm
 
 class task(orm.Model):
     _inherit = "project.task"
+
+    def _fld_issue_id(self, cr, uid, ids, field, arg, context=None):
+        res = {}
+        issue_model = self.pool.get('project.issue')
+        for doc in self.browse(cr, uid, ids, context=context):
+            issue_id = issue_model.search(cr, uid, [('task_id', '=', doc.id)])
+            if issue_id:
+                res[doc.id] = issue_id[0]
+            else:
+                res[doc.id] = None
+        return res
+
     _columns = {
-        'issue_id': fields.many2one(
-            'project.issue', 'Related Issue', readonly=True),
+        'issue_id': fields.function(
+            _fld_issue_id, string="Related Issue",
+            type="many2one", relation="project.issue", store=True),
         'ref': fields.char('Reference', 20),
         'reason_id': fields.many2one('project.task.cause', 'Problem Cause'),
         }
