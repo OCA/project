@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="edit_project_sla" model="ir.ui.view">
+            <field name="name">edit_projec_sla</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="arch" type="xml">
+
+                <!-- make resource calendar always visible -->
+                <group string="Administration" position="attributes">
+                    <attribute name="groups"/>
+                </group>
+
+           </field>
+        </record>
+
+    </data>
+</openerp>

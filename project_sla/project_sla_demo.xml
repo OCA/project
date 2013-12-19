@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Working Time calendar -->
+        <record id="worktime_9_18" model="resource.calendar">
+            <field name="name">Working Days 09-13 14-18</field>
+        </record>
+        <record id="worktime 9_18_0M" model="resource.calendar.attendance">
+            <field name="dayofweek">0</field>
+            <field name="name">Monday Morning</field>
+            <field name="hour_from">9</field>
+            <field name="hour_to">13</field>
+            <field name="calendar_id" ref="worktime_9_18" />
+        </record>
+        <record id="worktime 9_18_0A" model="resource.calendar.attendance">
+            <field name="dayofweek">0</field>
+            <field name="name">Monday Afternoon</field>
+            <field name="hour_from">14</field>
+            <field name="hour_to">18</field>
+            <field name="calendar_id" ref="worktime_9_18" />
+        </record>
+        <record id="worktime 9_18_1M" model="resource.calendar.attendance">
+            <field name="dayofweek">1</field>
+            <field name="name">Tuesday Morning</field>
+            <field name="hour_from">9</field>
+            <field name="hour_to">13</field>
+            <field name="calendar_id" ref="worktime_9_18" />
+        </record>
+        <record id="worktime 9_18_1A" model="resource.calendar.attendance">
+            <field name="dayofweek">1</field>
+            <field name="name">Tuesday Afternoon</field>
+            <field name="hour_from">14</field>
+            <field name="hour_to">18</field>
+            <field name="calendar_id" ref="worktime_9_18" />
+        </record>
+        <record id="worktime 9_18_2M" model="resource.calendar.attendance">
+            <field name="dayofweek">2</field>
+            <field name="name">Wednesday Morning</field>
+            <field name="hour_from">9</field>
+            <field name="hour_to">13</field>
+            <field name="calendar_id" ref="worktime_9_18" />
+        </record>
+        <record id="worktime 9_18_2A" model="resource.calendar.attendance">
+            <field name="dayofweek">2</field>
+            <field name="name">Wednesday Afternoon</field>
+            <field name="hour_from">14</field>
+            <field name="hour_to">18</field>
+            <field name="calendar_id" ref="worktime_9_18" />
+        </record>
+       <record id="worktime 9_18_3M" model="resource.calendar.attendance">
+            <field name="dayofweek">3</field>
+            <field name="name">Thursday Morning</field>
+            <field name="hour_from">9</field>
+            <field name="hour_to">13</field>
+            <field name="calendar_id" ref="worktime_9_18" />
+        </record>
+        <record id="worktime 9_18_3A" model="resource.calendar.attendance">
+            <field name="dayofweek">3</field>
+            <field name="name">Thursday Afternoon</field>
+            <field name="hour_from">14</field>
+            <field name="hour_to">18</field>
+            <field name="calendar_id" ref="worktime_9_18" />
+        </record>
+        <record id="worktime 9_18_4M" model="resource.calendar.attendance">
+            <field name="dayofweek">4</field>
+            <field name="name">Friday Morning</field>
+            <field name="hour_from">9</field>
+            <field name="hour_to">13</field>
+            <field name="calendar_id" ref="worktime_9_18" />
+        </record>
+        <record id="worktime 9_18_4A" model="resource.calendar.attendance">
+            <field name="dayofweek">4</field>
+            <field name="name">Friday Afternoon</field>
+            <field name="hour_from">14</field>
+            <field name="hour_to">18</field>
+            <field name="calendar_id" ref="worktime_9_18" />
+        </record>
+
+        <!-- Set Project Calendar -->
+        <record id="project.project_project_1" model="project.project">
+            <field name="resource_calendar_id" ref="worktime_9_18" />
+        </record>
+
+        <!-- SLA Definition and Rules -->
+        <record id="sla_resolution" model="project.sla">
+            <field name="name">Standard Resolution Time</field>
+            <field name="control_model">project.issue</field>
+            <field name="control_field_id"
+                   ref="project_issue.field_project_issue_date_closed"/>
+        </record>
+            <record id="sla_resolution_rule1" model="project.sla.line">
+                <field name="sla_id" ref="sla_resolution"/>
+                <field name="sequence">10</field>
+                <field name="name">Resolution in two business days</field>
+                <field name="condition">obj.priority &lt;= '2'</field>
+                <field name="limit_qty">16</field>
+                <field name="warn_qty">8</field>
+            </record>
+            <record id="sla_resolution_rule2" model="project.sla.line">
+                <field name="sla_id" ref="sla_resolution"/>
+                <field name="sequence">20</field>
+                <field name="name">Resolution in three business days</field>
+                <field name="condition"></field>
+                <field name="limit_qty">24</field>
+                <field name="warn_qty">16</field>
+            </record>
+
+        <record id="sla_response" model="project.sla">
+            <field name="name">Standard Response Time</field>
+            <field name="control_model">project.issue</field>
+            <field name="control_field_id"
+                   ref="project_issue.field_project_issue_date_open"/>
+        </record>
+            <record id="sla_response_rule1" model="project.sla.line">
+                <field name="sla_id" ref="sla_response"/>
+                <field name="sequence">10</field>
+                <field name="name">Response in one business day</field>
+                <field name="condition">obj.priority &lt;= '2'</field>
+                <field name="limit_qty">8</field>
+                <field name="warn_qty">4</field>
+            </record>
+            <record id="sla_response_rule2" model="project.sla.line">
+                <field name="sla_id" ref="sla_response"/>
+                <field name="sequence">20</field>
+                <field name="name">Response in two business days</field>
+                <field name="condition"></field>
+                <field name="limit_qty">16</field>
+                <field name="warn_qty">8</field>
+            </record>
+
+        <!-- Set Contract Resolution SLA Definition -->
+        <record id="project.project_project_1_account_analytic_account" model="account.analytic.account">
+            <field name="sla_ids" eval="[(6, 0, [ref('sla_resolution')])]" />
+        </record>
+
+    </data>
+</openerp>

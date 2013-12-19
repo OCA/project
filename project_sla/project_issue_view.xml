@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Project Issue Form -->
+        <record id="project_issue_form_view_sla" model="ir.ui.view">
+            <field name="name">project_issue_form_view_sla</field>
+            <field name="model">project.issue</field>
+            <field name="inherit_id" ref="project_issue.project_issue_form_view"/>
+            <field name="arch" type="xml">
+
+              <page string="Extra Info" position="after">
+                <page name="sla_page" string="Service Levels"
+                      attrs="{'invisible': [('sla_state', '=', False)]}">
+                    <group>
+                      <group>
+                        <field name="sla_state" />
+                      </group>
+                      <group>
+                        <field name="write_date" />
+                      </group>
+                    </group>
+                    <field name="sla_control_ids"/>
+                </page>
+              </page>
+
+           </field>
+        </record>
+
+        <!-- Project Issue List  -->
+        <record model="ir.ui.view" id="project_issue_tree_view_sla">
+            <field name="name">project_issue_tree_view_slak</field>
+            <field name="model">project.issue</field>
+            <field name="inherit_id" ref="project_issue.project_issue_tree_view"/>
+            <field name="arch" type="xml">
+
+                <field name="project_id" position="after">
+                    <field name="sla_state"/>
+                </field>
+
+            </field>
+        </record>
+
+
+        <!-- Project Issue Filter -->
+        <record id="view_project_issue_filter_sdesk" model="ir.ui.view">
+            <field name="name">view_project_issue_filter_sdesk</field>
+            <field name="model">project.issue</field>
+            <field name="inherit_id" ref="project_issue.view_project_issue_filter"/>
+            <field name="arch" type="xml">
+
+                <filter string="Priority" position="after">
+                    <filter string="SLA Status" context="{'group_by':'sla_state'}" />
+                </filter>
+
+           </field>
+        </record>
+
+
+<!--
+        <record id="project_issue_kanban_view_sla" model="ir.ui.view">
+            <field name="name">project_issue_kanban_view_sla</field>
+            <field name="model">project.issue</field>
+            <field name="inherit_id" ref="project_issue.project_issue_kanban_view" />
+            <field name="arch" type="xml">
+
+                <field name="kanban_state" position="after">
+                    <field name="sla_state" />
+                </field>
+                <div class="oe_kanban_footer_left" position="inside">
+                  <div class="oe_kanban_highlight" name="sla_icon_placeholder">
+                    <span t-if="record.sla_state.raw_value === '3'"
+                          class="oe_e oe_kanban_text_red">c</span>
+                    <span t-if="record.sla_state.raw_value === '4'"
+                          class="oe_e oe_kanban_text_red">[</span>
+                    <span t-if="record.sla_state.raw_value === '1'"
+                          class="oe_e oe_kanban_text_green">W</span>
+                  </div>
+                </div>
+
+            </field>
+        </record>
+-->
+    </data>
+</openerp>
