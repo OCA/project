@@ -3,7 +3,7 @@
     <data>
 
         <record id="edit_project_sla" model="ir.ui.view">
-            <field name="name">edit_projec_sla</field>
+            <field name="name">edit_project_sla</field>
             <field name="model">project.project</field>
             <field name="inherit_id" ref="project.edit_project"/>
             <field name="arch" type="xml">

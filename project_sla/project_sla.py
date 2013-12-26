@@ -26,6 +26,7 @@ class SLADefinition(orm.Model):
     SLA Definition
     """
     _name = 'project.sla'
+    _description = 'SLA Definition'
     _columns = {
         'name': fields.char('Title', size=64, required=True, translate=True),
         'active': fields.boolean('Active'),
@@ -38,7 +39,7 @@ class SLADefinition(orm.Model):
         'sla_line_ids': fields.one2many(
             'project.sla.line', 'sla_id', 'Definitions'),
         'analytic_ids': fields.many2many(
-            'account.analytic.account',  string='Contracts'),
+            'account.analytic.account', string='Contracts'),
         }
     _defaults = {
         'active': True,
@@ -67,6 +68,7 @@ class SLARules(orm.Model):
     SLA Definition Rule Lines
     """
     _name = 'project.sla.line'
+    _definition = 'SLA Definition Rule Lines'
     _order = 'sla_id,sequence'
     _columns = {
         'sla_id': fields.many2one('project.sla', 'SLA Definition'),

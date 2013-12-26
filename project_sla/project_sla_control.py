@@ -109,7 +109,7 @@ class SLAControl(orm.Model):
           - exceeded warning dates are set to "warning"
         To be used by a scheduled job.
         """
-        now = dt.strftime(dt.now(), DT_FMT)
+        now = dt.now().strftime(DT_FMT)
         # SLAs to mark as "will fail"
         control_ids = self.search(
             cr, uid,
@@ -146,7 +146,7 @@ class SLAControl(orm.Model):
         assert isinstance(hours, int) and hours >= 0
 
         cal_obj = self.pool.get('resource.calendar')
-        target, step = hours * 3600,  16 * 3600
+        target, step = hours * 3600, 16 * 3600
         lo, hi = start_date, start_date
         while target > 0 and step > 60:
             hi = lo + timedelta(seconds=step)
@@ -237,7 +237,7 @@ class SLAControl(orm.Model):
                     break
 
         if sla_ids and not res:
-            _logger.warning("No valid SLA rule foun for %d, SLA Ids %s"
+            _logger.warning("No valid SLA rule found for %d, SLA Ids %s"
                             % (doc.id, repr([x.id for x in sla_ids])))
         return res
 

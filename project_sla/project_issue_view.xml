@@ -29,7 +29,7 @@
 
         <!-- Project Issue List  -->
         <record model="ir.ui.view" id="project_issue_tree_view_sla">
-            <field name="name">project_issue_tree_view_slak</field>
+            <field name="name">project_issue_tree_view_sla</field>
             <field name="model">project.issue</field>
             <field name="inherit_id" ref="project_issue.project_issue_tree_view"/>
             <field name="arch" type="xml">
@@ -56,30 +56,5 @@
            </field>
         </record>
 
-
-<!--
-        <record id="project_issue_kanban_view_sla" model="ir.ui.view">
-            <field name="name">project_issue_kanban_view_sla</field>
-            <field name="model">project.issue</field>
-            <field name="inherit_id" ref="project_issue.project_issue_kanban_view" />
-            <field name="arch" type="xml">
-
-                <field name="kanban_state" position="after">
-                    <field name="sla_state" />
-                </field>
-                <div class="oe_kanban_footer_left" position="inside">
-                  <div class="oe_kanban_highlight" name="sla_icon_placeholder">
-                    <span t-if="record.sla_state.raw_value === '3'"
-                          class="oe_e oe_kanban_text_red">c</span>
-                    <span t-if="record.sla_state.raw_value === '4'"
-                          class="oe_e oe_kanban_text_red">[</span>
-                    <span t-if="record.sla_state.raw_value === '1'"
-                          class="oe_e oe_kanban_text_green">W</span>
-                  </div>
-                </div>
-
-            </field>
-        </record>
--->
     </data>
 </openerp>

@@ -55,7 +55,7 @@ def link(id):
 
 def clear():
     """ Unlink all referenced records (doesn't delete them) """
-    return [(5)]
+    return [(5, 0)]
 
 
 def replace(ids):
@@ -70,6 +70,6 @@ if __name__ == "__main__":
     assert write(99, {'name': 'Monty'}) == [(1, 99, {'name': 'Monty'})]
     assert remove(99) == [(2, 99)]
     assert unlink(99) == [(3, 99)]
-    assert clear() == [(5)]
+    assert clear() == [(5, 0)]
     assert replace([97, 98, 99]) == [(6, 0, [97, 98, 99])]
     print("Done!")
