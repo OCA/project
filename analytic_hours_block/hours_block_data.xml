@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<openerp>
+    <!-- Mail template are declared in a NOUPDATE block
+         so users can freely customize/delete them -->
+    <data noupdate="1">
+        <record id="email_template_hours_block" model="email.template">
+            <field name="name">Hours Block - Send by Email</field>
+            <field name="email_from">${(object.user_id.email or object.company_id.email or 'noreply@localhost')|safe}</field>
+            <field name="subject">${object.company_id.name} Hours Block (Ref ${object.number or 'n/a'})</field>
+            <field name="email_recipients">${object.partner_id.id}</field>
+            <field name="model_id" ref="analytic_hours_block.model_account_hours_block"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="report_template" ref="block_hours_report"/>
+            <field name="report_name">Hours_Block_${(object.number or '').replace('/','_')}_${object.state == 'draft' and 'draft' or ''}</field>
+            <field name="lang">${object.partner_id.lang}</field>
+            <field name="body_html"><![CDATA[
+                <p>Hello ${object.partner_id.name},</p>
+
+                <p>Please find attached your Hours Block Report.</p>
+                <p>Best regards.</p>
+            ]]></field>
+        </record>
+    </data>
+</openerp>
