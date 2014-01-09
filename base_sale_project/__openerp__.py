@@ -2,6 +2,7 @@
 ###############################################################################
 #
 #   Module for OpenERP 
+#   Copyright (C) 2010-2013 Akretion LDTA (<http://www.akretion.com>).
 #   Copyright (C) 2013 Akretion (http://www.akretion.com).
 #   @author Benoît GUILLOT <benoit.guillot@akretion.com>
 #
@@ -32,6 +33,7 @@
     'website': 'http://www.akretion.com/',
     'depends': [
         'project',
+        'sale',
     ],
     'demo': [],
     'data': [
