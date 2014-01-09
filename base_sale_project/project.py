@@ -2,6 +2,7 @@
 ###############################################################################
 #                                                                             #
 #   sale_project for OpenERP                                                  #
+#   Copyright (C) 2010-2013 Akretion LDTA (<http://www.akretion.com>)         #
 #   Copyright (C) 2013 Akretion Benoît GUILLOT <benoit.guillot@akretion.com>  #
 #                                                                             #
 #   This program is free software: you can redistribute it and/or modify      #
@@ -23,7 +24,6 @@ from openerp.osv import fields, orm, osv
 from openerp.osv.osv import except_osv
 from tools.translate import _
 from datetime import date, datetime
-from dateutil.relativedelta import relativedelta
 
 
 class project_project(orm.Model):
@@ -34,7 +34,7 @@ class project_project(orm.Model):
 
     def _default_project_name(self, cr, uid, context={}):
         if context.get('partner_id', False) and context.get('order_name', False):
-            partner_name= self.pool.get('res.partner').browse(cr, uid,
+            partner_name= self.pool['res.partner'].browse(cr, uid,
                                                         [context['partner_id']],
                                                         context)[0].name[:64].encode('utf-8')
             year = datetime.strftime(date.today(), "%Y")
