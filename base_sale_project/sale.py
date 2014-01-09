@@ -2,6 +2,7 @@
 ###############################################################################
 #                                                                             #
 #   sale_project for OpenERP                                                  #
+#   Copyright (C) 2010-2013 Akretion LDTA (<http://www.akretion.com>)         #
 #   Copyright (C) 2013 Akretion Benoît GUILLOT <benoit.guillot@akretion.com>  #
 #                                                                             #
 #   This program is free software: you can redistribute it and/or modify      #
@@ -62,28 +63,4 @@ class sale_order(orm.Model):
                 'true_project_id': project_id,
                 'project_id': analytic_account_id,
             })
-        return True
-
-    def _prepare_write_vals(self, cr, uid, order, line, context=None):
-        return {
-            'project_id': order.true_project_id.id,
-            'qty': line.product_uom_qty,
-            'state': 'confirmed',
-        }
-
-    def action_button_confirm(self, cr, uid, ids, context=None):
-        for order in self.browse(cr, uid, ids, context=context):
-            if order.true_project_id:
-                feature_ids = []
-                for line in order.order_line:
-                    if line.feature_id:
-                        write_vals = self._prepare_write_vals(
-                            cr, uid, order, line, context=context)
-                        line.feature_id.write(write_vals, context=context)
-        return super(sale_order, self).action_button_confirm(cr, uid, ids, context=context)
-
-    def action_ship_create(self, cr, uid, ids, context=None):
-        for order in self.browse(cr, uid, ids, context=context):
-            if not order.true_project_id:
-                self._create_pickings_and_procurements(cr, uid, order, order.order_line, None, context=context)
         return True
