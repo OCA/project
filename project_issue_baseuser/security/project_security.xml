@@ -1,0 +1,72 @@
+<?xml version="1.0" coding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+
+
+        <!-- Project Managers (modified): now can access all documents *only in own projects* -->
+        <record model="ir.rule" id="project_issue.issue_project_manager_rule">
+            <field name="name">Project/Issue: project managers: sees all for Managed projects (modified)</field>
+            <field name="domain_force">[('user_id', '=', user.id)]</field>
+            <!-- Standard rule:
+            <field name="model_id" ref="model_project_issue"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4,ref('project.group_project_manager'))]"/>
+            -->
+        </record>
+
+
+        <!-- Project Users (new): can access public, followed/member or assigned -->
+        <record model="ir.rule" id="issue_employee_rule_read">
+            <field name="name">Project/Issue: project users: public, following/member or assigned</field>
+            <field name="model_id" ref="project_issue.model_project_issue"/>
+            <field name="domain_force">['|', '|','|',
+                                            ('user_id', '=', user.id),
+                                            ('project_id.privacy_visibility', 'in', ['public']),
+                                            ('message_follower_ids', 'in', [user.partner_id.id]),
+                                            ('project_id.members', 'in', [user.id]),
+                                        ]</field>
+            <field name="groups" eval="[(4,ref('project.group_project_user'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+
+        <!-- Employees (modified): can access public or followed/member; can edit only in "draft" and "cancelled" states -->
+        <record model="ir.rule" id="project_issue.issue_user_rule">
+            <field name="name">Project/Issue: employees: READ public or followed/member)</field>
+            <field name="domain_force">['|','|','|',
+                                            ('user_id', '=', user.id),
+                                            ('project_id.privacy_visibility', 'in', ['public']),
+                                            ('message_follower_ids', 'in', [user.partner_id.id]),
+                                            ('project_id.members', 'in', [user.id]),
+                                        ]</field>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+         </record>
+
+
+        <!-- Employees (new for limited edit access): can edit public or followed/member, if in "draft" or "cancelled" states -->
+        <record model="ir.rule" id="issue_employee_rule_write">
+            <field name="name">Project/Issue: employees: WRITE public or followed/member</field>
+            <field name="model_id" ref="project_issue.model_project_issue"/>
+            <field name="domain_force">['&amp;', ('stage_id.state', 'in', ['draft', 'cancelled', None]),
+                                        '|','|','|',
+                                            ('user_id', '=', user.id),
+                                            ('project_id.privacy_visibility', 'in', ['public']),
+                                            ('message_follower_ids', 'in', [user.partner_id.id]),
+                                            ('project_id.members', 'in', [user.id]),
+                                        ]</field>
+            <field name="groups" eval="[(4,ref('base.group_user'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_unlink" eval="False"/>
+         </record>
+
+
+    </data>
+</openerp>
