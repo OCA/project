@@ -28,7 +28,8 @@ class task(orm.Model):
         res = {}
         issue_model = self.pool.get('project.issue')
         for doc in self.browse(cr, uid, ids, context=context):
-            issue_id = issue_model.search(cr, uid, [('task_id', '=', doc.id)])
+            issue_id = issue_model.search(
+                cr, uid, [('task_id', '=', doc.id)], context=context)
             if issue_id:
                 res[doc.id] = issue_id[0]
             else:

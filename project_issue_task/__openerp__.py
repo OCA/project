@@ -41,7 +41,7 @@ This module adds some usability improvements:
     'depends': [
         'project_issue',
         ],
-    'update_xml': [
+    'data': [
         'project_issue_view.xml',
         'project_task_cause_view.xml',
         'project_task_view.xml',
