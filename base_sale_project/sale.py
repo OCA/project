@@ -43,18 +43,23 @@ class sale_order(orm.Model):
             res = {'value': {'project_id': project_id}}
         return res
 
+    def prepare_project_vals(self, cr, uid, order, context=None):
+        context['partner_id'] = order.partner_id.id
+        context['order_name'] = order.name
+        context['order_id'] = order.id
+        project_vals = self.pool['project.project'].default_get(cr, uid,
+                                               ['name', 'partner_id'],
+                                               context=context)
+        if order.user_id:
+            project_vals['user_id'] = order.user_id.id
+        return project_vals
+
     def create_project(self, cr, uid, ids, context=None):
         project_obj = self.pool['project.project']
         if context is None:
             context = {}
         for order in self.browse(cr, uid, ids, context=context):
-            context['partner_id'] = order.partner_id.id
-            context['order_name'] = order.name
-            project_vals = project_obj.default_get(cr, uid,
-                                                   ['name', 'partner_id'],
-                                                   context=context)
-            if order.user_id:
-                project_vals['user_id'] = order.user_id.id
+            project_vals = self.prepare_project_vals(cr, uid, order, context)
             project_id = project_obj.create(cr, uid, project_vals, context=context)
             analytic_account_id = project_obj.browse(cr, uid,
                                                      project_id,
