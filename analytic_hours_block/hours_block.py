@@ -186,14 +186,13 @@ class AccountHoursBlock(orm.Model):
         except ValueError:
             compose_form_id = False
 
-        ctx = context.copy()
-        ctx.update({
+        ctx = {
             'default_model': self._name,
             'default_res_id': ids[0],
             'default_use_template': bool(template_id),
             'default_template_id': template_id,
             'default_composition_mode': 'comment',
-            })
+        }
         return {
             'type': 'ir.actions.act_window',
             'view_type': 'form',
