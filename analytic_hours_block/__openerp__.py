@@ -45,6 +45,7 @@ you can track and follow how much has been used.
         ],
     "data": [
         "hours_block_view.xml",
+        "hours_block_data.xml",
         "hours_block_menu.xml",
         "project_view.xml",
         "report.xml",

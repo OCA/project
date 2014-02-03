@@ -44,45 +44,54 @@
             <field name="model">account.hours.block</field>
             <field name="arch" type="xml">
                 <form string="Hours Blocks" version="7.0">
-                <sheet>
-                    <h1>
-                      <field name="invoice_id" placeholder="Choose an invoice..."/>
                       <label for="type" string="Based on:" class="oe_inline"/>
                       <field name="type" class="oe_inline"/>
-                    </h1>
+                    <header>
+                        <button name="action_send_block" type="object" string="Send by Email" class="oe_highlight"/>
+                    </header>
+                    <sheet>
+                        <h1>
+                          <field name="invoice_id" placeholder="Choose an invoice..."/>
+                          <label for="type" string="Based on:" class="oe_inline"/>
+                          <field name="type" class="oe_inline"/>
+                        </h1>
 
-                    <group>
-                        <field name="last_action_date" />
-                        <field name="close_date" />
-                    </group>
+                        <group>
+                            <field name="last_action_date" />
+                            <field name="close_date" />
+                        </group>
 
-                    <group>
-                        <separator colspan="4" string="Hours Quantity / Amount"/>
-                        <field name="amount_hours_block" string="Bought"/>
-                        <field name="amount_hours_block_done" string="Used"/>
-                        <field name="amount_hours_block_delta" string="Difference"/>
-                    </group>
+                        <group>
+                            <separator colspan="4" string="Hours Quantity / Amount"/>
+                            <field name="amount_hours_block" string="Bought"/>
+                            <field name="amount_hours_block_done" string="Used"/>
+                            <field name="amount_hours_block_delta" string="Difference"/>
+                        </group>
 
-                    <group>
-                        <separator colspan="4" string="Invoice's related information"/>
-                        <field name="date_invoice"/>
-                        <field name="name"/>
-                        <field name="number"/>
-                        <field name="partner_id" groups="base.group_user"/>
-                        <field name="user_id"/>
-                        <field name="company_id" groups="base.group_multi_company" widget="selection"/>
-	                    <field name="department_id" widget="selection"/>
+                        <group>
+                            <separator colspan="4" string="Invoice's related information"/>
+                            <field name="date_invoice"/>
+                            <field name="name"/>
+                            <field name="number"/>
+                            <field name="partner_id" groups="base.group_user"/>
+                            <field name="user_id"/>
+                            <field name="company_id" groups="base.group_multi_company" widget="selection"/>
+                            <field name="department_id" widget="selection"/>
 
-                        <field name="journal_id" invisible="1"/>
-                        <field name="period_id" invisible="1" groups="account.group_account_user"/>
+                            <field name="journal_id" invisible="1"/>
+                            <field name="period_id" invisible="1" groups="account.group_account_user"/>
 
-                        <field name="currency_id"/>
-                        <newline/>
-                        <field name="residual" sum="Residual Amount"/>
-                        <field name="amount_total" sum="Total Amount"/>
-                        <field name="state"/>
-                    </group>
-                </sheet>
+                            <field name="currency_id"/>
+                            <newline/>
+                            <field name="residual" sum="Residual Amount"/>
+                            <field name="amount_total" sum="Total Amount"/>
+                            <field name="state"/>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
                 </form>
             </field>
         </record>
