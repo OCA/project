@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="account_analytic_account_recurring_form_form" model="ir.ui.view">
+            <field name="name">account.analytic.account.invoice.recurring.form.inherit</field>
+            <field name="model">account.analytic.account</field>
+            <field name="inherit_id" ref="account_analytic_analysis.account_analytic_account_form_form"/>
+            <field eval="40" name="priority"/>
+            <field name="arch" type="xml">
+                <group name='invoice_on_timesheets' position='after'>
+                    <separator string="Recurring Invoices" attrs="{'invisible': [('recurring_invoices','!=',True)]}"/>
+                    <div>
+                        <field name="recurring_invoices" on_change="onchange_recurring_invoices(recurring_invoices, date_start)" class="oe_inline"/>
+                        <label for="recurring_invoices" />
+                        <button class="oe_link" name="recurring_create_invoice" attrs="{'invisible': [('recurring_invoices','!=',True)]}" string=". create invoices" type="object" groups="base.group_no_one"/>
+                    </div>
+                    <group attrs="{'invisible': [('recurring_invoices','!=',True)]}">
+                        <label for="recurring_interval"/>
+                        <div>
+                            <field name="recurring_interval" class="oe_inline" attrs="{'required': [('recurring_invoices', '=', True)]}"/>
+                            <field name="recurring_rule_type" class="oe_inline" attrs="{'required': [('recurring_invoices', '=', True)]}"/>
+                        </div>
+                        <field name="recurring_next_date"/>
+                    </group>
+                    <label for="recurring_invoice_line_ids" attrs="{'invisible': [('recurring_invoices','=',False)]}"/>
+                    <div attrs="{'invisible': [('recurring_invoices','=',False)]}">
+                        <field name="recurring_invoice_line_ids">
+                            <tree string="Account Analytic Lines" editable="bottom">
+                                <field name="product_id" on_change="product_id_change(product_id, uom_id, quantity, name, parent.partner_id, price_unit, parent.pricelist_id, parent.company_id)"/>
+                                <field name="name"/>
+                                <field name="quantity"/>
+                                <field name="uom_id"/>
+                                <field name="price_unit"/>
+                                <field name="price_subtotal"/>
+                            </tree>
+                        </field>
+                    </div>
+                 </group>
+            </field>
+        </record>
+
+    </data>
+</openerp>
