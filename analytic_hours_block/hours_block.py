@@ -48,7 +48,7 @@ class AccountHoursBlock(orm.Model):
             # Compute hours bought
             for line in block.invoice_id.invoice_line:
                 hours_bought = 0.0
-                if line.product_id:
+                if line.product_id and line.product_id.is_in_hours_block:
                     # We will now calculate the product_quantity
                     factor = line.uos_id.factor
                     if factor == 0.0:

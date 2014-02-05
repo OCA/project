@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Author: Vincent Renaville, ported by Joel Grand-Guillaume
-#    Copyright 2010-2012 Camptocamp SA
+#    Author: Matthieu Dietrich
+#    Copyright 2014 Camptocamp SA
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -18,6 +18,21 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-import hours_block
-import report
-import product
+
+from openerp.osv import orm, fields
+
+
+class Product(orm.Model):
+    _name = "product.product"
+    _inherit = 'product.product'
+
+    _columns = {
+        'is_in_hours_block': fields.boolean(
+            'Accounted for hours block?',
+            help="Specify if you want to have invoice lines "
+                 "containing this product to be considered for hours blocks.")
+    }
+
+    _defaults = {
+        'is_in_hours_block': False
+    }
