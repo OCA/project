@@ -44,8 +44,6 @@
             <field name="model">account.hours.block</field>
             <field name="arch" type="xml">
                 <form string="Hours Blocks" version="7.0">
-                      <label for="type" string="Based on:" class="oe_inline"/>
-                      <field name="type" class="oe_inline"/>
                     <header>
                         <button name="action_send_block" type="object" string="Send by Email" class="oe_highlight"/>
                     </header>
