@@ -30,8 +30,10 @@ This module add a new feature in contracts to manage recurring invoice
 
 This is a backport of the new V8 feature available in trunk and saas. With the V8 release this module will be deprecated.
 It also add a little feature, you can use #START# and #END# in the contract line to automatically insert the dates of the invoiced period.
+
+Backport done By Yannick Buron.
 """,
-    'author': 'Yannick Buron',
+    'author': 'OpenERP SA',
     'website': 'http://openerp.com',
     'depends': ['base', 'account_analytic_analysis'],
     'data': [
