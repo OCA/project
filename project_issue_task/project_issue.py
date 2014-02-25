@@ -33,8 +33,8 @@ class project_issue(orm.Model):
         assert not rec.task_id, _("A Task is already assigned to the Issue!")
 
         rec_fields = ['project_id', 'analytic_account_id', 'location_id']
-        task_data = {x: getattr(rec, x).id for x in rec_fields
-                     if hasattr(rec, x) and getattr(rec, x)}
+        task_data = dict([(x, getattr(rec, x).id) for x in rec_fields
+                          if hasattr(rec, x) and getattr(rec, x)])
         task_data['name'] = _('Report for %s') % rec.name
         task_data['issue_id'] = rec.id
         task_data['categ_ids'] = [(6, 0, [x.id for x in rec.categ_ids])]
@@ -48,8 +48,7 @@ class project_issue(orm.Model):
             'view_mode': 'form',
             'res_model': 'project.task',
             'res_id': task_id,
-            'type': 'ir.actions.act_window',
-            }
+            'type': 'ir.actions.act_window'}
         return res
 
     def case_cancel(self, cr, uid, ids, context=None):
