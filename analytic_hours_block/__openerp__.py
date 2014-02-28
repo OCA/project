@@ -43,10 +43,10 @@ you can track and follow how much has been used.
         "analytic"
         ],
     "data": [
+        "report.xml",
         "hours_block_view.xml",
         "hours_block_data.xml",
         "hours_block_menu.xml",
-        "report.xml",
         "security/hours_block_security.xml",
         "security/ir.model.access.csv",
         ],
