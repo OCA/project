@@ -56,8 +56,5 @@ class project_task(osv.osv):
     _columns = {
         'functional_block_id': fields.many2one('project.functional_block', 'Functional Block'),
     }
-    _constraints = [
-        (osv.osv._check_recursion, 'Error! Cannot create recursive cycle.', ['parent_id'])
-    ]
     
 project_task()
