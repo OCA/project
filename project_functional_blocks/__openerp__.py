@@ -35,6 +35,9 @@ Adds functional blocks to organize the projects tasks.
      'security/ir.model.access.csv',
      'project_view.xml',
  ],
+ 'demo': [
+     'project_demo.xml',
+ ],
  'installable': True,
  'application': True,
 }
