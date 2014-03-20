@@ -56,10 +56,8 @@ class sale_order(orm.Model):
             'partner_id': order.partner_id.id,
         }
 
-    def create_project(self, cr, uid, ids, context=None):
+    def action_create_project(self, cr, uid, ids, context=None):
         project_obj = self.pool['project.project']
-        if context is None:
-            context = {}
         for order in self.browse(cr, uid, ids, context=context):
             vals = self._prepare_project_vals(cr, uid, order, context)
             project_id = project_obj.create(cr, uid, vals, context=context)

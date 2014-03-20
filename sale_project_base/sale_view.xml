@@ -15,7 +15,7 @@
                                domain="[('partner_id','=',partner_id)]"
                                attrs="{'readonly':[('partner_id','=', False)]}"/>
                         <group attrs="{'invisible':[('true_project_id', '!=', False)]}">
-                            <button name="create_project" states="draft"
+                            <button name="action_create_project" states="draft"
                                     string="Create Project"
                                     type="object" icon="gtk-execute" />
                         </group>

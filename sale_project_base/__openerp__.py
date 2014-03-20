@@ -23,11 +23,11 @@
 
 
 {
-    'name': 'base_sale_project',
+    'name': 'Sale Project Base',
     'version': '7.0',
     'category': 'Generic Modules/Others',
     'license': 'AGPL-3',
-    'description': """This module is a base module that give the posibility to
+    'description': """This module is a base module that give the possibility to
     create a project from a quotation""",
     'author': 'Akretion',
     'website': 'http://www.akretion.com/',
