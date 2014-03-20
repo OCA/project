@@ -20,20 +20,19 @@
 ##############################################################################
 {
     "name": "Project requiring functional blocks",
-    "version": "1.1dr",
+    "version": "1.2",
     "author": "Akretion",
     "website": "http://www.openerp.com",
     "category": "project Management",
     "depends": ["project"],
-    "description": """\
+    "description": """
 Adds functional blocks to organize the projects tasks.
-(fork from lp:~akretion-team/+junk/advanced-project-management)
     """,
     "demo_xml": [],
     "update_xml": [
             "security/ir.model.access.csv",
             "project_view.xml",
             ],
-    'installable': False,
+    'installable': True,
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
