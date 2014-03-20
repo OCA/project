@@ -10,11 +10,11 @@
                 <field name="project_id" position="replace">
                     <field name="project_id" invisible="1" />
                     <group col="4" colspan="2">
-                        <field name="true_project_id"
-                               on_change="true_project_id_change(true_project_id)"
+                        <field name="related_project_id"
+                               on_change="related_project_id_change(related_project_id)"
                                domain="[('partner_id','=',partner_id)]"
                                attrs="{'readonly':[('partner_id','=', False)]}"/>
-                        <group attrs="{'invisible':[('true_project_id', '!=', False)]}">
+                        <group attrs="{'invisible':[('related_project_id', '!=', False)]}">
                             <button name="action_create_project" states="draft"
                                     string="Create Project"
                                     type="object" icon="gtk-execute" />

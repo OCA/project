@@ -30,7 +30,7 @@ class sale_order(orm.Model):
     _inherit = "sale.order"
 
     _columns = {
-        'true_project_id': fields.many2one(
+        'related_project_id': fields.many2one(
             'project.project',
             'Project',
             readonly=True,
@@ -38,10 +38,10 @@ class sale_order(orm.Model):
         ),
     }
 
-    def true_project_id_change(self, cr, uid, ids, true_project_id):
+    def related_project_id_change(self, cr, uid, ids, related_project_id):
         project_obj = self.pool['project.project']
-        if true_project_id:
-            project = project_obj.browse(cr, uid, true_project_id)
+        if related_project_id:
+            project = project_obj.browse(cr, uid, related_project_id)
             return {'value': {'project_id': project.analytic_account_id.id}}
         return {}
 
@@ -63,7 +63,7 @@ class sale_order(orm.Model):
             project_id = project_obj.create(cr, uid, vals, context=context)
             project = project_obj.browse(cr, uid, project_id, context=context)
             order.write({
-                'true_project_id': project_id,
+                'related_project_id': project_id,
                 'project_id': project.analytic_account_id.id
             })
         return True

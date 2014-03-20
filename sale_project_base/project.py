@@ -30,5 +30,8 @@ class project_project(orm.Model):
     _inherit = "project.project"
 
     _columns = {
-        'order_ids': fields.one2many('sale.order', 'true_project_id', 'Orders'),
+        'order_ids': fields.one2many(
+            'sale.order',
+            'related_project_id',
+            'Orders'),
         }
