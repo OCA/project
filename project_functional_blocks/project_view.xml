@@ -8,7 +8,7 @@
             <field name="inherit_id" ref="project.view_task_form2"/>
             <field name="arch" type="xml">
                 <xpath expr="/form/sheet/group/group/field[@name='progress']" position="after">
-                    <field name="functional_block_id" select="1"/>
+                    <field name="functional_block_id"/>
                 </xpath>
             </field>
         </record>
@@ -20,7 +20,7 @@
             <field name="inherit_id" ref="project.view_task_tree2"/>
             <field name="arch" type="xml">
                 <field name="user_id" position="after">
-                    <field name="functional_block_id" select="1"/>
+                    <field name="functional_block_id"/>
                 </field>
             </field>
         </record>
@@ -82,11 +82,13 @@
 			<field name="model">project.functional_block</field>
 			<field name="type">form</field>
 			<field name="arch" type="xml">
-			   <form string="Functional block">
-					<field name="name" select="1" />
-					<field name="parent_id"/>
-					<separator colspan="4" string="Block description"/>
-					<field name="description" colspan="4" nolabel="1" />	
+                <form string="Functional block" version="7.0">
+                    <group>
+					    <field name="name"/>
+					    <field name="parent_id"/>
+                    </group>
+                    <separator string="Block description"/>
+                    <field name="description"/>
 			   </form>
 			</field>			   
 		</record>
