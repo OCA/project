@@ -18,21 +18,23 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-{
-    "name": "Project requiring functional blocks",
-    "version": "1.2",
-    "author": "Akretion",
-    "website": "http://www.openerp.com",
-    "category": "project Management",
-    "depends": ["project"],
-    "description": """
+
+{'name': 'Project requiring functional blocks',
+ 'version': '1.2',
+ 'author': 'Akretion',
+ 'website': 'www.akretion.com',
+ 'license': 'AGPL-3',
+ 'category': 'Generic Modules',
+ 'description': """
 Adds functional blocks to organize the projects tasks.
-    """,
-    "demo_xml": [],
-    "update_xml": [
-            "security/ir.model.access.csv",
-            "project_view.xml",
-            ],
-    'installable': True,
+ """,
+ 'depends': [
+     'project',
+ ],
+ 'data': [
+     'security/ir.model.access.csv',
+     'project_view.xml',
+ ],
+ 'installable': True,
+ 'application': True,
 }
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
