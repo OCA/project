@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ###############################################################################
 #
-#   Module for OpenERP 
+#   Module for OpenERP
 #   Copyright (C) 2010-2013 Akretion LDTA (<http://www.akretion.com>).
 #   Copyright (C) 2013 Akretion (http://www.akretion.com).
 #   @author Benoît GUILLOT <benoit.guillot@akretion.com>
@@ -40,6 +40,4 @@
         'sale_view.xml',
     ],
     'installable': True,
-    'active': False,
 }
-

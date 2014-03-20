@@ -13,8 +13,7 @@
                         <field name="true_project_id"
                                on_change="true_project_id_change(true_project_id)"
                                domain="[('partner_id','=',partner_id)]"
-                               attrs="{'readonly':[('partner_id','=', False)]}"
-                               context="{'partner_id': partner_id, 'partner_shipping_id': partner_shipping_id}" />
+                               attrs="{'readonly':[('partner_id','=', False)]}"/>
                         <group attrs="{'invisible':[('true_project_id', '!=', False)]}">
                             <button name="create_project" states="draft"
                                     string="Create Project"
