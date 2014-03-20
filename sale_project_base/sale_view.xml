@@ -11,7 +11,7 @@
                     <field name="project_id" invisible="1" />
                     <group col="4" colspan="2">
                         <field name="related_project_id"
-                               on_change="related_project_id_change(related_project_id)"
+                               on_change="onchange_related_project_id(related_project_id, context)"
                                domain="[('partner_id','=',partner_id)]"
                                attrs="{'readonly':[('partner_id','=', False)]}"/>
                         <group attrs="{'invisible':[('related_project_id', '!=', False)]}">

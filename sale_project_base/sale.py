@@ -38,10 +38,10 @@ class sale_order(orm.Model):
         ),
     }
 
-    def related_project_id_change(self, cr, uid, ids, related_project_id):
+    def onchange_related_project_id(self, cr, uid, ids, related_project_id, context=None):
         project_obj = self.pool['project.project']
         if related_project_id:
-            project = project_obj.browse(cr, uid, related_project_id)
+            project = project_obj.browse(cr, uid, related_project_id, context=context)
             return {'value': {'project_id': project.analytic_account_id.id}}
         return {}
 
