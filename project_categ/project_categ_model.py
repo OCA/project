@@ -26,7 +26,7 @@ class ProjectProject(orm.Model):
     _columns = {
         'task_categ_id': fields.many2one(
             'project.category', 'Root Category for Tasks'),
-        }
+    }
 
 
 class ProjectCategory(orm.Model):
@@ -36,7 +36,7 @@ class ProjectCategory(orm.Model):
         res = []
         rows = self.read(cr, uid, ids, ['name', 'parent_id'], context=context)
         for row in rows:
-            parent = row['parent_id'] and (row['parent_id'][1]+' / ') or ''
+            parent = row['parent_id'] and (row['parent_id'][1] + ' / ') or ''
             res.append((row['id'], parent + row['name']))
         return res
 
@@ -53,6 +53,11 @@ class ProjectCategory(orm.Model):
         'code': fields.char('Code', size=10),
     }
     _order = 'parent_id,name'
+    _constraints = [
+        (orm.Model._check_recursion,
+         'Error! Cannot create recursive cycle.',
+         ['PARENT_ID'])
+    ]
 
 
 class ProjectTask(orm.Model):
@@ -82,6 +87,4 @@ class ProjectTask(orm.Model):
             'project.category', string='Tags',
             domain="[('id','child_of',task_categ_id)"
                    ",('id','!=',task_categ_id)]"),
-        }
-
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
+    }
