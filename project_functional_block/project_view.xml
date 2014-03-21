@@ -44,8 +44,8 @@
 <!-- FUNCTIONAL BLOCK -->
 		<!-- Search view for software module -->
 		<record id="funct_block_search_view" model="ir.ui.view">
-            <field name="name">project.functional_block.search</field>
-            <field name="model">project.functional_block</field>
+            <field name="name">project.functional.block.search</field>
+            <field name="model">project.functional.block</field>
             <field name="type">search</field>
             <field name="arch" type="xml">
                 <search string="Search software's module">                
@@ -64,8 +64,8 @@
         
 		<!-- tree view for functional block -->
 		<record model="ir.ui.view" id="funct_block_list_view">
-			<field name="name">project.functional_block.list</field>
-			<field name="model">project.functional_block</field>
+			<field name="name">project.functional.block.list</field>
+			<field name="model">project.functional.block</field>
 			<field name="type">tree</field>
 			<field name="arch" type="xml">
 			   <tree string="Functionality categories" >				
@@ -78,8 +78,8 @@
 		
 		<!-- Form view for functional block -->
 		<record model="ir.ui.view" id="funct_categ_form_view">
-			<field name="name">project.functional_block.form</field>
-			<field name="model">project.functional_block</field>
+			<field name="name">project.functional.block.form</field>
+			<field name="model">project.functional.block</field>
 			<field name="type">form</field>
 			<field name="arch" type="xml">
                 <form string="Functional block" version="7.0">
@@ -96,7 +96,7 @@
 		<!-- OPEN BLOCK LIST -->	
 		<record model="ir.actions.act_window" id="action_funct_block_list">
 			<field name="name">Functional block list</field>
-			<field name="res_model">project.functional_block</field>
+			<field name="res_model">project.functional.block</field>
 			<field name="view_type">form</field> 
 			<field name="view_mode">tree,form</field> 
 			<field name="view_id" ref="funct_block_list_view"/>

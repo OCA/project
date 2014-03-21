@@ -24,7 +24,7 @@ from openerp.osv import fields, orm
 
 
 class project_functional_block(orm.Model):
-    _name = 'project.functional_block'
+    _name = 'project.functional.block'
     _description = 'Functional block to organize projects tasks'
 
     def name_get(self, cr, uid, ids, context=None):
@@ -42,10 +42,10 @@ class project_functional_block(orm.Model):
         'sequence': fields.integer('Sequence'),
         'description': fields.text('Description', translate=True),
         'parent_id': fields.many2one(
-            'project.functional_block',
+            'project.functional.block',
             'Parent block'),
         'child_id': fields.one2many(
-            'project.functional_block',
+            'project.functional.block',
             'parent_id',
             'Child block'),
         'complete_name': fields.function(
@@ -62,6 +62,6 @@ class project_task(orm.Model):
     _inherit = 'project.task'
     _columns = {
         'functional_block_id': fields.many2one(
-            'project.functional_block',
+            'project.functional.block',
             'Functional Block'),
     }
