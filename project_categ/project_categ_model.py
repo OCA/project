@@ -56,7 +56,7 @@ class ProjectCategory(orm.Model):
     _constraints = [
         (orm.Model._check_recursion,
          'Error! Cannot create recursive cycle.',
-         ['PARENT_ID'])
+         ['parent_id'])
     ]
 
 
