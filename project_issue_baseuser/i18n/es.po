@@ -1,0 +1,23 @@
+# Spanish translation for project-service
+# Copyright (c) 2014 Rosetta Contributors and Canonical Ltd 2014
+# This file is distributed under the same license as the project-service package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: project-service\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2013-11-14 09:33+0000\n"
+"PO-Revision-Date: 2014-03-21 11:56+0000\n"
+"Last-Translator: Pedro Manuel Baeza <pedro.baeza@gmail.com>\n"
+"Language-Team: Spanish <es@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2014-03-22 07:06+0000\n"
+"X-Generator: Launchpad (build 16967)\n"
+
+#. module: project_issue_baseuser
+#: model:ir.model,name:project_issue_baseuser.model_project_issue
+msgid "Project Issue"
+msgstr "Incidencias de proyecto"
