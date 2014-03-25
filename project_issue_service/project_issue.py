@@ -28,7 +28,7 @@ class project_issue(osv.osv):
     _inherit = 'project.issue'
     _columns = {
     #added fields:
-        'functional_block_id': fields.many2one('project.functional_block', 'Component', help = "Component (system, module, function) to be adressed"),
+        'functional_block_id': fields.many2one('project.functional.block', 'Component', help = "Component (system, module, function) to be adressed"),
         'assigned_to': fields.related('task_id', 'user_id', string = 'Task Assigned to', type="many2one", relation="res.users", store=True, help='This is the current user to whom the related task was assigned'),
         'tasks': fields.one2many('project.task', 'issue_id', 'Related tasks', help="Task history for the issue"),
         'create_uid': fields.many2one('res.users', 'Created by', help = "Person who reported the issue"),
