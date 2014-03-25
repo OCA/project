@@ -28,7 +28,7 @@ class task(osv.osv):
     _inherit = "project.task"
     _columns = {
         #modified fields:
-        'functional_block_id': fields.many2one('project.functional_block', 'Component', 
+        'functional_block_id': fields.many2one('project.functional.block', 'Component',
             help = "Component (system, module, function) to be addressed"),
         #added fields:
         'ref': fields.char('Code', 20, help="Service Order number"),
