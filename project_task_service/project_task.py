@@ -21,6 +21,7 @@
 from osv import fields, osv
 from datetime import datetime, timedelta
 
+
 class task(osv.osv):
     #FUTURE: use task recurrency, to generate maintenance plans
     #FUTURE: Apply maintenance plan templates (use Project templates?)
@@ -54,8 +55,6 @@ class task(osv.osv):
             vals = {'date_start': task_dts, 'date_end': task_dte}
             self.write(cr, uid, [t.id],vals, context=context)
         return super(task, self).do_close(cr, uid, ids, context)
-    
-task()
 
 
 class project_work(osv.osv):
@@ -64,7 +63,6 @@ class project_work(osv.osv):
     _defaults = {
         'date': lambda *a: datetime.now().strftime('%Y-%m-%d'),
     }
-project_work()
 
 
 class project_task_type(osv.osv):
@@ -72,17 +70,10 @@ class project_task_type(osv.osv):
     _columns = {
         'code': fields.char('Code', size=10),
     }
-project_task_type()
 
 
 class project_functional_block(osv.osv):
-    _inherit = 'project.functional_block'
+    _inherit = 'project.functional.block'
     _columns = {
         'code': fields.char('Code', size=10),
     }
-project_functional_block()
-
-
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
-
-
