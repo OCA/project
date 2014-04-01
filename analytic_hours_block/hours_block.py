@@ -267,74 +267,130 @@ class AccountHoursBlock(orm.Model):
             'invoice_id', 'date_invoice',
             type="date",
             string="Invoice Date",
-            store=True,
+            store={
+                'account.hours.block': (lambda self, cr, uid, ids, c=None:
+                                        ids, ['invoice_id'], 10),
+                'account.invoice': (_get_invoice, ['date_invoice'], 10),
+            },
             readonly=True),
         'user_id': fields.related(
             'invoice_id', 'user_id',
             type="many2one",
             relation="res.users",
             string="Salesman",
-            store=True,
+            store={
+                'account.hours.block': (lambda self, cr, uid, ids, c=None:
+                                        ids, ['invoice_id'], 10),
+                'account.invoice': (_get_invoice, ['user_id'], 10),
+            },
             readonly=True),
         'partner_id': fields.related(
             'invoice_id', 'partner_id',
             type="many2one",
             relation="res.partner",
             string="Partner",
-            store=True,
+            store={
+                'account.hours.block': (lambda self, cr, uid, ids, c=None:
+                                        ids, ['invoice_id'], 10),
+                'account.invoice': (_get_invoice, ['partner_id'], 10),
+            },
             readonly=True),
         'name': fields.related(
             'invoice_id', 'name',
             type="char",
             string="Description",
-            store=True,
+            store={
+                'account.hours.block': (lambda self, cr, uid, ids, c=None:
+                                        ids, ['invoice_id'], 10),
+                'account.invoice': (_get_invoice, ['name'], 10),
+            },
             readonly=True),
         'number': fields.related(
             'invoice_id', 'number',
             type="char",
             string="Number",
-            store=True,
+            store={
+                'account.hours.block': (lambda self, cr, uid, ids, c=None:
+                                        ids, ['invoice_id'], 10),
+                'account.invoice': (_get_invoice, ['number'], 10),
+            },
             readonly=True),
         'journal_id': fields.related(
             'invoice_id', 'journal_id',
             type="many2one",
             relation="account.journal",
             string="Journal",
-            store=True,
+            store={
+                'account.hours.block': (lambda self, cr, uid, ids, c=None:
+                                        ids, ['invoice_id'], 10),
+                'account.invoice': (_get_invoice, ['journal_id'], 10),
+            },
             readonly=True),
         'period_id': fields.related(
             'invoice_id', 'period_id',
             type="many2one",
             relation="account.period",
             string="Period",
-            store=True,
+            store={
+                'account.hours.block': (lambda self, cr, uid, ids, c=None:
+                                        ids, ['invoice_id'], 10),
+                'account.invoice': (_get_invoice, ['period_id'], 10),
+            },
             readonly=True),
         'company_id': fields.related(
             'invoice_id', 'company_id',
             type="many2one",
             relation="res.company",
             string="Company",
-            store=True,
+            store={
+                'account.hours.block': (lambda self, cr, uid, ids, c=None:
+                                        ids, ['invoice_id'], 10),
+                'account.invoice': (_get_invoice, ['company_id'], 10),
+            },
             readonly=True),
         'currency_id': fields.related(
             'invoice_id', 'currency_id',
             type="many2one",
             relation="res.currency",
             string="Currency",
-            store=True,
+            store={
+                'account.hours.block': (lambda self, cr, uid, ids, c=None:
+                                        ids, ['invoice_id'], 10),
+                'account.invoice': (_get_invoice, ['currency_id'], 10),
+            },
             readonly=True),
         'residual': fields.related(
             'invoice_id', 'residual',
             type="float",
             string="Residual",
-            store=True,
+            store={
+                'account.hours.block': (lambda self, cr, uid, ids, c=None:
+                                        ids, ['invoice_id'], 10),
+                'account.invoice': (_get_invoice, ['residual'], 10),
+            },
             readonly=True),
         'amount_total': fields.related(
             'invoice_id', 'amount_total',
             type="float",
             string="Total",
-            store=True,
+            store={
+                'account.hours.block': (lambda self, cr, uid, ids, c=None:
+                                        ids, ['invoice_id'], 10),
+                'account.invoice': (_get_invoice, ['amount_total'], 10),
+            },
             readonly=True),
+        'department_id': fields.related(
+            'invoice_id', 'department_id',
+             type='many2one',
+             relation='hr.department',
+             string='Department',
+            store={
+                'account.hours.block': (lambda self, cr, uid, ids, c=None:
+                                        ids, ['invoice_id'], 10),
+                'account.invoice': (_get_invoice, ['department_id'], 10),
+            },
+             readonly=True),
+
         'state': fields.related(
             'invoice_id', 'state',
             type='selection',
@@ -348,7 +404,11 @@ class AccountHoursBlock(orm.Model):
             ],
             string='State',
             readonly=True,
-            store=True),
+            store={
+                'account.hours.block': (lambda self, cr, uid, ids, c=None:
+                                        ids, ['invoice_id'], 10),
+                'account.invoice': (_get_invoice, ['state'], 10),
+            }),
     }
 
 
