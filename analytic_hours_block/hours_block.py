@@ -268,8 +268,8 @@ class AccountHoursBlock(orm.Model):
             type="date",
             string="Invoice Date",
             store={
-                'account.hours.block': (lambda self, cr, uid, ids, c=None:
-                                        ids, ['invoice_id'], 10),
+                'account.hours.block': (lambda self, cr, uid, ids, c=None: ids,
+                                        ['invoice_id'], 10),
                 'account.invoice': (_get_invoice, ['date_invoice'], 10),
             },
             readonly=True),
@@ -279,8 +279,8 @@ class AccountHoursBlock(orm.Model):
             relation="res.users",
             string="Salesman",
             store={
-                'account.hours.block': (lambda self, cr, uid, ids, c=None:
-                                        ids, ['invoice_id'], 10),
+                'account.hours.block': (lambda self, cr, uid, ids, c=None: ids,
+                                        ['invoice_id'], 10),
                 'account.invoice': (_get_invoice, ['user_id'], 10),
             },
             readonly=True),
@@ -290,8 +290,8 @@ class AccountHoursBlock(orm.Model):
             relation="res.partner",
             string="Partner",
             store={
-                'account.hours.block': (lambda self, cr, uid, ids, c=None:
-                                        ids, ['invoice_id'], 10),
+                'account.hours.block': (lambda self, cr, uid, ids, c=None: ids,
+                                        ['invoice_id'], 10),
                 'account.invoice': (_get_invoice, ['partner_id'], 10),
             },
             readonly=True),
@@ -300,8 +300,8 @@ class AccountHoursBlock(orm.Model):
             type="char",
             string="Description",
             store={
-                'account.hours.block': (lambda self, cr, uid, ids, c=None:
-                                        ids, ['invoice_id'], 10),
+                'account.hours.block': (lambda self, cr, uid, ids, c=None: ids,
+                                        ['invoice_id'], 10),
                 'account.invoice': (_get_invoice, ['name'], 10),
             },
             readonly=True),
@@ -310,8 +310,8 @@ class AccountHoursBlock(orm.Model):
             type="char",
             string="Number",
             store={
-                'account.hours.block': (lambda self, cr, uid, ids, c=None:
-                                        ids, ['invoice_id'], 10),
+                'account.hours.block': (lambda self, cr, uid, ids, c=None: ids,
+                                        ['invoice_id'], 10),
                 'account.invoice': (_get_invoice, ['number'], 10),
             },
             readonly=True),
@@ -321,8 +321,8 @@ class AccountHoursBlock(orm.Model):
             relation="account.journal",
             string="Journal",
             store={
-                'account.hours.block': (lambda self, cr, uid, ids, c=None:
-                                        ids, ['invoice_id'], 10),
+                'account.hours.block': (lambda self, cr, uid, ids, c=None: ids,
+                                        ['invoice_id'], 10),
                 'account.invoice': (_get_invoice, ['journal_id'], 10),
             },
             readonly=True),
@@ -332,8 +332,8 @@ class AccountHoursBlock(orm.Model):
             relation="account.period",
             string="Period",
             store={
-                'account.hours.block': (lambda self, cr, uid, ids, c=None:
-                                        ids, ['invoice_id'], 10),
+                'account.hours.block': (lambda self, cr, uid, ids, c=None: ids,
+                                        ['invoice_id'], 10),
                 'account.invoice': (_get_invoice, ['period_id'], 10),
             },
             readonly=True),
@@ -343,8 +343,8 @@ class AccountHoursBlock(orm.Model):
             relation="res.company",
             string="Company",
             store={
-                'account.hours.block': (lambda self, cr, uid, ids, c=None:
-                                        ids, ['invoice_id'], 10),
+                'account.hours.block': (lambda self, cr, uid, ids, c=None: ids,
+                                        ['invoice_id'], 10),
                 'account.invoice': (_get_invoice, ['company_id'], 10),
             },
             readonly=True),
@@ -354,8 +354,8 @@ class AccountHoursBlock(orm.Model):
             relation="res.currency",
             string="Currency",
             store={
-                'account.hours.block': (lambda self, cr, uid, ids, c=None:
-                                        ids, ['invoice_id'], 10),
+                'account.hours.block': (lambda self, cr, uid, ids, c=None: ids,
+                                        ['invoice_id'], 10),
                 'account.invoice': (_get_invoice, ['currency_id'], 10),
             },
             readonly=True),
@@ -364,8 +364,8 @@ class AccountHoursBlock(orm.Model):
             type="float",
             string="Residual",
             store={
-                'account.hours.block': (lambda self, cr, uid, ids, c=None:
-                                        ids, ['invoice_id'], 10),
+                'account.hours.block': (lambda self, cr, uid, ids, c=None: ids,
+                                        ['invoice_id'], 10),
                 'account.invoice': (_get_invoice, ['residual'], 10),
             },
             readonly=True),
@@ -374,8 +374,8 @@ class AccountHoursBlock(orm.Model):
             type="float",
             string="Total",
             store={
-                'account.hours.block': (lambda self, cr, uid, ids, c=None:
-                                        ids, ['invoice_id'], 10),
+                'account.hours.block': (lambda self, cr, uid, ids, c=None: ids,
+                                        ['invoice_id'], 10),
                 'account.invoice': (_get_invoice, ['amount_total'], 10),
             },
             readonly=True),
@@ -385,8 +385,8 @@ class AccountHoursBlock(orm.Model):
              relation='hr.department',
              string='Department',
             store={
-                'account.hours.block': (lambda self, cr, uid, ids, c=None:
-                                        ids, ['invoice_id'], 10),
+                'account.hours.block': (lambda self, cr, uid, ids, c=None: ids,
+                                        ['invoice_id'], 10),
                 'account.invoice': (_get_invoice, ['department_id'], 10),
             },
              readonly=True),
@@ -405,8 +405,8 @@ class AccountHoursBlock(orm.Model):
             string='State',
             readonly=True,
             store={
-                'account.hours.block': (lambda self, cr, uid, ids, c=None:
-                                        ids, ['invoice_id'], 10),
+                'account.hours.block': (lambda self, cr, uid, ids, c=None: ids,
+                                        ['invoice_id'], 10),
                 'account.invoice': (_get_invoice, ['state'], 10),
             }),
     }
