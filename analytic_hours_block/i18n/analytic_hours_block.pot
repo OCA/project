@@ -458,3 +458,13 @@ msgstr ""
 msgid "Total"
 msgstr ""
 
+#. module: analytic_hours_block
+#: field:product.product,is_in_hours_block:0
+msgid "Accounted for hours block?"
+msgstr ""
+
+#. module: analytic_hours_block
+#: help:product.product,is_in_hours_block:0
+msgid "Specify if you want to have invoice lines containing this product to be considered for hours blocks."
+msgstr ""
+
