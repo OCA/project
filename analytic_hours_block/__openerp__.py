@@ -21,6 +21,8 @@
 
 {
     "name": "Project Hours Blocks Management",
+    "version": "1.4",
+    "category": "Generic Modules/Projects & Services",
     "description": """
 Project Hours Blocks Management
 ===============================
@@ -32,10 +34,8 @@ then you input the spent hours on the hours block and
 you can track and follow how much has been used.
 
  """,
-    "version": "1.3",
     "author": "Camptocamp",
     "license": 'AGPL-3',
-    "category": "Generic Modules/Projects & Services",
     "website": "http://www.camptocamp.com",
     "depends": [
         "account",
@@ -47,6 +47,8 @@ you can track and follow how much has been used.
         "hours_block_view.xml",
         "hours_block_data.xml",
         "hours_block_menu.xml",
+        "product_view.xml",
+        "report.xml",
         "security/hours_block_security.xml",
         "security/ir.model.access.csv",
         ],
