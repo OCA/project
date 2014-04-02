@@ -21,7 +21,7 @@
 
 {
     "name": "Project Hours Blocks Management",
-    "version": "1.4",
+    "version": "1.5",
     "category": "Generic Modules/Projects & Services",
     "description": """
 Project Hours Blocks Management
@@ -40,7 +40,8 @@ you can track and follow how much has been used.
     "depends": [
         "account",
         "hr_timesheet_invoice",
-        "analytic"
+        "analytic",
+        "project",
         ],
     "data": [
         "report.xml",
@@ -48,6 +49,7 @@ you can track and follow how much has been used.
         "hours_block_data.xml",
         "hours_block_menu.xml",
         "product_view.xml",
+        "project_view.xml",
         "report.xml",
         "security/hours_block_security.xml",
         "security/ir.model.access.csv",

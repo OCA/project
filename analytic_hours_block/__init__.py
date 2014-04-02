@@ -21,3 +21,4 @@
 import hours_block
 import report
 import product
+import project
