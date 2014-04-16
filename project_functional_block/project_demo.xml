@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <record id="functional_block_1" model="project.functional.block">
+            <field name="name">WMS</field>
+            <field name="description">Warehouse Management System</field>
+        </record>
+
+        <record id="functional_block_2" model="project.functional.block">
+            <field name="name">CRM</field>
+            <field name="description">Customer Relationship Management</field>
+        </record>
+
+        <record id="functional_block_3" model="project.functional.block">
+            <field name="name">Accounting</field>
+            <field name="description">Accounting</field>
+        </record>
+
+    </data>
+</openerp>
