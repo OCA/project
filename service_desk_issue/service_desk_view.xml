@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+
+        <!-- Project Issue form -->
+        <record id="project_issue_form_view_sdesk" model="ir.ui.view">
+            <field name="name">project_issue_form_view_sdesk</field>
+            <field name="model">project.issue</field>
+            <field name="inherit_id" ref="project_issue.project_issue_form_view"/>
+            <field name="arch" type="xml">
+
+                <!-- See Analytic Account and Location, if Project is configured so -->
+                <field name="categ_ids" position="after">
+                    <group>
+                            <field name="use_analytic_account" invisible="1"/>
+                            <field name="analytic_partner_id" invisible="1"/>
+                            <field name="analytic_account_id" on_change="onchange_analytic(analytic_account_id)"
+                                   attrs="{'invisible':[('use_analytic_account','not in',['yes','req'])],'required':[('use_analytic_account','=','req')]}"/>
+                            <field name="location_id"
+                                   attrs="{'invisible':[('use_analytic_account','not in',['yes','req'])],'required':[('use_analytic_account','=','req')]}"/>
+                    </group>
+                </field>
+
+                <!-- Use on_change on Project to force updating of "related" fields, used in attrs rules -->
+                <!-- Make Project mandatory, to avoid "lost" Issues not assigned to any Service Team -->
+                <field name="project_id" position="attributes">
+                    <attribute name="on_change">onchange_project(project_id)</attribute>
+                    <attribute name="required">1</attribute>
+                </field>
+
+                <!-- Make Deadline field available -->
+                <field name="priority" position="after">
+                    <field name="date_deadline"/>
+                </field>
+
+                <!-- Friendly default values when creating a ralated Task -->
+                <field name="task_id" position="attributes">
+                    <attribute name="context">{'default_project_id': project_id, 'default_name': name, 'default_analytic_account_id': analytic_account_id, 'default_location_id': location_id}</attribute>
+                </field>
+
+           </field>
+        </record>
+
+
+        <!-- Project Issue tree list  -->
+        <record model="ir.ui.view" id="project_issue_tree_view_sdesk">
+            <field name="name">project_issue_tree_view_sdesk</field>
+            <field name="model">project.issue</field>
+            <field name="inherit_id" ref="project_issue.project_issue_tree_view"/>
+            <field name="arch" type="xml">
+
+                <!-- See Analytic Account, if Project is configured so -->
+                <field name="name" position="after">
+                    <field name="use_analytic_account" invisible="1"/>
+                    <field name="analytic_partner_id" invisible="1"/>
+                    <field name="analytic_account_id"
+                           attrs="{'invisible':[('use_analytic_account','not in',['yes','req'])],'required':[('use_analytic_account','=','req')]}"/>
+                </field>
+
+            </field>
+        </record>
+
+
+        <!-- Project Issue filter -->
+        <record id="view_project_issue_filter_sdesk" model="ir.ui.view">
+            <field name="name">view_project_issue_filter_sdesk</field>
+            <field name="model">project.issue</field>
+            <field name="inherit_id" ref="project_issue.view_project_issue_filter"/>
+            <field name="arch" type="xml">
+
+                <!-- Filter and group by Analytic Account -->
+                <field name="id" position="after">
+                    <field name="analytic_partner_id"/>
+                    <field name="analytic_account_id" string="Contract"/>
+                </field>
+                <filter string="Responsible" position="after">
+                    <filter string="Contract Customer" context="{'group_by':'analytic_partner_id'}" />
+                </filter>
+
+           </field>
+        </record>
+
+
+        <!-- Fixed: search view was not actually being used -->
+        <record id="project_issue.act_project_project_2_project_issue_all" model="ir.actions.act_window">
+            <field name="search_view_id" ref="project_issue.view_project_issue_filter"/>
+        </record>
+
+
+    </data>
+</openerp>
+
