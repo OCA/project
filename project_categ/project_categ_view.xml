@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Project Tags (Categories) form -->
+        <record id="project_category_form_view_categs" model="ir.ui.view">
+            <field name="name">project_category_form_view_sdesk</field>
+            <field name="model">project.category</field>
+            <field name="inherit_id" ref="project.project_category_form_view"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                        <newline/>
+                        <field name="parent_id"/>
+                        <newline/>
+                        <field name="child_ids" context="{'default_parent_id': active_id}"/>
+                </field>
+            </field>
+        </record>
+
+        <!-- Project form -->
+        <record id="project_form_view_categs" model="ir.ui.view">
+            <field name="name">project_form_view_categs</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="arch" type="xml">
+                <field name="parent_id" position="after">
+                        <field name="task_categ_id" domain="[('child_ids','!=',False)]"/>
+                </field>
+            </field>
+        </record>
+
+        <!-- Project Task form -->
+        <record id="project_task_form_view_categs" model="ir.ui.view">
+            <field name="name">project_task_form_view_categs</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+
+                <field name="project_id" position="attributes">
+                    <attribute name="on_change">onchange_project(project_id)</attribute>
+                </field>
+
+                <field name="project_id" position="after">
+                    <field name="task_categ_id" invisible="1"/>
+                </field>
+
+                <field name="categ_ids"  position="attributes">
+                    <attribute name="attrs">{'required':[('task_categ_id','!=',False)]}</attribute>
+                </field>
+
+            </field>
+        </record>
+
+    </data>
+</openerp>

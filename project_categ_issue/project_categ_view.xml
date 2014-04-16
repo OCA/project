@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Project form -->
+        <record id="project_form_view_categs" model="ir.ui.view">
+            <field name="name">project_form_view_categs</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="arch" type="xml">
+                <field name="parent_id" position="after">
+                        <field name="issue_categ_id" domain="[('child_ids','!=',False)]"/>
+                </field>
+            </field>
+        </record>
+
+        <!-- Project Issue form -->
+        <record id="project_issue_form_view_categs" model="ir.ui.view">
+            <field name="name">project_issue_form_view_categs</field>
+            <field name="model">project.issue</field>
+            <field name="inherit_id" ref="project_issue.project_issue_form_view"/>
+            <field name="arch" type="xml">
+
+                <field name="project_id" position="attributes">
+                    <attribute name="on_change">onchange_project(project_id)</attribute>
+                </field>
+
+                <field name="project_id" position="after">
+                    <field name="issue_categ_id" invisible="1"/>
+                </field>
+
+                <field name="categ_ids"  position="attributes">
+                    <attribute name="attrs">{'required':[('issue_categ_id','!=',False)]}</attribute>
+                </field>
+
+            </field>
+        </record>
+
+    </data>
+</openerp>
+
