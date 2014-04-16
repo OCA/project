@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Copyright (C) 2014 Akretion (http://www.akretion.com/)
+    @author: Alexis de Lattre <alexis.delattre@akretion.com>
+    The licence is in the file __openerp__.py
+-->
+
+<openerp>
+<data>
+
+<record id="project_action_item_done_timesheet_form" model="ir.ui.view">
+    <field name="name">project_action_item_done_timesheet.form</field>
+    <field name="model">project.action.item.done.timesheet</field>
+    <field name="arch" type="xml">
+        <form string="Mark Action Item as Done and Create Timesheet Line" version="7.0">
+            <group name="main">
+                <field name="name"/>
+                <field name="date"/>
+                <field name="quantity" widget="float_time"/>
+                <field name="user_id"/>
+                <field name="to_invoice"/>
+            </group>
+            <footer>
+                <button name="mark_done_with_timesheet" type="object"
+                    string="Mark as Done with Timesheet" class="oe_highlight"/>
+                <button special="cancel" string="Cancel" class="oe_link"/>
+            </footer>
+        </form>
+    </field>
+</record>
+
+<record id="project_action_item_done_timesheet_action" model="ir.actions.act_window">
+    <field name="name">Mark Action Item as Done and Create Timesheet Line</field>
+    <field name="res_model">project.action.item.done.timesheet</field>
+    <field name="view_type">form</field>
+    <field name="view_mode">form</field>
+    <field name="target">new</field>
+</record>
+
+</data>
+</openerp>

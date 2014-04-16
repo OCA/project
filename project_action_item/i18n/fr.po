@@ -1,0 +1,233 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* project_action_item
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-04-16 17:55+0000\n"
+"PO-Revision-Date: 2014-04-16 17:55+0000\n"
+"Last-Translator: Alexis de Lattre <alexis.delattre@akretion.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: project_action_item
+#: field:hr.analytic.timesheet,action_item_id:0
+#: view:project.action.item:0
+msgid "Action Item"
+msgstr "Point d'action"
+
+#. module: project_action_item
+#: model:ir.actions.act_window,name:project_action_item.project_action_item_action
+#: model:ir.ui.menu,name:project_action_item.project_action_item_menu
+#: view:project.action.item:0
+#: view:project.task:0
+#: field:project.task,action_item_ids:0
+msgid "Action Items"
+msgstr "Points d'action"
+
+#. module: project_action_item
+#: field:project.task,done_action_item_ids:0
+msgid "Action Items Done"
+msgstr "Points d'action faits"
+
+#. module: project_action_item
+#: view:project.task:0
+#: field:project.task,todo_action_item_ids:0
+msgid "Action Items To Do"
+msgstr "Points d'action à faire"
+
+#. module: project_action_item
+#: field:project.action.item,user_id:0
+msgid "Assigned To"
+msgstr "Assigné à"
+
+#. module: project_action_item
+#: view:project.action.item:0
+msgid "Back to To Do"
+msgstr "Revenir à À faire"
+
+#. module: project_action_item
+#: view:project.action.item.done.timesheet:0
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: project_action_item
+#: field:project.action.item,create_uid:0
+msgid "Created By"
+msgstr "Créé par"
+
+#. module: project_action_item
+#: field:project.action.item,create_date:0
+msgid "Creation Date"
+msgstr "Date de création"
+
+#. module: project_action_item
+#: view:project.action.item:0
+#: field:project.action.item.done.timesheet,date:0
+msgid "Date"
+msgstr "Date"
+
+#. module: project_action_item
+#: field:project.action.item,date_done:0
+msgid "Date Done"
+msgstr "Fait le"
+
+#. module: project_action_item
+#: field:project.action.item,date_deadline:0
+msgid "Deadline"
+msgstr "Date limite"
+
+#. module: project_action_item
+#: field:project.action.item,name:0
+#: field:project.action.item.done.timesheet,name:0
+#: view:project.task:0
+msgid "Description"
+msgstr "Description"
+
+#. module: project_action_item
+#: view:project.action.item:0
+#: selection:project.action.item,state:0
+msgid "Done"
+msgstr "Fait"
+
+#. module: project_action_item
+#: view:project.action.item:0
+msgid "Done with Timesheet"
+msgstr "Fait avec feuille de temps"
+
+#. module: project_action_item
+#: code:addons/project_action_item/wizard/done_generate_timesheet.py:50
+#, python-format
+msgid "Error:"
+msgstr "Erreur :"
+
+#. module: project_action_item
+#: field:project.action.item,estimated_quantity:0
+msgid "Estimated Quantity"
+msgstr "Durée estimée"
+
+#. module: project_action_item
+#: view:project.action.item:0
+msgid "Group By..."
+msgstr "Groupé par..."
+
+#. module: project_action_item
+#: model:ir.actions.act_window,name:project_action_item.project_action_item_done_timesheet_action
+#: view:project.action.item.done.timesheet:0
+msgid "Mark Action Item as Done and Create Timesheet Line"
+msgstr "Marquer le point d'action comme fait et créer la feuille de temps"
+
+#. module: project_action_item
+#: model:ir.model,name:project_action_item.model_project_action_item_done_timesheet
+msgid "Mark Project Action Item as Done with Timesheet Line"
+msgstr "Marquer le point d'action projet comme fait et créer la feuille de temps"
+
+#. module: project_action_item
+#: view:project.action.item:0
+msgid "Mark as Done"
+msgstr "Marquer comme fait"
+
+#. module: project_action_item
+#: view:project.action.item:0
+#: view:project.action.item.done.timesheet:0
+msgid "Mark as Done with Timesheet"
+msgstr "Marquer comme fait avec feuille de temps"
+
+#. module: project_action_item
+#: model:ir.actions.act_window,name:project_action_item.my_project_action_item_action
+#: model:ir.ui.menu,name:project_action_item.my_project_action_item_menu
+#: view:project.action.item:0
+msgid "My Action Items"
+msgstr "Mes points d'action"
+
+#. module: project_action_item
+#: view:project.action.item:0
+msgid "My Action Items To Do"
+msgstr "Mes points d'action à faire"
+
+#. module: project_action_item
+#: model:ir.model,name:project_action_item.model_project_action_item
+msgid "Project Action Items"
+msgstr "Points d'action projet"
+
+#. module: project_action_item
+#: field:project.action.item.done.timesheet,quantity:0
+msgid "Quantity"
+msgstr "Quantité"
+
+#. module: project_action_item
+#: field:project.action.item,task_id:0
+msgid "Related Task"
+msgstr "Tâche associée"
+
+#. module: project_action_item
+#: field:project.action.item,timesheet_ids:0
+msgid "Related Timesheets"
+msgstr "Feuilles de temps associées"
+
+#. module: project_action_item
+#: view:project.action.item:0
+msgid "Search Action Items"
+msgstr "Recherche de points d'action"
+
+#. module: project_action_item
+#: field:project.action.item,sequence:0
+msgid "Sequence"
+msgstr "Séquence"
+
+#. module: project_action_item
+#: field:project.action.item,state:0
+msgid "State"
+msgstr "État"
+
+#. module: project_action_item
+#: code:addons/project_action_item/wizard/done_generate_timesheet.py:114
+#: model:ir.model,name:project_action_item.model_project_task
+#: view:project.action.item:0
+#, python-format
+msgid "Task"
+msgstr "Tâche"
+
+#. module: project_action_item
+#: code:addons/project_action_item/wizard/done_generate_timesheet.py:51
+#, python-format
+msgid "This action item is not linked to a task, so we cannot generate a timesheet from it."
+msgstr "Ce point d'action n'est pas lié à une tâche, donc on ne peut pas générer de feuille de temps à partir de celui-ci."
+
+#. module: project_action_item
+#: field:project.action.item.done.timesheet,to_invoice:0
+msgid "Timesheet Invoicing Ratio"
+msgstr "Ratio de facturation des feuilles de temps"
+
+#. module: project_action_item
+#: model:ir.model,name:project_action_item.model_hr_analytic_timesheet
+msgid "Timesheet Line"
+msgstr "Ligne de feuille de temps"
+
+#. module: project_action_item
+#: view:project.action.item:0
+msgid "Timesheets"
+msgstr "Feuilles de temps"
+
+#. module: project_action_item
+#: view:project.action.item:0
+#: selection:project.action.item,state:0
+msgid "To Do"
+msgstr "À faire"
+
+#. module: project_action_item
+#: view:project.action.item:0
+msgid "Total Estimated Quantity"
+msgstr "Durée totale estimée"
+
+#. module: project_action_item
+#: view:project.action.item:0
+#: field:project.action.item.done.timesheet,user_id:0
+msgid "User"
+msgstr "Utilisateur"
+
