@@ -24,9 +24,9 @@ from openerp.osv import orm, fields
 from openerp.tools.translate import _
 
 
-class project_action_item_done_timesheet(orm.TransientModel):
-    _name = 'project.action.item.done.timesheet'
-    _description = 'Mark Project Action Item as Done with Timesheet Line'
+class project_action_item_timesheet(orm.TransientModel):
+    _name = 'project.action.item.timesheet'
+    _description = 'Update Action Item and Create Timesheet Line'
 
     _columns = {
         'date': fields.date('Date', required=True),
@@ -35,9 +35,11 @@ class project_action_item_done_timesheet(orm.TransientModel):
         'name': fields.char('Description', size=256, required=True),
         'to_invoice': fields.many2one(
             'hr_timesheet_invoice.factor', 'Timesheet Invoicing Ratio'),
+        'completed': fields.boolean('Action Item Completed'),
         }
 
     def default_get(self, cr, uid, fields_list, context=None):
+        print "context=", context
         if context is None:
             context = {}
         active_id = context.get('active_id')
@@ -53,13 +55,12 @@ class project_action_item_done_timesheet(orm.TransientModel):
             res = {
                 'name': item.name,
                 'quantity': item.estimated_quantity,
-                'to_invoice': (
-                    item.task_id.project_id
-                    and item.task_id.project_id.to_invoice.id or False),
+                'to_invoice': item.to_invoice.id or False,
             }
         res.update({
             'user_id': uid,
             'date': fields.date.context_today(self, cr, uid, context=context),
+            'completed': context.get('action_item_completed'),
             })
         return res
 
@@ -86,7 +87,18 @@ class project_action_item_done_timesheet(orm.TransientModel):
             })
         return res_unit['value']
 
-    def mark_done_with_timesheet(self, cr, uid, ids, context=None):
+    def _prepare_action_item_update(
+            self, cr, uid, action_item, wizard, context=None):
+        if wizard.completed:
+            res = {
+                'state': 'done',
+                'date_done': wizard.date,
+                }
+        else:
+            res = {'state': 'progress'}
+        return res
+
+    def update_action_create_timesheet(self, cr, uid, ids, context=None):
         assert len(ids) == 1, "Only one ID"
         wizard = self.browse(cr, uid, ids[0], context=context)
         if context is None:
@@ -101,11 +113,10 @@ class project_action_item_done_timesheet(orm.TransientModel):
             cr, uid, action_item, wizard, context=ts_ctx)
         self.pool['hr.analytic.timesheet'].create(
             cr, uid, ts_vals, context=ts_ctx)
+        action_vals = self._prepare_action_item_update(
+            cr, uid, action_item, wizard, context=context)
         self.pool['project.action.item'].write(
-            cr, uid, action_item_id, {
-                'state': 'done',
-                'date_done': wizard.date,
-                }, context=context)
+            cr, uid, action_item_id, action_vals, context=context)
         if context.get('project_action_item_main_view'):
             res = True
         else:

@@ -14,13 +14,20 @@
     <field name="arch" type="xml">
         <form string="Action Item" version="7.0">
             <header>
-                <button name="%(project_action_item_done_timesheet_action)d"
+                <button name="%(project_action_item_timesheet_action)d"
                     type="action" string="Mark as Done with Timesheet"
-                    class="oe_highlight" states="todo"/>
+                    class="oe_highlight" states="todo,progress"
+                    context="{'action_item_completed': True}"/>
+                <button name="%(project_action_item_timesheet_action)d"
+                    type="action" string="Mark as Progress with Timesheet"
+                    class="oe_highlight" states="todo,progress"
+                    context="{'action_item_completed': False}" />
+                <button name="set_to_progress" type="object"
+                    string="Mark as In Progress" states="todo"/>
                 <button name="set_to_done" type="object"
-                    string="Mark as Done" states="todo"/>
+                    string="Mark as Done" states="todo,progress"/>
                 <button name="back_to_todo" type="object"
-                    string="Back to To Do" states="done"/>
+                    string="Back to To Do" states="done,progress"/>
                 <field name="state" widget="statusbar"/>
             </header>
             <group name="main">
@@ -31,6 +38,7 @@
                 <field name="date_done" states="done"/>
                 <field name="estimated_quantity" widget="float_time"/>
                 <field name="user_id"/>
+                <field name="to_invoice"/>
                 <field name="create_date"/>
                 <field name="create_uid"/>
                 <field name="sequence" invisible="1"/>
@@ -46,7 +54,7 @@
     <field name="name">project_action_item.tree</field>
     <field name="model">project.action.item</field>
     <field name="arch" type="xml">
-        <tree string="Action Items" editable="bottom" colors="blue:state=='todo'">
+        <tree string="Action Items" editable="bottom" colors="blue:state=='todo';grey:state=='progress'">
             <field name="name"/>
             <field name="task_id"
                 invisible="not context.get('project_action_item_main_view')"/>
@@ -54,8 +62,12 @@
             <field name="estimated_quantity"
                 widget="float_time" sum="Total Estimated Quantity"/>
             <field name="user_id"/>
-            <button name="%(project_action_item_done_timesheet_action)d"
-                type="action" string="Done with Timesheet" states="todo"/>
+            <field name="to_invoice"/>
+            <button name="%(project_action_item_timesheet_action)d"
+                type="action" string="Progress" states="todo,progress"
+                context="{'action_item_completed': False}"/>
+            <button name="action_item_done_with_timesheet_wizard"
+                type="object" string="Done" states="todo,progress"/>
             <field name="state"
                 invisible="context.get('action_item_state_invisible')"/>
             <field name="sequence" invisible="1"/>
@@ -69,20 +81,18 @@
     <field name="arch" type="xml">
         <search string="Search Action Items">
             <field name="name" />
-            <filter name="my_action_items_todo"
-                string="My Action Items To Do"
-                domain="[('user_id', '=', uid), ('state', '=', 'todo')]"/>
+            <filter name="my_action_items_to_work"
+                string="My Action Items To Work On"
+                domain="[('user_id', '=', uid), ('state', 'in', ('todo', 'progress'))]"/>
             <filter name="my_action_items" string="My Action Items"
                 domain="[('user_id', '=', uid)]"/>
-            <filter name="todo" string="To Do"
-                domain="[('state', '=', 'todo')]" />
+            <filter name="to_work" string="To Work On"
+                domain="[('state', 'in', ('todo', 'progress'))]" />
             <filter name="done" string="Done"
                 domain="[('state', '=', 'done')]" />
             <group string="Group By..." name="groupby">
                 <filter name="user_id_groupby" string="User"
                     context="{'group_by': 'user_id'}"/>
-                <filter name="date_groupby" string="Date"
-                    context="{'group_by': 'date'}"/>
                 <filter name="task_groupby" string="Task"
                     context="{'group_by': 'task_id'}"/>
             </group>
@@ -103,7 +113,7 @@
     <field name="res_model">project.action.item</field>
     <field name="view_type">form</field>
     <field name="view_mode">tree,form</field>
-    <field name="context">{'project_action_item_main_view': True, 'search_default_my_action_items_todo': 1}</field>
+    <field name="context">{'project_action_item_main_view': True, 'search_default_my_action_items_to_work': 1}</field>
 </record>
 
 
@@ -121,8 +131,8 @@
     <field name="arch" type="xml">
         <page string="Description" position="after">
             <page name="action_items" string="Action Items">
-                <group name="todo_action_items" string="Action Items To Do">
-                    <field name="todo_action_item_ids" nolabel="1"
+                <group name="to_work_action_items" string="Action Items To Work On">
+                    <field name="to_work_action_item_ids" nolabel="1"
                         context="{'action_item_state_invisible': True}"/>
                 </group>
             </page>

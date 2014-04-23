@@ -21,6 +21,7 @@
 ##############################################################################
 
 from openerp.osv import orm, fields
+from openerp.tools.translate import _
 
 
 class project_action_item(orm.Model):
@@ -34,10 +35,13 @@ class project_action_item(orm.Model):
         'date_done': fields.date('Date Done'),
         'user_id': fields.many2one('res.users', 'Assigned To'),
         'estimated_quantity': fields.float('Estimated Quantity'),
+        'to_invoice': fields.many2one(
+            'hr_timesheet_invoice.factor', 'Expected Invoicing Ratio'),
         'timesheet_ids': fields.one2many(
             'hr.analytic.timesheet', 'action_item_id', 'Related Timesheets'),
         'state': fields.selection([
             ('todo', 'To Do'),
+            ('progress', 'In Progress'),
             ('done', 'Done'),
             ], 'State', readonly=True),
         'create_uid': fields.many2one(
@@ -46,8 +50,21 @@ class project_action_item(orm.Model):
         'sequence': fields.integer('Sequence'),
         }
 
+    def _get_default_invoice_ratio(self, cr, uid, context=None):
+        if context is None:
+            context = {}
+        active_id = context.get('active_id')
+        active_model = context.get('active_model')
+        if active_model == 'project.task' and active_id:
+            task = self.pool['project.task'].browse(
+                cr, uid, active_id, context=context)
+            return task.project_id and task.project_id.to_invoice.id or False
+        else:
+            return False
+
     _defaults = {
         'state': 'todo',
+        'to_invoice': _get_default_invoice_ratio,
         }
 
     def set_to_done(self, cr, uid, ids, context=None):
@@ -58,6 +75,12 @@ class project_action_item(orm.Model):
             }, context=context)
         return
 
+    def set_to_progress(self, cr, uid, ids, context=None):
+        self.write(cr, uid, ids, {
+            'state': 'progress',
+            }, context=context)
+        return
+
     def back_to_todo(self, cr, uid, ids, context=None):
         self.write(cr, uid, ids, {
             'state': 'todo',
@@ -65,6 +88,23 @@ class project_action_item(orm.Model):
             }, context=context)
         return
 
+    def action_item_done_with_timesheet_wizard(
+            self, cr, uid, ids, context=None):
+        # I cannot pass the context is the button of a tree view,
+        # that's why I wrote a special function for that...
+        if context is None:
+            context = {}
+        context['action_item_completed'] = True
+        return {
+        'name': _('Update Action Item and Create Timesheet Line'),
+        'type': 'ir.actions.act_window',
+        'res_model': 'project.action.item.timesheet',
+        'view_type': 'form',
+        'view_mode': 'form',
+        'nodestroy': True,
+        'target': 'new',
+        'context': context,
+        }
 
 class hr_analytic_timesheet(orm.Model):
     _inherit = "hr.analytic.timesheet"
@@ -79,9 +119,9 @@ class project_task(orm.Model):
     _inherit = "project.task"
 
     _columns = {
-        'todo_action_item_ids': fields.one2many(
+        'to_work_action_item_ids': fields.one2many(
             'project.action.item', 'task_id', 'Action Items To Do',
-            domain=[('state', '=', 'todo')]),
+            domain=[('state', 'in', ('todo', 'progress'))]),
         'done_action_item_ids': fields.one2many(
             'project.action.item', 'task_id', 'Action Items Done',
             domain=[('state', '=', 'done')]),
