@@ -31,15 +31,14 @@ class project_action_item_timesheet(orm.TransientModel):
     _columns = {
         'date': fields.date('Date', required=True),
         'user_id': fields.many2one('res.users', 'User', required=True),
-        'quantity': fields.float('Quantity'),
-        'name': fields.char('Description', size=256, required=True),
+        'hours': fields.float('Worked Hours'),
+        'name': fields.char('Work Description', size=256, required=True),
         'to_invoice': fields.many2one(
             'hr_timesheet_invoice.factor', 'Timesheet Invoicing Ratio'),
         'completed': fields.boolean('Action Item Completed'),
         }
 
     def default_get(self, cr, uid, fields_list, context=None):
-        print "context=", context
         if context is None:
             context = {}
         active_id = context.get('active_id')
@@ -52,9 +51,12 @@ class project_action_item_timesheet(orm.TransientModel):
                     _('Error:'),
                     _("This action item is not linked to a task, "
                         "so we cannot generate a timesheet from it."))
+            remaining = item.estimated_hours - item.timesheet_hours
+            if remaining < 0:
+                remaining = 0
             res = {
                 'name': item.name,
-                'quantity': item.estimated_quantity,
+                'quantity': remaining,
                 'to_invoice': item.to_invoice.id or False,
             }
         res.update({
@@ -72,14 +74,14 @@ class project_action_item_timesheet(orm.TransientModel):
         journal_id = res_user['value']['journal_id']
         product_id = res_user['value']['product_id']
         res_unit = self.pool['hr.analytic.timesheet'].on_change_unit_amount(
-            cr, uid, False, product_id, wizard.quantity, False, unit=False,
+            cr, uid, False, product_id, wizard.hours, False, unit=False,
             journal_id=journal_id, task_id=task_id, to_invoice=to_invoice,
             context=context)
         res_unit['value'].update({
             'name': wizard.name,
             'date': wizard.date,
             'user_id': wizard.user_id.id,
-            'unit_amount': wizard.quantity,
+            'unit_amount': wizard.hours,
             'journal_id': journal_id,
             'task_id': task_id,
             'to_invoice': to_invoice,

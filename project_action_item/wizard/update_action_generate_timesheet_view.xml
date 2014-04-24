@@ -16,7 +16,7 @@
             <group name="main">
                 <field name="name"/>
                 <field name="date"/>
-                <field name="quantity" widget="float_time"/>
+                <field name="hours" widget="float_time"/>
                 <field name="user_id"/>
                 <field name="to_invoice"/>
                 <field name="completed"/>

@@ -28,17 +28,39 @@ class project_action_item(orm.Model):
     _name = "project.action.item"
     _description = "Project Action Items"
 
+    def _compute_timesheet_hours(
+            self, cr, uid, ids, name, arg, context=None):
+        res = {}
+        for action in self.browse(cr, uid, ids, context=context):
+            res[action.id] = 0
+            for timesheet in action.timesheet_ids:
+                res[action.id] += timesheet.unit_amount
+        return res
+
+    def _get_action_from_timesheet(self, cr, uid, ids, context=None):
+        return self.pool['project.action.item'].search(
+            cr, uid, [('timesheet_ids', 'in', ids)], context=context)
+
     _columns = {
         'task_id': fields.many2one('project.task', 'Related Task'),
         'name': fields.char('Description', size=256, required=True),
         'date_deadline': fields.date('Deadline'),
         'date_done': fields.date('Date Done'),
         'user_id': fields.many2one('res.users', 'Assigned To'),
-        'estimated_quantity': fields.float('Estimated Quantity'),
+        'estimated_hours': fields.float('Estimated Hours'),
         'to_invoice': fields.many2one(
             'hr_timesheet_invoice.factor', 'Expected Invoicing Ratio'),
         'timesheet_ids': fields.one2many(
             'hr.analytic.timesheet', 'action_item_id', 'Related Timesheets'),
+        'timesheet_hours': fields.function(
+            _compute_timesheet_hours, type='float',
+            string="Worked Hours", readonly=True, store={
+                'hr.analytic.timesheet': (
+                    _get_action_from_timesheet,
+                    ['unit_amount', 'action_item_id'],
+                    10),
+                }, help="This is the sum of the related timesheets."
+            ),
         'state': fields.selection([
             ('todo', 'To Do'),
             ('progress', 'In Progress'),
@@ -96,15 +118,16 @@ class project_action_item(orm.Model):
             context = {}
         context['action_item_completed'] = True
         return {
-        'name': _('Update Action Item and Create Timesheet Line'),
-        'type': 'ir.actions.act_window',
-        'res_model': 'project.action.item.timesheet',
-        'view_type': 'form',
-        'view_mode': 'form',
-        'nodestroy': True,
-        'target': 'new',
-        'context': context,
+            'name': _('Update Action Item and Create Timesheet Line'),
+            'type': 'ir.actions.act_window',
+            'res_model': 'project.action.item.timesheet',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'nodestroy': True,
+            'target': 'new',
+            'context': context,
         }
+
 
 class hr_analytic_timesheet(orm.Model):
     _inherit = "hr.analytic.timesheet"
@@ -118,6 +141,19 @@ class hr_analytic_timesheet(orm.Model):
 class project_task(orm.Model):
     _inherit = "project.task"
 
+    def _compute_planned_hours(
+            self, cr, uid, ids, name, arg, context=None):
+        res = {}
+        for task in self.browse(cr, uid, ids, context=context):
+            res[task.id] = 0
+            for action in task.action_item_ids:
+                res[task.id] += action.estimated_hours
+        return res
+
+    def _get_task_from_action(self, cr, uid, ids, context=None):
+        return self.pool['project.task'].search(
+            cr, uid, [('action_item_ids', 'in', ids)], context=context)
+
     _columns = {
         'to_work_action_item_ids': fields.one2many(
             'project.action.item', 'task_id', 'Action Items To Do',
@@ -127,4 +163,14 @@ class project_task(orm.Model):
             domain=[('state', '=', 'done')]),
         'action_item_ids': fields.one2many(
             'project.action.item', 'task_id', 'Action Items'),
+        'planned_hours': fields.function(
+            _compute_planned_hours, type="float",
+            string="Initially Planned Hours", store={
+                'project.action.item': (
+                    _get_task_from_action,
+                    ['estimated_hours', 'task_id'],
+                    10),
+                },
+            help="Estimated time to do the task. It is the sum of the "
+            "estimated time of all the action items of this task."),
         }

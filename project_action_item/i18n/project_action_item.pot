@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-16 17:54+0000\n"
-"PO-Revision-Date: 2014-04-16 17:54+0000\n"
+"POT-Creation-Date: 2014-04-24 21:17+0000\n"
+"PO-Revision-Date: 2014-04-24 21:17+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -19,6 +19,11 @@ msgstr ""
 #: field:hr.analytic.timesheet,action_item_id:0
 #: view:project.action.item:0
 msgid "Action Item"
+msgstr ""
+
+#. module: project_action_item
+#: field:project.action.item.timesheet,completed:0
+msgid "Action Item Completed"
 msgstr ""
 
 #. module: project_action_item
@@ -36,9 +41,13 @@ msgid "Action Items Done"
 msgstr ""
 
 #. module: project_action_item
-#: view:project.task:0
-#: field:project.task,todo_action_item_ids:0
+#: field:project.task,to_work_action_item_ids:0
 msgid "Action Items To Do"
+msgstr ""
+
+#. module: project_action_item
+#: view:project.task:0
+msgid "Action Items To Work On"
 msgstr ""
 
 #. module: project_action_item
@@ -52,7 +61,7 @@ msgid "Back to To Do"
 msgstr ""
 
 #. module: project_action_item
-#: view:project.action.item.done.timesheet:0
+#: view:project.action.item.timesheet:0
 msgid "Cancel"
 msgstr ""
 
@@ -67,8 +76,7 @@ msgid "Creation Date"
 msgstr ""
 
 #. module: project_action_item
-#: view:project.action.item:0
-#: field:project.action.item.done.timesheet,date:0
+#: field:project.action.item.timesheet,date:0
 msgid "Date"
 msgstr ""
 
@@ -84,7 +92,6 @@ msgstr ""
 
 #. module: project_action_item
 #: field:project.action.item,name:0
-#: field:project.action.item.done.timesheet,name:0
 #: view:project.task:0
 msgid "Description"
 msgstr ""
@@ -96,19 +103,19 @@ msgid "Done"
 msgstr ""
 
 #. module: project_action_item
-#: view:project.action.item:0
-msgid "Done with Timesheet"
-msgstr ""
-
-#. module: project_action_item
-#: code:addons/project_action_item/wizard/done_generate_timesheet.py:50
+#: code:addons/project_action_item/wizard/update_action_generate_timesheet.py:51
 #, python-format
 msgid "Error:"
 msgstr ""
 
 #. module: project_action_item
-#: field:project.action.item,estimated_quantity:0
-msgid "Estimated Quantity"
+#: field:project.action.item,estimated_hours:0
+msgid "Estimated Hours"
+msgstr ""
+
+#. module: project_action_item
+#: field:project.action.item,to_invoice:0
+msgid "Expected Invoicing Ratio"
 msgstr ""
 
 #. module: project_action_item
@@ -117,14 +124,8 @@ msgid "Group By..."
 msgstr ""
 
 #. module: project_action_item
-#: model:ir.actions.act_window,name:project_action_item.project_action_item_done_timesheet_action
-#: view:project.action.item.done.timesheet:0
-msgid "Mark Action Item as Done and Create Timesheet Line"
-msgstr ""
-
-#. module: project_action_item
-#: model:ir.model,name:project_action_item.model_project_action_item_done_timesheet
-msgid "Mark Project Action Item as Done with Timesheet Line"
+#: selection:project.action.item,state:0
+msgid "In Progress"
 msgstr ""
 
 #. module: project_action_item
@@ -134,8 +135,17 @@ msgstr ""
 
 #. module: project_action_item
 #: view:project.action.item:0
-#: view:project.action.item.done.timesheet:0
 msgid "Mark as Done with Timesheet"
+msgstr ""
+
+#. module: project_action_item
+#: view:project.action.item:0
+msgid "Mark as In Progress"
+msgstr ""
+
+#. module: project_action_item
+#: view:project.action.item:0
+msgid "Mark as Progress with Timesheet"
 msgstr ""
 
 #. module: project_action_item
@@ -147,17 +157,17 @@ msgstr ""
 
 #. module: project_action_item
 #: view:project.action.item:0
-msgid "My Action Items To Do"
+msgid "My Action Items To Work On"
+msgstr ""
+
+#. module: project_action_item
+#: view:project.action.item:0
+msgid "Progress"
 msgstr ""
 
 #. module: project_action_item
 #: model:ir.model,name:project_action_item.model_project_action_item
 msgid "Project Action Items"
-msgstr ""
-
-#. module: project_action_item
-#: field:project.action.item.done.timesheet,quantity:0
-msgid "Quantity"
 msgstr ""
 
 #. module: project_action_item
@@ -186,7 +196,7 @@ msgid "State"
 msgstr ""
 
 #. module: project_action_item
-#: code:addons/project_action_item/wizard/done_generate_timesheet.py:114
+#: code:addons/project_action_item/wizard/update_action_generate_timesheet.py:127
 #: model:ir.model,name:project_action_item.model_project_task
 #: view:project.action.item:0
 #, python-format
@@ -194,13 +204,18 @@ msgid "Task"
 msgstr ""
 
 #. module: project_action_item
-#: code:addons/project_action_item/wizard/done_generate_timesheet.py:51
+#: code:addons/project_action_item/wizard/update_action_generate_timesheet.py:52
 #, python-format
 msgid "This action item is not linked to a task, so we cannot generate a timesheet from it."
 msgstr ""
 
 #. module: project_action_item
-#: field:project.action.item.done.timesheet,to_invoice:0
+#: help:project.action.item,timesheet_hours:0
+msgid "This is the sum of the related timesheets."
+msgstr ""
+
+#. module: project_action_item
+#: field:project.action.item.timesheet,to_invoice:0
 msgid "Timesheet Invoicing Ratio"
 msgstr ""
 
@@ -215,19 +230,48 @@ msgid "Timesheets"
 msgstr ""
 
 #. module: project_action_item
-#: view:project.action.item:0
 #: selection:project.action.item,state:0
 msgid "To Do"
 msgstr ""
 
 #. module: project_action_item
 #: view:project.action.item:0
-msgid "Total Estimated Quantity"
+msgid "To Work On"
 msgstr ""
 
 #. module: project_action_item
 #: view:project.action.item:0
-#: field:project.action.item.done.timesheet,user_id:0
+msgid "Total Estimated Hours"
+msgstr ""
+
+#. module: project_action_item
+#: code:addons/project_action_item/project.py:121
+#: model:ir.actions.act_window,name:project_action_item.project_action_item_timesheet_action
+#: model:ir.model,name:project_action_item.model_project_action_item_timesheet
+#: view:project.action.item.timesheet:0
+#, python-format
+msgid "Update Action Item and Create Timesheet Line"
+msgstr ""
+
+#. module: project_action_item
+#: view:project.action.item.timesheet:0
+msgid "Update Action and Create Timesheet"
+msgstr ""
+
+#. module: project_action_item
+#: view:project.action.item:0
+#: field:project.action.item.timesheet,user_id:0
 msgid "User"
+msgstr ""
+
+#. module: project_action_item
+#: field:project.action.item.timesheet,name:0
+msgid "Work Description"
+msgstr ""
+
+#. module: project_action_item
+#: field:project.action.item,timesheet_hours:0
+#: field:project.action.item.timesheet,hours:0
+msgid "Worked Hours"
 msgstr ""
 

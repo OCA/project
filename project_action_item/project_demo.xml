@@ -6,7 +6,7 @@
     <field name="name">Write specs</field>
     <field name="task_id" ref="project.project_task_8"/>
     <field name="user_id" ref="base.user_demo"/>
-    <field name="estimated_quantity">4.5</field>
+    <field name="estimated_hours">4.5</field>
     <field name="sequence">1</field>
 </record>
 
@@ -14,7 +14,7 @@
     <field name="name">Develop a proto</field>
     <field name="task_id" ref="project.project_task_8"/>
     <field name="user_id" ref="base.user_demo"/>
-    <field name="estimated_quantity">16</field>
+    <field name="estimated_hours">16</field>
     <field name="sequence">2</field>
 </record>
 
@@ -22,7 +22,7 @@
     <field name="name">Show proto to management</field>
     <field name="task_id" ref="project.project_task_8"/>
     <field name="user_id" ref="base.user_demo"/>
-    <field name="estimated_quantity">1</field>
+    <field name="estimated_hours">1</field>
     <field name="sequence">3</field>
 </record>
 
@@ -30,7 +30,7 @@
     <field name="name">Update specs after management meeting</field>
     <field name="task_id" ref="project.project_task_8"/>
     <field name="user_id" ref="base.user_demo"/>
-    <field name="estimated_quantity">1</field>
+    <field name="estimated_hours">1</field>
     <field name="sequence">4</field>
 </record>
 
@@ -38,7 +38,7 @@
     <field name="name">Develop final version</field>
     <field name="task_id" ref="project.project_task_8"/>
     <field name="user_id" ref="base.user_demo"/>
-    <field name="estimated_quantity">42</field>
+    <field name="estimated_hours">42</field>
     <field name="sequence">5</field>
 </record>
 
@@ -46,7 +46,7 @@
     <field name="name">Show final version to usability team</field>
     <field name="task_id" ref="project.project_task_8"/>
     <field name="user_id" ref="base.user_demo"/>
-    <field name="estimated_quantity">3</field>
+    <field name="estimated_hours">3</field>
     <field name="sequence">6</field>
 </record>
 
@@ -54,7 +54,7 @@
     <field name="name">Merge proposal and review</field>
     <field name="task_id" ref="project.project_task_8"/>
     <field name="user_id" ref="base.user_demo"/>
-    <field name="estimated_quantity">3.5</field>
+    <field name="estimated_hours">3.5</field>
     <field name="sequence">7</field>
 </record>
 

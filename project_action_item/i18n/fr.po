@@ -6,9 +6,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-16 17:55+0000\n"
-"PO-Revision-Date: 2014-04-16 17:55+0000\n"
-"Last-Translator: Alexis de Lattre <alexis.delattre@akretion.com>\n"
+"POT-Creation-Date: 2014-04-24 21:17+0000\n"
+"PO-Revision-Date: 2014-04-24 21:17+0000\n"
+"Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,6 +20,11 @@ msgstr ""
 #: view:project.action.item:0
 msgid "Action Item"
 msgstr "Point d'action"
+
+#. module: project_action_item
+#: field:project.action.item.timesheet,completed:0
+msgid "Action Item Completed"
+msgstr "Point d'action fini"
 
 #. module: project_action_item
 #: model:ir.actions.act_window,name:project_action_item.project_action_item_action
@@ -36,10 +41,14 @@ msgid "Action Items Done"
 msgstr "Points d'action faits"
 
 #. module: project_action_item
-#: view:project.task:0
-#: field:project.task,todo_action_item_ids:0
+#: field:project.task,to_work_action_item_ids:0
 msgid "Action Items To Do"
 msgstr "Points d'action à faire"
+
+#. module: project_action_item
+#: view:project.task:0
+msgid "Action Items To Work On"
+msgstr "Points d'action à travailler"
 
 #. module: project_action_item
 #: field:project.action.item,user_id:0
@@ -52,7 +61,7 @@ msgid "Back to To Do"
 msgstr "Revenir à À faire"
 
 #. module: project_action_item
-#: view:project.action.item.done.timesheet:0
+#: view:project.action.item.timesheet:0
 msgid "Cancel"
 msgstr "Annuler"
 
@@ -67,8 +76,7 @@ msgid "Creation Date"
 msgstr "Date de création"
 
 #. module: project_action_item
-#: view:project.action.item:0
-#: field:project.action.item.done.timesheet,date:0
+#: field:project.action.item.timesheet,date:0
 msgid "Date"
 msgstr "Date"
 
@@ -84,7 +92,6 @@ msgstr "Date limite"
 
 #. module: project_action_item
 #: field:project.action.item,name:0
-#: field:project.action.item.done.timesheet,name:0
 #: view:project.task:0
 msgid "Description"
 msgstr "Description"
@@ -96,20 +103,20 @@ msgid "Done"
 msgstr "Fait"
 
 #. module: project_action_item
-#: view:project.action.item:0
-msgid "Done with Timesheet"
-msgstr "Fait avec feuille de temps"
-
-#. module: project_action_item
-#: code:addons/project_action_item/wizard/done_generate_timesheet.py:50
+#: code:addons/project_action_item/wizard/update_action_generate_timesheet.py:51
 #, python-format
 msgid "Error:"
 msgstr "Erreur :"
 
 #. module: project_action_item
-#: field:project.action.item,estimated_quantity:0
-msgid "Estimated Quantity"
-msgstr "Durée estimée"
+#: field:project.action.item,estimated_hours:0
+msgid "Estimated Hours"
+msgstr "Heures estimées"
+
+#. module: project_action_item
+#: field:project.action.item,to_invoice:0
+msgid "Expected Invoicing Ratio"
+msgstr "Expected Invoicing Ratio"
 
 #. module: project_action_item
 #: view:project.action.item:0
@@ -117,15 +124,9 @@ msgid "Group By..."
 msgstr "Groupé par..."
 
 #. module: project_action_item
-#: model:ir.actions.act_window,name:project_action_item.project_action_item_done_timesheet_action
-#: view:project.action.item.done.timesheet:0
-msgid "Mark Action Item as Done and Create Timesheet Line"
-msgstr "Marquer le point d'action comme fait et créer la feuille de temps"
-
-#. module: project_action_item
-#: model:ir.model,name:project_action_item.model_project_action_item_done_timesheet
-msgid "Mark Project Action Item as Done with Timesheet Line"
-msgstr "Marquer le point d'action projet comme fait et créer la feuille de temps"
+#: selection:project.action.item,state:0
+msgid "In Progress"
+msgstr "En cours"
 
 #. module: project_action_item
 #: view:project.action.item:0
@@ -134,9 +135,18 @@ msgstr "Marquer comme fait"
 
 #. module: project_action_item
 #: view:project.action.item:0
-#: view:project.action.item.done.timesheet:0
 msgid "Mark as Done with Timesheet"
 msgstr "Marquer comme fait avec feuille de temps"
+
+#. module: project_action_item
+#: view:project.action.item:0
+msgid "Mark as In Progress"
+msgstr "Marquer comme en cours"
+
+#. module: project_action_item
+#: view:project.action.item:0
+msgid "Mark as Progress with Timesheet"
+msgstr "Marquer comme en cours avec feuille de temps"
 
 #. module: project_action_item
 #: model:ir.actions.act_window,name:project_action_item.my_project_action_item_action
@@ -147,18 +157,18 @@ msgstr "Mes points d'action"
 
 #. module: project_action_item
 #: view:project.action.item:0
-msgid "My Action Items To Do"
-msgstr "Mes points d'action à faire"
+msgid "My Action Items To Work On"
+msgstr "Mes points d'action à travailler"
+
+#. module: project_action_item
+#: view:project.action.item:0
+msgid "Progress"
+msgstr "Avancer"
 
 #. module: project_action_item
 #: model:ir.model,name:project_action_item.model_project_action_item
 msgid "Project Action Items"
 msgstr "Points d'action projet"
-
-#. module: project_action_item
-#: field:project.action.item.done.timesheet,quantity:0
-msgid "Quantity"
-msgstr "Quantité"
 
 #. module: project_action_item
 #: field:project.action.item,task_id:0
@@ -186,7 +196,7 @@ msgid "State"
 msgstr "État"
 
 #. module: project_action_item
-#: code:addons/project_action_item/wizard/done_generate_timesheet.py:114
+#: code:addons/project_action_item/wizard/update_action_generate_timesheet.py:127
 #: model:ir.model,name:project_action_item.model_project_task
 #: view:project.action.item:0
 #, python-format
@@ -194,15 +204,20 @@ msgid "Task"
 msgstr "Tâche"
 
 #. module: project_action_item
-#: code:addons/project_action_item/wizard/done_generate_timesheet.py:51
+#: code:addons/project_action_item/wizard/update_action_generate_timesheet.py:52
 #, python-format
 msgid "This action item is not linked to a task, so we cannot generate a timesheet from it."
 msgstr "Ce point d'action n'est pas lié à une tâche, donc on ne peut pas générer de feuille de temps à partir de celui-ci."
 
 #. module: project_action_item
-#: field:project.action.item.done.timesheet,to_invoice:0
+#: help:project.action.item,timesheet_hours:0
+msgid "This is the sum of the related timesheets."
+msgstr "Ce champ est la somme des feuilles de temps associées."
+
+#. module: project_action_item
+#: field:project.action.item.timesheet,to_invoice:0
 msgid "Timesheet Invoicing Ratio"
-msgstr "Ratio de facturation des feuilles de temps"
+msgstr "Timesheet Invoicing Ratio"
 
 #. module: project_action_item
 #: model:ir.model,name:project_action_item.model_hr_analytic_timesheet
@@ -215,19 +230,48 @@ msgid "Timesheets"
 msgstr "Feuilles de temps"
 
 #. module: project_action_item
-#: view:project.action.item:0
 #: selection:project.action.item,state:0
 msgid "To Do"
 msgstr "À faire"
 
 #. module: project_action_item
 #: view:project.action.item:0
-msgid "Total Estimated Quantity"
-msgstr "Durée totale estimée"
+msgid "To Work On"
+msgstr "À travailler"
 
 #. module: project_action_item
 #: view:project.action.item:0
-#: field:project.action.item.done.timesheet,user_id:0
+msgid "Total Estimated Hours"
+msgstr "Nb d'heures total estimée"
+
+#. module: project_action_item
+#: code:addons/project_action_item/project.py:121
+#: model:ir.actions.act_window,name:project_action_item.project_action_item_timesheet_action
+#: model:ir.model,name:project_action_item.model_project_action_item_timesheet
+#: view:project.action.item.timesheet:0
+#, python-format
+msgid "Update Action Item and Create Timesheet Line"
+msgstr "Mettre à jour le point d'action et créer la ligne de feuille de temps"
+
+#. module: project_action_item
+#: view:project.action.item.timesheet:0
+msgid "Update Action and Create Timesheet"
+msgstr "Mettre à jour le point d'action et créer la feuille de temps"
+
+#. module: project_action_item
+#: view:project.action.item:0
+#: field:project.action.item.timesheet,user_id:0
 msgid "User"
 msgstr "Utilisateur"
+
+#. module: project_action_item
+#: field:project.action.item.timesheet,name:0
+msgid "Work Description"
+msgstr "Description du travail réalisé"
+
+#. module: project_action_item
+#: field:project.action.item,timesheet_hours:0
+#: field:project.action.item.timesheet,hours:0
+msgid "Worked Hours"
+msgstr "Heures travaillées"
 
