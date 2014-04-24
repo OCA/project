@@ -41,6 +41,46 @@
              </field>
          </record>
 
+        <record id="view_task_search_form" model="ir.ui.view">
+            <field name="name">project.task.search.form</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_search_form"/>
+            <field name="arch" type="xml">
+              <field name="user_id" position="after">
+                <field name="department_id"/>
+              </field>
+              <filter string="Users" name="group_user_id" icon="terp-personal" domain="[]"  context="{'group_by':'user_id'}" position="after">
+                <filter string="Department" name="group_department_id" icon="terp-personal" domain="[]"  context="{'group_by':'department_id'}"/>
+              </filter>
+            </field>
+        </record>
+
+
+        <record id="view_task_form2" model="ir.ui.view">
+            <field name="name">project.task.departement.form</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field eval="2" name="priority"/>
+            <field name="arch" type="xml">
+                <field name="user_id" attrs="{'readonly':[('state','in',['done', 'cancelled'])]}" options='{"no_open": True}' position="after">
+                  <field name="department_id" />
+                </field>
+            </field>
+        </record>
+
+        <record id="view_task_tree2" model="ir.ui.view">
+            <field name="name">project.task.department.tree</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_tree2"/>
+            <field eval="2" name="priority"/>
+            <field name="arch" type="xml">
+                <field name="user_id" invisible="context.get('user_invisible', False)" position="after">
+                  <field name="department_id" invisible="1"/>
+                </field>
+            </field>
+        </record>
+
+
     </data>
 </openerp>
 
