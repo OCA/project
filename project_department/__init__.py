@@ -1,1 +1,1 @@
-#empty
+from . import project
