@@ -135,13 +135,12 @@
     <field name="model">project.task</field>
     <field name="inherit_id" ref="project.view_task_form2"/>
     <field name="arch" type="xml">
-        <page string="Description" position="after">
-            <page name="action_items" string="Action Items">
-                <group name="to_work_action_items" string="Action Items To Work On">
-                    <field name="to_work_action_item_ids" nolabel="1"/>
-                </group>
-            </page>
-        </page>
+        <field name="work_ids" position="before">
+            <group name="to_work_action_items" string="Action Items To Work On">
+                <field name="to_work_action_item_ids" nolabel="1"/>
+            </group>
+            <separator string="Timesheets" />
+        </field>
     </field>
 </record>
 
