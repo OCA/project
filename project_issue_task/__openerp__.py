@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Copyright (C) 2012 Daniel Reis
+#    Copyright (C) 2012 - 2013 Daniel Reis
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -19,41 +19,34 @@
 ##############################################################################
 
 {
-    'name': 'Project Issue and Task integration',
+    'name': 'Project Issue related Tasks',
+    'summary': 'Use Tasks to support Issue resolution reports',
     'version': '1.1',
     'category': 'Project Management',
     'description': """\
-Integrate Issues and Tasks in a common workflow, as is common in service management scenarios.
+Support for the use case where solving an Issue means a Task should be done,
+such as an on site visit, and a report must be made to document the work done.
+This is a common scenario in technical field services.
 
-1. End user creates new Issue
-2. Service Desk User reviews the new Issue:
-    If a technical person intervention is needed, creates a Task for it.
-    If not, it's closed without the need for an intervention Task.
-3. Service Team User schedules the new Task
-4. Service Team User completes the Task. The issue is automatically closed.
+The Issue form already has a "Task" field, allowing to create a Task related
+to an Issue.
+This module adds some usability improvements:
 
-CHANGE LOG
-============
-1.1    Reference sequence (`ref` field) moved to module `project_issue_sequences`.
-
+  * "Create Task" button on the Issue form
+  * Automaticaly Close the Issue when the Task is Closed
+  * Automatically Cancel the Task when Issue is Cancelled
+  * Make the Task also visible to all followers of the related Issue
 """,
     'author': 'Daniel Reis',
-    'website': 'daniel.reis@securitas.pt',
     'depends': [
-        'project', 'project_functional_blocks',
         'project_issue',
-        'project_issue_department',
-        'project_issue_sequences',
-        'crm_categ_hierarchy',
-        'crm',
         ],
-    'update_xml': [
+    'data': [
         'project_issue_view.xml',
+        'project_task_cause_view.xml',
         'project_task_view.xml',
-        'board_project_view.xml',
-        #'project_issue_workflow.xml', #<= not using it, to avoid migrating former Issues to the new workflow
+        'security/ir.model.access.csv',
+        'security/project_security.xml',
         ],
-    'installable': False,
-    'application': True,
+    'installable': True,
 }
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

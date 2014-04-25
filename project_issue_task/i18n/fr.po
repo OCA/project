@@ -1,0 +1,97 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* project_issue_task
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-11-21 21:31+0000\n"
+"PO-Revision-Date: 2013-11-21 21:31+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: project_issue_task
+#: code:addons/project_issue_task/project_issue.py:38
+#, python-format
+msgid "Report for %s"
+msgstr "Rapport pour %s"
+
+#. module: project_issue_task
+#: view:project.issue:0
+msgid "Task Report"
+msgstr "Rapport de tâche"
+
+#. module: project_issue_task
+#: field:project.task.cause,code:0
+msgid "Code"
+msgstr "Code"
+
+#. module: project_issue_task
+#: field:project.task.cause,description:0
+msgid "Description"
+msgstr "Description"
+
+#. module: project_issue_task
+#: field:project.task,ref:0
+msgid "Reference"
+msgstr "Référence"
+
+#. module: project_issue_task
+#: model:ir.model,name:project_issue_task.model_project_issue
+msgid "Project Issue"
+msgstr "Incident"
+
+#. module: project_issue_task
+#: field:project.task.cause,sequence:0
+msgid "Sequence"
+msgstr "Sequence"
+
+#. module: project_issue_task
+#: field:project.task,reason_id:0
+msgid "Problem Cause"
+msgstr "Cause du problème"
+
+#. module: project_issue_task
+#: field:project.task,issue_id:0
+msgid "Related Issue"
+msgstr "Incident lié"
+
+#. module: project_issue_task
+#: model:ir.model,name:project_issue_task.model_project_task
+msgid "Task"
+msgstr "Tâche"
+
+#. module: project_issue_task
+#: code:addons/project_issue_task/project_issue.py:33
+#, python-format
+msgid "A Task is already assigned to the Issue!"
+msgstr "Une tâche est déjà liée à l'incident!"
+
+#. module: project_issue_task
+#: model:ir.model,name:project_issue_task.model_project_task_cause
+msgid "Issue Cause"
+msgstr "Cause de l'incident"
+
+#. module: project_issue_task
+#: field:project.task.cause,name:0
+msgid "Cause"
+msgstr "Cause"
+
+#. module: project_issue_task
+#: model:ir.actions.act_window,name:project_issue_task.open_task_cause_form
+#: model:ir.ui.menu,name:project_issue_task.menu_task_cause_view
+#: view:project.task.cause:0
+msgid "Task Issue Causes"
+msgstr "Causes des incidents"
+
+#. module: project_issue_task
+#: code:addons/project_issue_task/project_issue.py:46
+#, python-format
+msgid "Issue Task Report"
+msgstr "Rapport des tâches de l'incident"
+
