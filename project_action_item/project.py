@@ -43,6 +43,9 @@ class project_action_item(orm.Model):
 
     _columns = {
         'task_id': fields.many2one('project.task', 'Related Task'),
+        'project_id': fields.related(
+            'task_id', 'project_id', type='many2one',
+            relation="project.project", readonly=True, string="Project"),
         'name': fields.char('Description', size=256, required=True),
         'date_deadline': fields.date('Deadline'),
         'date_done': fields.date('Date Done'),
