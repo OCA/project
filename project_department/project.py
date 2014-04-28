@@ -26,12 +26,12 @@ class ProjectTask(orm.Model):
     
     _inherit = 'project.task'
     _columns = {
-        'department_id': fields.related(
+        'project_department_id': fields.related(
                 'project_id',
                 'department_id',
                 type='many2one',
                 relation='hr.department',
-                string='Department',
+                string='Project Department',
                 store=True,
                 readonly=True),
     }
