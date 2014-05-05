@@ -14,7 +14,7 @@
     <field name="arch" type="xml">
         <form string="Update Action Item and Create Timesheet Line" version="7.0">
             <group name="main">
-                <field name="name"/>
+                <field name="name" widget="text"/>
                 <field name="date"/>
                 <field name="hours" widget="float_time"/>
                 <field name="user_id"/>

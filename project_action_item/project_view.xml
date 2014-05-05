@@ -35,7 +35,7 @@
                     invisible="not context.get('project_action_item_main_view')"/>
                 <field name="task_id"
                     invisible="not context.get('project_action_item_main_view')"/>
-                <field name="name"/>
+                <field name="name" widget="text"/>
                 <field name="date_deadline"/>
                 <field name="date_done" states="done"/>
                 <field name="estimated_hours" widget="float_time"/>
