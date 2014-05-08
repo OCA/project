@@ -38,7 +38,7 @@ class AnalyticLine(orm.Model):
             relation='hr.department',
             string='Account Department',
             store=True,
-            readonly=True
+            readonly=True,
             help="Account's related department"),
     }
 
