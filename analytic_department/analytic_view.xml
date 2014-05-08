@@ -34,6 +34,7 @@
             <field name="arch" type="xml">
                 <field name="company_id" position="after">
                     <field name="department_id"/>
+                    <field name="account_department_id"/>
                 </field>
             </field>
         </record>
@@ -45,6 +46,7 @@
             <field name="arch" type="xml">
                 <field name="company_id" position="after">
                     <field name="department_id"/>
+                    <field name="account_department_id"/>
                 </field>
             </field>
         </record>
@@ -56,9 +58,11 @@
             <field name="arch" type="xml">
                 <field name="user_id" position="before">
                     <field name="department_id" widget="selection"/>
+                    <field name="account_department_id" widget="selection"/>
                 </field>
                 <xpath expr="/search/group/filter[@string='User']" position="after">
                     <filter string="Department" icon="terp-folder-orange" domain="[]" context="{'group_by':'department_id'}"/>
+                    <filter string="Account Department" icon="terp-folder-orange" domain="[]" context="{'group_by':'account_department_id'}"/>
                 </xpath>
             </field>
         </record>
