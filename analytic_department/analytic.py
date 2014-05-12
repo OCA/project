@@ -17,14 +17,22 @@ class AnalyticLine(orm.Model):
     def _get_department(self, cr, uid, ids, context=None):
         employee_obj = self.pool['hr.employee']
         department_id = False
-        employee_ids = employee_obj.search(cr, uid, [('user_id','=', uid)])
+        employee_ids = employee_obj.search(cr, uid, 
+                                           [('user_id','=', uid)],
+                                           context=context)
         if employee_ids:
             employee = employee_obj.browse(cr, uid, 
-                                                employee_ids[0], 
-                                                context=context)
+                                           employee_ids[0], 
+                                           context=context)
             if employee.department_id:
                 department_id = employee.department_id.id
         return department_id
+
+    def _get_account_line(self, cr, uid, ids, context=None):
+        aa_line_obj = self.pool.get('account.analytic.line')
+        return aa_line_obj.search(cr, uid,
+                                  [('account_id', 'in', ids)],
+                                  context=context)
 
     _columns = {
         'department_id': fields.many2one(
@@ -37,7 +45,14 @@ class AnalyticLine(orm.Model):
             type='many2one',
             relation='hr.department',
             string='Account Department',
-            store=True,
+            store={
+                'account.analytic.account': (_get_account_line,
+                                             ['department_id'],
+                                             50),
+                'account.analytic.line': (lambda self, cr, uid, ids, c=None: ids,
+                                          ['account_id'],
+                                          10),
+            },
             readonly=True,
             help="Account's related department"),
     }
