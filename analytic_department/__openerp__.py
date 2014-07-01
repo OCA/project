@@ -12,4 +12,5 @@ corresponding tree, search and form  views.
     "website": "http://camptocamp.com",
     "depends": ["account", "hr"],
     "data": ["analytic_view.xml"],
+    "installable": False,
 }
