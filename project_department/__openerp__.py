@@ -12,4 +12,5 @@ Add Department to Projects and task to corresponding tree, search and form  view
     "depends": ["project", "analytic_department"],
     "data": ["project_view.xml"],
     "auto_install": True,
+    "installable": False,
 }
