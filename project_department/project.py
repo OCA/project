@@ -23,17 +23,17 @@ from openerp.osv import fields, orm
 
 
 class ProjectTask(orm.Model):
-    
+
     _inherit = 'project.task'
     _columns = {
         'project_department_id': fields.related(
-                'project_id',
-                'department_id',
-                type='many2one',
-                relation='hr.department',
-                string='Project Department',
-                store=True,
-                readonly=True),
+            'project_id',
+            'department_id',
+            type='many2one',
+            relation='hr.department',
+            string='Project Department',
+            store=True,
+            readonly=True),
     }
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
