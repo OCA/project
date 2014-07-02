@@ -7,7 +7,7 @@
              <field name="inherit_id" ref="project.edit_project"/>
              <field name="type">form</field>
              <field name="arch" type="xml">
-                 <field name="partner_id" position="after">
+                 <field name="parent_id" position="after">
                      <field name="department_id"/>
                  </field>
              </field>
@@ -62,7 +62,7 @@
             <field name="inherit_id" ref="project.view_task_form2"/>
             <field eval="2" name="priority"/>
             <field name="arch" type="xml">
-                <field name="user_id" attrs="{'readonly':[('state','in',['done', 'cancelled'])]}" options='{"no_open": True}' position="after">
+                <field name="partner_id" position="after">
                   <field name="project_department_id" />
                 </field>
             </field>
