@@ -1,6 +1,6 @@
 <openerp>
     <data>
-        
+
          <record id="edit_project" model="ir.ui.view">
              <field name="name">project.project.form</field>
              <field name="model">project.project</field>
@@ -83,4 +83,3 @@
 
     </data>
 </openerp>
-
