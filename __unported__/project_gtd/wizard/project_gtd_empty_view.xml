@@ -32,6 +32,5 @@
             <field name="model">project.gtd.timebox</field>
         </record>
 
-
     </data>
 </openerp>
