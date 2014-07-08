@@ -34,7 +34,7 @@ specific list.
     'data': [
         'project_categ_view.xml',
         ],
-    'installable': True,
+    'installable': False,
     'auto_install': True,
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

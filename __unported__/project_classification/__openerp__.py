@@ -51,7 +51,7 @@ Those values will be set on a project when selecting a classification.
     ],
     'demo_xml': [],
     'test': [],
-    'installable': True,
+    'installable': False,
     'auto_install': False,
     'application': True,
 }

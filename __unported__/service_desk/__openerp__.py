@@ -51,7 +51,7 @@ Features:
         'analytic_contact_view.xml',
         'service_desk_view.xml',
     ],
-    'installable': True,
+    'installable': False,
     'application': True,
 }
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
