@@ -50,7 +50,7 @@ class AnalyticLine(orm.Model):
                                              ['department_id'],
                                              50),
                 'account.analytic.line': (
-                    lambda self, cr, uid, ids, c=None: ids,
+                    lambda self, cr, uid, ids, context=None: ids,
                     ['account_id'], 10),
             },
             readonly=True,
