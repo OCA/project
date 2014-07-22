@@ -19,25 +19,21 @@
 ##############################################################################
 
 from openerp.osv import orm
+from openerp import SUPERUSER_ID
 
 
-# Backport from trunk(v8) fix required. See Bug#1243628.
-class ProjectIssue(orm.Model):
-    _inherit = 'project.issue'
+class ProjectTask(orm.Model):
+    _inherit = 'project.task'
 
-    def _get_default_partner(self, cr, uid, context=None):
+    def message_post(
+            self, cr, uid, thread_id, body='', subject=None,
+            type='notification', subtype=None, parent_id=False,
+            attachments=None, context=None, content_subtype='html', **kwargs):
+        """ Overrides mail_thread message_post so that we can write messages
+            on read only documents.
         """
-        If no other deafult is found, the current user is automatically
-        added as the Contact for the issue.
-        """
-        res = super(ProjectIssue, self
-                    )._get_default_partner(cr, uid, context=context)
-        if not res:
-            user = self.pool.get('res.users'
-                                 ).browse(cr, uid, uid, context=context)
-            res = user.partner_id and user.partner_id.id
-        return res
-
-    _defaults = {
-        'partner_id': lambda s, cr, uid, c: s._get_default_partner(cr, uid, c),
-    }
+        return super(ProjectTask, self).message_post(
+            cr, SUPERUSER_ID,
+            thread_id, body=body, subject=subject, type=type, subtype=subtype,
+            parent_id=parent_id, attachments=attachments, context=context,
+            content_subtype=content_subtype, **kwargs)

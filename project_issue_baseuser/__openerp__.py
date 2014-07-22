@@ -39,8 +39,6 @@ Please refer to the ``project_baseuser`` module for more details.
         'security/ir.model.access.csv',
         'security/project_security.xml',
         ],
-    'installable': False,
+    'installable': True,
     'auto_install': True,
 }
-
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
