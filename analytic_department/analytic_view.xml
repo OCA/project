@@ -1,20 +1,5 @@
 <openerp>
     <data>
-        
-        
-        <record id="view_account_analytic_account_search" model="ir.ui.view">
-            <field name="name">account.analytic.account.search</field>
-            <field name="model">account.analytic.account</field>
-            <field name="inherit_id" ref="account.view_account_analytic_account_search"/>
-            <field name="arch" type="xml">
-                <field name="user_id" position="after">
-                    <field name="department_id"/>
-                </field>
-                <xpath expr="/search/group/filter[1]" position="after">
-                     <filter string="Department" icon="terp-folder-orange" domain="[]" context="{'group_by':'department_id'}"/>
-                </xpath>
-            </field>
-        </record>
 
         <record id="view_account_analytic_account_tree" model="ir.ui.view">
             <field name="name">account.analytic.account.tree</field>
@@ -37,7 +22,7 @@
                 </field>
             </field>
         </record>
-        
+
         <record id="view_account_analytic_line_form" model="ir.ui.view">
             <field name="name">account.analytic.line.form</field>
             <field name="model">account.analytic.line</field>
@@ -49,7 +34,7 @@
                 </field>
             </field>
         </record>
-        
+
         <record id="view_account_analytic_line_tree" model="ir.ui.view">
             <field name="name">account.analytic.line.tree</field>
             <field name="model">account.analytic.line</field>
@@ -77,7 +62,7 @@
                 </xpath>
             </field>
         </record>
-        
+
     </data>
 </openerp>
 
