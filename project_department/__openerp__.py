@@ -10,7 +10,10 @@ Add Department to Projects and task to corresponding tree, search and form
 views.
 """,
     "website": "http://camptocamp.com",
-    "depends": ["project", "analytic_department"],
+    "depends": [
+        "analytic_base_department",
+        "project",
+    ],
     "data": ["project_view.xml"],
     "auto_install": True,
     "installable": True,
