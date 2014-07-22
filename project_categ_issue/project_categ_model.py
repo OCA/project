@@ -57,5 +57,3 @@ class ProjectIssue(orm.Model):
             domain="[('id','child_of',issue_categ_id)"
                    ",('id','!=',issue_categ_id)]"),
         }
-
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

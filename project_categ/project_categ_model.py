@@ -26,7 +26,7 @@ class ProjectProject(orm.Model):
     _columns = {
         'task_categ_id': fields.many2one(
             'project.category', 'Root Category for Tasks'),
-    }
+        }
 
 
 class ProjectCategory(orm.Model):
@@ -53,11 +53,6 @@ class ProjectCategory(orm.Model):
         'code': fields.char('Code', size=10),
     }
     _order = 'parent_id,name'
-    _constraints = [
-        (orm.Model._check_recursion,
-         'Error! Cannot create recursive cycle.',
-         ['parent_id'])
-    ]
 
 
 class ProjectTask(orm.Model):
