@@ -1,0 +1,16 @@
+<openerp>
+    <data>
+
+        <record id="view_account_analytic_account_form" model="ir.ui.view">
+            <field name="name">account.analytic.account.form</field>
+            <field name="model">account.analytic.account</field>
+            <field name="inherit_id" ref="analytic.view_account_analytic_account_form"/>
+            <field name="arch" type="xml">
+                <field name="code" position="after">
+                    <field name="department_id"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>
