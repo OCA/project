@@ -18,23 +18,28 @@
 #
 ##############################################################################
 {
-    'name': 'Per Project Configurable Categorie on Issues',
-    'summary': 'Projects Issues can have an allowed category list',
+    'name': 'Project Configurable Categories',
+    'summary': 'Allow for Project specific category lists for Tasks',
     'version': '0.1',
     "category": "Project Management",
     'description': """\
-Adds to Issues the ability to limit selectable Categories to a Proeject's
-specific list.
+To setup:
+
+  1. Create a parent Category (Tag). E.g. "System Type".
+  2. Create categories to be made available as child.
+     E.g. "Computer", "Printer", ...
+  3. On the Project form, Other Info tab, set the "Root Category".
+
+Now make this feature available on Issues or Tasks by installing the
+corresponding extension module.
 """,
     'author': 'Daniel Reis',
     'depends': [
-        'project_issue',
-        'project_categ',
+        'project',
         ],
     'data': [
         'project_categ_view.xml',
         ],
-    'installable': False,
-    'auto_install': True,
+    'installable': True,
+    'application': False,
 }
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
