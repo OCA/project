@@ -7,7 +7,7 @@ virtualenv:
 
 env:
   - VERSION="8.0" ODOO_REPO="odoo/odoo"
-  - VERSION="master" ODOO_REPO="OCA/OCB"
+  - VERSION="8.0" ODOO_REPO="OCA/OCB"
 
 install:
   - git clone https://github.com/dreispt/maintainer-quality-tools.git $HOME/maintainer-quality-tools
