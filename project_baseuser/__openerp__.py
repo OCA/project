@@ -90,7 +90,5 @@ Project Managers
         'security/ir.model.access.csv',
         'security/project_security.xml',
         ],
-    'installable': False,
+    'installable': True,
 }
-
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
