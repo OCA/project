@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+
+        <record id="ir_cron_sla_action" model="ir.cron">
+            <field name="name">Update SLA States</field>
+            <field name="priority" eval="100"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">hours</field>
+            <field name="numbercall">-1</field>
+            <field name="doall" eval="False"/>
+            <field name="model">project.sla.control</field>
+            <field name="function">update_sla_states</field>
+            <field name="args">()</field>
+        </record>
+
+    </data>
+</openerp>

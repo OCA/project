@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<openerp>
+    <data>
+
+        <record model="ir.cron" id="account_analytic_cron_for_invoice">
+           <field name="name">Generate Recurring Invoices from Contracts</field>
+           <field name="interval_number">1</field>
+           <field name="interval_type">days</field>
+           <field name="numbercall">-1</field>
+           <field name="model" eval="'account.analytic.account'"/>
+           <field name="function" eval="'recurring_create_invoice'"/>
+           <field name="args" eval="'()'"/>
+        </record>
+
+    </data>
+</openerp>

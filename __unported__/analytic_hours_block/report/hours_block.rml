@@ -1,0 +1,263 @@
+<?xml version="1.0"?>
+<document filename="test.pdf">
+  <template pageSize="(595.0,842.0)" title="Test" author="Martin Simon" allowSplitting="20">
+    <pageTemplate id="first">
+      <frame id="first" x1="35.0" y1="35.0" width="525" height="772"/>
+        <pageGraphics>
+               <setFont name="Helvetica-Bold" size="9"/>
+
+               <drawString x="1.0cm" y="28.1cm">[[ company.name ]]</drawString>
+               <drawString x="17.7cm" y="28.1cm">Maintenance And Support Summary</drawString>
+
+               <setFont name="Helvetica" size="9"/>
+               <drawString x="1.0cm" y="2cm"> [[ formatLang(time.strftime(date_format), date=True) ]]</drawString>
+               <drawString x="17.7cm" y="2cm">Page <pageNumber/></drawString>
+
+               <lineMode width="0.7"/>
+               <lines>0.6cm 27.9cm 20.3cm 27.9cm</lines>
+               <setFont name="Helvetica" size="8"/>
+             </pageGraphics>
+
+    </pageTemplate>
+  </template>
+  <stylesheet>
+    <blockTableStyle id="Standard_Outline">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table1">
+        <lineStyle kind="LINEBELOW" colorName="#ffffff" start="0,0" stop="-1,-1"/>
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <blockBackground colorName="#e6e6e6" start="0,0" stop="0,-1"/>
+      <blockBackground colorName="#e6e6e6" start="1,0" stop="1,-1"/>
+      <blockBackground colorName="#e6e6e6" start="2,0" stop="2,-1"/>
+      <blockBackground colorName="#e6e6e6" start="0,1" stop="0,-1"/>
+      <blockBackground colorName="#e6e6e6" start="1,1" stop="1,-1"/>
+      <blockBackground colorName="#e6e6e6" start="2,1" stop="2,-1"/>
+
+    </blockTableStyle>
+    <blockTableStyle id="Table6">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="0,0" stop="0,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="0,0" stop="0,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="1,0" stop="1,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="1,0" stop="1,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="1,-1" stop="1,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="2,0" stop="2,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="2,0" stop="2,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="2,-1" stop="2,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="3,0" stop="3,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="3,0" stop="3,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="3,0" stop="3,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="3,-1" stop="3,-1"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table2">
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="0,0" stop="-1,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#e6e6e6" start="0,1" stop="-1,-1"/>
+      
+      <blockValign value="TOP"/>
+      <blockAlignment value="RIGHT" start="2,1" stop="-1,-1"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table3">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table4">
+      <blockAlignment value="LEFT"/>
+      <blockValign value="TOP"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="0,0" stop="0,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="0,0" stop="0,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="0,-1" stop="0,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="1,0" stop="1,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="1,0" stop="1,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="1,-1" stop="1,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="2,0" stop="2,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="2,0" stop="2,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="2,-1" stop="2,-1"/>
+      <lineStyle kind="LINEBEFORE" colorName="#000000" start="3,0" stop="3,-1"/>
+      <lineStyle kind="LINEAFTER" colorName="#000000" start="3,0" stop="3,-1"/>
+      <lineStyle kind="LINEABOVE" colorName="#000000" start="3,0" stop="3,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="3,-1" stop="3,-1"/>
+    </blockTableStyle>
+    <blockTableStyle id="Table7">
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="0,0" stop="-1,0"/>
+    </blockTableStyle>
+  
+    <initialize>
+      <paraStyle name="all" alignment="justify"/>
+    </initialize>
+    <paraStyle name="P1" fontName="Helvetica-Bold" fontSize="14.0" leading="25" alignment="CENTER" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="P2" fontName="Helvetica" fontSize="8.0" leading="10" alignment="LEFT" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="P2c" fontName="Helvetica" fontSize="8.0" leading="10" alignment="CENTER" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="P3" fontName="Helvetica" fontSize="8.0" leading="10" alignment="RIGHT" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="P10" fontName="Helvetica" fontSize="8.0" leading="14" spaceBefore="0.0" spaceAfter="6.0" alignment="RIGHT"/>
+   <paraStyle name="P9" fontName="Helvetica-Bold" alignment="CENTER" fontSize="14.5" leftIndent="-5.0"/>
+    <paraStyle name="P9b" fontName="Helvetica" fontSize="8"  alignment="LEFT"/>
+    <paraStyle name="P9c" fontName="Helvetica" fontSize="8"  alignment="RIGHT"/>
+    <paraStyle name="P12" fontName="Helvetica" fontSize="8.0" leading="14" alignment="CENTER" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="P12a" fontName="Helvetica-Bold" fontSize="8.0" alignment="LEFT" spaceBefore="0.0" spaceAfter="6.0"/>
+    <paraStyle name="P14" rightIndent="17.0" leftIndent="-0.0" fontName="Helvetica" fontSize="8.0" leading="10" spaceBefore="0.0" spaceAfter="6.0"/>
+
+
+    <blockTableStyle id="TrLevel6">
+      <blockLeftPadding length="60" start="1,0" stop="1,0"/>
+    </blockTableStyle>
+    <blockTableStyle id="TrLevel5">
+      <blockLeftPadding length="40" start="1,0" stop="1,0"/>
+    </blockTableStyle>
+    <blockTableStyle id="TrLevel4">
+      <blockLeftPadding length="20" start="1,0" stop="1,0"/>
+    </blockTableStyle>
+    <blockTableStyle id="TrLevel3">
+      <blockLeftPadding length="0" start="1,0" stop="1,0"/>
+    </blockTableStyle>
+    <blockTableStyle id="TrLevel2">
+      <blockLeftPadding length="0" start="1,0" stop="1,0"/>
+      <lineStyle kind="LINEBELOW" colorName="#777777" start="1,0" stop="1,0"/>
+      <blockTopPadding length="13" start="0,0" stop="-1,0"/>
+      <blockBottomPadding length="2" start="0,0" stop="-1,0"/>
+      <blockFont name="Times-Bold" start="0,0" stop="-1,-1"/>
+    </blockTableStyle>
+    <blockTableStyle id="TrLevel1">
+      <lineStyle kind="LINEBELOW" colorName="#000000" start="0,0" stop="-1,0"/>
+      <blockLeftPadding length="0" start="1,0" stop="1,0"/>
+      <blockTopPadding length="26" start="0,0" stop="-1,0"/>
+      <blockBottomPadding length="2" start="0,0" stop="-1,0"/>
+      <blockFont name="Times-Bold" start="0,0" stop="-1,-1"/>
+    </blockTableStyle>
+
+    <paraStyle
+        name="Level5" 
+        fontName="Helvetica"
+        fontSize="8.0" />
+    <paraStyle
+        name="Level4" 
+        fontName="Helvetica" 
+        fontSize="8.0" />
+    <paraStyle
+        name="Level3" 
+        fontName="Helvetica" 
+        fontSize="8.0" />
+    <paraStyle
+        name="Level2" 
+        firstLineIndent="-0.03cm"
+        fontName="Helvetica-Bold" 
+        fontSize="8.0" />
+    <paraStyle name="Level1"
+        fontSize="8.0"
+        fontName="Helvetica-Bold" 
+        />
+    <paraStyle name="Caption" fontName="Helvetica" fontSize="10.0" leading="13" spaceBefore="6.0" spaceAfter="6.0"/>
+    <paraStyle name="Index" fontName="Helvetica"/>
+  </stylesheet>
+  <images/>
+  <story>
+
+   <para style="P2">[[ repeatIn(objects,'o') ]]</para>
+   <para style="P2">[[ setLang(o.partner_id.lang) ]]</para>
+   <para style="P1">Maintenance And Support Summary</para>
+ 
+    <para style="P12a"></para>
+    <para style="P12a"></para>
+    <blockTable colWidths="258.0,259.0" style="Table1" repeatRows="1">
+        <tr>
+              <td>
+                <para style="P12a">Description: </para>
+              </td>
+              <td>
+                <para style="P2">[[ o.name ]]</para>
+              </td>
+          </tr>
+        <tr>
+            <td>
+              <para style="P12a">Report Date: </para>
+            </td>
+            <td>
+              <para style="P2">[[ formatLang(time.strftime(date_format), date=True) ]]</para>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <para style="P12a">Invoice Date: </para>
+            </td>
+            <td>
+              <para style="P2">[[ o.date_invoice and formatLang(o.date_invoice, date=True) or '' ]]</para>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <para style="P12a">Amount bought: [[ (o.type == 'amount' or removeParentNode('para')) and '' ]]</para>
+              <para style="P12a">Quantity of hours bought: [[ (o.type == 'hours' or removeParentNode('para')) and '' ]]</para>
+            </td>
+            <td>
+              <para style="P2">[[ o.amount_hours_block ]]</para>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <para style="P12a">Amount used: [[ (o.type == 'amount' or removeParentNode('para')) and '' ]]</para>
+              <para style="P12a">Quantity of hours used: [[ (o.type == 'hours' or removeParentNode('para')) and '' ]]</para>
+            </td>
+            <td>
+              <para style="P2">[[ round(o.amount_hours_block_done, 2) ]]</para>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <para style="P12a">Remaining amount: [[ (o.type == 'amount' or removeParentNode('para')) and '' ]]</para>
+              <para style="P12a">Remaining hours: [[ (o.type == 'hours' or removeParentNode('para')) and '' ]]</para>
+
+            </td>
+            <td>
+              <para style="P2">[[ o.amount_hours_block and round(o.amount_hours_block_delta, 2) or '' ]]</para>
+            </td>
+        </tr>
+    </blockTable>
+    <para style="P12a"></para>
+    <para style="P12a"></para>
+    <para style="P12a"></para>
+    <blockTable colWidths="58,305.0,52.0,52.0,52.0" style="Table2" repeatRows="1">
+      <tr>
+        <td>
+          <para style="P12a">Date</para>
+        </td>
+        <td>
+          <para style="P12a">Description</para>
+        </td>
+        <td>
+          <para style="P12a">Quantity</para>
+        </td>
+        <td>
+          <para style="P12a">Invoicing</para>
+        </td>
+        <td>
+          <para style="P12a">Deduced</para>
+        </td>
+      </tr>
+
+       <tr>
+           [[ repeatIn(analytic_lines(o), 'l') ]]
+         <td>
+           <para style="P2">[[ l.date if formatLang(l.date, date=True) else '' ]]</para>
+         </td>
+         <td>
+           <para style="P2">[[ l.name or '' ]]</para>
+         </td>
+         <td>
+           <para style="P2c">[[ round(l.unit_amount, 2) or '0.0' ]]</para>
+         </td>
+         <td>
+           <para style="P2c">[[ l.to_invoice.customer_name ]]</para>
+         </td>
+         <td>
+           <para style="P2c">[[ round((l.unit_amount and l.to_invoice) and (l.unit_amount - (l.unit_amount * l.to_invoice.factor) / 100 ), 2) or '0.0' ]]</para>
+         </td>
+       </tr>
+    </blockTable>
+
+  </story>
+</document>
+
