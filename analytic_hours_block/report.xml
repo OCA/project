@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <report id="block_hours_report"
+               string="Block Hours State"
+               model="account.hours.block"
+               name="account.hours.block"
+               rml="analytic_hours_block/report/hours_block.rml"/>
+
+    </data>
+</openerp>

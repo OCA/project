@@ -1,0 +1,19 @@
+<?xml version="1.0" ?>
+<openerp>
+    <data>
+
+        <record model="ir.ui.view" id="edit_project_hours_block_link">
+            <field name="name">project.project.form.hours.block.link</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='attachment_tree_view']" position="after">
+                        <button name="hours_block_tree_view" string="Hours Block" type="object"/>
+                </xpath>
+            </field>
+        </record>
+
+
+    </data>
+</openerp>

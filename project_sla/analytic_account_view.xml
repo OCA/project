@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_account_analytic_account_form_sla" model="ir.ui.view">
+            <field name="name">view_account_analytic_account_form_sla</field>
+            <field name="model">account.analytic.account</field>
+            <field name="inherit_id" ref="analytic.view_account_analytic_account_form"/>
+            <field name="arch" type="xml">
+
+                <page name="contract_page" position="after">
+                  <page name="sla_page" string="Service Level Agreement">
+                     <field name="sla_ids" nolabel="1"/>
+                     <button name="reapply_sla" string="Reapply" type="object"
+                       help="Reapply the SLAs to all Contract's documents."
+                       groups="project.group_project_manager" />
+                  </page>
+                </page>
+
+           </field>
+        </record>
+
+    </data>
+</openerp>

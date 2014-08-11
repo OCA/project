@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_sla_manager,access_sla_manager,model_project_sla,project.group_project_manager,1,1,1,1
+access_sla_user,access_sla_user,model_project_sla,base.group_user,1,0,0,0
+access_sla_lines_manager,access_sla_lines_manager,model_project_sla_line,project.group_project_manager,1,1,1,1
+access_sla_lines_user,access_sla_lines_user,model_project_sla_line,base.group_user,1,0,0,0
+access_sla_control_manager,access_sla_control_manager,model_project_sla_control,project.group_project_manager,1,1,0,0
+access_sla_control_user,access_sla_control_user,model_project_sla_control,base.group_user,1,0,0,0
+access_sla_controlled_manager,access_sla_controlled_manager,model_project_sla_controlled,project.group_project_manager,1,1,1,1
