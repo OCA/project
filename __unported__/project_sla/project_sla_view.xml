@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_sla_lines_tree" model="ir.ui.view">
+            <field name="name">view_sla_lines_tree</field>
+            <field name="model">project.sla.line</field>
+            <field name="arch" type="xml">
+
+                <tree string="Definitions">
+                    <field name="sequence"/>
+                    <field name="name"/>
+                    <field name="condition"/>
+                    <field name="limit_qty"/>
+                    <field name="warn_qty"/>
+                </tree>
+
+            </field>
+        </record>
+
+        <record id="view_sla_form" model="ir.ui.view">
+            <field name="name">view_sla_form</field>
+            <field name="model">project.sla</field>
+            <field name="arch" type="xml">
+
+                <form string="SLA Definition">
+                  <field name="name"/>
+                  <field name="active"/>
+                  <field name="control_model"/>
+                  <field name="control_field_id"/>
+                  <notebook colspan="4">
+                    <page string="Rules" name="rules_page">
+                      <field name="sla_line_ids" nolabel="1"/>
+                    </page>
+                    <page string="Contracts" name="contracts_page">
+                      <field name="analytic_ids" nolabel="1" />
+                    </page>
+                  </notebook>
+                  <button name="reapply_slas" colspan="2"
+                          string="Reapply SLA on Contracts"
+                          type="object" />
+                </form>
+
+            </field>
+        </record>
+
+    </data>
+</openerp>

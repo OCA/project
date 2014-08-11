@@ -5,3 +5,9 @@ Odoo Project & Service Management
 =================================
 
 Find revelant modules for service business processes or companies.
+
+This project aims to extend Odoo on contract management features, such as:
+
+  * Manage sold hours in advance
+  * Invoice on contract basis
+  * ...
