@@ -109,7 +109,7 @@ class SLAControl(orm.Model):
           - exceeded warning dates are set to "warning"
         To be used by a scheduled job.
         """
-        now = dt.now().strftime(DT_FMT)
+        now = dt.strftime(dt.now(), DT_FMT)
         # SLAs to mark as "will fail"
         control_ids = self.search(
             cr, uid,
@@ -146,7 +146,7 @@ class SLAControl(orm.Model):
         assert isinstance(hours, int) and hours >= 0
 
         cal_obj = self.pool.get('resource.calendar')
-        target, step = hours * 3600, 16 * 3600
+        target, step = hours * 3600,  16 * 3600
         lo, hi = start_date, start_date
         while target > 0 and step > 60:
             hi = lo + timedelta(seconds=step)
@@ -189,7 +189,7 @@ class SLAControl(orm.Model):
             return res
 
         for sla in sla_ids:
-            if sla.control_model != doc._table_name:
+            if sla.control_model != doc._name:
                 continue  # SLA not for this model; skip
 
             for l in sla.sla_line_ids:
@@ -200,11 +200,12 @@ class SLAControl(orm.Model):
                     cal = safe_getattr(
                         doc, 'project_id.resource_calendar_id.id')
                     warn_date = self._compute_sla_date(
-                        cr, uid, cal, res_uid, start_date, l.warn_qty,
+                        cr, uid, cal, res_uid,
+                        start_date, l.warn_qty,
                         context=context)
                     lim_date = self._compute_sla_date(
-                        cr, uid, cal, res_uid, warn_date,
-                        l.limit_qty - l.warn_qty,
+                        cr, uid, cal, res_uid,
+                        warn_date, l.limit_qty - l.warn_qty,
                         context=context)
                     # evaluate sla state
                     control_val = getattr(doc, sla.control_field_id.name)
@@ -237,7 +238,7 @@ class SLAControl(orm.Model):
                     break
 
         if sla_ids and not res:
-            _logger.warning("No valid SLA rule found for %d, SLA Ids %s"
+            _logger.warning("No valid SLA rule foun for %d, SLA Ids %s"
                             % (doc.id, repr([x.id for x in sla_ids])))
         return res
 
@@ -271,14 +272,12 @@ class SLAControl(orm.Model):
                             slas += m2m.write(control_rec.id, sla_rec)
                     else:
                         slas += m2m.add(sla_rec)
+                global_sla = max([sla[2].get('sla_state') for sla in slas])
             else:
                 slas = m2m.clear()
-            # calc sla control summary
-            vals = {'sla_state': None, 'sla_control_ids': slas}
-            if sla_recs and doc.sla_control_ids:
-                vals['sla_state'] = max(
-                    x.sla_state for x in doc.sla_control_ids)
-            # store sla
+                global_sla = None
+            # calc sla control summary and store
+            vals = {'sla_state': global_sla, 'sla_control_ids': slas}
             doc._model.write(  # regular users can't write on SLA Control
                 cr, SUPERUSER_ID, [doc.id], vals, context=context)
         return res
@@ -308,8 +307,7 @@ class SLAControlled(orm.AbstractModel):
         res = super(SLAControlled, self).write(
             cr, uid, ids, vals, context=context)
         docs = [x for x in self.browse(cr, uid, ids, context=context)
-                if (x.state != 'cancelled') and
-                   (x.state != 'done' or x.sla_state not in ['1', '5'])]
+                if (not x.stage_id.fold or x.sla_state not in ['1', '5'])]
         self.pool.get('project.sla.control').store_sla_control(
             cr, uid, docs, context=context)
         return res

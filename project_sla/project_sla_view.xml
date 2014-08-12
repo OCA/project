@@ -24,10 +24,19 @@
             <field name="arch" type="xml">
 
                 <form string="SLA Definition">
-                  <field name="name"/>
-                  <field name="active"/>
-                  <field name="control_model"/>
-                  <field name="control_field_id"/>
+                  <h1>
+                      <field name="name"/>
+                  </h1>
+                  <group>
+                      <group>
+                          <field name="control_model"/>
+                          <field name="control_field_id"/>
+                      </group>
+                      <group>
+                          <field name="active"/>
+                      </group>
+                  </group>
+
                   <notebook colspan="4">
                     <page string="Rules" name="rules_page">
                       <field name="sla_line_ids" nolabel="1"/>

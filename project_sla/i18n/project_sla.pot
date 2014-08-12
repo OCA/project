@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-12-19 10:28+0000\n"
-"PO-Revision-Date: 2013-12-19 10:28+0000\n"
+"POT-Creation-Date: 2013-12-05 17:30+0000\n"
+"PO-Revision-Date: 2013-12-05 17:30+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -46,20 +46,8 @@ msgid "Administration"
 msgstr ""
 
 #. module: project_sla
-#: view:project.issue:0
-msgid "Priority"
-msgstr ""
-
-#. module: project_sla
-#: selection:project.issue,sla_state:0
-#: selection:project.sla.control,sla_state:0
-#: selection:project.sla.controlled,sla_state:0
-msgid "Failed"
-msgstr ""
-
-#. module: project_sla
-#: field:project.sla.control,sla_warn_date:0
-msgid "Warning Date"
+#: model:project.sla.line,name:project_sla.demo_sla_rule2
+msgid "Two business days"
 msgstr ""
 
 #. module: project_sla
@@ -68,21 +56,24 @@ msgid "Hours to Warn"
 msgstr ""
 
 #. module: project_sla
-#: view:project.sla.control:0
-msgid "Service Level"
+#: view:project.sla:0
+msgid "Rules"
 msgstr ""
 
 #. module: project_sla
-#: selection:project.issue,sla_state:0
-#: selection:project.sla.control,sla_state:0
-#: selection:project.sla.controlled,sla_state:0
-msgid "Watching"
+#: view:project.sla.control:0
+msgid "Service Level"
 msgstr ""
 
 #. module: project_sla
 #: view:project.sla:0
 #: field:project.sla,analytic_ids:0
 msgid "Contracts"
+msgstr ""
+
+#. module: project_sla
+#: field:project.sla.control,sla_warn_date:0
+msgid "Warning Date"
 msgstr ""
 
 #. module: project_sla
@@ -108,14 +99,6 @@ msgid "Achieved?"
 msgstr ""
 
 #. module: project_sla
-#: view:project.issue:0
-#: field:project.issue,sla_state:0
-#: field:project.sla.control,sla_state:0
-#: field:project.sla.controlled,sla_state:0
-msgid "SLA Status"
-msgstr ""
-
-#. module: project_sla
 #: field:project.sla.line,condition:0
 msgid "Condition"
 msgstr ""
@@ -137,10 +120,8 @@ msgid "Response in two business days"
 msgstr ""
 
 #. module: project_sla
-#: selection:project.issue,sla_state:0
-#: selection:project.sla.control,sla_state:0
-#: selection:project.sla.controlled,sla_state:0
-msgid "Will Fail"
+#: model:ir.model,name:project_sla.model_project_sla_line
+msgid "project.sla.line"
 msgstr ""
 
 #. module: project_sla
@@ -184,6 +165,11 @@ msgid "Hours to Limit"
 msgstr ""
 
 #. module: project_sla
+#: model:project.sla,name:project_sla.demo_sla
+msgid "Contract SLA Definition"
+msgstr ""
+
+#. module: project_sla
 #: field:project.sla,sla_line_ids:0
 #: view:project.sla.line:0
 msgid "Definitions"
@@ -215,10 +201,8 @@ msgid "Response in one business day"
 msgstr ""
 
 #. module: project_sla
-#: selection:project.issue,sla_state:0
-#: selection:project.sla.control,sla_state:0
-#: selection:project.sla.controlled,sla_state:0
-msgid "Achieved"
+#: field:project.sla.line,sequence:0
+msgid "Sequence"
 msgstr ""
 
 #. module: project_sla
@@ -233,11 +217,6 @@ msgid "Standard Resolution Time"
 msgstr ""
 
 #. module: project_sla
-#: field:project.sla.line,sequence:0
-msgid "Sequence"
-msgstr ""
-
-#. module: project_sla
 #: view:project.issue:0
 msgid "Service Levels"
 msgstr ""
@@ -248,20 +227,13 @@ msgid "Analytic Account"
 msgstr ""
 
 #. module: project_sla
-#: view:project.sla:0
-msgid "Rules"
+#: model:project.sla.line,name:project_sla.demo_sla_rule1
+msgid "One business day"
 msgstr ""
 
 #. module: project_sla
 #: help:project.sla.control,locked:0
 msgid "Safeguard manual changes from future automatic recomputations."
-msgstr ""
-
-#. module: project_sla
-#: selection:project.issue,sla_state:0
-#: selection:project.sla.control,sla_state:0
-#: selection:project.sla.controlled,sla_state:0
-msgid "Warning"
 msgstr ""
 
 #. module: project_sla
@@ -272,11 +244,6 @@ msgstr ""
 #. module: project_sla
 #: field:project.sla.control,doc_model:0
 msgid "Document Model"
-msgstr ""
-
-#. module: project_sla
-#: model:ir.model,name:project_sla.model_project_sla_line
-msgid "project.sla.line"
 msgstr ""
 
 #. module: project_sla
