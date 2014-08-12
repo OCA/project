@@ -124,6 +124,7 @@ Credits and Contributors
         'analytic_account_view.xml',
         'project_view.xml',
         'project_issue_view.xml',
+        'project_task_view.xml',
         'security/ir.model.access.csv',
     ],
     'demo': ['project_sla_demo.xml'],

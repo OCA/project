@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Project Task Form -->
+        <record id="project_task_form_view_sla" model="ir.ui.view">
+            <field name="name">project_task_form_view_sla</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+
+              <page string="Extra Info" position="after">
+                <page name="sla_page" string="Service Levels"
+                       attrs="{'invisible': [('sla_state', '=', False)]}">
+                    <group>
+                      <group>
+                        <field name="sla_state" />
+                      </group>
+                      <group>
+                        <field name="write_date" />
+                      </group>
+                    </group>
+                    <field name="sla_control_ids" attrs="{'readonly': 1}"/>
+                </page>
+              </page>
+
+           </field>
+        </record>
+
+        <!-- Project Task List  -->
+        <record model="ir.ui.view" id="project_task_tree_view_sla">
+            <field name="name">project_task_tree_view_slak</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_tree2"/>
+            <field name="arch" type="xml">
+
+                <field name="project_id" position="after">
+                    <field name="sla_state"/>
+                </field>
+
+            </field>
+        </record>
+
+
+        <!-- Project Task Filter -->
+        <record id="view_project_task_filter_sdesk" model="ir.ui.view">
+            <field name="name">
+            </field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_search_form"/>
+            <field name="arch" type="xml">
+
+                <filter string="Stage" position="before">
+                    <filter string="SLA Status" context="{'group_by':'sla_state'}"/>
+                </filter>
+
+           </field>
+        </record>
+
+    </data>
+</openerp>
