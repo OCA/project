@@ -1,0 +1,7 @@
+-
+  Create a new Issue
+-
+  !record {model: account.analytic.account, id: analytic1, view: False}:
+    name: "One Analytic Account"
+    type: "normal"
+    user_id: base.user_demo #--> hr.employee_qdp --> hr.dep_rd

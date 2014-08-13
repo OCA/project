@@ -12,5 +12,6 @@ No required dependency on Accounting modules.
     "website": "http://camptocamp.com",
     "depends": ["analytic", "hr"],
     "data": ["analytic_view.xml"],
+    'test': ['test/analytic.yml'],
     "installable": True,
 }
