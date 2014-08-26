@@ -41,7 +41,6 @@
             <tree string="Timebox">
                 <field name="sequence" invisible="1"/>
                 <field name="name"/>
-                <field name="icon"/>
             </tree>
         </field>
     </record>
@@ -54,7 +53,6 @@
                 <group col="4" string="Timebox Definition">
                     <field name="name"/>
                     <field name="sequence"/>
-                    <field name="icon"/>
                 </group>
             </form>
         </field>

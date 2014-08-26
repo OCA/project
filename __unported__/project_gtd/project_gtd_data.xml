@@ -12,15 +12,12 @@
 
         <record model="project.gtd.timebox" id="timebox_daily">
             <field name="name">Today</field>
-            <field name="icon">terp-go-today</field>
         </record>
         <record model="project.gtd.timebox" id="timebox_weekly">
             <field name="name">This Week</field>
-            <field name="icon">terp-go-week</field>
         </record>
         <record model="project.gtd.timebox" id="timebox_lt">
             <field name="name">Long Term</field>
-            <field name="icon">terp-project</field>
         </record>
     </data>
 

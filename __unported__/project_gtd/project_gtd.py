@@ -50,7 +50,6 @@ class project_gtd_timebox(osv.Model):
             'Sequence',
             help="Gives the sequence order when displaying "
                  "a list of timebox."),
-        'icon': fields.selection(tools.icons, 'Icon', size=64),
     }
 
 
@@ -153,15 +152,10 @@ class project_task(osv.Model):
                 cr, uid, timebox_obj.search(cr, uid, []), context=context)
             search_extended = ''
             for timebox in timeboxes:
-                if timebox.icon:
-                    icon = timebox.icon
-                else:
-                    icon = ""
                 filter_ = """
                     <filter domain="[('timebox_id', '=', {timebox_id})]"
-                            icon="{icon}" string="{string}"/>\n
-                    """.format(
-                        timebox_id=timebox.id, icon=icon, string=timebox.name)
+                            string="{string}"/>\n
+                    """.format(timebox_id=timebox.id, string=timebox.name)
                 search_extended += filter_
             search_extended += '<separator orientation="vertical"/>'
             res['arch'] = tools.ustr(res['arch']).replace(
