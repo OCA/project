@@ -1,6 +1,7 @@
 <?xml version="1.0" ?>
 <openerp>
-    <data>
+    <data noupdate="1">
+
         <record model="project.gtd.context" id="context_office">
             <field name="name">Office</field>
             <field name="sequence">0</field>
@@ -12,16 +13,17 @@
 
         <record model="project.gtd.timebox" id="timebox_daily">
             <field name="name">Today</field>
+            <field name="sequence">0</field>
         </record>
         <record model="project.gtd.timebox" id="timebox_weekly">
             <field name="name">This Week</field>
+            <field name="sequence">10</field>
         </record>
         <record model="project.gtd.timebox" id="timebox_lt">
             <field name="name">Long Term</field>
+            <field name="sequence">20</field>
         </record>
-    </data>
 
-    <data noupdate="1">
         <!-- notify all employees of module installation -->
         <record model="mail.message" id="module_install_notification">
             <field name="model">mail.group</field>
