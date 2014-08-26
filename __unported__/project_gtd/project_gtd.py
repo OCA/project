@@ -72,8 +72,31 @@ class project_task(osv.Model):
             cr, uid, [], context=context)
         return ids and ids[0] or False
 
+    def _read_group_timebox_ids(
+            self, cr, uid, ids, domain,
+            read_group_order=None, access_rights_uid=None, context=None):
+        """Used to display all timeboxes on the view."""
+        print read_group_order, access_rights_uid
+        timebox_obj = self.pool.get('project.gtd.timebox')
+        order = timebox_obj._order
+        access_rights_uid = access_rights_uid or uid
+        timebox_ids = timebox_obj._search(
+            cr, uid, [],
+            order=order, access_rights_uid=access_rights_uid, context=context)
+        result = timebox_obj.name_get(
+            cr, access_rights_uid, timebox_ids, context=context)
+        # Restore order of the search
+        result.sort(
+            lambda x, y: cmp(timebox_ids.index(x[0]), timebox_ids.index(y[0])))
+        fold = dict.fromkeys(timebox_ids, False)
+        return result, fold
+
     _defaults = {
         'context_id': _get_context
+    }
+
+    _group_by_full = {
+        'timebox_id': _read_group_timebox_ids,
     }
 
     def copy_data(self, cr, uid, id, default=None, context=None):
