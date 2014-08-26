@@ -105,6 +105,18 @@
         </field>
     </record>
 
+    <record model="ir.actions.act_window" id="open_gtd_all_tasks">
+        <field name="name">Tasks (GTD)</field>
+        <field name="res_model">project.task</field>
+        <field name="search_view_id" ref="view_task_gtd_search"/>
+        <field name="context">{'set_visible': True, 'gtd': True, 'search_default_timebox_id': 1}</field>
+        <field name="domain">[('stage_id.sequence', '&lt;', 20)]</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
+    </record>
+    <menuitem action="open_gtd_all_tasks" id="menu_open_gtd_timebox_all_tree"
+        parent="project.menu_project_management" sequence="10"/>
+
     <record model="ir.actions.act_window" id="open_gtd_task">
         <field name="name">My Tasks (GTD)</field>
         <field name="res_model">project.task</field>
@@ -114,7 +126,8 @@
         <field name="view_type">form</field>
         <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
     </record>
-    <menuitem action="open_gtd_task" id="menu_open_gtd_timebox_tree" parent="project.menu_project_management" sequence="10"/>
+    <menuitem action="open_gtd_task" id="menu_open_gtd_timebox_tree"
+        parent="project.menu_project_management" sequence="11"/>
 
     </data>
 </openerp>
