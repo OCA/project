@@ -25,14 +25,14 @@
     'version': '0.1',
     'category': 'Other',
     'description': """
-This module add a new feature in contracts to manage recurring invoice
-======================================================================
+This module adds a new feature in contracts to manage recurring invoicing
+=========================================================================
 
 This is a backport of the new V8 feature available in trunk and saas. With
 the V8 release this module will be deprecated.
 
-It also add a little feature, you can use #START# and #END# in the contract
-line to automatically insert the dates of the invoiced period.
+It also adds a little feature, you can use #START# and #END# in the contract
+line description to automatically insert the dates of the invoiced period.
 
 Backport done By Yannick Buron.
 """,
@@ -40,6 +40,7 @@ Backport done By Yannick Buron.
     'website': 'http://openerp.com',
     'depends': ['base', 'account_analytic_analysis'],
     'data': [
+        'security/ir.model.access.csv',
         'account_analytic_analysis_recurring_cron.xml',
         'account_analytic_analysis_recurring_view.xml',
     ],
@@ -48,4 +49,3 @@ Backport done By Yannick Buron.
     'installable': True,
     'images': [],
 }
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
