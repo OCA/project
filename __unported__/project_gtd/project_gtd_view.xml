@@ -101,17 +101,17 @@
         <field name="inherit_id" ref="project.view_task_search_form"/>
         <field name="arch" type="xml">
             <filter string="Last Message" position="after">
-                <filter string="Timebox" domain="[]" context="{'group_by':'timebox_id'}"/>
-                <filter string="Context" domain="[]" context="{'group_by':'context_id'}"/>
+                <filter name="timebox_id" string="Timebox" domain="[]" context="{'group_by': 'timebox_id'}"/>
+                <filter name="context_id" string="Context" domain="[]" context="{'group_by': 'context_id'}"/>
             </filter>
         </field>
     </record>
 
     <record model="ir.actions.act_window" id="open_gtd_task">
-        <field name="name">My Tasks</field>
+        <field name="name">My Tasks (GTD)</field>
         <field name="res_model">project.task</field>
         <field name="search_view_id" ref="view_task_gtd_search"/>
-        <field name="context">{'set_visible':True, 'gtd':True, 'user_invisible':True}</field>
+        <field name="context">{'set_visible': True, 'gtd': True, 'user_invisible': True, 'search_default_timebox_id': 1}</field>
         <field name="domain">[('user_id','=',uid)]</field>
         <field name="view_type">form</field>
         <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
