@@ -112,7 +112,7 @@
         <field name="res_model">project.task</field>
         <field name="search_view_id" ref="view_task_gtd_search"/>
         <field name="context">{'set_visible': True, 'gtd': True, 'user_invisible': True, 'search_default_timebox_id': 1}</field>
-        <field name="domain">[('user_id','=',uid)]</field>
+        <field name="domain">[('user_id', '=', uid), ('stage_id.sequence', '&lt;', 20)]</field>
         <field name="view_type">form</field>
         <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
     </record>
