@@ -11,7 +11,7 @@
                           <field name="timebox_id" widget="selection" options='{"no_open": True}'/>
                           <field name="timebox_to_id" widget="selection"/>
                       </group>
-                      <field name="task_ids" domain="[('timebox_id','=',timebox_id),('state','=','open')]" />
+                      <field name="task_ids" domain="[('timebox_id', '=', timebox_id), ('stage_id.fold', '=', False)]" />
                     <footer>
                         <button name="process" string="Add to Timebox" type="object" class="oe_highlight"/>
                         or
