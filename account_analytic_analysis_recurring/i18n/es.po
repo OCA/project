@@ -1,0 +1,156 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* account_analytic_analysis_recurring
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 7.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-08-18 23:13+0000\n"
+"PO-Revision-Date: 2014-08-19 01:14+0100\n"
+"Last-Translator: Joaquin Gutierrez <joaquing.pedrosa@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+
+#. module: account_analytic_analysis_recurring
+#: view:account.analytic.account:0
+msgid ". create invoices"
+msgstr ". crear facturas"
+
+#. module: account_analytic_analysis_recurring
+#: view:account.analytic.account:0
+msgid "Account Analytic Lines"
+msgstr "Ver líneas contables analíticas"
+
+#. module: account_analytic_analysis_recurring
+#: code:_description:0
+#: field:account.analytic.invoice.line,analytic_account_id:0
+#: model:ir.model,name:account_analytic_analysis_recurring.model_account_analytic_account
+#, python-format
+msgid "Analytic Account"
+msgstr "Cuenta analítica"
+
+#. module: account_analytic_analysis_recurring
+#: field:account.analytic.account,recurring_next_date:0
+msgid "Date of Next Invoice"
+msgstr "Próximo fecha de factura"
+
+#. module: account_analytic_analysis_recurring
+#: selection:account.analytic.account,recurring_rule_type:0
+msgid "Day(s)"
+msgstr "Día(s)"
+
+#. module: account_analytic_analysis_recurring
+#: field:account.analytic.invoice.line,name:0
+msgid "Description"
+msgstr "Descripción"
+
+#. module: account_analytic_analysis_recurring
+#: code:addons/account_analytic_analysis_recurring/account_analytic_analysis_recurring.py:165
+#, python-format
+msgid "Error!"
+msgstr "¡Error!"
+
+#. module: account_analytic_analysis_recurring
+#: field:account.analytic.account,recurring_invoices:0
+msgid "Generate recurring invoices automatically"
+msgstr "Generar facturas recurrentes automáticamente."
+
+#. module: account_analytic_analysis_recurring
+#: field:account.analytic.account,recurring_invoice_line_ids:0
+msgid "Invoice Lines"
+msgstr "Líneas de factura"
+
+#. module: account_analytic_analysis_recurring
+#: help:account.analytic.account,recurring_rule_type:0
+msgid "Invoice automatically repeat at specified interval"
+msgstr "Repetir factura automáticamente en ese intervalo"
+
+#. module: account_analytic_analysis_recurring
+#: selection:account.analytic.account,recurring_rule_type:0
+msgid "Month(s)"
+msgstr "Mes(es)"
+
+#. module: account_analytic_analysis_recurring
+#: code:addons/account_analytic_analysis_recurring/account_analytic_analysis_recurring.py:153
+#, python-format
+msgid "No Customer Defined!"
+msgstr "¡No se ha definido un cliente!"
+
+#. module: account_analytic_analysis_recurring
+#: code:addons/account_analytic_analysis_recurring/account_analytic_analysis_recurring.py:166
+#, python-format
+msgid "Please define a sale journal for the company \"%s\"."
+msgstr "Defina por favor un diario de ventas para esta compañía \"%s\"."
+
+#. module: account_analytic_analysis_recurring
+#: field:account.analytic.invoice.line,product_id:0
+msgid "Product"
+msgstr "Producto"
+
+#. module: account_analytic_analysis_recurring
+#: field:account.analytic.invoice.line,quantity:0
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: account_analytic_analysis_recurring
+#: field:account.analytic.account,recurring_rule_type:0
+msgid "Recurrency"
+msgstr "Recurrencia"
+
+#. module: account_analytic_analysis_recurring
+#: view:account.analytic.account:0
+msgid "Recurring Invoices"
+msgstr "Facturas recurrentes"
+
+#. module: account_analytic_analysis_recurring
+#: field:account.analytic.account,recurring_interval:0
+msgid "Repeat Every"
+msgstr "Repetir cada"
+
+#. module: account_analytic_analysis_recurring
+#: help:account.analytic.account,recurring_interval:0
+msgid "Repeat every (Days/Week/Month/Year)"
+msgstr "Repetir cada (días/semana/mes/año)"
+
+#. module: account_analytic_analysis_recurring
+#: field:account.analytic.invoice.line,price_subtotal:0
+msgid "Sub Total"
+msgstr "Subtotal"
+
+#. module: account_analytic_analysis_recurring
+#: field:account.analytic.invoice.line,price_unit:0
+msgid "Unit Price"
+msgstr "Precio unidad"
+
+#. module: account_analytic_analysis_recurring
+#: field:account.analytic.invoice.line,uom_id:0
+msgid "Unit of Measure"
+msgstr "Unidad de medida"
+
+#. module: account_analytic_analysis_recurring
+#: selection:account.analytic.account,recurring_rule_type:0
+msgid "Week(s)"
+msgstr "Semana(s)"
+
+#. module: account_analytic_analysis_recurring
+#: selection:account.analytic.account,recurring_rule_type:0
+msgid "Year(s)"
+msgstr "Año(s)"
+
+#. module: account_analytic_analysis_recurring
+#: code:addons/account_analytic_analysis_recurring/account_analytic_analysis_recurring.py:154
+#, python-format
+msgid "You must first select a Customer for Contract %s!"
+msgstr "¡Seleccione un cliente para este contrato %s!"
+
+#. module: account_analytic_analysis_recurring
+#: code:_description:0
+#: model:ir.model,name:account_analytic_analysis_recurring.model_account_analytic_invoice_line
+#, python-format
+msgid "account.analytic.invoice.line"
+msgstr "account.analytic.invoice.line"
+
