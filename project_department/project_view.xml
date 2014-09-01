@@ -49,8 +49,8 @@
               <field name="user_id" position="after">
                 <field name="project_department_id"/>
               </field>
-              <filter string="Users" name="group_user_id" icon="terp-personal" domain="[]"  context="{'group_by':'user_id'}" position="after">
-                <filter string="Project Department" name="group_department_id" icon="terp-personal" domain="[]"  context="{'group_by':'project_department_id'}"/>
+              <filter name="User" position="after">
+                <filter string="Project Department" name="group_department_id" context="{'group_by':'project_department_id'}"/>
               </filter>
             </field>
         </record>
