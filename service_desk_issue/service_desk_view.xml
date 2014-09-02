@@ -73,10 +73,8 @@
                 <field name="id" position="after">
                     <field name="analytic_partner_id"/>
                     <field name="analytic_account_id" string="Contract"/>
-                </field>
-                <filter string="Responsible" position="after">
                     <filter string="Contract Customer" context="{'group_by':'analytic_partner_id'}" />
-                </filter>
+                </field>
 
            </field>
         </record>
