@@ -141,8 +141,8 @@ class account_analytic_account(osv.osv):
         return value
 
     def _prepare_invoice(self, cr, uid, contract, context=None):
-        context = context or {}
-
+        if context is None:
+            context = {}
         inv_obj = self.pool.get('account.invoice')
         journal_obj = self.pool.get('account.journal')
         fpos_obj = self.pool.get('account.fiscal.position')
@@ -153,8 +153,8 @@ class account_analytic_account(osv.osv):
                 _('No Customer Defined!'),
                 _("You must first select a Customer for Contract %s!") %
                 contract.name)
-
-        fpos = contract.partner_id.property_account_position or False
+        partner = contract.partner_id
+        fpos = partner.property_account_position or False
         journal_ids = journal_obj.search(
             cr, uid,
             [('type', '=', 'sale'),
@@ -165,15 +165,13 @@ class account_analytic_account(osv.osv):
                 _('Error!'),
                 _('Please define a sale journal for the company "%s".') %
                 (contract.company_id.name or '', ))
-
         partner_payment_term = contract.partner_id.property_payment_term.id
-
         inv_data = {
             'reference': contract.code or False,
-            'account_id': contract.partner_id.property_account_receivable.id,
+            'account_id': partner.property_account_receivable.id,
             'type': 'out_invoice',
-            'partner_id': contract.partner_id.id,
-            'currency_id': contract.partner_id.property_product_pricelist.id,
+            'partner_id': partner.id,
+            'currency_id': partner.property_product_pricelist.currency_id.id,
             'journal_id': len(journal_ids) and journal_ids[0] or False,
             'date_invoice': contract.recurring_next_date,
             'origin': contract.name,
@@ -182,18 +180,14 @@ class account_analytic_account(osv.osv):
             'company_id': contract.company_id.id or False,
         }
         invoice_id = inv_obj.create(cr, uid, inv_data, context=context)
-
         for line in contract.recurring_invoice_line_ids:
-
             res = line.product_id
             account_id = res.property_account_income.id
             if not account_id:
                 account_id = res.categ_id.property_account_income_categ.id
             account_id = fpos_obj.map_account(cr, uid, fpos, account_id)
-
             taxes = res.taxes_id or False
             tax_id = fpos_obj.map_tax(cr, uid, fpos, taxes)
-
             if 'old_date' in context:
                 lang_ids = lang_obj.search(
                     cr, uid, [('code', '=', contract.partner_id.lang)],
@@ -204,7 +198,6 @@ class account_analytic_account(osv.osv):
                     '#START#', context['old_date'].strftime(format))
                 line.name = line.name.replace(
                     '#END#', context['next_date'].strftime(format))
-
             invoice_line_vals = {
                 'name': line.name,
                 'account_id': account_id,
