@@ -113,11 +113,18 @@ msgid "Set to Timebox"
 msgstr "Mettre dans la zone de temps"
 
 #. module: project_gtd
+#: model:ir.actions.act_window,name:project_gtd.open_gtd_all_tasks
+#: model:ir.ui.menu,name:project_gtd.menu_open_gtd_timebox_all_tree
+#: view:project.task:0
+msgid "Tasks (GTD)"
+msgstr "Tâches (GTD)"
+
+#. module: project_gtd
 #: model:ir.actions.act_window,name:project_gtd.open_gtd_task
 #: model:ir.ui.menu,name:project_gtd.menu_open_gtd_timebox_tree
 #: view:project.task:0
-msgid "My Tasks"
-msgstr "Mes tâches par zone de temps"
+msgid "My Tasks (GTD)"
+msgstr "Mes tâches (GTD)"
 
 #. module: project_gtd
 #: help:project.task,context_id:0
