@@ -19,6 +19,8 @@
 ##############################################################################
 
 from openerp.osv import fields, orm
+import logging
+_logger = logging.getLogger(__name__)
 
 
 class AnalyticAccount(orm.Model):
@@ -36,30 +38,23 @@ class AnalyticAccount(orm.Model):
         To use after changing a Contract SLA or it's Definitions.
         The ``recalc_closed`` flag allows to also recompute closed documents.
         """
-        ctrl_obj = self.pool.get('project.sla.control')
-        proj_obj = self.pool.get('project.project')
-        exclude_states = ['cancelled'] + (not recalc_closed and ['done'] or [])
+        ctrl_obj = self.pool['project.sla.control']
         for contract in self.browse(cr, uid, ids, context=context):
             # for each contract, and for each model under SLA control ...
-            for m_name in set([sla.control_model for sla in contract.sla_ids]):
-                model = self.pool.get(m_name)
-                doc_ids = []
+            ctrl_models = set([sla.control_model for sla in contract.sla_ids])
+            for model_name in ctrl_models:
+                model = self.pool[model_name]
+                domain = [] if recalc_closed else [('stage_id.fold', '=', 1)]
                 if 'analytic_account_id' in model._columns:
-                    doc_ids += model.search(
-                        cr, uid,
-                        [('analytic_account_id', '=', contract.id),
-                         ('state', 'not in', exclude_states)],
-                        context=context)
+                    domain.append(
+                        ('analytic_account_id', '=', contract.id))
                 if 'project_id' in model._columns:
-                    proj_ids = proj_obj.search(
-                        cr, uid, [('analytic_account_id', '=', contract.id)],
-                        context=context)
-                    doc_ids += model.search(
-                        cr, uid,
-                        [('project_id', 'in', proj_ids),
-                         ('state', 'not in', exclude_states)],
-                        context=context)
+                    domain.append(
+                        ('project_id.analytic_account_id', '=', contract.id))
+
+                doc_ids = model.search(cr, uid, domain, context=context)
                 if doc_ids:
+                    model = self.pool[model_name]
                     docs = model.browse(cr, uid, doc_ids, context=context)
                     ctrl_obj.store_sla_control(cr, uid, docs, context=context)
         return True

@@ -93,7 +93,7 @@
                 <field name="sla_id" ref="sla_resolution"/>
                 <field name="sequence">10</field>
                 <field name="name">Resolution in two business days</field>
-                <field name="condition">obj.priority &lt;= '2'</field>
+                <field name="condition">obj.priority &gt;= '2'</field>
                 <field name="limit_qty">16</field>
                 <field name="warn_qty">8</field>
             </record>
@@ -116,7 +116,7 @@
                 <field name="sla_id" ref="sla_response"/>
                 <field name="sequence">10</field>
                 <field name="name">Response in one business day</field>
-                <field name="condition">obj.priority &lt;= '2'</field>
+                <field name="condition">obj.priority &lt;= '1'</field>
                 <field name="limit_qty">8</field>
                 <field name="warn_qty">4</field>
             </record>

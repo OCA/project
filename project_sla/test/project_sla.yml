@@ -10,7 +10,7 @@
   !record {model: project.issue, id: issue1, view: False}:
     name: "My monitor is flickering"
     project_id: project.project_project_1
-    priority: "3"
+    priority: "1"
     user_id: base.user_root
     partner_id: base.res_partner_2
     email_from: agr@agrolait.com
@@ -20,7 +20,9 @@
   Close the Issue
 -
   !python {model: project.issue}: |
-    self.case_close(cr, uid, [ref("issue1")])
+    self.write(cr, uid, [ref("issue1")], {
+        'stage_id': ref("project.project_tt_deployment")  # Done stage
+        })
 -
   Force the Issue's Create Date and Close Date
   Created friday before opening hour, closed on next monday near closing hour
@@ -35,7 +37,7 @@
   There should be Service Level info generated on the Issue
 -
   !assert {model: project.issue, id: issue1, string: Issue should have calculated service levels}:
-    - len(sla_control_ids) == 2
+    - len(sla_control_ids) == 1
 -
   Assign an additional "Response SLA" to the Contract
 -

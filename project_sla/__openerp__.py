@@ -38,7 +38,7 @@ SLA Controlled Documents
 ========================
 
 Only Project Issue documents are made SLA controllable.
-However, a framework is made available to easily build extensions to make
+However, a framework is made available to easilly build extensions to make
 other documents models SLA controlled.
 
 SLA controlled documents have attached information on the list of SLA rules
@@ -124,9 +124,10 @@ Credits and Contributors
         'analytic_account_view.xml',
         'project_view.xml',
         'project_issue_view.xml',
+        'project_task_view.xml',
         'security/ir.model.access.csv',
     ],
     'demo': ['project_sla_demo.xml'],
     'test': ['test/project_sla.yml'],
-    'installable': False,
+    'installable': True,
 }
