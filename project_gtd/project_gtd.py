@@ -152,7 +152,7 @@ class project_task(osv.Model):
                 cr, uid, timebox_obj.search(cr, uid, []), context=context)
             search_extended = ''
             for timebox in timeboxes:
-                filter_ = """
+                filter_ = u"""
                     <filter domain="[('timebox_id', '=', {timebox_id})]"
                             string="{string}"/>\n
                     """.format(timebox_id=timebox.id, string=timebox.name)
