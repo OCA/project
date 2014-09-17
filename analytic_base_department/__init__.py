@@ -1,1 +1,1 @@
-import analytic
+from . import analytic

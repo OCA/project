@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     "name": "Analytic Department Categorization",
-    "version": "2.0",
+    "version": "1.0",
     "author": "Camptocamp, Daniel Reis",
     "license": "AGPL-3",
     "category": "Generic Modules/Projects & Services",
