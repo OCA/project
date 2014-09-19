@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <record id="task_type_edit_state" model="ir.ui.view">
+            <field name="name">task_type_edit_state</field>
+            <field name="model">project.task.type</field>
+            <field name="inherit_id" ref="project.task_type_edit"/>
+            <field name="arch" type="xml">
+                <field name="fold" position="after">
+                    <field name="state" />
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>
