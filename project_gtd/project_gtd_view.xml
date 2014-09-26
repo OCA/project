@@ -98,6 +98,11 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_search_form"/>
         <field name="arch" type="xml">
+            <filter name="message_unread" position="after">
+                <group string="Timebox">
+                    <separator name="gtdsep"/>
+                </group>
+            </filter>
             <filter string="Last Message" position="after">
                 <filter name="timebox_id" string="Timebox" domain="[]" context="{'group_by': 'timebox_id'}"/>
                 <filter name="context_id" string="Context" domain="[]" context="{'group_by': 'context_id'}"/>
