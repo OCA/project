@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#   Daniel Reis, 2013
+#   Daniel Reis, 2014
 #
 #   This program is free software: you can redistribute it and/or modify
 #   it under the terms of the GNU Affero General Public License as published by
@@ -19,18 +19,17 @@
 ##############################################################################
 
 {
-    'name': 'Projects extensions for user roles',
+    'name': 'Add State field to Project Stages',
     'version': '1.0',
     'category': 'Project Management',
-    'summary': 'Extend Project user roles to support more complex use cases',
+    'summary': 'Restore State attribute removed from Project Stages in 8.0',
     'author': 'Daniel Reis',
+    'website': 'https://github.com/OCA/project-service',
     'depends': [
-        'project_stage_state',
+        'project',
     ],
     'data': [
         'project_view.xml',
-        'security/ir.model.access.csv',
-        'security/project_security.xml',
         ],
     'installable': True,
 }
