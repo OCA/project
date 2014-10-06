@@ -26,4 +26,7 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #
 ##############################################################################
+
 import project
+
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

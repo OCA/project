@@ -28,30 +28,27 @@
 #
 ##############################################################################
 
-from osv import fields
-from osv import osv
-
-from tools import config
+from osv import fields, osv
 
 class project_service_type(osv.osv):
     _name = "project.service_type"
     _description = "Service type"
-    
     _columns = {
-        'name': fields.char('Service type', required=True, size=64),
+        'name': fields.char('Service Type', required=True, size=64),
     }
 
-        
 project_service_type()
-
 
 class project_project(osv.osv):
     _inherit = 'project.project'
-
     _columns = {
-        'project_service_id':fields.many2one('project.service_type', 'Service type', required=True),
-        'project_type': fields.selection([('forfait', 'Forfait'),('plafond', 'Plafond'),('regie', 'Regie')], 'Type', required=True),
+        'project_service_id':fields.many2one('project.service_type', 'Service Type', required=True),
+        'project_type': fields.selection(
+                            [('forfait', 'Forfait'),
+                             ('plafond', 'Plafond'),
+                             ('regie', 'Regie')], 'Type', required=True),
    }
 
-
 project_project()
+
+# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
