@@ -28,30 +28,25 @@
 #
 ##############################################################################
 
-from osv import fields
-from osv import osv
+from openerp.osv import orm, fields
 
-from tools import config
 
-class project_service_type(osv.osv):
+class project_service_type(orm.Model):
     _name = "project.service_type"
     _description = "Service type"
-    
     _columns = {
-        'name': fields.char('Service type', required=True, size=64),
+        'name': fields.char('Service Type', required=True, size=64),
     }
 
-        
-project_service_type()
 
-
-class project_project(osv.osv):
+class project_project(orm.Model):
     _inherit = 'project.project'
-
     _columns = {
-        'project_service_id':fields.many2one('project.service_type', 'Service type', required=True),
-        'project_type': fields.selection([('forfait', 'Forfait'),('plafond', 'Plafond'),('regie', 'Regie')], 'Type', required=True),
-   }
-
-
-project_project()
+        'project_service_id': fields.many2one('project.service_type',
+                                              'Service Type',
+                                              required=True),
+        'project_type': fields.selection(
+            [('forfait', 'Forfait'),
+                ('plafond', 'Plafond'),
+                ('regie', 'Regie')], 'Type', required=True),
+    }
