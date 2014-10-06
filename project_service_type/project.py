@@ -30,6 +30,7 @@
 
 from osv import fields, osv
 
+
 class project_service_type(osv.osv):
     _name = "project.service_type"
     _description = "Service type"
@@ -39,15 +40,18 @@ class project_service_type(osv.osv):
 
 project_service_type()
 
+
 class project_project(osv.osv):
     _inherit = 'project.project'
     _columns = {
-        'project_service_id':fields.many2one('project.service_type', 'Service Type', required=True),
+        'project_service_id': fields.many2one('project.service_type',
+                                              'Service Type',
+                                              required=True),
         'project_type': fields.selection(
-                            [('forfait', 'Forfait'),
-                             ('plafond', 'Plafond'),
-                             ('regie', 'Regie')], 'Type', required=True),
-   }
+            [('forfait', 'Forfait'),
+                ('plafond', 'Plafond'),
+                ('regie', 'Regie')], 'Type', required=True),
+    }
 
 project_project()
 
