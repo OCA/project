@@ -43,5 +43,3 @@ This will add a type of service on project allowing you to categorize them.
     'auto_install': False,
     'application': False
 }
-
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
