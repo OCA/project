@@ -17,7 +17,7 @@
                         <filter name="overdue" icon="terp-dolar_ok!" string="Overdue" domain="[('amount_hours_block_delta','&lt;','0.0')]" help="Overdue Hours Block"/>
                         <separator orientation="vertical"/>
                         <field name="number"/>
-                        <field name="partner_id"/>
+                        <field name="partner_id"  filter_domain="[('partner_id', 'child_of', self)]"/>
                         <field name="department_id" string="Department"/>
                         <field name="user_id" select="1" widget="selection" string="Salesman">
                         <filter domain="[('user_id','=',uid)]" help="My invoices" icon="terp-personal" separator="1"/>
