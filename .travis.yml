@@ -1,0 +1,22 @@
+language: python
+python:
+  - "2.7"
+
+virtualenv:
+  system_site_packages: true
+
+env:
+  - VERSION="7.0" ODOO_REPO="odoo/odoo"
+  - VERSION="7.0" ODOO_REPO="OCA/OCB"
+  - VERSION="7.0" ODOO_REPO="odoo/odoo" UNIT_TEST="1"
+
+install:
+  - git clone https://github.com/OCA/maintainer-quality-tools.git $HOME/maintainer-quality-tools
+  - export PATH=$HOME/maintainer-quality-tools/travis:$PATH
+  - travis_install_nightly
+
+script:
+  - travis_run_tests
+
+after_success:
+  coveralls
