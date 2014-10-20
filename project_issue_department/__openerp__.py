@@ -32,7 +32,7 @@ Project's defined Department.
     'depends': [
         'project_issue',
         'project_department',
-        ],
+    ],
     'update_xml': [
         'project_issue_view.xml',
         'security/ir.model.access.csv',
@@ -41,4 +41,3 @@ Project's defined Department.
     'application': False,
     'auto_install': True,
 }
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
