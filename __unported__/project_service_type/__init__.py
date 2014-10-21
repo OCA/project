@@ -3,7 +3,6 @@
 #
 # Copyright (c) 2010 Camtocamp SA
 # @author Joël Grand-Guillaume
-# $Id: $
 #
 # WARNING: This program as such is intended to be used by professional
 # programmers who take the whole responsability of assessing all potential
@@ -28,30 +27,4 @@
 #
 ##############################################################################
 
-from osv import fields
-from osv import osv
-
-from tools import config
-
-class project_service_type(osv.osv):
-    _name = "project.service_type"
-    _description = "Service type"
-    
-    _columns = {
-        'name': fields.char('Service type', required=True, size=64),
-    }
-
-        
-project_service_type()
-
-
-class project_project(osv.osv):
-    _inherit = 'project.project'
-
-    _columns = {
-        'project_service_id':fields.many2one('project.service_type', 'Service type', required=True),
-        'project_type': fields.selection([('forfait', 'Forfait'),('plafond', 'Plafond'),('regie', 'Regie')], 'Type', required=True),
-   }
-
-
-project_project()
+import project

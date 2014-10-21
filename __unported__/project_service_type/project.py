@@ -3,6 +3,7 @@
 #
 # Copyright (c) 2010 Camtocamp SA
 # @author Joël Grand-Guillaume
+# $Id: $
 #
 # WARNING: This program as such is intended to be used by professional
 # programmers who take the whole responsability of assessing all potential
@@ -26,4 +27,26 @@
 # Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
 #
 ##############################################################################
-import project
+
+from openerp.osv import orm, fields
+
+
+class project_service_type(orm.Model):
+    _name = "project.service_type"
+    _description = "Service type"
+    _columns = {
+        'name': fields.char('Service Type', required=True, size=64),
+    }
+
+
+class project_project(orm.Model):
+    _inherit = 'project.project'
+    _columns = {
+        'project_service_id': fields.many2one('project.service_type',
+                                              'Service Type',
+                                              required=True),
+        'project_type': fields.selection(
+            [('forfait', 'Forfait'),
+                ('plafond', 'Plafond'),
+                ('regie', 'Regie')], 'Type', required=True),
+    }
