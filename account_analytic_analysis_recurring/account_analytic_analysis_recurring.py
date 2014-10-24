@@ -92,7 +92,7 @@ class AccountAnalyticInvoiceLine(orm.Model):
              'uom_id': uom_id or res.uom_id.id or False,
              'price_unit': res.list_price or 0.0})
         if res.description:
-            result['name'] += '\n'+res.description
+            result['name'] += '\n' + res.description
 
         res_final = {'value': result}
         if result['uom_id'] != res.uom_id.id:
@@ -169,7 +169,7 @@ class AccountAnalyticAccount(orm.Model):
             raise orm.except_orm(
                 _('Error!'),
                 _('Please define a sale journal for the company "%s".') %
-                (contract.company_id.name or '', ))
+                (contract.company_id.name or '',))
         partner_payment_term = contract.partner_id.property_payment_term.id
         inv_data = {
             'reference': contract.code or False,
@@ -241,8 +241,30 @@ class AccountAnalyticAccount(orm.Model):
                 new_date = next_date + relativedelta(months=+interval)
             context['old_date'] = old_date
             context['next_date'] = new_date
-            self._prepare_invoice(
-                cr, uid, contract, context=context)
+            # Force company for correct evaluate domain access rules
+            context['force_company'] = contract.company_id.id
+
+            # Create new cursor for handle multi company environments
+            from openerp import pooler
+            db, pool = pooler.get_db_and_pool(cr.dbname)
+            cursor = db.cursor()
+            try:
+                this = pool.get('account.analytic.account')
+                # Need to reload contract on new cursor for prevent
+                # ORM optimizations use same company for load all
+                # partner properties
+                contract = this.browse(
+                    cursor, uid, contract.id, context=context
+                )
+                this._prepare_invoice(
+                    cursor, uid, contract, context=context
+                )
+                cursor.commit()  # commit results
+            except Exception:
+                cursor.rollback()  # error, rollback everything
+            finally:
+                cursor.close()  # always close cursor
+
             self.write(
                 cr, uid, [contract.id],
                 {'recurring_next_date': new_date.strftime('%Y-%m-%d')},
