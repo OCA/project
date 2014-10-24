@@ -25,7 +25,7 @@
     "website": "http://www.camptocamp.com",
     "category": "project Management",
     "depends": ["project"],
-    "description": """\
+    "description": """
     Automatic account analytic closing when related project is closed.
     and If a projet is open, the related analytic account will be  re-open.
     """,
