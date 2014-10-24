@@ -93,7 +93,7 @@ class account_analytic_invoice_line(osv.osv):
              'uom_id': uom_id or res.uom_id.id or False,
              'price_unit': res.list_price or 0.0})
         if res.description:
-            result['name'] += '\n'+res.description
+            result['name'] += '\n' + res.description
 
         res_final = {'value': result}
         if result['uom_id'] != res.uom_id.id:
@@ -164,7 +164,7 @@ class account_analytic_account(osv.osv):
             raise osv.except_osv(
                 _('Error!'),
                 _('Please define a sale journal for the company "%s".') %
-                (contract.company_id.name or '', ))
+                (contract.company_id.name or '',))
         partner_payment_term = contract.partner_id.property_payment_term.id
         inv_data = {
             'reference': contract.code or False,
@@ -230,20 +230,41 @@ class account_analytic_account(osv.osv):
                 contract.recurring_next_date or current_date, "%Y-%m-%d")
             interval = contract.recurring_interval
             if contract.recurring_rule_type == 'daily':
-                old_date = next_date-relativedelta(days=+interval)
-                new_date = next_date+relativedelta(days=+interval)
+                old_date = next_date - relativedelta(days=+interval)
+                new_date = next_date + relativedelta(days=+interval)
             elif contract.recurring_rule_type == 'weekly':
-                old_date = next_date-relativedelta(weeks=+interval)
-                new_date = next_date+relativedelta(weeks=+interval)
+                old_date = next_date - relativedelta(weeks=+interval)
+                new_date = next_date + relativedelta(weeks=+interval)
             else:
-                old_date = next_date+relativedelta(months=+interval)
-                new_date = next_date+relativedelta(months=+interval)
+                old_date = next_date + relativedelta(months=+interval)
+                new_date = next_date + relativedelta(months=+interval)
 
             context['old_date'] = old_date
             context['next_date'] = datetime.datetime.strptime(
                 contract.recurring_next_date or current_date, "%Y-%m-%d")
-            self._prepare_invoice(
-                cr, uid, contract, context=context)
+            # Force company for correct evaluate domain access rules
+            context['force_company'] = contract.company_id.id
+
+            # Create new cursor for handle multi company environments
+            from openerp import pooler
+            db, pool = pooler.get_db_and_pool(cr.dbname)
+            cursor = db.cursor()
+            try:
+                this = pool.get('account.analytic.account')
+                # Need to reload contract on new cursor for prevent
+                # ORM optimizations use same company for load all
+                # partner properties
+                contract = this.browse(
+                    cursor, uid, contract.id, context=context
+                )
+                this._prepare_invoice(
+                    cursor, uid, contract, context=context
+                )
+                cursor.commit()  # commit results
+            except Exception:
+                cursor.rollback()  # error, rollback everything
+            finally:
+                cursor.close()  # always close cursor
 
             self.write(
                 cr, uid, [contract.id],
