@@ -243,30 +243,14 @@ class AccountAnalyticAccount(orm.Model):
             context['next_date'] = new_date
             # Force company for correct evaluate domain access rules
             context['force_company'] = contract.company_id.id
-
-            # Create new cursor for handle multi company environments
-            from openerp import pooler
-            db, pool = pooler.get_db_and_pool(cr.dbname)
-            cursor = db.cursor()
-            try:
-                this = pool.get('account.analytic.account')
-                # Need to reload contract on new cursor for prevent
-                # ORM optimizations use same company for load all
-                # partner properties
-                contract = this.browse(
-                    cursor, uid, contract.id, context=context
-                )
-                this._prepare_invoice(
-                    cursor, uid, contract, context=context
-                )
-                cursor.commit()  # commit results
-            except Exception:
-                cursor.rollback()  # error, rollback everything
-            finally:
-                cursor.close()  # always close cursor
-
+            # Re-read contract with correct company
+            contract = self.browse(cr, uid, contract.id, context=context)
+            self._prepare_invoice(
+                cr, uid, contract, context=context
+            )
             self.write(
                 cr, uid, [contract.id],
                 {'recurring_next_date': new_date.strftime('%Y-%m-%d')},
-                context=context)
+                context=context
+            )
         return True
