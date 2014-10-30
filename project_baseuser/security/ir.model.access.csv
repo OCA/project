@@ -6,3 +6,5 @@ access_project_task_type_empl,project.task.type.employees,project.model_project_
 access_project_task_work_empl,project.task.work.employees,project.model_project_task_work,base.group_user,1,0,0,0
 access_project_task_history_empl,project.task.history.employees,project.model_project_task_history,base.group_user,1,0,1,0
 access_project_task_hist_cum_empl,project.task.history.cumulative.employees,project.model_project_task_history_cumulative,base.group_user,1,0,1,0
+access_resource_calendar_empl,resource.calendar.employees,resource.model_resource_calendar,base.group_user,1,0,0,0
+access_resource_calendar_attendance_empl,resource.calendar.attendance.employees,resource.model_resource_calendar_attendance,base.group_user,1,0,0,0
