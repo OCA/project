@@ -92,11 +92,11 @@ class SLAControl(orm.Model):
         new_state = vals.get('sla_state')
         if new_state:
             # just update sla_state without recomputing the whole thing
-            context = context or {}
-            context['__sla_stored__'] = 1
-            for sla in self.browse(cr, uid, ids, context=context):
+            ctx = dict(context) or {}
+            ctx['__sla_stored__'] = 1
+            for sla in self.browse(cr, uid, ids, context=ctx):
                 doc = self.pool.get(sla.doc_model).browse(
-                    cr, uid, sla.doc_id, context=context)
+                    cr, uid, sla.doc_id, context=ctx)
                 if doc.sla_state < new_state:
                     doc.write({'sla_state': new_state})
         return res
@@ -252,7 +252,8 @@ class SLAControl(orm.Model):
         if '__sla_stored__' in context:
             return False
         else:
-            context['__sla_stored__'] = 1
+            ctx = dict(context)
+            ctx['__sla_stored__'] = 1
 
         res = []
         for ix, doc in enumerate(docs):
@@ -260,7 +261,7 @@ class SLAControl(orm.Model):
                 _logger.info('...%d SLAs recomputed for %s' % (ix, doc._name))
             control = {x.sla_line_id.id: x
                        for x in doc.sla_control_ids}
-            sla_recs = self._get_computed_slas(cr, uid, doc, context=context)
+            sla_recs = self._get_computed_slas(cr, uid, doc, context=ctx)
             # calc sla control lines
             if sla_recs:
                 slas = []
@@ -279,7 +280,7 @@ class SLAControl(orm.Model):
             # calc sla control summary and store
             vals = {'sla_state': global_sla, 'sla_control_ids': slas}
             doc._model.write(  # regular users can't write on SLA Control
-                cr, SUPERUSER_ID, [doc.id], vals, context=context)
+                cr, SUPERUSER_ID, [doc.id], vals, context=ctx)
         return res
 
 
