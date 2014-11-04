@@ -1,4 +1,5 @@
 [![Build Status](https://travis-ci.org/OCA/project-service.svg?branch=8.0)](https://travis-ci.org/OCA/project-service)
+[![Code Health](https://landscape.io/github/OCA/project-service/8.0/landscape.png)](https://landscape.io/github/OCA/project-service/8.0)
 [![Coverage Status](https://coveralls.io/repos/OCA/project-service/badge.png?branch=8.0)](https://coveralls.io/r/OCA/project-service?branch=8.0)
 
 Odoo Project & Service Management
