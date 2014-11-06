@@ -19,7 +19,7 @@
 ##############################################################################
 
 from openerp.osv import orm
-from tools.translate import _
+from openerp import _
 
 
 class project_issue(orm.Model):
