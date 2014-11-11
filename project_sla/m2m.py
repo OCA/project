@@ -72,4 +72,3 @@ if __name__ == "__main__":
     assert unlink(99) == [(3, 99)]
     assert clear() == [(5, 0)]
     assert replace([97, 98, 99]) == [(6, 0, [97, 98, 99])]
-    print("Done!")
