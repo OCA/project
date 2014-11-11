@@ -75,7 +75,6 @@ class project_task(osv.Model):
             self, cr, uid, ids, domain,
             read_group_order=None, access_rights_uid=None, context=None):
         """Used to display all timeboxes on the view."""
-        print read_group_order, access_rights_uid
         timebox_obj = self.pool.get('project.gtd.timebox')
         order = timebox_obj._order
         access_rights_uid = access_rights_uid or uid
