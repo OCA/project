@@ -92,7 +92,7 @@ class SLAControl(orm.Model):
         new_state = vals.get('sla_state')
         if new_state:
             # just update sla_state without recomputing the whole thing
-            ctx = dict(context) or {}
+            ctx = dict(context) if context else {}
             ctx['__sla_stored__'] = 1
             for sla in self.browse(cr, uid, ids, context=ctx):
                 doc = self.pool.get(sla.doc_model).browse(
