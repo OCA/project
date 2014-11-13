@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+    <report auto="False"
+            id="report_ticket_block_project"
+            model="account.hours.block"
+            name="eport_ticket_block_project"
+            file="project_issue_block_report/report/block_project_issue.mako"
+            string="Project Ticket Report"
+            report_type="webkit"
+            webkit_header="l10n_ch_payment_slip.bvr_header"
+            />
+
+    <record id="report_ticket_block_project" model="ir.actions.report.xml">
+        <field name="precise_mode">True</field>
+    </record>
+
+    </data>
+</openerp>
