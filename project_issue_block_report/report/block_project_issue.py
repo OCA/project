@@ -26,28 +26,78 @@ from openerp.tools import DEFAULT_SERVER_DATE_FORMAT
 
 class account_block_ticket(report_sxw.rml_parse):
     def __init__(self, cr, uid, name, context=None):
-        super(account_hours_block, self).__init__(cr, uid, name, context=context)
+        super(account_block_ticket, self).__init__(cr, uid, name, context=context)
         self.localcontext.update({'time': time,
                                   'date_format': DEFAULT_SERVER_DATE_FORMAT,
-                                  'analytic_lines': self._get_analytic_lines,
+                                  'get_related_projects': self._get_related_projects,
+                                  'get_related_issue': self._get_related_issue
                                   })
         self.context = context
 
-    def _get_analytic_lines(self, hours_block):
-        al_pool = self.pool.get('account.analytic.line')
-        aj_pool = self.pool.get('account.analytic.journal')
-        tcj_ids = aj_pool.search(self.cr, self.uid,
-                                 [('type', '=', 'general')])
-        al_ids = al_pool.search(self.cr,
-                                self.uid,
-                                [('invoice_id', '=', hours_block.invoice_id.id),
-                                 ('journal_id', 'in', tcj_ids),
-                                 ],
-                                order='date desc',
-                                context=self.context)
-        return al_pool.browse(self.cr, self.uid, al_ids, context=self.context)
+    def _get_related_projects(self, hours_block):
+        if self.context['active_model'] == 'project.project':
+            '''
+            We call this report from a project,
+            so we do not need to search the related project
+            '''
+            return hours_block
+        project_obj = self.pool['project.project']
+        account_invoice_line_obj = self.pool['account.invoice.line']
+        invoice_ids = [x.invoice_id.id for x in hours_block]
+        invoice_ids = list(set(invoice_ids))
+        ail_ids = account_invoice_line_obj.search(self.cr, self.uid,
+                                                  [('invoice_id', 'in',
+                                                    invoice_ids)],
+                                                  context=self.context)
+        ail_records = account_invoice_line_obj.browse(self.cr,
+                                                      self.uid, ail_ids,
+                                                      context=self.context)
+        account_ids = [x.account_analytic_id.id for x in ail_records]
+        project_ids = project_obj.search(self.cr, self.uid,
+                                         [('analytic_account_id',
+                                           'in',
+                                           account_ids)], context=self.context)
+        return project_obj.browse(self.cr, self.uid,
+                                  project_ids,
+                                  context=self.context)
 
-report_sxw.report_sxw('report.account.hours.block',
+    def _get_related_issue(self, current_project, limit_section=30):
+        project_issue_obj = self.pool['project.issue']
+        result = []
+        for type in current_project.type_ids:
+            if type.state == 'done':
+                color = '#98FB98'
+            else:
+                limit_section = None
+                color = '#FF6347'
+            result_issue_ids = project_issue_obj.search(
+                self.cr, self.uid,
+                [('stage_id', '=', type.id),
+                 ('project_id', '=', current_project.id)],
+                limit=limit_section,
+                order='create_date desc',
+                context=self.context)
+            result_ids_records = project_issue_obj.browse(self.cr, self.uid,
+                                                          result_issue_ids,
+                                                          context=self.context)
+            result_records = {
+                'type': type,
+                'issues': result_ids_records,
+                'color': color,
+                }
+            result.append(result_records)
+
+        print str(result)
+        return result
+
+
+report_sxw.report_sxw('report.report_ticket_block_project',
                       'account.hours.block',
-                      'addons/analytic_hours_block/report/hours_block.rml',
-                      parser=account_hours_block)
+                      'addons/project_issue_block_report/report/block_project_issue.mako',
+                      parser=account_block_ticket)
+
+report_sxw.report_sxw('report.report_ticket_block_project_from_project',
+                      'project.project',
+                      'addons/project_issue_block_report/report/block_project_issue.mako',
+                      parser=account_block_ticket)
+

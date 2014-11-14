@@ -32,7 +32,8 @@ Report on Project Issue linked to a project set in invoice line of the related b
         'analytic_hours_block'
         ],
     'data': [
-             'report.xml'
+             'data/header.xml',
+             'report.xml',
         ],
     'installable': True,
 }
