@@ -22,6 +22,7 @@ from openerp.osv import orm
 
 
 class ProjectIssue(orm.Model):
+
     """
     Extend Project Issues to be SLA Controlled
     """

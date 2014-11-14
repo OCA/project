@@ -39,7 +39,7 @@ class ProjectIssue(orm.Model):
             type='char', string="Use Analytic Account"),
         'project_code': fields.related(
             'project_id', 'code', type='char', string="Project Code"),
-        }
+    }
 
     def onchange_project(self, cr, uid, id, project_id, context=None):
         # on_change is necessary to populate fields on Create, before saving

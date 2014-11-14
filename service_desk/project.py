@@ -27,13 +27,14 @@ class ProjectProject(orm.Model):
         'use_analytic_account': fields.selection(
             [('no', 'No'), ('yes', 'Optional'), ('req', 'Required')],
             'Use Analytic Account'),
-        }
+    }
     _defaults = {
         'use_analytic_account': 'no',
-        }
+    }
 
 
 class ProjectTask(orm.Model):
+
     """
     Add related ``Analytic Account`` and service ``Location``.
     A Location can be any Contact Partner of the AA's Partner.
@@ -52,7 +53,7 @@ class ProjectTask(orm.Model):
         'use_analytic_account': fields.related(
             'project_id', 'use_analytic_account',
             type='char', string="Use Analytic Account"),
-        }
+    }
 
     def onchange_project(self, cr, uid, id, project_id, context=None):
         # on_change is necessary to populate fields on Create, before saving

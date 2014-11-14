@@ -19,4 +19,4 @@
 #
 ##############################################################################
 
-import account_analytic_analysis_recurring
+from . import account_analytic_analysis_recurring

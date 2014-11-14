@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#################################################################################
+##########################################################################
 #
 #    OpenERP, Open Source Management Solution
 #    Copyright (C) 2012 Julius Network Solutions SARL <contact@julius.fr>
@@ -17,16 +17,15 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-#################################################################################
+##########################################################################
 
 
 from osv import fields, osv
-from tools.translate import _
-from datetime import datetime, timedelta
+
 
 class project_issue(osv.osv):
     _inherit = 'project.issue'
-    
+
     _columns = {
         'contract_id': fields.many2one('contract.contract', 'Contract'),
         'contract_line_id': fields.many2one('contract.line', 'Contract Line'),
@@ -36,5 +35,3 @@ project_issue()
 
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
-
-

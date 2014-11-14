@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#################################################################################
+##########################################################################
 #
 #    OpenERP, Open Source Management Solution
 #    Copyright (C) 2012 Julius Network Solutions SARL <contact@julius.fr>
@@ -17,7 +17,7 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-#################################################################################
+##########################################################################
 
 
 {
@@ -30,10 +30,11 @@
     'depends': [
         'report_webkit',
         'hr',
-        'project',              #=> "product", "analytic", "board"
+        'project',  # => "product", "analytic", "board"
         'project_functional_blocks',
-        'project_issue',        #=> 'crm', 'project'
-        'project_timesheet',    #=> 'project', 'hr_timesheet_sheet', 'hr_timesheet_invoice'
+        'project_issue',  # => 'crm', 'project'
+        # => 'project', 'hr_timesheet_sheet', 'hr_timesheet_invoice'
+        'project_timesheet',
         'base_contract',
         'project_service',
     ],
@@ -41,7 +42,7 @@
     'update_xml': [
         'contract_view.xml',
         'security/contract_security.xml',
-#        'security/ir.model.access.csv',
+        #        'security/ir.model.access.csv',
     ],
     'demo_xml': [],
     'test': [],

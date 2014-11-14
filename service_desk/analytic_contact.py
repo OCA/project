@@ -22,6 +22,7 @@ from openerp.osv import fields, orm
 
 
 class AnalyticAccount(orm.Model):
+
     """Add Contact to Analytic Accounts"""
     _inherit = 'account.analytic.account'
     _columns = {
@@ -29,4 +30,4 @@ class AnalyticAccount(orm.Model):
             'res.partner', 'Contact',
             domain="[('parent_id','child_of',partner_id)"
                    ",('parent_id','!=',False)]"),
-        }
+    }

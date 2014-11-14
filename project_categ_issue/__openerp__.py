@@ -30,10 +30,10 @@ specific list.
     'depends': [
         'project_issue',
         'project_categ',
-        ],
+    ],
     'data': [
         'project_categ_view.xml',
-        ],
+    ],
     'installable': True,
     'auto_install': True,
 }

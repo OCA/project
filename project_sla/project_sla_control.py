@@ -24,7 +24,7 @@ from openerp.tools.misc import DEFAULT_SERVER_DATETIME_FORMAT as DT_FMT
 from openerp import SUPERUSER_ID
 from datetime import timedelta
 from datetime import datetime as dt
-import m2m
+from . import m2m
 
 import logging
 _logger = logging.getLogger(__name__)
@@ -56,6 +56,7 @@ def safe_getattr(obj, dotattr, default=False):
 
 
 class SLAControl(orm.Model):
+
     """
     SLA Control Registry
     Each controlled document (Issue, Claim, ...) will have a record here.
@@ -80,7 +81,7 @@ class SLAControl(orm.Model):
             help="Safeguard manual changes from future automatic "
                  "recomputations."),
             # Future: perfect SLA manual handling
-        }
+    }
 
     def write(self, cr, uid, ids, vals, context=None):
         """
@@ -285,6 +286,7 @@ class SLAControl(orm.Model):
 
 
 class SLAControlled(orm.AbstractModel):
+
     """
     SLA Controlled documents: AbstractModel to apply SLA control on Models
     """
@@ -295,7 +297,7 @@ class SLAControlled(orm.AbstractModel):
             'project.sla.control', string="SLA Control", ondelete='cascade'),
         'sla_state': fields.selection(
             SLA_STATES, string="SLA Status", readonly=True),
-        }
+    }
 
     def create(self, cr, uid, vals, context=None):
         res = super(SLAControlled, self).create(cr, uid, vals, context=context)

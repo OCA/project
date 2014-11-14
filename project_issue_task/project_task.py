@@ -42,7 +42,7 @@ class task(orm.Model):
             type="many2one", relation="project.issue", store=True),
         'ref': fields.char('Reference', 20),
         'reason_id': fields.many2one('project.task.cause', 'Problem Cause'),
-        }
+    }
 
     def action_close(self, cr, uid, ids, context=None):
         """ On Task Close, also close Issue """

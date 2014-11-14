@@ -40,13 +40,13 @@ This module adds some usability improvements:
     'author': 'Daniel Reis',
     'depends': [
         'project_issue',
-        ],
+    ],
     'data': [
         'project_issue_view.xml',
         'project_task_cause_view.xml',
         'project_task_view.xml',
         'security/ir.model.access.csv',
         'security/project_security.xml',
-        ],
+    ],
     'installable': True,
 }

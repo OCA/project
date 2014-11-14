@@ -34,8 +34,8 @@ Known issues:
     'author': 'Daniel Reis',
     'website': 'daniel.reis@securitas.pt',
     'depends': [
-        'crm',              #depends on Sales Teams
-        'email_template',   #extends the Compose Mail wizard
+        'crm',  # depends on Sales Teams
+        'email_template',  # extends the Compose Mail wizard
     ],
     'update_xml': [
         'crm_view.xml',

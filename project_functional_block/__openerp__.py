@@ -40,4 +40,4 @@ Adds functional blocks to organize the projects tasks.
  ],
  'installable': True,
  'application': True,
-}
+ }

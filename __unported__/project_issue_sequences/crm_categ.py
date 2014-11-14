@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
-#    
+#
 #    Copyright (C) 2012 Daniel Reis
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -20,13 +20,12 @@
 
 from openerp.osv import fields, orm
 
+
 class crm_case_categ(orm.Model):
     _inherit = 'crm.case.categ'
     _columns = {
-        'sequence_id': fields.many2one('ir.sequence', 'Reference Sequence', help = "Sequence used to assign a reference to each new issue for this Category."),
+        'sequence_id': fields.many2one('ir.sequence', 'Reference Sequence', help="Sequence used to assign a reference to each new issue for this Category."),
     }
 
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
-
-

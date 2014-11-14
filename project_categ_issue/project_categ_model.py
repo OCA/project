@@ -26,7 +26,7 @@ class ProjectProject(orm.Model):
     _columns = {
         'issue_categ_id': fields.many2one(
             'project.category', 'Root Category for Issues'),
-        }
+    }
 
 
 class ProjectIssue(orm.Model):
@@ -56,6 +56,6 @@ class ProjectIssue(orm.Model):
             'project.category', string='Tags',
             domain="[('id','child_of',issue_categ_id)"
                    ",('id','!=',issue_categ_id)]"),
-        }
+    }
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
