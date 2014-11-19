@@ -9,7 +9,7 @@
             file="project_issue_block_report_webkit/report/block_project_issue.mako"
             string="Project Ticket Report"
             report_type="webkit"
-            webkit_header="project_issue_block_report.project_issue_portrait_header"
+            webkit_header="project_issue_block_report_webkit.project_issue_portrait_header"
             />
 
     <record id="report_ticket_block_project" model="ir.actions.report.xml">
@@ -24,7 +24,7 @@
             file="project_issue_block_report_webkit/report/block_project_issue.mako"
             string="Project Ticket Report"
             report_type="webkit"
-            webkit_header="project_issue_block_report.project_issue_portrait_header"
+            webkit_header="project_issue_block_report_webkit.project_issue_portrait_header"
             />
 
     </data>
