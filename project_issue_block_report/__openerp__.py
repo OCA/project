@@ -23,7 +23,7 @@
     'summary': 'Print Ticket linked to project concerned by block hours',
     'version': '1.1',
     'category': 'Project Management',
-    'description': """\
+    'description': """
 Report on Project Issue linked to a project set in invoice line of the related block hours
 """,
     'author': 'Vincent Renaville',
