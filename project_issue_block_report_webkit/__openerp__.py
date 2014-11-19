@@ -24,16 +24,18 @@
     'version': '1.1',
     'category': 'Project Management',
     'description': """
-Report on Project Issue linked to a project set in invoice line of the related block hours
+    Report on Project Issue linked to a project
+    set in invoice line of the related block hours
 """,
     'author': 'Vincent Renaville',
     'depends': [
         'project_issue',
-        'analytic_hours_block'
+        'analytic_hours_block',
+        'report_webkit'
         ],
     'data': [
-             'data/header.xml',
-             'report.xml',
+        'data/header.xml',
+        'report.xml',
         ],
     'installable': True,
 }

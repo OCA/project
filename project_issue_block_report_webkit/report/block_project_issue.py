@@ -93,11 +93,11 @@ class account_block_ticket(report_sxw.rml_parse):
 
 report_sxw.report_sxw('report.report_ticket_block_project',
                       'account.hours.block',
-                      'addons/project_issue_block_report/report/block_project_issue.mako',
+                      'addons/project_issue_block_report_webkit/report/block_project_issue.mako',
                       parser=account_block_ticket)
 
 report_sxw.report_sxw('report.report_ticket_block_project_from_project',
                       'project.project',
-                      'addons/project_issue_block_report/report/block_project_issue.mako',
+                      'addons/project_issue_block_report_webkit/report/block_project_issue.mako',
                       parser=account_block_ticket)
 
