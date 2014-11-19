@@ -88,8 +88,6 @@ class account_block_ticket(report_sxw.rml_parse):
                 'color': color,
                 }
             result.append(result_records)
-
-        print str(result)
         return result
 
 
