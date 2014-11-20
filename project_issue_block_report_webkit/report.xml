@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+    <report auto="False"
+            id="report_ticket_block_project"
+            model="account.hours.block"
+            name="report_ticket_block_project"
+            file="project_issue_block_report_webkit/report/block_project_issue.mako"
+            string="Project Ticket Report"
+            report_type="webkit"
+            webkit_header="project_issue_block_report_webkit.project_issue_portrait_header"
+            />
+
+    <record id="report_ticket_block_project" model="ir.actions.report.xml">
+        <field name="precise_mode">True</field>
+    </record>
+
+
+    <report auto="False"
+            id="report_ticket_block_project_from_project"
+            model="project.project"
+            name="report_ticket_block_project_from_project"
+            file="project_issue_block_report_webkit/report/block_project_issue.mako"
+            string="Project Ticket Report"
+            report_type="webkit"
+            webkit_header="project_issue_block_report_webkit.project_issue_portrait_header"
+            />
+
+    </data>
+</openerp>

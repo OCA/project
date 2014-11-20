@@ -1,0 +1,113 @@
+<?xml version="1.0" ?>
+<openerp>
+    <data >
+        <record id="project_issue_portrait_header" model="ir.header_webkit">
+            <field name="footer_html"><![CDATA[
+<html>
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="content-type"/>
+        <script>
+            function subst() {
+            var vars={};
+            var x=document.location.search.substring(1).split('&');
+            for(var i in x) {var z=x[i].split('=',2);vars[z[0]] = unescape(z[1]);}
+            var x=['frompage','topage','page','webpage','section','subsection','subsubsection'];
+            for(var i in x) {
+            var y = document.getElementsByClassName(x[i]);
+            for(var j=0; j<y.length; ++j) y[j].textContent = vars[x[i]];
+                }
+            }
+        </script>
+    </head>
+    <% import datetime %>
+    <body style="border:0; margin: 0;" onload="subst()">
+        <table style="border-top: 1px solid black; width: 1080px">
+            <tr style="border-collapse:collapse;">
+                <td style="text-align:left;font-size:10;width:350px;">${formatLang( str(datetime.datetime.today()), date_time=True)}</td>
+                <td style="text-align:center;font-size:10;width:350px;">${user.name}</td>
+                <td style="text-align:right;font-size:10;width:350px;">Page&nbsp;<span class="page"/></td>
+                <td style="text-align:left;font-size:10;width:30px">&nbsp;of&nbsp;<span class="topage"/></td>
+            </tr>
+        </table>
+    </body>
+</html>]]></field>
+            <field name="orientation">Portrait</field>
+            <field name="format">A4</field>
+            <field name="html"><![CDATA[
+<html>
+    <head>
+        <meta content="text/html; charset=UTF-8" http-equiv="content-type"/>
+        <script>
+            function subst() {
+            var vars={};
+            var x=document.location.search.substring(1).split('&');
+            for(var i in x) {var z=x[i].split('=',2);vars[z[0]] = unescape(z[1]);}
+            var x=['frompage','topage','page','webpage','section','subsection','subsubsection'];
+            for(var i in x) {
+            var y = document.getElementsByClassName(x[i]);
+            for(var j=0; j<y.length; ++j) y[j].textContent = vars[x[i]];
+                }
+            }
+        </script>
+        <style type="text/css">
+            ${css}
+        </style>
+    </head>
+</html>]]>
+            </field>
+            <field eval="17.0" name="margin_top"/>
+            <field eval="15.0" name="margin_bottom"/>
+            <field name="css"><![CDATA[
+
+.list_main_table {
+    border:thin solid #E3E4EA;
+    text-align:center;
+    font-size:10px;
+    border-collapse: collapse;
+    margin-top: 15px;
+    min-width: 100%;
+}
+.list_main_table th {
+    border: thin solid #000000;
+    text-align:center;
+    font-weight:bold;
+    font-size:10px;
+    padding-right:3px;
+    padding-left:3px;
+}
+.list_main_table td {
+    border-bottom : thin solid #EEEEEE;
+    text-align:left;
+    padding-right:3px;
+    font-size:10px;
+    padding-left:3px;
+    padding-top:3px;
+    padding-bottom:3px;
+}
+.list_main_table thead {
+    display:table-header-group;
+    font-size:10;
+}
+
+
+.header_table {
+    text-align: center;
+    border: 1px solid lightGrey;
+    border-collapse: collapse;
+}
+.header_table th {
+    font-size: 10px;
+    border: 1px solid lightGrey;
+}
+.header_table td {
+    font-size: 10px;
+    border: 1px solid lightGrey;
+}
+
+
+]]>
+            </field>
+            <field name="name">Project Issue Portrait Header</field>
+        </record>
+    </data>
+</openerp>
