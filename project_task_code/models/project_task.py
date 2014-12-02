@@ -16,25 +16,23 @@
 #
 ##############################################################################
 
-from openerp.osv import orm, fields
+from openerp import models, fields, api, _
 
 
-class ProjectTask(orm.Model):
+class ProjectTask(models.Model):
     _inherit = 'project.task'
 
-    _columns = {
-        'code': fields.char('Sequence', size=64),
-    }
+    code = fields.Char(string='Sequence', copy=False)
 
     _sql_constraints = [
-        ('unique_sequence', 'UNIQUE (code)', 'The sequence must be unique!'),
+        ('unique_sequence', 'UNIQUE (code)',
+         _('The sequence must be unique!')),
     ]
 
-    def create(self, cr, uid, data, context=None):
+    @api.model
+    def create(self, data):
         if not data.get('code'):
-            seq_obj = self.pool['ir.sequence']
-            seq = seq_obj.next_by_code(cr, uid, 'sequence.project.task',
-                                       context=context)
+            seq_obj = self.env['ir.sequence']
+            seq = seq_obj.next_by_code('sequence.project.task')
             data['code'] = seq
-
-        return super(ProjectTask, self).create(cr, uid, data, context=context)
+        return super(ProjectTask, self).create(data)
