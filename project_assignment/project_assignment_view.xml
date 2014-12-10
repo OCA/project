@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Configuration line -->
+
+        <record id="view_project_assigned_partner_config_tree" model="ir.ui.view">
+            <field name="name">project.assigned.partner.config.tree</field>
+            <field name="model">project.assigned.partner.config</field>
+            <field name="arch" type="xml">
+                <tree string="Assigned partners" editable="top">
+                    <field name="stage_id"/>
+                    <field name="partner_id"/>
+                    <field name="action"/>
+                    <field name="model" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_project_assigned_partner_config_form" model="ir.ui.view">
+            <field name="name">project.assigned.partner.config.form</field>
+            <field name="model">project.assigned.partner.config</field>
+            <field name="arch" type="xml">
+                <form string="Assigned Partner">
+                    <field name="stage_id"/>
+                    <field name="partner_id"/>
+                    <field name="action"/>
+                    <field name="model" invisible="1"/>
+                </form>
+            </field>
+        </record>
+
+
+        <!-- Project -->
+
+        <record id="view_project_project_tree_assignpartner" model="ir.ui.view">
+            <field name="name">project.project.tree.assignpartner</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.view_project"/>
+            <field name="arch" type="xml">
+                <field name="user_id" position="replace">
+                    <field name="manager_partner_id"/>
+                    <field name="user_id" invisible="1"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_project_project_form_assignpartner" model="ir.ui.view">
+            <field name="name">project.project.form.assignpartner</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="arch" type="xml">
+                <field name="user_id" position="replace">
+                    <field name="manager_partner_id"/>
+                    <field name="user_id" invisible="1"/>
+                </field>
+                <field name="type_ids" position="after">
+                    <group>
+                        <field name="assigned_partner_config_ids" context="{'default_model': 'project.project'}"/>
+                        <field name="assigned_partner_config_result_ids"/>
+                    </group>
+                </field>
+            </field>
+        </record>
+
+
+        <!-- Task -->
+
+        <record id="view_project_task_form_assignpartner" model="ir.ui.view">
+            <field name="name">project.task.form.assignpartner</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <field name="user_id" position="replace">
+                    <field name="assigned_partner_id"/>
+                </field>
+                <field name="reviewer_id" position="replace">
+                    <field name="reviewer_partner_id"/>
+                </field>
+                <page string="Extra Info" position="after">
+                    <page string="Assign Partner">
+                        <group>
+                            <field name="assigned_partner_config_ids" context="{'default_model': 'project.task'}"/>
+                            <field name="assigned_partner_config_result_ids"/>
+                        </group>
+                    </page>
+                </page>
+            </field>
+        </record>
+
+        <record id="view_project_task_tree_assignpartner" model="ir.ui.view">
+            <field name="name">project.task.tree.assignpartner</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_tree2"/>
+            <field name="arch" type="xml">
+                <field name="user_id" position="replace">
+                    <field name="assigned_partner_id"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_project_task_search_assignpartner" model="ir.ui.view">
+            <field name="name">project.task.search.assignpartner</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_search_form"/>
+            <field name="arch" type="xml">
+                <field name="user_id" position="replace">
+                    <field name="assigned_partner_id"/>
+                </field>
+                <filter string="My Tasks" position="replace">
+                    <filter string="My Tasks" domain="[('assigned_partner_id.user_ids','in',uid)]"/>
+                    <filter string="My Reviews" domain="[('reviewer_partner_id.user_ids','in',uid)]"/>
+                </filter>
+                <filter name="unassigned" position="replace">
+                    <filter string="Unassigned" name="unassigned" domain="[('assigned_partner_id', '=', False)]"/>
+                </filter>
+            </field>
+        </record>
+
+
+        <!-- Stage -->
+
+        <record id="view_project_task_type_form_assignpartner" model="ir.ui.view">
+            <field name="name">project.task.type.form.assignpartner</field>
+            <field name="model">project.task.type</field>
+            <field name="inherit_id" ref="project.task_type_edit"/>
+            <field name="arch" type="xml">
+                <field name="sequence" position="after">
+                    <field name="partner_id"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>

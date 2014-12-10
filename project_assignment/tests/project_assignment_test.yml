@@ -1,0 +1,45 @@
+-
+  I try to change the stage of the task
+-
+  !context
+    uid: 'base.user_root'
+-
+  !python {model: project.task}: |
+    self.write(cr, uid, [ref('project.project_task_5')], {'stage_id': ref('project.project_tt_specification')})
+-
+  I check that the task is correctly assigned to demo
+-
+  !assert {model: project.task, id: project.project_task_5}:
+    - stage_id.id == ref('project.project_tt_specification')
+    - assigned_partner_id.id == ref('base.partner_demo')
+    - user_id.id == ref('base.user_demo')
+-
+  I try to change the stage of the task to development, assigned to admin
+-
+  !context
+    uid: 'base.user_demo'
+-
+  !python {model: project.task}: |
+    self.write(cr, uid, [ref('project.project_task_5')], {'stage_id': ref('project.project_tt_development')})
+-
+  I check that the task is correctly assigned to admin
+-
+  !assert {model: project.task, id: project.project_task_5}:
+    - stage_id.id == ref('project.project_tt_development')
+    - assigned_partner_id.id == ref('base.partner_root')
+    - user_id.id == ref('base.user_root')
+-
+  I try to change the stage of the task to analysis, assigned to noone
+-
+  !context
+    uid: 'base.user_root'
+-
+  !python {model: project.task}: |
+    self.write(cr, uid, [ref('project.project_task_5')], {'stage_id': ref('project.project_tt_analysis')})
+-
+  I check that the task is correctly assigned to admin
+-
+  !assert {model: project.task, id: project.project_task_5}:
+    - stage_id.id == ref('project.project_tt_analysis')
+    - assigned_partner_id.id == ref('base.partner_root')
+    - user_id.id == ref('base.user_root')

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Types -->
+
+        <record id="project.project_tt_analysis" model="project.task.type">
+            <field name="partner_id" ref="base.partner_root"/>
+        </record>
+        <record id="project.project_tt_specification" model="project.task.type">
+            <field name="partner_id" ref="base.partner_root"/>
+        </record>
+        <record id="project.project_tt_development" model="project.task.type">
+            <field name="partner_id" ref="base.partner_demo"/>
+        </record>
+
+
+        <!-- Configuration -->
+
+        <record id="assigned_config_project_del" model="project.assigned.partner.config">
+            <field name="model">project.project</field>
+            <field name="res_id" ref="project.project_project_1"/>
+            <field name="stage_id" ref="project.project_tt_analysis"/>
+            <field name="partner_id" ref="base.partner_demo"/>
+            <field name="action">remove</field>
+        </record>
+
+        <record id="assigned_config_project_add" model="project.assigned.partner.config">
+            <field name="model">project.project</field>
+            <field name="res_id" ref="project.project_project_1"/>
+            <field name="stage_id" ref="project.project_tt_specification"/>
+            <field name="partner_id" ref="base.partner_demo"/>
+            <field name="action">add</field>
+        </record>
+
+        <record id="assigned_config_task" model="project.assigned.partner.config">
+            <field name="model">project.task</field>
+            <field name="res_id" ref="project.project_task_5"/>
+            <field name="stage_id" ref="project.project_tt_development"/>
+            <field name="partner_id" ref="base.partner_root"/>
+            <field name="action">add</field>
+        </record>
+
+
+        <!-- We trigger a write on project to recomputed the assigned partner-->
+
+        <record id="project.project_project_1" model="project.project">
+            <field name="sequence">10</field>
+        </record>
+
+    </data>
+</openerp>
