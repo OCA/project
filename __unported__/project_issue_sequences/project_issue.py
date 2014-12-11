@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
-#    
+#
 #    Copyright (C) 2012 Daniel Reis
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -30,28 +30,29 @@ class project_issue(orm.Model):
     }
 
     def create(self, cr, uid, vals, context={}):
-        #Compatible with crm_categ_hierarchy
+        # Compatible with crm_categ_hierarchy
         def get_categ_sequence_id(categ_res):
             return categ_res.sequence_id.id or (
-                     hasattr(categ_res, 'parent_id')
-                     and categ_res.parent_id
-                     and get_categ_sequence_id(categ_res.parent_id)
-                   )
-        
+                hasattr(categ_res, 'parent_id')
+                and categ_res.parent_id
+                and get_categ_sequence_id(categ_res.parent_id)
+            )
+
         ret = super(project_issue, self).create(cr, uid, vals, context=context)
         obj = self.browse(cr, uid, ret, context=context)
         if obj.ref:
-            _logger.warn('Found a conflicting sequence assignment. Please check customizations made to Project Issues.')
+            _logger.warn(
+                'Found a conflicting sequence assignment. Please check customizations made to Project Issues.')
             return res
         seq_id = get_categ_sequence_id(obj.categ_id)
-        if seq_id :
-            seq_ret = self.pool.get('ir.sequence').next_by_id(cr, uid, seq_id , context=context)
+        if seq_id:
+            seq_ret = self.pool.get('ir.sequence').next_by_id(
+                cr, uid, seq_id, context=context)
         else:
-            #Default sequence, code 'project.issue'
-            seq_ret = self.pool.get('ir.sequence').next_by_code(cr, uid, 'project.issue', context=context)
+            # Default sequence, code 'project.issue'
+            seq_ret = self.pool.get('ir.sequence').next_by_code(
+                cr, uid, 'project.issue', context=context)
         self.write(cr, uid, [ret], {'ref': seq_ret}, context=context)
         return ret
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
-
-

@@ -34,10 +34,10 @@ be selectable from the Project's list.
     'author': 'Daniel Reis',
     'depends': [
         'project',
-        ],
+    ],
     'data': [
         'project_categ_view.xml',
-        ],
+    ],
     'installable': True,
     'application': False,
 }

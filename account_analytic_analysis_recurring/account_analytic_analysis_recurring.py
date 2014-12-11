@@ -92,7 +92,7 @@ class AccountAnalyticInvoiceLine(orm.Model):
              'uom_id': uom_id or res.uom_id.id or False,
              'price_unit': res.list_price or 0.0})
         if res.description:
-            result['name'] += '\n'+res.description
+            result['name'] += '\n' + res.description
 
         res_final = {'value': result}
         if result['uom_id'] != res.uom_id.id:

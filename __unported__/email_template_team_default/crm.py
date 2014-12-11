@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
-#    
+#
 #    Copyright (C) 2012 Daniel Reis
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -20,14 +20,14 @@
 
 from osv import fields, osv
 
-#TODO: should be a m2m field instead, defining a template per Model ...
+# TODO: should be a m2m field instead, defining a template per Model ...
+
+
 class crm_case_section(osv.osv):
     _inherit = "crm.case.section"
     _columns = {
         'template_id': fields.many2one('email.template', 'Default email template'),
     }
 crm_case_section()
-    
+
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
-
-

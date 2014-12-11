@@ -36,7 +36,7 @@ class project_action_item_timesheet(orm.TransientModel):
         'to_invoice': fields.many2one(
             'hr_timesheet_invoice.factor', 'Timesheet Invoicing Ratio'),
         'completed': fields.boolean('Action Item Completed'),
-        }
+    }
 
     def default_get(self, cr, uid, fields_list, context=None):
         if context is None:
@@ -63,7 +63,7 @@ class project_action_item_timesheet(orm.TransientModel):
             'user_id': uid,
             'date': fields.date.context_today(self, cr, uid, context=context),
             'completed': context.get('action_item_completed'),
-            })
+        })
         return res
 
     def _prepare_timesheet(self, cr, uid, action_item, wizard, context=None):
@@ -86,7 +86,7 @@ class project_action_item_timesheet(orm.TransientModel):
             'task_id': task_id,
             'to_invoice': to_invoice,
             'action_item_id': action_item.id,
-            })
+        })
         return res_unit['value']
 
     def _prepare_action_item_update(
@@ -95,7 +95,7 @@ class project_action_item_timesheet(orm.TransientModel):
             res = {
                 'state': 'done',
                 'date_done': wizard.date,
-                }
+            }
         else:
             res = {'state': 'progress'}
         return res
@@ -133,5 +133,5 @@ class project_action_item_timesheet(orm.TransientModel):
                 'target': 'current',
                 'res_id': action_item.task_id.id,
                 'context': context,
-                }
+            }
         return res

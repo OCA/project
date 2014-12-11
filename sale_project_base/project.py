@@ -34,4 +34,4 @@ class project_project(orm.Model):
             'sale.order',
             'related_project_id',
             'Orders'),
-        }
+    }

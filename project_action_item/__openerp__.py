@@ -49,6 +49,6 @@ Please contact Alexis de Lattre from Akretion <alexis.delattre@akretion.com> for
     'images': [
         'static/src/img/screenshots/task_with_action_items.jpg',
         'static/src/img/screenshots/create_timesheet_from_action_item_wizard.jpg',
-        ],
+    ],
     'installable': True,
 }

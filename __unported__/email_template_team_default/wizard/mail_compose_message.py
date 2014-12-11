@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
-#    
+#
 #    Copyright (C) 2012 Daniel Reis
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -18,6 +18,7 @@
 #
 ##############################################################################
 from osv import osv
+
 
 class mail_compose_message(osv.osv_memory):
     _inherit = 'mail.compose.message'
@@ -40,9 +41,8 @@ class mail_compose_message(osv.osv_memory):
                 pass
         return res
 
-    
     _defaults = {
-        'template_id' : _get_template_id,
+        'template_id': _get_template_id,
     }
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

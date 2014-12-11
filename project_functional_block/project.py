@@ -30,7 +30,7 @@ class project_functional_block(orm.Model):
     def name_get(self, cr, uid, ids, context=None):
         res = []
         for row in self.read(cr, uid, ids, ['name', 'parent_id'], context=context):
-            parent = row['parent_id'] and (row['parent_id'][1]+' / ') or ''
+            parent = row['parent_id'] and (row['parent_id'][1] + ' / ') or ''
             res.append((row['id'], parent + row['name']))
         return res
 

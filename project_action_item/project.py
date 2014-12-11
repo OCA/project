@@ -62,18 +62,18 @@ class project_action_item(orm.Model):
                     _get_action_from_timesheet,
                     ['unit_amount', 'action_item_id'],
                     10),
-                }, help="This is the sum of the related timesheets."
-            ),
+            }, help="This is the sum of the related timesheets."
+        ),
         'state': fields.selection([
             ('todo', 'To Do'),
             ('progress', 'In Progress'),
             ('done', 'Done'),
-            ], 'State', readonly=True),
+        ], 'State', readonly=True),
         'create_uid': fields.many2one(
             'res.users', 'Created By', readonly=True),
         'create_date': fields.datetime('Creation Date', readonly=True),
         'sequence': fields.integer('Sequence'),
-        }
+    }
 
     def _get_default_invoice_ratio(self, cr, uid, context=None):
         if context is None:
@@ -90,27 +90,27 @@ class project_action_item(orm.Model):
     _defaults = {
         'state': 'todo',
         'to_invoice': _get_default_invoice_ratio,
-        }
+    }
 
     def set_to_done(self, cr, uid, ids, context=None):
         today = fields.date.context_today(self, cr, uid, context=context)
         self.write(cr, uid, ids, {
             'state': 'done',
             'date_done': today,
-            }, context=context)
+        }, context=context)
         return
 
     def set_to_progress(self, cr, uid, ids, context=None):
         self.write(cr, uid, ids, {
             'state': 'progress',
-            }, context=context)
+        }, context=context)
         return
 
     def back_to_todo(self, cr, uid, ids, context=None):
         self.write(cr, uid, ids, {
             'state': 'todo',
             'date_done': False,
-            }, context=context)
+        }, context=context)
         return
 
     def action_item_done_with_timesheet_wizard(
@@ -138,7 +138,7 @@ class hr_analytic_timesheet(orm.Model):
     _columns = {
         'action_item_id': fields.many2one(
             'project.action.item', 'Action Item'),
-        }
+    }
 
 
 class project_task(orm.Model):
@@ -173,7 +173,7 @@ class project_task(orm.Model):
                     _get_task_from_action,
                     ['estimated_hours', 'task_id'],
                     10),
-                },
+            },
             help="Estimated time to do the task. It is the sum of the "
             "estimated time of all the action items of this task."),
-        }
+    }

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#################################################################################
+##########################################################################
 #
 #    OpenERP, Open Source Management Solution
 #    Copyright (C) 2011 Julius Network Solutions SARL <contact@julius.fr>
@@ -17,7 +17,7 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-#################################################################################
+##########################################################################
 
 
 {
@@ -60,7 +60,7 @@ Learn the name, ref, date of start and end of the contract, the Kind of contract
     'depends': [
                 'base',
                 'analytic',
-                ],
+    ],
     'init_xml': [],
     'update_xml': [
         'security/ir.model.access.csv',
@@ -68,7 +68,7 @@ Learn the name, ref, date of start and end of the contract, the Kind of contract
         'wizard/generate_view.xml',
     ],
     'demo_xml': [],
-    'images' : ['images/Contract category.png','images/Contract Sales Order.png','images/Contract Types.png','images/Generate Contract Types.png'],
+    'images': ['images/Contract category.png', 'images/Contract Sales Order.png', 'images/Contract Types.png', 'images/Generate Contract Types.png'],
     'test': [],
     'installable': False,
     'active': False,

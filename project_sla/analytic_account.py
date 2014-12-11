@@ -22,12 +22,13 @@ from openerp.osv import fields, orm
 
 
 class AnalyticAccount(orm.Model):
+
     """ Add SLA to Analytic Accounts """
     _inherit = 'account.analytic.account'
     _columns = {
         'sla_ids': fields.many2many(
             'project.sla', string='Service Level Agreement'),
-        }
+    }
 
     def _reapply_sla(self, cr, uid, ids, recalc_closed=False, context=None):
         """

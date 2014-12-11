@@ -25,8 +25,10 @@ from openerp.tools import DEFAULT_SERVER_DATE_FORMAT
 
 
 class account_hours_block(report_sxw.rml_parse):
+
     def __init__(self, cr, uid, name, context=None):
-        super(account_hours_block, self).__init__(cr, uid, name, context=context)
+        super(account_hours_block, self).__init__(
+            cr, uid, name, context=context)
         self.localcontext.update({'time': time,
                                   'date_format': DEFAULT_SERVER_DATE_FORMAT,
                                   'analytic_lines': self._get_analytic_lines,

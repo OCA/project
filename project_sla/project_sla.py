@@ -22,6 +22,7 @@ from openerp.osv import fields, orm
 
 
 class SLADefinition(orm.Model):
+
     """
     SLA Definition
     """
@@ -40,10 +41,10 @@ class SLADefinition(orm.Model):
             'project.sla.line', 'sla_id', 'Definitions'),
         'analytic_ids': fields.many2many(
             'account.analytic.account', string='Contracts'),
-        }
+    }
     _defaults = {
         'active': True,
-        }
+    }
 
     def _reapply_slas(self, cr, uid, ids, recalc_closed=False, context=None):
         """
@@ -64,6 +65,7 @@ class SLADefinition(orm.Model):
 
 
 class SLARules(orm.Model):
+
     """
     SLA Definition Rule Lines
     """
@@ -80,7 +82,7 @@ class SLARules(orm.Model):
             "either o, obj or object. Example: obj.priority <= '2'"),
         'limit_qty': fields.integer('Hours to Limit'),
         'warn_qty': fields.integer('Hours to Warn'),
-        }
+    }
     _defaults = {
         'sequence': 10,
-        }
+    }

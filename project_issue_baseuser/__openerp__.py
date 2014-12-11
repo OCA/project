@@ -38,7 +38,7 @@ Please refer to the ``project_baseuser`` module for more details.
     'data': [
         'security/ir.model.access.csv',
         'security/project_security.xml',
-        ],
+    ],
     'installable': True,
     'auto_install': True,
 }

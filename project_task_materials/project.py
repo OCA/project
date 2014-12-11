@@ -38,4 +38,4 @@ class project_task_materials(orm.Model):
         'product_id': fields.many2one(
             'product.product', 'Product', required=True),
         'quantity': fields.float('Quantity'),
-        }
+    }
