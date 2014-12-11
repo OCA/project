@@ -11,8 +11,41 @@
                     <field name="sequence"/>
                     <field name="name"/>
                     <field name="condition"/>
-                    <field name="limit_qty"/>
                     <field name="warn_qty"/>
+                    <field name="limit_qty"/>
+                </tree>
+
+            </field>
+        </record>
+
+        <record id="view_sla_lines_form" model="ir.ui.view">
+            <field name="name">view_sla_lines_form</field>
+            <field name="model">project.sla.line</field>
+            <field name="arch" type="xml">
+
+                <form string="Definition">
+                    <field name="name"/>
+                    <field name="sla_id"/>
+                    <field name="sequence"/>
+                    <field name="condition"/>
+                    <field name="warn_qty"/>
+                    <field name="limit_qty"/>
+                </form>
+
+            </field>
+        </record>
+
+        <record id="view_sla_tree" model="ir.ui.view">
+            <field name="name">view_sla_tree</field>
+            <field name="model">project.sla</field>
+            <field name="arch" type="xml">
+
+                <tree string="SLA Definitions">
+                  <field name="name"/>
+                  <field name="control_model"/>
+                  <field name="start_field_id"/>
+                  <field name="control_field_id"/>
+                  <field name="active"/>
                 </tree>
 
             </field>
@@ -24,10 +57,18 @@
             <field name="arch" type="xml">
 
                 <form string="SLA Definition">
-                  <field name="name"/>
-                  <field name="active"/>
-                  <field name="control_model"/>
-                  <field name="control_field_id"/>
+                  <group>
+                    <group>
+                        <field name="name"/>
+                        <field name="active"/>
+                    </group>
+                    <group>
+                        <field name="control_model"/>
+                        <field name="start_field_id"/>
+                        <field name="control_field_id"/>
+                    </group>
+                  </group>
+
                   <notebook colspan="4">
                     <page string="Rules" name="rules_page">
                       <field name="sla_line_ids" nolabel="1"/>

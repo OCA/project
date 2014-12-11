@@ -21,6 +21,7 @@
 from openerp.osv import fields, orm
 from openerp.tools.safe_eval import safe_eval
 from openerp.tools.misc import DEFAULT_SERVER_DATETIME_FORMAT as DT_FMT
+from openerp.tools.misc import DEFAULT_SERVER_DATE_FORMAT as D_FMT
 from openerp import SUPERUSER_ID
 from datetime import timedelta
 from datetime import datetime as dt
@@ -143,8 +144,8 @@ class SLAControl(orm.Model):
         end date will be 19:00 of the next day, and it should rather be
         16:00 of the next day.
         """
-        assert isinstance(start_date, dt)
-        assert isinstance(hours, int) and hours >= 0
+        assert isinstance(start_date, dt), "start_date must be instance of 'datetime'. Got %s" % repr(start_date)
+        assert isinstance(hours, int) and hours >= 0, "hours must be int and >= 0. got %s" % repr(hours)
 
         cal_obj = self.pool.get('resource.calendar')
         target, step = hours * 3600, 16 * 3600
@@ -176,12 +177,30 @@ class SLAControl(orm.Model):
 
         For the SLA Achieved calculation:
 
-        * Creation date is used to start counting time
+        * Start date is used to start counting time
         * Control date, used to calculate SLA achievement, is defined in the
           SLA Definition rules.
         """
         def datetime2str(dt_value, fmt):  # tolerant datetime to string
             return dt_value and dt.strftime(dt_value, fmt) or None
+
+        def get_sla_date(sla, doc, field='control'):
+            """ Converts control field value to datetime object.
+            """
+            assert field in ('control', 'start'), "field must be in ('control', 'start')"
+            if field == 'control':
+                sla_field = sla.control_field_id
+            elif field == 'start':
+                sla_field = sla.start_field_id
+
+            val = getattr(doc, sla_field.name)
+            if val and sla_field.ttype == 'datetime':
+                return dt.strptime(val, DT_FMT)
+            elif val and sla_field.ttype == 'date':
+                # TODO: Is this behavior correct? I mean date of format
+                # %Y-%m-%d 00:00:00
+                return dt.strptime(val, D_FMT)
+            return None
 
         res = []
         sla_ids = (safe_getattr(doc, 'analytic_account_id.sla_ids') or
@@ -196,8 +215,8 @@ class SLAControl(orm.Model):
             for l in sla.sla_line_ids:
                 eval_context = {'o': doc, 'obj': doc, 'object': doc}
                 if not l.condition or safe_eval(l.condition, eval_context):
-                    start_date = dt.strptime(doc.create_date, DT_FMT)
-                    res_uid = doc.user_id.id or uid
+                    start_date = get_sla_date(sla, doc, 'start')
+                    res_uid = safe_getattr(doc, 'user_id.id') or uid
                     cal = safe_getattr(
                         doc, 'project_id.resource_calendar_id.id')
                     warn_date = self._compute_sla_date(
@@ -208,15 +227,13 @@ class SLAControl(orm.Model):
                         l.limit_qty - l.warn_qty,
                         context=context)
                     # evaluate sla state
-                    control_val = getattr(doc, sla.control_field_id.name)
-                    if control_val:
-                        control_date = dt.strptime(control_val, DT_FMT)
+                    control_date = get_sla_date(sla, doc, 'control')
+                    if control_date is not None:
                         if control_date > lim_date:
                             sla_val, sla_state = 0, '5'  # failed
                         else:
                             sla_val, sla_state = 1, '1'  # achieved
                     else:
-                        control_date = None
                         now = dt.now()
                         if now > lim_date:
                             sla_val, sla_state = 0, '4'  # will fail
@@ -292,6 +309,7 @@ class SLAControlled(orm.AbstractModel):
     """
     _name = 'project.sla.controlled'
     _description = 'SLA Controlled Document'
+
     _columns = {
         'sla_control_ids': fields.many2many(
             'project.sla.control', string="SLA Control", ondelete='cascade'),
@@ -310,7 +328,7 @@ class SLAControlled(orm.AbstractModel):
         res = super(SLAControlled, self).write(
             cr, uid, ids, vals, context=context)
         docs = [x for x in self.browse(cr, uid, ids, context=context)
-                if (x.state != 'cancelled') and
+                if (x.state not in ('cancelled', 'cancel')) and
                    (x.state != 'done' or x.sla_state not in ['1', '5'])]
         self.pool.get('project.sla.control').store_sla_control(
             cr, uid, docs, context=context)
