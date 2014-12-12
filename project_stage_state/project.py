@@ -32,3 +32,8 @@ _TASK_STATE = [
 class ProjectTaskType(models.Model):
     _inherit = 'project.task.type'
     state = fields.Selection(_TASK_STATE, 'State')
+
+
+class ProjectTask(models.Model):
+    _inherit = 'project.task'
+    state = fields.Selection(related='stage_id.state', store=True)
