@@ -1,2 +1,2 @@
 # -*- coding: utf-8 -*-
-import project_categ_model
+from . import project_categ_model

@@ -24,7 +24,7 @@ from openerp.tools.misc import DEFAULT_SERVER_DATETIME_FORMAT as DT_FMT
 from openerp import SUPERUSER_ID
 from datetime import timedelta
 from datetime import datetime as dt
-import m2m
+from . import m2m
 
 import logging
 _logger = logging.getLogger(__name__)
