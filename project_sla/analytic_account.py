@@ -38,8 +38,7 @@ class AnalyticAccount(orm.Model):
         The ``recalc_closed`` flag allows to also recompute closed documents.
         """
         ctrl_obj = self.pool.get('project.sla.control')
-        proj_obj = self.pool.get('project.project')
-        exclude_states = ['cancelled'] + (not recalc_closed and ['done'] or [])
+        exclude_states = ['cancelled', 'cancel'] + (not recalc_closed and ['done'] or [])
         for contract in self.browse(cr, uid, ids, context=context):
             # for each contract, and for each model under SLA control ...
             for m_name in set([sla.control_model for sla in contract.sla_ids]):
@@ -52,12 +51,9 @@ class AnalyticAccount(orm.Model):
                          ('state', 'not in', exclude_states)],
                         context=context)
                 if 'project_id' in model._columns:
-                    proj_ids = proj_obj.search(
-                        cr, uid, [('analytic_account_id', '=', contract.id)],
-                        context=context)
                     doc_ids += model.search(
                         cr, uid,
-                        [('project_id', 'in', proj_ids),
+                        [('project_id.analytic_account_id', '=', contract.id),
                          ('state', 'not in', exclude_states)],
                         context=context)
                 if doc_ids:

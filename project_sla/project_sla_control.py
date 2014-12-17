@@ -215,6 +215,7 @@ class SLAControl(orm.Model):
             for l in sla.sla_line_ids:
                 eval_context = {'o': doc, 'obj': doc, 'object': doc}
                 if not l.condition or safe_eval(l.condition, eval_context):
+
                     start_date = get_sla_date(sla, doc, 'start')
                     res_uid = safe_getattr(doc, 'user_id.id') or uid
                     cal = safe_getattr(
@@ -289,14 +290,12 @@ class SLAControl(orm.Model):
                             slas += m2m.write(control_rec.id, sla_rec)
                     else:
                         slas += m2m.add(sla_rec)
+                global_sla = max([sla[2].get('sla_state') for sla in slas])
             else:
                 slas = m2m.clear()
-            # calc sla control summary
-            vals = {'sla_state': None, 'sla_control_ids': slas}
-            if sla_recs and doc.sla_control_ids:
-                vals['sla_state'] = max(
-                    x.sla_state for x in doc.sla_control_ids)
-            # store sla
+                global_sla = None
+            # calc sla control summary and store
+            vals = {'sla_state': global_sla, 'sla_control_ids': slas}
             doc._model.write(  # regular users can't write on SLA Control
                 cr, SUPERUSER_ID, [doc.id], vals, context=context)
         return res
@@ -314,24 +313,28 @@ class SLAControlled(orm.AbstractModel):
         'sla_control_ids': fields.many2many(
             'project.sla.control', string="SLA Control", ondelete='cascade'),
         'sla_state': fields.selection(
-            SLA_STATES, string="SLA Status", readonly=True),
+            SLA_STATES, string="SLA Status", readonly=True, select=True),
     }
+
+    def store_sla_control(self, cr, uid, ids, context=None):
+        docs = self.browse(cr, uid, ids, context=context)
+        self.pool.get('project.sla.control').store_sla_control(
+            cr, uid, docs, context=context)
+        return True  # To be able to call from view or via RPC
 
     def create(self, cr, uid, vals, context=None):
         res = super(SLAControlled, self).create(cr, uid, vals, context=context)
-        docs = self.browse(cr, uid, [res], context=context)
-        self.pool.get('project.sla.control').store_sla_control(
-            cr, uid, docs, context=context)
+        self.store_sla_control(cr, uid, [res], context=context)
         return res
 
     def write(self, cr, uid, ids, vals, context=None):
         res = super(SLAControlled, self).write(
             cr, uid, ids, vals, context=context)
-        docs = [x for x in self.browse(cr, uid, ids, context=context)
-                if (x.state not in ('cancelled', 'cancel')) and
-                   (x.state != 'done' or x.sla_state not in ['1', '5'])]
-        self.pool.get('project.sla.control').store_sla_control(
-            cr, uid, docs, context=context)
+        doc_ids = self.search(cr, uid, [('id','in',ids),
+                                        ('state', 'not in', ('cancelled', 'cancel')),
+                                        '|', ('state', '!=', 'done'),
+                                             ('sla_state', 'not in', ('1', '5'))], context=context)
+        self.store_sla_control(cr, uid, doc_ids, context=context)
         return res
 
     def unlink(self, cr, uid, ids, context=None):
