@@ -55,6 +55,7 @@
                         </h1>
 
                         <group>
+                            <field name="account_analytic_id" context="{'hours_block_search_invoice_id':invoice_id}"/>
                             <field name="last_action_date" />
                             <field name="close_date" />
                         </group>

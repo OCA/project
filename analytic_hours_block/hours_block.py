@@ -167,6 +167,18 @@ class AccountHoursBlock(orm.Model):
                 [inv.id for inv in invoice.account_hours_block_ids])
         return list(block_ids)
 
+    def _get_analytic_account(self, cr, uid, ids, field_name, arg,
+                              context=None):
+        result = {}
+        for block in self.browse(cr, uid, ids, context=context):
+            if block.invoice_id:
+                account_ids = [x.account_analytic_id.id for x in block.invoice_id.invoice_line]
+                result[block.id] = account_ids
+            else:
+                result[block.id] = []
+        return result
+
+
     def action_send_block(self, cr, uid, ids, context=None):
         """Open a form to send by email. Return an action dict."""
 
@@ -257,6 +269,11 @@ class AccountHoursBlock(orm.Model):
             'Invoice',
             ondelete='cascade',
             required=True),
+        'account_analytic_id':fields.many2one(
+            'account.analytic.account',
+            'Account analytic',
+            required=True), 
+
         'type': fields.selection(
             [('hours', 'Hours'),
              ('amount', 'Amount')],

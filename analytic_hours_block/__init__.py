@@ -22,3 +22,4 @@ from . import hours_block
 from . import report
 from . import product
 from . import project
+from . import account_analytic
