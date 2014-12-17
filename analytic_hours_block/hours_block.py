@@ -31,7 +31,8 @@ class AccountHoursBlock(orm.Model):
         res = {}
         for block in self.browse(cr, uid, ids, context=context):
             cr.execute("SELECT max(al.date) FROM account_analytic_line AS al"
-                       " WHERE al.invoice_id = %s", (block.invoice_id.id,))
+                       " WHERE al.invoice_id = %s and al.account_id = %s", (block.invoice_id.id,
+                                                                            block.account_analytic_id.id))
             fetch_res = cr.fetchone()
             res[block.id] = fetch_res[0] if fetch_res else False
         return res
@@ -66,7 +67,8 @@ class AccountHoursBlock(orm.Model):
                        "     account_analytic_journal AS aj "
                        "WHERE aj.id = al.journal_id "
                        "AND aj.type = 'general' "
-                       "AND al.invoice_id = %s", (block.invoice_id.id,))
+                       "  AND al.invoice_id = %s"
+                       "  AND al.account_id = %s", (block.invoice_id.id,block.account_analytic_id.id))
             res_line_ids = cr.fetchall()
             line_ids = [l[0] for l in res_line_ids] if res_line_ids else []
             for line in aal_obj.browse(cr, uid, line_ids, context=context):
@@ -109,7 +111,8 @@ class AccountHoursBlock(orm.Model):
                        " account_analytic_journal AS aj"
                        " WHERE aj.id = al.journal_id"
                        "  AND aj.type='general'"
-                       "  AND al.invoice_id = %s", (block.invoice_id.id,))
+                       "  AND al.invoice_id = %s"
+                       "  AND al.account_id = %s", (block.invoice_id.id,block.account_analytic_id.id))
             res_line_ids = cr.fetchall()
             line_ids = [l[0] for l in res_line_ids] if res_line_ids else []
             total_amount = 0.0
@@ -166,17 +169,6 @@ class AccountHoursBlock(orm.Model):
             block_ids.update(
                 [inv.id for inv in invoice.account_hours_block_ids])
         return list(block_ids)
-
-    def _get_analytic_account(self, cr, uid, ids, field_name, arg,
-                              context=None):
-        result = {}
-        for block in self.browse(cr, uid, ids, context=context):
-            if block.invoice_id:
-                account_ids = [x.account_analytic_id.id for x in block.invoice_id.invoice_line]
-                result[block.id] = account_ids
-            else:
-                result[block.id] = []
-        return result
 
 
     def action_send_block(self, cr, uid, ids, context=None):

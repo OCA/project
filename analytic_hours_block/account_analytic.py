@@ -11,8 +11,8 @@ class account_analytic(orm.Model):
         if context is None:
             context = {}
         if not context.has_key('hours_block_search_invoice_id'):
-            return super(project_project, self).name_search(self, cr, uid, name, args,
-                    operator, context, )
+            return super(account_analytic, self).name_search(cr, uid, name, args,
+                    operator, context,limit )
         else:
             invoice_id = context['hours_block_search_invoice_id']
             invoice_line_obj = self.pool['account.invoice.line']
