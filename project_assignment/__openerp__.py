@@ -24,17 +24,6 @@
     'category': 'Project',
     'author': 'Yannick Buron',
     'license': 'AGPL-3',
-    'description': """
-Project Assignment
-=================
-
-Automatically reassign task to specified partner depending on stage
--------------------------------------------------------------------
-    * For each stage, the partner can be specified in stage,
-        then in project and finally task itself
-    * We use partner instead of user for more flexibility
-    * Use base inherit config
-""",
     'website': 'https://github.com/YannickB/community-management',
     'depends': [
         'base_recursive_model',
@@ -42,9 +31,15 @@ Automatically reassign task to specified partner depending on stage
     ],
     'data': [
         'security/ir.model.access.csv',
-        'project_assignment_view.xml'
+        'project_assigned_partner_config_view.xml',
+        'project_project_view.xml',
+        'project_task_view.xml',
+        'project_task_type_view.xml',
     ],
-    'demo': ['data/project_assignment_demo.xml'],
+    'demo': [
+        'data/project_task_type_demo.xml',
+        'data/project_project_demo.xml',
+    ],
     'test': ['tests/project_assignment_test.yml'],
     'installable': True,
 }

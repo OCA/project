@@ -2,19 +2,6 @@
 <openerp>
     <data>
 
-        <!-- Types -->
-
-        <record id="project.project_tt_analysis" model="project.task.type">
-            <field name="partner_id" ref="base.partner_root"/>
-        </record>
-        <record id="project.project_tt_specification" model="project.task.type">
-            <field name="partner_id" ref="base.partner_root"/>
-        </record>
-        <record id="project.project_tt_development" model="project.task.type">
-            <field name="partner_id" ref="base.partner_demo"/>
-        </record>
-
-
         <!-- Configuration -->
 
         <record id="assigned_config_project_del" model="project.assigned.partner.config">

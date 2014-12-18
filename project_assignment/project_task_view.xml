@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Task -->
+
+        <record id="view_project_task_form_assignpartner" model="ir.ui.view">
+            <field name="name">project.task.form.assignpartner</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <field name="user_id" position="replace">
+                    <field name="assigned_partner_id"/>
+                </field>
+                <field name="reviewer_id" position="replace">
+                    <field name="reviewer_partner_id"/>
+                </field>
+                <page string="Extra Info" position="after">
+                    <page string="Assign Partner">
+                        <group>
+                            <field name="assigned_partner_config_ids" context="{'default_model': 'project.task'}"/>
+                            <field name="assigned_partner_config_result_ids"/>
+                        </group>
+                    </page>
+                </page>
+            </field>
+        </record>
+
+        <record id="view_project_task_tree_assignpartner" model="ir.ui.view">
+            <field name="name">project.task.tree.assignpartner</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_tree2"/>
+            <field name="arch" type="xml">
+                <field name="user_id" position="replace">
+                    <field name="assigned_partner_id"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="view_project_task_search_assignpartner" model="ir.ui.view">
+            <field name="name">project.task.search.assignpartner</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_search_form"/>
+            <field name="arch" type="xml">
+                <field name="user_id" position="replace">
+                    <field name="assigned_partner_id"/>
+                </field>
+                <filter string="My Tasks" position="replace">
+                    <filter string="My Tasks" domain="[('assigned_partner_id.user_ids','in',uid)]"/>
+                    <filter string="My Reviews" domain="[('reviewer_partner_id.user_ids','in',uid)]"/>
+                </filter>
+                <filter name="unassigned" position="replace">
+                    <filter string="Unassigned" name="unassigned" domain="[('assigned_partner_id', '=', False)]"/>
+                </filter>
+            </field>
+        </record>
+
+    </data>
+</openerp>

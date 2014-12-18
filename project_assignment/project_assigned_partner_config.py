@@ -18,7 +18,21 @@
 #
 ##############################################################################
 
-from . import project_assigned_partner_config
-from . import project_project
-from . import project_task
-from . import project_task_type
+from openerp.osv import fields, orm
+
+
+class ProjectAssignedPartnerConfig(orm.Model):
+
+    """
+    Extend the configuration line with field specific to partner assignment
+    """
+
+    _name = 'project.assigned.partner.config'
+    _inherit = 'base.config.inherit.line'
+
+    _columns = {
+        'stage_id': fields.many2one(
+            'project.task.type', 'Stage', required=True
+        ),
+        'partner_id': fields.many2one('res.partner', 'Assigned Partner'),
+    }
