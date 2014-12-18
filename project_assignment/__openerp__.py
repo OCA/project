@@ -24,7 +24,7 @@
     'category': 'Project',
     'author': 'Yannick Buron',
     'license': 'AGPL-3',
-    'website': 'https://github.com/YannickB/community-management',
+    'website': 'https://github.com/OCA/project-service',
     'depends': [
         'base_recursive_model',
         'project',

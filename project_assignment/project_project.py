@@ -54,8 +54,12 @@ class ProjectAssignedPartnerModel(orm.AbstractModel):
         ),
     }
 
-    def _prepare_config(self, cr, uid, id, record, vals={}, context=None):
+    def _prepare_config(self, cr, uid, id, record, vals=None, context=None):
         # Specify the fields contained in the configuration
+
+        if vals is None:
+            vals = {}
+
         res = {
             'model': self._name,
             'res_id': id,
