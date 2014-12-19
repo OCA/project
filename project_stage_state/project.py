@@ -36,4 +36,5 @@ class ProjectTaskType(models.Model):
 
 class ProjectTask(models.Model):
     _inherit = 'project.task'
-    state = fields.Selection(related='stage_id.state', store=True)
+    state = fields.Selection(
+        related='stage_id.state', store=True, readonly=True)
