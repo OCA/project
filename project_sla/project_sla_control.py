@@ -266,7 +266,7 @@ class SLAControl(orm.Model):
         ``docs`` is a Browse object
         """
         # context flag to avoid infinite loops on further writes
-        context = context or {}
+        context = {} if context is None else context.copy()
         if '__sla_stored__' in context:
             return False
         else:

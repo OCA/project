@@ -85,5 +85,12 @@
             </field>
         </record>
 
+        <record id="action_project_sla_view" model="ir.actions.act_window">
+            <field name="name">SLA</field>
+            <field name="res_model">project.sla</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem id="menu_project_sla" name="SLAs" action="action_project_sla_view"
+                  parent="base.menu_definitions" sequence="100"/>
     </data>
 </openerp>
