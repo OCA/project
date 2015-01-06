@@ -20,16 +20,14 @@
 ##############################################################################
 
 import time
-from openerp.osv import osv
 from openerp.report import report_sxw
 from openerp.tools import DEFAULT_SERVER_DATE_FORMAT
-from openerp.tools.translate import _
+
 
 class account_hours_block(report_sxw.rml_parse):
-
     def __init__(self, cr, uid, name, context=None):
-        super(account_hours_block, self).__init__(
-            cr, uid, name, context=context)
+        super(account_hours_block, self).__init__(cr, uid,
+                                                  name, context=context)
         self.localcontext.update({'time': time,
                                   'date_format': DEFAULT_SERVER_DATE_FORMAT,
                                   'analytic_lines': self._get_analytic_lines,
@@ -37,16 +35,15 @@ class account_hours_block(report_sxw.rml_parse):
         self.context = context
 
     def _get_analytic_lines(self, hours_block):
-        hours_pool = self.pool['account.hours.block']
         al_pool = self.pool.get('account.analytic.line')
         aj_pool = self.pool.get('account.analytic.journal')
         tcj_ids = aj_pool.search(self.cr, self.uid,
                                  [('type', '=', 'general')])
         domain = [('invoice_id', '=', hours_block.invoice_id.id),
-                  ('journal_id', 'in', tcj_ids),
-                 ]
+                  ('journal_id', 'in', tcj_ids), ]
         if hours_block.account_analytic_id:
-            domain.append(('account_id','=',hours_block.account_analytic_id.id))
+            domain.append(('account_id', '=',
+                           hours_block.account_analytic_id.id))
         al_ids = al_pool.search(self.cr,
                                 self.uid,
                                 domain,
