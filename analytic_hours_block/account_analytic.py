@@ -28,11 +28,7 @@ class account_analytic(orm.Model):
                     operator='ilike', context=None, limit=80):
         if context is None:
             context = {}
-        if 'hours_block_search_invoice_id' not in context:
-            return super(account_analytic, self).name_search(
-                cr=cr, uid=uid, name=name, args=args, operator=operator,
-                context=context, limit=limit)
-        else:
+        if 'hours_block_search_invoice_id' in context:
             invoice_id = context['hours_block_search_invoice_id']
             invoice_line_obj = self.pool['account.invoice.line']
             invoice_lines_ids = invoice_line_obj.search(
@@ -45,3 +41,7 @@ class account_analytic(orm.Model):
                     account.append(line.account_analytic_id.id)
 
             return self.name_get(cr, uid, account, context=context)
+        else:
+            return super(account_analytic, self).name_search(
+                cr=cr, uid=uid, name=name, args=args, operator=operator,
+                context=context, limit=limit)
