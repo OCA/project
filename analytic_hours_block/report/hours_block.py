@@ -25,10 +25,9 @@ from openerp.tools import DEFAULT_SERVER_DATE_FORMAT
 
 
 class account_hours_block(report_sxw.rml_parse):
-
     def __init__(self, cr, uid, name, context=None):
-        super(account_hours_block, self).__init__(
-            cr, uid, name, context=context)
+        super(account_hours_block, self).__init__(cr, uid,
+                                                  name, context=context)
         self.localcontext.update({'time': time,
                                   'date_format': DEFAULT_SERVER_DATE_FORMAT,
                                   'analytic_lines': self._get_analytic_lines,
@@ -40,11 +39,14 @@ class account_hours_block(report_sxw.rml_parse):
         aj_pool = self.pool.get('account.analytic.journal')
         tcj_ids = aj_pool.search(self.cr, self.uid,
                                  [('type', '=', 'general')])
+        domain = [('invoice_id', '=', hours_block.invoice_id.id),
+                  ('journal_id', 'in', tcj_ids), ]
+        if hours_block.account_analytic_id:
+            domain.append(('account_id', '=',
+                           hours_block.account_analytic_id.id))
         al_ids = al_pool.search(self.cr,
                                 self.uid,
-                                [('invoice_id', '=', hours_block.invoice_id.id),
-                                 ('journal_id', 'in', tcj_ids),
-                                 ],
+                                domain,
                                 order='date desc',
                                 context=self.context)
         return al_pool.browse(self.cr, self.uid, al_ids, context=self.context)
