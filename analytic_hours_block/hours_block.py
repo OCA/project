@@ -32,7 +32,7 @@ class AccountHoursBlock(orm.Model):
         for block in self.browse(cr, uid, ids, context=context):
             cr.execute("SELECT max(al.date) FROM account_analytic_line AS al"
                        " WHERE al.invoice_id = %s "
-                       " and al.account_id = %s",
+                       " AND al.account_id = %s",
                        (block.invoice_id.id, block.account_analytic_id.id))
             fetch_res = cr.fetchone()
             res[block.id] = fetch_res[0] if fetch_res else False

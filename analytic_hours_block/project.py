@@ -14,11 +14,12 @@ class project_project(orm.Model):
             cr, uid,
             [('account_analytic_id',
               '=',
-              project.analytic_account_id.id)])
+              project.analytic_account_id.id)], context=context)
         invoice_lines = invoice_line_obj.browse(cr, uid, invoice_line_ids)
         invoice_ids = [x.invoice_id.id for x in invoice_lines]
         res_ids = hours_block_obj.search(cr, uid, [('invoice_id',
-                                                    'in', invoice_ids)])
+                                                    'in', invoice_ids)],
+                                         context=context)
         domain = False
         if res_ids:
             domain = [('id', 'in', res_ids)]
