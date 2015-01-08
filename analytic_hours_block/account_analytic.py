@@ -17,11 +17,8 @@ class account_analytic(orm.Model):
         else:
             invoice_id = context['hours_block_search_invoice_id']
             invoice_line_obj = self.pool['account.invoice.line']
-            invoice_lines_ids = invoice_line_obj.search(cr, uid,
-                                                        [('invoice_id',
-                                                          '=',
-                                                          invoice_id)],
-                                                        context=context)
+            invoice_lines_ids = invoice_line_obj.search(
+                cr, uid, [('invoice_id', '=', invoice_id)], context=context)
             account = []
             for line in invoice_line_obj.browse(cr, uid,
                                                 invoice_lines_ids,
