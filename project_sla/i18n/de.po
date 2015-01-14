@@ -1,10 +1,10 @@
-# Translation of OpenERP Server.
+# Translation of Odoo module.
+# This file is distributed under the same license as the project_sla package.
 # This file contains the translation of the following modules:
 # 	* project_sla
-#
 msgid ""
 msgstr ""
-"Project-Id-Version: OpenERP Server 8.0alpha1\n"
+"Project-Id-Version: Odoo 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-07-03 12:05+0000\n"
 "PO-Revision-Date: 2015-01-13 18:24+0100\n"
