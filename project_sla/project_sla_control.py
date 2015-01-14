@@ -144,8 +144,10 @@ class SLAControl(orm.Model):
         end date will be 19:00 of the next day, and it should rather be
         16:00 of the next day.
         """
-        assert isinstance(start_date, dt), "start_date must be instance of 'datetime'. Got %s" % repr(start_date)
-        assert isinstance(hours, int) and hours >= 0, "hours must be int and >= 0. got %s" % repr(hours)
+        assert isinstance(start_date, dt), (
+            "start_date must be instance of 'datetime'.")
+        assert isinstance(hours, int) and hours >= 0, (
+            "hours must be int and >= 0. got %s" % repr(hours))
 
         cal_obj = self.pool.get('resource.calendar')
         target, step = hours * 3600, 16 * 3600
@@ -187,7 +189,8 @@ class SLAControl(orm.Model):
         def get_sla_date(sla, doc, field='control'):
             """ Converts control field value to datetime object.
             """
-            assert field in ('control', 'start'), "field must be in ('control', 'start')"
+            assert field in ('control', 'start'), (
+                "field must be in ('control', 'start')")
             if field == 'control':
                 sla_field = sla.control_field_id
             elif field == 'start':
@@ -330,10 +333,13 @@ class SLAControlled(orm.AbstractModel):
     def write(self, cr, uid, ids, vals, context=None):
         res = super(SLAControlled, self).write(
             cr, uid, ids, vals, context=context)
-        doc_ids = self.search(cr, uid, [('id','in',ids),
-                                        ('state', 'not in', ('cancelled', 'cancel')),
-                                        '|', ('state', '!=', 'done'),
-                                             ('sla_state', 'not in', ('1', '5'))], context=context)
+        doc_domain = [
+            ('id', 'in', ids),
+            ('state', 'not in', ('cancelled', 'cancel')),
+            '|', ('state', '!=', 'done'),
+                 ('sla_state', 'not in', ('1', '5'))
+        ]
+        doc_ids = self.search(cr, uid, doc_domain, context=context)
         self.store_sla_control(cr, uid, doc_ids, context=context)
         return res
 
