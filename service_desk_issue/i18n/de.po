@@ -37,23 +37,10 @@ msgid "Project Issue"
 msgstr "Fall"
 
 #. module: service_desk_issue
-#: view:project.issue:0
-msgid ""
-"{'default_project_id': project_id, 'default_name': name, "
-"'default_analytic_account_id': analytic_account_id, 'default_location_id': "
-"location_id}"
-msgstr ""
-
-#. module: service_desk_issue
 #: model:ir.model,name:service_desk_issue.model_project_issue_delegate
 #: model:ir.model,name:service_desk_issue.model_project_issue_reassign
 msgid "Issue Reassign"
 msgstr "Fall übergeben"
-
-#. module: service_desk_issue
-#: view:project.issue:0
-msgid "onchange_project(project_id)"
-msgstr ""
 
 #. module: service_desk_issue
 #: view:project.issue:0

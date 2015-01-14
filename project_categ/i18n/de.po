@@ -61,13 +61,3 @@ msgstr "Hauptkategorie für Aufgaben"
 #: model:ir.model,name:project_categ.model_project_task
 msgid "Task"
 msgstr "Aufgabe"
-
-#. module: project_categ
-#: view:project.task:0
-msgid "onchange_project(project_id)"
-msgstr ""
-
-#. module: project_categ
-#: view:project.task:0
-msgid "{'required':[('task_categ_id','!=',False)]}"
-msgstr ""

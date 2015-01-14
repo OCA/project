@@ -22,11 +22,6 @@ msgid "Project"
 msgstr "Projekt"
 
 #. module: service_desk
-#: model:ir.model,name:service_desk.model_account_analytic_location
-msgid "account.analytic.location"
-msgstr ""
-
-#. module: service_desk
 #: model:ir.model,name:service_desk.model_project_task
 msgid "Task"
 msgstr "Aufgabe"
@@ -45,11 +40,6 @@ msgstr "Erforderlich"
 #: model:ir.model,name:service_desk.model_account_analytic_account
 msgid "Analytic Account"
 msgstr "Vertrag"
-
-#. module: service_desk
-#: view:project.task:0
-msgid "onchange_project(project_id)"
-msgstr ""
 
 #. module: service_desk
 #: field:account.analytic.account,contact_id:0
