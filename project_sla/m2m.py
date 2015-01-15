@@ -28,29 +28,29 @@ def add(values):
     return create(values)
 
 
-def write(id, values):
+def write(id_, values):
     """ Write on referenced record """
-    assert isinstance(id, int)
+    assert isinstance(id_, int)
     assert isinstance(values, dict)
-    return [(1, id, values)]
+    return [(1, id_, values)]
 
 
-def remove(id):
+def remove(id_):
     """ Unlink and delete referenced record """
-    assert isinstance(id, int)
-    return [(2, id)]
+    assert isinstance(id_, int)
+    return [(2, id_)]
 
 
-def unlink(id):
+def unlink(id_):
     """ Unlink but do not delete the referenced record """
-    assert isinstance(id, int)
-    return [(3, id)]
+    assert isinstance(id_, int)
+    return [(3, id_)]
 
 
-def link(id):
+def link(id_):
     """ Link but do not delete the referenced record """
-    assert isinstance(id, int)
-    return [(4, id)]
+    assert isinstance(id_, int)
+    return [(4, id_)]
 
 
 def clear():
@@ -72,4 +72,3 @@ if __name__ == "__main__":
     assert unlink(99) == [(3, 99)]
     assert clear() == [(5, 0)]
     assert replace([97, 98, 99]) == [(6, 0, [97, 98, 99])]
-    print("Done!")

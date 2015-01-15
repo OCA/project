@@ -33,7 +33,7 @@ Project Action Item
 
 This module adds action items on project tasks. When a user has completed the action item of a task, he can click on a button *Done with Timesheet* that starts a wizard ; this wizard will mark the action item as done and will create a timesheet line.
 
-This module depends on the module *hr_timesheet_task* which is available on http://code.launchpad.net/hr-timesheet.
+This module depends on the module *hr_timesheet_task* which is available on https://github.com/OCA/hr-timesheet/
 
 Please contact Alexis de Lattre from Akretion <alexis.delattre@akretion.com> for any help or question about this module.
     """,
