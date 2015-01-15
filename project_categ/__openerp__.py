@@ -25,7 +25,8 @@
     'description': """\
 To use:
   1. Create a parent Category (Tag). E.g. "System Type".
-  2. Create categories to be made available as child. E.g. "Computer", "Printer", ...
+  2. Create categories to be made available as child.
+     E.g. "Computer", "Printer", ...
   3. On the Project form, Other Info tab, set the "Root Category".
 
 Now, Tasks for that Project will require you to set a Tag and it will only

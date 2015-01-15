@@ -27,14 +27,20 @@ class ProjectClassification(orm.Model):
 
     _columns = {
         'name': fields.char('Classification Name', required=True, size=64),
-        'project_id': fields.many2one('account.analytic.account', 'Parent project', help="The parent\
-            project that will be set when choosing this classification in a project.", required=True),
-        'to_invoice': fields.many2one('hr_timesheet_invoice.factor', 'Reinvoice Costs',
-                                      help="Fill this field if you plan to automatically generate invoices based "
-                                      "on the costs in this classification"),
+        'project_id': fields.many2one('account.analytic.account',
+                                      'Parent project', required=True,
+                                      help="The parent project that "
+                                           "will be set when choosing this "
+                                           "classification in a project."),
+        'to_invoice': fields.many2one('hr_timesheet_invoice.factor',
+                                      'Reinvoice Costs',
+                                      help="Fill this field if you plan to "
+                                           "automatically generate invoices "
+                                           "based on the costs in "
+                                           "this classification"),
         'currency_id': fields.many2one('res.currency', 'Currency'),
         'user_id': fields.many2one('res.users', 'Account Manager'),
-        'pricelist_id': fields.many2one('product.pricelist', 'Sale Pricelist',),
+        'pricelist_id': fields.many2one('product.pricelist', 'Sale Pricelist'),
     }
 
 
@@ -70,10 +76,14 @@ class ProjectProject(orm.Model):
                 }}
 
     _columns = {
-        'classification_id': fields.many2one('project.classification', 'Classification', help="This will automatically set the parent "
-                                             "project as well as other default values define for this kind project (like pricelist, invoice factor,..)", required=True),
-        'child_project_complete_ids': fields.function(_child_project_compute,
-                                                      relation='project.project', method=True, string="Project Hierarchy", type='many2many'),
+        'classification_id': fields.many2one(
+            'project.classification', 'Classification', required=True,
+            help="This will automatically set the parent project as well"
+                 " as other default values define for this kind"
+                 " project (like pricelist, invoice factor, ..)"),
+        'child_project_complete_ids': fields.function(
+            _child_project_compute, relation='project.project',
+            method=True, type='many2many', string="Project Hierarchy"),
     }
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
