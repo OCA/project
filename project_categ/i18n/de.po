@@ -1,0 +1,63 @@
+# Translation of Odoo module.
+# This file is distributed under the same license as the project_categ package.
+# This file contains the translation of the following modules:
+# 	* project_categ
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-07-04 08:49+0000\n"
+"PO-Revision-Date: 2014-12-10 09:13+0100\n"
+"Last-Translator: openbig.org - Thorsten Vocks <thorsten.vocks@openbig.org>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 1.5.5\n"
+
+#. module: project_categ
+#: field:project.task,task_categ_id:0
+msgid "Category Root"
+msgstr "Hauptkategorie"
+
+#. module: project_categ
+#: model:ir.model,name:project_categ.model_project_category
+msgid "Category of project's task, issue, ..."
+msgstr "Kategorie für Aufgaben, Fälle aus Projekten"
+
+#. module: project_categ
+#: field:project.category,child_ids:0
+msgid "Child Categories"
+msgstr "Subkategorien"
+
+#. module: project_categ
+#: field:project.category,code:0
+msgid "Code"
+msgstr "ID"
+
+#. module: project_categ
+#: field:project.category,complete_name:0
+msgid "Name"
+msgstr "Bezeichnung"
+
+#. module: project_categ
+#: field:project.category,parent_id:0
+msgid "Parent Category"
+msgstr "Oberkategorie"
+
+#. module: project_categ
+#: model:ir.model,name:project_categ.model_project_project
+msgid "Project"
+msgstr "Projekt"
+
+#. module: project_categ
+#: field:project.project,task_categ_id:0
+msgid "Root Category for Tasks"
+msgstr "Hauptkategorie für Aufgaben"
+
+#. module: project_categ
+#: model:ir.model,name:project_categ.model_project_task
+msgid "Task"
+msgstr "Aufgabe"

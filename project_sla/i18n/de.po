@@ -1,0 +1,295 @@
+# Translation of Odoo module.
+# This file is distributed under the same license as the project_sla package.
+# This file contains the translation of the following modules:
+# 	* project_sla
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-07-03 12:05+0000\n"
+"PO-Revision-Date: 2015-01-13 18:24+0100\n"
+"Last-Translator: openbig.org - Thorsten Vocks <thorsten.vocks@openbig.org>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: pt\n"
+"X-Generator: Poedit 1.5.5\n"
+
+#. module: project_sla
+#: selection:project.issue,sla_state:0
+#: selection:project.sla.control,sla_state:0
+#: selection:project.sla.controlled,sla_state:0
+msgid "Achieved"
+msgstr "SLA erfüllt"
+
+#. module: project_sla
+#: field:project.sla.control,sla_achieved:0
+msgid "Achieved?"
+msgstr "SLA erfüllt ?"
+
+#. module: project_sla
+#: field:project.sla,active:0
+msgid "Active"
+msgstr "Aktiv"
+
+#. module: project_sla
+#: view:project.project:0
+msgid "Administration"
+msgstr "Administration"
+
+#. module: project_sla
+#: model:ir.model,name:project_sla.model_account_analytic_account
+msgid "Analytic Account"
+msgstr "Vertragskonto"
+
+#. module: project_sla
+#: help:project.sla.line,condition:0
+msgid ""
+"Apply only if this expression is evaluated to True. The document fields can "
+"be accessed using either o, obj or object. Example: obj.priority <= '2'"
+msgstr ""
+"Nur anwenden, wenn diese Regel zutrifft. Die Felder können nur durch die "
+"Anwendung von o, obj oder object angewendet werden, z.B. obj.priority <='2'"
+
+#. module: project_sla
+#: field:project.sla.control,sla_close_date:0
+msgid "Close Date"
+msgstr "Abschlußdatum"
+
+#. module: project_sla
+#: field:project.sla.line,condition:0
+msgid "Condition"
+msgstr "Bedingung"
+
+#. module: project_sla
+#: view:project.sla:0 field:project.sla,analytic_ids:0
+msgid "Contracts"
+msgstr "Verträge"
+
+#. module: project_sla
+#: field:project.sla,control_field_id:0
+msgid "Control Date"
+msgstr "Prüfdatum"
+
+#. module: project_sla
+#: help:project.sla,control_field_id:0
+msgid "Date field used to check if the SLA was achieved."
+msgstr "Datum für SLA Prüfung"
+
+#. module: project_sla
+#: field:project.sla,sla_line_ids:0 view:project.sla.line:0
+msgid "Definitions"
+msgstr "Definition"
+
+#. module: project_sla
+#: field:project.sla.control,doc_id:0
+msgid "Document ID"
+msgstr "Dokumenten ID"
+
+#. module: project_sla
+#: field:project.sla.control,doc_model:0
+msgid "Document Model"
+msgstr "Datenmodell"
+
+#. module: project_sla
+#: view:project.issue:0
+msgid "Extra Info"
+msgstr "Weitere Info"
+
+#. module: project_sla
+#: selection:project.issue,sla_state:0
+#: selection:project.sla.control,sla_state:0
+#: selection:project.sla.controlled,sla_state:0
+msgid "Failed"
+msgstr "Fehler"
+
+#. module: project_sla
+#: field:project.sla,control_model:0
+msgid "For documents"
+msgstr "Für Dokumente"
+
+#. module: project_sla
+#: field:project.sla.line,limit_qty:0
+msgid "Hours to Limit"
+msgstr "Zeitlimit (h)"
+
+#. module: project_sla
+#: field:project.sla.line,warn_qty:0
+msgid "Hours to Warn"
+msgstr "Alarmlimit (h)"
+
+#. module: project_sla
+#: field:project.sla.control,sla_limit_date:0
+msgid "Limit Date"
+msgstr "Datum Limit"
+
+#. module: project_sla
+#: model:ir.model,name:project_sla.model_project_issue
+msgid "Project Issue"
+msgstr "Fall"
+
+#. module: project_sla
+#: view:account.analytic.account:0
+msgid "Reapply"
+msgstr "Neuzuweisung"
+
+#. module: project_sla
+#: view:project.sla:0
+msgid "Reapply SLA on Contracts"
+msgstr "Neuzuweisung der SLA auf Verträge"
+
+#. module: project_sla
+#: view:account.analytic.account:0
+msgid "Reapply the SLAs to all Contract's documents."
+msgstr "Neuzuweisung der SLA auf alle Vertragsvorfälle"
+
+#. module: project_sla
+#: field:project.sla.control,locked:0
+msgid "Recalculation disabled"
+msgstr "Inaktive Neuzuweisung"
+
+#. module: project_sla
+#: model:project.sla.line,name:project_sla.sla_resolution_rule2
+msgid "Resolution in three business days"
+msgstr "Lösung in 3 Geschäftstagen"
+
+#. module: project_sla
+#: model:project.sla.line,name:project_sla.sla_resolution_rule1
+msgid "Resolution in two business days"
+msgstr "Lösung in 2 Geschäftstagen"
+
+#. module: project_sla
+#: model:project.sla.line,name:project_sla.sla_response_rule1
+msgid "Response in one business day"
+msgstr "Lösung in 1 Geschäftstag"
+
+#. module: project_sla
+#: model:project.sla.line,name:project_sla.sla_response_rule2
+msgid "Response in two business days"
+msgstr "Lösung in 2 Geschäftstagen"
+
+#. module: project_sla
+#: view:project.sla:0
+msgid "Rules"
+msgstr "Regeln"
+
+#. module: project_sla
+#: field:project.issue,sla_control_ids:0
+#: field:project.sla.controlled,sla_control_ids:0
+msgid "SLA Control"
+msgstr "SLA Prüfung"
+
+#. module: project_sla
+#: model:ir.model,name:project_sla.model_project_sla_control
+msgid "SLA Control Registry"
+msgstr "SLA Vertragsprüfung"
+
+#. module: project_sla
+#: model:ir.model,name:project_sla.model_project_sla_controlled
+msgid "SLA Controlled Document"
+msgstr "SLA Vertragsdokument"
+
+#. module: project_sla
+#: view:project.sla:0 field:project.sla.line,sla_id:0
+msgid "SLA Definition"
+msgstr "SLA Definition"
+
+#. module: project_sla
+#: view:project.issue:0 field:project.issue,sla_state:0
+#: field:project.sla.control,sla_state:0
+#: field:project.sla.controlled,sla_state:0
+msgid "SLA Status"
+msgstr "SLA Status"
+
+#. module: project_sla
+#: help:project.sla.control,locked:0
+msgid "Safeguard manual changes from future automatic recomputations."
+msgstr "Sicherung gegen automatische Neuberechnung"
+
+#. module: project_sla
+#: field:project.sla.line,sequence:0
+msgid "Sequence"
+msgstr "Reihenfolge"
+
+#. module: project_sla
+#: field:project.sla.control,sla_line_id:0
+msgid "Service Agreement"
+msgstr "Service Agreement"
+
+#. module: project_sla
+#: view:project.sla.control:0
+msgid "Service Level"
+msgstr "Service Level"
+
+#. module: project_sla
+#: view:account.analytic.account:0 field:account.analytic.account,sla_ids:0
+msgid "Service Level Agreement"
+msgstr "Service Level Vereinbarung"
+
+#. module: project_sla
+#: view:project.issue:0
+msgid "Service Levels"
+msgstr "Service Level"
+
+#. module: project_sla
+#: view:project.issue:0
+msgid "Stage"
+msgstr "Stufe"
+
+#. module: project_sla
+#: model:project.sla,name:project_sla.sla_resolution
+msgid "Standard Resolution Time"
+msgstr "Standard für Problemlösung"
+
+#. module: project_sla
+#: model:project.sla,name:project_sla.sla_response
+msgid "Standard Response Time"
+msgstr "Standard für Antwortzeit"
+
+#. module: project_sla
+#: field:project.sla.control,sla_start_date:0
+msgid "Start Date"
+msgstr "Start Datum"
+
+#. module: project_sla
+#: field:project.sla,name:0 field:project.sla.line,name:0
+msgid "Title"
+msgstr "Bezeichnung"
+
+#. module: project_sla
+#: selection:project.issue,sla_state:0
+#: selection:project.sla.control,sla_state:0
+#: selection:project.sla.controlled,sla_state:0
+msgid "Warning"
+msgstr "Alarmierung"
+
+#. module: project_sla
+#: field:project.sla.control,sla_warn_date:0
+msgid "Warning Date"
+msgstr "Alarmdatum"
+
+#. module: project_sla
+#: selection:project.issue,sla_state:0
+#: selection:project.sla.control,sla_state:0
+#: selection:project.sla.controlled,sla_state:0
+msgid "Watching"
+msgstr "Unter Beobachtung"
+
+#. module: project_sla
+#: selection:project.issue,sla_state:0
+#: selection:project.sla.control,sla_state:0
+#: selection:project.sla.controlled,sla_state:0
+msgid "Will Fail"
+msgstr "SLA-Verstoss"
+
+#. module: project_sla
+#: model:ir.model,name:project_sla.model_project_sla
+msgid "project.sla"
+msgstr "project.sla"
+
+#. module: project_sla
+#: model:ir.model,name:project_sla.model_project_sla_line
+msgid "project.sla.line"
+msgstr "project.sla.line"
