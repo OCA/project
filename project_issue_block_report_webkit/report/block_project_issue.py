@@ -25,6 +25,7 @@ from openerp.tools import DEFAULT_SERVER_DATE_FORMAT
 
 
 class account_block_ticket(report_sxw.rml_parse):
+
     def __init__(self, cr, uid, name, context=None):
         super(account_block_ticket, self).__init__(cr, uid,
                                                    name, context=context)
@@ -38,10 +39,8 @@ class account_block_ticket(report_sxw.rml_parse):
 
     def _get_related_projects(self, hours_block):
         if self.context['active_model'] == 'project.project':
-            '''
-            We call this report from a project,
-            so we do not need to search the related project
-            '''
+            # We call this report from a project,
+            # so we do not need to search the related project
             return hours_block
         project_obj = self.pool['project.project']
         account_invoice_line_obj = self.pool['account.invoice.line']
@@ -66,15 +65,15 @@ class account_block_ticket(report_sxw.rml_parse):
     def _get_related_issue(self, current_project, limit_section=30):
         project_issue_obj = self.pool['project.issue']
         result = []
-        for type in current_project.type_ids:
-            if type.state == 'done':
+        for type_ in current_project.type_ids:
+            if type_.state == 'done':
                 color = '#98FB98'
             else:
                 limit_section = None
                 color = '#FF6347'
             result_issue_ids = project_issue_obj.search(
                 self.cr, self.uid,
-                [('stage_id', '=', type.id),
+                [('stage_id', '=', type_.id),
                  ('project_id', '=', current_project.id)],
                 limit=limit_section,
                 order='create_date desc',
@@ -83,10 +82,10 @@ class account_block_ticket(report_sxw.rml_parse):
                                                           result_issue_ids,
                                                           context=self.context)
             result_records = {
-                'type': type,
+                'type': type_,
                 'issues': result_ids_records,
                 'color': color,
-                }
+            }
             result.append(result_records)
         return result
 

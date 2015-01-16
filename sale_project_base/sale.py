@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-###############################################################################
+#
 #
 #   Module for OpenERP
 #   Copyright (C) 2014 Akretion (http://www.akretion.com).
@@ -20,7 +20,7 @@
 #   You should have received a copy of the GNU Affero General Public License
 #   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
-###############################################################################
+#
 
 from openerp.osv import fields, orm
 from datetime import date
@@ -38,7 +38,8 @@ class sale_order(orm.Model):
         ),
     }
 
-    def onchange_related_project_id(self, cr, uid, ids, related_project_id, context=None):
+    def onchange_related_project_id(self, cr, uid, ids, related_project_id,
+                                    context=None):
         project_obj = self.pool['project.project']
         if related_project_id:
             project = project_obj.browse(

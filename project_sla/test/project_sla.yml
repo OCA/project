@@ -35,7 +35,7 @@
   There should be Service Level info generated on the Issue
 -
   !assert {model: project.issue, id: issue1, string: Issue should have calculated service levels}:
-    - len(sla_control_ids) == 2
+    - len(sla_control_ids) == 1
 -
   Assign an additional "Response SLA" to the Contract
 -
