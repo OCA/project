@@ -31,12 +31,9 @@ class ResUsers(models.Model):
     @api.one
     def _get_department_ids(self):
         employees = self.env['hr.employee'].search([('user_id', '=', self.id)])
-        department_ids = []
+        self.department_ids = self.env['hr.department']
         for employee in employees:
-            if employee.department_id and \
-                    (employee.department_id.id not in department_ids):
-                department_ids.append(employee.department_id.id)
-        self.department_ids = department_ids
+            self.department_ids |= employee.department_id
 
     department_ids = fields.Many2many(
         comodel_name='hr.department',

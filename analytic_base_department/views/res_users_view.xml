@@ -7,11 +7,10 @@
             <field name="inherit_id" ref="base.view_users_form"/>
             <field name="arch" type="xml">
             	<xpath expr="/form/sheet/notebook/page[@string='Access Rights']/group[@string='Allowed Companies']" position="after">
-                
-                                <group string="Allowed Departments">
-                                    <field name="department_ids" nolabel="1" widget="many2many_tags"/>
-                                </group>
-                </xpath>
+            		<group string="Allowed Departments">
+            			<field name="department_ids" nolabel="1" widget="many2many_tags"/>
+            		</group>
+            	</xpath>
             </field>
         </record>
 
