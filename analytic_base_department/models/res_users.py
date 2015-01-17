@@ -29,10 +29,10 @@ class ResUsers(models.Model):
     _inherit = "res.users"
 
     @api.one
+    @api.depends('employee_ids.department_id')
     def _get_department_ids(self):
-        employees = self.env['hr.employee'].search([('user_id', '=', self.id)])
         self.department_ids = self.env['hr.department']
-        for employee in employees:
+        for employee in self.employee_ids:
             self.department_ids |= employee.department_id
 
     department_ids = fields.Many2many(
