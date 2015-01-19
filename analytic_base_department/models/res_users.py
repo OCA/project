@@ -40,4 +40,6 @@ class ResUsers(models.Model):
         relation='user_department_rel',
         column1='user_id',
         column2='department_id',
+        store=True,
+        auto_join=True,
         compute=_get_department_ids)
