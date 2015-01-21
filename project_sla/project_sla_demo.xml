@@ -88,6 +88,8 @@
             <field name="control_model">project.issue</field>
             <field name="control_field_id"
                    ref="project_issue.field_project_issue_date_closed"/>
+            <field name="start_field_id"
+                   ref="project_issue.field_project_issue_create_date"/>
         </record>
             <record id="sla_resolution_rule1" model="project.sla.line">
                 <field name="sla_id" ref="sla_resolution"/>
@@ -111,6 +113,8 @@
             <field name="control_model">project.issue</field>
             <field name="control_field_id"
                    ref="project_issue.field_project_issue_date_open"/>
+            <field name="start_field_id"
+                   ref="project_issue.field_project_issue_create_date"/>
         </record>
             <record id="sla_response_rule1" model="project.sla.line">
                 <field name="sla_id" ref="sla_response"/>

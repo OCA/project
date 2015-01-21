@@ -28,10 +28,16 @@ class SLADefinition(orm.Model):
     """
     _name = 'project.sla'
     _description = 'SLA Definition'
+
     _columns = {
         'name': fields.char('Title', size=64, required=True, translate=True),
         'active': fields.boolean('Active'),
         'control_model': fields.char('For documents', size=128, required=True),
+        'start_field_id': fields.many2one(
+            'ir.model.fields', 'Start Date', required=True,
+            domain="[('model_id.model', '=', control_model),"
+                   " ('ttype', 'in', ['date', 'datetime'])]",
+            help="Date field used as start date for SLA check."),
         'control_field_id': fields.many2one(
             'ir.model.fields', 'Control Date', required=True,
             domain="[('model_id.model', '=', control_model),"
@@ -42,6 +48,7 @@ class SLADefinition(orm.Model):
         'analytic_ids': fields.many2many(
             'account.analytic.account', string='Contracts'),
     }
+
     _defaults = {
         'active': True,
     }
@@ -72,6 +79,7 @@ class SLARules(orm.Model):
     _name = 'project.sla.line'
     _definition = 'SLA Definition Rule Lines'
     _order = 'sla_id,sequence'
+
     _columns = {
         'sla_id': fields.many2one('project.sla', 'SLA Definition'),
         'sequence': fields.integer('Sequence'),
@@ -83,6 +91,16 @@ class SLARules(orm.Model):
         'limit_qty': fields.integer('Hours to Limit'),
         'warn_qty': fields.integer('Hours to Warn'),
     }
+
     _defaults = {
         'sequence': 10,
     }
+
+    _sql_constraints = [
+        ('check_limit_gte_warn_constr', 'CHECK (limit_qty >= warn_qty)',
+         'Hours to Limit must be greater or equal to Hours to Warn'),
+        ('check_limit_qty', 'CHECK (limit_qty >= 0)',
+         'Hours to Limit must be greater or equal to zero'),
+        ('check_warn_qty', 'CHECK (warn_qty >= 0)',
+         'Hours to Warn must be greater or equal to zero'),
+    ]
