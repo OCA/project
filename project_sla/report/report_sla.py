@@ -1,12 +1,7 @@
 from openerp import tools
 from openerp.osv import fields, orm
 
-import logging
-
-logger = logging.getLogger(__name__)
-
-SLA_STATES = [('5', 'Failed'), ('4', 'Will Fail'), ('3', 'Warning'),
-              ('2', 'Watching'), ('1', 'Achieved')]
+from ..project_sla_control import SLA_STATES
 
 
 class report_sla(orm.Model):
@@ -36,7 +31,7 @@ class report_sla(orm.Model):
         return res
 
     _columns = {
-        'document_model': fields.char('Document Model'),
+        'document_model_id': fields.many2one('ir.model', 'Document Model'),
         'sla_name': fields.char('SLA Name'),
         'sla_line_name': fields.char('SLA Line Name'),
         'sla_state': fields.selection(SLA_STATES, 'SLA State'),
@@ -59,40 +54,39 @@ class report_sla(orm.Model):
         tools.drop_view_if_exists(cr, report_name)
         sql = """
             CREATE OR REPLACE VIEW %(report_name)s AS (
-                    SELECT
-                        psc.id                               AS id,
-                        im.name || ' [' || im.model || ']'   AS document_model,
-                        ps.name                              AS sla_name,
-                        psl.name                             AS sla_line_name,
-                        psc.sla_state                        AS sla_state,
-                        to_char(psc.sla_start_date, 'YYYY')  AS date_year,
-                        to_char(psc.sla_start_date, 'Q')     AS date_quarter,
-                        to_char(psc.sla_start_date, 'Month') AS date_month,
-                        to_char(psc.sla_start_date, 'WW')    AS date_week,
+                SELECT
+                    psc.id                               AS id,
+                    im.id                                AS document_model_id,
+                    ps.name                              AS sla_name,
+                    psl.name                             AS sla_line_name,
+                    psc.sla_state                        AS sla_state,
+                    to_char(psc.sla_start_date, 'YYYY')  AS date_year,
+                    to_char(psc.sla_start_date, 'Q')     AS date_quarter,
+                    to_char(psc.sla_start_date, 'Month') AS date_month,
+                    to_char(psc.sla_start_date, 'WW')    AS date_week,
 
-                        -- Special fields
-                        1                                    AS total_count,
-                        CASE WHEN psc.sla_state = '1'
-                            THEN 1
-                            ELSE 0
-                        END                                  AS achieved_count,
-                        CASE WHEN psc.sla_state IN ('4', '5')
-                            THEN 1
-                            ELSE 0
-                        END                                  AS failed_count,
-                        CASE WHEN psc.sla_close_date
-                                    IS NOT NULL
-                            THEN True
-                            ELSE False
-                        END                                  AS sla_closed
-                    FROM project_sla_control   AS psc
-                    LEFT JOIN project_sla_line AS psl
-                                               ON psl.id = psc.sla_line_id
-                    LEFT JOIN project_sla      AS ps
-                                               ON ps.id  = psl.sla_id
-                    LEFT JOIN ir_model         AS im
-                                               ON im.model = ps.control_model
+                    -- Special fields
+                    1                                    AS total_count,
+                    CASE WHEN psc.sla_state = '1'
+                        THEN 1
+                        ELSE 0
+                    END                                  AS achieved_count,
+                    CASE WHEN psc.sla_state IN ('4', '5')
+                        THEN 1
+                        ELSE 0
+                    END                                  AS failed_count,
+                    CASE WHEN psc.sla_close_date
+                                IS NOT NULL
+                        THEN True
+                        ELSE False
+                    END                                  AS sla_closed
+                FROM project_sla_control   AS psc
+                LEFT JOIN project_sla_line AS psl
+                                            ON psl.id = psc.sla_line_id
+                LEFT JOIN project_sla      AS ps
+                                            ON ps.id  = psl.sla_id
+                LEFT JOIN ir_model         AS im
+                                            ON im.model = ps.control_model
             )
         """ % {'report_name': report_name}
         cr.execute(sql)
-report_sla()
