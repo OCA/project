@@ -10,11 +10,14 @@
     <h4 style="clear:both;">${_(u'Issues Report')}</h4>
     %for issue in get_related_issue(objects) :
     <% setLang(issue.partner_id.lang) %>
+    <div style="margin-top:50px ;">
     <table width="1080px" class="list_main_table" style="background-color: #EEEEEE;">
         <th>${_("Issue:")}&nbsp;[${ issue.id | entity }]&nbsp;${ issue.name | entity }</th>
     </table>
     <br />
-	    <table width="100%" class="list_main_table">
+    </div>
+    <div>
+	    <table width="1080px" class="list_main_table">
         <tr>
             <th>${_("Date")}</th>
             <th>${_("Subject")}</th>
@@ -28,6 +31,7 @@
 	        </tr>
 	        %endfor
 	    </table>
+	</div>
     <p style="page-break-after:always"/>
     %endfor
 </body>

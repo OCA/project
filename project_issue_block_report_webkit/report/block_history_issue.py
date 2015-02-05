@@ -20,15 +20,16 @@
 ##############################################################################
 
 import time
-from bs4 import BeautifulSoup
 from openerp.report import report_sxw
 from openerp.tools import DEFAULT_SERVER_DATE_FORMAT
+from lxml import html
+from lxml.html.clean import Cleaner
 
 
 class project_issue_history(report_sxw.rml_parse):
     def __init__(self, cr, uid, name, context=None):
         super(project_issue_history, self).__init__(cr, uid,
-                                                   name, context=context)
+                                                    name, context=context)
         self.localcontext.update(
             {'time': time,
              'date_format': DEFAULT_SERVER_DATE_FORMAT,
@@ -60,13 +61,13 @@ class project_issue_history(report_sxw.rml_parse):
                                            'in',
                                            account_ids)], context=self.context)
         issue_ids = issue_obj.search(self.cr, self.uid,
-                                         [('project_id',
-                                           'in',
-                                           project_ids)], context=self.context)
-        
+                                     [('project_id',
+                                       'in',
+                                       project_ids)], context=self.context)
+
         return issue_obj.browse(self.cr, self.uid,
-                                  issue_ids,
-                                  context=self.context)
+                                issue_ids,
+                                context=self.context)
 
     def _get_related_issue(self, current_issue):
         if self.context['active_model'] == 'account.hours.block':
@@ -78,22 +79,29 @@ class project_issue_history(report_sxw.rml_parse):
         else:
             return current_issue
 
-
-    def _get_issue_message(self,project_issue):
+    def _get_issue_message(self, project_issue):
         message = []
         mail_message_obj = self.pool['mail.message']
         message_ids = mail_message_obj.search(self.cr, self.uid,
-                                              [('res_id','=',project_issue.id),
-                                               ('model','=','project.issue'),
-                                               ('type','=','email')],
+                                              [('res_id', '=',
+                                                project_issue.id),
+                                               ('model', '=', 'project.issue'),
+                                               ('type', '=', 'email')],
                                               order='date desc',
                                               context=self.context)
+        cleaner = Cleaner(style=True, links=True,
+                          add_nofollow=True,
+                          page_structure=False,
+                          safe_attrs_only=False)
         for mes in mail_message_obj.browse(self.cr, self.uid,
-                                       message_ids,
-                                       context=self.context):
-            messi = { 'date': mes.date,
-                      'subject': mes.subject,
-                      'body': mes.body
+                                           message_ids,
+                                           context=self.context):
+            doc = html.document_fromstring(mes.body)
+            doc = cleaner.clean_html(doc)
+            value_body = html.tostring(doc)
+            messi = {'date': mes.date,
+                     'subject': mes.subject,
+                     'body': value_body
                      }
             message.append(messi)
         return message
