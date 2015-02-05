@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Author: Vincent Renaville, ported by Joel Grand-Guillaume
-#    Copyright 2010-2013 Camptocamp SA
+#    Author: Vincent Renaville
+#    Copyright 2015 Camptocamp SA
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
