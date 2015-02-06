@@ -29,6 +29,7 @@ Project's defined Department.
 """,
     'author': 'Daniel Reis',
     'website': 'daniel.reis@securitas.pt',
+    'license': 'AGPL-3',
     'depends': [
         'project_issue',
         'project_department',
