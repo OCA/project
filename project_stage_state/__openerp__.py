@@ -25,6 +25,7 @@
     'summary': 'Restore State attribute removed from Project Stages in 8.0',
     'author': 'Daniel Reis',
     'website': 'https://github.com/OCA/project-service',
+    'license': 'AGPL-3',
     'depends': [
         'project',
     ],

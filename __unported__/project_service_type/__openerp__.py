@@ -35,6 +35,7 @@
 This will add a type of service on project allowing you to categorize them.
 """,
      "website": "http://camptocamp.com",
+     "license": "GPL-2 or any later version",
      "depends": [
             "project",
                 ],

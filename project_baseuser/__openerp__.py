@@ -24,6 +24,7 @@
     'category': 'Project Management',
     'summary': 'Extend Project user roles to support more complex use cases',
     'author': 'Daniel Reis',
+    'license': 'AGPL-3',
     'depends': [
         'project_stage_state',
     ],
