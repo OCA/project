@@ -71,10 +71,10 @@ class project_issue_history(report_sxw.rml_parse):
 
     def _get_related_issue(self, current_issue):
         if self.context['active_model'] == 'account.hours.block':
-            '''
+            """
             We call this report from a project,
             so we do not need to search the related project
-            '''
+            """
             return self._get_related_block_issue(current_issue)
         else:
             return current_issue
