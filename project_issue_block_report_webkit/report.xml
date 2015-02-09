@@ -27,5 +27,27 @@
             webkit_header="project_issue_block_report_webkit.project_issue_portrait_header"
             />
 
+    <report auto="False"
+            id="report_history_issue"
+            model="project.issue"
+            name="report_history_issue"
+            file="project_issue_block_report_webkit/report/block_history_issue.mako"
+            string="Project Issue Details Report"
+            report_type="webkit"
+            multi="True"
+            webkit_header="project_issue_block_report_webkit.project_issue_portrait_header"
+            />
+
+    <report auto="False"
+            id="report_history_issue_block"
+            model="account.hours.block"
+            name="report_history_issue_block"
+            file="project_issue_block_report_webkit/report/block_history_issue.mako"
+            string="Project Issue Details Report"
+            report_type="webkit"
+            webkit_header="project_issue_block_report_webkit.project_issue_portrait_header"
+            />
+
+
     </data>
 </openerp>

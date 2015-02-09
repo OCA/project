@@ -19,3 +19,4 @@
 #
 ##############################################################################
 from . import block_project_issue
+from . import block_history_issue
