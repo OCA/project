@@ -45,6 +45,7 @@ remembering everything that needs to be done, and can concentrate on actually
 performing those tasks.
     """,
     'author': 'OpenERP SA',
+    'license': 'AGPL-3',
     'depends': ['project'],
     'data': [
         'project_gtd_data.xml',

@@ -24,6 +24,7 @@
     'version': '1.0',
     'category': "Project Management",
     'author': 'Daniel Reis',
+    'license': 'AGPL-3',
     'description': """\
 Project Tasks allow to record time spent, but some activities, such as
 Field Service, often require you to keep a record of the materials spent.

@@ -28,6 +28,7 @@ Please refer to that module's description.
 """,
     'author': 'Daniel Reis',
     'website': '',
+    'license': 'AGPL-3',
     'depends': [
         'project_issue',
         'service_desk',

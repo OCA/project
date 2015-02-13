@@ -35,6 +35,7 @@ Backport done By Yannick Buron.
 """,
     'author': 'OpenERP SA',
     'website': 'http://openerp.com',
+    'license': 'AGPL-3',
     'depends': ['base', 'account_analytic_analysis'],
     'data': [
         'account_analytic_analysis_recurring_cron.xml',

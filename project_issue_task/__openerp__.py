@@ -38,6 +38,7 @@ This module adds some usability improvements:
   * Make the Task also visible to all followers of the related Issue
 """,
     'author': 'Daniel Reis',
+    'license': 'AGPL-3',
     'depends': [
         'project_issue',
         ],

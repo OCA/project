@@ -34,6 +34,7 @@ Now make this feature available on Issues or Tasks by installing the
 corresponding extension module.
 """,
     'author': 'Daniel Reis',
+    'license': 'AGPL-3',
     'depends': [
         'project',
         ],
