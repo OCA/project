@@ -44,6 +44,7 @@ Features:
 """,
     'author': 'Daniel Reis',
     'website': '',
+    'license': 'AGPL-3',
     'depends': [
         'project',
     ],

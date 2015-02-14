@@ -44,6 +44,7 @@ Those values will be set on a project when selecting a classification.
 """,
     'author': 'Camptocamp',
     'website': 'http://www.camptocamp.com',
+    'license': 'AGPL-3',
     'depends': ['project', 'hr_timesheet_invoice', 'analytic'],
     'data': [
         'project_classification_view.xml',
