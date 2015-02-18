@@ -183,6 +183,7 @@ class AccountAnalyticAccount(orm.Model):
             'fiscal_position': fpos and fpos.id,
             'payment_term': partner_payment_term,
             'company_id': contract.company_id.id or False,
+            'user_id': contract.manager_id.id or False, 
         }
         invoice_id = inv_obj.create(cr, uid, inv_data, context=context)
         for line in contract.recurring_invoice_line_ids:
@@ -191,7 +192,9 @@ class AccountAnalyticAccount(orm.Model):
             if not account_id:
                 account_id = res.categ_id.property_account_income_categ.id
             account_id = fpos_obj.map_account(cr, uid, fpos, account_id)
-            taxes = res.taxes_id or False
+            taxes = [
+                x for x in res.taxes_id if x.company_id.id == context['force_company']
+            ]
             tax_id = fpos_obj.map_tax(cr, uid, fpos, taxes)
             if 'old_date' in context:
                 lang_ids = lang_obj.search(
