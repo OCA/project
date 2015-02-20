@@ -41,6 +41,12 @@ class ProjectIssue(orm.Model):
             'project_id', 'code', type='char', string="Project Code"),
         }
 
+    _defaults = {
+        # In self-service issues the default Contact is the current user
+        'partner_id': lambda s, cr, uid, c: s.pool['res.users'].browse(
+            cr, uid, uid, context=c).partner_id.id
+    }
+
     def onchange_project(self, cr, uid, id, project_id, context=None):
         # on_change is necessary to populate fields on Create, before saving
         try:
