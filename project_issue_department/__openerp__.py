@@ -27,7 +27,7 @@ Add Department field to Project Issues.
 Selecting a Project for an issue will automatically populate this with the
 Project's defined Department.
 """,
-    'author': 'Daniel Reis',
+    'author': "Daniel Reis,Odoo Community Association (OCA)",
     'website': 'daniel.reis@securitas.pt',
     'license': 'AGPL-3',
     'depends': [
