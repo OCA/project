@@ -2,7 +2,7 @@
 {
     "name": "Project Task specific Department",
     "version": "1.0",
-    "author": "Daniel Reis",
+    "author": "Daniel Reis,Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "category": "Generic Modules/Projects & Services",
     "description": """\
