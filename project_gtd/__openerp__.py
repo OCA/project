@@ -44,7 +44,7 @@ by recording them externally. That way, the mind is freed from the job of
 remembering everything that needs to be done, and can concentrate on actually
 performing those tasks.
     """,
-    'author': 'OpenERP SA',
+    'author': "OpenERP SA,Odoo Community Association (OCA)",
     'license': 'AGPL-3',
     'depends': ['project'],
     'data': [
