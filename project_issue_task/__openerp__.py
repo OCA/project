@@ -37,7 +37,7 @@ This module adds some usability improvements:
   * Automatically Cancel the Task when Issue is Cancelled
   * Make the Task also visible to all followers of the related Issue
 """,
-    'author': 'Daniel Reis',
+    'author': "Daniel Reis,Odoo Community Association (OCA)",
     'license': 'AGPL-3',
     'depends': [
         'project_issue',

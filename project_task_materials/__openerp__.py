@@ -23,7 +23,7 @@
     'summary': 'Record products spent in a Task',
     'version': '1.0',
     'category': "Project Management",
-    'author': 'Daniel Reis',
+    'author': "Daniel Reis,Odoo Community Association (OCA)",
     'license': 'AGPL-3',
     'description': """\
 Project Tasks allow to record time spent, but some activities, such as

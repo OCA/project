@@ -30,7 +30,7 @@ documents.
 This module is automatically installed if the Issue Tracker is also installed.
 Please refer to the ``project_baseuser`` module for more details.
 """,
-    'author': 'Daniel Reis',
+    'author': "Daniel Reis,Odoo Community Association (OCA)",
     'license': 'AGPL-3',
     'depends': [
         'project_issue',

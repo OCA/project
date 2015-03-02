@@ -33,7 +33,7 @@ It also add a little feature, you can use #START# and #END# in the contract line
 
 Backport done By Yannick Buron.
 """,
-    'author': 'OpenERP SA',
+    'author': "OpenERP SA,Odoo Community Association (OCA)",
     'website': 'http://openerp.com',
     'license': 'AGPL-3',
     'depends': ['base', 'account_analytic_analysis'],

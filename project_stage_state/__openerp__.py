@@ -23,7 +23,7 @@
     'version': '1.0',
     'category': 'Project Management',
     'summary': 'Restore State attribute removed from Project Stages in 8.0',
-    'author': 'Daniel Reis',
+    'author': "Daniel Reis,Odoo Community Association (OCA)",
     'website': 'https://github.com/OCA/project-service',
     'license': 'AGPL-3',
     'depends': [

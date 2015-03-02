@@ -23,7 +23,7 @@
     'version': '1.0',
     'category': 'Project Management',
     'summary': 'Extend Project user roles to support more complex use cases',
-    'author': 'Daniel Reis',
+    'author': "Daniel Reis,Odoo Community Association (OCA)",
     'license': 'AGPL-3',
     'depends': [
         'project_stage_state',
