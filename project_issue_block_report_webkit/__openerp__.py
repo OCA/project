@@ -27,7 +27,7 @@
     Report on Project Issue linked to a project
     set in invoice line of the related block hours
 """,
-    'author': 'Vincent Renaville',
+    'author': "Vincent Renaville,Odoo Community Association (OCA)",
     'depends': [
         'project_issue',
         'analytic_hours_block',

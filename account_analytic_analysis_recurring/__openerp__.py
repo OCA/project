@@ -36,7 +36,7 @@ line description to automatically insert the dates of the invoiced period.
 
 Backport done By Yannick Buron.
 """,
-    'author': 'OpenERP SA',
+    'author': "OpenERP SA,Odoo Community Association (OCA)",
     'website': 'http://openerp.com',
     'depends': ['base', 'account_analytic_analysis'],
     'data': [

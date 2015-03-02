@@ -25,7 +25,7 @@
     'version': '6.1-1',
     "category": "Project Management",
     'description': """ """,
-    'author': 'Julius Network Solution',
+    'author': "Julius Network Solution,Odoo Community Association (OCA)",
     'website': 'www.julius.fr',
     'depends': [
         'report_webkit',

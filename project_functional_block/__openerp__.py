@@ -21,7 +21,7 @@
 
 {'name': 'Project requiring functional blocks',
  'version': '1.2',
- 'author': 'Akretion',
+ 'author': "Akretion,Odoo Community Association (OCA)",
  'website': 'www.akretion.com',
  'license': 'AGPL-3',
  'category': 'Generic Modules',

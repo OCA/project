@@ -32,7 +32,7 @@
     'description': '''
 This will add a type of service on project allowing you to categorize them.
 ''',
-    'author': 'Camptocamp',
+    'author': "Camptocamp,Odoo Community Association (OCA)",
     'website': 'http://camptocamp.com',
     'depends': ['project'],
     'data': ['project_view.xml'],

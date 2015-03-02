@@ -29,7 +29,7 @@
     'license': 'AGPL-3',
     'description': """This module is a base module that give the possibility to
     create a project from a quotation""",
-    'author': 'Akretion',
+    'author': "Akretion,Odoo Community Association (OCA)",
     'website': 'http://www.akretion.com/',
     'depends': [
         'project',

@@ -81,7 +81,7 @@ Project Managers
     other users.
 
 """,
-    'author': 'Daniel Reis',
+    'author': "Daniel Reis,Odoo Community Association (OCA)",
     'depends': [
         'project',
     ],

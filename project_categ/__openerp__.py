@@ -32,7 +32,7 @@ To use:
 Now, Tasks for that Project will require you to set a Tag and it will only
 be selectable from the Project's list.
 """,
-    'author': 'Daniel Reis',
+    'author': "Daniel Reis,Odoo Community Association (OCA)",
     'depends': [
         'project',
     ],

@@ -44,7 +44,7 @@ A project classification is composed by :
 Those values will be set on a project when selecting a classification.
 
 """,
-    'author': 'Camptocamp',
+    'author': "Camptocamp,Odoo Community Association (OCA)",
     'website': 'http://www.camptocamp.com',
     'depends': ['project', 'hr_timesheet_invoice', 'analytic'],
     'data': [

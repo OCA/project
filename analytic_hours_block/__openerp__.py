@@ -34,7 +34,7 @@ then you input the spent hours on the hours block and
 you can track and follow how much has been used.
 
  """,
-    "author": "Camptocamp",
+    "author": "Camptocamp,Odoo Community Association (OCA)",
     "license": 'AGPL-3',
     "website": "http://www.camptocamp.com",
     "depends": [

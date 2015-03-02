@@ -27,7 +27,7 @@ For example: an IT Management related issue might have a "IT-xxxxx" sequence, an
 If no specific Sequence is specified, the default "Project Issue" sequence will be used.
 If the crm_categ_hierarchy module is also installed, specific sequences will apply to all child categories.
 """,
-    'author': 'Daniel Reis',
+    'author': "Daniel Reis,Odoo Community Association (OCA)",
     'website': 'daniel.reis@securitas.pt',
     'depends': ['project_issue'],
     'data': [

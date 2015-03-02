@@ -23,7 +23,7 @@
     'summary': 'Record products spent in a Task',
     'version': '1.0',
     'category': "Project Management",
-    'author': 'Daniel Reis',
+    'author': "Daniel Reis,Odoo Community Association (OCA)",
     'description': """\
 Project Tasks allow to record time spent, but some activities, such as
 Field Service, often require you to keep a record of the materials spent.
