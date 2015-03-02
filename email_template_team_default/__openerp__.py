@@ -31,7 +31,7 @@ Definitions are made at: CRM -> Configuration -> Sales -> Sales Teams.
 Known issues:
 - It will only work correctly for the model for which the e-mail template was created.
 """,
-    'author': 'Daniel Reis',
+    'author': "Daniel Reis,Odoo Community Association (OCA)",
     'website': 'daniel.reis@securitas.pt',
     'depends': [
         'crm',              #depends on Sales Teams

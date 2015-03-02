@@ -39,7 +39,7 @@ you can track and follow how much has been used.
 
  """,
     "version" : "1.2",
-    "author" : "Camptocamp",
+    "author" : "Camptocamp,Odoo Community Association (OCA)",
     "category" : "Generic Modules/Projects & Services",
     "website": "http://www.camptocamp.com",
     "depends" : [

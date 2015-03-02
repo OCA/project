@@ -21,7 +21,7 @@
 {
     "name" : "Project requiring functional blocks",
     "version": "1.1dr",
-    "author" : "Akretion",
+    "author" : "Akretion,Odoo Community Association (OCA)",
     "website" : "http://www.openerp.com",
     "category" : "project Management",
     "depends" : ["project"],

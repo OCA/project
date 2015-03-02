@@ -38,7 +38,7 @@
                 Python Code:    self.set_user_id(cr, uid, [context.get('active_id')], 'project.issue', override_flds=['project_id.user_id'], context=context)
     - Server action can be called by an Automated Action or by a Workflow.
     """,
-    'author': 'Daniel Reis',
+    'author': "Daniel Reis,Odoo Community Association (OCA)",
     'website': 'daniel.reis@securitas.pt',
     'depends': [
         'hr', #hr.department

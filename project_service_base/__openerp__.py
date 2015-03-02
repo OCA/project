@@ -32,7 +32,7 @@ Standard security groups:
 New security groups:
     Team Member: writes issues and tasks; reads projects; sees only own project's tasks.
 """,
-    'author': 'Daniel Reis',
+    'author': "Daniel Reis,Odoo Community Association (OCA)",
     'website': 'daniel.reis@securitas.pt',
     'depends': ['account', 'crm'],
     'init_xml': [],

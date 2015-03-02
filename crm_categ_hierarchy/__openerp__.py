@@ -22,7 +22,7 @@
     'version': '1.0',
     "category": "Customer Relationship Management",
     'description': """Add a tree-like structure to CRM categories""",
-    'author': 'Daniel Reis',
+    'author': "Daniel Reis,Odoo Community Association (OCA)",
     'website': 'daniel.reis@securitas.pt',
     'depends': ['crm'],
     'update_xml': ['crm_categ_view.xml'],

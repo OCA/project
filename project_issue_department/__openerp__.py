@@ -24,7 +24,7 @@
     'description': """\
 Add Department field to Project Issues.
 """,
-    'author': 'Daniel Reis',
+    'author': "Daniel Reis,Odoo Community Association (OCA)",
     'website': 'daniel.reis@securitas.pt',
     'depends': ['project_issue', 'hr'], 
     'update_xml': [

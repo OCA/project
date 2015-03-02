@@ -49,7 +49,7 @@ The showcase form demonstrates the usage of these two default values:
 the Issue's Category selection list is limited to the Service Desk category
 children, and the Service Team is automatically selected.
 """,
-    'author': 'Daniel Reis',
+    'author': "Daniel Reis,Odoo Community Association (OCA)",
     'website': '',
     'depends': [
         'project_issue',

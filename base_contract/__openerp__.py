@@ -55,7 +55,7 @@ Links of the contract in the model informed:
 Learn the name, ref, date of start and end of the contract, the Kind of contract, the bond, the date of the first billing, the amount, the Company ...
 
     """,
-    'author': 'Julius Network Solutions',
+    'author': "Julius Network Solutions,Odoo Community Association (OCA)",
     'website': 'http://www.julius.fr',
     'depends': [
                 'base',

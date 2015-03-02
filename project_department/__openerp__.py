@@ -23,7 +23,7 @@
     'version': '1.0',
     "category": "Project Management",
     'description': """Add Department field to Projects.""",
-    'author': 'Daniel Reis',
+    'author': "Daniel Reis,Odoo Community Association (OCA)",
     'website': 'daniel.reis@securitas.pt',
     'depends': ['project'], 
     'update_xml': ['project_view.xml'],

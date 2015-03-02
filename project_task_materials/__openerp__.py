@@ -22,7 +22,7 @@
     'name': 'Project task materials',
     'version': '1',
     "category": "Project Management",
-    'author': 'Daniel Reis',
+    'author': "Daniel Reis,Odoo Community Association (OCA)",
     'website': 'daniel.reis@securitas.pt',
     'depends': ['project', 'account'],
     'update_xml': [

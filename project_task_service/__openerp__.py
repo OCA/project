@@ -38,7 +38,7 @@ Before creating new Projects, review the following configurations::
 Contributions are appreciated. Some ideas to develop:
 * add a 'crm_category_stages' module, to make configurable the stages (type_ids) valid for each Category.  
 """,
-    'author': 'Daniel Reis',
+    'author': "Daniel Reis,Odoo Community Association (OCA)",
     'website': 'daniel.reis@securitas.pt',
     'depends': ['project', 'project_functional_blocks', 'project_department'],
     'update_xml': [

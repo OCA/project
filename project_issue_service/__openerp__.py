@@ -37,7 +37,7 @@ CHANGE LOG
 1.1    Reference sequence (`ref` field) moved to module `project_issue_sequences`.
 
 """,
-    'author': 'Daniel Reis',
+    'author': "Daniel Reis,Odoo Community Association (OCA)",
     'website': 'daniel.reis@securitas.pt',
     'depends': [
         'project', 'project_functional_blocks',
