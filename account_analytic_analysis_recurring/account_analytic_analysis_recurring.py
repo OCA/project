@@ -183,6 +183,7 @@ class AccountAnalyticAccount(orm.Model):
             'fiscal_position': fpos and fpos.id,
             'payment_term': partner_payment_term,
             'company_id': contract.company_id.id or False,
+            'user_id': contract.manager_id.id or False
         }
         invoice_id = inv_obj.create(cr, uid, inv_data, context=context)
         for line in contract.recurring_invoice_line_ids:
