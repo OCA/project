@@ -2,7 +2,7 @@
 {
     "name": "Analytic Department Categorization",
     "version": "1.0",
-    "author": "Camptocamp, Daniel Reis",
+    "author": "Camptocamp, Daniel Reis,Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "category": "Generic Modules/Projects & Services",
     "description": """\
