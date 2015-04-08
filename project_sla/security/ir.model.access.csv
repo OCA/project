@@ -5,4 +5,4 @@ access_sla_lines_manager,access_sla_lines_manager,model_project_sla_line,project
 access_sla_lines_user,access_sla_lines_user,model_project_sla_line,base.group_user,1,0,0,0
 access_sla_control_manager,access_sla_control_manager,model_project_sla_control,project.group_project_manager,1,1,0,0
 access_sla_control_user,access_sla_control_user,model_project_sla_control,base.group_user,1,0,0,0
-access_sla_controlled_manager,access_sla_controlled_manager,model_project_sla_controlled,project.group_project_manager,1,1,1,1
+access_sla_report_user,access_sla_report_user,model_project_sla_report,project.group_project_user,1,0,0,0

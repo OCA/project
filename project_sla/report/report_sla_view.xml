@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+    <record id="view_project_sla_report_tree" model="ir.ui.view">
+        <!--<field eval="1" name="priority"/>-->
+        <field name="name">project.sla.report.tree</field>
+        <field name="model">project.sla.report</field>
+        <field name="arch" type="xml">
+            <tree string="SLA Analysis" create="false" edit="false" delete="false">
+                <field name="document_model_id"/>
+                <field name="sla_name"/>
+                <field name="sla_line_name"/>
+                <field name="sla_state"/>
+                <field name="date_year"/>
+                <field name="date_quarter"/>
+                <field name="date_month"/>
+                <field name="date_week"/>
+                <field name="sla_closed"/>
+                <field name="total_count" sum="# of Lines"/>
+                <field name="achieved_count" sum="# of Achieved Lines"/>
+                <field name="failed_count" sum="# of Failed Lines"/>
+                <field name="achieved_perc" widget='percentage'/> <!-- avg="Average %% of Achieved Lines"/> -->
+                <!--<field name="failed_perc" widget='percentage' avg="Average %% of Failed Lines"/>-->
+
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_project_sla_report_graph" model="ir.ui.view">
+         <field name="name">project.sla.report.graph</field>
+         <field name="model">project.sla.report</field>
+         <field name="arch" type="xml">
+             <graph string="SLA Analysis" type="bar">
+                 <field name="sla_name"/>
+                 <!--<field name="achieved_count"/>-->
+                 <field name="total_count"/>
+                 <field name="sla_state" group="True"/>
+             </graph>
+         </field>
+    </record>
+
+    <record id="view_project_sla_report_search" model="ir.ui.view">
+        <field name="name">project.sla.report.search</field>
+        <field name="model">project.sla.report</field>
+        <field name="arch" type="xml">
+            <search string="SLA Analysis">
+                <field name="document_model_id"/>
+                <field name="sla_name"/>
+                <field name="sla_line_name"/>
+                <field name="sla_state"/>
+                <field name="date_year"/>
+                <field name="date_quarter"/>
+                <field name="date_month"/>
+                <field name="date_week"/>
+
+                <filter name="SLA Closed" domain="[('sla_closed','=',True)]"/>
+                <filter name="SLA Open" domain="[('sla_closed','=',False)]"/>
+
+
+                <group expand="1" string="Group By...">
+                    <filter name="document_model_id"
+                            string="Document Model"
+                            context="{'group_by': 'document_model_id'}"/>
+                    <filter name="sla_name"
+                            string="SLA Name"
+                            context="{'group_by': 'sla_name'}"/>
+                    <filter name="sla_line_name"
+                            string="SLA Line Name"
+                            context="{'group_by': 'sla_line_name'}"/>
+                    <filter name="sla_state"
+                            string="SLA State"
+                            context="{'group_by': 'sla_state'}"/>
+                    <filter name="date_year"
+                            string="Year"
+                            context="{'group_by': 'date_year'}"/>
+                    <filter name="date_quarter"
+                            string="Quarter"
+                            context="{'group_by': 'date_quarter'}"/>
+                    <filter name="date_month"
+                            string="Month"
+                            context="{'group_by': 'date_month'}"/>
+                    <filter name="date_week"
+                            string="Week"
+                            context="{'group_by': 'date_week'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_project_sla_report" model="ir.actions.act_window">
+        <field name="name">SLA Analysis</field>
+        <field name="res_model">project.sla.report</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,graph</field>
+        <field name="search_view_id" ref="view_project_sla_report_search"/>
+        <field name="view_id" ref="view_project_sla_report_tree"/>
+        <field name="context">{'group_by':['document_model_id','sla_name'], 'group_by_no_leaf': True}</field>
+    </record>
+
+    <menuitem action="action_project_sla_report" id="menu_project_sla_report" parent="base.menu_project_report" sequence="100"/>
+
+</data>
+</openerp>
+

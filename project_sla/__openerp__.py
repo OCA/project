@@ -125,6 +125,7 @@ Credits and Contributors
         'project_view.xml',
         'project_issue_view.xml',
         'security/ir.model.access.csv',
+        'report/report_sla_view.xml',
     ],
     'demo': ['project_sla_demo.xml'],
     'test': ['test/project_sla.yml'],
