@@ -9,9 +9,9 @@
             <field name="arch" type="xml">
 
                 <!-- make resource calendar always visible -->
-                <group string="Administration" position="attributes">
+                <field name="resource_calendar_id" position="attributes">
                     <attribute name="groups"/>
-                </group>
+                </field>
 
            </field>
         </record>
