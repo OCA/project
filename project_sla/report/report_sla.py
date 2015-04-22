@@ -8,8 +8,7 @@ class report_sla(orm.Model):
     _name = "project.sla.report"
     _description = "Project SLA report"
     _auto = False
-    _order = ('date_year, date_quarter, date_month, date_week, sla_closed, '
-              'sla_state')
+    _order = ('date')
 
     # Overridden to automaticaly calculate correct achieved percent for any
     # group result
@@ -39,6 +38,7 @@ class report_sla(orm.Model):
         'date_quarter': fields.char('Quarter'),
         'date_month': fields.char('Month'),
         'date_week': fields.char('Week'),
+        'date': fields.date('Date'),
         'sla_closed': fields.boolean('Is Closed'),
         'total_count': fields.integer('Total Count'),
         'achieved_count': fields.integer('Achieved Count'),
@@ -55,15 +55,16 @@ class report_sla(orm.Model):
         sql = """
             CREATE OR REPLACE VIEW %(report_name)s AS (
                 SELECT
-                    psc.id                               AS id,
-                    im.id                                AS document_model_id,
-                    ps.name                              AS sla_name,
-                    psl.name                             AS sla_line_name,
-                    psc.sla_state                        AS sla_state,
-                    to_char(psc.sla_start_date, 'YYYY')  AS date_year,
-                    to_char(psc.sla_start_date, 'Q')     AS date_quarter,
-                    to_char(psc.sla_start_date, 'Month') AS date_month,
-                    to_char(psc.sla_start_date, 'WW')    AS date_week,
+                    psc.id                              AS id,
+                    im.id                               AS document_model_id,
+                    ps.name                             AS sla_name,
+                    psl.name                            AS sla_line_name,
+                    psc.sla_state                       AS sla_state,
+                    to_char(psc.sla_start_date, 'YYYY')       AS date_year,
+                    to_char(psc.sla_start_date, 'YYYY-Q')     AS date_quarter,
+                    to_char(psc.sla_start_date, 'YYYY-MM')    AS date_month,
+                    to_char(psc.sla_start_date, 'YYYY-MM-WW') AS date_week,
+                    psc.sla_start_date                        AS date,
 
                     -- Special fields
                     1                                    AS total_count,
@@ -82,11 +83,12 @@ class report_sla(orm.Model):
                     END                                  AS sla_closed
                 FROM project_sla_control   AS psc
                 LEFT JOIN project_sla_line AS psl
-                                            ON psl.id = psc.sla_line_id
+                                           ON psl.id = psc.sla_line_id
                 LEFT JOIN project_sla      AS ps
-                                            ON ps.id  = psl.sla_id
+                                           ON ps.id  = psl.sla_id
                 LEFT JOIN ir_model         AS im
-                                            ON im.model = ps.control_model
+                                           ON im.model = ps.control_model
+                ORDER BY psc.sla_start_date ASC
             )
         """ % {'report_name': report_name}
         cr.execute(sql)

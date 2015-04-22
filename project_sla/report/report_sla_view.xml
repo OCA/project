@@ -16,6 +16,7 @@
                 <field name="date_quarter"/>
                 <field name="date_month"/>
                 <field name="date_week"/>
+                <field name="date"/>
                 <field name="sla_closed"/>
                 <field name="total_count" sum="# of Lines"/>
                 <field name="achieved_count" sum="# of Achieved Lines"/>
@@ -33,7 +34,6 @@
          <field name="arch" type="xml">
              <graph string="SLA Analysis" type="bar">
                  <field name="sla_name"/>
-                 <!--<field name="achieved_count"/>-->
                  <field name="total_count"/>
                  <field name="sla_state" group="True"/>
              </graph>
@@ -53,6 +53,7 @@
                 <field name="date_quarter"/>
                 <field name="date_month"/>
                 <field name="date_week"/>
+                <field name="date"/>
 
                 <filter name="SLA Closed" domain="[('sla_closed','=',True)]"/>
                 <filter name="SLA Open" domain="[('sla_closed','=',False)]"/>
@@ -83,6 +84,9 @@
                     <filter name="date_week"
                             string="Week"
                             context="{'group_by': 'date_week'}"/>
+                    <filter name="date"
+                            string="Date"
+                            context="{'group_by': 'date'}"/>
                 </group>
             </search>
         </field>

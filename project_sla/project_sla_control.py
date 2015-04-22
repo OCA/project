@@ -67,16 +67,18 @@ class SLAControl(orm.Model):
     _description = 'SLA Control Registry'
 
     _columns = {
-        'doc_id': fields.integer('Document ID', readonly=True),
-        'doc_model': fields.char('Document Model', size=128, readonly=True),
+        'doc_id': fields.integer('Document ID', readonly=True, select=True),
+        'doc_model': fields.char('Document Model', size=128, readonly=True,
+                                 select=True),
         'sla_line_id': fields.many2one(
-            'project.sla.line', 'Service Agreement'),
-        'sla_warn_date': fields.datetime('Warning Date'),
-        'sla_limit_date': fields.datetime('Limit Date'),
-        'sla_start_date': fields.datetime('Start Date'),
-        'sla_close_date': fields.datetime('Close Date'),
+            'project.sla.line', 'Service Agreement', select=True),
+        'sla_warn_date': fields.datetime('Warning Date', select=True),
+        'sla_limit_date': fields.datetime('Limit Date', select=True),
+        'sla_start_date': fields.datetime('Start Date', select=True),
+        'sla_close_date': fields.datetime('Close Date', select=True),
         'sla_achieved': fields.integer('Achieved?'),
-        'sla_state': fields.selection(SLA_STATES, string="SLA Status"),
+        'sla_state': fields.selection(SLA_STATES, string="SLA Status",
+                                      select=True),
         'locked': fields.boolean(
             'Recalculation disabled',
             help="Safeguard manual changes from future automatic "
@@ -320,9 +322,10 @@ class SLAControlled(orm.AbstractModel):
     }
 
     def store_sla_control(self, cr, uid, ids, context=None):
-        docs = self.browse(cr, uid, ids, context=context)
-        self.pool.get('project.sla.control').store_sla_control(
-            cr, uid, docs, context=context)
+        if ids:
+            docs = self.browse(cr, uid, ids, context=context)
+            self.pool.get('project.sla.control').store_sla_control(
+                cr, uid, docs, context=context)
         return True  # To be able to call from view or via RPC
 
     def create(self, cr, uid, vals, context=None):
