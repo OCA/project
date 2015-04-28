@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+    <!--PROJECT TASK FORM -->
+    <record id="project_task_statistic_form_view" model="ir.ui.view">
+        <field name="name">project_task_statistic_form_view</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+
+            <page string="Extra Info" position="after">
+                <page name="statistics_page" string="Statistics">
+                    <group>
+                        <field name="create_date"/>
+                        <field name="date_opened" />
+                        <field name="date_closed" />
+                        <!-- TODO
+                        <field name="day_open" />
+                        <field name="day_close" />
+                        <field name="working_hours_open" />
+                        <field name="working_hours_close" />
+                        -->
+                    </group>
+                </page>
+            </page>
+
+        </field>
+    </record>
+
+    <!-- Task tree -->
+    <record model="ir.ui.view" id="project_task_tree_stats">
+        <field name="name">project.task.tree.stats</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_tree2" />
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="create_date"/>
+            </field>
+        </field>
+    </record>
+
+  </data>
+</openerp>
