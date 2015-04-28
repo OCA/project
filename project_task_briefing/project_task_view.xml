@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+    <record id="view_project_task_form_briefing" model="ir.ui.view">
+      <field name="name">Project Task: add briefing tab</field>
+      <field name="model">project.task</field>
+      <field name="inherit_id" ref="project.view_task_form2"/>
+      <field name="arch" type="xml">
+
+        <field name="description" position="replace" />
+        <page string="Description" position="before">
+            <page string="Briefing" name="briefing">
+                <field name="description"
+                       placeholder="Briefing description for the task..." />
+            </page>
+        </page>
+
+      </field>
+    </record>
+
+  </data>
+</openerp>
