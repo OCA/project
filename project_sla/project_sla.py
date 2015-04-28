@@ -59,11 +59,16 @@ class SLADefinition(orm.Model):
         To use upon SLA Definition modifications.
         """
         contract_obj = self.pool.get('account.analytic.account')
-        for sla in self.browse(cr, uid, ids, context=context):
-            contr_ids = [x.id for x in sla.analytic_ids if x.state == 'open']
-            contract_obj._reapply_sla(
-                cr, uid, contr_ids, recalc_closed=recalc_closed,
-                context=context)
+        contract_ids = contract_obj.search(cr, uid,
+                                           [('sla_ids', 'in', ids),
+                                            ('state', '=', 'open')],
+                                           context=context)
+
+        ctx = {} if context is None else context.copy()
+        ctx.update({'sla_ids': ids})
+        contract_obj._reapply_sla(cr, uid, contract_ids,
+                                  recalc_closed=recalc_closed,
+                                  context=ctx)
         return True
 
     def reapply_slas(self, cr, uid, ids, context=None):
