@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Project Task form -->
+        <record id="project_task_form_view_reassign" model="ir.ui.view">
+            <field name="name">project_task_form_view_reassign</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+
+                <!-- Important: users than can access only followed tasks must
+                be left as "Responsible" upon creation, to make sure they are
+                added to the followers. Otherwise they might get an
+                access denied error -->
+                <field name="user_id" position="replace">
+                    <label for="user_id" groups="base.group_user"/>
+                    <span>
+                        <field name="user_id" class="oe_inline" readonly="1"
+                               groups="base.group_user"/>
+                        <button name="%(action_project_task_reassign)d"
+                                string="⇒ Reassign" type="action" class="oe_link"
+                                groups="project.group_project_user" />
+                    </span>
+                </field>
+
+           </field>
+        </record>
+
+    </data>
+</openerp>
