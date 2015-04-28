@@ -1,0 +1,121 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+# 	* project_issue_reassign
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 8.0alpha1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-07-03 16:39+0000\n"
+"PO-Revision-Date: 2014-07-03 17:47-0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: pt\n"
+"X-Generator: Poedit 1.6.5\n"
+
+#. module: project_issue_reassign
+#: field:project.issue.reassign,user_id:0
+msgid "Assign To"
+msgstr "Associar a"
+
+#. module: project_issue_reassign
+#: view:project.issue.reassign:0
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: project_issue_reassign
+#: field:project.issue,channel:0
+msgid "Channel"
+msgstr "Canal"
+
+#. module: project_issue_reassign
+#: help:project.issue,channel:0
+msgid "Communication channel."
+msgstr "Canal de comunicações."
+
+#. module: project_issue_reassign
+#: model:ir.model,name:project_issue_reassign.model_project_issue_reassign
+msgid "Issue Reassign"
+msgstr "Reatribuir Incidente"
+
+#. module: project_issue_reassign
+#: model:mail.message.subtype,name:project_issue_reassign.mt_project_issue_reassign
+msgid "Issue Reassigned"
+msgstr "Incidente Reatribuido"
+
+#. module: project_issue_reassign
+#: model:mail.message.subtype,name:project_issue_reassign.mt_issue_reassign
+msgid "Issue Reassignment"
+msgstr "Reatribuição Incidente"
+
+#. module: project_issue_reassign
+#: model:mail.message.subtype,description:project_issue_reassign.mt_project_issue_reassign
+msgid "Issue reassigned"
+msgstr "Incidente Reatribuido"
+
+#. module: project_issue_reassign
+#: model:mail.message.subtype,description:project_issue_reassign.mt_issue_reassign
+msgid "Issue reassignment"
+msgstr "Reatribuição do incidente"
+
+#. module: project_issue_reassign
+#: code:addons/project_issue_reassign/wizard/project_issue_reassign.py:42
+#, python-format
+msgid "No active Issues found."
+msgstr "Não foram encontrados Incidentes ativos."
+
+#. module: project_issue_reassign
+#: code:addons/project_issue_reassign/project.py:30
+#, python-format
+msgid "No reassignment data was provided."
+msgstr "Faltam dados para a reatribuição."
+
+#. module: project_issue_reassign
+#: field:project.issue.reassign,project_id:0
+msgid "Project"
+msgstr "Projeto"
+
+#. module: project_issue_reassign
+#: model:ir.model,name:project_issue_reassign.model_project_issue
+msgid "Project Issue"
+msgstr "Incidente do Projeto"
+
+#. module: project_issue_reassign
+#: help:project.issue.reassign,project_id:0
+msgid "Project this issue should belong to"
+msgstr "Project this issue should belong to"
+
+#. module: project_issue_reassign
+#: model:ir.actions.act_window,name:project_issue_reassign.issue_reassign_wizard_action
+msgid "Reassign Issues"
+msgstr "Reatribuir Incidentes"
+
+#. module: project_issue_reassign
+#: model:ir.actions.act_window,name:project_issue_reassign.action_project_issue_reassign
+#: view:project.issue.reassign:0
+msgid "Reassign Project Issue"
+msgstr "Reatribuir Incidentes"
+
+#. module: project_issue_reassign
+#: help:project.issue.reassign,user_id:0
+msgid "User you want to assign this issue to"
+msgstr "Utilizador reabribuir incidencia"
+
+#. module: project_issue_reassign
+#: view:project.issue.reassign:0
+msgid "_Reassign"
+msgstr "_Reatribuir"
+
+#. module: project_issue_reassign
+#: view:project.issue.reassign:0
+msgid "or"
+msgstr "ou"
+
+#. module: project_issue_reassign
+#: view:project.issue:0
+msgid "⇒ Reassign"
+msgstr "⇒ Reatribuir"

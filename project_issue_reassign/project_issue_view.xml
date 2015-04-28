@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+
+        <!-- Project Issue form -->
+        <record id="project_issue_form_view_reassign" model="ir.ui.view">
+            <field name="name">project_issue_form_view_reassign</field>
+            <field name="model">project.issue</field>
+            <field name="inherit_id" ref="project_issue.project_issue_form_view"/>
+            <field name="arch" type="xml">
+
+                <!-- Important: users than can access only followed issues must
+                be left as "Responsible" upon creation, to make sure they are
+                added to the followers. Otherwise they might get an
+                access denied error -->
+                <field name="user_id" position="replace">
+                    <label for="user_id" groups="base.group_user"/>
+                    <span>
+                        <field name="user_id" class="oe_inline" readonly="1"
+                               groups="base.group_user"/>
+                        <button name="%(action_project_issue_reassign)d"
+                                string="⇒ Reassign" type="action" class="oe_link"
+                                groups="project.group_project_user" /> <!-- TODO: states="draft,open,pending" -->
+                    </span>
+                </field>
+
+           </field>
+        </record>
+
+
+    </data>
+</openerp>
