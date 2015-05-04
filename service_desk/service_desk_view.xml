@@ -44,7 +44,7 @@
 
                 <field name="project_id" position="before">
                             <field name="use_analytic_account" invisible="1"/>
-                            <field name="analytic_account_id" on_change="onchange_analytic(analytic_account_id)"
+                            <field name="analytic_account_id"
                                    attrs="{'invisible':[('use_analytic_account','not in',['yes','req'])],'required':[('use_analytic_account','=','req')]}"/>
                             <field name="location_id"
                                    attrs="{'invisible':[('use_analytic_account','not in',['yes','req'])],'required':[('use_analytic_account','=','req')]}"/>
@@ -52,6 +52,7 @@
 
                 <field name="project_id" position="attributes">
                     <attribute name="on_change">onchange_project(project_id)</attribute>
+                    w
                 </field>
 
            </field>

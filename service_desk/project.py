@@ -19,6 +19,7 @@
 ##############################################################################
 
 from openerp.osv import fields, orm
+from openerp import models, api
 
 
 class ProjectProject(orm.Model):
@@ -73,17 +74,15 @@ class ProjectTask(orm.Model):
                 obj.use_analytic_account or 'no')
         return res
 
-    def onchange_analytic(self, cr, uid, id, analytic_id, context=None):
-        res = {}
-        model = self.pool.get('account.analytic.account')
-        obj = model.browse(cr, uid, analytic_id, context=context)
-        if obj:
-            # "contact_id" and "department_id" may be provided by other modules
-            fldmap = [  # analytic_account field -> task field
-                ('partner_id', 'partner_id'),
-                ('contact_id', 'location_id'),
-                ('department_id', 'department_id')]
-            res['value'] = {dest: getattr(obj, orig).id
-                            for orig, dest in fldmap
-                            if hasattr(obj, orig) and getattr(obj, orig)}
-        return res
+
+class ProjectTaskNewAPI(models.Model):
+    _inherit = 'project.task'
+
+    @api.onchange('analytic_account_id')
+    def onchange_analytic(self):
+        contract = self.analytic_account_id
+        if contract:
+            self.partner_id = contract.partner_id
+            self.location_id = contract.contact_id
+            if hasattr(contract, 'department_id'):
+                self.department_id = contract.department_id
