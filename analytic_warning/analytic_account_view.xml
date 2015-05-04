@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_analytic_account_add_warning" model="ir.ui.view">
+            <field name="name">Analytic Account: add Warning fields</field>
+            <field name="model">account.analytic.account</field>
+            <field name="inherit_id" ref="analytic.view_account_analytic_account_form" />
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="Warnings">
+                        <group string="Warning on Project Tasks">
+                            <field name="project_task_warn"/>
+                            <field name="project_task_warn_msg"
+                                attrs="{'required':[('project_task_warn', '!=', 'no-message')],
+                                        'readonly':[('project_task_warn', '=',  'no-message')]}"/>
+                        </group>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+
+    </data>
+</openerp>
