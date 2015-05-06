@@ -8,6 +8,19 @@
             <field name="inherit_id" ref="project.task_type_edit"/>
             <field name="arch" type="xml">
                 <field name="fold" position="after">
+                    <field name="fold_statusbar" />
+                    <field name="state" />
+                </field>
+            </field>
+        </record>
+
+        <record id="task_type_tree_state" model="ir.ui.view">
+            <field name="name">Project Task Type: add Fold Statusbar</field>
+            <field name="model">project.task.type</field>
+            <field name="inherit_id" ref="project.task_type_tree"/>
+            <field name="arch" type="xml">
+                <field name="fold" position="after">
+                    <field name="fold_statusbar" />
                     <field name="state" />
                 </field>
             </field>
@@ -19,6 +32,10 @@
             <field name="model">project.task</field>
             <field name="inherit_id" ref="project.view_task_form2"/>
             <field name="arch" type="xml">
+
+                <field name="stage_id" position="attributes">
+                    <attribute name="options">{'fold_field': 'fold_statusbar'}</attribute>
+                </field>
 
                 <field name="partner_id" position="after">
                     <field name="state" />

@@ -32,6 +32,7 @@ _TASK_STATE = [
 class ProjectTaskType(models.Model):
     _inherit = 'project.task.type'
     state = fields.Selection(_TASK_STATE, 'State')
+    fold_statusbar = fields.Boolean('Folded in Statusbar')
 
 
 class ProjectTask(models.Model):
