@@ -13,5 +13,19 @@
             </field>
         </record>
 
+        <!-- Project Task form -->
+        <record id="project_task_form_stage" model="ir.ui.view">
+            <field name="name">project_task_form_stage</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+
+                <field name="partner_id" position="after">
+                    <field name="state" />
+                </field>
+
+            </field>
+        </record>
+
     </data>
 </openerp>
