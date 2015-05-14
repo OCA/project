@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_account_analytic_account_form_contact" model="ir.ui.view">
+            <field name="name">view_account_analytic_account_form_contact</field>
+            <field name="model">account.analytic.account</field>
+            <field name="inherit_id" ref="analytic.view_account_analytic_account_form"/>
+            <field name="arch" type="xml">
+
+                <field name="manager_id" position="after">
+                    <field name="contact_id"/>
+                </field>
+
+           </field>
+        </record>
+
+    </data>
+</openerp>

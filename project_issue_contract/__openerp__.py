@@ -18,14 +18,10 @@
 #
 ##############################################################################
 {
-    'name': 'Service Desk for Issues',
-    'summary': 'Deprecated by project_issue_contract module',
-    'version': '1.1',
+    'name': 'Contract on Project Issues',
+    'summary': 'Add Contract and Location information to Issues',
+    'version': '1.2',
     "category": "Project Management",
-    'description': """
-This module was deprecated and will be removed in future versions.
-The features were move into the project_issue_contract module.
-""",
     'author': "Daniel Reis,Odoo Community Association (OCA)",
     'website': '',
     'license': 'AGPL-3',
@@ -33,5 +29,9 @@ The features were move into the project_issue_contract module.
         'project_issue',
         'project_task_contract',
     ],
+    'data': [
+        'service_desk_view.xml',
+    ],
     'installable': True,
+    'auto_install': True,
 }

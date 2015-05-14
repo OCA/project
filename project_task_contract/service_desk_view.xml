@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Project form -->
+        <record id="view_project_form_sdesk" model="ir.ui.view">
+            <field name="name">view_project_form_sdesk</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="arch" type="xml">
+
+                <field name="parent_id" position="after">
+                    <field name="use_analytic_account"/>
+                </field>
+
+           </field>
+        </record>
+
+
+        <!-- Project Task tree list  -->
+        <record model="ir.ui.view" id="project_task_tree_view_sdesk">
+            <field name="name">project_task_tree_view_sdesk</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_tree2"/>
+            <field name="arch" type="xml">
+
+                <!-- See Analytic Account, if Project is configured so -->
+                <field name="name" position="after">
+                    <field name="use_analytic_account" invisible="1"/>
+                    <field name="analytic_account_id"
+                           attrs="{'invisible':[('use_analytic_account','not in',['yes','req'])],'required':[('use_analytic_account','=','req')]}"/>
+                </field>
+
+            </field>
+        </record>
+
+
+        <!-- Project Task form -->
+        <record id="view_project_task_form_sdesk" model="ir.ui.view">
+            <field name="name">view_project_task_form_sdesk</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+
+                <field name="project_id" position="before">
+                            <field name="use_analytic_account" invisible="1"/>
+                            <field name="analytic_account_id" on_change="onchange_analytic(analytic_account_id)"
+                                   attrs="{'invisible':[('use_analytic_account','not in',['yes','req'])],'required':[('use_analytic_account','=','req')]}"/>
+                            <field name="location_id"
+                                   attrs="{'invisible':[('use_analytic_account','not in',['yes','req'])],'required':[('use_analytic_account','=','req')]}"/>
+                </field>
+
+                <field name="project_id" position="attributes">
+                    <attribute name="on_change">onchange_project(project_id)</attribute>
+                </field>
+
+           </field>
+        </record>
+
+
+        <!-- Project Task filter -->
+        <record id="view_task_search_form" model="ir.ui.view">
+            <field name="name">view_task_search_form_sdesk</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_search_form"/>
+            <field name="arch" type="xml">
+
+                    <field name="name" position="after">
+                        <field name="analytic_account_id"/>
+                        <field name="location_id"/>
+                    </field>
+
+           </field>
+        </record>
+
+
+    </data>
+</openerp>

@@ -45,10 +45,10 @@
     self.write(cr, uid, [ref('project.project_project_1_account_analytic_account')],
         {'sla_ids': [(4, ref('sla_response'))]})
 -
-  Button to Reapply the SLA Definition
+  Button to Reapply the SLA Definition on the Contract
 -
-  !python {model: project.sla}: |
-    self._reapply_slas(cr, uid, [ref('sla_resolution')], recalc_closed=True)
+  !python {model: account.analytic.account}: |
+    self._reapply_sla(cr, uid, [ref('project.project_project_1_account_analytic_account')], recalc_closed=True)
 -
   There should be two Service Level lines generated on the Issue
 -
