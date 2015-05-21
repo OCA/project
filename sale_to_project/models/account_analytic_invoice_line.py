@@ -29,3 +29,5 @@ class AccountAnalyticInvoiceLine(models.Model):
         comodel_name='sale.order.line',
         string='Order Line',
     )
+    # ensure that we do not have https://github.com/odoo/odoo/pull/6801
+    analytic_account_id = fields.Many2one(required=True, ondelete='cascade')
