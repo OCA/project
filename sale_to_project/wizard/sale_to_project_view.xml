@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+    <record id="view_sale_to_project" model="ir.ui.view">
+      <field name="name">Create Contract</field>
+      <field name="model">sale.to.project</field>
+      <field name="arch" type="xml">
+        <form string="Create contract from order">
+          <p class="oe_grey">
+            Select how you want to create the contract. This
+            will create a draft contract that can be modified
+            before validation.
+          </p>
+          <group>
+            <field name="create_contract_method"/>
+          </group>
+          <div>
+            <b><label string="After clicking 'Show Lines', select lines for the contract and create the contract from the 'More' dropdown menu." attrs="{'invisible': [('create_contract_method', '!=', 'lines')]}"/></b>
+          </div>
+          <footer>
+            <button name="create_contract" string="Create and View Contract" type="object"
+              context="{'open_contract': True}" class="oe_highlight"
+              attrs="{'invisible': [('create_contract_method', '=', 'lines')]}"/>
+            <button name="create_contract" string="Create Contract" type="object"
+              class="oe_highlight"
+              attrs="{'invisible': [('create_contract_method', '=', 'lines')]}"/>
+            <button name="open_lines" string="Show Lines" type="object"
+              class="oe_highlight"
+              attrs="{'invisible': [('create_contract_method', '!=', 'lines')]}"/>
+            or
+            <button string="Cancel" class="oe_link" special="cancel"/>
+          </footer>
+        </form>
+      </field>
+    </record>
+
+    <record id="action_sale_to_project" model="ir.actions.act_window">
+      <field name="name">Create Contract</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">sale.to.project</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">form</field>
+      <field name="target">new</field>
+    </record>
+  </data>
+</openerp>
+
