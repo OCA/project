@@ -25,6 +25,38 @@ from openerp import models, fields, api, exceptions, _
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
+    contract_ids = fields.One2many(
+        comodel_name='account.analytic.account',
+        inverse_name='sale_id',
+        string='Contracts',
+    )
+
+    @api.multi
+    def _open_contracts(self, contracts=None):
+        self.ensure_one()
+        action_xmlid = ('account_analytic_analysis.'
+                        'action_account_analytic_overdue_all')
+        action = self.env.ref(action_xmlid).read()[0]
+        action['context'] = {}
+        if contracts is None:
+            contracts = self.contract_ids
+
+        if len(contracts) == 1:
+            action['views'] = [(False, 'form')]
+            action['res_id'] = contracts.id
+        else:
+            action['domain'] = [('id', 'in', contracts.ids)]
+        return action
+
+    @api.multi
+    def open_contracts(self):
+        """ Called from a button. Open the related contracts
+
+        We cannot have a keyword argument on methods called from a button.
+        That's why there are 2 methods.
+        """
+        return self._open_contracts()
+
     @api.multi
     def _prepare_contract_line(self, line):
         return {
@@ -46,6 +78,7 @@ class SaleOrder(models.Model):
                   'date_start': self.date_order,
                   'recurring_invoices': True,
                   'type': 'contract',
+                  'sale_id': self.id,
                   }
         values['recurring_invoice_line_ids'] = [
             (0, 0, self._prepare_contract_line(line))

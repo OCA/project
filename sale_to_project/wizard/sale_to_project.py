@@ -45,16 +45,6 @@ class SaleToProject(models.TransientModel):
         return action
 
     @api.multi
-    def open_contract(self, contract):
-        action_xmlid = ('account_analytic_analysis.'
-                        'action_account_analytic_overdue_all')
-        action = self.env.ref(action_xmlid).read()[0]
-        action['context'] = {}
-        action['views'] = [(False, 'form')]
-        action['res_id'] = contract.id
-        return action
-
-    @api.multi
     def create_contract(self):
         self.ensure_one()
         sale_ids = self.env.context.get('active_ids')
@@ -63,5 +53,5 @@ class SaleToProject(models.TransientModel):
         contract = sale.create_contract()
 
         if self.env.context.get('open_contract'):
-            return self.open_contract(contract)
+            return sale._open_contracts(contracts=contract)
         return {'type': 'ir.actions.act_window_close'}
