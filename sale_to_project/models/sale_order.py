@@ -101,7 +101,14 @@ class SaleOrder(models.Model):
                 _('There are no lines to create a contract.')
             )
         contract_model = self.env['account.analytic.account']
-        return contract_model.create(self._prepare_contract(lines))
+        contract = contract_model.create(self._prepare_contract(lines))
+        self.step_workflow()
+        return contract
+
+    @api.multi
+    def check_all_lines_in_contract(self):
+        self.ensure_one()
+        return all(line.in_contract for line in self.order_line)
 
 
 class SaleOrderLine(models.Model):
@@ -114,6 +121,18 @@ class SaleOrderLine(models.Model):
     )
     in_contract = fields.Boolean(compute='_compute_in_contract',
                                  string='In a Contract')
+    invoiced = fields.Boolean(compute='_compute_invoiced', store=True)
+
+    @api.one
+    @api.depends('order_id.state',
+                 'invoice_lines',
+                 'invoice_lines.invoice_id.state',
+                 'recurring_invoice_line_ids',
+                 'recurring_invoice_line_ids.analytic_account_id.state',
+                 'in_contract')
+    def _compute_invoiced(self):
+        invoiced = self._fnct_line_invoiced(['invoiced'], []).get(self.id)
+        self.invoiced = invoiced or self.in_contract
 
     @api.one
     @api.depends('recurring_invoice_line_ids',

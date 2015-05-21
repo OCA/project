@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+    <record id="trans_wait_invoice_all_lines_in_contract" model="workflow.transition">
+      <field name="act_from" ref="sale.act_wait_invoice"/>
+      <field name="act_to" ref="sale.act_invoice_end"/>
+      <field name="condition">check_all_lines_in_contract()</field>
+    </record>
+
+  </data>
+</openerp>

@@ -30,6 +30,7 @@
  'website': 'http://www.camptocamp.com',
  'data': ['wizard/sale_to_project_view.xml',
           'views/sale_view.xml',
+          'data/sale_workflow.xml',
           ],
  'test': [],
  'installable': True,
