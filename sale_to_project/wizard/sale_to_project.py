@@ -19,7 +19,7 @@
 #
 #
 
-from openerp import models, fields, api, _
+from openerp import models, fields, api
 
 
 class SaleToProject(models.TransientModel):
@@ -30,6 +30,7 @@ class SaleToProject(models.TransientModel):
         selection=[('all', 'Create Contract from all the lines'),
                    ('lines', 'Create Contract from a selection of lines')],
         string='Method',
+        default='all',
     )
 
     @api.multi

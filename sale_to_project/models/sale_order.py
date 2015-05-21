@@ -19,7 +19,7 @@
 #
 #
 
-from openerp import models, api, exceptions, _
+from openerp import models, fields, api, exceptions, _
 
 
 class SaleOrder(models.Model):
@@ -33,6 +33,7 @@ class SaleOrder(models.Model):
             'quantity': line.product_uom_qty,
             'uom_id': line.product_uom.id,
             'price_unit': line.price_unit,
+            'sale_line_id': line.id,
         }
 
     @api.multi
@@ -61,5 +62,31 @@ class SaleOrder(models.Model):
             )
         elif not lines:
             lines = self.order_line
+        lines = lines.filtered(lambda line: not line.in_contract)
+        if not lines:
+            raise exceptions.Warning(
+                _('There are no lines to create a contract.')
+            )
         contract_model = self.env['account.analytic.account']
         return contract_model.create(self._prepare_contract(lines))
+
+
+class SaleOrderLine(models.Model):
+    _inherit = 'sale.order.line'
+
+    recurring_invoice_line_ids = fields.One2many(
+        comodel_name='account.analytic.invoice.line',
+        inverse_name='sale_line_id',
+        string='Recurring Invoice Lines',
+    )
+    in_contract = fields.Boolean(compute='_compute_in_contract',
+                                 string='In a Contract')
+
+    @api.one
+    @api.depends('recurring_invoice_line_ids',
+                 'recurring_invoice_line_ids.analytic_account_id.state')
+    def _compute_in_contract(self):
+        self.in_contract = any(
+            line.analytic_account_id.state != 'cancelled'
+            for line in self.recurring_invoice_line_ids
+        )
