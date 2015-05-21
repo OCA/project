@@ -19,39 +19,20 @@
 #
 #
 
-from openerp import models, fields, api
+from openerp import models, api
 
 
-class SaleToProject(models.TransientModel):
-    _name = 'sale.to.project'
-    _description = 'Create Contract from Sales Order'
-
-    create_contract_method = fields.Selection(
-        selection=[('all', 'Create Contract from all the lines'),
-                   ('lines', 'Create Contract from a selection of lines')],
-        string='Method',
-        default='all',
-        required=True,
-    )
-
-    @api.multi
-    def open_lines(self):
-        sale_ids = self.env.context.get('active_ids')
-        action_xmlid = 'sale.action_order_line_tree2'
-        action = self.env.ref(action_xmlid).read()[0]
-        action['context'] = {
-            'search_default_uninvoiced': 1,
-            'search_default_order_id': sale_ids[0] if sale_ids else False,
-        }
-        return action
+class SaleLineToProject(models.TransientModel):
+    _name = 'sale.line.to.project'
+    _description = 'Create Contract from Sales Order Lines'
 
     @api.multi
     def create_contract(self):
         self.ensure_one()
-        sale_ids = self.env.context.get('active_ids')
-        sale = self.env['sale.order'].browse(sale_ids)
-        sale.ensure_one()
-        contract = sale.create_contract()
+        sale_line_ids = self.env.context.get('active_ids')
+        sale_lines = self.env['sale.order.line'].browse(sale_line_ids)
+        sale = sale_lines[0].order_id
+        contract = sale.create_contract(lines=sale_lines)
 
         if self.env.context.get('open_contract'):
             return sale._open_contracts(contracts=contract)

@@ -95,20 +95,18 @@ class SaleOrder(models.Model):
             )
         elif not lines:
             lines = self.order_line
-        lines = lines.filtered(lambda line: not line.in_contract)
+        lines = lines.filtered(lambda line: (not line.in_contract and
+                                             not line.invoiced))
         if not lines:
             raise exceptions.Warning(
                 _('There are no lines to create a contract.')
             )
         contract_model = self.env['account.analytic.account']
         contract = contract_model.create(self._prepare_contract(lines))
-        self.step_workflow()
+        if all(line.state == 'cancel' or line.invoiced or line.in_contract
+                for line in self.order_line):
+            self.signal_workflow('all_lines')
         return contract
-
-    @api.multi
-    def check_all_lines_in_contract(self):
-        self.ensure_one()
-        return all(line.in_contract for line in self.order_line)
 
 
 class SaleOrderLine(models.Model):
