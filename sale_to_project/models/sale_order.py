@@ -70,7 +70,7 @@ class SaleOrder(models.Model):
 
     @api.multi
     def _prepare_contract(self, lines):
-        values = {'name': self.name,
+        values = {'name': '%s - %s' % (self.partner_id.name, self.name),
                   'partner_id': self.partner_id.id,
                   'manager_id': self.user_id.id,
                   'code': self.name,
