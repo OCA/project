@@ -26,7 +26,12 @@ To use this module, you need to:
 Known issues / Roadmap
 ======================
 
-* ...
+* when all lines are put in a contract, the sales order is set to done
+  (for a sales order without delivery). When part of the lines are put
+  in a contract and the rest in an invoice, the sales order is set to
+  done too, even if the invoice is not paid. It might make think it is
+  a bug, but the same behavior is observed when we generate an invoice
+  from all the sales order lines using the "Invoice by line" wizard.
 
 Bug Tracker
 ===========
