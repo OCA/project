@@ -1,0 +1,178 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* sale_to_project
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-05-26 12:59+0000\n"
+"PO-Revision-Date: 2015-05-26 12:59+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sale_to_project
+#: view:sale.to.project:sale_to_project.view_sale_to_project
+msgid "After clicking 'Show Lines', select lines for the contract and create the contract from the 'More' dropdown menu."
+msgstr ""
+
+#. module: sale_to_project
+#: view:sale.line.to.project:sale_to_project.view_sale_line_to_project
+msgid "All the selected lines will be added to the created contract\n"
+"            as recurring invoice lines. This will create a draft\n"
+"            contract that can be modified before validation."
+msgstr ""
+
+#. module: sale_to_project
+#: model:ir.model,name:sale_to_project.model_account_analytic_account
+msgid "Analytic Account"
+msgstr ""
+
+#. module: sale_to_project
+#: view:sale.line.to.project:sale_to_project.view_sale_line_to_project
+#: view:sale.to.project:sale_to_project.view_sale_to_project
+msgid "Cancel"
+msgstr ""
+
+#. module: sale_to_project
+#: code:addons/sale_to_project/wizard/sale_to_project.py:96
+#, python-format
+msgid "Cannot create a contract for lines of different orders"
+msgstr ""
+
+#. module: sale_to_project
+#: field:sale.order,contract_ids:0
+msgid "Contracts"
+msgstr ""
+
+#. module: sale_to_project
+#: model:ir.actions.act_window,name:sale_to_project.action_sale_line_to_project
+#: model:ir.actions.act_window,name:sale_to_project.action_sale_to_project
+#: view:sale.line.to.project:sale_to_project.view_sale_line_to_project
+#: view:sale.order:sale_to_project.view_order_form
+#: view:sale.to.project:sale_to_project.view_sale_to_project
+msgid "Create Contract"
+msgstr ""
+
+#. module: sale_to_project
+#: model:ir.model,name:sale_to_project.model_sale_to_project
+msgid "Create Contract from Sales Order"
+msgstr ""
+
+#. module: sale_to_project
+#: model:ir.model,name:sale_to_project.model_sale_line_to_project
+#: model:ir.model,name:sale_to_project.model_sale_to_project_line
+msgid "Create Contract from Sales Order Lines"
+msgstr ""
+
+#. module: sale_to_project
+#: selection:sale.to.project,create_contract_method:0
+msgid "Create Contract from a selection of lines"
+msgstr ""
+
+#. module: sale_to_project
+#: selection:sale.to.project,create_contract_method:0
+msgid "Create Contract from all the lines"
+msgstr ""
+
+#. module: sale_to_project
+#: view:sale.line.to.project:sale_to_project.view_sale_line_to_project
+#: view:sale.to.project:sale_to_project.view_sale_to_project
+msgid "Create and View Contract"
+msgstr ""
+
+#. module: sale_to_project
+#: view:sale.line.to.project:sale_to_project.view_sale_line_to_project
+#: view:sale.to.project:sale_to_project.view_sale_to_project
+msgid "Create contract from order"
+msgstr ""
+
+#. module: sale_to_project
+#: field:sale.line.to.project,create_uid:0
+#: field:sale.to.project,create_uid:0
+msgid "Created by"
+msgstr ""
+
+#. module: sale_to_project
+#: field:sale.line.to.project,create_date:0
+#: field:sale.to.project,create_date:0
+msgid "Created on"
+msgstr ""
+
+#. module: sale_to_project
+#: field:sale.line.to.project,id:0
+#: field:sale.to.project,id:0
+msgid "ID"
+msgstr ""
+
+#. module: sale_to_project
+#: field:sale.line.to.project,write_uid:0
+#: field:sale.to.project,write_uid:0
+msgid "Last Updated by"
+msgstr ""
+
+#. module: sale_to_project
+#: field:sale.line.to.project,write_date:0
+#: field:sale.to.project,write_date:0
+msgid "Last Updated on"
+msgstr ""
+
+#. module: sale_to_project
+#: field:sale.to.project,create_contract_method:0
+msgid "Method"
+msgstr ""
+
+#. module: sale_to_project
+#: field:account.analytic.invoice.line,sale_line_id:0
+msgid "Order Line"
+msgstr ""
+
+#. module: sale_to_project
+#: field:sale.order.line,recurring_invoice_line_ids:0
+msgid "Recurring Invoice Lines"
+msgstr ""
+
+#. module: sale_to_project
+#: field:account.analytic.account,sale_id:0
+#: model:ir.model,name:sale_to_project.model_sale_order
+msgid "Sales Order"
+msgstr ""
+
+#. module: sale_to_project
+#: model:ir.model,name:sale_to_project.model_sale_order_line
+msgid "Sales Order Line"
+msgstr ""
+
+#. module: sale_to_project
+#: view:sale.to.project:sale_to_project.view_sale_to_project
+msgid "Select how you want to create the contract. This\n"
+"            will create a draft contract that can be modified\n"
+"            before validation."
+msgstr ""
+
+#. module: sale_to_project
+#: view:sale.to.project:sale_to_project.view_sale_to_project
+msgid "Show Lines"
+msgstr ""
+
+#. module: sale_to_project
+#: code:addons/sale_to_project/wizard/sale_to_project.py:104
+#, python-format
+msgid "There are no lines to create a contract."
+msgstr ""
+
+#. module: sale_to_project
+#: view:sale.order:sale_to_project.view_order_form
+msgid "View Contracts"
+msgstr ""
+
+#. module: sale_to_project
+#: view:sale.line.to.project:sale_to_project.view_sale_line_to_project
+#: view:sale.to.project:sale_to_project.view_sale_to_project
+msgid "or"
+msgstr ""
+
