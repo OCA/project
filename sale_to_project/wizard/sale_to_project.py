@@ -70,12 +70,14 @@ class SaleToProject(models.TransientModel):
 
     @api.multi
     def _prepare_contract(self, sale, lines):
+        dt_from_str = fields.Datetime.from_string
+        d_to_str = fields.Date.to_string
         values = {'name': '%s - %s' % (sale.partner_id.name, sale.name),
                   'partner_id': sale.partner_id.id,
                   'manager_id': sale.user_id.id,
                   'code': sale.name,
                   'company_id': sale.company_id.id,
-                  'date_start': sale.date_order,
+                  'date_start': d_to_str(dt_from_str(sale.date_order)),
                   'recurring_invoices': True,
                   'type': 'contract',
                   'sale_id': sale.id,

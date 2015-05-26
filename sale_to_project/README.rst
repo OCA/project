@@ -20,6 +20,8 @@ Usage
 To use this module, you need to:
 
 * Use the new button `Create Contract` on a sales order
+* You can choose to create a contract from all the lines or a selection
+  of lines
 
 Known issues / Roadmap
 ======================
