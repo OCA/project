@@ -27,13 +27,25 @@ class SaleLineToProject(models.TransientModel):
     _description = 'Create Contract from Sales Order Lines'
 
     @api.multi
-    def create_contract(self):
+    def button_create_contract(self):
         self.ensure_one()
         sale_line_ids = self.env.context.get('active_ids')
         sale_lines = self.env['sale.order.line'].browse(sale_line_ids)
         sale = sale_lines[0].order_id
-        contract = sale.create_contract(lines=sale_lines)
+        contract = self.create_contract(sale, sale_lines)
 
         if self.env.context.get('open_contract'):
             return sale._open_contracts(contracts=contract)
         return {'type': 'ir.actions.act_window_close'}
+
+    @api.multi
+    def _prepare_sale_to_project_wizard(self, sale, lines):
+        return {}
+
+    @api.multi
+    def create_contract(self, sale, lines):
+        sale_to_project_model = self.env['sale.to.project']
+        sale_to_project = sale_to_project_model.create(
+            self._prepare_sale_to_project_wizard(sale, lines)
+        )
+        return sale_to_project.create_contract(sale, lines=lines)

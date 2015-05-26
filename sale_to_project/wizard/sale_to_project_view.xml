@@ -18,10 +18,10 @@
             <b><label string="After clicking 'Show Lines', select lines for the contract and create the contract from the 'More' dropdown menu." attrs="{'invisible': [('create_contract_method', '!=', 'lines')]}"/></b>
           </div>
           <footer>
-            <button name="create_contract" string="Create and View Contract" type="object"
+            <button name="button_create_contract" string="Create and View Contract" type="object"
               context="{'open_contract': True}" class="oe_highlight"
               attrs="{'invisible': [('create_contract_method', '=', 'lines')]}"/>
-            <button name="create_contract" string="Create Contract" type="object"
+            <button name="button_create_contract" string="Create Contract" type="object"
               class="oe_highlight"
               attrs="{'invisible': [('create_contract_method', '=', 'lines')]}"/>
             <button name="open_lines" string="Show Lines" type="object"

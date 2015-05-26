@@ -19,7 +19,7 @@
 #
 #
 
-from openerp import models, fields, api, exceptions, _
+from openerp import models, fields, api
 
 
 class SaleOrder(models.Model):
@@ -56,57 +56,6 @@ class SaleOrder(models.Model):
         That's why there are 2 methods.
         """
         return self._open_contracts()
-
-    @api.multi
-    def _prepare_contract_line(self, line):
-        return {
-            'product_id': line.product_id.id,
-            'name': line.name,
-            'quantity': line.product_uom_qty,
-            'uom_id': line.product_uom.id,
-            'price_unit': line.price_unit,
-            'sale_line_id': line.id,
-        }
-
-    @api.multi
-    def _prepare_contract(self, lines):
-        values = {'name': '%s - %s' % (self.partner_id.name, self.name),
-                  'partner_id': self.partner_id.id,
-                  'manager_id': self.user_id.id,
-                  'code': self.name,
-                  'company_id': self.company_id.id,
-                  'date_start': self.date_order,
-                  'recurring_invoices': True,
-                  'type': 'contract',
-                  'sale_id': self.id,
-                  }
-        values['recurring_invoice_line_ids'] = [
-            (0, 0, self._prepare_contract_line(line))
-            for line in lines
-        ]
-        return values
-
-    @api.multi
-    def create_contract(self, lines=None):
-        self.ensure_one()
-        if lines and any(line.order_id != self for line in lines):
-            raise exceptions.Warning(
-                _('Cannot create a contract for lines of different orders')
-            )
-        elif not lines:
-            lines = self.order_line
-        lines = lines.filtered(lambda line: (not line.in_contract and
-                                             not line.invoiced))
-        if not lines:
-            raise exceptions.Warning(
-                _('There are no lines to create a contract.')
-            )
-        contract_model = self.env['account.analytic.account']
-        contract = contract_model.create(self._prepare_contract(lines))
-        if all(line.state == 'cancel' or line.invoiced or line.in_contract
-                for line in self.order_line):
-            self.signal_workflow('all_lines')
-        return contract
 
 
 class SaleOrderLine(models.Model):

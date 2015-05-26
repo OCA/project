@@ -12,9 +12,9 @@
             contract that can be modified before validation.
           </p>
           <footer>
-            <button name="create_contract" string="Create and View Contract" type="object"
+            <button name="button_create_contract" string="Create and View Contract" type="object"
               context="{'open_contract': True}" class="oe_highlight"/>
-            <button name="create_contract" string="Create Contract" type="object"
+            <button name="button_create_contract" string="Create Contract" type="object"
               class="oe_highlight"/>
             or
             <button string="Cancel" class="oe_link" special="cancel"/>
