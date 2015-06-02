@@ -1,4 +1,4 @@
-<?xml version="1.0" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
 
@@ -6,12 +6,13 @@
         Hours block menu
         -->
         <record model="ir.actions.act_window" id="action_all_block_hour">
-			<field name="context">{'search_default_running': 1, 'search_default_group_department_id': 1}</field>
+            <field name="context">{'search_default_running': 1}</field>
             <field name="name">Hours Blocks</field>
             <field name="res_model">account.hours.block</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
-            <field eval="False" name="view_id"/>
+            <field name="view_id" ref="invoice_tree_hour_block"/>
+            <field name="search_view_id" ref="view_account_invoice_filter"/>
         </record>
 
         <menuitem

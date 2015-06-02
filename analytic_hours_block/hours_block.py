@@ -393,18 +393,6 @@ class AccountHoursBlock(orm.Model):
                 'account.invoice': (_get_invoice, ['amount_total'], 10),
             },
             readonly=True),
-        'department_id': fields.related(
-            'invoice_id', 'department_id',
-            type='many2one',
-            relation='hr.department',
-            string='Department',
-            store={
-                'account.hours.block': (lambda self, cr, uid, ids, c=None: ids,
-                                        ['invoice_id'], 10),
-                'account.invoice': (_get_invoice, ['department_id'], 10),
-            },
-            readonly=True),
-
         'state': fields.related(
             'invoice_id', 'state',
             type='selection',
@@ -424,6 +412,18 @@ class AccountHoursBlock(orm.Model):
                 'account.invoice': (_get_invoice, ['state'], 10),
             }),
     }
+
+    def onchange_invoice(self, cr, uid, id, invoice_id, context=None):
+        res = {'account_analytic_id': False}
+
+        if invoice_id:
+            invoice = self.pool.get('account.invoice').browse(
+                cr, uid, invoice_id, context=context)
+            aa_ids = [x.account_analytic_id.id for x in invoice.invoice_line]
+            aa_ids = list(set(aa_ids))
+            res['account_analytic_id'] = \
+                len(aa_ids) == 1 and aa_ids[0] or False
+        return {'value': res}
 
 
 ############################################################################

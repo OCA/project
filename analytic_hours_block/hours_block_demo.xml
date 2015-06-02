@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+
+        <record id="demo_invoice_4_hb" model="account.invoice">
+            <field name="currency_id" ref="base.EUR"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="partner_id" ref="base.res_partner_10"/>
+            <field name="journal_id" ref="account.sales_journal"/>
+            <field name="state">draft</field>
+            <field name="type">out_invoice</field>
+            <field name="account_id" ref="account.a_recv"/>
+            <field name="name">Test invoice for Hours Block</field>
+        </record>
+        <record id="demo_tax_line_4_hb" model="account.invoice.tax">
+            <field name="name">Test Tax</field>
+            <field name="base">15.00</field>
+            <field name="amount">250.00</field>
+            <field name="account_id" ref="account.ova"/>
+            <field name="invoice_id" ref="demo_invoice_4_hb"/>
+        </record>
+        <record id="demo_invoice_line_4_hb" model="account.invoice.line">
+            <field name="name">Basic computer with Dvorak keyboard and left-handed mouse</field>
+            <field name="invoice_id" ref="demo_invoice_4_hb"/>
+            <field name="price_unit">250</field>
+            <field name="quantity">1</field>
+            <field name="account_id" ref="account.a_sale"/>
+            <field name="account_analytic_id" ref="project.project_project_1_account_analytic_account"/>
+        </record>
+
+        <record id="demo_hb" model="account.hours.block">
+            <field name="invoice_id" ref="demo_invoice_4_hb"/>
+            <field name="type">amount</field>
+            <field name="account_analytic_id" ref="project.project_project_1_account_analytic_account"/>
+        </record>
+
+    </data>
+</openerp>
