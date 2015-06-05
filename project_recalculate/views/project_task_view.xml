@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+<record id="view_project_task_form" model="ir.ui.view">
+  <field name="name">view_project_task_form</field>
+  <field name="model">project.task</field>
+  <field name="inherit_id" ref="project.view_task_form2"/>
+  <field name="arch" type="xml">
+
+    <field name="planned_hours" position="after">
+        <field name="from_days"/>
+        <field name="estimated_days"/>
+    </field>
+
+  </field>
+</record>
+
+</data>
+</openerp>
