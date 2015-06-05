@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+<record id="task_type_edit" model="ir.ui.view">
+    <field name="name">Add include_in_recalculate field</field>
+    <field name="model">project.task.type</field>
+    <field name="inherit_id" ref="project.task_type_edit" />
+    <field name="arch" type="xml">
+        <field name="fold" position="after">
+            <field name="include_in_recalculate"/>
+        </field>
+    </field>
+</record>
+
+</data>
+</openerp>
