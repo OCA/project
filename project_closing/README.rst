@@ -6,7 +6,7 @@ Project closing
 
 
     Automatic account analytic closing when related project is closed.
-    and If a projet is open, the related analytic account will be  re-open.
+    and if a project is opened, the related analytic account will be re-opened.
     
 
 
