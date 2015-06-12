@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from osv import orm
+from openerp.osv import orm
 
 
 class ProjectProject(orm.Model):
