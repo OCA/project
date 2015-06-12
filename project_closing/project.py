@@ -2,7 +2,7 @@
 from osv import orm
 
 
-class project_project(orm.Model):
+class ProjectProject(orm.Model):
     _inherit = 'project.project'
 
     def set_done(self, cr, uid, ids, context=None):
@@ -16,8 +16,8 @@ class project_project(orm.Model):
             analytic_account_obj.write(cr, uid,
                                        analytic_account_ids,
                                        {'state': 'close'}, context=context)
-        return super(project_project, self).set_done(cr, uid,
-                                                     ids, context=context)
+        return super(ProjectProject, self).set_done(cr, uid,
+                                                    ids, context=context)
 
     def set_open(self, cr, uid, ids, context=None):
         """ We will re-open related analytic account """
@@ -30,5 +30,5 @@ class project_project(orm.Model):
             analytic_account_obj.write(cr, uid,
                                        analytic_account_ids,
                                        {'state': 'open'}, context=context)
-        return super(project_project, self).set_open(cr, uid,
-                                                     ids, context=context)
+        return super(ProjectProject, self).set_open(cr, uid,
+                                                    ids, context=context)
