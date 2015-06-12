@@ -31,4 +31,4 @@
     """,
     "data": [],
     'installable': True,
- }
+}
