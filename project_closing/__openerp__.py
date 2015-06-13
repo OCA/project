@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Author: Vincent Renaville, ported by Joel Grand-Guillaume
-#    Copyright 2010-2012 Camptocamp SA
+#    OpenERP, Open Source Management Solution
+#    Copyright (C) 2013 Camtpcaomp
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -18,4 +18,17 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-import hours_block
+{
+    "name": "Project closing",
+    "version": "1.1",
+    "author": "Camptocamp",
+    "website": "http://www.camptocamp.com",
+    "category": "project Management",
+    "depends": ["project"],
+    "description": """
+    Automatic account analytic closing when related project is closed.
+    and If a projet is open, the related analytic account will be  re-open.
+    """,
+    "data": [],
+    'installable': True,
+ }
