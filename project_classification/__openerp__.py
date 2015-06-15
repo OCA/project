@@ -19,16 +19,19 @@
 #
 ##############################################################################
 {
-    'name': 'Project classification (easy hierarchy and setup for project managers)',
+    'name': "Project classification (easy hierarchy and setup "
+            "for project managers)",
     'version': '1.0',
     'category': 'Generic Modules/Projects & Services',
     'description': """
 
-This Module allow you to setup different project classification to ease the data entry of
-new project. The parent project will be set as readonly to forbid users to change it.
-The parent is still available through the analytic account object. This is useful because
-this way, project manager will setup correctly the analytical account just by choosing the
-corresponing classification.
+This Module allow you to setup different project classification to ease the
+data entry of new project. The parent project will be set as readonly to
+forbid users to change it.
+
+The parent is still available through the analytic account object.
+This is useful because this way, project manager will setup correctly
+the analytical account just by choosing the corresponing classification.
 
 A project classification is composed by :
 
@@ -52,7 +55,7 @@ Those values will be set on a project when selecting a classification.
     ],
     'demo_xml': [],
     'test': [],
-    'installable': False,
+    'installable': True,
     'auto_install': False,
     'application': True,
 }
