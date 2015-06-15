@@ -4,20 +4,14 @@
 Project closing
 ===============
 
-
-    Automatic account analytic closing when related project is closed.
-    and if a project is opened, the related analytic account will be re-opened.
-    
+Automatic account analytic closing when related project is closed.
+and if a project is opened, the related analytic account will be re-opened.
 
 
 For further information, please visit:
 
 * https://www.odoo.com/forum/help-1
 
-Known issues / Roadmap
-======================
-
-* ...
 
 Bug Tracker
 ===========
@@ -34,8 +28,8 @@ Credits
 Contributors
 ------------
 
-* FIXME
-
+* Vincent Renaville <vincent.renaville@camptocamp.com>
+* Charbel Jacquin <charbel.jacquin@camptocamp.com>
 
 Maintainer
 ----------

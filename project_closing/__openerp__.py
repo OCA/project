@@ -23,8 +23,9 @@
     "version": "1.1",
     "author": "Camptocamp",
     "website": "http://www.camptocamp.com",
-    "category": "project Management",
+    "category": "Project Management",
     "depends": ["project"],
+    "licence": "AGPL-3",
     "data": [],
-    'installable': True,
+    "installable": True
 }
