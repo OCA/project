@@ -18,52 +18,53 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from openerp.osv import orm, fields
+from openerp import api, models, fields
 
 
-class ProjectClassification(orm.Model):
+class ProjectClassification(models.Model):
     _name = "project.classification"
     _description = "Project classification"
 
-    _columns = {
-        'name': fields.char('Classification Name', required=True, size=64),
-        'project_id':
-        fields.many2one('account.analytic.account',
-                        'Parent project',
-                        help="The parent project that will be set when "
-                        "choosing this classification in a project.",
-                        required=True),
-        'to_invoice': fields.many2one('hr_timesheet_invoice.factor',
-                                      'Reinvoice Costs',
-                                      help="Fill this field if you plan to "
-                                      "automatically generate invoices based "
-                                      "on the costs in this classification"),
-        'currency_id': fields.many2one('res.currency', 'Currency'),
-        'user_id': fields.many2one('res.users', 'Account Manager'),
-        'pricelist_id': fields.many2one('product.pricelist',
-                                        'Sale Pricelist',),
-        }
+    name = fields.Char('Classification Name', required=True, size=64)
+    project_id = fields.Many2one('account.analytic.account',
+                                 'Parent project',
+                                 help="The parent project that will be set "
+                                 "when choosing this classification in "
+                                 "a project.",
+                                 required=True)
+    to_invoice = fields.Many2one('hr_timesheet_invoice.factor',
+                                 'Reinvoice Costs',
+                                 help="Fill this field if you plan to "
+                                 "automatically generate invoices based "
+                                 "on the costs in this classification")
+    currency_id = fields.Many2one('res.currency', 'Currency')
+    user_id = fields.Many2one('res.users', 'Account Manager')
+    pricelist_id = fields.Many2one('product.pricelist',
+                                   'Sale Pricelist')
 
 
-class ProjectProject(orm.Model):
+class ProjectProject(models.Model):
     _inherit = "project.project"
 
-    def _child_project_compute(self, cr, uid, ids, name, arg, context=None):
-        result = {}.fromkeys(ids, [])
-        if context is None:
-            context = {}
+    classification_id = fields.Many2one('project.classification',
+                                        'Classification',
+                                        help="This will automatically set "
+                                        "the parent project as well as other "
+                                        "default values defined for this kind "
+                                        "of project (like pricelist, "
+                                        "invoice factor,..)",
+                                        required=True)
 
-        for project in self.browse(cr, uid, ids, context=context):
-            child_projects = []
-            # child_complete_ids are account.analytic.account
-            for account_child in project.child_complete_ids:
-                if not account_child.project_ids:
-                    continue
-                child_projects += account_child.project_ids
+    child_project_complete_ids = fields.Many2many(
+        'project.project',
+        compute='_child_project_compute',
+        string="Project Hierarchy")
 
-            result[project.id] = [child_project.id for child_project
-                                  in child_projects]
-        return result
+    @api.depends('child_complete_ids.project_ids')
+    def _child_project_compute(self):
+        for project in self:
+            child_projects = project.mapped('child_complete_ids.project_ids')
+            project.child_project_complete_ids = child_projects
 
     def onchange_classification_id(self, cr, uid, ids, classification_id):
         projclass = self.pool.get('project.classification')
@@ -74,20 +75,3 @@ class ProjectProject(orm.Model):
                  'currency_id': classification.currency_id.id or False,
                  'user_id': classification.user_id.id or False,
                  'pricelist_id': classification.pricelist_id.id or False}}
-
-    _columns = {
-        'classification_id':
-        fields.many2one('project.classification', 'Classification',
-                        help="This will automatically set the parent "
-                        "project as well as other default values define "
-                        "for this kind project (like pricelist, "
-                        "invoice factor,..)",
-                        required=True),
-        'child_project_complete_ids':
-        fields.function(_child_project_compute,
-                        relation='project.project',
-                        method=True,
-                        string="Project Hierarchy", type='many2many'),
-        }
-
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
