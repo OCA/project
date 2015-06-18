@@ -94,7 +94,7 @@ class AccountHoursBlock(orm.Model):
             for line in block.invoice_id.invoice_line:
                 amount_bought = 0.0
                 if line.product_id:
-                    ## We will now calculate the product_quantity
+                    # We will now calculate the product_quantity
                     factor = line.uos_id.factor
                     if factor == 0.0:
                         factor = 1.0
@@ -103,7 +103,8 @@ class AccountHoursBlock(orm.Model):
                 result[block.id]['amount_hours_block'] += amount_bought
 
             # Compute total amount
-            # Get ids of analytic line generated from timesheet associated to current block
+            # Get ids of analytic line generated from timesheet associated
+            # to current block
             cr.execute("SELECT al.id FROM account_analytic_line AS al,"
                        " account_analytic_journal AS aj"
                        " WHERE aj.id = al.journal_id"
@@ -119,12 +120,12 @@ class AccountHoursBlock(orm.Model):
 
                 ctx = dict(context, uom=line.product_uom_id.id)
                 amount = pricelist_obj.price_get(
-                        cr, uid,
-                        [line.account_id.pricelist_id.id],
-                        line.product_id.id,
-                        line.unit_amount or 1.0,
-                        line.account_id.partner_id.id or False,
-                        ctx)[line.account_id.pricelist_id.id]
+                    cr, uid,
+                    [line.account_id.pricelist_id.id],
+                    line.product_id.id,
+                    line.unit_amount or 1.0,
+                    line.account_id.partner_id.id or False,
+                    ctx)[line.account_id.pricelist_id.id]
                 total_amount += amount * line.unit_amount * factor_invoicing
             result[block.id]['amount_hours_block_done'] += total_amount
 
@@ -139,7 +140,8 @@ class AccountHoursBlock(orm.Model):
         for block_type in block_per_types:
             if block_type:
                 func = getattr(self, "_compute_%s" % block_type)
-                result.update(func(cr, uid, ids, fields, args, context=context))
+                result.update(func(cr, uid, ids, fields, args,
+                                   context=context))
 
         for block in result:
             result[block]['amount_hours_block_delta'] = \
@@ -155,13 +157,14 @@ class AccountHoursBlock(orm.Model):
             if line.invoice_id:
                 invoice_ids.append(line.invoice_id.id)
         return block_obj.search(
-                cr, uid, [('invoice_id', 'in', invoice_ids)], context=context)
+            cr, uid, [('invoice_id', 'in', invoice_ids)], context=context)
 
     def _get_invoice(self, cr, uid, ids, context=None):
         block_ids = set()
         inv_obj = self.pool.get('account.invoice')
         for invoice in inv_obj.browse(cr, uid, ids, context=context):
-            block_ids.update([inv.id for inv in invoice.account_hours_block_ids])
+            block_ids.update([inv.id for inv
+                              in invoice.account_hours_block_idsx])
         return list(block_ids)
 
     def action_send_block(self, cr, uid, ids, context=None):
@@ -206,7 +209,7 @@ class AccountHoursBlock(orm.Model):
 
     _recompute_triggers = {
         'account.hours.block': (lambda self, cr, uid, ids, c=None:
-                                    ids, ['invoice_id', 'type'], 10),
+                                ids, ['invoice_id', 'type'], 10),
         'account.invoice': (_get_invoice, ['analytic_line_ids'], 10),
         'account.analytic.line': (
             _get_analytic_line,
@@ -381,15 +384,15 @@ class AccountHoursBlock(orm.Model):
             readonly=True),
         'department_id': fields.related(
             'invoice_id', 'department_id',
-             type='many2one',
-             relation='hr.department',
-             string='Department',
+            type='many2one',
+            relation='hr.department',
+            string='Department',
             store={
                 'account.hours.block': (lambda self, cr, uid, ids, c=None: ids,
                                         ['invoice_id'], 10),
                 'account.invoice': (_get_invoice, ['department_id'], 10),
             },
-             readonly=True),
+            readonly=True),
 
         'state': fields.related(
             'invoice_id', 'state',
@@ -413,7 +416,7 @@ class AccountHoursBlock(orm.Model):
 
 
 ############################################################################
-## Add hours blocks on invoice
+# Add hours blocks on invoice
 ############################################################################
 class AccountInvoice(orm.Model):
     _inherit = 'account.invoice'
