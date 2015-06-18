@@ -20,21 +20,30 @@
 ##############################################################################
 from openerp.osv import orm, fields
 
+
 class ProjectClassification(orm.Model):
     _name = "project.classification"
     _description = "Project classification"
 
-    _columns ={
+    _columns = {
         'name': fields.char('Classification Name', required=True, size=64),
-        'project_id':fields.many2one('account.analytic.account', 'Parent project', help="The parent\
-            project that will be set when choosing this classification in a project.", required=True),
-        'to_invoice': fields.many2one('hr_timesheet_invoice.factor', 'Reinvoice Costs',
-            help="Fill this field if you plan to automatically generate invoices based " \
-            "on the costs in this classification"),
+        'project_id':
+        fields.many2one('account.analytic.account',
+                        'Parent project',
+                        help="The parent project that will be set when "
+                        "choosing this classification in a project.",
+                        required=True),
+        'to_invoice': fields.many2one('hr_timesheet_invoice.factor',
+                                      'Reinvoice Costs',
+                                      help="Fill this field if you plan to "
+                                      "automatically generate invoices based "
+                                      "on the costs in this classification"),
         'currency_id': fields.many2one('res.currency', 'Currency'),
         'user_id': fields.many2one('res.users', 'Account Manager'),
-        'pricelist_id': fields.many2one('product.pricelist', 'Sale Pricelist',),
+        'pricelist_id': fields.many2one('product.pricelist',
+                                        'Sale Pricelist',),
         }
+
 
 class ProjectProject(orm.Model):
     _inherit = "project.project"
@@ -52,24 +61,33 @@ class ProjectProject(orm.Model):
                     continue
                 child_projects += account_child.project_ids
 
-            result[project.id] = [child_project.id for child_project in child_projects]
+            result[project.id] = [child_project.id for child_project
+                                  in child_projects]
         return result
 
     def onchange_classification_id(self, cr, uid, ids, classification_id):
-        classification = self.pool.get('project.classification').browse(cr, uid, classification_id)
-        return {'value':{
-                'parent_id': classification.project_id.id,
-                'to_invoice': classification.to_invoice.id or False,
-                'currency_id': classification.currency_id.id or False,
-                'user_id': classification.user_id.id or False,
-                'pricelist_id': classification.pricelist_id.id or False,
-                }}
+        projclass = self.pool.get('project.classification')
+        classification = projclass.browse(cr, uid, classification_id)
+        return {'value':
+                {'parent_id': classification.project_id.id,
+                 'to_invoice': classification.to_invoice.id or False,
+                 'currency_id': classification.currency_id.id or False,
+                 'user_id': classification.user_id.id or False,
+                 'pricelist_id': classification.pricelist_id.id or False}}
 
-    _columns ={
-        'classification_id':fields.many2one('project.classification', 'Classification', help="This will automatically set the parent "\
-            "project as well as other default values define for this kind project (like pricelist, invoice factor,..)", required=True),
-        'child_project_complete_ids': fields.function(_child_project_compute,
-            relation='project.project', method=True, string="Project Hierarchy", type='many2many'),
+    _columns = {
+        'classification_id':
+        fields.many2one('project.classification', 'Classification',
+                        help="This will automatically set the parent "
+                        "project as well as other default values define "
+                        "for this kind project (like pricelist, "
+                        "invoice factor,..)",
+                        required=True),
+        'child_project_complete_ids':
+        fields.function(_child_project_compute,
+                        relation='project.project',
+                        method=True,
+                        string="Project Hierarchy", type='many2many'),
         }
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
