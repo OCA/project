@@ -26,7 +26,11 @@
     'author': "Camptocamp,Odoo Community Association (OCA)",
     'website': 'http://www.camptocamp.com',
     'license': 'AGPL-3',
-    'depends': ['project', 'hr_timesheet_invoice', 'analytic'],
+    'depends': ['project',
+                'hr_timesheet_invoice',
+                'analytic',
+                'analytic_secondaxis'
+                ],
     'data': [
         'project_classification_view.xml',
         'security/ir.model.access.csv',
