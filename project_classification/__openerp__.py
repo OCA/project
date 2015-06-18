@@ -23,28 +23,6 @@
             "for project managers)",
     'version': '1.0',
     'category': 'Generic Modules/Projects & Services',
-    'description': """
-
-This Module allow you to setup different project classification to ease the
-data entry of new project. The parent project will be set as readonly to
-forbid users to change it.
-
-The parent is still available through the analytic account object.
-This is useful because this way, project manager will setup correctly
-the analytical account just by choosing the corresponing classification.
-
-A project classification is composed by :
-
- * A name
- * An Analytic Account which represent the parent project to set
- * An optional Invoice factor
- * An optional Account Manager
- * An optional Pricelist
- * An optional Currency
-
-Those values will be set on a project when selecting a classification.
-
-""",
     'author': "Camptocamp,Odoo Community Association (OCA)",
     'website': 'http://www.camptocamp.com',
     'license': 'AGPL-3',
@@ -53,11 +31,10 @@ Those values will be set on a project when selecting a classification.
         'project_classification_view.xml',
         'security/ir.model.access.csv',
     ],
-    'demo_xml': [],
     'test': [],
     'installable': True,
     'auto_install': False,
-    'application': True,
+    'application': False
 }
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
