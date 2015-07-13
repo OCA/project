@@ -68,7 +68,8 @@ class analytic_account_sequence(osv.osv):
                                                ondelete='cascade'),
         'name': fields.char('Name', size=64, required=True),
         'code': fields.selection(_code_get, 'Code', size=64),
-        'implementation': fields.selection( # TODO update the view
+        # TODO update the view
+        'implementation': fields.selection(
             [('standard', 'Standard'), ('no_gap', 'No gap')],
             'Implementation', required=True,
             help="Two sequence object implementations are offered: Standard "
@@ -78,18 +79,37 @@ class analytic_account_sequence(osv.osv):
         'prefix': fields.char('Prefix', size=64, help="Prefix value of the record for the sequence"),
         'suffix': fields.char('Suffix', size=64, help="Suffix value of the record for the sequence"),
         'number_next': fields.integer('Next Number', required=True, help="Next number of this sequence"),
-        'number_next_actual': fields.function(_get_number_next_actual, fnct_inv=_set_number_next_actual, type='integer', required=True, string='Next Number', help='Next number that will be used. This number can be incremented frequently so the displayed value might already be obsolete'),
-        'number_increment': fields.integer('Increment Number', required=True, help="The next number of the sequence will be incremented by this number"),
-        'padding': fields.integer('Number Padding', required=True, help="OpenERP will automatically adds some '0' on the left of the 'Next Number' to get the required padding size."),
+        'number_next_actual': fields.function(
+            _get_number_next_actual,
+            fnct_inv=_set_number_next_actual,
+            type='integer',
+            required=True,
+            string='Next Number',
+            help='''
+            Next number that will be used. This number can be incremented frequently so the displayed
+            value might already be obsolete
+            '''
+        ),
+        'number_increment': fields.integer(
+            'Increment Number',
+            required=True,
+            help="The next number of the sequence will be incremented by this number"
+        ),
+        'padding': fields.integer(
+            'Number Padding',
+            required=True,
+            help="""
+            OpenERP will automatically add some '0' on the left of the 'Next Number' to get the required padding size.
+            """),
         'company_id': fields.many2one('res.company', 'Company'),
     }
 
     _defaults = {
         'implementation': 'standard',
         'active': True,
-        'company_id': lambda s, cr, uid, c: s.pool.get('res.company')._company_default_get(cr, uid,
-                                                                                           'analytic.account.sequence',
-                                                                                           context=c),
+        'company_id': lambda s, cr, uid, c: s.pool.get('res.company')._company_default_get(
+            cr, uid, 'analytic.account.sequence', context=c
+        ),
         'number_increment': 1,
         'number_next': 1,
         'number_next_actual': 1,
@@ -99,7 +119,8 @@ class analytic_account_sequence(osv.osv):
                          'The analytic account must be unique')]
 
     def init(self, cr):
-        return # Don't do the following index yet.
+        return
+        # Don't do the following index yet.
         # CONSTRAINT/UNIQUE INDEX on (code, company_id)
         # /!\ The unique constraint 'unique_name_company_id' is not sufficient, because SQL92
         # only support field names in constraint definitions, and we need a function here:
@@ -157,8 +178,6 @@ class analytic_account_sequence(osv.osv):
             statement += " RESTART WITH %d" % (number_next, )
         cr.execute(statement)
 
-
-
     def create(self, cr, uid, values, context=None):
         """ Create a sequence, in implementation == standard a fast gaps-allowed PostgreSQL sequence is used.
         """
@@ -206,10 +225,11 @@ class analytic_account_sequence(osv.osv):
     def _interpolate(self, s, d):
         if s:
             return s % d
-        return  ''
+        return ''
 
     def _interpolation_dict(self):
-        t = time.localtime() # Actually, the server is always in UTC.
+        t = time.localtime()
+        # Actually, the server is always in UTC.
         return {
             'year': time.strftime('%Y', t),
             'month': time.strftime('%m', t),
@@ -235,14 +255,19 @@ class analytic_account_sequence(osv.osv):
         sequences = self.read(cr, uid, seq_ids, ['name', 'company_id',
                                                  'implementation', 'number_next',
                                                  'prefix', 'suffix', 'padding'])
-        preferred_sequences = [s for s in sequences if s['company_id'] and s['company_id'][0] == force_company ]
+        preferred_sequences = [s for s in sequences if s['company_id'] and s['company_id'][0] == force_company]
         seq = preferred_sequences[0] if preferred_sequences else sequences[0]
         if seq['implementation'] == 'standard':
             cr.execute("SELECT nextval('analytic_account_sequence_%05d')" % seq['id'])
             seq['number_next'] = cr.fetchone()
         else:
-            cr.execute("SELECT number_next FROM analytic_account_sequence WHERE id=%s FOR UPDATE NOWAIT", (seq['id'],))
-            cr.execute("UPDATE analytic_account_sequence SET number_next=number_next+number_increment WHERE id=%s ", (seq['id'],))
+            cr.execute(
+                "SELECT number_next FROM analytic_account_sequence WHERE id=%s FOR UPDATE NOWAIT", (seq['id'],)
+            )
+            cr.execute(
+                "UPDATE analytic_account_sequence SET number_next=number_next+number_increment WHERE id=%s ",
+                (seq['id'],)
+            )
         d = self._interpolation_dict()
         try:
             interpolated_prefix = self._interpolate(seq['prefix'], d)
@@ -251,12 +276,15 @@ class analytic_account_sequence(osv.osv):
             raise osv.except_osv(_('Warning'), _('Invalid prefix or suffix for sequence \'%s\'') % (seq.get('name')))
         return interpolated_prefix + '%%0%sd' % seq['padding'] % seq['number_next'] + interpolated_suffix
 
-
     def next_by_id(self, cr, uid, sequence_id, context=None):
         """ Draw an interpolated string using the specified sequence."""
         self.check_access_rights(cr, uid, 'read')
         company_ids = self.pool.get('res.company').search(cr, uid, [], context=context) + [False]
-        ids = self.search(cr, uid, ['&',('id','=', sequence_id),('company_id','in',company_ids)])
+        ids = self.search(
+            cr,
+            uid,
+            ['&', ('id', '=', sequence_id), ('company_id', 'in', company_ids)]
+        )
         return self._next(cr, uid, ids, context)
 
     def next_by_code(self, cr, uid, sequence_code, context=None):
@@ -284,8 +312,10 @@ class analytic_account_sequence(osv.osv):
         ``code_or_id`` argument. This method is deprecated.
         """
         # TODO: bump up to warning after 6.1 release
-        _logger.debug("ir_sequence.get() and ir_sequence.get_id() are deprecated. "
-            "Please use ir_sequence.next_by_code() or ir_sequence.next_by_id().")
+        _logger.debug(
+            "ir_sequence.get() and ir_sequence.get_id() are deprecated. "
+            "Please use ir_sequence.next_by_code() or ir_sequence.next_by_id()."
+        )
         if code_or_id == 'id':
             return self.next_by_id(cr, uid, sequence_code_or_id, context)
         else:

@@ -23,7 +23,7 @@ from openerp.osv import fields, osv
 
 
 class account_analytic_account(osv.osv):
-    
+
     _inherit = 'account.analytic.account'
 
     def _create_sequence(self, cr, uid, analytic_account_id, context=None):
@@ -63,7 +63,7 @@ class account_analytic_account(osv.osv):
     def create(self, cr, uid, vals, *args, **kwargs):
 
         context = kwargs.get('context', {})
-        #Assign a new code, from the parent account's sequence, if it exists.
+        # Assign a new code, from the parent account's sequence, if it exists.
         # If there's no parent, or the parent has no sequence, assign from the basic sequence of the analytic account.
         new_code = False
         if 'parent_id' in vals and vals['parent_id']:
@@ -90,7 +90,7 @@ class account_analytic_account(osv.osv):
         if context is None:
             context = {}
 
-        #If the parent project changes, obtain a new code according to the new parent's sequence
+        # If the parent project changes, obtain a new code according to the new parent's sequence
         if 'parent_id' in data and data['parent_id']:
             obj_sequence = self.pool.get('analytic.account.sequence')
             parent = self.browse(cr, uid, data['parent_id'], context=context)
