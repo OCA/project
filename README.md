@@ -12,3 +12,7 @@ This project aims to extend Odoo on contract management features, such as:
   * Manage sold hours in advance
   * Invoice on contract basis
   * ...
+
+Translation Status
+------------------
+[![Transifex Status](https://www.transifex.com/projects/p/OCA-project-service-8-0/chart/image_png)](https://www.transifex.com/projects/p/OCA-project-service-8-0)
