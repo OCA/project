@@ -46,9 +46,7 @@
       <field name="model">project.project</field>
       <field name="inherit_id" ref="project.edit_project" />
       <field name="arch" type="xml">
-	<field name="classification_id" position="attributes">
-	  <attribute name="on_change">onchange_classification_id(classification_id)</attribute>
-	</field>
+	    <field name="classification_id" widget="selection" on_change="onchange_classification_id(classification_id)"/>
         <xpath expr="/form//page[@string='Other Info']//field[@name='currency_id']" position="after">
           <field name="pricelist_id" domain="[('type','=','sale')]" widget="selection"/>
           <!-- <field name="to_invoice" /> -->
