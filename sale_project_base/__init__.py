@@ -2,8 +2,9 @@
 ###############################################################################
 #
 #   Module for OpenERP
-#   Copyright (C) 2010-2013 Akretion LDTA (<http://www.akretion.com>).
-#   Copyright (C) 2013 Akretion (http://www.akretion.com).
+#   Copyright (C) 2014 Akretion (http://www.akretion.com).
+#   Copyright (C) 2010-2013 Akretion LDTA (<http://www.akretion.com>)
+#   @author Sébastien BEAU <sebastien.beau@akretion.com>
 #   @author Benoît GUILLOT <benoit.guillot@akretion.com>
 #
 #   This program is free software: you can redistribute it and/or modify
@@ -21,23 +22,4 @@
 #
 ###############################################################################
 
-
-{
-    'name': 'Sale Project Base',
-    'version': '7.0',
-    'category': 'Generic Modules/Others',
-    'license': 'AGPL-3',
-    'description': """This module is a base module that give the possibility to
-    create a project from a quotation""",
-    'author': "Akretion,Odoo Community Association (OCA)",
-    'website': 'http://www.akretion.com/',
-    'depends': [
-        'project',
-        'sale',
-    ],
-    'demo': [],
-    'data': [
-        'sale_view.xml',
-    ],
-    'installable': False,
-}
+from . import models
