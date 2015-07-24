@@ -29,7 +29,6 @@
     'depends': ['project',
                 'hr_timesheet_invoice',
                 'analytic',
-                'project_billing_utils'
                 ],
     'data': [
         'project_classification_view.xml',
