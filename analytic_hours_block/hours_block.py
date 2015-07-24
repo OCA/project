@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Author: Vincent Renaville, ported by Joel Grand-Guillaume
-#    Copyright 2010-2012 Camptocamp SA
+#    Author: Vincent Renaville, ported by Joel Grand-Guillaume, Damien Crier
+#    Copyright 2010-2015 Camptocamp SA
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -19,30 +19,35 @@
 #
 ##############################################################################
 
-from openerp.osv import orm, fields
+from openerp import models, api, fields
 
 
-class AccountHoursBlock(orm.Model):
+class AccountHoursBlock(models.Model):
     _name = "account.hours.block"
     _inherit = ['mail.thread']
 
-    def _get_last_action(self, cr, uid, ids, name, arg, context=None):
+    @api.depends('invoice_id')
+    def _get_last_action(self):
         """ Return the last analytic line date for an invoice"""
         res = {}
-        for block in self.browse(cr, uid, ids, context=context):
-            cr.execute("SELECT max(al.date) FROM account_analytic_line AS al"
-                       " WHERE al.invoice_id = %s", (block.invoice_id.id,))
-            fetch_res = cr.fetchone()
+        for block in self:
+            fetch_res = []
+            if block.invoice_id:
+                self.env.cr.execute("SELECT max(al.date) "
+                                    "FROM account_analytic_line AS al "
+                                    "WHERE al.invoice_id = %s",
+                                    (block.invoice_id.id,))
+                fetch_res = self.env.cr.fetchone()
             res[block.id] = fetch_res[0] if fetch_res else False
         return res
 
-    def _compute_hours(self, cr, uid, ids, fields, args, context=None):
+    @api.multi
+    def _compute_hours(self):
         """Return a dict of [id][fields]"""
-        if isinstance(ids, (int, long)):
-            ids = [ids]
+        self.ensure_one()
         result = {}
-        aal_obj = self.pool.get('account.analytic.line')
-        for block in self.browse(cr, uid, ids, context=context):
+        aal_obj = self.env['account.analytic.line']
+        for block in self:
             result[block.id] = {'amount_hours_block': 0.0,
                                 'amount_hours_block_done': 0.0}
             # Compute hours bought
@@ -61,15 +66,18 @@ class AccountHoursBlock(orm.Model):
             hours_used = 0.0
             # Get ids of analytic line generated from
             # timesheet associated to the current block
-            cr.execute("SELECT al.id "
-                       "FROM account_analytic_line AS al, "
-                       "     account_analytic_journal AS aj "
-                       "WHERE aj.id = al.journal_id "
-                       "AND aj.type = 'general' "
-                       "AND al.invoice_id = %s", (block.invoice_id.id,))
-            res_line_ids = cr.fetchall()
+            res_line_ids = []
+            if block.invoice_id:
+                self.env.cr.execute("SELECT al.id "
+                                    "FROM account_analytic_line AS al, "
+                                    "     account_analytic_journal AS aj "
+                                    "WHERE aj.id = al.journal_id "
+                                    "AND aj.type = 'general' "
+                                    "AND al.invoice_id = %s",
+                                    (block.invoice_id.id,))
+                res_line_ids = self.env.cr.fetchall()
             line_ids = [l[0] for l in res_line_ids] if res_line_ids else []
-            for line in aal_obj.browse(cr, uid, line_ids, context=context):
+            for line in aal_obj.browse(line_ids):
                 factor = 1.0
                 if line.product_uom_id and line.product_uom_id.factor != 0.0:
                     factor = line.product_uom_id.factor
@@ -80,13 +88,13 @@ class AccountHoursBlock(orm.Model):
             result[block.id]['amount_hours_block_done'] = hours_used
         return result
 
-    def _compute_amount(self, cr, uid, ids, fields, args, context=None):
-        if context is None:
-            context = {}
+    @api.multi
+    def _compute_amount(self):
+        self.ensure_one()
         result = {}
-        aal_obj = self.pool.get('account.analytic.line')
-        pricelist_obj = self.pool.get('product.pricelist')
-        for block in self.browse(cr, uid, ids, context=context):
+        aal_obj = self.env['account.analytic.line']
+        pricelist_obj = self.env['product.pricelist']
+        for block in self:
             result[block.id] = {'amount_hours_block': 0.0,
                                 'amount_hours_block_done': 0.0}
 
@@ -105,67 +113,57 @@ class AccountHoursBlock(orm.Model):
             # Compute total amount
             # Get ids of analytic line generated from timesheet associated
             # to current block
-            cr.execute("SELECT al.id FROM account_analytic_line AS al,"
-                       " account_analytic_journal AS aj"
-                       " WHERE aj.id = al.journal_id"
-                       "  AND aj.type='general'"
-                       "  AND al.invoice_id = %s", (block.invoice_id.id,))
-            res_line_ids = cr.fetchall()
+            res_line_ids = []
+            if block.invoice_id:
+                self.env.cr.execute("SELECT al.id "
+                                    "FROM account_analytic_line AS al,"
+                                    " account_analytic_journal AS aj"
+                                    " WHERE aj.id = al.journal_id"
+                                    "  AND aj.type='general'"
+                                    "  AND al.invoice_id = %s",
+                                    (block.invoice_id.id,))
+                res_line_ids = self.env.cr.fetchall()
             line_ids = [l[0] for l in res_line_ids] if res_line_ids else []
             total_amount = 0.0
-            for line in aal_obj.browse(cr, uid, line_ids, context=context):
+            for line in aal_obj.browse(line_ids):
                 factor_invoicing = 1.0
                 if line.to_invoice and line.to_invoice.factor != 0.0:
                     factor_invoicing = 1.0 - line.to_invoice.factor / 100
 
-                ctx = dict(context, uom=line.product_uom_id.id)
-                amount = pricelist_obj.price_get(
-                    cr, uid,
+                ctx = dict(self.env.context, uom=line.product_uom_id.id)
+                amount = pricelist_obj.with_context(ctx).price_get(
                     [line.account_id.pricelist_id.id],
                     line.product_id.id,
                     line.unit_amount or 1.0,
-                    line.account_id.partner_id.id or False,
-                    ctx)[line.account_id.pricelist_id.id]
+                    line.account_id.partner_id.id or False
+                    )[line.account_id.pricelist_id.id]
                 total_amount += amount * line.unit_amount * factor_invoicing
             result[block.id]['amount_hours_block_done'] += total_amount
 
         return result
 
-    def _compute(self, cr, uid, ids, fields, args, context=None):
-        result = {}
-        block_per_types = {}
-        for block in self.browse(cr, uid, ids, context=context):
-            block_per_types.setdefault(block.type, []).append(block.id)
+    @api.depends(
+        'invoice_id',
+        'invoice_id.invoice_line',
+        'type',
+        )
+    def _compute(self):
+        for block in self:
+            result = {}
+            if block.type:
+                result = getattr(self, "_compute_%s" % block.type)()
+            res = result.get(block.id, {})
+            block.amount_hours_block = res.get('amount_hours_block', 0)
+            block.amount_hours_block_done = (
+                res.get('amount_hours_block_done', 0)
+            )
 
-        for block_type in block_per_types:
-            if block_type:
-                func = getattr(self, "_compute_%s" % block_type)
-                result.update(func(cr, uid, ids, fields, args,
-                                   context=context))
-
-        for block in result:
-            result[block]['amount_hours_block_delta'] = \
-                result[block]['amount_hours_block'] - \
-                result[block]['amount_hours_block_done']
-        return result
-
-    def _get_analytic_line(self, cr, uid, ids, context=None):
-        invoice_ids = []
-        an_lines_obj = self.pool.get('account.analytic.line')
-        block_obj = self.pool.get('account.hours.block')
-        for line in an_lines_obj.browse(cr, uid, ids, context=context):
-            if line.invoice_id:
-                invoice_ids.append(line.invoice_id.id)
-        return block_obj.search(
-            cr, uid, [('invoice_id', 'in', invoice_ids)], context=context)
-
-    def _get_invoice(self, cr, uid, ids, context=None):
-        block_ids = set()
-        inv_obj = self.pool.get('account.invoice')
-        for invoice in inv_obj.browse(cr, uid, ids, context=context):
-            block_ids.update([inv.id for inv
-                              in invoice.account_hours_block_idsx])
-        return list(block_ids)
+    @api.depends('amount_hours_block_done', 'amount_hours_block')
+    def _compute_delta(self):
+        for rec in self:
+            rec.amount_hours_block_delta = (
+                self.amount_hours_block - self.amount_hours_block_done
+            )
 
     def action_send_block(self, cr, uid, ids, context=None):
         """Open a form to send by email. Return an action dict."""
@@ -207,223 +205,119 @@ class AccountHoursBlock(orm.Model):
             'context': ctx,
         }
 
-    _recompute_triggers = {
-        'account.hours.block': (lambda self, cr, uid, ids, c=None:
-                                ids, ['invoice_id', 'type'], 10),
-        'account.invoice': (_get_invoice, ['analytic_line_ids'], 10),
-        'account.analytic.line': (
-            _get_analytic_line,
-            ['product_uom_id', 'unit_amount', 'to_invoice', 'invoice_id'],
-            10),
-    }
+    @api.model
+    def _type_get(self):
+        return [('hours', 'Hours'),
+                ('amount', 'Amount')
+                ]
 
-    _columns = {
-        'amount_hours_block': fields.function(
-            _compute,
-            type='float',
-            string='Quantity / Amount bought',
-            store=_recompute_triggers,
-            multi='amount_hours_block_delta',
-            help="Amount bought by the customer. "
-                 "This amount is expressed in the base Unit of Measure "
-                 "(factor=1.0)"),
-        'amount_hours_block_done': fields.function(
-            _compute,
-            type='float',
-            string='Quantity / Amount used',
-            store=_recompute_triggers,
-            multi='amount_hours_block_delta',
-            help="Amount done by the staff. "
-                 "This amount is expressed in the base Unit of Measure "
-                 "(factor=1.0)"),
-        'amount_hours_block_delta': fields.function(
-            _compute,
-            type='float',
-            string='Difference',
-            store=_recompute_triggers,
-            multi='amount_hours_block_delta',
-            help="Difference between bought and used. "
-                 "This amount is expressed in the base Unit of Measure "
-                 "(factor=1.0)"),
-        'last_action_date': fields.function(
-            _get_last_action,
-            type='date',
-            string='Last action date',
-            help="Date of the last analytic line linked to the invoice "
-                 "related to this block hours."),
-        'close_date': fields.date('Closed Date'),
-        'invoice_id': fields.many2one(
-            'account.invoice',
-            'Invoice',
-            ondelete='cascade',
-            required=True),
-        'type': fields.selection(
-            [('hours', 'Hours'),
-             ('amount', 'Amount')],
-            string='Type of Block',
-            required=True,
-            help="The block is based on the quantity of hours "
-                 "or on the amount."),
+    amount_hours_block = fields.Float(
+        string='Quantity / Amount bought',
+        compute=_compute,
+        store=True,
+        help="Amount bought by the customer. "
+        "This amount is expressed in the base Unit of Measure "
+        "(factor=1.0)")
+    amount_hours_block_done = fields.Float(
+        string='Quantity / Amount used',
+        compute=_compute,
+        store=True,
+        help="Amount done by the staff. "
+             "This amount is expressed in the base Unit of Measure "
+             "(factor=1.0)")
+    amount_hours_block_delta = fields.Float(
+        string='Difference',
+        compute=_compute,
+        store=True,
+        help="Difference between bought and used. "
+             "This amount is expressed in the base Unit of Measure "
+             "(factor=1.0)")
+    last_action_date = fields.Date(
+        string='Last action date',
+        compute=_get_last_action,
+        help="Date of the last analytic line linked to the invoice "
+             "related to this block hours.")
+    close_date = fields.Date(string='Closed Date')
+    invoice_id = fields.Many2one('account.invoice', string='Invoice',
+                                 required=True, ondelete='cascade')
+    type = fields.Selection(
+        '_type_get',
+        string='Type of Block',
+        required=True,
+        help="The block is based on the quantity of hours "
+             "or on the amount.")
+    date_invoice = fields.Date(string='Invoice Date',
+                               related="invoice_id.date_invoice",
+                               readonly=True,
+                               store=True,
+                               )
+    user_id = fields.Many2one('res.users', string='Salesman',
+                              store=True,
+                              related="invoice_id.user_id", readonly=True)
+    partner_id = fields.Many2one('res.partner', string='Partner',
+                                 store=True,
+                                 related="invoice_id.partner_id",
+                                 readonly=True,)
+    name = fields.Char(string='Description',
+                       related="invoice_id.name",
+                       store=True,
+                       readonly=True,)
+    number = fields.Char(string='Number',
+                         related="invoice_id.number",
+                         store=True,
+                         readonly=True)
+    journal_id = fields.Many2one('account.journal', string='Journal',
+                                 related="invoice_id.journal_id",
+                                 store=True,
+                                 readonly=True)
+    period_id = fields.Many2one('account.period', string='Period',
+                                related="invoice_id.period_id",
+                                store=True,
+                                readonly=True)
+    company_id = fields.Many2one('res.company', string='Company',
+                                 related="invoice_id.company_id",
+                                 store=True,
+                                 readonly=True)
+    currency_id = fields.Many2one('res.currency', string='Currency',
+                                  related="invoice_id.currency_id",
+                                  store=True,
+                                  readonly=True)
+    residual = fields.Float(string='Residual',
+                            related="invoice_id.residual",
+                            store=True,
+                            readonly=True)
+    amount_total = fields.Float(string='Total',
+                                related="invoice_id.amount_total",
+                                store=True,
+                                readonly=True)
+    department_id = fields.Many2one('hr.department', string='Department',
+                                    related="invoice_id.department_id",
+                                    store=True,
+                                    readonly=True)
 
-        # Invoices related infos
-        'date_invoice': fields.related(
-            'invoice_id', 'date_invoice',
-            type="date",
-            string="Invoice Date",
-            store={
-                'account.hours.block': (lambda self, cr, uid, ids, c=None: ids,
-                                        ['invoice_id'], 10),
-                'account.invoice': (_get_invoice, ['date_invoice'], 10),
-            },
-            readonly=True),
-        'user_id': fields.related(
-            'invoice_id', 'user_id',
-            type="many2one",
-            relation="res.users",
-            string="Salesman",
-            store={
-                'account.hours.block': (lambda self, cr, uid, ids, c=None: ids,
-                                        ['invoice_id'], 10),
-                'account.invoice': (_get_invoice, ['user_id'], 10),
-            },
-            readonly=True),
-        'partner_id': fields.related(
-            'invoice_id', 'partner_id',
-            type="many2one",
-            relation="res.partner",
-            string="Partner",
-            store={
-                'account.hours.block': (lambda self, cr, uid, ids, c=None: ids,
-                                        ['invoice_id'], 10),
-                'account.invoice': (_get_invoice, ['partner_id'], 10),
-            },
-            readonly=True),
-        'name': fields.related(
-            'invoice_id', 'name',
-            type="char",
-            string="Description",
-            store={
-                'account.hours.block': (lambda self, cr, uid, ids, c=None: ids,
-                                        ['invoice_id'], 10),
-                'account.invoice': (_get_invoice, ['name'], 10),
-            },
-            readonly=True),
-        'number': fields.related(
-            'invoice_id', 'number',
-            type="char",
-            string="Number",
-            store={
-                'account.hours.block': (lambda self, cr, uid, ids, c=None: ids,
-                                        ['invoice_id'], 10),
-                'account.invoice': (_get_invoice, ['number'], 10),
-            },
-            readonly=True),
-        'journal_id': fields.related(
-            'invoice_id', 'journal_id',
-            type="many2one",
-            relation="account.journal",
-            string="Journal",
-            store={
-                'account.hours.block': (lambda self, cr, uid, ids, c=None: ids,
-                                        ['invoice_id'], 10),
-                'account.invoice': (_get_invoice, ['journal_id'], 10),
-            },
-            readonly=True),
-        'period_id': fields.related(
-            'invoice_id', 'period_id',
-            type="many2one",
-            relation="account.period",
-            string="Period",
-            store={
-                'account.hours.block': (lambda self, cr, uid, ids, c=None: ids,
-                                        ['invoice_id'], 10),
-                'account.invoice': (_get_invoice, ['period_id'], 10),
-            },
-            readonly=True),
-        'company_id': fields.related(
-            'invoice_id', 'company_id',
-            type="many2one",
-            relation="res.company",
-            string="Company",
-            store={
-                'account.hours.block': (lambda self, cr, uid, ids, c=None: ids,
-                                        ['invoice_id'], 10),
-                'account.invoice': (_get_invoice, ['company_id'], 10),
-            },
-            readonly=True),
-        'currency_id': fields.related(
-            'invoice_id', 'currency_id',
-            type="many2one",
-            relation="res.currency",
-            string="Currency",
-            store={
-                'account.hours.block': (lambda self, cr, uid, ids, c=None: ids,
-                                        ['invoice_id'], 10),
-                'account.invoice': (_get_invoice, ['currency_id'], 10),
-            },
-            readonly=True),
-        'residual': fields.related(
-            'invoice_id', 'residual',
-            type="float",
-            string="Residual",
-            store={
-                'account.hours.block': (lambda self, cr, uid, ids, c=None: ids,
-                                        ['invoice_id'], 10),
-                'account.invoice': (_get_invoice, ['residual'], 10),
-            },
-            readonly=True),
-        'amount_total': fields.related(
-            'invoice_id', 'amount_total',
-            type="float",
-            string="Total",
-            store={
-                'account.hours.block': (lambda self, cr, uid, ids, c=None: ids,
-                                        ['invoice_id'], 10),
-                'account.invoice': (_get_invoice, ['amount_total'], 10),
-            },
-            readonly=True),
-        'department_id': fields.related(
-            'invoice_id', 'department_id',
-            type='many2one',
-            relation='hr.department',
-            string='Department',
-            store={
-                'account.hours.block': (lambda self, cr, uid, ids, c=None: ids,
-                                        ['invoice_id'], 10),
-                'account.invoice': (_get_invoice, ['department_id'], 10),
-            },
-            readonly=True),
+    @api.model
+    def _state_get(self):
+        return [
+            ('draft', 'Draft'),
+            ('proforma', 'Pro-forma'),
+            ('proforma2', 'Pro-forma'),
+            ('open', 'Open'),
+            ('paid', 'Paid'),
+            ('cancel', 'Cancelled'),
+            ]
 
-        'state': fields.related(
-            'invoice_id', 'state',
-            type='selection',
-            selection=[
-                ('draft', 'Draft'),
-                ('proforma', 'Pro-forma'),
-                ('proforma2', 'Pro-forma'),
-                ('open', 'Open'),
-                ('paid', 'Paid'),
-                ('cancel', 'Cancelled'),
-            ],
-            string='State',
-            readonly=True,
-            store={
-                'account.hours.block': (lambda self, cr, uid, ids, c=None: ids,
-                                        ['invoice_id'], 10),
-                'account.invoice': (_get_invoice, ['state'], 10),
-            }),
-    }
+    state = fields.Selection('_state_get', string='State',
+                             related="invoice_id.state",
+                             store=True,
+                             readonly=True)
 
 
 ############################################################################
 # Add hours blocks on invoice
 ############################################################################
-class AccountInvoice(orm.Model):
+class AccountInvoice(models.Model):
     _inherit = 'account.invoice'
 
-    _columns = {
-        'account_hours_block_ids': fields.one2many(
-            'account.hours.block',
-            'invoice_id',
-            string='Hours Block')
-    }
+    account_hours_block_ids = fields.One2many('account.hours.block',
+                                              'invoice_id',
+                                              string='Hours Block')

@@ -42,6 +42,7 @@ you can track and follow how much has been used.
         "hr_timesheet_invoice",
         "analytic",
         "project",
+        "invoice_department",
         ],
     "data": [
         "report.xml",

@@ -19,20 +19,16 @@
 #
 ##############################################################################
 
-from openerp.osv import orm, fields
+from openerp import models, fields
 
 
-class Product(orm.Model):
+class Product(models.Model):
     _name = "product.product"
     _inherit = 'product.product'
 
-    _columns = {
-        'is_in_hours_block': fields.boolean(
-            'Accounted for hours block?',
-            help="Specify if you want to have invoice lines "
-                 "containing this product to be considered for hours blocks.")
-    }
-
-    _defaults = {
-        'is_in_hours_block': False
-    }
+    is_in_hours_block = fields.Boolean(string='Accounted for hours block?',
+                                       default=False,
+                                       help="Specify if you want to have "
+                                            "invoice lines containing this "
+                                            "product to be considered for "
+                                            "hours blocks.")
