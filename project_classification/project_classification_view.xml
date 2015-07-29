@@ -46,7 +46,7 @@
       <field name="model">project.project</field>
       <field name="inherit_id" ref="project.edit_project" />
       <field name="arch" type="xml">
-        <xpath expr="/form/sheet/notebook/page[@string='Other Info']///field[@name='parent_id']" position="replace">
+        <xpath expr="/form/sheet/notebook/page[@string='Other Info']//field[@name='parent_id']" position="replace">
           <field name="classification_id" widget="selection" on_change="onchange_classification_id(classification_id)"/>
         </xpath>
         <xpath expr="/form//page[@string='Other Info']//field[@name='currency_id']" position="after">
