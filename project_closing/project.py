@@ -8,13 +8,11 @@ class ProjectProject(models.Model):
     @api.multi
     def set_done(self):
         """ We will close related analytic account """
-
         self.mapped('analytic_account_id').write({'state': 'close'})
         return super(ProjectProject, self).set_done()
 
     @api.multi
     def set_open(self):
         """ We will re-open related analytic account """
-
         self.mapped('analytic_account_id').write({'state': 'open'})
         return super(ProjectProject, self).set_open()

@@ -1,8 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    OpenERP, Open Source Management Solution
-#    Copyright (C) 2013 Camtpcaomp
+#    Copyright (C) 2013 - 2015 Camtpcaomp
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -20,7 +19,7 @@
 ##############################################################################
 {
     "name": "Project closing",
-    "version": "1.1",
+    "version": "0.1.1",
     "author": "Camptocamp,Odoo Community Association (OCA)",
     "website": "http://www.camptocamp.com",
     "category": "project Management",
