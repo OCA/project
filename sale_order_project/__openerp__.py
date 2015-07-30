@@ -2,9 +2,8 @@
 ###############################################################################
 #
 #   Module for OpenERP
-#   Copyright (C) 2014 Akretion (http://www.akretion.com).
-#   Copyright (C) 2010-2013 Akretion LDTA (<http://www.akretion.com>)
-#   @author Sébastien BEAU <sebastien.beau@akretion.com>
+#   Copyright (C) 2010-2013 Akretion LDTA (<http://www.akretion.com>).
+#   Copyright (C) 2013 Akretion (http://www.akretion.com).
 #   @author Benoît GUILLOT <benoit.guillot@akretion.com>
 #
 #   This program is free software: you can redistribute it and/or modify
@@ -22,5 +21,19 @@
 #
 ###############################################################################
 
-from . import sale
-from . import project
+{
+    'name': 'Sale Order Project',
+    'version': '7.0',
+    'category': 'Generic Modules/Others',
+    'license': 'AGPL-3',
+    'author': 'Akretion, Odoo Community Association (OCA)',
+    'website': 'http://www.akretion.com/',
+    'depends': [
+        'project',
+        'sale',
+    ],
+    'data': [
+        'views/sale_view.xml',
+    ],
+    'installable': True,
+}

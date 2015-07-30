@@ -1,11 +1,12 @@
 .. image:: https://img.shields.io/badge/licence-AGPL--3-blue.svg
     :alt: License: AGPL-3
 
-Sale Project Base
-=================
+Sale Order Project
+==================
 
 This module is a base module that give the possibility to create a project
-from a quotation
+from a quotation, if a contract is set with use_tasks checked it will show
+the related project.
 
 
 Bug Tracker
@@ -42,3 +43,4 @@ mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
 To contribute to this module, please visit http://odoo-community.org.
+

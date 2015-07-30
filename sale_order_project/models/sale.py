@@ -29,14 +29,19 @@ from datetime import date
 class SaleOrder(models.Model):
     _inherit = "sale.order"
 
+    @api.one
+    @api.depends('project_id')
+    def _compute_related_project_id(self):
+        if self.project_id.use_tasks:
+            related_project_id = self.env['project.project'].search(
+                [('analytic_account_id', '=', self.project_id.id)], limit=1)
+        else:
+            related_project_id = False
+        self.related_project_id = related_project_id and related_project_id[0]
+
     related_project_id = fields.Many2one(
         comodel_name='project.project', string='Project',
-        readonly=True, states={'draft': [('readonly', False)]})
-
-    @api.one
-    @api.onchange('related_project_id')
-    def onchange_related_project_id(self):
-        self.project_id = self.related_project_id.analytic_account_id
+        compute='_compute_related_project_id')
 
     def _prepare_project_vals(self):
         name = u" %s - %s - %s" % (
@@ -56,7 +61,6 @@ class SaleOrder(models.Model):
             vals = order._prepare_project_vals()
             project = project_obj.create(vals)
             order.write({
-                'related_project_id': project.id,
                 'project_id': project.analytic_account_id.id
             })
         return True

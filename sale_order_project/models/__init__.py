@@ -22,13 +22,4 @@
 #
 ###############################################################################
 
-
-from openerp import fields, models
-
-
-class ProjectProject(models.Model):
-    _inherit = "project.project"
-
-    order_ids = fields.One2many(
-        comodel_name='sale.order', inverse_name='related_project_id',
-        string='Orders')
+from . import sale
