@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
-        <record model="ir.ui.view" id="project_task_form">
-            <field name="name">project.task.form</field>
+        <record model="ir.ui.view" id="project_task_code_form_view">
+            <field name="name">project.task.code.form</field>
             <field name="model">project.task</field>
             <field name="inherit_id" ref="project.view_task_form2" />
             <field name="arch" type="xml">
-                <field name="project_id" position="before">
-                    <field name="code" />
+                <field name="name" position="before">
+                    <field name="code" class="oe_inline" />
+                    <label string=" - " class="oe_inline" />
                 </field>
             </field>
         </record>
 
-        <record model="ir.ui.view" id="project_task_tree">
-            <field name="name">project.task.tree</field>
+        <record model="ir.ui.view" id="project_task_code_tree_view">
+            <field name="name">project.task.code.tree</field>
             <field name="model">project.task</field>
             <field name="inherit_id" ref="project.view_task_tree2" />
             <field name="arch" type="xml">
@@ -23,13 +24,24 @@
             </field>
         </record>
 
-        <record model="ir.ui.view" id="project_task_kanban">
-            <field name="name">project.task.kanban</field>
+        <record model="ir.ui.view" id="project_task_code_kanban_view">
+            <field name="name">project.task.code.kanban</field>
             <field name="model">project.task</field>
             <field name="inherit_id" ref="project.view_task_kanban" />
             <field name="arch" type="xml">
                 <field name="name" position="before">
                     <field name="code" />
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="project_task_code_search_view">
+            <field name="name">project.task.code.search</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_search_form" />
+            <field name="arch" type="xml">
+                <field name="name" position="attributes">
+                    <attribute name="filter_domain">['|', ('name', 'ilike', self), ('code', 'ilike', self)]</attribute>
                 </field>
             </field>
         </record>
