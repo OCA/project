@@ -1,38 +1,31 @@
-# -*- encoding: utf-8 -*-
+# -*- coding: utf-8 -*-
 ##############################################################################
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as published
-#    by the Free Software Foundation, either version 3 of the License, or
-#    (at your option) any later version.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see http://www.gnu.org/licenses/.
-#
+# For copyright and license notices, see __openerp__.py file in root directory
 ##############################################################################
 
-from openerp import models, fields, api, _
+from openerp import api, fields, models, _
 
 
 class ProjectTask(models.Model):
     _inherit = 'project.task'
 
-    code = fields.Char(string='Sequence', copy=False)
+    code = fields.Char(
+        string='Task Number', required=True, default="/", readonly=True)
 
     _sql_constraints = [
-        ('unique_sequence', 'UNIQUE (code)',
-         _('The sequence must be unique!')),
+        ('project_task_unique_code', 'UNIQUE (code)',
+         _('The code must be unique!')),
     ]
 
     @api.model
-    def create(self, data):
-        if not data.get('code'):
-            seq_obj = self.env['ir.sequence']
-            seq = seq_obj.next_by_code('sequence.project.task')
-            data['code'] = seq
-        return super(ProjectTask, self).create(data)
+    def create(self, vals):
+        if vals.get('code', '/') == '/':
+            vals['code'] = self.env['ir.sequence'].get('project.task')
+        return super(ProjectTask, self).create(vals)
+
+    @api.one
+    def copy(self, default=None):
+        if default is None:
+            default = {}
+        default['code'] = self.env['ir.sequence'].get('project.task')
+        return super(ProjectTask, self).copy(default)
