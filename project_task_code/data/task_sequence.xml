@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
-    <data>
-        <record forcecreate="1" id="task_type_claim"
-            model="ir.sequence.type">
-            <field name="name">Task sequence type</field>
-            <field name="code">sequence.project.task</field>
+    <data noupdate="1">
+        <record id="sequence_type_task" model="ir.sequence.type">
+            <field name="name">Task code type</field>
+            <field name="code">project.task</field>
         </record>
-
-        <record forcecreate="1" id="task_claim" model="ir.sequence">
-            <field name="name">Task sequence</field>
-            <field name="code">sequence.project.task</field>
+        <record id="sequence_task" model="ir.sequence">
+            <field name="name">Task code</field>
+            <field name="code">project.task</field>
             <field eval="4" name="padding" />
             <field name="prefix">T</field>
         </record>
