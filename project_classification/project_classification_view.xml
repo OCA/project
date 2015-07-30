@@ -7,12 +7,14 @@
       <field name="model">project.classification</field>
       <field name="arch" type="xml">
         <form string="Project classification">
-          <field name="name" />
-          <field name="project_id" />
-          <field name="to_invoice"/>
-          <field name="currency_id"/>
-          <field name="user_id"/>
-          <field name="pricelist_id" />
+            <group colspan="4">
+                <field name="name" />
+                <field name="project_id" />
+                <field name="to_invoice"/>
+                <field name="currency_id"/>
+                <field name="user_id"/>
+                <field name="pricelist_id" />
+            </group>
         </form>
       </field>
     </record>
