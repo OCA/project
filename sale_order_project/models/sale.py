@@ -22,30 +22,28 @@
 #
 ###############################################################################
 
-from openerp.osv import fields, orm
+from openerp import api, fields, models
 from datetime import date
 
 
-class sale_order(orm.Model):
+class SaleOrder(models.Model):
     _inherit = "sale.order"
 
-    _columns = {
-        'related_project_id': fields.many2one(
-            'project.project',
-            'Project',
-            readonly=True,
-            states={'draft': [('readonly', False)]}
-        ),
-    }
+    @api.one
+    @api.depends('project_id')
+    def _compute_related_project_id(self):
+        self.related_project_id = (
+            self.project_id.use_tasks and
+            self.env['project.project'].search(
+                [('analytic_account_id', '=', self.project_id.id)],
+                limit=1)[:1])
 
-    def onchange_related_project_id(self, cr, uid, ids, related_project_id, context=None):
-        project_obj = self.pool['project.project']
-        if related_project_id:
-            project = project_obj.browse(cr, uid, related_project_id, context=context)
-            return {'value': {'project_id': project.analytic_account_id.id}}
-        return {}
+    related_project_id = fields.Many2one(
+        comodel_name='project.project', string='Project',
+        compute='_compute_related_project_id')
 
-    def _prepare_project_vals(self, cr, uid, order, context=None):
+    @api.model
+    def _prepare_project_vals(self, order):
         name = u" %s - %s - %s" % (
             order.partner_id.name,
             date.today().year,
@@ -56,14 +54,13 @@ class sale_order(orm.Model):
             'partner_id': order.partner_id.id,
         }
 
-    def action_create_project(self, cr, uid, ids, context=None):
-        project_obj = self.pool['project.project']
-        for order in self.browse(cr, uid, ids, context=context):
-            vals = self._prepare_project_vals(cr, uid, order, context)
-            project_id = project_obj.create(cr, uid, vals, context=context)
-            project = project_obj.browse(cr, uid, project_id, context=context)
+    @api.multi
+    def action_create_project(self):
+        project_obj = self.env['project.project']
+        for order in self:
+            vals = self._prepare_project_vals(order)
+            project = project_obj.create(vals)
             order.write({
-                'related_project_id': project_id,
                 'project_id': project.analytic_account_id.id
             })
         return True
