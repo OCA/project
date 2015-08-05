@@ -34,7 +34,10 @@ class IrValues(models.Model):
         """ Add an action to all Model objects of the ERP """
         res = super(IrValues, self).get_actions(
             action_slot, model, res_id=res_id)
-        if action_slot == 'client_action_multi' and model != 'project.issue':
+        available_models = [
+            x[0]for x in self.env['project.issue']._authorised_models()
+            if x[0] != 'project.issue']
+        if action_slot == 'client_action_multi' and model in available_models:
             action = self.set_issue_action(model, res_id=res_id)
             value = (UNIQUE_ACTION_ID, 'project_issue_reference', action)
             res.insert(0, value)

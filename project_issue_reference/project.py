@@ -29,15 +29,15 @@ class ProjectIssue(models.Model):
     def _authorised_models(self):
         """ similar in new api to
             openerp.addons.base.res.res_request import referencable_models
-            
+
             Inherit this method to add more models depending of your
             modules dependencies
-            """
+        """
         models = self.env['res.request.link'].search([])
         return [(x.object, x.name) for x in models]
 
     reference = fields.Reference(
-        selection='_authorised_models', string="Issue Link")
+        selection='_authorised_models', string="Issue Origin")
 
     @api.model
     def default_get(self, fields):

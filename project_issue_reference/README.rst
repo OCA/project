@@ -5,7 +5,7 @@
 Project Issue Reference
 =======================
 
-This module allows to end users to create an issue from anywhere in the ERP
+This module allows to end users to create an issue from any configured models
 and link automatically the intial object to the issue with a reference field.
 
 
@@ -14,10 +14,11 @@ Usage
 
 To use this module, you need to:
 
-* go to in any model or object in tree or form view.
+* go to a model or object in tree or form view configured (ie Partner ou Product).
 * select a record (if your are in tree view).
 * select 'Report an issue' in the 'More' button.
-* Complete and save the issue form.
+* the issue and its 'Issue Origin' field is set
+* complete and save the issue form.
 
 
 Configuation
