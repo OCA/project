@@ -1,0 +1,106 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project
+# 	* project_issue
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-08-05 19:54+0000\n"
+"PO-Revision-Date: 2015-08-05 21:55+0100\n"
+"Last-Translator: David BEAL <david.beal@akretion.com>\n"
+"Language-Team: \n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.7.5\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: /home/dav/.voodoo/shared/shared_odoo/odoo8/addons\n"
+
+#. module: project_issue_reference
+#: field:project.issue,reference:0
+msgid "Issue Origin"
+msgstr "Origine de l'incident"
+
+#. module: project_issue_reference
+#: model:ir.actions.act_window,name:project_issue_reference.project_issue_from_anywhere
+msgid "Issues"
+msgstr "Incidents"
+
+#. module: project_issue_reference
+#: model:ir.model,name:project_issue_reference.model_project_issue
+msgid "Project Issue"
+msgstr "Projet de l'incident"
+
+#~ msgid "%s (copy)"
+#~ msgstr "%s (copie)"
+
+#~ msgid "Attachments"
+#~ msgstr "Pièces jointes"
+
+#~ msgid "CHECK: "
+#~ msgstr "VALIDATION: "
+
+#~ msgid "CHECK: %s"
+#~ msgstr "Vérification : %s"
+
+#~ msgid ""
+#~ "Child task still open.\n"
+#~ "Please cancel or complete child task first."
+#~ msgstr ""
+#~ "Tâche fille encore ouverte.\n"
+#~ "Merci d'annuler ou de terminer d'abord  la tâche fille."
+
+#~ msgid "Customer"
+#~ msgstr "Client"
+
+#~ msgid "Customer Email"
+#~ msgstr "Courriel client"
+
+#~ msgid "Delegated User should be specified"
+#~ msgstr "L'utilisateur à qui la tâche est déléguée doit être spécifié"
+
+#~ msgid "Internal project: all employees can access"
+#~ msgstr "Internal project: all employees can access"
+
+#~ msgid "Invalid Action!"
+#~ msgstr "Action incorrecte !"
+
+#~ msgid "No Subject"
+#~ msgstr "Pas de sujet"
+
+#~ msgid "Please delete the project linked with this account first."
+#~ msgstr "Veuillez supprimer d'abord le projet lié à ce compte analytique."
+
+#~ msgid "Private project: followers Only"
+#~ msgstr "Private project: followers Only"
+
+#~ msgid "Projects"
+#~ msgstr "Projets"
+
+#~ msgid "Public project"
+#~ msgstr "Public project"
+
+#~ msgid "Warning!"
+#~ msgstr "Attention !"
+
+#~ msgid "You cannot delete a project containing tasks. You can either delete all the project's tasks and then delete the project or simply deactivate the project."
+#~ msgstr "Vous ne pouvez pas supprimer un projet contenant des tâches. Vous pouvez soit supprimer toutes les tâches projet puis supprimer le projet, soit tout simplement désactiver le projet."
+
+#~ msgid ""
+#~ "You cannot escalate this issue.\n"
+#~ "The relevant Project has not configured the Escalation Project!"
+#~ msgstr ""
+#~ "Vous ne pouvez pas faire avancer cet incident.\n"
+#~ "Sur le projet en question, les étapes de progression n'ont pas été configurées !"
+
+#~ msgid "You must assign members on the project '%s'!"
+#~ msgstr "Vous devez attribuer des membres au projet \"%s\" !"
+
+#~ msgid "issues"
+#~ msgstr "issues"
+
+#~ msgid "tasks"
+#~ msgstr "tasks"
