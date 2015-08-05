@@ -1,20 +1,21 @@
 # Translation of OpenERP Server.
 # This file contains the translation of the following modules:
-#	* project_gtd
+# 	* project_gtd
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 6.0dev\n"
-"Report-Msgid-Bugs-To: support@openerp.com\n"
-"POT-Creation-Date: 2012-12-21 17:06+0000\n"
-"PO-Revision-Date: 2011-01-13 06:41+0000\n"
-"Last-Translator: Nicola Riolini - Micronaet <Unknown>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-08-02 08:27+0200\n"
+"PO-Revision-Date: 2015-08-02 08:35+0200\n"
+"Last-Translator: Matjaz Mozetic <m.mozetic@matmoz.si>\n"
 "Language-Team: \n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2014-04-22 07:06+0000\n"
-"X-Generator: Launchpad (build 16985)\n"
+"X-Generator: Poedit 1.8.2\n"
 
 #. module: project_gtd
 #: view:project.task:0
@@ -39,7 +40,7 @@ msgstr "Lasso di tempo durante il quale l'attività deve essere trattata"
 #. module: project_gtd
 #: help:project.gtd.timebox,sequence:0
 msgid "Gives the sequence order when displaying a list of timebox."
-msgstr ""
+msgstr "Definizione della sequenza sulla lista del Timebox."
 
 #. module: project_gtd
 #: model:project.gtd.context,name:project_gtd.context_travel
@@ -49,7 +50,7 @@ msgstr "Viaggio"
 #. module: project_gtd
 #: view:project.timebox.empty:0
 msgid "Timebox Empty Process Completed Successfully."
-msgstr ""
+msgstr "Processo di svuotamento del Timebox completato."
 
 #. module: project_gtd
 #: view:project.task:0
@@ -60,7 +61,7 @@ msgstr "Attività in sospeso"
 #: code:addons/project_gtd/wizard/project_gtd_empty.py:52
 #, python-format
 msgid "No timebox child of this one !"
-msgstr ""
+msgstr "Su questo non ci sono Timebox subordinati!"
 
 #. module: project_gtd
 #: model:ir.actions.act_window,help:project_gtd.open_gtd_timebox_tree
@@ -69,6 +70,9 @@ msgid ""
 "defines a period of time in order to categorize your tasks: today, this "
 "week, this month, long term."
 msgstr ""
+"I Timebox sono definiti nella metodologia \"Getting Things Done\". Un "
+"timebox definisce il periodo di tempo per poter organizzare le vostre "
+"attività: oggi, questa settimana, questo mese, lungo termine."
 
 #. module: project_gtd
 #: model:project.gtd.timebox,name:project_gtd.timebox_daily
@@ -78,7 +82,7 @@ msgstr "Oggi"
 #. module: project_gtd
 #: view:project.task:0
 msgid "Timeframe"
-msgstr ""
+msgstr "Periodo di tempo"
 
 #. module: project_gtd
 #: model:project.gtd.timebox,name:project_gtd.timebox_lt
@@ -88,7 +92,7 @@ msgstr "Lungo periodo"
 #. module: project_gtd
 #: model:ir.model,name:project_gtd.model_project_timebox_empty
 msgid "Project Timebox Empty"
-msgstr ""
+msgstr "Svuota il Timebox progettuale"
 
 #. module: project_gtd
 #: view:project.task:0
@@ -96,8 +100,7 @@ msgid "Pending"
 msgstr "In sospeso"
 
 #. module: project_gtd
-#: view:project.gtd.timebox:0
-#: field:project.gtd.timebox,name:0
+#: view:project.gtd.timebox:0 field:project.gtd.timebox,name:0
 #: field:project.task,timebox_id:0
 msgid "Timebox"
 msgstr "Timebox"
@@ -117,7 +120,7 @@ msgstr "Le Mie Attività"
 #. module: project_gtd
 #: help:project.task,context_id:0
 msgid "The context place where user has to treat task"
-msgstr ""
+msgstr "Il contesto definisce il dove l'utente affronta l'attivita"
 
 #. module: project_gtd
 #: model:ir.actions.act_window,name:project_gtd.action_project_gtd_empty
@@ -128,7 +131,7 @@ msgstr "Timebox Vuoti"
 #. module: project_gtd
 #: view:project.task:0
 msgid "Tasks having no timebox assigned yet"
-msgstr ""
+msgstr "Le attività senza un Timebox assegnato"
 
 #. module: project_gtd
 #: model:project.gtd.timebox,name:project_gtd.timebox_weekly
@@ -143,7 +146,7 @@ msgstr "Icona"
 #. module: project_gtd
 #: model:ir.model,name:project_gtd.model_project_timebox_fill_plan
 msgid "Project Timebox Fill"
-msgstr ""
+msgstr "Riempi il Timebox progettuale"
 
 #. module: project_gtd
 #: model:ir.model,name:project_gtd.model_project_task
@@ -153,7 +156,7 @@ msgstr "Attività"
 #. module: project_gtd
 #: view:project.timebox.fill.plan:0
 msgid "Add to Timebox"
-msgstr ""
+msgstr "Aggiungi al Timebox"
 
 #. module: project_gtd
 #: field:project.timebox.empty,name:0
@@ -174,7 +177,7 @@ msgstr "Macchina"
 #. module: project_gtd
 #: view:project.task:0
 msgid "Show Context"
-msgstr ""
+msgstr "Mostra il contesto"
 
 #. module: project_gtd
 #: model:ir.actions.act_window,name:project_gtd.action_project_gtd_fill
@@ -203,12 +206,11 @@ msgstr "Timebox"
 #. module: project_gtd
 #: view:project.task:0
 msgid "In Progress and draft tasks"
-msgstr ""
+msgstr "Attività in progresso o bozze attività"
 
 #. module: project_gtd
 #: model:ir.model,name:project_gtd.model_project_gtd_context
-#: view:project.gtd.context:0
-#: field:project.gtd.context,name:0
+#: view:project.gtd.context:0 field:project.gtd.context,name:0
 #: field:project.task,context_id:0
 msgid "Context"
 msgstr "Contesto"
@@ -229,26 +231,24 @@ msgid "Office"
 msgstr "Ufficio"
 
 #. module: project_gtd
-#: field:project.gtd.context,sequence:0
-#: field:project.gtd.timebox,sequence:0
+#: field:project.gtd.context,sequence:0 field:project.gtd.timebox,sequence:0
 msgid "Sequence"
 msgstr "Sequenza"
 
 #. module: project_gtd
 #: view:project.task:0
 msgid "Show the context field"
-msgstr ""
+msgstr "Mostra il campo contesto"
 
 #. module: project_gtd
 #: help:project.gtd.context,sequence:0
 msgid "Gives the sequence order when displaying a list of contexts."
-msgstr ""
-"Fornisce l'ordinamento quando viene visualizzata una lista di contesti"
+msgstr "Fornisce l'ordinamento quando viene visualizzata una lista di contesti"
 
 #. module: project_gtd
 #: view:project.task:0
 msgid "Show Deadlines"
-msgstr ""
+msgstr "Mostra scadenze"
 
 #. module: project_gtd
 #: view:project.gtd.timebox:0
@@ -273,7 +273,7 @@ msgstr "Annulla"
 #. module: project_gtd
 #: model:project.gtd.context,name:project_gtd.context_home
 msgid "Home"
-msgstr ""
+msgstr "Home"
 
 #. module: project_gtd
 #: model:ir.actions.act_window,help:project_gtd.open_gtd_context_tree
@@ -282,11 +282,14 @@ msgid ""
 "you to categorize your tasks according to the context in which they have to "
 "be done: at the office, at home, when I take my car, etc."
 msgstr ""
+"I contesti sono definiti nella metodologia \"Getting Things Done\". Permette "
+"di organizzare le vostre attività in base ad un contesto nel quale devono "
+"essere svolte: ufficio, casa, macchina, etc."
 
 #. module: project_gtd
 #: view:project.task:0
 msgid "For reopening the tasks"
-msgstr ""
+msgstr "Per riaprire le attività"
 
 #. module: project_gtd
 #: view:project.timebox.fill.plan:0
@@ -407,7 +410,6 @@ msgstr "o"
 #~ msgid "This Month"
 #~ msgstr "Questo mese"
 
-#, python-format
 #~ msgid "Error !"
 #~ msgstr "Errore!"
 
@@ -417,14 +419,12 @@ msgstr "o"
 #~ msgid "_Ok"
 #~ msgstr "_Ok"
 
-#, python-format
 #~ msgid "Getting Things Done"
 #~ msgstr "Getting Things Done"
 
 #~ msgid "Getting Things Done - Time Management Module"
 #~ msgstr "Getting Things Done - Modulo gestione tempo"
 
-#, python-format
 #~ msgid "GTD"
 #~ msgstr "GTD (get things done)"
 
@@ -437,11 +437,12 @@ msgstr "o"
 #~ "methodology. This world-wide used methodology is used for personal\n"
 #~ "time management improvement.\n"
 #~ "\n"
-#~ "Getting Things Done (commonly abbreviated as GTD) is an action management\n"
+#~ "Getting Things Done (commonly abbreviated as GTD) is an action "
+#~ "management\n"
 #~ "method created by David Allen, and described in a book of the same name.\n"
 #~ "\n"
-#~ "GTD rests on the principle that a person needs to move tasks out of the mind "
-#~ "by\n"
+#~ "GTD rests on the principle that a person needs to move tasks out of the "
+#~ "mind by\n"
 #~ "recording them externally. That way, the mind is freed from the job of\n"
 #~ "remembering everything that needs to be done, and can concentrate on "
 #~ "actually\n"
@@ -459,11 +460,11 @@ msgstr "o"
 #~ "gestione\n"
 #~ "azioni creato da David Allen, e descritta in un libro omonimo.\n"
 #~ "\n"
-#~ "GTD si basa sul principio che una persona ha bisogno di spostare le attività "
-#~ "al di fuori della mente per\n"
+#~ "GTD si basa sul principio che una persona ha bisogno di spostare le "
+#~ "attività al di fuori della mente per\n"
 #~ "registrarle esternamente. In questo modo, la mente è libera dal lavoro di "
 #~ "ricordare\n"
-#~ "tutto quello che deve essere fatto, così può concentrarsi su come veramente "
-#~ "eseguire\n"
+#~ "tutto quello che deve essere fatto, così può concentrarsi su come "
+#~ "veramente eseguire\n"
 #~ "queste attività.\n"
 #~ "    "
