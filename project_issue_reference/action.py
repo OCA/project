@@ -34,33 +34,21 @@ class IrValues(models.Model):
         """ Add an action to all Model objects of the ERP """
         res = super(IrValues, self).get_actions(
             action_slot, model, res_id=res_id)
-        if action_slot == 'client_action_multi':
+        if action_slot == 'client_action_multi' and model != 'project.issue':
             action = self.set_issue_action(model, res_id=res_id)
             value = (UNIQUE_ACTION_ID, 'project_issue_reference', action)
             res.insert(0, value)
-            # res.append(value)
         return res
 
     @api.model
     def set_issue_action(self, model, res_id=False):
         action_id = self.env.ref(
             'project_issue_reference.project_issue_from_anywhere').id
-        # ctx = {'active_model': model}
-        ctx = {'from_model': model}
-        if res_id:
-            ctx['oldactive_id'] = res_id
-            ctx['default_reference'] = (model, res_id)
-        print model, '          MOOOOOOOOOOOOOOOO'
         return {
-            # 'groups_id': [],
-            # 'domain': u'[]',
             'id': action_id,
             'name': 'Report an issue',
             'res_model': u'project.issue',
-            # 'search_view_id': False,
             'src_model': model,
             'type': u'ir.actions.act_window',
             'target': 'current',
-            'display_name': u'Bla',
-            'context': ctx,
         }

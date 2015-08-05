@@ -42,6 +42,7 @@ Credits
 Contributors
 ------------
 
+* Sébastien BEAU <sebastien.beau@akretion.com>
 * David BEAL <david.beal@akretion.com>
 
 Maintainer

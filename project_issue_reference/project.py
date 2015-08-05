@@ -18,7 +18,8 @@
 #
 ##############################################################################
 
-from openerp import models, fields, api
+from openerp import models, fields, api, SUPERUSER_ID
+from openerp.tools.safe_eval import safe_eval
 
 
 class ProjectIssue(models.Model):
@@ -26,12 +27,17 @@ class ProjectIssue(models.Model):
 
     @api.model
     def _authorised_models(self):
-        # TODO remove AbstractModel
-        models = self.env['ir.model'].search([('osv_memory', '=', False)])
-        return [(x.model, x.name) for x in models]
+        """ similar in new api to
+            openerp.addons.base.res.res_request import referencable_models
+            
+            Inherit this method to add more models depending of your
+            modules dependencies
+            """
+        models = self.env['res.request.link'].search([])
+        return [(x.object, x.name) for x in models]
 
     reference = fields.Reference(
-        selection='_authorised_models', string="Linked Object")
+        selection='_authorised_models', string="Issue Link")
 
     @api.model
     def default_get(self, fields):
@@ -39,6 +45,40 @@ class ProjectIssue(models.Model):
         vals['partner_id'] = (
             self.env['res.users'].browse(self.env.uid).partner_id.id)
         vals['user_id'] = False
-        print '    vals', vals
-        print 'ctx', self._context
+        if 'from_model' in self._context and 'from_id' in self._context:
+            vals['reference'] = '%s,%s' % (self._context['from_model'],
+                                           self._context['from_id'])
         return vals
+
+
+class IrActionActWindows(models.Model):
+    _inherit = 'ir.actions.act_window'
+
+    def read(self, cr, uid, ids, fields=None, context=None,
+             load='_classic_read'):
+        if context is None:
+            context = {}
+
+        def update_context(action):
+            action['context'] = safe_eval(action.get('context', '{}'))
+            action['context'].update({
+                'from_model': context.get('active_model'),
+                'from_id': context.get('active_id'),
+            })
+
+        res = super(IrActionActWindows, self).read(
+            cr, uid, ids, fields=fields, context=context, load=load)
+        if isinstance(ids, list):
+            action_id = ids[0]
+        else:
+            action_id = ids
+        _, issue_action = self.pool['ir.model.data'].get_object_reference(
+            cr, SUPERUSER_ID, 'project_issue_reference',
+            'project_issue_from_anywhere')
+        if action_id == issue_action:
+            if isinstance(res, list):
+                for elem in res:
+                    update_context(elem)
+            else:
+                update_context(res)
+        return res
