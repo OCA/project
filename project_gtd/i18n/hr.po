@@ -5,278 +5,43 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 6.0dev\n"
-"Report-Msgid-Bugs-To: support@openerp.com\n"
-"POT-Creation-Date: 2012-12-21 17:06+0000\n"
-"PO-Revision-Date: 2012-12-17 21:16+0000\n"
-"Last-Translator: Goran Kliska <gkliska@gmail.com>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-08-06 12:31+0200\n"
+"PO-Revision-Date: 2015-08-06 12:31+0200\n"
+"Last-Translator: Matjaz Mozetic <m.mozetic@matmoz.si>\n"
 "Language-Team: Vinteh\n"
+"Language: hr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2014-04-22 07:06+0000\n"
-"X-Generator: Launchpad (build 16985)\n"
-"Language: hr\n"
+"X-Generator: Poedit 1.8.2\n"
 
 #. module: project_gtd
-#: view:project.task:0
-msgid "In Progress"
-msgstr "U tijeku"
-
-#. module: project_gtd
-#: view:project.task:0
-msgid "Show only tasks having a deadline"
-msgstr "Prikaži samo zadatke koji imaju krajnji rok"
-
-#. module: project_gtd
-#: view:project.task:0
-msgid "Reactivate"
-msgstr "Ponovno aktiviraj"
-
-#. module: project_gtd
-#: help:project.task,timebox_id:0
-msgid "Time-laps during which task has to be treated"
-msgstr "Vrijeme krugova u kojem zadatak mora biti tretiran"
-
-#. module: project_gtd
-#: help:project.gtd.timebox,sequence:0
-msgid "Gives the sequence order when displaying a list of timebox."
-msgstr "Daje redoslijed sekvence kada prikazuje timebox listu."
-
-#. module: project_gtd
-#: model:project.gtd.context,name:project_gtd.context_travel
-msgid "Travel"
-msgstr "Putovanje"
-
-#. module: project_gtd
-#: view:project.timebox.empty:0
-msgid "Timebox Empty Process Completed Successfully."
-msgstr "Timebox prazan proces uspješno završen."
-
-#. module: project_gtd
-#: view:project.task:0
-msgid "Pending Tasks"
-msgstr "Zadaci na čekanju"
-
-#. module: project_gtd
-#: code:addons/project_gtd/wizard/project_gtd_empty.py:52
-#, python-format
-msgid "No timebox child of this one !"
-msgstr "Nema timebox podređenog za ovaj!"
-
-#. module: project_gtd
-#: model:ir.actions.act_window,help:project_gtd.open_gtd_timebox_tree
-msgid ""
-"Timeboxes are defined in the \"Getting Things Done\" methodology. A timebox "
-"defines a period of time in order to categorize your tasks: today, this "
-"week, this month, long term."
-msgstr ""
-"Timeboxovi su definirati u \"Getting Things Done\" (GTD) metodologiji. "
-"Timebox definira period vremena kako bi kategorizirali vaše zadatke: danas, "
-"ovaj tjedan, ovaj mjesec, dugoročno."
-
-#. module: project_gtd
-#: model:project.gtd.timebox,name:project_gtd.timebox_daily
-msgid "Today"
-msgstr "Danas"
-
-#. module: project_gtd
-#: view:project.task:0
-msgid "Timeframe"
-msgstr "Vremenski okvir"
-
-#. module: project_gtd
-#: model:project.gtd.timebox,name:project_gtd.timebox_lt
-msgid "Long Term"
-msgstr "Dugoročno"
-
-#. module: project_gtd
-#: model:ir.model,name:project_gtd.model_project_timebox_empty
-msgid "Project Timebox Empty"
-msgstr "Projekt timebox prazan"
-
-#. module: project_gtd
-#: view:project.task:0
-msgid "Pending"
-msgstr "Na čekanju"
-
-#. module: project_gtd
-#: view:project.gtd.timebox:0
-#: field:project.gtd.timebox,name:0
-#: field:project.task,timebox_id:0
-msgid "Timebox"
-msgstr "Timebox"
-
-#. module: project_gtd
-#: field:project.timebox.fill.plan,timebox_to_id:0
-msgid "Set to Timebox"
-msgstr "Postavi na Timebox"
-
-#. module: project_gtd
-#: model:ir.actions.act_window,name:project_gtd.open_gtd_task
-#: model:ir.ui.menu,name:project_gtd.menu_open_gtd_timebox_tree
-#: view:project.task:0
-msgid "My Tasks"
-msgstr "Moji Zadaci"
-
-#. module: project_gtd
-#: help:project.task,context_id:0
-msgid "The context place where user has to treat task"
-msgstr "Kontekst mjesta gdje korisnik treba tretirati zadatak"
-
-#. module: project_gtd
-#: model:ir.actions.act_window,name:project_gtd.action_project_gtd_empty
-#: view:project.timebox.empty:0
-msgid "Empty Timebox"
-msgstr "Prazan Timebox"
-
-#. module: project_gtd
-#: view:project.task:0
-msgid "Tasks having no timebox assigned yet"
-msgstr "Zadaci koji nemaju pridodjeljeni timebox"
-
-#. module: project_gtd
-#: model:project.gtd.timebox,name:project_gtd.timebox_weekly
-msgid "This Week"
-msgstr "Ovaj tjedan"
-
-#. module: project_gtd
-#: field:project.gtd.timebox,icon:0
-msgid "Icon"
-msgstr "Sličica"
-
-#. module: project_gtd
-#: model:ir.model,name:project_gtd.model_project_timebox_fill_plan
-msgid "Project Timebox Fill"
-msgstr "Napuni timebox projekta"
-
-#. module: project_gtd
-#: model:ir.model,name:project_gtd.model_project_task
-msgid "Task"
-msgstr "Zadatak"
-
-#. module: project_gtd
-#: view:project.timebox.fill.plan:0
+#: view:project.timebox.fill.plan:project_gtd.view_project_gtd_fill
 msgid "Add to Timebox"
 msgstr "Dodaj u Timebox"
 
 #. module: project_gtd
-#: field:project.timebox.empty,name:0
-msgid "Name"
-msgstr "Naziv"
+#: view:project.timebox.fill.plan:project_gtd.view_project_gtd_fill
+msgid "Cancel"
+msgstr "Poništi"
+
+#. module: project_gtd
+#: model:ir.model,name:project_gtd.model_project_gtd_context
+#: view:project.gtd.context:project_gtd.view_gtd_context_form
+#: view:project.gtd.context:project_gtd.view_gtd_context_tree
+#: field:project.gtd.context,name:0
+#: view:project.task:project_gtd.view_task_gtd_search
+#: field:project.task,context_id:0
+msgid "Context"
+msgstr "Kontekst"
 
 #. module: project_gtd
 #: model:ir.actions.act_window,name:project_gtd.open_gtd_context_tree
 #: model:ir.ui.menu,name:project_gtd.menu_open_gtd_time_contexts
 msgid "Contexts"
 msgstr "Konteksti"
-
-#. module: project_gtd
-#: model:project.gtd.context,name:project_gtd.context_car
-msgid "Car"
-msgstr "Automobil"
-
-#. module: project_gtd
-#: view:project.task:0
-msgid "Show Context"
-msgstr "Prikaži kontekst"
-
-#. module: project_gtd
-#: model:ir.actions.act_window,name:project_gtd.action_project_gtd_fill
-#: view:project.timebox.fill.plan:0
-msgid "Plannify Timebox"
-msgstr "Postavi planiranje u Timebox"
-
-#. module: project_gtd
-#: model:ir.model,name:project_gtd.model_project_gtd_timebox
-msgid "project.gtd.timebox"
-msgstr "project.gtd.timebox"
-
-#. module: project_gtd
-#: code:addons/project_gtd/wizard/project_gtd_empty.py:52
-#, python-format
-msgid "Error!"
-msgstr "Greška!"
-
-#. module: project_gtd
-#: model:ir.actions.act_window,name:project_gtd.open_gtd_timebox_tree
-#: model:ir.ui.menu,name:project_gtd.menu_open_gtd_time_timeboxes
-#: view:project.gtd.timebox:0
-msgid "Timeboxes"
-msgstr "Timeboxovi"
-
-#. module: project_gtd
-#: view:project.task:0
-msgid "In Progress and draft tasks"
-msgstr "Zadaci u toku ili u nacrtu"
-
-#. module: project_gtd
-#: model:ir.model,name:project_gtd.model_project_gtd_context
-#: view:project.gtd.context:0
-#: field:project.gtd.context,name:0
-#: field:project.task,context_id:0
-msgid "Context"
-msgstr "Kontekst"
-
-#. module: project_gtd
-#: field:project.timebox.fill.plan,task_ids:0
-msgid "Tasks selection"
-msgstr "Odabir zadataka"
-
-#. module: project_gtd
-#: view:project.task:0
-msgid "Display"
-msgstr "Zaslon"
-
-#. module: project_gtd
-#: model:project.gtd.context,name:project_gtd.context_office
-msgid "Office"
-msgstr "Ured"
-
-#. module: project_gtd
-#: field:project.gtd.context,sequence:0
-#: field:project.gtd.timebox,sequence:0
-msgid "Sequence"
-msgstr "Redoslijed"
-
-#. module: project_gtd
-#: view:project.task:0
-msgid "Show the context field"
-msgstr "Prikaži polje konketsta"
-
-#. module: project_gtd
-#: help:project.gtd.context,sequence:0
-msgid "Gives the sequence order when displaying a list of contexts."
-msgstr "Daje redoslijed sekvence kod prikaza liste konteksta."
-
-#. module: project_gtd
-#: view:project.task:0
-msgid "Show Deadlines"
-msgstr "Prikaži krajnje rokove"
-
-#. module: project_gtd
-#: view:project.gtd.timebox:0
-msgid "Timebox Definition"
-msgstr "Definicija Timeboxa"
-
-#. module: project_gtd
-#: view:project.task:0
-msgid "Inbox"
-msgstr "Pristigla pošta"
-
-#. module: project_gtd
-#: field:project.timebox.fill.plan,timebox_id:0
-msgid "Get from Timebox"
-msgstr "Uzmi iz Timeboxa"
-
-#. module: project_gtd
-#: view:project.timebox.fill.plan:0
-msgid "Cancel"
-msgstr "Poništi"
-
-#. module: project_gtd
-#: model:project.gtd.context,name:project_gtd.context_home
-msgid "Home"
-msgstr "Naslovna"
 
 #. module: project_gtd
 #: model:ir.actions.act_window,help:project_gtd.open_gtd_context_tree
@@ -290,14 +55,263 @@ msgstr ""
 "moraju biti učinjeni: u uredu, kod kuće, kad uzmem moj auto, itd."
 
 #. module: project_gtd
-#: view:project.task:0
-msgid "For reopening the tasks"
-msgstr "Za ponovno otvaranje zadataka"
+#: field:project.gtd.context,create_uid:0
+#: field:project.gtd.timebox,create_uid:0
+#: field:project.timebox.empty,create_uid:0
+#: field:project.timebox.fill.plan,create_uid:0
+#, fuzzy
+msgid "Created by"
+msgstr "Datum kreiranja"
 
 #. module: project_gtd
-#: view:project.timebox.fill.plan:0
+#: field:project.gtd.context,create_date:0
+#: field:project.gtd.timebox,create_date:0
+#: field:project.timebox.empty,create_date:0
+#: field:project.timebox.fill.plan,create_date:0
+#, fuzzy
+msgid "Created on"
+msgstr "Datum kreiranja"
+
+#. module: project_gtd
+#: model:ir.actions.act_window,name:project_gtd.action_project_gtd_empty
+#: view:project.timebox.empty:project_gtd.view_project_gtd_empty
+msgid "Empty Timebox"
+msgstr "Prazan Timebox"
+
+#. module: project_gtd
+#: field:project.timebox.fill.plan,timebox_id:0
+msgid "Get from Timebox"
+msgstr "Uzmi iz Timeboxa"
+
+#. module: project_gtd
+#: help:project.gtd.context,sequence:0
+msgid "Gives the sequence order when displaying a list of contexts."
+msgstr "Daje redoslijed sekvence kod prikaza liste konteksta."
+
+#. module: project_gtd
+#: help:project.gtd.timebox,sequence:0
+msgid "Gives the sequence order when displaying a list of timebox."
+msgstr "Daje redoslijed sekvence kada prikazuje timebox listu."
+
+#. module: project_gtd
+#: field:project.gtd.context,id:0 field:project.gtd.timebox,id:0
+#: field:project.timebox.empty,id:0 field:project.timebox.fill.plan,id:0
+msgid "ID"
+msgstr ""
+
+#. module: project_gtd
+#: view:project.task:project_gtd.view_task_gtd_search
+msgid "Last Message"
+msgstr ""
+
+#. module: project_gtd
+#: field:project.gtd.context,write_uid:0 field:project.gtd.timebox,write_uid:0
+#: field:project.timebox.empty,write_uid:0
+#: field:project.timebox.fill.plan,write_uid:0
+msgid "Last Updated by"
+msgstr ""
+
+#. module: project_gtd
+#: field:project.gtd.context,write_date:0
+#: field:project.gtd.timebox,write_date:0
+#: field:project.timebox.empty,write_date:0
+#: field:project.timebox.fill.plan,write_date:0
+msgid "Last Updated on"
+msgstr ""
+
+#. module: project_gtd
+#: model:project.gtd.timebox,name:project_gtd.timebox_lt
+msgid "Long Term"
+msgstr "Dugoročno"
+
+#. module: project_gtd
+#: model:ir.actions.act_window,name:project_gtd.open_gtd_task
+#: model:ir.ui.menu,name:project_gtd.menu_open_gtd_timebox_tree
+#, fuzzy
+msgid "My Tasks (GTD)"
+msgstr "Moji Zadaci"
+
+#. module: project_gtd
+#: field:project.timebox.empty,name:0
+msgid "Name"
+msgstr "Naziv"
+
+#. module: project_gtd
+#: model:project.gtd.context,name:project_gtd.context_office
+msgid "Office"
+msgstr "Ured"
+
+#. module: project_gtd
+#: model:ir.actions.act_window,name:project_gtd.action_project_gtd_fill
+#: view:project.timebox.fill.plan:project_gtd.view_project_gtd_fill
+msgid "Plannify Timebox"
+msgstr "Postavi planiranje u Timebox"
+
+#. module: project_gtd
+#: model:ir.model,name:project_gtd.model_project_timebox_empty
+msgid "Project Timebox Empty"
+msgstr "Projekt timebox prazan"
+
+#. module: project_gtd
+#: model:ir.model,name:project_gtd.model_project_timebox_fill_plan
+msgid "Project Timebox Fill"
+msgstr "Napuni timebox projekta"
+
+#. module: project_gtd
+#: field:project.gtd.context,sequence:0 field:project.gtd.timebox,sequence:0
+msgid "Sequence"
+msgstr "Redoslijed"
+
+#. module: project_gtd
+#: field:project.timebox.fill.plan,timebox_to_id:0
+msgid "Set to Timebox"
+msgstr "Postavi na Timebox"
+
+#. module: project_gtd
+#: model:ir.model,name:project_gtd.model_project_task
+msgid "Task"
+msgstr "Zadatak"
+
+#. module: project_gtd
+#: model:ir.actions.act_window,name:project_gtd.open_gtd_all_tasks
+#: model:ir.ui.menu,name:project_gtd.menu_open_gtd_timebox_all_tree
+#, fuzzy
+msgid "Tasks (GTD)"
+msgstr "Zadaci"
+
+#. module: project_gtd
+#: field:project.timebox.fill.plan,task_ids:0
+msgid "Tasks selection"
+msgstr "Odabir zadataka"
+
+#. module: project_gtd
+#: help:project.task,context_id:0
+msgid "The context place where user has to treat task"
+msgstr "Kontekst mjesta gdje korisnik treba tretirati zadatak"
+
+#. module: project_gtd
+#: model:project.gtd.timebox,name:project_gtd.timebox_weekly
+msgid "This Week"
+msgstr "Ovaj tjedan"
+
+#. module: project_gtd
+#: help:project.task,timebox_id:0
+msgid "Time-laps during which task has to be treated"
+msgstr "Vrijeme krugova u kojem zadatak mora biti tretiran"
+
+#. module: project_gtd
+#: view:project.gtd.timebox:project_gtd.view_gtd_timebox_tree
+#: field:project.gtd.timebox,name:0
+#: view:project.task:project_gtd.view_task_gtd_search
+#: field:project.task,timebox_id:0
+msgid "Timebox"
+msgstr "Timebox"
+
+#. module: project_gtd
+#: view:project.gtd.timebox:project_gtd.view_gtd_timebox_form
+msgid "Timebox Definition"
+msgstr "Definicija Timeboxa"
+
+#. module: project_gtd
+#: view:project.timebox.empty:project_gtd.view_project_gtd_empty
+msgid "Timebox Empty Process Completed Successfully."
+msgstr "Timebox prazan proces uspješno završen."
+
+#. module: project_gtd
+#: model:ir.actions.act_window,name:project_gtd.open_gtd_timebox_tree
+#: model:ir.ui.menu,name:project_gtd.menu_open_gtd_time_timeboxes
+#: view:project.gtd.timebox:project_gtd.view_gtd_timebox_form
+msgid "Timeboxes"
+msgstr "Timeboxovi"
+
+#. module: project_gtd
+#: model:ir.actions.act_window,help:project_gtd.open_gtd_timebox_tree
+msgid ""
+"Timeboxes are defined in the \"Getting Things Done\" methodology. A timebox "
+"defines a period of time in order to categorize your tasks: today, this "
+"week, this month, long term."
+msgstr ""
+"Timeboxovi su definirati u \"Getting Things Done\" (GTD) metodologiji. "
+"Timebox definira period vremena kako bi kategorizirali vaše zadatke: danas, "
+"ovaj tjedan, ovaj mjesec, dugoročno."
+
+#. module: project_gtd
+#: view:project.task:project_gtd.project_task
+#: view:project.task:project_gtd.project_task_tree
+msgid "Timeframe"
+msgstr "Vremenski okvir"
+
+#. module: project_gtd
+#: model:project.gtd.timebox,name:project_gtd.timebox_daily
+msgid "Today"
+msgstr "Danas"
+
+#. module: project_gtd
+#: model:project.gtd.context,name:project_gtd.context_travel
+msgid "Travel"
+msgstr "Putovanje"
+
+#. module: project_gtd
+#: view:project.timebox.fill.plan:project_gtd.view_project_gtd_fill
 msgid "or"
 msgstr "ili"
+
+#~ msgid "In Progress"
+#~ msgstr "U tijeku"
+
+#~ msgid "Show only tasks having a deadline"
+#~ msgstr "Prikaži samo zadatke koji imaju krajnji rok"
+
+#~ msgid "Reactivate"
+#~ msgstr "Ponovno aktiviraj"
+
+#~ msgid "Pending Tasks"
+#~ msgstr "Zadaci na čekanju"
+
+#~ msgid "No timebox child of this one !"
+#~ msgstr "Nema timebox podređenog za ovaj!"
+
+#~ msgid "Pending"
+#~ msgstr "Na čekanju"
+
+#~ msgid "Tasks having no timebox assigned yet"
+#~ msgstr "Zadaci koji nemaju pridodjeljeni timebox"
+
+#~ msgid "Icon"
+#~ msgstr "Sličica"
+
+#~ msgid "Car"
+#~ msgstr "Automobil"
+
+#~ msgid "Show Context"
+#~ msgstr "Prikaži kontekst"
+
+#~ msgid "project.gtd.timebox"
+#~ msgstr "project.gtd.timebox"
+
+#~ msgid "Error!"
+#~ msgstr "Greška!"
+
+#~ msgid "In Progress and draft tasks"
+#~ msgstr "Zadaci u toku ili u nacrtu"
+
+#~ msgid "Display"
+#~ msgstr "Zaslon"
+
+#~ msgid "Show the context field"
+#~ msgstr "Prikaži polje konketsta"
+
+#~ msgid "Show Deadlines"
+#~ msgstr "Prikaži krajnje rokove"
+
+#~ msgid "Inbox"
+#~ msgstr "Pristigla pošta"
+
+#~ msgid "Home"
+#~ msgstr "Naslovna"
+
+#~ msgid "For reopening the tasks"
+#~ msgstr "Za ponovno otvaranje zadataka"
 
 #~ msgid ""
 #~ "The Object name must start with x_ and not contain any special character !"
@@ -331,7 +345,6 @@ msgstr "ili"
 #~ msgid "project.gtd.context"
 #~ msgstr "project.gtd.context"
 
-#, python-format
 #~ msgid "Error !"
 #~ msgstr "Greška !"
 
@@ -362,9 +375,6 @@ msgstr "ili"
 #~ msgid "Time Management"
 #~ msgstr "Upravljanje Vremenom"
 
-#~ msgid "Tasks"
-#~ msgstr "Zadaci"
-
 #~ msgid "My Open Tasks"
 #~ msgstr "Moji Otvoreni Zadaci"
 
@@ -383,7 +393,6 @@ msgstr "ili"
 #~ msgid "My Deadlines"
 #~ msgstr "Moji Krajnji Rokovi"
 
-#, python-format
 #~ msgid "Eff. Hours"
 #~ msgstr "Efektivni Sati"
 
@@ -423,7 +432,6 @@ msgstr "ili"
 #~ msgid "My Timeboxes"
 #~ msgstr "Moji Timeboxovi"
 
-#, python-format
 #~ msgid "Getting Things Done"
 #~ msgstr "Getting Things Done"
 
