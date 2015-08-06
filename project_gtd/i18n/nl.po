@@ -1,281 +1,47 @@
 # Translation of OpenERP Server.
 # This file contains the translation of the following modules:
-#	* project_gtd
+# 	* project_gtd
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 6.0dev\n"
-"Report-Msgid-Bugs-To: support@openerp.com\n"
-"POT-Creation-Date: 2012-12-21 17:06+0000\n"
-"PO-Revision-Date: 2011-01-18 14:55+0000\n"
-"Last-Translator: Douwe Wullink (Dypalio) <Unknown>\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-08-06 12:33+0200\n"
+"PO-Revision-Date: 2015-08-06 12:33+0200\n"
+"Last-Translator: Matjaz Mozetic <m.mozetic@matmoz.si>\n"
 "Language-Team: \n"
+"Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Launchpad-Export-Date: 2014-04-22 07:06+0000\n"
-"X-Generator: Launchpad (build 16985)\n"
+"X-Generator: Poedit 1.8.2\n"
 
 #. module: project_gtd
-#: view:project.task:0
-msgid "In Progress"
-msgstr "In behandeling"
-
-#. module: project_gtd
-#: view:project.task:0
-msgid "Show only tasks having a deadline"
-msgstr "Geef alleen taken met een deadline weer"
-
-#. module: project_gtd
-#: view:project.task:0
-msgid "Reactivate"
-msgstr "Heractiveren"
-
-#. module: project_gtd
-#: help:project.task,timebox_id:0
-msgid "Time-laps during which task has to be treated"
-msgstr "Tijdspanne waarbinnen de taak moet worden behandeld"
-
-#. module: project_gtd
-#: help:project.gtd.timebox,sequence:0
-msgid "Gives the sequence order when displaying a list of timebox."
-msgstr "Bepaalt de volgorde bij het afbeelden van de lijst van timeboxen."
-
-#. module: project_gtd
-#: model:project.gtd.context,name:project_gtd.context_travel
-msgid "Travel"
-msgstr "Reizen"
-
-#. module: project_gtd
-#: view:project.timebox.empty:0
-msgid "Timebox Empty Process Completed Successfully."
-msgstr "Timebox legen proces met succes afgerond."
-
-#. module: project_gtd
-#: view:project.task:0
-msgid "Pending Tasks"
-msgstr "Taken in afwachting"
-
-#. module: project_gtd
-#: code:addons/project_gtd/wizard/project_gtd_empty.py:52
-#, python-format
-msgid "No timebox child of this one !"
-msgstr "Er zijn geen onderliggende timeboxen!"
-
-#. module: project_gtd
-#: model:ir.actions.act_window,help:project_gtd.open_gtd_timebox_tree
-msgid ""
-"Timeboxes are defined in the \"Getting Things Done\" methodology. A timebox "
-"defines a period of time in order to categorize your tasks: today, this "
-"week, this month, long term."
-msgstr ""
-"Timeboxen zijn gedefinieerd in de \"Getting Things Done\" methodiek. Een "
-"timebox definieert de tijdsperiode om uw taken te categoriseren: vandaag, "
-"deze week, deze maand, lange termijn."
-
-#. module: project_gtd
-#: model:project.gtd.timebox,name:project_gtd.timebox_daily
-msgid "Today"
-msgstr "Vandaag"
-
-#. module: project_gtd
-#: view:project.task:0
-msgid "Timeframe"
-msgstr "Periode"
-
-#. module: project_gtd
-#: model:project.gtd.timebox,name:project_gtd.timebox_lt
-msgid "Long Term"
-msgstr "Lange termijn"
-
-#. module: project_gtd
-#: model:ir.model,name:project_gtd.model_project_timebox_empty
-msgid "Project Timebox Empty"
-msgstr "Project timebox legen"
-
-#. module: project_gtd
-#: view:project.task:0
-msgid "Pending"
-msgstr "In afwachting"
-
-#. module: project_gtd
-#: view:project.gtd.timebox:0
-#: field:project.gtd.timebox,name:0
-#: field:project.task,timebox_id:0
-msgid "Timebox"
-msgstr "Timebox"
-
-#. module: project_gtd
-#: field:project.timebox.fill.plan,timebox_to_id:0
-msgid "Set to Timebox"
-msgstr "Zet op timebox"
-
-#. module: project_gtd
-#: model:ir.actions.act_window,name:project_gtd.open_gtd_task
-#: model:ir.ui.menu,name:project_gtd.menu_open_gtd_timebox_tree
-#: view:project.task:0
-msgid "My Tasks"
-msgstr "Mijn taken"
-
-#. module: project_gtd
-#: help:project.task,context_id:0
-msgid "The context place where user has to treat task"
-msgstr "De context plaats waar de gebruiker de taak moet behandelen"
-
-#. module: project_gtd
-#: model:ir.actions.act_window,name:project_gtd.action_project_gtd_empty
-#: view:project.timebox.empty:0
-msgid "Empty Timebox"
-msgstr "Lege timebox"
-
-#. module: project_gtd
-#: view:project.task:0
-msgid "Tasks having no timebox assigned yet"
-msgstr "Taken waaraan geen tijd is toegewezen"
-
-#. module: project_gtd
-#: model:project.gtd.timebox,name:project_gtd.timebox_weekly
-msgid "This Week"
-msgstr "Deze week"
-
-#. module: project_gtd
-#: field:project.gtd.timebox,icon:0
-msgid "Icon"
-msgstr "Pictogram"
-
-#. module: project_gtd
-#: model:ir.model,name:project_gtd.model_project_timebox_fill_plan
-msgid "Project Timebox Fill"
-msgstr "Project Timebox vullen"
-
-#. module: project_gtd
-#: model:ir.model,name:project_gtd.model_project_task
-msgid "Task"
-msgstr "Taak"
-
-#. module: project_gtd
-#: view:project.timebox.fill.plan:0
+#: view:project.timebox.fill.plan:project_gtd.view_project_gtd_fill
 msgid "Add to Timebox"
 msgstr "Voeg toe aan timebox"
 
 #. module: project_gtd
-#: field:project.timebox.empty,name:0
-msgid "Name"
-msgstr "Naam"
+#: view:project.timebox.fill.plan:project_gtd.view_project_gtd_fill
+msgid "Cancel"
+msgstr "Annuleren"
+
+#. module: project_gtd
+#: model:ir.model,name:project_gtd.model_project_gtd_context
+#: view:project.gtd.context:project_gtd.view_gtd_context_form
+#: view:project.gtd.context:project_gtd.view_gtd_context_tree
+#: field:project.gtd.context,name:0
+#: view:project.task:project_gtd.view_task_gtd_search
+#: field:project.task,context_id:0
+msgid "Context"
+msgstr "Context"
 
 #. module: project_gtd
 #: model:ir.actions.act_window,name:project_gtd.open_gtd_context_tree
 #: model:ir.ui.menu,name:project_gtd.menu_open_gtd_time_contexts
 msgid "Contexts"
 msgstr "Contexten"
-
-#. module: project_gtd
-#: model:project.gtd.context,name:project_gtd.context_car
-msgid "Car"
-msgstr "Auto"
-
-#. module: project_gtd
-#: view:project.task:0
-msgid "Show Context"
-msgstr "Geef context weer"
-
-#. module: project_gtd
-#: model:ir.actions.act_window,name:project_gtd.action_project_gtd_fill
-#: view:project.timebox.fill.plan:0
-msgid "Plannify Timebox"
-msgstr "Planning van timebox"
-
-#. module: project_gtd
-#: model:ir.model,name:project_gtd.model_project_gtd_timebox
-msgid "project.gtd.timebox"
-msgstr "project.gtd.timebox"
-
-#. module: project_gtd
-#: code:addons/project_gtd/wizard/project_gtd_empty.py:52
-#, python-format
-msgid "Error!"
-msgstr "Fout!"
-
-#. module: project_gtd
-#: model:ir.actions.act_window,name:project_gtd.open_gtd_timebox_tree
-#: model:ir.ui.menu,name:project_gtd.menu_open_gtd_time_timeboxes
-#: view:project.gtd.timebox:0
-msgid "Timeboxes"
-msgstr "Timeboxen"
-
-#. module: project_gtd
-#: view:project.task:0
-msgid "In Progress and draft tasks"
-msgstr "Taken in behandeling en in concept"
-
-#. module: project_gtd
-#: model:ir.model,name:project_gtd.model_project_gtd_context
-#: view:project.gtd.context:0
-#: field:project.gtd.context,name:0
-#: field:project.task,context_id:0
-msgid "Context"
-msgstr "Context"
-
-#. module: project_gtd
-#: field:project.timebox.fill.plan,task_ids:0
-msgid "Tasks selection"
-msgstr "Taakkeuze"
-
-#. module: project_gtd
-#: view:project.task:0
-msgid "Display"
-msgstr "Tonen"
-
-#. module: project_gtd
-#: model:project.gtd.context,name:project_gtd.context_office
-msgid "Office"
-msgstr "Kantoor"
-
-#. module: project_gtd
-#: field:project.gtd.context,sequence:0
-#: field:project.gtd.timebox,sequence:0
-msgid "Sequence"
-msgstr "Reeks"
-
-#. module: project_gtd
-#: view:project.task:0
-msgid "Show the context field"
-msgstr "Geef het context veld weer"
-
-#. module: project_gtd
-#: help:project.gtd.context,sequence:0
-msgid "Gives the sequence order when displaying a list of contexts."
-msgstr "Bepaalt de volgorde waarin de lijst van contexten wordt afgebeeld."
-
-#. module: project_gtd
-#: view:project.task:0
-msgid "Show Deadlines"
-msgstr "Geef deadlines weer"
-
-#. module: project_gtd
-#: view:project.gtd.timebox:0
-msgid "Timebox Definition"
-msgstr "Timeboxdefinitie"
-
-#. module: project_gtd
-#: view:project.task:0
-msgid "Inbox"
-msgstr "Postvak in"
-
-#. module: project_gtd
-#: field:project.timebox.fill.plan,timebox_id:0
-msgid "Get from Timebox"
-msgstr "Haal uit timebox"
-
-#. module: project_gtd
-#: view:project.timebox.fill.plan:0
-msgid "Cancel"
-msgstr "Annuleren"
-
-#. module: project_gtd
-#: model:project.gtd.context,name:project_gtd.context_home
-msgid "Home"
-msgstr "Thuis"
 
 #. module: project_gtd
 #: model:ir.actions.act_window,help:project_gtd.open_gtd_context_tree
@@ -289,14 +55,263 @@ msgstr ""
 "kantoor, thuis, als ik met de auto ga, etc."
 
 #. module: project_gtd
-#: view:project.task:0
-msgid "For reopening the tasks"
-msgstr "Voor het heropenen van taken"
+#: field:project.gtd.context,create_uid:0
+#: field:project.gtd.timebox,create_uid:0
+#: field:project.timebox.empty,create_uid:0
+#: field:project.timebox.fill.plan,create_uid:0
+#, fuzzy
+msgid "Created by"
+msgstr "Aangemaakt op"
 
 #. module: project_gtd
-#: view:project.timebox.fill.plan:0
+#: field:project.gtd.context,create_date:0
+#: field:project.gtd.timebox,create_date:0
+#: field:project.timebox.empty,create_date:0
+#: field:project.timebox.fill.plan,create_date:0
+#, fuzzy
+msgid "Created on"
+msgstr "Aangemaakt op"
+
+#. module: project_gtd
+#: model:ir.actions.act_window,name:project_gtd.action_project_gtd_empty
+#: view:project.timebox.empty:project_gtd.view_project_gtd_empty
+msgid "Empty Timebox"
+msgstr "Lege timebox"
+
+#. module: project_gtd
+#: field:project.timebox.fill.plan,timebox_id:0
+msgid "Get from Timebox"
+msgstr "Haal uit timebox"
+
+#. module: project_gtd
+#: help:project.gtd.context,sequence:0
+msgid "Gives the sequence order when displaying a list of contexts."
+msgstr "Bepaalt de volgorde waarin de lijst van contexten wordt afgebeeld."
+
+#. module: project_gtd
+#: help:project.gtd.timebox,sequence:0
+msgid "Gives the sequence order when displaying a list of timebox."
+msgstr "Bepaalt de volgorde bij het afbeelden van de lijst van timeboxen."
+
+#. module: project_gtd
+#: field:project.gtd.context,id:0 field:project.gtd.timebox,id:0
+#: field:project.timebox.empty,id:0 field:project.timebox.fill.plan,id:0
+msgid "ID"
+msgstr ""
+
+#. module: project_gtd
+#: view:project.task:project_gtd.view_task_gtd_search
+msgid "Last Message"
+msgstr ""
+
+#. module: project_gtd
+#: field:project.gtd.context,write_uid:0 field:project.gtd.timebox,write_uid:0
+#: field:project.timebox.empty,write_uid:0
+#: field:project.timebox.fill.plan,write_uid:0
+msgid "Last Updated by"
+msgstr ""
+
+#. module: project_gtd
+#: field:project.gtd.context,write_date:0
+#: field:project.gtd.timebox,write_date:0
+#: field:project.timebox.empty,write_date:0
+#: field:project.timebox.fill.plan,write_date:0
+msgid "Last Updated on"
+msgstr ""
+
+#. module: project_gtd
+#: model:project.gtd.timebox,name:project_gtd.timebox_lt
+msgid "Long Term"
+msgstr "Lange termijn"
+
+#. module: project_gtd
+#: model:ir.actions.act_window,name:project_gtd.open_gtd_task
+#: model:ir.ui.menu,name:project_gtd.menu_open_gtd_timebox_tree
+#, fuzzy
+msgid "My Tasks (GTD)"
+msgstr "Mijn taken"
+
+#. module: project_gtd
+#: field:project.timebox.empty,name:0
+msgid "Name"
+msgstr "Naam"
+
+#. module: project_gtd
+#: model:project.gtd.context,name:project_gtd.context_office
+msgid "Office"
+msgstr "Kantoor"
+
+#. module: project_gtd
+#: model:ir.actions.act_window,name:project_gtd.action_project_gtd_fill
+#: view:project.timebox.fill.plan:project_gtd.view_project_gtd_fill
+msgid "Plannify Timebox"
+msgstr "Planning van timebox"
+
+#. module: project_gtd
+#: model:ir.model,name:project_gtd.model_project_timebox_empty
+msgid "Project Timebox Empty"
+msgstr "Project timebox legen"
+
+#. module: project_gtd
+#: model:ir.model,name:project_gtd.model_project_timebox_fill_plan
+msgid "Project Timebox Fill"
+msgstr "Project Timebox vullen"
+
+#. module: project_gtd
+#: field:project.gtd.context,sequence:0 field:project.gtd.timebox,sequence:0
+msgid "Sequence"
+msgstr "Reeks"
+
+#. module: project_gtd
+#: field:project.timebox.fill.plan,timebox_to_id:0
+msgid "Set to Timebox"
+msgstr "Zet op timebox"
+
+#. module: project_gtd
+#: model:ir.model,name:project_gtd.model_project_task
+msgid "Task"
+msgstr "Taak"
+
+#. module: project_gtd
+#: model:ir.actions.act_window,name:project_gtd.open_gtd_all_tasks
+#: model:ir.ui.menu,name:project_gtd.menu_open_gtd_timebox_all_tree
+#, fuzzy
+msgid "Tasks (GTD)"
+msgstr "Taken"
+
+#. module: project_gtd
+#: field:project.timebox.fill.plan,task_ids:0
+msgid "Tasks selection"
+msgstr "Taakkeuze"
+
+#. module: project_gtd
+#: help:project.task,context_id:0
+msgid "The context place where user has to treat task"
+msgstr "De context plaats waar de gebruiker de taak moet behandelen"
+
+#. module: project_gtd
+#: model:project.gtd.timebox,name:project_gtd.timebox_weekly
+msgid "This Week"
+msgstr "Deze week"
+
+#. module: project_gtd
+#: help:project.task,timebox_id:0
+msgid "Time-laps during which task has to be treated"
+msgstr "Tijdspanne waarbinnen de taak moet worden behandeld"
+
+#. module: project_gtd
+#: view:project.gtd.timebox:project_gtd.view_gtd_timebox_tree
+#: field:project.gtd.timebox,name:0
+#: view:project.task:project_gtd.view_task_gtd_search
+#: field:project.task,timebox_id:0
+msgid "Timebox"
+msgstr "Timebox"
+
+#. module: project_gtd
+#: view:project.gtd.timebox:project_gtd.view_gtd_timebox_form
+msgid "Timebox Definition"
+msgstr "Timeboxdefinitie"
+
+#. module: project_gtd
+#: view:project.timebox.empty:project_gtd.view_project_gtd_empty
+msgid "Timebox Empty Process Completed Successfully."
+msgstr "Timebox legen proces met succes afgerond."
+
+#. module: project_gtd
+#: model:ir.actions.act_window,name:project_gtd.open_gtd_timebox_tree
+#: model:ir.ui.menu,name:project_gtd.menu_open_gtd_time_timeboxes
+#: view:project.gtd.timebox:project_gtd.view_gtd_timebox_form
+msgid "Timeboxes"
+msgstr "Timeboxen"
+
+#. module: project_gtd
+#: model:ir.actions.act_window,help:project_gtd.open_gtd_timebox_tree
+msgid ""
+"Timeboxes are defined in the \"Getting Things Done\" methodology. A timebox "
+"defines a period of time in order to categorize your tasks: today, this "
+"week, this month, long term."
+msgstr ""
+"Timeboxen zijn gedefinieerd in de \"Getting Things Done\" methodiek. Een "
+"timebox definieert de tijdsperiode om uw taken te categoriseren: vandaag, "
+"deze week, deze maand, lange termijn."
+
+#. module: project_gtd
+#: view:project.task:project_gtd.project_task
+#: view:project.task:project_gtd.project_task_tree
+msgid "Timeframe"
+msgstr "Periode"
+
+#. module: project_gtd
+#: model:project.gtd.timebox,name:project_gtd.timebox_daily
+msgid "Today"
+msgstr "Vandaag"
+
+#. module: project_gtd
+#: model:project.gtd.context,name:project_gtd.context_travel
+msgid "Travel"
+msgstr "Reizen"
+
+#. module: project_gtd
+#: view:project.timebox.fill.plan:project_gtd.view_project_gtd_fill
 msgid "or"
 msgstr "of"
+
+#~ msgid "In Progress"
+#~ msgstr "In behandeling"
+
+#~ msgid "Show only tasks having a deadline"
+#~ msgstr "Geef alleen taken met een deadline weer"
+
+#~ msgid "Reactivate"
+#~ msgstr "Heractiveren"
+
+#~ msgid "Pending Tasks"
+#~ msgstr "Taken in afwachting"
+
+#~ msgid "No timebox child of this one !"
+#~ msgstr "Er zijn geen onderliggende timeboxen!"
+
+#~ msgid "Pending"
+#~ msgstr "In afwachting"
+
+#~ msgid "Tasks having no timebox assigned yet"
+#~ msgstr "Taken waaraan geen tijd is toegewezen"
+
+#~ msgid "Icon"
+#~ msgstr "Pictogram"
+
+#~ msgid "Car"
+#~ msgstr "Auto"
+
+#~ msgid "Show Context"
+#~ msgstr "Geef context weer"
+
+#~ msgid "project.gtd.timebox"
+#~ msgstr "project.gtd.timebox"
+
+#~ msgid "Error!"
+#~ msgstr "Fout!"
+
+#~ msgid "In Progress and draft tasks"
+#~ msgstr "Taken in behandeling en in concept"
+
+#~ msgid "Display"
+#~ msgstr "Tonen"
+
+#~ msgid "Show the context field"
+#~ msgstr "Geef het context veld weer"
+
+#~ msgid "Show Deadlines"
+#~ msgstr "Geef deadlines weer"
+
+#~ msgid "Inbox"
+#~ msgstr "Postvak in"
+
+#~ msgid "Home"
+#~ msgstr "Thuis"
+
+#~ msgid "For reopening the tasks"
+#~ msgstr "Voor het heropenen van taken"
 
 #~ msgid "Priority"
 #~ msgstr "Prioriteit"
@@ -352,16 +367,12 @@ msgstr "of"
 #~ msgid "My Pending Tasks"
 #~ msgstr "Mijn wachtende taken"
 
-#~ msgid "Tasks"
-#~ msgstr "Taken"
-
 #~ msgid "Date Start"
 #~ msgstr "Startdatum"
 
 #~ msgid "Weekly"
 #~ msgstr "Wekelijks"
 
-#, python-format
 #~ msgid "Error !"
 #~ msgstr "Fout!"
 
@@ -371,11 +382,9 @@ msgstr "of"
 #~ msgid "Getting Things Done - Time Management Module"
 #~ msgstr "Getting Things Done - Time Management Module"
 
-#, python-format
 #~ msgid "No timebox of the type \"%s\" defined !"
 #~ msgstr "Geen timebox van type \"%s\" gedefinieerd !"
 
-#, python-format
 #~ msgid "Eff. Hours"
 #~ msgstr "Eff. uren"
 
@@ -429,14 +438,12 @@ msgstr "of"
 #~ msgid "All My Timeboxes"
 #~ msgstr "Al mijn timeboxen"
 
-#, python-format
 #~ msgid "Getting Things Done"
 #~ msgstr "Getting Things Done (dingen gedaan krijgen)"
 
 #~ msgid "Planned Hours"
 #~ msgstr "Geplande uren"
 
-#, python-format
 #~ msgid "GTD"
 #~ msgstr "GTD"
 
@@ -458,11 +465,12 @@ msgstr "of"
 #~ "methodology. This world-wide used methodology is used for personal\n"
 #~ "time management improvement.\n"
 #~ "\n"
-#~ "Getting Things Done (commonly abbreviated as GTD) is an action management\n"
+#~ "Getting Things Done (commonly abbreviated as GTD) is an action "
+#~ "management\n"
 #~ "method created by David Allen, and described in a book of the same name.\n"
 #~ "\n"
-#~ "GTD rests on the principle that a person needs to move tasks out of the mind "
-#~ "by\n"
+#~ "GTD rests on the principle that a person needs to move tasks out of the "
+#~ "mind by\n"
 #~ "recording them externally. That way, the mind is freed from the job of\n"
 #~ "remembering everything that needs to be done, and can concentrate on "
 #~ "actually\n"
@@ -475,10 +483,11 @@ msgstr "of"
 #~ "persoonlijke tijd management verbetering.\n"
 #~ "\n"
 #~ "Getting Things Done (meestal afgekort tot GTD) is an actie management\n"
-#~ "methode gemaakt door David Allen, and beschreven in een gelijknamig boek.\n"
+#~ "methode gemaakt door David Allen, and beschreven in een gelijknamig "
+#~ "boek.\n"
 #~ "\n"
-#~ "GTD berust op het principe dat een persoon taken uit zijn gedachten zet door "
-#~ "ze \n"
+#~ "GTD berust op het principe dat een persoon taken uit zijn gedachten zet "
+#~ "door ze \n"
 #~ "extern vast te leggen. Op die manier zijn de gedachten bevrijd van het "
 #~ "onmthouden\n"
 #~ "van alles wat moet worden gedaan, en kan het zich concentreren op het "
