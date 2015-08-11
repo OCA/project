@@ -72,10 +72,11 @@ class IrActionActWindows(models.Model):
             action_id = ids[0]
         else:
             action_id = ids
-        _, issue_action = self.pool['ir.model.data'].get_object_reference(
-            cr, SUPERUSER_ID, 'project_issue_reference',
-            'project_issue_from_anywhere')
-        if action_id == issue_action:
+
+        issue_action_id = self.pool['ir.model.data'].xmlid_to_res_id(
+            cr, SUPERUSER_ID,
+            'project_issue_reference.project_issue_from_anywhere')
+        if action_id == issue_action_id:
             if isinstance(res, list):
                 for elem in res:
                     update_context(elem)
