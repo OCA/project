@@ -72,7 +72,6 @@ class IrActionActWindows(models.Model):
             action_id = ids[0]
         else:
             action_id = ids
-
         issue_action_id = self.pool['ir.model.data'].xmlid_to_res_id(
             cr, SUPERUSER_ID,
             'project_issue_reference.project_issue_from_anywhere')
