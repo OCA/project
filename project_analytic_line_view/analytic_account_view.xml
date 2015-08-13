@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<openerp>
+  <data>
+
+    <act_window
+      domain="[('account_id.project_ids', '=', active_id)]"
+      id="act_aal_from_project"
+      name="Analytic Lines"
+      res_model="account.analytic.line"
+      src_model="project.project"
+      view_mode="tree,form,calendar"
+      view_type="form"/>
+
+  </data>
+</openerp>
