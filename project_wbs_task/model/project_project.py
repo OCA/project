@@ -33,13 +33,14 @@ class project(models.Model):
             context = {}
         project = self.browse(cr, uid, ids[0], context)
         task_ids = self.pool.get('project.task').search(
-            cr, uid, [('project_id', '=', project.id)])
+            cr, uid, [('project_id', '=', project.id)]
+        )
         res = self.pool.get('ir.actions.act_window').for_xml_id(
-            cr, uid, 'project_wbs_task', 'action_task_tree_view', context)
+            cr, uid, 'project_wbs_task', 'action_task_tree_view', context
+        )
         res['context'] = {
             'default_project_id': project.id,
         }
-        res['domain'] = "[('id', 'in', ["+','.join(
-            map(str, task_ids))+"])]"
+        res['domain'] = "[('id', 'in', ["+','.join(map(str, task_ids))+"])]"
         res['nodestroy'] = False
         return res
