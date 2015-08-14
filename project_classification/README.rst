@@ -13,7 +13,7 @@ The parent is still available through the analytic account object.
 This is useful because this way, project manager will setup correctly
 the analytical account just by choosing the corresponding classification.
 
-A project classification is composed by :
+A project classification is composed by:
 
  * A name
  * An Analytic Account which represents the parent project to set
@@ -24,10 +24,9 @@ A project classification is composed by :
 
 Those values will be set on a project when selecting a classification.
 
-
-For further information, please visit:
-
-* https://www.odoo.com/forum/help-1
+With this module, you can easily define invoice factor, manager, ... which will be automatically setted when creating a project with this classification.
+No need to check which parent project, which invoicing factor, which mamanger.
+Just by selecting a classification, you set all this fields once. 
 
 
 Bug Tracker
@@ -45,9 +44,8 @@ Credits
 Contributors
 ------------
 
-* Yannick Vaucher <yannick.vaucher@camptocamp.com>
-* Daniel Reis <dgreis@sapo.pt>
 * Joël Grand-Guillaume <joel.grandguillaume@camptocamp.com>
+* Yannick Vaucher <yannick.vaucher@camptocamp.com>
 * Charbel Jacquin <charbel.jacquin@camptocamp.com>
 
 Maintainer

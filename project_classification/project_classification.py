@@ -25,7 +25,7 @@ class ProjectClassification(models.Model):
     _name = "project.classification"
     _description = "Project classification"
 
-    name = fields.Char('Classification Name', required=True, size=64)
+    name = fields.Char('Classification Name', required=True)
     project_id = fields.Many2one('account.analytic.account',
                                  'Parent project',
                                  help="The parent project that will be set "
@@ -40,7 +40,8 @@ class ProjectClassification(models.Model):
     currency_id = fields.Many2one('res.currency', 'Currency')
     user_id = fields.Many2one('res.users', 'Account Manager')
     pricelist_id = fields.Many2one('product.pricelist',
-                                   'Sale Pricelist')
+                                   'Sale Pricelist',
+                                   domain=[('type', '=', 'sale')])
 
 
 class ProjectProject(models.Model):
@@ -60,15 +61,16 @@ class ProjectProject(models.Model):
         compute='_child_project_compute',
         string="Project Hierarchy")
 
+    @api.one
     @api.depends('child_complete_ids.project_ids')
     def _child_project_compute(self):
-        for project in self:
-            child_projects = project.mapped('child_complete_ids.project_ids')
-            project.child_project_complete_ids = child_projects
+        child_projects = self.mapped('child_complete_ids.project_ids')
+        self.child_project_complete_ids = child_projects
 
-    def onchange_classification_id(self, cr, uid, ids, classification_id):
-        projclass = self.pool.get('project.classification')
-        classification = projclass.browse(cr, uid, classification_id)
+    @api.multi
+    def onchange_classification_id(self, classification_id):
+        projclass = self.env['project.classification']
+        classification = projclass.browse(classification_id)
         return {'value':
                 {'parent_id': classification.project_id.id,
                  'to_invoice': classification.to_invoice.id or False,
