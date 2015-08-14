@@ -5,18 +5,18 @@ Project classification (easy hierarchy and setup for project managers)
 ======================================================================
 
 
-This Module allow you to setup different project classification to ease the
+This Module allows you to setup different project classification to ease the
 data entry of new project. The parent project will be set as readonly to
 forbid users to change it.
 
 The parent is still available through the analytic account object.
 This is useful because this way, project manager will setup correctly
-the analytical account just by choosing the corresponing classification.
+the analytical account just by choosing the corresponding classification.
 
 A project classification is composed by :
 
  * A name
- * An Analytic Account which represent the parent project to set
+ * An Analytic Account which represents the parent project to set
  * An optional Invoice factor
  * An optional Account Manager
  * An optional Pricelist

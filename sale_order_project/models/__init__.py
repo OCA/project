@@ -22,16 +22,4 @@
 #
 ###############################################################################
 
-
-from openerp.osv import fields, orm
-
-
-class project_project(orm.Model):
-    _inherit = "project.project"
-
-    _columns = {
-        'order_ids': fields.one2many(
-            'sale.order',
-            'related_project_id',
-            'Orders'),
-        }
+from . import sale

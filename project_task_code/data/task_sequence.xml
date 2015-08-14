@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data noupdate="1">
+        <record id="sequence_type_task" model="ir.sequence.type">
+            <field name="name">Task code type</field>
+            <field name="code">project.task</field>
+        </record>
+        <record id="sequence_task" model="ir.sequence">
+            <field name="name">Task code</field>
+            <field name="code">project.task</field>
+            <field eval="4" name="padding" />
+            <field name="prefix">T</field>
+        </record>
+    </data>
+</openerp>
