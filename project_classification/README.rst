@@ -24,10 +24,32 @@ A project classification is composed by:
 
 Those values will be set on a project when selecting a classification.
 
-With this module, you can easily define invoice factor, manager, ... which will be automatically setted when creating a project with this classification.
-No need to check which parent project, which invoicing factor, which mamanger.
+With this module, you can easily define invoice factor, manager, ... which will be automatically set when creating a project with this classification.
+No need to check which parent project, which invoicing factor, which manager.
 Just by selecting a classification, you set all this fields once. 
 
+Usage
+=====
+
+Example :
+---------
+
+Create following classification :
+ * name: R-D O% administrator EUR
+ * project_id: YourCompany / Internal
+ * to_invoice: 0
+ * user_id: Administrator
+ * pricelist: Public Pricelist
+ 
+ In project.project form view, select this 'R-D O% administrator EUR' classification.
+ When selecting it, the following fields in project must have changed to be the same as the classification ones :
+  * parent_id
+  * to_invoice
+  * user_id (Project Manager)
+  * pricelist_id
+  * to_invoice
+  
+So when you need to create a new R-D project, instead of manually filling fields, you only select a classification and it's done.
 
 Bug Tracker
 ===========
