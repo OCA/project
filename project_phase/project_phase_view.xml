@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+        <record id="mt_phase_change" model="mail.message.subtype">
+            <field name="name">State Changed</field>
+            <field name="res_model">project.phase</field>
+            <field name="default" eval="True"/>
+            <field name="description">State changed</field>
+        </record>
+    </data>
+    <data>
+        <!-- Project Phase -->
+
+        <record id="act_project_phases" model="ir.actions.act_window">
+            <field name="res_model">project.phase</field>
+            <field name="view_type">form</field>
+            <field name="name">Phases</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_project_id': [active_id], 'default_project_id': active_id}</field>
+        </record>
+
+        <record id="project_phase_form" model="ir.ui.view">
+            <field name="name">Inherit project form : Phase</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@name='options_active']" position='inside'>
+                    <field name="use_phases" class="oe_inline"/>
+                    <label for="use_phases"/>
+                </xpath>
+                <div class="oe_right oe_button_box" name="buttons" groups="base.group_user" position='inside'>
+	                <button class="oe_inline oe_stat_button" name="%(act_project_phases)d" type="action" attrs="{'invisible':[('use_phases','=', 0)]}" icon="fa-tasks">
+	                    <field string="Phases" name="phase_count" widget="statinfo"/>
+	                </button>                          
+                </div>
+            </field>
+        </record>
+
+        <record id="view_project_kanban_phase" model="ir.ui.view">
+            <field name="name">project.project.kanban.inherited</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.view_project_kanban"/>
+            <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]"/>
+            <field name="arch" type="xml">
+                <field name="use_tasks" position="after">
+                    <field name="use_phases"/>
+                    <field name="phase_count"/>
+                </field>
+                <xpath expr="//div[contains(@class, 'oe_kanban_project_list')]" position="inside">
+                    <a t-if="record.use_phases.raw_value"
+                        name="%(act_project_phases)d" type="action">
+                        <span t-if="record.phase_count.raw_value gt 1"><field name="phase_count"/> Phases</span>
+                        <span t-if="record.phase_count.raw_value lt 2"><field name="phase_count"/> Phase</span>
+                    </a>
+                </xpath>
+            </field>
+        </record>
+        
+        <record id="project_phase_task_list" model="ir.actions.act_window">
+            <field name="res_model">project.task</field>
+            <field name="view_type">form</field>
+            <field name="name">Tasks</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{'search_default_phase_id': [active_id], 'default_phase_id' : active_id}</field>
+        </record>
+        
+        <record id="view_project_phase_form" model="ir.ui.view">
+            <field name="name">project.phase.form</field>
+            <field name="model">project.phase</field>
+            <field name="arch" type="xml">
+                <form string="Project Phase" version="7.0">
+	                <header>
+	                    <button string="Draft" name="set_draft" type="object" states="open,cancelled,done"/>
+	                    <button string="Start Phase" name="set_open" type="object" states="pending,draft" class="oe_highlight"/>
+	                    <button string="Pending" name="set_pending" type="object" states="open"/>
+	                    <button string="Done" name="set_done" type="object" states="pending,open"/>
+	                    <button string="Cancel Phase" name="set_cancel" type="object" states="draft,open,pending"/>
+	                    <field name="state" widget="statusbar" statusbar_visible="draft,open,done" statusbar_colors='{"pending":"blue"}'/>
+	                </header>
+	                <sheet>
+	                    <div class="oe_title">
+	                        <label for="name" class="oe_edit_only"/>
+	                        <h1><field name="name"/></h1>
+	                    </div>
+	                    <group>
+	                        <group>
+	                            <label for="date_start" string="Duration"/>
+	                            <div>
+	                                <div>
+	                                    <field name="duration" class="oe_inline"/>
+	                                    <field name="product_uom" class="oe_inline"/>
+	                                </div>
+	                            </div>
+                                <field name="date_start" required="True" class="oe_inline"/>
+                                <field name="date_end" required="True" class="oe_inline"/>
+	                        </group>
+	                        <group>
+	                            <field name="sequence"/>
+	                            <field name="project_id" />
+	                        </group>
+	                    </group>
+	                    <group string="Tasks">
+	                        <field name="task_ids" widget="many2many" readonly="0" nolabel="1" context="{'default_project_id' :project_id}">
+	                             <tree string="Project's Tasks">
+	                                <field name="name"/>
+	                                <field name="user_id"/>
+	                                <field name="date_start"/>
+	                                <field name="date_end"/>
+	                                <field name="planned_hours" widget="float_time"/>
+	                                <field name="project_id" invisible="1"/>
+	                                <field name="total_hours" sum='Total Hours'/>
+	                                <field name="remaining_hours" widget="float_time" sum="Remaining Hours"/>
+	                                <field name="stage_id"/>
+	                              </tree>
+	                         </field>
+	                    </group>
+	                </sheet>
+	                <div class="oe_chatter">
+	                    <field name="message_follower_ids" widget="mail_followers"/>
+	                    <field name="message_ids" widget="mail_thread"/>
+	                </div>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_project_phase_list" model="ir.ui.view">
+            <field name="name">project.phase.list</field>
+            <field name="model">project.phase</field>
+            <field name="priority" eval="5"/>
+            <field name="arch" type="xml">
+                <tree colors="grey:state in ('cancelled','done');blue:state == 'pending'" string="Project Phases">
+                    <field name="name"/>
+                    <field name="project_id" on_change="onchange_project(project_id)"/>
+                    <field name="date_start"/>
+                    <field name="date_end"/>
+                    <field name="duration"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_project_phase_calendar" model="ir.ui.view">
+            <field name="name">project.phase.calendar</field>
+            <field name="model">project.phase</field>
+            <field eval="2" name="priority"/>
+            <field name="arch" type="xml">
+                <calendar color="project_id" date_start="date_start" date_stop="date_end" day_length="12">
+                    <field name="name"/>
+                </calendar>
+            </field>
+        </record>
+
+        <record id="view_project_phase_gantt" model="ir.ui.view">
+            <field name="name">project.phase.gantt</field>
+            <field name="model">project.phase</field>
+            <field eval="2" name="priority"/>
+            <field name="arch" type="xml">
+                <gantt date_stop="date_end" date_start="date_start" default_group_by="project_id">
+                </gantt>
+            </field>
+        </record>
+
+        <record id="view_project_phase_search" model="ir.ui.view">
+            <field name="name">project.phase.search</field>
+            <field name="model">project.phase</field>
+            <field name="arch" type="xml">
+                <search string="Project Phases">
+                    <field name="name" string="Project Phases"/>
+                    <field name="date_start"/>
+                    <field name="date_end"/>
+                    <filter string="New" domain="[('state','=','draft')]"  name="current" help="New Phases" icon="terp-check"/>
+                    <filter string="In Progress" name="Progress" domain="[('state','=','open')]" help="In Progress Phases" icon="terp-camera_test"/>
+                    <filter string="Pending" domain="[('state','=','pending')]" help="Pending Phases" icon="terp-gtk-media-pause"/>
+                    <separator/>
+                    <filter string="My Projects" domain="[('project_id.user_id','=',uid)]" help="My Projects" icon="terp-folder-violet"/>
+                    <field name="project_id"/>
+                    <group expand="0" string="Group By...">
+                        <filter string="Project" icon="terp-folder-violet" domain="[]" context="{'group_by':'project_id'}" name="project"/>
+                        <filter string="Status" icon="terp-stock_effects-object-colorize" domain="[]" context="{'group_by':'state'}"/>
+                        <filter string="Month" icon="terp-go-month" domain="[]" context="{'group_by':'date_start'}" help="Start Month"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="act_project_phase_list" model="ir.actions.act_window">
+            <field name="name">Project Phases</field>
+            <field name="res_model">project.phase</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form,calendar</field>
+             <field name="context">{}</field>
+            <field name="search_view_id" ref="view_project_phase_search"/>
+        </record>
+
+
+        <!-- Project Task -->
+        <record id="view_phase_task_form2" model="ir.ui.view">
+            <field name="name">phase.task.form2</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='user_id']" position="after">
+                    <field name="phase_id" context="{'default_project_id' : project_id}"/>
+                </xpath>
+            </field>
+        </record>
+        <record id="view_phase_task_search_form" model="ir.ui.view">
+            <field name="name">phase.task.search.form</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_search_form"/>
+            <field name="arch" type="xml">
+                <field name="user_id" position="before">
+                    <field name="phase_id" domain="[]"/>
+                </field>
+            </field>
+        </record>
+
+         <record id="view_phase_task_search_form_group" model="ir.ui.view">
+            <field name="name">phase.task.search.form.group</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_search_form"/>
+            <field name="arch" type="xml">
+            <filter string="Project" name="project" context="{'group_by':'project_id'}" position="after">
+                <filter string="Project Phase" name="group_project_id_phase" icon="terp-folder-violet" domain="[]" context="{'group_by':'phase_id'}"/>
+            </filter>
+            </field>
+        </record>
+
+         <record id="view_phase_task_search_form_tree" model="ir.ui.view">
+            <field name="name">phase.task.search.form.tree</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_tree2"/>
+            <field name="arch" type="xml">
+                <field name="project_id" position="after">
+                    <field name="phase_id" invisible="1"/>
+                </field>
+            </field>
+        </record>
+
+        <!-- Menu Items -->
+        <menuitem action="act_project_phase_list"
+            id="menu_project_phase_list" parent="project.menu_project_management" sequence="2"/>
+
+    </data>
+</openerp>
