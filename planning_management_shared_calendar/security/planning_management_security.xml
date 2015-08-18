@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <record model="res.groups" id="base.group_planning_management_admin">
+            <field name="name">Planning Management / Admin</field>
+        </record>   
+        <record model="res.groups" id="base.group_planning_management_manager">
+            <field name="name">Planning Management / Manager</field>
+        </record>
+        <record model="res.groups" id="base.group_planning_management_user">
+            <field name="name">Planning Management / User</field>
+        </record>
+
+    </data>
+</openerp>
