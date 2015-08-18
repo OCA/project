@@ -36,6 +36,7 @@
         'security/ir.model.access.csv',
     ],
     'test': [],
+    'pre_init_hook': 'fill_classification_id',
     'installable': True,
     'auto_install': False,
     'application': False

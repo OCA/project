@@ -54,7 +54,7 @@ class ProjectProject(models.Model):
                                         "default values defined for this kind "
                                         "of project (like pricelist, "
                                         "invoice factor,..)",
-                                        required=False)
+                                        required=True)
 
     child_project_complete_ids = fields.Many2many(
         'project.project',

@@ -19,5 +19,64 @@
 #
 ##############################################################################
 from . import project_classification
+import psycopg2
 
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
+
+def fill_classification_id(cr):
+        query_nb_records = 'SELECT count(id) from project_project;'
+        cr.execute(query_nb_records)
+        res = cr.fetchall()
+        if res[0][0] != 0:
+            try:
+                query_classification_id = (
+                    'SELECT count(id) from project_project '
+                    'where classification_id is null;'
+                    )
+                cr.execute(query_classification_id)
+                res2 = cr.fetchall()
+                if res[0][0] == res2[0][0]:
+                    # all project have a classification_id set
+                    return
+
+            except psycopg2.ProgrammingError:
+                cr.rollback()
+                # project exist but
+                # classification_id column does not exist in database
+                # 1. create column nullable
+                query = (
+                    'ALTER TABLE project_project '
+                    'ADD COLUMN classification_id integer;'
+                    )
+                cr.execute(query)
+                # 2. create default classification
+                query = """CREATE TABLE project_classification (
+                id serial,
+                name varchar,
+                project_id integer,
+                primary key(id)
+                );"""
+                cr.execute(query)
+                query = (
+                    "INSERT INTO project_classification (name, project_id) "
+                    "VALUES ('Unclassified', "
+                    "(select id from project_project limit 1));"
+                    )
+                cr.execute(query)
+                # 3. assign this classification to all projects
+                query = 'select id from project_classification limit 1;'
+                cr.execute(query)
+                res_create = cr.fetchall()
+                if res_create:
+                    query = (
+                        'UPDATE project_project '
+                        'set classification_id=%d;' % res_create[0][0]
+                        )
+                    cr.execute(query)
+                # 4. alter column from nullable to not null
+                query = (
+                    'ALTER TABLE project_project '
+                    'ALTER COLUMN classification_id SET NOT NULL;')
+                cr.execute(query)
+                return
+        else:
+            return
