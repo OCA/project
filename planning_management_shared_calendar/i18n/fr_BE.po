@@ -1,0 +1,583 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* planning_management
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 6.1-1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-04-19 14:07+0000\n"
+"PO-Revision-Date: 2012-04-19 14:07+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: planning_management
+#: view:capacity.planning:0
+msgid "Tpsdispo"
+msgstr "Tpsdispo"
+
+#. module: planning_management
+#: view:capacity.planning:0
+msgid "Open tasks"
+msgstr "Ouvrir les tâches"
+
+#. module: planning_management
+#: field:capacity.planning.before,nbconge:0
+#: field:capacity.planning.user,nbconge:0
+msgid "Nb leave"
+msgstr "Nb absences"
+
+#. module: planning_management
+#: model:ir.ui.menu,name:planning_management.shared_calendar_menu_mainform
+msgid "shared calendar"
+msgstr "calendrier partagé"
+
+#. module: planning_management
+#: help:capacity.planning,tpsoccup:0
+msgid "The number of hours already used."
+msgstr "Le nombre d'heure déjà utilisé."
+
+#. module: planning_management
+#: view:capacity.planning:0
+#: view:shared.calendar:0
+msgid "Group By..."
+msgstr "Grouper par..."
+
+#. module: planning_management
+#: view:shared.calendar.update:0
+msgid "Clean config of shared calendar"
+msgstr "Effacer la config du calendrier partagé"
+
+#. module: planning_management
+#: model:ir.ui.menu,name:planning_management.capacity_planning_menu_mainform
+msgid "planning"
+msgstr "planning des capacités"
+
+#. module: planning_management
+#: field:capacity.planning,tpsdispo:0
+msgid "Time available"
+msgstr "Temps disponible"
+
+#. module: planning_management
+#: model:ir.model,name:planning_management.model_shared_calendar_conf
+msgid "Shared Calendar Configuration"
+msgstr "Calendrier Partagé Configuration"
+
+#. module: planning_management
+#: view:capacity.planning:0
+msgid "TpsTot"
+msgstr "TpsTot"
+
+#. module: planning_management
+#: constraint:project.task:0
+msgid "Error ! You cannot create recursive tasks."
+msgstr "Erreur ! Vous ne pouvez pas créer de tâches récursives"
+
+#. module: planning_management
+#: view:capacity.planning:0
+msgid "Hmeeting"
+msgstr "Hmeeting"
+
+#. module: planning_management
+#: view:capacity.planning:0
+msgid "Update"
+msgstr "Mise à jour"
+
+#. module: planning_management
+#: field:capacity.planning.before,nbtask:0
+#: field:capacity.planning.user,nbtask:0
+msgid "Nb tasks"
+msgstr "Nb tâches"
+
+#. module: planning_management
+#: view:capacity.planning:0
+msgid "Htask"
+msgstr "Htask"
+
+#. module: planning_management
+#: field:capacity.planning.user,hconge:0
+msgid "Leave time"
+msgstr "Temps absences"
+
+#. module: planning_management
+#: model:ir.model,name:planning_management.model_project_task
+msgid "Task"
+msgstr "Tâche"
+
+#. module: planning_management
+#: field:capacity.planning,tpstotal:0
+#: field:capacity.planning.user,tpstotalemp:0
+msgid "Total time"
+msgstr "Temps total"
+
+#. module: planning_management
+#: view:capacity.planning:0
+#: model:ir.actions.act_window,name:planning_management.action_capacity_planning_form
+msgid "Capacity planning"
+msgstr "Planning des capacités"
+
+#. module: planning_management
+#: model:ir.actions.act_window,name:planning_management.action_shared_calendar_form
+#: model:ir.model,name:planning_management.model_shared_calendar
+msgid "Shared Calendar"
+msgstr "Calendrier partagé"
+
+#. module: planning_management
+#: field:capacity.planning.before,emp:0
+#: field:capacity.planning.user,emp:0
+#: field:capacity.planning.without.deadline,emp:0
+msgid "Employe"
+msgstr "Employé"
+
+#. module: planning_management
+#: view:capacity.planning:0
+msgid "Meetings"
+msgstr "Rendez-vous"
+
+#. module: planning_management
+#: view:capacity.planning:0
+msgid "Open leaves"
+msgstr "Ouvrir les absences"
+
+#. module: planning_management
+#: field:capacity.planning.before,planning_id:0
+#: field:capacity.planning.user,planning_id:0
+#: field:capacity.planning.without.deadline,planning_id:0
+#: model:ir.ui.menu,name:planning_management.shared_calendar_menu
+msgid "Planning"
+msgstr "Planning"
+
+#. module: planning_management
+#: view:shared.calendar:0
+msgid "Object calendar's"
+msgstr "Objets du calendrier"
+
+#. module: planning_management
+#: view:capacity.planning:0
+msgid "Before"
+msgstr "Avt le planning"
+
+#. module: planning_management
+#: field:capacity.planning.without.deadline,nbtask2:0
+msgid "Nb tasks not started"
+msgstr "Nb tâches non démarrées"
+
+#. module: planning_management
+#: field:capacity.planning.before,idemp:0
+#: field:capacity.planning.user,idemp:0
+#: field:capacity.planning.without.deadline,idemp:0
+msgid "IDemploye"
+msgstr "IDemploye"
+
+#. module: planning_management
+#: field:capacity.planning.user,htask:0
+msgid "Tasks time"
+msgstr "Temps tâches"
+
+#. module: planning_management
+#: field:capacity.planning,sel_department:0
+#: field:capacity.planning.before,departement:0
+#: field:capacity.planning.user,departement:0
+#: field:capacity.planning.without.deadline,departement:0
+msgid "Department"
+msgstr "Departement"
+
+#. module: planning_management
+#: view:capacity.planning:0
+msgid "Nbconge"
+msgstr "Nbconge"
+
+#. module: planning_management
+#: view:capacity.planning:0
+#: field:capacity.planning,planning_without_deadline:0
+#: model:ir.model,name:planning_management.model_capacity_planning_without_deadline
+msgid "Without deadline"
+msgstr "Sans date de fin"
+
+#. module: planning_management
+#: view:capacity.planning:0
+#: view:shared.calendar:0
+msgid "Start date"
+msgstr "Date de début"
+
+#. module: planning_management
+#: view:shared.calendar:0
+msgid "Type"
+msgstr "Type"
+
+#. module: planning_management
+#: field:capacity.planning.before,nbhelpdesk:0
+#: field:capacity.planning.user,nbhelpdesk:0
+msgid "Nb helpdesk"
+msgstr "Nb tickets"
+
+#. module: planning_management
+#: view:shared.calendar:0
+msgid "Open original object"
+msgstr "Ouvrir l'objet original"
+
+#. module: planning_management
+#: view:capacity.planning:0
+msgid "Nbhelpdesk"
+msgstr "Nbhelpdesk"
+
+#. module: planning_management
+#: model:ir.model,name:planning_management.model_capacity_planning
+msgid "Capacity Planning"
+msgstr "Planning capacité"
+
+#. module: planning_management
+#: model:ir.ui.menu,name:planning_management.shared_configuration_menu_mainform
+msgid "Configuration"
+msgstr "Configuration"
+
+#. module: planning_management
+#: view:capacity.planning:0
+msgid "Tpsoccup"
+msgstr "Tpsoccup"
+
+#. module: planning_management
+#: view:capacity.planning:0
+#: view:shared.calendar:0
+msgid "Order Date"
+msgstr "Date"
+
+#. module: planning_management
+#: view:shared.calendar:0
+msgid "Times"
+msgstr "Dates et durée"
+
+#. module: planning_management
+#: field:capacity.planning,tpsoccup:0
+#: field:capacity.planning.user,tpsoccupemp:0
+msgid "Busy time"
+msgstr "Temps occupé"
+
+#. module: planning_management
+#: field:capacity.planning.user,tpsdispoemp:0
+msgid "Available time"
+msgstr "Temps disponible"
+
+#. module: planning_management
+#: field:capacity.planning.before,nbmeeting:0
+#: field:capacity.planning.user,nbmeeting:0
+msgid "Nb meeting"
+msgstr "Nb rendez-vous"
+
+#. module: planning_management
+#: model:ir.ui.menu,name:planning_management.shared_configuration_sc_menu_mainform_conf
+msgid "configuration"
+msgstr "configuration"
+
+#. module: planning_management
+#: view:capacity.planning:0
+msgid "Tasks"
+msgstr "Tâches"
+
+#. module: planning_management
+#: field:capacity.planning.before,idresource:0
+#: field:capacity.planning.user,idresource:0
+#: field:capacity.planning.without.deadline,idresource:0
+msgid "IDresource"
+msgstr "IDresource"
+
+#. module: planning_management
+#: view:capacity.planning:0
+msgid "Helpdesks"
+msgstr "Tickets"
+
+#. module: planning_management
+#: view:capacity.planning:0
+msgid "Nbmeeting"
+msgstr "Nbmeeting"
+
+#. module: planning_management
+#: field:capacity.planning,startdate:0
+msgid "Start Date"
+msgstr "Date Début"
+
+#. module: planning_management
+#: model:ir.ui.menu,name:planning_management.planning_menu_mainform
+msgid "Capacity"
+msgstr "Capacité"
+
+#. module: planning_management
+#: model:ir.actions.act_window,name:planning_management.action_shared_calendar_config_form
+#: view:shared.calendar.conf:0
+msgid "Object calendar's configuration"
+msgstr "Objets de la configuration du calendrier"
+
+#. module: planning_management
+#: field:capacity.planning,planning_before:0
+#: model:ir.model,name:planning_management.model_capacity_planning_before
+msgid "Before the planning"
+msgstr "Avant le planning"
+
+#. module: planning_management
+#: view:capacity.planning:0
+msgid "Open helpdesks"
+msgstr "Ouvrir les tickets"
+
+#. module: planning_management
+#: field:capacity.planning.user,dispop:0
+msgid "Dispo %"
+msgstr "Dispo %"
+
+#. module: planning_management
+#: model:ir.model,name:planning_management.model_crm_meeting
+msgid "Meeting"
+msgstr "Rendez-vous"
+
+#. module: planning_management
+#: help:capacity.planning,tpstotal:0
+msgid "The number of hours available for selected resources in the planning period."
+msgstr "Le nombre d'heure disponible pour la ressource sélectionnée dans le planning."
+
+#. module: planning_management
+#: field:capacity.planning,helpdesk:0
+#: field:capacity.planning,meeting:0
+#: field:capacity.planning,task:0
+msgid "Project Name"
+msgstr "Project Name"
+
+#. module: planning_management
+#: field:capacity.planning,planning_user:0
+msgid "Planning By Employee"
+msgstr "Planning par Employee"
+
+#. module: planning_management
+#: field:capacity.planning.without.deadline,nbtask1:0
+msgid "Nb tasks without deadline"
+msgstr "Nb tâches sans date de fin"
+
+#. module: planning_management
+#: model:ir.model,name:planning_management.model_shared_calendar_update
+msgid "Update Shared Calendar"
+msgstr "Mise à jour du calendrier partagé"
+
+#. module: planning_management
+#: field:capacity.planning.user,hmeeting:0
+msgid "Meeting time"
+msgstr "Temps rendez-vous"
+
+#. module: planning_management
+#: view:capacity.planning:0
+msgid "Nbtask1"
+msgstr "Nbtask1"
+
+#. module: planning_management
+#: view:capacity.planning:0
+msgid "TpsOcc"
+msgstr "TpsOcc"
+
+#. module: planning_management
+#: view:capacity.planning:0
+msgid "Open meetings"
+msgstr "Ouvrir les rendez-vous"
+
+#. module: planning_management
+#: view:capacity.planning:0
+msgid "If the line is red, check the contract and the employee's working hours."
+msgstr "Si la ligne est en rouge, vérifiez que l'employé possède un contrat et un horaire."
+
+#. module: planning_management
+#: view:capacity.planning:0
+msgid "End date"
+msgstr "Date de fin"
+
+#. module: planning_management
+#: field:capacity.planning.before,idhourofwork:0
+#: field:capacity.planning.user,idhourofwork:0
+#: field:capacity.planning.without.deadline,idhourofwork:0
+msgid "IDhourofwork"
+msgstr "IDhourofwork"
+
+#. module: planning_management
+#: view:capacity.planning:0
+msgid "Open Shared calendar"
+msgstr "Ouvrir Calendrier Partagé"
+
+#. module: planning_management
+#: view:shared.calendar:0
+msgid "Extra information"
+msgstr "Informations supplémentaires"
+
+#. module: planning_management
+#: help:capacity.planning,startdate:0
+msgid "The start date of your planning."
+msgstr "La date de début de votre planning."
+
+#. module: planning_management
+#: view:capacity.planning:0
+msgid "Planning..."
+msgstr "Planning..."
+
+#. module: planning_management
+#: view:shared.calendar.update:0
+msgid "Clean shared calendar"
+msgstr "Effacer données du calendrier partagé"
+
+#. module: planning_management
+#: view:capacity.planning:0
+#: view:shared.calendar:0
+msgid "Information"
+msgstr "Informations"
+
+#. module: planning_management
+#: help:capacity.planning,tpsdispo:0
+msgid "The number of hours available for work."
+msgstr "Le nombre d'heure disponible pour attribuer du travaille."
+
+#. module: planning_management
+#: view:capacity.planning:0
+msgid "Nbtask2"
+msgstr "Nbtask2"
+
+#. module: planning_management
+#: constraint:project.task:0
+msgid "Error ! Task end-date must be greater then task start-date"
+msgstr "Erreur ! La date de fin de la tâche doit être postérieure à la date de démarrage"
+
+#. module: planning_management
+#: model:ir.model,name:planning_management.model_crm_helpdesk
+msgid "Helpdesk"
+msgstr "Assistance"
+
+#. module: planning_management
+#: view:shared.calendar:0
+msgid "Responsible"
+msgstr "Responsable"
+
+#. module: planning_management
+#: view:capacity.planning:0
+msgid "TpsDisp"
+msgstr "TpsDisp"
+
+#. module: planning_management
+#: view:capacity.planning:0
+msgid "List of task, meeting, helpdesk, leave to be completed before the planning"
+msgstr "Liste des tâches, rendez-vous, tickets, absences qui doivent être terminés avant le planning."
+
+#. module: planning_management
+#: model:ir.ui.menu,name:planning_management.calendar_menu_mainform
+#: view:shared.calendar:0
+msgid "Calendar"
+msgstr "Calendrier"
+
+#. module: planning_management
+#: view:capacity.planning:0
+msgid "To configure"
+msgstr "à configurer"
+
+#. module: planning_management
+#: view:capacity.planning:0
+msgid "Tpstotal"
+msgstr "Tpstotal"
+
+#. module: planning_management
+#: view:capacity.planning:0
+msgid "...by Employee"
+msgstr "...par employé"
+
+#. module: planning_management
+#: view:shared.calendar.update:0
+msgid "Update shared calendar"
+msgstr "Mise à jour du calendrier partagé"
+
+#. module: planning_management
+#: view:shared.calendar.update:0
+msgid "Shared calendar"
+msgstr "Calendrier partagé"
+
+#. module: planning_management
+#: field:capacity.planning,enddate:0
+msgid "End Date"
+msgstr "Date de Fin"
+
+#. module: planning_management
+#: view:capacity.planning:0
+msgid "Search Capacity Planning"
+msgstr "Chercher Planning Capacité"
+
+#. module: planning_management
+#: field:capacity.planning,name:0
+msgid "Name"
+msgstr "Nom"
+
+#. module: planning_management
+#: help:capacity.planning,sel_department:0
+msgid "Only if you want just one department for the capacity planning."
+msgstr "Seulement si vous ne voulez qu'un seul et unique département dans votre planning. Laissez vide pour avoir l'ensemble des départements."
+
+#. module: planning_management
+#: model:ir.ui.menu,name:planning_management.shared_configuration_sc_menu_mainform_update
+msgid "update"
+msgstr "mise à jour"
+
+#. module: planning_management
+#: view:shared.calendar:0
+msgid "New object"
+msgstr "New objet"
+
+#. module: planning_management
+#: view:capacity.planning:0
+msgid "Hconge"
+msgstr "Hconge"
+
+#. module: planning_management
+#: help:capacity.planning,enddate:0
+msgid "The end date of your planning."
+msgstr "La date de fin de votre planning."
+
+#. module: planning_management
+#: model:ir.model,name:planning_management.model_capacity_planning_user
+msgid "Planning by Employee"
+msgstr "Planning par employé"
+
+#. module: planning_management
+#: view:shared.calendar:0
+msgid "Object's"
+msgstr "Objet"
+
+#. module: planning_management
+#: field:capacity.planning,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: planning_management
+#: model:ir.actions.act_window,name:planning_management.action_shared_calendar_update
+#: view:shared.calendar.update:0
+msgid "Update calendar"
+msgstr "Mise à jour calendrier"
+
+#. module: planning_management
+#: field:capacity.planning,availability:0
+msgid "Availability %"
+msgstr "Disponibilité en %"
+
+#. module: planning_management
+#: field:capacity.planning.before,iduser:0
+#: field:capacity.planning.user,iduser:0
+#: field:capacity.planning.without.deadline,iduser:0
+msgid "IDuser"
+msgstr "IDuser"
+
+#. module: planning_management
+#: view:capacity.planning:0
+msgid "Nbtask"
+msgstr "Nbtask"
+
+#. module: planning_management
+#: view:capacity.planning:0
+msgid "Tasks without deadline or not started"
+msgstr "Tâches sans date de fin ou non démarrées"
+
+#. module: planning_management
+#: view:shared.calendar:0
+msgid "Search Shared Calendar"
+msgstr "Chercher calendrier partagé"
+
