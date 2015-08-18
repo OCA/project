@@ -7,12 +7,14 @@
       <field name="model">project.classification</field>
       <field name="arch" type="xml">
         <form string="Project classification">
-          <field name="name" />
-          <field name="project_id" />
-          <field name="to_invoice"/>
-          <field name="currency_id"/>
-          <field name="user_id"/>
-          <field name="pricelist_id" />
+            <group colspan="4">
+                <field name="name" />
+                <field name="project_id" />
+                <field name="to_invoice"/>
+                <field name="currency_id"/>
+                <field name="user_id"/>
+                <field name="pricelist_id" />
+            </group>
         </form>
       </field>
     </record>
@@ -46,10 +48,10 @@
       <field name="model">project.project</field>
       <field name="inherit_id" ref="project.edit_project" />
       <field name="arch" type="xml">
-        <xpath expr="/form/sheet/notebook/page[@string='Other Info']/group/group[3]/field[@name='parent_id']" position="replace">
+        <xpath expr="/form/sheet/notebook/page[@string='Other Info']//field[@name='parent_id']" position="replace">
           <field name="classification_id" widget="selection" on_change="onchange_classification_id(classification_id)"/>
         </xpath>
-        <xpath expr="/form/sheet/notebook/page[@string='Other Info']/group/group[3]/field[@name='currency_id']" position="after">
+        <xpath expr="/form//page[@string='Other Info']//field[@name='currency_id']" position="after">
           <field name="pricelist_id" domain="[('type','=','sale')]" widget="selection"/>
           <!-- <field name="to_invoice" /> -->
           <field name="parent_id" string="Parent Project" domain="[('id','!=',active_id)]" context="{'current_model': 'project.project'}" />
