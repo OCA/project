@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0"> 
+    
+        <!-- 
+        Shared Calendar 
+        --> 
+                  
+        <record forcecreate="True" id="ir_cron_update_shared_calendar"  model="ir.cron">
+            <field name="name">Automatic updates of shared calendar</field>
+            <field eval="True" name="active" />
+            <field name="user_id" ref="base.user_root" />
+            <field name="interval_number">1</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field eval="False" name="doall" />
+            <field eval="'check_cron'" name="function" />                                                             
+            <field eval="" name="args" />
+            <field name="model">shared.calendar.conf</field> 
+        </record>
+        
+        <record model="ir.ui.view" id="shared_calendar_tree_view">
+            <field name="name">shared.calendar.tree</field>
+            <field name="model">shared.calendar</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Object calendar's">
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="responsible"/>
+                    <field name="startingdate"/>
+                    <field name="endingdate"/>
+                    <field name="duration"/>
+                    <field name="type"/>
+                    <field name="id" invisible="1"/>
+                    <field name="object_id" invisible="1"/>
+                    <field name="mod" invisible="1"/>
+                    <field name="resp_name" invisible="1"/>
+        			<field name="location"/>
+        			<field name="attendee"/>
+        			<field name="mail" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="shared_calendar_form_view">
+            <field name="name">shared.calendar.form</field>
+            <field name="model">shared.calendar</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="New object" version="7.0">
+                    <heater>
+                        <button name="check_original_object" colspan="1" icon="gtk-go-forward" string="Open original object" type="object" attrs="{'invisible':[('type','in',('shared calendar'))]}"/>
+                    </heater>
+                    <sheet>
+                        <group>
+                            <separator string="Information"/>
+                        </group> 
+		                <h1>
+		                    <field name="name"/>
+		                </h1>
+                        <group>
+	                        <field name="responsible" colspan="1" attrs="{'readonly':[('type','in',('shared calendar'))]}"/>
+	                        <field name="description" colspan="1" attrs="{'invisible':[('type','in',('holidays'))]}" />
+	                        <field name="location" colspan="1"/>
+	                        <field name="attendee" colspan="1"/>
+	                        <field name="mail" colspan="1"/>
+	                        <group colspan="8" col="4">
+	                            <separator string="Times"/>
+	                        </group>
+	                        <newline/>
+	                        <field name="startingdate" colspan="1"/><newline/>                                    
+	                        <field name="endingdate" colspan="1" attrs="{'invisible':[('type','in',('meeting','phone call','helpdesk','issues','lead','opportunity'))]}"/><newline/>
+	                        <field name="duration" colspan="1" attrs="{'invisible':[('type','in',('opportunity','helpdesk','issues','lead'))]}"/><newline/>  
+	                        <newline/>
+	                        <group colspan="8" col="4">
+	                            <separator string="Extra information"/>
+	                        </group>
+	                        <newline/>
+	                        <field name="type" readonly="1" colspan="1"/><newline/>
+	                        <field name="id" invisible="1"/> 
+	                        <field name="object_id" invisible="1"/>   
+	                        <field name="mod" invisible="1"/>
+                        </group>  
+                    </sheet>                    
+                </form>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="shared_calendar_calendar_view">
+            <field name="name">shared.calendar.calendar</field>
+            <field name="model">shared.calendar</field>
+            <field name="type">calendar</field>
+            <field name="arch" type="xml">
+                <calendar string="Calendar" date_start="startingdate" color="responsible" date_stop="endingdate" date_delay="duration" day_length="8">
+                    <field name="name"/>
+                    <field name="description"/>
+                </calendar>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="shared_calendar_gantt_view">
+            <field name="name">shared.calendar.gantt</field>
+            <field name="model">shared.calendar</field>
+            <field name="type">gantt</field>
+            <field eval="2" name="priority"/>
+            <field name="arch" type="xml">
+                <gantt color="responsible" date_start="startingdate" date_delay="duration" >
+                    <level object="shared.calendar" link="id" domain="[]">
+                        <field name="name"/>
+                    </level>
+                </gantt>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="shared_calendar_filter">
+            <field name="name">shared.calendar.filter</field>
+            <field name="model">shared.calendar</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Search Shared Calendar">
+                    <field name="name" select="1"/>
+                    <field name="type" select="1" string="Type"/>
+                    <field name="responsible" select="1" string="Responsible"/>
+                    <field name="startingdate" select="1" string="Start date" />                                       
+                    <newline/>
+                    <group expand="0" string="Group By..." colspan="11" col="11" groups="base.group_extended">
+                        <filter string="Responsible" icon="terp-personal" domain="[]" context="{'group_by':'responsible'}"/>
+                        <separator orientation="vertical"/>
+                        <filter string="Type" icon="terp-stock_effects-object-colorize" domain="[]" context="{'group_by':'type'}"/>
+                        <separator orientation="vertical"/>
+                        <filter string="Order Date" icon="terp-go-month" domain="[]" context="{'group_by':'startingdate'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="shared_calendar_conf_information_tree_view">
+            <field name="name">shared.calendar.conf.information.tree</field>
+            <field name="model">shared.calendar.conf.information</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Objects">
+                    <field name="object"/>
+                </tree>  
+            </field>
+        </record>             
+                
+        <record model="ir.ui.view" id="shared_calendar_conf_information_form_view">
+            <field name="name">shared.calendar.conf.information.form</field>
+            <field name="model">shared.calendar.conf.information</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Objects" version="7.0">
+                    <separator string="Model" colspan="4"/>
+                    <group>
+                        <h1>
+                            <field name="object" on_change="on_change_object(object)"/> 
+                        </h1>
+                    </group>
+                    <separator string="Fields informations" colspan="4"/>
+                    <group>
+	                    <field name="name" />   
+	                    <field name="description" />    
+	                    <field name="responsible" />    
+	                    <field name="startingdate" />   
+	                    <field name="endingdate" /> 
+	                    <field name="duration" /> 
+	                    <field name="location" />
+	                    <field name="attendee" />
+	                    <field name="mail" />
+                    </group>
+                </form>                
+            </field>
+        </record>   
+        
+        <record model="ir.ui.view" id="shared_calendar_conf_tree_view">
+            <field name="name">shared.calendar.conf.tree</field>
+            <field name="model">shared.calendar.conf</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Object calendar's configuration">
+                    <field name="name"/>
+                </tree>    
+            </field>
+        </record>
+        
+        <record model="ir.ui.view" id="shared_calendar_conf_form_view">
+            <field name="name">shared.calendar.conf.form</field>
+            <field name="model">shared.calendar.conf</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Configuration" version="7.0">
+                    <heater>
+                        <button name="check_update_calendar" colspan="1" string="Update the shared calendar" type="object"/>
+                        <button name="clean_shared_calendar" colspan="1" string="Clean calendar objects" type="object"/>
+                        <button name="clean_shared_calendar_conf" colspan="1" string="Clean calendar configuration" type="object"/>                    
+                    </heater>    
+                    <sheet>
+                        <group colspan="4" col="4">
+                            <separator string="Information" colspan="4" orientation="horizontal"/>
+                        </group>                               
+                        <group>
+                        <h1>              
+                            <field name="name"/>
+                        </h1>
+                        </group>    
+                        <field name="id" invisible="1"/>
+                        <group>
+                            <separator string="Number of months to synchronize before and after the current date" colspan="4" orientation="horizontal"/>
+                            <field name="periode_start"/>
+                            <field name="periode_end"/>
+                            <newline/> 
+                            <notebook colspan="4">
+                    	        <page string="Calendar objects"> 
+                    	            <field name="conf_info" nolabel="1" widget="one2many"/>
+                                </page>
+                            </notebook>
+                            <separator string="Cron" colspan="4" orientation="horizontal"/>
+                            <field name="cron" colspan="1" domain="[('name','=','Automatic updates of shared calendar')]"/>
+                        </group>  
+                    </sheet>  
+                </form>
+            </field>
+        </record>  
+        
+        <record model="ir.actions.act_window" id="action_shared_calendar_form">
+            <field name="name">Shared Calendar</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">shared.calendar</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form,tree,calendar,gantt</field>
+            <field name="search_view_id" ref="shared_calendar_filter"/>
+            <field name="view_id" ref="shared_calendar_calendar_view"/>
+        </record>
+        
+        <record model="ir.actions.act_window" id="action_shared_calendar_config_form">
+            <field name="name">Object calendar's configuration</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">shared.calendar.conf</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form,tree</field>
+            <field name="view_id" ref="shared_calendar_conf_tree_view"/>
+        </record>
+
+        <menuitem name="Calendar" parent="base.menu_main_pm" id="planning_menu_mainform" sequence="2" groups="base.group_planning_management_manager,base.group_planning_management_user,base.group_planning_management_admin"/>  
+        <menuitem name="Shared calendar" parent="planning_menu_mainform" id="shared_calendar_menu_mainform" action="action_shared_calendar_form" groups="base.group_planning_management_manager,base.group_planning_management_user,base.group_planning_management_admin"/>      
+        <menuitem name="Shared calendar" parent="base.menu_definitions" id="shared_configuration_sc_menu_mainform_conf" sequence="1" action="action_shared_calendar_config_form" groups="base.group_planning_management_admin"/>
+    
+    </data>
+</openerp>
