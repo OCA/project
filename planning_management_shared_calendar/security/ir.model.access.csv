@@ -1,0 +1,13 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+
+"access_shared_calendar_admin","shared.calendar","model_shared_calendar","base.group_planning_management_admin",1,1,1,1
+"access_shared_calendar_conf_admin","shared.calendar.conf","model_shared_calendar_conf","base.group_planning_management_admin",1,1,1,1
+"access_shared_calendar_conf_info_admin","shared.calendar.conf.information","model_shared_calendar_conf_information","base.group_planning_management_admin",1,1,1,1
+
+"access_shared_calendar_manager","shared.calendar","model_shared_calendar","base.group_planning_management_manager",1,1,1,1
+"access_shared_calendar_conf_manager","shared.calendar.conf","model_shared_calendar_conf","base.group_planning_management_manager",0,0,0,0
+"access_shared_calendar_conf_info_manager","shared.calendar.conf.information","model_shared_calendar_conf_information","base.group_planning_management_manager",0,0,0,0
+
+"access_shared_calendar_user","shared.calendar","model_shared_calendar","base.group_planning_management_user",1,0,1,0
+"access_shared_calendar_conf_user","shared.calendar.conf","model_shared_calendar_conf","base.group_planning_management_user",0,0,0,0
+"access_shared_calendar_conf_info_user","shared.calendar.conf.information","model_shared_calendar_conf_information","base.group_planning_management_user",0,0,0,0
