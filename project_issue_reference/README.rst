@@ -6,7 +6,7 @@ Project Issue Reference
 =======================
 
 This module allows to end users to create an issue from any configured models
-and link automatically the intial object to the issue with a reference field.
+and link automatically the initial object to the issue with a reference field.
 
 
 Usage
@@ -19,6 +19,10 @@ To use this module, you need to:
 * select 'Report an issue' in the 'More' button.
 * the issue and its 'Issue Origin' field is set
 * complete and save the issue form.
+
+.. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
+   :alt: Try me on Runbot
+   :target: https://runbot.odoo-community.org/runbot/140/8.0
 
 
 Configuation
