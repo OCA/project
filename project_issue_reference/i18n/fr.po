@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-05 19:54+0000\n"
-"PO-Revision-Date: 2015-08-05 21:55+0100\n"
+"POT-Creation-Date: 2015-08-20 10:16+0000\n"
+"PO-Revision-Date: 2015-08-20 12:17+0100\n"
 "Last-Translator: David BEAL <david.beal@akretion.com>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -33,3 +33,9 @@ msgstr "Incidents"
 #: model:ir.model,name:project_issue_reference.model_project_issue
 msgid "Project Issue"
 msgstr "Projet de l'incident"
+
+#. module: project_issue_reference
+#: code:addons/project_issue_reference/action.py:52
+#, python-format
+msgid "Report an issue"
+msgstr "Déclarer un incident"
