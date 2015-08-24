@@ -15,7 +15,8 @@ class ProjectTask(models.Model):
         string='From days',
         help='Anticipation days from date begin or date end', default=0)
     estimated_days = fields.Integer(
-        string='Estimated days', help='Estimated days to end', default=1)
+        string='Estimated days', help='Estimated days to end', default=1,
+        oldname='anticipation_days')
 
     @api.one
     @api.constrains('estimated_days')
