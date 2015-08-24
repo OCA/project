@@ -191,7 +191,8 @@ class BaseCase(TransactionCase):
                     'date_end': day[2],
                 })
 
-    def project_create(self, name, n_tasks=0, vals={}):
+    def project_create(self, name, n_tasks=0, vals=None):
+        vals = vals or {}
         vals.update({
             'name': name,
         })
