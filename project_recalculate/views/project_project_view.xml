@@ -13,11 +13,17 @@
                             type="action"
                             string="Recalculate project"
                             states="open"
-                            context="{'project':id,'project_name':name,'calculation_type':calculation_type,'date_start':date_start,'date_end':date}"/>
+                            context="{'project':id, 'project_name':name, 'calculation_type':calculation_type, 'date_start':date_start, 'date_end':date}"/>
                 </button>
 
                 <field name="date" position="after">
                     <field name="calculation_type"/>
+                </field>
+                <field name="date_start" position="attributes">
+                    <attribute name="attrs">{'readonly': [('calculation_type', '=', 'date_end')]}</attribute>
+                </field>
+                <field name="date" position="attributes">
+                    <attribute name="attrs">{'readonly': [('calculation_type', '=', 'date_begin')]}</attribute>
                 </field>
 
             </field>

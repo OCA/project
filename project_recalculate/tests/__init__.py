@@ -3,5 +3,5 @@
 # For copyright and license notices, see __openerp__.py file in root directory
 ##############################################################################
 
-from . import wizard
-from . import models
+from . import test_project_project
+from . import test_project_task

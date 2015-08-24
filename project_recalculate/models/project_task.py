@@ -1,30 +1,11 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
-#
-#    OpenERP, Open Source Management Solution
-#    This module copyright :
-#        (c) 2014 Antiun Ingenieria, SL (Madrid, Spain, http://www.antiun.com)
-#                 Endika Iglesias <endikaig@antiun.com>
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as
-#    published by the Free Software Foundation, either version 3 of the
-#    License, or (at your option) any later version.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
+# For copyright and license notices, see __openerp__.py file in root directory
 ##############################################################################
 
 from openerp import models, fields, api, _
-from openerp.exceptions import Warning
-from datetime import timedelta
-import pytz
+from openerp.exceptions import Warning, ValidationError
+from datetime import datetime
 
 
 class ProjectTask(models.Model):
@@ -40,129 +21,231 @@ class ProjectTask(models.Model):
     @api.constrains('estimated_days')
     def _estimated_days_check(self):
         if not self.estimated_days > 0:
-            raise Warning(_('Estimated days must be greater than 0.'))
+            raise ValidationError(_('Estimated days must be greater than 0.'))
 
-    def _count_days_without_weekend(self, date_start, date_end):
-        days = (date_end - date_start).days
-        return sum(1 for x in xrange(days)
-                   if (date_start + timedelta(x)).weekday() < 5)
+    def _dates_onchange(self, vals):
+        """
+            Try to calculate estimated_days and from_days fields
+            when date_start or date_end change.
 
-    def _count_days_weekend(self, date_start, date_end):
-        days = (date_end - date_start).days
-        return sum(1 for x in xrange(days)
-                   if (date_start + timedelta(x)).weekday() >= 5)
-
-    def _correct_days_to_workable(self, date, increment=True):
-        while date.weekday() >= 5:
-            if increment:
-                date += timedelta(days=1)
-            else:
-                date -= timedelta(days=1)
-        return date
-
-    def _calculate_date_without_weekend(self, date_start, days,
-                                        increment=True):
-        total_days = 0
-        c = 0
-        if days < 0:
-            if increment:
-                increment = False
-            else:
-                increment = True
-        days = days if days >= 0 else days * -1
-        first = True
-        while days != total_days:
-            if total_days > 0 or not first:
-                recalculate = days + (days - total_days) + c
-                c += 1
-            else:
-                first = False
-                recalculate = days
-            if increment:
-                start = date_start
-                end = date_start + timedelta(days=recalculate)
-            else:
-                start = date_start - timedelta(days=recalculate)
-                end = date_start
-            total_days = self._count_days_without_weekend(start, end)
-        if total_days > 0:
-            date = end if increment else start
-        else:
-            date = date_start
-        return self._correct_days_to_workable(date, increment)
-
-    def on_change_dates(self, date_start, date_end, vals):
+            Dates fields (date_start, date_end) have preference to
+            estimated_days and from_days
+            except if context['task_recalculate'] == True, in other words,
+            except if this change is done because task recalculating.
+        """
+        self.ensure_one()
+        # If no date changes, do nothing
+        if 'date_start' not in vals and 'date_end' not in vals:
+            return vals
+        # If we are changing dates because of task recalculating, do nothing
+        if self.env.context.get('task_recalculate'):
+            return vals
+        date_start = vals.get('date_start', self.date_start)
+        date_end = vals.get('date_end', self.date_end)
+        # If any date is False, can't calculate estimated_days nor from_days
         if not date_start or not date_end:
             return vals
-        start = fields.Date.from_string(date_start)
-        end = fields.Date.from_string(date_end)
-        end += timedelta(1)
-        vals['estimated_days'] = self._count_days_without_weekend(start, end)
+        dec = fields.Datetime.from_string
+        start = dec(date_start)
+        end = dec(date_end)
+        # If end < start, do nothing
+        if end < start:
+            return vals
+        rc = self.pool['resource.calendar']
+        resource, calendar = self._resource_calendar_select()
+        default_interval = self._interval_default_get()
+        calendar_id = calendar.id if calendar else None
+        resource_id = resource.id if resource else None
+        # Calculate estimated_day
+        vals['estimated_days'] = rc.get_working_days_of_date(
+            self.env.cr, self.env.uid, calendar_id, start_dt=start,
+            end_dt=end, compute_leaves=True, resource_id=resource_id,
+            default_interval=default_interval, context=self.env.context)
+        # Calculate from_days depending on project calculation type
         calculation_type = self.project_id.calculation_type
         if calculation_type:
-            if calculation_type == 'date_begin':
+            invert = False
+            increment = calculation_type == 'date_begin'
+            if increment:
                 if not self.project_id.date_start:
+                    # Can't calculate from_days without project date_start
                     return vals
-                aux_start = fields.Date.from_string(self.project_id.date_start)
-                aux_end = start
+                project_date = dec(self.project_id.date_start)
+                start, end = project_date, start
             else:
                 if not self.project_id.date:
+                    # Can't calculate from_days without project date
                     return vals
-                aux_start = start
-                aux_end = fields.Date.from_string(self.project_id.date)
-            vals['from_days'] = self._count_days_without_weekend(
-                aux_start, aux_end)
+                project_date = dec(self.project_id.date)
+                start, end = start, project_date
+            if end < start:
+                invert = True
+                start, end = end, start
+            from_days = rc.get_working_days_of_date(
+                self.env.cr, self.env.uid, calendar_id, start_dt=start,
+                end_dt=end, compute_leaves=True, resource_id=resource_id,
+                default_interval=default_interval, context=self.env.context)
+            if invert and from_days:
+                from_days = from_days * (-1)
+            from_days = self._from_days_enc(
+                from_days, project_date, resource, calendar, increment)
+            vals['from_days'] = from_days
         return vals
 
-    @api.multi
-    def write(self, vals):
-        if (not self.env.context.get('project_recalculate')
-                and (vals.get('date_start') or vals.get('date_end'))):
-            date_start = (vals.get('date_start')
-                          if vals.get('date_start') else self.date_start)
-            date_end = (vals.get('date_end')
-                        if vals.get('date_end') else self.date_end)
-            vals = self.on_change_dates(date_start, date_end, vals)
+    def _estimated_days_prepare(self, vals):
+        # estimated_days must be greater than zero, if not defaults to 1
         if 'estimated_days' in vals and vals['estimated_days'] < 1:
             vals['estimated_days'] = 1
-        return super(ProjectTask, self).write(vals)
+        return vals
 
-    def _tz_date_recalculate(self, date):
-        tz = self.env.user.tz
-        date = fields.Datetime.from_string(date)
-        local = pytz.timezone(tz)
-        seconds_to_utc = local.utcoffset(date).seconds
-        date -= timedelta(seconds=seconds_to_utc)
-        return fields.Datetime.to_string(date)
-
-    def _apply_company_workday(self, date, start=True):
-        date = fields.Datetime.from_string(date)
-        company = self.env.user.company_id
-        hour = company.workday_begin if start else company.workday_end
-        seconds = hour * 3600
-        date += timedelta(seconds=seconds)
-        return fields.Datetime.to_string(date)
-
-    def task_recalculate(self):
+    def _resource_calendar_select(self):
+        """
+            Select a task user working calendar is available
+            If not, get first calendar of
+        """
         self.ensure_one()
+        calendar = False
+        resource = False
+        company = False
+        if self.user_id:
+            # Get calendar from first resource of assigned user
+            resource = self.env['resource.resource'].search(
+                [('user_id', '=', self.user_id.id)], limit=1)
+            calendar = resource.calendar_id
+            if not calendar:
+                # Get company from assigned user
+                company = self.user_id.company_id
+        if not calendar:
+            if not company:
+                # If not assigned user, get company from current user
+                company = self.env.user.company_id
+            # By default, first company working calendar
+            calendar = self.env['resource.calendar'].search(
+                [('company_id', '=', company.id)], limit=1)
+        return resource, calendar
+
+    def _from_days_enc(self, from_days, project_date,
+                       resource=None, calendar=None, increment=True):
+        interval = self._first_interval_of_day_get(
+            project_date, resource=resource, calendar=calendar)
+        # If project_date is holidays
+        if not interval:
+            if from_days > 0 and increment:
+                from_days += 1
+            elif from_days < 0 and not increment:
+                from_days -= 1
+            elif from_days == 0:
+                from_days = 1 if increment else -1
+        return from_days
+
+    def _from_days_dec(self, from_days, project_date,
+                       resource=None, calendar=None, increment=True):
+        if from_days == 0:
+            return 1 if increment else -1
+        interval = self._first_interval_of_day_get(
+            project_date, resource=resource, calendar=calendar)
+        # If project_date is not holidays
+        if interval:
+            if from_days > 0:
+                from_days += 1
+            elif from_days < 0:
+                from_days -= 1
+        return from_days
+
+    def _calculation_prepare(self):
+        """
+            Prepare calculation parameters:
+                - Increment=True, when task date_start is after project date
+                - Increment=False, when task date_start if before project date
+                - project_date, reference project date
+        """
+        self.ensure_one()
+        dec = fields.Datetime.from_string
         increment = self.project_id.calculation_type == 'date_begin'
         if increment:
             if not self.project_id.date_start:
                 raise Warning(_('Start Date field must be defined.'))
-            project_date = fields.Datetime.from_string(
-                self.project_id.date_start)
+            project_date = dec(self.project_id.date_start)
+            days = self.from_days
         else:
             if not self.project_id.date:
                 raise Warning(_('End Date field must be defined.'))
-            project_date = fields.Datetime.from_string(self.project_id.date)
-        date_start = self._calculate_date_without_weekend(
-            project_date, self.from_days, increment=increment)
-        task_date_start = fields.Datetime.to_string(date_start)
-        task_date_end = fields.Datetime.to_string(
-            self._calculate_date_without_weekend(
-                date_start, self.estimated_days - 1))
-        task_date_start = self._tz_date_recalculate(task_date_start)
-        task_date_end = self._tz_date_recalculate(task_date_end)
-        task_date_start = self._apply_company_workday(task_date_start)
-        task_date_end = self._apply_company_workday(task_date_end, False)
-        self.write({'date_start': task_date_start, 'date_end': task_date_end})
+            project_date = dec(self.project_id.date)
+            days = self.from_days * (-1)
+        return increment, project_date, days
+
+    def _interval_context_tz(self, interval):
+        start = datetime.now().replace(hour=interval[0])
+        start = fields.Datetime.context_timestamp(self, start)
+        end = datetime.now().replace(hour=interval[1])
+        end = fields.Datetime.context_timestamp(self, end)
+        return (start.hour, end.hour)
+
+    def _interval_default_get(self):
+        default = (8, 18)
+        return self._interval_context_tz(default)
+
+    def _first_interval_of_day_get(self, day_date, resource=None,
+                                   calendar=None):
+        calendar_id = calendar.id if calendar else None
+        resource_id = resource.id if resource else None
+        default_interval = self._interval_default_get()
+        rc = self.pool['resource.calendar']
+        intervals = rc.get_working_intervals_of_day(
+            self.env.cr, self.env.uid, calendar_id, start_dt=day_date,
+            compute_leaves=True, resource_id=resource_id,
+            default_interval=default_interval, context=self.env.context)
+        return intervals and intervals[0] or False
+
+    def _calendar_schedule_days(self, days, day_date,
+                                resource=None, calendar=None):
+        if not day_date:
+            return (False, False)
+        calendar_id = calendar.id if calendar else None
+        resource_id = resource.id if resource else None
+        default_interval = self._interval_default_get()
+        intervals = self.pool['resource.calendar'].schedule_days(
+            self.env.cr, self.env.uid, calendar_id, days, day_date=day_date,
+            compute_leaves=True, resource_id=resource_id,
+            default_interval=default_interval, context=self.env.context)
+        return (intervals and intervals[0] or False,
+                intervals and intervals[-1] or False)
+
+    @api.multi
+    def task_recalculate(self):
+        """
+            Recalculate task start date and end date depending on
+            project calculation_type, estimated_days and from_days
+        """
+        enc = fields.Datetime.to_string
+        for task in self:
+            resource, calendar = task._resource_calendar_select()
+            increment, project_date, from_days = task._calculation_prepare()
+            date_start = False
+            date_end = False
+            from_days = self._from_days_dec(
+                from_days, project_date, resource, calendar, increment)
+            start = self._calendar_schedule_days(
+                from_days, project_date, resource, calendar)[1]
+            if start:
+                day = start[0].replace(hour=0, minute=0, second=0)
+                first = self._first_interval_of_day_get(
+                    day, resource, calendar)
+                if first:
+                    date_start = first[0]
+            if date_start:
+                end = self._calendar_schedule_days(
+                    task.estimated_days, date_start, resource, calendar)[1]
+                if end:
+                    date_end = end[1]
+            task.with_context(task.env.context, task_recalculate=True).write({
+                'date_start': date_start and enc(date_start) or False,
+                'date_end': date_end and enc(date_end) or False,
+            })
+        return True
+
+    @api.one
+    def write(self, vals):
+        vals = self._dates_onchange(vals)
+        vals = self._estimated_days_prepare(vals)
+        return super(ProjectTask, self).write(vals)

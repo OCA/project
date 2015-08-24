@@ -5,6 +5,8 @@
 #    This module copyright :
 #        (c) 2014 Antiun Ingenieria S.L. (Madrid, Spain, http://www.antiun.com)
 #                 Endika Iglesias <endikaig@antiun.com>
+#                 Antonio Espinosa <antonioea@antiun.com>
+#                 Javier Iniesta <javieria@antiun.com>
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -34,7 +36,6 @@
         "wizard/recalculate_wizard.xml",
         "views/project_project_view.xml",
         "views/project_task_view.xml",
-        "views/res_company_view.xml",
     ],
     "installable": True,
 }

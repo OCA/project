@@ -20,10 +20,21 @@ according to the new date.
 Configuration
 =============
 
-You can define workday begin/end at company level:
+You can define working calendar at Setting > Technical > Resource > Working time
+Then assign this calendar to a resource (related with an user)
 
-* Workday Begin: Hour when work starts, by default 08:00
-* Workday End: Hour when work ends, by default 17:00
+When calculating task dates, this addon will look at user assigned to the task:
+
+* If user assigned:
+    * Search first resource related with this user (normally user is related,
+      only with one resource) and get its working calendar
+    * If not found, search first working calendar of the company
+    * If not found, then every day is workable an work starts at 08:00 and
+      ends at 18:00
+* If not user assigned:
+    * Search first working calendar of the company
+    * If not found, then every day is workable an work starts at 08:00 and
+      ends at 18:00
 
 
 Usage
@@ -40,6 +51,10 @@ This a tipycal use case:
 3. Click at "Recalculate project" button.
 4. Go to task list in Gantt view and see the recalculated planning
 
+.. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
+   :alt: Try me on Runbot
+   :target: https://runbot.odoo-community.org/runbot/140/8.0
+
 
 Credits
 =======
@@ -50,7 +65,7 @@ Contributors
 * Endika Iglesias <endikaig@antiun.com>
 * Rafael Blasco <rafabn@antiun.com>
 * Antonio Espinosa <antonioea@antiun.com>
-
+* Javier Iniesta <javieria@antiun.com>
 
 Maintainer
 ----------
