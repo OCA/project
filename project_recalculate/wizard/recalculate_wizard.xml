@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-    <data>
+<data>
 
 <record model="ir.ui.view" id="wizard_project_recalculate_form">
     <field name="name">project.recalculate.wizard.form</field>
@@ -12,17 +12,18 @@
                 <p>This Project task will be recalculated the reference data:</p>
                 <group>
                     <field string="Project name" name="project"/>
-                   <field string="Date reference" name="project_date"/>
+                    <field string="Date reference" name="project_date"/>
                 </group>
                 <p>Are you sure?</p>
             </group>
             <footer>
-                <button name="confirm_button" string="Continue" type="object" /> <button string="Cancel" class="oe_link" special="cancel"/>
+                <button name="confirm_button" string="Continue" type="object" />
+                <button string="Cancel" class="oe_link" special="cancel"/>
             </footer>
         </form>
 
     </field>
    </record>
 
-    </data>
+</data>
 </openerp>
