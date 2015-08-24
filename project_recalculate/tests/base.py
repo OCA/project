@@ -164,7 +164,8 @@ class BaseCase(TransactionCase):
         # Clean data here ...
         super(BaseCase, self).tearDown()
 
-    def project_task_add(self, project, name, vals={}):
+    def project_task_add(self, project, name, vals=None):
+        vals = vals or {}
         vals.update({
             'name': name,
             'project_id': project.id if project else False,
