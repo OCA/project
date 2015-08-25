@@ -1,7 +1,6 @@
-[![Runbot Status](https://runbot.odoo-community.org/runbot/badge/flat/140/8.0.svg)](https://runbot.odoo-community.org/runbot/repo/github-com-oca-project-service-140)
-[![Build Status](https://travis-ci.org/OCA/project-service.svg?branch=8.0)](https://travis-ci.org/OCA/project-service)
-[![Code Health](https://landscape.io/github/OCA/project-service/8.0/landscape.svg)](https://landscape.io/github/OCA/project-service/8.0)
-[![Coverage Status](https://coveralls.io/repos/OCA/project-service/badge.svg?branch=8.0)](https://coveralls.io/r/OCA/project-service?branch=8.0)
+[![Runbot Status](https://runbot.odoo-community.org/runbot/badge/flat/140/8.0.svg)](https://runbot.odoo-community.org/runbot/repo/github-com-oca-vertical-service-140)
+[![Build Status](https://travis-ci.org/OCA/vertical-service.svg?branch=8.0)](https://travis-ci.org/OCA/vertical-service)
+[![Coverage Status](https://coveralls.io/repos/OCA/vertical-service/badge.svg?branch=8.0)](https://coveralls.io/r/OCA/vertical-service?branch=8.0)
 
 Odoo Project & Service Management
 =================================
@@ -16,4 +15,4 @@ This project aims to extend Odoo on contract management features, such as:
 
 Translation Status
 ------------------
-[![Transifex Status](https://www.transifex.com/projects/p/OCA-project-service-8-0/chart/image_png)](https://www.transifex.com/projects/p/OCA-project-service-8-0)
+[![Transifex Status](https://www.transifex.com/projects/p/OCA-vertical-service-8-0/chart/image_png)](https://www.transifex.com/projects/p/OCA-vertical-service-8-0)
