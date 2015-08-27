@@ -242,6 +242,7 @@ class ProjectTask(models.Model):
             task.with_context(task.env.context, task_recalculate=True).write({
                 'date_start': date_start and enc(date_start) or False,
                 'date_end': date_end and enc(date_end) or False,
+                'date_deadline': date_end and enc(date_end) or False,
             })
         return True
 
