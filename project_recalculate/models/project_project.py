@@ -11,8 +11,10 @@ class ProjectProject(models.Model):
     _inherit = 'project.project'
 
     calculation_type = fields.Selection(
-        [('date_begin', 'Date begin'), ('date_end', 'Date end')],
-        default='date_begin', string='Calculation type',
+        [('none', 'No calculation'),
+         ('date_begin', 'Date begin'),
+         ('date_end', 'Date end')],
+        string='Calculation type', default='date_begin', required=True,
         help='How to calculate tasks with date start or date end references')
 
     def _dates_prepare(self):
@@ -30,24 +32,24 @@ class ProjectProject(models.Model):
         self.ensure_one()
         # Here we consider all project task, the ones in a stage with
         # fold = False and the ones with fold = True
-        dec = fields.Datetime.from_string
-        enc = fields.Date.to_string
+        from_string = fields.Datetime.from_string
+        to_string = fields.Date.to_string
         min_date_start = False
         max_date_end = False
         for task in self.tasks:
             if not task.date_start and not task.date_end:
                 continue
-            date_start = dec(task.date_start or task.date_end)
-            date_end = dec(task.date_end or task.date_start)
+            date_start = from_string(task.date_start or task.date_end)
+            date_end = from_string(task.date_end or task.date_start)
             if not min_date_start or min_date_start > date_start:
                 min_date_start = date_start
             if not max_date_end or max_date_end < date_end:
                 max_date_end = date_end
         # Assign min/max dates if available
         if self.calculation_type == 'date_begin' and max_date_end:
-            vals['date'] = enc(max_date_end)
+            vals['date'] = to_string(max_date_end)
         if self.calculation_type == 'date_end' and min_date_start:
-            vals['date_start'] = enc(min_date_start)
+            vals['date_start'] = to_string(min_date_start)
         return vals
 
     @api.multi
@@ -68,13 +70,10 @@ class ProjectProject(models.Model):
                     and not project.date):
                 raise Warning(_("Cannot recalculate project because your "
                                 "project don't have date end."))
-            # We only change dates to tasks in a stage with fold = False
-            # project.task_ids has an implicit domain:
-            #   [('stage_id.fold', '=', False)]
-            # see addons/project/project.py:262
-            for task in project.task_ids:
-                task.task_recalculate()
-            vals = project._dates_prepare()
-            if vals:
-                project.write(vals)
+            if project.calculation_type != 'none':
+                for task in project.tasks:
+                    task.task_recalculate()
+                vals = project._dates_prepare()
+                if vals:
+                    project.write(vals)
         return True

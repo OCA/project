@@ -17,6 +17,8 @@ class ProjectTask(models.Model):
     estimated_days = fields.Integer(
         string='Estimated days', help='Estimated days to end', default=1,
         oldname='anticipation_days')
+    include_in_recalculate = fields.Boolean(
+        related="state_id.include_in_recalculate")
 
     @api.one
     @api.constrains('estimated_days')
@@ -46,9 +48,9 @@ class ProjectTask(models.Model):
         # If any date is False, can't calculate estimated_days nor from_days
         if not date_start or not date_end:
             return vals
-        dec = fields.Datetime.from_string
-        start = dec(date_start)
-        end = dec(date_end)
+        from_string = fields.Datetime.from_string
+        start = from_string(date_start)
+        end = from_string(date_end)
         # If end < start, do nothing
         if end < start:
             return vals
@@ -71,13 +73,13 @@ class ProjectTask(models.Model):
                 if not self.project_id.date_start:
                     # Can't calculate from_days without project date_start
                     return vals
-                project_date = dec(self.project_id.date_start)
+                project_date = from_string(self.project_id.date_start)
                 start, end = project_date, start
             else:
                 if not self.project_id.date:
                     # Can't calculate from_days without project date
                     return vals
-                project_date = dec(self.project_id.date)
+                project_date = from_string(self.project_id.date)
                 start, end = start, project_date
             if end < start:
                 invert = True
@@ -101,26 +103,34 @@ class ProjectTask(models.Model):
 
     def _resource_calendar_select(self):
         """
-            Select a task user working calendar is available
-            If not, get first calendar of
+            Select working calendar and resource related this task:
+            Working calendar priority:
+                - project
+                - user
+                - company
         """
         self.ensure_one()
         calendar = False
         resource = False
         company = False
         if self.user_id:
-            # Get calendar from first resource of assigned user
+            # Get first resource of assigned user
             resource = self.env['resource.resource'].search(
                 [('user_id', '=', self.user_id.id)], limit=1)
+        if self.project_id.resource_calendar_id:
+            # Get calendar from project
+            calendar = self.project_id.resource_calendar_id
+        elif resource and resource.calendar_id:
+            # Get calendar from assigned user
             calendar = resource.calendar_id
-            if not calendar:
+        else:
+            # Get calendar from company
+            if self.user_id.company_id:
                 # Get company from assigned user
                 company = self.user_id.company_id
-        if not calendar:
-            if not company:
+            else:
                 # If not assigned user, get company from current user
                 company = self.env.user.company_id
-            # By default, first company working calendar
             calendar = self.env['resource.calendar'].search(
                 [('company_id', '=', company.id)], limit=1)
         return resource, calendar
@@ -161,17 +171,17 @@ class ProjectTask(models.Model):
                 - project_date, reference project date
         """
         self.ensure_one()
-        dec = fields.Datetime.from_string
+        from_string = fields.Datetime.from_string
         increment = self.project_id.calculation_type == 'date_begin'
         if increment:
             if not self.project_id.date_start:
                 raise Warning(_('Start Date field must be defined.'))
-            project_date = dec(self.project_id.date_start)
+            project_date = from_string(self.project_id.date_start)
             days = self.from_days
         else:
             if not self.project_id.date:
                 raise Warning(_('End Date field must be defined.'))
-            project_date = dec(self.project_id.date)
+            project_date = from_string(self.project_id.date)
             days = self.from_days * (-1)
         return increment, project_date, days
 
@@ -218,8 +228,10 @@ class ProjectTask(models.Model):
             Recalculate task start date and end date depending on
             project calculation_type, estimated_days and from_days
         """
-        enc = fields.Datetime.to_string
+        to_string = fields.Datetime.to_string
         for task in self:
+            if not task.include_in_recalculate:
+                continue
             resource, calendar = task._resource_calendar_select()
             increment, project_date, from_days = task._calculation_prepare()
             date_start = False
@@ -240,9 +252,9 @@ class ProjectTask(models.Model):
                 if end:
                     date_end = end[1]
             task.with_context(task.env.context, task_recalculate=True).write({
-                'date_start': date_start and enc(date_start) or False,
-                'date_end': date_end and enc(date_end) or False,
-                'date_deadline': date_end and enc(date_end) or False,
+                'date_start': date_start and to_string(date_start) or False,
+                'date_end': date_end and to_string(date_end) or False,
+                'date_deadline': date_end and to_string(date_end) or False,
             })
         return True
 
