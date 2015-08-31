@@ -32,23 +32,22 @@ class ProjectProject(models.Model):
         # fold = False and the ones with fold = True
         dec = fields.Datetime.from_string
         enc = fields.Date.to_string
-        if len(self.tasks) > 0:
-            min_date_start = False
-            max_date_end = False
-            for task in self.tasks:
-                if not task.date_start and not task.date_end:
-                    continue
-                date_start = dec(task.date_start or task.date_end)
-                date_end = dec(task.date_end or task.date_start)
-                if not min_date_start or min_date_start > date_start:
-                    min_date_start = date_start
-                if not max_date_end or max_date_end < date_end:
-                    max_date_end = date_end
-            # Assign min/max dates if available
-            if self.calculation_type == 'date_begin' and max_date_end:
-                vals['date'] = enc(max_date_end)
-            if self.calculation_type == 'date_end' and min_date_start:
-                vals['date_start'] = enc(min_date_start)
+        min_date_start = False
+        max_date_end = False
+        for task in self.tasks:
+            if not task.date_start and not task.date_end:
+                continue
+            date_start = dec(task.date_start or task.date_end)
+            date_end = dec(task.date_end or task.date_start)
+            if not min_date_start or min_date_start > date_start:
+                min_date_start = date_start
+            if not max_date_end or max_date_end < date_end:
+                max_date_end = date_end
+        # Assign min/max dates if available
+        if self.calculation_type == 'date_begin' and max_date_end:
+            vals['date'] = enc(max_date_end)
+        if self.calculation_type == 'date_end' and min_date_start:
+            vals['date_start'] = enc(min_date_start)
         return vals
 
     @api.multi

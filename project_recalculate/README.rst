@@ -1,20 +1,19 @@
 .. image:: https://img.shields.io/badge/licence-AGPL--3-blue.svg
     :alt: License: AGPL-3
 
-Project recalculate
+===================
+Project Recalculate
 ===================
 
-This module allows to recalculate tasks' start/end dates depending on project's
+This module recalculates tasks' start/end dates depending on project's
 start/end dates.
 
-There are two calcutation modes:
 
-* **Date begin**: Task's start/end dates are recalculated from project's date begin
-* **Date end**: Task's start/end dates are recalculated from project's date end
+Instalation
+===========
 
-If the project start/end date is changed in the form view, then you have to
-click "Recalculate proyect" button to recalculate all pending tasks
-according to the new date.
+This addon requires Odoo v8 after 2015-08-24 because is not fully functional
+without this patch: `Odoo PR #8208 <https://github.com/odoo/odoo/pull/8208>`
 
 
 Configuration
@@ -29,18 +28,29 @@ When calculating task dates, this addon will look at user assigned to the task:
     * Search first resource related with this user (normally user is related,
       only with one resource) and get its working calendar
     * If not found, search first working calendar of the company
-    * If not found, then every day is workable an work starts at 08:00 and
+    * If not found, then every day is workable and work starts at 08:00 and
       ends at 18:00
 * If not user assigned:
     * Search first working calendar of the company
-    * If not found, then every day is workable an work starts at 08:00 and
+    * If not found, then every day is workable and work starts at 08:00 and
       ends at 18:00
 
 
 Usage
 =====
 
-This a tipycal use case:
+There are two calcutation modes:
+
+* **Date begin**: Task start/end dates are recalculated from project's date begin
+* **Date end**: Task start/end dates are recalculated from project's date end
+
+If the project start/end date is changed in the form view, then you have to
+click "Recalculate project" button to recalculate all open tasks [1]
+according to the new date.
+
+[1] 'Open tasks' means tasks in a stage that are defined with 'fold' = False
+
+This a typical use case:
 
 1. Create a project and configure:
     * Calculation type, for example "Date end"
@@ -54,6 +64,15 @@ This a tipycal use case:
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
    :target: https://runbot.odoo-community.org/runbot/140/8.0
+
+
+Bug Tracker
+===========
+
+Bugs are tracked on `GitHub Issues <https://github.com/OCA/vertical-service/issues>`_.
+In case of trouble, please check there if your issue has already been reported.
+If you spotted it first, help us smashing it by providing a detailed and welcomed feedback
+`here <https://github.com/OCA/vertical-service/issues/new?body=module:%20project_recalculate%0Aversion:%208.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 
 Credits

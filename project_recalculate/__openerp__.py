@@ -24,18 +24,18 @@
 ##############################################################################
 
 {
-    "name": "Project recalculate",
+    "name": "Project Recalculate",
     "version": "8.0.1.0.0",
     "author": "Antiun Ingeniería S.L., "
               "Odoo Community Association (OCA)",
     "website": "http://www.antiun.com",
     "license": "AGPL-3",
     "category": "Project",
-    "depends": ['base', 'project'],
+    "depends": ['project'],
     'data': [
-        "wizard/recalculate_wizard.xml",
         "views/project_project_view.xml",
         "views/project_task_view.xml",
+        "wizard/recalculate_wizard.xml",
     ],
     "installable": True,
 }

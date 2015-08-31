@@ -12,8 +12,7 @@
                     <button name="project_recalculate.wizard_project_recalculate"
                             type="action"
                             string="Recalculate project"
-                            states="open"
-                            context="{'project':id, 'project_name':name, 'calculation_type':calculation_type, 'date_start':date_start, 'date_end':date}"/>
+                            states="open" />
                 </button>
 
                 <field name="date" position="after">
