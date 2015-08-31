@@ -8,13 +8,6 @@
     <field name="inherit_id" ref="project.edit_project"/>
     <field name="arch" type="xml">
 
-        <button name="set_template" position="after">
-            <button name="project_recalculate.wizard_project_recalculate"
-                    type="action"
-                    string="Recalculate project"
-                    states="open" />
-        </button>
-
         <field name="date" position="after">
             <field name="calculation_type"/>
         </field>
@@ -25,6 +18,12 @@
             <attribute name="attrs">{'readonly': [('calculation_type', '=', 'date_begin')]}</attribute>
         </field>
 
+        <button name="set_template" position="after">
+            <button name="project_recalculate.wizard_project_recalculate"
+                    type="action"
+                    string="Recalculate project"
+                    attrs="{'invisible': ['|', ('calculation_type', '=', False), ('state', 'not in', 'open')]}"/>
+        </button>
     </field>
 </record>
 

@@ -41,11 +41,11 @@ class TestProjectProjectBegin(base.BaseCase):
     calculation_type = 'date_begin'
 
     #####################################################################
-    # Check _dates_prepare
+    # Check _start_end_dates_prepare
     #   * With no tasks: date is the same
     #   * With one task: date is task end date
     #   * With several tasks: date is latest task end date
-    def _dates_prepare(self, n_tasks, res=False):
+    def _start_end_dates_prepare(self, n_tasks, res=False):
         counter = 0
         for n, sd, ed in project_date_cases:
             project = self.project_create(n, n_tasks, {
@@ -56,7 +56,7 @@ class TestProjectProjectBegin(base.BaseCase):
             if n_tasks > 0:
                 self.project_task_dates_set(
                     project, task_dates_res[self.calculation_type][n])
-            vals = project._dates_prepare()
+            vals = project._start_end_dates_prepare()
             if res:
                 dates = res[self.calculation_type][counter]
                 if self.calculation_type == 'date_begin':
@@ -71,14 +71,15 @@ class TestProjectProjectBegin(base.BaseCase):
                 self.assertEqual(vals, {})
             counter += 1
 
-    def test_dates_prepare_no_task(self):
-        self._dates_prepare(0)
+    def test_start_end_dates_prepare_no_task(self):
+        self._start_end_dates_prepare(0)
 
-    def test_dates_prepare_one_task(self):
-        self._dates_prepare(1, res=project_dates_res['one_task'])
+    def test_start_end_dates_prepare_one_task(self):
+        self._start_end_dates_prepare(1, res=project_dates_res['one_task'])
 
-    def test_dates_prepare_tasks(self):
-        self._dates_prepare(total_tasks, res=project_dates_res['tasks'])
+    def test_start_end_dates_prepare_tasks(self):
+        self._start_end_dates_prepare(total_tasks,
+                                      res=project_dates_res['tasks'])
 
     #####################################################################
     # Check project_recalculate

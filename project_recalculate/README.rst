@@ -5,7 +5,7 @@
 Project Recalculate
 ===================
 
-This module recalculates tasks' start/end dates depending on project's
+This module recalculates Task start/end dates depending on Project
 start/end dates.
 
 

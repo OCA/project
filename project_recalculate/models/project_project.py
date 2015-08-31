@@ -4,6 +4,7 @@
 ##############################################################################
 
 from openerp import models, fields, api, _
+from openerp.fields import DATE_LENGTH
 from openerp.exceptions import Warning
 
 
@@ -11,13 +12,13 @@ class ProjectProject(models.Model):
     _inherit = 'project.project'
 
     calculation_type = fields.Selection(
-        [('none', 'No calculation'),
-         ('date_begin', 'Date begin'),
+        [('date_begin', 'Date begin'),
          ('date_end', 'Date end')],
-        string='Calculation type', default='date_begin', required=True,
-        help='How to calculate tasks with date start or date end references')
+        string='Calculation type', default=False,
+        help='How to calculate tasks, with date start or date end references. '
+             'If not set, "Recalculate project" button is disabled.')
 
-    def _dates_prepare(self):
+    def _start_end_dates_prepare(self):
         """
             Prepare project start or end date, looking into tasks list
             and depending on project calculation_type
@@ -30,26 +31,21 @@ class ProjectProject(models.Model):
         """
         vals = {}
         self.ensure_one()
-        # Here we consider all project task, the ones in a stage with
-        # fold = False and the ones with fold = True
+        if not self.tasks:
+            return vals
         from_string = fields.Datetime.from_string
-        to_string = fields.Date.to_string
-        min_date_start = False
-        max_date_end = False
-        for task in self.tasks:
-            if not task.date_start and not task.date_end:
-                continue
-            date_start = from_string(task.date_start or task.date_end)
-            date_end = from_string(task.date_end or task.date_start)
-            if not min_date_start or min_date_start > date_start:
-                min_date_start = date_start
-            if not max_date_end or max_date_end < date_end:
-                max_date_end = date_end
+        # Here we consider all project task, the ones in a stage with
+        # include_in_recalculate = False and the ones with
+        # include_in_recalculate = True
+        start_task = min(self.tasks,
+                         key=lambda t: from_string(t.date_start or t.date_end))
+        end_task = max(self.tasks,
+                       key=lambda t: from_string(t.date_end or t.date_start))
         # Assign min/max dates if available
-        if self.calculation_type == 'date_begin' and max_date_end:
-            vals['date'] = to_string(max_date_end)
-        if self.calculation_type == 'date_end' and min_date_start:
-            vals['date_start'] = to_string(min_date_start)
+        if self.calculation_type == 'date_begin' and end_task.date_end:
+            vals['date'] = end_task.date_end[:DATE_LENGTH]
+        if self.calculation_type == 'date_end' and start_task.date_start:
+            vals['date_start'] = start_task.date_start[:DATE_LENGTH]
         return vals
 
     @api.multi
@@ -73,7 +69,7 @@ class ProjectProject(models.Model):
             if project.calculation_type != 'none':
                 for task in project.tasks:
                     task.task_recalculate()
-                vals = project._dates_prepare()
+                vals = project._start_end_dates_prepare()
                 if vals:
                     project.write(vals)
         return True
