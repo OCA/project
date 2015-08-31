@@ -33,11 +33,16 @@ When calculating task dates, this addon will look for a working calendar in this
 * If no working calendar found, then every day is workable and work starts at
   08:00 and ends at 18:00
 
+Also you can define which task stages are included in recalculation when
+'Project recalculate' button is clicked. By default, all are included.
+To change this go to Project > Configuration > Stages > Task Stages and change
+'Include in project recalculate' field
+
 
 Usage
 =====
 
-There are two calcutation modes:
+There are two calculation modes:
 
 * **Date begin**: Task start/end dates are recalculated from project's date begin
 * **Date end**: Task start/end dates are recalculated from project's date end

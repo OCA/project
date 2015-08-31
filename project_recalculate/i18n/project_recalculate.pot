@@ -1,13 +1,13 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#   * project_recalculate
+#	* project_recalculate
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-07-01 09:02+0000\n"
-"PO-Revision-Date: 2015-07-01 09:02+0000\n"
+"POT-Creation-Date: 2015-08-31 15:32+0000\n"
+"PO-Revision-Date: 2015-08-31 15:32+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -36,22 +36,22 @@ msgid "Cancel"
 msgstr ""
 
 #. module: project_recalculate
-#: code:addons/project_recalculate/models/project_project.py:81
-#: code:addons/project_recalculate/wizard/recalculate_wizard.py:44
+#: code:addons/project_recalculate/models/project_project.py:63
+#: code:addons/project_recalculate/wizard/recalculate_wizard.py:26
 #, python-format
 msgid "Cannot recalculate project because your project don't have calculation type."
 msgstr ""
 
 #. module: project_recalculate
-#: code:addons/project_recalculate/models/project_project.py:87
-#: code:addons/project_recalculate/wizard/recalculate_wizard.py:50
+#: code:addons/project_recalculate/models/project_project.py:71
+#: code:addons/project_recalculate/wizard/recalculate_wizard.py:32
 #, python-format
 msgid "Cannot recalculate project because your project don't have date end."
 msgstr ""
 
 #. module: project_recalculate
-#: code:addons/project_recalculate/models/project_project.py:84
-#: code:addons/project_recalculate/wizard/recalculate_wizard.py:47
+#: code:addons/project_recalculate/models/project_project.py:67
+#: code:addons/project_recalculate/wizard/recalculate_wizard.py:29
 #, python-format
 msgid "Cannot recalculate project because your project don't have date start."
 msgstr ""
@@ -92,8 +92,20 @@ msgid "Date reference"
 msgstr ""
 
 #. module: project_recalculate
+#: code:addons/project_recalculate/models/project_task.py:183
+#, python-format
+msgid "End Date field must be defined."
+msgstr ""
+
+#. module: project_recalculate
 #: field:project.task,estimated_days:0
 msgid "Estimated days"
+msgstr ""
+
+#. module: project_recalculate
+#: code:addons/project_recalculate/models/project_task.py:27
+#, python-format
+msgid "Estimated days must be greater than 0."
 msgstr ""
 
 #. module: project_recalculate
@@ -117,6 +129,16 @@ msgid "ID"
 msgstr ""
 
 #. module: project_recalculate
+#: help:project.task.type,include_in_recalculate:0
+msgid "If you mark this check, tasks that are in this stage will be selectable for recalculating their dates when user click on 'Recalculate project' button."
+msgstr ""
+
+#. module: project_recalculate
+#: field:project.task.type,include_in_recalculate:0
+msgid "Include in project recalculate"
+msgstr ""
+
+#. module: project_recalculate
 #: field:project.recalculate.wizard,write_uid:0
 msgid "Last Updated by"
 msgstr ""
@@ -124,6 +146,11 @@ msgstr ""
 #. module: project_recalculate
 #: field:project.recalculate.wizard,write_date:0
 msgid "Last Updated on"
+msgstr ""
+
+#. module: project_recalculate
+#: selection:project.project,calculation_type:0
+msgid "No calculation"
 msgstr ""
 
 #. module: project_recalculate
@@ -158,8 +185,24 @@ msgid "Recalculate project"
 msgstr ""
 
 #. module: project_recalculate
+#: model:ir.model,name:project_recalculate.model_resource_calendar
+msgid "Resource Calendar"
+msgstr ""
+
+#. module: project_recalculate
+#: code:addons/project_recalculate/models/project_task.py:178
+#, python-format
+msgid "Start Date field must be defined."
+msgstr ""
+
+#. module: project_recalculate
 #: model:ir.model,name:project_recalculate.model_project_task
 msgid "Task"
+msgstr ""
+
+#. module: project_recalculate
+#: model:ir.model,name:project_recalculate.model_project_task_type
+msgid "Task Stage"
 msgstr ""
 
 #. module: project_recalculate
@@ -168,24 +211,12 @@ msgid "This Project task will be recalculated the reference data:"
 msgstr ""
 
 #. module: project_recalculate
-#: field:res.company,workday_begin:0
-msgid "Workday Begin"
+#: view:project.project:project_recalculate.edit_project_recalculate
+msgid "{'readonly': [('calculation_type', '=', 'date_begin')]}"
 msgstr ""
 
 #. module: project_recalculate
-#: code:addons/project_recalculate/models/res_company.py:37
-#, python-format
-msgid "Workday Begin value must be between 00:00 and 23:00"
-msgstr ""
-
-#. module: project_recalculate
-#: code:addons/project_recalculate/models/res_company.py:44
-#, python-format
-msgid "Workday End value must be between 01:00 and 23:59"
-msgstr ""
-
-#. module: project_recalculate
-#: field:res.company,workday_end:0
-msgid "Workday End"
+#: view:project.project:project_recalculate.edit_project_recalculate
+msgid "{'readonly': [('calculation_type', '=', 'date_end')]}"
 msgstr ""
 

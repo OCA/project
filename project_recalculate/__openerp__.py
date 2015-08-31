@@ -35,6 +35,7 @@
     'data': [
         "views/project_project_view.xml",
         "views/project_task_view.xml",
+        "views/project_task_stage_view.xml",
         "wizard/recalculate_wizard.xml",
     ],
     "installable": True,

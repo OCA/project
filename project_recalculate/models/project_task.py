@@ -18,7 +18,7 @@ class ProjectTask(models.Model):
         string='Estimated days', help='Estimated days to end', default=1,
         oldname='anticipation_days')
     include_in_recalculate = fields.Boolean(
-        related="state_id.include_in_recalculate")
+        related="stage_id.include_in_recalculate")
 
     @api.one
     @api.constrains('estimated_days')
