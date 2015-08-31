@@ -11,17 +11,18 @@ from openerp.tools.translate import _
 class ProjectRecalculateWizard(models.TransientModel):
     _name = 'project.recalculate.wizard'
 
-    project = fields.Many2one(comodel_name='project.project', readonly=True)
+    project_id = fields.Many2one(
+        comodel_name='project.project', readonly=True, string="Project")
     calculation_type = fields.Selection(
-        string='Calculation type', related='project.calculation_type',
+        string='Calculation type', related='project_id.calculation_type',
         readonly=True)
     project_date = fields.Date(readonly=True)
 
     @api.model
     def default_get(self, fields_list):
         res = super(ProjectRecalculateWizard, self).default_get(fields_list)
-        res['project'] = self.env.context.get('active_id', False)
-        project = self.env['project.project'].browse(res['project'])
+        res['project_id'] = self.env.context.get('active_id', False)
+        project = self.env['project.project'].browse(res['project_id'])
         if not project.calculation_type:
             raise Warning(_('Cannot recalculate project because your project '
                             'don\'t have calculation type.'))
@@ -38,4 +39,4 @@ class ProjectRecalculateWizard(models.TransientModel):
 
     @api.one
     def confirm_button(self):
-        return self.project.project_recalculate()
+        return self.project_id.project_recalculate()

@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-31 15:32+0000\n"
-"PO-Revision-Date: 2015-08-31 15:32+0000\n"
+"POT-Creation-Date: 2015-08-31 17:35+0000\n"
+"PO-Revision-Date: 2015-08-31 17:35+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -36,22 +36,22 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #. module: project_recalculate
-#: code:addons/project_recalculate/models/project_project.py:63
-#: code:addons/project_recalculate/wizard/recalculate_wizard.py:26
+#: code:addons/project_recalculate/models/project_project.py:59
+#: code:addons/project_recalculate/wizard/recalculate_wizard.py:27
 #, python-format
 msgid "Cannot recalculate project because your project don't have calculation type."
 msgstr "No se puede recaulcular el projecto porque tu projecto no tiene tipo de cálculo."
 
 #. module: project_recalculate
-#: code:addons/project_recalculate/models/project_project.py:71
-#: code:addons/project_recalculate/wizard/recalculate_wizard.py:32
+#: code:addons/project_recalculate/models/project_project.py:67
+#: code:addons/project_recalculate/wizard/recalculate_wizard.py:33
 #, python-format
 msgid "Cannot recalculate project because your project don't have date end."
 msgstr "No se puede recalcular el proyecto porque no tiene fecha de fin."
 
 #. module: project_recalculate
-#: code:addons/project_recalculate/models/project_project.py:67
-#: code:addons/project_recalculate/wizard/recalculate_wizard.py:29
+#: code:addons/project_recalculate/models/project_project.py:63
+#: code:addons/project_recalculate/wizard/recalculate_wizard.py:30
 #, python-format
 msgid "Cannot recalculate project because your project don't have date start."
 msgstr "No se puede recalcular el proyecto porque no tiene fecha de inicio."
@@ -120,8 +120,8 @@ msgstr "Días desde"
 
 #. module: project_recalculate
 #: help:project.project,calculation_type:0
-msgid "How to calculate tasks with date start or date end references"
-msgstr "Cómo organizar las tareas; con la fecha de inicio o con la fecha de fin como referencia"
+msgid "How to calculate tasks, with date start or date end references. If not set, \"Recalculate project\" button is disabled."
+msgstr "Cómo organizar las tareas, con la fecha de inicio o con la fecha de fin como referencia. Si no se configura, el botón \"Recalcular projecto\" se deshabilita."
 
 #. module: project_recalculate
 #: field:project.recalculate.wizard,id:0
@@ -149,13 +149,8 @@ msgid "Last Updated on"
 msgstr "Última actualización en"
 
 #. module: project_recalculate
-#: selection:project.project,calculation_type:0
-msgid "No calculation"
-msgstr "Deshabilitado"
-
-#. module: project_recalculate
 #: model:ir.model,name:project_recalculate.model_project_project
-#: field:project.recalculate.wizard,project:0
+#: field:project.recalculate.wizard,project_id:0
 msgid "Project"
 msgstr "Proyecto"
 
