@@ -1,28 +1,54 @@
-# Translation of OpenERP Server.
+# Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* project_sla
-#
+# * project_sla
+# 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: OpenERP Server 8.0alpha1\n"
+"Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-03 12:05+0000\n"
-"PO-Revision-Date: 2014-07-03 16:15-0000\n"
-"Last-Translator: <>\n"
-"Language-Team: \n"
+"POT-Creation-Date: 2015-08-31 18:04+0000\n"
+"PO-Revision-Date: 2015-07-21 19:20+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
+"Language-Team: Portuguese (http://www.transifex.com/oca/OCA-project-8-0/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: \n"
+"Content-Transfer-Encoding: \n"
 "Language: pt\n"
-"X-Generator: Poedit 1.6.5\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: project_sla
+#: view:project.sla.report:project_sla.view_project_sla_report_tree
+msgid "# of Achieved Lines"
+msgstr ""
+
+#. module: project_sla
+#: view:project.sla.report:project_sla.view_project_sla_report_tree
+msgid "# of Failed Lines"
+msgstr ""
+
+#. module: project_sla
+#: view:project.sla.report:project_sla.view_project_sla_report_tree
+msgid "# of Lines"
+msgstr ""
 
 #. module: project_sla
 #: selection:project.issue,sla_state:0
 #: selection:project.sla.control,sla_state:0
 #: selection:project.sla.controlled,sla_state:0
+#: selection:project.sla.report,sla_state:0 selection:project.task,sla_state:0
 msgid "Achieved"
 msgstr "Cumpre"
+
+#. module: project_sla
+#: field:project.sla.report,achieved_count:0
+msgid "Achieved Count"
+msgstr ""
+
+#. module: project_sla
+#: field:project.sla.report,achieved_perc:0
+msgid "Achieved Percent"
+msgstr ""
 
 #. module: project_sla
 #: field:project.sla.control,sla_achieved:0
@@ -35,11 +61,6 @@ msgid "Active"
 msgstr "Ativo"
 
 #. module: project_sla
-#: view:project.project:0
-msgid "Administration"
-msgstr "Administração"
-
-#. module: project_sla
 #: model:ir.model,name:project_sla.model_account_analytic_account
 msgid "Analytic Account"
 msgstr "Conta Analítica"
@@ -49,10 +70,7 @@ msgstr "Conta Analítica"
 msgid ""
 "Apply only if this expression is evaluated to True. The document fields can "
 "be accessed using either o, obj or object. Example: obj.priority <= '2'"
-msgstr ""
-"Aplicar somente se esta expressão é avaliada como True. Os campos do "
-"documento pode ser acedidos usando o, obj ou objeto. Example: obj.priority "
-"<= '2'"
+msgstr "Aplicar somente se esta expressão é avaliada como True. Os campos do documento pode ser acedidos usando o, obj ou objeto. Example: obj.priority <= '2'"
 
 #. module: project_sla
 #: field:project.sla.control,sla_close_date:0
@@ -65,7 +83,7 @@ msgid "Condition"
 msgstr "Condição"
 
 #. module: project_sla
-#: view:project.sla:0 field:project.sla,analytic_ids:0
+#: view:project.sla:project_sla.view_sla_form field:project.sla,analytic_ids:0
 msgid "Contracts"
 msgstr "Contratos"
 
@@ -75,12 +93,25 @@ msgid "Control Date"
 msgstr "Data de controlo"
 
 #. module: project_sla
+#: field:project.sla,create_uid:0 field:project.sla.control,create_uid:0
+#: field:project.sla.line,create_uid:0
+msgid "Created by"
+msgstr ""
+
+#. module: project_sla
+#: field:project.sla,create_date:0 field:project.sla.control,create_date:0
+#: field:project.sla.line,create_date:0
+msgid "Created on"
+msgstr ""
+
+#. module: project_sla
 #: help:project.sla,control_field_id:0
 msgid "Date field used to check if the SLA was achieved."
 msgstr "Campo de data usado para validar se o SLA foi alcançado."
 
 #. module: project_sla
-#: field:project.sla,sla_line_ids:0 view:project.sla.line:0
+#: field:project.sla,sla_line_ids:0
+#: view:project.sla.line:project_sla.view_sla_lines_tree
 msgid "Definitions"
 msgstr "Definições"
 
@@ -91,11 +122,14 @@ msgstr "ID Documento"
 
 #. module: project_sla
 #: field:project.sla.control,doc_model:0
+#: view:project.sla.report:project_sla.view_project_sla_report_search
+#: field:project.sla.report,document_model_id:0
 msgid "Document Model"
 msgstr "Modelo de Documento"
 
 #. module: project_sla
-#: view:project.issue:0
+#: view:project.issue:project_sla.project_issue_form_view_sla
+#: view:project.task:project_sla.project_task_form_view_sla
 msgid "Extra Info"
 msgstr "Informação Extra"
 
@@ -103,13 +137,24 @@ msgstr "Informação Extra"
 #: selection:project.issue,sla_state:0
 #: selection:project.sla.control,sla_state:0
 #: selection:project.sla.controlled,sla_state:0
+#: selection:project.sla.report,sla_state:0 selection:project.task,sla_state:0
 msgid "Failed"
 msgstr "Não cumpre"
+
+#. module: project_sla
+#: field:project.sla.report,failed_count:0
+msgid "Failed Count"
+msgstr ""
 
 #. module: project_sla
 #: field:project.sla,control_model:0
 msgid "For documents"
 msgstr "Para documentos"
+
+#. module: project_sla
+#: view:project.sla.report:project_sla.view_project_sla_report_search
+msgid "Group By..."
+msgstr ""
 
 #. module: project_sla
 #: field:project.sla.line,limit_qty:0
@@ -122,9 +167,39 @@ msgid "Hours to Warn"
 msgstr "Horas para Aviso"
 
 #. module: project_sla
+#: field:project.sla,id:0 field:project.sla.control,id:0
+#: field:project.sla.controlled,id:0 field:project.sla.line,id:0
+#: field:project.sla.report,id:0
+msgid "ID"
+msgstr ""
+
+#. module: project_sla
+#: field:project.sla.report,sla_closed:0
+msgid "Is Closed"
+msgstr ""
+
+#. module: project_sla
+#: field:project.sla,write_uid:0 field:project.sla.control,write_uid:0
+#: field:project.sla.line,write_uid:0
+msgid "Last Updated by"
+msgstr ""
+
+#. module: project_sla
+#: field:project.sla,write_date:0 field:project.sla.control,write_date:0
+#: field:project.sla.line,write_date:0
+msgid "Last Updated on"
+msgstr ""
+
+#. module: project_sla
 #: field:project.sla.control,sla_limit_date:0
 msgid "Limit Date"
 msgstr "Data Limite"
+
+#. module: project_sla
+#: view:project.sla.report:project_sla.view_project_sla_report_search
+#: field:project.sla.report,date_month:0
+msgid "Month"
+msgstr ""
 
 #. module: project_sla
 #: model:ir.model,name:project_sla.model_project_issue
@@ -132,17 +207,28 @@ msgid "Project Issue"
 msgstr "Incidente do Projeto"
 
 #. module: project_sla
-#: view:account.analytic.account:0
+#: model:ir.model,name:project_sla.model_project_sla_report
+msgid "Project SLA report"
+msgstr ""
+
+#. module: project_sla
+#: view:project.sla.report:project_sla.view_project_sla_report_search
+#: field:project.sla.report,date_quarter:0
+msgid "Quarter"
+msgstr ""
+
+#. module: project_sla
+#: view:account.analytic.account:project_sla.view_account_analytic_account_form_sla
 msgid "Reapply"
 msgstr "Reprocessar"
 
 #. module: project_sla
-#: view:project.sla:0
+#: view:project.sla:project_sla.view_sla_form
 msgid "Reapply SLA on Contracts"
 msgstr "Reprocessar SLA para Contratos"
 
 #. module: project_sla
-#: view:account.analytic.account:0
+#: view:account.analytic.account:project_sla.view_account_analytic_account_form_sla
 msgid "Reapply the SLAs to all Contract's documents."
 msgstr "Reprocessar os SLAs para todos os documentos do Contrato."
 
@@ -172,13 +258,23 @@ msgid "Response in two business days"
 msgstr "Resposta em dois dias úteis"
 
 #. module: project_sla
-#: view:project.sla:0
+#: view:project.sla:project_sla.view_sla_form
 msgid "Rules"
 msgstr "Regras"
 
 #. module: project_sla
+#: model:ir.actions.act_window,name:project_sla.action_project_sla_report
+#: model:ir.ui.menu,name:project_sla.menu_project_sla_report
+#: view:project.sla.report:project_sla.view_project_sla_report_graph
+#: view:project.sla.report:project_sla.view_project_sla_report_search
+#: view:project.sla.report:project_sla.view_project_sla_report_tree
+msgid "SLA Analysis"
+msgstr ""
+
+#. module: project_sla
 #: field:project.issue,sla_control_ids:0
 #: field:project.sla.controlled,sla_control_ids:0
+#: field:project.task,sla_control_ids:0
 msgid "SLA Control"
 msgstr "Controlo SLA"
 
@@ -193,22 +289,42 @@ msgid "SLA Controlled Document"
 msgstr "Documento Controlado SLA"
 
 #. module: project_sla
-#: view:project.sla:0 field:project.sla.line,sla_id:0
+#: model:ir.model,name:project_sla.model_project_sla
+#: view:project.sla:project_sla.view_sla_form field:project.sla.line,sla_id:0
 msgid "SLA Definition"
 msgstr "Definição de SLA"
 
 #. module: project_sla
-#: view:project.issue:0 field:project.issue,sla_state:0
-#: field:project.sla.control,sla_state:0
+#: view:project.sla.report:project_sla.view_project_sla_report_search
+#: field:project.sla.report,sla_line_name:0
+msgid "SLA Line Name"
+msgstr ""
+
+#. module: project_sla
+#: view:project.sla.report:project_sla.view_project_sla_report_search
+#: field:project.sla.report,sla_name:0
+msgid "SLA Name"
+msgstr ""
+
+#. module: project_sla
+#: view:project.sla.report:project_sla.view_project_sla_report_search
+#: field:project.sla.report,sla_state:0
+msgid "SLA State"
+msgstr ""
+
+#. module: project_sla
+#: view:project.issue:project_sla.view_project_issue_filter_sdesk
+#: field:project.issue,sla_state:0 field:project.sla.control,sla_state:0
 #: field:project.sla.controlled,sla_state:0
+#: view:project.task:project_sla.view_project_task_filter_sdesk
+#: field:project.task,sla_state:0
 msgid "SLA Status"
 msgstr "Estado SLA"
 
 #. module: project_sla
 #: help:project.sla.control,locked:0
 msgid "Safeguard manual changes from future automatic recomputations."
-msgstr ""
-"Salvaguardar as alterações manuais contra futuro reprocessamento automatico"
+msgstr "Salvaguardar as alterações manuais contra futuro reprocessamento automatico"
 
 #. module: project_sla
 #: field:project.sla.line,sequence:0
@@ -221,22 +337,24 @@ msgid "Service Agreement"
 msgstr "Serviço Acordado"
 
 #. module: project_sla
-#: view:project.sla.control:0
+#: view:project.sla.control:project_sla.view_sla_control_tree
 msgid "Service Level"
 msgstr "Nível de Serviço"
 
 #. module: project_sla
-#: view:account.analytic.account:0 field:account.analytic.account,sla_ids:0
+#: view:account.analytic.account:project_sla.view_account_analytic_account_form_sla
+#: field:account.analytic.account,sla_ids:0
 msgid "Service Level Agreement"
 msgstr "Nível de Serviço Acordado"
 
 #. module: project_sla
-#: view:project.issue:0
+#: view:project.issue:project_sla.project_issue_form_view_sla
+#: view:project.task:project_sla.project_task_form_view_sla
 msgid "Service Levels"
 msgstr "Níveis de Serviço"
 
 #. module: project_sla
-#: view:project.issue:0
+#: view:project.task:project_sla.view_project_task_filter_sdesk
 msgid "Stage"
 msgstr "Etapa"
 
@@ -256,14 +374,25 @@ msgid "Start Date"
 msgstr "Data de Inicio"
 
 #. module: project_sla
+#: model:ir.model,name:project_sla.model_project_task
+msgid "Task"
+msgstr "Tarefa"
+
+#. module: project_sla
 #: field:project.sla,name:0 field:project.sla.line,name:0
 msgid "Title"
 msgstr "Título"
 
 #. module: project_sla
+#: field:project.sla.report,total_count:0
+msgid "Total Count"
+msgstr ""
+
+#. module: project_sla
 #: selection:project.issue,sla_state:0
 #: selection:project.sla.control,sla_state:0
 #: selection:project.sla.controlled,sla_state:0
+#: selection:project.sla.report,sla_state:0 selection:project.task,sla_state:0
 msgid "Warning"
 msgstr "Aviso"
 
@@ -276,22 +405,26 @@ msgstr "Data de Aviso"
 #: selection:project.issue,sla_state:0
 #: selection:project.sla.control,sla_state:0
 #: selection:project.sla.controlled,sla_state:0
+#: selection:project.sla.report,sla_state:0 selection:project.task,sla_state:0
 msgid "Watching"
 msgstr "Em Analise"
+
+#. module: project_sla
+#: view:project.sla.report:project_sla.view_project_sla_report_search
+#: field:project.sla.report,date_week:0
+msgid "Week"
+msgstr ""
 
 #. module: project_sla
 #: selection:project.issue,sla_state:0
 #: selection:project.sla.control,sla_state:0
 #: selection:project.sla.controlled,sla_state:0
+#: selection:project.sla.report,sla_state:0 selection:project.task,sla_state:0
 msgid "Will Fail"
 msgstr "Não Cumprirá"
 
 #. module: project_sla
-#: model:ir.model,name:project_sla.model_project_sla
-msgid "project.sla"
-msgstr "project.sla"
-
-#. module: project_sla
-#: model:ir.model,name:project_sla.model_project_sla_line
-msgid "project.sla.line"
-msgstr "project.sla.line"
+#: view:project.sla.report:project_sla.view_project_sla_report_search
+#: field:project.sla.report,date_year:0
+msgid "Year"
+msgstr ""

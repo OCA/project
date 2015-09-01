@@ -1,21 +1,21 @@
-# Translation of OpenERP Server.
+# Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* project_categ_issue
-#
+# * project_categ_issue
+# 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: OpenERP Server 8.0alpha1\n"
+"Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-04 08:41+0000\n"
-"PO-Revision-Date: 2014-07-04 09:43-0000\n"
-"Last-Translator: <>\n"
-"Language-Team: \n"
+"POT-Creation-Date: 2015-08-31 18:04+0000\n"
+"PO-Revision-Date: 2015-07-21 19:21+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
+"Language-Team: Portuguese (http://www.transifex.com/oca/OCA-project-8-0/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: \n"
+"Content-Transfer-Encoding: \n"
 "Language: pt\n"
-"X-Generator: Poedit 1.6.5\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: project_categ_issue
 #: field:project.issue,issue_categ_id:0
@@ -38,11 +38,11 @@ msgid "Root Category for Issues"
 msgstr "Categoria Raiz para Incidentes"
 
 #. module: project_categ_issue
-#: view:project.issue:0
+#: view:project.issue:project_categ_issue.project_issue_form_view_categs
 msgid "onchange_project(project_id)"
 msgstr "onchange_project(project_id)"
 
 #. module: project_categ_issue
-#: view:project.issue:0
+#: view:project.issue:project_categ_issue.project_issue_form_view_categs
 msgid "{'required':[('issue_categ_id','!=',False)]}"
 msgstr "{'required':[('issue_categ_id','!=',False)]}"

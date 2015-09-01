@@ -1,21 +1,21 @@
-# Translation of OpenERP Server.
+# Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* project_gtd
-#
+# * project_gtd
+# 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: OpenERP Server 6.0dev\n"
+"Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-06 12:30+0200\n"
-"PO-Revision-Date: 2015-08-06 12:30+0200\n"
-"Last-Translator: Matjaz Mozetic <m.mozetic@matmoz.si>\n"
-"Language-Team: \n"
-"Language: es_EC\n"
+"POT-Creation-Date: 2015-08-31 18:04+0000\n"
+"PO-Revision-Date: 2015-07-21 19:20+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
+"Language-Team: Spanish (Ecuador) (http://www.transifex.com/oca/OCA-project-8-0/language/es_EC/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-04-22 07:06+0000\n"
-"X-Generator: Poedit 1.8.2\n"
+"Content-Transfer-Encoding: \n"
+"Language: es_EC\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: project_gtd
 #: view:project.timebox.fill.plan:project_gtd.view_project_gtd_fill
@@ -26,6 +26,11 @@ msgstr "Añadir al período de tiempo"
 #: view:project.timebox.fill.plan:project_gtd.view_project_gtd_fill
 msgid "Cancel"
 msgstr "Cancelar"
+
+#. module: project_gtd
+#: model:project.gtd.context,name:project_gtd.context_car
+msgid "Car"
+msgstr ""
 
 #. module: project_gtd
 #: model:ir.model,name:project_gtd.model_project_gtd_context
@@ -45,33 +50,27 @@ msgstr "Contextos"
 
 #. module: project_gtd
 #: model:ir.actions.act_window,help:project_gtd.open_gtd_context_tree
-#, fuzzy
 msgid ""
 "Contexts are defined in the \"Getting Things Done\" methodology. It allows "
 "you to categorize your tasks according to the context in which they have to "
 "be done: at the office, at home, when I take my car, etc."
 msgstr ""
-"Los contextos se definen en la metodología \"Getting Things Done\". Le "
-"permite categorizar sus tareas de acuerdo al contexto en el que tienen que "
-"ser realizadas: en la oficinal, en casa, al coger el coche, etc."
 
 #. module: project_gtd
 #: field:project.gtd.context,create_uid:0
 #: field:project.gtd.timebox,create_uid:0
 #: field:project.timebox.empty,create_uid:0
 #: field:project.timebox.fill.plan,create_uid:0
-#, fuzzy
 msgid "Created by"
-msgstr "Creado por"
+msgstr ""
 
 #. module: project_gtd
 #: field:project.gtd.context,create_date:0
 #: field:project.gtd.timebox,create_date:0
 #: field:project.timebox.empty,create_date:0
 #: field:project.timebox.fill.plan,create_date:0
-#, fuzzy
 msgid "Created on"
-msgstr "Creado el"
+msgstr ""
 
 #. module: project_gtd
 #: model:ir.actions.act_window,name:project_gtd.action_project_gtd_empty
@@ -80,59 +79,61 @@ msgid "Empty Timebox"
 msgstr "Período de tiempo vacío"
 
 #. module: project_gtd
+#: code:addons/project_gtd/wizard/project_gtd_empty.py:52
+#, python-format
+msgid "Error!"
+msgstr ""
+
+#. module: project_gtd
 #: field:project.timebox.fill.plan,timebox_id:0
 msgid "Get from Timebox"
 msgstr "Obtener desde período de tiempo"
 
 #. module: project_gtd
 #: help:project.gtd.context,sequence:0
-#, fuzzy
 msgid "Gives the sequence order when displaying a list of contexts."
-msgstr "Indica el orden de secuencia cuando se muestra una lista de contextos."
+msgstr ""
 
 #. module: project_gtd
 #: help:project.gtd.timebox,sequence:0
-#, fuzzy
 msgid "Gives the sequence order when displaying a list of timebox."
 msgstr ""
-"Indica el orden de secuencia cuando se muestra una lista de periodos de "
-"tiempo."
+
+#. module: project_gtd
+#: model:project.gtd.context,name:project_gtd.context_home
+msgid "Home"
+msgstr ""
 
 #. module: project_gtd
 #: field:project.gtd.context,id:0 field:project.gtd.timebox,id:0
 #: field:project.timebox.empty,id:0 field:project.timebox.fill.plan,id:0
-#, fuzzy
 msgid "ID"
-msgstr "Id"
+msgstr ""
 
 #. module: project_gtd
 #: view:project.task:project_gtd.view_task_gtd_search
-#, fuzzy
 msgid "Last Message"
-msgstr "Fecha del último mensaje publicado en el registro."
+msgstr ""
 
 #. module: project_gtd
 #: field:project.gtd.context,write_uid:0 field:project.gtd.timebox,write_uid:0
 #: field:project.timebox.empty,write_uid:0
 #: field:project.timebox.fill.plan,write_uid:0
-#, fuzzy
 msgid "Last Updated by"
-msgstr "Última Actualización por"
+msgstr ""
 
 #. module: project_gtd
 #: field:project.gtd.context,write_date:0
 #: field:project.gtd.timebox,write_date:0
 #: field:project.timebox.empty,write_date:0
 #: field:project.timebox.fill.plan,write_date:0
-#, fuzzy
 msgid "Last Updated on"
-msgstr "Última Actualización el"
+msgstr ""
 
 #. module: project_gtd
 #: model:project.gtd.timebox,name:project_gtd.timebox_lt
-#, fuzzy
 msgid "Long Term"
-msgstr "Largo plazo"
+msgstr ""
 
 #. module: project_gtd
 #: model:ir.actions.act_window,name:project_gtd.open_gtd_task
@@ -142,15 +143,19 @@ msgstr ""
 
 #. module: project_gtd
 #: field:project.timebox.empty,name:0
-#, fuzzy
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
+
+#. module: project_gtd
+#: code:addons/project_gtd/wizard/project_gtd_empty.py:52
+#, python-format
+msgid "No timebox child of this one!"
+msgstr ""
 
 #. module: project_gtd
 #: model:project.gtd.context,name:project_gtd.context_office
-#, fuzzy
 msgid "Office"
-msgstr "Oficina"
+msgstr ""
 
 #. module: project_gtd
 #: model:ir.actions.act_window,name:project_gtd.action_project_gtd_fill
@@ -160,15 +165,13 @@ msgstr "Planifica período de tiempo"
 
 #. module: project_gtd
 #: model:ir.model,name:project_gtd.model_project_timebox_empty
-#, fuzzy
 msgid "Project Timebox Empty"
-msgstr "Periodo de tiempo del proyecto vacío"
+msgstr ""
 
 #. module: project_gtd
 #: model:ir.model,name:project_gtd.model_project_timebox_fill_plan
-#, fuzzy
 msgid "Project Timebox Fill"
-msgstr "Periodo de tiempo del proyecto lleno"
+msgstr ""
 
 #. module: project_gtd
 #: field:project.gtd.context,sequence:0 field:project.gtd.timebox,sequence:0
@@ -182,16 +185,14 @@ msgstr "Cambiar al período de tiempo"
 
 #. module: project_gtd
 #: model:ir.model,name:project_gtd.model_project_task
-#, fuzzy
 msgid "Task"
-msgstr "Tarea"
+msgstr ""
 
 #. module: project_gtd
 #: model:ir.actions.act_window,name:project_gtd.open_gtd_all_tasks
 #: model:ir.ui.menu,name:project_gtd.menu_open_gtd_timebox_all_tree
-#, fuzzy
 msgid "Tasks (GTD)"
-msgstr "Tareas"
+msgstr ""
 
 #. module: project_gtd
 #: field:project.timebox.fill.plan,task_ids:0
@@ -200,22 +201,18 @@ msgstr "Selección de tareas"
 
 #. module: project_gtd
 #: help:project.task,context_id:0
-#, fuzzy
 msgid "The context place where user has to treat task"
-msgstr "El lugar de contexto donde el usuario tiene que realizar la tarea."
+msgstr ""
 
 #. module: project_gtd
 #: model:project.gtd.timebox,name:project_gtd.timebox_weekly
-#, fuzzy
 msgid "This Week"
-msgstr "Esta semana"
+msgstr ""
 
 #. module: project_gtd
 #: help:project.task,timebox_id:0
-#, fuzzy
 msgid "Time-laps during which task has to be treated"
 msgstr ""
-"Iteraciones de tiempo durante las cuales la tarea tiene que ser realizada."
 
 #. module: project_gtd
 #: view:project.gtd.timebox:project_gtd.view_gtd_timebox_tree
@@ -232,9 +229,8 @@ msgstr "Definición períodos de tiempo"
 
 #. module: project_gtd
 #: view:project.timebox.empty:project_gtd.view_project_gtd_empty
-#, fuzzy
 msgid "Timebox Empty Process Completed Successfully."
-msgstr "El proceso de periodos de tiempo vacíos se ha realizado corretamente."
+msgstr ""
 
 #. module: project_gtd
 #: model:ir.actions.act_window,name:project_gtd.open_gtd_timebox_tree
@@ -245,162 +241,29 @@ msgstr "Períodos de tiempo"
 
 #. module: project_gtd
 #: model:ir.actions.act_window,help:project_gtd.open_gtd_timebox_tree
-#, fuzzy
 msgid ""
 "Timeboxes are defined in the \"Getting Things Done\" methodology. A timebox "
 "defines a period of time in order to categorize your tasks: today, this "
 "week, this month, long term."
 msgstr ""
-"Las 'timeboxes' se definen en la metodología \"Getting Things Done\". Una "
-"\"Timebox\" define un periodo de tiempo con la finalidad de categorizar sus "
-"tareas: hoy, esta semana, este mes, a largo plazo."
 
 #. module: project_gtd
 #: view:project.task:project_gtd.project_task
 #: view:project.task:project_gtd.project_task_tree
-#, fuzzy
 msgid "Timeframe"
-msgstr "Umbral de tiempo"
+msgstr ""
 
 #. module: project_gtd
 #: model:project.gtd.timebox,name:project_gtd.timebox_daily
-#, fuzzy
 msgid "Today"
-msgstr "Hoy"
+msgstr ""
 
 #. module: project_gtd
 #: model:project.gtd.context,name:project_gtd.context_travel
-#, fuzzy
 msgid "Travel"
-msgstr "Viajes"
+msgstr ""
 
 #. module: project_gtd
 #: view:project.timebox.fill.plan:project_gtd.view_project_gtd_fill
 msgid "or"
 msgstr ""
-
-#~ msgid "project.gtd.timebox"
-#~ msgstr "project.gtd.timebox"
-
-#~ msgid "Visible Columns"
-#~ msgstr "Columnas visibles"
-
-#~ msgid ""
-#~ "The Object name must start with x_ and not contain any special character !"
-#~ msgstr ""
-#~ "¡El nombre del objeto debe empezar con x_ y no contener ningún carácter "
-#~ "especial!"
-
-#~ msgid "My Deadlines"
-#~ msgstr "Mis fechas límite"
-
-#~ msgid "Monthly"
-#~ msgstr "Mensual"
-
-#~ msgid "Parent Timebox"
-#~ msgstr "Período de tiempo padre"
-
-#~ msgid "Invalid XML for View Architecture!"
-#~ msgstr "¡XML inválido para la definición de la vista!"
-
-#~ msgid "Priority"
-#~ msgstr "Prioridad"
-
-#~ msgid "My Inbox"
-#~ msgstr "Mi bandeja de entrada"
-
-#~ msgid "Default Project"
-#~ msgstr "Proyecto por defecto"
-
-#~ msgid "Invalid model name in the action definition."
-#~ msgstr "Nombre de modelo no válido en la definición de acción."
-
-#~ msgid "Context 4"
-#~ msgstr "Contexto 4"
-
-#~ msgid "Other"
-#~ msgstr "Otro"
-
-#~ msgid "Inbox Tasks"
-#~ msgstr "Tareas bandeja de entrada"
-
-#~ msgid "Getting Things Done - Time Management Module"
-#~ msgstr "Módulo gestión del tiempo - Conseguir las cosas terminadas (GTD)"
-
-#~ msgid "Timebox Tasks"
-#~ msgstr "Tareas período de tiempo"
-
-#~ msgid "Timebox tasks selection"
-#~ msgstr "Selección tareas del período de tiempo"
-
-#~ msgid "Type"
-#~ msgstr "Tipo"
-
-#~ msgid "Effective Hours"
-#~ msgstr "Horas reales"
-
-#~ msgid "My Pending Tasks"
-#~ msgstr "Mis tareas pendientes"
-
-#~ msgid "User"
-#~ msgstr "Usuario"
-
-#~ msgid "My Daily Timebox"
-#~ msgstr "Mi período de tiempo diario"
-
-#~ msgid "project.gtd.context"
-#~ msgstr "project.gtd.context"
-
-#~ msgid "Context 1"
-#~ msgstr "Contexto 1"
-
-#~ msgid "Context 2"
-#~ msgstr "Contexto 2"
-
-#~ msgid "Context 3"
-#~ msgstr "Contexto 3"
-
-#~ msgid "Context 5"
-#~ msgstr "Contexto 5"
-
-#~ msgid "Context 6"
-#~ msgstr "Contexto 6"
-
-#~ msgid "Daily"
-#~ msgstr "Diario"
-
-#~ msgid "Project"
-#~ msgstr "Proyecto"
-
-#~ msgid "My Timeboxes"
-#~ msgstr "Mis períodos de tiempo"
-
-#~ msgid "Planned"
-#~ msgstr "Planificado"
-
-#~ msgid "My Open Tasks"
-#~ msgstr "Mis tareas abiertas"
-
-#~ msgid "Time Management"
-#~ msgstr "Gestión del tiempo"
-
-#~ msgid "Getting Things Done"
-#~ msgstr "Conseguir las cosas terminadas"
-
-#~ msgid "Child Timeboxes"
-#~ msgstr "Períodos de tiempo hijos"
-
-#~ msgid "All My Timeboxes"
-#~ msgstr "Todos mis períodos de tiempo"
-
-#~ msgid "Deadline"
-#~ msgstr "Fecha límite"
-
-#~ msgid "Date Start"
-#~ msgstr "Fecha inicial"
-
-#~ msgid "Planned Hours"
-#~ msgstr "Horas planeadas"
-
-#~ msgid "Weekly"
-#~ msgstr "Semanal"

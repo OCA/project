@@ -1,21 +1,21 @@
-# Translation of OpenERP Server.
+# Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* project_gtd
-#
+# * project_gtd
+# 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: OpenERP Server 6.0dev\n"
+"Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-06 12:28+0200\n"
-"PO-Revision-Date: 2015-08-06 12:28+0200\n"
-"Last-Translator: Matjaz Mozetic <m.mozetic@matmoz.si>\n"
-"Language-Team: \n"
-"Language: bs\n"
+"POT-Creation-Date: 2015-08-31 18:04+0000\n"
+"PO-Revision-Date: 2015-07-21 19:21+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
+"Language-Team: Bosnian (http://www.transifex.com/oca/OCA-project-8-0/language/bs/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-04-22 07:06+0000\n"
-"X-Generator: Poedit 1.8.2\n"
+"Content-Transfer-Encoding: \n"
+"Language: bs\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #. module: project_gtd
 #: view:project.timebox.fill.plan:project_gtd.view_project_gtd_fill
@@ -26,6 +26,11 @@ msgstr ""
 #: view:project.timebox.fill.plan:project_gtd.view_project_gtd_fill
 msgid "Cancel"
 msgstr "Poništi"
+
+#. module: project_gtd
+#: model:project.gtd.context,name:project_gtd.context_car
+msgid "Car"
+msgstr ""
 
 #. module: project_gtd
 #: model:ir.model,name:project_gtd.model_project_gtd_context
@@ -74,6 +79,12 @@ msgid "Empty Timebox"
 msgstr ""
 
 #. module: project_gtd
+#: code:addons/project_gtd/wizard/project_gtd_empty.py:52
+#, python-format
+msgid "Error!"
+msgstr ""
+
+#. module: project_gtd
 #: field:project.timebox.fill.plan,timebox_id:0
 msgid "Get from Timebox"
 msgstr ""
@@ -86,6 +97,11 @@ msgstr ""
 #. module: project_gtd
 #: help:project.gtd.timebox,sequence:0
 msgid "Gives the sequence order when displaying a list of timebox."
+msgstr ""
+
+#. module: project_gtd
+#: model:project.gtd.context,name:project_gtd.context_home
+msgid "Home"
 msgstr ""
 
 #. module: project_gtd
@@ -131,6 +147,12 @@ msgid "Name"
 msgstr ""
 
 #. module: project_gtd
+#: code:addons/project_gtd/wizard/project_gtd_empty.py:52
+#, python-format
+msgid "No timebox child of this one!"
+msgstr ""
+
+#. module: project_gtd
 #: model:project.gtd.context,name:project_gtd.context_office
 msgid "Office"
 msgstr ""
@@ -163,16 +185,14 @@ msgstr ""
 
 #. module: project_gtd
 #: model:ir.model,name:project_gtd.model_project_task
-#, fuzzy
 msgid "Task"
-msgstr "Zadatak"
+msgstr ""
 
 #. module: project_gtd
 #: model:ir.actions.act_window,name:project_gtd.open_gtd_all_tasks
 #: model:ir.ui.menu,name:project_gtd.menu_open_gtd_timebox_all_tree
-#, fuzzy
 msgid "Tasks (GTD)"
-msgstr "Zadaci"
+msgstr ""
 
 #. module: project_gtd
 #: field:project.timebox.fill.plan,task_ids:0
@@ -199,9 +219,8 @@ msgstr ""
 #: field:project.gtd.timebox,name:0
 #: view:project.task:project_gtd.view_task_gtd_search
 #: field:project.task,timebox_id:0
-#, fuzzy
 msgid "Timebox"
-msgstr "Vremenski okvir"
+msgstr ""
 
 #. module: project_gtd
 #: view:project.gtd.timebox:project_gtd.view_gtd_timebox_form
@@ -248,81 +267,3 @@ msgstr ""
 #: view:project.timebox.fill.plan:project_gtd.view_project_gtd_fill
 msgid "or"
 msgstr ""
-
-#~ msgid "Invalid XML for View Architecture!"
-#~ msgstr "Neodgovarajući XML za arhitekturu prikaza!"
-
-#~ msgid "Priority"
-#~ msgstr "Prioritet"
-
-#~ msgid ""
-#~ "The Object name must start with x_ and not contain any special character !"
-#~ msgstr ""
-#~ "Naziv Objekta mora počinjati sa x_ i ne smije sadržavati specijalne "
-#~ "znakove!"
-
-#~ msgid "Monthly"
-#~ msgstr "Mjesečno"
-
-#~ msgid "My Deadlines"
-#~ msgstr "Moji Rokovi"
-
-#~ msgid "Eff. Hours"
-#~ msgstr "Efektivni Sati"
-
-#~ msgid "Other"
-#~ msgstr "Drugo"
-
-#~ msgid "Effective Hours"
-#~ msgstr "Efektivni Sati"
-
-#~ msgid "Context 4"
-#~ msgstr "Kontekst 4"
-
-#~ msgid "Default Project"
-#~ msgstr "Zadani Projekt"
-
-#~ msgid "User"
-#~ msgstr "Korisnik"
-
-#~ msgid "Error !"
-#~ msgstr "Greška !"
-
-#~ msgid "Type"
-#~ msgstr "Vrsta"
-
-#~ msgid "Context 1"
-#~ msgstr "Kontekst 1"
-
-#~ msgid "Context 2"
-#~ msgstr "Kontekst 2"
-
-#~ msgid "Daily"
-#~ msgstr "Dnevno"
-
-#~ msgid "Context 3"
-#~ msgstr "Kontekst 3"
-
-#~ msgid "Context 5"
-#~ msgstr "Kontekst 5"
-
-#~ msgid "Context 6"
-#~ msgstr "Kontekst 6"
-
-#~ msgid "Project"
-#~ msgstr "Projekt"
-
-#~ msgid "My Open Tasks"
-#~ msgstr "Moji Otvoreni Zadaci"
-
-#~ msgid "Planned"
-#~ msgstr "Planirano"
-
-#~ msgid "Deadline"
-#~ msgstr "Rok izvršenja"
-
-#~ msgid "Planned Hours"
-#~ msgstr "Planirani Sati"
-
-#~ msgid "Weekly"
-#~ msgstr "Sedmično"

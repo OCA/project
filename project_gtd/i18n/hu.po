@@ -1,21 +1,21 @@
-# Translation of OpenERP Server.
+# Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#    * project_gtd
-#
+# * project_gtd
+# 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: OpenERP Server 6.0dev\n"
+"Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-06 12:31+0200\n"
-"PO-Revision-Date: 2015-08-06 12:31+0200\n"
-"Last-Translator: Matjaz Mozetic <m.mozetic@matmoz.si>\n"
-"Language-Team: \n"
-"Language: hu\n"
+"POT-Creation-Date: 2015-08-31 18:04+0000\n"
+"PO-Revision-Date: 2015-07-21 19:21+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
+"Language-Team: Hungarian (http://www.transifex.com/oca/OCA-project-8-0/language/hu/)\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-04-22 07:06+0000\n"
-"X-Generator: Poedit 1.8.2\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: hu\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: project_gtd
 #: view:project.timebox.fill.plan:project_gtd.view_project_gtd_fill
@@ -26,6 +26,11 @@ msgstr "Időintervallumhoz adva"
 #: view:project.timebox.fill.plan:project_gtd.view_project_gtd_fill
 msgid "Cancel"
 msgstr "Visszavonás"
+
+#. module: project_gtd
+#: model:project.gtd.context,name:project_gtd.context_car
+msgid "Car"
+msgstr "Autó"
 
 #. module: project_gtd
 #: model:ir.model,name:project_gtd.model_project_gtd_context
@@ -49,34 +54,35 @@ msgid ""
 "Contexts are defined in the \"Getting Things Done\" methodology. It allows "
 "you to categorize your tasks according to the context in which they have to "
 "be done: at the office, at home, when I take my car, etc."
-msgstr ""
-"Időintervallumok meghatározása a \"Hajtsuk végre az ügyeket\" módszertan "
-"szerint. Lehetővé teszi a feladatok kategorizálását az elvégzés összefüggése "
-"értelmében: az irodában, otthon, ha kocsival vagyok, stb."
+msgstr "Időintervallumok meghatározása a \"Hajtsuk végre az ügyeket\" módszertan szerint. Lehetővé teszi a feladatok kategorizálását az elvégzés összefüggése értelmében: az irodában, otthon, ha kocsival vagyok, stb."
 
 #. module: project_gtd
 #: field:project.gtd.context,create_uid:0
 #: field:project.gtd.timebox,create_uid:0
 #: field:project.timebox.empty,create_uid:0
 #: field:project.timebox.fill.plan,create_uid:0
-#, fuzzy
 msgid "Created by"
-msgstr "Létrehozás dátuma"
+msgstr ""
 
 #. module: project_gtd
 #: field:project.gtd.context,create_date:0
 #: field:project.gtd.timebox,create_date:0
 #: field:project.timebox.empty,create_date:0
 #: field:project.timebox.fill.plan,create_date:0
-#, fuzzy
 msgid "Created on"
-msgstr "Létrehozás dátuma"
+msgstr ""
 
 #. module: project_gtd
 #: model:ir.actions.act_window,name:project_gtd.action_project_gtd_empty
 #: view:project.timebox.empty:project_gtd.view_project_gtd_empty
 msgid "Empty Timebox"
 msgstr "Üres időintervallum"
+
+#. module: project_gtd
+#: code:addons/project_gtd/wizard/project_gtd_empty.py:52
+#, python-format
+msgid "Error!"
+msgstr "Hiba!"
 
 #. module: project_gtd
 #: field:project.timebox.fill.plan,timebox_id:0
@@ -92,6 +98,11 @@ msgstr "Összefüggések megjelenítésekor egy sorozatba rendezi."
 #: help:project.gtd.timebox,sequence:0
 msgid "Gives the sequence order when displaying a list of timebox."
 msgstr "Időintervallum listájának megjelenítésekor sorba rendezét végez."
+
+#. module: project_gtd
+#: model:project.gtd.context,name:project_gtd.context_home
+msgid "Home"
+msgstr "Kezdőlap"
 
 #. module: project_gtd
 #: field:project.gtd.context,id:0 field:project.gtd.timebox,id:0
@@ -127,14 +138,19 @@ msgstr "Hosszútávú"
 #. module: project_gtd
 #: model:ir.actions.act_window,name:project_gtd.open_gtd_task
 #: model:ir.ui.menu,name:project_gtd.menu_open_gtd_timebox_tree
-#, fuzzy
 msgid "My Tasks (GTD)"
-msgstr "Feladataim"
+msgstr ""
 
 #. module: project_gtd
 #: field:project.timebox.empty,name:0
 msgid "Name"
 msgstr "Név"
+
+#. module: project_gtd
+#: code:addons/project_gtd/wizard/project_gtd_empty.py:52
+#, python-format
+msgid "No timebox child of this one!"
+msgstr ""
 
 #. module: project_gtd
 #: model:project.gtd.context,name:project_gtd.context_office
@@ -186,8 +202,7 @@ msgstr "feladat kiválasztás"
 #. module: project_gtd
 #: help:project.task,context_id:0
 msgid "The context place where user has to treat task"
-msgstr ""
-"Az összefükkés helye, ahol a felhasználónak fel kell dolgoznia a feladatot"
+msgstr "Az összefükkés helye, ahol a felhasználónak fel kell dolgoznia a feladatot"
 
 #. module: project_gtd
 #: model:project.gtd.timebox,name:project_gtd.timebox_weekly
@@ -230,10 +245,7 @@ msgid ""
 "Timeboxes are defined in the \"Getting Things Done\" methodology. A timebox "
 "defines a period of time in order to categorize your tasks: today, this "
 "week, this month, long term."
-msgstr ""
-"Időintervallumok meghatározása a \"Hajtsuk végre az ügyeket\" módszertan "
-"szerint. Az időintervallum meghatároz egy időt a feladatai "
-"kategorizálásához: ma, ezen a héten, ebben a hónapban, hosszú távon."
+msgstr "Időintervallumok meghatározása a \"Hajtsuk végre az ügyeket\" módszertan szerint. Az időintervallum meghatároz egy időt a feladatai kategorizálásához: ma, ezen a héten, ebben a hónapban, hosszú távon."
 
 #. module: project_gtd
 #: view:project.task:project_gtd.project_task
@@ -255,78 +267,3 @@ msgstr "Utazás"
 #: view:project.timebox.fill.plan:project_gtd.view_project_gtd_fill
 msgid "or"
 msgstr "vagy"
-
-#~ msgid "In Progress"
-#~ msgstr "Folyamatban"
-
-#~ msgid "Show only tasks having a deadline"
-#~ msgstr "Csako lyan feladatot mutasson ami határidős"
-
-#~ msgid "Reactivate"
-#~ msgstr "Újra"
-
-#~ msgid "Pending Tasks"
-#~ msgstr "Függőben lévő feladatok"
-
-#~ msgid "No timebox child of this one !"
-#~ msgstr "Nincs időintervallum leágaztatás ezen!"
-
-#~ msgid "Pending"
-#~ msgstr "Függőben"
-
-#~ msgid "Tasks having no timebox assigned yet"
-#~ msgstr "Feladathoz nem lett időintervallum hozzárendelve"
-
-#~ msgid "Icon"
-#~ msgstr "Ikon"
-
-#~ msgid "Car"
-#~ msgstr "Autó"
-
-#~ msgid "Show Context"
-#~ msgstr "Összefüggést mutat"
-
-#~ msgid "project.gtd.timebox"
-#~ msgstr "project.gtd.timebox"
-
-#~ msgid "Error!"
-#~ msgstr "Hiba!"
-
-#~ msgid "In Progress and draft tasks"
-#~ msgstr "Folyamatban lévő és feladat tervezetek"
-
-#~ msgid "Display"
-#~ msgstr "Megjelenítés"
-
-#~ msgid "Show the context field"
-#~ msgstr "Összefüggés megjelenítése"
-
-#~ msgid "Show Deadlines"
-#~ msgstr "Határidők megjelenítése"
-
-#~ msgid "Inbox"
-#~ msgstr "Beérkező levelek"
-
-#~ msgid "Home"
-#~ msgstr "Kezdőlap"
-
-#~ msgid "For reopening the tasks"
-#~ msgstr "A feladat újranyitásához"
-
-#~ msgid "Error !"
-#~ msgstr "Hiba !"
-
-#~ msgid "Error ! You cannot create recursive tasks."
-#~ msgstr "Hiba! Nem hozhat létre rekurzív feladatokat."
-
-#~ msgid "Next"
-#~ msgstr "Következő"
-
-#~ msgid "Previous"
-#~ msgstr "Előző"
-
-#~ msgid "GTD"
-#~ msgstr "GTD"
-
-#~ msgid "This Month"
-#~ msgstr "Tárgyhó"

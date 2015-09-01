@@ -1,0 +1,151 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * project_classification
+# 
+# Translators:
+# Matjaž Mozetič <m.mozetic@matmoz.si>, 2015
+msgid ""
+msgstr ""
+"Project-Id-Version: project (8.0)\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-08-31 18:04+0000\n"
+"PO-Revision-Date: 2015-08-18 19:02+0000\n"
+"Last-Translator: Matjaž Mozetič <m.mozetic@matmoz.si>\n"
+"Language-Team: Slovenian (http://www.transifex.com/oca/OCA-project-8-0/language/sl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: sl\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+
+#. module: project_classification
+#: field:project.classification,user_id:0
+msgid "Account Manager"
+msgstr "Upravitelj konta"
+
+#. module: project_classification
+#: view:project.project:project_classification.view_project_project_filter
+#: field:project.project,classification_id:0
+msgid "Classification"
+msgstr "Klasifikacija"
+
+#. module: project_classification
+#: field:project.classification,name:0
+msgid "Classification Name"
+msgstr "Naziv klasifikacije"
+
+#. module: project_classification
+#: field:project.classification,create_uid:0
+msgid "Created by"
+msgstr "Ustvaril"
+
+#. module: project_classification
+#: field:project.classification,create_date:0
+msgid "Created on"
+msgstr "Ustvarjeno"
+
+#. module: project_classification
+#: field:project.classification,currency_id:0
+msgid "Currency"
+msgstr "Valuta"
+
+#. module: project_classification
+#: help:project.classification,to_invoice:0
+msgid ""
+"Fill this field if you plan to automatically generate invoices based on the "
+"costs in this classification"
+msgstr "Izpolnite to polje, če nameravate samodejno ustvarjati račune glede na stroške v tej klasifikaciji"
+
+#. module: project_classification
+#: field:project.classification,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: project_classification
+#: field:project.classification,write_uid:0
+msgid "Last Updated by"
+msgstr "Zadnjič posodobil"
+
+#. module: project_classification
+#: field:project.classification,write_date:0
+msgid "Last Updated on"
+msgstr "Zadnjič posodobljeno"
+
+#. module: project_classification
+#: view:project.project:project_classification.edit_project
+#: view:project.project:project_classification.view_account_analytic_account_tree
+msgid "Parent Project"
+msgstr "Nadrejeni projekt"
+
+#. module: project_classification
+#: field:project.classification,project_id:0
+msgid "Parent project"
+msgstr "Nadrejeni projekt"
+
+#. module: project_classification
+#: view:project.project:project_classification.view_account_analytic_account_tree
+msgid "Partner"
+msgstr "Partner"
+
+#. module: project_classification
+#: model:ir.model,name:project_classification.model_project_project
+msgid "Project"
+msgstr "Projekt"
+
+#. module: project_classification
+#: model:ir.actions.act_window,name:project_classification.action_project_classification_form
+#: model:ir.ui.menu,name:project_classification.menu_project_classification
+msgid "Project Classification"
+msgstr "Klasifikacija projekta"
+
+#. module: project_classification
+#: view:project.project:project_classification.view_account_analytic_account_tree
+msgid "Project Manager"
+msgstr "Upravitelj projekta"
+
+#. module: project_classification
+#: view:project.project:project_classification.view_account_analytic_account_tree
+msgid "Project Name"
+msgstr "Naziv projekta"
+
+#. module: project_classification
+#: model:ir.model,name:project_classification.model_project_classification
+#: view:project.classification:project_classification.view_project_classification_form
+#: view:project.classification:project_classification.view_project_classification_list
+msgid "Project classification"
+msgstr "Klasifikacija projekta"
+
+#. module: project_classification
+#: view:project.project:project_classification.view_account_analytic_account_tree
+msgid "Projects"
+msgstr "Projekti"
+
+#. module: project_classification
+#: model:ir.actions.act_window,name:project_classification.action_project_account_tree2
+#: model:ir.ui.menu,name:project_classification.menu_open_view_project_all
+msgid "Projects Tree"
+msgstr "Seznam projektov"
+
+#. module: project_classification
+#: field:project.classification,to_invoice:0
+msgid "Reinvoice Costs"
+msgstr "Zaračunaj stroške"
+
+#. module: project_classification
+#: field:project.classification,pricelist_id:0
+msgid "Sale Pricelist"
+msgstr "Prodajni cenik"
+
+#. module: project_classification
+#: help:project.classification,project_id:0
+msgid ""
+"The parent project that will be set when choosing this classification in a "
+"project."
+msgstr "Nadrejeni projekt, ki bo nastavljen ob izbiri te klasifikacije projekta."
+
+#. module: project_classification
+#: help:project.project,classification_id:0
+msgid ""
+"This will automatically set the parent project as well as other default "
+"values defined for this kind of project (like pricelist, invoice factor,..)"
+msgstr "To bo samodejno nastavilo nadrejeni projekt kakor tudi druge privzete vrednosti določene za tovrstne projekte (npr. cenik, obračunski faktor, ...)"

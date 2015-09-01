@@ -1,30 +1,21 @@
-# Translation of OpenERP Server.
+# Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* service_desk_issue
-#
+# * service_desk_issue
+# 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo 8.0\n"
+"Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-15 10:46+0000\n"
-"PO-Revision-Date: 2014-12-10 08:51+0100\n"
-"Last-Translator: openbig.org - Thorsten Vocks <thorsten.vocks@openbig.org>\n"
-"Language-Team: \n"
+"POT-Creation-Date: 2015-08-31 18:04+0000\n"
+"PO-Revision-Date: 2015-07-21 19:21+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
+"Language-Team: German (http://www.transifex.com/oca/OCA-project-8-0/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: \n"
-"X-Generator: Poedit 1.5.5\n"
-
-#. module: service_desk_issue
-#: help:project.issue.reassign,project_id:0
-msgid "Project this issue should belong to"
-msgstr "Das Projekt für diesen Fall"
-
-#. module: service_desk_issue
-#: field:project.issue,project_code:0
-msgid "Project Code"
-msgstr "Projekt ID"
+"Content-Transfer-Encoding: \n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: service_desk_issue
 #: field:project.issue,analytic_partner_id:0
@@ -32,35 +23,19 @@ msgid "Analytic Account Partner"
 msgstr "Vertragspartner"
 
 #. module: service_desk_issue
-#: model:ir.model,name:service_desk_issue.model_project_issue
-msgid "Project Issue"
-msgstr "Fall"
-
-#. module: service_desk_issue
-#: model:ir.model,name:service_desk_issue.model_project_issue_delegate
-#: model:ir.model,name:service_desk_issue.model_project_issue_reassign
-msgid "Issue Reassign"
-msgstr "Fall übergeben"
-
-#. module: service_desk_issue
-#: view:project.issue:0
+#: view:project.issue:service_desk_issue.view_project_issue_filter_sdesk
 msgid "Contract"
 msgstr "Vertrag"
 
 #. module: service_desk_issue
-#: help:project.issue.reassign,user_id:0
-msgid "User you want to assign this issue to"
-msgstr "Der Benutzer möchte den Fall übergeben an"
+#: view:project.issue:service_desk_issue.view_project_issue_filter_sdesk
+msgid "Contract Customer"
+msgstr ""
 
 #. module: service_desk_issue
-#: field:project.issue.reassign,project_id:0
-msgid "Project"
-msgstr "Projekt"
-
-#. module: service_desk_issue
-#: field:project.issue.reassign,user_id:0
-msgid "Assign To"
-msgstr "Zuweisen an"
+#: field:project.issue,analytic_account_id:0
+msgid "Contract/Analytic"
+msgstr "Vertrag/Konto"
 
 #. module: service_desk_issue
 #: field:project.issue,location_id:0
@@ -68,11 +43,29 @@ msgid "Location"
 msgstr "Einsatzort"
 
 #. module: service_desk_issue
+#: field:project.issue,project_code:0
+msgid "Project Code"
+msgstr "Projekt ID"
+
+#. module: service_desk_issue
+#: model:ir.model,name:service_desk_issue.model_project_issue
+msgid "Project Issue"
+msgstr "Fall"
+
+#. module: service_desk_issue
 #: field:project.issue,use_analytic_account:0
 msgid "Use Analytic Account"
 msgstr "Verwende Vertragskonto"
 
 #. module: service_desk_issue
-#: field:project.issue,analytic_account_id:0
-msgid "Contract/Analytic"
-msgstr "Vertrag/Konto"
+#: view:project.issue:service_desk_issue.project_issue_form_view_sdesk
+msgid "onchange_project(project_id)"
+msgstr "onchange_project(project_id)"
+
+#. module: service_desk_issue
+#: view:project.issue:service_desk_issue.project_issue_form_view_sdesk
+msgid ""
+"{'default_project_id': project_id, 'default_name': name, "
+"'default_analytic_account_id': analytic_account_id, 'default_location_id': "
+"location_id}"
+msgstr ""

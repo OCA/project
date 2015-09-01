@@ -1,22 +1,21 @@
-# Translation of Odoo module.
-# This file is distributed under the same license as the project_categ_issue package.
+# Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* project_categ_issue
-#
+# * project_categ_issue
+# 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo 8.0\n"
+"Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-04 08:41+0000\n"
-"PO-Revision-Date: 2014-12-10 09:08+0100\n"
-"Last-Translator: openbig.org - Thorsten Vocks <thorsten.vocks@openbig.org>\n"
-"Language-Team: \n"
+"POT-Creation-Date: 2015-08-31 18:04+0000\n"
+"PO-Revision-Date: 2015-07-21 19:21+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
+"Language-Team: German (http://www.transifex.com/oca/OCA-project-8-0/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: \n"
-"Language: pt\n"
-"X-Generator: Poedit 1.5.5\n"
+"Content-Transfer-Encoding: \n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: project_categ_issue
 #: field:project.issue,issue_categ_id:0
@@ -39,11 +38,11 @@ msgid "Root Category for Issues"
 msgstr "Hauptkategorie für Fälle"
 
 #. module: project_categ_issue
-#: view:project.issue:0
+#: view:project.issue:project_categ_issue.project_issue_form_view_categs
 msgid "onchange_project(project_id)"
 msgstr "onchange_project(project_id)"
 
 #. module: project_categ_issue
-#: view:project.issue:0
+#: view:project.issue:project_categ_issue.project_issue_form_view_categs
 msgid "{'required':[('issue_categ_id','!=',False)]}"
 msgstr "{'required':[('issue_categ_id','!=',False)]}"

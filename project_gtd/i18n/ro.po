@@ -1,21 +1,21 @@
-# Translation of OpenERP Server.
+# Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* project_gtd
-#
+# * project_gtd
+# 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: OpenERP Server 5.0.4\n"
+"Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-06 12:35+0200\n"
-"PO-Revision-Date: 2015-08-06 12:35+0200\n"
-"Last-Translator: Matjaz Mozetic <m.mozetic@matmoz.si>\n"
-"Language-Team: \n"
-"Language: ro\n"
+"POT-Creation-Date: 2015-08-31 18:04+0000\n"
+"PO-Revision-Date: 2015-07-21 19:20+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
+"Language-Team: Romanian (http://www.transifex.com/oca/OCA-project-8-0/language/ro/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-04-22 07:06+0000\n"
-"X-Generator: Poedit 1.8.2\n"
+"Content-Transfer-Encoding: \n"
+"Language: ro\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
 #. module: project_gtd
 #: view:project.timebox.fill.plan:project_gtd.view_project_gtd_fill
@@ -26,6 +26,11 @@ msgstr "Adaugati Perioada"
 #: view:project.timebox.fill.plan:project_gtd.view_project_gtd_fill
 msgid "Cancel"
 msgstr "Anuleaza"
+
+#. module: project_gtd
+#: model:project.gtd.context,name:project_gtd.context_car
+msgid "Car"
+msgstr "Masina"
 
 #. module: project_gtd
 #: model:ir.model,name:project_gtd.model_project_gtd_context
@@ -49,34 +54,35 @@ msgid ""
 "Contexts are defined in the \"Getting Things Done\" methodology. It allows "
 "you to categorize your tasks according to the context in which they have to "
 "be done: at the office, at home, when I take my car, etc."
-msgstr ""
-"Contextele sunt definite in metodologia \"Sa Efectuam Lucrurile\". Va "
-"permite sa va clasificati sarcinile de lucru in functie de contextul in care "
-"trebuie efectuate: la birou, acasa, atunci cand imi iau masina, etc."
+msgstr "Contextele sunt definite in metodologia \"Sa Efectuam Lucrurile\". Va permite sa va clasificati sarcinile de lucru in functie de contextul in care trebuie efectuate: la birou, acasa, atunci cand imi iau masina, etc."
 
 #. module: project_gtd
 #: field:project.gtd.context,create_uid:0
 #: field:project.gtd.timebox,create_uid:0
 #: field:project.timebox.empty,create_uid:0
 #: field:project.timebox.fill.plan,create_uid:0
-#, fuzzy
 msgid "Created by"
-msgstr "Creat in"
+msgstr ""
 
 #. module: project_gtd
 #: field:project.gtd.context,create_date:0
 #: field:project.gtd.timebox,create_date:0
 #: field:project.timebox.empty,create_date:0
 #: field:project.timebox.fill.plan,create_date:0
-#, fuzzy
 msgid "Created on"
-msgstr "Creat in"
+msgstr ""
 
 #. module: project_gtd
 #: model:ir.actions.act_window,name:project_gtd.action_project_gtd_empty
 #: view:project.timebox.empty:project_gtd.view_project_gtd_empty
 msgid "Empty Timebox"
 msgstr "Resetati Perioada"
+
+#. module: project_gtd
+#: code:addons/project_gtd/wizard/project_gtd_empty.py:52
+#, python-format
+msgid "Error!"
+msgstr "Eroare!"
 
 #. module: project_gtd
 #: field:project.timebox.fill.plan,timebox_id:0
@@ -92,6 +98,11 @@ msgstr "Prezinta ordinea secventei atunci cand afiseaza o lista cu contexte."
 #: help:project.gtd.timebox,sequence:0
 msgid "Gives the sequence order when displaying a list of timebox."
 msgstr "Prezinta ordinea secventei atunci cand afiseaza o lista a perioadei."
+
+#. module: project_gtd
+#: model:project.gtd.context,name:project_gtd.context_home
+msgid "Home"
+msgstr "Acasa"
 
 #. module: project_gtd
 #: field:project.gtd.context,id:0 field:project.gtd.timebox,id:0
@@ -127,14 +138,19 @@ msgstr "Pe termen lung"
 #. module: project_gtd
 #: model:ir.actions.act_window,name:project_gtd.open_gtd_task
 #: model:ir.ui.menu,name:project_gtd.menu_open_gtd_timebox_tree
-#, fuzzy
 msgid "My Tasks (GTD)"
-msgstr "Sarcinile mele"
+msgstr ""
 
 #. module: project_gtd
 #: field:project.timebox.empty,name:0
 msgid "Name"
 msgstr "Nume"
+
+#. module: project_gtd
+#: code:addons/project_gtd/wizard/project_gtd_empty.py:52
+#, python-format
+msgid "No timebox child of this one!"
+msgstr ""
 
 #. module: project_gtd
 #: model:project.gtd.context,name:project_gtd.context_office
@@ -229,10 +245,7 @@ msgid ""
 "Timeboxes are defined in the \"Getting Things Done\" methodology. A timebox "
 "defines a period of time in order to categorize your tasks: today, this "
 "week, this month, long term."
-msgstr ""
-"Perioadele sunt definite in metodologia \"Sa Efectuam Lucrurile\". O "
-"perioada defineste o perioada de timp pentru clasificarea sarcinilor "
-"dumneavoastra: astazi, saptamana aceasta, luna aceasta, pe termen lung."
+msgstr "Perioadele sunt definite in metodologia \"Sa Efectuam Lucrurile\". O perioada defineste o perioada de timp pentru clasificarea sarcinilor dumneavoastra: astazi, saptamana aceasta, luna aceasta, pe termen lung."
 
 #. module: project_gtd
 #: view:project.task:project_gtd.project_task
@@ -254,132 +267,3 @@ msgstr "Calatorie"
 #: view:project.timebox.fill.plan:project_gtd.view_project_gtd_fill
 msgid "or"
 msgstr "sau"
-
-#~ msgid "In Progress"
-#~ msgstr "In desfasurare"
-
-#~ msgid "Show only tasks having a deadline"
-#~ msgstr "Afiseaza numai sarcini cu data scadenta"
-
-#~ msgid "Reactivate"
-#~ msgstr "Reactivati"
-
-#~ msgid "Pending Tasks"
-#~ msgstr "Sarcini in asteptare"
-
-#~ msgid "No timebox child of this one !"
-#~ msgstr "Nu exista o perioada secundara !"
-
-#~ msgid "Pending"
-#~ msgstr "In asteptare"
-
-#~ msgid "Tasks having no timebox assigned yet"
-#~ msgstr "Sarcini care nu au inca perioada atribuita"
-
-#~ msgid "Icon"
-#~ msgstr "Pictograma"
-
-#~ msgid "Car"
-#~ msgstr "Masina"
-
-#~ msgid "Show Context"
-#~ msgstr "Afiseaza Contextul"
-
-#~ msgid "project.gtd.timebox"
-#~ msgstr "project.gtd.perioada"
-
-#~ msgid "Error!"
-#~ msgstr "Eroare!"
-
-#~ msgid "In Progress and draft tasks"
-#~ msgstr "In desfasurare si sarcini ciorna"
-
-#~ msgid "Display"
-#~ msgstr "Afiseaza"
-
-#~ msgid "Show the context field"
-#~ msgstr "Afiseaza campul context"
-
-#~ msgid "Show Deadlines"
-#~ msgstr "Afiseaza Termene limita"
-
-#~ msgid "Inbox"
-#~ msgstr "Inbox"
-
-#~ msgid "Home"
-#~ msgstr "Acasa"
-
-#~ msgid "For reopening the tasks"
-#~ msgstr "Pentru redeschiderea sarcinilor"
-
-#~ msgid "GTD"
-#~ msgstr "GTD"
-
-#~ msgid "Error !"
-#~ msgstr "Eroare !"
-
-#~ msgid ""
-#~ "\n"
-#~ "This module implements all concepts defined by the Getting Things Done\n"
-#~ "methodology. This world-wide used methodology is used for personal\n"
-#~ "time management improvement.\n"
-#~ "\n"
-#~ "Getting Things Done (commonly abbreviated as GTD) is an action "
-#~ "management\n"
-#~ "method created by David Allen, and described in a book of the same name.\n"
-#~ "\n"
-#~ "GTD rests on the principle that a person needs to move tasks out of the "
-#~ "mind by\n"
-#~ "recording them externally. That way, the mind is freed from the job of\n"
-#~ "remembering everything that needs to be done, and can concentrate on "
-#~ "actually\n"
-#~ "performing those tasks.\n"
-#~ "    "
-#~ msgstr ""
-#~ "\n"
-#~ "Acest modul implementează toate conceptele definite de metodologia\n"
-#~ "\"Sa ducem lucrurile la bun sfarsit\". Această metodologie folosită peste "
-#~ "tot in lume este utilizată pentru\n"
-#~ "imbunătătirea managementului timpului personal.\n"
-#~ "\n"
-#~ "Sa ducem lucrurile la bun sfarsit (sau pe scurt SDLLBS) este o metodă de "
-#~ "management \n"
-#~ "actiune creată de către David Allen, si este descrisă intr-o carte cu "
-#~ "aceasi denumire.\n"
-#~ "\n"
-#~ "SDLLBS functionează pe principiul că o persoană trebuie să isi scoată "
-#~ "sarcinile de lucru din minte\n"
-#~ "inregistrandu-le extern. In acest fel mintea este eliberată de sarcina de "
-#~ "a\n"
-#~ "tine minte tot ceea ce trebuie făcut si se poate concentra pe\n"
-#~ "efectuarea efectivă a acelor sarcini de lucru.\n"
-#~ "    "
-
-#~ msgid "This Month"
-#~ msgstr "Luna aceasta"
-
-#~ msgid "_Ok"
-#~ msgstr "_Ok"
-
-#~ msgid "Getting Things Done"
-#~ msgstr "Să Ducem Lucrurile la Bun Sfarsit"
-
-#~ msgid "Error ! You cannot create recursive tasks."
-#~ msgstr "Eroare ! Nu puteti crea sarcini recursive."
-
-#~ msgid "Getting Things Done - Time Management Module"
-#~ msgstr "SV Ducem Lucrurile la Bun Sfarsit - Modulul Managementului Timpului"
-
-#~ msgid "Error ! Task end-date must be greater then task start-date"
-#~ msgstr ""
-#~ "Eroare ! Data de sfarsit a sarcinii trebuie sa fie mai mare decat data de "
-#~ "inceput"
-
-#~ msgid "_Cancel"
-#~ msgstr "_Anulati"
-
-#~ msgid "Previous"
-#~ msgstr "Precedent(a)"
-
-#~ msgid "Next"
-#~ msgstr "Urmatorul"

@@ -1,22 +1,22 @@
-# Japanese translation for openobject-addons
-# Copyright (c) 2012 Rosetta Contributors and Canonical Ltd 2012
-# This file is distributed under the same license as the openobject-addons package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2012.
-#
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * project_gtd
+# 
+# Translators:
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012
 msgid ""
 msgstr ""
-"Project-Id-Version: openobject-addons\n"
+"Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-06 12:32+0200\n"
-"PO-Revision-Date: 2015-08-06 12:32+0200\n"
-"Last-Translator: Matjaz Mozetic <m.mozetic@matmoz.si>\n"
-"Language-Team: Japanese <ja@li.org>\n"
-"Language: ja\n"
+"POT-Creation-Date: 2015-08-31 18:04+0000\n"
+"PO-Revision-Date: 2015-07-21 19:21+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
+"Language-Team: Japanese (http://www.transifex.com/oca/OCA-project-8-0/language/ja/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-04-22 07:06+0000\n"
-"X-Generator: Poedit 1.8.2\n"
+"Content-Transfer-Encoding: \n"
+"Language: ja\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 
 #. module: project_gtd
 #: view:project.timebox.fill.plan:project_gtd.view_project_gtd_fill
@@ -25,9 +25,13 @@ msgstr "タイムボックスに追加"
 
 #. module: project_gtd
 #: view:project.timebox.fill.plan:project_gtd.view_project_gtd_fill
-#, fuzzy
 msgid "Cancel"
-msgstr "キャンセル"
+msgstr ""
+
+#. module: project_gtd
+#: model:project.gtd.context,name:project_gtd.context_car
+msgid "Car"
+msgstr "車"
 
 #. module: project_gtd
 #: model:ir.model,name:project_gtd.model_project_gtd_context
@@ -48,34 +52,38 @@ msgstr "コンテキスト"
 #. module: project_gtd
 #: model:ir.actions.act_window,help:project_gtd.open_gtd_context_tree
 msgid ""
-"Contexts are defined in the \"Getting Things Done\" methodology. It allows you "
-"to categorize your tasks according to the context in which they have to be done: "
-"at the office, at home, when I take my car, etc."
-msgstr ""
-"コンテキストは物事を行う方法論として定義されます。実行しなければならないコンテキ"
-"ストに応じてタスクを分類することができます：会社で、自宅で、車に乗った時など。"
+"Contexts are defined in the \"Getting Things Done\" methodology. It allows "
+"you to categorize your tasks according to the context in which they have to "
+"be done: at the office, at home, when I take my car, etc."
+msgstr "コンテキストは物事を行う方法論として定義されます。実行しなければならないコンテキストに応じてタスクを分類することができます：会社で、自宅で、車に乗った時など。"
 
 #. module: project_gtd
-#: field:project.gtd.context,create_uid:0 field:project.gtd.timebox,create_uid:0
+#: field:project.gtd.context,create_uid:0
+#: field:project.gtd.timebox,create_uid:0
 #: field:project.timebox.empty,create_uid:0
 #: field:project.timebox.fill.plan,create_uid:0
-#, fuzzy
 msgid "Created by"
-msgstr "作成日"
+msgstr ""
 
 #. module: project_gtd
-#: field:project.gtd.context,create_date:0 field:project.gtd.timebox,create_date:0
+#: field:project.gtd.context,create_date:0
+#: field:project.gtd.timebox,create_date:0
 #: field:project.timebox.empty,create_date:0
 #: field:project.timebox.fill.plan,create_date:0
-#, fuzzy
 msgid "Created on"
-msgstr "作成日"
+msgstr ""
 
 #. module: project_gtd
 #: model:ir.actions.act_window,name:project_gtd.action_project_gtd_empty
 #: view:project.timebox.empty:project_gtd.view_project_gtd_empty
 msgid "Empty Timebox"
 msgstr "空のタイムボックス"
+
+#. module: project_gtd
+#: code:addons/project_gtd/wizard/project_gtd_empty.py:52
+#, python-format
+msgid "Error!"
+msgstr ""
 
 #. module: project_gtd
 #: field:project.timebox.fill.plan,timebox_id:0
@@ -91,6 +99,11 @@ msgstr "コンテキストのリストを表示するときに並び順を与え
 #: help:project.gtd.timebox,sequence:0
 msgid "Gives the sequence order when displaying a list of timebox."
 msgstr "タイムボックスのリストを表示するときに並べ順を与えます。"
+
+#. module: project_gtd
+#: model:project.gtd.context,name:project_gtd.context_home
+msgid "Home"
+msgstr "自宅"
 
 #. module: project_gtd
 #: field:project.gtd.context,id:0 field:project.gtd.timebox,id:0
@@ -111,7 +124,8 @@ msgid "Last Updated by"
 msgstr ""
 
 #. module: project_gtd
-#: field:project.gtd.context,write_date:0 field:project.gtd.timebox,write_date:0
+#: field:project.gtd.context,write_date:0
+#: field:project.gtd.timebox,write_date:0
 #: field:project.timebox.empty,write_date:0
 #: field:project.timebox.fill.plan,write_date:0
 msgid "Last Updated on"
@@ -125,14 +139,19 @@ msgstr "長期"
 #. module: project_gtd
 #: model:ir.actions.act_window,name:project_gtd.open_gtd_task
 #: model:ir.ui.menu,name:project_gtd.menu_open_gtd_timebox_tree
-#, fuzzy
 msgid "My Tasks (GTD)"
-msgstr "私のタスク"
+msgstr ""
 
 #. module: project_gtd
 #: field:project.timebox.empty,name:0
 msgid "Name"
 msgstr "名前"
+
+#. module: project_gtd
+#: code:addons/project_gtd/wizard/project_gtd_empty.py:52
+#, python-format
+msgid "No timebox child of this one!"
+msgstr ""
 
 #. module: project_gtd
 #: model:project.gtd.context,name:project_gtd.context_office
@@ -225,11 +244,9 @@ msgstr "タイムボックス"
 #: model:ir.actions.act_window,help:project_gtd.open_gtd_timebox_tree
 msgid ""
 "Timeboxes are defined in the \"Getting Things Done\" methodology. A timebox "
-"defines a period of time in order to categorize your tasks: today, this week, "
-"this month, long term."
-msgstr ""
-"タイムボックスは物事を行う方法論として定義されます。タイムボックスはタスクを分類"
-"することにより時間の期間を定義します：本日、今週、今月、長期。"
+"defines a period of time in order to categorize your tasks: today, this "
+"week, this month, long term."
+msgstr "タイムボックスは物事を行う方法論として定義されます。タイムボックスはタスクを分類することにより時間の期間を定義します：本日、今週、今月、長期。"
 
 #. module: project_gtd
 #: view:project.task:project_gtd.project_task
@@ -251,72 +268,3 @@ msgstr "旅行"
 #: view:project.timebox.fill.plan:project_gtd.view_project_gtd_fill
 msgid "or"
 msgstr ""
-
-#~ msgid "In Progress"
-#~ msgstr "進行中"
-
-#~ msgid "Show only tasks having a deadline"
-#~ msgstr "締切を持つタスクのみ表示"
-
-#~ msgid "Reactivate"
-#~ msgstr "再アクティブ化"
-
-#~ msgid "Pending Tasks"
-#~ msgstr "保留中タスク"
-
-#~ msgid "No timebox child of this one !"
-#~ msgstr "この子にタイムボックスがありません。"
-
-#~ msgid "Pending"
-#~ msgstr "保留中"
-
-#~ msgid "Tasks having no timebox assigned yet"
-#~ msgstr "タスクにはタイムボックスがまだ割り当てられていません。"
-
-#~ msgid "Icon"
-#~ msgstr "アイコン"
-
-#~ msgid "Car"
-#~ msgstr "車"
-
-#~ msgid "Show Context"
-#~ msgstr "コンテキストを表示"
-
-#~ msgid "In Progress and draft tasks"
-#~ msgstr "進行中とドラフトのタスク"
-
-#~ msgid "Show the context field"
-#~ msgstr "コンテキスト項目を表示"
-
-#~ msgid "Show Deadlines"
-#~ msgstr "締切の表示"
-
-#~ msgid "Inbox"
-#~ msgstr "受信箱"
-
-#~ msgid "Home"
-#~ msgstr "自宅"
-
-#~ msgid "For reopening the tasks"
-#~ msgstr "タスクの再開"
-
-#~ msgid "Next"
-#~ msgstr "次へ"
-
-#~ msgid "Error !"
-#~ msgstr "エラー"
-
-#~ msgid "_Cancel"
-#~ msgstr "キャンセル"
-
-#~ msgid "_Ok"
-#~ msgstr "OK"
-
-#~ msgid "Previous"
-#~ msgstr "前へ"
-
-#~ msgid "Error ! You cannot create recursive tasks."
-#~ msgstr "エラー。再帰的なタスクを作成することはできません。"
-
-#~ msgid "Error ! Task end-date must be greater then task start-date"
-#~ msgstr "エラー。タスクの終了日は開始日以降の日付に設定しなければなりません。"
