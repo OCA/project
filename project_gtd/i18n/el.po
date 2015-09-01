@@ -1,21 +1,21 @@
+# Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* project_gtd
-#
+# * project_gtd
+# 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: OpenERP Server 6.0dev\n"
+"Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-06 12:29+0200\n"
-"PO-Revision-Date: 2015-08-06 12:29+0200\n"
-"Last-Translator: Matjaz Mozetic <m.mozetic@matmoz.si>\n"
-"Language-Team: nls@hellug.gr <nls@hellug.gr>\n"
-"Language: el_GR\n"
+"POT-Creation-Date: 2015-08-31 18:04+0000\n"
+"PO-Revision-Date: 2015-07-21 19:20+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
+"Language-Team: Greek (http://www.transifex.com/oca/OCA-project-8-0/language/el/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-04-22 07:06+0000\n"
-"X-Generator: Poedit 1.8.2\n"
-"X-Poedit-SourceCharset: utf-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: el\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: project_gtd
 #: view:project.timebox.fill.plan:project_gtd.view_project_gtd_fill
@@ -26,6 +26,11 @@ msgstr "Προσθήκη στο Χρονοπλαίσιο"
 #: view:project.timebox.fill.plan:project_gtd.view_project_gtd_fill
 msgid "Cancel"
 msgstr "Ακύρωση"
+
+#. module: project_gtd
+#: model:project.gtd.context,name:project_gtd.context_car
+msgid "Car"
+msgstr "Αυτοκίνητο"
 
 #. module: project_gtd
 #: model:ir.model,name:project_gtd.model_project_gtd_context
@@ -56,24 +61,28 @@ msgstr ""
 #: field:project.gtd.timebox,create_uid:0
 #: field:project.timebox.empty,create_uid:0
 #: field:project.timebox.fill.plan,create_uid:0
-#, fuzzy
 msgid "Created by"
-msgstr "Δημιουργήθηκε στις"
+msgstr ""
 
 #. module: project_gtd
 #: field:project.gtd.context,create_date:0
 #: field:project.gtd.timebox,create_date:0
 #: field:project.timebox.empty,create_date:0
 #: field:project.timebox.fill.plan,create_date:0
-#, fuzzy
 msgid "Created on"
-msgstr "Δημιουργήθηκε στις"
+msgstr ""
 
 #. module: project_gtd
 #: model:ir.actions.act_window,name:project_gtd.action_project_gtd_empty
 #: view:project.timebox.empty:project_gtd.view_project_gtd_empty
 msgid "Empty Timebox"
 msgstr "Άδειασμα Χρονοπλαισίου"
+
+#. module: project_gtd
+#: code:addons/project_gtd/wizard/project_gtd_empty.py:52
+#, python-format
+msgid "Error!"
+msgstr ""
 
 #. module: project_gtd
 #: field:project.timebox.fill.plan,timebox_id:0
@@ -89,6 +98,11 @@ msgstr ""
 #: help:project.gtd.timebox,sequence:0
 msgid "Gives the sequence order when displaying a list of timebox."
 msgstr ""
+
+#. module: project_gtd
+#: model:project.gtd.context,name:project_gtd.context_home
+msgid "Home"
+msgstr "Αρχική σελίδα"
 
 #. module: project_gtd
 #: field:project.gtd.context,id:0 field:project.gtd.timebox,id:0
@@ -133,6 +147,12 @@ msgid "Name"
 msgstr "Όνομα"
 
 #. module: project_gtd
+#: code:addons/project_gtd/wizard/project_gtd_empty.py:52
+#, python-format
+msgid "No timebox child of this one!"
+msgstr ""
+
+#. module: project_gtd
 #: model:project.gtd.context,name:project_gtd.context_office
 msgid "Office"
 msgstr "Γραφείο"
@@ -171,9 +191,8 @@ msgstr "Εργασία"
 #. module: project_gtd
 #: model:ir.actions.act_window,name:project_gtd.open_gtd_all_tasks
 #: model:ir.ui.menu,name:project_gtd.menu_open_gtd_timebox_all_tree
-#, fuzzy
 msgid "Tasks (GTD)"
-msgstr "Εργασίες"
+msgstr ""
 
 #. module: project_gtd
 #: field:project.timebox.fill.plan,task_ids:0
@@ -248,161 +267,3 @@ msgstr "Ταξίδι"
 #: view:project.timebox.fill.plan:project_gtd.view_project_gtd_fill
 msgid "or"
 msgstr ""
-
-#~ msgid "Reactivate"
-#~ msgstr "Επανενεργοποίηση"
-
-#~ msgid "Icon"
-#~ msgstr "Εικονίδιο"
-
-#~ msgid "Car"
-#~ msgstr "Αυτοκίνητο"
-
-#~ msgid "project.gtd.timebox"
-#~ msgstr "project.gtd.timebox"
-
-#~ msgid "Inbox"
-#~ msgstr "Εισερχόμενα"
-
-#~ msgid "Home"
-#~ msgstr "Αρχική σελίδα"
-
-#~ msgid "Visible Columns"
-#~ msgstr "Ορατές Στήλες"
-
-#~ msgid ""
-#~ "The Object name must start with x_ and not contain any special character !"
-#~ msgstr ""
-#~ "Το όνομα πρέπει να ξεκινάει με x_ και να μην περιέχει ειδικούς χαρακτήρες!"
-
-#~ msgid "My Deadlines"
-#~ msgstr "Οι Προθεσμίες μου"
-
-#~ msgid "Monthly"
-#~ msgstr "Μηνιαία"
-
-#~ msgid "Parent Timebox"
-#~ msgstr "Χρονοπλαίσιο Προέλευσης"
-
-#~ msgid "Invalid XML for View Architecture!"
-#~ msgstr "Άκυρο XML για Αρχιτεκτονική Όψης!"
-
-#~ msgid "Priority"
-#~ msgstr "Προτεραιότητα"
-
-#~ msgid "My Inbox"
-#~ msgstr "Εισερχόμενά μου"
-
-#~ msgid "Default Project"
-#~ msgstr "Προεπιλεγμένο Έργο"
-
-#~ msgid "Context 4"
-#~ msgstr "Περιβάλλον 4"
-
-#~ msgid "Other"
-#~ msgstr "Άλλο"
-
-#~ msgid "Effective Hours"
-#~ msgstr "Αποδοτικές Ώρες"
-
-#~ msgid "Getting Things Done - Time Management Module"
-#~ msgstr "Getting Things Done - Άρθρωμα Διαχείορισης Χρόνου"
-
-#~ msgid "Timebox tasks selection"
-#~ msgstr "Επιλογή εργασιών Χρονοπλαισίου"
-
-#~ msgid "Type"
-#~ msgstr "Τύπος"
-
-#~ msgid "Inbox Tasks"
-#~ msgstr "Εργασίες Εισερχομένων"
-
-#~ msgid "My Pending Tasks"
-#~ msgstr "Εκκρεμείς Εργασίες μου"
-
-#~ msgid "User"
-#~ msgstr "Χρήστης"
-
-#~ msgid "My Daily Timebox"
-#~ msgstr "Ημερήσιο Χρονοπλαίσιό μου"
-
-#~ msgid "project.gtd.context"
-#~ msgstr "project.gtd.context"
-
-#~ msgid "Context 1"
-#~ msgstr "Περιβάλλον 1"
-
-#~ msgid "Context 2"
-#~ msgstr "Περιβάλλον 2"
-
-#~ msgid "Context 3"
-#~ msgstr "Περιβάλλον 3"
-
-#~ msgid "Context 5"
-#~ msgstr "Περιβάλλον 5"
-
-#~ msgid "Context 6"
-#~ msgstr "Περιβάλλον 6"
-
-#~ msgid "Timebox Tasks"
-#~ msgstr "Εργασίες Χρονοπλαισίου"
-
-#~ msgid "Daily"
-#~ msgstr "Ημερήσια"
-
-#~ msgid "Project"
-#~ msgstr "Έργο"
-
-#~ msgid "My Timeboxes"
-#~ msgstr "Τα Χρονοπλαίσιά μου"
-
-#~ msgid "My Open Tasks"
-#~ msgstr "Ανοικτές Εργασίες μου"
-
-#~ msgid "Time Management"
-#~ msgstr "Διαχείριση Χρόνου"
-
-#~ msgid "Getting Things Done"
-#~ msgstr "Getting Things Done"
-
-#~ msgid "Child Timeboxes"
-#~ msgstr "Υπό-Χρονοπλαίσια"
-
-#~ msgid "All My Timeboxes"
-#~ msgstr "Όλα τα Χρονοπλαίσιά μου"
-
-#~ msgid "Deadline"
-#~ msgstr "Προθεσμία"
-
-#~ msgid "Date Start"
-#~ msgstr "Ημερ/νία Εκκίνησης"
-
-#~ msgid "Planned Hours"
-#~ msgstr "Προγραμματισμένες Ώρες"
-
-#~ msgid "Weekly"
-#~ msgstr "Εβδομαδιαία"
-
-#~ msgid "Error !"
-#~ msgstr "Σφάλμα !"
-
-#~ msgid "Planned"
-#~ msgstr "Προγραμματίστηκε"
-
-#~ msgid "Error ! You cannot create recursive tasks."
-#~ msgstr "Λάθος! Δεν μπορείς να δημιουργήσεις επαναλαμβανόμενες εργασίες"
-
-#~ msgid "_Cancel"
-#~ msgstr "_Άκυρο"
-
-#~ msgid "This Month"
-#~ msgstr "Αυτόν τον μήνα"
-
-#~ msgid "Previous"
-#~ msgstr "Προηγούμενη"
-
-#~ msgid "Next"
-#~ msgstr "Επόμενη"
-
-#~ msgid "_Ok"
-#~ msgstr "_Εντάξει"

@@ -1,21 +1,21 @@
-# Translation of OpenERP Server.
+# Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* project_gtd
-#
+# * project_gtd
+# 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: OpenERP Server 5.0.4\n"
+"Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-06 12:26+0200\n"
-"PO-Revision-Date: 2015-08-06 12:27+0200\n"
-"Last-Translator: Matjaz Mozetic <m.mozetic@matmoz.si>\n"
-"Language-Team: \n"
-"Language: ar\n"
+"POT-Creation-Date: 2015-08-31 18:04+0000\n"
+"PO-Revision-Date: 2015-07-21 19:21+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
+"Language-Team: Arabic (http://www.transifex.com/oca/OCA-project-8-0/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"X-Launchpad-Export-Date: 2014-04-22 07:06+0000\n"
-"X-Generator: Poedit 1.8.2\n"
+"Content-Transfer-Encoding: \n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #. module: project_gtd
 #: view:project.timebox.fill.plan:project_gtd.view_project_gtd_fill
@@ -26,6 +26,11 @@ msgstr "أضف الى تايم بوكس"
 #: view:project.timebox.fill.plan:project_gtd.view_project_gtd_fill
 msgid "Cancel"
 msgstr ""
+
+#. module: project_gtd
+#: model:project.gtd.context,name:project_gtd.context_car
+msgid "Car"
+msgstr "السيارة"
 
 #. module: project_gtd
 #: model:ir.model,name:project_gtd.model_project_gtd_context
@@ -49,10 +54,7 @@ msgid ""
 "Contexts are defined in the \"Getting Things Done\" methodology. It allows "
 "you to categorize your tasks according to the context in which they have to "
 "be done: at the office, at home, when I take my car, etc."
-msgstr ""
-"تم تحديد السياقات في منهج \"الحصول على الاشياء المكتملة\". تسمح لك بتصنيف "
-"المهام الخاصة بك طبقًا للسياق فيما سيتم: في المكتب, البيت, عندما استقل "
-"سيارتي, الخ."
+msgstr "تم تحديد السياقات في منهج \"الحصول على الاشياء المكتملة\". تسمح لك بتصنيف المهام الخاصة بك طبقًا للسياق فيما سيتم: في المكتب, البيت, عندما استقل سيارتي, الخ."
 
 #. module: project_gtd
 #: field:project.gtd.context,create_uid:0
@@ -77,6 +79,12 @@ msgid "Empty Timebox"
 msgstr "تايم بوكس فارغ"
 
 #. module: project_gtd
+#: code:addons/project_gtd/wizard/project_gtd_empty.py:52
+#, python-format
+msgid "Error!"
+msgstr ""
+
+#. module: project_gtd
 #: field:project.timebox.fill.plan,timebox_id:0
 msgid "Get from Timebox"
 msgstr "احصل من خانة الزمن"
@@ -90,6 +98,11 @@ msgstr "ويعطي امر التسلسل عند عرض قائمة للمحتوي
 #: help:project.gtd.timebox,sequence:0
 msgid "Gives the sequence order when displaying a list of timebox."
 msgstr "ويعطي امر التسلسل عند عرض قائمة من تايم بوكس"
+
+#. module: project_gtd
+#: model:project.gtd.context,name:project_gtd.context_home
+msgid "Home"
+msgstr "المنزل"
 
 #. module: project_gtd
 #: field:project.gtd.context,id:0 field:project.gtd.timebox,id:0
@@ -125,14 +138,19 @@ msgstr "المدى الطويل"
 #. module: project_gtd
 #: model:ir.actions.act_window,name:project_gtd.open_gtd_task
 #: model:ir.ui.menu,name:project_gtd.menu_open_gtd_timebox_tree
-#, fuzzy
 msgid "My Tasks (GTD)"
-msgstr "مهامي"
+msgstr ""
 
 #. module: project_gtd
 #: field:project.timebox.empty,name:0
 msgid "Name"
 msgstr "الاسم"
+
+#. module: project_gtd
+#: code:addons/project_gtd/wizard/project_gtd_empty.py:52
+#, python-format
+msgid "No timebox child of this one!"
+msgstr ""
 
 #. module: project_gtd
 #: model:project.gtd.context,name:project_gtd.context_office
@@ -227,10 +245,7 @@ msgid ""
 "Timeboxes are defined in the \"Getting Things Done\" methodology. A timebox "
 "defines a period of time in order to categorize your tasks: today, this "
 "week, this month, long term."
-msgstr ""
-"تم تحديد مربع الوقت في منهج \"الحصول على الاشياء المكتملة\". يحدد مربع الوقت "
-"فترة الوقت بالترتيب لتصنيف المهام الخاصة بك: اليوم, هذا الاسبوع, هذا الشهر, "
-"على االمدى الطويل."
+msgstr "تم تحديد مربع الوقت في منهج \"الحصول على الاشياء المكتملة\". يحدد مربع الوقت فترة الوقت بالترتيب لتصنيف المهام الخاصة بك: اليوم, هذا الاسبوع, هذا الشهر, على االمدى الطويل."
 
 #. module: project_gtd
 #: view:project.task:project_gtd.project_task
@@ -252,102 +267,3 @@ msgstr "السفريات"
 #: view:project.timebox.fill.plan:project_gtd.view_project_gtd_fill
 msgid "or"
 msgstr ""
-
-#~ msgid "In Progress"
-#~ msgstr "قيد التقدم"
-
-#~ msgid "Show only tasks having a deadline"
-#~ msgstr "اظهار المهام فقط التي لها زمن نهائي"
-
-#~ msgid "Reactivate"
-#~ msgstr "إعادة تنشيط"
-
-#~ msgid "Pending Tasks"
-#~ msgstr "مهام قيد الإنتظار"
-
-#~ msgid "No timebox child of this one !"
-#~ msgstr "لا يوجد خانة زمنية فرعية لها !"
-
-#~ msgid "Pending"
-#~ msgstr "معلّق"
-
-#~ msgid "Icon"
-#~ msgstr "أيقونة"
-
-#~ msgid "Car"
-#~ msgstr "السيارة"
-
-#~ msgid "project.gtd.timebox"
-#~ msgstr "project.gtd.timebox"
-
-#~ msgid "Inbox"
-#~ msgstr "صندوق الوارد"
-
-#~ msgid "Home"
-#~ msgstr "المنزل"
-
-#~ msgid "Next"
-#~ msgstr "التالي"
-
-#~ msgid "_Cancel"
-#~ msgstr "ال_غاء"
-
-#~ msgid "Error !"
-#~ msgstr "خطأ !"
-
-#~ msgid "This Month"
-#~ msgstr "هذا الشهر"
-
-#~ msgid "_Ok"
-#~ msgstr "م_وافق"
-
-#~ msgid "Previous"
-#~ msgstr "السابق"
-
-#~ msgid "Error ! Task end-date must be greater then task start-date"
-#~ msgstr "خطأ! يجب ان يكون تاريخ انتهاء المهمة اكبر من تاريخ البداية"
-
-#~ msgid "Error ! You cannot create recursive tasks."
-#~ msgstr "خطأ ! لا يمكنك انشاء مهام رجعية."
-
-#~ msgid "Getting Things Done"
-#~ msgstr "إنجاز المهام"
-
-#~ msgid "Getting Things Done - Time Management Module"
-#~ msgstr "اتمام المهام- وحدة ادارة الوقت"
-
-#~ msgid "GTD"
-#~ msgstr "إنجاز المهام"
-
-#~ msgid ""
-#~ "\n"
-#~ "This module implements all concepts defined by the Getting Things Done\n"
-#~ "methodology. This world-wide used methodology is used for personal\n"
-#~ "time management improvement.\n"
-#~ "\n"
-#~ "Getting Things Done (commonly abbreviated as GTD) is an action "
-#~ "management\n"
-#~ "method created by David Allen, and described in a book of the same name.\n"
-#~ "\n"
-#~ "GTD rests on the principle that a person needs to move tasks out of the "
-#~ "mind by\n"
-#~ "recording them externally. That way, the mind is freed from the job of\n"
-#~ "remembering everything that needs to be done, and can concentrate on "
-#~ "actually\n"
-#~ "performing those tasks.\n"
-#~ "    "
-#~ msgstr ""
-#~ "\n"
-#~ "تقوم هذه الوحدة بتنفيذ كافة المفاهيم المحددة من منهجية الحصول على الاشياء "
-#~ "المكتملة . يتم استخدام هذه المنهجية في جميع أنحاء العالم تستخدم لأغراض "
-#~ "شخصية\n"
-#~ "تحسين إدارة الوقت.\n"
-#~ "\n"
-#~ "انجاز الامور (يختصر عادة باسم GTD) هو إدارة العمل\n"
-#~ "الطريقة التي أنشأتها ديفيد ألين، ووصفها في الكتاب الذي يحمل نفس الاسم.\n"
-#~ "\n"
-#~ "GTD يقوم على مبدأ أن أي شخص يحتاج إلى نقل المهام من العقل بواسطة\n"
-#~ "تسجيلها خارجيا. بهذه الطريقة، يتم تحرير العقل من وظيفة\n"
-#~ "تذكر كل ما يجب القيام به، ويمكن التركيز على الواقع\n"
-#~ "أداء تلك المهام.\n"
-#~ "    "
