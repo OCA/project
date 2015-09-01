@@ -1,0 +1,9 @@
+# -*- coding: utf-8 -*-
+##############################################################################
+# For copyright and license notices, see __openerp__.py file in root directory
+##############################################################################
+
+from . import resource_calendar
+from . import project_project
+from . import project_task_type
+from . import project_task
