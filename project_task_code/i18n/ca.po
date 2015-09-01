@@ -3,34 +3,38 @@
 # * project_task_code
 # 
 # Translators:
-# OCA Transbot <transbot@odoo-community.org>, 2016
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 9.0c\n"
+"Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-23 03:43+0000\n"
-"PO-Revision-Date: 2016-12-23 03:43+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2016\n"
-"Language-Team: Spanish (https://www.transifex.com/oca/teams/23907/es/)\n"
+"POT-Creation-Date: 2015-08-31 18:04+0000\n"
+"PO-Revision-Date: 2015-08-06 21:48+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: Catalan (http://www.transifex.com/oca/OCA-project-8-0/language/ca/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: es\n"
+"Language: ca\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: project_task_code
 #: model:ir.model,name:project_task_code.model_project_task
 msgid "Task"
-msgstr "Tarea"
+msgstr "Tasca"
 
 #. module: project_task_code
-#: model:ir.model.fields,field_description:project_task_code.field_project_task_code
+#: field:project.task,code:0
 msgid "Task Number"
-msgstr "Número de tarea"
+msgstr ""
 
 #. module: project_task_code
-#: code:addons/project_task_code/models/project_task.py:16
+#: code:addons/project_task_code/models/project_task.py:17
 #: sql_constraint:project.task:0
 #, python-format
 msgid "The code must be unique!"
-msgstr "¡El número debe de ser único!"
+msgstr ""
+
+#. module: project_task_code
+#: view:project.task:project_task_code.project_task_code_search_view
+msgid "['|', ('name', 'ilike', self), ('code', 'ilike', self)]"
+msgstr ""
