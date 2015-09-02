@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+      <record model="ir.ui.view" id="hr_timesheet_sheet_form_with_activity_issue">
+            <field name="name">hr.timesheet.sheet.issue.form</field>
+            <field name="model">hr_timesheet_sheet.sheet</field>
+            <field name="inherit_id" ref="hr_timesheet_sheet.hr_timesheet_sheet_form"/>
+            <field name="arch" type="xml">
+                <xpath
+                    expr="/form/sheet/notebook/page[@string='Details']/field[@name='timesheet_ids']/tree[@string='Timesheet Activities']/field[@name='account_id']"
+                    position="after">
+                    <field name="issue_id" context="{'account_id' : account_id}"/>
+                </xpath>
+                <xpath
+                    expr="/form/sheet/notebook/page[@string='Details']/field[@name='timesheet_ids']/form[@string='Timesheet Activities']/field[@name='account_id']"
+                    position="after">
+                    <field name="issue_id" context="{'account_id' : account_id}"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="hr_timesheet_line_form_issue" model="ir.ui.view">
+            <field name="name">hr.analytic.timesheet.issue.form</field>
+            <field name="model">hr.analytic.timesheet</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_form"/>
+            <field name="arch" type="xml">
+                <field name="user_id" position="after">
+                    <field name="issue_id" context="{ 'account_id' : account_id}"/>
+                </field>
+            </field>
+        </record>
+
+
+      <record id="hr_timesheet_line_tree" model="ir.ui.view">
+            <field name="name">hr.analytic.timesheet.issue.tree</field>
+            <field name="model">hr.analytic.timesheet</field>
+            <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree"/>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <xpath expr="/tree/field[@name='name']" position="replace"/>
+                <xpath
+                    expr="/tree/field[@name='account_id']"
+                    position="after">
+                    <field name="issue_id" context="{'account_id' : account_id}"/>
+                    <field name="name"/>
+                </xpath>
+            </field>
+        </record>
+
+
+    </data>
+</openerp>
