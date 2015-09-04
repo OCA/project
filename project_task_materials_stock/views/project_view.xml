@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+    <record id="task_type_consume_material" model="ir.ui.view">
+        <field name="name">project.task.type.consume.material</field>
+        <field name="model">project.task.type</field>
+        <field name="inherit_id" ref="project.task_type_edit"/>
+        <field name="arch" type="xml">
+            <field name="fold" position="after">
+                <field name="consume_material"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_project_task_form_materials_stock" model="ir.ui.view">
+      <field name="name">project.task.form.materials</field>
+      <field name="model">project.task</field>
+      <field name="inherit_id"
+             ref="project_task_materials.view_project_task_form_materials"/>
+      <field name="arch" type="xml">
+        <field name="stage_id" position="before">
+          <button name="action_assign" type="object"
+                  string="Check Availability"
+                  attrs="{'invisible':[('stock_state','!=','confirmed')]}"
+                  class="oe_highlight"/>
+          <button name="action_done" type="object" string="Transfer Materials"
+                  attrs="{'invisible':[('stock_state','!=','assigned')]}"
+                  class="oe_highlight"/>
+        </field>
+        <field name="material_ids" position="replace"/>
+        <field position="after" name="work_ids">
+          <field name="stock_state" invisible="1"/>
+          <field name="consume_material" invisible="1"/>
+          <group string="Materials consumed"
+                 groups="project.group_tasks_work_on_tasks">
+            <notebook>
+              <page string="Products">
+                <field name="material_ids"
+                       attrs="{'readonly':[('stock_state','!=', 'pending')]}">
+                  <tree string="Materials used" editable="top">
+                    <field name="product_id"
+                           domain="[('type', 'in', ['consu', 'product'])]"/>
+                    <field name="quantity"/>
+                    <field name="product_uom" groups="product.group_uos"/>
+                  </tree>
+                </field>
+              </page>
+              <page string="Stock Moves">
+                <field name="stock_move_ids"/>
+              </page>
+            </notebook>
+          </group>
+        </field>
+      </field>
+    </record>
+
+  </data>
+</openerp>
