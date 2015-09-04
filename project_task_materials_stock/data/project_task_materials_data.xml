@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+
+        <record id="analytic_journal_sale_materials" model="account.analytic.journal">
+            <field name="code">SALMAT</field>
+            <field name="name">Tasks Materials</field>
+            <field name="type">general</field>
+        </record>
+
+    </data>
+</openerp>
