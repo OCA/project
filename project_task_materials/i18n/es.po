@@ -1,53 +1,82 @@
-# Translation of Odoo Server.
-# This file contains the translation of the following modules:
-# * project_task_materials
-# 
-# Translators:
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2014
+# Spanish translation for project-service
+# Copyright (c) 2014 Rosetta Contributors and Canonical Ltd 2014
+# This file is distributed under the same license as the project-service package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: project (8.0)\n"
+"Project-Id-Version: project-service\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-31 18:04+0000\n"
-"PO-Revision-Date: 2015-07-21 19:20+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
-"Language-Team: Spanish (http://www.transifex.com/oca/OCA-project-8-0/language/es/)\n"
+"POT-Creation-Date: 2015-09-03 15:37+0000\n"
+"PO-Revision-Date: 2015-09-03 17:38+0100\n"
+"Last-Translator: Sergio Teruel <sergio@incaser.es>\n"
+"Language-Team: Spanish <es@li.org>\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: \n"
-"Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2014-05-03 06:49+0000\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#. module: project_task_materials
+#: field:project.task.materials,analytic_line_id:0
+msgid "Analytic Line"
+msgstr "Línea analítica"
+
+#. module: project_task_materials
+#: view:project.task:project_task_materials.view_project_task_form_materials
+msgid "Check Availability"
+msgstr "Comprobar disponibilidad"
+
+#. module: project_task_materials
+#: field:project.task.type,consume_material:0
+msgid "Consume Material"
+msgstr "Consumir materiales"
 
 #. module: project_task_materials
 #: field:project.task.materials,create_uid:0
 msgid "Created by"
-msgstr ""
+msgstr "Creado por"
 
 #. module: project_task_materials
 #: field:project.task.materials,create_date:0
 msgid "Created on"
-msgstr ""
+msgstr "Creado en"
 
 #. module: project_task_materials
 #: field:project.task.materials,id:0
 msgid "ID"
+msgstr "ID (identificación)"
+
+#. module: project_task_materials
+#: help:project.task.type,consume_material:0
+msgid ""
+"If you select this option, when a task is in this state\n"
+"        consumes materials associated"
 msgstr ""
+"Si marcas esta opción, cuando una tarea esta en este estado consume los "
+"materiales asociados"
 
 #. module: project_task_materials
 #: field:project.task.materials,write_uid:0
 msgid "Last Updated by"
-msgstr ""
+msgstr "Última actualización de"
 
 #. module: project_task_materials
 #: field:project.task.materials,write_date:0
 msgid "Last Updated on"
-msgstr ""
+msgstr "Última actualización en"
+
+#. module: project_task_materials
+#: view:project.task:project_task_materials.view_project_task_form_materials
+msgid "Materials consumed"
+msgstr "Materiales consumidos"
 
 #. module: project_task_materials
 #: view:project.task:project_task_materials.view_project_task_form_materials
 #: field:project.task,material_ids:0
 msgid "Materials used"
-msgstr "Materiales usados"
+msgstr "Materiales consumidos"
 
 #. module: project_task_materials
 #: field:project.task.materials,product_id:0
@@ -55,9 +84,24 @@ msgid "Product"
 msgstr "Producto"
 
 #. module: project_task_materials
+#: view:project.task:project_task_materials.view_project_task_form_materials
+msgid "Products"
+msgstr "Productos"
+
+#. module: project_task_materials
 #: field:project.task.materials,quantity:0
 msgid "Quantity"
 msgstr "Cantidad"
+
+#. module: project_task_materials
+#: field:project.task.materials,stock_move_id:0
+msgid "Stock Move"
+msgstr "Movimiento de stock"
+
+#. module: project_task_materials
+#: view:project.task:project_task_materials.view_project_task_form_materials
+msgid "Stock Moves"
+msgstr "Movimientos de stock"
 
 #. module: project_task_materials
 #: model:ir.model,name:project_task_materials.model_project_task
@@ -69,3 +113,16 @@ msgstr "Tarea"
 #: model:ir.model,name:project_task_materials.model_project_task_materials
 msgid "Task Materials Used"
 msgstr "Materiales usados en la tarea"
+
+#. module: project_task_materials
+#: model:ir.model,name:project_task_materials.model_project_task_type
+msgid "Task Stage"
+msgstr "Estado actual"
+
+#. module: project_task_materials
+#: view:project.task:project_task_materials.view_project_task_form_materials
+msgid "Transfer Materials"
+msgstr "Consumir materiales"
+
+#~ msgid "Assign Materials"
+#~ msgstr "Reservar Materiales"
