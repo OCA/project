@@ -1,13 +1,13 @@
-# Translation of OpenERP Server.
+# Translation of Odoo Server.
 # This file contains the translation of the following modules:
 #	* project_task_materials
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: OpenERP Server 7.0\n"
+"Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-11-18 17:09+0000\n"
-"PO-Revision-Date: 2013-11-18 17:09+0000\n"
+"POT-Creation-Date: 2015-09-03 15:37+0000\n"
+"PO-Revision-Date: 2015-09-03 15:37+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -16,9 +16,60 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: project_task_materials
-#: model:ir.model,name:project_task_materials.model_project_task
-#: field:project.task.materials,task_id:0
-msgid "Task"
+#: field:project.task.materials,analytic_line_id:0
+msgid "Analytic Line"
+msgstr ""
+
+#. module: project_task_materials
+#: view:project.task:project_task_materials.view_project_task_form_materials
+msgid "Check Availability"
+msgstr ""
+
+#. module: project_task_materials
+#: field:project.task.type,consume_material:0
+msgid "Consume Material"
+msgstr ""
+
+#. module: project_task_materials
+#: field:project.task.materials,create_uid:0
+msgid "Created by"
+msgstr ""
+
+#. module: project_task_materials
+#: field:project.task.materials,create_date:0
+msgid "Created on"
+msgstr ""
+
+#. module: project_task_materials
+#: field:project.task.materials,id:0
+msgid "ID"
+msgstr ""
+
+#. module: project_task_materials
+#: help:project.task.type,consume_material:0
+msgid "If you select this option, when a task is in this state\n"
+"        consumes materials associated"
+msgstr ""
+
+#. module: project_task_materials
+#: field:project.task.materials,write_uid:0
+msgid "Last Updated by"
+msgstr ""
+
+#. module: project_task_materials
+#: field:project.task.materials,write_date:0
+msgid "Last Updated on"
+msgstr ""
+
+#. module: project_task_materials
+#: view:project.task:project_task_materials.view_project_task_form_materials
+msgid "Materials consumed"
+msgstr ""
+
+#. module: project_task_materials
+#: view:project.task:project_task_materials.view_project_task_form_materials
+#: field:project.task,material_ids:0
+msgid "Materials used"
 msgstr ""
 
 #. module: project_task_materials
@@ -27,8 +78,29 @@ msgid "Product"
 msgstr ""
 
 #. module: project_task_materials
+#: view:project.task:project_task_materials.view_project_task_form_materials
+msgid "Products"
+msgstr ""
+
+#. module: project_task_materials
 #: field:project.task.materials,quantity:0
 msgid "Quantity"
+msgstr ""
+
+#. module: project_task_materials
+#: field:project.task.materials,stock_move_id:0
+msgid "Stock Move"
+msgstr ""
+
+#. module: project_task_materials
+#: view:project.task:project_task_materials.view_project_task_form_materials
+msgid "Stock Moves"
+msgstr ""
+
+#. module: project_task_materials
+#: model:ir.model,name:project_task_materials.model_project_task
+#: field:project.task.materials,task_id:0
+msgid "Task"
 msgstr ""
 
 #. module: project_task_materials
@@ -37,8 +109,12 @@ msgid "Task Materials Used"
 msgstr ""
 
 #. module: project_task_materials
-#: view:project.task:0
-#: field:project.task,material_ids:0
-msgid "Materials used"
+#: model:ir.model,name:project_task_materials.model_project_task_type
+msgid "Task Stage"
+msgstr ""
+
+#. module: project_task_materials
+#: view:project.task:project_task_materials.view_project_task_form_materials
+msgid "Transfer Materials"
 msgstr ""
 
