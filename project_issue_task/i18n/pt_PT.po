@@ -3,19 +3,18 @@
 # * project_issue_task
 # 
 # Translators:
-# Oihane Crucelaegui <oihanecruce@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-09-08 09:57+0000\n"
-"PO-Revision-Date: 2015-09-11 10:25+0000\n"
-"Last-Translator: Oihane Crucelaegui <oihanecruce@gmail.com>\n"
-"Language-Team: Spanish (http://www.transifex.com/oca/OCA-project-8-0/language/es/)\n"
+"PO-Revision-Date: 2015-07-21 19:20+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: Portuguese (Portugal) (http://www.transifex.com/oca/OCA-project-8-0/language/pt_PT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: es\n"
+"Language: pt_PT\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: project_issue_task
@@ -32,27 +31,27 @@ msgstr ""
 #. module: project_issue_task
 #: field:project.task.cause,code:0
 msgid "Code"
-msgstr ""
+msgstr "Código"
 
 #. module: project_issue_task
 #: field:project.task.cause,create_uid:0
 msgid "Created by"
-msgstr "Creado por"
+msgstr ""
 
 #. module: project_issue_task
 #: field:project.task.cause,create_date:0
 msgid "Created on"
-msgstr "Creado en"
+msgstr ""
 
 #. module: project_issue_task
 #: field:project.task.cause,description:0
 msgid "Description"
-msgstr "Descripción"
+msgstr ""
 
 #. module: project_issue_task
 #: field:project.task.cause,id:0
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #. module: project_issue_task
 #: model:ir.model,name:project_issue_task.model_project_task_cause
@@ -68,12 +67,12 @@ msgstr ""
 #. module: project_issue_task
 #: field:project.task.cause,write_uid:0
 msgid "Last Updated by"
-msgstr "Última actualización por"
+msgstr ""
 
 #. module: project_issue_task
 #: field:project.task.cause,write_date:0
 msgid "Last Updated on"
-msgstr "Última actualización en"
+msgstr ""
 
 #. module: project_issue_task
 #: field:project.task,reason_id:0
@@ -88,7 +87,7 @@ msgstr ""
 #. module: project_issue_task
 #: field:project.task,ref:0
 msgid "Reference"
-msgstr "Referencia"
+msgstr ""
 
 #. module: project_issue_task
 #: field:project.task,issue_id:0
@@ -104,12 +103,12 @@ msgstr ""
 #. module: project_issue_task
 #: field:project.task.cause,sequence:0
 msgid "Sequence"
-msgstr "Secuencia"
+msgstr ""
 
 #. module: project_issue_task
 #: model:ir.model,name:project_issue_task.model_project_task
 msgid "Task"
-msgstr "Tarea"
+msgstr "Tarefa"
 
 #. module: project_issue_task
 #: model:ir.actions.act_window,name:project_issue_task.open_task_cause_form
