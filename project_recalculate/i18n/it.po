@@ -10,11 +10,11 @@ msgstr ""
 "POT-Creation-Date: 2015-10-04 17:05+0000\n"
 "PO-Revision-Date: 2015-10-04 17:07+0000\n"
 "Last-Translator: <>\n"
-"Language-Team: Spanish (http://www.transifex.com/oca/OCA-project-8-0/language/es/)\n"
+"Language-Team: Italian (http://www.transifex.com/oca/OCA-project-8-0/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: es\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: project_recalculate
@@ -35,7 +35,7 @@ msgstr ""
 #. module: project_recalculate
 #: view:project.recalculate.wizard:project_recalculate.wizard_project_recalculate_form
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr "Annulla"
 
 #. module: project_recalculate
 #: code:addons/project_recalculate/models/project_project.py:57
@@ -67,12 +67,12 @@ msgstr ""
 #. module: project_recalculate
 #: field:project.recalculate.wizard,create_uid:0
 msgid "Created by"
-msgstr "Creado por"
+msgstr "Created by"
 
 #. module: project_recalculate
 #: field:project.recalculate.wizard,create_date:0
 msgid "Created on"
-msgstr "Creado en"
+msgstr "Created on"
 
 #. module: project_recalculate
 #: selection:project.project,calculation_type:0
@@ -143,12 +143,12 @@ msgstr ""
 #. module: project_recalculate
 #: field:project.recalculate.wizard,write_uid:0
 msgid "Last Updated by"
-msgstr "Última actualización por"
+msgstr "Last Updated by"
 
 #. module: project_recalculate
 #: field:project.recalculate.wizard,write_date:0
 msgid "Last Updated on"
-msgstr "Última actualización en"
+msgstr "Last Updated on"
 
 #. module: project_recalculate
 #: model:ir.model,name:project_recalculate.model_project_project
@@ -195,7 +195,7 @@ msgstr ""
 #. module: project_recalculate
 #: model:ir.model,name:project_recalculate.model_project_task
 msgid "Task"
-msgstr "Tarea"
+msgstr "Attività"
 
 #. module: project_recalculate
 #: model:ir.model,name:project_recalculate.model_project_task_type
