@@ -13,7 +13,7 @@ class ResourceCalendar(models.Model):
                                  leaves=None, compute_leaves=False,
                                  resource_id=None, default_interval=None,
                                  context=None):
-        context = context or {}
+        context = dict(context) or {}
         context['tz'] = 'UTC'
         if start_dt is None:
             start_dt = datetime.now().replace(hour=0, minute=0, second=0)
