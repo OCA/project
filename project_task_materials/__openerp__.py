@@ -2,6 +2,7 @@
 ##############################################################################
 #
 #    Copyright (C) 2012 - 2013 Daniel Reis
+#    Copyright (C) 2015 - Antiun Ingeniería S.L. - Sergio Teruel
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -23,7 +24,9 @@
     'summary': 'Record products spent in a Task',
     'version': '1.0',
     'category': "Project Management",
-    'author': "Daniel Reis,Odoo Community Association (OCA)",
+    'author': "Daniel Reis,"
+              "Antiun Ingeniería S.L.,"
+              "Odoo Community Association (OCA)",
     'license': 'AGPL-3',
     'description': """\
 Project Tasks allow to record time spent, but some activities, such as
@@ -37,7 +40,7 @@ Note that only a simple record is made and no accounting or stock moves are
 actually performed.""",
     'depends': ['project', 'product'],
     'data': [
-        'project_view.xml',
+        'views/project_view.xml',
         'security/ir.model.access.csv',
     ],
     'installable': True,
