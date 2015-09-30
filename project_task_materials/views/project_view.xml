@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+    <record id="view_project_task_form_materials" model="ir.ui.view">
+      <field name="name">project.task.form.materials</field>
+      <field name="model">project.task</field>
+      <field name="inherit_id" ref="project.view_task_form2"/>
+      <field name="arch" type="xml">
+
+        <field position="after" name="work_ids">
+          <!--Materials used-->
+          <field name="material_ids" groups="project.group_tasks_work_on_tasks">
+            <tree string="Materials used" editable="top">
+              <field name="product_id"/>
+              <field name="quantity"/>
+            </tree>
+          </field>
+        </field>
+
+      </field>
+    </record>
+
+  </data>
+</openerp>

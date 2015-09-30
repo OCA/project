@@ -2,6 +2,7 @@
 ##############################################################################
 #
 #    Copyright (C) 2012 - 2013 Daniel Reis
+#    Copyright (C) 2015 - Antiun Ingeniería S.L. - Sergio Teruel
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -18,24 +19,22 @@
 #
 ##############################################################################
 
-from openerp.osv import fields, orm
+from openerp import models, fields
 
 
-class task(orm.Model):
+class Task(models.Model):
     _inherit = "project.task"
-    _columns = {
-        'material_ids': fields.one2many(
-            'project.task.materials', 'task_id', 'Materials used'),
-    }
+    material_ids = fields.One2many(
+        comodel_name='project.task.materials', inverse_name='task_id',
+        string='Materials used')
 
 
-class project_task_materials(orm.Model):
+class ProjectTaskMaterials(models.Model):
     _name = "project.task.materials"
     _description = "Task Materials Used"
-    _columns = {
-        'task_id': fields.many2one(
-            'project.task', 'Task', ondelete='cascade', required=True),
-        'product_id': fields.many2one(
-            'product.product', 'Product', required=True),
-        'quantity': fields.float('Quantity'),
-        }
+    task_id = fields.Many2one(
+        comodel_name='project.task', string='Task', ondelete='cascade',
+        required=True)
+    product_id = fields.Many2one(
+        comodel_name='product.product', string='Product', required=True)
+    quantity = fields.Float(string='Quantity')
