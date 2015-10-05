@@ -1,0 +1,72 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * service_desk_issue
+# 
+# Translators:
+# Armando Vulcano Junior <vulcano@uol.com.br>, 2015
+msgid ""
+msgstr ""
+"Project-Id-Version: project (8.0)\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-10-04 17:05+0000\n"
+"PO-Revision-Date: 2015-09-18 19:02+0000\n"
+"Last-Translator: Armando Vulcano Junior <vulcano@uol.com.br>\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/oca/OCA-project-8-0/language/pt_BR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#. module: service_desk_issue
+#: field:project.issue,analytic_partner_id:0
+msgid "Analytic Account Partner"
+msgstr "Parceiro de Conta Analítica"
+
+#. module: service_desk_issue
+#: view:project.issue:service_desk_issue.view_project_issue_filter_sdesk
+msgid "Contract"
+msgstr "Contrato"
+
+#. module: service_desk_issue
+#: view:project.issue:service_desk_issue.view_project_issue_filter_sdesk
+msgid "Contract Customer"
+msgstr "Contrato do Cliente"
+
+#. module: service_desk_issue
+#: field:project.issue,analytic_account_id:0
+msgid "Contract/Analytic"
+msgstr "Contrato/Analítico"
+
+#. module: service_desk_issue
+#: field:project.issue,location_id:0
+msgid "Location"
+msgstr "Localidade"
+
+#. module: service_desk_issue
+#: field:project.issue,project_code:0
+msgid "Project Code"
+msgstr "Código do Projeto"
+
+#. module: service_desk_issue
+#: model:ir.model,name:service_desk_issue.model_project_issue
+msgid "Project Issue"
+msgstr "Problemas do Projeto"
+
+#. module: service_desk_issue
+#: field:project.issue,use_analytic_account:0
+msgid "Use Analytic Account"
+msgstr "Use Conta Analítica"
+
+#. module: service_desk_issue
+#: view:project.issue:service_desk_issue.project_issue_form_view_sdesk
+msgid "onchange_project(project_id)"
+msgstr "onchange_project(project_id)"
+
+#. module: service_desk_issue
+#: view:project.issue:service_desk_issue.project_issue_form_view_sdesk
+msgid ""
+"{'default_project_id': project_id, 'default_name': name, "
+"'default_analytic_account_id': analytic_account_id, 'default_location_id': "
+"location_id}"
+msgstr "{'default_project_id': project_id, 'default_name': name, 'default_analytic_account_id': analytic_account_id, 'default_location_id': location_id}"

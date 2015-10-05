@@ -10,12 +10,12 @@ msgstr ""
 "POT-Creation-Date: 2015-10-04 17:05+0000\n"
 "PO-Revision-Date: 2015-10-04 17:07+0000\n"
 "Last-Translator: <>\n"
-"Language-Team: Spanish (http://www.transifex.com/oca/OCA-project-8-0/language/es/)\n"
+"Language-Team: Latvian (http://www.transifex.com/oca/OCA-project-8-0/language/lv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: es\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: lv\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
 
 #. module: project_recalculate
 #: help:project.task,from_days:0
@@ -35,7 +35,7 @@ msgstr ""
 #. module: project_recalculate
 #: view:project.recalculate.wizard:project_recalculate.wizard_project_recalculate_form
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr ""
 
 #. module: project_recalculate
 #: code:addons/project_recalculate/models/project_project.py:57
@@ -67,12 +67,12 @@ msgstr ""
 #. module: project_recalculate
 #: field:project.recalculate.wizard,create_uid:0
 msgid "Created by"
-msgstr "Creado por"
+msgstr ""
 
 #. module: project_recalculate
 #: field:project.recalculate.wizard,create_date:0
 msgid "Created on"
-msgstr "Creado en"
+msgstr ""
 
 #. module: project_recalculate
 #: selection:project.project,calculation_type:0
@@ -126,7 +126,7 @@ msgstr ""
 #. module: project_recalculate
 #: field:project.recalculate.wizard,id:0
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #. module: project_recalculate
 #: help:project.task.type,include_in_recalculate:0
@@ -143,12 +143,12 @@ msgstr ""
 #. module: project_recalculate
 #: field:project.recalculate.wizard,write_uid:0
 msgid "Last Updated by"
-msgstr "Última actualización por"
+msgstr ""
 
 #. module: project_recalculate
 #: field:project.recalculate.wizard,write_date:0
 msgid "Last Updated on"
-msgstr "Última actualización en"
+msgstr ""
 
 #. module: project_recalculate
 #: model:ir.model,name:project_recalculate.model_project_project
@@ -195,7 +195,7 @@ msgstr ""
 #. module: project_recalculate
 #: model:ir.model,name:project_recalculate.model_project_task
 msgid "Task"
-msgstr "Tarea"
+msgstr "Uzdevums"
 
 #. module: project_recalculate
 #: model:ir.model,name:project_recalculate.model_project_task_type
