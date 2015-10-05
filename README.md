@@ -27,10 +27,12 @@ addon | version | summary
 [project_gtd](project_gtd/) | 2.0 | Personal Tasks, Contexts, Timeboxes
 [project_issue_baseuser](project_issue_baseuser/) | 1.0 | Extend Project user roles to support more complex use cases
 [project_issue_task](project_issue_task/) | 1.1 | Use Tasks to support Issue resolution reports
+[project_recalculate](project_recalculate/) | 8.0.1.0.0 | Project Recalculate
 [project_sla](project_sla/) | 1.0 | Define SLAs for your Contracts
 [project_stage_state](project_stage_state/) | 1.0 | Restore State attribute removed from Project Stages in 8.0
 [project_task_code](project_task_code/) | 1.0 | Sequential Code for Tasks
 [project_task_materials](project_task_materials/) | 1.0 | Record products spent in a Task
+[project_timesheet_analytic_partner](project_timesheet_analytic_partner/) | 8.0.1.0.0 | Propagate task partner to timesheet entries
 [sale_order_project](sale_order_project/) | 1.0 | Sale Order Project
 [service_desk](service_desk/) | 1.1 | Use Projects for Service Desks and service teams
 [service_desk_issue](service_desk_issue/) | 1.1 | Use Project Issues for Service Desks and service teams
