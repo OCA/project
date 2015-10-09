@@ -20,7 +20,7 @@
 
 {
     'name': 'Projects Issue extensions for user roles',
-    'version': '1.0',
+    'version': '8.0.1.0.0',
     'category': 'Project Management',
     'summary': 'Extend Project user roles to support more complex use cases',
     'description': """\

@@ -21,7 +21,7 @@
 {
     'name': 'Project Issue related Tasks',
     'summary': 'Use Tasks to support Issue resolution reports',
-    'version': '1.1',
+    'version': '8.0.1.1.0',
     'category': 'Project Management',
     'description': """\
 Support for the use case where solving an Issue means a Task should be done,

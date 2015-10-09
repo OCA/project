@@ -19,7 +19,7 @@
 ##############################################################################
 {
     "name": "Project closing",
-    "version": "0.1.1",
+    "version": "8.0.0.1.1",
     "author": "Camptocamp,Odoo Community Association (OCA)",
     "website": "http://www.camptocamp.com",
     "category": "project Management",

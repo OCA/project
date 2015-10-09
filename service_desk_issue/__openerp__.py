@@ -20,7 +20,7 @@
 {
     'name': 'Service Desk for Issues',
     'summary': 'Use Project Issues for Service Desks and service teams',
-    'version': '1.1',
+    'version': '8.0.1.1.0',
     "category": "Project Management",
     'description': """\
 This module extends the ``service_desk`` module to also work with Issues.

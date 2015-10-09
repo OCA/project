@@ -22,7 +22,7 @@
 {
     'name': 'Project Task Materials',
     'summary': 'Record products spent in a Task',
-    'version': '1.0',
+    'version': '8.0.1.0.0',
     'category': "Project Management",
     'author': "Daniel Reis,"
               "Antiun Ingeniería S.L.,"

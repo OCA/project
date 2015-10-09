@@ -20,7 +20,7 @@
 {
     'name': 'Per Project Configurable Categorie on Issues',
     'summary': 'Projects Issues can have an allowed category list',
-    'version': '0.1',
+    'version': '8.0.0.1.0',
     "category": "Project Management",
     'description': """\
 Adds to Issues the ability to limit selectable Categories to a Proeject's

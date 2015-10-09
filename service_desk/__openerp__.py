@@ -20,7 +20,7 @@
 {
     'name': 'Service Desk',
     'summary': 'Use Projects for Service Desks and service teams',
-    'version': '1.1',
+    'version': '8.0.1.1.0',
     "category": "Project Management",
     'description': """\
 Available service desks/teams are defined as Projects.
