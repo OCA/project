@@ -19,7 +19,7 @@
 ##############################################################################
 {
     'name': 'Project Issue with Department',
-    'version': '1.1',
+    'version': '8.0.1.1.0',
     "category": "Project Management",
     'description': """\
 Add Department field to Project Issues.
