@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     "name": "Analytic Department Categorization",
-    "version": "1.0",
+    "version": "8.0.1.0.0",
     "author": "Camptocamp, Daniel Reis,Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "category": "Generic Modules/Projects & Services",
