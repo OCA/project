@@ -22,7 +22,6 @@ from openerp.osv import fields, orm
 from openerp.tools.safe_eval import safe_eval
 from openerp.tools.misc import DEFAULT_SERVER_DATETIME_FORMAT as DT_FMT
 from openerp import SUPERUSER_ID
-from datetime import timedelta
 from datetime import datetime as dt
 from . import m2m
 
@@ -124,42 +123,27 @@ class SLAControl(orm.Model):
         self.write(cr, uid, control_ids, {'sla_state': '3'}, context=context)
         return True
 
-    def _compute_sla_date(self, cr, uid, working_hours, res_uid,
+    def _compute_sla_date(self, cr, uid, calendar_id, resource_id,
                           start_date, hours, context=None):
         """
         Return a limit datetime by adding hours to a start_date, honoring
         a working_time calendar and a resource's (res_uid) timezone and
         availability (leaves)
-
-        Currently implemented using a binary search using
-        _interval_hours_get() from resource.calendar. This is
-        resource.calendar agnostic, but could be more efficient if
-        implemented based on it's logic.
-
-        Known issue: the end date can be a non-working time; it would be
-        best for it to be the latest working time possible. Example:
-        if working time is 08:00 - 16:00 and start_date is 19:00, the +8h
-        end date will be 19:00 of the next day, and it should rather be
-        16:00 of the next day.
         """
         assert isinstance(start_date, dt)
         assert isinstance(hours, int) and hours >= 0
 
         cal_obj = self.pool.get('resource.calendar')
-        target, step = hours * 3600,  16 * 3600
-        lo, hi = start_date, start_date
-        while target > 0 and step > 60:
-            hi = lo + timedelta(seconds=step)
-            check = int(3600 * cal_obj._interval_hours_get(
-                cr, uid, working_hours, lo, hi,
-                timezone_from_uid=res_uid, exclude_leaves=False,
-                context=context))
-            if check <= target:
-                target -= check
-                lo = hi
-            else:
-                step = int(step / 4.0)
-        return hi
+        periods = cal_obj._schedule_hours(
+            cr, uid, calendar_id,
+            hours,
+            day_dt=start_date,
+            compute_leaves=True,
+            resource_id=resource_id,
+            default_interval=(8, 16),
+            context=context)
+        end_date = periods[-1][1]
+        return end_date
 
     def _get_computed_slas(self, cr, uid, doc, context=None):
         """
