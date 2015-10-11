@@ -1,0 +1,28 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * project_timesheet_analytic_partner
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: project (8.0)\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-10-05 19:53+0000\n"
+"PO-Revision-Date: 2015-10-05 12:33+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: Spanish (Venezuela) (http://www.transifex.com/oca/OCA-project-8-0/language/es_VE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: es_VE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: project_timesheet_analytic_partner
+#: model:ir.model,name:project_timesheet_analytic_partner.model_project_task_work
+msgid "Project Task Work"
+msgstr ""
+
+#. module: project_timesheet_analytic_partner
+#: model:ir.model,name:project_timesheet_analytic_partner.model_project_task
+msgid "Task"
+msgstr "Tarea"

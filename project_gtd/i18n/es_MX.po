@@ -3,13 +3,14 @@
 # * project_gtd
 # 
 # Translators:
+# Jesus Alan Ramos Rodriguez <alan.ramos@jarsa.com.mx>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-31 18:04+0000\n"
-"PO-Revision-Date: 2015-08-10 12:49+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
+"POT-Creation-Date: 2015-10-05 19:53+0000\n"
+"PO-Revision-Date: 2015-10-09 16:08+0000\n"
+"Last-Translator: Jesus Alan Ramos Rodriguez <alan.ramos@jarsa.com.mx>\n"
 "Language-Team: Spanish (Mexico) (http://www.transifex.com/oca/OCA-project-8-0/language/es_MX/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -82,7 +83,7 @@ msgstr "Periodo de tiempo vacío"
 #: code:addons/project_gtd/wizard/project_gtd_empty.py:52
 #, python-format
 msgid "Error!"
-msgstr ""
+msgstr "¡Error!"
 
 #. module: project_gtd
 #: field:project.timebox.fill.plan,timebox_id:0
@@ -139,7 +140,7 @@ msgstr "Largo plazo"
 #: model:ir.actions.act_window,name:project_gtd.open_gtd_task
 #: model:ir.ui.menu,name:project_gtd.menu_open_gtd_timebox_tree
 msgid "My Tasks (GTD)"
-msgstr ""
+msgstr "Mis Tareas (GTD)"
 
 #. module: project_gtd
 #: field:project.timebox.empty,name:0
@@ -192,7 +193,7 @@ msgstr "Tarea"
 #: model:ir.actions.act_window,name:project_gtd.open_gtd_all_tasks
 #: model:ir.ui.menu,name:project_gtd.menu_open_gtd_timebox_all_tree
 msgid "Tasks (GTD)"
-msgstr ""
+msgstr "Tareas (GTD)"
 
 #. module: project_gtd
 #: field:project.timebox.fill.plan,task_ids:0
