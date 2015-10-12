@@ -18,7 +18,4 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-import hours_block
-import report
-import product
-import project
+from . import hours_block

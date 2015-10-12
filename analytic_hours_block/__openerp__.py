@@ -42,6 +42,7 @@ you can track and follow how much has been used.
         "hr_timesheet_invoice",
         "analytic",
         "project",
+        "invoice_department",
         ],
     "data": [
         "report.xml",
@@ -54,6 +55,5 @@ you can track and follow how much has been used.
         "security/hours_block_security.xml",
         "security/ir.model.access.csv",
         ],
-    "active": False,
-    "installable": False
+    "installable": True
 }
