@@ -1,5 +1,4 @@
 from openerp.tests.common import TransactionCase
-from openerp import SUPERUSER_ID
 import datetime
 
 dt_combine = datetime.datetime.combine
@@ -30,6 +29,7 @@ class TestComputeSlaDate(TransactionCase):
         super(TestComputeSlaDate, self).setUp()
 
         self.model = self.registry['project.sla.control']
+        # Tests using 8-12 13-18 demo data calendar
         self.calendar_id = self.ref('resource.timesheet_group1')
 
     def test_10(self):
@@ -37,9 +37,13 @@ class TestComputeSlaDate(TransactionCase):
         model = self.model
         calendar_id = self.calendar_id
 
-        def compute(date, hours):
-            return model._compute_sla_date(cr, uid, calendar_id,
-                                           SUPERUSER_ID, date, hours)
+        def compute(date, hours, context=None):
+            # Calculation depend on timezone
+            # Use UTC if none is specified
+            if context is None:
+                context = {'tz': 'UTC'}
+            return model._compute_sla_date(
+                cr, uid, calendar_id, uid, date, hours, context=context)
 
         self.assertEquals(compute(thursday_8, 2), thursday_10)
 
@@ -50,6 +54,7 @@ class TestComputeSlaDate(TransactionCase):
         self.assertEquals(compute(thursday_17, 2), friday_9)
 
         # when start_date is after end of working day
+        # 3 hours count from 08:00 to 11:00
         self.assertEquals(compute(thursday_19, 3), friday_11)
 
         # when start_Date is before start of working day
