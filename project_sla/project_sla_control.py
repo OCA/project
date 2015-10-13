@@ -171,6 +171,13 @@ class SLAControl(orm.Model):
                    safe_getattr(doc, 'project_id.analytic_account_id.sla_ids'))
         if not sla_ids:
             return res
+        cal_id = safe_getattr(doc, 'project_id.resource_calendar_id')
+        if not cal_id:
+            _logger.debug('Project %s has no calendar!', doc.project_id.name)
+            return []
+        if not cal_id.attendance_ids:
+            _logger.debug('Calendar %s has no work periods!', cal_id.name)
+            return []
 
         for sla in sla_ids:
             if sla.control_model != doc._name:
@@ -222,8 +229,8 @@ class SLAControl(orm.Model):
                     break
 
         if sla_ids and not res:
-            _logger.warning("No valid SLA rule foun for %d, SLA Ids %s"
-                            % (doc.id, repr([x.id for x in sla_ids])))
+            _logger.warning("No valid SLA rule foun for %d, SLA Ids %s",
+                            doc.id, repr([x.id for x in sla_ids]))
         return res
 
     def store_sla_control(self, cr, uid, docs, context=None):
@@ -242,7 +249,7 @@ class SLAControl(orm.Model):
         res = []
         for ix, doc in enumerate(docs):
             if ix and ix % 50 == 0:
-                _logger.info('...%d SLAs recomputed for %s' % (ix, doc._name))
+                _logger.info('...%d SLAs recomputed for %s', ix, doc._name)
             control = {x.sla_line_id.id: x
                        for x in doc.sla_control_ids}
             sla_recs = self._get_computed_slas(cr, uid, doc, context=ctx)
