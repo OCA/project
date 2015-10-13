@@ -41,10 +41,10 @@ Unported addons
 ---------------
 addon | version | summary
 --- | --- | ---
-[account_analytic_analysis_recurring](__unported__/account_analytic_analysis_recurring/) | 0.1 (unported) | Contracts Management recurring
-[analytic_hours_block](__unported__/analytic_hours_block/) | 1.5 (unported) | Project Hours Blocks Management
-[project_functional_block](__unported__/project_functional_block/) | 1.2 (unported) | Project requiring functional blocks
-[project_service_type](__unported__/project_service_type/) | 1.0 (unported) | Add type of service on project
+[account_analytic_analysis_recurring](account_analytic_analysis_recurring/) | 0.1 (unported) | Contracts Management recurring
+[analytic_hours_block](analytic_hours_block/) | 1.5 (unported) | Project Hours Blocks Management
+[project_functional_block](project_functional_block/) | 1.2 (unported) | Project requiring functional blocks
+[project_service_type](project_service_type/) | 1.0 (unported) | Add type of service on project
 
 [//]: # (end addons)
 
