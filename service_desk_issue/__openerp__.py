@@ -36,6 +36,6 @@ Please refer to that module's description.
     'data': [
         'service_desk_view.xml',
     ],
-    'installable': True,
+    'installable': False,
     'auto_install': True,
 }

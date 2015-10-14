@@ -40,6 +40,6 @@ Please refer to the ``project_baseuser`` module for more details.
         'security/ir.model.access.csv',
         'security/project_security.xml',
         ],
-    'installable': True,
+    'installable': False,
     'auto_install': True,
 }

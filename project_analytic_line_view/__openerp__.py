@@ -32,7 +32,7 @@
         'analytic_account_view.xml',
     ],
     'test': [],
-    'installable': True,
+    'installable': False,
     'auto_install': False,
     'application': False
 }

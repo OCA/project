@@ -41,6 +41,6 @@ corresponding extension module.
     'data': [
         'project_categ_view.xml',
         ],
-    'installable': True,
+    'installable': False,
     'application': False,
 }

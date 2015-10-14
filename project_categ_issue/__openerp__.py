@@ -35,6 +35,6 @@ specific list.
     'data': [
         'project_categ_view.xml',
         ],
-    'installable': True,
+    'installable': False,
     'auto_install': True,
 }

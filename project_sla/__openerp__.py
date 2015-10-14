@@ -131,5 +131,5 @@ Credits and Contributors
     ],
     'demo': ['project_sla_demo.xml'],
     'test': ['test/project_sla.yml'],
-    'installable': True,
+    'installable': False,
 }

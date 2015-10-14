@@ -16,6 +16,6 @@
         'analytic_partner',
         'project_timesheet',
     ],
-    "installable": True,
+    'installable': False,
     "auto_install": True,
 }

@@ -43,5 +43,5 @@ actually performed.""",
         'views/project_view.xml',
         'security/ir.model.access.csv',
     ],
-    'installable': True,
+    'installable': False,
 }
