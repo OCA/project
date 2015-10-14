@@ -13,5 +13,5 @@ No required dependency on Accounting modules.
     "depends": ["analytic", "hr"],
     "data": ["analytic_view.xml"],
     'test': ['test/analytic.yml'],
-    "installable": True,
+    'installable': False,
 }
