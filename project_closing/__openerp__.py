@@ -25,5 +25,5 @@
     "category": "project Management",
     "depends": ["project"],
     "data": [],
-    'installable': True,
+    'installable': False,
 }
