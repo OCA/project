@@ -56,7 +56,7 @@ performing those tasks.
     ],
     'demo': ['project_gtd_demo.xml'],
     'test': ['test/task_timebox.yml'],
-    'installable': True,
+    'installable': False,
     'auto_install': False,
 }
 
