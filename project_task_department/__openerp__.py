@@ -18,5 +18,5 @@ available on them.)
         "project_department",
     ],
     "data": ["project_view.xml"],
-    "installable": True,
+    'installable': False,
 }
