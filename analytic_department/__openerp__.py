@@ -15,5 +15,5 @@ corresponding tree, search and form views.
         "account",
         "hr"],
     "data": ["analytic_view.xml"],
-    "installable": True,
+    'installable': False,
 }
