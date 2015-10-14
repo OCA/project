@@ -16,5 +16,5 @@ views.
     ],
     "data": ["project_view.xml"],
     "auto_install": True,
-    "installable": True,
+    'installable': False,
 }
