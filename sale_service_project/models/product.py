@@ -28,7 +28,7 @@ class ProductProduct(models.Model):
             'target': 'new',
             'domain': '[]',
             'context': {}
-                }
+            }
         return wiz
 
 

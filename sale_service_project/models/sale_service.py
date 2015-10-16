@@ -40,8 +40,7 @@ class ProcurementOrder(models.Model):
                 'product_id': material.material_id.id,
                 'quantity': material.quantity
             }))
-        vals = {
-                'planned_hours': total_work_hours,
+        vals = {'planned_hours': total_work_hours,
                 'work_ids': work_list,
                 'material_ids': material_list,
                 'user_id': procurement.product_id.product_manager.id or
