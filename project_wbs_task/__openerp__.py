@@ -21,6 +21,7 @@
 
 
 {
+<<<<<<< ff33f76c66d1cedc6dbd60cdf85ad0855da08321
     "name": "Work Breakdown Structure - Tasks",
     "version": "2.0",
     "author": "Eficent",
@@ -40,6 +41,24 @@ view for the associated tasks.
     "data": [
         "view/project_task_view.xml",
         "view/project_view.xml",
+=======
+    'name': 'Work Breakdown Structure - Tasks',
+    'version': '8.0.2.0.0',
+    'author':   'Eficent, '
+                'Matmoz d.o.o., '
+                'Project Expert Team',
+    'contributors': [
+        'Jordi Ballester <jordi.ballester@eficent.com>',
+        'Matjaž Mozetič <m.mozetic@matmoz.si>',
+    ],
+    'website': 'http://project.expert',
+    'category': 'Project Management',
+    'license': 'AGPL-3',
+    'depends': ['project_wbs'],
+    'data': [
+        'view/project_task_view.xml',
+        'view/project_view.xml',
+>>>>>>> Enhance the module descriptions
     ],
     'demo': [
 
