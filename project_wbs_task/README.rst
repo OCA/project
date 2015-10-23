@@ -7,9 +7,9 @@ Work Breakdown Structure - Tasks
 
 This module extends the standard Odoo functionality by adding:
 
-    * A button in the project tree view that will conduct the user to the list
-      view for the associated tasks.
-    * The possibility to search for task by the WBS complete reference or name.
+* A button in the project tree view that will conduct the user to the list
+  view for the associated tasks.
+* The possibility to search for task by the WBS complete reference or name.
 
 Installation
 ============
