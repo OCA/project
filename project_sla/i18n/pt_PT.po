@@ -3,13 +3,14 @@
 # * project_sla
 # 
 # Translators:
+# Daniel Reis, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-08 09:57+0000\n"
-"PO-Revision-Date: 2015-07-21 19:20+0000\n"
-"Last-Translator: <>\n"
+"POT-Creation-Date: 2015-10-14 11:29+0000\n"
+"PO-Revision-Date: 2015-10-13 16:42+0000\n"
+"Last-Translator: Daniel Reis\n"
 "Language-Team: Portuguese (Portugal) (http://www.transifex.com/oca/OCA-project-8-0/language/pt_PT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -58,7 +59,7 @@ msgstr ""
 #. module: project_sla
 #: field:project.sla,active:0
 msgid "Active"
-msgstr ""
+msgstr "Ativo"
 
 #. module: project_sla
 #: model:ir.model,name:project_sla.model_account_analytic_account
@@ -75,34 +76,34 @@ msgstr ""
 #. module: project_sla
 #: field:project.sla.control,sla_close_date:0
 msgid "Close Date"
-msgstr ""
+msgstr "Data de Fecho"
 
 #. module: project_sla
 #: field:project.sla.line,condition:0
 msgid "Condition"
-msgstr ""
+msgstr "Condição"
 
 #. module: project_sla
 #: view:project.sla:project_sla.view_sla_form field:project.sla,analytic_ids:0
 msgid "Contracts"
-msgstr ""
+msgstr "Contratos"
 
 #. module: project_sla
 #: field:project.sla,control_field_id:0
 msgid "Control Date"
-msgstr ""
+msgstr "Data de Controlo"
 
 #. module: project_sla
 #: field:project.sla,create_uid:0 field:project.sla.control,create_uid:0
 #: field:project.sla.line,create_uid:0
 msgid "Created by"
-msgstr ""
+msgstr "Criado por"
 
 #. module: project_sla
 #: field:project.sla,create_date:0 field:project.sla.control,create_date:0
 #: field:project.sla.line,create_date:0
 msgid "Created on"
-msgstr ""
+msgstr "Criado em"
 
 #. module: project_sla
 #: help:project.sla,control_field_id:0
@@ -113,25 +114,25 @@ msgstr ""
 #: field:project.sla,sla_line_ids:0
 #: view:project.sla.line:project_sla.view_sla_lines_tree
 msgid "Definitions"
-msgstr ""
+msgstr "Definições"
 
 #. module: project_sla
 #: field:project.sla.control,doc_id:0
 msgid "Document ID"
-msgstr ""
+msgstr "ID Documento"
 
 #. module: project_sla
 #: field:project.sla.control,doc_model:0
 #: view:project.sla.report:project_sla.view_project_sla_report_search
 #: field:project.sla.report,document_model_id:0
 msgid "Document Model"
-msgstr ""
+msgstr "Modelo do Documento"
 
 #. module: project_sla
 #: view:project.issue:project_sla.project_issue_form_view_sla
 #: view:project.task:project_sla.project_task_form_view_sla
 msgid "Extra Info"
-msgstr ""
+msgstr "Informação extra"
 
 #. module: project_sla
 #: selection:project.issue,sla_state:0
@@ -139,22 +140,22 @@ msgstr ""
 #: selection:project.sla.controlled,sla_state:0
 #: selection:project.sla.report,sla_state:0 selection:project.task,sla_state:0
 msgid "Failed"
-msgstr ""
+msgstr "Falhou"
 
 #. module: project_sla
 #: field:project.sla.report,failed_count:0
 msgid "Failed Count"
-msgstr ""
+msgstr "Nº Falhou"
 
 #. module: project_sla
 #: field:project.sla,control_model:0
 msgid "For documents"
-msgstr ""
+msgstr "Para documentos"
 
 #. module: project_sla
 #: view:project.sla.report:project_sla.view_project_sla_report_search
 msgid "Group By..."
-msgstr ""
+msgstr "Agrupar por..."
 
 #. module: project_sla
 #: field:project.sla.line,limit_qty:0
@@ -204,7 +205,7 @@ msgstr ""
 #. module: project_sla
 #: model:ir.model,name:project_sla.model_project_issue
 msgid "Project Issue"
-msgstr ""
+msgstr "Incidente"
 
 #. module: project_sla
 #: model:ir.model,name:project_sla.model_project_sla_report

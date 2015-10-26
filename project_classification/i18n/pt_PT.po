@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-08 09:57+0000\n"
+"POT-Creation-Date: 2015-10-14 11:29+0000\n"
 "PO-Revision-Date: 2015-08-18 14:18+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: Portuguese (Portugal) (http://www.transifex.com/oca/OCA-project-8-0/language/pt_PT/)\n"
@@ -36,12 +36,12 @@ msgstr ""
 #. module: project_classification
 #: field:project.classification,create_uid:0
 msgid "Created by"
-msgstr ""
+msgstr "Creado por"
 
 #. module: project_classification
 #: field:project.classification,create_date:0
 msgid "Created on"
-msgstr ""
+msgstr "Criado em"
 
 #. module: project_classification
 #: field:project.classification,currency_id:0

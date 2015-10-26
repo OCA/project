@@ -3,13 +3,14 @@
 # * service_desk
 # 
 # Translators:
+# Daniel Reis, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-08 09:57+0000\n"
-"PO-Revision-Date: 2015-07-21 19:19+0000\n"
-"Last-Translator: <>\n"
+"POT-Creation-Date: 2015-10-14 11:29+0000\n"
+"PO-Revision-Date: 2015-10-13 16:48+0000\n"
+"Last-Translator: Daniel Reis\n"
 "Language-Team: Portuguese (Portugal) (http://www.transifex.com/oca/OCA-project-8-0/language/pt_PT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,27 +26,27 @@ msgstr "Conta Analítica"
 #. module: service_desk
 #: field:account.analytic.account,contact_id:0
 msgid "Contact"
-msgstr ""
+msgstr "Contato"
 
 #. module: service_desk
 #: field:project.task,analytic_account_id:0
 msgid "Contract/Analytic"
-msgstr ""
+msgstr "Contrato/Analítica"
 
 #. module: service_desk
 #: field:project.task,location_id:0
 msgid "Location"
-msgstr ""
+msgstr "Localização"
 
 #. module: service_desk
 #: selection:project.project,use_analytic_account:0
 msgid "No"
-msgstr ""
+msgstr "Não"
 
 #. module: service_desk
 #: selection:project.project,use_analytic_account:0
 msgid "Optional"
-msgstr ""
+msgstr "Opcional"
 
 #. module: service_desk
 #: model:ir.model,name:service_desk.model_project_project
@@ -55,12 +56,12 @@ msgstr "Projeto"
 #. module: service_desk
 #: field:project.task,project_code:0
 msgid "Project Code"
-msgstr ""
+msgstr "Código do projeto"
 
 #. module: service_desk
 #: selection:project.project,use_analytic_account:0
 msgid "Required"
-msgstr ""
+msgstr "Obrigatório"
 
 #. module: service_desk
 #: model:ir.model,name:service_desk.model_project_task
@@ -71,7 +72,7 @@ msgstr "Tarefa"
 #: field:project.project,use_analytic_account:0
 #: field:project.task,use_analytic_account:0
 msgid "Use Analytic Account"
-msgstr ""
+msgstr "Usar Conta Analitica"
 
 #. module: service_desk
 #: view:project.task:service_desk.view_project_task_form_sdesk
