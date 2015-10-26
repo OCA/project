@@ -3,13 +3,14 @@
 # * project_task_materials
 # 
 # Translators:
+# Jarmo Kortetjärvi <jarmo.kortetjarvi@gmail.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-31 18:04+0000\n"
-"PO-Revision-Date: 2015-07-21 19:20+0000\n"
-"Last-Translator: <>\n"
+"POT-Creation-Date: 2016-09-02 14:58+0000\n"
+"PO-Revision-Date: 2016-09-15 12:45+0000\n"
+"Last-Translator: Jarmo Kortetjärvi <jarmo.kortetjarvi@gmail.com>\n"
 "Language-Team: Finnish (http://www.transifex.com/oca/OCA-project-8-0/language/fi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,43 +21,53 @@ msgstr ""
 #. module: project_task_materials
 #: field:project.task.materials,create_uid:0
 msgid "Created by"
-msgstr ""
+msgstr "Luonut"
 
 #. module: project_task_materials
 #: field:project.task.materials,create_date:0
 msgid "Created on"
-msgstr ""
+msgstr "Luotu"
+
+#. module: project_task_materials
+#: field:project.task.materials,display_name:0
+msgid "Display Name"
+msgstr "Nimi"
 
 #. module: project_task_materials
 #: field:project.task.materials,id:0
 msgid "ID"
-msgstr ""
+msgstr "ID"
+
+#. module: project_task_materials
+#: field:project.task.materials,__last_update:0
+msgid "Last Modified on"
+msgstr "Viimeksi muokattu"
 
 #. module: project_task_materials
 #: field:project.task.materials,write_uid:0
 msgid "Last Updated by"
-msgstr ""
+msgstr "Viimeksi päivittänyt"
 
 #. module: project_task_materials
 #: field:project.task.materials,write_date:0
 msgid "Last Updated on"
-msgstr ""
+msgstr "Viimeksi päivitetty"
 
 #. module: project_task_materials
 #: view:project.task:project_task_materials.view_project_task_form_materials
 #: field:project.task,material_ids:0
 msgid "Materials used"
-msgstr ""
+msgstr "Käytetyt materiaalit"
 
 #. module: project_task_materials
 #: field:project.task.materials,product_id:0
 msgid "Product"
-msgstr ""
+msgstr "Tuote"
 
 #. module: project_task_materials
 #: field:project.task.materials,quantity:0
 msgid "Quantity"
-msgstr ""
+msgstr "Määrä"
 
 #. module: project_task_materials
 #: model:ir.model,name:project_task_materials.model_project_task
@@ -67,4 +78,4 @@ msgstr "Tehtävä"
 #. module: project_task_materials
 #: model:ir.model,name:project_task_materials.model_project_task_materials
 msgid "Task Materials Used"
-msgstr ""
+msgstr "Tehtävän materiaaleja käytetty"
