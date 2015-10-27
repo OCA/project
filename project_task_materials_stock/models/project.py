@@ -124,7 +124,7 @@ class ProjectTaskMaterials(models.Model):
             'product_uom_qty': self.quantity,
             'product_uos_qty': self.quantity,
             'origin': self.task_id.name,
-            'location_id':self.env.ref(
+            'location_id': self.env.ref(
                 'stock.stock_location_stock').id,
             'location_dest_id': self.env.ref(
                 'stock.stock_location_customers').id,
