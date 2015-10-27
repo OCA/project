@@ -17,6 +17,9 @@ Configuration
 Check option 'Consume Material' in Task Stage to generate a stock move when
 the task is in that stage.
 
+Go to Setting -> Configuration - > Projects and enable option
+"Manage time estimation on tasks"
+
 Usage
 =====
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
