@@ -34,7 +34,7 @@
                 <xpath expr="//field[@name='name']" position="after">
                     <field name="functional_block_id" select="1"/>
                 </xpath>
-                <xpath expr="//filter[@string='Project']" position="after">
+                <xpath expr="//filter[@name='project']" position="after">
                 	<separator orientation="vertical"/>
                     <filter string="Functional Block" icon="terp-gtk-jump-to-ltr" domain="[]" context="{'group_by':'functional_block_id'}"/>
                 </xpath>
