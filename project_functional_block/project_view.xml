@@ -7,7 +7,7 @@
             <field name="type">form</field>
             <field name="inherit_id" ref="project.view_task_form2"/>
             <field name="arch" type="xml">
-                <field name="progress" position="after">
+                <field name="tag_ids" position="after">
                     <field name="functional_block_id"/>
                 </field>
             </field>
