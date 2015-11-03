@@ -38,6 +38,6 @@ Adds functional blocks to organize the projects tasks.
  'demo': [
      'project_demo.xml',
  ],
- 'installable': False,
+ 'installable': True,
  'application': True,
 }
