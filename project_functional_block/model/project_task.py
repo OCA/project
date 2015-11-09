@@ -28,5 +28,3 @@ class ProjectTask(models.Model):
 
     functional_block_id = fields.Many2one(
         'project.functional.block', 'Functional Block', ondelete='set null')
-
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

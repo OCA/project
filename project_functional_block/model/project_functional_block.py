@@ -150,5 +150,3 @@ class ProjectFunctionalBlock(models.Model):
             'domain': "[('id', 'in', (" + ','.join(map(str, child_fblocks.ids))
             + ",))]"
         }
-
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
