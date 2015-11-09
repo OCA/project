@@ -26,9 +26,6 @@
     'website': 'www.akretion.com',
     'license': 'AGPL-3',
     'category': 'Generic Modules',
-    'description': """
-Adds functional blocks to organize the projects tasks.
-""",
     'depends': [
         'project',
     ],
