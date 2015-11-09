@@ -1,0 +1,48 @@
+<openerp>
+    <data>
+        <!-- FUNCTIONAL BLOCK TO TASK -->
+        <record id="view_task_functional_block_form" model="ir.ui.view">
+            <field name="name">project.task.functional_block.form</field>
+            <field name="model">project.task</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <field name="tag_ids" position="after">
+                    <field name="functional_block_id"/>
+                </field>
+            </field>
+        </record>
+        
+        <record id="view_task_tree2" model="ir.ui.view">
+            <field name="name">project.task.tree.functional_block</field>
+            <field name="model">project.task</field>
+            <field name="type">tree</field>
+            <field name="inherit_id" ref="project.view_task_tree2"/>
+            <field name="arch" type="xml">
+                <field name="user_id" position="after">
+                    <field name="functional_block_id"/>
+                </field>
+            </field>
+        </record>
+        
+        <record id="view_task_search_form_fb" model="ir.ui.view">
+            <field name="name">project.task.functional.search</field>
+            <field name="model">project.task</field>
+            <field name="type">search</field>
+            <field name="inherit_id" ref="project.view_task_search_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="functional_block_id" select="1"/>
+                </xpath>
+                <xpath expr="//filter[@name='project']" position="after">
+                	<separator orientation="vertical"/>
+                    <filter string="Functional Block"
+                        name="groupby_functional_block_id"
+                        icon="terp-gtk-jump-to-ltr"
+                        context="{'group_by':'functional_block_id'}"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>

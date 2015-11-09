@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <record id="functional_block_stock" model="project.functional.block">
+            <field name="name">Stock</field>
+            <field name="code">WMS</field>
+            <field name="description">Warehouse Management System</field>
+        </record>
+
+        <record id="functional_block_sales" model="project.functional.block">
+            <field name="name">Sales</field>
+            <field name="code">SM</field>
+            <field name="description">Sales Management</field>
+        </record>
+
+        <record id="functional_block_crm" model="project.functional.block">
+            <field name="name">CRM</field>
+            <field name="code">CRM</field>
+            <field name="description">Customer Relationship Management</field>
+        </record>
+
+        <record id="functional_block_accounting" model="project.functional.block">
+            <field name="name">Accounting</field>
+            <field name="code">ACC</field>
+            <field name="description">Accounting</field>
+        </record>
+
+        <record id="functional_block_acc_invoicing" model="project.functional.block">
+            <field name="name">Invoicing</field>
+            <field name="code">INV</field>
+            <field name="parent_id" ref="functional_block_accounting" />
+            <field name="description">Invoicing</field>
+        </record>
+
+        <record id="functional_block_acc_reporting" model="project.functional.block">
+            <field name="name">Reporting</field>
+            <field name="code">REP</field>
+            <field name="parent_id" ref="functional_block_accounting" />
+            <field name="description">Accounting Reports</field>
+        </record>
+    </data>
+</openerp>

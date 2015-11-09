@@ -1,0 +1,186 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* project_functional_block
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-11-08 18:43+0000\n"
+"PO-Revision-Date: 2015-11-08 18:43+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: project_functional_block
+#: model:project.functional.block,description:project_functional_block.functional_block_accounting
+msgid "Accounting"
+msgstr "Kế toán"
+
+#. module: project_functional_block
+#: model:project.functional.block,description:project_functional_block.functional_block_acc_reporting
+msgid "Accounting Reports"
+msgstr "Báo cáo tài chính"
+
+#. module: project_functional_block
+#: model:project.functional.block,name:project_functional_block.functional_block_crm
+msgid "CRM"
+msgstr "CRM"
+
+#. module: project_functional_block
+#: model:ir.ui.view,arch_db:project_functional_block.funct_categ_form_view
+msgid "Child Blocks"
+msgstr "Loại chức năng con"
+
+#. module: project_functional_block
+#: model:ir.model.fields,field_description:project_functional_block.field_project_functional_block_child_fblocks_count
+msgid "Child Blocks Count"
+msgstr "Child Blocks Count"
+
+#. module: project_functional_block
+#: model:ir.model.fields,field_description:project_functional_block.field_project_functional_block_code
+msgid "Code"
+msgstr "Mã"
+
+#. module: project_functional_block
+#: model:ir.model.fields,field_description:project_functional_block.field_project_functional_block_complete_name
+msgid "Complete Name"
+msgstr "Tên đầy đủ"
+
+#. module: project_functional_block
+#: model:ir.model.fields,field_description:project_functional_block.field_project_functional_block_create_uid
+msgid "Created by"
+msgstr "Được tạo bởi"
+
+#. module: project_functional_block
+#: model:ir.model.fields,field_description:project_functional_block.field_project_functional_block_create_date
+msgid "Created on"
+msgstr "Được tạo vào"
+
+#. module: project_functional_block
+#: model:project.functional.block,description:project_functional_block.functional_block_crm
+msgid "Customer Relationship Management"
+msgstr "Quan hệ khách hàng"
+
+#. module: project_functional_block
+#: model:ir.model.fields,field_description:project_functional_block.field_project_functional_block_description
+#: model:ir.ui.view,arch_db:project_functional_block.funct_categ_form_view
+msgid "Description"
+msgstr "Miêu tả"
+
+#. module: project_functional_block
+#: model:ir.model.fields,field_description:project_functional_block.field_project_functional_block_display_name
+msgid "Display Name"
+msgstr "Tên hiển thị"
+
+#. module: project_functional_block
+#: model:ir.model.fields,field_description:project_functional_block.field_project_task_functional_block_id
+#: model:ir.ui.view,arch_db:project_functional_block.funct_categ_form_view
+#: model:ir.ui.view,arch_db:project_functional_block.view_task_search_form_fb
+msgid "Functional Block"
+msgstr "Loại chức năng"
+
+#. module: project_functional_block
+#: model:ir.actions.act_window,name:project_functional_block.action_funct_block_list
+#: model:ir.ui.menu,name:project_functional_block.menu_functional_blocks
+#: model:ir.ui.menu,name:project_functional_block.menu_functional_blocks_list
+#: model:ir.ui.view,arch_db:project_functional_block.funct_block_list_view
+#: model:ir.ui.view,arch_db:project_functional_block.funct_block_search_view
+msgid "Functional Blocks"
+msgstr "Loại chức năng"
+
+#. module: project_functional_block
+#: model:ir.model,name:project_functional_block.model_project_functional_block
+msgid "Functional block to organize projects tasks"
+msgstr "Loại chức năng để quản lý tác vụ"
+
+#. module: project_functional_block
+#: model:ir.ui.view,arch_db:project_functional_block.funct_block_search_view
+msgid "Group By..."
+msgstr "Nhóm theo..."
+
+#. module: project_functional_block
+#: model:ir.model.fields,field_description:project_functional_block.field_project_functional_block_id
+msgid "ID"
+msgstr "ID"
+
+#. module: project_functional_block
+#: model:project.functional.block,description:project_functional_block.functional_block_acc_invoicing
+#: model:project.functional.block,name:project_functional_block.functional_block_acc_invoicing
+msgid "Invoicing"
+msgstr "Hóa đơn"
+
+#. module: project_functional_block
+#: model:ir.model.fields,field_description:project_functional_block.field_project_functional_block___last_update
+msgid "Last Modified on"
+msgstr "Sửa lần cuối vào"
+
+#. module: project_functional_block
+#: model:ir.model.fields,field_description:project_functional_block.field_project_functional_block_write_uid
+msgid "Last Updated by"
+msgstr "Sửa lần cuối bởi"
+
+#. module: project_functional_block
+#: model:ir.model.fields,field_description:project_functional_block.field_project_functional_block_write_date
+msgid "Last Updated on"
+msgstr "Cập nhật lần cuối vào"
+
+#. module: project_functional_block
+#: model:ir.model.fields,field_description:project_functional_block.field_project_functional_block_name
+#: model:ir.ui.view,arch_db:project_functional_block.funct_categ_form_view
+msgid "Name"
+msgstr "Tên"
+
+#. module: project_functional_block
+#: model:ir.ui.view,arch_db:project_functional_block.funct_block_search_view
+msgid "Parent"
+msgstr "Cha"
+
+#. module: project_functional_block
+#: model:ir.model.fields,field_description:project_functional_block.field_project_functional_block_parent_id
+msgid "Parent Block"
+msgstr "Loại chức năng cha"
+
+#. module: project_functional_block
+#: model:project.functional.block,name:project_functional_block.functional_block_acc_reporting
+msgid "Reporting"
+msgstr "Báo cáo"
+
+#. module: project_functional_block
+#: model:project.functional.block,name:project_functional_block.functional_block_sales
+msgid "Sales"
+msgstr "Bán hàng"
+
+#. module: project_functional_block
+#: model:project.functional.block,description:project_functional_block.functional_block_sales
+msgid "Sales Management"
+msgstr "Quản lý kinh doanh"
+
+#. module: project_functional_block
+#: model:project.functional.block,name:project_functional_block.functional_block_stock
+msgid "Stock"
+msgstr "Kho"
+
+#. module: project_functional_block
+#: model:ir.model,name:project_functional_block.model_project_task
+msgid "Task"
+msgstr "Nhiệm vụ"
+
+#. module: project_functional_block
+#: model:ir.ui.view,arch_db:project_functional_block.funct_categ_form_view
+msgid "Tasks"
+msgstr "Nhiệm vụ"
+
+#. module: project_functional_block
+#: model:ir.model.fields,field_description:project_functional_block.field_project_functional_block_tasks_count
+msgid "Tasks Count"
+msgstr "Tasks Count"
+
+#. module: project_functional_block
+#: model:project.functional.block,description:project_functional_block.functional_block_stock
+msgid "Warehouse Management System"
+msgstr "Quản lý kho"
+

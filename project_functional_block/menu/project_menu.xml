@@ -1,0 +1,15 @@
+<openerp>
+    <data>
+
+    	<menuitem name="Functional Blocks"
+            id="menu_functional_blocks"
+            parent="base.menu_main_pm"
+            sequence="50"/>		
+    	<menuitem name="Functional Blocks"
+            id="menu_functional_blocks_list"
+            parent="menu_functional_blocks"
+            action="action_funct_block_list"
+            sequence="10"/> 				
+
+    </data>
+</openerp>

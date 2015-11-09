@@ -1,0 +1,83 @@
+<openerp>
+    <data>
+
+        <!-- FUNCTIONAL BLOCK -->
+        <!-- Search view for software module -->
+        <record id="funct_block_search_view" model="ir.ui.view">
+            <field name="name">project.functional.block.search</field>
+            <field name="model">project.functional.block</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Functional Blocks">
+                    <field name="name" />
+                    <field name="complete_name" />
+                    <field name="parent_id" />
+                    <group expand="0" string="Group By...">
+                        <filter string="Parent" icon="terp-partner"
+                            name="groupby_parent_id" help="Parent"
+                            context="{'group_by':'parent_id'}" />
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- tree view for functional block -->
+        <record model="ir.ui.view" id="funct_block_list_view">
+            <field name="name">project.functional.block.list</field>
+            <field name="model">project.functional.block</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Functional Blocks">
+                    <field name="name" />
+                    <field name="code" />
+                    <field name="parent_id" />
+                    <field name="complete_name" invisible="True" />
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form view for functional block -->
+        <record model="ir.ui.view" id="funct_categ_form_view">
+            <field name="name">project.functional.block.form</field>
+            <field name="model">project.functional.block</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Functional Block">
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button" name="action_view_child_fblocks"
+                                type="object" icon="fa-bars">
+                                <field string="Child Blocks" name="child_fblocks_count" widget="statinfo" />
+                            </button>
+                            <button class="oe_stat_button" name="action_view_tasks"
+                                type="object" icon="fa-tasks">
+                                <field string="Tasks" name="tasks_count" widget="statinfo" />
+                            </button>
+                        </div>
+                        <div class="oe_title">
+                            <label class="oe_edit_only" for="name" string="Name"/>
+                            <h1><field name="name" placeholder="Name"/></h1>
+                        </div>
+                        <group col="4">
+                            <field name="parent_id" />
+                            <field name="code" />
+                        </group>
+                        <separator string="Description" />
+                        <field name="description" />
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- OPEN BLOCK LIST -->
+        <record model="ir.actions.act_window" id="action_funct_block_list">
+            <field name="name">Functional Blocks</field>
+            <field name="res_model">project.functional.block</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="funct_block_list_view" />
+            <field name="search_view_id" ref="funct_block_search_view" />
+        </record>
+
+    </data>
+</openerp>

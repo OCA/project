@@ -20,6 +20,13 @@
 #
 ##############################################################################
 
-import model
+from openerp import models, fields
+
+
+class ProjectTask(models.Model):
+    _inherit = 'project.task'
+
+    functional_block_id = fields.Many2one(
+        'project.functional.block', 'Functional Block', ondelete='set null')
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

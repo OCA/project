@@ -19,25 +19,31 @@
 #
 ##############################################################################
 
-{'name': 'Project requiring functional blocks',
- 'version': '1.2',
- 'author': "Akretion,Odoo Community Association (OCA)",
- 'website': 'www.akretion.com',
- 'license': 'AGPL-3',
- 'category': 'Generic Modules',
- 'description': """
+{
+    'name': 'Project requiring functional blocks',
+    'version': '1.2',
+    'author': "Akretion,Odoo Community Association (OCA)",
+    'website': 'www.akretion.com',
+    'license': 'AGPL-3',
+    'category': 'Generic Modules',
+    'description': """
 Adds functional blocks to organize the projects tasks.
- """,
- 'depends': [
-     'project',
- ],
- 'data': [
-     'security/ir.model.access.csv',
-     'project_view.xml',
- ],
- 'demo': [
-     'project_demo.xml',
- ],
- 'installable': True,
- 'application': True,
+""",
+    'depends': [
+        'project',
+    ],
+    'data': [
+        # security
+        'security/ir.model.access.csv',
+        # view
+        'view/project_functional_block_view.xml',
+        'view/project_task_view.xml',
+        # menu
+        'menu/project_menu.xml',
+    ],
+    'demo': [
+        'demo/project_demo.xml',
+    ],
+    'installable': True,
+    'application': False,
 }
