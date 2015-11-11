@@ -50,7 +50,11 @@ class AccountHoursBlock(orm.Model):
             # Compute hours bought
             for line in block.invoice_id.invoice_line:
                 hours_bought = 0.0
-                if line.product_id and line.product_id.is_in_hours_block:
+                block_analytic_id = block.account_analytic_id.id
+                line_account_analytic_id = line.account_analytic_id.id
+                if line.product_id and \
+                        line.product_id.is_in_hours_block and \
+                        block_analytic_id == line_account_analytic_id:
                     # We will now calculate the product_quantity
                     factor = line.uos_id.factor
                     if factor == 0.0:
@@ -173,6 +177,16 @@ class AccountHoursBlock(orm.Model):
                               in invoice.account_hours_block_ids])
         return list(block_ids)
 
+    def _get_invoice_line(self, cr, uid, ids, context=None):
+        invoice_ids = set()
+        line_obj = self.pool.get('account.invoice.line')
+        block_obj = self.pool.get('account.hours.block')
+        for line in line_obj.browse(cr, uid, ids, context=context):
+            if line.invoice_id:
+                invoice_ids.add(line.invoice_id.id)
+        return block_obj._get_invoice(
+            cr, uid, list(invoice_ids), context=context)
+
     def action_send_block(self, cr, uid, ids, context=None):
         """Open a form to send by email. Return an action dict."""
 
@@ -214,13 +228,17 @@ class AccountHoursBlock(orm.Model):
         }
 
     _recompute_triggers = {
-        'account.hours.block': (lambda self, cr, uid, ids, c=None:
-                                ids, ['invoice_id', 'type'], 10),
+        'account.hours.block': (lambda self, cr, uid, ids, c=None: ids,
+                                ['invoice_id', 'type',
+                                 'account_analytic_id'], 10),
         'account.invoice': (_get_invoice, ['analytic_line_ids'], 10),
         'account.analytic.line': (
             _get_analytic_line,
-            ['product_uom_id', 'unit_amount', 'to_invoice', 'invoice_id'],
+            ['product_uom_id', 'unit_amount', 'to_invoice',
+             'invoice_id', 'account_id'],
             10),
+        'account.invoice.line': (_get_invoice_line,
+                                 ['account_analytic_id'], 10),
     }
 
     _columns = {
