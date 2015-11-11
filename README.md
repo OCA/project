@@ -1,5 +1,6 @@
-[![Build Status](https://travis-ci.org/OCA/project-service.svg?branch=7.0)](https://travis-ci.org/OCA/project-service)
-[![Coverage Status](https://coveralls.io/repos/OCA/project-service/badge.png?branch=7.0)](https://coveralls.io/r/OCA/project-service?branch=7.0)
+[![Runbot Status](https://runbot.odoo-community.org/runbot/badge/flat/140/7.0.svg)](https://runbot.odoo-community.org/runbot/repo/github-com-oca-140-7.0)
+[![Build Status](https://travis-ci.org/OCA/project?branch=7.0)](https://travis-ci.org/OCA/project)
+[![Coverage Status](https://coveralls.io/repos/OCA/project/badge.png?branch=7.0)](https://coveralls.io/r/OCA/project?branch=7.0)
 
 OpenERP/Odoo Project & Service Management
 =========================================
@@ -11,3 +12,14 @@ This project aims to extend OpenERP/Odoo on contract management features, such a
   * Manage sold hours in advance
   * Invoice on contract basis
   * ...
+
+
+Translation Status
+------------------
+[![Transifex Status](https://www.transifex.com/projects/p/OCA-project-7-0/chart/image_png)](https://www.transifex.com/projects/p/OCA-project-7-0)
+
+----
+
+OCA, or the [Odoo Community Association](http://odoo-community.org/), is a nonprofit organization whose
+mission is to support the collaborative development of Odoo features and
+promote its widespread use.
