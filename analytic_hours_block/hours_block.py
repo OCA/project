@@ -47,10 +47,10 @@ class AccountHoursBlock(orm.Model):
         for block in self.browse(cr, uid, ids, context=context):
             result[block.id] = {'amount_hours_block': 0.0,
                                 'amount_hours_block_done': 0.0}
+            block_analytic_id = block.account_analytic_id.id
             # Compute hours bought
             for line in block.invoice_id.invoice_line:
                 hours_bought = 0.0
-                block_analytic_id = block.account_analytic_id.id
                 line_account_analytic_id = line.account_analytic_id.id
                 if line.product_id and \
                         line.product_id.is_in_hours_block and \
