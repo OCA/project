@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_br_generate_tasks_form" model="ir.ui.view">
+            <field name="name">br.generate.tasks.form</field>
+            <field name="model">br.generate.tasks</field>
+            <field name="type">form</field>
+            <field name="priority">20</field>
+            <field name="arch" type="xml">
+                <data>
+                    <form string="Generate Tasks">
+                         <group>
+                            <group>
+                                <field name="br_id" invisible="1"/>
+                                <field name="project_id"/>
+                            </group>
+                        </group>
+                        <group>
+                            <field name="lines" string="Tasks" context="{'tree_view_ref':'view_br_generate_tasks_line_tree'}"/>
+                        </group>
+                    </form>
+                    <footer>
+                        <button name="apply" string="_Apply" type="object" class="oe_highlight"/>
+                        or
+                        <button string="_Cancel" class="oe_link" special="cancel" />
+                    </footer>
+                </data>
+            </field>
+        </record>
+
+        <record id="view_br_generate_tasks_line_tree" model="ir.ui.view">
+            <field name="name">br.generate.tasks.line.tree</field>
+            <field name="model">br.generate.tasks.line</field>
+            <field name="arch" type="xml">
+               <tree string="Tasks" create="0" delete="0" editable="bottom">
+                   <field name="sequence" widget="handle"/>
+                   <field name="name"/>
+                   <field name="estimated_time_total"/>
+                   <field name="user_id"/>
+                   <field name="select"/>
+               </tree>
+            </field>
+        </record>
+
+    </data>
+</openerp>
