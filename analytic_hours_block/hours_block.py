@@ -52,9 +52,9 @@ class AccountHoursBlock(orm.Model):
             for line in block.invoice_id.invoice_line:
                 hours_bought = 0.0
                 line_account_analytic_id = line.account_analytic_id.id
-                if line.product_id and \
-                        line.product_id.is_in_hours_block and \
-                        block_analytic_id == line_account_analytic_id:
+                if (line.product_id and
+                        line.product_id.is_in_hours_block and
+                        block_analytic_id == line_account_analytic_id):
                     # We will now calculate the product_quantity
                     factor = line.uos_id.factor
                     if factor == 0.0:
@@ -180,7 +180,7 @@ class AccountHoursBlock(orm.Model):
     def _get_invoice_line(self, cr, uid, ids, context=None):
         invoice_ids = set()
         line_obj = self.pool.get('account.invoice.line')
-        block_obj = self.pool.get('account.hours.block')
+        block_obj = self.pool['account.hours.block']
         for line in line_obj.browse(cr, uid, ids, context=context):
             if line.invoice_id:
                 invoice_ids.add(line.invoice_id.id)
