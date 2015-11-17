@@ -95,7 +95,7 @@ class BrGenerateTasksLine(models.TransientModel):
     name = fields.Char('Name', size=200)
     estimated_time_total = fields.Float(
         string='Total estimated time',
-        help='sum up all the time of the estimation of each estimation line.'
+        help='Sum up all the time of the estimation of each estimation line.'
     )
     user_id = fields.Many2one(
         comodel_name='res.users',
