@@ -36,7 +36,7 @@ class CrmLead(models.Model):
     def _get_estimated_time_total(self):
         time_total = 0
         for br in self.br_ids:
-            if br.drop or br.state in ('cancel'):
+            if br.drop or br.state == 'cancel':
                 continue
             time_total += br.estimated_time_total
         self.estimated_time_total = time_total
@@ -45,7 +45,7 @@ class CrmLead(models.Model):
     def _get_estimated_cost_total(self):
         cost_total = 0
         for br in self.br_ids:
-            if br.drop or br.state in ('cancel'):
+            if br.drop or br.state == 'cancel':
                 continue
             cost_total += br.estimated_cost_total
         self.estimated_cost_total = cost_total

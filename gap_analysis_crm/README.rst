@@ -6,32 +6,28 @@
 {gap_analysis_crm}
 ==============
 
-linking business requirements to opportunity.
+This module is part of a set ("Gap analysis") and extend the basic functionality to link the business analysis to CRM opportunity.
 
 Installation
 ============
 
-To install this module, you need to:
+No specific step required for installation
 
 
 
 Configuration
 =============
 
-To configure this module, you need to:
+No specific step required for Configuration
 
 
 
 Usage
 =====
 
-To use this module, you need to:
-
-
-
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
-   :target: https://runbot.odoo-community.org/runbot/{repo_id}/{branch}
+   :target: https://runbot.odoo-community.org/runbot/140/8.0
 
 .. repo_id is available in https://github.com/OCA/maintainer-tools/blob/master/tools/repos_with_ids.txt
 .. branch is "8.0" for example
@@ -49,8 +45,8 @@ Bugs are tracked on `GitHub Issues <https://github.com/OCA/
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed feedback `here <https://github.com/OCA/
 {project_repo}/issues/new?body=module:%20
-{gap_analysis_crm}%0Aversion:%20
-{version}%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+gap_analysis_crm%0Aversion:%20
+8.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 
 Credits
