@@ -12,8 +12,8 @@
                     <header>
                         <button name="action_button_confirm" states="draft" string="Confirm" type="object" groups="gap_analysis.group_gap_analysis_user" class="oe_highlight"/>
                         <button name="action_button_back_draft" string="Back To Draft" type="object" attrs="{'invisible': [('state', 'in', ('draft','done'))]}" groups="gap_analysis.group_gap_analysis_user" class="oe_highlight"/>
-                        <button name="action_button_approve" states="confirmed" string="Approve" type="object" groups="gap_analysis.group_gap_analysis_manger" class="oe_highlight"/>
-                        <button name="action_button_done" states="approved" string="Done" type="object" groups="gap_analysis.group_gap_analysis_manger" class="oe_highlight"/>
+                        <button name="action_button_approve" states="confirmed" string="Approve" type="object" groups="gap_analysis.group_gap_analysis_manager" class="oe_highlight"/>
+                        <button name="action_button_done" states="approved" string="Done" type="object" groups="gap_analysis.group_gap_analysis_manager" class="oe_highlight"/>
                         <button name="action_button_cancel" string="Cancel" type="object" attrs="{'invisible': [('state', 'in', ('done','cancel'))]}" groups="gap_analysis.group_gap_analysis_user" class="oe_highlight"/>
                         <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,approved,done,cancel"/>
                     </header>
@@ -22,7 +22,7 @@
                             <field name="name" class="oe_inline" readonly="1"/>
                         </h1>
                         <group>
-                            <group cols="2">
+                            <group>
                                  <field name="description"/>
                                  <field name="estimated_time_total"/>
                                  <field name="summary_estimation"/>
@@ -32,20 +32,20 @@
                         <notebook>
                             <page string="Business Analysis">
                                 <group string="Customer Story">
-                                     <field name="business_requirement" widget="text_ckeditor4" nolabel="1"/>
+                                     <field name="business_requirement" widget="html" nolabel="1"/>
                                 </group>
-                                <group string="Odoo Scenario">
-                                    <field name="odoo_scenario" widget="text_ckeditor4" nolabel="1"/>
+                                <group string="Scenario">
+                                    <field name="scenario" widget="html" nolabel="1"/>
                                 </group>
-                                <group string="Odoo Gap">
-                                     <field name="odoo_gap" widget="text_ckeditor4" nolabel="1"/>
+                                <group string="Gap">
+                                     <field name="gap" widget="html" nolabel="1"/>
                                 </group>
                                 <group string="Summary Estimation Note">
-                                     <field name="summary_estimation_note" widget="text_ckeditor4" nolabel="1"/>
+                                     <field name="summary_estimation_note" widget="html" nolabel="1"/>
                                 </group>
                             </page>
                             <page string="Estimation Lines">
-                                <field name="rough_estimation_lines" domain="[('business_requirement_line_id', '='. False)]" context="{'tree_view_ref':'view_business_estimation_line_tree'}"/>
+                                <field name="draft_estimation_lines" domain="[('business_requirement_line_id', '='. False)]" context="{'tree_view_ref':'view_business_estimation_line_tree'}"/>
                             </page>
                             <page string="Sub Business Analysis">
                                 <field name="business_requirement_ids" readonly="1" context="{'form_view_ref':'view_business_requirement_form', 'tree_view_ref':'view_business_requirement_tree'}"/>

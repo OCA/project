@@ -3,7 +3,7 @@
    :alt: License: AGPL-3
 
 ==========
-gap_analysis
+Gap Analysis
 ==========
 
 This module is part of a set ("Gap analysis") and provides the basic models for business analysis and time estimation.
@@ -28,9 +28,6 @@ Usage
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
    :target: https://runbot.odoo-community.org/runbot/140/8.0
-
-.. repo_id is available in https://github.com/OCA/maintainer-tools/blob/master/tools/repos_with_ids.txt
-.. branch is "8.0" for example
 
 Known issues / Roadmap
 ======================

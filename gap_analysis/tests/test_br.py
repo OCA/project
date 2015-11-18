@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # © <YEAR(2015)>
-# <AUTHOR(Elico Corp, contributor: Eric Caudal, Alex Duan, Xie XiaoPeng)>
+# <Elico Corp, contributor: Eric Caudal, Alex Duan, Xie XiaoPeng(S)>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from openerp.tests import common
 
@@ -15,7 +15,7 @@ class BusinessRequirementTestCase(common.TransactionCase):
     def test_get_estimated_time_total(self):
         vals = {
             'name': ' test',
-            'rough_estimation_lines': [
+            'draft_estimation_lines': [
                 (0, 0, {'name': 'line1', 'estimated_time': 15.0}),
                 (0, 0, {'name': 'line2', 'estimated_time': 25.0}),
                 (0, 0, {'name': 'line3', 'estimated_time': 35.0}),
@@ -125,7 +125,7 @@ class BusinessEstimationLineTestCase(common.TransactionCase):
 
         br_vals = {
             'name': ' test',
-            'rough_estimation_lines': [
+            'draft_estimation_lines': [
                 (
                     0, 0,
                     {
@@ -145,7 +145,7 @@ class BusinessEstimationLineTestCase(common.TransactionCase):
             ]
         }
         br = self.br.create(br_vals)
-        for line in br.rough_estimation_lines:
+        for line in br.draft_estimation_lines:
             line.type_id = estimation_type2.id
             line._onchange_type_id()
             self.assertEqual(line.name, estimation_type2.name)

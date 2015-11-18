@@ -1,9 +1,8 @@
 # -*- coding: utf-8 -*-
 # © <YEAR(2015)>
-# <AUTHOR(Elico Corp, contributor: Eric Caudal, Alex Duan, Xie XiaoPeng)>
+# <Elico Corp, contributor: Eric Caudal, Alex Duan, Xie XiaoPeng(S)>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from openerp import api, fields, models
-from openerp.osv import osv
 
 
 class BusinessEstimationLine(models.Model):
@@ -34,19 +33,14 @@ class BusinessRequirement(models.Model):
     _name = "business.requirement"
     _description = "Business Analysis"
 
-    @api.model
-    def _get_sequence(self):
-        sequence = self.env['ir.sequence'].get('business.requirement')
-        return sequence
-
     sequence = fields.Char(
         'Sequence',
         readonly=True,
         copy=False,
     )
     name = fields.Char(
-        'Name', required=True,
-        default=_get_sequence,
+        'Name',
+        required=False,
         readonly=True,
         states={'draft': [('readonly', False)]}
     )
@@ -60,13 +54,13 @@ class BusinessRequirement(models.Model):
         readonly=True,
         states={'draft': [('readonly', False)]}
     )
-    odoo_scenario = fields.Text(
-        'Odoo Scenario',
+    scenario = fields.Text(
+        'Scenario',
         readonly=True,
         states={'draft': [('readonly', False)]}
     )
-    odoo_gap = fields.Text(
-        'Odoo Gap',
+    gap = fields.Text(
+        'Gap',
         readonly=True,
         states={'draft': [('readonly', False)]}
     )
@@ -78,10 +72,10 @@ class BusinessRequirement(models.Model):
         help="""Determine whether this business requirement is to be kept
         or dropped."""
     )
-    rough_estimation_lines = fields.One2many(
+    draft_estimation_lines = fields.One2many(
         comodel_name='business.estimation.line',
         inverse_name='business_requirement_id',
-        string='Rough Estimation Lines',
+        string='Draft Estimation Lines',
         copy=False,
         readonly=True,
         states={'draft': [('readonly', False)]}
@@ -109,7 +103,7 @@ class BusinessRequirement(models.Model):
     business_requirement_ids = fields.One2many(
         comodel_name='business.requirement',
         inverse_name='parent_id',
-        string='Rough Estimation Lines',
+        string='Draft Estimation Lines',
         copy=False,
         readonly=True,
         states={'draft': [('readonly', False)]}
@@ -129,7 +123,8 @@ class BusinessRequirement(models.Model):
         string='Summary Estimation?',
         default=True,
         readonly=True,
-        states={'draft': [('readonly', False)]}
+        states={'draft': [('readonly', False)]},
+        help='True: I will review the business case here.',
     )
     summary_estimation_note = fields.Text(
         'Summary Estimation Note',
@@ -137,29 +132,33 @@ class BusinessRequirement(models.Model):
         states={'draft': [('readonly', False)]}
     )
 
+    @api.model
+    def create(self, vals):
+        if vals.get('name', '/') == '/':
+            vals['name'] = self.env['ir.sequence'].get('business.analysis')
+        return super(BusinessRequirement, self).create(vals)
+
     @api.one
     @api.depends(
-        'rough_estimation_lines.estimated_time')
+        'draft_estimation_lines.estimated_time')
     def _get_estimated_time_total(self):
-        time_total = 0
-        for line in self.rough_estimation_lines:
-            time_total += line.estimated_time
+        time_total = sum(
+            line.estimated_time for line in self.draft_estimation_lines)
         self.estimated_time_total = time_total
 
     @api.multi
     @api.depends(
         'parent_id')
     def _get_level(self):
-        for br in self:
-            level = br._compute_level()
-            br.level = level
+        def _compute_level(br):
+            level = 1
+            if br.parent_id:
+                level += _compute_level(br.parent_id)
+            return level
 
-    @api.multi
-    def _compute_level(self):
-        level = 1
-        if self.parent_id:
-            level += self.parent_id._compute_level()
-        return level
+        for br in self:
+            level = _compute_level(br)
+            br.level = level
 
     @api.model
     def _get_states(self):
@@ -195,7 +194,7 @@ class BusinessRequirement(models.Model):
 
 class BusinessRequirementCategory(models.Model):
     _name = "business.requirement.category"
-    _description = "Bus. Req. Category"
+    _description = "Business Requirement Category"
 
     name = fields.Char(string='Name', required=True)
     parent_id = fields.Many2one(

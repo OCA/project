@@ -2,5 +2,5 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_business_requirement_user,business.requirement.user,model_business_requirement,gap_analysis.group_gap_analysis_user,1,1,1,1
 access_business_estimation_line_user,business.estimation.line.user,model_business_estimation_line,gap_analysis.group_gap_analysis_user,1,1,1,1
 
-access_business_requirement_manger,business.requirement.manger,model_business_requirement,gap_analysis.group_gap_analysis_manger,1,1,1,1
-access_business_estimation_line_manger,business.estimation.line.manger,model_business_estimation_line,gap_analysis.group_gap_analysis_manger,1,1,1,1
+access_business_requirement_manager,business.requirement.manager,model_business_requirement,gap_analysis.group_gap_analysis_manager,1,1,1,1
+access_business_estimation_line_manager,business.estimation.line.manager,model_business_estimation_line,gap_analysis.group_gap_analysis_manager,1,1,1,1
