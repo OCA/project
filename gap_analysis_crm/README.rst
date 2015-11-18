@@ -3,7 +3,7 @@
    :alt: License: AGPL-3
 
 ==============
-{gap_analysis_crm}
+Gap Analysis Crm
 ==============
 
 This module is part of a set ("Gap analysis") and extend the basic functionality to link the business analysis to CRM opportunity.
@@ -29,8 +29,6 @@ Usage
    :alt: Try me on Runbot
    :target: https://runbot.odoo-community.org/runbot/140/8.0
 
-.. repo_id is available in https://github.com/OCA/maintainer-tools/blob/master/tools/repos_with_ids.txt
-.. branch is "8.0" for example
 
 Known issues / Roadmap
 ======================
@@ -44,7 +42,7 @@ Bugs are tracked on `GitHub Issues <https://github.com/OCA/
 {project_repo}/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed feedback `here <https://github.com/OCA/
-{project_repo}/issues/new?body=module:%20
+project/issues/new?body=module:%20
 gap_analysis_crm%0Aversion:%20
 8.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
