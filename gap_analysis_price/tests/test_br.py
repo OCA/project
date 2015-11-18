@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # © <YEAR(2015)>
-# <AUTHOR(Elico Corp, contributor: Eric Caudal, Alex Duan, Xie XiaoPeng)>
+# <Elico Corp, contributor: Eric Caudal, Alex Duan, Xie XiaoPeng(S)>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from openerp.tests import common
 
@@ -15,7 +15,7 @@ class BusinessRequirementTestCase(common.TransactionCase):
     def test_get_estimated_cost_total(self):
         vals = {
             'name': ' test',
-            'rough_estimation_lines': [
+            'draft_estimation_lines': [
                 (
                     0, 0,
                     {

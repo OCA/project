@@ -8,7 +8,7 @@
             <field name="type">form</field>
             <field name="priority">20</field>
             <field name="arch" type="xml">
-                <form string="Bus. Req. Cost Structure">
+                <form string="Business Requirement Cost Structure">
                     <sheet>
                         <group>
                              <field name="name"/>

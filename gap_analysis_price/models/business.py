@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # © <YEAR(2015)>
-# <AUTHOR(Elico Corp, contributor: Eric Caudal, Alex Duan, Xie XiaoPeng)>
+# <Elico Corp, contributor: Eric Caudal, Alex Duan, Xie XiaoPeng(S)>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from openerp import api, fields, models
 
@@ -16,12 +16,11 @@ class BusinessRequirement(models.Model):
 
     @api.one
     @api.depends(
-        'rough_estimation_lines.price_total'
+        'draft_estimation_lines.price_total'
     )
     def _get_estimated_cost_total(self):
-        cost_total = 0
-        for line in self.rough_estimation_lines:
-            cost_total += line.price_total
+        cost_total = sum(
+            line.price_total for line in self.draft_estimation_lines)
         self.estimated_cost_total = cost_total
 
 
@@ -61,20 +60,20 @@ class BusinessEstimationLine(models.Model):
 
 class BusinessRequirementCostStructure(models.Model):
     _name = "business.requirement.cost.structure"
-    _description = "Bus. Req. Cost Structure"
+    _description = "Business Requirement Cost Structure"
 
     name = fields.Char('Name', required=True)
     structure_lines = fields.One2many(
         comodel_name='business.requirement.cost.structure.line',
         inverse_name='structure_id',
-        string='Bus. Req. Cost Structure Lines',
+        string='Business Requirement Cost Structure Lines',
         copy=True,
     )
 
 
 class BusinessRequirementCostStructureLine(models.Model):
     _name = "business.requirement.cost.structure.line"
-    _description = "Bus. Req. Cost Structure Line"
+    _description = "Business Requirement Cost Structure Line"
 
     type_id = fields.Many2one(
         comodel_name='business.estimation.type',
@@ -101,7 +100,7 @@ class BusinessRequirementCostStructureLine(models.Model):
     )
     structure_id = fields.Many2one(
         comodel_name='business.requirement.cost.structure',
-        string='Bus. Req. Cost Structure',
+        string='Business Requirement Cost Structure',
         ondelete='cascade'
     )
 

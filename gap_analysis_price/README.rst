@@ -3,7 +3,7 @@
    :alt: License: AGPL-3
 
 ==============
-{gap_analysis_price}
+Gap Analysis Price
 ==============
 
 This module extends the gap analysis module set to allow
@@ -22,8 +22,8 @@ Configuration
 
 To configure this module, you need to:
 
-    Create a cost structure in the Gap analysis/Configuration/Cost Structure.
-    Specify the cost structure at the CRM opportunity level.
+* Create a cost structure in the Gap analysis/Configuration/Cost Structure.
+* Specify the cost structure at the CRM opportunity level.
 
 
 Usage
@@ -36,9 +36,7 @@ To use this module, you need to:
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
    :target: https://runbot.odoo-community.org/runbot/140/8.0
-
-.. repo_id is available in https://github.com/OCA/maintainer-tools/blob/master/tools/repos_with_ids.txt
-.. branch is "8.0" for example
+   
 
 Known issues / Roadmap
 ======================

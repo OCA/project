@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # © <YEAR(2015)>
-# <AUTHOR(Elico Corp, contributor: Eric Caudal, Alex Duan, Xie XiaoPeng)>
+# <Elico Corp, contributor: Eric Caudal, Alex Duan, Xie XiaoPeng(S)>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
     'name': 'Gap Analysis - Financial evaluation',
@@ -8,7 +8,7 @@
     'summary': 'Gap Analysis - Financial evaluation',
     'version': '8.0.0.0.2',
     'website': 'www.elico-corp.com',
-    "author": "<AUTHOR(S)>, Odoo Community Association (OCA)",
+    "author": "<Elico Corp(S)>, Odoo Community Association (OCA)",
     'depends': [
         'gap_analysis',
     ],

@@ -1,3 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_business_requirement_cost_structure,business_manger.requirement.cost.structure.manger,model_business_requirement_cost_structure,gap_analysis.group_gap_analysis_manger,1,1,1,1
+access_business_requirement_cost_structure,business_manager.requirement.cost.structure.manager,model_business_requirement_cost_structure,gap_analysis.group_gap_analysis_manager,1,1,1,1
 access_business_requirement_cost_structure_user,business.requirement.cost.structure.user,model_business_requirement_cost_structure,gap_analysis.group_gap_analysis_user,1,0,0,0
