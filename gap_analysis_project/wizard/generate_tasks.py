@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # © <YEAR(2015)>
-# <AUTHOR(Elico Corp, contributor: Eric Caudal, Alex Duan, Xie XiaoPeng)>
+# <Elico Corp, contributor: Eric Caudal, Alex Duan, Xie XiaoPeng(S)>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from openerp import models, fields, api
 from openerp.tools.translate import _
@@ -75,8 +75,8 @@ class BrGenerateTasks(models.TransientModel):
             'project', 'view_task_tree2')
 
         action = {
-            'domain': "[('id','in',(%s))]" % ','.join(task_ids),
-            'name': _('Standard Encoding'),
+            'domain': "[('id','in',[%s])]" % ','.join(task_ids),
+            'name': _('Tasks'),
             'view_type': 'tree',
             'view_mode': 'list',
             'res_model': 'project.task',

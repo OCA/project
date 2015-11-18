@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 # © <YEAR(2015)>
-# <AUTHOR(Elico Corp, contributor: Eric Caudal, Alex Duan, Xie XiaoPeng)>
+# <Elico Corp, contributor: Eric Caudal, Alex Duan, Xie XiaoPeng(S)>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from openerp import api, fields, models
 
@@ -38,7 +38,7 @@ class BusinessRequirement(models.Model):
     @api.multi
     def generate_tasks_wizard(self):
         lines = []
-        for line in self.rough_estimation_lines:
+        for line in self.draft_estimation_lines:
             line = (
                 0, 0,
                 {
@@ -72,7 +72,7 @@ class Project(models.Model):
     )
     br_count = fields.Integer(
         compute='_br_count',
-        string="Bus. Req. Number"
+        string="Business Requirement Number"
     )
 
     @api.one
