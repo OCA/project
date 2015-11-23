@@ -33,10 +33,10 @@
         # security
         'security/ir.model.access.csv',
         # view
-        'view/project_functional_block_view.xml',
-        'view/project_task_view.xml',
+        'views/project_functional_block_view.xml',
+        'views/project_task_view.xml',
         # menu
-        'menu/project_menu.xml',
+        'views/project_menu.xml',
     ],
     'demo': [
         'demo/project_demo.xml',

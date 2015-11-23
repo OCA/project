@@ -20,5 +20,5 @@
 #
 ##############################################################################
 
-import project_functional_block
-import project_task
+from . import project_functional_block
+from . import project_task
