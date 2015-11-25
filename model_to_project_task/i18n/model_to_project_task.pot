@@ -1,0 +1,65 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* model_to_project_task
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-11-25 17:06+0000\n"
+"PO-Revision-Date: 2015-11-25 17:06+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: model_to_project_task
+#: field:project.task,action_id:0
+msgid "Action"
+msgstr ""
+
+#. module: model_to_project_task
+#: help:project.task,action_id:0
+msgid "Action called to go to the original window"
+msgstr ""
+
+#. module: model_to_project_task
+#: code:addons/model_to_project_task/action.py:36
+#, python-format
+msgid "Define a task"
+msgstr ""
+
+#. module: model_to_project_task
+#: code:addons/model_to_project_task/project.py:62
+#, python-format
+msgid "Field 'Task Origin' is not set.\n"
+"Impossible to go to the original document"
+msgstr ""
+
+#. module: model_to_project_task
+#: view:project.task:model_to_project_task.view_task_form2
+msgid "Go to the window from which the task has been defined"
+msgstr ""
+
+#. module: model_to_project_task
+#: view:project.task:model_to_project_task.view_task_form2
+msgid "Origin"
+msgstr ""
+
+#. module: model_to_project_task
+#: model:ir.model,name:model_to_project_task.model_project_task
+msgid "Task"
+msgstr ""
+
+#. module: model_to_project_task
+#: field:project.task,reference:0
+msgid "Task Origin"
+msgstr ""
+
+#. module: model_to_project_task
+#: model:ir.actions.act_window,name:model_to_project_task.task_from_anywhere
+msgid "Tasks"
+msgstr ""
+
