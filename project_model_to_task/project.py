@@ -2,7 +2,7 @@
 # © 2015 David BEAL @ Akretion
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import models, fields, api, _, SUPERUSER_ID
+from openerp import api, fields, models, SUPERUSER_ID, _
 from openerp.exceptions import Warning as UserError
 from openerp.tools.safe_eval import safe_eval
 
@@ -12,30 +12,24 @@ class ProjectTask(models.Model):
 
     @api.model
     def _authorised_models(self):
-        """ similar in new api to
-            openerp.addons.base.res.res_request import referencable_models
-
-            Inherit this method to add more models depending of your
+        """ Inherit this method to add more models depending of your
             modules dependencies
         """
-        models = self.env['ir.model'].search([])
+        models = self.env['ir.model'].search([('model', '!=', 'project.task')])
         return [(x.model, x.name) for x in models]
 
     action_id = fields.Many2one(
         'ir.actions.act_window', string="Action",
-        help="Action called to go to the original window")
-    reference = fields.Reference(
+        help="Action called to go to the original window.")
+    model_reference = fields.Reference(
         selection='_authorised_models', string="Task Origin", readonly=True)
 
     @api.model
     def default_get(self, fields):
         vals = super(ProjectTask, self).default_get(fields)
-        vals['partner_id'] = (
-            self.env['res.users'].browse(self.env.uid).partner_id.id)
-        vals['user_id'] = False
         if 'from_model' in self._context and 'from_id' in self._context:
-            vals['reference'] = '%s,%s' % (self._context['from_model'],
-                                           self._context['from_id'])
+            vals['model_reference'] = '%s,%s' % (self._context['from_model'],
+                                                 self._context['from_id'])
         if 'from_action' in self._context:
             vals['action_id'] = self._context['from_action']
         return vals
@@ -43,11 +37,11 @@ class ProjectTask(models.Model):
     @api.multi
     def goto_document(self):
         self.ensure_one()
-        if self.reference:
+        if self.model_reference:
             action = {
                 'name': 'Task to original document',
-                'res_model': self.reference._model._name,
-                'res_id': self.reference.id,
+                'res_model': self.model_reference._model._name,
+                'res_id': self.model_reference.id,
                 'type': u'ir.actions.act_window',
                 'target': 'current',
                 'view_mode': 'form',
@@ -58,7 +52,7 @@ class ProjectTask(models.Model):
             return action
         raise UserError(_(
             "Field 'Task Origin' is not set.\n"
-            "Impossible to go to the original document"))
+            "Impossible to go to the original document."))
 
 
 class IrActionActWindows(models.Model):
@@ -87,9 +81,9 @@ class IrActionActWindows(models.Model):
             action_id = ids[0]
         else:
             action_id = ids
-        task_action_id = self.env['ir.model.data'].xmlid_to_res_id(
+        task_action_id = self.pool['ir.model.data'].xmlid_to_res_id(
             cr, SUPERUSER_ID,
-            'model_to_project_task.task_from_elsewhere')
+            'project_model_to_task.task_from_elsewhere')
         if action_id == task_action_id:
             if isinstance(res, list):
                 for elem in res:

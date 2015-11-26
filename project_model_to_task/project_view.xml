@@ -8,17 +8,17 @@
     <field name="arch" type="xml">
         <field name="categ_ids" position="after">
             <button name="goto_document" type="object" string="Origin"
-                    attrs="{'invisible': [('reference', '=', False)]}"
+                    attrs="{'invisible': [('model_reference', '=', False)]}"
                     class="oe_read_only" colspan="2"
-                    help="Go to the window from which the task has been defined"/>
-            <field name="reference"
-                   attrs="{'invisible': [('reference', '=', False)]}"/>
+                    help="Go to the window from which the task has been defined."/>
+            <field name="model_reference"
+                   attrs="{'invisible': [('model_reference', '=', False)]}"/>
         </field>
     </field>
 </record>
 
 <record model="ir.actions.act_window" id="task_from_elsewhere">
-    <field name="name">Tasks</field>
+    <field name="name">Model to task creation</field>
     <field name="res_model">project.task</field>
     <field name="view_mode">form</field>
 </record>

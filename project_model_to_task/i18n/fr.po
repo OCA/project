@@ -19,24 +19,24 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SearchPath-0: /home/dav/.voodoo/shared/shared_odoo/odoo8/addons\n"
 
-#. module: model_to_project_task
+#. module: project_model_to_task
 #: field:project.task,action_id:0
 msgid "Action"
 msgstr "Action"
 
-#. module: model_to_project_task
+#. module: project_model_to_task
 #: help:project.task,action_id:0
 msgid "Action called to go to the original window"
 msgstr "Action appelé pour aller sur la fenêtre originale"
 
-#. module: model_to_project_task
-#: code:addons/model_to_project_task/action.py:36
+#. module: project_model_to_task
+#: code:addons/project_model_to_task/action.py:36
 #, python-format
 msgid "Define a task"
 msgstr "Définir une tâche"
 
-#. module: model_to_project_task
-#: code:addons/model_to_project_task/project.py:62
+#. module: project_model_to_task
+#: code:addons/project_model_to_task/project.py:62
 #, python-format
 msgid ""
 "Field 'Task Origin' is not set.\n"
@@ -45,28 +45,28 @@ msgstr ""
 "Le champ 'Origine de la tâche' n'est pas défini.\n"
 "Impossible de se rendre vers le document original"
 
-#. module: model_to_project_task
-#: view:project.task:model_to_project_task.view_task_form2
+#. module: project_model_to_task
+#: view:project.task:project_model_to_task.view_task_form2
 msgid "Go to the window from which the task has been defined"
 msgstr "Aller sur la fenêtre depuis laquelle la tâche a été défini"
 
-#. module: model_to_project_task
-#: view:project.task:model_to_project_task.view_task_form2
+#. module: project_model_to_task
+#: view:project.task:project_model_to_task.view_task_form2
 msgid "Origin"
 msgstr "Origine"
 
-#. module: model_to_project_task
-#: model:ir.model,name:model_to_project_task.model_project_task
+#. module: project_model_to_task
+#: model:ir.model,name:project_model_to_task.model_project_task
 msgid "Task"
 msgstr "Tâche"
 
-#. module: model_to_project_task
+#. module: project_model_to_task
 #: field:project.task,reference:0
 msgid "Task Origin"
 msgstr "Origine de la tâche"
 
-#. module: model_to_project_task
-#: model:ir.actions.act_window,name:model_to_project_task.task_from_anywhere
+#. module: project_model_to_task
+#: model:ir.actions.act_window,name:project_model_to_task.task_from_anywhere
 msgid "Tasks"
 msgstr "Tâches"
 

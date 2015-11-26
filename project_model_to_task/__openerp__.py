@@ -4,17 +4,15 @@
 
 {
     'name': 'Model to Project Task',
-    'version': '0.3',
+    'version': '8.0.0.5.0',
     'category': 'project',
     'author': 'Akretion, Odoo Community Association (OCA)',
     'depends': [
         'project',
     ],
-    'demo': [],
     'website': 'https://www.akretion.com',
     'data': [
         'project_view.xml',
     ],
     'installable': True,
-    'auto_install': False,
 }
