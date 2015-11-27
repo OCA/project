@@ -17,7 +17,7 @@ To use this module, you need to:
 
 * go to a model or object in tree or form view (ie Partner ou Product).
 * select a record (if your are in tree view).
-* select 'Create related task' in the 'More' button.
+* select 'Create a related task' in the 'More' button.
 * the task and its 'Task Origin' field is set: complete and save the task form.
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
@@ -25,7 +25,7 @@ To use this module, you need to:
    :target: https://runbot.odoo-community.org/runbot/140/8.0
 
 
-Configuation
+Configuration
 ============
 
 You can modify the behavior by overriding ```default_get``` method of the task.
