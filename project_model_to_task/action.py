@@ -34,7 +34,7 @@ class IrValues(models.Model):
             action_id = task.id
             return {
                 'id': action_id,
-                'name': _('Define a task'),
+                'name': _('Create a related task'),
                 'res_model': u'project.task',
                 'src_model': model,
                 'type': u'ir.actions.act_window',

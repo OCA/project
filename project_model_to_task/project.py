@@ -11,6 +11,14 @@ class ProjectTask(models.Model):
     _inherit = 'project.task'
 
     @api.model
+    def _get_origin(self):
+        if self.model_reference:
+            rec_name = self.model_reference._rec_name
+            if rec_name:
+                self.task_origin = (
+                    'Origin: %s' % self.model_reference.display_name)
+
+    @api.model
     def _authorised_models(self):
         """ Inherit this method to add more models depending of your
             modules dependencies
@@ -22,7 +30,8 @@ class ProjectTask(models.Model):
         'ir.actions.act_window', string="Action",
         help="Action called to go to the original window.")
     model_reference = fields.Reference(
-        selection='_authorised_models', string="Task Origin", readonly=True)
+        selection='_authorised_models')
+    task_origin = fields.Char(compute='_get_origin')
 
     @api.model
     def default_get(self, fields):
