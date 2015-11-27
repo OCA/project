@@ -7,12 +7,17 @@
     <field name="inherit_id" ref="project.view_task_form2"/>
     <field name="arch" type="xml">
         <field name="categ_ids" position="after">
-            <button name="goto_document" type="object" string="Origin"
+            <field name="model_reference" invisible="1"/>
+            <!--<group colspan="2">-->
+            <field name="task_origin" nolabel="1"
+                   attrs="{'invisible': ['|',
+                                         ('model_reference', '=', False),
+                                         ('name', '=', False)]}"/>
+            <button name="goto_document" type="object" string="Open"
                     attrs="{'invisible': [('model_reference', '=', False)]}"
-                    class="oe_read_only" colspan="2"
+                    class="oe_read_only" colspan="1"
                     help="Go to the window from which the task has been defined."/>
-            <field name="model_reference"
-                   attrs="{'invisible': [('model_reference', '=', False)]}"/>
+            <!--</group>-->
         </field>
     </field>
 </record>
