@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * project_timesheet_analytic_partner
+# * sale_order_project
 # 
 # Translators:
 # Thomas A. Jaeger, 2015
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-11-18 15:57+0000\n"
-"PO-Revision-Date: 2015-11-05 13:34+0000\n"
+"PO-Revision-Date: 2015-11-03 13:23+0000\n"
 "Last-Translator: Thomas A. Jaeger\n"
 "Language-Team: German (http://www.transifex.com/oca/OCA-project-8-0/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -18,12 +18,12 @@ msgstr ""
 "Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. module: project_timesheet_analytic_partner
-#: model:ir.model,name:project_timesheet_analytic_partner.model_project_task_work
-msgid "Project Task Work"
-msgstr "Aufwand für Projektaufgabe"
+#. module: sale_order_project
+#: view:sale.order:sale_order_project.view_order_form
+msgid "Create Project"
+msgstr "Erstelle Projekt"
 
-#. module: project_timesheet_analytic_partner
-#: model:ir.model,name:project_timesheet_analytic_partner.model_project_task
-msgid "Task"
-msgstr "Aufgabe"
+#. module: sale_order_project
+#: model:ir.model,name:sale_order_project.model_sale_order
+msgid "Sales Order"
+msgstr "Verkaufsauftrag"

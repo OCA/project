@@ -3,12 +3,13 @@
 # * project_sla
 # 
 # Translators:
+# Thomas A. Jaeger, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-31 18:04+0000\n"
-"PO-Revision-Date: 2015-07-21 19:20+0000\n"
+"POT-Creation-Date: 2015-11-18 15:57+0000\n"
+"PO-Revision-Date: 2015-11-09 16:16+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: German (http://www.transifex.com/oca/OCA-project-8-0/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -20,17 +21,17 @@ msgstr ""
 #. module: project_sla
 #: view:project.sla.report:project_sla.view_project_sla_report_tree
 msgid "# of Achieved Lines"
-msgstr ""
+msgstr "# erfüllte Zeilen"
 
 #. module: project_sla
 #: view:project.sla.report:project_sla.view_project_sla_report_tree
 msgid "# of Failed Lines"
-msgstr ""
+msgstr "# fehlerhafte Zeilen"
 
 #. module: project_sla
 #: view:project.sla.report:project_sla.view_project_sla_report_tree
 msgid "# of Lines"
-msgstr ""
+msgstr "# Zeilen"
 
 #. module: project_sla
 #: selection:project.issue,sla_state:0
@@ -43,12 +44,12 @@ msgstr "SLA erfüllt"
 #. module: project_sla
 #: field:project.sla.report,achieved_count:0
 msgid "Achieved Count"
-msgstr ""
+msgstr "Absolut efüllt"
 
 #. module: project_sla
 #: field:project.sla.report,achieved_perc:0
 msgid "Achieved Percent"
-msgstr ""
+msgstr "Prozent erfüllt"
 
 #. module: project_sla
 #: field:project.sla.control,sla_achieved:0
@@ -96,13 +97,13 @@ msgstr "Prüfdatum"
 #: field:project.sla,create_uid:0 field:project.sla.control,create_uid:0
 #: field:project.sla.line,create_uid:0
 msgid "Created by"
-msgstr ""
+msgstr "Erstellt von"
 
 #. module: project_sla
 #: field:project.sla,create_date:0 field:project.sla.control,create_date:0
 #: field:project.sla.line,create_date:0
 msgid "Created on"
-msgstr ""
+msgstr "Erstellt am"
 
 #. module: project_sla
 #: help:project.sla,control_field_id:0
@@ -144,7 +145,7 @@ msgstr "Fehler"
 #. module: project_sla
 #: field:project.sla.report,failed_count:0
 msgid "Failed Count"
-msgstr ""
+msgstr "Absolute Fehler"
 
 #. module: project_sla
 #: field:project.sla,control_model:0
@@ -154,7 +155,7 @@ msgstr "Für Dokumente"
 #. module: project_sla
 #: view:project.sla.report:project_sla.view_project_sla_report_search
 msgid "Group By..."
-msgstr ""
+msgstr "Gruppiert nach..."
 
 #. module: project_sla
 #: field:project.sla.line,limit_qty:0
@@ -171,24 +172,24 @@ msgstr "Alarmlimit (h)"
 #: field:project.sla.controlled,id:0 field:project.sla.line,id:0
 #: field:project.sla.report,id:0
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_sla
 #: field:project.sla.report,sla_closed:0
 msgid "Is Closed"
-msgstr ""
+msgstr "abgeschlossen"
 
 #. module: project_sla
 #: field:project.sla,write_uid:0 field:project.sla.control,write_uid:0
 #: field:project.sla.line,write_uid:0
 msgid "Last Updated by"
-msgstr ""
+msgstr "Zuletzt geändert am"
 
 #. module: project_sla
 #: field:project.sla,write_date:0 field:project.sla.control,write_date:0
 #: field:project.sla.line,write_date:0
 msgid "Last Updated on"
-msgstr ""
+msgstr "Zuletzt geändert am"
 
 #. module: project_sla
 #: field:project.sla.control,sla_limit_date:0
@@ -199,7 +200,7 @@ msgstr "Datum Limit"
 #: view:project.sla.report:project_sla.view_project_sla_report_search
 #: field:project.sla.report,date_month:0
 msgid "Month"
-msgstr ""
+msgstr "Monat"
 
 #. module: project_sla
 #: model:ir.model,name:project_sla.model_project_issue
@@ -209,13 +210,13 @@ msgstr "Fall"
 #. module: project_sla
 #: model:ir.model,name:project_sla.model_project_sla_report
 msgid "Project SLA report"
-msgstr ""
+msgstr "Projekt SLA Bericht"
 
 #. module: project_sla
 #: view:project.sla.report:project_sla.view_project_sla_report_search
 #: field:project.sla.report,date_quarter:0
 msgid "Quarter"
-msgstr ""
+msgstr "Quartal"
 
 #. module: project_sla
 #: view:account.analytic.account:project_sla.view_account_analytic_account_form_sla
@@ -269,7 +270,7 @@ msgstr "Regeln"
 #: view:project.sla.report:project_sla.view_project_sla_report_search
 #: view:project.sla.report:project_sla.view_project_sla_report_tree
 msgid "SLA Analysis"
-msgstr ""
+msgstr "SLA Analyse"
 
 #. module: project_sla
 #: field:project.issue,sla_control_ids:0
@@ -298,19 +299,19 @@ msgstr "SLA Definition"
 #: view:project.sla.report:project_sla.view_project_sla_report_search
 #: field:project.sla.report,sla_line_name:0
 msgid "SLA Line Name"
-msgstr ""
+msgstr "SLA Detailbezeichnung"
 
 #. module: project_sla
 #: view:project.sla.report:project_sla.view_project_sla_report_search
 #: field:project.sla.report,sla_name:0
 msgid "SLA Name"
-msgstr ""
+msgstr "SLA Bezeichnung"
 
 #. module: project_sla
 #: view:project.sla.report:project_sla.view_project_sla_report_search
 #: field:project.sla.report,sla_state:0
 msgid "SLA State"
-msgstr ""
+msgstr "SLA Zustand"
 
 #. module: project_sla
 #: view:project.issue:project_sla.view_project_issue_filter_sdesk
@@ -386,7 +387,7 @@ msgstr "Bezeichnung"
 #. module: project_sla
 #: field:project.sla.report,total_count:0
 msgid "Total Count"
-msgstr ""
+msgstr "Total Anzahl"
 
 #. module: project_sla
 #: selection:project.issue,sla_state:0
@@ -413,7 +414,7 @@ msgstr "Unter Beobachtung"
 #: view:project.sla.report:project_sla.view_project_sla_report_search
 #: field:project.sla.report,date_week:0
 msgid "Week"
-msgstr ""
+msgstr "Woche"
 
 #. module: project_sla
 #: selection:project.issue,sla_state:0
@@ -427,4 +428,4 @@ msgstr "SLA-Verstoss"
 #: view:project.sla.report:project_sla.view_project_sla_report_search
 #: field:project.sla.report,date_year:0
 msgid "Year"
-msgstr ""
+msgstr "Jahr"

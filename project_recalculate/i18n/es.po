@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-04 17:05+0000\n"
+"POT-Creation-Date: 2015-11-18 15:57+0000\n"
 "PO-Revision-Date: 2015-10-04 17:07+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: Spanish (http://www.transifex.com/oca/OCA-project-8-0/language/es/)\n"
@@ -200,7 +200,7 @@ msgstr "Tarea"
 #. module: project_recalculate
 #: model:ir.model,name:project_recalculate.model_project_task_type
 msgid "Task Stage"
-msgstr ""
+msgstr "Estado actual"
 
 #. module: project_recalculate
 #: view:project.recalculate.wizard:project_recalculate.wizard_project_recalculate_form

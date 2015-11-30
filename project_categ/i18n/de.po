@@ -1,21 +1,22 @@
-# Translation of Odoo module.
-# This file is distributed under the same license as the project_categ package.
+# Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* project_categ
-#
+# * project_categ
+# 
+# Translators:
+# Thomas A. Jaeger, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo 8.0\n"
+"Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-04 08:49+0000\n"
-"PO-Revision-Date: 2014-12-10 09:13+0100\n"
-"Last-Translator: openbig.org - Thorsten Vocks <thorsten.vocks@openbig.org>\n"
-"Language-Team: \n"
+"POT-Creation-Date: 2015-11-18 15:57+0000\n"
+"PO-Revision-Date: 2015-11-09 16:15+0000\n"
+"Last-Translator: Thomas A. Jaeger\n"
+"Language-Team: German (http://www.transifex.com/oca/OCA-project-8-0/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: \n"
-"X-Generator: Poedit 1.5.5\n"
+"Content-Transfer-Encoding: \n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: project_categ
 #: field:project.task,task_categ_id:0
@@ -61,3 +62,13 @@ msgstr "Hauptkategorie für Aufgaben"
 #: model:ir.model,name:project_categ.model_project_task
 msgid "Task"
 msgstr "Aufgabe"
+
+#. module: project_categ
+#: view:project.task:project_categ.project_task_form_view_categs
+msgid "onchange_project(project_id)"
+msgstr "onchange_project(project_id)"
+
+#. module: project_categ
+#: view:project.task:project_categ.project_task_form_view_categs
+msgid "{'required':[('task_categ_id','!=',False)]}"
+msgstr "{'required':[('task_categ_id','!=',False)]}"
