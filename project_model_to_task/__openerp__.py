@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 {
-    'name': 'Model to Project Task',
+    'name': 'Project Model to Task',
     'version': '8.0.0.5.0',
     'category': 'project',
     'author': 'Akretion, Odoo Community Association (OCA)',

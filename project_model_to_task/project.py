@@ -15,8 +15,7 @@ class ProjectTask(models.Model):
         if self.model_reference:
             rec_name = self.model_reference._rec_name
             if rec_name:
-                self.task_origin = (
-                    'Origin: %s' % self.model_reference.display_name)
+                self.task_origin = self.model_reference.display_name
 
     @api.model
     def _authorised_models(self):
@@ -51,13 +50,22 @@ class ProjectTask(models.Model):
                 'name': 'Task to original document',
                 'res_model': self.model_reference._model._name,
                 'res_id': self.model_reference.id,
-                'type': u'ir.actions.act_window',
+                'type': 'ir.actions.act_window',
                 'target': 'current',
                 'view_mode': 'form',
             }
             if self.action_id:
                 action['id'] = self.action_id.id
                 action['action_id'] = self.action_id.id
+                view = [x.view_id for x in self.action_id.view_ids
+                        if x.view_mode == 'form']
+                if view:
+                    view_ref = self.env['ir.model.data'].search(
+                        [('res_id', '=', view[0].id),
+                         ('model', '=', 'ir.ui.view')])
+                    if view_ref:
+                        action['context'] = {'form_view_ref': '%s.%s' % (
+                            view_ref.module, view_ref.name)}
             return action
         raise UserError(_(
             "Field 'Task Origin' is not set.\n"

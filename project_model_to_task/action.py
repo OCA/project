@@ -29,14 +29,12 @@ class IrValues(models.Model):
 
     @api.model
     def set_task_action(self, model, res_id=False):
-        task = self.env.ref('project_model_to_task.task_from_elsewhere')
-        if task:
-            action_id = task.id
-            return {
-                'id': action_id,
-                'name': _('Create a related task'),
-                'res_model': u'project.task',
-                'src_model': model,
-                'type': u'ir.actions.act_window',
-                'target': 'current',
-            }
+        action = self.env.ref('project_model_to_task.task_from_elsewhere')
+        return {
+            'id': action.id,
+            'name': _('Create a related task'),
+            'res_model': u'project.task',
+            'src_model': model,
+            'type': u'ir.actions.act_window',
+            'target': 'current',
+        }
