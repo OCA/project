@@ -4,19 +4,18 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 {
-    'name': 'Gap Analysis - Quotation',
+    'name': 'Business Requirement -  Quotation',
     'category': 'project',
-    'summary': 'Gap Analysis - Quotation',
-    'version': '8.0.0.0.2',
+    'summary': 'Business Requirement -  Quotation',
+    'version': '8.0.0.1.0',
     'website': 'www.elico-corp.com',
     "author": "Elico Corp(S), Odoo Community Association (OCA)",
     'depends': [
-        'gap_analysis_price',
-        'gap_analysis_crm',
+        'business_requirement_price',
+        'business_requirement_crm',
         'sale_crm',
     ],
     'data': [
-        'views/business_view.xml',
     ],
     'license': 'AGPL-3',
     'installable': True,

@@ -2,18 +2,11 @@
 # © <YEAR(2015)>
 # <Elico Corp, contributor: Eric Caudal, Alex Duan, Xie XiaoPeng(S)>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
-from openerp import api, fields, models
+from openerp import api, models
 
 
 class CrmMakeSale(models.Model):
     _inherit = "crm.make.sale"
-
-    product_id = fields.Many2one(
-        comodel_name='product.product',
-        string='Product',
-        domain="[('type', '=','service')]",
-        required=True
-    )
 
     @api.multi
     def makeOrder(self):
@@ -28,19 +21,22 @@ class CrmMakeSale(models.Model):
 
     def prepare_sale_order_line(self, case_id, order_id):
         lines = []
-        case_obj = self.env['crm.lead']
-        case = case_obj.browse(case_id)
-        for br in case.br_ids:
+        linked_brs = self.env['business.requirement'].search(
+            [('lead_id', '=', case_id)])
+        for br in linked_brs:
             if br.drop:
                 continue
-            for br_line in br.rough_estimation_lines:
-                qty = br_line.estimated_time
+            for br_line in br.deliverable_lines:
+                qty = br_line.estimated_time if \
+                    br_line.resouce_type == 'time' else br_line.qty
                 vals = {
                     'order_id': order_id,
-                    'product_id': self.product_id.id,
+                    'product_id': br_line.product_id.id,
                     'name': br_line.name,
                     'product_uom_qty': qty,
                     'product_uos_qty': qty,
+                    'product_uom': br_line.uom_id.id,
+                    'product_uos': br_line.uom_id.id,
                     'price_unit': br_line.unit_price,
                 }
                 lines.append(vals)

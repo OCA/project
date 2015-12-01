@@ -2,9 +2,9 @@
    :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
    :alt: License: AGPL-3
 
-==================
-Gap Analysis Quotation
-==================
+=============================
+Business Requirement - Quotation
+=============================
 
 This module is part of a set ("Gap Analysis") and extends the functionality
 adding the possibility to generate/update a sales quotation based on the
@@ -50,7 +50,7 @@ project/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed feedback `here <https://github.com/OCA/
 project/issues/new?body=module:%20
-gap_analysis_quotation%0Aversion:%20
+business_requirement_quotation%0Aversion:%20
 8.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 
