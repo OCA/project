@@ -10,13 +10,10 @@ class BrGenerateTasks(models.TransientModel):
     _name = 'br.generate.tasks'
     _description = 'Generate Tasks'
 
-    br_id = fields.Many2one(
-        comodel_name='business.requirement',
-        string='Business Analysis',
-    )
     project_id = fields.Many2one(
-        related='br_id.project_id',
-        store=True
+        comodel_name='project.project',
+        string='Project',
+        ondelete='set null'
     )
     lines = fields.One2many(
         comodel_name='br.generate.tasks.line',
@@ -27,7 +24,7 @@ class BrGenerateTasks(models.TransientModel):
     @api.multi
     def wizard_view(self):
         view = self.env['ir.model.data'].get_object_reference(
-            'gap_analysis_project', 'view_br_generate_tasks_form')
+            'business_requirement_project', 'view_br_generate_tasks_form')
 
         action = {
             'name': _('Generate Tasks'),
@@ -42,29 +39,6 @@ class BrGenerateTasks(models.TransientModel):
             'context': self.env.context,
         }
         return action
-
-    @api.multi
-    def generate_tasks(self):
-        task_obj = self.env['project.task']
-        tasks = []
-        for line in self.lines:
-            if not line.select:
-                continue
-            task_val = self._prepare_project_task(line)
-            task = task_obj.create(task_val)
-            tasks.append(task)
-        return tasks
-
-    @api.multi
-    def _prepare_project_task(self, line):
-        task = {
-            'name': line.name,
-            'description': line.name,
-            'sequence': line.sequence,
-            'project_id': self.project_id.id,
-            'planned_hours': line.estimated_time_total,
-        }
-        return task
 
     @api.multi
     def apply(self):
@@ -86,6 +60,29 @@ class BrGenerateTasks(models.TransientModel):
 
         return action
 
+    @api.multi
+    def _prepare_project_task(self, line):
+        task = {
+            'name': line.name,
+            'description': line.name,
+            'sequence': line.sequence,
+            'project_id': self.project_id.id,
+            'planned_hours': line.estimated_time_total,
+        }
+        return task
+
+    @api.multi
+    def generate_tasks(self):
+        task_obj = self.env['project.task']
+        tasks = []
+        for line in self.lines:
+            if not line.select:
+                continue
+            task_val = self._prepare_project_task(line)
+            task = task_obj.create(task_val)
+            tasks.append(task)
+        return tasks
+
 
 class BrGenerateTasksLine(models.TransientModel):
     _name = 'br.generate.tasks.line'
@@ -104,5 +101,10 @@ class BrGenerateTasksLine(models.TransientModel):
     wizard_id = fields.Many2one(
         comodel_name='br.generate.tasks',
         string='Wizard'
+    )
+    br_id = fields.Many2one(
+        comodel_name='business.requirement',
+        string='Business Requirement',
+        copy=False
     )
     select = fields.Boolean("Select")

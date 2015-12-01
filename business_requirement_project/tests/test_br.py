@@ -15,7 +15,7 @@ class BusinessRequirementTestCase(common.TransactionCase):
     def test_generate_tasks_wizard(self):
         vals = {
             'name': ' test',
-            'draft_estimation_lines': [
+            'deliverable_lines': [
                 (0, 0, {'name': 'task1', 'estimated_time': 15.0}),
                 (0, 0, {'name': 'task2', 'estimated_time': 25.0}),
                 (0, 0, {'name': 'task3', 'estimated_time': 35.0}),
@@ -41,7 +41,7 @@ class BrGenerateTasksTestCase(common.TransactionCase):
     def test_generate_tasks(self):
         vals = {
             'name': ' test',
-            'draft_estimation_lines': [
+            'deliverable_lines': [
                 (0, 0, {'name': 'task1', 'estimated_time': 15.0}),
                 (0, 0, {'name': 'task2', 'estimated_time': 25.0}),
                 (0, 0, {'name': 'task3', 'estimated_time': 35.0}),

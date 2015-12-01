@@ -21,41 +21,17 @@ class BusinessRequirement(models.Model):
     )
 
     @api.multi
-    def generate_project_wizard(self):
-        vals = {
-            'br_id': self.id,
-        }
-        wizard_obj = self.env['br.generate.project']
-        wizard = wizard_obj.create(vals)
-        action = wizard.wizard_view()
-        return action
-
-    @api.multi
     def update_project_id(self, project_id):
         for br in self:
             br.project_id = project_id
 
     @api.multi
-    def generate_tasks_wizard(self):
-        lines = []
-        for line in self.draft_estimation_lines:
-            line = (
-                0, 0,
-                {
-                    'name': line.name,
-                    'sequence': line.sequence,
-                    'estimated_time_total': line.estimated_time,
-                    'select': True,
-                }
-            )
-            lines.append(line)
-
+    def generate_project_wizard(self):
         vals = {
-            'project_id': self.project_id.id,
+            'name': self.description,
             'br_id': self.id,
-            'lines': lines,
         }
-        wizard_obj = self.env['br.generate.tasks']
+        wizard_obj = self.env['br.generate.project']
         wizard = wizard_obj.create(vals)
         action = wizard.wizard_view()
         return action
@@ -67,7 +43,7 @@ class Project(models.Model):
     br_ids = fields.One2many(
         comodel_name='business.requirement',
         inverse_name='project_id',
-        string='Business Analysis',
+        string='Business Requirement',
         copy=False,
     )
     br_count = fields.Integer(
@@ -80,12 +56,38 @@ class Project(models.Model):
     def _br_count(self):
         self.br_count = len(self.br_ids)
 
+    @api.multi
+    def generate_tasks_wizard(self):
+        lines = []
+        for br in self.br_ids:
+            for line in br.deliverable_lines:
+                line = (
+                    0, 0,
+                    {
+                        'br_id': br.id,
+                        'name': line.name,
+                        'sequence': line.sequence,
+                        'estimated_time_total': line.estimated_time,
+                        'select': True,
+                    }
+                )
+                lines.append(line)
+
+        vals = {
+            'project_id': self.id,
+            'lines': lines,
+        }
+        wizard_obj = self.env['br.generate.tasks']
+        wizard = wizard_obj.create(vals)
+        action = wizard.wizard_view()
+        return action
+
 
 class ProjectTask(models.Model):
     _inherit = "project.task"
 
     br_id = fields.Many2one(
         comodel_name='business.requirement',
-        string='Business Analysis',
+        string='Business Requirement',
         ondelete='set null'
     )

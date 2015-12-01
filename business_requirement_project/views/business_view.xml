@@ -5,13 +5,13 @@
         <record id="view_business_requirement_form" model="ir.ui.view">
             <field name="name">business.requirement.form</field>
             <field name="model">business.requirement</field>
-            <field name="inherit_id" ref="gap_analysis.view_business_requirement_form"/>
+            <field name="inherit_id" ref="business_requirement.view_business_requirement_form"/>
             <field name="arch" type="xml">
                 <xpath expr='//page[@string="Other Information"]/group' position='inside'>
                     <field name="project_id"/>
                 </xpath>
                 <xpath expr='//header/field[@name="state"]' position='before'>
-                    <button name="generate_tasks_wizard" string="Generate Tasks" type="object" class="oe_highlight" states="approved" groups="gap_analysis.group_gap_analysis_user"/>
+                    <button name="generate_project_wizard" string="Generate Project" type="object" class="oe_highlight" groups="business_requirement.group_business_requirement_user" attrs="{'invisible':['|',('project_id', '!=', False),('state', 'not in', ('approved', 'done'))]}"/>
                 </xpath>
             </field>
         </record>
@@ -19,7 +19,7 @@
         <record id="view_business_requirement_tree" model="ir.ui.view">
             <field name="name">business.requirement.tree</field>
             <field name="model">business.requirement</field>
-            <field name="inherit_id" ref="gap_analysis.view_business_requirement_tree"/>
+            <field name="inherit_id" ref="business_requirement.view_business_requirement_tree"/>
             <field name="arch" type="xml">
                 <xpath expr='//field[@name="categ_id"]' position='after'>
                     <field name="project_id"/>
@@ -30,7 +30,7 @@
         <record id="view_business_requirement_search" model="ir.ui.view">
             <field name="name">business.requirement.search</field>
             <field name="model">business.requirement</field>
-            <field name="inherit_id" ref="gap_analysis.view_business_requirement_search"/>
+            <field name="inherit_id" ref="business_requirement.view_business_requirement_search"/>
             <field name="arch" type="xml">
                 <xpath expr='//search' position='inside'>
                     <field name="project_id" string="Project"/>
@@ -42,10 +42,10 @@
         </record>
 
         <record id="act_view_project_br_all" model="ir.actions.act_window">
-            <field name="name">Business Analysis</field>
+            <field name="name">Business Requirement</field>
             <field name="res_model">business.requirement</field>
             <field name="view_mode">tree,form</field>
-            <field name="search_view_id" ref="gap_analysis.view_business_requirement_search"/>
+            <field name="search_view_id" ref="business_requirement.view_business_requirement_search"/>
             <field name="context">{
                 'search_default_project_id': [active_id],
                 'default_project_id': active_id,
@@ -68,7 +68,7 @@
                 <xpath expr='//div[@class="oe_kanban_content"]/div[@class="oe_kanban_project_list"]' position="inside">
                     <div class="oe_kanban_project_list">
                         <a t-if="record.br_count.raw_value" name="%(act_view_project_br_all)d" type="action" style="margin-right: 10px">
-                            <field name="br_count"/> Business Analysis
+                            <field name="br_count"/> Business Requirement
                         </a>
                     </div>
                 </xpath>
@@ -83,8 +83,11 @@
                 <xpath expr='//div[@name="buttons"]' position="inside">
                     <button class="oe_inline oe_stat_button" type="action" attrs="{'invisible':[('br_count','=', 0)]}" name="%(act_view_project_br_all)d" icon="fa-tasks">
                         <field name="br_count" nolabel="1" widget="statinfo"/>
-                        <div>Business <br/>Analysis</div>
+                        <div>Business <br/>Requirement</div>
                     </button>
+                </xpath>
+                <xpath expr='//header/field[@name="state"]' position='before'>
+                    <button name="generate_tasks_wizard" string="Generate Tasks From Business Requirement" type="object" class="oe_highlight" groups="business_requirement.group_business_requirement_user"/>
                 </xpath>
             </field>
         </record>
