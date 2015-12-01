@@ -1,4 +1,4 @@
-# Translation of Odoo Server.
+﻿# Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # 	* project_wbs_task
 #
@@ -16,6 +16,21 @@ msgstr ""
 "X-Generator: Poedit 1.8.6\n"
 "Last-Translator: Jason Cui <jason@qdodoo.com>\n"
 "Language: zh_CN\n"
+
+#. module: project_wbs_task
+#: field:project.task,analytic_account_id:0
+msgid "Analytic Account"
+msgstr "分析账户"
+
+#. module: project_wbs_task
+#: field:project.task,project_complete_wbs_code:0
+msgid "Full WBS Code"
+msgstr "完整的WBS编号"
+
+#. module: project_wbs_task
+#: field:project.task,project_complete_wbs_name:0
+msgid "Full WBS Name"
+msgstr "完整的WBS名称"
 
 #. module: project_wbs_task
 #: model:ir.model,name:project_wbs_task.model_project_project
