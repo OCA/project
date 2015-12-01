@@ -5,7 +5,7 @@
         <record id="view_business_requirement_form" model="ir.ui.view">
             <field name="name">business.requirement.form</field>
             <field name="model">business.requirement</field>
-            <field name="inherit_id" ref="gap_analysis.view_business_requirement_form"/>
+            <field name="inherit_id" ref="business_requirement.view_business_requirement_form"/>
             <field name="arch" type="xml">
                 <xpath expr='//field[@name="categ_id"]' position='after'>
                     <field name="lead_id"/>
@@ -16,7 +16,7 @@
         <record id="view_business_requirement_tree" model="ir.ui.view">
             <field name="name">business.requirement.form</field>
             <field name="model">business.requirement</field>
-            <field name="inherit_id" ref="gap_analysis.view_business_requirement_tree"/>
+            <field name="inherit_id" ref="business_requirement.view_business_requirement_tree"/>
             <field name="arch" type="xml">
                 <xpath expr='//field[@name="categ_id"]' position='after'>
                     <field name="lead_id"/>
@@ -27,7 +27,7 @@
         <record id="view_business_requirement_search" model="ir.ui.view">
             <field name="name">business.requirement.search</field>
             <field name="model">business.requirement</field>
-            <field name="inherit_id" ref="gap_analysis.view_business_requirement_search"/>
+            <field name="inherit_id" ref="business_requirement.view_business_requirement_search"/>
             <field name="arch" type="xml">
                 <xpath expr='//search' position='inside'>
                     <field name="lead_id" string="Opportunity"/>

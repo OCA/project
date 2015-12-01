@@ -17,12 +17,6 @@ class BusinessRequirement(models.Model):
 class CrmLead(models.Model):
     _inherit = "crm.lead"
 
-    br_ids = fields.One2many(
-        comodel_name='business.requirement',
-        inverse_name='lead_id',
-        string='Business Analysis',
-        copy=False
-    )
     estimated_time_total = fields.Float(
         compute='_get_estimated_time_total',
         string='Total Estimated Time',
@@ -35,7 +29,9 @@ class CrmLead(models.Model):
     @api.one
     def _get_estimated_time_total(self):
         time_total = 0
-        for br in self.br_ids:
+        linked_brs = self.env['business.requirement'].search(
+            [('lead_id', '=', self.id)])
+        for br in linked_brs:
             if br.drop or br.state == 'cancel':
                 continue
             time_total += br.estimated_time_total
@@ -44,7 +40,9 @@ class CrmLead(models.Model):
     @api.one
     def _get_estimated_cost_total(self):
         cost_total = 0
-        for br in self.br_ids:
+        linked_brs = self.env['business.requirement'].search(
+            [('lead_id', '=', self.id)])
+        for br in linked_brs:
             if br.drop or br.state == 'cancel':
                 continue
             cost_total += br.estimated_cost_total
