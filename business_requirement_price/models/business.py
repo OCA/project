@@ -16,16 +16,16 @@ class BusinessRequirement(models.Model):
 
     @api.one
     @api.depends(
-        'draft_estimation_lines.price_total'
+        'deliverable_lines.price_total'
     )
     def _get_estimated_cost_total(self):
         cost_total = sum(
-            line.price_total for line in self.draft_estimation_lines)
+            line.price_total for line in self.deliverable_lines)
         self.estimated_cost_total = cost_total
 
 
-class BusinessEstimationLine(models.Model):
-    _inherit = "business.estimation.line"
+class BusinessDeliverableLine(models.Model):
+    _inherit = "business.deliverable.line"
 
     unit_price = fields.Float(
         string='Unit Price'
@@ -40,22 +40,29 @@ class BusinessEstimationLine(models.Model):
     )
 
     @api.one
-    @api.depends('estimated_time', 'unit_price')
+    @api.depends('estimated_time', 'unit_price', 'qty')
     def _get_price_total(self):
-        self.price_total = self.estimated_time * self.unit_price
+        if self.resouce_type == "time":
+            self.price_total = self.unit_price * self.estimated_time
+        else:
+            self.price_total = self.unit_price * self.qty
 
     @api.one
-    @api.onchange('cost_structure_id', 'type_id')
+    @api.onchange('cost_structure_id', 'type_id', 'product_id')
     def cost_structure_id_change(self):
         unit_price = 0
         user_id = False
+        uom_id = False
         structure = self.cost_structure_id
         for line in structure.structure_lines:
-            if line.type_id.id == self.type_id.id:
+            if line.type_id.id == self.type_id.id and \
+                    line.product_id.id == self.product_id.id:
                 unit_price = line.unit_price or 0
                 user_id = line.user_id.id
+                uom_id = line.uom_id.id
         self.unit_price = unit_price
         self.user_id = user_id
+        self.uom_id = uom_id
 
 
 class BusinessRequirementCostStructure(models.Model):
@@ -76,10 +83,10 @@ class BusinessRequirementCostStructureLine(models.Model):
     _description = "Business Requirement Cost Structure Line"
 
     type_id = fields.Many2one(
-        comodel_name='business.estimation.type',
-        string='Estimation Type',
+        comodel_name='business.deliverable.type',
+        string='Deliverable Type',
         ondelete='restrict',
-        required=True,
+        required=False,
     )
     product_id = fields.Many2one(
         comodel_name='product.product',

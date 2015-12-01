@@ -30,11 +30,11 @@
             <field name="priority">20</field>
             <field name="arch" type="xml">
                 <tree string="Cost Structure Lines" editable="bottom">
-                     <field name="type_id"/>
-                     <field name="user_id"/>
                      <field name="product_id"/>
                      <field name="unit_price"/>
                      <field name="uom_id" />
+                     <field name="type_id"/>
+                     <field name="user_id"/>
                 </tree>
             </field>
         </record>
@@ -48,12 +48,12 @@
         </record>
 
         <menuitem id="menu_business_requirement_cost_structure_tree" action="action_business_requirement_cost_structure_tree" 
-            parent="gap_analysis.menu_gap_configuration" sequence="10"/>
+            parent="business_requirement.menu_business_configuration" sequence="10"/>
 
         <record id="view_business_requirement_form" model="ir.ui.view">
             <field name="name">business.requirement.form</field>
             <field name="model">business.requirement</field>
-            <field name="inherit_id" ref="gap_analysis.view_business_requirement_form"/>
+            <field name="inherit_id" ref="business_requirement_deliverable.view_business_requirement_form"/>
             <field name="arch" type="xml">
                 <xpath expr='//field[@name="estimated_time_total"]' position='after'>
                     <field name="estimated_cost_total"/>
@@ -64,7 +64,7 @@
         <record id="view_business_requirement_tree" model="ir.ui.view">
             <field name="name">business.requirement.form</field>
             <field name="model">business.requirement</field>
-            <field name="inherit_id" ref="gap_analysis.view_business_requirement_tree"/>
+            <field name="inherit_id" ref="business_requirement_deliverable.view_business_requirement_tree"/>
             <field name="arch" type="xml">
                 <xpath expr='//field[@name="estimated_time_total"]' position='after'>
                     <field name="estimated_cost_total"/>
@@ -72,15 +72,15 @@
             </field>
         </record>
 
-        <record id="view_business_estimation_line_tree" model="ir.ui.view">
-            <field name="name">business.estimation.line.tree</field>
-            <field name="model">business.estimation.line</field>
-            <field name="inherit_id" ref="gap_analysis.view_business_estimation_line_tree"/>
+        <record id="view_business_deliverable_line_tree" model="ir.ui.view">
+            <field name="name">business.deliverable.line.tree</field>
+            <field name="model">business.deliverable.line</field>
+            <field name="inherit_id" ref="business_requirement_deliverable.view_business_deliverable_line_tree"/>
             <field name="arch" type="xml">
-                <xpath expr='//field[@name="type_id"]' position='after'>
+                <xpath expr='//field[@name="type_id"]' position='before'>
                     <field name="cost_structure_id"/>
                 </xpath>
-                <xpath expr='//tree[@string="Bus. Estimation Lines"]' position='inside'>
+                <xpath expr='//tree[@string="Business Deliverable Lines"]' position='inside'>
                     <field name="unit_price"/>
                     <field name="price_total"/>
                 </xpath>
