@@ -5,33 +5,9 @@
 from openerp import api, fields, models
 
 
-class BusinessEstimationLine(models.Model):
-    _name = "business.estimation.line"
-    _description = "Bus. Estimation Lines"
-
-    sequence = fields.Integer('Sequence')
-    name = fields.Char('Name', required=True)
-    business_requirement_id = fields.Many2one(
-        comodel_name='business.requirement',
-        string='Business Analysis',
-        ondelete='cascade'
-    )
-    type_id = fields.Many2one(
-        comodel_name='business.estimation.type',
-        string='Estimation Type',
-        ondelete='restrict'
-    )
-    estimated_time = fields.Integer(string='Estimated Time', required=True)
-    user_id = fields.Many2one(
-        comodel_name='res.users',
-        string='Assign To',
-        ondelete='set null'
-    )
-
-
 class BusinessRequirement(models.Model):
     _name = "business.requirement"
-    _description = "Business Analysis"
+    _description = "Business Requirement"
 
     sequence = fields.Char(
         'Sequence',
@@ -72,25 +48,12 @@ class BusinessRequirement(models.Model):
         help="""Determine whether this business requirement is to be kept
         or dropped."""
     )
-    draft_estimation_lines = fields.One2many(
-        comodel_name='business.estimation.line',
-        inverse_name='business_requirement_id',
-        string='Draft Estimation Lines',
-        copy=False,
-        readonly=True,
-        states={'draft': [('readonly', False)]}
-    )
     categ_id = fields.Many2one(
         comodel_name='business.requirement.category',
         string='Category',
         ondelete='restrict',
         readonly=True,
         states={'draft': [('readonly', False)]}
-    )
-    estimated_time_total = fields.Float(
-        compute='_get_estimated_time_total',
-        string='Total Estimated Time',
-        store=True,
     )
     state = fields.Selection(
         selection="_get_states",
@@ -99,11 +62,10 @@ class BusinessRequirement(models.Model):
         readonly=True,
         states={'draft': [('readonly', False)]}
     )
-
     business_requirement_ids = fields.One2many(
         comodel_name='business.requirement',
         inverse_name='parent_id',
-        string='Draft Estimation Lines',
+        string='Sub Business Requirement',
         copy=False,
         readonly=True,
         states={'draft': [('readonly', False)]}
@@ -119,15 +81,9 @@ class BusinessRequirement(models.Model):
         string='Level',
         store=True
     )
-    summary_estimation = fields.Boolean(
-        string='Summary Estimation?',
-        default=True,
-        readonly=True,
-        states={'draft': [('readonly', False)]},
-        help='True: I will review the business case here.',
-    )
-    summary_estimation_note = fields.Text(
-        'Summary Estimation Note',
+    change_request = fields.Boolean(
+        string='Change Request?',
+        default=False,
         readonly=True,
         states={'draft': [('readonly', False)]}
     )
@@ -135,16 +91,8 @@ class BusinessRequirement(models.Model):
     @api.model
     def create(self, vals):
         if vals.get('name', '/') == '/':
-            vals['name'] = self.env['ir.sequence'].get('business.analysis')
+            vals['name'] = self.env['ir.sequence'].get('business.requirement')
         return super(BusinessRequirement, self).create(vals)
-
-    @api.one
-    @api.depends(
-        'draft_estimation_lines.estimated_time')
-    def _get_estimated_time_total(self):
-        time_total = sum(
-            line.estimated_time for line in self.draft_estimation_lines)
-        self.estimated_time_total = time_total
 
     @api.multi
     @api.depends(
@@ -202,10 +150,3 @@ class BusinessRequirementCategory(models.Model):
         string='Parent Category',
         ondelete='restrict'
     )
-
-
-class BusinessEstimationType(models.Model):
-    _name = "business.estimation.type"
-    _description = "Bus. Estimation Type"
-
-    name = fields.Char(string='Name', required=True)

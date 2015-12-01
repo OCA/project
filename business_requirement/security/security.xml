@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+            <record id="group_business_requirement_user" model="res.groups">
+                <field name="name">Business Requirement User</field>
+                <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+                <field name="category_id" ref="base.module_category_project_management"/>
+            </record>
+
+            <record id="group_business_requirement_manager" model="res.groups">
+                <field name="name">Business Requirement Manager</field>
+                <field name="implied_ids" eval="[(4, ref('business_requirement.group_business_requirement_user'))]"/>
+                <field name="category_id" ref="base.module_category_project_management"/>
+            </record>
+    </data>
+</openerp>

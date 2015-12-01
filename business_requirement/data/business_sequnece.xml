@@ -4,14 +4,14 @@
 
         <!-- Sequences for sale.order -->
         <record id="seq_type_business_requirement" model="ir.sequence.type">
-            <field name="name">Business Analysis</field>
-            <field name="code">business.analysis</field>
+            <field name="name">Business Requirement</field>
+            <field name="code">business.requirement</field>
         </record>
 
         <record id="seq_business_requirement" model="ir.sequence">
-            <field name="name">Business Analysis</field>
-            <field name="code">business.analysis</field>
-            <field name="prefix"></field>
+            <field name="name">Business Requirement</field>
+            <field name="code">business.requirement</field>
+            <field name="prefix">BR</field>
             <field name="padding">6</field>
             <field name="company_id" eval="False"/>
         </record>
