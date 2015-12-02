@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_business_deliverable_line_user,business.deliverable.line.user,model_business_deliverable_line,business_requirement.group_business_requirement_user,1,1,1,1
+access_business_deliverable_line_manager,business.deliverable.line.manager,model_business_deliverable_line,business_requirement.group_business_requirement_manager,1,1,1,1
+
+access_business_deliverable_type_user,business.deliverable.type.user,model_business_deliverable_type,business_requirement.group_business_requirement_user,1,1,1,1
+access_business_deliverable_type_manager,business.deliverable.type.manager,model_business_deliverable_type,business_requirement.group_business_requirement_manager,1,1,1,1
