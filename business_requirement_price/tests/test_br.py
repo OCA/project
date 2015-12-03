@@ -12,36 +12,40 @@ class BusinessRequirementTestCase(common.TransactionCase):
         super(BusinessRequirementTestCase, self).setUp()
         self.br = self.env['business.requirement']
 
-    def test_get_estimated_cost_total(self):
+    def test_get_resource_cost_total(self):
         vals = {
             'name': ' test',
-            'draft_estimation_lines': [
+            'deliverable_lines': [
                 (
                     0, 0,
                     {
-                        'name': 'line1', 'estimated_time': 15, 'unit_price': 1,
+                        'description': 'line1', 'resource_time': 15,
+                        'unit_price': 1,
                     }
                 ),
                 (
                     0, 0,
                     {
-                        'name': 'line1', 'estimated_time': 25, 'unit_price': 1,
+                        'description': 'line1', 'resource_time': 25,
+                        'unit_price': 1,
                     }
                 ),
                 (
                     0, 0,
                     {
-                        'name': 'line1', 'estimated_time': 35, 'unit_price': 1,
+                        'description': 'line1', 'resource_time': 35,
+                        'unit_price': 1,
                     }
                 ),
                 (
                     0, 0,
                     {
-                        'name': 'line1', 'estimated_time': 45, 'unit_price': 1,
+                        'description': 'line1', 'resource_time': 45,
+                        'unit_price': 1,
                     }
                 ),
             ]
         }
         br = self.br.create(vals)
-        cost_total = br.estimated_cost_total
+        cost_total = br.resource_cost_total
         self.assertEqual(cost_total, 15 + 25 + 35 + 45)

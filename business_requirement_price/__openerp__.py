@@ -6,7 +6,7 @@
     'name': 'Business Requirement - Financial evaluation',
     'category': 'Business Requirements Management',
     'summary': 'Business Requirement - Financial evaluation',
-    'version': '8.0.0.1.0',
+    'version': '8.0.1.0.0',
     'website': 'www.elico-corp.com',
     "author": "<Elico Corp(S)>, Odoo Community Association (OCA)",
     'depends': [
