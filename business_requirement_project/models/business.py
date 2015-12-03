@@ -60,18 +60,20 @@ class Project(models.Model):
     def generate_tasks_wizard(self):
         lines = []
         for br in self.br_ids:
-            for line in br.deliverable_lines:
-                line = (
-                    0, 0,
-                    {
-                        'br_id': br.id,
-                        'name': line.name,
-                        'sequence': line.sequence,
-                        'estimated_time_total': line.estimated_time,
-                        'select': True,
-                    }
-                )
-                lines.append(line)
+            for deliverables in br.deliverable_lines:
+                for line in deliverables.resource_ids:
+                    line = (
+                        0, 0,
+                        {
+                            'br_id': br.id,
+                            'name': line.description,
+                            'sequence': line.sequence,
+                            'resource_time_total': line.resource_time,
+                            'user_id': line.user_id.id,
+                            'select': True,
+                        }
+                    )
+                    lines.append(line)
 
         vals = {
             'project_id': self.id,
