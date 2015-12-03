@@ -4,13 +4,13 @@
             <record id="group_business_requirement_user" model="res.groups">
                 <field name="name">Business Requirement User</field>
                 <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
-                <field name="category_id" ref="base.module_category_project_management"/>
+                <field name="category_id" ref="business_requirement.module_category_business_requirement"/>
             </record>
 
             <record id="group_business_requirement_manager" model="res.groups">
                 <field name="name">Business Requirement Manager</field>
                 <field name="implied_ids" eval="[(4, ref('business_requirement.group_business_requirement_user'))]"/>
-                <field name="category_id" ref="base.module_category_project_management"/>
+                <field name="category_id" ref="business_requirement.module_category_business_requirement"/>
             </record>
     </data>
 </openerp>
