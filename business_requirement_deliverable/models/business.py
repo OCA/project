@@ -9,57 +9,99 @@ class BusinessRequirement(models.Model):
     _inherit = "business.requirement"
 
     deliverable_lines = fields.One2many(
-        comodel_name='business.deliverable.line',
+        comodel_name='business.requirement.deliverable',
         inverse_name='business_requirement_id',
         string='Deliverable Lines',
         copy=False,
         readonly=True,
         states={'draft': [('readonly', False)]}
     )
-    estimated_time_total = fields.Float(
-        compute='_get_estimated_time_total',
-        string='Total Estimated Time',
+
+    resource_time_total = fields.Float(
+        compute='_get_resource_time_total',
+        string='Total Resource Time',
         store=True,
-    )
-    summary_estimation = fields.Boolean(
-        string='Summary Estimation?',
-        default=True,
-        readonly=True,
-        states={'draft': [('readonly', False)]},
-        help='True: I will review the business case here.',
-    )
-    summary_estimation_note = fields.Text(
-        'Summary Estimation Note',
-        readonly=True,
-        states={'draft': [('readonly', False)]}
     )
 
     @api.one
     @api.depends(
-        'deliverable_lines.estimated_time')
-    def _get_estimated_time_total(self):
+        'deliverable_lines.resource_time')
+    def _get_resource_time_total(self):
         time_total = sum(
-            line.estimated_time for line in self.deliverable_lines
-            if line.resouce_type == 'time')
-        self.estimated_time_total = time_total
+            line.resource_time * line.qty for line in self.deliverable_lines)
+        self.resource_time_total = time_total
 
 
-class BusinessDeliverableLine(models.Model):
-    _name = "business.deliverable.line"
-    _description = "Bus. Deliverable Lines"
+class BusinessRequirementTaskType(models.Model):
+    _name = "business.requirement.task.type"
+    _description = "Business Requirement Task Type"
+
+    name = fields.Char(string='Name', required=True)
+
+
+class BusinessRequirementDeliverable(models.Model):
+    _name = "business.requirement.deliverable"
+    _description = "Business Requirement Deliverable"
 
     sequence = fields.Integer('Sequence')
-    name = fields.Char('Name', required=True)
+    description = fields.Char('Description', required=True)
     business_requirement_id = fields.Many2one(
         comodel_name='business.requirement',
         string='Business Requirement',
         ondelete='cascade'
     )
-    type_id = fields.Many2one(
-        comodel_name='business.deliverable.type',
-        string='Deliverable Type',
-        ondelete='restrict'
+    product_id = fields.Many2one(
+        comodel_name='product.product',
+        string='Product',
+        required=True
     )
+    uom_id = fields.Many2one(
+        comodel_name='product.uom',
+        string='UoM',
+        required=True
+    )
+    qty = fields.Integer(
+        string='Quantity',
+        store=True,
+        default=1,
+    )
+    resource_time = fields.Float(
+        compute='_get_resource_time_total',
+        string='Resource Time',
+        store=True,
+    )
+    resource_ids = fields.One2many(
+        comodel_name='business.requirement.resource',
+        inverse_name='business_requirement_deliverable_id',
+        string='Business Requirement Resource',
+        copy=False,
+    )
+
+    @api.one
+    @api.depends(
+        'resource_ids.qty',
+        'resource_ids.resource_time')
+    def _get_resource_time_total(self):
+        time_total = sum(
+            line.resource_time for line in self.resource_ids)
+        self.resource_time = time_total
+
+    @api.one
+    @api.onchange('product_id')
+    def product_id_change(self):
+        uom_id = False
+        product = self.product_id
+        if product:
+            uom_id = product.uom_id.id
+        self.uom_id = uom_id
+
+
+class BusinessRequirementResource(models.Model):
+    _name = "business.requirement.resource"
+    _description = "Business Requirement Resource"
+
+    sequence = fields.Integer('Sequence')
+    description = fields.Char('Description', required=True)
     user_id = fields.Many2one(
         comodel_name='res.users',
         string='Assign To',
@@ -78,36 +120,47 @@ class BusinessDeliverableLine(models.Model):
     qty = fields.Integer(
         string='Quantity'
     )
-    estimated_time = fields.Integer(
-        string='Estimated Time'
+    resource_time = fields.Integer(
+        string='Resouce Time'
     )
-    resouce_type = fields.Selection(
-        selection=[('resource', 'Resource'), ('time', 'Time')],
-        string='Resouce Type',
-        default='time',
+    resource_type = fields.Selection(
+        selection=[('task', 'Task'), ('procurement', 'Procurement')],
+        string='Type',
         required=True
+    )
+    task_type = fields.Many2one(
+        comodel_name='business.requirement.task.type',
+        string='Task Type',
+        ondelete='restrict'
+    )
+    business_requirement_deliverable_id = fields.Many2one(
+        comodel_name='business.requirement.deliverable',
+        string='Business Requirement Deliverable',
+        ondelete='cascade'
     )
 
     @api.one
-    @api.onchange('resouce_type')
+    @api.onchange('product_id')
+    def product_id_change(self):
+        uom_id = False
+        product = self.product_id
+        if product:
+            uom_id = product.uom_id.id
+        self.uom_id = uom_id
+
+    @api.one
+    @api.onchange('resource_type')
     def resouce_type_change(self):
-        if self.resouce_type == "resource":
-            self.estimated_time = 0
-        elif self.resouce_type == "time":
+        if self.resource_type == "task":
             self.qty = 0
+        elif self.resource_type == "procurement":
+            self.resource_time = 0
 
     @api.one
     def write(self, vals):
-        resouce_type = vals.get('resouce_type', False)
-        if resouce_type == "resource":
-            vals.update({'estimated_time': 0})
-        elif resouce_type == "time":
+        resource_type = vals.get('resource_type', False)
+        if resource_type == "procurement":
+            vals.update({'resource_time': 0})
+        elif resource_type == "task":
             vals.update({'qty': 0})
-        return super(BusinessDeliverableLine, self).write(vals)
-
-
-class BusinessDeliverableType(models.Model):
-    _name = "business.deliverable.type"
-    _description = "Bus. Deliverable Type"
-
-    name = fields.Char(string='Name', required=True)
+        return super(BusinessRequirementResource, self).write(vals)
