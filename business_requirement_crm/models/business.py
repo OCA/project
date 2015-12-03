@@ -17,33 +17,33 @@ class BusinessRequirement(models.Model):
 class CrmLead(models.Model):
     _inherit = "crm.lead"
 
-    estimated_time_total = fields.Float(
-        compute='_get_estimated_time_total',
-        string='Total Estimated Time',
+    resource_time_total = fields.Float(
+        compute='_get_resource_time_total',
+        string='Total Resource Time',
     )
-    estimated_cost_total = fields.Float(
-        compute='_get_estimated_cost_total',
-        string='Total Estimated Cost',
+    resource_cost_total = fields.Float(
+        compute='_get_resource_cost_total',
+        string='Total resource Cost',
     )
 
     @api.one
-    def _get_estimated_time_total(self):
+    def _get_resource_time_total(self):
         time_total = 0
         linked_brs = self.env['business.requirement'].search(
             [('lead_id', '=', self.id)])
         for br in linked_brs:
             if br.drop or br.state == 'cancel':
                 continue
-            time_total += br.estimated_time_total
-        self.estimated_time_total = time_total
+            time_total += br.resource_time_total
+        self.resource_time_total = time_total
 
     @api.one
-    def _get_estimated_cost_total(self):
+    def _get_resource_cost_total(self):
         cost_total = 0
         linked_brs = self.env['business.requirement'].search(
             [('lead_id', '=', self.id)])
         for br in linked_brs:
             if br.drop or br.state == 'cancel':
                 continue
-            cost_total += br.estimated_cost_total
-        self.estimated_cost_total = cost_total
+            cost_total += br.resource_cost_total
+        self.resource_cost_total = cost_total
