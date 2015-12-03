@@ -25,11 +25,11 @@ class CrmMakeSaleTestCase(common.TransactionCase):
         br_vals = {
             'name': ' Odoo Stock Extend',
             'lead_id': lead.id,
-            'rough_estimation_lines': [
-                (0, 0, {'name': 'task1', 'estimated_time': 15.0}),
-                (0, 0, {'name': 'task2', 'estimated_time': 25.0}),
-                (0, 0, {'name': 'task3', 'estimated_time': 35.0}),
-                (0, 0, {'name': 'task4', 'estimated_time': 45.0}),
+            'deliverable_lines': [
+                (0, 0, {'description': 'task1', 'resource_time': 15.0}),
+                (0, 0, {'description': 'task2', 'resource_time': 25.0}),
+                (0, 0, {'description': 'task3', 'resource_time': 35.0}),
+                (0, 0, {'description': 'task4', 'resource_time': 45.0}),
             ]
         }
         self.br.create(br_vals)

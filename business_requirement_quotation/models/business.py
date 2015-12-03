@@ -27,14 +27,12 @@ class CrmMakeSale(models.Model):
             if br.drop:
                 continue
             for br_line in br.deliverable_lines:
-                qty = br_line.estimated_time if \
-                    br_line.resouce_type == 'time' else br_line.qty
                 vals = {
                     'order_id': order_id,
                     'product_id': br_line.product_id.id,
-                    'name': br_line.name,
-                    'product_uom_qty': qty,
-                    'product_uos_qty': qty,
+                    'name': br_line.description,
+                    'product_uom_qty': br_line.qty,
+                    'product_uos_qty': br_line.qty,
                     'product_uom': br_line.uom_id.id,
                     'product_uos': br_line.uom_id.id,
                     'price_unit': br_line.unit_price,

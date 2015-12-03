@@ -7,7 +7,7 @@
     'name': 'Business Requirement -  Quotation',
     'category': 'project',
     'summary': 'Business Requirement -  Quotation',
-    'version': '8.0.0.1.0',
+    'version': '8.0.1.0.0',
     'website': 'www.elico-corp.com',
     "author": "Elico Corp(S), Odoo Community Association (OCA)",
     'depends': [
