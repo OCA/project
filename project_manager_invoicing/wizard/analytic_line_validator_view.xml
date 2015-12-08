@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+
+
+    <record id="view_analytic_line_validator" model="ir.ui.view">
+      <field name="name">Confirm/Set to draft Lines</field>
+      <field name="model">analytic.line.validator</field>
+      <field name="type">form</field>
+      <field name="arch" type="xml">
+        <form string="Confirm/Set to draft Lines" version="7.0">
+          <!-- ajouter un formulaire externe contenant juste les lignes importantes -->
+          <footer>
+            <button name="action_confirm"  type="object" string="Confirm" class="oe_highlight"/>
+            or
+            <button name="action_reset_to_draft" type="object" string="Set to draft" class="oe_highlight"/>
+            
+            <button special="cancel" string="Close" icon="gtk-cancel" class="oe_link"/>
+          </footer>
+        </form>
+      </field>
+    </record>
+
+    <act_window id="action_analytic_line_validator"
+      name="Confirm/Set to draft Lines"
+      src_model="account.analytic.line"
+      res_model="analytic.line.validator"
+      view_mode="form"
+      target="new"
+      multi="True"
+      key2="client_action_multi"
+      />
+
+  </data>
+</openerp>

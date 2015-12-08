@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+      <!-- ajout des champs à la vue globale des hr_timesheet -->
+    <record model="ir.ui.view" id="hr_timesheet_line_tree">
+    	<field name="name">hr_timesheet.line.tree.view</field>
+        <field name="model">hr.analytic.timesheet</field>
+        <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='unit_amount']" position="attributes">
+                <attribute name="on_change"></attribute>
+            </xpath>
+            <field name="unit_amount" position="after" >
+                <field name="invoiced_hours" string="Invoiced Hours" widget="float_time"/>
+            </field>
+
+        </field>
+    </record>
+
+  </data>
+</openerp>

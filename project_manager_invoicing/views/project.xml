@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+    <record id="project_task_form" model="ir.ui.view">
+    	<field name="name">project.task.form</field>
+      <field name="model">project.task</field>
+      <field name="inherit_id" ref="project.view_task_form2"/>
+      <field name="arch" type="xml">
+
+        <xpath expr="//field[@name='work_ids']//tree/field[@name='unit_amount']" position="after">
+          <field name="invoiced_hours" sum="Total invoiced hours" string=" Invoiced Hours" widget="float_time"/>
+        </xpath>
+        <xpath expr="//field[@name='work_ids']//form//field[@name='unit_amount']" position="after">
+          <field name="invoiced_hours"/>
+        </xpath>
+
+        <field name="effective_hours" position="after">
+          <label for="invoiced_hours" string="Invoiced" groups="project.group_time_work_estimation_tasks" class="oe_form_label_help"/>
+          <div>
+            <field name="invoiced_hours" widget="float_time" groups="project.group_time_work_estimation_tasks"/>
+          </div>
+        </field>
+      </field>
+    </record>
+
+  </data>
+</openerp>
