@@ -14,9 +14,9 @@
         'product',
     ],
     'data': [
+        'data/business_data.xml',
         'security/security.xml',
         'security/ir.model.access.csv',
-        'data/business_data.xml',
         'views/business_view.xml',
     ],
     'license': 'AGPL-3',
