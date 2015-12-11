@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Copyright (C) 2014 Daniel Reis
+#    Copyright (C) 2015 Daniel Reis
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -18,30 +18,9 @@
 #
 ##############################################################################
 
-from openerp import models, fields, api
+from openerp import models, fields
 
 
-_TASK_STATE = [
-    ('draft', 'New'),
-    ('open', 'In Progress'),
-    ('pending', 'Pending'),
-    ('done', 'Done'),
-    ('cancelled', 'Cancelled')]
-
-
-class ProjectTaskType(models.Model):
-    _inherit = 'project.task.type'
-    state = fields.Selection(_TASK_STATE, 'State')
-    fold_statusbar = fields.Boolean('Folded in Statusbar')
-
-    @api.model
-    def _init_fold_statusbar(self):
-        """ On module install initialize fold_statusbar values """
-        for rec in self.search([]):
-            rec.fold_statusbar = rec.fold
-
-
-class ProjectTask(models.Model):
-    _inherit = 'project.task'
-    state = fields.Selection(
-        related='stage_id.state', store=True, readonly=True)
+class ProjectIssue(models.Model):
+    _inherit = 'project.issue'
+    state = fields.Selection(related='stage_id.state', store=True)

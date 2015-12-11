@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+
+        <!-- Project Issue form -->
+        <record id="project_issue_from_view_state" model="ir.ui.view">
+            <field name="name">Project Issue: add State</field>
+            <field name="model">project.issue</field>
+            <field name="inherit_id" ref="project_issue.project_issue_form_view"/>
+            <field name="arch" type="xml">
+
+                <field name="stage_id" position="attributes">
+                    <attribute name="options">{'fold_field': 'fold_statusbar'}</attribute>
+                </field>
+                <field name="active" position="before">
+                    <field name="state" />
+                </field>
+
+            </field>
+        </record>
+
+    </data>
+</openerp>
