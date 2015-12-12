@@ -3,65 +3,64 @@
 # * project_stage_state
 # 
 # Translators:
-# Matjaž Mozetič <m.mozetic@matmoz.si>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-12-12 01:44+0000\n"
-"PO-Revision-Date: 2015-12-11 20:16+0000\n"
-"Last-Translator: Matjaž Mozetič <m.mozetic@matmoz.si>\n"
-"Language-Team: Slovenian (http://www.transifex.com/oca/OCA-project-8-0/language/sl/)\n"
+"PO-Revision-Date: 2015-12-11 14:41+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
+"Language-Team: English (http://www.transifex.com/oca/OCA-project-8-0/language/en/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: sl\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: project_stage_state
 #: selection:project.task.type,state:0
 msgid "Cancelled"
-msgstr "Preklicano"
+msgstr "Cancelled"
 
 #. module: project_stage_state
 #: selection:project.task.type,state:0
 msgid "Done"
-msgstr "Opravljeno"
+msgstr "Done"
 
 #. module: project_stage_state
 #: field:project.task.type,fold_statusbar:0
 msgid "Folded in Statusbar"
-msgstr "Prepognjeno v statusni vrstici"
+msgstr "Folded in Statusbar"
 
 #. module: project_stage_state
 #: selection:project.task.type,state:0
 msgid "In Progress"
-msgstr "V teku"
+msgstr "In Progress"
 
 #. module: project_stage_state
 #: selection:project.task.type,state:0
 msgid "New"
-msgstr "Novo"
+msgstr "New"
 
 #. module: project_stage_state
 #: selection:project.task.type,state:0
 msgid "Pending"
-msgstr "Na čakanju"
+msgstr "Pending"
 
 #. module: project_stage_state
 #: field:project.task,state:0 field:project.task.type,state:0
 msgid "State"
-msgstr "Stanje"
+msgstr "State"
 
 #. module: project_stage_state
 #: model:ir.model,name:project_stage_state.model_project_task
 msgid "Task"
-msgstr "Opravilo"
+msgstr "Task"
 
 #. module: project_stage_state
 #: model:ir.model,name:project_stage_state.model_project_task_type
 msgid "Task Stage"
-msgstr "Stopnja opravila"
+msgstr "Task Stage"
 
 #. module: project_stage_state
 #: view:project.task:project_stage_state.project_task_form_stage

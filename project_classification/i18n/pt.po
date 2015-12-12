@@ -3,13 +3,14 @@
 # * project_classification
 # 
 # Translators:
+# Daniel Reis, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-31 18:04+0000\n"
-"PO-Revision-Date: 2015-08-18 14:18+0000\n"
-"Last-Translator: <>\n"
+"POT-Creation-Date: 2015-12-12 01:44+0000\n"
+"PO-Revision-Date: 2015-12-06 22:51+0000\n"
+"Last-Translator: Daniel Reis\n"
 "Language-Team: Portuguese (http://www.transifex.com/oca/OCA-project-8-0/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,33 +21,33 @@ msgstr ""
 #. module: project_classification
 #: field:project.classification,user_id:0
 msgid "Account Manager"
-msgstr ""
+msgstr "Gestor de conta"
 
 #. module: project_classification
 #: view:project.project:project_classification.view_project_project_filter
 #: field:project.project,classification_id:0
 msgid "Classification"
-msgstr ""
+msgstr "Classificação"
 
 #. module: project_classification
 #: field:project.classification,name:0
 msgid "Classification Name"
-msgstr ""
+msgstr "Nome da Classificação"
 
 #. module: project_classification
 #: field:project.classification,create_uid:0
 msgid "Created by"
-msgstr ""
+msgstr "Criado por"
 
 #. module: project_classification
 #: field:project.classification,create_date:0
 msgid "Created on"
-msgstr ""
+msgstr "Criado em"
 
 #. module: project_classification
 #: field:project.classification,currency_id:0
 msgid "Currency"
-msgstr ""
+msgstr "Moeda"
 
 #. module: project_classification
 #: help:project.classification,to_invoice:0
@@ -58,33 +59,33 @@ msgstr ""
 #. module: project_classification
 #: field:project.classification,id:0
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_classification
 #: field:project.classification,write_uid:0
 msgid "Last Updated by"
-msgstr ""
+msgstr "Última alteração por"
 
 #. module: project_classification
 #: field:project.classification,write_date:0
 msgid "Last Updated on"
-msgstr ""
+msgstr "Última atualização em"
 
 #. module: project_classification
 #: view:project.project:project_classification.edit_project
 #: view:project.project:project_classification.view_account_analytic_account_tree
 msgid "Parent Project"
-msgstr ""
+msgstr "Projeto Pai"
 
 #. module: project_classification
 #: field:project.classification,project_id:0
 msgid "Parent project"
-msgstr ""
+msgstr "Projeto pai"
 
 #. module: project_classification
 #: view:project.project:project_classification.view_account_analytic_account_tree
 msgid "Partner"
-msgstr ""
+msgstr "Entidade"
 
 #. module: project_classification
 #: model:ir.model,name:project_classification.model_project_project
@@ -95,29 +96,29 @@ msgstr "Projeto"
 #: model:ir.actions.act_window,name:project_classification.action_project_classification_form
 #: model:ir.ui.menu,name:project_classification.menu_project_classification
 msgid "Project Classification"
-msgstr ""
+msgstr "Classificação Projeto"
 
 #. module: project_classification
 #: view:project.project:project_classification.view_account_analytic_account_tree
 msgid "Project Manager"
-msgstr ""
+msgstr "Gestor do Projeto"
 
 #. module: project_classification
 #: view:project.project:project_classification.view_account_analytic_account_tree
 msgid "Project Name"
-msgstr ""
+msgstr "Nome do Projeto"
 
 #. module: project_classification
 #: model:ir.model,name:project_classification.model_project_classification
 #: view:project.classification:project_classification.view_project_classification_form
 #: view:project.classification:project_classification.view_project_classification_list
 msgid "Project classification"
-msgstr ""
+msgstr "Classificação do projeto"
 
 #. module: project_classification
 #: view:project.project:project_classification.view_account_analytic_account_tree
 msgid "Projects"
-msgstr ""
+msgstr "Projetos"
 
 #. module: project_classification
 #: model:ir.actions.act_window,name:project_classification.action_project_account_tree2

@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * project_analytic_line_view
+# * sale_order_project
 # 
 # Translators:
 # Daniel Reis, 2015
@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-12-12 01:44+0000\n"
-"PO-Revision-Date: 2015-12-06 22:32+0000\n"
+"PO-Revision-Date: 2015-12-06 22:31+0000\n"
 "Last-Translator: Daniel Reis\n"
 "Language-Team: Portuguese (http://www.transifex.com/oca/OCA-project-8-0/language/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -18,17 +18,12 @@ msgstr ""
 "Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. module: project_analytic_line_view
-#: model:ir.model,name:project_analytic_line_view.model_account_analytic_account
-msgid "Analytic Account"
-msgstr "Conta Analítica"
+#. module: sale_order_project
+#: view:sale.order:sale_order_project.view_order_form
+msgid "Create Project"
+msgstr "Criar Projeto"
 
-#. module: project_analytic_line_view
-#: model:ir.actions.act_window,name:project_analytic_line_view.act_aal_from_project
-msgid "Analytic Lines"
-msgstr "Linhas Analíticas"
-
-#. module: project_analytic_line_view
-#: field:account.analytic.account,project_ids:0
-msgid "Projects"
-msgstr "Projetos"
+#. module: sale_order_project
+#: model:ir.model,name:sale_order_project.model_sale_order
+msgid "Sales Order"
+msgstr "Ordem de Venda"

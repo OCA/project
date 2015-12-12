@@ -3,13 +3,14 @@
 # * project_gtd
 # 
 # Translators:
+# Daniel Reis, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-31 18:04+0000\n"
-"PO-Revision-Date: 2015-07-21 19:20+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
+"POT-Creation-Date: 2015-12-12 01:44+0000\n"
+"PO-Revision-Date: 2015-12-06 22:49+0000\n"
+"Last-Translator: Daniel Reis\n"
 "Language-Team: Portuguese (http://www.transifex.com/oca/OCA-project-8-0/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -62,7 +63,7 @@ msgstr "Contextos são definidos no \"Getting Things Done \" metodologia. Permit
 #: field:project.timebox.empty,create_uid:0
 #: field:project.timebox.fill.plan,create_uid:0
 msgid "Created by"
-msgstr ""
+msgstr "Criado por"
 
 #. module: project_gtd
 #: field:project.gtd.context,create_date:0
@@ -70,7 +71,7 @@ msgstr ""
 #: field:project.timebox.empty,create_date:0
 #: field:project.timebox.fill.plan,create_date:0
 msgid "Created on"
-msgstr ""
+msgstr "Criado em"
 
 #. module: project_gtd
 #: model:ir.actions.act_window,name:project_gtd.action_project_gtd_empty
@@ -108,19 +109,19 @@ msgstr "Página Inicial"
 #: field:project.gtd.context,id:0 field:project.gtd.timebox,id:0
 #: field:project.timebox.empty,id:0 field:project.timebox.fill.plan,id:0
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_gtd
 #: view:project.task:project_gtd.view_task_gtd_search
 msgid "Last Message"
-msgstr ""
+msgstr "Última Mensagem"
 
 #. module: project_gtd
 #: field:project.gtd.context,write_uid:0 field:project.gtd.timebox,write_uid:0
 #: field:project.timebox.empty,write_uid:0
 #: field:project.timebox.fill.plan,write_uid:0
 msgid "Last Updated by"
-msgstr ""
+msgstr "Última alteração por"
 
 #. module: project_gtd
 #: field:project.gtd.context,write_date:0
@@ -128,7 +129,7 @@ msgstr ""
 #: field:project.timebox.empty,write_date:0
 #: field:project.timebox.fill.plan,write_date:0
 msgid "Last Updated on"
-msgstr ""
+msgstr "Última atualização em"
 
 #. module: project_gtd
 #: model:project.gtd.timebox,name:project_gtd.timebox_lt
@@ -139,7 +140,7 @@ msgstr "A longo prazo"
 #: model:ir.actions.act_window,name:project_gtd.open_gtd_task
 #: model:ir.ui.menu,name:project_gtd.menu_open_gtd_timebox_tree
 msgid "My Tasks (GTD)"
-msgstr ""
+msgstr "Minhas Tarefas (GTD)"
 
 #. module: project_gtd
 #: field:project.timebox.empty,name:0
