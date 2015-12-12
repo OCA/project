@@ -31,6 +31,7 @@ addon | version | summary
 [project_recalculate](project_recalculate/) | 8.0.1.0.0 | Project Recalculate
 [project_sla](project_sla/) | 8.0.1.0.0 | Define SLAs for your Contracts
 [project_stage_state](project_stage_state/) | 8.0.1.0.0 | Restore State attribute removed from Project Stages in 8.0
+[project_stage_state_issue](project_stage_state_issue/) | 1.0 | Restore State attribute removed from Project Stages in 8.0
 [project_task_code](project_task_code/) | 8.0.1.0.0 | Sequential Code for Tasks
 [project_task_materials](project_task_materials/) | 8.0.1.0.0 | Record products spent in a Task
 [project_task_materials_stock](project_task_materials_stock/) | 8.0.1.0.0 | Create stock and analytic moves from record products spent in a Task
