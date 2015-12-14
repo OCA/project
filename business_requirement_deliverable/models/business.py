@@ -45,11 +45,6 @@ class BusinessRequirementDeliverable(models.Model):
 
     sequence = fields.Integer('Sequence')
     description = fields.Char('Description', required=True)
-    business_requirement_id = fields.Many2one(
-        comodel_name='business.requirement',
-        string='Business Requirement',
-        ondelete='cascade'
-    )
     product_id = fields.Many2one(
         comodel_name='product.product',
         string='Product',
@@ -75,6 +70,11 @@ class BusinessRequirementDeliverable(models.Model):
         inverse_name='business_requirement_deliverable_id',
         string='Business Requirement Resource',
         copy=False,
+    )
+    business_requirement_id = fields.Many2one(
+        comodel_name='business.requirement',
+        string='Business Requirement',
+        ondelete='cascade'
     )
 
     @api.one
@@ -102,11 +102,6 @@ class BusinessRequirementResource(models.Model):
 
     sequence = fields.Integer('Sequence')
     description = fields.Char('Description', required=True)
-    user_id = fields.Many2one(
-        comodel_name='res.users',
-        string='Assign To',
-        ondelete='set null'
-    )
     product_id = fields.Many2one(
         comodel_name='product.product',
         string='Product',
@@ -123,15 +118,20 @@ class BusinessRequirementResource(models.Model):
     resource_time = fields.Integer(
         string='Resouce Time'
     )
+    task_type = fields.Many2one(
+        comodel_name='business.requirement.task.type',
+        string='Task Type',
+        ondelete='restrict'
+    )
     resource_type = fields.Selection(
         selection=[('task', 'Task'), ('procurement', 'Procurement')],
         string='Type',
         required=True
     )
-    task_type = fields.Many2one(
-        comodel_name='business.requirement.task.type',
-        string='Task Type',
-        ondelete='restrict'
+    user_id = fields.Many2one(
+        comodel_name='res.users',
+        string='Assign To',
+        ondelete='set null'
     )
     business_requirement_deliverable_id = fields.Many2one(
         comodel_name='business.requirement.deliverable',

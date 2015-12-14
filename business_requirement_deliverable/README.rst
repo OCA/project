@@ -2,9 +2,9 @@
    :target: https://www.gnu.org/licenses/agpl-3.0-standalone.html
    :alt: License: AGPL-3
 
-=============================
+================================
 Business Requirement Deliverable
-=============================
+================================
 
 This module is part of a set ("Business Requirement") and provides the basic models for business analysis and time estimation.
 
