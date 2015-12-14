@@ -38,8 +38,7 @@
     'wizard/analytic_line_validator_view.xml',
  ],
  'test': [
- 	'test_account_analytic_line',
-
+ 	'test/task_timesheet_indicators.yml',
  ],
  'installable': True,
  'auto_install': False,

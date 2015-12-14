@@ -19,9 +19,26 @@
 from openerp.tests.common import TransactionCase
 
 class test_project(TransactionCase):
-
+""" Test the working of hours calculation with invoiced_hours
+	
+	The purpose of the test is to ckeck if the calculation of hours,
+	ormerly based on unit_amount, is done correctly.
+"""
 	def setUp(self):
 		super(test_project), self.setUp()
 		cr, uid = self.cr, self.uid
 
 		__, self.user_demo =self.get_ref('base', 'user_demo')
+
+
+	# Un override de la fonction de base
+	def test_progress_rate(self):
+
+	# Revoir code de la fonction de base
+	def test_store_set_values(self):
+
+	# La fonction de base semble marcher
+	def test_get_hours(self):
+
+	# Regarder quand la fonction de base est utilisée
+	def test_get_analytic_line(self):

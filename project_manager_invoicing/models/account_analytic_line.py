@@ -84,6 +84,7 @@ class AccountAnalyticLine(orm.Model):
 
     #TOTEST
     def _set_remaining_hours_write(self, cr, uid, ids, vals, context=None):
+        import pdb; pdb.set_trace
         """ OVERWRITE calculation is made with: invoiced_hours in place of: unit_amount
         """
         if isinstance(ids, (int, long)):
@@ -122,21 +123,21 @@ class AccountAnalyticLine(orm.Model):
         return ids
 
     #TOTEST
-    def _set_remaining_hours_unlink(self, cr, uid, ids, context=None):
-        """ OVERWRITE changed the calculation method of remaining_hours with
-            invoiced_hours in place of unit_amount
-        """
-        if isinstance(ids, (int, long)):
-            ids = [ids]
-        for line in self.browse(cr, uid, ids):
-            if not line.task_id:
-                continue
-            hours = line.invoiced_hours or 0.0
-            cr.execute(
-                'UPDATE project_task '
-                'SET remaining_hours=remaining_hours + %s '
-                'WHERE id=%s', (hours, line.task_id.id))
-        return ids
+    # def _set_remaining_hours_unlink(self, cr, uid, ids, context=None):
+    #     """ OVERWRITE changed the calculation method of remaining_hours with
+    #         invoiced_hours in place of unit_amount
+    #     """
+    #     if isinstance(ids, (int, long)):
+    #         ids = [ids]
+    #     for line in self.browse(cr, uid, ids):
+    #         if not line.task_id:
+    #             continue
+    #         hours = line.invoiced_hours or 0.0
+    #         cr.execute(
+    #             'UPDATE project_task '
+    #             'SET remaining_hours=remaining_hours + %s '
+    #             'WHERE id=%s', (hours, line.task_id.id))
+    #     return ids
 
         # update project_task set remaining_hours=remaining_hours+103,invoiced_hours=invoiced_hours-103 WHERE id=3309;
 
@@ -169,7 +170,6 @@ class AccountAnalyticLine(orm.Model):
     # OK
     def write(self, cr, uid, ids, vals, context=None):
         """ Only project manager and superusers can change states """
-        import pdb; pdb.set_trace
         if vals:
             if 'state' in vals:
                 errors = []
