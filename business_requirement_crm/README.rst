@@ -2,9 +2,9 @@
    :target: https://www.gnu.org/licenses/agpl-3.0-standalone.html
    :alt: License: AGPL-3
 
-=======================
+========================
 Business Requirement Crm
-=======================
+========================
 
 This module is part of a set ("Business Requirement") and extend the basic functionality to link the business analysis to CRM opportunity.
 
