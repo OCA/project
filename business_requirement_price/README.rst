@@ -2,9 +2,9 @@
    :target: https://www.gnu.org/licenses/agpl-3.0-standalone.html
    :alt: License: AGPL-3
 
-=====================================
+===========================================
 Business Requirement - Financial evaluation
-=====================================
+===========================================
 
 This module extends the business requirement module set to allow
 price estimation for the analysis, based on the time estimation and
