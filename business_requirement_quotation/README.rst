@@ -6,7 +6,7 @@
 Business Requirement - Quotation
 =============================
 
-This module is part of a set ("Gap Analysis") and extends the functionality
+This module is part of a set ("Business Requirement") and extends the functionality
 adding the possibility to generate/update a sales quotation based on the
 cost/price estimation of the business requirements.
 
