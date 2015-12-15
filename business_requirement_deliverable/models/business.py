@@ -14,7 +14,7 @@ class BusinessRequirementResource(models.Model):
     product_id = fields.Many2one(
         comodel_name='product.product',
         string='Product',
-        required=True
+        required=False
     )
     uom_id = fields.Many2one(
         comodel_name='product.uom',
@@ -27,15 +27,11 @@ class BusinessRequirementResource(models.Model):
     resource_time = fields.Integer(
         string='Resouce Time'
     )
-    task_type = fields.Many2one(
-        comodel_name='business.requirement.task.type',
-        string='Task Type',
-        ondelete='restrict'
-    )
     resource_type = fields.Selection(
         selection=[('task', 'Task'), ('procurement', 'Procurement')],
         string='Type',
-        required=True
+        required=True,
+        default='procurement'
     )
     user_id = fields.Many2one(
         comodel_name='res.users',
@@ -47,15 +43,36 @@ class BusinessRequirementResource(models.Model):
         string='Business Requirement Deliverable',
         ondelete='cascade'
     )
+    unit_price = fields.Float(
+        string='Unit Price'
+    )
+    price_total = fields.Float(
+        compute='_get_price_total',
+        string='Subtotal'
+    )
+
+    @api.one
+    @api.depends('resource_time', 'unit_price', 'qty')
+    def _get_price_total(self):
+        if self.resource_type == "task":
+            self.price_total = self.unit_price * self.resource_time
+        else:
+            self.price_total = self.unit_price * self.qty
 
     @api.one
     @api.onchange('product_id')
     def product_id_change(self):
+        description = ''
         uom_id = False
+        unit_price = 0
         product = self.product_id
         if product:
+            description = product.name
             uom_id = product.uom_id.id
+            unit_price = product.list_price
+        self.description = description
         self.uom_id = uom_id
+        self.unit_price = unit_price
 
     @api.one
     @api.onchange('resource_type')
@@ -84,7 +101,7 @@ class BusinessRequirementDeliverable(models.Model):
     product_id = fields.Many2one(
         comodel_name='product.product',
         string='Product',
-        required=True
+        required=False
     )
     uom_id = fields.Many2one(
         comodel_name='product.uom',
@@ -95,11 +112,6 @@ class BusinessRequirementDeliverable(models.Model):
         string='Quantity',
         store=True,
         default=1,
-    )
-    resource_time = fields.Float(
-        compute='_get_resource_time_total',
-        string='Resource Time',
-        store=True,
     )
     resource_ids = fields.One2many(
         comodel_name='business.requirement.resource',
@@ -112,24 +124,33 @@ class BusinessRequirementDeliverable(models.Model):
         string='Business Requirement',
         ondelete='cascade'
     )
+    unit_price = fields.Float(
+        string='Unit Price'
+    )
+    price_total = fields.Float(
+        compute='_get_price_total',
+        string='Subtotal'
+    )
 
     @api.one
-    @api.depends(
-        'resource_ids.qty',
-        'resource_ids.resource_time')
-    def _get_resource_time_total(self):
-        time_total = sum(
-            line.resource_time for line in self.resource_ids)
-        self.resource_time = time_total
+    @api.depends('unit_price', 'qty')
+    def _get_price_total(self):
+        self.price_total = self.unit_price * self.qty
 
     @api.one
     @api.onchange('product_id')
     def product_id_change(self):
+        description = ''
         uom_id = False
+        unit_price = 0
         product = self.product_id
         if product:
+            description = product.name
             uom_id = product.uom_id.id
+            unit_price = product.list_price
+        self.description = description
         self.uom_id = uom_id
+        self.unit_price = unit_price
 
 
 class BusinessRequirement(models.Model):
@@ -143,24 +164,17 @@ class BusinessRequirement(models.Model):
         readonly=True,
         states={'draft': [('readonly', False)]}
     )
-
-    resource_time_total = fields.Float(
-        compute='_get_resource_time_total',
-        string='Total Resource Time',
-        store=True,
+    resource_cost_total = fields.Float(
+        compute='_get_deliverable_cost_total',
+        string='Total Price',
+        store=True
     )
 
     @api.one
     @api.depends(
-        'deliverable_lines.resource_time')
-    def _get_resource_time_total(self):
-        time_total = sum(
-            line.resource_time * line.qty for line in self.deliverable_lines)
-        self.resource_time_total = time_total
-
-
-class BusinessRequirementTaskType(models.Model):
-    _name = "business.requirement.task.type"
-    _description = "Business Requirement Task Type"
-
-    name = fields.Char(string='Name', required=True)
+        'deliverable_lines.price_total'
+    )
+    def _get_deliverable_cost_total(self):
+        cost_total = sum(
+            line.price_total for line in self.deliverable_lines)
+        self.resource_cost_total = cost_total

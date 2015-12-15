@@ -8,7 +8,7 @@
     'summary': 'Business Requirement Deliverable',
     'version': '8.0.1.0.0',
     'website': 'www.elico-corp.com',
-    "author": "Elico Corp, Odoo Community Association (OCA)",
+    "author": "Elico Corp(S), Odoo Community Association (OCA)",
     'depends': [
         'business_requirement',
         'base',
