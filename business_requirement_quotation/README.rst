@@ -2,9 +2,9 @@
    :target: https://www.gnu.org/licenses/agpl-3.0-standalone.html
    :alt: License: AGPL-3
 
-=============================
+================================
 Business Requirement - Quotation
-=============================
+================================
 
 This module is part of a set ("Business Requirement") and extends the functionality
 adding the possibility to generate/update a sales quotation based on the
