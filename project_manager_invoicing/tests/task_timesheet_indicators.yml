@@ -1,0 +1,284 @@
+# Test examples - imported form hr-timesheet.
+# Not working
+-
+  Create a user 'HR Tester'
+-
+  !record {model: res.users, id: res_users_hrtester0}:
+    company_id: base.main_company
+    name: HR Tester
+    login: hr
+    password: hr
+    groups_id:
+      - base.group_hr_manager
+-
+  Create a product with type service used to specify employees designation
+-
+  !record {model: product.product, id: product_product_hrtester0}:
+    categ_id: product.product_category_6
+    cost_method: standard
+    mes_type: fixed
+    name: HR Tester service
+    standard_price: 10.0
+    type: service
+    uom_id: product.product_uom_hour
+    uom_po_id: product.product_uom_hour
+    volume: 0.0
+    warranty: 0.0
+    weight: 0.0
+    weight_net: 0.0
+-
+  Create an analytic journal for employees timesheet
+-
+  !record {model: account.analytic.journal, id: account_analytic_journal_hrtimesheettest0}:
+    company_id: base.main_company
+    name: HR Timesheet test
+    type: general
+-
+  Create an employee 'HR Tester' for user 'HR Tester'
+-
+  !record {model: hr.employee, id: hr_employee_hrtester0}:
+    name: HR Tester
+    user_id: res_users_hrtester0
+    product_id: product_product_hrtester0
+    journal_id: account_analytic_journal_hrtimesheettest0
+-
+  Create a timesheet invoice factor of 100%
+-
+  !record {model: hr_timesheet_invoice.factor, id: timesheet_invoice_factor0}:
+    name: 100%
+    customer_name: 100%
+    factor: 0.0
+-
+  Create a project 'Timesheet task and indicator tests'
+-
+  !record {model: project.project, id: project_project_timesheettest0}:
+    company_id: base.main_company
+    name: Timesheet task and indicator tests
+    to_invoice: timesheet_invoice_factor0
+-
+  Create a task 'Test timesheet records'
+-
+  !record {model: project.task, id: project_task_testtimesheetrecords0}:
+    date_start: !eval time.strftime('%Y-05-%d %H:%M:%S')
+    name: Test timesheet records
+    planned_hours: 200.0
+    project_id: project_project_timesheettest0
+    user_id: res_users_hrtester0
+-
+  The planned time on project should then be 200
+-
+  !assert {model: project.project, id: project_project_timesheettest0, string: planned_time_on_project_01}:
+    - planned_hours == 200.0
+-
+  The time spent on project should then be 0
+-
+  !assert {model: project.project, id: project_project_timesheettest0, string: time_spent_on_project_01}:
+    - effective_hours == 0.0
+-
+  Make a timesheet line of 10.0 on the project without task
+-
+  !python {model: hr.analytic.timesheet}: |
+    import time
+    project_obj = self.pool.get('project.project')
+    project = project_obj.browse(cr, uid, ref('project_project_timesheettest0'))
+    ts_line= {
+      'name': '/',
+      'user_id': ref('res_users_hrtester0'),
+      'date': time.strftime('%Y-%m-%d'),
+      'account_id': project.analytic_account_id.id,
+      'unit_amount': 10.0,
+      'journal_id': ref('account_analytic_journal_hrtimesheettest0'),
+      'to_invoice': ref('timesheet_invoice_factor0'),
+    }
+    ts = self.create(cr, uid, ts_line)
+    assert ts, "Timesheet has not been recorded correctly"
+-
+  The time spent on project should still be 0 as no task has been set
+-
+  !assert {model: project.project, id: project_project_timesheettest0}:
+    - effective_hours == 0.0
+-
+  Make a timesheet line of 10.0 on the project with a task assigned
+-
+  !python {model: hr.analytic.timesheet}: |
+    import time
+    project_obj = self.pool.get('project.project')
+    project = project_obj.browse(cr, uid, ref('project_project_timesheettest0'))
+    ts_line= {
+      'name': '/',
+      'user_id': ref('res_users_hrtester0'),
+      'date': time.strftime('%Y-%m-%d'),
+      'account_id': project.analytic_account_id.id,
+      'unit_amount': 10.0,
+      'task_id': ref('project_task_testtimesheetrecords0'),
+      'to_invoice': ref('timesheet_invoice_factor0'),
+      'journal_id': ref('account_analytic_journal_hrtimesheettest0'),
+    }
+    ts = self.create(cr, uid, ts_line)
+    assert ts, "Timesheet has not been recorded correctly"
+-
+  The time spent on the task should be 10.0
+-
+  !assert {model: project.task, id: project_task_testtimesheetrecords0, string: time_spent_on_task_01}:
+    - effective_hours == 10.0
+-
+  The remaining time on the task should be 190.0
+-
+  !assert {model: project.task, id: project_task_testtimesheetrecords0, string: remaining_time_on_task_01}:
+    - remaining_hours == 190.0
+-
+  The time spent on project should be 10.0
+-
+  !assert {model: project.project, id: project_project_timesheettest0, string: time_spent_on_project_02}:
+    - effective_hours == 10.0
+-
+  Make a timesheet line of 10.0 on the project without task, then assign one
+-
+  !python {model: hr.analytic.timesheet}: |
+    import time
+    project_obj = self.pool.get('project.project')
+    project = project_obj.browse(cr, uid, ref('project_project_timesheettest0'))
+    ts_line= {
+      'name': '/',
+      'user_id': ref('res_users_hrtester0'),
+      'date': time.strftime('%Y-%m-%d'),
+      'account_id': project.analytic_account_id.id,
+      'unit_amount': 10.0,
+      'to_invoice': ref('timesheet_invoice_factor0'),
+      'journal_id': ref('account_analytic_journal_hrtimesheettest0'),
+    }
+    ts = self.create(cr, uid, ts_line)
+    assert ts, "Timesheet has not been recorded correctly"
+    vals = {
+        'task_id': ref('project_task_testtimesheetrecords0')
+    }
+    result = self.write(cr, uid, ts, vals)
+-
+  The time spent on the task should be 20.0
+-
+  !assert {model: project.task, id: project_task_testtimesheetrecords0, string: time_spent_on_task_02}:
+    - effective_hours == 20.0
+-
+  The remaining time on the task should be 180.0
+-
+  !assert {model: project.task, id: project_task_testtimesheetrecords0, string: remaining_time_on_task_02}:
+    - remaining_hours == 180.0
+-
+  The time spent on project should be 20.0
+-
+  !assert {model: project.project, id: project_project_timesheettest0, string: time_spent_on_project_03}:
+    - effective_hours == 20.0
+-
+  Make a timesheet line of 10.0 with task, then remove the task
+-
+  !python {model: hr.analytic.timesheet}: |
+    import time
+    project_obj = self.pool.get('project.project')
+    project = project_obj.browse(cr, uid, ref('project_project_timesheettest0'))
+    task_obj = self.pool.get('project.task')
+    ts_line= {
+      'name': '/',
+      'user_id': ref('res_users_hrtester0'),
+      'date': time.strftime('%Y-%m-%d'),
+      'account_id': project.analytic_account_id.id,
+      'unit_amount': 10.0,
+      'task_id': ref('project_task_testtimesheetrecords0'),
+      'to_invoice': ref('timesheet_invoice_factor0'),
+      'journal_id': ref('account_analytic_journal_hrtimesheettest0'),
+    }
+    ts = self.create(cr, uid, ts_line)
+    assert ts, "Timesheet has not been recorded correctly"
+    task = task_obj.browse(cr, uid, ref('project_task_testtimesheetrecords0'))
+    assert task.effective_hours == 30.0, "Effective hours on task is not correct"
+    assert task.remaining_hours == 170.0, "Remaining hours on task is not correct"
+    project.refresh()
+    assert project.effective_hours == 30.0, "Effective hours on project is not correct"
+    vals = {
+        'task_id': False
+    }
+    result = self.write(cr, uid, ts, vals)
+-
+  The time spent on the task should be 20.0
+-
+  !assert {model: project.task, id: project_task_testtimesheetrecords0, string: time_spent_on_task_03}:
+    - effective_hours == 20.0
+-
+  The remaining time on the task should be 180.0
+-
+  !assert {model: project.task, id: project_task_testtimesheetrecords0, string: remaining_time_on_task_03}:
+    - remaining_hours == 180.0
+-
+  The time spent on project should be 20.0
+-
+  !assert {model: project.project, id: project_project_timesheettest0, string: time_spent_on_project_04}:
+    - effective_hours == 20.0
+-
+  Make a timesheet line of 10.0 with task, then delete the line
+-
+  !python {model: hr.analytic.timesheet}: |
+    import time
+    project_obj = self.pool.get('project.project')
+    project = project_obj.browse(cr, uid, ref('project_project_timesheettest0'))
+    task_obj = self.pool.get('project.task')
+    ts_line= {
+      'name': '/',
+      'user_id': ref('res_users_hrtester0'),
+      'date': time.strftime('%Y-%m-%d'),
+      'account_id': project.analytic_account_id.id,
+      'unit_amount': 10.0,
+      'task_id': ref('project_task_testtimesheetrecords0'),
+      'to_invoice': ref('timesheet_invoice_factor0'),
+      'journal_id': ref('account_analytic_journal_hrtimesheettest0'),
+    }
+    ts = self.create(cr, uid, ts_line)
+    assert ts, "Timesheet has not been recorded correctly"
+    task = task_obj.browse(cr, uid, ref('project_task_testtimesheetrecords0'))
+    assert task.effective_hours == 30.0, "Effective hours on task is not correct"
+    assert task.remaining_hours == 170.0, "Remaining hours on task is not correct"
+    project.refresh()
+    assert project.effective_hours == 30.0, "Effective hours on project is not correct"
+    result = self.unlink(cr, uid, [ts])
+-
+  The time spent on the task should be 20.0
+-
+  !assert {model: project.task, id: project_task_testtimesheetrecords0, string: time_spent_on_task_04}:
+    - effective_hours == 20.0
+-
+  The remaining time on the task should be 180.0
+-
+  !assert {model: project.task, id: project_task_testtimesheetrecords0, string: remaining_time_on_task_04}:
+    - remaining_hours == 180.0
+-
+  The time spent on project should be 20.0
+-
+  !assert {model: project.project, id: project_project_timesheettest0, string: time_spent_on_project_05}:
+    - effective_hours == 20.0
+-
+  Change the remaining hours of the task to 200.0
+-
+  !python {model: project.task}: |
+    task = self.browse(cr, uid, ref('project_task_testtimesheetrecords0'))
+    vals = {
+        'remaining_hours': 200.0,
+    }
+    result = self.write(cr, uid, [task.id], vals)
+-
+  The time spent on the task should still be 20.0
+-
+  !assert {model: project.task, id: project_task_testtimesheetrecords0, string: time_spent_on_task_05}:
+    - effective_hours == 20.0
+-
+  The remaining time on the task should be 200.0
+-
+  !assert {model: project.task, id: project_task_testtimesheetrecords0, string: remaining_time_on_task_05}:
+    - remaining_hours == 200.0
+-
+  The delay in hours on the task should be 20.0
+-
+  !assert {model: project.task, id: project_task_testtimesheetrecords0, string: delay_on_task_01}:
+    - delay_hours == 20.0
+-
+  The total on the task should be 220.0
+-
+  !assert {model: project.task, id: project_task_testtimesheetrecords0, string: total_time_on_task_01}:
+    - total_hours == 220.0

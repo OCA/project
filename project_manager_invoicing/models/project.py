@@ -61,7 +61,7 @@ class ProjectTask(orm.Model):
                         res[task.id]['total_hours'], 99.99), 2)
             if task.state in ('done', 'cancelled'):
                 res[task.id]['progress'] = 100.0
-        return res        
+        return res
 
     # TODO TOTEST
     def _store_set_values(self, cr, uid, ids, field_list, context=None):
@@ -83,7 +83,8 @@ class ProjectTask(orm.Model):
                       GROUP BY task_id""", (tuple(ids),))
         hours_unit_amount = dict(cr.fetchall())
         for task in self.browse(cr, uid, ids, context=context):
-            invoiced_hours = hours_unit_amount.get(task.id,0.0)#sum(l.invoiced_hours for l in task.work_ids)
+            #sum(l.invoiced_hours for l in task.work_ids)
+            invoiced_hours = hours_unit_amount.get(task.id, 0.0)
             res[task.id] = {'invoiced_hours': invoiced_hours,
                             'remaining_hours': task.planned_hours - invoiced_hours,
                             'total_hours': task.planned_hours + invoiced_hours

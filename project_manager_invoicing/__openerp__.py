@@ -32,15 +32,14 @@
  ],
  'website': 'www.camptocamp.com',
  'data': [
-    'views/account_analytic_line.xml',
-    'views/hr_analytic_timesheet.xml',
-    'views/project.xml',
-    'wizard/analytic_line_validator_view.xml',
+     'views/account_analytic_line.xml',
+     'views/hr_analytic_timesheet.xml',
+     'views/project.xml',
+     'wizard/analytic_line_validator_view.xml',
  ],
  'test': [
- 	'test/task_timesheet_indicators.yml',
+     'test/task_timesheet_indicators.yml',
  ],
  'installable': True,
  'auto_install': False,
  }
-

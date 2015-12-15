@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+    	<record id="view_hours_block_report_wizard" model="ir.ui.view">
+    		<field name="name">nom_wizard</field>
+    		<field name="model">hours.block.report.wizard</field>
+    		<field name="arch" type="xml">
+    			<form string="wizard">
+    				<separator string="Print Hours Block" colspan="4"/>
+    				<field name="hb_sorted"/>
+					<button special="cancel" string="_Cancel" icon="gtk-cancel" />
+					<button name="print_hours_block" string="_Ok" type="object" icon="gtk-ok"/>
+    			</form>  			
+			</field>
+		</record>
+
+		<!-- <record id="print_hours_block_wizard_action" model="ir.actions.act_window">
+			<field name="name">wizard_report</field>
+			<field name="type">ir.actions.act_window</field>
+			<field name="res_model">hours.block.report.wizard</field>
+			<field name="view_type">form</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record> -->
+
+		<act_window
+      	  name="Hours Block Selection"
+      	  res_model="hours.block.report.wizard"
+          src_model="account.hours.block"
+          view_mode="form"
+          view_type="form"
+          target="new"
+          id="action_hours_block_report_wizard"/>
+
+	</data>
+</openerp>

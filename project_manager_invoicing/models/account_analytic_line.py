@@ -23,7 +23,7 @@ from openerp.osv import orm, fields
 from openerp.tools.translate import _
 import cProfile
 
-#Pas d'interférences avec d'autres modules
+# Pas d'interférences avec d'autres modules
 STATES = [
     ('draft', "Draft"),
     ('confirm', "Confirmed"),
@@ -31,7 +31,8 @@ STATES = [
 
 
 class AccountAnalyticLine(orm.Model):
-    _inherit = 'account.analytic.line'  # ./parts/server/addons/analytic/analytic.py
+    # ./parts/server/addons/analytic/analytic.py
+    _inherit = 'account.analytic.line'
 
     # TODO SUPPRIMER PAS UTILISÉ
     def _get_default_invoiced_hours(self, cr, uid, ids, context=None):
@@ -44,20 +45,21 @@ class AccountAnalyticLine(orm.Model):
             context = {}
         hr_timesheet_obj = self.pool['hr.analytic.timesheet']
 
-        return hr_timesheet_obj._getEmployeeProduct(cr=cr, uid=uid, context=context)
+        return hr_timesheet_obj._getEmployeeProduct(
+            cr=cr, uid=uid, context=context)
 
     _columns = {
         # question juste ? status???
         'state': fields.selection(STATES, 'States', required=True),
         'invoiced_hours': fields.float(
-            help="Amount of hours that you want to charge your customer for (e.g. "
-            "hours spent 2:12, invoiced 2:15). You can use the 'Create "
+            help="Amount of hours that you want to charge your customer for "
+            "(e.g. hours spent 2:12, invoiced 2:15). You can use the 'Create "
             "invoice' wizard from timesheet line for that purpose",
         ),
         'invoiced_product_id': fields.many2one(
             'product.product', 'Product',
-            help="Product used to generate the invoice in case it differs from the"
-            " product used to compute the costs.",
+            help="Product used to generate the invoice in case it differs "
+            "from the product used to compute the costs.",
         ),
     }
 
@@ -66,9 +68,10 @@ class AccountAnalyticLine(orm.Model):
         'invoiced_product_id': _get_default_invoiced_product,
     }
 
-    #TOTEST
+    # TOTEST
     def _set_remaining_hours_create(self, cr, uid, vals, context=None):
-        import pdb; pdb.set_trace()
+        import pdb
+        pdb.set_trace()
         """OVERWRITE calculation is now made with invoiced_hours
         """
         if not vals.get('task_id'):
@@ -82,9 +85,10 @@ class AccountAnalyticLine(orm.Model):
         self._trigger_projects(cr, uid, [vals['task_id']], context=context)
         return vals
 
-    #TOTEST
+    # TOTEST
     def _set_remaining_hours_write(self, cr, uid, ids, vals, context=None):
-        import pdb; pdb.set_trace
+        import pdb
+        pdb.set_trace
         """ OVERWRITE calculation is made with: invoiced_hours in place of: unit_amount
         """
         if isinstance(ids, (int, long)):
@@ -104,7 +108,7 @@ class AccountAnalyticLine(orm.Model):
                             'unit_amount': vals.get('unit_amount',
                                                     line.unit_amount),
                             'invoiced_hours': vals.get('invoiced_hours',
-                                                    line.invoiced_hours)
+                                                       line.invoiced_hours)
                             }
                     self._set_remaining_hours_create(cr, uid, data, context)
                     self._trigger_projects(
@@ -122,7 +126,7 @@ class AccountAnalyticLine(orm.Model):
                 self._trigger_projects(cr, uid, [new_task_id], context=context)
         return ids
 
-    #TOTEST
+    # TOTEST
     # def _set_remaining_hours_unlink(self, cr, uid, ids, context=None):
     #     """ OVERWRITE changed the calculation method of remaining_hours with
     #         invoiced_hours in place of unit_amount
@@ -139,8 +143,9 @@ class AccountAnalyticLine(orm.Model):
     #             'WHERE id=%s', (hours, line.task_id.id))
     #     return ids
 
-        # update project_task set remaining_hours=remaining_hours+103,invoiced_hours=invoiced_hours-103 WHERE id=3309;
-
+        # update project_task set
+        # remaining_hours=remaining_hours+103,invoiced_hours=invoiced_hours-103
+        # WHERE id=3309;
 
     # # TOTEST
     def _check(self, cr, uid, ids, context=None):
@@ -182,14 +187,16 @@ class AccountAnalyticLine(orm.Model):
                 if errors:
                     raise orm.except_orm(
                         _(u'Error'),
-                        _(u"You dont have the rights to modify the following entries %s") % (
+                        _(u"You dont have the rights to modify the following "
+                            "entries %s") % (
                             errors)
                     )
         # self._set_remaining_hours_write(cr, uid, ids, vals, context=context)
         return super(AccountAnalyticLine, self).write(
             cr, uid, ids, vals, context=context)
 
-    # TODO verifier la fonction pour le test avec self sur l'assiniation de product
+    # TODO verifier la fonction pour le test avec self
+    # sur l'assiniation de product.
     # vérifier l' assignation sur les self du retour
     # TODO: pas utilisée pour le moment
     def _get_invoice_grouping_key(self, cr, uid, ids, context=None):
@@ -218,7 +225,8 @@ class AccountAnalyticLine(orm.Model):
 
     # TODO Renommer l'appel à mettre dans la vue
     # TODO page avec le onchange
-    def onchange_to_invoice_set_invoiced_hours(self, cr, id, onchangeInvoice, context=None):
+    def onchange_to_invoice_set_invoiced_hours(self, cr, id,
+                                               onchangeInvoice, context=None):
         """ Change invoiced_hours according to invoicing rate factor """
         # TOTEST PDB
         if self.to_invoice:
@@ -254,7 +262,8 @@ class AccountAnalyticLine(orm.Model):
                 journal_types[line.journal_id.type] = set()
             journal_types[line.journal_id.type].add(line.account_id.id)
         for journal_type, account_ids in journal_types.items():
-            for account in analytic_account_obj.browse(cr, uid, list(account_ids), context=context):
+            for account in analytic_account_obj.browse(
+                                cr, uid, list(account_ids), context=context):
                 partner = account.partner_id
 
                 if (not partner) or not (account.pricelist_id):

@@ -24,6 +24,6 @@ fast_suite = [
 ]
 
 checks = [
-	test_account_analytic_line,
-	test_project,
+    test_account_analytic_line,
+    test_project,
 ]
