@@ -2,6 +2,17 @@
 <openerp>
     <data>
 
+        <record id="view_business_requirement_resource_tree" model="ir.ui.view">
+            <field name="name">business.requirement.resource.tree</field>
+            <field name="model">business.requirement.resource</field>
+            <field name="inherit_id" ref="business_requirement_deliverable.view_business_requirement_resource_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr='//field[@name="description"]' position='after'>
+                    <field name="cost_structure_id"/>
+                </xpath>
+            </field>
+        </record>
+
         <record id="view_business_requirement_cost_structure_form" model="ir.ui.view">
             <field name="name">business.requirement.cost.structure.form</field>
             <field name="model">business.requirement.cost.structure</field>
@@ -33,7 +44,6 @@
                      <field name="product_id"/>
                      <field name="uom_id" />
                      <field name="unit_price"/>
-                     <field name="task_type"/>
                      <field name="user_id"/>
                 </tree>
             </field>
@@ -49,67 +59,6 @@
 
         <menuitem id="menu_business_requirement_cost_structure_tree" action="action_business_requirement_cost_structure_tree" 
             parent="business_requirement.menu_business_configuration" sequence="10"/>
-
-        <record id="view_business_requirement_form" model="ir.ui.view">
-            <field name="name">business.requirement.form</field>
-            <field name="model">business.requirement</field>
-            <field name="inherit_id" ref="business_requirement_deliverable.view_business_requirement_form"/>
-            <field name="arch" type="xml">
-                <xpath expr='//field[@name="resource_time_total"]' position='after'>
-                    <field name="resource_cost_total"/>
-                </xpath>
-            </field>
-        </record>
-
-        <record id="view_business_requirement_tree" model="ir.ui.view">
-            <field name="name">business.requirement.form</field>
-            <field name="model">business.requirement</field>
-            <field name="inherit_id" ref="business_requirement_deliverable.view_business_requirement_tree"/>
-            <field name="arch" type="xml">
-                <xpath expr='//field[@name="resource_time_total"]' position='after'>
-                    <field name="resource_cost_total"/>
-                </xpath>
-            </field>
-        </record>
-
-        <record id="view_business_requirement_deliverable_tree" model="ir.ui.view">
-            <field name="name">business.requirement.deliverable.tree</field>
-            <field name="model">business.requirement.deliverable</field>
-            <field name="inherit_id" ref="business_requirement_deliverable.view_business_requirement_deliverable_tree"/>
-            <field name="arch" type="xml">
-                <xpath expr='//tree[@string="Business Requirement Deliverable"]' position='inside'>
-                    <field name="unit_price"/>
-                    <field name="price_total"/>
-                </xpath>
-            </field>
-        </record>
-
-        <record id="view_business_requirement_deliverable_form" model="ir.ui.view">
-            <field name="name">business.requirement.deliverable.form</field>
-            <field name="model">business.requirement.deliverable</field>
-            <field name="inherit_id" ref="business_requirement_deliverable.view_business_requirement_deliverable_form"/>
-            <field name="arch" type="xml">
-                <xpath expr='//field[@name="resource_time"]' position='after'>
-                    <field name="unit_price"/>
-                    <field name="price_total"/>
-                </xpath>
-            </field>
-        </record>
-
-        <record id="view_business_requirement_resource_tree" model="ir.ui.view">
-            <field name="name">business.requirement.resource.tree</field>
-            <field name="model">business.requirement.resource</field>
-            <field name="inherit_id" ref="business_requirement_deliverable.view_business_requirement_resource_tree"/>
-            <field name="arch" type="xml">
-                <xpath expr='//field[@name="task_type"]' position='after'>
-                    <field name="cost_structure_id"/>
-                </xpath>
-                <xpath expr='//tree[@string="Business Requirement Resource"]' position='inside'>
-                    <field name="unit_price"/>
-                    <field name="price_total"/>
-                </xpath>
-            </field>
-        </record>
 
     </data>
 </openerp>

@@ -10,38 +10,43 @@ from openerp.tests import common
 class BusinessRequirementTestCase(common.TransactionCase):
     def setUp(self):
         super(BusinessRequirementTestCase, self).setUp()
-        self.br = self.env['business.requirement']
+        self.br = self.registry['business.requirement']
 
     def test_get_resource_cost_total(self):
         vals = {
             'name': ' test',
+            'description': 'test',
             'deliverable_lines': [
                 (
                     0, 0,
                     {
-                        'description': 'line1', 'resource_time': 15,
+                        'description': 'line1',
                         'unit_price': 1,
+                        'qty': 15,
                     }
                 ),
                 (
                     0, 0,
                     {
-                        'description': 'line1', 'resource_time': 25,
+                        'description': 'line1',
                         'unit_price': 1,
+                        'qty': 25,
                     }
                 ),
                 (
                     0, 0,
                     {
-                        'description': 'line1', 'resource_time': 35,
+                        'description': 'line1',
                         'unit_price': 1,
+                        'qty': 35,
                     }
                 ),
                 (
                     0, 0,
                     {
-                        'description': 'line1', 'resource_time': 45,
+                        'description': 'line1',
                         'unit_price': 1,
+                        'qty': 45,
                     }
                 ),
             ]
