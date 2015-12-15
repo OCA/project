@@ -17,25 +17,10 @@ class BusinessRequirement(models.Model):
 class CrmLead(models.Model):
     _inherit = "crm.lead"
 
-    resource_time_total = fields.Float(
-        compute='_get_resource_time_total',
-        string='Total Resource Time',
-    )
     resource_cost_total = fields.Float(
         compute='_get_resource_cost_total',
         string='Total resource Cost',
     )
-
-    @api.one
-    def _get_resource_time_total(self):
-        time_total = 0
-        linked_brs = self.env['business.requirement'].search(
-            [('lead_id', '=', self.id)])
-        for br in linked_brs:
-            if br.drop or br.state == 'cancel':
-                continue
-            time_total += br.resource_time_total
-        self.resource_time_total = time_total
 
     @api.one
     def _get_resource_cost_total(self):

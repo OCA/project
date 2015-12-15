@@ -34,7 +34,6 @@
                  <xpath expr='//page[@string="Lead"]' position="after">
                     <page string="Business Requirement">
                         <group>
-                            <field name="resource_time_total"/>
                             <field name="resource_cost_total"/>
                         </group>
                     </page>
