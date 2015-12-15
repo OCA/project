@@ -16,10 +16,10 @@ class BusinessRequirementTestCase(common.TransactionCase):
         vals = {
             'name': ' test',
             'deliverable_lines': [
-                (0, 0, {'name': 'task1', 'resource_time': 15.0}),
-                (0, 0, {'name': 'task2', 'resource_time': 25.0}),
-                (0, 0, {'name': 'task3', 'resource_time': 35.0}),
-                (0, 0, {'name': 'task4', 'resource_time': 45.0}),
+                (0, 0, {'description': 'task1', 'resource_time': 15.0}),
+                (0, 0, {'description': 'task2', 'resource_time': 25.0}),
+                (0, 0, {'description': 'task3', 'resource_time': 35.0}),
+                (0, 0, {'description': 'task4', 'resource_time': 45.0}),
             ]
         }
         br = self.br.create(vals)
@@ -42,10 +42,10 @@ class BrGenerateTasksTestCase(common.TransactionCase):
         vals = {
             'name': ' test',
             'deliverable_lines': [
-                (0, 0, {'name': 'task1', 'resource_time': 15.0}),
-                (0, 0, {'name': 'task2', 'resource_time': 25.0}),
-                (0, 0, {'name': 'task3', 'resource_time': 35.0}),
-                (0, 0, {'name': 'task4', 'resource_time': 45.0}),
+                (0, 0, {'description': 'task1', 'resource_time': 15.0}),
+                (0, 0, {'description': 'task2', 'resource_time': 25.0}),
+                (0, 0, {'description': 'task3', 'resource_time': 35.0}),
+                (0, 0, {'description': 'task4', 'resource_time': 45.0}),
             ]
         }
         br = self.br.create(vals)

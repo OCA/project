@@ -62,6 +62,8 @@ class Project(models.Model):
         for br in self.br_ids:
             for deliverables in br.deliverable_lines:
                 for line in deliverables.resource_ids:
+                    if line.resource_type != 'task':
+                        continue
                     line = (
                         0, 0,
                         {
