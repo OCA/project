@@ -7,7 +7,7 @@
             <field name="model">business.requirement</field>
             <field name="inherit_id" ref="business_requirement.view_business_requirement_form"/>
             <field name="arch" type="xml">
-                <xpath expr='//field[@name="categ_id"]' position='after'>
+                <xpath expr='//field[@name="project_id"]' position='after'>
                     <field name="lead_id"/>
                 </xpath>
             </field>
@@ -18,7 +18,7 @@
             <field name="model">business.requirement</field>
             <field name="inherit_id" ref="business_requirement.view_business_requirement_tree"/>
             <field name="arch" type="xml">
-                <xpath expr='//field[@name="categ_id"]' position='after'>
+                <xpath expr='//field[@name="project_id"]' position='after'>
                     <field name="lead_id"/>
                 </xpath>
             </field>

@@ -6,7 +6,7 @@
 Business Requirement Crm
 ========================
 
-This module is part of a set ("Business Requirement") and extend the basic functionality to link the business analysis to CRM opportunity.
+This module is part of a set ("Business Requirement") and extend the basic functionality to link the business requirement to CRM opportunity.
 
 Installation
 ============
