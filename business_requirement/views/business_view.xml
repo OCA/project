@@ -64,7 +64,9 @@
                     <field name="sequence"/>
                      <field name="name"/>
                      <field name="description"/>
+                     <field name="project_id"/>
                      <field name="categ_id"/>
+                     <field name="change_request"/>
                      <field name="state"/>
                 </tree>
             </field>
@@ -77,8 +79,10 @@
                 <search string="Business Requirement">
                     <field name="name" string="Name"/>
                     <field name="sequence" string="Sequence"/>
+                    <field name="project_id" string="Project"/>
                     <group expand="0" string="Group By">
                         <filter string="Category" icon="terp-go-home"  context="{'group_by':'categ_id'}"/>
+                        <filter string="Project" icon="terp-go-home"  context="{'group_by':'project_id'}"/>
                         <filter string="State" icon="terp-go-home" context="{'group_by':'state'}"/>
                     </group>
                 </search>

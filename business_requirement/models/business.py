@@ -16,6 +16,7 @@ class BusinessRequirement(models.Model):
         'Name',
         required=False,
         readonly=True,
+        copy=False,
         states={'draft': [('readonly', False)]}
     )
     description = fields.Char(
