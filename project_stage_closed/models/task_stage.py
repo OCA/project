@@ -2,14 +2,14 @@
 # Copyright 2015 ACSONE SA/NV (<http://acsone.eu>)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import models, fields, api
+from openerp import api, fields, models
 
 
 class ProjectTaskType(models.Model):
     _inherit = 'project.task.type'
 
     closed = fields.Boolean(
-        help="Tasks in this stage are considered as closed.",
+        help="Tasks in this stage are considered closed.",
         default=False)
 
     # a small hack to avoid having two fields with the
