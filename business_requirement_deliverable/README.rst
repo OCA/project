@@ -6,7 +6,7 @@
 Business Requirement Deliverable
 ================================
 
-This module is part of a set ("Business Requirement") and provides the basic models for business analysis and time estimation.
+This module is part of a set ("Business Requirement") and provides the basic models for business requirement and time estimation.
 
 Installation
 ============
