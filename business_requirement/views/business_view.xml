@@ -15,16 +15,18 @@
                         <button name="action_button_approve" states="confirmed" string="Approve" type="object" groups="business_requirement.group_business_requirement_manager" class="oe_highlight"/>
                         <button name="action_button_done" states="approved" string="Done" type="object" groups="business_requirement.group_business_requirement_manager" class="oe_highlight"/>
                         <button name="action_button_cancel" string="Cancel" type="object" attrs="{'invisible': [('state', 'in', ('done','cancel'))]}" groups="business_requirement.group_business_requirement_user" class="oe_highlight"/>
+                        <button name="action_button_drop" string="Drop" type="object" attrs="{'invisible': [('state', 'in', ('done','drop','cancel'))]}" groups="business_requirement.group_business_requirement_user" class="oe_highlight"/>
                         <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,approved,done,cancel"/>
                     </header>
                     <sheet>
                         <h1>
-                            <field name="name" class="oe_inline" readonly="1"/>
+                            <field name="name" class="oe_inline" readonly="1"/>-
+                            <field name="description" class="oe_inline"/>
                         </h1>
-                        <group>
-                            <group>
-                                 <field name="description"/>
-                             </group>
+                        <group col="4">
+                            <field name="project_id"/>
+                            <field name="categ_id"/>
+                            <field name="change_request"/>
                         </group>
                         
                         <notebook>
@@ -44,11 +46,8 @@
                             </page>
                             <page string="Other Information">
                                 <group col="4">
-                                    <field name="categ_id"/>
                                     <field name="parent_id"/>
                                     <field name="level"/>
-                                    <field name="drop"/>
-                                    <field name="change_request"/>
                                 </group>
                             </page>
                         </notebook>
@@ -113,6 +112,54 @@
                      <field name="name"/>
                      <field name="parent_id"/>
                 </tree>
+            </field>
+        </record>
+
+        <record id="act_view_project_br_all" model="ir.actions.act_window">
+            <field name="name">Business Requirement</field>
+            <field name="res_model">business.requirement</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="business_requirement.view_business_requirement_search"/>
+            <field name="context">{
+                'search_default_project_id': [active_id],
+                'default_project_id': active_id,
+                'active_test': False,
+            }</field>
+            <field name="help" type="html">
+                <p>
+                    Odoo's project management allows you to manage the pipeline
+                    of tasks in order to get things done efficiently. You can
+                    track progress, discuss on tasks, attach documents, etc.
+                </p>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_project_kanban">
+            <field name="name">project.project.kanban</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.view_project_kanban"/>
+            <field name="arch" type="xml">
+                <xpath expr='//div[@class="oe_kanban_content"]/div[@class="oe_kanban_project_list"]' position="inside">
+                    <div class="oe_kanban_project_list">
+                        <a t-if="record.br_count.raw_value" name="%(act_view_project_br_all)d" type="action" style="margin-right: 10px">
+                            <field name="br_count"/> Business Requirement
+                        </a>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="edit_project">
+            <field name="name">project.project.form</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="arch" type="xml">
+                <xpath expr='//div[@name="buttons"]' position="inside">
+                    <button class="oe_inline oe_stat_button" type="action" attrs="{'invisible':[('br_count','=', 0)]}" name="%(act_view_project_br_all)d" icon="fa-tasks">
+                        <field name="br_count" nolabel="1" widget="statinfo"/>
+                        <div>Business <br/>Requirement</div>
+                    </button>
+                </xpath>
             </field>
         </record>
 

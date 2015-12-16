@@ -9,7 +9,7 @@
     'website': 'www.elico-corp.com',
     "author": "Elico Corp, Odoo Community Association (OCA)",
     'depends': [
-        'base',
+        'project',
         'product',
     ],
     'data': [

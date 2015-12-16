@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-# © 2015 Elico Corp, contributor: Eric Caudal, Alex Duan, Xie XiaoPeng
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from openerp import api, fields, models
 
 
@@ -12,6 +10,7 @@ class BusinessRequirement(models.Model):
         'Sequence',
         readonly=True,
         copy=False,
+        index=True,
     )
     name = fields.Char(
         'Name',
@@ -38,14 +37,6 @@ class BusinessRequirement(models.Model):
         'Gap',
         readonly=True,
         states={'draft': [('readonly', False)]}
-    )
-    drop = fields.Boolean(
-        string='Drop?',
-        default=False,
-        readonly=True,
-        states={'draft': [('readonly', False)]},
-        help="""Determine whether this business requirement is to be kept
-        or dropped."""
     )
     categ_id = fields.Many2one(
         comodel_name='business.requirement.category',
@@ -86,6 +77,11 @@ class BusinessRequirement(models.Model):
         readonly=True,
         states={'draft': [('readonly', False)]}
     )
+    project_id = fields.Many2one(
+        comodel_name='project.project',
+        string='Project',
+        ondelete='set null'
+    )
 
     @api.model
     def create(self, vals):
@@ -94,14 +90,10 @@ class BusinessRequirement(models.Model):
         return super(BusinessRequirement, self).create(vals)
 
     @api.multi
-    @api.depends(
-        'parent_id')
+    @api.depends('parent_id')
     def _get_level(self):
         def _compute_level(br):
-            level = 1
-            if br.parent_id:
-                level += _compute_level(br.parent_id)
-            return level
+            return br.parent_id and br.parent_id.level + 1 or 1
 
         for br in self:
             level = _compute_level(br)
@@ -115,6 +107,7 @@ class BusinessRequirement(models.Model):
             ('approved', 'Approved'),
             ('done', 'Done'),
             ('cancel', 'Cancel'),
+            ('drop', 'Drop'),
         ]
         return states
 
@@ -138,6 +131,10 @@ class BusinessRequirement(models.Model):
     def action_button_cancel(self):
         self.write({'state': 'cancel'})
 
+    @api.one
+    def action_button_drop(self):
+        self.write({'state': 'drop'})
+
 
 class BusinessRequirementCategory(models.Model):
     _name = "business.requirement.category"
@@ -149,3 +146,23 @@ class BusinessRequirementCategory(models.Model):
         string='Parent Category',
         ondelete='restrict'
     )
+
+
+class Project(models.Model):
+    _inherit = "project.project"
+
+    br_ids = fields.One2many(
+        comodel_name='business.requirement',
+        inverse_name='project_id',
+        string='Business Requirement',
+        copy=False,
+    )
+    br_count = fields.Integer(
+        compute='_br_count',
+        string="Business Requirement Number"
+    )
+
+    @api.one
+    @api.depends('br_ids')
+    def _br_count(self):
+        self.br_count = len(self.br_ids)
