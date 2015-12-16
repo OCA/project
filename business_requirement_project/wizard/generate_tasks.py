@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-# © 2015 Elico Corp, contributor: Eric Caudal, Alex Duan, Xie XiaoPeng
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from openerp import models, fields, api
 from openerp.tools.translate import _
 
@@ -62,6 +60,7 @@ class BrGenerateTasks(models.TransientModel):
     @api.multi
     def _prepare_project_task(self, line):
         task = {
+            'br_resource_id': line.br_resource_id.id,
             'name': line.name,
             'description': line.name,
             'sequence': line.sequence,
@@ -75,8 +74,6 @@ class BrGenerateTasks(models.TransientModel):
         task_obj = self.env['project.task']
         tasks = []
         for line in self.lines:
-            if not line.select:
-                continue
             task_val = self._prepare_project_task(line)
             task = task_obj.create(task_val)
             tasks.append(task)
@@ -106,4 +103,8 @@ class BrGenerateTasksLine(models.TransientModel):
         string='Business Requirement',
         copy=False
     )
-    select = fields.Boolean("Select")
+    br_resource_id = fields.Many2one(
+        comodel_name='business.requirement.resource',
+        string='Business Requirement Resource',
+        ondelete='set null'
+    )

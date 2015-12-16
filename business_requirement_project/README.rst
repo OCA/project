@@ -7,7 +7,7 @@ Business Requirement - Project
 ==============================
 
 This module is part of a set ("Business Requirement") and provides the possibility to
-create tasks in a project based on the business analysis estimation content.
+create tasks in a project based on the business requirement estimation content.
 
 Installation
 ============

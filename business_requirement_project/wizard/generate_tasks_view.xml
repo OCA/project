@@ -38,7 +38,6 @@
                    <field name="name" string="Deliverable"/>
                    <field name="resource_time_total"/>
                    <field name="user_id"/>
-                   <field name="select"/>
                </tree>
             </field>
         </record>
