@@ -6,7 +6,8 @@
 Business Requirement Crm
 ========================
 
-This module is part of a set ("Business Requirement") and extend the basic functionality to link the business requirement to CRM opportunity.
+This module is part of a set ("Business Requirement") and extend the basic functionality to link the business requirement to CRM opportunity,
+and adding the possibility to generate/update a sales quotation based on the cost/price estimation of the business requirements.
 
 Installation
 ============
