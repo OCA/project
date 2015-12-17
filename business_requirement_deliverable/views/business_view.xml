@@ -51,15 +51,14 @@
             <field name="arch" type="xml">
                 <tree string="Business Requirement Resource" editable="bottom" default_order="sequence">
                     <field name="sequence" widget="handle"/>
+                    <field name="resource_type"/>
                     <field name="product_id"/>
                     <field name="description"/>
-                    <field name="qty" attrs="{'invisible':[('resource_type','=','task')],'required':[('resource_type','=','procurement')]}"/>
+                    <field name="qty"/>
                     <field name="uom_id"/>
-                    <field name="resource_time" attrs="{'invisible':[('resource_type','=','procurement')],'required':[('resource_type','=','task')]}"/>
                     <field name="unit_price"/>
                     <field name="price_total"/>
                     <field name="user_id" attrs="{'invisible':[('resource_type','=','procurement')]}"/>
-                    <field name="resource_type"/>
                 </tree>
             </field>
         </record>
@@ -71,13 +70,17 @@
             <field name="priority">20</field>
             <field name="arch" type="xml">
                 <form string="Business Requirement Task Type">
-                    <group col="4">
-                        <field name="product_id"/>
-                        <field name="description"/>
-                        <field name="qty"/>
-                        <field name="uom_id"/>
-                        <field name="unit_price"/>
-                        <field name="price_total"/>
+                    <group>
+                        <group>
+                            <field name="product_id"/>
+                            <field name="description"/>
+                        </group>
+                        <group>
+                            <field name="qty"/>
+                            <field name="uom_id"/>
+                            <field name="unit_price"/>
+                            <field name="price_total"/>
+                        </group>
                     </group>
                     <group string="Resource Lines">
                         <field name="resource_ids" context="{'tree_view_ref':'view_business_requirement_resource_tree'}" nolabel="1"/>

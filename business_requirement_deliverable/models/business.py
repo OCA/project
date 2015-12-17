@@ -21,9 +21,6 @@ class BusinessRequirementResource(models.Model):
     qty = fields.Integer(
         string='Quantity'
     )
-    resource_time = fields.Integer(
-        string='Resouce Time'
-    )
     resource_type = fields.Selection(
         selection=[('task', 'Task'), ('procurement', 'Procurement')],
         string='Type',
@@ -49,12 +46,9 @@ class BusinessRequirementResource(models.Model):
     )
 
     @api.one
-    @api.depends('resource_time', 'unit_price', 'qty')
+    @api.depends('unit_price', 'qty')
     def _get_price_total(self):
-        if self.resource_type == "task":
-            self.price_total = self.unit_price * self.resource_time
-        else:
-            self.price_total = self.unit_price * self.qty
+        self.price_total = self.unit_price * self.qty
 
     @api.one
     @api.onchange('product_id')
@@ -71,30 +65,13 @@ class BusinessRequirementResource(models.Model):
         self.uom_id = uom_id
         self.unit_price = unit_price
 
-    @api.one
-    @api.onchange('resource_type')
-    def resouce_type_change(self):
-        if self.resource_type == "task":
-            self.qty = 0
-        elif self.resource_type == "procurement":
-            self.resource_time = 0
-
-    @api.one
-    def write(self, vals):
-        resource_type = vals.get('resource_type', False)
-        if resource_type == "procurement":
-            vals.update({'resource_time': 0})
-        elif resource_type == "task":
-            vals.update({'qty': 0})
-        return super(BusinessRequirementResource, self).write(vals)
-
 
 class BusinessRequirementDeliverable(models.Model):
     _name = "business.requirement.deliverable"
     _description = "Business Requirement Deliverable"
 
     sequence = fields.Integer('Sequence')
-    description = fields.Char('Description', required=True)
+    description = fields.Text('Description', required=True)
     product_id = fields.Many2one(
         comodel_name='product.product',
         string='Product',
