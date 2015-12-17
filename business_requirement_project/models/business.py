@@ -28,7 +28,7 @@ class Project(models.Model):
                             'br_resource_id': line.id,
                             'name': line.description,
                             'sequence': line.sequence,
-                            'resource_time_total': line.resource_time,
+                            'resource_time_total': line.qty,
                             'user_id': line.user_id.id,
                             'select': True,
                         }
