@@ -30,6 +30,7 @@ addon | version | summary
 [project_issue_task](project_issue_task/) | 8.0.1.1.0 | Use Tasks to support Issue resolution reports
 [project_recalculate](project_recalculate/) | 8.0.1.0.0 | Project Recalculate
 [project_sla](project_sla/) | 8.0.1.0.0 | Define SLAs for your Contracts
+[project_stage_closed](project_stage_closed/) | 8.0.1.0.0 | Make the Closed flag on Task Stages available without installing sale_service
 [project_stage_state](project_stage_state/) | 8.0.1.1.0 | Restore State attribute removed from Project Stages in 8.0
 [project_stage_state_issue](project_stage_state_issue/) | 1.0 | Restore State attribute removed from Project Stages in 8.0
 [project_task_code](project_task_code/) | 8.0.1.0.0 | Sequential Code for Tasks
