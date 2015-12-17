@@ -7,7 +7,9 @@ class BusinessRequirement(models.Model):
 
     lead_id = fields.Many2one(
         comodel_name='crm.lead',
-        string='Opportunity'
+        string='Opportunity',
+        readonly=True,
+        states={'draft': [('readonly', False)]}
     )
 
 
