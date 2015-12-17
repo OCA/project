@@ -3,6 +3,7 @@ from openerp import api, fields, models
 
 
 class BusinessRequirement(models.Model):
+    _inherit = ['mail.thread', 'ir.needaction_mixin']
     _name = "business.requirement"
     _description = "Business Requirement"
 
@@ -65,7 +66,9 @@ class BusinessRequirement(models.Model):
         comodel_name='business.requirement',
         string='Parent',
         ondelete='set null',
-        domain="[('id', '!=', id)]"
+        domain="[('id', '!=', id)]",
+        readonly=True,
+        states={'draft': [('readonly', False)]}
     )
     level = fields.Integer(
         compute='_get_level',
@@ -81,7 +84,14 @@ class BusinessRequirement(models.Model):
     project_id = fields.Many2one(
         comodel_name='project.project',
         string='Project',
-        ondelete='set null'
+        ondelete='set null',
+        readonly=True,
+        states={'draft': [('readonly', False)]}
+    )
+    partner_id = fields.Many2one(
+        related='project_id.partner_id',
+        store=True,
+        readonly=True,
     )
 
     @api.model

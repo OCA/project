@@ -25,6 +25,7 @@
                         </h1>
                         <group col="4">
                             <field name="project_id"/>
+                            <field name="partner_id"/>
                             <field name="categ_id"/>
                             <field name="change_request"/>
                         </group>
@@ -52,6 +53,12 @@
                             </page>
                         </notebook>
                     </sheet>
+                    <footer>
+                        <div class="oe_chatter">
+                            <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                            <field name="message_ids" widget="mail_thread"/>
+                        </div>
+                    </footer>
                 </form>
             </field>
         </record>
@@ -61,7 +68,7 @@
             <field name="model">business.requirement</field>
             <field name="arch" type="xml">
                 <tree string="Business Requirement">
-                    <field name="sequence"/>
+                    <field name="sequence" widget="handle"/>
                      <field name="name"/>
                      <field name="description"/>
                      <field name="project_id"/>
@@ -78,11 +85,13 @@
             <field name="arch" type="xml">
                 <search string="Business Requirement">
                     <field name="name" string="Name"/>
-                    <field name="sequence" string="Sequence"/>
+                    <field name="description" string="Description"/>
                     <field name="project_id" string="Project"/>
+                    <field name="partner_id" string="Customer"/>
                     <group expand="0" string="Group By">
                         <filter string="Category" icon="terp-go-home"  context="{'group_by':'categ_id'}"/>
                         <filter string="Project" icon="terp-go-home"  context="{'group_by':'project_id'}"/>
+                        <filter string="Customer " icon="terp-go-home"  context="{'group_by':'partner_id'}"/>
                         <filter string="State" icon="terp-go-home" context="{'group_by':'state'}"/>
                     </group>
                 </search>
@@ -195,6 +204,10 @@
 
         <menuitem id="menu_business_requirement_category" groups="business_requirement.group_business_requirement_user" action="action_business_requirement_category_tree" 
             parent="menu_business_configuration" sequence="10"/>
+
+        <menuitem action="product.product_template_action"
+            id="menu_product_template_action"
+            parent="menu_business_configuration" sequence="11" />
 
     </data>
 </openerp>
