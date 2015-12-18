@@ -60,10 +60,16 @@ class BusinessRequirementResource(models.Model):
         if product:
             description = product.name
             uom_id = product.uom_id.id
-            unit_price = product.list_price
+            unit_price = product.standard_price
         self.description = description
         self.uom_id = uom_id
         self.unit_price = unit_price
+
+    @api.one
+    @api.onchange('resource_type')
+    def resource_type_change(self):
+        if self.resource_type == 'procurement':
+            self.user_id = False
 
 
 class BusinessRequirementDeliverable(models.Model):
@@ -121,7 +127,7 @@ class BusinessRequirementDeliverable(models.Model):
         if product:
             description = product.name
             uom_id = product.uom_id.id
-            unit_price = product.list_price
+            unit_price = product.standard_price
         self.description = description
         self.uom_id = uom_id
         self.unit_price = unit_price

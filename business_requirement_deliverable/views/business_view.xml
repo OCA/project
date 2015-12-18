@@ -58,7 +58,7 @@
                     <field name="uom_id"/>
                     <field name="unit_price"/>
                     <field name="price_total"/>
-                    <field name="user_id" attrs="{'invisible':[('resource_type','=','procurement')]}"/>
+                    <field name="user_id" attrs="{'readonly':[('resource_type','=','procurement')]}"/>
                 </tree>
             </field>
         </record>
