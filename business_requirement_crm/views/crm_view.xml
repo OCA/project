@@ -8,8 +8,8 @@
             <field name="view_mode">tree,form</field>
             <field name="search_view_id" ref="business_requirement.view_business_requirement_search"/>
             <field name="context">{
-                'search_default_lead_id': [active_id],
-                'default_lead_id': active_id,
+                'search_default_project_id': [project_id],
+                'default_project_id': project_id,
                 'active_test': False,
             }</field>
             <field name="help" type="html">
@@ -27,16 +27,27 @@
             <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
             <field name="arch" type="xml">
                 <xpath expr='//div[@class="oe_right oe_button_box"]' position='inside'>
-                    <button class="oe_inline oe_stat_button" type="action" name="%(act_view_lead_br_all)d" icon="fa-tasks">
+                    <button class="oe_inline oe_stat_button" type="action" name="%(act_view_lead_br_all)d" icon="fa-tasks" context="{'project_id':project_id}">
                         <div>Business<br/>Requirement</div>
                     </button>
                 </xpath>
-                 <xpath expr='//page[@string="Lead"]' position="after">
+                <xpath expr='//page[@string="Lead"]' position="after">
                     <page string="Business Requirement">
                         <group>
-                            <field name="resource_cost_total"/>
+                            <group>
+                                <field name="project_id"/>
+                            </group>
+                            <group>
+                                <field name="resource_cost_total"/>
+                            </group>
                         </group>
                     </page>
+                </xpath>
+                <xpath expr='//field[@name="partner_id"]' position="attributes">
+                    <attribute name="attrs">{'readonly': [('project_id','!=',False)]}</attribute>
+                </xpath>
+                <xpath expr="//field[@name='stage_id']" position="before">
+                    <button attrs="{'invisible': [('project_id', '=', False)]}" string="Quotation from Business Requirements" name="%(action_crm_make_sale)d" type="action" class="oe_highlight"/>
                 </xpath>
             </field>
         </record>

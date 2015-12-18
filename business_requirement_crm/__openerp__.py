@@ -14,7 +14,7 @@
         'sale_crm',
     ],
     'data': [
-        'views/business_view.xml',
+        'wizard/crm_make_sale_view.xml',
         'views/crm_view.xml',
     ],
     'license': 'AGPL-3',
