@@ -1,0 +1,39 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * project_stage_closed
+# 
+# Translators:
+# Rudolf Schnapka <rs@techno-flex.de>, 2016-2017
+msgid ""
+msgstr ""
+"Project-Id-Version: project (8.0)\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-03-04 05:24+0000\n"
+"PO-Revision-Date: 2017-03-04 20:05+0000\n"
+"Last-Translator: Rudolf Schnapka <rs@techno-flex.de>\n"
+"Language-Team: German (http://www.transifex.com/oca/OCA-project-8-0/language/de/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: de\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: project_stage_closed
+#: field:project.task.type,closed:0 field:project.task.type,closed_alias:0
+msgid "Closed"
+msgstr "Beendet"
+
+#. module: project_stage_closed
+#: field:project.task.type,closed_alias_visible:0
+msgid "Closed alias visible"
+msgstr "Geschlossener Alias sichtbar"
+
+#. module: project_stage_closed
+#: model:ir.model,name:project_stage_closed.model_project_task_type
+msgid "Task Stage"
+msgstr "Aufgabenphase"
+
+#. module: project_stage_closed
+#: help:project.task.type,closed:0 help:project.task.type,closed_alias:0
+msgid "Tasks in this stage are considered closed."
+msgstr "Aufgaben dieser Phase werden als abgeschlossen betrachtet."
