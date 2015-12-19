@@ -37,7 +37,7 @@
             <notebook>
               <page string="Products">
                 <field name="material_ids"
-                       attrs="{'readonly':[('consume_material','==', True)]}">
+                       attrs="{'readonly':[('stock_state','!=', 'pending')]}">
                   <tree string="Materials used" editable="top">
                     <field name="product_id"
                            domain="[('type', 'in', ['consu', 'product'])]"/>
