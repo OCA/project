@@ -18,6 +18,7 @@ class ProjectTaskType(models.Model):
 class Task(models.Model):
     _inherit = "project.task"
 
+    @api.depends('material_ids.stock_move_id')
     def _compute_stock_move(self):
         self.stock_move_ids = self.mapped('material_ids.stock_move_id')
 
@@ -77,7 +78,7 @@ class Task(models.Model):
 
     @api.multi
     def unlink(self):
-        self.unlink_stock_move()
+        self.mapped('stock_move_ids').unlink()
         self.analytic_line_ids.unlink()
         return super(Task, self).unlink()
 
