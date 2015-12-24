@@ -52,7 +52,8 @@ class BusinessRequirement(models.Model):
         string='State',
         default='draft',
         readonly=True,
-        states={'draft': [('readonly', False)]}
+        states={'draft': [('readonly', False)]},
+        track_visibility='onchange'
     )
     business_requirement_ids = fields.One2many(
         comodel_name='business.requirement',

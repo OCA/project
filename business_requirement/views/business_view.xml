@@ -169,8 +169,7 @@
             <field name="arch" type="xml">
                 <xpath expr='//div[@name="buttons"]' position="inside">
                     <button class="oe_inline oe_stat_button" type="action" attrs="{'invisible':[('br_count','=', 0)]}" name="%(act_view_project_br_all)d" icon="fa-tasks">
-                        <field name="br_count" nolabel="1" widget="statinfo"/>
-                        <div>Business <br/>Requirement</div>
+                        <field name="br_count" string="Business Req." widget="statinfo"/>
                     </button>
                 </xpath>
             </field>
