@@ -35,8 +35,10 @@
                <tree string="Tasks" create="0" delete="0" editable="bottom">
                    <field name="sequence" widget="handle"/>
                    <field name="br_id" readonly="1"/>
-                   <field name="name" string="Deliverable"/>
+                   <field name="name"/>
+                   <field name="description"/>
                    <field name="resource_time_total"/>
+                   <field name="uom_id"/>
                    <field name="user_id"/>
                </tree>
             </field>

@@ -9,8 +9,22 @@ class Project(models.Model):
 
     @api.multi
     def generate_tasks_wizard(self):
+        product_uom_obj = self.env['product.uom']
+        default_uom = self.env['project.config.settings'].\
+            get_default_time_unit('time_unit')
+        default_uom = default_uom.get('time_unit', False)
+        if not default_uom:
+            raise osv.except_osv(
+                _('Error!'),
+                _("""Please set working time default unit in project config settings!
+                """))
         lines = []
         for br in self.br_ids:
+            if br.state not in ['approved', 'cancel', 'done']:
+                raise osv.except_osv(
+                    _('Error!'),
+                    _("""All business requirement of the project should be approved/canceled/done!
+                    """))
             if br.state != 'approved':
                 continue
             for deliverables in br.deliverable_lines:
@@ -21,14 +35,18 @@ class Project(models.Model):
                         [('br_resource_id', '=', line.id)])
                     if generated:
                         continue
+                    qty = product_uom_obj._compute_qty(
+                        line.uom_id.id, line.qty, default_uom)
                     line = (
                         0, 0,
                         {
                             'br_id': br.id,
                             'br_resource_id': line.id,
-                            'name': line.description,
+                            'name': line.task_name,
+                            'description': line.description,
                             'sequence': line.sequence,
-                            'resource_time_total': line.qty,
+                            'resource_time_total': qty,
+                            'uom_id': default_uom,
                             'user_id': line.user_id.id,
                             'select': True,
                         }

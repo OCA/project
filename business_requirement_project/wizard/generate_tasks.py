@@ -62,7 +62,7 @@ class BrGenerateTasks(models.TransientModel):
         task = {
             'br_resource_id': line.br_resource_id.id,
             'name': line.name,
-            'description': line.name,
+            'description': line.description,
             'sequence': line.sequence,
             'project_id': self.project_id.id,
             'planned_hours': line.resource_time_total,
@@ -85,10 +85,16 @@ class BrGenerateTasksLine(models.TransientModel):
     _description = 'Generate Tasks Lines'
 
     sequence = fields.Integer('Sequence')
-    name = fields.Char('Name', size=200)
+    name = fields.Char('Task Name')
+    description = fields.Char('Description')
     resource_time_total = fields.Float(
         string='Total Resouce time',
         help='Sum up all the time of the resouce of each resouce line.'
+    )
+    uom_id = fields.Many2one(
+        comodel_name='product.uom',
+        string='UoM',
+        required=True
     )
     user_id = fields.Many2one(
         comodel_name='res.users',
