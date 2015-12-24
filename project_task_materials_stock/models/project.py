@@ -18,6 +18,7 @@ class ProjectTaskType(models.Model):
 class Task(models.Model):
     _inherit = "project.task"
 
+    @api.depends('material_ids.stock_move_id')
     def _compute_stock_move(self):
         self.stock_move_ids = self.mapped('material_ids.stock_move_id')
 
@@ -50,29 +51,34 @@ class Task(models.Model):
 
     @api.multi
     def unlink_stock_move(self):
+        res = False
         moves = self.mapped('stock_move_ids')
-        moves.filtered(lambda r: r.state == 'assigned').do_unreserve()
-        moves.filtered(
-            lambda r: r.state in ['waiting', 'confirmed', 'assigned']
-        ).write({'state': 'draft'})
-        moves.unlink()
+        moves_done = moves.filtered(lambda r: r.state == 'done')
+        if not moves_done:
+            moves.filtered(lambda r: r.state == 'assigned').do_unreserve()
+            moves.filtered(
+                lambda r: r.state in ['waiting', 'confirmed', 'assigned']
+            ).write({'state': 'draft'})
+            res = moves.unlink()
+        return res
 
     @api.multi
     def write(self, vals):
+        res = super(Task, self).write(vals)
         for task in self:
-            res = super(Task, self).write(vals)
             if 'stage_id' in vals:
                 if task.stage_id.consume_material:
-                    task.material_ids.create_stock_move()
-                    task.material_ids.create_analytic_line()
+                    if not task.stock_move_ids:
+                        task.material_ids.create_stock_move()
+                        task.material_ids.create_analytic_line()
                 else:
-                    task.unlink_stock_move()
-                    task.analytic_line_ids.unlink()
+                    if task.unlink_stock_move():
+                        task.analytic_line_ids.unlink()
         return res
 
     @api.multi
     def unlink(self):
-        self.unlink_stock_move()
+        self.mapped('stock_move_ids').unlink()
         self.analytic_line_ids.unlink()
         return super(Task, self).unlink()
 
