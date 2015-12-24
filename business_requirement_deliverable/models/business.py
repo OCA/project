@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 from openerp import api, fields, models
+from openerp.exceptions import ValidationError
+from openerp.tools.translate import _
 
 
 class BusinessRequirementResource(models.Model):
@@ -32,6 +34,7 @@ class BusinessRequirementResource(models.Model):
         string='Assign To',
         ondelete='set null'
     )
+    task_name = fields.Char('Task name')
     business_requirement_deliverable_id = fields.Many2one(
         comodel_name='business.requirement.deliverable',
         string='Business Requirement Deliverable',
@@ -70,6 +73,14 @@ class BusinessRequirementResource(models.Model):
     def resource_type_change(self):
         if self.resource_type == 'procurement':
             self.user_id = False
+
+    @api.one
+    @api.constrains('resource_type', 'uom_id')
+    def _check_description(self):
+        if self.resource_type == 'task'\
+                and self.uom_id.category_id.name != 'Working Time':
+            raise ValidationError(_(
+                "When resource type is task, the uom category should be time"))
 
 
 class BusinessRequirementDeliverable(models.Model):
@@ -146,7 +157,7 @@ class BusinessRequirement(models.Model):
     )
     resource_cost_total = fields.Float(
         compute='_get_deliverable_cost_total',
-        string='Total Price',
+        string='Total Cost',
         store=True
     )
 

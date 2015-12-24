@@ -10,7 +10,6 @@
     "author": "Elico Corp, Odoo Community Association (OCA)",
     'depends': [
         'business_requirement',
-        'base',
     ],
     'data': [
         'security/ir.model.access.csv',
