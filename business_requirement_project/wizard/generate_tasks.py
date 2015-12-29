@@ -12,6 +12,7 @@ class BrGenerateTasks(models.TransientModel):
         string='Project',
         ondelete='set null'
     )
+
     lines = fields.One2many(
         comodel_name='br.generate.tasks.line',
         inverse_name='wizard_id',

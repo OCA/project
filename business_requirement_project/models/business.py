@@ -8,6 +8,17 @@ class Project(models.Model):
     _inherit = "project.project"
 
     @api.multi
+    def generate_projects_wizard(self):
+        vals = {
+            'partner_id': self.partner_id.id,
+            'project_id': self.id,
+        }
+        wizard_obj = self.env['br.generate.projects']
+        wizard = wizard_obj.create(vals)
+        action = wizard.wizard_view()
+        return action
+
+    @api.multi
     def generate_tasks_wizard(self):
         product_uom_obj = self.env['product.uom']
         default_uom = self.env['project.config.settings'].\
