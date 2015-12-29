@@ -9,6 +9,7 @@
             <form string="Quotation from Business Requirements" >
                 <group col="4">
                     <field name="partner_id" required="1"/>
+                    <field name="update_quotation"/>
                     <field name="close"/>
                 </group>
                 <footer>

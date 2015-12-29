@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from openerp import api, models
+from openerp import api, fields, models
 from openerp.tools.translate import _
 from openerp.osv import osv
 
@@ -7,11 +7,25 @@ from openerp.osv import osv
 class CrmMakeSale(models.Model):
     _inherit = "crm.make.sale"
 
+    update_quotation = fields.Boolean('Update existing quotation')
+
     @api.multi
     def make_orderline(self):
-        res = super(CrmMakeSale, self).makeOrder()
         context = self.env.context
         case_id = context and context.get('active_ids', []) or []
+        case_id = case_id and case_id[0] or False
+        res = {}
+        if not self.update_quotation:
+            res = super(CrmMakeSale, self).makeOrder()
+        else:
+            saleorder = self.env['sale.order'].search([
+                ('origin', '=', _('Opportunity: %s') % str(case_id))])
+            saleorder = saleorder and saleorder[0] or False
+            if saleorder:
+                res = {'res_id': saleorder.id}
+                if saleorder.order_line:
+                    saleorder.order_line.unlink()
+
         order_id = res.get('res_id', False)
         if order_id:
             order_lines = self.prepare_sale_order_line(case_id, order_id)
