@@ -33,7 +33,7 @@
             <field name="name">business.requirement.deliverable.tree</field>
             <field name="model">business.requirement.deliverable</field>
             <field name="arch" type="xml">
-                <tree string="Business Requirement Deliverable" default_order="sequence,name">
+                <tree string="Business Requirement Deliverable" default_order="sequence">
                     <field name="sequence" widget="handle"/>
                     <field name="description"/>
                     <field name="product_id"/>
@@ -58,7 +58,7 @@
                     <field name="uom_id"/>
                     <field name="unit_price"/>
                     <field name="price_total"/>
-                    <field name="user_id" attrs="{'readonly':[('resource_type','=','procurement')],'required':[('resource_type','=','task')]}"/>
+                    <field name="user_id" attrs="{'readonly':[('resource_type','=','procurement')]}"/>
                     <field name="task_name" attrs="{'readonly':[('resource_type','=','procurement')],'required':[('resource_type','=','task')]}"/>
                 </tree>
             </field>

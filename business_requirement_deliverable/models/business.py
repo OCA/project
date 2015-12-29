@@ -157,7 +157,7 @@ class BusinessRequirement(models.Model):
     )
     resource_cost_total = fields.Float(
         compute='_get_deliverable_cost_total',
-        string='Total Cost',
+        string='Total Revenue',
         store=True
     )
 
