@@ -4,7 +4,7 @@
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
 {
-    'name': 'Project Case Default',
+    'name': 'Project Task Default Stage',
     'summary': 'Recovery default task stage projects from v8',
     'version': '9.0.1.0.0',
     'category': 'Project',
