@@ -9,12 +9,45 @@ class Project(models.Model):
 
     @api.multi
     def generate_projects_wizard(self):
+        default_uom = self.env['project.config.settings'].\
+            get_default_time_unit('time_unit')
+        default_uom = default_uom.get('time_unit', False)
+        if not default_uom:
+            raise osv.except_osv(
+                _('Error!'),
+                _("""Please set working time default unit in project config settings!
+                """))
+        lines = []
+        for br in self.br_ids:
+            if br.state not in ['approved', 'cancel', 'done']:
+                raise osv.except_osv(
+                    _('Error!'),
+                    _("""All business requirement of the project should be approved/canceled/done!
+                    """))
+            if br.state != 'approved':
+                continue
+            for deliverables in br.deliverable_lines:
+                for line in deliverables.resource_ids:
+                    if line.resource_type != 'task':
+                        continue
+                    generated = self.env['project.task'].search(
+                        [('br_resource_id', '=', line.id)])
+                    if generated:
+                        continue
+                    lines.append(line.id)
+
+        if not lines:
+            raise osv.except_osv(
+                _('Error!'),
+                _("""There is no available business requirement resource line to
+                    generate task!"""))
+
         vals = {
             'partner_id': self.partner_id.id,
             'project_id': self.id,
         }
         wizard_obj = self.env['br.generate.projects']
-        wizard = wizard_obj.create(vals)
+        wizard = wizard_obj.with_context(default_uom=default_uom).create(vals)
         action = wizard.wizard_view()
         return action
 

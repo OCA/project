@@ -42,13 +42,18 @@ class BrGenerateProjects(models.TransientModel):
 
     @api.multi
     def apply(self):
-        project_ids = self.generate_projects()
+        # partner_id = self.partner_id.id
+        parent_project = self.project_id
+        # br_ids = self.env['business.requirement'].search(
+        #     [('partner_id', '=', partner_id)])
+        for br in parent_project.br_ids:
+            self.generate_projects(parent_project, br)
 
         view = self.env['ir.model.data'].get_object_reference(
             'project', 'view_project')
 
         action = {
-            # 'domain': "[('id','in',[%s])]" % ','.join(project_ids),
+            'domain': "[('partner_id','=',%s)]" % self.partner_id.id,
             'name': _('Projects'),
             'view_type': 'tree',
             'view_mode': 'list',
@@ -58,43 +63,40 @@ class BrGenerateProjects(models.TransientModel):
         }
         return action
 
-    @api.multi
-    def generate_projects(self):
+    def generate_projects(self, parent_project, br):
         project_obj = self.env['project.project']
-        projects = []
-        parent_project = self.project_id
-        for br in parent_project.br_ids:
-            if self.for_br:
-                br_project_val = self._prepare_project_br(
-                    br, parent_project.id)
-                br_project = project_obj.create(br_project_val)
-                projects.append(br_project.id)
-                if not self.for_deliverable:
-                    lines = [
-                        line.resource_ids for line in br.deliverable_lines
-                    ]
-                    # self.create_project_task(lines, br_project.id)
+        if self.for_br:
+            br_project_val = self._prepare_project_br(
+                br, parent_project.id)
+            br_project = project_obj.create(br_project_val)
+            br.project_id = br_project.id
+            if not self.for_deliverable:
+                lines = [
+                    line.resource_ids for line in br.deliverable_lines
+                    if line.resource_ids
+                ]
+                self.create_project_task(lines, br_project.id)
 
-            if self.for_deliverable:
-                for line in br.deliverable_lines:
-                    if self.for_br:
-                        line_parent_id = br_project.id
-                    else:
-                        line_parent_id = parent_project.id
-                    line_project_val = self._prepare_project_deliverable(
-                        line, line_parent_id)
-                    line_project = project_obj.create(line_project_val)
-                    projects.append(line_project.id)
+        if self.for_deliverable:
+            for line in br.deliverable_lines:
+                if self.for_br:
+                    line_parent_id = br_project.id
+                else:
+                    line_parent_id = parent_project.id
+                line_project_val = self._prepare_project_deliverable(
+                    line, line_parent_id)
+                line_project = project_obj.create(line_project_val)
+                self.create_project_task(line.resource_ids, line_project.id)
 
-                    if not self.for_br:
-                        lines = line.resource_ids
-                        # self.create_project_task(lines, line_parent_id)
+        if not self.for_br and not self.for_deliverable:
+            lines = [
+                line.resource_ids for line in br.deliverable_lines
+                if line.resource_ids
+            ]
+            self.create_project_task(lines, parent_project.id)
 
-            if not self.for_br and not self.for_deliverable:
-                lines = [line.resource_ids for line in br.deliverable_lines]
-                # self.create_project_task(lines, parent_project.id)
-                projects = [parent_project.id]
-        return projects
+        for child_br in br.business_requirement_ids:
+            self.generate_projects(parent_project, child_br)
 
     @api.multi
     def _prepare_project_br(self, br, parent_id):
@@ -116,20 +118,26 @@ class BrGenerateProjects(models.TransientModel):
 
     @api.multi
     def _prepare_project_task(self, line, project_id):
+        context = self.env.context
+        default_uom = context and context.get('default_uom', False)
+        product_uom_obj = self.env['product.uom']
+        qty = product_uom_obj._compute_qty(
+            line.uom_id.id, line.qty, default_uom)
         task = {
-            # 'br_resource_id': line.br_resource_id.id,
             'name': line.task_name,
             'description': line.description,
             'sequence': line.sequence,
             'project_id': project_id,
-            'planned_hours': line.qty,
+            'planned_hours': qty,
+            'br_resource_id': line.id,
         }
         return task
 
     @api.multi
-    def create_project_task(self, lines, project_id):
+    def create_project_task(self, resource_lines, project_id):
         task_obj = self.env['project.task']
-        for line in lines:
-            task_val = self._prepare_project_task(
-                line, project_id)
-            task_obj.create(task_val)
+        for lines in resource_lines:
+            for line in lines:
+                task_val = self._prepare_project_task(
+                    line, project_id)
+                task_obj.create(task_val)

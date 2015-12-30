@@ -9,7 +9,6 @@
             <field name="arch" type="xml">
                 <xpath expr='//header/field[@name="state"]' position='before'>
                     <button name="generate_projects_wizard" string="Projects From Business Requirement" type="object" class="oe_highlight" groups="business_requirement.group_business_requirement_user"/>
-                    <button name="generate_tasks_wizard" string="Tasks From Business Requirement" type="object" class="oe_highlight" groups="business_requirement.group_business_requirement_user"/>
                 </xpath>
             </field>
         </record>
