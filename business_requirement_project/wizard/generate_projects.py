@@ -42,10 +42,7 @@ class BrGenerateProjects(models.TransientModel):
 
     @api.multi
     def apply(self):
-        # partner_id = self.partner_id.id
         parent_project = self.project_id
-        # br_ids = self.env['business.requirement'].search(
-        #     [('partner_id', '=', partner_id)])
         for br in parent_project.br_ids:
             self.generate_projects(parent_project, br)
 
@@ -69,7 +66,6 @@ class BrGenerateProjects(models.TransientModel):
             br_project_val = self._prepare_project_br(
                 br, parent_project.id)
             br_project = project_obj.create(br_project_val)
-            br.project_id = br_project.id
             if not self.for_deliverable:
                 lines = [
                     line.resource_ids for line in br.deliverable_lines
@@ -96,6 +92,9 @@ class BrGenerateProjects(models.TransientModel):
             self.create_project_task(lines, parent_project.id)
 
         for child_br in br.business_requirement_ids:
+            if child_br.project_id and \
+                    (child_br.project_id.id == parent_project.id):
+                continue
             self.generate_projects(parent_project, child_br)
 
     @api.multi
