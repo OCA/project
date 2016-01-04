@@ -41,7 +41,7 @@ class BusinessRequirementResource(models.Model):
         ondelete='cascade'
     )
     unit_price = fields.Float(
-        string='Unit Price'
+        string='Sales Price'
     )
     price_total = fields.Float(
         compute='_get_price_total',
