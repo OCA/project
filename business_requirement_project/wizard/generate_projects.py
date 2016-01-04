@@ -16,7 +16,7 @@ class BrGenerateProjects(models.TransientModel):
         comodel_name='project.project',
         string='Project to create the tasks',
         ondelete='set null',
-        domain="[('partner_id', '!=', partner_id)]",
+        domain="[('partner_id', '=', partner_id)]",
     )
     for_br = fields.Boolean('Create sub-projects for Business requirements')
     for_deliverable = fields.Boolean('Create sub-projects for Deliverables')
