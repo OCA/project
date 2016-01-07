@@ -40,9 +40,6 @@
                         </group>
                     </page>
                 </xpath>
-                <xpath expr='//field[@name="partner_id"]' position="attributes">
-                    <attribute name="attrs">{'readonly': [('project_id','!=',False)]}</attribute>
-                </xpath>
                 <xpath expr="//field[@name='stage_id']" position="before">
                     <button attrs="{'invisible': [('project_id', '=', False)]}" string="Quotation from Business Requirements" name="%(action_crm_make_sale)d" type="action" class="oe_highlight"/>
                 </xpath>
