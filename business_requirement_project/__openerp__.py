@@ -15,7 +15,6 @@
     ],
     'data': [
         'views/business_view.xml',
-        'wizard/generate_tasks_view.xml',
         'wizard/generate_projects_view.xml',
     ],
     'license': 'AGPL-3',

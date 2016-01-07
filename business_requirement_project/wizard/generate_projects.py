@@ -66,6 +66,8 @@ class BrGenerateProjects(models.TransientModel):
             br_project_val = self._prepare_project_br(
                 br, parent_project.id)
             br_project = project_obj.create(br_project_val)
+            import pdb
+            pdb.set_trace()
             if not self.for_deliverable:
                 lines = [
                     line.resource_ids for line in br.deliverable_lines

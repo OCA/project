@@ -7,51 +7,196 @@ from openerp.tests import common
 class BusinessRequirementTestCase(common.TransactionCase):
     def setUp(self):
         super(BusinessRequirementTestCase, self).setUp()
-        self.br = self.env['business.requirement']
+        # self.br = self.registry['business.requirement']
+        self.ModelDataObj = self.env['ir.model.data']
 
-    def test_generate_tasks_wizard(self):
+        self.ProjectObj = self.env['project.project']
+        self.projectA = self.ProjectObj.create(
+            {'name': 'Test Project A', 'partner_id': 1, 'parent_id': 1,
+                'analytic_account_id': 192})
+        self.projectB = self.ProjectObj.create(
+            {'name': 'Test Project B', 'partner_id': 1, 'parent_id': 1,
+                'analytic_account_id': 192})
+
+        # Configure unit of measure.
+        self.categ_wtime = self.ModelDataObj.xmlid_to_res_id(
+            'product.uom_categ_wtime')
+        self.categ_kgm = self.ModelDataObj.xmlid_to_res_id(
+            'product.product_uom_categ_kgm')
+
+        self.UomObj = self.env['product.uom']
+        self.uom_hours = self.UomObj.create({
+            'name': 'Test-Hours',
+            'category_id': self.categ_wtime,
+            'factor': 8,
+            'uom_type': 'smaller'})
+        self.uom_days = self.UomObj.create({
+            'name': 'Test-Days',
+            'category_id': self.categ_wtime,
+            'factor': 1})
+        self.uom_kg = self.UomObj.create({
+            'name': 'Test-KG',
+            'category_id': self.categ_kgm,
+            'factor_inv': 1,
+            'factor': 1,
+            'uom_type': 'reference',
+            'rounding': 0.000001})
+
+        # Product Created A, B, C, D
+        self.ProductObj = self.env['product.product']
+        self.productA = self.ProductObj.create(
+            {'name': 'Product A', 'uom_id': self.uom_hours.id,
+                'uom_po_id': self.uom_hours.id,
+                'standard_price': 450})
+        self.productB = self.ProductObj.create(
+            {'name': 'Product B', 'uom_id': self.uom_hours.id,
+                'uom_po_id': self.uom_hours.id,
+                'standard_price': 550})
+        self.productC = self.ProductObj.create(
+            {'name': 'Product C', 'uom_id': self.uom_days.id,
+                'uom_po_id': self.uom_days.id,
+                'standard_price': 650})
+        self.productD = self.ProductObj.create(
+            {'name': 'Product D', 'uom_id': self.uom_kg.id,
+                'uom_po_id': self.uom_kg.id,
+                'standard_price': 750})
+
         vals = {
             'name': ' test',
+            'description': 'test',
+            'project_id': self.projectA.id,
             'deliverable_lines': [
-                (0, 0, {'description': 'task1', 'resource_time': 15.0}),
-                (0, 0, {'description': 'task2', 'resource_time': 25.0}),
-                (0, 0, {'description': 'task3', 'resource_time': 35.0}),
-                (0, 0, {'description': 'task4', 'resource_time': 45.0}),
-            ]
+                (0, 0, {'description': 'deliverable line1', 'qty': 1.0,
+                        'unit_price': 900, 'uom_id': 1,
+                        'resource_ids': [
+                            (0, 0, {
+                                'description': 'Resource Line1',
+                                'product_id': self.productA.id,
+                                'qty': 100,
+                                'uom_id': self.uom_hours.id,
+                                'unit_price': 500,
+                                'resource_type': 'task',
+                                'task_name': 'task 1'
+                            }),
+                            (0, 0, {
+                                'description': 'Resource Line1',
+                                'product_id': self.productB.id,
+                                'qty': 100,
+                                'uom_id': self.uom_hours.id,
+                                'unit_price': 500,
+                                'resource_type': 'task',
+                                'task_name': 'task 2'
+                            })
+                        ]
+                        }),
+                (0, 0, {'description': 'deliverable line2', 'qty': 1.0,
+                        'unit_price': 1100, 'uom_id': 1}),
+                (0, 0, {'description': 'deliverable line3', 'qty': 1.0,
+                        'unit_price': 1300, 'uom_id': 1}),
+                (0, 0, {'description': 'deliverable line4', 'qty': 1.0,
+                        'unit_price': 1500, 'uom_id': 1,
+                        }),
+            ],
         }
-        br = self.br.create(vals)
-        action = br.generate_tasks_wizard()
-        success = False
-        if action:
-            success = True
-        self.assertTrue(success)
+        self.brA = self.env['business.requirement'].create(vals)
+        self.brB = self.env['business.requirement'].create(vals)
+        self.brC = self.env['business.requirement'].create(vals)
 
+    def test_br_state(self):
+        # test when state=draft
+        self.brA.state = 'draft'
+        self.brB.state = 'draft'
+        self.brC.state = 'draft'
+        try:
+            action = self.projectA.generate_projects_wizard()
+        except Exception:
+            action = False
+        self.assertEqual(action, False)
 
-@common.at_install(False)
-@common.post_install(True)
-class BrGenerateTasksTestCase(common.TransactionCase):
-    def setUp(self):
-        super(BrGenerateTasksTestCase, self).setUp()
-        self.br = self.env['business.requirement']
-        self.wizard = self.env['br.generate.tasks']
+        # test when state=confirmed
+        self.brA.state = 'confirmed'
+        self.brB.state = 'confirmed'
+        self.brC.state = 'confirmed'
+        try:
+            action = self.projectA.generate_projects_wizard()
+        except Exception:
+            action = False
+        self.assertEqual(action, False)
 
-    def test_generate_tasks(self):
-        vals = {
-            'name': ' test',
-            'deliverable_lines': [
-                (0, 0, {'description': 'task1', 'resource_time': 15.0}),
-                (0, 0, {'description': 'task2', 'resource_time': 25.0}),
-                (0, 0, {'description': 'task3', 'resource_time': 35.0}),
-                (0, 0, {'description': 'task4', 'resource_time': 45.0}),
-            ]
-        }
-        br = self.br.create(vals)
-        action = br.generate_tasks_wizard()
-        wizard_id = action.get('res_id', False)
-        wizard = self.wizard.browse(wizard_id)
-        tasks = wizard.generate_tasks()
+        # test when state=approved
+        self.brA.state = 'approved'
+        self.brB.state = 'confirmed'
+        self.brC.state = 'draft'
+        try:
+            action = self.projectA.generate_projects_wizard()
+        except Exception:
+            action = False
+        self.assertEqual(action, False)
 
-        success = False
-        if tasks:
-            success = True
-        self.assertTrue(success)
+        # test when state=approved
+        self.brA.state = 'approved'
+        self.brB.state = 'approved'
+        self.brC.state = 'draft'
+        try:
+            action = self.projectA.generate_projects_wizard()
+        except Exception:
+            action = False
+        self.assertEqual(action, False)
+
+        # test when state=approved
+        self.brA.state = 'approved'
+        self.brB.state = 'approved'
+        self.brC.state = 'confirmed'
+        try:
+            action = self.projectA.generate_projects_wizard()
+        except Exception:
+            action = False
+        self.assertEqual(action, False)
+
+        # test when state=approved
+        self.brA.state = 'approved'
+        self.brB.state = 'approved'
+        self.brC.state = 'approved'
+        try:
+            action = self.projectA.generate_projects_wizard()
+        except Exception:
+            action = False
+        self.assertNotEqual(action, False)
+
+        # test when state=approved
+        self.brA.state = 'done'
+        self.brB.state = 'approved'
+        self.brC.state = 'approved'
+        try:
+            action = self.projectA.generate_projects_wizard()
+        except Exception:
+            action = False
+        self.assertNotEqual(action, False)
+
+        # test when state=approved
+        self.brA.state = 'done'
+        self.brB.state = 'approved'
+        self.brC.state = 'approved'
+        try:
+            action = self.projectA.generate_projects_wizard()
+        except Exception:
+            action = False
+        self.assertNotEqual(action, False)
+
+    def test_for_br(self):
+        self.brA.state = 'approved'
+        self.brB.state = 'approved'
+        self.brC.state = 'approved'
+        try:
+            action = self.projectA.generate_projects_wizard()
+        except Exception:
+            action = False
+        self.assertNotEqual(action, False)
+        self.assertNotEqual(action.get('res_id', False), False)
+        self.wizard = self.env['br.generate.projects'].browse(action['res_id'])
+        self.wizard.for_br = True
+        try:
+            self.wizard.apply()
+        except:
+            # self.assertTrue(False)
+            pass
