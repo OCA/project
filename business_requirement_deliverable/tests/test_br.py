@@ -125,8 +125,6 @@ class BusinessRequirementTestCase(common.TransactionCase):
             for resource in line.resource_ids:
                 if resource and resource.description == 'Resource Line1':
                     res = resource.write({'product_id': self.productB.id})
-                    import pdb
-                    pdb.set_trace()
                     if res:
                         self.assertEqual(
                             resource.product_id.id, self.productB.id)
