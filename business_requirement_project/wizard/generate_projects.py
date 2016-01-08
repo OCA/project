@@ -137,6 +137,8 @@ class BrGenerateProjects(models.TransientModel):
         task_obj = self.env['project.task']
         for lines in resource_lines:
             for line in lines:
+                if line.resource_type != 'task':
+                    continue
                 task_val = self._prepare_project_task(
                     line, project_id)
                 task_obj.create(task_val)
