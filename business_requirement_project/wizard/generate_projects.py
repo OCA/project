@@ -46,16 +46,13 @@ class BrGenerateProjects(models.TransientModel):
         for br in parent_project.br_ids:
             self.generate_projects(parent_project, br)
 
-        view = self.env['ir.model.data'].get_object_reference(
-            'project', 'view_project')
-
         action = {
             'domain': "[('partner_id','=',%s)]" % self.partner_id.id,
-            'name': _('Projects'),
-            'view_type': 'tree',
-            'view_mode': 'list',
+            'name': _('Project'),
+            'view_type': 'form',
+            'view_mode': 'tree,form',
+            'view_id': False,
             'res_model': 'project.project',
-            'view_id': view[1],
             'type': 'ir.actions.act_window'
         }
         return action
@@ -64,7 +61,7 @@ class BrGenerateProjects(models.TransientModel):
         project_obj = self.env['project.project']
         if self.for_br:
             br_project_val = self._prepare_project_br(
-                br, parent_project.id)
+                br, parent_project)
             br_project = project_obj.create(br_project_val)
             if not self.for_deliverable:
                 lines = [
@@ -76,11 +73,11 @@ class BrGenerateProjects(models.TransientModel):
         if self.for_deliverable:
             for line in br.deliverable_lines:
                 if self.for_br:
-                    line_parent_id = br_project.id
+                    line_parent = br_project
                 else:
-                    line_parent_id = parent_project.id
+                    line_parent = parent_project
                 line_project_val = self._prepare_project_deliverable(
-                    line, line_parent_id)
+                    line, line_parent)
                 line_project = project_obj.create(line_project_val)
                 self.create_project_task(line.resource_ids, line_project.id)
 
@@ -98,20 +95,23 @@ class BrGenerateProjects(models.TransientModel):
             self.generate_projects(parent_project, child_br)
 
     @api.multi
-    def _prepare_project_br(self, br, parent_id):
+    def _prepare_project_br(self, br, parent):
         project = {
             'name': br.description,
-            'parent_id': parent_id,
-            'partner_id': br.partner_id.id,
+            'parent_id': parent.id,
+            'partner_id': parent.partner_id.id,
+            'members': [(6, 0, [x.id for x in parent.members])],
+            'message_follower_ids': [
+                x.id for x in parent.message_follower_ids],
         }
         return project
 
     @api.multi
-    def _prepare_project_deliverable(self, line, parent_id):
+    def _prepare_project_deliverable(self, line, parent):
         project = {
             'name': line.description,
-            'parent_id': parent_id,
-            'partner_id': line.business_requirement_id.partner_id.id,
+            'parent_id': parent.id,
+            'partner_id': parent.partner_id.id,
         }
         return project
 
