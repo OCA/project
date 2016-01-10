@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
-                                    
+        <record id="act_view_sub_br_all" model="ir.actions.act_window">
+            <field name="name">Business Requirement</field>
+            <field name="res_model">business.requirement</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('parent_id', '=', active_id)]</field>
+            <field name="context">{
+                'search_default_parent_id': [active_id],
+                'default_parent_id': active_id,
+            }</field>
+        </record>
+
         <record id="view_business_requirement_form" model="ir.ui.view">
             <field name="name">business.requirement.form</field>
             <field name="model">business.requirement</field>
@@ -19,6 +29,11 @@
                         <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,approved,done,cancel"/>
                     </header>
                     <sheet>
+                        <div class="oe_right oe_button_box" name="buttons" groups="base.group_user">
+                             <button class="oe_inline oe_stat_button" type="action" name="%(act_view_sub_br_all)d" icon="fa-tasks">
+                                <field name="sub_br_count" string="Sub Bus. Req." widget="statinfo"/>
+                            </button>
+                        </div>
                         <h1>
                             <field name="name" class="oe_inline" readonly="1"/>-
                             <field name="description" class="oe_inline"/>
@@ -41,9 +56,6 @@
                                 <group string="Gap">
                                      <field name="gap" widget="html" nolabel="1"/>
                                 </group>
-                            </page>
-                            <page string="Sub Business Requirement">
-                                <field name="business_requirement_ids" readonly="1" context="{'form_view_ref':'view_business_requirement_form', 'tree_view_ref':'view_business_requirement_tree'}"/>
                             </page>
                             <page string="Other Information">
                                 <group col="4">
@@ -162,6 +174,30 @@
             </field>
         </record>
 
+        <record id="open_view_subproject_all" model="ir.actions.act_window">
+            <field name="name">Projects</field>
+            <field name="res_model">project.project</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('parent_id', '=', active_id)]</field>
+            <field name="view_mode">kanban,tree,form,gantt</field>
+            <field name="view_id" ref="view_project_kanban"/>
+            <field name="search_view_id" ref="project.view_project_project_filter"/>
+            <field name="context">{'search_default_Current': 1}</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                  Click to start a new project.
+                </p><p>
+                  Projects are used to organize your activities; plan
+                  tasks, track issues, invoice timesheets. You can define
+                  internal projects (R&amp;D, Improve Sales Process),
+                  private projects (My Todos) or customer ones.
+                </p><p>
+                  You will be able collaborate with internal users on
+                  projects or invite customers to share your activities.
+                </p>
+            </field>
+        </record>
+
         <record model="ir.ui.view" id="edit_project">
             <field name="name">project.project.form</field>
             <field name="model">project.project</field>
@@ -170,6 +206,9 @@
                 <xpath expr='//div[@name="buttons"]' position="inside">
                     <button class="oe_inline oe_stat_button" type="action" name="%(act_view_project_br_all)d" icon="fa-tasks">
                         <field name="br_count" string="Business Req." widget="statinfo"/>
+                    </button>
+                    <button class="oe_inline oe_stat_button" type="action" name="%(open_view_subproject_all)d" icon="fa-tasks">
+                        <div>Sub Project</div>
                     </button>
                 </xpath>
             </field>

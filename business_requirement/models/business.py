@@ -94,6 +94,10 @@ class BusinessRequirement(models.Model):
         store=True,
         readonly=True,
     )
+    sub_br_count = fields.Integer(
+        string='Count',
+        compute='_sub_br_count'
+    )
 
     @api.model
     def create(self, vals):
@@ -110,6 +114,11 @@ class BusinessRequirement(models.Model):
         for br in self:
             level = _compute_level(br)
             br.level = level
+
+    @api.one
+    @api.depends('business_requirement_ids')
+    def _sub_br_count(self):
+        self.sub_br_count = len(self.business_requirement_ids)
 
     @api.model
     def _get_states(self):

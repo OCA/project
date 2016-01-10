@@ -2,7 +2,6 @@
 <openerp>
     <data noupdate="1">
 
-        <!-- Sequences for sale.order -->
         <record id="seq_type_business_requirement" model="ir.sequence.type">
             <field name="name">Business Requirement</field>
             <field name="code">business.requirement</field>
