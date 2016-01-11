@@ -138,7 +138,7 @@ class BusinessRequirementDeliverable(models.Model):
         if product:
             description = product.name
             uom_id = product.uom_id.id
-            unit_price = product.standard_price
+            unit_price = product.list_price
         self.description = description
         self.uom_id = uom_id
         self.unit_price = unit_price
