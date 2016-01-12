@@ -108,7 +108,7 @@ class BusinessRequirementDeliverable(models.Model):
         comodel_name='business.requirement.resource',
         inverse_name='business_requirement_deliverable_id',
         string='Business Requirement Resource',
-        copy=False,
+        copy=True,
     )
     business_requirement_id = fields.Many2one(
         comodel_name='business.requirement',
@@ -151,7 +151,7 @@ class BusinessRequirement(models.Model):
         comodel_name='business.requirement.deliverable',
         inverse_name='business_requirement_id',
         string='Deliverable Lines',
-        copy=False,
+        copy=True,
         readonly=True,
         states={'draft': [('readonly', False)]}
     )
