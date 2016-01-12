@@ -7,6 +7,8 @@ from openerp.osv import osv
 class Project(models.Model):
     _inherit = "project.project"
 
+    origin = fields.Char('Source Document')
+
     @api.multi
     def generate_projects_wizard(self):
         default_uom = self.env['project.config.settings'].\

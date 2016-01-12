@@ -42,56 +42,65 @@ class BrGenerateProjects(models.TransientModel):
 
     @api.multi
     def apply(self):
+        task_ids = []
+        project_ids = []
         parent_project = self.project_id
         if not self.for_br and not self.for_deliverable:
-            task_ids = []
             for br in parent_project.br_ids:
                 lines = [
                     line.resource_ids for line in br.deliverable_lines
                     if line.resource_ids
                 ]
                 self.create_project_task(lines, parent_project.id, task_ids)
-            task_ids = ['%s' % x for x in task_ids]
-            action = {
-                'domain': "[('id','in',[%s])]" % ','.join(task_ids),
-                'name': _('Task'),
-                'view_type': 'form',
-                'view_mode': 'tree,form',
-                'view_id': False,
-                'res_model': 'project.task',
-                'type': 'ir.actions.act_window'
-            }
         else:
-            project_ids = []
             for br in parent_project.br_ids:
-                self.generate_br_projects(parent_project, br, project_ids)
-
-            project_ids = ['%s' % x for x in project_ids]
-            action = {
-                'domain': "[('id','in',[%s])]" % ','.join(project_ids),
-                'name': _('Project'),
-                'view_type': 'form',
-                'view_mode': 'tree,form',
-                'view_id': False,
-                'res_model': 'project.project',
-                'type': 'ir.actions.act_window'
-            }
+                self.generate_br_projects(
+                    parent_project, br, project_ids, task_ids)
+        import pdb
+        pdb.set_trace()
+        if project_ids:
+            ids = ['%s' % x for x in project_ids]
+            res_model = 'project.project'
+            name = 'Project'
+        else:
+            ids = ['%s' % x for x in task_ids]
+            res_model = 'project.task'
+            name = 'Task'
+        action = {
+            'domain': "[('id','in',[%s])]" % ','.join(ids),
+            'name': _(name),
+            'view_type': 'form',
+            'view_mode': 'tree,form',
+            'view_id': False,
+            'res_model': res_model,
+            'type': 'ir.actions.act_window'
+        }
         return action
 
-    @api.one
-    def generate_br_projects(self, parent_project, br, project_ids):
+    def has_generated(self, br):
+        origin = '%s.%s' % (br._name, br.id)
+        project_obj = self.env['project.project']
+        project = project_obj.search([('origin', '=', origin)])
+        return project
+
+    @api.multi
+    def generate_br_projects(self, parent_project, br, project_ids, task_ids):
         project_obj = self.env['project.project']
         if self.for_br:
-            br_project_val = self._prepare_project_vals(
-                br, parent_project)
-            br_project = project_obj.create(br_project_val)
-            project_ids.append(br_project.id)
+            br_project = self.has_generated(br)
+            if br_project:
+                br_project = br_project[0]
+            else:
+                br_project_val = self._prepare_project_vals(
+                    br, parent_project)
+                br_project = project_obj.create(br_project_val)
+                project_ids.append(br_project.id)
             if not self.for_deliverable:
                 lines = [
                     line.resource_ids for line in br.deliverable_lines
                     if line.resource_ids
                 ]
-                self.create_project_task(lines, br_project.id)
+                self.create_project_task(lines, br_project.id, task_ids)
 
         if self.for_deliverable:
             if self.for_br:
@@ -99,7 +108,7 @@ class BrGenerateProjects(models.TransientModel):
             else:
                 line_parent = parent_project
             self.generate_deliverable_projects(
-                line_parent, br.deliverable_lines, project_ids)
+                line_parent, br.deliverable_lines, project_ids, task_ids)
 
         for child_br in br.business_requirement_ids:
             if child_br.project_id and \
@@ -107,16 +116,21 @@ class BrGenerateProjects(models.TransientModel):
                 continue
             self.generate_br_projects(parent_project, child_br, project_ids)
 
-    @api.one
+    @api.multi
     def generate_deliverable_projects(
-            self, parent_project, deliverable_lines, project_ids):
+            self, parent_project, deliverable_lines, project_ids, task_ids):
         project_obj = self.env['project.project']
         for line in deliverable_lines:
-            line_project_val = self._prepare_project_vals(
-                line, parent_project)
-            line_project = project_obj.create(line_project_val)
-            project_ids.append(line_project.id)
-            self.create_project_task(line.resource_ids, line_project.id)
+            line_project = self.has_generated(line)
+            if line_project:
+                line_project = line_project[0]
+            else:
+                line_project_val = self._prepare_project_vals(
+                    line, parent_project)
+                line_project = project_obj.create(line_project_val)
+                project_ids.append(line_project.id)
+            self.create_project_task(
+                line.resource_ids, line_project.id, task_ids)
 
     @api.multi
     def _prepare_project_vals(self, br, parent):
@@ -128,6 +142,7 @@ class BrGenerateProjects(models.TransientModel):
             'message_follower_ids': [
                 x.id for x in parent.message_follower_ids],
             'user_id': parent.user_id.id,
+            'origin': '%s.%s' % (br._name, br.id)
         }
         return project
 
@@ -154,6 +169,10 @@ class BrGenerateProjects(models.TransientModel):
         for lines in resource_lines:
             for line in lines:
                 if line.resource_type != 'task':
+                    continue
+                generated = self.env['project.task'].search(
+                    [('br_resource_id', '=', line.id)])
+                if generated:
                     continue
                 task_val = self._prepare_project_task(
                     line, project_id)
