@@ -208,7 +208,7 @@
                         <field name="br_count" string="Business Req." widget="statinfo"/>
                     </button>
                     <button class="oe_inline oe_stat_button" type="action" name="%(open_view_subproject_all)d" icon="fa-tasks">
-                        <div>Sub Project</div>
+                        <div>Sub Projects</div>
                     </button>
                 </xpath>
             </field>
