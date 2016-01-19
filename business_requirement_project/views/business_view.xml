@@ -2,13 +2,24 @@
 <openerp>
     <data>
 
+        <record model="ir.ui.view" id="view_business_requirement_form">
+            <field name="name">business.requirement.form</field>
+            <field name="model">business.requirement</field>
+            <field name="inherit_id" ref="business_requirement.view_business_requirement_form"/>
+            <field name="arch" type="xml">
+                <xpath expr='//header/field[@name="state"]' position='before'>
+                    <button name="generate_projects_wizard" string="Generate Projects" type="object" class="oe_highlight" groups="business_requirement.group_business_requirement_manager" attrs="{'invisible': [('project_id', '=', False)]}"/>
+                </xpath>
+            </field>
+        </record>
+
         <record model="ir.ui.view" id="edit_project">
             <field name="name">project.project.form</field>
             <field name="model">project.project</field>
             <field name="inherit_id" ref="project.edit_project"/>
             <field name="arch" type="xml">
                 <xpath expr='//header/field[@name="state"]' position='before'>
-                    <button name="generate_projects_wizard" string="Projects From Business Requirement" type="object" class="oe_highlight" groups="business_requirement.group_business_requirement_user"/>
+                    <button name="generate_projects_wizard" string="Projects From Business Requirement" type="object" class="oe_highlight" groups="business_requirement.group_business_requirement_manager"/>
                 </xpath>
             </field>
         </record>

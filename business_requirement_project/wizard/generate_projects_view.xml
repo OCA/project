@@ -12,10 +12,12 @@
                     <form string="Generate Tasks">
                          <group>
                             <group>
+                                <field name="br_ids" widget='many2many_tags' readonly="1"/>
                                 <field name="partner_id" readonly="1"/>
                                 <field name="project_id"/>
                                 <field name="for_br"/>
                                 <field name="for_deliverable"/>
+                                <field name="for_childs"/>
                             </group>
                         </group>
                     </form>
