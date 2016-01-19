@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+# © 2016 Elico Corp (https://www.elico-corp.com).
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from openerp import api, fields, models
 
 
@@ -98,6 +100,13 @@ class BusinessRequirement(models.Model):
         string='Count',
         compute='_sub_br_count'
     )
+
+    @api.one
+    @api.onchange('project_id')
+    def _project_id_change(self):
+        self.message_follower_ids = [
+            x.id for x in self.project_id.message_follower_ids
+        ]
 
     @api.model
     def create(self, vals):
