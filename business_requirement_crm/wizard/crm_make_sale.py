@@ -4,7 +4,7 @@ from openerp.tools.translate import _
 from openerp.osv import osv
 
 
-class CrmMakeSale(models.Model):
+class CrmMakeSale(models.TransientModel):
     _inherit = "crm.make.sale"
 
     update_quotation = fields.Boolean('Update existing quotation')
