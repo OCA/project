@@ -23,6 +23,7 @@
 
         <field name="unit_amount" position="after">
           <field name="invoiced_hours" sum="Total invoiced hours" string="Total Invoiced hours"/>
+          <field name="invoiced_product_id" string="Invoiced Product"/>
         </field>
 
       </field>
@@ -35,6 +36,7 @@
 
         <xpath expr="//field[@name='unit_amount']/.." position="after">
           <field name="invoiced_hours" sum="Total invoiced hours" string="Total Invoiced Hours"/>
+          <field name="invoiced_product_id" string="Invoiced Product"/>
         </xpath>
 
       </field>

@@ -29,6 +29,7 @@
      'hr_timesheet_sheet',
      'hr_timesheet_task',
      'timesheet_task',
+     'analytic_hours_block'
  ],
  'website': 'www.camptocamp.com',
  'data': [
@@ -36,9 +37,6 @@
      'views/hr_analytic_timesheet.xml',
      'views/project.xml',
      'wizard/analytic_line_validator_view.xml',
- ],
- 'test': [
-     'test/task_timesheet_indicators.yml',
  ],
  'installable': True,
  'auto_install': False,
