@@ -24,24 +24,14 @@ class AnalyticLineValidator(orm.TransientModel):
     """
     _name = 'analytic.line.validator'
 
-    # def _get_lines(self, cr, uid, ids, context=None):
-    #     import pdb
-    #     pdb.set_trace()
-    #     return self.pool['account.analytic.line'].browse(cr, uid,
-    #                        context.get('active_ids'), context=context)
-
-    # Question besoin d'un retour? juste?
+    #WORKS
     def action_confirm(self, cr, uid, ids, context=None):
-        import pdb
-        pdb.set_trace()
         aa_line_ids = context.get('active_ids', [])
         return self.pool['account.analytic.line'].action_confirm(
             cr, uid, aa_line_ids, context=context)
 
-    # Question besoin d'un retour? juste?
+    #WORKS
     def action_reset_to_draft(self, cr, uid, ids, context=None):
-        import pdb
-        pdb.set_trace()
         aa_line_ids = context.get('active_ids', [])
         return self.pool['account.analytic.line'].action_reset_to_draft(
             cr, uid, aa_line_ids, context=context)

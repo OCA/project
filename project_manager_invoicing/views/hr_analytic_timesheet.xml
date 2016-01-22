@@ -13,6 +13,7 @@
             <field name="unit_amount" position="after" >
                 <field name="invoiced_hours" string="Invoiced Hours" widget="float_time"/>
                 <field name="invoiced_product_id" string="Invoiced Product"/>
+                <field name="state" string="Status"/>
             </field>
 
         </field>
