@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-31 18:04+0000\n"
+"POT-Creation-Date: 2015-12-24 08:57+0000\n"
 "PO-Revision-Date: 2015-07-21 19:20+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: French (http://www.transifex.com/oca/OCA-project-8-0/language/fr/)\n"
@@ -20,27 +20,27 @@ msgstr ""
 #. module: project_task_materials
 #: field:project.task.materials,create_uid:0
 msgid "Created by"
-msgstr ""
+msgstr "Créé par"
 
 #. module: project_task_materials
 #: field:project.task.materials,create_date:0
 msgid "Created on"
-msgstr ""
+msgstr "Créé le"
 
 #. module: project_task_materials
 #: field:project.task.materials,id:0
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_task_materials
 #: field:project.task.materials,write_uid:0
 msgid "Last Updated by"
-msgstr ""
+msgstr "Dernière mise à jour par"
 
 #. module: project_task_materials
 #: field:project.task.materials,write_date:0
 msgid "Last Updated on"
-msgstr ""
+msgstr "Dernière mise à jour le"
 
 #. module: project_task_materials
 #: view:project.task:project_task_materials.view_project_task_form_materials
