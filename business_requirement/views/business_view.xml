@@ -178,23 +178,10 @@
             <field name="name">Projects</field>
             <field name="res_model">project.project</field>
             <field name="view_type">form</field>
-            <field name="domain">[('parent_id', '=', active_id)]</field>
             <field name="view_mode">kanban,tree,form,gantt</field>
             <field name="view_id" ref="view_project_kanban"/>
             <field name="search_view_id" ref="project.view_project_project_filter"/>
-            <field name="context">{'search_default_Current': 1}</field>
-            <field name="help" type="html">
-                <p class="oe_view_nocontent_create">
-                  Click to start a new project.
-                </p><p>
-                  Projects are used to organize your activities; plan
-                  tasks, track issues, invoice timesheets. You can define
-                  internal projects (R&amp;D, Improve Sales Process),
-                  private projects (My Todos) or customer ones.
-                </p><p>
-                  You will be able collaborate with internal users on
-                  projects or invite customers to share your activities.
-                </p>
+            <field name="context">{'search_default_parent_id': context.get('analytic_account_id',False)}
             </field>
         </record>
 
@@ -207,9 +194,9 @@
                     <button class="oe_inline oe_stat_button" type="action" name="%(act_view_project_br_all)d" icon="fa-tasks">
                         <field name="br_count" string="Business Req." widget="statinfo"/>
                     </button>
-                    <button class="oe_inline oe_stat_button" type="action" name="%(open_view_subproject_all)d" icon="fa-tasks">
+                    <!-- <button class="oe_inline oe_stat_button" type="action" name="%(open_view_subproject_all)d" icon="fa-tasks" context="{'analytic_account_id': analytic_account_id}">
                         <div>Sub Projects</div>
-                    </button>
+                    </button> -->
                 </xpath>
             </field>
         </record>
