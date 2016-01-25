@@ -95,6 +95,7 @@ class BrGenerateProjects(models.TransientModel):
     @api.multi
     def generate_br_projects(self, parent_project, br, project_ids, task_ids):
         project_obj = self.env['project.project']
+        br_project = False
         if self.for_br:
             br_project = self.has_generated(br)
             if br_project:
@@ -120,9 +121,10 @@ class BrGenerateProjects(models.TransientModel):
                 line_parent, br.deliverable_lines, project_ids, task_ids)
 
         if self.for_childs:
+            br_project = br_project or parent_project
             for child_br in br.business_requirement_ids:
                 self.generate_br_projects(
-                    parent_project, child_br, project_ids, task_ids)
+                    br_project, child_br, project_ids, task_ids)
 
     @api.multi
     def generate_deliverable_projects(
@@ -144,7 +146,7 @@ class BrGenerateProjects(models.TransientModel):
     def _prepare_project_vals(self, br, parent):
         vals = {
             'name': br.description,
-            'parent_id': parent.id,
+            'parent_id': parent.analytic_account_id.id,
             'partner_id': parent.partner_id.id,
             'members': [(6, 0, [x.id for x in parent.members])],
             'message_follower_ids': [
@@ -168,6 +170,7 @@ class BrGenerateProjects(models.TransientModel):
             'project_id': project_id,
             'planned_hours': qty,
             'br_resource_id': line.id,
+            'user_id': line.user_id.id,
         }
         return vals
 

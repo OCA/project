@@ -8,7 +8,7 @@
             <field name="inherit_id" ref="business_requirement.view_business_requirement_form"/>
             <field name="arch" type="xml">
                 <xpath expr='//header/field[@name="state"]' position='before'>
-                    <button name="generate_projects_wizard" string="Generate Projects" type="object" class="oe_highlight" groups="business_requirement.group_business_requirement_manager" attrs="{'invisible': [('project_id', '=', False)]}"/>
+                    <button name="generate_projects_wizard" string="Generate Projects" type="object" class="oe_highlight" groups="business_requirement.group_business_requirement_manager" attrs="{'invisible': ['|',('project_id','=',False),('state','!=','approved')]}"/>
                 </xpath>
             </field>
         </record>
