@@ -22,7 +22,7 @@ class BusinessRequirementResource(models.Model):
         string='UoM',
         required=True
     )
-    qty = fields.Integer(
+    qty = fields.Float(
         string='Quantity'
     )
     resource_type = fields.Selection(
@@ -101,7 +101,7 @@ class BusinessRequirementDeliverable(models.Model):
         string='UoM',
         required=True
     )
-    qty = fields.Integer(
+    qty = fields.Float(
         string='Quantity',
         store=True,
         default=1,
