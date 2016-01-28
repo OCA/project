@@ -1,10 +1,10 @@
 <openerp>
     <data>
 
-        <record id="view_account_analytic_account_tree" model="ir.ui.view">
-            <field name="name">account.analytic.account.tree</field>
+        <record id="view_account_analytic_account_list" model="ir.ui.view">
+            <field name="name">account.analytic.account.list</field>
             <field name="model">account.analytic.account</field>
-            <field name="inherit_id" ref="account.view_account_analytic_account_tree"/>
+            <field name="inherit_id" ref="analytic.view_account_analytic_account_list"/>
             <field name="arch" type="xml">
                 <field name="code" position="after">
                     <field name="department_id"/>
@@ -15,7 +15,7 @@
         <record id="view_account_analytic_line_form" model="ir.ui.view">
             <field name="name">account.analytic.line.form</field>
             <field name="model">account.analytic.line</field>
-            <field name="inherit_id" ref="account.view_account_analytic_line_form"/>
+            <field name="inherit_id" ref="analytic.view_account_analytic_line_form"/>
             <field name="arch" type="xml">
                 <field name="company_id" position="after">
                     <field name="department_id"/>
@@ -27,7 +27,7 @@
         <record id="view_account_analytic_line_tree" model="ir.ui.view">
             <field name="name">account.analytic.line.tree</field>
             <field name="model">account.analytic.line</field>
-            <field name="inherit_id" ref="account.view_account_analytic_line_tree"/>
+            <field name="inherit_id" ref="analytic.view_account_analytic_line_tree"/>
             <field name="arch" type="xml">
                 <field name="company_id" position="after">
                     <field name="department_id"/>
@@ -39,13 +39,13 @@
         <record id="view_account_analytic_line_filter" model="ir.ui.view">
             <field name="name">account.analytic.line.select</field>
             <field name="model">account.analytic.line</field>
-            <field name="inherit_id" ref="account.view_account_analytic_line_filter"/>
+            <field name="inherit_id" ref="analytic.view_account_analytic_line_filter"/>
             <field name="arch" type="xml">
-                <field name="user_id" position="before">
+                <field name="tag_ids" position="after">
                     <field name="department_id" widget="selection"/>
                     <field name="account_department_id" widget="selection"/>
                 </field>
-                <xpath expr="/search/group/filter[@string='User']" position="after">
+                <xpath expr="//filter[@name='group_date']" position="after">
                     <filter string="Department" icon="terp-folder-orange" domain="[]" context="{'group_by':'department_id'}"/>
                     <filter string="Account Department" icon="terp-folder-orange" domain="[]" context="{'group_by':'account_department_id'}"/>
                 </xpath>

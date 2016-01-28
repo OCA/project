@@ -1,4 +1,7 @@
 # -*- coding: utf-8 -*-
+# © 2011 Joël Grand-Guillaume (Camptocamp)
+# © 2013 Daniel Reis (Camptocamp)
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
     "name": "Analytic Department Categorization",
     "version": "8.0.1.0.0",
@@ -14,6 +17,6 @@ corresponding tree, search and form views.
         "analytic_base_department",
         "account",
         "hr"],
-    "data": ["analytic_view.xml"],
-    'installable': False,
+    "data": ["views/analytic.xml"],
+    'installable': True
 }
