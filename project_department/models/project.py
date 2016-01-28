@@ -1,0 +1,16 @@
+# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
+# © 2014 Joël Grand-Guillaume (Camptocamp)
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+from openerp import fields, models
+
+
+class ProjectTask(models.Model):
+    _inherit = 'project.task'
+
+    project_department_id = fields.Many2one(
+        related='project_id.department_id',
+        comodel_name='hr.department',
+        string='Project Department',
+        store=True,
+        readonly=True)
