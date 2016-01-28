@@ -7,7 +7,7 @@
              <field name="inherit_id" ref="project.edit_project"/>
              <field name="type">form</field>
              <field name="arch" type="xml">
-                 <field name="parent_id" position="after">
+                 <field name="user_id" position="after">
                      <field name="department_id"/>
                  </field>
              </field>
@@ -22,7 +22,7 @@
                    <field name="partner_id" position="before">
                       <field name="department_id"/>
                    </field>
-                   <xpath expr="/search/group/filter[@string='Manager']" position="after">
+                   <xpath expr="//filter[contains(@domain, user_id)]" position="after">
                       <filter string="Department" icon="terp-folder-orange" domain="[]" context="{'group_by':'department_id'}"/>
                    </xpath>
              </field>
