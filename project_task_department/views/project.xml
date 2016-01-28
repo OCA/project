@@ -20,7 +20,7 @@
             <field name="model">project.task</field>
             <field name="inherit_id" ref="project.view_task_form2"/>
             <field name="arch" type="xml">
-                <field name="categ_ids" position="after">
+                <field name="tag_ids" position="after">
                   <field name="department_id" />
                 </field>
             </field>
