@@ -124,6 +124,12 @@ class BusinessRequirementDeliverable(models.Model):
         compute='_get_price_total',
         string='Subtotal'
     )
+    linked_project = fields.Many2one(
+        string='Linked project',
+        comodel_name='project.project',
+        groups='project.group_project_manager',
+        states={'draft': [('readonly', False)]}
+    )
 
     @api.one
     @api.depends('unit_price', 'qty')
