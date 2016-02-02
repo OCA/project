@@ -5,7 +5,7 @@
     'name': 'Business Requirement',
     'category': 'Business Requirements Management',
     'summary': 'Business Requirement',
-    'version': '8.0.2.0.0',
+    'version': '8.0.2.0.1',
     'website': 'www.elico-corp.com',
     "author": "Elico Corp, Odoo Community Association (OCA)",
     'depends': [
