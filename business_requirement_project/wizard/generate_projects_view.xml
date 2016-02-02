@@ -17,7 +17,7 @@
                                 <field name="project_id"/>
                                 <field name="for_br"/>
                                 <field name="for_deliverable"/>
-                                <field name="for_childs"/>
+                                <field name="for_childs" attrs="{'readonly': [('for_br', '!=', True)]}"/>
                             </group>
                         </group>
                     </form>
