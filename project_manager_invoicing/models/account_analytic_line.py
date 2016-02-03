@@ -406,6 +406,27 @@ class AccountAnalyticLine(orm.Model):
                     cr, uid, [last_invoice], context)
         return invoices
 
+    def check_invoiceable_line(self, cr, uid, ids, context=None):
+        # check that no analytic line is in a not-done timesheet
+        cr.execute("""
+            SELECT al.id
+            FROM account_analytic_line al
+            WHERE state = 'draft'
+        """)
+        open_timesheet_ids = set([x[0] for x in cr.fetchall()])
+        # Intersect set(ids) and set(open_timesheet_ids)
+        # to see if any ID is common to both sets
+        intersect = set(ids) & open_timesheet_ids
+        if len(intersect) > 0:
+            msg = ''
+            for line in self.browse(cr, uid, list(intersect), context=context):
+                msg += _('Name: ') + line.name
+                msg += _(", User: ") + line.user_id.name
+                msg += "\n"
+            raise osv.except_osv(
+                _('Some of the analytic lines are '
+                  'in not-approved timesheets!'),
+                msg)
     # TODO faire un override to add unit_price computation adn quantity based on
     # invoiced_hours
     # def _prepare_cost_invoice_line(self, invoice_id, product_id, uom, user_id,

@@ -43,5 +43,13 @@ class hr_timesheet_line(orm.Model):
     def invoice_cost_create(self, cr, uid, ids, data=None, context=None):
         timesheet_lines = self.browse(cr, uid, ids, context=context)
         aal_ids = [x.line_id.id for x in timesheet_lines]
-        self.pool['account.analytic.line'].invoice_cost_create(
+        return self.pool['account.analytic.line'].invoice_cost_create(
             cr, uid, aal_ids, data=data, context=context)
+
+    def check_invoiceable_line(self, cr, uid, ids, context=None):
+        # check that no timesheet line is in a not-done timesheet,
+        # using the account_analytic_line method
+        timesheet_lines = self.browse(cr, uid, ids, context=context)
+        aal_ids = [x.line_id.id for x in timesheet_lines]
+        self.pool['account.analytic.line'].check_invoiceable_line(
+            cr, uid, aal_ids, context=context)
