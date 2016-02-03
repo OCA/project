@@ -26,12 +26,14 @@ class AnalyticLineValidator(orm.TransientModel):
 
     #WORKS
     def action_confirm(self, cr, uid, ids, context=None):
-        aa_line_ids = context.get('active_ids', [])
-        return self.pool['account.analytic.line'].action_confirm(
-            cr, uid, aa_line_ids, context=context)
+        aal_obj = self.pool.get(context['active_model'])
+        aal_ids = context.get('active_ids', False)
+        return aal_obj.action_confirm(
+            cr, uid, aal_ids, context=context)
 
     #WORKS
     def action_reset_to_draft(self, cr, uid, ids, context=None):
-        aa_line_ids = context.get('active_ids', [])
-        return self.pool['account.analytic.line'].action_reset_to_draft(
-            cr, uid, aa_line_ids, context=context)
+        aal_obj = self.pool.get(context['active_model'])
+        aal_ids = context.get('active_ids', False)
+        return aal_obj.action_reset_to_draft(
+            cr, uid, aal_ids, context=context)

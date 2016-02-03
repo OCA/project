@@ -11,12 +11,12 @@
       <field name="arch" type="xml">
         <form string="Confirm/Set to draft Lines" version="7.0">
           <!-- ajouter un formulaire externe contenant juste les lignes importantes -->
-          
+
           <footer>
             <button name="action_confirm"  type="object" string="Confirm" class="oe_highlight"/>
             or
             <button name="action_reset_to_draft" type="object" string="Set to draft" class="oe_highlight"/>
-            
+
             <button special="cancel" string="Close" icon="gtk-cancel" class="oe_link"/>
           </footer>
         </form>
