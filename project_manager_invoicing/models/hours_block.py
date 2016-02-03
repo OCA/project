@@ -47,7 +47,6 @@ class AccountHoursBlock(orm.Model):
         return result
 
     def _compute_hours(self, cr, uid, ids, fields, args, context=None):
-        import pdb; pdb.set_trace()
         # Replaced line.unit_amount with line.invoiced_hours
         """Return a dict of [id][fields]"""
         if isinstance(ids, (int, long)):
@@ -101,7 +100,6 @@ class AccountHoursBlock(orm.Model):
         return result
 
     def _compute_amount(self, cr, uid, ids, fields, args, context=None):
-        import pdb; pdb.set_trace()
         if context is None:
             context = {}
         result = {}

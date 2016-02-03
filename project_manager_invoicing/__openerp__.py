@@ -29,7 +29,8 @@
      'hr_timesheet_sheet',
      'hr_timesheet_task',
      'timesheet_task',
-     'analytic_hours_block'
+     'analytic_hours_block',
+     'account'
  ],
  'website': 'www.camptocamp.com',
  'data': [

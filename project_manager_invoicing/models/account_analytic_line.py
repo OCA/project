@@ -23,7 +23,7 @@ from openerp.osv import orm, fields
 from openerp.tools.translate import _
 import cProfile
 
-# Pas d'interférences avec d'autres modules
+
 STATES = [
     ('draft', "Draft"),
     ('confirm', "Confirmed"),
@@ -33,11 +33,6 @@ STATES = [
 class AccountAnalyticLine(orm.Model):
     # ./parts/server/addons/analytic/analytic.py
     _inherit = 'account.analytic.line'
-
-    # TODO SUPPRIMER PAS UTILISÉ
-    def _get_default_invoiced_hours(self, cr, uid, ids, context=None):
-        res = {}
-        return res
 
     # OK
     def _get_default_invoiced_product(self, cr, uid, context=None):
@@ -49,7 +44,7 @@ class AccountAnalyticLine(orm.Model):
             cr=cr, uid=uid, context=context)
 
     _columns = {
-        # question juste ? status???
+        # TODO bloquer l'édition d'une ligne si le tatus est confirmé
         'state': fields.selection(STATES, 'States', required=True),
         'invoiced_hours': fields.float(
             help="Amount of hours that you want to charge your customer for "
@@ -70,8 +65,6 @@ class AccountAnalyticLine(orm.Model):
 
     # TOTEST
     def _set_remaining_hours_create(self, cr, uid, vals, context=None):
-        import pdb
-        pdb.set_trace()
         """OVERWRITE calculation is now made with invoiced_hours
         """
         if not vals.get('task_id'):
@@ -87,8 +80,6 @@ class AccountAnalyticLine(orm.Model):
 
     # TOTEST
     def _set_remaining_hours_write(self, cr, uid, ids, vals, context=None):
-        import pdb
-        pdb.set_trace
         """ OVERWRITE calculation is made with: invoiced_hours in place of: unit_amount
         """
         if isinstance(ids, (int, long)):
@@ -127,21 +118,21 @@ class AccountAnalyticLine(orm.Model):
         return ids
 
     # TOTEST
-    # def _set_remaining_hours_unlink(self, cr, uid, ids, context=None):
-    #     """ OVERWRITE changed the calculation method of remaining_hours with
-    #         invoiced_hours in place of unit_amount
-    #     """
-    #     if isinstance(ids, (int, long)):
-    #         ids = [ids]
-    #     for line in self.browse(cr, uid, ids):
-    #         if not line.task_id:
-    #             continue
-    #         hours = line.invoiced_hours or 0.0
-    #         cr.execute(
-    #             'UPDATE project_task '
-    #             'SET remaining_hours=remaining_hours + %s '
-    #             'WHERE id=%s', (hours, line.task_id.id))
-    #     return ids
+    def _set_remaining_hours_unlink(self, cr, uid, ids, context=None):
+        """ OVERWRITE changed the calculation method of remaining_hours with
+            invoiced_hours in place of unit_amount
+        """
+        if isinstance(ids, (int, long)):
+            ids = [ids]
+        for line in self.browse(cr, uid, ids):
+            if not line.task_id:
+                continue
+            hours = line.invoiced_hours or 0.0
+            cr.execute(
+                'UPDATE project_task '
+                'SET remaining_hours=remaining_hours + %s '
+                'WHERE id=%s', (hours, line.task_id.id))
+        return ids
 
         # update project_task set
         # remaining_hours=remaining_hours+103,invoiced_hours=invoiced_hours-103
@@ -152,7 +143,7 @@ class AccountAnalyticLine(orm.Model):
         """ OVERWRITE _check to check state of the line instead of the sheet
         """
         for line in self.browse(self, cr, uid, ids, context=context):
-            if line.state == 'confirmed':
+            if line.state == 'confirm':
                 if (uid != line.account_id.user_id.id and
                         uid != SUPERUSER_ID):
                     raise orm.except_orm(
@@ -161,10 +152,19 @@ class AccountAnalyticLine(orm.Model):
                           " this entry to draft in order to edit it."))
         return True
 
+    def _check_valid(self, cr, uid, ids, context=None):
+        for line in self.browse(self, cr, uid, ids):
+            if line.state == 'draft':
+                raise orm.except_orm(
+                    _(u"Only the project manager can modify an entry in a "
+                      "confirmed timesheet line. Please contact him to set"
+                      " this entry to draft in order to edit it."))
+        return True
+
     # TODO INFO. Classe de base=./parts/server/addons/analytic/analytic.py
     # Exemple de redéfinition de méthodes, rechercher stock.picking.out
     def create(self, cr, uid, vals, context=None):
-        if not vals['invoiced_hours']:
+        if not vals['invoiced_hours']: # Fait un bug lors de la validation d'une facture
             vals['invoiced_hours'] = vals['unit_amount']
         # self._set_remaining_hours_create(cr, uid, vals, context)
         res = super(AccountAnalyticLine, self).create(
@@ -180,6 +180,8 @@ class AccountAnalyticLine(orm.Model):
                 errors = []
                 lines = self.browse(cr, uid, ids, context=context)
                 for line in lines:
+                    if line.state == 'draft':
+                        errors.append(line)
                     if (uid != line.account_id.user_id.id and
                             uid != SUPERUSER_ID):
                         errors.append(line)
@@ -191,7 +193,6 @@ class AccountAnalyticLine(orm.Model):
                             "entries %s") % (
                             errors)
                     )
-        # self._set_remaining_hours_write(cr, uid, ids, vals, context=context)
         return super(AccountAnalyticLine, self).write(
             cr, uid, ids, vals, context=context)
 
@@ -232,13 +233,8 @@ class AccountAnalyticLine(orm.Model):
         if self.to_invoice:
             discount = self.unit_amount * (self.to_invoice.factor / 100.0)
             self.invoiced_hours = self.unit_amount - discount
-
-    # TODO Changer le SQL pour qu'on puisse modifier les GroupBy
-    # Trouver méthode
-        # fichier: hr_timesheet_invoice
+    # TODO TEST
     def invoice_cost_create(self, cr, uid, ids, data=None, context=None):
-        import pdb
-        pdb.set_trace()
         analytic_account_obj = self.pool.get('account.analytic.account')
         account_payment_term_obj = self.pool.get('account.payment.term')
         invoice_obj = self.pool.get('account.invoice')  # Bug!
@@ -258,12 +254,13 @@ class AccountAnalyticLine(orm.Model):
 
         # prepare for iteration on journal and accounts
         for line in self.pool.get('account.analytic.line').browse(cr, uid, ids, context=context):
+            line._check_valid()
             if line.journal_id.type not in journal_types:
                 journal_types[line.journal_id.type] = set()
             journal_types[line.journal_id.type].add(line.account_id.id)
         for journal_type, account_ids in journal_types.items():
             for account in analytic_account_obj.browse(
-                                cr, uid, list(account_ids), context=context):
+                    cr, uid, list(account_ids), context=context):
                 partner = account.partner_id
 
                 if (not partner) or not (account.pricelist_id):
@@ -309,30 +306,32 @@ class AccountAnalyticLine(orm.Model):
                 # TODO partie à modifier
                 # Les aal sont normalement groupées par produit => le but est de les grouper
                 # but modifier le groupement
-                """ Unit_amount remplacé par invoiced_hours
+                """ Modification of:
+                unit_amount     =>  invoiced_hours
+                product_id      =>  invoiced_product_id
                 """
-                cr.execute("""SELECT product_id, user_id, to_invoice, sum(amount), sum(invoiced_hours), product_uom_id
+                cr.execute("""SELECT invoiced_product_id, user_id, to_invoice, sum(amount), sum(invoiced_hours), product_uom_id
                         FROM account_analytic_line as line LEFT JOIN account_analytic_journal journal ON (line.journal_id = journal.id)
                         WHERE account_id = %s
                             AND line.id IN %s AND journal.type = %s AND to_invoice IS NOT NULL
-                        GROUP BY product_id, user_id, to_invoice, product_uom_id""", (account.id, tuple(ids), journal_type))
+                        GROUP BY invoiced_product_id, user_id, to_invoice, product_uom_id""", (account.id, tuple(ids), journal_type))
 
-                for product_id, user_id, factor_id, total_price, qty, uom in cr.fetchall():
+                for invoiced_product_id, user_id, factor_id, total_price, qty, uom in cr.fetchall():
                     context2.update({'uom': uom})
-
+#produit peut-être à modfier
                     if data.get('product'):
                         # force product, use its public price
-                        product_id = data['product'][0]
+                        invoiced_product_id = data['product'][0]
                         unit_price = self._get_invoice_price(
-                            cr, uid, account, product_id, user_id, qty, context2)
-                    elif journal_type == 'general' and product_id:
+                            cr, uid, account, invoiced_product_id, user_id, qty, context2)
+                    elif journal_type == 'general' and invoiced_product_id:
                         # timesheets, use sale price
                         unit_price = self._get_invoice_price(
-                            cr, uid, account, product_id, user_id, qty, context2)
+                            cr, uid, account, invoiced_product_id, user_id, qty, context2)
                     else:
                         # expenses, using price from amount field
                         unit_price = total_price * -1.0 / qty
-
+# fin produit peut-être à modifier
                     factor = invoice_factor_obj.browse(
                         cr, uid, factor_id, context=context2)
                     # factor_name = factor.customer_name and line_name + ' - ' + factor.customer_name or line_name
@@ -340,7 +339,7 @@ class AccountAnalyticLine(orm.Model):
                     curr_line = {
                         'price_unit': unit_price,
                         'quantity': qty,
-                        'product_id': product_id or False,
+                        'invoiced_product_id': invoiced_product_id or False,
                         'discount': factor.factor,
                         'invoice_id': last_invoice,
                         'name': factor_name,
@@ -348,10 +347,10 @@ class AccountAnalyticLine(orm.Model):
                         'account_analytic_id': account.id,
                     }
                     product = product_obj.browse(
-                        cr, uid, product_id, context=context2)
+                        cr, uid, invoiced_product_id, context=context2)
                     if product:
                         factor_name = product_obj.name_get(
-                            cr, uid, [product_id], context=context2)[0][1]
+                            cr, uid, [invoiced_product_id], context=context2)[0][1]
                         if factor.customer_name:
                             factor_name += ' - ' + factor.customer_name
 
@@ -371,8 +370,10 @@ class AccountAnalyticLine(orm.Model):
                     #
                     # Compute for lines
                     #
-                    cr.execute("SELECT * FROM account_analytic_line WHERE account_id = %s and id IN %s AND product_id=%s and to_invoice=%s ORDER BY account_analytic_line.date",
-                               (account.id, tuple(ids), product_id, factor_id))
+                    """invoiced_product_id in place of product_id
+                    """
+                    cr.execute("SELECT * FROM account_analytic_line WHERE account_id = %s and id IN %s AND invoiced_product_id=%s and to_invoice=%s ORDER BY account_analytic_line.date",
+                               (account.id, tuple(ids), invoiced_product_id, factor_id))
 
                     line_ids = cr.dictfetchall()
                     note = []
@@ -401,7 +402,6 @@ class AccountAnalyticLine(orm.Model):
                         cr, uid, curr_line, context=context)
                     cr.execute("update account_analytic_line set invoice_id=%s WHERE account_id = %s and id IN %s", (
                         last_invoice, account.id, tuple(ids)))
-
                 invoice_obj.button_reset_taxes(
                     cr, uid, [last_invoice], context)
         return invoices
@@ -411,10 +411,3 @@ class AccountAnalyticLine(orm.Model):
     # def _prepare_cost_invoice_line(self, invoice_id, product_id, uom, user_id,
     #                                factor_id, account, analytic_lines,
     #                                journal_type, data):
-
-
-# TODO REMOVE https://www.odoo.com/documentation/8.0/reference/orm.html
-# ONCHANGE exemple: https://www.odoo.com/forum/help-1/question/change-value-checkbox-in-openerp-v7-36618
-# Classes importantes:
-#       parts/server/addons/analytic/analytic.py
-#       parts/server/addons/hr_timesheet/hr_timesheet.py
