@@ -16,7 +16,9 @@ to invoice (e.g. to invoice different type of service done by the same employee)
 Installation
 ============
 
-This modules requires hr_timesheet_invoice
+This modules requires:
+	* hr_timesheet_invoice
+	* analytic_hours_block
 
 Usage
 =====
