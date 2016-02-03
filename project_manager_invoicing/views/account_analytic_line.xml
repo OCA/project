@@ -8,7 +8,6 @@
       <field name="arch" type="xml">
 
         <field name="to_invoice"  position="after">
-          <field name="state" invisible="1"/>
           <button name="action_confirm" type="object" string="Confirm" groups="project.group_project_manager" states="draft" icon="terp-check"/>
           <button name="action_reset_to_draft" type="object" string="Set Draft" groups="project.group_project_manager" states="confirm" icon="gtk-undo"/>
         </field>
@@ -24,6 +23,7 @@
         <field name="unit_amount" position="after">
           <field name="invoiced_hours" sum="Total invoiced hours" string="Total Invoiced hours"/>
           <field name="invoiced_product_id" string="Invoiced Product"/>
+          <field name="state" string="Status"/>
         </field>
 
       </field>
@@ -37,8 +37,8 @@
         <xpath expr="//field[@name='unit_amount']/.." position="after">
           <field name="invoiced_hours" sum="Total invoiced hours" string="Total Invoiced Hours"/>
           <field name="invoiced_product_id" string="Invoiced Product"/>
+          <field name="state" sting="Status"/>
         </xpath>
-
       </field>
     </record>
 

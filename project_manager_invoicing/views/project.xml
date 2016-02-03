@@ -11,10 +11,12 @@
         <xpath expr="//field[@name='work_ids']//tree/field[@name='unit_amount']" position="after">
           <field name="invoiced_hours" sum="Total invoiced hours" string=" Invoiced Hours" widget="float_time"/>
           <field name="invoiced_product_id" string="Invoiced Product"/>
+          <field name="state" string="State"/>
         </xpath>
         <xpath expr="//field[@name='work_ids']//form//field[@name='unit_amount']" position="after">
           <field name="invoiced_hours"/>
           <field name="invoiced_product_id" string="Invoiced Product"/>
+          <field name="state" string="State"/>
         </xpath>
 
         <field name="effective_hours" position="after">
