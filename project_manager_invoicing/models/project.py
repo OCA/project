@@ -20,11 +20,12 @@ from openerp.osv import orm, fields
 from openerp.tools.translate import _
 from openerp import SUPERUSER_ID
 
+## faire une dépendance (monkeypatcher)
 TASK_WATCHERS = [
     'work_ids',
     'remaining_hours',
     'effective_hours',
-    'planned_hours'
+    'planned_hours',
 ]
 TIMESHEET_WATCHERS = [
     'unit_amount',
@@ -37,9 +38,10 @@ TIMESHEET_WATCHERS = [
 
 class ProjectTask(orm.Model):
     _inherit = 'project.task'
-    _name = 'project.task'
 
     def _progress_rate(self, cr, uid, ids, names, arg, context=None):
+        # Modification: Calculation is now based on invoiced_hours in
+        # place of unit_amount
         """TODO improve code taken for OpenERP"""
         res = {}
         cr.execute("""SELECT task_id, COALESCE(SUM(invoiced_hours),0)
@@ -49,9 +51,9 @@ class ProjectTask(orm.Model):
         hours = dict(cr.fetchall())
         for task in self.browse(cr, uid, ids, context=context):
             res[task.id] = {}
-            # res[task.id]['effective_hours'] = hours.get(task.id, 0.0)
-            # res[task.id]['total_hours'] = (
-            #     task.remaining_hours or 0.0) + hours.get(task.id, 0.0)
+            res[task.id]['effective_hours'] = hours.get(task.id, 0.0)
+            res[task.id]['total_hours'] = (
+                task.remaining_hours or 0.0) + hours.get(task.id, 0.0)
             res[task.id]['delay_hours'] = res[task.id][
                 'total_hours'] - task.planned_hours
             res[task.id]['progress'] = 0.0
@@ -65,6 +67,11 @@ class ProjectTask(orm.Model):
 
     # TODO TOTEST
     def _store_set_values(self, cr, uid, ids, field_list, context=None):
+        # Hack to avoid redefining most of function fields of project.project
+        # model. This is mainly due to the fact that orm _store_set_values use
+        # direct access to database. So when modify a line the
+        # _store_set_values as it uses cursor directly to update tasks
+        # project triggers on task are not called
         res = super(ProjectTask, self)._store_set_values(
             cr, uid, ids, field_list, context=context)
         for row in self. browse(cr, SUPERUSER_ID, ids, context=context):
@@ -83,7 +90,7 @@ class ProjectTask(orm.Model):
                       GROUP BY task_id""", (tuple(ids),))
         hours_unit_amount = dict(cr.fetchall())
         for task in self.browse(cr, uid, ids, context=context):
-            #sum(l.invoiced_hours for l in task.work_ids)
+            # sum(l.invoiced_hours for l in task.work_ids)
             invoiced_hours = hours_unit_amount.get(task.id, 0.0)
             res[task.id] = {'invoiced_hours': invoiced_hours,
                             'remaining_hours': task.planned_hours - invoiced_hours,
@@ -107,15 +114,47 @@ class ProjectTask(orm.Model):
                     }
     _columns = {
         'invoiced_hours': fields.function(
-            _get_hours,
+            _progress_rate,
             type='float',
             store=_store_hours,
             multi="progress"
         ),
-        'remaining_hours': fields.function(
-            _get_hours,
-            type='float',
-            store=_store_hours,
-            multi="progress"
-        ),
+        'effective_hours': fields.function(
+            _progress_rate, multi="progress", string='Time Spent',
+            help="Computed using the sum of the task work done (timesheet "
+                 "lines associated on this task).",
+            store={'project.task': (lambda self, cr, uid, ids, c=None: ids,
+                                    TASK_WATCHERS, 20),
+                   'account.analytic.line': (_get_analytic_line,
+                                             TIMESHEET_WATCHERS, 20)}),
+        'delay_hours': fields.function(
+            _progress_rate, multi="progress", string='Deduced Hours',
+            help="Computed as difference between planned hours by the project "
+                 "manager and the total hours of the task.",
+            store={'project.task': (lambda self, cr, uid, ids, c=None: ids,
+                                    TASK_WATCHERS, 20),
+                   'account.analytic.line': (_get_analytic_line,
+                                             TIMESHEET_WATCHERS, 20)}),
+        'total_hours': fields.function(
+            _progress_rate, multi="progress", string='Total Time',
+            help="Computed as: Time Spent + Remaining Time.",
+            store={'project.task': (lambda self, cr, uid, ids, c=None: ids,
+                                    TASK_WATCHERS, 20),
+                   'account.analytic.line': (_get_analytic_line,
+                                             TIMESHEET_WATCHERS, 20)}),
+        'progress': fields.function(
+            _progress_rate, multi="progress", string='Progress', type='float',
+            group_operator="avg",
+            help="If the task has a progress of 99.99% you should close the "
+                 "task if it's finished or reevaluate the time",
+            store={'project.task': (lambda self, cr, uid, ids, c=None: ids,
+                                    TASK_WATCHERS, 20),
+                   'account.analytic.line': (_get_analytic_line,
+                                             TIMESHEET_WATCHERS, 20)})
+        # 'remaining_hours': fields.function(
+        #     _get_hours,
+        #     type='float',
+        #     store=_store_hours,
+        #     multi="progress"
+        # ),
     }
