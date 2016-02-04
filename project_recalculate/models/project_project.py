@@ -56,12 +56,12 @@ class ProjectProject(models.Model):
             if not project.calculation_type:
                 raise Warning(_("Cannot recalculate project because your "
                                 "project don't have calculation type."))
-            if (project.calculation_type == 'date_begin'
-                    and not project.date_start):
+            if (project.calculation_type == 'date_begin' and not
+                    project.date_start):
                 raise Warning(_("Cannot recalculate project because your "
                                 "project don't have date start."))
-            if (project.calculation_type == 'date_end'
-                    and not project.date):
+            if (project.calculation_type == 'date_end' and not
+                    project.date):
                 raise Warning(_("Cannot recalculate project because your "
                                 "project don't have date end."))
             if project.calculation_type != 'none':
