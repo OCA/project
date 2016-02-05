@@ -14,6 +14,7 @@
     'data': [
         'security/ir.model.access.csv',
         'views/business_view.xml',
+        'views/project.xml',
     ],
     'license': 'AGPL-3',
     'installable': True,

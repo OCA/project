@@ -3,6 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from openerp import api, fields, models
 from openerp.exceptions import ValidationError
+from openerp.osv import osv
 from openerp.tools.translate import _
 
 
@@ -69,6 +70,8 @@ class BusinessRequirementResource(models.Model):
         self.description = description
         self.uom_id = uom_id
         self.unit_price = unit_price
+
+
 
     @api.one
     @api.onchange('resource_type')
@@ -137,13 +140,43 @@ class BusinessRequirementDeliverable(models.Model):
         uom_id = False
         unit_price = 0
         product = self.product_id
+        # import pdb
+        # pdb.set_trace()
         if product:
             description = product.name
             uom_id = product.uom_id.id
             unit_price = product.list_price
+        if self.business_requirement_id.project_id.pricelist_id and \
+                self.business_requirement_id.partner_id and self.uom_id:
+            product = self.product_id.with_context(
+                lang=self.business_requirement_id.partner_id.lang,
+                partner=self.business_requirement_id.partner_id.id,
+                quantity=self.qty,
+                pricelist=self.business_requirement_id.
+                project_id.pricelist_id.id,
+                uom=self.uom_id.id,
+            )
+            unit_price = product.price
         self.description = description
         self.uom_id = uom_id
         self.unit_price = unit_price
+
+    @api.onchange('uom_id', 'qty')
+    def product_uom_change(self):
+        if not self.uom_id:
+            self.price_unit = 0.0
+            return
+        if self.business_requirement_id.project_id.pricelist_id and \
+                self.business_requirement_id.partner_id:
+            product = self.product_id.with_context(
+                lang=self.business_requirement_id.partner_id.lang,
+                partner=self.business_requirement_id.partner_id.id,
+                quantity=self.qty,
+                pricelist=self.business_requirement_id.
+                project_id.pricelist_id.id,
+                uom=self.uom_id.id,
+            )
+            self.unit_price = product.price
 
 
 class BusinessRequirement(models.Model):
