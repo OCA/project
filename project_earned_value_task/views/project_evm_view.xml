@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Project Earned Value Management -->
+        
+        <record id="view_project_evm_task_search" model="ir.ui.view">
+            <field name="name">project.evm.task.search</field>
+            <field name="model">project.evm.task</field>
+            <field name="type">search</field>
+            <field name="arch" type="xml">
+                <search string="Project Earned Value">                    
+                    <field name="project_id"/>
+                    <field name="eval_date"/>
+                    <field name="kpi_type"/>
+                    <field name="kpi_value"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Project" name="project" context="{'group_by':'project_id'}"/>
+                        <filter string="KPI Type" name="kpi_type"
+                                context="{'group_by':'kpi_type'}"/>
+                        <filter string="Day" name="evaldate"
+                                context="{'group_by':'eval_date'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="view_project_evm_task_edit" model="ir.ui.view">
+            <field name="name">project.evm.task.form</field>
+            <field name="model">project.evm.task</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Project Earned Value Management">
+                    <field name="project_id"/>
+                    <field name="eval_date"/>
+                    <field name="kpi_type"/>
+                    <field name="kpi_value"/>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_project_evm_task_tree" model="ir.ui.view">
+            <field name="name">project.evm.task.tree</field>
+            <field name="model">project.evm.task</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Project Earned Value Management">   
+                    <field name="project_id"/>
+                    <field name="eval_date"/>
+                    <field name="kpi_type"/>
+                    <field name="kpi_value"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_project_evm_task_graph" model="ir.ui.view">
+            <field name="name">project.evm.task.graph</field>
+            <field name="model">project.evm.task</field>
+            <field name="arch" type="xml">
+                <graph string="Earned Value Management" type="line">
+                    <field name="eval_date" type="row"/>
+                    <field name="kpi_type" type="col"/>
+                    <field name="kpi_value" type="measure"/>
+                </graph>
+
+             </field>
+        </record>                
+
+        <record id="action_project_evm_task_tree"
+                model="ir.actions.act_window">
+            <field name="name">Earned Value Records</field>
+            <field name="res_model">project.evm.task</field>
+            <field name="view_id" ref="view_project_evm_task_tree"/>
+            <field name="view_mode">tree,form,graph</field>
+            <field name="search_view_id"
+                   ref="view_project_evm_task_search"/>
+            <field name="help">Define the project Earned Value Management</field>
+            <field name="context">{'search_default_kpi_type':'PV', 'search_default_kpi_type':'EV', 'search_default_kpi_type':'AC', 'search_default_evaldate':1,'search_default_kpi_type':1,'search_default_project':1, 'group_by':[], 'group_by_no_leaf':1,}</field>
+        </record>
+
+        <menuitem id="menu_project_evm" name="Earned Value Management" parent="base.menu_project_report"/>
+        <menuitem action="action_earned_value_task_graphs"
+                  id="menu_action_earned_value_graphs" parent="menu_project_evm" sequence="3"/>
+        <menuitem action="action_project_evm_task_tree" id="menu_project_evm_view" parent="menu_project_evm" sequence="4"/>
+
+    </data>
+</openerp>

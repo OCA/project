@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+
+        <!-- Task Stages -->
+        <record id="project.project_tt_analysis" model="project.task.type">
+            <field name="poc">0</field>
+        </record>
+        <record id="project.project_tt_specification"
+                model="project.task.type">
+            <field name="poc">0</field>
+        </record>
+        <record id="project.project_tt_design" model="project.task.type">
+            <field name="poc">0</field>
+        </record>
+        <record id="project.project_tt_development" model="project.task.type">
+            <field name="poc">0</field>
+        </record>
+        <record id="project.project_tt_testing" model="project.task.type">
+            <field name="poc">0</field>
+        </record>
+        <record id="project.project_tt_merge" model="project.task.type">
+            <field name="poc">0</field>
+        </record>
+        <record id="project.project_tt_deployment" model="project.task.type">
+            <field name="poc">100</field>
+        </record>
+        <record id="project.project_tt_cancel" model="project.task.type">
+            <field name="poc">0</field>
+        </record>
+    </data>
+
+</openerp>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_earned_value_task_graphs" model="ir.ui.view">
+            <field name="name">earned.value.task.graphs.form</field>
+            <field name="model">earned.value.task.graphs</field>
+            <field name="arch" type="xml">
+                <form string="Earned Value Report" version="7.0">                	
+                    <group>
+                    	<label for="project_id"/>
+                        <div> 
+                            <field name="project_id"/>
+
+                        </div>
+                    </group>
+                    <footer>
+                        <button string="Open Graphs" name="earned_value_graphs_open_window" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_earned_value_task_graphs"
+                model="ir.actions.act_window">
+            <field name="name">Earned Value Graphs</field>
+            <field name="res_model">earned.value.task.graphs</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_earned_value_task_graphs"/>
+            <field name="target">new</field>
+        </record>
+
+    </data>
+</openerp>

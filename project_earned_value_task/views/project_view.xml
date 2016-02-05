@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="task_type_edit_poc" model="ir.ui.view">
+            <field name="name">task_type_edit_poc</field>
+            <field name="model">project.task.type</field>
+            <field name="inherit_id" ref="project.task_type_edit"/>
+            <field name="arch" type="xml">
+                <field name="fold" position="after">
+                    <field name="poc" />
+                </field>
+            </field>
+        </record>
+
+        <record id="task_type_tree_poc" model="ir.ui.view">
+            <field name="name">project.task.type.tree.poc</field>
+            <field name="model">project.task.type</field>
+            <field name="inherit_id" ref="project.task_type_tree"/>
+            <field name="arch" type="xml">
+                <field name="fold" position="after">
+                    <field name="poc" />
+                </field>
+            </field>
+        </record>
+
+        <record id="edit_project" model="ir.ui.view">
+            <field name="name">project.project.form</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="arch" type="xml">
+                <notebook position="inside">
+                    <page string="Progress Analysis">
+                        <group name="Basic" string="Basic elements">
+                            <field name="bac" string="Budget at Completion (BAC)"/>
+                            <field name="poc" string="Aggregated Percent of Completion (POC)"/>
+                            <field name="pv" string="Planned Value (PV)"/>
+                            <field name="ev" string="Earned Value (EV)"/>
+                            <field name="ac" string="Actual Cost (AC)"/>
+                        </group>
+                        <group name="schedule" string="Schedule analysis">
+                            <field name="sv" string="Schedule Variance (SV)"/>
+                            <field name="svp" string="Schedule Variance Percent (SVP)"/>
+                            <field name="spi" string="Schedule Performance Index (SPI)"/>
+                        </group>
+                        <group name="cost" string="Cost analysis">
+                            <field name="cv" string ="Cost Variance (CV)"/>
+                            <field name="cvp" string = "Cost Variance Percent (CVP)"/>
+                            <field name="cpi" string = "Cost Performance Index (CPI)"/>
+                            <field name="tcpi" string="To-Complete Performance Index (TCPI)"/>
+                            <field name="eac" string="Estimate at Completion (EAC)"/>
+                            <field name="vac" string="Variance at Completion (VAC)"/>
+                            <field name="vacp" string="Variance at Completion Percent (VACP)"/>
+                            <field name="etc" string="Estimate to Complete (ETC)"/>
+                        </group>
+                    </page>
+                </notebook>
+            </field>
+        </record>
+    </data>
+</openerp>
