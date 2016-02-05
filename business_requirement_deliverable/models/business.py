@@ -71,8 +71,6 @@ class BusinessRequirementResource(models.Model):
         self.uom_id = uom_id
         self.unit_price = unit_price
 
-
-
     @api.one
     @api.onchange('resource_type')
     def resource_type_change(self):
@@ -140,8 +138,6 @@ class BusinessRequirementDeliverable(models.Model):
         uom_id = False
         unit_price = 0
         product = self.product_id
-        # import pdb
-        # pdb.set_trace()
         if product:
             description = product.name
             uom_id = product.uom_id.id
