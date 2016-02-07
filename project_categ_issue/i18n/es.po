@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-12 01:44+0000\n"
+"POT-Creation-Date: 2015-12-24 08:57+0000\n"
 "PO-Revision-Date: 2015-07-21 19:21+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: Spanish (http://www.transifex.com/oca/OCA-project-8-0/language/es/)\n"
@@ -40,7 +40,7 @@ msgstr ""
 #. module: project_categ_issue
 #: view:project.issue:project_categ_issue.project_issue_form_view_categs
 msgid "onchange_project(project_id)"
-msgstr ""
+msgstr "onchange_project(project_id)"
 
 #. module: project_categ_issue
 #: view:project.issue:project_categ_issue.project_issue_form_view_categs

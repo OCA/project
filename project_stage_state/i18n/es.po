@@ -3,13 +3,14 @@
 # * project_stage_state
 # 
 # Translators:
+# Antonio Trueba, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-18 15:57+0000\n"
-"PO-Revision-Date: 2015-07-21 19:20+0000\n"
-"Last-Translator: <>\n"
+"POT-Creation-Date: 2015-12-24 08:57+0000\n"
+"PO-Revision-Date: 2016-02-05 12:39+0000\n"
+"Last-Translator: Antonio Trueba\n"
 "Language-Team: Spanish (http://www.transifex.com/oca/OCA-project-8-0/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,7 +21,7 @@ msgstr ""
 #. module: project_stage_state
 #: selection:project.task.type,state:0
 msgid "Cancelled"
-msgstr ""
+msgstr "Cancelado"
 
 #. module: project_stage_state
 #: selection:project.task.type,state:0
@@ -28,24 +29,29 @@ msgid "Done"
 msgstr ""
 
 #. module: project_stage_state
+#: field:project.task.type,fold_statusbar:0
+msgid "Folded in Statusbar"
+msgstr ""
+
+#. module: project_stage_state
 #: selection:project.task.type,state:0
 msgid "In Progress"
-msgstr ""
+msgstr "En curso"
 
 #. module: project_stage_state
 #: selection:project.task.type,state:0
 msgid "New"
-msgstr ""
+msgstr "Nuevo"
 
 #. module: project_stage_state
 #: selection:project.task.type,state:0
 msgid "Pending"
-msgstr ""
+msgstr "Pendiente"
 
 #. module: project_stage_state
 #: field:project.task,state:0 field:project.task.type,state:0
 msgid "State"
-msgstr ""
+msgstr "Estado"
 
 #. module: project_stage_state
 #: model:ir.model,name:project_stage_state.model_project_task
@@ -56,3 +62,8 @@ msgstr "Tarea"
 #: model:ir.model,name:project_stage_state.model_project_task_type
 msgid "Task Stage"
 msgstr "Estado actual"
+
+#. module: project_stage_state
+#: view:project.task:project_stage_state.project_task_form_stage
+msgid "{'fold_field': 'fold_statusbar'}"
+msgstr ""

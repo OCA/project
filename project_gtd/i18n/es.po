@@ -3,13 +3,14 @@
 # * project_gtd
 # 
 # Translators:
+# Antonio Trueba, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-08 09:57+0000\n"
-"PO-Revision-Date: 2015-09-11 10:25+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
+"POT-Creation-Date: 2015-12-24 08:57+0000\n"
+"PO-Revision-Date: 2016-02-05 12:34+0000\n"
+"Last-Translator: Antonio Trueba\n"
 "Language-Team: Spanish (http://www.transifex.com/oca/OCA-project-8-0/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -113,7 +114,7 @@ msgstr "ID"
 #. module: project_gtd
 #: view:project.task:project_gtd.view_task_gtd_search
 msgid "Last Message"
-msgstr ""
+msgstr "Último mensaje"
 
 #. module: project_gtd
 #: field:project.gtd.context,write_uid:0 field:project.gtd.timebox,write_uid:0
@@ -139,7 +140,7 @@ msgstr "Largo plazo"
 #: model:ir.actions.act_window,name:project_gtd.open_gtd_task
 #: model:ir.ui.menu,name:project_gtd.menu_open_gtd_timebox_tree
 msgid "My Tasks (GTD)"
-msgstr ""
+msgstr "Mis tareas (GTD)"
 
 #. module: project_gtd
 #: field:project.timebox.empty,name:0
@@ -192,7 +193,7 @@ msgstr "Tarea"
 #: model:ir.actions.act_window,name:project_gtd.open_gtd_all_tasks
 #: model:ir.ui.menu,name:project_gtd.menu_open_gtd_timebox_all_tree
 msgid "Tasks (GTD)"
-msgstr ""
+msgstr "Tareas (GTD)"
 
 #. module: project_gtd
 #: field:project.timebox.fill.plan,task_ids:0

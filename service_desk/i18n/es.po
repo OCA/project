@@ -3,13 +3,14 @@
 # * service_desk
 # 
 # Translators:
+# Antonio Trueba, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-12 01:44+0000\n"
-"PO-Revision-Date: 2015-07-21 19:19+0000\n"
-"Last-Translator: <>\n"
+"POT-Creation-Date: 2015-12-24 08:57+0000\n"
+"PO-Revision-Date: 2016-02-05 12:31+0000\n"
+"Last-Translator: Antonio Trueba\n"
 "Language-Team: Spanish (http://www.transifex.com/oca/OCA-project-8-0/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,12 +21,12 @@ msgstr ""
 #. module: service_desk
 #: model:ir.model,name:service_desk.model_account_analytic_account
 msgid "Analytic Account"
-msgstr ""
+msgstr "Cuenta analítica"
 
 #. module: service_desk
 #: field:account.analytic.account,contact_id:0
 msgid "Contact"
-msgstr ""
+msgstr "Contacto"
 
 #. module: service_desk
 #: field:project.task,analytic_account_id:0
@@ -35,17 +36,17 @@ msgstr ""
 #. module: service_desk
 #: field:project.task,location_id:0
 msgid "Location"
-msgstr ""
+msgstr "Ubicación"
 
 #. module: service_desk
 #: selection:project.project,use_analytic_account:0
 msgid "No"
-msgstr ""
+msgstr "No"
 
 #. module: service_desk
 #: selection:project.project,use_analytic_account:0
 msgid "Optional"
-msgstr ""
+msgstr "Opcional"
 
 #. module: service_desk
 #: model:ir.model,name:service_desk.model_project_project
@@ -60,7 +61,7 @@ msgstr ""
 #. module: service_desk
 #: selection:project.project,use_analytic_account:0
 msgid "Required"
-msgstr ""
+msgstr "Requerido"
 
 #. module: service_desk
 #: model:ir.model,name:service_desk.model_project_task
@@ -76,4 +77,4 @@ msgstr ""
 #. module: service_desk
 #: view:project.task:service_desk.view_project_task_form_sdesk
 msgid "onchange_project(project_id)"
-msgstr ""
+msgstr "onchange_project(project_id)"
