@@ -3,14 +3,16 @@
 # * project_recalculate
 # 
 # Translators:
+# Rudolf Schnapka <rs@techno-flex.de>, 2016
+# Thomas A. Jaeger, 2015
 # Thomas A. Jaeger, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-18 15:57+0000\n"
-"PO-Revision-Date: 2015-11-05 10:26+0000\n"
-"Last-Translator: Thomas A. Jaeger\n"
+"POT-Creation-Date: 2016-05-19 20:32+0000\n"
+"PO-Revision-Date: 2016-05-17 08:06+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: German (http://www.transifex.com/oca/OCA-project-8-0/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,8 +32,9 @@ msgstr "Sind Sie sicher?"
 
 #. module: project_recalculate
 #: field:project.project,calculation_type:0
+#: field:project.recalculate.wizard,calculation_type:0
 msgid "Calculation type"
-msgstr "Berechnungstyp"
+msgstr "Berechnungsart"
 
 #. module: project_recalculate
 #: view:project.recalculate.wizard:project_recalculate.wizard_project_recalculate_form
@@ -51,19 +54,19 @@ msgstr "Das Projekt kann nicht neu kalkuliert werden, da es keinen Berechnungsty
 #: code:addons/project_recalculate/wizard/recalculate_wizard.py:31
 #, python-format
 msgid "Cannot recalculate project because your project don't have date end."
-msgstr "Das Projekt kann nicht neu kalkuliert werden, da es kein Enddatum gesetzt hat."
+msgstr "Das Projekt kann nicht neu kalkuliert werden, da kein Enddatum bestimmt ist."
 
 #. module: project_recalculate
 #: code:addons/project_recalculate/models/project_project.py:61
 #: code:addons/project_recalculate/wizard/recalculate_wizard.py:28
 #, python-format
 msgid "Cannot recalculate project because your project don't have date start."
-msgstr "Das Projekt kann nicht neu kalkuliert werden, da es kein Startdatum gesetzt hat."
+msgstr "Das Projekt kann nicht neu kalkuliert werden, da kein Startdatum bestimmt ist."
 
 #. module: project_recalculate
 #: view:project.recalculate.wizard:project_recalculate.wizard_project_recalculate_form
 msgid "Continue"
-msgstr "Weiter"
+msgstr "Fortsetzen"
 
 #. module: project_recalculate
 #: field:project.recalculate.wizard,create_uid:0
@@ -78,7 +81,7 @@ msgstr "Erstellt am"
 #. module: project_recalculate
 #: selection:project.project,calculation_type:0
 msgid "Date begin"
-msgstr "Startdatum"
+msgstr "Anfangsdatum"
 
 #. module: project_recalculate
 #: selection:project.project,calculation_type:0
@@ -88,7 +91,12 @@ msgstr "Enddatum"
 #. module: project_recalculate
 #: view:project.recalculate.wizard:project_recalculate.wizard_project_recalculate_form
 msgid "Date reference"
-msgstr "Referenzdatum"
+msgstr "Bezugsdatum"
+
+#. module: project_recalculate
+#: field:project.recalculate.wizard,display_name:0
+msgid "Display Name"
+msgstr ""
 
 #. module: project_recalculate
 #: code:addons/project_recalculate/models/project_task.py:181
@@ -99,18 +107,18 @@ msgstr "Enddatum muss definiert sein"
 #. module: project_recalculate
 #: field:project.task,estimated_days:0
 msgid "Estimated days"
-msgstr "Erwartete Tage"
+msgstr "Geschätzte Tage"
 
 #. module: project_recalculate
 #: code:addons/project_recalculate/models/project_task.py:25
 #, python-format
 msgid "Estimated days must be greater than 0."
-msgstr "Erwartete Tage muss grösser 0 sein"
+msgstr "Geschätzte Tage müssen mehr als 0 sein."
 
 #. module: project_recalculate
 #: help:project.task,estimated_days:0
 msgid "Estimated days to end"
-msgstr "Erwartete Tage bis zum Ende"
+msgstr "Geschätzte Tage bis zum Ende"
 
 #. module: project_recalculate
 #: field:project.task,from_days:0
@@ -119,10 +127,11 @@ msgstr "Tage seit"
 
 #. module: project_recalculate
 #: help:project.project,calculation_type:0
+#: help:project.recalculate.wizard,calculation_type:0
 msgid ""
 "How to calculate tasks, with date start or date end references. If not set, "
 "\"Recalculate project\" button is disabled."
-msgstr "Wie Aufgaben mit Start- oder Enddatumreferenzen kalkuliert werden. Wenn nicht gesetzt, wird der Knopf \"Projekt neu kalkulieren' ausgeblendet."
+msgstr "Ob Aufgaben mit Bezug auf Anfangs- oder Enddatum berechnet werden. Wenn nicht gesetzt, wird der Knopf \"Projekt neu kalkulieren' ausgeblendet."
 
 #. module: project_recalculate
 #: field:project.recalculate.wizard,id:0
@@ -130,6 +139,7 @@ msgid "ID"
 msgstr "ID"
 
 #. module: project_recalculate
+#: help:project.task,include_in_recalculate:0
 #: help:project.task.type,include_in_recalculate:0
 msgid ""
 "If you mark this check, tasks that are in this stage will be selectable for "
@@ -137,9 +147,15 @@ msgid ""
 msgstr "Wenn gesetzt, können Aufgaben in dieser Phase über den Button 'Projekt neu kalkulieren' selektiert und berechnet werden. "
 
 #. module: project_recalculate
+#: field:project.task,include_in_recalculate:0
 #: field:project.task.type,include_in_recalculate:0
 msgid "Include in project recalculate"
-msgstr "In die Neukalkulation des Projektes miteinbeziehen"
+msgstr "In Neukalkulation des Projektes berücksichtigen"
+
+#. module: project_recalculate
+#: field:project.recalculate.wizard,__last_update:0
+msgid "Last Modified on"
+msgstr ""
 
 #. module: project_recalculate
 #: field:project.recalculate.wizard,write_uid:0
@@ -165,7 +181,7 @@ msgstr "Projektdatum"
 #. module: project_recalculate
 #: view:project.recalculate.wizard:project_recalculate.wizard_project_recalculate_form
 msgid "Project name"
-msgstr "Projektname"
+msgstr "Projektbezeichnung"
 
 #. module: project_recalculate
 #: model:ir.actions.act_window,name:project_recalculate.wizard_project_recalculate
@@ -191,7 +207,7 @@ msgstr "Ressourcenkalender"
 #: code:addons/project_recalculate/models/project_task.py:176
 #, python-format
 msgid "Start Date field must be defined."
-msgstr "Startdatum muss definiert sein"
+msgstr "Anfangsdatum muss definiert sein"
 
 #. module: project_recalculate
 #: model:ir.model,name:project_recalculate.model_project_task
