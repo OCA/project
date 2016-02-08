@@ -177,11 +177,12 @@ class AccountAnalyticLine(orm.Model):
         """ Only project manager and superusers can change states """
         if vals:
             if 'state' in vals:
+                import pdb;pdb.set_trace()
                 errors = []
                 lines = self.browse(cr, uid, ids, context=context)
                 for line in lines:
-                    if line.state == 'draft':
-                        errors.append(line)
+                    # # if line.state == 'confirm': # => fout la merde actuellement ne bloque pas l'écriture pour un ligne confirmée car lors du changement, cela ne poste pas de "state:confirm"...
+                    #     errors.append(line)
                     if (uid != line.account_id.user_id.id and
                             uid != SUPERUSER_ID):
                         errors.append(line)
@@ -254,7 +255,7 @@ class AccountAnalyticLine(orm.Model):
 
         # prepare for iteration on journal and accounts
         for line in self.pool.get('account.analytic.line').browse(cr, uid, ids, context=context):
-            line._check_valid()
+            # line._check_valid()
             if line.journal_id.type not in journal_types:
                 journal_types[line.journal_id.type] = set()
             journal_types[line.journal_id.type].add(line.account_id.id)
@@ -432,3 +433,15 @@ class AccountAnalyticLine(orm.Model):
     # def _prepare_cost_invoice_line(self, invoice_id, product_id, uom, user_id,
     #                                factor_id, account, analytic_lines,
     #                                journal_type, data):
+    def check_confirmation(self, cr, uid, ids, context=None):
+        cr.execute("""
+            SELECT al.id
+            FROM account_analytic_line al
+            WHERE state ='draft'
+            """)
+        confirmed_aal_ids = set([x[0] for x in cr.fetchall()])
+        intersect = set(ids) & confirmed_aal_ids
+        if len(intersect)>0:
+            raise osv.except_osv(
+                _('Some of the analytic lines are in draft state')
+                )

@@ -18,7 +18,7 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-
+from openerp import osv
 from openerp.osv import orm
 from openerp.tools.translate import _
 
@@ -26,8 +26,11 @@ class hr_timesheet_invoice_create(orm.TransientModel):
 
     _inherit = "hr.timesheet.invoice.create"
 
+    # WORKING
     def view_init(self, cr, uid, fields, context=None):
         """
+        OVERWRITE: now it works with both: hr.analytic.timesheet & account.
+        analytic.line
         This function checks for precondition before wizard executes
         @param self: The object pointer
         @param cr: the current row, from the database cursor,
@@ -35,19 +38,22 @@ class hr_timesheet_invoice_create(orm.TransientModel):
         @param fields: List of fields for default value
         @param context: A standard dictionary for contextual values
         """
-        # ts_obj = self.pool['hr.analytic.timesheet']
-        # ts_lines = ts_obj.browse(cr, uid, context['active_ids'], context=context)
+        # Modification: get active_model & active__ids
         aal_obj = self.pool.get(context['active_model'])
         aal_ids = context.get('active_ids', False)
-        # aal_ids = [x.line_id.id for x in ts_lines]
-        aal_aal = self.pool['account.analytic.line'].browse(cr, uid, aal_ids, context=context)
-        for analytic in aal_aal:
+        aal_to_inv = aal_obj.browse(cr, uid, aal_ids, context=context)
+        for analytic in aal_to_inv:
             if analytic.invoice_id:
                 raise osv.except_osv(_('Warning!'), _("Invoice is already linked to some of the analytic line(s)!"))
 
+    # WORKING
     def do_create(self, cr, uid, ids, context=None):
+        """ OVERWRITE: now it works with both: hr.analytic.timesheet & account.
+        analytic.line
+        """
         data = self.read(cr, uid, ids, [], context=context)[0]
         # Create an invoice based on selected timesheet lines
+        # Modification => get active_model
         invs = self.pool.get(context['active_model']).invoice_cost_create(cr, uid, context['active_ids'], data, context=context)
         mod_obj = self.pool.get('ir.model.data')
         act_obj = self.pool.get('ir.actions.act_window')
