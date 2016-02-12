@@ -4,18 +4,18 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: OpenERP Server 7.0\n"
+"Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-11 10:06+0100\n"
-"PO-Revision-Date: 2016-02-11 10:26+0100\n"
-"Language-Team: \n"
+"POT-Creation-Date: 2016-02-12 08:39+0100\n"
+"PO-Revision-Date: 2016-02-12 08:40+0100\n"
+"Last-Translator: \n"
+"Language-Team: rs@techno-flex.de\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.8.4\n"
-"Last-Translator: \n"
-"Language: de\n"
 
 #. module: analytic_hours_block
 #: report:account.hours.block:0
@@ -312,8 +312,8 @@ msgid ""
 "Date of the last analytic line linked to the invoice related to this block "
 "hours."
 msgstr ""
-"Datum der letzten Kostenbuchung, die mit der Rechnung zu diesem "
-"Stundenblock verknüpft ist."
+"Datum der letzten Kostenbuchung, die mit der Rechnung zu diesem Stundenblock "
+"verknüpft ist."
 
 #. module: analytic_hours_block
 #: report:account.hours.block:0
@@ -323,8 +323,7 @@ msgstr "Berichtsdatum:"
 #. module: analytic_hours_block
 #: model:email.template,subject:analytic_hours_block.email_template_hours_block
 msgid "${object.company_id.name} Hours Block (Ref ${object.number or 'n/a'})"
-msgstr ""
-"${object.company_id.name} Stundenblock (Ref ${object.number or 'n/a'})"
+msgstr "${object.company_id.name} Stundenblock (Ref ${object.number or 'n/a'})"
 
 #. module: analytic_hours_block
 #: view:account.hours.block:0
