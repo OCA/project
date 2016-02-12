@@ -10,10 +10,6 @@
     'summary': 'Adding Field Code For Project Issue',
     'website': 'http://github.com/mikevhe18',
     "license": "AGPL-3",
-    'description': """
-        This module provides an additional feature
-        that allows project issue has a code.
-    """,
     "depends": [
         "project_issue",
     ],
