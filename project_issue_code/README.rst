@@ -46,10 +46,8 @@ Contributors
 
 * Michael Viriyananda <viriyananda.michael@gmail.com>
 
-Inspired By
-------------
-
-* project_task_code <https://github.com/OCA/project/tree/8.0/project_task_code>
+Inspired By:
+- project_task_code <https://github.com/OCA/project/tree/8.0/project_task_code>
     * Oihane Crucelaegui <oihanecrucelaegi@avanzosc.es>
     * Pedro M. Baeza <pedro.baeza@serviciosbaeza.com>
     * Ana Juaristi <anajuarist@avanzosc.es>
