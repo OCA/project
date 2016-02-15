@@ -86,7 +86,7 @@ class BusinessRequirement(models.Model):
     )
     project_id = fields.Many2one(
         comodel_name='project.project',
-        string='Project',
+        string='Master Project',
         ondelete='set null',
         readonly=True,
         states={'draft': [('readonly', False)]}
@@ -99,6 +99,13 @@ class BusinessRequirement(models.Model):
     sub_br_count = fields.Integer(
         string='Count',
         compute='_sub_br_count'
+    )
+    linked_project = fields.Many2one(
+        string='Linked project',
+        comodel_name='project.project',
+        groups='project.group_project_manager',
+        readonly=True,
+        states={'draft': [('readonly', False)]}
     )
 
     @api.one

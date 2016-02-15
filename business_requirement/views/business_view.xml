@@ -61,6 +61,7 @@
                                 <group col="4">
                                     <field name="parent_id"/>
                                     <field name="level"/>
+                                    <field name="linked_project"/>
                                 </group>
                             </page>
                         </notebook>
