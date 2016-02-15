@@ -62,6 +62,12 @@
                                     <field name="parent_id"/>
                                     <field name="level"/>
                                     <field name="linked_project"/>
+                                    <field name="creation_date"/>
+                                    <field name="created_by"/>
+                                    <field name="confirmation_date"/>
+                                    <field name="confirmed_by"/>
+                                    <field name="approval_date"/>
+                                    <field name="approved_by"/>
                                 </group>
                             </page>
                         </notebook>
@@ -88,6 +94,7 @@
                      <field name="categ_id"/>
                      <field name="change_request"/>
                      <field name="state"/>
+                     <field name="creation_date"/>
                 </tree>
             </field>
         </record>

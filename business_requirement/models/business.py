@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 # © 2016 Elico Corp (https://www.elico-corp.com).
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+from datetime import datetime
 from openerp import api, fields, models
 
 
@@ -107,6 +108,39 @@ class BusinessRequirement(models.Model):
         readonly=True,
         states={'draft': [('readonly', False)]}
     )
+    creation_date = fields.Datetime(
+        string='Creation Date',
+        default=fields.Datetime.now,
+        readonly=True,
+        states={'draft': [('readonly', False)]}
+    )
+    created_by = fields.Many2one(
+        'res.users', string='Created by',
+        readonly=True,
+        default=lambda self: self.env.user,
+        states={'draft': [('readonly', False)]}
+    )
+    confirmation_date = fields.Datetime(
+        string='Confirmation Date',
+        readonly=True,
+        states={'confirmed': [('readonly', False)]}
+    )
+    confirmed_by = fields.Many2one(
+        'res.users', string='Confirmed by',
+        readonly=True,
+        states={'confirmed': [('readonly', False)]}
+    )
+    approval_date = fields.Datetime(
+        string='Approval Date',
+        readonly=True,
+        states={'approved': [('readonly', False)]}
+    )
+    approved_by = fields.Many2one(
+        'res.users',
+        string='Approved by',
+        readonly=True,
+        states={'approved': [('readonly', False)]}
+    )
 
     @api.one
     @api.onchange('project_id')
@@ -151,14 +185,23 @@ class BusinessRequirement(models.Model):
     @api.one
     def action_button_confirm(self):
         self.write({'state': 'confirmed'})
+        self.confirmed_by = self.confirmed_by or self.created_by
+        self.confirmation_date = self.confirmation_date or \
+            datetime.now()
 
     @api.one
     def action_button_back_draft(self):
         self.write({'state': 'draft'})
+        self.confirmed_by = self.approved_by = []
+        self.confirmation_date = self.approval_date = ''
 
     @api.one
     def action_button_approve(self):
         self.write({'state': 'approved'})
+        self.approved_by = self.approved_by or \
+            self.confirmed_by or self.created_by
+        self.approval_date = self.approval_date or \
+            datetime.now()
 
     @api.one
     def action_button_done(self):
