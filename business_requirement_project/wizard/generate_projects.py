@@ -32,6 +32,11 @@ class BrGenerateProjects(models.TransientModel):
         column2='br_id'
     )
 
+    @api.onchange('for_br')
+    def _onchange_for_br(self):
+        if not self.for_br:
+            self.for_childs = False
+
     @api.multi
     def wizard_view(self):
         view = self.env['ir.model.data'].get_object_reference(
@@ -100,10 +105,14 @@ class BrGenerateProjects(models.TransientModel):
             br_project = self.has_generated(br)
             if br_project:
                 br_project = br_project[0]
-            else:
+            elif not br.linked_project:
                 br_project_val = self._prepare_project_vals(
                     br, parent_project)
                 br_project = project_obj.create(br_project_val)
+                br.linked_project = br_project.id
+                project_ids.append(br_project.id)
+            else:
+                br_project = br.linked_project
                 project_ids.append(br_project.id)
             if not self.for_deliverable:
                 lines = [
@@ -138,6 +147,7 @@ class BrGenerateProjects(models.TransientModel):
                 line_project_val = self._prepare_project_vals(
                     line, parent_project)
                 line_project = project_obj.create(line_project_val)
+                line.linked_project = line_project.id
                 project_ids.append(line_project.id)
             self.create_project_task(
                 line.resource_ids, line_project.id, task_ids)
