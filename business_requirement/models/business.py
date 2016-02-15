@@ -104,6 +104,7 @@ class BusinessRequirement(models.Model):
         string='Linked project',
         comodel_name='project.project',
         groups='project.group_project_manager',
+        readonly=True,
         states={'draft': [('readonly', False)]}
     )
 
