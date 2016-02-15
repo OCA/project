@@ -105,11 +105,14 @@ class BrGenerateProjects(models.TransientModel):
             br_project = self.has_generated(br)
             if br_project:
                 br_project = br_project[0]
-            else:
+            elif not br.linked_project:
                 br_project_val = self._prepare_project_vals(
                     br, parent_project)
                 br_project = project_obj.create(br_project_val)
                 br.linked_project = br_project.id
+                project_ids.append(br_project.id)
+            else:
+                br_project = br.linked_project
                 project_ids.append(br_project.id)
             if not self.for_deliverable:
                 lines = [
