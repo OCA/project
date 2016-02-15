@@ -75,6 +75,7 @@
                         <group>
                             <field name="product_id"/>
                             <field name="description"/>
+                            <field name="linked_project"/>
                         </group>
                         <group>
                             <field name="qty"/>
