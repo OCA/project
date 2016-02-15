@@ -42,11 +42,11 @@ class BusinessRequirement(models.Model):
         readonly=True,
         states={'draft': [('readonly', False)]}
     )
-    categ_id = fields.Many2one(
-        comodel_name='business.requirement.category',
-        string='Category',
-        ondelete='restrict',
+    categ_id = fields.Many2many(
+        'project.category',
+        string='Tags',
         readonly=True,
+        store=True,
         states={'draft': [('readonly', False)]}
     )
     state = fields.Selection(
