@@ -43,6 +43,7 @@
                             <field name="partner_id"/>
                             <field name="categ_id" widget="many2many_tags"/>
                             <field name="change_request"/>
+                            <field name="priority" groups="base.group_user" widget="priority"/>
                         </group>
                         
                         <notebook>
@@ -87,6 +88,7 @@
                      <field name="project_id"/>
                      <field name="categ_id"/>
                      <field name="change_request"/>
+                     <field name="priority"/>
                      <field name="state"/>
                 </tree>
             </field>
@@ -105,6 +107,7 @@
                         <filter string="Project" icon="terp-go-home"  context="{'group_by':'project_id'}"/>
                         <filter string="Customer " icon="terp-go-home"  context="{'group_by':'partner_id'}"/>
                         <filter string="State" icon="terp-go-home" context="{'group_by':'state'}"/>
+                        <filter string="Priority" icon="terp-go-home" context="{'group_by':'priority'}"/>
                     </group>
                 </search>
             </field>

@@ -106,6 +106,9 @@ class BusinessRequirement(models.Model):
         groups='project.group_project_manager',
         readonly=True,
         states={'draft': [('readonly', False)]}
+    priority = fields.Selection(
+        [('0', 'Low'), ('1', 'Normal'), ('2', 'High')],
+        'Priority', select=True
     )
 
     @api.one
