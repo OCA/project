@@ -108,18 +108,6 @@ class BusinessRequirement(models.Model):
         readonly=True,
         states={'draft': [('readonly', False)]}
     )
-    creation_date = fields.Datetime(
-        string='Creation Date',
-        default=fields.Datetime.now,
-        readonly=True,
-        states={'draft': [('readonly', False)]}
-    create_uid = fields.Many2one(
-        'res.users',
-        readonly=True
-    )
-    create_date = fields.Datetime(
-        readonly=True
-    )
     confirmation_date = fields.Datetime(
         string='Confirmation Date',
         readonly=True

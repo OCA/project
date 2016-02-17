@@ -64,8 +64,8 @@
                                     <field name="linked_project"/>
                                 </group>
                                 <group col="4">
-                                    <field name="create_uid"/>
-                                    <field name="create_date"/>
+                                    <field name="create_uid" readonly="1"/>
+                                    <field name="create_date" readonly="1"/>
                                     <field name="confirmed_id"/>
                                     <field name="confirmation_date"/>
                                     <field name="approved_id"/>
