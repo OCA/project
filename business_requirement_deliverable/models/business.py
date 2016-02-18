@@ -161,7 +161,10 @@ class BusinessRequirement(models.Model):
         string='Deliverable Lines',
         copy=True,
         readonly=True,
-        states={'draft': [('readonly', False)]}
+        states={
+            'draft': [('readonly', False)],
+            'confirmed': [('readonly', False)],
+        }
     )
     resource_cost_total = fields.Float(
         compute='_get_deliverable_cost_total',
