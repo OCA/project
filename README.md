@@ -27,6 +27,7 @@ addon | version | summary
 [project_description](project_description/) | 8.0.1.0.0 | Add a description to projects
 [project_gtd](project_gtd/) | 8.0.2.0.0 | Personal Tasks, Contexts, Timeboxes
 [project_issue_baseuser](project_issue_baseuser/) | 8.0.1.0.0 | Extend Project user roles to support more complex use cases
+[project_issue_code](project_issue_code/) | 8.0.1.0.0 | Adding Field Code For Project Issue
 [project_issue_task](project_issue_task/) | 8.0.1.1.0 | Use Tasks to support Issue resolution reports
 [project_recalculate](project_recalculate/) | 8.0.1.0.0 | Project Recalculate
 [project_sla](project_sla/) | 8.0.1.0.0 | Define SLAs for your Contracts
