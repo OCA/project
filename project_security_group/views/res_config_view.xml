@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+    <record id="view_config_settings" model="ir.ui.view">
+        <field name="name">Project Application</field>
+        <field name="model">project.config.settings</field>
+        <field name="inherit_id" ref="project.view_config_settings"/>
+        <field name="arch" type="xml">
+            <xpath expr="//separator[@string='Helpdesk &amp; Support']" position="before">
+                <group>
+                    <label for="id" string="Roles"/>
+                    <div>
+                        <div>
+                            <field name="limit_project_user" class="oe_inline"/>
+                            <label for="limit_project_user"/>
+                        </div>
+                        <div>
+                            <field name="only_team_user" class="oe_inline"/>
+                            <label for="only_team_user"/>
+                        </div>
+                    </div>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+</data>
+</openerp>

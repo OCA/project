@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+    <!-- GROUPS -->
+
+    <!-- New group Project Responsible -->
+    <record id="group_project_responsible" model="res.groups">
+        <field name="name">Responsible</field>
+        <field name="category_id" ref="base.module_category_project_management"/>
+        <field name="implied_ids" eval="[(6, 0, [ref('project.group_project_user')])]"/>
+    </record>
+
+    <!-- New group End User -->
+    <record id="group_project_end_user" model="res.groups">
+        <field name="name">End User</field>
+        <field name="category_id" ref="base.module_category_project_management"/>
+    </record>
+
+    <!-- Rename group Project Manager to Project Administrator -->
+    <record id="project.group_project_manager" model="res.groups">
+        <field name="name">Administrator</field>
+        <field name="implied_ids" eval="[(6, 0, [ref('group_project_responsible')])]"/>
+    </record>
+
+    <!-- Modify implied_ids -->
+    <record id="project.group_project_user" model="res.groups">
+        <field name="implied_ids" eval="[(6, 0, [ref('group_project_end_user')])]"/>
+    </record>
+
+</data>
+
+<data noupdate="1">
+
+    <!-- PROJECT RULES -->
+
+    <!-- NEW Project Responsible rule-->
+    <record id="project_project_responsible_rule" model="ir.rule">
+        <field name="name">Project: project responsible: manage assigned projects</field>
+        <field name="model_id" ref="project.model_project_project"/>
+        <field name="domain_force">[
+            '|','|','|',
+                ('user_id', '=', user.id),
+                ('privacy_visibility', 'in', ['public', 'portal', 'employees']),
+                ('message_follower_ids', 'in', [user.partner_id.id]),
+                ('members', 'in', [user.id]),
+        ]</field>
+        <field name="groups" eval="[(6, 0, [ref('group_project_responsible')])]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <!-- Project User: Projects also visible to team members not in followers list -->
+    <record id="project.project_public_members_rule" model="ir.rule">
+        <field name="name">Project: employees: public, employees, followers or team members (modified)</field>
+        <field name="model_id" ref="project.model_project_project"/>
+        <field name="domain_force">[('privacy_visibility', 'in', ['portal', 'employees'])]</field>
+        <field name="groups" eval="[(6, 0, [ref('project.group_project_user')])]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <!-- Project End User -->
+    <record id="project_end_user_rule" model="ir.rule">
+        <field name="name">Project: see all assigned, public, followers, team</field>
+        <field name="model_id" ref="project.model_project_project"/>
+        <field name="domain_force">['|','|','|',
+                                        ('user_id', '=', user.id),
+                                        ('privacy_visibility', 'in', ['public']),
+                                        ('message_follower_ids', 'in', [user.partner_id.id]),
+                                        ('members', 'in', [user.id]),
+                                    ]</field>
+        <field name="groups" eval="[(6, 0, [ref('group_project_end_user')])]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <!-- TASK RULES -->
+
+    <!-- Project User rule-->
+    <record id="project.task_visibility_rule" model="ir.rule">
+        <field name="name">Project/Task: employees: public or employee or (followers and following)</field>
+        <field name="model_id" ref="project.model_project_task"/>
+        <field name="domain_force">[
+            '|','|','|','|',
+                ('user_id', '=', user.id),
+                ('message_follower_ids', 'in', [user.partner_id.id]),
+                ('project_id.privacy_visibility', 'in', ['public', 'portal', 'employees']),
+                ('project_id.message_follower_ids', 'in', [user.partner_id.id]),
+                ('project_id.members', 'in', [user.id]),
+        ]</field>
+        <field name="groups" eval="[(6, 0, [ref('project.group_project_user')])]"/>
+    </record>
+
+    <!-- Limit only assigned task Project User rule-->
+    <record id="task_limit_project_user_rule" model="ir.rule">
+        <field name="name">Project/Task: Limit Project User: only assigned tasks or project member</field>
+        <field name="model_id" ref="project.model_project_task"/>
+        <field name="domain_force">[
+            '|','|',
+                ('user_id', '=', user.id),
+                ('message_follower_ids', 'in', [user.partner_id.id]),
+                ('project_id.members', 'in', [user.id]),
+        ]</field>
+        <field name="groups" eval="[(6, 0, [ref('project.group_project_user')])]"/>
+        <field name="active" eval="False"/>
+    </record>
+
+
+    <!-- Project End User write rule-->
+    <record id="task_end_user_edit_rule" model="ir.rule">
+        <field name="name">Project/Task: End User WRITE: public, member or follower</field>
+        <field name="model_id" ref="project.model_project_task"/>
+        <field name="domain_force">[
+            '&amp;', ('stage_id.state', 'in', ['draft', 'cancelled', False]),
+                '|','|','|','|',
+                    ('user_id', '=', user.id),
+                    ('message_follower_ids', 'in', [user.partner_id.id]),
+                    ('project_id.privacy_visibility', 'in', ['public']),
+                    ('project_id.message_follower_ids', 'in', [user.partner_id.id]),
+                    ('project_id.members', 'in', [user.id]),
+        ]</field>
+        <field name="groups" eval="[(6, 0, [ref('group_project_end_user')])]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <!-- Project End User read only rule-->
+    <record id="task_end_user_read_rule" model="ir.rule">
+        <field name="name">Project/Task: End User READ: public, member or follower</field>
+        <field name="model_id" ref="project.model_project_task"/>
+        <field name="domain_force">[
+            '|','|','|','|',
+                ('user_id', '=', user.id),
+                ('message_follower_ids', 'in', [user.partner_id.id]),
+                ('project_id.privacy_visibility', 'in', ['public']),
+                ('project_id.message_follower_ids', 'in', [user.partner_id.id]),
+                ('project_id.members', 'in', [user.id]),
+        ]</field>
+        <field name="groups" eval="[(6, 0, [ref('group_project_end_user')])]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+</data>
+</openerp>
