@@ -6,8 +6,9 @@
 from openerp import api, fields, models
 from datetime import datetime
 from datetime import timedelta
-from dateutil.rrule import *
+from dateutil import rrule
 import openerp.addons.decimal_precision as dp
+from openerp import tools
 
 
 class ProjectTaskType(models.Model):
@@ -16,7 +17,7 @@ class ProjectTaskType(models.Model):
 
 
 class Project(models.Model):
-    
+
     _inherit = "project.project"
 
     @staticmethod
@@ -113,41 +114,39 @@ class Project(models.Model):
         # Get the earliest and latest dates for the associated tasks
         cr.execute("""SELECT MIN(date_start)
                    FROM project_task
-                   WHERE project_id=%s""", (project.id, ))
-        min_date_start = cr.fetchone()[0] or 0
-        if min_date_start == 0:
+                   WHERE project_id=%d""", (project.id, ))
+        min_date_start = cr.fetchone()[0] or False
+        if min_date_start:
             datetime_start = datetime.today()
         else:
-            datetime_start = datetime.strptime(min_date_start,
-                                               "%Y-%m-%d %H:%M:%S")
+            datetime_start = fields.Datetime.from_string(min_date_start)
 
         cr.execute("""SELECT MAX(date_end)
                    FROM project_task
-                   WHERE project_id=%s""", (project.id, ))
-        max_date_end = cr.fetchone()[0] or 0
-        if max_date_end == 0:
+                   WHERE project_id=%d""", (project.id, ))
+        max_date_end = cr.fetchone()[0] or False
+        if max_date_end:
             datetime_end = datetime.today()
         else:
-            datetime_end = datetime.strptime(max_date_end,
-                                             "%Y-%m-%d %H:%M:%S")
+            datetime_end = fields.Datetime.from_string(max_date_end)
 
         cr.execute("""SELECT MAX(date_last_stage_update)
                    FROM project_task
-                   WHERE project_id=%s""", (project.id, ))
-        max_date_end_2 = cr.fetchone()[0] or 0
-        if max_date_end_2 == 0:
+                   WHERE project_id=%d""", (project.id, ))
+        max_date_end_2 = cr.fetchone()[0] or False
+        if max_date_end_2:
             datetime_end_2 = datetime.today()
         else:
-            datetime_end_2 = datetime.strptime(max_date_end,
-                                             "%Y-%m-%d %H:%M:%S")
+            datetime_end_2 = fields.Datetime.from_string(max_date_end)
+
         datetime_end = max(datetime_end, datetime_end_2)
 
         return datetime_start, datetime_end
 
-    def _get_budget_at_completion(self):
+    def _get_plan_cost_to_date(self, to_date):
         cr = self.env.cr
-        # Compute the Budget at Completion
-        cr.execute("""
+
+        select_query = """
         SELECT SUM(PT.planned_hours * ip.value_float)
         FROM project_task as PT
         INNER JOIN resource_resource RES
@@ -162,44 +161,23 @@ class Project(models.Model):
         ON (ip.name='standard_price'
         AND ip.res_id=CONCAT('product.template,',PRT.id)
         AND ip.company_id=PT.company_id)
-        WHERE PT.project_id = %s""", (self.id, ))
+        WHERE PT.project_id = %d
+         """, (self.id, )
+
+        if to_date:
+            select_query += """AND PT.date_end <= %s""" % to_date
+
+        cr.execute(select_query)
         res = cr.fetchone()
         if res:
             return res[0] or 0.0
         else:
             return 0.0
 
-    def _get_plan_cost_to_date(self):
+    def _get_actual_cost_to_date(self, to_date):
         cr = self.env.cr
-        today = datetime.today().strftime('%Y-%m-%d %H:%M:%S')
-        # Compute the Budget at Completion
-        cr.execute("""
-        SELECT SUM(PT.planned_hours * ip.value_float)
-        FROM project_task as PT
-        INNER JOIN resource_resource RES
-        ON RES.user_id = PT.user_id
-        INNER JOIN hr_employee EMP
-        ON EMP.resource_id = RES.id
-        INNER JOIN product_product PR
-        ON PR.id = EMP.product_id
-        INNER JOIN product_template PRT
-        ON PRT.id = PR.product_tmpl_id
-        LEFT JOIN ir_property ip
-        ON (ip.name='standard_price'
-        AND ip.res_id=CONCAT('product.template,',PRT.id)
-        AND ip.company_id=PT.company_id)
-        WHERE PT.project_id = %s
-        AND PT.date_end <= %s""", (self.id, today))
-        res = cr.fetchone()
-        if res:
-            return res[0] or 0.0
-        else:
-            return 0.0
-
-    def _get_actual_cost_to_date(self):
-        cr = self.env.cr
-        # Compute the actual cost
-        cr.execute("""
+        # Compute the actual cot to date
+        select_query = """
         SELECT SUM(PTW.hours * ip.value_float)
         FROM project_task_work AS PTW
         INNER JOIN project_task AS PT
@@ -216,17 +194,22 @@ class Project(models.Model):
         ON (ip.name='standard_price'
         AND ip.res_id=CONCAT('product.template,',PRT.id)
         AND ip.company_id=PT.company_id)
-        WHERE PT.project_id = %s""", (self.id, ))
+        WHERE PT.project_id = %d""", (self.id, )
+
+        if to_date:
+            select_query += """AND PT.date_end <= %s""" % to_date
+
+        cr.execute(select_query)
         res = cr.fetchone()
         if res:
             return res[0] or 0.0
         else:
             return 0.0
 
-    def _get_earned_value_to_date(self):
+    def _get_earned_value_to_date(self, to_date):
         cr = self.env.cr
         # Compute the earned value
-        cr.execute("""
+        select_query = """
         SELECT SUM(PT.planned_hours * ip.value_float * PTT.poc/100)
         FROM project_task as PT
         INNER JOIN project_task_type as PTT
@@ -243,7 +226,13 @@ class Project(models.Model):
         ON (ip.name='standard_price'
         AND ip.res_id=CONCAT('product.template,',PRT.id)
         AND ip.company_id=PT.company_id)
-        WHERE PT.project_id = %s""", (self.id, ))
+        WHERE PT.project_id = %d""", (self.id, )
+
+        if to_date:
+            select_query += """AND PT.date_end <= %s""" % to_date
+
+        cr.execute(select_query)
+
         res = cr.fetchone()
         if res:
             return res[0] or 0.0
@@ -252,14 +241,24 @@ class Project(models.Model):
 
     @api.one
     def _earned_value(self):
+
+        if self.env.context('to_date', False):
+            to_date = datetime.today().strftime(
+                tools.DEFAULT_SERVER_DATETIME_FORMAT)
+        else:
+            to_date = self.env.context('to_date')
+
         # Compute the Budget at Completion
-        bac = self._get_budget_at_completion()
+        bac = self._get_plan_cost_to_date(False)
+
         # Compute Planned Value
-        pv = self._get_plan_cost_to_date()
+        pv = self._get_plan_cost_to_date(to_date)
+
         # Compute Actual Cost
-        ac = self._get_actual_cost_to_date()
+        ac = self._get_actual_cost_to_date(to_date)
+
         # Compute Earned Value
-        ev = self._get_earned_value_to_date()
+        ev = self._get_earned_value_to_date(to_date)
 
         ratios = self._get_evm_ratios(ac, pv, ev, bac)
         for key in ratios.keys():
@@ -335,11 +334,11 @@ class Project(models.Model):
                        indicates how many hours worth of the planned work
                        is being performed.""")
     eac = fields.Float(compute='_earned_value', string='EAC',
-                          digits_compute=dp.get_precision('Account'),
-                          help="""Estimate at Completion (EAC) provides
-                          an estimate of the final cost of the project if
-                          current performance trends continue. It is
-                          calculated as BAC / CPI.""")
+                       digits_compute=dp.get_precision('Account'),
+                       help="""Estimate at Completion (EAC) provides
+                       an estimate of the final cost of the project if
+                       current performance trends continue. It is
+                       calculated as BAC / CPI.""")
     etc = fields.Float(compute='_earned_value', string='ETC',
                        digits_compute=dp.get_precision('Account'),
                        help="""Estimate to Complete (ETC) provides an
@@ -392,8 +391,8 @@ class Project(models.Model):
 
         datetime_start -= timedelta(days=5)
         datetime_end += timedelta(days=5)
-        l_days = list(rrule(DAILY, dtstart=datetime_start,
-                            until=datetime_end))
+        l_days = list(rrule.rrule(rrule.DAILY, dtstart=datetime_start,
+                                  until=datetime_end))
 
         # Planned value
         pv = 0.0
@@ -412,14 +411,14 @@ class Project(models.Model):
             time_start = datetime.strptime('00:00:00', '%H:%M:%S').time()
             time_end = datetime.strptime('23:59:59', '%H:%M:%S').time()
 
-            datetime_start = datetime.combine(day_date,time_start)
-            datetime_end = datetime.combine(day_date,time_end)
+            datetime_start = datetime.combine(day_date, time_start)
+            datetime_end = datetime.combine(day_date, time_end)
 
             cr.execute('''SELECT PTW.user_id, sum(PTW.hours)
                        FROM project_task_work AS PTW
                        LEFT JOIN project_task as PT
                        ON (PTW.task_id=PT.id)
-                       WHERE PT.project_id=%s
+                       WHERE PT.project_id=%d
                        AND PTW.date BETWEEN %s AND %s
                        GROUP BY PTW.user_id''',
                        (project.id, datetime_start,
@@ -430,9 +429,8 @@ class Project(models.Model):
 
             for project_task in project_tasks:
                 # Record earned value according to % completed
-                datetime_stage = datetime.strptime(
-                    project_task.date_last_stage_update,
-                    "%Y-%m-%d %H:%M:%S")
+                datetime_stage = fields.Datetime.from_string(
+                    project_task.date_last_stage_update)
                 date_done = datetime_stage.date()
                 if date_done == day_date:
                     ev += user_cost.get(project_task.user_id.id, 0.0) * \
@@ -442,19 +440,20 @@ class Project(models.Model):
                 # If task is planned to complete on this date then
                 # record planned value
                 if project_task.date_end:
-                    task_end_dt = datetime.strptime(
-                        project_task.date_end, "%Y-%m-%d %H:%M:%S")
+                    task_end_dt = fields.Datetime.from_string(
+                        project_task.date_end)
                     date_end = task_end_dt.date()
                 else:
                     date_end = False
 
                 if date_end == day_date:
                     pv += user_cost.get(project_task.user_id.id, 0.0) * \
-                          project_task.planned_hours
+                        project_task.planned_hours
 
             ratios = self._get_evm_ratios(ac, pv, ev, bac)
             # Create the EVM records
             records.extend(project.create_evm_record(day_date, ratios))
+
         return records
 
     def create_evm_record(self, eval_date, ratios):

@@ -23,7 +23,8 @@ _KPI_TYPE = [('PV', 'Planned Value'),
              ('PCC', 'Costs to date / Total costs'),
              ('POC', '% Complete')]
 
-class project_evm_task(models.Model):
+
+class ProjectEvmTask(models.Model):
 
     _name = 'project.evm.task'
     _description = 'Project Earned Value Management indicators'

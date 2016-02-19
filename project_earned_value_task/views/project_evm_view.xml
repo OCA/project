@@ -79,9 +79,8 @@
         </record>
 
         <menuitem id="menu_project_evm" name="Earned Value Management" parent="base.menu_project_report"/>
-        <menuitem action="action_earned_value_task_graphs"
-                  id="menu_action_earned_value_graphs" parent="menu_project_evm" sequence="3"/>
-        <menuitem action="action_project_evm_task_tree" id="menu_project_evm_view" parent="menu_project_evm" sequence="4"/>
+        <menuitem action="action_project_evm_task_tree"
+                  id="menu_project_evm_view" parent="menu_project_evm" sequence="1"/>
 
     </data>
 </openerp>

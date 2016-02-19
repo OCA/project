@@ -17,13 +17,8 @@
             <field name="user_id" ref="base.user_demo"/>
             <field name="description">Implement new website for Sale and Warehouse Management for a customer.</field>
             <field name="alias_model">project.task</field>
-        </record>
-
-        <!-- We assign after so that default values applies -->
-        <record id="project_project_1" model="project.project">
             <field name="type_ids"
                    eval="[(4, ref('project.project_tt_analysis')) ,(4,ref('project.project_tt_specification')), (4,ref('project.project_tt_development')), (4,ref('project.project_tt_testing')), (4,ref('project.project_tt_deployment'))]"/>
-        </record>
 
         <!-- Tasks -->
         <record id="project_task_1" model="project.task">

@@ -5,6 +5,7 @@
 
 from openerp import _, api, fields, models
 
+
 class EarnedValueTaskGraphs(models.TransientModel):
     _name = "earned.value.task.graphs"
     _description = "Earned Value Graphs"
@@ -31,4 +32,3 @@ class EarnedValueTaskGraphs(models.TransientModel):
             'context': False,
             'type': 'ir.actions.act_window'
         }
-

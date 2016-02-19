@@ -13,7 +13,6 @@
     "website": "www.eficent.com",
     "category": "Generic Modules/Projects & Services",
     "depends": ["project", "hr_timesheet"],
-    "init_xml": [],
     "data": [
         "views/project_evm_view.xml",
         "views/project_view.xml",
