@@ -1,0 +1,496 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+# 	* analytic_hours_block
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-02-12 08:39+0100\n"
+"PO-Revision-Date: 2016-02-12 08:40+0100\n"
+"Last-Translator: \n"
+"Language-Team: rs@techno-flex.de\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 1.8.4\n"
+
+#. module: analytic_hours_block
+#: report:account.hours.block:0
+msgid "Maintenance And Support Summary"
+msgstr "Wartungs- und Unterstützungsübersicht"
+
+#. module: analytic_hours_block
+#: report:account.hours.block:0
+msgid "Invoice Date:"
+msgstr "Rechnungsdatum:"
+
+#. module: analytic_hours_block
+#: view:account.hours.block:0
+msgid "Group By..."
+msgstr "Gruppiere..."
+
+#. module: analytic_hours_block
+#: view:account.hours.block:0
+msgid "Bought"
+msgstr "Gekauft"
+
+#. module: analytic_hours_block
+#: field:account.hours.block,close_date:0
+msgid "Closed Date"
+msgstr "Abschlussdatum"
+
+#. module: analytic_hours_block
+#: field:account.hours.block,message_unread:0
+msgid "Unread Messages"
+msgstr "Ungelesene Meldungen"
+
+#. module: analytic_hours_block
+#: field:account.hours.block,company_id:0
+msgid "Company"
+msgstr "Unternehmen"
+
+#. module: analytic_hours_block
+#: field:account.hours.block,date_invoice:0
+msgid "Invoice Date"
+msgstr "Rechnungsdatum"
+
+#. module: analytic_hours_block
+#: field:account.hours.block,residual:0
+msgid "Residual"
+msgstr "Verbleibend"
+
+#. module: analytic_hours_block
+#: help:account.hours.block,amount_hours_block:0
+msgid ""
+"Amount bought by the customer. This amount is expressed in the base Unit of "
+"Measure (factor=1.0)"
+msgstr ""
+"Durch den Kunden gekaufte Menge. Diese Wert wird in der Basis-Mengeneinheit "
+"(Faktor=1,0) ausgedrückt"
+
+#. module: analytic_hours_block
+#: view:account.hours.block:0
+msgid "Based on:"
+msgstr "Basiert auf:"
+
+#. module: analytic_hours_block
+#: field:account.hours.block,message_ids:0
+msgid "Messages"
+msgstr "Meldungen"
+
+#. module: analytic_hours_block
+#: selection:account.hours.block,type:0
+msgid "Amount"
+msgstr "Betrag"
+
+#. module: analytic_hours_block
+#: selection:account.hours.block,state:0
+msgid "Cancelled"
+msgstr "Abgebrochen"
+
+#. module: analytic_hours_block
+#: help:account.hours.block,message_unread:0
+msgid "If checked new messages require your attention."
+msgstr "Wenn angewählt, erfordern Meldungen Ihre Aufmerksamkeit."
+
+#. module: analytic_hours_block
+#: model:email.template,body_html:analytic_hours_block.email_template_hours_block
+msgid ""
+"\n"
+"            Here is your Hours Block Report\n"
+"            "
+msgstr ""
+"\n"
+"            Hier ist Ihr Stundenblock-Bericht\n"
+"            "
+
+#. module: analytic_hours_block
+#: view:account.hours.block:0
+msgid "Hours Quantity / Amount"
+msgstr "Stunden Menge / Betrag"
+
+#. module: analytic_hours_block
+#: report:account.hours.block:0
+msgid "Remaining hours:"
+msgstr "Verbleibende Stunden:"
+
+#. module: analytic_hours_block
+#: report:account.hours.block:0
+msgid "Quantity of hours bought:"
+msgstr "Menge erworbene Stunden:"
+
+#. module: analytic_hours_block
+#: help:account.hours.block,message_summary:0
+msgid ""
+"Holds the Chatter summary (number of messages, ...). This summary is "
+"directly in html format in order to be inserted in kanban views."
+msgstr ""
+"Beinhaltet die Meldungsübersicht (Anzahl Meldungen, ...). Diese liegt in "
+"HTML vor, um direkt in Kanban-Sichten eingesetzt zu werden."
+
+#. module: analytic_hours_block
+#: view:account.hours.block:0
+msgid "Quantity of hours bought"
+msgstr "Menge an erworbenen Stunden"
+
+#. module: analytic_hours_block
+#: view:account.hours.block:0 field:account.hours.block,partner_id:0
+msgid "Partner"
+msgstr "Partner"
+
+#. module: analytic_hours_block
+#: view:account.hours.block:0
+msgid "Quantity of hours difference"
+msgstr "Differenzmenge an Stunden"
+
+#. module: analytic_hours_block
+#: field:account.hours.block,period_id:0
+msgid "Period"
+msgstr "Periode"
+
+#. module: analytic_hours_block
+#: field:account.hours.block,state:0
+msgid "State"
+msgstr "Status"
+
+#. module: analytic_hours_block
+#: field:account.hours.block,message_follower_ids:0
+msgid "Followers"
+msgstr "Follower"
+
+#. module: analytic_hours_block
+#: view:account.hours.block:0
+msgid "Send by Email"
+msgstr "Sende per Email"
+
+#. module: analytic_hours_block
+#: view:account.hours.block:0
+msgid "All Running Hours Block"
+msgstr "Block aller laufenden Stunden"
+
+#. module: analytic_hours_block
+#: field:account.hours.block,last_action_date:0
+msgid "Last action date"
+msgstr "Letztes Aktionsdatum"
+
+#. module: analytic_hours_block
+#: selection:account.hours.block,type:0
+msgid "Hours"
+msgstr "Stunden"
+
+#. module: analytic_hours_block
+#: report:account.hours.block:0
+msgid "Description:"
+msgstr "Beschreibung:"
+
+#. module: analytic_hours_block
+#: help:account.hours.block,type:0
+msgid "The block is based on the quantity of hours or on the amount."
+msgstr "Der Block basiert auf der Stundenmenge oder auf dem Betrag."
+
+#. module: analytic_hours_block
+#: model:email.template,report_name:analytic_hours_block.email_template_hours_block
+msgid ""
+"Hours_Block_${(object.number or '').replace('/','_')}_${object.state == "
+"'draft' and 'draft' or ''}"
+msgstr ""
+
+#. module: analytic_hours_block
+#: report:account.hours.block:0
+msgid "Remaining amount:"
+msgstr "Verbleibender Betrag:"
+
+#. module: analytic_hours_block
+#: model:ir.model,name:analytic_hours_block.model_account_hours_block
+msgid "account.hours.block"
+msgstr ""
+
+#. module: analytic_hours_block
+#: field:account.hours.block,amount_hours_block:0
+msgid "Quantity / Amount bought"
+msgstr "Erworbene Menge / Betrag"
+
+#. module: analytic_hours_block
+#: model:ir.actions.report.xml,name:analytic_hours_block.block_hours_report
+msgid "Block Hours State"
+msgstr "Stundenblock-Status"
+
+#. module: analytic_hours_block
+#: view:account.hours.block:0
+msgid "Choose an invoice..."
+msgstr "Wähle eine Rechnung..."
+
+#. module: analytic_hours_block
+#: selection:account.hours.block,state:0
+msgid "Open"
+msgstr "Offen"
+
+#. module: analytic_hours_block
+#: view:account.hours.block:0
+msgid "My invoices"
+msgstr "Meine Rechnungen"
+
+#. module: analytic_hours_block
+#: view:account.hours.block:0
+msgid "Draft Hours Blocks"
+msgstr "Stundenblock-Entwurf"
+
+#. module: analytic_hours_block
+#: field:account.hours.block,currency_id:0
+msgid "Currency"
+msgstr "Währung"
+
+#. module: analytic_hours_block
+#: view:account.hours.block:0 field:account.hours.block,user_id:0
+msgid "Salesman"
+msgstr "Verkäufer"
+
+#. module: analytic_hours_block
+#: view:account.hours.block:0
+msgid "Quantity of hours used"
+msgstr "Menge verbrauchter Stunden"
+
+#. module: analytic_hours_block
+#: view:account.hours.block:0 selection:account.hours.block,state:0
+msgid "Draft"
+msgstr "Entwurf"
+
+#. module: analytic_hours_block
+#: view:account.hours.block:0
+#: model:ir.actions.act_window,name:analytic_hours_block.action_all_block_hour
+msgid "Hours Blocks"
+msgstr "Stundenblock"
+
+#. module: analytic_hours_block
+#: field:account.hours.block,type:0
+msgid "Type of Block"
+msgstr "Art des Blocks"
+
+#. module: analytic_hours_block
+#: view:account.hours.block:0
+msgid "Used"
+msgstr "Verbraucht"
+
+#. module: analytic_hours_block
+#: view:account.hours.block:0
+msgid "Total Amount"
+msgstr "Gesamtbetrag"
+
+#. module: analytic_hours_block
+#: selection:account.hours.block,state:0
+msgid "Paid"
+msgstr "Bezahlt"
+
+#. module: analytic_hours_block
+#: report:account.hours.block:0
+msgid "Page"
+msgstr "Seite"
+
+#. module: analytic_hours_block
+#: field:account.hours.block,message_is_follower:0
+msgid "Is a Follower"
+msgstr "Ist Follower"
+
+#. module: analytic_hours_block
+#: report:account.hours.block:0
+msgid "Date"
+msgstr "Datum"
+
+#. module: analytic_hours_block
+#: field:account.invoice,account_hours_block_ids:0
+#: model:ir.actions.act_window,name:analytic_hours_block.act_hours_block_from_invoice
+#: model:ir.ui.menu,name:analytic_hours_block.action_all_block_hour_account
+msgid "Hours Block"
+msgstr "Stundenblock"
+
+#. module: analytic_hours_block
+#: help:account.hours.block,last_action_date:0
+msgid ""
+"Date of the last analytic line linked to the invoice related to this block "
+"hours."
+msgstr ""
+"Datum der letzten Kostenbuchung, die mit der Rechnung zu diesem Stundenblock "
+"verknüpft ist."
+
+#. module: analytic_hours_block
+#: report:account.hours.block:0
+msgid "Report Date:"
+msgstr "Berichtsdatum:"
+
+#. module: analytic_hours_block
+#: model:email.template,subject:analytic_hours_block.email_template_hours_block
+msgid "${object.company_id.name} Hours Block (Ref ${object.number or 'n/a'})"
+msgstr "${object.company_id.name} Stundenblock (Ref ${object.number or 'n/a'})"
+
+#. module: analytic_hours_block
+#: view:account.hours.block:0
+msgid "Invoice's related information"
+msgstr "Auf Rechnung bezogene Information"
+
+#. module: analytic_hours_block
+#: view:account.hours.block:0
+msgid "Search Invoice"
+msgstr "Suche Rechnung"
+
+#. module: analytic_hours_block
+#: report:account.hours.block:0
+msgid "Quantity"
+msgstr "Menge"
+
+#. module: analytic_hours_block
+#: help:account.hours.block,amount_hours_block_delta:0
+msgid ""
+"Difference between bought and used. This amount is expressed in the base "
+"Unit of Measure (factor=1.0)"
+msgstr ""
+"Differenz erworbener zu verbrauchten Stunden. Dieser Wert wird in der Basis-"
+"Mengeneinheit (Faktor=1,0) ausgedrückt"
+
+#. module: analytic_hours_block
+#: report:account.hours.block:0
+msgid "0.6cm 27.9cm 20.3cm 27.9cm"
+msgstr "0.6cm 27.9cm 20.3cm 27.9cm"
+
+#. module: analytic_hours_block
+#: view:account.hours.block:0
+msgid "Residual Amount"
+msgstr "Verbleibender Betrag"
+
+#. module: analytic_hours_block
+#: view:account.hours.block:0
+msgid "Overdue Hours Block"
+msgstr "Überfälliger Stundenblock"
+
+#. module: analytic_hours_block
+#: report:account.hours.block:0
+msgid "Amount used:"
+msgstr "Verbrauchter Betrag:"
+
+#. module: analytic_hours_block
+#: field:account.hours.block,number:0
+msgid "Number"
+msgstr "Nummer"
+
+#. module: analytic_hours_block
+#: view:account.hours.block:0 field:account.hours.block,invoice_id:0
+#: model:ir.actions.act_window,name:analytic_hours_block.act_invoice_from_hours_block
+#: model:ir.model,name:analytic_hours_block.model_account_invoice
+msgid "Invoice"
+msgstr "Rechnung"
+
+#. module: analytic_hours_block
+#: selection:account.hours.block,state:0
+msgid "Pro-forma"
+msgstr "Proforma"
+
+#. module: analytic_hours_block
+#: view:account.hours.block:0
+msgid "Responsible"
+msgstr "Verantwortlich"
+
+#. module: analytic_hours_block
+#: report:account.hours.block:0 field:account.hours.block,name:0
+msgid "Description"
+msgstr "Beschreibung"
+
+#. module: analytic_hours_block
+#: report:account.hours.block:0
+msgid "Amount bought:"
+msgstr "Erworbener Betrag:"
+
+#. module: analytic_hours_block
+#: help:account.hours.block,amount_hours_block_done:0
+msgid ""
+"Amount done by the staff. This amount is expressed in the base Unit of "
+"Measure (factor=1.0)"
+msgstr ""
+"Durch Mitarbeiter erledigter Betrag. Dieser Wert wird in der Basis-"
+"Mengeneinheit (Faktor=1,0) ausgedrückt"
+
+#. module: analytic_hours_block
+#: report:account.hours.block:0
+msgid "Quantity of hours used:"
+msgstr "Verbrauchte Stundenmenge:"
+
+#. module: analytic_hours_block
+#: report:account.hours.block:0
+msgid "Invoicing"
+msgstr "Abrechnung"
+
+#. module: analytic_hours_block
+#: field:account.hours.block,amount_hours_block_done:0
+msgid "Quantity / Amount used"
+msgstr "Verbrauchte Menge / Betrag"
+
+#. module: analytic_hours_block
+#: field:account.hours.block,journal_id:0
+msgid "Journal"
+msgstr "Journal"
+
+#. module: analytic_hours_block
+#: view:account.hours.block:0
+msgid "Running"
+msgstr "Laufend"
+
+#. module: analytic_hours_block
+#: view:account.hours.block:0
+#: field:account.hours.block,amount_hours_block_delta:0
+msgid "Difference"
+msgstr "Differenz"
+
+#. module: analytic_hours_block
+#: model:ir.actions.act_window,name:analytic_hours_block.act_block_hour_from_partner
+msgid "All blocks hours"
+msgstr "Alle Blockstunden"
+
+#. module: analytic_hours_block
+#: report:account.hours.block:0
+msgid "Deduced"
+msgstr "Abgezogen"
+
+#. module: analytic_hours_block
+#: model:ir.actions.act_window,name:analytic_hours_block.act_analytic_lines_from_hours_block
+msgid "Analytic Lines"
+msgstr "Kostenrechnungspositionen"
+
+#. module: analytic_hours_block
+#: view:account.hours.block:0
+msgid "Invoice State"
+msgstr "Rechnungsstatus"
+
+#. module: analytic_hours_block
+#: field:account.hours.block,message_summary:0
+msgid "Summary"
+msgstr "Übersicht"
+
+#. module: analytic_hours_block
+#: help:account.hours.block,message_ids:0
+msgid "Messages and communication history"
+msgstr "Meldungen und Kommunikationsverlauf"
+
+#. module: analytic_hours_block
+#: view:account.hours.block:0
+msgid "Overdue"
+msgstr "Überfällig"
+
+#. module: analytic_hours_block
+#: field:account.hours.block,amount_total:0
+msgid "Total"
+msgstr "GEsamt"
+
+#. module: analytic_hours_block
+#: field:product.product,is_in_hours_block:0
+msgid "Accounted for hours block?"
+msgstr "Stundenblock abgerechnet?"
+
+#. module: analytic_hours_block
+#: help:product.product,is_in_hours_block:0
+msgid ""
+"Specify if you want to have invoice lines containing this product to be "
+"considered for hours blocks."
+msgstr ""
+"Geben Sie an, ob Rechnungspositionen mit diesem Produkt als Stundenblock "
+"betrachten möchten."
