@@ -29,6 +29,7 @@ addon | version | summary
 [project_issue_baseuser](project_issue_baseuser/) | 8.0.1.0.0 | Extend Project user roles to support more complex use cases
 [project_issue_code](project_issue_code/) | 8.0.1.0.0 | Adding Field Code For Project Issue
 [project_issue_task](project_issue_task/) | 8.0.1.1.0 | Use Tasks to support Issue resolution reports
+[project_model_to_task](project_model_to_task/) | 8.0.0.5.0 | Project Model to Task
 [project_recalculate](project_recalculate/) | 8.0.1.0.0 | Project Recalculate
 [project_sla](project_sla/) | 8.0.1.0.0 | Define SLAs for your Contracts
 [project_stage_closed](project_stage_closed/) | 8.0.1.0.0 | Make the Closed flag on Task Stages available without installing sale_service
