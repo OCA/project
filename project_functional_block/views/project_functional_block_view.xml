@@ -6,16 +6,13 @@
         <record id="funct_block_search_view" model="ir.ui.view">
             <field name="name">project.functional.block.search</field>
             <field name="model">project.functional.block</field>
-            <field name="type">search</field>
             <field name="arch" type="xml">
                 <search string="Functional Blocks">
                     <field name="name" />
-                    <field name="complete_name" />
                     <field name="parent_id" />
-                    <group expand="0" string="Group By...">
-                        <filter string="Parent" icon="terp-partner"
-                            name="groupby_parent_id" help="Parent"
-                            context="{'group_by':'parent_id'}" />
+                    <group string="Group By...">
+                        <filter string="Parent" name="groupby_parent_id"
+                            help="Parent" context="{'group_by':'parent_id'}" />
                     </group>
                 </search>
             </field>
@@ -25,13 +22,11 @@
         <record model="ir.ui.view" id="funct_block_list_view">
             <field name="name">project.functional.block.list</field>
             <field name="model">project.functional.block</field>
-            <field name="type">tree</field>
             <field name="arch" type="xml">
                 <tree string="Functional Blocks">
                     <field name="name" />
                     <field name="code" />
                     <field name="parent_id" />
-                    <field name="complete_name" invisible="True" />
                 </tree>
             </field>
         </record>
@@ -40,7 +35,6 @@
         <record model="ir.ui.view" id="funct_categ_form_view">
             <field name="name">project.functional.block.form</field>
             <field name="model">project.functional.block</field>
-            <field name="type">form</field>
             <field name="arch" type="xml">
                 <form string="Functional Block">
                     <sheet>
@@ -58,9 +52,13 @@
                             <label class="oe_edit_only" for="name" string="Name"/>
                             <h1><field name="name" placeholder="Name"/></h1>
                         </div>
-                        <group col="4">
-                            <field name="parent_id" />
-                            <field name="code" />
+                        <group>
+                            <group>
+                                <field name="parent_id" />
+                            </group>
+                            <group>
+                                <field name="code" />
+                            </group>
                         </group>
                         <separator string="Description" />
                         <field name="description" />

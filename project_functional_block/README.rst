@@ -32,7 +32,7 @@ To use this module, you need to:
 Known issues / Roadmap
 ======================
 
-The logic in create() and write() could be replaced by a converting complete_name into a computed field.
+
 
 Bug Tracker
 ===========

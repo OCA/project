@@ -21,7 +21,7 @@
 
 {
     'name': 'Project requiring functional blocks',
-    'version': '1.2',
+    'version': '9.1.1.2.0',
     'author': "Akretion,Odoo Community Association (OCA)",
     'website': 'www.akretion.com',
     'license': 'AGPL-3',

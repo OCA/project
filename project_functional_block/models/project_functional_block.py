@@ -26,30 +26,34 @@ from openerp import models, fields, api
 class ProjectFunctionalBlock(models.Model):
     _name = 'project.functional.block'
     _description = 'Functional block to organize projects tasks'
-    _order = 'complete_name'
+    _order = 'parent_id desc, name'
     _rec_name = 'complete_name'
+    _parent_store = True
+    _parent_order = 'name'
 
     # Columns
     name = fields.Char('Name', size=64, required=True, translate=True)
     code = fields.Char('Code', size=8)
-    # TODO: this field doesn't work with multi-languages
-    complete_name = fields.Char(string="Complete Name", index=True)
+    complete_name = fields.Char(
+        string='Complete Name', compute='_compute_complete_name')
     description = fields.Text('Description', translate=True)
     parent_id = fields.Many2one(
         'project.functional.block', 'Parent Block',
         ondelete='cascade', index=True)
+    parent_left = fields.Integer('Left Parent', index=True)
+    parent_right = fields.Integer('Right Parent', index=True)
     tasks_count = fields.Integer(string='Tasks Count', compute='_count_tasks')
     child_fblocks_count = fields.Integer(
         string='Child Blocks Count', compute='_count_child_fblocks')
 
     @api.multi
-    def _update_complete_name(self):
+    def _compute_complete_name(self):
         """
         Complete Name includes parent's name and name of this functional block
         itself.
         """
         todo_fblocks = self.search([('id', 'child_of', self.ids)],
-                                   order='complete_name')
+                                   order='parent_id desc, name')
         for func_block in todo_fblocks:
             complete_name = func_block.name
             parent = func_block.parent_id
@@ -57,26 +61,6 @@ class ProjectFunctionalBlock(models.Model):
                 complete_name = parent.name + ' / ' + complete_name
                 parent = parent.parent_id
             func_block.complete_name = complete_name
-
-    @api.model
-    def create(self, vals):
-        new_fblock = super(ProjectFunctionalBlock, self).create(vals)
-        # Update complete_name for this record
-        if 'updating_complete_name' not in self._context:
-            ctx = self._context.copy()
-            ctx.update({'updating_complete_name': True})
-            new_fblock.with_context(ctx)._update_complete_name()
-        return new_fblock
-
-    @api.multi
-    def write(self, vals):
-        res = super(ProjectFunctionalBlock, self).write(vals)
-        # Update complete_name for these records and child records
-        if 'updating_complete_name' not in self._context:
-            ctx = self._context.copy()
-            ctx.update({'updating_complete_name': True})
-            self.with_context(ctx)._update_complete_name()
-        return res
 
     @api.multi
     def _count_tasks(self):
@@ -116,18 +100,28 @@ class ProjectFunctionalBlock(models.Model):
 
     @api.multi
     def _count_child_fblocks(self):
-        """
+        print """
         Count the number of child blocks of given functional block(s).
         """
         for fblock in self:
-            child_fblocks_count = self.search(
-                [('id', 'child_of', fblock.id), ('id', '!=', fblock.id)],
-                count=True)
+            child_fblocks_count = self.search_count(
+                [('id', 'child_of', fblock.id), ('id', '!=', fblock.id)])
             fblock.child_fblocks_count = child_fblocks_count
+            # Test
+            fcount = 0
+            block_lst = [fblock]
+            while block_lst:
+                current_block = block_lst.pop()
+                child_blocks = self.search(
+                    [('parent_id', '=', current_block.id)])
+                if not child_blocks:
+                    continue
+                fcount += len(child_blocks)
+                block_lst += child_blocks
 
     @api.multi
     def action_view_child_fblocks(self):
-        """
+        print """
         View child blocks of the given block.
         """
         self.ensure_one()
@@ -135,10 +129,10 @@ class ProjectFunctionalBlock(models.Model):
             'project_functional_block.action_funct_block_list')
         child_fblocks = self.search(
             [('id', 'child_of', self.id), ('id', '!=', self.id)])
-        child_fblock_ids_str = ','.join(map(str, child_fblocks.ids))
-        ret_ctx = {
-            'default_parent_id': self.id
-        }
+        child_fblock_ids_str = child_fblocks and\
+            ','.join(map(str, child_fblocks.ids)) or\
+            '-1'
+        ret_ctx = {'default_parent_id': self.id}
         return {
             'name': action.name,
             'help': action.help,
