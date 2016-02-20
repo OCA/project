@@ -100,7 +100,7 @@ class ProjectFunctionalBlock(models.Model):
 
     @api.multi
     def _count_child_fblocks(self):
-        print """
+        """
         Count the number of child blocks of given functional block(s).
         """
         for fblock in self:
@@ -121,7 +121,7 @@ class ProjectFunctionalBlock(models.Model):
 
     @api.multi
     def action_view_child_fblocks(self):
-        print """
+        """
         View child blocks of the given block.
         """
         self.ensure_one()
