@@ -98,6 +98,7 @@ class ProjectFunctionalBlock(models.Model):
         action = self.env.ref('project.action_view_task')
         task_obj = self.env['project.task']
         tasks = task_obj.search([('functional_block_id', '=', self.id)])
+        task_ids_str = ','.join(map(str, tasks.ids))
         ret_ctx = {
             'default_functional_block_id': self.id
         }
@@ -110,8 +111,7 @@ class ProjectFunctionalBlock(models.Model):
             'target': action.target,
             'context': str(ret_ctx),
             'res_model': action.res_model,
-            'domain': "[('id', 'in', (" + ','.join(map(str, tasks.ids))
-            + ",))]"
+            'domain': "[('id', 'in', (" + task_ids_str + ",))]"
         }
 
     @api.multi
@@ -135,6 +135,7 @@ class ProjectFunctionalBlock(models.Model):
             'project_functional_block.action_funct_block_list')
         child_fblocks = self.search(
             [('id', 'child_of', self.id), ('id', '!=', self.id)])
+        child_fblock_ids_str = ','.join(map(str, child_fblocks.ids))
         ret_ctx = {
             'default_parent_id': self.id
         }
@@ -147,6 +148,5 @@ class ProjectFunctionalBlock(models.Model):
             'target': action.target,
             'context': str(ret_ctx),
             'res_model': action.res_model,
-            'domain': "[('id', 'in', (" + ','.join(map(str, child_fblocks.ids))
-            + ",))]"
+            'domain': "[('id', 'in', (" + child_fblock_ids_str + ",))]"
         }
