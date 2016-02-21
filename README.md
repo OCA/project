@@ -14,6 +14,12 @@ This project aims to extend Odoo on contract management features, such as:
   * ...
 
 [//]: # (addons)
+Available addons
+----------------
+addon | version | summary
+--- | --- | ---
+[project_task_default_stage](project_task_default_stage/) | 9.0.1.0.0 | Recovery default task stage projects from v8
+
 Unported addons
 ---------------
 addon | version | summary
