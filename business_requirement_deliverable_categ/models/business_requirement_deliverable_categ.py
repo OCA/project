@@ -18,15 +18,6 @@ class BrGenerateProjects(models.TransientModel):
     _inherit = 'br.generate.projects'
 
     @api.multi
-    def _prepare_name_project_task(self, line):
-        str_list = []
-        br_name = line.business_requirement_deliverable_id.\
-            business_requirement_id.name
-        str_list.append(br_name)
-        str_list.append(line.task_name)
-        return '-'.join(str_list)
-
-    @api.multi
     def _prepare_project_task(self, line, project_id):
         context = self.env.context
         default_uom = context and context.get('default_uom', False)
@@ -34,7 +25,7 @@ class BrGenerateProjects(models.TransientModel):
         qty = product_uom_obj._compute_qty(
             line.uom_id.id, line.qty, default_uom)
         vals = {
-            'name': self._prepare_name_project_task(line),
+            'name': line.task_name,
             'description': line.description,
             'sequence': line.sequence,
             'project_id': project_id,
