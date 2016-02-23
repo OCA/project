@@ -9,10 +9,11 @@ class BusinessRequirementDeliverable(models.Model):
 
     def _prepare_resouce_lines(self):
         rl_data = self.product_id.resource_lines.copy_data()
-        rl_data = [(0, 0) + (x,) for x in rl_data]
+        ids = self.product_id.resource_lines.ids
+        rl_data = [(1, ids[index], item) for index, item in enumerate(rl_data)]
         return rl_data
 
-    @api.one
+    @api.multi
     @api.onchange('product_id')
     def product_id_change(self):
         description = ''
@@ -46,5 +47,10 @@ class BusinessRequirementResource(models.Model):
     product_template_id = fields.Many2one(
         comodel_name='product.template',
         string='Product',
-        ondelete='cascade'
+        ondelete='cascade',
+        copy=False
+    )
+    business_requirement_deliverable_id = fields.Many2one(
+        comodel_name='business.requirement.deliverable',
+        copy=False
     )
