@@ -84,9 +84,10 @@ class TaskAlert(models.Model):
         # TODO check if we should allow setting task_alert to inactive
         alert_ids = self.search(cr, uid, [], context=context)
         for task_alert in self.browse(cr, uid, alert_ids, context=context):
-            args = [(task_alert.date_field_id.name, '<=', (datetime.now() +
-                timedelta(days=task_alert.days_delta)).strftime(DF)),
-                (task_alert.date_field_id.name, '!=', False)
+            days_delta = timedelta(days=task_alert.days_delta)
+            to_date = (datetime.now() + days_delta).strftime(DF)
+            args = [(task_alert.date_field_id.name, '<=', to_date),
+                    (task_alert.date_field_id.name, '!=', False)
             ]
             if not task_alert.last_run:
                 task_alert.last_run = datetime.now()
