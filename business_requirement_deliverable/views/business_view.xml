@@ -59,7 +59,6 @@
                     <field name="unit_price"/>
                     <field name="price_total"/>
                     <field name="user_id" attrs="{'readonly':[('resource_type','=','procurement')]}"/>
-                    <field name="task_name" attrs="{'readonly':[('resource_type','=','procurement')],'required':[('resource_type','=','task')]}"/>
                 </tree>
             </field>
         </record>
