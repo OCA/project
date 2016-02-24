@@ -9,16 +9,22 @@ from openerp.tests import common
 class BusinessRequirementTestCase(common.TransactionCase):
     def setUp(self):
         super(BusinessRequirementTestCase, self).setUp()
-        # self.br = self.registry['business.requirement']
         self.ModelDataObj = self.env['ir.model.data']
 
         self.ProjectObj = self.env['project.project']
+
+        self.AnalyticAccountObject = self.env['account.analytic.account']
+
+        self.AnalyticAccount = self.AnalyticAccountObject.create(
+            {'name': 'AnalyticAccount for Test',
+             'state': 'draft'})
+
         self.projectA = self.ProjectObj.create(
             {'name': 'Test Project A', 'partner_id': 1, 'parent_id': 1,
-                'analytic_account_id': 192})
+                'analytic_account_id': self.AnalyticAccount.id})
         self.projectB = self.ProjectObj.create(
             {'name': 'Test Project B', 'partner_id': 1, 'parent_id': 1,
-                'analytic_account_id': 192})
+                'analytic_account_id': self.AnalyticAccount.id})
 
         # Configure unit of measure.
         self.categ_wtime = self.ModelDataObj.xmlid_to_res_id(
@@ -78,7 +84,6 @@ class BusinessRequirementTestCase(common.TransactionCase):
                                 'uom_id': self.uom_hours.id,
                                 'unit_price': 500,
                                 'resource_type': 'task',
-                                'task_name': 'task 1'
                             }),
                             (0, 0, {
                                 'description': 'Resource Line1',
@@ -87,7 +92,6 @@ class BusinessRequirementTestCase(common.TransactionCase):
                                 'uom_id': self.uom_hours.id,
                                 'unit_price': 500,
                                 'resource_type': 'task',
-                                'task_name': 'task 2'
                             })
                         ]
                         }),
