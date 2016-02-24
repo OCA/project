@@ -1,0 +1,96 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* task_alert
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-03-31 11:24+0000\n"
+"PO-Revision-Date: 2015-03-31 11:24+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: task_alert
+#: view:task.alert:task_alert.res_task_alert_form
+#: view:task.alert:task_alert.res_task_alert_tree
+msgid "Alert"
+msgstr ""
+
+#. module: task_alert
+#: field:task.alert,user_id:0
+msgid "Assigned to"
+msgstr ""
+
+#. module: task_alert
+#: field:task.alert,create_uid:0
+msgid "Created by"
+msgstr ""
+
+#. module: task_alert
+#: field:task.alert,create_date:0
+msgid "Created on"
+msgstr ""
+
+#. module: task_alert
+#: field:task.alert,date_field_id:0
+msgid "Date field"
+msgstr ""
+
+#. module: task_alert
+#: field:task.alert,days_delta:0
+msgid "Days"
+msgstr ""
+
+#. module: task_alert
+#: field:task.alert,id:0
+msgid "ID"
+msgstr ""
+
+#. module: task_alert
+#: field:task.alert,write_uid:0
+msgid "Last Updated by"
+msgstr ""
+
+#. module: task_alert
+#: field:task.alert,write_date:0
+msgid "Last Updated on"
+msgstr ""
+
+#. module: task_alert
+#: field:task.alert,last_run:0
+msgid "Last run"
+msgstr ""
+
+#. module: task_alert
+#: field:task.alert,project_id:0
+msgid "Project"
+msgstr ""
+
+#. module: task_alert
+#: model:ir.actions.act_window,name:task_alert.project_task_alert_action
+#: model:ir.ui.menu,name:task_alert.crm_menu_task_alert_act
+#: model:ir.ui.menu,name:task_alert.menu_hr_department_task_alert_act
+#: model:ir.ui.menu,name:task_alert.menu_project_task_alert_act
+msgid "Task Alerts"
+msgstr ""
+
+#. module: task_alert
+#: field:task.alert,task_name:0
+msgid "Task Name"
+msgstr ""
+
+#. module: task_alert
+#: help:task.alert,days_delta:0
+msgid "The amount of days before the date in the field to send out the alert."
+msgstr ""
+
+#. module: task_alert
+#: view:task.alert:task_alert.res_task_alert_form
+msgid "test run"
+msgstr ""
+
