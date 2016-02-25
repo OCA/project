@@ -3,10 +3,10 @@
    :alt: License: AGPL-3
 
 =============================================
-Business Qequirement Deliverable Cost Control
+Business Requirement Deliverable Cost Control
 =============================================
 
-This module improve financial information and control in resources lines and BR
+This module improve financial information and control in resources lines and Business Requirements.
 
 Installation
 ============
@@ -49,6 +49,7 @@ Contributors
 Eric Caudal<eric.caudal@elico-corp.com>
 Alex Duan<alex.duan@elico-corp.com>
 Xie XiaoPeng<xie.xiaopeng@elico-corp.com>
+Luke Zheng<luke.zheng@elico-corp.com>
 
 Maintainer
 ----------

@@ -2,8 +2,8 @@
 # © 2016 Elico Corp (www.elico-corp.com).
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
-    "name": "Business Qequirement Deliverable Cost Control",
-    "summary": "Business Qequirement Deliverable Cost Control Module Project",
+    "name": "Business Requirement Deliverable Cost Control",
+    "summary": "Business Requirement Deliverable Cost Control Module Project",
     "version": "9.0.1.0.1",
     'category': 'Business Requirements Management',
     "website": "www.elico-corp.com",
