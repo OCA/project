@@ -184,6 +184,7 @@ class BrGenerateProjects(models.TransientModel):
             'sequence': line.sequence,
             'project_id': project_id,
             'planned_hours': qty,
+            'remaining_hours': qty,
             'br_resource_id': line.id,
             'user_id': line.user_id.id,
         }
