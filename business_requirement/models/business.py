@@ -3,6 +3,8 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from openerp import api, fields, models
+from openerp import tools
+from openerp import SUPERUSER_ID
 
 
 class BusinessRequirement(models.Model):
@@ -201,6 +203,283 @@ class BusinessRequirement(models.Model):
     @api.one
     def action_button_drop(self):
         self.write({'state': 'drop'})
+
+    @api.cr_uid_ids_context
+    def message_post(self, cr, uid, thread_id, body='', subject=None,
+                     type='notification', subtype=None, parent_id=False,
+                     attachments=None, context=None,
+                     content_subtype='html', **kwargs):
+        """
+        Overwrite method message_post from mail.thread to modify the default
+        behavior of subject with mail messages.
+        """
+
+        """ Post a new message in an existing thread, returning the new
+            mail.message ID.
+
+            :param int thread_id: thread ID to post into, or list with one ID;
+                if False/0, mail.message model will also be set as False
+            :param str body: body of the message, usually raw HTML that will
+                be sanitized
+            :param str type: see mail_message.type field
+            :param str content_subtype:: if plaintext: convert body into html
+            :param int parent_id: handle reply to a previous message by adding
+                the parent partners to the message in case of private
+                discussion
+            :param tuple(str,str) attachments or list id: list of attachment
+                tuples in the form ``(name,content)``, where content is NOT
+                base64 encoded
+
+            Extra keyword arguments will be used as default column values
+            for the new mail.message record. Special cases:
+                - attachment_ids: supposed not attached to any document;
+                    attach them to the related document.
+                    Should only be set by Chatter.
+            :return int: ID of newly created mail.message
+        """
+        if context.get('default_res_id'):
+            br_object = self.pool.get('business.requirement').browse(
+                cr, uid, context['default_res_id'])
+            subject = 'Re: %s-%s' % (br_object.name, br_object.description)
+
+        if context is None:
+            context = {}
+        if attachments is None:
+            attachments = {}
+        mail_message = self.pool.get('mail.message')
+        ir_attachment = self.pool.get('ir.attachment')
+
+        assert (not thread_id) or \
+            isinstance(thread_id, (int, long)) or \
+            (isinstance(thread_id, (list, tuple)) and len(thread_id) == 1), \
+            "Invalid thread_id; should be 0, False, \
+                an ID or a list with one ID"
+        if isinstance(thread_id, (list, tuple)):
+            thread_id = thread_id[0]
+
+        # if we're processing a message directly coming from the gateway,
+        # the destination model was
+        # set in the context.
+        model = False
+        if thread_id:
+            model = context.get('thread_model', False) \
+                if self._name == 'mail.thread' else self._name
+            if model and model != self._name and \
+                    hasattr(self.pool[model], 'message_post'):
+                del context['thread_model']
+                return self.pool[model].message_post(
+                    cr, uid, thread_id, body=body, subject=subject, type=type,
+                    subtype=subtype, parent_id=parent_id,
+                    attachments=attachments, context=context,
+                    content_subtype=content_subtype, **kwargs)
+
+        # 0: Find the message's author,
+        # because we need it for private discussion
+        author_id = kwargs.get('author_id')
+        if author_id is None:  # keep False values
+            author_id = self.pool.get('mail.message')._get_default_author(
+                cr, uid, context=context)
+
+        # 1: Handle content subtype: if plaintext, converto into HTML
+        if content_subtype == 'plaintext':
+            body = tools.plaintext2html(body)
+
+        # 2: Private message: add recipients
+        # (recipients and author of parent message) - current author
+        #   + legacy-code management (! we manage only 4 and 6 commands)
+        partner_ids = set()
+        kwargs_partner_ids = kwargs.pop('partner_ids', [])
+        for partner_id in kwargs_partner_ids:
+            if isinstance(partner_id, (list, tuple)) and partner_id[0] == 4 and\
+                    len(partner_id) == 2:
+                partner_ids.add(partner_id[1])
+            if isinstance(partner_id, (list, tuple)) and \
+                    partner_id[0] == 6 and len(partner_id) == 3:
+                partner_ids |= set(partner_id[2])
+            elif isinstance(partner_id, (int, long)):
+                partner_ids.add(partner_id)
+            else:
+                pass  # we do not manage anything else
+        if parent_id and not model:
+            parent_message = mail_message.browse(
+                cr, uid, parent_id, context=context)
+            private_followers = \
+                set([partner.id for partner in parent_message.partner_ids])
+            if parent_message.author_id:
+                private_followers.add(parent_message.author_id.id)
+            private_followers -= set([author_id])
+            partner_ids |= private_followers
+
+        # 3. Attachments
+        #   - HACK TDE FIXME: Chatter: attachments linked to the document
+        # (not done JS-side), load the message
+        attachment_ids = self._message_preprocess_attachments(
+            cr, uid, attachments,
+            kwargs.pop('attachment_ids', []), model, thread_id, context)
+
+        # 4: mail.message.subtype
+        subtype_id = False
+        if subtype:
+            if '.' not in subtype:
+                subtype = 'mail.%s' % subtype
+            subtype_id = self.pool.get('ir.model.data').xmlid_to_res_id(
+                cr, uid, subtype)
+
+        # automatically subscribe recipients if asked to
+        if context.get('mail_post_autofollow') and thread_id and partner_ids:
+            partner_to_subscribe = partner_ids
+            if context.get('mail_post_autofollow_partner_ids'):
+                partner_to_subscribe = filter(lambda item: item in context.get(
+                    'mail_post_autofollow_partner_ids'), partner_ids)
+            self.message_subscribe(
+                cr, uid, [thread_id],
+                list(partner_to_subscribe), context=context)
+
+        # _mail_flat_thread: automatically
+        # set free messages to the first posted message
+        if self._mail_flat_thread and model and not parent_id and thread_id:
+            message_ids = mail_message.search(
+                cr, uid, ['&', ('res_id', '=', thread_id),
+                          ('model', '=', model),
+                          ('type', '=', 'email')],
+                context=context, order="id ASC", limit=1)
+            if not message_ids:
+                message_ids = message_ids = mail_message.search(
+                    cr, uid, ['&', ('res_id', '=', thread_id),
+                              ('model', '=', model)],
+                    context=context, order="id ASC", limit=1)
+            parent_id = message_ids and message_ids[0] or False
+        # we want to set a parent: force to set the parent_id
+        # to the oldest ancestor, to avoid having more than 1 level of thread
+        elif parent_id:
+            message_ids = mail_message.search(
+                cr, SUPERUSER_ID,
+                [('id', '=', parent_id),
+                 ('parent_id', '!=', False)], context=context)
+            # avoid loops when finding ancestors
+            processed_list = []
+            if message_ids:
+                message = mail_message.browse(
+                    cr, SUPERUSER_ID, message_ids[0], context=context)
+                while (message.parent_id
+                        and message.parent_id.id not in processed_list):
+                    processed_list.append(message.parent_id.id)
+                    message = message.parent_id
+                parent_id = message.id
+
+        values = kwargs
+        values.update({
+            'author_id': author_id,
+            'model': model,
+            'res_id': model and thread_id or False,
+            'body': body,
+            'subject': subject or False,
+            'type': type,
+            'parent_id': parent_id,
+            'attachment_ids': attachment_ids,
+            'subtype_id': subtype_id,
+            'partner_ids': [(4, pid) for pid in partner_ids],
+        })
+
+        # Avoid warnings about non-existing fields
+        for x in ('from', 'to', 'cc'):
+            values.pop(x, None)
+
+        # Post the message
+        msg_id = mail_message.create(cr, uid, values, context=context)
+
+        # Post-process: subscribe author, update message_last_post
+        if model and model != 'mail.thread' and thread_id and subtype_id:
+            # done with SUPERUSER_ID, because on some models users can post
+            # only with read access, not necessarily write access
+            self.write(
+                cr, SUPERUSER_ID, [thread_id],
+                {'message_last_post': fields.datetime.now()}, context=context)
+        message = mail_message.browse(cr, uid, msg_id, context=context)
+        if message.author_id and model and thread_id and \
+                type != 'notification' and not \
+                        context.get('mail_create_nosubscribe'):
+            self.message_subscribe(
+                cr, uid, [thread_id], [message.author_id.id], context=context)
+        return msg_id
+
+
+class MailComposeMessage(models.TransientModel):
+    _inherit = 'mail.compose.message'
+
+    def default_get(self, cr, uid, fields, context=None):
+        """ Handle composition mode. Some details about context keys:
+            - comment: default mode, model and ID of a record the user comments
+                - default_model or active_model
+                - default_res_id or active_id
+            - reply: active_id of a message the user replies to
+                - default_parent_id or message_id or active_id: ID of the
+                    mail.message we reply to
+                - message.res_model or default_model
+                - message.res_id or default_res_id
+            - mass_mail: model and IDs of records the user mass-mails
+                - active_ids: record IDs
+                - default_model or active_model
+        """
+        if context is None:
+            context = {}
+        result = super(MailComposeMessage, self).default_get(
+            cr, uid, fields, context=context)
+
+        # v6.1 compatibility mode
+        result['composition_mode'] = result.get(
+            'composition_mode', context.get(
+                'mail.compose.message.mode', 'comment'))
+        result['model'] = result.get('model', context.get('active_model'))
+        result['res_id'] = result.get('res_id', context.get('active_id'))
+        result['parent_id'] = result.get(
+            'parent_id', context.get('message_id'))
+
+        if not result['model'] or not self.pool.get(result['model']) or not \
+                hasattr(self.pool[result['model']], 'message_post'):
+            result['no_auto_thread'] = True
+
+        # default values according to composition mode -
+        # NOTE: reply is deprecated, fall back on comment
+        if result['composition_mode'] == 'reply':
+            result['composition_mode'] = 'comment'
+        vals = {}
+        if 'active_domain' in context:
+            # not context.get() because we want to keep global [] domains
+            vals['use_active_domain'] = True
+            vals['active_domain'] = '%s' % context.get('active_domain')
+        if result['composition_mode'] == 'comment':
+            vals.update(self.get_record_data(cr, uid, result, context=context))
+
+        for field in vals:
+            if field in fields:
+                if field == 'subject':
+                    if context.get('default_res_id'):
+                        br_object = self.pool.get('business.requirement')\
+                            .browse(cr, uid, context['default_res_id'])
+                        subject = 'Re: %s-%s' % (
+                            br_object.name, br_object.description)
+                        result[field] = subject
+                else:
+                    result[field] = vals[field]
+
+        # TDE HACK: as mailboxes used default_model='res.users'
+        # and default_res_id=uid (because of lack of an accessible pid),
+        # creating a message on its own
+        # profile may crash (res_users does not allow writing on it)
+        # Posting on its own profile works (res_users redirect to res_partner)
+        # but when creating the mail.message to create the mail.compose.message
+        # access rights issues may rise
+        # We therefore directly change the model and res_id
+        if result['model'] == 'res.users' and result['res_id'] == uid:
+            result['model'] = 'res.partner'
+            result['res_id'] = self.pool.get(
+                'res.users').browse(cr, uid, uid).partner_id.id
+
+        if fields is not None:
+            [result.pop(field, None)
+                for field in result.keys() if field not in fields]
+        return result
 
 
 class BusinessRequirementCategory(models.Model):
