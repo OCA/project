@@ -88,7 +88,7 @@ class TaskAlert(models.Model):
             to_date = (datetime.now() + days_delta).strftime(DF)
             args = [(task_alert.date_field_id.name, '<=', to_date),
                     (task_alert.date_field_id.name, '!=', False)
-            ]
+                    ]
             if not task_alert.last_run:
                 task_alert.last_run = datetime.now()
             last_run_dt = datetime.strptime(task_alert.last_run, DF)
