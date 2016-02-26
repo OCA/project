@@ -4,7 +4,7 @@
        <!-- crm make sale's view -->
        <record id="view_crm_make_sale" model="ir.ui.view">
           <field name="name">crm.make.sale.form</field>
-          <field name="model">crm.make.sale</field>
+          <field name="model">br.crm.make.sale</field>
           <field name="arch" type="xml">
             <form string="Quotation from Business Requirements" >
                 <group col="4">
@@ -25,7 +25,7 @@
        <record id="action_crm_make_sale" model="ir.actions.act_window">
           <field name="name">Quotation from Business Requirements</field>
           <field name="type">ir.actions.act_window</field>
-          <field name="res_model">crm.make.sale</field>
+          <field name="res_model">br.crm.make.sale</field>
           <field name="view_type">form</field>
           <field name="view_mode">form</field>
           <field name="target">new</field>
