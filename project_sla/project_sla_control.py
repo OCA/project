@@ -99,8 +99,19 @@ class SLAControl(orm.Model):
             for sla in self.browse(cr, uid, ids, context=context):
                 doc = self.pool.get(sla.doc_model).browse(
                     cr, uid, sla.doc_id, context=context)
+                colors = {
+                    '1': 0,
+                    '3': 4,
+                    '4': 3,
+                    '5': 2,
+                }
                 if doc.sla_state < new_state:
-                    doc.write({'sla_state': new_state})
+                    doc.write(
+                        {
+                            'sla_state': new_state,
+                            'color': colors[new_state],
+                        }
+                    )
         return res
 
     def update_sla_states(self, cr, uid, context=None):
