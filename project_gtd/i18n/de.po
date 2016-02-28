@@ -3,14 +3,16 @@
 # * project_gtd
 # 
 # Translators:
+# Rudolf Schnapka <rs@techno-flex.de>, 2016
+# Thomas A. Jaeger, 2015
 # Thomas A. Jaeger, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-18 15:57+0000\n"
-"PO-Revision-Date: 2015-11-05 10:27+0000\n"
-"Last-Translator: Thomas A. Jaeger\n"
+"POT-Creation-Date: 2015-12-24 08:57+0000\n"
+"PO-Revision-Date: 2016-02-26 15:04+0000\n"
+"Last-Translator: Rudolf Schnapka <rs@techno-flex.de>\n"
 "Language-Team: German (http://www.transifex.com/oca/OCA-project-8-0/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,7 +33,7 @@ msgstr "Abbrechen"
 #. module: project_gtd
 #: model:project.gtd.context,name:project_gtd.context_car
 msgid "Car"
-msgstr "Während Reisezeit"
+msgstr "Fahrzeit"
 
 #. module: project_gtd
 #: model:ir.model,name:project_gtd.model_project_gtd_context
@@ -47,7 +49,7 @@ msgstr "Kontext"
 #: model:ir.actions.act_window,name:project_gtd.open_gtd_context_tree
 #: model:ir.ui.menu,name:project_gtd.menu_open_gtd_time_contexts
 msgid "Contexts"
-msgstr "Kontext"
+msgstr "Kontexte"
 
 #. module: project_gtd
 #: model:ir.actions.act_window,help:project_gtd.open_gtd_context_tree
@@ -134,7 +136,7 @@ msgstr "Zuletzt geändert am"
 #. module: project_gtd
 #: model:project.gtd.timebox,name:project_gtd.timebox_lt
 msgid "Long Term"
-msgstr "Später"
+msgstr "Langfristig"
 
 #. module: project_gtd
 #: model:ir.actions.act_window,name:project_gtd.open_gtd_task
@@ -182,7 +184,7 @@ msgstr "Sequenz"
 #. module: project_gtd
 #: field:project.timebox.fill.plan,timebox_to_id:0
 msgid "Set to Timebox"
-msgstr "Zu Zeitfenster zuweisen"
+msgstr "Zeitfenster zuweisen"
 
 #. module: project_gtd
 #: model:ir.model,name:project_gtd.model_project_task

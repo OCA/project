@@ -3,14 +3,16 @@
 # * service_desk_issue
 # 
 # Translators:
+# Rudolf Schnapka <rs@techno-flex.de>, 2016
+# Thomas A. Jaeger, 2015
 # Thomas A. Jaeger, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-18 15:57+0000\n"
-"PO-Revision-Date: 2015-11-09 16:18+0000\n"
-"Last-Translator: Thomas A. Jaeger\n"
+"POT-Creation-Date: 2015-12-24 08:57+0000\n"
+"PO-Revision-Date: 2016-02-26 17:02+0000\n"
+"Last-Translator: Rudolf Schnapka <rs@techno-flex.de>\n"
 "Language-Team: German (http://www.transifex.com/oca/OCA-project-8-0/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,7 +23,7 @@ msgstr ""
 #. module: service_desk_issue
 #: field:project.issue,analytic_partner_id:0
 msgid "Analytic Account Partner"
-msgstr "Vertragspartner"
+msgstr "Partnerkostenstelle"
 
 #. module: service_desk_issue
 #: view:project.issue:service_desk_issue.view_project_issue_filter_sdesk
@@ -36,7 +38,7 @@ msgstr "Kundenvertrag"
 #. module: service_desk_issue
 #: field:project.issue,analytic_account_id:0
 msgid "Contract/Analytic"
-msgstr "Vertrag/Konto"
+msgstr "Vertrag/Kostenstelle"
 
 #. module: service_desk_issue
 #: field:project.issue,location_id:0
@@ -46,17 +48,17 @@ msgstr "Einsatzort"
 #. module: service_desk_issue
 #: field:project.issue,project_code:0
 msgid "Project Code"
-msgstr "Projekt ID"
+msgstr "Projektschlüssel"
 
 #. module: service_desk_issue
 #: model:ir.model,name:service_desk_issue.model_project_issue
 msgid "Project Issue"
-msgstr "Fall"
+msgstr "Projektproblem"
 
 #. module: service_desk_issue
 #: field:project.issue,use_analytic_account:0
 msgid "Use Analytic Account"
-msgstr "Verwende Vertragskonto"
+msgstr "Verwende Kostenstelle"
 
 #. module: service_desk_issue
 #: view:project.issue:service_desk_issue.project_issue_form_view_sdesk

@@ -3,14 +3,16 @@
 # * project_classification
 # 
 # Translators:
+# Rudolf Schnapka <rs@techno-flex.de>, 2016
+# Thomas A. Jaeger, 2015
 # Thomas A. Jaeger, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-18 15:57+0000\n"
-"PO-Revision-Date: 2015-11-03 13:36+0000\n"
-"Last-Translator: Thomas A. Jaeger\n"
+"POT-Creation-Date: 2015-12-24 08:57+0000\n"
+"PO-Revision-Date: 2016-02-26 17:02+0000\n"
+"Last-Translator: Rudolf Schnapka <rs@techno-flex.de>\n"
 "Language-Team: German (http://www.transifex.com/oca/OCA-project-8-0/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -54,7 +56,7 @@ msgstr "Währung"
 msgid ""
 "Fill this field if you plan to automatically generate invoices based on the "
 "costs in this classification"
-msgstr "Belegen Sie dieses Feld, wenn Sie basierend auf den Kosten der Klassifizierung automatisch Rechnungen erstellen möchten "
+msgstr "Belegen Sie dieses Feld, wenn Sie, basierend auf den Kosten der Klassifizierung, automatisch Rechnungen erstellen möchten "
 
 #. module: project_classification
 #: field:project.classification,id:0
@@ -96,24 +98,24 @@ msgstr "Projekt"
 #: model:ir.actions.act_window,name:project_classification.action_project_classification_form
 #: model:ir.ui.menu,name:project_classification.menu_project_classification
 msgid "Project Classification"
-msgstr "Projekt Klassifizierung"
+msgstr "Projektklassifizierung"
 
 #. module: project_classification
 #: view:project.project:project_classification.view_account_analytic_account_tree
 msgid "Project Manager"
-msgstr "Projekt Manager"
+msgstr "Projektmanager"
 
 #. module: project_classification
 #: view:project.project:project_classification.view_account_analytic_account_tree
 msgid "Project Name"
-msgstr "Projekt Name"
+msgstr "Projektbezeichnung"
 
 #. module: project_classification
 #: model:ir.model,name:project_classification.model_project_classification
 #: view:project.classification:project_classification.view_project_classification_form
 #: view:project.classification:project_classification.view_project_classification_list
 msgid "Project classification"
-msgstr "Projekt Klassifizierung"
+msgstr "Projektklassifizierung"
 
 #. module: project_classification
 #: view:project.project:project_classification.view_account_analytic_account_tree
@@ -124,12 +126,12 @@ msgstr "Projekte"
 #: model:ir.actions.act_window,name:project_classification.action_project_account_tree2
 #: model:ir.ui.menu,name:project_classification.menu_open_view_project_all
 msgid "Projects Tree"
-msgstr "Projektbaum"
+msgstr "Projektebaum"
 
 #. module: project_classification
 #: field:project.classification,to_invoice:0
 msgid "Reinvoice Costs"
-msgstr "Nochmals Kosten in Rechnung stellen"
+msgstr "Kosten neu abrechnen"
 
 #. module: project_classification
 #: field:project.classification,pricelist_id:0

@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-12-24 08:57+0000\n"
-"PO-Revision-Date: 2016-01-18 08:11+0000\n"
+"PO-Revision-Date: 2016-02-26 17:02+0000\n"
 "Last-Translator: Rudolf Schnapka <rs@techno-flex.de>\n"
 "Language-Team: German (http://www.transifex.com/oca/OCA-project-8-0/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +21,7 @@ msgstr ""
 #. module: project_stage_closed
 #: field:project.task.type,closed:0
 msgid "Closed"
-msgstr "Geschlossen"
+msgstr "Beendet"
 
 #. module: project_stage_closed
 #: model:ir.model,name:project_stage_closed.model_project_task_type
@@ -31,4 +31,4 @@ msgstr "Aufgabenphase"
 #. module: project_stage_closed
 #: help:project.task.type,closed:0
 msgid "Tasks in this stage are considered closed."
-msgstr "Aufgaben dieser Phase werden als geschlossen angesehen."
+msgstr "Aufgaben dieser Phase werden als abgeschlossen betrachtet."

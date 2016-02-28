@@ -3,14 +3,16 @@
 # * project_categ
 # 
 # Translators:
+# Rudolf Schnapka <rs@techno-flex.de>, 2016
+# Thomas A. Jaeger, 2015
 # Thomas A. Jaeger, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-18 15:57+0000\n"
-"PO-Revision-Date: 2015-11-09 16:15+0000\n"
-"Last-Translator: Thomas A. Jaeger\n"
+"POT-Creation-Date: 2015-12-24 08:57+0000\n"
+"PO-Revision-Date: 2016-02-26 17:02+0000\n"
+"Last-Translator: Rudolf Schnapka <rs@techno-flex.de>\n"
 "Language-Team: German (http://www.transifex.com/oca/OCA-project-8-0/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,7 +28,7 @@ msgstr "Hauptkategorie"
 #. module: project_categ
 #: model:ir.model,name:project_categ.model_project_category
 msgid "Category of project's task, issue, ..."
-msgstr "Kategorie für Aufgaben, Fälle aus Projekten"
+msgstr "Kategorie der Projekt-Aufgaben, -Probleme, ..."
 
 #. module: project_categ
 #: field:project.category,child_ids:0
@@ -56,7 +58,7 @@ msgstr "Projekt"
 #. module: project_categ
 #: field:project.project,task_categ_id:0
 msgid "Root Category for Tasks"
-msgstr "Hauptkategorie für Aufgaben"
+msgstr "Stammkategorie für Aufgaben"
 
 #. module: project_categ
 #: model:ir.model,name:project_categ.model_project_task

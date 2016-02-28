@@ -3,14 +3,16 @@
 # * project_issue_task
 # 
 # Translators:
+# Rudolf Schnapka <rs@techno-flex.de>, 2016
+# Thomas A. Jaeger, 2015
 # Thomas A. Jaeger, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-18 15:57+0000\n"
-"PO-Revision-Date: 2015-11-09 16:15+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
+"POT-Creation-Date: 2015-12-24 08:57+0000\n"
+"PO-Revision-Date: 2016-02-26 15:04+0000\n"
+"Last-Translator: Rudolf Schnapka <rs@techno-flex.de>\n"
 "Language-Team: German (http://www.transifex.com/oca/OCA-project-8-0/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -32,7 +34,7 @@ msgstr "Ursache"
 #. module: project_issue_task
 #: field:project.task.cause,code:0
 msgid "Code"
-msgstr "ID"
+msgstr "Schlüssel"
 
 #. module: project_issue_task
 #: field:project.task.cause,create_uid:0
@@ -63,7 +65,7 @@ msgstr "Problemursache"
 #: code:addons/project_issue_task/project_issue.py:46
 #, python-format
 msgid "Issue Task Report"
-msgstr "Fall Aufgabenreport"
+msgstr "Problem-Aufgabenbericht"
 
 #. module: project_issue_task
 #: field:project.task.cause,write_uid:0
@@ -83,7 +85,7 @@ msgstr "Problemursache"
 #. module: project_issue_task
 #: model:ir.model,name:project_issue_task.model_project_issue
 msgid "Project Issue"
-msgstr "Fall"
+msgstr "Projektproblem"
 
 #. module: project_issue_task
 #: field:project.task,ref:0
@@ -93,7 +95,7 @@ msgstr "Referenz"
 #. module: project_issue_task
 #: field:project.task,issue_id:0
 msgid "Related Issue"
-msgstr "Zugehöriger Fall"
+msgstr "Verwandtes Problem"
 
 #. module: project_issue_task
 #: code:addons/project_issue_task/project_issue.py:38
@@ -122,4 +124,4 @@ msgstr "Aufgabe Problemursachen"
 #. module: project_issue_task
 #: view:project.issue:project_issue_task.project_issue_form_view_task
 msgid "Task Report"
-msgstr "Aufgabenreport"
+msgstr "Aufgabenbericht"
