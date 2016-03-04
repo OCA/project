@@ -8,7 +8,6 @@ from openerp.tests import common
 class BusinessRequirementTestCase(common.TransactionCase):
     def setUp(self):
         super(BusinessRequirementTestCase, self).setUp()
-        # self.br = self.registry['business.requirement']
         self.ModelDataObj = self.env['ir.model.data']
 
         # Configure unit of measure.
@@ -16,15 +15,6 @@ class BusinessRequirementTestCase(common.TransactionCase):
             'product.uom_categ_wtime')
         self.categ_kgm = self.ModelDataObj.xmlid_to_res_id(
             'product.product_uom_categ_kgm')
-        # self.resource = self.env['business.requirement.resource'].create({
-        #     'product_id': 1,
-        #     'resource_type': 'procurement',
-        #     'sale_price_unit': 10,
-        #     'qty': 2,
-        #     'business_requirement_deliverable_id': 100,
-        #     'uom_id': 1,
-        #     'description': 'Resource A',
-        # })
         self.UomObj = self.env['product.uom']
         self.uom_hours = self.UomObj.create({
             'name': 'Test-Hours',

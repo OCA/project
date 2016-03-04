@@ -4,7 +4,7 @@
 {
     "name": "Business Requirement Deliverable Cost Control",
     "summary": "Business Requirement Deliverable Cost Control Module Project",
-    "version": "9.0.1.0.1",
+    "version": "8.0.1.0.1",
     'category': 'Business Requirements Management',
     "website": "www.elico-corp.com",
     "author": "Elico Corp",
