@@ -65,16 +65,14 @@ class BusinessRequirementTestCase(common.TransactionCase):
                                 'uom_id': self.uom_hours.id,
                                 'unit_price': 500,
                                 'resource_type': 'task',
-                                'task_name': 'task 1'
                             }),
                             (0, 0, {
                                 'description': 'Resource Line1',
-                                'product_id': self.productB.id,
+                                'product_id': self.productC.id,
                                 'qty': 100,
                                 'uom_id': self.uom_hours.id,
                                 'unit_price': 500,
                                 'resource_type': 'task',
-                                'task_name': 'task 2'
                             })
                         ]
                         }),
@@ -128,6 +126,7 @@ class BusinessRequirementTestCase(common.TransactionCase):
                 if resource and resource.description == 'Resource Line1':
                     res = resource.write({'product_id': self.productB.id})
                     if res:
+                        resource.product_id_change()
                         self.assertEqual(
                             resource.product_id.id, self.productB.id)
                         self.assertEqual(

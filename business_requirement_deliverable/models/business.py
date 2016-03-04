@@ -36,7 +36,6 @@ class BusinessRequirementResource(models.Model):
         string='Assign To',
         ondelete='set null'
     )
-    task_name = fields.Char('Task name')
     business_requirement_deliverable_id = fields.Many2one(
         comodel_name='business.requirement.deliverable',
         string='Business Requirement Deliverable',
