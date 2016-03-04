@@ -110,7 +110,9 @@ class BusinessRequirement(models.Model):
     )
     priority = fields.Selection(
         [('0', 'Low'), ('1', 'Normal'), ('2', 'High')],
-        'Priority', select=True
+        'Priority',
+        required=True,
+        default='1'
     )
     confirmation_date = fields.Datetime(
         string='Confirmation Date',
