@@ -1,0 +1,40 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * project_issue_code
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: project (8.0)\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-02-28 01:09+0000\n"
+"PO-Revision-Date: 2016-02-28 01:10+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: Portuguese (Portugal) (http://www.transifex.com/oca/OCA-project-8-0/language/pt_PT/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: pt_PT\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: project_issue_code
+#: field:project.issue,issue_code:0
+msgid "Issue Code"
+msgstr ""
+
+#. module: project_issue_code
+#: model:ir.model,name:project_issue_code.model_project_issue
+msgid "Project Issue"
+msgstr "Incidente"
+
+#. module: project_issue_code
+#: code:addons/project_issue_code/models/project_issue.py:16
+#: sql_constraint:project.issue:0
+#, python-format
+msgid "The code must be unique!"
+msgstr ""
+
+#. module: project_issue_code
+#: view:project.issue:project_issue_code.project_issue_code_search_view
+msgid "['|', ('name', 'ilike', self), ('issue_code', 'ilike', self)]"
+msgstr ""
