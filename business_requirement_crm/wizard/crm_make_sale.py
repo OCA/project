@@ -5,6 +5,7 @@ from openerp.osv import osv
 
 
 class CrmMakeSale(models.TransientModel):
+    _name = "br.crm.make.sale"
     _inherit = "crm.make.sale"
 
     update_quotation = fields.Boolean('Update existing quotation')
