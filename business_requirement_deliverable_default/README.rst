@@ -6,15 +6,13 @@
 Business Requirement Deliverable Default
 ========================================
 
-This new module is part of a set ("Business Requirement") links business_requirement_resource and product_template. 
+This new module is part of a set ("Business Requirement") and links business_requirement_resource and product_template. 
 
-When you select a product for a resource deriverable if product has resources lines it will be automatically filled on the resources lines of business deriverable.
+When you select a product for a resource deliverable if product has resources lines it will be automatically filled on the resources lines of business deliverable.
 
 Add on product_template model:
 
 * resource_lines (One2many relation with business_requirement_resource).
-
-On product_template view add a new tab "Resources" with the resource lines management (You could add, delete or create new resources).
 
 Add on business_requirement_resource:
 
@@ -41,10 +39,7 @@ Usage
    :alt: Try me on Runbot
    :target: https://runbot.odoo-community.org/runbot/140/8.0
 
-Known issues / Roadmap
-======================
-
-* ...
+On product_template view add a new tab "Resources" with the resource lines management (You could add, delete or create new resources).
 
 Bug Tracker
 ===========

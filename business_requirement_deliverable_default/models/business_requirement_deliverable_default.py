@@ -7,7 +7,7 @@ from openerp import api, fields, models
 class BusinessRequirementDeliverable(models.Model):
     _inherit = "business.requirement.deliverable"
 
-    def _prepare_resouce_lines(self):
+    def _prepare_resource_lines(self):
         rl_data = self.product_id.resource_lines.copy_data()
         ids = self.product_id.resource_lines.ids
         rl_data = [(1, ids[index], item) for index, item in enumerate(rl_data)]
@@ -24,7 +24,7 @@ class BusinessRequirementDeliverable(models.Model):
             description = product.name
             uom_id = product.uom_id.id
             unit_price = product.list_price
-            self.resource_ids = self._prepare_resouce_lines()
+            self.resource_ids = self._prepare_resource_lines()
         self.description = description
         self.uom_id = uom_id
         self.unit_price = unit_price
