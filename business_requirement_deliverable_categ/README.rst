@@ -12,9 +12,7 @@ In business requirement, when creating a new resource line for a "Task" resource
 
 From the Business Requirement a project with task can be generated based on the resources lines. This module will add the task category from business requirement resource line into the corresponding generated task.
 
-Module business_requirement_deliverable:
-
-* Add field task_categ_id
+To get this functionality, in module business_requirement_deliverable, we integrate the field "task_categ_id" (from module project_task_categ).
 
 
 Installation
