@@ -9,7 +9,6 @@ class BusinessRequirementResource(models.Model):
 
     sale_price_unit = fields.Float(
         string='Sales Price',
-        readonly=True,
         groups='business_requirement_deliverable_cost.\
 group_business_requirement_estimation',
     )
@@ -37,8 +36,8 @@ group_business_requirement_cost_control',
     @api.multi
     @api.onchange('product_id')
     def product_id_change(self):
+        super(BusinessRequirementResource, self).product_id_change()
         for resource in self:
-            super(BusinessRequirementResource, resource).product_id_change()
             deliverable_project = \
                 resource.business_requirement_deliverable_id.project_id
             if deliverable_project.pricelist_id and \
@@ -52,8 +51,10 @@ group_business_requirement_cost_control',
                 )
                 resource.sale_price_unit = product.price
 
+    @api.multi
     @api.onchange('uom_id', 'qty')
     def product_uom_change(self):
+        super(BusinessRequirementResource, self).product_uom_change()
         for resource in self:
             if not resource.uom_id:
                 resource.sale_price_unit = 0.0

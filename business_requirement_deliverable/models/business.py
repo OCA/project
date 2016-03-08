@@ -67,7 +67,25 @@ class BusinessRequirementResource(models.Model):
             unit_price = product.standard_price
         self.description = description
         self.uom_id = uom_id
-        self.unit_price = unit_price
+        if self.uom_id:
+            self.unit_price = unit_price * self.uom_id.factor_inv
+
+    @api.one
+    @api.onchange('uom_id', 'qty')
+    def product_uom_change(self):
+        unit_price = 0
+        if not self.uom_id:
+            self.sale_price_unit = 0.0
+            return
+        if self.product_id:
+            unit_price = self.product_id.standard_price
+        if self.uom_id and unit_price:
+            if self.uom_id.uom_type == 'bigger':
+                self.unit_price = unit_price * self.uom_id.factor_inv
+            if self.uom_id.uom_type == 'smaller':
+                self.unit_price = unit_price * self.uom_id.factor
+            if self.uom_id.uom_type == 'reference':
+                self.unit_price = unit_price
 
     @api.one
     @api.onchange('resource_type')
