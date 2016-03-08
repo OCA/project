@@ -67,8 +67,7 @@ class BusinessRequirementResource(models.Model):
             unit_price = product.standard_price
         self.description = description
         self.uom_id = uom_id
-        if self.uom_id:
-            self.unit_price = unit_price * self.uom_id.factor_inv
+        self.unit_price = unit_price
 
     @api.one
     @api.onchange('uom_id', 'qty')
