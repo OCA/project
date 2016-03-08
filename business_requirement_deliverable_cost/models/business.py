@@ -31,42 +31,45 @@ group_business_requirement_cost_control',
     @api.multi
     @api.depends('sale_price_unit', 'qty')
     def _compute_sale_price_total(self):
-        self.sale_price_total = self.sale_price_unit * self.qty
+        for resource in self:
+            resource.sale_price_total = resource.sale_price_unit * resource.qty
 
     @api.multi
     @api.onchange('product_id')
     def product_id_change(self):
-        super(BusinessRequirementResource, self).product_id_change()
-        deliverable_project = \
-            self.business_requirement_deliverable_id.project_id
-        if deliverable_project.pricelist_id and \
-                deliverable_project.partner_id and self.uom_id:
-            product = self.product_id.with_context(
-                lang=deliverable_project.partner_id.lang,
-                partner=deliverable_project.partner_id.id,
-                quantity=self.qty,
-                pricelist=deliverable_project.pricelist_id.id,
-                uom=self.uom_id.id,
-            )
-            self.sale_price_unit = product.price
+        for resource in self:
+            super(BusinessRequirementResource, resource).product_id_change()
+            deliverable_project = \
+                resource.business_requirement_deliverable_id.project_id
+            if deliverable_project.pricelist_id and \
+                    deliverable_project.partner_id and resource.uom_id:
+                product = resource.product_id.with_context(
+                    lang=deliverable_project.partner_id.lang,
+                    partner=deliverable_project.partner_id.id,
+                    quantity=resource.qty,
+                    pricelist=deliverable_project.pricelist_id.id,
+                    uom=resource.uom_id.id,
+                )
+                resource.sale_price_unit = product.price
 
     @api.onchange('uom_id', 'qty')
     def product_uom_change(self):
-        if not self.uom_id:
-            self.sale_price_unit = 0.0
-            return
-        deliverable_project = \
-            self.business_requirement_deliverable_id.project_id
-        if deliverable_project.pricelist_id and \
-                deliverable_project.partner_id:
-            product = self.product_id.with_context(
-                lang=deliverable_project.partner_id.lang,
-                partner=deliverable_project.partner_id.id,
-                quantity=self.qty,
-                pricelist=deliverable_project.pricelist_id.id,
-                uom=self.uom_id.id,
-            )
-            self.sale_price_unit = product.price
+        for resource in self:
+            if not resource.uom_id:
+                resource.sale_price_unit = 0.0
+                return
+            deliverable_project = \
+                resource.business_requirement_deliverable_id.project_id
+            if deliverable_project.pricelist_id and \
+                    deliverable_project.partner_id:
+                product = resource.product_id.with_context(
+                    lang=deliverable_project.partner_id.lang,
+                    partner=deliverable_project.partner_id.id,
+                    quantity=resource.qty,
+                    pricelist=deliverable_project.pricelist_id.id,
+                    uom=resource.uom_id.id,
+                )
+                resource.sale_price_unit = product.price
 
 
 class BusinessRequirement(models.Model):
@@ -103,24 +106,27 @@ group_business_requirement_cost_control',
         'deliverable_lines'
     )
     def _compute_resource_tasks_total(self):
-        if self.deliverable_lines:
-            self.resource_tasks_total = sum(
-                self.mapped('deliverable_lines').mapped(
-                    'resource_ids').filtered(
-                    lambda r: r.resource_type == 'task').mapped('price_total')
-            )
+        for br in self:
+            if br.deliverable_lines:
+                br.resource_tasks_total = sum(
+                    br.mapped('deliverable_lines').mapped(
+                        'resource_ids').filtered(
+                        lambda r: r.resource_type == 'task').mapped(
+                            'price_total')
+                )
 
     @api.multi
     @api.depends(
         'deliverable_lines'
     )
     def _compute_resource_procurement_total(self):
-        if self.deliverable_lines:
-            self.resource_procurement_total = sum(
-                self.mapped('deliverable_lines').mapped(
-                    'resource_ids').filtered(
-                    lambda r: r.resource_type == 'procurement').mapped(
-                    'price_total'))
+        for br in self:
+            if br.deliverable_lines:
+                br.resource_procurement_total = sum(
+                    br.mapped('deliverable_lines').mapped(
+                        'resource_ids').filtered(
+                        lambda r: r.resource_type == 'procurement').mapped(
+                        'price_total'))
 
     @api.multi
     @api.depends(
@@ -128,5 +134,6 @@ group_business_requirement_cost_control',
         'resource_tasks_total',
         'resource_procurement_total')
     def _compute_gross_profit(self):
-        self.gross_profit = self.total_revenue - \
-            self.resource_tasks_total - self.resource_procurement_total
+        for br in self:
+            br.gross_profit = br.total_revenue - \
+                br.resource_tasks_total - br.resource_procurement_total
