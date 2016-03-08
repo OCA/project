@@ -42,11 +42,11 @@ class BusinessRequirementResource(models.Model):
         ondelete='cascade'
     )
     unit_price = fields.Float(
-        string='Sales Price'
+        string='Cost Price'
     )
     price_total = fields.Float(
         compute='_get_price_total',
-        string='Subtotal'
+        string='Total Cost'
     )
 
     @api.one
@@ -68,6 +68,23 @@ class BusinessRequirementResource(models.Model):
         self.description = description
         self.uom_id = uom_id
         self.unit_price = unit_price
+
+    @api.one
+    @api.onchange('uom_id', 'qty')
+    def product_uom_change(self):
+        unit_price = 0
+        if not self.uom_id:
+            self.sale_price_unit = 0.0
+            return
+        if self.product_id:
+            unit_price = self.product_id.standard_price
+        if self.uom_id and unit_price:
+            if self.uom_id.uom_type == 'bigger':
+                self.unit_price = unit_price * self.uom_id.factor_inv
+            if self.uom_id.uom_type == 'smaller':
+                self.unit_price = unit_price * self.uom_id.factor
+            if self.uom_id.uom_type == 'reference':
+                self.unit_price = unit_price
 
     @api.one
     @api.onchange('resource_type')
@@ -129,6 +146,12 @@ class BusinessRequirementDeliverable(models.Model):
         groups='project.group_project_manager',
         states={'draft': [('readonly', False)]}
     )
+    project_id = fields.Many2one(
+        string='Master Project',
+        comodel_name='project.project',
+        related='business_requirement_id.project_id',
+        store=True,
+    )
 
     @api.one
     @api.depends('unit_price', 'qty')
@@ -188,22 +211,19 @@ class BusinessRequirement(models.Model):
         string='Deliverable Lines',
         copy=True,
         readonly=True,
-        states={
-            'draft': [('readonly', False)],
-            'confirmed': [('readonly', False)],
-        }
+        states={'draft': [('readonly', False)]},
     )
-    resource_cost_total = fields.Float(
-        compute='_get_deliverable_cost_total',
+    total_revenue = fields.Float(
+        compute='_compute_deliverable_total',
         string='Total Revenue',
         store=True
     )
 
     @api.one
     @api.depends(
-        'deliverable_lines.price_total'
+        'deliverable_lines'
     )
-    def _get_deliverable_cost_total(self):
-        cost_total = sum(
-            line.price_total for line in self.deliverable_lines)
-        self.resource_cost_total = cost_total
+    def _compute_deliverable_total(self):
+        if self.deliverable_lines:
+            self.total_revenue = sum(
+                line.price_total for line in self.deliverable_lines)
