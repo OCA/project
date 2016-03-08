@@ -9,8 +9,7 @@ class BusinessRequirementDeliverable(models.Model):
 
     def _prepare_resource_lines(self):
         rl_data = self.product_id.resource_lines.copy_data()
-        ids = self.product_id.resource_lines.ids
-        rl_data = [(1, ids[index], item) for index, item in enumerate(rl_data)]
+        rl_data = [(0, 0, item) for index, item in enumerate(rl_data)]
         return rl_data
 
     @api.multi

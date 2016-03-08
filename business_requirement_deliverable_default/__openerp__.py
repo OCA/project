@@ -5,7 +5,7 @@
     'name': 'Business Requirement Deliverable Default',
     'category': 'Business Requirements Management',
     'summary': 'Business Requirement Deliverable Default',
-    'version': '8.0.1.0.1',
+    'version': '8.0.2.0.1',
     'website': 'www.elico-corp.com',
     "author": "Elico Corp, Odoo Community Association (OCA)",
     'depends': [
