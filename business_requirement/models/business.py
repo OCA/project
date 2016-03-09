@@ -11,6 +11,7 @@ class BusinessRequirement(models.Model):
     _inherit = ['mail.thread', 'ir.needaction_mixin']
     _name = "business.requirement"
     _description = "Business Requirement"
+    _order = 'name desc'
 
     sequence = fields.Char(
         'Sequence',
