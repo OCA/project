@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record model="ir.ui.view" id="project_task_type_form_view">
+            <field name="name">Form Project Task</field>
+            <field name="model">project.task.type</field>
+            <field name="inherit_id" ref="project.task_type_edit" />
+            <field name="arch" type="xml">
+                <field name="case_default" position="after">
+                    <field name="set_issue_code" />
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>
