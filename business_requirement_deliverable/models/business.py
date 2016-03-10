@@ -29,7 +29,7 @@ class BusinessRequirementResource(models.Model):
         selection=[('task', 'Task'), ('procurement', 'Procurement')],
         string='Type',
         required=True,
-        default='procurement'
+        default='task'
     )
     user_id = fields.Many2one(
         comodel_name='res.users',
