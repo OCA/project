@@ -173,8 +173,7 @@ class BrGenerateProjects(models.TransientModel):
         product_uom_obj = self.env['product.uom']
         qty = product_uom_obj._compute_qty(
             line.uom_id.id, line.qty, default_uom)
-        name = line.business_requirement_deliverable_id\
-            .business_requirement_id.description
+        name = line.description
         if self.for_br:
             name = line.business_requirement_deliverable_id\
                 .business_requirement_id.name + '-' + name
