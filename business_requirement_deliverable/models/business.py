@@ -62,9 +62,11 @@ class BusinessRequirementResource(models.Model):
         unit_price = 0
         product = self.product_id
         if product:
-            description = product.name
+            description = product.name_get()[0][1]
             uom_id = product.uom_id.id
             unit_price = product.standard_price
+        if product.description_sale:
+            description += '\n' + product.description_sale
         self.description = description
         self.uom_id = uom_id
         self.unit_price = unit_price
@@ -80,11 +82,31 @@ class BusinessRequirementResource(models.Model):
             unit_price = self.product_id.standard_price
         if self.uom_id and unit_price:
             if self.uom_id.uom_type == 'bigger':
-                self.unit_price = unit_price * self.uom_id.factor_inv
+                if self.product_id.uom_id.uom_type == 'bigger':
+                    self.unit_price = unit_price
+                if self.product_id.uom_id.uom_type == 'smaller':
+                    self.unit_price = \
+                        unit_price * self.uom_id.factor_inv \
+                        / self.product_id.uom_id.factor
+                if self.product_id.uom_id.uom_type == 'reference':
+                    self.unit_price = unit_price * self.uom_id.factor_inv
             if self.uom_id.uom_type == 'smaller':
-                self.unit_price = unit_price * self.uom_id.factor
+                if self.product_id.uom_id.uom_type == 'bigger':
+                    self.unit_price = unit_price * self.uom_id.factor \
+                        / self.product_id.uom_id.factor_inv
+                if self.product_id.uom_id.uom_type == 'smaller':
+                    self.unit_price = unit_price
+                if self.product_id.uom_id.uom_type == 'reference':
+                    self.unit_price = unit_price * self.uom_id.factor
             if self.uom_id.uom_type == 'reference':
-                self.unit_price = unit_price
+                if self.product_id.uom_id.uom_type == 'bigger':
+                    self.unit_price = unit_price / \
+                        self.product_id.uom_id.factor_inv
+                if self.product_id.uom_id.uom_type == 'smaller':
+                    self.unit_price = unit_price / \
+                        self.product_id.uom_id.factor
+                if self.product_id.uom_id.uom_type == 'reference':
+                    self.unit_price = unit_price
 
     @api.one
     @api.onchange('resource_type')
@@ -110,6 +132,7 @@ class BusinessRequirementDeliverable(models.Model):
     product_id = fields.Many2one(
         comodel_name='product.product',
         string='Product',
+        domain=[('sale_ok', '=', True)],
         required=False
     )
     uom_id = fields.Many2one(
@@ -138,7 +161,7 @@ class BusinessRequirementDeliverable(models.Model):
     )
     price_total = fields.Float(
         compute='_get_price_total',
-        string='Subtotal'
+        string='Total revenue',
     )
     linked_project = fields.Many2one(
         string='Linked project',
@@ -152,6 +175,10 @@ class BusinessRequirementDeliverable(models.Model):
         related='business_requirement_id.project_id',
         store=True,
     )
+    tax_ids = fields.Many2many(
+        'account.tax', 'Taxes',
+        readonly=True,
+        states={'draft': [('readonly', False)]})
 
     @api.one
     @api.depends('unit_price', 'qty')
@@ -165,10 +192,14 @@ class BusinessRequirementDeliverable(models.Model):
         uom_id = False
         unit_price = 0
         product = self.product_id
+        tax_ids = False
         if product:
-            description = product.name
+            description = product.name_get()[0][1]
             uom_id = product.uom_id.id
             unit_price = product.list_price
+            tax_ids = product.taxes_id
+        if product.description_sale:
+            description += '\n' + product.description_sale
         if self.business_requirement_id.project_id.pricelist_id and \
                 self.business_requirement_id.partner_id and self.uom_id:
             product = self.product_id.with_context(
@@ -183,6 +214,7 @@ class BusinessRequirementDeliverable(models.Model):
         self.description = description
         self.uom_id = uom_id
         self.unit_price = unit_price
+        self.tax_ids = tax_ids
 
     @api.onchange('uom_id', 'qty')
     def product_uom_change(self):

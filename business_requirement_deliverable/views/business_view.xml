@@ -76,9 +76,12 @@
                         </group>
                         <group>
                             <field name="qty"/>
-                            <field name="uom_id"/>
                             <field name="unit_price"/>
-                            <field name="price_total" sum="Total Cost"/>
+                            <label for="price_total"/>
+                            <div>
+                                <field name="price_total"/>
+                                <field name="uom_id"/>
+                            </div>
                         </group>
                     </group>
                     <group string="Resource Lines">

@@ -73,6 +73,19 @@ group_business_requirement_cost_control',
                 resource.sale_price_unit = product.price
 
 
+class BusinessRequirementDeliverable(models.Model):
+    _inherit = "business.requirement.deliverable"
+
+    unit_price = fields.Float(
+        groups='business_requirement_deliverable_cost.\
+group_business_requirement_estimation',
+    )
+    price_total = fields.Float(
+        groups='business_requirement_deliverable_cost.\
+group_business_requirement_estimation',
+    )
+
+
 class BusinessRequirement(models.Model):
     _inherit = "business.requirement"
 
