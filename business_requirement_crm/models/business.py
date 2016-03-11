@@ -19,10 +19,10 @@ class CrmLead(models.Model):
 
     @api.one
     def _get_resource_cost_total(self):
-        linked_brs = self.project_id and self.project_id.br_ids or []
+        linked_brs = self.project_id and self.project_id.br_ids
         self.resource_cost_total = sum(
-            [br.resource_cost_total for br in linked_brs
-                if br.state not in ('drop', 'cancel')]) or 0
+            [br.total_revenue for br in linked_brs
+                if br.state not in ('drop', 'cancel')])
 
     @api.one
     @api.onchange('project_id')
