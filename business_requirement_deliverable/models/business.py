@@ -23,7 +23,8 @@ class BusinessRequirementResource(models.Model):
         required=True
     )
     qty = fields.Float(
-        string='Quantity'
+        string='Quantity',
+        default=1,
     )
     resource_type = fields.Selection(
         selection=[('task', 'Task'), ('procurement', 'Procurement')],
@@ -176,9 +177,8 @@ class BusinessRequirementDeliverable(models.Model):
         store=True,
     )
     tax_ids = fields.Many2many(
-        'account.tax', 'Taxes',
-        readonly=True,
-        states={'draft': [('readonly', False)]})
+        'account.tax',
+        string='Taxes')
 
     @api.one
     @api.depends('unit_price', 'qty')

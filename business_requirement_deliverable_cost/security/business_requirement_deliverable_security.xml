@@ -11,7 +11,7 @@
 
         <record id="group_business_requirement_cost_control" model="res.groups">
             <field name="name">Business Requirement Cost control</field>
-            <field name="implied_ids" eval="[(4, ref('business_requirement.group_business_requirement_user')), (4, ref('business_requirement.group_business_requirement_estimation'))]"/>
+            <field name="implied_ids" eval="[(4, ref('business_requirement.group_business_requirement_user')), (4, ref('business_requirement_deliverable_cost.group_business_requirement_estimation'))]"/>
             <field name="category_id" ref="business_requirement.module_category_business_requirement"/>
             <field name="users" eval="[(4, ref('base.user_root'))]"/>
         </record>

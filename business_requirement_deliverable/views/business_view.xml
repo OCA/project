@@ -9,7 +9,7 @@
             <field name="arch" type="xml">
                 <xpath expr='//page[@string="Business Requirement"]' position='after'>
                     <page string="Deliverable Lines">
-                        <field name="deliverable_lines" domain="[('business_requirement_line_id', '='. False)]" context="{'tree_view_ref':'view_business_requirement_deliverable_tree', 'form_view_ref': 'view_business_requirement_deliverable_form', 'default_project_id': project_id}"/>
+                        <field name="deliverable_lines" domain="[('business_requirement_line_id', '='. False)]" context="{'tree_view_ref':'business_requirement_deliverable.view_business_requirement_deliverable_tree', 'form_view_ref': 'business_requirement_deliverable.view_business_requirement_deliverable_form', 'default_project_id': project_id,}"/>
                     </page>
                 </xpath>
             </field>
@@ -71,19 +71,21 @@
                         <group>
                             <field name="project_id" invisible="1"/>
                             <field name="product_id"/>
-                            <field name="description"/>
-                            <field name="linked_project"/>
+                            <label for="qty"/>
+                            <div>
+                                <field name="qty"/>
+                                <field name="uom_id" class="oe_inline"/>
+                            </div>
+                            <field name="unit_price"/>
+                            <field name="price_total"/>
                         </group>
                         <group>
-                            <field name="qty"/>
-                            <field name="unit_price"/>
-                            <label for="price_total"/>
-                            <div>
-                                <field name="price_total"/>
-                                <field name="uom_id"/>
-                            </div>
+                            <field name="linked_project"/>
+                            <field name="tax_ids" widget="many2many_tags"/>
                         </group>
                     </group>
+                    <label for="description"/>
+                    <field name="description"/>
                     <group string="Resource Lines">
                         <field name="resource_ids" context="{'tree_view_ref':'view_business_requirement_resource_tree'}" nolabel="1"/>
                     </group>
