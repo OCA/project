@@ -2,8 +2,7 @@
 # © 2016 Elico Corp (https://www.elico-corp.com).
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import api, fields, models, _
-from openerp.exceptions import except_orm
+from openerp import api, fields, models
 from openerp import tools
 from openerp import SUPERUSER_ID
 
