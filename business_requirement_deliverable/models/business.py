@@ -51,7 +51,7 @@ class BusinessRequirementResource(models.Model):
     )
 
     @api.one
-    @api.depends('unit_price', 'qty')
+    @api.depends('unit_price', 'qty', 'uom_id')
     def _get_price_total(self):
         self.price_total = self.unit_price * self.qty
 
@@ -76,38 +76,18 @@ class BusinessRequirementResource(models.Model):
     @api.onchange('uom_id', 'qty')
     def product_uom_change(self):
         unit_price = 0
+        qty_uom = 0
+        product_uom = self.env['product.uom']
+        if self.qty != 0:
+            qty_uom = product_uom._compute_qty(
+                self.uom_id.id, self.qty, self.product_id.uom_id.id) / self.qty
         if not self.uom_id:
             self.sale_price_unit = 0.0
             return
         if self.product_id:
             unit_price = self.product_id.standard_price
         if self.uom_id and unit_price:
-            if self.uom_id.uom_type == 'bigger':
-                if self.product_id.uom_id.uom_type == 'bigger':
-                    self.unit_price = unit_price
-                if self.product_id.uom_id.uom_type == 'smaller':
-                    self.unit_price = \
-                        unit_price * self.uom_id.factor_inv \
-                        / self.product_id.uom_id.factor
-                if self.product_id.uom_id.uom_type == 'reference':
-                    self.unit_price = unit_price * self.uom_id.factor_inv
-            if self.uom_id.uom_type == 'smaller':
-                if self.product_id.uom_id.uom_type == 'bigger':
-                    self.unit_price = unit_price * self.uom_id.factor \
-                        / self.product_id.uom_id.factor_inv
-                if self.product_id.uom_id.uom_type == 'smaller':
-                    self.unit_price = unit_price
-                if self.product_id.uom_id.uom_type == 'reference':
-                    self.unit_price = unit_price * self.uom_id.factor
-            if self.uom_id.uom_type == 'reference':
-                if self.product_id.uom_id.uom_type == 'bigger':
-                    self.unit_price = unit_price / \
-                        self.product_id.uom_id.factor_inv
-                if self.product_id.uom_id.uom_type == 'smaller':
-                    self.unit_price = unit_price / \
-                        self.product_id.uom_id.factor
-                if self.product_id.uom_id.uom_type == 'reference':
-                    self.unit_price = unit_price
+            self.unit_price = unit_price * qty_uom
 
     @api.one
     @api.onchange('resource_type')
