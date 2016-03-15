@@ -86,7 +86,6 @@ class BusinessRequirementResource(models.Model):
             if self.uom_id.uom_type == 'reference':
                 self.unit_price = unit_price
 
-    @api.one
     @api.onchange('resource_type')
     def resource_type_change(self):
         if self.resource_type == 'procurement':

@@ -13,7 +13,6 @@ class BusinessRequirementDeliverableCateg(models.Model):
         string="Task Category"
     )
 
-    @api.multi
     @api.onchange('resource_type')
     def resource_type_change(self):
         super(BusinessRequirementDeliverableCateg, self).resource_type_change()
