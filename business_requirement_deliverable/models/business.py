@@ -51,7 +51,7 @@ class BusinessRequirementResource(models.Model):
     )
 
     @api.one
-    @api.depends('unit_price', 'qty', 'uom_id')
+    @api.depends('unit_price', 'qty')
     def _get_price_total(self):
         self.price_total = self.unit_price * self.qty
 
