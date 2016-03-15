@@ -186,6 +186,7 @@ class BrGenerateProjects(models.TransientModel):
             'remaining_hours': qty,
             'br_resource_id': line.id,
             'user_id': line.user_id.id,
+            'task_categ_id': line.task_categ_id.id,
         }
         return vals
 
