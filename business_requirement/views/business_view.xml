@@ -44,6 +44,7 @@
                             <field name="categ_id" widget="many2many_tags"/>
                             <field name="change_request"/>
                             <field name="priority" groups="base.group_user" widget="priority"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
                         </group>
                         
                         <notebook>

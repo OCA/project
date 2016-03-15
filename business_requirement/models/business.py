@@ -2,7 +2,8 @@
 # © 2016 Elico Corp (https://www.elico-corp.com).
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import api, fields, models
+from openerp import api, fields, models, _
+from openerp.exceptions import except_orm
 from openerp import tools
 from openerp import SUPERUSER_ID
 
@@ -11,6 +12,15 @@ class BusinessRequirement(models.Model):
     _inherit = ['mail.thread', 'ir.needaction_mixin']
     _name = "business.requirement"
     _description = "Business Requirement"
+
+    @api.model
+    def _get_default_company(self):
+        company_id = self.env['res.users']._get_company()
+        if not company_id:
+            raise except_orm(
+                _('Error!'),
+                _('There is no default company for the current user!'))
+        return company_id
 
     sequence = fields.Char(
         'Sequence',
@@ -132,6 +142,11 @@ class BusinessRequirement(models.Model):
         'res.users',
         string='Approved by',
         readonly=True
+    )
+    company_id = fields.Many2one(
+        'res.company', string='Company',
+        required=True, readonly=True, states={'draft': [('readonly', False)]},
+        default=_get_default_company,
     )
 
     @api.one
