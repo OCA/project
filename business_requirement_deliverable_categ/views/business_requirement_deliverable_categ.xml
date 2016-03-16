@@ -8,7 +8,7 @@
             <field name="inherit_id" ref="business_requirement_deliverable.view_business_requirement_resource_tree"/>
             <field name="arch" type="xml">
                 <field name="user_id" position='before'>
-                    <field name="task_categ_id"/>
+                    <field name="task_categ_id" attrs="{'readonly':[('resource_type','=','procurement')],'required':[('resource_type','=','task')]}"/>
                 </field>
             </field>
         </record>

@@ -5,7 +5,7 @@
     "name": "Business Requirement Deliverable Category",
     'category': 'Business Requirements Management',
     'summary': 'Business Requirement Deliverable Task Categories',
-    "version": "8.0.2.0.2",
+    "version": "8.0.3.0.2",
     "website": "www.elico-corp.com",
     "author": "Elico corp",
     "license": "AGPL-3",
