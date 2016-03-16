@@ -51,9 +51,9 @@
                     <field name="resource_type"/>
                     <field name="product_id"/>
                     <field name="description"/>
+                    <field name="user_id" attrs="{'readonly':[('resource_type','=','procurement')]}"/>
                     <field name="qty"/>
                     <field name="uom_id"/>
-                    <field name="user_id" attrs="{'readonly':[('resource_type','=','procurement')]}"/>
                     <field name="unit_price"/>
                     <field name="price_total" sum="Total price"/>
                 </tree>
