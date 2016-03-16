@@ -16,7 +16,7 @@ class BusinessRequirement(models.Model):
 
     @api.model
     def _get_default_company(self):
-        company_id = self.env['res.users']._get_company()
+        company_id = self.env.user._get_company()
         if not company_id:
             raise except_orm(
                 _('Error!'),
