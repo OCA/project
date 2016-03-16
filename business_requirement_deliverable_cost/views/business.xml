@@ -8,10 +8,8 @@
             <field name="type">tree</field>
             <field name="inherit_id" ref="business_requirement_deliverable.view_business_requirement_resource_tree" />
             <field name="arch" type="xml">
-                <xpath expr="//tree/field[@name='unit_price']" position="after">
-                    <field name="sale_price_unit"/>
-                </xpath>
                 <xpath expr="//tree/field[@name='price_total']" position="after">
+                    <field name="sale_price_unit"/>
                     <field name="sale_price_total" sum="Total Sale"/>
                 </xpath>
             </field>
@@ -25,13 +23,13 @@
             <field name="arch" type="xml">
                 <xpath expr="//notebook[1]" position="inside">
                     <page string="Cost control" groups="business_requirement_deliverable_cost.group_business_requirement_cost_control">
-                        <group col="4">
-                            <field name="total_revenue"/>
-                            <field name="resource_tasks_total"/>
-                            <field name="resource_procurement_total"/>
-                            <field name="gross_profit"/>
-                        </group>
-                        <group col="4">
+                        <group>
+                            <group>
+                                <field name="total_revenue"/>
+                                <field name="resource_procurement_total"/>
+                                <field name="resource_tasks_total"/>
+                                <field name="gross_profit"/>
+                            </group>
                         </group>
                     </page>
                 </xpath>
