@@ -2,7 +2,7 @@
 # © 2016 Elico Corp (https://www.elico-corp.com).
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from openerp import api, fields, models
-from openerp.exceptions import ValidationError
+from openerp.exceptions import except_orm, ValidationError
 from openerp.tools.translate import _
 
 
@@ -232,9 +232,14 @@ class BusinessRequirement(models.Model):
 
     @api.one
     @api.depends(
-        'deliverable_lines'
+        'deliverable_lines',
+        'company_id.currency_id',
+        'project_id.pricelist_id.currency_id',
     )
     def _compute_deliverable_total(self):
         if self.deliverable_lines:
             self.total_revenue = sum(
                 line.price_total for line in self.deliverable_lines)
+            self.total_revenue = \
+                self.project_id.pricelist_id.currency_id.compute(
+                    self.total_revenue, self.company_id.currency_id)
