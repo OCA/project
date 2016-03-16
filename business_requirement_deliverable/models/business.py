@@ -221,17 +221,14 @@ class BusinessRequirement(models.Model):
 
     @api.one
     @api.depends(
-        'deliverable_lines'
+        'deliverable_lines',
+        'company_id.currency_id',
+        'project_id.pricelist_id.currency_id',
     )
     def _compute_deliverable_total(self):
         if self.deliverable_lines:
             self.total_revenue = sum(
                 line.price_total for line in self.deliverable_lines)
-            if self.project_id.pricelist_id.currency_id.id != \
-                    self.company_id.currency_id.id:
-                old_rate = self.project_id.pricelist_id.currency_id.rate_silent
-                if old_rate <= 0:
-                    raise except_orm(
-                        _('Error!'),
-                        _('Current currency is not configured properly.'))
-                self.total_revenue = self.total_revenue / old_rate
+            self.total_revenue = \
+                self.project_id.pricelist_id.currency_id.compute(
+                    self.total_revenue, self.company_id.currency_id)
