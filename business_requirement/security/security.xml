@@ -16,5 +16,12 @@
             <field name="users" eval="[(4, ref('base.user_root'))]"/>
         </record>
 
+        <record id="rule_business_requirement" model="ir.rule">
+            <field name="name">Business Requirement</field>
+            <field name="model_id" ref="model_business_requirement"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('company_id','=',False),('company_id','child_of',[user.company_id.id])]</field>
+        </record>
+
     </data>
 </openerp>

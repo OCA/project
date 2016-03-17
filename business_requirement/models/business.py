@@ -21,7 +21,7 @@ class BusinessRequirement(models.Model):
             raise except_orm(
                 _('Error!'),
                 _('There is no default company for the current user!'))
-        return company_id
+        return self.env['res.company'].browse(company_id)
 
     sequence = fields.Char(
         'Sequence',
