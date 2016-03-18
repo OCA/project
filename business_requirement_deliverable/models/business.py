@@ -46,6 +46,7 @@ class BusinessRequirementResource(models.Model):
         string='Cost Price'
     )
     price_total = fields.Float(
+        store=False,
         compute='_get_price_total',
         string='Total Cost'
     )
@@ -53,7 +54,9 @@ class BusinessRequirementResource(models.Model):
     @api.one
     @api.depends('unit_price', 'qty')
     def _get_price_total(self):
-        self.price_total = self.unit_price * self.qty
+        self.price_total = 0
+        if self.unit_price and self.qty:
+            self.price_total = self.unit_price * self.qty
 
     @api.one
     @api.onchange('product_id')
@@ -227,19 +230,23 @@ class BusinessRequirement(models.Model):
     total_revenue = fields.Float(
         compute='_compute_deliverable_total',
         string='Total Revenue',
-        store=True
+        store=False
     )
 
-    @api.one
+    @api.multi
     @api.depends(
         'deliverable_lines',
         'company_id.currency_id',
         'project_id.pricelist_id.currency_id',
     )
     def _compute_deliverable_total(self):
-        if self.deliverable_lines:
-            self.total_revenue = sum(
-                line.price_total for line in self.deliverable_lines)
-            self.total_revenue = \
-                self.project_id.pricelist_id.currency_id.compute(
-                    self.total_revenue, self.company_id.currency_id)
+        for br in self:
+            if br.deliverable_lines:
+                total_revenue_origin = sum(
+                    line.price_total for line in br.deliverable_lines)
+                if br.project_id.pricelist_id.currency_id:
+                    br.total_revenue = \
+                        br.project_id.pricelist_id.currency_id.compute(
+                            total_revenue_origin, br.company_id.currency_id)
+                else:
+                    br.total_revenue = total_revenue_origin
