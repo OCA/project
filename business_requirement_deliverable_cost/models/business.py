@@ -90,21 +90,21 @@ class BusinessRequirement(models.Model):
     _inherit = "business.requirement"
 
     total_revenue = fields.Float(
-        store=True,
+        store=False,
         groups='business_requirement_deliverable_cost.\
 group_business_requirement_estimation',
     )
     resource_tasks_total = fields.Float(
         compute='_compute_resource_tasks_total',
         string='Total tasks',
-        store=True,
+        store=False,
         groups='business_requirement_deliverable_cost.\
 group_business_requirement_cost_control',
     )
     resource_procurement_total = fields.Float(
         compute='_compute_resource_procurement_total',
         string='Total procurement',
-        store=True,
+        store=False,
         groups='business_requirement_deliverable_cost.\
 group_business_requirement_cost_control',
     )
@@ -126,8 +126,7 @@ group_business_requirement_cost_control',
                     br.mapped('deliverable_lines').mapped(
                         'resource_ids').filtered(
                         lambda r: r.resource_type == 'task').mapped(
-                            'price_total')
-                )
+                            'price_total'))
 
     @api.multi
     @api.depends(
