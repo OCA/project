@@ -54,9 +54,10 @@ class BusinessRequirementResource(models.Model):
     @api.one
     @api.depends('unit_price', 'qty')
     def _get_price_total(self):
-        self.price_total = 0
         if self.unit_price and self.qty:
             self.price_total = self.unit_price * self.qty
+        else:
+            self.price_total = 0
 
     @api.one
     @api.onchange('product_id')
