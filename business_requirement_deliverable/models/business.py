@@ -241,6 +241,8 @@ class BusinessRequirement(models.Model):
         'project_id.pricelist_id.currency_id',
     )
     def _compute_deliverable_total(self):
+        import pdb
+        pdb.set_trace()
         for br in self:
             if br.deliverable_lines:
                 total_revenue_origin = sum(
