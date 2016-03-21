@@ -8,7 +8,7 @@ class Project(models.Model):
     _inherit = "project.project"
 
     pricelist_id = fields.Many2one(
-        string='Estimation Pricelis',
+        string='Estimation Pricelist',
         comodel_name='product.pricelist',
         domain=[('type', '=', 'sale')],
         help='''Pricelist used for the estimation of the Business Requirements
