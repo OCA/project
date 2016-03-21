@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="account_analytic_line_tree" model="ir.ui.view">
+            <field name="name">project.timesheet.time.control.account.analytic.line.tree</field>
+            <field name="model">account.analytic.line</field>
+            <field name="inherit_id"
+                   ref="project_timesheet.view_account_analytic_line_tree_inherit_account_id"/>
+            <field name="arch" type="xml">
+                <field name="date" position="replace">
+                    <field name="date_time"/>
+                </field>
+                <field name="unit_amount" position="after">
+                    <button name="button_end_work"
+                            string="Stop"
+                            type="object"
+                            icon="STOCK_STOP"
+                            attrs="{'invisible': [('unit_amount', '>', 0)]}"
+                    />
+                </field>
+                <field name="task_id" position="after">
+                    <field name="folded" invisible="1"/>
+                    <button name="button_close_task"
+                            string="Close task"
+                            type="object"
+                            icon="gtk-apply"
+                            attrs="{'invisible': [('folded', '=', True)]}"
+                            />
+                    <button name="button_open_task"
+                            string="Open task"
+                            type="object"
+                            icon="gtk-redo"
+                            attrs="{'invisible': [('folded', '=', False)]}"
+                            />
+                </field>
+            </field>
+        </record>
+
+        <record id="account_analytic_line_search" model="ir.ui.view">
+            <field name="name">account.analytic.line.search</field>
+            <field name="model">account.analytic.line</field>
+            <field name="arch" type="xml">
+                <search string="Search task work">
+                    <field name="user_id"/>
+                    <group expand="0" string="Group By...">
+                        <filter string="Task" context="{'group_by': 'task_id'}"/>
+                        <filter string="User" context="{'group_by': 'user_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+    </data>
+</openerp>
