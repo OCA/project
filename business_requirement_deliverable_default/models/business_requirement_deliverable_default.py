@@ -46,7 +46,7 @@ class BusinessRequirementResource(models.Model):
     product_template_id = fields.Many2one(
         comodel_name='product.template',
         string='Product',
-        ondelete='cascade',
+        ondelete='set null',
         copy=False
     )
     business_requirement_deliverable_id = fields.Many2one(
