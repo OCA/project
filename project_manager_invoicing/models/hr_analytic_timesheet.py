@@ -24,10 +24,6 @@ from openerp.osv import orm, fields
 class hr_timesheet_line(orm.Model):
     _inherit = "hr.analytic.timesheet"
 
-# TODO 1.regarder méthode qui valide dans aal
-# 2. faire appel à cette méthode depuis ici (même nom de méthode)
-# 3. exemple se trouve dans specific pour la gestion
-
     def action_confirm(self, cr, uid, ids, context=None):
         timesheet_lines = self.browse(cr, uid, ids, context=context)
         aal_ids = [x.line_id.id for x in timesheet_lines]
@@ -53,3 +49,5 @@ class hr_timesheet_line(orm.Model):
         aal_ids = [x.line_id.id for x in timesheet_lines]
         self.pool['account.analytic.line'].check_invoiceable_line(
             cr, uid, aal_ids, context=context)
+
+    # def _check_line_state(self, cr, uid, ids, context=None):

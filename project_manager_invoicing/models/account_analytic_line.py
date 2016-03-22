@@ -19,7 +19,7 @@
 import time
 
 from openerp import SUPERUSER_ID
-from openerp.osv import orm, fields
+from openerp.osv import osv, orm, fields
 from openerp.tools.translate import _
 import cProfile
 
@@ -63,7 +63,6 @@ class AccountAnalyticLine(orm.Model):
         'invoiced_product_id': _get_default_invoiced_product,
     }
 
-    # TOTEST
     def _set_remaining_hours_create(self, cr, uid, vals, context=None):
         """OVERWRITE calculation is now made with invoiced_hours
         """
@@ -80,7 +79,8 @@ class AccountAnalyticLine(orm.Model):
 
     # TOTEST
     def _set_remaining_hours_write(self, cr, uid, ids, vals, context=None):
-        """ OVERWRITE calculation is made with: invoiced_hours in place of: unit_amount
+        """ OVERWRITE calculation is made with: invoiced_hours in place of:
+            unit_amount
         """
         if isinstance(ids, (int, long)):
             ids = [ids]
@@ -117,7 +117,6 @@ class AccountAnalyticLine(orm.Model):
                 self._trigger_projects(cr, uid, [new_task_id], context=context)
         return ids
 
-    # TOTEST
     def _set_remaining_hours_unlink(self, cr, uid, ids, context=None):
         """ OVERWRITE changed the calculation method of remaining_hours with
             invoiced_hours in place of unit_amount
@@ -134,11 +133,6 @@ class AccountAnalyticLine(orm.Model):
                 'WHERE id=%s', (hours, line.task_id.id))
         return ids
 
-        # update project_task set
-        # remaining_hours=remaining_hours+103,invoiced_hours=invoiced_hours-103
-        # WHERE id=3309;
-
-    # # TOTEST
     def _check(self, cr, uid, ids, context=None):
         """ OVERWRITE _check to check state of the line instead of the sheet
         """
@@ -150,15 +144,6 @@ class AccountAnalyticLine(orm.Model):
                         _(u"Only the project manager can modify an entry in a "
                           "confirmed timesheet line. Please contact him to set"
                           " this entry to draft in order to edit it."))
-        return True
-
-    def _check_valid(self, cr, uid, ids, context=None):
-        for line in self.browse(self, cr, uid, ids):
-            if line.state == 'draft':
-                raise orm.except_orm(
-                    _(u"Only the project manager can modify an entry in a "
-                      "confirmed timesheet line. Please contact him to set"
-                      " this entry to draft in order to edit it."))
         return True
 
     # TODO INFO. Classe de base=./parts/server/addons/analytic/analytic.py
@@ -177,14 +162,12 @@ class AccountAnalyticLine(orm.Model):
         """ Only project manager and superusers can change states """
         if vals:
             if 'state' in vals:
-                import pdb;pdb.set_trace()
                 errors = []
                 lines = self.browse(cr, uid, ids, context=context)
                 for line in lines:
-                    # # if line.state == 'confirm': # => fout la merde actuellement ne bloque pas l'écriture pour un ligne confirmée car lors du changement, cela ne poste pas de "state:confirm"...
-                    #     errors.append(line)
                     if (uid != line.account_id.user_id.id and
-                            uid != SUPERUSER_ID):
+                        uid != SUPERUSER_ID and not
+                        self.pool['res.users'].has_group(cr,uid,'project.group_project_manager')):
                         errors.append(line)
 
                 if errors:
@@ -213,14 +196,12 @@ class AccountAnalyticLine(orm.Model):
                 self.account_id,
                 self.journal_id.type)
 
-    # OK
     def action_confirm(self, cr, uid, ids, context=None):
         user = self.pool.get('res.users')
         if(user.has_group(cr, uid, 'project.group_project_manager')):
             return self.write(cr, uid, ids, vals={
                 'state': 'confirm'}, context=context)
 
-    # OK
     def action_reset_to_draft(self, cr, uid, ids, context=None):
         return self.write(cr, uid, ids, vals={
             'state': 'draft'}, context=context)
@@ -230,11 +211,10 @@ class AccountAnalyticLine(orm.Model):
     def onchange_to_invoice_set_invoiced_hours(self, cr, id,
                                                onchangeInvoice, context=None):
         """ Change invoiced_hours according to invoicing rate factor """
-        # TOTEST PDB
         if self.to_invoice:
             discount = self.unit_amount * (self.to_invoice.factor / 100.0)
             self.invoiced_hours = self.unit_amount - discount
-    # TODO TEST
+
     def invoice_cost_create(self, cr, uid, ids, data=None, context=None):
         analytic_account_obj = self.pool.get('account.analytic.account')
         account_payment_term_obj = self.pool.get('account.payment.term')
@@ -255,7 +235,6 @@ class AccountAnalyticLine(orm.Model):
 
         # prepare for iteration on journal and accounts
         for line in self.pool.get('account.analytic.line').browse(cr, uid, ids, context=context):
-            # line._check_valid()
             if line.journal_id.type not in journal_types:
                 journal_types[line.journal_id.type] = set()
             journal_types[line.journal_id.type].add(line.account_id.id)
