@@ -44,7 +44,11 @@ class hr_timesheet_invoice_create(orm.TransientModel):
         aal_to_inv = aal_obj.browse(cr, uid, aal_ids, context=context)
         for analytic in aal_to_inv:
             if analytic.invoice_id:
-                raise osv.except_osv(_('Warning!'), _("Invoice is already linked to some of the analytic line(s)!"))
+                raise orm.except_orm(_('Warning!'), _("Invoice is already \
+                    linked to some of the analytic line(s)!"))
+            if analytic.state == 'draft':
+                raise orm.except_orm(_('Warning'), _("Invoice in draft state \
+                    cannot be invoiced"))
 
     # WORKING
     def do_create(self, cr, uid, ids, context=None):
