@@ -3,19 +3,47 @@
     :alt: License: AGPL-3
 
 ==============================
-Project TimeSheet time Control
+Project Timesheet Time Control
 ==============================
 
-This module adds a button at account analytic line level to compute minutes
-lasted from start date to the current moment.
+* This module adds a button at account analytic line level to compute the spent
+  time, in minutes, from start date to the current moment.
+* It improves the domain applied to task field for accommodating to a project
+  flow.
+* It adds a datetime field that replaces ``date`` field in tree view, and write
+  date field with datetime field value.
+* It also adds a task filter and a group by task options in the search.
+* Finally, it allows to open and close tasks from account analytic lines.
+  The selected closed stage is the first one that is found with the mark
+  "Closed" checked.
 
-Adds a datetime field that replaces ``date`` field in tree view, and write date
-field with datetime field value.
+Usage
+=====
 
-Adds filters by user and groups by tasks and user.
+You can access via timesheets:
 
-Also allow open and close tasks from account analytic lines.
+#. Go to Timesheets > Time Tracking > Activities.
+#. Create a new record.
+#. You will see now that the "Date" field contains also time information.
+#. If you don't select any "Analytic account/project", you will be able to
+   select any task, opened or not.
+#. Selecting a task, the corresponding analytic account/project is filled.
+#. Selecting an analytic account/project, tasks are filtered for only allow
+   to select opened tasks for that project. Remember that an opened task is
+   a task whose stage doesn't have "Closed" mark checked.
+#. At the end of the line, you will see an icon of a cross inside a circle.
+#. When you press this button, the difference between "Date" field and the
+   current time, writing this in the field "Duration".
+#. You can modify the "Date" field for altering the computation of the
+   duration.
 
+or via tasks:
+
+#. Go to Project > Search > Task.
+#. Click on one existing task or create a new one.
+#. On the "Timesheets" page, you will be able to handle records the same way
+   as you do in the above explanation (except the task selection part, which
+   in this case doesn't appear as it's the current one).
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
@@ -24,20 +52,20 @@ Also allow open and close tasks from account analytic lines.
 Bug Tracker
 ===========
 
-Bugs are tracked on `GitHub Issues <https://github.com/OCA/project-service/issues>`_.
+Bugs are tracked on `GitHub Issues <https://github.com/OCA/project/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
-If you spotted it first, help us smashing it by providing a detailed and welcomed feedback
-`here <https://github.com/OCA/project-service/issues/new?body=module:%20project_timesheet_time_control%0Aversion:%209.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+If you spotted it first, help us smashing it by providing a detailed and
+welcomed feedback `here <https://github.com/OCA/project/issues/new>`_.
 
 Credits
 =======
 
 Contributors
 ------------
-* Pedro M. Baeza <pedro.baeza@serviciosbaeza.com>
-* Antonio Espinosa <antonioea@antiun.com>
-* Carlos Dauden <carlos@incaser.es>
-* Sergio Teruel <sergio@incaser.es>
+* Pedro M. Baeza <pedro.baeza@tecnativa.com>
+* Antonio Espinosa <antonioea@tecnativa.com>
+* Carlos Dauden <carlos@tecnativa.es>
+* Sergio Teruel <sergio@tecnativa.es>
 
 Maintainer
 ----------
