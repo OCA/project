@@ -25,10 +25,10 @@ class AccountHoursBlock(orm.Model):
     # with invoiced_hours instead of invoiced_hours
     _inherit = "account.hours.block"
 
-
     def _compute(self, cr, uid, ids, fields, args, context=None):
         # Just to be sure it is called right
-        #     return super(AccountHoursBlock, self)._compute(cr, uid, ids, fields, args, context=context)
+        # return super(AccountHoursBlock, self)._compute(cr, uid, ids, fields,
+        # args, context=context)
         result = {}
         block_per_types = {}
         for block in self.browse(cr, uid, ids, context=context):
@@ -52,7 +52,7 @@ class AccountHoursBlock(orm.Model):
         if isinstance(ids, (int, long)):
             ids = [ids]
         result = {}
-        aal_obj = self.pool.get('account.analytic.line')
+        aal_obj = self.pool['account.analytic.line']
         for block in self.browse(cr, uid, ids, context=context):
             result[block.id] = {'amount_hours_block': 0.0,
                                 'amount_hours_block_done': 0.0}
@@ -94,8 +94,7 @@ class AccountHoursBlock(orm.Model):
 
                 if line.to_invoice and line.to_invoice.factor != 0.0:
                     factor_invoicing = 1.0 - line.to_invoice.factor / 100
-                hours_used += ((line.invoiced_hours / factor)
-                               * factor_invoicing)
+                hours_used += ((line.invoiced_hours / factor) * factor_invoicing)
             result[block.id]['amount_hours_block_done'] = hours_used
         return result
 
@@ -103,8 +102,8 @@ class AccountHoursBlock(orm.Model):
         if context is None:
             context = {}
         result = {}
-        aal_obj = self.pool.get('account.analytic.line')
-        pricelist_obj = self.pool.get('product.pricelist')
+        aal_obj = self.pool['account.analytic.line']
+        pricelist_obj = self.pool['product.pricelist']
         for block in self.browse(cr, uid, ids, context=context):
             result[block.id] = {'amount_hours_block': 0.0,
                                 'amount_hours_block_done': 0.0}
@@ -154,8 +153,8 @@ class AccountHoursBlock(orm.Model):
 
     def _get_analytic_line(self, cr, uid, ids, context=None):
         invoice_ids = []
-        an_lines_obj = self.pool.get('account.analytic.line')
-        block_obj = self.pool.get('account.hours.block')
+        an_lines_obj = self.pool['account.analytic.line']
+        block_obj = self.pool['account.hours.block']
         for line in an_lines_obj.browse(cr, uid, ids, context=context):
             if line.invoice_id:
                 invoice_ids.append(line.invoice_id.id)
@@ -164,7 +163,7 @@ class AccountHoursBlock(orm.Model):
 
     def _get_invoice(self, cr, uid, ids, context=None):
         block_ids = set()
-        inv_obj = self.pool.get('account.invoice')
+        inv_obj = self.pool['account.invoice']
         for invoice in inv_obj.browse(cr, uid, ids, context=context):
             block_ids.update([inv.id for inv
                               in invoice.account_hours_block_ids])
@@ -172,14 +171,13 @@ class AccountHoursBlock(orm.Model):
 
     def _get_invoice_line(self, cr, uid, ids, context=None):
         invoice_ids = set()
-        line_obj = self.pool.get('account.invoice.line')
+        line_obj = self.pool['account.invoice.line']
         block_obj = self.pool['account.hours.block']
         for line in line_obj.browse(cr, uid, ids, context=context):
             if line.invoice_id:
                 invoice_ids.add(line.invoice_id.id)
         return block_obj._get_invoice(
             cr, uid, list(invoice_ids), context=context)
-
 
     # TODO modification du prix si le produit envoyé est changé?
     # Pas utile, car une ligne doit être validée pour être associée

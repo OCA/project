@@ -20,18 +20,17 @@ from openerp.osv import orm
 
 
 class AnalyticLineValidator(orm.TransientModel):
-    """ This wizard allows to change state for massive amount of analytic AnalyticLineValidator
+    """ This wizard allows to change state for massive amount of analytic
+        AnalyticLineValidator
     """
     _name = 'analytic.line.validator'
 
-    #WORKS
     def action_confirm(self, cr, uid, ids, context=None):
         aal_obj = self.pool.get(context['active_model'])
         aal_ids = context.get('active_ids', False)
         return aal_obj.action_confirm(
             cr, uid, aal_ids, context=context)
 
-    #WORKS
     def action_reset_to_draft(self, cr, uid, ids, context=None):
         aal_obj = self.pool.get(context['active_model'])
         aal_ids = context.get('active_ids', False)

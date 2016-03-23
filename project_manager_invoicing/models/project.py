@@ -17,10 +17,8 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 from openerp.osv import orm, fields
-from openerp.tools.translate import _
 from openerp import SUPERUSER_ID
 
-## faire une dépendance (monkeypatcher)
 TASK_WATCHERS = [
     'work_ids',
     'remaining_hours',
@@ -92,8 +90,9 @@ class ProjectTask(orm.Model):
         for task in self.browse(cr, uid, ids, context=context):
             # sum(l.invoiced_hours for l in task.work_ids)
             invoiced_hours = hours_unit_amount.get(task.id, 0.0)
+            remaining_hours = task.planned_hours - invoiced_hours
             res[task.id] = {'invoiced_hours': invoiced_hours,
-                            'remaining_hours': task.planned_hours - invoiced_hours,
+                            'remaining_hours': remaining_hours,
                             'total_hours': task.planned_hours + invoiced_hours
                             }
 
@@ -102,7 +101,8 @@ class ProjectTask(orm.Model):
     # OK
     def _get_analytic_line(self, cr, uid, ids, arg, context=None):
         res = []
-        for aal in self.pool['account.analytic.line'].browse(cr, uid, ids, context=context):
+        aal_obj = self.pool['account.analytic.line']
+        for aal in aal_obj.browse(cr, uid, ids, context=context):
             if aal.task_id:
                 res.append(aal.task_id.id)
         return res

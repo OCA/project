@@ -18,9 +18,9 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-from openerp import osv
 from openerp.osv import orm
 from openerp.tools.translate import _
+
 
 class hr_timesheet_invoice_create(orm.TransientModel):
 
@@ -47,10 +47,9 @@ class hr_timesheet_invoice_create(orm.TransientModel):
                 raise orm.except_orm(_('Warning!'), _("Invoice is already \
                     linked to some of the analytic line(s)!"))
             if analytic.state == 'draft':
-                raise orm.except_orm(_('Warning'), _("Invoice in draft state \
+                raise orm.except_orm(_('Warning!'), _("Invoice in draft state \
                     cannot be invoiced"))
 
-    # WORKING
     def do_create(self, cr, uid, ids, context=None):
         """ OVERWRITE: now it works with both: hr.analytic.timesheet & account.
         analytic.line
@@ -58,13 +57,20 @@ class hr_timesheet_invoice_create(orm.TransientModel):
         data = self.read(cr, uid, ids, [], context=context)[0]
         # Create an invoice based on selected timesheet lines
         # Modification => get active_model
-        invs = self.pool.get(context['active_model']).invoice_cost_create(cr, uid, context['active_ids'], data, context=context)
-        mod_obj = self.pool.get('ir.model.data')
-        act_obj = self.pool.get('ir.actions.act_window')
-        mod_ids = mod_obj.search(cr, uid, [('name', '=', 'action_invoice_tree1')], context=context)[0]
+        invs = self.pool.get(context['active_model']).invoice_cost_create(
+            cr, uid, context['active_ids'], data, context=context)
+        mod_obj = self.pool['ir.model.data']
+        act_obj = self.pool['ir.actions.act_window']
+        mod_ids = mod_obj.search(
+            cr,
+            uid,
+            [('name', '=', 'action_invoice_tree1')],
+            context=context)[0]
         ################
-        res_id = mod_obj.read(cr, uid, mod_ids, ['res_id'], context=context)['res_id']
+        res_id = mod_obj.read(
+            cr, uid, mod_ids, ['res_id'], context=context)['res_id']
         act_win = act_obj.read(cr, uid, res_id, [], context=context)
-        act_win['domain'] = [('id','in',invs),('type','=','out_invoice')] # invs est none
+        act_win['domain'] = [('id', 'in', invs),
+                             ('type', '=', 'out_invoice')]  # invs est none
         act_win['name'] = _('Invoices')
         return act_win

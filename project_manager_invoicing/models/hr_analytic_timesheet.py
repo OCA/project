@@ -19,7 +19,8 @@
 #
 ##############################################################################
 
-from openerp.osv import orm, fields
+from openerp.osv import orm
+
 
 class hr_timesheet_line(orm.Model):
     _inherit = "hr.analytic.timesheet"
@@ -49,5 +50,3 @@ class hr_timesheet_line(orm.Model):
         aal_ids = [x.line_id.id for x in timesheet_lines]
         self.pool['account.analytic.line'].check_invoiceable_line(
             cr, uid, aal_ids, context=context)
-
-    # def _check_line_state(self, cr, uid, ids, context=None):
