@@ -146,10 +146,9 @@ class AccountAnalyticLine(orm.Model):
         return True
 
     def create(self, cr, uid, vals, context=None):
-        # Fait un bug lors de la validation d'une facture TEST
-        if not vals['invoiced_hours']:
-            vals['invoiced_hours'] = vals['unit_amount']
-        # self._set_remaining_hours_create(cr, uid, vals, context)
+        if 'invoiced_hours' in vals:
+            if not vals['invoiced_hours']:
+                vals['invoiced_hours'] = vals['unit_amount']
         res = super(AccountAnalyticLine, self).create(
             cr, uid, vals, context=context)
 
@@ -216,7 +215,7 @@ class AccountAnalyticLine(orm.Model):
     def invoice_cost_create(self, cr, uid, ids, data=None, context=None):
         analytic_account_obj = self.pool['account.analytic.account']
         account_payment_term_obj = self.pool['account.payment.term']
-        invoice_obj = self.pool['account.invoice']  # Bug!
+        invoice_obj = self.pool['account.invoice']
         product_obj = self.pool['product.product']
         invoice_factor_obj = self.pool['hr_timesheet_invoice.factor']
         fiscal_pos_obj = self.pool['account.fiscal.position']
