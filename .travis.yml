@@ -8,19 +8,21 @@ cache: pip
 
 addons:
   apt:
+    sources:
+      - pov-wkhtmltopdf
     packages:
       - expect-dev  # provides unbuffer utility
       - python-lxml  # because pip installation is slow
       - python-simplejson
       - python-serial
       - python-yaml
+      - wkhtmltopdf
 
 env:
   global:
   - VERSION="9.0" TESTS="0" LINT_CHECK="0" TRANSIFEX="0"
   - TRANSIFEX_USER='transbot@odoo-community.org'
   - secure: "OCZHnpmr+dvwVzAHmfeOUa2/VuvepsdguW129zR7jEO5HJupI8imqq3D8JKStUVnAgpA+Igpni+mfFsmhvr7K6pdk9w15zWlO+ml/7EwRflnyWAdtLNv44PTfaOcuCkzf73HPKRiW+LLUOeDqSqF1BLdb7mgSpLFWMuO7pJK0aI="
-
   matrix:
   - LINT_CHECK="1"
   - TESTS="1" ODOO_REPO="odoo/odoo"
@@ -30,6 +32,10 @@ env:
 
 virtualenv:
   system_site_packages: true
+
+before_install:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
 
 install:
   - git clone --depth=1 https://github.com/OCA/maintainer-quality-tools.git ${HOME}/maintainer-quality-tools
