@@ -24,6 +24,7 @@ Contributors
 
 * Eficent <http://www.eficent.com>
 * Matmoz d.o.o. <http://www.matmoz.si>
+* Serpent CS <http://www.serpentcs.com>
 
 Maintainer
 ----------

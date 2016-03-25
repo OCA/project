@@ -45,11 +45,13 @@ view for the associated tasks.
     'name': 'Work Breakdown Structure - Tasks',
     'version': '8.0.2.0.0',
     'author':   'Eficent, '
+                'Serpent CS, '
                 'Matmoz d.o.o., '
                 'Project Expert Team',
     'contributors': [
         'Jordi Ballester <jordi.ballester@eficent.com>',
         'Matjaž Mozetič <m.mozetic@matmoz.si>',
+        'Sudhir Arya <>'
     ],
     'website': 'http://project.expert',
     'category': 'Project Management',
