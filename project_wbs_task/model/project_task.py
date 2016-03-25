@@ -7,26 +7,41 @@
 from openerp import api, fields, models
 
 
-#class TaskType(models.Model):
-#    _inherit = 'project.task.type'
-#
-#    _TASK_STATE = [('draft', 'New'),('open', 'In Progress'),('pending', 'Pending'), ('done', 'Done'), ('cancelled', 'Cancelled')]
-#
-#    state = fields.Selection(_TASK_STATE, 'Related Status', required=False,
-#                        help="The status of your document is automatically changed regarding the selected stage. " \
-#                            "For example, if a stage is related to the status 'Close', when your document reaches this stage, it is automatically closed.")
+# class TaskType(models.Model):
+#     _inherit = 'project.task.type'
+
+#     _TASK_STATE = [
+#         ('draft', 'New'),
+#         ('open', 'In Progress'),
+#         ('pending', 'Pending'),
+#         ('done', 'Done'),
+#         ('cancelled', 'Cancelled')
+#     ]
+
+#     state = fields.Selection(
+#         _TASK_STATE, 'Related Status', required=False,
+#         help="The status of your document is automatically changed regarding "
+#              "the selected stage. For example, if a stage is related to the "
+#              "status 'Close', when your document reaches this stage, it is "
+#              "automatically closed."
+#     )
 
 
 class Task(models.Model):
     _inherit = 'project.task'
 
-#    @api.model
-#    def _get_composition_mode_selection(self):
-#        return [('comment', 'Post on a document'),
-#                ('mass_mail', 'Email Mass Mailing'),
-#                ('mass_post', 'Post on Multiple Documents')]
-#
-#    composition_mode = fields.Selection(selection=_get_composition_mode_selection, string='Composition mode', default='comment')
+    # @api.model
+    # def _get_composition_mode_selection(self):
+    #     return [
+    #         ('comment', 'Post on a document'),
+    #         ('mass_mail', 'Email Mass Mailing'),
+    #         ('mass_post', 'Post on Multiple Documents')
+    #     ]
+    #
+    # composition_mode = fields.Selection(
+    #     selection=_get_composition_mode_selection,
+    #     string='Composition mode', default='comment'
+    # )
 
     @api.multi
     def _project_complete_wbs_name(self):
@@ -58,13 +73,18 @@ class Task(models.Model):
                 res.append((task.id, ''))
         return dict(res)
 
-    analytic_account_id = fields.\
-        Many2one(related='project_id.analytic_account_id',
-                 relation='account.analytic.account',
-                 string='Analytic Account', store=True, readonly=True)
-    project_complete_wbs_code = fields.\
-        Char('Full WBS Code', related='analytic_account_id.complete_wbs_code',
-             readonly=True)
-    project_complete_wbs_name = fields.\
-        Char('Full WBS Name', related='analytic_account_id.complete_wbs_name',
-             readonly=True)
+    analytic_account_id = fields.Many2one(
+        related='project_id.analytic_account_id',
+        relation='account.analytic.account',
+        string='Analytic Account', store=True, readonly=True
+    )
+    project_complete_wbs_code = fields.Char(
+        'Full WBS Code',
+        related='analytic_account_id.complete_wbs_code',
+        readonly=True
+    )
+    project_complete_wbs_name = fields.Char(
+        'Full WBS Name',
+        related='analytic_account_id.complete_wbs_name',
+        readonly=True
+    )
