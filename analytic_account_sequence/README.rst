@@ -1,7 +1,6 @@
 .. image:: https://img.shields.io/badge/licence-AGPL--3-blue.svg
     :alt: License AGPL-3
 
-==============================
 Analytic account code sequence
 ==============================
 
@@ -13,6 +12,7 @@ Contributors
 
 * Eficent <http://www.eficent.com>
 * Matmoz d.o.o. <http://www.matmoz.si>
+* SeprentCS <http://www.serpentcs.com/>
 
 Maintainer
 ----------

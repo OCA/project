@@ -21,6 +21,7 @@
                             <field name="suffix"/>
                             <field name="padding"/>
                             <field name="number_increment"/>
+                            <field name="number_next" invisible="1"/>
                             <field name="number_next_actual"/>
                             <field name="implementation"/>
                         </group>
