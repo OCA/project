@@ -8,7 +8,7 @@ class BusinessRequirementDeliverable(models.Model):
     _inherit = "business.requirement.deliverable"
 
     def _prepare_resource_lines(self):
-        rl_data = self.product_id.resource_lines.copy_data()
+        rl_data = self.sudo().product_id.resource_lines.copy_data()
         rl_data = [(0, 0, item) for index, item in enumerate(rl_data)]
         return rl_data
 
