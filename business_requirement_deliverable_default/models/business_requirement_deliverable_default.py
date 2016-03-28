@@ -15,18 +15,10 @@ class BusinessRequirementDeliverable(models.Model):
     @api.multi
     @api.onchange('product_id')
     def product_id_change(self):
-        description = ''
-        uom_id = False
-        unit_price = 0
+        super(BusinessRequirementDeliverable, self).product_id_change()
         product = self.product_id
         if product:
-            description = product.name
-            uom_id = product.uom_id.id
-            unit_price = product.list_price
             self.resource_ids = self._prepare_resource_lines()
-        self.description = description
-        self.uom_id = uom_id
-        self.unit_price = unit_price
 
 
 class ProductTemplate(models.Model):

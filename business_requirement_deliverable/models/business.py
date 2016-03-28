@@ -171,6 +171,8 @@ class BusinessRequirementDeliverable(models.Model):
     @api.one
     @api.onchange('product_id')
     def product_id_change(self):
+        import pdb
+        pdb.set_trace()
         description = ''
         uom_id = False
         unit_price = 0
