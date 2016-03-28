@@ -33,9 +33,7 @@ class BRDeliverableReport(ReportDocx):
         return data
 
     def _parse_html(self, obj):
-        if isinstance(obj, str):
-            return html2text.html2text(obj)
-        elif isinstance(obj, unicode):
+        if isinstance(obj, (str, unicode)):
             return html2text.html2text(obj)
         else:
             return obj
