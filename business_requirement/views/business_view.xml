@@ -12,6 +12,27 @@
             }</field>
         </record>
 
+        <record id="view_task_form2" model="ir.ui.view">
+            <field name="name">business.requirement.project.task.form.inherit</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <field name="categ_ids" position="after">
+                    <field name="business_requirement_id" string="Business requirement" attrs="{'invisible': ['|', ('business_requirement_id','=',False)]}"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="action_view_tasks_business_requirement" model="ir.actions.act_window">
+            <field name="res_model">project.task</field>
+            <field name="view_type">form</field>
+            <field name="name">Action Tasks Related BR</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{
+                'default_business_requirement_id': active_id
+            }</field>
+        </record>
+
         <record id="view_business_requirement_form" model="ir.ui.view">
             <field name="name">business.requirement.form</field>
             <field name="model">business.requirement</field>
@@ -33,6 +54,10 @@
                              <button class="oe_inline oe_stat_button" type="action" name="%(act_view_sub_br_all)d" icon="fa-tasks">
                                 <field name="sub_br_count" string="Sub Bus. Req." widget="statinfo"/>
                             </button>
+                            <button class="oe_stat_button" type="action" name="%(action_view_tasks_business_requirement)d"
+                                icon="fa-tasks" context="{'business_requirement_id': id }">
+                                <field  string="Tasks" name="task_count" widget="statinfo"/>
+                            </button>                            
                         </div>
                         <h1>
                             <field name="name" class="oe_inline" readonly="1"/>-

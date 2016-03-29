@@ -149,6 +149,22 @@ class BusinessRequirement(models.Model):
         required=True, readonly=True, states={'draft': [('readonly', False)]},
         default=_get_default_company,
     )
+    task_ids = fields.One2many(
+        comodel_name='project.task',
+        inverse_name='business_requirement_id',
+        string='Tasks'
+    )
+    task_count = fields.Integer(
+        string='Total number of task related to a business requirement',
+        store=True,
+        readonly=True,
+        compute='_compute_task_count'
+    )
+
+    @api.depends('task_ids')
+    def _compute_task_count(self):
+        for r in self:
+            r.task_count = len(r.task_ids)
 
     @api.one
     @api.onchange('project_id')
@@ -266,7 +282,6 @@ class BusinessRequirement(models.Model):
         if attachments is None:
             attachments = {}
         mail_message = self.pool.get('mail.message')
-        ir_attachment = self.pool.get('ir.attachment')
 
         assert (not thread_id) or \
             isinstance(thread_id, (int, long)) or \
@@ -453,3 +468,14 @@ class Project(models.Model):
     @api.depends('br_ids')
     def _br_count(self):
         self.br_count = len(self.br_ids)
+
+
+class Task(models.Model):
+    _inherit = 'project.task'
+
+    """ Link the task and the business requirement """
+    business_requirement_id = fields.Many2one(
+        'business.requirement',
+        string='Business Requirement',
+        readonly=True,
+    )
