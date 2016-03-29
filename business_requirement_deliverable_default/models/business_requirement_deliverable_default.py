@@ -8,25 +8,17 @@ class BusinessRequirementDeliverable(models.Model):
     _inherit = "business.requirement.deliverable"
 
     def _prepare_resource_lines(self):
-        rl_data = self.sudo().product_id.resource_lines.copy_data()
+        rl_data = self.product_id.sudo().resource_lines.copy_data()
         rl_data = [(0, 0, item) for index, item in enumerate(rl_data)]
         return rl_data
 
     @api.multi
     @api.onchange('product_id')
     def product_id_change(self):
-        description = ''
-        uom_id = False
-        unit_price = 0
+        super(BusinessRequirementDeliverable, self).product_id_change()
         product = self.product_id
         if product:
-            description = product.name
-            uom_id = product.uom_id.id
-            unit_price = product.list_price
             self.resource_ids = self._prepare_resource_lines()
-        self.description = description
-        self.uom_id = uom_id
-        self.unit_price = unit_price
 
 
 class ProductTemplate(models.Model):
