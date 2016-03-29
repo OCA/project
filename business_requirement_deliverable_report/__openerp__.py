@@ -13,8 +13,8 @@
         'reports/business_requirement_deliverable_report.xml',
         'static/docx_templates/template_business_requirement.docx',
         'static/docx_templates/template_business_requirement_deliverable.docx',
-        'static/docx_templates/template_business_requirement_\
-            deliverable_resources.docx',
+        'static/docx_templates/\
+template_business_requirement_deliverable_resources.docx',
     ],
     'author': 'Elico Corp',
     'license': 'AGPL-3',

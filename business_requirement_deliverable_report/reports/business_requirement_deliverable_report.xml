@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <openerp>
-    <data>
+    <data noupdate="1">
 
         <record id="business_requirement_with_deliverables_resources_attachment" model="ir.attachment">
             <field name="name">business_requirement_with_deliverables_resources</field>
