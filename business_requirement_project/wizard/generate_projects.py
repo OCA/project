@@ -168,8 +168,6 @@ class BrGenerateProjects(models.TransientModel):
 
     @api.multi
     def _prepare_project_task(self, line, project_id):
-        import pdb
-        pdb.set_trace()
         context = self.env.context
         default_uom = context and context.get('default_uom', False)
         product_uom_obj = self.env['product.uom']
