@@ -225,6 +225,7 @@ class AccountAnalyticAccount(orm.Model):
     def recurring_create_invoice(self, cr, uid, automatic=False, context=None):
         if context is None:
             context = {}
+        inv_line_obj = self.pool['account.invoice.line']
         current_date = time.strftime('%Y-%m-%d')
         contract_ids = self.search(
             cr, uid,
@@ -232,6 +233,28 @@ class AccountAnalyticAccount(orm.Model):
              ('state', '=', 'open'),
              ('recurring_invoices', '=', True)])
         for contract in self.browse(cr, uid, contract_ids, context=context):
+            # Review if there are opened invoices with a past date due
+            invoice_lines = inv_line_obj.search(
+                cr, uid,
+                [('account_analytic_id', '=', contract.id)]
+            )
+            for invoice_line in inv_line_obj.browse(
+                cr, uid, invoice_lines, context=context
+            ):
+                if (
+                    invoice_line.invoice_id.state == 'draft' or
+                    (invoice_line.invoice_id.date_due < current_date and
+                     invoice_line.invoice_id.date_due and
+                     invoice_line.invoice_id.state == 'open')
+                ):
+                    self.write(
+                        cr, uid, [contract.id],
+                        {'state': 'exception'},
+                        context=context
+                    )
+                    break
+            if contract.state == 'exception':
+                continue
             next_date = datetime.datetime.strptime(
                 contract.recurring_next_date or current_date, "%Y-%m-%d")
             interval = contract.recurring_interval
