@@ -24,7 +24,6 @@ Unported addons
 ---------------
 addon | version | summary
 --- | --- | ---
-[account_analytic_analysis_recurring](account_analytic_analysis_recurring/) | 0.1 (unported) | Contracts Management recurring
 [analytic_hours_block](analytic_hours_block/) | 1.5 (unported) | Project Hours Blocks Management
 [project_analytic_line_view](project_analytic_line_view/) | 8.0.1.0.0 (unported) | Project analytic account line view
 [project_baseuser](project_baseuser/) | 8.0.1.0.0 (unported) | Extend Project user roles to support more complex use cases
