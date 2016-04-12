@@ -1,0 +1,54 @@
+<odoo>
+
+    <record id="edit_project" model="ir.ui.view">
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <label for="alias_name" position="attributes">
+                <attribute name="string">Email Alias (Tasks)</attribute>
+                <attribute name="attrs">{'invisible': [('use_tasks', '=', False)]}</attribute>
+            </label>
+            <label for="alias_model" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </label>
+            <field name="alias_model" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <div name="alias_def" position="attributes">
+                <attribute name="attrs">{'invisible': [('use_tasks', '=', False)]}</attribute>
+            </div>
+            <div name="alias_def" position="after">
+                <label for="second_alias_name"
+                       string="Email Alias (Issues)"
+                       attrs="{'invisible': [('use_issues', '=', False)]}"
+                />
+                <div name="second_alias_def" attrs="{'invisible': [('use_issues', '=', False)]}">
+                    <field name="second_alias_id" class="oe_read_only oe_inline" />
+                    <div class="oe_edit_only oe_inline" name="edit_second_alias" style="display: inline;" >
+                        <field name="second_alias_name" class="oe_inline"/>@<field name="alias_domain2" class="oe_inline"/>
+                    </div>
+                </div>
+            </div>
+        </field>
+    </record>
+
+    <record id="view_project_kanban" model="ir.ui.view">
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project_kanban"/>
+        <field name="arch" type="xml">
+            <field name="alias_name" position="after">
+                <field name="second_alias_id"/>
+                <field name="second_alias_name"/>
+            </field>
+            <xpath expr="//t[@t-esc='record.alias_id.value']" position="before">
+                <i class="fa fa-tasks"/>
+            </xpath>
+            <xpath expr="//t[@t-esc='record.alias_id.value']/../../.." position="after">
+                <div t-if="record.second_alias_name.value and record.alias_domain.value">
+                    <span><i class="fa fa-envelope"/> <i class="fa fa-bug"/> <t t-esc="record.second_alias_id.value"/></span>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
