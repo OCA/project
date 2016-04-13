@@ -18,6 +18,7 @@ Available addons
 ----------------
 addon | version | summary
 --- | --- | ---
+[project_double_alias](project_double_alias/) | 9.0.1.0.0 | Define an alias for tasks and another alias for issues
 [project_task_default_stage](project_task_default_stage/) | 9.0.1.0.0 | Recovery default task stage projects from v8
 
 Unported addons
