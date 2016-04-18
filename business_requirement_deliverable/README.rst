@@ -119,11 +119,13 @@ RL directly depends on the DL.
 What is the difference between Deliverable and Resources?
 
 Deliverables are:
+
 * provided to the customer (“Functioning Website”)
 * Valued at Customer Sales Price
 * Used in Sales Quotations
 
 Resources are:
+
 * executed internally (“Server+CSS modifications”)
 * Valued at Cost Price
 * Used in Project management or procurement management
@@ -182,16 +184,15 @@ the one from the customer associated will be used.
 Usage
 =====
 
-#. In the BR, you can add as many deliverable lines as necessary.
-  Price of the deliverable lines will depend on the pricelist in 
-  master project or customer.
-#. Once the deliverable lines are created you can create as many resources 
-  lines as necessary in each DL. Cost price of the product will apply
+#. In the BR, you can add as many deliverable lines as necessary. Price of the deliverable lines will depend on the pricelist in master project or customer.
+
+#. Once the deliverable lines are created you can create as many resources lines as necessary in each DL. Cost price of the product will apply
+
 #. in RL you can already assign the responsible of the task if necessary
 
-|image1|
+|image2|
 
-.. |image1| image:: static/img/bus_req_deliverable2.png
+.. |image2| image:: static/img/bus_req_deliverable2.png
    :width: 800 px
    :alt: Inputing the deliverables and resources lines
 
