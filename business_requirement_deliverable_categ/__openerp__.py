@@ -15,6 +15,11 @@
         "business_requirement_deliverable",
         "project_task_category",
     ],
+    'image': [
+		'static/img/bus_req_tree.png',
+		'static/img/bus_req_category.png'
+	],
+
     "data": [
         "views/business_requirement_deliverable_categ.xml",
     ],
