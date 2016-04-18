@@ -16,6 +16,12 @@
         'static/docx_templates/\
 template_business_requirement_deliverable_resources.docx',
     ],
+    'image': [
+		'static/img/bus_req_tree.png',
+		'static/img/bus_req_report1.png',
+		'static/img/bus_req_report2.png',
+		'static/img/bus_req_report3.png'
+	],
     'author': 'Elico Corp',
     'license': 'AGPL-3',
     'website': 'https://www.elico-corp.com',
