@@ -16,6 +16,13 @@
         'views/business_view.xml',
         'views/project.xml',
     ],
+    'image': [
+		'static/img/bus_req.png',
+		'static/img/bus_req_deliverable.png',
+		'static/img/bus_req_deliverable2.png',
+		'static/img/bus_req_resource.png',
+		'static/img/bus_req_tree.png'
+	],
     'license': 'AGPL-3',
     'installable': True,
 }
