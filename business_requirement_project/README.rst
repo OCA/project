@@ -40,7 +40,7 @@ business_requirement_deliverable_categ      Adds the possibility to have
                                             tasks category in resources
 =========================================== ====================================
 
-Many other module (business_requirement_*) completes this basic list.
+Many other modules (business_requirement_*) complete this basic list.
 
 What is a Business Requirement?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
