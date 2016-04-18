@@ -17,6 +17,9 @@
         'wizard/crm_make_sale_view.xml',
         'views/crm_view.xml',
     ],
-    'license': 'AGPL-3',
+	'image': [
+		'static/img/bus_req_tree.png'
+		],
+	'license': 'AGPL-3',
     'installable': True,
 }
