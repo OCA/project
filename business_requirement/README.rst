@@ -40,7 +40,7 @@ business_requirement_deliverable_categ      Adds the possibility to have
                                             tasks category in resources
 =========================================== ====================================
 
-Many other module (business_requirement_*) completes this basic list.
+Many other modules (business_requirement_*) completes this basic list.
 
 What is a Business Requirement?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -114,7 +114,7 @@ business requirements directly from email received at a specific address.
    :alt: Email Alias setup
    
 You can start conversation with the followers in the chatter area of the 
-BR like tasks, issue or CRM leads.
+BR like in tasks, issue or CRM leads.
 
 Sequences
 ^^^^^^^^^
@@ -212,11 +212,11 @@ Simple BR
    :alt: Drop your business requirement
 
 
-Sub business requirements
+Sub-business requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 User can create sub business requirements for a given BR for complex cases.
 
-This is a simple parent/child relation (see roadmap)
+This is a simple parent/child relation (see roadmap).
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
