@@ -25,6 +25,7 @@ class ProjectProject(models.Model):
             alias_model_name='project.issue',
             alias_parent_model_name=self._name)
         alias_defaults = {'project_id': self.id}
+        # This is if you have installed project_issue_sheet module
         if self.env['project.issue']._fields.get('analytic_account_id'):
             alias_defaults['analytic_account_id'] = self.analytic_account_id
         return alias_obj.create({
