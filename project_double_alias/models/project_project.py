@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 # © 2016 Pedro M. Baeza <pedro.baeza@tecnativa.com>
+# © 2016 Carlos Dauden <carlos.dauden@tecnativa.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl-3.html).
 
 from openerp import api, exceptions, fields, models, _
@@ -23,11 +24,14 @@ class ProjectProject(models.Model):
         alias_obj = self.env['mail.alias'].with_context(
             alias_model_name='project.issue',
             alias_parent_model_name=self._name)
+        alias_defaults = {'project_id': self.id}
+        if self.env['project.issue']._fields.get('analytic_account_id'):
+            alias_defaults['analytic_account_id'] = self.analytic_account_id
         return alias_obj.create({
             'alias_name': self.second_alias_name,
             'alias_contact': self.alias_contact,
             'alias_parent_thread_id': self.id,
-            'alias_defaults': {'project_id': self.id}
+            'alias_defaults': alias_defaults,
         })
 
     @api.multi
