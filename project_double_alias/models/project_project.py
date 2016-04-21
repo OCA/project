@@ -28,7 +28,7 @@ class ProjectProject(models.Model):
         # This is if you have installed project_issue_sheet module
         if self.env['project.issue']._fields.get('analytic_account_id'):
             alias_defaults['analytic_account_id'] = (
-                self.analytic_account_id)  # pragma: no cover
+                self.analytic_account_id.id)  # pragma: no cover
         return alias_obj.create({
             'alias_name': self.second_alias_name,
             'alias_contact': self.alias_contact,
