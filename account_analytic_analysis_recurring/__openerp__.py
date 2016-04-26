@@ -22,7 +22,7 @@
 
 {
     'name': 'Contracts Management recurring',
-    'version': '0.1',
+    'version': '0.2.0',
     'category': 'Other',
     'description': """
 This module adds a new feature in contracts to manage recurring invoicing

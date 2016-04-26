@@ -1,29 +1,31 @@
 # Translation of OpenERP Server.
 # This file contains the translation of the following modules:
-#	* account_analytic_analysis_recurring
-#
+# * account_analytic_analysis_recurring
+# es_MX.po <agustin.cruz@openpyme.mx>, 2016.
 msgid ""
 msgstr ""
 "Project-Id-Version: OpenERP Server 7.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-04-26 21:14+0000\n"
-"PO-Revision-Date: 2016-04-26 21:14+0000\n"
-"Last-Translator: <>\n"
-"Language-Team: \n"
+"PO-Revision-Date: 2016-04-26 16:16-0500\n"
+"Last-Translator: es_MX.po <agustin.cruz@openpyme.mx>\n"
+"Language-Team: Laptop\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Virtaal 0.7.1\n"
 
 #. module: account_analytic_analysis_recurring
 #: view:account.analytic.account:0
 msgid ". create invoices"
-msgstr ""
+msgstr ". crear facturas"
 
 #. module: account_analytic_analysis_recurring
 #: view:account.analytic.account:0
 msgid "Account Analytic Lines"
-msgstr ""
+msgstr "Ver líneas contables analíticas"
 
 #. module: account_analytic_analysis_recurring
 #: code:_description:0
@@ -31,141 +33,140 @@ msgstr ""
 #: model:ir.model,name:account_analytic_analysis_recurring.model_account_analytic_account
 #, python-format
 msgid "Analytic Account"
-msgstr ""
+msgstr "Cuenta analítica"
 
 #. module: account_analytic_analysis_recurring
 #: field:account.analytic.account,recurring_next_date:0
 msgid "Date of Next Invoice"
-msgstr ""
+msgstr "Próximo fecha de factura"
 
 #. module: account_analytic_analysis_recurring
 #: selection:account.analytic.account,recurring_rule_type:0
 msgid "Day(s)"
-msgstr ""
+msgstr "Día(s)"
 
 #. module: account_analytic_analysis_recurring
 #: field:account.analytic.invoice.line,name:0
 msgid "Description"
-msgstr ""
+msgstr "Descripción"
 
 #. module: account_analytic_analysis_recurring
 #: code:addons/account_analytic_analysis_recurring/account_analytic_analysis_recurring.py:180
 #, python-format
 msgid "Error!"
-msgstr ""
+msgstr "¡Error!"
 
 #. module: account_analytic_analysis_recurring
 #: field:account.analytic.account,recurring_invoices:0
 msgid "Generate recurring invoices automatically"
-msgstr ""
+msgstr "Generar facturas recurrentes automáticamente."
 
 #. module: account_analytic_analysis_recurring
 #: field:account.analytic.account,recurring_invoice_line_ids:0
 msgid "Invoice Lines"
-msgstr ""
+msgstr "Líneas de factura"
 
 #. module: account_analytic_analysis_recurring
 #: help:account.analytic.account,recurring_rule_type:0
 msgid "Invoice automatically repeat at specified interval"
-msgstr ""
+msgstr "Repetir factura automáticamente en ese intervalo"
 
 #. module: account_analytic_analysis_recurring
 #: selection:account.analytic.account,recurring_rule_type:0
 msgid "Month(s)"
-msgstr ""
+msgstr "Mes(es)"
 
 #. module: account_analytic_analysis_recurring
 #: code:addons/account_analytic_analysis_recurring/account_analytic_analysis_recurring.py:168
 #, python-format
 msgid "No Customer Defined!"
-msgstr ""
+msgstr "¡No se ha definido un cliente!"
 
 #. module: account_analytic_analysis_recurring
 #: view:account.analytic.account:0
 msgid "Overdue"
-msgstr ""
+msgstr "Atrasados"
 
 #. module: account_analytic_analysis_recurring
 #: view:account.analytic.account:0
 msgid "Overdue contracts"
-msgstr ""
+msgstr "Contratos atrasados"
 
 #. module: account_analytic_analysis_recurring
 #: code:addons/account_analytic_analysis_recurring/account_analytic_analysis_recurring.py:181
 #, python-format
 msgid "Please define a sale journal for the company \"%s\"."
-msgstr ""
+msgstr "Defina por favor un diario de ventas para esta compañía \"%s\"."
 
 #. module: account_analytic_analysis_recurring
 #: field:account.analytic.invoice.line,product_id:0
 msgid "Product"
-msgstr ""
+msgstr "Producto"
 
 #. module: account_analytic_analysis_recurring
 #: field:account.analytic.invoice.line,quantity:0
 msgid "Quantity"
-msgstr ""
+msgstr "Cantidad"
 
 #. module: account_analytic_analysis_recurring
 #: view:account.analytic.account:0
 msgid "Re-open project"
-msgstr ""
+msgstr "Re-abrir contrato"
 
 #. module: account_analytic_analysis_recurring
 #: field:account.analytic.account,recurring_rule_type:0
 msgid "Recurrency"
-msgstr ""
+msgstr "Recurrencia"
 
 #. module: account_analytic_analysis_recurring
 #: view:account.analytic.account:0
 msgid "Recurring Invoices"
-msgstr ""
+msgstr "Facturas recurrentes"
 
 #. module: account_analytic_analysis_recurring
 #: field:account.analytic.account,recurring_interval:0
 msgid "Repeat Every"
-msgstr ""
+msgstr "Repetir cada"
 
 #. module: account_analytic_analysis_recurring
 #: help:account.analytic.account,recurring_interval:0
 msgid "Repeat every (Days/Week/Month/Year)"
-msgstr ""
+msgstr "Repetir cada (días/semana/mes/año)"
 
 #. module: account_analytic_analysis_recurring
 #: field:account.analytic.invoice.line,price_subtotal:0
 msgid "Sub Total"
-msgstr ""
+msgstr "Subtotal"
 
 #. module: account_analytic_analysis_recurring
 #: field:account.analytic.invoice.line,price_unit:0
 msgid "Unit Price"
-msgstr ""
+msgstr "Precio unidad"
 
 #. module: account_analytic_analysis_recurring
 #: field:account.analytic.invoice.line,uom_id:0
 msgid "Unit of Measure"
-msgstr ""
+msgstr "Unidad de medida"
 
 #. module: account_analytic_analysis_recurring
 #: selection:account.analytic.account,recurring_rule_type:0
 msgid "Week(s)"
-msgstr ""
+msgstr "Semana(s)"
 
 #. module: account_analytic_analysis_recurring
 #: selection:account.analytic.account,recurring_rule_type:0
 msgid "Year(s)"
-msgstr ""
+msgstr "Año(s)"
 
 #. module: account_analytic_analysis_recurring
 #: code:addons/account_analytic_analysis_recurring/account_analytic_analysis_recurring.py:169
 #, python-format
 msgid "You must first select a Customer for Contract %s!"
-msgstr ""
+msgstr "¡Seleccione un cliente para este contrato %s!"
 
 #. module: account_analytic_analysis_recurring
 #: code:_description:0
 #: model:ir.model,name:account_analytic_analysis_recurring.model_account_analytic_invoice_line
 #, python-format
 msgid "account.analytic.invoice.line"
-msgstr ""
-
+msgstr "account.analytic.invoice.line"
