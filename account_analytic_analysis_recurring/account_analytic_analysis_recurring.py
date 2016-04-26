@@ -123,6 +123,16 @@ class AccountAnalyticAccount(orm.Model):
         'recurring_interval': fields.integer(
             'Repeat Every', help="Repeat every (Days/Week/Month/Year)"),
         'recurring_next_date': fields.date('Date of Next Invoice'),
+        'state': fields.selection(
+            [('template', 'Template'),
+             ('draft', 'New'),
+             ('open', 'In Progress'),
+             ('pending', 'To Renew'),
+             ('overdue', 'Overdue'),
+             ('close', 'Closed'),
+             ('cancelled', 'Cancelled')], 'Status', required=True,
+            track_visibility='onchange'
+        ),
     }
 
     _defaults = {
@@ -215,6 +225,7 @@ class AccountAnalyticAccount(orm.Model):
             'fiscal_position': fpos and fpos.id,
             'payment_term': partner_payment_term,
             'company_id': contract.company_id.id or False,
+            'user_id': contract.manager_id.id or False
         }
         invoice_id = inv_obj.create(cr, uid, inv_data, context=context)
         for line in contract.recurring_invoice_line_ids:
@@ -228,6 +239,7 @@ class AccountAnalyticAccount(orm.Model):
     def recurring_create_invoice(self, cr, uid, automatic=False, context=None):
         if context is None:
             context = {}
+        inv_line_obj = self.pool['account.invoice.line']
         current_date = time.strftime('%Y-%m-%d')
         contract_ids = self.search(
             cr, uid,
@@ -235,6 +247,20 @@ class AccountAnalyticAccount(orm.Model):
              ('state', '=', 'open'),
              ('recurring_invoices', '=', True)])
         for contract in self.browse(cr, uid, contract_ids, context=context):
+            # Review if there are opened invoices with a past date due
+            invoice_ids = inv_line_obj.search(
+                cr, uid,
+                [('account_analytic_id', '=', contract.id),
+                 ('invoice_id.date_due', '<=', current_date),
+                 ('invoice_id.state', '=', 'open')]
+            )
+            if len(invoice_ids):
+                self.write(
+                    cr, uid, [contract.id],
+                    {'state': 'overdue'},
+                    context=context
+                )
+                break
             next_date = datetime.datetime.strptime(
                 contract.recurring_next_date or current_date, "%Y-%m-%d")
             interval = contract.recurring_interval

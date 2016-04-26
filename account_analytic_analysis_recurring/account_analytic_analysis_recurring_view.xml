@@ -40,5 +40,26 @@
             </field>
         </record>
 
+        <record id="account_analytic_account_search" model="ir.ui.view">
+            <field name="name">account.analytic.account.search</field>
+            <field name="model">account.analytic.account</field>
+            <field name="inherit_id" ref="account_analytic_analysis.view_account_analytic_account_overdue_search" />
+            <field name="arch" type="xml">
+                <xpath expr="//filter[@name='pending']" position="after">
+                    <filter name="overdue" string="Overdue" domain="[('state','=','overdue')]" help="Overdue contracts"/>
+                </xpath>
+            </field>
+        </record>
+        
+        <record id="account_analytic_account_header" model="ir.ui.view">
+            <field name="name">account.analytic.account.header</field>
+            <field name="model">account.analytic.account</field>
+            <field name="inherit_id" ref="hr_timesheet_invoice.account_analytic_account_form_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='set_open']" position="after">
+                    <button name="set_open" string="Re-open project" type="object" states="overdue"/>
+                </xpath>
+            </field>
+        </record>
     </data>
 </openerp>
