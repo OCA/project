@@ -1,7 +1,0 @@
--
-  Create a new analytic account
--
-  !record {model: account.analytic.account, id: analytic1, view: False}:
-    name: "One Analytic Account"
-    account_type: "normal"
-    user_id: base.user_demo #--> hr.employee_qdp --> hr.dep_rd
