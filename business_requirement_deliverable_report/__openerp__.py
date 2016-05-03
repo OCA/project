@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
     'name': 'Business Requirement Deliverable Report Docx Module',
-    'version': '9.0.1.0.2',
+    'version': '9.0.1.0.3',
     'category': 'report',
     'depends': [
         'report_docx',
