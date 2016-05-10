@@ -14,7 +14,8 @@
                     <button string="Tasks"
                         name="action_openTasksTreeView"
                         type="object"
-                        icon="terp-folder-orange"/>
+                        icon="terp-folder-orange"
+                        context="{'default_project_id': active_id,'search_default_project_id': active_id}"/>
                 </xpath>
             </field>
         </record>
