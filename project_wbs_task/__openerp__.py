@@ -43,7 +43,7 @@ view for the associated tasks.
         "view/project_view.xml",
 =======
     'name': 'Work Breakdown Structure - Tasks',
-    'version': '8.0.2.0.0',
+    'version': '8.0.2.0.1',
     'author':   'Eficent, '
                 'Serpent CS, '
                 'Matmoz d.o.o., '
