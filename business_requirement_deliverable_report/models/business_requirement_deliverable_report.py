@@ -27,7 +27,7 @@ class BRDeliverableReport(ReportDocx):
         data = []
         for id in ids:
             module = self.pool.get(active_module).browse(
-                cr, uid, id, context)
+                cr, uid, id, context).sudo()
             data.append(self._obj2dict(module))
 
         return data
