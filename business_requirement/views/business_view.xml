@@ -239,6 +239,17 @@
             </field>
         </record>
 
+        <record model="ir.ui.view" id="view_business_requirement_graph">
+            <field name="name">Business requirement</field>
+            <field name="model">business.requirement</field>
+            <field name="arch" type="xml">
+                <graph string="Business Requirement">
+                    <field name="project_id"/>
+                    <field name="partner_id"/>
+                </graph>
+            </field>
+        </record>
+        
         <record model="ir.actions.act_window" id="action_business_requirement_tree">
             <field name="name">Business Requirement</field>
             <field name="res_model">business.requirement</field>
