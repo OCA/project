@@ -34,14 +34,15 @@ class Task(models.Model):
     @api.multi
     @api.depends('stock_move_ids.state')
     def _compute_stock_state(self):
-        if not self.stock_move_ids:
-            self.stock_state = 'pending'
-        elif self.stock_move_ids.filtered(lambda r: r.state == 'confirmed'):
-            self.stock_state = 'confirmed'
-        elif self.stock_move_ids.filtered(lambda r: r.state == 'assigned'):
-            self.stock_state = 'assigned'
-        elif self.stock_move_ids.filtered(lambda r: r.state == 'done'):
-            self.stock_state = 'done'
+        for task in self:
+            if not task.stock_move_ids:
+                task.stock_state = 'pending'
+            elif task.stock_move_ids.filtered(lambda r: r.state == 'confirmed'):
+                task.stock_state = 'confirmed'
+            elif task.stock_move_ids.filtered(lambda r: r.state == 'assigned'):
+                task.stock_state = 'assigned'
+            elif task.stock_move_ids.filtered(lambda r: r.state == 'done'):
+                task.stock_state = 'done'
 
     stock_move_ids = fields.Many2many(
         comodel_name='stock.move', compute='_compute_stock_move',
