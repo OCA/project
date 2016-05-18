@@ -18,15 +18,22 @@ class ProjectTaskType(models.Model):
 class Task(models.Model):
     _inherit = "project.task"
 
+    @api.multi
     @api.depends('material_ids.stock_move_id')
     def _compute_stock_move(self):
-        self.stock_move_ids = self.mapped('material_ids.stock_move_id')
+        for task in self:
+            task.stock_move_ids = task.mapped('material_ids.stock_move_id')
 
+    @api.multi
+    @api.depends('material_ids.analytic_line_id')
     def _compute_analytic_line(self):
-        self.analytic_line_ids = self.mapped('material_ids.analytic_line_id')
+        for task in self:
+            task.analytic_line_ids = task.mapped(
+                'material_ids.analytic_line_id')
 
+    @api.multi
     @api.depends('stock_move_ids.state')
-    def _check_stock_state(self):
+    def _compute_stock_state(self):
         if not self.stock_move_ids:
             self.stock_state = 'pending'
         elif self.stock_move_ids.filtered(lambda r: r.state == 'confirmed'):
@@ -47,7 +54,8 @@ class Task(models.Model):
         [('pending', 'Pending'),
          ('confirmed', 'Confirmed'),
          ('assigned', 'Assigned'),
-         ('done', 'Done')], compute='_check_stock_state', string='Stock State')
+         ('done', 'Done')],
+        compute='_compute_stock_state', string='Stock State')
 
     @api.multi
     def unlink_stock_move(self):
@@ -79,7 +87,7 @@ class Task(models.Model):
     @api.multi
     def unlink(self):
         self.mapped('stock_move_ids').unlink()
-        self.analytic_line_ids.unlink()
+        self.mapped('analytic_line_ids').unlink()
         return super(Task, self).unlink()
 
     @api.multi
