@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- © 2016 Carlos Dauden <carlos.dauden@tecnativa.com>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl-3). -->
+<openerp>
+<data>
+
+<record id="view_project_task_form" model="ir.ui.view">
+    <field name="name">project.task.materials.analytic.partner.form</field>
+    <field name="model">project.task</field>
+    <field name="inherit_id"
+         ref="project_task_materials_stock.view_project_task_form_materials_stock"/>
+    <field name="arch" type="xml">
+        <xpath expr="//field[@name='material_ids']/tree/field[@name='product_uom']" position="after">
+            <field name="to_invoice"/>
+            <field name="other_partner_id"/>
+        </xpath>
+    </field>
+</record>
+
+</data>
+</openerp>
