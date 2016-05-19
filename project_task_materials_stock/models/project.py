@@ -37,7 +37,8 @@ class Task(models.Model):
         for task in self:
             if not task.stock_move_ids:
                 task.stock_state = 'pending'
-            elif task.stock_move_ids.filtered(lambda r: r.state == 'confirmed'):
+            elif task.stock_move_ids.filtered(
+                    lambda r: r.state == 'confirmed'):
                 task.stock_state = 'confirmed'
             elif task.stock_move_ids.filtered(lambda r: r.state == 'assigned'):
                 task.stock_state = 'assigned'
