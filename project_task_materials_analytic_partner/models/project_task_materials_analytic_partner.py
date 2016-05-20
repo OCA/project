@@ -19,5 +19,11 @@ class TaskMaterials(models.Model):
     def _prepare_analytic_line(self):
         res = super(TaskMaterials, self)._prepare_analytic_line()
         res['to_invoice'] = self.to_invoice.id
-        res['other_partner_id'] = self.other_partner_id.id
+        analytic_account = (
+            getattr(self.task_id, 'analytic_account_id', False) or
+            self.task_id.project_id.analytic_account_id)
+        res['other_partner_id'] = (
+            self.other_partner_id.id or
+            self.task_id.partner_id != analytic_account.partner_id and
+            self.task_id.partner_id.id)
         return res
