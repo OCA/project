@@ -15,15 +15,13 @@ class CrmMakeSale(models.TransientModel):
         context = self.env.context
         case_id = context and context.get('active_ids', []) or []
         case_id = case_id and case_id[0] or False
-        res = {}
-        if not self.update_quotation:
-            res = super(CrmMakeSale, self).makeOrder()
-        else:
+        res = super(CrmMakeSale, self).makeOrder()
+        if self.update_quotation:
             saleorder = self.env['sale.order'].search([
                 ('origin', '=', _('Opportunity: %s') % str(case_id))])
             saleorder = saleorder and saleorder[0] or False
             if saleorder:
-                res = {'res_id': saleorder.id}
+                res.update({'res_id': saleorder.id})
                 if saleorder.order_line:
                     saleorder.order_line.unlink()
 
