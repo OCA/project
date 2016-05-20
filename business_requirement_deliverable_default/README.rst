@@ -42,6 +42,15 @@ business_requirement_deliverable_categ      Adds the possibility to have
 
 Many other modules (business_requirement_*) completes this basic list.
 
+The following diagram gives a simplified view of the universe:
+
+|image11|
+
+.. |image11| image:: static/img/bus_req_module_diag.png
+   :width: 800 px
+   :alt: Business Requirement modules diagram 
+
+
 What is a Business Requirement?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
