@@ -3,13 +3,13 @@
 # * project_classification
 # 
 # Translators:
-# Matjaž Mozetič <m.mozetic@matmoz.si>, 2015
+# Matjaž Mozetič <m.mozetic@matmoz.si>, 2015-2016
 msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-31 18:04+0000\n"
-"PO-Revision-Date: 2015-08-18 19:02+0000\n"
+"POT-Creation-Date: 2016-05-19 20:32+0000\n"
+"PO-Revision-Date: 2016-05-19 05:36+0000\n"
 "Last-Translator: Matjaž Mozetič <m.mozetic@matmoz.si>\n"
 "Language-Team: Slovenian (http://www.transifex.com/oca/OCA-project-8-0/language/sl/)\n"
 "MIME-Version: 1.0\n"
@@ -19,9 +19,22 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
 #. module: project_classification
+#: help:project.project,toinvoice_total:0
+msgid " Sum of everything that could be invoiced for this contract."
+msgstr "Vsota vsega, kar bi lahko bilo obračunano po tej pogodbi."
+
+#. module: project_classification
 #: field:project.classification,user_id:0
 msgid "Account Manager"
 msgstr "Upravitelj konta"
+
+#. module: project_classification
+#: help:project.project,ca_theorical:0
+msgid ""
+"Based on the costs you had on the project, what would have been the revenue "
+"if all these costs have been invoiced at the normal sale price provided by "
+"the pricelist."
+msgstr "Kakšni bi bili prihodki, če bi bili stroški projekta obračunani po običajni prodajni ceni po ceniku."
 
 #. module: project_classification
 #: view:project.project:project_classification.view_project_project_filter
@@ -33,6 +46,43 @@ msgstr "Klasifikacija"
 #: field:project.classification,name:0
 msgid "Classification Name"
 msgstr "Naziv klasifikacije"
+
+#. module: project_classification
+#: help:project.project,remaining_hours_to_invoice:0
+msgid ""
+"Computed using the formula: Expected on timesheets - Total invoiced on "
+"timesheets"
+msgstr "Izračunano po formuli: Pričakovano po časovnici - skupaj obračunano po časovnicah"
+
+#. module: project_classification
+#: help:project.project,real_margin:0
+msgid "Computed using the formula: Invoiced Amount - Total Costs."
+msgstr "Izračunano po formuli: Zaračunani znesek - Skupni stroški"
+
+#. module: project_classification
+#: help:project.project,revenue_per_hour:0
+msgid "Computed using the formula: Invoiced Amount / Total Time"
+msgstr "Izračunano po formuli: Zaračunani znesek / Skupni čas"
+
+#. module: project_classification
+#: help:project.project,remaining_ca:0
+msgid "Computed using the formula: Max Invoice Price - Invoiced Amount."
+msgstr "Izračunano po formuli: Maks. obračunska cena - Zaračunani znesek"
+
+#. module: project_classification
+#: help:project.project,remaining_hours:0
+msgid "Computed using the formula: Maximum Time - Total Worked Time"
+msgstr "Izračunano po formuli: Maksimalen čas - Skupaj delovni čas"
+
+#. module: project_classification
+#: help:project.project,theorical_margin:0
+msgid "Computed using the formula: Theoretical Revenue - Total Costs"
+msgstr "Izračunano po formuli: Teoretični prihodki - Skupni stroški"
+
+#. module: project_classification
+#: help:project.project,real_margin_rate:0
+msgid "Computes using the formula: (Real Margin / Total Costs) * 100."
+msgstr "Izračunano po formuli: (Realna marža / Skupni stroški) * 100"
 
 #. module: project_classification
 #: field:project.classification,create_uid:0
@@ -50,6 +100,44 @@ msgid "Currency"
 msgstr "Valuta"
 
 #. module: project_classification
+#: field:project.project,last_worked_date:0
+msgid "Date of Last Cost/Work"
+msgstr "Datum zadnjega stroška/dela"
+
+#. module: project_classification
+#: field:project.project,last_worked_invoiced_date:0
+msgid "Date of Last Invoiced Cost"
+msgstr "Datum zadnjega obračunanega stroška"
+
+#. module: project_classification
+#: field:project.project,recurring_next_date:0
+msgid "Date of Next Invoice"
+msgstr "Datum naslednjega računa"
+
+#. module: project_classification
+#: help:project.project,last_worked_date:0
+msgid "Date of the latest work done on this account."
+msgstr "Datum zadnjega opravljenega dela na tem kontu."
+
+#. module: project_classification
+#: field:project.classification,display_name:0
+msgid "Display Name"
+msgstr "Prikazni naziv"
+
+#. module: project_classification
+#: field:project.project,hours_qtt_est:0
+msgid "Estimation of Hours to Invoice"
+msgstr "Ocena ur za obračun"
+
+#. module: project_classification
+#: help:project.project,remaining_total:0
+msgid ""
+"Expectation of remaining income for this contract. Computed as the sum of "
+"remaining subtotals which, in turn, are computed as the maximum between "
+"'(Estimation - Invoiced)' and 'To Invoice' amounts"
+msgstr "Pričakovanje preostalih prihodkov po tej pogodbi. Izračunano kot vsota preostalih vmesnih seštevkov, kateri so izračunani kot maksimum med '(Ocena - Zaračunano)' in zneskov 'Za obračun'"
+
+#. module: project_classification
 #: help:project.classification,to_invoice:0
 msgid ""
 "Fill this field if you plan to automatically generate invoices based on the "
@@ -57,9 +145,73 @@ msgid ""
 msgstr "Izpolnite to polje, če nameravate samodejno ustvarjati račune glede na stroške v tej klasifikaciji"
 
 #. module: project_classification
+#: field:project.project,fix_price_invoices:0
+msgid "Fixed Price"
+msgstr "Fiksna cena"
+
+#. module: project_classification
+#: field:project.project,recurring_invoices:0
+msgid "Generate recurring invoices automatically"
+msgstr "Samodejno ustvari ponavljajoče se račune"
+
+#. module: project_classification
 #: field:project.classification,id:0
 msgid "ID"
 msgstr "ID"
+
+#. module: project_classification
+#: help:project.project,ca_to_invoice:0
+msgid ""
+"If invoice from analytic account, the remaining amount you can invoice to "
+"the customer based on the total costs."
+msgstr "Preostali znesek, ki se lahko zaračuna kupcu glede na skupne stroške, pri obračunu iz analitičnega konta."
+
+#. module: project_classification
+#: help:project.project,last_invoice_date:0
+msgid "If invoice from the costs, this is the date of the latest invoiced."
+msgstr "Pri obračunu po stroških je to datum zadnje izdaje računa."
+
+#. module: project_classification
+#: help:project.project,last_worked_invoiced_date:0
+msgid ""
+"If invoice from the costs, this is the date of the latest work or cost that "
+"have been invoiced."
+msgstr "Pri obračunu po stroških je to datum zadnjega opravljenega dela ali zaračunanega stroška."
+
+#. module: project_classification
+#: field:project.project,recurring_invoice_line_ids:0
+msgid "Invoice Lines"
+msgstr "Postavke računa"
+
+#. module: project_classification
+#: help:project.project,recurring_rule_type:0
+msgid "Invoice automatically repeat at specified interval"
+msgstr "Samodejna ponovitev obračuna v določenem intervalu"
+
+#. module: project_classification
+#: field:project.project,amount_invoiced:0 field:project.project,ca_invoiced:0
+msgid "Invoiced Amount"
+msgstr "Zaračunani znesek"
+
+#. module: project_classification
+#: field:project.project,hours_qtt_invoiced:0
+msgid "Invoiced Time"
+msgstr "Zaračunani čas"
+
+#. module: project_classification
+#: help:project.project,amount_max:0
+msgid "Keep empty if this contract is not limited to a total fixed price."
+msgstr "Pustite prazno, če ta pogodba ni omejena na fiksno ceno."
+
+#. module: project_classification
+#: field:project.project,last_invoice_date:0
+msgid "Last Invoice Date"
+msgstr "Datum zadnjega obračuna"
+
+#. module: project_classification
+#: field:project.classification,__last_update:0
+msgid "Last Modified on"
+msgstr "Zadnjič spremenjeno"
 
 #. module: project_classification
 #: field:project.classification,write_uid:0
@@ -70,6 +222,47 @@ msgstr "Zadnjič posodobil"
 #: field:project.classification,write_date:0
 msgid "Last Updated on"
 msgstr "Zadnjič posodobljeno"
+
+#. module: project_classification
+#: field:project.project,amount_max:0
+msgid "Max. Invoice Price"
+msgstr "Maksimalna obračunska cena"
+
+#. module: project_classification
+#: field:project.project,month_ids:0
+msgid "Month"
+msgstr "Mesec"
+
+#. module: project_classification
+#: help:project.project,hours_qtt_non_invoiced:0
+msgid ""
+"Number of time (hours/days) (from journal of type 'general') that can be "
+"invoiced if you invoice based on analytic account."
+msgstr "Časovna vrednost (ur/dni iz dnevnika tipa 'splošno'), ki se jo lahko zaračuna pri obračunu na osnovi analitičnega konta."
+
+#. module: project_classification
+#: help:project.project,hours_qtt_invoiced:0
+msgid ""
+"Number of time (hours/days) that can be invoiced plus those that already "
+"have been invoiced."
+msgstr "Časovna vrednost (ur/dni), ki se jo lahko obračuna poleg že zaračunanega."
+
+#. module: project_classification
+#: help:project.project,hours_quantity:0
+msgid ""
+"Number of time you spent on the analytic account (from timesheet). It "
+"computes quantities on all journal of type 'general'."
+msgstr "Časovna vrednost za čas porabljen na analitičnem kontu (po časovnici). Obdela količine na vseh dnevnikih tipa 'splošno'."
+
+#. module: project_classification
+#: field:project.project,invoice_on_timesheets:0
+msgid "On Timesheets"
+msgstr "Po časovnicah"
+
+#. module: project_classification
+#: field:project.project,is_overdue_quantity:0
+msgid "Overdue Quantity"
+msgstr "Prekoračena količina"
 
 #. module: project_classification
 #: view:project.project:project_classification.edit_project
@@ -88,6 +281,11 @@ msgid "Partner"
 msgstr "Partner"
 
 #. module: project_classification
+#: field:project.project,pricelist_id:0
+msgid "Pricelist"
+msgstr "Cenik"
+
+#. module: project_classification
 #: model:ir.model,name:project_classification.model_project_project
 msgid "Project"
 msgstr "Projekt"
@@ -97,6 +295,11 @@ msgstr "Projekt"
 #: model:ir.ui.menu,name:project_classification.menu_project_classification
 msgid "Project Classification"
 msgstr "Klasifikacija projekta"
+
+#. module: project_classification
+#: field:project.project,child_project_complete_ids:0
+msgid "Project Hierarchy"
+msgstr "Projektna hierarhija"
 
 #. module: project_classification
 #: view:project.project:project_classification.view_account_analytic_account_tree
@@ -127,14 +330,72 @@ msgid "Projects Tree"
 msgstr "Seznam projektov"
 
 #. module: project_classification
+#: field:project.project,real_margin:0
+msgid "Real Margin"
+msgstr "Realna marža"
+
+#. module: project_classification
+#: field:project.project,real_margin_rate:0
+msgid "Real Margin Rate (%)"
+msgstr "Odstotek realne marže (%)"
+
+#. module: project_classification
+#: field:project.project,recurring_rule_type:0
+msgid "Recurrency"
+msgstr "Ponovljivost"
+
+#. module: project_classification
 #: field:project.classification,to_invoice:0
 msgid "Reinvoice Costs"
 msgstr "Zaračunaj stroške"
 
 #. module: project_classification
+#: field:project.project,remaining_ca:0
+msgid "Remaining Revenue"
+msgstr "Preostali prihodki"
+
+#. module: project_classification
+#: field:project.project,fix_price_to_invoice:0
+#: field:project.project,remaining_hours:0
+#: field:project.project,remaining_hours_to_invoice:0
+#: field:project.project,timesheet_ca_invoiced:0
+msgid "Remaining Time"
+msgstr "Preostali čas"
+
+#. module: project_classification
+#: field:project.project,recurring_interval:0
+msgid "Repeat Every"
+msgstr "Ponovi vsakih"
+
+#. module: project_classification
+#: help:project.project,recurring_interval:0
+msgid "Repeat every (Days/Week/Month/Year)"
+msgstr "Ponovi vsakih (dni/tednov/mesecev/let)"
+
+#. module: project_classification
+#: field:project.project,revenue_per_hour:0
+msgid "Revenue per Time (real)"
+msgstr "Prihodki po času (realni)"
+
+#. module: project_classification
 #: field:project.classification,pricelist_id:0
 msgid "Sale Pricelist"
 msgstr "Prodajni cenik"
+
+#. module: project_classification
+#: field:project.project,sla_ids:0
+msgid "Service Level Agreement"
+msgstr "Dogovor o nivoju storitev (SLA)"
+
+#. module: project_classification
+#: help:project.project,fix_price_to_invoice:0
+msgid "Sum of quotations for this contract."
+msgstr "Vsota predračunov po tej pogodbi."
+
+#. module: project_classification
+#: help:project.project,timesheet_ca_invoiced:0
+msgid "Sum of timesheet lines invoiced for this contract."
+msgstr "Vsota zaračunanih postavk časovnice po tej pogodbi."
 
 #. module: project_classification
 #: help:project.classification,project_id:0
@@ -144,8 +405,101 @@ msgid ""
 msgstr "Nadrejeni projekt, ki bo nastavljen ob izbiri te klasifikacije projekta."
 
 #. module: project_classification
+#: help:project.project,pricelist_id:0
+msgid ""
+"The product to invoice is defined on the employee form, the price will be "
+"deducted by this pricelist on the product."
+msgstr "Obračunski proizvod je določen v obrazcu kadra, cena bo določena glede na ta cenik proizvoda."
+
+#. module: project_classification
+#: field:project.project,theorical_margin:0
+msgid "Theoretical Margin"
+msgstr "Teoretična marža"
+
+#. module: project_classification
+#: field:project.project,ca_theorical:0
+msgid "Theoretical Revenue"
+msgstr "Teoretični prihodki"
+
+#. module: project_classification
 #: help:project.project,classification_id:0
 msgid ""
 "This will automatically set the parent project as well as other default "
 "values defined for this kind of project (like pricelist, invoice factor,..)"
 msgstr "To bo samodejno nastavilo nadrejeni projekt kakor tudi druge privzete vrednosti določene za tovrstne projekte (npr. cenik, obračunski faktor, ...)"
+
+#. module: project_classification
+#: field:project.project,to_invoice:0
+msgid "Timesheet Invoicing Ratio"
+msgstr "Obračunska stopnja časovnice"
+
+#. module: project_classification
+#: field:project.project,total_cost:0
+msgid "Total Costs"
+msgstr "Skupni stroški"
+
+#. module: project_classification
+#: field:project.project,est_total:0
+msgid "Total Estimation"
+msgstr "Skupna ocena"
+
+#. module: project_classification
+#: field:project.project,invoiced_total:0
+msgid "Total Invoiced"
+msgstr "Skupaj zaračunano"
+
+#. module: project_classification
+#: field:project.project,remaining_total:0
+msgid "Total Remaining"
+msgstr "Skupaj preostalo"
+
+#. module: project_classification
+#: field:project.project,hours_quantity:0
+msgid "Total Worked Time"
+msgstr "Skupni delovni čas"
+
+#. module: project_classification
+#: help:project.project,ca_invoiced:0
+msgid "Total customer invoiced amount for this account."
+msgstr "Skupaj zaračunano kupcu za ta konto."
+
+#. module: project_classification
+#: help:project.project,amount_invoiced:0
+msgid "Total invoiced"
+msgstr "Skupaj zaračunano"
+
+#. module: project_classification
+#: help:project.project,total_cost:0
+msgid ""
+"Total of costs for this account. It includes real costs (from invoices) and "
+"indirect costs, like time spent on timesheets."
+msgstr "Skupni stroški za ta konto. Vključeni so realni stroški (po računih) in posredni stroški, kot npr. porabljeni čas po časovnicah."
+
+#. module: project_classification
+#: field:project.project,toinvoice_total:0
+msgid "Total to Invoice"
+msgstr "Skupaj za obračun"
+
+#. module: project_classification
+#: field:project.project,ca_to_invoice:0
+msgid "Uninvoiced Amount"
+msgstr "Ne obračunani znesek"
+
+#. module: project_classification
+#: field:project.project,hours_qtt_non_invoiced:0
+msgid "Uninvoiced Time"
+msgstr "Ne obračunani čas"
+
+#. module: project_classification
+#: field:project.project,user_ids:0
+msgid "User"
+msgstr "Uporabnik"
+
+#. module: project_classification
+#: help:project.project,to_invoice:0
+msgid ""
+"You usually invoice 100% of the timesheets. But if you mix fixed price and "
+"timesheet invoicing, you may use another ratio. For instance, if you do a "
+"20% advance invoice (fixed price, based on a sales order), you should "
+"invoice the rest on timesheet with a 80% ratio."
+msgstr "Običajno lahko obračunate 100% časovnic. Če pa mešate fiksno ceno z obračunom po časovnicah, lahko uporabite tudi drugačno odstotno stopnjo. Na primer, če obračunavate 20% avansa (stalna cena glede na prodajni nalog), se preostali del obračuna po časovnici po stopnji 80%."

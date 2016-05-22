@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-31 18:04+0000\n"
-"PO-Revision-Date: 2015-07-23 05:28+0000\n"
+"POT-Creation-Date: 2016-05-19 20:32+0000\n"
+"PO-Revision-Date: 2016-05-19 05:12+0000\n"
 "Last-Translator: Matjaž Mozetič <m.mozetic@matmoz.si>\n"
 "Language-Team: Slovenian (http://www.transifex.com/oca/OCA-project-8-0/language/sl/)\n"
 "MIME-Version: 1.0\n"
@@ -52,6 +52,11 @@ msgstr "Nadrejena kategorija"
 #: model:ir.model,name:project_categ.model_project_project
 msgid "Project"
 msgstr "Projekt"
+
+#. module: project_categ
+#: field:project.project,project_ids:0
+msgid "Projects"
+msgstr "Projekti"
 
 #. module: project_categ
 #: field:project.project,task_categ_id:0

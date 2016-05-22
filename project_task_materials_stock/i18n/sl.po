@@ -3,13 +3,13 @@
 # * project_task_materials_stock
 # 
 # Translators:
-# Matjaž Mozetič <m.mozetic@matmoz.si>, 2015
+# Matjaž Mozetič <m.mozetic@matmoz.si>, 2015-2016
 msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-18 15:57+0000\n"
-"PO-Revision-Date: 2015-10-31 05:16+0000\n"
+"POT-Creation-Date: 2016-05-19 20:32+0000\n"
+"PO-Revision-Date: 2016-05-19 05:12+0000\n"
 "Last-Translator: Matjaž Mozetič <m.mozetic@matmoz.si>\n"
 "Language-Team: Slovenian (http://www.transifex.com/oca/OCA-project-8-0/language/sl/)\n"
 "MIME-Version: 1.0\n"
@@ -24,16 +24,38 @@ msgid "Analytic Line"
 msgstr "Analitična postavka"
 
 #. module: project_task_materials_stock
+#: field:project.task,analytic_line_ids:0
+msgid "Analytic Lines"
+msgstr "Analitične postavke"
+
+#. module: project_task_materials_stock
+#: selection:project.task,stock_state:0
+msgid "Assigned"
+msgstr "Dodeljeno"
+
+#. module: project_task_materials_stock
 #: view:project.task:project_task_materials_stock.view_project_task_form_materials_stock
 msgid "Check Availability"
 msgstr "Preveri razpoložljivost"
 
 #. module: project_task_materials_stock
+#: selection:project.task,stock_state:0
+msgid "Confirmed"
+msgstr "Potrjeno"
+
+#. module: project_task_materials_stock
+#: field:project.task,consume_material:0
 #: field:project.task.type,consume_material:0
 msgid "Consume Material"
 msgstr "Potroši material"
 
 #. module: project_task_materials_stock
+#: selection:project.task,stock_state:0
+msgid "Done"
+msgstr "Opravljeno"
+
+#. module: project_task_materials_stock
+#: help:project.task,consume_material:0
 #: help:project.task.type,consume_material:0
 msgid ""
 "If you mark this check, when a task goes to this state,it will consume the "
@@ -51,6 +73,11 @@ msgid "Materials used"
 msgstr "Uporabljeni material"
 
 #. module: project_task_materials_stock
+#: selection:project.task,stock_state:0
+msgid "Pending"
+msgstr "Na čakanju"
+
+#. module: project_task_materials_stock
 #: view:project.task:project_task_materials_stock.view_project_task_form_materials_stock
 msgid "Products"
 msgstr "Proizvodi"
@@ -62,8 +89,14 @@ msgstr "Premik zaloge"
 
 #. module: project_task_materials_stock
 #: view:project.task:project_task_materials_stock.view_project_task_form_materials_stock
+#: field:project.task,stock_move_ids:0
 msgid "Stock Moves"
 msgstr "Premiki zalog"
+
+#. module: project_task_materials_stock
+#: field:project.task,stock_state:0
+msgid "Stock State"
+msgstr "Stanje zaloge"
 
 #. module: project_task_materials_stock
 #: model:ir.model,name:project_task_materials_stock.model_project_task

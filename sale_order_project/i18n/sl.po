@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-31 18:04+0000\n"
-"PO-Revision-Date: 2015-08-09 16:00+0000\n"
+"POT-Creation-Date: 2016-05-19 20:32+0000\n"
+"PO-Revision-Date: 2016-05-19 05:12+0000\n"
 "Last-Translator: Matjaž Mozetič <m.mozetic@matmoz.si>\n"
 "Language-Team: Slovenian (http://www.transifex.com/oca/OCA-project-8-0/language/sl/)\n"
 "MIME-Version: 1.0\n"
@@ -22,6 +22,11 @@ msgstr ""
 #: view:sale.order:sale_order_project.view_order_form
 msgid "Create Project"
 msgstr "Ustvari projekt"
+
+#. module: sale_order_project
+#: field:sale.order,related_project_id:0
+msgid "Project"
+msgstr "Projekt"
 
 #. module: sale_order_project
 #: model:ir.model,name:sale_order_project.model_sale_order

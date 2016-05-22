@@ -4,11 +4,12 @@
 # 
 # Translators:
 # Daniel Reis, 2015
+# Daniel Reis, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-14 11:29+0000\n"
+"POT-Creation-Date: 2016-05-19 20:32+0000\n"
 "PO-Revision-Date: 2015-10-13 16:48+0000\n"
 "Last-Translator: Daniel Reis\n"
 "Language-Team: Portuguese (Portugal) (http://www.transifex.com/oca/OCA-project-8-0/language/pt_PT/)\n"
@@ -25,6 +26,7 @@ msgstr "Conta Analítica"
 
 #. module: service_desk
 #: field:account.analytic.account,contact_id:0
+#: field:project.project,contact_id:0
 msgid "Contact"
 msgstr "Contato"
 

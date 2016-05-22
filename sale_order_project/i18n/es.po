@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-31 18:04+0000\n"
-"PO-Revision-Date: 2015-08-06 21:49+0000\n"
+"POT-Creation-Date: 2016-05-19 20:32+0000\n"
+"PO-Revision-Date: 2016-05-17 08:09+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Spanish (http://www.transifex.com/oca/OCA-project-8-0/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -21,6 +21,11 @@ msgstr ""
 #: view:sale.order:sale_order_project.view_order_form
 msgid "Create Project"
 msgstr "Crear proyecto"
+
+#. module: sale_order_project
+#: field:sale.order,related_project_id:0
+msgid "Project"
+msgstr "Proyecto"
 
 #. module: sale_order_project
 #: model:ir.model,name:sale_order_project.model_sale_order

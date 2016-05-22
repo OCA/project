@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-17 01:43+0000\n"
-"PO-Revision-Date: 2015-12-16 15:08+0000\n"
+"POT-Creation-Date: 2016-05-19 20:32+0000\n"
+"PO-Revision-Date: 2016-05-17 08:07+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: English (http://www.transifex.com/oca/OCA-project-8-0/language/en/)\n"
 "MIME-Version: 1.0\n"
@@ -18,9 +18,14 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: project_stage_closed
-#: field:project.task.type,closed:0
+#: field:project.task.type,closed:0 field:project.task.type,closed_alias:0
 msgid "Closed"
 msgstr "Closed"
+
+#. module: project_stage_closed
+#: field:project.task.type,closed_alias_visible:0
+msgid "Closed alias visible"
+msgstr "Closed alias visible"
 
 #. module: project_stage_closed
 #: model:ir.model,name:project_stage_closed.model_project_task_type
@@ -28,6 +33,6 @@ msgid "Task Stage"
 msgstr "Task Stage"
 
 #. module: project_stage_closed
-#: help:project.task.type,closed:0
+#: help:project.task.type,closed:0 help:project.task.type,closed_alias:0
 msgid "Tasks in this stage are considered closed."
 msgstr "Tasks in this stage are considered closed."

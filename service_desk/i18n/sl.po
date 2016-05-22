@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-31 18:04+0000\n"
+"POT-Creation-Date: 2016-05-19 20:32+0000\n"
 "PO-Revision-Date: 2015-07-23 05:33+0000\n"
 "Last-Translator: Matjaž Mozetič <m.mozetic@matmoz.si>\n"
 "Language-Team: Slovenian (http://www.transifex.com/oca/OCA-project-8-0/language/sl/)\n"
@@ -25,6 +25,7 @@ msgstr "Analitični konto"
 
 #. module: service_desk
 #: field:account.analytic.account,contact_id:0
+#: field:project.project,contact_id:0
 msgid "Contact"
 msgstr "Stik"
 
