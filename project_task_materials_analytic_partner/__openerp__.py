@@ -19,6 +19,4 @@
         'views/project_view.xml',
     ],
     'installable': True,
-    'autoinstall': True,
-    'images': [],
 }
