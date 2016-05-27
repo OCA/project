@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 
-from openerp import fields, models
+from openerp import api, fields, models
 
 
 class TaskMaterials(models.Model):
@@ -16,8 +16,10 @@ class TaskMaterials(models.Model):
         comodel_name='res.partner', string="Other Partner",
         domain="['|', ('parent_id', '=', False), ('is_company', '=', True)]")
 
+    @api.multi
     def _prepare_analytic_line(self):
         res = super(TaskMaterials, self)._prepare_analytic_line()
+        self.ensure_one()
         res['to_invoice'] = self.to_invoice.id
         analytic_account = (
             getattr(self.task_id, 'analytic_account_id', False) or
