@@ -59,8 +59,9 @@ class MailComposeMessage(models.TransientModel):
                     # only if default_model is business.requirement
                     if context.get('default_model') == 'business.requirement':
                         if context.get('default_res_id'):
-                            br_object = self.pool.get(context.get('default_model'))\
-                                .browse(cr, uid, context['default_res_id'])
+                            br_object = self.pool.get(
+                                context.get('default_model')
+                            ).browse(cr, uid, context['default_res_id'])
                             subject = 'Re: %s-%s' % (
                                 br_object.name, br_object.description)
                             result[field] = subject

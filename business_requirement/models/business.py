@@ -310,8 +310,10 @@ class BusinessRequirement(models.Model):
         partner_ids = set()
         kwargs_partner_ids = kwargs.pop('partner_ids', [])
         for partner_id in kwargs_partner_ids:
-            if isinstance(partner_id, (list, tuple)) and partner_id[0] == 4 and\
-                    len(partner_id) == 2:
+            if isinstance(
+                partner_id,
+                (list, tuple)
+            ) and partner_id[0] == 4 and len(partner_id) == 2:
                 partner_ids.add(partner_id[1])
             if isinstance(partner_id, (list, tuple)) and \
                     partner_id[0] == 6 and len(partner_id) == 3:
@@ -380,9 +382,16 @@ class BusinessRequirement(models.Model):
             processed_list = []
             if message_ids:
                 message = mail_message.browse(
-                    cr, SUPERUSER_ID, message_ids[0], context=context)
-                while (message.parent_id
-                        and message.parent_id.id not in processed_list):
+                    cr,
+                    SUPERUSER_ID,
+                    message_ids[0],
+                    context=context
+                )
+                while (
+                    message.parent_id and (
+                        message.parent_id.id not in processed_list
+                    )
+                ):
                     processed_list.append(message.parent_id.id)
                     message = message.parent_id
                 parent_id = message.id
