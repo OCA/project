@@ -255,14 +255,13 @@ class BusinessRequirement(models.Model):
                     attach them to the related document.
                     Should only be set by Chatter.
             :return int: ID of newly created mail.message
-        ------------------------------ changes start here 2016/03/08
         """
         if context.get('default_model') == 'business.requirement':
             if context.get('default_res_id'):
                 br_object = self.pool.get(context.get('default_model')).browse(
                     cr, uid, context['default_res_id'])
                 subject = 'Re: %s-%s' % (br_object.name, br_object.description)
-        # ---------------------------- changes ends here 2016/03/08
+
         if context is None:
             context = {}
         if attachments is None:
