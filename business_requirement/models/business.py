@@ -143,7 +143,7 @@ class BusinessRequirement(models.Model):
         default=_get_default_company,
     )
 
-    @api.one
+    @api.multi
     @api.onchange('project_id')
     def project_id_change(self):
         if self.project_id and self.project_id.partner_id:
@@ -165,7 +165,7 @@ class BusinessRequirement(models.Model):
             level = _compute_level(br)
             br.level = level
 
-    @api.one
+    @api.multi
     @api.depends('business_requirement_ids')
     def _sub_br_count(self):
         self.sub_br_count = len(self.business_requirement_ids)
@@ -184,41 +184,41 @@ class BusinessRequirement(models.Model):
         ]
         return states
 
-    @api.one
+    @api.multi
     def action_button_confirm(self):
         self.write({'state': 'confirmed'})
         self.confirmed_id = self.env.user
         self.confirmation_date = fields.Datetime.now()
 
-    @api.one
+    @api.multi
     def action_button_back_draft(self):
         self.write({'state': 'draft'})
         self.confirmed_id = self.approved_id = []
         self.confirmation_date = self.approval_date = ''
 
-    @api.one
+    @api.multi
     def action_button_approve(self):
         self.write({'state': 'approved'})
         self.approved_id = self.env.user
         self.approval_date = fields.Datetime.now()
 
-    @api.one
+    @api.multi
     def action_button_customer_approval(self):
         self.write({'state': 'customer_approval'})
 
-    @api.one
+    @api.multi
     def action_button_in_progress(self):
         self.write({'state': 'in_progress'})
 
-    @api.one
+    @api.multi
     def action_button_done(self):
         self.write({'state': 'done'})
 
-    @api.one
+    @api.multi
     def action_button_cancel(self):
         self.write({'state': 'cancel'})
 
-    @api.one
+    @api.multi
     def action_button_drop(self):
         self.write({'state': 'drop'})
 

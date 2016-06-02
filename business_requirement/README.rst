@@ -2,6 +2,7 @@
    :target: https://www.gnu.org/licenses/agpl-3.0-standalone.html
    :alt: License: AGPL-3
 
+
 ====================
 Business Requirement
 ====================
@@ -9,8 +10,7 @@ Business Requirement
 Introduction
 ^^^^^^^^^^^^
 
-This module is part of a set ("Business Requirement") and provides the basic 
-models for business requirement management and project time/cost estimation.
+This module is part of a set ("Business Requirement") and provides the basic models for business requirement management and project time/cost estimation.
 
 |image7|
 

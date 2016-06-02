@@ -13,7 +13,6 @@
         'project',
     ],
     'data': [
-        'data/business_sequence.xml',
         'data/business_data.xml',
         'security/security.xml',
         'security/ir.model.access.csv',
