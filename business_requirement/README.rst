@@ -2,16 +2,15 @@
    :target: https://www.gnu.org/licenses/agpl-3.0-standalone.html
    :alt: License: AGPL-3
 
-
 ====================
 Business Requirement
 ====================
 
-
 Introduction
+^^^^^^^^^^^^
 
-
-This module is part of a set ("Business Requirement") and provides the basic models for business requirement management and project time/cost estimation.
+This module is part of a set ("Business Requirement") and provides the basic 
+models for business requirement management and project time/cost estimation.
 
 |image7|
 
@@ -53,7 +52,7 @@ The following diagram gives a simplified view of the universe:
 
 
 What is a Business Requirement?
-
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A Business requirement (BR) is the expression of a business need by a customer 
 or internal project user. 
@@ -83,7 +82,7 @@ What is the difference between a BR and CRM lead?
 * BR are project and workload estimation oriented
 
 How to use this module?
-
+^^^^^^^^^^^^^^^^^^^^^^^
 
 This module only contains the standard models for business requirement:
 
@@ -107,13 +106,13 @@ Configuration
 =============
 
 Users
-
+^^^^^
 
 * **Business Requirement User**: can create and confirm a BR
 * **Business Requirement Manager**: can create, confirm and approve a BR
 
 Alias and emails
-
+^^^^^^^^^^^^^^^^
 You can setup an alias in Settings/Technical/Email/Alias in order to create 
 business requirements directly from email received at a specific address.
 
@@ -127,7 +126,7 @@ You can start conversation with the followers in the chatter area of the
 BR like in tasks, issue or CRM leads.
 
 Sequences
-
+^^^^^^^^^
 
 Default numbering format: BR123456.
 
@@ -136,7 +135,7 @@ You can modify the default numbering sequence in Settings/Technical/Sequences&Id
 Search for Business Requirement sequence and alter it if necessary.
 
 Tags
-
+^^^^
 
 You can create and assign tags for your business requirements in Business Requirements/Configuration/Bus. Req. Category
 
@@ -148,7 +147,7 @@ You can create and assign tags for your business requirements in Business Requir
 
 
 Master project
-
+^^^^^^^^^^^^^^
 
 You can define a master project linked to the business requirement.
 
@@ -159,7 +158,7 @@ Usage
 =====
 
 Simple BR
-
+^^^^^^^^^
 1. Define the header information
 
 * Master Project (Partner is the one related to the master project)
