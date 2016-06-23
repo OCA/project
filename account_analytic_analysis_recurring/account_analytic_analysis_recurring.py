@@ -66,7 +66,7 @@ class AccountAnalyticInvoiceLine(orm.Model):
             self, cr, uid, ids, product, uom_id, qty=0, name='',
             partner_id=False, price_unit=False, pricelist_id=False,
             company_id=None, context=None):
-        context = context or {}
+        context = dict(context or {})
         uom_obj = self.pool.get('product.uom')
         company_id = company_id or False
         context.update(
