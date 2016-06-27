@@ -166,7 +166,10 @@ class AccountAnalyticAccount(orm.Model):
         contract = line.analytic_account_id
         fpos = contract.partner_id.property_account_position or False
         account_id = fpos_obj.map_account(cr, uid, fpos, account_id)
-        taxes = product.taxes_id or False
+        taxes = [
+            x for x in product.taxes_id if
+            x.company_id.id == context['force_company']
+        ]
         tax_id = fpos_obj.map_tax(cr, uid, fpos, taxes)
         if 'old_date' in context:
             lang_ids = lang_obj.search(
