@@ -263,7 +263,7 @@ class AccountAnalyticAccount(orm.Model):
                     {'state': 'overdue'},
                     context=context
                 )
-                break
+                continue
             next_date = datetime.datetime.strptime(
                 contract.recurring_next_date or current_date, "%Y-%m-%d")
             interval = contract.recurring_interval
