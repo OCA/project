@@ -1,0 +1,71 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * service_desk_issue
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: project (8.0)\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-05-22 08:10+0000\n"
+"PO-Revision-Date: 2015-07-21 19:19+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: Croatian (http://www.transifex.com/oca/OCA-project-8-0/language/hr/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: hr\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+
+#. module: service_desk_issue
+#: field:project.issue,analytic_partner_id:0
+msgid "Analytic Account Partner"
+msgstr ""
+
+#. module: service_desk_issue
+#: view:project.issue:service_desk_issue.view_project_issue_filter_sdesk
+msgid "Contract"
+msgstr ""
+
+#. module: service_desk_issue
+#: view:project.issue:service_desk_issue.view_project_issue_filter_sdesk
+msgid "Contract Customer"
+msgstr ""
+
+#. module: service_desk_issue
+#: field:project.issue,analytic_account_id:0
+msgid "Contract/Analytic"
+msgstr "Ugovor/Analitika"
+
+#. module: service_desk_issue
+#: field:project.issue,location_id:0
+msgid "Location"
+msgstr "Lokacija"
+
+#. module: service_desk_issue
+#: field:project.issue,project_code:0
+msgid "Project Code"
+msgstr "Šifra projekta"
+
+#. module: service_desk_issue
+#: model:ir.model,name:service_desk_issue.model_project_issue
+msgid "Project Issue"
+msgstr ""
+
+#. module: service_desk_issue
+#: field:project.issue,use_analytic_account:0
+msgid "Use Analytic Account"
+msgstr "Koristi analitički konto"
+
+#. module: service_desk_issue
+#: view:project.issue:service_desk_issue.project_issue_form_view_sdesk
+msgid "onchange_project(project_id)"
+msgstr "onchange_project(project_id)"
+
+#. module: service_desk_issue
+#: view:project.issue:service_desk_issue.project_issue_form_view_sdesk
+msgid ""
+"{'default_project_id': project_id, 'default_name': name, "
+"'default_analytic_account_id': analytic_account_id, 'default_location_id': "
+"location_id}"
+msgstr ""
