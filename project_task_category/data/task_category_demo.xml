@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="project_task_category_demo_1" model="task.category">
+            <field name="name">DEV</field>
+            <field name="description">Development</field>
+        </record>
+        <record id="project_task_category_demo_2" model="task.category">
+            <field name="name">FS</field>
+            <field name="description">Functional specification</field>
+        </record>
+        <record id="project_task_category_demo_3" model="task.category">
+            <field name="name">PM</field>
+            <field name="description">Project managment</field>
+        </record>
+        <record id="project_task_category_demo_4" model="task.category">
+            <field name="name">QA</field>
+            <field name="description">Quality control</field>
+        </record>
+        <record id="project_task_category_demo_5" model="task.category">
+            <field name="name">SAL</field>
+            <field name="description">Sales</field>
+        </record>
+        <record id="project_task_category_demo_6" model="task.category">
+            <field name="name">TR</field>
+            <field name="description">Training</field>
+        </record>
+        <record id="project_task_category_demo_7" model="task.category">
+            <field name="name">TS</field>
+            <field name="description">Technical specification</field>
+        </record>
+    </data>
+</openerp>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_task_category_form" model="ir.ui.view">
+            <field name="name">task.category.form</field>
+            <field name="model">task.category</field>
+            <field eval="1" name="priority"/>
+            <field name="arch" type="xml">
+                <form >
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="active"/>
+                        </group>
+                        <group>
+                            <field name="description"/>
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record id="view_category_search_form" model="ir.ui.view">
+            <field name="name">task.category.form</field>
+            <field name="model">task.category</field>
+            <field name="arch" type="xml">
+                <search string="Category">
+                    <field name="name"/>
+                    <field name="description"/>
+                    <group expand="0" string="Group By">
+                    <filter string="Category" context="{'group_by':'name'}"/>
+                </group>
+                </search>
+            </field>
+        </record>
+        <act_window id="action_type_category"
+        name="Task category"
+        res_model="task.category"
+        view_mode="tree,form"/>
+        <menuitem id="menu_category_task"
+            name="Task Category"
+            sequence="20"
+            parent="base.menu_definitions"
+            action="action_type_category"/>
+    </data>
+</openerp>
