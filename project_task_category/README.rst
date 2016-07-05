@@ -8,6 +8,8 @@ Project Task Configurable Category
 
 This module extends the functionality of Project to add a category on the task and support filter and group.
 
+The difference with tag is that this category is m2o and can be used for filtering and more important grouping or reporting.
+
 Installation
 ============
 
@@ -31,6 +33,7 @@ Contributors
 
 * Rona Lin <rona.lin@elico-corp.com>
 * Victor-M Martin Torres <victor.martin@elico-corp.com>
+* Eric Caudal <eric.caudal@elico-corp.com>
 
 Maintainer
 ----------
