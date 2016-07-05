@@ -32,6 +32,16 @@
                 </search>
             </field>
         </record>
+        <record id="view_category_tree" model="ir.ui.view">
+            <field name="name">task.category.tree</field>
+            <field name="model">task.category</field>
+            <field name="arch" type="xml">
+                <tree string="Categories">
+                    <field name="sequence" invisible="1"/>
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
         <act_window id="action_type_category"
         name="Task category"
         res_model="task.category"

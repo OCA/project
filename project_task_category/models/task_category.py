@@ -11,8 +11,9 @@ class TaskCategory(models.Model):
     name = fields.Char('Name', required=True, translate=True, select=True)
     description = fields.Char('Description', translate=True)
     active = fields.Boolean('Active', default=True)
+    sequence = fields.Integer('Sequence')
 
-    _order = 'name'
+    _order = 'sequence, name'
 
     _sql_constraints = [
         ('name_uniq', 'unique (name)',
