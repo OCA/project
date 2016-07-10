@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-19 20:32+0000\n"
-"PO-Revision-Date: 2016-05-19 05:12+0000\n"
+"POT-Creation-Date: 2016-07-04 17:20+0000\n"
+"PO-Revision-Date: 2016-07-05 10:39+0000\n"
 "Last-Translator: Matjaž Mozetič <m.mozetic@matmoz.si>\n"
 "Language-Team: Slovenian (http://www.transifex.com/oca/OCA-project-8-0/language/sl/)\n"
 "MIME-Version: 1.0\n"
@@ -122,3 +122,11 @@ msgstr "Premestitev materialov"
 #: field:project.task.materials,product_uom:0
 msgid "Unit of Measure"
 msgstr "Enota mere"
+
+#. module: project_task_materials_stock
+#: code:addons/project_task_materials_stock/models/project.py:89
+#, python-format
+msgid ""
+"You can't move to a not consume stage if there are already invoiced analytic"
+" lines"
+msgstr "Premik v ne-potrošno stopnjo ni mogoč, ko že obstajajo zaračunane analitične postavke"
