@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_project_task_delegate" model="ir.ui.view">
+            <field name="name">Project Task Delegate</field>
+            <field name="model">project.task.delegate</field>
+            <field name="arch" type="xml">
+                <form string="Project Task Delegation for">
+                    <label for="project_id" string="Project" class="oe_inline">
+                    <field name="project_id" readonly="1"/></label>
+                    <group>
+                        <group>
+                            <separator string="Delegate Task" colspan="2"/>
+                            <field name="name"/>
+                            <field name="planned_hours"/>
+                            <field name="user_id"
+                                   context="{'default_groups_ref': ['base.group_user', 'base.group_partner_manager', 'project.group_project_user']}"/>
+                        </group>
+                        <group>
+                            <separator string="Validation Task" colspan="2"/>
+                            <field name="prefix" string="Validation Task Title"/>
+                            <field name="planned_hours_me"/>
+                            <field name="state"/>
+                        </group>
+                        <separator string="Delegate Task Description" colspan="4"/>
+                        <field name="new_task_description" colspan="4" nolabel="1" widget="html"/>
+                    </group>
+                    <footer>
+                        <button name="delegate" string="Delegate" type="object" class="oe_highlight"/>
+                        or
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_project_task_delegate" model="ir.actions.act_window">
+            <field name="name">Project Task Delegate</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">project.task.delegate</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_project_task_delegate"/>
+            <field name="target">new</field>
+        </record>
+
+        <record id="view_task_kanban" model="ir.ui.view">
+            <field name="name">project.task.form</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_kanban"/>
+            <field name="arch" type="xml">
+                <field name="priority" position="after">
+                    <field name="task_count_delegate" attrs="{'invisible': [('parent_ids','=', False)]}"/>
+                </field>
+                <xpath expr="//div[@class='oe_kanban_content']//field[@name='project_id']" position="after">
+                    <t t-if="record.task_count_delegate.raw_value > 0">
+                        <div groups="project.group_delegate_task">
+                            Task Delegate
+                            <field name="task_count_delegate"/>
+                        </div>
+                    </t>
+                </xpath>
+
+            </field>
+        </record>
+
+        <record id="view_task_form" model="ir.ui.view">
+            <field name="name">project.task.form</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <field name="description" position="attributes">
+                    <attribute name="widget">html</attribute>
+                </field>
+                <field name="planned_hours" position="after">
+                    <field name="task_count_delegate" groups="project.group_delegate_task"/>
+                </field>
+                <xpath expr="//header" position="replace">
+                    <header>
+                        <button name="%(action_project_task_delegate)d" string="Delegate" type="action"
+                                groups="project.group_delegate_task" class="oe_highlight"/>
+                        <field name="stage_id" widget="statusbar" clickable="True"
+                               options="{'fold_field': 'fold'}"/>
+
+                    </header>
+                </xpath>
+                <xpath expr="//notebook" position="inside">
+                    <page string="Delegation" groups="project.group_delegate_task">
+                        <separator string="Parent Tasks"/>
+                        <field name="parent_ids">
+                            <tree string="Parent Tasks">
+                                <field name="name"/>
+                                <field name="user_id"/>
+                                <field name="stage_id"/>
+                                <field name="effective_hours" widget="float_time"/>
+                                <field name="remaining_hours" widget="float_time"/>
+                                <field name="date_deadline"/>
+                                <field name="progress" widget="progressbar"/>
+                            </tree>
+                        </field>
+                        <separator string="Delegated tasks"/>
+                        <field name="child_ids">
+                            <tree string="Delegated tasks">
+                                <field name="name"/>
+                                <field name="user_id"/>
+                                <field name="stage_id"/>
+                                <field name="effective_hours" widget="float_time"/>
+                                <field name="remaining_hours" widget="float_time"/>
+                                <field name="date_deadline"/>
+                                <field name="progress" widget="progressbar"/>
+                            </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_task_search_form" model="ir.ui.view">
+            <field name="name">project.task.search.form.inh</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_search_form"/>
+            <field name="arch" type="xml">
+                <field name="partner_id" position="after">
+                    <field name="task_count_delegate" filter_domain="[('task_count_delegate', '>', self)]"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="project.group_delegate_task" model="res.groups">
+            <field name="name">Task Delegator</field>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        </record>
+
+        <record id="project.group_project_manager" model="res.groups">
+            <field name="implied_ids" eval="[(4, ref('project.group_delegate_task'))]"/>
+        </record>
+    </data>
+</openerp>
