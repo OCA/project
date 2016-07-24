@@ -10,9 +10,9 @@
             <field name="interval_type">days</field>
             <field name="numbercall">-1</field>
             <field name="doall" eval="False"/>
-            <field name="model" eval="'task.alert'"/>
-            <field name="function" eval="'run'"/>
-            <field name="args" eval="'(False,)'"/>
+            <field name="model" eval="'project.task.alert'"/>
+            <field name="function" eval="'run_task_alerts'"/>
+            <field name="args" eval="'()'"/>
         </record>
 
     </data>

@@ -16,8 +16,9 @@
     ],
     'data': [
         'security/ir.model.access.csv',
-        'views/task_alert.xml',
+        'views/project_task_alert.xml',
         'data/task_alert_cron.xml',
+        'menu_items.xml',
     ],
     'installable': True,
 }

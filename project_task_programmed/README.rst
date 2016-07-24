@@ -2,9 +2,9 @@
    :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
    :alt: License: AGPL-3
 
-=====================
-Task Reminder Planner
-=====================
+========================
+Task Reminder Programmer
+========================
 
 Create automatically tasks as a reminder for any document (model) based on a date field.
 The module is meant to remind (for example) a deadline by creating a task instead of an event.
@@ -44,9 +44,12 @@ To use this functionality, you need to:
 
 #. Create a project to which the new tasks will be related.
 #. Go to the Task Alerts Configuration (Project > Configuration Task Alerts) and create a new record.
-#. Add a name, a description of the task, who the task will be assigned to...
+#. Add a name, a description of the task, who the task will be assigned to, etc...
 
 The cron job will do the rest.
+
+If you want to create the tasks manually, click on the button "Create Alerts"
+in the Task Alerts Configuration form.
 
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
