@@ -49,7 +49,8 @@ To use this functionality, you need to:
 The cron job will do the rest.
 
 If you want to create the tasks manually, click on the button "Create Alerts"
-in the Task Alerts Configuration form.
+in the Task Alerts Configuration form. This functionality is only
+available for group Technical Features.
 
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
@@ -60,9 +61,7 @@ in the Task Alerts Configuration form.
 Known issues / Roadmap
 ======================
 
-To be done:
-#. Port the entire code to new api
-#. Add unit tests
+
 
 Bug Tracker
 ===========
