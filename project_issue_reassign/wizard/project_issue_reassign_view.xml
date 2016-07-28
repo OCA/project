@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_project_issue_reassign" model="ir.ui.view">
+            <field name="name">Reassign Project Issue</field>
+            <field name="model">project.issue.reassign</field>
+            <field name="arch" type="xml">
+
+                <form string="Reassign Project Issue" version="7.0">
+                    <group>
+                        <field name="user_id"/>
+                        <field name="project_id"/>
+                    </group>
+                    <footer>
+                         <button name="reassign" string="_Reassign" type="object" class="oe_highlight"/>
+                         or
+                         <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+
+            </field>
+        </record>
+
+        <!-- action to call from Issue form button -->
+        <record id="action_project_issue_reassign" model="ir.actions.act_window">
+            <field name="name">Reassign Project Issue</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">project.issue.reassign</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_project_issue_reassign"/>
+            <field name="target">new</field>
+        </record>
+
+        <!-- wizard action on Issue context menu -->
+        <act_window id="issue_reassign_wizard_action"
+            name="Reassign Issues"
+            src_model="project.issue"
+            res_model="project.issue.reassign"
+            view_type="form" view_mode="form"
+            key2="client_action_multi" target="new"
+            groups="project.group_project_user"/>
+
+    </data>
+</openerp>
