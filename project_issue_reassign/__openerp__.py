@@ -23,6 +23,7 @@
     'version': '1.1',
     "category": "Project Management",
     'author': 'Daniel Reis, Odoo Community Association (OCA)',
+    'license': 'AGPL-3',
     'website': 'https://github.com/OCA/project-service',
     'depends': [
         'project_issue',
