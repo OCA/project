@@ -28,6 +28,7 @@ addon | version | summary
 [project_gtd](project_gtd/) | 8.0.2.0.0 | Personal Tasks, Contexts, Timeboxes
 [project_issue_baseuser](project_issue_baseuser/) | 8.0.1.0.0 | Extend Project user roles to support more complex use cases
 [project_issue_code](project_issue_code/) | 8.0.1.0.0 | Adding Field Code For Project Issue
+[project_issue_reassign](project_issue_reassign/) | 1.1 | Reassign Issues to other Responsibles and Projects
 [project_issue_task](project_issue_task/) | 8.0.1.1.0 | Use Tasks to support Issue resolution reports
 [project_model_to_task](project_model_to_task/) | 8.0.0.5.0 | Project Model to Task
 [project_recalculate](project_recalculate/) | 8.0.1.0.0 | Project Recalculate
