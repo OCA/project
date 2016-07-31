@@ -3,19 +3,19 @@
 # * project_task_materials_analytic_partner
 # 
 # Translators:
-# OCA Transbot <transbot@odoo-community.org>, 2016
+# Juan González <bifomania@protonmail.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-10-17 13:09+0000\n"
 "PO-Revision-Date: 2016-10-17 13:09+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2016\n"
-"Language-Team: Spanish (https://www.transifex.com/oca/teams/23907/es/)\n"
+"Last-Translator: Juan González <bifomania@protonmail.com>, 2016\n"
+"Language-Team: Spanish (Mexico) (https://www.transifex.com/oca/teams/23907/es_MX/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: es\n"
+"Language: es_MX\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: project_task_materials_analytic_partner
@@ -26,9 +26,9 @@ msgstr ""
 #. module: project_task_materials_analytic_partner
 #: field:project.task.materials,other_partner_id:0
 msgid "Other Partner"
-msgstr "Otra empresa"
+msgstr "Otro compañero"
 
 #. module: project_task_materials_analytic_partner
 #: model:ir.model,name:project_task_materials_analytic_partner.model_project_task_materials
 msgid "Task Materials Used"
-msgstr "Materiales usados en tarea"
+msgstr ""
