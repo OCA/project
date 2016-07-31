@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-05 19:53+0000\n"
+"POT-Creation-Date: 2016-07-29 02:49+0000\n"
 "PO-Revision-Date: 2015-10-05 12:33+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: Spanish (http://www.transifex.com/oca/OCA-project-8-0/language/es/)\n"
@@ -20,7 +20,7 @@ msgstr ""
 #. module: project_timesheet_analytic_partner
 #: model:ir.model,name:project_timesheet_analytic_partner.model_project_task_work
 msgid "Project Task Work"
-msgstr ""
+msgstr "Trabajo tarea proyecto"
 
 #. module: project_timesheet_analytic_partner
 #: model:ir.model,name:project_timesheet_analytic_partner.model_project_task
