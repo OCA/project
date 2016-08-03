@@ -11,3 +11,4 @@ class ProjectTask(models.Model):
     alert_model_name = fields.Char('Alert Model Name')
     alert_res_id = fields.Integer('Alert Resource ID')
     alert_field_name = fields.Char('Alert Date Field Name')
+    alert_to_date = fields.Date('Alert Date Limit')

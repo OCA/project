@@ -2,6 +2,8 @@
 # © 2016 ONESTEiN BV (<http://www.onestein.eu>)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
+from datetime import date
+from dateutil.relativedelta import relativedelta
 from openerp.tests.common import TransactionCase
 
 
@@ -15,11 +17,11 @@ class TestProjectTaskCreateAlerts(TransactionCase):
         })
         self.partner1 = self.env['res.partner'].create({
             'name': 'Partner Test1',
-            'date': '2016-07-24',
+            'date': str(date.today() + relativedelta(days=1)),
         })
         self.partner2 = self.env['res.partner'].create({
             'name': 'Partner Test1',
-            'date': '2016-07-29',
+            'date': str(date.today() + relativedelta(days=8)),
         })
         self.date_field_id = self.env.ref('base.field_res_partner_date').id
         self.task_alert1 = self.env['project.task.alert'].create({

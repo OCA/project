@@ -43,7 +43,7 @@ Usage
 To use this functionality, you need to:
 
 #. Create a project to which the new tasks will be related.
-#. Go to the Task Alerts Configuration (Project > Configuration Task Alerts) and create a new record.
+#. Go to the Task Alerts Configuration (Project > Configuration > Task Alerts) and create a new record.
 #. Add a name, a description of the task, who the task will be assigned to, etc...
 
 The cron job will do the rest.

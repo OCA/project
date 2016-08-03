@@ -2,7 +2,7 @@
 # © 2016 ONESTEiN BV (<http://www.onestein.eu>)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from datetime import timedelta
+from datetime import date, timedelta
 from openerp import models, fields, api
 
 
@@ -34,7 +34,7 @@ class ProjectTaskAlert(models.Model):
         help="The use of placeholders is allowed format "
              "like %(fieldname)s is used. Example: %(name)s %(description)s"
     )
-    last_run = fields.Datetime("Last run", default=fields.Datetime.now())
+    last_run = fields.Date("Last run", default=fields.Date.today())
     user_id = fields.Many2one("res.users", string="Assigned to")
     task_description = fields.Char(
         string="Task Description",
@@ -55,25 +55,37 @@ class ProjectTaskAlert(models.Model):
     def create_task_alerts(self):
         for task_alert in self:
             days_delta = timedelta(days=task_alert.days_delta)
-            to_date = fields.Datetime.now() + days_delta
+            to_date = str(date.today() + days_delta)
+            last_run = task_alert.last_run or fields.Date.today()
+            task_alert_date = task_alert.date_field_id.name
             args = [
-                (task_alert.date_field_id.name, '<=', to_date),
-                (task_alert.date_field_id.name, '!=', False)
+                (task_alert_date, '!=', False),
+                (task_alert_date, '<=', to_date),
+                (task_alert_date, '>=', last_run),
             ]
-            last_run = task_alert.last_run or fields.Datetime.now()
-            args.append(
-                (task_alert.date_field_id.name, '>=', last_run)
-            )
             model_name = task_alert.date_field_id.model_id.model
             rec_ids = self.env[model_name].search(args)
             for rec in rec_ids:
                 # Check if the task has already been created
-                if self.env['project.task'].search([
+                ref_date = rec[task_alert.date_field_id.name]
+                prev_tasks = self.env['project.task'].search([
                     ('alert_res_id', '=', rec.id),
                     ('alert_model_name', '=', rec._name),
-                    ('alert_field_name', '=', task_alert.date_field_id.name)
-                ]):
+                    ('alert_field_name', '=', task_alert.date_field_id.name),
+                    ('alert_to_date', '<=', to_date),
+                ])
+                to_continue = False
+                for prev_task in prev_tasks:
+                    prev_to_date = prev_task.alert_to_date
+                    if prev_to_date >= to_date:
+                        to_continue = True
+                        break
+                    elif ref_date <= prev_to_date:
+                        to_continue = True
+                        break
+                if to_continue:
                     continue
+
                 name = self._merge_placeholders(
                     task_alert.name, rec)
                 description = ''
@@ -89,9 +101,10 @@ class ProjectTaskAlert(models.Model):
                     'alert_model_name': rec._name,
                     'alert_res_id': rec.id,
                     'alert_field_name': task_alert.date_field_id.name,
+                    'alert_to_date': to_date,
                 }
                 self.env['project.task'].create(task_data)
-            task_alert.last_run = fields.Datetime.now()
+            task_alert.last_run = fields.Date.today()
 
     @api.model
     def run_task_alerts(self):
