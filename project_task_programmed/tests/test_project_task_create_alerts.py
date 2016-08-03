@@ -23,14 +23,14 @@ class TestProjectTaskCreateAlerts(TransactionCase):
         })
         self.date_field_id = self.env.ref('base.field_res_partner_date').id
         self.task_alert1 = self.env['project.task.alert'].create({
-            'task_name': 'Task Alert Test1',
+            'name': 'Task Alert Test1',
             'project_id': self.project.id,
             'days_delta': 3,
             'task_description': 'Description of Task Alert1',
             'date_field_id': self.date_field_id,
         })
         self.task_alert2 = self.env['project.task.alert'].create({
-            'task_name': 'Task Alert Test2',
+            'name': 'Task Alert Test2',
             'project_id': self.project.id,
             'days_delta': 8,
             'task_description': 'Description of Task Alert2',
