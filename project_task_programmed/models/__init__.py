@@ -4,3 +4,4 @@
 
 from . import project_task
 from . import project_task_alert
+from . import ir_model_fields

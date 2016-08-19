@@ -102,6 +102,7 @@ class ProjectTaskAlert(models.Model):
                     'alert_res_id': rec.id,
                     'alert_field_name': task_alert.date_field_id.name,
                     'alert_to_date': to_date,
+                    'alert_origin_id': task_alert.id,
                 }
                 self.env['project.task'].create(task_data)
             task_alert.last_run = fields.Date.today()

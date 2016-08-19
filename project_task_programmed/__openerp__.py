@@ -17,6 +17,7 @@
     'data': [
         'security/ir.model.access.csv',
         'views/project_task_alert.xml',
+        'views/project_task.xml',
         'data/task_alert_cron.xml',
         'menu_items.xml',
     ],
