@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-22 08:10+0000\n"
-"PO-Revision-Date: 2016-06-14 10:58+0000\n"
+"POT-Creation-Date: 2016-08-15 21:42+0000\n"
+"PO-Revision-Date: 2016-08-19 11:36+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Croatian (http://www.transifex.com/oca/OCA-project-8-0/language/hr/)\n"
 "MIME-Version: 1.0\n"
@@ -320,7 +320,7 @@ msgstr ""
 #. module: project_classification
 #: view:project.project:project_classification.view_account_analytic_account_tree
 msgid "Projects"
-msgstr ""
+msgstr "Projekti"
 
 #. module: project_classification
 #: model:ir.actions.act_window,name:project_classification.action_project_account_tree2
