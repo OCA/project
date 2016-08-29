@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-04 17:05+0000\n"
-"PO-Revision-Date: 2015-10-04 17:07+0000\n"
-"Last-Translator: <>\n"
+"POT-Creation-Date: 2016-10-17 13:09+0000\n"
+"PO-Revision-Date: 2016-11-25 14:55+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Polish (http://www.transifex.com/oca/OCA-project-8-0/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,6 +29,7 @@ msgstr ""
 
 #. module: project_recalculate
 #: field:project.project,calculation_type:0
+#: field:project.recalculate.wizard,calculation_type:0
 msgid "Calculation type"
 msgstr ""
 
@@ -67,12 +68,12 @@ msgstr ""
 #. module: project_recalculate
 #: field:project.recalculate.wizard,create_uid:0
 msgid "Created by"
-msgstr ""
+msgstr "Utworzone przez"
 
 #. module: project_recalculate
 #: field:project.recalculate.wizard,create_date:0
 msgid "Created on"
-msgstr ""
+msgstr "Utworzono"
 
 #. module: project_recalculate
 #: selection:project.project,calculation_type:0
@@ -88,6 +89,11 @@ msgstr ""
 #: view:project.recalculate.wizard:project_recalculate.wizard_project_recalculate_form
 msgid "Date reference"
 msgstr ""
+
+#. module: project_recalculate
+#: field:project.recalculate.wizard,display_name:0
+msgid "Display Name"
+msgstr "Wyświetlana nazwa "
 
 #. module: project_recalculate
 #: code:addons/project_recalculate/models/project_task.py:181
@@ -118,6 +124,7 @@ msgstr ""
 
 #. module: project_recalculate
 #: help:project.project,calculation_type:0
+#: help:project.recalculate.wizard,calculation_type:0
 msgid ""
 "How to calculate tasks, with date start or date end references. If not set, "
 "\"Recalculate project\" button is disabled."
@@ -126,9 +133,10 @@ msgstr ""
 #. module: project_recalculate
 #: field:project.recalculate.wizard,id:0
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_recalculate
+#: help:project.task,include_in_recalculate:0
 #: help:project.task.type,include_in_recalculate:0
 msgid ""
 "If you mark this check, tasks that are in this stage will be selectable for "
@@ -136,19 +144,25 @@ msgid ""
 msgstr ""
 
 #. module: project_recalculate
+#: field:project.task,include_in_recalculate:0
 #: field:project.task.type,include_in_recalculate:0
 msgid "Include in project recalculate"
 msgstr ""
 
 #. module: project_recalculate
+#: field:project.recalculate.wizard,__last_update:0
+msgid "Last Modified on"
+msgstr "Ostatnio modyfikowano"
+
+#. module: project_recalculate
 #: field:project.recalculate.wizard,write_uid:0
 msgid "Last Updated by"
-msgstr ""
+msgstr "Ostatnio modyfikowane przez"
 
 #. module: project_recalculate
 #: field:project.recalculate.wizard,write_date:0
 msgid "Last Updated on"
-msgstr ""
+msgstr "Ostatnia zmiana"
 
 #. module: project_recalculate
 #: model:ir.model,name:project_recalculate.model_project_project
