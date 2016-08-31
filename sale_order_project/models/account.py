@@ -2,10 +2,8 @@
 ###############################################################################
 #
 #   Module for Odoo
-#   Copyright (C) 2014 Akretion (http://www.akretion.com).
-#   Copyright (C) 2010-2013 Akretion LDTA (<http://www.akretion.com>)
-#   @author Sébastien BEAU <sebastien.beau@akretion.com>
-#   @author Benoît GUILLOT <benoit.guillot@akretion.com>
+#   Copyright (C) 2016 Didotech srl (http://www.didotech.com).
+#   @author Andrei Levin <andrei.levin@didotech.com>
 #
 #   This program is free software: you can redistribute it and/or modify
 #   it under the terms of the GNU Affero General Public License as
@@ -22,6 +20,10 @@
 #
 ###############################################################################
 
-from . import sale
-from . import account
-from . import project
+from openerp import api, fields, models, _
+
+
+class AccountAnalyticAccount(models.Model):
+    _inherit = 'account.analytic.account'
+
+    sale_order_ids = fields.One2many('sale.order', 'project_id', string=_('Sale Orders'))

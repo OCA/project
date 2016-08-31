@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="view_project_sale_order_select_form" model="ir.ui.view">
+            <field name="name">view_project_sale_order_select_form</field>
+            <field name="model">project.order.select</field>
+            <field name="arch" type="xml">
+                <form>
+                    <field name="project_id" invisible="True" />
+                    <field name="partner_id" invisible="True" />
+                    <field name="sale_order_id" widget="selection"
+                           domain="[('project_id', '=', False), ('partner_id', '=', partner_id)]"/>
+                    <group>
+
+                        <button name="action_connect_sale_order" type="object"
+                                string="Connect Sale Order"
+                                groups="project.group_project_user" />
+                    </group>
+
+                </form>
+            </field>
+        </record>
+
+    </data>
+</openerp>

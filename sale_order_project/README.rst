@@ -4,9 +4,12 @@
 Sale Order Project
 ==================
 
-This module is a base module that give the possibility to create a project
+This module is a base module that give the possibility to create a Project
 from a quotation, if a contract is set with use_tasks checked it will show
 the related project.
+
+It is possible to connect a Project to already existent Sale Order.
+Connected Sale Orders are shown in a tab inside a Project
 
 
 Bug Tracker
@@ -27,6 +30,7 @@ Contributors
 * Sébastien BEAU <sebastien.beau@akretion.com>
 * Benoît GUILLOT <benoit.guillot@akretion.com>
 * Oihane Crucelaegui <oihanecrucelaegi@avanzosc.es>
+* Andrei Levin <andrei.levin@didotech.com>
 
 
 Maintainer

@@ -23,12 +23,13 @@
 
 {
     'name': 'Sale Order Project',
-    'version': '8.0.1.0.0',
+    'version': '8.0.1.1.0',
     'category': 'Generic Modules/Others',
     'license': 'AGPL-3',
     'author': 'Akretion, '
               'AvanzOSC, '
               'Serv. Tecnol. Avanzados - Pedro M. Baeza, '
+              'Didotech srl'
               'Odoo Community Association (OCA)',
     'website': 'http://www.akretion.com/',
     'depends': [
@@ -37,6 +38,8 @@
     ],
     'data': [
         'views/sale_view.xml',
+        'views/project_view.xml',
+        'wizard/order_select_view.xml'
     ],
     'installable': True,
 }
