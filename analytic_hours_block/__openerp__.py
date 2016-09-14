@@ -32,9 +32,9 @@ to follow for example the user support contracts.
 This means, you sell a product of type "hours block"
 then you input the spent hours on the hours block and
 you can track and follow how much has been used.
-
- """,
+""",
     "author": "Camptocamp,Odoo Community Association (OCA)",
+    "maintainer": "Camptocamp - Acsone SA/NV",
     "license": 'AGPL-3',
     "website": "http://www.camptocamp.com",
     "depends": [
@@ -52,6 +52,9 @@ you can track and follow how much has been used.
         "report.xml",
         "security/hours_block_security.xml",
         "security/ir.model.access.csv",
+    ],
+    "demo": [
+        "hours_block_demo.xml",
     ],
     "active": False,
     "installable": True
