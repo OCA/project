@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-19 20:32+0000\n"
-"PO-Revision-Date: 2016-05-17 08:04+0000\n"
+"POT-Creation-Date: 2016-09-02 14:57+0000\n"
+"PO-Revision-Date: 2016-09-16 21:46+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: French (http://www.transifex.com/oca/OCA-project-8-0/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -121,7 +121,7 @@ msgstr ""
 #. module: project_classification
 #: field:project.classification,display_name:0
 msgid "Display Name"
-msgstr ""
+msgstr "Nom à afficher"
 
 #. module: project_classification
 #: field:project.project,hours_qtt_est:0
@@ -210,7 +210,7 @@ msgstr ""
 #. module: project_classification
 #: field:project.classification,__last_update:0
 msgid "Last Modified on"
-msgstr ""
+msgstr "Dernière modification le"
 
 #. module: project_classification
 #: field:project.classification,write_uid:0
@@ -277,7 +277,7 @@ msgstr ""
 #. module: project_classification
 #: view:project.project:project_classification.view_account_analytic_account_tree
 msgid "Partner"
-msgstr ""
+msgstr "Partenaire"
 
 #. module: project_classification
 #: field:project.project,pricelist_id:0

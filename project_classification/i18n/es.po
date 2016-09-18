@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-19 20:32+0000\n"
-"PO-Revision-Date: 2016-05-17 08:04+0000\n"
+"POT-Creation-Date: 2016-09-02 14:57+0000\n"
+"PO-Revision-Date: 2016-09-16 21:45+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Spanish (http://www.transifex.com/oca/OCA-project-8-0/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -123,7 +123,7 @@ msgstr ""
 #. module: project_classification
 #: field:project.classification,display_name:0
 msgid "Display Name"
-msgstr ""
+msgstr "Nombre mostrado"
 
 #. module: project_classification
 #: field:project.project,hours_qtt_est:0
@@ -212,7 +212,7 @@ msgstr ""
 #. module: project_classification
 #: field:project.classification,__last_update:0
 msgid "Last Modified on"
-msgstr ""
+msgstr "Última modificación el"
 
 #. module: project_classification
 #: field:project.classification,write_uid:0

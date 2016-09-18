@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-12 01:44+0000\n"
+"POT-Creation-Date: 2016-09-02 14:58+0000\n"
 "PO-Revision-Date: 2015-12-11 14:41+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: French (http://www.transifex.com/oca/OCA-project-8-0/language/fr/)\n"
@@ -25,7 +25,7 @@ msgstr "Incident"
 #. module: project_stage_state_issue
 #: field:project.issue,state:0
 msgid "State"
-msgstr ""
+msgstr "État"
 
 #. module: project_stage_state_issue
 #: view:project.issue:project_stage_state_issue.project_issue_from_view_state

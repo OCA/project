@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-31 18:04+0000\n"
-"PO-Revision-Date: 2015-07-21 19:20+0000\n"
+"POT-Creation-Date: 2016-09-02 14:57+0000\n"
+"PO-Revision-Date: 2016-05-17 08:05+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Vietnamese (http://www.transifex.com/oca/OCA-project-8-0/language/vi/)\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr ""
 #. module: project_gtd
 #: view:project.timebox.fill.plan:project_gtd.view_project_gtd_fill
 msgid "Cancel"
-msgstr ""
+msgstr "Hủy bỏ"
 
 #. module: project_gtd
 #: model:project.gtd.context,name:project_gtd.context_car
@@ -74,6 +74,14 @@ msgid "Created on"
 msgstr ""
 
 #. module: project_gtd
+#: field:project.gtd.context,display_name:0
+#: field:project.gtd.timebox,display_name:0
+#: field:project.timebox.empty,display_name:0
+#: field:project.timebox.fill.plan,display_name:0
+msgid "Display Name"
+msgstr ""
+
+#. module: project_gtd
 #: model:ir.actions.act_window,name:project_gtd.action_project_gtd_empty
 #: view:project.timebox.empty:project_gtd.view_project_gtd_empty
 msgid "Empty Timebox"
@@ -114,6 +122,14 @@ msgstr ""
 #. module: project_gtd
 #: view:project.task:project_gtd.view_task_gtd_search
 msgid "Last Message"
+msgstr ""
+
+#. module: project_gtd
+#: field:project.gtd.context,__last_update:0
+#: field:project.gtd.timebox,__last_update:0
+#: field:project.timebox.empty,__last_update:0
+#: field:project.timebox.fill.plan,__last_update:0
+msgid "Last Modified on"
 msgstr ""
 
 #. module: project_gtd
