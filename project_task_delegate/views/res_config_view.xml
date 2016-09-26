@@ -1,0 +1,26 @@
+<?xml version ="1.0" encoding="utf-8"?>
+<!--
+    (c) 2016 Sodexis
+    License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+
+<odoo>
+    <record id="view_config_settings" model="ir.ui.view">
+        <field name="name">project settings</field>
+        <field name="model">project.config.settings</field>
+        <field name="inherit_id" ref="project.view_config_settings"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='project_management']"
+                position="inside">
+                <label for="id" string="Task Delegation"/>
+                <div>
+                    <div>
+                        <field name="group_manage_delegation_task"
+                            class="oe_inline"/>
+                        <label for="group_manage_delegation_task"/>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
