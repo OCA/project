@@ -1,24 +1,4 @@
 # -*- coding: utf-8 -*-
-##############################################################################
-#
-#    Copyright (C) 2014 Eficent (<http://www.eficent.com/>)
-#             <contact@eficent.com>
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as
-#    published by the Free Software Foundation, either version 3 of the
-#    License, or (at your option) any later version.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-##############################################################################
-
 
 {
 <<<<<<< ff33f76c66d1cedc6dbd60cdf85ad0855da08321
@@ -43,7 +23,7 @@ view for the associated tasks.
         "view/project_view.xml",
 =======
     'name': 'Work Breakdown Structure - Tasks',
-    'version': '8.0.2.0.1',
+    'version': '8.0.2.0.2',
     'author':   'Eficent, '
                 'Serpent CS, '
                 'Matmoz d.o.o., '
@@ -70,4 +50,3 @@ view for the associated tasks.
     'installable': True,
     'application': True,
 }
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
