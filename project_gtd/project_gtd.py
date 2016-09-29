@@ -23,7 +23,7 @@ from openerp.osv import fields, osv
 from openerp import tools
 
 
-class project_gtd_context(osv.Model):
+class ProjectGtdContext(osv.Model):
     _name = "project.gtd.context"
     _description = "Context"
     _columns = {
@@ -40,7 +40,7 @@ class project_gtd_context(osv.Model):
     _order = "sequence, name"
 
 
-class project_gtd_timebox(osv.Model):
+class ProjectGtdTimebox(osv.Model):
     _name = "project.gtd.timebox"
     _order = "sequence"
     _columns = {
@@ -53,7 +53,7 @@ class project_gtd_timebox(osv.Model):
     }
 
 
-class project_task(osv.Model):
+class ProjectTask(osv.Model):
     _inherit = "project.task"
     _columns = {
         'timebox_id': fields.many2one(
@@ -197,4 +197,3 @@ class project_task(osv.Model):
                 '<separator name="gtdsep"/>', search_extended)
 
         return res
-    
