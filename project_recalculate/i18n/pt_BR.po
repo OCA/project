@@ -3,13 +3,14 @@
 # * project_recalculate
 # 
 # Translators:
+# danimaribeiro <danimaribeiro@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-04 17:05+0000\n"
-"PO-Revision-Date: 2015-10-04 17:07+0000\n"
-"Last-Translator: <>\n"
+"POT-Creation-Date: 2015-11-18 15:57+0000\n"
+"PO-Revision-Date: 2015-11-18 17:47+0000\n"
+"Last-Translator: danimaribeiro <danimaribeiro@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/oca/OCA-project-8-0/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,17 +21,17 @@ msgstr ""
 #. module: project_recalculate
 #: help:project.task,from_days:0
 msgid "Anticipation days from date begin or date end"
-msgstr ""
+msgstr "Dias de antecipação da data inicial ou final"
 
 #. module: project_recalculate
 #: view:project.recalculate.wizard:project_recalculate.wizard_project_recalculate_form
 msgid "Are you sure?"
-msgstr ""
+msgstr "Você tem certeza?"
 
 #. module: project_recalculate
 #: field:project.project,calculation_type:0
 msgid "Calculation type"
-msgstr ""
+msgstr "Tipo de cálculo"
 
 #. module: project_recalculate
 #: view:project.recalculate.wizard:project_recalculate.wizard_project_recalculate_form
@@ -43,26 +44,26 @@ msgstr "Cancelar"
 #, python-format
 msgid ""
 "Cannot recalculate project because your project don't have calculation type."
-msgstr ""
+msgstr "Não pode recalcular o projeto pois não tem um tipo de cálculo setado."
 
 #. module: project_recalculate
 #: code:addons/project_recalculate/models/project_project.py:65
 #: code:addons/project_recalculate/wizard/recalculate_wizard.py:31
 #, python-format
 msgid "Cannot recalculate project because your project don't have date end."
-msgstr ""
+msgstr "Não pode recalcular o projeto pois não tem uma data final"
 
 #. module: project_recalculate
 #: code:addons/project_recalculate/models/project_project.py:61
 #: code:addons/project_recalculate/wizard/recalculate_wizard.py:28
 #, python-format
 msgid "Cannot recalculate project because your project don't have date start."
-msgstr ""
+msgstr "Não pode recalcular o projeto pois não tem uma data de inicio."
 
 #. module: project_recalculate
 #: view:project.recalculate.wizard:project_recalculate.wizard_project_recalculate_form
 msgid "Continue"
-msgstr ""
+msgstr "Continuar"
 
 #. module: project_recalculate
 #: field:project.recalculate.wizard,create_uid:0
@@ -77,51 +78,51 @@ msgstr "Criado em"
 #. module: project_recalculate
 #: selection:project.project,calculation_type:0
 msgid "Date begin"
-msgstr ""
+msgstr "Data inicio"
 
 #. module: project_recalculate
 #: selection:project.project,calculation_type:0
 msgid "Date end"
-msgstr ""
+msgstr "Data fim"
 
 #. module: project_recalculate
 #: view:project.recalculate.wizard:project_recalculate.wizard_project_recalculate_form
 msgid "Date reference"
-msgstr ""
+msgstr "Data de referência"
 
 #. module: project_recalculate
 #: code:addons/project_recalculate/models/project_task.py:181
 #, python-format
 msgid "End Date field must be defined."
-msgstr ""
+msgstr "Data final deve ser definido"
 
 #. module: project_recalculate
 #: field:project.task,estimated_days:0
 msgid "Estimated days"
-msgstr ""
+msgstr "Dias estimados"
 
 #. module: project_recalculate
 #: code:addons/project_recalculate/models/project_task.py:25
 #, python-format
 msgid "Estimated days must be greater than 0."
-msgstr ""
+msgstr "Dias estimados deve ser maior que 0"
 
 #. module: project_recalculate
 #: help:project.task,estimated_days:0
 msgid "Estimated days to end"
-msgstr ""
+msgstr "Dias estimados para finalizar"
 
 #. module: project_recalculate
 #: field:project.task,from_days:0
 msgid "From days"
-msgstr ""
+msgstr "De dias"
 
 #. module: project_recalculate
 #: help:project.project,calculation_type:0
 msgid ""
 "How to calculate tasks, with date start or date end references. If not set, "
 "\"Recalculate project\" button is disabled."
-msgstr ""
+msgstr "Como calcular tarefas, com data inicial ou data final de referências. Se não setado o botão \"Recalcular projeto\"  será desabilitado."
 
 #. module: project_recalculate
 #: field:project.recalculate.wizard,id:0
@@ -133,12 +134,12 @@ msgstr "Identificação"
 msgid ""
 "If you mark this check, tasks that are in this stage will be selectable for "
 "recalculating their dates when user click on 'Recalculate project' button."
-msgstr ""
+msgstr "Se você marcar isto, tarefas que estão neste estágio serão selecionadas para recalcular suas datas quando clicado no botão \"Recalcular projeto\"."
 
 #. module: project_recalculate
 #: field:project.task.type,include_in_recalculate:0
 msgid "Include in project recalculate"
-msgstr ""
+msgstr "Incluir no recalculo do projeto"
 
 #. module: project_recalculate
 #: field:project.recalculate.wizard,write_uid:0
@@ -159,38 +160,38 @@ msgstr "Projeto"
 #. module: project_recalculate
 #: field:project.recalculate.wizard,project_date:0
 msgid "Project date"
-msgstr ""
+msgstr "Data do projeto"
 
 #. module: project_recalculate
 #: view:project.recalculate.wizard:project_recalculate.wizard_project_recalculate_form
 msgid "Project name"
-msgstr ""
+msgstr "Nome do projeto"
 
 #. module: project_recalculate
 #: model:ir.actions.act_window,name:project_recalculate.wizard_project_recalculate
 msgid "Project recalculate"
-msgstr ""
+msgstr "Recalcular projeto"
 
 #. module: project_recalculate
 #: view:project.recalculate.wizard:project_recalculate.wizard_project_recalculate_form
 msgid "Recalculate Project"
-msgstr ""
+msgstr "Recalcular projeto"
 
 #. module: project_recalculate
 #: view:project.project:project_recalculate.edit_project_recalculate
 msgid "Recalculate project"
-msgstr ""
+msgstr "Recalcular projeto"
 
 #. module: project_recalculate
 #: model:ir.model,name:project_recalculate.model_resource_calendar
 msgid "Resource Calendar"
-msgstr ""
+msgstr "Calendário de recursos"
 
 #. module: project_recalculate
 #: code:addons/project_recalculate/models/project_task.py:176
 #, python-format
 msgid "Start Date field must be defined."
-msgstr ""
+msgstr "Data de inicio deve ser definida"
 
 #. module: project_recalculate
 #: model:ir.model,name:project_recalculate.model_project_task
@@ -205,14 +206,14 @@ msgstr "Estágio da Tarefa"
 #. module: project_recalculate
 #: view:project.recalculate.wizard:project_recalculate.wizard_project_recalculate_form
 msgid "This Project task will be recalculated the reference data:"
-msgstr ""
+msgstr "Esta tarefa do projeto terá a data de referência recalculada:"
 
 #. module: project_recalculate
 #: view:project.project:project_recalculate.edit_project_recalculate
 msgid "{'readonly': [('calculation_type', '=', 'date_begin')]}"
-msgstr ""
+msgstr "{'readonly': [('calculation_type', '=', 'date_begin')]}"
 
 #. module: project_recalculate
 #: view:project.project:project_recalculate.edit_project_recalculate
 msgid "{'readonly': [('calculation_type', '=', 'date_end')]}"
-msgstr ""
+msgstr "{'readonly': [('calculation_type', '=', 'date_end')]}"

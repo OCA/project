@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-04 17:05+0000\n"
+"POT-Creation-Date: 2015-12-24 08:57+0000\n"
 "PO-Revision-Date: 2015-10-04 17:07+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: French (http://www.transifex.com/oca/OCA-project-8-0/language/fr/)\n"
@@ -67,12 +67,12 @@ msgstr ""
 #. module: project_recalculate
 #: field:project.recalculate.wizard,create_uid:0
 msgid "Created by"
-msgstr ""
+msgstr "Créé par"
 
 #. module: project_recalculate
 #: field:project.recalculate.wizard,create_date:0
 msgid "Created on"
-msgstr ""
+msgstr "Créé le"
 
 #. module: project_recalculate
 #: selection:project.project,calculation_type:0
@@ -126,7 +126,7 @@ msgstr ""
 #. module: project_recalculate
 #: field:project.recalculate.wizard,id:0
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_recalculate
 #: help:project.task.type,include_in_recalculate:0
@@ -143,18 +143,18 @@ msgstr ""
 #. module: project_recalculate
 #: field:project.recalculate.wizard,write_uid:0
 msgid "Last Updated by"
-msgstr ""
+msgstr "Dernière mise à jour par"
 
 #. module: project_recalculate
 #: field:project.recalculate.wizard,write_date:0
 msgid "Last Updated on"
-msgstr ""
+msgstr "Dernière mise à jour le"
 
 #. module: project_recalculate
 #: model:ir.model,name:project_recalculate.model_project_project
 #: field:project.recalculate.wizard,project_id:0
 msgid "Project"
-msgstr ""
+msgstr "Projet"
 
 #. module: project_recalculate
 #: field:project.recalculate.wizard,project_date:0
