@@ -20,7 +20,7 @@
 {
     'name': 'Reassign Project Issues',
     'summary': 'Reassign Issues to other Responsibles and Projects',
-    'version': '1.1',
+    'version': '8.0.1.1.0',
     "category": "Project Management",
     'author': 'Daniel Reis, Odoo Community Association (OCA)',
     'license': 'AGPL-3',
