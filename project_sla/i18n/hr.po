@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-22 08:10+0000\n"
-"PO-Revision-Date: 2016-06-14 10:58+0000\n"
+"POT-Creation-Date: 2016-09-18 02:39+0000\n"
+"PO-Revision-Date: 2016-10-05 06:35+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Croatian (http://www.transifex.com/oca/OCA-project-8-0/language/hr/)\n"
 "MIME-Version: 1.0\n"
@@ -96,13 +96,13 @@ msgstr ""
 #: field:project.sla,create_uid:0 field:project.sla.control,create_uid:0
 #: field:project.sla.line,create_uid:0
 msgid "Created by"
-msgstr ""
+msgstr "Kreirao"
 
 #. module: project_sla
 #: field:project.sla,create_date:0 field:project.sla.control,create_date:0
 #: field:project.sla.line,create_date:0
 msgid "Created on"
-msgstr ""
+msgstr "Kreirano"
 
 #. module: project_sla
 #: help:project.sla,control_field_id:0
@@ -121,7 +121,7 @@ msgstr ""
 #: field:project.sla.line,display_name:0
 #: field:project.sla.report,display_name:0
 msgid "Display Name"
-msgstr ""
+msgstr "Naziv "
 
 #. module: project_sla
 #: field:project.sla.control,doc_id:0
@@ -179,7 +179,7 @@ msgstr ""
 #: field:project.sla.controlled,id:0 field:project.sla.line,id:0
 #: field:project.sla.report,id:0
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_sla
 #: field:project.sla.report,sla_closed:0
@@ -192,19 +192,19 @@ msgstr ""
 #: field:project.sla.line,__last_update:0
 #: field:project.sla.report,__last_update:0
 msgid "Last Modified on"
-msgstr ""
+msgstr "Zadnje modificirano"
 
 #. module: project_sla
 #: field:project.sla,write_uid:0 field:project.sla.control,write_uid:0
 #: field:project.sla.line,write_uid:0
 msgid "Last Updated by"
-msgstr ""
+msgstr "Zadnji ažurirao"
 
 #. module: project_sla
 #: field:project.sla,write_date:0 field:project.sla.control,write_date:0
 #: field:project.sla.line,write_date:0
 msgid "Last Updated on"
-msgstr ""
+msgstr "Zadnje ažuriranje"
 
 #. module: project_sla
 #: field:project.sla.control,sla_limit_date:0

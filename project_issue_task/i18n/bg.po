@@ -3,123 +3,122 @@
 # * project_issue_task
 # 
 # Translators:
-# Armando Vulcano Junior <vulcano@uol.com.br>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-09-18 02:39+0000\n"
-"PO-Revision-Date: 2016-10-04 09:43+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/oca/OCA-project-8-0/language/pt_BR/)\n"
+"PO-Revision-Date: 2015-07-21 19:20+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: Bulgarian (http://www.transifex.com/oca/OCA-project-8-0/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: pt_BR\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language: bg\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: project_issue_task
 #: code:addons/project_issue_task/project_issue.py:33
 #, python-format
 msgid "A Task is already assigned to the Issue!"
-msgstr "A tarefa já está atribuído ao problema!"
+msgstr ""
 
 #. module: project_issue_task
 #: field:project.task.cause,name:0
 msgid "Cause"
-msgstr "Causa"
+msgstr ""
 
 #. module: project_issue_task
 #: field:project.task.cause,code:0
 msgid "Code"
-msgstr "Código"
+msgstr "Код"
 
 #. module: project_issue_task
 #: field:project.task.cause,create_uid:0
 msgid "Created by"
-msgstr "Criado por"
+msgstr "Създадено от"
 
 #. module: project_issue_task
 #: field:project.task.cause,create_date:0
 msgid "Created on"
-msgstr "Criado em"
+msgstr "Създадено на"
 
 #. module: project_issue_task
 #: field:project.task.cause,description:0
 msgid "Description"
-msgstr "Descrição"
+msgstr "Описание"
 
 #. module: project_issue_task
 #: field:project.task.cause,display_name:0
 msgid "Display Name"
-msgstr "Nome para Mostrar"
+msgstr ""
 
 #. module: project_issue_task
 #: field:project.task.cause,id:0
 msgid "ID"
-msgstr "Identificação"
+msgstr "ID"
 
 #. module: project_issue_task
 #: model:ir.model,name:project_issue_task.model_project_task_cause
 msgid "Issue Cause"
-msgstr "Causa do Problema"
+msgstr ""
 
 #. module: project_issue_task
 #: code:addons/project_issue_task/project_issue.py:46
 #, python-format
 msgid "Issue Task Report"
-msgstr "Reporte do Problema da Tarefa"
+msgstr ""
 
 #. module: project_issue_task
 #: field:project.task.cause,__last_update:0
 msgid "Last Modified on"
-msgstr "Última atualização em"
+msgstr "Последно обновено на"
 
 #. module: project_issue_task
 #: field:project.task.cause,write_uid:0
 msgid "Last Updated by"
-msgstr "Última atualização feita por"
+msgstr "Последно обновено от"
 
 #. module: project_issue_task
 #: field:project.task.cause,write_date:0
 msgid "Last Updated on"
-msgstr "Última atualização feita em"
+msgstr "Последно обновено на"
 
 #. module: project_issue_task
 #: field:project.task,reason_id:0
 msgid "Problem Cause"
-msgstr "Causa do Problema"
+msgstr ""
 
 #. module: project_issue_task
 #: model:ir.model,name:project_issue_task.model_project_issue
 msgid "Project Issue"
-msgstr "Problemas do Projeto"
+msgstr ""
 
 #. module: project_issue_task
 #: field:project.task,ref:0
 msgid "Reference"
-msgstr "Referencia"
+msgstr ""
 
 #. module: project_issue_task
 #: field:project.task,issue_id:0
 msgid "Related Issue"
-msgstr "Problema Relativo"
+msgstr ""
 
 #. module: project_issue_task
 #: code:addons/project_issue_task/project_issue.py:38
 #, python-format
 msgid "Report for %s"
-msgstr "Reporte para %s"
+msgstr ""
 
 #. module: project_issue_task
 #: field:project.task.cause,sequence:0
 msgid "Sequence"
-msgstr "Seqüência"
+msgstr ""
 
 #. module: project_issue_task
 #: model:ir.model,name:project_issue_task.model_project_task
 msgid "Task"
-msgstr "Tarefa"
+msgstr ""
 
 #. module: project_issue_task
 #: model:ir.actions.act_window,name:project_issue_task.open_task_cause_form
@@ -127,9 +126,9 @@ msgstr "Tarefa"
 #: view:project.task.cause:project_issue_task.task_cause_edit
 #: view:project.task.cause:project_issue_task.task_cause_tree
 msgid "Task Issue Causes"
-msgstr "Causas dos Problemas da Tarefas"
+msgstr ""
 
 #. module: project_issue_task
 #: view:project.issue:project_issue_task.project_issue_form_view_task
 msgid "Task Report"
-msgstr "Reporte das Tarefas"
+msgstr ""

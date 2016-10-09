@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-09-18 02:39+0000\n"
-"PO-Revision-Date: 2016-10-04 09:43+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
-"Language-Team: Chinese (China) (http://www.transifex.com/oca/OCA-project-8-0/language/zh_CN/)\n"
+"PO-Revision-Date: 2015-07-21 19:20+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: Croatian (Croatia) (http://www.transifex.com/oca/OCA-project-8-0/language/hr_HR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: zh_CN\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"Language: hr_HR\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
 #. module: project_sla
 #: view:project.sla.report:project_sla.view_project_sla_report_tree
@@ -58,7 +58,7 @@ msgstr ""
 #. module: project_sla
 #: field:project.sla,active:0
 msgid "Active"
-msgstr ""
+msgstr "Aktivan"
 
 #. module: project_sla
 #: model:ir.model,name:project_sla.model_account_analytic_account
@@ -96,13 +96,13 @@ msgstr ""
 #: field:project.sla,create_uid:0 field:project.sla.control,create_uid:0
 #: field:project.sla.line,create_uid:0
 msgid "Created by"
-msgstr "创建者"
+msgstr "Kreirao"
 
 #. module: project_sla
 #: field:project.sla,create_date:0 field:project.sla.control,create_date:0
 #: field:project.sla.line,create_date:0
 msgid "Created on"
-msgstr "创建时间"
+msgstr "Kreirano"
 
 #. module: project_sla
 #: help:project.sla,control_field_id:0
@@ -121,7 +121,7 @@ msgstr ""
 #: field:project.sla.line,display_name:0
 #: field:project.sla.report,display_name:0
 msgid "Display Name"
-msgstr ""
+msgstr "Naziv"
 
 #. module: project_sla
 #: field:project.sla.control,doc_id:0
@@ -192,19 +192,19 @@ msgstr ""
 #: field:project.sla.line,__last_update:0
 #: field:project.sla.report,__last_update:0
 msgid "Last Modified on"
-msgstr ""
+msgstr "Zadnje modificirano"
 
 #. module: project_sla
 #: field:project.sla,write_uid:0 field:project.sla.control,write_uid:0
 #: field:project.sla.line,write_uid:0
 msgid "Last Updated by"
-msgstr "最后更新者"
+msgstr "Zadnji ažurirao"
 
 #. module: project_sla
 #: field:project.sla,write_date:0 field:project.sla.control,write_date:0
 #: field:project.sla.line,write_date:0
 msgid "Last Updated on"
-msgstr "上次更新日期"
+msgstr "Zadnje ažurirano"
 
 #. module: project_sla
 #: field:project.sla.control,sla_limit_date:0
@@ -345,7 +345,7 @@ msgstr ""
 #. module: project_sla
 #: field:project.sla.line,sequence:0
 msgid "Sequence"
-msgstr "序列"
+msgstr ""
 
 #. module: project_sla
 #: field:project.sla.control,sla_line_id:0
@@ -392,7 +392,7 @@ msgstr ""
 #. module: project_sla
 #: model:ir.model,name:project_sla.model_project_task
 msgid "Task"
-msgstr "任务"
+msgstr ""
 
 #. module: project_sla
 #: field:project.sla,name:0 field:project.sla.line,name:0

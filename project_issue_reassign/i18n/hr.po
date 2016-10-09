@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-29 02:49+0000\n"
-"PO-Revision-Date: 2016-07-29 02:49+0000\n"
+"POT-Creation-Date: 2016-09-18 02:39+0000\n"
+"PO-Revision-Date: 2016-09-18 02:39+0000\n"
 "Last-Translator: Bole <bole@dajmi5.com>, 2016\n"
 "Language-Team: Croatian (https://www.transifex.com/oca/teams/23907/hr/)\n"
 "MIME-Version: 1.0\n"
@@ -32,22 +32,22 @@ msgstr "Poništi"
 #. module: project_issue_reassign
 #: field:project.issue.reassign,create_uid:0
 msgid "Created by"
-msgstr ""
+msgstr "Kreirao"
 
 #. module: project_issue_reassign
 #: field:project.issue.reassign,create_date:0
 msgid "Created on"
-msgstr ""
+msgstr "Kreirano"
 
 #. module: project_issue_reassign
 #: field:project.issue.reassign,display_name:0
 msgid "Display Name"
-msgstr ""
+msgstr "Naziv "
 
 #. module: project_issue_reassign
 #: field:project.issue.reassign,id:0
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_issue_reassign
 #: model:ir.model,name:project_issue_reassign.model_project_issue_reassign
@@ -57,17 +57,17 @@ msgstr ""
 #. module: project_issue_reassign
 #: field:project.issue.reassign,__last_update:0
 msgid "Last Modified on"
-msgstr ""
+msgstr "Zadnje modificirano"
 
 #. module: project_issue_reassign
 #: field:project.issue.reassign,write_uid:0
 msgid "Last Updated by"
-msgstr ""
+msgstr "Zadnji ažurirao"
 
 #. module: project_issue_reassign
 #: field:project.issue.reassign,write_date:0
 msgid "Last Updated on"
-msgstr ""
+msgstr "Zadnje ažuriranje"
 
 #. module: project_issue_reassign
 #: code:addons/project_issue_reassign/project.py:30
