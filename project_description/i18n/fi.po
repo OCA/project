@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-02 14:57+0000\n"
-"PO-Revision-Date: 2016-09-15 12:48+0000\n"
+"POT-Creation-Date: 2016-09-18 02:39+0000\n"
+"PO-Revision-Date: 2016-10-04 09:43+0000\n"
 "Last-Translator: Jarmo Kortetjärvi <jarmo.kortetjarvi@gmail.com>\n"
 "Language-Team: Finnish (http://www.transifex.com/oca/OCA-project-8-0/language/fi/)\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 #. module: project_description
 #: view:project.project:project_description.project_form
 msgid "Description"
-msgstr ""
+msgstr "Kuvaus"
 
 #. module: project_description
 #: model:ir.model,name:project_description.model_project_project

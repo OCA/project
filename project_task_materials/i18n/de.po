@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-11-18 15:57+0000\n"
-"PO-Revision-Date: 2015-11-03 13:30+0000\n"
+"POT-Creation-Date: 2016-09-18 02:39+0000\n"
+"PO-Revision-Date: 2016-10-04 09:43+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: German (http://www.transifex.com/oca/OCA-project-8-0/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -28,9 +28,19 @@ msgid "Created on"
 msgstr "Erstellt am"
 
 #. module: project_task_materials
+#: field:project.task.materials,display_name:0
+msgid "Display Name"
+msgstr "Anzeigename"
+
+#. module: project_task_materials
 #: field:project.task.materials,id:0
 msgid "ID"
 msgstr "ID"
+
+#. module: project_task_materials
+#: field:project.task.materials,__last_update:0
+msgid "Last Modified on"
+msgstr "Zuletzt geändert am"
 
 #. module: project_task_materials
 #: field:project.task.materials,write_uid:0

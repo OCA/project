@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-04 17:05+0000\n"
-"PO-Revision-Date: 2015-09-17 22:31+0000\n"
-"Last-Translator: Armando Vulcano Junior <vulcano@uol.com.br>\n"
+"POT-Creation-Date: 2016-09-18 02:39+0000\n"
+"PO-Revision-Date: 2016-10-04 09:43+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/oca/OCA-project-8-0/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -50,6 +50,11 @@ msgid "Description"
 msgstr "Descrição"
 
 #. module: project_issue_task
+#: field:project.task.cause,display_name:0
+msgid "Display Name"
+msgstr "Nome para Mostrar"
+
+#. module: project_issue_task
 #: field:project.task.cause,id:0
 msgid "ID"
 msgstr "Identificação"
@@ -64,6 +69,11 @@ msgstr "Causa do Problema"
 #, python-format
 msgid "Issue Task Report"
 msgstr "Reporte do Problema da Tarefa"
+
+#. module: project_issue_task
+#: field:project.task.cause,__last_update:0
+msgid "Last Modified on"
+msgstr "Última atualização em"
 
 #. module: project_issue_task
 #: field:project.task.cause,write_uid:0

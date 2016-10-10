@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-22 08:10+0000\n"
-"PO-Revision-Date: 2016-06-14 10:58+0000\n"
+"POT-Creation-Date: 2016-09-18 02:39+0000\n"
+"PO-Revision-Date: 2016-10-05 06:35+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Croatian (http://www.transifex.com/oca/OCA-project-8-0/language/hr/)\n"
 "MIME-Version: 1.0\n"
@@ -68,12 +68,12 @@ msgstr ""
 #. module: project_recalculate
 #: field:project.recalculate.wizard,create_uid:0
 msgid "Created by"
-msgstr ""
+msgstr "Kreirao"
 
 #. module: project_recalculate
 #: field:project.recalculate.wizard,create_date:0
 msgid "Created on"
-msgstr ""
+msgstr "Kreirano"
 
 #. module: project_recalculate
 #: selection:project.project,calculation_type:0
@@ -93,7 +93,7 @@ msgstr ""
 #. module: project_recalculate
 #: field:project.recalculate.wizard,display_name:0
 msgid "Display Name"
-msgstr ""
+msgstr "Naziv "
 
 #. module: project_recalculate
 #: code:addons/project_recalculate/models/project_task.py:181
@@ -133,7 +133,7 @@ msgstr ""
 #. module: project_recalculate
 #: field:project.recalculate.wizard,id:0
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_recalculate
 #: help:project.task,include_in_recalculate:0
@@ -152,17 +152,17 @@ msgstr ""
 #. module: project_recalculate
 #: field:project.recalculate.wizard,__last_update:0
 msgid "Last Modified on"
-msgstr ""
+msgstr "Zadnje modificirano"
 
 #. module: project_recalculate
 #: field:project.recalculate.wizard,write_uid:0
 msgid "Last Updated by"
-msgstr ""
+msgstr "Zadnji ažurirao"
 
 #. module: project_recalculate
 #: field:project.recalculate.wizard,write_date:0
 msgid "Last Updated on"
-msgstr ""
+msgstr "Zadnje ažuriranje"
 
 #. module: project_recalculate
 #: model:ir.model,name:project_recalculate.model_project_project

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-02 14:58+0000\n"
-"PO-Revision-Date: 2016-09-09 11:32+0000\n"
+"POT-Creation-Date: 2016-09-18 02:39+0000\n"
+"PO-Revision-Date: 2016-10-04 09:42+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Turkish (http://www.transifex.com/oca/OCA-project-8-0/language/tr/)\n"
 "MIME-Version: 1.0\n"
@@ -46,7 +46,7 @@ msgstr "Oluşturuldu"
 #. module: project_issue_task
 #: field:project.task.cause,description:0
 msgid "Description"
-msgstr ""
+msgstr "Açıklama"
 
 #. module: project_issue_task
 #: field:project.task.cause,display_name:0

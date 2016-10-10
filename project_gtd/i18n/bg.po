@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-31 18:04+0000\n"
-"PO-Revision-Date: 2015-07-21 19:20+0000\n"
+"POT-Creation-Date: 2016-09-18 02:39+0000\n"
+"PO-Revision-Date: 2016-09-25 14:00+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/oca/OCA-project-8-0/language/bg/)\n"
 "MIME-Version: 1.0\n"
@@ -25,7 +25,7 @@ msgstr ""
 #. module: project_gtd
 #: view:project.timebox.fill.plan:project_gtd.view_project_gtd_fill
 msgid "Cancel"
-msgstr ""
+msgstr "Откажи"
 
 #. module: project_gtd
 #: model:project.gtd.context,name:project_gtd.context_car
@@ -62,7 +62,7 @@ msgstr ""
 #: field:project.timebox.empty,create_uid:0
 #: field:project.timebox.fill.plan,create_uid:0
 msgid "Created by"
-msgstr ""
+msgstr "Създадено от"
 
 #. module: project_gtd
 #: field:project.gtd.context,create_date:0
@@ -70,6 +70,14 @@ msgstr ""
 #: field:project.timebox.empty,create_date:0
 #: field:project.timebox.fill.plan,create_date:0
 msgid "Created on"
+msgstr "Създадено на"
+
+#. module: project_gtd
+#: field:project.gtd.context,display_name:0
+#: field:project.gtd.timebox,display_name:0
+#: field:project.timebox.empty,display_name:0
+#: field:project.timebox.fill.plan,display_name:0
+msgid "Display Name"
 msgstr ""
 
 #. module: project_gtd
@@ -108,7 +116,7 @@ msgstr ""
 #: field:project.gtd.context,id:0 field:project.gtd.timebox,id:0
 #: field:project.timebox.empty,id:0 field:project.timebox.fill.plan,id:0
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_gtd
 #: view:project.task:project_gtd.view_task_gtd_search
@@ -116,11 +124,19 @@ msgid "Last Message"
 msgstr ""
 
 #. module: project_gtd
+#: field:project.gtd.context,__last_update:0
+#: field:project.gtd.timebox,__last_update:0
+#: field:project.timebox.empty,__last_update:0
+#: field:project.timebox.fill.plan,__last_update:0
+msgid "Last Modified on"
+msgstr "Последно обновено на"
+
+#. module: project_gtd
 #: field:project.gtd.context,write_uid:0 field:project.gtd.timebox,write_uid:0
 #: field:project.timebox.empty,write_uid:0
 #: field:project.timebox.fill.plan,write_uid:0
 msgid "Last Updated by"
-msgstr ""
+msgstr "Последно обновено от"
 
 #. module: project_gtd
 #: field:project.gtd.context,write_date:0
@@ -128,7 +144,7 @@ msgstr ""
 #: field:project.timebox.empty,write_date:0
 #: field:project.timebox.fill.plan,write_date:0
 msgid "Last Updated on"
-msgstr ""
+msgstr "Последно обновено на"
 
 #. module: project_gtd
 #: model:project.gtd.timebox,name:project_gtd.timebox_lt
@@ -144,7 +160,7 @@ msgstr ""
 #. module: project_gtd
 #: field:project.timebox.empty,name:0
 msgid "Name"
-msgstr ""
+msgstr "Име"
 
 #. module: project_gtd
 #: code:addons/project_gtd/wizard/project_gtd_empty.py:52
@@ -266,4 +282,4 @@ msgstr ""
 #. module: project_gtd
 #: view:project.timebox.fill.plan:project_gtd.view_project_gtd_fill
 msgid "or"
-msgstr ""
+msgstr "или"
