@@ -90,3 +90,13 @@ class ProjectProject(models.Model):
             self.mapped('second_alias_id').write(
                 {'alias_contact': vals['alias_contact']})
         return res
+
+    @api.multi
+    def unlink(self):
+        """Remove linked second aliases after removing the project to avoid
+        restrict ondelete error.
+        """
+        aliases = self.mapped('second_alias_id')
+        res = super(ProjectProject, self).unlink()
+        aliases.unlink()
+        return res
