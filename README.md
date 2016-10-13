@@ -1,6 +1,6 @@
 [![Runbot Status](https://runbot.odoo-community.org/runbot/badge/flat/140/9.0.svg)](https://runbot.odoo-community.org/runbot/repo/github-com-oca-project-140)
 [![Build Status](https://travis-ci.org/OCA/project.svg?branch=9.0)](https://travis-ci.org/OCA/project)
-[![Coverage Status](https://coveralls.io/repos/OCA/project/badge.svg?branch=9.0)](https://coveralls.io/r/OCA/project?branch=9.0)
+[![codecov](https://codecov.io/gh/OCA/project/branch/9.0/graph/badge.svg)](https://codecov.io/gh/OCA/project)
 
 Odoo Project & Service Management
 =================================
