@@ -26,8 +26,10 @@ class TestProjectDoubleAlias(common.TransactionCase):
         self.assertEqual(self.project.second_alias_id.alias_parent_thread_id,
                          self.project.id)
         self.project.alias_contact = 'followers'
-        self.assertEqual(
-            self.project.second_alias_id.alias_contact, 'followers')
+        second_alias = self.project.second_alias_id
+        self.assertEqual(second_alias.alias_contact, 'followers')
+        self.project.unlink()
+        self.assertFalse(second_alias.exists())
 
     def test_change_second_alias(self):
         self.project.second_alias_name = 'Test 2'
