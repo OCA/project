@@ -91,7 +91,7 @@
       <field name="field_parent">child_project_complete_ids</field>
       <field name="priority">20</field>
       <field name="arch" type="xml">
-        <tree colors="red:date and (date&lt;current_date) and (state in ('open'));blue:state in ('draft','pending');grey: state in ('close','cancelled')" string="Projects" toolbar="1">
+        <tree colors="red:date and (date&lt;current_date) and (state in ('open'));blue:state in ('draft','pending');grey: state in ('close','cancelled')" string="Projects">
           <field name="sequence" invisible="1"/>
           <field name="date" invisible="1"/>
           <field name="name" string="Project Name"/>
