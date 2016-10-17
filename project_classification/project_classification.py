@@ -65,7 +65,7 @@ class ProjectProject(models.Model):
     @api.depends('child_complete_ids.project_ids')
     def _child_project_compute(self):
         child_projects = self.mapped('child_complete_ids.project_ids')
-        self.child_project_complete_ids = child_projects
+        self.child_project_complete_ids = child_projects.sorted()
 
     @api.multi
     def onchange_classification_id(self, classification_id):
