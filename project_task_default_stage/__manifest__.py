@@ -6,7 +6,7 @@
 {
     'name': 'Project Task Default Stage',
     'summary': 'Recovery default task stage projects from v8',
-    'version': '9.0.1.0.0',
+    'version': '10.0.1.0.0',
     'category': 'Project',
     'author': 'Incaser Informatica S.L., '
               'Odoo Community Association (OCA)',
@@ -18,5 +18,5 @@
         'views/project_view.xml',
         'data/project_data.xml',
     ],
-    'installable': False,
+    'installable': True,
 }
