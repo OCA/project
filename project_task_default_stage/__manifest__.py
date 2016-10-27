@@ -8,7 +8,7 @@
     'summary': 'Recovery default task stage projects from v8',
     'version': '10.0.1.0.0',
     'category': 'Project',
-    'author': 'Incaser Informatica S.L., '
+    'author': 'Tecnativa, '
               'Odoo Community Association (OCA)',
     'license': 'AGPL-3',
     'depends': [
