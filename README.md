@@ -1,6 +1,6 @@
 [![Runbot Status](https://runbot.odoo-community.org/runbot/badge/flat/140/9.0.svg)](https://runbot.odoo-community.org/runbot/repo/github-com-oca-project-140)
 [![Build Status](https://travis-ci.org/OCA/project.svg?branch=9.0)](https://travis-ci.org/OCA/project)
-[![Coverage Status](https://coveralls.io/repos/OCA/project/badge.svg?branch=9.0)](https://coveralls.io/r/OCA/project?branch=9.0)
+[![codecov](https://codecov.io/gh/OCA/project/branch/9.0/graph/badge.svg)](https://codecov.io/gh/OCA/project)
 
 Odoo Project & Service Management
 =================================
@@ -18,6 +18,7 @@ Available addons
 ----------------
 addon | version | summary
 --- | --- | ---
+[project_description](project_description/) | 9.0.1.0.0 | Add a description to projects
 [project_double_alias](project_double_alias/) | 9.0.1.0.0 | Define an alias for tasks and another alias for issues
 [project_task_default_stage](project_task_default_stage/) | 9.0.1.0.0 | Recovery default task stage projects from v8
 
