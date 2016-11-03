@@ -14,6 +14,12 @@ This project aims to extend Odoo on contract management features, such as:
   * ...
 
 [//]: # (addons)
+Available addons
+----------------
+addon | version | summary
+--- | --- | ---
+[project_task_default_stage](project_task_default_stage/) | 10.0.1.0.0 | Recovery default task stage projects from v8
+
 Unported addons
 ---------------
 addon | version | summary
@@ -36,7 +42,6 @@ addon | version | summary
 [project_sla](project_sla/) | 8.0.1.0.0 (unported) | Define SLAs for your Contracts
 [project_stage_state](project_stage_state/) | 8.0.1.0.0 (unported) | Restore State attribute removed from Project Stages in 8.0
 [project_task_code](project_task_code/) | 8.0.1.0.0 (unported) | Sequential Code for Tasks
-[project_task_default_stage](project_task_default_stage/) | 9.0.1.0.0 (unported) | Recovery default task stage projects from v8
 [project_task_materials](project_task_materials/) | 8.0.1.0.0 (unported) | Record products spent in a Task
 [project_timesheet_analytic_partner](project_timesheet_analytic_partner/) | 8.0.1.0.0 (unported) | Propagate task partner to timesheet entries
 [sale_order_project](sale_order_project/) | 8.0.1.0.0 (unported) | Sale Order Project
