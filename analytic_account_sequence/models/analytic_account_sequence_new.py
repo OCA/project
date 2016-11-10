@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-# © 2015 Eficent Business and IT Consulting Services S.L. -
-# Jordi Ballester Alomar
+# © 2015 Eficent S.L. - Jordi Ballester Alomar
 # © 2015 Serpent Consulting Services Pvt. Ltd. - Sudhir Arya
+# © 2016 Matmoz d.o.o. - Matjaz Mozetic
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 import logging
@@ -18,8 +18,8 @@ class AnalyticAccountSequence(models.Model):
 
     @api.depends('number_next', 'implementation')
     def _get_number_next_actual(self):
-        '''Return number from ir_sequence row when no_gap implementation,
-        and number from postgres sequence when standard implementation.'''
+        """Return number from ir_sequence row when no_gap implementation,
+        and number from postgres sequence when standard implementation."""
         if not self.ids:
             return True
         for element in self:
@@ -49,52 +49,95 @@ class AnalyticAccountSequence(models.Model):
     def _set_number_next_actual(self):
         return self.write({'number_next': self.number_next or 0})
 
-    analytic_account_id = fields.Many2one('account.analytic.account',
-                                          'Analytic account',
-                                          required=True,
-                                          ondelete='cascade')
-    name = fields.Char('Name', required=True)
-    code = fields.Selection(string='Code', selection='_code_get', default=False)
-    implementation = fields.Selection([('standard', 'Standard'),
-                                       ('no_gap', 'No gap')], 'Implementation',
-                                      required=True, default="standard",
-                                      help="Two sequence object "
-                                      "implementations are offered: Standard "
-                                      "and 'No gap'. The later is slower than "
-                                      "the former but forbids any gap in the"
-                                      " sequence (while they are possible"
-                                      " in the former).")
-    active = fields.Boolean('Active', default=True)
-    prefix = fields.Char('Prefix', help="Prefix value of the record for "
-                         "the sequence")
-    suffix = fields.Char('Suffix', help="Suffix value of the record for "
-                         "the sequence")
-    number_next = fields.Integer('Next Number', required=True, default=1,
-                                 help="Next number of this sequence")
-    number_next_actual = fields.Integer(compute='_get_number_next_actual',
-                                        inverse='_set_number_next_actual',
-                                        required=True, string='Next Number',
-                                        default=1, store=True,
-                                        help='Next number that will be used. '
-                                        'This number can be incremented '
-                                        'frequently so the displayed value '
-                                        ' might already be obsolete')
-    number_increment = fields.Integer('Increment Number', required=True,
-                                      default=1, help="The next number of the "
-                                      "sequence will be incremented "
-                                      "by this number")
-    padding = fields.Integer('Number Padding', required=True, default=0,
-                             help="OpenERP will automatically adds some '0' on"
-                             " the left of the 'Next Number' to get the "
-                             "required padding size.")
-    company_id = fields.\
-        Many2one('res.company', 'Company', default=lambda self:
-                 self.env['res.company'].
-                 _company_default_get('analytic.account.sequence'))
+    analytic_account_id = fields.Many2one(
+        'account.analytic.account',
+        'Analytic account',
+        required=True,
+        ondelete='cascade'
+    )
+    name = fields.Char(
+        'Name',
+        required=True
+    )
+    code = fields.Selection(
+        string='Code',
+        selection='_code_get',
+        default=False
+    )
+    implementation = fields.Selection(
+        [('standard', 'Standard'), ('no_gap', 'No gap')],
+        'Implementation',
+        required=True,
+        default="standard",
+        help="Two sequence object "
+        "implementations are offered: Standard "
+        "and 'No gap'. The later is slower than "
+        "the former but forbids any gap in the"
+        " sequence (while they are possible"
+        " in the former)."
+    )
+    active = fields.Boolean(
+        'Active',
+        default=True
+    )
+    prefix = fields.Char(
+        'Prefix',
+        help="Prefix value of the record for "
+        "the sequence"
+    )
+    suffix = fields.Char(
+        'Suffix',
+        help="Suffix value of the record for "
+        "the sequence"
+    )
+    number_next = fields.Integer(
+        'Next Number',
+        required=True,
+        default=1,
+        help="Next number of this sequence"
+    )
+    number_next_actual = fields.Integer(
+        compute='_get_number_next_actual',
+        inverse='_set_number_next_actual',
+        required=True, string='Next Number',
+        default=1, store=True,
+        help='Next number that will be used. '
+        'This number can be incremented '
+        'frequently so the displayed value '
+        ' might already be obsolete'
+    )
+    number_increment = fields.Integer(
+        'Increment Number',
+        required=True,
+        default=1,
+        help="The next number of the "
+        "sequence will be incremented "
+        "by this number"
+    )
+    padding = fields.Integer(
+        'Number Padding',
+        required=True,
+        default=0,
+        help="OpenERP will automatically adds some '0' on"
+        " the left of the 'Next Number' to get the "
+        "required padding size."
+    )
+    company_id = fields.Many2one(
+        'res.company',
+        'Company',
+        default=lambda self:
+            self.env['res.company']._company_default_get(
+                'analytic.account.sequence'
+            )
+    )
 
-    _sql_constraints = [('unique_analytic_account_id',
-                         'unique (analytic_account_id)',
-                         'The analytic account must be unique')]
+    _sql_constraints = [
+        (
+            'unique_analytic_account_id',
+            'unique (analytic_account_id)',
+            'The analytic account must be unique'
+        )
+    ]
 
     @api.model
     def init(self):
@@ -126,8 +169,10 @@ class AnalyticAccountSequence(models.Model):
         if number_increment == 0:
             raise UserError(_("Increment number must not be zero."))
         assert isinstance(self.id, (int, long))
-        sql = "CREATE SEQUENCE analytic_account_sequence_%05d " \
-              "INCREMENT BY %%s START WITH %%s" % self.id
+        sql = (
+            "CREATE SEQUENCE analytic_account_sequence_%05d "
+            "INCREMENT BY %%s START WITH %%s" % self.id
+        )
         self._cr.execute(sql, (number_increment, number_next))
 
     @api.multi
@@ -136,8 +181,11 @@ class AnalyticAccountSequence(models.Model):
         There is no access rights check.
         """
         ids = self.ids if isinstance(self.ids, list) else list(self.ids)
-        assert all(isinstance(i, (int, long)) for i in ids), \
-            "Only ids in (int, long) allowed."
+        assert all(
+            isinstance(
+                i, (int, long)
+            ) for i in ids
+        ), "Only ids in (int, long) allowed."
         names = ','.join('analytic_account_sequence_%05d' % i for i in ids)
         # RESTRICT is the default; it prevents dropping the sequence if an
         # object depends on it.
@@ -280,17 +328,17 @@ class AnalyticAccountSequence(models.Model):
 
     @api.model
     def next_by_code(self, sequence_code):
-        """ Draw an interpolated string using a sequence with the requested
-        code. If several sequences with the correct code are available to
-        the user (multi-company cases), the one from the user's current
-        company will be used.
-
-            :param dict context: context dictionary may contain a
-                ``force_company`` key with the ID of the company to
-                use instead of the user's current company for the
-                sequence selection. A matching sequence for that
-                specific company will get higher priority.
         """
+        Draw an interpolated string using a sequence with the requested code.
+       If several sequences with the correct code are available to the user
+       (multi-company cases), the one from the user's current company will
+       be used.
+       :param dict context: context dictionary may contain a
+       ``force_company`` key with the ID of the company to
+       use instead of the user's current company for the
+       sequence selection. A matching sequence for that
+       specific company will get higher priority.
+       """
         self.check_access_rights('read')
         company_ids = self.env['res.company'].search([]) + [False]
         ids = self.search(['&', ('code', '=', sequence_code),

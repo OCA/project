@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-# © 2015 Eficent Business and IT Consulting Services S.L. -
-# Jordi Ballester Alomar
+# © 2015 Eficent S.L. - Jordi Ballester Alomar
 # © 2015 Serpent Consulting Services Pvt. Ltd. - Sudhir Arya
+# © 2016 Matmoz d.o.o. - Matjaz Mozetic
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 from openerp import api, fields, models
 
@@ -10,15 +10,17 @@ class AccountAnalyticAccount(models.Model):
 
     _inherit = 'account.analytic.account'
 
-    @api.one
-    def _create_sequence(self):
+    @api.model
+    def _create_sequence(self, analytic_account_id):
         ir_sequence_obj = self.env['ir.sequence']
         account_sequence_obj = self.env['analytic.account.sequence']
-        ir_sequence = ir_sequence_obj.search([('code', '=',
-                                               'analytic.account.sequence')])
+        ir_sequence_ids = ir_sequence_obj.search(
+            [('code', '=', 'analytic.account.sequence')]
+        )
         vals = {}
-        if ir_sequence:
-            ir_sequence = ir_sequence[0]
+        if ir_sequence_ids:
+            ir_sequence_id = ir_sequence_ids[0]
+            ir_sequence = ir_sequence_obj.browse(ir_sequence_id)
             vals = {
                 'analytic_account_id': self.id,
                 'name': ir_sequence.name,
@@ -30,14 +32,23 @@ class AccountAnalyticAccount(models.Model):
                 'number_next': 1,
                 'number_increment': ir_sequence.number_increment,
                 'padding': ir_sequence.padding,
-                'company_id': ir_sequence.company_id and
-                ir_sequence.company_id.id or False,
+                'company_id': (
+                    ir_sequence.company_id and
+                    ir_sequence.company_id.id or
+                    False
+                ),
             }
         return account_sequence_obj.create(vals)
 
-    sequence_ids = fields.One2many('analytic.account.sequence',
-                                   'analytic_account_id',
-                                   "Child code sequence")
+    sequence_ids = fields.One2many(
+        'analytic.account.sequence',
+        'analytic_account_id',
+        "Child code sequence"
+    )
+
+    _defaults = {
+        'code': False
+    }
 
     @api.model
     def create(self, vals):
