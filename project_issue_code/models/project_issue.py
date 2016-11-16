@@ -19,12 +19,14 @@ class ProjectIssue(models.Model):
     @api.model
     def create(self, vals):
         if vals.get('issue_code', '/') == '/':
-            vals['issue_code'] = self.env['ir.sequence'].get('project.issue')
+            vals['issue_code'] = self.env['ir.sequence'].next_by_code(
+                'project.issue') or '/'
         return super(ProjectIssue, self).create(vals)
 
-    @api.one
+    @api.multi
     def copy(self, default=None):
         if default is None:
             default = {}
-        default['issue_code'] = self.env['ir.sequence'].get('project.issue')
+        default['issue_code'] = self.env['ir.sequence'].next_by_code(
+            'project.issue') or '/'
         return super(ProjectIssue, self).copy(default)

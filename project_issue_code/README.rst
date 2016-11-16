@@ -9,8 +9,20 @@ Project Issue Code
 This module extends the functionality of project_issue that allows project issue has a code.
 Issue Code will be automatically filled in accordance with the sequence.
 
-Configuration
-=============
+Installation
+============
+
+To install this module, you need to:
+
+1.  Clone the branch 9.0 of the repository https://github.com/OCA/project
+2.  Add the path to this repository in your configuration (addons-path)
+3.  Update the module list
+4.  Go to menu *Setting -> Modules -> Local Modules*
+5.  Search For *Project Issue Code*
+6.  Install the module
+
+Usage
+=====
 
 After installing this module, every project issue will have:
     * A new field called "issue_code"
@@ -19,6 +31,10 @@ After installing this module, every project issue will have:
 Field "issue_code" is readonly and its value will be filled in accordance with the sequence.
 For the first time installation, the sequence is automatically configured.
 
+.. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
+   :alt: Try me on Runbot
+   :target: https://runbot.odoo-community.org/runbot/140/9.0
+
 
 Bug Tracker
 ===========
@@ -26,11 +42,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues
 <https://github.com/OCA/project/issues>`_. In case of trouble, please
 check there if your issue has already been reported. If you spotted it first,
-help us smashing it by providing a detailed and welcomed `feedback
-<https://github.com/OCA/
-project/issues/new?body=module:%20
-project_issue_code%0Aversion:%20
-8.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+help us smashing it by providing a detailed and welcomed feedback.
 
 
 Credits
@@ -45,12 +57,6 @@ Contributors
 ------------
 
 * Michael Viriyananda <viriyananda.michael@gmail.com>
-
-Inspired By:
-- project_task_code <https://github.com/OCA/project/tree/8.0/project_task_code>
-    * Oihane Crucelaegui <oihanecrucelaegi@avanzosc.es>
-    * Pedro M. Baeza <pedro.baeza@serviciosbaeza.com>
-    * Ana Juaristi <anajuarist@avanzosc.es>
 
 Maintainer
 ----------
