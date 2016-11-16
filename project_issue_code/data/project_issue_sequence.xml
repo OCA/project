@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<openerp>
+<odoo>
     <data noupdate="1">
-        <record id="project_issue_sequence_type" model="ir.sequence.type">
-            <field name="name">Issue code type</field>
-            <field name="code">project.issue</field>
-        </record>
         <record id="project_issue_sequence" model="ir.sequence">
             <field name="name">Issue code</field>
             <field name="code">project.issue</field>
@@ -12,4 +8,4 @@
             <field name="prefix">IS</field>
         </record>
     </data>
-</openerp>
+</odoo>

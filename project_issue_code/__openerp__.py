@@ -4,12 +4,11 @@
 
 {
     "name": "Project Issue Code",
-    "version": "8.0.1.0.0",
-    'author': 'Michael Viriyananda,Odoo Community Association (OCA)',
+    "version": "9.0.1.0.0",
+    "summary": "Adding Field Code For Project Issue",
+    "author": "OpenSynergy Indonesia,Odoo Community Association (OCA)",
+    "website": "https://opensynergy-indonesia.com",
     "category": "Project Management",
-    'summary': 'Adding Field Code For Project Issue',
-    'website': 'http://github.com/mikevhe18',
-    "license": "AGPL-3",
     "depends": [
         "project_issue",
     ],
@@ -18,6 +17,7 @@
         "views/project_issue_view.xml",
     ],
     "installable": True,
+    "license": "AGPL-3",
     "pre_init_hook": "create_code_equal_to_id",
     "post_init_hook": "assign_old_sequences",
 }

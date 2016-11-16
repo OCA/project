@@ -26,8 +26,9 @@ def assign_old_sequences(cr, registry):
     sequence_obj = registry['ir.sequence']
     issue_ids = issue_obj.search(cr, SUPERUSER_ID, [], order="id")
     for issue_id in issue_ids:
+        issue_code = sequence_obj.next_by_code(
+            cr, SUPERUSER_ID, 'project.issue')
         cr.execute('UPDATE project_issue '
                    'SET issue_code = \'%s\' '
                    'WHERE id = %d;' %
-                   (sequence_obj.get(cr, SUPERUSER_ID, 'project.issue'),
-                    issue_id))
+                   (issue_code, issue_id))
