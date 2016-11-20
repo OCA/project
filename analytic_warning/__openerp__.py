@@ -18,7 +18,7 @@
 {
     'name': 'Contract Warning Messages for Project Tasks',
     'summary': 'Display contract related  warning messages on Tasks',
-    'version': '1.0',
+    'version': '8.0.1.0.0',
     "category": "Project Management",
     'author': "Daniel Reis, Odoo Community Association (OCA)",
     'website': 'https://github.com/OCA/project-service',
