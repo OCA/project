@@ -18,11 +18,11 @@
 {
     'name': 'Reassign Project Task',
     'summary': 'Reassign Tasks to other Responsibles and Projects',
-    'version': '1.2',
+    'version': '8.0.1.2.0',
     'category': 'Project Management',
     'author': 'Daniel Reis, Odoo Community Association (OCA)',
     'license': 'AGPL-3',
-    'website': 'https://github.com/OCA/project-service',
+    'website': 'https://github.com/OCA/project',
     'depends': [
         'project',
     ],
