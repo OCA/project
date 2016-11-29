@@ -3,14 +3,14 @@
 # * project_task_materials_analytic_partner
 # 
 # Translators:
-# Armando Vulcano Junior <vulcano@uol.com.br>, 2016
+# OCA Transbot <transbot@odoo-community.org>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-29 02:49+0000\n"
-"PO-Revision-Date: 2016-07-29 02:49+0000\n"
-"Last-Translator: Armando Vulcano Junior <vulcano@uol.com.br>, 2016\n"
+"POT-Creation-Date: 2016-10-17 13:09+0000\n"
+"PO-Revision-Date: 2016-10-17 13:09+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2016\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/teams/23907/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,7 +26,7 @@ msgstr ""
 #. module: project_task_materials_analytic_partner
 #: field:project.task.materials,other_partner_id:0
 msgid "Other Partner"
-msgstr ""
+msgstr "Outro parceiro"
 
 #. module: project_task_materials_analytic_partner
 #: model:ir.model,name:project_task_materials_analytic_partner.model_project_task_materials

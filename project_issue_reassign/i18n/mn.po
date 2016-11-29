@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-29 02:49+0000\n"
-"PO-Revision-Date: 2016-07-29 02:49+0000\n"
+"POT-Creation-Date: 2016-10-17 13:09+0000\n"
+"PO-Revision-Date: 2016-10-17 13:09+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2016\n"
 "Language-Team: Mongolian (https://www.transifex.com/oca/teams/23907/mn/)\n"
 "MIME-Version: 1.0\n"
@@ -31,22 +31,22 @@ msgstr "Цуцлах"
 #. module: project_issue_reassign
 #: field:project.issue.reassign,create_uid:0
 msgid "Created by"
-msgstr ""
+msgstr "Үүсгэгч"
 
 #. module: project_issue_reassign
 #: field:project.issue.reassign,create_date:0
 msgid "Created on"
-msgstr ""
+msgstr "Үүсгэсэн"
 
 #. module: project_issue_reassign
 #: field:project.issue.reassign,display_name:0
 msgid "Display Name"
-msgstr ""
+msgstr "Дэлгэцийн Нэр"
 
 #. module: project_issue_reassign
 #: field:project.issue.reassign,id:0
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_issue_reassign
 #: model:ir.model,name:project_issue_reassign.model_project_issue_reassign
@@ -56,17 +56,17 @@ msgstr ""
 #. module: project_issue_reassign
 #: field:project.issue.reassign,__last_update:0
 msgid "Last Modified on"
-msgstr ""
+msgstr "Сүүлийн засвар хийсэн огноо"
 
 #. module: project_issue_reassign
 #: field:project.issue.reassign,write_uid:0
 msgid "Last Updated by"
-msgstr ""
+msgstr "Сүүлийн засвар хийсэн"
 
 #. module: project_issue_reassign
 #: field:project.issue.reassign,write_date:0
 msgid "Last Updated on"
-msgstr ""
+msgstr "Сүүлийн засвар хийсэн огноо"
 
 #. module: project_issue_reassign
 #: code:addons/project_issue_reassign/project.py:30

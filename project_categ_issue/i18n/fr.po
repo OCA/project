@@ -3,13 +3,14 @@
 # * project_categ_issue
 # 
 # Translators:
+# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-24 08:57+0000\n"
-"PO-Revision-Date: 2015-07-21 19:21+0000\n"
-"Last-Translator: <>\n"
+"POT-Creation-Date: 2016-10-17 13:09+0000\n"
+"PO-Revision-Date: 2016-11-14 11:57+0000\n"
+"Last-Translator: Christophe CHAUVET <christophe.chauvet@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/oca/OCA-project-8-0/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,7 +21,7 @@ msgstr ""
 #. module: project_categ_issue
 #: field:project.issue,issue_categ_id:0
 msgid "Category Root"
-msgstr ""
+msgstr "Catégorie racine"
 
 #. module: project_categ_issue
 #: model:ir.model,name:project_categ_issue.model_project_project
@@ -35,7 +36,7 @@ msgstr "Incident"
 #. module: project_categ_issue
 #: field:project.project,issue_categ_id:0
 msgid "Root Category for Issues"
-msgstr ""
+msgstr "Catégorie racine pour les incidents"
 
 #. module: project_categ_issue
 #: view:project.issue:project_categ_issue.project_issue_form_view_categs
@@ -45,4 +46,4 @@ msgstr "onchange_project(project_id)"
 #. module: project_categ_issue
 #: view:project.issue:project_categ_issue.project_issue_form_view_categs
 msgid "{'required':[('issue_categ_id','!=',False)]}"
-msgstr ""
+msgstr "{'required':[('issue_categ_id','!=',False)]}"

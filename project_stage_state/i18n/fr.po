@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-18 02:39+0000\n"
-"PO-Revision-Date: 2016-10-04 09:43+0000\n"
+"POT-Creation-Date: 2016-10-17 13:09+0000\n"
+"PO-Revision-Date: 2016-11-25 14:56+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: French (http://www.transifex.com/oca/OCA-project-8-0/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -20,7 +20,7 @@ msgstr ""
 #. module: project_stage_state
 #: selection:project.task.type,state:0
 msgid "Cancelled"
-msgstr ""
+msgstr "Annulé"
 
 #. module: project_stage_state
 #: selection:project.task.type,state:0
@@ -40,7 +40,7 @@ msgstr ""
 #. module: project_stage_state
 #: selection:project.task.type,state:0
 msgid "New"
-msgstr ""
+msgstr "Nouveau"
 
 #. module: project_stage_state
 #: selection:project.task.type,state:0
@@ -60,9 +60,9 @@ msgstr "Tâche"
 #. module: project_stage_state
 #: model:ir.model,name:project_stage_state.model_project_task_type
 msgid "Task Stage"
-msgstr ""
+msgstr "Étape de la tâche"
 
 #. module: project_stage_state
 #: view:project.task:project_stage_state.project_task_form_stage
 msgid "{'fold_field': 'fold_statusbar'}"
-msgstr ""
+msgstr "{'fold_field': 'fold_statusbar'}"

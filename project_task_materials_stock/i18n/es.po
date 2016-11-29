@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-19 20:32+0000\n"
-"PO-Revision-Date: 2016-05-17 08:08+0000\n"
+"POT-Creation-Date: 2016-10-17 13:09+0000\n"
+"PO-Revision-Date: 2016-10-14 08:28+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Spanish (http://www.transifex.com/oca/OCA-project-8-0/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -86,7 +86,7 @@ msgstr "Productos"
 #. module: project_task_materials_stock
 #: field:project.task.materials,stock_move_id:0
 msgid "Stock Move"
-msgstr ""
+msgstr "Movimiento de existencias"
 
 #. module: project_task_materials_stock
 #: view:project.task:project_task_materials_stock.view_project_task_form_materials_stock
@@ -123,3 +123,11 @@ msgstr "Consumir materiales"
 #: field:project.task.materials,product_uom:0
 msgid "Unit of Measure"
 msgstr "Unidad de medida"
+
+#. module: project_task_materials_stock
+#: code:addons/project_task_materials_stock/models/project.py:89
+#, python-format
+msgid ""
+"You can't move to a not consume stage if there are already invoiced analytic"
+" lines"
+msgstr ""

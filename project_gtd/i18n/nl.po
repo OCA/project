@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-02 14:57+0000\n"
-"PO-Revision-Date: 2016-09-17 18:43+0000\n"
+"POT-Creation-Date: 2016-10-17 13:09+0000\n"
+"PO-Revision-Date: 2016-11-25 14:57+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Dutch (http://www.transifex.com/oca/OCA-project-8-0/language/nl/)\n"
 "MIME-Version: 1.0\n"
@@ -62,7 +62,7 @@ msgstr "Contexten zijn gedefinieerd in de \"Getting Things Done\" methode. Ze la
 #: field:project.timebox.empty,create_uid:0
 #: field:project.timebox.fill.plan,create_uid:0
 msgid "Created by"
-msgstr ""
+msgstr "Aangemaakt door"
 
 #. module: project_gtd
 #: field:project.gtd.context,create_date:0
@@ -70,7 +70,7 @@ msgstr ""
 #: field:project.timebox.empty,create_date:0
 #: field:project.timebox.fill.plan,create_date:0
 msgid "Created on"
-msgstr ""
+msgstr "Aangemaakt op"
 
 #. module: project_gtd
 #: field:project.gtd.context,display_name:0
@@ -116,7 +116,7 @@ msgstr "Thuis"
 #: field:project.gtd.context,id:0 field:project.gtd.timebox,id:0
 #: field:project.timebox.empty,id:0 field:project.timebox.fill.plan,id:0
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_gtd
 #: view:project.task:project_gtd.view_task_gtd_search
@@ -136,7 +136,7 @@ msgstr "Laatst bijgewerkt op"
 #: field:project.timebox.empty,write_uid:0
 #: field:project.timebox.fill.plan,write_uid:0
 msgid "Last Updated by"
-msgstr ""
+msgstr "Laatst bijgewerkt door"
 
 #. module: project_gtd
 #: field:project.gtd.context,write_date:0
@@ -144,7 +144,7 @@ msgstr ""
 #: field:project.timebox.empty,write_date:0
 #: field:project.timebox.fill.plan,write_date:0
 msgid "Last Updated on"
-msgstr ""
+msgstr "Laatst bijgewerkt op"
 
 #. module: project_gtd
 #: model:project.gtd.timebox,name:project_gtd.timebox_lt

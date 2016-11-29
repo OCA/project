@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-31 18:04+0000\n"
-"PO-Revision-Date: 2015-07-21 19:21+0000\n"
+"POT-Creation-Date: 2016-10-17 13:09+0000\n"
+"PO-Revision-Date: 2016-11-22 16:25+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Swedish (http://www.transifex.com/oca/OCA-project-8-0/language/sv/)\n"
 "MIME-Version: 1.0\n"
@@ -62,7 +62,7 @@ msgstr "Kontext är definierade av \"Getting Things Done\"-metoden. Det tillåte
 #: field:project.timebox.empty,create_uid:0
 #: field:project.timebox.fill.plan,create_uid:0
 msgid "Created by"
-msgstr ""
+msgstr "Skapad av"
 
 #. module: project_gtd
 #: field:project.gtd.context,create_date:0
@@ -70,7 +70,15 @@ msgstr ""
 #: field:project.timebox.empty,create_date:0
 #: field:project.timebox.fill.plan,create_date:0
 msgid "Created on"
-msgstr ""
+msgstr "Skapad den"
+
+#. module: project_gtd
+#: field:project.gtd.context,display_name:0
+#: field:project.gtd.timebox,display_name:0
+#: field:project.timebox.empty,display_name:0
+#: field:project.timebox.fill.plan,display_name:0
+msgid "Display Name"
+msgstr "Visa namn"
 
 #. module: project_gtd
 #: model:ir.actions.act_window,name:project_gtd.action_project_gtd_empty
@@ -108,7 +116,7 @@ msgstr "Hemma"
 #: field:project.gtd.context,id:0 field:project.gtd.timebox,id:0
 #: field:project.timebox.empty,id:0 field:project.timebox.fill.plan,id:0
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_gtd
 #: view:project.task:project_gtd.view_task_gtd_search
@@ -116,11 +124,19 @@ msgid "Last Message"
 msgstr ""
 
 #. module: project_gtd
+#: field:project.gtd.context,__last_update:0
+#: field:project.gtd.timebox,__last_update:0
+#: field:project.timebox.empty,__last_update:0
+#: field:project.timebox.fill.plan,__last_update:0
+msgid "Last Modified on"
+msgstr "Senast redigerad"
+
+#. module: project_gtd
 #: field:project.gtd.context,write_uid:0 field:project.gtd.timebox,write_uid:0
 #: field:project.timebox.empty,write_uid:0
 #: field:project.timebox.fill.plan,write_uid:0
 msgid "Last Updated by"
-msgstr ""
+msgstr "Senast uppdaterad av"
 
 #. module: project_gtd
 #: field:project.gtd.context,write_date:0
@@ -128,7 +144,7 @@ msgstr ""
 #: field:project.timebox.empty,write_date:0
 #: field:project.timebox.fill.plan,write_date:0
 msgid "Last Updated on"
-msgstr ""
+msgstr "Senast uppdaterad"
 
 #. module: project_gtd
 #: model:project.gtd.timebox,name:project_gtd.timebox_lt

@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-31 18:04+0000\n"
-"PO-Revision-Date: 2015-07-21 19:20+0000\n"
-"Last-Translator: <>\n"
+"POT-Creation-Date: 2016-10-17 13:09+0000\n"
+"PO-Revision-Date: 2016-10-11 09:48+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Latvian (http://www.transifex.com/oca/OCA-project-8-0/language/lv/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -96,13 +96,13 @@ msgstr ""
 #: field:project.sla,create_uid:0 field:project.sla.control,create_uid:0
 #: field:project.sla.line,create_uid:0
 msgid "Created by"
-msgstr ""
+msgstr "Izveidoja"
 
 #. module: project_sla
 #: field:project.sla,create_date:0 field:project.sla.control,create_date:0
 #: field:project.sla.line,create_date:0
 msgid "Created on"
-msgstr ""
+msgstr "Izveidots"
 
 #. module: project_sla
 #: help:project.sla,control_field_id:0
@@ -113,6 +113,14 @@ msgstr ""
 #: field:project.sla,sla_line_ids:0
 #: view:project.sla.line:project_sla.view_sla_lines_tree
 msgid "Definitions"
+msgstr ""
+
+#. module: project_sla
+#: field:project.sla,display_name:0 field:project.sla.control,display_name:0
+#: field:project.sla.controlled,display_name:0
+#: field:project.sla.line,display_name:0
+#: field:project.sla.report,display_name:0
+msgid "Display Name"
 msgstr ""
 
 #. module: project_sla
@@ -171,7 +179,7 @@ msgstr ""
 #: field:project.sla.controlled,id:0 field:project.sla.line,id:0
 #: field:project.sla.report,id:0
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_sla
 #: field:project.sla.report,sla_closed:0
@@ -179,16 +187,24 @@ msgid "Is Closed"
 msgstr ""
 
 #. module: project_sla
+#: field:project.sla,__last_update:0 field:project.sla.control,__last_update:0
+#: field:project.sla.controlled,__last_update:0
+#: field:project.sla.line,__last_update:0
+#: field:project.sla.report,__last_update:0
+msgid "Last Modified on"
+msgstr ""
+
+#. module: project_sla
 #: field:project.sla,write_uid:0 field:project.sla.control,write_uid:0
 #: field:project.sla.line,write_uid:0
 msgid "Last Updated by"
-msgstr ""
+msgstr "Pēdējo reizi atjaunoja"
 
 #. module: project_sla
 #: field:project.sla,write_date:0 field:project.sla.control,write_date:0
 #: field:project.sla.line,write_date:0
 msgid "Last Updated on"
-msgstr ""
+msgstr "Pēdējās izmaiņas"
 
 #. module: project_sla
 #: field:project.sla.control,sla_limit_date:0
@@ -381,7 +397,7 @@ msgstr "Uzdevums"
 #. module: project_sla
 #: field:project.sla,name:0 field:project.sla.line,name:0
 msgid "Title"
-msgstr ""
+msgstr "Nosaukums"
 
 #. module: project_sla
 #: field:project.sla.report,total_count:0

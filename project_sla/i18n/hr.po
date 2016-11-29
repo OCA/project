@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-18 02:39+0000\n"
-"PO-Revision-Date: 2016-10-05 06:35+0000\n"
+"POT-Creation-Date: 2016-10-17 13:09+0000\n"
+"PO-Revision-Date: 2016-11-29 09:32+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Croatian (http://www.transifex.com/oca/OCA-project-8-0/language/hr/)\n"
 "MIME-Version: 1.0\n"
@@ -58,7 +58,7 @@ msgstr ""
 #. module: project_sla
 #: field:project.sla,active:0
 msgid "Active"
-msgstr ""
+msgstr "Aktivno"
 
 #. module: project_sla
 #: model:ir.model,name:project_sla.model_account_analytic_account
@@ -126,7 +126,7 @@ msgstr "Naziv "
 #. module: project_sla
 #: field:project.sla.control,doc_id:0
 msgid "Document ID"
-msgstr ""
+msgstr "ID dokumenta"
 
 #. module: project_sla
 #: field:project.sla.control,doc_model:0
@@ -397,7 +397,7 @@ msgstr "Zadatak"
 #. module: project_sla
 #: field:project.sla,name:0 field:project.sla.line,name:0
 msgid "Title"
-msgstr ""
+msgstr "Titula"
 
 #. module: project_sla
 #: field:project.sla.report,total_count:0

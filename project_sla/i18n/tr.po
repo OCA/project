@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-02 14:58+0000\n"
-"PO-Revision-Date: 2016-09-09 11:33+0000\n"
+"POT-Creation-Date: 2016-10-17 13:09+0000\n"
+"PO-Revision-Date: 2016-11-25 14:57+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Turkish (http://www.transifex.com/oca/OCA-project-8-0/language/tr/)\n"
 "MIME-Version: 1.0\n"
@@ -162,7 +162,7 @@ msgstr ""
 #. module: project_sla
 #: view:project.sla.report:project_sla.view_project_sla_report_search
 msgid "Group By..."
-msgstr ""
+msgstr "Grupla..."
 
 #. module: project_sla
 #: field:project.sla.line,limit_qty:0
@@ -276,7 +276,7 @@ msgstr ""
 #. module: project_sla
 #: view:project.sla:project_sla.view_sla_form
 msgid "Rules"
-msgstr ""
+msgstr "Kurallar"
 
 #. module: project_sla
 #: model:ir.actions.act_window,name:project_sla.action_project_sla_report

@@ -1,0 +1,80 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * project_task_materials
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: project (8.0)\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-10-17 13:09+0000\n"
+"PO-Revision-Date: 2016-11-22 16:25+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
+"Language-Team: Slovak (http://www.transifex.com/oca/OCA-project-8-0/language/sk/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: sk\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
+
+#. module: project_task_materials
+#: field:project.task.materials,create_uid:0
+msgid "Created by"
+msgstr "Vytvoril"
+
+#. module: project_task_materials
+#: field:project.task.materials,create_date:0
+msgid "Created on"
+msgstr "Vytvorené"
+
+#. module: project_task_materials
+#: field:project.task.materials,display_name:0
+msgid "Display Name"
+msgstr "Zobraziť meno"
+
+#. module: project_task_materials
+#: field:project.task.materials,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: project_task_materials
+#: field:project.task.materials,__last_update:0
+msgid "Last Modified on"
+msgstr "Posledná modifikácia"
+
+#. module: project_task_materials
+#: field:project.task.materials,write_uid:0
+msgid "Last Updated by"
+msgstr "Naposledy upravoval"
+
+#. module: project_task_materials
+#: field:project.task.materials,write_date:0
+msgid "Last Updated on"
+msgstr "Naposledy upravované"
+
+#. module: project_task_materials
+#: view:project.task:project_task_materials.view_project_task_form_materials
+#: field:project.task,material_ids:0
+msgid "Materials used"
+msgstr ""
+
+#. module: project_task_materials
+#: field:project.task.materials,product_id:0
+msgid "Product"
+msgstr ""
+
+#. module: project_task_materials
+#: field:project.task.materials,quantity:0
+msgid "Quantity"
+msgstr ""
+
+#. module: project_task_materials
+#: model:ir.model,name:project_task_materials.model_project_task
+#: field:project.task.materials,task_id:0
+msgid "Task"
+msgstr ""
+
+#. module: project_task_materials
+#: model:ir.model,name:project_task_materials.model_project_task_materials
+msgid "Task Materials Used"
+msgstr ""

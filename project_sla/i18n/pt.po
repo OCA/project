@@ -4,12 +4,13 @@
 # 
 # Translators:
 # Daniel Reis, 2015
+# Daniel Reis, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-12 01:44+0000\n"
-"PO-Revision-Date: 2015-12-09 22:27+0000\n"
+"POT-Creation-Date: 2016-10-17 13:09+0000\n"
+"PO-Revision-Date: 2016-11-25 14:58+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Portuguese (http://www.transifex.com/oca/OCA-project-8-0/language/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -117,6 +118,14 @@ msgid "Definitions"
 msgstr "Definições"
 
 #. module: project_sla
+#: field:project.sla,display_name:0 field:project.sla.control,display_name:0
+#: field:project.sla.controlled,display_name:0
+#: field:project.sla.line,display_name:0
+#: field:project.sla.report,display_name:0
+msgid "Display Name"
+msgstr "Nome"
+
+#. module: project_sla
 #: field:project.sla.control,doc_id:0
 msgid "Document ID"
 msgstr "ID Documento"
@@ -178,6 +187,14 @@ msgstr "ID"
 #: field:project.sla.report,sla_closed:0
 msgid "Is Closed"
 msgstr "Concluído"
+
+#. module: project_sla
+#: field:project.sla,__last_update:0 field:project.sla.control,__last_update:0
+#: field:project.sla.controlled,__last_update:0
+#: field:project.sla.line,__last_update:0
+#: field:project.sla.report,__last_update:0
+msgid "Last Modified on"
+msgstr "Modificado a última vez por"
 
 #. module: project_sla
 #: field:project.sla,write_uid:0 field:project.sla.control,write_uid:0

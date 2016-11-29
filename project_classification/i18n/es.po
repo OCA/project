@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-18 02:39+0000\n"
-"PO-Revision-Date: 2016-10-04 09:43+0000\n"
+"POT-Creation-Date: 2016-10-17 13:09+0000\n"
+"PO-Revision-Date: 2016-11-25 14:55+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Spanish (http://www.transifex.com/oca/OCA-project-8-0/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -284,7 +284,7 @@ msgstr "Empresa"
 #. module: project_classification
 #: field:project.project,pricelist_id:0
 msgid "Pricelist"
-msgstr ""
+msgstr "Tarifa"
 
 #. module: project_classification
 #: model:ir.model,name:project_classification.model_project_project
@@ -447,7 +447,7 @@ msgstr ""
 #. module: project_classification
 #: field:project.project,invoiced_total:0
 msgid "Total Invoiced"
-msgstr ""
+msgstr "Total facturado"
 
 #. module: project_classification
 #: field:project.project,remaining_total:0
@@ -494,7 +494,7 @@ msgstr ""
 #. module: project_classification
 #: field:project.project,user_ids:0
 msgid "User"
-msgstr ""
+msgstr "Usuario"
 
 #. module: project_classification
 #: help:project.project,to_invoice:0

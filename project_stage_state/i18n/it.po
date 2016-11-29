@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-18 02:39+0000\n"
-"PO-Revision-Date: 2016-10-01 06:52+0000\n"
+"POT-Creation-Date: 2016-10-17 13:09+0000\n"
+"PO-Revision-Date: 2016-11-25 14:57+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Italian (http://www.transifex.com/oca/OCA-project-8-0/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -20,12 +20,12 @@ msgstr ""
 #. module: project_stage_state
 #: selection:project.task.type,state:0
 msgid "Cancelled"
-msgstr ""
+msgstr "Annullato"
 
 #. module: project_stage_state
 #: selection:project.task.type,state:0
 msgid "Done"
-msgstr ""
+msgstr "Completato"
 
 #. module: project_stage_state
 #: field:project.task.type,fold_statusbar:0
@@ -40,7 +40,7 @@ msgstr ""
 #. module: project_stage_state
 #: selection:project.task.type,state:0
 msgid "New"
-msgstr ""
+msgstr "Nuovo"
 
 #. module: project_stage_state
 #: selection:project.task.type,state:0
@@ -50,7 +50,7 @@ msgstr "Attesa"
 #. module: project_stage_state
 #: field:project.task,state:0 field:project.task.type,state:0
 msgid "State"
-msgstr ""
+msgstr "Stato"
 
 #. module: project_stage_state
 #: model:ir.model,name:project_stage_state.model_project_task

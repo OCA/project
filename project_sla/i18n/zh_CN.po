@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-18 02:39+0000\n"
-"PO-Revision-Date: 2016-10-04 09:43+0000\n"
+"POT-Creation-Date: 2016-10-17 13:09+0000\n"
+"PO-Revision-Date: 2016-11-25 14:56+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/oca/OCA-project-8-0/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -121,12 +121,12 @@ msgstr ""
 #: field:project.sla.line,display_name:0
 #: field:project.sla.report,display_name:0
 msgid "Display Name"
-msgstr ""
+msgstr "显示名称"
 
 #. module: project_sla
 #: field:project.sla.control,doc_id:0
 msgid "Document ID"
-msgstr ""
+msgstr "文档ID"
 
 #. module: project_sla
 #: field:project.sla.control,doc_model:0
@@ -192,7 +192,7 @@ msgstr ""
 #: field:project.sla.line,__last_update:0
 #: field:project.sla.report,__last_update:0
 msgid "Last Modified on"
-msgstr ""
+msgstr "最后修改时间"
 
 #. module: project_sla
 #: field:project.sla,write_uid:0 field:project.sla.control,write_uid:0
@@ -397,7 +397,7 @@ msgstr "任务"
 #. module: project_sla
 #: field:project.sla,name:0 field:project.sla.line,name:0
 msgid "Title"
-msgstr ""
+msgstr "称谓"
 
 #. module: project_sla
 #: field:project.sla.report,total_count:0

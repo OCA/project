@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-18 02:39+0000\n"
-"PO-Revision-Date: 2016-10-01 06:52+0000\n"
+"POT-Creation-Date: 2016-10-17 13:09+0000\n"
+"PO-Revision-Date: 2016-11-08 16:59+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Italian (http://www.transifex.com/oca/OCA-project-8-0/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -51,7 +51,7 @@ msgstr ""
 #. module: project_task_materials_stock
 #: selection:project.task,stock_state:0
 msgid "Done"
-msgstr ""
+msgstr "Completato"
 
 #. module: project_task_materials_stock
 #: help:project.task,consume_material:0
@@ -79,7 +79,7 @@ msgstr "Attesa"
 #. module: project_task_materials_stock
 #: view:project.task:project_task_materials_stock.view_project_task_form_materials_stock
 msgid "Products"
-msgstr ""
+msgstr "Prodotti"
 
 #. module: project_task_materials_stock
 #: field:project.task.materials,stock_move_id:0
@@ -120,7 +120,7 @@ msgstr ""
 #. module: project_task_materials_stock
 #: field:project.task.materials,product_uom:0
 msgid "Unit of Measure"
-msgstr ""
+msgstr "Unità di Misura"
 
 #. module: project_task_materials_stock
 #: code:addons/project_task_materials_stock/models/project.py:89

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-18 02:39+0000\n"
+"POT-Creation-Date: 2016-10-17 13:09+0000\n"
 "PO-Revision-Date: 2015-07-21 19:20+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/oca/OCA-project-8-0/language/bg/)\n"
@@ -121,7 +121,7 @@ msgstr ""
 #: field:project.sla.line,display_name:0
 #: field:project.sla.report,display_name:0
 msgid "Display Name"
-msgstr ""
+msgstr "Име за Показване"
 
 #. module: project_sla
 #: field:project.sla.control,doc_id:0
@@ -345,7 +345,7 @@ msgstr ""
 #. module: project_sla
 #: field:project.sla.line,sequence:0
 msgid "Sequence"
-msgstr ""
+msgstr "Последователност"
 
 #. module: project_sla
 #: field:project.sla.control,sla_line_id:0
@@ -397,7 +397,7 @@ msgstr ""
 #. module: project_sla
 #: field:project.sla,name:0 field:project.sla.line,name:0
 msgid "Title"
-msgstr ""
+msgstr "Заглавие"
 
 #. module: project_sla
 #: field:project.sla.report,total_count:0

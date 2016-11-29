@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-02 14:57+0000\n"
+"POT-Creation-Date: 2016-10-17 13:09+0000\n"
 "PO-Revision-Date: 2015-07-21 19:20+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: Czech (http://www.transifex.com/oca/OCA-project-8-0/language/cs/)\n"
@@ -62,7 +62,7 @@ msgstr ""
 #: field:project.timebox.empty,create_uid:0
 #: field:project.timebox.fill.plan,create_uid:0
 msgid "Created by"
-msgstr ""
+msgstr "Vytvořil(a)"
 
 #. module: project_gtd
 #: field:project.gtd.context,create_date:0
@@ -70,7 +70,7 @@ msgstr ""
 #: field:project.timebox.empty,create_date:0
 #: field:project.timebox.fill.plan,create_date:0
 msgid "Created on"
-msgstr ""
+msgstr "Vytvořeno"
 
 #. module: project_gtd
 #: field:project.gtd.context,display_name:0
@@ -78,7 +78,7 @@ msgstr ""
 #: field:project.timebox.empty,display_name:0
 #: field:project.timebox.fill.plan,display_name:0
 msgid "Display Name"
-msgstr ""
+msgstr "Zobrazovaný název"
 
 #. module: project_gtd
 #: model:ir.actions.act_window,name:project_gtd.action_project_gtd_empty
@@ -116,7 +116,7 @@ msgstr ""
 #: field:project.gtd.context,id:0 field:project.gtd.timebox,id:0
 #: field:project.timebox.empty,id:0 field:project.timebox.fill.plan,id:0
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_gtd
 #: view:project.task:project_gtd.view_task_gtd_search
@@ -129,14 +129,14 @@ msgstr ""
 #: field:project.timebox.empty,__last_update:0
 #: field:project.timebox.fill.plan,__last_update:0
 msgid "Last Modified on"
-msgstr ""
+msgstr "Naposled upraveno"
 
 #. module: project_gtd
 #: field:project.gtd.context,write_uid:0 field:project.gtd.timebox,write_uid:0
 #: field:project.timebox.empty,write_uid:0
 #: field:project.timebox.fill.plan,write_uid:0
 msgid "Last Updated by"
-msgstr ""
+msgstr "Naposled upraveno"
 
 #. module: project_gtd
 #: field:project.gtd.context,write_date:0
@@ -144,7 +144,7 @@ msgstr ""
 #: field:project.timebox.empty,write_date:0
 #: field:project.timebox.fill.plan,write_date:0
 msgid "Last Updated on"
-msgstr ""
+msgstr "Naposled upraveno"
 
 #. module: project_gtd
 #: model:project.gtd.timebox,name:project_gtd.timebox_lt
@@ -160,7 +160,7 @@ msgstr ""
 #. module: project_gtd
 #: field:project.timebox.empty,name:0
 msgid "Name"
-msgstr ""
+msgstr "Název"
 
 #. module: project_gtd
 #: code:addons/project_gtd/wizard/project_gtd_empty.py:52
@@ -192,7 +192,7 @@ msgstr ""
 #. module: project_gtd
 #: field:project.gtd.context,sequence:0 field:project.gtd.timebox,sequence:0
 msgid "Sequence"
-msgstr ""
+msgstr "Číselná řada"
 
 #. module: project_gtd
 #: field:project.timebox.fill.plan,timebox_to_id:0
@@ -282,4 +282,4 @@ msgstr ""
 #. module: project_gtd
 #: view:project.timebox.fill.plan:project_gtd.view_project_gtd_fill
 msgid "or"
-msgstr ""
+msgstr "nebo"

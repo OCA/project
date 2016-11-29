@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-28 01:09+0000\n"
+"POT-Creation-Date: 2016-10-17 13:09+0000\n"
 "PO-Revision-Date: 2016-02-28 01:10+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: French (http://www.transifex.com/oca/OCA-project-8-0/language/fr/)\n"
@@ -32,7 +32,7 @@ msgstr "Incident"
 #: sql_constraint:project.issue:0
 #, python-format
 msgid "The code must be unique!"
-msgstr ""
+msgstr "Le code doit être unique!"
 
 #. module: project_issue_code
 #: view:project.issue:project_issue_code.project_issue_code_search_view

@@ -1,0 +1,80 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * service_desk
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: project (8.0)\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-10-17 13:09+0000\n"
+"PO-Revision-Date: 2016-10-11 12:04+0000\n"
+"Last-Translator: Kostas Goutoudis <goutoudis@gmail.com>\n"
+"Language-Team: Greek (Greece) (http://www.transifex.com/oca/OCA-project-8-0/language/el_GR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: el_GR\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: service_desk
+#: model:ir.model,name:service_desk.model_account_analytic_account
+msgid "Analytic Account"
+msgstr "Αναλυτικός Λογαριασμός"
+
+#. module: service_desk
+#: field:account.analytic.account,contact_id:0
+#: field:project.project,contact_id:0
+msgid "Contact"
+msgstr ""
+
+#. module: service_desk
+#: field:project.task,analytic_account_id:0
+msgid "Contract/Analytic"
+msgstr ""
+
+#. module: service_desk
+#: field:project.task,location_id:0
+msgid "Location"
+msgstr ""
+
+#. module: service_desk
+#: selection:project.project,use_analytic_account:0
+msgid "No"
+msgstr ""
+
+#. module: service_desk
+#: selection:project.project,use_analytic_account:0
+msgid "Optional"
+msgstr ""
+
+#. module: service_desk
+#: model:ir.model,name:service_desk.model_project_project
+msgid "Project"
+msgstr ""
+
+#. module: service_desk
+#: field:project.task,project_code:0
+msgid "Project Code"
+msgstr ""
+
+#. module: service_desk
+#: selection:project.project,use_analytic_account:0
+msgid "Required"
+msgstr ""
+
+#. module: service_desk
+#: model:ir.model,name:service_desk.model_project_task
+msgid "Task"
+msgstr ""
+
+#. module: service_desk
+#: field:project.project,use_analytic_account:0
+#: field:project.task,use_analytic_account:0
+msgid "Use Analytic Account"
+msgstr ""
+
+#. module: service_desk
+#: view:project.task:service_desk.view_project_task_form_sdesk
+msgid "onchange_project(project_id)"
+msgstr ""

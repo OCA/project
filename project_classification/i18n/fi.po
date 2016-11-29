@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-02 14:57+0000\n"
-"PO-Revision-Date: 2016-09-15 12:48+0000\n"
+"POT-Creation-Date: 2016-10-17 13:09+0000\n"
+"PO-Revision-Date: 2016-11-25 14:55+0000\n"
 "Last-Translator: Jarmo Kortetjärvi <jarmo.kortetjarvi@gmail.com>\n"
 "Language-Team: Finnish (http://www.transifex.com/oca/OCA-project-8-0/language/fi/)\n"
 "MIME-Version: 1.0\n"
@@ -277,7 +277,7 @@ msgstr ""
 #. module: project_classification
 #: view:project.project:project_classification.view_account_analytic_account_tree
 msgid "Partner"
-msgstr ""
+msgstr "Kumppani"
 
 #. module: project_classification
 #: field:project.project,pricelist_id:0
@@ -492,7 +492,7 @@ msgstr ""
 #. module: project_classification
 #: field:project.project,user_ids:0
 msgid "User"
-msgstr ""
+msgstr "Käyttäjä"
 
 #. module: project_classification
 #: help:project.project,to_invoice:0

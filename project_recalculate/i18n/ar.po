@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-02 14:58+0000\n"
-"PO-Revision-Date: 2016-05-17 08:06+0000\n"
+"POT-Creation-Date: 2016-10-17 13:09+0000\n"
+"PO-Revision-Date: 2016-11-25 14:57+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Arabic (http://www.transifex.com/oca/OCA-project-8-0/language/ar/)\n"
 "MIME-Version: 1.0\n"
@@ -68,12 +68,12 @@ msgstr ""
 #. module: project_recalculate
 #: field:project.recalculate.wizard,create_uid:0
 msgid "Created by"
-msgstr ""
+msgstr "أنشئ بواسطة"
 
 #. module: project_recalculate
 #: field:project.recalculate.wizard,create_date:0
 msgid "Created on"
-msgstr ""
+msgstr "أنشئ في"
 
 #. module: project_recalculate
 #: selection:project.project,calculation_type:0
@@ -93,7 +93,7 @@ msgstr ""
 #. module: project_recalculate
 #: field:project.recalculate.wizard,display_name:0
 msgid "Display Name"
-msgstr ""
+msgstr "اسم العرض"
 
 #. module: project_recalculate
 #: code:addons/project_recalculate/models/project_task.py:181
@@ -133,7 +133,7 @@ msgstr ""
 #. module: project_recalculate
 #: field:project.recalculate.wizard,id:0
 msgid "ID"
-msgstr ""
+msgstr "المعرف"
 
 #. module: project_recalculate
 #: help:project.task,include_in_recalculate:0
@@ -152,17 +152,17 @@ msgstr ""
 #. module: project_recalculate
 #: field:project.recalculate.wizard,__last_update:0
 msgid "Last Modified on"
-msgstr ""
+msgstr "آخر تعديل في"
 
 #. module: project_recalculate
 #: field:project.recalculate.wizard,write_uid:0
 msgid "Last Updated by"
-msgstr ""
+msgstr "آخر تحديث بواسطة"
 
 #. module: project_recalculate
 #: field:project.recalculate.wizard,write_date:0
 msgid "Last Updated on"
-msgstr ""
+msgstr "آخر تحديث في"
 
 #. module: project_recalculate
 #: model:ir.model,name:project_recalculate.model_project_project
