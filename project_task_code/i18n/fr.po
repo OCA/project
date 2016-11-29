@@ -4,6 +4,7 @@
 # 
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2016
+# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
@@ -34,3 +35,8 @@ msgstr "Numéro de la tâche"
 #, python-format
 msgid "The code must be unique!"
 msgstr "Le code doit être unique!"
+
+#. module: project_task_code
+#: view:project.task:project_task_code.project_task_code_search_view
+msgid "['|', ('name', 'ilike', self), ('code', 'ilike', self)]"
+msgstr "['|', ('name', 'ilike', self), ('code', 'ilike', self)]"
