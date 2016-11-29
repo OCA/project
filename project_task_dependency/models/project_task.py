@@ -54,8 +54,11 @@ class ProjectTask(models.Model):
 
     @api.model
     def get_depending_tasks(self, task, recursive=False):
-        depending_tasks = self.search([('dependency_task_ids', 'in', task.id)])
-        if recursive:
-            for t in depending_tasks:
-                depending_tasks += self.get_depending_tasks(t, recursive)
-        return depending_tasks
+        if not isinstance(task.id, models.NewId):
+            depending_tasks = self.search([(
+                'dependency_task_ids', 'in', task.id)
+            ])
+            if recursive:
+                for t in depending_tasks:
+                    depending_tasks += self.get_depending_tasks(t, recursive)
+            return depending_tasks
