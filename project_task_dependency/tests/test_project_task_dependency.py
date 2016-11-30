@@ -5,20 +5,20 @@
 from odoo.tests.common import TransactionCase
 
 
-class ProjectTaskDependencyTest(TransactionCase):
+class TestProjectTaskDependency(TransactionCase):
 
     def setUp(self):
-        super(ProjectTaskDependencyTest, self).setUp()
+        super(TestProjectTaskDependency, self).setUp()
         self.task1 = self.env['project.task'].create({
             'name': '1'
         })
         self.task2 = self.env['project.task'].create({
             'name': '2',
-            'dependency_task_ids': self.task1
+            'dependency_task_ids': [(6, 0, [self.task1.id])]
         })
         self.task3 = self.env['project.task'].create({
             'name': '3',
-            'dependency_task_ids': self.task2
+            'dependency_task_ids': [(6, 0, [self.task2.id])]
         })
 
     def test_dependency_path(self):
