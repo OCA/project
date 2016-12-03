@@ -78,7 +78,7 @@ msgstr "Créé le"
 #: field:project.timebox.empty,display_name:0
 #: field:project.timebox.fill.plan,display_name:0
 msgid "Display Name"
-msgstr ""
+msgstr "Nom affiché"
 
 #. module: project_gtd
 #: model:ir.actions.act_window,name:project_gtd.action_project_gtd_empty
@@ -129,7 +129,7 @@ msgstr ""
 #: field:project.timebox.empty,__last_update:0
 #: field:project.timebox.fill.plan,__last_update:0
 msgid "Last Modified on"
-msgstr ""
+msgstr "Dernière modification le"
 
 #. module: project_gtd
 #: field:project.gtd.context,write_uid:0 field:project.gtd.timebox,write_uid:0

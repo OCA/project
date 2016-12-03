@@ -51,7 +51,7 @@ msgstr ""
 #. module: project_issue_task
 #: field:project.task.cause,display_name:0
 msgid "Display Name"
-msgstr ""
+msgstr "Nom affiché"
 
 #. module: project_issue_task
 #: field:project.task.cause,id:0
@@ -72,7 +72,7 @@ msgstr ""
 #. module: project_issue_task
 #: field:project.task.cause,__last_update:0
 msgid "Last Modified on"
-msgstr ""
+msgstr "Dernière modification le"
 
 #. module: project_issue_task
 #: field:project.task.cause,write_uid:0

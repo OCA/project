@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-10-17 13:09+0000\n"
-"PO-Revision-Date: 2016-11-25 14:57+0000\n"
+"PO-Revision-Date: 2016-12-01 10:15+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: French (Switzerland) (http://www.transifex.com/oca/OCA-project-8-0/language/fr_CH/)\n"
 "MIME-Version: 1.0\n"
@@ -30,7 +30,7 @@ msgstr "Créé le"
 #. module: project_task_materials
 #: field:project.task.materials,display_name:0
 msgid "Display Name"
-msgstr ""
+msgstr "Nom affiché"
 
 #. module: project_task_materials
 #: field:project.task.materials,id:0
@@ -40,7 +40,7 @@ msgstr "ID"
 #. module: project_task_materials
 #: field:project.task.materials,__last_update:0
 msgid "Last Modified on"
-msgstr ""
+msgstr "Dernière modification le"
 
 #. module: project_task_materials
 #: field:project.task.materials,write_uid:0
@@ -61,7 +61,7 @@ msgstr ""
 #. module: project_task_materials
 #: field:project.task.materials,product_id:0
 msgid "Product"
-msgstr ""
+msgstr "Produit"
 
 #. module: project_task_materials
 #: field:project.task.materials,quantity:0

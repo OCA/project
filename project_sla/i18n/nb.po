@@ -58,7 +58,7 @@ msgstr ""
 #. module: project_sla
 #: field:project.sla,active:0
 msgid "Active"
-msgstr ""
+msgstr "Aktiv"
 
 #. module: project_sla
 #: model:ir.model,name:project_sla.model_account_analytic_account
@@ -162,7 +162,7 @@ msgstr ""
 #. module: project_sla
 #: view:project.sla.report:project_sla.view_project_sla_report_search
 msgid "Group By..."
-msgstr ""
+msgstr "Grupper etter ..."
 
 #. module: project_sla
 #: field:project.sla.line,limit_qty:0
@@ -215,7 +215,7 @@ msgstr ""
 #: view:project.sla.report:project_sla.view_project_sla_report_search
 #: field:project.sla.report,date_month:0
 msgid "Month"
-msgstr ""
+msgstr "Måned"
 
 #. module: project_sla
 #: model:ir.model,name:project_sla.model_project_issue
@@ -429,7 +429,7 @@ msgstr ""
 #: view:project.sla.report:project_sla.view_project_sla_report_search
 #: field:project.sla.report,date_week:0
 msgid "Week"
-msgstr ""
+msgstr "Uke"
 
 #. module: project_sla
 #: selection:project.issue,sla_state:0

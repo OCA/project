@@ -58,7 +58,7 @@ msgstr ""
 #. module: project_sla
 #: field:project.sla,active:0
 msgid "Active"
-msgstr ""
+msgstr "Actif"
 
 #. module: project_sla
 #: model:ir.model,name:project_sla.model_account_analytic_account
@@ -121,7 +121,7 @@ msgstr ""
 #: field:project.sla.line,display_name:0
 #: field:project.sla.report,display_name:0
 msgid "Display Name"
-msgstr ""
+msgstr "Nom affiché"
 
 #. module: project_sla
 #: field:project.sla.control,doc_id:0
@@ -192,7 +192,7 @@ msgstr ""
 #: field:project.sla.line,__last_update:0
 #: field:project.sla.report,__last_update:0
 msgid "Last Modified on"
-msgstr ""
+msgstr "Dernière modification le"
 
 #. module: project_sla
 #: field:project.sla,write_uid:0 field:project.sla.control,write_uid:0
