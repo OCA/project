@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * project_description
+# * project_closing
 # 
 # Translators:
 msgid ""
@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-10-17 13:09+0000\n"
-"PO-Revision-Date: 2015-12-09 22:25+0000\n"
+"PO-Revision-Date: 2015-08-06 21:48+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: Spanish (Mexico) (http://www.transifex.com/oca/OCA-project-8-0/language/es_MX/)\n"
 "MIME-Version: 1.0\n"
@@ -17,12 +17,7 @@ msgstr ""
 "Language: es_MX\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. module: project_description
-#: view:project.project:project_description.project_form
-msgid "Description"
-msgstr "Descripción"
-
-#. module: project_description
-#: model:ir.model,name:project_description.model_project_project
+#. module: project_closing
+#: model:ir.model,name:project_closing.model_project_project
 msgid "Project"
 msgstr "Proyecto"

@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * project_description
+# * project_analytic_line_view
 # 
 # Translators:
 msgid ""
@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-10-17 13:09+0000\n"
-"PO-Revision-Date: 2015-12-09 22:25+0000\n"
+"PO-Revision-Date: 2015-08-13 07:46+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: Spanish (Mexico) (http://www.transifex.com/oca/OCA-project-8-0/language/es_MX/)\n"
 "MIME-Version: 1.0\n"
@@ -17,12 +17,17 @@ msgstr ""
 "Language: es_MX\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. module: project_description
-#: view:project.project:project_description.project_form
-msgid "Description"
-msgstr "Descripción"
+#. module: project_analytic_line_view
+#: model:ir.model,name:project_analytic_line_view.model_account_analytic_account
+msgid "Analytic Account"
+msgstr "Cuenta analítica"
 
-#. module: project_description
-#: model:ir.model,name:project_description.model_project_project
-msgid "Project"
-msgstr "Proyecto"
+#. module: project_analytic_line_view
+#: model:ir.actions.act_window,name:project_analytic_line_view.act_aal_from_project
+msgid "Analytic Lines"
+msgstr ""
+
+#. module: project_analytic_line_view
+#: field:account.analytic.account,project_ids:0
+msgid "Projects"
+msgstr "Proyectos"

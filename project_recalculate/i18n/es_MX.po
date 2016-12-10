@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-10-17 13:09+0000\n"
-"PO-Revision-Date: 2016-11-25 14:57+0000\n"
+"PO-Revision-Date: 2016-12-05 09:17+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Spanish (Mexico) (http://www.transifex.com/oca/OCA-project-8-0/language/es_MX/)\n"
 "MIME-Version: 1.0\n"
@@ -168,7 +168,7 @@ msgstr "Ultima actualización realizada"
 #: model:ir.model,name:project_recalculate.model_project_project
 #: field:project.recalculate.wizard,project_id:0
 msgid "Project"
-msgstr ""
+msgstr "Proyecto"
 
 #. module: project_recalculate
 #: field:project.recalculate.wizard,project_date:0

@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-10-17 13:09+0000\n"
-"PO-Revision-Date: 2016-10-11 09:48+0000\n"
+"PO-Revision-Date: 2016-12-05 09:23+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Spanish (Mexico) (http://www.transifex.com/oca/OCA-project-8-0/language/es_MX/)\n"
 "MIME-Version: 1.0\n"
@@ -277,7 +277,7 @@ msgstr ""
 #. module: project_classification
 #: view:project.project:project_classification.view_account_analytic_account_tree
 msgid "Partner"
-msgstr ""
+msgstr "Compañero"
 
 #. module: project_classification
 #: field:project.project,pricelist_id:0
@@ -287,7 +287,7 @@ msgstr ""
 #. module: project_classification
 #: model:ir.model,name:project_classification.model_project_project
 msgid "Project"
-msgstr ""
+msgstr "Proyecto"
 
 #. module: project_classification
 #: model:ir.actions.act_window,name:project_classification.action_project_classification_form
@@ -320,7 +320,7 @@ msgstr ""
 #. module: project_classification
 #: view:project.project:project_classification.view_account_analytic_account_tree
 msgid "Projects"
-msgstr ""
+msgstr "Proyectos"
 
 #. module: project_classification
 #: model:ir.actions.act_window,name:project_classification.action_project_account_tree2
