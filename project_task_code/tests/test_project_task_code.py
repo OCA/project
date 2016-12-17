@@ -1,7 +1,6 @@
-# -*- encoding: utf-8 -*-
-##############################################################################
-# For copyright and license notices, see __openerp__.py file in root directory
-##############################################################################
+# -*- coding: utf-8 -*-
+# Copyright 2016 Tecnativa <vicent.cubells@tecnativa.com>
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 import openerp.tests.common as common
 
@@ -21,7 +20,8 @@ class TestProjectTaskCode(common.TransactionCase):
             self.assertNotEqual(project_task.code, '/')
 
     def test_new_task_code_assign(self):
-        code = self._get_next_code()
+        number_next = self.task_sequence.number_next_actual
+        code = self.task_sequence.get_next_char(number_next)
         project_task = self.project_task_model.create({
             'name': 'Testing task code',
         })
@@ -29,17 +29,8 @@ class TestProjectTaskCode(common.TransactionCase):
         self.assertEqual(project_task.code, code)
 
     def test_copy_task_code_assign(self):
-        code = self._get_next_code()
+        number_next = self.task_sequence.number_next_actual
+        code = self.task_sequence.get_next_char(number_next)
         project_task_copy = self.project_task.copy()
         self.assertNotEqual(project_task_copy.code, self.project_task.code)
         self.assertEqual(project_task_copy.code, code)
-
-    def _get_next_code(self):
-        d = self.ir_sequence_model._interpolation_dict()
-        prefix = self.ir_sequence_model._interpolate(
-            self.task_sequence.prefix, d)
-        suffix = self.ir_sequence_model._interpolate(
-            self.task_sequence.suffix, d)
-        code = (prefix + ('%%0%sd' % self.task_sequence.padding %
-                          self.task_sequence.number_next_actual) + suffix)
-        return code
