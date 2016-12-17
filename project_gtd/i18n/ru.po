@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-10-17 13:09+0000\n"
-"PO-Revision-Date: 2016-11-25 14:56+0000\n"
+"PO-Revision-Date: 2016-12-13 17:21+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Russian (http://www.transifex.com/oca/OCA-project-8-0/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -110,7 +110,7 @@ msgstr ""
 #. module: project_gtd
 #: model:project.gtd.context,name:project_gtd.context_home
 msgid "Home"
-msgstr ""
+msgstr "Домой"
 
 #. module: project_gtd
 #: field:project.gtd.context,id:0 field:project.gtd.timebox,id:0

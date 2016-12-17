@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-10-17 13:09+0000\n"
-"PO-Revision-Date: 2016-11-25 14:55+0000\n"
+"PO-Revision-Date: 2016-12-15 10:10+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Portuguese (Portugal) (http://www.transifex.com/oca/OCA-project-8-0/language/pt_PT/)\n"
 "MIME-Version: 1.0\n"
@@ -46,7 +46,7 @@ msgstr "Criado em"
 #. module: project_issue_task
 #: field:project.task.cause,description:0
 msgid "Description"
-msgstr ""
+msgstr "Descrição"
 
 #. module: project_issue_task
 #: field:project.task.cause,display_name:0
@@ -97,7 +97,7 @@ msgstr "Incidente"
 #. module: project_issue_task
 #: field:project.task,ref:0
 msgid "Reference"
-msgstr ""
+msgstr "Referência"
 
 #. module: project_issue_task
 #: field:project.task,issue_id:0
