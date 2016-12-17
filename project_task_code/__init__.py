@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
-##############################################################################
-# For copyright and license notices, see __openerp__.py file in root directory
-##############################################################################
+# Copyright 2016 Tecnativa <vicent.cubells@tecnativa.com>
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from . import models
 from openerp import SUPERUSER_ID
@@ -29,7 +28,7 @@ def assign_old_sequences(cr, registry):
     task_ids = task_obj.search(cr, SUPERUSER_ID, [], order="id")
     for task_id in task_ids:
         cr.execute('UPDATE project_task '
-                   'SET code = \'%s\' '
-                   'WHERE id = %d;' %
-                   (sequence_obj.get(cr, SUPERUSER_ID, 'project.task'),
-                    task_id))
+                   'SET code = %s '
+                   'WHERE id = %s;',
+                   (sequence_obj.next_by_code(
+                       cr, SUPERUSER_ID, 'project.task'), task_id, ))
