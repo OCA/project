@@ -22,7 +22,7 @@ class ProjectTask(models.Model):
             vals['code'] = self.env['ir.sequence'].next_by_code('project.task')
         return super(ProjectTask, self).create(vals)
 
-    @api.one
+    @api.multi
     def copy(self, default=None):
         if default is None:
             default = {}
