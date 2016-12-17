@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
-##############################################################################
-# For copyright and license notices, see __openerp__.py file in root directory
-##############################################################################
+# Copyright 2016 Tecnativa <vicent.cubells@tecnativa.com>
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from openerp import api, fields, models, _
 
@@ -20,12 +19,12 @@ class ProjectTask(models.Model):
     @api.model
     def create(self, vals):
         if vals.get('code', '/') == '/':
-            vals['code'] = self.env['ir.sequence'].get('project.task')
+            vals['code'] = self.env['ir.sequence'].next_by_code('project.task')
         return super(ProjectTask, self).create(vals)
 
     @api.one
     def copy(self, default=None):
         if default is None:
             default = {}
-        default['code'] = self.env['ir.sequence'].get('project.task')
+        default['code'] = self.env['ir.sequence'].next_by_code('project.task')
         return super(ProjectTask, self).copy(default)
