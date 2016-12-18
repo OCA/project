@@ -3,15 +3,16 @@
 # * project_task_materials
 # 
 # Translators:
-# Matjaž Mozetič <m.mozetic@matmoz.si>, 2015
+# OCA Transbot <transbot@odoo-community.org>, 2016
+# Matjaž Mozetič <m.mozetic@matmoz.si>, 2016
 msgid ""
 msgstr ""
-"Project-Id-Version: project (8.0)\n"
+"Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-31 18:04+0000\n"
-"PO-Revision-Date: 2015-07-23 05:33+0000\n"
-"Last-Translator: Matjaž Mozetič <m.mozetic@matmoz.si>\n"
-"Language-Team: Slovenian (http://www.transifex.com/oca/OCA-project-8-0/language/sl/)\n"
+"POT-Creation-Date: 2016-12-23 03:43+0000\n"
+"PO-Revision-Date: 2016-12-23 03:43+0000\n"
+"Last-Translator: Matjaž Mozetič <m.mozetic@matmoz.si>, 2016\n"
+"Language-Team: Slovenian (https://www.transifex.com/oca/teams/23907/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -19,49 +20,70 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
 #. module: project_task_materials
-#: field:project.task.materials,create_uid:0
+#: model:ir.model.fields,field_description:project_task_materials.field_project_task_materials_create_uid
 msgid "Created by"
 msgstr "Ustvaril"
 
 #. module: project_task_materials
-#: field:project.task.materials,create_date:0
+#: model:ir.model.fields,field_description:project_task_materials.field_project_task_materials_create_date
 msgid "Created on"
 msgstr "Ustvarjeno"
 
 #. module: project_task_materials
-#: field:project.task.materials,id:0
+#: model:ir.model.fields,field_description:project_task_materials.field_project_task_materials_display_name
+msgid "Display Name"
+msgstr "Prikazni naziv"
+
+#. module: project_task_materials
+#: model:ir.model.fields,field_description:project_task_materials.field_project_task_materials_id
 msgid "ID"
 msgstr "ID"
 
 #. module: project_task_materials
-#: field:project.task.materials,write_uid:0
+#: model:ir.model.fields,field_description:project_task_materials.field_project_task_materials___last_update
+msgid "Last Modified on"
+msgstr "Zadnjič spremenjeno"
+
+#. module: project_task_materials
+#: model:ir.model.fields,field_description:project_task_materials.field_project_task_materials_write_uid
 msgid "Last Updated by"
 msgstr "Zadnjič posodobil"
 
 #. module: project_task_materials
-#: field:project.task.materials,write_date:0
+#: model:ir.model.fields,field_description:project_task_materials.field_project_task_materials_write_date
 msgid "Last Updated on"
 msgstr "Zadnjič posodobljeno"
 
 #. module: project_task_materials
-#: view:project.task:project_task_materials.view_project_task_form_materials
-#: field:project.task,material_ids:0
+#: model:ir.ui.view,arch_db:project_task_materials.view_project_task_form_materials
+msgid "Materials"
+msgstr "Materiali"
+
+#. module: project_task_materials
+#: model:ir.model.fields,field_description:project_task_materials.field_project_task_material_ids
+#: model:ir.ui.view,arch_db:project_task_materials.view_project_task_form_materials
 msgid "Materials used"
 msgstr "Uporabljeni material"
 
 #. module: project_task_materials
-#: field:project.task.materials,product_id:0
+#: model:ir.model.fields,field_description:project_task_materials.field_project_task_materials_product_id
 msgid "Product"
 msgstr "Proizvod"
 
 #. module: project_task_materials
-#: field:project.task.materials,quantity:0
+#: model:ir.model.fields,field_description:project_task_materials.field_project_task_materials_quantity
 msgid "Quantity"
 msgstr "Količina"
 
 #. module: project_task_materials
+#: code:addons/project_task_materials/models/project.py:36
+#, python-format
+msgid "Quantity of materials consumed must be greater than 0."
+msgstr ""
+
+#. module: project_task_materials
 #: model:ir.model,name:project_task_materials.model_project_task
-#: field:project.task.materials,task_id:0
+#: model:ir.model.fields,field_description:project_task_materials.field_project_task_materials_task_id
 msgid "Task"
 msgstr "Opravilo"
 

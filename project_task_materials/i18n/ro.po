@@ -3,14 +3,17 @@
 # * project_task_materials
 # 
 # Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2016
+# Fekete Mihai <mihai.fekete@forestandbiomass.ro>, 2016
+# Dorin Hongu <dhongu@gmail.com>, 2016
 msgid ""
 msgstr ""
-"Project-Id-Version: project (8.0)\n"
+"Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-31 18:04+0000\n"
-"PO-Revision-Date: 2015-07-21 19:20+0000\n"
-"Last-Translator: <>\n"
-"Language-Team: Romanian (http://www.transifex.com/oca/OCA-project-8-0/language/ro/)\n"
+"POT-Creation-Date: 2016-12-23 03:43+0000\n"
+"PO-Revision-Date: 2016-12-23 03:43+0000\n"
+"Last-Translator: Dorin Hongu <dhongu@gmail.com>, 2016\n"
+"Language-Team: Romanian (https://www.transifex.com/oca/teams/23907/ro/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -18,49 +21,70 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
 #. module: project_task_materials
-#: field:project.task.materials,create_uid:0
+#: model:ir.model.fields,field_description:project_task_materials.field_project_task_materials_create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Creat de"
 
 #. module: project_task_materials
-#: field:project.task.materials,create_date:0
+#: model:ir.model.fields,field_description:project_task_materials.field_project_task_materials_create_date
 msgid "Created on"
-msgstr ""
+msgstr "Creat la"
 
 #. module: project_task_materials
-#: field:project.task.materials,id:0
+#: model:ir.model.fields,field_description:project_task_materials.field_project_task_materials_display_name
+msgid "Display Name"
+msgstr "Nume Afişat"
+
+#. module: project_task_materials
+#: model:ir.model.fields,field_description:project_task_materials.field_project_task_materials_id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_task_materials
-#: field:project.task.materials,write_uid:0
+#: model:ir.model.fields,field_description:project_task_materials.field_project_task_materials___last_update
+msgid "Last Modified on"
+msgstr "Ultima actualizare în"
+
+#. module: project_task_materials
+#: model:ir.model.fields,field_description:project_task_materials.field_project_task_materials_write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Ultima actualizare făcută de"
 
 #. module: project_task_materials
-#: field:project.task.materials,write_date:0
+#: model:ir.model.fields,field_description:project_task_materials.field_project_task_materials_write_date
 msgid "Last Updated on"
+msgstr "Ultima actualizare la"
+
+#. module: project_task_materials
+#: model:ir.ui.view,arch_db:project_task_materials.view_project_task_form_materials
+msgid "Materials"
 msgstr ""
 
 #. module: project_task_materials
-#: view:project.task:project_task_materials.view_project_task_form_materials
-#: field:project.task,material_ids:0
+#: model:ir.model.fields,field_description:project_task_materials.field_project_task_material_ids
+#: model:ir.ui.view,arch_db:project_task_materials.view_project_task_form_materials
 msgid "Materials used"
 msgstr ""
 
 #. module: project_task_materials
-#: field:project.task.materials,product_id:0
+#: model:ir.model.fields,field_description:project_task_materials.field_project_task_materials_product_id
 msgid "Product"
-msgstr ""
+msgstr "Produs"
 
 #. module: project_task_materials
-#: field:project.task.materials,quantity:0
+#: model:ir.model.fields,field_description:project_task_materials.field_project_task_materials_quantity
 msgid "Quantity"
+msgstr "Cantitate"
+
+#. module: project_task_materials
+#: code:addons/project_task_materials/models/project.py:36
+#, python-format
+msgid "Quantity of materials consumed must be greater than 0."
 msgstr ""
 
 #. module: project_task_materials
 #: model:ir.model,name:project_task_materials.model_project_task
-#: field:project.task.materials,task_id:0
+#: model:ir.model.fields,field_description:project_task_materials.field_project_task_materials_task_id
 msgid "Task"
 msgstr "Sarcina"
 
