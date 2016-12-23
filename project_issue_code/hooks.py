@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
-# © 2016 Michael Viriyananda
+# Copyright 2016 Michael Viriyananda
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from openerp import SUPERUSER_ID
+from openerp.api import Environment
 
 
 def create_code_equal_to_id(cr):
@@ -17,17 +18,17 @@ def create_code_equal_to_id(cr):
                'SET issue_code = id;')
 
 
-def assign_old_sequences(cr, registry):
+def assign_old_sequences(cr, pool):
     """
     This post-init-hook will update all existing issue assigning them the
     corresponding sequence code.
     """
-    issue_obj = registry['project.issue']
-    sequence_obj = registry['ir.sequence']
-    issue_ids = issue_obj.search(cr, SUPERUSER_ID, [], order="id")
+    env = Environment(cr, SUPERUSER_ID, {})
+    issue_obj = env['project.issue']
+    sequence_obj = env['ir.sequence']
+    issue_ids = issue_obj.search([], order="id")
     for issue_id in issue_ids:
-        issue_code = sequence_obj.next_by_code(
-            cr, SUPERUSER_ID, 'project.issue')
+        issue_code = sequence_obj.next_by_code('project.issue')
         cr.execute('UPDATE project_issue '
                    'SET issue_code = \'%s\' '
                    'WHERE id = %d;' %
