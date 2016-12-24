@@ -8,13 +8,13 @@ msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-12-17 03:58+0000\n"
-"PO-Revision-Date: 2016-12-23 08:32+0000\n"
+"PO-Revision-Date: 2016-12-17 10:14+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
-"Language-Team: Italian (http://www.transifex.com/oca/OCA-project-8-0/language/it/)\n"
+"Language-Team: Estonian (http://www.transifex.com/oca/OCA-project-8-0/language/et/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: it\n"
+"Language: et\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: project_classification
@@ -86,12 +86,12 @@ msgstr ""
 #. module: project_classification
 #: field:project.classification,create_uid:0
 msgid "Created by"
-msgstr "Created by"
+msgstr "Loonud"
 
 #. module: project_classification
 #: field:project.classification,create_date:0
 msgid "Created on"
-msgstr "Created on"
+msgstr "Loodud"
 
 #. module: project_classification
 #: field:project.classification,currency_id:0
@@ -121,7 +121,7 @@ msgstr ""
 #. module: project_classification
 #: field:project.classification,display_name:0
 msgid "Display Name"
-msgstr "Nome da visualizzare"
+msgstr "Näidatav nimi"
 
 #. module: project_classification
 #: field:project.project,hours_qtt_est:0
@@ -210,17 +210,17 @@ msgstr ""
 #. module: project_classification
 #: field:project.classification,__last_update:0
 msgid "Last Modified on"
-msgstr "Ultima modifica il"
+msgstr "Viimati muudetud"
 
 #. module: project_classification
 #: field:project.classification,write_uid:0
 msgid "Last Updated by"
-msgstr "Last Updated by"
+msgstr "Viimati uuendatud"
 
 #. module: project_classification
 #: field:project.classification,write_date:0
 msgid "Last Updated on"
-msgstr "Last Updated on"
+msgstr "Viimati uuendatud"
 
 #. module: project_classification
 #: field:project.project,amount_max:0
@@ -230,7 +230,7 @@ msgstr ""
 #. module: project_classification
 #: field:project.project,month_ids:0
 msgid "Month"
-msgstr "Mese"
+msgstr ""
 
 #. module: project_classification
 #: help:project.project,hours_qtt_non_invoiced:0
@@ -277,12 +277,12 @@ msgstr ""
 #. module: project_classification
 #: view:project.project:project_classification.view_account_analytic_account_tree
 msgid "Partner"
-msgstr "Partner"
+msgstr ""
 
 #. module: project_classification
 #: field:project.project,pricelist_id:0
 msgid "Pricelist"
-msgstr "Listino prezzi"
+msgstr ""
 
 #. module: project_classification
 #: model:ir.model,name:project_classification.model_project_project
@@ -492,7 +492,7 @@ msgstr ""
 #. module: project_classification
 #: field:project.project,user_ids:0
 msgid "User"
-msgstr "Utente"
+msgstr ""
 
 #. module: project_classification
 #: help:project.project,to_invoice:0
