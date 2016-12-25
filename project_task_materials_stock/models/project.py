@@ -1,17 +1,16 @@
 # -*- coding: utf-8 -*-
-# (c) 2015 Antiun Ingeniería S.L. - Sergio Teruel
-# (c) 2015 Antiun Ingeniería S.L. - Carlos Dauden
+# Copyright 2015 Antiun Ingeniería S.L. - Sergio Teruel
+# Copyright 2015 Antiun Ingeniería S.L. - Carlos Dauden
+# Copyright 2016 Tecnativa - Vicent Cubells
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 from openerp import models, fields, api, exceptions, _
-from openerp.tools.float_utils import float_round
 
 
 class ProjectTaskType(models.Model):
     _inherit = 'project.task.type'
 
     consume_material = fields.Boolean(
-        string='Consume Material',
-        help="If you mark this check, when a task goes to this state,"
+        help="If you mark this check, when a task goes to this state, "
              "it will consume the associated materials")
 
 
@@ -37,13 +36,12 @@ class Task(models.Model):
         for task in self:
             if not task.stock_move_ids:
                 task.stock_state = 'pending'
-            elif task.stock_move_ids.filtered(
-                    lambda r: r.state == 'confirmed'):
-                task.stock_state = 'confirmed'
-            elif task.stock_move_ids.filtered(lambda r: r.state == 'assigned'):
-                task.stock_state = 'assigned'
-            elif task.stock_move_ids.filtered(lambda r: r.state == 'done'):
-                task.stock_state = 'done'
+            else:
+                states = task.mapped("stock_move_ids.state")
+                for state in ("confirmed", "assigned", "done"):
+                    if state in states:
+                        task.stock_state = state
+                        break
 
     stock_move_ids = fields.Many2many(
         comodel_name='stock.move', compute='_compute_stock_move',
@@ -67,7 +65,7 @@ class Task(models.Model):
         if not moves_done:
             moves.filtered(lambda r: r.state == 'assigned').do_unreserve()
             moves.filtered(
-                lambda r: r.state in ['waiting', 'confirmed', 'assigned']
+                lambda r: r.state in {'waiting', 'confirmed', 'assigned'}
             ).write({'state': 'draft'})
             res = moves.unlink()
         return res
@@ -83,11 +81,11 @@ class Task(models.Model):
                         task.material_ids.create_analytic_line()
                 else:
                     if task.unlink_stock_move():
-                        if any(task.material_ids.mapped(
-                                'analytic_line_id.invoice_id')):
+                        if task.material_ids.mapped(
+                                'analytic_line_id'):
                             raise exceptions.Warning(
                                 _("You can't move to a not consume stage if "
-                                  "there are already invoiced analytic lines")
+                                  "there are already analytic lines")
                             )
                     task.material_ids.mapped('analytic_line_id').unlink()
         return res
@@ -114,26 +112,15 @@ class ProjectTaskMaterials(models.Model):
         comodel_name='stock.move', string='Stock Move')
     analytic_line_id = fields.Many2one(
         comodel_name='account.analytic.line', string='Analytic Line')
-    product_uom = fields.Many2one(
-        comodel_name='product.uom', string='Unit of Measure')
+    product_uom_id = fields.Many2one(
+        comodel_name='product.uom', oldname="product_uom",
+        string='Unit of Measure')
 
     @api.onchange('product_id')
     def _onchange_product_id(self):
-        self.product_uom = self.product_id.uom_id
-        return {'domain': {'product_uom': [
+        self.product_uom_id = self.product_id.uom_id.id
+        return {'domain': {'product_uom_id': [
             ('category_id', '=', self.product_id.uom_id.category_id.id)]}}
-
-    def uos_qty(self):
-        if self.product_uom and self.product_id.uom_id and \
-                (self.product_uom != self.product_id.uom_id):
-            res = self.quantity * self.product_id.uom_id.factor
-            res = res / self.product_uom.factor
-            res = float_round(
-                res, precision_rounding=self.product_uom.rounding,
-                rounding_method='UP')
-        else:
-            res = self.quantity
-        return res
 
     def _prepare_stock_move(self):
         product = self.product_id
@@ -141,10 +128,8 @@ class ProjectTaskMaterials(models.Model):
             'product_id': product.id,
             'name': product.partner_ref,
             'state': 'confirmed',
-            'product_uom': self.product_uom.id or product.uom_id.id,
-            'product_uos': self.product_uom.id,
+            'product_uom': self.product_uom_id.id or product.uom_id.id,
             'product_uom_qty': self.quantity,
-            'product_uos_qty': self.quantity,
             'origin': self.task_id.name,
             'location_id': self.env.ref(
                 'stock.stock_location_stock').id,
@@ -164,29 +149,23 @@ class ProjectTaskMaterials(models.Model):
         product = self.product_id
         company_id = self.env['res.company']._company_default_get(
             'account.analytic.line')
-        journal = self.env.ref(
-            'project_task_materials_stock.analytic_journal_sale_materials')
         analytic_account = getattr(self.task_id, 'analytic_account_id', False)\
             or self.task_id.project_id.analytic_account_id
         res = {
             'name': self.task_id.name + ': ' + product.name,
             'ref': self.task_id.name,
             'product_id': product.id,
-            'journal_id': journal.id,
             'unit_amount': self.quantity,
             'account_id': analytic_account.id,
             'user_id': self._uid,
+            'product_uom_id': self.product_uom_id.id,
         }
-        analytic_line_obj = self.pool.get('account.analytic.line')
-        amount_dic = analytic_line_obj.on_change_unit_amount(
-            self._cr, self._uid, self._ids, product.id, self.uos_qty(),
-            company_id, False, journal.id, self._context)
-        res.update(amount_dic['value'])
-        res['product_uom_id'] = self.product_uom.id
-        to_invoice = getattr(self.task_id.project_id.analytic_account_id,
-                             'to_invoice', None)
-        if to_invoice is not None:
-            res['to_invoice'] = to_invoice.id
+        amount_unit = \
+            self.product_id.with_context(uom=self.product_uom_id.id).price_get(
+                'standard_price')[self.product_id.id]
+        amount = amount_unit * self.quantity or 0.0
+        result = round(amount, company_id.currency_id.decimal_places) * -1
+        res.update({'amount': result})
         return res
 
     @api.multi
