@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-17 03:58+0000\n"
-"PO-Revision-Date: 2016-12-21 19:23+0000\n"
+"POT-Creation-Date: 2016-12-24 04:00+0000\n"
+"PO-Revision-Date: 2016-12-30 22:02+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Turkish (http://www.transifex.com/oca/OCA-project-8-0/language/tr/)\n"
 "MIME-Version: 1.0\n"
@@ -35,7 +35,7 @@ msgstr ""
 #. module: project_categ
 #: field:project.category,code:0
 msgid "Code"
-msgstr ""
+msgstr "Kod"
 
 #. module: project_categ
 #: field:project.category,complete_name:0

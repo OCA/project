@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-17 13:09+0000\n"
-"PO-Revision-Date: 2016-10-17 13:09+0000\n"
+"POT-Creation-Date: 2016-12-24 04:00+0000\n"
+"PO-Revision-Date: 2016-12-24 04:00+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2016\n"
 "Language-Team: Latvian (https://www.transifex.com/oca/teams/23907/lv/)\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +26,7 @@ msgstr ""
 #. module: project_issue_reassign
 #: view:project.issue.reassign:project_issue_reassign.view_project_issue_reassign
 msgid "Cancel"
-msgstr ""
+msgstr "Atcelt"
 
 #. module: project_issue_reassign
 #: field:project.issue.reassign,create_uid:0

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-18 02:39+0000\n"
-"PO-Revision-Date: 2016-10-04 09:42+0000\n"
+"POT-Creation-Date: 2016-12-24 04:00+0000\n"
+"PO-Revision-Date: 2016-12-27 08:22+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Russian (http://www.transifex.com/oca/OCA-project-8-0/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -36,12 +36,12 @@ msgstr ""
 #. module: project_issue_task
 #: field:project.task.cause,create_uid:0
 msgid "Created by"
-msgstr ""
+msgstr "Создано"
 
 #. module: project_issue_task
 #: field:project.task.cause,create_date:0
 msgid "Created on"
-msgstr ""
+msgstr "Создан"
 
 #. module: project_issue_task
 #: field:project.task.cause,description:0
@@ -56,7 +56,7 @@ msgstr ""
 #. module: project_issue_task
 #: field:project.task.cause,id:0
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_issue_task
 #: model:ir.model,name:project_issue_task.model_project_task_cause
@@ -77,12 +77,12 @@ msgstr ""
 #. module: project_issue_task
 #: field:project.task.cause,write_uid:0
 msgid "Last Updated by"
-msgstr ""
+msgstr "Последний раз обновлено"
 
 #. module: project_issue_task
 #: field:project.task.cause,write_date:0
 msgid "Last Updated on"
-msgstr ""
+msgstr "Последний раз обновлено"
 
 #. module: project_issue_task
 #: field:project.task,reason_id:0

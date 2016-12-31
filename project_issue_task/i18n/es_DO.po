@@ -1,0 +1,134 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * project_issue_task
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: project (8.0)\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-12-24 04:00+0000\n"
+"PO-Revision-Date: 2015-07-21 19:20+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: Spanish (Dominican Republic) (http://www.transifex.com/oca/OCA-project-8-0/language/es_DO/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: es_DO\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: project_issue_task
+#: code:addons/project_issue_task/project_issue.py:33
+#, python-format
+msgid "A Task is already assigned to the Issue!"
+msgstr ""
+
+#. module: project_issue_task
+#: field:project.task.cause,name:0
+msgid "Cause"
+msgstr ""
+
+#. module: project_issue_task
+#: field:project.task.cause,code:0
+msgid "Code"
+msgstr ""
+
+#. module: project_issue_task
+#: field:project.task.cause,create_uid:0
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: project_issue_task
+#: field:project.task.cause,create_date:0
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: project_issue_task
+#: field:project.task.cause,description:0
+msgid "Description"
+msgstr "Descripción"
+
+#. module: project_issue_task
+#: field:project.task.cause,display_name:0
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: project_issue_task
+#: field:project.task.cause,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: project_issue_task
+#: model:ir.model,name:project_issue_task.model_project_task_cause
+msgid "Issue Cause"
+msgstr ""
+
+#. module: project_issue_task
+#: code:addons/project_issue_task/project_issue.py:46
+#, python-format
+msgid "Issue Task Report"
+msgstr ""
+
+#. module: project_issue_task
+#: field:project.task.cause,__last_update:0
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: project_issue_task
+#: field:project.task.cause,write_uid:0
+msgid "Last Updated by"
+msgstr "Última actualización de"
+
+#. module: project_issue_task
+#: field:project.task.cause,write_date:0
+msgid "Last Updated on"
+msgstr "Última actualización en"
+
+#. module: project_issue_task
+#: field:project.task,reason_id:0
+msgid "Problem Cause"
+msgstr ""
+
+#. module: project_issue_task
+#: model:ir.model,name:project_issue_task.model_project_issue
+msgid "Project Issue"
+msgstr ""
+
+#. module: project_issue_task
+#: field:project.task,ref:0
+msgid "Reference"
+msgstr ""
+
+#. module: project_issue_task
+#: field:project.task,issue_id:0
+msgid "Related Issue"
+msgstr ""
+
+#. module: project_issue_task
+#: code:addons/project_issue_task/project_issue.py:38
+#, python-format
+msgid "Report for %s"
+msgstr ""
+
+#. module: project_issue_task
+#: field:project.task.cause,sequence:0
+msgid "Sequence"
+msgstr "Secuencia"
+
+#. module: project_issue_task
+#: model:ir.model,name:project_issue_task.model_project_task
+msgid "Task"
+msgstr ""
+
+#. module: project_issue_task
+#: model:ir.actions.act_window,name:project_issue_task.open_task_cause_form
+#: model:ir.ui.menu,name:project_issue_task.menu_task_cause_view
+#: view:project.task.cause:project_issue_task.task_cause_edit
+#: view:project.task.cause:project_issue_task.task_cause_tree
+msgid "Task Issue Causes"
+msgstr ""
+
+#. module: project_issue_task
+#: view:project.issue:project_issue_task.project_issue_form_view_task
+msgid "Task Report"
+msgstr ""

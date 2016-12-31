@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-17 13:09+0000\n"
-"PO-Revision-Date: 2016-11-22 12:24+0000\n"
+"POT-Creation-Date: 2016-12-24 04:00+0000\n"
+"PO-Revision-Date: 2016-12-27 08:22+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Russian (http://www.transifex.com/oca/OCA-project-8-0/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -86,12 +86,12 @@ msgstr ""
 #. module: project_classification
 #: field:project.classification,create_uid:0
 msgid "Created by"
-msgstr ""
+msgstr "Создано"
 
 #. module: project_classification
 #: field:project.classification,create_date:0
 msgid "Created on"
-msgstr ""
+msgstr "Создан"
 
 #. module: project_classification
 #: field:project.classification,currency_id:0
@@ -156,7 +156,7 @@ msgstr ""
 #. module: project_classification
 #: field:project.classification,id:0
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_classification
 #: help:project.project,ca_to_invoice:0
@@ -215,12 +215,12 @@ msgstr ""
 #. module: project_classification
 #: field:project.classification,write_uid:0
 msgid "Last Updated by"
-msgstr ""
+msgstr "Последний раз обновлено"
 
 #. module: project_classification
 #: field:project.classification,write_date:0
 msgid "Last Updated on"
-msgstr ""
+msgstr "Последний раз обновлено"
 
 #. module: project_classification
 #: field:project.project,amount_max:0
@@ -277,7 +277,7 @@ msgstr ""
 #. module: project_classification
 #: view:project.project:project_classification.view_account_analytic_account_tree
 msgid "Partner"
-msgstr ""
+msgstr "Контрагент"
 
 #. module: project_classification
 #: field:project.project,pricelist_id:0

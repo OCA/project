@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-17 13:09+0000\n"
-"PO-Revision-Date: 2016-11-25 14:57+0000\n"
+"POT-Creation-Date: 2016-12-24 04:00+0000\n"
+"PO-Revision-Date: 2016-12-30 20:48+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Turkish (http://www.transifex.com/oca/OCA-project-8-0/language/tr/)\n"
 "MIME-Version: 1.0\n"
@@ -58,7 +58,7 @@ msgstr ""
 #. module: project_sla
 #: field:project.sla,active:0
 msgid "Active"
-msgstr ""
+msgstr "Aktif"
 
 #. module: project_sla
 #: model:ir.model,name:project_sla.model_account_analytic_account
@@ -121,7 +121,7 @@ msgstr ""
 #: field:project.sla.line,display_name:0
 #: field:project.sla.report,display_name:0
 msgid "Display Name"
-msgstr ""
+msgstr "Görünen İsim"
 
 #. module: project_sla
 #: field:project.sla.control,doc_id:0
@@ -147,7 +147,7 @@ msgstr ""
 #: selection:project.sla.controlled,sla_state:0
 #: selection:project.sla.report,sla_state:0 selection:project.task,sla_state:0
 msgid "Failed"
-msgstr ""
+msgstr "Başarısız"
 
 #. module: project_sla
 #: field:project.sla.report,failed_count:0
@@ -192,7 +192,7 @@ msgstr ""
 #: field:project.sla.line,__last_update:0
 #: field:project.sla.report,__last_update:0
 msgid "Last Modified on"
-msgstr ""
+msgstr "Son değişiklik"
 
 #. module: project_sla
 #: field:project.sla,write_uid:0 field:project.sla.control,write_uid:0
@@ -410,7 +410,7 @@ msgstr ""
 #: selection:project.sla.controlled,sla_state:0
 #: selection:project.sla.report,sla_state:0 selection:project.task,sla_state:0
 msgid "Warning"
-msgstr ""
+msgstr "Uyarı"
 
 #. module: project_sla
 #: field:project.sla.control,sla_warn_date:0

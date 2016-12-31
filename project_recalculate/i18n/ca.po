@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-02 14:58+0000\n"
-"PO-Revision-Date: 2016-09-09 12:25+0000\n"
+"POT-Creation-Date: 2016-12-24 04:00+0000\n"
+"PO-Revision-Date: 2016-12-27 08:20+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/oca/OCA-project-8-0/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -63,7 +63,7 @@ msgstr ""
 #. module: project_recalculate
 #: view:project.recalculate.wizard:project_recalculate.wizard_project_recalculate_form
 msgid "Continue"
-msgstr ""
+msgstr "Continua"
 
 #. module: project_recalculate
 #: field:project.recalculate.wizard,create_uid:0

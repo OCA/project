@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-17 13:09+0000\n"
-"PO-Revision-Date: 2016-10-11 09:51+0000\n"
+"POT-Creation-Date: 2016-12-24 04:00+0000\n"
+"PO-Revision-Date: 2016-12-27 08:24+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Hebrew (http://www.transifex.com/oca/OCA-project-8-0/language/he/)\n"
 "MIME-Version: 1.0\n"
@@ -36,7 +36,7 @@ msgstr ""
 #. module: project_recalculate
 #: view:project.recalculate.wizard:project_recalculate.wizard_project_recalculate_form
 msgid "Cancel"
-msgstr ""
+msgstr "בטל"
 
 #. module: project_recalculate
 #: code:addons/project_recalculate/models/project_project.py:57

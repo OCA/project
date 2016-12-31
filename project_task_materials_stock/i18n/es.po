@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-17 13:09+0000\n"
-"PO-Revision-Date: 2016-10-14 08:28+0000\n"
+"POT-Creation-Date: 2016-12-24 04:00+0000\n"
+"PO-Revision-Date: 2016-12-27 12:55+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Spanish (http://www.transifex.com/oca/OCA-project-8-0/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -42,7 +42,7 @@ msgstr "Comprobar disponibilidad"
 #. module: project_task_materials_stock
 #: selection:project.task,stock_state:0
 msgid "Confirmed"
-msgstr ""
+msgstr "Confirmado"
 
 #. module: project_task_materials_stock
 #: field:project.task,consume_material:0
