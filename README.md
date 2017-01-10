@@ -20,6 +20,7 @@ addon | version | summary
 --- | --- | ---
 [project_description](project_description/) | 9.0.1.0.0 | Add a description to projects
 [project_double_alias](project_double_alias/) | 9.0.1.0.0 | Define an alias for tasks and another alias for issues
+[project_issue_task](project_issue_task/) | 9.0.1.0.0 | Use Tasks to support Issue resolution reports
 [project_task_code](project_task_code/) | 9.0.1.0.0 | Sequential Code for Tasks
 [project_task_default_stage](project_task_default_stage/) | 9.0.1.0.0 | Recovery default task stage projects from v8
 [project_task_materials](project_task_materials/) | 9.0.1.0.0 | Record products spent in a Task
@@ -38,7 +39,6 @@ addon | version | summary
 [project_functional_block](project_functional_block/) | 1.2 (unported) | Project requiring functional blocks
 [project_gtd](project_gtd/) | 8.0.2.0.0 (unported) | Personal Tasks, Contexts, Timeboxes
 [project_issue_baseuser](project_issue_baseuser/) | 8.0.1.0.0 (unported) | Extend Project user roles to support more complex use cases
-[project_issue_task](project_issue_task/) | 8.0.1.1.0 (unported) | Use Tasks to support Issue resolution reports
 [project_recalculate](project_recalculate/) | 8.0.1.0.0 (unported) | Project Recalculate
 [project_service_type](project_service_type/) | 1.0 (unported) | Add type of service on project
 [project_sla](project_sla/) | 8.0.1.0.0 (unported) | Define SLAs for your Contracts
