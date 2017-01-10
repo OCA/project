@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-31 18:04+0000\n"
-"PO-Revision-Date: 2015-07-23 05:28+0000\n"
+"POT-Creation-Date: 2016-05-19 20:32+0000\n"
+"PO-Revision-Date: 2016-05-19 05:13+0000\n"
 "Last-Translator: Matjaž Mozetič <m.mozetic@matmoz.si>\n"
 "Language-Team: Slovenian (http://www.transifex.com/oca/OCA-project-8-0/language/sl/)\n"
 "MIME-Version: 1.0\n"
@@ -50,6 +50,11 @@ msgid "Description"
 msgstr "Opis"
 
 #. module: project_issue_task
+#: field:project.task.cause,display_name:0
+msgid "Display Name"
+msgstr "Prikazni naziv"
+
+#. module: project_issue_task
 #: field:project.task.cause,id:0
 msgid "ID"
 msgstr "ID"
@@ -64,6 +69,11 @@ msgstr "Vzrok zadeve"
 #, python-format
 msgid "Issue Task Report"
 msgstr "Poročilo o zadevnih opravilih"
+
+#. module: project_issue_task
+#: field:project.task.cause,__last_update:0
+msgid "Last Modified on"
+msgstr "Zadnjič spremenjeno"
 
 #. module: project_issue_task
 #: field:project.task.cause,write_uid:0

@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-31 18:04+0000\n"
-"PO-Revision-Date: 2015-07-21 19:20+0000\n"
-"Last-Translator: <>\n"
+"POT-Creation-Date: 2016-10-17 13:09+0000\n"
+"PO-Revision-Date: 2016-10-11 09:49+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Spanish (Costa Rica) (http://www.transifex.com/oca/OCA-project-8-0/language/es_CR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -41,17 +41,22 @@ msgstr ""
 #. module: project_issue_task
 #: field:project.task.cause,create_date:0
 msgid "Created on"
-msgstr ""
+msgstr "Creado en"
 
 #. module: project_issue_task
 #: field:project.task.cause,description:0
 msgid "Description"
+msgstr "Descripción"
+
+#. module: project_issue_task
+#: field:project.task.cause,display_name:0
+msgid "Display Name"
 msgstr ""
 
 #. module: project_issue_task
 #: field:project.task.cause,id:0
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_issue_task
 #: model:ir.model,name:project_issue_task.model_project_task_cause
@@ -62,6 +67,11 @@ msgstr ""
 #: code:addons/project_issue_task/project_issue.py:46
 #, python-format
 msgid "Issue Task Report"
+msgstr ""
+
+#. module: project_issue_task
+#: field:project.task.cause,__last_update:0
+msgid "Last Modified on"
 msgstr ""
 
 #. module: project_issue_task
