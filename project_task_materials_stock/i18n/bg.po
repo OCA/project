@@ -1,0 +1,131 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * project_task_materials_stock
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: project (8.0)\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-10-17 13:09+0000\n"
+"PO-Revision-Date: 2016-10-10 18:33+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
+"Language-Team: Bulgarian (http://www.transifex.com/oca/OCA-project-8-0/language/bg/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: bg\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: project_task_materials_stock
+#: field:project.task.materials,analytic_line_id:0
+msgid "Analytic Line"
+msgstr ""
+
+#. module: project_task_materials_stock
+#: field:project.task,analytic_line_ids:0
+msgid "Analytic Lines"
+msgstr ""
+
+#. module: project_task_materials_stock
+#: selection:project.task,stock_state:0
+msgid "Assigned"
+msgstr ""
+
+#. module: project_task_materials_stock
+#: view:project.task:project_task_materials_stock.view_project_task_form_materials_stock
+msgid "Check Availability"
+msgstr ""
+
+#. module: project_task_materials_stock
+#: selection:project.task,stock_state:0
+msgid "Confirmed"
+msgstr ""
+
+#. module: project_task_materials_stock
+#: field:project.task,consume_material:0
+#: field:project.task.type,consume_material:0
+msgid "Consume Material"
+msgstr ""
+
+#. module: project_task_materials_stock
+#: selection:project.task,stock_state:0
+msgid "Done"
+msgstr "Готово"
+
+#. module: project_task_materials_stock
+#: help:project.task,consume_material:0
+#: help:project.task.type,consume_material:0
+msgid ""
+"If you mark this check, when a task goes to this state,it will consume the "
+"associated materials"
+msgstr ""
+
+#. module: project_task_materials_stock
+#: view:project.task:project_task_materials_stock.view_project_task_form_materials_stock
+msgid "Materials consumed"
+msgstr ""
+
+#. module: project_task_materials_stock
+#: view:project.task:project_task_materials_stock.view_project_task_form_materials_stock
+msgid "Materials used"
+msgstr ""
+
+#. module: project_task_materials_stock
+#: selection:project.task,stock_state:0
+msgid "Pending"
+msgstr ""
+
+#. module: project_task_materials_stock
+#: view:project.task:project_task_materials_stock.view_project_task_form_materials_stock
+msgid "Products"
+msgstr "Продукти"
+
+#. module: project_task_materials_stock
+#: field:project.task.materials,stock_move_id:0
+msgid "Stock Move"
+msgstr ""
+
+#. module: project_task_materials_stock
+#: view:project.task:project_task_materials_stock.view_project_task_form_materials_stock
+#: field:project.task,stock_move_ids:0
+msgid "Stock Moves"
+msgstr ""
+
+#. module: project_task_materials_stock
+#: field:project.task,stock_state:0
+msgid "Stock State"
+msgstr ""
+
+#. module: project_task_materials_stock
+#: model:ir.model,name:project_task_materials_stock.model_project_task
+msgid "Task"
+msgstr ""
+
+#. module: project_task_materials_stock
+#: model:ir.model,name:project_task_materials_stock.model_project_task_materials
+msgid "Task Materials Used"
+msgstr ""
+
+#. module: project_task_materials_stock
+#: model:ir.model,name:project_task_materials_stock.model_project_task_type
+msgid "Task Stage"
+msgstr ""
+
+#. module: project_task_materials_stock
+#: view:project.task:project_task_materials_stock.view_project_task_form_materials_stock
+msgid "Transfer Materials"
+msgstr ""
+
+#. module: project_task_materials_stock
+#: field:project.task.materials,product_uom:0
+msgid "Unit of Measure"
+msgstr ""
+
+#. module: project_task_materials_stock
+#: code:addons/project_task_materials_stock/models/project.py:89
+#, python-format
+msgid ""
+"You can't move to a not consume stage if there are already invoiced analytic"
+" lines"
+msgstr ""

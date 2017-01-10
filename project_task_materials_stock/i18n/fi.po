@@ -1,0 +1,132 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * project_task_materials_stock
+# 
+# Translators:
+# Jarmo Kortetjärvi <jarmo.kortetjarvi@gmail.com>, 2016
+msgid ""
+msgstr ""
+"Project-Id-Version: project (8.0)\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-09-02 14:58+0000\n"
+"PO-Revision-Date: 2016-09-15 12:45+0000\n"
+"Last-Translator: Jarmo Kortetjärvi <jarmo.kortetjarvi@gmail.com>\n"
+"Language-Team: Finnish (http://www.transifex.com/oca/OCA-project-8-0/language/fi/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: fi\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: project_task_materials_stock
+#: field:project.task.materials,analytic_line_id:0
+msgid "Analytic Line"
+msgstr "Analyyttinen rivi"
+
+#. module: project_task_materials_stock
+#: field:project.task,analytic_line_ids:0
+msgid "Analytic Lines"
+msgstr "Analyyttiset rivit"
+
+#. module: project_task_materials_stock
+#: selection:project.task,stock_state:0
+msgid "Assigned"
+msgstr "Vastuullinen"
+
+#. module: project_task_materials_stock
+#: view:project.task:project_task_materials_stock.view_project_task_form_materials_stock
+msgid "Check Availability"
+msgstr "Tarkista saatavuus"
+
+#. module: project_task_materials_stock
+#: selection:project.task,stock_state:0
+msgid "Confirmed"
+msgstr "Hyväksytty"
+
+#. module: project_task_materials_stock
+#: field:project.task,consume_material:0
+#: field:project.task.type,consume_material:0
+msgid "Consume Material"
+msgstr "Käytä materiaali"
+
+#. module: project_task_materials_stock
+#: selection:project.task,stock_state:0
+msgid "Done"
+msgstr "Valmis"
+
+#. module: project_task_materials_stock
+#: help:project.task,consume_material:0
+#: help:project.task.type,consume_material:0
+msgid ""
+"If you mark this check, when a task goes to this state,it will consume the "
+"associated materials"
+msgstr "Jos valitset tämän, tehtävä käyttää siihen liittyvät materiaalit siirtyessään tähän vaiheeseen"
+
+#. module: project_task_materials_stock
+#: view:project.task:project_task_materials_stock.view_project_task_form_materials_stock
+msgid "Materials consumed"
+msgstr "Käytetyt materiaalit"
+
+#. module: project_task_materials_stock
+#: view:project.task:project_task_materials_stock.view_project_task_form_materials_stock
+msgid "Materials used"
+msgstr "Käytetyt materiaalit"
+
+#. module: project_task_materials_stock
+#: selection:project.task,stock_state:0
+msgid "Pending"
+msgstr "Odottaa"
+
+#. module: project_task_materials_stock
+#: view:project.task:project_task_materials_stock.view_project_task_form_materials_stock
+msgid "Products"
+msgstr "Tuotteet"
+
+#. module: project_task_materials_stock
+#: field:project.task.materials,stock_move_id:0
+msgid "Stock Move"
+msgstr "Varastosiirto"
+
+#. module: project_task_materials_stock
+#: view:project.task:project_task_materials_stock.view_project_task_form_materials_stock
+#: field:project.task,stock_move_ids:0
+msgid "Stock Moves"
+msgstr "Varastosiirrot"
+
+#. module: project_task_materials_stock
+#: field:project.task,stock_state:0
+msgid "Stock State"
+msgstr "Varastotilanne"
+
+#. module: project_task_materials_stock
+#: model:ir.model,name:project_task_materials_stock.model_project_task
+msgid "Task"
+msgstr "Tehtävä"
+
+#. module: project_task_materials_stock
+#: model:ir.model,name:project_task_materials_stock.model_project_task_materials
+msgid "Task Materials Used"
+msgstr "Tehtävän materiaaleja käytetty"
+
+#. module: project_task_materials_stock
+#: model:ir.model,name:project_task_materials_stock.model_project_task_type
+msgid "Task Stage"
+msgstr "Tehtävän vaihe"
+
+#. module: project_task_materials_stock
+#: view:project.task:project_task_materials_stock.view_project_task_form_materials_stock
+msgid "Transfer Materials"
+msgstr "Siirrä materiaalit"
+
+#. module: project_task_materials_stock
+#: field:project.task.materials,product_uom:0
+msgid "Unit of Measure"
+msgstr "Mittayksikkö"
+
+#. module: project_task_materials_stock
+#: code:addons/project_task_materials_stock/models/project.py:89
+#, python-format
+msgid ""
+"You can't move to a not consume stage if there are already invoiced analytic"
+" lines"
+msgstr "Et voi siirtää tehtävää enää tähän vaiheeseen jos siinä on laskutettuja rivejä"
