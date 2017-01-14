@@ -3,20 +3,20 @@
 # * project_task_materials_stock
 # 
 # Translators:
-# OCA Transbot <transbot@odoo-community.org>, 2017
+# Bole <bole@dajmi5.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-01-11 03:42+0000\n"
 "PO-Revision-Date: 2017-01-11 03:42+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
-"Language-Team: Latvian (https://www.transifex.com/oca/teams/23907/lv/)\n"
+"Last-Translator: Bole <bole@dajmi5.com>, 2017\n"
+"Language-Team: Croatian (Croatia) (https://www.transifex.com/oca/teams/23907/hr_HR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: lv\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
+"Language: hr_HR\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
 #. module: project_task_materials_stock
 #: model:ir.model.fields,field_description:project_task_materials_stock.field_project_task_materials_analytic_line_id
@@ -75,7 +75,7 @@ msgstr ""
 #. module: project_task_materials_stock
 #: selection:project.task,stock_state:0
 msgid "Pending"
-msgstr "Gaida izpildi"
+msgstr ""
 
 #. module: project_task_materials_stock
 #: model:ir.ui.view,arch_db:project_task_materials_stock.view_project_task_form_materials_stock
@@ -101,7 +101,7 @@ msgstr ""
 #. module: project_task_materials_stock
 #: model:ir.model,name:project_task_materials_stock.model_project_task
 msgid "Task"
-msgstr "Uzdevums"
+msgstr "Zadatak"
 
 #. module: project_task_materials_stock
 #: model:ir.model,name:project_task_materials_stock.model_project_task_materials
@@ -121,7 +121,7 @@ msgstr ""
 #. module: project_task_materials_stock
 #: model:ir.model.fields,field_description:project_task_materials_stock.field_project_task_materials_product_uom_id
 msgid "Unit of Measure"
-msgstr ""
+msgstr "Jedinica mjere"
 
 #. module: project_task_materials_stock
 #: code:addons/project_task_materials_stock/models/project.py:87
