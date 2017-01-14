@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-02 14:58+0000\n"
-"PO-Revision-Date: 2016-09-09 12:25+0000\n"
+"POT-Creation-Date: 2016-12-31 06:29+0000\n"
+"PO-Revision-Date: 2017-01-13 09:22+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/oca/OCA-project-8-0/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -121,7 +121,7 @@ msgstr ""
 #: field:project.sla.line,display_name:0
 #: field:project.sla.report,display_name:0
 msgid "Display Name"
-msgstr ""
+msgstr "Veure el nom"
 
 #. module: project_sla
 #: field:project.sla.control,doc_id:0
@@ -147,7 +147,7 @@ msgstr ""
 #: selection:project.sla.controlled,sla_state:0
 #: selection:project.sla.report,sla_state:0 selection:project.task,sla_state:0
 msgid "Failed"
-msgstr ""
+msgstr "Fracassat"
 
 #. module: project_sla
 #: field:project.sla.report,failed_count:0
@@ -192,7 +192,7 @@ msgstr ""
 #: field:project.sla.line,__last_update:0
 #: field:project.sla.report,__last_update:0
 msgid "Last Modified on"
-msgstr ""
+msgstr "Darrera modificació el"
 
 #. module: project_sla
 #: field:project.sla,write_uid:0 field:project.sla.control,write_uid:0
@@ -215,7 +215,7 @@ msgstr ""
 #: view:project.sla.report:project_sla.view_project_sla_report_search
 #: field:project.sla.report,date_month:0
 msgid "Month"
-msgstr ""
+msgstr "Mes"
 
 #. module: project_sla
 #: model:ir.model,name:project_sla.model_project_issue

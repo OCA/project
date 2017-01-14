@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-28 01:09+0000\n"
-"PO-Revision-Date: 2016-02-28 01:11+0000\n"
-"Last-Translator: <>\n"
+"POT-Creation-Date: 2016-12-31 06:28+0000\n"
+"PO-Revision-Date: 2017-01-10 08:59+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/oca/OCA-project-8-0/language/ca/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -59,9 +59,14 @@ msgstr ""
 #. module: project_model_to_task
 #: view:project.task:project_model_to_task.view_task_form2
 msgid "Open"
-msgstr ""
+msgstr "Obert"
 
 #. module: project_model_to_task
 #: model:ir.model,name:project_model_to_task.model_project_task
 msgid "Task"
 msgstr "Tasca"
+
+#. module: project_model_to_task
+#: field:project.task,task_origin:0
+msgid "Task origin"
+msgstr ""

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-24 04:00+0000\n"
-"PO-Revision-Date: 2016-12-27 08:21+0000\n"
+"POT-Creation-Date: 2016-12-31 06:28+0000\n"
+"PO-Revision-Date: 2017-01-13 09:22+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/oca/OCA-project-8-0/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -121,7 +121,7 @@ msgstr ""
 #. module: project_classification
 #: field:project.classification,display_name:0
 msgid "Display Name"
-msgstr ""
+msgstr "Veure el nom"
 
 #. module: project_classification
 #: field:project.project,hours_qtt_est:0
@@ -210,7 +210,7 @@ msgstr ""
 #. module: project_classification
 #: field:project.classification,__last_update:0
 msgid "Last Modified on"
-msgstr ""
+msgstr "Darrera modificació el"
 
 #. module: project_classification
 #: field:project.classification,write_uid:0
@@ -230,7 +230,7 @@ msgstr ""
 #. module: project_classification
 #: field:project.project,month_ids:0
 msgid "Month"
-msgstr ""
+msgstr "Mes"
 
 #. module: project_classification
 #: help:project.project,hours_qtt_non_invoiced:0
@@ -492,7 +492,7 @@ msgstr ""
 #. module: project_classification
 #: field:project.project,user_ids:0
 msgid "User"
-msgstr ""
+msgstr "Usuari"
 
 #. module: project_classification
 #: help:project.project,to_invoice:0
