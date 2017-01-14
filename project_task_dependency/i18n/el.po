@@ -1,0 +1,55 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * project_task_dependency
+# 
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-01-13 03:39+0000\n"
+"PO-Revision-Date: 2017-01-13 03:39+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"Language-Team: Greek (https://www.transifex.com/oca/teams/23907/el/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: el\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: project_task_dependency
+#: model:ir.model.fields,field_description:project_task_dependency.field_project_task_dependency_task_ids
+#: model:ir.ui.view,arch_db:project_task_dependency.project_task_form
+msgid "Dependencies"
+msgstr ""
+
+#. module: project_task_dependency
+#: model:ir.model.fields,field_description:project_task_dependency.field_project_task_depending_task_ids
+msgid "Depending Tasks"
+msgstr ""
+
+#. module: project_task_dependency
+#: model:ir.model.fields,field_description:project_task_dependency.field_project_task_recursive_dependency_task_ids
+msgid "Recursive Dependencies"
+msgstr ""
+
+#. module: project_task_dependency
+#: model:ir.model.fields,field_description:project_task_dependency.field_project_task_recursive_depending_task_ids
+msgid "Recursive Depending Tasks"
+msgstr ""
+
+#. module: project_task_dependency
+#: model:ir.model,name:project_task_dependency.model_project_task
+msgid "Task"
+msgstr "Εργασία"
+
+#. module: project_task_dependency
+#: model:ir.model.fields,help:project_task_dependency.field_project_task_recursive_depending_task_ids
+msgid "Tasks that are dependent on this task (recursive)."
+msgstr ""
+
+#. module: project_task_dependency
+#: model:ir.model.fields,help:project_task_dependency.field_project_task_depending_task_ids
+msgid "Tasks that are dependent on this task."
+msgstr ""
