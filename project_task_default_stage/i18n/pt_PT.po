@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (9.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-28 02:53+0000\n"
+"POT-Creation-Date: 2017-01-11 03:42+0000\n"
 "PO-Revision-Date: 2016-02-24 23:53+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: Portuguese (Portugal) (http://www.transifex.com/oca/OCA-project-9-0/language/pt_PT/)\n"
@@ -45,7 +45,7 @@ msgstr ""
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_deployment
 msgid "Done"
-msgstr ""
+msgstr "Concluído"
 
 #. module: project_task_default_stage
 #: model:ir.model.fields,help:project_task_default_stage.field_project_task_type_case_default
@@ -77,7 +77,7 @@ msgstr ""
 #. module: project_task_default_stage
 #: model:ir.model,name:project_task_default_stage.model_project_task_type
 msgid "Task Stage"
-msgstr ""
+msgstr "Etapa da Tarefa"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_testing
