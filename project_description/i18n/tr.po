@@ -1,9 +1,8 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * project_task_code
+# * project_description
 # 
 # Translators:
-# OCA Transbot <transbot@odoo-community.org>, 2017
 # Ivan BARAYEV <ivanbarayev@hotmail.com>, 2017
 msgid ""
 msgstr ""
@@ -19,19 +18,13 @@ msgstr ""
 "Language: tr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#. module: project_task_code
-#: model:ir.model,name:project_task_code.model_project_task
-msgid "Task"
-msgstr "Görev"
+#. module: project_description
+#: model:ir.model.fields,field_description:project_description.field_project_project_description
+#: model:ir.ui.view,arch_db:project_description.project_form
+msgid "Description"
+msgstr "Açıklama"
 
-#. module: project_task_code
-#: model:ir.model.fields,field_description:project_task_code.field_project_task_code
-msgid "Task Number"
-msgstr "Görev Numarası"
-
-#. module: project_task_code
-#: code:addons/project_task_code/models/project_task.py:16
-#: sql_constraint:project.task:0
-#, python-format
-msgid "The code must be unique!"
-msgstr "Kod benzersiz olmalı !"
+#. module: project_description
+#: model:ir.model,name:project_description.model_project_project
+msgid "Project"
+msgstr "Proje"
