@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-31 18:04+0000\n"
+"POT-Creation-Date: 2017-01-14 05:43+0000\n"
 "PO-Revision-Date: 2015-07-21 19:19+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: Italian (http://www.transifex.com/oca/OCA-project-8-0/language/it/)\n"
@@ -24,6 +24,7 @@ msgstr ""
 
 #. module: service_desk
 #: field:account.analytic.account,contact_id:0
+#: field:project.project,contact_id:0
 msgid "Contact"
 msgstr ""
 
@@ -35,7 +36,7 @@ msgstr ""
 #. module: service_desk
 #: field:project.task,location_id:0
 msgid "Location"
-msgstr ""
+msgstr "Posizione"
 
 #. module: service_desk
 #: selection:project.project,use_analytic_account:0

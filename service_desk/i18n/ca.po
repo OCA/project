@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-31 18:04+0000\n"
+"POT-Creation-Date: 2017-01-14 05:43+0000\n"
 "PO-Revision-Date: 2015-07-21 19:19+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: Catalan (http://www.transifex.com/oca/OCA-project-8-0/language/ca/)\n"
@@ -20,10 +20,11 @@ msgstr ""
 #. module: service_desk
 #: model:ir.model,name:service_desk.model_account_analytic_account
 msgid "Analytic Account"
-msgstr ""
+msgstr "Compte analític"
 
 #. module: service_desk
 #: field:account.analytic.account,contact_id:0
+#: field:project.project,contact_id:0
 msgid "Contact"
 msgstr ""
 

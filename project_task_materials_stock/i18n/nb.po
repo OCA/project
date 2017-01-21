@@ -10,11 +10,11 @@ msgstr ""
 "POT-Creation-Date: 2017-01-14 05:42+0000\n"
 "PO-Revision-Date: 2017-01-19 20:17+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
-"Language-Team: Swedish (http://www.transifex.com/oca/OCA-project-8-0/language/sv/)\n"
+"Language-Team: Norwegian Bokmål (http://www.transifex.com/oca/OCA-project-8-0/language/nb/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: sv\n"
+"Language: nb\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: project_task_materials_stock
@@ -74,7 +74,7 @@ msgstr ""
 #. module: project_task_materials_stock
 #: selection:project.task,stock_state:0
 msgid "Pending"
-msgstr "Pågående"
+msgstr "Venter"
 
 #. module: project_task_materials_stock
 #: view:project.task:project_task_materials_stock.view_project_task_form_materials_stock
@@ -100,7 +100,7 @@ msgstr ""
 #. module: project_task_materials_stock
 #: model:ir.model,name:project_task_materials_stock.model_project_task
 msgid "Task"
-msgstr "Uppgift"
+msgstr ""
 
 #. module: project_task_materials_stock
 #: model:ir.model,name:project_task_materials_stock.model_project_task_materials
