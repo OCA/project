@@ -2,7 +2,7 @@
 # © 2016 Onestein (<http://www.onestein.eu>)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo import models, fields, api
+from openerp import models, fields, api
 
 
 class ProjectTask(models.Model):
@@ -35,14 +35,15 @@ class ProjectTask(models.Model):
         compute='_compute_dependency'
     )
 
-    @api.one
+    @api.multi
     @api.depends('dependency_task_ids')
     def _compute_dependency(self):
-        self.recursive_dependency_task_ids = self.get_dependency_tasks(self,
-                                                                       True)
-        self.depending_task_ids = self.get_depending_tasks(self)
-        self.recursive_depending_task_ids = self.get_depending_tasks(self,
-                                                                     True)
+        for task in self:
+            task.recursive_dependency_task_ids = self.get_dependency_tasks(
+                task, True)
+            task.depending_task_ids = self.get_depending_tasks(task)
+            task.recursive_depending_task_ids = self.get_depending_tasks(
+                task, True)
 
     @api.model
     def get_dependency_tasks(self, task, recursive=False):
