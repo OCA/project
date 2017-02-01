@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 Wrapper for OpenERP's cryptic write conventions for x2many fields.
 

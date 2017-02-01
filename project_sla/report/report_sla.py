@@ -1,10 +1,12 @@
+# -*- coding: utf-8 -*-
+
 from openerp import tools
 from openerp.osv import fields, orm
 
 from ..project_sla_control import SLA_STATES
 
 
-class report_sla(orm.Model):
+class ReportSla(orm.Model):
     _name = "project.sla.report"
     _description = "Project SLA report"
     _auto = False
@@ -13,7 +15,7 @@ class report_sla(orm.Model):
     # Overridden to automaticaly calculate correct achieved percent for any
     # group result
     def read_group(self, cr, uid, *args, **kwargs):
-        res = super(report_sla, self).read_group(cr, uid, *args, **kwargs)
+        res = super(ReportSla, self).read_group(cr, uid, *args, **kwargs)
         for gres in res:
             if 'achieved_count' in gres and 'total_count' in gres:
                 acount = float(gres['achieved_count'])

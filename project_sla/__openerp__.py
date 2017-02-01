@@ -20,7 +20,7 @@
 {
     'name': 'Service Level Agreements',
     'summary': 'Define SLAs for your Contracts',
-    'version': '1.0',
+    'version': '7.0.0.1.0',
     "category": "Project Management",
     'description': """\
 Contract SLAs
@@ -130,4 +130,5 @@ Credits and Contributors
     'demo': ['project_sla_demo.xml'],
     'test': ['test/project_sla.yml'],
     'installable': True,
+    'license': 'AGPL-3',
 }
