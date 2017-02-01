@@ -30,6 +30,10 @@ from . import m2m
 import logging
 _logger = logging.getLogger(__name__)
 
+FMT = {
+    'datetime': DT_FMT,
+    'date': D_FMT,
+}
 
 SLA_STATES = [('5', 'Failed'), ('4', 'Will Fail'), ('3', 'Warning'),
               ('2', 'Watching'), ('1', 'Achieved')]
@@ -56,6 +60,32 @@ def safe_getattr(obj, dotattr, default=False):
     return obj
 
 
+def datetime2str(dt_value, fmt):
+    """ Tolerant datetime to string conversion
+
+        :param datetime dt_value: datetime value to convert to string
+        :param str fmt: conversion format
+    """
+    return dt_value and dt.strftime(dt_value, fmt) or None
+
+
+def get_sla_date(sla, doc, field='control'):
+    """ Converts control or start field value to datetime object.
+    """
+    assert field in ('control', 'start'), (
+        "field must be in ('control', 'start')")
+    if field == 'control':
+        sla_field = sla.control_field_id
+    elif field == 'start':
+        sla_field = sla.start_field_id
+
+    val = getattr(doc, sla_field.name)
+
+    # TODO: Is this behavior correct? I mean date of format
+    # %Y-%m-%d 00:00:00
+    return dt.strptime(val, FMT[sla_field.ttype]) if val else None
+
+
 class SLAControl(orm.Model):
 
     """
@@ -67,16 +97,18 @@ class SLAControl(orm.Model):
     _description = 'SLA Control Registry'
 
     _columns = {
-        'doc_id': fields.integer('Document ID', readonly=True),
-        'doc_model': fields.char('Document Model', size=128, readonly=True),
+        'doc_id': fields.integer('Document ID', readonly=True, select=True),
+        'doc_model': fields.char('Document Model', size=128, readonly=True,
+                                 select=True),
         'sla_line_id': fields.many2one(
-            'project.sla.line', 'Service Agreement'),
-        'sla_warn_date': fields.datetime('Warning Date'),
-        'sla_limit_date': fields.datetime('Limit Date'),
-        'sla_start_date': fields.datetime('Start Date'),
-        'sla_close_date': fields.datetime('Close Date'),
+            'project.sla.line', 'Service Agreement', select=True),
+        'sla_warn_date': fields.datetime('Warning Date', select=True),
+        'sla_limit_date': fields.datetime('Limit Date', select=True),
+        'sla_start_date': fields.datetime('Start Date', select=True),
+        'sla_close_date': fields.datetime('Close Date', select=True),
         'sla_achieved': fields.integer('Achieved?'),
-        'sla_state': fields.selection(SLA_STATES, string="SLA Status"),
+        'sla_state': fields.selection(SLA_STATES, string="SLA Status",
+                                      select=True),
         'locked': fields.boolean(
             'Recalculation disabled',
             help="Safeguard manual changes from future automatic "
@@ -145,7 +177,8 @@ class SLAControl(orm.Model):
         16:00 of the next day.
         """
         assert isinstance(start_date, dt), (
-            "start_date must be instance of 'datetime'.")
+            "start_date must be instance of 'datetime'. "
+            "Got %s" % repr(start_date))
         assert isinstance(hours, int) and hours >= 0, (
             "hours must be int and >= 0. got %s" % repr(hours))
 
@@ -183,46 +216,25 @@ class SLAControl(orm.Model):
         * Control date, used to calculate SLA achievement, is defined in the
           SLA Definition rules.
         """
-        def datetime2str(dt_value, fmt):  # tolerant datetime to string
-            return dt_value and dt.strftime(dt_value, fmt) or None
-
-        def get_sla_date(sla, doc, field='control'):
-            """ Converts control field value to datetime object.
-            """
-            assert field in ('control', 'start'), (
-                "field must be in ('control', 'start')")
-            if field == 'control':
-                sla_field = sla.control_field_id
-            elif field == 'start':
-                sla_field = sla.start_field_id
-
-            val = getattr(doc, sla_field.name)
-            if val and sla_field.ttype == 'datetime':
-                return dt.strptime(val, DT_FMT)
-            elif val and sla_field.ttype == 'date':
-                # TODO: Is this behavior correct? I mean date of format
-                # %Y-%m-%d 00:00:00
-                return dt.strptime(val, D_FMT)
-            return None
-
-        res = []
+        res_uid = safe_getattr(doc, 'user_id.id') or uid
+        cal = safe_getattr(doc, 'project_id.resource_calendar_id.id')
         sla_ids = (safe_getattr(doc, 'analytic_account_id.sla_ids') or
                    safe_getattr(doc, 'project_id.analytic_account_id.sla_ids'))
-        if not sla_ids:
-            return res
 
-        for sla in sla_ids:
+        res = []
+        for sla in (sla_ids or []):
             if sla.control_model != doc._table_name:
                 continue  # SLA not for this model; skip
+
+            start_date = get_sla_date(sla, doc, 'start')
+            control_date = get_sla_date(sla, doc, 'control')
+
+            if not start_date:
+                continue  # Skip SLA that have not start_date defined
 
             for l in sla.sla_line_ids:
                 eval_context = {'o': doc, 'obj': doc, 'object': doc}
                 if not l.condition or safe_eval(l.condition, eval_context):
-
-                    start_date = get_sla_date(sla, doc, 'start')
-                    res_uid = safe_getattr(doc, 'user_id.id') or uid
-                    cal = safe_getattr(
-                        doc, 'project_id.resource_calendar_id.id')
                     warn_date = self._compute_sla_date(
                         cr, uid, cal, res_uid, start_date, l.warn_qty,
                         context=context)
@@ -230,8 +242,8 @@ class SLAControl(orm.Model):
                         cr, uid, cal, res_uid, warn_date,
                         l.limit_qty - l.warn_qty,
                         context=context)
+
                     # evaluate sla state
-                    control_date = get_sla_date(sla, doc, 'control')
                     if control_date is not None:
                         if control_date > lim_date:
                             sla_val, sla_state = 0, '5'  # failed
@@ -286,13 +298,11 @@ class SLAControl(orm.Model):
             if sla_recs:
                 slas = []
                 for sla_rec in sla_recs:
-                    sla_line_id = sla_rec.get('sla_line_id')
-                    if sla_line_id in control:
-                        control_rec = control.get(sla_line_id)
-                        if not control_rec.locked:
-                            slas += m2m.write(control_rec.id, sla_rec)
-                    else:
+                    control_rec = control.get(sla_rec['sla_line_id'], None)
+                    if control_rec is None:
                         slas += m2m.add(sla_rec)
+                    elif not control_rec.locked:
+                        slas += m2m.write(control_rec.id, sla_rec)
                 global_sla = max([sla[2].get('sla_state') for sla in slas])
             else:
                 slas = m2m.clear()
