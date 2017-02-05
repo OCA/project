@@ -1,11 +1,11 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * sale_order_project
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: project (8.0)\n"
+"Project-Id-Version: project (9.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-31 18:04+0000\n"
 "PO-Revision-Date: 2015-08-06 21:49+0000\n"
@@ -26,3 +26,8 @@ msgstr "Crear proyecto"
 #: model:ir.model,name:sale_order_project.model_sale_order
 msgid "Sales Order"
 msgstr "Pedido de venta"
+
+#. module: sale_order_project
+#: model:ir.model.fields,field_description:sale_order_project.related_project_id
+msgid "Project"
+msgstr "Proyecto"
