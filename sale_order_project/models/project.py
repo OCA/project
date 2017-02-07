@@ -26,13 +26,20 @@ from openerp import api, fields, models, _
 class Project(models.Model):
     _inherit = 'project.project'
 
-    sale_order_ids = fields.One2many(related='analytic_account_id.sale_order_ids', string=_('Sale Orders'), readonly=True)
+    sale_order_ids = fields.One2many(
+        related='analytic_account_id.sale_order_ids',
+        string='Sale Orders',
+        readonly=True
+    )
 
     @api.multi
     def action_connect_sale_order(self):
         # launch a wizard to select a Sale Order from existing Orders
 
-        view = self.env['ir.model.data'].get_object_reference('sale_order_project', 'view_project_sale_order_select_form')
+        view = self.env['ir.model.data'].get_object_reference(
+            'sale_order_project',
+            'view_project_sale_order_select_form'
+        )
         view_id = view and view[1] or False
 
         return {
@@ -46,5 +53,3 @@ class Project(models.Model):
             'res_id': False,
             'context': {'default_project_id': self.id, 'default_partner_id': self.partner_id.id}
         }
-
-        return True

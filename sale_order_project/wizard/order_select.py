@@ -26,9 +26,9 @@ from openerp import api, fields, models, _
 class ProjectOrderSelect(models.TransientModel):
     _name = 'project.order.select'
 
-    sale_order_id = fields.Many2one('sale.order', string=_('Sale Orders'))
-    project_id = fields.Many2one('project.project', string=_('Projects'))
-    partner_id = fields.Many2one('res.partner', string=_('Client'))
+    sale_order_id = fields.Many2one('sale.order', string='Sale Orders')
+    project_id = fields.Many2one('project.project', string='Projects')
+    partner_id = fields.Many2one('res.partner', string='Client')
 
     @api.multi
     def action_connect_sale_order(self):

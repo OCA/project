@@ -20,10 +20,10 @@
 #
 ###############################################################################
 
-from openerp import api, fields, models, _
+from openerp import fields, models
 
 
 class AccountAnalyticAccount(models.Model):
     _inherit = 'account.analytic.account'
 
-    sale_order_ids = fields.One2many('sale.order', 'project_id', string=_('Sale Orders'))
+    sale_order_ids = fields.One2many('sale.order', 'project_id', string='Sale Orders')
