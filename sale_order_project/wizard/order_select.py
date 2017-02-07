@@ -20,7 +20,7 @@
 #
 ###############################################################################
 
-from openerp import api, fields, models, _
+from openerp import api, fields, models
 
 
 class ProjectOrderSelect(models.TransientModel):

@@ -51,5 +51,8 @@ class Project(models.Model):
             'view_id': [view_id],
             'target': 'new',
             'res_id': False,
-            'context': {'default_project_id': self.id, 'default_partner_id': self.partner_id.id}
+            'context': {
+                'default_project_id': self.id,
+                'default_partner_id': self.partner_id.id
+            }
         }
