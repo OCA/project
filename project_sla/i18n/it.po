@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-17 03:58+0000\n"
-"PO-Revision-Date: 2016-12-23 08:32+0000\n"
+"POT-Creation-Date: 2017-02-04 04:37+0000\n"
+"PO-Revision-Date: 2017-02-17 15:46+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Italian (http://www.transifex.com/oca/OCA-project-8-0/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -410,7 +410,7 @@ msgstr ""
 #: selection:project.sla.controlled,sla_state:0
 #: selection:project.sla.report,sla_state:0 selection:project.task,sla_state:0
 msgid "Warning"
-msgstr ""
+msgstr "Warning"
 
 #. module: project_sla
 #: field:project.sla.control,sla_warn_date:0
