@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-17 13:09+0000\n"
-"PO-Revision-Date: 2016-12-16 12:16+0000\n"
+"POT-Creation-Date: 2017-02-18 05:27+0000\n"
+"PO-Revision-Date: 2017-02-25 00:03+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: German (http://www.transifex.com/oca/OCA-project-8-0/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -98,7 +98,7 @@ msgstr "Lagerbewegungen"
 #. module: project_task_materials_stock
 #: field:project.task,stock_state:0
 msgid "Stock State"
-msgstr ""
+msgstr "Bestandszustand"
 
 #. module: project_task_materials_stock
 #: model:ir.model,name:project_task_materials_stock.model_project_task
