@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="view_task_form2" model="ir.ui.view">
+            <field name="name">project_task_form_view_type</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <field name="project_id" position="before">
+                    <field name="task_categ_id" sequence='0'/>
+                </field>
+            </field>
+        </record>
+        <record id="view_task_tree2" model="ir.ui.view">
+            <field name="name">project.task.tree</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_tree2"/>
+            <field name="arch" type="xml">
+                <field name="name" position="before">
+                    <field name="task_categ_id"/>
+                </field>
+            </field>
+        </record>
+        <record id="view_task_search_form" model="ir.ui.view">
+            <field name="name">project.task.search.form</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_search_form"/>
+            <field name="arch" type="xml">
+                <field name="name" position="after">
+                    <field name="task_categ_id"/>
+                </field>
+                <group expand="0" string="Group By">
+                    <filter string="Category" domain="[]" context="{'group_by':'task_categ_id'}"/>
+                </group>
+            </field>
+        </record>
+        <record id="view_task_kanban" model="ir.ui.view">
+            <field name="name">project.task.view.task.kanban</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_kanban"/>
+            <field name="arch" type="xml">
+                <field name="name" position="before">
+                    <div>
+                        <field name="task_categ_id"/>
+                    </div>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>
