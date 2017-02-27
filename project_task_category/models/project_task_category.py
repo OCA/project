@@ -8,8 +8,8 @@ from openerp import fields, models
 class ProjectTask(models.Model):
     _inherit = 'project.task'
 
-    task_categ_id = fields.Many2one(
+    categ_id = fields.Many2one(
         'project.category',
-        'Task Category',
+        'Category',
         required=True
     )
