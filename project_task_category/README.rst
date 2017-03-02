@@ -16,6 +16,17 @@ To install this module, you need to:
 
  * have basic modules installed (project)
 
+Usage
+=====
+
+To use this module, you need to:
+
+#. Go to project task form view
+
+.. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
+   :alt: Try me on Runbot
+   :target: https://runbot.odoo-community.org/runbot//140/8.0
+
 Bug Tracker
 ===========
 
