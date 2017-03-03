@@ -23,6 +23,7 @@ addon | version | summary
 [project_issue_task](project_issue_task/) | 9.0.1.0.0 | Use Tasks to support Issue resolution reports
 [project_task_code](project_task_code/) | 9.0.1.0.0 | Sequential Code for Tasks
 [project_task_default_stage](project_task_default_stage/) | 9.0.1.0.0 | Recovery default task stage projects from v8
+[project_task_dependency](project_task_dependency/) | 9.0.1.0.0 | Enables to define dependencies (other tasks) of a task
 [project_task_materials](project_task_materials/) | 9.0.1.0.0 | Record products spent in a Task
 [project_task_materials_stock](project_task_materials_stock/) | 9.0.1.0.0 | Create stock and analytic moves from record products spent in a Task
 
