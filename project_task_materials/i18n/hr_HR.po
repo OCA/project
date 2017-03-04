@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-18 02:39+0000\n"
-"PO-Revision-Date: 2016-10-05 06:30+0000\n"
+"POT-Creation-Date: 2017-02-25 05:29+0000\n"
+"PO-Revision-Date: 2017-03-02 22:14+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Croatian (Croatia) (http://www.transifex.com/oca/OCA-project-8-0/language/hr_HR/)\n"
 "MIME-Version: 1.0\n"
@@ -72,7 +72,7 @@ msgstr ""
 #: model:ir.model,name:project_task_materials.model_project_task
 #: field:project.task.materials,task_id:0
 msgid "Task"
-msgstr ""
+msgstr "Zadatak"
 
 #. module: project_task_materials
 #: model:ir.model,name:project_task_materials.model_project_task_materials
