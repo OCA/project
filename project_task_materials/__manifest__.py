@@ -9,9 +9,8 @@
     'summary': 'Record products spent in a Task',
     'version': '1.0.0',
     'category': "Project Management",
-    'author': "Daniel Reis,"
-              "Antiun Ingeniería S.L.,"
-              "Odoo Community Association (OCA)",
+    'author': "Tecnativa, Odoo Community Association (OCA)",
+    'website': 'https://www.tecnativa.com',
     'license': 'AGPL-3',
     'description': """\
 Project Tasks allow to record time spent, but some activities, such as
