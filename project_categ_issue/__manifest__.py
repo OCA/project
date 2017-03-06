@@ -12,7 +12,8 @@
 Adds to Issues the ability to limit selectable Categories to a Project's
 specific list.
 """,
-    'author': "Daniel Reis, Odoo Community Association (OCA)",
+    'author': 'Tecnativa, Odoo Community Association (OCA)',
+    'website': 'https://www.tecnativa.com',
     'license': 'AGPL-3',
     'depends': [
         'project_issue',
