@@ -1,28 +1,13 @@
 # -*- coding: utf-8 -*-
-##############################################################################
-#
-#    Copyright (C) 2012 - 2013 Daniel Reis
-#    Copyright (C) 2015 - Antiun Ingeniería S.L. - Sergio Teruel
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as
-#    published by the Free Software Foundation, either version 3 of the
-#    License, or (at your option) any later version.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-##############################################################################
+# © 2012 - 2013 Daniel Reis
+# © 2015 - Antiun Ingeniería S.L. - Sergio Teruel
+# © 2017 - Rigoberto Martínez <rigo1985@gmail.com>
+# License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
 {
     'name': 'Project Task Materials',
     'summary': 'Record products spent in a Task',
-    'version': '8.0.1.0.0',
+    'version': '1.0.0',
     'category': "Project Management",
     'author': "Daniel Reis,"
               "Antiun Ingeniería S.L.,"
@@ -43,5 +28,5 @@ actually performed.""",
         'views/project_view.xml',
         'security/ir.model.access.csv',
     ],
-    'installable': False,
+    'installable': True,
 }
