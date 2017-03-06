@@ -9,9 +9,8 @@
     'name': 'Project timesheet time control',
     'version': '1.0.0',
     'category': 'Project',
-    'author': 'Serv. Tecnol. Avanzados - Pedro M. Baeza, '
-              'Antiun Ingeniería S.L.',
-    'website': 'http://www.serviciosbaeza.com',
+    'author': 'Tecnativa, Odoo Community Association (OCA)',
+    'website': 'https://www.tecnativa.com',
     'depends': ['hr_timesheet'],
     'data': [
         'security/project_security.xml',
