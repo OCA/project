@@ -19,7 +19,7 @@ To setup:
 Now make this feature available on Issues or Tasks by installing the
 corresponding extension module.
 """,
-    'author': 'Tecnativa, Odoo Community Association (OCA)',
+    'author': 'Daniel Reis, Tecnativa, Odoo Community Association (OCA)',
     'website': 'https://www.tecnativa.com',
     'license': 'AGPL-3',
     'depends': [
