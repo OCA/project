@@ -22,7 +22,7 @@ This module adds some usability improvements:
   * Automatically Cancel the Task when Issue is Cancelled
   * Make the Task also visible to all followers of the related Issue
 """,
-    'author': "Tecnativa, Odoo Community Association (OCA)",
+    'author': "Daniel Reis, Tecnativa, Odoo Community Association (OCA)",
     'website': 'https://www.tecnativa.com',
     'license': 'AGPL-3',
     'depends': [
