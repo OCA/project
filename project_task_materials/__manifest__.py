@@ -9,7 +9,7 @@
     'summary': 'Record products spent in a Task',
     'version': '1.0.0',
     'category': "Project Management",
-    'author': "Tecnativa, Odoo Community Association (OCA)",
+    'author': "Daniel Reis, Tecnativa, Odoo Community Association (OCA)",
     'website': 'https://www.tecnativa.com',
     'license': 'AGPL-3',
     'description': """\
