@@ -13,19 +13,20 @@ class ProjectTask(models.Model):
         string='PR URI',
     )
 
+    pr_required_states = fields.Many2many(
+        related='project_id.pr_required_states',
+    )
+
     @api.multi
     def write(self, vals, ):
         if vals.get('stage_id'):
             stage_id = vals.get('stage_id')
             num_states = len(self.project_id.pr_required_states)
             if self.pr_uri is False and num_states > 0:
-                if ((num_states == 1 and
-                        stage_id ==
-                        self.project_id.pr_required_states.id) or
-                    (num_states > 1 and
+                if (num_states >= 1 and
                         stage_id in
                         [state.id for state in
-                         self.project_id.pr_required_states])):
+                         self.project_id.pr_required_states]):
                     raise exceptions.ValidationError(_(
                         'Please add the URI for the pull request '
                         'before moving the task to this stage.'

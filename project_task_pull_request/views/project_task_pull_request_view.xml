@@ -10,7 +10,9 @@
         <field name="inherit_id" ref="project.view_task_form2"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='sequence']" position="before">
-                <field name="pr_uri" />
+                <field name="pr_required_states" attrs="{'invisible':True}"/>
+                <field name="pr_uri"
+                       attrs="{'invisible':[('pr_required_states', '=', [])]}"/>
             </xpath>
         </field>
     </record>
