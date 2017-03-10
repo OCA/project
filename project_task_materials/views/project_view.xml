@@ -11,7 +11,7 @@
                     <!--Materials used-->
                     <field name="material_ids" groups="project.group_time_work_estimation_tasks">
                         <tree string="Materials used" editable="top">
-                            <field name="product_id"/>
+                        <field name="product_id"/>
                             <field name="quantity"/>
                             <field name="uom_id" groups="product.group_uom"/>
                         </tree>
