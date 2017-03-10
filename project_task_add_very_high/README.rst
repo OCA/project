@@ -9,11 +9,29 @@ Project Task Add Very High
 This module extend the field `priority` in project tasks, adding a new level of priority.
 This new level of priority is named `Very High`.
 
+
+On a task form, the priority widget is shown as two stars instead of one:
+
 .. figure:: static/description/image.png
    :alt: On form, priority widget shows two stars instead of one
 
+
+Also on a kanban view, the priority widget is shown as two stars instead of one:
+
 .. figure:: static/description/image2.png
    :alt: On kanban, priority widget shows two stars instead of one
+
+
+Without having this module installed, on the form it would look as that:
+
+.. figure:: static/description/image_a.png
+   :alt: On form, priority widget shows one star
+
+and on kanban:
+
+.. figure:: static/description/image2_a.png
+   :alt: On kanban, priority widget shows one star
+
 
 Configuration
 =============
