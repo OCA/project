@@ -18,12 +18,13 @@ class ProjectIssue(models.Model):
     tag_project = fields.Many2one('project.tags', string='Root Tag for Issues',
                                   compute='_compute_project_root_tag')
     
-    @api.one
+    @api.multi
     @api.depends('project_id')
     def _compute_project_root_tag(self):
-        self.tag_project = self.project_id.issue_tag_id or False
+        for issue in self:
+            issue.tag_project = issue.project_id.issue_tag_id or False
     
     @api.onchange('project_id')
     def _onchange_project(self):
         res = super(ProjectIssue, self)._onchange_project_id()
-        self.tag_ids &= self.project_id.root_tag_id.child_ids
+        self.tag_ids &= self.project_id.issue_tag_id.child_ids
