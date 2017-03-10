@@ -6,10 +6,8 @@
 Project Issue Task
 ==================
 
-* Support for the use case where solving an Issue means a Task should be done,
-such as an on site visit, and a report must be made to document the work done.
-* The Issue form already has a "Task" field, allowing to create a Task related
-to an Issue.
+* Support for the use case where solving an Issue means a Task should be done, such as an on site visit, and a report must be made to document the work done.
+* The Issue form already has a "Task" field, allowing to create a Task related to an Issue.
 
 Usage
 =====
