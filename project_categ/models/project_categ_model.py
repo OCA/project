@@ -23,9 +23,10 @@ class ProjectCategory(models.Model):
     complete_name = fields.Char(string='Name', compute='_compute_complete_name')
     code = fields.Char(string='Code', size=10)
 
-    @api.one
+    @api.multi
     @api.depends('name', 'parent_id')
     def _compute_complete_name(self):
+        self.ensure_one()
         parent_name = self.parent_id.name and self.parent_id.name + ' / '
         self.complete_name = (parent_name or '') + self.name
     
@@ -36,9 +37,10 @@ class ProjectTask(models.Model):
     tag_project = fields.Many2one('project.tags', string='Root Tag',
                                   compute='_compute_project_root_tag')
 
-    @api.one
+    @api.multi
     @api.depends('project_id')
     def _compute_project_root_tag(self):
+        self.ensure_one()
         self.tag_project = self.project_id.root_tag_id or False
     
     @api.onchange('project_id')
