@@ -9,7 +9,7 @@
         <field name="arch" type="xml">
             <form position="inside">
                 <group>
-                	<field name="parent_id" />
+                    <field name="parent_id" />
                 </group>
                 <notebook>
                     <page name='tag_childs' string="Child Categories" >
