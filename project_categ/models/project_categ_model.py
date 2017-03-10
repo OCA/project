@@ -9,7 +9,7 @@ from odoo import api, fields, models, _
 class ProjectProject(models.Model):
     _inherit = 'project.project'
     
-    root_tag_id = fields.Many2one('project.tags', string='Root Tag for Tasks')
+    task_tag_id = fields.Many2one('project.tags', string='Root Tag for Tasks')
     
 
 class ProjectCategory(models.Model):
@@ -26,25 +26,25 @@ class ProjectCategory(models.Model):
     @api.multi
     @api.depends('name', 'parent_id')
     def _compute_complete_name(self):
-        self.ensure_one()
-        parent_name = self.parent_id.name and self.parent_id.name + ' / '
-        self.complete_name = (parent_name or '') + self.name
+        for tag in self:
+            parent_name = tag.parent_id.name and tag.parent_id.name + ' / '
+            tag.complete_name = (parent_name or '') + tag.name
     
 
 class ProjectTask(models.Model):
     _inherit = 'project.task'
 
     tag_project = fields.Many2one('project.tags', string='Root Tag',
-                                  compute='_compute_project_root_tag')
+                                  compute='_compute_project_task_tag')
 
     @api.multi
     @api.depends('project_id')
-    def _compute_project_root_tag(self):
-        self.ensure_one()
-        self.tag_project = self.project_id.root_tag_id or False
+    def _compute_project_task_tag(self):
+        for tag in self:
+            tag.tag_project = self.project_id.task_tag_id or False
     
     @api.onchange('project_id')
     def _onchange_project(self):
         res = super(ProjectTask, self)._onchange_project()
-        self.tag_ids &= self.project_id.root_tag_id.child_ids
+        self.tag_ids &= self.project_id.task_tag_id.child_ids
 

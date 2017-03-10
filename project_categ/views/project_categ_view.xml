@@ -28,7 +28,7 @@
         <field name="inherit_id" ref="project.edit_project"/>
         <field name="arch" type="xml">
             <field name="sequence" position="before">
-                    <field name="root_tag_id" domain="[('child_ids','!=',False)]"/>
+                    <field name="task_tag_id" domain="[('child_ids','!=',False)]"/>
             </field>
         </field>
     </record>
