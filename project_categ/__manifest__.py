@@ -8,17 +8,6 @@
     'summary': 'Allow for Project specific category lists for Tasks',
     'version': '10.0.0.1.0',
     "category": "Project Management",
-    'description': """\
-To setup:
-
-  1. Create a parent Category (Tag). E.g. "System Type".
-  2. Create categories to be made available as child.
-     E.g. "Computer", "Printer", ...
-  3. On the Project form, Other Info tab, set the "Root Category".
-
-Now make this feature available on Issues or Tasks by installing the
-corresponding extension module.
-""",
     'author': "Daniel Reis, Tecnativa, Odoo Community Association (OCA)",
     'website': 'https://www.tecnativa.com',
     'license': 'AGPL-3',
