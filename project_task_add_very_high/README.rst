@@ -12,7 +12,7 @@ This new level of priority is named `Very High`.
 .. figure:: static/description/image.png
    :alt: On form, priority widget shows two stars instead of one
 
-.. figure:: static/description/image.png
+.. figure:: static/description/image2.png
    :alt: On kanban, priority widget shows two stars instead of one
 
 Configuration
