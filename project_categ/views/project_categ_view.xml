@@ -12,10 +12,10 @@
                 	<field name="parent_id" />
                 </group>
                 <notebook>
-                	<page name='tag_childs' string="Child Categories" >
-                		<field name="child_ids" readonly="1" 
-                				context="{'default_parent_id': active_id}"/>
-                	</page>
+                    <page name='tag_childs' string="Child Categories" >
+                        <field name="child_ids" readonly="1" 
+                                context="{'default_parent_id': active_id}"/>
+                    </page>
                 </notebook>
             </form>
         </field>
@@ -43,7 +43,7 @@
                 <field name="tag_project" invisible="1"/>
             </field>
             <field name="tag_ids"  position="attributes">
-            	<attribute name="domain">[('id', 'child_of', tag_project),('id','!=',tag_project)]</attribute>
+                <attribute name="domain">[('id', 'child_of', tag_project),('id','!=',tag_project)]</attribute>
                 <attribute name="attrs">{'required':[('tag_project','!=',False)]}</attribute>
             </field>
         </field>
