@@ -8,10 +8,6 @@
     'summary': 'Projects Issues can have an allowed category list',
     'version': '10.0.0.1.0',
     "category": "Project Management",
-    'description': """\
-Adds to Issues the ability to limit selectable Categories to a Project's
-specific list.
-""",
     'author': "Daniel Reis, Tecnativa, Odoo Community Association (OCA)",
     'website': 'https://www.tecnativa.com',
     'license': 'AGPL-3',
