@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-17 13:09+0000\n"
-"PO-Revision-Date: 2016-11-25 14:56+0000\n"
+"POT-Creation-Date: 2017-02-25 05:29+0000\n"
+"PO-Revision-Date: 2017-03-03 06:31+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/oca/OCA-project-8-0/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -21,17 +21,17 @@ msgstr ""
 #: code:addons/project_issue_task/project_issue.py:33
 #, python-format
 msgid "A Task is already assigned to the Issue!"
-msgstr ""
+msgstr "该问题的任务已创建！"
 
 #. module: project_issue_task
 #: field:project.task.cause,name:0
 msgid "Cause"
-msgstr ""
+msgstr "理由"
 
 #. module: project_issue_task
 #: field:project.task.cause,code:0
 msgid "Code"
-msgstr ""
+msgstr "代码"
 
 #. module: project_issue_task
 #: field:project.task.cause,create_uid:0
@@ -61,7 +61,7 @@ msgstr "ID"
 #. module: project_issue_task
 #: model:ir.model,name:project_issue_task.model_project_task_cause
 msgid "Issue Cause"
-msgstr ""
+msgstr "问题原因"
 
 #. module: project_issue_task
 #: code:addons/project_issue_task/project_issue.py:46
@@ -87,12 +87,12 @@ msgstr "上次更新日期"
 #. module: project_issue_task
 #: field:project.task,reason_id:0
 msgid "Problem Cause"
-msgstr ""
+msgstr "问题原因"
 
 #. module: project_issue_task
 #: model:ir.model,name:project_issue_task.model_project_issue
 msgid "Project Issue"
-msgstr ""
+msgstr "项目问题"
 
 #. module: project_issue_task
 #: field:project.task,ref:0
@@ -108,7 +108,7 @@ msgstr ""
 #: code:addons/project_issue_task/project_issue.py:38
 #, python-format
 msgid "Report for %s"
-msgstr ""
+msgstr "关于 %s 的报告"
 
 #. module: project_issue_task
 #: field:project.task.cause,sequence:0
@@ -126,9 +126,9 @@ msgstr "任务"
 #: view:project.task.cause:project_issue_task.task_cause_edit
 #: view:project.task.cause:project_issue_task.task_cause_tree
 msgid "Task Issue Causes"
-msgstr ""
+msgstr "任务问题原因"
 
 #. module: project_issue_task
 #: view:project.issue:project_issue_task.project_issue_form_view_task
 msgid "Task Report"
-msgstr ""
+msgstr "任务报告"
