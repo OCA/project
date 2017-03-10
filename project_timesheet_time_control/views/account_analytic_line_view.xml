@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
-    <data>
+<odoo>
 
         <record id="account_analytic_line_tree" model="ir.ui.view">
             <field name="name">project.timesheet.time.control.account.analytic.line.tree</field>
@@ -50,5 +49,4 @@
             </field>
         </record>
 
-    </data>
-</openerp>
+</odoo>

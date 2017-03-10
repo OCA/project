@@ -7,9 +7,10 @@
 
 {
     'name': 'Project timesheet time control',
-    'version': '1.0.0',
+    'version': '10.0.1.0.0',
     'category': 'Project',
-    'author': 'Tecnativa, Odoo Community Association (OCA)',
+    'author': 'Serv. Tecnol. Avanzados - Pedro M. Baeza, '
+              'Antiun Ingeniería S.L.',
     'website': 'https://www.tecnativa.com',
     'depends': ['hr_timesheet'],
     'data': [

@@ -5,7 +5,7 @@
 # © 2017 Rigoberto Martínez <rigo1985@gmail.com>
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
-from odoo import api, fields, models, _
+from odoo import api, fields, models
 from datetime import datetime
 
 
@@ -14,11 +14,11 @@ class AccountAnalyticLine(models.Model):
 
     date_time = fields.Datetime(default=fields.Datetime.now, string='Date')
     folded = fields.Boolean(string='Folded', compute='_compute_folded')
-    
-    @api.one
+
     @api.depends('task_id.stage_id.fold')
     def _compute_folded(self):
-        self.folded = self.task_id.stage_id.fold  
+        for rec_analytic in self:
+            rec_analytic.folded = rec_analytic.task_id.stage_id.fold  
 
     @api.onchange('account_id')
     def onchange_account_id(self):
