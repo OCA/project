@@ -7,7 +7,7 @@
             <field name="inherit_id" ref="project.view_task_form2"/>
             <field name="arch" type="xml">
                 <field name="project_id" position="before">
-                    <field name="categ_id" sequence='0'/>
+                    <field name="categ_id" sequence='0' required='1'/>
                 </field>
             </field>
         </record>
