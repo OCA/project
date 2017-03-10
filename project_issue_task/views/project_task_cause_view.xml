@@ -12,9 +12,9 @@
                         <field name="name"/>
                         <field name="description"/>
                     </group>
-                	<group>
+                    <group>
                         <field name="sequence"/>
-						<field name="code"/>
+                        <field name="code"/>
                     </group>
                 </group>
             </form>
