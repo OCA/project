@@ -6,18 +6,18 @@
         <field name="name">project.task.cause.view.form</field>
         <field name="model">project.task.cause</field>
         <field name="arch" type="xml">
-			<form string="Task Issue Causes">
-	            <group>
-	              <group>
-	                <field name="name"/>
-	                <field name="description"/>
-	              </group>
-	              <group>
-	                <field name="sequence"/>
-	                <field name="code"/>
-	              </group>
-	            </group>
-			</form>
+            <form string="Task Issue Causes">
+                <group>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                    </group>
+                	<group>
+                        <field name="sequence"/>
+						<field name="code"/>
+                    </group>
+                </group>
+            </form>
         </field>
     </record>
 
