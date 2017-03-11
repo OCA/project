@@ -33,13 +33,6 @@ and on kanban:
    :alt: On kanban, priority widget shows one star
 
 
-Configuration
-=============
-
-To configure this module, you need to:
-
-#. No configuration needed. Just install the module.
-
 Usage
 =====
 
