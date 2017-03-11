@@ -5,13 +5,14 @@
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2016
 # Ermin Trevisan <trevi@twanda.com>, 2016
+# Rudolf Schnapka <rs@techno-flex.de>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-18 02:39+0000\n"
-"PO-Revision-Date: 2016-09-18 02:39+0000\n"
-"Last-Translator: Ermin Trevisan <trevi@twanda.com>, 2016\n"
+"POT-Creation-Date: 2017-03-04 05:24+0000\n"
+"PO-Revision-Date: 2017-03-04 05:24+0000\n"
+"Last-Translator: Rudolf Schnapka <rs@techno-flex.de>, 2017\n"
 "Language-Team: German (https://www.transifex.com/oca/teams/23907/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +23,7 @@ msgstr ""
 #. module: project_issue_reassign
 #: field:project.issue.reassign,user_id:0
 msgid "Assign To"
-msgstr ""
+msgstr "Zuweisen an"
 
 #. module: project_issue_reassign
 #: view:project.issue.reassign:project_issue_reassign.view_project_issue_reassign
@@ -52,7 +53,7 @@ msgstr "ID"
 #. module: project_issue_reassign
 #: model:ir.model,name:project_issue_reassign.model_project_issue_reassign
 msgid "Issue Reassign"
-msgstr ""
+msgstr "Fall-Neuzuweisung"
 
 #. module: project_issue_reassign
 #: field:project.issue.reassign,__last_update:0
@@ -73,7 +74,7 @@ msgstr "Zuletzt geändert am"
 #: code:addons/project_issue_reassign/project.py:30
 #, python-format
 msgid "No reassignment data was provided."
-msgstr ""
+msgstr "Keine Daten für Neuzuordnung gegeben."
 
 #. module: project_issue_reassign
 #: field:project.issue.reassign,project_id:0
@@ -88,28 +89,28 @@ msgstr "Projektproblem"
 #. module: project_issue_reassign
 #: help:project.issue.reassign,project_id:0
 msgid "Project this issue should belong to"
-msgstr ""
+msgstr "Projekt, dem diese Aufgabe zugeordnet sein soll"
 
 #. module: project_issue_reassign
 #: model:ir.actions.act_window,name:project_issue_reassign.issue_reassign_wizard_action
 msgid "Reassign Issues"
-msgstr ""
+msgstr "Fälle neu zuordnen"
 
 #. module: project_issue_reassign
 #: model:ir.actions.act_window,name:project_issue_reassign.action_project_issue_reassign
 #: view:project.issue.reassign:project_issue_reassign.view_project_issue_reassign
 msgid "Reassign Project Issue"
-msgstr ""
+msgstr "Projektfall neu zuordnen"
 
 #. module: project_issue_reassign
 #: help:project.issue.reassign,user_id:0
 msgid "User you want to assign this issue to"
-msgstr ""
+msgstr "Anwender, dem Sie diesen Fall zuordnen möchten"
 
 #. module: project_issue_reassign
 #: view:project.issue.reassign:project_issue_reassign.view_project_issue_reassign
 msgid "_Reassign"
-msgstr ""
+msgstr "_Neuzuordnung"
 
 #. module: project_issue_reassign
 #: view:project.issue.reassign:project_issue_reassign.view_project_issue_reassign
@@ -119,4 +120,4 @@ msgstr "oder"
 #. module: project_issue_reassign
 #: view:project.issue:project_issue_reassign.project_issue_form_view_reassign
 msgid "⇒ Reassign"
-msgstr ""
+msgstr "⇒ Zuordnen"
