@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (9.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-14 14:07+0000\n"
+"POT-Creation-Date: 2017-03-04 05:29+0000\n"
 "PO-Revision-Date: 2016-02-24 23:53+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: Croatian (http://www.transifex.com/oca/OCA-project-9-0/language/hr/)\n"
@@ -20,7 +20,7 @@ msgstr ""
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_analysis
 msgid "Analysis"
-msgstr ""
+msgstr "Analiza"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_cancel
