@@ -18,7 +18,8 @@ class ProjectTask(models.Model):
     )
 
     @api.multi
-    def write(self, vals, ):
+    def write(self, vals):
+        super(ProjectTask, self).write(vals)
         if vals.get('stage_id'):
             stage_id = vals.get('stage_id')
             num_states = len(self.project_id.pr_required_states)
@@ -31,4 +32,3 @@ class ProjectTask(models.Model):
                         'Please add the URI for the pull request '
                         'before moving the task to this stage.'
                     ))
-        return super(ProjectTask, self).write(vals)
