@@ -18,7 +18,8 @@ class Task(models.Model):
     def _compute_issue(self):
         rec_issue = self.env['project.issue']
         for task in self:
-            task.issue_id = rec_issue.search([('task_id', '=', task.id)], limit=1)
+            args = [('task_id', '=', task.id)]
+            task.issue_id = rec_issue.search(args, limit=1)
 
     @api.multi
     def toggle_active(self):
