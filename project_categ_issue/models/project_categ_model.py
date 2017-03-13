@@ -8,7 +8,7 @@ from odoo import api, fields, models
 
 class ProjectProject(models.Model):
     _inherit = 'project.project'
-    
+
     issue_tag_id = fields.Many2one('project.tags',
                                    string='Root Tag for Issues')
 
@@ -27,5 +27,5 @@ class ProjectIssue(models.Model):
 
     @api.onchange('project_id')
     def _onchange_project(self):
-        res = super(ProjectIssue, self)._onchange_project_id()
+        super(ProjectIssue, self)._onchange_project_id()
         self.tag_ids &= self.project_id.issue_tag_id.child_ids
