@@ -18,7 +18,7 @@ class ProjectIssue(models.Model):
         }
         fields = ['project_id']    # For optional relational fields
         values.update((field, getattr(self, field).id) for field in fields
-                      if hasattr(self, field) and getattr(self, field))
+            if hasattr(self, field) and getattr(self, field))
         rec_task = self.env['project.task']
         task_id = rec_task.create(values)
         self.task_id = task_id
