@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
-    <data>
-	   <record id="project_task_type_form_inherit" model="ir.ui.view">
-            <field name="name">Project Task Type add Closed</field>
-            <field name="model">project.task.type</field>
-            <field name="inherit_id" ref="project.task_type_edit"/>
-            <field name="arch" type="xml">
-                <field name="case_default" position="after">
-                    <field name="closed_alias_visible" invisible="1"/>
-                    <field name="closed_alias" 
-                           attrs="{'invisible': [('closed_alias_visible', '=', False)]}"/>
-                </field>
-             </field>
-        </record>
-    </data>
-</openerp>
+<odoo>
+
+   <record id="project_task_type_form_inherit" model="ir.ui.view">
+        <field name="model">project.task.type</field>
+        <field name="inherit_id" ref="project.task_type_edit"/>
+        <field name="arch" type="xml">
+            <field name="fold" position="after">
+                <field name="closed_alias_visible" invisible="1"/>
+                <field name="closed_alias"
+                       attrs="{'invisible': [('closed_alias_visible', '=', False)]}"/>
+            </field>
+         </field>
+    </record>
+
+</odoo>
