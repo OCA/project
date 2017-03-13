@@ -44,10 +44,6 @@
                     <field name="task_categ_id" invisible="1"/>
                 </field>
 
-                <field name="categ_ids"  position="attributes">
-                    <attribute name="attrs">{'required':[('task_categ_id','!=',False)]}</attribute>
-                </field>
-
             </field>
         </record>
 
