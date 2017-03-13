@@ -18,7 +18,7 @@ class AccountAnalyticLine(models.Model):
     @api.depends('task_id.stage_id.fold')
     def _compute_folded(self):
         for rec_analytic in self:
-            rec_analytic.folded = rec_analytic.task_id.stage_id.fold  
+            rec_analytic.folded = rec_analytic.task_id.stage_id.fold
 
     @api.onchange('account_id')
     def onchange_account_id(self):
