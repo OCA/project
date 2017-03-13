@@ -6,8 +6,8 @@
 Project Task Category
 =====================
 
-This module extends the functionality of Project to add an unique mandatory
-category on the task and support filter and group.
+This module extends the functionality of Project to add
+Category field required on the Task with support filter and group by.
 
 Installation
 ============
