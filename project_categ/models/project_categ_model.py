@@ -17,11 +17,11 @@ class ProjectCategory(models.Model):
     _order = 'parent_id,name'
     _rec_name = 'complete_name'
 
-    parent_id = fields.Many2one('project.tags', string='Parent Tag',
+    parent_id = fields.Many2one('project.tags', string='Parent Tag', 
                                 index=True)
     child_ids = fields.One2many('project.tags', 'parent_id',
                                 string='Child Categories')
-    complete_name = fields.Char(string='Name',
+    complete_name = fields.Char(string='Name', 
                                 compute='_compute_complete_name')
     code = fields.Char(string='Code', size=10)
 

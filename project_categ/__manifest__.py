@@ -5,8 +5,8 @@
 
 {
     'name': 'Project Configurable Categories',
-    'summary': 'Allow for Project specific category lists for Tasks',
-    'version': '10.0.0.1.0',
+    'summary': 'Adds Project specific category lists in Tasks',
+    'version': '10.0.1.0.0',
     "category": "Project Management",
     'author': "Daniel Reis, Tecnativa, Odoo Community Association (OCA)",
     'website': 'https://www.tecnativa.com',

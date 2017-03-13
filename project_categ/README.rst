@@ -6,7 +6,7 @@
 Project Category
 ================
 
-* This module create a parent Category (Tag). E.g. "System Type"..
+* Adds Project specific category lists in Tasks
 * Create categories to be made available as child. E.g. "Computer", "Printer", ....
 * Finally, On the Project form, Other Info tab, set the "Root Category".
 
@@ -17,18 +17,6 @@ Usage
    :alt: Try me on Runbot
    :target: https://runbot.odoo-community.org/runbot/140/10.0
 
-Known issues / Roadmap
-======================
-
-* 
-
-Bug Tracker
-===========
-
-
-
-Credits
-=======
 
 Contributors
 ------------
