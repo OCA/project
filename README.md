@@ -19,6 +19,7 @@ Available addons
 addon | version | summary
 --- | --- | ---
 [project_description](project_description/) | 10.0.1.0.0 | Add a description to projects
+[project_stage_state](project_stage_state/) | 10.0.1.0.0 | Restore State attribute removed from Project Stages in 8.0
 [project_task_code](project_task_code/) | 10.0.1.0.0 | Sequential Code for Tasks
 [project_task_default_stage](project_task_default_stage/) | 10.0.1.0.0 | Recovery default task stage projects from v8
 [project_task_dependency](project_task_dependency/) | 10.0.1.0.0 | Enables to define dependencies (other tasks) of a task
@@ -42,7 +43,6 @@ addon | version | summary
 [project_recalculate](project_recalculate/) | 8.0.1.0.0 (unported) | Project Recalculate
 [project_service_type](project_service_type/) | 1.0 (unported) | Add type of service on project
 [project_sla](project_sla/) | 8.0.1.0.0 (unported) | Define SLAs for your Contracts
-[project_stage_state](project_stage_state/) | 8.0.1.0.0 (unported) | Restore State attribute removed from Project Stages in 8.0
 [project_task_materials](project_task_materials/) | 8.0.1.0.0 (unported) | Record products spent in a Task
 [project_timesheet_analytic_partner](project_timesheet_analytic_partner/) | 8.0.1.0.0 (unported) | Propagate task partner to timesheet entries
 [sale_order_project](sale_order_project/) | 8.0.1.0.0 (unported) | Sale Order Project
