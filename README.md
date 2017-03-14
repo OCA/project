@@ -21,6 +21,7 @@ addon | version | summary
 [project_description](project_description/) | 9.0.1.0.0 | Add a description to projects
 [project_double_alias](project_double_alias/) | 9.0.1.0.0 | Define an alias for tasks and another alias for issues
 [project_issue_task](project_issue_task/) | 9.0.1.0.0 | Use Tasks to support Issue resolution reports
+[project_stage_closed](project_stage_closed/) | 9.0.1.0.0 | Make the Closed flag on Task Stages available without installing sale_service
 [project_task_code](project_task_code/) | 9.0.1.0.0 | Sequential Code for Tasks
 [project_task_default_stage](project_task_default_stage/) | 9.0.1.0.0 | Recovery default task stage projects from v8
 [project_task_dependency](project_task_dependency/) | 9.0.1.0.0 | Enables to define dependencies (other tasks) of a task
