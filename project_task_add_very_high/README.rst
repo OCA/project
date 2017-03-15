@@ -32,6 +32,7 @@ and on kanban:
 .. figure:: static/description/image2_a.png
    :alt: On kanban, priority widget shows one star
 
+In case this module is uninstalled, all the tasks that were previously set as `Very High` priority will be converted to `High` priority.
 
 Usage
 =====

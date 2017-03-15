@@ -12,4 +12,5 @@
     "website": "http://www.onestein.eu",
     "depends": ["project"],
     "installable": True,
+    "uninstall_hook": "uninstall_hook"
 }
