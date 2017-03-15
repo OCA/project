@@ -10,14 +10,17 @@ This module extend the field `priority` in project tasks, adding a new level of 
 This new level of priority is named `Very High`.
 
 On a task form, the priority widget is shown as three stars instead of two:
+
 .. figure:: static/description/image.png
    :alt: On form, priority widget shows three stars instead of two
 
 Also on a kanban view, the priority widget is shown as three stars instead of two:
+
 .. figure:: static/description/image2.png
    :alt: On kanban, priority widget shows three stars instead of two
 
 Without having this module installed, it would look as that:
+
 .. figure:: static/description/image_a.png
    :alt: On form, priority widget shows two stars
 
