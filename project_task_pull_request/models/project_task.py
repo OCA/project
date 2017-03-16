@@ -22,7 +22,7 @@ class ProjectTask(models.Model):
         for task in self:
             stages_pr_req = task.project_id.pr_required_states
             is_stage_pr_req = task.stage_id in stages_pr_req
-            if not task.pr_uri and pr_req_stages and is_stage_pr_req:
+            if not task.pr_uri and stages_pr_req and is_stage_pr_req:
                 raise exceptions.ValidationError(_(
                     'Please add the URI for the pull request '
                     'before moving the task to this stage.'))
