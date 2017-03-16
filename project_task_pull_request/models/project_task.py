@@ -17,18 +17,12 @@ class ProjectTask(models.Model):
         related='project_id.pr_required_states',
     )
 
-    @api.multi
-    def write(self, vals):
-        super(ProjectTask, self).write(vals)
-        if vals.get('stage_id'):
-            stage_id = vals.get('stage_id')
-            num_states = len(self.project_id.pr_required_states)
-            if self.pr_uri is False and num_states > 0:
-                if (num_states >= 1 and
-                        stage_id in
-                        [state.id for state in
-                         self.project_id.pr_required_states]):
-                    raise exceptions.ValidationError(_(
-                        'Please add the URI for the pull request '
-                        'before moving the task to this stage.'
-                    ))
+    @api.constrains('pr_uri', 'stage_id', 'project_id')
+    def _check_pr_uri_required(self):
+        for task in self:
+            stages_pr_req = task.project_id.pr_required_states
+            is_stage_pr_req = task.stage_id in stages_pr_req
+            if not task.pr_uri and pr_req_stages and is_stage_pr_req:
+                raise exceptions.ValidationError(_(
+                    'Please add the URI for the pull request '
+                    'before moving the task to this stage.'))
