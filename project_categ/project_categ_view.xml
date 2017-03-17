@@ -12,6 +12,8 @@
                         <newline/>
                         <field name="parent_id"/>
                         <newline/>
+                        <field name="code"/>
+                        <newline/>
                         <field name="child_ids" context="{'default_parent_id': active_id}"/>
                 </field>
             </field>
