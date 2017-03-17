@@ -11,4 +11,5 @@ class ProjectTask(models.Model):
     categ_id = fields.Many2one(
         'project.category',
         'Category',
+        domain=[('code', '=', 'categ_id')]
     )
