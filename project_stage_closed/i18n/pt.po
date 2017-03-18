@@ -3,14 +3,15 @@
 # * project_stage_closed
 # 
 # Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
 msgid ""
 msgstr ""
-"Project-Id-Version: project (8.0)\n"
+"Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-17 01:43+0000\n"
-"PO-Revision-Date: 2015-12-16 15:08+0000\n"
-"Last-Translator: <>\n"
-"Language-Team: Portuguese (http://www.transifex.com/oca/OCA-project-8-0/language/pt/)\n"
+"POT-Creation-Date: 2017-03-14 03:52+0000\n"
+"PO-Revision-Date: 2017-03-14 03:52+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"Language-Team: Portuguese (https://www.transifex.com/oca/teams/23907/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -18,8 +19,18 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: project_stage_closed
-#: field:project.task.type,closed:0
+#: model:ir.model.fields,field_description:project_stage_closed.field_project_task_type_closed_alias
 msgid "Closed"
+msgstr "Fechado"
+
+#. module: project_stage_closed
+#: model:ir.model.fields,field_description:project_stage_closed.field_project_task_type_closed_alias_visible
+msgid "Closed alias visible"
+msgstr ""
+
+#. module: project_stage_closed
+#: model:ir.model.fields,field_description:project_stage_closed.field_project_task_type_closed
+msgid "Is a close stage"
 msgstr ""
 
 #. module: project_stage_closed
@@ -28,6 +39,7 @@ msgid "Task Stage"
 msgstr "Etapa Tarefa"
 
 #. module: project_stage_closed
-#: help:project.task.type,closed:0
-msgid "Tasks in this stage are considered closed."
+#: model:ir.model.fields,help:project_stage_closed.field_project_task_type_closed
+#: model:ir.model.fields,help:project_stage_closed.field_project_task_type_closed_alias
+msgid "Tasks in this stage are considered as closed."
 msgstr ""
