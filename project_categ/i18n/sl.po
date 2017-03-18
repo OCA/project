@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-19 20:32+0000\n"
-"PO-Revision-Date: 2016-05-19 05:12+0000\n"
-"Last-Translator: Matjaž Mozetič <m.mozetic@matmoz.si>\n"
+"POT-Creation-Date: 2017-03-18 02:07+0000\n"
+"PO-Revision-Date: 2017-03-13 14:08+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Slovenian (http://www.transifex.com/oca/OCA-project-8-0/language/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -72,8 +72,3 @@ msgstr "Opravilo"
 #: view:project.task:project_categ.project_task_form_view_categs
 msgid "onchange_project(project_id)"
 msgstr "onchange_project(project_id)"
-
-#. module: project_categ
-#: view:project.task:project_categ.project_task_form_view_categs
-msgid "{'required':[('task_categ_id','!=',False)]}"
-msgstr "{'required':[('task_categ_id','!=',False)]}"
