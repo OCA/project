@@ -37,6 +37,7 @@ addon | version | summary
 [project_stage_state](project_stage_state/) | 8.0.1.1.0 | Restore State attribute removed from Project Stages in 8.0
 [project_stage_state_issue](project_stage_state_issue/) | 8.0.1.0.0 | Restore State attribute removed from Project Stages in 8.0
 [project_task_analytic_partner](project_task_analytic_partner/) | 8.0.1.0.0 | Select alternative partner in task work lines
+[project_task_category](project_task_category/) | 8.0.1.0.1 | Allow unique category for Tasks
 [project_task_code](project_task_code/) | 8.0.1.0.0 | Sequential Code for Tasks
 [project_task_materials](project_task_materials/) | 8.0.1.0.0 | Record products spent in a Task
 [project_task_materials_analytic_partner](project_task_materials_analytic_partner/) | 8.0.1.0.0 | Select alternative partner in task materials
