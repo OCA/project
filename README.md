@@ -36,6 +36,7 @@ addon | version | summary
 [project_stage_closed](project_stage_closed/) | 8.0.1.0.0 | Make the Closed flag on Task Stages available without installing sale_service
 [project_stage_state](project_stage_state/) | 8.0.1.1.0 | Restore State attribute removed from Project Stages in 8.0
 [project_stage_state_issue](project_stage_state_issue/) | 8.0.1.0.0 | Restore State attribute removed from Project Stages in 8.0
+[project_task_add_very_high](project_task_add_very_high/) | 8.0.1.0.0 | Adds an extra option 'Very High' on tasks
 [project_task_analytic_partner](project_task_analytic_partner/) | 8.0.1.0.0 | Select alternative partner in task work lines
 [project_task_category](project_task_category/) | 8.0.1.0.1 | Allow unique category for Tasks
 [project_task_code](project_task_code/) | 8.0.1.0.0 | Sequential Code for Tasks
