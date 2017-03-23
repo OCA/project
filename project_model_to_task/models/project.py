@@ -35,11 +35,12 @@ class ProjectTask(models.Model):
     @api.model
     def default_get(self, fields):
         vals = super(ProjectTask, self).default_get(fields)
-        if 'from_model' in self._context and 'from_id' in self._context:
-            vals['model_reference'] = '%s,%s' % (self._context['from_model'],
-                                                 self._context['from_id'])
-        if 'from_action' in self._context:
-            vals['action_id'] = self._context['from_action']
+        if 'from_model' in self.env.context and 'from_id' in self.env.context:
+            vals['model_reference'] = '%s,%s' % (
+                self.env.context['from_model'],
+                self.env.context['from_id'])
+        if 'from_action' in self.env.context:
+            vals['action_id'] = self.env.context['from_action']
         return vals
 
     @api.multi
@@ -80,15 +81,15 @@ class IrActionActWindows(models.Model):
         def update_context(action):
             action['context'] = safe_eval(action.get('context', '{}'))
             action['context'].update({
-                'from_model': self._context.get('active_model'),
-                'from_id': self._context.get('active_id'),
+                'from_model': self.env.context.get('active_model'),
+                'from_id': self.env.context.get('active_id'),
             })
-            if 'params' in self._context and 'action':
+            if 'params' in self.env.context and 'action':
                 action['context'].update({
-                    'from_action': self._context['params'].get('action')})
-            if 'params' in self._context and 'action':
+                    'from_action': self.env.context['params'].get('action')})
+            if 'params' in self.env.context and 'action':
                 action['context'].update({
-                    'from_action': self._context['params'].get('action')})
+                    'from_action': self.env.context['params'].get('action')})
         res = super(IrActionActWindows, self).read(
             fields=fields, load=load)
 
