@@ -14,7 +14,7 @@ Installation
 
 To install this module, you need to:
 
-1.  Clone the branch 9.0 of the repository https://github.com/OCA/project
+1.  Clone the repository https://github.com/OCA/project
 2.  Add the path to this repository in your configuration (addons-path)
 3.  Update the module list
 4.  Go to menu *Apps*
@@ -57,6 +57,7 @@ Contributors
 ------------
 
 * Michael Viriyananda <viriyananda.michael@gmail.com>
+* Dave Burkholder <dave@thinkwelldesigns.com>
 
 Maintainer
 ----------
