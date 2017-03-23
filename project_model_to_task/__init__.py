@@ -1,2 +1,1 @@
-from . import project
-from . import action
+from . import models

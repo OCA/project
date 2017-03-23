@@ -2,9 +2,9 @@
 # © 2015 David BEAL @ Akretion
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import api, fields, models, SUPERUSER_ID, _
-from openerp.exceptions import Warning as UserError
-from openerp.tools.safe_eval import safe_eval
+from odoo import api, fields, models, _
+from odoo.exceptions import Warning as UserError
+from odoo.tools.safe_eval import safe_eval
 
 
 class ProjectTask(models.Model):
@@ -22,7 +22,7 @@ class ProjectTask(models.Model):
         """ Inherit this method to add more models depending of your
             modules dependencies
         """
-        models = self.env['ir.model'].search([('model', '!=', 'project.task')])
+        models = self.env['ir.model'].search([])
         return [(x.model, x.name) for x in models]
 
     action_id = fields.Many2one(
@@ -75,33 +75,26 @@ class ProjectTask(models.Model):
 class IrActionActWindows(models.Model):
     _inherit = 'ir.actions.act_window'
 
-    def read(self, cr, uid, ids, fields=None, context=None,
-             load='_classic_read'):
-        if context is None:
-            context = {}
+    def read(self, fields, load='_classic_read'):
 
         def update_context(action):
             action['context'] = safe_eval(action.get('context', '{}'))
             action['context'].update({
-                'from_model': context.get('active_model'),
-                'from_id': context.get('active_id'),
+                'from_model': self._context.get('active_model'),
+                'from_id': self._context.get('active_id'),
             })
-            if 'params' in context and 'action':
+            if 'params' in self._context and 'action':
                 action['context'].update({
-                    'from_action': context['params'].get('action')})
-            if 'params' in context and 'action':
+                    'from_action': self._context['params'].get('action')})
+            if 'params' in self._context and 'action':
                 action['context'].update({
-                    'from_action': context['params'].get('action')})
+                    'from_action': self._context['params'].get('action')})
         res = super(IrActionActWindows, self).read(
-            cr, uid, ids, fields=fields, context=context, load=load)
-        if isinstance(ids, list):
-            action_id = ids[0]
-        else:
-            action_id = ids
-        task_action_id = self.pool['ir.model.data'].xmlid_to_res_id(
-            cr, SUPERUSER_ID,
+            fields=fields, load=load)
+
+        task_action_id = self.env.ref(
             'project_model_to_task.task_from_elsewhere')
-        if action_id == task_action_id:
+        if self == task_action_id:
             if isinstance(res, list):
                 for elem in res:
                     update_context(elem)
