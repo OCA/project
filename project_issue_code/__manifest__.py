@@ -4,7 +4,7 @@
 
 {
     "name": "Project Issue Code",
-    "version": "9.0.1.0.0",
+    "version": "10.0.1.0.0",
     "summary": "Adding Field Code For Project Issue",
     "author": "OpenSynergy Indonesia,Odoo Community Association (OCA)",
     "website": "https://opensynergy-indonesia.com",
