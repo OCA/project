@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<openerp>
-    <data>
-
+<odoo>
 <record id="view_task_form2" model="ir.ui.view">
     <field name="model">project.task</field>
     <field name="inherit_id" ref="project.view_task_form2"/>
     <field name="arch" type="xml">
-        <field name="reviewer_id" position="after">
+        <field name="user_id" position="after">
             <field name="model_reference" invisible="1"/>
             <label for="task_origin"
                    attrs="{'invisible': ['|',
@@ -31,6 +29,4 @@
     <field name="res_model">project.task</field>
     <field name="view_mode">form</field>
 </record>
-
-    </data>
-</openerp>
+</odoo>
