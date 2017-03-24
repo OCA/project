@@ -20,6 +20,7 @@ class IrValues(models.Model):
             action_slot, model, res_id=res_id)
         for value in res:
             if value[0] == UNIQUE_ACTION_ID:
+                # prevent to add multiple times the same action
                 return res
         available_models = [
             x[0] for x in self.env['project.task']._authorised_models()]
