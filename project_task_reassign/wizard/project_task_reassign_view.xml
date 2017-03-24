@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_project_task_reassign" model="ir.ui.view">
+            <field name="name">Reassign Project Task</field>
+            <field name="model">project.task.reassign</field>
+            <field name="arch" type="xml">
+
+                <form string="Reassign Project Task">
+                    <group>
+                        <field name="user_id"/>
+                        <field name="project_id"/>
+                    </group>
+                    <footer>
+                         <button name="reassign" string="_Reassign" type="object" class="oe_highlight"/>
+                         or
+                         <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+
+            </field>
+        </record>
+
+        <!-- action to call from Task form button -->
+        <record id="action_project_task_reassign" model="ir.actions.act_window">
+            <field name="name">Reassign Project Task</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">project.task.reassign</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_project_task_reassign"/>
+            <field name="target">new</field>
+        </record>
+
+        <!-- wizard action on Task context menu -->
+        <act_window id="task_reassign_wizard_action"
+            name="Reassign Tasks"
+            src_model="project.task"
+            res_model="project.task.reassign"
+            view_type="form" view_mode="form"
+            key2="client_action_multi" target="new"
+            groups="project.group_project_user"/>
+
+    </data>
+</openerp>
