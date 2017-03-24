@@ -20,6 +20,7 @@ addon | version | summary
 --- | --- | ---
 [project_description](project_description/) | 9.0.1.0.0 | Add a description to projects
 [project_double_alias](project_double_alias/) | 9.0.1.0.0 | Define an alias for tasks and another alias for issues
+[project_issue_code](project_issue_code/) | 9.0.1.0.0 | Adding Field Code For Project Issue
 [project_issue_task](project_issue_task/) | 9.0.1.0.0 | Use Tasks to support Issue resolution reports
 [project_stage_closed](project_stage_closed/) | 9.0.1.0.0 | Make the Closed flag on Task Stages available without installing sale_service
 [project_task_add_very_high](project_task_add_very_high/) | 9.0.1.0.0 | Adds an extra option 'Very High' on tasks
@@ -28,6 +29,7 @@ addon | version | summary
 [project_task_dependency](project_task_dependency/) | 9.0.1.0.0 | Enables to define dependencies (other tasks) of a task
 [project_task_materials](project_task_materials/) | 9.0.1.0.0 | Record products spent in a Task
 [project_task_materials_stock](project_task_materials_stock/) | 9.0.1.0.0 | Create stock and analytic moves from record products spent in a Task
+[project_timesheet_time_control](project_timesheet_time_control/) | 9.0.1.0.0 | Project timesheet time control
 
 Unported addons
 ---------------
