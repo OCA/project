@@ -3,19 +3,21 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from odoo import api, fields, models, _
-from odoo.exceptions import Warning as UserError
+from odoo.exceptions import UserError
 from odoo.tools.safe_eval import safe_eval
 
 
 class ProjectTask(models.Model):
     _inherit = 'project.task'
 
-    @api.model
     def _get_origin(self):
-        if self.model_reference:
-            rec_name = self.model_reference._rec_name
-            if rec_name:
-                self.task_origin = self.model_reference.display_name
+        for rec in self:
+            if rec.model_reference:
+                rec_name = rec.model_reference._rec_name
+                if rec_name:
+                    rec.task_origin = rec.model_reference.display_name
+                else:
+                    rec.task_origin = False
 
     @api.model
     def _authorised_models(self):
@@ -43,13 +45,12 @@ class ProjectTask(models.Model):
             vals['action_id'] = self.env.context['from_action']
         return vals
 
-    @api.multi
     def goto_document(self):
         self.ensure_one()
         if self.model_reference:
             action = {
                 'name': 'Task to original document',
-                'res_model': self.model_reference._model._name,
+                'res_model': self.model_reference._name,
                 'res_id': self.model_reference.id,
                 'type': 'ir.actions.act_window',
                 'target': 'current',
@@ -76,7 +77,7 @@ class ProjectTask(models.Model):
 class IrActionActWindows(models.Model):
     _inherit = 'ir.actions.act_window'
 
-    def read(self, fields, load='_classic_read'):
+    def read(self, fields=None, load='_classic_read'):
 
         def update_context(action):
             action['context'] = safe_eval(action.get('context', '{}'))
@@ -92,13 +93,13 @@ class IrActionActWindows(models.Model):
                     'from_action': self.env.context['params'].get('action')})
         res = super(IrActionActWindows, self).read(
             fields=fields, load=load)
-
-        task_action_id = self.env.ref(
-            'project_model_to_task.task_from_elsewhere')
-        if self == task_action_id:
-            if isinstance(res, list):
-                for elem in res:
-                    update_context(elem)
-            else:
-                update_context(res)
+        if not self._context.get('install_mode'):
+            task_action_id = self.env.ref(
+                'project_model_to_task.task_from_elsewhere')
+            if self == task_action_id:
+                if isinstance(res, list):
+                    for elem in res:
+                        update_context(elem)
+                else:
+                    update_context(res)
         return res
