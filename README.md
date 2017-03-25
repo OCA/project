@@ -14,6 +14,7 @@ This project aims to extend Odoo on contract management features, such as:
   * ...
 
 [//]: # (addons)
+
 Available addons
 ----------------
 addon | version | summary
