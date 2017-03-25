@@ -14,6 +14,7 @@ This project aims to extend Odoo on contract management features, such as:
   * ...
 
 [//]: # (addons)
+
 Available addons
 ----------------
 addon | version | summary
@@ -43,6 +44,7 @@ addon | version | summary
 [project_task_materials](project_task_materials/) | 8.0.1.0.0 | Record products spent in a Task
 [project_task_materials_analytic_partner](project_task_materials_analytic_partner/) | 8.0.1.0.0 | Select alternative partner in task materials
 [project_task_materials_stock](project_task_materials_stock/) | 8.0.1.0.0 | Create stock and analytic moves from record products spent in a Task
+[project_task_reassign](project_task_reassign/) | 8.0.1.2.0 | Reassign Tasks to other Responsibles and Projects
 [project_timesheet_analytic_partner](project_timesheet_analytic_partner/) | 8.0.1.0.0 | Propagate task partner to timesheet entries
 [sale_order_project](sale_order_project/) | 8.0.1.0.0 | Sale Order Project
 [service_desk](service_desk/) | 8.0.1.1.0 | Use Projects for Service Desks and service teams
