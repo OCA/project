@@ -50,6 +50,7 @@ addon | version | summary
 [service_desk](service_desk/) | 8.0.1.1.0 | Use Projects for Service Desks and service teams
 [service_desk_issue](service_desk_issue/) | 8.0.1.1.0 | Use Project Issues for Service Desks and service teams
 
+
 Unported addons
 ---------------
 addon | version | summary
