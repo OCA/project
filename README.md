@@ -32,6 +32,7 @@ addon | version | summary
 [project_task_materials_stock](project_task_materials_stock/) | 9.0.1.0.0 | Create stock and analytic moves from record products spent in a Task
 [project_timesheet_time_control](project_timesheet_time_control/) | 9.0.1.0.0 | Project timesheet time control
 
+
 Unported addons
 ---------------
 addon | version | summary
