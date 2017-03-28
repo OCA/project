@@ -26,6 +26,7 @@ addon | version | summary
 [project_task_default_stage](project_task_default_stage/) | 10.0.1.0.0 | Recovery default task stage projects from v8
 [project_task_dependency](project_task_dependency/) | 10.0.1.0.0 | Enables to define dependencies (other tasks) of a task
 
+
 Unported addons
 ---------------
 addon | version | summary
