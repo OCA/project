@@ -25,6 +25,7 @@ addon | version | summary
 [project_task_code](project_task_code/) | 10.0.1.0.0 | Sequential Code for Tasks
 [project_task_default_stage](project_task_default_stage/) | 10.0.1.0.0 | Recovery default task stage projects from v8
 [project_task_dependency](project_task_dependency/) | 10.0.1.0.0 | Enables to define dependencies (other tasks) of a task
+[project_task_pull_request](project_task_pull_request/) | 10.0.1.0.0 | Adds a field for a PR URI to project tasks
 
 
 Unported addons
