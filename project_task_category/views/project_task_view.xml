@@ -47,13 +47,13 @@
             </field>
         </record>
         <act_window id="action_type_category_project_task"
-            name="Project category"
-            res_model="project.category.main"
-            view_mode="tree,form"/>
+                    name="Project category"
+                    res_model="project.category.main"
+                    view_mode="tree,form"/>
         <menuitem id="menu_category_project"
-            name="Task Category"
-            sequence="30"
-            parent="base.menu_definitions"
-            action="action_type_category_project_task"/> 
+                  name="Task Category"
+                  sequence="30"
+                  parent="base.menu_definitions"
+                  action="action_type_category_project_task"/> 
     </data>
 </openerp>
