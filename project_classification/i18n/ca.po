@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-31 06:28+0000\n"
-"PO-Revision-Date: 2017-01-13 09:22+0000\n"
+"POT-Creation-Date: 2017-03-18 02:07+0000\n"
+"PO-Revision-Date: 2017-03-14 18:34+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/oca/OCA-project-8-0/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -111,7 +111,7 @@ msgstr ""
 #. module: project_classification
 #: field:project.project,recurring_next_date:0
 msgid "Date of Next Invoice"
-msgstr ""
+msgstr "Data de la pròxima factura"
 
 #. module: project_classification
 #: help:project.project,last_worked_date:0
@@ -151,7 +151,7 @@ msgstr ""
 #. module: project_classification
 #: field:project.project,recurring_invoices:0
 msgid "Generate recurring invoices automatically"
-msgstr ""
+msgstr "Generar factures recurrents automàticament"
 
 #. module: project_classification
 #: field:project.classification,id:0
@@ -180,7 +180,7 @@ msgstr ""
 #. module: project_classification
 #: field:project.project,recurring_invoice_line_ids:0
 msgid "Invoice Lines"
-msgstr ""
+msgstr "Línies de factura"
 
 #. module: project_classification
 #: help:project.project,recurring_rule_type:0
@@ -282,7 +282,7 @@ msgstr "Empresa"
 #. module: project_classification
 #: field:project.project,pricelist_id:0
 msgid "Pricelist"
-msgstr ""
+msgstr "Tarifa de venda"
 
 #. module: project_classification
 #: model:ir.model,name:project_classification.model_project_project
@@ -341,7 +341,7 @@ msgstr ""
 #. module: project_classification
 #: field:project.project,recurring_rule_type:0
 msgid "Recurrency"
-msgstr ""
+msgstr "Recurrència"
 
 #. module: project_classification
 #: field:project.classification,to_invoice:0
@@ -364,12 +364,12 @@ msgstr ""
 #. module: project_classification
 #: field:project.project,recurring_interval:0
 msgid "Repeat Every"
-msgstr ""
+msgstr "Repetir cada"
 
 #. module: project_classification
 #: help:project.project,recurring_interval:0
 msgid "Repeat every (Days/Week/Month/Year)"
-msgstr ""
+msgstr "Repetir cada (Dies/Setmanes/Mesos/Anys)"
 
 #. module: project_classification
 #: field:project.project,revenue_per_hour:0
