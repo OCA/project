@@ -9,8 +9,6 @@ from ..models.action import UNIQUE_ACTION_ID
 
 class TestProjectRelatedTask(TransactionCase):
 
-    # def setUp(self):
-
     def test_goto_document(self):
         task = self.env.ref('project_model_to_task.relative_task')
         res = task.goto_document()
