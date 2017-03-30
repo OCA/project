@@ -91,9 +91,9 @@ class IrActionActWindows(models.Model):
             if 'params' in self.env.context and 'action':
                 action['context'].update({
                     'from_action': self.env.context['params'].get('action')})
-        res = super(IrActionActWindows, self).read(
-            fields=fields, load=load)
-        if not self._context.get('install_mode'):
+
+        res = super(IrActionActWindows, self).read(fields=fields, load=load)
+        if not self.env.context.get('install_mode'):
             task_action_id = self.env.ref(
                 'project_model_to_task.task_from_elsewhere')
             if self == task_action_id:
