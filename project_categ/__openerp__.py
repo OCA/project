@@ -20,7 +20,7 @@
 {
     'name': 'Project Configurable Categories',
     'summary': 'Allow for Project specific category lists for Tasks',
-    'version': '8.0.0.1.0',
+    'version': '8.0.0.1.1',
     "category": "Project Management",
     'description': """\
 To setup:
