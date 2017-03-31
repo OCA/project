@@ -21,7 +21,7 @@ addon | version | summary
 --- | --- | ---
 [project_analytic_line_view](project_analytic_line_view/) | 8.0.1.0.0 | Project analytic account line view
 [project_baseuser](project_baseuser/) | 8.0.1.0.0 | Extend Project user roles to support more complex use cases
-[project_categ](project_categ/) | 8.0.0.1.0 | Allow for Project specific category lists for Tasks
+[project_categ](project_categ/) | 8.0.0.1.1 | Allow for Project specific category lists for Tasks
 [project_categ_issue](project_categ_issue/) | 8.0.0.1.0 | Projects Issues can have an allowed category list
 [project_classification](project_classification/) | 8.0.1.0.0 | Project classification (easy hierarchy and setup for project managers)
 [project_closing](project_closing/) | 8.0.0.1.1 | Project closing
