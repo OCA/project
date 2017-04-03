@@ -1,0 +1,73 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * project_model_to_task
+# 
+# Translators:
+# Matjaž Mozetič <m.mozetic@matmoz.si>, 2016
+msgid ""
+msgstr ""
+"Project-Id-Version: project (8.0)\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-05-19 20:32+0000\n"
+"PO-Revision-Date: 2016-05-19 05:14+0000\n"
+"Last-Translator: Matjaž Mozetič <m.mozetic@matmoz.si>\n"
+"Language-Team: Slovenian (http://www.transifex.com/oca/OCA-project-8-0/language/sl/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: sl\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+
+#. module: project_model_to_task
+#: field:project.task,action_id:0
+msgid "Action"
+msgstr "Ukrep"
+
+#. module: project_model_to_task
+#: help:project.task,action_id:0
+msgid "Action called to go to the original window."
+msgstr "Ukrep klican v izvorno okno."
+
+#. module: project_model_to_task
+#: code:addons/project_model_to_task/action.py:35
+#, python-format
+msgid "Create a related task"
+msgstr "Ustvari povezano opravilo"
+
+#. module: project_model_to_task
+#: code:addons/project_model_to_task/project.py:70
+#, python-format
+msgid ""
+"Field 'Task Origin' is not set.\n"
+"Impossible to go to the original document."
+msgstr "Polje 'Izvor opravila' ni nastavljeno.\nDostop do izvornega dokumenta ni mogoč."
+
+#. module: project_model_to_task
+#: view:project.task:project_model_to_task.view_task_form2
+msgid "Go to the window from which the task has been defined."
+msgstr "Pojdi na okno, kjer je bilo opravilo določeno."
+
+#. module: project_model_to_task
+#: field:project.task,model_reference:0
+msgid "Model reference"
+msgstr "Sklic modela"
+
+#. module: project_model_to_task
+#: model:ir.actions.act_window,name:project_model_to_task.task_from_elsewhere
+msgid "Model to task creation"
+msgstr "Ustvarjanje modela v opravilo"
+
+#. module: project_model_to_task
+#: view:project.task:project_model_to_task.view_task_form2
+msgid "Open"
+msgstr "Odpri"
+
+#. module: project_model_to_task
+#: model:ir.model,name:project_model_to_task.model_project_task
+msgid "Task"
+msgstr "Opravilo"
+
+#. module: project_model_to_task
+#: field:project.task,task_origin:0
+msgid "Task origin"
+msgstr "Izvor opravila"

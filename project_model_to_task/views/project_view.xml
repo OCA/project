@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_task_tree2" model="ir.ui.view">
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_tree2"/>
+        <field name="arch" type="xml">
+            <field name="stage_id" position="after">
+                <field name="task_origin"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_task_form2" model="ir.ui.view">
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <field name="user_id" position="after">
+                <field name="model_reference" invisible="1"/>
+                <label for="task_origin"
+                       attrs="{'invisible': [
+                          '|',
+                          ('model_reference', '=', False),
+                          ('name', '=', False)]}"/>
+                <span>
+                    <field name="task_origin"
+                           attrs="{'invisible': [
+                               '|',
+                               ('model_reference', '=', False),
+                               ('name', '=', False)]}"/>
+                    <button name="goto_document" type="object" string="Open"
+                            attrs="{'invisible': [('model_reference', '=', False)]}"
+                            class="oe_read_only" colspan="1"
+                            help="Go to the window from which the task has been defined."/>
+                </span>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="task_from_elsewhere">
+        <field name="name">Model to task creation</field>
+        <field name="res_model">project.task</field>
+        <field name="view_mode">form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="task_linked_to_other_record_act">
+        <field name="name">Tasks relative to objects</field>
+        <field name="res_model">project.task</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('model_reference', '!=', False)]</field>
+    </record>
+
+    <menuitem id="task_linked_to_other_record_menu"
+              name="Relative Tasks"
+              action="task_linked_to_other_record_act" sequence="20"
+              parent="project.menu_project_management"/>
+
+</odoo>
