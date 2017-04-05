@@ -15,9 +15,9 @@ class ProjectTask(models.Model):
     def _get_origin(self):
         for rec in self:
             if rec.model_reference and rec.model_reference._rec_name:
-                 rec.task_origin = rec.model_reference.display_name or False
+                rec.task_origin = rec.model_reference.display_name or False
             else:
-                 rec.task_origin = False
+                rec.task_origin = False
 
     @api.model
     def _authorised_models(self):
