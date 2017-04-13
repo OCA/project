@@ -39,7 +39,7 @@
         <field name="model">project.issue</field>
         <field name="inherit_id" ref="project_issue.view_project_issue_filter" />
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='name']" position="before">
+            <xpath expr="//field[@name='name']" position="attributes">
                 <attribute name="filter_domain">['|', ('name', 'ilike', self), ('issue_code', 'ilike', self)]</attribute>
             </xpath>
         </field>
