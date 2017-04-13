@@ -2,8 +2,8 @@
 # Copyright 2016 OpenSynergy Indonesia
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp import SUPERUSER_ID
-from openerp.api import Environment
+from odoo import SUPERUSER_ID
+from odoo.api import Environment
 
 
 def create_code_equal_to_id(cr):
