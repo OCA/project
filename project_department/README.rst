@@ -40,6 +40,7 @@ Contributors
 * Joël Grand-Guillaume <joel.grandguillaume@camptocamp.com>
 * Daniel Reis
 * Yannick Vaucher <yannick.vaucher@camptocamp.com>
+* Dave Burkholder <dave@thinkwelldesigns.com>
 
 
 Maintainer
