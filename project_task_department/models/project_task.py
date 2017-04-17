@@ -1,27 +1,21 @@
 # -*- coding: utf-8 -*-
 # © 2014 Daniel Reis (Camptocamp)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
-from openerp import models, fields
+from odoo import models, fields, api
 
 
 class Task(models.Model):
     _inherit = 'project.task'
     department_id = fields.Many2one('hr.department', 'Department')
 
-    # Using old-style api for onchange
-    def onchange_project(self, cr, uid, ids, proj_id=False, context=None):
+    @api.onchange('project_id')
+    def onchange_project(self):
         """ When Project is changed: copy it's Department to the issue. """
-        res = super(Task, self).onchange_project(
-            cr, uid, ids, proj_id, context=context)
-        res.setdefault('value', {})
 
-        if proj_id:
-            proj = self.pool.get('project.project').browse(
-                cr, uid, proj_id, context)
-            dept = getattr(proj, 'department_id', None)
-            if dept:
-                res['value'].update({'department_id': dept.id})
-            else:
-                res['value'].update({'department_id': None})
+        if self.env.context.get('project_id', None):
+            project = self.env['project.project'].browse(self.env.context['project_id'])
+        else:
+            project = self.project_id
 
-        return res
+        if project and project.department_id:
+            self.department_id = project.department_id.id
