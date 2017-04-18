@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name': 'Project Issue with Department',
-    'version': '9.0.1.1.0',
+    'version': '9.0.1.0.0',
     "category": "Project Management",
     'description': """\
 Add Department field to Project Issues.
