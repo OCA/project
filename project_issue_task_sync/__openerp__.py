@@ -13,6 +13,7 @@
     ],
     "data": [
         'views/project_project.xml',
+        'views/project_task.xml',
     ],
     "pre_init_hook": False,
     "post_init_hook": False,
