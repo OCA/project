@@ -9,10 +9,10 @@
     "category": "",
     "summary": "",
     "depends": [
+        'project_issue'
     ],
     "data": [
-        'views/templates.xml',
-        'security/ir.model.access.csv',
+        'views/project_project.xml',
     ],
     "pre_init_hook": False,
     "post_init_hook": False,

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="project_add_sync" model="ir.ui.view">
+            <field name="name">project.project.form.add.sync</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" 
+                ref="project.edit_project"/>
+            <field name="arch" type="xml">
+
+                <xpath expr='//div[@name="options_active"]' 
+                    position='inside'>            
+                        <field
+                         name='sync_tasks_issues' 
+                         attrs="{'invisible': ['|', ('use_issues', '=', False), ('use_tasks', '=', False)]}"/>
+                        <label for='sync_tasks_issues'/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>
