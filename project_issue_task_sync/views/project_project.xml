@@ -17,5 +17,20 @@
                 </xpath>
             </field>
         </record>
+
+        <record id="project_view_sync_kanban" model="ir.ui.view">
+            <field name="name">project.project.form.add.sync_kanban</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" 
+                ref="project.view_project_kanban"/>
+            <field name="arch" type="xml">
+                <field name="use_tasks"position='after'>
+                    <field name='sync_tasks_issues' 
+                        attrs="{'invisible': ['|', ('use_issues', '=', False), ('use_tasks', '=', False)]}"/>
+                </field>
+            </field>
+        </record>
+
+
     </data>
 </openerp>
