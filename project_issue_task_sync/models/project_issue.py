@@ -27,8 +27,10 @@ class ProjectIssue(models.Model):
             and the project is "sync enabled" create the associated 
             task.
             """
-
-            if (this.project_id.sync_tasks_issues and not 
+            """
+             TODO task creation? for now if there is no task just skip.
+            """
+            if (this.project_id.sync_tasks_issues and task and not 
                    self.env.context.get('is_sync_operation')):
                 vals = this.get_changed_vals(task)
                 if vals:
