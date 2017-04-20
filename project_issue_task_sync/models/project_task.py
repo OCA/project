@@ -27,16 +27,14 @@ class ProjectTask(models.Model):
             # it obviously as a sync_operation / no mail
             if not len(this.issue_ids) > 0:
                 self.env['project.issue'].with_context(
-                    mail_notrack=True, is_sync_operation=True).create(
-                    {
-                     'project_id':  self.project_id.id,
-                     'name': self.name,
-                     'task_id':  self.id,
-                     'user_id': self.user_id.id,
-                     'stage_id': self.stage_id.id,
-                     'description': self.description
-                    }
-                 )
+                    mail_notrack=True, is_sync_operation=True).create({
+                        'project_id':  self.project_id.id,
+                        'name': self.name,
+                        'task_id':  self.id,
+                        'user_id': self.user_id.id,
+                        'stage_id': self.stage_id.id,
+                        'description': self.description
+                        })
             if (this.project_id.sync_tasks_issues and not
                     self.env.context.get('is_sync_operation')):
                 vals = this.get_changed_vals()

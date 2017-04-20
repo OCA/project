@@ -4,12 +4,12 @@
 from openerp import api, fields, models
 
 
-class project_project(models.Model):
+class ProjectProject(models.Model):
     _inherit = 'project.project'
 
     sync_tasks_issues = fields.Boolean(
-       string='Sync Issues and tasks',
-       default=lambda x: x.use_issues and x.use_tasks
+        string='Sync Issues and tasks',
+        default=lambda x: x.use_issues and x.use_tasks
     )
 
     @api.multi
