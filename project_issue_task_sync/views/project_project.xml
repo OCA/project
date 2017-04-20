@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="project_add_sync" model="ir.ui.view">
+            <field name="name">project.project.form.add.sync</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" 
+                ref="project.edit_project"/>
+            <field name="arch" type="xml">
+
+                <xpath expr='//div[@name="options_active"]' 
+                    position='inside'>            
+                        <field
+                         name='sync_tasks_issues' 
+                         attrs="{'invisible': ['|', ('use_issues', '=', False), ('use_tasks', '=', False)]}"/>
+                        <label for='sync_tasks_issues'/>
+                </xpath>
+            </field>
+        </record>
+
+        
+        <record id="view_sync_tasks"  model="ir.ui.view">
+            <field name="name">sync tasks </field>
+            <field name="model">project.project</field>
+            <field name="arch" type="xml">
+                <form string="Sync Tasks and Issues">
+                    <p>Syncronize all project tasks with their issues. If a task does not have an issue an issue will be created. By clicking this button all projects that are set as "Sync Tasks and issues = True will be syncronized. You can set the projects to be syncronized from the project kanban view or here </p>
+                    <tree>
+                        <field name="name" />
+                        <field name="sync_tasks_issues"/>
+                    </tree>
+                    <button name="sync_all_projects"/>
+                </form>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="act_sync_all_tasks">
+            <field name="name">Syncronize all tasks of projects</field>
+            <field name="res_model">project.project</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem name="Sync all tasks with issues"
+            id="project_issue_task_sync.sync_all_tasks"
+            parent="base.menu_main_pm"
+            groups="project.group_project_manager"
+            action="act_sync_all_tasks"
+            sequence="70"/>
+    </data>
+</openerp>
