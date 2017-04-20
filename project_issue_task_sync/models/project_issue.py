@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # © 2017 Therp BV <http://therp.nl>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
-from openerp import api, fields, models
+from openerp import api, models
 
 
 class ProjectIssue(models.Model):
@@ -18,16 +18,7 @@ class ProjectIssue(models.Model):
     def set_issue_vals(self):
         for this in self:
             task = this.sudo().task_id[:1]
-            """
-            if the create/write is called by a task creation skip all
-            syncing functions and do not try to create a task
-            if it is not called vy a task creation
-            and the project is "sync enabled" create the associated
-            task.
-            """
-            """
-             TODO task creation? for now if there is no task just skip.
-            """
+            # TODO task creation? for now if there is no task just skip.
             if (this.project_id.sync_tasks_issues and task and not
                     self.env.context.get('is_sync_operation')):
                 vals = this.get_changed_vals(task)
