@@ -10,15 +10,11 @@ class project_project(models.Model):
 
     sync_tasks_issues = fields.Boolean(
        string='Sync Issues and tasks',
-       default='feasable_sync'
+        default=lambda x: x.use_issues and x.use_tasks
     )
 
-    @api.multi
-    def feasable_sync(self):
-        for this in self:
-            return this.use_issues and this.use_tasks
 
-    @api.onchange('sync_tasks_issues')
+    @api.multi
     def sync_issues_for_tasks(self):
         """
         if we set a project with sync tasks_and_issues==true
@@ -36,8 +32,7 @@ class project_project(models.Model):
 
         """
         if self.sync_tasks_issues:
-            for task in self.env['project.task'].search(
-                   [('project_id', '=', self.id)]):
+            for task in self.task_ids:
                 task.write({})
 
 

@@ -4,10 +4,10 @@
 {
     "name": "Sync issues and tasks",
     "version": "8.0.1.0.0",
-    "author": "Therp BV",
+    "author": "Therp BV,Odoo Community Association (OCA)",
     "license": "AGPL-3",
-    "category": "",
-    "summary": "",
+    "category": "Project Management",
+    "summary": "Syncronizes tasks and issues",
     "depends": [
         'project_issue'
     ],
@@ -15,10 +15,5 @@
         'views/project_project.xml',
         'views/project_task.xml',
     ],
-    "pre_init_hook": False,
-    "post_init_hook": False,
-    "uninstall_hook": False,
-    "auto_install": False,
     "installable": True,
-    "application": False,
 }

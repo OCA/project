@@ -15,22 +15,20 @@ class ProjectTask(models.Model):
 
     def get_changed_vals(self):
         vals = {}
-        if self.issue_ids.stage_id != self.stage_id:
+        if self.issue_ids[:1].stage_id != self.stage_id:
             vals['stage_id'] = self.stage_id.id
-        if self.issue_ids.user_id != self.user_id:
+        if self.issue_ids[:1].user_id != self.user_id:
             vals['user_id'] = self.user_id.id
         return vals
 
     @api.multi
     def set_issue_vals(self):
         for this in self:
-            if len(this.issue_ids) > 1:
-                continue
             # If I see that on write or create my task has no issue , create
             # it obviously as a sync_operation / no mail
-            if len(this.issue_ids) == 0:
+            if not len(this.issue_ids) > 0:
                self.env['project.issue'].with_context(
-                   mail_notrack=True, sync_operation=True).create(
+                   mail_notrack=True, is_sync_operation=True).create(
                    { 
                      'project_id':  self.project_id.id,
                      'name': self.name,
@@ -41,8 +39,9 @@ class ProjectTask(models.Model):
                    }
                 )
             if (this.project_id.sync_tasks_issues and not
-                    self.env.context.get('sync_operation', False)):
+                    self.env.context.get('is_sync_operation')):
                 vals = this.get_changed_vals()
+                # NOTE we will write on all issues if they are multiple
                 if vals:
                    this.issue_ids.with_context(
                        mail_notrack=True, sync_operation=True

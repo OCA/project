@@ -16,7 +16,7 @@ class ProjectProject(orm.Model):
 class ProjectCategory(orm.Model):
     _inherit = 'project.category'
 
-    def name_get(self, cr, uid, ids, context=None):
+    def _name_get(self, cr, uid, ids, context=None):
         res = []
         rows = self.read(cr, uid, ids, ['name', 'parent_id'], context=context)
         for row in rows:

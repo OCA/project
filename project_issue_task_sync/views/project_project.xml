@@ -18,20 +18,7 @@
             </field>
         </record>
 
-        <menuitem name="Sync all tasks with issues"
-            id="project_issue_task_sync.sync_all_tasks"
-            parent="base.menu_main_pm"
-            groups="group_project_manager"
-            action="act_sync_all_tasks"
-            sequence="70"/>
         
-        <record model="ir.actions.act_window" id="act_sync_all_tasks">
-            <field name="name">Syncronize all tasks of projects</field>
-            <field name="res_model">project.project</field>
-            <field name="view_mode">form</field>
-            <field name="target">new</field>
-        </record>
-
         <record id="view_sync_tasks"  model="ir.ui.view">
             <field name="name">sync tasks </field>
             <field name="model">project.project</field>
@@ -47,5 +34,18 @@
             </field>
         </record>
 
+        <record model="ir.actions.act_window" id="act_sync_all_tasks">
+            <field name="name">Syncronize all tasks of projects</field>
+            <field name="res_model">project.project</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem name="Sync all tasks with issues"
+            id="project_issue_task_sync.sync_all_tasks"
+            parent="base.menu_main_pm"
+            groups="project.group_project_manager"
+            action="act_sync_all_tasks"
+            sequence="70"/>
     </data>
 </openerp>

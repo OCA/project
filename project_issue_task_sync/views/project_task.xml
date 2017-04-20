@@ -1,0 +1,20 @@
+<openerp>
+    <data>
+        <record id="view_task_form2" model="ir.ui.view">
+            <field name="name">project.task.form</field>
+            <field name="model">project.task</field>
+            <field eval="2" name="priority" />
+            <field name="inherit_id" ref="project.view_task_form2" />
+            <field name="arch" type="xml">
+                <field name="project_id" position="after">
+                    <field name="issue_ids" attrs="{'invisible': [('issue_ids', '=', False)]}" widget="many2many_tags" options="{'open': True}" />
+                </field>
+            </field>
+        </record>
+        <record id="project.open_view_task_list_kanban" model="ir.actions.act_window.view">
+            <field name="sequence" eval="100" />
+        </record>
+
+
+    </data>
+</openerp>
