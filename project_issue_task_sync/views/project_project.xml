@@ -42,8 +42,9 @@
                         <field name="name" />
                         <field name="sync_tasks_issues"/>
                     </tree>
-                    <button name="sync_all_projects">
+                    <button name="sync_all_projects"/>
                 </form>
+            </field>
         </record>
 
     </data>
