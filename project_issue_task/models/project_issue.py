@@ -21,6 +21,7 @@ class ProjectIssue(models.Model):
                 raise UserError(_("A Task is already assigned to the Issue!"))
             task_data = {
                 'project_id': rec.project_id.id,
+                'partner_id': rec.partner_id.id,
                 'name': _('Report for %s') % rec.name,
                 'tag_ids': [(6, 0, rec.tag_ids.ids)],
             }
