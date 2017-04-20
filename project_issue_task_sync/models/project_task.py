@@ -9,7 +9,7 @@ class ProjectTask(models.Model):
 
     issue_ids = fields.One2many('project.issue', 'task_id', 'Issues')
 
-    # CAN EXTEND THIS TO SYNC MORE FILES, if we want to create a model
+    # CAN EXTEND THIS TO SYNC MORE Fields, if we want to create a model
     # fields to sync we can do it here.
 
 
