@@ -5,7 +5,7 @@
 {
     'name': 'Project Issue related Tasks',
     'summary': 'Use Tasks to support Issue resolution reports',
-    'version': '9.0.1.0.2',
+    'version': '9.0.1.1.0',
     'category': 'Project Management',
     'author': "Daniel Reis,"
               "Tecnativa, "
