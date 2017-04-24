@@ -8,6 +8,7 @@
         <field name="inherit_id" ref="project_issue.project_issue_form_view"/>
         <field name="arch" type="xml">
             <field name="task_id" position="after">
+                <label string=""/>
                 <button type="object" name="action_create_task" string="Task Report" attrs="{'invisible': [('task_id', '!=', False)]}"/>
             </field>
         </field>
