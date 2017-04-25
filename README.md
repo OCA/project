@@ -22,7 +22,8 @@ addon | version | summary
 [project_description](project_description/) | 9.0.1.0.0 | Add a description to projects
 [project_double_alias](project_double_alias/) | 9.0.1.0.0 | Define an alias for tasks and another alias for issues
 [project_issue_code](project_issue_code/) | 9.0.1.0.0 | Adding Field Code For Project Issue
-[project_issue_task](project_issue_task/) | 9.0.1.0.1 | Use Tasks to support Issue resolution reports
+[project_issue_task](project_issue_task/) | 9.0.1.1.0 | Use Tasks to support Issue resolution reports
+[project_issue_timesheet_time_control](project_issue_timesheet_time_control/) | 9.0.1.0.0 | Project issue timesheet time control
 [project_stage_closed](project_stage_closed/) | 9.0.1.0.0 | Make the Closed flag on Task Stages available without installing sale_service
 [project_task_add_very_high](project_task_add_very_high/) | 9.0.1.0.0 | Adds an extra option 'Very High' on tasks
 [project_task_code](project_task_code/) | 9.0.1.0.0 | Sequential Code for Tasks
