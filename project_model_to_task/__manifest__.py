@@ -13,7 +13,9 @@
     'website': 'https://www.akretion.com',
     'data': [
         'views/project_view.xml',
-        'demo/task.xml',
+    ],
+    'demo': [
+        'demo/task.xml'
     ],
     'installable': True,
 }
