@@ -19,6 +19,7 @@ Available addons
 ----------------
 addon | version | summary
 --- | --- | ---
+[project_department](project_department/) | 9.0.1.0.0 | Project Department Categorization
 [project_description](project_description/) | 9.0.1.0.0 | Add a description to projects
 [project_double_alias](project_double_alias/) | 9.0.1.0.0 | Define an alias for tasks and another alias for issues
 [project_issue_code](project_issue_code/) | 9.0.1.0.0 | Adding Field Code For Project Issue
