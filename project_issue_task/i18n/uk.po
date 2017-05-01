@@ -4,13 +4,14 @@
 # 
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2017
+# Kateryna Onyshchenko <Katrona17@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-11 03:42+0000\n"
-"PO-Revision-Date: 2017-01-11 03:42+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"POT-Creation-Date: 2017-04-29 02:48+0000\n"
+"PO-Revision-Date: 2017-04-29 02:48+0000\n"
+"Last-Translator: Kateryna Onyshchenko <Katrona17@gmail.com>, 2017\n"
 "Language-Team: Ukrainian (https://www.transifex.com/oca/teams/23907/uk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -110,7 +111,7 @@ msgid "Related Issues"
 msgstr ""
 
 #. module: project_issue_task
-#: code:addons/project_issue_task/models/project_issue.py:24
+#: code:addons/project_issue_task/models/project_issue.py:25
 #, python-format
 msgid "Report for %s"
 msgstr ""
@@ -123,7 +124,7 @@ msgstr "Послідовність"
 #. module: project_issue_task
 #: model:ir.model,name:project_issue_task.model_project_task
 msgid "Task"
-msgstr ""
+msgstr "Завдання"
 
 #. module: project_issue_task
 #: model:ir.actions.act_window,name:project_issue_task.open_task_cause_form
