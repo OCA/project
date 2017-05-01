@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-17 13:09+0000\n"
-"PO-Revision-Date: 2016-11-25 14:56+0000\n"
+"POT-Creation-Date: 2017-04-26 10:14+0000\n"
+"PO-Revision-Date: 2017-04-20 03:26+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/oca/OCA-project-8-0/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -168,7 +168,7 @@ msgstr "上次更新日期"
 #: model:ir.model,name:project_recalculate.model_project_project
 #: field:project.recalculate.wizard,project_id:0
 msgid "Project"
-msgstr ""
+msgstr "项目"
 
 #. module: project_recalculate
 #: field:project.recalculate.wizard,project_date:0

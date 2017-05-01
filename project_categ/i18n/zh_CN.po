@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-25 05:28+0000\n"
-"PO-Revision-Date: 2017-03-03 06:30+0000\n"
+"POT-Creation-Date: 2017-04-26 10:14+0000\n"
+"PO-Revision-Date: 2017-04-20 03:26+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/oca/OCA-project-8-0/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -50,7 +50,7 @@ msgstr ""
 #. module: project_categ
 #: model:ir.model,name:project_categ.model_project_project
 msgid "Project"
-msgstr ""
+msgstr "项目"
 
 #. module: project_categ
 #: field:project.project,project_ids:0
@@ -70,9 +70,4 @@ msgstr "任务"
 #. module: project_categ
 #: view:project.task:project_categ.project_task_form_view_categs
 msgid "onchange_project(project_id)"
-msgstr ""
-
-#. module: project_categ
-#: view:project.task:project_categ.project_task_form_view_categs
-msgid "{'required':[('task_categ_id','!=',False)]}"
 msgstr ""

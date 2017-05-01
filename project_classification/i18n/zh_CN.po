@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-31 06:28+0000\n"
-"PO-Revision-Date: 2017-01-13 09:31+0000\n"
+"POT-Creation-Date: 2017-04-26 10:14+0000\n"
+"PO-Revision-Date: 2017-04-20 03:26+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/oca/OCA-project-8-0/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -287,7 +287,7 @@ msgstr ""
 #. module: project_classification
 #: model:ir.model,name:project_classification.model_project_project
 msgid "Project"
-msgstr ""
+msgstr "项目"
 
 #. module: project_classification
 #: model:ir.actions.act_window,name:project_classification.action_project_classification_form

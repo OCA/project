@@ -1,0 +1,127 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * project_task_reassign
+# 
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-26 10:15+0000\n"
+"PO-Revision-Date: 2017-04-26 10:15+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"Language-Team: Serbian (Latin) (https://www.transifex.com/oca/teams/23907/sr@latin/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: sr@latin\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. module: project_task_reassign
+#: field:project.task.reassign,user_id:0
+msgid "Assign To"
+msgstr ""
+
+#. module: project_task_reassign
+#: view:project.task.reassign:project_task_reassign.view_project_task_reassign
+msgid "Cancel"
+msgstr "Otkaži"
+
+#. module: project_task_reassign
+#: field:project.task.reassign,create_uid:0
+msgid "Created by"
+msgstr "Kreirao"
+
+#. module: project_task_reassign
+#: field:project.task.reassign,create_date:0
+msgid "Created on"
+msgstr "Kreiran"
+
+#. module: project_task_reassign
+#: field:project.task.reassign,display_name:0
+msgid "Display Name"
+msgstr "Ime za prikaz"
+
+#. module: project_task_reassign
+#: field:project.task.reassign,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: project_task_reassign
+#: field:project.task.reassign,__last_update:0
+msgid "Last Modified on"
+msgstr "Zadnja izmjena"
+
+#. module: project_task_reassign
+#: field:project.task.reassign,write_uid:0
+msgid "Last Updated by"
+msgstr "Zadnja izmjena"
+
+#. module: project_task_reassign
+#: field:project.task.reassign,write_date:0
+msgid "Last Updated on"
+msgstr "Zadnja izmjena"
+
+#. module: project_task_reassign
+#: code:addons/project_task_reassign/wizard/project_task_reassign.py:26
+#, python-format
+msgid "No active Tasks found."
+msgstr ""
+
+#. module: project_task_reassign
+#: code:addons/project_task_reassign/project.py:14
+#, python-format
+msgid "No reassignment data was provided."
+msgstr ""
+
+#. module: project_task_reassign
+#: field:project.task.reassign,project_id:0
+msgid "Project"
+msgstr ""
+
+#. module: project_task_reassign
+#: help:project.task.reassign,project_id:0
+msgid "Project this task should belong to"
+msgstr ""
+
+#. module: project_task_reassign
+#: model:ir.actions.act_window,name:project_task_reassign.action_project_task_reassign
+#: view:project.task.reassign:project_task_reassign.view_project_task_reassign
+msgid "Reassign Project Task"
+msgstr ""
+
+#. module: project_task_reassign
+#: model:ir.actions.act_window,name:project_task_reassign.task_reassign_wizard_action
+msgid "Reassign Tasks"
+msgstr ""
+
+#. module: project_task_reassign
+#: model:ir.model,name:project_task_reassign.model_project_task
+msgid "Task"
+msgstr ""
+
+#. module: project_task_reassign
+#: model:ir.model,name:project_task_reassign.model_project_task_reassign
+msgid "Task Reassign"
+msgstr ""
+
+#. module: project_task_reassign
+#: help:project.task.reassign,user_id:0
+msgid "User you want to assign this task to"
+msgstr ""
+
+#. module: project_task_reassign
+#: view:project.task.reassign:project_task_reassign.view_project_task_reassign
+msgid "_Reassign"
+msgstr ""
+
+#. module: project_task_reassign
+#: view:project.task.reassign:project_task_reassign.view_project_task_reassign
+msgid "or"
+msgstr "ili"
+
+#. module: project_task_reassign
+#: view:project.task:project_task_reassign.project_task_form_view_reassign
+msgid "⇒ Reassign"
+msgstr ""

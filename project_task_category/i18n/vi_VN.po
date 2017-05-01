@@ -1,0 +1,106 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * project_task_category
+# 
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-04-26 10:15+0000\n"
+"PO-Revision-Date: 2017-04-26 10:15+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"Language-Team: Vietnamese (Viet Nam) (https://www.transifex.com/oca/teams/23907/vi_VN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: vi_VN\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#. module: project_task_category
+#: view:project.task:project_task_category.view_task_search_form
+#: field:project.task,categ_id:0
+msgid "Category"
+msgstr ""
+
+#. module: project_task_category
+#: model:ir.model,name:project_task_category.model_project_category_main
+msgid "Category of project's task, issue, ..."
+msgstr ""
+
+#. module: project_task_category
+#: field:project.category.main,child_ids:0
+msgid "Child Categories"
+msgstr ""
+
+#. module: project_task_category
+#: field:project.category.main,code:0
+msgid "Code"
+msgstr "Mã"
+
+#. module: project_task_category
+#: field:project.category.main,create_uid:0
+msgid "Created by"
+msgstr "Tạo bởi"
+
+#. module: project_task_category
+#: field:project.category.main,create_date:0
+msgid "Created on"
+msgstr "Tạo vào"
+
+#. module: project_task_category
+#: field:project.category.main,display_name:0
+msgid "Display Name"
+msgstr ""
+
+#. module: project_task_category
+#: view:project.task:project_task_category.view_task_search_form
+msgid "Group By"
+msgstr ""
+
+#. module: project_task_category
+#: field:project.category.main,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: project_task_category
+#: field:project.category.main,__last_update:0
+msgid "Last Modified on"
+msgstr ""
+
+#. module: project_task_category
+#: field:project.category.main,write_uid:0
+msgid "Last Updated by"
+msgstr "Cập nhật lần cuối bởi"
+
+#. module: project_task_category
+#: field:project.category.main,write_date:0
+msgid "Last Updated on"
+msgstr "Cập nhật lần cuối vào"
+
+#. module: project_task_category
+#: field:project.category.main,complete_name:0
+#: field:project.category.main,name:0
+msgid "Name"
+msgstr "Tên"
+
+#. module: project_task_category
+#: field:project.category.main,parent_id:0
+msgid "Parent Category"
+msgstr ""
+
+#. module: project_task_category
+#: model:ir.actions.act_window,name:project_task_category.action_type_category_project_task
+msgid "Project category"
+msgstr ""
+
+#. module: project_task_category
+#: model:ir.model,name:project_task_category.model_project_task
+msgid "Task"
+msgstr ""
+
+#. module: project_task_category
+#: model:ir.ui.menu,name:project_task_category.menu_category_project
+msgid "Task Category"
+msgstr ""

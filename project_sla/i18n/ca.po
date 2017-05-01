@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-18 02:07+0000\n"
-"PO-Revision-Date: 2017-03-14 18:29+0000\n"
+"POT-Creation-Date: 2017-04-26 10:14+0000\n"
+"PO-Revision-Date: 2017-03-31 13:01+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/oca/OCA-project-8-0/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -276,7 +276,7 @@ msgstr ""
 #. module: project_sla
 #: view:project.sla:project_sla.view_sla_form
 msgid "Rules"
-msgstr ""
+msgstr "Regles "
 
 #. module: project_sla
 #: model:ir.actions.act_window,name:project_sla.action_project_sla_report

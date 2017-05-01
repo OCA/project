@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-17 13:09+0000\n"
-"PO-Revision-Date: 2016-05-17 08:05+0000\n"
+"POT-Creation-Date: 2017-04-26 10:14+0000\n"
+"PO-Revision-Date: 2017-04-25 11:10+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Estonian (http://www.transifex.com/oca/OCA-project-8-0/language/et/)\n"
 "MIME-Version: 1.0\n"
@@ -97,7 +97,7 @@ msgstr ""
 #. module: project_issue_task
 #: field:project.task,ref:0
 msgid "Reference"
-msgstr ""
+msgstr "Viide"
 
 #. module: project_issue_task
 #: field:project.task,issue_id:0

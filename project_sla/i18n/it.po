@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-04 04:37+0000\n"
-"PO-Revision-Date: 2017-02-17 15:46+0000\n"
+"POT-Creation-Date: 2017-04-26 10:14+0000\n"
+"PO-Revision-Date: 2017-04-09 07:01+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Italian (http://www.transifex.com/oca/OCA-project-8-0/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -85,7 +85,7 @@ msgstr ""
 #. module: project_sla
 #: view:project.sla:project_sla.view_sla_form field:project.sla,analytic_ids:0
 msgid "Contracts"
-msgstr ""
+msgstr "Contratti"
 
 #. module: project_sla
 #: field:project.sla,control_field_id:0

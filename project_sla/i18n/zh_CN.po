@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-02-25 05:29+0000\n"
-"PO-Revision-Date: 2017-03-03 07:12+0000\n"
+"POT-Creation-Date: 2017-04-26 10:14+0000\n"
+"PO-Revision-Date: 2017-04-11 06:26+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/oca/OCA-project-8-0/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
@@ -63,7 +63,7 @@ msgstr "有效"
 #. module: project_sla
 #: model:ir.model,name:project_sla.model_account_analytic_account
 msgid "Analytic Account"
-msgstr ""
+msgstr "核算科目"
 
 #. module: project_sla
 #: help:project.sla.line,condition:0

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-17 13:09+0000\n"
-"PO-Revision-Date: 2016-10-11 09:52+0000\n"
+"POT-Creation-Date: 2017-04-26 10:14+0000\n"
+"PO-Revision-Date: 2017-04-27 13:40+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/oca/OCA-project-8-0/language/uk/)\n"
 "MIME-Version: 1.0\n"
@@ -65,14 +65,9 @@ msgstr ""
 #. module: project_categ
 #: model:ir.model,name:project_categ.model_project_task
 msgid "Task"
-msgstr ""
+msgstr "Завдання"
 
 #. module: project_categ
 #: view:project.task:project_categ.project_task_form_view_categs
 msgid "onchange_project(project_id)"
-msgstr ""
-
-#. module: project_categ
-#: view:project.task:project_categ.project_task_form_view_categs
-msgid "{'required':[('task_categ_id','!=',False)]}"
 msgstr ""
