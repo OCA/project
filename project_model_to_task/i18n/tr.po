@@ -3,14 +3,15 @@
 # * project_model_to_task
 # 
 # Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
 msgid ""
 msgstr ""
-"Project-Id-Version: project (8.0)\n"
+"Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-17 13:09+0000\n"
-"PO-Revision-Date: 2016-11-22 12:26+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
-"Language-Team: Turkish (http://www.transifex.com/oca/OCA-project-8-0/language/tr/)\n"
+"POT-Creation-Date: 2017-04-28 08:32+0000\n"
+"PO-Revision-Date: 2017-04-28 08:32+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"Language-Team: Turkish (https://www.transifex.com/oca/teams/23907/tr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -18,23 +19,23 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. module: project_model_to_task
-#: field:project.task,action_id:0
+#: model:ir.model.fields,field_description:project_model_to_task.field_project_task_action_id
 msgid "Action"
 msgstr "Eylem"
 
 #. module: project_model_to_task
-#: help:project.task,action_id:0
+#: model:ir.model.fields,help:project_model_to_task.field_project_task_action_id
 msgid "Action called to go to the original window."
 msgstr ""
 
 #. module: project_model_to_task
-#: code:addons/project_model_to_task/action.py:35
+#: code:addons/project_model_to_task/models/action.py:39
 #, python-format
 msgid "Create a related task"
 msgstr ""
 
 #. module: project_model_to_task
-#: code:addons/project_model_to_task/project.py:70
+#: code:addons/project_model_to_task/models/project.py:72
 #, python-format
 msgid ""
 "Field 'Task Origin' is not set.\n"
@@ -42,12 +43,12 @@ msgid ""
 msgstr ""
 
 #. module: project_model_to_task
-#: view:project.task:project_model_to_task.view_task_form2
+#: model:ir.ui.view,arch_db:project_model_to_task.view_task_form2
 msgid "Go to the window from which the task has been defined."
 msgstr ""
 
 #. module: project_model_to_task
-#: field:project.task,model_reference:0
+#: model:ir.model.fields,field_description:project_model_to_task.field_project_task_model_reference
 msgid "Model reference"
 msgstr ""
 
@@ -57,8 +58,13 @@ msgid "Model to task creation"
 msgstr ""
 
 #. module: project_model_to_task
-#: view:project.task:project_model_to_task.view_task_form2
+#: model:ir.ui.view,arch_db:project_model_to_task.view_task_form2
 msgid "Open"
+msgstr ""
+
+#. module: project_model_to_task
+#: model:ir.ui.menu,name:project_model_to_task.task_linked_to_other_record_menu
+msgid "Relative Tasks"
 msgstr ""
 
 #. module: project_model_to_task
@@ -67,6 +73,21 @@ msgid "Task"
 msgstr "Görev"
 
 #. module: project_model_to_task
-#: field:project.task,task_origin:0
+#: model:ir.model.fields,field_description:project_model_to_task.field_project_task_task_origin
 msgid "Task origin"
+msgstr ""
+
+#. module: project_model_to_task
+#: model:ir.actions.act_window,name:project_model_to_task.task_linked_to_other_record_act
+msgid "Tasks relative to objects"
+msgstr ""
+
+#. module: project_model_to_task
+#: model:ir.model,name:project_model_to_task.model_ir_actions_act_window
+msgid "ir.actions.act_window"
+msgstr ""
+
+#. module: project_model_to_task
+#: model:ir.model,name:project_model_to_task.model_ir_values
+msgid "ir.values"
 msgstr ""
