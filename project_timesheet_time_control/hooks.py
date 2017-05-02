@@ -9,6 +9,6 @@ def post_init_hook(cr, registry):
         """UPDATE account_analytic_line
         SET date_time = to_timestamp(date || ' 00:00:00',
                                      'YYYY/MM/DD HH24:MI:SS')
-        WHERE date_time IS NULL;
+        WHERE date(date_time) != date
         """
     )
