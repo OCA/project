@@ -6,7 +6,7 @@
     "summary": "Allow unique category for Tasks",
     "version": "8.0.1.0.1",
     "category": "Project Management",
-    "website": "www.elico-corp.com",
+    "website": "https://www.elico-corp.com",
     "author": "Elico Corp, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "application": False,
