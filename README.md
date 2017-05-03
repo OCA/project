@@ -32,7 +32,7 @@ addon | version | summary
 [project_task_dependency](project_task_dependency/) | 9.0.1.0.0 | Enables to define dependencies (other tasks) of a task
 [project_task_materials](project_task_materials/) | 9.0.1.0.0 | Record products spent in a Task
 [project_task_materials_stock](project_task_materials_stock/) | 9.0.1.0.0 | Create stock and analytic moves from record products spent in a Task
-[project_timesheet_time_control](project_timesheet_time_control/) | 9.0.1.0.0 | Project timesheet time control
+[project_timesheet_time_control](project_timesheet_time_control/) | 9.0.1.0.1 | Project timesheet time control
 
 
 Unported addons
