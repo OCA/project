@@ -1,40 +1,31 @@
 # -*- coding: utf-8 -*-
-##############################################################################
-#
-#    Copyright (C) 2012 - 2013 Daniel Reis
-#    Copyright (C) 2015 - Antiun Ingeniería S.L. - Sergio Teruel
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as
-#    published by the Free Software Foundation, either version 3 of the
-#    License, or (at your option) any later version.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-##############################################################################
+# © 2012 - 2013 Daniel Reis
+# © 2015 - Antiun Ingeniería S.L. - Sergio Teruel
+# © 2017 - Rigoberto Martínez <rigo1985@gmail.com>
+# License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
-from openerp import models, fields
+from odoo import api, fields, models
 
 
 class Task(models.Model):
     _inherit = "project.task"
-    material_ids = fields.One2many(
-        comodel_name='project.task.materials', inverse_name='task_id',
-        string='Materials used')
+
+    material_ids = fields.One2many(comodel_name='project.task.materials',
+                                   inverse_name='task_id',
+                                   string='Materials used')
 
 
 class ProjectTaskMaterials(models.Model):
     _name = "project.task.materials"
     _description = "Task Materials Used"
-    task_id = fields.Many2one(
-        comodel_name='project.task', string='Task', ondelete='cascade',
-        required=True)
-    product_id = fields.Many2one(
-        comodel_name='product.product', string='Product', required=True)
+
+    task_id = fields.Many2one(comodel_name='project.task', required=True,
+                              string='Task', ondelete='cascade')
+    product_id = fields.Many2one(comodel_name='product.product',
+                                 string='Product', required=True)
     quantity = fields.Float(string='Quantity')
+    uom_id = fields.Many2one('product.uom', string='Unit of Measure')
+
+    @api.onchange('product_id')
+    def _onchange_product_id(self):
+        self.uom_id = self.product_id.uom_id
