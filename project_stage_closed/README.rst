@@ -6,28 +6,21 @@
 Project Task Stage Closed
 =========================
 
-Odoo provides a 'closed' flag on project task stages, but this flag
-is in the sale_service module, which in turns pulls a lot of dependencies
-such as sale, accounting, and procurement. In many circumstances,
-it is desirable to have such a flag to indicate a task is closed,
-without needing so many dependencies.
-
-This module provides the flag in a way that is compatible with sale_service
-but depending only on the project module.
+This module provides a 'closed' flag on project task stages.
 
 Usage
 =====
 
 To use this module, you need to:
 
-#. Activate developer mode.
+#. Have Manager rights for Project group.
 #. Go to *Project > Configuration > Stages*.
 #. You have the "Closed" flag available to be checked on the form view.
 
  
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
-   :target: https://runbot.odoo-community.org/runbot/140/9.0
+   :target: https://runbot.odoo-community.org/runbot/140/10.0
 
 Bug Tracker
 ===========
@@ -40,11 +33,17 @@ welcomed feedback `here <https://github.com/OCA/project/issues/new>`_.
 Credits
 =======
 
+Images
+------
+
+* Odoo Community Association: `Icon <https://github.com/OCA/maintainer-tools/blob/master/template/module/static/description/icon.svg>`_.
+
 Contributors
 ------------
 
 * Stéphane Bidoul <stephane.bidoul@acsone.eu>
 * Pedro M. Baeza <pedro.baeza@tecnativa.com>
+* Luis M. Ontalba <luis.martinez@tecnativa.com>
 
 Maintainer
 ----------
