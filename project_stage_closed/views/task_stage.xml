@@ -6,9 +6,7 @@
         <field name="inherit_id" ref="project.task_type_edit"/>
         <field name="arch" type="xml">
             <field name="fold" position="after">
-                <field name="closed_alias_visible" invisible="1"/>
-                <field name="closed_alias"
-                       attrs="{'invisible': [('closed_alias_visible', '=', False)]}"/>
+                <field name="closed"/>
             </field>
          </field>
     </record>
