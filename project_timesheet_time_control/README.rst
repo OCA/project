@@ -12,7 +12,6 @@ Project Timesheet Time Control
   flow.
 * It adds a datetime field that replaces ``date`` field in tree view, and write
   date field with datetime field value.
-* It also adds a task filter and a group by task options in the search.
 * Finally, it allows to open and close tasks from account analytic lines.
   The selected closed stage is the first one that is found with the mark
   "Closed" checked.
@@ -22,13 +21,13 @@ Usage
 
 You can access via timesheets:
 
-#. Go to Timesheets > Time Tracking > Activities.
+#. Go to Timesheets > My Timesheet > Detailed Activities.
 #. Create a new record.
 #. You will see now that the "Date" field contains also time information.
-#. If you don't select any "Analytic account/project", you will be able to
-   select any task, opened or not.
-#. Selecting a task, the corresponding analytic account/project is filled.
-#. Selecting an analytic account/project, tasks are filtered for only allow
+#. If you don't select any "project", you will be able to select any "task",
+   opened or not.
+#. Selecting a "task", the corresponding "project" is filled.
+#. Selecting a "project", tasks are filtered for only allow
    to select opened tasks for that project. Remember that an opened task is
    a task whose stage doesn't have "Closed" mark checked.
 #. At the end of the line, you will see an icon of a cross inside a circle.
@@ -37,9 +36,9 @@ You can access via timesheets:
 #. You can modify the "Date" field for altering the computation of the
    duration.
 
-or via tasks:
+Or via tasks:
 
-#. Go to Project > Search > Task.
+#. Go to Project > Search > Tasks.
 #. Click on one existing task or create a new one.
 #. On the "Timesheets" page, you will be able to handle records the same way
    as you do in the above explanation (except the task selection part, which
@@ -47,7 +46,7 @@ or via tasks:
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
-   :target: https://runbot.odoo-community.org/runbot/140/9.0
+   :target: https://runbot.odoo-community.org/runbot/140/10.0
 
 Bug Tracker
 ===========
@@ -66,6 +65,7 @@ Contributors
 * Antonio Espinosa <antonioea@tecnativa.com>
 * Carlos Dauden <carlos@tecnativa.es>
 * Sergio Teruel <sergio@tecnativa.es>
+* Luis M. ontalba <luis.martinez@tecnativa.com>
 
 Maintainer
 ----------
