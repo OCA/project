@@ -2,8 +2,8 @@
 # Copyright 2016-2017 Tecnativa - Pedro M. Baeza
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0
 
-from openerp.tests import common
-from openerp import fields
+from odoo.tests import common
+from odoo import fields
 from datetime import timedelta, datetime
 
 
@@ -37,17 +37,17 @@ class TestProjectTimesheetTimeControl(common.TransactionCase):
             'name': 'Test line',
         })
 
-    def test_onchange_account_id(self):
+    def test_onchange_project_id(self):
         record = self.env['account.analytic.line'].new()
-        record.account_id = self.analytic_account.id
-        action = record.onchange_account_id()
+        record.project_id = self.project.id
+        action = record.onchange_project_id()
         self.assertTrue(action['domain']['task_id'])
 
     def test_onchange_task_id(self):
         record = self.env['account.analytic.line'].new()
         record.task_id = self.task.id
         record.onchange_task_id()
-        self.assertEqual(record.account_id, self.analytic_account)
+        self.assertEqual(record.project_id, self.project)
 
     def test_create_write_analytic_line(self):
         line = self.env['account.analytic.line'].create({
