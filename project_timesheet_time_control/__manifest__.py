@@ -6,13 +6,13 @@
 
 {
     'name': 'Project timesheet time control',
-    'version': '9.0.1.0.1',
+    'version': '10.0.1.0.0',
     'category': 'Project',
     'author': 'Tecnativa,'
               'Odoo Community Association (OCA)',
     'website': 'http://www.serviciosbaeza.com',
     'depends': [
-        'project_timesheet',
+        'hr_timesheet',
         'project_stage_closed',
     ],
     'data': [
