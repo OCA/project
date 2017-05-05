@@ -4,7 +4,7 @@
 # Copyright 2016-2017 Tecnativa - Pedro M. Baeza
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
-from openerp import _, api, fields, exceptions, models
+from odoo import _, api, exceptions, fields, models
 from datetime import datetime
 
 
@@ -14,26 +14,22 @@ class AccountAnalyticLine(models.Model):
     date_time = fields.Datetime(default=fields.Datetime.now, string='Date')
     closed = fields.Boolean(related='task_id.stage_id.closed', readonly=True)
 
-    @api.onchange('account_id')
-    def onchange_account_id(self):
-        if self.task_id.analytic_account_id != self.account_id:
-            self.task_id = False
-        domain = {'task_id': []}
-        if self.account_id:
-            project = self.env['project.project'].sudo().search(
-                [('analytic_account_id', '=', self.account_id.id)], limit=1,
-            )
-            domain = {'task_id': [('project_id', '=', project.id),
-                                  ('stage_id.closed', '=', False)]}
-        return {'domain': domain}
+    @api.onchange('project_id')
+    def onchange_project_id(self):
+        res = {}
+        if self.project_id:
+            project = self.project_id
+            res['domain'] = {'task_id': [
+                ('project_id', '=', project.id),
+                ('stage_id.closed', '=', False)]}
+        else:
+            res['domain'] = {'task_id': []}
+        return res
 
     @api.onchange('task_id')
     def onchange_task_id(self):
-        if not self.task_id:  # pragma: no cover
-            return
-        # import pdb; pdb.set_trace()
-        if self.task_id.analytic_account_id != self.account_id:
-            self.account_id = self.task_id.analytic_account_id.id
+        if self.task_id:
+            self.project_id = self.task_id.project_id.id
 
     def eval_date(self, vals):
         if 'date_time' in vals and 'date' not in vals:
