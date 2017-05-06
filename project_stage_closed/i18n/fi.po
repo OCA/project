@@ -6,10 +6,10 @@
 # OCA Transbot <transbot@odoo-community.org>, 2017
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 9.0c\n"
+"Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-14 03:52+0000\n"
-"PO-Revision-Date: 2017-03-14 03:52+0000\n"
+"POT-Creation-Date: 2017-05-06 02:46+0000\n"
+"PO-Revision-Date: 2017-05-06 02:46+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
 "Language-Team: Finnish (https://www.transifex.com/oca/teams/23907/fi/)\n"
 "MIME-Version: 1.0\n"
@@ -19,19 +19,9 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: project_stage_closed
-#: model:ir.model.fields,field_description:project_stage_closed.field_project_task_type_closed_alias
+#: model:ir.model.fields,field_description:project_stage_closed.field_project_task_type_closed
 msgid "Closed"
 msgstr "Suljettu"
-
-#. module: project_stage_closed
-#: model:ir.model.fields,field_description:project_stage_closed.field_project_task_type_closed_alias_visible
-msgid "Closed alias visible"
-msgstr ""
-
-#. module: project_stage_closed
-#: model:ir.model.fields,field_description:project_stage_closed.field_project_task_type_closed
-msgid "Is a close stage"
-msgstr ""
 
 #. module: project_stage_closed
 #: model:ir.model,name:project_stage_closed.model_project_task_type
@@ -40,6 +30,5 @@ msgstr "Tehtävän vaihe"
 
 #. module: project_stage_closed
 #: model:ir.model.fields,help:project_stage_closed.field_project_task_type_closed
-#: model:ir.model.fields,help:project_stage_closed.field_project_task_type_closed_alias
-msgid "Tasks in this stage are considered as closed."
+msgid "Tasks in this stage are considered closed."
 msgstr ""
