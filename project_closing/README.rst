@@ -4,8 +4,8 @@
 Project closing
 ===============
 
-Automatic account analytic closing when related project is closed,
-and if a project is opened, the related analytic account will be re-opened.
+Automatic account analytic archiving when related project is archived,
+and if a project is dearchived, the related analytic account will be dearchived as well.
 
 
 Bug Tracker
@@ -25,6 +25,7 @@ Contributors
 
 * Vincent Renaville <vincent.renaville@camptocamp.com>
 * Charbel Jacquin <charbel.jacquin@camptocamp.com>
+* Jérôme Thériault, Métal Sartigan <jtheriault@metalsartigan.com>
 
 Maintainer
 ----------
