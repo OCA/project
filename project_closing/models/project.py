@@ -4,7 +4,7 @@ from odoo import models, api
 
 class ProjectProject(models.Model):
     _inherit = 'project.project'
-    
+
     @api.multi
     def toggle_active(self):
         for record in self:
