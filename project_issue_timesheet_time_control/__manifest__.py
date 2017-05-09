@@ -4,7 +4,7 @@
 
 {
     'name': 'Project issue timesheet time control',
-    'version': '9.0.1.0.0',
+    'version': '10.0.1.0.0',
     'category': 'Project Management',
     'author': 'Tecnativa, '
               'Odoo Community Association (OCA)',

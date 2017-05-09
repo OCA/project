@@ -15,7 +15,7 @@
                 <button name="button_end_work"
                         string="Stop"
                         type="object"
-                        icon="fa-times-circle"
+                        icon="fa-stop-circle"
                         attrs="{'invisible': [('unit_amount', '>', 0)]}"
                 />
             </xpath>

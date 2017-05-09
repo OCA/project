@@ -24,15 +24,15 @@ Usage
 
 You can access via timesheets:
 
-#. Go to Timesheets > Time Tracking > Activities.
+#. Go to Timesheets > My Timesheets > Detailed Activities.
 #. Create a new record.
-#. If you don't select any "Analytic account/project", you will be able to
-   select any issue, opened or not.
-#. Selecting an issue, the corresponding analytic account/project is filled.
-#. Selecting an analytic account/project, issues are filtered for only allowing
+#. If you don't select any "Project", you will be able to select any "Issue",
+   opened or not.
+#. Selecting an "Issue", the corresponding "Project" is filled.
+#. Selecting a "Project", "Issues" are filtered for only allowing
    to select opened issues for that project. Remember that an opened issue is
    an issue whose stage doesn't have "Closed" mark checked.
-#. At the end of the line, you will see an icon of a cross inside a circle.
+#. At the end of the line, you will see an stop icon.
 #. When you press this button, the difference between "Date" field and the
    current time, writing this in the field "Duration".
 #. You can modify the "Date" field for altering the computation of the
@@ -48,7 +48,7 @@ or via issues:
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
-   :target: https://runbot.odoo-community.org/runbot/140/9.0
+   :target: https://runbot.odoo-community.org/runbot/140/10.0
 
 Bug Tracker
 ===========
@@ -64,6 +64,7 @@ Credits
 Contributors
 ------------
 * Pedro M. Baeza <pedro.baeza@tecnativa.com>
+* Luis M. ontalba <luis.martinez@tecnativa.com>
 
 Maintainer
 ----------
