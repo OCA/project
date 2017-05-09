@@ -19,11 +19,12 @@
 ##############################################################################
 {
     "name": "Project closing",
-    "version": "8.0.0.1.1",
-    "author": "Camptocamp,Odoo Community Association (OCA)",
+    "version": "10.0.1.0.0",
+    "author": "Camptocamp, Métal Sartigan, Odoo Community Association (OCA)",
+    "license": "AGPL-3",
     "website": "http://www.camptocamp.com",
     "category": "project Management",
     "depends": ["project"],
     "data": [],
-    'installable': False,
+    'installable': True,
 }
