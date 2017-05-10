@@ -1,21 +1,32 @@
 .. image:: https://img.shields.io/badge/licence-AGPL--3-blue.svg
-    :alt: License: AGPL-3
+   :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
+   :alt: License: AGPL-3
 
+==============
 Project closing
-===============
+==============
 
-Automatic account analytic archiving when related project is archived,
-and if a project is dearchived, the related analytic account will be dearchived as well.
+This module extends the functionality of projects to allow automatic
+account analytic archiving when related project is archived, and if
+a project is dearchived, the related analytic account is dearchived as well.
 
+Usage
+=====
+
+To use this module, you need to:
+
+* Go to *Project > Project > Projects*
+* Edit one
+* Click on *Archive*
+* The associated analytic account will also be archived.
 
 Bug Tracker
 ===========
 
-Bugs are tracked on `GitHub Issues <https://github.com/OCA/project-service/issues>`_.
-In case of trouble, please check there if your issue has already been reported.
-If you spotted it first, help us smashing it by providing a detailed and welcomed feedback
-`here <https://github.com/OCA/project-service/issues/new?body=module:%20project_closing%0Aversion:%208.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
-
+Bugs are tracked on `GitHub Issues
+<https://github.com/OCA/project/issues>`_. In case of trouble, please
+check there if your issue has already been reported. If you spotted it first,
+help us smash it by providing detailed and welcomed feedback.
 
 Credits
 =======
@@ -40,4 +51,4 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
-To contribute to this module, please visit http://odoo-community.org.
+To contribute to this module, please visit https://odoo-community.org.

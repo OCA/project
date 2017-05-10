@@ -5,7 +5,9 @@ from odoo import tests
 class TestProject(tests.TransactionCase):
     def setUp(self):
         super(TestProject, self).setUp()
-        self._project = self.env['project.project'].create({'name': "Some test project"})
+        self._project = self.env['project.project'].create({
+            'name': "Some test project"
+        })
 
     def test_toggle_active(self):
         self.assertTrue(self._project.active)

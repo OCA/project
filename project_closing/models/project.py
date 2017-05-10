@@ -10,4 +10,3 @@ class ProjectProject(models.Model):
         for record in self:
             record.analytic_account_id.active = not record.active
         return super(ProjectProject, self).toggle_active()
-
