@@ -1,0 +1,18 @@
+<openerp>
+    <data>
+        <record id="view_issue_form_sync" model="ir.ui.view">
+            <field name="name">project.issue.form.sync</field>
+            <field name="model">project.issue</field>
+            <field eval="2" name="priority" />
+            <field name="inherit_id" ref="project_issue.project_issue_form_view" />
+            <field name="arch" type="xml">
+                <field name="project_id" position="after">
+                     <field name="sync_tasks_issues" invisible="True"/>
+                </field>
+                <field name="task_id" position="attributes">
+                    <attribute name="attrs">{'readonly': [('sync_tasks_issues', '=', True)]}</attribute>
+                </field>
+            </field>
+        </record>
+    </data>
+</openerp>
