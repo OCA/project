@@ -6,10 +6,10 @@
 # OCA Transbot <transbot@odoo-community.org>, 2017
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 9.0c\n"
+"Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-29 02:48+0000\n"
-"PO-Revision-Date: 2017-04-29 02:48+0000\n"
+"POT-Creation-Date: 2017-05-10 02:40+0000\n"
+"PO-Revision-Date: 2017-05-10 02:40+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
 "Language-Team: Portuguese (https://www.transifex.com/oca/teams/23907/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -29,14 +29,14 @@ msgid "Close task"
 msgstr ""
 
 #. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_account_analytic_line_closed
+msgid "Closed"
+msgstr "Fechado"
+
+#. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_account_analytic_line_date_time
 msgid "Date"
 msgstr "Data"
-
-#. module: project_timesheet_time_control
-#: model:ir.model.fields,field_description:project_timesheet_time_control.field_account_analytic_line_closed
-msgid "Is a close stage"
-msgstr ""
 
 #. module: project_timesheet_time_control
 #: model:ir.ui.view,arch_db:project_timesheet_time_control.account_analytic_line_tree
@@ -50,17 +50,12 @@ msgid "Stop"
 msgstr ""
 
 #. module: project_timesheet_time_control
-#: model:ir.ui.view,arch_db:project_timesheet_time_control.account_analytic_line_search
-msgid "Task"
-msgstr "Tarefa"
-
-#. module: project_timesheet_time_control
 #: model:ir.model.fields,help:project_timesheet_time_control.field_account_analytic_line_closed
-msgid "Tasks in this stage are considered as closed."
+msgid "Tasks in this stage are considered closed."
 msgstr ""
 
 #. module: project_timesheet_time_control
-#: code:addons/project_timesheet_time_control/models/account_analytic_line.py:78
+#: code:addons/project_timesheet_time_control/models/account_analytic_line.py:74
 #, python-format
 msgid "There isn't any stage with closed check. Please mark any."
 msgstr ""
