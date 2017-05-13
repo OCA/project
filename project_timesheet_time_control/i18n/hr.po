@@ -4,13 +4,14 @@
 # 
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2017
+# Bole <bole@dajmi5.com>, 2017
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 9.0c\n"
+"Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-29 02:48+0000\n"
-"PO-Revision-Date: 2017-04-29 02:48+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"POT-Creation-Date: 2017-07-08 06:28+0000\n"
+"PO-Revision-Date: 2017-07-08 06:28+0000\n"
+"Last-Translator: Bole <bole@dajmi5.com>, 2017\n"
 "Language-Team: Croatian (https://www.transifex.com/oca/teams/23907/hr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,12 +22,17 @@ msgstr ""
 #. module: project_timesheet_time_control
 #: model:ir.model,name:project_timesheet_time_control.model_account_analytic_line
 msgid "Analytic Line"
-msgstr ""
+msgstr "Stavka analitike"
 
 #. module: project_timesheet_time_control
 #: model:ir.ui.view,arch_db:project_timesheet_time_control.account_analytic_line_tree
 msgid "Close task"
-msgstr ""
+msgstr "Zatvori zadatak"
+
+#. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_account_analytic_line_closed
+msgid "Closed"
+msgstr "Zatvoreno"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_account_analytic_line_date_time
@@ -34,33 +40,23 @@ msgid "Date"
 msgstr "Datum"
 
 #. module: project_timesheet_time_control
-#: model:ir.model.fields,field_description:project_timesheet_time_control.field_account_analytic_line_closed
-msgid "Is a close stage"
-msgstr ""
-
-#. module: project_timesheet_time_control
 #: model:ir.ui.view,arch_db:project_timesheet_time_control.account_analytic_line_tree
 msgid "Open task"
-msgstr ""
+msgstr "Otvori zadatak"
 
 #. module: project_timesheet_time_control
 #: model:ir.ui.view,arch_db:project_timesheet_time_control.account_analytic_line_tree
 #: model:ir.ui.view,arch_db:project_timesheet_time_control.view_task_form2_inherited
 msgid "Stop"
-msgstr ""
-
-#. module: project_timesheet_time_control
-#: model:ir.ui.view,arch_db:project_timesheet_time_control.account_analytic_line_search
-msgid "Task"
-msgstr "Zadatak"
+msgstr "Zaustavi"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,help:project_timesheet_time_control.field_account_analytic_line_closed
-msgid "Tasks in this stage are considered as closed."
-msgstr ""
+msgid "Tasks in this stage are considered closed."
+msgstr "Zadaci sa ovim statusom smatraju se zatvorenima."
 
 #. module: project_timesheet_time_control
-#: code:addons/project_timesheet_time_control/models/account_analytic_line.py:78
+#: code:addons/project_timesheet_time_control/models/account_analytic_line.py:74
 #, python-format
 msgid "There isn't any stage with closed check. Please mark any."
-msgstr ""
+msgstr "Nema etape označene kao završna, molimo označite barem jednu."
