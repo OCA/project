@@ -16,6 +16,7 @@ class AccountAnalyticLine(models.Model):
             project = project_model.browse(project_id)
             currency = project.currency_id
             base_currency = self.env.user.company_id.currency_id
+            res['amount_currency'] = res.get('amount')
             res['amount'] = currency.compute(
                 res.get('amount'), base_currency)
         return res
