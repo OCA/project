@@ -13,5 +13,10 @@
     'depends': [
         'analytic',
         'sale_timesheet',
+        'project',
     ],
+    'data': [
+        'security/analytic_security.xml',
+        'security/project_security.xml',
+    ]
 }
