@@ -6,51 +6,38 @@
 Project Timesheet Currency
 ==========================
 
-Multi-currency analytic costs
+This module allows user to work on a multi-company / multi-currency project
+management scenario.
+The module changes the default record rules in order to let the users to work
+simultaneously on projects and tasks of all the companies they're allowed to.
 
-Installation
-============
-
-To install this module, you need to:
-
-#. Do this ...
+I the currency of the project is different of the one set on the current
+company, the module takes care of the conversion based on the current currency
+rate.
 
 Configuration
 =============
 
-To configure this module, you need to:
+*** IMPORTANT ***
+The module changes the default multi-company record rules for project, task
+and analytic line.
+You probably may want to set them accordingly to your specific needs.
 
-#. Go to ...
-
-Usage
-=====
-
-To use this module, you need to:
-
-#. Go to ...
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
-   :target: https://runbot.odoo-community.org/runbot/{repo_id}/{branch}
+   :target: https://runbot.odoo-community.org/runbot/140/10.0
 
 .. repo_id is available in https://github.com/OCA/maintainer-tools/blob/master/tools/repos_with_ids.txt
 .. branch is "8.0" for example
-
-Known issues / Roadmap
-======================
-
-* ...
 
 Bug Tracker
 ===========
 
 Bugs are tracked on `GitHub Issues
-<https://github.com/OCA/{project_repo}/issues>`_. In case of trouble, please
+<https://github.com/OCA/140/issues>`_. In case of trouble, please
 check there if your issue has already been reported. If you spotted it first,
 help us smashing it by providing a detailed and welcomed feedback.
-
-Credits
-=======
 
 Images
 ------
@@ -60,8 +47,7 @@ Images
 Contributors
 ------------
 
-* Firstname Lastname <email.address@example.org>
-* Second Person <second.person@example.org>
+* Davide Corio <me@davidecorio.com>
 
 Maintainer
 ----------
