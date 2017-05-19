@@ -19,17 +19,17 @@ class AccountAnalyticLine(models.Model):
         res = {}
         if self.project_id:
             project = self.project_id
-            res['domain'] = {'task_id': [('project_id', '=', project.id)]}
+            res['domain'] = {'task_id': [
+                ('project_id', '=', project.id),
+                ('stage_id.closed', '=', False)]}
         else:
             res['domain'] = {'task_id': []}
         return res
 
     @api.onchange('task_id')
     def onchange_task_id(self):
-        res = {}
         if self.task_id:
             self.project_id = self.task_id.project_id.id
-        return res
 
     def eval_date(self, vals):
         if 'date_time' in vals and 'date' not in vals:
