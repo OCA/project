@@ -4,12 +4,13 @@
 # 
 # Translators:
 # Antonio Trueba, 2016
+# Antonio Trueba, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-24 08:57+0000\n"
-"PO-Revision-Date: 2016-02-05 12:39+0000\n"
+"POT-Creation-Date: 2017-05-13 05:34+0000\n"
+"PO-Revision-Date: 2017-05-13 18:20+0000\n"
 "Last-Translator: Antonio Trueba\n"
 "Language-Team: Spanish (http://www.transifex.com/oca/OCA-project-8-0/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -26,7 +27,7 @@ msgstr "Cancelado"
 #. module: project_stage_state
 #: selection:project.task.type,state:0
 msgid "Done"
-msgstr ""
+msgstr "Hecho"
 
 #. module: project_stage_state
 #: field:project.task.type,fold_statusbar:0

@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-24 04:00+0000\n"
-"PO-Revision-Date: 2016-12-27 12:55+0000\n"
+"POT-Creation-Date: 2017-05-13 05:35+0000\n"
+"PO-Revision-Date: 2017-05-13 18:20+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Spanish (http://www.transifex.com/oca/OCA-project-8-0/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -53,7 +53,7 @@ msgstr ""
 #. module: project_task_materials_stock
 #: selection:project.task,stock_state:0
 msgid "Done"
-msgstr ""
+msgstr "Hecho"
 
 #. module: project_task_materials_stock
 #: help:project.task,consume_material:0
