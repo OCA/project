@@ -6,12 +6,12 @@
 Project Timesheet Currency
 ==========================
 
-This module allows user to work on a multi-company / multi-currency project
+This module allows users to work on a multi-company / multi-currency project
 management scenario.
-The module changes the default record rules in order to let the users to work
-simultaneously on projects and tasks of all the companies they're allowed to.
+The module changes the default record rules in order to let the users work
+simultaneously on projects and tasks from all the companies they're allowed to.
 
-I the currency of the project is different of the one set on the current
+In case the currency of the project is different of the one set on the current
 company, the module takes care of the conversion based on the current currency
 rate.
 
@@ -21,7 +21,7 @@ Configuration
 *** IMPORTANT ***
 The module changes the default multi-company record rules for project, task
 and analytic line.
-You probably may want to set them accordingly to your specific needs.
+You probably want to fine tune them according to your specific needs.
 
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
