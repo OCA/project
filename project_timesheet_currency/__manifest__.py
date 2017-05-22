@@ -16,6 +16,7 @@
         'project',
     ],
     'data': [
+        'security/record_rules.yml',
         'security/analytic_security.xml',
         'security/project_security.xml',
     ]

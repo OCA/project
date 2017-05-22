@@ -69,6 +69,7 @@ class TestMultiCurrencyTimesheet(common.TransactionCase):
             {
                 'name': 'Task USD',
                 'user_id': self.user_fr.id,
+                'project_id': self.project_USD.id,
             })
 
     def test_account_currency(self):
@@ -146,5 +147,5 @@ class TestMultiCurrencyTimesheet(common.TransactionCase):
 
         # I check that the currency conversion worked as expected and both
         # amount and amount_currency fields values are correct
-        self.assertEqual(total_amount, -4734.5199999999995)
-        self.assertEqual(total_amount_currency, -4400.0)
+        self.assertAlmostEqual(total_amount, -4734.52)
+        self.assertAlmostEqual(total_amount_currency, -4400.0)
