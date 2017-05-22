@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="project_issue_form_view" model="ir.ui.view">
+        <field name="model">project.issue</field>
+        <field name="inherit_id" ref="project_issue_sheet.project_issue_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='timesheet_ids']//field[@name='date']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='timesheet_ids']//field[@name='date']" position="after">
+                <field name="date_time"/>
+            </xpath>
+            <xpath expr="//field[@name='timesheet_ids']//field[@name='unit_amount']" position="after">
+                <button name="button_end_work"
+                        string="Stop"
+                        type="object"
+                        icon="fa-stop-circle"
+                        attrs="{'invisible': [('unit_amount', '>', 0)]}"
+                />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

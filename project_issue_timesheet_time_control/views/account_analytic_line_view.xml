@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="account_analytic_line_tree" model="ir.ui.view">
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="project_timesheet_time_control.account_analytic_line_tree"/>
+        <field name="arch" type="xml">
+            <button name="button_open_task" position="after">
+                <field name="issue_id"/>
+                <field name="issue_closed" invisible="1"/>
+                <button name="button_close_issue"
+                        string="Close issue"
+                        type="object"
+                        icon="fa-folder-o"
+                        attrs="{'invisible': ['|', ('issue_closed', '=', True), ('issue_id', '=', False)]}"
+                />
+                <button name="button_open_issue"
+                        string="Open issue"
+                        type="object"
+                        icon="fa-folder-open-o"
+                        attrs="{'invisible': ['|', ('issue_closed', '=', False), ('issue_id', '=', False)]}"
+                />
+            </button>
+        </field>
+    </record>
+
+    <record id="account_analytic_line_search" model="ir.ui.view">
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_search"/>
+        <field name="arch" type="xml">
+            <group position="inside">
+                <filter string="Task" context="{'group_by': 'task_id'}"/>
+            </group>
+        </field>
+    </record>
+
+</odoo>
