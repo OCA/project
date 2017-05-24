@@ -82,9 +82,9 @@ class TestMultiCurrencyTimesheet(common.TransactionCase):
         # I create analytic lines for every day of the week
         # passing project and task to simulate the creation of analytic lines
         # through the task form
-        al_model = self.env['account.analytic.line']
+        al_model = self.env['account.analytic.line'].sudo(self.user_fr.id)
         date_05_08 = time.strftime('%Y-05-08')
-        al_model.sudo(self.user_fr.id).with_context(
+        al_model.with_context(
             {'date': date_05_08}).create(
             {
                 'name': 'Test USD',
@@ -95,7 +95,7 @@ class TestMultiCurrencyTimesheet(common.TransactionCase):
                 'date': date_05_08,
             })
         date_05_09 = time.strftime('%Y-05-09')
-        al_model.sudo(self.user_fr.id).with_context(
+        al_model.with_context(
             {'date': date_05_09}).create(
             {
                 'name': 'Test USD',
@@ -106,7 +106,7 @@ class TestMultiCurrencyTimesheet(common.TransactionCase):
                 'date': date_05_09,
             })
         date_05_10 = time.strftime('%Y-05-10')
-        al_model.sudo(self.user_fr.id).with_context(
+        al_model.with_context(
             {'date': date_05_10}).create(
             {
                 'name': 'Test USD',
@@ -117,7 +117,7 @@ class TestMultiCurrencyTimesheet(common.TransactionCase):
                 'date': date_05_10,
             })
         date_05_11 = time.strftime('%Y-05-11')
-        al_model.sudo(self.user_fr.id).with_context(
+        al_model.with_context(
             {'date': date_05_11}).create(
             {
                 'name': 'Test USD',
@@ -128,7 +128,7 @@ class TestMultiCurrencyTimesheet(common.TransactionCase):
                 'date': date_05_11,
             })
         date_05_12 = time.strftime('%Y-05-12')
-        al_model.sudo(self.user_fr.id).with_context(
+        al_model.with_context(
             {'date': date_05_12}).create(
             {
                 'name': 'Test USD',
