@@ -7,6 +7,10 @@ class ProjectProject(models.Model):
 
     @api.multi
     def toggle_active(self):
-        for record in self:
-            record.analytic_account_id.toggle_active()
-        return super(ProjectProject, self).toggle_active()
+        if not self.env.context.get('doing_project_toggle_active'):
+            # When called directly from Project, delegate to Analytic Account
+            res = self.analytic_account_id.toggle_active()
+        else:
+            # When called from the Analytic Account, perform the toggling
+            res = super(ProjectProject, self).toggle_active()
+        return res
