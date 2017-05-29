@@ -10,14 +10,14 @@ from odoo.tools.safe_eval import safe_eval
 class ProjectTask(models.Model):
     _inherit = 'project.task'
 
+    @api.multi
+    @api.depends('model_reference')
     def _get_origin(self):
         for rec in self:
-            if rec.model_reference:
-                rec_name = rec.model_reference._rec_name
-                if rec_name:
-                    rec.task_origin = rec.model_reference.display_name
-                else:
-                    rec.task_origin = False
+            if rec.model_reference and rec.model_reference._rec_name:
+                rec.task_origin = rec.model_reference.display_name or False
+            else:
+                rec.task_origin = False
 
     @api.model
     def _authorised_models(self):

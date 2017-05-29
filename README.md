@@ -20,13 +20,16 @@ Available addons
 addon | version | summary
 --- | --- | ---
 [project_description](project_description/) | 10.0.1.0.0 | Add a description to projects
+[project_issue_timesheet_time_control](project_issue_timesheet_time_control/) | 10.0.1.0.0 | Project issue timesheet time control
 [project_model_to_task](project_model_to_task/) | 10.0.0.1.0 | Project Model to Task
+[project_stage_closed](project_stage_closed/) | 10.0.1.0.0 | Make the Closed flag on Task Stages available without installing sale_service
 [project_stage_state](project_stage_state/) | 10.0.1.0.0 | Restore State attribute removed from Project Stages in 8.0
 [project_task_add_very_high](project_task_add_very_high/) | 10.0.1.0.0 | Adds an extra option 'Very High' on tasks
 [project_task_code](project_task_code/) | 10.0.1.0.0 | Sequential Code for Tasks
 [project_task_default_stage](project_task_default_stage/) | 10.0.1.0.0 | Recovery default task stage projects from v8
 [project_task_dependency](project_task_dependency/) | 10.0.1.0.0 | Enables to define dependencies (other tasks) of a task
 [project_task_pull_request](project_task_pull_request/) | 10.0.1.0.0 | Adds a field for a PR URI to project tasks
+[project_timesheet_time_control](project_timesheet_time_control/) | 10.0.1.0.0 | Project timesheet time control
 
 
 Unported addons

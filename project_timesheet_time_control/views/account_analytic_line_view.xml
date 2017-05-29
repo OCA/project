@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="account_analytic_line_tree" model="ir.ui.view">
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id"
+               ref="hr_timesheet.hr_timesheet_line_tree"/>
+        <field name="arch" type="xml">
+            <field name="date" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="date" position="after">
+                <field name="date_time"/>
+            </field>
+            <field name="unit_amount" position="after">
+                <button name="button_end_work"
+                        string="Stop"
+                        type="object"
+                        icon="fa-stop-circle"
+                        attrs="{'invisible': [('unit_amount', '>', 0)]}"
+                />
+            </field>
+            <field name="task_id" position="after">
+                <field name="closed" invisible="1"/>
+                <button name="button_close_task"
+                        string="Close task"
+                        type="object"
+                        icon="fa-folder-o"
+                        attrs="{'invisible': ['|', ('closed', '=', True), ('task_id', '=', False)]}"
+                />
+                <button name="button_open_task"
+                        string="Open task"
+                        type="object"
+                        icon="fa-folder-open-o"
+                        attrs="{'invisible': ['|', ('closed', '=', False), ('task_id', '=', False)]}"
+                />
+            </field>
+        </field>
+    </record>
+
+</odoo>
