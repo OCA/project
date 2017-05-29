@@ -41,3 +41,10 @@ class TestProjectIssueCode(TransactionCase):
         self.assertNotEqual(
             project_issue.issue_code, self.project_issue.issue_code)
         self.assertEqual(project_issue.issue_code, code)
+
+    def test_custom_copy(self):
+        code = 'custom'
+        project_issue = self.project_issue.copy({'issue_code': code})
+        self.assertNotEqual(
+            project_issue.issue_code, self.project_issue.issue_code)
+        self.assertEqual(project_issue.issue_code, code)
