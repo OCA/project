@@ -1,11 +1,11 @@
 # -*- coding: utf-8 -*-
-# © 2015 Eficent - Jordi Ballester Alomar
-# © 2015 Serpent Consulting Services Pvt. Ltd. - Sudhir Arya
+# Copyright 2017 Eficent Business and IT Consulting Services S.L.
+# Copyright 2017 Serpent Consulting Services Pvt. Ltd.
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 {
     "name": "Project Propose End Date",
-    "version": "7.0.1.0.0",
+    "version": "9.0.1.0.0",
     "summary": "Proposes the end date based on the start date",
     "author": "Eficent",
     "website": "http://www.eficent.com",

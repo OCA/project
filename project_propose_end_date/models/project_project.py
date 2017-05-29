@@ -1,21 +1,17 @@
 # -*- coding: utf-8 -*-
-# © 2015 Eficent - Jordi Ballester Alomar
+# Copyright 2017 Eficent Business and IT Consulting Services S.L.
+# Copyright 2017 Serpent Consulting Services Pvt. Ltd.
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-from openerp.osv import fields, orm
+from openerp import api, models
 
 
-class Project(orm.Model):
+class Project(models.Model):
     _inherit = "project.project"
 
-    def onchange_date_start(self, cr, uid, ids, date_start, context=None):
-        if context is None:
-            context = {}
-        res = {
-            'value': {}
-        }
-
-        for project in self.browse(cr, uid, ids, context=context):
-            if not project.date:
-                res['value']['date'] = date_start
-        return res
+    @api.multi
+    @api.onchange('date_start')
+    def onchange_date_start(self):
+        for project in self:
+            if project.date_start and not project.date:
+                project.date = project.date_start
