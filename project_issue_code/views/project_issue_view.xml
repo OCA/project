@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record model="ir.ui.view" id="project_issue_code_form_view">
+        <field name="name">Form Project Issue Code</field>
+        <field name="model">project.issue</field>
+        <field name="inherit_id" ref="project_issue.project_issue_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="before">
+                <field name="issue_code" class="oe_inline" />
+                <label string=" - " class="oe_inline" />
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="project_issue_code_tree_view">
+        <field name="name">Tree Project Issue Code</field>
+        <field name="model">project.issue</field>
+        <field name="inherit_id" ref="project_issue.project_issue_tree_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="before">
+                <field name="issue_code" />
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="project_issue_code_kanban_view">
+        <field name="name">Kanban Project Issue Code</field>
+        <field name="model">project.issue</field>
+        <field name="inherit_id" ref="project_issue.project_issue_kanban_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="before">
+                <field name="issue_code" />
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="project_issue_code_search_view">
+        <field name="name">Search Project Issue Code</field>
+        <field name="model">project.issue</field>
+        <field name="inherit_id" ref="project_issue.view_project_issue_filter" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="attributes">
+                <attribute name="filter_domain">['|', ('name', 'ilike', self), ('issue_code', 'ilike', self)]</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>
