@@ -49,8 +49,7 @@ class ProjectTaskDelegate(models.TransientModel):
         This function gets default values
         """
         res = super(ProjectTaskDelegate, self).default_get(fields)
-        context = dict(self._context or {})
-        record_id = context.get('active_ids', False)
+        record_id = self.env.context.get('active_id')
         task = self.env['project.task'].browse(record_id)
         task_name = tools.ustr(task.name)
 
@@ -109,15 +108,14 @@ class ProjectTaskDelegate(models.TransientModel):
     @api.multi
     def delegate(self):
         self.ensure_one()
-        context = dict(self._context or {})
-        task_id = context.get('active_id', False)
-        task_pool = self.env['project.task']
+        task_id = self.env.context.get('active_id')
         delegate_data = self.read()[0]
-        delegated_tasks = task_pool.browse(task_id).do_delegate(delegate_data)
+        parent_task = self.env['project.task'].browse(task_id)
+        delegated_task_id = parent_task.do_delegate(delegate_data)
         action = self.env.ref('project.action_view_task').read()[0]
         task_view_form_id = self.env.ref('project.view_task_form2').id
         task_view_tree_id = self.env.ref('project.view_task_tree2').id
-        action['res_id'] = delegated_tasks[task_id]
+        action['res_id'] = delegated_task_id
         action['view_id'] = task_view_form_id
         action['views'] = [(task_view_form_id, 'form'),
                            (task_view_tree_id, 'tree')]

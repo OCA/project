@@ -25,6 +25,11 @@ Usage
    :alt: Try me on Runbot
    :target: https://runbot.odoo-community.org/runbot/140/9.0
 
+Known issues / Roadmap
+======================
+
+* Link/Unlink the parent task attachments instead of duplicating it.
+
 Bug Tracker
 ===========
 
