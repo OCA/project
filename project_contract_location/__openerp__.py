@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Copyright (C) 2013 Daniel Reis
+#    Copyright (C) 2013-2017 Daniel Reis
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -17,16 +17,21 @@
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #
 ##############################################################################
-
-from openerp.osv import fields, orm
-
-
-class AnalyticAccount(orm.Model):
-    """Add Contact to Analytic Accounts"""
-    _inherit = 'account.analytic.account'
-    _columns = {
-        'contact_id': fields.many2one(
-            'res.partner', 'Contact',
-            domain="[('parent_id','child_of',partner_id)"
-                   ",('parent_id','!=',False)]"),
-        }
+{
+    'name': 'Contract and Location on Project Task',
+    'summary': 'Link Tasks to an Analytic Account and a Service Location',
+    'version': '9.0.1.2.0',
+    "category": "Project Management",
+    'author': "Daniel Reis, Odoo Community Association (OCA)",
+    'website': 'https://github.com/OCA/project',
+    'license': 'AGPL-3',
+    'depends': [
+        'project',
+    ],
+    'data': [
+        'views/analytic_view.xml',
+        'views/project_project_view.xml',
+        'views/project_task_view.xml',
+    ],
+    'installable': True,
+}
