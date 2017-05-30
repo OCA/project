@@ -7,14 +7,12 @@
     "name": "Project Propose End Date",
     "version": "9.0.1.0.0",
     "summary": "Proposes the end date based on the start date",
-    "author": "Eficent",
+    "author": "Eficent Business and IT Consulting Services S.L., "
+              "Serpent Consulting Services Pvt. Ltd.,"
+              "Odoo Community Association (OCA)",
     "website": "http://www.eficent.com",
     "category": "Generic",
     "depends": ["project"],
     "license": "AGPL-3",
-    "data": [
-        "views/project_view.xml",
-    ],
     'installable': True,
-    'active': False,
 }
