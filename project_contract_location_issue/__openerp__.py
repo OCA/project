@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#    Copyright (C) 2012-2013 Daniel Reis
+#    Copyright (C) 2013-2017 Daniel Reis
 #
 #    This program is free software: you can redistribute it and/or modify
 #    it under the terms of the GNU Affero General Public License as
@@ -18,24 +18,24 @@
 #
 ##############################################################################
 {
-    'name': 'Service Desk for Issues',
-    'summary': 'Use Project Issues for Service Desks and service teams',
-    'version': '8.0.1.1.0',
+    'name': 'Contract and Location on Project Issues',
+    'summary': 'Link Issues to an Analytic Account and a Service Location',
+    'version': '9.0.1.2.0',
     "category": "Project Management",
     'description': """\
 This module extends the ``service_desk`` module to also work with Issues.
 Please refer to that module's description.
 """,
-    'author': "Daniel Reis,Odoo Community Association (OCA)",
-    'website': '',
+    'author': "Daniel Reis, Odoo Community Association (OCA)",
+    'website': 'https://github.com/OCA/project',
     'license': 'AGPL-3',
     'depends': [
         'project_issue',
-        'service_desk',
+        'project_contract_location',
     ],
     'data': [
-        'service_desk_view.xml',
+        'views/project_issue_view.xml',
     ],
-    'installable': False,
+    'installable': True,
     'auto_install': True,
 }
