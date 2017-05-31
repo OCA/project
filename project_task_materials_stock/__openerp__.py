@@ -8,7 +8,7 @@
     "name": "Project Task Materials Stock",
     "summary": "Create stock and analytic moves from "
                "record products spent in a Task",
-    "version": "9.0.1.0.0",
+    "version": "9.0.1.1.0",
     "category": "Project Management",
     "author": "Antiun Ingeniería S.L.,"
               "Tecnativa, "
