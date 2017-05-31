@@ -6,6 +6,23 @@
 from openerp import models, fields, api, exceptions, _
 
 
+class ProjectProject(models.Model):
+    _inherit = 'project.project'
+
+    location_source_id = fields.Many2one(
+        comodel_name='stock.location',
+        string='Source Location',
+        index=True,
+        help='Default location from which materials are consumed.',
+    )
+    location_dest_id = fields.Many2one(
+        comodel_name='stock.location',
+        string='Destination Location',
+        index=True,
+        help='Default location to which materials are consumed.',
+    )
+
+
 class ProjectTaskType(models.Model):
     _inherit = 'project.task.type'
 
@@ -131,10 +148,12 @@ class ProjectTaskMaterials(models.Model):
             'product_uom': self.product_uom_id.id or product.uom_id.id,
             'product_uom_qty': self.quantity,
             'origin': self.task_id.name,
-            'location_id': self.env.ref(
-                'stock.stock_location_stock').id,
-            'location_dest_id': self.env.ref(
-                'stock.stock_location_customers').id,
+            'location_id':
+                self.task_id.project_id.location_source_id.id or
+                self.env.ref('stock.stock_location_stock').id,
+            'location_dest_id':
+                self.task_id.project_id.location_dest_id.id or
+                self.env.ref('stock.stock_location_customers').id,
         }
         return res
 
