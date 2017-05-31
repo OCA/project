@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ##############################################################################
 #
-#   Daniel Reis, 2013
+#   Copyright 2013,2017 Daniel Reis <dreis.pt at hotmail.com>
 #
 #   This program is free software: you can redistribute it and/or modify
 #   it under the terms of the GNU Affero General Public License as published by
@@ -19,19 +19,20 @@
 ##############################################################################
 
 {
-    'name': 'Projects extensions for user roles',
-    'version': '8.0.1.0.0',
+    'name': 'Project Management Security Groups',
+    'version': '9.0.2.0.0',
     'category': 'Project Management',
     'summary': 'Extend Project user roles to support more complex use cases',
-    'author': "Daniel Reis,Odoo Community Association (OCA)",
+    'author': "Daniel Reis, Odoo Community Association (OCA)",
+    'website': 'https://github.com/OCA/project',
     'license': 'AGPL-3',
     'depends': [
+        'project',
         'project_stage_state',
     ],
     'data': [
-        'project_view.xml',
         'security/ir.model.access.csv',
         'security/project_security.xml',
         ],
-    'installable': False,
+    'installable': True,
 }

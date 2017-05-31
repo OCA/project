@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+    <!-- a) MODIFIED User: can't edit open Tasks/Issues -->
+    <record id="project.group_project_user" model="res.groups">
+        <field name="name">User: Creates Tasks/Issues</field>
+    </record>
+
+    <!-- b) NEW User: has regular access, like the standard Project User -->
+    <record id="group_project_user_edit" model="res.groups">
+        <field name="name">User: Edits Tasks/Issues</field>
+        <field name="implied_ids" eval="[(4, ref('project.group_project_user'))]"/>
+        <field name="category_id" ref="base.module_category_project_management"/>
+    </record>
+
+    <!-- c) NEW User Manages Own Projects  -->
+    <record id="group_project_user_resp" model="res.groups">
+        <field name="name">User: Manages Own Projects</field>
+        <field name="implied_ids" eval="[(6, [ref('project_security_group.group_project_user_edit')])]"/>
+        <field name="category_id" ref="base.module_category_project_management"/>
+    </record>
+
+    <!-- d) MODIFIED Manager: sees all Projects (standard group) -->
+    <record id="project.group_project_manager" model="res.groups">
+        <field name="name">Manager: Manages All Projects</field>
+        <field name="implied_ids" eval="[(4, 0, [ref('group_project_user_resp')])]"/>
+    </record>
+
+</data>
+
+<data noupdate="1">
+
+    <!-- Modify standard rule: End Users only edit new Issues/Tasks -->
+    <record model="ir.rule" id="project.task_visibility_rule">
+        <field name="domain_force">[
+        '|',
+            ('project_id.privacy_visibility', 'in', ['portal', 'employees']),
+            '|',
+                '&amp;',
+                    ('project_id.privacy_visibility', '=', 'followers'),
+                    ('project_id.message_partner_ids', 'in', [user.partner_id.id]),
+                '|',
+                    ('message_partner_ids', 'in', [user.partner_id.id]),
+                    # to subscribe check access to the record, follower is not enough at creation
+                    ('user_id', '=', user.id)
+        ]</field>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_write" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+    <record model="ir.rule" id="task_visibility_rule_write">
+        <field name="name">Project/Task: Users can write</field>
+        <field name="model_id" ref="model_project_task"/>
+        <field name="domain_force">[
+        '&amp;',
+          ('stage_id.state', 'in', ['draft', 'cancelled', False]),
+          '|',
+            ('project_id.privacy_visibility', 'in', ['portal', 'employees']),
+            '|',
+                '&amp;',
+                    ('project_id.privacy_visibility', '=', 'followers'),
+                    ('project_id.message_partner_ids', 'in', [user.partner_id.id]),
+                '|',
+                    ('message_partner_ids', 'in', [user.partner_id.id]),
+                    # to subscribe check access to the record, follower is not enough at creation
+                    ('user_id', '=', user.id)
+        ]</field>
+        <field name="groups" eval="[(4,ref('base.group_project_user_edit'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_create" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+</data>
+</openerp>
