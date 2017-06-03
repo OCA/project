@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-29 02:48+0000\n"
-"PO-Revision-Date: 2017-04-29 02:48+0000\n"
+"POT-Creation-Date: 2017-05-31 01:34+0000\n"
+"PO-Revision-Date: 2017-05-31 01:34+0000\n"
 "Last-Translator: Rudolf Schnapka <rs@techno-flex.de>, 2017\n"
 "Language-Team: German (https://www.transifex.com/oca/teams/23907/de/)\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,7 @@ msgstr "Kostenposition"
 #. module: project_timesheet_time_control
 #: model:ir.ui.view,arch_db:project_timesheet_time_control.account_analytic_line_tree
 msgid "Close task"
-msgstr ""
+msgstr "Aufgabe abschliessen"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_account_analytic_line_date_time
@@ -42,7 +42,7 @@ msgstr "Ist abschließende Phase"
 #. module: project_timesheet_time_control
 #: model:ir.ui.view,arch_db:project_timesheet_time_control.account_analytic_line_tree
 msgid "Open task"
-msgstr ""
+msgstr "Aufgabe eröffnen"
 
 #. module: project_timesheet_time_control
 #: model:ir.ui.view,arch_db:project_timesheet_time_control.account_analytic_line_tree
@@ -65,3 +65,4 @@ msgstr "Aufgaben dieser Phase werden als abgeschlossen angesehen."
 #, python-format
 msgid "There isn't any stage with closed check. Please mark any."
 msgstr ""
+"Es gibt keine Stufe die als Abschluss markiert ist. Bitte eine auswählen."
