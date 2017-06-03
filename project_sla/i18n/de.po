@@ -3,16 +3,16 @@
 # * project_sla
 # 
 # Translators:
-# Rudolf Schnapka <rs@techno-flex.de>, 2016
+# Rudolf Schnapka <rs@techno-flex.de>, 2016-2017
 # Thomas A. Jaeger, 2015
-# Thomas A. Jaeger, 2015
+# Renzo Meister, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-18 02:39+0000\n"
-"PO-Revision-Date: 2016-10-04 09:43+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
+"POT-Creation-Date: 2017-05-31 08:36+0000\n"
+"PO-Revision-Date: 2017-05-31 13:31+0000\n"
+"Last-Translator: Rudolf Schnapka <rs@techno-flex.de>\n"
 "Language-Team: German (http://www.transifex.com/oca/OCA-project-8-0/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -56,7 +56,7 @@ msgstr "Erfüllungsgrad"
 #. module: project_sla
 #: field:project.sla.control,sla_achieved:0
 msgid "Achieved?"
-msgstr "SLA erfüllt?"
+msgstr "Leistung erbracht?"
 
 #. module: project_sla
 #: field:project.sla,active:0
@@ -136,7 +136,7 @@ msgstr "Dokumenten ID"
 #: view:project.sla.report:project_sla.view_project_sla_report_search
 #: field:project.sla.report,document_model_id:0
 msgid "Document Model"
-msgstr "Datenmodell"
+msgstr "Documentmodell"
 
 #. module: project_sla
 #: view:project.issue:project_sla.project_issue_form_view_sla
