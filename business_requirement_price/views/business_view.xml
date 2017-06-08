@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="view_business_requirement_resource_tree" model="ir.ui.view">
+            <field name="name">business.requirement.resource.tree</field>
+            <field name="model">business.requirement.resource</field>
+            <field name="inherit_id" ref="business_requirement_deliverable.view_business_requirement_resource_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr='//field[@name="description"]' position='after'>
+                    <field name="cost_structure_id"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_business_requirement_cost_structure_form" model="ir.ui.view">
+            <field name="name">business.requirement.cost.structure.form</field>
+            <field name="model">business.requirement.cost.structure</field>
+            <field name="type">form</field>
+            <field name="priority">20</field>
+            <field name="arch" type="xml">
+                <form string="Business Requirement Cost Structure">
+                    <sheet>
+                        <group>
+                             <field name="name"/>
+                        </group>
+                        <notebook>
+                            <page string="Cost Structure Line">
+                                <field name="structure_lines" context="{'tree_view_ref':'view_business_requirement_cost_structure_line_tree'}"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_business_requirement_cost_structure_line_tree" model="ir.ui.view">
+            <field name="name">business.requirement.cost.structurey.tree</field>
+            <field name="model">business.requirement.cost.structure.line</field>
+            <field name="type">tree</field>
+            <field name="priority">20</field>
+            <field name="arch" type="xml">
+                <tree string="Cost Structure Lines" editable="bottom">
+                     <field name="product_id"/>
+                     <field name="uom_id" />
+                     <field name="unit_price"/>
+                     <field name="user_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_business_requirement_cost_structure_tree">
+            <field name="name">Bus. Req. Cost Structure</field>
+            <field name="res_model">business.requirement.cost.structure</field>
+            <field name="view_mode">tree,form,graph</field>
+            <field name="view_type">form</field>
+            <field name="context">{}</field>
+        </record>
+
+        <menuitem id="menu_business_requirement_cost_structure_tree" action="action_business_requirement_cost_structure_tree" 
+            parent="business_requirement.menu_business_configuration" sequence="10"/>
+
+    </data>
+</openerp>
