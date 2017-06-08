@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+
+        <!-- Start window -->
+
+        <record id="create_project_from_analytic_form" model="ir.ui.view">
+            <field name="name">create.project.from.analytic.form</field>
+            <field name="model">create.project.from.analytic.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Create Project">
+                    <separator
+                        string="Create Project for selected Analytic Accounts?"
+                        colspan="4" />
+                    <footer>
+                        <button class="oe_highlight" name="confirm_create"
+                            string="Accept" type="object" />
+                        or
+                        <button class="oe_link" special="cancel"
+                            string="Cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action of create project from analytic wizard -->
+
+        <record id="action_create_project_from_analytic"
+                model="ir.actions.act_window">
+            <field name="name">Create Project</field>
+            <field name="res_model">create.project.from.analytic.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="create_project_from_analytic_form" />
+            <field name="target">new</field>
+        </record>
+
+        <act_window name="Create Project From Analytic Account"
+                    res_model="create.project.from.analytic.wizard"
+            src_model="account.analytic.account" view_mode="form"
+                    target="new"
+            key2="client_action_multi" id="act_create_project_from_analytic" />
+
+  </data>
+</openerp>
