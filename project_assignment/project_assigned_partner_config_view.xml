@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Configuration line -->
+
+        <record id="view_project_assigned_partner_config_tree" model="ir.ui.view">
+            <field name="name">project.assigned.partner.config.tree</field>
+            <field name="model">project.assigned.partner.config</field>
+            <field name="arch" type="xml">
+                <tree string="Assigned partners" editable="top">
+                    <field name="stage_id"/>
+                    <field name="partner_id"/>
+                    <field name="action"/>
+                    <field name="model" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_project_assigned_partner_config_form" model="ir.ui.view">
+            <field name="name">project.assigned.partner.config.form</field>
+            <field name="model">project.assigned.partner.config</field>
+            <field name="arch" type="xml">
+                <form string="Assigned Partner">
+                    <field name="stage_id"/>
+                    <field name="partner_id"/>
+                    <field name="action"/>
+                    <field name="model" invisible="1"/>
+                </form>
+            </field>
+        </record>
+
+    </data>
+</openerp>
