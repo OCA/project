@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+
+        <record id="seq_type_business_requirement" model="ir.sequence.type">
+            <field name="name">Business Requirement</field>
+            <field name="code">business.requirement</field>
+        </record>
+
+        <record id="seq_business_requirement" model="ir.sequence">
+            <field name="name">Business Requirement</field>
+            <field name="code">business.requirement</field>
+            <field name="prefix">BR</field>
+            <field name="padding">6</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+        <record model="ir.module.category" id="module_category_business_requirement">
+            <field name="name">Business Requirement</field>
+            <field name="description"></field>
+            <field name="sequence">9</field>
+        </record>
+
+    </data>
+</openerp>
