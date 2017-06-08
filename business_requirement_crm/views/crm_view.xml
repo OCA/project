@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="act_view_lead_br_all" model="ir.actions.act_window">
+            <field name="name">Business Requirement</field>
+            <field name="res_model">business.requirement</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="business_requirement.view_business_requirement_search"/>
+            <field name="context">{
+                'search_default_project_id': [project_id],
+                'default_project_id': project_id,
+                'active_test': False,
+            }</field>
+            <field name="help" type="html">
+                <p>
+                    Odoo's project management allows you to manage the pipeline
+                    of tasks in order to get things done efficiently. You can
+                    track progress, discuss on tasks, attach documents, etc.
+                </p>
+            </field>
+        </record>
+
+        <record id="crm_case_form_view_oppor" model="ir.ui.view">
+            <field name="name">crm.lead.form</field>
+            <field name="model">crm.lead</field>
+            <field name="inherit_id" ref="crm.crm_case_form_view_oppor"/>
+            <field name="arch" type="xml">
+                <xpath expr='//div[@class="oe_right oe_button_box"]' position='inside'>
+                    <button class="oe_inline oe_stat_button" type="action" name="%(act_view_lead_br_all)d" icon="fa-tasks" context="{'project_id':project_id}">
+                        <field string="Business Req." name="resource_cost_total" widget="statinfo"/>
+                    </button>
+                </xpath>
+                <xpath expr='//page[@string="Lead"]' position="after">
+                    <page string="Business Requirement">
+                        <group>
+                            <group>
+                                <field name="project_id"/>
+                            </group>
+                        </group>
+                    </page>
+                </xpath>
+                <xpath expr="//field[@name='stage_id']" position="before">
+                    <button attrs="{'invisible': [('project_id', '=', False)]}" string="Quotation from Business Requirements" name="%(action_crm_make_sale)d" type="action" class="oe_highlight"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</openerp>
