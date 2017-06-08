@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+
+        <!-- Products -->
+        <record id="product_product_oil" model="product.product">
+            <field name="name">Synthetic Oil</field>
+            <field name="categ_id" ref="product.product_category_4"/>
+            <field name="list_price">10.0</field>
+            <field name="standard_price">6.0</field>
+            <field name="type">consu</field>
+            <field name="uom_id" ref="product.product_uom_unit"/>
+            <field name="uom_po_id" ref="product.product_uom_unit"/>
+            <field name="default_code">Oil5w40</field>
+        </record>
+
+        <record id="product_product_filter" model="product.product">
+            <field name="name">Filter Oil</field>
+            <field name="categ_id" ref="product.product_category_4"/>
+            <field name="list_price">10.0</field>
+            <field name="standard_price">6.0</field>
+            <field name="type">consu</field>
+            <field name="uom_id" ref="product.product_uom_unit"/>
+            <field name="uom_po_id" ref="product.product_uom_unit"/>
+            <field name="default_code">filter01</field>
+        </record>
+
+        <record id="product_template_revision_1" model="product.template">
+            <field name="list_price">45.0</field>
+            <field name="standard_price">15.0</field>
+            <field name="uom_id" ref="product.product_uom_hour"/>
+            <field name="uom_po_id" ref="product.product_uom_hour"/>
+            <field name="name">Complete Revision</field>
+            <field name="categ_id" ref="product.product_category_all"/>
+            <field name="type">service</field>
+            <field name="sale_ok" eval="True"/>
+            <field name="auto_create_task" eval="True"/>
+        </record>
+
+        <record id="product_task_work_oil" model="product.task.work">
+            <field name="name">Change Oil</field>
+            <field name="hours">1.0</field>
+            <field name="product_id" ref="sale_service_project.product_template_revision_1"/>
+        </record>
+
+        <record id="product_task_work_filter" model="product.task.work">
+            <field name="name">Change Filter</field>
+            <field name="product_id" ref="sale_service_project.product_template_revision_1"/>
+            <field name="hours">1.0</field>
+        </record>
+
+        <record id="product_task_materials_oil" model="product.task.materials">
+            <field name="product_id" ref="sale_service_project.product_template_revision_1"/>
+            <field name="material_id" ref="sale_service_project.product_product_oil"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+        <record id="product_task_materials_filter" model="product.task.materials">
+            <field name="product_id" ref="sale_service_project.product_template_revision_1"/>
+            <field name="material_id" ref="sale_service_project.product_product_filter"/>
+            <field name="quantity">1.0</field>
+        </record>
+
+    </data>
+</openerp>

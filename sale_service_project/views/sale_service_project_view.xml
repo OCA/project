@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+    <!-- Products Tasks Works -->
+    <record id="product_task_work_form_view" model="ir.ui.view">
+           <field name="name">product.task.work.form</field>
+           <field name="model">product.task.work</field>
+           <field name="type">form</field>
+           <field name="arch" type="xml">
+               <form string="Tasks">
+                <sheet>
+                    <group col="2">
+                        <field name="name"/>
+                        <field name="product_id"/>
+                        <field name="hours"/>
+                    </group>
+                </sheet>
+               </form>
+           </field>
+    </record>
+
+    <record id="product_task_work_tree_view" model="ir.ui.view">
+           <field name="name">product.task.work.tree</field>
+           <field name="model">product.task.work</field>
+           <field name="type">tree</field>
+           <field name="arch" type="xml">
+               <tree string="Tasks">
+                    <field name="name"/>
+                    <field name="product_id"/>
+                    <field name="hours"/>
+               </tree>
+           </field>
+    </record>
+    <act_window id="act_view_product_task_work" name="Product Task Work"
+                res_model="product.task.work" />
+
+    <!-- Products Task Materials -->
+    <record id="product_task_materials_form_view" model="ir.ui.view">
+           <field name="name">product.task.materials.form</field>
+           <field name="model">product.task.materials</field>
+           <field name="type">form</field>
+           <field name="arch" type="xml">
+               <form string="Task Materials">
+                <sheet>
+                    <group col="2">
+                        <field name="product_id"/>
+                        <field name="material_id"/>
+                        <field name="quantity"/>
+                    </group>
+                </sheet>
+               </form>
+           </field>
+    </record>
+
+    <record id="product_task_materials_tree_view" model="ir.ui.view">
+           <field name="name">product.task.materials.tree</field>
+           <field name="model">product.task.materials</field>
+           <field name="type">tree</field>
+           <field name="arch" type="xml">
+               <tree string="Task Materials">
+                    <field name="product_id"/>
+                    <field name="material_id"/>
+                    <field name="quantity"/>
+               </tree>
+           </field>
+    </record>
+    <act_window id="act_view_product_task_materials" name="Product Task Materials"
+                res_model="product.task.materials" />
+
+</data>
+</openerp>

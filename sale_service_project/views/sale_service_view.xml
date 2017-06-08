@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+<data>
+
+    <record id="view_product_task_form" model="ir.ui.view">
+        <field name="name">product.form.view.inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="sale_service.view_product_task_form"/>
+        <field name="arch" type="xml">
+            <field name="uom_id" position="attributes">
+                <attribute name="domain">
+                    auto_create_task and
+                    [('category_id','=', %(product.uom_categ_wtime)d)] or []
+                </attribute>
+            </field>
+            <field name="list_price" position="after">
+                <button name="action_compute_price" type="object"
+                        string="Compute price" class="oe_link"
+                        attrs="{'invisible': [('auto_create_task', '=', False)]}"/>
+            </field>
+            <field name="project_id" position="after">
+                <group colspan="4"
+                       attrs="{'invisible': [('auto_create_task', '=', False)]}">
+                    <group string="Works">
+                        <field name="task_work_ids" nolabel="1"
+                               context="{'default_product_id': active_id}">
+                            <tree string="Tasks" editable="top">
+                                <field name="name"/>
+                                <field name="hours"/>
+                            </tree>
+                        </field>
+                    </group>
+                    <group string="Materials">
+                        <field name="task_materials_ids" nolabel="1"
+                               context="{'default_product_id': active_id}">
+                            <tree string="Materials" editable="top">
+                                <field name="material_id" domain="[('type','!=','service')]"/>
+                                <field name="quantity"/>
+                            </tree>
+                        </field>
+                    </group>
+                </group>
+            </field>
+        </field>
+    </record>
+
+</data>
+</openerp>
