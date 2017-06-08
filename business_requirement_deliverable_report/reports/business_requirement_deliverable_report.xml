@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+
+        <record id="business_requirement_with_deliverables_resources_attachment" model="ir.attachment">
+            <field name="name">business_requirement_with_deliverables_resources</field>
+            <field name="datas_fname">template</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="business_requirement_deliverable_report/static/docx_templates/template_business_requirement_deliverable_resources.docx"/>
+        </record> 
+
+        <record id="business_requirement_with_deliverables_resources" model="ir.actions.report.xml">
+            <field name="model">business.requirement</field>
+            <field name="name">Business Requirement Report Deliverables Resources</field>
+            <field name="report_type">docx</field>
+            <field name="report_name">report.docx</field>
+            <field name="template_file" ref="business_requirement_with_deliverables_resources_attachment"/>
+        </record>
+
+        <record id="business_requirement_with_deliverables_attachment" model="ir.attachment">
+            <field name="name">business_requirement_with_deliverables</field>
+            <field name="datas_fname">template</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="business_requirement_deliverable_report/static/docx_templates/template_business_requirement_deliverable.docx"/>
+        </record>
+
+        <record id="business_requirement_with_deliverables" model="ir.actions.report.xml">
+            <field name="model">business.requirement</field>
+            <field name="name">Business Requirement Report Deliverables</field>
+            <field name="report_type">docx</field>
+            <field name="report_name">report.docx</field>
+            <field name="template_file" ref="business_requirement_with_deliverables_attachment"/>
+        </record>
+
+        <record id="business_requirement_attachment" model="ir.attachment">
+            <field name="name">business_requirement</field>
+            <field name="datas_fname">template</field>
+            <field name="type">binary</field>
+            <field name="datas" type="base64" file="business_requirement_deliverable_report/static/docx_templates/template_business_requirement.docx"/>
+        </record>
+
+        <record id="business_requirement" model="ir.actions.report.xml">
+            <field name="model">business.requirement</field>
+            <field name="name">Business Requirement Report</field>
+            <field name="report_type">docx</field>
+            <field name="report_name">report.docx</field>
+            <field name="template_file" ref="business_requirement_attachment"/>
+        </record>
+
+        <record id="business_requirement_report_action1" model="ir.values">
+            <field name="name">Business Requirement Report Action1</field>
+            <field name="model">business.requirement</field>
+            <field name="key2">client_print_multi</field>
+            <field eval="'ir.actions.report.xml,%d'%business_requirement_with_deliverables_resources" name="value"/>
+        </record>
+
+        <record id="business_requirement_report_action2" model="ir.values">
+            <field name="name">Business Requirement Report Action2</field>
+            <field name="model">business.requirement</field>
+            <field name="key2">client_print_multi</field>
+            <field eval="'ir.actions.report.xml,%d'%business_requirement_with_deliverables" name="value"/>
+        </record>
+
+        <record id="business_requirement_report_action3" model="ir.values">
+            <field name="name">Business Requirement Report Action3</field>
+            <field name="model">business.requirement</field>
+            <field name="key2">client_print_multi</field>
+            <field eval="'ir.actions.report.xml,%d'%business_requirement" name="value"/>
+        </record>
+
+    </data>
+</openerp>
