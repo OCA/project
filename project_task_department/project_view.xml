@@ -1,0 +1,41 @@
+<openerp>
+    <data>
+
+        <record id="view_task_search_form" model="ir.ui.view">
+            <field name="name">project.task.search.form</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_search_form"/>
+            <field name="arch" type="xml">
+              <field name="user_id" position="after">
+                <field name="department_id"/>
+              </field>
+              <filter name="User" position="after">
+                <filter string="Department" name="group_task_department_id" context="{'group_by':'department_id'}"/>
+              </filter>
+            </field>
+        </record>
+
+        <record id="view_task_form2" model="ir.ui.view">
+            <field name="name">project.task.department.form</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <field name="categ_ids" position="after">
+                  <field name="department_id" />
+                </field>
+            </field>
+        </record>
+
+        <record id="view_task_tree2" model="ir.ui.view">
+            <field name="name">project.task.department.tree</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_tree2"/>
+            <field name="arch" type="xml">
+                <field name="user_id" position="after">
+                  <field name="department_id"/>
+                </field>
+            </field>
+        </record>
+
+    </data>
+</openerp>
