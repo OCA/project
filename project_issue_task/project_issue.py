@@ -41,7 +41,7 @@ class project_issue(orm.Model):
 
         task_model = self.pool.get('project.task')
         task_id = task_model.create(cr, uid, task_data, context=context)
-        rec.write({'task_id': task_id}, context=context)
+        rec.write({'task_id': task_id})
         res = {
             'name': _('Issue Task Report'),
             'view_type': 'form',
