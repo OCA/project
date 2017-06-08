@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+        <record id="act_view_sub_br_all" model="ir.actions.act_window">
+            <field name="name">Business Requirement</field>
+            <field name="res_model">business.requirement</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('parent_id', '=', active_id)]</field>
+            <field name="context">{
+                'search_default_parent_id': [active_id],
+                'default_parent_id': active_id,
+            }</field>
+        </record>
+
+        <record id="view_task_form2" model="ir.ui.view">
+            <field name="name">business.requirement.project.task.form.inherit</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <field name="categ_ids" position="after">
+                    <field name="business_requirement_id" string="Business requirement" attrs="{'invisible': ['|', ('business_requirement_id','=',False)]}"/>
+                </field>
+            </field>
+        </record>
+
+        <record id="action_view_tasks_business_requirement" model="ir.actions.act_window">
+            <field name="res_model">project.task</field>
+            <field name="view_type">form</field>
+            <field name="name">Action Tasks Related BR</field>
+            <field name="view_mode">tree,form</field>
+            <field name="context">{
+                'default_business_requirement_id': active_id
+            }</field>
+        </record>
+
+        <record id="view_business_requirement_form" model="ir.ui.view">
+            <field name="name">business.requirement.form</field>
+            <field name="model">business.requirement</field>
+            <field name="type">form</field>
+            <field name="priority">20</field>
+            <field name="arch" type="xml">
+                <form string="Business Requirement">
+                    <header>
+                        <button name="action_button_confirm" states="draft" string="Confirm" type="object" groups="business_requirement.group_business_requirement_user" class="oe_highlight"/>
+                        <button name="action_button_back_draft" string="Back To Draft" type="object" attrs="{'invisible': [('state', 'in', ('draft','done'))]}" groups="business_requirement.group_business_requirement_user" class="oe_highlight"/>
+                        <button name="action_button_approve" states="confirmed" string="Approve" type="object" groups="business_requirement.group_business_requirement_manager" class="oe_highlight"/>
+                        <button name="action_button_done" states="approved" string="Done" type="object" groups="business_requirement.group_business_requirement_manager" class="oe_highlight"/>
+                        <button name="action_button_cancel" string="Cancel" type="object" attrs="{'invisible': [('state', 'in', ('done','cancel'))]}" groups="business_requirement.group_business_requirement_user" class="oe_highlight"/>
+                        <button name="action_button_drop" string="Drop" type="object" attrs="{'invisible': [('state', 'in', ('done','drop','cancel'))]}" groups="business_requirement.group_business_requirement_user" class="oe_highlight"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,approved,done,cancel"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_right oe_button_box" name="buttons" groups="base.group_user">
+                             <button class="oe_inline oe_stat_button" type="action" name="%(act_view_sub_br_all)d" icon="fa-tasks">
+                                <field name="sub_br_count" string="Sub Bus. Req." widget="statinfo"/>
+                            </button>
+                            <button class="oe_stat_button" type="action" name="%(action_view_tasks_business_requirement)d"
+                                icon="fa-tasks" context="{'business_requirement_id': id }">
+                                <field  string="Tasks" name="task_count" widget="statinfo"/>
+                            </button>                            
+                        </div>
+                        <h1>
+                            <field name="name" class="oe_inline" readonly="1"/>-
+                            <field name="description" class="oe_inline"/>
+                        </h1>
+                        <group col="4">
+                            <field name="project_id"/>
+                            <field name="partner_id"/>
+                            <field name="categ_id" widget="many2many_tags"/>
+                            <field name="change_request"/>
+                            <field name="priority" groups="base.group_user" widget="priority"/>
+                            <field name="company_id" groups="base.group_multi_company"/>
+                        </group>
+                        
+                        <notebook>
+                            <page string="Business Requirement">
+                                <group string="Customer Story">
+                                     <field name="business_requirement" widget="html" nolabel="1"/>
+                                </group>
+                                <group string="Scenario">
+                                    <field name="scenario" widget="html" nolabel="1"/>
+                                </group>
+                                <group string="Gap">
+                                     <field name="gap" widget="html" nolabel="1"/>
+                                </group>
+                            </page>
+                            <page string="Other Information">
+                                <group col="4">
+                                    <field name="parent_id"/>
+                                    <field name="level"/>
+                                    <field name="linked_project"/>
+                                </group>
+                                <group col="4">
+                                    <field name="create_uid" readonly="1"/>
+                                    <field name="create_date" readonly="1"/>
+                                    <field name="confirmed_id"/>
+                                    <field name="confirmation_date"/>
+                                    <field name="approved_id"/>
+                                    <field name="approval_date"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <footer>
+                        <div class="oe_chatter">
+                            <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                            <field name="message_ids" widget="mail_thread"/>
+                        </div>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_business_requirement_tree" model="ir.ui.view">
+            <field name="name">business.requirement.tree</field>
+            <field name="model">business.requirement</field>
+            <field name="arch" type="xml">
+                <tree string="Business Requirement">
+                    <field name="sequence" widget="handle"/>
+                     <field name="name"/>
+                     <field name="description"/>
+                     <field name="project_id"/>
+                     <field name="categ_id"/>
+                     <field name="change_request"/>
+                     <field name="priority"/>
+                     <field name="state"/>
+                     <field name="create_date"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_business_requirement_search" model="ir.ui.view">
+            <field name="name">business.requirement.search</field>
+            <field name="model">business.requirement</field>
+            <field name="arch" type="xml">
+                <search string="Business Requirement">
+                    <field name="name" string="Name"/>
+                    <field name="description" string="Description"/>
+                    <field name="project_id" string="Project"/>
+                    <field name="partner_id" string="Customer"/>
+                    <group expand="0" string="Group By">
+                        <filter string="Project" icon="terp-go-home"  context="{'group_by':'project_id'}"/>
+                        <filter string="Customer " icon="terp-go-home"  context="{'group_by':'partner_id'}"/>
+                        <filter string="State" icon="terp-go-home" context="{'group_by':'state'}"/>
+                        <filter string="Priority" icon="terp-go-home" context="{'group_by':'priority'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="view_business_requirement_category_form" model="ir.ui.view">
+            <field name="name">business.requirement.category.form</field>
+            <field name="model">business.requirement.category</field>
+            <field name="type">form</field>
+            <field name="priority">20</field>
+            <field name="arch" type="xml">
+                <form string="Business Requirement">
+                    <sheet>
+                        <group>
+                             <field name="name"/>
+                             <field name="parent_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="view_business_requirement_category_tree" model="ir.ui.view">
+            <field name="name">business.requirement.category.form</field>
+            <field name="model">business.requirement.category</field>
+            <field name="type">tree</field>
+            <field name="priority">20</field>
+            <field name="arch" type="xml">
+                <tree string="Business Requirement">
+                     <field name="name"/>
+                     <field name="parent_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="act_view_project_br_all" model="ir.actions.act_window">
+            <field name="name">Business Requirement</field>
+            <field name="res_model">business.requirement</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="business_requirement.view_business_requirement_search"/>
+            <field name="context">{
+                'search_default_project_id': [active_id],
+                'default_project_id': active_id,
+                'active_test': False,
+            }</field>
+            <field name="help" type="html">
+                <p>
+                    Odoo's project management allows you to manage the pipeline
+                    of tasks in order to get things done efficiently. You can
+                    track progress, discuss on tasks, attach documents, etc.
+                </p>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_project_kanban">
+            <field name="name">project.project.kanban</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.view_project_kanban"/>
+            <field name="arch" type="xml">
+                <xpath expr='//div[@class="oe_kanban_content"]/div[@class="oe_kanban_project_list"]' position="inside">
+                    <div class="oe_kanban_project_list">
+                        <a t-if="record.br_count.raw_value" name="%(act_view_project_br_all)d" type="action" style="margin-right: 10px">
+                            <field name="br_count"/> Business Requirement
+                        </a>
+                    </div>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="open_view_subproject_all" model="ir.actions.act_window">
+            <field name="name">Projects</field>
+            <field name="res_model">project.project</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">kanban,tree,form,gantt</field>
+            <field name="view_id" ref="view_project_kanban"/>
+            <field name="search_view_id" ref="project.view_project_project_filter"/>
+            <field name="context">{'search_default_parent_id': context.get('analytic_account_id',False)}
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="edit_project">
+            <field name="name">project.project.form</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="arch" type="xml">
+                <xpath expr='//div[@name="buttons"]' position="inside">
+                    <button class="oe_inline oe_stat_button" type="action" name="%(act_view_project_br_all)d" icon="fa-tasks">
+                        <field name="br_count" string="Business Req." widget="statinfo"/>
+                    </button>
+                    <!-- <button class="oe_inline oe_stat_button" type="action" name="%(open_view_subproject_all)d" icon="fa-tasks" context="{'analytic_account_id': analytic_account_id}">
+                        <div>Sub Projects</div>
+                    </button> -->
+                </xpath>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="view_business_requirement_graph">
+            <field name="name">Business requirement</field>
+            <field name="model">business.requirement</field>
+            <field name="arch" type="xml">
+                <graph string="Business Requirement">
+                    <field name="project_id"/>
+                    <field name="partner_id"/>
+                </graph>
+            </field>
+        </record>
+        
+        <record model="ir.actions.act_window" id="action_business_requirement_tree">
+            <field name="name">Business Requirement</field>
+            <field name="res_model">business.requirement</field>
+            <field name="view_mode">tree,form,graph</field>
+            <field name="view_type">form</field>
+            <field name="context">{}</field>
+        </record>
+
+        <record model="ir.actions.act_window" id="action_business_requirement_category_tree">
+            <field name="name">Bus. Req. Category</field>
+            <field name="res_model">business.requirement.category</field>
+            <field name="view_mode">tree,form,graph</field>
+            <field name="view_type">form</field>
+            <field name="context">{}</field>
+        </record>
+
+        <!-- Top menu item -->
+        <menuitem id="menu_business_root"  name="Business Requirement"  groups="business_requirement.group_business_requirement_user" sequence="30"/>
+
+        <menuitem id="menu_business_requirement" name="Business Requirement" groups="business_requirement.group_business_requirement_user" parent="menu_business_root" sequence="8"/>
+
+        <menuitem id="menu_business_configuration" name="Configuration" groups="business_requirement.group_business_requirement_user" parent="menu_business_root" sequence="8"/>
+
+        <menuitem id="menu_business_requirement1" groups="business_requirement.group_business_requirement_user" action="action_business_requirement_tree" 
+            parent="menu_business_requirement" sequence="10"/>
+
+        <menuitem id="menu_business_requirement_category" groups="business_requirement.group_business_requirement_user" action="action_business_requirement_category_tree" 
+            parent="menu_business_configuration" sequence="10"/>
+
+        <menuitem action="product.product_template_action"
+            id="menu_product_template_action"
+            parent="menu_business_configuration" sequence="11" />
+
+    </data>
+</openerp>

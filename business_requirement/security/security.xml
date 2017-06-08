@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="0">
+
+        <record id="group_business_requirement_user" model="res.groups">
+            <field name="name">Business Requirement User</field>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+            <field name="category_id" ref="business_requirement.module_category_business_requirement"/>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        </record>
+
+        <record id="group_business_requirement_manager" model="res.groups">
+            <field name="name">Business Requirement Manager</field>
+            <field name="implied_ids" eval="[(4, ref('business_requirement.group_business_requirement_user'))]"/>
+            <field name="category_id" ref="business_requirement.module_category_business_requirement"/>
+            <field name="users" eval="[(4, ref('base.user_root'))]"/>
+        </record>
+
+        <record id="rule_business_requirement" model="ir.rule">
+            <field name="name">Business Requirement</field>
+            <field name="model_id" ref="model_business_requirement"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|',('company_id','=',False),('company_id','child_of',[user.company_id.id])]</field>
+        </record>
+
+    </data>
+</openerp>
