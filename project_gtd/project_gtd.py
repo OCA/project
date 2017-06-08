@@ -23,7 +23,7 @@ from openerp.osv import fields, osv
 from openerp import tools
 
 
-class project_gtd_context(osv.Model):
+class ProjectGtdContext(osv.Model):
     _name = "project.gtd.context"
     _description = "Context"
     _columns = {
@@ -40,7 +40,7 @@ class project_gtd_context(osv.Model):
     _order = "sequence, name"
 
 
-class project_gtd_timebox(osv.Model):
+class ProjectGtdTimebox(osv.Model):
     _name = "project.gtd.timebox"
     _order = "sequence"
     _columns = {
@@ -53,7 +53,7 @@ class project_gtd_timebox(osv.Model):
     }
 
 
-class project_task(osv.Model):
+class ProjectTask(osv.Model):
     _inherit = "project.task"
     _columns = {
         'timebox_id': fields.many2one(
@@ -89,12 +89,48 @@ class project_task(osv.Model):
         fold = dict.fromkeys(timebox_ids, False)
         return result, fold
 
+    def _read_group_stage_ids(
+            self, cr, uid, ids, domain,
+            read_group_order=None, access_rights_uid=None, context=None
+    ):
+        stage_obj = self.pool.get('project.task.type')
+        order = stage_obj._order
+        access_rights_uid = access_rights_uid or uid
+        if read_group_order == 'stage_id desc':
+            order = '%s desc' % order
+        search_domain = []
+        project_id = self._resolve_project_id_from_context(
+            cr, uid, context=context
+        )
+        if project_id:
+            search_domain += ['|', ('project_ids', '=', project_id)]
+        search_domain += [('id', 'in', ids)]
+        stage_ids = stage_obj._search(
+            cr, uid, [], order=order,
+            access_rights_uid=access_rights_uid, context=context
+        )
+        result = stage_obj.name_get(
+            cr, access_rights_uid, stage_ids, context=context
+        )
+        # restore order of the search
+        result.sort(
+            lambda x,y: cmp(stage_ids.index(x[0]), stage_ids.index(y[0]))
+        )
+
+        fold = {}
+        for stage in stage_obj.browse(
+                cr, access_rights_uid, stage_ids, context=context
+        ):
+            fold[stage.id] = stage.fold or False
+        return result, fold
+
     _defaults = {
         'context_id': _get_context
     }
 
     _group_by_full = {
         'timebox_id': _read_group_timebox_ids,
+        'stage_id': _read_group_stage_ids,
     }
 
     def copy_data(self, cr, uid, id, default=None, context=None):
@@ -163,5 +199,3 @@ class project_task(osv.Model):
                 '<separator name="gtdsep"/>', search_extended)
 
         return res
-
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
