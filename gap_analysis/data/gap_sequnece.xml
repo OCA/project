@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+
+        <!-- Sequences for sale.order -->
+        <record id="seq_type_business_requirement" model="ir.sequence.type">
+            <field name="name">Business Analysis</field>
+            <field name="code">business.analysis</field>
+        </record>
+
+        <record id="seq_business_requirement" model="ir.sequence">
+            <field name="name">Business Analysis</field>
+            <field name="code">business.analysis</field>
+            <field name="prefix"></field>
+            <field name="padding">6</field>
+            <field name="company_id" eval="False"/>
+        </record>
+
+    </data>
+</openerp>
