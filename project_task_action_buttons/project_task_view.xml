@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <!-- Project Task form -->
+        <record id="project_task_form_action_buttons" model="ir.ui.view">
+            <field name="name">project_task_form_action_buttons</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+
+                <field name="stage_id" position="before">
+                    <button name="action_close" string="Done"
+                            class="oe_highlight oe_right" states="draft,open,pending"
+                            type="object" groups="base.group_user"/>
+                </field>
+
+            </field>
+        </record>
+
+    </data>
+</openerp>
