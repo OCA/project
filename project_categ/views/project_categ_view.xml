@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Project Tags (Categories) form -->
+    <record id="project_categ_project_tags_view_form" model="ir.ui.view">
+        <field name="name">project.categ.project.tags.view.form</field>
+        <field name="model">project.tags</field>
+        <field name="inherit_id" ref="project.project_tags_form_view"/>
+        <field name="arch" type="xml">
+            <form position="inside">
+                <group>
+                    <field name="parent_id" />
+                </group>
+                <notebook>
+                    <page name='tag_childs' string="Child Categories" >
+                        <field name="child_ids" readonly="1" 
+                                context="{'default_parent_id': active_id}"/>
+                    </page>
+                </notebook>
+            </form>
+        </field>
+    </record>
+
+    <!-- Project form -->
+    <record id="project_categ_project_view_form" model="ir.ui.view">
+        <field name="name">project.categ.project.view.form</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <field name="sequence" position="before">
+                    <field name="task_tag_id" domain="[('child_ids','!=',False)]"/>
+            </field>
+        </field>
+    </record>
+
+    <!-- Project Task form -->
+    <record id="project_categ_project_task_view_form" model="ir.ui.view">
+        <field name="name">project.categ.project.task.view.form</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <field name="project_id" position="after">
+                <field name="tag_project" invisible="1"/>
+            </field>
+            <field name="tag_ids"  position="attributes">
+                <attribute name="domain">[('id', 'child_of', tag_project),('id','!=',tag_project)]</attribute>
+                <attribute name="attrs">{'required':[('tag_project','!=',False)]}</attribute>
+            </field>
+        </field>
+    </record>
+
+</odoo>
