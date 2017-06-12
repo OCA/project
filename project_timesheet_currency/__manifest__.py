@@ -13,10 +13,12 @@
         'analytic',
         'sale_timesheet',
         'project',
+        'account',
     ],
     'data': [
         'security/record_rules.yml',
         'security/analytic_security.xml',
         'security/project_security.xml',
+        'views/analytic.xml',
     ]
 }
