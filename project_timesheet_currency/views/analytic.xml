@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_account_analytic_line_form_inherit_account" model="ir.ui.view">
+            <field name="name">account.analytic.line.form.inherit.account</field>
+            <field name="model">account.analytic.line</field>
+            <field name="inherit_id" ref="analytic.view_account_analytic_line_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='analytic_amount_currency']" position="after">
+                    <field name="timesheet_currency_id"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
