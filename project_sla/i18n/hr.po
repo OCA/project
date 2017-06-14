@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-04 05:24+0000\n"
-"PO-Revision-Date: 2017-03-10 13:16+0000\n"
+"POT-Creation-Date: 2017-05-13 05:34+0000\n"
+"PO-Revision-Date: 2017-05-13 18:20+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Croatian (http://www.transifex.com/oca/OCA-project-8-0/language/hr/)\n"
 "MIME-Version: 1.0\n"
@@ -429,7 +429,7 @@ msgstr ""
 #: view:project.sla.report:project_sla.view_project_sla_report_search
 #: field:project.sla.report,date_week:0
 msgid "Week"
-msgstr ""
+msgstr "Tjedan"
 
 #. module: project_sla
 #: selection:project.issue,sla_state:0

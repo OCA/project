@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-17 13:09+0000\n"
-"PO-Revision-Date: 2016-11-25 14:55+0000\n"
+"POT-Creation-Date: 2017-06-03 05:52+0000\n"
+"PO-Revision-Date: 2017-06-09 02:14+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Spanish (http://www.transifex.com/oca/OCA-project-8-0/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -182,7 +182,7 @@ msgstr ""
 #. module: project_classification
 #: field:project.project,recurring_invoice_line_ids:0
 msgid "Invoice Lines"
-msgstr ""
+msgstr "Líneas de factura"
 
 #. module: project_classification
 #: help:project.project,recurring_rule_type:0

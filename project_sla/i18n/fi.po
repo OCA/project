@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-26 10:14+0000\n"
-"PO-Revision-Date: 2017-04-25 10:44+0000\n"
+"POT-Creation-Date: 2017-05-03 07:21+0000\n"
+"PO-Revision-Date: 2017-05-11 14:14+0000\n"
 "Last-Translator: Jarmo Kortetjärvi <jarmo.kortetjarvi@gmail.com>\n"
 "Language-Team: Finnish (http://www.transifex.com/oca/OCA-project-8-0/language/fi/)\n"
 "MIME-Version: 1.0\n"
@@ -147,7 +147,7 @@ msgstr ""
 #: selection:project.sla.controlled,sla_state:0
 #: selection:project.sla.report,sla_state:0 selection:project.task,sla_state:0
 msgid "Failed"
-msgstr ""
+msgstr "Epäonnistunut"
 
 #. module: project_sla
 #: field:project.sla.report,failed_count:0
@@ -215,7 +215,7 @@ msgstr ""
 #: view:project.sla.report:project_sla.view_project_sla_report_search
 #: field:project.sla.report,date_month:0
 msgid "Month"
-msgstr ""
+msgstr "Kuukausi"
 
 #. module: project_sla
 #: model:ir.model,name:project_sla.model_project_issue

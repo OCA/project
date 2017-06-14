@@ -3,6 +3,7 @@
 # * project_classification
 # 
 # Translators:
+# Renzo Meister, 2015
 # Rudolf Schnapka <rs@techno-flex.de>, 2016-2017
 # Thomas A. Jaeger, 2015
 # Renzo Meister, 2015
@@ -10,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-04 05:24+0000\n"
-"PO-Revision-Date: 2017-03-10 13:16+0000\n"
+"POT-Creation-Date: 2017-05-31 08:36+0000\n"
+"PO-Revision-Date: 2017-05-31 13:31+0000\n"
 "Last-Translator: Rudolf Schnapka <rs@techno-flex.de>\n"
 "Language-Team: German (http://www.transifex.com/oca/OCA-project-8-0/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -119,7 +120,7 @@ msgstr "Datum der nächsten Abrechnung"
 #. module: project_classification
 #: help:project.project,last_worked_date:0
 msgid "Date of the latest work done on this account."
-msgstr "Datum der letzten Arbeit bei diesem Konto."
+msgstr "Datum der letzten Arbeit auf dieses Konto."
 
 #. module: project_classification
 #: field:project.classification,display_name:0
