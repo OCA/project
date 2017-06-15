@@ -17,5 +17,3 @@ class ProjectIssue(models.Model):
 
         if project and project.department_id:
             self.department_id = project.department_id.id
-
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
