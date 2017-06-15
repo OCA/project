@@ -1,28 +1,19 @@
 # -*- coding: utf-8 -*-
-from openerp import fields, models
+from openerp import fields, models, api
 
 
 class ProjectIssue(models.Model):
     _inherit = 'project.issue'
-    _columns = {
-        'department_id': fields.Many2one('hr.department', 'Department'),
-    }
+    department_id = fields.Many2one('hr.department', 'Department')
 
-    def on_change_project(self, cr, uid, ids, proj_id=False, context=None):
+    @api.onchange('project_id')
+    def onchange_project(self):
         """When Project is changed: copy it's Department to the issue."""
-        res = super(ProjectIssue, self).on_change_project(
-            cr, uid, ids, proj_id, context=context)
-        res.setdefault('value', {})
 
-        if proj_id:
-            proj = self.pool.get('project.project').browse(
-                cr, uid, proj_id, context)
-            dept = getattr(proj, 'department_id', None)
-            if dept:
-                res['value'].update({'department_id': dept.id})
-            else:
-                res['value'].update({'department_id': None})
+        if self.env.context.get('project_id', None):
+            project = self.env['project.project'].browse(self.env.context['project_id'])
+        else:
+            project = self.project_id
 
-        return res
-
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
+        if project and project.department_id:
+            self.department_id = project.department_id.id
