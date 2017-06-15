@@ -5,7 +5,7 @@ from openerp import fields, models
 class ProjectIssue(models.Model):
     _inherit = 'project.issue'
     _columns = {
-        'department_id': fields.many2one('hr.department', 'Department'),
+        'department_id': fields.Many2one('hr.department', 'Department'),
     }
 
     def on_change_project(self, cr, uid, ids, proj_id=False, context=None):
