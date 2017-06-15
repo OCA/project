@@ -38,7 +38,7 @@ Contributors
 ------------
 
 * Joël Grand-Guillaume <joel.grandguillaume@camptocamp.com>
-* Daniel Reis
+* Daniel Reis <dreis.pt@hotmail.com>
 * Yannick Vaucher <yannick.vaucher@camptocamp.com>
 * Dave Burkholder <dave@thinkwelldesigns.com>
 
