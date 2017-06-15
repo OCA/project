@@ -3,12 +3,6 @@
     'name': 'Project Issue with Department',
     'version': '9.0.1.0.0',
     "category": "Project Management",
-    'description': """\
-Add Department field to Project Issues.
-
-Selecting a Project for an issue will automatically populate this with the
-Project's defined Department.
-""",
     'author': "Daniel Reis,Odoo Community Association (OCA)",
     'website': 'https://odoo-community.org',
     'license': 'AGPL-3',

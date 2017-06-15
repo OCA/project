@@ -8,6 +8,8 @@ Issue Department Categorization
 
 Add Department to Issues and to corresponding tree, search and form views.
 
+Selecting a Project for an issue will automatically populate this with the
+Project's defined Department.
 
 Usage
 =====
