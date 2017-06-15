@@ -53,15 +53,21 @@ class ProjectIssue(models.Model):
     @api.model
     @api.returns('self', lambda value: value.id)
     def create(self, vals):
+        sync = self.project_id.sync_tasks_issues
         this = super(ProjectIssue, self).create(vals)
-        if this.project_id.sync_tasks_issues:
+        if sync:
             this.get_or_create_binded_task()
         return this
 
     @api.multi
     def write(self, vals):
+        #if i change to a project that is not synced it will not trigger the
+        #sync so i need to fetch the project BEFORE the write, in order to have
+        #one last sync (example have the task synced with the new unsynced
+        #project
+        sync = self.project_id.sync_tasks_issues
         result = super(ProjectIssue, self).write(vals)
-        if self.project_id.sync_tasks_issues:
+        if sync:
             self.set_binded_task_vals()
         return result
 
