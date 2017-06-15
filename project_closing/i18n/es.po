@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * project_issue_code
+# * project_closing
 # 
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2017
@@ -18,19 +18,12 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. module: project_issue_code
-#: model:ir.model.fields,field_description:project_issue_code.field_project_issue_issue_code
-msgid "Issue Code"
+#. module: project_closing
+#: model:ir.model,name:project_closing.model_account_analytic_account
+msgid "Analytic Account"
 msgstr ""
 
-#. module: project_issue_code
-#: model:ir.model,name:project_issue_code.model_project_issue
-msgid "Project Issue"
-msgstr ""
-
-#. module: project_issue_code
-#: code:addons/project_issue_code/models/project_issue.py:17
-#: sql_constraint:project.issue:0
-#, python-format
-msgid "The code must be unique!"
-msgstr "¡El número debe de ser único!"
+#. module: project_closing
+#: model:ir.model,name:project_closing.model_project_project
+msgid "Project"
+msgstr "Proyecto"

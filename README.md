@@ -19,7 +19,9 @@ Available addons
 ----------------
 addon | version | summary
 --- | --- | ---
+[project_closing](project_closing/) | 10.0.1.0.0 | Project closing
 [project_description](project_description/) | 10.0.1.0.0 | Add a description to projects
+[project_issue_code](project_issue_code/) | 10.0.1.0.0 | Adding Field Code For Project Issue
 [project_issue_timesheet_time_control](project_issue_timesheet_time_control/) | 10.0.1.0.0 | Project issue timesheet time control
 [project_model_to_task](project_model_to_task/) | 10.0.0.1.0 | Project Model to Task
 [project_stage_closed](project_stage_closed/) | 10.0.1.0.0 | Make the Closed flag on Task Stages available without installing sale_service
@@ -28,7 +30,9 @@ addon | version | summary
 [project_task_code](project_task_code/) | 10.0.1.0.0 | Sequential Code for Tasks
 [project_task_default_stage](project_task_default_stage/) | 10.0.1.0.0 | Recovery default task stage projects from v8
 [project_task_dependency](project_task_dependency/) | 10.0.1.0.0 | Enables to define dependencies (other tasks) of a task
+[project_task_material](project_task_material/) | 10.0.1.0.0 | Record products spent in a Task
 [project_task_pull_request](project_task_pull_request/) | 10.0.1.0.0 | Adds a field for a PR URI to project tasks
+[project_timesheet_currency](project_timesheet_currency/) | 10.0.1.0.0 | Multi-currency analytic costs
 [project_timesheet_time_control](project_timesheet_time_control/) | 10.0.1.0.0 | Project timesheet time control
 
 
@@ -42,7 +46,6 @@ addon | version | summary
 [project_categ](project_categ/) | 8.0.0.1.0 (unported) | Allow for Project specific category lists for Tasks
 [project_categ_issue](project_categ_issue/) | 8.0.0.1.0 (unported) | Projects Issues can have an allowed category list
 [project_classification](project_classification/) | 8.0.1.0 (unported) | Project classification (easy hierarchy and setup for project managers)
-[project_closing](project_closing/) | 8.0.0.1.1 (unported) | Project closing
 [project_double_alias](project_double_alias/) | 9.0.1.0.0 (unported) | Define an alias for tasks and another alias for issues
 [project_functional_block](project_functional_block/) | 1.2 (unported) | Project requiring functional blocks
 [project_gtd](project_gtd/) | 8.0.2.0.0 (unported) | Personal Tasks, Contexts, Timeboxes
@@ -51,7 +54,6 @@ addon | version | summary
 [project_recalculate](project_recalculate/) | 8.0.1.0.0 (unported) | Project Recalculate
 [project_service_type](project_service_type/) | 1.0 (unported) | Add type of service on project
 [project_sla](project_sla/) | 8.0.1.0.0 (unported) | Define SLAs for your Contracts
-[project_task_materials](project_task_materials/) | 8.0.1.0.0 (unported) | Record products spent in a Task
 [project_timesheet_analytic_partner](project_timesheet_analytic_partner/) | 8.0.1.0.0 (unported) | Propagate task partner to timesheet entries
 [sale_order_project](sale_order_project/) | 8.0.1.0.0 (unported) | Sale Order Project
 [service_desk](service_desk/) | 8.0.1.1.0 (unported) | Use Projects for Service Desks and service teams

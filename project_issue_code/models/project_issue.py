@@ -9,7 +9,8 @@ class ProjectIssue(models.Model):
     _inherit = 'project.issue'
 
     issue_code = fields.Char(
-        string='Issue Code', required=True, default="/", readonly=True)
+        string='Issue Code', required=True, default="/", readonly=True,
+        copy=False)
 
     _sql_constraints = [
         ('project_issue_unique_code', 'UNIQUE (issue_code)',
@@ -22,11 +23,3 @@ class ProjectIssue(models.Model):
             vals['issue_code'] = self.env['ir.sequence'].next_by_code(
                 'project.issue') or '/'
         return super(ProjectIssue, self).create(vals)
-
-    @api.multi
-    def copy(self, default=None):
-        if default is None:
-            default = {}
-        default['issue_code'] = self.env['ir.sequence'].next_by_code(
-            'project.issue') or '/'
-        return super(ProjectIssue, self).copy(default)
