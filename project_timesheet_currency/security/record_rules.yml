@@ -1,0 +1,12 @@
+-
+  !python {model: ir.rule, id: analytic.analytic_comp_rule} : |
+      self.active = False
+-
+  !python {model: ir.rule, id: analytic.analytic_line_comp_rule} : |
+      self.active = False
+-
+  !python {model: ir.rule, id: project.project_comp_rule} : |
+      self.active = False
+-
+  !python {model: ir.rule, id: project.task_comp_rule} : |
+      self.active = False

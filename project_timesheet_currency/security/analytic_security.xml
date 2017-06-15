@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+  <record id="analytic_comp_rule" model="ir.rule">
+    <field name="name">Analytic multi company rule</field>
+    <field name="model_id" ref="analytic.model_account_analytic_account"/>
+    <field eval="True" name="global"/>
+    <field name="domain_force">['|',
+      ('company_id', '=', False),
+      ('company_id', 'in', user.company_ids.ids),
+      ]
+    </field>
+  </record>
+
+  <record id="analytic_line_comp_rule" model="ir.rule">
+    <field name="name">Analytic line multi company rule</field>
+    <field name="model_id" ref="analytic.model_account_analytic_line"/>
+    <field eval="True" name="global"/>
+    <field name="domain_force">['|',
+      ('company_id', '=', False),
+      ('company_id', 'in', user.company_ids.ids),
+      ]
+    </field>
+  </record>
+</odoo>

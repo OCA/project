@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+
+    <record id="relative_task" model="project.task">
+        <field name="name">Task relative to another one</field>
+        <field name="model_reference" ref="project.project_task_6"/>
+    </record>
+
+</odoo>

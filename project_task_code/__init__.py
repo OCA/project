@@ -1,11 +1,9 @@
 # -*- coding: utf-8 -*-
-##############################################################################
-# For copyright and license notices, see __openerp__.py file in root directory
-##############################################################################
+# Copyright 2016 Tecnativa <vicent.cubells@tecnativa.com>
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from . import models
-from openerp import SUPERUSER_ID
-
+from odoo import api, SUPERUSER_ID
 
 def create_code_equal_to_id(cr):
     """
@@ -24,12 +22,12 @@ def assign_old_sequences(cr, registry):
     This post-init-hook will update all existing task assigning them the
     corresponding sequence code.
     """
-    task_obj = registry['project.task']
-    sequence_obj = registry['ir.sequence']
-    task_ids = task_obj.search(cr, SUPERUSER_ID, [], order="id")
-    for task_id in task_ids:
+    env = api.Environment(cr, SUPERUSER_ID, dict())
+    task_obj = env['project.task']
+    sequence_obj = env['ir.sequence']
+    tasks = task_obj.search([], order="id")
+    for task_id in tasks.ids:
         cr.execute('UPDATE project_task '
-                   'SET code = \'%s\' '
-                   'WHERE id = %d;' %
-                   (sequence_obj.get(cr, SUPERUSER_ID, 'project.task'),
-                    task_id))
+                   'SET code = %s '
+                   'WHERE id = %s;',
+                   (sequence_obj.next_by_code('project.task'), task_id, ))

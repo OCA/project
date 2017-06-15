@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<openerp>
-    <data>
+<odoo>
+
         <record model="ir.ui.view" id="project_task_code_form_view">
             <field name="name">project.task.code.form</field>
             <field name="model">project.task</field>
@@ -45,5 +45,5 @@
                 </field>
             </field>
         </record>
-    </data>
-</openerp>
+</odoo>
+
