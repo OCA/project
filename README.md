@@ -20,6 +20,7 @@ Available addons
 addon | version | summary
 --- | --- | ---
 [project_closing](project_closing/) | 10.0.1.0.0 | Project closing
+[project_department](project_department/) | 10.0.1.0.0 | Project Department Categorization
 [project_description](project_description/) | 10.0.1.0.0 | Add a description to projects
 [project_issue_code](project_issue_code/) | 10.0.1.0.0 | Adding Field Code For Project Issue
 [project_issue_timesheet_time_control](project_issue_timesheet_time_control/) | 10.0.1.0.0 | Project issue timesheet time control
