@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * project_task_code
+# * project_stage_closed
 # 
 # Translators:
 # Peter Hageman <hageman.p@gmail.com>, 2017
@@ -18,19 +18,17 @@ msgstr ""
 "Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. module: project_task_code
-#: model:ir.model,name:project_task_code.model_project_task
-msgid "Task"
-msgstr "Taak"
+#. module: project_stage_closed
+#: model:ir.model.fields,field_description:project_stage_closed.field_project_task_type_closed
+msgid "Closed"
+msgstr "Gesloten"
 
-#. module: project_task_code
-#: model:ir.model.fields,field_description:project_task_code.field_project_task_code
-msgid "Task Number"
-msgstr "Taaknummer"
+#. module: project_stage_closed
+#: model:ir.model,name:project_stage_closed.model_project_task_type
+msgid "Task Stage"
+msgstr "Taakstadium"
 
-#. module: project_task_code
-#: code:addons/project_task_code/models/project_task.py:16
-#: sql_constraint:project.task:0
-#, python-format
-msgid "The code must be unique!"
-msgstr "De code moet uniek zijn!"
+#. module: project_stage_closed
+#: model:ir.model.fields,help:project_stage_closed.field_project_task_type_closed
+msgid "Tasks in this stage are considered closed."
+msgstr ""

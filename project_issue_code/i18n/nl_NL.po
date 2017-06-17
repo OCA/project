@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * project_task_code
+# * project_issue_code
 # 
 # Translators:
 # Peter Hageman <hageman.p@gmail.com>, 2017
@@ -18,19 +18,19 @@ msgstr ""
 "Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. module: project_task_code
-#: model:ir.model,name:project_task_code.model_project_task
-msgid "Task"
-msgstr "Taak"
+#. module: project_issue_code
+#: model:ir.model.fields,field_description:project_issue_code.field_project_issue_issue_code
+msgid "Issue Code"
+msgstr ""
 
-#. module: project_task_code
-#: model:ir.model.fields,field_description:project_task_code.field_project_task_code
-msgid "Task Number"
-msgstr "Taaknummer"
+#. module: project_issue_code
+#: model:ir.model,name:project_issue_code.model_project_issue
+msgid "Project Issue"
+msgstr ""
 
-#. module: project_task_code
-#: code:addons/project_task_code/models/project_task.py:16
-#: sql_constraint:project.task:0
+#. module: project_issue_code
+#: code:addons/project_issue_code/models/project_issue.py:17
+#: sql_constraint:project.issue:0
 #, python-format
 msgid "The code must be unique!"
 msgstr "De code moet uniek zijn!"
