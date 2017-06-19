@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-03 05:49+0000\n"
-"PO-Revision-Date: 2017-06-03 05:49+0000\n"
+"POT-Creation-Date: 2017-06-17 02:52+0000\n"
+"PO-Revision-Date: 2017-06-17 02:52+0000\n"
 "Last-Translator: Peter Hageman <hageman.p@gmail.com>, 2017\n"
 "Language-Team: Dutch (Netherlands) (https://www.transifex.com/oca/teams/23907/nl_NL/)\n"
 "MIME-Version: 1.0\n"
@@ -40,7 +40,7 @@ msgstr ""
 #. module: project_task_pull_request
 #: model:ir.model,name:project_task_pull_request.model_project_project
 msgid "Project"
-msgstr ""
+msgstr "Project"
 
 #. module: project_task_pull_request
 #: model:ir.ui.view,arch_db:project_task_pull_request.edit_project

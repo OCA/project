@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-03 05:48+0000\n"
-"PO-Revision-Date: 2017-06-03 05:48+0000\n"
+"POT-Creation-Date: 2017-06-17 02:52+0000\n"
+"PO-Revision-Date: 2017-06-17 02:52+0000\n"
 "Last-Translator: Peter Hageman <hageman.p@gmail.com>, 2017\n"
 "Language-Team: Dutch (Netherlands) (https://www.transifex.com/oca/teams/23907/nl_NL/)\n"
 "MIME-Version: 1.0\n"
@@ -85,9 +85,9 @@ msgstr ""
 #. module: project_model_to_task
 #: model:ir.model,name:project_model_to_task.model_ir_actions_act_window
 msgid "ir.actions.act_window"
-msgstr ""
+msgstr "ir.actions.act_window"
 
 #. module: project_model_to_task
 #: model:ir.model,name:project_model_to_task.model_ir_values
 msgid "ir.values"
-msgstr ""
+msgstr "ir.values"
