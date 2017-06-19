@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-03 05:49+0000\n"
-"PO-Revision-Date: 2017-06-03 05:49+0000\n"
+"POT-Creation-Date: 2017-06-17 02:52+0000\n"
+"PO-Revision-Date: 2017-06-17 02:52+0000\n"
 "Last-Translator: Peter Hageman <hageman.p@gmail.com>, 2017\n"
 "Language-Team: Dutch (Netherlands) (https://www.transifex.com/oca/teams/23907/nl_NL/)\n"
 "MIME-Version: 1.0\n"
@@ -21,33 +21,33 @@ msgstr ""
 #. module: project_stage_state
 #: selection:project.task.type,state:0
 msgid "Cancelled"
-msgstr ""
+msgstr "Geannuleerd"
 
 #. module: project_stage_state
 #: selection:project.task.type,state:0
 msgid "Done"
-msgstr ""
+msgstr "Gereed"
 
 #. module: project_stage_state
 #: selection:project.task.type,state:0
 msgid "In Progress"
-msgstr ""
+msgstr "In behandeling"
 
 #. module: project_stage_state
 #: selection:project.task.type,state:0
 msgid "New"
-msgstr ""
+msgstr "Nieuw"
 
 #. module: project_stage_state
 #: selection:project.task.type,state:0
 msgid "Pending"
-msgstr ""
+msgstr "In afwachting"
 
 #. module: project_stage_state
 #: model:ir.model.fields,field_description:project_stage_state.field_project_task_state
 #: model:ir.model.fields,field_description:project_stage_state.field_project_task_type_state
 msgid "State"
-msgstr ""
+msgstr "Status"
 
 #. module: project_stage_state
 #: model:ir.model,name:project_stage_state.model_project_task
@@ -57,4 +57,4 @@ msgstr "Taak"
 #. module: project_stage_state
 #: model:ir.model,name:project_stage_state.model_project_task_type
 msgid "Task Stage"
-msgstr ""
+msgstr "Taakstadium"
