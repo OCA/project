@@ -13,7 +13,9 @@ class Task(models.Model):
         """ When Project is changed: copy it's Department to the issue. """
 
         if self.env.context.get('project_id', None):
-            project = self.env['project.project'].browse(self.env.context['project_id'])
+            project = self.env['project.project'].browse(
+                self.env.context['project_id']
+            )
         else:
             project = self.project_id
 
