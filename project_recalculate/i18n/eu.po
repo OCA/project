@@ -11,11 +11,11 @@ msgstr ""
 "POT-Creation-Date: 2017-07-01 03:31+0000\n"
 "PO-Revision-Date: 2017-07-01 03:31+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
-"Language-Team: Spanish (Peru) (https://www.transifex.com/oca/teams/23907/es_PE/)\n"
+"Language-Team: Basque (https://www.transifex.com/oca/teams/23907/eu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: es_PE\n"
+"Language: eu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: project_recalculate
@@ -68,12 +68,12 @@ msgstr ""
 #. module: project_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard_create_uid
 msgid "Created by"
-msgstr "Creado por"
+msgstr "Nork sortua"
 
 #. module: project_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard_create_date
 msgid "Created on"
-msgstr "Creado en"
+msgstr "Created on"
 
 #. module: project_recalculate
 #: selection:project.project,calculation_type:0
@@ -93,7 +93,7 @@ msgstr ""
 #. module: project_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard_display_name
 msgid "Display Name"
-msgstr "Nombre a Mostrar"
+msgstr "Izena erakutsi"
 
 #. module: project_recalculate
 #: code:addons/project_recalculate/models/project_task.py:183
@@ -152,17 +152,17 @@ msgstr ""
 #. module: project_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard___last_update
 msgid "Last Modified on"
-msgstr "Ultima Modificación en"
+msgstr ""
 
 #. module: project_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard_write_uid
 msgid "Last Updated by"
-msgstr "Actualizado última vez por"
+msgstr "Last Updated by"
 
 #. module: project_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard_write_date
 msgid "Last Updated on"
-msgstr "Ultima Actualización"
+msgstr "Last Updated on"
 
 #. module: project_recalculate
 #: model:ir.model,name:project_recalculate.model_project_project

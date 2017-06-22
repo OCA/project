@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # See README.rst file on addon root folder for license details
 
-from openerp.exceptions import ValidationError
+from odoo.exceptions import ValidationError
 from . import base
 
 

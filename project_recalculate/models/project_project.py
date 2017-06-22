@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 # See README.rst file on addon root folder for license details
 
-from openerp import models, fields, api, _
-from openerp.fields import DATE_LENGTH
-from openerp.exceptions import Warning
+from odoo import models, fields, api, _
+from odoo.fields import DATE_LENGTH
+from odoo.exceptions import UserError
 
 
 class ProjectProject(models.Model):
@@ -32,9 +32,8 @@ class ProjectProject(models.Model):
         if not self.tasks:
             return vals
         from_string = fields.Datetime.from_string
-        # Here we consider all project task, the ones in a stage with
-        # include_in_recalculate = False and the ones with
-        # include_in_recalculate = True
+        # Here we consider all project task, independently from the value in
+        # include_in_recalculate
         start_task = min(self.tasks,
                          key=lambda t: from_string(t.date_start or t.date_end))
         end_task = max(self.tasks,
@@ -54,16 +53,16 @@ class ProjectProject(models.Model):
         """
         for project in self:
             if not project.calculation_type:
-                raise Warning(_("Cannot recalculate project because your "
-                                "project don't have calculation type."))
+                raise UserError(_("Cannot recalculate project because your "
+                                  "project doesn't have calculation type."))
             if (project.calculation_type == 'date_begin' and not
                     project.date_start):
-                raise Warning(_("Cannot recalculate project because your "
-                                "project don't have date start."))
+                raise UserError(_("Cannot recalculate project because your "
+                                  "project doesn't have date start."))
             if (project.calculation_type == 'date_end' and not
                     project.date):
-                raise Warning(_("Cannot recalculate project because your "
-                                "project don't have date end."))
+                raise UserError(_("Cannot recalculate project because your "
+                                  "project doesn't have date end."))
             for task in project.tasks:
                 task.task_recalculate()
             vals = project._start_end_dates_prepare()

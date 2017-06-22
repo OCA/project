@@ -3,14 +3,15 @@
 # * project_recalculate
 # 
 # Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
 msgid ""
 msgstr ""
-"Project-Id-Version: project (8.0)\n"
+"Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-17 13:09+0000\n"
-"PO-Revision-Date: 2016-11-25 14:55+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
-"Language-Team: Thai (http://www.transifex.com/oca/OCA-project-8-0/language/th/)\n"
+"POT-Creation-Date: 2017-07-01 03:31+0000\n"
+"PO-Revision-Date: 2017-07-01 03:31+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"Language-Team: Thai (https://www.transifex.com/oca/teams/23907/th/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -18,60 +19,59 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. module: project_recalculate
-#: help:project.task,from_days:0
+#: model:ir.model.fields,help:project_recalculate.field_project_task_from_days
 msgid "Anticipation days from date begin or date end"
 msgstr ""
 
 #. module: project_recalculate
-#: view:project.recalculate.wizard:project_recalculate.wizard_project_recalculate_form
+#: model:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
 msgid "Are you sure?"
 msgstr ""
 
 #. module: project_recalculate
-#: field:project.project,calculation_type:0
-#: field:project.recalculate.wizard,calculation_type:0
+#: model:ir.model.fields,field_description:project_recalculate.field_project_project_calculation_type
+#: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard_calculation_type
 msgid "Calculation type"
 msgstr ""
 
 #. module: project_recalculate
-#: view:project.recalculate.wizard:project_recalculate.wizard_project_recalculate_form
+#: model:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
 msgid "Cancel"
 msgstr "ยกเลิก"
 
 #. module: project_recalculate
-#: code:addons/project_recalculate/models/project_project.py:57
-#: code:addons/project_recalculate/wizard/recalculate_wizard.py:25
+#: code:addons/project_recalculate/models/project_project.py:56
 #, python-format
 msgid ""
-"Cannot recalculate project because your project don't have calculation type."
+"Cannot recalculate project because your project doesn't have calculation "
+"type."
 msgstr ""
 
 #. module: project_recalculate
-#: code:addons/project_recalculate/models/project_project.py:65
-#: code:addons/project_recalculate/wizard/recalculate_wizard.py:31
+#: code:addons/project_recalculate/models/project_project.py:64
 #, python-format
-msgid "Cannot recalculate project because your project don't have date end."
+msgid "Cannot recalculate project because your project doesn't have date end."
 msgstr ""
 
 #. module: project_recalculate
-#: code:addons/project_recalculate/models/project_project.py:61
-#: code:addons/project_recalculate/wizard/recalculate_wizard.py:28
+#: code:addons/project_recalculate/models/project_project.py:60
 #, python-format
-msgid "Cannot recalculate project because your project don't have date start."
+msgid ""
+"Cannot recalculate project because your project doesn't have date start."
 msgstr ""
 
 #. module: project_recalculate
-#: view:project.recalculate.wizard:project_recalculate.wizard_project_recalculate_form
+#: model:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
 msgid "Continue"
 msgstr ""
 
 #. module: project_recalculate
-#: field:project.recalculate.wizard,create_uid:0
+#: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard_create_uid
 msgid "Created by"
 msgstr "สร้างโดย"
 
 #. module: project_recalculate
-#: field:project.recalculate.wizard,create_date:0
+#: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard_create_date
 msgid "Created on"
 msgstr "สร้างเมื่อ"
 
@@ -86,97 +86,97 @@ msgid "Date end"
 msgstr ""
 
 #. module: project_recalculate
-#: view:project.recalculate.wizard:project_recalculate.wizard_project_recalculate_form
+#: model:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
 msgid "Date reference"
 msgstr ""
 
 #. module: project_recalculate
-#: field:project.recalculate.wizard,display_name:0
+#: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard_display_name
 msgid "Display Name"
 msgstr "ชื่อที่ใช้แสดง"
 
 #. module: project_recalculate
-#: code:addons/project_recalculate/models/project_task.py:181
+#: code:addons/project_recalculate/models/project_task.py:183
 #, python-format
 msgid "End Date field must be defined."
 msgstr ""
 
 #. module: project_recalculate
-#: field:project.task,estimated_days:0
+#: model:ir.model.fields,field_description:project_recalculate.field_project_task_estimated_days
 msgid "Estimated days"
 msgstr ""
 
 #. module: project_recalculate
-#: code:addons/project_recalculate/models/project_task.py:25
+#: code:addons/project_recalculate/models/project_task.py:31
 #, python-format
 msgid "Estimated days must be greater than 0."
 msgstr ""
 
 #. module: project_recalculate
-#: help:project.task,estimated_days:0
+#: model:ir.model.fields,help:project_recalculate.field_project_task_estimated_days
 msgid "Estimated days to end"
 msgstr ""
 
 #. module: project_recalculate
-#: field:project.task,from_days:0
+#: model:ir.model.fields,field_description:project_recalculate.field_project_task_from_days
 msgid "From days"
 msgstr ""
 
 #. module: project_recalculate
-#: help:project.project,calculation_type:0
-#: help:project.recalculate.wizard,calculation_type:0
+#: model:ir.model.fields,help:project_recalculate.field_project_project_calculation_type
+#: model:ir.model.fields,help:project_recalculate.field_project_recalculate_wizard_calculation_type
 msgid ""
 "How to calculate tasks, with date start or date end references. If not set, "
 "\"Recalculate project\" button is disabled."
 msgstr ""
 
 #. module: project_recalculate
-#: field:project.recalculate.wizard,id:0
+#: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard_id
 msgid "ID"
 msgstr "รหัส"
 
 #. module: project_recalculate
-#: help:project.task,include_in_recalculate:0
-#: help:project.task.type,include_in_recalculate:0
+#: model:ir.model.fields,help:project_recalculate.field_project_task_include_in_recalculate
+#: model:ir.model.fields,help:project_recalculate.field_project_task_type_include_in_recalculate
 msgid ""
 "If you mark this check, tasks that are in this stage will be selectable for "
 "recalculating their dates when user click on 'Recalculate project' button."
 msgstr ""
 
 #. module: project_recalculate
-#: field:project.task,include_in_recalculate:0
-#: field:project.task.type,include_in_recalculate:0
+#: model:ir.model.fields,field_description:project_recalculate.field_project_task_include_in_recalculate
+#: model:ir.model.fields,field_description:project_recalculate.field_project_task_type_include_in_recalculate
 msgid "Include in project recalculate"
 msgstr ""
 
 #. module: project_recalculate
-#: field:project.recalculate.wizard,__last_update:0
+#: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard___last_update
 msgid "Last Modified on"
 msgstr "แก้ไขครั้งสุดท้ายเมื่อ"
 
 #. module: project_recalculate
-#: field:project.recalculate.wizard,write_uid:0
+#: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard_write_uid
 msgid "Last Updated by"
 msgstr "อัพเดทครั้งสุดท้ายโดย"
 
 #. module: project_recalculate
-#: field:project.recalculate.wizard,write_date:0
+#: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard_write_date
 msgid "Last Updated on"
 msgstr "อัพเดทครั้งสุดท้ายเมื่อ"
 
 #. module: project_recalculate
 #: model:ir.model,name:project_recalculate.model_project_project
-#: field:project.recalculate.wizard,project_id:0
+#: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard_project_id
 msgid "Project"
 msgstr ""
 
 #. module: project_recalculate
-#: field:project.recalculate.wizard,project_date:0
+#: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard_project_date
 msgid "Project date"
 msgstr ""
 
 #. module: project_recalculate
-#: view:project.recalculate.wizard:project_recalculate.wizard_project_recalculate_form
+#: model:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
 msgid "Project name"
 msgstr ""
 
@@ -186,12 +186,8 @@ msgid "Project recalculate"
 msgstr ""
 
 #. module: project_recalculate
-#: view:project.recalculate.wizard:project_recalculate.wizard_project_recalculate_form
-msgid "Recalculate Project"
-msgstr ""
-
-#. module: project_recalculate
-#: view:project.project:project_recalculate.edit_project_recalculate
+#: model:ir.ui.view,arch_db:project_recalculate.edit_project_recalculate
+#: model:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
 msgid "Recalculate project"
 msgstr ""
 
@@ -201,7 +197,7 @@ msgid "Resource Calendar"
 msgstr ""
 
 #. module: project_recalculate
-#: code:addons/project_recalculate/models/project_task.py:176
+#: code:addons/project_recalculate/models/project_task.py:178
 #, python-format
 msgid "Start Date field must be defined."
 msgstr ""
@@ -217,16 +213,11 @@ msgid "Task Stage"
 msgstr ""
 
 #. module: project_recalculate
-#: view:project.recalculate.wizard:project_recalculate.wizard_project_recalculate_form
-msgid "This Project task will be recalculated the reference data:"
+#: model:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
+msgid "This Project task will be recalculated according reference date:"
 msgstr ""
 
 #. module: project_recalculate
-#: view:project.project:project_recalculate.edit_project_recalculate
-msgid "{'readonly': [('calculation_type', '=', 'date_begin')]}"
-msgstr ""
-
-#. module: project_recalculate
-#: view:project.project:project_recalculate.edit_project_recalculate
-msgid "{'readonly': [('calculation_type', '=', 'date_end')]}"
+#: model:ir.model,name:project_recalculate.model_project_recalculate_wizard
+msgid "project.recalculate.wizard"
 msgstr ""
