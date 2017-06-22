@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!--PROJECT ISSUE FORM -->
+    <record id="project_issue_form_view_task" model="ir.ui.view">
+        <field name="name">project_issue_form_view_task</field>
+        <field name="model">project.issue</field>
+        <field name="inherit_id" ref="project_issue.project_issue_form_view"/>
+        <field name="arch" type="xml">
+
+            <!-- place inside its own group so the columns aren't pushed to the right-->
+            <xpath expr="//group[1]" position="after">
+                <group name="task_report">
+                    <button type="object" name="action_create_task" string="Task Report" attrs="{'invisible': [('task_id', '!=', False)]}"/>
+                </group>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>
