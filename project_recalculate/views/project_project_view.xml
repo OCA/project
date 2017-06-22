@@ -1,38 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
-<data>
+<odoo>
 
-<record id="edit_project_recalculate" model="ir.ui.view">
-    <field name="name">project.project.form</field>
-    <field name="model">project.project</field>
-    <field name="inherit_id" ref="project.edit_project"/>
-    <field name="arch" type="xml">
-
-        <field name="date" position="after">
-            <field name="calculation_type"/>
+    <record id="edit_project_recalculate" model="ir.ui.view">
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <field name="resource_calendar_id" position="after">
+                <field name="date_start" attrs="{'readonly': [('calculation_type', '=', 'date_end')]}"/>
+                <field name="date" attrs="{'readonly': [('calculation_type', '=', 'date_begin')]}"/>
+                <field name="calculation_type"/>
+                <button name="project_recalculate.wizard_project_recalculate"
+                        type="action"
+                        string="Recalculate project"
+                        icon="fa-cogs"
+                        attrs="{'invisible': [('calculation_type', '=', False)]}"
+                />
+            </field>
         </field>
-        <field name="date_start" position="attributes">
-            <attribute name="attrs">{'readonly': [('calculation_type', '=', 'date_end')]}</attribute>
-        </field>
-        <field name="date" position="attributes">
-            <attribute name="attrs">{'readonly': [('calculation_type', '=', 'date_begin')]}</attribute>
-        </field>
+    </record>
 
-        <button name="set_template" position="after">
-            <button name="project_recalculate.wizard_project_recalculate"
-                    type="action"
-                    string="Recalculate project"
-                    attrs="{'invisible': ['|', ('calculation_type', '=', False), ('state', 'not in', 'open')]}"/>
-        </button>
-    </field>
-</record>
+    <act_window name="Project recalculate"
+                res_model="project.recalculate.wizard"
+                view_mode="form"
+                multi="True"
+                target="new"
+                id="wizard_project_recalculate"
+    />
 
-<act_window name="Project recalculate"
-            res_model="project.recalculate.wizard"
-            view_mode="form"
-            multi="True"
-            target="new"
-            id="wizard_project_recalculate"/>
-
-</data>
-</openerp>
+</odoo>
