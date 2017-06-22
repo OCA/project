@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # See README.rst file on addon root folder for license details
 
-from openerp.tests.common import TransactionCase
+from odoo.tests.common import TransactionCase
 
 
 class BaseCase(TransactionCase):
@@ -194,6 +194,11 @@ class BaseCase(TransactionCase):
     def project_create(self, num_tasks=0, vals=None):
         vals = vals or {}
         project = self.env['project.project'].create(vals)
+        self.env['project.task.type'].create({
+            'name': 'Test stage',
+            'include_in_recalculate': True,
+            'project_ids': [(4, project.id)],
+        })
         if num_tasks > 0:
             for n in range(num_tasks):
                 self.project_task_add(project, {

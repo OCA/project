@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 # See README.rst file on addon root folder for license details
 
-from openerp.exceptions import Warning
-from openerp.fields import DATE_LENGTH
+from odoo.exceptions import Warning
+from odoo.fields import DATE_LENGTH
 from . import base
 
 
@@ -10,7 +10,7 @@ class TestProjectProjectBegin(base.BaseCase):
     calculation_type = 'date_begin'
     project_final_dates_one_task = {
         'date_begin': [
-            # name, start_date, end date
+            # name, date_start, date
             ['pj_0', '2015-08-01', '2015-08-05'],
             ['pj_1', '2015-08-02', '2015-08-05'],
             ['pj_2', '2015-08-03', '2015-08-05'],
@@ -61,17 +61,17 @@ class TestProjectProjectBegin(base.BaseCase):
                 dates = res[self.calculation_type][counter]
                 if self.calculation_type == 'date_begin':
                     # Only project date end must be changed
-                    date_start = None
+                    date_start = False
                     date_end = dates[2]
                 else:
                     # Only project date start must be changed
                     date_start = dates[1]
-                    date_end = None
+                    date_end = False
                 self.assertEqual(
-                    vals.get('date_start', None), date_start,
+                    vals.get('date_start', False), date_start,
                     "[%d] FAIL: date_start" % counter)
                 self.assertEqual(
-                    vals.get('date', None), date_end,
+                    vals.get('date', False), date_end,
                     "[%d] FAIL: date" % counter)
             else:
                 self.assertEqual(vals, res)

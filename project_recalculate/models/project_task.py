@@ -1,8 +1,12 @@
 # -*- coding: utf-8 -*-
-# See README.rst file on addon root folder for license details
+# Copyright 2015 Antonio Espinosa
+# Copyright 2015 Endika Iglesias
+# Copyright 2015 Javier Espìnosa
+# Copyright 2017 Pedro M. Baeza <pedro.baeza@tecnativa.com>
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import models, fields, api, _
-from openerp.exceptions import Warning, ValidationError
+from odoo import models, fields, api, _
+from odoo.exceptions import Warning, ValidationError
 from datetime import datetime
 
 
@@ -16,13 +20,16 @@ class ProjectTask(models.Model):
         string='Estimated days', help='Estimated days to end', default=1,
         oldname='anticipation_days')
     include_in_recalculate = fields.Boolean(
-        related="stage_id.include_in_recalculate")
+        related="stage_id.include_in_recalculate", readonly=True,
+    )
 
-    @api.one
     @api.constrains('estimated_days')
     def _estimated_days_check(self):
-        if not self.estimated_days > 0:
-            raise ValidationError(_('Estimated days must be greater than 0.'))
+        for task in self:
+            if task.estimated_days <= 0:
+                raise ValidationError(
+                    _('Estimated days must be greater than 0.')
+                )
 
     def _dates_onchange(self, vals):
         """
@@ -52,16 +59,13 @@ class ProjectTask(models.Model):
         # If end < start, do nothing
         if end < start:
             return vals
-        rc = self.pool['resource.calendar']
         resource, calendar = self._resource_calendar_select()
         default_interval = self._interval_default_get()
-        calendar_id = calendar.id if calendar else None
-        resource_id = resource.id if resource else None
         # Calculate estimated_day
-        vals['estimated_days'] = rc.get_working_days_of_date(
-            self.env.cr, self.env.uid, calendar_id, start_dt=start,
-            end_dt=end, compute_leaves=True, resource_id=resource_id,
-            default_interval=default_interval, context=self.env.context)
+        vals['estimated_days'] = calendar.get_working_days_of_date(
+            start_dt=start, end_dt=end, compute_leaves=True,
+            default_interval=default_interval, resource_id=resource.id,
+        )
         # Calculate from_days depending on project calculation type
         calculation_type = self.project_id.calculation_type
         if calculation_type:
@@ -82,10 +86,10 @@ class ProjectTask(models.Model):
             if end < start:
                 invert = True
                 start, end = end, start
-            from_days = rc.get_working_days_of_date(
-                self.env.cr, self.env.uid, calendar_id, start_dt=start,
-                end_dt=end, compute_leaves=True, resource_id=resource_id,
-                default_interval=default_interval, context=self.env.context)
+            from_days = calendar.get_working_days_of_date(
+                start_dt=start, end_dt=end, compute_leaves=True,
+                default_interval=default_interval, resource_id=resource.id,
+            )
             if invert and from_days:
                 from_days = from_days * (-1)
             from_days = self._from_days_enc(
@@ -108,9 +112,7 @@ class ProjectTask(models.Model):
                 - company
         """
         self.ensure_one()
-        calendar = False
         resource = False
-        company = False
         if self.user_id:
             # Get first resource of assigned user
             resource = self.env['resource.resource'].search(
@@ -196,40 +198,32 @@ class ProjectTask(models.Model):
 
     def _first_interval_of_day_get(self, day_date, resource=None,
                                    calendar=None):
-        calendar_id = calendar.id if calendar else None
-        resource_id = resource.id if resource else None
         default_interval = self._interval_default_get()
-        rc = self.pool['resource.calendar']
-        intervals = rc.get_working_intervals_of_day(
-            self.env.cr, self.env.uid, calendar_id, start_dt=day_date,
-            compute_leaves=True, resource_id=resource_id,
-            default_interval=default_interval, context=self.env.context)
+        intervals = calendar.get_working_intervals_of_day(
+            start_dt=day_date, compute_leaves=True, resource_id=resource.id,
+            default_interval=default_interval,
+        )
         return intervals and intervals[0] or False
 
     def _calendar_schedule_days(self, days, day_date,
                                 resource=None, calendar=None):
         if not day_date:
             return (False, False)
-        calendar_id = calendar.id if calendar else None
-        resource_id = resource.id if resource else None
         default_interval = self._interval_default_get()
-        intervals = self.pool['resource.calendar'].schedule_days(
-            self.env.cr, self.env.uid, calendar_id, days, day_date=day_date,
-            compute_leaves=True, resource_id=resource_id,
-            default_interval=default_interval, context=self.env.context)
+        intervals = calendar.schedule_days(
+            days, day_date=day_date, compute_leaves=True,
+            resource_id=resource.id, default_interval=default_interval,
+        )
         return (intervals and intervals[0] or False,
                 intervals and intervals[-1] or False)
 
     @api.multi
     def task_recalculate(self):
-        """
-            Recalculate task start date and end date depending on
-            project calculation_type, estimated_days and from_days
+        """Recalculate task start date and end date depending on
+        project calculation_type, estimated_days and from_days.
         """
         to_string = fields.Datetime.to_string
-        for task in self:
-            if not task.include_in_recalculate:
-                continue
+        for task in self.filtered('include_in_recalculate'):
             resource, calendar = task._resource_calendar_select()
             increment, project_date, from_days = task._calculation_prepare()
             date_start = False
