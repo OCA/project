@@ -46,21 +46,21 @@ msgstr "Abbrechen"
 #: code:addons/project_recalculate/wizard/recalculate_wizard.py:25
 #, python-format
 msgid ""
-"Cannot recalculate project because your project don't have calculation type."
+"Cannot recalculate project because your project doesn't have calculation type."
 msgstr "Das Projekt kann nicht neu kalkuliert werden, da es keinen Berechnungstyp gesetzt hat."
 
 #. module: project_recalculate
 #: code:addons/project_recalculate/models/project_project.py:65
 #: code:addons/project_recalculate/wizard/recalculate_wizard.py:31
 #, python-format
-msgid "Cannot recalculate project because your project don't have date end."
+msgid "Cannot recalculate project because your project doesn't have date end."
 msgstr "Das Projekt kann nicht neu kalkuliert werden, da kein Enddatum bestimmt ist."
 
 #. module: project_recalculate
 #: code:addons/project_recalculate/models/project_project.py:61
 #: code:addons/project_recalculate/wizard/recalculate_wizard.py:28
 #, python-format
-msgid "Cannot recalculate project because your project don't have date start."
+msgid "Cannot recalculate project because your project doesn't have date start."
 msgstr "Das Projekt kann nicht neu kalkuliert werden, da kein Startdatum bestimmt ist."
 
 #. module: project_recalculate
