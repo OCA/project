@@ -1,0 +1,139 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * project_issue_task
+# 
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0c\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-01-11 03:42+0000\n"
+"PO-Revision-Date: 2017-01-11 03:42+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"Language-Team: Bulgarian (https://www.transifex.com/oca/teams/23907/bg/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: bg\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: project_issue_task
+#: code:addons/project_issue_task/models/project_issue.py:21
+#, python-format
+msgid "A Task is already assigned to the Issue!"
+msgstr ""
+
+#. module: project_issue_task
+#: model:ir.model.fields,field_description:project_issue_task.field_project_task_cause_name
+msgid "Cause"
+msgstr ""
+
+#. module: project_issue_task
+#: model:ir.model.fields,field_description:project_issue_task.field_project_task_cause_code
+msgid "Code"
+msgstr "Код"
+
+#. module: project_issue_task
+#: model:ir.model.fields,field_description:project_issue_task.field_project_task_cause_create_uid
+msgid "Created by"
+msgstr "Създадено от"
+
+#. module: project_issue_task
+#: model:ir.model.fields,field_description:project_issue_task.field_project_task_cause_create_date
+msgid "Created on"
+msgstr "Създадено на"
+
+#. module: project_issue_task
+#: model:ir.model.fields,field_description:project_issue_task.field_project_task_cause_description
+msgid "Description"
+msgstr "Описание"
+
+#. module: project_issue_task
+#: model:ir.model.fields,field_description:project_issue_task.field_project_task_cause_display_name
+msgid "Display Name"
+msgstr "Име за Показване"
+
+#. module: project_issue_task
+#: model:ir.model.fields,field_description:project_issue_task.field_project_task_cause_id
+msgid "ID"
+msgstr "ID"
+
+#. module: project_issue_task
+#: model:ir.model,name:project_issue_task.model_project_task_cause
+msgid "Issue Cause"
+msgstr ""
+
+#. module: project_issue_task
+#: model:ir.model.fields,field_description:project_issue_task.field_project_task_issue_ids
+msgid "Issues"
+msgstr ""
+
+#. module: project_issue_task
+#: model:ir.model.fields,field_description:project_issue_task.field_project_task_cause___last_update
+msgid "Last Modified on"
+msgstr "Последно обновено на"
+
+#. module: project_issue_task
+#: model:ir.model.fields,field_description:project_issue_task.field_project_task_cause_write_uid
+msgid "Last Updated by"
+msgstr "Последно обновено от"
+
+#. module: project_issue_task
+#: model:ir.model.fields,field_description:project_issue_task.field_project_task_cause_write_date
+msgid "Last Updated on"
+msgstr "Последно обновено на"
+
+#. module: project_issue_task
+#: model:ir.model.fields,field_description:project_issue_task.field_project_task_issue_id
+msgid "Main Issue"
+msgstr ""
+
+#. module: project_issue_task
+#: model:ir.model.fields,field_description:project_issue_task.field_project_task_reason_id
+msgid "Problem Cause"
+msgstr ""
+
+#. module: project_issue_task
+#: model:ir.model,name:project_issue_task.model_project_issue
+msgid "Project Issue"
+msgstr ""
+
+#. module: project_issue_task
+#: model:ir.model.fields,field_description:project_issue_task.field_project_task_ref
+msgid "Reference"
+msgstr ""
+
+#. module: project_issue_task
+#: model:ir.ui.view,arch_db:project_issue_task.view_project_task_form_issue
+msgid "Related Issues"
+msgstr ""
+
+#. module: project_issue_task
+#: code:addons/project_issue_task/models/project_issue.py:24
+#, python-format
+msgid "Report for %s"
+msgstr ""
+
+#. module: project_issue_task
+#: model:ir.model.fields,field_description:project_issue_task.field_project_task_cause_sequence
+msgid "Sequence"
+msgstr "Последователност"
+
+#. module: project_issue_task
+#: model:ir.model,name:project_issue_task.model_project_task
+msgid "Task"
+msgstr ""
+
+#. module: project_issue_task
+#: model:ir.actions.act_window,name:project_issue_task.open_task_cause_form
+#: model:ir.ui.menu,name:project_issue_task.menu_task_cause_view
+#: model:ir.ui.view,arch_db:project_issue_task.task_cause_edit
+#: model:ir.ui.view,arch_db:project_issue_task.task_cause_tree
+msgid "Task Issue Causes"
+msgstr ""
+
+#. module: project_issue_task
+#: model:ir.ui.view,arch_db:project_issue_task.project_issue_form_view_task
+msgid "Task Report"
+msgstr ""

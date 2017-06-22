@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Task types -->
+    <record id="task_cause_edit" model="ir.ui.view">
+        <field name="name">project.task.cause.form</field>
+        <field name="model">project.task.cause</field>
+        <field name="arch" type="xml">
+            <form string="Task Issue Causes">
+                <sheet>
+                    <group>
+                        <group colspan="2">
+                            <field name="name"/>
+                            <field name="sequence"/>
+                            <field name="code"/>
+                        </group>
+                        <group name="description">
+                            <field name="description"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="task_cause_tree" model="ir.ui.view">
+        <field name="name">project.task.cause.tree</field>
+        <field name="model">project.task.cause</field>
+        <field name="arch" type="xml">
+            <tree string="Task Issue Causes">
+                <field name="sequence"/>
+                <field name="code"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="open_task_cause_form" model="ir.actions.act_window">
+        <field name="name">Task Issue Causes</field>
+        <field name="res_model">project.task.cause</field>
+        <field name="view_type">form</field>
+        <field name="view_id" ref="task_cause_tree"/>
+    </record>
+
+    <menuitem action="open_task_cause_form"
+              id="menu_task_cause_view"
+              parent="project.menu_project_config"/>
+
+</odoo>
