@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-17 02:52+0000\n"
-"PO-Revision-Date: 2017-06-17 02:52+0000\n"
+"POT-Creation-Date: 2017-06-17 05:53+0000\n"
+"PO-Revision-Date: 2017-06-17 05:53+0000\n"
 "Last-Translator: Peter Hageman <hageman.p@gmail.com>, 2017\n"
 "Language-Team: Dutch (Netherlands) (https://www.transifex.com/oca/teams/23907/nl_NL/)\n"
 "MIME-Version: 1.0\n"
@@ -21,12 +21,12 @@ msgstr ""
 #. module: project_issue_timesheet_time_control
 #: model:ir.model,name:project_issue_timesheet_time_control.model_account_analytic_line
 msgid "Analytic Line"
-msgstr ""
+msgstr "Analytische regel"
 
 #. module: project_issue_timesheet_time_control
 #: model:ir.ui.view,arch_db:project_issue_timesheet_time_control.account_analytic_line_tree
 msgid "Close issue"
-msgstr ""
+msgstr "Gesloten Kwestie"
 
 #. module: project_issue_timesheet_time_control
 #: model:ir.model.fields,field_description:project_issue_timesheet_time_control.field_account_analytic_line_issue_closed
@@ -36,7 +36,7 @@ msgstr "Gesloten"
 #. module: project_issue_timesheet_time_control
 #: model:ir.ui.view,arch_db:project_issue_timesheet_time_control.account_analytic_line_tree
 msgid "Open issue"
-msgstr ""
+msgstr "Open Kwestie"
 
 #. module: project_issue_timesheet_time_control
 #: model:ir.ui.view,arch_db:project_issue_timesheet_time_control.project_issue_form_view
@@ -51,10 +51,10 @@ msgstr "Taak"
 #. module: project_issue_timesheet_time_control
 #: model:ir.model.fields,help:project_issue_timesheet_time_control.field_account_analytic_line_issue_closed
 msgid "Tasks in this stage are considered closed."
-msgstr ""
+msgstr "Taken in deze fase worden als gesloten beschouwd."
 
 #. module: project_issue_timesheet_time_control
 #: code:addons/project_issue_timesheet_time_control/models/account_analytic_line.py:52
 #, python-format
 msgid "There isn't any stage with closed check. Please mark any."
-msgstr ""
+msgstr "Er is geen fase met gesloten controle. Markeer er eentje a.u.b."
