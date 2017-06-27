@@ -73,6 +73,18 @@ class Task(models.Model):
          ('assigned', 'Assigned'),
          ('done', 'Done')],
         compute='_compute_stock_state', string='Stock State')
+    location_source_id = fields.Many2one(
+        comodel_name='stock.location',
+        string='Source Location',
+        index=True,
+        help='Default location from which materials are consumed.',
+    )
+    location_dest_id = fields.Many2one(
+        comodel_name='stock.location',
+        string='Destination Location',
+        index=True,
+        help='Default location to which materials are consumed.',
+    )
 
     @api.multi
     def unlink_stock_move(self):
@@ -149,9 +161,11 @@ class ProjectTaskMaterials(models.Model):
             'product_uom_qty': self.quantity,
             'origin': self.task_id.name,
             'location_id':
+                self.task_id.location_source_id.id or
                 self.task_id.project_id.location_source_id.id or
                 self.env.ref('stock.stock_location_stock').id,
             'location_dest_id':
+                self.task_id.location_dest_id.id or
                 self.task_id.project_id.location_dest_id.id or
                 self.env.ref('stock.stock_location_customers').id,
         }

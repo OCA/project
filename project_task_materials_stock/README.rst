@@ -26,6 +26,9 @@ Usage
 #. Go to a task, edit, and add materials to be consumed on tab "Materials".
 #. Move task to an stage on consume material are activated and moves and
    analytic lines will be created.
+#. You can define default locations to consume material in tasks and projects.
+   Locations preference order to consume materials is: locations set in tasks
+   first, locations defined in project second and finally standard locations.
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
