@@ -12,13 +12,13 @@ them, and also adds the needed fields in the view for handling them.
 Usage
 =====
 
-* Go to *Project > Project > Tasks*.
+* Go to *Project > Search > Tasks*.
 * Click on the icon with a clock.
 * You will see the tasks in the new view.
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
-   :target: https://runbot.odoo-community.org/runbot/140/9.0
+   :target: https://runbot.odoo-community.org/runbot/140/10.0
 
 Bug Tracker
 ===========
@@ -35,6 +35,7 @@ Contributors
 ------------
 
 * Pedro M. Baeza <pedro.baeza@tecnativa.com>
+* Carlos Dauden <carlos.dauden@tecnativa.com>
 
 Maintainer
 ----------
