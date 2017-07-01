@@ -25,6 +25,7 @@ addon | version | summary
 [project_issue_code](project_issue_code/) | 10.0.1.0.0 | Adding Field Code For Project Issue
 [project_issue_timesheet_time_control](project_issue_timesheet_time_control/) | 10.0.1.0.0 | Project issue timesheet time control
 [project_model_to_task](project_model_to_task/) | 10.0.0.1.0 | Project Model to Task
+[project_recalculate](project_recalculate/) | 10.0.1.0.0 | Project Recalculate
 [project_stage_closed](project_stage_closed/) | 10.0.1.0.0 | Make the Closed flag on Task Stages available without installing sale_service
 [project_stage_state](project_stage_state/) | 10.0.1.0.0 | Restore State attribute removed from Project Stages in 8.0
 [project_task_add_very_high](project_task_add_very_high/) | 10.0.1.0.0 | Adds an extra option 'Very High' on tasks
@@ -52,7 +53,6 @@ addon | version | summary
 [project_gtd](project_gtd/) | 8.0.2.0.0 (unported) | Personal Tasks, Contexts, Timeboxes
 [project_issue_baseuser](project_issue_baseuser/) | 8.0.1.0.0 (unported) | Extend Project user roles to support more complex use cases
 [project_issue_task](project_issue_task/) | 8.0.1.1.0 (unported) | Use Tasks to support Issue resolution reports
-[project_recalculate](project_recalculate/) | 8.0.1.0.0 (unported) | Project Recalculate
 [project_service_type](project_service_type/) | 1.0 (unported) | Add type of service on project
 [project_sla](project_sla/) | 8.0.1.0.0 (unported) | Define SLAs for your Contracts
 [project_timesheet_analytic_partner](project_timesheet_analytic_partner/) | 8.0.1.0.0 (unported) | Propagate task partner to timesheet entries
