@@ -3,19 +3,19 @@
 # * project_recalculate
 # 
 # Translators:
-# OCA Transbot <transbot@odoo-community.org>, 2017
+# Peter Hageman <hageman.p@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-01 03:31+0000\n"
 "PO-Revision-Date: 2017-07-01 03:31+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
-"Language-Team: Spanish (Peru) (https://www.transifex.com/oca/teams/23907/es_PE/)\n"
+"Last-Translator: Peter Hageman <hageman.p@gmail.com>, 2017\n"
+"Language-Team: Dutch (Netherlands) (https://www.transifex.com/oca/teams/23907/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: es_PE\n"
+"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: project_recalculate
@@ -68,12 +68,12 @@ msgstr ""
 #. module: project_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard_create_uid
 msgid "Created by"
-msgstr "Creado por"
+msgstr "Aangemaakt door"
 
 #. module: project_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard_create_date
 msgid "Created on"
-msgstr "Creado en"
+msgstr "Aangemaakt op"
 
 #. module: project_recalculate
 #: selection:project.project,calculation_type:0
@@ -93,7 +93,7 @@ msgstr ""
 #. module: project_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard_display_name
 msgid "Display Name"
-msgstr "Nombre a Mostrar"
+msgstr "Weergavenaam"
 
 #. module: project_recalculate
 #: code:addons/project_recalculate/models/project_task.py:183
@@ -152,23 +152,23 @@ msgstr ""
 #. module: project_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard___last_update
 msgid "Last Modified on"
-msgstr "Ultima Modificación en"
+msgstr "Laatst aangepast op"
 
 #. module: project_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard_write_uid
 msgid "Last Updated by"
-msgstr "Actualizado última vez por"
+msgstr "Laatst bijgewerkt door"
 
 #. module: project_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard_write_date
 msgid "Last Updated on"
-msgstr "Ultima Actualización"
+msgstr "Laatst bijgewerkt op"
 
 #. module: project_recalculate
 #: model:ir.model,name:project_recalculate.model_project_project
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard_project_id
 msgid "Project"
-msgstr ""
+msgstr "Project"
 
 #. module: project_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard_project_date
@@ -205,12 +205,12 @@ msgstr ""
 #. module: project_recalculate
 #: model:ir.model,name:project_recalculate.model_project_task
 msgid "Task"
-msgstr ""
+msgstr "Taak"
 
 #. module: project_recalculate
 #: model:ir.model,name:project_recalculate.model_project_task_type
 msgid "Task Stage"
-msgstr ""
+msgstr "Taakfase"
 
 #. module: project_recalculate
 #: model:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
