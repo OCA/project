@@ -1,3 +1,4 @@
 # List the OCA project dependencies, one per line
 # Add a repository url and branch if you need a forked version
 account-analytic
+web
