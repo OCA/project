@@ -4,13 +4,14 @@
 # 
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2017
+# Bole <bole@dajmi5.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-17 02:52+0000\n"
-"PO-Revision-Date: 2017-06-17 02:52+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"POT-Creation-Date: 2017-07-06 02:45+0000\n"
+"PO-Revision-Date: 2017-07-06 02:45+0000\n"
+"Last-Translator: Bole <bole@dajmi5.com>, 2017\n"
 "Language-Team: Croatian (https://www.transifex.com/oca/teams/23907/hr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,13 +22,13 @@ msgstr ""
 #. module: project_department
 #: model:ir.ui.view,arch_db:project_department.view_project_project_filter
 msgid "Department"
-msgstr ""
+msgstr "Odjel"
 
 #. module: project_department
 #: model:ir.model.fields,field_description:project_department.field_project_task_project_department_id
 #: model:ir.ui.view,arch_db:project_department.view_task_search_form
 msgid "Project Department"
-msgstr ""
+msgstr "Projektni odjel"
 
 #. module: project_department
 #: model:ir.model,name:project_department.model_project_task
