@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <report
+        id="report_taskorder"
+        model="project.task"
+        string="Task Order"
+        report_type="qweb-pdf"
+        name="project_task_digitized_signature.report_taskorder_document"/>
+
+</odoo>
