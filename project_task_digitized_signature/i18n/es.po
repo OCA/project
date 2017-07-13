@@ -183,4 +183,3 @@ msgstr "Tarea"
 #: model:ir.actions.report.xml,name:project_task_digitized_signature.report_taskorder
 msgid "Task Order"
 msgstr "Tarea"
-

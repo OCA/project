@@ -40,3 +40,16 @@ class ProjectTask(models.Model):
             'target': 'new',
             'context': ctx,
         }
+
+    @api.model
+    def create(self, values):
+        task = super(ProjectTask, self).create(values)
+        if task.customer_signature:
+            values = {'customer_signature': task.customer_signature}
+            task._track_signature(values, 'customer_signature')
+        return task
+
+    @api.multi
+    def write(self, values):
+        self.env['mail.thread']._track_signature(values, 'customer_signature')
+        return super(ProjectTask, self).write(values)
