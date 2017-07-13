@@ -20,18 +20,17 @@
 
 {
     'name': 'Add State field to Project Stages',
-    'version': '8.0.1.0.0',
-    'category': 'Project Management',
     'summary': 'Restore State attribute removed from Project Stages in 8.0',
-    'author': "Daniel Reis,Odoo Community Association (OCA)",
-    'website': 'https://github.com/OCA/project-service',
+    'version': '9.0.1.0.0',
+    'category': 'Project Management',
+    'author': "Daniel Reis, Odoo Community Association (OCA)",
+    'website': 'https://github.com/OCA/project',
     'license': 'AGPL-3',
     'depends': [
         'project',
     ],
     'data': [
-        'project_view.xml',
-        'security/ir.model.access.csv',
+        'views/project_task_view.xml',
         ],
-    'installable': False,
+    'installable': True,
 }
