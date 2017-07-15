@@ -3,14 +3,17 @@
 # * project_stage_state
 # 
 # Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
+# Pedro Castro Silva <pedrocs@sossia.pt>, 2017
+# Daniel Reis <dreis.pt@gmail.com>, 2017
 msgid ""
 msgstr ""
-"Project-Id-Version: project (8.0)\n"
+"Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-08 09:57+0000\n"
-"PO-Revision-Date: 2015-07-21 19:20+0000\n"
-"Last-Translator: <>\n"
-"Language-Team: Portuguese (Portugal) (http://www.transifex.com/oca/OCA-project-8-0/language/pt_PT/)\n"
+"POT-Creation-Date: 2017-07-14 02:48+0000\n"
+"PO-Revision-Date: 2017-07-14 02:48+0000\n"
+"Last-Translator: Daniel Reis <dreis.pt@gmail.com>, 2017\n"
+"Language-Team: Portuguese (Portugal) (https://www.transifex.com/oca/teams/23907/pt_PT/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -20,32 +23,33 @@ msgstr ""
 #. module: project_stage_state
 #: selection:project.task.type,state:0
 msgid "Cancelled"
-msgstr ""
+msgstr "Cancelado"
 
 #. module: project_stage_state
 #: selection:project.task.type,state:0
 msgid "Done"
-msgstr ""
+msgstr "Concluído"
 
 #. module: project_stage_state
 #: selection:project.task.type,state:0
 msgid "In Progress"
-msgstr ""
+msgstr "Em Curso"
 
 #. module: project_stage_state
 #: selection:project.task.type,state:0
 msgid "New"
-msgstr ""
+msgstr "Novo"
 
 #. module: project_stage_state
 #: selection:project.task.type,state:0
 msgid "Pending"
-msgstr ""
+msgstr "Pendente"
 
 #. module: project_stage_state
-#: field:project.task,state:0 field:project.task.type,state:0
+#: model:ir.model.fields,field_description:project_stage_state.field_project_task_state
+#: model:ir.model.fields,field_description:project_stage_state.field_project_task_type_state
 msgid "State"
-msgstr ""
+msgstr "Estado"
 
 #. module: project_stage_state
 #: model:ir.model,name:project_stage_state.model_project_task
@@ -55,4 +59,4 @@ msgstr "Tarefa"
 #. module: project_stage_state
 #: model:ir.model,name:project_stage_state.model_project_task_type
 msgid "Task Stage"
-msgstr ""
+msgstr "Etapa da Tarefa"
