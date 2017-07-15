@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-28 08:32+0000\n"
-"PO-Revision-Date: 2017-04-28 08:32+0000\n"
+"POT-Creation-Date: 2017-07-08 06:27+0000\n"
+"PO-Revision-Date: 2017-07-08 06:27+0000\n"
 "Last-Translator: Bole <bole@dajmi5.com>, 2017\n"
 "Language-Team: Croatian (https://www.transifex.com/oca/teams/23907/hr/)\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr ""
 #. module: project_model_to_task
 #: model:ir.model.fields,field_description:project_model_to_task.field_project_task_action_id
 msgid "Action"
-msgstr ""
+msgstr "Radnja"
 
 #. module: project_model_to_task
 #: model:ir.model.fields,help:project_model_to_task.field_project_task_action_id
@@ -61,7 +61,7 @@ msgstr ""
 #. module: project_model_to_task
 #: model:ir.ui.view,arch_db:project_model_to_task.view_task_form2
 msgid "Open"
-msgstr ""
+msgstr "Otvoreno"
 
 #. module: project_model_to_task
 #: model:ir.ui.menu,name:project_model_to_task.task_linked_to_other_record_menu
