@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2017 ACSONE SA/NV
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record model="ir.ui.view" id="project_project_form_view">
+        <field name="name">project.project.form (in project_timesheet_hours)</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+
+            <notebook position="inside">
+                <page string="Time" name="time_page">
+                    <group>
+                        <field name="planned_hours"/>
+                        <field name="total_hours_spent"/>
+                        <field name="progress" widget="progressbar"/>
+                    </group>
+                </page>
+            </notebook>
+
+        </field>
+    </record>
+
+
+    <record model="ir.ui.view" id="project_project_tree_view">
+        <field name="name">project.project.tree (in project_timesheet_hours)</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project"/>
+        <field name="priority" eval="99"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[last()]" position="after">
+                <field name="progress" widget="progressbar"/>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>
