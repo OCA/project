@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <openerp>
     <data>
 
         <record id="project_task_alert_form" model="ir.ui.view">
-            <field name="name">project.task.alert</field>
             <field name="model">project.task.alert</field>
             <field eval="1" name="priority" />
             <field name="arch" type="xml">
@@ -35,7 +34,6 @@
         </record>
 
         <record id="project_task_alert_tree" model="ir.ui.view">
-            <field name="name">project.task.alert.tree</field>
             <field name="model">project.task.alert</field>
             <field name="arch" type="xml">
                 <tree string="Alert">

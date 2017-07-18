@@ -3,7 +3,6 @@
     <data>
 
         <record id="project_task_completion_form" model="ir.ui.view">
-            <field name="name">project.task.form.completion</field>
             <field name="model">project.task</field>
             <field name="inherit_id" ref="project.view_task_form2" />
             <field name="arch" type="xml">

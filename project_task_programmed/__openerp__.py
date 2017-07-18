@@ -1,14 +1,13 @@
 # -*- coding: utf-8 -*-
-# © 2016 ONESTEiN BV (<http://www.onestein.eu>)
+# Copyright 2016 Onestein (<http://www.onestein.eu>)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 {
-    'name': "Task Reminder Planner",
-    'summary': """Plan task reminders for any date field.""",
-    'author': "ONESTEiN BV,Odoo Community Association (OCA)",
+    'name': 'Task Reminder Programmed',
+    'summary': 'Plan task reminders for any date field',
+    'author': 'Onestein, Odoo Community Association (OCA)',
     'license': 'AGPL-3',
-    'website': "http://www.onestein.eu",
-    'images': ['static/description/main_screenshot.png'],
+    'website': 'http://www.onestein.eu',
     'category': 'Custom',
     'version': '8.0.1.0.0',
     'depends': [

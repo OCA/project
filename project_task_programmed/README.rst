@@ -1,9 +1,9 @@
 .. image:: https://img.shields.io/badge/licence-AGPL--3-blue.svg
-   :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
+   :target: http://www.gnu.org/licenses/agpl
    :alt: License: AGPL-3
 
 ========================
-Task Reminder Programmer
+Task Reminder Programmed
 ========================
 
 Create automatically tasks as a reminder for any document (model) based on a date field.
@@ -58,18 +58,13 @@ available for group Technical Features.
    :target: https://runbot.odoo-community.org/runbot/140/8.0
 
 
-Known issues / Roadmap
-======================
-
-
-
 Bug Tracker
 ===========
 
 Bugs are tracked on `GitHub Issues
 <https://github.com/OCA/project/issues>`_. In case of trouble, please
 check there if your issue has already been reported. If you spotted it first,
-help us smashing it by providing a detailed and welcomed feedback.
+help us smash it by providing detailed and welcomed feedback.
 
 Credits
 =======
