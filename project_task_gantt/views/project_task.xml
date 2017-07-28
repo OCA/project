@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2017 ACSONE SA/NV
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record model="ir.ui.view" id="project_task_form_view">
+        <field name="name">project.task.form (in project_task_form)</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='sequence']/ancestor::page[1]" position="inside">
+                <group string="Gantt view" name="gantt_info">
+                    <field name="date_start"/>
+                    <field name="date_end"/>
+                </group>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="project_task_gantt_view">
+        <field name="name">project.task.gantt (in project_task_gantt)</field>
+        <field name="model">project.task</field>
+        <field name="arch" type="xml">
+
+            <gantt date_start="date_start"
+                   date_stop="date_end"
+                   string="Tasks"
+                   default_group_by="project_id"/>
+
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="project.action_view_task">
+        <field name="view_mode">kanban,tree,form,calendar,gantt,timeline,pivot,graph</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="project.act_project_project_2_project_task_all">
+        <field name="view_mode">kanban,tree,form,calendar,gantt,pivot,graph</field>
+    </record>
+
+</odoo>
