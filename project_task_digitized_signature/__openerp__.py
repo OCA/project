@@ -18,7 +18,6 @@
         "report/report_taskorder.xml",
         "report/project_task_views.xml",
         "views/project_task_views.xml",
-        "data/task_template.xml",
     ],
     "installable": True,
 }
