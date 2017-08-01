@@ -3,83 +3,86 @@
 # * project_task_default_stage
 # 
 # Translators:
+# Peter Hageman <hageman.p@gmail.com>, 2017
 msgid ""
 msgstr ""
-"Project-Id-Version: project (9.0)\n"
+"Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-02-24 23:53+0000\n"
-"PO-Revision-Date: 2016-02-24 23:53+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
-"Language-Team: Spanish (http://www.transifex.com/oca/OCA-project-9-0/language/es/)\n"
+"POT-Creation-Date: 2017-06-17 02:52+0000\n"
+"PO-Revision-Date: 2017-06-17 02:52+0000\n"
+"Last-Translator: Peter Hageman <hageman.p@gmail.com>, 2017\n"
+"Language-Team: Dutch (Netherlands) (https://www.transifex.com/oca/teams/23907/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: es\n"
+"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_analysis
 msgid "Analysis"
-msgstr "Análisis"
+msgstr "Analyse"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_cancel
 msgid "Cancelled"
-msgstr "Cancelado"
+msgstr "Geannuleerd"
 
 #. module: project_task_default_stage
 #: model:ir.model.fields,field_description:project_task_default_stage.field_project_task_type_case_default
 msgid "Default for New Projects"
-msgstr "Por defecto para nuevos proyectos"
+msgstr "Standaard voor Nieuwe Projecten"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_design
 msgid "Design"
-msgstr "Diseño"
+msgstr "Ontwerp"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_development
 msgid "Development"
-msgstr "En desarrollo"
+msgstr "Ontwikkeling"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_deployment
 msgid "Done"
-msgstr "Realizado"
+msgstr "Gereed"
 
 #. module: project_task_default_stage
 #: model:ir.model.fields,help:project_task_default_stage.field_project_task_type_case_default
 msgid ""
 "If you check this field, this stage will be proposed by default on each new "
 "project. It will not assign this stage to existing projects."
-msgstr "Si marca este campo, esta etapa será propuesta por defecto en cada proyecto nuevo. No se asignará esta etapa a proyectos ya existentes."
+msgstr ""
+"Indien je dit veld aanvinkt, zal deze fase standaard worden toegevoegd aan "
+"elk nieuw project. Het zal deze fase niet toevoegen aan bestaande projecten."
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_merge
 msgid "Merge"
-msgstr "Fusionar"
+msgstr "Samenvoegen"
 
 #. module: project_task_default_stage
 #: model:ir.model,name:project_task_default_stage.model_project_project
 msgid "Project"
-msgstr "Proyecto"
+msgstr "Project"
 
 #. module: project_task_default_stage
 #: model:ir.ui.view,arch_db:project_task_default_stage.edit_project
 msgid "Project Stages"
-msgstr "Etapas del proyecto"
+msgstr "Projectfasen"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_specification
 msgid "Specification"
-msgstr "Especificación"
+msgstr "Specificatie"
 
 #. module: project_task_default_stage
 #: model:ir.model,name:project_task_default_stage.model_project_task_type
 msgid "Task Stage"
-msgstr "Fase de la tarea"
+msgstr "Taakfase"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_testing
 msgid "Testing"
-msgstr "Testeo"
+msgstr "Testen"

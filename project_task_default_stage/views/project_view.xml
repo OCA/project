@@ -12,6 +12,17 @@
         </field>
     </record>
 
+    <record id="task_type_tree" model="ir.ui.view">
+        <field name="name">project.task.type.tree.inherit</field>
+        <field name="model">project.task.type</field>
+        <field name="inherit_id" ref="project.task_type_tree"/>
+        <field name="arch" type="xml">
+            <field name="fold" position="before">
+                <field name="case_default"/>
+            </field>
+        </field>
+    </record>
+
     <record id="edit_project" model="ir.ui.view">
         <field name="name">project.project.form.inherit</field>
         <field name="model">project.project</field>
