@@ -6,7 +6,7 @@
 {
     'name': 'Project Task Default Stage',
     'summary': 'Recovery default task stage projects from v8',
-    'version': '10.0.1.0.0',
+    'version': '10.0.1.1.0',
     'category': 'Project',
     'author': 'Tecnativa, '
               'Odoo Community Association (OCA)',
