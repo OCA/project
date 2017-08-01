@@ -6,11 +6,16 @@
 Project Task Digitized Signature
 ================================
 
-This module adds a signature field (using ``web_widget_digitized_signature``)
-to task report.
+This module adds a signature field to task report.
 
-Also a button has been added to task form to allow users to send by email the
-task report with digitized signature.
+Installation
+============
+
+This module depends on :
+
+* web_widget_digitized_signature
+
+This module is part of the OCA/web suite.
 
 Configuration
 =============
