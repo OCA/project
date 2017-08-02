@@ -11,12 +11,11 @@
     "category": "Project Management",
     "license": "AGPL-3",
     "depends": [
-        "project",
+        "project_task_report",
         "web_widget_digitized_signature",
     ],
     "data": [
-        "report/report_taskorder.xml",
-        "report/project_task_views.xml",
+        "report/project_task_report.xml",
         "views/project_task_views.xml",
     ],
     "installable": True,
