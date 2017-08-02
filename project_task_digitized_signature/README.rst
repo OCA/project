@@ -17,10 +17,13 @@ This module depends on :
 
 This module is part of the OCA/web suite.
 
+* project_task_report
+
+This module is part of the OCA/project-reporting suite.
+
 Configuration
 =============
 
-#. Go to **Settings > Users > Users** and set a digital signature for a user.
 #. Go to **Project > Search > Tasks** and print a task order. Signature will be
    added to task report.
 
@@ -35,7 +38,7 @@ Bug Tracker
 ===========
 
 Bugs are tracked on `GitHub Issues
-<https://github.com/OCA/project-service/issues>`_. In case of trouble, please
+<https://github.com/OCA/project/issues>`_. In case of trouble, please
 check there if your issue has already been reported. If you spotted it first,
 help us smash it by providing detailed and welcomed feedback.
 
