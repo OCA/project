@@ -4,6 +4,7 @@
 
 {
     "name": "Project Task Send By Mail",
+    "summary": "Send task report by email",
     "version": "9.0.1.0.0",
     "author": "Tecnativa, "
                "Odoo Community Association (OCA)",
@@ -11,8 +12,7 @@
     "category": "Project Management",
     "license": "AGPL-3",
     "depends": [
-        "project",
-        "mail",
+        "project_task_report",
     ],
     "data": [
         "views/project_task_views.xml",
