@@ -16,7 +16,6 @@ To use this module, you need to:
 
 * Go to a Task Order.
 * Click on the button Send by Email.
-* Select the template: Task Order - Send by Email.
 * And click on the button Send.
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
