@@ -21,14 +21,19 @@ This module is part of the OCA/web suite.
 
 This module is part of the OCA/project-reporting suite.
 
-Configuration
-=============
-
-#. Go to **Project > Search > Tasks** and print a task order. Signature will be
-   added to task report.
-
 Usage
 =====
+
+#. Go to **Project > Search > Tasks** and edit any existent task.
+#. If you go to **Description** tab you will see a box ready to write a
+   signature by your customer.
+#. Save Task.
+#. Every time you modify signature, a message is saved in chatter to log any
+   changes on it.
+#. You can clear signature in any moment by clicking on the **Clear** link
+   located on the right side of signature box.
+#. If you print Task, signature was added to report task.
+
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
