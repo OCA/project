@@ -3,7 +3,7 @@
 # © 2016 Carlos Dauden <carlos.dauden@tecnativa.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl-3.html).
 
-from openerp import api, exceptions, fields, models, _
+from odoo import api, exceptions, fields, models, _
 
 
 class ProjectProject(models.Model):

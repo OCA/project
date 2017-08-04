@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
-# © 2016 Pedro M. Baeza <pedro.baeza@tecnativa.com>
+# Copyright 2016-2017 Pedro M. Baeza <pedro.baeza@tecnativa.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl-3.html).
 
-from openerp.tests import common
-from openerp import exceptions
+from odoo.tests import common
+from odoo import exceptions
 from ..hooks import post_init_hook, uninstall_hook
 
 
@@ -12,7 +12,7 @@ class TestProjectDoubleAlias(common.TransactionCase):
         super(TestProjectDoubleAlias, self).setUp()
         self.project = self.env['project.project'].create({
             'name': 'Test project',
-            'second_alias_name': 'test',
+            'second_alias_name': 'test_second',
         })
         self.issue_model = self.env['ir.model'].search(
             [('model', '=', 'project.issue')])
@@ -60,7 +60,7 @@ class TestProjectDoubleAlias(common.TransactionCase):
         with self.assertRaises(exceptions.ValidationError):
             self.env['project.project'].create({
                 'name': 'Test project 2',
-                'second_alias_name': 'test',
+                'second_alias_name': 'test_second',
             })
 
     def test_hooks(self):
