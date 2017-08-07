@@ -32,6 +32,7 @@ Configuration
 #. Go to *Settings > Parameters > System parameters*.
 #. Create or edit the parameter with the name "mail.catchall.domain", and put
    as value the domain of your mail server.
+#. System parameter "mail.catchall.alias" needs to be configured as well.
 
 Usage
 =====
