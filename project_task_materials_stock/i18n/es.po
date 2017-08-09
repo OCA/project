@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * project_task_materials_stock
-# 
+#
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2017
 # Antonio Trueba <atgayol@gmail.com>, 2017
@@ -52,18 +52,21 @@ msgstr ""
 
 #. module: project_task_materials_stock
 #: model:ir.model.fields,help:project_task_materials_stock.field_project_project_location_source_id
+#: model:ir.model.fields,help:project_task_materials_stock.field_project_task_location_source_id
 msgid "Default location from which materials are consumed."
-msgstr ""
+msgstr "Ubicación origen predeterminada donde se consumen los materiales."
 
 #. module: project_task_materials_stock
 #: model:ir.model.fields,help:project_task_materials_stock.field_project_project_location_dest_id
+#: model:ir.model.fields,help:project_task_materials_stock.field_project_task_location_dest_id
 msgid "Default location to which materials are consumed."
-msgstr ""
+msgstr "Ubicación destino predeterminada donde se consumen los materiales."
 
 #. module: project_task_materials_stock
 #: model:ir.model.fields,field_description:project_task_materials_stock.field_project_project_location_dest_id
+#: model:ir.model.fields,field_description:project_task_materials_stock.field_project_task_location_dest_id
 msgid "Destination Location"
-msgstr ""
+msgstr "Ubicación destino"
 
 #. module: project_task_materials_stock
 #: selection:project.task,stock_state:0
@@ -80,8 +83,9 @@ msgstr ""
 
 #. module: project_task_materials_stock
 #: model:ir.ui.view,arch_db:project_task_materials_stock.edit_project_consume_material
+#: model:ir.ui.view,arch_db:project_task_materials_stock.view_project_task_form_materials_stock
 msgid "Locations to consume"
-msgstr ""
+msgstr "Ubicaciones donde consumir"
 
 #. module: project_task_materials_stock
 #: model:ir.ui.view,arch_db:project_task_materials_stock.view_project_task_form_materials_stock
@@ -110,6 +114,7 @@ msgstr "Proyecto"
 
 #. module: project_task_materials_stock
 #: model:ir.model.fields,field_description:project_task_materials_stock.field_project_project_location_source_id
+#: model:ir.model.fields,field_description:project_task_materials_stock.field_project_task_location_source_id
 msgid "Source Location"
 msgstr "Ubicación origen"
 
