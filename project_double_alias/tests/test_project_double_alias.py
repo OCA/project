@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
-# © 2016 Pedro M. Baeza <pedro.baeza@tecnativa.com>
+# Copyright 2016-2017 Pedro M. Baeza <pedro.baeza@tecnativa.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl-3.html).
 
-from openerp.tests import common
-from openerp import exceptions
+from odoo.tests import common
+from odoo import exceptions
 from ..hooks import post_init_hook, uninstall_hook
 
 
@@ -12,7 +12,7 @@ class TestProjectDoubleAlias(common.TransactionCase):
         super(TestProjectDoubleAlias, self).setUp()
         self.project = self.env['project.project'].create({
             'name': 'Test project',
-            'second_alias_name': 'test',
+            'second_alias_name': 'test_second',
         })
         self.issue_model = self.env['ir.model'].search(
             [('model', '=', 'project.issue')])
@@ -26,8 +26,10 @@ class TestProjectDoubleAlias(common.TransactionCase):
         self.assertEqual(self.project.second_alias_id.alias_parent_thread_id,
                          self.project.id)
         self.project.alias_contact = 'followers'
-        self.assertEqual(
-            self.project.second_alias_id.alias_contact, 'followers')
+        second_alias = self.project.second_alias_id
+        self.assertEqual(second_alias.alias_contact, 'followers')
+        self.project.unlink()
+        self.assertFalse(second_alias.exists())
 
     def test_change_second_alias(self):
         self.project.second_alias_name = 'Test 2'
@@ -58,7 +60,7 @@ class TestProjectDoubleAlias(common.TransactionCase):
         with self.assertRaises(exceptions.ValidationError):
             self.env['project.project'].create({
                 'name': 'Test project 2',
-                'second_alias_name': 'test',
+                'second_alias_name': 'test_second',
             })
 
     def test_hooks(self):

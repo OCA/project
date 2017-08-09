@@ -3,7 +3,7 @@
 # © 2016 Carlos Dauden <carlos.dauden@tecnativa.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl-3.html).
 
-from openerp import api, exceptions, fields, models, _
+from odoo import api, exceptions, fields, models, _
 
 
 class ProjectProject(models.Model):
@@ -89,4 +89,14 @@ class ProjectProject(models.Model):
         if vals.get('alias_contact'):
             self.mapped('second_alias_id').write(
                 {'alias_contact': vals['alias_contact']})
+        return res
+
+    @api.multi
+    def unlink(self):
+        """Remove linked second aliases after removing the project to avoid
+        restrict ondelete error.
+        """
+        aliases = self.mapped('second_alias_id')
+        res = super(ProjectProject, self).unlink()
+        aliases.unlink()
         return res
