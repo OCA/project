@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2017 Daniel Reis
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<openerp>
+<data>
+
+<record id="project_add_state_form_view" model="ir.ui.view">
+    <field name="name">project.project.form Add State</field>
+    <field name="model">project.project</field>
+    <field name="inherit_id" ref="project.edit_project" />
+    <field name="arch" type="xml">
+
+        <page name="team" position="after">
+            <page name="status" string="Status Reports">
+
+                <group>
+                    <group>
+                        <field name="current_status_id" />
+                        <field name="current_status_summary" />
+                    </group>
+                    <group>
+                        <field name="current_status_state" widget="kanban_state_selection" nolabel="1" />
+                    </group>
+                </group>
+
+                <separator string="Status History" />
+                <field name="status_report_ids" context="{'default_project_id': id}">
+                    <tree decoration-bf="is_current_status">
+                        <field name="date" />
+                        <field name="summary" />
+                        <field name="state" />
+                    </tree>
+                </field>
+
+            </page>
+        </page>
+
+    </field>
+</record>
+
+</data>
+</openerp>

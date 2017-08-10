@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2017 Daniel Reis
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<openerp>
+<data>
+
+<record id="project_status_report_view_form" model="ir.ui.view">
+    <field name="name">Project Status Report Form</field>
+    <field name="model">project.status.report</field>
+    <field name="arch" type="xml">
+        <form string="Status Report">
+            <group>
+                <field name="date" />
+                <field name="summary" />
+                <field name="description" />
+                <field name="state" widget="kanban_state_selection" />
+                <field name="project_id" />
+            </group>
+        </form>
+    </field>
+</record>
+
+<record id="project_status_report_tree_form" model="ir.ui.view">
+    <field name="name">Project Status Report Tree</field>
+    <field name="model">project.status.report</field>
+    <field name="arch" type="xml">
+        <tree string="Status Report" decoration-bf="is_current_status">
+            <field name="project_id" />
+            <field name="date" />
+            <field name="state" widget="kanban_state_selection" />
+            <field name="summary" />
+        </tree>
+    </field>
+</record>
+
+</data>
+</openerp>
