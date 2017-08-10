@@ -10,19 +10,40 @@ class ProjectProject(models.Model):
     _inherit = 'project.project'
 
     planned_hours = fields.Float(
-        string="Planned hours", compute='_compute_hours', store=True)
+        string="Planned hours",
+        compute='_compute_planned_hours',
+        store=True
+    )
     total_hours_spent = fields.Float(
-        string="Total hours spent", compute='_compute_hours', store=True)
+        string="Total hours spent",
+        compute='_compute_spent_hours',
+        store=True
+    )
     progress = fields.Float(
-        string="Progress", compute='_compute_hours', store=True)
+        string="Progress",
+        compute='_compute_progress',
+        store=True
+    )
 
     @api.multi
     @api.depends(
-        'task_ids.planned_hours', 'task_ids.total_hours_spent')
-    def _compute_hours(self):
+        'task_ids.planned_hours')
+    def _compute_planned_hours(self):
         for rec in self:
             rec.planned_hours = rec._get_planned_hours()
+
+    @api.multi
+    @api.depends(
+        'task_ids.total_hours_spent')
+    def _compute_spent_hours(self):
+        for rec in self:
             rec.total_hours_spent = rec._get_total_hours_spent()
+
+    @api.multi
+    @api.depends(
+        'total_hours_spent', 'planned_hours')
+    def _compute_progress(self):
+        for rec in self:
             rec.progress = rec._get_progress()
 
     @api.multi

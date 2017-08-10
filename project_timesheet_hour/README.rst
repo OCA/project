@@ -19,6 +19,17 @@ Configuration
 
 No configuration needed.
 
+Usage
+=====
+
+You can check planned and effective hours for a project in the new "Time" tab,
+accessible through the project form view. A progress bar is also display
+on projects in the kanban view.
+
+.. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
+   :alt: Try me on Runbot
+   :target: https://runbot.odoo-community.org/runbot/140/10.0
+
 Bug Tracker
 ===========
 

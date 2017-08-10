@@ -3,7 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 {
-    'name': 'Project Timesheet Hours',
+    'name': 'Project Timesheet Hour',
     'summary': """
         Display the total of hours spent for a project""",
     'version': '10.0.1.0.0',
