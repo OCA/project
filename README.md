@@ -22,6 +22,7 @@ addon | version | summary
 [project_closing](project_closing/) | 10.0.1.0.0 | Project closing
 [project_department](project_department/) | 10.0.1.0.0 | Project Department Categorization
 [project_description](project_description/) | 10.0.1.0.0 | Add a description to projects
+[project_double_alias](project_double_alias/) | 10.0.1.0.0 | Define an alias for tasks and another alias for issues
 [project_issue_code](project_issue_code/) | 10.0.1.0.0 | Adding Field Code For Project Issue
 [project_issue_timesheet_time_control](project_issue_timesheet_time_control/) | 10.0.1.0.0 | Project issue timesheet time control
 [project_model_to_task](project_model_to_task/) | 10.0.0.1.0 | Project Model to Task
@@ -30,9 +31,10 @@ addon | version | summary
 [project_stage_state](project_stage_state/) | 10.0.1.0.0 | Restore State attribute removed from Project Stages in 8.0
 [project_task_add_very_high](project_task_add_very_high/) | 10.0.1.0.0 | Adds an extra option 'Very High' on tasks
 [project_task_code](project_task_code/) | 10.0.1.0.0 | Sequential Code for Tasks
-[project_task_default_stage](project_task_default_stage/) | 10.0.1.0.0 | Recovery default task stage projects from v8
+[project_task_default_stage](project_task_default_stage/) | 10.0.1.1.0 | Recovery default task stage projects from v8
 [project_task_dependency](project_task_dependency/) | 10.0.1.0.0 | Enables to define dependencies (other tasks) of a task
 [project_task_material](project_task_material/) | 10.0.1.0.0 | Record products spent in a Task
+[project_task_material_stock](project_task_material_stock/) | 10.0.1.0.0 | Create stock and analytic moves from record products spent in a Task
 [project_task_pull_request](project_task_pull_request/) | 10.0.1.0.0 | Adds a field for a PR URI to project tasks
 [project_timeline](project_timeline/) | 10.0.1.0.0 | Timeline view for projects
 [project_timesheet_currency](project_timesheet_currency/) | 10.0.1.0.0 | Multi-currency analytic costs
@@ -49,7 +51,6 @@ addon | version | summary
 [project_categ](project_categ/) | 8.0.0.1.0 (unported) | Allow for Project specific category lists for Tasks
 [project_categ_issue](project_categ_issue/) | 8.0.0.1.0 (unported) | Projects Issues can have an allowed category list
 [project_classification](project_classification/) | 8.0.1.0 (unported) | Project classification (easy hierarchy and setup for project managers)
-[project_double_alias](project_double_alias/) | 9.0.1.0.0 (unported) | Define an alias for tasks and another alias for issues
 [project_functional_block](project_functional_block/) | 1.2 (unported) | Project requiring functional blocks
 [project_gtd](project_gtd/) | 8.0.2.0.0 (unported) | Personal Tasks, Contexts, Timeboxes
 [project_issue_baseuser](project_issue_baseuser/) | 8.0.1.0.0 (unported) | Extend Project user roles to support more complex use cases
