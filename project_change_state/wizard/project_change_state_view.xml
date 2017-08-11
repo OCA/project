@@ -11,11 +11,11 @@
                         projects simultaneously.
                     </p>
                     <footer>
-                        <button name="set_pending" string="Pending" class="oe_highlight" type="object" groups="base.group_user"/>
-                        <button name="set_open" string="Re-open Project" type="object" groups="base.group_user"/>
-                        <button name="set_close" string="Close Project" type="object" groups="base.group_user"/>
-                        <button name="set_cancel" string="Cancel Project" type="object" groups="base.group_user"/>
-                        <button string="Cancel" class="oe_link" special="cancel" groups="base.group_user"/>
+                        <button name="set_pending" string="Pending" class="oe_highlight" type="object"/>
+                        <button name="set_open" string="Re-open Project" type="object"/>
+                        <button name="set_done" string="Close Project" type="object"/>
+                        <button name="set_cancel" string="Cancel Project" type="object"/>
+                        <button string="Cancel" class="oe_link" special="cancel"/>
                     </footer>
                 </form>
             </field>

@@ -11,23 +11,27 @@ class ProjectChangeState(models.TransientModel):
     @api.multi
     def set_pending(self):
         project_ids = self.env.context.get('active_ids')
-        self.env['project.project'].browse(project_ids).set_pending()
+        projects = self.env['project.project'].browse(project_ids)
+        projects.set_pending()
         return {'type': 'ir.actions.act_window_close'}
 
     @api.multi
     def set_open(self):
         project_ids = self.env.context.get('active_ids')
-        self.env['project.project'].browse(project_ids).set_open()
+        projects = self.env['project.project'].browse(project_ids)
+        projects.set_open()
         return {'type': 'ir.actions.act_window_close'}
 
     @api.multi
-    def set_close(self):
+    def set_done(self):
         project_ids = self.env.context.get('active_ids')
-        self.env['project.project'].browse(project_ids).set_close()
+        projects = self.env['project.project'].browse(project_ids)
+        projects.set_done()
         return {'type': 'ir.actions.act_window_close'}
 
     @api.multi
     def set_cancel(self):
         project_ids = self.env.context.get('active_ids')
-        self.env['project.project'].browse(project_ids).set_cancel()
+        projects = self.env['project.project'].browse(project_ids)
+        projects.set_cancel()
         return {'type': 'ir.actions.act_window_close'}
