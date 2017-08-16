@@ -1,11 +1,10 @@
 <?xml version="1.0" ?>
-<openerp>
-    <data>
+<odoo>
     <record model="ir.ui.view" id="view_gtd_context_tree">
         <field name="name">project.gtd.context.tree</field>
         <field name="model">project.gtd.context</field>
         <field name="arch" type="xml">
-            <tree string="Context">
+            <tree>
                 <field name="sequence" invisible="1"/>
                 <field name="name"/>
             </tree>
@@ -16,7 +15,7 @@
         <field name="name">project.gtd.context.form</field>
         <field name="model">project.gtd.context</field>
         <field name="arch" type="xml">
-            <form string="Context" version="7.0">
+            <form name="Context">
                 <group col="4">
                     <field name="name"/>
                     <field name="sequence"/>
@@ -38,7 +37,7 @@
         <field name="name">project.gtd.timebox.tree</field>
         <field name="model">project.gtd.timebox</field>
         <field name="arch" type="xml">
-            <tree string="Timebox">
+            <tree name="Timebox">
                 <field name="sequence" invisible="1"/>
                 <field name="name"/>
             </tree>
@@ -49,8 +48,8 @@
         <field name="name">project.gtd.timebox.form</field>
         <field name="model">project.gtd.timebox</field>
         <field name="arch" type="xml">
-            <form string="Timeboxes" version="7.0">
-                <group col="4" string="Timebox Definition">
+            <form name="Timeboxes" version="7.0">
+                <group col="4" name="Timebox Definition">
                     <field name="name"/>
                     <field name="sequence"/>
                 </group>
@@ -74,7 +73,8 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_tree2" />
         <field name="arch" type="xml">
-            <field name="remaining_hours" position="after">
+            <!-- TODO -->
+            <field name="date_deadline" position="after">
                 <field string="Timeframe" name="timebox_id" invisible=" not context.get('gtd', False)"/>
                 <field name="context_id" invisible="not context.get('context_show', False)" widget="selection"/>
             </field>
@@ -86,7 +86,8 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_form2" />
         <field name="arch" type="xml">
-            <field name="progress" position="after">
+            <!-- TODO -->
+            <field name="tag_ids" position="after">
                 <field name="context_id" widget="selection" options='{"no_open": True}'/>
                 <field name="timebox_id" widget="selection" options='{"no_open": True}'  string="Timeframe"/>
             </field>
@@ -98,12 +99,12 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_search_form"/>
         <field name="arch" type="xml">
-            <filter name="message_unread" position="after">
-                <group string="Timebox">
+            <filter name="message_needaction" position="after">
+                <group name="Timebox">
                     <separator name="gtdsep"/>
                 </group>
             </filter>
-            <filter string="Last Message" position="after">
+            <filter name="group_message_last_post" position="after">
                 <filter name="timebox_id" string="Timebox" domain="[]" context="{'group_by': 'timebox_id'}"/>
                 <filter name="context_id" string="Context" domain="[]" context="{'group_by': 'context_id'}"/>
             </filter>
@@ -114,8 +115,12 @@
         <field name="name">Tasks (GTD)</field>
         <field name="res_model">project.task</field>
         <field name="search_view_id" ref="view_task_gtd_search"/>
-        <field name="context">{'set_visible': True, 'gtd': True, 'search_default_timebox_id': 1}</field>
-        <field name="domain">[('stage_id.sequence', '&lt;', 20)]</field>
+        <field name="context">
+            {'set_visible': True, 'gtd': True, 'search_default_timebox_id': 1}
+        </field>
+        <field name="domain">
+            ['|', ('stage_id.sequence', '&lt;', 20), ('stage_id', '=', False)]
+        </field>
         <field name="view_type">form</field>
         <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
     </record>
@@ -126,13 +131,18 @@
         <field name="name">My Tasks (GTD)</field>
         <field name="res_model">project.task</field>
         <field name="search_view_id" ref="view_task_gtd_search"/>
-        <field name="context">{'set_visible': True, 'gtd': True, 'user_invisible': True, 'search_default_timebox_id': 1}</field>
-        <field name="domain">[('user_id', '=', uid), ('stage_id.sequence', '&lt;', 20)]</field>
+        <field name="context">
+            {'set_visible': True, 'gtd': True,
+             'user_invisible': True, 'search_default_timebox_id': 1}
+        </field>
+        <field name="domain">
+            [('user_id', '=', uid),
+            '|', ('stage_id.sequence', '&lt;', 20), ('stage_id', '=', False)]
+        </field>
         <field name="view_type">form</field>
         <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
     </record>
     <menuitem action="open_gtd_task" id="menu_open_gtd_timebox_tree"
         parent="project.menu_project_management" sequence="11"/>
 
-    </data>
-</openerp>
+</odoo>
