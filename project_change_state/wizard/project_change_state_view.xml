@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="project_change_state_view" model="ir.ui.view">
+            <field name="name">project.change.state.form</field>
+            <field name="model">project.change.state</field>
+            <field name="arch" type="xml">
+                <form string="Change Project Status" version="7.0">
+                    <p class="oe_grey">
+                        You can change the status of multiple
+                        projects simultaneously.
+                    </p>
+                    <footer>
+                        <button name="set_pending" string="Pending" class="oe_highlight" type="object"/>
+                        <button name="set_open" string="Re-open Project" type="object"/>
+                        <button name="set_done" string="Close Project" type="object"/>
+                        <button name="set_cancel" string="Cancel Project" type="object"/>
+                        <button string="Cancel" class="oe_link" special="cancel"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <act_window id="action_project_change_state"
+            multi="True"
+            key2="client_action_multi" name="Change Project Status"
+            res_model="project.change.state" src_model="project.project"
+            view_mode="form" target="new" view_type="form" />
+    </data>
+</odoo>
