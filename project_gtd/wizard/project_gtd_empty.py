@@ -1,67 +1,42 @@
 # -*- coding: utf-8 -*-
-##############################################################################
-#
-#    OpenERP, Open Source Management Solution
-#    Copyright (C) 2004-2010 Tiny SPRL (<http://tiny.be>).
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as
-#    published by the Free Software Foundation, either version 3 of the
-#    License, or (at your option) any later version.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-##############################################################################
+# Copyright 2004-2010 Tiny SPRL <http://tiny.be>.
+# Copyright 2017 ABF OSIELL <http://osiell.com>
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp.osv import fields, osv
-from openerp.tools.translate import _
+from odoo import api, exceptions, fields, models
+from odoo.tools.translate import _
 
 
-class project_timebox_empty(osv.TransientModel):
+class ProjectTimeboxEmpty(models.TransientModel):
     _name = 'project.timebox.empty'
     _description = 'Project Timebox Empty'
-    _columns = {
-        'name': fields.char('Name', size=32),
-    }
 
-    def view_init(self, cr, uid, fields_list, context=None):
-        if context is None:
-            context = {}
-        self._empty(cr, uid, context=context)
+    name = fields.Char('Name', size=32)
 
-    def _empty(self, cr, uid, context=None):
+    @api.model
+    def _empty(self):
         close = []
         up = []
-        obj_tb = self.pool.get('project.gtd.timebox')
-        obj_task = self.pool.get('project.task')
+        timebox_model = self.env['project.gtd.timebox']
+        task_model = self.env['project.task']
 
-        if context is None:
-            context = {}
-        if 'active_id' not in context:
+        if not self.env.context.get('active_id'):
             return {}
 
-        ids = obj_tb.search(cr, uid, [], context=context)
-        if not len(ids):
-            raise osv.except_osv(
-                _('Error!'), _('No timebox child of this one!'))
-        tids = obj_task.search(
-            cr, uid, [('timebox_id', '=', context['active_id'])])
-        for task in obj_task.browse(cr, uid, tids, context):
+        timeboxes = timebox_model.search([])
+        if not timeboxes:
+            raise exceptions.UserError(
+                _('No timebox child of this one!'))
+        tasks = task_model.search([
+            ('timebox_id', '=', self.env.context['active_id'])])
+        for task in tasks:
             if (task.stage_id and task.stage_id.fold) \
-                    or (task.user_id.id != uid):
+                    or (task.user_id.id != self.env.uid):
                 close.append(task.id)
             else:
                 up.append(task.id)
         if up:
-            obj_task.write(cr, uid, up, {'timebox_id': ids[0]})
+            task_model.browse(up).write({'timebox_id': timeboxes[0].id})
         if close:
-            obj_task.write(cr, uid, close, {'timebox_id': False})
+            task_model.browse(close).write({'timebox_id': False})
         return {}
-
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
