@@ -19,6 +19,7 @@ Available addons
 ----------------
 addon | version | summary
 --- | --- | ---
+[project_change_state](project_change_state/) | 9.0.1.0.0 | Change the status of multiple projects simultaneously.
 [project_department](project_department/) | 9.0.1.0.0 | Project Department Categorization
 [project_description](project_description/) | 9.0.1.0.0 | Add a description to projects
 [project_double_alias](project_double_alias/) | 9.0.1.0.0 | Define an alias for tasks and another alias for issues
