@@ -1,0 +1,54 @@
+<?xml version ="1.0" encoding="utf-8"?>
+<!--
+    (c) 2016 Sodexis
+    License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+
+<odoo>
+    <record id="view_task_tree2" model="ir.ui.view">
+        <field name="name">project.task.tree</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_tree2"/>
+        <field name="arch" type="xml">
+            <field name="user_id" position="after">
+                <field name="delegated_user_id" invisible="context.get('show_delegated', True)"/>
+            </field>
+        </field>
+    </record>
+    <record id="view_task_form2" model="ir.ui.view">
+        <field name="name">project.task.form</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='description_page']"
+                position="after">
+                <page string="Delegation"
+                    groups="project_task_delegate.group_delegate_task">
+                    <group>
+                        <div>
+                            <button name="%(action_project_task_delegate)d"
+                                string="Delegate" type="action"
+                                groups="project_task_delegate.group_delegate_task"
+                                icon="fa-tasks"/>
+                        </div>
+                    </group>
+                    <separator string="Parent Tasks"/>
+                    <field name="parent_ids"/>
+                    <separator string="Delegated Tasks"/>
+                    <field name="child_ids">
+                        <tree name="delegated_task" string="Delegated tasks">
+                            <field name="name"/>
+                            <field name="user_id"/>
+                            <field name="stage_id"/>
+                            <field name="date_deadline"/>
+                            <field name="effective_hours" widget="float_time"/>
+                            <field name="progress" widget="progressbar"/>
+                            <field name="remaining_hours" widget="float_time"/>
+                        </tree>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
+
