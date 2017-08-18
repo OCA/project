@@ -134,12 +134,15 @@
 
                 <xpath expr='//notebook' position="before">
                     <group name="root_accounts" string="Project Configuration">
-                        <group>
+                        <group name="class">
                             <field name="account_class" string="Class"/>
+                            <field name="analytic_account_id"
+                                   readonly="1" required="0"
+                                   domain="[('account_class', '=', 'project')]"/>
                             <field name="project_analytic_id"
                                    domain="[('account_class', '=', 'project')]"/>
                         </group>
-                        <group>
+                        <group name="code">
                             <field name="code" string="Code"/>
                             <field name="complete_wbs_code" string="WBS code" readonly="1" />
                         </group>
@@ -147,14 +150,16 @@
                 </xpath>
                 <notebook position="inside">
                     <page string="Work Breakdown Structure">
-                        <group>
+                        <group name="button">
                             <button name="%(create_wbs_element)d"
                               string="Create child WBS element"
                               type="action"
-                              context="{'default_parent_id':analytic_account_id,'default_partner_id':partner_id,'default_user_id':user_id}"/>
+                              context="{'default_parent_id':analytic_account_id,'default_partner_id':partner_id,'default_user_id':user_id,
+                              'default_use_tasks':use_tasks}"/>
                         </group>
                         <tree string="Work Breakdown Structure" editable="bottom">
-                            <field name="project_child_complete_ids" nolabel="1" widget="one2many_list"/>
+                            <field name="project_child_complete_ids" nolabel="1" widget="one2many_list"
+                                   attrs="{'invisible': [('project_child_complete_ids', '!=', False)]}"/>
                         </tree>
                     </page>
 
@@ -238,7 +243,7 @@
            <field name="view_type">form</field>
            <field name="domain">[('account_class','in',['project'])]</field>
            <field name="view_mode">kanban,tree,form</field>
-           <field name="view_id" ref="project.view_project_kanban"/>
+           <field name="view_id" ref="project.view_project"/>
            <field name="search_view_id" ref="project.view_project_project_filter"/>
            <field name="context">{'search_default_current': 1, 'default_account_class':'project'}</field>
         </record>
@@ -264,7 +269,7 @@
             <field name="res_model">project.project</field>
             <field name="view_type">form</field>
             <field name="domain">
-                [('account_class','in',['deliverables'])]
+                [('account_class','in',['deliverable'])]
             </field>
             <field name="view_mode">kanban,tree,form</field>
             <field name="view_id" ref="project.view_project"/>
@@ -306,33 +311,32 @@
 
         <menuitem
             action="open_view_project_wbs"
-            id="project.menu_projects"
+            id="menu_project_wbs"
             name="Work Breakdown Structure"
-            parent="project.menu_project_management"
-            sequence="10"/>
+            parent="project.menu_projects"/>
 
         <menuitem
             action="group_project"
             id="menu_project_wbs_project"
             name="Projects"
-            parent="project.menu_projects"
+            parent="menu_project_wbs"
             sequence="10"/>
 
         <menuitem action="open_view_project_phases"
                   id="menu_project_wbs_phases" name="Phases"
-                  parent="project.menu_projects" sequence="20"/>
+                  parent="menu_project_wbs" sequence="20"/>
         <menuitem action="open_view_project_deliverables"
                   id="menu_project_wbs_deliverables" name="Deliverables"
-                  parent="project.menu_projects" sequence="30"/>
+                  parent="menu_project_wbs" sequence="30"/>
         <menuitem action="open_view_project_work_packages"
                   id="menu_project_work_packages" name="Work Packages"
-                  parent="project.menu_projects" sequence="40"/>
+                  parent="menu_project_wbs" sequence="40"/>
 
         <menuitem
             action="open_view_wbs_tree"
             id="menu_fullwbs"
             name="WBS overview"
-            parent="project.menu_projects"
+            parent="menu_project_wbs"
             sequence="50"/>
         <menuitem
             action="project.action_view_task"
