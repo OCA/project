@@ -5,7 +5,7 @@
 # Copyright 2017 Deneroteam.
 # Copyright 2017 Serpent Consulting Services Pvt. Ltd.
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
-from openerp.tests import common
+from odoo.tests import common
 
 
 class TestProjectWbs(common.TransactionCase):
@@ -33,11 +33,11 @@ class TestProjectWbs(common.TransactionCase):
 
     def test_wbs_code(self):
         self.assertEqual(
-            self.project.complete_wbs_code, '[0001]',
+            self.project.complete_wbs_code, '0001',
             'Incorrect WBS code')
         self.assertEqual(
-            self.project_son.complete_wbs_code, '[0001/01]',
+            self.project_son.complete_wbs_code, '0001/01',
             'Incorrect WBS code')
         self.assertEqual(
-            self.project_grand_son.complete_wbs_code, '[0001/01/02]',
+            self.project_grand_son.complete_wbs_code, '0001/01/02',
             'Incorrect WBS code')
