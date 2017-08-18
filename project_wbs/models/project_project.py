@@ -8,7 +8,7 @@
 
 import time
 from datetime import datetime, date
-from openerp import api, fields, models, _
+from odoo import api, fields, models, _
 
 
 class Project(models.Model):
@@ -128,9 +128,13 @@ class Project(models.Model):
         readonly=True,
         store=True
     )
-
+    account_class = fields.Selection(
+        related='analytic_account_id.account_class',
+        store=True,
+    )
     # Override the standard behaviour of duplicate_template not introducing
     # the (copy) string to the copied projects.
+
     @api.multi
     def duplicate_template(self):
         data_obj = self.env['ir.model.data']
@@ -279,11 +283,6 @@ class Project(models.Model):
                 "nodestroy": False
             })
         return res
-
-    @api.multi
-    @api.onchange('parent_id')
-    def on_change_parent(self):
-        return self.env['account.analytic.account'].on_change_parent()
 
     @api.multi
     def button_save_data(self):
