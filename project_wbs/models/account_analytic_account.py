@@ -5,7 +5,7 @@
 # Copyright 2017 Deneroteam.
 # Copyright 2017 Serpent Consulting Services Pvt. Ltd.
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
-from openerp import api, fields, models
+from odoo import api, fields, models
 
 
 class AccountAnalyticAccount(models.Model):
@@ -51,7 +51,6 @@ class AccountAnalyticAccount(models.Model):
                     data = '/'.join(data)
                 else:
                     data = data[0]
-                data = '[' + data + ']'
             account.complete_wbs_code = data or ''
 
     @api.multi
@@ -145,9 +144,6 @@ class AccountAnalyticAccount(models.Model):
         default=_default_user)
     manager_id = fields.Many2one('res.users', 'Manager',
                                  track_visibility='onchange')
-    date_start = fields.Date('Start Date')
-    date = fields.Date('Expiration Date', select=True,
-                       track_visibility='onchange')
     state = fields.Selection(
         [('template', 'Template'), ('draft', 'New'), ('open', 'In Progress'),
          ('pending', 'To Renew'), ('close', 'Closed'),
@@ -157,7 +153,7 @@ class AccountAnalyticAccount(models.Model):
     account_class = fields.Selection(
         [('project', 'Project'), ('phase', 'Phase'),
          ('deliverable', 'Deliverable'),
-         ('work_package', 'Work Package')], 'Class',
+         ('work_package', 'Work Package')], 'Class', default='project',
         help='The classification allows you to create a proper project '
              'Work Breakdown Structure'
     )
@@ -178,7 +174,7 @@ class AccountAnalyticAccount(models.Model):
                     data.insert(0, '')
 
                 acc = acc.parent_id
-            data = '/'.join(data)
+            data = ' / '.join(data)
             res.append((account.id, data))
         return res
 
