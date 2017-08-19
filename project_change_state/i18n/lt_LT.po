@@ -1,0 +1,102 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * project_change_state
+# 
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0c\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-08-19 02:53+0000\n"
+"PO-Revision-Date: 2017-08-19 02:53+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"Language-Team: Lithuanian (Lithuania) (https://www.transifex.com/oca/teams/23907/lt_LT/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: lt_LT\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. module: project_change_state
+#: model:ir.ui.view,arch_db:project_change_state.project_change_state_view
+msgid "Cancel"
+msgstr "Atšaukti"
+
+#. module: project_change_state
+#: model:ir.ui.view,arch_db:project_change_state.project_change_state_view
+msgid "Cancel Project"
+msgstr ""
+
+#. module: project_change_state
+#: model:ir.actions.act_window,name:project_change_state.action_project_change_state
+#: model:ir.ui.view,arch_db:project_change_state.project_change_state_view
+msgid "Change Project Status"
+msgstr ""
+
+#. module: project_change_state
+#: model:ir.model,name:project_change_state.model_project_change_state
+msgid "Change the status of the selected projects"
+msgstr ""
+
+#. module: project_change_state
+#: model:ir.ui.view,arch_db:project_change_state.project_change_state_view
+msgid "Close Project"
+msgstr ""
+
+#. module: project_change_state
+#: model:ir.model.fields,field_description:project_change_state.field_project_change_state_create_uid
+msgid "Created by"
+msgstr "Sukūrė"
+
+#. module: project_change_state
+#: model:ir.model.fields,field_description:project_change_state.field_project_change_state_create_date
+msgid "Created on"
+msgstr "Sukurta"
+
+#. module: project_change_state
+#: model:ir.model.fields,field_description:project_change_state.field_project_change_state_display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: project_change_state
+#: model:ir.model.fields,field_description:project_change_state.field_project_change_state_id
+msgid "ID"
+msgstr "ID"
+
+#. module: project_change_state
+#: model:ir.model.fields,field_description:project_change_state.field_project_change_state___last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: project_change_state
+#: model:ir.model.fields,field_description:project_change_state.field_project_change_state_write_uid
+msgid "Last Updated by"
+msgstr "Paskutinį kartą atnaujino"
+
+#. module: project_change_state
+#: model:ir.model.fields,field_description:project_change_state.field_project_change_state_write_date
+msgid "Last Updated on"
+msgstr "Paskutinį kartą atnaujinta"
+
+#. module: project_change_state
+#: model:ir.ui.view,arch_db:project_change_state.project_change_state_view
+msgid "Pending"
+msgstr ""
+
+#. module: project_change_state
+#: model:ir.model,name:project_change_state.model_project_project
+msgid "Project"
+msgstr ""
+
+#. module: project_change_state
+#: model:ir.ui.view,arch_db:project_change_state.project_change_state_view
+msgid "Re-open Project"
+msgstr ""
+
+#. module: project_change_state
+#: model:ir.ui.view,arch_db:project_change_state.project_change_state_view
+msgid ""
+"You can change the status of multiple\n"
+"                        projects simultaneously."
+msgstr ""

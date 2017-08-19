@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-07 00:51+0000\n"
-"PO-Revision-Date: 2017-06-07 00:51+0000\n"
+"POT-Creation-Date: 2017-08-19 02:54+0000\n"
+"PO-Revision-Date: 2017-08-19 02:54+0000\n"
 "Last-Translator: Armando Vulcano Junior <vulcano@uol.com.br>, 2017\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/teams/23907/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -53,16 +53,19 @@ msgstr ""
 
 #. module: project_task_materials_stock
 #: model:ir.model.fields,help:project_task_materials_stock.field_project_project_location_source_id
+#: model:ir.model.fields,help:project_task_materials_stock.field_project_task_location_source_id
 msgid "Default location from which materials are consumed."
 msgstr ""
 
 #. module: project_task_materials_stock
 #: model:ir.model.fields,help:project_task_materials_stock.field_project_project_location_dest_id
+#: model:ir.model.fields,help:project_task_materials_stock.field_project_task_location_dest_id
 msgid "Default location to which materials are consumed."
 msgstr ""
 
 #. module: project_task_materials_stock
 #: model:ir.model.fields,field_description:project_task_materials_stock.field_project_project_location_dest_id
+#: model:ir.model.fields,field_description:project_task_materials_stock.field_project_task_location_dest_id
 msgid "Destination Location"
 msgstr "Local de destino"
 
@@ -81,6 +84,7 @@ msgstr ""
 
 #. module: project_task_materials_stock
 #: model:ir.ui.view,arch_db:project_task_materials_stock.edit_project_consume_material
+#: model:ir.ui.view,arch_db:project_task_materials_stock.view_project_task_form_materials_stock
 msgid "Locations to consume"
 msgstr ""
 
@@ -111,6 +115,7 @@ msgstr "Projeto"
 
 #. module: project_task_materials_stock
 #: model:ir.model.fields,field_description:project_task_materials_stock.field_project_project_location_source_id
+#: model:ir.model.fields,field_description:project_task_materials_stock.field_project_task_location_source_id
 msgid "Source Location"
 msgstr "Local de origem"
 
@@ -156,7 +161,7 @@ msgid "Unit of Measure"
 msgstr "Unidade de medida"
 
 #. module: project_task_materials_stock
-#: code:addons/project_task_materials_stock/models/project.py:104
+#: code:addons/project_task_materials_stock/models/project.py:116
 #, python-format
 msgid ""
 "You can't move to a not consume stage if there are already analytic lines"
