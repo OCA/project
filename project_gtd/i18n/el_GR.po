@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-17 13:09+0000\n"
-"PO-Revision-Date: 2016-12-13 17:21+0000\n"
+"POT-Creation-Date: 2017-07-29 06:33+0000\n"
+"PO-Revision-Date: 2017-08-11 11:55+0000\n"
 "Last-Translator: Kostas Goutoudis <goutoudis@gmail.com>\n"
 "Language-Team: Greek (Greece) (http://www.transifex.com/oca/OCA-project-8-0/language/el_GR/)\n"
 "MIME-Version: 1.0\n"
@@ -160,7 +160,7 @@ msgstr ""
 #. module: project_gtd
 #: field:project.timebox.empty,name:0
 msgid "Name"
-msgstr ""
+msgstr "Ονομασία"
 
 #. module: project_gtd
 #: code:addons/project_gtd/wizard/project_gtd_empty.py:52

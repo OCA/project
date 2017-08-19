@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-14 05:42+0000\n"
-"PO-Revision-Date: 2017-01-19 20:17+0000\n"
+"POT-Creation-Date: 2017-07-29 06:33+0000\n"
+"PO-Revision-Date: 2017-08-11 11:58+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Swedish (http://www.transifex.com/oca/OCA-project-8-0/language/sv/)\n"
 "MIME-Version: 1.0\n"
@@ -50,7 +50,7 @@ msgstr "Pågående"
 #. module: project_stage_state
 #: field:project.task,state:0 field:project.task.type,state:0
 msgid "State"
-msgstr ""
+msgstr "Status"
 
 #. module: project_stage_state
 #: model:ir.model,name:project_stage_state.model_project_task

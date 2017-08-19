@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-12-17 03:58+0000\n"
-"PO-Revision-Date: 2016-12-22 14:05+0000\n"
+"POT-Creation-Date: 2017-07-29 06:33+0000\n"
+"PO-Revision-Date: 2017-08-11 11:55+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Galician (http://www.transifex.com/oca/OCA-project-8-0/language/gl/)\n"
 "MIME-Version: 1.0\n"
@@ -40,7 +40,7 @@ msgstr ""
 #. module: project_categ
 #: field:project.category,complete_name:0
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 #. module: project_categ
 #: field:project.category,parent_id:0
@@ -70,9 +70,4 @@ msgstr "Tarefa"
 #. module: project_categ
 #: view:project.task:project_categ.project_task_form_view_categs
 msgid "onchange_project(project_id)"
-msgstr ""
-
-#. module: project_categ
-#: view:project.task:project_categ.project_task_form_view_categs
-msgid "{'required':[('task_categ_id','!=',False)]}"
 msgstr ""
