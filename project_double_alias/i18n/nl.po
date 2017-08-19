@@ -3,53 +3,52 @@
 # * project_double_alias
 # 
 # Translators:
-# OCA Transbot <transbot@odoo-community.org>, 2017
-# Quentin THEURET <odoo@kerpeo.com>, 2017
+# Erwin van der Ploeg <erwin@odooexperts.nl>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-10 02:49+0000\n"
 "PO-Revision-Date: 2017-08-10 02:49+0000\n"
-"Last-Translator: Quentin THEURET <odoo@kerpeo.com>, 2017\n"
-"Language-Team: French (https://www.transifex.com/oca/teams/23907/fr/)\n"
+"Last-Translator: Erwin van der Ploeg <erwin@odooexperts.nl>, 2017\n"
+"Language-Team: Dutch (https://www.transifex.com/oca/teams/23907/nl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: fr\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language: nl\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: project_double_alias
 #: model:ir.model.fields,field_description:project_double_alias.field_project_project_second_alias_name
 msgid "Alias Name (Issues)"
-msgstr "Nom de l'alias (Problèmes)"
+msgstr ""
 
 #. module: project_double_alias
 #: model:ir.model.fields,field_description:project_double_alias.field_project_project_alias_domain2
 msgid "Alias domain"
-msgstr "Domaine de l'alias"
+msgstr ""
 
 #. module: project_double_alias
 #: model:ir.model.fields,field_description:project_double_alias.field_project_project_second_alias_id
 #: model:ir.ui.view,arch_db:project_double_alias.edit_project
 msgid "Email Alias (Issues)"
-msgstr "Alias de courriel (Problèmes)"
+msgstr ""
 
 #. module: project_double_alias
 #: model:ir.ui.view,arch_db:project_double_alias.edit_project
 msgid "Email Alias (Tasks)"
-msgstr "Alias de courriel (Tâches)"
+msgstr ""
 
 #. module: project_double_alias
 #: model:ir.model,name:project_double_alias.model_project_project
 msgid "Project"
-msgstr "Projet"
+msgstr "Project"
 
 #. module: project_double_alias
 #: code:addons/project_double_alias/models/project_project.py:52
 #, python-format
 msgid "The alias for issues is already taken."
-msgstr "L'alias pour les problèmes est déjà pris en compte."
+msgstr ""
 
 #. module: project_double_alias
 #: model:ir.model.fields,help:project_double_alias.field_project_project_second_alias_name
@@ -57,5 +56,3 @@ msgid ""
 "The name of the email alias, e.g. 'jobs' if you want to catch emails for "
 "<jobs@example.odoo.com>"
 msgstr ""
-"Le nom de l'alias de courriel, par ex. 'Postes' si vous souhaitez récupérer "
-"les courriels pour jobs@example.odoo.com"

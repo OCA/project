@@ -6,10 +6,10 @@
 # OCA Transbot <transbot@odoo-community.org>, 2017
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 9.0c\n"
+"Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-11 03:42+0000\n"
-"PO-Revision-Date: 2017-01-11 03:42+0000\n"
+"POT-Creation-Date: 2017-08-10 02:50+0000\n"
+"PO-Revision-Date: 2017-08-10 02:50+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
 "Language-Team: Finnish (https://www.transifex.com/oca/teams/23907/fi/)\n"
 "MIME-Version: 1.0\n"
@@ -50,6 +50,24 @@ msgid "Consume material"
 msgstr ""
 
 #. module: project_task_material_stock
+#: model:ir.model.fields,help:project_task_material_stock.field_project_project_location_source_id
+#: model:ir.model.fields,help:project_task_material_stock.field_project_task_location_source_id
+msgid "Default location from which materials are consumed."
+msgstr ""
+
+#. module: project_task_material_stock
+#: model:ir.model.fields,help:project_task_material_stock.field_project_project_location_dest_id
+#: model:ir.model.fields,help:project_task_material_stock.field_project_task_location_dest_id
+msgid "Default location to which materials are consumed."
+msgstr ""
+
+#. module: project_task_material_stock
+#: model:ir.model.fields,field_description:project_task_material_stock.field_project_project_location_dest_id
+#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_location_dest_id
+msgid "Destination Location"
+msgstr ""
+
+#. module: project_task_material_stock
 #: selection:project.task,stock_state:0
 msgid "Done"
 msgstr "Valmis"
@@ -60,6 +78,12 @@ msgstr "Valmis"
 msgid ""
 "If you mark this check, when a task goes to this state, it will consume the "
 "associated materials"
+msgstr ""
+
+#. module: project_task_material_stock
+#: model:ir.ui.view,arch_db:project_task_material_stock.edit_project_consume_material
+#: model:ir.ui.view,arch_db:project_task_material_stock.view_project_task_form_material_stock
+msgid "Locations to consume"
 msgstr ""
 
 #. module: project_task_material_stock
@@ -83,6 +107,17 @@ msgid "Products"
 msgstr "Tuotteet"
 
 #. module: project_task_material_stock
+#: model:ir.model,name:project_task_material_stock.model_project_project
+msgid "Project"
+msgstr "Projekti"
+
+#. module: project_task_material_stock
+#: model:ir.model.fields,field_description:project_task_material_stock.field_project_project_location_source_id
+#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_location_source_id
+msgid "Source Location"
+msgstr ""
+
+#. module: project_task_material_stock
 #: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_material_stock_move_id
 msgid "Stock Move"
 msgstr "Varastosiirto"
@@ -95,8 +130,8 @@ msgstr "Varastosiirrot"
 
 #. module: project_task_material_stock
 #: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_stock_state
-msgid "Stock State"
-msgstr "Varastotilanne"
+msgid "Stock state"
+msgstr ""
 
 #. module: project_task_material_stock
 #: model:ir.model,name:project_task_material_stock.model_project_task
@@ -105,7 +140,7 @@ msgstr "Tehtävä"
 
 #. module: project_task_material_stock
 #: model:ir.model,name:project_task_material_stock.model_project_task_material
-msgid "Task Materials Used"
+msgid "Task Material Used"
 msgstr "Tehtävän materiaaleja käytetty"
 
 #. module: project_task_material_stock
@@ -124,7 +159,7 @@ msgid "Unit of Measure"
 msgstr "Mittayksikkö"
 
 #. module: project_task_material_stock
-#: code:addons/project_task_material_stock/models/project.py:87
+#: code:addons/project_task_material_stock/models/project_task.py:108
 #, python-format
 msgid ""
 "You can't move to a not consume stage if there are already analytic lines"
