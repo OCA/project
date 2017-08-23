@@ -36,6 +36,7 @@ addon | version | summary
 [project_task_digitized_signature](project_task_digitized_signature/) | 9.0.1.0.0 | Project Task Digitized Signature
 [project_task_materials](project_task_materials/) | 9.0.1.0.0 | Record products spent in a Task
 [project_task_materials_stock](project_task_materials_stock/) | 9.0.1.2.0 | Create stock and analytic moves from record products spent in a Task
+[project_task_send_by_mail](project_task_send_by_mail/) | 9.0.1.0.0 | Send task report by email
 [project_timeline](project_timeline/) | 9.0.1.0.0 | Timeline view for projects
 [project_timesheet_time_control](project_timesheet_time_control/) | 9.0.1.0.1 | Project timesheet time control
 
