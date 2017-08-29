@@ -27,7 +27,7 @@ msgstr "Línea Analítica"
 #. module: project_issue_timesheet_time_control
 #: model:ir.ui.view,arch_db:project_issue_timesheet_time_control.account_analytic_line_tree
 msgid "Close issue"
-msgstr ""
+msgstr "Cerrar incidencia"
 
 #. module: project_issue_timesheet_time_control
 #: model:ir.model.fields,field_description:project_issue_timesheet_time_control.field_account_analytic_line_issue_closed
@@ -35,19 +35,19 @@ msgid "Closed"
 msgstr "Cerrado"
 
 #. module: project_issue_timesheet_time_control
+#: model:ir.ui.view,arch_db:project_issue_timesheet_time_control.account_analytic_line_search
+msgid "Issue"
+msgstr "Incidencia"
+
+#. module: project_issue_timesheet_time_control
 #: model:ir.ui.view,arch_db:project_issue_timesheet_time_control.account_analytic_line_tree
 msgid "Open issue"
-msgstr ""
+msgstr "Abrir incidencia"
 
 #. module: project_issue_timesheet_time_control
 #: model:ir.ui.view,arch_db:project_issue_timesheet_time_control.project_issue_form_view
 msgid "Stop"
 msgstr "Parar"
-
-#. module: project_issue_timesheet_time_control
-#: model:ir.ui.view,arch_db:project_issue_timesheet_time_control.account_analytic_line_search
-msgid "Task"
-msgstr "Tarea"
 
 #. module: project_issue_timesheet_time_control
 #: model:ir.model.fields,help:project_issue_timesheet_time_control.field_account_analytic_line_issue_closed

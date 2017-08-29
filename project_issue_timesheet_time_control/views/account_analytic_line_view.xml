@@ -29,7 +29,7 @@
         <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_search"/>
         <field name="arch" type="xml">
             <group position="inside">
-                <filter string="Task" context="{'group_by': 'task_id'}"/>
+                <filter string="Issue" context="{'group_by': 'issue_id'}"/>
             </group>
         </field>
     </record>
