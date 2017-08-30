@@ -24,7 +24,7 @@ addon | version | summary
 [project_description](project_description/) | 10.0.1.0.0 | Add a description to projects
 [project_double_alias](project_double_alias/) | 10.0.1.0.0 | Define an alias for tasks and another alias for issues
 [project_issue_code](project_issue_code/) | 10.0.1.0.0 | Adding Field Code For Project Issue
-[project_issue_timesheet_time_control](project_issue_timesheet_time_control/) | 10.0.1.0.0 | Project issue timesheet time control
+[project_issue_timesheet_time_control](project_issue_timesheet_time_control/) | 10.0.1.1.0 | Project issue timesheet time control
 [project_model_to_task](project_model_to_task/) | 10.0.0.1.0 | Project Model to Task
 [project_recalculate](project_recalculate/) | 10.0.1.0.0 | Project Recalculate
 [project_stage_closed](project_stage_closed/) | 10.0.1.0.0 | Make the Closed flag on Task Stages available without installing sale_service
