@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-17 06:14+0000\n"
+"POT-Creation-Date: 2017-08-19 07:00+0000\n"
 "PO-Revision-Date: 2015-07-21 19:20+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/oca/OCA-project-8-0/language/nl_NL/)\n"
@@ -25,7 +25,7 @@ msgstr ""
 #. module: project_gtd
 #: view:project.timebox.fill.plan:project_gtd.view_project_gtd_fill
 msgid "Cancel"
-msgstr ""
+msgstr "Verwijderen"
 
 #. module: project_gtd
 #: model:project.gtd.context,name:project_gtd.context_car
@@ -62,7 +62,7 @@ msgstr ""
 #: field:project.timebox.empty,create_uid:0
 #: field:project.timebox.fill.plan,create_uid:0
 msgid "Created by"
-msgstr ""
+msgstr "Aangemaakt door"
 
 #. module: project_gtd
 #: field:project.gtd.context,create_date:0
@@ -70,7 +70,7 @@ msgstr ""
 #: field:project.timebox.empty,create_date:0
 #: field:project.timebox.fill.plan,create_date:0
 msgid "Created on"
-msgstr ""
+msgstr "Aangemaakt op"
 
 #. module: project_gtd
 #: field:project.gtd.context,display_name:0
@@ -136,7 +136,7 @@ msgstr "Laatst gewijzigd op"
 #: field:project.timebox.empty,write_uid:0
 #: field:project.timebox.fill.plan,write_uid:0
 msgid "Last Updated by"
-msgstr ""
+msgstr "Laatst bijgewerkt door"
 
 #. module: project_gtd
 #: field:project.gtd.context,write_date:0
@@ -144,7 +144,7 @@ msgstr ""
 #: field:project.timebox.empty,write_date:0
 #: field:project.timebox.fill.plan,write_date:0
 msgid "Last Updated on"
-msgstr ""
+msgstr "Laatst bijgewerkt op"
 
 #. module: project_gtd
 #: model:project.gtd.timebox,name:project_gtd.timebox_lt

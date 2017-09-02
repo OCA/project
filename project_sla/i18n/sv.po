@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-14 05:42+0000\n"
-"PO-Revision-Date: 2017-01-19 20:17+0000\n"
+"POT-Creation-Date: 2017-08-19 07:01+0000\n"
+"PO-Revision-Date: 2017-08-21 07:26+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Swedish (http://www.transifex.com/oca/OCA-project-8-0/language/sv/)\n"
 "MIME-Version: 1.0\n"
@@ -58,7 +58,7 @@ msgstr ""
 #. module: project_sla
 #: field:project.sla,active:0
 msgid "Active"
-msgstr ""
+msgstr "Aktiv"
 
 #. module: project_sla
 #: model:ir.model,name:project_sla.model_account_analytic_account

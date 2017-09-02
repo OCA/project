@@ -4,14 +4,14 @@
 # 
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2017
-# Zwygart <zwygart@gmail.com>, 2017
+# Quentin THEURET <odoo@kerpeo.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-26 10:15+0000\n"
-"PO-Revision-Date: 2017-04-26 10:15+0000\n"
-"Last-Translator: Zwygart <zwygart@gmail.com>, 2017\n"
+"POT-Creation-Date: 2017-08-19 07:01+0000\n"
+"PO-Revision-Date: 2017-08-19 07:01+0000\n"
+"Last-Translator: Quentin THEURET <odoo@kerpeo.com>, 2017\n"
 "Language-Team: French (https://www.transifex.com/oca/teams/23907/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +22,7 @@ msgstr ""
 #. module: project_task_reassign
 #: field:project.task.reassign,user_id:0
 msgid "Assign To"
-msgstr ""
+msgstr "Assigner à"
 
 #. module: project_task_reassign
 #: view:project.task.reassign:project_task_reassign.view_project_task_reassign

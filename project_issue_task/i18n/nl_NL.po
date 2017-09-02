@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-06-17 06:14+0000\n"
+"POT-Creation-Date: 2017-08-19 07:00+0000\n"
 "PO-Revision-Date: 2015-07-21 19:20+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/oca/OCA-project-8-0/language/nl_NL/)\n"
@@ -36,17 +36,17 @@ msgstr ""
 #. module: project_issue_task
 #: field:project.task.cause,create_uid:0
 msgid "Created by"
-msgstr ""
+msgstr "Aangemaakt door"
 
 #. module: project_issue_task
 #: field:project.task.cause,create_date:0
 msgid "Created on"
-msgstr ""
+msgstr "Aangemaakt op"
 
 #. module: project_issue_task
 #: field:project.task.cause,description:0
 msgid "Description"
-msgstr ""
+msgstr "Omschrijving"
 
 #. module: project_issue_task
 #: field:project.task.cause,display_name:0
@@ -77,12 +77,12 @@ msgstr "Laatst gewijzigd op"
 #. module: project_issue_task
 #: field:project.task.cause,write_uid:0
 msgid "Last Updated by"
-msgstr ""
+msgstr "Laatst bijgewerkt door"
 
 #. module: project_issue_task
 #: field:project.task.cause,write_date:0
 msgid "Last Updated on"
-msgstr ""
+msgstr "Laatst bijgewerkt op"
 
 #. module: project_issue_task
 #: field:project.task,reason_id:0
@@ -97,7 +97,7 @@ msgstr ""
 #. module: project_issue_task
 #: field:project.task,ref:0
 msgid "Reference"
-msgstr ""
+msgstr "Referentie"
 
 #. module: project_issue_task
 #: field:project.task,issue_id:0
