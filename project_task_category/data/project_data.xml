@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Project Categories -->
+        <record id="project_category_00" model="project.category">
+            <field name="name">Designs</field>
+        </record>
+
+        <record id="project_category_01" model="project.category">
+            <field name="name">Research</field>
+        </record>
+
+        <record id="project_category_02" model="project.category">
+            <field name="name">Development</field>
+        </record>
+
+        <record id="project_category_03" model="project.category">
+            <field name="name">Testing</field>
+        </record>
+
+    </data>
+</odoo>
