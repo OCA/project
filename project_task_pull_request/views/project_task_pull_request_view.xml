@@ -12,6 +12,7 @@
             <xpath expr="//field[@name='sequence']" position="before">
                 <field name="pr_required_states" attrs="{'invisible':True}"/>
                 <field name="pr_uri"
+                       widget="url"
                        attrs="{'invisible':[('pr_required_states', '=', [])]}"/>
             </xpath>
         </field>
