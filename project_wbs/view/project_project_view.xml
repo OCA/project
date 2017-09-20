@@ -131,11 +131,13 @@
                 <xpath expr='//field[@name="name"]' position="attributes">
                     <attribute name="string">WBS element name</attribute>
                 </xpath>
-
                 <xpath expr='//notebook' position="before">
                     <group name="root_accounts" string="Project Configuration">
                         <group name="class">
                             <field name="account_class" string="Class"/>
+                            <field name="analytic_account_id"
+                                   readonly="1" required="0"
+                                   domain="[('account_class', '=', 'project')]"/>
                             <field name="project_analytic_id"
                                    domain="[('account_class', '=', 'project')]"/>
                         </group>
@@ -240,7 +242,7 @@
            <field name="view_type">form</field>
            <field name="domain">[('account_class','in',['project'])]</field>
            <field name="view_mode">kanban,tree,form</field>
-           <field name="view_id" ref="project.view_project_kanban"/>
+           <field name="view_id" ref="project.view_project"/>
            <field name="search_view_id" ref="project.view_project_project_filter"/>
            <field name="context">{'search_default_current': 1, 'default_account_class':'project'}</field>
         </record>

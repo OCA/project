@@ -144,9 +144,6 @@ class AccountAnalyticAccount(models.Model):
         default=_default_user)
     manager_id = fields.Many2one('res.users', 'Manager',
                                  track_visibility='onchange')
-    date_start = fields.Date('Start Date')
-    date = fields.Date('Expiration Date', select=True,
-                       track_visibility='onchange')
     state = fields.Selection(
         [('template', 'Template'), ('draft', 'New'), ('open', 'In Progress'),
          ('pending', 'To Renew'), ('close', 'Closed'),
