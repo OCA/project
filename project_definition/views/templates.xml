@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="project_term" model="ir.ui.view">
+            <field name="name">project.project.term.form</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project" />
+            <field name="arch" type="xml">
+                <xpath expr="/form/sheet/notebook/page[@string='Other Info']" position="after">
+                    <page string="Definitions">
+                        <field 
+                            name="term_ids" 
+			    context="{'form_view_ref' : 'project_definition.view_definition_form', 'tree_view_ref': 'project_definition.view_definition_tree',  'active_model': 'project.project'}">
+			    <tree>
+				    <field name="name"/>
+				    <field name="content"/>
+				    <field name="type" readonly="1"/>
+			     </tree>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_definition_tree" model="ir.ui.view">
+            <field name="name">document.definition.tree</field>
+            <field name="model">document.page</field>
+            <field name="priority">100</field>
+            <field name="arch" type="xml">
+                <tree string="Definitions" editable="top" >
+                    <field name="name"/>
+                    <field name="content"/>
+                    <field name="type" readonly="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_definition_form" model="ir.ui.view">
+            <field name="name">document.definition.form</field>
+            <field name="model">document.page</field>
+            <field name="priority">100</field>
+            <field name="arch" type="xml">
+                <form string="Definitions">
+                    <sheet>
+                        <div invisible="context.get('active_model') != 'project.project'"  class=".oe_form_box_warning">
+                            <h3 style="color: red">
+                                The editing of terms is not project-specific. Editing a term will change it globally
+                            </h3>
+                        </div>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                        <field name="content"/>
+                        <field name="type" readonly="1"/>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- filters to group by alphabetical order, and search by term or in
+         definition -->
+
+        <record id="view_definition_filter" model="ir.ui.view">
+            <field name="name">document.definition.search</field>
+            <field name="model">document.page</field>
+            <field name="priority">100</field>
+            <field name="arch" type="xml">
+                <search string="Definitions">
+                    <field name="name" string="Search Term" filter_domain="[('name','ilike',self)]"/>
+                    <field name="content" string="Search in definition" filter_domain="[('content','ilike',self)]"/>
+                    <field name="write_uid"/>
+                    <group expand="1" string="Group By...">
+                        <filter string="Alphabetical" domain="[]" context="{'group_by':'first_letter'}"/>
+                        <filter string="Author" domain="[]" context="{'group_by':'create_uid'}"/>
+                        <filter string="Last Contributor" domain="[]" context="{'group_by':'write_uid'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <record id="action_definition" model="ir.actions.act_window">
+            <field name="name">Terms and definitions</field>
+            <field name="res_model">document.page</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="project_definition.view_definition_tree"/>
+            <field name="search_view_id" ref="project_definition.view_definition_filter"/>
+            <field name="domain">[('type', '=', 'term')]</field>
+            <field name="context">{'default_type':'term'}</field>
+        </record>
+
+        <menuitem 
+            id="menu_definition_top"
+            parent="knowledge.menu_document"                 
+            name="Definitions"
+            sequence="22" />
+
+        <menuitem 
+            id="menu_definition"
+            parent="menu_definition_top"                 
+            name="Definitions"
+            action="action_definition"
+            sequence="10" />
+
+    </data>
+</openerp>
