@@ -14,7 +14,7 @@
             <field name="inherit_id" ref="project.edit_project" />
             <field name="arch" type="xml">
                 <xpath expr="/form/sheet/notebook/page[@string='Other Info']" position="after">
-                    <page string="Terms and definitions">
+                    <page string="Definitions">
                         <field name="term_ids" />
                     </page>
                 </xpath>
