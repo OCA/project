@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
-        <template id="assets_backend" name="project_definition assets" inherit_id="web.assets_backend">
-            <xpath expr="." position="inside">
-                <script type="text/javascript" src="/project_definition/static/src/js/project_definition.js"></script>
-                <link rel="stylesheet" href="/project_definition/static/src/css/project_definition.css"/>
-            </xpath>
-        </template>
-
         <record id="project_term" model="ir.ui.view">
             <field name="name">project.project.term.form</field>
             <field name="model">project.project</field>
