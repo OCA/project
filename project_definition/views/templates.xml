@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        <record id="project_term" model="ir.ui.view">
+            <field name="name">project.project.term.form</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.edit_project" />
+            <field name="arch" type="xml">
+                <xpath expr="/form/sheet/notebook/page[@string='Other Info']" position="after">
+                    <page string="Definitions">
+                        <field name="term_ids" />
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</openerp>
