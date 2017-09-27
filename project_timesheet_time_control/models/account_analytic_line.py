@@ -32,7 +32,7 @@ class AccountAnalyticLine(models.Model):
             self.project_id = self.task_id.project_id.id
 
     def eval_date(self, vals):
-        if 'date_time' in vals and vals.get('date_time'):
+        if vals.get('date_time'):
             vals['date'] = fields.Date.from_string(vals['date_time'])
         return vals
 
