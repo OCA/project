@@ -7,15 +7,21 @@ from odoo import exceptions
 from ..hooks import post_init_hook, uninstall_hook
 
 
-class TestProjectDoubleAlias(common.TransactionCase):
-    def setUp(self):
-        super(TestProjectDoubleAlias, self).setUp()
-        self.project = self.env['project.project'].create({
+class TestProjectDoubleAlias(common.SavepointCase):
+    @classmethod
+    def setUpClass(cls):
+        super(TestProjectDoubleAlias, cls).setUpClass()
+        cls.project = cls.env['project.project'].create({
             'name': 'Test project',
+            'use_tasks': True,
+            'use_issues': True,
             'second_alias_name': 'test_second',
         })
-        self.issue_model = self.env['ir.model'].search(
+        cls.issue_model = cls.env['ir.model'].search(
             [('model', '=', 'project.issue')])
+        cls.env['ir.config_parameter'].set_param(
+            "mail.catchall.domain", "test.com",
+        )
 
     def test_second_alias(self):
         self.assertTrue(self.project.second_alias_id)
@@ -79,3 +85,17 @@ class TestProjectDoubleAlias(common.TransactionCase):
         self.assertFalse(project2.alias_id.alias_name)
         self.assertEqual(project2.second_alias_id.alias_name, 'test-2')
         self.assertTrue(project3.second_alias_id)
+
+    def test_reply_to(self):
+        issue = self.env['project.issue'].create({
+            'project_id': self.project.id,
+            'name': 'Test issue',
+        })
+        reply = issue.message_get_reply_to(issue.ids)
+        self.assertIn(self.project.second_alias_name, reply[issue.id])
+        task = self.env['project.task'].create({
+            'project_id': self.project.id,
+            'name': 'Test task',
+        })
+        reply = task.message_get_reply_to(task.ids)
+        self.assertIn(self.project.alias_name, reply[task.id])

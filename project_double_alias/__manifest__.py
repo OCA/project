@@ -5,7 +5,7 @@
 {
     "name": "Double alias for project",
     "summary": "Define an alias for tasks and another alias for issues",
-    "version": "10.0.1.0.0",
+    "version": "10.0.1.0.1",
     "category": "Project management",
     "website": "https://www.tecnativa.com/",
     "author": "Tecnativa, "
