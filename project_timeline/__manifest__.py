@@ -10,7 +10,6 @@
     "category": "Project Management",
     "website": "https://www.tecnativa.com",
     "author": "Tecnativa, "
-              "Doscaal, "
               "Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "installable": True,
