@@ -6,10 +6,25 @@
 Project Parent
 ==============
 
+This module introduces parent project views improvements in order to modify and group by.
 
 Usage
 =====
+In Kanban View:
 
+#. Go to Project > Dashboard
+#. Group by "Parent"
+
+In Tree View:
+
+#. Go to Project >Configuration > Projects
+#. Group by "Parent"
+
+In form View:
+
+#. Go to Project > Dashboard
+#. Open the projects settings
+#. Modify the "Parent" in settings tab
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
