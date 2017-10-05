@@ -31,7 +31,7 @@ Images
 Contributors
 ------------
 
-* Eric Caudal<eric.caudal@elico-corp.com>
+* Eric Caudal <eric.caudal@elico-corp.com>
 
 Maintainer
 ----------
