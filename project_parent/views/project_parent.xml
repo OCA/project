@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record model="ir.ui.view" id="view_project_parent_edit_project">
+    <record id="view_project_parent_edit_project" model="ir.ui.view">
         <field name="name">project.project.form</field>
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.edit_project"/>
