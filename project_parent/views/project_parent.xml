@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record model="ir.ui.view" id="projecet_parent_edit_project">
+    <record model="ir.ui.view" id="view_project_parent_edit_project">
         <field name="name">project.project.form</field>
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.edit_project"/>
@@ -10,7 +10,7 @@
             </field>
         </field>
     </record>
-    <record id="view_project_project_filter" model="ir.ui.view">
+    <record id="view_project_parent_project_filter" model="ir.ui.view">
          <field name="name">project.project.select</field>
          <field name="model">project.project</field>
          <field name="inherit_id" ref="project.view_project_project_filter"/>
@@ -24,9 +24,8 @@
                       domain="[]" context="{'group_by':'parent_id'}"/>
            </xpath>
          </field>
-     </record>
-
-    <record id="view_project_inherited_tree" model="ir.ui.view">
+    </record>
+    <record id="view_project_parent_inherited_tree" model="ir.ui.view">
         <field name="name">project.project.tree.inherited</field>
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.view_project"/>
@@ -36,9 +35,8 @@
                 <field name="parent_id"/>
             </field>
         </field>
-   </record>
-
-    <record id="view_project_kanban_inherited_business_requirment" model="ir.ui.view">
+    </record>
+    <record id="view_project_kanban_inherited" model="ir.ui.view">
         <field name="name">project.project.kanban.inherited</field>
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.view_project_kanban"/>
@@ -54,5 +52,4 @@
             </xpath>
         </field>
     </record>
-
 </odoo>
