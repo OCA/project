@@ -4,14 +4,12 @@
 
 {
     'name': 'Project Parent',
-    'summary': """
-        Project Patent.""",
     'version': '10.0.1.0.0',
     'license': 'AGPL-3',
-    "author": "Elico Corp, Odoo Community Association (OCA)",
+    'category': 'project',
+    'author': 'Elico Corp, Odoo Community Association (OCA)',
     'website': 'https://www.elico-corp.com/',
     'depends': [
-        'account_analytic_parent',
         'project',
     ],
     'data': [

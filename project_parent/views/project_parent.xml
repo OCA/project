@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="project.edit_project"/>
         <field name="arch" type="xml">
             <field name="user_id" position="after">
-                <field name="parent_id"/>
+                <field name="parent_project_id"/>
             </field>
         </field>
     </record>
@@ -17,11 +17,10 @@
          <field name="type">search</field>
          <field name="arch" type="xml">
             <field name="name" position="after">
-                <field name="parent_id"/>
+                <field name="parent_project_id"/>
             </field>
            <xpath expr="//filter[contains(@domain, user_id)]" position="after">
-              <filter string="Parent" icon="terp-folder-orange"
-                      domain="[]" context="{'group_by':'parent_id'}"/>
+              <filter string="Parent" domain="[]" context="{'group_by':'parent_project_id'}"/>
            </xpath>
          </field>
     </record>
@@ -32,7 +31,7 @@
         <field name="priority">16</field>
         <field name="arch" type="xml">
             <field name="partner_id" position="after">
-                <field name="parent_id"/>
+                <field name="parent_project_id"/>
             </field>
         </field>
     </record>
@@ -43,11 +42,11 @@
         <field name="priority">16</field>
         <field name="arch" type="xml">
             <field name="use_tasks" position="after">
-                <field name="parent_id"/>
+                <field name="parent_project_id"/>
             </field>
             <xpath expr="//div[contains(@class, 'o_project_kanban_main')]/div[last()]" position="after">
                 <div class="o_primary">
-                    <span> <t t-esc="record.parent_id.value"/></span>
+                    <span> <t t-esc="record.parent_project_id.value"/></span>
                 </div>
             </xpath>
         </field>
