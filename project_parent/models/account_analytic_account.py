@@ -10,5 +10,5 @@ class AccountAnalyticAccount(models.Model):
 
     parent_project_id = fields.Many2one(
         comodel_name='project.project',
-        string='Parent Analytic Account'
+        string='Parent Project'
     )
