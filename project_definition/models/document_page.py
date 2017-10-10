@@ -17,6 +17,11 @@ class DocumentPage(models.Model):
     # need to be stored in order to use grouping
     first_letter = fields.Char(compute='_get_first_letter', store=True)
 
+    project_id = fields.Many2one(
+        'project.project',
+        'Project'
+    )
+
     @api.depends('name')
     @api.multi
     def _get_first_letter(self):

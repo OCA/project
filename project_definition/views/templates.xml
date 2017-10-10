@@ -10,11 +10,12 @@
                     <page string="Definitions">
                         <field 
                             name="term_ids" 
-			    context="{'form_view_ref' : 'project_definition.view_definition_form', 'tree_view_ref': 'project_definition.view_definition_tree',  'active_model': 'project.project'}">
+                            context="{'form_view_ref' : 'project_definition.view_definition_form', 'tree_view_ref': 'project_definition.view_definition_tree',  'active_model': 'project.project', 'default_project_id': active_id }">
 			    <tree>
 				    <field name="name"/>
 				    <field name="content"/>
-				    <field name="type" readonly="1"/>
+                    <field name="type" readonly="1"/>
+                    <field name="project_id" readonly="1" />
 			     </tree>
                         </field>
                     </page>
@@ -31,6 +32,8 @@
                     <field name="name"/>
                     <field name="content"/>
                     <field name="type" readonly="1"/>
+                    <field name="project_id" />
+
                 </tree>
             </field>
         </record>
@@ -50,8 +53,11 @@
                         <h1>
                             <field name="name"/>
                         </h1>
-                        <field name="content"/>
-                        <field name="type" readonly="1"/>
+                        <group>
+                           <field name="content"/>
+                           <field name="project_id" />
+                           <field name="type" readonly="1"/>
+                        </group>
                     </sheet>
                 </form>
             </field>
