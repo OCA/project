@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_project_parent_edit_project" model="ir.ui.view">
+        <field name="name">project.project.form</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <field name="user_id" position="after">
+                <field name="parent_project_id"/>
+            </field>
+        </field>
+    </record>
+    <record id="view_project_parent_project_filter" model="ir.ui.view">
+         <field name="name">project.project.select</field>
+         <field name="model">project.project</field>
+         <field name="inherit_id" ref="project.view_project_project_filter"/>
+         <field name="type">search</field>
+         <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="parent_project_id"/>
+            </field>
+           <xpath expr="//filter[contains(@domain, user_id)]" position="after">
+              <filter string="Parent" domain="[]" context="{'group_by':'parent_project_id'}"/>
+           </xpath>
+         </field>
+    </record>
+    <record id="view_project_parent_inherited_tree" model="ir.ui.view">
+        <field name="name">project.project.tree.inherited</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project"/>
+        <field name="priority">16</field>
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <field name="parent_project_id"/>
+            </field>
+        </field>
+    </record>
+    <record id="view_project_kanban_inherited" model="ir.ui.view">
+        <field name="name">project.project.kanban.inherited</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project_kanban"/>
+        <field name="priority">16</field>
+        <field name="arch" type="xml">
+            <field name="use_tasks" position="after">
+                <field name="parent_project_id"/>
+            </field>
+            <xpath expr="//div[contains(@class, 'o_project_kanban_main')]/div[last()]" position="after">
+                <div class="o_primary">
+                    <span> <t t-esc="record.parent_project_id.value"/></span>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
