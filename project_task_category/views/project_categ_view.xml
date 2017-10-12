@@ -6,8 +6,11 @@
         <field name="model">project.category</field>
         <field name="arch" type="xml">
             <form string="Project Category">
-                <group col="2">
+                <group>
                     <field name="name"/>
+                </group>
+                <group>
+                    <field name="description" />
                 </group>
             </form>
         </field>
