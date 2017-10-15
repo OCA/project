@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Copyright 2016-2017 Tecnativa - Pedro M. Baeza
      Copyright 2017 Tecnativa - Carlos Dauden
+     Copyright 2017 Doscaal - Alexandre Moreau
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
 
 <odoo>
@@ -24,6 +25,18 @@
 
     <record id="project.act_project_project_2_project_task_all" model="ir.actions.act_window">
         <field name="view_mode">kanban,tree,form,calendar,timeline,pivot,graph</field>
+    </record>
+
+    <record id="view_task_form2" model="ir.ui.view">
+        <field name="name">project.task.form</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='date_assign']" position="before">
+                <field name="date_start"/>
+                <field name="date_end"/>
+            </xpath>
+        </field>
     </record>
 
 </odoo>
