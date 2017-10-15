@@ -6,7 +6,7 @@
 {
     "name": "Project timeline",
     "summary": "Timeline view for projects",
-    "version": "10.0.1.0.0",
+    "version": "10.0.1.1.0",
     "category": "Project Management",
     "website": "https://www.tecnativa.com",
     "author": "Tecnativa, "
