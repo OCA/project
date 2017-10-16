@@ -39,7 +39,7 @@ addon | version | summary
 [project_task_material_analytic_partner](project_task_material_analytic_partner/) | 10.0.1.0.0 | Select alternative partner in task materials
 [project_task_material_stock](project_task_material_stock/) | 10.0.1.0.0 | Create stock and analytic moves from record products spent in a Task
 [project_task_pull_request](project_task_pull_request/) | 10.0.1.0.0 | Adds a field for a PR URI to project tasks
-[project_timeline](project_timeline/) | 10.0.1.0.0 | Timeline view for projects
+[project_timeline](project_timeline/) | 10.0.1.1.0 | Timeline view for projects
 [project_timesheet_currency](project_timesheet_currency/) | 10.0.1.0.0 | Multi-currency analytic costs
 [project_timesheet_time_control](project_timesheet_time_control/) | 10.0.1.0.1 | Project timesheet time control
 
