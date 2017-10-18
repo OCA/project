@@ -8,6 +8,13 @@
             <field name="user_id" position="after">
                 <field name="parent_project_id"/>
             </field>
+            <div name="button_box" position="inside">
+                  <button name="action_open_child_project"
+                          class="oe_inline oe_stat_button"
+                          type="object"
+                          string="Child Projects"
+                          icon="fa-tasks"/>
+            </div>
         </field>
     </record>
     <record id="view_project_parent_project_filter" model="ir.ui.view">
