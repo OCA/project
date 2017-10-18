@@ -2,9 +2,9 @@
    :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
    :alt: License: AGPL-3
 
-==============
+===============
 Project closing
-==============
+===============
 
 This module extends the functionality of projects to allow automatic
 account analytic archiving when related project is archived, and if
