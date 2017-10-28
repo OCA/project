@@ -4,13 +4,14 @@
 # 
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2017
+# Jan Prokop <jprokop@creativehome.sk>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-14 02:48+0000\n"
-"PO-Revision-Date: 2017-07-14 02:48+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"POT-Creation-Date: 2017-09-02 11:25+0000\n"
+"PO-Revision-Date: 2017-09-02 11:25+0000\n"
+"Last-Translator: Jan Prokop <jprokop@creativehome.sk>, 2017\n"
 "Language-Team: Slovak (https://www.transifex.com/oca/teams/23907/sk/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,7 +22,7 @@ msgstr ""
 #. module: project_stage_state
 #: selection:project.task.type,state:0
 msgid "Cancelled"
-msgstr ""
+msgstr "Zrušené"
 
 #. module: project_stage_state
 #: selection:project.task.type,state:0
@@ -47,7 +48,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_stage_state.field_project_task_state
 #: model:ir.model.fields,field_description:project_stage_state.field_project_task_type_state
 msgid "State"
-msgstr ""
+msgstr "Stav"
 
 #. module: project_stage_state
 #: model:ir.model,name:project_stage_state.model_project_task
