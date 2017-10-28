@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-02 14:58+0000\n"
-"PO-Revision-Date: 2016-09-15 12:48+0000\n"
+"POT-Creation-Date: 2017-09-02 11:19+0000\n"
+"PO-Revision-Date: 2017-09-23 21:43+0000\n"
 "Last-Translator: Jarmo Kortetjärvi <jarmo.kortetjarvi@gmail.com>\n"
 "Language-Team: Finnish (http://www.transifex.com/oca/OCA-project-8-0/language/fi/)\n"
 "MIME-Version: 1.0\n"
@@ -83,7 +83,7 @@ msgstr ""
 #. module: project_recalculate
 #: selection:project.project,calculation_type:0
 msgid "Date end"
-msgstr ""
+msgstr "Päättymispäivä"
 
 #. module: project_recalculate
 #: view:project.recalculate.wizard:project_recalculate.wizard_project_recalculate_form
