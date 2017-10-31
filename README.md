@@ -3,7 +3,7 @@
 [![codecov](https://codecov.io/gh/OCA/project/branch/11.0/graph/badge.svg)](https://codecov.io/gh/OCA/project)
 
 Odoo Project & Service Management
-=================================
+===============================
 
 Find revelant modules for service business processes or companies.
 
