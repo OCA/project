@@ -16,5 +16,5 @@ This project aims to extend Odoo on contract management features, such as:
 
 
 Translation Status
-------------------
+---------------------
 [![Transifex Status](https://www.transifex.com/projects/p/OCA-project-11-0/chart/image_png)](https://www.transifex.com/projects/p/OCA-project-11-0)
