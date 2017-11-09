@@ -9,9 +9,10 @@
                "closed, and if a project is opened, the related analytic "
                "account will be re-opened.",
     "author": "Camptocamp,Odoo Community Association (OCA)",
+    "license": "AGPL-3",
     "website": "http://www.camptocamp.com",
-    "category": "project Management",
+    "category": "Project Management",
     "depends": ["project"],
     "data": [],
-    'installable': False,
+    'installable': True,
 }
