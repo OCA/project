@@ -17,6 +17,13 @@
                                 attrs="{'invisible':['|',('state','not in',('draft','sent')),('related_project_id','!=',False)]}" />
                     </div>
                 </field>
+                <xpath expr="//notebook" position="inside">
+                    <page string="Project">
+                        <group>
+                            <field name="project_template_id" class="oe_inline"/>
+                        </group>
+                    </page>
+                </xpath>
             </field>
         </record>
 

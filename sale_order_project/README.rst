@@ -27,6 +27,7 @@ Contributors
 * Sébastien BEAU <sebastien.beau@akretion.com>
 * Benoît GUILLOT <benoit.guillot@akretion.com>
 * Oihane Crucelaegui <oihanecrucelaegi@avanzosc.es>
+* Rubén Cabrera Martínez <rcabrera@praxya.com>
 
 
 Maintainer

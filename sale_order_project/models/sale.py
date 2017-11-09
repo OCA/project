@@ -23,7 +23,8 @@
 ###############################################################################
 
 from openerp import api, fields, models
-from datetime import date
+from datetime import date, datetime
+import time
 
 
 class SaleOrder(models.Model):
@@ -42,6 +43,11 @@ class SaleOrder(models.Model):
         comodel_name='project.project', string='Project',
         compute='_compute_related_project_id')
 
+    project_template_id = fields.Many2one(
+        comodel_name='project.project', string='Project Template',
+        domain="[('state','=','template')]",
+    )
+
     @api.model
     def _prepare_project_vals(self, order):
         name = u" %s - %s - %s" % (
@@ -59,8 +65,34 @@ class SaleOrder(models.Model):
         project_obj = self.env['project.project']
         for order in self:
             vals = self._prepare_project_vals(order)
-            project = project_obj.create(vals)
-            order.write({
-                'project_id': project.analytic_account_id.id
-            })
-        return True
+            if order.project_template_id:
+                new_date_start = time.strftime('%Y-%m-%d')
+                new_date_end = False
+                if order.project_template_id.date_start and \
+                        order.project_template_id.date:
+                    start_date = date(*time.strptime(
+                            order.project_template_id.date_start, '%Y-%m-%d'
+                        )[:3])
+                    end_date = date(*time.strptime(
+                            order.project_template_id.date,
+                            '%Y-%m-%d')[:3])
+                    new_date_end = (datetime(*time.strptime(
+                            new_date_start,
+                            '%Y-%m-%d'
+                        )[:3])+(end_date-start_date)).strftime('%Y-%m-%d')
+                vals.update({
+                        'state': 'open',
+                        'date_start': new_date_start,
+                        'date': new_date_end,
+                        'parent_id': order.project_template_id.parent_id.id
+                    })
+                new_id = order.project_template_id.copy(default=vals)
+                order.write({
+                    'project_id': new_id.analytic_account_id.id
+                })
+            else:
+                project = project_obj.create(vals)
+                order.write({
+                    'project_id': project.analytic_account_id.id
+                })
+                return True
