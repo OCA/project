@@ -20,6 +20,7 @@ Available addons
 addon | version | summary
 --- | --- | ---
 [project_change_state](project_change_state/) | 9.0.1.0.0 | Change the status of multiple projects simultaneously.
+[project_closing](project_closing/) | 9.0.0.1.1 | Automatic account analytic closing when related project is closed, and if a project is opened, the related analytic account will be re-opened.
 [project_department](project_department/) | 9.0.1.0.0 | Project Department Categorization
 [project_description](project_description/) | 9.0.1.0.0 | Add a description to projects
 [project_double_alias](project_double_alias/) | 9.0.1.0.0 | Define an alias for tasks and another alias for issues
@@ -51,7 +52,6 @@ addon | version | summary
 [project_categ](project_categ/) | 8.0.0.1.0 (unported) | Allow for Project specific category lists for Tasks
 [project_categ_issue](project_categ_issue/) | 8.0.0.1.0 (unported) | Projects Issues can have an allowed category list
 [project_classification](project_classification/) | 8.0.1.0 (unported) | Project classification (easy hierarchy and setup for project managers)
-[project_closing](project_closing/) | 9.0.0.1.1 (unported) | Automatic account analytic closing when related project is closed, and if a project is opened, the related analytic account will be re-opened.
 [project_functional_block](project_functional_block/) | 1.2 (unported) | Project requiring functional blocks
 [project_gtd](project_gtd/) | 8.0.2.0.0 (unported) | Personal Tasks, Contexts, Timeboxes
 [project_issue_baseuser](project_issue_baseuser/) | 8.0.1.0.0 (unported) | Extend Project user roles to support more complex use cases
