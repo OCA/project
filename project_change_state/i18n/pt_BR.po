@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-19 02:53+0000\n"
-"PO-Revision-Date: 2017-08-19 02:53+0000\n"
+"POT-Creation-Date: 2017-11-10 02:07+0000\n"
+"PO-Revision-Date: 2017-11-10 02:07+0000\n"
 "Last-Translator: Armando Vulcano Junior <vulcano@uol.com.br>, 2017\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/teams/23907/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -27,23 +27,23 @@ msgstr "Cancelar"
 #. module: project_change_state
 #: model:ir.ui.view,arch_db:project_change_state.project_change_state_view
 msgid "Cancel Project"
-msgstr ""
+msgstr "Cancelar Projeto"
 
 #. module: project_change_state
 #: model:ir.actions.act_window,name:project_change_state.action_project_change_state
 #: model:ir.ui.view,arch_db:project_change_state.project_change_state_view
 msgid "Change Project Status"
-msgstr ""
+msgstr "Mudar Estado Projeto"
 
 #. module: project_change_state
 #: model:ir.model,name:project_change_state.model_project_change_state
 msgid "Change the status of the selected projects"
-msgstr ""
+msgstr "Mudar Estado dos projetos selecionados"
 
 #. module: project_change_state
 #: model:ir.ui.view,arch_db:project_change_state.project_change_state_view
 msgid "Close Project"
-msgstr ""
+msgstr "Encerrar Projeto"
 
 #. module: project_change_state
 #: model:ir.model.fields,field_description:project_change_state.field_project_change_state_create_uid
@@ -93,11 +93,11 @@ msgstr "Projeto"
 #. module: project_change_state
 #: model:ir.ui.view,arch_db:project_change_state.project_change_state_view
 msgid "Re-open Project"
-msgstr ""
+msgstr "Reabrir Projeto"
 
 #. module: project_change_state
 #: model:ir.ui.view,arch_db:project_change_state.project_change_state_view
 msgid ""
 "You can change the status of multiple\n"
 "                        projects simultaneously."
-msgstr ""
+msgstr "Você pode mudar o estado de múltiplos projetos simultaneamente"
