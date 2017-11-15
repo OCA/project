@@ -2,7 +2,6 @@
 
 
 from openerp import models, fields, api, _
-from bs4 import BeautifulSoup
 import re
 import logging
 
