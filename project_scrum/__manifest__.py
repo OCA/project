@@ -1,14 +1,10 @@
 # -*- coding: utf-8 -*-
-##############################################################################
-#
-#
-#
-##############################################################################
+
 
 {
     'name': 'Project Scrum',
    'summary': 'Use Scrum Method  to manager your project',
-    'version': '8.0.1.1.0',
+    'version': '10',
     'category': 'Project Management',
     'description': """
 Using Scrum to plan the work in a team.
@@ -16,7 +12,7 @@ Using Scrum to plan the work in a team.
 
 More information:
     """,
-    'author': "Tenovar:Mohamed Habib Challouf,Odoo Community Association (OCA)",
+    'author': "Mohamed Habib Challouf,Samir Guesmi,Odoo Community Association (OCA)",
     'website': 'http://www.tenovar.com',
     'depends': [ 'base_setup',
                  'project',
@@ -30,7 +26,9 @@ More information:
         'security/ir.model.access.csv',
         'security/project_security.xml',
        ],
-   
+     'external_dependencies': {
+        'python' : ['bs4'],
+    },
    
      'qweb': ['static/src/xml/project_scrum.xml'],
     'demo': ['project_scrum_demo.xml'],

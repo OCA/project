@@ -1,2 +1,5 @@
 eclipse.preferences.version=1
+encoding//project_scrum/__init__.py=utf-8
 encoding//project_scrum/__manifest__.py=utf-8
+encoding//project_scrum/project_scrum.py=utf-8
+encoding//project_scrum/wizard/__init__.py=utf-8

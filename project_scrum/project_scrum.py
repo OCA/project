@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from openerp import models, fields, api, _
-#from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup
 import openerp.tools
 import re
 import time
