@@ -27,7 +27,7 @@ More information:
         'security/project_security.xml',
        ],
      'external_dependencies': {
-        'python' : ['bs4','pygments'],
+        'python' : ['bs4',],
     },
    
      'qweb': ['static/src/xml/project_scrum.xml'],

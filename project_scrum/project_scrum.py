@@ -2,12 +2,7 @@
 
 from openerp import models, fields, api, _
 from bs4 import BeautifulSoup
-from pygments.lexer import _inherit
-import openerp.tools
 import re
-import time
-from datetime import date, datetime, timedelta
-from dateutil.relativedelta import relativedelta
 import logging
 
 _logger = logging.getLogger(__name__)
@@ -18,9 +13,9 @@ class scrum_sprint(models.Model):
     _order = 'date_start desc'
 
     def get_current_sprint(self, project_id):
-        sprint = self.env['project.scrum.sprint'].search(['&', '&',
-            ('date_start', '<=', date.today()),
-            ('date_stop', '>=', date.today()),
+        sprint = self.env['project.scrum.sprint'].search(['&', '&', 
+            ('date_start', '<=', date.today()),  
+            ('date_stop', '>=', date.today()), 
             ('project_id', '=', project_id)
             ])
         if len(sprint) >0:
@@ -57,11 +52,11 @@ class scrum_sprint(models.Model):
             tags.append(pool.get('project.category').create(cr,uid,{'name':'test'}))
         for tc in sprint.project_id.test_case_ids:  # loop through each test cases to creat task
             pool.get('project.task').create(cr, uid,{
-                'name': '[TC] %s' % tc.name,
-                'description': tc.description_test,
-                'project_id': tc.project_id.id,
-                'sprint_id': sprint.id,
-                'categ_ids': [(6,_,tags)],
+                'name': '[TC] %s' % tc.name,  
+                'description': tc.description_test,  
+                'project_id': tc.project_id.id,  
+                'sprint_id': sprint.id, 
+                'categ_ids': [(6,_,tags)],  
                 })
 
     def _task_count(self):    # method that calculate how many tasks exist
@@ -168,11 +163,11 @@ class project_user_stories(models.Model):
     company_id = fields.Many2one(related='project_id.analytic_account_id.company_id')
     
     moscow=fields.Selection([
-            (1, "must"),
-            (2, "should"),
-            (3, "could"),
-            (4, "wont"),
-            ('not_set', "Not Set"),
+            (1, "must"), 
+            (2, "should"), 
+            (3, "could"), 
+            (4, "wont"), 
+            ('not_set', "Not Set"), 
             ],string='Moscow')
       
 
@@ -236,7 +231,7 @@ class project_user_stories(models.Model):
         return sprints, None
     
     _group_by_full = {
-        'sprint_ids': _read_group_sprint_id,
+        'sprint_ids': _read_group_sprint_id, 
         }
     name = fields.Char()
 
@@ -260,11 +255,11 @@ class project_task(models.Model):
     description = fields.Html('Description')
     current_sprint = fields.Boolean(compute='_current_sprint', string='Current Sprint', search='_search_current_sprint')
     moscow=fields.Selection([
-            (1, "must"),
-            (2, "should"),
-            (3, "could"),
-            (4, "wont"),
-            ('not_set', "Not Set"),
+            (1, "must"), 
+            (2, "should"), 
+            (3, "could"), 
+            (4, "wont"), 
+            ('not_set', "Not Set"), 
             ],string='Moscow')
     value=fields.Selection([
             (0, "0"),(1, "1"),(2, "2"),(3, "3"),(5, "5"),(8, "8"),(13, "13"),(20, "20"),(40, "40"),(100, "100"),(0, "Not Set"),
@@ -367,15 +362,15 @@ class scrum_meeting(models.Model):
             default_composition_mode='comment',
         )
         return {
-            'name': _('Compose Email'),
-            'type': 'ir.actions.act_window',
-            'view_type': 'form',
-            'view_mode': 'form',
-            'res_model': 'mail.compose.message',
-            'views': [(compose_form.id, 'form')],
-            'view_id': compose_form.id,
-            'target': 'new',
-            'context': ctx,
+            'name': _('Compose Email'), 
+            'type': 'ir.actions.act_window', 
+            'view_type': 'form', 
+            'view_mode': 'form', 
+            'res_model': 'mail.compose.message', 
+            'views': [(compose_form.id, 'form')], 
+            'view_id': compose_form.id, 
+            'target': 'new', 
+            'context': ctx, 
         }
 
 class project(models.Model):
