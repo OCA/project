@@ -1,9 +1,18 @@
 # -*- coding: utf-8 -*-
 
+
 from openerp import models, fields, api, _
 from bs4 import BeautifulSoup
 import re
 import logging
+
+
+try:
+    from bs4 import BeautifulSoup
+    
+except ImportError:
+    logger = logging.getLogger(__name__)
+    logger.warning('bs4  are not available in the sys path')
 
 _logger = logging.getLogger(__name__)
 
