@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+    
+    <record model="ir.rule" id="ps_sprint_rule">
+        <field name="name">Sprint</field>
+        <field name="model_id" ref="model_project_scrum_sprint"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">['|',
+                                        ('company_id', '=', False),
+                                        ('company_id', 'child_of', [user.company_id.id]),
+                                    ]</field>
+    </record>
+    
+    <record model="ir.rule" id="ps_meeting_rule">
+        <field name="name">Meeting</field>
+        <field name="model_id" ref="model_project_scrum_meeting"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">['|',
+                                        ('company_id', '=', False),
+                                        ('company_id', 'child_of', [user.company_id.id]),
+                                    ]</field>
+    </record>
+    
+    <record model="ir.rule" id="ps_us_rule">
+        <field name="name">User Story</field>
+        <field name="model_id" ref="model_project_scrum_us"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">['|',
+                                        ('company_id', '=', False),
+                                        ('company_id', 'child_of', [user.company_id.id]),
+                                    ]</field>
+    </record>
+    
+    <record model="ir.rule" id="ps_test_rule">
+        <field name="name">Test Case</field>
+        <field name="model_id" ref="model_project_scrum_test"/>
+        <field name="global" eval="True"/>
+        <field name="domain_force">['|',
+                                        ('company_id', '=', False),
+                                        ('company_id', 'child_of', [user.company_id.id]),
+                                    ]</field>
+    </record>
+    
+    <record model="ir.rule" id="ps_actors_rule">
+        <field name="name">Actors</field>
+        <field name="model_id" ref="model_project_scrum_actors"/>
+        <field name="global" eval="True"/>
+    </record>
+
+    </data>
+</openerp>

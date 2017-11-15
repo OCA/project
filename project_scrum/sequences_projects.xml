@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+	<data noupdate="0">
+
+
+
+		<record id="seq_project_task" model="ir.sequence">
+			<field name="name">Task Number</field>
+			<field name="code">project.Task</field>
+			<field name="prefix">N°:%(year)s/%(woy)s:</field>
+			<field name="padding">5</field>
+			<field name="company_id" eval="False" />
+		</record>
+	</data>
+
+
+	<data noupdate="0">
+
+
+		<record id="seq_use_story" model="ir.sequence">
+			<field name="name">Story Number</field>
+			<field name="code">user.story</field>
+			<field name="prefix">N°:%(year)s/%(month)s:</field>
+			<field name="padding">5</field>
+			<field name="company_id" eval="False" />
+		</record>
+	</data>
+</openerp>
