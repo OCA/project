@@ -2,13 +2,14 @@
 
 from openerp import models, fields, api, _
 from bs4 import BeautifulSoup
+from pygments.lexer import _inherit
 import openerp.tools
 import re
 import time
 from datetime import date, datetime, timedelta
 from dateutil.relativedelta import relativedelta
 import logging
-from pygments.lexer import _inherit
+
 _logger = logging.getLogger(__name__)
 
 class scrum_sprint(models.Model):
@@ -323,31 +324,6 @@ class project_task(models.Model):
             return user_stories, None
         else:
             return [], None
-
-    """        
-    def _read_group_us_id(self, cr, uid, domain, read_group_order=None, access_rights_uid=None, context=None):
-       # if self.use_scrum:
-        us_obj = self.pool.get('project.scrum.us')
-        order = us_obj._order
-        access_rights_uid = access_rights_uid or uid
-        if read_group_order == 'us_id desc':
-            order = '%s desc' % order
-        search_domain = []
-        project_id = self._resolve_project_id_from_context(cr, uid, context=context)
-        if project_id:
-            search_domain += ['|', ('project_ids', '=', project_id)]
-        search_domain += [('id', 'in', ids)]
-        us_ids = us_obj._search(cr, uid, search_domain, order=order, access_rights_uid=access_rights_uid, context=context)
-        result = us_obj.name_get(cr, access_rights_uid, us_ids, context=context)
-        result.sort(lambda x,y: cmp(us_ids.index(x[0]), us_ids.index(y[0])))
-
-        fold = {}
-        for us in us_obj.browse(cr, access_rights_uid, us_ids, context=context):
-            fold[us.id] = us.fold or False
-        return result, fold
-        #else:
-          #  return [], None"""
-
 
 class project_actors(models.Model):
     _name = 'project.scrum.actors'
