@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-
-
 from openerp import models, fields, api, _
 from datetime import date, datetime, timedelta
 import re
@@ -118,8 +116,7 @@ class scrum_sprint(models.Model):
         self.effective_hours = effective_hours
         # self.planned_hours = planned_hours
         return True
-   
-        
+
     @api.onchange('project_id')
     def onchange_project_id(self):
         if self.project_id and self.project_id.manhours:
@@ -134,7 +131,6 @@ class scrum_sprint(models.Model):
                 self.date_stop = fields.Date.from_string(self.date_start) + timedelta(days = self.project_id.default_sprintduration)
         else:
             pass
-
 
 class project_user_stories(models.Model):
     _name = 'project.scrum.us'
