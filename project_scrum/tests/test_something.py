@@ -12,14 +12,13 @@ class test_something(common.TransactionCase):
         self.record_user1 = self.env['base.res.users'].create({
         'partner_id': partner1,
         'login': 'anders',
-        #'company_id': 1})
+        'company_id': 1})
         self.record_user1 = self.env['base.res.users'].create({
         'partner_id': partner2,
         'login': 'bertil',
-        #'company_id': 1})
-        self.record_project = self.env['project_scrum.project.scrum.sprint'].create(
-        #'analytic_account_id': 1,
-        #'alias_id': 1,
+        'company_id': 1})
+        self.record_project = self.env['project_scrum.project.scrum.sprint'].create({
+        'name': 'test sprint',
         'state': 'draft',
         })
 
@@ -31,7 +30,7 @@ class test_something(common.TransactionCase):
         'date_stop': '2015-01-28',
         'project_id': x,
         'product_owner_id': y,
-        'scrum_master_id' z,
+        'scrum_master_id': z,
         'review': 'foo',
         'retrospective': 'bar',
         'state': 'draft'})
