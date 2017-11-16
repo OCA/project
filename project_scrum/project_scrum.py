@@ -8,21 +8,21 @@ import logging
 try:
     from bs4 import BeautifulSoup
 except ImportError:
-    logger = logging.getLogger(__name__)
+    logger =logging.getLogger(__name__)
     logger.warning('bs4  are not available in the sys path')
 
 _logger = logging.getLogger(__name__)
 
 class scrum_sprint(models.Model):
     _name = 'project.scrum.sprint'
-    _description = 'Project Scrum Sprint'
-    _order = 'date_start desc'
+    _description ='Project Scrum Sprint'
+    _order ='date_start desc'
 
     def get_current_sprint(self, project_id):
-        sprint = self.env['project.scrum.sprint'].search(['&', '&', 
-            ('date_start', '<= ', date.today()),  
-            ('date_stop', '>= ', date.today()), 
-            ('project_id', ' = ', project_id)
+        sprint =self.env['project.scrum.sprint'].search(['&', '&', 
+            ('date_start', '<=', date.today()),  
+            ('date_stop', '>=', date.today()), 
+            ('project_id', '=', project_id)
             ])
         if len(sprint) >0:
             return sprint[0]
@@ -31,9 +31,9 @@ class scrum_sprint(models.Model):
     def _compute(self):
         for record in self:
             if record.date_start and record.date_stop:
-                record.progress = float((date.today() - fields.Date.from_string(record.date_start)).days)\
+                record.progress =float((date.today() - fields.Date.from_string(record.date_start)).days)\
                  / float(record.time_cal()) * 100
-                if date.today() >=  fields.Date.from_string(record.date_stop):
+                if date.today() >= fields.Date.from_string(record.date_stop):
                     record.date_duration = record.time_cal() * 9
                 else:
                     record.date_duration = (date.today() - fields.Date.from_string(record.date_start)).days * 9
@@ -54,7 +54,7 @@ class scrum_sprint(models.Model):
         return diff.days + 1
             
     def test_task(self, cr, uid, sprint, pool): 
-        tags = pool.get('project.tags').search(cr,uid,[('name', ' = ', 'test')])  # search tags with name "test"
+        tags = pool.get('project.tags').search(cr,uid,[('name', '=', 'test')])  # search tags with name "test"
         if len(tags) == 0 :    # if not exist, then creat a "test" tag into category
             tags.append(pool.get('project.tags').create(cr, uid, {'name':'test'}))
         for tc in sprint.project_id.test_case_ids:  # loop through each test cases to creat task
@@ -75,8 +75,8 @@ class scrum_sprint(models.Model):
         for p in self:
             p.task_test_count = len(p.task_test_ids)
 
-    name = fields.Char(string = 'Sprint Name', required = True)
-    meeting_ids = fields.One2many(comodel_name = 'project.scrum.meeting', inverse_name = 'sprint_id', string  = 'Daily Scrum')
+    name = fields.Char(string= 'Sprint Name', required = True)
+    meeting_ids = fields.One2many(comodel_name ='project.scrum.meeting', inverse_name = 'sprint_id', string  = 'Daily Scrum')
     user_id = fields.Many2one(comodel_name = 'res.users', string = 'Assigned to')
     date_start = fields.Date(string = 'Starting Date', default = fields.Date.today())
     date_stop = fields.Date(string = 'Ending Date')
@@ -227,7 +227,7 @@ class project_user_stories(models.Model):
     @api.model
     def _read_group_sprint_id(self, present_ids, domain, **kwargs):
         project_id = self._resolve_project_id_from_context()
-        sprints = self.env['project.scrum.sprint'].search([('project_id', ' = ', project_id)], order = 'sequence').name_get()
+        sprints = self.env['project.scrum.sprint'].search([('project_id', '=', project_id)], order = 'sequence').name_get()
         #sprints.sorted(key = lambda r: r.sequence)
         return sprints, None
     
@@ -293,7 +293,7 @@ class project_task(models.Model):
         sprint = self.env['project.scrum.sprint'].get_current_sprint(project_id)
         #~ raise Warning('sprint %s csprint %s context %s' % (self.sprint_id, sprint, self.env.context))
         _logger.error('Task %r' % self)
-        return [('sprint_id', ' = ', sprint and sprint.id or None)]
+        return [('sprint_id', '=', sprint and sprint.id or None)]
             
     @api.multi
     def write(self, vals):
@@ -306,7 +306,7 @@ class project_task(models.Model):
         project = self.env['project.project'].browse(self._resolve_project_id_from_context())
 
         if project.use_scrum:
-            sprints = self.env['project.scrum.sprint'].search([('project_id', ' = ', project.id)], order = 'sequence').name_get()
+            sprints = self.env['project.scrum.sprint'].search([('project_id', '=', project.id)], order = 'sequence').name_get()
             return sprints, None
         else:
             return [], None
@@ -316,7 +316,7 @@ class project_task(models.Model):
         project = self.env['project.project'].browse(self._resolve_project_id_from_context())
 
         if project.use_scrum:
-            user_stories = self.env['project.scrum.us'].search([('project_id', ' = ', project.id)], order = 'sequence').name_get()
+            user_stories = self.env['project.scrum.us'].search([('project_id', '=', project.id)], order = 'sequence').name_get()
             return user_stories, None
         else:
             return [], None
@@ -434,7 +434,7 @@ class test_case(models.Model):
     @api.model
     def _read_group_us_id(self, present_ids, domain, **kwargs):
         project_id = self._resolve_project_id_from_context()
-        user_stories = self.env['project.scrum.us'].search([('project_id', ' = ', project_id)]).name_get()
+        user_stories = self.env['project.scrum.us'].search([('project_id', '=', project_id)]).name_get()
         return user_stories, None
 
     _group_by_full = {
