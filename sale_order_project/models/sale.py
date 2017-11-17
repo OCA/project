@@ -66,7 +66,7 @@ class SaleOrder(models.Model):
         for order in self:
             vals = self._prepare_project_vals(order)
             if order.project_template_id:
-                new_date_start = time.strftime('%Y-%m-%d')
+                new_date_start = fields.Date.context_today(self)
                 new_date_end = False
                 if order.project_template_id.date_start and \
                         order.project_template_id.date:
