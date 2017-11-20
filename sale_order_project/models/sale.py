@@ -86,13 +86,10 @@ class SaleOrder(models.Model):
                         'date': new_date_end,
                         'parent_id': order.project_template_id.parent_id.id
                     })
-                new_id = order.project_template_id.copy(default=vals)
-                order.write({
-                    'project_id': new_id.analytic_account_id.id
-                })
+                project = order.project_template_id.copy(default=vals)
             else:
                 project = project_obj.create(vals)
-                order.write({
-                    'project_id': project.analytic_account_id.id
-                })
-                return True
+            order.write({
+                'project_id': project.analytic_account_id.id
+            })
+            return True
