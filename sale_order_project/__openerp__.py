@@ -29,6 +29,7 @@
     'author': 'Akretion, '
               'AvanzOSC, '
               'Serv. Tecnol. Avanzados - Pedro M. Baeza, '
+              'Rubén Cabrera Martínez, '
               'Odoo Community Association (OCA)',
     'website': 'http://www.akretion.com/',
     'depends': [
