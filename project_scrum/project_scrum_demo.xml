@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+
+<!-- Users -->
+        <record id="base.user_demo" model="res.users">
+            <field name="groups_id" eval="[(4, ref('project.group_project_user')),(4, ref('project.group_project_manager'))]"/>
+        </record>
+
+<!-- Project -->
+<!--Project 1-->
+        <record id="project_project_1" model="project.project">
+            <field name="use_scrum">True</field>
+            <field name="date_start" eval="time.strftime('%Y-%m-01 10:00:00')"/>
+            <field name="state">open</field>
+            <field name="type">normal</field>
+            <field name="name">Project Scrum</field>
+            <field name="color">3</field>
+            <field name="partner_id" ref="base.res_partner_10"/>
+           <field name="privacy_visibility">employees</field>
+            <field name="members" eval="[(6, 0, [
+                    ref('base.user_root'),
+                    ref('base.user_demo')])]"/>
+            <field name="user_id" ref="base.user_demo"/>
+            <field name="description">Model for Testing Scrum using in projects</field>
+            <field name="alias_model">project.task</field>
+        </record>
+
+<!--Project 2-->
+        <record id="project_project_2" model="project.project">
+            <field name="use_scrum">True</field>
+            <field name="date_start" eval="time.strftime('%Y-%m-01 10:00:00')"/>
+            <field name="state">open</field>
+            <field name="type">normal</field>
+            <field name="name">Project Testing Scrum</field>
+            <field name="color">3</field>
+            <field name="partner_id" ref="base.res_partner_10"/>
+           <field name="privacy_visibility">employees</field>
+            <field name="members" eval="[(6, 0, [
+                    ref('base.user_root'),
+                    ref('base.user_demo')])]"/>
+            <field name="user_id" ref="base.user_demo"/>
+            <field name="description">Model for Testing Scrum using in projects</field>
+            <field name="alias_model">project.task</field>
+        </record>
+
+<!-- Sprint -->
+<!--Project 1-->
+        <record id="project_sprint_1" model="project.scrum.sprint">
+            <field name="name">Sprint 1</field>
+            <field name="project_id" ref="project_project_1"/>
+            <field name="date_start" eval="(DateTime.today() - relativedelta(weeks=1)).strftime('%Y-%m-%d')"/>
+            <field name="date_stop" eval="(DateTime.today() + relativedelta(weeks=1)).strftime('%Y-%m-%d')"/>
+            <field name="state">pending</field> 
+        </record>
+        
+        <record id="project_sprint_2" model="project.scrum.sprint">
+            <field name="name">Sprint 2</field>
+            <field name="project_id" ref="project_project_1"/>
+            <field name="date_start" eval="(DateTime.today() - relativedelta(weeks=3)).strftime('%Y-%m-%d')"/>
+            <field name="date_stop" eval="(DateTime.today() - relativedelta(weeks=2)).strftime('%Y-%m-%d')"/>
+            <field name="state">pending</field> 
+        </record>
+        
+        <record id="project_sprint_3" model="project.scrum.sprint">
+            <field name="name">Sprint 3</field>
+            <field name="project_id" ref="project_project_1"/>
+            <field name="date_start" eval="(DateTime.today() + relativedelta(weeks=2)).strftime('%Y-%m-%d')"/>
+            <field name="date_stop" eval="(DateTime.today() + relativedelta(weeks=3)).strftime('%Y-%m-%d')"/>
+            <field name="state">open</field> 
+        </record>
+
+<!--Project 2-->
+        <record id="project_sprint_4" model="project.scrum.sprint">
+            <field name="name">Testing Sprint 1</field>
+            <field name="project_id" ref="project_project_2"/>
+            <field name="date_start" eval="(DateTime.today() + relativedelta(weeks=4)).strftime('%Y-%m-%d')"/>
+            <field name="date_stop" eval="(DateTime.today() + relativedelta(weeks=5)).strftime('%Y-%m-%d')"/>
+            <field name="state">open</field> 
+        </record>
+        
+        <record id="project_sprint_5" model="project.scrum.sprint">
+            <field name="name">Testing Sprint 2</field>
+            <field name="project_id" ref="project_project_2"/>
+            <field name="date_start" eval="(DateTime.today() + relativedelta(weeks=6)).strftime('%Y-%m-%d')"/>
+            <field name="date_stop" eval="(DateTime.today() + relativedelta(weeks=7)).strftime('%Y-%m-%d')"/>
+            <field name="state">open</field> 
+        </record>
+                
+<!-- Tasks -->
+<!--Project 1-->
+        <record id="project_task_1" model="project.task">
+            <field name="planned_hours" eval="40.0"/>
+            <field name="remaining_hours" eval="40.0"/>
+            <field name="user_id" ref="base.user_demo"/>
+            <field name="priority">0</field>
+            <field name="project_id" ref="project_project_1"/>
+            <field name="name">Detecting problems</field>
+            <field name="color">3</field>
+            <field name="sprint_id" ref="project_sprint_1"/>
+        </record>
+      
+        <record id="project_task_2" model="project.task">
+            <field name="planned_hours" eval="20.0"/>
+            <field name="remaining_hours" eval="20.0"/>
+            <field name="user_id" ref="base.user_demo"/>
+            <field name="priority">0</field>
+            <field name="project_id" ref="project_project_1"/>
+            <field name="name">Define layout</field>
+            <field name="color">3</field>
+            <field name="sprint_id" ref="project_sprint_2"/>
+        </record>
+        
+<!--Project 2-->
+        <record id="project_task_3" model="project.task">
+            <field name="planned_hours" eval="20.0"/>
+            <field name="remaining_hours" eval="20.0"/>
+            <field name="user_id" ref="base.user_demo"/>
+            <field name="priority">0</field>
+            <field name="project_id" ref="project_project_2"/>
+            <field name="name">Test Define layout</field>
+            <field name="color">3</field>
+            <field name="sprint_id" ref="project_sprint_4"/>
+        </record>
+        
+
+<!-- User Story -->
+<!--Project 1-->
+        <record id="project_us_1" model="project.scrum.us">
+            <field name="name">User Story 1</field>
+            <field name="project_id" ref="project_project_1"/> 
+            <field name="sprint_id" ref="project_sprint_1"/>
+            <field name="name">User Story 1</field>
+            <field name="description">Description Test</field>
+        </record>
+        
+        <record id="project_us_2" model="project.scrum.us">
+            <field name="name">User Story 2</field>
+            <field name="project_id" ref="project_project_1"/>
+            <field name="sprint_id" ref="project_sprint_1"/>
+            <field name="name">User Story 2</field>
+            <field name="description">Sprint Test</field>
+        </record>
+        
+        <record id="project_us_3" model="project.scrum.us">
+            <field name="name">User Story 3</field>
+            <field name="project_id" ref="project_project_1"/>
+            <field name="sprint_id" ref="project_sprint_2"/>
+            <field name="name">User Story 3</field>
+            <field name="description">Working Flow Test</field>
+        </record>
+        
+        <record id="project_us_4" model="project.scrum.us">
+            <field name="name">User Story 4</field>
+            <field name="project_id" ref="project_project_1"/>
+            <field name="sprint_id" ref="project_sprint_3"/>
+            <field name="name">User Story 4</field>
+            <field name="description">User Friendly Test</field>
+        </record>
+
+<!--Project 2-->
+        <record id="project_us_5" model="project.scrum.us">
+            <field name="name">User Story Testing 1</field>
+            <field name="project_id" ref="project_project_2"/> 
+            <field name="sprint_id" ref="project_sprint_4"/>
+            <field name="name">User Story Testing 1</field>
+            <field name="description">Description Test</field>
+        </record>
+        
+        <record id="project_us_6" model="project.scrum.us">
+            <field name="name">User Story Testing 2</field>
+            <field name="project_id" ref="project_project_2"/> 
+            <field name="sprint_id" ref="project_sprint_5"/>
+            <field name="name">User Story Testing 2</field>
+            <field name="description">Description Scrum Test</field>
+        </record>
+        
+<!-- meeting-->
+<!--Project 1-->        
+        <record id="project_meeting_1" model="project.scrum.meeting">
+            <field name="name">Meeting 1</field>
+            <field name="date_meeting" eval="time.strftime('2015-03-30')"/>
+            <field name="user_id_meeting" ref="base.user_demo"/>
+            <field name="sprint_id" ref="project_sprint_1"/> 
+            <field name="project_id" ref="project_project_1"/>
+            <field name="question_yesterday">yesterday is history</field>
+            <field name="question_today">today is present</field>
+            <field name="question_blocks">tomorrow is a mystery</field>
+            <field name="name">Meeting 1</field>
+            <field name="description">Meeting Scrum Test</field>
+        </record>
+
+        <record id="project_meeting_2" model="project.scrum.meeting">
+            <field name="name">Meeting 2</field>
+            <field name="date_meeting" eval="time.strftime('2015-02-27')"/>
+            <field name="user_id_meeting" ref="base.user_demo"/>
+            <field name="sprint_id" ref="project_sprint_2"/> 
+            <field name="project_id" ref="project_project_1"/>
+            <field name="question_yesterday">yesterday is a mystery</field>
+            <field name="question_today">today is history</field>
+            <field name="question_blocks">tomorrow is a present</field>
+            <field name="name">Meeting 2</field>
+            <field name="description">Meeting Scrum Test 2</field>
+        </record>
+
+<!--Project 2-->        
+        <record id="project_meeting_3" model="project.scrum.meeting">
+            <field name="name">Test Meeting 1</field>
+            <field name="date_meeting" eval="time.strftime('2015-02-25')"/>
+            <field name="user_id_meeting" ref="base.user_demo"/>
+            <field name="sprint_id" ref="project_sprint_4"/> 
+            <field name="project_id" ref="project_project_2"/>
+            <field name="question_yesterday">Fantasy is reality</field>
+            <field name="question_today">Aliens exist</field>
+            <field name="question_blocks">There is nothing that is true</field>
+            <field name="name">Test Meeting 1</field>
+            <field name="description">Meeting Testing Scrum</field>
+        </record>
+
+<!-- Test case -->
+<!--Project 1-->
+        <record id="project_test_case_2" model="project.scrum.test">
+            <field name="name">Test Case 2</field>
+            <field name="sequence_test" ref="project_project_1"/>
+            <field name="project_id" ref="project_project_1"/>
+            <field name="user_story_id_test" ref="project_us_1"/>
+            <field name="description_test"  ref="project_project_1"/>
+            <field name="name">Test Case 2</field>
+            <field name="description">Test case for project scum</field>
+        </record>
+            
+        <record id="project_test_case_3" model="project.scrum.test">
+            <field name="name">Test Case 3</field>
+            <field name="sequence_test" ref="project_project_1"/>
+            <field name="project_id" ref="project_project_1"/>
+            <field name="user_story_id_test" ref="project_us_2"/>
+            <field name="description_test"  ref="project_project_1"/>
+            <field name="name">Test Case 3</field>
+            <field name="description">Test case 3 for project scum</field>
+        </record>
+
+<!--Project 2-->
+        <record id="project_test_case_1" model="project.scrum.test">
+            <field name="name">Testing Scrum Case 1</field>
+            <field name="sequence_test" ref="project_project_2"/>
+            <field name="project_id" ref="project_project_2"/>
+            <field name="user_story_id_test" ref="project_us_5"/>
+            <field name="description_test"  ref="project_project_2"/>
+            <field name="name">Testing Scrum Case 1</field>
+            <field name="description">Test case for project testing scrum</field>
+        </record>
+    </data>
+</openerp>

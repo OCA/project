@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>        
+        <record model="ir.values" id="ps_make_test_task">
+            <field name="model_id" ref="model_project_scrum_sprint"/>
+            <field name="name">Creat tasks for test</field>
+            <field name="key2">client_action_multi</field>
+            <field name="key">action</field>
+            <field name="model">project.scrum.sprint</field>
+        </record>
+        
+        <record model="ir.actions.server" id="ps_action_server_creat_test_task">
+            <field name="name">Creat Tasks from Test Cases</field>
+            <field name="model_id" ref="model_project_scrum_sprint"/>
+            <field name="state">code</field>
+            <field name="type">ir.actions.server</field>
+            <field name="code">self.test_task(cr, uid, object, pool)</field>
+            <field name="condition">True</field>
+            <field name="menu_ir_values_id" ref="ps_make_test_task"/>
+        </record>
+        
+        <record model="ir.values" id="ps_make_test_task">
+            <field name="value" eval="'ir.actions.server,%s' % ref('ps_action_server_creat_test_task')"/>
+        </record>
+
+    </data>
+</openerp>

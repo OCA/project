@@ -1,0 +1,761 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_scrum
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0-20160329\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-04-13 09:20+0000\n"
+"PO-Revision-Date: 2016-04-13 12:54+0200\n"
+"Last-Translator: Miku Laitinen <miku.laitinen@avoin.systems>\n"
+"Language-Team: Avoin.Systems <miku@avoin.systems>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"Language: Finnish\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#. module: project_scrum
+#: model:email.template,body_html:project_scrum.email_template_id
+msgid ""
+"\n"
+"        \n"
+"                 <div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, "
+"Verdana, sans-serif;\n"
+"                 font-size: 16px; color: rgb(34, 34, 34); background-color: "
+"rgb(255, 255, 255); \">\n"
+"                 <p>Name: ${object.user_id_meeting}</p> <p>Date: ${object."
+"date_meeting}</p> <br/>\n"
+"                 <p style=\"color:blue\"><font-size=\"14\">What did you do "
+"since the last meeting?</font></p>\n"
+"                 ${object.question_yesterday} <br/><br/>\n"
+"                 <p style=\"color:blue\"><font-size=\"14\">What do you plan "
+"to do till the next meeting?</font></p>\n"
+"                 ${object.question_today} <br/><br/>\n"
+"                 <p style=\"color:blue\"><font-size=\"14\">Are there "
+"anything blocking you?</font></p>\n"
+"                 ${object.question_blocks} <br/><br/>\n"
+"                 </div>\n"
+"        \n"
+"      "
+msgstr ""
+"\n"
+"        \n"
+"                 <div style=\"font-family: 'Lucica Grande', Ubuntu, Arial, "
+"Verdana, sans-serif;\n"
+"                 font-size: 16px; color: rgb(34, 34, 34); background-color: "
+"rgb(255, 255, 255); \">\n"
+"                 <p>Name: ${object.user_id_meeting}</p> <p>Päiväys: ${object."
+"date_meeting}</p> <br/>\n"
+"                 <p style=\"color:blue\"><font-size=\"14\">Mitä olette "
+"tehneet edellisen tapaamisen jälkeen?</font></p>\n"
+"                 ${object.question_yesterday} <br/><br/>\n"
+"                 <p style=\"color:blue\"><font-size=\"14\">Mitä aiotte tehdä "
+"ennen seuraavaa tapaamista?</font></p>\n"
+"                 ${object.question_today} <br/><br/>\n"
+"                 <p style=\"color:blue\"><font-size=\"14\">Estääkö mikään "
+"etenemistänne?</font></p>\n"
+"                 ${object.question_blocks} <br/><br/>\n"
+"                 </div>\n"
+"        \n"
+"      "
+
+#. module: project_scrum
+#: model:ir.actions.act_window,help:project_scrum.action_ps_sprint_all
+#: model:ir.actions.act_window,help:project_scrum.action_ps_sprint_current
+msgid ""
+"\n"
+"        The scrum agile methodology is used in software development "
+"projects. In this methodology, \n"
+"        a sprint is a short period of time (e.g. one month) during which the "
+"team implements a list of product backlogs. \n"
+"        The sprint review is organized when the team presents its work to "
+"the customer and product owner.\n"
+"      "
+msgstr ""
+"\n"
+"        Scrum on ketterä projektinhallintamenetelmä, jota käytetään "
+"yleisesti ohjelmistotuotannossa. Yksi menetelmän \n"
+"        olennaisista osista on sprintti, joka on lyhyt ajanjakso (esim. yksi "
+"kuukausi), ja jonka aikana tiimi toteuttaa backlogissa \n"
+"         eli työlistalla olevan määrätyn joukon tehtäviä. Sprintin "
+"katselmuksessa tiimi esittelee tuotoksiaan asiakkaalle ja tuoteomistajalle.\n"
+"      "
+
+#. module: project_scrum
+#: model:email.template,subject:project_scrum.email_template_id
+msgid "${object.date_meeting or ''}"
+msgstr "${object.date_meeting or ''}"
+
+#. module: project_scrum
+#: field:project.scrum.us,actor_ids:0 field:project.task,actor_ids:0
+msgid "Actor"
+msgstr "Rooli"
+
+#. module: project_scrum
+#: model:ir.model,name:project_scrum.model_project_scrum_actors
+msgid "Actors in user stories"
+msgstr "Roolit käyttäjätarinoissa"
+
+#. module: project_scrum
+#: view:project.scrum.meeting:project_scrum.view_ps_meeting_form
+msgid "Are there anything blocking you?"
+msgstr "Estääkö jokin etenemistäsi?"
+
+#. module: project_scrum
+#: view:project.scrum.meeting:project_scrum.view_ps_meeting_form
+msgid "Are your Sprint Backlog estimate accurate ?"
+msgstr "Onko arviosi sprintin backlogista täsmällinen?"
+
+#. module: project_scrum
+#: field:project.scrum.sprint,user_id:0
+msgid "Assigned to"
+msgstr "Annettu tehtäväksi"
+
+#. module: project_scrum
+#: view:project.scrum.sprint:project_scrum.view_ps_sprint_form
+msgid "Backlog"
+msgstr "Backlog"
+
+#. module: project_scrum
+#: field:project.scrum.meeting,question_backlog:0
+msgid "Backlog Accurate?"
+msgstr "Backlog täsmällinen?"
+
+#. module: project_scrum
+#: field:project.project,default_sprintduration:0
+msgid "Calendar"
+msgstr "Kalenteri"
+
+#. module: project_scrum
+#: view:project.scrum.sprint:project_scrum.view_ps_sprint_search
+#: selection:project.scrum.sprint,state:0
+#: view:project.scrum.test:project_scrum.view_ps_tc_search
+#: selection:project.scrum.test,stats_test:0
+msgid "Cancelled"
+msgstr "Peruutettu"
+
+#. module: project_scrum
+#: field:project.scrum.test,color:0 field:project.scrum.us,color:0
+msgid "Color Index"
+msgstr "Väri-indeksi"
+
+#. module: project_scrum
+#: code:addons/project_scrum/project_scrum.py:396
+#, python-format
+msgid "Compose Email"
+msgstr "Kirjoita sähköposti"
+
+#. module: project_scrum
+#: model:ir.actions.server,name:project_scrum.ps_action_server_creat_test_task
+msgid "Creat Tasks from Test Cases"
+msgstr "Luo tehtäviä testitapauksista"
+
+#. module: project_scrum
+#: field:project.scrum.actors,create_uid:0
+#: field:project.scrum.meeting,create_uid:0
+#: field:project.scrum.sprint,create_uid:0
+#: field:project.scrum.test,create_uid:0 field:project.scrum.us,create_uid:0
+msgid "Created by"
+msgstr "Luonut"
+
+#. module: project_scrum
+#: field:project.scrum.actors,create_date:0
+#: field:project.scrum.meeting,create_date:0
+#: field:project.scrum.sprint,create_date:0
+#: field:project.scrum.test,create_date:0 field:project.scrum.us,create_date:0
+msgid "Created on"
+msgstr "Luotu"
+
+#. module: project_scrum
+#: view:project.task:project_scrum.view_ps_task_search
+msgid "Current Sprint"
+msgstr "Nykyinen sprintti"
+
+#. module: project_scrum
+#: view:project.scrum.meeting:project_scrum.view_ps_meeting_form
+msgid "Daily Meeting"
+msgstr "Päivittäinen tapaaminen"
+
+#. module: project_scrum
+#: field:project.scrum.sprint,meeting_ids:0
+msgid "Daily Scrum"
+msgstr "Päivittäinen scrum"
+
+#. module: project_scrum
+#: view:project.scrum.meeting:project_scrum.view_ps_meeting_search
+#: field:project.scrum.meeting,date_meeting:0
+msgid "Date"
+msgstr "Päiväys"
+
+#. module: project_scrum
+#: help:project.scrum.meeting,message_last_post:0
+msgid "Date of the last message posted on the record."
+msgstr "Viimeisen tietueelle lähetetyn viestin päiväys."
+
+#. module: project_scrum
+#: help:project.project,default_sprintduration:0
+msgid "Default Sprint time for this project, in days"
+msgstr "Sprintin oletuskesto tälle projektille (pv)"
+
+#. module: project_scrum
+#: view:project.scrum.test:project_scrum.view_ps_tc_kanban
+#: view:project.scrum.us:project_scrum.view_ps_us_kanban
+msgid "Delete"
+msgstr "Poista"
+
+#. module: project_scrum
+#: field:project.scrum.meeting,question_blocks:0
+#: field:project.scrum.meeting,question_today:0
+#: field:project.scrum.meeting,question_yesterday:0
+#: field:project.scrum.sprint,description:0
+#: view:project.scrum.test:project_scrum.view_ps_tc_form
+#: field:project.scrum.test,description_test:0
+#: view:project.scrum.us:project_scrum.view_ps_us_form
+#: field:project.scrum.us,description:0
+msgid "Description"
+msgstr "Kuvaus"
+
+#. module: project_scrum
+#: field:project.scrum.us,description_short:0
+msgid "Description short"
+msgstr "Lyhyt kuvaus"
+
+#. module: project_scrum
+#: view:project.scrum.sprint:project_scrum.view_ps_sprint_search
+#: selection:project.scrum.sprint,state:0
+msgid "Done"
+msgstr "Valmis"
+
+#. module: project_scrum
+#: view:project.scrum.sprint:project_scrum.view_ps_sprint_search
+#: selection:project.scrum.sprint,state:0
+#: view:project.scrum.test:project_scrum.view_ps_tc_search
+#: selection:project.scrum.test,stats_test:0
+msgid "Draft"
+msgstr "Luonnos"
+
+#. module: project_scrum
+#: view:project.scrum.test:project_scrum.view_ps_tc_kanban
+#: view:project.scrum.us:project_scrum.view_ps_us_kanban
+msgid "Edit..."
+msgstr "Muokkaa..."
+
+#. module: project_scrum
+#: field:project.scrum.sprint,date_stop:0
+msgid "Ending Date"
+msgstr "Päättymispäivä"
+
+#. module: project_scrum
+#: help:project.scrum.sprint,planned_hours:0
+msgid ""
+"Estimated time to do the task, usually set by the project manager when the "
+"task is in draft state."
+msgstr ""
+"Tehtävän suorituksen arvioitu kesto. Yleensä projektipäällikön määrittämä, "
+"kun tehtävä on vielä luonnos."
+
+#. module: project_scrum
+#: view:project.scrum.sprint:project_scrum.view_ps_sprint_search
+#: view:project.scrum.test:project_scrum.view_ps_tc_search
+msgid "Filter By..."
+msgstr "Suodata..."
+
+#. module: project_scrum
+#: field:project.scrum.meeting,message_follower_ids:0
+msgid "Followers"
+msgstr "Seuraajat"
+
+#. module: project_scrum
+#: help:project.scrum.sprint,sequence:0
+msgid "Gives the sequence order when displaying a list of tasks."
+msgstr "Määrittää järjestyksen tehtävälistalla"
+
+#. module: project_scrum
+#: view:project.scrum.meeting:project_scrum.view_ps_meeting_search
+#: view:project.scrum.sprint:project_scrum.view_ps_sprint_search
+#: view:project.scrum.test:project_scrum.view_ps_tc_search
+#: view:project.scrum.us:project_scrum.view_ps_us_search
+msgid "Group By..."
+msgstr "Ryhmittele..."
+
+#. module: project_scrum
+#: help:project.scrum.meeting,message_summary:0
+msgid ""
+"Holds the Chatter summary (number of messages, ...). This summary is "
+"directly in html format in order to be inserted in kanban views."
+msgstr ""
+"Keskustelujen yhteenveto (viestien lukumäärä, ...). Tämä yhteenveto on HTML-"
+"muodossa, jotta sen voisi esittää kanban-näkymissä."
+
+#. module: project_scrum
+#: help:project.project,manhours:0
+msgid "How many hours you expect this project needs before it's finished"
+msgstr "Kuinka monta työtuntia arvioit projektin tarvitsevan valmistuakseen"
+
+#. module: project_scrum
+#: field:project.scrum.actors,id:0 field:project.scrum.meeting,id:0
+#: field:project.scrum.sprint,id:0 field:project.scrum.test,id:0
+#: field:project.scrum.us,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: project_scrum
+#: help:project.scrum.meeting,message_unread:0
+msgid "If checked new messages require your attention."
+msgstr "Jos valittu, uudet viestit vaativat huomiotasi."
+
+#. module: project_scrum
+#: help:project.scrum.sprint,project_id:0
+msgid ""
+"If you have [?] in the project name, it means there are no analytic account "
+"linked to this project."
+msgstr ""
+"Jos projektin nimessä on [?], se tarkoittaa, ettei projektille ole liitetty "
+"analyyttistä tiliä."
+
+#. module: project_scrum
+#: view:project.scrum.test:project_scrum.view_ps_tc_search
+#: selection:project.scrum.test,stats_test:0
+msgid "In Progress"
+msgstr "Meneillään"
+
+#. module: project_scrum
+#: field:project.scrum.meeting,message_is_follower:0
+msgid "Is a Follower"
+msgstr "On seuraaja"
+
+#. module: project_scrum
+#: view:project.project:project_scrum.view_ps_kanban
+msgid "Items"
+msgstr "tehtävä(ä)"
+
+#. module: project_scrum
+#: field:project.scrum.meeting,message_last_post:0
+msgid "Last Message Date"
+msgstr "Viimeisen viestin päiväys"
+
+#. module: project_scrum
+#: field:project.scrum.actors,write_uid:0
+#: field:project.scrum.meeting,write_uid:0
+#: field:project.scrum.sprint,write_uid:0 field:project.scrum.test,write_uid:0
+#: field:project.scrum.us,write_uid:0
+msgid "Last Updated by"
+msgstr "Viimeksi päivittänyt"
+
+#. module: project_scrum
+#: field:project.scrum.actors,write_date:0
+#: field:project.scrum.meeting,write_date:0
+#: field:project.scrum.sprint,write_date:0
+#: field:project.scrum.test,write_date:0 field:project.scrum.us,write_date:0
+msgid "Last Updated on"
+msgstr "Viimeksi päivitetty"
+
+#. module: project_scrum
+#: field:project.project,manhours:0
+msgid "Man Hours"
+msgstr "Työtunnit"
+
+#. module: project_scrum
+#: view:project.scrum.meeting:project_scrum.view_ps_meeting_search
+msgid "Meeting"
+msgstr "Tapaaminen"
+
+#. module: project_scrum
+#: model:ir.actions.act_window,name:project_scrum.action_ps_meeting_all
+#: model:ir.actions.act_window,name:project_scrum.action_ps_meeting_current
+#: model:ir.ui.menu,name:project_scrum.menu_action_ps_meeting_all
+#: view:project.project:project_scrum.view_ps_kanban
+#: field:project.project,meeting_ids:0
+msgid "Meetings"
+msgstr "Tapaamiset"
+
+#. module: project_scrum
+#: field:project.scrum.meeting,message_ids:0
+msgid "Messages"
+msgstr "Viestit"
+
+#. module: project_scrum
+#: help:project.scrum.meeting,message_ids:0
+msgid "Messages and communication history"
+msgstr "Viesti- ja keskusteluhistoria"
+
+#. module: project_scrum
+#: view:project.scrum.sprint:project_scrum.view_ps_sprint_search
+msgid "Month"
+msgstr "Kuukausi"
+
+#. module: project_scrum
+#: field:project.scrum.actors,name:0
+#: view:project.scrum.meeting:project_scrum.view_ps_meeting_search
+#: field:project.scrum.meeting,user_id_meeting:0
+#: field:project.scrum.test,name:0 field:project.scrum.us,name:0
+msgid "Name"
+msgstr "Nimi"
+
+#. module: project_scrum
+#: view:project.task:project_scrum.view_ps_task_search
+msgid "New Mail"
+msgstr "Uusia viestejä"
+
+#. module: project_scrum
+#: selection:project.scrum.meeting,question_backlog:0
+msgid "No"
+msgstr "Ei"
+
+#. module: project_scrum
+#: view:project.scrum.sprint:project_scrum.view_ps_sprint_search
+#: selection:project.scrum.sprint,state:0
+msgid "Open"
+msgstr "Auki"
+
+#. module: project_scrum
+#: view:project.scrum.sprint:project_scrum.view_ps_sprint_search
+#: selection:project.scrum.sprint,state:0
+msgid "Pending"
+msgstr "Odottaa"
+
+#. module: project_scrum
+#: field:project.scrum.sprint,planned_hours:0
+msgid "Planned Hours"
+msgstr "Suunnitellut tunnit"
+
+#. module: project_scrum
+#: view:project.project:project_scrum.edit_ps_project
+#: field:project.scrum.sprint,product_owner_id:0
+msgid "Product Owner"
+msgstr "Tuoteomistaja"
+
+#. module: project_scrum
+#: view:project.scrum.sprint:project_scrum.view_ps_sprint_search
+msgid "Product owner"
+msgstr "Tuoteomistaja"
+
+#. module: project_scrum
+#: model:ir.model,name:project_scrum.model_project_project
+#: view:project.scrum.meeting:project_scrum.view_ps_meeting_search
+#: field:project.scrum.meeting,project_id:0
+#: view:project.scrum.sprint:project_scrum.view_ps_sprint_search
+#: field:project.scrum.sprint,project_id:0
+#: view:project.scrum.test:project_scrum.view_ps_tc_search
+#: field:project.scrum.test,project_id:0
+#: view:project.scrum.us:project_scrum.view_ps_us_search
+#: field:project.scrum.us,project_id:0
+msgid "Project"
+msgstr "Projekti"
+
+#. module: project_scrum
+#: model:ir.model,name:project_scrum.model_project_scrum_meeting
+msgid "Project Scrum Daily Meetings"
+msgstr "Päivittäiset scrum-tapaamiset"
+
+#. module: project_scrum
+#: model:ir.model,name:project_scrum.model_project_scrum_sprint
+msgid "Project Scrum Sprint"
+msgstr "Sprintti"
+
+#. module: project_scrum
+#: model:ir.model,name:project_scrum.model_project_scrum_us
+msgid "Project Scrum Use Stories"
+msgstr "Scrum-käyttäjätarinat"
+
+#. module: project_scrum
+#: view:project.scrum.sprint:project_scrum.view_ps_sprint_gantt
+msgid "Projects"
+msgstr "Projektit"
+
+#. module: project_scrum
+#: view:project.scrum.sprint:project_scrum.view_ps_sprint_form
+msgid "Retrospective"
+msgstr "Retrospektiivi"
+
+#. module: project_scrum
+#: view:project.scrum.sprint:project_scrum.view_ps_sprint_form
+msgid "Review"
+msgstr "Katselmus"
+
+#. module: project_scrum
+#: model:ir.ui.menu,name:project_scrum.menu_scrum_in_config
+#: view:project.project:project_scrum.edit_ps_project
+msgid "Scrum"
+msgstr "Scrum"
+
+#. module: project_scrum
+#: view:project.project:project_scrum.edit_ps_project
+#: view:project.scrum.sprint:project_scrum.view_ps_sprint_search
+#: field:project.scrum.sprint,scrum_master_id:0
+msgid "Scrum Master"
+msgstr "Scrum-master"
+
+#. module: project_scrum
+#: view:project.project:project_scrum.project_ps_view
+msgid "Scrum Master/Project Manager"
+msgstr "Scrum-master / projektipäällikkö"
+
+#. module: project_scrum
+#: view:project.scrum.meeting:project_scrum.view_ps_meeting_calendar
+#: view:project.scrum.meeting:project_scrum.view_ps_meeting_form
+#: view:project.scrum.meeting:project_scrum.view_ps_meeting_tree
+msgid "Scrum Meeting"
+msgstr "Scrum-tapaaminen"
+
+#. module: project_scrum
+#: view:project.scrum.sprint:project_scrum.view_ps_sprint_calendar
+#: view:project.scrum.sprint:project_scrum.view_ps_sprint_form
+#: view:project.scrum.sprint:project_scrum.view_ps_sprint_graph
+#: view:project.scrum.sprint:project_scrum.view_ps_sprint_tree
+msgid "Scrum Sprint"
+msgstr "Sprintti"
+
+#. module: project_scrum
+#: view:project.scrum.meeting:project_scrum.view_ps_meeting_form
+msgid "Send Email"
+msgstr "Lähetä sähköpostia"
+
+#. module: project_scrum
+#: field:project.scrum.sprint,sequence:0
+#: field:project.scrum.test,sequence_test:0 field:project.scrum.us,sequence:0
+msgid "Sequence"
+msgstr "Järjestys"
+
+#. module: project_scrum
+#: view:project.project:project_scrum.edit_ps_project
+#: view:project.scrum.meeting:project_scrum.view_ps_meeting_search
+#: field:project.scrum.meeting,sprint_id:0
+#: view:project.scrum.sprint:project_scrum.view_ps_sprint_form
+#: field:project.scrum.test,sprint_id:0
+#: view:project.scrum.us:project_scrum.view_ps_us_search
+#: field:project.scrum.us,sprint_ids:0
+#: view:project.task:project_scrum.view_ps_sprint_task_form2
+#: view:project.task:project_scrum.view_ps_task_search
+#: field:project.task,sprint_id:0
+msgid "Sprint"
+msgstr "Sprintti"
+
+#. module: project_scrum
+#: model:ir.actions.act_window,name:project_scrum.action_ps_sprint_backlog
+msgid "Sprint Backlog"
+msgstr "Sprintin backlog"
+
+#. module: project_scrum
+#: view:project.scrum.sprint:project_scrum.view_ps_sprint_search
+msgid "Sprint Month"
+msgstr "Sprintin kuukausi"
+
+#. module: project_scrum
+#: field:project.scrum.sprint,name:0
+msgid "Sprint Name"
+msgstr "Sprintin nimi"
+
+#. module: project_scrum
+#: field:project.scrum.sprint,retrospective:0
+msgid "Sprint Retrospective"
+msgstr "Sprintin retrospektiivi"
+
+#. module: project_scrum
+#: field:project.scrum.sprint,review:0
+msgid "Sprint Review"
+msgstr "Sprintin katselmus"
+
+#. module: project_scrum
+#: model:ir.actions.act_window,name:project_scrum.action_ps_tc
+msgid "Sprint Test Case"
+msgstr "Sprintin testitapaus"
+
+#. module: project_scrum
+#: view:project.scrum.sprint:project_scrum.view_ps_sprint_form
+msgid "Sprint..."
+msgstr "Sprintti..."
+
+#. module: project_scrum
+#: model:ir.actions.act_window,name:project_scrum.action_ps_sprint_all
+#: model:ir.actions.act_window,name:project_scrum.action_ps_sprint_current
+#: model:ir.ui.menu,name:project_scrum.menu_action_ps_sprint_all
+#: view:project.project:project_scrum.view_ps_kanban
+#: field:project.project,sprint_ids:0
+#: view:project.scrum.sprint:project_scrum.view_ps_sprint_search
+msgid "Sprints"
+msgstr "Sprintit"
+
+#. module: project_scrum
+#: field:project.scrum.sprint,date_start:0
+msgid "Starting Date"
+msgstr "Aloituspäivämäärä"
+
+#. module: project_scrum
+#: view:project.scrum.sprint:project_scrum.view_ps_sprint_form
+#: field:project.scrum.sprint,state:0 field:project.scrum.test,stats_test:0
+msgid "State"
+msgstr "Tila"
+
+#. module: project_scrum
+#: field:project.scrum.meeting,message_summary:0
+msgid "Summary"
+msgstr "Yhteenveto"
+
+#. module: project_scrum
+#: model:ir.model,name:project_scrum.model_project_task
+#: view:project.project:project_scrum.edit_ps_project
+#: view:project.scrum.sprint:project_scrum.view_ps_sprint_form
+#: view:project.scrum.us:project_scrum.view_ps_us_form
+msgid "Task"
+msgstr "Tehtävä"
+
+#. module: project_scrum
+#: field:project.scrum.us,task_count:0
+msgid "Task count"
+msgstr "Tehtävien lukumäärä"
+
+#. module: project_scrum
+#: field:project.scrum.sprint,task_ids:0 field:project.scrum.us,task_ids:0
+msgid "Task ids"
+msgstr "Tehtävien ID:t"
+
+#. module: project_scrum
+#: field:project.scrum.us,task_test_ids:0
+msgid "Task test ids"
+msgstr "Testien ID:t"
+
+#. module: project_scrum
+#: view:project.project:project_scrum.edit_ps_project
+#: view:project.project:project_scrum.view_ps_kanban
+#: view:project.scrum.us:project_scrum.view_ps_us_form
+#: view:project.scrum.us:project_scrum.view_ps_us_kanban
+msgid "Tasks"
+msgstr "Tehtävät"
+
+#. module: project_scrum
+#: view:project.task:project_scrum.view_ps_task_search
+msgid "Test"
+msgstr "Testi"
+
+#. module: project_scrum
+#: model:ir.actions.act_window,name:project_scrum.action_ps_tc_all
+#: model:ir.actions.act_window,name:project_scrum.action_ps_tc_current
+#: model:ir.ui.menu,name:project_scrum.menu_action_ps_tc_all
+#: view:project.scrum.us:project_scrum.view_ps_us_form
+msgid "Test Case"
+msgstr "Testitapaus"
+
+#. module: project_scrum
+#: view:project.scrum.test:project_scrum.view_ps_tc_form
+msgid "Test Case..."
+msgstr "Testitapaus..."
+
+#. module: project_scrum
+#: view:project.project:project_scrum.view_ps_kanban
+#: field:project.project,test_case_ids:0
+#: view:project.scrum.test:project_scrum.view_ps_tc_form
+#: view:project.scrum.test:project_scrum.view_ps_tc_search
+#: view:project.scrum.us:project_scrum.view_ps_us_form
+#: view:project.scrum.us:project_scrum.view_ps_us_kanban
+msgid "Test Cases"
+msgstr "Testitapaukset"
+
+#. module: project_scrum
+#: field:project.scrum.us,test_count:0
+msgid "Test count"
+msgstr "Testien lukumäärä"
+
+#. module: project_scrum
+#: field:project.scrum.us,test_ids:0
+msgid "Test ids"
+msgstr "Testien ID:t"
+
+#. module: project_scrum
+#: model:ir.actions.act_window,help:project_scrum.action_ps_meeting_all
+#: model:ir.actions.act_window,help:project_scrum.action_ps_meeting_current
+msgid "The daily meeting of scrum."
+msgstr "Päivittäinen scrum-tapaaminen."
+
+#. module: project_scrum
+#: help:project.scrum.sprint,scrum_master_id:0
+msgid "The person who is maintains the processes for the product"
+msgstr "Henkilö, joka hallinnoi tuotteen prosesseja."
+
+#. module: project_scrum
+#: help:project.scrum.sprint,product_owner_id:0
+msgid "The person who is responsible for the product"
+msgstr "Henkilö, joka on vastuussa tuotteesta."
+
+#. module: project_scrum
+#: model:ir.actions.act_window,help:project_scrum.action_ps_tc_all
+#: model:ir.actions.act_window,help:project_scrum.action_ps_tc_current
+msgid "The test case."
+msgstr "Testitapaus."
+
+#. module: project_scrum
+#: model:ir.actions.act_window,help:project_scrum.action_ps_us_all
+#: model:ir.actions.act_window,help:project_scrum.action_ps_us_current
+msgid "The user stories of scrum."
+msgstr "Scrumin käyttäjätarinat"
+
+#. module: project_scrum
+#: field:project.scrum.meeting,message_unread:0
+msgid "Unread Messages"
+msgstr "Lukemattomat viestit"
+
+#. module: project_scrum
+#: view:project.project:project_scrum.edit_ps_project
+msgid "Use Scrum"
+msgstr "Käytä scrumia"
+
+#. module: project_scrum
+#: field:project.project,use_scrum:0
+msgid "Use scrum"
+msgstr "Käytä scrumia"
+
+#. module: project_scrum
+#: model:ir.actions.act_window,name:project_scrum.action_ps_us_all
+#: model:ir.actions.act_window,name:project_scrum.action_ps_us_current
+#: model:ir.ui.menu,name:project_scrum.menu_action_ps_us_all
+#: view:project.project:project_scrum.view_ps_kanban
+#: field:project.project,user_story_ids:0 field:project.scrum.sprint,us_ids:0
+#: view:project.scrum.us:project_scrum.view_ps_us_form
+#: view:project.scrum.us:project_scrum.view_ps_us_search
+#: field:project.task,us_id:0
+msgid "User Stories"
+msgstr "Käyttäjätarinat"
+
+#. module: project_scrum
+#: view:project.scrum.sprint:project_scrum.view_ps_sprint_form
+#: view:project.scrum.test:project_scrum.view_ps_tc_search
+#: field:project.scrum.test,user_story_id_test:0
+#: view:project.scrum.us:project_scrum.view_ps_us_form
+#: view:project.task:project_scrum.view_ps_sprint_task_form2
+#: view:project.task:project_scrum.view_ps_task_search
+msgid "User Story"
+msgstr "Käyttäjätarina"
+
+#. module: project_scrum
+#: view:project.scrum.us:project_scrum.view_ps_us_form
+msgid "User Story..."
+msgstr "Käyttäjätarina..."
+
+#. module: project_scrum
+#: view:project.project:project_scrum.project_ps_view
+#: view:project.project:project_scrum.view_ps_project_project_filter
+msgid "Using Scrum"
+msgstr "Käytä Scrumia"
+
+#. module: project_scrum
+#: view:project.scrum.meeting:project_scrum.view_ps_meeting_form
+msgid "What did you do since the last meeting?"
+msgstr "Mitä olet tehnyt viime tapaamisen jälkeen?"
+
+#. module: project_scrum
+#: view:project.scrum.meeting:project_scrum.view_ps_meeting_form
+msgid "What do you plan to do till the next meeting?"
+msgstr "Mitä aiot tehdä ennen ensi tapaamista?"
+
+#. module: project_scrum
+#: selection:project.scrum.meeting,question_backlog:0
+msgid "Yes"
+msgstr "Kyllä"
+
+#. module: project_scrum
+#: view:project.scrum.sprint:project_scrum.view_ps_sprint_form
+msgid "[TC] Tasks"
+msgstr "Testitapausten tehtävät"

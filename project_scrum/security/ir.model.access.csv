@@ -1,0 +1,11 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_project_project_manager,res.groups,model_project_scrum_sprint,project.group_project_manager,1,1,1,1
+access_project_project,res.groups,model_project_scrum_sprint,project.group_project_user,1,0,0,0
+access_project_meeting_manager,res.groups,model_project_scrum_meeting,project.group_project_manager,1,1,1,1
+access_project_meeting,res.groups,model_project_scrum_meeting,project.group_project_user,1,1,1,0
+access_project_us_manager,res.groups,model_project_scrum_us,project.group_project_manager,1,1,1,1
+access_project_us,res.groups,model_project_scrum_us,project.group_project_user,1,1,1,0
+access_project_actor_manager,res.groups,model_project_scrum_actors,project.group_project_manager,1,1,1,1
+access_project_actor,res.groups,model_project_scrum_actors,project.group_project_user,1,1,1,0
+access_project_test_manager,res.groups,model_project_scrum_test,project.group_project_manager,1,1,1,1
+access_project_test,res.groups,model_project_scrum_test,project.group_project_user,1,1,1,0
