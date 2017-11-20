@@ -8,6 +8,11 @@ This module is a base module that give the possibility to create a project
 from a quotation, if a contract is set with use_tasks checked it will show
 the related project.
 
+The start date for the new project will be the current date.
+If the template has a start date and an ending date, the length will be 
+computed and, based on it, used to assign an end date to the newly created
+project. 
+
 
 Bug Tracker
 ===========
