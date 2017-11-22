@@ -30,37 +30,23 @@ class ProjectProject(models.Model):
         'task_ids.planned_hours')
     def _compute_planned_hours(self):
         for rec in self:
-            rec.planned_hours = rec._get_planned_hours()
+            hours = sum([task.planned_hours for task in rec.task_ids])
+            rec.planned_hours = hours
 
     @api.multi
     @api.depends(
         'task_ids.total_hours_spent')
     def _compute_spent_hours(self):
         for rec in self:
-            rec.total_hours_spent = rec._get_total_hours_spent()
+            hours = sum([task.total_hours_spent for task in rec.task_ids])
+            rec.total_hours_spent = hours
 
     @api.multi
     @api.depends(
         'total_hours_spent', 'planned_hours')
     def _compute_progress(self):
         for rec in self:
-            rec.progress = rec._get_progress()
-
-    @api.multi
-    def _get_planned_hours(self):
-        self.ensure_one()
-        return sum([task.planned_hours for task in self.task_ids])
-
-    @api.multi
-    def _get_total_hours_spent(self):
-        self.ensure_one()
-        return sum([task.total_hours_spent for task in self.task_ids])
-
-    @api.multi
-    def _get_progress(self):
-        self.ensure_one()
-        progress = 0.0
-        if self.planned_hours > 0.0:
-            progress = round(
-                100.0 * (self.total_hours_spent) / self.planned_hours, 2)
-        return progress
+            progress = 0.0
+            if rec.planned_hours:
+                progress = rec.total_hours_spent / rec.planned_hours * 100.0
+            rec.progress = progress
