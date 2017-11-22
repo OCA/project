@@ -16,6 +16,4 @@
     'data': [
         'views/project_project.xml',
     ],
-    'demo': [
-    ],
 }
