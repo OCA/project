@@ -1,0 +1,30 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * project_closing
+# 
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
+# Mateus Lopes <mateus1@gmail.com>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-05-30 09:43+0000\n"
+"PO-Revision-Date: 2017-05-30 09:43+0000\n"
+"Last-Translator: Mateus Lopes <mateus1@gmail.com>, 2017\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/teams/23907/pt_BR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#. module: project_closing
+#: model:ir.model,name:project_closing.model_account_analytic_account
+msgid "Analytic Account"
+msgstr "Conta Analítica"
+
+#. module: project_closing
+#: model:ir.model,name:project_closing.model_project_project
+msgid "Project"
+msgstr "Projeto"
