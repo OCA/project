@@ -48,5 +48,6 @@ class ProjectProject(models.Model):
         for rec in self:
             progress = 0.0
             if rec.planned_hours:
-                progress = rec.total_hours_spent / rec.planned_hours * 100.0
+                progress = round(
+                    rec.total_hours_spent / rec.planned_hours * 100.0, 2)
             rec.progress = progress
