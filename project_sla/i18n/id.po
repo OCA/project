@@ -215,7 +215,7 @@ msgstr ""
 #: view:project.sla.report:project_sla.view_project_sla_report_search
 #: field:project.sla.report,date_month:0
 msgid "Month"
-msgstr ""
+msgstr "Bulan"
 
 #. module: project_sla
 #: model:ir.model,name:project_sla.model_project_issue

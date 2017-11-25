@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-10-28 08:02+0000\n"
-"PO-Revision-Date: 2017-11-03 12:14+0000\n"
+"PO-Revision-Date: 2017-11-23 23:25+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Indonesian (http://www.transifex.com/oca/OCA-project-8-0/language/id/)\n"
 "MIME-Version: 1.0\n"
@@ -230,7 +230,7 @@ msgstr ""
 #. module: project_classification
 #: field:project.project,month_ids:0
 msgid "Month"
-msgstr ""
+msgstr "Bulan"
 
 #. module: project_classification
 #: help:project.project,hours_qtt_non_invoiced:0
@@ -277,7 +277,7 @@ msgstr ""
 #. module: project_classification
 #: view:project.project:project_classification.view_account_analytic_account_tree
 msgid "Partner"
-msgstr ""
+msgstr "Mitra"
 
 #. module: project_classification
 #: field:project.project,pricelist_id:0
