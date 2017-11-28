@@ -1,38 +1,38 @@
-.. image:: https://img.shields.io/badge/licence-AGPL--3-blue.svg
-   :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
+.. image:: https://img.shields.io/badge/license-AGPL--3-blue.png
+   :target: https://www.gnu.org/licenses/agpl
    :alt: License: AGPL-3
 
 ==========================
 Project Task Add Very High
 ==========================
 
-This module extend the field `priority` in project tasks, adding a new level of priority.
-This new level of priority is named `Very High`.
+This module extends the field `priority` in project tasks, adding two new levels of priority.
+The two new levels of priority are: `High` and `Very High`.
 
 
-On a task form, the priority widget is shown as two stars instead of one:
+On a task form, the priority widget is displayed with three stars instead of one:
 
 .. figure:: static/description/image.png
-   :alt: On form, priority widget shows two stars instead of one
+   :alt: On form, priority widget shows three stars instead of one
 
 
-Also on a kanban view, the priority widget is shown as two stars instead of one:
+On a Kanban view, the priority widget is displayed as well with three stars instead of one:
 
 .. figure:: static/description/image2.png
-   :alt: On kanban, priority widget shows two stars instead of one
+   :alt: On kanban, priority widget shows three stars instead of one
 
 
-Without having this module installed, on the form it would look as that:
+Without having this module installed, on the form it would look like as that:
 
 .. figure:: static/description/image_a.png
    :alt: On form, priority widget shows one star
 
-and on kanban:
+and on Kanban:
 
 .. figure:: static/description/image2_a.png
    :alt: On kanban, priority widget shows one star
 
-In case this module is uninstalled, all the tasks that were previously set as `Very High` priority will be converted to `High` priority.
+In case this module is uninstalled, all the tasks that were previously set as `High` or `Very High` priority will be converted to `Normal` priority.
 
 Usage
 =====
@@ -40,12 +40,13 @@ Usage
 To use this module, you need to:
 
 #. Open a task or create a new one
-#. On the priority widget, two stars are displayed (instead of one)
-#. Click on the second star: the priority of this task is now set to `Very High`
+#. On the priority widget, three stars are displayed (instead of one)
+#. Click on the second star: the priority of this task is now set to `High`
+#. Click on the third star: the priority of this task is now set to `Very High`
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
-   :target: https://runbot.odoo-community.org/runbot/140/10.0
+   :target: https://runbot.odoo-community.org/runbot/140/11.0
 
 Bug Tracker
 ===========
@@ -61,12 +62,14 @@ Credits
 Images
 ------
 
-* Odoo Community Association: `Icon <https://github.com/OCA/maintainer-tools/blob/master/template/module/static/description/icon.svg>`_.
+* Odoo Community Association: `Icon <https://odoo-community.org/logo.png>`_.
 
 Contributors
 ------------
 
 * Andrea Stirpe <a.stirpe@onestein.nl>
+
+Do not contact contributors directly about support or help with technical issues.
 
 Maintainer
 ----------
