@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-19 20:32+0000\n"
-"PO-Revision-Date: 2016-05-17 08:08+0000\n"
+"POT-Creation-Date: 2017-10-28 08:02+0000\n"
+"PO-Revision-Date: 2017-11-30 00:50+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/oca/OCA-project-8-0/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -42,7 +42,7 @@ msgstr "Checar disponibilidade"
 #. module: project_task_materials_stock
 #: selection:project.task,stock_state:0
 msgid "Confirmed"
-msgstr ""
+msgstr "Confirmado"
 
 #. module: project_task_materials_stock
 #: field:project.task,consume_material:0
@@ -123,3 +123,11 @@ msgstr "Transferir materiais"
 #: field:project.task.materials,product_uom:0
 msgid "Unit of Measure"
 msgstr "Unidade de medida"
+
+#. module: project_task_materials_stock
+#: code:addons/project_task_materials_stock/models/project.py:89
+#, python-format
+msgid ""
+"You can't move to a not consume stage if there are already invoiced analytic"
+" lines"
+msgstr ""
