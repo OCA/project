@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-19 02:54+0000\n"
-"PO-Revision-Date: 2017-08-19 02:54+0000\n"
+"POT-Creation-Date: 2017-11-22 17:40+0000\n"
+"PO-Revision-Date: 2017-11-22 17:40+0000\n"
 "Last-Translator: Armando Vulcano Junior <vulcano@uol.com.br>, 2017\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/teams/23907/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -22,17 +22,17 @@ msgstr ""
 #. module: project_task_delegate
 #: model:ir.model.fields,field_description:project_task_delegate.field_project_config_settings_group_manage_delegation_task
 msgid "Allow task delegation"
-msgstr ""
+msgstr "Permitir delegação de tarefas"
 
 #. module: project_task_delegate
 #: model:ir.model.fields,help:project_task_delegate.field_project_config_settings_group_manage_delegation_task
 msgid "Allows you to delegate tasks to other users."
-msgstr ""
+msgstr "Permite delegar tarefas para outros usuários"
 
 #. module: project_task_delegate
 #: model:ir.model.fields,field_description:project_task_delegate.field_project_task_delegate_user_id
 msgid "Assign To"
-msgstr ""
+msgstr "Atribuir Para"
 
 #. module: project_task_delegate
 #: code:addons/project_task_delegate/wizards/project_task_delegate.py:61
@@ -41,13 +41,13 @@ msgstr ""
 #: code:addons/project_task_delegate/wizards/project_task_delegate.py:70
 #, python-format
 msgid "CHECK: "
-msgstr ""
+msgstr "VERIFIQUE:"
 
 #. module: project_task_delegate
 #: code:addons/project_task_delegate/wizards/project_task_delegate.py:73
 #, python-format
 msgid "CHECK: %s"
-msgstr ""
+msgstr "VERIFIQUE:%s"
 
 #. module: project_task_delegate
 #: model:ir.ui.view,arch_db:project_task_delegate.view_project_task_delegate
@@ -67,43 +67,43 @@ msgstr "Criado em"
 #. module: project_task_delegate
 #: model:ir.ui.view,arch_db:project_task_delegate.view_task_form2
 msgid "Delegate"
-msgstr ""
+msgstr "Delegar"
 
 #. module: project_task_delegate
 #: model:ir.ui.view,arch_db:project_task_delegate.view_project_task_delegate
 msgid "Delegated Task"
-msgstr ""
+msgstr "Tarefa Delegada"
 
 #. module: project_task_delegate
 #: model:ir.ui.view,arch_db:project_task_delegate.view_task_form2
 msgid "Delegated Tasks"
-msgstr ""
+msgstr "Tarefas Delegadas"
 
 #. module: project_task_delegate
 #: model:ir.model.fields,field_description:project_task_delegate.field_project_task_delegate_name
 msgid "Delegated Title"
-msgstr ""
+msgstr "Título delegado"
 
 #. module: project_task_delegate
 #: model:ir.model.fields,field_description:project_task_delegate.field_project_task_delegated_user_id
 msgid "Delegated To"
-msgstr ""
+msgstr "Delegar Para"
 
 #. module: project_task_delegate
 #: code:addons/project_task_delegate/models/project.py:54
 #, python-format
 msgid "Delegated User should be specified"
-msgstr ""
+msgstr "O usuário delegado deve ser especificado"
 
 #. module: project_task_delegate
 #: model:ir.ui.view,arch_db:project_task_delegate.view_task_form2
 msgid "Delegated tasks"
-msgstr ""
+msgstr "Tarefas Delegadas"
 
 #. module: project_task_delegate
 #: model:ir.ui.view,arch_db:project_task_delegate.view_task_form2
 msgid "Delegation"
-msgstr ""
+msgstr "Delegação"
 
 #. module: project_task_delegate
 #: model:ir.model.fields,field_description:project_task_delegate.field_project_task_delegate_display_name
@@ -121,16 +121,18 @@ msgid ""
 "Estimated time for you to validate the work done\n"
 "             by the user to whom you delegate this task"
 msgstr ""
+"Tempo estimado para você validar o trabalho realizado\n"
+"              pelo usuário a quem você delegou essa tarefa"
 
 #. module: project_task_delegate
 #: model:ir.model.fields,help:project_task_delegate.field_project_task_delegate_planned_hours
 msgid "Estimated time to close this task by the delegated user"
-msgstr ""
+msgstr "Tempo estimado para fechar esta tarefa pelo usuário delegado"
 
 #. module: project_task_delegate
 #: model:ir.model.fields,field_description:project_task_delegate.field_project_task_delegate_planned_hours_me
 msgid "Hours to Validate"
-msgstr ""
+msgstr "Horas para Validar"
 
 #. module: project_task_delegate
 #: model:ir.model.fields,field_description:project_task_delegate.field_project_task_delegate_id
@@ -156,7 +158,7 @@ msgstr "Última atualização em"
 #: model:ir.model.fields,field_description:project_task_delegate.field_project_task_delegate_new_task_description
 #: model:ir.ui.view,arch_db:project_task_delegate.view_project_task_delegate
 msgid "New Task Description"
-msgstr ""
+msgstr "Nova Descrição da tarefa"
 
 #. module: project_task_delegate
 #: model:ir.model.fields,help:project_task_delegate.field_project_task_delegate_state
@@ -164,11 +166,13 @@ msgid ""
 "New state of your own task. Pending will be\n"
 "             reopened automatically when the delegated task is closed"
 msgstr ""
+"Novo estado da sua própria tarefa. Estará Pendente\n"
+"reaberto automaticamente quando a tarefa delegada estiver fechada"
 
 #. module: project_task_delegate
 #: model:ir.model.fields,help:project_task_delegate.field_project_task_delegate_name
 msgid "New title of the task delegated to the user"
-msgstr ""
+msgstr "Novo título da tarefa delegada para o usuário"
 
 #. module: project_task_delegate
 #: model:ir.ui.view,arch_db:project_task_delegate.view_task_form2
@@ -183,7 +187,7 @@ msgstr "Pendente"
 #. module: project_task_delegate
 #: model:ir.model.fields,field_description:project_task_delegate.field_project_task_delegate_planned_hours
 msgid "Planned Hours"
-msgstr ""
+msgstr "Horas Planejadas"
 
 #. module: project_task_delegate
 #: model:ir.model.fields,field_description:project_task_delegate.field_project_task_delegate_project_id
@@ -194,12 +198,12 @@ msgstr "Projeto"
 #: model:ir.actions.act_window,name:project_task_delegate.action_project_task_delegate
 #: model:ir.ui.view,arch_db:project_task_delegate.view_project_task_delegate
 msgid "Project Task Delegate"
-msgstr ""
+msgstr "Tarefa do Projeto Delegada"
 
 #. module: project_task_delegate
 #: model:ir.model.fields,help:project_task_delegate.field_project_task_delegate_new_task_description
 msgid "Reinclude the description of the task in the task of the user"
-msgstr ""
+msgstr "Reinclua a descrição da tarefa na tarefa do usuário"
 
 #. module: project_task_delegate
 #: model:ir.model,name:project_task_delegate.model_project_task
@@ -209,49 +213,49 @@ msgstr "Tarefa"
 #. module: project_task_delegate
 #: model:ir.model,name:project_task_delegate.model_project_task_delegate
 msgid "Task Delegate"
-msgstr ""
+msgstr "Tarefa Delegada"
 
 #. module: project_task_delegate
 #: model:ir.ui.view,arch_db:project_task_delegate.view_config_settings
 #: model:res.groups,name:project_task_delegate.group_delegate_task
 msgid "Task Delegation"
-msgstr ""
+msgstr "Delegação de Tarefa"
 
 #. module: project_task_delegate
 #: model:ir.model.fields,help:project_task_delegate.field_project_task_delegate_prefix
 msgid "Title for your validation task"
-msgstr ""
+msgstr "Título para validação da sua tarefa"
 
 #. module: project_task_delegate
 #: model:ir.model.fields,help:project_task_delegate.field_project_task_delegate_project_id
 #: model:ir.model.fields,help:project_task_delegate.field_project_task_delegate_user_id
 msgid "User you want to delegate this task to"
-msgstr ""
+msgstr "Usuário que deseja delegar essa tarefa para"
 
 #. module: project_task_delegate
 #: model:ir.model.fields,field_description:project_task_delegate.field_project_task_delegate_state
 msgid "Validation State"
-msgstr ""
+msgstr "Estado de Validação"
 
 #. module: project_task_delegate
 #: model:ir.ui.view,arch_db:project_task_delegate.view_project_task_delegate
 msgid "Validation Task"
-msgstr ""
+msgstr "Tarefa de Validação"
 
 #. module: project_task_delegate
 #: model:ir.ui.view,arch_db:project_task_delegate.view_project_task_delegate
 msgid "Validation Task Title"
-msgstr ""
+msgstr "Título da Tarefa de Validação"
 
 #. module: project_task_delegate
 #: model:ir.model.fields,field_description:project_task_delegate.field_project_task_delegate_prefix
 msgid "Your Task Title"
-msgstr ""
+msgstr "Título da sua Tarefa"
 
 #. module: project_task_delegate
 #: model:ir.ui.view,arch_db:project_task_delegate.view_project_task_delegate
 msgid "_Delegate"
-msgstr ""
+msgstr "Delegar"
 
 #. module: project_task_delegate
 #: model:ir.ui.view,arch_db:project_task_delegate.view_project_task_delegate
@@ -261,4 +265,4 @@ msgstr "ou"
 #. module: project_task_delegate
 #: model:ir.model,name:project_task_delegate.model_project_config_settings
 msgid "project.config.settings"
-msgstr ""
+msgstr "project.config.settings"
