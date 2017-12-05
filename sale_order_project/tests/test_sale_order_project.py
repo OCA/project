@@ -1,7 +1,7 @@
 # -*- encoding: utf-8 -*-
-##############################################################################
-# For copyright and license notices, see __openerp__.py file in root directory
-##############################################################################
+###############################################################################
+# For copyright and license notices, see __manifest__.py file in root directory
+###############################################################################
 
 import openerp.tests.common as common
 
@@ -17,8 +17,7 @@ class TestSaleOrderProject(common.TransactionCase):
 
     def test_create_project_from_order(self):
         self.sale_order.action_create_project()
-        project_dict = self.sale_order_model._prepare_project_vals(
-            self.sale_order)
+        project_dict = self.sale_order._prepare_project_vals()
         project_name = self.sale_order.related_project_id.name
         self.assertEqual(self.sale_order.partner_id.id,
                          project_dict['partner_id'])
