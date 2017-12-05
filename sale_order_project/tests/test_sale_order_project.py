@@ -19,8 +19,9 @@ class TestSaleOrderProject(common.TransactionCase):
         self.sale_order.action_create_project()
         project_dict = self.sale_order._prepare_project_vals()
         project_name = self.sale_order.related_project_id.name
-        self.assertEqual(self.sale_order.partner_id.id,
-                         project_dict['partner_id'])
+        self.assertEqual(
+            self.sale_order.partner_id.id, project_dict['partner_id']
+        )
         self.assertEqual(project_name, project_dict['name'])
         self.assertEqual(self.sale_order.user_id.id, project_dict['user_id'])
 
@@ -28,5 +29,7 @@ class TestSaleOrderProject(common.TransactionCase):
         self.sale_order.write({
             'project_id': self.project.analytic_account_id.id
         })
-        self.assertEqual(self.sale_order.related_project_id,
-                         self.project)
+        self.assertEqual(
+            self.sale_order.related_project_id,
+            self.project.analytic_account_id
+        )
