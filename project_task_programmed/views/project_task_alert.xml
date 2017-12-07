@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data>
+
+        <record id="project_task_alert_form" model="ir.ui.view">
+            <field name="model">project.task.alert</field>
+            <field eval="1" name="priority" />
+            <field name="arch" type="xml">
+                <form string="Alert">
+                    <header>
+                        <button name="create_task_alerts"
+                                type="object"
+                                string="Create Alerts"
+                                groups="base.group_no_one"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="days_delta" />
+                                <field name="name" />
+                                <field name="project_id" />
+                                <field name="active" />
+                            </group>
+                            <group>
+                                <field name="date_field_id" />
+                                <field name="task_description" />
+                                <field name="user_id" />
+                                <field name="last_run" readonly="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="project_task_alert_tree" model="ir.ui.view">
+            <field name="model">project.task.alert</field>
+            <field name="arch" type="xml">
+                <tree string="Alert">
+                    <field name="days_delta" />
+                    <field name="date_field_id" />
+                    <field name="name" />
+                    <field name="project_id" />
+                    <field name="user_id" />
+                    <field name="last_run" readonly="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="project_task_alert_action" model="ir.actions.act_window">
+            <field name="name">Task Alerts</field>
+            <field name="res_model">project.task.alert</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</openerp>

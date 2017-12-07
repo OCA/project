@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+
+        <menuitem id="menu_project_task_alert_act"
+                  action="project_task_alert_action"
+                  parent="base.menu_definitions"
+                  groups="project.group_project_manager"/>
+
+    </data>
+</openerp>
