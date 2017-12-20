@@ -7,7 +7,7 @@
 
 {
     "name": "Project Recalculate",
-    "version": "10.0.1.0.0",
+    "version": "10.0.1.0.1",
     "author": "Tecnativa, "
               "Odoo Community Association (OCA)",
     "website": "https://www.tecnativa.com",
