@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * project_task_default_stage
-# 
+#
 # Translators:
 # Peter Hageman <hageman.p@gmail.com>, 2017
 msgid ""
@@ -11,17 +11,30 @@ msgstr ""
 "POT-Creation-Date: 2017-06-17 02:52+0000\n"
 "PO-Revision-Date: 2017-06-17 02:52+0000\n"
 "Last-Translator: Peter Hageman <hageman.p@gmail.com>, 2017\n"
-"Language-Team: Dutch (Netherlands) (https://www.transifex.com/oca/teams/23907/nl_NL/)\n"
+"Language-Team: Dutch (Netherlands) (https://www.transifex.com/oca/"
+"teams/23907/nl_NL/)\n"
+"Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_analysis
 msgid "Analysis"
 msgstr "Analyse"
+
+#. module: project_task_default_stage
+#: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_analysis
+#: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_cancel
+#: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_deployment
+#: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_design
+#: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_development
+#: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_merge
+#: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_specification
+#: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_testing
+msgid "Blocked"
+msgstr ""
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_cancel
@@ -58,6 +71,18 @@ msgstr ""
 "elk nieuw project. Het zal deze fase niet toevoegen aan bestaande projecten."
 
 #. module: project_task_default_stage
+#: model:project.task.type,legend_normal:project_task_default_stage.project_tt_analysis
+#: model:project.task.type,legend_normal:project_task_default_stage.project_tt_cancel
+#: model:project.task.type,legend_normal:project_task_default_stage.project_tt_deployment
+#: model:project.task.type,legend_normal:project_task_default_stage.project_tt_design
+#: model:project.task.type,legend_normal:project_task_default_stage.project_tt_development
+#: model:project.task.type,legend_normal:project_task_default_stage.project_tt_merge
+#: model:project.task.type,legend_normal:project_task_default_stage.project_tt_specification
+#: model:project.task.type,legend_normal:project_task_default_stage.project_tt_testing
+msgid "In Progress"
+msgstr ""
+
+#. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_merge
 msgid "Merge"
 msgstr "Samenvoegen"
@@ -71,6 +96,18 @@ msgstr "Project"
 #: model:ir.ui.view,arch_db:project_task_default_stage.edit_project
 msgid "Project Stages"
 msgstr "Projectfasen"
+
+#. module: project_task_default_stage
+#: model:project.task.type,legend_done:project_task_default_stage.project_tt_analysis
+#: model:project.task.type,legend_done:project_task_default_stage.project_tt_cancel
+#: model:project.task.type,legend_done:project_task_default_stage.project_tt_deployment
+#: model:project.task.type,legend_done:project_task_default_stage.project_tt_design
+#: model:project.task.type,legend_done:project_task_default_stage.project_tt_development
+#: model:project.task.type,legend_done:project_task_default_stage.project_tt_merge
+#: model:project.task.type,legend_done:project_task_default_stage.project_tt_specification
+#: model:project.task.type,legend_done:project_task_default_stage.project_tt_testing
+msgid "Ready for Next Stage"
+msgstr ""
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_specification
