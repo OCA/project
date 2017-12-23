@@ -30,7 +30,6 @@
         <field name="arch" type="xml">
             <xpath expr="//notebook" position="inside">
                 <page string="Project Stages"
-                      attrs="{'invisible': [('use_tasks', '=', False)]}"
                       name="project_stages">
                      <field name="type_ids"/>
                 </page>
