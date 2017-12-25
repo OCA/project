@@ -7,7 +7,8 @@
             <field name="inherit_id" ref="analytic.view_account_analytic_line_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='analytic_amount_currency']" position="after">
-                    <field name="timesheet_currency_id"/>
+                    <field name="is_timesheet" invisible="True"/>
+                    <field name="timesheet_currency_id" attrs="{ 'invisible': [('is_timesheet', '=', False)], }" />
                 </xpath>
             </field>
         </record>

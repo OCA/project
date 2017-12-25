@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Author: Davide Corio
 # Copyright 2017 Camptocamp SA
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
@@ -31,15 +30,18 @@ class TestMultiCurrencyTimesheet(common.TransactionCase):
 
         # I Create a new user, a new employee and set up the timesheet cost
         self.user_fr = self.env.ref('base.user_demo')
+        self.user_fr.groups_id = [
+            (4, self.env.ref('hr_timesheet.group_hr_timesheet_user').id),
+        ]
         self.user_fr.company_ids = [
             (6, 0, [base_company.id, self.company_fr.id, self.company_us.id])]
         self.user_fr.company_id = self.company_fr.id
         self.employee_fr = employee_model.create(
             {
                 'name': 'Employee FR',
-                'user_id': self.user_fr.id,
                 'company_id': self.company_fr.id,
             })
+        self.user_fr.employee_ids = [(6, 0, self.employee_fr.ids)]
         self.employee_fr.timesheet_cost = 110.0
 
         # I Set up 2 different rates within the same week
