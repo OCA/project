@@ -21,8 +21,8 @@
                <field name="partner_id" position="before">
                   <field name="department_id"/>
                </field>
-               <xpath expr="//filter[contains(@domain, user_id)]" position="after">
-                  <filter string="Department" icon="terp-folder-orange" domain="[]" context="{'group_by':'department_id'}"/>
+               <xpath expr="//search" position="inside">
+                  <filter string="Department" context="{'group_by':'department_id'}"/>
                </xpath>
          </field>
      </record>
@@ -56,7 +56,7 @@
 
 
     <record id="view_task_form2" model="ir.ui.view">
-        <field name="name">project.task.departement.form</field>
+        <field name="name">project.task.department.form</field>
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_form2"/>
         <field eval="2" name="priority"/>
@@ -73,8 +73,8 @@
         <field name="inherit_id" ref="project.view_task_tree2"/>
         <field eval="2" name="priority"/>
         <field name="arch" type="xml">
-            <field name="user_id" invisible="context.get('user_invisible', False)" position="after">
-              <field name="project_department_id" invisible="1"/>
+            <field name="user_id" position="after">
+                <field name="project_department_id" invisible="1"/>
             </field>
         </field>
     </record>
