@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
-# © 2016 Onestein (<http://www.onestein.eu>)
+# Copyright 2016-2018 Onestein (<http://www.onestein.eu>)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo import models, fields, api
+from odoo import _, api, fields, models
+from odoo.exceptions import ValidationError
 
 
 class ProjectTask(models.Model):
@@ -62,3 +63,8 @@ class ProjectTask(models.Model):
                 for t in depending_tasks:
                     depending_tasks += self.get_depending_tasks(t, recursive)
             return depending_tasks
+
+    @api.constrains('dependency_task_ids')
+    def _check_recursion(self):
+        if not self._check_m2m_recursion('dependency_task_ids'):
+            raise ValidationError(_('You cannot create recursive tasks.'))
