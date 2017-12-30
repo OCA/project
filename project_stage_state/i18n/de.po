@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-03-17 09:31+0000\n"
-"PO-Revision-Date: 2017-03-17 09:31+0000\n"
+"POT-Creation-Date: 2017-12-22 01:55+0000\n"
+"PO-Revision-Date: 2017-12-22 01:55+0000\n"
 "Last-Translator: Niki Waibel <niki.waibel@gmail.com>, 2017\n"
 "Language-Team: German (https://www.transifex.com/oca/teams/23907/de/)\n"
 "MIME-Version: 1.0\n"
@@ -42,7 +42,7 @@ msgstr "Neu"
 #. module: project_stage_state
 #: selection:project.task.type,state:0
 msgid "Pending"
-msgstr "Noch nicht verarbeitet"
+msgstr "laufend"
 
 #. module: project_stage_state
 #: model:ir.model.fields,field_description:project_stage_state.field_project_task_state
@@ -58,4 +58,4 @@ msgstr "Aufgabe"
 #. module: project_stage_state
 #: model:ir.model,name:project_stage_state.model_project_task_type
 msgid "Task Stage"
-msgstr "Aufgabenstufe"
+msgstr "Aufgabenphase"
