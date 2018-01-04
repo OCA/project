@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * project_recalculate
-# 
+#
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2017
 msgid ""
@@ -11,11 +11,12 @@ msgstr ""
 "POT-Creation-Date: 2017-07-01 03:31+0000\n"
 "PO-Revision-Date: 2017-07-01 03:31+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
-"Language-Team: Spanish (Colombia) (https://www.transifex.com/oca/teams/23907/es_CO/)\n"
+"Language-Team: Spanish (Colombia) (https://www.transifex.com/oca/teams/23907/"
+"es_CO/)\n"
+"Language: es_CO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: es_CO\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: project_recalculate
@@ -96,7 +97,7 @@ msgid "Display Name"
 msgstr "Nombre Público"
 
 #. module: project_recalculate
-#: code:addons/project_recalculate/models/project_task.py:183
+#: code:addons/project_recalculate/models/project_task.py:182
 #, python-format
 msgid "End Date field must be defined."
 msgstr ""
@@ -165,7 +166,6 @@ msgid "Last Updated on"
 msgstr "Actualizado"
 
 #. module: project_recalculate
-#: model:ir.model,name:project_recalculate.model_project_project
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard_project_id
 msgid "Project"
 msgstr ""
@@ -197,7 +197,7 @@ msgid "Resource Calendar"
 msgstr ""
 
 #. module: project_recalculate
-#: code:addons/project_recalculate/models/project_task.py:178
+#: code:addons/project_recalculate/models/project_task.py:177
 #, python-format
 msgid "Start Date field must be defined."
 msgstr ""
@@ -215,6 +215,11 @@ msgstr ""
 #. module: project_recalculate
 #: model:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
 msgid "This Project task will be recalculated according reference date:"
+msgstr ""
+
+#. module: project_recalculate
+#: model:ir.model,name:project_recalculate.model_project_project
+msgid "WBS element"
 msgstr ""
 
 #. module: project_recalculate

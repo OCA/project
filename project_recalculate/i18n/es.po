@@ -1,21 +1,22 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * project_recalculate
-# 
+#
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2017
+# enjolras <yo@miguelrevilla.com>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-01 03:31+0000\n"
-"PO-Revision-Date: 2017-07-01 03:31+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"POT-Creation-Date: 2018-02-02 01:51+0000\n"
+"PO-Revision-Date: 2018-02-02 01:51+0000\n"
+"Last-Translator: enjolras <yo@miguelrevilla.com>, 2018\n"
 "Language-Team: Spanish (https://www.transifex.com/oca/teams/23907/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: project_recalculate
@@ -32,7 +33,7 @@ msgstr "¿Está seguro?"
 #: model:ir.model.fields,field_description:project_recalculate.field_project_project_calculation_type
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard_calculation_type
 msgid "Calculation type"
-msgstr ""
+msgstr "Tipo de cálculo"
 
 #. module: project_recalculate
 #: model:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
@@ -54,6 +55,7 @@ msgstr ""
 #, python-format
 msgid "Cannot recalculate project because your project doesn't have date end."
 msgstr ""
+"No se puede recalcular el proyecto porque no tiene fecha de finalización."
 
 #. module: project_recalculate
 #: code:addons/project_recalculate/models/project_project.py:60
@@ -80,7 +82,7 @@ msgstr "Creado en"
 #. module: project_recalculate
 #: selection:project.project,calculation_type:0
 msgid "Date begin"
-msgstr ""
+msgstr "Fecha de inicio"
 
 #. module: project_recalculate
 #: selection:project.project,calculation_type:0
@@ -98,7 +100,7 @@ msgid "Display Name"
 msgstr "Nombre mostrado"
 
 #. module: project_recalculate
-#: code:addons/project_recalculate/models/project_task.py:183
+#: code:addons/project_recalculate/models/project_task.py:182
 #, python-format
 msgid "End Date field must be defined."
 msgstr ""
@@ -167,7 +169,6 @@ msgid "Last Updated on"
 msgstr "Última actualización en"
 
 #. module: project_recalculate
-#: model:ir.model,name:project_recalculate.model_project_project
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard_project_id
 msgid "Project"
 msgstr "Proyecto"
@@ -175,12 +176,12 @@ msgstr "Proyecto"
 #. module: project_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard_project_date
 msgid "Project date"
-msgstr ""
+msgstr "Fecha del proyecto"
 
 #. module: project_recalculate
 #: model:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
 msgid "Project name"
-msgstr ""
+msgstr "Nombre del proyecto"
 
 #. module: project_recalculate
 #: model:ir.actions.act_window,name:project_recalculate.wizard_project_recalculate
@@ -196,10 +197,10 @@ msgstr "Recalcular proyecto"
 #. module: project_recalculate
 #: model:ir.model,name:project_recalculate.model_resource_calendar
 msgid "Resource Calendar"
-msgstr ""
+msgstr "Calendario de recursos"
 
 #. module: project_recalculate
-#: code:addons/project_recalculate/models/project_task.py:178
+#: code:addons/project_recalculate/models/project_task.py:177
 #, python-format
 msgid "Start Date field must be defined."
 msgstr ""
@@ -220,6 +221,11 @@ msgid "This Project task will be recalculated according reference date:"
 msgstr ""
 
 #. module: project_recalculate
+#: model:ir.model,name:project_recalculate.model_project_project
+msgid "WBS element"
+msgstr ""
+
+#. module: project_recalculate
 #: model:ir.model,name:project_recalculate.model_project_recalculate_wizard
 msgid "project.recalculate.wizard"
-msgstr ""
+msgstr "project.recalculate.wizard"
