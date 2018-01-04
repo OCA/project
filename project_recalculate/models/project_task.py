@@ -224,6 +224,8 @@ class ProjectTask(models.Model):
         to_string = fields.Datetime.to_string
         for task in self.filtered('include_in_recalculate'):
             resource, calendar = task._resource_calendar_select()
+            if not resource or not calendar:
+                continue
             increment, project_date, from_days = task._calculation_prepare()
             date_start = False
             date_end = False
