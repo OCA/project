@@ -98,7 +98,7 @@
         <field name="context">{'group_by':['document_model_id','sla_name'], 'group_by_no_leaf': True}</field>
     </record>
 
-    <menuitem action="action_project_sla_report" id="menu_project_sla_report" parent="base.menu_project_report" sequence="100"/>
+    <menuitem action="action_project_sla_report" id="menu_project_sla_report" parent="project.menu_project_report" sequence="100"/>
 
 </data>
 </openerp>

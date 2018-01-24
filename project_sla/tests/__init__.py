@@ -1,6 +1,6 @@
-from . import test_compute_sla_date
+# -*- coding: utf-8 -*-
+#  © 2013 Daniel Reis
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
+from . import test_sla
 
-fast_suite = [
-    test_compute_sla_date,
-]

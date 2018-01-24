@@ -1,10 +1,14 @@
-from openerp import tools
-from openerp.osv import fields, orm
+# -*- coding: utf-8 -*-
+# © 2013 Daniel Reis
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from ..project_sla_control import SLA_STATES
+from odoo import models, fields, api
+from odoo.addons.project_sla.models.project_sla_control import SLA_STATES
+from odoo import tools
 
 
-class report_sla(orm.Model):
+class ReportSla(models.Model):
+
     _name = "project.sla.report"
     _description = "Project SLA report"
     _auto = False
@@ -13,8 +17,11 @@ class report_sla(orm.Model):
 
     # Overridden to automaticaly calculate correct achieved percent for any
     # group result
-    def read_group(self, cr, uid, *args, **kwargs):
-        res = super(report_sla, self).read_group(cr, uid, *args, **kwargs)
+    @api.model
+    def read_group(self, domain, fields, groupby, offset=0, limit=None,
+                   orderby=False, lazy=True):
+        res = super(ReportSla, self).read_group(
+            domain, fields, groupby, offset, limit, orderby, lazy)
         for gres in res:
             if 'achieved_count' in gres and 'total_count' in gres:
                 acount = float(gres['achieved_count'])
@@ -22,38 +29,34 @@ class report_sla(orm.Model):
                 gres['achieved_perc'] = round((acount / tcount) * 100, 2)
         return res
 
-    def _get_achieved_percent(self, cr, uid, ids, field, arg, context=None):
-        res = {}.fromkeys(ids, 0.0)
-        for line in self.browse(cr, uid, ids, context=context):
+    @api.multi
+    @api.depends('achieved_count', 'total_count')
+    def _compute_achieved_percent(self):
+        for line in self:
             acount = float(line.achieved_count)
             tcount = float(line.total_count)
-            res[line.id] = round((acount / tcount) * 100, 2)
-        return res
+            line.achieved_perc = round((acount / tcount) * 100, 2)
 
-    _columns = {
-        'document_model_id': fields.many2one('ir.model', 'Document Model'),
-        'sla_name': fields.char('SLA Name'),
-        'sla_line_name': fields.char('SLA Line Name'),
-        'sla_state': fields.selection(SLA_STATES, 'SLA State'),
-        'date_year': fields.char('Year'),
-        'date_quarter': fields.char('Quarter'),
-        'date_month': fields.char('Month'),
-        'date_week': fields.char('Week'),
-        'sla_closed': fields.boolean('Is Closed'),
-        'total_count': fields.integer('Total Count'),
-        'achieved_count': fields.integer('Achieved Count'),
-        'failed_count': fields.integer('Failed Count'),
-        'achieved_perc': fields.function(_get_achieved_percent,
-                                         string='Achieved Percent',
-                                         type='float',
-                                         readonly=True),
-    }
+    document_model_id = fields.Many2one('ir.model', string='Document Model')
+    sla_name = fields.Char('SLA Name')
+    sla_line_name = fields.Char('SLA Line Name')
+    sla_state = fields.Selection(SLA_STATES, 'SLA State')
+    date_year = fields.Char('Year')
+    date_quarter = fields.Char('Quarter')
+    date_month = fields.Char('Month')
+    date_week = fields.Char('Week')
+    sla_closed = fields.Boolean('Is Closed')
+    total_count = fields.Integer('Total Count')
+    achieved_count = fields.Integer('Achieved Count')
+    failed_count = fields.Integer('Failed Count')
+    achieved_perc = fields.Float(
+        compute="_compute_achieved_percent", string='Achieved Percent')
 
-    def init(self, cr):
-        report_name = self._name.replace('.', '_')
-        tools.drop_view_if_exists(cr, report_name)
+    @api.model_cr
+    def init(self):
+        tools.drop_view_if_exists(self.env.cr, 'project_sla_report')
         sql = """
-            CREATE OR REPLACE VIEW %(report_name)s AS (
+            CREATE OR REPLACE VIEW project_sla_report AS (
                 SELECT
                     psc.id                               AS id,
                     im.id                                AS document_model_id,
@@ -88,5 +91,6 @@ class report_sla(orm.Model):
                 LEFT JOIN ir_model         AS im
                                             ON im.model = ps.control_model
             )
-        """ % {'report_name': report_name}
-        cr.execute(sql)
+        """
+        self.env.cr.execute(sql)
+

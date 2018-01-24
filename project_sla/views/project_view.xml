@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="edit_project_sla" model="ir.ui.view">
+        <field name="name">edit_project_sla</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <!-- make resource calendar always visible -->
+            <field name="resource_calendar_id" position="attributes">
+                <attribute name="groups"/>
+            </field>
+            <!-- Show analytic account to use it to configure sla rules -->
+            <field name="analytic_account_id" position="attributes">
+                <attribute name="invisible">0</attribute>
+                <attribute name="readonly">1</attribute>
+            </field>
+       </field>
+    </record>
+
+</odoo>

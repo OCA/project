@@ -1,29 +1,13 @@
 # -*- coding: utf-8 -*-
-##############################################################################
-#
-#    Copyright (C) 2013 Daniel Reis
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as
-#    published by the Free Software Foundation, either version 3 of the
-#    License, or (at your option) any later version.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-##############################################################################
+# © 2013 Daniel Reis
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from openerp.osv import fields, orm
+from odoo import models, fields, api
 from openerp.tools.safe_eval import safe_eval
 from openerp.tools.misc import DEFAULT_SERVER_DATETIME_FORMAT as DT_FMT
-from openerp import SUPERUSER_ID
+from odoo import SUPERUSER_ID
 from datetime import datetime as dt
-from . import m2m
+from odoo.addons.project_sla import m2m
 
 import logging
 _logger = logging.getLogger(__name__)
@@ -42,7 +26,7 @@ def safe_getattr(obj, dotattr, default=False):
     attrs = dotattr.split('.')
     while attrs:
         attr = attrs.pop(0)
-        if attr in obj._model._columns:
+        if attr in obj._fields:
             try:
                 obj = getattr(obj, attr)
             except AttributeError:
@@ -54,7 +38,7 @@ def safe_getattr(obj, dotattr, default=False):
     return obj
 
 
-class SLAControl(orm.Model):
+class ProjectSlaControl(models.Model):
     """
     SLA Control Registry
     Each controlled document (Issue, Claim, ...) will have a record here.
@@ -63,44 +47,38 @@ class SLAControl(orm.Model):
     _name = 'project.sla.control'
     _description = 'SLA Control Registry'
 
-    _columns = {
-        'doc_id': fields.integer('Document ID', readonly=True),
-        'doc_model': fields.char('Document Model', size=128, readonly=True),
-        'sla_line_id': fields.many2one(
-            'project.sla.line', 'Service Agreement'),
-        'sla_warn_date': fields.datetime('Warning Date'),
-        'sla_limit_date': fields.datetime('Limit Date'),
-        'sla_start_date': fields.datetime('Start Date'),
-        'sla_close_date': fields.datetime('Close Date'),
-        'sla_achieved': fields.integer('Achieved?'),
-        'sla_state': fields.selection(SLA_STATES, string="SLA Status"),
-        'locked': fields.boolean(
-            'Recalculation disabled',
-            help="Safeguard manual changes from future automatic "
-                 "recomputations."),
-            # Future: perfect SLA manual handling
-        }
+    doc_id = fields.Integer('Document ID', readonly=True)
+    doc_model = fields.Char('Document Model', size=128, readonly=True)
+    sla_line_id = fields.Many2one(
+        'project.sla.line', 'Service Agreement')
+    sla_warn_date = fields.Datetime('Warning Date')
+    sla_limit_date = fields.Datetime('Limit Date')
+    sla_start_date = fields.Datetime('Start Date')
+    sla_close_date = fields.Datetime('Close Date')
+    sla_achieved = fields.Integer('Achieved?')
+    sla_state = fields.Selection(SLA_STATES, string="SLA Status")
+    locked = fields.Boolean(
+        'Recalculation disabled',
+        help="Safeguard manual changes from future automatic "
+             "recomputations.")
 
-    def write(self, cr, uid, ids, vals, context=None):
+    @api.multi
+    def write(self, vals):
         """
         Update the related Document's SLA State when any of the SLA Control
         lines changes state
         """
-        res = super(SLAControl, self).write(
-            cr, uid, ids, vals, context=context)
+        res = super(ProjectSlaControl, self).write(vals)
         new_state = vals.get('sla_state')
         if new_state:
-            # just update sla_state without recomputing the whole thing
-            ctx = dict(context) if context else {}
-            ctx['__sla_stored__'] = 1
-            for sla in self.browse(cr, uid, ids, context=ctx):
-                doc = self.pool.get(sla.doc_model).browse(
-                    cr, uid, sla.doc_id, context=ctx)
+            for sla in self.with_context({'__sla_stored__': 1}):
+                doc = self.env[sla.doc_model].browse(sla.doc_id)
                 if doc.sla_state < new_state:
                     doc.write({'sla_state': new_state})
         return res
 
-    def update_sla_states(self, cr, uid, context=None):
+    @api.model
+    def update_sla_states(self):
         """
         Updates SLA States, given the current datetime:
         Only works on "open" sla states (watching, warning and will fail):
@@ -110,21 +88,19 @@ class SLAControl(orm.Model):
         """
         now = dt.strftime(dt.now(), DT_FMT)
         # SLAs to mark as "will fail"
-        control_ids = self.search(
-            cr, uid,
-            [('sla_state', 'in', ['2', '3']), ('sla_limit_date', '<', now)],
-            context=context)
-        self.write(cr, uid, control_ids, {'sla_state': '4'}, context=context)
+        controls = self.search(
+            [('sla_state', 'in', ['2', '3']), ('sla_limit_date', '<', now)], )
+        if controls:
+            controls.write({'sla_state': '4'})
         # SLAs to mark as "warning"
-        control_ids = self.search(
-            cr, uid,
-            [('sla_state', 'in', ['2']), ('sla_warn_date', '<', now)],
-            context=context)
-        self.write(cr, uid, control_ids, {'sla_state': '3'}, context=context)
+        controls = self.search(
+            [('sla_state', 'in', ['2']), ('sla_warn_date', '<', now)], )
+        if controls:
+            controls.write({'sla_state': '3'})
         return True
 
-    def _compute_sla_date(self, cr, uid, calendar_id, resource_id,
-                          start_date, hours, context=None):
+    @api.multi
+    def _compute_sla_date(self, calendar_id, resource_id, start_date, hours):
         """
         Return a limit datetime by adding hours to a start_date, honoring
         a working_time calendar and a resource's (res_uid) timezone and
@@ -132,20 +108,18 @@ class SLAControl(orm.Model):
         """
         assert isinstance(start_date, dt)
         assert isinstance(hours, int) and hours >= 0
-
-        cal_obj = self.pool.get('resource.calendar')
-        periods = cal_obj._schedule_hours(
-            cr, uid, calendar_id,
-            hours,
-            day_dt=start_date,
-            compute_leaves=True,
-            resource_id=resource_id,
-            default_interval=(8, 16),
-            context=context)
+        periods = self.env['resource.calendar'].browse(
+            calendar_id)._schedule_hours(
+                hours,
+                day_dt=start_date,
+                compute_leaves=True,
+                resource_id=resource_id,
+                default_interval=(8, 16))
         end_date = periods[-1][1]
         return end_date
 
-    def _get_computed_slas(self, cr, uid, doc, context=None):
+    @api.model
+    def _get_computed_slas(self, doc):
         """
         Returns a dict with the computed data for SLAs, given a browse record
         for the target document.
@@ -180,17 +154,13 @@ class SLAControl(orm.Model):
                 eval_context = {'o': doc, 'obj': doc, 'object': doc}
                 if not l.condition or safe_eval(l.condition, eval_context):
                     start_date = dt.strptime(doc.create_date, DT_FMT)
-                    res_uid = doc.user_id.id or uid
+                    res_uid = doc.user_id.id or self.env.user.id
                     cal = safe_getattr(
                         doc, 'project_id.resource_calendar_id.id')
                     warn_date = self._compute_sla_date(
-                        cr, uid, cal, res_uid,
-                        start_date, l.warn_qty,
-                        context=context)
+                        cal, res_uid, start_date, l.warn_qty)
                     lim_date = self._compute_sla_date(
-                        cr, uid, cal, res_uid,
-                        warn_date, l.limit_qty - l.warn_qty,
-                        context=context)
+                        cal, res_uid, warn_date, l.limit_qty - l.warn_qty)
                     # evaluate sla state
                     control_val = getattr(doc, sla.control_field_id.name)
                     if control_val:
@@ -226,26 +196,25 @@ class SLAControl(orm.Model):
                             % (doc.id, repr([x.id for x in sla_ids])))
         return res
 
-    def store_sla_control(self, cr, uid, docs, context=None):
+    @api.model
+    def store_sla_control(self, docs):
         """
         Used by controlled documents to ask for SLA calculation and storage.
-        ``docs`` is a Browse object
+        ``docs`` is a Recordset
         """
         # context flag to avoid infinite loops on further writes
-        context = context or {}
-        if '__sla_stored__' in context:
+        if '__sla_stored__' in self.env.context:
             return False
         else:
-            ctx = dict(context)
-            ctx['__sla_stored__'] = 1
+            docs = docs.with_context({'__sla_stored__': 1})
+            self = self.with_context({'__sla_stored__': 1})
 
         res = []
         for ix, doc in enumerate(docs):
             if ix and ix % 50 == 0:
                 _logger.info('...%d SLAs recomputed for %s' % (ix, doc._name))
-            control = {x.sla_line_id.id: x
-                       for x in doc.sla_control_ids}
-            sla_recs = self._get_computed_slas(cr, uid, doc, context=ctx)
+            control = {x.sla_line_id.id: x for x in doc.sla_control_ids}
+            sla_recs = self._get_computed_slas(doc)
             # calc sla control lines
             if sla_recs:
                 slas = []
@@ -263,43 +232,44 @@ class SLAControl(orm.Model):
                 global_sla = None
             # calc sla control summary and store
             vals = {'sla_state': global_sla, 'sla_control_ids': slas}
-            doc._model.write(  # regular users can't write on SLA Control
-                cr, SUPERUSER_ID, [doc.id], vals, context=ctx)
+            # regular users can't write on SLA Control
+            doc.sudo().write(vals)
         return res
 
 
-class SLAControlled(orm.AbstractModel):
+class ProjectSlaControlled(models.AbstractModel):
     """
     SLA Controlled documents: AbstractModel to apply SLA control on Models
     """
     _name = 'project.sla.controlled'
     _description = 'SLA Controlled Document'
-    _columns = {
-        'sla_control_ids': fields.many2many(
-            'project.sla.control', string="SLA Control", ondelete='cascade'),
-        'sla_state': fields.selection(
-            SLA_STATES, string="SLA Status", readonly=True),
-        }
+    
+    sla_control_ids = fields.Many2many(
+        'project.sla.control', string="SLA Control", ondelete='cascade')
+    sla_state = fields.Selection(
+        SLA_STATES, string="SLA Status", readonly=True)
 
-    def create(self, cr, uid, vals, context=None):
-        res = super(SLAControlled, self).create(cr, uid, vals, context=context)
-        docs = self.browse(cr, uid, [res], context=context)
-        self.pool.get('project.sla.control').store_sla_control(
-            cr, uid, docs, context=context)
+    @api.model
+    def create(self, vals):
+        res = super(ProjectSlaControlled, self).create(vals)
+        self.env['project.sla.control'].store_sla_control(res)
         return res
 
-    def write(self, cr, uid, ids, vals, context=None):
-        res = super(SLAControlled, self).write(
-            cr, uid, ids, vals, context=context)
-        docs = [x for x in self.browse(cr, uid, ids, context=context)
-                if (not x.stage_id.fold or x.sla_state not in ['1', '5'])]
-        self.pool.get('project.sla.control').store_sla_control(
-            cr, uid, docs, context=context)
+    @api.multi
+    def write(self, vals):
+        res = super(ProjectSlaControlled, self).write(vals)
+        # docs = [x for x in self
+        #         if (not x.stage_id.fold or x.sla_state not in ['1', '5'])]
+        docs = self.filtered(
+            lambda r:
+            r.stage_id.fold is not False or r.sla_state not in ['1', '5'])
+        self.env['project.sla.control'].store_sla_control(docs)
         return res
 
-    def unlink(self, cr, uid, ids, context=None):
+    @api.multi
+    def unlink(self):
         # Unlink and delete all related Control records
-        for doc in self.browse(cr, uid, ids, context=context):
+        for doc in self:
             vals = [m2m.remove(x.id)[0] for x in doc.sla_control_ids]
             doc.write({'sla_control_ids': vals})
-        return super(SLAControlled, self).unlink(cr, uid, ids, context=context)
+        return super(ProjectSlaControlled, self).unlink()
