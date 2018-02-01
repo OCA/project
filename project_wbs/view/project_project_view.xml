@@ -44,8 +44,7 @@
             <field name="arch" type="xml">
                 <xpath expr='//tree' position="attributes">
                     <attribute name="editable">top</attribute>
-                    <!--<attribute name="fonts">bold:account_class in 'project';bold:account_class in 'phase';bold:account_class in 'deliverable';</attribute>-->
-                    <!--<attribute name="colors">#555487:account_class == 'phase';#807FA2:account_class == 'deliverable';</attribute>-->
+                    <attribute name="decoration-primary">account_class == 'project'</attribute>
                     <attribute name="default_order">complete_wbs_code</attribute>
                 </xpath>
                 <xpath expr='//field[@name="sequence"]' position="after">
