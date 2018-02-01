@@ -174,11 +174,11 @@
                         </group>
                     </page>
 
-                    <page string="Project Stages" attrs="{'invisible': [('use_tasks', '=', False)]}" name="project_stages">
-                        <group string="Project Task Stages">
-                            <field name="type_ids" nolabel="1"/>
-                        </group>
-                    </page>
+                    <!--<page string="Project Stages" attrs="{'invisible': [('use_tasks', '=', False)]}" name="project_stages">-->
+                        <!--<group string="Project Task Stages">-->
+                            <!--<field name="type_ids" nolabel="1"/>-->
+                        <!--</group>-->
+                    <!--</page>-->
                 </notebook>
             </field>
         </record>
