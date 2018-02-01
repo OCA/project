@@ -44,15 +44,15 @@
             <field name="arch" type="xml">
                 <xpath expr='//tree' position="attributes">
                     <attribute name="editable">top</attribute>
-                    <attribute name="fonts">bold:account_class in 'project';bold:account_class in 'phase';bold:account_class in 'deliverable';</attribute>
-                    <attribute name="colors">#555487:account_class == 'phase';#807FA2:account_class == 'deliverable';</attribute>
+                    <!--<attribute name="fonts">bold:account_class in 'project';bold:account_class in 'phase';bold:account_class in 'deliverable';</attribute>-->
+                    <!--<attribute name="colors">#555487:account_class == 'phase';#807FA2:account_class == 'deliverable';</attribute>-->
                     <attribute name="default_order">complete_wbs_code</attribute>
                 </xpath>
                 <xpath expr='//field[@name="sequence"]' position="after">
-                    <button string="Parent WBS element"
-                        name="action_open_parent_tree_view"
-                        type="object"
-                        icon="fa-arrow-up"/>
+                    <!--<button string="Parent WBS element"-->
+                        <!--name="action_open_parent_tree_view"-->
+                        <!--type="object"-->
+                        <!--icon="fa-arrow-up"/>-->
                     <button string="Child WBS elements"
                         name="action_open_child_tree_view"
                         type="object"
@@ -61,12 +61,12 @@
                         name="action_open_view_project_form"
                         type="object"
                         icon="fa-pencil-square-o"/>
-                    <field name="complete_wbs_code" string="Code" invisible="1"/>
+                    <field name="complete_wbs_code" string="Code"/>
                     <field name="wbs_indent"/>
                 </xpath>
-                <xpath expr='//field[@name="partner_id"]' position="attributes">
-                    <attribute name="invisible">1</attribute>
-                </xpath>
+                <!--<xpath expr='//field[@name="partner_id"]' position="attributes">-->
+                    <!--<attribute name="invisible">1</attribute>-->
+                <!--</xpath>-->
                 <xpath expr='//field[@name="name"]' position="after">
                     <field name="parent_id" string="Parent"/>
                     <field name="account_class" string="Class"/>
@@ -131,7 +131,7 @@
                 <xpath expr='//field[@name="name"]' position="attributes">
                     <attribute name="string">WBS element name</attribute>
                 </xpath>
-                
+
                 <notebook position="inside">
                     <page string="Work Breakdown Structure">
                         <group name="button">
