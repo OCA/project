@@ -43,7 +43,7 @@
             <field name="field_parent">child_ids</field>
             <field name="arch" type="xml">
                 <xpath expr='//tree' position="attributes">
-                    <attribute name="editable">top</attribute>
+                    <!--<attribute name="editable">top</attribute>-->
                     <attribute name="decoration-primary">account_class == 'project'</attribute>
                     <attribute name="default_order">complete_wbs_code</attribute>
                 </xpath>
@@ -52,22 +52,22 @@
                         <!--name="action_open_parent_tree_view"-->
                         <!--type="object"-->
                         <!--icon="fa-arrow-up"/>-->
-                    <button string="Child WBS elements"
-                        name="action_open_child_tree_view"
-                        type="object"
-                        icon="fa-arrow-down"/>
-                    <button string="Project Form View"
-                        name="action_open_view_project_form"
-                        type="object"
-                        icon="fa-pencil-square-o"/>
+                    <!--<button string="Child WBS elements"-->
+                        <!--name="action_open_child_tree_view"-->
+                        <!--type="object"-->
+                        <!--icon="fa-arrow-down"/>-->
+                    <!--<button string="Project Form View"-->
+                        <!--name="action_open_view_project_form"-->
+                        <!--type="object"-->
+                        <!--icon="fa-pencil-square-o"/>-->
                     <field name="complete_wbs_code" string="Code"/>
                     <field name="wbs_indent"/>
                 </xpath>
-                <!--<xpath expr='//field[@name="partner_id"]' position="attributes">-->
-                    <!--<attribute name="invisible">1</attribute>-->
-                <!--</xpath>-->
+                <xpath expr='//field[@name="sequence"]' position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
                 <xpath expr='//field[@name="name"]' position="after">
-                    <field name="parent_id" string="Parent"/>
+                    <field name="parent_id" string="Parent" invisible="1"/>
                     <field name="account_class" string="Class"/>
                     <field name="child_ids" invisible="True"/>
                 </xpath>
@@ -131,40 +131,45 @@
                     <attribute name="string">WBS element name</attribute>
                 </xpath>
 
+                <xpath expr='//field[@name="privacy_visibility"]' position="before">
+                    <field name="parent_id"
+                           string="Parent"
+                           help="Append this project to another one using analytic accounts hierarchy"
+                           domain="[('id','!=',analytic_account_id)]"
+                           context="{'current_model': 'project.project'}" />
+                </xpath>
+
+                <xpath expr='//field[@name="sequence"]' position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+
+                <xpath expr='//field[@name="sequence"]' position="after">
+                    <field name="account_class" string="Class"/>
+                    <field name="analytic_account_id"
+                           readonly="1" required="0"
+                           domain="[('account_class', '=', 'project')]"/>
+                    <field name="project_analytic_id"
+                           domain="[('account_class', '=', 'project')]"/>
+                    <field name="code" string="Code"/>
+                    <field name="complete_wbs_code" string="WBS code" readonly="1" />
+                </xpath>
+
                 <notebook position="inside">
                     <page string="Work Breakdown Structure">
                         <group name="button">
                             <button name="%(create_wbs_element)d"
                               string="Create child WBS element"
                               type="action"
-                              context="{'default_parent_id':analytic_account_id,'default_partner_id':partner_id,'default_user_id':user_id,
-                              'default_use_tasks':use_tasks}"/>
+                              context="{
+                              'default_parent_id':analytic_account_id,
+                              'default_partner_id':partner_id,
+                              'default_user_id':user_id,
+                              'default_use_tasks':use_tasks
+                              }"/>
                         </group>
                         <tree string="Work Breakdown Structure" editable="bottom">
-                            <field name="project_child_complete_ids" nolabel="1" widget="one2many_list"
-                                   attrs="{'invisible': [('project_child_complete_ids', '!=', False)]}"/>
+                            <field name="project_child_complete_ids" nolabel="1"/>
                         </tree>
-                    </page>
-
-                    <page string="Other Info">
-                        <group string="Miscellaneous" name="misc">
-                            <field name="date_start" string="Start Date"/>
-                            <field name="date" string="End Date"/>
-                            <field name="sequence" groups="base.group_no_one"/>
-                            <field name="company_id" invisible="1"/>
-                            <field name="currency_id" groups="base.group_multi_currency"/>
-                            <field name="parent_id" string="Parent" help="Append this project to another one using analytic accounts hierarchy" domain="[('id','!=',analytic_account_id)]" context="{'current_model': 'project.project'}" />
-                        </group>
-                        <group name="class" string="Account Info">
-                            <field name="account_class" string="Class"/>
-                            <field name="analytic_account_id"
-                                   readonly="1" required="0"
-                                   domain="[('account_class', '=', 'project')]"/>
-                            <field name="project_analytic_id"
-                                   domain="[('account_class', '=', 'project')]"/>
-                            <field name="code" string="Code"/>
-                            <field name="complete_wbs_code" string="WBS code" readonly="1" />
-                        </group>
                     </page>
 
                 </notebook>
@@ -298,40 +303,11 @@
         </record>
 
         <menuitem
-            action="open_view_project_wbs"
-            id="menu_project_wbs"
-            name="Work Breakdown Structure"
-            parent="project.menu_projects"/>
-
-        <menuitem
             action="group_project"
             id="menu_project_wbs_project"
             name="Projects"
-            parent="menu_project_wbs"
+            parent="project.menu_projects"
             sequence="10"/>
-
-        <menuitem action="open_view_project_phases"
-                  id="menu_project_wbs_phases" name="Phases"
-                  parent="menu_project_wbs" sequence="20"/>
-        <menuitem action="open_view_project_deliverables"
-                  id="menu_project_wbs_deliverables" name="Deliverables"
-                  parent="menu_project_wbs" sequence="30"/>
-        <menuitem action="open_view_project_work_packages"
-                  id="menu_project_work_packages" name="Work Packages"
-                  parent="menu_project_wbs" sequence="40"/>
-
-        <menuitem
-            action="open_view_wbs_tree"
-            id="menu_fullwbs"
-            name="WBS overview"
-            parent="menu_project_wbs"
-            sequence="50"/>
-        <menuitem
-            action="project.action_view_task"
-            id="project.menu_action_view_task"
-            parent="project.menu_project_management"
-            sequence="60"
-            name="Tasks"/>
 
         <record id="act_project_project_2_deliverable_all" model="ir.actions.act_window">
             <field name="name">Deliverables</field>
