@@ -131,23 +131,7 @@
                 <xpath expr='//field[@name="name"]' position="attributes">
                     <attribute name="string">WBS element name</attribute>
                 </xpath>
-
-                <xpath expr='//notebook' position="before">
-                    <group name="root_accounts" string="Project Configuration">
-                        <group name="class">
-                            <field name="account_class" string="Class"/>
-                            <field name="analytic_account_id"
-                                   readonly="1" required="0"
-                                   domain="[('account_class', '=', 'project')]"/>
-                            <field name="project_analytic_id"
-                                   domain="[('account_class', '=', 'project')]"/>
-                        </group>
-                        <group name="code">
-                            <field name="code" string="Code"/>
-                            <field name="complete_wbs_code" string="WBS code" readonly="1" />
-                        </group>
-                    </group>
-                </xpath>
+                
                 <notebook position="inside">
                     <page string="Work Breakdown Structure">
                         <group name="button">
@@ -172,13 +156,18 @@
                             <field name="currency_id" groups="base.group_multi_currency"/>
                             <field name="parent_id" string="Parent" help="Append this project to another one using analytic accounts hierarchy" domain="[('id','!=',analytic_account_id)]" context="{'current_model': 'project.project'}" />
                         </group>
+                        <group name="class" string="Account Info">
+                            <field name="account_class" string="Class"/>
+                            <field name="analytic_account_id"
+                                   readonly="1" required="0"
+                                   domain="[('account_class', '=', 'project')]"/>
+                            <field name="project_analytic_id"
+                                   domain="[('account_class', '=', 'project')]"/>
+                            <field name="code" string="Code"/>
+                            <field name="complete_wbs_code" string="WBS code" readonly="1" />
+                        </group>
                     </page>
 
-                    <!--<page string="Project Stages" attrs="{'invisible': [('use_tasks', '=', False)]}" name="project_stages">-->
-                        <!--<group string="Project Task Stages">-->
-                            <!--<field name="type_ids" nolabel="1"/>-->
-                        <!--</group>-->
-                    <!--</page>-->
                 </notebook>
             </field>
         </record>
