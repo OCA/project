@@ -104,6 +104,43 @@ class Project(models.Model):
             project_item.project_child_complete_ids = child_ids
 
     @api.multi
+    def _resolve_analytic_account_id_from_context(self):
+        """
+        Returns ID of parent analytic account based on the value of
+        'default_parent_id'
+        context key, or None if it cannot be resolved to a single
+        account.analytic.account
+        """
+        context = self.env.context or {}
+        if type(context.get('default_parent_id')) in (int, long):
+            return context['default_parent_id']
+        if isinstance(
+                context.get('default_parent_id'), basestring
+        ):
+            analytic_account_name = context['default_parent_id']
+            analytic_account_ids = self.env[
+                'account.analytic.account'
+            ].name_search(
+                name=analytic_account_name
+            )
+            if len(analytic_account_ids) == 1:
+                return analytic_account_ids[0][0]
+        return None
+
+    @api.multi
+    def _get_parent_members(self):
+        context = self.env.context or {}
+        member_ids = []
+        project_obj = self.env['project.project']
+        if 'default_parent_id' in context and context['default_parent_id']:
+            for project in project_obj.search(
+                    [('analytic_account_id', '=', context['default_parent_id'])]
+            ):
+                for member in project.members:
+                    member_ids.append(member.id)
+        return member_ids
+
+    @api.multi
     def _get_analytic_complete_wbs_code(self):
         for project in self:
             project.c_wbs_code = \
@@ -118,12 +155,12 @@ class Project(models.Model):
         return project_ids
 
     project_child_complete_ids = fields.Many2many(
-        'project.project',
+        comodel_name='project.project',
         string="Project Hierarchy",
-        compute=_child_compute
+        compute="_child_compute"
     )
     c_wbs_code = fields.Char(
-        compute=_get_analytic_complete_wbs_code,
+        compute="_get_analytic_complete_wbs_code",
         string='WBS Code',
         readonly=True,
         store=True
@@ -203,6 +240,7 @@ class Project(models.Model):
         :return dict: dictionary value for created view
         """
         res = self.env['ir.actions.act_window'].for_xml_id(module, act_window)
+        context = self.env.context.copy() or {}
         domain = []
         project_ids = []
         for project in self:
@@ -211,18 +249,28 @@ class Project(models.Model):
             )
             for child_project_id in child_project_ids:
                 project_ids.append(child_project_id.id)
-            if project_ids:
-                def_parent_id = project.analytic_account_id and \
-                    project.analytic_account_id.id or False
-                def_partner_id = project.partner_id and \
-                    project.partner_id.id or False
-                default_user_id = \
-                    project.user_id and project.user_id.id or False
-                self = self.with_context(default_parent_id=def_parent_id,
-                                         default_partner_id=def_partner_id,
-                                         default_user_id=default_user_id)
-                domain.append(('id', 'in', project_ids))
-                res.update(domain=domain, nodestroy=False)
+            res['context'] = ({
+                'default_parent_id': (
+                        project.analytic_account_id and
+                        project.analytic_account_id.id or
+                        False
+                ),
+                'default_partner_id': (
+                        project.partner_id and
+                        project.partner_id.id or
+                        False
+                ),
+                'default_user_id': (
+                        project.user_id and
+                        project.user_id.id or
+                        False
+                ),
+            })
+        domain.append(('id', 'in', project_ids))
+        res.update({
+            "domain": domain,
+            "nodestroy": False
+        })
         return res
 
     @api.multi
@@ -258,6 +306,10 @@ class Project(models.Model):
                     analytic_account_ids.append(parent_project_id.id)
         if analytic_account_ids:
             domain.append(('id', 'in', analytic_account_ids))
+            res.update({
+                "domain": domain,
+                "nodestroy": False
+            })
         return res
 
     @api.multi
@@ -287,6 +339,11 @@ class Project(models.Model):
     @api.multi
     def button_save_data(self):
         return True
+
+    @api.multi
+    @api.onchange('parent_id')
+    def on_change_parent(self):
+        return self.env['account.analytic.account'].on_change_parent()
 
     @api.multi
     def action_open_view_project_form(self):
