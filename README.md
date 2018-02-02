@@ -19,7 +19,6 @@ Available addons
 ----------------
 addon | version | summary
 --- | --- | ---
-[project_closing](project_closing/) | 10.0.1.0.0 | Project closing
 [project_department](project_department/) | 10.0.1.0.0 | Project Department Categorization
 [project_description](project_description/) | 10.0.1.0.0 | Add a description to projects
 [project_double_alias](project_double_alias/) | 10.0.1.0.1 | Define an alias for tasks and another alias for issues
