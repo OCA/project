@@ -76,7 +76,7 @@ class AccountAnalyticAccount(models.Model):
             data = []
             acc = account
             while acc:
-                if acc.name and acc.parent_id.parent_id:
+                if acc.name and acc.parent_id:
                     data.insert(0, '>')
 
                 acc = acc.parent_id
@@ -157,7 +157,8 @@ class AccountAnalyticAccount(models.Model):
         help='The classification allows you to create a proper project '
              'Work Breakdown Structure'
     )
-    parent_id = fields.Many2one(default=_default_parent)
+    parent_id = fields.Many2one(default=_default_parent,
+                                string="Parent Analytic Account")
     partner_id = fields.Many2one(default=_default_partner)
 
     @api.multi
