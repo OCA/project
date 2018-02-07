@@ -18,8 +18,7 @@
                                 <div class="oe_tag">
                                     (Parent: <field name="parent_id"/>)
                                 </div>
-                                <!--<br></br>-->
-                                <!--<div class="fa fa-level-up text-center parentheading oe_kanban_action_a"/>-->
+                                <div class="fa fa-level-up text-center parentheading oe_kanban_action_a"/>
                             </div>
                         </a>
                     </div>
@@ -67,10 +66,10 @@
                 <xpath expr='//field[@name="sequence"]' position="after">
                     <field name="complete_wbs_code" string="Code"/>
                     <field name="wbs_indent"/>
-                    <!--<button string="Parent WBS element"-->
-                        <!--name="action_open_parent_tree_view"-->
-                        <!--type="object"-->
-                        <!--icon="fa-arrow-up"/>-->
+                    <button string="Parent WBS element"
+                        name="action_open_parent_tree_view"
+                        type="object"
+                        icon="fa-arrow-up"/>
                     <button string="Child WBS elements"
                         name="action_open_child_tree_view"
                         type="object"
@@ -150,7 +149,7 @@
 
                 <xpath expr='//field[@name="privacy_visibility"]' position="before">
                     <field name="parent_id"
-                           string="Parent"
+                           string="Parent Analytic Account"
                            help="Append this project to another one using analytic accounts hierarchy"
                            domain="[('id','!=',analytic_account_id)]"
                            context="{'current_model': 'project.project'}" />
@@ -172,7 +171,7 @@
                 </xpath>
 
                 <notebook position="inside">
-                    <page string="Work Breakdown Structure">
+                    <page string="Work Breakdown Structure" name="wbs">
                         <group name="button">
                             <button name="%(create_wbs_element)d"
                               string="Create child WBS element"

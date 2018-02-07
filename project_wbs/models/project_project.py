@@ -6,8 +6,6 @@
 # Copyright 2017 Serpent Consulting Services Pvt. Ltd.
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-import time
-from datetime import datetime, date
 from odoo import api, fields, models, _
 
 
@@ -96,7 +94,7 @@ class Project(models.Model):
 
     @api.multi
     @api.depends('parent_id')
-    def _child_compute(self):
+    def _compute_child(self):
         for project_item in self:
             child_ids = self.search(
                 [('parent_id', '=', project_item.analytic_account_id.id)]
@@ -114,53 +112,21 @@ class Project(models.Model):
         context = self.env.context or {}
         if type(context.get('default_parent_id')) in (int, long):
             return context['default_parent_id']
-        if isinstance(
-                context.get('default_parent_id'), basestring
-        ):
-            analytic_account_name = context['default_parent_id']
-            analytic_account_ids = self.env[
-                'account.analytic.account'
-            ].name_search(
-                name=analytic_account_name
-            )
-            if len(analytic_account_ids) == 1:
-                return analytic_account_ids[0][0]
         return None
 
     @api.multi
-    def _get_parent_members(self):
-        context = self.env.context or {}
-        member_ids = []
-        project_obj = self.env['project.project']
-        if 'default_parent_id' in context and context['default_parent_id']:
-            for project in project_obj.search(
-                    [('analytic_account_id', '=', context['default_parent_id'])]
-            ):
-                for member in project.members:
-                    member_ids.append(member.id)
-        return member_ids
-
-    @api.multi
-    def _get_analytic_complete_wbs_code(self):
+    def _compute_analytic_complete_wbs_code(self):
         for project in self:
             project.c_wbs_code = \
                 project.analytic_account_id.complete_wbs_code
 
-    @api.multi
-    def _complete_wbs_code_search_analytic(self):
-        """ Finds projects for an analytic account.
-        @return: List of ids
-        """
-        project_ids = self.search([('analytic_account_id', 'in', self.ids)])
-        return project_ids
-
     project_child_complete_ids = fields.Many2many(
         comodel_name='project.project',
         string="Project Hierarchy",
-        compute="_child_compute"
+        compute="_compute_child"
     )
     c_wbs_code = fields.Char(
-        compute="_get_analytic_complete_wbs_code",
+        compute="_compute_analytic_complete_wbs_code",
         string='WBS Code',
         readonly=True,
         store=True
@@ -168,71 +134,8 @@ class Project(models.Model):
     account_class = fields.Selection(
         related='analytic_account_id.account_class',
         store=True,
+        default='project',
     )
-    # Override the standard behaviour of duplicate_template not introducing
-    # the (copy) string to the copied projects.
-
-    @api.multi
-    def duplicate_template(self):
-        data_obj = self.env['ir.model.data']
-        result = []
-        for proj in self:
-            parent_id = self.env.context.get('parent_id', False)
-            self = self.with_context(analytic_project_copy=True)
-            new_date_start = time.strftime('%Y-%m-%d')
-            new_date_end = False
-            if proj.date_start and proj.date:
-                start_date = date(
-                    *time.strptime(proj.date_start, '%Y-%m-%d')[:3]
-                )
-                end_date = date(*time.strptime(proj.date, '%Y-%m-%d')[:3])
-                new_date_end = (
-                    datetime(
-                        *time.strptime(
-                            new_date_start,
-                            '%Y-%m-%d'
-                        )[:3]
-                    ) + (end_date - start_date)
-                ).strftime('%Y-%m-%d')
-            self = self.with_context(copy=True)
-            new_id = proj.copy(default={
-                'name': _("%s") % proj.name,
-                'state': 'open',
-                'date_start': new_date_start,
-                'date': new_date_end,
-                'parent_id': parent_id})
-            result.append(new_id)
-            child_ids = self.search(
-                [('parent_id', '=', proj.analytic_account_id.id)])
-            parent_id = new_id.analytic_account_id.id
-            if child_ids:
-                self = self.with_context(parent_id=parent_id)
-                self.duplicate_template(
-                    child_ids, context={'parent_id': parent_id})
-        if result and len(result):
-            res_id = result[0]
-            form_view_id = data_obj._get_id('project', 'edit_project')
-            form_view = data_obj.read(form_view_id, ['res_id'])
-            tree_view_id = data_obj._get_id('project', 'view_project')
-            tree_view = data_obj.read(tree_view_id, ['res_id'])
-            search_view_id = data_obj._get_id(
-                'project', 'view_project_project_filter')
-            search_view = data_obj.read(search_view_id, ['res_id'])
-            return {
-                'name': _('Projects'),
-                'view_type': 'form',
-                'view_mode': 'form,tree',
-                'res_model': 'project.project',
-                'view_id': False,
-                'res_id': res_id,
-                'views': [
-                    (form_view['res_id'], 'form'),
-                    (tree_view['res_id'], 'tree')
-                ],
-                'type': 'ir.actions.act_window',
-                'search_view_id': search_view['res_id'],
-                'nodestroy': True
-            }
 
     @api.multi
     def action_open_child_view(self, module, act_window):
@@ -240,7 +143,6 @@ class Project(models.Model):
         :return dict: dictionary value for created view
         """
         res = self.env['ir.actions.act_window'].for_xml_id(module, act_window)
-        context = self.env.context.copy() or {}
         domain = []
         project_ids = []
         for project in self:
@@ -250,21 +152,15 @@ class Project(models.Model):
             for child_project_id in child_project_ids:
                 project_ids.append(child_project_id.id)
             res['context'] = ({
-                'default_parent_id': (
-                        project.analytic_account_id and
-                        project.analytic_account_id.id or
-                        False
-                ),
-                'default_partner_id': (
-                        project.partner_id and
-                        project.partner_id.id or
-                        False
-                ),
-                'default_user_id': (
-                        project.user_id and
-                        project.user_id.id or
-                        False
-                ),
+                'default_parent_id': (project.analytic_account_id and
+                                      project.analytic_account_id.id or
+                                      False),
+                'default_partner_id': (project.partner_id and
+                                       project.partner_id.id or
+                                       False),
+                'default_user_id': (project.user_id and
+                                    project.user_id.id or
+                                    False),
             })
         domain.append(('id', 'in', project_ids))
         res.update({
@@ -343,7 +239,7 @@ class Project(models.Model):
     @api.multi
     @api.onchange('parent_id')
     def on_change_parent(self):
-        return self.env['account.analytic.account'].on_change_parent()
+        return self.analytic_account_id._onchange_parent_id()
 
     @api.multi
     def action_open_view_project_form(self):
