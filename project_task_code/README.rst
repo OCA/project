@@ -29,7 +29,7 @@ new code saving it.
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
-   :target: https://runbot.odoo-community.org/runbot/140/10.0
+   :target: https://runbot.odoo-community.org/runbot/140/11.0
 
 Bug Tracker
 ===========
@@ -50,6 +50,7 @@ Contributors
 * Pedro M. Baeza <pedro.baeza@serviciosbaeza.com>
 * Ana Juaristi <anajuarist@avanzosc.es>
 * Vicent Cubells <vicent.cubells@tecnativa.com>
+* Rodrigo Ferreira <rodrigosferreira91@gmail.com>
 
 Maintainer
 ----------
