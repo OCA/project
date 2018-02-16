@@ -1,10 +1,9 @@
-# -*- coding: utf-8 -*-
 # Copyright 2016 Tecnativa <vicent.cubells@tecnativa.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 {
     "name": "Sequential Code for Tasks",
-    "version": "10.0.1.0.0",
+    "version": "11.0.1.0.0",
     "category": "Project Management",
     "author": "OdooMRP team, "
               "AvanzOSC, "
