@@ -1,9 +1,9 @@
-# -*- coding: utf-8 -*-
 # Copyright 2016 Tecnativa <vicent.cubells@tecnativa.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from . import models
 from odoo import api, SUPERUSER_ID
+
 
 def create_code_equal_to_id(cr):
     """
@@ -30,4 +30,4 @@ def assign_old_sequences(cr, registry):
         cr.execute('UPDATE project_task '
                    'SET code = %s '
                    'WHERE id = %s;',
-                   (sequence_obj.next_by_code('project.task'), task_id, ))
+                   (sequence_obj.next_by_code('project.task'), task_id,))
