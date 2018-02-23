@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+# Copyright 2017 - 2018 Modoolar <info@modoolar.com>
+# License LGPLv3.0 or later (https://www.gnu.org/licenses/lgpl-3.0.en.html).
+-->
+
+<odoo>
+    <record id="project_workflow_transition_form" model="ir.ui.view">
+        <field name="name">project.workflow.transition.form</field>
+        <field name="model">project.workflow.transition</field>
+        <field name="inherit_id" ref="project_workflow.project_workflow_transition_form"/>
+        <field name="arch" type="xml">
+            <page name="description" position="after">
+                <page name="groups" string="Groups">
+                    <field name="group_ids" nolabel="1">
+                        <tree>
+                            <field name="name"/>
+                        </tree>
+                    </field>
+                </page>
+            </page>
+        </field>
+    </record>
+    <record id="project_workflow_transition_diagram_form" model="ir.ui.view">
+        <field name="name">project.workflow.transition.form</field>
+        <field name="model">project.workflow.transition</field>
+        <field name="inherit_id" ref="project_workflow.project_workflow_transition_diagram_form"/>
+        <field name="arch" type="xml">
+             <page name="description" position="after">
+                <page name="groups" string="Groups">
+                    <field name="group_ids" nolabel="1">
+                        <tree>
+                            <field name="name"/>
+                        </tree>
+                    </field>
+                </page>
+            </page>
+        </field>
+    </record>
+</odoo>
