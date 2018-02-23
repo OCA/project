@@ -2,3 +2,5 @@
 # Add a repository url and branch if you need a forked version
 account-analytic
 web
+web https://github.com/modoolar/web web
+project https://github.com/modoolar/project project

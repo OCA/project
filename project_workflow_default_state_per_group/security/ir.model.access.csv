@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_project_workflow_default_state_user,project.workflow.default.state,model_project_workflow_default_state,project.group_project_user,1,0,0,0
+access_project_workflow_default_state_portal,project.workflow.default.state,model_project_workflow_default_state,base.group_portal,1,0,0,0
+access_project_workflow_default_state_manager,project.workflow.default.state,model_project_workflow_default_state,project.group_project_manager,1,1,1,1
