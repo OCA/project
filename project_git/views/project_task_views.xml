@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+# Copyright 2017 - 2018 Modoolar <info@modoolar.com>
+# License LGPLv3.0 or later (https://www.gnu.org/licenses/lgpl-3.0.en.html).
+-->
+<odoo>
+    <record id="git_view_task_form2_inherited" model="ir.ui.view">
+        <field name="name">project.git.project.task.form.inherit</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <button name="toggle_active" position="before">
+                <button name="open_commits"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-share-alt">
+
+                    <field string="Commits" name="commits_count" widget="statinfo" help="Commits"/>
+                </button>
+            </button>
+        </field>
+    </record>
+</odoo>

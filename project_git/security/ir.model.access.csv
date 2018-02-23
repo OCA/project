@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_project_git_commit_user,project.git.commit,model_project_git_commit,project.group_project_user,1,1,1,1
+access_project_git_branch_user,project.git.branch,model_project_git_branch,project.group_project_user,1,1,1,1
+access_project_git_repository_user,project.git.repository,model_project_git_repository,project.group_project_user,1,1,1,1
+access_project_git_user_user,project.git.user,model_project_git_user,project.group_project_user,1,1,1,1

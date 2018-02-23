@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+# Copyright 2017 - 2018 Modoolar <info@modoolar.com>
+# License LGPLv3.0 or later (https://www.gnu.org/licenses/lgpl-3.0.en.html).
+-->
+<odoo>
+    <menuitem id="menu_git"
+              name="Git"
+              web_icon="project_git,static/src/img/git.png"
+              sequence="8"
+    />
+
+    <menuitem id="menu_git_repositories"
+              name="Repositories"
+              parent="project_git.menu_git"
+              action="action_git_repository"
+              sequence="10"
+    />
+
+    <menuitem id="menu_git_users"
+              name="Users"
+              parent="project_git.menu_git"
+              action="action_git_user"
+              sequence="20"
+    />
+
+    <menuitem id="menu_git_branches"
+              name="Branches"
+              parent="project_git.menu_git"
+              action="action_git_branch"
+              sequence="30"
+    />
+
+    <menuitem id="menu_git_commits"
+              name="Commits"
+              parent="project_git.menu_git"
+              action="action_git_commit"
+              sequence="40"
+    />
+</odoo>

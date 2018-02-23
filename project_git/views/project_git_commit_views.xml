@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+# Copyright 2017 - 2018 Modoolar <info@modoolar.com>
+# License LGPLv3.0 or later (https://www.gnu.org/licenses/lgpl-3.0.en.html).
+-->
+<odoo>
+    <record id="view_git_commit_form" model="ir.ui.view">
+        <field name="name">project.git.commit.form</field>
+        <field name="model">project.git.commit</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form create="0" edit="0">
+                <sheet>
+                    <div class="oe_button_box" name="button_box" groups="base.group_user">
+                        <button name="open_tasks" type="object" class="oe_stat_button"  icon="fa-tasks">
+                            <field string="Tasks" name="task_count" widget="statinfo" />
+                        </button>
+                    </div>
+                    <div class="oe_left" style="padding-right : 20px;">
+                        <field name="avatar" widget="image_url" class="oe_image_small" width="100px" height="100px"/>
+                    </div>
+                    <div class="oe_image_small oe_right">
+                        <field name="image_type" widget="image_url" class="oe_image_small" width="50px" height="50px"/>
+                    </div>
+                    <div class="oe_title">
+                        <label for="name" string="Name"/>
+                        <h1><field name="name" required="1" readonly="1"/></h1>
+                    </div>
+                    <group>
+                        <field name="type" invisible="1"/>
+                        <field name="author_id" readonly="1"/>
+                        <field name="date" readonly="1"/>
+                        <field name="url" readonly="1" required="0" widget="url"/>
+                        <field name="task_ids" widget="many2many_tags"/>
+                    </group>
+                    <group string="Description" col="4" colspan="4">
+                        <field name="message" nolabel="1" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_git_commit_tree" model="ir.ui.view">
+        <field name="name">project.git.commit.tree</field>
+        <field name="model">project.git.commit</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree create="0" edit="0">
+                <field name="type" invisible="1"/>
+                <field name="avatar" widget="image-url"/>
+                <field name="name"/>
+                <field name="author_id" />
+                <field name="date" />
+                <field name="image_type" widget="image-url"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_git_commit_kanban" model="ir.ui.view">
+        <field name="name">project.git.commit.kanban</field>
+        <field name="model">project.git.commit</field>
+        <field name="type">kanban</field>
+        <field name="arch" type="xml">
+            <kanban create="0" edit="0">
+                <field name="name"/>
+                <field name="author_id"/>
+                <field name="author_username"/>
+                <field name="author_avatar"/>
+                <field name="message_short"/>
+                <field name="url"/>
+                <field name="avatar"/>
+                <field name="type"/>
+                <templates>
+                <t t-name="kanban-box">
+                    <div class="oe_kanban_card oe_kanban_global_click"  style="background-color: #ececec;">
+
+                        <div class="o_dropdown_kanban" style="visibility: visible;">
+                            <a name="icon" class="btn" t-attf-href="#{record.url.raw_value}" target="_blank">
+                            </a>
+                        </div>
+                        <div class="o_kanban_image">
+                                <img t-attf-src="#{record.avatar.raw_value}" class="o_kanban_image oe_kanban_avatar_smallbox"/>
+                        </div>
+                        <div class="oe_kanban_details">
+                            <div>
+                                <a t-attf-href="#{record.url.raw_value}" target="_blank"><strong><field name="name"/></strong></a>
+                            </div>
+                            <div class="text-muted">
+                                <i><field name="message_short"/></i>
+                            </div>
+                            <div class="oe_kanban_bottom_left">
+                                <span><b><field name="date"/></b></span>
+                            </div>
+                            <div class="oe_kanban_bottom_right">
+                                <img t-attf-src="#{record.author_avatar.raw_value}" t-attf-title="#{record.author_username.raw_value}" width="24" height="24" class="oe_kanban_avatar pull-right"/>
+                            </div>
+                        </div>
+                        <div class="oe_clear"></div>
+                    </div>
+                </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="view_git_commit_search" model="ir.ui.view">
+        <field name="name">project.git.commit.search</field>
+        <field name="model">project.git.commit</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <search string="Commits">
+                <field name="name"
+                       filter_domain="['|','|','|','|',('name','ilike',self),('message','ilike',self),('author_id','ilike',self),('branch_id','ilike',self),('repository_id','ilike',self)]"/>
+                <field name="author_id"/>
+                <field name="branch_id"/>
+                <field name="repository_id"/>
+                <separator/>
+                <field name="task_ids" string="Tasks" filter_domain="[('task_ids','ilike', self)]"/>
+                <newline/>
+                <group expand="0" string="Group By...">
+                    <filter string="Author" name="group_by_author" context="{'group_by':'author_id'}"/>
+                    <filter string="Branch" name="group_by_branch" context="{'group_by':'branch_id'}"/>
+                    <filter string="Repository" name="group_by_repository" context="{'group_by':'repository_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_git_commit" model="ir.actions.act_window">
+        <field name="name">Commits</field>
+        <field name="res_model">project.git.commit</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_id" ref="view_git_commit_kanban"/>
+        <field name="context">{'search_default_group_by_branch': 1}</field>
+        <field name="search_view_id" ref="view_git_commit_search"/>
+        <field name="help">Recent activity</field>
+    </record>
+
+    <record id="action_branch_commits" model="ir.actions.act_window">
+        <field name="name">Branch Commits</field>
+        <field name="res_model">project.git.commit</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_id" ref="view_git_commit_kanban"/>
+        <field name="context">{'search_default_branch_id': [active_id]}</field>
+        <field name="search_view_id" ref="view_git_commit_search"/>
+        <field name="help">Recent activity</field>
+    </record>
+</odoo>

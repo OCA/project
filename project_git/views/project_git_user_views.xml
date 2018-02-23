@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+# Copyright 2017 - 2018 Modoolar <info@modoolar.com>
+# License LGPLv3.0 or later (https://www.gnu.org/licenses/lgpl-3.0.en.html).
+-->
+<odoo>
+    <record id="view_git_user_form" model="ir.ui.view">
+        <field name="name">project.git.user.form</field>
+        <field name="model">project.git.user</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form create="0" edit="0">
+                <sheet>
+                    <div class="oe_left" style="padding-right : 20px;">
+                        <field name="avatar" widget="image_url" class="oe_image_small" width="100px" height="100px"/>
+                    </div>
+                    <div class="oe_image_small oe_right">
+                        <field name="image_type" widget="image_url" class="oe_image_small" width="50px" height="50px"/>
+                    </div>
+                    <div class="oe_title">
+                        <label for="name" string="Name"/>
+                        <h1><field name="name" required="1"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="type" invisible="1"/>
+                            <field name="username"/>
+                            <field name="email"/>
+                        </group>
+                        <group>
+                            <field name="uuid" />
+                            <field name="url" widget="url"/>
+                        </group>
+                    </group>
+
+                    <notebook colspan="4">
+                        <page string="Repositories" autofocus="autofocus">
+                            <field name="repository_ids" mode="kanban" readonly="1">
+                                <kanban>
+                                    <field name="name"/>
+                                    <field name="uuid"/>
+                                    <field name="url"/>
+                                    <field name="avatar"/>
+                                    <field name="project_id"/>
+                                    <field name="type"/>
+                                    <templates>
+                                        <t t-name="kanban-box">
+                                            <div class="oe_kanban_global_click" style="background-color: #ececec;">
+                                                <div class="o_kanban_tags_section oe_kanban_partner_categories"/>
+                                                <div class="o_kanban_image">
+                                                    <img t-attf-src="#{record.avatar.raw_value}" class="o_kanban_image oe_kanban_avatar_smallbox"/>
+                                                </div>
+                                                <div class="oe_kanban_details">
+                                                    <div>
+                                                        <a t-attf-href="#{record.url.raw_value}" target="_blank"><strong><field name="name"/></strong></a>
+                                                    </div>
+                                                    <div class="text-muted">
+                                                        <i><field name="project_id"/></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </t>
+                                    </templates>
+                                </kanban>
+
+                            </field>
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_git_user_tree" model="ir.ui.view">
+        <field name="name">project.git.user.tree</field>
+        <field name="model">project.git.user</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree create="0" edit="0">
+                <field name="type" invisible="1"/>
+                <field name="avatar" widget="image-url"/>
+                <field name="username"/>
+                <field name="name"/>
+                <field name="email"/>
+                <field name="image_type" widget="image-url"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_git_user_kanban" model="ir.ui.view">
+        <field name="name">project.git.user.kanban</field>
+        <field name="model">project.git.user</field>
+        <field name="type">kanban</field>
+        <field name="arch" type="xml">
+            <kanban create="0" edit="0">
+                <field name="name"/>
+                <field name="username"/>
+                <field name="avatar"/>
+                <field name="url"/>
+                <field name="type"/>
+                <field name="email"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_res_partner_kanban" style="background-color: #ececec;">
+                            <div class="o_dropdown_kanban" style="visibility: visible;">
+                                <a name="icon" class="btn" t-attf-href="#{record.url.raw_value}" target="_blank">
+                                </a>
+                            </div>
+                            <div class="o_kanban_tags_section oe_kanban_partner_categories"/>
+                            <div class="o_kanban_image">
+                                <img t-attf-src="#{record.avatar.raw_value}" class="o_kanban_image oe_kanban_avatar_smallbox"/>
+                            </div>
+                            <div class="oe_kanban_details">
+                                <div>
+                                    <a t-attf-href="#{record.url.raw_value}" target="_blank"><strong><field name="name"/></strong></a>
+                                </div>
+                                <div class="text-muted">
+                                    <i><field name="email"/></i><br/>
+                                    <i><field name="username"/></i>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="view_git_user_search" model="ir.ui.view">
+        <field name="name">project.git.user.search</field>
+        <field name="model">project.git.user</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <search string="Users">
+                <field name="name"/>
+                <field name="username"/>
+                <field name="uuid"/>
+                <field name="type"/>
+                <field name="email"/>
+                <newline/>
+                <group expand="0" string="Group By...">
+                    <filter string="Type" name="group_by_type" context="{'group_by':'type'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_git_user" model="ir.actions.act_window">
+        <field name="name">Users</field>
+        <field name="res_model">project.git.user</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_id" ref="view_git_user_kanban"/>
+        <field name="context">{'search_default_group_by_type': 1}</field>
+        <field name="search_view_id" ref="view_git_user_search"/>
+        <field name="help">Git Users</field>
+    </record>
+</odoo>

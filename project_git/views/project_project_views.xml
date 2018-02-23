@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+# Copyright 2017 - 2018 Modoolar <info@modoolar.com>
+# License LGPLv3.0 or later (https://www.gnu.org/licenses/lgpl-3.0.en.html).
+-->
+<odoo>
+    <record id="git_edit_project_inherit" model="ir.ui.view">
+        <field name="name">project.git.project.project.form.inherit</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page name="git" string="Repositories">
+                    <field name="repository_ids" mode="kanban" nolabel="1" context="{'default_project_id' : active_id }">
+                        <kanban>
+                            <field name="name"/>
+                            <field name="uuid"/>
+                            <field name="url"/>
+                            <field name="avatar"/>
+                            <field name="user_id"/>
+                            <field name="type"/>
+                            <templates>
+                                <t t-name="kanban-box">
+                                    <div class="oe_kanban_global_click" style="background-color: #ececec;">
+                                        <div class="o_dropdown_kanban" style="visibility: visible;">
+                                             <a name="icon" class="dropdown-toggle btn" data-toggle="dropdown" href="#" >
+                                            </a>
+                                        </div>
+                                        <div class="o_kanban_tags_section oe_kanban_partner_categories"/>
+                                        <div class="o_kanban_image">
+                                            <img t-attf-src="#{record.avatar.raw_value}" class="o_kanban_image oe_kanban_avatar_smallbox"/>
+                                        </div>
+                                        <div class="oe_kanban_details">
+                                            <div>
+                                                <a t-attf-href="#{record.url.raw_value}" target="_blank"><strong><field name="name"/></strong></a>
+                                            </div>
+                                            <div class="text-muted">
+                                                <i><field name="user_id"/></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </t>
+                            </templates>
+                        </kanban>
+                    </field>
+                </page>
+            </notebook>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+# Copyright 2017 - 2018 Modoolar <info@modoolar.com>
+# License LGPLv3.0 or later (https://www.gnu.org/licenses/lgpl-3.0.en.html).
+-->
+<odoo>
+    <record id="view_git_repository_form" model="ir.ui.view">
+        <field name="name">project.git.repository.form</field>
+        <field name="model">project.git.repository</field>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                     <div class="oe_button_box" name="button_box" groups="base.group_user">
+                        <button name="%(project_git.action_repository_branches)d" type="action" class="oe_stat_button"  icon="fa-tasks">
+                            <field string="Branches" name="branch_count" widget="statinfo" />
+                        </button>
+                    </div>
+
+                    <div class="oe_left" style="padding-right : 20px;" >
+                        <field name="avatar" widget="image_url" class="oe_image_small" width="100px" height="100px"/>
+                    </div>
+                    <div class="oe_image_small oe_right">
+                        <field name="image_type" widget="image_url" class="oe_image_small" width="50px" height="50px"/>
+                    </div>
+
+                    <div class="oe_title">
+                        <label for="name" string="Name" class=""/>
+                        <h1><field name="name" readonly="1" class="oe_read_only"/></h1>
+                        <group>
+                            <field name="type" required="1" />
+                            <field name="project_id" required="1"/>
+                            <field name="use_secret" invisible="1"/>
+                            <field name="secret" attrs="{'invisible': [('use_secret', '!=', True)]}"/>
+                        </group>
+                    </div>
+                    <group>
+                        <field name="webhook_url" string="Webhook Url" widget="url" attrs="{'invisible': [('webhook_url', '=', False)]}"/>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="user_id" readonly="1" attrs="{'invisible': [('user_id', '=', False)]}"/>
+                        </group>
+                        <group>
+                            <field name="odoo_uuid" invisible="1"/>
+                            <field name="full_name" readonly="1" attrs="{'invisible': [('full_name', '=', False)]}" />
+                        </group>
+                    </group>
+
+                    <notebook colspan="4">
+                        <page string="Branches" autofocus="autofocus">
+                            <field name="branch_ids" nolabel="1" mode="kanban" readonly="1"/>
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_git_repository_tree" model="ir.ui.view">
+        <field name="name">project.git.repository.tree</field>
+        <field name="model">project.git.repository</field>
+        <field name="type">tree</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="type" invisible="1"/>
+                <field name="avatar" widget="image-url"/>
+                <field name="name"/>
+                <field name="project_id"/>
+                <field name="user_id"/>
+                <field name="uuid"/>
+                <field name="image_type" widget="image-url"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_git_repository_kanban" model="ir.ui.view">
+        <field name="name">project.git.repository.kanban</field>
+        <field name="model">project.git.repository</field>
+        <field name="type">kanban</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name"/>
+                <field name="uuid"/>
+                <field name="url"/>
+                <field name="avatar"/>
+                <field name="project_id"/>
+                <field name="user_id"/>
+                <field name="type"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click" style="background-color: #ececec;">
+                            <div class="o_dropdown_kanban" style="visibility: visible;">
+                                <a name="icon" class="btn" t-attf-href="#{record.url.raw_value}" target="_blank">
+                                </a>
+                            </div>
+                            <div class="o_kanban_tags_section oe_kanban_partner_categories"/>
+                            <div class="o_kanban_image">
+                                <img t-attf-src="#{record.avatar.raw_value}" class="o_kanban_image oe_kanban_avatar_smallbox"/>
+                            </div>
+                            <div class="oe_kanban_details">
+                                <div>
+                                    <a t-attf-href="#{record.url.raw_value}" target="_blank"><strong><field name="name"/></strong></a>
+                                </div>
+                                <div class="text-muted">
+                                    <i><field name="project_id"/></i><br/>
+                                    <b><i><field name="user_id"/></i></b>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="view_git_repository_search" model="ir.ui.view">
+        <field name="name">project.git.repository.search</field>
+        <field name="model">project.git.repository</field>
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <search string="Repositories">
+                <field name="name"/>
+                <field name="project_id"/>
+                <field name="user_id"/>
+                <field name="uuid"/>
+                <newline/>
+                <group expand="0" string="Group By...">
+                    <filter string="User" name="group_by_user" context="{'group_by':'user_id'}"/>
+                    <filter string="Project" name="group_by_project" context="{'group_by':'project_id'}"/>
+                    <filter string="Type" name="group_by_type" context="{'group_by':'type'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_git_repository" model="ir.actions.act_window">
+        <field name="name">Repositories</field>
+        <field name="res_model">project.git.repository</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_id" ref="view_git_repository_kanban"/>
+        <field name="context">{'search_default_group_by_type': 1}</field>
+        <field name="search_view_id" ref="view_git_repository_search"/>
+        <field name="help">Git Repositories</field>
+    </record>
+</odoo>

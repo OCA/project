@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+# Copyright 2017 - 2018 Modoolar <info@modoolar.com>
+# License LGPLv3.0 or later (https://www.gnu.org/licenses/lgpl-3.0.en.html).
+-->
+<odoo>
+    <data noupdate="1">
+        <!-- Task-related subtypes for messaging / Chatter -->
+        <record id="mt_task_code_committed" model="mail.message.subtype">
+            <field name="name">Code committed</field>
+            <field name="sequence">10</field>
+            <field name="res_model">project.task</field>
+            <field name="default" eval="True"/>
+            <field name="description">Code Committed</field>
+            <field name="relation_field">commit_ids</field>
+        </record>
+
+
+        <!-- Project-related subtypes for messaging / Chatter -->
+        <record id="mt_project_code_committed" model="mail.message.subtype">
+            <field name="name">Code committed</field>
+            <field name="sequence">9</field>
+            <field name="res_model">project.project</field>
+            <field name="default" eval="True"/>
+            <field name="parent_id" eval="ref('mt_task_code_committed')"/>
+            <field name="description">Code Committed</field>
+            <field name="relation_field">project_id</field>
+        </record>
+    </data>
+
+    <template id="orphan_code_committed_notification_subject">
+        [<t t-esc="context.repository.project_id.key"/>] - <t t-esc="context.repository.project_id.name"/>: Orphan commits pushed to the repository
+    </template>
+
+    <template id="orphan_code_committed_notification_body">
+        <div>
+            <div>
+                <table>
+                    <tr>
+                        <td>
+                           <a t-att-href="context.repository.url" target="_blank" style="text-decoration:none;">
+                                <img t-att-src="context.repository.image_type" height="16" width="16"/>
+                            </a>
+                        </td>
+                        <td style="padding-left:10px">
+                            <span t-field="context.repository.project_id.name"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a t-att-href="sender.url" target="_blank" style="text-decoration:none;">
+                                <img t-att-src="sender.avatar" height="16" width="16"/>
+                            </a>
+                        </td>
+                        <td colspan="2" style="padding-left:10px">
+                            <span t-field="sender.name"/> pushed following commit(s):
+                        </td>
+                    </tr>
+                    <t t-foreach="commits" t-as="c">
+                         <t t-call="project_git.commit_block"/>
+                    </t>
+                </table>
+
+            </div>
+        </div>
+    </template>
+
+    <template id="task_code_committed_notification_subject">
+        [<t t-esc="task.key"/>] - <t t-esc="task.name"/>: New code pushed to the repository
+    </template>
+
+    <template id="task_code_committed_notification_body">
+        <div>
+            <div>
+                <table>
+                    <tr>
+                        <td>
+                           <a t-att-href="context.repository.url" target="_blank" style="text-decoration:none;">
+                                <img t-att-src="context.repository.image_type" height="16" width="16"/>
+                            </a>
+                        </td>
+                        <td style="padding-left:10px">
+                            <span t-field="task.project_id.name"/>
+                            <a t-att-href="task.url" target="_blank" style="text-decoration:none; margin-left:10px">
+                                <span t-field="task.key"/>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <a t-att-href="sender.url" target="_blank" style="text-decoration:none;">
+                                <img t-att-src="sender.avatar" height="16" width="16"/>
+                            </a>
+                        </td>
+                        <td colspan="2" style="padding-left:10px">
+                            <span t-field="sender.name"/> pushed following commit(s):
+                        </td>
+                    </tr>
+                     <t t-foreach="commits" t-as="c">
+                         <t t-call="project_git.commit_block"/>
+                    </t>
+                </table>
+            </div>
+        </div>
+    </template>
+
+
+    <!-- Common -->
+    <template id="commit_block">
+        <tr>
+            <td/>
+            <td style="padding-left:10px">
+                <table>
+                    <tr>
+                        <td style="padding-top:20px">
+                            <strong>Commit:</strong>
+                        </td>
+                        <td style="padding-top:20px">
+                            <a t-att-href="c.url" target="_blank" style="text-decoration:none;">
+                                <span t-field="c.name"/>
+                            </a>
+                        </td>
+                    </tr>
+                     <tr>
+                        <td>
+                            <strong>Branch:</strong>
+                        </td>
+                        <td>
+                            <a t-att-href="c.branch_id.url" target="_blank" style="text-decoration:none;">
+                                <span t-field="c.branch_id.name"/>
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Author:</strong>
+                        </td>
+                        <td>
+                            <a t-att-href="c.author_id.url" target="_blank" style="text-decoration:none;">
+                                <img t-att-src="c.author_id.avatar" height="16" width="16"/>
+                            </a>
+                            <span t-field="c.author_id.name"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <strong>Date:</strong>
+                        </td>
+                        <td>
+                            <span t-field="c.date"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td  style="vertical-align:top;">
+                            <strong >Message:</strong>
+                        </td>
+                        <td>
+                            <span t-field="c.message"/>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </template>
+</odoo>
