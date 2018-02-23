@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+# Copyright 2017 - 2018 Modoolar <info@modoolar.com>
+# License LGPLv3.0 or later (https://www.gnu.org/licenses/lgpl-3.0.en.html).
+-->
+<odoo>
+    <record id="git_project_inherit_gitlab" model="ir.ui.view">
+        <field name="name">project.git.project.inherit.gitlab</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project_git.git_edit_project_inherit"/>
+        <field name="arch" type="xml">
+            <a name="icon">
+                <span t-if="record.type.raw_value === 'gitlab'" class="fa fa-gitlab fa-lg"/>
+            </a>
+        </field>
+    </record>
+
+    <record id="view_git_user_kanban_inherit_gitlab" model="ir.ui.view">
+        <field name="name">project.git.user.kanban.inherit.gitlab</field>
+        <field name="model">project.git.user</field>
+        <field name="type">kanban</field>
+        <field name="inherit_id" ref="project_git.view_git_user_kanban"/>
+        <field name="arch" type="xml">
+            <a name="icon">
+                <span t-if="record.type.raw_value === 'gitlab'" class="fa fa-gitlab fa-lg"/>
+            </a>
+        </field>
+    </record>
+
+    <record id="view_git_commit_kanban_inherit_gitlab" model="ir.ui.view">
+        <field name="name">project.git.commit.kanban.inherit.gitlab</field>
+        <field name="model">project.git.commit</field>
+        <field name="type">kanban</field>
+        <field name="inherit_id" ref="project_git.view_git_commit_kanban"/>
+        <field name="arch" type="xml">
+            <a name="icon">
+                <span t-if="record.type.raw_value === 'gitlab'" class="fa fa-gitlab fa-lg"/>
+            </a>
+        </field>
+    </record>
+
+    <record id="view_git_repository_kanban_inherit_gitlab" model="ir.ui.view">
+        <field name="name">project.git.repository.kanban.inherited.gitlab</field>
+        <field name="model">project.git.repository</field>
+        <field name="type">kanban</field>
+        <field name="inherit_id" ref="project_git.view_git_repository_kanban"/>
+        <field name="arch" type="xml">
+            <a name="icon">
+                <span t-if="record.type.raw_value === 'gitlab'" class="fa fa-gitlab fa-lg"/>
+            </a>
+        </field>
+    </record>
+
+    <record id="view_git_branch_kanban_inherit_gitlab" model="ir.ui.view">
+        <field name="name">project.git.branch.kanban.inherited.gitlab</field>
+        <field name="model">project.git.branch</field>
+        <field name="type">kanban</field>
+        <field name="inherit_id" ref="project_git.view_git_branch_kanban"/>
+        <field name="arch" type="xml">
+            <a name="icon">
+                <span t-if="record.type.raw_value === 'gitlab'" class="fa fa-gitlab fa-lg"/>
+            </a>
+        </field>
+    </record>
+</odoo>
