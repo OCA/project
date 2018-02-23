@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+# Copyright 2017 - 2018 Modoolar <info@modoolar.com>
+# License LGPLv3.0 or later (https://www.gnu.org/licenses/lgpl-3.0.en.html).
+-->
+<odoo>
+
+    <record id="view_task_form2_workflow" model="ir.ui.view">
+        <field name="name">view_task_form2_cosmetics</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="priority" eval="30"/>
+        <field name="arch" type="xml">
+
+            <field name="stage_id" position="after">
+                <field name="workflow_id" attrs="{'invisible': [('allow_workflow', '=', False)]}"  widget="task_workflow" options="{'no_visible_transitions': 2}"/>
+            </field>
+
+            <field name="stage_id" position="attributes">
+                <attribute name="attrs">{'invisible': [('allow_workflow', '=', True)]}</attribute>
+            </field>
+
+            <field name="project_id" position="after">
+                <field name="wkf_stage_id" attrs="{'invisible': [('allow_workflow', '=', False)]}" class="oe_read_only"/>
+                <field name="allow_workflow" invisible="1" />
+            </field>
+
+        </field>
+    </record>
+
+    <record id="project_project_view_form_simplified" model="ir.ui.view">
+        <field name="name">project.project.view.form.simplified</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.project_project_view_form_simplified"/>
+        <field name="priority">24</field>
+        <field name="arch" type="xml">
+
+            <div name="alias_def" position="after">
+                <field name="workflow_id" attrs="{
+                        'invisible': [('allow_workflow', '=', False)],
+                        'required':  [('allow_workflow', '=', True)]
+                        }"/>
+            </div>
+
+            <field name="user_id" position="after">
+                <field name="allow_workflow"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="edit_project_extend_with_type_workflow" model="ir.ui.view">
+        <field name="name">project.project.form</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='options_active']" position="inside">
+                <div>
+                    <field name="allow_workflow" class="oe_inline" string="Allow workflow"/>
+                    <label for="allow_workflow"/>
+                </div>
+            </xpath>
+            <field name="partner_id" position="after">
+                <field name="workflow_id" readonly="1" attrs="{'invisible': [('allow_workflow', '=', False)]}" />
+            </field>
+            <div name="button_box" position="inside">
+                <button name="button_run_workflow_wizard" string="Set Workflow" type="object"
+                        class="oe_stat_button" icon="fa-crop"
+                        attrs="{'invisible': ['|', ('allow_workflow', '=', False), ('workflow_id', '!=', False)]}"/>
+
+                <button name="button_run_workflow_wizard" string="Change Workflow" type="object"
+                        class="oe_stat_button" icon="fa-crop"
+                        attrs="{'invisible': ['|', ('allow_workflow', '=', False), ('workflow_id', '=', False)]}"/>
+            </div>
+        </field>
+    </record>
+
+    <record id="project_workflow_state_diagram_form" model="ir.ui.view">
+        <field name="name">project.workflow.state.form</field>
+        <field name="model">project.workflow.state</field>
+        <field name="arch" type="xml">
+            <form string="Task Workflow State">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="stage_id" />
+                            <field name="type"/>
+                            <field name="workflow_id"
+                                   options="{'no_open':'False', 'no_create': True, 'no_create_edit': True, 'no_quick_create': True}"
+                            />
+                            <field name="sequence"/>
+                            <field name="kanban_sequence"/>
+                        </group>
+                        <group>
+                            <field name="is_default" string="Initial State" help="If checked this state will be declared as the initial state for this workflow. When creating a task this state will be assigned as default state"/>
+                            <field name="is_global" string="Global State" help="If check this state be declared as a Global State which means that the workflow will allow all in/out transitions to/from this state."/>
+                        </group>
+                    </group>
+                    <notebook>
+
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="project_workflow_state_form" model="ir.ui.view">
+        <field name="name">project.workflow.state.form</field>
+        <field name="model">project.workflow.state</field>
+        <field name="arch" type="xml">
+            <form string="Task Workflow State">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="stage_id"/>
+                            <field name="type"/>
+                            <field name="sequence"/>
+                            <field name="kanban_sequence"/>
+                            <field name="workflow_id" required="0" />
+                        </group>
+                        <group>
+                            <field name="is_global"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="in_transitions"  string="Incoming Transitions" attrs="{'invisible': [('is_global', '=', True)]}">
+                            <field name="in_transitions" nolabel="1"
+                                   context="{'default_workflow_id': workflow_id, 'default_dst_id': id, 'dst_invisible': True, 'form_view_ref':'project_workflow.project_workflow_transition_form'}" />
+                        </page>
+                        <page name="out_transitions"  string="Outgoing Transitions" attrs="{'invisible': [('is_global', '=', True)]}">
+                            <field name="out_transitions" nolabel="1"
+                                   context="{'default_workflow_id': workflow_id, 'default_src_id': id, 'src_invisible': True, 'form_view_ref':'project_workflow.project_workflow_transition_form'}" />
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="project_workflow_state_tree" model="ir.ui.view">
+        <field name="name">project.workflow.state.tree</field>
+        <field name="model">project.workflow.state</field>
+        <field name="arch" type="xml">
+            <tree string="Task Workflow State">
+                <field name="sequence" widget="handle"/>
+                <field name="stage_id"/>
+                <field name="type"/>
+                <field name="description"/>
+                <field name="is_global"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="project_workflow_transition_diagram_form" model="ir.ui.view">
+        <field name="name">project.workflow.transition.form</field>
+        <field name="model">project.workflow.transition</field>
+        <field name="arch" type="xml">
+            <form string="Task Workflow Transition">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="workflow_id" options="{'no_open':'True', 'no_create': True, 'no_create_edit': True, 'no_quick_create': True}"/>
+
+                            <field name="src_id" domain="[('workflow_id', '=', workflow_id)]"
+                                   options="{'no_open':'True', 'no_create': True, 'no_create_edit': True, 'no_quick_create': True}"
+                            />
+
+                            <field name="dst_id" domain="[('workflow_id', '=', workflow_id)]"
+                                   options="{'no_open':'True', 'no_create': True, 'no_create_edit': True, 'no_quick_create': True}"
+                            />
+                        </group>
+                        <group>
+                            <field name="user_confirmation"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="description" string="Description">
+                            <field name="description" />
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="project_workflow_transition_form" model="ir.ui.view">
+        <field name="name">project.workflow.transition.form</field>
+        <field name="model">project.workflow.transition</field>
+        <field name="arch" type="xml">
+            <form string="Task Workflow Transition">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="workflow_id" domain="[('id', '=', workflow_id)]" options="{'no_open':'True', 'no_create': True, 'no_create_edit': True, 'no_quick_create': True}"/>
+                            <field name="src_id" domain="[('workflow_id', '=', workflow_id)]" invisible="context.get('src_invisible', False)" options="{'no_open':'True', 'no_create': True, 'no_create_edit': True, 'no_quick_create': True}"/>
+                            <field name="dst_id" domain="[('workflow_id', '=', workflow_id)]" invisible="context.get('dst_invisible', False)" options="{'no_open':'True', 'no_create': True, 'no_create_edit': True, 'no_quick_create': True}"/>
+                        </group>
+                        <group>
+                           <field name="user_confirmation"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="description" string="Description">
+                            <field name="description" />
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="edit_project_workflow" model="ir.ui.view">
+        <field name="name">project.workflow.form</field>
+        <field name="model">project.workflow</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1 class="o_row">
+                            <field name="name" placeholder="Workflow Title..."/>
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="default_state_id" options="{'on_create_edit': True}" context="{'state_ids': state_ids}"/>
+                        <field name="state_ids" invisible="1"/>
+                    </group>
+                    <notebook>
+                        <page name="description" string="Description">
+                            <field name="description"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="project_workflow_form" model="ir.ui.view">
+        <field name="name">project.workflow.form</field>
+        <field name="model">project.workflow</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="state"  widget="statusbar" statusbar_visible="draft,live" />
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="edit_workflow" string="Edit" type="object"
+                                class="oe_stat_button" icon="fa-edit"
+                                attrs="{'invisible': [('edit_count', '!=', 0)]}"
+                        >
+
+                        </button>
+                        <button name="publish_workflow" string="Publish" type="object"
+                                class="oe_stat_button" icon="fa-share"
+                                attrs="{'invisible': [('state', '=', 'live')]}"
+                        />
+
+                        <button name="export_workflow" string="Export" type="object" class="oe_stat_button" icon="fa-truck"/>
+
+
+                    </div>
+                    <div class="oe_title">
+                        <h1 class="o_row">
+                            <field name="name" placeholder="Scenario Title..."/>
+                        </h1>
+
+                        <group>
+                            <field name="default_state_id" />
+                        </group>
+                    </div>
+
+                    <p attrs="{'invisible': [('edit_count', '=', 0)]}">
+                        <h3 attrs="{'invisible': [('edit_count', '=', 0)]}">
+                        Please have in mind that you have made changes to your workflow but those changes are not published.<br/>
+                        To view your changes please follow this <button name="edit_workflow" string="link" type="object" class="oe_link"/>.
+                        </h3>
+                    </p>
+
+                    <p attrs="{'invisible': [('state', '!=', 'live')]}">
+                        This is a published workflow.
+                        You can change it by entering edit mode but please have in mind that those changes will not be visible in the rest of the system until you publish them.
+                    </p>
+
+                    <p attrs="{'invisible': [('state', '!=', 'draft')]}">
+                        This is a draft version of workflow.
+                        Here you can apply your modifications but please have in mind that those changes will not be visible in the rest of the system until you publish them.
+                    </p>
+
+                    <group>
+
+                        <field name="original_name" attrs="{'invisible': ['|', ('state', '=', 'live'), ('original_id', '=', 'False')]}"/>
+                        <field name="original_id" invisible="1"/>
+                        <field name="edit_count" invisible="1"/>
+
+                    </group>
+                    <notebook>
+                        <page string="States" name="stages">
+                            <field name="state_ids"
+                                   context="{'default_workflow_id': id, 'form_view_ref': 'project_workflow.project_workflow_state_form'}">
+                            </field>
+                        </page>
+                        <page string="Transitions" name="transitions">
+                            <field name="transition_ids" context="{'default_workflow_id': id}"/>
+                        </page>
+                        <page string="Projects" name="projects">
+                            <field name="project_ids" readonly="1"/>
+                        </page>
+                    </notebook>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="project_workflow_tree" model="ir.ui.view">
+        <field name="name">project.workflow.tree</field>
+        <field name="model">project.workflow</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="state"/>
+                <field name="project_ids"/>
+            </tree>
+        </field>
+    </record>
+
+     <record id="view_project_workflow_diagram" model="ir.ui.view">
+         <field name="name">project.workflow.diagram</field>
+         <field name="model">project.workflow</field>
+         <field name="context">{'edit_view_id': 'edit_project_workflow'}</field>
+         <field name="arch" type="xml">
+             <diagram>
+                 <node object="project.workflow.state" xpos="xpos" ypos="ypos" shape="rectangle:True"
+                       bgcolor="blue:type=='todo';yellow:type=='in_progress';green:type=='done'"
+                       form_view_ref="project_workflow.project_workflow_state_diagram_form">
+                     <field name="name"/>
+                     <field name="stage_id"/>
+                     <field name="type" invisible="1"/>
+                 </node>
+                 <arrow object="project.workflow.transition" source="src_id" destination="dst_id" label="['name']"
+                        form_view_ref="project_workflow.project_workflow_transition_diagram_form">
+                     <field name="src_id"/>
+                     <field name="dst_id"/>
+                     <field name="name"/>
+                 </arrow>
+                 <label string="When customizing a workflow, be sure you do not modify an existing node or arrow, but rather add new nodes or arrows. If you absolutely need to modify a node or arrow, you can only change fields that are empty or set to the default value. If you don't do that, your customization will be overwritten at the next update or upgrade to a future version of Odoo."/>
+             </diagram>
+         </field>
+     </record>
+
+    <record id="project_workflow_read_only_action" model="ir.actions.act_window">
+        <field name="name">Workflows</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">project.workflow</field>
+        <field name="view_mode">tree,form,diagram</field>
+        <field name="context">{'edit': False}</field>
+        <field name="view_id" ref="project_workflow_tree"/>
+        <field name="domain">[('original_id', '=', False)]</field>
+    </record>
+
+    <record id="project_workflow_read_only_action_tree" model="ir.actions.act_window.view">
+        <field eval="1" name="sequence"/>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="project_workflow_tree"/>
+        <field name="act_window_id" ref="project_workflow_read_only_action"/>
+    </record>
+
+    <record id="project_workflow_read_only_action_form" model="ir.actions.act_window.view">
+        <field eval="2" name="sequence"/>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="project_workflow_form"/>
+        <field name="act_window_id" ref="project_workflow_read_only_action"/>
+    </record>
+
+    <record id="project_workflow_form_read_only_action" model="ir.actions.act_window">
+        <field name="name">Workflows</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">project.workflow</field>
+        <field name="view_mode">form</field>
+        <field name="context">{'edit': False}</field>
+        <field name="view_id" eval="False"/>
+        <field name="form_view_id" eval="False"/>
+        <field name="domain">[('original_id', '=', False)]</field>
+    </record>
+
+    <record id="project_workflow_form_edit_action" model="ir.actions.act_window">
+        <field name="name">Workflow Form</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">project.workflow</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" eval="False"/>
+        <field name="form_view_id" eval="False"/>
+        <field name="context">{'create': False, 'edit': True}</field>
+    </record>
+
+    <record id="project_workflow_diagram_edit_action" model="ir.actions.act_window">
+        <field name="name">Workflow Diagram</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">project.workflow</field>
+        <field name="view_mode">diagram</field>
+        <field name="context">{'create': True, 'edit': True}</field>
+    </record>
+
+    <record id="project_workflow_diagram_readonly_action" model="ir.actions.act_window">
+        <field name="name">Workflow Diagram</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">project.workflow</field>
+        <field name="view_mode">diagram</field>
+        <field name="context">{'create': False, 'edit': False}</field>
+    </record>
+
+    <menuitem id="project_workflow_menu" name="Workflow" parent="project.menu_project_config"/>
+
+    <menuitem id="project_workflows_menu" parent="project_workflow_menu"
+              action="project_workflow_read_only_action"/>
+</odoo>

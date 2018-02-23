@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+# Copyright 2017 - 2018 Modoolar <info@modoolar.com>
+# License LGPLv3.0 or later (https://www.gnu.org/licenses/lgpl-3.0.en.html).
+-->
+<odoo>
+    <record id="project_edit_workflow_wizard_action" model="ir.actions.act_window">
+        <field name="name">Project Apply Workflow Wizard</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">project.edit.workflow.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="project_edit_workspace_wizard_form" model="ir.ui.view">
+        <field name="name">project_edit_workflow_wizard_form</field>
+        <field name="model">project.edit.workflow.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Apply Workflow">
+                <sheet>
+                    <p>
+                        This wizard will help you to safely change workflow
+                    </p>
+                    <group>
+                        <field name="current_workflow_id" readonly="1"/>
+                        <field name="new_workflow_id" required="1"
+                               options="{'no_open':'False', 'no_create': True, 'no_create_edit': True, 'no_quick_create': True}" />
+                    </group>
+                    <footer>
+                        <button string="Apply" name="apply" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-default" special="cancel"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+</odoo>

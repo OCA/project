@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+# Copyright 2017 Modoolar <info@modoolar.com>
+# License LGPLv3.0 or later (https://www.gnu.org/licenses/lgpl-3.0.en.html).
+-->
+<rng:grammar xmlns:rng="http://relaxng.org/ns/structure/1.0"
+             xmlns:a="http://relaxng.org/ns/annotation/1.0"
+             datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+
+    <rng:define name="state">
+        <rng:element name="state">
+            <rng:attribute name="name"><rng:text/></rng:attribute>
+            <rng:attribute name="type">
+                <rng:choice>
+                    <rng:value>todo</rng:value>
+                    <rng:value>in_progress</rng:value>
+                    <rng:value>done</rng:value>
+                </rng:choice>
+            </rng:attribute>
+            <rng:optional><rng:attribute name="description"><rng:text/></rng:attribute></rng:optional>
+            <rng:optional><rng:attribute name="xpos"><rng:data type="integer"/></rng:attribute></rng:optional>
+            <rng:optional><rng:attribute name="ypos"><rng:data type="integer"/></rng:attribute></rng:optional>
+            <rng:optional><rng:attribute name="sequence"><rng:data type="integer"/></rng:attribute></rng:optional>
+            <rng:optional><rng:attribute name="kanban_sequence"><rng:data type="integer"/></rng:attribute></rng:optional>
+
+        </rng:element>
+    </rng:define>
+
+    <rng:define name="transition">
+        <rng:element name="transition">
+            <rng:attribute name="name"><rng:text/></rng:attribute>
+            <rng:attribute name="src"><rng:text/></rng:attribute>
+            <rng:attribute name="dst"><rng:text/></rng:attribute>
+            <rng:optional>
+                <rng:attribute name="confirmation" >
+                    <rng:choice>
+                        <rng:value>True</rng:value>
+                        <rng:value>False</rng:value>
+                    </rng:choice>
+                </rng:attribute>
+            </rng:optional>
+            <rng:optional>
+                <rng:attribute name="description"><rng:text/></rng:attribute>
+            </rng:optional>
+        </rng:element>
+    </rng:define>
+
+    <rng:define name="workflow">
+        <rng:element name="project-workflow">
+            <rng:attribute name="name"/>
+            <rng:attribute name="default-state"><rng:text/></rng:attribute>
+            <rng:optional><rng:attribute name="description"/></rng:optional>
+            <rng:element name="states">
+                <rng:oneOrMore>
+                    <rng:ref name="state"/>
+                </rng:oneOrMore>
+            </rng:element>
+            <rng:element name="transitions">
+                <rng:oneOrMore>
+                    <rng:ref name="transition"/>
+                </rng:oneOrMore>
+            </rng:element>
+        </rng:element>
+    </rng:define>
+    <rng:start>
+        <rng:ref name="workflow"/>
+    </rng:start>
+</rng:grammar>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+# Copyright 2017 - 2018 Modoolar <info@modoolar.com>
+# License LGPLv3.0 or later (https://www.gnu.org/licenses/lgpl-3.0.en.html).
+-->
+<templates id="template" xml:space="preserve">
+    <t t-name="TaskWorkflowNavigation.content">
+        <t t-foreach="widget.transitions_visible" t-as="i">
+            <t t-call="TaskWorkflowNavigation.content.button"/>
+        </t>
+        <t t-if="widget.transitions_hidden.length">
+            <ul class="dropdown-menu o-status-more" role="menu">
+                <li t-foreach="widget.transitions_hidden" t-as="i">
+                    <t t-call="TaskWorkflowNavigation.content.button"/>
+                </li>
+            </ul>
+            <button type="button" class="btn btn-sm o_arrow_button btn-default dropdown-toggle" data-toggle="dropdown">More <span class="caret"/></button>
+        </t>
+    </t>
+    <t t-name="TaskWorkflowNavigation.content.button">
+        <button type="button" t-att-data-value="i.id"
+            t-attf-class="btn btn-sm  btn-default">
+            <t t-esc="i.name"/>
+        </button>
+    </t>
+</templates>

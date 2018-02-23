@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+# Copyright 2017 - 2018 Modoolar <info@modoolar.com>
+# License LGPLv3.0 or later (https://www.gnu.org/licenses/lgpl-3.0.en.html).
+-->
+<odoo>
+    <record id="project_workspace_mapping_wizard_action" model="ir.actions.act_window">
+        <field name="name">Project Workflow Mapping Wizard</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">project.workflow.stage.mapping.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="project_workspace_mapping_wizard_form" model="ir.ui.view">
+        <field name="name">project_workspace_mapping_wizard_form</field>
+        <field name="model">project.workflow.stage.mapping.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Mapping Wizard">
+                <sheet>
+                    <p>
+                        We have detected changes between old and new versions of your workflow
+                        and we need your action to resolve conflicts.
+                    </p>
+                    <field name="from_diagram" invisible="1"/>
+                    <group string="Task stage mappings">
+                        <field name="line_ids" required="True" nolabel="1" edit="top" options="{'no_create': True}">
+                            <tree string="Stage Mappings" create="false">
+                                <field name="from_id" required="1" readonly="1"/>
+                                <field name="task_count" readonly="1"/>
+                                <field name="to_id" required="1"/>
+                            </tree>
+                            <form>
+                                <sheet>
+                                    <group>
+                                        <group string="Map From">
+                                            <field name="from_id" string="Stage"/>
+                                            <field name="task_count" string="Tasks"/>
+                                        </group>
+                                        <group string="Map To">
+                                            <field name="wizard_id" invisible="1"/>
+                                            <field name="to_id" string="Stage"
+                                                   options="{'no_open':0, 'no_create': 1, 'no_create_edit': True, 'no_quick_create': True}"/>
+                                        </group>
+                                    </group>
+                                </sheet>
+                            </form>
+                        </field>
+                    </group>
+                </sheet>
+                <footer>
+                    <button string="_Finish" name="button_finish" type="object" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

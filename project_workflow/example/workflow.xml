@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+# Copyright 2017 - 2018 Modoolar <info@modoolar.com>
+# License LGPLv3.0 or later (https://www.gnu.org/licenses/lgpl-3.0.en.html).
+-->
+
+<project-workflow name="Simple" description="Simple Software Development Workflow">
+    <states>
+        <state name="ToDo" type="todo" description="This stage means that the task is waiting on TODO list to be picked up for work."/>
+        <state name="In Progress" type="in_progress" description="This stage means that on this task is been actively worked on." />
+        <state name="Done" type="done" description="This stage means that the task has been completed." />
+
+        <!--<state name="ToDo" />-->
+
+    </states>
+
+    <transitions>
+        <transition name="Start Progress" description="Start working on task"
+                    src="ToDo" dst="In Progress"
+                    confirmation="False" kanban-color="1" />
+
+        <transition name="Stop Progress" description="Stop working on task"
+                    src="In Progress" dst="ToDo"
+                    confirmation="False" kanban-color="1" />
+
+        <transition name="Finished" description="Start progress on task"
+                    src="In Progress" dst="Done" />
+
+        <transition name="Open" description="Start progress on task"
+                    src="Done" dst="ToDo"
+                    confirmation="False" kanban-color="10" />
+    </transitions>
+</project-workflow>

@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_project_task_workflow_user,project.workflow,model_project_workflow,project.group_project_user,1,0,0,0
+access_project_task_workflow_portal,project.workflow,model_project_workflow,base.group_portal,1,0,0,0
+access_project_task_workflow_manager,project.workflow,model_project_workflow,project.group_project_manager,1,1,1,1
+
+access_project_task_workflow_state_user,project.workflow.state,model_project_workflow_state,project.group_project_user,1,0,0,0
+access_project_task_workflow_state_portal,project.workflow.state,model_project_workflow_state,base.group_portal,1,0,0,0
+access_project_task_workflow_state_manager,project.workflow.state,model_project_workflow_state,project.group_project_manager,1,1,1,1
+
+access_project_task_workflow_transition_user,project.workflow.transition,model_project_workflow_transition,project.group_project_user,1,0,0,0
+access_project_task_workflow_transition_portal,project.workflow.transition,model_project_workflow_transition,base.group_portal,1,0,0,0
+access_project_task_workflow_transition_manager,project.workflow.transition,model_project_workflow_transition,project.group_project_manager,1,1,1,1

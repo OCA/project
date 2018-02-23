@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+# Copyright 2017 - 2018 Modoolar <info@modoolar.com>
+# License LGPLv3.0 or later (https://www.gnu.org/licenses/lgpl-3.0.en.html).
+-->
+<template>
+<t t-name="ProjectWorkflow.buttons">
+    <div >
+        <button t-if="!widget.is_readonly()" type="button" class="btn btn-primary btn-sm o_diagram_edit">
+            Rename
+        </button>
+
+        <button t-if="!widget.is_readonly()" type="button" class="btn btn-primary btn-sm o_diagram_new_button">
+            New State
+        </button>
+
+        <button t-if="!widget.is_readonly()" type="button" class="btn btn-primary btn-sm o_diagram_publish">
+            Publish
+        </button>
+
+        <button t-if="!widget.is_readonly()" type="button" class="btn btn-primary btn-sm o_diagram_discard">
+            Discard
+        </button>
+
+         <button t-if="!widget.is_readonly()" type="button" class="btn btn-primary btn-sm o_diagram_export">
+            Export
+        </button>
+    </div>
+
+</t>
+
+</template>
