@@ -1,9 +1,8 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * project_timesheet_currency
+# * project_parent
 # 
 # Translators:
-# OCA Transbot <transbot@odoo-community.org>, 2017
 # Matjaž Mozetič <m.mozetic@matmoz.si>, 2018
 msgid ""
 msgstr ""
@@ -19,12 +18,18 @@ msgstr ""
 "Language: sl\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
-#. module: project_timesheet_currency
-#: model:ir.model,name:project_timesheet_currency.model_account_analytic_line
-msgid "Analytic Line"
-msgstr "Analitična postavka"
+#. module: project_parent
+#: model:ir.model,name:project_parent.model_account_analytic_account
+msgid "Analytic Account"
+msgstr "Analitični konto"
 
-#. module: project_timesheet_currency
-#: model:ir.model.fields,field_description:project_timesheet_currency.field_account_analytic_line_timesheet_currency_id
-msgid "TS original currency"
-msgstr "Izvorna valuta časovnice"
+#. module: project_parent
+#: model:ir.ui.view,arch_db:project_parent.view_project_parent_project_filter
+msgid "Parent"
+msgstr "Nadrejeni"
+
+#. module: project_parent
+#: model:ir.model.fields,field_description:project_parent.field_account_analytic_account_parent_project_id
+#: model:ir.model.fields,field_description:project_parent.field_project_project_parent_project_id
+msgid "Parent Project"
+msgstr "Nadrejeni projekt"

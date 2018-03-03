@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * project_timesheet_currency
+# * project_closing
 # 
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2017
@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-02 01:51+0000\n"
-"PO-Revision-Date: 2018-02-02 01:51+0000\n"
+"POT-Creation-Date: 2018-01-05 01:46+0000\n"
+"PO-Revision-Date: 2018-01-05 01:46+0000\n"
 "Last-Translator: Matjaž Mozetič <m.mozetic@matmoz.si>, 2018\n"
 "Language-Team: Slovenian (https://www.transifex.com/oca/teams/23907/sl/)\n"
 "MIME-Version: 1.0\n"
@@ -19,12 +19,12 @@ msgstr ""
 "Language: sl\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
-#. module: project_timesheet_currency
-#: model:ir.model,name:project_timesheet_currency.model_account_analytic_line
-msgid "Analytic Line"
-msgstr "Analitična postavka"
+#. module: project_closing
+#: model:ir.model,name:project_closing.model_account_analytic_account
+msgid "Analytic Account"
+msgstr "Analitični konto"
 
-#. module: project_timesheet_currency
-#: model:ir.model.fields,field_description:project_timesheet_currency.field_account_analytic_line_timesheet_currency_id
-msgid "TS original currency"
-msgstr "Izvorna valuta časovnice"
+#. module: project_closing
+#: model:ir.model,name:project_closing.model_project_project
+msgid "Project"
+msgstr "Projekt"

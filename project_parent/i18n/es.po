@@ -1,9 +1,8 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * project_department
+# * project_parent
 # 
 # Translators:
-# OCA Transbot <transbot@odoo-community.org>, 2017
 # enjolras <yo@miguelrevilla.com>, 2018
 msgid ""
 msgstr ""
@@ -19,18 +18,18 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. module: project_department
-#: model:ir.ui.view,arch_db:project_department.view_project_project_filter
-msgid "Department"
-msgstr "Departamento"
+#. module: project_parent
+#: model:ir.model,name:project_parent.model_account_analytic_account
+msgid "Analytic Account"
+msgstr "Cuenta analítica"
 
-#. module: project_department
-#: model:ir.model.fields,field_description:project_department.field_project_task_project_department_id
-#: model:ir.ui.view,arch_db:project_department.view_task_search_form
-msgid "Project Department"
-msgstr "Departamento de proyecto"
+#. module: project_parent
+#: model:ir.ui.view,arch_db:project_parent.view_project_parent_project_filter
+msgid "Parent"
+msgstr ""
 
-#. module: project_department
-#: model:ir.model,name:project_department.model_project_task
-msgid "Task"
-msgstr "Tarea"
+#. module: project_parent
+#: model:ir.model.fields,field_description:project_parent.field_account_analytic_account_parent_project_id
+#: model:ir.model.fields,field_description:project_parent.field_project_project_parent_project_id
+msgid "Parent Project"
+msgstr ""

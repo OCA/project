@@ -4,13 +4,14 @@
 # 
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2017
+# Matjaž Mozetič <m.mozetic@matmoz.si>, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-04-28 08:32+0000\n"
-"PO-Revision-Date: 2017-04-28 08:32+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"POT-Creation-Date: 2018-02-02 01:51+0000\n"
+"PO-Revision-Date: 2018-02-02 01:51+0000\n"
+"Last-Translator: Matjaž Mozetič <m.mozetic@matmoz.si>, 2018\n"
 "Language-Team: Slovenian (https://www.transifex.com/oca/teams/23907/sl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -67,7 +68,7 @@ msgstr "Odpri"
 #. module: project_model_to_task
 #: model:ir.ui.menu,name:project_model_to_task.task_linked_to_other_record_menu
 msgid "Relative Tasks"
-msgstr ""
+msgstr "Povezana opravila"
 
 #. module: project_model_to_task
 #: model:ir.model,name:project_model_to_task.model_project_task
@@ -82,14 +83,14 @@ msgstr "Izvor opravila"
 #. module: project_model_to_task
 #: model:ir.actions.act_window,name:project_model_to_task.task_linked_to_other_record_act
 msgid "Tasks relative to objects"
-msgstr ""
+msgstr "Opravila povezana z objekti"
 
 #. module: project_model_to_task
 #: model:ir.model,name:project_model_to_task.model_ir_actions_act_window
 msgid "ir.actions.act_window"
-msgstr ""
+msgstr "ir.actions.act_window"
 
 #. module: project_model_to_task
 #: model:ir.model,name:project_model_to_task.model_ir_values
 msgid "ir.values"
-msgstr ""
+msgstr "ir.values"
