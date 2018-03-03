@@ -4,13 +4,14 @@
 # 
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2017
+# Carlos Hormigo, 2018
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-19 02:54+0000\n"
-"PO-Revision-Date: 2017-08-19 02:54+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"POT-Creation-Date: 2017-12-02 09:00+0000\n"
+"PO-Revision-Date: 2017-12-02 09:00+0000\n"
+"Last-Translator: Carlos Hormigo, 2018\n"
 "Language-Team: Catalan (Spain) (https://www.transifex.com/oca/teams/23907/ca_ES/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -56,12 +57,12 @@ msgstr "Cancel·la"
 #. module: project_task_delegate
 #: model:ir.model.fields,field_description:project_task_delegate.field_project_task_delegate_create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Creat per"
 
 #. module: project_task_delegate
 #: model:ir.model.fields,field_description:project_task_delegate.field_project_task_delegate_create_date
 msgid "Created on"
-msgstr ""
+msgstr "Creat a"
 
 #. module: project_task_delegate
 #: model:ir.ui.view,arch_db:project_task_delegate.view_task_form2
@@ -107,7 +108,7 @@ msgstr ""
 #. module: project_task_delegate
 #: model:ir.model.fields,field_description:project_task_delegate.field_project_task_delegate_display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nom visible"
 
 #. module: project_task_delegate
 #: selection:project.task.delegate,state:0
@@ -139,17 +140,17 @@ msgstr ""
 #. module: project_task_delegate
 #: model:ir.model.fields,field_description:project_task_delegate.field_project_task_delegate___last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Darrera modificació en"
 
 #. module: project_task_delegate
 #: model:ir.model.fields,field_description:project_task_delegate.field_project_task_delegate_write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Darrera actualització per"
 
 #. module: project_task_delegate
 #: model:ir.model.fields,field_description:project_task_delegate.field_project_task_delegate_write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Darrera actualització el"
 
 #. module: project_task_delegate
 #: model:ir.model.fields,field_description:project_task_delegate.field_project_task_delegate_new_task_description
