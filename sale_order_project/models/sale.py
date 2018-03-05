@@ -51,9 +51,10 @@ class SaleOrder(models.Model):
     @api.model
     def _prepare_project_vals(self, order):
         name = u" %s - %s - %s" % (
+            order.name,
             order.partner_id.name,
             date.today().year,
-            order.name)
+            )
         return {
             'user_id': order.user_id.id,
             'name': name,
