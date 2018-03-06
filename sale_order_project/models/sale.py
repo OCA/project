@@ -30,6 +30,10 @@ import time
 class SaleOrder(models.Model):
     _inherit = "sale.order"
 
+    description = fields.Char(
+        string = 'Descripción del proyecto'
+    )
+
     @api.one
     @api.depends('project_id')
     def _compute_related_project_id(self):
@@ -50,9 +54,15 @@ class SaleOrder(models.Model):
 
     @api.model
     def _prepare_project_vals(self, order):
-        name = u" %s - %s" % (
-            order.name,
-            order.partner_id.name
+        if order.description:
+            name = u" %s - %s" % (
+                order.name,
+                order.description
+            )
+        else:
+            name = u" %s - %s" % (
+                order.name,
+                '*******'
             )
         return {
             'user_id': order.user_id.id,

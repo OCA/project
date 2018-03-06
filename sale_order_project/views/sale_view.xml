@@ -24,6 +24,9 @@
                         </group>
                     </page>
                 </xpath>
+                <xpath expr="//field[@name='pricelist_id']" position="after">
+                  <field name="description" />
+                </xpath>
             </field>
         </record>
 
