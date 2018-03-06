@@ -52,8 +52,7 @@ class SaleOrder(models.Model):
     def _prepare_project_vals(self, order):
         name = u" %s - %s - %s" % (
             order.name,
-            order.partner_id.name,
-            date.today().year,
+            order.partner_id.name
             )
         return {
             'user_id': order.user_id.id,

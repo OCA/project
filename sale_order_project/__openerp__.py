@@ -23,7 +23,7 @@
 
 {
     'name': 'Sale Order Project',
-    'version': '8.0.1.0.0',
+    'version': '8.0.1.0.1',
     'category': 'Generic Modules/Others',
     'license': 'AGPL-3',
     'author': 'Akretion, '
