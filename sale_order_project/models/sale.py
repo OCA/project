@@ -50,7 +50,7 @@ class SaleOrder(models.Model):
 
     @api.model
     def _prepare_project_vals(self, order):
-        name = u" %s - %s - %s" % (
+        name = u" %s - %s" % (
             order.name,
             order.partner_id.name
             )
