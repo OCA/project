@@ -33,7 +33,7 @@ addon | version | summary
 [project_task_category](project_task_category/) | 10.0.1.1.0 | Allow unique category for Tasks
 [project_task_code](project_task_code/) | 10.0.1.0.0 | Sequential Code for Tasks
 [project_task_default_stage](project_task_default_stage/) | 10.0.1.1.0 | Recovery default task stage projects from v8
-[project_task_dependency](project_task_dependency/) | 10.0.1.0.0 | Enables to define dependencies (other tasks) of a task
+[project_task_dependency](project_task_dependency/) | 10.0.1.0.1 | Enables to define dependencies (other tasks) of a task
 [project_task_material](project_task_material/) | 10.0.1.0.0 | Record products spent in a Task
 [project_task_material_analytic_partner](project_task_material_analytic_partner/) | 10.0.1.0.0 | Select alternative partner in task materials
 [project_task_material_stock](project_task_material_stock/) | 10.0.1.0.0 | Create stock and analytic moves from record products spent in a Task
