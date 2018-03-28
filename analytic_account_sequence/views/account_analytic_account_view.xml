@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="edit_project" model="ir.ui.view">
+        <field name="name">project.project.form</field>
+        <field name="model">project.project</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="project_wbs.edit_project"/>
+        <field name="arch" type="xml">
+            <page name='wbs' position="after">
+                <page string="Child sequence">
+                    <group string="Child sequence">
+                        <field name="sequence_ids" nolabel="1"/>
+                    </group>
+                </page>
+            </page>
+        </field>
+    </record>
+
+    <record id="view_account_analytic_account_form" model="ir.ui.view">
+        <field name="name">account.analytic.account.form</field>
+        <field name="model">account.analytic.account</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="stock_analytic_account.view_account_analytic_account_form_stock_move"/>
+        <field name="arch" type="xml">
+            <page name="stock" position="after">
+                <page string="Child sequence" name="child">
+                    <field name="sequence_ids" editable="top"/>
+                </page>
+            </page>
+        </field>
+    </record>
+
+</odoo>

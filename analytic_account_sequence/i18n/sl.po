@@ -1,0 +1,303 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* analytic_account_sequence
+#
+# Matjaž Mozetič <m.mozetic@matmoz.si>, 2015.
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-09-24 13:14+0200\n"
+"PO-Revision-Date: 2015-09-24 13:17+0200\n"
+"Last-Translator: Matjaz Mozetic <m.mozetic@matmoz.si>\n"
+"Language-Team: Slovenian <translate@matmoz.si>\n"
+"Language: sl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 1.8.4\n"
+
+#. module: analytic_account_sequence
+#: help:analytic.account.sequence,number_next_actual:0
+msgid ""
+"\n"
+"            Next number that will be used. This number can be\n"
+"            incremented frequently so the displayed value might\n"
+"            already be obsolete\n"
+"            "
+msgstr ""
+"\n"
+"            Naslednja številka, ki se uporabi. To število se lahko\n"
+"            pogosto zvišuje, zato je prikazana vrednost lahko\n"
+"            tudi že zastarela.\n"
+"            "
+
+#. module: analytic_account_sequence
+#: help:analytic.account.sequence,padding:0
+msgid ""
+"\n"
+"            OpenERP will automatically adds\n"
+"            some '0' on the left of the\n"
+"            'Next Number' to get the required\n"
+"            padding size."
+msgstr ""
+"\n"
+"            Sistem samodejno doda nekaj\n"
+"            ničel levo od 'naslednjega\n"
+"            števila', da doseže želeno\n"
+"            raven mašila."
+
+#. module: analytic_account_sequence
+#: help:analytic.account.sequence,prefix:0
+msgid ""
+"\n"
+"            Prefix value of the record for\n"
+"            the sequence\n"
+"            "
+msgstr ""
+"\n"
+"            Vrednost predpone zapisa\n"
+"            tega zaporedja\n"
+"            "
+
+#. module: analytic_account_sequence
+#: help:analytic.account.sequence,suffix:0
+msgid ""
+"\n"
+"            Suffix value of the record for\n"
+"            the sequence\n"
+"            "
+msgstr ""
+"\n"
+"            Vrednost pripone zapisa\n"
+"            tega zaporedja\n"
+"            "
+
+#. module: analytic_account_sequence
+#: help:analytic.account.sequence,number_increment:0
+msgid ""
+"\n"
+"            The next number of the\n"
+"            sequence will be incremented\n"
+"            by this number\n"
+"            "
+msgstr ""
+"\n"
+"            Naslednja številka\n"
+"            zaporedja se zviša\n"
+"            za to število\n"
+"            "
+
+#. module: analytic_account_sequence
+#: help:analytic.account.sequence,implementation:0
+msgid ""
+"\n"
+"            Two sequence object implementations are offered: Standard\n"
+"            and 'No gap'. The later is slower than the former but forbids "
+"any\n"
+"            gap in the sequence (while they are possible in the former).\n"
+"            "
+msgstr ""
+"\n"
+"            Na izbiro sta dva načina zaporedij: običajno in 'brez vrzeli'.\n"
+"            Zadnji je počasnejši a ne dovoljuje vrzeli v zaporedju\n"
+"            (medtem ko so pri prvem možne).\n"
+"            "
+
+#. module: analytic_account_sequence
+#: field:analytic.account.sequence,active:0
+msgid "Active"
+msgstr "Aktivno"
+
+#. module: analytic_account_sequence
+#: model:ir.model,name:analytic_account_sequence.model_account_analytic_account
+msgid "Analytic Account"
+msgstr "Analitični konto"
+
+#. module: analytic_account_sequence
+#: field:analytic.account.sequence,analytic_account_id:0
+msgid "Analytic account"
+msgstr "Analitični konto"
+
+#. module: analytic_account_sequence
+#: view:project.project:analytic_account_sequence.edit_project
+msgid "Child Stages"
+msgstr "Podrejene stopnje"
+
+#. module: analytic_account_sequence
+#: field:account.analytic.account,sequence_ids:0
+msgid "Child code sequence"
+msgstr "Zaporedje kode podrejenih"
+
+#. module: analytic_account_sequence
+#: view:account.analytic.account:analytic_account_sequence.view_account_analytic_account_form
+#: view:project.project:analytic_account_sequence.edit_project
+msgid "Child sequence"
+msgstr "Zaporedje podrejenih"
+
+#. module: analytic_account_sequence
+#: field:analytic.account.sequence,code:0
+msgid "Code"
+msgstr "Koda"
+
+#. module: analytic_account_sequence
+#: field:analytic.account.sequence,company_id:0
+msgid "Company"
+msgstr "Družba"
+
+#. module: analytic_account_sequence
+#: field:analytic.account.sequence,create_uid:0
+msgid "Created by"
+msgstr "Ustvaril"
+
+#. module: analytic_account_sequence
+#: field:analytic.account.sequence,create_date:0
+msgid "Created on"
+msgstr "Ustvarjeno"
+
+#. module: analytic_account_sequence
+#: view:analytic.account.sequence:analytic_account_sequence.analytic_account_sequence_view
+msgid "Current Year with Century: %(year)s"
+msgstr "Tekoče leto s stoletjem: %(year)s"
+
+#. module: analytic_account_sequence
+#: view:analytic.account.sequence:analytic_account_sequence.analytic_account_sequence_view
+msgid "Current Year without Century: %(y)s"
+msgstr "Tekoče leto brez stoletja: %(y)s"
+
+#. module: analytic_account_sequence
+#: view:analytic.account.sequence:analytic_account_sequence.analytic_account_sequence_view
+msgid "Day of the Week (0:Monday): %(weekday)s"
+msgstr "Dan v tednu (0:Ponedeljek): %(weekday)s"
+
+#. module: analytic_account_sequence
+#: view:analytic.account.sequence:analytic_account_sequence.analytic_account_sequence_view
+msgid "Day of the Year: %(doy)s"
+msgstr "Dan v letu: %(doy)s"
+
+#. module: analytic_account_sequence
+#: view:analytic.account.sequence:analytic_account_sequence.analytic_account_sequence_view
+msgid "Day: %(day)s"
+msgstr "Dan: %(day)s"
+
+#. module: analytic_account_sequence
+#: view:analytic.account.sequence:analytic_account_sequence.analytic_account_sequence_view
+msgid "Hour 00->12: %(h12)s"
+msgstr "Ura 00->12: %(h12)s"
+
+#. module: analytic_account_sequence
+#: view:analytic.account.sequence:analytic_account_sequence.analytic_account_sequence_view
+msgid "Hour 00->24: %(h24)s"
+msgstr "Ura 00->24: %(h24)s"
+
+#. module: analytic_account_sequence
+#: field:analytic.account.sequence,id:0
+msgid "ID"
+msgstr "ID"
+
+#. module: analytic_account_sequence
+#: field:analytic.account.sequence,implementation:0
+msgid "Implementation"
+msgstr "Implementacija"
+
+#. module: analytic_account_sequence
+#: field:analytic.account.sequence,number_increment:0
+msgid "Increment Number"
+msgstr "Število povečanja"
+
+#. module: analytic_account_sequence
+#: field:analytic.account.sequence,write_uid:0
+msgid "Last Updated by"
+msgstr "Zadnjič posodobil"
+
+#. module: analytic_account_sequence
+#: field:analytic.account.sequence,write_date:0
+msgid "Last Updated on"
+msgstr "Zadnjič posodobljeno"
+
+#. module: analytic_account_sequence
+#: view:analytic.account.sequence:analytic_account_sequence.analytic_account_sequence_view
+msgid "Legend (for prefix, suffix)"
+msgstr "Legenda (za predpone in pripone)"
+
+#. module: analytic_account_sequence
+#: view:analytic.account.sequence:analytic_account_sequence.analytic_account_sequence_view
+msgid "Minute: %(min)s"
+msgstr "Minuta: %(min)s"
+
+#. module: analytic_account_sequence
+#: view:analytic.account.sequence:analytic_account_sequence.analytic_account_sequence_view
+msgid "Month: %(month)s"
+msgstr "Mesec: %(month)s"
+
+#. module: analytic_account_sequence
+#: field:analytic.account.sequence,name:0
+msgid "Name"
+msgstr "Naziv"
+
+#. module: analytic_account_sequence
+#: field:analytic.account.sequence,number_next:0
+#: field:analytic.account.sequence,number_next_actual:0
+msgid "Next Number"
+msgstr "Naslednja številka"
+
+#. module: analytic_account_sequence
+#: help:analytic.account.sequence,number_next:0
+msgid "Next number of this sequence"
+msgstr "Naslednja številka tega zaporedja"
+
+#. module: analytic_account_sequence
+#: selection:analytic.account.sequence,implementation:0
+msgid "No gap"
+msgstr "Brez praznin"
+
+#. module: analytic_account_sequence
+#: field:analytic.account.sequence,padding:0
+msgid "Number Padding"
+msgstr "Mašilo številk"
+
+#. module: analytic_account_sequence
+#: field:analytic.account.sequence,prefix:0
+msgid "Prefix"
+msgstr "Predpona"
+
+#. module: analytic_account_sequence
+#: view:analytic.account.sequence:analytic_account_sequence.analytic_account_sequence_view
+msgid "Second: %(sec)s"
+msgstr "Sekunda: %(sec)s"
+
+#. module: analytic_account_sequence
+#: view:analytic.account.sequence:analytic_account_sequence.analytic_account_sequence_view
+#: view:analytic.account.sequence:analytic_account_sequence.view_analytic_account_sequence_search
+msgid "Sequence"
+msgstr "Zaporedje"
+
+#. module: analytic_account_sequence
+#: view:analytic.account.sequence:analytic_account_sequence.analytic_account_sequence_view
+#: view:analytic.account.sequence:analytic_account_sequence.analytic_account_sequence_view_tree
+#: view:analytic.account.sequence:analytic_account_sequence.view_analytic_account_sequence_search
+#: model:ir.actions.act_window,name:analytic_account_sequence.analytic_account_sequence_form
+#: model:ir.ui.menu,name:analytic_account_sequence.menu_ir_sequence_form
+msgid "Sequences"
+msgstr "Zaporedja"
+
+#. module: analytic_account_sequence
+#: selection:analytic.account.sequence,implementation:0
+msgid "Standard"
+msgstr "Običajno"
+
+#. module: analytic_account_sequence
+#: field:analytic.account.sequence,suffix:0
+msgid "Suffix"
+msgstr "Pripona"
+
+#. module: analytic_account_sequence
+#: sql_constraint:analytic.account.sequence:0
+msgid "The analytic account must be unique"
+msgstr "Analitični konto mora biti unikaten"
+
+#. module: analytic_account_sequence
+#: view:analytic.account.sequence:analytic_account_sequence.analytic_account_sequence_view
+msgid "Week of the Year: %(woy)s"
+msgstr "Teden v letu: %(woy)s"
