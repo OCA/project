@@ -1,52 +1,30 @@
 # -*- coding: utf-8 -*-
-##############################################################################
-#
-#    Copyright (C) 2014 Eficent (<http://www.eficent.com/>)
-#               <contact@eficent.com>
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as
-#    published by the Free Software Foundation, either version 3 of the
-#    License, or (at your option) any later version.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-##############################################################################
+# Copyright 2017 Eficent Business and IT Consulting Services S.L.
+# Copyright 2017 Luxim d.o.o.
+# Copyright 2017 Matmoz d.o.o.
+# Copyright 2017 Deneroteam.
+# Copyright 2017 Serpent Consulting Services Pvt. Ltd.
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-from openerp.osv import fields, osv
+from odoo import api, fields, models
 
 
-class account_analytic_account(osv.osv):
+class AccountAnalyticAccount(models.Model):
 
     _inherit = 'account.analytic.account'
 
-    def _create_sequence(
-        self, cr, uid, analytic_account_id, context=None
-    ):
-        ir_sequence_obj = self.pool.get('ir.sequence')
-        account_sequence_obj = self.pool.get('analytic.account.sequence')
+    @api.model
+    def _create_sequence(self):
+        ir_sequence_obj = self.env['ir.sequence']
+        account_sequence_obj = self.env['analytic.account.sequence']
         ir_sequence_ids = ir_sequence_obj.search(
-            cr, uid,
-            [('code', '=', 'analytic.account.sequence')],
-            context=context
+            [('code', '=', 'analytic.account.sequence')]
         )
         vals = {}
         if ir_sequence_ids:
-            ir_sequence_id = ir_sequence_ids[0]
-            ir_sequence = ir_sequence_obj.browse(
-                cr, uid,
-                ir_sequence_id,
-                context=context
-            )
-
+            ir_sequence = ir_sequence_ids[0]
             vals = {
-                'analytic_account_id': analytic_account_id,
+                'analytic_account_id': self.id,
                 'name': ir_sequence.name,
                 'code': ir_sequence.code,
                 'implementation': 'no_gap',
@@ -62,122 +40,71 @@ class account_analytic_account(osv.osv):
                     False
                 ),
             }
+        return account_sequence_obj.create(vals)
 
-        return account_sequence_obj.create(cr, uid, vals, context=context)
-
-    _columns = {
-        'sequence_ids': fields.one2many(
-            'analytic.account.sequence',
-            'analytic_account_id',
-            "Child code sequence"),
-    }
+    sequence_ids = fields.One2many(
+        'analytic.account.sequence',
+        'analytic_account_id',
+        "Child code sequence"
+    )
 
     _defaults = {
         'code': False
     }
 
-    def create(self, cr, uid, vals, *args, **kwargs):
-
-        context = kwargs.get('context', {})
+    @api.model
+    def create(self, vals):
         # Assign a new code, from the parent account's sequence, if it exists.
-        # If there's no parent, or the parent has no sequence, assign from the
-        # basic sequence of the analytic account.
+        # If there's no parent, or the parent has no sequence, assign from
+        # the basic sequence of the analytic account.
         new_code = False
         if 'parent_id' in vals and vals['parent_id']:
-            account_obj = self.pool.get('account.analytic.account')
-            obj_sequence = self.pool.get('analytic.account.sequence')
-            parent = account_obj.browse(
-                cr, uid,
-                vals['parent_id'],
-                context=context
-            )
+            account_obj = self.env['account.analytic.account']
+            obj_sequence = self.env['analytic.account.sequence']
+            parent = account_obj.browse(vals['parent_id'])
             if parent.sequence_ids:
-                new_code = obj_sequence.next_by_id(
-                    cr, uid,
-                    parent.sequence_ids[0].id,
-                    context=context
-                )
+                new_code = obj_sequence.next_by_id(parent.sequence_ids[0].id)
             else:
-                new_code = self.pool.get('ir.sequence').get(
-                    cr, uid, 'account.analytic.account'
-                )
+                new_code = self.env['ir.sequence'].\
+                    get('account.analytic.account')
         else:
-            new_code = self.pool.get('ir.sequence').get(
-                cr, uid, 'account.analytic.account'
-            )
-
+            new_code = self.env['ir.sequence'].get('account.analytic.account')
         if 'code' in vals and not vals['code'] and new_code:
             vals['code'] = new_code
+        analytic_account = super(AccountAnalyticAccount, self).create(vals)
+        if 'sequence_ids' not in vals or\
+                ('sequence_ids' in vals and not vals['sequence_ids']):
+            analytic_account._create_sequence()
+        return analytic_account
 
-        analytic_account_id = super(account_analytic_account, self).create(
-            cr, uid, vals, *args, **kwargs
-        )
-
-        if 'sequence_ids' not in vals or (
-            'sequence_ids' in vals and not vals['sequence_ids']
-        ):
-            sequence_id = self._create_sequence(
-                cr, uid, analytic_account_id, context=context
-            )
-        return analytic_account_id
-
-    def write(self, cr, uid, ids, data, context=None):
-        if context is None:
-            context = {}
-
+    @api.multi
+    def write(self, data):
         # If the parent project changes, obtain a new code according to the
         # new parent's sequence
         if 'parent_id' in data and data['parent_id']:
-            obj_sequence = self.pool.get('analytic.account.sequence')
-            parent = self.browse(cr, uid, data['parent_id'], context=context)
+            obj_sequence = self.env['analytic.account.sequence']
+            parent = self.browse(data['parent_id'])
             if parent.sequence_ids:
-                new_code = obj_sequence.next_by_id(
-                    cr, uid, parent.sequence_ids[0].id, context=context
-                )
+                new_code = obj_sequence.next_by_id(parent.sequence_ids[0].id)
                 data.update({'code': new_code})
+        return super(AccountAnalyticAccount, self).write(data)
 
-        return super(account_analytic_account, self).write(
-            cr, uid, ids, data, context=context
-        )
-
-    def map_sequences(
-        self, cr, uid,
-        old_analytic_account_id, new_analytic_account_id,
-        context=None
-    ):
+    @api.model
+    def map_sequences(self, new_analytic_account):
         """ copy and map tasks from old to new project """
-        if context is None:
-            context = {}
         map_sequence_id = {}
-        sequence_obj = self.pool.get('analytic.account.sequence')
-        account = self.browse(
-            cr, uid, old_analytic_account_id, context=context
-        )
+        account = self
         for sequence in account.sequence_ids:
-            map_sequence_id[sequence.id] = sequence_obj.copy(
-                cr, uid, sequence.id, {}, context=context
-            )
-        self.write(
-            cr, uid,
-            [new_analytic_account_id],
-            {
-                'sequence_ids': [
-                    (6, 0, map_sequence_id.values())
-                ]
-            }
-        )
+            map_sequence_id[sequence.id] = sequence.copy({}).id
+        new_analytic_account.\
+            write({'sequence_ids': [(6, 0, map_sequence_id.values())]})
         return True
 
-    def copy(self, cr, uid, id, default=None, context=None):
-        if context is None:
-            context = {}
+    @api.one
+    def copy(self, default=None):
         if default is None:
             default = {}
         default['sequence_ids'] = []
-        res = super(account_analytic_account, self).copy(
-            cr, uid, id, default, context
-        )
-        self.map_sequences(cr, uid, id, res, context)
+        res = super(AccountAnalyticAccount, self).copy(default)
+        self.map_sequences(res)
         return res
-
-account_analytic_account()
