@@ -19,7 +19,7 @@ class AnalyticAccountSequence(models.Model):
     _name = 'analytic.account.sequence'
 
     @api.depends('number_next', 'implementation')
-    def _get_number_next_actual(self):
+    def _compute_number_next_actual(self):
         """Return number from ir_sequence row when no_gap implementation,
         and number from postgres sequence when standard implementation."""
         if not self.ids:
@@ -48,7 +48,7 @@ class AnalyticAccountSequence(models.Model):
         return self._cr.fetchall()
 
     @api.model
-    def _set_number_next_actual(self):
+    def _inverse_number_next_actual(self):
         return self.write({'number_next': self.number_next or 0})
 
     analytic_account_id = fields.Many2one(
@@ -99,8 +99,8 @@ class AnalyticAccountSequence(models.Model):
         help="Next number of this sequence"
     )
     number_next_actual = fields.Integer(
-        compute='_get_number_next_actual',
-        inverse='_set_number_next_actual',
+        compute='_compute_number_next_actual',
+        inverse='_inverse_number_next_actual',
         required=True, string='Next Number',
         default=1, store=True,
         help='Next number that will be used. '
@@ -141,33 +141,12 @@ class AnalyticAccountSequence(models.Model):
         )
     ]
 
-    @api.model
-    def init(self):
-        # Don't do the following index yet.
-        return
-        # CONSTRAINT/UNIQUE INDEX on (code, company_id)
-        # /!\ The unique constraint 'unique_name_company_id'
-        # is not sufficient, because SQL92
-        # only support field names in constraint definitions,
-        # and we need a function here:
-        # we need to special-case company_id to treat all NULL company_id
-        # as equal, otherwise
-        # we would allow duplicate (code, NULL) ir_sequences.
-        self._cr.execute("""
-            SELECT indexname FROM pg_indexes WHERE indexname =
-            'analytic_account_sequence_unique_code_company_id_idx'""")
-        if not self._cr.fetchone():
-            self._cr.execute("""
-                CREATE UNIQUE INDEX
-                analytic_account_sequence_unique_code_company_id_idx
-                ON analytic_account_sequence (code, (COALESCE(company_id,-1)))
-                """)
-
-    @api.one
+    @api.multi
     def _create_sequence(self, number_increment, number_next):
         """ Create a PostreSQL sequence.
         There is no access rights check.
         """
+        self.ensure_one()
         if number_increment == 0:
             raise UserError(_("Increment number must not be zero."))
         assert isinstance(self.id, (int, long))
@@ -193,7 +172,7 @@ class AnalyticAccountSequence(models.Model):
         # object depends on it.
         self._cr.execute("DROP SEQUENCE IF EXISTS %s RESTRICT " % names)
 
-    @api.one
+    @api.multi
     def _alter_sequence(self, number_increment, number_next=None):
         """ Alter a PostreSQL sequence.
         There is no access rights check.

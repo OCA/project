@@ -100,7 +100,7 @@ class AccountAnalyticAccount(models.Model):
             write({'sequence_ids': [(6, 0, map_sequence_id.values())]})
         return True
 
-    @api.one
+    @api.multi
     def copy(self, default=None):
         if default is None:
             default = {}
