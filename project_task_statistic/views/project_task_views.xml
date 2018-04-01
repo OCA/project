@@ -15,12 +15,10 @@
                         <field name="create_date"/>
                         <field name="date_opened" />
                         <field name="date_closed" />
-                        <!-- TODO
                         <field name="day_open" />
                         <field name="day_close" />
-                        <field name="working_hours_open" />
-                        <field name="working_hours_close" />
-                        -->
+                        <field name="hours_open" />
+                        <field name="hours_close" />
                     </group>
                 </page>
             </page>

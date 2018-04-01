@@ -52,6 +52,7 @@ Contributors
 ------------
 
 * Daniel Reis
+* OpenSynergy Indonesia <https://opensynergy-indonesia.com>
 
 
 Maintainer
