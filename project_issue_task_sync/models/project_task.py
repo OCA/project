@@ -58,15 +58,16 @@ class ProjectTask(models.Model):
                 x: vals[x] for x in vals.keys() if x not in blacklist
             }
             result = super(ProjectTask, self).write(vals=only_wl_vals)
-        if self.project_id.sync_tasks_issues:
-            self.set_binded_issue_vals()
+        for this in self:
+            if this.project_id.sync_tasks_issues:
+                this.set_binded_issue_vals()
         return result
 
     @api.multi
     def unlink(self):
         result = False
         for this in self:
-            if self.project_id.sync_tasks_issues:
+            if this.project_id.sync_tasks_issues:
                 if not self.env.context.get('is_sync_operation'):
                     # no sudo, we suppose that if you have decided to
                     # sync issues and tasks and you have delete privledges
