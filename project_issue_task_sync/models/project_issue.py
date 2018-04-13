@@ -65,7 +65,6 @@ class ProjectIssue(models.Model):
         #sync so i need to fetch the project BEFORE the write, in order to have
         #one last sync (example have the task synced with the new unsynced
         #project
-        sync = self.project_id.sync_tasks_issues
         result = super(ProjectIssue, self).write(vals)
         for this in self:
             sync = this.project_id.sync_tasks_issues
