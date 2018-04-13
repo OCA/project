@@ -67,8 +67,10 @@ class ProjectIssue(models.Model):
         #project
         sync = self.project_id.sync_tasks_issues
         result = super(ProjectIssue, self).write(vals)
-        if sync:
-            self.set_binded_task_vals()
+        for this in self:
+            sync = this.project_id.sync_tasks_issues
+            if sync:
+                this.set_binded_task_vals()
         return result
 
     @api.multi
