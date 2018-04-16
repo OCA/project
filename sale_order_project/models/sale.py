@@ -3,7 +3,8 @@
 # © 2014 Akretion - Benoît GUILLOT <benoit.guillot@akretion.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo import api, models
+from odoo import api, models, _
+from odoo.exceptions import Warning
 from datetime import date
 
 
@@ -25,6 +26,10 @@ class SaleOrder(models.Model):
     def action_create_project(self):
         project_obj = self.env['project.project']
         for order in self:
+            if order.project_id:
+                raise Warning(_(
+                    'There is a project already related with this sale order.'
+                ))
             vals = order._prepare_project_vals()
             project = project_obj.create(vals)
             order.write({
