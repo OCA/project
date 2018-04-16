@@ -33,3 +33,12 @@ class TestProjectTaskCode(common.TransactionCase):
         project_task_copy = self.project_task.copy()
         self.assertNotEqual(project_task_copy.code, self.project_task.code)
         self.assertEqual(project_task_copy.code, code)
+
+    def test_name_get(self):
+        number_next = self.task_sequence.number_next_actual
+        code = self.task_sequence.get_next_char(number_next)
+        project_task = self.project_task_model.create({
+            'name': 'Task Testing Get Name',
+        })
+        result = project_task.name_get()
+        self.assertEqual(result[0][1], '[%s] Task Testing Get Name' % code)
