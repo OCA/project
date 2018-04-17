@@ -12,6 +12,7 @@ class SaleOrder(models.Model):
     _inherit = "sale.order"
 
     def _prepare_project_vals(self):
+        self.ensure_one()
         name = u" %s - %s - %s" % (
             self.partner_id.name,
             date.today().year,
