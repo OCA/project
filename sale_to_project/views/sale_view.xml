@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data noupdate="0">
+
+    <record id="view_order_form" model="ir.ui.view">
+      <field name="name">sale.order.form</field>
+      <field name="model">sale.order</field>
+      <field name="inherit_id" ref="sale.view_order_form"/>
+      <field name="arch" type="xml">
+        <button name="%(sale.action_view_sale_advance_payment_inv)d" position="after">
+          <field name="contract_ids" invisible="1"/>
+          <button name="open_contracts" string="View Contracts" type="object" class="oe_highlight"
+              attrs="{'invisible': [('contract_ids', '=', [])]}" groups="account.group_account_user,base.group_sale_salesman"/>
+          <button name="%(action_sale_to_project)d" string="Create Contract"
+            type="action" states="manual" class="oe_highlight"
+            groups="account.group_account_user,base.group_sale_salesman"/>
+        </button>
+      </field>
+    </record>
+
+  </data>
+</openerp>

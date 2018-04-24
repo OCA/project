@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+  <data>
+    <record id="view_sale_line_to_project" model="ir.ui.view">
+      <field name="name">Create Contract</field>
+      <field name="model">sale.line.to.project</field>
+      <field name="arch" type="xml">
+        <form string="Create contract from order">
+          <p class="oe_grey">
+            All the selected lines will be added to the created contract
+            as recurring invoice lines. This will create a draft
+            contract that can be modified before validation.
+          </p>
+          <footer>
+            <button name="button_create_contract" string="Create and View Contract" type="object"
+              context="{'open_contract': True}" class="oe_highlight"/>
+            <button name="button_create_contract" string="Create Contract" type="object"
+              class="oe_highlight"/>
+            or
+            <button string="Cancel" class="oe_link" special="cancel"/>
+          </footer>
+        </form>
+      </field>
+    </record>
+
+    <record id="action_sale_line_to_project" model="ir.actions.act_window">
+      <field name="name">Create Contract</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">sale.line.to.project</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">form</field>
+      <field name="target">new</field>
+    </record>
+
+    <record model="ir.values" id="sale_order_line_make_contract">
+      <field name="model_id" ref="sale.model_sale_order_line" />
+      <field name="name">Create Contract</field>
+      <field name="key2">client_action_multi</field>
+      <field name="value" eval="'ir.actions.act_window,' + str(ref('action_sale_line_to_project'))" />
+      <field name="key">action</field>
+      <field name="model">sale.order.line</field>
+    </record>
+  </data>
+</openerp>
+
+
