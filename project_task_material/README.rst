@@ -23,13 +23,13 @@ Every task form has a tab where product and their quantities can be added.
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
-   :target: https://runbot.odoo-community.org/runbot/140/10.0
+   :target: https://runbot.odoo-community.org/runbot/140/11.0
 
 Bug Tracker
 ===========
 
 Bugs are tracked on `GitHub Issues
-<https://github.com/OCA/project-service/issues>`_. In case of trouble, please
+<https://github.com/OCA/project/issues>`_. In case of trouble, please
 check there if your issue has already been reported. If you spotted it first,
 help us smashing it by providing a detailed and welcomed feedback.
 
@@ -44,6 +44,7 @@ Contributors
 * Sergio Teruel <sergio.teruel@tecnativa.com>
 * Vicent Cubells <vicent.cubells@tecnativa.com>
 * David Vidal <david.vidal@tecnativa.com>
+* Carlos Jesus Cebrian <carlos.cebrian-sanchez@braintec-group.org>
 
 Maintainer
 ----------

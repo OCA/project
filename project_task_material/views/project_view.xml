@@ -1,6 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-
     <record id="view_project_task_form_material" model="ir.ui.view">
         <field name="name">project.task.form.material</field>
         <field name="model">project.task</field>
@@ -18,5 +17,4 @@
             </xpath>
         </field>
     </record>
-
 </odoo>
