@@ -1,35 +1,46 @@
-# -*- coding: utf-8 -*-
 # Copyright 2016 Tecnativa - Vicent Cubells
+# Copyright 2018 - Brain-tec AG - Carlos Jesus Cebrian
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl-3.0).
 
+from .common import TestProjectCases
 from odoo.exceptions import ValidationError
-from odoo.tests import common
 
 
-class ProjectTaskMaterial(common.SavepointCase):
+class ProjectTaskMaterial(TestProjectCases):
 
-    @classmethod
-    def setUpClass(cls):
-        super(ProjectTaskMaterial, cls).setUpClass()
+    def test_manager_add_task_material_wrong(self):
+        """
+        TEST CASE 1
+        The user is adding some materials in the task
+        with different wrong values
 
-        cls.task = cls.env.ref('project.project_task_data_0')
-        cls.product = cls.env.ref('product.consu_delivery_03_product_template')
+        """
+        try:
+            # Material with `quantity = 0.0`
+            self.action.write({"material_ids": [(
+                0, 0, {"product_id": self.product.id, "quantity": 0.0})]})
+        except ValidationError as err:
+            self.assertEqual(
+                str(err.args[0]),
+                "Quantity of material consumed must be greater than 0.")
 
-    def test_create_task_material(self):
-        """ Testing creation of task material """
-        with self.assertRaises(ValidationError), self.cr.savepoint():
-            # Adding a line with quantity equal to 0
-            self.task.write({'material_ids': [
-                (0, 0, {'product_id': self.product.id, 'quantity': 0.0})]})
-        # Line is not created
-        self.assertEqual(len(self.task.material_ids.ids), 0)
-        with self.assertRaises(ValidationError), self.cr.savepoint():
-            # Adding a line with quantity less than 0
-            self.task.write({'material_ids': [
-                (0, 0, {'product_id': self.product.id, 'quantity': -10.0})]})
-        # Line is not created
-        self.assertEqual(len(self.task.material_ids.ids), 0)
-        # Adding a line with quantity greater than 0
-        self.task.write({'material_ids': [
-            (0, 0, {'product_id': self.product.id, 'quantity': 3.0})]})
+        try:
+            # Material with `negative quantity`
+            self.action.write({"material_ids": [(
+                0, 0, {"product_id": self.product.id, "quantity": -10.0})]})
+        except ValidationError as err:
+            self.assertEqual(
+                str(err.args[0]),
+                "Quantity of material consumed must be greater than 0.")
+
+    def test_manager_add_task_material_right(self):
+        """
+        TEST CASE 2
+        The user is adding some materials in the task
+        with right values
+
+        """
+        # Material with `quantity = 1.0`
+        self.action.write({"material_ids": [(
+            0, 0, {"product_id": self.product.id, "quantity": 4.0})]})
         self.assertEqual(len(self.task.material_ids.ids), 1)
