@@ -12,11 +12,7 @@
                     <field name="recursive_depending_task_ids" invisible="1"/>
                     <field name="recursive_dependency_task_ids" invisible="1"/>
                     <field name="dependency_task_ids"
-                           domain="[
-                                   ('id', '!=', id),
-                                   ('id', 'not in', recursive_dependency_task_ids and recursive_dependency_task_ids[0][2] or [])
-                                   ]"
-                    >
+                           domain="[('id', '!=', id), ('id', 'not in', recursive_dependency_task_ids)]">
                         <tree>
                             <field name="name"/>
                             <field name="user_id"/>
