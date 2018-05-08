@@ -13,8 +13,12 @@ def migrate(env, version):
         openupgrade.lift_constraints(cr, 'project_task', 'categ_id')
         openupgrade.lift_constraints(cr, 'business_requirement_resource_template', 'categ_id')
         openupgrade.lift_constraints(cr, 'business_requirement_resource', 'categ_id')
-        openupgrade.rename_tables(cr, [('project_category_main', 'project_category'), ])
-        openupgrade.rename_models(cr, _model_renames)
+        cr.execute(""" alter table business_requirement_resource_template drop constraint if exists  business_requirement_resource_template_categ_id_fkey;""")
+        #openupgrade.rename_tables(cr, [('project_category_main', 'project_category'), ])
+        if openupgrade.table_exists(cr, 'project_category_main') and not openupgrade.table_exists(cr, 'project_category'):
+            openupgrade.rename_tables(cr, [('project_category_main', 'project_category'), ])
+            openupgrade.rename_models(cr, _model_renames)
+       
         #print "project_category /  business_requirement_resource upgrade done. "
     except Exception, e:
         raise e
