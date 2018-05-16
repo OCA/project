@@ -3,7 +3,7 @@
 
 {
     'name': 'Project Task Dependencies',
-    'version': '11.0.1.0.0',
+    'version': '11.0.1.0.1',
     'category': 'Project',
     'summary': 'Enables to define dependencies (other tasks) of a task',
     'author': "Onestein,Odoo Community Association (OCA)",
