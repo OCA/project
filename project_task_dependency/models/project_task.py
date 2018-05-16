@@ -67,6 +67,8 @@ class ProjectTask(models.Model):
             return depending_tasks
 
     @api.constrains('dependency_task_ids')
-    def _check_recursion(self):
+    def _check_dependency_recursion(self):
         if not self._check_m2m_recursion('dependency_task_ids'):
-            raise ValidationError(_('You cannot create recursive tasks.'))
+            raise ValidationError(
+                _('You cannot create recursive dependencies between tasks.')
+            )
