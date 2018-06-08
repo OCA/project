@@ -26,6 +26,8 @@ def migrate(env, version):
                                       [('project_category_main',
                                         'project_category'), ])
             openupgrade.rename_models(cr, _model_renames)
-        print "project_category /  business_requirement_resource upgrade done."
+        openupgrade.logging(
+            "project_category /  business_requirement_resource upgrade done."
+        )
     except Exception, e:
         raise e
