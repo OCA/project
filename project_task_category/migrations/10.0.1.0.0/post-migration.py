@@ -3,6 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from openupgradelib import openupgrade
 
+
 @openupgrade.migrate(use_env=True)
 def migrate(env, version):
     cr = env.cr
@@ -17,7 +18,6 @@ def migrate(env, version):
              (SELECT id FROM project_category
               WHERE project_category_main.name = project_category.name
              );
-        
         """
         openupgrade.logged_query(cr, query)
     openupgrade.logging("project_category migration done.")
