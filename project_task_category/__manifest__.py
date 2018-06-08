@@ -9,9 +9,9 @@
     'author': 'Elico Corp, Odoo Community Association (OCA)',
     'license': 'AGPL-3',
     'external_dependencies': {
-         'python': [
-             'openupgradelib',
-         ]
+        'python': [
+            'openupgradelib',
+        ]
     },
     'category': 'Project Management',
     'website': 'https://www.elico-corp.com',
