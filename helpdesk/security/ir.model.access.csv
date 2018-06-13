@@ -4,6 +4,6 @@ access_helpdesk_stage_manager,helpdesk.stage.manager,model_helpdesk_stage,helpde
 access_helpdesk_ticket,helpdesk.ticker.user,model_helpdesk_ticket,helpdesk.group_helpdesk_user,1,1,1,0
 access_helpdesk_ticket_manager,helpdesk.ticker.manager,model_helpdesk_ticket,helpdesk.group_helpdesk_manager,1,1,1,1
 access_helpdesk_tags,helpdesk.tags.user,model_ticket_tags,helpdesk.group_helpdesk_user,1,0,0,0
-access_helpdesk_stage_manager,helpdesk.tags.manager,model_ticket_tags,helpdesk.group_helpdesk_manager,1,1,1,1
+access_helpdesk_tags_manager,helpdesk.tags.manager,model_ticket_tags,helpdesk.group_helpdesk_manager,1,1,1,1
 access_helpdesk_team,helpdesk.team.user,model_helpdesk_team,helpdesk.group_helpdesk_user,1,0,0,0
 access_helpdesk_team_manager,helpdesk.team.manager,model_helpdesk_team,helpdesk.group_helpdesk_manager,1,1,1,1
