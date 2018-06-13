@@ -1,0 +1,68 @@
+<odoo>
+
+    <record id="open_view_helpdesk_team" model="ir.actions.act_window">
+            <field name="name">Helpdesk Team</field>
+            <field name="res_model">helpdesk.team</field>
+            <field name="view_type">form</field>
+            <field name="domain">[]</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Create a new team.
+                </p><p>
+                    Organize your Support Teams
+                </p>
+            </field>
+        </record>
+
+    <menuitem id="menu_helpdesk_conf"
+            name="Configuration"
+            parent="helpdesk.menu_main_helpdesk"
+            sequence="25"/>
+
+    <menuitem id="menu_action_view_helpdesk_team"
+        name="HelpDesk Teams"
+        action="open_view_helpdesk_team"
+        parent="helpdesk.menu_helpdesk_conf"
+        sequence="5"/>
+
+        <!-- HelpDesk Team Form View -->
+        <record id="helpdesk_team_view_form" model="ir.ui.view">
+            <field name="name">helpdesk.team.form</field>
+            <field name="model">helpdesk.team</field>
+            <field eval="2" name="priority"/>
+            <field name="arch" type="xml">
+                <form string="HelpDesk Team">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1 class="o_row">
+                                <field name="name" />
+                            </h1>
+                        </div>
+                        <group>
+                            <field name="alias_id" />
+                            <field name="description" />
+                            <field name="member_ids" />
+                            <field name="stage_ids" />
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <!-- HelpDesk Team Tree View -->
+        <record id="helpdesk_team_view_tree" model="ir.ui.view">
+            <field name="name">helpdesk.team.tree</field>
+            <field name="model">helpdesk.team</field>
+            <field eval="2" name="priority"/>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name" />
+                    <field name="description" />
+                    <field name="member_ids" />
+                    <field name="stage_ids" />
+                </tree>
+            </field>
+        </record>
+
+</odoo>
