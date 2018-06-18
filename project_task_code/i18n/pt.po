@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * project_task_code
-# 
+#
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2016
 msgid ""
@@ -12,10 +12,10 @@ msgstr ""
 "PO-Revision-Date: 2016-12-23 03:43+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2016\n"
 "Language-Team: Portuguese (https://www.transifex.com/oca/teams/23907/pt/)\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: project_task_code
@@ -29,7 +29,7 @@ msgid "Task Number"
 msgstr "Número Tarefa"
 
 #. module: project_task_code
-#: code:addons/project_task_code/models/project_task.py:16
+#: code:addons/project_task_code/models/project_task.py:15
 #: sql_constraint:project.task:0
 #, python-format
 msgid "The code must be unique!"
