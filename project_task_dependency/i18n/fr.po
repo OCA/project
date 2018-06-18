@@ -9,35 +9,36 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-01-13 03:39+0000\n"
-"PO-Revision-Date: 2017-01-13 03:39+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"PO-Revision-Date: 2018-06-18 09:38+0000\n"
+"Last-Translator: c2cdidier <didier.donze@camptocamp.com>\n"
 "Language-Team: French (https://www.transifex.com/oca/teams/23907/fr/)\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 3.0.1\n"
 
 #. module: project_task_dependency
 #: model:ir.model.fields,field_description:project_task_dependency.field_project_task_dependency_task_ids
 #: model:ir.ui.view,arch_db:project_task_dependency.project_task_form
 msgid "Dependencies"
-msgstr ""
+msgstr "Dépendances"
 
 #. module: project_task_dependency
 #: model:ir.model.fields,field_description:project_task_dependency.field_project_task_depending_task_ids
 msgid "Depending Tasks"
-msgstr ""
+msgstr "Tâches dépendantes"
 
 #. module: project_task_dependency
 #: model:ir.model.fields,field_description:project_task_dependency.field_project_task_recursive_dependency_task_ids
 msgid "Recursive Dependencies"
-msgstr ""
+msgstr "Dépendances récursives"
 
 #. module: project_task_dependency
 #: model:ir.model.fields,field_description:project_task_dependency.field_project_task_recursive_depending_task_ids
 msgid "Recursive Depending Tasks"
-msgstr ""
+msgstr "Tâches récursives dépendantes"
 
 #. module: project_task_dependency
 #: model:ir.model,name:project_task_dependency.model_project_task
@@ -47,15 +48,15 @@ msgstr "Tâche"
 #. module: project_task_dependency
 #: model:ir.model.fields,help:project_task_dependency.field_project_task_recursive_depending_task_ids
 msgid "Tasks that are dependent on this task (recursive)."
-msgstr ""
+msgstr "Tâches liées à la tâche courante (récursif)."
 
 #. module: project_task_dependency
 #: model:ir.model.fields,help:project_task_dependency.field_project_task_depending_task_ids
 msgid "Tasks that are dependent on this task."
-msgstr ""
+msgstr "Tâches liées à cette tâche."
 
 #. module: project_task_dependency
 #: code:addons/project_task_dependency/models/project_task.py:73
 #, python-format
 msgid "You cannot create recursive dependencies between tasks."
-msgstr ""
+msgstr "Vous ne pouvez pas créer de dépendances récursives entre tâches."
