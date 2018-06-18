@@ -11,6 +11,7 @@ setuptools.setup(
         'odoo11-addon-project_department',
         'odoo11-addon-project_description',
         'odoo11-addon-project_key',
+        'odoo11-addon-project_stage_closed',
         'odoo11-addon-project_stage_state',
         'odoo11-addon-project_task_add_very_high',
         'odoo11-addon-project_task_code',
