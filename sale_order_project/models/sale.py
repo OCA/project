@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 ###############################################################################
 #
 #   Module for OpenERP
@@ -29,22 +28,11 @@ from datetime import date
 class SaleOrder(models.Model):
     _inherit = "sale.order"
 
-    @api.one
-    @api.depends('project_id')
-    def _compute_related_project_id(self):
-        self.related_project_id = (
-            self.project_id.use_tasks and
-            self.env['project.project'].search(
-                [('analytic_account_id', '=', self.project_id.id)],
-                limit=1)[:1])
-
-    related_project_id = fields.Many2one(
-        comodel_name='project.project', string='Project',
-        compute='_compute_related_project_id')
+    project_id = fields.Many2one('project.project', string='Project', readonly=True)
 
     @api.model
     def _prepare_project_vals(self, order):
-        name = u" %s - %s - %s" % (
+        name = " %s - %s - %s" % (
             order.partner_id.name,
             date.today().year,
             order.name)
@@ -61,6 +49,6 @@ class SaleOrder(models.Model):
             vals = self._prepare_project_vals(order)
             project = project_obj.create(vals)
             order.write({
-                'project_id': project.analytic_account_id.id
+                'project_id': project.id
             })
         return True

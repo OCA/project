@@ -5,8 +5,7 @@ Sale Order Project
 ==================
 
 This module is a base module that give the possibility to create a project
-from a quotation, if a contract is set with use_tasks checked it will show
-the related project.
+from a quotation.
 
 
 Bug Tracker
@@ -27,6 +26,7 @@ Contributors
 * Sébastien BEAU <sebastien.beau@akretion.com>
 * Benoît GUILLOT <benoit.guillot@akretion.com>
 * Oihane Crucelaegui <oihanecrucelaegi@avanzosc.es>
+* Aitor Bouzas <aitor.bouzas@adaptivecity.com>
 
 
 Maintainer

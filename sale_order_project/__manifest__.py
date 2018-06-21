@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 ###############################################################################
 #
 #   Module for OpenERP
@@ -23,12 +22,13 @@
 
 {
     'name': 'Sale Order Project',
-    'version': '8.0.1.0.0',
+    'version': '11.0.1.0.0',
     'category': 'Generic Modules/Others',
     'license': 'AGPL-3',
     'author': 'Akretion, '
               'AvanzOSC, '
               'Serv. Tecnol. Avanzados - Pedro M. Baeza, '
+              'Adaptive City - Aitor Bouzas'
               'Odoo Community Association (OCA)',
     'website': 'http://www.akretion.com/',
     'depends': [
@@ -38,5 +38,5 @@
     'data': [
         'views/sale_view.xml',
     ],
-    'installable': False,
+    'installable': True,
 }
