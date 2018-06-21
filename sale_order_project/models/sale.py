@@ -32,7 +32,7 @@ class SaleOrder(models.Model):
 
     @api.model
     def _prepare_project_vals(self, order):
-        name = " %s - %s - %s" % (
+        name = "%s - %s - %s" % (
             order.partner_id.name,
             date.today().year,
             order.name)
