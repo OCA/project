@@ -28,7 +28,17 @@ from datetime import date
 class SaleOrder(models.Model):
     _inherit = "sale.order"
 
-    project_id = fields.Many2one('project.project', string='Project', readonly=True)
+    @api.one
+    @api.depends('analytic_account_id')
+    def _compute_related_project_id(self):
+        self.related_project_id = (
+            self.env['project.project'].search(
+                [('analytic_account_id', '=', self.analytic_account_id.id)],
+                limit=1)[:1])
+
+    related_project_id = fields.Many2one(
+        comodel_name='project.project', string='Project',
+        compute='_compute_related_project_id')
 
     @api.model
     def _prepare_project_vals(self, order):
@@ -49,6 +59,6 @@ class SaleOrder(models.Model):
             vals = self._prepare_project_vals(order)
             project = project_obj.create(vals)
             order.write({
-                'project_id': project.id
+                'analytic_account_id': project.analytic_account_id.id
             })
         return True

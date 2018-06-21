@@ -8,14 +8,14 @@
             <field name="arch" type="xml">
                 <group name="technical" position="after">
                     <group name="project" string="Project">
-                        <field name="project_id" />
+                        <field name="related_project_id" />
                     </group>
                 </group>
                 <xpath expr="//header/field[@name='state']" position="before">
                     <button name="action_create_project" type="object"
                             string="Create Project" class="btn-primary"
                             groups="project.group_project_user"
-                            attrs="{'invisible':['|',('state','!=','draft'),('project_id','!=',False)]}" />
+                            attrs="{'invisible':['|',('state','!=','draft'),('related_project_id','!=',False)]}" />
                 </xpath>
             </field>
         </record>
