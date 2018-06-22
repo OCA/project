@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * project_issue_timesheet_time_control
-# 
+#
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2017
 msgid ""
@@ -11,11 +11,12 @@ msgstr ""
 "POT-Creation-Date: 2017-05-23 02:44+0000\n"
 "PO-Revision-Date: 2017-05-23 02:44+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
-"Language-Team: Norwegian Bokmål (https://www.transifex.com/oca/teams/23907/nb/)\n"
+"Language-Team: Norwegian Bokmål (https://www.transifex.com/oca/teams/23907/"
+"nb/)\n"
+"Language: nb\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: nb\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: project_issue_timesheet_time_control
@@ -34,6 +35,11 @@ msgid "Closed"
 msgstr "Stengt"
 
 #. module: project_issue_timesheet_time_control
+#: model:ir.ui.view,arch_db:project_issue_timesheet_time_control.account_analytic_line_search
+msgid "Issue"
+msgstr ""
+
+#. module: project_issue_timesheet_time_control
 #: model:ir.ui.view,arch_db:project_issue_timesheet_time_control.account_analytic_line_tree
 msgid "Open issue"
 msgstr ""
@@ -41,11 +47,6 @@ msgstr ""
 #. module: project_issue_timesheet_time_control
 #: model:ir.ui.view,arch_db:project_issue_timesheet_time_control.project_issue_form_view
 msgid "Stop"
-msgstr ""
-
-#. module: project_issue_timesheet_time_control
-#: model:ir.ui.view,arch_db:project_issue_timesheet_time_control.account_analytic_line_search
-msgid "Task"
 msgstr ""
 
 #. module: project_issue_timesheet_time_control
