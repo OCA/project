@@ -23,4 +23,5 @@ msgstr "De andere relatie"
 #. module: project_task_material_analytic_partner
 #: model:ir.model,name:project_task_material_analytic_partner.model_project_task_material
 msgid "Task Material Used"
+msgstr ""
 
