@@ -1,24 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
-    <data>
-        <record id="view_order_form" model="ir.ui.view">
-            <field name="name">view_project_quotation_order_form</field>
-            <field name="model">sale.order</field>
-            <field name="inherit_id" ref="sale.view_order_form" />
-            <field name="arch" type="xml">
-                <field name="project_id" position="after">
-                    <label for="related_project_id" groups="sale.group_analytic_accounting,project.group_project_user" />
-                    <div groups="sale.group_analytic_accounting,project.group_project_user">
-                        <field name="related_project_id" class="oe_inline"
-                               groups="sale.group_analytic_accounting,project.group_project_user" />
-                        <button name="action_create_project" type="object"
-                                string="Create Project" class="oe_inline oe_edit_only"
-                                groups="project.group_project_user"
-                                attrs="{'invisible':['|',('state','!=','draft'),('related_project_id','!=',False)]}" />
-                    </div>
-                </field>
+<odoo>
+    <record id="view_order_form" model="ir.ui.view">
+        <field name="name">view_project_quotation_order_form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+            <field name="related_project_id" position="after">
+                <button name="action_create_project" type="object"
+                        string="Create Project" class="oe_inline oe_edit_only"
+                        groups="sale.group_analytic_accounting,project.group_project_user"
+                        attrs="{'invisible':['|',('state','!=','draft'),('related_project_id','!=',False)]}" />
             </field>
-        </record>
-
-    </data>
-</openerp>
+        </field>
+    </record>
+</odoo>
