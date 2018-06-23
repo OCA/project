@@ -1,23 +1,17 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * project_issue_task
+#	* project_issue_task
 #
-# Translators:
-# OCA Transbot <transbot@odoo-community.org>, 2017
-# Erwin van der Ploeg <erwin@odooexperts.nl>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-11 03:42+0000\n"
-"PO-Revision-Date: 2017-01-11 03:42+0000\n"
-"Last-Translator: Erwin van der Ploeg <erwin@odooexperts.nl>, 2017\n"
-"Language-Team: Dutch (https://www.transifex.com/oca/teams/23907/nl/)\n"
-"Language: nl\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: \n"
 
 #. module: project_issue_task
 #: code:addons/project_issue_task/models/project_issue.py:21
@@ -33,32 +27,32 @@ msgstr ""
 #. module: project_issue_task
 #: model:ir.model.fields,field_description:project_issue_task.field_project_task_cause_code
 msgid "Code"
-msgstr "Code"
+msgstr ""
 
 #. module: project_issue_task
 #: model:ir.model.fields,field_description:project_issue_task.field_project_task_cause_create_uid
 msgid "Created by"
-msgstr "Aangemaakt door"
+msgstr ""
 
 #. module: project_issue_task
 #: model:ir.model.fields,field_description:project_issue_task.field_project_task_cause_create_date
 msgid "Created on"
-msgstr "Aangemaakt op"
+msgstr ""
 
 #. module: project_issue_task
 #: model:ir.model.fields,field_description:project_issue_task.field_project_task_cause_description
 msgid "Description"
-msgstr "Omschrijving"
+msgstr ""
 
 #. module: project_issue_task
 #: model:ir.model.fields,field_description:project_issue_task.field_project_task_cause_display_name
 msgid "Display Name"
-msgstr "Te tonen naam"
+msgstr ""
 
 #. module: project_issue_task
 #: model:ir.model.fields,field_description:project_issue_task.field_project_task_cause_id
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #. module: project_issue_task
 #: model:ir.model,name:project_issue_task.model_project_task_cause
@@ -73,17 +67,17 @@ msgstr ""
 #. module: project_issue_task
 #: model:ir.model.fields,field_description:project_issue_task.field_project_task_cause___last_update
 msgid "Last Modified on"
-msgstr "Laatst bijgewerkt op"
+msgstr ""
 
 #. module: project_issue_task
 #: model:ir.model.fields,field_description:project_issue_task.field_project_task_cause_write_uid
 msgid "Last Updated by"
-msgstr "Laatst bijgewerkt door"
+msgstr ""
 
 #. module: project_issue_task
 #: model:ir.model.fields,field_description:project_issue_task.field_project_task_cause_write_date
 msgid "Last Updated on"
-msgstr "Laatst bijgewerkt op"
+msgstr ""
 
 #. module: project_issue_task
 #: model:ir.model.fields,field_description:project_issue_task.field_project_task_issue_id
@@ -103,7 +97,7 @@ msgstr ""
 #. module: project_issue_task
 #: model:ir.model.fields,field_description:project_issue_task.field_project_task_ref
 msgid "Reference"
-msgstr "Referentie"
+msgstr ""
 
 #. module: project_issue_task
 #: model:ir.ui.view,arch_db:project_issue_task.view_project_task_form_issue
@@ -119,12 +113,12 @@ msgstr ""
 #. module: project_issue_task
 #: model:ir.model.fields,field_description:project_issue_task.field_project_task_cause_sequence
 msgid "Sequence"
-msgstr "Reeks"
+msgstr ""
 
 #. module: project_issue_task
 #: model:ir.model,name:project_issue_task.model_project_task
 msgid "Task"
-msgstr "Taak"
+msgstr ""
 
 #. module: project_issue_task
 #: model:ir.actions.act_window,name:project_issue_task.open_task_cause_form
@@ -138,3 +132,4 @@ msgstr ""
 #: model:ir.ui.view,arch_db:project_issue_task.project_issue_form_view_task
 msgid "Task Report"
 msgstr ""
+
