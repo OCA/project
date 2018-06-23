@@ -1,22 +1,17 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * project_issue_task
+#	* project_issue_task
 #
-# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: project (8.0)\n"
+"Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-17 13:09+0000\n"
-"PO-Revision-Date: 2016-10-11 09:49+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
-"Language-Team: Spanish (Venezuela) (http://www.transifex.com/oca/OCA-"
-"project-8-0/language/es_VE/)\n"
-"Language: es_VE\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: \n"
 
 #. module: project_issue_task
 #: code:addons/project_issue_task/project_issue.py:33
@@ -37,27 +32,27 @@ msgstr ""
 #. module: project_issue_task
 #: field:project.task.cause,create_uid:0
 msgid "Created by"
-msgstr "Creado por"
+msgstr ""
 
 #. module: project_issue_task
 #: field:project.task.cause,create_date:0
 msgid "Created on"
-msgstr "Creado en"
+msgstr ""
 
 #. module: project_issue_task
 #: field:project.task.cause,description:0
 msgid "Description"
-msgstr "Descripción"
+msgstr ""
 
 #. module: project_issue_task
 #: field:project.task.cause,display_name:0
 msgid "Display Name"
-msgstr "Mostrar nombre"
+msgstr ""
 
 #. module: project_issue_task
 #: field:project.task.cause,id:0
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #. module: project_issue_task
 #: model:ir.model,name:project_issue_task.model_project_task_cause
@@ -73,17 +68,17 @@ msgstr ""
 #. module: project_issue_task
 #: field:project.task.cause,__last_update:0
 msgid "Last Modified on"
-msgstr "Modificada por última vez"
+msgstr ""
 
 #. module: project_issue_task
 #: field:project.task.cause,write_uid:0
 msgid "Last Updated by"
-msgstr "Última actualización realizada por"
+msgstr ""
 
 #. module: project_issue_task
 #: field:project.task.cause,write_date:0
 msgid "Last Updated on"
-msgstr "Ultima actualizacion en"
+msgstr ""
 
 #. module: project_issue_task
 #: field:project.task,reason_id:0
@@ -114,12 +109,12 @@ msgstr ""
 #. module: project_issue_task
 #: field:project.task.cause,sequence:0
 msgid "Sequence"
-msgstr "Secuencia"
+msgstr ""
 
 #. module: project_issue_task
 #: model:ir.model,name:project_issue_task.model_project_task
 msgid "Task"
-msgstr "Tarea"
+msgstr ""
 
 #. module: project_issue_task
 #: model:ir.actions.act_window,name:project_issue_task.open_task_cause_form
@@ -133,3 +128,4 @@ msgstr ""
 #: view:project.issue:project_issue_task.project_issue_form_view_task
 msgid "Task Report"
 msgstr ""
+
