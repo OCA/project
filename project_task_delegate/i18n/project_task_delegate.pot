@@ -1,24 +1,17 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * project_task_delegate
+#	* project_task_delegate
 #
-# Translators:
-# OCA Transbot <transbot@odoo-community.org>, 2017
-# Daniel Reis <dreis.pt@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-08-19 02:54+0000\n"
-"PO-Revision-Date: 2017-08-19 02:54+0000\n"
-"Last-Translator: Daniel Reis <dreis.pt@gmail.com>, 2017\n"
-"Language-Team: Portuguese (Portugal) (https://www.transifex.com/oca/"
-"teams/23907/pt_PT/)\n"
-"Language: pt_PT\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: \n"
 
 #. module: project_task_delegate
 #: model:ir.model.fields,field_description:project_task_delegate.field_project_config_settings_group_manage_delegation_task
@@ -53,17 +46,17 @@ msgstr ""
 #. module: project_task_delegate
 #: model:ir.ui.view,arch_db:project_task_delegate.view_project_task_delegate
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr ""
 
 #. module: project_task_delegate
 #: model:ir.model.fields,field_description:project_task_delegate.field_project_task_delegate_create_uid
 msgid "Created by"
-msgstr "Criado por"
+msgstr ""
 
 #. module: project_task_delegate
 #: model:ir.model.fields,field_description:project_task_delegate.field_project_task_delegate_create_date
 msgid "Created on"
-msgstr "Criado em"
+msgstr ""
 
 #. module: project_task_delegate
 #: model:ir.ui.view,arch_db:project_task_delegate.view_task_form2
@@ -109,17 +102,16 @@ msgstr ""
 #. module: project_task_delegate
 #: model:ir.model.fields,field_description:project_task_delegate.field_project_task_delegate_display_name
 msgid "Display Name"
-msgstr "Nome a Apresentar"
+msgstr ""
 
 #. module: project_task_delegate
 #: selection:project.task.delegate,state:0
 msgid "Done"
-msgstr "Concluído"
+msgstr ""
 
 #. module: project_task_delegate
 #: model:ir.model.fields,help:project_task_delegate.field_project_task_delegate_planned_hours_me
-msgid ""
-"Estimated time for you to validate the work done\n"
+msgid "Estimated time for you to validate the work done\n"
 "             by the user to whom you delegate this task"
 msgstr ""
 
@@ -136,22 +128,22 @@ msgstr ""
 #. module: project_task_delegate
 #: model:ir.model.fields,field_description:project_task_delegate.field_project_task_delegate_id
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #. module: project_task_delegate
 #: model:ir.model.fields,field_description:project_task_delegate.field_project_task_delegate___last_update
 msgid "Last Modified on"
-msgstr "Última Modificação Em"
+msgstr ""
 
 #. module: project_task_delegate
 #: model:ir.model.fields,field_description:project_task_delegate.field_project_task_delegate_write_uid
 msgid "Last Updated by"
-msgstr "Atualizado pela última vez por"
+msgstr ""
 
 #. module: project_task_delegate
 #: model:ir.model.fields,field_description:project_task_delegate.field_project_task_delegate_write_date
 msgid "Last Updated on"
-msgstr "Atualizado pela última vez em"
+msgstr ""
 
 #. module: project_task_delegate
 #: model:ir.model.fields,field_description:project_task_delegate.field_project_task_delegate_new_task_description
@@ -161,8 +153,7 @@ msgstr ""
 
 #. module: project_task_delegate
 #: model:ir.model.fields,help:project_task_delegate.field_project_task_delegate_state
-msgid ""
-"New state of your own task. Pending will be\n"
+msgid "New state of your own task. Pending will be\n"
 "             reopened automatically when the delegated task is closed"
 msgstr ""
 
@@ -179,7 +170,7 @@ msgstr ""
 #. module: project_task_delegate
 #: selection:project.task.delegate,state:0
 msgid "Pending"
-msgstr "Pendente"
+msgstr ""
 
 #. module: project_task_delegate
 #: model:ir.model.fields,field_description:project_task_delegate.field_project_task_delegate_planned_hours
@@ -189,7 +180,7 @@ msgstr ""
 #. module: project_task_delegate
 #: model:ir.model.fields,field_description:project_task_delegate.field_project_task_delegate_project_id
 msgid "Project"
-msgstr "Projeto"
+msgstr ""
 
 #. module: project_task_delegate
 #: model:ir.actions.act_window,name:project_task_delegate.action_project_task_delegate
@@ -205,7 +196,7 @@ msgstr ""
 #. module: project_task_delegate
 #: model:ir.model,name:project_task_delegate.model_project_task
 msgid "Task"
-msgstr "Tarefa"
+msgstr ""
 
 #. module: project_task_delegate
 #: model:ir.model,name:project_task_delegate.model_project_task_delegate
@@ -257,9 +248,10 @@ msgstr ""
 #. module: project_task_delegate
 #: model:ir.ui.view,arch_db:project_task_delegate.view_project_task_delegate
 msgid "or"
-msgstr "ou"
+msgstr ""
 
 #. module: project_task_delegate
 #: model:ir.model,name:project_task_delegate.model_project_config_settings
 msgid "project.config.settings"
 msgstr ""
+
