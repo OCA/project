@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * project_gtd
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
@@ -10,12 +10,14 @@ msgstr ""
 "POT-Creation-Date: 2016-10-17 13:09+0000\n"
 "PO-Revision-Date: 2016-11-25 14:55+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
-"Language-Team: Polish (http://www.transifex.com/oca/OCA-project-8-0/language/pl/)\n"
+"Language-Team: Polish (http://www.transifex.com/oca/OCA-project-8-0/language/"
+"pl/)\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: pl\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
 
 #. module: project_gtd
 #: view:project.timebox.fill.plan:project_gtd.view_project_gtd_fill
@@ -54,7 +56,11 @@ msgid ""
 "Contexts are defined in the \"Getting Things Done\" methodology. It allows "
 "you to categorize your tasks according to the context in which they have to "
 "be done: at the office, at home, when I take my car, etc."
-msgstr "Kontekst jest zdefiniowany w metodologii \"Getting Things Done\" (Skuteczne wykonywanie zadań - planowanie osobiste). Kontekst pozwala porządkować zadania według miejsca lub otoczenia, w którym zadania powinny być wykonywane: W biurze, W domu, Kiedy mam samochód itp."
+msgstr ""
+"Kontekst jest zdefiniowany w metodologii \"Getting Things Done\" (Skuteczne "
+"wykonywanie zadań - planowanie osobiste). Kontekst pozwala porządkować "
+"zadania według miejsca lub otoczenia, w którym zadania powinny być "
+"wykonywane: W biurze, W domu, Kiedy mam samochód itp."
 
 #. module: project_gtd
 #: field:project.gtd.context,create_uid:0
@@ -261,7 +267,11 @@ msgid ""
 "Timeboxes are defined in the \"Getting Things Done\" methodology. A timebox "
 "defines a period of time in order to categorize your tasks: today, this "
 "week, this month, long term."
-msgstr "Ramki są zdefiniowane według metodologii \"Getting Things Done\" (Skuteczne wykonywanie zadań). Ramki czasowe definiują okresy do porządkowania czasu wykonania twoich zadań: Na dzisiaj, W tym tygodniu, W tym miesiącu, W tym półroczu itd."
+msgstr ""
+"Ramki są zdefiniowane według metodologii \"Getting Things Done\" (Skuteczne "
+"wykonywanie zadań). Ramki czasowe definiują okresy do porządkowania czasu "
+"wykonania twoich zadań: Na dzisiaj, W tym tygodniu, W tym miesiącu, W tym "
+"półroczu itd."
 
 #. module: project_gtd
 #: view:project.task:project_gtd.project_task

@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * project_gtd
-# 
+#
 # Translators:
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2011
 msgid ""
@@ -11,11 +11,12 @@ msgstr ""
 "POT-Creation-Date: 2016-10-17 13:09+0000\n"
 "PO-Revision-Date: 2016-11-25 14:58+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
-"Language-Team: Galician (http://www.transifex.com/oca/OCA-project-8-0/language/gl/)\n"
+"Language-Team: Galician (http://www.transifex.com/oca/OCA-project-8-0/"
+"language/gl/)\n"
+"Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: gl\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: project_gtd
@@ -55,7 +56,10 @@ msgid ""
 "Contexts are defined in the \"Getting Things Done\" methodology. It allows "
 "you to categorize your tasks according to the context in which they have to "
 "be done: at the office, at home, when I take my car, etc."
-msgstr "Os contextos defínense na metodoloxía \"Getting Things Done\" (Facendo as cousas). Permítelle clasificar as súas tarefas de acordo co contexto no que se teñen que realizar: na oficina, na casa, ó coller o coche, etc."
+msgstr ""
+"Os contextos defínense na metodoloxía \"Getting Things Done\" (Facendo as "
+"cousas). Permítelle clasificar as súas tarefas de acordo co contexto no que "
+"se teñen que realizar: na oficina, na casa, ó coller o coche, etc."
 
 #. module: project_gtd
 #: field:project.gtd.context,create_uid:0
@@ -106,7 +110,8 @@ msgstr "Indica a orde de secuencia cando se amosa unha lista de contextos."
 #. module: project_gtd
 #: help:project.gtd.timebox,sequence:0
 msgid "Gives the sequence order when displaying a list of timebox."
-msgstr "Indica a orde de secuencia cando se amosa unha lista de períodos de tempo."
+msgstr ""
+"Indica a orde de secuencia cando se amosa unha lista de períodos de tempo."
 
 #. module: project_gtd
 #: model:project.gtd.context,name:project_gtd.context_home
@@ -262,7 +267,11 @@ msgid ""
 "Timeboxes are defined in the \"Getting Things Done\" methodology. A timebox "
 "defines a period of time in order to categorize your tasks: today, this "
 "week, this month, long term."
-msgstr "Os 'períodos de tempo' defínense na metodoloxía \"Getting Things Done\" (Facendo as cousas). Un \"período de tempo\" define un lapso coa finalidade de clasificar as súas tarefas: hoxe, esta semana, este mes, a longo prazo."
+msgstr ""
+"Os 'períodos de tempo' defínense na metodoloxía \"Getting Things Done"
+"\" (Facendo as cousas). Un \"período de tempo\" define un lapso coa "
+"finalidade de clasificar as súas tarefas: hoxe, esta semana, este mes, a "
+"longo prazo."
 
 #. module: project_gtd
 #: view:project.task:project_gtd.project_task

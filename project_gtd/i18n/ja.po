@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * project_gtd
-# 
+#
 # Translators:
 # FIRST AUTHOR <EMAIL@ADDRESS>, 2012
 msgid ""
@@ -11,11 +11,12 @@ msgstr ""
 "POT-Creation-Date: 2016-10-17 13:09+0000\n"
 "PO-Revision-Date: 2016-11-22 16:24+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
-"Language-Team: Japanese (http://www.transifex.com/oca/OCA-project-8-0/language/ja/)\n"
+"Language-Team: Japanese (http://www.transifex.com/oca/OCA-project-8-0/"
+"language/ja/)\n"
+"Language: ja\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: ja\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. module: project_gtd
@@ -55,7 +56,10 @@ msgid ""
 "Contexts are defined in the \"Getting Things Done\" methodology. It allows "
 "you to categorize your tasks according to the context in which they have to "
 "be done: at the office, at home, when I take my car, etc."
-msgstr "コンテキストは物事を行う方法論として定義されます。実行しなければならないコンテキストに応じてタスクを分類することができます：会社で、自宅で、車に乗った時など。"
+msgstr ""
+"コンテキストは物事を行う方法論として定義されます。実行しなければならないコン"
+"テキストに応じてタスクを分類することができます：会社で、自宅で、車に乗った時"
+"など。"
 
 #. module: project_gtd
 #: field:project.gtd.context,create_uid:0
@@ -262,7 +266,9 @@ msgid ""
 "Timeboxes are defined in the \"Getting Things Done\" methodology. A timebox "
 "defines a period of time in order to categorize your tasks: today, this "
 "week, this month, long term."
-msgstr "タイムボックスは物事を行う方法論として定義されます。タイムボックスはタスクを分類することにより時間の期間を定義します：本日、今週、今月、長期。"
+msgstr ""
+"タイムボックスは物事を行う方法論として定義されます。タイムボックスはタスクを"
+"分類することにより時間の期間を定義します：本日、今週、今月、長期。"
 
 #. module: project_gtd
 #: view:project.task:project_gtd.project_task

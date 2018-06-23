@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * project_gtd
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
@@ -10,11 +10,12 @@ msgstr ""
 "POT-Creation-Date: 2016-09-02 14:57+0000\n"
 "PO-Revision-Date: 2016-09-16 21:46+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
-"Language-Team: French (http://www.transifex.com/oca/OCA-project-8-0/language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/oca/OCA-project-8-0/language/"
+"fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. module: project_gtd
@@ -54,7 +55,11 @@ msgid ""
 "Contexts are defined in the \"Getting Things Done\" methodology. It allows "
 "you to categorize your tasks according to the context in which they have to "
 "be done: at the office, at home, when I take my car, etc."
-msgstr "Les contextes sont définis dans la méthodologie \"Getting Things Done\". Ils vous permettent catégoriser les tâches en fonction du contexte dans lequel vous devez les faire : au bureau, à la maison, quand je prends ma voiture, etc."
+msgstr ""
+"Les contextes sont définis dans la méthodologie \"Getting Things Done\". Ils "
+"vous permettent catégoriser les tâches en fonction du contexte dans lequel "
+"vous devez les faire : au bureau, à la maison, quand je prends ma voiture, "
+"etc."
 
 #. module: project_gtd
 #: field:project.gtd.context,create_uid:0
@@ -261,7 +266,11 @@ msgid ""
 "Timeboxes are defined in the \"Getting Things Done\" methodology. A timebox "
 "defines a period of time in order to categorize your tasks: today, this "
 "week, this month, long term."
-msgstr "Les zones de temps sont définies dans la méthodologie \"Getting Things Done\". Une zone de temps définit une période de temps dans le but de classer vos tâches suivant leur échéance : aujourd'hui, cette semaine, ce mois, long terme."
+msgstr ""
+"Les zones de temps sont définies dans la méthodologie \"Getting Things Done"
+"\". Une zone de temps définit une période de temps dans le but de classer "
+"vos tâches suivant leur échéance : aujourd'hui, cette semaine, ce mois, long "
+"terme."
 
 #. module: project_gtd
 #: view:project.task:project_gtd.project_task

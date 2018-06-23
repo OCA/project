@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * project_gtd
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
@@ -10,11 +10,12 @@ msgstr ""
 "POT-Creation-Date: 2016-10-17 13:09+0000\n"
 "PO-Revision-Date: 2016-11-25 14:56+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
-"Language-Team: Chinese (China) (http://www.transifex.com/oca/OCA-project-8-0/language/zh_CN/)\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/oca/OCA-project-8-0/"
+"language/zh_CN/)\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. module: project_gtd
@@ -54,7 +55,9 @@ msgid ""
 "Contexts are defined in the \"Getting Things Done\" methodology. It allows "
 "you to categorize your tasks according to the context in which they have to "
 "be done: at the office, at home, when I take my car, etc."
-msgstr "情境是GTD方法中的概念。它使你能够按照执行的地点对任务进行分类，如：在办公室、在家、开车的时候"
+msgstr ""
+"情境是GTD方法中的概念。它使你能够按照执行的地点对任务进行分类，如：在办公室、"
+"在家、开车的时候"
 
 #. module: project_gtd
 #: field:project.gtd.context,create_uid:0
@@ -261,7 +264,9 @@ msgid ""
 "Timeboxes are defined in the \"Getting Things Done\" methodology. A timebox "
 "defines a period of time in order to categorize your tasks: today, this "
 "week, this month, long term."
-msgstr "时间箱是GTD方法的一个术语。时间箱用于根据一定的时间区间来对任务进行分类：今天的事，本周的事，这个月的事，长期的事"
+msgstr ""
+"时间箱是GTD方法的一个术语。时间箱用于根据一定的时间区间来对任务进行分类：今天"
+"的事，本周的事，这个月的事，长期的事"
 
 #. module: project_gtd
 #: view:project.task:project_gtd.project_task

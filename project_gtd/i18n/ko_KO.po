@@ -30,6 +30,11 @@ msgid "Cancel"
 msgstr "취소"
 
 #. module: project_gtd
+#: model:project.gtd.context,name:project_gtd.context_car
+msgid "Car"
+msgstr ""
+
+#. module: project_gtd
 #: model:ir.model,name:project_gtd.model_project_gtd_context
 #: view:project.gtd.context:project_gtd.view_gtd_context_form
 #: view:project.gtd.context:project_gtd.view_gtd_context_tree
@@ -48,13 +53,14 @@ msgstr ""
 #. module: project_gtd
 #: model:ir.actions.act_window,help:project_gtd.open_gtd_context_tree
 msgid ""
-"Contexts are defined in the \"Getting Things Done\" methodology. It allows you "
-"to categorize your tasks according to the context in which they have to be done: "
-"at the office, at home, when I take my car, etc."
+"Contexts are defined in the \"Getting Things Done\" methodology. It allows "
+"you to categorize your tasks according to the context in which they have to "
+"be done: at the office, at home, when I take my car, etc."
 msgstr ""
 
 #. module: project_gtd
-#: field:project.gtd.context,create_uid:0 field:project.gtd.timebox,create_uid:0
+#: field:project.gtd.context,create_uid:0
+#: field:project.gtd.timebox,create_uid:0
 #: field:project.timebox.empty,create_uid:0
 #: field:project.timebox.fill.plan,create_uid:0
 #, fuzzy
@@ -62,7 +68,8 @@ msgid "Created by"
 msgstr "생성 날짜"
 
 #. module: project_gtd
-#: field:project.gtd.context,create_date:0 field:project.gtd.timebox,create_date:0
+#: field:project.gtd.context,create_date:0
+#: field:project.gtd.timebox,create_date:0
 #: field:project.timebox.empty,create_date:0
 #: field:project.timebox.fill.plan,create_date:0
 #, fuzzy
@@ -70,9 +77,23 @@ msgid "Created on"
 msgstr "생성 날짜"
 
 #. module: project_gtd
+#: field:project.gtd.context,display_name:0
+#: field:project.gtd.timebox,display_name:0
+#: field:project.timebox.empty,display_name:0
+#: field:project.timebox.fill.plan,display_name:0
+msgid "Display Name"
+msgstr ""
+
+#. module: project_gtd
 #: model:ir.actions.act_window,name:project_gtd.action_project_gtd_empty
 #: view:project.timebox.empty:project_gtd.view_project_gtd_empty
 msgid "Empty Timebox"
+msgstr ""
+
+#. module: project_gtd
+#: code:addons/project_gtd/wizard/project_gtd_empty.py:52
+#, python-format
+msgid "Error!"
 msgstr ""
 
 #. module: project_gtd
@@ -91,6 +112,11 @@ msgid "Gives the sequence order when displaying a list of timebox."
 msgstr ""
 
 #. module: project_gtd
+#: model:project.gtd.context,name:project_gtd.context_home
+msgid "Home"
+msgstr ""
+
+#. module: project_gtd
 #: field:project.gtd.context,id:0 field:project.gtd.timebox,id:0
 #: field:project.timebox.empty,id:0 field:project.timebox.fill.plan,id:0
 msgid "ID"
@@ -102,6 +128,14 @@ msgid "Last Message"
 msgstr ""
 
 #. module: project_gtd
+#: field:project.gtd.context,__last_update:0
+#: field:project.gtd.timebox,__last_update:0
+#: field:project.timebox.empty,__last_update:0
+#: field:project.timebox.fill.plan,__last_update:0
+msgid "Last Modified on"
+msgstr ""
+
+#. module: project_gtd
 #: field:project.gtd.context,write_uid:0 field:project.gtd.timebox,write_uid:0
 #: field:project.timebox.empty,write_uid:0
 #: field:project.timebox.fill.plan,write_uid:0
@@ -109,7 +143,8 @@ msgid "Last Updated by"
 msgstr ""
 
 #. module: project_gtd
-#: field:project.gtd.context,write_date:0 field:project.gtd.timebox,write_date:0
+#: field:project.gtd.context,write_date:0
+#: field:project.gtd.timebox,write_date:0
 #: field:project.timebox.empty,write_date:0
 #: field:project.timebox.fill.plan,write_date:0
 msgid "Last Updated on"
@@ -129,6 +164,12 @@ msgstr ""
 #. module: project_gtd
 #: field:project.timebox.empty,name:0
 msgid "Name"
+msgstr ""
+
+#. module: project_gtd
+#: code:addons/project_gtd/wizard/project_gtd_empty.py:52
+#, python-format
+msgid "No timebox child of this one!"
 msgstr ""
 
 #. module: project_gtd
@@ -222,8 +263,8 @@ msgstr ""
 #: model:ir.actions.act_window,help:project_gtd.open_gtd_timebox_tree
 msgid ""
 "Timeboxes are defined in the \"Getting Things Done\" methodology. A timebox "
-"defines a period of time in order to categorize your tasks: today, this week, "
-"this month, long term."
+"defines a period of time in order to categorize your tasks: today, this "
+"week, this month, long term."
 msgstr ""
 
 #. module: project_gtd
