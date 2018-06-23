@@ -11,6 +11,7 @@ setuptools.setup(
         'odoo10-addon-project_department',
         'odoo10-addon-project_description',
         'odoo10-addon-project_double_alias',
+        'odoo10-addon-project_gtd',
         'odoo10-addon-project_issue_code',
         'odoo10-addon-project_issue_timesheet_time_control',
         'odoo10-addon-project_model_to_task',
@@ -30,6 +31,7 @@ setuptools.setup(
         'odoo10-addon-project_timeline',
         'odoo10-addon-project_timesheet_currency',
         'odoo10-addon-project_timesheet_time_control',
+        'odoo10-addon-sale_order_project',
     ],
     classifiers=[
         'Programming Language :: Python',
