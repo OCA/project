@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * project_recalculate
-# 
+#
 # Translators:
 # Matjaž Mozetič <m.mozetic@matmoz.si>, 2015
 msgid ""
@@ -11,12 +11,14 @@ msgstr ""
 "POT-Creation-Date: 2016-05-19 20:32+0000\n"
 "PO-Revision-Date: 2016-05-19 05:13+0000\n"
 "Last-Translator: Matjaž Mozetič <m.mozetic@matmoz.si>\n"
-"Language-Team: Slovenian (http://www.transifex.com/oca/OCA-project-8-0/language/sl/)\n"
+"Language-Team: Slovenian (http://www.transifex.com/oca/OCA-project-8-0/"
+"language/sl/)\n"
+"Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: sl\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
+"%100==4 ? 2 : 3);\n"
 
 #. module: project_recalculate
 #: help:project.task,from_days:0
@@ -45,21 +47,27 @@ msgstr "Preklic"
 #, python-format
 msgid ""
 "Cannot recalculate project because your project don't have calculation type."
-msgstr "Ponovna kalkulacija projekta ni mogoča, ker vaš projekt nima določenega tipa kalkulacije."
+msgstr ""
+"Ponovna kalkulacija projekta ni mogoča, ker vaš projekt nima določenega tipa "
+"kalkulacije."
 
 #. module: project_recalculate
 #: code:addons/project_recalculate/models/project_project.py:65
 #: code:addons/project_recalculate/wizard/recalculate_wizard.py:31
 #, python-format
 msgid "Cannot recalculate project because your project don't have date end."
-msgstr "Ponovna kalkulacija projekta ni mogoča, ker vaš projekt nima določenega končnega datuma."
+msgstr ""
+"Ponovna kalkulacija projekta ni mogoča, ker vaš projekt nima določenega "
+"končnega datuma."
 
 #. module: project_recalculate
 #: code:addons/project_recalculate/models/project_project.py:61
 #: code:addons/project_recalculate/wizard/recalculate_wizard.py:28
 #, python-format
 msgid "Cannot recalculate project because your project don't have date start."
-msgstr "Ponovna kalkulacija projekta ni mogoča, ker vaš projekt nima določenega začetnega datuma."
+msgstr ""
+"Ponovna kalkulacija projekta ni mogoča, ker vaš projekt nima določenega "
+"začetnega datuma."
 
 #. module: project_recalculate
 #: view:project.recalculate.wizard:project_recalculate.wizard_project_recalculate_form
@@ -129,7 +137,9 @@ msgstr "Dni od"
 msgid ""
 "How to calculate tasks, with date start or date end references. If not set, "
 "\"Recalculate project\" button is disabled."
-msgstr "Kako se izračuna opravila s sklicem na začetni ali končni datum. Če ni nastavljeno, je gumb 'Ponovna kalkulacija projekta' onemogočen."
+msgstr ""
+"Kako se izračuna opravila s sklicem na začetni ali končni datum. Če ni "
+"nastavljeno, je gumb 'Ponovna kalkulacija projekta' onemogočen."
 
 #. module: project_recalculate
 #: field:project.recalculate.wizard,id:0
@@ -142,7 +152,10 @@ msgstr "ID"
 msgid ""
 "If you mark this check, tasks that are in this stage will be selectable for "
 "recalculating their dates when user click on 'Recalculate project' button."
-msgstr "Če označite, se opravila, ki so v tej stopnji, lahko izbirajo za ponovno kalkulacijo datumov, ko uporabnik pritisne na gumb 'Ponovna kalkulacija projekta'."
+msgstr ""
+"Če označite, se opravila, ki so v tej stopnji, lahko izbirajo za ponovno "
+"kalkulacijo datumov, ko uporabnik pritisne na gumb 'Ponovna kalkulacija "
+"projekta'."
 
 #. module: project_recalculate
 #: field:project.task,include_in_recalculate:0
