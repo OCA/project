@@ -1,37 +1,30 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# * project_analytic_line_view
+#	* project_analytic_line_view
 #
-# Translators:
-# Armando Vulcano Junior <vulcano@uol.com.br>, 2015
-# danimaribeiro <danimaribeiro@gmail.com>, 2015
-# danimaribeiro <danimaribeiro@gmail.com>, 2015
 msgid ""
 msgstr ""
-"Project-Id-Version: project (8.0)\n"
+"Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-04 17:05+0000\n"
-"PO-Revision-Date: 2015-09-17 22:14+0000\n"
-"Last-Translator: Armando Vulcano Junior <vulcano@uol.com.br>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/oca/OCA-"
-"project-8-0/language/pt_BR/)\n"
-"Language: pt_BR\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: \n"
 
 #. module: project_analytic_line_view
 #: model:ir.model,name:project_analytic_line_view.model_account_analytic_account
 msgid "Analytic Account"
-msgstr "Conta analitica"
+msgstr ""
 
 #. module: project_analytic_line_view
 #: model:ir.actions.act_window,name:project_analytic_line_view.act_aal_from_project
 msgid "Analytic Lines"
-msgstr "Linhas Analíticas"
+msgstr ""
 
 #. module: project_analytic_line_view
 #: field:account.analytic.account,project_ids:0
 msgid "Projects"
-msgstr "Projetos"
+msgstr ""
+
