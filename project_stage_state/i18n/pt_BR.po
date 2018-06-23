@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * project_stage_state
-# 
+#
 # Translators:
 # Armando Vulcano Junior <vulcano@uol.com.br>, 2015
 msgid ""
@@ -11,11 +11,12 @@ msgstr ""
 "POT-Creation-Date: 2015-10-04 17:05+0000\n"
 "PO-Revision-Date: 2015-09-18 18:55+0000\n"
 "Last-Translator: Armando Vulcano Junior <vulcano@uol.com.br>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/oca/OCA-project-8-0/language/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/oca/OCA-"
+"project-8-0/language/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. module: project_stage_state
@@ -27,6 +28,11 @@ msgstr "Cancelado"
 #: selection:project.task.type,state:0
 msgid "Done"
 msgstr "Feito"
+
+#. module: project_stage_state
+#: field:project.task.type,fold_statusbar:0
+msgid "Folded in Statusbar"
+msgstr ""
 
 #. module: project_stage_state
 #: selection:project.task.type,state:0
@@ -57,3 +63,8 @@ msgstr "Tarefa"
 #: model:ir.model,name:project_stage_state.model_project_task_type
 msgid "Task Stage"
 msgstr "Estágio da Tarefa"
+
+#. module: project_stage_state
+#: view:project.task:project_stage_state.project_task_form_stage
+msgid "{'fold_field': 'fold_statusbar'}"
+msgstr ""
