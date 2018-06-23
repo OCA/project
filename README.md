@@ -22,6 +22,7 @@ addon | version | summary
 [project_department](project_department/) | 10.0.1.0.0 | Project Department Categorization
 [project_description](project_description/) | 10.0.1.0.0 | Add a description to projects
 [project_double_alias](project_double_alias/) | 10.0.1.0.1 | Define an alias for tasks and another alias for issues
+[project_gtd](project_gtd/) | 10.0.1.0.0 | Personal Tasks, Contexts, Timeboxes
 [project_issue_code](project_issue_code/) | 10.0.1.0.0 | Adding Field Code For Project Issue
 [project_issue_timesheet_time_control](project_issue_timesheet_time_control/) | 10.0.1.1.0 | Project issue timesheet time control
 [project_model_to_task](project_model_to_task/) | 10.0.0.1.0 | Project Model to Task
@@ -41,6 +42,7 @@ addon | version | summary
 [project_timeline](project_timeline/) | 10.0.1.1.0 | Timeline view for projects
 [project_timesheet_currency](project_timesheet_currency/) | 10.0.1.0.0 | Multi-currency analytic costs
 [project_timesheet_time_control](project_timesheet_time_control/) | 10.0.1.0.1 | Project timesheet time control
+[sale_order_project](sale_order_project/) | 10.0.1.0.0 | Sale Order Project
 
 
 Unported addons
@@ -54,13 +56,11 @@ addon | version | summary
 [project_categ_issue](project_categ_issue/) | 8.0.0.1.0 (unported) | Projects Issues can have an allowed category list
 [project_classification](project_classification/) | 8.0.1.0 (unported) | Project classification (easy hierarchy and setup for project managers)
 [project_functional_block](project_functional_block/) | 1.2 (unported) | Project requiring functional blocks
-[project_gtd](project_gtd/) | 8.0.2.0.0 (unported) | Personal Tasks, Contexts, Timeboxes
 [project_issue_baseuser](project_issue_baseuser/) | 8.0.1.0.0 (unported) | Extend Project user roles to support more complex use cases
 [project_issue_task](project_issue_task/) | 8.0.1.1.0 (unported) | Use Tasks to support Issue resolution reports
 [project_service_type](project_service_type/) | 1.0 (unported) | Add type of service on project
 [project_sla](project_sla/) | 8.0.1.0.0 (unported) | Define SLAs for your Contracts
 [project_timesheet_analytic_partner](project_timesheet_analytic_partner/) | 8.0.1.0.0 (unported) | Propagate task partner to timesheet entries
-[sale_order_project](sale_order_project/) | 8.0.1.0.0 (unported) | Sale Order Project
 [service_desk](service_desk/) | 8.0.1.1.0 (unported) | Use Projects for Service Desks and service teams
 [service_desk_issue](service_desk_issue/) | 8.0.1.1.0 (unported) | Use Project Issues for Service Desks and service teams
 
