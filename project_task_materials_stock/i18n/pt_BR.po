@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * project_task_materials_stock
-# 
+#
 # Translators:
 # danimaribeiro <danimaribeiro@gmail.com>, 2015
 # danimaribeiro <danimaribeiro@gmail.com>, 2015
@@ -12,11 +12,12 @@ msgstr ""
 "POT-Creation-Date: 2017-10-28 08:02+0000\n"
 "PO-Revision-Date: 2017-11-30 00:50+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/oca/OCA-project-8-0/language/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/oca/OCA-"
+"project-8-0/language/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. module: project_task_materials_stock
@@ -61,7 +62,9 @@ msgstr "Feito"
 msgid ""
 "If you mark this check, when a task goes to this state,it will consume the "
 "associated materials"
-msgstr "Se você marcar isto, quando uma tarefa muda para este estado, ela vai utilizar os materiais associados."
+msgstr ""
+"Se você marcar isto, quando uma tarefa muda para este estado, ela vai "
+"utilizar os materiais associados."
 
 #. module: project_task_materials_stock
 #: view:project.task:project_task_materials_stock.view_project_task_form_materials_stock
@@ -128,6 +131,6 @@ msgstr "Unidade de medida"
 #: code:addons/project_task_materials_stock/models/project.py:89
 #, python-format
 msgid ""
-"You can't move to a not consume stage if there are already invoiced analytic"
-" lines"
+"You can't move to a not consume stage if there are already invoiced analytic "
+"lines"
 msgstr ""
