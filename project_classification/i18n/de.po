@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * project_classification
-# 
+#
 # Translators:
 # Renzo Meister, 2015
 # Rudolf Schnapka <rs@techno-flex.de>, 2016-2017
@@ -14,11 +14,12 @@ msgstr ""
 "POT-Creation-Date: 2017-05-31 08:36+0000\n"
 "PO-Revision-Date: 2017-05-31 13:31+0000\n"
 "Last-Translator: Rudolf Schnapka <rs@techno-flex.de>\n"
-"Language-Team: German (http://www.transifex.com/oca/OCA-project-8-0/language/de/)\n"
+"Language-Team: German (http://www.transifex.com/oca/OCA-project-8-0/language/"
+"de/)\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: project_classification
@@ -37,7 +38,9 @@ msgid ""
 "Based on the costs you had on the project, what would have been the revenue "
 "if all these costs have been invoiced at the normal sale price provided by "
 "the pricelist."
-msgstr "Auf Grundlage der im Projekt angefallenen Kosten, wie hoch wäre der Umsatz, wenn alle Kosten zum normalen Verkaufspreis der Preisliste abgerechnet sind."
+msgstr ""
+"Auf Grundlage der im Projekt angefallenen Kosten, wie hoch wäre der Umsatz, "
+"wenn alle Kosten zum normalen Verkaufspreis der Preisliste abgerechnet sind."
 
 #. module: project_classification
 #: view:project.project:project_classification.view_project_project_filter
@@ -55,7 +58,9 @@ msgstr "Klassifizierungsname"
 msgid ""
 "Computed using the formula: Expected on timesheets - Total invoiced on "
 "timesheets"
-msgstr "Berechnet mit der Formel: Erwartet aus Zeiterfassung - Abgerechnete Gesamtsumme aus Zeiterfassung"
+msgstr ""
+"Berechnet mit der Formel: Erwartet aus Zeiterfassung - Abgerechnete "
+"Gesamtsumme aus Zeiterfassung"
 
 #. module: project_classification
 #: help:project.project,real_margin:0
@@ -70,7 +75,8 @@ msgstr "Berechnet mit der Formel: Abgerechnete Gesamtsumme / Gesamtzeit"
 #. module: project_classification
 #: help:project.project,remaining_ca:0
 msgid "Computed using the formula: Max Invoice Price - Invoiced Amount."
-msgstr "Berechnet mit der Formel: Höchster Abrechnungspreis - Abgerechneter Betrag."
+msgstr ""
+"Berechnet mit der Formel: Höchster Abrechnungspreis - Abgerechneter Betrag."
 
 #. module: project_classification
 #: help:project.project,remaining_hours:0
@@ -138,14 +144,19 @@ msgid ""
 "Expectation of remaining income for this contract. Computed as the sum of "
 "remaining subtotals which, in turn, are computed as the maximum between "
 "'(Estimation - Invoiced)' and 'To Invoice' amounts"
-msgstr "Erwartete verbleibende Einnahmen dieses Vertrags. Berechnet als Summe der verbleibenden Teilbeträge widerum berechnet sind als Maximum aus '(Schätzung - Abgerechnet)' und 'Abzurechnen' -den Beträgen"
+msgstr ""
+"Erwartete verbleibende Einnahmen dieses Vertrags. Berechnet als Summe der "
+"verbleibenden Teilbeträge widerum berechnet sind als Maximum aus '(Schätzung "
+"- Abgerechnet)' und 'Abzurechnen' -den Beträgen"
 
 #. module: project_classification
 #: help:project.classification,to_invoice:0
 msgid ""
 "Fill this field if you plan to automatically generate invoices based on the "
 "costs in this classification"
-msgstr "Belegen Sie dieses Feld, wenn Sie, basierend auf den Kosten der Klassifizierung, automatisch Rechnungen erstellen möchten "
+msgstr ""
+"Belegen Sie dieses Feld, wenn Sie, basierend auf den Kosten der "
+"Klassifizierung, automatisch Rechnungen erstellen möchten "
 
 #. module: project_classification
 #: field:project.project,fix_price_invoices:0
@@ -167,19 +178,24 @@ msgstr "ID"
 msgid ""
 "If invoice from analytic account, the remaining amount you can invoice to "
 "the customer based on the total costs."
-msgstr "Bei Abrechnung von Kostenstelle, basiert der verbleibende, gegenüber dem Kunden abrechenbare Restbetrag auf den Gesamtkosten."
+msgstr ""
+"Bei Abrechnung von Kostenstelle, basiert der verbleibende, gegenüber dem "
+"Kunden abrechenbare Restbetrag auf den Gesamtkosten."
 
 #. module: project_classification
 #: help:project.project,last_invoice_date:0
 msgid "If invoice from the costs, this is the date of the latest invoiced."
-msgstr "Bei Abrechnung der Kosten, stellt dies das Datum der letzten Abrechnung dar."
+msgstr ""
+"Bei Abrechnung der Kosten, stellt dies das Datum der letzten Abrechnung dar."
 
 #. module: project_classification
 #: help:project.project,last_worked_invoiced_date:0
 msgid ""
 "If invoice from the costs, this is the date of the latest work or cost that "
 "have been invoiced."
-msgstr "Bei Abrechnung der Kosten, stellt dies das Datum des letzten abrechenbaren Aufwands dar."
+msgstr ""
+"Bei Abrechnung der Kosten, stellt dies das Datum des letzten abrechenbaren "
+"Aufwands dar."
 
 #. module: project_classification
 #: field:project.project,recurring_invoice_line_ids:0
@@ -204,7 +220,8 @@ msgstr "Abgerechnete Zeit"
 #. module: project_classification
 #: help:project.project,amount_max:0
 msgid "Keep empty if this contract is not limited to a total fixed price."
-msgstr "Leer lassen, wenn dieser Vertrag nicht auf einen Festpreis beschränkt ist."
+msgstr ""
+"Leer lassen, wenn dieser Vertrag nicht auf einen Festpreis beschränkt ist."
 
 #. module: project_classification
 #: field:project.project,last_invoice_date:0
@@ -241,21 +258,27 @@ msgstr "Monat"
 msgid ""
 "Number of time (hours/days) (from journal of type 'general') that can be "
 "invoiced if you invoice based on analytic account."
-msgstr "Zeitdauer (Stunden/Tage), (aus Journal vom Typ \"Allgemein') abgerechnet werden kann, wenn auf Kostenstelle abgerechnet wird."
+msgstr ""
+"Zeitdauer (Stunden/Tage), (aus Journal vom Typ \"Allgemein') abgerechnet "
+"werden kann, wenn auf Kostenstelle abgerechnet wird."
 
 #. module: project_classification
 #: help:project.project,hours_qtt_invoiced:0
 msgid ""
 "Number of time (hours/days) that can be invoiced plus those that already "
 "have been invoiced."
-msgstr "Zeitdauer (Stunden/Tage), die abrechenbar sind, zuzüglich denen die bereits abgerechnet sind."
+msgstr ""
+"Zeitdauer (Stunden/Tage), die abrechenbar sind, zuzüglich denen die bereits "
+"abgerechnet sind."
 
 #. module: project_classification
 #: help:project.project,hours_quantity:0
 msgid ""
 "Number of time you spent on the analytic account (from timesheet). It "
 "computes quantities on all journal of type 'general'."
-msgstr "Auf Kostenstelle verbuchte Zeit (aus Zeitnachweis). Es werden Mengen aller Journale vom Typ 'Allgemein' ermittelt."
+msgstr ""
+"Auf Kostenstelle verbuchte Zeit (aus Zeitnachweis). Es werden Mengen aller "
+"Journale vom Typ 'Allgemein' ermittelt."
 
 #. module: project_classification
 #: field:project.project,invoice_on_timesheets:0
@@ -405,14 +428,18 @@ msgstr "Summe der abgerechneten Zeitnachweis-Positionen zu diesem Vertrag."
 msgid ""
 "The parent project that will be set when choosing this classification in a "
 "project."
-msgstr "Das übergeordnete Projekt das gesetzt wird, wenn diese Klassifikation für ein Projekt ausgewählt wird. "
+msgstr ""
+"Das übergeordnete Projekt das gesetzt wird, wenn diese Klassifikation für "
+"ein Projekt ausgewählt wird. "
 
 #. module: project_classification
 #: help:project.project,pricelist_id:0
 msgid ""
 "The product to invoice is defined on the employee form, the price will be "
 "deducted by this pricelist on the product."
-msgstr "Das abzurechnende Produkt ist im Mitarbeiter-Stammblatt definiert, der Preis für das Produkt wird gemäß dieser Preisliste abgezogen."
+msgstr ""
+"Das abzurechnende Produkt ist im Mitarbeiter-Stammblatt definiert, der Preis "
+"für das Produkt wird gemäß dieser Preisliste abgezogen."
 
 #. module: project_classification
 #: field:project.project,theorical_margin:0
@@ -429,7 +456,10 @@ msgstr "Plan-Umsatz"
 msgid ""
 "This will automatically set the parent project as well as other default "
 "values defined for this kind of project (like pricelist, invoice factor,..)"
-msgstr "Dies wird automatisch das übergeordnete Projekt, wie auch andere Standardwerte (Preisliste, Rechnungsfaktor, ...) für diese Projektart setzen. "
+msgstr ""
+"Dies wird automatisch das übergeordnete Projekt, wie auch andere "
+"Standardwerte (Preisliste, Rechnungsfaktor, ...) für diese Projektart "
+"setzen. "
 
 #. module: project_classification
 #: field:project.project,to_invoice:0
@@ -476,7 +506,9 @@ msgstr "Abgerechnete Summe"
 msgid ""
 "Total of costs for this account. It includes real costs (from invoices) and "
 "indirect costs, like time spent on timesheets."
-msgstr "Gesamtkosten dieses Kontos. Einschließlich Ist-Kosten (aus Rechnungen) und indirekten, wie Zeitaufwand aus Zeitnachweisen."
+msgstr ""
+"Gesamtkosten dieses Kontos. Einschließlich Ist-Kosten (aus Rechnungen) und "
+"indirekten, wie Zeitaufwand aus Zeitnachweisen."
 
 #. module: project_classification
 #: field:project.project,toinvoice_total:0
@@ -505,4 +537,8 @@ msgid ""
 "timesheet invoicing, you may use another ratio. For instance, if you do a "
 "20% advance invoice (fixed price, based on a sales order), you should "
 "invoice the rest on timesheet with a 80% ratio."
-msgstr "Für gewöhnlich rechnen Sie 100% der Zeitnachweise ab. Wenn Sie aber Fixkosten und variable Kosten vermischen, wenden Sie ggf. ein anderes Verhältnis an. Wenn Sie z. B. 20% Vorauszahlung (Fixpreis aus Auftrag) veranschlagen, werden Sie auf Zeitnachweis zu 80% abrechnen,"
+msgstr ""
+"Für gewöhnlich rechnen Sie 100% der Zeitnachweise ab. Wenn Sie aber "
+"Fixkosten und variable Kosten vermischen, wenden Sie ggf. ein anderes "
+"Verhältnis an. Wenn Sie z. B. 20% Vorauszahlung (Fixpreis aus Auftrag) "
+"veranschlagen, werden Sie auf Zeitnachweis zu 80% abrechnen,"

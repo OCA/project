@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * project_classification
-# 
+#
 # Translators:
 # Matjaž Mozetič <m.mozetic@matmoz.si>, 2015-2016
 msgid ""
@@ -11,12 +11,14 @@ msgstr ""
 "POT-Creation-Date: 2016-05-19 20:32+0000\n"
 "PO-Revision-Date: 2016-05-19 05:36+0000\n"
 "Last-Translator: Matjaž Mozetič <m.mozetic@matmoz.si>\n"
-"Language-Team: Slovenian (http://www.transifex.com/oca/OCA-project-8-0/language/sl/)\n"
+"Language-Team: Slovenian (http://www.transifex.com/oca/OCA-project-8-0/"
+"language/sl/)\n"
+"Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: sl\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
+"%100==4 ? 2 : 3);\n"
 
 #. module: project_classification
 #: help:project.project,toinvoice_total:0
@@ -34,7 +36,9 @@ msgid ""
 "Based on the costs you had on the project, what would have been the revenue "
 "if all these costs have been invoiced at the normal sale price provided by "
 "the pricelist."
-msgstr "Kakšni bi bili prihodki, če bi bili stroški projekta obračunani po običajni prodajni ceni po ceniku."
+msgstr ""
+"Kakšni bi bili prihodki, če bi bili stroški projekta obračunani po običajni "
+"prodajni ceni po ceniku."
 
 #. module: project_classification
 #: view:project.project:project_classification.view_project_project_filter
@@ -52,7 +56,9 @@ msgstr "Naziv klasifikacije"
 msgid ""
 "Computed using the formula: Expected on timesheets - Total invoiced on "
 "timesheets"
-msgstr "Izračunano po formuli: Pričakovano po časovnici - skupaj obračunano po časovnicah"
+msgstr ""
+"Izračunano po formuli: Pričakovano po časovnici - skupaj obračunano po "
+"časovnicah"
 
 #. module: project_classification
 #: help:project.project,real_margin:0
@@ -135,14 +141,19 @@ msgid ""
 "Expectation of remaining income for this contract. Computed as the sum of "
 "remaining subtotals which, in turn, are computed as the maximum between "
 "'(Estimation - Invoiced)' and 'To Invoice' amounts"
-msgstr "Pričakovanje preostalih prihodkov po tej pogodbi. Izračunano kot vsota preostalih vmesnih seštevkov, kateri so izračunani kot maksimum med '(Ocena - Zaračunano)' in zneskov 'Za obračun'"
+msgstr ""
+"Pričakovanje preostalih prihodkov po tej pogodbi. Izračunano kot vsota "
+"preostalih vmesnih seštevkov, kateri so izračunani kot maksimum med '(Ocena "
+"- Zaračunano)' in zneskov 'Za obračun'"
 
 #. module: project_classification
 #: help:project.classification,to_invoice:0
 msgid ""
 "Fill this field if you plan to automatically generate invoices based on the "
 "costs in this classification"
-msgstr "Izpolnite to polje, če nameravate samodejno ustvarjati račune glede na stroške v tej klasifikaciji"
+msgstr ""
+"Izpolnite to polje, če nameravate samodejno ustvarjati račune glede na "
+"stroške v tej klasifikaciji"
 
 #. module: project_classification
 #: field:project.project,fix_price_invoices:0
@@ -164,7 +175,9 @@ msgstr "ID"
 msgid ""
 "If invoice from analytic account, the remaining amount you can invoice to "
 "the customer based on the total costs."
-msgstr "Preostali znesek, ki se lahko zaračuna kupcu glede na skupne stroške, pri obračunu iz analitičnega konta."
+msgstr ""
+"Preostali znesek, ki se lahko zaračuna kupcu glede na skupne stroške, pri "
+"obračunu iz analitičnega konta."
 
 #. module: project_classification
 #: help:project.project,last_invoice_date:0
@@ -176,7 +189,9 @@ msgstr "Pri obračunu po stroških je to datum zadnje izdaje računa."
 msgid ""
 "If invoice from the costs, this is the date of the latest work or cost that "
 "have been invoiced."
-msgstr "Pri obračunu po stroških je to datum zadnjega opravljenega dela ali zaračunanega stroška."
+msgstr ""
+"Pri obračunu po stroških je to datum zadnjega opravljenega dela ali "
+"zaračunanega stroška."
 
 #. module: project_classification
 #: field:project.project,recurring_invoice_line_ids:0
@@ -238,21 +253,26 @@ msgstr "Mesec"
 msgid ""
 "Number of time (hours/days) (from journal of type 'general') that can be "
 "invoiced if you invoice based on analytic account."
-msgstr "Časovna vrednost (ur/dni iz dnevnika tipa 'splošno'), ki se jo lahko zaračuna pri obračunu na osnovi analitičnega konta."
+msgstr ""
+"Časovna vrednost (ur/dni iz dnevnika tipa 'splošno'), ki se jo lahko "
+"zaračuna pri obračunu na osnovi analitičnega konta."
 
 #. module: project_classification
 #: help:project.project,hours_qtt_invoiced:0
 msgid ""
 "Number of time (hours/days) that can be invoiced plus those that already "
 "have been invoiced."
-msgstr "Časovna vrednost (ur/dni), ki se jo lahko obračuna poleg že zaračunanega."
+msgstr ""
+"Časovna vrednost (ur/dni), ki se jo lahko obračuna poleg že zaračunanega."
 
 #. module: project_classification
 #: help:project.project,hours_quantity:0
 msgid ""
 "Number of time you spent on the analytic account (from timesheet). It "
 "computes quantities on all journal of type 'general'."
-msgstr "Časovna vrednost za čas porabljen na analitičnem kontu (po časovnici). Obdela količine na vseh dnevnikih tipa 'splošno'."
+msgstr ""
+"Časovna vrednost za čas porabljen na analitičnem kontu (po časovnici). "
+"Obdela količine na vseh dnevnikih tipa 'splošno'."
 
 #. module: project_classification
 #: field:project.project,invoice_on_timesheets:0
@@ -402,14 +422,17 @@ msgstr "Vsota zaračunanih postavk časovnice po tej pogodbi."
 msgid ""
 "The parent project that will be set when choosing this classification in a "
 "project."
-msgstr "Nadrejeni projekt, ki bo nastavljen ob izbiri te klasifikacije projekta."
+msgstr ""
+"Nadrejeni projekt, ki bo nastavljen ob izbiri te klasifikacije projekta."
 
 #. module: project_classification
 #: help:project.project,pricelist_id:0
 msgid ""
 "The product to invoice is defined on the employee form, the price will be "
 "deducted by this pricelist on the product."
-msgstr "Obračunski proizvod je določen v obrazcu kadra, cena bo določena glede na ta cenik proizvoda."
+msgstr ""
+"Obračunski proizvod je določen v obrazcu kadra, cena bo določena glede na ta "
+"cenik proizvoda."
 
 #. module: project_classification
 #: field:project.project,theorical_margin:0
@@ -426,7 +449,9 @@ msgstr "Teoretični prihodki"
 msgid ""
 "This will automatically set the parent project as well as other default "
 "values defined for this kind of project (like pricelist, invoice factor,..)"
-msgstr "To bo samodejno nastavilo nadrejeni projekt kakor tudi druge privzete vrednosti določene za tovrstne projekte (npr. cenik, obračunski faktor, ...)"
+msgstr ""
+"To bo samodejno nastavilo nadrejeni projekt kakor tudi druge privzete "
+"vrednosti določene za tovrstne projekte (npr. cenik, obračunski faktor, ...)"
 
 #. module: project_classification
 #: field:project.project,to_invoice:0
@@ -473,7 +498,9 @@ msgstr "Skupaj zaračunano"
 msgid ""
 "Total of costs for this account. It includes real costs (from invoices) and "
 "indirect costs, like time spent on timesheets."
-msgstr "Skupni stroški za ta konto. Vključeni so realni stroški (po računih) in posredni stroški, kot npr. porabljeni čas po časovnicah."
+msgstr ""
+"Skupni stroški za ta konto. Vključeni so realni stroški (po računih) in "
+"posredni stroški, kot npr. porabljeni čas po časovnicah."
 
 #. module: project_classification
 #: field:project.project,toinvoice_total:0
@@ -502,4 +529,8 @@ msgid ""
 "timesheet invoicing, you may use another ratio. For instance, if you do a "
 "20% advance invoice (fixed price, based on a sales order), you should "
 "invoice the rest on timesheet with a 80% ratio."
-msgstr "Običajno lahko obračunate 100% časovnic. Če pa mešate fiksno ceno z obračunom po časovnicah, lahko uporabite tudi drugačno odstotno stopnjo. Na primer, če obračunavate 20% avansa (stalna cena glede na prodajni nalog), se preostali del obračuna po časovnici po stopnji 80%."
+msgstr ""
+"Običajno lahko obračunate 100% časovnic. Če pa mešate fiksno ceno z "
+"obračunom po časovnicah, lahko uporabite tudi drugačno odstotno stopnjo. Na "
+"primer, če obračunavate 20% avansa (stalna cena glede na prodajni nalog), se "
+"preostali del obračuna po časovnici po stopnji 80%."
