@@ -1,7 +1,7 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
 # * project_sla
-# 
+#
 # Translators:
 # Rudolf Schnapka <rs@techno-flex.de>, 2016-2017
 # Thomas A. Jaeger, 2015
@@ -13,11 +13,12 @@ msgstr ""
 "POT-Creation-Date: 2017-05-31 08:36+0000\n"
 "PO-Revision-Date: 2017-05-31 13:31+0000\n"
 "Last-Translator: Rudolf Schnapka <rs@techno-flex.de>\n"
-"Language-Team: German (http://www.transifex.com/oca/OCA-project-8-0/language/de/)\n"
+"Language-Team: German (http://www.transifex.com/oca/OCA-project-8-0/language/"
+"de/)\n"
+"Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Language: de\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: project_sla
@@ -73,7 +74,9 @@ msgstr "Vertragskonto"
 msgid ""
 "Apply only if this expression is evaluated to True. The document fields can "
 "be accessed using either o, obj or object. Example: obj.priority <= '2'"
-msgstr "Nur anwenden, wenn diese Regel zutrifft. Die Felder können nur durch die Anwendung von o, obj oder object angewendet werden, z.B. obj.priority <='2'"
+msgstr ""
+"Nur anwenden, wenn diese Regel zutrifft. Die Felder können nur durch die "
+"Anwendung von o, obj oder object angewendet werden, z.B. obj.priority <='2'"
 
 #. module: project_sla
 #: field:project.sla.control,sla_close_date:0
