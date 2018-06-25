@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright 2016-2017 Tecnativa - Pedro M. Baeza
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0
 
@@ -40,13 +39,16 @@ class TestProjectTimesheetTimeControl(common.TransactionCase):
     def test_onchange_project_id(self):
         record = self.env['account.analytic.line'].new()
         record.project_id = self.project.id
-        action = record.onchange_project_id()
+        action = record.onchange_project_id_project_timesheet_time_control()
         self.assertTrue(action['domain']['task_id'])
+        record.project_id = False
+        action = record.onchange_project_id_project_timesheet_time_control()
+        self.assertEqual(action['domain']['task_id'], [])
 
     def test_onchange_task_id(self):
         record = self.env['account.analytic.line'].new()
         record.task_id = self.task.id
-        record.onchange_task_id()
+        record.onchange_task_id_project_timesheet_time_control()
         self.assertEqual(record.project_id, self.project)
 
     def test_create_write_analytic_line(self):
@@ -68,3 +70,11 @@ class TestProjectTimesheetTimeControl(common.TransactionCase):
         self.assertEqual(self.line.task_id.stage_id, self.stage_close)
         self.line.button_open_task()
         self.assertEqual(self.line.task_id.stage_id, self.stage_open)
+
+    def test_toggle_closed(self):
+        self.line.toggle_closed()
+        self.assertTrue(self.line.task_id.stage_id.closed)
+        self.assertTrue(self.line.closed)
+        self.line.toggle_closed()
+        self.assertFalse(self.line.task_id.stage_id.closed)
+        self.assertFalse(self.line.closed)

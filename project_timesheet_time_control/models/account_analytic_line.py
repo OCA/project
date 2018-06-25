@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright 2016 Tecnativa - Antonio Espinosa
 # Copyright 2016 Tecnativa - Sergio Teruel
 # Copyright 2016-2017 Tecnativa - Pedro M. Baeza
@@ -15,7 +14,7 @@ class AccountAnalyticLine(models.Model):
     closed = fields.Boolean(related='task_id.stage_id.closed', readonly=True)
 
     @api.onchange('project_id')
-    def onchange_project_id(self):
+    def onchange_project_id_project_timesheet_time_control(self):
         res = {}
         if self.project_id:
             project = self.project_id
@@ -27,9 +26,9 @@ class AccountAnalyticLine(models.Model):
         return res
 
     @api.onchange('task_id')
-    def onchange_task_id(self):
+    def onchange_task_id_project_timesheet_time_control(self):
         if self.task_id:
-            self.project_id = self.task_id.project_id.id
+            self.project_id = self.task_id.project_id
 
     def eval_date(self, vals):
         if vals.get('date_time'):
@@ -75,3 +74,11 @@ class AccountAnalyticLine(models.Model):
                       "mark any.")
                 )
             line.task_id.write({'stage_id': stage.id})
+
+    @api.multi
+    def toggle_closed(self):
+        self.ensure_one()
+        if self.closed:
+            self.button_open_task()
+        else:
+            self.button_close_task()
