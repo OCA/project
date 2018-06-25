@@ -8,11 +8,6 @@
     'version': '10.0.1.1.0',
     'author': 'Elico Corp, Odoo Community Association (OCA)',
     'license': 'AGPL-3',
-    'external_dependencies': {
-        'python': [
-            'openupgradelib',
-        ]
-    },
     'category': 'Project Management',
     'website': 'https://www.elico-corp.com',
     'depends': [
