@@ -9,6 +9,7 @@ def migrate(env, version):
     cr = env.cr
     if openupgrade.table_exists(cr, 'project_category_main') and \
             openupgrade.table_exists(cr, 'project_category'):
+        openupgrade.logging("Starting migrate project_category...")
         query = """
             INSERT INTO project_category
              (name, create_uid, create_date, write_uid, write_date)
@@ -20,4 +21,7 @@ def migrate(env, version):
              );
         """
         openupgrade.logged_query(cr, query)
-    openupgrade.logging("project_category migration done.")
+        openupgrade.logging("Migrate project_category done.")
+    else:
+        openupgrade.logging("No need to be migrated.")
+        return
