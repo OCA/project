@@ -3,8 +3,7 @@
 
     <record id="view_task_form2_inherited" model="ir.ui.view">
         <field name="model">project.task</field>
-        <field name="inherit_id"
-               ref="hr_timesheet.view_task_form2_inherited"/>
+        <field name="inherit_id" ref="hr_timesheet.view_task_form2_inherited"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='timesheet_ids']//field[@name='date']" position="attributes">
                 <attribute name="invisible">1</attribute>
@@ -19,6 +18,80 @@
                         icon="fa-stop-circle"
                         attrs="{'invisible': [('unit_amount', '>', 0)]}"
                 />
+            </xpath>
+            <xpath expr="//field[@name='timesheet_ids']" position="attributes">
+                <attribute name="mode">tree,kanban</attribute>
+            </xpath>
+            <xpath expr="//field[@name='timesheet_ids']">
+                <kanban class="o_kanban_mobile">
+                    <field name="date_time"/>
+                    <field name="user_id"/>
+                    <field name="name"/>
+                    <field name="project_id"/>
+                    <field name="task_id" context="{'default_project_id': project_id}" domain="[('project_id', '=', project_id)]"/>
+                    <field name="unit_amount"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div t-attf-class="oe_kanban_global_click">
+                                <a t-if="!read_only_mode" type="delete"
+                                   class="fa fa-times pull-right"/>
+                                <div class="row">
+                                    <div class="col-xs-2">
+                                        <img t-att-src="kanban_image('res.users', 'image_small', record.user_id.raw_value)" t-att-title="record.user_id.value" width="40" height="40" class="oe_kanban_avatar pull-left"/>
+                                    </div>
+                                    <div class="col-xs-10">
+                                        <div>
+                                            <strong><t t-esc="record.name.value"/></strong>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr class="mt4 mb4"/>
+                                <span>
+                                    <i class="fa fa-calendar" aria-hidden="true"></i>
+                                    <t t-esc="record.date_time.value"/>
+                                </span>
+                                <span class="pull-right">
+                                    <strong>Duration: </strong><field name="unit_amount" widget="float_time"/>
+                                </span>
+                                <div class="row">
+                                    <div class="col-xs-12">
+                                        <button name="button_end_work"
+                                                type="object"
+                                                attrs="{'invisible': [('unit_amount', '>', 0)]}"
+                                                class="btn btn-primary pull-right btn-sm">
+                                            <i class="fa fa-stop-circle"/>
+                                            Stop
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+                <form>
+                    <group>
+                        <group>
+                            <field name="date_time"/>
+                            <field name="name"/>
+                            <field name="user_id" invisible="1"/>
+                            <field name="employee_id" required="1"/>
+                            <field name="project_id" invisible="1"/>
+                        </group>
+                        <group>
+                            <label for="unit_amount"/>
+                            <div>
+                                <field name="unit_amount" class="oe_inline" string="Duration" widget="float_time"/>
+                                <button name="button_end_work"
+                                        string="Stop"
+                                        type="object"
+                                        icon="fa-stop-circle"
+                                        attrs="{'invisible': [('unit_amount', '>', 0)]}"
+                                        class="btn btn-link"
+                                />
+                            </div>
+                        </group>
+                    </group>
+                </form>
             </xpath>
         </field>
     </record>
