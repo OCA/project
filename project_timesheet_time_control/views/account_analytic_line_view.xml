@@ -3,8 +3,7 @@
 
     <record id="account_analytic_line_tree" model="ir.ui.view">
         <field name="model">account.analytic.line</field>
-        <field name="inherit_id"
-               ref="hr_timesheet.hr_timesheet_line_tree"/>
+        <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree"/>
         <field name="arch" type="xml">
             <field name="date" position="attributes">
                 <attribute name="invisible">1</attribute>
@@ -36,6 +35,83 @@
                 />
             </field>
         </field>
+    </record>
+
+    <record id="hr_timesheet_line_form" model="ir.ui.view">
+        <field name="name">account.analytic.line.form.inherit</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_form"/>
+        <field name="arch" type="xml">
+            <field name="name" position="replace"/>
+            <xpath expr="//sheet/group" position="before">
+                <div class="oe_button_box" name="button_box">
+                    <button name="toggle_closed" type="object" confirm="Open/Close timesheet line automatically open/close its tasks. Do you want to proceed?" class="oe_stat_button" icon="fa-folder">
+                        <field name="closed" widget="boolean_button" options='{"terminology": {
+                            "string_true": "Closed",
+                            "hover_true": "Open task",
+                            "string_false": "Open",
+                            "hover_false": "Close task"
+                        }}'/>
+                    </button>
+                </div>
+                <div class="oe_title">
+                    <label class="oe_edit_only" for="name"/>
+                    <h1>
+                        <field name="name"/>
+                    </h1>
+                </div>
+            </xpath>
+            <field name="date" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </field>
+            <field name="date" position="after">
+                <field name="date_time"/>
+            </field>
+            <field name="unit_amount" position="replace">
+                <label for="unit_amount"/>
+                <div>
+                    <field name="unit_amount" class="oe_inline" string="Duration" widget="float_time"/>
+                    <button name="button_end_work"
+                            string="Stop"
+                            type="object"
+                            icon="fa-stop-circle"
+                            attrs="{'invisible': [('unit_amount', '>', 0)]}"
+                            class="btn btn-link"
+                    />
+                </div>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_kanban_account_analytic_line" model="ir.ui.view">
+            <field name="name">account.analytic.line.kanban</field>
+            <field name="model">account.analytic.line</field>
+            <field name="inherit_id"
+                   ref="hr_timesheet.view_kanban_account_analytic_line"/>
+            <field name="arch" type="xml">
+                <xpath expr="//templates//field[@name='unit_amount']/.." position="after">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <button name="button_end_work"
+                                    type="object"
+                                    attrs="{'invisible': [('unit_amount', '>', 0)]}"
+                                    class="btn btn-primary pull-right btn-sm">
+                                <i class="fa fa-stop-circle"/>
+                                Stop
+                            </button>
+                        </div>
+                    </div>
+                </xpath>
+                <field name="date" position="after">
+                    <field name="date_time"/>
+                </field>
+                <xpath expr="//templates//t[@t-esc='record.date.value']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <xpath expr="//templates//t[@t-esc='record.date.value']" position="after">
+                    <t t-esc="record.date_time.value"/>
+                </xpath>
+            </field>
     </record>
 
 </odoo>
