@@ -9,7 +9,7 @@
     'author': 'Elico Corp, Odoo Community Association (OCA)',
     'license': 'AGPL-3',
     'category': 'Project Management',
-    'website': 'https://www.elico-corp.com',
+    'website': 'https://github.com/OCA/project',
     'depends': [
         'project',
     ],
