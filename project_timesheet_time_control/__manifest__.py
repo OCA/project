@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright 2016 Tecnativa - Antonio Espinosa
 # Copyright 2016 Tecnativa - Sergio Teruel
 # Copyright 2016-2017 Tecnativa - Pedro M. Baeza
@@ -6,11 +5,11 @@
 
 {
     'name': 'Project timesheet time control',
-    'version': '10.0.1.0.1',
+    'version': '11.0.1.0.0',
     'category': 'Project',
     'author': 'Tecnativa,'
               'Odoo Community Association (OCA)',
-    'website': 'http://www.serviciosbaeza.com',
+    'website': 'https://github.com/OCA/project',
     'depends': [
         'hr_timesheet',
         'project_stage_closed',
