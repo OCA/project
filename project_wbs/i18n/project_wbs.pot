@@ -1,0 +1,324 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* project_wbs
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: project_wbs
+#: model:ir.ui.view,arch_db:project_wbs.view_project_kanban
+msgid "(Parent:"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.model,name:project_wbs.model_account_analytic_account
+msgid "Analytic Account"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.ui.view,arch_db:project_wbs.edit_project
+msgid "Append this project to another one using analytic accounts hierarchy"
+msgstr ""
+
+#. module: project_wbs
+#: selection:account.analytic.account,state:0
+msgid "Cancelled"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.ui.view,arch_db:project_wbs.view_project
+msgid "Child WBS elements"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account_account_class
+#: model:ir.model.fields,field_description:project_wbs.field_project_project_account_class
+#: model:ir.ui.view,arch_db:project_wbs.edit_project
+#: model:ir.ui.view,arch_db:project_wbs.view_account_analytic_account_form
+#: model:ir.ui.view,arch_db:project_wbs.view_account_analytic_account_search
+#: model:ir.ui.view,arch_db:project_wbs.view_project
+#: model:ir.ui.view,arch_db:project_wbs.view_project_project_filter
+#: model:ir.ui.view,arch_db:project_wbs.view_project_project_group_filter
+msgid "Class"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.actions.act_window,help:project_wbs.open_view_project_wbs
+msgid "Click to start a new project."
+msgstr ""
+
+#. module: project_wbs
+#: selection:account.analytic.account,state:0
+msgid "Closed"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.ui.view,arch_db:project_wbs.edit_project
+#: model:ir.ui.view,arch_db:project_wbs.view_project
+msgid "Code"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.model.fields,help:project_wbs.field_account_analytic_account_complete_wbs_code_calc
+#: model:ir.model.fields,help:project_wbs.field_project_project_complete_wbs_code_calc
+msgid "Computed WBS code"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.ui.view,arch_db:project_wbs.edit_project
+msgid "Create child WBS element"
+msgstr ""
+
+#. module: project_wbs
+#: selection:account.analytic.account,account_class:0
+msgid "Deliverable"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.actions.act_window,name:project_wbs.act_project_project_2_deliverable_all
+#: model:ir.actions.act_window,name:project_wbs.open_view_project_deliverables
+msgid "Deliverables"
+msgstr ""
+
+#. module: project_wbs
+#: code:addons/project_wbs/models/project_project.py:248
+#, python-format
+msgid "Details"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.actions.act_window,name:project_wbs.open_view_project_form
+msgid "Edit project"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.ui.view,arch_db:project_wbs.view_project
+msgid "End Date"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account_complete_wbs_code
+#: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account_complete_wbs_code_calc
+#: model:ir.model.fields,field_description:project_wbs.field_project_project_complete_wbs_code
+#: model:ir.model.fields,field_description:project_wbs.field_project_project_complete_wbs_code_calc
+msgid "Full WBS Code"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account_complete_wbs_name
+#: model:ir.model.fields,field_description:project_wbs.field_project_project_complete_wbs_name
+msgid "Full WBS path"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.model.fields,help:project_wbs.field_account_analytic_account_complete_wbs_name
+#: model:ir.model.fields,help:project_wbs.field_project_project_complete_wbs_name
+msgid "Full path in the WBS hierarchy"
+msgstr ""
+
+#. module: project_wbs
+#: selection:account.analytic.account,state:0
+msgid "In Progress"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account_wbs_indent
+#: model:ir.model.fields,field_description:project_wbs.field_project_project_wbs_indent
+msgid "Level"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account_manager_id
+#: model:ir.model.fields,field_description:project_wbs.field_project_project_manager_id
+msgid "Manager"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.ui.view,arch_db:project_wbs.view_account_analytic_account_search2
+#: model:ir.ui.view,arch_db:project_wbs.view_project_project_group_filter
+msgid "Master Project"
+msgstr ""
+
+#. module: project_wbs
+#: selection:account.analytic.account,state:0
+msgid "New"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.ui.view,arch_db:project_wbs.view_project
+msgid "Parent"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.ui.view,arch_db:project_wbs.edit_project
+msgid "Parent Analytic Account"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.ui.view,arch_db:project_wbs.view_project
+msgid "Parent WBS element"
+msgstr ""
+
+#. module: project_wbs
+#: selection:account.analytic.account,account_class:0
+msgid "Phase"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.actions.act_window,name:project_wbs.open_view_project_phases
+msgid "Phases"
+msgstr ""
+
+#. module: project_wbs
+#: selection:account.analytic.account,account_class:0
+msgid "Project"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.ui.view,arch_db:project_wbs.view_project
+msgid "Project Form View"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.model.fields,field_description:project_wbs.field_project_project_project_child_complete_ids
+msgid "Project Hierarchy"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account_user_id
+msgid "Project Manager"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.actions.act_window,name:project_wbs.group_project
+#: model:ir.ui.menu,name:project_wbs.menu_project_wbs_project
+msgid "Projects"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.actions.act_window,help:project_wbs.open_view_project_wbs
+msgid "Projects are used to organize your activities; plan\n"
+"                  tasks, track issues, invoice timesheets. You can define\n"
+"                  internal projects (R&amp;D, Improve Sales Process),\n"
+"                  private projects (My Todos) or customer ones."
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account_project_analytic_id
+#: model:ir.model.fields,field_description:project_wbs.field_project_project_project_analytic_id
+msgid "Root Analytic Account"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.ui.view,arch_db:project_wbs.view_project
+msgid "Start Date"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account_state
+#: model:ir.model.fields,field_description:project_wbs.field_project_project_state
+msgid "Status"
+msgstr ""
+
+#. module: project_wbs
+#: selection:account.analytic.account,state:0
+msgid "Template"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.model.fields,help:project_wbs.field_account_analytic_account_account_class
+#: model:ir.model.fields,help:project_wbs.field_project_project_account_class
+msgid "The classification allows you to create a proper project Work Breakdown Structure"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.model.fields,help:project_wbs.field_account_analytic_account_complete_wbs_code
+#: model:ir.model.fields,help:project_wbs.field_project_project_complete_wbs_code
+msgid "The full WBS code describes the full path of this component within the project WBS hierarchy"
+msgstr ""
+
+#. module: project_wbs
+#: selection:account.analytic.account,state:0
+msgid "To Renew"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.model.fields,field_description:project_wbs.field_project_project_c_wbs_code
+msgid "WBS Code"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.ui.view,arch_db:project_wbs.view_project_kanban
+msgid "WBS Elements:"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.ui.view,arch_db:project_wbs.edit_project
+#: model:ir.ui.view,arch_db:project_wbs.view_account_analytic_account_form
+#: model:ir.ui.view,arch_db:project_wbs.view_account_analytic_account_list
+#: model:ir.ui.view,arch_db:project_wbs.view_account_analytic_account_search
+#: model:ir.ui.view,arch_db:project_wbs.view_project_project_filter
+msgid "WBS code"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.model,name:project_wbs.model_project_project
+msgid "WBS element"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.ui.view,arch_db:project_wbs.edit_project
+msgid "WBS element name"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.actions.act_window,name:project_wbs.create_wbs_element
+#: model:ir.actions.act_window,name:project_wbs.open_view_project_wbs
+msgid "WBS elements"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.actions.act_window,name:project_wbs.open_view_wbs_kanban
+msgid "WBS kanban"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.ui.view,arch_db:project_wbs.view_account_analytic_account_search
+#: model:ir.ui.view,arch_db:project_wbs.view_project_project_filter
+msgid "WBS name"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.actions.act_window,name:project_wbs.open_view_wbs_tree
+msgid "WBS overview"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.ui.view,arch_db:project_wbs.edit_project
+msgid "Work Breakdown Structure"
+msgstr ""
+
+#. module: project_wbs
+#: selection:account.analytic.account,account_class:0
+msgid "Work Package"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.actions.act_window,name:project_wbs.open_view_project_work_packages
+msgid "Work Packages"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.actions.act_window,help:project_wbs.open_view_project_wbs
+msgid "You will be able collaborate with internal users on\n"
+"                  projects or invite customers to share your activities."
+msgstr ""
+
