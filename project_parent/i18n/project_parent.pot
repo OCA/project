@@ -36,6 +36,6 @@ msgstr ""
 
 #. module: project_parent
 #: model:ir.model,name:project_parent.model_project_project
-msgid "Project"
+msgid "WBS element"
 msgstr ""
 
