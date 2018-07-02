@@ -40,11 +40,6 @@ msgid "Email Aliases"
 msgstr ""
 
 #. module: project_double_alias
-#: model:ir.model,name:project_double_alias.model_project_project
-msgid "Project"
-msgstr ""
-
-#. module: project_double_alias
 #: model:ir.model,name:project_double_alias.model_project_issue
 msgid "Project Issue"
 msgstr ""
@@ -63,5 +58,10 @@ msgstr ""
 #. module: project_double_alias
 #: model:ir.model.fields,help:project_double_alias.field_project_project_second_alias_name
 msgid "The name of the email alias, e.g. 'jobs' if you want to catch emails for <jobs@example.odoo.com>"
+msgstr ""
+
+#. module: project_double_alias
+#: model:ir.model,name:project_double_alias.model_project_project
+msgid "WBS element"
 msgstr ""
 
