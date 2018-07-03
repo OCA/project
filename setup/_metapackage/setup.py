@@ -31,6 +31,7 @@ setuptools.setup(
         'odoo10-addon-project_timeline',
         'odoo10-addon-project_timesheet_currency',
         'odoo10-addon-project_timesheet_time_control',
+        'odoo10-addon-project_wbs',
         'odoo10-addon-sale_order_project',
     ],
     classifiers=[
