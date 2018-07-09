@@ -6,15 +6,15 @@
 Timeline view for projects
 ==========================
 
-This module extends the standard tasks actions to add the timeline view to
+This module extends the standard tasks and projects actions to add the timeline view to
 them, and also adds the needed fields in the view for handling them.
 
 Usage
 =====
 
-* Go to *Project > Search > Tasks*.
+* Go to *Project > Search > Tasks* or *Project > Dashboard*.
 * Click on the icon with a clock.
-* You will see the tasks in the new view.
+* You will see the tasks or projects in the new view.
 
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
@@ -37,6 +37,7 @@ Contributors
 * Pedro M. Baeza <pedro.baeza@tecnativa.com>
 * Carlos Dauden <carlos.dauden@tecnativa.com>
 * Alexandre Moreau <alexandre.moreau@doscaal.fr>
+* Dennis Sluijk <d.sluijk@onestein.nl>
 
 Maintainer
 ----------
