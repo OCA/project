@@ -8,7 +8,7 @@
     'depends': ['project'],
     'license': 'AGPL-3',
     'author': "RGB Consulting SL",
-    'website': "http://odoo.rgbconsulting.com",
+    'website': "https://github.com/OCA/project",
     'category': 'Project Managment',
     'summary': """Adds project reviewer in project task""",
     'data': [
