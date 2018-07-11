@@ -7,7 +7,8 @@
     'version': '10.0.1.0.0',
     'depends': ['project'],
     'license': 'AGPL-3',
-    'author': "RGB Consulting SL",
+    'author': 'RGB Consulting SL, '
+              'Odoo Community Association (OCA)',
     'website': "https://github.com/OCA/project",
     'category': 'Project Managment',
     'summary': """Adds project reviewer in project task""",
