@@ -18,3 +18,9 @@ class ProjectTask(models.Model):
         super(ProjectTask, self)._onchange_user()
         if old_date_start > self.date_start:
             self.date_start = old_date_start
+
+    def update_date_end(self, stage_id):
+        if self.ids:
+            return {}
+        else:
+            return super(ProjectTask, self).update_end_date(stage_id)
