@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright 2018 Onestein
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res_config_settings_view_form</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="project.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='use_collaborative_pad']" position="after">
+                <div id="task_dependency_arrange" class="col-xs-12 col-md-6 o_setting_box">
+                    <div class="o_setting_left_pane">
+                        <field name="task_dependency_arrange"/>
+                    </div>
+                    <div class="o_setting_right_pane" name="task_dependency_arrange_right_pane">
+                        <label for="task_dependency_arrange"/>
+                        <div class="text-muted">
+                            Automatically arrange start and end dates of tasks bases on their dependencies.
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

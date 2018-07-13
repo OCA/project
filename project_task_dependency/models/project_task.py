@@ -72,3 +72,48 @@ class ProjectTask(models.Model):
             raise ValidationError(
                 _('You cannot create recursive dependencies between tasks.')
             )
+
+    @api.multi
+    def write(self, vals):
+        res = super(ProjectTask, self).write(vals)
+        if self.env['ir.config_parameter'].get_param(
+            'project_task_dependency.task_dependency_arrange', False
+        ) and ('date_end' in vals or 'date_start' in vals):
+            for task in self:
+                task_date_start = fields.Datetime.from_string(task.date_start)
+                task_date_end = fields.Datetime.from_string(
+                    task.date_end
+                ) or task_date_start
+
+                # Move depending tasks forward
+                for depending_task in task.depending_task_ids:
+                    task_dep_date_start = fields.Datetime.from_string(
+                        depending_task.date_start
+                    )
+                    task_dep_date_end = fields.Datetime.from_string(
+                        depending_task.date_end
+                    ) or task_dep_date_start
+                    if task_dep_date_start < task_date_end:
+                        length = task_dep_date_end - \
+                                 task_dep_date_start
+                        depending_task.write({
+                            'date_start': task_date_end,
+                            'date_end': task_date_end + length
+                        })
+
+                # Move task dependencies backwards
+                for dependency_task in task.dependency_task_ids:
+                    dependency_task_date_start = fields.Datetime.from_string(
+                        dependency_task.date_start
+                    )
+                    dependency_task_date_end = fields.Datetime.from_string(
+                        dependency_task.date_end
+                    ) or dependency_task_date_start
+                    if dependency_task_date_end > task_date_start:
+                        length = dependency_task_date_end - \
+                                 dependency_task_date_start
+                        dependency_task.write({
+                            'date_start': task_date_start - length,
+                            'date_end': task_date_start
+                        })
+        return res

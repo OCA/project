@@ -10,15 +10,20 @@ class TestProjectTaskDependency(TransactionCase):
     def setUp(self):
         super(TestProjectTaskDependency, self).setUp()
         self.task1 = self.env['project.task'].create({
-            'name': '1'
+            'name': '1',
+            'date_start': '2018-01-01 00:00:00'
         })
         self.task2 = self.env['project.task'].create({
             'name': '2',
-            'dependency_task_ids': [(6, 0, [self.task1.id])]
+            'dependency_task_ids': [(6, 0, [self.task1.id])],
+            'date_start': '2018-01-01 00:00:00',
+            'date_end': '2018-01-08 00:00:00'
         })
         self.task3 = self.env['project.task'].create({
             'name': '3',
-            'dependency_task_ids': [(6, 0, [self.task2.id])]
+            'dependency_task_ids': [(6, 0, [self.task2.id])],
+            'date_start': '2018-01-08 00:00:00',
+            'date_end': '2018-01-15 00:00:00'
         })
 
     def test_01_dependency_path(self):
@@ -38,3 +43,42 @@ class TestProjectTaskDependency(TransactionCase):
             self.task1.write({
                 'dependency_task_ids': [(6, 0, [self.task3.id])]
             })
+
+    def test_arrange(self):
+        self.task1.write({
+            'date_start': '2017-01-01 00:00:00'
+        })
+
+        self.assertEqual(self.task2.date_start, '2018-01-01 00:00:00')
+        self.assertEqual(self.task2.date_end, '2018-01-08 00:00:00')
+        self.assertEqual(self.task3.date_start, '2018-01-08 00:00:00')
+        self.assertEqual(self.task3.date_end, '2018-01-15 00:00:00')
+
+        self.task1.write({
+            'date_start': '2018-01-08 00:00:00'
+        })
+
+        self.assertEqual(self.task2.date_start, '2018-01-08 00:00:00')
+        self.assertEqual(self.task2.date_end, '2018-01-15 00:00:00')
+        self.assertEqual(self.task3.date_start, '2018-01-15 00:00:00')
+        self.assertEqual(self.task3.date_end, '2018-01-22 00:00:00')
+
+        self.task2.write({
+            'date_start': '2017-12-01 00:00:00',
+            'date_end': '2018-01-22 00:00:00'
+        })
+
+        self.assertEqual(self.task1.date_start, '2017-12-01 00:00:00')
+        self.assertEqual(self.task3.date_start, '2018-01-22 00:00:00')
+        self.assertEqual(self.task3.date_end, '2018-01-29 00:00:00')
+
+        self.task3.write({
+            'date_start': '2018-01-21 00:00:00',
+            'date_end': '2018-01-28 00:00:00'
+        })
+
+        self.assertEqual(self.task1.date_start, '2017-11-30 00:00:00')
+        self.assertEqual(self.task2.date_start, '2017-11-30 00:00:00')
+        self.assertEqual(self.task2.date_end, '2018-01-21 00:00:00')
+        self.assertEqual(self.task3.date_start, '2018-01-21 00:00:00')
+        self.assertEqual(self.task3.date_end, '2018-01-28 00:00:00')
