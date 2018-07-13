@@ -16,7 +16,7 @@
                     <div class="o_setting_right_pane" name="task_dependency_arrange_right_pane">
                         <label for="task_dependency_arrange"/>
                         <div class="text-muted">
-                            Automatically arrange start and end dates of tasks bases on their dependencies.
+                            Automatically arrange start and end dates of tasks based on their dependencies.
                         </div>
                     </div>
                 </div>
