@@ -20,7 +20,6 @@ class ProjectTask(models.Model):
             self.date_start = old_date_start
 
     def update_date_end(self, stage_id):
-        if self.ids:
-            return {}
-        else:
-            return super(ProjectTask, self).update_end_date(stage_id)
+        res = super(ProjectTask, self).update_date_end(stage_id)
+        res.pop('date_end')
+        return res
