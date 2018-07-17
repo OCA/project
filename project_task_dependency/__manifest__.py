@@ -12,6 +12,7 @@
         'project'
     ],
     'data': [
+        'data/ir_config_parameter_data.xml',
         'views/project_task_view.xml',
         'views/res_config_settings_view.xml'
     ],

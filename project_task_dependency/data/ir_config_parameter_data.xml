@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <record id="parameter_task_dependency_arrange" model="ir.config_parameter">
+        <field name="key">project_task_dependency.task_dependency_arrange</field>
+        <field name="value">False</field>
+    </record>
+</odoo>
