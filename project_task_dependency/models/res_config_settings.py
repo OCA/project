@@ -1,7 +1,7 @@
 # Copyright 2018 Onestein
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import api, fields, models
+from odoo import fields, models
 
 
 class ResConfigSettings(models.TransientModel):
@@ -20,6 +20,9 @@ class ResConfigSettings(models.TransientModel):
 
     def get_values(self):
         res = super(ResConfigSettings, self).get_values()
-        res['task_dependency_arrange'] = self.env['ir.config_parameter'].get_param(
-            'project_task_dependency.task_dependency_arrange', False)
+        res['task_dependency_arrange'] = \
+            self.env['ir.config_parameter'].get_param(
+                'project_task_dependency.task_dependency_arrange',
+                False
+            )
         return res

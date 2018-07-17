@@ -95,7 +95,7 @@ class ProjectTask(models.Model):
                     ) or task_dep_date_start
                     if task_dep_date_start < task_date_end:
                         task_dep_diff = task_dep_date_end - \
-                                 task_dep_date_start
+                                        task_dep_date_start
                         depending_task.write({
                             'date_start': task_date_end,
                             'date_end': task_date_end + task_dep_diff
@@ -111,7 +111,7 @@ class ProjectTask(models.Model):
                     ) or dependency_task_date_start
                     if dependency_task_date_end > task_date_start:
                         task_diff = dependency_task_date_end - \
-                                 dependency_task_date_start
+                                    dependency_task_date_start
                         dependency_task.write({
                             'date_start': task_date_start - task_diff,
                             'date_end': task_date_start
