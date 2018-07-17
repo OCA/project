@@ -76,7 +76,7 @@ class ProjectTask(models.Model):
     @api.multi
     def write(self, vals):
         res = super(ProjectTask, self).write(vals)
-        if self.env['ir.config_parameter'].get_param(
+        if self.env['ir.config_parameter'].sudo().get_param(
             'project_task_dependency.task_dependency_arrange', False
         ) and ('date_end' in vals or 'date_start' in vals):
             for task in self:
@@ -94,8 +94,8 @@ class ProjectTask(models.Model):
                         depending_task.date_end
                     ) or task_dep_date_start
                     if task_dep_date_start < task_date_end:
-                        task_dep_diff = task_dep_date_end - \
-                                        task_dep_date_start
+                        task_dep_diff = (task_dep_date_end -
+                                         task_dep_date_start)
                         depending_task.write({
                             'date_start': task_date_end,
                             'date_end': task_date_end + task_dep_diff
@@ -110,8 +110,8 @@ class ProjectTask(models.Model):
                         dependency_task.date_end
                     ) or dependency_task_date_start
                     if dependency_task_date_end > task_date_start:
-                        task_diff = dependency_task_date_end - \
-                                    dependency_task_date_start
+                        task_diff = (dependency_task_date_end -
+                                     dependency_task_date_start)
                         dependency_task.write({
                             'date_start': task_date_start - task_diff,
                             'date_end': task_date_start
