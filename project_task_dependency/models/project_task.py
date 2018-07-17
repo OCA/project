@@ -94,11 +94,11 @@ class ProjectTask(models.Model):
                         depending_task.date_end
                     ) or task_dep_date_start
                     if task_dep_date_start < task_date_end:
-                        length = task_dep_date_end - \
+                        task_dep_diff = task_dep_date_end - \
                                  task_dep_date_start
                         depending_task.write({
                             'date_start': task_date_end,
-                            'date_end': task_date_end + length
+                            'date_end': task_date_end + task_dep_diff
                         })
 
                 # Move task dependencies backwards
@@ -110,10 +110,10 @@ class ProjectTask(models.Model):
                         dependency_task.date_end
                     ) or dependency_task_date_start
                     if dependency_task_date_end > task_date_start:
-                        length = dependency_task_date_end - \
+                        task_diff = dependency_task_date_end - \
                                  dependency_task_date_start
                         dependency_task.write({
-                            'date_start': task_date_start - length,
+                            'date_start': task_date_start - task_diff,
                             'date_end': task_date_start
                         })
         return res

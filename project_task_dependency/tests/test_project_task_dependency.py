@@ -45,6 +45,11 @@ class TestProjectTaskDependency(TransactionCase):
             })
 
     def test_arrange(self):
+        self.env['ir.config_parameter'].set_param(
+            'project_task_dependency.task_dependency_arrange',
+            True
+        )
+
         self.task1.write({
             'date_start': '2017-01-01 00:00:00'
         })
