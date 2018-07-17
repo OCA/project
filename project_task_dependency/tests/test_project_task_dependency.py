@@ -87,3 +87,17 @@ class TestProjectTaskDependency(TransactionCase):
         self.assertEqual(self.task2.date_end, '2018-01-21 00:00:00')
         self.assertEqual(self.task3.date_start, '2018-01-21 00:00:00')
         self.assertEqual(self.task3.date_end, '2018-01-28 00:00:00')
+
+    def test_config(self):
+        conf = self.env['res.config.settings'].create({
+            'task_dependency_arrange': True
+        })
+        conf.set_values()
+        param = self.env['ir.config_parameter'].get_param(
+            'project_task_dependency.task_dependency_arrange'
+        )
+        self.assertTrue(param)
+        values = conf.get_values()
+        self.assertTrue(
+            values['task_dependency_arrange']
+        )
