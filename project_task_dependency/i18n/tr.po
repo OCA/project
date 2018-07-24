@@ -59,4 +59,4 @@ msgstr "Bu göreve bağımlı görevler."
 #: code:addons/project_task_dependency/models/project_task.py:73
 #, python-format
 msgid "You cannot create recursive dependencies between tasks."
-msgstr ""
+msgstr "Görevler arasında yinelemeli bağımlılıklar oluşturamazsınız."
