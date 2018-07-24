@@ -32,23 +32,23 @@ msgstr "Tamam"
 #. module: project_stage_state
 #: selection:project.task.type,state:0
 msgid "In Progress"
-msgstr ""
+msgstr "Devam etmekte"
 
 #. module: project_stage_state
 #: selection:project.task.type,state:0
 msgid "New"
-msgstr ""
+msgstr "Yeni"
 
 #. module: project_stage_state
 #: selection:project.task.type,state:0
 msgid "Pending"
-msgstr ""
+msgstr "Askıda olan"
 
 #. module: project_stage_state
 #: model:ir.model.fields,field_description:project_stage_state.field_project_task_state
 #: model:ir.model.fields,field_description:project_stage_state.field_project_task_type_state
 msgid "State"
-msgstr ""
+msgstr "Durumu"
 
 #. module: project_stage_state
 #: model:ir.model,name:project_stage_state.model_project_task
