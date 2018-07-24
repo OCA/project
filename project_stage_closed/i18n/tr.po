@@ -21,7 +21,7 @@ msgstr ""
 #. module: project_stage_closed
 #: model:ir.model.fields,field_description:project_stage_closed.field_project_task_type_closed
 msgid "Closed"
-msgstr ""
+msgstr "Kapalı"
 
 #. module: project_stage_closed
 #: model:ir.model,name:project_stage_closed.model_project_task_type
@@ -31,4 +31,4 @@ msgstr "Görev Aşamaları"
 #. module: project_stage_closed
 #: model:ir.model.fields,help:project_stage_closed.field_project_task_type_closed
 msgid "Tasks in this stage are considered closed."
-msgstr ""
+msgstr "Bu aşamadaki görevler kapalı kabul edilir."
