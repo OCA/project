@@ -33,7 +33,7 @@ msgstr "Analiz"
 #: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_specification
 #: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_testing
 msgid "Blocked"
-msgstr ""
+msgstr "Engellendi"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_cancel
@@ -79,7 +79,7 @@ msgstr ""
 #: model:project.task.type,legend_normal:project_task_default_stage.project_tt_specification
 #: model:project.task.type,legend_normal:project_task_default_stage.project_tt_testing
 msgid "In Progress"
-msgstr ""
+msgstr "Devam etmekte"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_merge
@@ -106,7 +106,7 @@ msgstr "Proje Aşamaları"
 #: model:project.task.type,legend_done:project_task_default_stage.project_tt_specification
 #: model:project.task.type,legend_done:project_task_default_stage.project_tt_testing
 msgid "Ready for Next Stage"
-msgstr ""
+msgstr "Sonraki Aşamaya Hazır"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_specification
