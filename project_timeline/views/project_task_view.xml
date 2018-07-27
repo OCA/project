@@ -16,6 +16,8 @@
                       event_open_popup="true"
                       colors="#ec7063: user_id == false; #2ecb71: kanban_state == 'done';">
                 <field name="user_id"/>
+                <field name="progress"/>
+                <field name="planned_hours"/>
                 <templates>
                     <t t-name="timeline-item">
                         <div class="o_project_timeline_item">
@@ -24,6 +26,10 @@
                                  t-att-title="record.user_id[1]" width="24" height="24" class="mr8"/>
 
                             <t t-esc="record.display_name"/>
+                        </div>
+                        <div class="o_project_timeline_item_progress">
+                            <div t-att-class="record.progress > 100 and 'danger'"
+                                 t-attf-style="width: #{record.progress}%" />
                         </div>
                     </t>
                 </templates>
