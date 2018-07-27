@@ -21,7 +21,7 @@
                         <div class="o_project_timeline_item">
                             <img t-if="record.user_id"
                                  t-attf-src="/web/image/res.users/#{record.user_id[0]}/image/24x24"
-                                 t-att-title="record.user_id[1]" class="mr8"/>
+                                 t-att-title="record.user_id[1]" width="24" height="24" class="mr8"/>
 
                             <t t-esc="record.display_name"/>
                         </div>
