@@ -6,16 +6,20 @@ from odoo.exceptions import ValidationError
 
 
 class TestProjectTaskPullRequest(TransactionCase):
+    post_install = True
+    at_install = False
 
     def setUp(self):
         super(TestProjectTaskPullRequest, self).setUp()
         self.project_1 = self.env['project.project'].create({
             'name': 'Test Project',
             'pr_required_states': [(4, 6, 0)],
+            'key': 'ABC',
         })
         self.project_2 = self.env['project.project'].create({
             'name': 'Test Project',
             'pr_required_states': [(4, 6, 0), (4, 5, 0)],
+            'key': 'DEF',
         })
         self.task_1 = self.env['project.task'].create({
             'name': 'Test Task',
