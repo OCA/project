@@ -5,7 +5,7 @@
 Odoo Project & Service Management
 =================================
 
-Find revelant modules for service business processes or companies.
+Find relevant modules for service business processes or companies.
 
 This project aims to extend Odoo on contract management features, such as:
 
