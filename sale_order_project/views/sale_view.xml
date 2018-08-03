@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form" model="ir.ui.view">
+        <field name="name">view_project_quotation_order_form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+            <field name="related_project_id" position="after">
+                <button name="action_create_project" type="object"
+                        string="Create Project" class="oe_inline oe_edit_only"
+                        groups="sale.group_analytic_accounting,project.group_project_user"
+                        attrs="{'invisible':['|',('state','!=','draft'),('related_project_id','!=',False)]}" />
+            </field>
+        </field>
+    </record>
+</odoo>
