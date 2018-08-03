@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).-->
+<odoo>
+
+    <record id="project_task_scheduling_proposal_view_form" model="ir.ui.view">
+        <field name="name">project.task.scheduling.proposal.form</field>
+        <field name="model">project.task.scheduling.proposal</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_recompute"
+                            type="object"
+                            string="Re-compute evaluation"
+                            icon="fa-check"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_timeline_scheduling"
+                                type="object"
+                                string="View scheduling"
+                                icon="fa-align-left"/>
+                        <button name="action_set_scheduling"
+                                type="object"
+                                string="Set scheduling"
+                                icon="fa-check"
+                                confirm="Are you sure you want to set this proposal as definitive?"/>
+                    </div>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="description" placeholder="Short description..."/>
+                        </h1>
+                    </div>
+                    <group col="4">
+                        <field name="date_start"/>
+                        <field name="date_end"/>
+                        <field name="duration"/>
+                        <field name="delayed_tasks"/>
+                        <field name="evaluation"/>
+                    </group>
+                    <notebook>
+                        <page string="Scheduling" name="scheduling">
+                            <group>
+                                <field name="task_scheduling_ids" nolabel="1">
+                                    <tree>
+                                        <field name="employee_id"/>
+                                        <field name="task_id"/>
+                                        <field name="datetime_start"/>
+                                        <field name="datetime_stop"/>
+                                        <field name="delayed"/>
+                                        <button name="action_set_assignation"
+                                                type="object"
+                                                string="Set assignation"
+                                                icon="fa-check"
+                                                confirm="Are you sure you want to set this assignation as definitive?"/>
+                                    </tree>
+                                </field>
+                            </group>
+                        </page>
+                        <page string="Not scheduled tasks" name="not_scheduled_task">
+                            <group>
+                                <field name="not_scheduled_task_ids" nolabel="1"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="project_task_scheduling_proposal_view_tree" model="ir.ui.view">
+        <field name="name">project.task.scheduling.proposal.tree</field>
+        <field name="model">project.task.scheduling.proposal</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="description"/>
+                <field name="date_start"/>
+                <field name="date_end"/>
+                <field name="duration"/>
+                <field name="delayed_tasks"/>
+                <field name="evaluation"/>
+
+                <button name="action_timeline_scheduling" type="object"
+                        string="View scheduling" icon="fa-align-left"/>
+                <button name="action_set_scheduling" type="object"
+                        string="Set scheduling" icon="fa-check"
+                        confirm="Are you sure you want to set this proposal?"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="project_task_scheduling_proposal_action"
+            model="ir.actions.act_window">
+        <field name="name">Scheduling proposals</field>
+        <field name="res_model">project.task.scheduling.proposal</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem action="project_task_scheduling_proposal_action"
+              id="project_task_scheduling_proposal_menu"
+              parent="project_task_scheduling_menu"
+              sequence="20"/>
+
+</odoo>

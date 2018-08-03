@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).-->
+<odoo>
+
+    <record id="edit_project" model="ir.ui.view">
+        <field name="name">project.project.form.inherit.scheduling</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <notebook>
+                <page string="Employees">
+                    <group>
+                         <field name="employee_ids" nolabel="1"/>
+                    </group>
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+    <record id="view_task_form2_inherit_schedule" model="ir.ui.view">
+        <field name="name">project.task.form.inherit.schedule</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <field name="tag_ids" position="after">
+                <field name="employee_category_id"/>
+            </field>
+            <xpath expr="//notebook/page[@name='description_page']" position="after">
+                <page string="Scheduling">
+                    <group>
+                        <group>
+                            <field name="employee_id"/>
+                        </group>
+                        <group>
+                            <field name="date_start_assignation"/>
+                            <field name="date_stop_assignation"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

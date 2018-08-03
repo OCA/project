@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).-->
+<odoo>
+
+    <record id="restricted_project" model="project.project">
+        <field name="name">Project restricted</field>
+        <field name="employee_ids" eval="[(6, 0, [ref('hr.employee_jth'), ref('hr.employee_root')])]"/>
+    </record>
+
+    <record id="restricted_task_2" model="project.task">
+        <field name="name">2</field>
+        <field name="project_id" ref="restricted_project"/>
+        <field name="planned_hours">2</field>
+        <field name="date_deadline" eval="datetime.now()+timedelta(days=30)"/>
+        <field name="stage_id" ref="project.project_stage_0"/>
+    </record>
+
+    <record id="restricted_task_3" model="project.task">
+        <field name="name">3</field>
+        <field name="project_id" ref="restricted_project"/>
+        <field name="planned_hours">3</field>
+        <field name="date_deadline" eval="datetime.now()+timedelta(days=30)"/>
+        <field name="stage_id" ref="project.project_stage_0"/>
+    </record>
+
+    <record id="restricted_task_7" model="project.task">
+        <field name="name">7</field>
+        <field name="project_id" ref="restricted_project"/>
+        <field name="planned_hours">7</field>
+        <field name="date_deadline" eval="datetime.now()+timedelta(days=30)"/>
+        <field name="stage_id" ref="project.project_stage_0"/>
+        <field name="employee_category_id" ref="hr.employee_category_3"/>
+    </record>
+
+    <record id="restricted_task_1" model="project.task">
+        <field name="name">1</field>
+        <field name="project_id" ref="restricted_project"/>
+        <field name="planned_hours">1</field>
+        <field name="date_deadline" eval="datetime.now()+timedelta(days=30)"/>
+        <field name="stage_id" ref="project.project_stage_0"/>
+        <field name="employee_category_id" ref="hr.employee_category_5"/>
+    </record>
+
+</odoo>

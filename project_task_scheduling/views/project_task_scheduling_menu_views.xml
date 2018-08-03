@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).-->
+<odoo>
+
+    <menuitem id="project_task_scheduling_menu"
+              name="Automation"
+              parent="project.menu_main_pm"/>
+
+</odoo>
