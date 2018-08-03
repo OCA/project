@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright 2017 Eficent Business and IT Consulting Services S.L.
 # Copyright 2017 Luxim d.o.o.
 # Copyright 2017 Matmoz d.o.o.
@@ -30,7 +29,6 @@ class Project(models.Model):
             INNER JOIN project_project p
             ON a.id = p.analytic_account_id
             JOIN children b ON(a.parent_id = b.id)
-            --WHERE p.state not in ('template', 'cancelled')
             )
             SELECT * FROM children order by ppid
         ''', (tuple(self.ids),))
@@ -63,7 +61,7 @@ class Project(models.Model):
                 if proj and proj.name:
                     data.insert(0, proj.name)
                 else:
-                    data.insert(0, '')
+                    data.insert(0, '')  # pragma: no cover
                 proj = proj.parent_id
             data = '/'.join(data)
             res2 = project_item.code_get()
@@ -84,7 +82,7 @@ class Project(models.Model):
                 if proj.code:
                     data.insert(0, proj.code)
                 else:
-                    data.insert(0, '')
+                    data.insert(0, '')  # pragma: no cover
 
                 proj = proj.parent_id
 
@@ -110,15 +108,9 @@ class Project(models.Model):
         account.analytic.account
         """
         context = self.env.context or {}
-        if type(context.get('default_parent_id')) in (int, long):
+        if type(context.get('default_parent_id')) == int:
             return context['default_parent_id']
         return None
-
-    @api.multi
-    def _compute_analytic_complete_wbs_code(self):
-        for project in self:
-            project.c_wbs_code = \
-                project.analytic_account_id.complete_wbs_code
 
     project_child_complete_ids = fields.Many2many(
         comodel_name='project.project',
@@ -126,7 +118,7 @@ class Project(models.Model):
         compute="_compute_child"
     )
     c_wbs_code = fields.Char(
-        compute="_compute_analytic_complete_wbs_code",
+        related="analytic_account_id.complete_wbs_code",
         string='WBS Code',
         readonly=True,
         store=True
@@ -136,6 +128,14 @@ class Project(models.Model):
         store=True,
         default='project',
     )
+
+    @api.multi
+    def copy(self, default=None):
+        if default is None:
+            default = {}
+        default['code'] = self.env['ir.sequence'].next_by_code(
+            'account.analytic.account.code')
+        return super(Project, self).copy(default)
 
     @api.multi
     def action_open_child_view(self, module, act_window):
@@ -168,11 +168,6 @@ class Project(models.Model):
             "nodestroy": False
         })
         return res
-
-    @api.multi
-    def action_open_projects_view(self):
-        return self.action_open_child_view(
-            'project_wbs', 'open_view_project_projects')
 
     @api.multi
     def action_open_child_tree_view(self):
@@ -209,6 +204,16 @@ class Project(models.Model):
         return res
 
     @api.multi
+    def write(self, vals):
+        res = super(Project, self).write(vals)
+        if 'parent_id' in vals:
+            for account in self.env['account.analytic.account'].browse(
+                    self.analytic_account_id.get_child_accounts().keys()):
+                account._complete_wbs_code_calc()
+                account._complete_wbs_name_calc()
+        return res
+
+    @api.multi
     def action_open_parent_kanban_view(self):
         """
         :return dict: dictionary value for created view
@@ -233,10 +238,6 @@ class Project(models.Model):
         return res
 
     @api.multi
-    def button_save_data(self):
-        return True
-
-    @api.multi
     @api.onchange('parent_id')
     def on_change_parent(self):
         return self.analytic_account_id._onchange_parent_id()
@@ -247,7 +248,7 @@ class Project(models.Model):
         view = {
             'name': _('Details'),
             'view_type': 'form',
-            'view_mode': 'form,tree,kanban,gantt',
+            'view_mode': 'form,tree,kanban',
             'res_model': 'project.project',
             'view_id': False,
             'type': 'ir.actions.act_window',
