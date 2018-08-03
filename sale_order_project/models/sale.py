@@ -12,7 +12,7 @@ class SaleOrder(models.Model):
 
     def _prepare_project_vals(self):
         self.ensure_one()
-        name = u" %s - %s - %s" % (
+        name = " %s - %s - %s" % (
             self.partner_id.name,
             date.today().year,
             self.name)
