@@ -9,7 +9,6 @@ This module is a base module that give the possibility to create a project
 from a quotation, if a contract is set with use_tasks checked it will show
 the related project.
 
-
 Bug Tracker
 ===========
 
@@ -29,6 +28,8 @@ Contributors
 * Benoît GUILLOT <benoit.guillot@akretion.com>
 * Oihane Crucelaegui <oihanecrucelaegi@avanzosc.es>
 * Abraham Anes Studio73 <abraham@studio73.es>
+* Aitor Bouzas <aitor.bouzas@adaptivecity.com>
+* José Luis Sandoval Alaguna <alagunasalahaddin@live.com>
 
 
 Maintainer
