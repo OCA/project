@@ -18,6 +18,7 @@ setuptools.setup(
         'odoo11-addon-project_task_default_stage',
         'odoo11-addon-project_task_dependency',
         'odoo11-addon-project_task_material',
+        'odoo11-addon-project_task_pull_request',
         'odoo11-addon-project_timeline',
     ],
     classifiers=[
