@@ -1,11 +1,10 @@
-# -*- coding: utf-8 -*-
 # Copyright 2017 Eficent Business and IT Consulting Services S.L.
 # Copyright 2017 Luxim d.o.o.
 # Copyright 2017 Matmoz d.o.o.
 # Copyright 2017 Deneroteam.
 # Copyright 2017 Serpent Consulting Services Pvt. Ltd.
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
-from odoo import api, fields, models
+from odoo import _, api, fields, models
 
 
 class AccountAnalyticAccount(models.Model):
@@ -15,6 +14,8 @@ class AccountAnalyticAccount(models.Model):
     @api.multi
     def get_child_accounts(self):
         result = {}
+        if not self.ids:
+            return result
         for curr_id in self.ids:
             result[curr_id] = True
         # Now add the children
@@ -34,6 +35,15 @@ class AccountAnalyticAccount(models.Model):
         for x, y in res:
             result[y] = True
         return result
+
+    @api.multi
+    def write(self, vals):
+        res = super(AccountAnalyticAccount, self).write(vals)
+        if vals.get('parent_id'):
+            for account in self.browse(self.get_child_accounts().keys()):
+                account._complete_wbs_code_calc()
+                account._complete_wbs_name_calc()
+        return res
 
     @api.multi
     @api.depends('code')
@@ -82,14 +92,14 @@ class AccountAnalyticAccount(models.Model):
                 acc = acc.parent_id
             if data:
                 if len(data) >= 2:
-                    data = ''.join(data)
+                    data = ''.join(data)  # pragma: no cover
                 else:
                     data = data[0]
             account.wbs_indent = data or ''
 
     @api.multi
-    @api.depends('account_class')
-    def _get_project_analytic_id(self):
+    @api.depends('account_class', 'parent_id')
+    def _compute_project_analytic_id(self):
         for analytic in self:
             current = analytic
             while current:
@@ -115,11 +125,7 @@ class AccountAnalyticAccount(models.Model):
         string='Level',
         readonly=True
     )
-    complete_wbs_code_calc = fields.Char(
-        compute=_complete_wbs_code_calc,
-        string='Full WBS Code',
-        help='Computed WBS code'
-    )
+
     complete_wbs_code = fields.Char(
         compute=_complete_wbs_code_calc,
         string='Full WBS Code',
@@ -135,7 +141,7 @@ class AccountAnalyticAccount(models.Model):
     )
     project_analytic_id = fields.Many2one(
         'account.analytic.account',
-        compute=_get_project_analytic_id,
+        compute=_compute_project_analytic_id,
         string='Root Analytic Account',
         store=True
     )
@@ -144,11 +150,6 @@ class AccountAnalyticAccount(models.Model):
         default=_default_user)
     manager_id = fields.Many2one('res.users', 'Manager',
                                  track_visibility='onchange')
-    state = fields.Selection(
-        [('template', 'Template'), ('draft', 'New'), ('open', 'In Progress'),
-         ('pending', 'To Renew'), ('close', 'Closed'),
-         ('cancelled', 'Cancelled')], 'Status', default='draft', required=True,
-        track_visibility='onchange')
 
     account_class = fields.Selection(
         [('project', 'Project'), ('phase', 'Phase'),
@@ -162,6 +163,14 @@ class AccountAnalyticAccount(models.Model):
     partner_id = fields.Many2one(default=_default_partner)
 
     @api.multi
+    def copy(self, default=None):
+        if default is None:
+            default = {}
+        default['code'] = self.env['ir.sequence'].next_by_code(
+            'account.analytic.account.code')
+        return super(AccountAnalyticAccount, self).copy(default)
+
+    @api.multi
     @api.depends('code')
     def code_get(self):
         res = []
@@ -172,7 +181,7 @@ class AccountAnalyticAccount(models.Model):
                 if acc.code:
                     data.insert(0, acc.code)
                 else:
-                    data.insert(0, '')
+                    data.insert(0, '')  # pragma: no cover
 
                 acc = acc.parent_id
             data = ' / '.join(data)
@@ -190,7 +199,7 @@ class AccountAnalyticAccount(models.Model):
                 if acc.name:
                     data.insert(0, acc.name)
                 else:
-                    data.insert(0, '')
+                    data.insert(0, '')  # pragma: no cover
                 acc = acc.parent_id
 
             data = '/'.join(data)
@@ -200,3 +209,8 @@ class AccountAnalyticAccount(models.Model):
 
             res.append((account.id, data))
         return res
+
+    _sql_constraints = [
+        ('analytic_unique_wbs_code', 'UNIQUE (complete_wbs_code)',
+         _('The full wbs code must be unique!')),
+    ]
