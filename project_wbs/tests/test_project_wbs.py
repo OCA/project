@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright 2017 Eficent Business and IT Consulting Services S.L.
 # Copyright 2017 Luxim d.o.o.
 # Copyright 2017 Matmoz d.o.o.
@@ -46,6 +45,8 @@ class TestProjectWbs(common.TransactionCase):
             'Incorrect WBS code')
 
     def test_get_child_accounts(self):
+        res = self.env['account.analytic.account'].get_child_accounts()
+        self.assertEqual(res, {}, 'Should get nothing')
         res = self.parent_account.get_child_accounts()
         for has_parent in res.keys():
             self.assertEqual(res[has_parent], True, 'Wrong child accounts')
@@ -56,6 +57,10 @@ class TestProjectWbs(common.TransactionCase):
             _resolve_analytic_account_id_from_context()
         self.assertEqual(
             res, self.project.id, 'Wrong Parent Project from context')
+        res = self.env['project.project'].\
+            _resolve_analytic_account_id_from_context()
+        self.assertEqual(
+            res, None, 'Should not be anything in context')
 
     def test_indent_calc(self):
         self.son_account._wbs_indent_calc()
@@ -86,7 +91,25 @@ class TestProjectWbs(common.TransactionCase):
             res['res_id'], self.project.id,
             'Wrong project form view')
 
-    def test_onchange(self):
+    def test_onchange_parent(self):
         self.project2.write({'parent_id': self.parent_account.id})
+        self.project2.on_change_parent()
         child_in = self.project2 in self.project.project_child_complete_ids
         self.assertTrue(child_in, 'Child not added')
+
+    def test_duplicate(self):
+        seq_id = self.env['ir.sequence'].search(
+            [('code', '=', 'account.analytic.account.code')])
+        next_val = seq_id.number_next_actual
+        copy_project = self.project.copy()
+        self.assertTrue(str(next_val) in copy_project.analytic_account_id.code)
+        next_val = seq_id.number_next_actual
+        copy_analytic = self.parent_account.copy()
+        self.assertTrue(str(next_val) in copy_analytic.code)
+
+    def test_project_analytic_id(self):
+        self.grand_son_account.account_class = 'deliverable'
+        self.grand_son_account._compute_project_analytic_id()
+        self.assertEqual(
+            self.grand_son_account.project_analytic_id.id,
+            self.son_account.id)
