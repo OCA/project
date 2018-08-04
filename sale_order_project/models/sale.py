@@ -1,43 +1,40 @@
-###############################################################################
-#
-#   Module for OpenERP
-#   Copyright (C) 2014 Akretion (http://www.akretion.com).
-#   Copyright (C) 2010-2013 Akretion LDTA (<http://www.akretion.com>)
-#   @author Sébastien BEAU <sebastien.beau@akretion.com>
-#   @author Benoît GUILLOT <benoit.guillot@akretion.com>
-#
-#   This program is free software: you can redistribute it and/or modify
-#   it under the terms of the GNU Affero General Public License as
-#   published by the Free Software Foundation, either version 3 of the
-#   License, or (at your option) any later version.
-#
-#   This program is distributed in the hope that it will be useful,
-#   but WITHOUT ANY WARRANTY; without even the implied warranty of
-#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#   GNU Affero General Public License for more details.
-#
-#   You should have received a copy of the GNU Affero General Public License
-#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-###############################################################################
+# © 2014 Akretion - Sébastien BEAU <sebastien.beau@akretion.com>
+# © 2014 Akretion - Benoît GUILLOT <benoit.guillot@akretion.com>
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+from datetime import date
 
-from odoo import api, models, _
+from odoo import api, fields, models, _
 from odoo.exceptions import Warning
 
 
 class SaleOrder(models.Model):
     _inherit = "sale.order"
 
-    def _prepare_project_vals(self):
-        self.ensure_one()
-        name = " %s - %s - %s" % (
-            self.partner_id.name,
+    @api.one
+    @api.depends('analytic_account_id')
+    def _compute_related_project_id(self):
+        self.related_project_id = (
+            self.env['project.project'].search(
+                [('analytic_account_id', '=', self.analytic_account_id.id)],limit=1
+            )[:1]
+        )
+
+    related_project_id = fields.Many2one(
+        comodel_name='project.project',
+        string='Project',
+        compute='_compute_related_project_id'
+    )
+
+    @api.model
+    def _prepare_project_vals(self, order):
+        name = "%s - %s - %s" % (
+            order.partner_id.name,
             date.today().year,
-            self.name)
+            order.name)
         return {
-            'user_id': self.user_id.id,
+            'user_id': order.user_id.id,
             'name': name,
-            'partner_id': self.partner_id.id,
+            'partner_id': order.partner_id.id,
         }
 
     @api.multi
@@ -48,9 +45,9 @@ class SaleOrder(models.Model):
                 raise Warning(_(
                     'There is a project already related with this sale order.'
                 ))
-            vals = order._prepare_project_vals()
+            vals = self._prepare_project_vals(order)
             project = project_obj.create(vals)
             order.write({
-                'project_id': project.analytic_account_id.id
+                'analytic_account_id': project.analytic_account_id.id
             })
         return True
