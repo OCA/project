@@ -10,8 +10,13 @@
                     <field name="related_project_id" />
                 </group>
             </group>
-            <xpath expr="//button[@name='toggle_active']" position="before">
-                <button class="oe_inline oe_edit_only" type="object" name="action_create_project" string="Create Project" groups="sale.group_analytic_accounting,project.group_project_user" attrs="{'invisible':['|',('state','!=','draft'),('related_project_id','!=',False)]}" />
+            <xpath expr="//button[@name='action_view_invoice']" position="before">
+                <button class="oe_stat_button" type="action" name="action_create_project" icon="fa-project-diagram" help="Create Project" groups="sale.group_analytic_accounting,project.group_project_user" attrs="{'invisible':['|',('state','!=','draft'),('related_project_id','!=',False)]}">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_text">Create</span>
+                        <span class="o_stat_text">Project</span>
+                    </div>
+                </button>
             </xpath>
         </field>
     </record>
