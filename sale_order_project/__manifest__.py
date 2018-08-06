@@ -19,6 +19,7 @@ Link module to map sale orders to project
         'sale',
     ],
     'data': [
+        'wizard/sale_order_createproject_views.xml',
         'views/sale_view.xml',
     ],
     'installable': True,

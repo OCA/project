@@ -16,8 +16,8 @@
                     https://github.com/odoo/odoo/issues/21648#issuecomment-353099417
                 -->
                 <button class="oe_stat_button"
-                        type="object"
-                        name="action_create_project"
+                        type="action"
+                        name="%(action_create_project)d"
                         icon="fa-tasks"
                         help="Create Project"
                         groups="sale.group_analytic_accounting,project.group_project_user"
