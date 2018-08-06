@@ -41,7 +41,7 @@ class SaleOrder(models.Model):
     def action_create_project(self):
         project_obj = self.env['project.project']
         for order in self:
-            if order.project_id:
+            if order.related_project_id:
                 raise Warning(_(
                     'There is a project already related with this sale order.'
                 ))
