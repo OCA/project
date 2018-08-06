@@ -10,9 +10,10 @@ from odoo.exceptions import Warning
 class SaleOrder(models.Model):
     _inherit = "sale.order"
 
-    @api.one
+    @api.multi
     @api.depends('analytic_account_id')
     def _compute_related_project_id(self):
+        self.ensure_one()
         self.related_project_id = (
             self.env['project.project'].search(
                 [('analytic_account_id', '=', self.analytic_account_id.id)],limit=1
