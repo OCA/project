@@ -34,16 +34,3 @@ class SaleOrderCreateProject(models.TransientModel):
         else:
             # else
             # update sale.order.related_project_id with the selected project.project.id
-            vals = {
-                'related_project_id': self.related_project_id,
-            }
-            order.write(vals)
-            return {
-                'name': 'Message',
-                'type': 'ir.actions.act_window',
-                'view_type': 'form',
-                'view_mode': 'form',
-                'res_model': 'custom.pop.message',
-                'target': 'new',
-                'context': {'default_name': "Successfully Created."}
-            }
