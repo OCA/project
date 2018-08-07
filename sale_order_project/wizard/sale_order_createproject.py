@@ -18,18 +18,27 @@ class SaleOrderCreateProject(models.TransientModel):
     @api.multi
     def action_create_project_task(self):
         self.ensure_one()
-        # get the lead to transform
+        # get the order to update
         order = self.sale_order_id
         project = self.related_project_id
-        """
+
+        if project and not order.related_project_id:
         # if related_project_id is empty
             # create new project.project
-            return action_create_project(self)
+            return order.action_create_project()
+        else:
         # else
             # update sale.order.related_project_id with the selected project.project.id
             vals = {
                 'related_project_id': self.related_project_id,
             }
             order.write(vals)
-            return True
-"""
+            return {
+                'name': 'Message',
+                'type': 'ir.actions.act_window',
+                'view_type': 'form',
+                'view_mode': 'form',
+                'res_model': 'custom.pop.message',
+                'target': 'new',
+                'context': {'default_name': "Successfully Created."}
+            }
