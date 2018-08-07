@@ -26,10 +26,20 @@ class SaleOrderCreateProject(models.TransientModel):
         order = self.sale_order_id
         project = self.related_project_id
 
-        if project and not order.related_project_id:
-            # if related_project_id is empty
+        # if related_project_id is empty
+        if not project and not order.related_project_id:
             # create new project.project
-            return order.action_create_project()
-        else:
-            # else
+            order.action_create_project()
+        # if project but order is not related to that project
+        if project and not order.related_project_id:
             # update sale.order.related_project_id with the selected project.project.id
+            order.write({
+                'analytic_account_id': project.analytic_account_id.id
+            })
+        # else
+        else:
+            raise Warning(_(
+                'This sale order already has a related project.'
+            ))
+
+        return True
