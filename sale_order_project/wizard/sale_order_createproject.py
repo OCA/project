@@ -39,7 +39,7 @@ class SaleOrderCreateProject(models.TransientModel):
         # else
         else:
             raise Warning(_(
-                'This sale order already has a related project. Order: {1}, Project: {2}'.format(project.id,order, order.related_project_id)
+                'This sale order already has a related project. Order: {0}, Project: {1}'.format(order, order.related_project_id)
             ))
 
         return True

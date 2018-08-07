@@ -45,7 +45,7 @@ class SaleOrder(models.Model):
         for order in self:
             if order.related_project_id:
                 raise Warning(_(
-                    'There is a project already related with this sale order.'
+                    'There is a project already related with this sale order. Order: {0}, Project: {1}'.format(order, order.related_project_id)
                 ))
             vals = self._prepare_project_vals(order)
             project = project_obj.create(vals)
