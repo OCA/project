@@ -21,7 +21,7 @@
     <!-- action of converting, via wizard -->
     <record id="sale_order_createproject_action" model="ir.actions.act_window">
         <field name="name">Create Project</field>
-        <field name="res_model">sales.order.createproject</field>
+        <field name="res_model">sale.order.createproject</field>
         <field name="view_type">form</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>
