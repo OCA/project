@@ -11,7 +11,7 @@
                     <field name="related_project_id"/>
                 </group>
                 <footer>
-                    <button type="object" name="action_create_project" string="Create Project" class="btn-primary"/>
+                    <button type="object" name="action_create_project_task" string="Create Project" class="btn-primary"/>
                     <button string="Cancel" class="btn-default" special="cancel"/>
                 </footer>
             </form>
