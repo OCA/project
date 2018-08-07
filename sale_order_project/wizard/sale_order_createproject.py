@@ -1,6 +1,5 @@
 from odoo import api, fields, models, _
 
-
 class SaleOrderCreateProject(models.TransientModel):
     """ wizard to create a Project from a Sale Order """
     _name = "sale.order.createproject"
@@ -17,7 +16,7 @@ class SaleOrderCreateProject(models.TransientModel):
     related_project_id = fields.Many2one(
         'project.project',
         string='Project',
-        help=_("Leave it blank if you want create a new project with the sale order's name as default name")
+        help=_("Leave it blank if you want create a new project with the sale order's name as default name.")
     )
 
     @api.multi
