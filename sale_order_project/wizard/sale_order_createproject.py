@@ -22,16 +22,15 @@ class SaleOrderCreateProject(models.TransientModel):
         # get the lead to transform
         order = self.sale_order_id
         project = self.related_project_id
-
+        """
         # if related_project_id is empty
             # create new project.project
             return action_create_project(self)
         # else
-            # update sales.order.related_project_id with the selected project.project.id
+            # update sale.order.related_project_id with the selected project.project.id
             vals = {
                 'related_project_id': self.related_project_id,
             }
             order.write(vals)
             return True
-
-
+"""
