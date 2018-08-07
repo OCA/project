@@ -8,12 +8,17 @@ class SaleOrderCreateProject(models.TransientModel):
     @api.model
     def default_get(self, fields):
         result = super(SaleOrderCreateProject, self).default_get(fields)
-        order = self.env['sale.order'].browse(self.env.context.get('active_id'))
-        if order:
-            result.update({'sale_order_id': order.id})
+        sale_order_id = self.env.context.get('active_id')
+        if sale_order_id:
+            result['sale_order_id'] = sale_order_id
+        return result
 
     sale_order_id = fields.Many2one('sale.order', string='Order', domain=[('type', '=', 'order')])
-    related_project_id = fields.Many2one('project.project', string='Project')
+    related_project_id = fields.Many2one(
+        'project.project',
+        string='Project',
+        help=_("Leave it blank if you want create a new project with the sale order's name as default name")
+    )
 
     @api.multi
     def action_create_project_task(self):
@@ -23,11 +28,11 @@ class SaleOrderCreateProject(models.TransientModel):
         project = self.related_project_id
 
         if project and not order.related_project_id:
-        # if related_project_id is empty
+            # if related_project_id is empty
             # create new project.project
             return order.action_create_project()
         else:
-        # else
+            # else
             # update sale.order.related_project_id with the selected project.project.id
             vals = {
                 'related_project_id': self.related_project_id,
