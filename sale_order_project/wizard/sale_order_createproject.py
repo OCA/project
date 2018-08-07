@@ -3,7 +3,7 @@ from odoo import api, fields, models, _
 
 class SaleOrderCreateProject(models.TransientModel):
     """ wizard to create a Project from a Sale Order """
-    _name = "sales.order.createproject"
+    _name = "sale.order.createproject"
 
     @api.model
     def default_get(self, fields):
