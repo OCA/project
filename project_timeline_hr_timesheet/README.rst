@@ -25,7 +25,7 @@ Project Timeline - Timesheet
 
 |badge1| |badge2| |badge3| |badge4| |badge5| 
 
-This module is an addition to the Project Timeline module.
+This module is an addition to the module Project Timeline.
 It adds the progress of tasks (hr_timesheet) on the timeline view.
 
 **Table of contents**
