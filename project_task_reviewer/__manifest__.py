@@ -10,7 +10,7 @@
     'author': 'RGB Consulting SL, '
               'Odoo Community Association (OCA)',
     'website': "https://github.com/OCA/project",
-    'category': 'Project Managment',
+    'category': 'Project Management',
     'summary': """Adds project reviewer in project task""",
     'data': [
         'views/project_task_view.xml',

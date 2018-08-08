@@ -17,5 +17,5 @@ class Task(models.Model):
                                            auto_follow_fields=None):
         if auto_follow_fields is None:
             auto_follow_fields = ['user_id', 'reviewer_id']
-        return super(Task, self)._message_get_auto_subscribe_fields \
-            (updated_fields, auto_follow_fields)
+        return super(Task, self)._message_get_auto_subscribe_fields(
+            updated_fields, auto_follow_fields)
