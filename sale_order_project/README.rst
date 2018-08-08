@@ -9,6 +9,14 @@ This module is a base module that give the possibility to create a project
 from a quotation, if a contract is set with use_tasks checked it will show
 the related project.
 
+Usage
+=====
+
+* Choose the Sale Order.
+* Click on *Create Project*.
+* You can do two things: Choose a Project or leave the field blank(it will create a new project with Client's Name and Sale Order Name).
+* Click on *Create Project*.
+
 Bug Tracker
 ===========
 
