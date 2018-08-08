@@ -20,6 +20,7 @@ setuptools.setup(
         'odoo11-addon-project_task_material',
         'odoo11-addon-project_task_pull_request',
         'odoo11-addon-project_timeline',
+        'odoo11-addon-project_timeline_hr_timesheet',
     ],
     classifiers=[
         'Programming Language :: Python',
