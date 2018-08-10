@@ -37,7 +37,7 @@ Contributors
 * Oihane Crucelaegui <oihanecrucelaegi@avanzosc.es>
 * Abraham Anes Studio73 <abraham@studio73.es>
 * Aitor Bouzas <aitor.bouzas@adaptivecity.com>
-* José Luis Sandoval Alaguna <alagunasalahaddin@live.com>
+* José Luis Sandoval Alaguna <jose.alaguna@rotafilo.com.tr>
 
 
 Maintainer
