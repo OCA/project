@@ -17,6 +17,7 @@ Link module to map sale orders to project
     'depends': [
         'project',
         'sale',
+        'sale_management',
     ],
     'data': [
         'wizard/sale_order_createproject_views.xml',
