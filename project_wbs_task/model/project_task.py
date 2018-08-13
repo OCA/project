@@ -2,41 +2,11 @@
 # Copyright 2015 Serpent Consulting Services Pvt. Ltd.
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-from odoo import api, fields, models
+from odoo import fields, models
 
 
 class Task(models.Model):
     _inherit = 'project.task'
-
-    @api.multi
-    def _project_complete_wbs_name(self):
-        if not self._ids:
-            return []
-        res = []
-        data_project = []
-        for task in self:
-            if task.project_id:
-                data_project = task.project_id.complete_wbs_name
-            if data_project:
-                res.append((task.id, data_project))
-            else:
-                res.append((task.id, ''))
-        return dict(res)
-
-    @api.multi
-    def _project_complete_wbs_code(self):
-        if not self._ids:
-            return []
-        res = []
-        data_project = []
-        for task in self:
-            if task.project_id:
-                data_project = task.project_id.complete_wbs_code
-            if data_project:
-                res.append((task.id, data_project))
-            else:
-                res.append((task.id, ''))
-        return dict(res)
 
     analytic_account_id = fields.Many2one(
         related='project_id.analytic_account_id',

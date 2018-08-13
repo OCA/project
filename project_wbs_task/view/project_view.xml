@@ -7,12 +7,12 @@
         <field name="inherit_id" ref="project_wbs.view_project"/>
         <field name="field_parent">child_ids</field>
         <field name="arch" type="xml">
-            <xpath expr='//button[@name="action_openChildTreeView"]'
+            <xpath expr='//button[@name="action_open_child_tree_view"]'
                    position="after">
                 <button string="Tasks"
                     name="%(action_task_tree_view)d"
                     type="action"
-                    icon="terp-folder-orange"/>
+                    icon="fa-tasks"/>
             </xpath>
         </field>
     </record>
