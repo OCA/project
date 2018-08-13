@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="project_category_view_form" model="ir.ui.view">
+        <field name="name">Project Category</field>
+        <field name="model">project.category</field>
+        <field name="arch" type="xml">
+            <form string="Project Category">
+                <group>
+                    <field name="name"/>
+                </group>
+                <group>
+                    <field name="description" />
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="project_category_action" model="ir.actions.act_window">
+        <field name="name">Project Category</field>
+        <field name="res_model">project.category</field>
+        <field name="view_type">form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to add a new Project Category.
+            </p>
+        </field>
+    </record>
+
+    <menuitem action="project_category_action"
+              id="menu_project_category"
+              parent="project.menu_project_config"
+              groups="base.group_no_one"/>
+
+</odoo>

@@ -1,0 +1,17 @@
+# -*- coding: utf-8 -*-
+# © 2017 Elico Corp (https://www.elico-corp.com).
+# Copyright 2018 Dreambits Technologies Pvt. Ltd. (<http://dreambits.in>)
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+
+from odoo import fields, models
+
+
+class Task(models.Model):
+    """Inherit Project task to add category."""
+
+    _inherit = 'project.task'
+
+    categ_id = fields.Many2one(
+        'project.category',
+        'Category'
+    )
