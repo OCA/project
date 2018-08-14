@@ -9,10 +9,9 @@ class Project(models.Model):
     _inherit = 'project.project'
 
     def _compute_sale_orders_count(self):
-        SaleOrder = self.env['sale.order']
         for project in self:
-            project.sale_order_count = SaleOrder.search_count([
-                ('related_project_id', '=', project.analytic_account_id.id)
+            project.sale_order_count = self.env['sale.order'].search_count([
+                ('related_project_id', '=', project.id)
             ])
 
     @api.multi
