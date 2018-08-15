@@ -56,4 +56,3 @@ class SaleOrder(models.Model):
                 'analytic_account_id': project.analytic_account_id.id
             })
         return True
-

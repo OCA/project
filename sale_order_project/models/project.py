@@ -23,7 +23,7 @@ class Project(models.Model):
         return {
             'name': _('Sale Orders'),
             'domain': domain,
-            'related_project_id': 'sale.order',
+            'res_model': 'sale.order',
             'type': 'ir.actions.act_window',
             'view_id': False,
             'view_mode': 'kanban,tree,form',
