@@ -1,24 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<openerp>
-    <data>
-        <record id="view_order_form" model="ir.ui.view">
-            <field name="name">view_project_quotation_order_form</field>
-            <field name="model">sale.order</field>
-            <field name="inherit_id" ref="sale.view_order_form" />
-            <field name="arch" type="xml">
-                <group name="technical" position="after">
-                    <group name="project" string="Project">
-                        <field name="related_project_id" />
-                    </group>
+<odoo>
+    <record id="view_order_form" model="ir.ui.view">
+        <field name="name">sale.order.project.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <group name="technical" position="after">
+                <group name="project" string="Project">
+                    <field name="related_project_id"/>
                 </group>
-                <xpath expr="//header/field[@name='state']" position="before">
-                    <button name="action_create_project" type="object"
-                            string="Create Project" class="btn-primary"
-                            groups="project.group_project_user"
-                            attrs="{'invisible':['|',('state','!=','draft'),('related_project_id','!=',False)]}" />
-                </xpath>
-            </field>
-        </record>
-
-    </data>
-</openerp>
+            </group>
+            <xpath expr="//button[@name='action_view_invoice']" position="before">
+                <!-- icon="fa-project-diagram"
+                    This must to be the proper icon, but, until Odoos 12 version the current Font-Awesome version is 4.7, such has not this icon; instead we will use the current icon.
+                    https://github.com/odoo/odoo/issues/21648#issuecomment-353099417
+                -->
+                <button class="oe_stat_button"
+                        type="action"
+                        name="%(sale_order_createproject_action)d"
+                        icon="fa-tasks"
+                        help="Create Project"
+                        groups="sale.group_analytic_accounting,project.group_project_user"
+                        attrs="{'invisible':['|',('state','!=','draft'),('related_project_id','!=',False)]}">
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_text">Create</span>
+                        <span class="o_stat_text">Project</span>
+                    </div>
+                </button>
+            </xpath>
+        </field>
+    </record>
+</odoo>

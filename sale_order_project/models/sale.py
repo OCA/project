@@ -1,51 +1,38 @@
-###############################################################################
-#
-#   Module for OpenERP
-#   Copyright (C) 2014 Akretion (http://www.akretion.com).
-#   Copyright (C) 2010-2013 Akretion LDTA (<http://www.akretion.com>)
-#   @author Sébastien BEAU <sebastien.beau@akretion.com>
-#   @author Benoît GUILLOT <benoit.guillot@akretion.com>
-#
-#   This program is free software: you can redistribute it and/or modify
-#   it under the terms of the GNU Affero General Public License as
-#   published by the Free Software Foundation, either version 3 of the
-#   License, or (at your option) any later version.
-#
-#   This program is distributed in the hope that it will be useful,
-#   but WITHOUT ANY WARRANTY; without even the implied warranty of
-#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#   GNU Affero General Public License for more details.
-#
-#   You should have received a copy of the GNU Affero General Public License
-#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-###############################################################################
-
-from openerp import api, fields, models
+# © 2014 Akretion - Sébastien BEAU <sebastien.beau@akretion.com>
+# © 2014 Akretion - Benoît GUILLOT <benoit.guillot@akretion.com>
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from datetime import date
+
+from odoo import api, fields, models, _
+from odoo.exceptions import Warning
 
 
 class SaleOrder(models.Model):
     _inherit = "sale.order"
 
-    @api.one
+    @api.multi
     @api.depends('analytic_account_id')
     def _compute_related_project_id(self):
-        self.related_project_id = (
-            self.env['project.project'].search(
-                [('analytic_account_id', '=', self.analytic_account_id.id)],
-                limit=1)[:1])
+        for record in self:
+            project_domain = [('analytic_account_id', '=', record.analytic_account_id.id)]
+            record.related_project_id = (
+                self.env['project.project'].search(project_domain, limit=1)[:1]
+            )
 
     related_project_id = fields.Many2one(
-        comodel_name='project.project', string='Project',
-        compute='_compute_related_project_id')
+        comodel_name='project.project',
+        string='Project',
+        compute='_compute_related_project_id',
+        store=True
+    )
 
     @api.model
     def _prepare_project_vals(self, order):
-        name = "%s - %s - %s" % (
+        name = "{0} - {1} - {2}".format(
             order.partner_id.name,
             date.today().year,
-            order.name)
+            order.name
+        )
         return {
             'user_id': order.user_id.id,
             'name': name,
@@ -56,6 +43,13 @@ class SaleOrder(models.Model):
     def action_create_project(self):
         project_obj = self.env['project.project']
         for order in self:
+            if order.related_project_id:
+                raise Warning(_(
+                    'There is a project already related with this sale order. Order: {0}, Project: {1}'.format(
+                        order,
+                        order.related_project_id
+                    )
+                ))
             vals = self._prepare_project_vals(order)
             project = project_obj.create(vals)
             order.write({

@@ -1,6 +1,6 @@
-##############################################################################
-# For copyright and license notices, see __openerp__.py file in root directory
-##############################################################################
+###############################################################################
+# For copyright and license notices, see __manifest__.py file in root directory
+###############################################################################
 
 import odoo.tests.common as common
 
@@ -30,4 +30,3 @@ class TestSaleOrderProject(common.TransactionCase):
         })
         self.assertEqual(self.sale_order.related_project_id,
                          self.project)
-
