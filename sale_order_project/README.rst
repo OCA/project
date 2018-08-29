@@ -17,6 +17,9 @@ Usage
 * You can do two things: Choose a Project or leave the field blank(it will create a new project with Client's Name and Sale Order Name).
 * Click on *Create Project*.
 
+* Go to Project and see the Sale Order's button.
+* Go to the Analytic Account and see the Sale Order's button(it requires Analytic Accounting for Sales permission).
+
 Bug Tracker
 ===========
 
