@@ -23,7 +23,8 @@ class SaleOrder(models.Model):
         comodel_name='project.project',
         string='Project',
         compute='_compute_related_project_id',
-        store=True
+        store=True,
+        states={'draft': [('readonly', False)]}
     )
 
     @api.model

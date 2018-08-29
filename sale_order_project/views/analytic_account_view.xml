@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_account_analytic_account_form_sale_order" model="ir.ui.view">
+        <field name="name">account.analytic.account.form.sale.order</field>
+        <field name="model">account.analytic.account</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_account_form"/>
+        <field name="arch" type="xml">
+            <xpath expr='//div[@name="button_box"]' position='inside'>
+                <button name="%(sale.action_orders)d"
+                        icon="fa-shopping-cart"
+                        class="oe_inline oe_stat_button"
+                        type="action" groups="sale.group_analytic_accounting"
+                        context="{'default_analytic_account_id': active_id,'search_default_analytic_account_id': [active_id]}">
+                    <field name="num_sale_orders"
+                           widget="statinfo"
+                           string="Sale Order(s)"
+                    />
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
