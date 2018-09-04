@@ -7,7 +7,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 {
     'name': 'Work Breakdown Structure',
-    'version': '10.0.1.0.0',
+    'version': '10.0.1.1.0',
     'license': 'AGPL-3',
     'author': 'Matmoz d.o.o., '
               'Luxim d.o.o., '
@@ -18,12 +18,14 @@
     'depends': [
         'project',
         'analytic',
-        'account_analytic_parent'
+        'account_analytic_parent',
+        'account_analytic_sequence',
     ],
     'summary': 'Project Work Breakdown Structure',
     'data': [
         'view/account_analytic_account_view.xml',
         'view/project_project_view.xml',
     ],
+    'pre_init_hook': 'pre_init_hook',
     'installable': True,
 }

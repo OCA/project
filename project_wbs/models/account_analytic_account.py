@@ -5,7 +5,7 @@
 # Copyright 2017 Deneroteam.
 # Copyright 2017 Serpent Consulting Services Pvt. Ltd.
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
-from odoo import api, fields, models
+from odoo import _, api, fields, models
 
 
 class AccountAnalyticAccount(models.Model):
@@ -15,6 +15,8 @@ class AccountAnalyticAccount(models.Model):
     @api.multi
     def get_child_accounts(self):
         result = {}
+        if not self.ids:
+            return result
         for curr_id in self.ids:
             result[curr_id] = True
         # Now add the children
@@ -34,6 +36,15 @@ class AccountAnalyticAccount(models.Model):
         for x, y in res:
             result[y] = True
         return result
+
+    @api.multi
+    def write(self, vals):
+        res = super(AccountAnalyticAccount, self).write(vals)
+        if vals.get('parent_id'):
+            for account in self.browse(self.get_child_accounts().keys()):
+                account._complete_wbs_code_calc()
+                account._complete_wbs_name_calc()
+        return res
 
     @api.multi
     @api.depends('code')
@@ -115,11 +126,7 @@ class AccountAnalyticAccount(models.Model):
         string='Level',
         readonly=True
     )
-    complete_wbs_code_calc = fields.Char(
-        compute=_complete_wbs_code_calc,
-        string='Full WBS Code',
-        help='Computed WBS code'
-    )
+
     complete_wbs_code = fields.Char(
         compute=_complete_wbs_code_calc,
         string='Full WBS Code',
@@ -144,11 +151,6 @@ class AccountAnalyticAccount(models.Model):
         default=_default_user)
     manager_id = fields.Many2one('res.users', 'Manager',
                                  track_visibility='onchange')
-    state = fields.Selection(
-        [('template', 'Template'), ('draft', 'New'), ('open', 'In Progress'),
-         ('pending', 'To Renew'), ('close', 'Closed'),
-         ('cancelled', 'Cancelled')], 'Status', default='draft', required=True,
-        track_visibility='onchange')
 
     account_class = fields.Selection(
         [('project', 'Project'), ('phase', 'Phase'),
@@ -160,6 +162,14 @@ class AccountAnalyticAccount(models.Model):
     parent_id = fields.Many2one(default=_default_parent,
                                 string="Parent Analytic Account")
     partner_id = fields.Many2one(default=_default_partner)
+
+    @api.multi
+    def copy(self, default=None):
+        if default is None:
+            default = {}
+        default['code'] = self.env['ir.sequence'].next_by_code(
+            'account.analytic.account.code')
+        return super(AccountAnalyticAccount, self).copy(default)
 
     @api.multi
     @api.depends('code')
@@ -200,3 +210,8 @@ class AccountAnalyticAccount(models.Model):
 
             res.append((account.id, data))
         return res
+
+    _sql_constraints = [
+        ('analytic_unique_wbs_code', 'UNIQUE (complete_wbs_code)',
+         _('The full wbs code must be unique!')),
+    ]
