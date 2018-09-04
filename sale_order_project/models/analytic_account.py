@@ -7,7 +7,7 @@ from odoo import api, models, fields
 class AnalyticAccount(models.Model):
     _inherit = "account.analytic.account"
 
-    def _compute_num_productions(self):
+    def _compute_num_sale_orders(self):
         for analytic_account in self:
             analytic_account.num_sale_orders = self.env['sale.order'].search_count([
                 ('analytic_account_id','=', analytic_account.id)
