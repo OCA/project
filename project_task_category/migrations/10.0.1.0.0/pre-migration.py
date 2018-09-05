@@ -29,4 +29,12 @@ def migrate(env, version):
                  );
             """
     openupgrade.logged_query(cr, query)
+
+    update_categ_query = """
+        UPDATE project_task task
+        SET categ_id = categ.id
+        FROM project_category categ, project_category_main categ_main
+        WHERE categ.name = categ_main.name AND task.categ_id = categ_main.id;
+    """
+    openupgrade.logged_query(cr, update_categ_query)
     openupgrade.logging("Migrate project_category done.")
