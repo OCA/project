@@ -1,6 +1,6 @@
 # Copyright 2016 Tecnativa - Antonio Espinosa
 # Copyright 2016 Tecnativa - Sergio Teruel
-# Copyright 2016-2017 Tecnativa - Pedro M. Baeza
+# Copyright 2016-2018 Tecnativa - Pedro M. Baeza
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
 from odoo import _, api, exceptions, fields, models
@@ -14,15 +14,24 @@ class AccountAnalyticLine(models.Model):
     closed = fields.Boolean(related='task_id.stage_id.closed', readonly=True)
 
     @api.onchange('project_id')
-    def onchange_project_id_project_timesheet_time_control(self):
-        res = {}
-        if self.project_id:
-            project = self.project_id
-            res['domain'] = {'task_id': [
-                ('project_id', '=', project.id),
-                ('stage_id.closed', '=', False)]}
-        else:
+    def onchange_project_id(self):
+        task = self.task_id
+        res = super().onchange_project_id()
+        if res is None:
+            res = {}
+        if self.project_id:  # Show only opened tasks
+            res_domain = res.setdefault('domain', {})
+            res_domain.update({
+                'task_id': [
+                    ('project_id', '=', self.project_id.id),
+                    ('stage_id.closed', '=', False),
+                ],
+            })
+        else:  # Reset domain for allowing selection of any task
             res['domain'] = {'task_id': []}
+        if task.project_id == self.project_id:
+            # Restore previous task if belongs to the same project
+            self.task_id = task
         return res
 
     @api.onchange('task_id')
