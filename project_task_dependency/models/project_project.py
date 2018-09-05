@@ -1,7 +1,7 @@
 # Copyright 2018 Onestein
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import _, api, fields, models
+from odoo import api, models
 
 
 class ProjectProject(models.Model):

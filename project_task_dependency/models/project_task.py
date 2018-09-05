@@ -85,4 +85,3 @@ class ProjectTask(models.Model):
             return res
         else:
             return super(ProjectTask, self).copy(default)
-

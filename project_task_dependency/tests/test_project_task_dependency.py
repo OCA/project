@@ -63,4 +63,3 @@ class TestProjectTaskDependency(TransactionCase):
         new_project = self.project2.copy()
         task4 = new_project.tasks.filtered(lambda t: t.name == '4')
         self.assertEqual(task4.dependency_task_ids[0].id, self.task2.id)
-
