@@ -55,11 +55,15 @@ class TestProjectTaskDependency(TransactionCase):
             })
 
     def test_copy(self):
-        new_project = self.project1.copy()
+        new_project = self.project1.copy(default={
+            'name': 'Dep Task Project copy'
+        })
         task1 = new_project.tasks.filtered(lambda t: t.name == '2')
         self.assertEqual(task1.dependency_task_ids[0].name, '1')
         task3 = new_project.tasks.filtered(lambda t: t.name == '3')
         self.assertEqual(task3.dependency_task_ids[0].name, '2')
-        new_project = self.project2.copy()
+        new_project = self.project2.copy(default={
+            'name': 'Dep Task Project 2 copy'
+        })
         task4 = new_project.tasks.filtered(lambda t: t.name == '4')
         self.assertEqual(task4.dependency_task_ids[0].id, self.task2.id)
