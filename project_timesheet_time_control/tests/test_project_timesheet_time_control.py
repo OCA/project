@@ -1,4 +1,4 @@
-# Copyright 2016-2017 Tecnativa - Pedro M. Baeza
+# Copyright 2016-2018 Tecnativa - Pedro M. Baeza
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0
 
 from odoo.tests import common
@@ -38,11 +38,13 @@ class TestProjectTimesheetTimeControl(common.TransactionCase):
 
     def test_onchange_project_id(self):
         record = self.env['account.analytic.line'].new()
+        record.task_id = self.task.id
         record.project_id = self.project.id
-        action = record.onchange_project_id_project_timesheet_time_control()
+        action = record.onchange_project_id()
         self.assertTrue(action['domain']['task_id'])
+        self.assertEqual(record.task_id, self.task)
         record.project_id = False
-        action = record.onchange_project_id_project_timesheet_time_control()
+        action = record.onchange_project_id()
         self.assertEqual(action['domain']['task_id'], [])
 
     def test_onchange_task_id(self):
