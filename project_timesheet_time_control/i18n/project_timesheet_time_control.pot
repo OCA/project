@@ -79,7 +79,7 @@ msgid "Tasks in this stage are considered closed."
 msgstr ""
 
 #. module: project_timesheet_time_control
-#: code:addons/project_timesheet_time_control/models/account_analytic_line.py:73
+#: code:addons/project_timesheet_time_control/models/account_analytic_line.py:82
 #, python-format
 msgid "There isn't any stage with closed check. Please mark any."
 msgstr ""
