@@ -1,11 +1,11 @@
 # Copyright 2016 Tecnativa - Antonio Espinosa
 # Copyright 2016 Tecnativa - Sergio Teruel
-# Copyright 2016-2017 Tecnativa - Pedro M. Baeza
+# Copyright 2016-2018 Tecnativa - Pedro M. Baeza
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
 {
     'name': 'Project timesheet time control',
-    'version': '11.0.1.0.0',
+    'version': '11.0.1.1.0',
     'category': 'Project',
     'author': 'Tecnativa,'
               'Odoo Community Association (OCA)',
