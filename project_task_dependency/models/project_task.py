@@ -72,3 +72,17 @@ class ProjectTask(models.Model):
             raise ValidationError(
                 _('You cannot create recursive dependencies between tasks.')
             )
+
+    @api.multi
+    def copy(self, default=None):
+        self.ensure_one()
+        if self.env.context.get('project_copy'):
+            res = super(ProjectTask, self).copy(default)
+            self.env['project.task.copy.map'].create({
+                'old_task_id': self.id,
+                'new_task_id': res.id
+            })
+            return res
+        else:
+            return super(ProjectTask, self).copy(default)
+
