@@ -29,7 +29,7 @@ msgid "Project key must be unique"
 msgstr ""
 
 #. module: project_key
-#: code:addons/project_key/models/project_project.py:116
+#: code:addons/project_key/models/project_project.py:117
 #, python-format
 msgid "Project task sequence for project "
 msgstr ""
