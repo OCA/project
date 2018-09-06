@@ -76,12 +76,10 @@ class ProjectTask(models.Model):
     @api.multi
     def copy(self, default=None):
         self.ensure_one()
+        res = super(ProjectTask, self).copy(default)
         if self.env.context.get('project_copy'):
-            res = super(ProjectTask, self).copy(default)
             self.env['project.task.copy.map'].create({
                 'old_task_id': self.id,
                 'new_task_id': res.id
             })
-            return res
-        else:
-            return super(ProjectTask, self).copy(default)
+        return res
