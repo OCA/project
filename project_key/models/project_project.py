@@ -19,6 +19,7 @@ class Project(models.Model):
         size=10,
         required=False,
         index=True,
+        copy=False
     )
 
     _sql_constraints = [
