@@ -67,3 +67,13 @@ class TestProjectTaskDependency(TransactionCase):
         })
         task4 = new_project.tasks.filtered(lambda t: t.name == '4')
         self.assertEqual(task4.dependency_task_ids[0].id, self.task2.id)
+
+    def test_regression_copy(self):
+        old_count = self.env['project.task.copy.map'].search(
+            [('old_task_id', '=', self.task4.id)], count=True
+        )
+        self.task4.copy()
+        new_count = self.env['project.task.copy.map'].search(
+            [('old_task_id', '=', self.task4.id)], count=True
+        )
+        self.assertEqual(old_count, new_count)
