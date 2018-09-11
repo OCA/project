@@ -12,7 +12,6 @@
     "installable": True,
     "depends": [
         "project",
-        "project_stage_state",
     ],
     "data": [
         "views/project_task_pull_request_view.xml",
