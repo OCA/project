@@ -14,6 +14,7 @@ class ProjectTask(models.Model):
 
     pr_required_states = fields.Many2many(
         related='project_id.pr_required_states',
+        readonly=True,
     )
 
     @api.constrains('pr_uri', 'stage_id', 'project_id')
