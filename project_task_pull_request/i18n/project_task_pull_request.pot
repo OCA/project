@@ -25,7 +25,7 @@ msgid "PR URI"
 msgstr ""
 
 #. module: project_task_pull_request
-#: code:addons/project_task_pull_request/models/project_task.py:25
+#: code:addons/project_task_pull_request/models/project_task.py:26
 #, python-format
 msgid "Please add the URI for the pull request before moving the task to this stage."
 msgstr ""
