@@ -16,6 +16,9 @@ odoo.define('project_timeline_critical_path.backend', function(require) {
             var task_ids = _.flatten(_.values(paths));
             var to_draw = [];
             _.each(items, function(item, item_id) {
+                if (!item.data.evt) {
+                    return;
+                }                
                 _.each(item.data.evt[self.dependency_arrow], function(id) {
                     if (_.has(items, id)) {
                         if (_.contains(task_ids, id) &&
