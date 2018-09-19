@@ -36,17 +36,17 @@ class TestSchedulingProposal(TestSchedulingCommon):
         proposals[-1].action_set_scheduling()
 
         self.assertTrue(self.task_2.employee_id)
-        self.assertTrue(self.task_2.date_start_assignation)
-        self.assertTrue(self.task_2.date_stop_assignation)
+        self.assertTrue(self.task_2.date_start)
+        self.assertTrue(self.task_2.date_end)
 
         self.assertTrue(self.task_3.employee_id)
-        self.assertTrue(self.task_3.date_start_assignation)
-        self.assertTrue(self.task_3.date_stop_assignation)
+        self.assertTrue(self.task_3.date_start)
+        self.assertTrue(self.task_3.date_end)
 
         self.assertTrue(self.task_7.employee_id)
-        self.assertTrue(self.task_7.date_start_assignation)
-        self.assertTrue(self.task_7.date_stop_assignation)
+        self.assertTrue(self.task_7.date_start)
+        self.assertTrue(self.task_7.date_end)
 
         self.assertTrue(self.task_1.employee_id)
-        self.assertTrue(self.task_1.date_start_assignation)
-        self.assertTrue(self.task_1.date_stop_assignation)
+        self.assertTrue(self.task_1.date_start)
+        self.assertTrue(self.task_1.date_end)

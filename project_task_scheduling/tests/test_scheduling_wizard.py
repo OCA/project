@@ -77,8 +77,8 @@ class TestSchedulingWizard(TestSchedulingCommon):
 
         assigned_task.write({
             'employee_id': self.jth_emp.id,
-            'date_start_assignation': a_start,
-            'date_stop_assignation': a_end,
+            'date_start': a_start,
+            'date_end': a_end,
         })
 
         accum_emp = self.wizard._accum_inter[self.jth_emp.id]

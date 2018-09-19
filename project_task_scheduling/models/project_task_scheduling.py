@@ -49,6 +49,6 @@ class ProjectTaskScheduling(models.TransientModel):
             record.task_id.write({
                 'employee_id': record.employee_id.id,
                 'user_id': record.employee_id.user_id.id or self.env.user.id,
-                'date_start_assignation': record.datetime_start,
-                'date_stop_assignation': record.datetime_stop,
+                'date_start': record.datetime_start,
+                'date_end': record.datetime_stop,
             })

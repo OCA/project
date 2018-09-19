@@ -21,13 +21,7 @@ class Task(models.Model):
     )
     employee_id = fields.Many2one(
         comodel_name='hr.employee',
-        string="Employee",
-    )
-    date_start_assignation = fields.Datetime(
-        string="Date start",
-    )
-    date_stop_assignation = fields.Datetime(
-        string="Date stop",
+        string="Assigned to employee",
     )
     employee_category_id = fields.Many2one(
         comodel_name='hr.employee.category',
@@ -51,11 +45,11 @@ class Task(models.Model):
             record.employee_ids = emp.ids
 
     @api.multi
-    @api.depends('employee_id', 'date_start_assignation',
-                 'date_stop_assignation')
+    @api.depends('employee_id', 'date_start',
+                 'date_end')
     def _compute_scheduled(self):
         for rec in self:
-            start, stop = rec.date_start_assignation, rec.date_stop_assignation
+            start, stop = rec.date_start, rec.date_end
             rec.scheduled = rec.employee_id and start and stop
 
     @api.onchange('project_id')

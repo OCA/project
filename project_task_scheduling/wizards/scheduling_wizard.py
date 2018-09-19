@@ -208,11 +208,11 @@ class ProjectTaskSchedulingWizard(models.TransientModel):
         self.ensure_one()
         tasks = self.env['project.task']
         domain = [
-            ('date_stop_assignation', '>', self.date_start),
+            ('date_end', '>', self.date_start),
             ('employee_id', 'in', self.employee_ids.ids),
             ('id', 'not in', self.task_ids.ids),
         ]
-        return tasks.search(domain, order='date_stop_assignation')
+        return tasks.search(domain, order='date_end')
 
     @api.multi
     def init_accum_inter(self):
@@ -458,8 +458,8 @@ class ProjectTaskSchedulingWizard(models.TransientModel):
         tasks = self._get_assigned_tasks()
         for task in tasks:
             gaps = employees_dict[task.employee_id.id]
-            start = fields.Datetime.from_string(task.date_start_assignation)
-            stop = fields.Datetime.from_string(task.date_stop_assignation)
+            start = fields.Datetime.from_string(task.date_start)
+            stop = fields.Datetime.from_string(task.date_end)
             data = {'employee': task.employee_id}
             to_remove = calendar._interval_new(start, stop, data)
             self._gaps_remove_interval(gaps, to_remove)
@@ -616,7 +616,7 @@ class ProjectTaskSchedulingWizard(models.TransientModel):
                 if depend.id in state.tasks_dict:
                     end_datetime = state.tasks_dict[depend.id].end_datetime
                 else:
-                    end_datetime = depend.date_stop_assignation
+                    end_datetime = depend.date_end
                     end_datetime = fields.Datetime.from_string(end_datetime)
                 if not end_datetime:
                     not_schedule = True

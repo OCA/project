@@ -22,22 +22,15 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_form2"/>
         <field name="arch" type="xml">
+            <field name="user_id" position="attributes">
+                <attribute name="string">Assigned to user</attribute>
+            </field>
+            <field name="user_id" position="after">
+                <field name="employee_id"/>
+            </field>
             <field name="tag_ids" position="after">
                 <field name="employee_category_id"/>
             </field>
-            <xpath expr="//notebook/page[@name='description_page']" position="after">
-                <page string="Scheduling">
-                    <group>
-                        <group>
-                            <field name="employee_id"/>
-                        </group>
-                        <group>
-                            <field name="date_start_assignation"/>
-                            <field name="date_stop_assignation"/>
-                        </group>
-                    </group>
-                </page>
-            </xpath>
         </field>
     </record>
 
