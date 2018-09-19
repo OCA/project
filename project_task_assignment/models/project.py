@@ -54,10 +54,9 @@ class Task(models.Model):
     @api.depends('employee_id', 'date_start_assignation',
                  'date_stop_assignation')
     def _compute_scheduled(self):
-        for record in self:
-            record.scheduled = record.employee_id \
-                               and record.date_start_assignation \
-                               and record.date_stop_assignation
+        for rec in self:
+            start, stop = rec.date_start_assignation, rec.date_stop_assignation
+            rec.scheduled = rec.employee_id and start and stop
 
     @api.onchange('project_id')
     def _onchange_project_id_employee_id(self):

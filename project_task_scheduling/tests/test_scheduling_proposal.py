@@ -1,6 +1,4 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
-from datetime import timedelta
-
 from odoo.addons.project_task_scheduling.tests.common import \
     TestSchedulingCommon
 
@@ -9,8 +7,8 @@ class TestSchedulingProposal(TestSchedulingCommon):
 
     def test_action_recompute(self):
         self.wizard.action_accept()
-        proposals = self.env['project.task.scheduling.proposal'].search([])
-        best_proposal = proposals[-1]
+        proposal_obj = self.env['project.task.scheduling.proposal']
+        best_proposal = proposal_obj.search([])[-1]
         evaluation = best_proposal.evaluation
         new_proposal = best_proposal.copy()
         new_proposal.action_recompute()

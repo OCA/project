@@ -21,7 +21,9 @@ class ProjectTaskScheduling(models.TransientModel):
     delayed_tasks = fields.Float(
         compute='_compute_delayed_tasks'
     )
-    evaluation = fields.Float()
+    evaluation = fields.Float(
+        digits=(16,4)
+    )
     task_scheduling_ids = fields.One2many(
         comodel_name='project.task.scheduling',
         inverse_name='proposal_id',
@@ -98,4 +100,5 @@ class ProjectTaskScheduling(models.TransientModel):
                 'or Date start is far from the deadline of some tasks'))
 
         hours_dy += max_hours_delayed
-        self.evaluation = task_dy_count * max_hours_delayed * 2 + hours_dy
+        evaluation = task_dy_count * max_hours_delayed * 2 + hours_dy
+        self.evaluation = round(evaluation, 10)
