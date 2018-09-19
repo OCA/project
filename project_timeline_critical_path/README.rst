@@ -66,7 +66,7 @@ To use this module, you need to:
 Known issues / Roadmap
 ======================
 
-* Create a more accurate calculation of the critical path.
+* Create a more accurate critical path calculation.
 
 Bug Tracker
 ===========
