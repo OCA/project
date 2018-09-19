@@ -22,7 +22,7 @@ class ProjectTaskScheduling(models.TransientModel):
         compute='_compute_delayed_tasks'
     )
     evaluation = fields.Float(
-        digits=(16,4)
+        digits=(16, 4),
     )
     task_scheduling_ids = fields.One2many(
         comodel_name='project.task.scheduling',
