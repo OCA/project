@@ -20,6 +20,7 @@ setuptools.setup(
         'odoo11-addon-project_task_material',
         'odoo11-addon-project_task_pull_request',
         'odoo11-addon-project_timeline',
+        'odoo11-addon-project_timeline_critical_path',
         'odoo11-addon-project_timeline_hr_timesheet',
         'odoo11-addon-project_timeline_task_dependency',
         'odoo11-addon-project_timesheet_time_control',
