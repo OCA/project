@@ -1,6 +1,3 @@
-This module allow you:
-
-- to assign a task to an employee for an interval of date-times
-- to add employees to a project to restrict the employee domain in assignation
-- to specify skills to an employee and tasks
-- to set date start and date stop assignment for a task
+This module extends the functionality of project to allow you to add employees
+to a project, to specify required skills (Employee category) to a task and to
+add an employee to a task.
