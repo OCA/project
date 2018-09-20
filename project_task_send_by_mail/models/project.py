@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 # Copyright 2017 Tecnativa - Vicent Cubells
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp import _, api, models
+from odoo import _, api, models
 
 
 class ProjectTask(models.Model):

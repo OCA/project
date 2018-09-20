@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 # Copyright 2017 Tecnativa <vicent.cubells@tecnativa.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp.tests import common
+from odoo.tests import common
 
 
 class TestProjectTaskSendByMail(common.SavepointCase):
