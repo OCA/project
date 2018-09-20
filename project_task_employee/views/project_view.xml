@@ -26,6 +26,7 @@
                 <attribute name="string">Assigned to user</attribute>
             </field>
             <field name="user_id" position="after">
+                <field name="employee_ids" invisible="1"/>
                 <field name="employee_id"/>
             </field>
             <field name="tag_ids" position="after">

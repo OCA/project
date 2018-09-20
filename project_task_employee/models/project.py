@@ -22,6 +22,7 @@ class Task(models.Model):
     employee_id = fields.Many2one(
         comodel_name='hr.employee',
         string="Assigned to employee",
+        domain="[('id', 'in', employee_ids)]",
     )
     employee_category_id = fields.Many2one(
         comodel_name='hr.employee.category',
@@ -52,10 +53,6 @@ class Task(models.Model):
             start, stop = rec.date_start, rec.date_end
             rec.scheduled = rec.employee_id and start and stop
 
-    @api.onchange('project_id')
+    @api.onchange('employee_ids', 'employee_category_id')
     def _onchange_project_id_employee_id(self):
-        return {
-            'domain': {
-                'employee_id': [('id', 'in', self.project_id.employee_ids.ids)]
-            }
-        }
+        self.employee_id = False
