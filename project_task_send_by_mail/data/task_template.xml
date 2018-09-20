@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <odoo noupdate="1">
 
-    <record id="project_task_send_by_mail.email_task_template" model="mail.template">
+    <record id="email_task_template" model="mail.template">
         <field name="name">Task Order - Send by Email</field>
         <field name="email_from">${(object.user_id.email and '%s &lt;%s&gt;' % (object.user_id.name, object.user_id.email) or '')|safe}</field>
         <field name="subject">${object.company_id.name} Task (Ref ${object.name or 'n/a'})</field>

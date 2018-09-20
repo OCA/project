@@ -83,7 +83,7 @@ msgid "${object.company_id.name} Task (Ref ${object.name or 'n/a'})"
 msgstr ""
 
 #. module: project_task_send_by_mail
-#: code:addons/project_task_send_by_mail/models/project.py:28
+#: code:addons/project_task_send_by_mail/models/project.py:27
 #, python-format
 msgid "Compose Email"
 msgstr ""
