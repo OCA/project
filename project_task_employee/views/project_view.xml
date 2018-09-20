@@ -17,22 +17,4 @@
         </field>
     </record>
 
-    <record id="view_task_form2_inherit_schedule" model="ir.ui.view">
-        <field name="name">project.task.form.inherit.schedule</field>
-        <field name="model">project.task</field>
-        <field name="inherit_id" ref="project.view_task_form2"/>
-        <field name="arch" type="xml">
-            <field name="user_id" position="attributes">
-                <attribute name="string">Assigned to user</attribute>
-            </field>
-            <field name="user_id" position="after">
-                <field name="employee_ids" invisible="1"/>
-                <field name="employee_id"/>
-            </field>
-            <field name="tag_ids" position="after">
-                <field name="employee_category_id"/>
-            </field>
-        </field>
-    </record>
-
 </odoo>

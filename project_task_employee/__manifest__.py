@@ -13,6 +13,7 @@
     ],
     "data": [
         "views/project_view.xml",
+        "views/project_task_view.xml",
     ],
     "demo": [
         "demo/project_task.xml",
