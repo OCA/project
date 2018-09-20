@@ -8,7 +8,7 @@ class TestSchedulingCommon(TransactionCase):
         super(TestSchedulingCommon, self).setUp()
 
         self.restricted_project = self.env['project.project'].browse(
-            self.ref("project_task_assignment.restricted_project"))
+            self.ref("project_task_employee.restricted_project"))
 
         employee_obj = self.env['hr.employee']
         # these are all employees of the self.restricted_project
@@ -19,13 +19,13 @@ class TestSchedulingCommon(TransactionCase):
 
         # these are all tasks of the self.restricted_project
         self.task_2 = self.env['project.task'].browse(
-            self.ref("project_task_assignment.restricted_task_2"))
+            self.ref("project_task_employee.restricted_task_2"))
         self.task_3 = self.env['project.task'].browse(
-            self.ref("project_task_assignment.restricted_task_3"))
+            self.ref("project_task_employee.restricted_task_3"))
         self.task_7 = self.env['project.task'].browse(
-            self.ref("project_task_assignment.restricted_task_7"))
+            self.ref("project_task_employee.restricted_task_7"))
         self.task_1 = self.env['project.task'].browse(
-            self.ref("project_task_assignment.restricted_task_1"))
+            self.ref("project_task_employee.restricted_task_1"))
         # set task dependency
         self.task_1.dependency_task_ids = [(6, 0, [self.task_7.id])]
 

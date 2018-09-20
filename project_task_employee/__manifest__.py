@@ -1,6 +1,6 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 {
-    "name": "Project task assigment",
+    "name": "Project task employee",
     "version": "11.0.1.0.0",
     "category": "Project Management",
     "author": "Tecnativa, "
