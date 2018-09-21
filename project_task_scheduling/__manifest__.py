@@ -11,7 +11,7 @@
         "hr",
         "hr_timesheet",
         "project",
-        "project_task_assignment",
+        "project_task_employee",
         "project_task_dependency",
         "project_timeline",
         "project_stage_closed",
