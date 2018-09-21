@@ -1,6 +1,5 @@
-# -*- coding: utf-8 -*-
-# Copyright 2015 Antiun Ingeniería S.L. - Sergio Teruel
-# Copyright 2015 Antiun Ingeniería S.L. - Carlos Dauden
+# Copyright 2015 Tecnativa - Sergio Teruel
+# Copyright 2015 Tecnativa - Carlos Dauden
 # Copyright 2016 Tecnativa - Vicent Cubells
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
@@ -29,13 +28,14 @@ class TestTaskMaterial(common.SavepointCase):
         })
         cls.product1_uom = cls.env.ref('product.product_uom_unit')
         cls.product2_uom = cls.env.ref('product.product_uom_kgm')
-        cls.product1 = cls.env['product.product'].create({
+        product_obj = cls.env['product.product']
+        cls.product1 = product_obj.create({
             'name': 'Product example #1',
             'uom_id': cls.product1_uom.id,
             'uom_po_id': cls.product1_uom.id,
             'company_id': cls.company.id,
         })
-        cls.product2 = cls.env['product.product'].create({
+        cls.product2 = product_obj.create({
             'name': 'Product example #2',
             'uom_id': cls.product2_uom.id,
             'uom_po_id': cls.product2_uom.id,
@@ -98,6 +98,9 @@ class TestTaskMaterial(common.SavepointCase):
         self.assertAlmostEqual(analytic_line.amount, self.expected_amount)
         self.task.action_assign()
         self.assertEqual(self.task.stock_state, 'assigned')
+        self.assertEqual(len(self.task.stock_move_ids), 1)
+        self.task.stock_move_ids[:1].move_line_ids.qty_done = \
+            self.task.stock_move_ids[:1].move_line_ids.ordered_qty
         self.task.action_done()
         self.assertEqual(self.task.stock_state, 'done')
         self.assertRaises(Exception, self.task.unlink)
