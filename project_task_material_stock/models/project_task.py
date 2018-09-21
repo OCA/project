@@ -1,6 +1,5 @@
-# -*- coding: utf-8 -*-
-# Copyright 2015 Antiun Ingeniería S.L. - Sergio Teruel
-# Copyright 2015 Antiun Ingeniería S.L. - Carlos Dauden
+# Copyright 2015 Tecnativa - Sergio Teruel
+# Copyright 2015 Tecnativa - Carlos Dauden
 # Copyright 2016-2017 Tecnativa - Vicent Cubells
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 from odoo import _, api, exceptions, fields, models
@@ -49,6 +48,11 @@ class Task(models.Model):
         compute='_compute_stock_move',
         string='Stock Moves',
     )
+    analytic_account_id = fields.Many2one(
+        comodel_name='account.analytic.account',
+        string='Analytic Account',
+        help='Move created will be assigned to this analytic account',
+    )
     analytic_line_ids = fields.Many2many(
         comodel_name='account.analytic.line',
         compute='_compute_analytic_line',
@@ -84,7 +88,7 @@ class Task(models.Model):
         moves = self.mapped('stock_move_ids')
         moves_done = moves.filtered(lambda r: r.state == 'done')
         if not moves_done:
-            moves.filtered(lambda r: r.state == 'assigned').do_unreserve()
+            moves.filtered(lambda r: r.state == 'assigned')._do_unreserve()
             moves.filtered(
                 lambda r: r.state in {'waiting', 'confirmed', 'assigned'}
             ).write({'state': 'draft'})
@@ -119,11 +123,11 @@ class Task(models.Model):
 
     @api.multi
     def action_assign(self):
-        self.mapped('stock_move_ids').action_assign()
+        self.mapped('stock_move_ids')._action_assign()
 
     @api.multi
     def action_done(self):
-        self.mapped('stock_move_ids').action_done()
+        self.mapped('stock_move_ids')._action_done()
 
 
 class ProjectTaskMaterial(models.Model):

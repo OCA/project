@@ -17,6 +17,9 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project_task_material.view_project_task_form_material"/>
         <field name="arch" type="xml">
+            <field name="project_id" position="after">
+                <field name="analytic_account_id" groups="analytic.group_analytic_accounting" attrs="{'required': [('project_id', '=', False)]}"/>
+            </field>
             <field name="stage_id" position="before">
                 <button name="action_assign" type="object"
                         string="Check Availability"
