@@ -15,40 +15,44 @@ class TestSchedulingWizard(TestSchedulingCommon):
         """ test self.jth_emp and self.root_emp are all employees in the
         project """
         self.assertEqual(self.restricted_project.employee_ids,
-                         self.jth_emp + self.root_emp)
+                         self.jth_emp | self.root_emp)
 
     def test_project_tasks(self):
         """ test self.task_3, self.task_2, self.task_7, self.task_1 are all
         tasks in the project """
         self.assertEqual(self.restricted_project.task_ids,
-                         self.task_3 + self.task_2 + self.task_7 + self.task_1)
+                         self.task_3 | self.task_2 | self.task_7 | self.task_1)
 
     def test_wizard_tasks(self):
         """ test self.task_3, self.task_2, self.task_7, self.task_1 are all
         tasks in self.wizard for scheduling """
         self.assertEqual(self.wizard.task_ids,
-                         self.task_3 + self.task_2 + self.task_7 + self.task_1)
+                         self.task_3 | self.task_2 | self.task_7 | self.task_1)
 
     def test_onchange_task_option(self):
         """ test onchange_task_option method set the correct tasks in task_ids
         attribute of self.wizard """
+        now = fields.Datetime.from_string(fields.Datetime.now())
+        self.task_1.write({
+            'employee_id': self.jth_emp.id,
+            'date_start': fields.Datetime.now(),
+            'date_end': fields.Datetime.to_string(now + timedelta(hours=24)),
+        })
         with self.env.do_in_onchange():
             self.wizard.task_option = 'not_finished'
             self.wizard._onchange_task_option()
-            domain = [('closed', '!=', True), ('progress', '<', 100)]
-            self.assertEqual(self.wizard.task_ids,
-                             self.env['project.task'].search(domain))
+            tasks = self.task_3 | self.task_2 | self.task_7 | self.task_1
+            self.assertTrue(tasks <= self.wizard.task_ids)
 
             self.wizard.task_option = 'not_scheduled'
             self.wizard._onchange_task_option()
-            domain = [('closed', '!=', True), ('progress', '<', 100),
-                      ('scheduled', '!=', True)]
-            self.assertEqual(self.wizard.task_ids,
-                             self.env['project.task'].search(domain))
+            tasks = self.task_3 | self.task_2 | self.task_7
+            self.assertTrue(tasks <= self.wizard.task_ids)
+            self.assertNotIn(self.task_1, self.wizard.task_ids)
 
             self.wizard.task_option = 'customized_list'
             self.wizard._onchange_task_option()
-            self.assertEqual(len(self.wizard.task_ids), 0)
+            self.assertEqual(self.wizard.task_ids, self.env['project.task'])
 
     def test_get_total_tasks_hours(self):
         self.assertEqual(self.wizard._get_total_tasks_hours(), 13)

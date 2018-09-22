@@ -15,14 +15,14 @@ class TestProjectTask(TransactionCase):
         self.task_1 = self.env['project.task'].browse(
             self.ref("project_task_employee.restricted_task_1"))
 
-    def test_get_employees(self):
+    def test_employee_domain_ids(self):
         jth = self.env['hr.employee'].browse(self.ref("hr.employee_jth"))
         root = self.env['hr.employee'].browse(self.ref("hr.employee_root"))
 
-        self.assertEqual(self.task_3.employee_ids, jth + root)
-        self.assertEqual(self.task_2.employee_ids, jth + root)
-        self.assertEqual(self.task_7.employee_ids, root)
-        self.assertEqual(self.task_1.employee_ids, jth)
+        self.assertEqual(self.task_3.employee_domain_ids, jth + root)
+        self.assertEqual(self.task_2.employee_domain_ids, jth + root)
+        self.assertEqual(self.task_7.employee_domain_ids, root)
+        self.assertEqual(self.task_1.employee_domain_ids, jth)
 
     def test_onchange_project_id_employee_id(self):
         onchange_result = self.task_3._onchange_project_id_employee_id()

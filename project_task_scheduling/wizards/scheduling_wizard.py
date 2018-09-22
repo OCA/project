@@ -107,7 +107,6 @@ class ProjectTaskSchedulingWizard(models.TransientModel):
     task_ids = fields.Many2many(
         comodel_name='project.task',
         string="Tasks",
-        default=lambda self: self._default_tasks(),
     )
     employee_ids = fields.Many2many(
         compute='_compute_employee_ids',
@@ -117,33 +116,26 @@ class ProjectTaskSchedulingWizard(models.TransientModel):
     # Default methods
     # ---------------
     @api.model
-    def _default_tasks(self):
-        return self.env['project.task'].search([
-            ('employee_id', '=', False),
-            ('project_id.employee_ids', '!=', False)
-        ])
-
-    @api.model
     def _default_start(self):
         return fields.Datetime.now()
 
     # Compute methods
     # ---------------
     @api.multi
-    @api.depends('task_ids.employee_ids')
+    @api.depends('task_ids.employee_scheduling_ids')
     def _compute_employee_ids(self):
         self.ensure_one()
-        self.employee_ids = self.task_ids.mapped('employee_ids')
+        self.employee_ids = self.task_ids.mapped('employee_scheduling_ids')
 
     # Onchange methods
     # ----------------
     @api.onchange('task_option')
     def _onchange_task_option(self):
-        domain = [('closed', '!=', True), ('progress', '<', 100)]
+        domain = [('closed', '=', False), ('progress', '<', 100)]
         if self.task_option == 'not_finished':
             self.task_ids = self.env['project.task'].search(domain)
         elif self.task_option == 'not_scheduled':
-            domain += [('scheduled', '!=', True)]
+            domain += [('date_end', '=', False)]
             self.task_ids = self.env['project.task'].search(domain)
         else:
             self.task_ids = False
@@ -233,6 +225,11 @@ class ProjectTaskSchedulingWizard(models.TransientModel):
 
         date_start = fields.Datetime.from_string(self.date_start)
 
+        max_start = date_start
+        for task in self.task_ids:
+            task_date_start = fields.Datetime.from_string(task.date_start)
+            max_start = max(max_start, task_date_start)
+
         for emp in self.employee_ids:
             tz_ctx = dict(tz=emp.resource_id.user_id.tz or self.env.user.tz)
 
@@ -241,6 +238,7 @@ class ProjectTaskSchedulingWizard(models.TransientModel):
             day_dt_tz = resource_model.to_naive_user_tz(date_start, user)
             current_dt = day_dt_tz
 
+            hours = 0
             success = False
             while not success:
                 intervals = calendar._get_day_work_intervals(
@@ -258,7 +256,14 @@ class ProjectTaskSchedulingWizard(models.TransientModel):
                     inter.data.update(accum_down=down, accum_up=up)
                     self._accum_inter.setdefault(emp.id, []).append(inter)
 
-                    if up >= total_hours:
+                    if max_start < inter.end_datetime:
+                        if hours == 0:
+                            hours_td = (inter[1] - max(max_start, inter[0]))
+                            hours = hours_td.total_seconds() / 3600
+                        else:
+                            hours += (up - down)
+
+                    if hours >= total_hours:
                         success = True
                         break
 
@@ -409,28 +414,31 @@ class ProjectTaskSchedulingWizard(models.TransientModel):
         gap_pos = 0
         while gap_pos < len(gaps):
             gap = gaps[gap_pos]
+            if gap.end_datetime <= start_arg:   # pragma: no cover
+                gap_pos += 1
+                continue
             if stop_arg <= gap.start_datetime:  # pragma: no cover
                 break
             if start_arg < gap.end_datetime:
+                if start_arg <= gap[0] and gap[1] <= stop_arg:
+                    gap_pos = self._gap_remove_interval(gaps, gap_pos, gap)
+                    continue
+                data = {'employee': employee}
                 for pos in range(gap.data['pos_from'], gap.data['pos_to'] + 1):
                     curr_inter = emp_accum[pos]
                     if start_arg < curr_inter.end_datetime:
-                        pos_from = pos
                         start = max(start_arg, curr_inter.start_datetime)
+                        data['pos_from'] = pos
                         break
-                for pos in range(gap.data['pos_to'], pos_from - 1, -1):
+                for pos in range(data['pos_from'], gap.data['pos_to'] + 1,):
                     curr_inter = emp_accum[pos]
-                    next_gap_pos = -1
                     if curr_inter[0] < stop_arg <= curr_inter[1]:
-                        pos_to = pos
                         stop = min(stop_arg, curr_inter.end_datetime)
-                        data = {'pos_from': pos_from, 'pos_to': pos_to,
-                                'employee': employee}
+                        data['pos_to'] = pos
                         to_remove = calendar._interval_new(start, stop, data)
-                        next_gap_pos = self._gap_remove_interval(gaps, gap_pos,
-                                                                 to_remove)
+                        gap_pos = self._gap_remove_interval(gaps, gap_pos,
+                                                            to_remove)
                         break
-            gap_pos = next_gap_pos >= 0 and next_gap_pos or gap_pos + 1
 
     def _get_employees_dict(self):
         """
@@ -595,6 +603,22 @@ class ProjectTaskSchedulingWizard(models.TransientModel):
                     return interval, pos
         return False, False
 
+    def _get_earliest_start(self, state, task):
+        start = fields.Datetime.from_string(self.date_start)
+        if task.date_start and not task.date_end:
+            task_start = fields.Datetime.from_string(task.date_start)
+            start = max(start, task_start)
+        for depend in task.dependency_task_ids:
+            if depend.id in state.tasks_dict:
+                end_datetime = state.tasks_dict[depend.id].end_datetime
+            else:
+                end_datetime = depend.date_end
+                end_datetime = fields.Datetime.from_string(end_datetime)
+            if not end_datetime:
+                return False
+            start = max(end_datetime, start)
+        return start
+
     def _greedy_distribution(self, state, init_index=0):
         """
         It's called from _get_init_state and _generate_neighbor methods
@@ -609,26 +633,12 @@ class ProjectTaskSchedulingWizard(models.TransientModel):
         date_start = fields.Datetime.from_string(self.date_start)
         distant_datetime = date_start + timedelta(weeks=520)
         for task in state.tasks_list[init_index:]:
-
-            start = date_start
-            not_schedule = False
-            for depend in task.dependency_task_ids:
-                if depend.id in state.tasks_dict:
-                    end_datetime = state.tasks_dict[depend.id].end_datetime
-                else:
-                    end_datetime = depend.date_end
-                    end_datetime = fields.Datetime.from_string(end_datetime)
-                if not end_datetime:
-                    not_schedule = True
-                    break
-                start = max(end_datetime, start)
-
-            if not_schedule:
+            start = self._get_earliest_start(state, task)
+            if not start:
                 break
-
             best_interval, best_gap_pos = False, False
             best_end_datetime = distant_datetime
-            for employee in task.employee_ids:
+            for employee in task.employee_scheduling_ids:
                 interval, pos = self._get_assignment(state, task, employee,
                                                      start, best_end_datetime)
                 if interval and interval.end_datetime < best_end_datetime:

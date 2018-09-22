@@ -18,7 +18,7 @@
                         <button name="action_timeline_scheduling"
                                 type="object"
                                 string="View scheduling"
-                                icon="fa-align-left"/>
+                                icon="fa-clock-o"/>
                         <button name="action_set_scheduling"
                                 type="object"
                                 string="Set scheduling"
@@ -78,12 +78,8 @@
                 <field name="duration"/>
                 <field name="delayed_tasks"/>
                 <field name="evaluation"/>
-
                 <button name="action_timeline_scheduling" type="object"
-                        string="View scheduling" icon="fa-align-left"/>
-                <button name="action_set_scheduling" type="object"
-                        string="Set scheduling" icon="fa-check"
-                        confirm="Are you sure you want to set this proposal?"/>
+                        string="View scheduling" icon="fa-clock-o"/>
             </tree>
         </field>
     </record>
