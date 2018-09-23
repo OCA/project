@@ -104,6 +104,13 @@ class ProjectTaskSchedulingWizard(models.TransientModel):
         string="Task option",
         default='not_finished',
         required=True,
+        help="The task list below is fulfilled depending on the option "
+             "selected.\n"
+             "Not finished tasks: All task out of closed stage and with "
+             "progress < 100 %\n"
+             "Not scheduled tasks: The subset of 'Not finished tasks' that "
+             "has ending date not set\n"
+             "Customized task list: No task"
     )
     task_ids = fields.Many2many(
         comodel_name='project.task',
