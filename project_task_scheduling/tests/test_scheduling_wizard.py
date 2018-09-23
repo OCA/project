@@ -66,6 +66,8 @@ class TestSchedulingWizard(TestSchedulingCommon):
     def test_get_employees_dict(self):
         """ Test self.wizard._get_employee_dicts return a dict with one
         interval by employee """
+        self.wizard._init_accum_inter()
+        self.wizard._init_employees_by_task()
         employees_dict = self.wizard._get_employees_dict()
 
         self.assertEqual(len(employees_dict.keys()), 2)
@@ -84,6 +86,9 @@ class TestSchedulingWizard(TestSchedulingCommon):
             'date_start': a_start,
             'date_end': a_end,
         })
+
+        self.wizard._init_accum_inter()
+        self.wizard._init_employees_by_task()
 
         accum_emp = self.wizard._accum_inter[self.jth_emp.id]
 
@@ -164,6 +169,7 @@ class TestSchedulingWizard(TestSchedulingCommon):
         date_start = fields.Datetime.from_string(self.wizard.date_start)
         date_deadline = date_start + timedelta(days=50000)
         self.task_2.write({'date_deadline': date_deadline})
+
         state = self.wizard._get_init_state()
         with self.assertRaises(ValidationError):
             self.wizard._obj_func(state)

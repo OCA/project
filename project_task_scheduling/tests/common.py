@@ -50,5 +50,3 @@ class TestSchedulingCommon(TransactionCase):
         # set tz 'UTC'
         self.root_emp.resource_id.user_id.tz = 'UTC'
         self.env.user.tz = 'UTC'
-
-        self.wizard.init_accum_inter()

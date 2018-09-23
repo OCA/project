@@ -71,6 +71,7 @@ class ProjectTaskSchedulingWizard(models.TransientModel):
         'evaluation'        # Evaluation of the schedule
     ))
     _accum_inter = {}
+    _employees_by_task = {}
     _MAX_HOURS_DELAYED = 1000000
 
     # fields
@@ -153,9 +154,6 @@ class ProjectTaskSchedulingWizard(models.TransientModel):
             lambda r: r.closed or r.progress >= 100)
         self.task_ids = self.task_ids - closed_task
 
-        # Initialize _accum_inter attribute of this class
-        self.init_accum_inter()
-
         if len(self.task_ids) == 1:
             states = [self._get_init_state()]
         else:
@@ -207,7 +205,24 @@ class ProjectTaskSchedulingWizard(models.TransientModel):
         return tasks.search(domain, order='date_end')
 
     @api.multi
-    def init_accum_inter(self):
+    def _init_employees_by_task(self):
+        self.ensure_one()
+
+        req_dict = dict()
+        for task in self.task_ids:
+            employee_scheduling = task.employee_scheduling_ids
+            emp_len = len(employee_scheduling)
+            for emp in employee_scheduling:
+                req_dict.setdefault(emp.id, 10000)
+                req_dict[emp.id] = min(req_dict[emp.id], emp_len)
+
+        for task in self.task_ids:
+            employees = task.employee_scheduling_ids
+            employees = employees.sorted(lambda r: req_dict[r.id], True)
+            self._employees_by_task[task.id] = employees
+
+    @api.multi
+    def _init_accum_inter(self):
         """
         Set _accum_inter attribute as a dictionary that store several working
         intervals by employee. The intervals are ordered by start_datetime
@@ -604,6 +619,16 @@ class ProjectTaskSchedulingWizard(models.TransientModel):
         return False, False
 
     def _get_earliest_start(self, state, task):
+        """
+        Get the earliest possible start datetime to start the task depending
+        on date_start of the wizard, date_start of the task and the latest
+        end assignation datetime of the predecessors.
+
+        :param _state_obj state: state
+        :param project.task() task: task
+        :return: datetime:
+        """
+
         start = fields.Datetime.from_string(self.date_start)
         if task.date_start and not task.date_end:
             task_start = fields.Datetime.from_string(task.date_start)
@@ -638,7 +663,7 @@ class ProjectTaskSchedulingWizard(models.TransientModel):
                 break
             best_interval, best_gap_pos = False, False
             best_end_datetime = distant_datetime
-            for employee in task.employee_scheduling_ids:
+            for employee in self._employees_by_task[task.id]:
                 interval, pos = self._get_assignment(state, task, employee,
                                                      start, best_end_datetime)
                 if interval and interval.end_datetime < best_end_datetime:
@@ -744,6 +769,11 @@ class ProjectTaskSchedulingWizard(models.TransientModel):
 
         :return: a _state_obj that represent the first scheduling
         """
+
+        # Initialize _accum_inter attribute of this class
+        self._init_accum_inter()
+        # Initialize _employees_by_task attribute of this class
+        self._init_employees_by_task()
 
         tasks_list = self._get_sorted_tasks()
         employees_dict = self._get_employees_dict()
