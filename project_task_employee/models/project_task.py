@@ -19,10 +19,15 @@ class Task(models.Model):
         comodel_name='hr.employee',
         string="Assigned to employee",
         domain="[('id', 'in', employee_domain_ids)]",
+        help="If the task is not scheduled (without ending date), the "
+             "automated scheduling will only assign the task to the employee "
+             "selected here.",
     )
     employee_category_id = fields.Many2one(
         comodel_name='hr.employee.category',
         string="Employee category",
+        help="Only employee selected on the project belonging to the task "
+             "that have the categories selected here can do the task.",
     )
     scheduled = fields.Boolean(
         compute='_compute_scheduled',
