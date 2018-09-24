@@ -29,11 +29,6 @@ class Task(models.Model):
         help="Only employee selected on the project belonging to the task "
              "that have the categories selected here can do the task.",
     )
-    scheduled = fields.Boolean(
-        compute='_compute_scheduled',
-        readonly=True,
-        store=True,
-    )
 
     @api.multi
     @api.depends('project_id.employee_ids.category_ids',
@@ -47,20 +42,13 @@ class Task(models.Model):
             record.employee_domain_ids = emp.ids
 
     @api.multi
-    @api.depends('project_id.employee_ids.category_ids',
-                 'employee_category_id')
+    @api.depends('date_end', 'employee_id', 'employee_domain_ids')
     def _compute_employee_scheduling_ids(self):
         for record in self:
             employees = record.employee_id
             if record.date_end or not record.employee_id:
                 employees = record.employee_domain_ids
             record.employee_scheduling_ids = employees
-
-    @api.multi
-    @api.depends('employee_id', 'date_start', 'date_end')
-    def _compute_scheduled(self):
-        for record in self:
-            record.scheduled = record.date_end
 
     @api.onchange('employee_domain_ids')
     def _onchange_employee_domain_ids(self):
