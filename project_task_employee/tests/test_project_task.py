@@ -23,14 +23,3 @@ class TestProjectTask(TransactionCase):
         self.assertEqual(self.task_2.employee_domain_ids, jth + root)
         self.assertEqual(self.task_7.employee_domain_ids, root)
         self.assertEqual(self.task_1.employee_domain_ids, jth)
-
-    def test_onchange_project_id_employee_id(self):
-        onchange_result = self.task_3._onchange_project_id_employee_id()
-
-        emp_ids = [self.ref("hr.employee_jth"), self.ref("hr.employee_root")]
-        domain = {
-            'domain': {
-                'employee_id': [('id', 'in', emp_ids)]
-            }
-        }
-        self.assertEqual(onchange_result, domain)
