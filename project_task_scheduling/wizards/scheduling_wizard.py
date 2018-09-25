@@ -494,8 +494,21 @@ class ProjectTaskSchedulingWizard(models.TransientModel):
 
         return employees_dict
 
-    def _obj_func(self, state):
-        """ It's called from simulated_annealing method to evaluate a state
+    def _evaluation_function(self, state):
+        """ Evaluation of the given state
+
+        This function is called from simulated_annealing method to
+        evaluate a state. It's based on delayed task and the sum of the
+        lateness over all tasks.
+
+        The lateness of a task 'i' is defined as the difference between the
+        completion time of the task and its due date. The lateness can be
+        zero (if the task finishes exactly on time), positive (if the task
+        finishes late) or negative (if the task finishes early).
+
+        It's the function to be minimized by simulated annealing algorithm
+        implemented in simulated_annealing method. It's called
+        objective function.
 
         :param _state_obj state: state
 
@@ -833,7 +846,7 @@ class ProjectTaskSchedulingWizard(models.TransientModel):
         states_list = []
 
         st = self._get_init_state()
-        best_eval = eval_st = round(self._obj_func(st), 10)
+        best_eval = eval_st = round(self._evaluation_function(st), 10)
         states_list.append(st._replace(evaluation=best_eval))
 
         while temp >= final_temp and current_duration < max_duration:
@@ -842,7 +855,8 @@ class ProjectTaskSchedulingWizard(models.TransientModel):
                 if not st_neighbor:
                     continue
                 it_count += 1
-                eval_st_neighbor = round(self._obj_func(st_neighbor), 10)
+                eval_st_neighbor = self._evaluation_function(st_neighbor)
+                eval_st_neighbor = round(eval_st_neighbor, 10)
                 eval_diff = eval_st_neighbor - eval_st
                 if eval_diff < 0:
                     st = st_neighbor

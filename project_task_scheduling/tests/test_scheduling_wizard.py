@@ -140,12 +140,12 @@ class TestSchedulingWizard(TestSchedulingCommon):
             self.assertEqual(assigment.end_datetime, data_check[1])
             self.assertEqual(assigment.data['employee'], data_check[2])
 
-    def test_obj_func(self):
+    def test_evaluation_function(self):
         max_hours_delayed = self.wizard._MAX_HOURS_DELAYED
 
         # evaluate initial state
         init_state = self.wizard._get_init_state()
-        evaluation = self.wizard._obj_func(init_state)
+        evaluation = self.wizard._evaluation_function(init_state)
 
         # two tasks are scheduled after their date_deadline
         # (self.task_7 and self.task_1) see test_get_init_state_1 method
@@ -165,14 +165,14 @@ class TestSchedulingWizard(TestSchedulingCommon):
 
         self.assertEqual(evaluation, expected_eval)
 
-    def test_obj_func_fail(self):
+    def test_evaluation_function_fail(self):
         date_start = fields.Datetime.from_string(self.wizard.date_start)
         date_deadline = date_start + timedelta(days=50000)
         self.task_2.write({'date_deadline': date_deadline})
 
         state = self.wizard._get_init_state()
         with self.assertRaises(ValidationError):
-            self.wizard._obj_func(state)
+            self.wizard._evaluation_function(state)
 
     def test_generate_neighbor_false(self):
         init_st = self.wizard._get_init_state()
@@ -218,20 +218,22 @@ class TestSchedulingWizard(TestSchedulingCommon):
 
     def test_generate_neighbor_pos_arg_1_is_better_than_start_state(self):
         init_st = self.wizard._get_init_state()
-        eval_init_st = round(self.wizard._obj_func(init_st), 10)
+        eval_init_st = round(self.wizard._evaluation_function(init_st), 10)
 
         neighbor_st = self.wizard._generate_neighbor(init_st, pos_arg=1)
-        eval_neighbor_st = round(self.wizard._obj_func(neighbor_st), 10)
+        eval_neighbor_st = self.wizard._evaluation_function(neighbor_st)
+        eval_neighbor_st = round(eval_neighbor_st, 10)
 
         self.assertLess(eval_neighbor_st, eval_init_st)
 
     def test_simulated_annealing_can_improve_initial_state(self):
         init_state = self.wizard._get_init_state()
-        eval_init_st = round(self.wizard._obj_func(init_state), 10)
+        eval_init_st = round(self.wizard._evaluation_function(init_state), 10)
 
         cooling_ratio = float(self.wizard.cooling_ratio)
         sa_state = self.wizard.simulated_annealing(cooling_ratio=cooling_ratio)
-        eval_sa_state = round(self.wizard._obj_func(sa_state[-1]), 10)
+        eval_sa_state = self.wizard._evaluation_function(sa_state[-1])
+        eval_sa_state = round(eval_sa_state, 10)
 
         self.assertLessEqual(eval_sa_state, eval_init_st)
 
