@@ -8,10 +8,18 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button name="action_recompute"
+                    <button name="action_approve"
                             type="object"
-                            string="Re-compute evaluation"
-                            icon="fa-check"/>
+                            string="Approve"
+                            states="proposed"
+                            class="oe_highlight"
+                            confirm="Are you sure you want to approve this proposal?"/>
+                    <button name="action_reject"
+                            type="object"
+                            string="Reject"
+                            states="proposed"
+                            confirm="Are you sure you want to reject this proposal?"/>
+                    <field name="state" widget="statusbar"/>
                 </header>
                 <sheet>
                     <div class="oe_button_box" name="button_box">
@@ -19,46 +27,44 @@
                                 type="object"
                                 string="View scheduling"
                                 icon="fa-clock-o"/>
-                        <button name="action_set_scheduling"
+                        <button name="action_recompute"
                                 type="object"
-                                string="Set scheduling"
-                                icon="fa-check"
-                                confirm="Are you sure you want to set this proposal as definitive?"/>
+                                string="Re-compute evaluation"
+                                icon="fa-gears"
+                                attrs="{'invisible': [('state', 'not in', 'proposed')]}"
+                        />
                     </div>
                     <div class="oe_title">
                         <h1>
-                            <field name="description" placeholder="Short description..."/>
+                            <field name="description"
+                                   placeholder="Short description..."
+                                   attrs="{'readonly': [('state', 'not in', 'proposed')]}"/>
                         </h1>
                     </div>
                     <group col="4">
-                        <field name="date_start"/>
-                        <field name="date_end"/>
-                        <field name="duration"/>
-                        <field name="delayed_tasks"/>
-                        <field name="evaluation"/>
+                        <field name="date_start" attrs="{'readonly': [('state', 'not in', 'proposed')]}"/>
+                        <field name="date_end" attrs="{'readonly': [('state', 'not in', 'proposed')]}"/>
+                        <field name="duration" attrs="{'readonly': [('state', 'not in', 'proposed')]}"/>
+                        <field name="delayed_tasks" attrs="{'readonly': [('state', 'not in', 'proposed')]}"/>
+                        <field name="evaluation" attrs="{'readonly': [('state', 'not in', 'proposed')]}"/>
                     </group>
                     <notebook>
                         <page string="Scheduling" name="scheduling">
                             <group>
-                                <field name="task_scheduling_ids" nolabel="1">
+                                <field name="task_scheduling_ids" nolabel="1" attrs="{'readonly': [('state', 'not in', 'proposed')]}">
                                     <tree>
                                         <field name="employee_id"/>
                                         <field name="task_id"/>
                                         <field name="datetime_start"/>
                                         <field name="datetime_stop"/>
                                         <field name="delayed"/>
-                                        <button name="action_set_assignation"
-                                                type="object"
-                                                string="Set assignation"
-                                                icon="fa-check"
-                                                confirm="Are you sure you want to set this assignation as definitive?"/>
                                     </tree>
                                 </field>
                             </group>
                         </page>
                         <page string="Not scheduled tasks" name="not_scheduled_task">
                             <group>
-                                <field name="not_scheduled_task_ids" nolabel="1"/>
+                                <field name="not_scheduled_task_ids" nolabel="1" attrs="{'readonly': [('state', 'not in', 'proposed')]}"/>
                             </group>
                         </page>
                     </notebook>
@@ -71,13 +77,17 @@
         <field name="name">project.task.scheduling.proposal.tree</field>
         <field name="model">project.task.scheduling.proposal</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree decoration-success="state == 'approved'"
+                  decoration-bf="state == 'approved'"
+                  decoration-muted="state == 'rejected'"
+                  create="false" >
                 <field name="description"/>
                 <field name="date_start"/>
                 <field name="date_end"/>
                 <field name="duration"/>
                 <field name="delayed_tasks"/>
                 <field name="evaluation"/>
+                <field name="state"/>
                 <button name="action_timeline_scheduling" type="object"
                         string="View scheduling" icon="fa-clock-o"/>
             </tree>

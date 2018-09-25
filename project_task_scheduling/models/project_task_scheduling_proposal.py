@@ -35,6 +35,14 @@ class ProjectTaskScheduling(models.TransientModel):
         string="Not scheduled tasks",
         readonly=True,
     )
+    state = fields.Selection(
+        selection=[
+            ('proposed', 'Proposed'),
+            ('approved', 'Approved'),
+            ('rejected', 'Rejected'),
+        ],
+        default='proposed',
+    )
 
     @api.multi
     @api.depends('task_scheduling_ids.datetime_stop', 'date_start')
@@ -73,9 +81,15 @@ class ProjectTaskScheduling(models.TransientModel):
         }
 
     @api.multi
-    def action_set_scheduling(self):
+    def action_approve(self):
         self.ensure_one()
-        self.task_scheduling_ids.action_set_assignation()
+        self.task_scheduling_ids.set_assignation()
+        self.search([('id', '!=', self.id)]).action_reject()
+        self.state = 'approved'
+
+    @api.multi
+    def action_reject(self):
+        self.write({'state': 'rejected'})
 
     @api.multi
     def action_recompute(self):
@@ -102,3 +116,10 @@ class ProjectTaskScheduling(models.TransientModel):
         hours_dy += max_hours_delayed
         evaluation = task_dy_count * max_hours_delayed * 2 + hours_dy
         self.evaluation = round(evaluation, 10)
+
+    @api.multi
+    def copy(self, default=None):
+        if self.search([('state', '=', 'approved')]):
+            raise ValidationError(_("You can't duplicate a proposal if there "
+                                    "is a proposal approved "))
+        return super(ProjectTaskScheduling, self).copy(default=default)

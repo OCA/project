@@ -44,7 +44,7 @@ class ProjectTaskScheduling(models.TransientModel):
                 rec.delayed = date_deadline < datetime_stop.date()
 
     @api.multi
-    def action_set_assignation(self):
+    def set_assignation(self):
         for record in self:
             record.task_id.write({
                 'employee_id': record.employee_id.id,
