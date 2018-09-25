@@ -442,25 +442,23 @@ class ProjectTaskSchedulingWizard(models.TransientModel):
             if stop_arg <= gap.start_datetime:  # pragma: no cover
                 break
             if start_arg < gap.end_datetime:
-                if start_arg <= gap[0] and gap[1] <= stop_arg:
-                    gap_pos = self._gap_remove_interval(gaps, gap_pos, gap)
-                    continue
                 data = {'employee': employee}
+                # find left side of the interval to remove
                 for pos in range(gap.data['pos_from'], gap.data['pos_to'] + 1):
                     curr_inter = emp_accum[pos]
                     if start_arg < curr_inter.end_datetime:
-                        start = max(start_arg, curr_inter.start_datetime)
+                        start = max(start_arg, curr_inter[0], gap[0])
                         data['pos_from'] = pos
                         break
-                for pos in range(data['pos_from'], gap.data['pos_to'] + 1,):
+                # find left side of the interval to remove
+                for pos in range(gap.data['pos_to'], data['pos_from'] - 1, -1):
                     curr_inter = emp_accum[pos]
-                    if curr_inter[0] < stop_arg <= curr_inter[1]:
-                        stop = min(stop_arg, curr_inter.end_datetime)
+                    if curr_inter.start_datetime < stop_arg:
+                        stop = min(stop_arg, curr_inter[1], gap[1])
                         data['pos_to'] = pos
                         to_remove = calendar._interval_new(start, stop, data)
-                        gap_pos = self._gap_remove_interval(gaps, gap_pos,
-                                                            to_remove)
                         break
+                gap_pos = self._gap_remove_interval(gaps, gap_pos, to_remove)
 
     def _get_employees_dict(self):
         """
