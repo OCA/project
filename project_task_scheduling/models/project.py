@@ -7,4 +7,5 @@ class Task(models.Model):
 
     closed = fields.Boolean(
         related='stage_id.closed',
+        store=True,
     )
