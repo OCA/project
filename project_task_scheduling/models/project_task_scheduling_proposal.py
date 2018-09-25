@@ -18,7 +18,7 @@ class ProjectTaskScheduling(models.TransientModel):
     duration = fields.Float(
         compute='_compute_end'
     )
-    delayed_tasks = fields.Float(
+    delayed_tasks = fields.Integer(
         compute='_compute_delayed_tasks'
     )
     evaluation = fields.Float(
