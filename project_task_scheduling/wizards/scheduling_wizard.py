@@ -451,7 +451,7 @@ class ProjectTaskSchedulingWizard(models.TransientModel):
                         start = max(start_arg, curr_inter[0], gap[0])
                         data['pos_from'] = pos
                         break
-                # find left side of the interval to remove
+                # find right side of the interval to remove
                 for pos in range(gap.data['pos_to'], data['pos_from'] - 1, -1):
                     curr_inter = emp_accum[pos]
                     if curr_inter.start_datetime < stop_arg:
