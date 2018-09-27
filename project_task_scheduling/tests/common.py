@@ -8,25 +8,20 @@ class TestSchedulingCommon(TransactionCase):
     def setUp(self):
         super(TestSchedulingCommon, self).setUp()
 
-        self.restricted_project = self.env['project.project'].browse(
-            self.ref("project_task_employee.restricted_project"))
+        self.restricted_project = self.env.ref(
+            "project_task_employee.restricted_project")
 
-        employee_obj = self.env['hr.employee']
         # these are all employees of the self.restricted_project
         # Pieter Parker
-        self.root_emp = employee_obj.browse(self.ref("hr.employee_root"))
+        self.root_emp = self.env.ref("hr.employee_root")
         # Jimmy Kosikin
-        self.jth_emp = employee_obj.browse(self.ref("hr.employee_jth"))
+        self.jth_emp = self.env.ref("hr.employee_jth")
 
         # these are all tasks of the self.restricted_project
-        self.task_2 = self.env['project.task'].browse(
-            self.ref("project_task_employee.restricted_task_2"))
-        self.task_3 = self.env['project.task'].browse(
-            self.ref("project_task_employee.restricted_task_3"))
-        self.task_7 = self.env['project.task'].browse(
-            self.ref("project_task_employee.restricted_task_7"))
-        self.task_1 = self.env['project.task'].browse(
-            self.ref("project_task_employee.restricted_task_1"))
+        self.task_2 = self.env.ref("project_task_employee.restricted_task_2")
+        self.task_3 = self.env.ref("project_task_employee.restricted_task_3")
+        self.task_7 = self.env.ref("project_task_employee.restricted_task_7")
+        self.task_1 = self.env.ref("project_task_employee.restricted_task_1")
         # set task dependency
         self.task_1.dependency_task_ids = [(6, 0, [self.task_7.id])]
 

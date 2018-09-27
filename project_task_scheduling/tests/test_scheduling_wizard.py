@@ -76,8 +76,7 @@ class TestSchedulingWizard(TestSchedulingCommon):
             self.assertEqual(len(value), 1)
 
     def test_get_employees_dict_with_values(self):
-        task_obj = self.env['project.task']
-        assigned_task = task_obj.browse(self.ref("project.project_task_1"))
+        assigned_task = self.env.ref("project.project_task_1")
         date_start = fields.Datetime.from_string(self.wizard.date_start)
         a_start = datetime.combine(date_start, time(13))
         a_end = datetime.combine(date_start, time(17))
