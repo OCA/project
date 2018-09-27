@@ -140,7 +140,7 @@ class ProjectTaskSchedulingWizard(models.TransientModel):
     # ----------------
     @api.onchange('task_option')
     def _onchange_task_option(self):
-        domain = [('closed', '=', False), ('progress', '<', 100)]
+        domain = [('stage_id.closed', '=', False), ('progress', '<', 100)]
         if self.task_option == 'not_finished':
             self.task_ids = self.env['project.task'].search(domain)
         elif self.task_option == 'not_scheduled':
@@ -159,7 +159,7 @@ class ProjectTaskSchedulingWizard(models.TransientModel):
             raise ValidationError(_('Task list should not be empty'))
 
         closed_task = self.task_ids.filtered(
-            lambda r: r.closed or r.progress >= 100)
+            lambda r: r.stage_id.closed or r.progress >= 100)
         self.task_ids = self.task_ids - closed_task
 
         if len(self.task_ids) == 1:
