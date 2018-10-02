@@ -4,7 +4,14 @@
 from odoo import models, fields
 
 
-class ProjectTask(models.Model):
-    _inherit = 'project.task'
-    state = fields.Selection(
-        related='stage_id.state', store=True, readonly=True)
+_TASK_STATE = [
+    ('draft', 'New'),
+    ('open', 'In Progress'),
+    ('pending', 'Pending'),
+    ('done', 'Done'),
+    ('cancelled', 'Cancelled')]
+
+
+class ProjectTaskType(models.Model):
+    _inherit = 'project.task.type'
+    state = fields.Selection(_TASK_STATE, 'State')
