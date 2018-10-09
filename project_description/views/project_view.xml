@@ -22,9 +22,9 @@
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.view_project_project_filter"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='name']" position="after">
+            <field name="name" position="after">
                 <field name="description"/>
-            </xpath>
+            </field>
         </field>
     </record>
 
