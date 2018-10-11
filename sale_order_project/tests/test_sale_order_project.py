@@ -33,7 +33,8 @@ class TestSaleOrderProject(common.TransactionCase):
                          self.project)
 
     def test_compute_sale_orders_count(self):
-        self.sale_order.analytic_account_id = self.project.analytic_account_id.id
+        self.sale_order.analytic_account_id = \
+            self.project.analytic_account_id.id
         self.assertTrue(self.project.sale_order_count, 1)
 
     def test_sale_order_tree_view(self):
