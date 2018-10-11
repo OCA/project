@@ -256,3 +256,9 @@ class Project(models.Model):
             'context': self.env.context
         }
         return view
+
+    @api.multi
+    def write(self, vals):
+        if 'active' in vals:
+            self.mapped('project_child_complete_ids').toggle_active()
+        return super(Project, self).write(vals)

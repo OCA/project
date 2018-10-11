@@ -90,3 +90,9 @@ class TestProjectWbs(common.TransactionCase):
         self.project2.write({'parent_id': self.parent_account.id})
         child_in = self.project2 in self.project.project_child_complete_ids
         self.assertTrue(child_in, 'Child not added')
+
+    def test_archive(self):
+        self.project.toggle_active()
+        self.assertEqual(self.project_grand_son.active, False)
+        self.project.toggle_active()
+        self.assertEqual(self.project_grand_son.active, True)
