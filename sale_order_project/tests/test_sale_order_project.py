@@ -1,8 +1,9 @@
-###############################################################################
-# For copyright and license notices, see __manifest__.py file in root directory
-###############################################################################
+# Copyright 2016 Onestein (<http://www.onestein.eu>)
+# Copyright 2018 Aitor Bouzas (<http://www.adaptivecity.com>)
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 import odoo.tests.common as common
+from odoo.exceptions import UserError
 
 
 class TestSaleOrderProject(common.TransactionCase):
@@ -30,3 +31,16 @@ class TestSaleOrderProject(common.TransactionCase):
         })
         self.assertEqual(self.sale_order.related_project_id,
                          self.project)
+
+    def test_compute_sale_orders_count(self):
+        self.sale_order.analytic_account_id = self.project.analytic_account_id.id
+        self.assertTrue(self.project.sale_order_count, 1)
+
+    def test_sale_order_tree_view(self):
+        res = self.project.sale_order_tree_view()
+        self.assertTrue(res)
+
+    def test_error_creating_project(self):
+        with self.assertRaises(UserError):
+            self.sale_order.action_create_project()
+            self.sale_order.action_create_project()
