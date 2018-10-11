@@ -5,8 +5,7 @@
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.edit_project"/>
         <field name="arch" type="xml">
-            <xpath expr="//button[@name='attachment_tree_view']" position="after">
-                <!--icon="file-invoice-dollar"-->
+            <button name="attachment_tree_view" position="after">
                 <button class="oe_stat_button"
                         type="object"
                         name="sale_order_tree_view"
@@ -14,7 +13,7 @@
                         help="View project's sale orders">
                     <field string="Sale Orders" name="sale_order_count" widget="statinfo"/>
                 </button>
-            </xpath>
+            </button>
         </field>
     </record>
 </odoo>

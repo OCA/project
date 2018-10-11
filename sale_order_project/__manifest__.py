@@ -6,24 +6,27 @@
     'category': 'Project',
     'summary': 'Create a Project from Sale Order',
     'license': 'AGPL-3',
-    'author': 'Akretion, AvanzOSC, Serv. Tecnol. Avanzados - Pedro M. Baeza, Adaptive City - Aitor Bouzas, José Luis Sandoval Alaguna, Odoo Community Association (OCA)',
+    'author': 'Akretion, AvanzOSC, '
+              'Serv. Tecnol. Avanzados - Pedro M. Baeza, '
+              'Adaptive City - Aitor Bouzas, '
+              'Rotafilo - José Luis Sandoval Alaguna, '
+              'Odoo Community Association (OCA)',
     'complexity': 'easy',
     'description': """
 Sale Order Project
 ==================
 Link module to map sale orders to project
         """,
-    'website': 'http://www.akretion.com/',
+    'website': 'https://github.com/OCA/project',
     'depends': [
         'project',
-        'sale',
         'sale_management',
     ],
     'data': [
         'wizard/sale_order_createproject_views.xml',
         'views/analytic_account_view.xml',
-        'views/sale_view.xml',
         'views/project_view.xml',
+        'views/sale_view.xml',
     ],
     'installable': True,
 }
