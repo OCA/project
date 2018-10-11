@@ -23,7 +23,7 @@ Project Task Add Very High
     :target: https://runbot.odoo-community.org/runbot/140/12.0
     :alt: Try me on Runbot
 
-|badge1| |badge2| |badge3| |badge4| |badge5|
+|badge1| |badge2| |badge3| |badge4| |badge5| 
 
 This module extends the field `priority` in project tasks, adding two new levels of priority.
 The two new levels of priority are: `High` and `Very High`.
@@ -31,24 +31,24 @@ The two new levels of priority are: `High` and `Very High`.
 
 On a task form, the priority widget is displayed with three stars instead of one:
 
-.. figure:: https://raw.githubusercontent.com/OCA/project/11.0/project_task_add_very_high/static/description/image.png
+.. figure:: https://raw.githubusercontent.com/OCA/project/12.0/project_task_add_very_high/static/description/image.png
    :alt: On form, priority widget shows three stars instead of one
 
 
 On a Kanban view, the priority widget is displayed as well with three stars instead of one:
 
-.. figure:: https://raw.githubusercontent.com/OCA/project/11.0/project_task_add_very_high/static/description/image2.png
+.. figure:: https://raw.githubusercontent.com/OCA/project/12.0/project_task_add_very_high/static/description/image2.png
    :alt: On kanban, priority widget shows three stars instead of one
 
 
 Without having this module installed, on the form it would look like as that:
 
-.. figure:: https://raw.githubusercontent.com/OCA/project/11.0/project_task_add_very_high/static/description/image_a.png
+.. figure:: https://raw.githubusercontent.com/OCA/project/12.0/project_task_add_very_high/static/description/image_a.png
    :alt: On form, priority widget shows one star
 
 and on Kanban:
 
-.. figure:: https://raw.githubusercontent.com/OCA/project/11.0/project_task_add_very_high/static/description/image2_a.png
+.. figure:: https://raw.githubusercontent.com/OCA/project/12.0/project_task_add_very_high/static/description/image2_a.png
    :alt: On kanban, priority widget shows one star
 
 In case this module is uninstalled, all the tasks that were previously set as `High` or `Very High` priority will be
@@ -111,7 +111,7 @@ promote its widespread use.
 
 Current `maintainer <https://odoo-community.org/page/maintainer-role>`__:
 
-|maintainer-astirpe|
+|maintainer-astirpe| 
 
 This module is part of the `OCA/project <https://github.com/OCA/project/tree/12.0/project_task_add_very_high>`_ project on GitHub.
 
