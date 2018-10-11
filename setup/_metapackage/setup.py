@@ -9,6 +9,7 @@ setuptools.setup(
     version=version,
     install_requires=[
         'odoo12-addon-project_description',
+        'odoo12-addon-project_task_add_very_high',
     ],
     classifiers=[
         'Programming Language :: Python',
