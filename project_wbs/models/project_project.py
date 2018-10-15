@@ -6,7 +6,7 @@
 # Copyright 2017 Serpent Consulting Services Pvt. Ltd.
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-from odoo import api, fields, models, _
+from odoo import api, exceptions, fields, models, _
 
 
 class Project(models.Model):
@@ -258,7 +258,22 @@ class Project(models.Model):
         return view
 
     @api.multi
+    @api.constrains('active')
+    def check_parent_active(self):
+        for project in self:
+            if (project.active and project.parent_id and not
+                    project.parent_id.active):
+                raise exceptions.ValidationError(
+                    _('Please activate first parent project')
+                    % self.parent_id.display_name)
+
+    @api.multi
+    def archive_project(self):
+        for project in self:
+            project.active = False
+
+    @api.multi
     def write(self, vals):
-        if 'active' in vals:
-            self.mapped('project_child_complete_ids').toggle_active()
+        if 'active' in vals and not vals['active']:
+            self.mapped('project_child_complete_ids').archive_project()
         return super(Project, self).write(vals)
