@@ -45,3 +45,8 @@ class TestSaleOrderProject(common.TransactionCase):
         with self.assertRaises(UserError):
             self.sale_order.action_create_project()
             self.sale_order.action_create_project()
+
+    def test_compute_num_sale_orders(self):
+        self.sale_order.analytic_account_id = \
+            self.project.analytic_account_id.id
+        self.assertTrue(self.analytic_account.num_sale_orders, 1)
