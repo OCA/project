@@ -12,6 +12,7 @@ class TestSaleOrderProject(common.TransactionCase):
         super(TestSaleOrderProject, self).setUp()
         self.sale_order_model = self.env['sale.order']
         self.analytic_account_model = self.env['account.analytic.account']
+        self.analytic_account = self.env.ref('account.analytic_account_3')
         self.sale_order = self.env.ref('sale.sale_order_2')
         self.project = self.env.ref('project.project_project_1')
 
@@ -50,3 +51,11 @@ class TestSaleOrderProject(common.TransactionCase):
         self.sale_order.analytic_account_id = \
             self.project.analytic_account_id.id
         self.assertTrue(self.analytic_account.num_sale_orders, 1)
+
+    def test_action_create_project_task_0(self):
+        self.wizard.action_create_project()
+
+    def test_error_action_create_project_task(self):
+        with self.assertRaises(UserError)
+            self.wizard.action_create_project_task()
+            self.wizard.action_create_project_task()
