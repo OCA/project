@@ -11,4 +11,6 @@ class ProjectCategory(models.Model):
     _name = 'project.category'
     _inherit = 'project.tags'
 
-    description = fields.Char()
+    description = fields.Char(
+        string='Category',
+    )

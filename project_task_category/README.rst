@@ -25,6 +25,7 @@ Contributors
 * Eric Caudal <eric.caudal@elico-corp.com>
 * Victor M. Martin <victor.martin@elico-corp.com>
 * Dave Lasley <dave@laslabs.com>
+* Isaac Gallart <igallart@puntsistemes.es>
 
 Maintainer
 ----------

@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # © 2017 Elico Corp (https://www.elico-corp.com).
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
@@ -11,6 +10,6 @@ class Task(models.Model):
     _inherit = 'project.task'
 
     categ_id = fields.Many2one(
-        'project.category',
-        'Category'
+        comodel_name='project.category',
+        string='Category',
     )
