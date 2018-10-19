@@ -264,8 +264,9 @@ class Project(models.Model):
             if (project.active and project.parent_id and not
                     project.parent_id.active):
                 raise exceptions.ValidationError(
-                    _('Please activate first parent project')
-                    % self.parent_id.display_name)
+                    _('Please activate first parent project %s')
+                    % project.parent_id.display_name)
+        return True
 
     @api.multi
     def archive_project(self):
