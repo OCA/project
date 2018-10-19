@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="project_project_phase_form_view" model="ir.ui.view">
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project" />
+        <field name="arch" type="xml">
+            <sheet position="before">
+                <header>
+                    <field name="phase_id" widget="statusbar" clickable="True"
+                           required="True"/>
+                </header>
+            </sheet>
+        </field>
+    </record>
+
+    <record id="project_project_phase_search" model="ir.ui.view">
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project_project_filter" />
+        <field name="arch" type="xml">
+            <filter name="Partner" position="after">
+                <filter string="Phase" name="phase_id_group"
+                        context="{'group_by':'phase_id'}"/>
+            </filter>
+        </field>
+    </record>
+
+    <record id="project.open_view_project_all" model="ir.actions.act_window">
+        <field name="context">{'search_default_phase_id_group': True}</field>
+    </record>
+
+</odoo>

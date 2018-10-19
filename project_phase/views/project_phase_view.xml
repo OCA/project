@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="project_phase_tree_view" model="ir.ui.view">
+        <field name="model">project.phase</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sequence" widget="handle"/>
+                <field name="name" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="project_phase_form_view" model="ir.ui.view">
+        <field name="model">project.phase</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="sequence" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="project_phase_action" model="ir.actions.act_window">
+        <field name="name">Project Phases</field>
+        <field name="res_model">project.phase</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="project_phase_menuitem"
+              action="project_phase_action"
+              parent="project.menu_project_config"
+              sequence="50" />
+</odoo>

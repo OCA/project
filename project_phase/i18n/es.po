@@ -1,0 +1,119 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* project_phase
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-10-19 12:03+0000\n"
+"PO-Revision-Date: 2018-10-19 12:03+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: project_phase
+#: model:project.phase,name:project_phase.cancel_project_phase
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: project_phase
+#: model:project.phase,name:project_phase.close_project_phase
+msgid "Close"
+msgstr "Cerrar"
+
+#. module: project_phase
+#: model:ir.model.fields,field_description:project_phase.field_project_phase_create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: project_phase
+#: model:ir.model.fields,field_description:project_phase.field_project_phase_create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: project_phase
+#: model:ir.model.fields,field_description:project_phase.field_project_phase_display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: project_phase
+#: model:project.phase,name:project_phase.draft_project_phase
+msgid "Draft"
+msgstr "Draft"
+
+#. module: project_phase
+#: model:ir.model.fields,field_description:project_phase.field_project_phase_id
+msgid "ID"
+msgstr "ID"
+
+#. module: project_phase
+#: model:ir.model.fields,field_description:project_phase.field_project_phase___last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: project_phase
+#: model:ir.model.fields,field_description:project_phase.field_project_phase_write_uid
+msgid "Last Updated by"
+msgstr "Última actualización de"
+
+#. module: project_phase
+#: model:ir.model.fields,field_description:project_phase.field_project_phase_write_date
+msgid "Last Updated on"
+msgstr "Última actualización en"
+
+#. module: project_phase
+#: model:ir.model.fields,field_description:project_phase.field_project_phase_name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: project_phase
+#: model:project.phase,name:project_phase.offer_project_phase
+msgid "Offer"
+msgstr "Offer"
+
+#. module: project_phase
+#: model:ir.model.fields,field_description:project_phase.field_project_project_phase_id
+#: model:ir.ui.view,arch_db:project_phase.project_project_phase_search
+msgid "Phase"
+msgstr "Fase"
+
+#. module: project_phase
+#: model:project.phase,name:project_phase.progress_project_phase
+msgid "Progress"
+msgstr "Progress"
+
+#. module: project_phase
+#: model:ir.model,name:project_phase.model_project_project
+msgid "Project"
+msgstr "Proyecto"
+
+#. module: project_phase
+#: model:ir.model,name:project_phase.model_project_phase
+msgid "Project Phase"
+msgstr "Fase de proyecto"
+
+#. module: project_phase
+#: model:ir.actions.act_window,name:project_phase.project_phase_action
+#: model:ir.ui.menu,name:project_phase.project_phase_menuitem
+msgid "Project Phases"
+msgstr "Fases de proyecto"
+
+#. module: project_phase
+#: model:project.phase,name:project_phase.proposal_project_phase
+msgid "Proposal"
+msgstr "Proposal"
+
+#. module: project_phase
+#: model:ir.model.fields,field_description:project_phase.field_project_phase_sequence
+msgid "Sequence"
+msgstr "Secuencia"
+
+#. module: project_phase
+#: model:project.phase,name:project_phase.viability_project_phase
+msgid "Viability"
+msgstr "Viability"
+

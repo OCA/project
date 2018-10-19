@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="True">
+    <record id="draft_project_phase" model="project.phase"
+            forcecreate="True">
+        <field name="name">Draft</field>
+        <field name="sequence">1</field>
+    </record>
+    <record id="viability_project_phase" model="project.phase"
+            forcecreate="True">
+        <field name="name">Viability</field>
+        <field name="sequence">20</field>
+    </record>
+    <record id="proposal_project_phase" model="project.phase"
+            forcecreate="True">
+        <field name="name">Proposal</field>
+        <field name="sequence">30</field>
+    </record>
+    <record id="offer_project_phase" model="project.phase"
+            forcecreate="True">
+        <field name="name">Offer</field>
+        <field name="sequence">40</field>
+    </record>
+    <record id="progress_project_phase" model="project.phase"
+            forcecreate="True">
+        <field name="name">Progress</field>
+        <field name="sequence">50</field>
+    </record>
+    <record id="close_project_phase" model="project.phase"
+            forcecreate="True">
+        <field name="name">Closed</field>
+        <field name="sequence">100</field>
+    </record>
+    <record id="cancel_project_phase" model="project.phase"
+            forcecreate="True">
+        <field name="name">Cancelled</field>
+        <field name="sequence">150</field>
+    </record>
+</odoo>
