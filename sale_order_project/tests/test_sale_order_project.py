@@ -56,6 +56,6 @@ class TestSaleOrderProject(common.TransactionCase):
         self.wizard.action_create_project()
 
     def test_error_action_create_project_task(self):
-        with self.assertRaises(UserError)
+        with self.assertRaises(UserError):
             self.wizard.action_create_project_task()
             self.wizard.action_create_project_task()
