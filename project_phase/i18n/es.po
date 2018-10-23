@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-10-19 12:03+0000\n"
-"PO-Revision-Date: 2018-10-19 12:03+0000\n"
+"POT-Creation-Date: 2018-10-23 08:29+0000\n"
+"PO-Revision-Date: 2018-10-23 08:29+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -17,13 +17,13 @@ msgstr ""
 
 #. module: project_phase
 #: model:project.phase,name:project_phase.cancel_project_phase
-msgid "Cancel"
-msgstr "Cancelar"
+msgid "Cancelled"
+msgstr "Cancelado"
 
 #. module: project_phase
 #: model:project.phase,name:project_phase.close_project_phase
-msgid "Close"
-msgstr "Cerrar"
+msgid "Closed"
+msgstr "Cerrado"
 
 #. module: project_phase
 #: model:ir.model.fields,field_description:project_phase.field_project_phase_create_uid
@@ -43,7 +43,7 @@ msgstr "Nombre mostrado"
 #. module: project_phase
 #: model:project.phase,name:project_phase.draft_project_phase
 msgid "Draft"
-msgstr "Draft"
+msgstr "Borrador"
 
 #. module: project_phase
 #: model:ir.model.fields,field_description:project_phase.field_project_phase_id
@@ -73,18 +73,18 @@ msgstr "Nombre"
 #. module: project_phase
 #: model:project.phase,name:project_phase.offer_project_phase
 msgid "Offer"
-msgstr "Offer"
+msgstr "Oferta"
 
 #. module: project_phase
 #: model:ir.model.fields,field_description:project_phase.field_project_project_phase_id
 #: model:ir.ui.view,arch_db:project_phase.project_project_phase_search
 msgid "Phase"
-msgstr "Fase"
+msgstr "Etapa"
 
 #. module: project_phase
 #: model:project.phase,name:project_phase.progress_project_phase
 msgid "Progress"
-msgstr "Progress"
+msgstr "Ejecución"
 
 #. module: project_phase
 #: model:ir.model,name:project_phase.model_project_project
@@ -94,18 +94,18 @@ msgstr "Proyecto"
 #. module: project_phase
 #: model:ir.model,name:project_phase.model_project_phase
 msgid "Project Phase"
-msgstr "Fase de proyecto"
+msgstr "Etapa de proyecto"
 
 #. module: project_phase
 #: model:ir.actions.act_window,name:project_phase.project_phase_action
 #: model:ir.ui.menu,name:project_phase.project_phase_menuitem
 msgid "Project Phases"
-msgstr "Fases de proyecto"
+msgstr "Etapas de proyecto"
 
 #. module: project_phase
 #: model:project.phase,name:project_phase.proposal_project_phase
 msgid "Proposal"
-msgstr "Proposal"
+msgstr "Propuesta"
 
 #. module: project_phase
 #: model:ir.model.fields,field_description:project_phase.field_project_phase_sequence
@@ -115,5 +115,5 @@ msgstr "Secuencia"
 #. module: project_phase
 #: model:project.phase,name:project_phase.viability_project_phase
 msgid "Viability"
-msgstr "Viability"
+msgstr "Viabilidad"
 
