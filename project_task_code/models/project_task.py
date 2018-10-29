@@ -15,20 +15,19 @@ class ProjectTask(models.Model):
          _('The code must be unique!')),
     ]
 
-    @api.model
-    def create(self, vals):
-        if vals.get('code', '/') == '/':
-            vals['code'] = self.env['ir.sequence'].next_by_code('project.task')
-        return super(ProjectTask, self).create(vals)
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            if vals.get('code', '/') == '/':
+                vals['code'] = self.env['ir.sequence'].next_by_code('project.task')
+        return super(ProjectTask, self).create(vals_list)
 
-    @api.multi
     def copy(self, default=None):
         if default is None:
             default = {}
         default['code'] = self.env['ir.sequence'].next_by_code('project.task')
         return super(ProjectTask, self).copy(default)
 
-    @api.multi
     def name_get(self):
         result = super(ProjectTask, self).name_get()
         new_result = []
