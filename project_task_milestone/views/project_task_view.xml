@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="project_task_phase_form_view" model="ir.ui.view">
+        <field name="name">project.task.phase.form</field>
+        <field name="model">project.task.phase</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="project_task_phase_tree_view" model="ir.ui.view">
+        <field name="name">project.task.phase.tree</field>
+        <field name="model">project.task.phase</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="project_task_phase_search_view" model="ir.ui.view">
+        <field name="name">project.task.phase.search</field>
+        <field name="model">project.task.phase</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+            </search>
+        </field>
+    </record>
+</odoo>
