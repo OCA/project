@@ -31,10 +31,10 @@ class SaleOrder(models.Model):
 
     @api.model
     def _prepare_project_vals(self, order):
-        name = "{0} - {1} - {2}".format(
-            order.partner_id.name,
-            date.today().year,
-            order.name
+        name = "{0} - {1}".format(
+            # order.partner_id.name,
+            order.name,
+            date.today().year
         )
         return {
             'user_id': order.user_id.id,
