@@ -31,14 +31,14 @@
         <field name="model">project.task</field>
         <field name="arch" type="xml">
             <tree editable="top" string="Tasks">
+                <field name="project_id" invisible="context.get('hide_project_id',True)" />
+                <field name="stage_id" />
                 <field name="phase_id" />
-                <field name="sequence" invisible="context.get('seq_visible', False)"/>
+                <field name="milestone" />
+                <field name="sequence" />
                 <field name="name" string="Task"/>
-                <field name="project_id" invisible="not context.get('user_invisible', False)"/>
-                <field name="user_id" invisible="not context.get('user_invisible', False)"/>
                 <field name="date_start"/>
                 <field name="date_end"/>
-                <field name="stage_id" invisible="not context.get('set_visible',False)"/>
             </tree>
         </field>
     </record>
