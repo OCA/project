@@ -1,3 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_project_task_phase_all,access_project_task_phase all,model_project_task_phase,,1,0,0,0
 access_project_task_phase_manager,access_project_task_phase manager,model_project_task_phase,project.group_project_manager,1,1,1,1
+access_project_task_plan,access_project_task_plan,model_project_task_plan,,1,0,0,0

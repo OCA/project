@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="project_task_plan_form_view" model="ir.ui.view">
+        <field name="model">project.task.plan</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group name="main">
+                        <field name="project_id" invisible="context.get('hide_project_id',True)"/>
+                        <field name="phase_id" />
+                        <field name="start_date" />
+                        <field name="end_date" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="project_task_plan_tree_view" model="ir.ui.view">
+        <field name="model">project.task.plan</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="project_id" invisible="context.get('hide_project_id',True)" />
+                <field name="phase_id" />
+                <field name="start_date" />
+                <field name="end_date" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="project_task_plan_search_view" model="ir.ui.view">
+        <field name="model">project.task.plan</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="project_id" />
+                <field name="phase_id" />
+                <field name="start_date" />
+                <field name="end_date" />
+                <group name="group_by" expand="0">
+                    <filter name="group_project" string="Project"
+                            context="{'group_by': 'project_id'}" />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="project_task_plan_gantt_view" model="ir.ui.view">
+        <field name="model">project.task.plan</field>
+        <field name="arch" type="xml">
+            <gantt date_start="start_date" date_stop="end_date"
+                   default_group_by="project_id">
+            </gantt>
+        </field>
+    </record>
+
+    <record id="action_project_task_plan_view" model="ir.actions.act_window">
+        <field name="name">Project Task Plan</field>
+        <field name="res_model">project.task.plan</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form,gantt</field>
+        <field name="context">{
+            'hide_project_id': False,
+        }</field>
+    </record>
+
+    <menuitem id="project_task_plan_option_view"
+              action="action_project_task_plan_view"
+              parent="project.menu_project_report"/>
+</odoo>
