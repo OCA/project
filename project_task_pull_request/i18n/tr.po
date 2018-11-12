@@ -20,13 +20,13 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. module: project_task_pull_request
-#: model:ir.model.fields,field_description:project_task_pull_request.field_project_project_pr_required_states
-#: model:ir.model.fields,field_description:project_task_pull_request.field_project_task_pr_required_states
+#: model:ir.model.fields,field_description:project_task_pull_request.field_project_project__pr_required_states
+#: model:ir.model.fields,field_description:project_task_pull_request.field_project_task__pr_required_states
 msgid "PR Required States"
 msgstr ""
 
 #. module: project_task_pull_request
-#: model:ir.model.fields,field_description:project_task_pull_request.field_project_task_pr_uri
+#: model:ir.model.fields,field_description:project_task_pull_request.field_project_task__pr_uri
 msgid "PR URI"
 msgstr ""
 
@@ -43,7 +43,7 @@ msgid "Project"
 msgstr "Proje"
 
 #. module: project_task_pull_request
-#: model:ir.ui.view,arch_db:project_task_pull_request.edit_project
+#: model_terms:ir.ui.view,arch_db:project_task_pull_request.edit_project
 msgid "Pull Request URIs"
 msgstr ""
 
