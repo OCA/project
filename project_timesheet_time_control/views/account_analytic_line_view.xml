@@ -9,7 +9,7 @@
                 <attribute name="invisible">1</attribute>
             </field>
             <field name="date" position="after">
-                <field name="date_time"/>
+                <field name="date_time" string="Date"/>
             </field>
             <field name="unit_amount" position="after">
                 <button name="button_end_work"
@@ -17,21 +17,6 @@
                         type="object"
                         icon="fa-stop-circle"
                         attrs="{'invisible': [('unit_amount', '>', 0)]}"
-                />
-            </field>
-            <field name="task_id" position="after">
-                <field name="closed" invisible="1"/>
-                <button name="button_close_task"
-                        string="Close task"
-                        type="object"
-                        icon="fa-folder-o"
-                        attrs="{'invisible': ['|', ('closed', '=', True), ('task_id', '=', False)]}"
-                />
-                <button name="button_open_task"
-                        string="Open task"
-                        type="object"
-                        icon="fa-folder-open-o"
-                        attrs="{'invisible': ['|', ('closed', '=', False), ('task_id', '=', False)]}"
                 />
             </field>
         </field>
@@ -42,30 +27,11 @@
         <field name="model">account.analytic.line</field>
         <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_form"/>
         <field name="arch" type="xml">
-            <field name="name" position="replace"/>
-            <xpath expr="//sheet/group" position="before">
-                <div class="oe_button_box" name="button_box">
-                    <button name="toggle_closed" type="object" confirm="Open/Close timesheet line automatically open/close its tasks. Do you want to proceed?" class="oe_stat_button" icon="fa-folder">
-                        <field name="closed" widget="boolean_button" options='{"terminology": {
-                            "string_true": "Closed",
-                            "hover_true": "Open task",
-                            "string_false": "Open",
-                            "hover_false": "Close task"
-                        }}'/>
-                    </button>
-                </div>
-                <div class="oe_title">
-                    <label class="oe_edit_only" for="name"/>
-                    <h1>
-                        <field name="name"/>
-                    </h1>
-                </div>
-            </xpath>
             <field name="date" position="attributes">
                 <attribute name="invisible">1</attribute>
             </field>
             <field name="date" position="after">
-                <field name="date_time"/>
+                <field name="date_time" string="Date"/>
             </field>
             <field name="unit_amount" position="replace">
                 <label for="unit_amount"/>
@@ -91,11 +57,11 @@
             <field name="arch" type="xml">
                 <xpath expr="//templates//field[@name='unit_amount']/.." position="after">
                     <div class="row">
-                        <div class="col-xs-12">
+                        <div class="col-12">
                             <button name="button_end_work"
                                     type="object"
                                     attrs="{'invisible': [('unit_amount', '>', 0)]}"
-                                    class="btn btn-primary pull-right btn-sm">
+                                    class="btn btn-primary float-right btn-sm">
                                 <i class="fa fa-stop-circle"/>
                                 Stop
                             </button>
