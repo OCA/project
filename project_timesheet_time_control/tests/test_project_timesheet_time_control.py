@@ -3,7 +3,7 @@
 
 from odoo.tests import common
 from odoo import fields
-from datetime import timedelta, datetime
+from datetime import timedelta, date, datetime
 
 
 class TestProjectTimesheetTimeControl(common.TransactionCase):
@@ -16,42 +16,12 @@ class TestProjectTimesheetTimeControl(common.TransactionCase):
             'name': 'Test task',
             'project_id': self.project.id,
         })
-        task_type_obj = self.env['project.task.type']
-        self.stage_open = task_type_obj.create({
-            'name': 'New',
-            'closed': False,
-            'project_ids': [(6, 0, self.project.ids)],
-        })
-        self.stage_close = task_type_obj.create({
-            'name': 'Done',
-            'closed': True,
-            'project_ids': [(6, 0, self.project.ids)],
-        })
-        date_time = fields.Datetime.to_string(
-            datetime.now() - timedelta(hours=1))
         self.line = self.env['account.analytic.line'].create({
-            'date_time': date_time,
+            'date_time': datetime.now() - timedelta(hours=1),
             'task_id': self.task.id,
             'account_id': self.analytic_account.id,
             'name': 'Test line',
         })
-
-    def test_onchange_project_id(self):
-        record = self.env['account.analytic.line'].new()
-        record.task_id = self.task.id
-        record.project_id = self.project.id
-        action = record.onchange_project_id()
-        self.assertTrue(action['domain']['task_id'])
-        self.assertEqual(record.task_id, self.task)
-        record.project_id = False
-        action = record.onchange_project_id()
-        self.assertEqual(action['domain']['task_id'], [])
-
-    def test_onchange_task_id(self):
-        record = self.env['account.analytic.line'].new()
-        record.task_id = self.task.id
-        record.onchange_task_id_project_timesheet_time_control()
-        self.assertEqual(record.project_id, self.project)
 
     def test_create_write_analytic_line(self):
         line = self.env['account.analytic.line'].create({
@@ -61,22 +31,8 @@ class TestProjectTimesheetTimeControl(common.TransactionCase):
         })
         self.assertEqual(line.date, fields.Date.today())
         line.date_time = '2016-03-23 18:27:00'
-        self.assertEqual(line.date, '2016-03-23')
+        self.assertEqual(line.date, date(2016, 3, 23))
 
     def test_button_end_work(self):
         self.line.button_end_work()
         self.assertTrue(self.line.unit_amount)
-
-    def test_open_close_task(self):
-        self.line.button_close_task()
-        self.assertEqual(self.line.task_id.stage_id, self.stage_close)
-        self.line.button_open_task()
-        self.assertEqual(self.line.task_id.stage_id, self.stage_open)
-
-    def test_toggle_closed(self):
-        self.line.toggle_closed()
-        self.assertTrue(self.line.task_id.stage_id.closed)
-        self.assertTrue(self.line.closed)
-        self.line.toggle_closed()
-        self.assertFalse(self.line.task_id.stage_id.closed)
-        self.assertFalse(self.line.closed)
