@@ -9,7 +9,7 @@
                 <attribute name="invisible">1</attribute>
             </xpath>
             <xpath expr="//field[@name='timesheet_ids']//field[@name='date']" position="after">
-                <field name="date_time"/>
+                <field name="date_time" string="Date"/>
             </xpath>
             <xpath expr="//field[@name='timesheet_ids']//field[@name='unit_amount']" position="after">
                 <button name="button_end_work"
@@ -54,11 +54,11 @@
                                     <strong>Duration: </strong><field name="unit_amount" widget="float_time"/>
                                 </span>
                                 <div class="row">
-                                    <div class="col-xs-12">
+                                    <div class="col-12">
                                         <button name="button_end_work"
                                                 type="object"
                                                 attrs="{'invisible': [('unit_amount', '>', 0)]}"
-                                                class="btn btn-primary pull-right btn-sm">
+                                                class="btn btn-primary float-right btn-sm">
                                             <i class="fa fa-stop-circle"/>
                                             Stop
                                         </button>
@@ -71,7 +71,7 @@
                 <form>
                     <group>
                         <group>
-                            <field name="date_time"/>
+                            <field name="date_time" string="Date"/>
                             <field name="name"/>
                             <field name="user_id" invisible="1"/>
                             <field name="employee_id" required="1"/>
@@ -92,6 +92,9 @@
                         </group>
                     </group>
                 </form>
+            </xpath>
+            <xpath expr="//field[@name='timesheet_ids']/tree" position="attributes">
+                <attribute name="default_order">date_time</attribute>
             </xpath>
         </field>
     </record>
