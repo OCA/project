@@ -9,6 +9,7 @@ from datetime import datetime
 
 class AccountAnalyticLine(models.Model):
     _inherit = 'account.analytic.line'
+    _order = 'date_time desc'
 
     date_time = fields.Datetime(default=fields.Datetime.now, string='Date')
     closed = fields.Boolean(related='task_id.stage_id.closed', readonly=True)
