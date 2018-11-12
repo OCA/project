@@ -11,30 +11,33 @@ class TestProjectTaskPullRequest(TransactionCase):
 
     def setUp(self):
         super(TestProjectTaskPullRequest, self).setUp()
-        self.project_1 = self.env['project.project'].create({
-            'name': 'Test Project',
+
+        project_obj = self.env['project.project']
+        task_obj = self.env['project.task']
+
+        self.project_1 = project_obj.create({
+            'name': 'Test Project 1',
             'pr_required_states': [(4, 6, 0)],
-            'key': 'ABC',
         })
-        self.project_2 = self.env['project.project'].create({
-            'name': 'Test Project',
+        self.project_2 = project_obj.create({
+            'name': 'Test Project 2',
             'pr_required_states': [(4, 6, 0), (4, 5, 0)],
-            'key': 'DEF',
         })
-        self.task_1 = self.env['project.task'].create({
-            'name': 'Test Task',
+
+        self.task_1 = task_obj.create({
+            'name': 'Test Task 1',
             'project_id': self.project_1.id,
             'pr_uri': False,
             'stage_id': 1,
         })
-        self.task_2 = self.env['project.task'].create({
-            'name': 'Test Task',
+        self.task_2 = task_obj.create({
+            'name': 'Test Task 2',
             'project_id': self.project_2.id,
             'pr_uri': False,
             'stage_id': 1,
         })
-        self.task_3 = self.env['project.task'].create({
-            'name': 'Test Task',
+        self.task_3 = task_obj.create({
+            'name': 'Test Task 3',
             'project_id': self.project_2.id,
             'pr_uri': 'github.com',
             'stage_id': 1,
