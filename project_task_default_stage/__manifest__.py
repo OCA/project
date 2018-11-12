@@ -1,10 +1,11 @@
-# (c) 2015 Incaser Informatica S.L. - Sergio Teruel
-# (c) 2015 Incaser Informatica S.L. - Carlos Dauden
-# License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
+# Copyright 2015 Incaser Informatica S.L. - Sergio Teruel
+# Copyright 2015 Incaser Informatica S.L. - Carlos Dauden
+# Copyright 2018 Tecnativa - Ernesto Tejeda
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 {
     'name': 'Project Task Default Stage',
     'summary': 'Recovery default task stage projects from v8',
-    'version': '11.0.1.0.0',
+    'version': '12.0.1.0.0',
     'category': 'Project',
     'author': 'Tecnativa, '
               'Odoo Community Association (OCA)',
