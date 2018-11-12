@@ -7,38 +7,40 @@ Project timesheet time control
    !! changes will be overwritten.                   !!
    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-.. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
+.. |badge1| image:: https://img.shields.io/badge/maturity-Mature-brightgreen.png
     :target: https://odoo-community.org/page/development-status
-    :alt: Beta
+    :alt: Mature
 .. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fproject-lightgray.png?logo=github
-    :target: https://github.com/OCA/project/tree/11.0/project_timesheet_time_control
+    :target: https://github.com/OCA/project/tree/12.0/project_timesheet_time_control
     :alt: OCA/project
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/project-11-0/project-11-0-project_timesheet_time_control
+    :target: https://translation.odoo-community.org/projects/project-12-0/project-12-0-project_timesheet_time_control
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runbot-Try%20me-875A7B.png
-    :target: https://runbot.odoo-community.org/runbot/140/11.0
+    :target: https://runbot.odoo-community.org/runbot/140/12.0
     :alt: Try me on Runbot
 
 |badge1| |badge2| |badge3| |badge4| |badge5| 
 
 * This module adds a button at account analytic line level to compute the spent
   time, in minutes, from start date to the current moment.
-* It improves the domain applied to task field for accommodating to a project
-  flow.
 * It adds a datetime field that replaces ``date`` field in tree view, and write
   date field with datetime field value.
-* Finally, it allows to open and close tasks from account analytic lines.
-  The selected closed stage is the first one that is found with the mark
-  "Closed" checked.
 
 **Table of contents**
 
 .. contents::
    :local:
+
+Installation
+============
+
+This module depends on hr_timesheet_task_stage and hr_timesheet_task_domain
+modules that are in `OCA/timesheet <https://github.com/OCA/timesheet>`_
+repository
 
 Usage
 =====
@@ -74,7 +76,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/project/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/project/issues/new?body=module:%20project_timesheet_time_control%0Aversion:%2011.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/project/issues/new?body=module:%20project_timesheet_time_control%0Aversion:%2012.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -111,6 +113,14 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
-This module is part of the `OCA/project <https://github.com/OCA/project/tree/11.0/project_timesheet_time_control>`_ project on GitHub.
+.. |maintainer-ernestotejeda| image:: https://github.com/ernestotejeda.png?size=40px
+    :target: https://github.com/ernestotejeda
+    :alt: ernestotejeda
+
+Current `maintainer <https://odoo-community.org/page/maintainer-role>`__:
+
+|maintainer-ernestotejeda| 
+
+This module is part of the `OCA/project <https://github.com/OCA/project/tree/12.0/project_timesheet_time_control>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
