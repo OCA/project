@@ -44,7 +44,7 @@ Configuration
    the task is in that stage.
 #. Go to your user settings and enable option "Manage multiple Stock Locations"
    if you want to manage locations on consuming materials.
-#. Go to your user settings and enable option "Analytic Accounging" if you want
+#. Go to your user settings and enable option "Analytic Accounting" if you want
    to manage analytic accounts in tasks.
 
 Usage
@@ -56,6 +56,9 @@ Usage
 #. You can define default locations to consume material in tasks and projects.
    Locations preference order to consume materials is: locations set in tasks
    first, locations defined in project second and finally standard locations.
+#. If you define an analytic account in task, move created will be assigned to
+   this analytic account. If not account analytic is defined, then move created
+   will be assigned to the analytic account defined in its project.
 
 Known issues / Roadmap
 ======================
@@ -83,7 +86,7 @@ Authors
 Contributors
 ~~~~~~~~~~~~
 
-* Tecnativa <https://www.tecantiva.com>:
+* `Tecnativa <https://www.tecnativa.com>`_:
 
   * Rafael Blasco <rafael.blasco@tecnativa.com>
   * Pedro M. Baeza <pedro.baeza@tecnativa.com>
