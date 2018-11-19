@@ -15,7 +15,7 @@ class Project(models.Model):
     )
 
     key = fields.Char(
-        string='key',
+        string='Key',
         size=10,
         required=False,
         index=True,
