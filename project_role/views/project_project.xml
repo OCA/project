@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--
+        Copyright 2018 Brainbean Apps (https://brainbeanapps.com)
+        License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+    -->
+
+    <record id="edit_project" model="ir.ui.view">
+        <field name="name">project.project.form</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <xpath expr='//page[@name="settings"]' position="after">
+                <page name="assignments" string="Assignments">
+                    <group>
+                        <field name="assignment_ids" nolabel="1">
+                            <tree editable="bottom">
+                                <field name="company_id" invisible="1"/>
+                                <field name="project_id" invisible="1"/>
+                                <field name="role_id"/>
+                                <field name="user_id" domain="[('active', '=', True)]"/>
+                            </tree>
+                        </field>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
