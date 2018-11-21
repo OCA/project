@@ -2,29 +2,23 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 {
-    "name": "Sequential Code for Tasks",
-    "version": "12.0.1.1.0",
-    "category": "Project Management",
-    "author": "OdooMRP team, "
-              "AvanzOSC, "
-              "Tecnativa, "
-              "Odoo Community Association (OCA)",
-    "website": "http://www.avanzosc.es",
-    "license": "AGPL-3",
-    "contributors": [
-        "Oihane Crucelaegui <oihanecrucelaegi@avanzosc.es>",
-        "Pedro M. Baeza <pedro.baeza@serviciosbaeza.com>",
-        "Ana Juaristi <ajuaristo@gmail.com>",
-        "Vicent Cubells <vicent.cubells@tecnativa.com>",
+    'name': 'Sequential Code for Tasks',
+    'version': '12.0.1.0.0',
+    'category': 'Project Management',
+    'author': 'OdooMRP team, '
+              'AvanzOSC, '
+              'Tecnativa, '
+              'Odoo Community Association (OCA)',
+    'website': 'https://github.com/OCA/project',
+    'license': 'AGPL-3',
+    'depends': [
+        'project',
     ],
-    "depends": [
-        "project",
-    ],
-    "data": [
-        "data/task_sequence.xml",
-        "views/project_view.xml",
+    'data': [
+        'data/task_sequence.xml',
+        'views/project_view.xml',
     ],
     'installable': True,
-    "pre_init_hook": "create_code_equal_to_id",
-    "post_init_hook": "assign_old_sequences",
+    'pre_init_hook': 'pre_init_hook',
+    'post_init_hook': 'post_init_hook',
 }
