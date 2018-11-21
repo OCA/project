@@ -8,28 +8,37 @@ class ProjectTask(models.Model):
     _inherit = 'project.task'
 
     code = fields.Char(
-        string='Task Number', required=True, default="/", readonly=True)
+        string='Task Number',
+        required=True,
+        default='/',
+        readonly=True,
+    )
 
     _sql_constraints = [
-        ('project_task_unique_code', 'UNIQUE (code)',
-         _('The code must be unique!')),
+        (
+            'project_task_unique_code',
+            'UNIQUE (code)',
+            _('The code must be unique!')
+        ),
     ]
 
     @api.model_create_multi
     def create(self, vals_list):
         for vals in vals_list:
             if vals.get('code', '/') == '/':
-                vals['code'] = self.env['ir.sequence'].next_by_code('project.task')
-        return super(ProjectTask, self).create(vals_list)
+                vals['code'] = self.env['ir.sequence'].next_by_code(
+                    'project.task'
+                )
+        return super().create(vals)
 
     def copy(self, default=None):
         if default is None:
             default = {}
         default['code'] = self.env['ir.sequence'].next_by_code('project.task')
-        return super(ProjectTask, self).copy(default)
+        return super().copy(default)
 
     def name_get(self):
-        result = super(ProjectTask, self).name_get()
+        result = super().name_get()
         new_result = []
 
         for task in result:

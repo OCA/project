@@ -7,7 +7,7 @@ import odoo.tests.common as common
 class TestProjectTaskCode(common.TransactionCase):
 
     def setUp(self):
-        super(TestProjectTaskCode, self).setUp()
+        super().setUp()
         self.project_task_model = self.env['project.task']
         self.ir_sequence_model = self.env['ir.sequence']
         self.task_sequence = self.env.ref('project_task_code.sequence_task')
