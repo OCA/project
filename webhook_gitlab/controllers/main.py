@@ -6,7 +6,8 @@ import functools
 import logging
 import re
 
-from odoo import http
+import gitlab
+from odoo import _, http
 from odoo.http import request
 from odoo.tools import consteq
 
@@ -70,12 +71,37 @@ class WebhookGitlab(http.Controller):
             ['ticket #', 'issue #', 'i #', 'ticket#', 'issue#', 'i#'])
         body = request.env['ir.qweb'].render(
             'webhook_gitlab.gitlab_new_merge_request', dict(event=event))
+        project_id = event['project']['id']
+        merge_request_id = event['object_attributes']['iid']
+        base_url = request.env['ir.config_parameter'].get_param('web.base.url')
         if task_str:
             task_id = int(re.sub(r'\D', '', title.split(task_str[0])[1]))
             task = request.env['project.task'].sudo().browse(task_id)
             task.message_post(subject="New Merge Request", body=body)
+            url = base_url + task._notification_link_helper('view')
+            message = _('Linked to Odoo task [#%s](%s)') % (task.id, url)
+            self._post_gitlab_message(project_id, merge_request_id, message)
         if ticket_str:
             ticket_id = int(re.sub(r'\D', '', title.split(ticket_str[0])[1]))
             ticket = request.env['helpdesk.ticket'].sudo().browse(ticket_id)
             ticket.message_post(subject="New Merge Request", body=body)
+            url = base_url + ticket._notification_link_helper('view')
+            message = _('Linked to Odoo ticket [#%s](%s)') % (ticket.id, url)
+            self._post_gitlab_message(project_id, merge_request_id, message)
+        return True
+
+    def _connect_gitlab(self):
+        """Connect to gitlab instance and return gitlab object"""
+        url = request.env['ir.config_parameter'].get_param(
+            'webhook_gitlab.gitlab_url')
+        token = request.env['ir.config_parameter'].get_param(
+            'webhook_gitlab.gitlab_token')
+        return gitlab.Gitlab(url, private_token=token)
+
+    def _post_gitlab_message(self, project_id, merge_request_id, message):
+        """Post a message in the merge request of a project """
+        gitlab = self._connect_gitlab()
+        project = gitlab.projects.get(project_id)
+        merge_request = project.mergerequests.get(merge_request_id)
+        merge_request.discussions.create({'body': message})
         return True
