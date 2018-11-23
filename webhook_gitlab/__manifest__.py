@@ -13,5 +13,7 @@
         'helpdesk',
         'project',
     ],
-    'installable': True,
+    'data': [
+        'views/message_templates.xml',
+    ],
 }

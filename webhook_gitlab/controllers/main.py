@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
-# Part of Odoo. See LICENSE file for full copyright and licensing details.
+# Copyright 2018, Jarsa Sistemas, S.A. de C.V.
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 import re
 
-from odoo import _, http
+from odoo import http
 from odoo.http import request
 
 
@@ -23,20 +24,8 @@ class WebhookGitlab(http.Controller):
         ticket_str = filter(
             lambda x: x in title,
             ['ticket #', 'issue #', 'i #', 'ticket#', 'issue#', 'i#'])
-        body = _(
-            '''
-            <ul>
-                <li>URL: %s</li>
-                <li>Title: %s</li>
-                <li>Created by: %s</li>
-                <li>Username: %s</li>
-            </ul>
-            ''') % (
-            event['object_attributes']['url'],
-            title,
-            event['user']['name'],
-            event['user']['username']
-        )
+        body = request.env['ir.qweb'].render(
+            'webhook_gitlab.gitlab_new_merge_request', dict(event=event))
         if task_str:
             task_id = int(re.sub(r'\D', '', title.split(task_str[0])[1]))
             task = request.env['project.task'].sudo().browse(task_id)

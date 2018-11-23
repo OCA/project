@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="gitlab_new_merge_request" name="Gitlab: New Merge Request">
+        <ul>
+            <li>Title: <a t-att-href="event['object_attributes']['url']"><t t-esc="event['object_attributes']['title']"/></a></li>
+            <li>Created by: <t t-esc="event['user']['name']"/></li>
+            <li>Username: <t t-esc="event['user']['username']"/></li>
+        </ul>
+    </template>
+
+</odoo>
