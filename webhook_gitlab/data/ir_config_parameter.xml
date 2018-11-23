@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+    <record id="gitlab_token" model="ir.config_parameter">
+        <field name="key">webhook_gitlab.authorization_token</field>
+        <field name="value">token</field>
+    </record>
+</odoo>
