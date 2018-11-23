@@ -41,11 +41,26 @@ class WebhookGitlab(http.Controller):
         csrf=False)
     @token_authorization
     def _process_webhook(self):
+        """Receive the request from Gitlab and invoke functions based on
+        'object_kind', then it calls the function with the name
+        _process_<object_kind>
+        """
         event = request.jsonrequest
-        if event['event_type'] == 'merge_request':
-            self._process_merge_request(event)
+        try:
+            func = getattr(self, '_process_%s' % event['object_kind'])
+        except AttributeError as error:
+            _logger.warning(error.message)
+            return error.message
+        return func(event)
 
     def _process_merge_request(self, event):
+        """Post messages in helpdesk.ticket or project.task based on the
+        title of the Merge Request.
+        The title must contain the type of registry and the ID preceded by a #
+        sign.
+
+        Ex. [IMP] webhook_gitlab: new module task #1234
+        """
         title = event['object_attributes']['title']
         task_str = filter(
             lambda x: x in title,
