@@ -21,8 +21,8 @@ msgstr ""
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
 #. module: project_description
-#: model:ir.model.fields,field_description:project_description.field_project_project_description
-#: model:ir.ui.view,arch_db:project_description.project_form
+#: model:ir.model.fields,field_description:project_description.field_project_project__description
+#: model_terms:ir.ui.view,arch_db:project_description.project_form
 msgid "Description"
 msgstr "Opis"
 

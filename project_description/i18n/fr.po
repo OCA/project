@@ -19,8 +19,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. module: project_description
-#: model:ir.model.fields,field_description:project_description.field_project_project_description
-#: model:ir.ui.view,arch_db:project_description.project_form
+#: model:ir.model.fields,field_description:project_description.field_project_project__description
+#: model_terms:ir.ui.view,arch_db:project_description.project_form
 msgid "Description"
 msgstr "Description"
 
