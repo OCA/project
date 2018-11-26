@@ -76,15 +76,23 @@ class WebhookGitlab(http.Controller):
         base_url = request.env['ir.config_parameter'].get_param('web.base.url')
         if task_str:
             task_id = int(re.sub(r'\D', '', title.split(task_str[0])[1]))
-            task = request.env['project.task'].sudo().browse(task_id)
-            task.message_post(subject="New Merge Request", body=body)
+            task = request.env['project.task'].sudo().search([
+                ('id', '=', task_id), ('gitlab_link', '=', False)])
+            if not task:
+                return False
+            task.gitlab_link = True
+            task.message_post(body=body)
             url = base_url + task._notification_link_helper('view')
             message = _('Linked to Odoo task [#%s](%s)') % (task.id, url)
             self._post_gitlab_message(project_id, merge_request_id, message)
         if ticket_str:
             ticket_id = int(re.sub(r'\D', '', title.split(ticket_str[0])[1]))
-            ticket = request.env['helpdesk.ticket'].sudo().browse(ticket_id)
-            ticket.message_post(subject="New Merge Request", body=body)
+            ticket = request.env['helpdesk.ticket'].sudo().search([
+                ('id', '=', ticket_id), ('gitlab_link', '=', False)])
+            if not ticket:
+                return False
+            ticket.gitlab_link = True
+            ticket.message_post(body=body)
             url = base_url + ticket._notification_link_helper('view')
             message = _('Linked to Odoo ticket [#%s](%s)') % (ticket.id, url)
             self._post_gitlab_message(project_id, merge_request_id, message)
