@@ -30,6 +30,9 @@ class Project(models.Model):
     @api.onchange('name')
     def _onchange_project_name(self):
         for rec in self:
+            if rec.key:
+                continue
+
             if rec.name:
                 rec.key = self.generate_project_key(rec.name)
             else:
