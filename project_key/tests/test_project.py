@@ -58,3 +58,11 @@ class TestProject(TestCommon):
     def test_08_generate_empty_project_key(self):
         empty_key = self.Project.generate_project_key(False)
         self.assertEqual(empty_key, '')
+
+    def test_09_name_onchange_with_key(self):
+        project = self.Project.new({
+            'name': 'Software Development',
+            'key': 'TEST',
+        })
+        project._onchange_project_name()
+        self.assertEqual(project.key, 'TEST')
