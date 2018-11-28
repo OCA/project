@@ -93,6 +93,9 @@
                     </group>
                 </form>
             </xpath>
+            <xpath expr="//field[@name='timesheet_ids']/tree" position="attributes">
+                <attribute name="default_order">date_time</attribute>
+            </xpath>
         </field>
     </record>
 
