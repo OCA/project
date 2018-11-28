@@ -74,6 +74,11 @@ class WebhookGitlab(http.Controller):
         project_id = event['project']['id']
         merge_request_id = event['object_attributes']['iid']
         base_url = request.env['ir.config_parameter'].get_param('web.base.url')
+        if not ticket_str and not task_str:
+            message = request.env['ir.qweb'].render(
+                'webhook_gitlab.gitlab_id_not_in_title')
+            self._post_gitlab_message(project_id, merge_request_id, message)
+            return False
         if task_str:
             task_id = int(re.sub(r'\D', '', title.split(task_str[0])[1]))
             task = request.env['project.task'].sudo().search([

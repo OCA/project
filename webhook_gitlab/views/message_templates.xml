@@ -9,4 +9,19 @@
         </ul>
     </template>
 
+    <template id="gitlab_id_not_in_title" name="Gitlab: ID not found in title">
+        <t>**WARNING**: Could not link to Odoo task or ticket. Record ID not found in the title of the MR, supported formats:
+```
+{ record type }#{ number }
+```
+Available task types: 'task #', 'tarea #', 't #', 'task#', 'tarea#', 't#', 'ticket #', 'issue #', 'i #', 'ticket#', 'issue#', 'i#'
+
+_Examples_: 
+
+- task#123
+
+- issue #123
+        </t>
+    </template>
+
 </odoo>
