@@ -10,4 +10,3 @@ class ProjectTask(models.Model):
     milestone = fields.Boolean(string='Milestone')
     phase_id = fields.Many2one(
         string='Phase', comodel_name='project.task.phase')
-    sequence = fields.Integer(string='Sequence')

@@ -7,8 +7,7 @@
         <field name="arch" type="xml">
             <field name="tag_ids" position="after">
                 <field name="milestone" />
-                <field name="phase_id" />
-                <field name="sequence" />
+                <field name="phase_id" options="{'no_create_edit': True}" />
             </field>
         </field>
     </record>
@@ -20,8 +19,7 @@
         <field name="arch" type="xml">
             <field name="stage_id" position="after">
                 <field name="milestone" />
-                <field name="phase_id" />
-                <field name="sequence" />
+                <field name="phase_id" options="{'no_create_edit': True}" />
             </field>
         </field>
     </record>
@@ -33,7 +31,7 @@
             <tree editable="top" string="Tasks">
                 <field name="project_id" invisible="context.get('hide_project_id',True)" />
                 <field name="stage_id" />
-                <field name="phase_id" />
+                <field name="phase_id" options="{'no_create_edit': True}" />
                 <field name="milestone" />
                 <field name="sequence" />
                 <field name="name" string="Task"/>
@@ -51,7 +49,6 @@
             <field name="stage_id" position="after">
                 <field name="milestone" />
                 <field name="phase_id" />
-                <field name="sequence" />
             </field>
             <filter name="inactive" position="after">
                 <separator />
@@ -72,7 +69,7 @@
         <field name="res_model">project.task</field>
         <field name="view_mode">tree</field>
         <field name="view_id" ref="project_task_milestone.project_task_tree_view_milestone" />
-        <field name="context">{'default_project_id': context.get('active_id')}</field>
-        <field name="domain">[('project_id','=',context.get('active_id'))]</field>
+        <field name="context">{'default_project_id': active_id}</field>
+        <field name="domain">[('project_id','=',active_id)]</field>
     </record>
 </odoo>
