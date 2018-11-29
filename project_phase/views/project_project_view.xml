@@ -13,6 +13,16 @@
         </field>
     </record>
 
+    <record id="project_project_phase_tree_view" model="ir.ui.view">
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project" />
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <field name="phase_id" />
+            </field>
+        </field>
+    </record>
+
     <record id="project_project_phase_search" model="ir.ui.view">
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.view_project_project_filter" />

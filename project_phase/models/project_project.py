@@ -23,4 +23,5 @@ class ProjectProject(models.Model):
 
     phase_id = fields.Many2one(
         comodel_name='project.phase', string='Phase',
-        track_visibility='onchange', default=_get_default_phase_id)
+        track_visibility='onchange', default=_get_default_phase_id,
+        copy=False)
