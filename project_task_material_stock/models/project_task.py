@@ -127,6 +127,8 @@ class Task(models.Model):
 
     @api.multi
     def action_done(self):
+        for move in  self.mapped('stock_move_ids'):
+            move.quantity_done = move.product_uom_qty
         self.mapped('stock_move_ids')._action_done()
 
 
