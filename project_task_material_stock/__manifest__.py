@@ -7,7 +7,7 @@
     "name": "Project Task Material Stock",
     "summary": "Create stock and analytic moves from "
                "record products spent in a Task",
-    "version": "11.0.1.0.0",
+    "version": "11.0.1.0.1",
     "category": "Project Management",
     "website": "https://github.com/OCA/project/",
     "author": "Tecnativa, "
