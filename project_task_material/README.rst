@@ -50,6 +50,7 @@ Contributors
 * Vicent Cubells <vicent.cubells@tecnativa.com>
 * David Vidal <david.vidal@tecnativa.com>
 * Carlos Jesus Cebrian <carlos.cebrian-sanchez@braintec-group.org>
+* Anand Kansagra <kansagraanand@hotmail.com>
 
 Do not contact contributors directly about support or help with technical issues.
 
