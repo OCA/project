@@ -20,70 +20,71 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. module: project_task_material
-#: model:ir.model.fields,field_description:project_task_material.field_project_task_material_create_uid
+#: model:ir.model.fields,field_description:project_task_material.field_project_task_material__create_uid
 msgid "Created by"
 msgstr "Oluşturan"
 
 #. module: project_task_material
-#: model:ir.model.fields,field_description:project_task_material.field_project_task_material_create_date
+#: model:ir.model.fields,field_description:project_task_material.field_project_task_material__create_date
 msgid "Created on"
 msgstr "Oluşturuldu"
 
 #. module: project_task_material
-#: model:ir.model.fields,field_description:project_task_material.field_project_task_material_display_name
+#: model:ir.model.fields,field_description:project_task_material.field_project_task_material__display_name
 msgid "Display Name"
 msgstr "Görünen İsim"
 
 #. module: project_task_material
-#: model:ir.model.fields,field_description:project_task_material.field_project_task_material_id
+#: model:ir.model.fields,field_description:project_task_material.field_project_task_material__id
 msgid "ID"
 msgstr "ID"
 
 #. module: project_task_material
-#: model:ir.model.fields,field_description:project_task_material.field_project_task_material___last_update
+#: model:ir.model.fields,field_description:project_task_material.field_project_task_material____last_update
 msgid "Last Modified on"
 msgstr "Son değişiklik"
 
 #. module: project_task_material
-#: model:ir.model.fields,field_description:project_task_material.field_project_task_material_write_uid
+#: model:ir.model.fields,field_description:project_task_material.field_project_task_material__write_uid
 msgid "Last Updated by"
 msgstr "Son güncelleyen"
 
 #. module: project_task_material
-#: model:ir.model.fields,field_description:project_task_material.field_project_task_material_write_date
+#: model:ir.model.fields,field_description:project_task_material.field_project_task_material__write_date
 msgid "Last Updated on"
 msgstr "Son güncelleme"
 
 #. module: project_task_material
-#: model:ir.ui.view,arch_db:project_task_material.view_project_task_form_material
+#: model_terms:ir.ui.view,arch_db:project_task_material.view_project_task_form_material
 msgid "Material"
 msgstr "Malzeme"
 
 #. module: project_task_material
-#: model:ir.model.fields,field_description:project_task_material.field_project_task_material_ids
-#: model:ir.ui.view,arch_db:project_task_material.view_project_task_form_material
-msgid "Material used"
+#: model:ir.model.fields,field_description:project_task_material.field_project_task__material_ids
+#: model_terms:ir.ui.view,arch_db:project_task_material.view_project_task_form_material
+#, fuzzy
+msgid "Material Used"
 msgstr "Kullanılan malzeme"
 
 #. module: project_task_material
-#: model:ir.model.fields,field_description:project_task_material.field_project_task_material_product_id
+#: model:ir.model.fields,field_description:project_task_material.field_project_task_material__product_id
 msgid "Product"
 msgstr "Ürün"
 
 #. module: project_task_material
-#: model:ir.model.fields,field_description:project_task_material.field_project_task_material_quantity
+#: model:ir.model.fields,field_description:project_task_material.field_project_task_material__quantity
 msgid "Quantity"
 msgstr "Miktar"
 
 #. module: project_task_material
-#: code:addons/project_task_material/models/project.py:36
+#: code:addons/project_task_material/models/project.py:40
 #, python-format
 msgid "Quantity of material consumed must be greater than 0."
 msgstr "Tüketilen malzeme miktarı 0'dan büyük olmalıdır."
 
 #. module: project_task_material
 #: model:ir.model,name:project_task_material.model_project_task
-#: model:ir.model.fields,field_description:project_task_material.field_project_task_material_task_id
+#: model:ir.model.fields,field_description:project_task_material.field_project_task_material__task_id
 msgid "Task"
 msgstr "Görev"
 

@@ -21,70 +21,71 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. module: project_task_material
-#: model:ir.model.fields,field_description:project_task_material.field_project_task_material_create_uid
+#: model:ir.model.fields,field_description:project_task_material.field_project_task_material__create_uid
 msgid "Created by"
 msgstr "Criado por"
 
 #. module: project_task_material
-#: model:ir.model.fields,field_description:project_task_material.field_project_task_material_create_date
+#: model:ir.model.fields,field_description:project_task_material.field_project_task_material__create_date
 msgid "Created on"
 msgstr "Criado em"
 
 #. module: project_task_material
-#: model:ir.model.fields,field_description:project_task_material.field_project_task_material_display_name
+#: model:ir.model.fields,field_description:project_task_material.field_project_task_material__display_name
 msgid "Display Name"
 msgstr "Nome para Mostrar"
 
 #. module: project_task_material
-#: model:ir.model.fields,field_description:project_task_material.field_project_task_material_id
+#: model:ir.model.fields,field_description:project_task_material.field_project_task_material__id
 msgid "ID"
 msgstr "Identificação"
 
 #. module: project_task_material
-#: model:ir.model.fields,field_description:project_task_material.field_project_task_material___last_update
+#: model:ir.model.fields,field_description:project_task_material.field_project_task_material____last_update
 msgid "Last Modified on"
 msgstr "Última atualização em"
 
 #. module: project_task_material
-#: model:ir.model.fields,field_description:project_task_material.field_project_task_material_write_uid
+#: model:ir.model.fields,field_description:project_task_material.field_project_task_material__write_uid
 msgid "Last Updated by"
 msgstr "Última atualização feita por"
 
 #. module: project_task_material
-#: model:ir.model.fields,field_description:project_task_material.field_project_task_material_write_date
+#: model:ir.model.fields,field_description:project_task_material.field_project_task_material__write_date
 msgid "Last Updated on"
 msgstr "Última atualização feita em"
 
 #. module: project_task_material
-#: model:ir.ui.view,arch_db:project_task_material.view_project_task_form_material
+#: model_terms:ir.ui.view,arch_db:project_task_material.view_project_task_form_material
 msgid "Material"
 msgstr "Material"
 
 #. module: project_task_material
-#: model:ir.model.fields,field_description:project_task_material.field_project_task_material_ids
-#: model:ir.ui.view,arch_db:project_task_material.view_project_task_form_material
-msgid "Material used"
+#: model:ir.model.fields,field_description:project_task_material.field_project_task__material_ids
+#: model_terms:ir.ui.view,arch_db:project_task_material.view_project_task_form_material
+#, fuzzy
+msgid "Material Used"
 msgstr "Materiais usados"
 
 #. module: project_task_material
-#: model:ir.model.fields,field_description:project_task_material.field_project_task_material_product_id
+#: model:ir.model.fields,field_description:project_task_material.field_project_task_material__product_id
 msgid "Product"
 msgstr "Produto"
 
 #. module: project_task_material
-#: model:ir.model.fields,field_description:project_task_material.field_project_task_material_quantity
+#: model:ir.model.fields,field_description:project_task_material.field_project_task_material__quantity
 msgid "Quantity"
 msgstr "Quantidade"
 
 #. module: project_task_material
-#: code:addons/project_task_material/models/project.py:36
+#: code:addons/project_task_material/models/project.py:40
 #, python-format
 msgid "Quantity of material consumed must be greater than 0."
 msgstr "A quantidade de material consumido deve ser maior que 0."
 
 #. module: project_task_material
 #: model:ir.model,name:project_task_material.model_project_task
-#: model:ir.model.fields,field_description:project_task_material.field_project_task_material_task_id
+#: model:ir.model.fields,field_description:project_task_material.field_project_task_material__task_id
 msgid "Task"
 msgstr "Tarefa"
 
