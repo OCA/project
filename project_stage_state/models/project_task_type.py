@@ -1,7 +1,7 @@
-# Daniel Reis, 2014
-# GNU Affero General Public License <http://www.gnu.org/licenses/>
+# Copyright 2014 Daniel Reis
+# License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
-from odoo import models, fields
+from odoo import fields, models
 
 
 _TASK_STATE = [
@@ -13,5 +13,8 @@ _TASK_STATE = [
 
 
 class ProjectTaskType(models.Model):
+    """Added state in the Project Task Type."""
+
     _inherit = 'project.task.type'
+
     state = fields.Selection(_TASK_STATE, 'State')
