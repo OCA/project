@@ -46,8 +46,8 @@ msgid "Pending"
 msgstr ""
 
 #. module: project_stage_state
-#: model:ir.model.fields,field_description:project_stage_state.field_project_task_state
-#: model:ir.model.fields,field_description:project_stage_state.field_project_task_type_state
+#: model:ir.model.fields,field_description:project_stage_state.field_project_task__state
+#: model:ir.model.fields,field_description:project_stage_state.field_project_task_type__state
 msgid "State"
 msgstr ""
 
