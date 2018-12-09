@@ -21,6 +21,11 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. module: project_task_material_stock
+#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_analytic_account_id
+msgid "Analytic Account"
+msgstr ""
+
+#. module: project_task_material_stock
 #: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_material_analytic_line_id
 msgid "Analytic Line"
 msgstr ""
@@ -48,7 +53,7 @@ msgstr "Onaylandı"
 #. module: project_task_material_stock
 #: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_consume_material
 #: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_type_consume_material
-msgid "Consume material"
+msgid "Consume Material"
 msgstr ""
 
 #. module: project_task_material_stock
@@ -99,6 +104,11 @@ msgid "Materials used"
 msgstr ""
 
 #. module: project_task_material_stock
+#: model:ir.model.fields,help:project_task_material_stock.field_project_task_analytic_account_id
+msgid "Move created will be assigned to this analytic account"
+msgstr ""
+
+#. module: project_task_material_stock
 #: selection:project.task,stock_state:0
 msgid "Pending"
 msgstr ""
@@ -133,7 +143,7 @@ msgstr ""
 #. module: project_task_material_stock
 #: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_stock_state
 #, fuzzy
-msgid "Stock state"
+msgid "Stock State"
 msgstr "Stok hareketi"
 
 #. module: project_task_material_stock
@@ -162,7 +172,7 @@ msgid "Unit of Measure"
 msgstr ""
 
 #. module: project_task_material_stock
-#: code:addons/project_task_material_stock/models/project_task.py:108
+#: code:addons/project_task_material_stock/models/project_task.py:112
 #, python-format
 msgid ""
 "You can't move to a not consume stage if there are already analytic lines"

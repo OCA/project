@@ -20,6 +20,12 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. module: project_task_material_stock
+#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_analytic_account_id
+#, fuzzy
+msgid "Analytic Account"
+msgstr "Ligne analytique"
+
+#. module: project_task_material_stock
 #: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_material_analytic_line_id
 msgid "Analytic Line"
 msgstr "Ligne analytique"
@@ -47,7 +53,8 @@ msgstr "Confirmé"
 #. module: project_task_material_stock
 #: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_consume_material
 #: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_type_consume_material
-msgid "Consume material"
+#, fuzzy
+msgid "Consume Material"
 msgstr "Consommer les matériaux"
 
 #. module: project_task_material_stock
@@ -100,6 +107,11 @@ msgid "Materials used"
 msgstr "Matériaux utilisés"
 
 #. module: project_task_material_stock
+#: model:ir.model.fields,help:project_task_material_stock.field_project_task_analytic_account_id
+msgid "Move created will be assigned to this analytic account"
+msgstr ""
+
+#. module: project_task_material_stock
 #: selection:project.task,stock_state:0
 msgid "Pending"
 msgstr "En attente"
@@ -133,7 +145,8 @@ msgstr "Mouvements de stock"
 
 #. module: project_task_material_stock
 #: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_stock_state
-msgid "Stock state"
+#, fuzzy
+msgid "Stock State"
 msgstr "État du stock"
 
 #. module: project_task_material_stock
@@ -162,7 +175,7 @@ msgid "Unit of Measure"
 msgstr "Unité de mesure"
 
 #. module: project_task_material_stock
-#: code:addons/project_task_material_stock/models/project_task.py:108
+#: code:addons/project_task_material_stock/models/project_task.py:112
 #, python-format
 msgid ""
 "You can't move to a not consume stage if there are already analytic lines"
