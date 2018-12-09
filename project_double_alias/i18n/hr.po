@@ -47,11 +47,6 @@ msgid "Email Aliases"
 msgstr "Email aliasi"
 
 #. module: project_double_alias
-#: model:ir.model,name:project_double_alias.model_project_project
-msgid "Project"
-msgstr "Projekt"
-
-#. module: project_double_alias
 #: model:ir.model,name:project_double_alias.model_project_issue
 msgid "Project Issue"
 msgstr "Projektni problem"
@@ -75,3 +70,11 @@ msgid ""
 msgstr ""
 "Naziv emial aliasaj, npr. zaposlenje ako želite dohvaćati emailove za "
 "<zaposlenje@primer.odoo.com>"
+
+#. module: project_double_alias
+#: model:ir.model,name:project_double_alias.model_project_project
+msgid "WBS element"
+msgstr ""
+
+#~ msgid "Project"
+#~ msgstr "Projekt"

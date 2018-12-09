@@ -45,11 +45,6 @@ msgid "Email Aliases"
 msgstr ""
 
 #. module: project_double_alias
-#: model:ir.model,name:project_double_alias.model_project_project
-msgid "Project"
-msgstr "Proyecto"
-
-#. module: project_double_alias
 #: model:ir.model,name:project_double_alias.model_project_issue
 msgid "Project Issue"
 msgstr ""
@@ -73,3 +68,11 @@ msgid ""
 msgstr ""
 "El nombre del seudónimo de correo, por ejemplo 'empleo' si quiere obtener "
 "correos electrónicos para <empleo@ejemplo.odoo.com>"
+
+#. module: project_double_alias
+#: model:ir.model,name:project_double_alias.model_project_project
+msgid "WBS element"
+msgstr ""
+
+#~ msgid "Project"
+#~ msgstr "Proyecto"

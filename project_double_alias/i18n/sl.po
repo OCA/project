@@ -47,11 +47,6 @@ msgid "Email Aliases"
 msgstr "E-poštni psevdonimi"
 
 #. module: project_double_alias
-#: model:ir.model,name:project_double_alias.model_project_project
-msgid "Project"
-msgstr "Projekt"
-
-#. module: project_double_alias
 #: model:ir.model,name:project_double_alias.model_project_issue
 msgid "Project Issue"
 msgstr "Projektna zadeva"
@@ -75,3 +70,11 @@ msgid ""
 msgstr ""
 "Naziv e-poštnega psevdonima, npr. 'jobs' če želite loviti e-pošto za "
 "<jobs@example.odoo.com>"
+
+#. module: project_double_alias
+#: model:ir.model,name:project_double_alias.model_project_project
+msgid "WBS element"
+msgstr ""
+
+#~ msgid "Project"
+#~ msgstr "Projekt"

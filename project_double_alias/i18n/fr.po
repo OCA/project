@@ -46,11 +46,6 @@ msgid "Email Aliases"
 msgstr ""
 
 #. module: project_double_alias
-#: model:ir.model,name:project_double_alias.model_project_project
-msgid "Project"
-msgstr "Projet"
-
-#. module: project_double_alias
 #: model:ir.model,name:project_double_alias.model_project_issue
 msgid "Project Issue"
 msgstr "Incident"
@@ -74,3 +69,11 @@ msgid ""
 msgstr ""
 "Le nom de l'alias de courriel, par ex. 'Postes' si vous souhaitez récupérer "
 "les courriels pour jobs@example.odoo.com"
+
+#. module: project_double_alias
+#: model:ir.model,name:project_double_alias.model_project_project
+msgid "WBS element"
+msgstr ""
+
+#~ msgid "Project"
+#~ msgstr "Projet"

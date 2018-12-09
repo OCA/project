@@ -45,11 +45,6 @@ msgid "Email Aliases"
 msgstr ""
 
 #. module: project_double_alias
-#: model:ir.model,name:project_double_alias.model_project_project
-msgid "Project"
-msgstr "Projekt"
-
-#. module: project_double_alias
 #: model:ir.model,name:project_double_alias.model_project_issue
 msgid "Project Issue"
 msgstr "Projektproblem"
@@ -73,3 +68,11 @@ msgid ""
 msgstr ""
 "Die Bezeichnung des Email-Alias, Z.B. 'jobs' wenn Sie Emails an "
 "<jobs@example.odoo.com> auswerten möchten."
+
+#. module: project_double_alias
+#: model:ir.model,name:project_double_alias.model_project_project
+msgid "WBS element"
+msgstr ""
+
+#~ msgid "Project"
+#~ msgstr "Projekt"
