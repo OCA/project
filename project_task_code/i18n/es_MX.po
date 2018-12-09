@@ -24,12 +24,12 @@ msgid "Task"
 msgstr "Tarea"
 
 #. module: project_task_code
-#: model:ir.model.fields,field_description:project_task_code.field_project_task_code
+#: model:ir.model.fields,field_description:project_task_code.field_project_task__code
 msgid "Task Number"
 msgstr ""
 
 #. module: project_task_code
-#: code:addons/project_task_code/models/project_task.py:15
+#: code:addons/project_task_code/models/project_task.py:21
 #: sql_constraint:project.task:0
 #, python-format
 msgid "The code must be unique!"
