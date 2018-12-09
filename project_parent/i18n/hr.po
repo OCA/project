@@ -42,6 +42,9 @@ msgstr "Nadređeni projekt"
 
 #. module: project_parent
 #: model:ir.model,name:project_parent.model_project_project
+msgid "WBS element"
+msgstr ""
+
 #, fuzzy
-msgid "Project"
-msgstr "Nadređeni projekt"
+#~ msgid "Project"
+#~ msgstr "Nadređeni projekt"
