@@ -41,7 +41,7 @@ msgid "Cancelled"
 msgstr "İptal edildi"
 
 #. module: project_task_default_stage
-#: model:ir.model.fields,field_description:project_task_default_stage.field_project_task_type_case_default
+#: model:ir.model.fields,field_description:project_task_default_stage.field_project_task_type__case_default
 msgid "Default for New Projects"
 msgstr "Yeni Projeler için Varsayılan"
 
@@ -61,7 +61,7 @@ msgid "Done"
 msgstr "Bitti"
 
 #. module: project_task_default_stage
-#: model:ir.model.fields,help:project_task_default_stage.field_project_task_type_case_default
+#: model:ir.model.fields,help:project_task_default_stage.field_project_task_type__case_default
 msgid ""
 "If you check this field, this stage will be proposed by default on each new "
 "project. It will not assign this stage to existing projects."
@@ -92,7 +92,7 @@ msgid "Project"
 msgstr "Proje"
 
 #. module: project_task_default_stage
-#: model:ir.ui.view,arch_db:project_task_default_stage.edit_project
+#: model_terms:ir.ui.view,arch_db:project_task_default_stage.edit_project
 msgid "Project Stages"
 msgstr "Proje Aşamaları"
 
@@ -116,6 +116,12 @@ msgstr "Özellik"
 #. module: project_task_default_stage
 #: model:ir.model,name:project_task_default_stage.model_project_task_type
 msgid "Task Stage"
+msgstr "Görev Aşamaları"
+
+#. module: project_task_default_stage
+#: model:ir.model.fields,field_description:project_task_default_stage.field_project_project__type_ids
+#, fuzzy
+msgid "Tasks Stages"
 msgstr "Görev Aşamaları"
 
 #. module: project_task_default_stage
