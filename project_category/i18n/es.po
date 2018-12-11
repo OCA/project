@@ -1,0 +1,89 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * project_category
+#
+# Translators:
+# Juan José Scarafía <scarafia.juanjose@gmail.com>, 2016
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0c\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-12-11 13:04+0000\n"
+"PO-Revision-Date: 2018-12-11 14:05+0100\n"
+"Last-Translator: cubells <vicent@vcubells.net>\n"
+"Language-Team: Spanish (https://www.transifex.com/adhoc/teams/46451/es/)\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.0.6\n"
+
+#. module: project_category
+#: model:ir.ui.view,arch_db:project_category.project_type_form
+msgid "Add a description..."
+msgstr "Añadir una descripción ..."
+
+#. module: project_category
+#: model:ir.model.fields,field_description:project_category.field_project_type_create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: project_category
+#: model:ir.model.fields,field_description:project_category.field_project_type_create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: project_category
+#: model:ir.model.fields,field_description:project_category.field_project_type_description
+msgid "Description"
+msgstr "Descripción"
+
+#. module: project_category
+#: model:ir.model.fields,field_description:project_category.field_project_type_display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: project_category
+#: model:ir.model.fields,field_description:project_category.field_project_type_id
+msgid "ID"
+msgstr "ID"
+
+#. module: project_category
+#: model:ir.model.fields,field_description:project_category.field_project_type___last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: project_category
+#: model:ir.model.fields,field_description:project_category.field_project_type_write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: project_category
+#: model:ir.model.fields,field_description:project_category.field_project_type_write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: project_category
+#: model:ir.model.fields,field_description:project_category.field_project_type_name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: project_category
+#: model:ir.model,name:project_category.model_project_project
+msgid "Project"
+msgstr "Proyecto"
+
+#. module: project_category
+#: model:ir.model,name:project_category.model_project_type
+#: model:ir.ui.menu,name:project_category.project_category
+msgid "Project Type"
+msgstr "Tipos de Proyectos"
+
+#. module: project_category
+#: model:ir.actions.act_window,name:project_category.action_project_type
+#: model:ir.model.fields,field_description:project_category.field_project_project_type_id
+#: model:ir.ui.view,arch_db:project_category.project_type_form
+#: model:ir.ui.view,arch_db:project_category.project_type_search
+msgid "Type"
+msgstr "Tipo"
