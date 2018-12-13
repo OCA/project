@@ -14,6 +14,7 @@ setuptools.setup(
         'odoo12-addon-project_task_add_very_high',
         'odoo12-addon-project_task_code',
         'odoo12-addon-project_task_default_stage',
+        'odoo12-addon-project_task_material',
     ],
     classifiers=[
         'Programming Language :: Python',
