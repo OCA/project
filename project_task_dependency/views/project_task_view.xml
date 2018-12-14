@@ -8,8 +8,6 @@
         <field name="arch" type="xml">
             <xpath expr="//page[@name='description_page']" position="after">
                 <page string="Dependencies">
-                    <field name="depending_task_ids" invisible="1"/>
-                    <field name="recursive_depending_task_ids" invisible="1"/>
                     <field name="recursive_dependency_task_ids" invisible="1"/>
                     <field name="dependency_task_ids"
                            domain="[('id', '!=', id), ('id', 'not in', recursive_dependency_task_ids)]">

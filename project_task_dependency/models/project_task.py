@@ -18,41 +18,50 @@ class ProjectTask(models.Model):
     recursive_dependency_task_ids = fields.Many2many(
         string='Recursive Dependencies',
         comodel_name='project.task',
-        compute='_compute_dependency'
+        compute='_compute_recursive_dependency_task_ids'
     )
 
     depending_task_ids = fields.Many2many(
         string='Depending Tasks',
         comodel_name='project.task',
         help='Tasks that are dependent on this task.',
-        compute='_compute_dependency'
+        compute='_compute_depending_task_ids'
     )
 
     recursive_depending_task_ids = fields.Many2many(
         string='Recursive Depending Tasks',
         comodel_name='project.task',
         help='Tasks that are dependent on this task (recursive).',
-        compute='_compute_dependency'
+        compute='_compute_recursive_depending_task_ids'
     )
 
-    @api.multi
     @api.depends('dependency_task_ids')
-    def _compute_dependency(self):
+    def _compute_recursive_dependency_task_ids(self):
         for task in self:
             task.recursive_dependency_task_ids = task.get_dependency_tasks(
-                task, True
+                task, True,
             )
+
+    @api.depends('dependency_task_ids')
+    def _compute_depending_task_ids(self):
+        for task in self:
             task.depending_task_ids = task.get_depending_tasks(task)
+
+    @api.depends('dependency_task_ids')
+    def _compute_recursive_depending_task_ids(self):
+        for task in self:
             task.recursive_depending_task_ids = task.get_depending_tasks(
-                task, True
+                task, True,
             )
 
     @api.model
     def get_dependency_tasks(self, task, recursive=False):
-        dependency_tasks = task.dependency_task_ids
+        dependency_tasks = task.with_context(
+            prefetch_fields=False,
+        ).dependency_task_ids
         if recursive:
             for t in dependency_tasks:
-                dependency_tasks += self.get_dependency_tasks(t, recursive)
+                dependency_tasks |= self.get_dependency_tasks(t, recursive)
         return dependency_tasks
 
     @api.model
