@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="view_sale_service_inherit_form2" model="ir.ui.view">
+            <field name="name">sale.service.form.view.inherit</field>
+            <field name="model">project.task</field>
+            <field name="groups_id" eval="[(4, ref('base.group_user'))]"/>
+            <field name="inherit_id" ref="sale_timesheet.view_sale_service_inherit_form2"/>
+            <field name="arch" type="xml">
+                <field name="sale_line_id" position="after">
+                    <field name="price_subtotal"/>
+                </field>
+            </field>
+        </record>
+</odoo>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+	<data>
+
+		<record id="sale_project_view_form_create" model="ir.ui.view">
+            <field name="name">sale.project.view.form.create</field>
+            <field name="model">sale.project.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Project to link">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="project_id" options="{'no_quick_create': True, 'no_create_edit' : True}" />
+                                <field name="project_name" attrs="{'required': [('project_id', '=', False)]}"/>
+                            </group>
+                        </group>
+                        <group>
+                            <group>
+                                <field name="related_project_id" options="{'no_quick_create': True, 'no_create_edit' : True}" readonly="1"/>
+                            </group>
+                        </group>
+                        <footer>
+                            <button string="Create" name="close_dialog" type="object" class="btn-primary"/>
+                            <button string="Discard" class="btn-default" special="cancel"/>
+                        </footer>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+		<record id="sale_open_create_project" model="ir.actions.act_window">
+            <field name="name">Create project</field>
+            <field name="res_model">sale.project.wizard</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+	</data>
+</odoo>

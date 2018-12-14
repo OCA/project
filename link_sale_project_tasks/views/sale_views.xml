@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+	<data>
+
+		<record id="view_order_form" model="ir.ui.view">
+            <field name="name">sale.order.form</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <header>
+                    <button name="%(sale_open_create_project)d" type="action" string="Create project" attrs="{'invisible': ['|', ('project_project_id', '!=', False), ('state', '!=', 'sale')]}"/>
+                    <button name="saleorder_update_tasks" type="object" string="Update tasks" attrs="{'invisible': ['|', ('project_project_id', '=', False), ('state', '!=', 'sale')]}" class="btn-primary"/>
+                </header>
+            </field>
+        </record>
+
+	</data>
+</odoo>

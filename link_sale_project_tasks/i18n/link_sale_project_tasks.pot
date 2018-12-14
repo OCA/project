@@ -1,0 +1,195 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* link_sale_project_tasks
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-12-05 17:49+0000\n"
+"PO-Revision-Date: 2018-12-05 17:49+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: link_sale_project_tasks
+#: model:ir.model.fields,field_description:link_sale_project_tasks.field_project_config_settings_alias_prefix
+msgid "Alias prefix"
+msgstr ""
+
+#. module: link_sale_project_tasks
+#: model:ir.model.fields,field_description:link_sale_project_tasks.field_sale_project_wizard_related_project_id
+msgid "Analytical account related"
+msgstr ""
+
+#. module: link_sale_project_tasks
+#: model:ir.ui.view,arch_db:link_sale_project_tasks.sale_project_view_form_create
+msgid "Create"
+msgstr ""
+
+#. module: link_sale_project_tasks
+#: model:ir.actions.act_window,name:link_sale_project_tasks.sale_open_create_project
+#: model:ir.ui.view,arch_db:link_sale_project_tasks.view_order_form
+msgid "Create project"
+msgstr ""
+
+#. module: link_sale_project_tasks
+#: model:ir.model.fields,field_description:link_sale_project_tasks.field_sale_project_wizard_create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: link_sale_project_tasks
+#: model:ir.model.fields,field_description:link_sale_project_tasks.field_sale_project_wizard_create_date
+msgid "Created on"
+msgstr ""
+
+#. module: link_sale_project_tasks
+#: model:ir.model.fields,field_description:link_sale_project_tasks.field_project_task_currency_id
+msgid "Currency"
+msgstr ""
+
+#. module: link_sale_project_tasks
+#: model:ir.model.fields,field_description:link_sale_project_tasks.field_project_config_settings_daily_price
+msgid "Day Price"
+msgstr ""
+
+#. module: link_sale_project_tasks
+#: model:ir.model.fields,field_description:link_sale_project_tasks.field_project_task_type_case_default
+msgid "Default step"
+msgstr ""
+
+#. module: link_sale_project_tasks
+#: model:ir.ui.view,arch_db:link_sale_project_tasks.sale_project_view_form_create
+msgid "Discard"
+msgstr ""
+
+#. module: link_sale_project_tasks
+#: model:ir.model.fields,field_description:link_sale_project_tasks.field_sale_project_wizard_display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: link_sale_project_tasks
+#: model:ir.model.fields,field_description:link_sale_project_tasks.field_sale_project_wizard_project_id
+msgid "Existing project"
+msgstr ""
+
+#. module: link_sale_project_tasks
+#: model:ir.model.fields,field_description:link_sale_project_tasks.field_project_config_settings_hours_per_day
+msgid "Hours / Day"
+msgstr ""
+
+#. module: link_sale_project_tasks
+#: model:ir.model.fields,field_description:link_sale_project_tasks.field_sale_project_wizard_id
+msgid "ID"
+msgstr ""
+
+#. module: link_sale_project_tasks
+#: model:ir.model.fields,field_description:link_sale_project_tasks.field_sale_config_settings_project_task_type_id
+msgid "Initial step"
+msgstr ""
+
+#. module: link_sale_project_tasks
+#: model:ir.model.fields,field_description:link_sale_project_tasks.field_sale_project_wizard___last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: link_sale_project_tasks
+#: model:ir.model.fields,field_description:link_sale_project_tasks.field_sale_project_wizard_write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: link_sale_project_tasks
+#: model:ir.model.fields,field_description:link_sale_project_tasks.field_sale_project_wizard_write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: link_sale_project_tasks
+#: model:ir.model.fields,field_description:link_sale_project_tasks.field_sale_project_wizard_related_project_name
+msgid "New Analytical Account"
+msgstr ""
+
+#. module: link_sale_project_tasks
+#: model:ir.model.fields,field_description:link_sale_project_tasks.field_sale_project_wizard_project_name
+msgid "New project"
+msgstr ""
+
+#. module: link_sale_project_tasks
+#: model:ir.model,name:link_sale_project_tasks.model_product_template
+msgid "Product Template"
+msgstr ""
+
+#. module: link_sale_project_tasks
+#: model:ir.model,name:link_sale_project_tasks.model_project_project
+msgid "Project"
+msgstr ""
+
+#. module: link_sale_project_tasks
+#: model:ir.ui.view,arch_db:link_sale_project_tasks.edit_project
+msgid "Project Stages"
+msgstr ""
+
+#. module: link_sale_project_tasks
+#: model:ir.model.fields,field_description:link_sale_project_tasks.field_product_product_project_task_type_id
+#: model:ir.model.fields,field_description:link_sale_project_tasks.field_product_template_project_task_type_id
+msgid "Project task stage"
+msgstr ""
+
+#. module: link_sale_project_tasks
+#: model:ir.ui.view,arch_db:link_sale_project_tasks.sale_project_view_form_create
+msgid "Project to link"
+msgstr ""
+
+#. module: link_sale_project_tasks
+#: model:ir.model.fields,field_description:link_sale_project_tasks.field_sale_project_wizard_sale_id
+msgid "Sale"
+msgstr ""
+
+#. module: link_sale_project_tasks
+#: model:ir.model,name:link_sale_project_tasks.model_sale_project_wizard
+msgid "Sale Project Assignment"
+msgstr ""
+
+#. module: link_sale_project_tasks
+#: model:ir.model,name:link_sale_project_tasks.model_sale_order
+msgid "Sales Order"
+msgstr ""
+
+#. module: link_sale_project_tasks
+#: model:ir.model.fields,field_description:link_sale_project_tasks.field_project_task_price_subtotal
+msgid "Subtotal initial"
+msgstr ""
+
+#. module: link_sale_project_tasks
+#: model:ir.model,name:link_sale_project_tasks.model_project_task
+#: model:ir.ui.view,arch_db:link_sale_project_tasks.view_sales_config
+msgid "Task"
+msgstr ""
+
+#. module: link_sale_project_tasks
+#: model:ir.model,name:link_sale_project_tasks.model_project_task_type
+msgid "Task Stage"
+msgstr ""
+
+#. module: link_sale_project_tasks
+#: model:ir.model.fields,help:link_sale_project_tasks.field_project_config_settings_hours_per_day
+msgid "Time base for calculating the number of hours sold per project (default 7h)"
+msgstr ""
+
+#. module: link_sale_project_tasks
+#: model:ir.ui.view,arch_db:link_sale_project_tasks.view_order_form
+msgid "Update tasks"
+msgstr ""
+
+#. module: link_sale_project_tasks
+#: model:ir.model,name:link_sale_project_tasks.model_project_config_settings
+msgid "project.config.settings"
+msgstr ""
+
+#. module: link_sale_project_tasks
+#: model:ir.model,name:link_sale_project_tasks.model_sale_config_settings
+msgid "sale.config.settings"
+msgstr ""
+
