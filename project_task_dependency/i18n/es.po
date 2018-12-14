@@ -108,7 +108,7 @@ msgid "Tasks that are dependent on this task."
 msgstr "Tareas que son dependientes de esta tarea."
 
 #. module: project_task_dependency
-#: code:addons/project_task_dependency/models/project_task.py:73
+#: code:addons/project_task_dependency/models/project_task.py:82
 #, python-format
 msgid "You cannot create recursive dependencies between tasks."
 msgstr ""
