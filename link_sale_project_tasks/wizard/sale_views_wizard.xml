@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <odoo>
-	<data>
-
-		<record id="sale_project_view_form_create" model="ir.ui.view">
+    <data>
+        <record id="sale_project_view_form_create" model="ir.ui.view">
             <field name="name">sale.project.view.form.create</field>
             <field name="model">sale.project.wizard</field>
             <field name="arch" type="xml">
@@ -30,13 +28,12 @@
             </field>
         </record>
 
-		<record id="sale_open_create_project" model="ir.actions.act_window">
+        <record id="sale_open_create_project" model="ir.actions.act_window">
             <field name="name">Create project</field>
             <field name="res_model">sale.project.wizard</field>
             <field name="view_type">form</field>
             <field name="view_mode">form</field>
             <field name="target">new</field>
         </record>
-
-	</data>
+    </data>
 </odoo>

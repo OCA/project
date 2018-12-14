@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-	<record id="view_project_config_settings" model="ir.ui.view">
+    <record id="view_project_config_settings" model="ir.ui.view">
         <field name="name">project.config.settings</field>
         <field name="model">project.config.settings</field>
         <field name="inherit_id" ref="project.view_config_settings"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='module_rating_project']" position="after">
                 <field name="daily_price" class="oe_inline oe_text_right" />
-				<field name="hours_per_day" class="oe_inline oe_text_right" />
+                <field name="hours_per_day" class="oe_inline oe_text_right" />
                 <field name="alias_prefix" class="oe_inline" />
             </xpath>
         </field>

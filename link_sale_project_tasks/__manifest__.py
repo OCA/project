@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 {
     'name': 'Link Sale Order to Project',
     'summary': 'Create project / tasks from Sale Order',
