@@ -24,23 +24,6 @@
         </field>
     </record>
 
-    <record id="project_task_tree_view_milestone" model="ir.ui.view">
-        <field name="name">project.task.tree.view.milestone</field>
-        <field name="model">project.task</field>
-        <field name="arch" type="xml">
-            <tree editable="top" string="Tasks">
-                <field name="project_id" invisible="context.get('hide_project_id',True)" />
-                <field name="stage_id" />
-                <field name="phase_id" options="{'no_create_edit': True}" />
-                <field name="milestone" />
-                <field name="sequence" />
-                <field name="name" string="Task"/>
-                <field name="date_start"/>
-                <field name="date_end"/>
-            </tree>
-        </field>
-    </record>
-
     <record id="project_task_search_view" model="ir.ui.view">
         <field name="name">project.task.search.view</field>
         <field name="model">project.task</field>
@@ -62,14 +45,5 @@
                         context="{'group_by': 'phase_id'}" />
             </filter>
         </field>
-    </record>
-
-    <record id="action_view_task_from_project" model="ir.actions.act_window">
-        <field name="name">Tasks</field>
-        <field name="res_model">project.task</field>
-        <field name="view_mode">tree</field>
-        <field name="view_id" ref="project_task_milestone.project_task_tree_view_milestone" />
-        <field name="context">{'default_project_id': active_id}</field>
-        <field name="domain">[('project_id','=',active_id)]</field>
     </record>
 </odoo>

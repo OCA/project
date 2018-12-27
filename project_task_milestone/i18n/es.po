@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-02 11:59+0000\n"
-"PO-Revision-Date: 2018-11-02 11:59+0000\n"
+"POT-Creation-Date: 2018-12-27 12:22+0000\n"
+"PO-Revision-Date: 2018-12-27 12:22+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -23,7 +23,7 @@ msgstr "Creado por"
 #. module: project_task_milestone
 #: model:ir.model.fields,field_description:project_task_milestone.field_project_task_phase_create_date
 msgid "Created on"
-msgstr "Creado en"
+msgstr "Creado el"
 
 #. module: project_task_milestone
 #: model:ir.model.fields,field_description:project_task_milestone.field_project_task_phase_display_name
@@ -34,13 +34,13 @@ msgstr "Nombre mostrado"
 #. module: project_task_milestone
 #: model:ir.model.fields,field_description:project_task_milestone.field_project_task_plan_end_date
 msgid "End Date"
-msgstr "Fecha final"
+msgstr "Fecha de Finalización"
 
 #. module: project_task_milestone
 #: model:ir.model.fields,field_description:project_task_milestone.field_project_task_phase_id
 #: model:ir.model.fields,field_description:project_task_milestone.field_project_task_plan_id
 msgid "ID"
-msgstr "ID (identificación)"
+msgstr "ID"
 
 #. module: project_task_milestone
 #: model:ir.model.fields,field_description:project_task_milestone.field_project_task_phase___last_update
@@ -51,12 +51,12 @@ msgstr "Última modificación en"
 #. module: project_task_milestone
 #: model:ir.model.fields,field_description:project_task_milestone.field_project_task_phase_write_uid
 msgid "Last Updated by"
-msgstr "Última actualización de"
+msgstr "Última actualización por"
 
 #. module: project_task_milestone
 #: model:ir.model.fields,field_description:project_task_milestone.field_project_task_phase_write_date
 msgid "Last Updated on"
-msgstr "Última actualización en"
+msgstr "Última actualización el"
 
 #. module: project_task_milestone
 #: model:ir.model.fields,field_description:project_task_milestone.field_project_task_milestone
@@ -119,22 +119,10 @@ msgstr "Plan de proyectos"
 #. module: project_task_milestone
 #: model:ir.model.fields,field_description:project_task_milestone.field_project_task_plan_start_date
 msgid "Start Date"
-msgstr "Fecha de inicio"
+msgstr "Fecha de Inicio"
 
 #. module: project_task_milestone
 #: model:ir.model,name:project_task_milestone.model_project_task
-#: model:ir.ui.view,arch_db:project_task_milestone.project_task_tree_view_milestone
 msgid "Task"
 msgstr "Tarea"
-
-#. module: project_task_milestone
-#: model:ir.actions.act_window,name:project_task_milestone.action_view_task_from_project
-#: model:ir.ui.view,arch_db:project_task_milestone.project_task_tree_view_milestone
-msgid "Tasks"
-msgstr "Tareas"
-
-#. module: project_task_milestone
-#: model:ir.ui.view,arch_db:project_task_milestone.project_task_shortcut_form_view
-msgid "Tasks List"
-msgstr "Listado de tareas"
 
