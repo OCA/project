@@ -14,13 +14,13 @@
 ```
 { record type }#{ number }
 ```
-Available task types: 'task #', 'tarea #', 't #', 'task#', 'tarea#', 't#', 'ticket #', 'issue #', 'i #', 'ticket#', 'issue#', 'i#'
+Available types: 'task#', 't#', 'ticket#', 'issue#', 'i#' (case insensitive)
 
 _Examples_: 
 
 - task#123
 
-- issue #123
+- i#123
         </t>
     </template>
 

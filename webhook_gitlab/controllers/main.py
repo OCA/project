@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright 2018, Jarsa Sistemas, S.A. de C.V.
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
@@ -6,7 +5,7 @@ import functools
 import logging
 import re
 
-import gitlab
+import gitlab  # pylint: disable=W7935
 from odoo import _, http
 from odoo.http import request
 from odoo.tools import consteq
@@ -25,7 +24,7 @@ def token_authorization(function):
     def wrapper(self, *args, **kw):
         headers = request.httprequest.headers
         gitlab_token = headers.get('X-Gitlab-Token')
-        token = request.env['ir.config_parameter'].get_param(
+        token = request.env['ir.config_parameter'].sudo().get_param(
             'webhook_gitlab.authorization_token')
         if gitlab_token is None or not consteq(gitlab_token, token):
             _logger.warning(
@@ -54,6 +53,51 @@ class WebhookGitlab(http.Controller):
             return error.message
         return func(event)
 
+    def _get_record_type_and_id(self, title):
+        """Searches in the title of the MR for the task or ticket ID with the
+        correct format and returns the type of record and id if it can find it.
+
+        :param title: Title of the MR
+        :type: string
+        :return: Dictionary with the type of record and ID obtained from the
+        title or False if the title does not contain a correct format.
+        :rtype: dictionary or boolean
+        """
+        exp = (r'^(.*[ \(\[\<])?'
+               r'(?P<type>t(ask)?|i(ssue)?|ticket?)#?(?P<id>\d+)'
+               r'([\)\]\>:=, \.,].*)?$')
+        match = re.match(exp, title, re.IGNORECASE)
+        if match:
+            return match.groupdict()
+        return False
+
+    def _link_record(self, event, id_found):
+        """Add link to Gitlab to access Odoo ticket or task.
+        Post a message in the task or ticket with the access of Gitlab MR.
+        """
+        model = 'project.task'
+        rec_type = 'task'
+        if id_found['type'] in ['ticket', 'i', 'issue']:
+            model = 'helpdesk.ticket'
+            rec_type = 'ticket'
+        record = request.env[model].sudo().search([
+            ('id', '=', id_found['id']), ('gitlab_link', '=', False)])
+        if not record:
+            message = _('The %s #%s cannot be found in Odoo.') % (
+                rec_type, id_found['id'])
+            self._post_gitlab_message(event, message)
+            return False
+        record.gitlab_link = True
+        body = request.env['ir.qweb'].render(
+            'webhook_gitlab.gitlab_new_merge_request', dict(event=event))
+        base_url = request.env['ir.config_parameter'].sudo().get_param(
+            'web.base.url')
+        record.message_post(body=body)
+        url = base_url + record._notify_get_action_link('view')
+        message = _('Linked to Odoo %s [#%s](%s)') % (rec_type, record.id, url)
+        self._post_gitlab_message(event, message)
+        return True
+
     def _process_merge_request(self, event):
         """Post messages in helpdesk.ticket or project.task based on the
         title of the Merge Request.
@@ -63,58 +107,28 @@ class WebhookGitlab(http.Controller):
         Ex. [IMP] webhook_gitlab: new module task #1234
         """
         title = event['object_attributes']['title']
-        task_str = filter(
-            lambda x: x in title,
-            ['task #', 'tarea #', 't #', 'task#', 'tarea#', 't#'])
-        ticket_str = filter(
-            lambda x: x in title,
-            ['ticket #', 'issue #', 'i #', 'ticket#', 'issue#', 'i#'])
-        body = request.env['ir.qweb'].render(
-            'webhook_gitlab.gitlab_new_merge_request', dict(event=event))
-        project_id = event['project']['id']
-        merge_request_id = event['object_attributes']['iid']
-        base_url = request.env['ir.config_parameter'].get_param('web.base.url')
-        if not ticket_str and not task_str:
+        id_found = self._get_record_type_and_id(title)
+        if not id_found:
             message = request.env['ir.qweb'].render(
                 'webhook_gitlab.gitlab_id_not_in_title')
-            self._post_gitlab_message(project_id, merge_request_id, message)
+            self._post_gitlab_message(event, message)
             return False
-        if task_str:
-            task_id = int(re.sub(r'\D', '', title.split(task_str[0])[1]))
-            task = request.env['project.task'].sudo().search([
-                ('id', '=', task_id), ('gitlab_link', '=', False)])
-            if not task:
-                return False
-            task.gitlab_link = True
-            task.message_post(body=body)
-            url = base_url + task._notification_link_helper('view')
-            message = _('Linked to Odoo task [#%s](%s)') % (task.id, url)
-            self._post_gitlab_message(project_id, merge_request_id, message)
-        if ticket_str:
-            ticket_id = int(re.sub(r'\D', '', title.split(ticket_str[0])[1]))
-            ticket = request.env['helpdesk.ticket'].sudo().search([
-                ('id', '=', ticket_id), ('gitlab_link', '=', False)])
-            if not ticket:
-                return False
-            ticket.gitlab_link = True
-            ticket.message_post(body=body)
-            url = base_url + ticket._notification_link_helper('view')
-            message = _('Linked to Odoo ticket [#%s](%s)') % (ticket.id, url)
-            self._post_gitlab_message(project_id, merge_request_id, message)
-        return True
+        return self._link_record(event, id_found)
 
     def _connect_gitlab(self):
         """Connect to gitlab instance and return gitlab object"""
-        url = request.env['ir.config_parameter'].get_param(
-            'webhook_gitlab.gitlab_url')
-        token = request.env['ir.config_parameter'].get_param(
+        url = request.env['ir.config_parameter'].sudo(
+            ).get_param('webhook_gitlab.gitlab_url')
+        token = request.env['ir.config_parameter'].sudo().get_param(
             'webhook_gitlab.gitlab_token')
         return gitlab.Gitlab(url, private_token=token)
 
-    def _post_gitlab_message(self, project_id, merge_request_id, message):
+    def _post_gitlab_message(self, event, message):
         """Post a message in the merge request of a project """
-        gitlab = self._connect_gitlab()
-        project = gitlab.projects.get(project_id)
+        project_id = event['project']['id']
+        merge_request_id = event['object_attributes']['iid']
+        response = self._connect_gitlab()
+        project = response.projects.get(project_id)
         merge_request = project.mergerequests.get(merge_request_id)
         merge_request.discussions.create({'body': message})
         return True
