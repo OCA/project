@@ -19,5 +19,4 @@
         "project_task_material_stock",
         "sale_timesheet",
     ],
-    "data": [],
 }
