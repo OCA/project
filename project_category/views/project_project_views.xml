@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="project_type_search" model="ir.ui.view">
+    <record id="project_search" model="ir.ui.view">
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.view_project_project_filter"/>
         <field name="arch" type="xml">
@@ -20,7 +20,7 @@
         <field name="inherit_id" ref="project.edit_project"/>
         <field name="arch" type="xml">
             <field name="user_id" position="after">
-                <field name="type_id"/>
+                <field name="type_id" />
             </field>
         </field>
     </record>

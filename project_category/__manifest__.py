@@ -3,10 +3,11 @@
 
 {
     'name': 'Project Types',
-    'version': '11.0.1.0.0',
+    'version': '11.0.1.1.0',
     'category': 'Project',
     'author': 'ADHOC SA,'
-              'Tecnativa , '
+              'Tecnativa, '
+              'Onestein, '
               'Odoo Community Association (OCA)',
     'website': 'https://github.com/OCA/project',
     'license': 'AGPL-3',
@@ -16,6 +17,7 @@
     'data': [
         'views/project_type_views.xml',
         'views/project_project_views.xml',
+        'views/project_task_views.xml',
         'security/ir.model.access.csv',
     ],
     'installable': True,
