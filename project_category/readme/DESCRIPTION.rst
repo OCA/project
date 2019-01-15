@@ -1,1 +1,1 @@
-This module adds the category type fields in project.
+This module adds the category type fields in project and task.
