@@ -10,4 +10,5 @@ class ProjectProject(models.Model):
         comodel_name='project.type',
         string='Type',
         copy=False,
+        domain="[('project_ok', '=', True)]",
     )
