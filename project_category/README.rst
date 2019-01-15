@@ -25,7 +25,7 @@ Project Types
 
 |badge1| |badge2| |badge3| |badge4| |badge5| 
 
-This module adds the category type fields in project.
+This module adds the category type fields in project and task.
 
 **Table of contents**
 
@@ -36,9 +36,10 @@ Usage
 =====
 
 * Go to **Project > Configuration > Project Type** and add some items in order to
-  categorize projects as you want.
+  categorize projects and tasks as you want.
 * Go to Project Dashboard and edit any project and enter its type.
 * Now you can group projects by type.
+* This is the same for tasks.
 
 Bug Tracker
 ===========
@@ -58,6 +59,7 @@ Authors
 
 * ADHOC SA
 * Tecnativa
+* Onestein
 
 Contributors
 ~~~~~~~~~~~~
@@ -66,6 +68,10 @@ Contributors
 * `Tecnativa <https://www.tecnativa.com>`_:
 
   * Vicent Cubells
+
+* `Onestein <https://www.onestein.nl>`_:
+
+  * Dennis Sluijk
 
 Maintainers
 ~~~~~~~~~~~
