@@ -5,9 +5,9 @@
 {
     "name": "Project timeline",
     "summary": "Timeline view for projects",
-    "version": "11.0.1.1.0",
+    "version": "12.0.1.0.0",
     "category": "Project Management",
-    "website": "https://www.tecnativa.com",
+    "website": "https://github.com/OCA/project",
     "author": "Tecnativa, Onestein, "
               "Odoo Community Association (OCA)",
     "license": "AGPL-3",

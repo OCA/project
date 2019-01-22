@@ -2,6 +2,7 @@
 <!-- Copyright 2016-2017 Tecnativa - Pedro M. Baeza
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
 <odoo>
+
     <record id="project.project_task_1" model="project.task">
         <field name="date_start" eval="(DateTime.today() - timedelta(days=13)).strftime('%Y-%m-%d 00:00:00')"/>
         <field name="date_end" eval="(DateTime.today() - timedelta(days=6)).strftime('%Y-%m-%d 00:00:00')"/>
@@ -50,30 +51,6 @@
         <field name="date_start" eval="(DateTime.today() + timedelta(days=1)).strftime('%Y-%m-%d 00:00:00')"/>
         <field name="date_end" eval="(DateTime.today() + timedelta(days=20)).strftime('%Y-%m-%d 00:00:00')"/>
     </record>
-    <record id="project.project_task_13" model="project.task">
-        <field name="date_start" eval="(DateTime.today() + timedelta(days=1)).strftime('%Y-%m-%d 00:00:00')"/>
-        <field name="date_end" eval="(DateTime.today() + timedelta(days=20)).strftime('%Y-%m-%d 00:00:00')"/>
-    </record>
-    <record id="project.project_task_14" model="project.task">
-        <field name="date_start" eval="DateTime.today().strftime('%Y-%m-%d 00:00:00')"/>
-        <field name="date_end" eval="(DateTime.today() + timedelta(days=6)).strftime('%Y-%m-%d 00:00:00')"/>
-    </record>
-    <record id="project.project_task_15" model="project.task">
-        <field name="date_start" eval="(DateTime.today() + timedelta(days=18)).strftime('%Y-%m-%d 00:00:00')"/>
-        <field name="date_end" eval="(DateTime.today() + timedelta(days=40)).strftime('%Y-%m-%d 00:00:00')"/>
-    </record>
-    <record id="project.project_task_16" model="project.task">
-        <field name="date_start" eval="(DateTime.today() + timedelta(days=15)).strftime('%Y-%m-%d 00:00:00')"/>
-        <field name="date_end" eval="(DateTime.today() + timedelta(days=50)).strftime('%Y-%m-%d 00:00:00')"/>
-    </record>
-    <record id="project.project_task_17" model="project.task">
-        <field name="date_start" eval="(DateTime.today() + timedelta(days=40)).strftime('%Y-%m-%d 00:00:00')"/>
-        <field name="date_end" eval="(DateTime.today() + timedelta(days=62)).strftime('%Y-%m-%d 00:00:00')"/>
-    </record>
-    <record id="project.project_task_18" model="project.task">
-        <field name="date_start" eval="(DateTime.today() + timedelta(days=38)).strftime('%Y-%m-%d 00:00:00')"/>
-        <field name="date_end" eval="(DateTime.today() + timedelta(days=52)).strftime('%Y-%m-%d 00:00:00')"/>
-    </record>
     <record id="project.project_task_19" model="project.task">
         <field name="date_start" eval="(DateTime.today() + timedelta(days=1)).strftime('%Y-%m-%d 00:00:00')"/>
         <field name="date_end" eval="(DateTime.today() + timedelta(days=10)).strftime('%Y-%m-%d 00:00:00')"/>
@@ -90,10 +67,6 @@
         <field name="date_start" eval="(DateTime.today() + timedelta(days=20)).strftime('%Y-%m-%d 00:00:00')"/>
         <field name="date_end" eval="(DateTime.today() + timedelta(days=22)).strftime('%Y-%m-%d 00:00:00')"/>
     </record>
-    <record id="project.project_task_23" model="project.task">
-        <field name="date_start" eval="(DateTime.today() + timedelta(days=25)).strftime('%Y-%m-%d 00:00:00')"/>
-        <field name="date_end" eval="(DateTime.today() + timedelta(days=30)).strftime('%Y-%m-%d 00:00:00')"/>
-    </record>
     <record id="project.project_task_24" model="project.task">
         <field name="date_start" eval="(DateTime.today() + timedelta(days=30)).strftime('%Y-%m-%d 00:00:00')"/>
         <field name="date_end" eval="(DateTime.today() + timedelta(days=32)).strftime('%Y-%m-%d 00:00:00')"/>
@@ -106,4 +79,5 @@
         <field name="date_start" eval="(DateTime.today() + timedelta(days=20)).strftime('%Y-%m-%d 00:00:00')"/>
         <field name="date_end" eval="(DateTime.today() + timedelta(days=50)).strftime('%Y-%m-%d 00:00:00')"/>
     </record>
+
 </odoo>
