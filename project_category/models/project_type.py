@@ -1,4 +1,5 @@
 from odoo import _, api, fields, models
+from odoo.exceptions import ValidationError
 
 
 class ProjectType(models.Model):
@@ -39,7 +40,7 @@ class ProjectType(models.Model):
     @api.constrains('parent_id')
     def check_parent_id(self):
         if not self._check_recursion():
-            raise ValueError(_('You cannot create recursive project types.'))
+            raise ValidationError(_('You cannot create recursive project types.'))
 
     @api.depends('name', 'parent_id.complete_name')
     def _compute_complete_name(self):
