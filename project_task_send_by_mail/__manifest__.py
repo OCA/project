@@ -4,7 +4,7 @@
 {
     "name": "Project Task Send By Mail",
     "summary": "Send task report by email",
-    "version": "11.0.1.0.0",
+    "version": "12.0.1.0.0",
     "author": "Tecnativa, "
               "Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/project",

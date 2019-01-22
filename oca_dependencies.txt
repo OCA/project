@@ -4,3 +4,4 @@ stock-logistics-warehouse
 account-budgeting
 account-analytic
 server-tools
+project-reporting
