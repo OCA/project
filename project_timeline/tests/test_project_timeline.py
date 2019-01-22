@@ -2,6 +2,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo.tests.common import TransactionCase
+from odoo import fields
 
 
 class TestProjectTimeline(TransactionCase):
@@ -17,4 +18,5 @@ class TestProjectTimeline(TransactionCase):
             'stage_id': stage_id,
             'date_end': '2018-10-07 00:00:00'
         })
-        self.assertEqual(task.date_end, '2018-10-07 00:00:00')
+        self.assertEqual(task.date_end,
+                         fields.Datetime.from_string('2018-10-07 00:00:00'))
