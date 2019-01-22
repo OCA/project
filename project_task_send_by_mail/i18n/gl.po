@@ -88,7 +88,7 @@ msgid "Compose Email"
 msgstr ""
 
 #. module: project_task_send_by_mail
-#: model:ir.ui.view,arch_db:project_task_send_by_mail.view_task_form2
+#: model_terms:ir.ui.view,arch_db:project_task_send_by_mail.view_task_form2
 msgid "Send by Email"
 msgstr ""
 
