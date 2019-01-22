@@ -6,12 +6,12 @@
     margin-right: -5px;
     margin-top: 5px;
 
-    > div {
+.o_project_timeline_hr_timesheet_progress .div {
         height: 100%;
         max-width: 100%;
         background: @progress-bar-success-bg;
 
-        &.danger {
+.o_project_timeline_hr_timesheet_progress .danger {
             background: @progress-bar-danger-bg;
         }
     }

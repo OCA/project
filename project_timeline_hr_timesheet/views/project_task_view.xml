@@ -8,9 +8,9 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project_timeline.project_task_timeline"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='user_id']" position="after">
+            <field name="user_id" position="after">
                 <field name="progress"/>
-            </xpath>
+            </field>
             <xpath expr="//div[hasclass('o_project_timeline_item')]" position="after">
                 <div class="o_project_timeline_hr_timesheet_progress">
                     <div t-att-class="record.progress > 100 and 'danger'"
