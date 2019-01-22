@@ -58,8 +58,8 @@ class TestProjectTaskDependency(TransactionCase):
         new_project = self.project1.copy({
             'name': 'Nice Project Test Dependencies One Second'
         })
-        task1 = new_project.tasks.filtered(lambda t: t.name == '2')
-        self.assertEqual(task1.dependency_task_ids[0].name, '1')
+        task2 = new_project.tasks.filtered(lambda t: t.name == '2')
+        self.assertEqual(task2.dependency_task_ids[0].name, '1')
         task3 = new_project.tasks.filtered(lambda t: t.name == '3')
         self.assertEqual(task3.dependency_task_ids[0].name, '2')
         new_project = self.project2.copy({
@@ -69,11 +69,9 @@ class TestProjectTaskDependency(TransactionCase):
         self.assertEqual(task4.dependency_task_ids[0].id, self.task2.id)
 
     def test_regression_copy(self):
-        old_count = self.env['project.task.copy.map'].search(
-            [('old_task_id', '=', self.task4.id)], count=True
-        )
+        old_count = self.env['project.task.copy.map'].search_count(
+            [('old_task_id', '=', self.task4.id)])
         self.task4.copy()
-        new_count = self.env['project.task.copy.map'].search(
-            [('old_task_id', '=', self.task4.id)], count=True
-        )
+        new_count = self.env['project.task.copy.map'].search_count(
+            [('old_task_id', '=', self.task4.id)])
         self.assertEqual(old_count, new_count)
