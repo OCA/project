@@ -22,7 +22,7 @@
                   <field name="department_id"/>
                </field>
                <xpath expr="//search" position="inside">
-                  <filter string="Department" context="{'group_by':'department_id'}"/>
+                  <filter name="department" string="Department" context="{'group_by':'department_id'}"/>
                </xpath>
          </field>
      </record>
