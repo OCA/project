@@ -46,7 +46,7 @@
         <field name="type">form</field>
         <field name="inherit_id" ref="analytic.view_account_analytic_account_form"/>
         <field name="arch" type="xml">
-            <field name="tag_ids" position="after">
+            <field name="group_id" position="after">
                 <field name="account_class" string="Class"/>
                 <field name="project_analytic_id"
                        domain="[('account_class', '=', 'project')]"/>

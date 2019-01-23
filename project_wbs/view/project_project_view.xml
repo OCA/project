@@ -136,7 +136,7 @@
         <field name="name">project.project.form</field>
         <field name="model">project.project</field>
         <field name="type">form</field>
-        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="inherit_id" ref="hr_timesheet.project_invoice_form"/>
         <field name="arch" type="xml">
             <field name="name" position="attributes">
                 <attribute name="string">WBS element name</attribute>
@@ -149,16 +149,16 @@
                        domain="[('id','!=',analytic_account_id)]"
                        context="{'current_model': 'project.project'}" />
             </field>
-
+            <field name="analytic_account_id" position="attributes">
+                <attribute name="required">0</attribute>
+                <attribute name="readonly">1</attribute>
+            </field>
             <field name="sequence" position="attributes">
                 <attribute name="invisible">1</attribute>
             </field>
 
             <field name="sequence" position="after">
                 <field name="account_class" string="Class"/>
-                <field name="analytic_account_id"
-                       readonly="1" required="0"
-                       domain="[('account_class', '=', 'project')]"/>
                 <field name="project_analytic_id"
                        domain="[('account_class', '=', 'project')]"/>
                 <field name="code" string="Code"/>

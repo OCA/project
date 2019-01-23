@@ -13,6 +13,8 @@ class Project(models.Model):
     _description = "WBS element"
     _order = "c_wbs_code"
 
+    _inherits = {'account.analytic.account': "analytic_account_id"}
+
     @api.multi
     def _get_project_analytic_wbs(self):
         result = {}
@@ -108,9 +110,17 @@ class Project(models.Model):
         account.analytic.account
         """
         context = self.env.context or {}
-        if type(context.get('default_parent_id')) == int:
+        #if type(context.get('default_parent_id')) == int:
+        if isinstance(context.get('default_parent_id'), int):
             return context['default_parent_id']
         return None
+
+    def prepare_analytics_vals(self, vals):
+
+        return {
+            'name': vals['name'],
+            'company_id': self.env.user.company_id.id
+        }
 
     project_child_complete_ids = fields.Many2many(
         comodel_name='project.project',
@@ -120,7 +130,6 @@ class Project(models.Model):
     c_wbs_code = fields.Char(
         related="analytic_account_id.complete_wbs_code",
         string='WBS Code',
-        readonly=True,
         store=True
     )
     account_class = fields.Selection(
@@ -129,13 +138,15 @@ class Project(models.Model):
         default='project',
     )
 
-    @api.multi
-    def copy(self, default=None):
-        if default is None:
-            default = {}
-        default['code'] = self.env['ir.sequence'].next_by_code(
-            'account.analytic.account.code')
-        return super(Project, self).copy(default)
+    @api.model
+    def create(self, vals):
+
+        analytic_vals = self.prepare_analytics_vals(vals)
+        aa = self.env['account.analytic.account'].create(analytic_vals)
+        vals.update({'analytic_account_id': aa.id})
+        res = super(Project, self).create(vals)
+
+        return res
 
     @api.multi
     def action_open_child_view(self, module, act_window):

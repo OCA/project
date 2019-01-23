@@ -5,6 +5,7 @@
 # Copyright 2017 Serpent Consulting Services Pvt. Ltd.
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 from odoo import _, api, fields, models
+from odoo.exceptions import ValidationError
 
 
 class AccountAnalyticAccount(models.Model):
@@ -122,8 +123,7 @@ class AccountAnalyticAccount(models.Model):
 
     wbs_indent = fields.Char(
         compute=_wbs_indent_calc,
-        string='Level',
-        readonly=True
+        string='Level'
     )
 
     complete_wbs_code = fields.Char(
@@ -131,8 +131,9 @@ class AccountAnalyticAccount(models.Model):
         string='Full WBS Code',
         help='The full WBS code describes the full path of this component '
              'within the project WBS hierarchy',
-        store=True
+        store=True,
     )
+    code = fields.Char(copy=False)
     complete_wbs_name = fields.Char(
         compute=_complete_wbs_name_calc,
         string='Full WBS path',
@@ -164,8 +165,10 @@ class AccountAnalyticAccount(models.Model):
 
     @api.multi
     def copy(self, default=None):
-        if default is None:
-            default = {}
+        if self.mapped('project_ids'):
+            raise ValidationError(_(' Duplicate the project instead of the '
+                                    ' Analytic Account '))
+        default = {}
         default['code'] = self.env['ir.sequence'].next_by_code(
             'account.analytic.account.code')
         return super(AccountAnalyticAccount, self).copy(default)
