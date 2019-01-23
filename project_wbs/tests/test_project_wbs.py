@@ -5,26 +5,31 @@
 # Copyright 2017 Serpent Consulting Services Pvt. Ltd.
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 from odoo.tests import common
+from odoo.exceptions import ValidationError
 
 
 class TestProjectWbs(common.TransactionCase):
+
     def setUp(self):
         super(TestProjectWbs, self).setUp()
-        self.project = self.env['project.project'].create(
+
+        self.project_project = self.env['project.project']
+
+        self.project = self.project_project.create(
             {'name': 'Test project',
              'code': '0001'})
         self.parent_account = self.project.analytic_account_id
-        self.project_son = self.env['project.project'].create(
+        self.project_son = self.project_project.create(
             {'name': 'Test project son',
              'code': '01',
              'parent_id': self.parent_account.id})
         self.son_account = self.project_son.analytic_account_id
-        self.project_grand_son = self.env['project.project'].create(
+        self.project_grand_son = self.project_project.create(
             {'name': 'Test project grand son',
              'code': '02',
              'parent_id': self.son_account.id})
         self.grand_son_account = self.project_grand_son.analytic_account_id
-        self.project2 = self.env['project.project'].create(
+        self.project2 = self.project_project.create(
             {'name': 'Test project 2',
              'code': '03'})
         self.account2 = self.project2.analytic_account_id
@@ -52,12 +57,12 @@ class TestProjectWbs(common.TransactionCase):
             self.assertEqual(res[has_parent], True, 'Wrong child accounts')
 
     def test_view_context(self):
-        res = self.env['project.project'].with_context(
+        res = self.project_project.with_context(
             default_parent_id=self.project.id).\
             _resolve_analytic_account_id_from_context()
         self.assertEqual(
             res, self.project.id, 'Wrong Parent Project from context')
-        res = self.env['project.project'].\
+        res = self.project_project.\
             _resolve_analytic_account_id_from_context()
         self.assertEqual(
             res, None, 'Should not be anything in context')
@@ -104,8 +109,8 @@ class TestProjectWbs(common.TransactionCase):
         copy_project = self.project.copy()
         self.assertTrue(str(next_val) in copy_project.analytic_account_id.code)
         next_val = seq_id.number_next_actual
-        copy_analytic = self.parent_account.copy()
-        self.assertTrue(str(next_val) in copy_analytic.code)
+        with self.assertRaises(ValidationError):
+            copy_analytic = self.parent_account.copy()
 
     def test_project_analytic_id(self):
         self.grand_son_account.account_class = 'deliverable'
