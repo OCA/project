@@ -20,7 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: project_stage_closed
-#: model:ir.model.fields,field_description:project_stage_closed.field_project_task_type_closed
+#: model:ir.model.fields,field_description:project_stage_closed.field_project_task_type__closed
 msgid "Closed"
 msgstr "Gesloten"
 
@@ -30,6 +30,6 @@ msgid "Task Stage"
 msgstr "Taakfase"
 
 #. module: project_stage_closed
-#: model:ir.model.fields,help:project_stage_closed.field_project_task_type_closed
+#: model:ir.model.fields,help:project_stage_closed.field_project_task_type__closed
 msgid "Tasks in this stage are considered closed."
 msgstr "Taken in deze fase worden als gesloten beschouwd."
