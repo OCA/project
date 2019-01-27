@@ -21,7 +21,7 @@ msgstr ""
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
 #. module: project_stage_closed
-#: model:ir.model.fields,field_description:project_stage_closed.field_project_task_type_closed
+#: model:ir.model.fields,field_description:project_stage_closed.field_project_task_type__closed
 msgid "Closed"
 msgstr "Zatvoreno"
 
@@ -31,6 +31,6 @@ msgid "Task Stage"
 msgstr "Etapa zadatka"
 
 #. module: project_stage_closed
-#: model:ir.model.fields,help:project_stage_closed.field_project_task_type_closed
+#: model:ir.model.fields,help:project_stage_closed.field_project_task_type__closed
 msgid "Tasks in this stage are considered closed."
 msgstr "Zadaci sa ovim statusom smatraju se zatvorenima."
