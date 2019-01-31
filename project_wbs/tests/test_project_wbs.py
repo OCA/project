@@ -111,6 +111,8 @@ class TestProjectWbs(common.TransactionCase):
         next_val = seq_id.number_next_actual
         with self.assertRaises(ValidationError):
             copy_analytic = self.parent_account.copy()
+            self.assertTrue(
+                str(next_val) in copy_analytic.analytic_account_id.code)
 
     def test_project_analytic_id(self):
         self.grand_son_account.account_class = 'deliverable'
