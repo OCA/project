@@ -15,6 +15,10 @@ class Project(models.Model):
 
     _inherits = {'account.analytic.account': "analytic_account_id"}
 
+    analytic_account_id = fields.Many2one('account.analytic.account',
+                                          'Analytic Account', required=True,
+                                          ondelete='restrict', index=True)
+
     @api.multi
     def _get_project_analytic_wbs(self):
         result = {}
@@ -110,7 +114,7 @@ class Project(models.Model):
         account.analytic.account
         """
         context = self.env.context or {}
-        #if type(context.get('default_parent_id')) == int:
+        # if type(context.get('default_parent_id')) == int:
         if isinstance(context.get('default_parent_id'), int):
             return context['default_parent_id']
         return None
