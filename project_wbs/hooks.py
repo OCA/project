@@ -11,38 +11,27 @@ def pre_init_hook(cr):
             'account.analytic.account.code')
     logger.info('Assigning default code to existing analytic accounts')
 
-    cr.execute("""SELECT column_name
-    FROM information_schema.columns
-    WHERE table_name='project_project' AND
-    column_name='analytic_account_id'""")
-    if not cr.fetchone():
+    cr.execute(
+        """
+        SELECT id FROM project_project
+        """
+    )
+    for pp in cr.fetchall():
         cr.execute(
             """
-            ALTER TABLE project_project
-            ADD COLUMN analytic_account_id
-            integer;
-            """)
-        cr.execute(
-            """
-            SELECT id FROM project_project
-            """
-        )
-        for pp in cr.fetchall():
-            cr.execute(
-                """
-                INSERT INTO account_analytic_account (name,company_id,code) 
-                SELECT name, company_id, name
-                FROM project_project 
-                WHERE project_project.id=%s
-                RETURNING account_analytic_account.id
-                """,
-                (tuple(pp,))
+            INSERT INTO account_analytic_account (name,company_id,code)
+            SELECT name, company_id, name
+            FROM project_project
+            WHERE project_project.id=%s
+            RETURNING account_analytic_account.id
+            """,
+            (tuple(pp,))
             # % pp[0]
-            )
-            aa2 = cr.fetchone()
-            cr.execute(
-                """
-                UPDATE project_project set analytic_account_id=%s WHERE id=%s
-                """,
-                (tuple(aa2,), tuple(pp,)))
-            # % (aa2[0], pp[0]))
+        )
+        aa2 = cr.fetchone()
+        cr.execute(
+            """
+            UPDATE project_project set analytic_account_id=%s WHERE id=%s
+            """,
+            (tuple(aa2,), tuple(pp,)))
+        # % (aa2[0], pp[0]))
