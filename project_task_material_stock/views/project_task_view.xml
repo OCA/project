@@ -39,7 +39,7 @@
                 <group string="Materials consumed" name="materials_consumed" groups="project.group_project_user">
                     <notebook>
                         <page string="Products" name="products">
-                            <field name="material_ids" attrs="{'readonly':[('stock_state','!=', 'pending')]}">
+                            <field name="material_ids" >
                                 <tree string="Materials used" editable="top">
                                     <field name="product_id" domain="[('type', 'in', ['consu', 'product'])]"/>
                                     <field name="quantity"/>
@@ -48,6 +48,7 @@
                             </field>
                         </page>
                         <page string="Stock Moves" name="stock_moves">
+                            <field name="picking_id" readonly="1"/>
                             <field name="stock_move_ids"/>
                         </page>
                     </notebook>

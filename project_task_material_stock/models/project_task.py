@@ -43,6 +43,8 @@ class Task(models.Model):
                         task.stock_state = state
                         break
 
+
+    picking_id = fields.Many2one("stock.picking", related="stock_move_ids.picking_id")
     stock_move_ids = fields.Many2many(
         comodel_name='stock.move',
         compute='_compute_stock_move',
@@ -99,11 +101,15 @@ class Task(models.Model):
     def write(self, vals):
         res = super(Task, self).write(vals)
         for task in self:
-            if 'stage_id' in vals:
+            if 'stage_id' in vals or 'material_ids' in vals:
                 if task.stage_id.consume_material:
-                    if not task.stock_move_ids:
-                        task.material_ids.create_stock_move()
-                        task.material_ids.create_analytic_line()
+                    todo_lines = task.material_ids.filtered(
+                        lambda m: not m.stock_move_id
+                    )
+
+                    todo_lines.create_stock_move()
+                    todo_lines.create_analytic_line()
+
                 else:
                     if task.unlink_stock_move():
                         if task.material_ids.mapped(
@@ -177,10 +183,29 @@ class ProjectTaskMaterial(models.Model):
 
     @api.multi
     def create_stock_move(self):
-        for line in self:
-            move_id = self.env['stock.move'].create(
-                line._prepare_stock_move())
-            line.stock_move_id = move_id.id
+        pick_type = self.env.ref('stock.picking_type_out')
+
+        if self:
+            task = self[0].task_id
+            location_id = task.location_source_id.id or task.project_id.location_source_id.id or self.env.ref(
+                'stock.stock_location_stock').id
+            location_dest_id = task.location_dest_id.id or task.project_id.location_dest_id.id or self.env.ref(
+                'stock.stock_location_customers').id
+
+            picking_id = task.picking_id or self.env['stock.picking'].create({
+                'origin': "{}/{}".format(task.project_id.name, task.name),
+                'partner_id': task.partner_id.id,
+                'picking_type_id': pick_type.id,
+                'location_id': location_id,
+                'location_dest_id': location_dest_id,
+            })
+
+            for line in self:
+                if not line.stock_move_id:
+                    move_id = self.env['stock.move'].create(
+                        line._prepare_stock_move())
+                    line.stock_move_id = move_id.id
+                    move_id.picking_id = picking_id
 
     def _prepare_analytic_line(self):
         product = self.product_id
