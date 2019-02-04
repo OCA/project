@@ -34,6 +34,18 @@ class TestProjectWbs(common.TransactionCase):
              'code': '03'})
         self.account2 = self.project2.analytic_account_id
 
+        self.analytic_account = self.env['account.analytic.account'].create({
+            'name': 'Test analytic account',
+        })
+
+    def test_get_name_and_code(self):
+        project = self.project_project.create(
+            {'name': 'Project',
+             'code': '1001'})
+        project.name_get()
+        project_account = self.project.analytic_account_id
+        project_account.name_get()
+
     def test_get_project_wbs(self):
         accounts = self.project._get_project_wbs()
         self.assertEqual(len(accounts), 3, 'wrong children number')
@@ -113,6 +125,7 @@ class TestProjectWbs(common.TransactionCase):
             copy_analytic = self.parent_account.copy()
             self.assertTrue(
                 str(next_val) in copy_analytic.analytic_account_id.code)
+        self.analytic_account.copy()
 
     def test_project_analytic_id(self):
         self.grand_son_account.account_class = 'deliverable'
