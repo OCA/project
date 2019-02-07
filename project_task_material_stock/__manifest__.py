@@ -20,6 +20,7 @@
         "project_task_material",
     ],
     "data": [
+        "data/data.xml",
         "views/project_view.xml",
         "views/project_task_view.xml",
     ],

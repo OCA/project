@@ -44,7 +44,8 @@ class Task(models.Model):
                         break
 
 
-    picking_id = fields.Many2one("stock.picking", related="stock_move_ids.picking_id")
+    picking_id = fields.Many2one("stock.picking",
+                                 related="stock_move_ids.picking_id")
     stock_move_ids = fields.Many2many(
         comodel_name='stock.move',
         compute='_compute_stock_move',
@@ -106,9 +107,9 @@ class Task(models.Model):
                     todo_lines = task.material_ids.filtered(
                         lambda m: not m.stock_move_id
                     )
-
-                    todo_lines.create_stock_move()
-                    todo_lines.create_analytic_line()
+                    if todo_lines:
+                        todo_lines.create_stock_move()
+                        todo_lines.create_analytic_line()
 
                 else:
                     if task.unlink_stock_move():
@@ -183,29 +184,24 @@ class ProjectTaskMaterial(models.Model):
 
     @api.multi
     def create_stock_move(self):
-        pick_type = self.env.ref('stock.picking_type_out')
+        pick_type = self.env.ref(
+            'project_task_material_stock.project_task_material_picking_type')
 
-        if self:
-            task = self[0].task_id
-            location_id = task.location_source_id.id or task.project_id.location_source_id.id or self.env.ref(
-                'stock.stock_location_stock').id
-            location_dest_id = task.location_dest_id.id or task.project_id.location_dest_id.id or self.env.ref(
-                'stock.stock_location_customers').id
+        task = self[0].task_id
+        picking_id = task.picking_id or self.env['stock.picking'].create({
+            'origin': "{}/{}".format(task.project_id.name, task.name),
+            'partner_id': task.partner_id.id,
+            'picking_type_id': pick_type.id,
+            'location_id': pick_type.default_location_src_id.id,
+            'location_dest_id': pick_type.default_location_dest_id.id,
+        })
 
-            picking_id = task.picking_id or self.env['stock.picking'].create({
-                'origin': "{}/{}".format(task.project_id.name, task.name),
-                'partner_id': task.partner_id.id,
-                'picking_type_id': pick_type.id,
-                'location_id': location_id,
-                'location_dest_id': location_dest_id,
-            })
-
-            for line in self:
-                if not line.stock_move_id:
-                    move_id = self.env['stock.move'].create(
-                        line._prepare_stock_move())
-                    line.stock_move_id = move_id.id
-                    move_id.picking_id = picking_id
+        for line in self:
+            if not line.stock_move_id:
+                move_vals = line._prepare_stock_move()
+                move_vals.update({'picking_id': picking_id.id or False})
+                move_id = self.env['stock.move'].create(move_vals)
+                line.stock_move_id = move_id.id
 
     def _prepare_analytic_line(self):
         product = self.product_id
