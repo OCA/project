@@ -43,7 +43,6 @@ class Task(models.Model):
                         task.stock_state = state
                         break
 
-
     picking_id = fields.Many2one("stock.picking",
                                  related="stock_move_ids.picking_id")
     stock_move_ids = fields.Many2many(
