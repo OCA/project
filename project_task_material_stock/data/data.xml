@@ -11,7 +11,7 @@
             <field name="implementation">standard</field>
         </record>
 
-        <!-- Operación consumo -->
+        <!-- New Picking type -->
         <record model="stock.picking.type" id="project_task_material_picking_type">
             <field name="name">Project Task Material Operations</field>
             <field name="code">outgoing</field>
