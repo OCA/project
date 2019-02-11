@@ -29,7 +29,7 @@ class ProjectTask(models.Model):
                 vals['code'] = self.env['ir.sequence'].next_by_code(
                     'project.task'
                 )
-        return super().create(vals)
+        return super().create(vals_list)
 
     def copy(self, default=None):
         if default is None:
