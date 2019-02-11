@@ -10,14 +10,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-12-23 03:43+0000\n"
-"PO-Revision-Date: 2016-12-23 03:43+0000\n"
-"Last-Translator: César Castro Cruz <ulmroan@gmail.com>, 2016\n"
+"PO-Revision-Date: 2019-02-11 12:50+0000\n"
+"Last-Translator: Marta Vázquez Rodríguez <vazrodmar@gmail.com>\n"
 "Language-Team: Galician (https://www.transifex.com/oca/teams/23907/gl/)\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.4\n"
 
 #. module: project_task_material
 #: model:ir.model.fields,field_description:project_task_material.field_project_task_material__create_uid
@@ -32,7 +33,7 @@ msgstr "Creado en"
 #. module: project_task_material
 #: model:ir.model.fields,field_description:project_task_material.field_project_task_material__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nome mostrado"
 
 #. module: project_task_material
 #: model:ir.model.fields,field_description:project_task_material.field_project_task_material__id
@@ -57,13 +58,13 @@ msgstr "Última actualización en"
 #. module: project_task_material
 #: model_terms:ir.ui.view,arch_db:project_task_material.view_project_task_form_material
 msgid "Material"
-msgstr ""
+msgstr "Materiais"
 
 #. module: project_task_material
 #: model:ir.model.fields,field_description:project_task_material.field_project_task__material_ids
 #: model_terms:ir.ui.view,arch_db:project_task_material.view_project_task_form_material
 msgid "Material Used"
-msgstr ""
+msgstr "Materiais empregados"
 
 #. module: project_task_material
 #: model:ir.model.fields,field_description:project_task_material.field_project_task_material__product_id
@@ -79,7 +80,7 @@ msgstr "Cantidade"
 #: code:addons/project_task_material/models/project.py:40
 #, python-format
 msgid "Quantity of material consumed must be greater than 0."
-msgstr ""
+msgstr "A cantidade de materiais consumidos ten que ser maior que 0."
 
 #. module: project_task_material
 #: model:ir.model,name:project_task_material.model_project_task
@@ -90,4 +91,4 @@ msgstr "Tarefa"
 #. module: project_task_material
 #: model:ir.model,name:project_task_material.model_project_task_material
 msgid "Task Material Used"
-msgstr ""
+msgstr "Materiais empregados na tarefa"
