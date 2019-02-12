@@ -1,1 +1,2 @@
 web
+timesheet https://github.com/brainbeanapps/timesheet 12.0-tmp-project_timesheet_time_control

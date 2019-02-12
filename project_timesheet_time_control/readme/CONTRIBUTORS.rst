@@ -6,3 +6,5 @@
     * Sergio Teruel
     * Luis M. ontalba
     * Ernesto Tejeda
+
+* Alexey Pelykh <alexey.pelykh@brainbeanapps.com>
