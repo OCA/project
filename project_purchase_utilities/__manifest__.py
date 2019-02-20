@@ -3,11 +3,12 @@
 
 {
     "name": "Project Purchase Utilities",
-    "version": "11.0.1.1.0",
+    "version": "12.0.1.1.0",
     "license": "AGPL-3",
     "depends": [
         "project",
         "purchase",
+        "hr_timesheet",
     ],
     "author": "AvanzOSC",
     "website": "http://www.avanzosc.es",

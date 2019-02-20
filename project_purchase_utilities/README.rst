@@ -17,6 +17,8 @@ Bugs are tracked on `GitHub Issues
 check there if your issue has already been reported. If you spotted it first,
 help us smash it by providing detailed and welcomed feedback.
 
+Do not contact contributors directly about support or help with technical issues.
+
 Credits
 =======
 
@@ -25,5 +27,3 @@ Contributors
 
 * Oihane Crucelaegui <oihanecrucelaegi@avanzosc.es>
 * Ana Juaristi <anajuaristi@avanzosc.es>
-
-Do not contact contributors directly about support or help with technical issues.
