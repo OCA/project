@@ -40,7 +40,7 @@
                 <filter string="Not Milestone" name="nomilestone_filter"
                         domain="[('milestone','=',False)]"/>
             </filter>
-            <filter name="Stage" position="after">
+            <filter name="stage" position="after">
                 <filter name="group_phase" string="Phase"
                         context="{'group_by': 'phase_id'}" />
             </filter>

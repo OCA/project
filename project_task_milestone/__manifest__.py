@@ -3,7 +3,7 @@
 
 {
     "name": "Project Task Milestone",
-    "version": "11.0.2.1.1",
+    "version": "12.0.1.0.0",
     "license": "AGPL-3",
     "depends": [
         "project",
