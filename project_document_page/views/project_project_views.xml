@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_project_kanban" model="ir.ui.view">
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@class='o_project_kanban_boxes']" position="inside">
+                <a class="o_project_kanban_box" name="%(action_project_document_pages)d" type="action">
+                    <div>
+                        <b>
+                            <field name="document_page_count" nolabel="1" class="o_value"/>
+                        </b>
+                        <span class="o_label">Wiki Pages</span>
+                    </div>
+                </a>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="view_wiki_form" model="ir.ui.view">
+        <field name="name">document.page.form - project_document_page</field>
+        <field name="model">document.page</field>
+        <field name="inherit_id" ref="document_page.view_wiki_form"/>
+        <field name="arch" type="xml">
+            <field name="parent_id" position="after">
+                <field name="project_id"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="action_project_document_pages" model="ir.actions.act_window">
+        <field name="name">Project Wiki</field>
+        <field name="res_model">document.page</field>
+        <field name="domain">[('type','=','content'), ('project_id', '=', active_id)]</field>
+        <field name="context">{
+            'default_type': 'content',
+            'default_project_id': active_id}</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_ids" eval="[(5,0,0),
+              (0,0,{'view_mode':'tree', 'view_id': ref('document_page.view_wiki_tree')}),
+              (0,0,{'view_mode':'form', 'view_id': ref('document_page.view_wiki_form')})]"/>
+        <field name="search_view_id" ref="document_page.view_wiki_filter"/>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Click to create a new web page.
+            </p>
+        </field>
+    </record>
+
+</odoo>
