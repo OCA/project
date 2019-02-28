@@ -5,7 +5,7 @@
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.view_project_kanban"/>
         <field name="arch" type="xml">
-            <xpath expr="//div[@class='o_project_kanban_boxes']" position="inside">
+            <xpath expr="//div[hasclass('o_project_kanban_boxes')]" position="inside">
                 <a class="o_project_kanban_box" name="%(action_project_document_pages)d" type="action">
                     <div>
                         <b>
