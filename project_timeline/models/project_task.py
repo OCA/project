@@ -2,11 +2,13 @@
 # Copyright 2017 Tecnativa - Carlos Dauden
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo import api, models
+from odoo import api, models, fields
 
 
 class ProjectTask(models.Model):
     _inherit = "project.task"
+
+    date_deadline = fields.Datetime()
 
     @api.onchange('user_id')
     def _onchange_user(self):  # pragma: no cover
