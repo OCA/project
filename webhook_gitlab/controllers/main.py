@@ -81,11 +81,13 @@ class WebhookGitlab(http.Controller):
             model = 'helpdesk.ticket'
             rec_type = 'ticket'
         record = request.env[model].sudo().search([
-            ('id', '=', id_found['id']), ('gitlab_link', '=', False)])
+            ('id', '=', id_found['id'])])
         if not record:
             message = _('The %s #%s cannot be found in Odoo.') % (
                 rec_type, id_found['id'])
             self._post_gitlab_message(event, message)
+            return False
+        if record.gitlab_link:
             return False
         record.gitlab_link = True
         body = request.env['ir.qweb'].render(
