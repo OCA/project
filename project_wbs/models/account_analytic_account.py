@@ -59,9 +59,10 @@ class AccountAnalyticAccount(models.Model):
                 acc = acc.parent_id
             if data:
                 if len(data) >= 2:
-                    data = '/'.join(data)
+                    data = ' / '.join(data)
                 else:
                     data = data[0]
+                data = '[' + data + '] '
             account.complete_wbs_code = data or ''
 
     @api.multi

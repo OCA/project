@@ -95,6 +95,8 @@ class Project(models.Model):
     @api.depends('parent_id')
     def _compute_child(self):
         for project_item in self:
+            if not project_item.analytic_account_id:
+                continue
             child_ids = self.search(
                 [('parent_id', '=', project_item.analytic_account_id.id)]
             )
