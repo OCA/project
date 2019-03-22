@@ -8,15 +8,16 @@ msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-31 18:04+0000\n"
-"PO-Revision-Date: 2015-07-21 19:21+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
+"PO-Revision-Date: 2019-03-22 15:14+0000\n"
+"Last-Translator: Ben Brich <b.brich@humanilog.org>\n"
 "Language-Team: German (http://www.transifex.com/oca/OCA-project-8-0/language/"
 "de/)\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.5.1\n"
 
 #. module: project_gtd
 #: model:ir.ui.view,arch_db:project_gtd.view_project_gtd_fill
@@ -31,7 +32,7 @@ msgstr "Während Reisezeit"
 #. module: project_gtd
 #: model:ir.ui.view,arch_db:project_gtd.view_project_gtd_empty
 msgid "Close"
-msgstr ""
+msgstr "Schließen"
 
 #. module: project_gtd
 #: model:ir.model,name:project_gtd.model_project_gtd_context
@@ -65,7 +66,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty_create_uid
 #: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Angelegt von"
 
 #. module: project_gtd
 #: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context_create_date
@@ -73,7 +74,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty_create_date
 #: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_create_date
 msgid "Created on"
-msgstr ""
+msgstr "Angelegt am"
 
 #. module: project_gtd
 #: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context_display_name
@@ -81,7 +82,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty_display_name
 #: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Anzeigename"
 
 #. module: project_gtd
 #: model:ir.actions.act_window,name:project_gtd.action_project_gtd_empty
@@ -97,12 +98,12 @@ msgstr "Aus Zeitfenster entnehmen"
 #: model:ir.model.fields,help:project_gtd.field_project_gtd_context_sequence
 msgid "Gives the sequence order when displaying a list of contexts."
 msgstr ""
-"Anzeige der Reihenfolge bei Ausgabe der Liste mit den definierten Kontexten"
+"Anzeige der Reihenfolge bei Ausgabe der Liste mit den definierten Kontexten."
 
 #. module: project_gtd
 #: model:ir.model.fields,help:project_gtd.field_project_gtd_timebox_sequence
 msgid "Gives the sequence order when displaying a list of timebox."
-msgstr "Anzeige der Reihenfolge bei Ausgabe und Anzeige der Zeitfenster"
+msgstr "Anzeige der Reihenfolge bei Ausgabe und Anzeige der Zeitfenster."
 
 #. module: project_gtd
 #: model:project.gtd.context,name:project_gtd.context_home
@@ -115,7 +116,7 @@ msgstr "Zu Hause"
 #: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty_id
 #: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_gtd
 #: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context___last_update
@@ -123,7 +124,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty___last_update
 #: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan___last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Zuletzt modifiziert am"
 
 #. module: project_gtd
 #: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context_write_uid
@@ -131,7 +132,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty_write_uid
 #: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Zuletzt aktualisiert durch"
 
 #. module: project_gtd
 #: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context_write_date
@@ -139,18 +140,18 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty_write_date
 #: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Zuletzt aktualisiert am"
 
 #. module: project_gtd
 #: model:project.gtd.timebox,name:project_gtd.timebox_lt
 msgid "Long Term"
-msgstr "Später"
+msgstr "Langfristig"
 
 #. module: project_gtd
 #: model:ir.actions.act_window,name:project_gtd.open_gtd_task
 #: model:ir.ui.menu,name:project_gtd.menu_open_gtd_timebox_tree
 msgid "My Tasks (GTD)"
-msgstr ""
+msgstr "Meine Aufgaben (GTD)"
 
 #. module: project_gtd
 #: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty_name
@@ -161,7 +162,7 @@ msgstr "Bezeichnung"
 #: code:addons/project_gtd/wizard/project_gtd_empty.py:29
 #, python-format
 msgid "No timebox child of this one!"
-msgstr ""
+msgstr "Keine verbundene timebox vorhanden!"
 
 #. module: project_gtd
 #: model:project.gtd.context,name:project_gtd.context_office
@@ -203,7 +204,7 @@ msgstr "Aufgabe"
 #: model:ir.actions.act_window,name:project_gtd.open_gtd_all_tasks
 #: model:ir.ui.menu,name:project_gtd.menu_open_gtd_timebox_all_tree
 msgid "Tasks (GTD)"
-msgstr ""
+msgstr "Aufgaben (GTD)"
 
 #. module: project_gtd
 #: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_task_ids
@@ -235,7 +236,7 @@ msgstr "Zeitfenster"
 #. module: project_gtd
 #: model:ir.ui.view,arch_db:project_gtd.view_project_gtd_empty
 msgid "Timebox Empty Process Completed Successfully."
-msgstr "Bereinigung des Zeitfensters war erfolgreich"
+msgstr "Bereinigung des Zeitfensters war erfolgreich."
 
 #. module: project_gtd
 #: model:ir.actions.act_window,name:project_gtd.open_gtd_timebox_tree
@@ -279,7 +280,7 @@ msgstr "oder"
 #: model:ir.model,name:project_gtd.model_project_gtd_timebox
 #, fuzzy
 msgid "project.gtd.timebox"
-msgstr "Zeitfenster ausfüllen"
+msgstr "project.gtd.timebox"
 
 #~ msgid "Cancel"
 #~ msgstr "Abbrechen"
