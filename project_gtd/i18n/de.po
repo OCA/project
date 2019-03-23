@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-31 18:04+0000\n"
-"PO-Revision-Date: 2019-03-22 15:14+0000\n"
+"PO-Revision-Date: 2019-03-23 08:14+0000\n"
 "Last-Translator: Ben Brich <b.brich@humanilog.org>\n"
 "Language-Team: German (http://www.transifex.com/oca/OCA-project-8-0/language/"
 "de/)\n"
@@ -278,7 +278,6 @@ msgstr "oder"
 
 #. module: project_gtd
 #: model:ir.model,name:project_gtd.model_project_gtd_timebox
-#, fuzzy
 msgid "project.gtd.timebox"
 msgstr "project.gtd.timebox"
 
