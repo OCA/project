@@ -9,15 +9,16 @@ msgstr ""
 "Project-Id-Version: project (9.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-04-21 10:57+0000\n"
-"PO-Revision-Date: 2016-04-21 09:03+0000\n"
-"Last-Translator: Rudolf Schnapka <rs@techno-flex.de>\n"
+"PO-Revision-Date: 2019-03-23 09:14+0000\n"
+"Last-Translator: Ben Brich <b.brich@humanilog.org>\n"
 "Language-Team: German (http://www.transifex.com/oca/OCA-project-9-0/language/"
 "de/)\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.5.1\n"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_analysis
@@ -34,7 +35,7 @@ msgstr "Auswertung"
 #: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_specification
 #: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_testing
 msgid "Blocked"
-msgstr ""
+msgstr "Geblockt"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_cancel
@@ -44,7 +45,7 @@ msgstr "Storniert"
 #. module: project_task_default_stage
 #: model:ir.model.fields,field_description:project_task_default_stage.field_project_task_type__case_default
 msgid "Default for New Projects"
-msgstr "Vorgabe für neue Projekte"
+msgstr "Standard für neue Projekte"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_design
@@ -80,7 +81,7 @@ msgstr ""
 #: model:project.task.type,legend_normal:project_task_default_stage.project_tt_specification
 #: model:project.task.type,legend_normal:project_task_default_stage.project_tt_testing
 msgid "In Progress"
-msgstr ""
+msgstr "In Bearbeitung"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_merge
@@ -107,7 +108,7 @@ msgstr "Projektstufen"
 #: model:project.task.type,legend_done:project_task_default_stage.project_tt_specification
 #: model:project.task.type,legend_done:project_task_default_stage.project_tt_testing
 msgid "Ready for Next Stage"
-msgstr ""
+msgstr "Bereit für die nächste Sufe"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_specification
@@ -121,11 +122,10 @@ msgstr "Aufgabenstufe"
 
 #. module: project_task_default_stage
 #: model:ir.model.fields,field_description:project_task_default_stage.field_project_project__type_ids
-#, fuzzy
 msgid "Tasks Stages"
-msgstr "Aufgabenstufe"
+msgstr "Aufgabenstufen"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_testing
 msgid "Testing"
-msgstr "Prüfung"
+msgstr "Testing"
