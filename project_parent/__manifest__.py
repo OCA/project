@@ -1,14 +1,12 @@
-# -*- coding: utf-8 -*-
-# © 2017 Elico Corp (https://www.elico-corp.com).
-# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
-
+# © 2017-2019 Elico Corp (https://www.elico-corp.com).
+# License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 {
     'name': 'Project Parent',
-    'version': '10.0.1.0.0',
-    'license': 'AGPL-3',
+    'version': '12.0.1.0.0',
+    'license': 'LGPL-3',
     'category': 'project',
     'author': 'Elico Corp, Odoo Community Association (OCA)',
-    'website': 'https://www.elico-corp.com/',
+    'website': 'https://github.com/OCA/project',
     'depends': [
         'project',
     ],
