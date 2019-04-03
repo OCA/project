@@ -1,9 +1,9 @@
-# Copyright 2018 Brainbean Apps (https://brainbeanapps.com)
+# Copyright 2018-2019 Brainbean Apps (https://brainbeanapps.com)
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
 {
     'name': 'Project Roles',
-    'version': '12.0.1.0.0',
+    'version': '12.0.1.0.1',
     'category': 'Project',
     'website': 'https://github.com/OCA/project',
     'author':
