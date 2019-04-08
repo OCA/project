@@ -9,10 +9,10 @@
 .o_project_timeline_hr_timesheet_progress .div {
         height: 100%;
         max-width: 100%;
-        background: @progress-bar-success-bg;
+        background: #progress-bar-success-bg;
 
 .o_project_timeline_hr_timesheet_progress .danger {
-            background: @progress-bar-danger-bg;
+            background: #progress-bar-danger-bg;
         }
     }
 }
