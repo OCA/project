@@ -9,10 +9,10 @@
     > div {
         height: 100%;
         max-width: 100%;
-        background: @progress-bar-success-bg;
+        background: $progress-bar-success-bg;
 
     &.danger {
-            background: @progress-bar-danger-bg;
+            background: $progress-bar-danger-bg;
         }
     }
 }
