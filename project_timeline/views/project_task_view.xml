@@ -44,6 +44,12 @@
         <field name="view_mode">kanban,tree,form,calendar,timeline,pivot,graph</field>
     </record>
 
+    <record id="project_task_action_sub_task" model="ir.actions.act_window">
+        <field name="name">Sub-tasks</field>
+        <field name="res_model">project.task</field>
+        <field name="view_mode">kanban,tree,form,calendar,timeline,pivot,graph,activity</field>
+    </record>
+
     <record id="view_task_form2" model="ir.ui.view">
         <field name="name">project.task.form</field>
         <field name="model">project.task</field>
