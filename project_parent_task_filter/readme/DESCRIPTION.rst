@@ -1,0 +1,1 @@
+This module adds a filter to show only the parent tasks in a project.
