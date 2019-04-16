@@ -25,7 +25,8 @@ Project Parent Task Filter
 
 |badge1| |badge2| |badge3| |badge4| |badge5| 
 
-This module adds a filter to show only the parent tasks in a project.
+This module adds a filter to show only the parent tasks in a project and 
+a group to sort tasks by its parent tasks.
 
 **Table of contents**
 
@@ -69,6 +70,7 @@ Contributors
 * `C2i Change 2 improve <http://c2i.es/>`_:
 
   * Eduardo Magdalena <emagdalena@c2i.es>
+  
 
 Maintainers
 ~~~~~~~~~~~
