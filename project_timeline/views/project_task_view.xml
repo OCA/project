@@ -37,11 +37,15 @@
     </record>
 
     <record id="project.action_view_task" model="ir.actions.act_window">
-        <field name="view_mode">kanban,tree,form,calendar,timeline,pivot,graph</field>
+        <field name="view_mode">kanban,tree,form,calendar,timeline,pivot,graph,activity</field>
     </record>
 
     <record id="project.act_project_project_2_project_task_all" model="ir.actions.act_window">
-        <field name="view_mode">kanban,tree,form,calendar,timeline,pivot,graph</field>
+        <field name="view_mode">kanban,tree,form,calendar,timeline,pivot,graph,activity</field>
+    </record>
+
+    <record id="project.project_task_action_sub_task" model="ir.actions.act_window">
+        <field name="view_mode">kanban,tree,form,calendar,timeline,pivot,graph,activity</field>
     </record>
 
     <record id="view_task_form2" model="ir.ui.view">
