@@ -15,6 +15,11 @@ msgstr ""
 
 #. module: project_parent_task_filter
 #: model_terms:ir.ui.view,arch_db:project_parent_task_filter.view_task_search_form
+msgid "Parent task"
+msgstr ""
+
+#. module: project_parent_task_filter
+#: model_terms:ir.ui.view,arch_db:project_parent_task_filter.view_task_search_form
 msgid "Parent tasks"
 msgstr ""
 
