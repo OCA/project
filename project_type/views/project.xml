@@ -8,7 +8,7 @@
     <field name="field_parent">child_ids</field>
     <field name="arch" type="xml">
       <field name="user_id" position="after">
-        <field name="project_type"
+        <field name="project_type_id"
                widget="selection"/>
       </field>
     </field>
@@ -23,7 +23,7 @@
     <field name="arch" type="xml">
       <data>
         <xpath expr="//field[@name='user_id']" position="after">
-          <field name="project_type"
+          <field name="project_type_id"
                  widget="selection"/>
         </xpath>
       </data>
@@ -39,7 +39,7 @@
     <field name="arch" type="xml">
       <data>
         <xpath expr="//field[@name='user_id']" position="before">
-          <field name="project_type"
+          <field name="project_type_id"
                  widget="selection"/>
         </xpath>
       </data>
@@ -55,7 +55,7 @@
       <filter name="Partner" position="after">
         <filter string="Types"
                 name="Project Types"
-                context="{'group_by': 'project_type'}"/>
+                context="{'group_by': 'project_type_id'}"/>
       </filter>
     </field>
   </record>
