@@ -18,7 +18,6 @@
     'data': [
         'views/project_type.xml',
         'views/project.xml',
-        'security/security.xml',
         'security/ir.model.access.csv',
         'data/data.xml',
     ],
@@ -26,4 +25,6 @@
     'installable': True,
     'auto_install': False,
     'application': False,
+    'development_status': 'Beta',
+    'maintainers': ['patrickrwilson'],
 }
