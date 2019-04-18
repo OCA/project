@@ -1,0 +1,63 @@
+<odoo>
+  <!-- List View-->
+  <record id="project_type_view_inherit_list" model="ir.ui.view">
+    <field name="name">project.type.tree</field>
+    <field name="model">project.project</field>
+    <field name="inherit_id" ref="project.view_project"/>
+    <field name="type">tree</field>
+    <field name="field_parent">child_ids</field>
+    <field name="arch" type="xml">
+      <field name="user_id" position="after">
+        <field name="project_type"
+               widget="selection"/>
+      </field>
+    </field>
+  </record>
+
+  <!-- Form View -->
+  <record id="project_type_view_inherit_form" model="ir.ui.view">
+    <field name="name">project.typesform</field>
+    <field name="model">project.project</field>
+    <field name="inherit_id" ref="project.edit_project"/>
+    <field name="type">form</field>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='user_id']" position="after">
+          <field name="project_type"
+                 widget="selection"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+
+  <!-- Simplified Form View -->
+  <record id="project_type_view_inherit_simple" model="ir.ui.view">
+    <field name="name">project.type.simpleform</field>
+    <field name="model">project.project</field>
+    <field name="inherit_id" ref="project.project_project_view_form_simplified"/>
+    <field name="type">form</field>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//field[@name='user_id']" position="before">
+          <field name="project_type"
+                 widget="selection"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+
+  <!-- Search View -->
+  <record id="project_type_view_inherit_search" model="ir.ui.view">
+    <field name="name">project.type.filter</field>
+    <field name="model">project.project</field>
+    <field name="inherit_id" ref="project.view_project_project_filter"/>
+    <field name="arch" type="xml">
+      <filter name="Partner" position="after">
+        <filter string="Types"
+                name="Project Types"
+                context="{'group_by': 'project_type'}"/>
+      </filter>
+    </field>
+  </record>
+
+</odoo>

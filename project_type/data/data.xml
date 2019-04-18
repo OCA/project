@@ -1,0 +1,10 @@
+<odoo>
+  <data noupdate="1">
+    <!-- PROJECT TYPE -->
+    <record id="project_type_internal" model="project.type">
+      <field name="name">Internal</field>
+      <field name="description">Non-Customer related projects internal to the company.</field>
+      <field name="source_sequence">0</field>
+    </record>
+  </data>
+</odoo>
