@@ -1,0 +1,74 @@
+<odoo>
+  <!-- List View-->
+  <record id="project_task_date_shift_view_inherit_list" model="ir.ui.view">
+    <field name="name">project.task.date shift.tree</field>
+    <field name="model">project.project</field>
+    <field name="inherit_id" ref="project.view_project"/>
+    <field name="type">tree</field>
+    <field name="field_parent">child_ids</field>
+    <field name="arch" type="xml">
+      <field name="partner_id" position="after">
+        <field name="date_start"/>
+        <field name="date"/>
+      </field>
+    </field>
+  </record>
+
+  <!-- Form View -->
+  <record id="project_task_date_shift_view_inherit_form" model="ir.ui.view">
+    <field name="name">project.task.date shift.form</field>
+    <field name="model">project.project</field>
+    <field name="inherit_id" ref="project.edit_project"/>
+    <field name="type">form</field>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//header" position="inside">
+          <button string="Shift Project Task Dates"
+                  type="object"
+                  name="shift_dates"
+                  class="oe_highlight"
+                  attrs="{'invisible': ['|',('old_start_date', '=', False), ('shift_task_dates', '=', False)]}"/>
+        </xpath>
+        <div name="options_active" position="after">
+          <div>
+            <field name="shift_task_dates" class="oe_inline" string="Allow date shifting"/>
+            <label for="shift_task_dates"/>
+          </div>
+        </div>
+        <xpath expr="//field[@name='user_id']" position="after">
+          <field name="date_start"
+                 widget="date"/>
+          <field name="date"
+                 string="End Date"
+                 widget="date"/>
+        </xpath>
+        <xpath expr="//field[@name='sequence']" position="after">
+          <field name="old_start_date"
+                 string="OLD Start Date"
+                 widget="date"/>
+        </xpath>
+      </data>
+    </field>
+  </record>
+
+  <!-- Simplified Form View -->
+  <record id="project_task_date_shift_view_inherit_simple" model="ir.ui.view">
+    <field name="name">project.task.date shift.simpleform</field>
+    <field name="model">project.project</field>
+    <field name="inherit_id" ref="project.project_project_view_form_simplified"/>
+    <field name="type">form</field>
+    <field name="arch" type="xml">
+      <data>
+        <xpath expr="//footer" position="before">
+          <group>
+            <field name="date_start"
+                   widget="date"/>
+            <field name="date"
+                   string="End Date"
+                   widget="date"/>
+          </group>
+        </xpath>
+      </data>
+    </field>
+  </record>
+</odoo>
