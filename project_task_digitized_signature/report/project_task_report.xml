@@ -8,7 +8,7 @@
                     <p>
                         <strong>Customer acceptance:</strong>
                         <span t-if="o.customer_signature">
-                            <img class="image" t-att-src="'data:image/png;base64,%s' % o.customer_signature" style="border:auto;"/>
+                            <img class="image" t-att-src="'data:image/png;base64,%s' % to_text(o.customer_signature)" style="border:auto;"/>
                         </span>
                     </p>
                 </div>
