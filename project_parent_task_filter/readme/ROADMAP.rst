@@ -1,2 +1,3 @@
-* An interesting option could be to show the number of subtasks of each parent
-  task in the kanban view.
+* Rename the module name
+* Activate the configuration option to use subtasks
+* In Products of type Service add an option to create a subtask of an existing task
