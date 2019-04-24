@@ -6,23 +6,23 @@ class Project(models.Model):
     _inherit = 'project.project'
 
     old_start_date = fields.Date(string='Old Start Date',
-                                 help="Used by the Shift Dates function. \
-                                 When the Projects start date changes, the \
-                                 old date is populated in this field then is \
-                                 used when the 'Shift Dates' button is \
-                                 pushed.")
+                                 help="Used by the Shift Dates function. "
+                                 "When the Projects start date changes, the "
+                                 "old date is populated in this field then is "
+                                 "used when the 'Shift Dates' button is "
+                                 "pushed.")
 
     shift_task_dates = fields.Boolean(string="Allow date shifting",
                                       default=True,
-                                      help="If checked, when you change the \
-                                      start date of a project, the dates on \
-                                      the Tasks will shift the number of days \
-                                      you change the start date of the \
-                                      Project. If the Project start dates \
-                                      were originally empty, the Start/End \
-                                      dates on the tasks will be set to the \
-                                      Project Start/End Dates unless they \
-                                      were previously set on the Tasks.")
+                                      help="If checked, when you change the "
+                                      "start date of a project, the dates on "
+                                      "the Tasks will shift the number of "
+                                      "days you change the start date of the "
+                                      "Project. If the Project start dates "
+                                      "were originally empty, the Start/End "
+                                      "dates on the tasks will be set to the "
+                                      "Project Start/End Dates unless they "
+                                      "were previously set on the Tasks.")
 
     # SET OLD DATE VALUE WHEN CHANGED *USED FOR DATE SHIFTING
     @api.onchange('date_start')
