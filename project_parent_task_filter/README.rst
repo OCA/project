@@ -27,6 +27,7 @@ Project Parent Task Filter
 
 This module adds a filter to show only the parent tasks in a project and 
 a group to sort tasks by its parent tasks.
+It also add the subtask number in the kanban view.
 
 **Table of contents**
 
@@ -38,13 +39,14 @@ Usage
 
 To use this module, you need to:
 
-#. Select the filter Parent tasks in a Project
+#. Select the filter or the filter group Parent tasks in a Project
 
 Known issues / Roadmap
 ======================
 
-* An interesting option could be to show the number of subtasks of each parent
-  task in the kanban view.
+* Rename the module name
+* Activate the configuration option to use subtasks
+* In Products of type Service add an option to create a subtask of an existing task
 
 Bug Tracker
 ===========
