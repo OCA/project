@@ -25,8 +25,8 @@ class ProjectTaskPlan(models.Model):
               row_number() OVER () AS id,
               project_id,
               phase_id,
-              MIN(date_start) as start_date,
-              MAX(date_end) as end_date
+              CAST(MIN(date_start) as date) as start_date,
+              CAST(MAX(date_end) as date) as end_date
             FROM
               project_task
             GROUP BY
