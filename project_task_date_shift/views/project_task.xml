@@ -29,7 +29,7 @@
     </field>
   </record>
 
-  <!-- Gantt View -->
+  <!-- Gantt/Timeline View -->
   <record id="project_task_date_shift_view_gantt" model="ir.ui.view">
     <field name="name">project.task.date.shift.gantt</field>
     <field name="model">project.task</field>
