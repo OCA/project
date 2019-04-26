@@ -19,6 +19,7 @@ setuptools.setup(
         'odoo11-addon-project_task_code',
         'odoo11-addon-project_task_default_stage',
         'odoo11-addon-project_task_dependency',
+        'odoo11-addon-project_task_digitized_signature',
         'odoo11-addon-project_task_material',
         'odoo11-addon-project_task_material_stock',
         'odoo11-addon-project_task_pull_request',
