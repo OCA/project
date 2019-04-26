@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="edit_project" model="ir.ui.view">
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project" />
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Members" name="page_members">
+                    <group>
+                        <field name="project_team_id" />
+                    </group>
+                    <field name="user_ids" widget="many2many_kanban">
+                        <kanban quick_create="false" create="true">
+                            <field name="id"/>
+                            <field name="name"/>
+                            <templates>
+                                <t t-name="kanban-box">
+                                    <div t-attf-class="oe_kanban_global_click">
+                                        <a t-if="!read_only_mode" type="delete" class="fa fa-times pull-right text-danger"/>
+                                        <div class="o_kanban_image">
+                                            <img t-att-src="kanban_image('res.users', 'image_medium', record.id.raw_value)"/>
+                                        </div>
+                                        <div class="oe_kanban_details">
+                                            <div class="oe_module_desc o_kanban_record_title">
+                                                <field name="name"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </t>
+                            </templates>
+                        </kanban>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_project_kanban" model="ir.ui.view">
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='color']" position="after">
+                <field name="user_ids_images"/>
+            </xpath>
+            <xpath expr="//div[hasclass('o_primary')]/span[last()]" position="after">
+                <div>
+                    <t t-foreach="JSON.parse(record.user_ids_images.raw_value)" t-as="pair">
+                        <img t-att-src="kanban_image('res.users', 'image', pair[0])"
+                             t-att-title="pair[1]" width="24" height="24" class="oe_kanban_avatar"/>
+                    </t>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

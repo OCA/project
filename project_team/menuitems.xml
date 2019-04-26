@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem
+        id="project_team_menu"
+        action="project_team_action"
+        parent="project.menu_project_config"/>
+
+</odoo>

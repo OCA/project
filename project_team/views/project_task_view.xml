@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_task_form2" model="ir.ui.view">
+        <field name="name">view_task_form2</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="attributes">
+            </xpath>
+
+            <xpath expr="//field[@name='user_id']" position="before">
+                <field name="project_team_id" domain="['|', ('project_id', '=', False), ('project_id', '=', project_id)]"/>
+            </xpath>
+
+            <xpath expr="//page[@name='extra_info']" position="before">
+                <page name="page_team" string="Team" attrs="{'invisible': [('project_team_id', '=', False)]}">
+                    <field name="project_team_user_ids" widget="many2many_kanban" readonly="1">
+                        <kanban>
+                            <field name="id"/>
+                            <field name="name"/>
+                            <templates>
+                                <t t-name="kanban-box">
+                                    <div t-attf-class="oe_kanban_global_click">
+                                        <div class="o_kanban_image">
+                                            <img t-att-src="kanban_image('res.users', 'image_medium', record.id.raw_value)"/>
+                                        </div>
+                                        <div class="oe_kanban_details">
+                                            <div class="oe_module_desc o_kanban_record_title">
+                                                <field name="name"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </t>
+                            </templates>
+                        </kanban>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_task_kanban" model="ir.ui.view">
+        <field name="name">view_task_kanban</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_kanban"/>
+        <field name="arch" type="xml">
+            <xpath expr="//img[hasclass('oe_kanban_avatar')]" position="attributes">
+                <attribute name="t-if">record.user_id.value</attribute>
+            </xpath>
+            <xpath expr="//field[@name='color']" position="after">
+                <field name="project_team_id"/>
+            </xpath>
+            <xpath expr="//img[hasclass('oe_kanban_avatar')]" position="before">
+                <img t-if="!record.user_id.value" t-att-src="kanban_image('project.team', 'image', record.project_team_id.raw_value)"
+                     t-att-title="record.project_team_id.value" width="24" height="24" class="oe_kanban_avatar"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_task_search_form" model="ir.ui.view">
+        <field name="name">view_task_search_form</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_search_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='my_tasks']" position="after">
+                <filter string="My Teams Tasks" name="my_team_tasks"
+                        domain="[('project_team_id.user_ids','in',uid)]"/>
+                <filter string="My Tasks (incl. Teams Tasks) " name="my_and_my_team_tasks"
+                        domain="['|',('project_team_id.user_ids','in',uid),('user_id','=',uid)]"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
