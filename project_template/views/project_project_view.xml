@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2019 Thore Baden
+     Copyright 2019 Benjamin Brich
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). 
+-->
+
+<odoo>
+    <record id="edit_project" model="ir.ui.view">
+        <field name="name">Project description</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']">
+                <button name="toggle_template" type="object" class="oe_stat_button" icon="fa-file-o">
+                    <field name="is_template" widget="boolean_button" options='{"terminology": {
+                        "string_true": "Template",
+                        "string_false": "Project",
+                    }}'/>
+                </button>
+            </xpath>
+            <xpath expr="//div[@class='oe_title']" position="after">
+                <div name="template" attrs="{'invisible': [('is_template','=',True)]}">
+                    <label for="template_id" class="oe_inline" string="Template:" />
+                    <field name="template_id" class="oe_inline oe_input_align" domain="[('is_template','=',True)]" />
+                </div>
+            </xpath>
+        </field>
+    </record>
+    
+    <record id="project_project_view_form_simplified" model="ir.ui.view">
+        <field name="name">project.project.inherit.view.form</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.project_project_view_form_simplified" />
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="template_id" domain="[('is_template','=',True)]" />
+            </field>
+        </field>
+    </record>
+
+    <record id="view_project" model="ir.ui.view">
+        <field name="name">project.project.inherit.view.tree</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project" />
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="template_id" domain="[('is_template','=',True)]" />
+            </field>
+        </field>
+    </record>
+
+    <record id="view_project_project_filter" model="ir.ui.view">
+        <field name="name">project.project.inherit.view.search</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project_project_filter" />
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='inactive']" position="before">
+                <filter string="Project" name="project" domain="[('is_template','=',False)]" />
+                <filter string="Template" name="template" domain="[('is_template','=',True)]" />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="project.open_view_project_all" model="ir.actions.act_window">
+            <field name="name">Projects</field>
+            <field name="res_model">project.project</field>
+            <field name="view_type">form</field>
+            <field name="domain">[('is_template','=',False)]</field>
+            <field name="view_mode">kanban,form</field>
+            <field name="search_view_id" ref="view_project_project_filter"/>
+            <field name="target">main</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Click to create a new project.<br/>
+                    <i>Or <a type="action" name="%(project.activate_sample_project)d">activate a sample project</a> to play with.</i>
+                </p>
+            </field>
+        </record>
+</odoo>
