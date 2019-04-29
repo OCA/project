@@ -36,14 +36,15 @@ class ProjectTask(models.Model):
         compute='_compute_dependency'
     )
 
-    @api.one
+    @api.multi
     @api.depends('dependency_task_ids')
     def _compute_dependency(self):
-        self.recursive_dependency_task_ids = self.get_dependency_tasks(self,
-                                                                       True)
-        self.depending_task_ids = self.get_depending_tasks(self)
-        self.recursive_depending_task_ids = self.get_depending_tasks(self,
-                                                                     True)
+        for this in self:
+            this.recursive_dependency_task_ids = \
+                this.get_dependency_tasks(this, True)
+            this.depending_task_ids = this.get_depending_tasks(this)
+            this.recursive_depending_task_ids = \
+                this.get_depending_tasks(this, True)
 
     @api.model
     def get_dependency_tasks(self, task, recursive=False):
