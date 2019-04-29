@@ -12,7 +12,7 @@ class ProjectTask(models.Model):
 
     @api.multi
     @api.depends('model_reference')
-    def _get_origin(self):
+    def _compute_task_origin(self):
         for rec in self:
             if rec.model_reference and rec.model_reference._rec_name:
                 rec.task_origin = rec.model_reference.display_name or False
@@ -32,7 +32,7 @@ class ProjectTask(models.Model):
         help="Action called to go to the original window.")
     model_reference = fields.Reference(
         selection='_authorised_models')
-    task_origin = fields.Char(compute='_get_origin')
+    task_origin = fields.Char(compute='_compute_task_origin')
 
     @api.model
     def default_get(self, fields):

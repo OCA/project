@@ -7,6 +7,7 @@
     'version': '10.0.0.1.0',
     'category': 'project',
     'author': 'Akretion, Odoo Community Association (OCA)',
+    'license': 'AGPL-3',
     'depends': [
         'project',
     ],
