@@ -23,13 +23,13 @@ def assign_old_sequences(cr, pool):
     This post-init-hook will update all existing issue assigning them the
     corresponding sequence code.
     """
-    env = Environment(cr, SUPERUSER_ID, {})
+    env = Environment(cr, SUPERUSER_ID, dict())
     issue_obj = env['project.issue']
     sequence_obj = env['ir.sequence']
-    issue_ids = issue_obj.search([], order="id")
-    for issue_id in issue_ids:
+    issues = issue_obj.search([], order="id")
+    for issue_id in issues.ids:
         issue_code = sequence_obj.next_by_code('project.issue')
         cr.execute('UPDATE project_issue '
-                   'SET issue_code = \'%s\' '
-                   'WHERE id = %d;' %
-                   (issue_code, issue_id))
+                   'SET issue_code = %s '
+                   'WHERE id = %s;',
+                   (issue_code, issue_id, ))
