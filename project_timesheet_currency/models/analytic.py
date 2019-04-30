@@ -22,12 +22,15 @@ class AccountAnalyticLine(models.Model):
                 date=values['date']).compute(res['amount'], base_currency)
         return res
 
-    amount_currency = fields.Float(compute="_get_amount_currency", store=True)
+    amount_currency = fields.Float(
+        compute="_compute_amount_currency",
+        store=True
+    )
     timesheet_currency_id = fields.Many2one(comodel_name='res.currency',
                                             string='TS original currency')
 
     @api.depends('move_id', 'amount')
-    def _get_amount_currency(self):
+    def _compute_amount_currency(self):
         for aal in self:
             if aal.move_id:
                 aal.amount_currency = aal.move_id.amount_currency
