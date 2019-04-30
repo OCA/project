@@ -94,6 +94,11 @@ Contributors
   * Sergio Teruel <sergio.teruel@tecnativa.com>
   * Vicent Cubells <vicent.cubells@tecnativa.com>
 
+* `Praxya <http://www.praxya.com>`_:
+
+  * Juan Carlos Montoya <jcmontoya@praxya.es>
+
+
 Maintainers
 ~~~~~~~~~~~
 
