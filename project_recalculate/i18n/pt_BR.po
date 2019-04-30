@@ -97,7 +97,7 @@ msgid "Display Name"
 msgstr "Nome para Mostrar"
 
 #. module: project_recalculate
-#: code:addons/project_recalculate/models/project_task.py:182
+#: code:addons/project_recalculate/models/project_task.py:185
 #, python-format
 msgid "End Date field must be defined."
 msgstr "Data final deve ser definido"
@@ -201,7 +201,7 @@ msgid "Resource Calendar"
 msgstr "Calendário de recursos"
 
 #. module: project_recalculate
-#: code:addons/project_recalculate/models/project_task.py:177
+#: code:addons/project_recalculate/models/project_task.py:178
 #, python-format
 msgid "Start Date field must be defined."
 msgstr "Data de inicio deve ser definida"
