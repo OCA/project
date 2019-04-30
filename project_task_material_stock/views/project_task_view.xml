@@ -18,7 +18,8 @@
         <field name="inherit_id" ref="project_task_material.view_project_task_form_material"/>
         <field name="arch" type="xml">
             <field name="project_id" position="after">
-                <field name="analytic_account_id" groups="analytic.group_analytic_accounting" attrs="{'required': [('project_id', '=', False)]}"/>
+                <field name="analytic_account_id" groups="analytic.group_analytic_accounting"
+                       attrs="{'required': [('project_id', '=', False)]}"/>
             </field>
             <field name="stage_id" position="before">
                 <button name="action_assign" type="object"
@@ -39,7 +40,7 @@
                 <group string="Materials consumed" name="materials_consumed" groups="project.group_project_user">
                     <notebook>
                         <page string="Products" name="products">
-                            <field name="material_ids" attrs="{'readonly':[('stock_state','!=', 'pending')]}">
+                            <field name="material_ids">
                                 <tree string="Materials used" editable="top">
                                     <field name="product_id" domain="[('type', 'in', ['consu', 'product'])]"/>
                                     <field name="quantity"/>
@@ -48,7 +49,17 @@
                             </field>
                         </page>
                         <page string="Stock Moves" name="stock_moves">
-                            <field name="stock_move_ids"/>
+                            <field name="stock_move_ids">
+                                <tree string="Stock Moves">
+                                    <field name="picking_id"/>
+                                    <field name="date_expected"/>
+                                    <field name="date"/>
+                                    <field name="origin"/>
+                                    <field name="product_id"/>
+                                    <field name="product_uom_qty"/>
+                                    <field name="state"/>
+                                </tree>
+                            </field>
                         </page>
                     </notebook>
                 </group>
