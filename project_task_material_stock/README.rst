@@ -97,8 +97,6 @@ Contributors
 * `Praxya <http://www.praxya.com>`_:
 
   * Juan Carlos Montoya <jcmontoya@praxya.es>
-  * Miquel March <mmarch@praxya.es>
-  * Sergio Diaz <sdiaz@praxya.es>
 
 
 Maintainers
