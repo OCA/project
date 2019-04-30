@@ -104,7 +104,7 @@ msgid "Display Name"
 msgstr "Prikazni naziv"
 
 #. module: project_recalculate
-#: code:addons/project_recalculate/models/project_task.py:182
+#: code:addons/project_recalculate/models/project_task.py:185
 #, python-format
 msgid "End Date field must be defined."
 msgstr "Končni datum mora biti določen."
@@ -209,7 +209,7 @@ msgid "Resource Calendar"
 msgstr "Koledar virov"
 
 #. module: project_recalculate
-#: code:addons/project_recalculate/models/project_task.py:177
+#: code:addons/project_recalculate/models/project_task.py:178
 #, python-format
 msgid "Start Date field must be defined."
 msgstr "Začetni datum mora biti določen."

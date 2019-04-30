@@ -5,8 +5,8 @@
 # Copyright 2017 Pedro M. Baeza <pedro.baeza@tecnativa.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
+from odoo import exceptions
 from odoo import models, fields, api, _
-from odoo.exceptions import Warning, ValidationError
 from datetime import datetime
 
 
@@ -27,7 +27,7 @@ class ProjectTask(models.Model):
     def _estimated_days_check(self):
         for task in self:
             if task.estimated_days <= 0:
-                raise ValidationError(
+                raise exceptions.ValidationError(
                     _('Estimated days must be greater than 0.')
                 )
 
@@ -174,12 +174,16 @@ class ProjectTask(models.Model):
         increment = self.project_id.calculation_type == 'date_begin'
         if increment:
             if not self.project_id.date_start:
-                raise Warning(_('Start Date field must be defined.'))
+                raise exceptions.UserError(
+                    _('Start Date field must be defined.')
+                )
             project_date = from_string(self.project_id.date_start)
             days = self.from_days
         else:
             if not self.project_id.date:
-                raise Warning(_('End Date field must be defined.'))
+                raise exceptions.UserError(
+                    _('End Date field must be defined.')
+                )
             project_date = from_string(self.project_id.date)
             days = self.from_days * (-1)
         return increment, project_date, days
@@ -251,8 +255,10 @@ class ProjectTask(models.Model):
             })
         return True
 
-    @api.one
+    @api.multi
     def write(self, vals):
-        vals = self._dates_onchange(vals)
-        vals = self._estimated_days_prepare(vals)
-        return super(ProjectTask, self).write(vals)
+        for this in self:
+            vals = this._dates_onchange(vals)
+            vals = this._estimated_days_prepare(vals)
+            super(ProjectTask, this).write(vals)
+        return True

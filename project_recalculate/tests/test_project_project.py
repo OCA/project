@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # See README.rst file on addon root folder for license details
 
-from odoo.exceptions import Warning
+from odoo import exceptions
 from odoo.fields import DATE_LENGTH
 from . import base
 
@@ -165,7 +165,7 @@ class TestProjectProjectBegin(base.BaseCase):
             ('pj_6', 'date_end', False, False),
             ('pj_7', 'date_end', '2015-08-01', False),
         )
-        with self.assertRaises(Warning):
+        with self.assertRaises(exceptions.UserError):
             for num_tasks in [0, 1, 5]:
                 for name, calculation_type, start, end in cases:
                     project = self.project_create(num_tasks, {

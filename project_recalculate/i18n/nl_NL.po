@@ -98,7 +98,7 @@ msgid "Display Name"
 msgstr "Weergavenaam"
 
 #. module: project_recalculate
-#: code:addons/project_recalculate/models/project_task.py:182
+#: code:addons/project_recalculate/models/project_task.py:185
 #, python-format
 msgid "End Date field must be defined."
 msgstr "Einddatum moet zijn gedefinieerd."
@@ -203,7 +203,7 @@ msgid "Resource Calendar"
 msgstr "Hulpbronkalender"
 
 #. module: project_recalculate
-#: code:addons/project_recalculate/models/project_task.py:177
+#: code:addons/project_recalculate/models/project_task.py:178
 #, python-format
 msgid "Start Date field must be defined."
 msgstr "Startdatum moet zijn gedefinieerd."

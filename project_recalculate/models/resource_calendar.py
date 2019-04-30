@@ -32,6 +32,6 @@ class ResourceCalendar(models.Model):
                 )
                 if working_intervals:
                     days += 1
-            next = current + timedelta(days=1)
-            current = next
+            next_dt = current + timedelta(days=1)
+            current = next_dt
         return days
