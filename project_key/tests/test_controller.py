@@ -3,7 +3,7 @@
 
 from mock import patch
 from odoo import http
-from odoo.addons.project_key.controllers.main import ProjectBrowser
+from ..controllers.main import ProjectBrowser
 from .test_common import HttpTestCommon
 
 
