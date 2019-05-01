@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+  <record id="hr_employee_seniority_level" model="ir.ui.view">
+    <field name="name">hr.employee.form.seniority.level</field>
+    <field name="model">hr.employee</field>
+    <field name="inherit_id" ref="hr.view_employee_form"/>
+    <field name="arch" type="xml">
+      <field name="tz" position="after">
+        <field name="seniority_level_id"/>
+      </field>
+    </field>
+  </record>
+
+  <record id="product_template_seniority_level" model="ir.ui.view">
+    <field name="name">product.template.seniority.level</field>
+    <field name="model">product.template</field>
+    <field name="inherit_id" ref="product.product_template_form_view"/>
+    <field name="arch" type="xml">
+      <xpath expr="//field[@name='service_policy']" position="after">
+          <field name="seniority_level_id" attrs="{'required': [('service_policy', '=', 'delivered_timesheet')], 'invisible': ['|', ('type', '!=', 'service'), ('service_policy', '!=', 'delivered_timesheet')]}"/>
+      </xpath>
+    </field>
+  </record>
+
+  <record id="hr_employee_seniority_level_tree_view" model="ir.ui.view">
+    <field name="name">hr.employee.seniority.level.tree</field>
+    <field name="model">hr.employee.seniority.level</field>
+    <field name="arch" type="xml">
+      <tree editable="bottom">
+        <field name="sequence"/>
+        <field name="code"/>
+        <field name="name"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="hr_employee_seniority_level_act_window" model="ir.actions.act_window">
+    <field name="name">Seniority Level</field> 
+    <field name="res_model">hr.employee.seniority.level</field>
+    <field name="view_mode">tree,form</field>
+    <field name="domain">[]</field>
+    <field name="context">{}</field>
+  </record>
+
+  <record id="hr_employee_seniority_level_menu" model="ir.ui.menu">
+    <field name="name">Seniority Level</field>
+    <field name="parent_id" ref="hr.menu_human_resources_configuration"/> 
+    <field name="action" ref="hr_employee_seniority_level_act_window"/>
+    <field name="sequence" eval="16"/>
+  </record>
+
+</odoo>
