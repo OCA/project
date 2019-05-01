@@ -16,6 +16,7 @@ setuptools.setup(
         'odoo12-addon-project_stage_closed',
         'odoo12-addon-project_stage_state',
         'odoo12-addon-project_status',
+        'odoo12-addon-project_tag',
         'odoo12-addon-project_task_add_very_high',
         'odoo12-addon-project_task_code',
         'odoo12-addon-project_task_default_stage',
