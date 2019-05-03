@@ -18,16 +18,12 @@ addons:
 
 env:
   global:
-  - VERSION="12.0" TESTS="0" LINT_CHECK="0" TRANSIFEX="0"
-  - TRANSIFEX_USER='transbot@odoo-community.org'
-  - secure: "OCZHnpmr+dvwVzAHmfeOUa2/VuvepsdguW129zR7jEO5HJupI8imqq3D8JKStUVnAgpA+Igpni+mfFsmhvr7K6pdk9w15zWlO+ml/7EwRflnyWAdtLNv44PTfaOcuCkzf73HPKRiW+LLUOeDqSqF1BLdb7mgSpLFWMuO7pJK0aI="
+  - VERSION="12.0" TESTS="0" LINT_CHECK="0" MAKEPOT="0"
   - WKHTMLTOPDF_VERSION="0.12.4"
   matrix:
   - LINT_CHECK="1"
   - TESTS="1" ODOO_REPO="OCA/OCB"
-  - TESTS="1" ODOO_REPO="odoo/odoo"
-  - TRANSIFEX="1"
-
+  - TESTS="1" ODOO_REPO="odoo/odoo" MAKEPOT="1"
 
 before_install:
   - "export DISPLAY=:912.0"
