@@ -6,6 +6,9 @@
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.view_project_kanban"/>
         <field name="arch" type="xml">
+            <xpath expr="//templates" position="before">
+                <field name="project_child_complete_ids"/>
+            </xpath>
             <xpath expr="//div[hasclass('o_primary')]" position="inside">
                 <a type="object" name="action_open_view_project_form">
                 <div class="oe_wbs_subtitle">
@@ -34,12 +37,13 @@
                     <a name="action_open_child_kanban_view"
                        type="object">
                         <!--GO DOWN-->
-                        <div class="oe_wbs_navigation parentheading oe_kanban_action_a">
-                            WBS Elements: <field name="project_child_complete_ids"/>
-                        </div>
-                        <t t-foreach="record.project_child_complete_ids.raw_value" t-as='child'>
-                            <t t-esc="child.name"/>
-                        </t>
+                            <div class="oe_wbs_navigation parentheading oe_kanban_action_a">
+                                    WBS Elements:
+                                    <field name="project_child_complete_ids"/>
+                            </div>
+                            <t t-foreach="record.project_child_complete_ids.raw_value" t-as='child'>
+                                <t t-esc="child.name"/>
+                            </t>
                     </a>
                 </div>
             </xpath>
@@ -205,7 +209,7 @@
     </record>
     <!--OPEN KANBAN ACTION BUTTON-->
     <record id="open_view_wbs_kanban" model="ir.actions.act_window">
-        <field name="name">WBS kanban</field>
+        <field name="name">WBS elements</field>
         <field name="res_model">project.project</field>
         <field name="view_type">form</field>
         <field name="view_mode">kanban,tree,form</field>

@@ -4,6 +4,7 @@
 # Copyright 2017 Deneroteam.
 # Copyright 2017 Serpent Consulting Services Pvt. Ltd.
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
+
 from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
 
@@ -59,9 +60,10 @@ class AccountAnalyticAccount(models.Model):
                 acc = acc.parent_id
             if data:
                 if len(data) >= 2:
-                    data = '/'.join(data)
+                    data = ' / '.join(data)
                 else:
                     data = data[0]
+                data = '[' + data + ']'
             account.complete_wbs_code = data or ''
 
     @api.multi
@@ -166,8 +168,8 @@ class AccountAnalyticAccount(models.Model):
     @api.multi
     def copy(self, default=None):
         if self.mapped('project_ids'):
-            raise ValidationError(_(' Duplicate the project instead of the '
-                                    ' Analytic Account '))
+            raise ValidationError(_('Duplicate the project instead of the '
+                                    'Analytic Account'))
         default = {}
         default['code'] = self.env['ir.sequence'].next_by_code(
             'account.analytic.account.code')
