@@ -52,13 +52,13 @@ class TestProjectWbs(common.TransactionCase):
 
     def test_wbs_code(self):
         self.assertEqual(
-            self.project.complete_wbs_code, '0001',
+            self.project.complete_wbs_code, '[0001]',
             'Incorrect WBS code')
         self.assertEqual(
-            self.project_son.complete_wbs_code, '0001/01',
+            self.project_son.complete_wbs_code, '[0001 / 01]',
             'Incorrect WBS code')
         self.assertEqual(
-            self.project_grand_son.complete_wbs_code, '0001/01/02',
+            self.project_grand_son.complete_wbs_code, '[0001 / 01 / 02]',
             'Incorrect WBS code')
 
     def test_get_child_accounts(self):
