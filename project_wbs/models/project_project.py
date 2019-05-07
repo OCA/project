@@ -114,7 +114,7 @@ class Project(models.Model):
         account.analytic.account
         """
         context = self.env.context or {}
-        # if type(context.get('default_parent_id')) == int:
+
         if isinstance(context.get('default_parent_id'), int):
             return context['default_parent_id']
         return None
@@ -259,7 +259,6 @@ class Project(models.Model):
 
     @api.multi
     def action_open_view_project_form(self):
-        self.with_context(view_buttons=True)
         view = {
             'name': _('Details'),
             'view_type': 'form',
