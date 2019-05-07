@@ -26,7 +26,6 @@ def pre_init_hook(cr):
             RETURNING account_analytic_account.id
             """,
             (tuple(pp,))
-            # % pp[0]
         )
         aa2 = cr.fetchone()
         cr.execute(
@@ -34,4 +33,3 @@ def pre_init_hook(cr):
             UPDATE project_project set analytic_account_id=%s WHERE id=%s
             """,
             (tuple(aa2,), tuple(pp,)))
-        # % (aa2[0], pp[0]))
