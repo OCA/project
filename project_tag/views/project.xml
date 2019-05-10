@@ -59,7 +59,7 @@
     </field>
   </record>
 
-<!-- Search view -->
+ <!-- Search view -->
   <record id="project_tags_view_inherit_search" model="ir.ui.view">
     <field name="name">project.tags.search</field>
     <field name="model">project.project</field>
