@@ -9,14 +9,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-05-30 09:43+0000\n"
-"PO-Revision-Date: 2017-05-30 09:43+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"PO-Revision-Date: 2019-05-10 15:03+0000\n"
+"Last-Translator: Ben Brich <b.brich@humanilog.org>\n"
 "Language-Team: German (https://www.transifex.com/oca/teams/23907/de/)\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.5.1\n"
 
 #. module: project_timesheet_currency
 #: model:ir.model,name:project_timesheet_currency.model_account_analytic_line
@@ -26,4 +27,4 @@ msgstr "Kostenposition"
 #. module: project_timesheet_currency
 #: model:ir.model.fields,field_description:project_timesheet_currency.field_account_analytic_line_timesheet_currency_id
 msgid "TS original currency"
-msgstr ""
+msgstr "TS Original Währung"
