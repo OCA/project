@@ -67,4 +67,4 @@ class TestProjectTemplate(common.TransactionCase):
         task_milestone_2_ids = self.env['project.task'].search([(
             'milestone_id.name', '=', 'Test_Milestone_2'),
             ('project_id', '=', new_project.id)])
-        self.assertEqual(len(task_milestone_1_ids), 1)
+        self.assertEqual(len(task_milestone_2_ids), 1)
