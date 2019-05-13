@@ -40,7 +40,7 @@ class AccountAnalyticLine(models.Model):
                 if not sol:
                     # No product on the sale order  with the same seniority
                     # level than the employee.
-                    any_product = self.env['product.template'].search(
+                    any_product = self.env['product.product'].search(
                         [
                             (
                                 'seniority_level_id',
@@ -55,23 +55,11 @@ class AccountAnalyticLine(models.Model):
                             _('No product exists with this seniority level.')
                         )
                     # Adding any product with the same seniority level
-                    so.write(
-                        {
-                            'order_line': [
-                                (
-                                    0,
-                                    False,
-                                    {
-                                        'product_id': any_product.id,
-                                        'product_uom_qty': 0,
-                                    },
-                                )
-                            ]
-                        }
-                    )
-                    so_line = so.order_line.filtered(
-                        lambda r: r.product_id.id == any_product.id
-                    )
+                    so_line = so.order_line.create({
+                        'order_id': so.id,
+                        'product_id': any_product.id,
+                        'product_uom_qty': 0,
+                    })
                     # Alert Salesman
                     self.env['mail.activity'].create({
                         'res_id': so.id,

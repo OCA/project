@@ -4,7 +4,7 @@
 {
     'name': 'Employee Seniority Level',
     'summary': """
-        Automatically mapped employee and sale orde line when timesheeting.""",
+        Automatically map employee and sale order line when timesheeting.""",
     'version': '12.0.1.0.0',
     'category': 'Project',
     'license': 'AGPL-3',
