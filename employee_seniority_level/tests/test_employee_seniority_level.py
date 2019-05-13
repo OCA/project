@@ -14,14 +14,18 @@ class TestEmployeeSeniorityLevel(SavepointCase):
         cls.env = cls.env(
             context=dict(cls.env.context, tracking_disable=True)
         )
+        cls.levelany = cls.env['hr.employee.seniority.level'].create(
+            {'sequence': 1, 'code': 'ANY', 'name': 'Any level'}
+        )
         cls.levelpro = cls.env['hr.employee.seniority.level'].create(
-            {'sequence': 1, 'code': 'PRO', 'name': 'Professional'}
+            {'sequence': 2, 'code': 'PRO', 'name': 'Professional'}
         )
         cls.employee = cls.env['hr.employee'].create(
             {'name': 'John Doe', 'seniority_level_id': cls.levelpro.id}
         )
         cls.customer = cls.env['res.partner'].create({'name': 'Customer'})
         cls.product1 = cls.env.ref('product.product_product_1')
+        cls.product1.seniority_level_id = cls.levelany
         cls.product2 = cls.env.ref('product.product_product_2')
         cls.so = cls.env['sale.order'].create(
             {'name': 'sale linked to project', 'partner_id': cls.customer.id}
@@ -132,6 +136,21 @@ class TestEmployeeSeniorityLevel(SavepointCase):
         self.aal_model.create(
             {
                 'project_id': self.project.id,
+                'name': 'ts',
+            }
+        )
+
+    def test_for_project_with_sale_order_with_no_seniority_level(self):
+        """Check project whose sale order has no seniority level.
+
+        Timesheet should be allowed with no restriction
+        """
+        self.product1.seniority_level_id = None
+        self.employee.seniority_level_id = None
+        self.aal_model.create(
+            {
+                'project_id': self.project.id,
+                'employee_id': self.employee.id,
                 'name': 'ts',
             }
         )
