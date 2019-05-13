@@ -1,7 +1,7 @@
 # Copyright 2019 Camptocamp SA
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html)
 
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class ProductTemplate(models.Model):
@@ -13,3 +13,8 @@ class ProductTemplate(models.Model):
         comodel_name='hr.employee.seniority.level',
         ondelete='restrict'
     )
+
+    @api.onchange('type', 'service_policy')
+    def onchange_type_service_policy(self):
+        if self.type != 'service' or self.service_policy != 'delivered_timesheet':
+            self.seniority_level_id = None
