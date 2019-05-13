@@ -11,10 +11,13 @@ class ProductTemplate(models.Model):
     seniority_level_id = fields.Many2one(
         name='Seniority level',
         comodel_name='hr.employee.seniority.level',
-        ondelete='restrict'
+        ondelete='restrict',
     )
 
     @api.onchange('type', 'service_policy')
     def onchange_type_service_policy(self):
-        if self.type != 'service' or self.service_policy != 'delivered_timesheet':
+        if (
+            self.type != 'service'
+            or self.service_policy != 'delivered_timesheet'
+        ):
             self.seniority_level_id = None
