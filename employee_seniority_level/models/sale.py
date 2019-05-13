@@ -17,7 +17,7 @@ class SaleOrder(models.Model):
         )
         if not any_product:
             raise UserError(_('No product exists with this seniority level.'))
-        so_line = self.order_line.create({
+        so_line = self.sudo().order_line.create({
             'order_id': self.id,
             'product_id': any_product.id,
             'product_uom_qty': 0,
@@ -37,6 +37,6 @@ class SaleOrderLine(models.Model):
                 'sale.model_sale_order').id,
             'activity_type_id': 4,
             'user_id': self.order_id.user_id.id,
-            'summary': _('Please check the product {} for {}'.format(
-                self.product_id.name, employee.name)),
+            'summary': _('Please check the product {} for {}.').format(
+                self.product_id.name, employee.name),
         })
