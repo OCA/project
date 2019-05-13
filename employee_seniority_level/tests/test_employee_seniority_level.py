@@ -5,33 +5,34 @@ from odoo.exceptions import UserError
 from odoo.tests.common import SavepointCase
 
 
-class TestEmployeeSecurityLevel(SavepointCase):
+class TestEmployeeSeniorityLevel(SavepointCase):
     """  """
 
-    def setUp(self):
-        super().setUp()
-        self.env = self.env(
-            context=dict(self.env.context, tracking_disable=True)
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.env = cls.env(
+            context=dict(cls.env.context, tracking_disable=True)
         )
-        self.levelpro = self.env['hr.employee.seniority.level'].create(
+        cls.levelpro = cls.env['hr.employee.seniority.level'].create(
             {'sequence': 1, 'code': 'PRO', 'name': 'Professional'}
         )
-        self.employee = self.env['hr.employee'].create(
-            {'name': 'John Doe', 'seniority_level_id': self.levelpro.id}
+        cls.employee = cls.env['hr.employee'].create(
+            {'name': 'John Doe', 'seniority_level_id': cls.levelpro.id}
         )
-        self.customer = self.env['res.partner'].create({'name': 'Customer'})
-        self.product1 = self.env.ref('product.product_product_1')
-        self.product2 = self.env.ref('product.product_product_2')
-        self.so = self.env['sale.order'].create(
-            {'name': 'sale linked to project', 'partner_id': self.customer.id}
+        cls.customer = cls.env['res.partner'].create({'name': 'Customer'})
+        cls.product1 = cls.env.ref('product.product_product_1')
+        cls.product2 = cls.env.ref('product.product_product_2')
+        cls.so = cls.env['sale.order'].create(
+            {'name': 'sale linked to project', 'partner_id': cls.customer.id}
         )
-        self.so.order_line = [
-            (0, False, {'product_id': self.product1.id, 'product_uom_qty': 3})
+        cls.so.order_line = [
+            (0, False, {'product_id': cls.product1.id, 'product_uom_qty': 3})
         ]
-        self.project = self.env['project.project'].create(
-            {'name': 'Test Project', 'sale_order_id': self.so.id}
+        cls.project = cls.env['project.project'].create(
+            {'name': 'Test Project', 'sale_order_id': cls.so.id}
         )
-        self.aal_model = self.env['account.analytic.line']
+        cls.aal_model = cls.env['account.analytic.line']
 
     def test_employee_no_seniority_level_can_not_timesheet_on_project(self):
         """Check employee with no seniority level.
