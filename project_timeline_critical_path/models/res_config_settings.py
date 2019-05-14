@@ -8,5 +8,6 @@ class ResConfigSettings(models.TransientModel):
     _inherit = 'res.config.settings'
 
     critical_path_duration_base = fields.Selection(
-        related='company_id.critical_path_duration_base'
+        related='company_id.critical_path_duration_base',
+        readonly=False
     )
