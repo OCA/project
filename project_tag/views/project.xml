@@ -58,4 +58,18 @@
         </xpath>
     </field>
   </record>
+
+ <!-- Search view -->
+  <record id="view_project_project_filter" model="ir.ui.view">
+    <field name="name">project.tags.search</field>
+    <field name="model">project.project</field>
+    <field name="inherit_id" ref="project.view_project_project_filter"/>
+    <field name="arch" type="xml">
+        <xpath expr="//field[@name='partner_id']" position="after">
+          <field name="tag_ids"/>
+        </xpath>
+    </field>
+  </record>     
+     
 </odoo>
+
