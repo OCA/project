@@ -1,6 +1,6 @@
-# -*- coding: utf-8 -*-
 # See README.rst file on addon root folder for license details
 
+from datetime import date, datetime, time
 from odoo.exceptions import ValidationError
 from . import base
 
@@ -41,32 +41,34 @@ class TestProjectTaskBegin(base.BaseCase):
         self.task_days_res['date_end']['pj_1'][3] = end_special_case
         self.task_days_res['date_end']['pj_2'][3] = end_special_case
 
-    def test_dates_onchange_when_recalculate(self):
+    def test_update_recalculated_dates_when_recalculate(self):
         """
-        @summary: Check _dates_onchange when recalculate
+        @summary: Check _update_recalculated_dates when recalculate
         """
         project = self.project_create(self.num_tasks, {
             'calculation_type': self.calculation_type,
             'name': 'Test project',
-            'date_start': '2015-08-01',
-            'date': '2015-08-31',
+            'date_start': date(2015, 8, 1),
+            'date': date(2015, 8, 31),
+            'resource_calendar_id': False,
         })
         task = project.tasks[0]
         vals = {
-            'date_start': '2015-08-03 08:00:00',
-            'date_end': '2015-08-14 18:00:00',
+            'date_start': datetime(2015, 8, 3, 8),
+            'date_end': datetime(2015, 8, 14, 18),
         }
-        # Execute _dates_onchange with context: task_recalculate=True
+        # Execute _update_recalculated_dates
+        # with context: task_recalculate=True
         task_ctx = task.with_context(task.env.context, task_recalculate=True)
-        vals = task_ctx._dates_onchange(vals)
+        vals = task_ctx._update_recalculated_dates(vals)
         self.assertTrue('from_days' not in vals,
                         "FAIL: from_days assigned")
         self.assertTrue('estimated_days' not in vals,
                         "FAIL: estimated_days assigned")
 
-    def test_dates_onchange(self):
+    def test_update_recalculate_dates(self):
         """
-        @summary: Check _dates_onchange
+        @summary: Check _update_recalculate_dates
         """
         project_counter = 0
         for name, start, end in self.project_init_dates:
@@ -76,6 +78,7 @@ class TestProjectTaskBegin(base.BaseCase):
                 'name': name,
                 'date_start': start,
                 'date': end,
+                'resource_calendar_id': False,
             })
 
             task_counter = 0
@@ -83,10 +86,10 @@ class TestProjectTaskBegin(base.BaseCase):
                 dates = self.task_dates[self.calculation_type][name][i]
                 task = project.tasks.filtered(lambda r: r.name == dates[0])
                 vals = {
-                    'date_start': '%s 08:00:00' % dates[1],
-                    'date_end': '%s 18:00:00' % dates[2],
+                    'date_start': datetime.combine(dates[1], time(8)),
+                    'date_end': datetime.combine(dates[2], time(18)),
                 }
-                vals = task._dates_onchange(vals)
+                vals = task._update_recalculated_dates(vals)
                 # Check test case
                 days = self.task_days_res[self.calculation_type][name][i]
                 self.assertEqual(
@@ -121,6 +124,7 @@ class TestProjectTaskBegin(base.BaseCase):
         project = self.project_create(0, {
             'calculation_type': self.calculation_type,
             'name': 'test',
+            'resource_calendar_id': False,
         })
         # ValidationError cases
         with self.assertRaises(ValidationError):

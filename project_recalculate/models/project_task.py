@@ -1,9 +1,10 @@
-# -*- coding: utf-8 -*-
 # Copyright 2015 Antonio Espinosa
 # Copyright 2015 Endika Iglesias
 # Copyright 2015 Javier Espìnosa
 # Copyright 2017 Pedro M. Baeza <pedro.baeza@tecnativa.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+
+from pytz import timezone, utc
 
 from odoo import exceptions
 from odoo import models, fields, api, _
@@ -31,7 +32,8 @@ class ProjectTask(models.Model):
                     _('Estimated days must be greater than 0.')
                 )
 
-    def _dates_onchange(self, vals):
+    @api.multi
+    def _update_recalculated_dates(self, vals):
         """
             Try to calculate estimated_days and from_days fields
             when date_start or date_end change.
@@ -48,23 +50,20 @@ class ProjectTask(models.Model):
         # If we are changing dates because of task recalculating, do nothing
         if self.env.context.get('task_recalculate'):
             return vals
-        date_start = vals.get('date_start', self.date_start)
-        date_end = vals.get('date_end', self.date_end)
+        to_datetime = fields.Datetime.to_datetime
+        date_start = to_datetime(vals.get('date_start', self.date_start))
+        date_end = to_datetime(vals.get('date_end', self.date_end))
         # If any date is False, can't calculate estimated_days nor from_days
         if not date_start or not date_end:
             return vals
-        from_string = fields.Datetime.from_string
-        start = from_string(date_start)
-        end = from_string(date_end)
         resource, calendar = self._resource_calendar_select()
-        if end < start or not resource or not calendar:
+        date_start = self._resource_timezone(date_start, resource)
+        date_end = self._resource_timezone(date_end, resource)
+        if date_end < date_start or not resource or not calendar:
             return vals
-        default_interval = self._interval_default_get()
         # Calculate estimated_day
         vals['estimated_days'] = calendar.get_working_days_of_date(
-            start_dt=start, end_dt=end, compute_leaves=True,
-            default_interval=default_interval, resource_id=resource.id,
-        )
+            start_dt=date_start, end_dt=date_end, resource=resource)
         # Calculate from_days depending on project calculation type
         calculation_type = self.project_id.calculation_type
         if calculation_type:
@@ -74,21 +73,22 @@ class ProjectTask(models.Model):
                 if not self.project_id.date_start:
                     # Can't calculate from_days without project date_start
                     return vals
-                project_date = from_string(self.project_id.date_start)
-                start, end = project_date, start
+                project_date = self.project_id.date_start
+                date_end = date_start
+                date_start = fields.Datetime.to_datetime(project_date)
             else:
                 if not self.project_id.date:
                     # Can't calculate from_days without project date
                     return vals
-                project_date = from_string(self.project_id.date)
-                start, end = start, project_date
-            if end < start:
+                project_date = self.project_id.date
+                date_end = fields.Datetime.to_datetime(project_date)
+            date_start = self._resource_timezone(date_start, resource)
+            date_end = self._resource_timezone(date_end, resource)
+            if date_end < date_start:
                 invert = True
-                start, end = end, start
+                date_start, date_end = date_end, date_start
             from_days = calendar.get_working_days_of_date(
-                start_dt=start, end_dt=end, compute_leaves=True,
-                default_interval=default_interval, resource_id=resource.id,
-            )
+                start_dt=date_start, end_dt=date_end, resource=resource)
             if invert and from_days:
                 from_days = from_days * (-1)
             from_days = self._from_days_enc(
@@ -116,12 +116,12 @@ class ProjectTask(models.Model):
             # Get first resource of assigned user
             resource = self.env['resource.resource'].search(
                 [('user_id', '=', self.user_id.id)], limit=1)
-        if self.project_id.resource_calendar_id:
+        if resource and resource.calendar_id:
             # Get calendar from project
-            calendar = self.project_id.resource_calendar_id
-        elif resource and resource.calendar_id:
-            # Get calendar from assigned user
             calendar = resource.calendar_id
+        elif self.project_id.resource_calendar_id:
+            # Get calendar from assigned user
+            calendar = self.project_id.resource_calendar_id
         else:
             # Get calendar from company
             if self.user_id.company_id:
@@ -170,95 +170,115 @@ class ProjectTask(models.Model):
                 - project_date, reference project date
         """
         self.ensure_one()
-        from_string = fields.Datetime.from_string
         increment = self.project_id.calculation_type == 'date_begin'
         if increment:
             if not self.project_id.date_start:
                 raise exceptions.UserError(
                     _('Start Date field must be defined.')
                 )
-            project_date = from_string(self.project_id.date_start)
+            project_date = self.project_id.date_start
             days = self.from_days
         else:
             if not self.project_id.date:
                 raise exceptions.UserError(
                     _('End Date field must be defined.')
                 )
-            project_date = from_string(self.project_id.date)
+            project_date = self.project_id.date
             days = self.from_days * (-1)
         return increment, project_date, days
 
-    def _interval_context_tz(self, interval):
-        start = datetime.now().replace(hour=interval[0])
-        start = fields.Datetime.context_timestamp(self, start)
-        end = datetime.now().replace(hour=interval[1])
-        end = fields.Datetime.context_timestamp(self, end)
-        return (start.hour, end.hour)
+    def _resource_timezone(self, dt, resource=None, calendar=None):
+        result = dt
+        if not dt.tzinfo:
+            if resource or calendar:
+                tz = timezone((resource or calendar).tz)
+            else:
+                tz = utc
+            result = tz.localize(dt)
+        return result
 
-    def _interval_default_get(self):
-        default = (8, 18)
-        return self._interval_context_tz(default)
+    def _get_work_intervals(self, day_date, resource=None, calendar=None):
+        start_dt = datetime.combine(day_date, datetime.min.time())
+        end_dt = datetime.combine(day_date, datetime.max.time())
+        start_dt = self._resource_timezone(start_dt, resource)
+        end_dt = self._resource_timezone(end_dt, resource)
+        if not calendar:
+            intervals = self._interval_default_get()
+            intervals -= self._leave_intervals(start_dt, end_dt, resource)
+        else:
+            intervals = calendar._work_intervals(start_dt, end_dt, resource)
+
+        return intervals
 
     def _first_interval_of_day_get(self, day_date, resource=None,
                                    calendar=None):
-        default_interval = self._interval_default_get()
-        intervals = calendar.get_working_intervals_of_day(
-            start_dt=day_date, compute_leaves=True, resource_id=resource.id,
-            default_interval=default_interval,
-        )
-        return intervals and intervals[0] or False
+        intervals = self._get_work_intervals(day_date, resource, calendar)
+        return (list(intervals)[:1] or [False])[0]
 
-    def _calendar_schedule_days(self, days, day_date,
-                                resource=None, calendar=None):
+    def _last_interval_of_day_get(self, day_date, resource=None,
+                                  calendar=None):
+        intervals = self._get_work_intervals(day_date, resource, calendar)
+        return (list(intervals)[-1:] or [False])[0]
+
+    def _calendar_plan_days(self, days, day_date, resource=None,
+                            calendar=None):
         if not day_date:
-            return (False, False)
-        default_interval = self._interval_default_get()
-        intervals = calendar.schedule_days(
-            days, day_date=day_date, compute_leaves=True,
-            resource_id=resource.id, default_interval=default_interval,
-        )
-        return (intervals and intervals[0] or False,
-                intervals and intervals[-1] or False)
+            return False
+        # date to datetime
+        if days >= 0:
+            day_dt = datetime.combine(day_date, datetime.min.time())
+        else:
+            day_dt = datetime.combine(day_date, datetime.max.time())
+        day_dt = self._resource_timezone(day_dt, resource)
+        planned_dt = calendar.plan_days_to_resource(
+            days, day_dt, compute_leaves=True, resource=resource)
+
+        return planned_dt or False
 
     @api.multi
     def task_recalculate(self):
         """Recalculate task start date and end date depending on
         project calculation_type, estimated_days and from_days.
         """
-        to_string = fields.Datetime.to_string
         for task in self.filtered('include_in_recalculate'):
             resource, calendar = task._resource_calendar_select()
-            if not resource or not calendar:
+            if not calendar:
                 continue
             increment, project_date, from_days = task._calculation_prepare()
             date_start = False
             date_end = False
             from_days = self._from_days_dec(
                 from_days, project_date, resource, calendar, increment)
-            start = self._calendar_schedule_days(
-                from_days, project_date, resource, calendar)[1]
-            if start:
-                day = start[0].replace(hour=0, minute=0, second=0)
+            planned_dt = self._calendar_plan_days(
+                from_days, project_date, resource, calendar)
+            if planned_dt:
+                day = planned_dt.replace(hour=0, minute=0, second=0)
                 first = self._first_interval_of_day_get(
                     day, resource, calendar)
                 if first:
                     date_start = first[0]
             if date_start:
-                end = self._calendar_schedule_days(
-                    task.estimated_days, date_start, resource, calendar)[1]
-                if end:
-                    date_end = end[1]
+                end_planned_dt = self._calendar_plan_days(
+                    task.estimated_days, date_start, resource, calendar)
+                if end_planned_dt:
+                    date_end = self._last_interval_of_day_get(
+                        end_planned_dt, resource, calendar)[1]
+            if date_start:
+                date_start = date_start.astimezone(utc)
+            if date_end:
+                date_end = date_end.astimezone(utc)
+
             task.with_context(task.env.context, task_recalculate=True).write({
-                'date_start': date_start and to_string(date_start) or False,
-                'date_end': date_end and to_string(date_end) or False,
-                'date_deadline': date_end and to_string(date_end) or False,
+                'date_start': date_start or False,
+                'date_end': date_end or False,
+                'date_deadline': date_end or False,
             })
         return True
 
     @api.multi
     def write(self, vals):
         for this in self:
-            vals = this._dates_onchange(vals)
+            vals = this._update_recalculated_dates(vals)
             vals = this._estimated_days_prepare(vals)
             super(ProjectTask, this).write(vals)
         return True
