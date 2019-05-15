@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # See README.rst file on addon root folder for license details
 
 from odoo import models, fields, api
@@ -6,6 +5,7 @@ from odoo import models, fields, api
 
 class ProjectRecalculateWizard(models.TransientModel):
     _name = 'project.recalculate.wizard'
+    _description = 'Project recalculate wizard'
 
     project_id = fields.Many2one(
         comodel_name='project.project', readonly=True, string="Project")

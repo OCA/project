@@ -1,6 +1,7 @@
-# -*- coding: utf-8 -*-
 # See README.rst file on addon root folder for license details
 
+from datetime import date, datetime
+from odoo import fields
 from odoo.tests.common import TransactionCase
 
 
@@ -8,9 +9,9 @@ class BaseCase(TransactionCase):
     calculation_type = 'date_begin'
     project_init_dates = [
         # name, start_date, end date
-        ['pj_0', '2015-08-01', '2015-10-03'],  # Saturday - Saturday
-        ['pj_1', '2015-08-02', '2015-10-10'],  # Sunday - Saturday
-        ['pj_2', '2015-08-03', '2015-10-17'],  # Monday - Saturday
+        ['pj_0', date(2015, 8, 1), date(2015, 10, 3)],  # Saturday - Saturday
+        ['pj_1', date(2015, 8, 2), date(2015, 10, 10)],  # Sunday - Saturday
+        ['pj_2', date(2015, 8, 3), date(2015, 10, 17)],  # Monday - Saturday
     ]
     task_days = {
         'date_begin': [
@@ -32,62 +33,62 @@ class BaseCase(TransactionCase):
     }
     project_final_dates = {
         'date_begin': [
-            ['pj_0', '2015-08-01', '2015-09-14'],
-            ['pj_1', '2015-08-02', '2015-09-14'],
-            ['pj_2', '2015-08-03', '2015-09-15'],
+            ['pj_0', date(2015, 8, 1), date(2015, 9, 14)],
+            ['pj_1', date(2015, 8, 2), date(2015, 9, 14)],
+            ['pj_2', date(2015, 8, 3), date(2015, 9, 15)],
         ],
         'date_end': [
-            ['pj_0', '2015-08-10', '2015-10-03'],
-            ['pj_1', '2015-08-17', '2015-10-10'],
-            ['pj_2', '2015-08-21', '2015-10-17'],
+            ['pj_0', date(2015, 8, 10), date(2015, 10, 3)],
+            ['pj_1', date(2015, 8, 17), date(2015, 10, 10)],
+            ['pj_2', date(2015, 8, 21), date(2015, 10, 17)],
         ],
     }
     task_dates = {
         'date_begin': {
             'pj_0': [
                 # name, date_start, date_end
-                ['task_0', '2015-07-30', '2015-08-05'],
-                ['task_1', '2015-08-03', '2015-08-03'],
-                ['task_2', '2015-08-07', '2015-08-21'],
-                ['task_3', '2015-08-18', '2015-09-14'],
-                ['task_4', '2015-08-31', '2015-09-01'],
+                ['task_0', date(2015, 7, 30), date(2015, 8, 5)],
+                ['task_1', date(2015, 8, 3), date(2015, 8, 3)],
+                ['task_2', date(2015, 8, 7), date(2015, 8, 21)],
+                ['task_3', date(2015, 8, 18), date(2015, 9, 14)],
+                ['task_4', date(2015, 8, 31), date(2015, 9, 1)],
             ],
             'pj_1': [
-                ['task_0', '2015-07-30', '2015-08-05'],
-                ['task_1', '2015-08-03', '2015-08-03'],
-                ['task_2', '2015-08-07', '2015-08-21'],
-                ['task_3', '2015-08-18', '2015-09-14'],
-                ['task_4', '2015-08-31', '2015-09-01'],
+                ['task_0', date(2015, 7, 30), date(2015, 8, 5)],
+                ['task_1', date(2015, 8, 3), date(2015, 8, 3)],
+                ['task_2', date(2015, 8, 7), date(2015, 8, 21)],
+                ['task_3', date(2015, 8, 18), date(2015, 9, 14)],
+                ['task_4', date(2015, 8, 31), date(2015, 9, 1)],
             ],
             'pj_2': [
-                ['task_0', '2015-07-30', '2015-08-05'],
-                ['task_1', '2015-08-03', '2015-08-03'],
-                ['task_2', '2015-08-10', '2015-08-24'],
-                ['task_3', '2015-08-19', '2015-09-15'],
-                ['task_4', '2015-09-01', '2015-09-02'],
+                ['task_0', date(2015, 7, 30), date(2015, 8, 5)],
+                ['task_1', date(2015, 8, 3), date(2015, 8, 3)],
+                ['task_2', date(2015, 8, 10), date(2015, 8, 24)],
+                ['task_3', date(2015, 8, 19), date(2015, 9, 15)],
+                ['task_4', date(2015, 9, 1), date(2015, 9, 2)],
             ],
         },
         'date_end': {
             'pj_0': [
-                ['task_0', '2015-08-10', '2015-08-14'],
-                ['task_1', '2015-08-17', '2015-08-31'],
-                ['task_2', '2015-09-03', '2015-09-30'],
-                ['task_3', '2015-10-02', '2015-10-02'],
-                ['task_4', '2015-10-05', '2015-10-06'],
+                ['task_0', date(2015, 8, 10), date(2015, 8, 14)],
+                ['task_1', date(2015, 8, 17), date(2015, 8, 31)],
+                ['task_2', date(2015, 9, 3), date(2015, 9, 30)],
+                ['task_3', date(2015, 10, 2), date(2015, 10, 2)],
+                ['task_4', date(2015, 10, 5), date(2015, 10, 6)],
             ],
             'pj_1': [
-                ['task_0', '2015-08-17', '2015-08-21'],
-                ['task_1', '2015-08-24', '2015-09-07'],
-                ['task_2', '2015-09-10', '2015-10-07'],
-                ['task_3', '2015-10-09', '2015-10-09'],
-                ['task_4', '2015-10-13', '2015-10-14'],
+                ['task_0', date(2015, 8, 17), date(2015, 8, 21)],
+                ['task_1', date(2015, 8, 24), date(2015, 9, 7)],
+                ['task_2', date(2015, 9, 10), date(2015, 10, 7)],
+                ['task_3', date(2015, 10, 9), date(2015, 10, 9)],
+                ['task_4', date(2015, 10, 13), date(2015, 10, 14)],
             ],
             'pj_2': [
-                ['task_0', '2015-08-21', '2015-08-27'],
-                ['task_1', '2015-08-28', '2015-09-11'],
-                ['task_2', '2015-09-16', '2015-10-14'],
-                ['task_3', '2015-10-16', '2015-10-16'],
-                ['task_4', '2015-10-19', '2015-10-20'],
+                ['task_0', date(2015, 8, 21), date(2015, 8, 27)],
+                ['task_1', date(2015, 8, 28), date(2015, 9, 11)],
+                ['task_2', date(2015, 9, 16), date(2015, 10, 14)],
+                ['task_3', date(2015, 10, 16), date(2015, 10, 16)],
+                ['task_4', date(2015, 10, 19), date(2015, 10, 20)],
             ],
         },
     }
@@ -132,8 +133,10 @@ class BaseCase(TransactionCase):
         #   - 12/10/2015: 12 Octubre
         leaves = (
             # name, date_from, date_to
-            ('15 Agosto', '2015-08-15 00:00:00', '2015-08-15 23:59:59'),
-            ('12 Octubre', '2015-10-12 00:00:00', '2015-10-12 23:59:59'),
+            ('15 Agosto', date(2015, 8, 15),
+             datetime.combine(date(2015, 8, 15), datetime.max.time())),
+            ('12 Octubre', date(2015, 10, 12),
+             datetime.combine(date(2015, 10, 12), datetime.max.time())),
         )
         for leave in leaves:
             m_leaves.create({
@@ -187,8 +190,8 @@ class BaseCase(TransactionCase):
                 task = project.tasks.filtered(lambda r: r.name == day[0])
                 if task:
                     task.write({
-                        'date_start': day[1],
-                        'date_end': day[2],
+                        'date_start': fields.Datetime.to_datetime(day[1]),
+                        'date_end': fields.Datetime.to_datetime(day[2]),
                     })
 
     def project_create(self, num_tasks=0, vals=None):
