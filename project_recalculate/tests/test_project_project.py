@@ -1,8 +1,7 @@
-# -*- coding: utf-8 -*-
 # See README.rst file on addon root folder for license details
 
+from datetime import date
 from odoo import exceptions
-from odoo.fields import DATE_LENGTH
 from . import base
 
 
@@ -11,14 +10,14 @@ class TestProjectProjectBegin(base.BaseCase):
     project_final_dates_one_task = {
         'date_begin': [
             # name, date_start, date
-            ['pj_0', '2015-08-01', '2015-08-05'],
-            ['pj_1', '2015-08-02', '2015-08-05'],
-            ['pj_2', '2015-08-03', '2015-08-05'],
+            ['pj_0', date(2015, 8, 1), date(2015, 8, 5)],
+            ['pj_1', date(2015, 8, 2), date(2015, 8, 5)],
+            ['pj_2', date(2015, 8, 3), date(2015, 8, 5)],
         ],
         'date_end': [
-            ['pj_0', '2015-08-10', '2015-10-03'],
-            ['pj_1', '2015-08-17', '2015-10-10'],
-            ['pj_2', '2015-08-21', '2015-10-17'],
+            ['pj_0', date(2015, 8, 10), date(2015, 10, 3)],
+            ['pj_1', date(2015, 8, 17), date(2015, 10, 10)],
+            ['pj_2', date(2015, 8, 21), date(2015, 10, 17)],
         ],
     }
 
@@ -51,6 +50,7 @@ class TestProjectProjectBegin(base.BaseCase):
                 'name': name,
                 'date_start': start,
                 'date': end,
+                'resource_calendar_id': False,
             })
             # Set days (estimated_days and from_days to tasks)
             self.project_task_dates_set(
@@ -112,6 +112,7 @@ class TestProjectProjectBegin(base.BaseCase):
                 'name': name,
                 'date_start': start,
                 'date': end,
+                'resource_calendar_id': False,
             })
             # Set days (estimated_days and from_days to tasks)
             self.project_task_days_set(
@@ -130,10 +131,10 @@ class TestProjectProjectBegin(base.BaseCase):
                 dates = res_tasks[self.calculation_type][name][i]
                 task = project.tasks.filtered(lambda r: r.name == dates[0])
                 self.assertEqual(
-                    task.date_start[:DATE_LENGTH], dates[1],
+                    task.date_start.date(), dates[1],
                     "[%d, %d] FAIL: task date_start" % (counter, i))
                 self.assertEqual(
-                    task.date_end[:DATE_LENGTH], dates[2],
+                    task.date_end.date(), dates[2],
                     "[%d, %d] FAIL: task date_end" % (counter, i))
             counter += 1
 
@@ -157,13 +158,13 @@ class TestProjectProjectBegin(base.BaseCase):
         cases = (
             # name, calculation_type, date_start, date
             ('pj_0', False, False, False),
-            ('pj_1', False, '2015-08-01', False),
-            ('pj_2', False, False, '2015-08-01'),
-            ('pj_3', False, '2015-08-01', '2015-08-01'),
+            ('pj_1', False, date(2015, 8, 1), False),
+            ('pj_2', False, False, date(2015, 8, 1)),
+            ('pj_3', False, date(2015, 8, 1), date(2015, 8, 1)),
             ('pj_4', 'date_begin', False, False),
-            ('pj_5', 'date_begin', False, '2015-08-01'),
+            ('pj_5', 'date_begin', False, date(2015, 8, 1)),
             ('pj_6', 'date_end', False, False),
-            ('pj_7', 'date_end', '2015-08-01', False),
+            ('pj_7', 'date_end', date(2015, 8, 1), False),
         )
         with self.assertRaises(exceptions.UserError):
             for num_tasks in [0, 1, 5]:
@@ -173,6 +174,7 @@ class TestProjectProjectBegin(base.BaseCase):
                         'name': name + '_%d' % num_tasks,
                         'date_start': start,
                         'date': end,
+                        'resource_calendar_id': False,
                     })
                     project.project_recalculate()
 
