@@ -1,8 +1,6 @@
-# -*- coding: utf-8 -*-
 # See README.rst file on addon root folder for license details
 
 from odoo import models, fields, api, _
-from odoo.fields import DATE_LENGTH
 from odoo.exceptions import UserError
 
 
@@ -31,18 +29,15 @@ class ProjectProject(models.Model):
         self.ensure_one()
         if not self.tasks:
             return vals
-        from_string = fields.Datetime.from_string
         # Here we consider all project task, independently from the value in
         # include_in_recalculate
-        start_task = min(self.tasks,
-                         key=lambda t: from_string(t.date_start or t.date_end))
-        end_task = max(self.tasks,
-                       key=lambda t: from_string(t.date_end or t.date_start))
+        start_task = min(self.tasks, key=lambda t: t.date_start or t.date_end)
+        end_task = max(self.tasks, key=lambda t: t.date_end or t.date_start)
         # Assign min/max dates if available
         if self.calculation_type == 'date_begin' and end_task.date_end:
-            vals['date'] = end_task.date_end[:DATE_LENGTH]
+            vals['date'] = end_task.date_end.date()
         if self.calculation_type == 'date_end' and start_task.date_start:
-            vals['date_start'] = start_task.date_start[:DATE_LENGTH]
+            vals['date_start'] = start_task.date_start.date()
         return vals
 
     @api.multi
@@ -63,8 +58,7 @@ class ProjectProject(models.Model):
                     project.date):
                 raise UserError(_("Cannot recalculate project because your "
                                   "project doesn't have date end."))
-            for task in project.tasks:
-                task.task_recalculate()
+            project.tasks.task_recalculate()
             vals = project._start_end_dates_prepare()
             if vals:
                 project.write(vals)
