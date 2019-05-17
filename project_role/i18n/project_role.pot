@@ -43,7 +43,7 @@ msgstr ""
 #. module: project_role
 #: model:ir.ui.menu,name:project_role.menu_project_assignments
 #: model_terms:ir.ui.view,arch_db:project_role.edit_project
-#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search_form
+#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
 msgid "Assignments"
 msgstr ""
 
@@ -55,7 +55,7 @@ msgstr ""
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__company_id
 #: model:ir.model.fields,field_description:project_role.field_project_role__company_id
-#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search_form
+#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
 msgid "Company"
 msgstr ""
 
@@ -103,7 +103,7 @@ msgid "Followers (Partners)"
 msgstr ""
 
 #. module: project_role
-#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search_form
+#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
 msgid "Group By"
 msgstr ""
 
@@ -167,7 +167,7 @@ msgid "Messages"
 msgstr ""
 
 #. module: project_role
-#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search_form
+#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
 msgid "My Assignments"
 msgstr ""
 
@@ -230,21 +230,21 @@ msgstr ""
 #. module: project_role
 #: model:ir.model,name:project_role.model_project_project
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__project_id
-#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search_form
+#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
 msgid "Project"
 msgstr ""
 
 #. module: project_role
 #: model:ir.model,name:project_role.model_project_assignment
-#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_view_form
-#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_view_pivot
+#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_form
+#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_pivot
 msgid "Project Assignment"
 msgstr ""
 
 #. module: project_role
-#: model:ir.actions.act_window,name:project_role.project_assignment_view_action
+#: model:ir.actions.act_window,name:project_role.project_assignment_view_all_action
 #: model:ir.model.fields,field_description:project_role.field_project_project__assignment_ids
-#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_view_tree
+#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_tree
 msgid "Project Assignments"
 msgstr ""
 
@@ -268,7 +268,7 @@ msgstr ""
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__role_id
-#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search_form
+#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
 msgid "Role"
 msgstr ""
 
@@ -323,7 +323,7 @@ msgstr ""
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__user_id
-#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search_form
+#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
 msgid "User"
 msgstr ""
 
