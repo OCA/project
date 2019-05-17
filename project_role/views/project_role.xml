@@ -10,7 +10,7 @@
         <field name="model">project.role</field>
         <field name="arch" type="xml">
             <tree string="Project Roles">
-                <field name="company_id" groups="base.group_multi_company" options="{'no_quick_create': True, 'no_create_edit': True}"/>
+                <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
                 <field name="name"/>
                 <field name="description" invisible="1"/>
             </tree>
@@ -23,7 +23,7 @@
         <field name="arch" type="xml">
             <form string="Project Role">
                 <group>
-                    <field name="company_id" groups="base.group_multi_company" options="{'no_quick_create': True, 'no_create_edit': True}"/>
+                    <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
                     <field name="name"/>
                     <field name="description"/>
                 </group>
@@ -34,12 +34,14 @@
     <record id="company_project_roles_action" model="ir.actions.act_window">
         <field name="name">Project Roles</field>
         <field name="res_model">project.role</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
+        <field name="view_type">tree</field>
     </record>
 
-    <menuitem id="project_menu_config_roles"
+    <menuitem
+        id="project_menu_config_roles"
         action="company_project_roles_action"
-        parent="project.menu_project_config"/>
+        parent="project.menu_project_config"
+    />
 
 </odoo>

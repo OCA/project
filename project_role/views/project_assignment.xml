@@ -5,34 +5,41 @@
 -->
 <odoo>
 
-    <record id="project_assignment_view_tree" model="ir.ui.view">
-        <field name="name">project.assignment.view.tree</field>
-        <field name="model">project.assignment</field>
-        <field name="arch" type="xml">
-            <tree string="Project Assignments" editable="top">
-                <field name="company_id" groups="base.group_multi_company" options="{'no_quick_create': True, 'no_create_edit': True}"/>
-                <field name="project_id" domain="[('active', '=', True)]" options="{'no_quick_create': True, 'no_create_edit': True}"/>
-                <field name="role_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
-                <field name="user_id" domain="[('active', '=', True)]" options="{'no_quick_create': True, 'no_create_edit': True}"/>
-            </tree>
-        </field>
-    </record>
-
-    <record id="project_assignment_view_form" model="ir.ui.view">
-        <field name="name">project.assignment.view.form</field>
+    <record id="project_assignment_form" model="ir.ui.view">
+        <field name="name">project.assignment.form</field>
         <field name="model">project.assignment</field>
         <field name="arch" type="xml">
             <form string="Project Assignment">
                 <header/>
                 <group>
-                    <field name="company_id" groups="base.group_multi_company" options="{'no_quick_create': True, 'no_create_edit': True}"/>
-                    <field name="project_id" domain="[('active', '=', True)]" options="{'no_quick_create': True, 'no_create_edit': True}"/>
-                    <field name="role_id" options="{'no_quick_create': True, 'no_create_edit': True}"/>
-                    <field name="user_id" domain="[('active', '=', True)]" options="{'no_quick_create': True, 'no_create_edit': True}"/>
+                    <field
+                        name="company_id"
+                        groups="base.group_multi_company"
+                        options="{'no_create': True}"
+                    />
+                    <field
+                        name="project_id"
+                        domain="[('active', '=', True)]"
+                        options="{'no_create': True}"
+                        invisible="context.get('default_project_id', False)"
+                    />
+                    <field
+                        name="role_id"
+                        options="{'no_create': True}"
+                    />
+                    <field
+                        name="user_id"
+                        domain="[('active', '=', True)]"
+                        options="{'no_create': True}"
+                    />
                 </group>
                 <notebook/>
                 <div class="oe_chatter">
-                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field
+                        name="message_follower_ids"
+                        widget="mail_followers"
+                        groups="base.group_user"
+                    />
                     <field name="activity_ids" widget="mail_activity"/>
                     <field name="message_ids" widget="mail_thread"/>
                 </div>
@@ -40,8 +47,37 @@
         </field>
     </record>
 
-    <record id="project_assignment_view_pivot" model="ir.ui.view">
-        <field name="name">project.assignment.view.pivot</field>
+    <record id="project_assignment_tree" model="ir.ui.view">
+        <field name="name">project.assignment.tree</field>
+        <field name="model">project.assignment</field>
+        <field name="arch" type="xml">
+            <tree string="Project Assignments" editable="top">
+                <field
+                    name="company_id"
+                    groups="base.group_multi_company"
+                    options="{'no_create': True}"
+                />
+                <field
+                    name="project_id"
+                    domain="[('active', '=', True)]"
+                    options="{'no_create': True}"
+                    invisible="context.get('default_project_id', False)"
+                />
+                <field
+                    name="role_id"
+                    options="{'no_create': True}"
+                />
+                <field
+                    name="user_id"
+                    domain="[('active', '=', True)]"
+                    options="{'no_create': True}"
+                />
+            </tree>
+        </field>
+    </record>
+
+    <record id="project_assignment_pivot" model="ir.ui.view">
+        <field name="name">project.assignment.pivot</field>
         <field name="model">project.assignment</field>
         <field name="arch" type="xml">
             <pivot string="Project Assignment">
@@ -53,8 +89,8 @@
         </field>
     </record>
 
-    <record id="project_assignment_view_kanban" model="ir.ui.view">
-        <field name="name">project.assignment.view.kanban</field>
+    <record id="project_assignment_kanban" model="ir.ui.view">
+        <field name="name">project.assignment.kanban</field>
         <field name="model">project.assignment</field>
         <field name="arch" type="xml">
             <kanban class="o_kanban_mobile">
@@ -78,7 +114,7 @@
                                             <t t-esc="record.role_id.value"/>
                                         </span>
                                     </div>
-                                    <div class="text-muted">
+                                    <div class="text-muted" invisible="context.get('default_project_id', False)">
                                         <span>
                                             <t t-esc="record.project_id.value"/>
                                         </span>
@@ -92,8 +128,8 @@
         </field>
     </record>
 
-    <record id="project_assignment_search_form" model="ir.ui.view">
-        <field name="name">project.assignment.search.form</field>
+    <record id="project_assignment_search" model="ir.ui.view">
+        <field name="name">project.assignment.search</field>
         <field name="model">project.assignment</field>
         <field name="arch" type="xml">
             <search string="Assignments">
@@ -103,23 +139,41 @@
                 <field name="user_id"/>
                 <filter string="My Assignments" name="my_assignments" domain="[('user_id','=',uid)]"/>
                 <group expand="0" string="Group By">
-                    <filter string="Project" name="project" context="{'group_by':'project_id'}"/>
-                    <filter string="Role" name="role" context="{'group_by':'role_id'}"/>
-                    <filter string="User" name="user" context="{'group_by':'user_id'}"/>
-                    <filter string="Company" name="company" context="{'group_by':'company_id'}" groups="base.group_multi_company"/>
+                    <filter string="Project" name="groupby_project" context="{'group_by':'project_id'}"/>
+                    <filter string="Role" name="groupby_role" context="{'group_by':'role_id'}"/>
+                    <filter string="User" name="groupby_user" context="{'group_by':'user_id'}"/>
+                    <filter string="Company" name="groupby_company" context="{'group_by':'company_id'}" groups="base.group_multi_company"/>
                 </group>
             </search>
         </field>
     </record>
 
-    <record id="project_assignment_view_action" model="ir.actions.act_window">
+    <record id="project_assignment_view_all_action" model="ir.actions.act_window">
         <field name="name">Project Assignments</field>
         <field name="res_model">project.assignment</field>
-        <field name="view_mode">kanban,tree,form,pivot,graph</field>
-        <field name="search_view_id" ref="project_assignment_search_form"/>
+        <field name="view_mode">tree,kanban,form,pivot,graph</field>
+        <field name="view_type">form</field>
+        <field name="search_view_id" ref="project_assignment_search"/>
+        <field name="context">{'search_default_groupby_project': 1}</field>
     </record>
 
-    <menuitem name="Assignments" id="menu_project_assignments" parent="project.menu_main_pm"
-        action="project_assignment_view_action" sequence="2" groups="base.group_no_one,project.group_project_user"/>
+    <record id="project_assignment_view_project_action" model="ir.actions.act_window">
+        <field name="name">Assignments</field>
+        <field name="res_model">project.assignment</field>
+        <field name="view_mode">kanban,tree,form,pivot,graph</field>
+        <field name="view_type">form</field>
+        <field name="search_view_id" ref="project_assignment_search"/>
+        <field name="context">{'default_project_id': active_id}</field>
+        <field name="domain">[('project_id','=',active_id)]</field>
+    </record>
+
+    <menuitem
+        name="Assignments"
+        id="menu_project_assignments"
+        parent="project.menu_main_pm"
+        action="project_assignment_view_all_action"
+        sequence="2"
+        groups="base.group_no_one,project.group_project_user"
+    />
 
 </odoo>
