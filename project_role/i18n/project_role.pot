@@ -41,6 +41,7 @@ msgid "Activity State"
 msgstr ""
 
 #. module: project_role
+#: model:ir.actions.act_window,name:project_role.project_assignment_view_project_action
 #: model:ir.ui.menu,name:project_role.menu_project_assignments
 #: model_terms:ir.ui.view,arch_db:project_role.edit_project
 #: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
