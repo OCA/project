@@ -126,6 +126,13 @@ msgid "Project"
 msgstr "Projekt"
 
 #. module: project_task_material_stock
+#: model:stock.picking.type,name:project_task_material_stock.project_task_material_picking_type
+#, fuzzy
+#| msgid "Task Material Used"
+msgid "Project Task Material Operations"
+msgstr "Materialverbrauch der Aufgabe"
+
+#. module: project_task_material_stock
 #: model:ir.model.fields,field_description:project_task_material_stock.field_project_project_location_source_id
 #: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_location_source_id
 msgid "Source Location"
@@ -169,12 +176,19 @@ msgid "Transfer Materials"
 msgstr "Material umlagern"
 
 #. module: project_task_material_stock
+#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_picking_id
+#, fuzzy
+#| msgid "Transfer Materials"
+msgid "Transfer Reference"
+msgstr "Material umlagern"
+
+#. module: project_task_material_stock
 #: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_material_product_uom_id
 msgid "Unit of Measure"
 msgstr "Mengeneinheit"
 
 #. module: project_task_material_stock
-#: code:addons/project_task_material_stock/models/project_task.py:112
+#: code:addons/project_task_material_stock/models/project_task.py:118
 #, python-format
 msgid ""
 "You can't move to a not consume stage if there are already analytic lines"
