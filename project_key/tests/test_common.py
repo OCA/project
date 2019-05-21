@@ -9,8 +9,10 @@ class TestCommon(TransactionCase):
     def setUp(self):
         super(TestCommon, self).setUp()
 
-        self.Project = self.env['project.project']
-        self.Task = self.env['project.task']
+        self.Project = self.env['project.project'].with_context(
+            test_project_key=True)
+        self.Task = self.env['project.task'].with_context(
+            test_project_key=True)
 
         self.project_action = self.ref("project.open_view_project_all_config")
         self.task_action = self.ref("project.action_view_task")
