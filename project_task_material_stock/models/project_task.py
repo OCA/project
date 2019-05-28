@@ -211,7 +211,11 @@ class ProjectTaskMaterial(models.Model):
         company_id = self.env['res.company']._company_default_get(
             'account.analytic.line')
         analytic_account = getattr(self.task_id, 'analytic_account_id', False)\
-            or self.task_id.project_id.analytic_account_id
+            or getattr(self.task_id.project_id, 'analytic_account_id', False)
+        if not analytic_account:
+            raise exceptions.Warning(
+                _("You must assign an analytic account for this task/project.")
+            )
         res = {
             'name': self.task_id.name + ': ' + product.name,
             'ref': self.task_id.name,
