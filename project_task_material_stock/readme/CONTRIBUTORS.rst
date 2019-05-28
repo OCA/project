@@ -5,3 +5,7 @@
   * Carlos Dauden <carlos.dauden@tecnativa.com>
   * Sergio Teruel <sergio.teruel@tecnativa.com>
   * Vicent Cubells <vicent.cubells@tecnativa.com>
+
+* `Qubiq <https://www.qubiq.com>`_:
+
+  * Valentin Vinagre <valentin.vinagre@qubiq.es>
