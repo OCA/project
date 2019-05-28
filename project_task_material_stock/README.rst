@@ -23,7 +23,7 @@ Project Task Material Stock
     :target: https://runbot.odoo-community.org/runbot/140/11.0
     :alt: Try me on Runbot
 
-|badge1| |badge2| |badge3| |badge4| |badge5| 
+|badge1| |badge2| |badge3| |badge4| |badge5|
 
 Project Tasks allow to record time spent, but some activities, such as
 Field Service, often require you to keep a record of the materials spent.
@@ -93,6 +93,10 @@ Contributors
   * Carlos Dauden <carlos.dauden@tecnativa.com>
   * Sergio Teruel <sergio.teruel@tecnativa.com>
   * Vicent Cubells <vicent.cubells@tecnativa.com>
+
+* `Qubiq <https://www.qubiq.com>`_:
+
+  * Valentin Vinagre <valentin.vinagre@qubiq.es>
 
 Maintainers
 ~~~~~~~~~~~
