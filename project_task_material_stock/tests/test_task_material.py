@@ -26,8 +26,8 @@ class TestTaskMaterial(common.SavepointCase):
         cls.project = cls.env['project.project'].create({
             'name': 'Project example',
         })
-        cls.product1_uom = cls.env.ref('product.product_uom_unit')
-        cls.product2_uom = cls.env.ref('product.product_uom_kgm')
+        cls.product1_uom = cls.env.ref('uom.product_uom_unit')
+        cls.product2_uom = cls.env.ref('uom.product_uom_kgm')
         product_obj = cls.env['product.product']
         cls.product1 = product_obj.create({
             'name': 'Product example #1',
@@ -43,7 +43,10 @@ class TestTaskMaterial(common.SavepointCase):
         })
         cls.task = cls.env['project.task'].create(
             {'name': 'task test 1',
-             'project_id': cls.project.id})
+             'project_id': cls.project.id,
+             'analytic_account_id': cls.env['account.analytic.account'].
+                search([], limit=1).id
+             })
         cls.task_material = cls.env['project.task.material'].create(
             {'task_id': cls.task.id,
              'product_id': cls.product1.id,
@@ -71,6 +74,8 @@ class TestTaskMaterial(common.SavepointCase):
         self.task.stage_id = self.stage_deployed.id
         self.assertEqual(len(self.task.stock_move_ids), 1)
         self.task2 = self.task.copy()
+        self.assertEqual(len(self.task2.stock_move_ids), 0)
+        self.assertEqual(len(self.task2.analytic_line_ids), 0)
         self.task_material2 = self.env['project.task.material'].create(
             {'task_id': self.task2.id,
              'product_id': self.product1.id,
@@ -100,7 +105,7 @@ class TestTaskMaterial(common.SavepointCase):
         self.assertEqual(self.task.stock_state, 'assigned')
         self.assertEqual(len(self.task.stock_move_ids), 1)
         self.task.stock_move_ids[:1].move_line_ids.qty_done = \
-            self.task.stock_move_ids[:1].move_line_ids.ordered_qty
+            self.task.stock_move_ids[:1].move_line_ids.product_qty
         self.task.action_done()
         self.assertEqual(self.task.stock_state, 'done')
         self.assertRaises(Exception, self.task.unlink)

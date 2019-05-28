@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
+    <!--
+        Copyright 2015 Tecnativa - Sergio Teruel
+        Copyright 2015 Tecnativa - Carlos Dauden
+        Copyright 2016-2017 Tecnativa - Vicent Cubells
+        Copyright 2019 Valentin Vinagre <valentin.vinagre@qubiq.es>
+        License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
+    -->
     <record id="task_type_consume_material" model="ir.ui.view">
         <field name="name">project.task.type.consume.material</field>
         <field name="model">project.task.type</field>
@@ -42,9 +48,9 @@
                         <page string="Products" name="products">
                             <field name="material_ids">
                                 <tree string="Materials used" editable="top">
-                                    <field name="product_id" domain="[('type', 'in', ['consu', 'product'])]"/>
+                                    <field name="product_id"/>
                                     <field name="quantity"/>
-                                    <field name="product_uom_id" groups="product.group_uos"/>
+                                    <field name="product_uom_id" groups="uom.group_uom"/>
                                 </tree>
                             </field>
                         </page>
@@ -58,6 +64,7 @@
                                     <field name="product_id"/>
                                     <field name="product_uom_qty"/>
                                     <field name="state"/>
+                                    <button name="action_show_details" string="Register lots, packs, location" type="object" icon="fa-list" options="{&quot;warn&quot;: true}"/>
                                 </tree>
                             </field>
                         </page>
