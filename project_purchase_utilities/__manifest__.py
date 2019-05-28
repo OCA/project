@@ -10,7 +10,8 @@
         "purchase",
         "hr_timesheet",
     ],
-    "author": "AvanzOSC",
+    "author": "AvanzOSC, "
+              'Odoo Community Association (OCA)',
     "website": "http://github.com/OCA/project.git",
     "category": "Project",
     "data": [
