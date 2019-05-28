@@ -11,7 +11,7 @@
         "hr_timesheet",
     ],
     "author": "AvanzOSC",
-    "website": "http://www.avanzosc.es",
+    "website": "http://github.com/OCA/project.git",
     "category": "Project",
     "data": [
         "views/project_project_view.xml",
