@@ -4,15 +4,6 @@
 from odoo import api, fields, models
 
 
-class ProjectPhase(models.Model):
-    _name = 'project.phase'
-    _description = 'Project Phase'
-    _order = 'sequence,name'
-
-    name = fields.Char(string='Name', require=True, translate=True)
-    sequence = fields.Integer(string='Sequence')
-
-
 class ProjectProject(models.Model):
     _inherit = 'project.project'
 
