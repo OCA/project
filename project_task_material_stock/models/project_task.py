@@ -1,7 +1,8 @@
 # Copyright 2015 Tecnativa - Sergio Teruel
 # Copyright 2015 Tecnativa - Carlos Dauden
 # Copyright 2016-2017 Tecnativa - Vicent Cubells
-# License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
+# Copyright 2019 Valentin Vinagre <valentin.vinagre@qubiq.es>
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 from odoo import _, api, exceptions, fields, models
 
 
@@ -43,8 +44,10 @@ class Task(models.Model):
                         task.stock_state = state
                         break
 
-    picking_id = fields.Many2one("stock.picking",
-                                 related="stock_move_ids.picking_id")
+    picking_id = fields.Many2one(
+        "stock.picking",
+        related="stock_move_ids.picking_id",
+    )
     stock_move_ids = fields.Many2many(
         comodel_name='stock.move',
         compute='_compute_stock_move',
@@ -75,13 +78,15 @@ class Task(models.Model):
         comodel_name='stock.location',
         string='Source Location',
         index=True,
-        help='Default location from which materials are consumed.',
+        help='Keep this field empty to use the default value from'
+        ' the project.',
     )
     location_dest_id = fields.Many2one(
         comodel_name='stock.location',
         string='Destination Location',
         index=True,
-        help='Default location to which materials are consumed.',
+        help='Keep this field empty to use the default value from'
+        ' the project.'
     )
 
     @api.multi
@@ -102,22 +107,20 @@ class Task(models.Model):
         res = super(Task, self).write(vals)
         for task in self:
             if 'stage_id' in vals or 'material_ids' in vals:
-                if task.stage_id.consume_material:
+                if task.consume_material:
                     todo_lines = task.material_ids.filtered(
                         lambda m: not m.stock_move_id
                     )
                     if todo_lines:
                         todo_lines.create_stock_move()
                         todo_lines.create_analytic_line()
-
                 else:
-                    if task.unlink_stock_move():
-                        if task.material_ids.mapped(
+                    if task.unlink_stock_move() and task.material_ids.mapped(
                                 'analytic_line_id'):
-                            raise exceptions.Warning(
-                                _("You can't move to a not consume stage if "
-                                  "there are already analytic lines")
-                            )
+                        raise exceptions.Warning(
+                            _("You can't move to a not consume stage if "
+                              "there are already analytic lines")
+                        )
                     task.material_ids.mapped('analytic_line_id').unlink()
         return res
 
@@ -150,9 +153,12 @@ class ProjectTaskMaterial(models.Model):
         string='Analytic Line',
     )
     product_uom_id = fields.Many2one(
-        comodel_name='product.uom',
+        comodel_name='uom.uom',
         oldname="product_uom",
         string='Unit of Measure',
+    )
+    product_id = fields.Many2one(
+        domain="[('type', 'in', ('consu', 'product'))]"
     )
 
     @api.onchange('product_id')
@@ -185,7 +191,6 @@ class ProjectTaskMaterial(models.Model):
     def create_stock_move(self):
         pick_type = self.env.ref(
             'project_task_material_stock.project_task_material_picking_type')
-
         task = self[0].task_id
         picking_id = task.picking_id or self.env['stock.picking'].create({
             'origin': "{}/{}".format(task.project_id.name, task.name),
@@ -194,7 +199,6 @@ class ProjectTaskMaterial(models.Model):
             'location_id': pick_type.default_location_src_id.id,
             'location_dest_id': pick_type.default_location_dest_id.id,
         })
-
         for line in self:
             if not line.stock_move_id:
                 move_vals = line._prepare_stock_move()
@@ -207,7 +211,11 @@ class ProjectTaskMaterial(models.Model):
         company_id = self.env['res.company']._company_default_get(
             'account.analytic.line')
         analytic_account = getattr(self.task_id, 'analytic_account_id', False)\
-            or self.task_id.project_id.analytic_account_id
+            or getattr(self.task_id.project_id, 'analytic_account_id', False)
+        if not analytic_account:
+            raise exceptions.Warning(
+                _("You must assign an analytic account for this task/project.")
+            )
         res = {
             'name': self.task_id.name + ': ' + product.name,
             'ref': self.task_id.name,
@@ -216,18 +224,64 @@ class ProjectTaskMaterial(models.Model):
             'account_id': analytic_account.id,
             'user_id': self._uid,
             'product_uom_id': self.product_uom_id.id,
+            'company_id': analytic_account.company_id.id or
+            self.env.user.company_id.id,
+            'partner_id': self.task_id.partner_id.id or
+            self.task_id.project_id.partner_id.id or None,
+            'task_material_id': [(6, 0, [self.id])],
         }
         amount_unit = \
             self.product_id.with_context(uom=self.product_uom_id.id).price_get(
                 'standard_price')[self.product_id.id]
         amount = amount_unit * self.quantity or 0.0
         result = round(amount, company_id.currency_id.decimal_places) * -1
-        res.update({'amount': result})
+        vals = {'amount': result}
+        if 'employee_id' in self.env['account.analytic.line']._fields:
+            vals['employee_id'] = \
+                self.env['hr.employee'].search([
+                    ('user_id', '=', self.task_id.user_id.id)
+                ], limit=1).id
+        res.update(vals)
         return res
 
     @api.multi
     def create_analytic_line(self):
         for line in self:
-            move_id = self.env['account.analytic.line'].create(
+            self.env['account.analytic.line'].create(
                 line._prepare_analytic_line())
-            line.analytic_line_id = move_id.id
+
+    @api.multi
+    def unlink_stock_move(self):
+        if not self.stock_move_id.state == 'done':
+            if self.stock_move_id.state == 'assigned':
+                self.stock_move_id._do_unreserve()
+            if self.stock_move_id.state in (
+               'waiting', 'confirmed', 'assigned'):
+                self.stock_move_id.write({'state': 'draft'})
+            picking_id = self.stock_move_id.picking_id
+            self.stock_move_id.unlink()
+            if not picking_id.move_line_ids_without_package and \
+               picking_id.state == 'draft':
+                picking_id.unlink()
+
+    @api.multi
+    def _update_unit_amount(self):
+        # The analytical amount is updated with the value of the
+        # stock movement, because if the product has a tracking by
+        # lot / serial number, the cost when creating the
+        # analytical line is not correct.
+        for sel in self.filtered(
+           lambda x: x.stock_move_id.state == 'done' and
+           x.analytic_line_id.amount != x.stock_move_id.value):
+            sel.analytic_line_id.amount = sel.stock_move_id.value
+
+    @api.multi
+    def unlink(self):
+        self.unlink_stock_move()
+        if self.stock_move_id:
+            raise exceptions.Warning(
+                _("You can't delete a consumed material if already "
+                  "have stock movements done.")
+            )
+        self.analytic_line_id.unlink()
+        return super(ProjectTaskMaterial, self).unlink()
