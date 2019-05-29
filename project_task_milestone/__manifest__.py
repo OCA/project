@@ -8,8 +8,9 @@
     "depends": [
         "project",
     ],
-    "author": "AvanzOSC",
-    "website": "http://www.avanzosc.es",
+    "author": "AvanzOSC,"
+              "Odoo Community Association (OCA)",
+    "website": "https://github.com/OCA/project",
     "category": "Project",
     "data": [
         "security/ir.model.access.csv",
