@@ -19,7 +19,7 @@ class ProjectProject(models.Model):
     @api.model
     def _get_default_phase_id(self):
         """ Gives default stage_id """
-        return self.env['project.phase'].search([('sequence', '=', '1')])
+        return self.env['project.phase'].search([], order='sequence', limit=1)
 
     phase_id = fields.Many2one(
         comodel_name='project.phase', string='Phase',
