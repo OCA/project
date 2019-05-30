@@ -26,17 +26,20 @@ class TestProjectPurchaseUtilities(common.SavepointCase):
             'invoice_status': 'to invoice',
         })
         self.assertFalse(self.project.purchase_count)
-        self.assertFalse(self.project.purchase_line_count)
+        self.assertFalse(self.project.purchase_line_total)
         self.assertFalse(self.project.purchase_invoice_count)
-        self.assertFalse(self.project.purchase_invoice_line_count)
+        self.assertFalse(self.project.purchase_invoice_line_total)
         self.purchase.order_line[:1].write({
             'account_analytic_id': self.project.analytic_account_id.id,
+            'price_unit': 50,
+            'product_qty': 4,
+            'qty_received': 4,
         })
         self.project.invalidate_cache()
         self.assertEquals(self.project.purchase_count, 1)
-        self.assertEquals(self.project.purchase_line_count, 1)
+        self.assertEquals(self.project.purchase_line_total, 200)
         self.assertFalse(self.project.purchase_invoice_count)
-        self.assertFalse(self.project.purchase_invoice_line_count)
+        self.assertFalse(self.project.purchase_invoice_line_total)
         self.purchase.button_confirm()
         invoice = self.invoice_model.create({
             'partner_id': self.purchase.partner_id.id,
@@ -46,7 +49,7 @@ class TestProjectPurchaseUtilities(common.SavepointCase):
         invoice.purchase_order_change()
         self.project.invalidate_cache()
         self.assertEquals(self.project.purchase_invoice_count, 1)
-        self.assertEquals(self.project.purchase_invoice_line_count, 1)
+        self.assertEquals(self.project.purchase_invoice_line_total, 200)
         purchase_domain = [
             ('account_analytic_id', 'in',
              self.project.mapped('analytic_account_id').ids)]
