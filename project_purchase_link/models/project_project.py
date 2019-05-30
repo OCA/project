@@ -10,30 +10,44 @@ class ProjectProject(models.Model):
     _inherit = 'project.project'
 
     purchase_count = fields.Integer(
-        compute='_compute_purchase_count', string='# Purchase')
-    purchase_line_count = fields.Integer(
-        compute='_compute_purchase_count', string='# Purchase')
+        compute='_compute_purchase_info', string='# Purchase')
+    purchase_line_total = fields.Integer(
+        compute='_compute_purchase_info', string='Purchase Total')
     purchase_invoice_count = fields.Integer(
-        compute='_compute_purchase_invoice_count', string='# Purchase Invoice')
-    purchase_invoice_line_count = fields.Integer(
-        compute='_compute_purchase_invoice_count', string='# Purchase Invoice')
+        compute='_compute_purchase_invoice_info', string='# Purchase Invoice')
+    purchase_invoice_line_total = fields.Float(
+        compute='_compute_purchase_invoice_info',
+        string='Purchase Invoice Total')
 
     @api.multi
-    def _compute_purchase_count(self):
+    def _compute_purchase_info(self):
         for project in self:
-            purchase_lines = self.env['purchase.order.line'].search([
-                ('account_analytic_id', '=', project.analytic_account_id.id)])
-            project.purchase_count = len(purchase_lines.mapped('order_id'))
-            project.purchase_line_count = len(purchase_lines)
+            groups = self.env['purchase.order.line'].read_group(
+                [('account_analytic_id', '=', project.analytic_account_id.id),
+                 ('order_id.state', '!=', 'cancel')],
+                ['price_subtotal'],
+                ['order_id'])
+            purchase_line_total = 0
+            for group in groups:
+                purchase_line_total += group['price_subtotal']
+
+            project.purchase_count = len(groups)
+            project.purchase_line_total = purchase_line_total
 
     @api.multi
-    def _compute_purchase_invoice_count(self):
+    def _compute_purchase_invoice_info(self):
         for project in self:
-            invoice_lines = self.env['account.invoice.line'].search([
-                ('account_analytic_id', '=', project.analytic_account_id.id)])
-            project.purchase_invoice_count = len(
-                invoice_lines.mapped('invoice_id'))
-            project.purchase_invoice_line_count = len(invoice_lines)
+            groups = self.env['account.invoice.line'].read_group(
+                [('account_analytic_id', '=', project.analytic_account_id.id),
+                 ('invoice_id.state', '!=', 'cancel')],
+                ['price_subtotal'],
+                ['invoice_id'])
+            purchase_invoice_line_total = 0
+            for group in groups:
+                purchase_invoice_line_total += group['price_subtotal']
+
+            project.purchase_invoice_count = len(groups)
+            project.purchase_invoice_line_total = purchase_invoice_line_total
 
     @api.multi
     def button_open_purchase_order(self):
