@@ -31,7 +31,7 @@ start/end dates.
 **Table of contents**
 
 .. contents::
-    :local:
+   :local:
 
 Configuration
 =============
