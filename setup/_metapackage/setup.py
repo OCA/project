@@ -13,6 +13,7 @@ setuptools.setup(
         'odoo12-addon-project_key',
         'odoo12-addon-project_milestone',
         'odoo12-addon-project_parent_task_filter',
+        'odoo12-addon-project_recalculate',
         'odoo12-addon-project_role',
         'odoo12-addon-project_stage_closed',
         'odoo12-addon-project_stage_state',
