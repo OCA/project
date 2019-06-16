@@ -21,28 +21,28 @@ msgstr ""
 "%100==4 ? 2 : 3);\n"
 
 #. module: project_recalculate
-#: model:ir.model.fields,help:project_recalculate.field_project_task_from_days
+#: model:ir.model.fields,help:project_recalculate.field_project_task__from_days
 msgid "Anticipation days from date begin or date end"
 msgstr "Pričakovano dni od začetnega ali končnega datuma"
 
 #. module: project_recalculate
-#: model:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
+#: model_terms:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
 msgid "Are you sure?"
 msgstr "Ste prepričani?"
 
 #. module: project_recalculate
-#: model:ir.model.fields,field_description:project_recalculate.field_project_project_calculation_type
-#: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard_calculation_type
+#: model:ir.model.fields,field_description:project_recalculate.field_project_project__calculation_type
+#: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__calculation_type
 msgid "Calculation type"
 msgstr "Tip kalkulacije"
 
 #. module: project_recalculate
-#: model:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
+#: model_terms:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
 msgid "Cancel"
 msgstr "Preklic"
 
 #. module: project_recalculate
-#: code:addons/project_recalculate/models/project_project.py:56
+#: code:addons/project_recalculate/models/project_project.py:51
 #, python-format
 msgid ""
 "Cannot recalculate project because your project doesn't have calculation "
@@ -52,7 +52,7 @@ msgstr ""
 "kalkulacije."
 
 #. module: project_recalculate
-#: code:addons/project_recalculate/models/project_project.py:64
+#: code:addons/project_recalculate/models/project_project.py:59
 #, python-format
 msgid "Cannot recalculate project because your project doesn't have date end."
 msgstr ""
@@ -60,7 +60,7 @@ msgstr ""
 "končnega datuma."
 
 #. module: project_recalculate
-#: code:addons/project_recalculate/models/project_project.py:60
+#: code:addons/project_recalculate/models/project_project.py:55
 #, python-format
 msgid ""
 "Cannot recalculate project because your project doesn't have date start."
@@ -69,17 +69,17 @@ msgstr ""
 "začetnega datuma."
 
 #. module: project_recalculate
-#: model:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
+#: model_terms:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
 msgid "Continue"
 msgstr "Nadaljuj"
 
 #. module: project_recalculate
-#: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard_create_uid
+#: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__create_uid
 msgid "Created by"
 msgstr "Ustvaril"
 
 #. module: project_recalculate
-#: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard_create_date
+#: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__create_date
 msgid "Created on"
 msgstr "Ustvarjeno"
 
@@ -94,45 +94,45 @@ msgid "Date end"
 msgstr "Končni datum"
 
 #. module: project_recalculate
-#: model:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
+#: model_terms:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
 msgid "Date reference"
 msgstr "Sklic datuma"
 
 #. module: project_recalculate
-#: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard_display_name
+#: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__display_name
 msgid "Display Name"
 msgstr "Prikazni naziv"
 
 #. module: project_recalculate
-#: code:addons/project_recalculate/models/project_task.py:185
+#: code:addons/project_recalculate/models/project_task.py:184
 #, python-format
 msgid "End Date field must be defined."
 msgstr "Končni datum mora biti določen."
 
 #. module: project_recalculate
-#: model:ir.model.fields,field_description:project_recalculate.field_project_task_estimated_days
+#: model:ir.model.fields,field_description:project_recalculate.field_project_task__estimated_days
 msgid "Estimated days"
 msgstr "Ocena št. dni"
 
 #. module: project_recalculate
-#: code:addons/project_recalculate/models/project_task.py:31
+#: code:addons/project_recalculate/models/project_task.py:32
 #, python-format
 msgid "Estimated days must be greater than 0."
 msgstr "Ocena št. dni mora biti večja od 0."
 
 #. module: project_recalculate
-#: model:ir.model.fields,help:project_recalculate.field_project_task_estimated_days
+#: model:ir.model.fields,help:project_recalculate.field_project_task__estimated_days
 msgid "Estimated days to end"
 msgstr "Ocena dni do konca"
 
 #. module: project_recalculate
-#: model:ir.model.fields,field_description:project_recalculate.field_project_task_from_days
+#: model:ir.model.fields,field_description:project_recalculate.field_project_task__from_days
 msgid "From days"
 msgstr "Dni od"
 
 #. module: project_recalculate
-#: model:ir.model.fields,help:project_recalculate.field_project_project_calculation_type
-#: model:ir.model.fields,help:project_recalculate.field_project_recalculate_wizard_calculation_type
+#: model:ir.model.fields,help:project_recalculate.field_project_project__calculation_type
+#: model:ir.model.fields,help:project_recalculate.field_project_recalculate_wizard__calculation_type
 msgid ""
 "How to calculate tasks, with date start or date end references. If not set, "
 "\"Recalculate project\" button is disabled."
@@ -141,13 +141,13 @@ msgstr ""
 "nastavljeno, je gumb 'Ponovna kalkulacija projekta' onemogočen."
 
 #. module: project_recalculate
-#: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard_id
+#: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__id
 msgid "ID"
 msgstr "ID"
 
 #. module: project_recalculate
-#: model:ir.model.fields,help:project_recalculate.field_project_task_include_in_recalculate
-#: model:ir.model.fields,help:project_recalculate.field_project_task_type_include_in_recalculate
+#: model:ir.model.fields,help:project_recalculate.field_project_task__include_in_recalculate
+#: model:ir.model.fields,help:project_recalculate.field_project_task_type__include_in_recalculate
 msgid ""
 "If you mark this check, tasks that are in this stage will be selectable for "
 "recalculating their dates when user click on 'Recalculate project' button."
@@ -157,38 +157,41 @@ msgstr ""
 "projekta'."
 
 #. module: project_recalculate
-#: model:ir.model.fields,field_description:project_recalculate.field_project_task_include_in_recalculate
-#: model:ir.model.fields,field_description:project_recalculate.field_project_task_type_include_in_recalculate
+#: model:ir.model.fields,field_description:project_recalculate.field_project_task__include_in_recalculate
+#: model:ir.model.fields,field_description:project_recalculate.field_project_task_type__include_in_recalculate
 msgid "Include in project recalculate"
 msgstr "Vključi v ponovno kalkulacijo projekta"
 
 #. module: project_recalculate
-#: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard___last_update
+#: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard____last_update
 msgid "Last Modified on"
 msgstr "Zadnjič spremenjeno"
 
 #. module: project_recalculate
-#: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard_write_uid
+#: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__write_uid
 msgid "Last Updated by"
 msgstr "Zadnjič posodobil"
 
 #. module: project_recalculate
-#: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard_write_date
+#: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__write_date
 msgid "Last Updated on"
 msgstr "Zadnjič posodobljeno"
 
 #. module: project_recalculate
-#: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard_project_id
+#: model:ir.model,name:project_recalculate.model_project_project
+#: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__project_id
 msgid "Project"
 msgstr "Projekt"
 
 #. module: project_recalculate
-#: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard_project_date
-msgid "Project date"
+#: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__project_date
+#, fuzzy
+#| msgid "Project date"
+msgid "Project Date"
 msgstr "Datum projekta"
 
 #. module: project_recalculate
-#: model:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
+#: model_terms:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
 msgid "Project name"
 msgstr "Naziv projekta"
 
@@ -198,18 +201,25 @@ msgid "Project recalculate"
 msgstr "Ponovna kalkulacija projekta"
 
 #. module: project_recalculate
-#: model:ir.ui.view,arch_db:project_recalculate.edit_project_recalculate
-#: model:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
+#: model:ir.model,name:project_recalculate.model_project_recalculate_wizard
+#, fuzzy
+#| msgid "project.recalculate.wizard"
+msgid "Project recalculate wizard"
+msgstr "project.recalculate.wizard"
+
+#. module: project_recalculate
+#: model_terms:ir.ui.view,arch_db:project_recalculate.edit_project_recalculate
+#: model_terms:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
 msgid "Recalculate project"
 msgstr "Ponovna kalkulacija projekta"
 
 #. module: project_recalculate
 #: model:ir.model,name:project_recalculate.model_resource_calendar
-msgid "Resource Calendar"
-msgstr "Koledar virov"
+msgid "Resource Working Time"
+msgstr ""
 
 #. module: project_recalculate
-#: code:addons/project_recalculate/models/project_task.py:178
+#: code:addons/project_recalculate/models/project_task.py:177
 #, python-format
 msgid "Start Date field must be defined."
 msgstr "Začetni datum mora biti določen."
@@ -225,16 +235,9 @@ msgid "Task Stage"
 msgstr "Stopnja opravila"
 
 #. module: project_recalculate
-#: model:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
+#: model_terms:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
 msgid "This Project task will be recalculated according reference date:"
 msgstr "Ta projekt bo ponovno preračunan glede na referenčni datum:"
 
-#. module: project_recalculate
-#: model:ir.model,name:project_recalculate.model_project_project
-msgid "WBS element"
-msgstr ""
-
-#. module: project_recalculate
-#: model:ir.model,name:project_recalculate.model_project_recalculate_wizard
-msgid "project.recalculate.wizard"
-msgstr "project.recalculate.wizard"
+#~ msgid "Resource Calendar"
+#~ msgstr "Koledar virov"
