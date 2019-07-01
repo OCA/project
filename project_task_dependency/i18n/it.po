@@ -9,35 +9,36 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-01-13 03:39+0000\n"
-"PO-Revision-Date: 2017-01-13 03:39+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"PO-Revision-Date: 2019-07-01 11:42+0000\n"
+"Last-Translator: Nicolò Crisafulli <nicolo.crisafulli@agilebg.com>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.7.1\n"
 
 #. module: project_task_dependency
 #: model:ir.model.fields,field_description:project_task_dependency.field_project_task_dependency_task_ids
 #: model:ir.ui.view,arch_db:project_task_dependency.project_task_form
 msgid "Dependencies"
-msgstr ""
+msgstr "Dipendenza"
 
 #. module: project_task_dependency
 #: model:ir.model.fields,field_description:project_task_dependency.field_project_task_depending_task_ids
 msgid "Depending Tasks"
-msgstr ""
+msgstr "Attività dipendente"
 
 #. module: project_task_dependency
 #: model:ir.model.fields,field_description:project_task_dependency.field_project_task_recursive_dependency_task_ids
 msgid "Recursive Dependencies"
-msgstr ""
+msgstr "Dipendenze ricorsive"
 
 #. module: project_task_dependency
 #: model:ir.model.fields,field_description:project_task_dependency.field_project_task_recursive_depending_task_ids
 msgid "Recursive Depending Tasks"
-msgstr ""
+msgstr "Attività dipendente ricorsiva"
 
 #. module: project_task_dependency
 #: model:ir.model,name:project_task_dependency.model_project_task
@@ -47,15 +48,15 @@ msgstr "Attività"
 #. module: project_task_dependency
 #: model:ir.model.fields,help:project_task_dependency.field_project_task_recursive_depending_task_ids
 msgid "Tasks that are dependent on this task (recursive)."
-msgstr ""
+msgstr "Attività che sono dipendenti in questa attività (ricorsiva)."
 
 #. module: project_task_dependency
 #: model:ir.model.fields,help:project_task_dependency.field_project_task_depending_task_ids
 msgid "Tasks that are dependent on this task."
-msgstr ""
+msgstr "Attività che sono dipendenti in questa attività."
 
 #. module: project_task_dependency
 #: code:addons/project_task_dependency/models/project_task.py:71
 #, python-format
 msgid "You cannot create recursive tasks."
-msgstr ""
+msgstr "Non puoi creare un'attività ricorsiva."
