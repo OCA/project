@@ -15,22 +15,18 @@
                     <field
                         name="company_id"
                         groups="base.group_multi_company"
-                        options="{'no_create': True}"
                     />
                     <field
                         name="project_id"
                         domain="[('active', '=', True)]"
-                        options="{'no_create': True}"
                         invisible="context.get('default_project_id', False)"
                     />
                     <field
                         name="role_id"
-                        options="{'no_create': True}"
                     />
                     <field
                         name="user_id"
                         domain="[('active', '=', True)]"
-                        options="{'no_create': True}"
                     />
                 </group>
                 <notebook/>
@@ -55,22 +51,18 @@
                 <field
                     name="company_id"
                     groups="base.group_multi_company"
-                    options="{'no_create': True}"
                 />
                 <field
                     name="project_id"
                     domain="[('active', '=', True)]"
-                    options="{'no_create': True}"
                     invisible="context.get('default_project_id', False)"
                 />
                 <field
                     name="role_id"
-                    options="{'no_create': True}"
                 />
                 <field
                     name="user_id"
                     domain="[('active', '=', True)]"
-                    options="{'no_create': True}"
                 />
             </tree>
         </field>
