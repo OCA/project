@@ -10,7 +10,7 @@
         <field name="model">project.role</field>
         <field name="arch" type="xml">
             <tree string="Project Roles">
-                <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+                <field name="company_id" groups="base.group_multi_company"/>
                 <field name="name"/>
                 <field name="description" invisible="1"/>
             </tree>
@@ -23,7 +23,7 @@
         <field name="arch" type="xml">
             <form string="Project Role">
                 <group>
-                    <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+                    <field name="company_id" groups="base.group_multi_company"/>
                     <field name="name"/>
                     <field name="description"/>
                 </group>
