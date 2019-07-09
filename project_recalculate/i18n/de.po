@@ -9,14 +9,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-22 01:55+0000\n"
-"PO-Revision-Date: 2017-12-22 01:55+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"PO-Revision-Date: 2019-07-12 15:43+0000\n"
+"Last-Translator: Maria Sparenberg <maria.sparenberg@gmx.net>\n"
 "Language-Team: German (https://www.transifex.com/oca/teams/23907/de/)\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.7.1\n"
 
 #. module: project_recalculate
 #: model:ir.model.fields,help:project_recalculate.field_project_task__from_days
@@ -104,7 +105,7 @@ msgstr "Anzeigename"
 #: code:addons/project_recalculate/models/project_task.py:184
 #, python-format
 msgid "End Date field must be defined."
-msgstr "Enddatum muss definiert sein"
+msgstr "Das Enddatum muss definiert sein."
 
 #. module: project_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_task__estimated_days
@@ -134,8 +135,9 @@ msgid ""
 "How to calculate tasks, with date start or date end references. If not set, "
 "\"Recalculate project\" button is disabled."
 msgstr ""
-"Ob Aufgaben mit Bezug auf Anfangs- oder Enddatum berechnet werden. Wenn "
-"nicht gesetzt, wird der Knopf \"Projekt neu kalkulieren' ausgeblendet."
+"Bitte die Berechnungsart zur Aufgabenterminierung mit Bezug auf Anfangs- "
+"oder Enddatum wählen. Wenn es nicht gesetzt ist, wird der Knopf \"Projekt "
+"neu kalkulieren' ausgeblendet."
 
 #. module: project_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__id
@@ -149,8 +151,8 @@ msgid ""
 "If you mark this check, tasks that are in this stage will be selectable for "
 "recalculating their dates when user click on 'Recalculate project' button."
 msgstr ""
-"Wenn gesetzt, können Aufgaben in dieser Phase über den Button 'Projekt neu "
-"kalkulieren' selektiert und berechnet werden. "
+"Wenn der Haken gesetzt ist, können Aufgaben in dieser Phase über den Button "
+"'Projekt neu kalkulieren' selektiert und berechnet werden."
 
 #. module: project_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_task__include_in_recalculate
@@ -166,12 +168,12 @@ msgstr "Zuletzt geändert am"
 #. module: project_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__write_uid
 msgid "Last Updated by"
-msgstr "Zuletzt geändert am"
+msgstr "Zuletzt aktualisiert von"
 
 #. module: project_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__write_date
 msgid "Last Updated on"
-msgstr "Zuletzt geändert am"
+msgstr "Zuletzt aktualisiert am"
 
 #. module: project_recalculate
 #: model:ir.model,name:project_recalculate.model_project_project
@@ -218,7 +220,7 @@ msgstr ""
 #: code:addons/project_recalculate/models/project_task.py:177
 #, python-format
 msgid "Start Date field must be defined."
-msgstr "Anfangsdatum muss definiert sein"
+msgstr "Das Startdatum muss gesetzt sein."
 
 #. module: project_recalculate
 #: model:ir.model,name:project_recalculate.model_project_task
@@ -233,7 +235,7 @@ msgstr "Aufgabenphase"
 #. module: project_recalculate
 #: model_terms:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
 msgid "This Project task will be recalculated according reference date:"
-msgstr ""
+msgstr "Die Projektenaufgaben werden gemäß des Referenzdatums neu terminiert:"
 
 #~ msgid "Resource Calendar"
 #~ msgstr "Ressourcenkalender"
