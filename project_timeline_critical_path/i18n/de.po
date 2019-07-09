@@ -6,56 +6,58 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2019-07-09 09:43+0000\n"
+"Last-Translator: Maria Sparenberg <maria.sparenberg@gmx.net>\n"
 "Language-Team: none\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.7.1\n"
 
 #. module: project_timeline_critical_path
 #: model:ir.model.fields,field_description:project_timeline_critical_path.field_res_company_critical_path_duration_base
 #: model:ir.model.fields,field_description:project_timeline_critical_path.field_res_config_settings_critical_path_duration_base
 msgid "Base project critical path on"
-msgstr ""
+msgstr "Berechnung des kritischen Pfads basiert auf"
 
 #. module: project_timeline_critical_path
 #: model:ir.model,name:project_timeline_critical_path.model_res_company
 msgid "Companies"
-msgstr ""
+msgstr "Unternehmen"
 
 #. module: project_timeline_critical_path
 #: model:ir.model.fields,field_description:project_timeline_critical_path.field_project_task_critical_path_duration
 msgid "Critical Path Duration"
-msgstr ""
+msgstr "Dauer des kritischen Pfads"
 
 #. module: project_timeline_critical_path
 #: selection:res.company,critical_path_duration_base:0
 msgid "Initially planned hours"
-msgstr ""
+msgstr "geplante Stunden"
 
 #. module: project_timeline_critical_path
 #: model:ir.model,name:project_timeline_critical_path.model_project_project
 msgid "Project"
-msgstr ""
+msgstr "Projekt"
 
 #. module: project_timeline_critical_path
 #: selection:res.company,critical_path_duration_base:0
 msgid "Start and end date"
-msgstr ""
+msgstr "Start- und Enddatum"
 
 #. module: project_timeline_critical_path
 #: model:ir.model,name:project_timeline_critical_path.model_project_task
 msgid "Task"
-msgstr ""
+msgstr "Aufgabe"
 
 #. module: project_timeline_critical_path
 #: model:ir.ui.view,arch_db:project_timeline_critical_path.res_config_settings_view_form
 msgid "The way to calculate the project critical path."
-msgstr ""
+msgstr "Bitte hier die Berechnungsart für den kritischen Pfad wählen."
 
 #. module: project_timeline_critical_path
 #: model:ir.model,name:project_timeline_critical_path.model_res_config_settings
 msgid "res.config.settings"
-msgstr ""
+msgstr "res.config.settings"
