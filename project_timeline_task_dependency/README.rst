@@ -29,7 +29,7 @@ This module shows arrows between tasks and their dependencies (on the timeline v
 
 Like this:
 
-.. image:: https://raw.githubusercontent.com/project_timeline_task_dependency/static/description/screenshot.png
+.. image:: https://raw.githubusercontent.com/OCA/project/12.0/project_timeline_task_dependency/static/description/screenshot.png
     :alt: Screenshot
 
 **Table of contents**
