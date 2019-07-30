@@ -3,7 +3,7 @@
 
 {
     "name": "Project Purchase Link",
-    "version": "12.0.1.1.1",
+    "version": "12.0.1.0.0",
     "license": "AGPL-3",
     "depends": [
         "project",
