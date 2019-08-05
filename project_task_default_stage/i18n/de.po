@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: project (9.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-04-21 10:57+0000\n"
-"PO-Revision-Date: 2019-03-23 08:14+0000\n"
-"Last-Translator: Ben Brich <b.brich@humanilog.org>\n"
+"PO-Revision-Date: 2019-07-09 09:43+0000\n"
+"Last-Translator: Maria Sparenberg <maria.sparenberg@gmx.net>\n"
 "Language-Team: German (http://www.transifex.com/oca/OCA-project-9-0/language/"
 "de/)\n"
 "Language: de\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.5.1\n"
+"X-Generator: Weblate 3.7.1\n"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_analysis
@@ -68,8 +68,8 @@ msgid ""
 "If you check this field, this stage will be proposed by default on each new "
 "project. It will not assign this stage to existing projects."
 msgstr ""
-"Wenn Sie dieses Feld anwählen, wird diese Stufe per Vorgabe in jedem Projekt "
-"vorgeschlagen. Bestehenden Projekten wird diese Stufe nicht hinzugefügt."
+"Wenn der Haken gesetzt ist, wird diese Stufe standardmäßig für jedes neue "
+"Projekt verwendet. Bestehenden Projekten wird diese Stufe nicht hinzugefügt."
 
 #. module: project_task_default_stage
 #: model:project.task.type,legend_normal:project_task_default_stage.project_tt_analysis
@@ -108,7 +108,7 @@ msgstr "Projektstufen"
 #: model:project.task.type,legend_done:project_task_default_stage.project_tt_specification
 #: model:project.task.type,legend_done:project_task_default_stage.project_tt_testing
 msgid "Ready for Next Stage"
-msgstr "Bereit für die nächste Sufe"
+msgstr "Bereit für die nächste Stufe"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_specification

@@ -10,15 +10,16 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-02 01:51+0000\n"
-"PO-Revision-Date: 2018-02-02 01:51+0000\n"
-"Last-Translator: Matjaž Mozetič <m.mozetic@matmoz.si>, 2018\n"
+"PO-Revision-Date: 2019-07-24 18:43+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@matmoz.si>\n"
 "Language-Team: Slovenian (https://www.transifex.com/oca/teams/23907/sl/)\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
-"%100==4 ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
+"n%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 3.7.1\n"
 
 #. module: project_timesheet_time_control
 #: model:ir.ui.view,arch_db:project_timesheet_time_control.view_task_form2_inherited
@@ -26,6 +27,8 @@ msgid ""
 "<i class=\"fa fa-stop-circle\"/>\n"
 "                                            Stop"
 msgstr ""
+"<i class=\"fa fa-stop-circle\"/>\n"
+"                                            Stop"
 
 #. module: project_timesheet_time_control
 #: model:ir.ui.view,arch_db:project_timesheet_time_control.view_kanban_account_analytic_line
@@ -33,11 +36,13 @@ msgid ""
 "<i class=\"fa fa-stop-circle\"/>\n"
 "                                Stop"
 msgstr ""
+"<i class=\"fa fa-stop-circle\"/>\n"
+"                                Stop"
 
 #. module: project_timesheet_time_control
 #: model:ir.ui.view,arch_db:project_timesheet_time_control.view_task_form2_inherited
 msgid "<strong>Duration: </strong>"
-msgstr ""
+msgstr "<strong>Trajanje: </strong>"
 
 #. module: project_timesheet_time_control
 #: model:ir.model,name:project_timesheet_time_control.model_account_analytic_line
@@ -63,7 +68,7 @@ msgstr "Datum"
 #: model:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_line_form
 #: model:ir.ui.view,arch_db:project_timesheet_time_control.view_task_form2_inherited
 msgid "Duration"
-msgstr ""
+msgstr "Trajanje"
 
 #. module: project_timesheet_time_control
 #: model:ir.ui.view,arch_db:project_timesheet_time_control.account_analytic_line_tree
@@ -76,6 +81,8 @@ msgid ""
 "Open/Close timesheet line automatically open/close its tasks. Do you want to "
 "proceed?"
 msgstr ""
+"Odprtje/zaprtje postavke časovnice samodejno odpre/zapre povezana opravila. "
+"Želite nadaljevati?"
 
 #. module: project_timesheet_time_control
 #: model:ir.ui.view,arch_db:project_timesheet_time_control.account_analytic_line_tree

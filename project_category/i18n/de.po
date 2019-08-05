@@ -1,0 +1,129 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* project_category
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2019-07-12 15:43+0000\n"
+"Last-Translator: Maria Sparenberg <maria.sparenberg@gmx.net>\n"
+"Language-Team: none\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.7.1\n"
+
+#. module: project_category
+#: model:ir.ui.view,arch_db:project_category.project_type_form
+msgid "Add a description..."
+msgstr "Beschreibung hinzufügen ..."
+
+#. module: project_category
+#: model:ir.model.fields,field_description:project_category.field_project_type_project_ok
+#: model:ir.ui.view,arch_db:project_category.project_type_search
+msgid "Can be applied for projects"
+msgstr "für Projekte verwenden"
+
+#. module: project_category
+#: model:ir.model.fields,field_description:project_category.field_project_type_task_ok
+#: model:ir.ui.view,arch_db:project_category.project_type_search
+msgid "Can be applied for tasks"
+msgstr "für Aufgaben verwenden"
+
+#. module: project_category
+#: model:ir.model.fields,field_description:project_category.field_project_type_complete_name
+msgid "Complete Name"
+msgstr "Vollständige Bezeichnung"
+
+#. module: project_category
+#: model:ir.model.fields,field_description:project_category.field_project_type_create_uid
+msgid "Created by"
+msgstr "Erstellt von"
+
+#. module: project_category
+#: model:ir.model.fields,field_description:project_category.field_project_type_create_date
+msgid "Created on"
+msgstr "Erstellt am"
+
+#. module: project_category
+#: model:ir.model.fields,field_description:project_category.field_project_type_description
+#: model:ir.ui.view,arch_db:project_category.project_type_form
+msgid "Description"
+msgstr "Beschreibung"
+
+#. module: project_category
+#: model:ir.model.fields,field_description:project_category.field_project_type_display_name
+msgid "Display Name"
+msgstr "Anzeigename"
+
+#. module: project_category
+#: model:ir.model.fields,field_description:project_category.field_project_type_id
+msgid "ID"
+msgstr "ID"
+
+#. module: project_category
+#: model:ir.model.fields,field_description:project_category.field_project_type___last_update
+msgid "Last Modified on"
+msgstr "Zuletzt geändert am"
+
+#. module: project_category
+#: model:ir.model.fields,field_description:project_category.field_project_type_write_uid
+msgid "Last Updated by"
+msgstr "Zuletzt aktualisiert von"
+
+#. module: project_category
+#: model:ir.model.fields,field_description:project_category.field_project_type_write_date
+msgid "Last Updated on"
+msgstr "Zuletzt aktualisiert am"
+
+#. module: project_category
+#: model:ir.model.fields,field_description:project_category.field_project_type_name
+msgid "Name"
+msgstr "Bezeichnung"
+
+#. module: project_category
+#: model:ir.model.fields,field_description:project_category.field_project_type_parent_id
+msgid "Parent Type"
+msgstr "Übergeordneter Typ"
+
+#. module: project_category
+#: model:ir.model,name:project_category.model_project_project
+msgid "Project"
+msgstr "Projekt"
+
+#. module: project_category
+#: model:ir.model,name:project_category.model_project_type
+#: model:ir.ui.menu,name:project_category.project_category
+msgid "Project Type"
+msgstr "Projekttyp"
+
+#. module: project_category
+#: model:ir.model.fields,field_description:project_category.field_project_type_child_ids
+#: model:ir.ui.view,arch_db:project_category.project_type_form
+msgid "Subtypes"
+msgstr "Untergeordnete Typen"
+
+#. module: project_category
+#: model:ir.model,name:project_category.model_project_task
+msgid "Task"
+msgstr "Aufgabe"
+
+#. module: project_category
+#: model:ir.actions.act_window,name:project_category.action_project_type
+#: model:ir.model.fields,field_description:project_category.field_project_project_type_id
+#: model:ir.model.fields,field_description:project_category.field_project_task_type_id_5025
+#: model:ir.ui.view,arch_db:project_category.project_search
+#: model:ir.ui.view,arch_db:project_category.project_task_search
+#: model:ir.ui.view,arch_db:project_category.project_type_form
+#: model:ir.ui.view,arch_db:project_category.project_type_search
+msgid "Type"
+msgstr "Typ"
+
+#. module: project_category
+#: code:addons/project_category/models/project_type.py:44
+#, python-format
+msgid "You cannot create recursive project types."
+msgstr "Es können keine rekursiven Projekttypen erstellt werden."

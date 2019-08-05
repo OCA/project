@@ -1,0 +1,27 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* project_task_type_active
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2019-07-09 09:43+0000\n"
+"Last-Translator: Maria Sparenberg <maria.sparenberg@gmx.net>\n"
+"Language-Team: none\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.7.1\n"
+
+#. module: project_task_type_active
+#: model:ir.model.fields,field_description:project_task_type_active.field_project_task_type_active
+msgid "Active"
+msgstr "Aktiv"
+
+#. module: project_task_type_active
+#: model:ir.model,name:project_task_type_active.model_project_task_type
+msgid "Task Stage"
+msgstr "Aufgabenstufe"
