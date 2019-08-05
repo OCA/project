@@ -21,6 +21,31 @@ msgstr ""
 "%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #. module: project_task_add_very_high
+#: selection:project.task,priority:0
+msgid "High"
+msgstr ""
+
+#. module: project_task_add_very_high
+#: selection:project.task,priority:0
+msgid "Low"
+msgstr ""
+
+#. module: project_task_add_very_high
+#: selection:project.task,priority:0
+msgid "Normal"
+msgstr ""
+
+#. module: project_task_add_very_high
+#: model:ir.model.fields,field_description:project_task_add_very_high.field_project_task__priority
+msgid "Priority"
+msgstr ""
+
+#. module: project_task_add_very_high
 #: model:ir.model,name:project_task_add_very_high.model_project_task
 msgid "Task"
 msgstr "Zadanie"
+
+#. module: project_task_add_very_high
+#: selection:project.task,priority:0
+msgid "Very High"
+msgstr ""
