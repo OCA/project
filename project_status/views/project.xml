@@ -54,6 +54,9 @@
     <field name="inherit_id" ref="project.view_project_kanban"/>
     <field name="arch" type="xml">
       <data>
+        <xpath expr="/kanban" position="attributes">
+          <attribute name="default_group_by">project_status</attribute>
+        </xpath>
         <xpath expr="//div[hasclass('o_primary')]" position="after">
           <div>
             <t t-if="record.project_status.raw_value">
