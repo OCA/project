@@ -24,11 +24,14 @@
     <field name="inherit_id" ref="project.edit_project"/>
     <field name="type">form</field>
     <field name="arch" type="xml">
-      <field name="privacy_visibility" position="before">
-        <field name="tag_ids"
-               widget="many2many_tags"
-               options="{'color_field': 'color'}"/>
-      </field>
+      <xpath expr="//div[hasclass('oe_title')]/h1[./field[@name='name']]" position="after">
+        <h4>
+            <field name="tag_ids"
+                   placeholder="Tags..."
+                   widget="many2many_tags"
+                   options="{'color_field': 'color'}"/>
+        </h4>
+      </xpath>
     </field>
   </record>
 
