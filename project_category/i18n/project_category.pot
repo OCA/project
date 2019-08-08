@@ -111,7 +111,7 @@ msgstr ""
 #. module: project_category
 #: model:ir.actions.act_window,name:project_category.action_project_type
 #: model:ir.model.fields,field_description:project_category.field_project_project_type_id
-#: model:ir.model.fields,field_description:project_category.field_project_task_type_id_5025
+#: model:ir.model.fields,field_description:project_category.field_project_task_type_id_5087
 #: model:ir.ui.view,arch_db:project_category.project_search
 #: model:ir.ui.view,arch_db:project_category.project_task_search
 #: model:ir.ui.view,arch_db:project_category.project_type_form
