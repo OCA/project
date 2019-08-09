@@ -28,3 +28,13 @@ class ProjectTask(models.Model):
             default = {}
         default['code'] = self.env['ir.sequence'].next_by_code('project.task')
         return super(ProjectTask, self).copy(default)
+    
+    def name_get(self):
+        result = super().name_get()
+        new_result = []
+
+        for task in result:
+            rec = self.browse(task[0])
+            name = '[%s] %s' % (rec.code, task[1])
+            new_result.append((rec.id, name))
+        return new_result   
