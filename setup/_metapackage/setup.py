@@ -11,6 +11,7 @@ setuptools.setup(
         'odoo12-addon-project_category',
         'odoo12-addon-project_description',
         'odoo12-addon-project_key',
+        'odoo12-addon-project_list',
         'odoo12-addon-project_milestone',
         'odoo12-addon-project_parent_task_filter',
         'odoo12-addon-project_recalculate',
