@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!--
     Copyright 2018-2019 Brainbean Apps (https://brainbeanapps.com)
-    License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+    License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 -->
 <odoo>
 
@@ -9,34 +9,36 @@
         <field name="name">project.assignment.form</field>
         <field name="model">project.assignment</field>
         <field name="arch" type="xml">
-            <form string="Project Assignment">
+            <form>
                 <header/>
-                <group>
-                    <field
-                        name="company_id"
-                        groups="base.group_multi_company"
-                    />
-                    <field
-                        name="project_id"
-                        domain="[('active', '=', True)]"
-                        invisible="context.get('default_project_id', False)"
-                    />
-                    <field
-                        name="role_id"
-                    />
-                    <field
-                        name="user_id"
-                        domain="[('active', '=', True)]"
-                    />
-                </group>
-                <notebook/>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" type="object" name="toggle_active" icon="fa-archive">
+                            <field name="active" widget="boolean_button" options='{"terminology": "active"}'/>
+                        </button>
+                    </div>
+                    <group>
+                        <field
+                            name="company_id"
+                            groups="base.group_multi_company"
+                        />
+                        <field
+                            name="project_id"
+                            domain="[('active', '=', True)]"
+                            invisible="context.get('default_project_id', False)"
+                        />
+                        <field
+                            name="role_id"
+                        />
+                        <field
+                            name="user_id"
+                            domain="[('active', '=', True)]"
+                        />
+                    </group>
+                    <notebook/>
+                </sheet>
                 <div class="oe_chatter">
-                    <field
-                        name="message_follower_ids"
-                        widget="mail_followers"
-                        groups="base.group_user"
-                    />
-                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_follower_ids" widget="mail_followers" />
                     <field name="message_ids" widget="mail_thread"/>
                 </div>
             </form>
@@ -47,7 +49,7 @@
         <field name="name">project.assignment.tree</field>
         <field name="model">project.assignment</field>
         <field name="arch" type="xml">
-            <tree string="Project Assignments" editable="top">
+            <tree editable="top">
                 <field
                     name="company_id"
                     groups="base.group_multi_company"
@@ -72,7 +74,7 @@
         <field name="name">project.assignment.pivot</field>
         <field name="model">project.assignment</field>
         <field name="arch" type="xml">
-            <pivot string="Project Assignment">
+            <pivot>
                 <field name="company_id" groups="base.group_multi_company"/>
                 <field name="project_id"/>
                 <field name="user_id" type="row"/>
@@ -124,12 +126,16 @@
         <field name="name">project.assignment.search</field>
         <field name="model">project.assignment</field>
         <field name="arch" type="xml">
-            <search string="Assignments">
+            <search>
+                <field name="active"/>
                 <field name="company_id" groups="base.group_multi_company"/>
                 <field name="project_id"/>
                 <field name="role_id"/>
                 <field name="user_id"/>
                 <filter string="My Assignments" name="my_assignments" domain="[('user_id','=',uid)]"/>
+                <filter string="Company-Wide" name="companywide" domain="[('project_id','=',False)]"/>
+                <separator/>
+                <filter name="inactive" string="Inactive" domain="[('active','=',False)]"/>
                 <group expand="0" string="Group By">
                     <filter string="Project" name="groupby_project" context="{'group_by':'project_id'}"/>
                     <filter string="Role" name="groupby_role" context="{'group_by':'role_id'}"/>
