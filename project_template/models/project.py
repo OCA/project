@@ -17,7 +17,7 @@ class Project(models.Model):
                                          'active': True,
                                          'total_planned_hours': 0.0,
                                          'alias_name': False})
-        if new_project.subtask_project_id != new_project.id:
+        if new_project.subtask_project_id != new_project:
             new_project.subtask_project_id = new_project.id
 
         # SINCE THE END DATE DOESN'T COPY OVER ON TASKS
