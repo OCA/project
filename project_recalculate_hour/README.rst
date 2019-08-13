@@ -48,7 +48,7 @@ Credits
 Authors
 ~~~~~~~
 
-* Efatto.it
+* Sergio Corato
 
 Contributors
 ~~~~~~~~~~~~

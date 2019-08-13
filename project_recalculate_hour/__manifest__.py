@@ -5,7 +5,7 @@
 {
     "name": "Project Recalculate Hour",
     "version": "10.0.1.0.0",
-    "author": "Efatto.it, "
+    "author": "Sergio Corato, "
               "Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/project",
     "license": "AGPL-3",
