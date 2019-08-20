@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 11.0\n"
+"Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: <>\n"
 "Language-Team: \n"
@@ -14,38 +14,48 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: project_hr
-#: model:ir.model.fields,field_description:project_hr.field_project_task_allowed_hr_category_ids
+#: model:ir.model.fields,field_description:project_hr.field_project_task__allowed_hr_category_ids
 msgid "Allowed HR categories"
 msgstr ""
 
 #. module: project_hr
-#: model:ir.model.fields,field_description:project_hr.field_project_task_allowed_user_ids
+#: model:ir.model.fields,field_description:project_hr.field_project_task__allowed_user_ids
 msgid "Allowed users"
 msgstr ""
 
 #. module: project_hr
-#: model:ir.model.fields,field_description:project_hr.field_project_project_hr_category_ids
-#: model:ir.model.fields,field_description:project_hr.field_project_task_hr_category_ids
+#: model:ir.model.fields,field_description:project_hr.field_project_task__user_id
+msgid "Assigned to"
+msgstr ""
+
+#. module: project_hr
+#: model:ir.model,name:project_hr.model_hr_employee
+msgid "Employee"
+msgstr ""
+
+#. module: project_hr
+#: model:ir.model.fields,field_description:project_hr.field_project_project__hr_category_ids
+#: model:ir.model.fields,field_description:project_hr.field_project_task__hr_category_ids
 msgid "Employee Categories"
 msgstr ""
 
 #. module: project_hr
-#: model:ir.model.fields,field_description:project_hr.field_res_users_hr_category_ids
+#: model:ir.model.fields,field_description:project_hr.field_res_users__hr_category_ids
 msgid "HR categories"
 msgstr ""
 
 #. module: project_hr
-#: model:ir.model.fields,help:project_hr.field_project_project_hr_category_ids
+#: model:ir.model.fields,help:project_hr.field_project_project__hr_category_ids
 msgid "Here you can link the project to several employee categories, that will be the allowed in tasks."
 msgstr ""
 
 #. module: project_hr
-#: model:ir.model.fields,help:project_hr.field_project_task_hr_category_ids
+#: model:ir.model.fields,help:project_hr.field_project_task__hr_category_ids
 msgid "Here you can select the employee category suitable to perform this task, limiting the selectable users to be assigned to those that belongs to that category."
 msgstr ""
 
 #. module: project_hr
-#: model:ir.model.fields,field_description:project_hr.field_project_task_employee_id
+#: model:ir.model.fields,field_description:project_hr.field_project_task__employee_id
 msgid "Linked employee"
 msgstr ""
 
@@ -60,17 +70,17 @@ msgid "Task"
 msgstr ""
 
 #. module: project_hr
-#: model:ir.model.fields,help:project_hr.field_project_task_allowed_hr_category_ids
+#: model:ir.model.fields,help:project_hr.field_project_task__allowed_hr_category_ids
 msgid "Technical field for computing allowed employee categories according categories at project level."
 msgstr ""
 
 #. module: project_hr
-#: model:ir.model.fields,help:project_hr.field_project_task_allowed_user_ids
+#: model:ir.model.fields,help:project_hr.field_project_task__allowed_user_ids
 msgid "Technical field for computing allowed users according employee category."
 msgstr ""
 
 #. module: project_hr
-#: model:ir.model.fields,help:project_hr.field_res_users_hr_category_ids
+#: model:ir.model.fields,help:project_hr.field_res_users__hr_category_ids
 msgid "Technical field for computing dynamically employee categories linked to the user in the current company."
 msgstr ""
 
