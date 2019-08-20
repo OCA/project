@@ -46,6 +46,15 @@ class TestProjectHr(SavepointCase):
         self.assertEqual(
             self.user.hr_category_ids, self.hr_category + self.hr_category_2,
         )
+        self.hr_category_3 = self.env['hr.employee.category'].create({
+            'name': 'Test employee category 3',
+        })
+        # Check if need invalidate cache
+        self.employee.category_ids = [(4, self.hr_category_3.id)]
+        self.assertEqual(
+            self.user.hr_category_ids,
+            self.hr_category + self.hr_category_2 + self.hr_category_3,
+        )
 
     def test_task(self):
         self.assertEqual(self.task.employee_id, self.employee)
