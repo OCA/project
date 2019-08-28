@@ -55,7 +55,7 @@ class Task(models.Model):
     )
     analytic_account_id = fields.Many2one(
         comodel_name='account.analytic.account',
-        string='Analytic Account',
+        string='Move Analytic Account',
         help='Move created will be assigned to this analytic account',
     )
     analytic_line_ids = fields.Many2many(
@@ -116,7 +116,7 @@ class Task(models.Model):
                         todo_lines.create_analytic_line()
                 else:
                     if task.unlink_stock_move() and task.material_ids.mapped(
-                                'analytic_line_id'):
+                            'analytic_line_id'):
                         raise exceptions.Warning(
                             _("You can't move to a not consume stage if "
                               "there are already analytic lines")
@@ -270,9 +270,9 @@ class ProjectTaskMaterial(models.Model):
         # stock movement, because if the product has a tracking by
         # lot / serial number, the cost when creating the
         # analytical line is not correct.
-        for sel in self.filtered(
-           lambda x: x.stock_move_id.state == 'done' and
-           x.analytic_line_id.amount != x.stock_move_id.value):
+        for sel in self.filtered(lambda x: x.stock_move_id.state == 'done' and
+                                 x.analytic_line_id.amount !=
+                                 x.stock_move_id.value):
             sel.analytic_line_id.amount = sel.stock_move_id.value
 
     @api.multi
