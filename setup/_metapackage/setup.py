@@ -10,6 +10,7 @@ setuptools.setup(
     install_requires=[
         'odoo12-addon-project_category',
         'odoo12-addon-project_description',
+        'odoo12-addon-project_hr',
         'odoo12-addon-project_key',
         'odoo12-addon-project_list',
         'odoo12-addon-project_milestone',
