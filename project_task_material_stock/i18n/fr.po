@@ -20,18 +20,13 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. module: project_task_material_stock
-#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_analytic_account_id
-#, fuzzy
-msgid "Analytic Account"
-msgstr "Ligne analytique"
-
-#. module: project_task_material_stock
-#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_material_analytic_line_id
+#: model:ir.model,name:project_task_material_stock.model_account_analytic_line
+#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_material__analytic_line_id
 msgid "Analytic Line"
 msgstr "Ligne analytique"
 
 #. module: project_task_material_stock
-#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_analytic_line_ids
+#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task__analytic_line_ids
 msgid "Analytic Lines"
 msgstr "Lignes analytiques"
 
@@ -41,7 +36,7 @@ msgid "Assigned"
 msgstr "Assigné"
 
 #. module: project_task_material_stock
-#: model:ir.ui.view,arch_db:project_task_material_stock.view_project_task_form_material_stock
+#: model_terms:ir.ui.view,arch_db:project_task_material_stock.view_project_task_form_material_stock
 msgid "Check Availability"
 msgstr "Vérifier la disponibilité"
 
@@ -51,27 +46,25 @@ msgid "Confirmed"
 msgstr "Confirmé"
 
 #. module: project_task_material_stock
-#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_consume_material
-#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_type_consume_material
+#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task__consume_material
+#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_type__consume_material
 #, fuzzy
 msgid "Consume Material"
 msgstr "Consommer les matériaux"
 
 #. module: project_task_material_stock
-#: model:ir.model.fields,help:project_task_material_stock.field_project_project_location_source_id
-#: model:ir.model.fields,help:project_task_material_stock.field_project_task_location_source_id
+#: model:ir.model.fields,help:project_task_material_stock.field_project_project__location_source_id
 msgid "Default location from which materials are consumed."
 msgstr "Emplacement par défaut d'où les matériaux seront consommés."
 
 #. module: project_task_material_stock
-#: model:ir.model.fields,help:project_task_material_stock.field_project_project_location_dest_id
-#: model:ir.model.fields,help:project_task_material_stock.field_project_task_location_dest_id
+#: model:ir.model.fields,help:project_task_material_stock.field_project_project__location_dest_id
 msgid "Default location to which materials are consumed."
 msgstr "Emplacement par défaut pour les matériaux consommés."
 
 #. module: project_task_material_stock
-#: model:ir.model.fields,field_description:project_task_material_stock.field_project_project_location_dest_id
-#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_location_dest_id
+#: model:ir.model.fields,field_description:project_task_material_stock.field_project_project__location_dest_id
+#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task__location_dest_id
 msgid "Destination Location"
 msgstr "Emplacement de destination"
 
@@ -81,8 +74,8 @@ msgid "Done"
 msgstr "Terminé"
 
 #. module: project_task_material_stock
-#: model:ir.model.fields,help:project_task_material_stock.field_project_task_consume_material
-#: model:ir.model.fields,help:project_task_material_stock.field_project_task_type_consume_material
+#: model:ir.model.fields,help:project_task_material_stock.field_project_task__consume_material
+#: model:ir.model.fields,help:project_task_material_stock.field_project_task_type__consume_material
 msgid ""
 "If you mark this check, when a task goes to this state, it will consume the "
 "associated materials"
@@ -91,23 +84,35 @@ msgstr ""
 "consommer les matériaux associés"
 
 #. module: project_task_material_stock
-#: model:ir.ui.view,arch_db:project_task_material_stock.edit_project_consume_material
-#: model:ir.ui.view,arch_db:project_task_material_stock.view_project_task_form_material_stock
+#: model:ir.model.fields,help:project_task_material_stock.field_project_task__location_dest_id
+#: model:ir.model.fields,help:project_task_material_stock.field_project_task__location_source_id
+msgid "Keep this field empty to use the default value from the project."
+msgstr ""
+
+#. module: project_task_material_stock
+#: model_terms:ir.ui.view,arch_db:project_task_material_stock.edit_project_consume_material
+#: model_terms:ir.ui.view,arch_db:project_task_material_stock.view_project_task_form_material_stock
 msgid "Locations to consume"
 msgstr "Emplacement de consommation"
 
 #. module: project_task_material_stock
-#: model:ir.ui.view,arch_db:project_task_material_stock.view_project_task_form_material_stock
+#: model_terms:ir.ui.view,arch_db:project_task_material_stock.view_project_task_form_material_stock
 msgid "Materials consumed"
 msgstr "Matériaux consommés"
 
 #. module: project_task_material_stock
-#: model:ir.ui.view,arch_db:project_task_material_stock.view_project_task_form_material_stock
+#: model_terms:ir.ui.view,arch_db:project_task_material_stock.view_project_task_form_material_stock
 msgid "Materials used"
 msgstr "Matériaux utilisés"
 
 #. module: project_task_material_stock
-#: model:ir.model.fields,help:project_task_material_stock.field_project_task_analytic_account_id
+#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task__analytic_account_id
+#, fuzzy
+msgid "Move Analytic Account"
+msgstr "Ligne analytique"
+
+#. module: project_task_material_stock
+#: model:ir.model.fields,help:project_task_material_stock.field_project_task__analytic_account_id
 msgid "Move created will be assigned to this analytic account"
 msgstr ""
 
@@ -117,14 +122,24 @@ msgid "Pending"
 msgstr "En attente"
 
 #. module: project_task_material_stock
-#: model:ir.ui.view,arch_db:project_task_material_stock.view_project_task_form_material_stock
+#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_material__product_id
+#, fuzzy
+#| msgid "Products"
+msgid "Product"
+msgstr "Articles"
+
+#. module: project_task_material_stock
+#: model_terms:ir.ui.view,arch_db:project_task_material_stock.view_project_task_form_material_stock
 msgid "Products"
 msgstr "Articles"
 
 #. module: project_task_material_stock
-#: model:ir.model,name:project_task_material_stock.model_project_project
-msgid "Project"
-msgstr "Projet"
+#: model:ir.model.fields,field_description:project_task_material_stock.field_account_analytic_line__task_material_id
+#: model:ir.model.fields,field_description:project_task_material_stock.field_stock_move__task_material_id
+#, fuzzy
+#| msgid "Task Material Used"
+msgid "Project Task Material"
+msgstr "Matériaux utilisés pour la tâche"
 
 #. module: project_task_material_stock
 #: model:stock.picking.type,name:project_task_material_stock.project_task_material_picking_type
@@ -134,24 +149,30 @@ msgid "Project Task Material Operations"
 msgstr "Matériaux utilisés pour la tâche"
 
 #. module: project_task_material_stock
-#: model:ir.model.fields,field_description:project_task_material_stock.field_project_project_location_source_id
-#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_location_source_id
+#: model_terms:ir.ui.view,arch_db:project_task_material_stock.view_project_task_form_material_stock
+msgid "Register lots, packs, location"
+msgstr ""
+
+#. module: project_task_material_stock
+#: model:ir.model.fields,field_description:project_task_material_stock.field_project_project__location_source_id
+#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task__location_source_id
 msgid "Source Location"
 msgstr "Emplacement source"
 
 #. module: project_task_material_stock
-#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_material_stock_move_id
+#: model:ir.model,name:project_task_material_stock.model_stock_move
+#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_material__stock_move_id
 msgid "Stock Move"
 msgstr "Mouvement de stock"
 
 #. module: project_task_material_stock
-#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_stock_move_ids
-#: model:ir.ui.view,arch_db:project_task_material_stock.view_project_task_form_material_stock
+#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task__stock_move_ids
+#: model_terms:ir.ui.view,arch_db:project_task_material_stock.view_project_task_form_material_stock
 msgid "Stock Moves"
 msgstr "Mouvements de stock"
 
 #. module: project_task_material_stock
-#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_stock_state
+#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task__stock_state
 #, fuzzy
 msgid "Stock State"
 msgstr "État du stock"
@@ -172,27 +193,48 @@ msgid "Task Stage"
 msgstr "Étape de la tâche"
 
 #. module: project_task_material_stock
-#: model:ir.ui.view,arch_db:project_task_material_stock.view_project_task_form_material_stock
+#: model_terms:ir.ui.view,arch_db:project_task_material_stock.view_project_task_form_material_stock
 msgid "Transfer Materials"
 msgstr "Transférer les matériaux"
 
 #. module: project_task_material_stock
-#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_picking_id
+#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task__picking_id
 #, fuzzy
 #| msgid "Transfer Materials"
 msgid "Transfer Reference"
 msgstr "Transférer les matériaux"
 
 #. module: project_task_material_stock
-#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_material_product_uom_id
+#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_material__product_uom_id
 msgid "Unit of Measure"
 msgstr "Unité de mesure"
 
 #. module: project_task_material_stock
-#: code:addons/project_task_material_stock/models/project_task.py:118
+#: model:ir.model,name:project_task_material_stock.model_project_project
+msgid "WBS element"
+msgstr ""
+
+#. module: project_task_material_stock
+#: code:addons/project_task_material_stock/models/project_task.py:283
+#, python-format
+msgid ""
+"You can't delete a consumed material if already have stock movements done."
+msgstr ""
+
+#. module: project_task_material_stock
+#: code:addons/project_task_material_stock/models/project_task.py:121
 #, python-format
 msgid ""
 "You can't move to a not consume stage if there are already analytic lines"
 msgstr ""
 "Vous ne pouvez pas déplacer vers un état de non-consommation si il y a déjà "
 "des lignes analytiques"
+
+#. module: project_task_material_stock
+#: code:addons/project_task_material_stock/models/project_task.py:217
+#, python-format
+msgid "You must assign an analytic account for this task/project."
+msgstr ""
+
+#~ msgid "Project"
+#~ msgstr "Projet"
