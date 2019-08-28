@@ -23,3 +23,8 @@ msgstr ""
 msgid "Tags"
 msgstr ""
 
+#. module: project_tag
+#: model_terms:ir.ui.view,arch_db:project_tag.project_tags_view_inherit_form
+msgid "Tags..."
+msgstr ""
+
