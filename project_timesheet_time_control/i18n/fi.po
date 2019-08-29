@@ -19,21 +19,21 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: project_timesheet_time_control
-#: model:ir.ui.view,arch_db:project_timesheet_time_control.view_task_form2_inherited
+#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_form2_inherited
 msgid ""
 "<i class=\"fa fa-stop-circle\"/>\n"
 "                                            Stop"
 msgstr ""
 
 #. module: project_timesheet_time_control
-#: model:ir.ui.view,arch_db:project_timesheet_time_control.view_kanban_account_analytic_line
+#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_kanban_account_analytic_line
 msgid ""
 "<i class=\"fa fa-stop-circle\"/>\n"
 "                                Stop"
 msgstr ""
 
 #. module: project_timesheet_time_control
-#: model:ir.ui.view,arch_db:project_timesheet_time_control.view_task_form2_inherited
+#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_form2_inherited
 msgid "<strong>Duration: </strong>"
 msgstr ""
 
@@ -43,52 +43,31 @@ msgid "Analytic Line"
 msgstr "Analyyttinen rivi"
 
 #. module: project_timesheet_time_control
-#: model:ir.ui.view,arch_db:project_timesheet_time_control.account_analytic_line_tree
-msgid "Close task"
-msgstr ""
-
-#. module: project_timesheet_time_control
-#: model:ir.model.fields,field_description:project_timesheet_time_control.field_account_analytic_line_closed
-msgid "Closed"
-msgstr "Suljettu"
-
-#. module: project_timesheet_time_control
-#: model:ir.model.fields,field_description:project_timesheet_time_control.field_account_analytic_line_date_time
+#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.account_analytic_line_tree
+#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_line_form
+#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_form2_inherited
 msgid "Date"
 msgstr "Päivämäärä"
 
 #. module: project_timesheet_time_control
-#: model:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_line_form
-#: model:ir.ui.view,arch_db:project_timesheet_time_control.view_task_form2_inherited
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_account_analytic_line__date_time
+#, fuzzy
+#| msgid "Date"
+msgid "Date time"
+msgstr "Päivämäärä"
+
+#. module: project_timesheet_time_control
+#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_line_form
+#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_form2_inherited
 msgid "Duration"
 msgstr ""
 
 #. module: project_timesheet_time_control
-#: model:ir.ui.view,arch_db:project_timesheet_time_control.account_analytic_line_tree
-msgid "Open task"
-msgstr ""
-
-#. module: project_timesheet_time_control
-#: model:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_line_form
-msgid ""
-"Open/Close timesheet line automatically open/close its tasks. Do you want to "
-"proceed?"
-msgstr ""
-
-#. module: project_timesheet_time_control
-#: model:ir.ui.view,arch_db:project_timesheet_time_control.account_analytic_line_tree
-#: model:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_line_form
-#: model:ir.ui.view,arch_db:project_timesheet_time_control.view_task_form2_inherited
+#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.account_analytic_line_tree
+#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_line_form
+#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_form2_inherited
 msgid "Stop"
 msgstr ""
 
-#. module: project_timesheet_time_control
-#: model:ir.model.fields,help:project_timesheet_time_control.field_account_analytic_line_closed
-msgid "Tasks in this stage are considered closed."
-msgstr ""
-
-#. module: project_timesheet_time_control
-#: code:addons/project_timesheet_time_control/models/account_analytic_line.py:73
-#, python-format
-msgid "There isn't any stage with closed check. Please mark any."
-msgstr ""
+#~ msgid "Closed"
+#~ msgstr "Suljettu"
