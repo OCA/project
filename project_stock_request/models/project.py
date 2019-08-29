@@ -1,8 +1,7 @@
 # Copyright (C) 2019 - TODAY, Patrick Wilson
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import api, fields, models, _
-from odoo.exceptions import ValidationError
+from odoo import fields, models
 
 
 class Project(models.Model):
