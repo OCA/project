@@ -38,7 +38,7 @@ msgstr "Aquí puede enlazar el proyecto a varias categorías de empleado, que se
 
 #. module: project_hr
 #: model:ir.model.fields,help:project_hr.field_project_task_hr_category_id
-msgid "Here you can select the employee category suitable to perform this task, limiting the selectable users to be assigned to those that belongs to that category.""
+msgid "Here you can select the employee category suitable to perform this task, limiting the selectable users to be assigned to those that belongs to that category."
 msgstr "Aquí puede seleccionar la categoría de empleado adecuada para realizar esta tarea, limitando los usuarios seleccionables para ser asignados a aquellos que pertenezcan a la categoría."
 
 #. module: project_hr
