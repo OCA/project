@@ -1,4 +1,5 @@
 # Copyright 2018 Tecnativa - Pedro M. Baeza
+# Copyright 2019 Brainbean Apps (https://brainbeanapps.com)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import _, api, exceptions, fields, models
@@ -20,9 +21,6 @@ class ProjectTask(models.Model):
         help="Here you can select the employee category suitable to perform "
              "this task, limiting the selectable users to be assigned to "
              "those that belongs to that category.",
-    )
-    user_id = fields.Many2one(
-        domain="[('id', 'in', allowed_user_ids)]",
     )
     allowed_hr_category_ids = fields.Many2many(
         comodel_name="hr.employee.category",
