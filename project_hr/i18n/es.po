@@ -27,11 +27,6 @@ msgid "Allowed users"
 msgstr "Usuarios permitidos"
 
 #. module: project_hr
-#: model:ir.model.fields,field_description:project_hr.field_project_task__user_id
-msgid "Assigned to"
-msgstr ""
-
-#. module: project_hr
 #: model:ir.model,name:project_hr.model_hr_employee
 #, fuzzy
 #| msgid "Linked employee"
@@ -75,11 +70,6 @@ msgid "Linked employee"
 msgstr "Empleado relacionado"
 
 #. module: project_hr
-#: model:ir.model,name:project_hr.model_project_project
-msgid "Project"
-msgstr "Proyecto"
-
-#. module: project_hr
 #: model:ir.model,name:project_hr.model_project_task
 msgid "Task"
 msgstr "Tarea"
@@ -116,17 +106,25 @@ msgid "Users"
 msgstr "Usuarios"
 
 #. module: project_hr
-#: code:addons/project_hr/models/project_task.py:89
+#: model:ir.model,name:project_hr.model_project_project
+msgid "WBS element"
+msgstr ""
+
+#. module: project_hr
+#: code:addons/project_hr/models/project_task.py:87
 #, python-format
 msgid "You can't assign a category that is not allowed at project level."
 msgstr ""
 "No puede asignar una categoría que no está permitida a nivel de proyecto."
 
 #. module: project_hr
-#: code:addons/project_hr/models/project_task.py:78
+#: code:addons/project_hr/models/project_task.py:76
 #, python-format
 msgid ""
 "You can't assign a user not belonging to the selected employee category."
 msgstr ""
 "No puede asignar un usuario que no pertenezca a la categoría de empleado "
 "seleccionada."
+
+#~ msgid "Project"
+#~ msgstr "Proyecto"
