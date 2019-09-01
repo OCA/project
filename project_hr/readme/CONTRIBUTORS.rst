@@ -2,3 +2,5 @@
 
   * Pedro M. Baeza
   * Victor M.M. Torres
+
+* Alexey Pelykh <alexey.pelykh@brainbeanapps.com>
