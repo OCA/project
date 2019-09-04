@@ -23,6 +23,7 @@ setuptools.setup(
         'odoo11-addon-project_task_digitized_signature',
         'odoo11-addon-project_task_material',
         'odoo11-addon-project_task_material_stock',
+        'odoo11-addon-project_task_material_with_sale_timesheet',
         'odoo11-addon-project_task_pull_request',
         'odoo11-addon-project_task_send_by_mail',
         'odoo11-addon-project_task_type_active',
