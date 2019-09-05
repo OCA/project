@@ -27,11 +27,6 @@ msgid "Allowed users"
 msgstr "Usuarios permitidos"
 
 #. module: project_hr
-#: model:ir.model.fields,field_description:project_hr.field_project_task__user_id
-msgid "Assigned to"
-msgstr ""
-
-#. module: project_hr
 #: model:ir.model,name:project_hr.model_hr_employee
 #, fuzzy
 #| msgid "Linked employee"
@@ -116,6 +111,7 @@ msgid "Users"
 msgstr "Usuarios"
 
 #. module: project_hr
+#: code:addons/project_hr/models/project_task.py:87
 #: code:addons/project_hr/models/project_task.py:89
 #, python-format
 msgid "You can't assign a category that is not allowed at project level."
@@ -123,6 +119,7 @@ msgstr ""
 "No puede asignar una categoría que no está permitida a nivel de proyecto."
 
 #. module: project_hr
+#: code:addons/project_hr/models/project_task.py:76
 #: code:addons/project_hr/models/project_task.py:78
 #, python-format
 msgid ""
