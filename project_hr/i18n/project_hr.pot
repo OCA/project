@@ -86,14 +86,12 @@ msgstr ""
 
 #. module: project_hr
 #: code:addons/project_hr/models/project_task.py:87
-#: code:addons/project_hr/models/project_task.py:89
 #, python-format
 msgid "You can't assign a category that is not allowed at project level."
 msgstr ""
 
 #. module: project_hr
 #: code:addons/project_hr/models/project_task.py:76
-#: code:addons/project_hr/models/project_task.py:78
 #, python-format
 msgid "You can't assign a user not belonging to the selected employee category."
 msgstr ""
