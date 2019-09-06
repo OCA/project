@@ -30,7 +30,7 @@ class ProjectTask(models.Model):
         return super(ProjectTask, self).copy(default)
     
     def name_get(self):
-        result = super().name_get()
+        result = super(ProjectTask).name_get()
         new_result = []
 
         for task in result:
