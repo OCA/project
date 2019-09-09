@@ -71,9 +71,9 @@ class SaleOrder(models.Model):
                             'planned_hours': planned_hours,
                             'remaining_hours': planned_hours,
                             'partner_id': (
-                                          order.partner_id.id
-                                          or self.partner_dest_id.id
-                                          ),
+                                order.partner_id.id
+                                or self.partner_dest_id.id
+                                ),
                             'user_id': self.env.uid,
                             'description': description_line + '</p><br/>',
                             'project_id': project_id,
