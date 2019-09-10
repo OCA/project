@@ -179,6 +179,7 @@ class Project(models.Model):
             })
         domain.append(('id', 'in', project_ids))
         res.update({
+            "display_name": project.name,
             "domain": domain,
             "nodestroy": False
         })
@@ -216,6 +217,7 @@ class Project(models.Model):
                 "domain": domain,
                 "nodestroy": False
             })
+        res['display_name'] = project.name
         return res
 
     @api.multi
