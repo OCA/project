@@ -1,0 +1,33 @@
+<!-- Copyright 2019 Patrick Wilson <patrickraymondwilson@gmail.com
+    License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+    <record id="change_order_stage_draft" model="project.change_order_stage">
+        <field name="name">Draft</field>
+        <field name="description">Newly requested change order.</field>
+        <field name="stage_sequence">1</field>
+        <field name="fold">False</field>
+        <field name="is_close">False</field>
+    </record>
+    <record id="change_order_stage_review" model="project.change_order_stage">
+        <field name="name">In Review</field>
+        <field name="description">Change order is in review.</field>
+        <field name="stage_sequence">2</field>
+        <field name="fold">False</field>
+        <field name="is_close">False</field>
+    </record>
+    <record id="change_order_stage_approved" model="project.change_order_stage">
+        <field name="name">Approved</field>
+        <field name="description">Change order has been approved.</field>
+        <field name="stage_sequence">3</field>
+        <field name="fold">False</field>
+        <field name="is_close">True</field>
+    </record>
+    <record id="change_order_stage_canceled" model="project.change_order_stage">
+        <field name="name">Canceled</field>
+        <field name="description">Change order is no longer needed.</field>
+        <field name="stage_sequence">4</field>
+        <field name="fold">True</field>
+        <field name="is_close">True</field>
+    </record>
+</odoo>

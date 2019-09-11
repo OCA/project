@@ -1,0 +1,107 @@
+<!-- Copyright 2019 Patrick Wilson <patrickraymondwilson@gmail.com
+    License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+    <!-- List View-->
+    <record id="project_change_order_view_list" model="ir.ui.view">
+        <field name="name">Change Order List</field>
+        <field name="model">project.change_order</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="stage_id"/>
+                <field name="name"/>
+                <field name="project_id"/>
+                <field name="ref"/>
+                <field name="description"/>
+                <field name="create_uid"/>
+                <field name="create_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="project_change_order_view_form" model="ir.ui.view">
+        <field name="name">Change Order Form</field>
+        <field name="model">project.change_order</field>
+        <field name="arch" type="xml">
+            <form string="Change Order">
+                <header>
+                    <button string="In Review"
+                            type="object"
+                            name="action_review"
+                            class="oe_highlight, oe_edit_only"
+                            attrs="{'invisible': ['|',('stage_id', '=', %(project_change_order.change_order_stage_review)d),
+                                                      ('stage_id', '!=', %(project_change_order.change_order_stage_draft)d)]}"/>
+                    <button string="Move to Draft"
+                            type="object"
+                            name="action_draft"
+                            class="oe_highlight, oe_edit_only"
+                            attrs="{'invisible': [('stage_id', '!=', %(project_change_order.change_order_stage_canceled)d)]}"/>
+                    <button string="Approve"
+                            type="object"
+                            name="action_approve"
+                            class="oe_highlight, oe_edit_only"
+                            attrs="{'invisible': ['|',('stage_id', '=', %(project_change_order.change_order_stage_approved)d),
+                                                      ('stage_id', '=', %(project_change_order.change_order_stage_canceled)d)]}"/>
+                    <button string="Cancel Order"
+                            type="object"
+                            name="action_cancel"
+                            class="oe_edit_only"
+                            attrs="{'invisible': [('stage_id', '!=', %(project_change_order.change_order_stage_approved)d)]}"/>
+                    <field name="stage_id"
+                           widget="statusbar"
+                           options="{'fold_field': 'fold'}"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1 class="o_row">
+                            <field name="name" placeholder="Change Order Title..."/>
+                        </h1>
+                    </div>
+                  <group colspan="2" col="4">
+                      <field name="ref"/>
+                      <field name="project_id"/>
+                      <field name="budget_id"/>
+                      <field name="currency_id" invisible="1"/>
+                  </group>
+                  <group string="Description">
+                      <field name="description" nolabel="1" required="1"/>
+                  </group>
+                  <notebook>
+                      <page string="Budget Lines">
+                          <field name="change_order_line_ids" nolabel="1">
+                              <tree editable="Bottom">
+                                  <field name="change_order_id" invisible="1"/>
+                                  <field name="budget_line_id"
+                                         options="{'no_create': True, 'no_create_edit': True}"
+                                         domain="[('budget_id', '=', change_order_id.budget_id.id)]"/>
+                                  <field name="note"/>
+                                  <field name="change_value" sum="Changed Amount"/>
+                              </tree>
+                          </field>
+                      </page>
+                      <page string="Design">
+                          <field name="design" widget="html"/>
+                      </page>
+                  </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Actions opening views on models -->
+    <record id="change_order_action" model="ir.actions.act_window">
+        <field name="name">Change Orders</field>
+        <field name="res_model">project.change_order</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu Items -->
+    <menuitem
+        name="All Change Orders"
+        id="change_order_menu"
+        parent="project.menu_project_config"
+        action="change_order_action"
+        sequence="50"
+        groups="project_change_order.group_project_change_order_manager"/>
+</odoo>
