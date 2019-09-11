@@ -41,8 +41,6 @@
                                 <field name="practical_amount" sum="Practical Amount"/>
                                 <field name="theoretical_amount" sum="Theoretical Amount"/>
                                 <field name="percentage"  widget="percentage" />
-                                <button type="object" name="action_open_budget_entries" string="Entries..."
-                                        icon="fa-arrow-circle-o-right"/>
                                </tree>
                           </field>
                     </group>
