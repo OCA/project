@@ -14,7 +14,25 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: project_role
-#: code:addons/project_role/models/project_assignment.py:55
+#: code:addons/project_role/models/project_role.py:97
+#, python-format
+msgid "%(parent)s / %(own)s"
+msgstr ""
+
+#. module: project_role
+#: code:addons/project_role/models/project_assignment.py:94
+#, python-format
+msgid "%s as %s"
+msgstr ""
+
+#. module: project_role
+#: code:addons/project_role/models/project_assignment.py:88
+#, python-format
+msgid "%s as %s in %s"
+msgstr ""
+
+#. module: project_role
+#: code:addons/project_role/models/project_assignment.py:82
 #, python-format
 msgid "%s as %s on %s"
 msgstr ""
@@ -31,20 +49,26 @@ msgid "Action Needed"
 msgstr ""
 
 #. module: project_role
-#: model:ir.model.fields,field_description:project_role.field_project_assignment__activity_ids
-msgid "Activities"
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__active
+#: model:ir.model.fields,field_description:project_role.field_project_role__active
+msgid "Active"
 msgstr ""
 
 #. module: project_role
-#: model:ir.model.fields,field_description:project_role.field_project_assignment__activity_state
-msgid "Activity State"
+#: model_terms:ir.ui.view,arch_db:project_role.project_role_search
+msgid "Archived"
+msgstr ""
+
+#. module: project_role
+#: code:addons/project_role/models/project_assignment.py:123
+#, python-format
+msgid "Assignment %s conflicts with another assignment: %s"
 msgstr ""
 
 #. module: project_role
 #: model:ir.actions.act_window,name:project_role.project_assignment_view_project_action
 #: model:ir.ui.menu,name:project_role.menu_project_assignments
 #: model_terms:ir.ui.view,arch_db:project_role.edit_project
-#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
 msgid "Assignments"
 msgstr ""
 
@@ -54,10 +78,25 @@ msgid "Attachment Count"
 msgstr ""
 
 #. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_role__child_ids
+msgid "Child Roles"
+msgstr ""
+
+#. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__company_id
 #: model:ir.model.fields,field_description:project_role.field_project_role__company_id
 #: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
 msgid "Company"
+msgstr ""
+
+#. module: project_role
+#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
+msgid "Company-Wide"
+msgstr ""
+
+#. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_role__complete_name
+msgid "Complete Name"
 msgstr ""
 
 #. module: project_role
@@ -130,6 +169,11 @@ msgid "If checked, some messages have a delivery error."
 msgstr ""
 
 #. module: project_role
+#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
+msgid "Inactive"
+msgstr ""
+
+#. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_is_follower
 msgid "Is Follower"
 msgstr ""
@@ -179,21 +223,6 @@ msgid "Name"
 msgstr ""
 
 #. module: project_role
-#: model:ir.model.fields,field_description:project_role.field_project_assignment__activity_date_deadline
-msgid "Next Activity Deadline"
-msgstr ""
-
-#. module: project_role
-#: model:ir.model.fields,field_description:project_role.field_project_assignment__activity_summary
-msgid "Next Activity Summary"
-msgstr ""
-
-#. module: project_role
-#: model:ir.model.fields,field_description:project_role.field_project_assignment__activity_type_id
-msgid "Next Activity Type"
-msgstr ""
-
-#. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_needaction_counter
 msgid "Number of Actions"
 msgstr ""
@@ -219,13 +248,19 @@ msgid "Number of unread messages"
 msgstr ""
 
 #. module: project_role
-#: selection:project.assignment,activity_state:0
-msgid "Overdue"
+#: model:ir.model.fields,field_description:project_role.field_project_role__parent_path
+msgid "Parent Path"
 msgstr ""
 
 #. module: project_role
-#: selection:project.assignment,activity_state:0
-msgid "Planned"
+#: model:ir.model.fields,field_description:project_role.field_project_role__parent_id
+msgid "Parent Role"
+msgstr ""
+
+#. module: project_role
+#: code:addons/project_role/models/project_role.py:112
+#, python-format
+msgid "Please activate first parent role %s"
 msgstr ""
 
 #. module: project_role
@@ -237,34 +272,24 @@ msgstr ""
 
 #. module: project_role
 #: model:ir.model,name:project_role.model_project_assignment
-#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_form
-#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_pivot
 msgid "Project Assignment"
 msgstr ""
 
 #. module: project_role
 #: model:ir.actions.act_window,name:project_role.project_assignment_view_all_action
 #: model:ir.model.fields,field_description:project_role.field_project_project__assignment_ids
-#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_tree
 msgid "Project Assignments"
 msgstr ""
 
 #. module: project_role
 #: model:ir.model,name:project_role.model_project_role
-#: model_terms:ir.ui.view,arch_db:project_role.project_role_view_form
 msgid "Project Role"
 msgstr ""
 
 #. module: project_role
 #: model:ir.actions.act_window,name:project_role.company_project_roles_action
 #: model:ir.ui.menu,name:project_role.project_menu_config_roles
-#: model_terms:ir.ui.view,arch_db:project_role.project_role_view_tree
 msgid "Project Roles"
-msgstr ""
-
-#. module: project_role
-#: model:ir.model.fields,field_description:project_role.field_project_assignment__activity_user_id
-msgid "Responsible User"
 msgstr ""
 
 #. module: project_role
@@ -274,7 +299,7 @@ msgid "Role"
 msgstr ""
 
 #. module: project_role
-#: code:addons/project_role/models/project_role.py:52
+#: code:addons/project_role/models/project_role.py:80
 #, python-format
 msgid "Role \"%s\" conflicts with another role due to same name."
 msgstr ""
@@ -300,19 +325,6 @@ msgid "Shared role with such name already exists!"
 msgstr ""
 
 #. module: project_role
-#: model:ir.model.fields,help:project_role.field_project_assignment__activity_state
-msgid "Status based on activities\n"
-"Overdue: Due date is already passed\n"
-"Today: Activity date is today\n"
-"Planned: Future activities."
-msgstr ""
-
-#. module: project_role
-#: selection:project.assignment,activity_state:0
-msgid "Today"
-msgstr ""
-
-#. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_unread
 msgid "Unread Messages"
 msgstr ""
@@ -329,14 +341,24 @@ msgid "User"
 msgstr ""
 
 #. module: project_role
-#: code:addons/project_role/models/project_assignment.py:66
+#: code:addons/project_role/models/project_assignment.py:130
 #, python-format
 msgid "User %s can not be assigned to role %s."
 msgstr ""
 
 #. module: project_role
 #: sql_constraint:project.assignment:0
+msgid "User may be assigned per role only once within a company!"
+msgstr ""
+
+#. module: project_role
+#: sql_constraint:project.assignment:0
 msgid "User may be assigned per role only once within a project!"
+msgstr ""
+
+#. module: project_role
+#: sql_constraint:project.assignment:0
+msgid "User may be assigned per role only once!"
 msgstr ""
 
 #. module: project_role
@@ -347,5 +369,11 @@ msgstr ""
 #. module: project_role
 #: model:ir.model.fields,help:project_role.field_project_assignment__website_message_ids
 msgid "Website communication history"
+msgstr ""
+
+#. module: project_role
+#: code:addons/project_role/models/project_role.py:90
+#, python-format
+msgid "You cannot create recursive roles."
 msgstr ""
 
