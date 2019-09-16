@@ -28,6 +28,7 @@ setuptools.setup(
         'odoo12-addon-project_task_default_stage',
         'odoo12-addon-project_task_dependency',
         'odoo12-addon-project_task_material',
+        'odoo12-addon-project_task_project_required',
         'odoo12-addon-project_task_pull_request',
         'odoo12-addon-project_template',
         'odoo12-addon-project_template_milestone',
