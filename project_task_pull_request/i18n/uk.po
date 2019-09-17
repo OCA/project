@@ -31,15 +31,10 @@ msgid "PR URI"
 msgstr ""
 
 #. module: project_task_pull_request
-#: code:addons/project_task_pull_request/models/project_task.py:26
+#: code:addons/project_task_pull_request/models/project_task.py:27
 #, python-format
 msgid ""
 "Please add the URI for the pull request before moving the task to this stage."
-msgstr ""
-
-#. module: project_task_pull_request
-#: model:ir.model,name:project_task_pull_request.model_project_project
-msgid "Project"
 msgstr ""
 
 #. module: project_task_pull_request
@@ -51,3 +46,8 @@ msgstr ""
 #: model:ir.model,name:project_task_pull_request.model_project_task
 msgid "Task"
 msgstr "Завдання"
+
+#. module: project_task_pull_request
+#: model:ir.model,name:project_task_pull_request.model_project_project
+msgid "WBS element"
+msgstr ""
