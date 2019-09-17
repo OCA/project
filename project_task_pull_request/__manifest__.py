@@ -4,7 +4,7 @@
 {
     "name": "Project Task Pull Request",
     "summary": "Adds a field for a PR URI to project tasks",
-    "version": "12.0.1.0.0",
+    "version": "12.0.1.1.0",
     "category": "Project Management",
     "website": "https://github.com/OCA/project",
     "author": "SMDrugstore, "
