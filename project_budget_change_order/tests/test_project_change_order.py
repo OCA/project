@@ -59,21 +59,21 @@ class TestProjectChangeOrder(TestAccountBudgetCommon):
 
         # Creating a change order
         test_change_order = self.env['project.change_order'].create({
-                    'name': 'TestChangeOrder',
-                    'project_id': test_project.id,
-                    'budget_id': test_budget.id,
-                    'description': "This is a test change order."})
+            'name': 'TestChangeOrder',
+            'project_id': test_project.id,
+            'budget_id': test_budget.id,
+            'description': "This is a test change order."})
         # Creating a change order budget adjustment lines
         self.env['project.change_order'].create({
-                    'change_order_id': test_change_order.id,
-                    'budget_line_id': test_budget_line_1.id,
-                    'note': "Line 1 Test",
-                    'value': -1000})
+            'change_order_id': test_change_order.id,
+            'budget_line_id': test_budget_line_1.id,
+            'note': "Line 1 Test",
+            'value': -1000})
         self.env['project.change_order'].create({
-                    'change_order_id': test_change_order.id,
-                    'budget_line_id': test_budget_line_2.id,
-                    'note': "Line 2 Test",
-                    'value': +1000})
+            'change_order_id': test_change_order.id,
+            'budget_line_id': test_budget_line_2.id,
+            'note': "Line 2 Test",
+            'value': +1000})
 
         # Check change order in default "Draft" state
         self.assertEqual(test_change_order.stage_id.name, 'Draft')

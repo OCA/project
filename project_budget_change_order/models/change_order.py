@@ -29,33 +29,29 @@ class ChangeOrder(models.Model):
         return self.env.ref(
             'project_budget_change_order.change_order_stage_draft')
 
-    @api.one
     def action_review(self):
         return self.write({'stage_id': self.env.ref(
             'project_budget_change_order.change_order_stage_review').id})
 
-    @api.one
     def action_draft(self):
         return self.write({'stage_id': self.env.ref(
             'project_budget_change_order.change_order_stage_draft').id})
 
-    @api.one
     def action_approve(self):
         if self.change_order_line_ids:
             for change_line in self.change_order_line_ids:
                 change_line.budget_line_id.planned_amount += \
                     change_line.change_value
         return self.write({'stage_id': self.env.ref(
-                'project_budget_change_order.change_order_stage_approved').id})
+            'project_budget_change_order.change_order_stage_approved').id})
 
-    @api.one
     def action_cancel(self):
         if self.change_order_line_ids:
             for change_line in self.change_order_line_ids:
                 change_line.budget_line_id.planned_amount -= \
                     change_line.change_value
         return self.write({'stage_id': self.env.ref(
-                'project_budget_change_order.change_order_stage_canceled').id})
+            'project_budget_change_order.change_order_stage_canceled').id})
 
     @api.multi
     def action_view_order(self):
@@ -63,7 +59,7 @@ class ChangeOrder(models.Model):
             'project_budget_change_order.change_order_action').\
             read()[0]
         order = self.env['project.change_order'].search([('id', '=', self.id)])
-        action['views'] = [(self.env.ref('project_change_order.' +
+        action['views'] = [(self.env.ref('project_budget_change_order.' +
                             'project_change_order_view_form').id, 'form')]
         action['res_id'] = order.id
         return action

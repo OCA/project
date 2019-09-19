@@ -20,7 +20,7 @@
     </record>
 
     <!-- Form View -->
-    <record id="project_budget_change_order_view_form" model="ir.ui.view">
+    <record id="project_change_order_view_form" model="ir.ui.view">
         <field name="name">Change Order Form</field>
         <field name="model">project.change_order</field>
         <field name="arch" type="xml">
@@ -73,8 +73,7 @@
                               <tree editable="Bottom">
                                   <field name="change_order_id" invisible="1"/>
                                   <field name="budget_line_id"
-                                         options="{'no_create': True, 'no_create_edit': True}"
-                                         domain="[('budget_id', '=', change_order_id.budget_id.id)]"/>
+                                         options="{'no_create': True, 'no_create_edit': True}"/>
                                   <field name="note"/>
                                   <field name="change_value" sum="Changed Amount"/>
                               </tree>
