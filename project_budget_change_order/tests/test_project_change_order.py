@@ -2,13 +2,13 @@
 
 from odoo.addons.account_budget_ocs.tests.common import TestAccountBudgetCommon
 
-import time
+from datetime import datetime
 
 
 class TestProjectChangeOrder(TestAccountBudgetCommon):
 
     def setup(self):
-        super(TestProjectChangeOrderCommon, self).setUp()
+        super(self).setUp()
 
         # Creating a project
         test_project = self.env['project.project'].create({
@@ -16,10 +16,8 @@ class TestProjectChangeOrder(TestAccountBudgetCommon):
 
         # Creating a budget
         test_budget = self.env['crossovered.budget'].create({
-            'date_from': Date.from_string('%s-01-01' %
-                                          (datetime.datetime.now().year + 1)),
-            'date_to': Date.from_string('%s-12-31' %
-                                        (datetime.datetime.now().year + 1)),
+            'date_from': datetime.today(),
+            'date_to': (datetime.datetime.now().year + 1),
             'name': 'Budget %s' % (datetime.datetime.now().year + 1),
             'state': 'draft',
             'project_id': test_project.id
@@ -30,10 +28,8 @@ class TestProjectChangeOrder(TestAccountBudgetCommon):
             'crossovered_budget_id': test_budget.id,
             'analytic_account_id': (
                 self.ref('analytic.analytic_partners_camp_to_camp')),
-            'date_from': Date.from_string('%s-01-01' %
-                                          (datetime.datetime.now().year + 1)),
-            'date_to': Date.from_string('%s-12-31' %
-                                        (datetime.datetime.now().year + 1)),
+            'date_from': datetime.today(),
+            'date_to': (datetime.datetime.now().year + 1),
             'general_budget_id': self.account_budget_post_purchase0.id,
             'planned_amount': 10000.0,
         })
@@ -41,10 +37,8 @@ class TestProjectChangeOrder(TestAccountBudgetCommon):
             'crossovered_budget_id': test_budget.id,
             'analytic_account_id': (
                 self.ref('analytic.analytic_our_super_product')),
-            'date_from': Date.from_string('%s-09-01' %
-                                          (datetime.datetime.now().year + 1)),
-            'date_to': Date.from_string('%s-09-30' %
-                                        (datetime.datetime.now().year + 1)),
+            'date_from': datetime.today(),
+            'date_to': (datetime.datetime.now().year + 1),
             'general_budget_id': self.account_budget_post_sales0.id,
             'planned_amount': 400000.0,
         })
@@ -52,13 +46,13 @@ class TestProjectChangeOrder(TestAccountBudgetCommon):
         self.assertEqual(test_budget.state, 'draft')
 
         # Simulate pressing the "Confirm" button
-        budget.action_budget_confirm()
+        test_budget.action_budget_confirm()
 
         # Check budget in "Confirmed" state
         self.assertEqual(test_budget.state, 'confirm')
 
         # Simulate pressing the "Validate" button
-        budget.action_budget_validate()
+        test_budget.action_budget_validate()
 
         # Check budget in "Validated" state
         self.assertEqual(test_budget.state, 'validate')
@@ -70,12 +64,12 @@ class TestProjectChangeOrder(TestAccountBudgetCommon):
                     'budget_id': test_budget.id,
                     'description': "This is a test change order."})
         # Creating a change order budget adjustment lines
-        test_change_order_line_1 = self.env['project.change_order'].create({
+        self.env['project.change_order'].create({
                     'change_order_id': test_change_order.id,
                     'budget_line_id': test_budget_line_1.id,
                     'note': "Line 1 Test",
                     'value': -1000})
-        test_change_order_line_2 = self.env['project.change_order'].create({
+        self.env['project.change_order'].create({
                     'change_order_id': test_change_order.id,
                     'budget_line_id': test_budget_line_2.id,
                     'note': "Line 2 Test",

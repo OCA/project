@@ -1,8 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-change_order_user,Change Order User,model_project_change_order,project_change_order.group_project_change_order_user,1,0,0,0
-change_order_line_user,Change Order Line User,model_project_change_order_line,project_change_order.group_project_change_order_user,1,0,0,0
-change_order_stage_user,Change Order Stage User,model_project_change_order_stage,project_change_order.group_project_change_order_user,1,0,0,0
-change_order_manager,Change Order Manager,model_project_change_order,project_change_order.group_project_change_order_manager,1,1,1,0
-change_order_line_manager,Change Order Line Manager,model_project_change_order_line,project_change_order.group_project_change_order_manager,1,1,1,0
-change_order_stage_manager,Change Order Stage Manager,model_project_change_order_stage,project_change_order.group_project_change_order_manager,1,1,1,1
-access_change_order_internal,Change Order Internal,model_project_change_order,base.group_user,1,0,0,0

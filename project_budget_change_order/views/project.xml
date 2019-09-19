@@ -2,14 +2,14 @@
     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 
 <odoo>
-    <record id="project_change_order_inherit_form" model="ir.ui.view">
+    <record id="project_budget_change_order_inherit_form" model="ir.ui.view">
         <field name="name">project.change.order.form</field>
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.edit_project"/>
         <field name="type">form</field>
         <field name="arch" type="xml">
             <xpath expr="//page[@name='budget']" position="after">
-                <page string="Change Orders" groups="project_change_order.group_project_change_order_user">
+                <page string="Change Orders" groups="project_budget_change_order.group_project_budget_change_order_user">
                     <button name="action_create_change_order" string="Create Change Order" type="object" class="oe_highlight"/>
                     <group string="Change Orders">
                         <field name="ref"/>

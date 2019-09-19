@@ -11,5 +11,5 @@ class ChangeOrderLine(models.Model):
     change_order_id = fields.Many2one('project.change_order',
                                       string="Change Order")
     budget_line_id = fields.Many2one('crossovered.budget.lines',
-                                      string="Budget Line")
+                                     string="Budget Line")
     change_value = fields.Float(string="Change Value")

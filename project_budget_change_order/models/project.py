@@ -11,7 +11,8 @@ class Project(models.Model):
 
     @api.multi
     def action_create_change_order(self):
-        action = self.env.ref('project_change_order.change_order_action')
+        action = self.env.ref(
+            'project_budget_change_order.change_order_action')
         result = action.read()[0]
         # override the context to get rid of the default filtering
         result['context'] = {
@@ -19,6 +20,8 @@ class Project(models.Model):
             'default_ref': self.ref,
             'default_budget_id': self.budget_id.id,
         }
-        res = self.env.ref('project_change_order.project_change_order_view_form', False)
+        res = self.env.ref(
+            'project_budget_change_order.project_change_order_view_form',
+            False)
         result['views'] = [(res and res.id or False, 'form')]
         return result

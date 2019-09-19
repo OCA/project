@@ -3,7 +3,7 @@
 
 <odoo>
     <!-- List View-->
-    <record id="project_change_order_view_list" model="ir.ui.view">
+    <record id="project_budget_change_order_view_list" model="ir.ui.view">
         <field name="name">Change Order List</field>
         <field name="model">project.change_order</field>
         <field name="arch" type="xml">
@@ -20,7 +20,7 @@
     </record>
 
     <!-- Form View -->
-    <record id="project_change_order_view_form" model="ir.ui.view">
+    <record id="project_budget_change_order_view_form" model="ir.ui.view">
         <field name="name">Change Order Form</field>
         <field name="model">project.change_order</field>
         <field name="arch" type="xml">
@@ -30,24 +30,24 @@
                             type="object"
                             name="action_review"
                             class="oe_highlight, oe_edit_only"
-                            attrs="{'invisible': ['|',('stage_id', '=', %(project_change_order.change_order_stage_review)d),
-                                                      ('stage_id', '!=', %(project_change_order.change_order_stage_draft)d)]}"/>
+                            attrs="{'invisible': ['|',('stage_id', '=', %(project_budget_change_order.change_order_stage_review)d),
+                                                      ('stage_id', '!=', %(project_budget_change_order.change_order_stage_draft)d)]}"/>
                     <button string="Move to Draft"
                             type="object"
                             name="action_draft"
                             class="oe_highlight, oe_edit_only"
-                            attrs="{'invisible': [('stage_id', '!=', %(project_change_order.change_order_stage_canceled)d)]}"/>
+                            attrs="{'invisible': [('stage_id', '!=', %(project_budget_change_order.change_order_stage_canceled)d)]}"/>
                     <button string="Approve"
                             type="object"
                             name="action_approve"
                             class="oe_highlight, oe_edit_only"
-                            attrs="{'invisible': ['|',('stage_id', '=', %(project_change_order.change_order_stage_approved)d),
-                                                      ('stage_id', '=', %(project_change_order.change_order_stage_canceled)d)]}"/>
+                            attrs="{'invisible': ['|',('stage_id', '=', %(project_budget_change_order.change_order_stage_approved)d),
+                                                      ('stage_id', '=', %(project_budget_change_order.change_order_stage_canceled)d)]}"/>
                     <button string="Cancel Order"
                             type="object"
                             name="action_cancel"
                             class="oe_edit_only"
-                            attrs="{'invisible': [('stage_id', '!=', %(project_change_order.change_order_stage_approved)d)]}"/>
+                            attrs="{'invisible': [('stage_id', '!=', %(project_budget_change_order.change_order_stage_approved)d)]}"/>
                     <field name="stage_id"
                            widget="statusbar"
                            options="{'fold_field': 'fold'}"/>
@@ -103,5 +103,5 @@
         parent="project.menu_project_config"
         action="change_order_action"
         sequence="50"
-        groups="project_change_order.group_project_change_order_manager"/>
+        groups="project_budget_change_order.group_project_budget_change_order_manager"/>
 </odoo>

@@ -1,7 +1,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 {
-    'name': "Project Change Order",
+    'name': "Project Budget Change Order",
     'summary': "Adds change orders to projects.",
     'author': "Patrick Wilson,Odoo Community Association (OCA)",
     'website': 'https://github.com/OCA/project',
