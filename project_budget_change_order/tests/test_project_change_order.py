@@ -1,8 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo.addons.account_budget_ocs.tests.common import TestAccountBudgetCommon
-
 from datetime import datetime
+from odoo.addons.account_budget_ocs.tests.common import TestAccountBudgetCommon
 
 
 class TestProjectChangeOrder(TestAccountBudgetCommon):

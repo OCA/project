@@ -29,24 +29,22 @@
                     <button string="In Review"
                             type="object"
                             name="action_review"
-                            class="oe_highlight, oe_edit_only"
+                            class="oe_highlight"
                             attrs="{'invisible': ['|',('stage_id', '=', %(project_budget_change_order.change_order_stage_review)d),
                                                       ('stage_id', '!=', %(project_budget_change_order.change_order_stage_draft)d)]}"/>
                     <button string="Move to Draft"
                             type="object"
                             name="action_draft"
-                            class="oe_highlight, oe_edit_only"
                             attrs="{'invisible': [('stage_id', '!=', %(project_budget_change_order.change_order_stage_canceled)d)]}"/>
                     <button string="Approve"
                             type="object"
                             name="action_approve"
-                            class="oe_highlight, oe_edit_only"
+                            class="oe_highlight"
                             attrs="{'invisible': ['|',('stage_id', '=', %(project_budget_change_order.change_order_stage_approved)d),
                                                       ('stage_id', '=', %(project_budget_change_order.change_order_stage_canceled)d)]}"/>
                     <button string="Cancel Order"
                             type="object"
                             name="action_cancel"
-                            class="oe_edit_only"
                             attrs="{'invisible': [('stage_id', '!=', %(project_budget_change_order.change_order_stage_approved)d)]}"/>
                     <field name="stage_id"
                            widget="statusbar"
@@ -59,17 +57,17 @@
                         </h1>
                     </div>
                   <group colspan="2" col="4">
-                      <field name="ref"/>
-                      <field name="project_id"/>
-                      <field name="budget_id"/>
+                      <field name="ref" attrs="{'readonly': [('stage_id', '=', 3)]}"/>
+                      <field name="project_id" attrs="{'readonly': [('stage_id', '=', 3)]}"/>
+                      <field name="budget_id" attrs="{'readonly': [('stage_id', '=', 3)]}"/>
                       <field name="currency_id" invisible="1"/>
                   </group>
                   <group string="Description">
-                      <field name="description" nolabel="1" required="1"/>
+                      <field name="description" nolabel="1" required="1"  attrs="{'readonly': [('stage_id', '=', 3)]}"/>
                   </group>
                   <notebook>
                       <page string="Budget Lines">
-                          <field name="change_order_line_ids" nolabel="1">
+                          <field name="change_order_line_ids" nolabel="1" attrs="{'readonly': [('stage_id', '=', 3)]}">
                               <tree editable="Bottom">
                                   <field name="change_order_id" invisible="1"/>
                                   <field name="budget_line_id"
