@@ -1,6 +1,6 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import fields, models, api
+from odoo import api, fields, models
 
 
 class Project(models.Model):
@@ -11,6 +11,7 @@ class Project(models.Model):
 
     @api.multi
     def action_create_change_order(self):
+        self.ensure_one()
         action = self.env.ref(
             'project_budget_change_order.change_order_action')
         result = action.read()[0]

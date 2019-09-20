@@ -1,7 +1,7 @@
 # Copyright (C) 2019 Pavlov Media
 # License Proprietary. Do not copy, share nor distribute.
 
-from odoo import fields, models, api
+from odoo import api, fields, models
 
 
 class ChangeOrder(models.Model):
@@ -29,10 +29,12 @@ class ChangeOrder(models.Model):
         return self.env.ref(
             'project_budget_change_order.change_order_stage_draft')
 
+    @api.multi
     def action_review(self):
         return self.write({'stage_id': self.env.ref(
             'project_budget_change_order.change_order_stage_review').id})
 
+    @api.multi
     def action_draft(self):
         return self.write({'stage_id': self.env.ref(
             'project_budget_change_order.change_order_stage_draft').id})
