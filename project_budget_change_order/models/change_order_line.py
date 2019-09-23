@@ -9,7 +9,10 @@ class ChangeOrderLine(models.Model):
 
     note = fields.Text()
     change_order_id = fields.Many2one('project.change_order',
-                                      string="Change Order")
+                                      string="Change Order",
+                                      required=True)
     budget_line_id = fields.Many2one('crossovered.budget.lines',
-                                     string="Budget Line")
+                                     string="Budget Line",
+                                     required=True)
     change_value = fields.Float(string="Change Value")
+    budget_id = fields.Many2one('crossovered.budget', string="Budget")

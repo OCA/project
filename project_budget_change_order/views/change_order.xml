@@ -15,6 +15,7 @@
                 <field name="description"/>
                 <field name="create_uid"/>
                 <field name="create_date"/>
+                <field name="total_change"/>
             </tree>
         </field>
     </record>
@@ -59,6 +60,7 @@
                   <group colspan="2" col="4">
                       <field name="ref" attrs="{'readonly': [('stage_id', '=', 3)]}"/>
                       <field name="project_id" attrs="{'readonly': [('stage_id', '=', 3)]}"/>
+                      <field name="total_change"/>
                       <field name="budget_id" attrs="{'readonly': [('stage_id', '=', 3)]}"/>
                       <field name="currency_id" invisible="1"/>
                   </group>
@@ -66,22 +68,31 @@
                       <field name="description" nolabel="1" required="1"  attrs="{'readonly': [('stage_id', '=', 3)]}"/>
                   </group>
                   <notebook>
-                      <page string="Budget Lines">
-                          <field name="change_order_line_ids" nolabel="1" attrs="{'readonly': [('stage_id', '=', 3)]}">
-                              <tree editable="Bottom">
-                                  <field name="change_order_id" invisible="1"/>
-                                  <field name="budget_line_id"
-                                         options="{'no_create': True, 'no_create_edit': True}"/>
-                                  <field name="note"/>
-                                  <field name="change_value" sum="Changed Amount"/>
-                              </tree>
-                          </field>
-                      </page>
                       <page string="Design">
                           <field name="design" widget="html"/>
                       </page>
+                      <page string="Budget Lines">
+                          <field name="change_order_line_ids"
+                                 nolabel="1"
+                                 attrs="{'readonly': [('stage_id', '=', 3)]}"
+                                 context="{'default_budget_id': budget_id}">
+                              <tree editable="Bottom">
+                                  <field name="budget_id" invisible="1"/>
+                                  <field name="budget_line_id"
+                                         options="{'no_create': True, 'no_create_edit': True}"
+                                         domain="[('crossovered_budget_id', '=', budget_id)]"/>
+                                  <field name="note"/>
+                                  <field name="change_value" sum="Changed Amount"/>
+                               </tree>
+                          </field>
+                      </page>
                   </notebook>
                 </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}"/>
+                </div>
             </form>
         </field>
     </record>

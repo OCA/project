@@ -5,34 +5,36 @@
     <record id="project_budget_change_order_inherit_form" model="ir.ui.view">
         <field name="name">project.change.order.form</field>
         <field name="model">project.project</field>
-        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="inherit_id" ref="project_budget.project_budget_inherit_form"/>
         <field name="type">form</field>
         <field name="arch" type="xml">
-            <xpath expr="//page[@name='budget']" position="after">
-                <page string="Change Orders" groups="project_budget_change_order.group_project_budget_change_order_user">
+            <xpath expr="//group[@name='budget_lines']" position="after">
+                <group string="Change Orders">
+                    <field name="ref"/>
+                    <field name="currency_id" invisible="1"/>
+                </group>
+                <group>
                     <button name="action_create_change_order" string="Create Change Order" type="object" class="oe_highlight"/>
-                    <group string="Change Orders">
-                        <field name="ref"/>
-                        <field name="currency_id" invisible="1"/>
-                    </group>
-                    <group>
-                        <field name="change_order_ids"
-                               nolabel="1"
-                               context="{'default_project_id': active_id,
-                                         'default_ref': ref,
-                                         'default_budget_id': budget_id}">
-                            <tree create="false">
-                                <field name="stage_id" style="pointer-events:none;"/>
-                                <field name="ref" style="pointer-events:none;"/>
-                                <field name="name" style="pointer-events:none;"/>
-                                <field name="description" style="pointer-events:none;"/>
-                                <field name="create_uid" style="pointer-events:none;"/>
-                                <field name="create_date" style="pointer-events:none;"/>
-                                <button name="action_view_order" string="View" type="object" class="oe_highlight"/>
-                            </tree>
-                        </field>
-                    </group>
-                </page>
+                </group>
+                <group>
+                    <field name="change_order_ids"
+                           nolabel="1"
+                           context="{'default_project_id': active_id,
+                                     'default_ref': ref,
+                                     'default_budget_id': budget_id}">
+                        <tree create="false" decoration-success="stage_id == 3" decoration-danger="stage_id != 3">
+                            <field name="stage_id" style="pointer-events:none;"/>
+                            <field name="ref" style="pointer-events:none;"/>
+                            <field name="name" style="pointer-events:none;"/>
+                            <field name="description" style="pointer-events:none;"/>
+                            <field name="create_uid" style="pointer-events:none;"/>
+                            <field name="create_date" style="pointer-events:none;"/>
+                            <field name="total_change" style="pointer-events:none;"/>
+                            <button name="action_view_order" string="View" type="object"/>
+                        </tree>
+                    </field>
+                </group>
+
             </xpath>
         </field>
     </record>

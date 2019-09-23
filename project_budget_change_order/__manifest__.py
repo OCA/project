@@ -19,6 +19,7 @@
         'views/project.xml',
         'views/change_order.xml',
         'views/change_order_stage.xml',
+        'views/change_order_line.xml',
     ],
     'application': False,
     'development_status': 'Beta',
