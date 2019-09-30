@@ -14,7 +14,13 @@ This project aims to extend Odoo on contract management features, such as:
   * ...
 
 
+[//]: # (addons)
+This part will be replaced when running the oca-gen-addons-table script from OCA/maintainer-tools.
+[//]: # (end addons)
 
-Translation Status
-------------------
-[![Transifex Status](https://www.transifex.com/projects/p/OCA-project-13-0/chart/image_png)](https://www.transifex.com/projects/p/OCA-project-13-0)
+
+----
+
+OCA, or the [Odoo Community Association](http://odoo-community.org/), is a nonprofit organization whose
+mission is to support the collaborative development of Odoo features and
+promote its widespread use.
