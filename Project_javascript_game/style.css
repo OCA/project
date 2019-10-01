@@ -1,0 +1,36 @@
+body{
+	background-color: black;
+	color: #ffffff;
+	text-align: center;
+}
+
+
+#bottom
+{
+	background-color: lightgreen;
+	width: 70%;
+	margin: 100px 200px 100px 200px ;
+}
+
+td{
+	width: 150px;
+	height: 150px;
+	border:5px solid black;
+	text-align: center;
+	font-size: 100px;
+	color: black;
+ }
+
+button {
+	width: 17%;
+	height: 80px;
+	border-radius: 20%;
+	border : 2px solid #fff;
+	background: yellow;
+	font-size: 20px;
+}
+
+input{
+	width: 30%;
+	height: 27px;
+}
