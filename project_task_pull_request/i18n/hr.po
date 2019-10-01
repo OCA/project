@@ -32,7 +32,6 @@ msgid "PR URI"
 msgstr "PR URI"
 
 #. module: project_task_pull_request
-#: code:addons/project_task_pull_request/models/project_task.py:26
 #: code:addons/project_task_pull_request/models/project_task.py:27
 #, python-format
 msgid ""
