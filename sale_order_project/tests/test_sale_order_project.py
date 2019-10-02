@@ -1,11 +1,10 @@
-# -*- coding: utf-8 -*-
-###############################################################################
-# For copyright and license notices, see __manifest__.py file in root directory
-###############################################################################
+# Copyright 2014 Akretion - Sébastien BEAU <sebastien.beau@akretion.com>
+# Copyright 2014 Akretion - Benoît GUILLOT <benoit.guillot@akretion.com>
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 import openerp.tests.common as common
 
-
+@common.tagged('post_install', '-at_install')
 class TestSaleOrderProject(common.TransactionCase):
 
     def setUp(self):
