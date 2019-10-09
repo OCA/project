@@ -1,3 +1,4 @@
-This module depends on hr_timesheet_task_stage and hr_timesheet_task_domain
-modules that are in `OCA/timesheet <https://github.com/OCA/timesheet>`_
-repository
+This module depends on modules found in these repositories:
+
+* `OCA/timesheet <https://github.com/OCA/timesheet>`__
+* `OCA/web <https://github.com/OCA/web>`__
