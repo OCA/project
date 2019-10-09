@@ -9,14 +9,25 @@
                 <attribute name="invisible">1</attribute>
             </field>
             <field name="date" position="after">
-                <field name="date_time" string="Date"/>
+                <field name="date_time" string="Date" required="1"/>
             </field>
             <field name="unit_amount" position="after">
-                <button name="button_end_work"
-                        string="Stop"
+                <field name="show_time_control" invisible="1"/>
+                <button name="button_resume_work"
+                        string="Resume work"
+                        tabindex="-1"
                         type="object"
-                        icon="fa-stop-circle"
-                        attrs="{'invisible': [('unit_amount', '>', 0)]}"
+                        icon="fa-play-circle text-success"
+                        attrs="{'invisible': [('show_time_control', '!=', 'resume')]}"
+                        class="oe_stat_button"
+                />
+                <button name="button_end_work"
+                        string="Stop work"
+                        tabindex="-1"
+                        type="object"
+                        icon="fa-stop-circle text-warning"
+                        attrs="{'invisible': [('show_time_control', '!=', 'stop')]}"
+                        class="oe_stat_button"
                 />
             </field>
         </field>
@@ -25,26 +36,31 @@
     <record id="hr_timesheet_line_form" model="ir.ui.view">
         <field name="name">account.analytic.line.form.inherit</field>
         <field name="model">account.analytic.line</field>
-        <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_form"/>
+        <field name="inherit_id" ref="hr_timesheet_task_stage.account_analytic_line_form"/>
         <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <field name="show_time_control" invisible="1"/>
+                <button name="button_resume_work"
+                        string="Resume work"
+                        type="object"
+                        icon="fa-play-circle text-success"
+                        attrs="{'invisible': [('show_time_control', '!=', 'resume')]}"
+                        class="oe_stat_button"
+                        context="{'show_created_timer': True}"
+                />
+                <button name="button_end_work"
+                        string="Stop work"
+                        type="object"
+                        icon="fa-stop-circle text-warning"
+                        attrs="{'invisible': [('show_time_control', '!=', 'stop')]}"
+                        class="oe_stat_button"
+                />
+            </div>
             <field name="date" position="attributes">
                 <attribute name="invisible">1</attribute>
             </field>
             <field name="date" position="after">
-                <field name="date_time" string="Date"/>
-            </field>
-            <field name="unit_amount" position="replace">
-                <label for="unit_amount"/>
-                <div>
-                    <field name="unit_amount" class="oe_inline" string="Duration" widget="float_time"/>
-                    <button name="button_end_work"
-                            string="Stop"
-                            type="object"
-                            icon="fa-stop-circle"
-                            attrs="{'invisible': [('unit_amount', '>', 0)]}"
-                            class="btn btn-link"
-                    />
-                </div>
+                <field name="date_time" string="Date" required="1"/>
             </field>
         </field>
     </record>
@@ -55,21 +71,23 @@
             <field name="inherit_id"
                    ref="hr_timesheet.view_kanban_account_analytic_line"/>
             <field name="arch" type="xml">
-                <xpath expr="//templates//field[@name='unit_amount']/.." position="after">
-                    <div class="row">
-                        <div class="col-12">
-                            <button name="button_end_work"
-                                    type="object"
-                                    attrs="{'invisible': [('unit_amount', '>', 0)]}"
-                                    class="btn btn-primary float-right btn-sm">
-                                <i class="fa fa-stop-circle"/>
-                                Stop
-                            </button>
-                        </div>
-                    </div>
+                <xpath expr="//templates//field[@name='unit_amount']" position="after">
+                    <field name="show_time_control" invisible="1"/>
+                    <a name="button_resume_work"
+                            string="Resume work"
+                            tabindex="-1"
+                            type="object"
+                            attrs="{'invisible': [('show_time_control', '!=', 'resume')]}"
+                            class="o_kanban_inline_block fa fa-lg fa-play-circle text-success"/>
+                    <a name="button_end_work"
+                            string="Stop work"
+                            tabindex="-1"
+                            type="object"
+                            attrs="{'invisible': [('show_time_control', '!=', 'stop')]}"
+                            class="o_kanban_inline_block fa fa-lg fa-stop-circle text-warning"/>
                 </xpath>
                 <field name="date" position="after">
-                    <field name="date_time"/>
+                    <field name="date_time" required="1"/>
                 </field>
                 <xpath expr="//templates//t[@t-esc='record.date.value']" position="attributes">
                     <attribute name="invisible">1</attribute>

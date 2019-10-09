@@ -1,4 +1,3 @@
-* This module adds a button at account analytic line level to compute the spent
-  time, in minutes, from start date to the current moment.
-* It adds a datetime field that replaces ``date`` field in tree view, and write
-  date field with datetime field value.
+Allow to track the exact moment when a timesheet line is started (not only
+the day, but also the minute and second) and let users start and stop timers
+easily.
