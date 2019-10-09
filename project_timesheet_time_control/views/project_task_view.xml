@@ -2,100 +2,164 @@
 <odoo>
 
     <record id="view_task_form2_inherited" model="ir.ui.view">
+        <field name="name">Add timesheet time controls</field>
         <field name="model">project.task</field>
         <field name="inherit_id" ref="hr_timesheet.view_task_form2_inherited"/>
+        <field name="groups_id" eval="[(6, 0, [ref('hr_timesheet.group_hr_timesheet_user')])]"/>
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='timesheet_ids']//field[@name='date']" position="attributes">
+            <!-- Main task form action buttons -->
+            <div name="button_box" position="inside">
+                <field name="show_time_control" invisible="1"/>
+                <button name="button_start_work"
+                        string="Start work"
+                        type="object"
+                        icon="fa-play-circle text-success"
+                        attrs="{'invisible': [('show_time_control', '!=', 'start')]}"
+                        class="oe_stat_button"
+                />
+                <button name="button_end_work"
+                        string="Stop work"
+                        type="object"
+                        icon="fa-stop-circle text-warning"
+                        attrs="{'invisible': [('show_time_control', '!=', 'stop')]}"
+                        class="oe_stat_button"
+                />
+            </div>
+
+            <!-- Sub-tree view for timesheet_ids -->
+            <xpath expr="//field[@name='timesheet_ids']/tree//field[@name='date']" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
-            <xpath expr="//field[@name='timesheet_ids']//field[@name='date']" position="after">
-                <field name="date_time" string="Date"/>
+            <xpath expr="//field[@name='timesheet_ids']/tree//field[@name='date']" position="after">
+                <field name="date_time" string="Date" required="1"/>
             </xpath>
-            <xpath expr="//field[@name='timesheet_ids']//field[@name='unit_amount']" position="after">
-                <button name="button_end_work"
-                        string="Stop"
+            <xpath expr="//field[@name='timesheet_ids']/tree" position="inside">
+                <field name="show_time_control" invisible="1"/>
+                <button name="button_resume_work"
+                        string="Resume work"
+                        tabindex="-1"
                         type="object"
-                        icon="fa-stop-circle"
-                        attrs="{'invisible': [('unit_amount', '>', 0)]}"
+                        icon="fa-play-circle text-success"
+                        attrs="{'invisible': [('show_time_control', '!=', 'resume')]}"
+                        class="oe_stat_button"
                 />
-            </xpath>
-            <xpath expr="//field[@name='timesheet_ids']" position="attributes">
-                <attribute name="mode">tree,kanban</attribute>
-            </xpath>
-            <xpath expr="//field[@name='timesheet_ids']">
-                <kanban class="o_kanban_mobile">
-                    <field name="date_time"/>
-                    <field name="user_id"/>
-                    <field name="name"/>
-                    <field name="project_id"/>
-                    <field name="task_id" context="{'default_project_id': project_id}" domain="[('project_id', '=', project_id)]"/>
-                    <field name="unit_amount"/>
-                    <templates>
-                        <t t-name="kanban-box">
-                            <div t-attf-class="oe_kanban_global_click">
-                                <a t-if="!read_only_mode" type="delete"
-                                   class="fa fa-times pull-right"/>
-                                <div class="row">
-                                    <div class="col-xs-2">
-                                        <img t-att-src="kanban_image('res.users', 'image_small', record.user_id.raw_value)" t-att-title="record.user_id.value" width="40" height="40" class="oe_kanban_avatar pull-left"/>
-                                    </div>
-                                    <div class="col-xs-10">
-                                        <div>
-                                            <strong><t t-esc="record.name.value"/></strong>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr class="mt4 mb4"/>
-                                <span>
-                                    <i class="fa fa-calendar" aria-hidden="true"></i>
-                                    <t t-esc="record.date_time.value"/>
-                                </span>
-                                <span class="pull-right">
-                                    <strong>Duration: </strong><field name="unit_amount" widget="float_time"/>
-                                </span>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <button name="button_end_work"
-                                                type="object"
-                                                attrs="{'invisible': [('unit_amount', '>', 0)]}"
-                                                class="btn btn-primary float-right btn-sm">
-                                            <i class="fa fa-stop-circle"/>
-                                            Stop
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </t>
-                    </templates>
-                </kanban>
-                <form>
-                    <group>
-                        <group>
-                            <field name="date_time" string="Date"/>
-                            <field name="name"/>
-                            <field name="user_id" invisible="1"/>
-                            <field name="employee_id" required="1"/>
-                            <field name="project_id" invisible="1"/>
-                        </group>
-                        <group>
-                            <label for="unit_amount"/>
-                            <div>
-                                <field name="unit_amount" class="oe_inline" string="Duration" widget="float_time"/>
-                                <button name="button_end_work"
-                                        string="Stop"
-                                        type="object"
-                                        icon="fa-stop-circle"
-                                        attrs="{'invisible': [('unit_amount', '>', 0)]}"
-                                        class="btn btn-link"
-                                />
-                            </div>
-                        </group>
-                    </group>
-                </form>
+                <button name="button_end_work"
+                        string="Stop work"
+                        tabindex="-1"
+                        type="object"
+                        icon="fa-stop-circle text-warning"
+                        attrs="{'invisible': [('show_time_control', '!=', 'stop')]}"
+                        class="oe_stat_button"
+                />
             </xpath>
             <xpath expr="//field[@name='timesheet_ids']/tree" position="attributes">
                 <attribute name="default_order">date_time</attribute>
             </xpath>
+
+            <!-- Sub-kanban view for timesheet_ids -->
+            <xpath expr="//field[@name='timesheet_ids']/kanban//*[@t-esc='record.date.value']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='timesheet_ids']/kanban//*[@t-esc='record.date.value']" position="after">
+                <field name="date_time" required="1"/>
+            </xpath>
+            <xpath expr="//field[@name='timesheet_ids']/kanban//templates//field[@name='unit_amount']" position="after">
+                <field name="show_time_control" invisible="1"/>
+                <a name="button_resume_work"
+                   tabindex="-1"
+                   type="object"
+                   string="Resume work"
+                   attrs="{'invisible': [('show_time_control', '!=', 'resume')]}"
+                   class="o_kanban_inline_block fa fa-lg fa-play-circle text-success"/>
+                <a name="button_end_work"
+                   tabindex="-1"
+                   type="object"
+                   string="Stop work"
+                   attrs="{'invisible': [('show_time_control', '!=', 'stop')]}"
+                   class="o_kanban_inline_block fa fa-lg fa-stop-circle text-warning"/>
+            </xpath>
+
+            <!-- Sub-form view for timesheet_ids -->
+            <xpath expr="//field[@name='timesheet_ids']/form//field[@name='date']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='timesheet_ids']/form//field[@name='date']" position="after">
+                <field name="date_time" required="1"/>
+            </xpath>
+            <xpath expr="//field[@name='timesheet_ids']/form/sheet/*" position="before">
+                <div class="oe_button_box" name="button_box">
+                    <field name="show_time_control" invisible="1"/>
+                    <button name="button_resume_work"
+                            string="Resume work"
+                            tabindex="-1"
+                            type="object"
+                            icon="fa-play-circle text-success"
+                            attrs="{'invisible': [('show_time_control', '!=', 'resume')]}"
+                            class="oe_stat_button"
+                            context="{'show_created_timer': True}"
+                    />
+                    <button name="button_end_work"
+                            string="Stop work"
+                            tabindex="-1"
+                            type="object"
+                            icon="fa-stop-circle text-warning"
+                            attrs="{'invisible': [('show_time_control', '!=', 'stop')]}"
+                            class="oe_stat_button"
+                    />
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_task_kanban" model="ir.ui.view">
+        <field name="name">Add timesheet time controls</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_kanban"/>
+        <field name="groups_id" eval="[(6, 0, [ref('hr_timesheet.group_hr_timesheet_user')])]"/>
+        <field name="arch" type="xml">
+            <xpath expr="//*[hasclass('oe_kanban_bottom_left')]" position="inside">
+                <field name="show_time_control" invisible="1"/>
+                <a name="button_start_work"
+                   attrs="{'invisible': [('show_time_control', '!=', 'start')]}"
+                   class="o_kanban_inline_block fa fa-lg fa-play-circle text-success"
+                   string="Start work"
+                   tabindex="-1"
+                   type="object"/>
+                <a name="button_end_work"
+                   attrs="{'invisible': [('show_time_control', '!=', 'stop')]}"
+                   class="o_kanban_inline_block fa fa-lg fa-stop-circle text-warning"
+                   string="Stop work"
+                   tabindex="-1"
+                   type="object"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_task_tree2_inherited" model="ir.ui.view">
+        <field name="name">Add timesheet time controls</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="hr_timesheet.view_task_tree2_inherited"/>
+        <field name="groups_id" eval="[(6, 0, [ref('hr_timesheet.group_hr_timesheet_user')])]"/>
+        <field name="arch" type="xml">
+            <tree position="inside">
+                <field name="show_time_control" invisible="1"/>
+                <button name="button_start_work"
+                        string="Start work"
+                        tabindex="-1"
+                        type="object"
+                        icon="fa-play-circle text-success"
+                        attrs="{'invisible': [('show_time_control', '!=', 'start')]}"
+                        class="oe_stat_button"
+                />
+                <button name="button_end_work"
+                        string="Stop work"
+                        tabindex="-1"
+                        type="object"
+                        icon="fa-stop-circle text-warning"
+                        attrs="{'invisible': [('show_time_control', '!=', 'stop')]}"
+                        class="oe_stat_button"
+                />
+            </tree>
         </field>
     </record>
 
