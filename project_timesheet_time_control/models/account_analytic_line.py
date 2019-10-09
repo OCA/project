@@ -3,92 +3,102 @@
 # Copyright 2016-2018 Tecnativa - Pedro M. Baeza
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
-from odoo import _, api, exceptions, fields, models
 from datetime import datetime
+from odoo import _, api, fields, models
+from odoo.exceptions import UserError
+
+import logging
+_logger = logging.getLogger(__name__)
 
 
 class AccountAnalyticLine(models.Model):
     _inherit = 'account.analytic.line'
     _order = 'date_time desc, id desc'
 
-    date_time = fields.Datetime(default=fields.Datetime.now, string='Date')
-    closed = fields.Boolean(related='task_id.stage_id.closed', readonly=True)
+    date_time = fields.Datetime(
+        default=fields.Datetime.now,
+        copy=False,
+    )
+    show_time_control = fields.Selection(
+        selection=[("resume", "Resume"), ("stop", "Stop")],
+        compute="_compute_show_time_control",
+        help="Indicate which time control button to show, if any.",
+    )
 
-    @api.onchange('project_id')
-    def onchange_project_id(self):
-        task = self.task_id
-        res = super().onchange_project_id()
-        if res is None:
-            res = {}
-        if self.project_id:  # Show only opened tasks
-            res_domain = res.setdefault('domain', {})
-            res_domain.update({
-                'task_id': [
-                    ('project_id', '=', self.project_id.id),
-                    ('stage_id.closed', '=', False),
-                ],
-            })
-        else:  # Reset domain for allowing selection of any task
-            res['domain'] = {'task_id': []}
-        if task.project_id == self.project_id:
-            # Restore previous task if belongs to the same project
-            self.task_id = task
-        return res
-
-    @api.onchange('task_id')
-    def onchange_task_id_project_timesheet_time_control(self):
-        if self.task_id:
-            self.project_id = self.task_id.project_id
-
-    def eval_date(self, vals):
+    @api.model
+    def _eval_date(self, vals):
         if vals.get('date_time'):
-            vals['date'] = fields.Date.from_string(vals['date_time'])
+            return dict(vals, date=fields.Date.from_string(vals['date_time']))
         return vals
 
     @api.model
+    def _running_domain(self):
+        """Domain to find running timesheet lines."""
+        return [
+            ("date_time", "!=", False),
+            ("employee_id", "in", self.env.user.employee_ids.ids),
+            ("project_id.allow_timesheets", "=", True),
+            ("unit_amount", "=", 0),
+        ]
+
+    @api.model
+    def _duration(self, start, end):
+        """Compute float duration between start and end."""
+        if isinstance(start, str):
+            start = fields.Datetime.from_string(start)
+        if isinstance(end, str):
+            end = fields.Datetime.from_string(end)
+
+        if not (start and end):
+            return 0
+
+        try:
+            return (end - start).total_seconds() / 3600
+        except TypeError:
+            _logger.warning("Cannot compute duration", exc_info=True)
+            return 0
+
+    @api.depends("employee_id", "unit_amount")
+    def _compute_show_time_control(self):
+        """Decide when to show time controls."""
+        for one in self:
+            if one.employee_id not in self.env.user.employee_ids:
+                one.show_time_control = False
+            elif one.unit_amount or not one.date_time:
+                one.show_time_control = "resume"
+            else:
+                one.show_time_control = "stop"
+
+    @api.model
     def create(self, vals):
-        return super(AccountAnalyticLine, self).create(self.eval_date(vals))
+        return super().create(self._eval_date(vals))
 
     @api.multi
     def write(self, vals):
-        return super(AccountAnalyticLine, self).write(self.eval_date(vals))
+        return super().write(self._eval_date(vals))
+
+    def button_resume_work(self):
+        """Create a new record starting now, with a running timer."""
+        return {
+            "name": _("Resume work"),
+            "res_model": "hr.timesheet.switch",
+            "target": "new",
+            "type": "ir.actions.act_window",
+            "view_mode": "form",
+            "view_type": "form",
+        }
 
     @api.multi
     def button_end_work(self):
-        end_date = datetime.now()
+        end = fields.Datetime.from_string(
+            self.env.context.get("stop_dt", fields.Datetime.now()))
         for line in self:
-            date = fields.Datetime.from_string(line.date_time)
-            line.unit_amount = (end_date - date).total_seconds() / 3600
-        return True
-
-    @api.multi
-    def button_open_task(self):
-        for line in self.filtered('task_id'):
-            if line.task_id.project_id:
-                stage = self.env['project.task.type'].search(
-                    [('project_ids', '=', line.task_id.project_id.id),
-                     ('closed', '=', False)], limit=1)
-                if stage:
-                    line.task_id.write({'stage_id': stage.id})
-
-    @api.multi
-    def button_close_task(self):
-        for line in self.filtered('task_id.project_id'):
-            stage = self.env['project.task.type'].search(
-                [('project_ids', '=', line.task_id.project_id.id),
-                 ('closed', '=', True)], limit=1,
-            )
-            if not stage:  # pragma: no cover
-                raise exceptions.UserError(
-                    _("There isn't any stage with closed check. Please "
-                      "mark any.")
+            if line.unit_amount:
+                raise UserError(
+                    _("Cannot stop timer %d because it is not running. "
+                      "Refresh the page and check again.") %
+                    line.id
                 )
-            line.task_id.write({'stage_id': stage.id})
-
-    @api.multi
-    def toggle_closed(self):
-        self.ensure_one()
-        if self.closed:
-            self.button_open_task()
-        else:
-            self.button_close_task()
+            date = fields.Datetime.from_string(line.date_time)
+            line.unit_amount = line._duration(date, end)
+        return True
