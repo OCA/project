@@ -21,7 +21,7 @@ msgstr ""
 "X-Generator: Poedit 2.2.3\n"
 
 #. module: project_timesheet_time_control
-#: code:addons/project_timesheet_time_control/wizards/hr_timesheet_switch.py:43
+#: code:addons/project_timesheet_time_control/wizards/hr_timesheet_switch.py:45
 #, python-format
 msgid ""
 "%d running timers found. Cannot know which one to stop. Please stop them "
@@ -90,15 +90,23 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #. module: project_timesheet_time_control
-#: code:addons/project_timesheet_time_control/models/account_analytic_line.py:77
-#, python-format
-msgid "Cannot stop timer %d because it is not running"
+#: code:addons/project_timesheet_time_control/models/account_analytic_line.py:86
+#, fuzzy, python-format
+#| msgid "Cannot stop timer %d because it is not running"
+msgid ""
+"Cannot stop timer %d because it is not running. Refresh the page and check "
+"again."
 msgstr "No se puede detener el cronómetro %d porque no está en marcha"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__is_task_closed
 msgid "Closed"
 msgstr "Cerrado"
+
+#. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__code
+msgid "Code"
+msgstr ""
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__company_id
@@ -155,6 +163,13 @@ msgid "Employee"
 msgstr "Empleado"
 
 #. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__general_account_id
+#, fuzzy
+#| msgid "Analytic Account"
+msgid "Financial Account"
+msgstr "Cuenta analítica"
+
+#. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__group_id
 msgid "Group"
 msgstr "Grupo"
@@ -178,6 +193,11 @@ msgid "Indicate which time control button to show, if any."
 msgstr ""
 "Indica qué botón de control del tiempo mostrar, si es que hay que mostrar "
 "alguno."
+
+#. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__move_id
+msgid "Journal Item"
+msgstr ""
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch____last_update
@@ -216,6 +236,11 @@ msgid "Previous timer start"
 msgstr "Comienzo del cronómetro anterior"
 
 #. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__product_id
+msgid "Product"
+msgstr ""
+
+#. module: project_timesheet_time_control
 #: model:ir.model,name:project_timesheet_time_control.model_project_project
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__project_id
 msgid "Project"
@@ -227,13 +252,18 @@ msgid "Quantity"
 msgstr "Cantidad"
 
 #. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__ref
+msgid "Ref."
+msgstr ""
+
+#. module: project_timesheet_time_control
 #: selection:account.analytic.line,show_time_control:0
 #: selection:hr.timesheet.switch,show_time_control:0
 msgid "Resume"
 msgstr "Continuar"
 
 #. module: project_timesheet_time_control
-#: code:addons/project_timesheet_time_control/models/account_analytic_line.py:62
+#: code:addons/project_timesheet_time_control/models/account_analytic_line.py:71
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.account_analytic_line_tree
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_line_form
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_kanban_account_analytic_line
@@ -262,8 +292,8 @@ msgid "Start new timer"
 msgstr "Comenzar nuevo cronómetro"
 
 #. module: project_timesheet_time_control
-#: code:addons/project_timesheet_time_control/models/project_project.py:48
-#: code:addons/project_timesheet_time_control/models/project_task.py:48
+#: code:addons/project_timesheet_time_control/models/project_project.py:50
+#: code:addons/project_timesheet_time_control/models/project_task.py:50
 #: model:ir.actions.act_window,name:project_timesheet_time_control.hr_timesheet_switch_action
 #: model:ir.ui.menu,name:project_timesheet_time_control.hr_timesheet_switch_menu
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.project_invoice_form
@@ -331,8 +361,8 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
 msgid "The previous timer is old. Do you really want to stop it now?"
 msgstr ""
-"El anterior cronómetro lleva demasiado tiempo en marcha. ¿Seguro que "
-"quieres detenerlo ahora?"
+"El anterior cronómetro lleva demasiado tiempo en marcha. ¿Seguro que quieres "
+"detenerlo ahora?"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,help:project_timesheet_time_control.field_hr_timesheet_switch__running_timer_id
