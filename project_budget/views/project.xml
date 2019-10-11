@@ -1,0 +1,51 @@
+<!-- Copyright 2019 Patrick Wilson <patrickraymondwilson@gmail.com
+    License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+    <record id="project_budget_inherit_form" model="ir.ui.view">
+        <field name="name">project.budget.inherit.form</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="type">form</field>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='settings']" position="after">
+                <page name="budget" string="Budget" groups="project_budget.group_project_budget_viewer">
+                    <group>
+                        <group name="budget_info">
+                            <field name="budget_id"
+                                   context="{'default_project_id': active_id,
+                                             'default_date_from': date_start,
+                                             'default_date_to': date,
+                                             'default_user_id': user_id,
+                                             'default_analytic_account_id': analytic_account_id}"/>
+                            <field name="budget_state" readonly="1"/>
+                        </group>
+                        <group name="budget_dates">
+                            <label for="date_start" string="Project Period"/>
+                            <div>
+                                <field name="date_start" class="oe_inline"/>
+                                -
+                                <field name="date" class="oe_inline" nolabel="1"/>
+                            </div>
+                        </group>
+                    </group>
+                    <group name="budget_lines" string="Budget Lines">
+                        <field name="budget_id_lines" nolabel="1">
+                            <tree string="Budget Lines" decoration-success="planned_amount &gt; 0" decoration-danger="planned_amount &lt; 0">
+                                <field name="general_budget_id"/>
+                                <field name="analytic_account_id" groups="analytic.group_analytic_accounting"/>
+                                <field name="date_from"/>
+                                <field name="date_to"/>
+                                <field name="paid_date" groups="base.group_no_one"/>
+                                <field name="planned_amount" sum="Planned Amount"/>
+                                <field name="practical_amount" sum="Practical Amount"/>
+                                <field name="theoretical_amount" sum="Theoretical Amount"/>
+                                <field name="percentage"  widget="percentage" />
+                               </tree>
+                          </field>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
