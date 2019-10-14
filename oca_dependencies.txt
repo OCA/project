@@ -1,3 +1,4 @@
 web
 timesheet
 stock-logistics-warehouse
+account-budgeting

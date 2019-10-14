@@ -9,19 +9,20 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-10 02:49+0000\n"
-"PO-Revision-Date: 2017-08-10 02:49+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"PO-Revision-Date: 2019-09-13 21:24+0000\n"
+"Last-Translator: gslabit <giovanni@gslab.it>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.8\n"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_analysis
 msgid "Analysis"
-msgstr ""
+msgstr "Analisi"
 
 #. module: project_task_default_stage
 #: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_analysis
@@ -33,27 +34,27 @@ msgstr ""
 #: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_specification
 #: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_testing
 msgid "Blocked"
-msgstr ""
+msgstr "Bloccato"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_cancel
 msgid "Cancelled"
-msgstr ""
+msgstr "Cancellato"
 
 #. module: project_task_default_stage
 #: model:ir.model.fields,field_description:project_task_default_stage.field_project_task_type__case_default
 msgid "Default for New Projects"
-msgstr ""
+msgstr "Standard per nuovi progetti"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_design
 msgid "Design"
-msgstr ""
+msgstr "Design"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_development
 msgid "Development"
-msgstr ""
+msgstr "Sviluppo"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_deployment
@@ -66,6 +67,8 @@ msgid ""
 "If you check this field, this stage will be proposed by default on each new "
 "project. It will not assign this stage to existing projects."
 msgstr ""
+"Se selezioni questo campo, questa fase sarà presente in ogni nuovo progetto. "
+"Non aggiungerà questa fase ai progetti già esistenti."
 
 #. module: project_task_default_stage
 #: model:project.task.type,legend_normal:project_task_default_stage.project_tt_analysis
@@ -77,22 +80,22 @@ msgstr ""
 #: model:project.task.type,legend_normal:project_task_default_stage.project_tt_specification
 #: model:project.task.type,legend_normal:project_task_default_stage.project_tt_testing
 msgid "In Progress"
-msgstr ""
+msgstr "In corso"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_merge
 msgid "Merge"
-msgstr ""
+msgstr "Unisci"
 
 #. module: project_task_default_stage
 #: model:ir.model,name:project_task_default_stage.model_project_project
 msgid "Project"
-msgstr ""
+msgstr "Progetto"
 
 #. module: project_task_default_stage
 #: model_terms:ir.ui.view,arch_db:project_task_default_stage.edit_project
 msgid "Project Stages"
-msgstr ""
+msgstr "Fasi Progetto"
 
 #. module: project_task_default_stage
 #: model:project.task.type,legend_done:project_task_default_stage.project_tt_analysis
@@ -104,22 +107,22 @@ msgstr ""
 #: model:project.task.type,legend_done:project_task_default_stage.project_tt_specification
 #: model:project.task.type,legend_done:project_task_default_stage.project_tt_testing
 msgid "Ready for Next Stage"
-msgstr ""
+msgstr "Pronto per la prossima fase"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_specification
 msgid "Specification"
-msgstr ""
+msgstr "Specifiche"
 
 #. module: project_task_default_stage
 #: model:ir.model,name:project_task_default_stage.model_project_task_type
 msgid "Task Stage"
-msgstr ""
+msgstr "Fase lavoro"
 
 #. module: project_task_default_stage
 #: model:ir.model.fields,field_description:project_task_default_stage.field_project_project__type_ids
 msgid "Tasks Stages"
-msgstr ""
+msgstr "Fasi lavori"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_testing
