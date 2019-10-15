@@ -90,7 +90,7 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #. module: project_timesheet_time_control
-#: code:addons/project_timesheet_time_control/models/account_analytic_line.py:76
+#: code:addons/project_timesheet_time_control/models/account_analytic_line.py:86
 #, python-format
 msgid ""
 "Cannot stop timer %d because it is not running. Refresh the page and check "
@@ -103,6 +103,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__is_task_closed
 msgid "Closed"
 msgstr "Cerrado"
+
+#. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__code
+msgid "Code"
+msgstr ""
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__company_id
@@ -160,6 +165,13 @@ msgid "Employee"
 msgstr "Empleado"
 
 #. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__general_account_id
+#, fuzzy
+#| msgid "Analytic Account"
+msgid "Financial Account"
+msgstr "Cuenta analítica"
+
+#. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__group_id
 msgid "Group"
 msgstr "Grupo"
@@ -187,6 +199,11 @@ msgstr ""
 "alguno."
 
 #. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__move_id
+msgid "Journal Item"
+msgstr ""
+
+#. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch____last_update
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_time_control_mixin____last_update
 msgid "Last Modified on"
@@ -208,7 +225,7 @@ msgid "Mixin for records related with timesheet lines"
 msgstr "Mixin para registros relacionados con líneas de parte de horas"
 
 #. module: project_timesheet_time_control
-#: code:addons/project_timesheet_time_control/models/hr_timesheet_time_control_mixin.py:73
+#: code:addons/project_timesheet_time_control/models/hr_timesheet_time_control_mixin.py:70
 #, python-format
 msgid ""
 "No running timer found in %(model)s %(record)s. Refresh the page and check "
@@ -239,6 +256,11 @@ msgid "Previous timer start"
 msgstr "Comienzo del cronómetro anterior"
 
 #. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__product_id
+msgid "Product"
+msgstr ""
+
+#. module: project_timesheet_time_control
 #: model:ir.model,name:project_timesheet_time_control.model_project_project
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__project_id
 msgid "Project"
@@ -250,13 +272,18 @@ msgid "Quantity"
 msgstr "Cantidad"
 
 #. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__ref
+msgid "Ref."
+msgstr ""
+
+#. module: project_timesheet_time_control
 #: selection:account.analytic.line,show_time_control:0
 #: selection:hr.timesheet.switch,show_time_control:0
 msgid "Resume"
 msgstr "Continuar"
 
 #. module: project_timesheet_time_control
-#: code:addons/project_timesheet_time_control/models/account_analytic_line.py:61
+#: code:addons/project_timesheet_time_control/models/account_analytic_line.py:71
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.account_analytic_line_tree
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_line_form
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_kanban_account_analytic_line
@@ -287,7 +314,9 @@ msgid "Start new timer"
 msgstr "Comenzar nuevo cronómetro"
 
 #. module: project_timesheet_time_control
-#: code:addons/project_timesheet_time_control/models/hr_timesheet_time_control_mixin.py:59
+#: code:addons/project_timesheet_time_control/models/hr_timesheet_time_control_mixin.py:56
+#: code:addons/project_timesheet_time_control/models/project_project.py:50
+#: code:addons/project_timesheet_time_control/models/project_task.py:50
 #: model:ir.actions.act_window,name:project_timesheet_time_control.hr_timesheet_switch_action
 #: model:ir.ui.menu,name:project_timesheet_time_control.hr_timesheet_switch_menu
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.project_invoice_form
