@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-10-02 09:29+0000\n"
-"PO-Revision-Date: 2019-10-02 10:31+0100\n"
+"POT-Creation-Date: 2019-10-15 09:35+0000\n"
+"PO-Revision-Date: 2019-10-15 10:55+0100\n"
 "Last-Translator: Jairo Llopis <yajo.sk8@gmail.com>\n"
 "Language-Team: Spanish (https://www.transifex.com/oca/teams/23907/es/)\n"
 "Language: es\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.2.4\n"
 
 #. module: project_timesheet_time_control
 #: code:addons/project_timesheet_time_control/wizards/hr_timesheet_switch.py:45
@@ -91,12 +91,13 @@ msgstr "Cancelar"
 
 #. module: project_timesheet_time_control
 #: code:addons/project_timesheet_time_control/models/account_analytic_line.py:86
-#, fuzzy, python-format
-#| msgid "Cannot stop timer %d because it is not running"
+#, python-format
 msgid ""
 "Cannot stop timer %d because it is not running. Refresh the page and check "
 "again."
-msgstr "No se puede detener el cronómetro %d porque no está en marcha"
+msgstr ""
+"No se puede detener el cronómetro %d porque no está en marcha. Refresque la "
+"página y pruebe de nuevo."
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__is_task_closed
@@ -154,6 +155,7 @@ msgstr "Descripción"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__display_name
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_time_control_mixin__display_name
 msgid "Display Name"
 msgstr "Nombre mostrado"
 
@@ -181,12 +183,14 @@ msgstr "Ayudante para cambiar rápidamente de línea del parte de horas"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__id
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_time_control_mixin__id
 msgid "ID"
 msgstr "ID"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,help:project_timesheet_time_control.field_account_analytic_line__show_time_control
 #: model:ir.model.fields,help:project_timesheet_time_control.field_hr_timesheet_switch__show_time_control
+#: model:ir.model.fields,help:project_timesheet_time_control.field_hr_timesheet_time_control_mixin__show_time_control
 #: model:ir.model.fields,help:project_timesheet_time_control.field_project_project__show_time_control
 #: model:ir.model.fields,help:project_timesheet_time_control.field_project_task__show_time_control
 msgid "Indicate which time control button to show, if any."
@@ -201,6 +205,7 @@ msgstr ""
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch____last_update
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_time_control_mixin____last_update
 msgid "Last Modified on"
 msgstr "Última modificación el"
 
@@ -213,6 +218,21 @@ msgstr "Última actualización por"
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__write_date
 msgid "Last Updated on"
 msgstr "Última actualización el"
+
+#. module: project_timesheet_time_control
+#: model:ir.model,name:project_timesheet_time_control.model_hr_timesheet_time_control_mixin
+msgid "Mixin for records related with timesheet lines"
+msgstr "Mixin para registros relacionados con líneas de parte de horas"
+
+#. module: project_timesheet_time_control
+#: code:addons/project_timesheet_time_control/models/hr_timesheet_time_control_mixin.py:70
+#, python-format
+msgid ""
+"No running timer found in %(model)s %(record)s. Refresh the page and check "
+"again."
+msgstr ""
+"No se ha encontrado ningún cronómetro corriendo en el/la %(model)s "
+"%(record)s. Refresque la página y pruebe de nuevo."
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__partner_id
@@ -275,12 +295,14 @@ msgstr "Continuar trabajo"
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_account_analytic_line__show_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__show_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_time_control_mixin__show_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_project_project__show_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_project_task__show_time_control
 msgid "Show Time Control"
 msgstr "Mostrar controles del cronómetro"
 
 #. module: project_timesheet_time_control
+#: selection:hr.timesheet.time_control.mixin,show_time_control:0
 #: selection:project.project,show_time_control:0
 #: selection:project.task,show_time_control:0
 msgid "Start"
@@ -292,8 +314,7 @@ msgid "Start new timer"
 msgstr "Comenzar nuevo cronómetro"
 
 #. module: project_timesheet_time_control
-#: code:addons/project_timesheet_time_control/models/project_project.py:50
-#: code:addons/project_timesheet_time_control/models/project_task.py:50
+#: code:addons/project_timesheet_time_control/models/hr_timesheet_time_control_mixin.py:56
 #: model:ir.actions.act_window,name:project_timesheet_time_control.hr_timesheet_switch_action
 #: model:ir.ui.menu,name:project_timesheet_time_control.hr_timesheet_switch_menu
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.project_invoice_form
@@ -308,6 +329,7 @@ msgstr "Comenzar trabajo"
 #. module: project_timesheet_time_control
 #: selection:account.analytic.line,show_time_control:0
 #: selection:hr.timesheet.switch,show_time_control:0
+#: selection:hr.timesheet.time_control.mixin,show_time_control:0
 #: selection:project.project,show_time_control:0
 #: selection:project.task,show_time_control:0
 msgid "Stop"
