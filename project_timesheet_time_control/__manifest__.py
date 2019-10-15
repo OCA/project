@@ -6,7 +6,7 @@
 
 {
     'name': 'Project timesheet time control',
-    'version': '12.0.2.0.0',
+    'version': '12.0.2.1.0',
     'development_status': 'Mature',
     'category': 'Project',
     'author': 'Tecnativa,'
