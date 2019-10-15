@@ -148,6 +148,9 @@ class TestProjectTimesheetTimeControl(common.TransactionCase):
         self.project.invalidate_cache()
         self.assertEqual(self.project.show_time_control, "stop")
         self.project.button_end_work()
+        # No more running lines, cannot stop again
+        with self.assertRaises(exceptions.UserError):
+            self.project.button_end_work()
         # All lines stopped, start new one
         self.project.invalidate_cache()
         self.assertEqual(self.project.show_time_control, "start")
@@ -179,6 +182,9 @@ class TestProjectTimesheetTimeControl(common.TransactionCase):
         # Running line found, stop the timer
         self.assertEqual(self.task.show_time_control, "stop")
         self.task.button_end_work()
+        # No more running lines, cannot stop again
+        with self.assertRaises(exceptions.UserError):
+            self.task.button_end_work()
         # All lines stopped, start new one
         self.task.invalidate_cache()
         self.assertEqual(self.task.show_time_control, "start")
