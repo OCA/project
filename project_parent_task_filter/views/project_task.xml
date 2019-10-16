@@ -16,7 +16,7 @@
             </xpath>
 
             <xpath expr="//filter[@name='company']" position="after">
-                <filter name="parent_task" string="Parent tasks" domain="[]" context="{'group_by' : 'parent_id'}"/>
+                <filter name="parent_task" string="Parent tasks" context="{'group_by' : 'parent_id'}"/>
             </xpath>
          </field>
      </record>
