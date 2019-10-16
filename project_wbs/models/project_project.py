@@ -1,4 +1,4 @@
-# Copyright 2017 Eficent Business and IT Consulting Services S.L.
+# Copyright 2017-19 Eficent Business and IT Consulting Services S.L.
 # Copyright 2017 Luxim d.o.o.
 # Copyright 2017 Matmoz d.o.o.
 # Copyright 2017 Deneroteam.
@@ -11,9 +11,7 @@ from odoo import api, fields, models, _
 class Project(models.Model):
     _inherit = "project.project"
     _description = "WBS element"
-    _order = "c_wbs_code"
-
-    _inherits = {'account.analytic.account': "analytic_account_id"}
+    _order = "complete_wbs_code"
 
     analytic_account_id = fields.Many2one('account.analytic.account',
                                           'Analytic Account', required=True,
@@ -63,12 +61,17 @@ class Project(models.Model):
             data = []
             proj = project_item
 
-            while proj:
-                if proj and proj.name:
-                    data.insert(0, proj.name)
+            if proj and proj.name:
+                data.insert(0, proj.name)
+            else:
+                data.insert(0, '')  # pragma: no cover
+            acc = proj.analytic_account_id.parent_id
+            while acc:
+                if acc and acc.name:
+                    data.insert(0, acc.name)
                 else:
                     data.insert(0, '')  # pragma: no cover
-                proj = proj.parent_id
+                acc = acc.parent_id
             data = '/'.join(data)
             res2 = project_item.code_get()
             if res2 and res2[0][1]:
@@ -78,30 +81,37 @@ class Project(models.Model):
         return res
 
     @api.multi
-    @api.depends('code')
+    @api.depends('analytic_account_id.code')
     def code_get(self):
         res = []
         for project_item in self:
             data = []
             proj = project_item
-            while proj:
-                if proj.code:
-                    data.insert(0, proj.code)
+
+            if proj.analytic_account_id.code:
+                data.insert(0, proj.analytic_account_id.code)
+            else:
+                data.insert(0, '')  # pragma: no cover
+            acc = proj.analytic_account_id.parent_id
+            while acc:
+                if acc.code:
+                    data.insert(0, acc.code)
                 else:
                     data.insert(0, '')  # pragma: no cover
 
-                proj = proj.parent_id
+                acc = acc.parent_id
 
             data = '/'.join(data)
             res.append((project_item.id, data))
         return res
 
     @api.multi
-    @api.depends('parent_id')
+    @api.depends('analytic_account_id.parent_id')
     def _compute_child(self):
         for project_item in self:
-            child_ids = self.search(
-                [('parent_id', '=', project_item.analytic_account_id.id)]
+            child_ids = self.env['project.project'].search(
+                [('analytic_account_id.parent_id', '=',
+                  project_item.analytic_account_id.id)]
             )
             project_item.project_child_complete_ids = child_ids
 
@@ -127,20 +137,46 @@ class Project(models.Model):
             'active': True,
         }
 
+    parent_id = fields.Many2one(
+        related="analytic_account_id.parent_id",
+        readonly=False,
+    )
+    child_ids = fields.One2many(
+        related="analytic_account_id.child_ids",
+        readonly=False,
+    )
     project_child_complete_ids = fields.Many2many(
         comodel_name='project.project',
         string="Project Hierarchy",
         compute="_compute_child"
     )
-    c_wbs_code = fields.Char(
+    wbs_indent = fields.Char(
+        related="analytic_account_id.wbs_indent",
+        readonly=False,
+    )
+    complete_wbs_code = fields.Char(
         related="analytic_account_id.complete_wbs_code",
         string='WBS Code',
-        store=True
+        store=True,
+        readonly=False,
+    )
+    code = fields.Char(
+        related="analytic_account_id.code",
+        readonly=False,
+    )
+    complete_wbs_name = fields.Char(
+        related='analytic_account_id.complete_wbs_name',
+        readonly=False,
+    )
+    project_analytic_id = fields.Many2one(
+        related="analytic_account_id.project_analytic_id",
+        readonly=False,
     )
     account_class = fields.Selection(
         related='analytic_account_id.account_class',
         store=True,
         default='project',
+        readonly=False,
     )
 
     @api.model
@@ -153,7 +189,7 @@ class Project(models.Model):
 
         return res
 
-    @api.multi
+    @api.model
     def action_open_child_view(self, module, act_window):
         """
         :return dict: dictionary value for created view
@@ -161,26 +197,26 @@ class Project(models.Model):
         res = self.env['ir.actions.act_window'].for_xml_id(module, act_window)
         domain = []
         project_ids = []
-        for project in self:
-            child_project_ids = self.search(
-                [('parent_id', '=', project.analytic_account_id.id)]
-            )
-            for child_project_id in child_project_ids:
-                project_ids.append(child_project_id.id)
-            res['context'] = ({
-                'default_parent_id': (project.analytic_account_id and
-                                      project.analytic_account_id.id or
-                                      False),
-                'default_partner_id': (project.partner_id and
-                                       project.partner_id.id or
-                                       False),
-                'default_user_id': (project.user_id and
-                                    project.user_id.id or
-                                    False),
-            })
+        child_project_ids = self.env['project.project'].search(
+            [('analytic_account_id.parent_id', '=',
+              self.analytic_account_id.id)]
+        )
+        for child_project_id in child_project_ids:
+            project_ids.append(child_project_id.id)
+        res['context'] = ({
+            'default_parent_id': (self.analytic_account_id and
+                                  self.analytic_account_id.id or
+                                  False),
+            'default_partner_id': (self.partner_id and
+                                   self.partner_id.id or
+                                   False),
+            'default_user_id': (self.user_id and
+                                self.user_id.id or
+                                False),
+        })
         domain.append(('id', 'in', project_ids))
         res.update({
-            "display_name": project.name,
+            "display_name": self.name,
             "domain": domain,
             "nodestroy": False
         })
@@ -188,11 +224,13 @@ class Project(models.Model):
 
     @api.multi
     def action_open_child_tree_view(self):
+        self.ensure_one()
         return self.action_open_child_view(
             'project_wbs', 'open_view_project_wbs')
 
     @api.multi
     def action_open_child_kanban_view(self):
+        self.ensure_one()
         return self.action_open_child_view(
             'project_wbs', 'open_view_wbs_kanban')
 
@@ -201,24 +239,25 @@ class Project(models.Model):
         """
         :return dict: dictionary value for created view
         """
+        self.ensure_one()
         domain = []
         analytic_account_ids = []
         res = self.env['ir.actions.act_window'].for_xml_id(
             'project_wbs', 'open_view_project_wbs'
         )
-        for project in self:
-            if project.parent_id:
-                for parent_project_id in self.env['project.project'].search(
-                        [('analytic_account_id', '=', project.parent_id.id)]
-                ):
-                    analytic_account_ids.append(parent_project_id.id)
+        if self.analytic_account_id.parent_id:
+            for parent_project_id in self.env['project.project'].search(
+                    [('analytic_account_id', '=',
+                      self.analytic_account_id.parent_id.id)]
+            ):
+                analytic_account_ids.append(parent_project_id.id)
         if analytic_account_ids:
             domain.append(('id', 'in', analytic_account_ids))
             res.update({
                 "domain": domain,
                 "nodestroy": False
             })
-        res['display_name'] = project.name
+        res['display_name'] = self.name
         return res
 
     @api.multi
@@ -229,6 +268,10 @@ class Project(models.Model):
                     self.analytic_account_id.get_child_accounts().keys()):
                 account._complete_wbs_code_calc()
                 account._complete_wbs_name_calc()
+        if 'active' in vals and vals['active']:
+            for project in self.filtered(
+                    lambda p: not p.analytic_account_id.active):
+                project.analytic_account_id.active = True
         return res
 
     @api.multi
@@ -236,17 +279,18 @@ class Project(models.Model):
         """
         :return dict: dictionary value for created view
         """
+        self.ensure_one()
         domain = []
         analytic_account_ids = []
         res = self.env['ir.actions.act_window'].for_xml_id(
             'project_wbs', 'open_view_wbs_kanban'
         )
-        for project in self:
-            if project.parent_id:
-                for parent_project_id in self.env['project.project'].search(
-                        [('analytic_account_id', '=', project.parent_id.id)]
-                ):
-                    analytic_account_ids.append(parent_project_id.id)
+        if self.analytic_account_id.parent_id:
+            for parent_project_id in self.env['project.project'].search(
+                    [('analytic_account_id', '=',
+                      self.analytic_account_id.parent_id.id)]
+            ):
+                analytic_account_ids.append(parent_project_id.id)
         if analytic_account_ids:
             domain.append(('id', 'in', analytic_account_ids))
             res.update({
