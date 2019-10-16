@@ -1,4 +1,4 @@
-# Copyright 2017 Eficent Business and IT Consulting Services S.L.
+# Copyright 2017-19 Eficent Business and IT Consulting Services S.L.
 # Copyright 2017 Luxim d.o.o.
 # Copyright 2017 Matmoz d.o.o.
 # Copyright 2017 Deneroteam.
@@ -45,6 +45,11 @@ class AccountAnalyticAccount(models.Model):
             for account in self.browse(self.get_child_accounts().keys()):
                 account._complete_wbs_code_calc()
                 account._complete_wbs_name_calc()
+        if 'active' in vals:
+            for account in self:
+                account.project_ids.filtered(
+                    lambda p: p.active != account.active).write(
+                    {'active': account.active})
         return res
 
     @api.multi
@@ -141,6 +146,11 @@ class AccountAnalyticAccount(models.Model):
         string='Full WBS path',
         help='Full path in the WBS hierarchy',
         store=True
+    )
+    project_ids = fields.One2many(
+        comodel_name='project.project',
+        inverse_name='analytic_account_id',
+        string='Projects',
     )
     project_analytic_id = fields.Many2one(
         'account.analytic.account',
