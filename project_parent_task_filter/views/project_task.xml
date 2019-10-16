@@ -31,7 +31,7 @@
                 <field name="parent_id"/>
             </field>
             <xpath expr="//div[hasclass('oe_kanban_bottom_left')]" position="inside">
-                <div class="pull-right" groups="base.group_user" style="margin-left: 10px;"> 
+                <div class="pull-right" groups="base.group_user" style="margin-left: 10px;">
                     <t attrs="{'invisible': [('parent_id', '!=', False)]}"
                         groups="project.group_subtask_project">
                         <a type="object" name="action_subtask" style="font-weight:bold;color:green">
@@ -39,7 +39,7 @@
                             <span><field name="subtask_count"/></span>
                         </a>
                     </t>
-                </div> 
+                </div>
             </xpath>
         </field>
     </record>
