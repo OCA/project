@@ -120,10 +120,11 @@ class Project(models.Model):
         return None
 
     def prepare_analytics_vals(self, vals):
-
         return {
-            'name': vals['name'],
-            'company_id': self.env.user.company_id.id
+            'name': vals.get('name', _('Unknown Analytic Account')),
+            'company_id': vals.get('company_id', self.env.user.company_id.id),
+            'partner_id': vals.get('partner_id'),
+            'active': True,
         }
 
     project_child_complete_ids = fields.Many2many(
