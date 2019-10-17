@@ -111,6 +111,14 @@ class Project(models.Model):
             return context['default_parent_id']
         return None
 
+    def prepare_analytics_vals(self, vals):
+        return {
+            'name': vals.get('name', _('Unknown Analytic Account')),
+            'company_id': vals.get('company_id', self.env.user.company_id.id),
+            'partner_id': vals.get('partner_id'),
+            'active': True,
+        }
+
     project_child_complete_ids = fields.Many2many(
         comodel_name='project.project',
         string="Project Hierarchy",
@@ -241,7 +249,7 @@ class Project(models.Model):
     @api.multi
     @api.onchange('parent_id')
     def on_change_parent(self):
-        return self.analytic_account_id._onchange_parent_id()
+        self.analytic_account_id._onchange_parent_id()
 
     @api.multi
     def action_open_view_project_form(self):
