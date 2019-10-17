@@ -9,6 +9,7 @@ setuptools.setup(
     version=version,
     install_requires=[
         'odoo13-addon-project_description',
+        'odoo13-addon-project_parent_task_filter',
     ],
     classifiers=[
         'Programming Language :: Python',
