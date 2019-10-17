@@ -7,13 +7,12 @@ from odoo.tests import common
 class TestProjectTemplate(common.TransactionCase):
 
     def setUp(self):
-        super().setUp()
+        super(TestProjectTemplate, self).setUp()
         self.test_customer = self.env['res.partner'].create({
             'name': 'TestCustomer'})
         self.test_project = self.env['project.project'].create({
             'name': 'TestProject',
             'alias_name': 'test_alias',
-            'total_planned_hours': 0.0,
             'partner_id': self.test_customer.id})
         self.env['project.task'].create({
             'name': 'TestTask',
