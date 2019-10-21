@@ -3,8 +3,17 @@
 from odoo import api, models
 from datetime import datetime, timedelta
 
-from odoo.addons.resource.models.resource import make_aware
 from functools import partial
+
+
+def make_aware(dt):
+    """ Return ``dt`` with an explicit timezone, together with a function to
+        convert a datetime to the same (naive or aware) timezone as ``dt``.
+    """
+    if dt.tzinfo:
+        return dt, lambda val: val.astimezone(dt.tzinfo)
+    else:
+        return dt.replace(tzinfo=utc), lambda val: val.astimezone(utc).replace(tzinfo=None)
 
 
 class ResourceCalendar(models.Model):
