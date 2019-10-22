@@ -31,8 +31,7 @@ class ProjectType(models.Model):
         for project_type in self:
             if project_type.parent_id:
                 project_type.complete_name = "{} / {}".format(
-                    project_type.parent_id.complete_name,
-                    project_type.name,
+                    project_type.parent_id.complete_name, project_type.name
                 )
             else:
                 project_type.complete_name = project_type.name
