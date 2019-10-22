@@ -1,5 +1,6 @@
 # Copyright 2015 ADHOC SA (http://www.adhoc.com.ar)
 # Copyright 2017 Tecnativa - Pedro M. Baeza
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 {
     "name": "Project Types",
