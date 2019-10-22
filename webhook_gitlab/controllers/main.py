@@ -49,8 +49,8 @@ class WebhookGitlab(http.Controller):
         try:
             func = getattr(self, '_process_%s' % event['object_kind'])
         except AttributeError as error:
-            _logger.warning(error.message)
-            return error.message
+            _logger.warning(error)
+            return error
         return func(event)
 
     def _get_record_type_and_id(self, title):
