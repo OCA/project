@@ -5,10 +5,10 @@ from odoo import fields, models
 
 
 class ResConfigSettings(models.TransientModel):
-    _inherit = 'res.config.settings'
+    _inherit = "res.config.settings"
 
     is_project_task_project_required = fields.Boolean(
-        string='Require Projects on Tasks',
-        related='company_id.is_project_task_project_required',
+        string="Require Projects on Tasks",
+        related="company_id.is_project_task_project_required",
         readonly=False,
     )

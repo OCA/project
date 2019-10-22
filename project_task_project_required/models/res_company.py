@@ -5,8 +5,8 @@ from odoo import fields, models
 
 
 class ResCompany(models.Model):
-    _inherit = 'res.company'
+    _inherit = "res.company"
 
     is_project_task_project_required = fields.Boolean(
-        string='Require Projects on Tasks',
+        string="Require Projects on Tasks"
     )
