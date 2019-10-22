@@ -5,7 +5,7 @@
 -->
 <odoo>
 
-    <record model="ir.ui.view" id="view_task_tree2">
+    <record id="view_task_tree2" model="ir.ui.view">
         <field name="name">project.task.tree</field>
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_tree2"/>
@@ -19,7 +19,7 @@
         </field>
     </record>
 
-    <record model="ir.ui.view" id="view_task_form2">
+    <record id="view_task_form2" model="ir.ui.view">
         <field name="name">project.task.form</field>
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_form2"/>
@@ -33,12 +33,13 @@
         </field>
     </record>
 
-    <record model="ir.ui.view" id="quick_create_task_form">
+    <record id="quick_create_task_form" model="ir.ui.view">
         <field name="name">project.task.form.quick_create</field>
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.quick_create_task_form"/>
         <field name="arch" type="xml">
             <field name="name" position="before">
+                <field name="company_id" invisible="1"/>
                 <field name="is_project_required" invisible="1"/>
                 <field name="project_id" attrs="{'required':[('is_project_required','=',True)], 'invisible':[('is_project_required','=',False)]}"/>
             </field>
