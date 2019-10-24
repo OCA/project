@@ -31,7 +31,6 @@ class ProjectTask(models.Model):
                 )
         return super().create(vals_list)
 
-    @api.multi
     def copy(self, default=None):
         self.ensure_one()
         if default is None:
