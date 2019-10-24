@@ -10,15 +10,16 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-02 01:51+0000\n"
-"PO-Revision-Date: 2018-02-02 01:51+0000\n"
-"Last-Translator: Matjaž Mozetič <m.mozetic@matmoz.si>, 2018\n"
+"PO-Revision-Date: 2019-10-24 07:33+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@matmoz.si>\n"
 "Language-Team: Slovenian (https://www.transifex.com/oca/teams/23907/sl/)\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
-"%100==4 ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
+"%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 3.8\n"
 
 #. module: project_recalculate
 #: model:ir.model.fields,help:project_recalculate.field_project_task__from_days
@@ -178,15 +179,12 @@ msgid "Last Updated on"
 msgstr "Zadnjič posodobljeno"
 
 #. module: project_recalculate
-#: model:ir.model,name:project_recalculate.model_project_project
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__project_id
 msgid "Project"
 msgstr "Projekt"
 
 #. module: project_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__project_date
-#, fuzzy
-#| msgid "Project date"
 msgid "Project Date"
 msgstr "Datum projekta"
 
@@ -202,10 +200,8 @@ msgstr "Ponovna kalkulacija projekta"
 
 #. module: project_recalculate
 #: model:ir.model,name:project_recalculate.model_project_recalculate_wizard
-#, fuzzy
-#| msgid "project.recalculate.wizard"
 msgid "Project recalculate wizard"
-msgstr "project.recalculate.wizard"
+msgstr "Čarovnik za ponovni izračun projekta"
 
 #. module: project_recalculate
 #: model_terms:ir.ui.view,arch_db:project_recalculate.edit_project_recalculate
@@ -216,7 +212,7 @@ msgstr "Ponovna kalkulacija projekta"
 #. module: project_recalculate
 #: model:ir.model,name:project_recalculate.model_resource_calendar
 msgid "Resource Working Time"
-msgstr ""
+msgstr "Delovni čas vira"
 
 #. module: project_recalculate
 #: code:addons/project_recalculate/models/project_task.py:177
@@ -238,6 +234,11 @@ msgstr "Stopnja opravila"
 #: model_terms:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
 msgid "This Project task will be recalculated according reference date:"
 msgstr "Ta projekt bo ponovno preračunan glede na referenčni datum:"
+
+#. module: project_recalculate
+#: model:ir.model,name:project_recalculate.model_project_project
+msgid "WBS element"
+msgstr ""
 
 #~ msgid "Resource Calendar"
 #~ msgstr "Koledar virov"

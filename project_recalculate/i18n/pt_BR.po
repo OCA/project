@@ -11,8 +11,8 @@ msgstr ""
 "POT-Creation-Date: 2017-12-22 01:55+0000\n"
 "PO-Revision-Date: 2019-08-26 16:01+0000\n"
 "Last-Translator: Rodrigo Macedo <rmsolucoeseminformatic4@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/teams/"
-"23907/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/"
+"teams/23907/pt_BR/)\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -172,7 +172,6 @@ msgid "Last Updated on"
 msgstr "Última atualização feita em"
 
 #. module: project_recalculate
-#: model:ir.model,name:project_recalculate.model_project_project
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__project_id
 msgid "Project"
 msgstr "Projeto"
@@ -233,6 +232,11 @@ msgstr "Estágio da Tarefa"
 msgid "This Project task will be recalculated according reference date:"
 msgstr ""
 "Esta tarefa do projeto será recalculada de acordo com a data de referência:"
+
+#. module: project_recalculate
+#: model:ir.model,name:project_recalculate.model_project_project
+msgid "WBS element"
+msgstr ""
 
 #~ msgid "Resource Calendar"
 #~ msgstr "Calendário de recursos"
