@@ -45,7 +45,7 @@
             </t>
         </template>
 
-        <template id="new-task" name="Contact us" page="True">
+        <template id="new-task" name="New Ticket" page="True">
             <t t-call="website.layout">
                 <div id="wrap">
                     <div class="oe_structure">
@@ -86,6 +86,37 @@
                                           class="s_website_form container-fluid mt32"
                                           enctype="multipart/form-data"
                                           data-editable-form="false">
+                                          <div class="form-group row form-field o_website_form_required_custom">
+                                             <label for="mail_addresses" class="col-lg-3 col-md-4 col-form-label">
+                                                 E-mail:
+                                              </label>
+                                              <div>
+                                                  <div class="col-lg-7 col-md-8">
+                                                      <input type="text"
+                                                             class="form-control o_website_form_input"
+                                                             name="mail_addresses"
+                                                             t-att-value="request.env.user.email"
+                                                             required=""
+                                                             readonly="1" />
+                                                  </div>
+
+                                              </div>
+                                          </div>
+                                          <div class="form-group row form-field o_website_form_required_custom">
+                                             <label for="project_id" class="col-lg-3 col-md-4 col-form-label">
+                                                 Project:
+                                              </label>
+                                              <div>
+                                                  <div class="col-lg-7 col-md-8">
+                                                    <select class="form-control" name="project_id">
+                                                       <t t-foreach="project_filters" t-as="project">
+                                                            <option t-attf-value="#{project.id}"><t t-esc="project.name"/></option>
+                                                       </t>
+                                                   </select>
+                                                  </div>
+
+                                              </div>
+                                          </div>
 
                                         <div class="form-group row form-field o_website_form_required_custom">
                                             <label class="col-lg-3 col-md-4 col-form-label"
@@ -96,34 +127,44 @@
                                                        class="form-control o_website_form_input"
                                                        name="name"
                                                        t-att-value="request.params.get('name', '')"
-                                                       required=""/>
+                                                       required="" />
                                             </div>
                                         </div>
+                                        <div class="form-group row form-field o_website_form_required_custom">
+                                                     <label class="col-lg-3 col-md-4 col-form-label"
+                                                            for="name">Priority:
+                                                     </label>
+                                                     <div class="col-lg-7 col-md-8">
+                                                         <select class="form-control" name="priority">
+                                                           <option value="0">Low</option>
+                                                           <option value="1">Normal</option>
+                                                           <option value="2">High</option>
+                                                           <option value="3">Very High</option>
+                                                         </select>
+                                                     </div>
+                                        </div>
 
-                                        <div class="form-group form-field">
-                                            <div class="col-md-3 col-sm-4 text-right">
-                                                <label class="control-label"
+                                        <div class="form-group row form-field o_website_form_required_custom">
+                                                <label class="col-lg-3 col-md-4 col-form-label"
                                                        for="description">
-                                                    Description
+                                                    Description:
                                                 </label>
-                                            </div>
-                                            <div class="col-md-7 col-sm-8">
+                                            <div class="col-lg-7 col-md-8">
                                                 <textarea
                                                         class="form-control o_website_form_input"
-                                                        name="description"></textarea>
+                                                        name="description" style="max-width: 1150px;  width: 410px; height: 250px;"></textarea>
                                             </div>
                                         </div>
-
                                         <div class="form-group row form-field o_website_form_custom">
-                                            <div class="col-lg-3 col-md-4 text-right">
+                                            <div class="col-lg-3 col-md-4 text-right" style="margin-top: 15px;">
                                                 <label class="col-form-label"
                                                        for="attachment">
                                                     Attachment
                                                 </label>
                                             </div>
-                                            <div class="col-lg-7 col-md-8">
+                                            <div class="col-lg-7 col-md-8" style="margin-top: 15px;">
                                                 <input type="file"
-                                                       class="form-control o_website_form_input"
+                                                       class="form-control o_website_form_input" multiple="true"
                                                        name="attachment"/>
                                             </div>
                                         </div>
@@ -131,7 +172,7 @@
                                             <div class="offset-lg-3 offset-md-4 col-md-8 col-lg-7">
                                                 <a href="#"
                                                    role="button"
-                                                   class="btn btn-primary btn-lg o_website_form_send">
+                                                   class="btn btn-primary btn-sm o_website_form_send">
                                                     Send
                                                 </a>
                                                 <span id="o_website_form_result"></span>

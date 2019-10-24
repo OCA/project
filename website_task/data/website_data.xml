@@ -11,16 +11,30 @@
             <value eval="[
                 'description',
                 'name',
+                'mail_addresses',
+                'project_id',
+                'priority'
             ]"/>
         </function>
     </data>
     <data noupdate="1">
-        <record id="menu_new_task" model="website.menu">
-            <field name="name">Task</field>
-            <field name="url">/task/new</field>
-            <field name="parent_id" ref="website.main_menu"/>
-            <field name="sequence" type="int">50</field>
-        </record>
+      <record id="menu_tasks" model="website.menu">
+          <field name="name">Tasks</field>
+          <field name="parent_id" ref="website.main_menu"/>
+          <field name="sequence" type="int">40</field>
+      </record>
+      <record id="menu_my_tasks" model="website.menu">
+          <field name="name">My Tasks</field>
+          <field name="url">/my/tasks</field>
+          <field name="parent_id" ref="menu_tasks"/>
+          <field name="sequence" type="int">40</field>
+      </record>
+      <record id="menu_new_task" model="website.menu">
+          <field name="name">New Task</field>
+          <field name="url">/task/new</field>
+          <field name="parent_id" ref="menu_tasks"/>
+          <field name="sequence" type="int">40</field>
+      </record>
 
         <record id="action_open_website" model="ir.actions.act_url">
             <field name="name">New Task</field>

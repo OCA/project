@@ -9,11 +9,12 @@
     'version': '10.0.1.0.0',
     'license': 'AGPL-3',
     'author': 'KMEE,Odoo Community Association (OCA)',
-    'website': 'www.kmee.com.br',
+    'website': 'https://www.kmee.com.br',
     'depends': [
         'website_form',
         'website_partner',
         'project',
+        'project_task_add_very_high',
     ],
     'data': [
         'data/website_data.xml',

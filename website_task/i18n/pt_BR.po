@@ -1,0 +1,132 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* website_task
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-10-23 02:34+0000\n"
+"PO-Revision-Date: 2019-10-22 23:35-0300\n"
+"Last-Translator: Ananias Filho <ananias@kmee.cocm.br>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: pt_BR\n"
+"X-Generator: Poedit 2.0.6\n"
+
+#. module: website_task
+#: model:ir.ui.view,arch_db:website_task.task-thank-you
+msgid "&amp;times;"
+msgstr "&amp;times;"
+
+#. module: website_task
+#: model:ir.ui.view,arch_db:website_task.new-task
+msgid "Attachment"
+msgstr "Anexo"
+
+#. module: website_task
+#: model:ir.ui.view,arch_db:website_task.new-task
+msgid "Description:"
+msgstr "Descrição"
+
+#. module: website_task
+#: model:ir.ui.view,arch_db:website_task.new-task
+msgid "E-mail:"
+msgstr "E-mail:"
+
+#. module: website_task
+#: model:ir.ui.view,arch_db:website_task.new-task
+msgid "High"
+msgstr "Alta"
+
+#. module: website_task
+#: model:ir.ui.view,arch_db:website_task.task-thank-you
+msgid ""
+"If you have an emergency, do not hesitate to\n"
+"                                    contact us by phone:"
+msgstr ""
+"Se você está com uma emergência, não hesite em\n"
+"                                    entrar em contato pelo telefone:"
+
+#. module: website_task
+#: model:ir.ui.view,arch_db:website_task.new-task
+msgid "Low"
+msgstr "Baixa"
+
+#. module: website_task
+#: model:website.menu,name:website_task.menu_my_tasks
+msgid "My Tasks"
+msgstr "Meus tickets"
+
+#. module: website_task
+#: model:ir.actions.act_url,name:website_task.action_open_website
+#: model:website.menu,name:website_task.menu_new_task
+msgid "New Task"
+msgstr "Novo Ticket"
+
+#. module: website_task
+#: model:ir.ui.view,arch_db:website_task.new-task
+msgid "New Ticket"
+msgstr "Novo Ticket"
+
+#. module: website_task
+#: model:ir.ui.view,arch_db:website_task.new-task
+msgid "Normal"
+msgstr "Normal"
+
+#. module: website_task
+#: model:ir.ui.view,arch_db:website_task.new-task
+msgid ""
+"Please fill all\n"
+"                                                        the fields to\n"
+"                                                        create a new\n"
+"                                                        Ticket"
+msgstr "Por favor, preencha todos os campos para criar um novo Ticket."
+
+#. module: website_task
+#: model:ir.ui.view,arch_db:website_task.new-task
+msgid "Priority:"
+msgstr "Prioridade:"
+
+#. module: website_task
+#: model:ir.ui.view,arch_db:website_task.new-task
+msgid "Project:"
+msgstr "Projeto:"
+
+#. module: website_task
+#: model:ir.ui.view,arch_db:website_task.new-task
+msgid "Send"
+msgstr "Enviar"
+
+#. module: website_task
+#: model:ir.ui.view,arch_db:website_task.new-task
+msgid "Subject:"
+msgstr "Assunto:"
+
+#. module: website_task
+#: model:website.menu,name:website_task.menu_tasks
+msgid "Tasks"
+msgstr "Ticket"
+
+#. module: website_task
+#: model:ir.ui.view,arch_db:website_task.task-thank-you
+msgid "Thanks!"
+msgstr "Obrigado!"
+
+#. module: website_task
+#: model:ir.ui.view,arch_db:website_task.new-task
+msgid "Very High"
+msgstr "Urgente"
+
+#. module: website_task
+#: model:ir.ui.view,arch_db:website_task.task-thank-you
+msgid "We will get back to you shortly."
+msgstr "Entraremos em contato com você em breve."
+
+#. module: website_task
+#: model:ir.ui.view,arch_db:website_task.task-thank-you
+msgid "Your message has been sent successfully."
+msgstr "Sua mensagem foi enviada com sucesso."

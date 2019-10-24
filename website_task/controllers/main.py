@@ -7,19 +7,31 @@ from odoo.addons.website_form.controllers.main import WebsiteForm
 
 
 class WebsiteForm(WebsiteForm):
-
     # Check and insert values from the form on the model <model>
-    @http.route('/website_form/<string:model_name>', type='http', auth="public", methods=['POST'], website=True)
+
+    @http.route(
+        '/website_form/<string:model_name>',
+        type='http',
+        auth="user",
+        methods=['POST'],
+        website=True)
     def website_form(self, model_name, **kwargs):
         if model_name == 'project.task' and not request.params.get('state'):
             pass
         return super(WebsiteForm, self).website_form(model_name, **kwargs)
 
-    @http.route(['/task/new'], type='http', auth="public", website=True)
+    @http.route(['/task/new'], type='http', auth="user", website=True)
     def task(self, country=None, department=None, office_id=None, **kwargs):
-        env = request.env(
-            context=dict(
-                request.env.context, show_address=True, no_tag_br=True)
+        projects = request.env['project.project'].search([(
+            'privacy_visibility', '=', 'portal'),
+            ('use_tasks', '=', True)]
         )
         # Render page
-        return request.render("website_task.new-task")
+        return request.render("website_task.new-task", {
+            "project_filters": projects
+        })
+    # Redirect to success page
+
+    @http.route("/task-thank-you", type="http", auth="user", website=True)
+    def task_tank_you(self, **kw):
+        return request.render("website_task.task-thank-you")
