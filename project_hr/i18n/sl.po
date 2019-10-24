@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2019-07-24 18:43+0000\n"
+"PO-Revision-Date: 2019-10-24 07:33+0000\n"
 "Last-Translator: Matjaz Mozetic <matjaz@matmoz.si>\n"
 "Language-Team: none\n"
 "Language: sl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
 "%100==4 ? 2 : 3;\n"
-"X-Generator: Weblate 3.7.1\n"
+"X-Generator: Weblate 3.8\n"
 
 #. module: project_hr
 #: model:ir.model.fields,field_description:project_hr.field_project_task__allowed_hr_category_ids
@@ -29,10 +29,8 @@ msgstr "Dovoljeni uporabniki"
 
 #. module: project_hr
 #: model:ir.model,name:project_hr.model_hr_employee
-#, fuzzy
-#| msgid "Linked employee"
 msgid "Employee"
-msgstr "Povezani kader"
+msgstr "Kader"
 
 #. module: project_hr
 #: model:ir.model.fields,field_description:project_hr.field_project_project__hr_category_ids
@@ -71,11 +69,6 @@ msgid "Linked employee"
 msgstr "Povezani kader"
 
 #. module: project_hr
-#: model:ir.model,name:project_hr.model_project_project
-msgid "Project"
-msgstr "Projekt"
-
-#. module: project_hr
 #: model:ir.model,name:project_hr.model_project_task
 msgid "Task"
 msgstr "Opravilo"
@@ -112,6 +105,11 @@ msgid "Users"
 msgstr "Uporabniki"
 
 #. module: project_hr
+#: model:ir.model,name:project_hr.model_project_project
+msgid "WBS element"
+msgstr ""
+
+#. module: project_hr
 #: code:addons/project_hr/models/project_task.py:87
 #, python-format
 msgid "You can't assign a category that is not allowed at project level."
@@ -124,3 +122,6 @@ msgid ""
 "You can't assign a user not belonging to the selected employee category."
 msgstr ""
 "Ne morete dodeliti uporabnika, ki ne spada v izbrano kadrovsko kategorijo."
+
+#~ msgid "Project"
+#~ msgstr "Projekt"
