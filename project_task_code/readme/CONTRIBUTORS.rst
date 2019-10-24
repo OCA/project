@@ -5,3 +5,4 @@
 * Rodrigo Ferreira <rodrigosferreira91@gmail.com>
 * Damien Bouvy <dbo@odoo.com>
 * Alexey Pelykh <alexey.pelykh@brainbeanapps.com>
+* Saran Lim. <saranl@ecosoft.co.th>
