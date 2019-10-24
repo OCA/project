@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="project_issue.model_project_issue" model="ir.model">
+            <field name="website_form_default_field_id" ref="project_issue.field_project_issue_description" />
+            <field name="website_form_access">True</field>
+            <field name="website_form_label">Create a Issue</field>
+        </record>
+        <function model="ir.model.fields" name="formbuilder_whitelist">
+            <value>project.issue</value>
+            <value eval="[
+                'description',
+                'name',
+                'email_from',
+                'project_id',
+                'priority',
+            ]"/>
+        </function>
+    </data>
+    <data noupdate="1">
+        <record id="menu_issues" model="website.menu">
+            <field name="name">Issues</field>
+            <field name="parent_id" ref="website.main_menu"/>
+            <field name="sequence" type="int">50</field>
+        </record>
+        <record id="menu_my_issues" model="website.menu">
+          <field name="name">My Issues</field>
+          <field name="url">/my/issues</field>
+          <field name="parent_id" ref="menu_issues" />
+          <field name="sequence" type="int">50</field>
+        </record>
+        
+        <record id="menu_new_issue" model="website.menu">
+            <field name="name">New Issue</field>
+            <field name="url">/issue/new</field>
+            <field name="parent_id" ref="menu_issues"/>
+            <field name="sequence" type="int">50</field>
+        </record>
+
+        <record id="action_open_website" model="ir.actions.act_url">
+            <field name="name">New Issue</field>
+            <field name="target">self</field>
+            <field name="url">/issue/new</field>
+        </record>
+        <record id="base.open_menu" model="ir.actions.todo">
+            <field name="action_id" ref="action_open_website"/>
+            <field name="state">open</field>
+        </record>
+    </data>
+
+</odoo>
