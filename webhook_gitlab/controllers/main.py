@@ -92,10 +92,8 @@ class WebhookGitlab(http.Controller):
         record.gitlab_link = True
         body = request.env['ir.qweb'].render(
             'webhook_gitlab.gitlab_new_merge_request', dict(event=event))
-        base_url = request.env['ir.config_parameter'].sudo().get_param(
-            'web.base.url')
         record.message_post(body=body)
-        url = base_url + record._notify_get_action_link('view')
+        url = record._notify_get_action_link('view')
         message = _('Linked to Odoo %s [#%s](%s)') % (rec_type, record.id, url)
         self._post_gitlab_message(event, message)
         return True
