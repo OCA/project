@@ -3,6 +3,7 @@
 
 from odoo import api, fields, models, _
 from odoo.exceptions import ValidationError
+from odoo.osv import expression
 from odoo.tools.translate import html_translate
 
 
@@ -113,8 +114,38 @@ class ProjectRole(models.Model):
                         role.parent_id.complete_name,
                     )))
 
-    @api.model
-    def can_assign(self, user_id):
+    @api.multi
+    def can_assign(self, user_id, project_id):
         """ Extension point to check if user can be assigned to this role """
         self.ensure_one()
         return self.active
+
+    @api.model
+    def get_available_roles_domain(self, user_id, project_id):
+        """
+        Get domain on roles that can be assumed by given user on a specific
+        project, depending on company and project assignments configuration.
+        """
+        if not user_id or not project_id:
+            return expression.FALSE_DOMAIN
+
+        if not project_id.limit_role_to_assignments:
+            if project_id.inherit_assignments:
+                return [('company_id', 'in', [False, user_id.company_id.id])]
+            else:
+                return [('company_id', '=', user_id.company_id.id)]
+
+        domain = [('user_id', '=', user_id.id)]
+        if project_id.inherit_assignments:
+            domain += [
+                ('project_id', 'in', [False, project_id.id]),
+                ('company_id', 'in', [False, user_id.company_id.id]),
+            ]
+        else:
+            domain += [
+                ('project_id', '=', project_id.id),
+                ('company_id', '=', user_id.company_id.id)
+            ]
+        assignments = self.env['project.assignment'].search(domain)
+
+        return [('id', 'in', assignments.mapped('role_id').ids)]

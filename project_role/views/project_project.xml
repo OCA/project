@@ -19,6 +19,12 @@
                     string="Assignments"
                 />
             </button>
+            <page name="settings">
+                <group name="roles" string="Assignments">
+                    <field name="inherit_assignments"/>
+                    <field name="limit_role_to_assignments"/>
+                </group>
+            </page>
         </field>
     </record>
 
