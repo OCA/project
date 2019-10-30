@@ -43,6 +43,11 @@ class TestProjectRole(common.TransactionCase):
             'user_id': user.id,
         })
 
+        self.assertEqual(
+            self.Role.get_available_roles_domain(user, project),
+            [('company_id', 'in', [False, self.company_id.id])]
+        )
+
     def test_no_duplicate_assignment(self):
         user = self.ResUsers.sudo().create({
             'name': 'User',
@@ -90,6 +95,12 @@ class TestProjectRole(common.TransactionCase):
             with self.assertRaises(ValidationError):
                 self.Assignment.create({
                     'project_id': project.id,
+                    'role_id': role.id,
+                    'user_id': user.id,
+                })
+            with self.assertRaises(ValidationError):
+                self.Assignment.create({
+                    'company_id': self.company_id.id,
                     'role_id': role.id,
                     'user_id': user.id,
                 })
@@ -316,3 +327,99 @@ class TestProjectRole(common.TransactionCase):
             'role_id': role_2.id,
             'user_id': user.id,
         })
+
+    def test_no_project(self):
+        user = self.ResUsers.sudo().create({
+            'name': 'User',
+            'login': 'user',
+            'email': 'user@example.com',
+            'company_id': self.company_id.id,
+        })
+        self.Role.create({
+            'name': 'Role',
+        })
+        self.assertEqual(
+            self.Role.get_available_roles_domain(user, False),
+            [(0, '=', 1)]
+        )
+
+    def test_inherit_assignments(self):
+        user = self.ResUsers.sudo().create({
+            'name': 'User',
+            'login': 'user',
+            'email': 'user@example.com',
+            'company_id': self.company_id.id,
+        })
+        role = self.Role.create({
+            'name': 'Role',
+        })
+        project = self.Project.create({
+            'name': 'Project',
+            'limit_role_to_assignments': True,
+        })
+        self.Assignment.create({
+            'role_id': role.id,
+            'user_id': user.id,
+        })
+
+        self.assertEqual(
+            self.Role.get_available_roles_domain(user, project),
+            [('id', 'in', [role.id])]
+        )
+
+        project.inherit_assignments = False
+        self.assertEqual(
+            self.Role.get_available_roles_domain(user, project),
+            [('id', 'in', [])]
+        )
+
+    def test_limit_role_to_assignments(self):
+        user = self.ResUsers.sudo().create({
+            'name': 'User',
+            'login': 'user',
+            'email': 'user@example.com',
+            'company_id': self.company_id.id,
+        })
+        self.Role.create({
+            'name': 'Role',
+        })
+        project = self.Project.create({
+            'name': 'Project',
+        })
+
+        self.assertEqual(
+            self.Role.get_available_roles_domain(user, project),
+            [('company_id', 'in', [False, self.company_id.id])]
+        )
+
+        project.inherit_assignments = False
+        self.assertEqual(
+            self.Role.get_available_roles_domain(user, project),
+            [('company_id', '=', self.company_id.id)]
+        )
+
+    def test_defaults(self):
+        company = self.Company.create({
+            'name': 'Company',
+            'project_inherit_assignments': False,
+            'project_limit_role_to_assignments': True,
+        })
+        project = self.Project.create({
+            'name': 'Project',
+            'company_id': company.id,
+        })
+        self.Role.create({
+            'name': 'Role',
+        })
+        self.assertEqual(
+            project.company_id.id,
+            company.id
+        )
+        self.assertEqual(
+            project.inherit_assignments,
+            company.project_inherit_assignments
+        )
+        self.assertEqual(
+            project.limit_role_to_assignments,
+            company.project_limit_role_to_assignments
+        )
