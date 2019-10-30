@@ -25,4 +25,7 @@
         'views/project_role.xml',
         'views/res_config_settings.xml',
     ],
+    'maintainers': [
+        'alexey-pelykh',
+    ],
 }
