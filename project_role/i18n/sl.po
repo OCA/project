@@ -18,7 +18,6 @@ msgstr ""
 "X-Generator: Weblate 3.8\n"
 
 #. module: project_role
-#: code:addons/project_role/models/project_role.py:97
 #: code:addons/project_role/models/project_role.py:98
 #, python-format
 msgid "%(parent)s / %(own)s"
@@ -91,7 +90,6 @@ msgid "Archived"
 msgstr "Arhivirano"
 
 #. module: project_role
-#: code:addons/project_role/models/project_assignment.py:123
 #: code:addons/project_role/models/project_assignment.py:127
 #, python-format
 msgid "Assignment %s conflicts with another assignment: %s"
@@ -337,7 +335,6 @@ msgid "Parent Role"
 msgstr "Nadrejena vloga"
 
 #. module: project_role
-#: code:addons/project_role/models/project_role.py:112
 #: code:addons/project_role/models/project_role.py:113
 #, python-format
 msgid "Please activate first parent role %s"
@@ -394,7 +391,6 @@ msgid "Role"
 msgstr "Vloga"
 
 #. module: project_role
-#: code:addons/project_role/models/project_role.py:80
 #: code:addons/project_role/models/project_role.py:81
 #, python-format
 msgid "Role \"%s\" conflicts with another role due to same name."
@@ -444,7 +440,6 @@ msgid "User %s can not be assigned to role %s on %s."
 msgstr "Uporabniku %s ni mogoče dodeliti vloge %s."
 
 #. module: project_role
-#: code:addons/project_role/models/project_assignment.py:130
 #: code:addons/project_role/models/project_assignment.py:144
 #, python-format
 msgid "User %s can not be assigned to role %s."
@@ -476,7 +471,6 @@ msgid "Website communication history"
 msgstr "Spletna kronologija komunikacij"
 
 #. module: project_role
-#: code:addons/project_role/models/project_role.py:90
 #: code:addons/project_role/models/project_role.py:91
 #, python-format
 msgid "You cannot create recursive roles."
