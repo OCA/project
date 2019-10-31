@@ -114,6 +114,10 @@ class ProjectAssignment(models.Model):
     @api.multi
     @api.constrains('company_id', 'project_id', 'role_id', 'user_id')
     def _check(self):
+        """
+        Check if assignment conflicts with any already-existing assignment and
+        if specific role can be assigned at all (extension hook).
+        """
         for assignment in self:
             conflicting_assignment = self.search(
                 assignment._get_conflicting_domain(),
@@ -126,10 +130,21 @@ class ProjectAssignment(models.Model):
                     assignment.name,
                     conflicting_assignment.name,
                 ))
-            if not assignment.role_id.can_assign(assignment.user_id):
-                raise ValidationError(_(
-                    'User %s can not be assigned to role %s.'
-                ) % (
-                    assignment.user_id.name,
-                    assignment.role_id.name,
-                ))
+            if not assignment.role_id.can_assign(
+                    assignment.user_id, assignment.project_id):
+                if assignment.project_id:
+                    error = _(
+                        'User %s can not be assigned to role %s on %s.'
+                    ) % (
+                        assignment.user_id.name,
+                        assignment.role_id.name,
+                        assignment.project_id.name,
+                    )
+                else:
+                    error = _(
+                        'User %s can not be assigned to role %s.'
+                    ) % (
+                        assignment.user_id.name,
+                        assignment.role_id.name,
+                    )
+                raise ValidationError(error)
