@@ -31,7 +31,7 @@ addon | version | summary
 [project_parent_task_filter](project_parent_task_filter/) | 12.0.1.2.0 | Add a filter to show the parent tasks
 [project_purchase_link](project_purchase_link/) | 12.0.1.0.0 | Project Purchase Link
 [project_recalculate](project_recalculate/) | 12.0.1.0.0 | Project Recalculate
-[project_role](project_role/) | 12.0.2.0.0 | Project role-based roster
+[project_role](project_role/) | 12.0.2.1.0 | Project role-based roster
 [project_stage_closed](project_stage_closed/) | 12.0.1.0.0 | Make the Closed flag on Task Stages available without installing sale_service
 [project_stage_state](project_stage_state/) | 12.0.1.0.0 | Restore State attribute removed from Project Stages in 8.0
 [project_status](project_status/) | 12.0.1.1.0 | Project Status
