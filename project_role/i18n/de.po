@@ -18,6 +18,7 @@ msgstr ""
 
 #. module: project_role
 #: code:addons/project_role/models/project_role.py:97
+#: code:addons/project_role/models/project_role.py:98
 #, python-format
 msgid "%(parent)s / %(own)s"
 msgstr ""
@@ -41,6 +42,26 @@ msgstr "%s als %s für %s"
 #, python-format
 msgid "%s as %s on %s"
 msgstr "%s als %s für %s"
+
+#. module: project_role
+#: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
+#, fuzzy
+#| msgid ""
+#| "<span class=\"o_form_label\">Project Roles</span>\n"
+#| "                                <span class=\"fa fa-lg fa-building-o\" "
+#| "title=\"Values set here are company-specific.\" role=\"img\" aria-label="
+#| "\"Values set here are company-specific.\" groups=\"base."
+#| "group_multi_company\"/>"
+msgid ""
+"<span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-"
+"specific.\" role=\"img\" aria-label=\"Values set here are company-specific."
+"\" groups=\"base.group_multi_company\"/>"
+msgstr ""
+"<span class=\"o_form_label\">Projektrollen</span>\n"
+"                                <span class=\"fa fa-lg fa-building-o\" title="
+"\"Die hier gesetzten Werte sind firmenspezifisch.\" role=\"img\" aria-label="
+"\"Die hier gesetzten Werte sind firmenspezifisch.\" groups=\"base."
+"group_multi_company\"/>"
 
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
@@ -76,6 +97,7 @@ msgstr ""
 
 #. module: project_role
 #: code:addons/project_role/models/project_assignment.py:123
+#: code:addons/project_role/models/project_assignment.py:127
 #, fuzzy, python-format
 #| msgid "Role \"%s\" conflicts with another role due to same name."
 msgid "Assignment %s conflicts with another assignment: %s"
@@ -96,9 +118,26 @@ msgid "Attachment Count"
 msgstr "Anhangsanzahl"
 
 #. module: project_role
+#: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
+msgid "Check to configure projects to inherit company assignments by default."
+msgstr ""
+
+#. module: project_role
+#: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
+msgid "Check to configure projects to limit role to assignments by default."
+msgstr ""
+
+#. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_role__child_ids
 msgid "Child Roles"
 msgstr ""
+
+#. module: project_role
+#: model:ir.model,name:project_role.model_res_company
+#, fuzzy
+#| msgid "Company"
+msgid "Companies"
+msgstr "Unternehmen"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__company_id
@@ -117,6 +156,11 @@ msgstr "Unternehmen"
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_role__complete_name
 msgid "Complete Name"
+msgstr ""
+
+#. module: project_role
+#: model:ir.model,name:project_role.model_res_config_settings
+msgid "Config Settings"
 msgstr ""
 
 #. module: project_role
@@ -195,6 +239,13 @@ msgid "Inactive"
 msgstr ""
 
 #. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_project__inherit_assignments
+#, fuzzy
+#| msgid "Project Assignments"
+msgid "Inherit assignments"
+msgstr "Projekt-Rollenzuweisungen"
+
+#. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_is_follower
 msgid "Is Follower"
 msgstr "Ist Abonnent"
@@ -216,6 +267,22 @@ msgstr "Zuletzt aktualisiert von"
 #: model:ir.model.fields,field_description:project_role.field_project_role__write_date
 msgid "Last Updated on"
 msgstr "Zuletzt aktualisiert am"
+
+#. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_res_company__project_limit_role_to_assignments
+#: model:ir.model.fields,field_description:project_role.field_res_config_settings__project_limit_role_to_assignments
+#: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
+#, fuzzy
+#| msgid "Project Assignments"
+msgid "Limit Project Role to Assignments"
+msgstr "Projekt-Rollenzuweisungen"
+
+#. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_project__limit_role_to_assignments
+#, fuzzy
+#| msgid "Project Assignments"
+msgid "Limit role to assignments"
+msgstr "Projekt-Rollenzuweisungen"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_main_attachment_id
@@ -282,6 +349,7 @@ msgstr "Projektrolle"
 
 #. module: project_role
 #: code:addons/project_role/models/project_role.py:112
+#: code:addons/project_role/models/project_role.py:113
 #, python-format
 msgid "Please activate first parent role %s"
 msgstr ""
@@ -316,6 +384,21 @@ msgid "Project Roles"
 msgstr "Projektrollen"
 
 #. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_res_company__project_inherit_assignments
+#: model:ir.model.fields,field_description:project_role.field_res_config_settings__project_inherit_assignments
+#, fuzzy
+#| msgid "Project Assignments"
+msgid "Projects Inherit Assignments"
+msgstr "Projekt-Rollenzuweisungen"
+
+#. module: project_role
+#: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
+#, fuzzy
+#| msgid "Project Assignments"
+msgid "Projects inherit Company assignments"
+msgstr "Projekt-Rollenzuweisungen"
+
+#. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__role_id
 #: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
 msgid "Role"
@@ -323,6 +406,7 @@ msgstr "Rolle"
 
 #. module: project_role
 #: code:addons/project_role/models/project_role.py:80
+#: code:addons/project_role/models/project_role.py:81
 #, python-format
 msgid "Role \"%s\" conflicts with another role due to same name."
 msgstr ""
@@ -366,7 +450,15 @@ msgid "User"
 msgstr "Benutzer"
 
 #. module: project_role
+#: code:addons/project_role/models/project_assignment.py:136
+#, fuzzy, python-format
+#| msgid "User %s can not be assigned to role %s."
+msgid "User %s can not be assigned to role %s on %s."
+msgstr "Der Benutzer %s kann der Rolle %s nicht zugewiesen werden."
+
+#. module: project_role
 #: code:addons/project_role/models/project_assignment.py:130
+#: code:addons/project_role/models/project_assignment.py:144
 #, python-format
 msgid "User %s can not be assigned to role %s."
 msgstr "Der Benutzer %s kann der Rolle %s nicht zugewiesen werden."
@@ -408,6 +500,7 @@ msgstr "Website-Kommunikationshistorie"
 
 #. module: project_role
 #: code:addons/project_role/models/project_role.py:90
+#: code:addons/project_role/models/project_role.py:91
 #, python-format
 msgid "You cannot create recursive roles."
 msgstr ""
