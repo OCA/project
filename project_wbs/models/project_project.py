@@ -116,6 +116,13 @@ class Project(models.Model):
             project_item.project_child_complete_ids = child_ids
 
     @api.multi
+    @api.depends('project_child_complete_ids')
+    def _compute_has_child(self):
+        for project_item in self:
+            project_item.has_project_child_complete_ids = \
+                len(project_item.project_child_complete_ids.ids) > 0
+
+    @api.multi
     def _resolve_analytic_account_id_from_context(self):
         """
         Returns ID of parent analytic account based on the value of
@@ -137,6 +144,23 @@ class Project(models.Model):
             'active': True,
         }
 
+    def update_project_from_analytic_vals(self, vals):
+        new_vals = vals
+        if 'parent_id' in vals and not vals['parent_id']:
+            # it means it comes from a form
+            parent = self.env['account.analytic.account'].browse(
+                self._context.get('default_parent_id', False))
+            if parent:
+                account_analytic = self.env['account.analytic.account'].browse(
+                    vals.get('analytic_account_id', False))
+                new_vals.update({
+                    'parent_id': parent.id,
+                    'code': account_analytic.code,
+                    'project_analytic_id': parent.project_analytic_id.id,
+                    'account_class': parent.account_class,
+                })
+        return new_vals
+
     parent_id = fields.Many2one(
         related="analytic_account_id.parent_id",
         readonly=False,
@@ -149,6 +173,9 @@ class Project(models.Model):
         comodel_name='project.project',
         string="Project Hierarchy",
         compute="_compute_child"
+    )
+    has_project_child_complete_ids = fields.Boolean(
+        compute="_compute_has_child",
     )
     wbs_indent = fields.Char(
         related="analytic_account_id.wbs_indent",
@@ -181,10 +208,11 @@ class Project(models.Model):
 
     @api.model
     def create(self, vals):
-
         analytic_vals = self.prepare_analytics_vals(vals)
-        aa = self.env['account.analytic.account'].create(analytic_vals)
-        vals.update({'analytic_account_id': aa.id})
+        if 'analytic_account_id' not in vals:
+            aa = self.env['account.analytic.account'].create(analytic_vals)
+            vals.update({'analytic_account_id': aa.id})
+            vals = self.update_project_from_analytic_vals(vals)
         res = super(Project, self).create(vals)
 
         return res
