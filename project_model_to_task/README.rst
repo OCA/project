@@ -26,7 +26,7 @@ To use this module, you need to:
 
 
 Configuration
-============
+=============
 
 You can modify the behavior by overriding ```default_get``` method of the task.
 
