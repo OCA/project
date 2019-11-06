@@ -40,12 +40,13 @@
                     <a name="action_open_child_kanban_view"
                        type="object">
                         <!--GO DOWN-->
-                            <div class="oe_wbs_navigation parentheading oe_kanban_action_a">
+                            <field name="has_project_child_complete_ids" invisible="1"/>
+                            <div class="oe_wbs_navigation parentheading oe_kanban_action_a" t-if="record.has_project_child_complete_ids.raw_value">
                                     WBS Elements:
                                     <field name="project_child_complete_ids"/>
                             </div>
                             <t t-foreach="record.project_child_complete_ids.raw_value" t-as='child'>
-                                <t t-esc="child.name"/>
+                                <t t-esc="child.complete_name"/>
                             </t>
                     </a>
                 </div>
@@ -153,7 +154,8 @@
                 <field name="parent_id"
                        string="Parent Analytic Account"
                        help="Append this project to another one using analytic accounts hierarchy"
-                       domain="[('id','!=',analytic_account_id)]"
+                       domain="['|',('id','=',context.get('default_parent_id', False)),('id','!=',analytic_account_id)]"
+                       invisible="context.get('default_parent_id', False)"
                        context="{'current_model': 'project.project'}" />
             </field>
             <field name="analytic_account_id" position="attributes">
@@ -165,11 +167,11 @@
             </field>
 
             <field name="sequence" position="after">
-                <field name="account_class" string="Class"/>
+                <field name="account_class" string="Class" invisible="context.get('default_parent_id', False)"/>
                 <field name="project_analytic_id"
-                       domain="[('account_class', '=', 'project')]"/>
-                <field name="code" string="Code"/>
-                <field name="complete_wbs_code" string="WBS code" readonly="1" />
+                       domain="[('account_class', '=', 'project')]" invisible="context.get('default_parent_id', False)"/>
+                <field name="code" string="Code" invisible="context.get('default_parent_id', False)"/>
+                <field name="complete_wbs_code" string="WBS code" readonly="1" invisible="context.get('default_parent_id', False)"/>
             </field>
 
             <notebook position="inside">
