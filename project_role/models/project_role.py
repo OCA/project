@@ -3,7 +3,6 @@
 
 from odoo import api, fields, models, _
 from odoo.exceptions import ValidationError
-from odoo.osv import expression
 from odoo.tools.translate import html_translate
 
 
@@ -121,19 +120,20 @@ class ProjectRole(models.Model):
         return self.active
 
     @api.model
-    def get_available_roles_domain(self, user_id, project_id):
+    def get_available_roles(self, user_id, project_id):
         """
         Get domain on roles that can be assumed by given user on a specific
         project, depending on company and project assignments configuration.
         """
         if not user_id or not project_id:
-            return expression.FALSE_DOMAIN
+            return self
 
         if not project_id.limit_role_to_assignments:
             if project_id.inherit_assignments:
-                return [('company_id', 'in', [False, user_id.company_id.id])]
+                domain = [('company_id', 'in', [False, user_id.company_id.id])]
             else:
-                return [('company_id', '=', user_id.company_id.id)]
+                domain = [('company_id', '=', user_id.company_id.id)]
+            return self.search(domain)
 
         domain = [('user_id', '=', user_id.id)]
         if project_id.inherit_assignments:
@@ -146,6 +146,11 @@ class ProjectRole(models.Model):
                 ('project_id', '=', project_id.id),
                 ('company_id', '=', user_id.company_id.id)
             ]
-        assignments = self.env['project.assignment'].search(domain)
+        return self.env['project.assignment'].search(domain).mapped('role_id')
 
-        return [('id', 'in', assignments.mapped('role_id').ids)]
+    # TODO: Should be removed once not used anywhere
+    @api.model
+    def get_available_roles_domain(self, user_id, project_id):
+        return [
+            ('id', 'in', self.get_available_roles(user_id, project_id).ids),
+        ]
