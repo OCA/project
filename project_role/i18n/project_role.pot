@@ -14,7 +14,7 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: project_role
-#: code:addons/project_role/models/project_role.py:98
+#: code:addons/project_role/models/project_role.py:97
 #, python-format
 msgid "%(parent)s / %(own)s"
 msgstr ""
@@ -300,13 +300,12 @@ msgid "Parent Role"
 msgstr ""
 
 #. module: project_role
-#: code:addons/project_role/models/project_role.py:113
+#: code:addons/project_role/models/project_role.py:112
 #, python-format
 msgid "Please activate first parent role %s"
 msgstr ""
 
 #. module: project_role
-#: model:ir.model,name:project_role.model_project_project
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__project_id
 #: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
 msgid "Project"
@@ -352,7 +351,7 @@ msgid "Role"
 msgstr ""
 
 #. module: project_role
-#: code:addons/project_role/models/project_role.py:81
+#: code:addons/project_role/models/project_role.py:80
 #, python-format
 msgid "Role \"%s\" conflicts with another role due to same name."
 msgstr ""
@@ -421,6 +420,11 @@ msgid "User may be assigned per role only once!"
 msgstr ""
 
 #. module: project_role
+#: model:ir.model,name:project_role.model_project_project
+msgid "WBS element"
+msgstr ""
+
+#. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__website_message_ids
 msgid "Website Messages"
 msgstr ""
@@ -431,7 +435,7 @@ msgid "Website communication history"
 msgstr ""
 
 #. module: project_role
-#: code:addons/project_role/models/project_role.py:91
+#: code:addons/project_role/models/project_role.py:90
 #, python-format
 msgid "You cannot create recursive roles."
 msgstr ""
