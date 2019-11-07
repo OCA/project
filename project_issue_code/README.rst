@@ -13,8 +13,9 @@ Configuration
 =============
 
 After installing this module, every project issue will have:
-    * A new field called "issue_code"
-    * Project issue sequence
+
+* A new field called "issue_code"
+* Project issue sequence
     
 Field "issue_code" is readonly and its value will be filled in accordance with the sequence.
 For the first time installation, the sequence is automatically configured.
@@ -47,10 +48,12 @@ Contributors
 * Michael Viriyananda <viriyananda.michael@gmail.com>
 
 Inspired By:
+
 - project_task_code <https://github.com/OCA/project/tree/8.0/project_task_code>
-    * Oihane Crucelaegui <oihanecrucelaegi@avanzosc.es>
-    * Pedro M. Baeza <pedro.baeza@serviciosbaeza.com>
-    * Ana Juaristi <anajuarist@avanzosc.es>
+
+  * Oihane Crucelaegui <oihanecrucelaegi@avanzosc.es>
+  * Pedro M. Baeza
+  * Ana Juaristi <anajuarist@avanzosc.es>
 
 Maintainer
 ----------
