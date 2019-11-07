@@ -44,8 +44,8 @@ class TestProjectRole(common.TransactionCase):
         })
 
         self.assertEqual(
-            self.Role.get_available_roles_domain(user, project),
-            [('company_id', 'in', [False, self.company_id.id])]
+            self.Role.get_available_roles(user, project).ids,
+            role.ids
         )
 
     def test_no_duplicate_assignment(self):
@@ -338,9 +338,8 @@ class TestProjectRole(common.TransactionCase):
         self.Role.create({
             'name': 'Role',
         })
-        self.assertEqual(
-            self.Role.get_available_roles_domain(user, False),
-            [(0, '=', 1)]
+        self.assertFalse(
+            self.Role.get_available_roles(user, False)
         )
 
     def test_inherit_assignments(self):
@@ -363,14 +362,13 @@ class TestProjectRole(common.TransactionCase):
         })
 
         self.assertEqual(
-            self.Role.get_available_roles_domain(user, project),
-            [('id', 'in', [role.id])]
+            self.Role.get_available_roles(user, project).ids,
+            role.ids
         )
 
         project.inherit_assignments = False
-        self.assertEqual(
-            self.Role.get_available_roles_domain(user, project),
-            [('id', 'in', [])]
+        self.assertFalse(
+            self.Role.get_available_roles(user, project)
         )
 
     def test_limit_role_to_assignments(self):
@@ -380,7 +378,7 @@ class TestProjectRole(common.TransactionCase):
             'email': 'user@example.com',
             'company_id': self.company_id.id,
         })
-        self.Role.create({
+        role = self.Role.create({
             'name': 'Role',
         })
         project = self.Project.create({
@@ -388,14 +386,14 @@ class TestProjectRole(common.TransactionCase):
         })
 
         self.assertEqual(
-            self.Role.get_available_roles_domain(user, project),
-            [('company_id', 'in', [False, self.company_id.id])]
+            self.Role.get_available_roles(user, project).ids,
+            role.ids
         )
 
         project.inherit_assignments = False
         self.assertEqual(
-            self.Role.get_available_roles_domain(user, project),
-            [('company_id', '=', self.company_id.id)]
+            self.Role.get_available_roles(user, project).ids,
+            role.ids
         )
 
     def test_defaults(self):
