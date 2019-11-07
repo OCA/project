@@ -14,6 +14,7 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: project_role
+#: code:addons/project_role/models/project_role.py:97
 #: code:addons/project_role/models/project_role.py:98
 #, python-format
 msgid "%(parent)s / %(own)s"
@@ -300,6 +301,7 @@ msgid "Parent Role"
 msgstr ""
 
 #. module: project_role
+#: code:addons/project_role/models/project_role.py:112
 #: code:addons/project_role/models/project_role.py:113
 #, python-format
 msgid "Please activate first parent role %s"
@@ -352,6 +354,7 @@ msgid "Role"
 msgstr ""
 
 #. module: project_role
+#: code:addons/project_role/models/project_role.py:80
 #: code:addons/project_role/models/project_role.py:81
 #, python-format
 msgid "Role \"%s\" conflicts with another role due to same name."
@@ -431,6 +434,7 @@ msgid "Website communication history"
 msgstr ""
 
 #. module: project_role
+#: code:addons/project_role/models/project_role.py:90
 #: code:addons/project_role/models/project_role.py:91
 #, python-format
 msgid "You cannot create recursive roles."
