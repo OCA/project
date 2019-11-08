@@ -15,12 +15,12 @@ the analytical account just by choosing the corresponding classification.
 
 A project classification is composed by:
 
- * A name
- * An Analytic Account which represents the parent project to set
- * An optional Invoice factor
- * An optional Account Manager
- * An optional Pricelist
- * An optional Currency
+* A name
+* An Analytic Account which represents the parent project to set
+* An optional Invoice factor
+* An optional Account Manager
+* An optional Pricelist
+* An optional Currency
 
 Those values will be set on a project when selecting a classification.
 
@@ -35,19 +35,21 @@ Example :
 ---------
 
 Create following classification :
- * name: R-D O% administrator EUR
- * project_id: YourCompany / Internal
- * to_invoice: 0
- * user_id: Administrator
- * pricelist: Public Pricelist
+
+* name: R-D O% administrator EUR
+* project_id: YourCompany / Internal
+* to_invoice: 0
+* user_id: Administrator
+* pricelist: Public Pricelist
+
+In project.project form view, select this 'R-D O% administrator EUR' classification.
+When selecting it, the following fields in project must have changed to be the same as the classification ones:
  
- In project.project form view, select this 'R-D O% administrator EUR' classification.
- When selecting it, the following fields in project must have changed to be the same as the classification ones :
-  * parent_id
-  * to_invoice
-  * user_id (Project Manager)
-  * pricelist_id
-  * to_invoice
+* parent_id
+* to_invoice
+* user_id (Project Manager)
+* pricelist_id
+* to_invoice
   
 So when you need to create a new R-D project, instead of manually filling fields, you only select a classification and it's done.
 
