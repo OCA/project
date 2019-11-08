@@ -6,15 +6,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2019-10-24 07:33+0000\n"
+"PO-Revision-Date: 2019-11-08 08:34+0000\n"
 "Last-Translator: Matjaz Mozetic <matjaz@matmoz.si>\n"
 "Language-Team: none\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
-"%100==4 ? 2 : 3;\n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
+"n%100==4 ? 2 : 3;\n"
 "X-Generator: Weblate 3.8\n"
 
 #. module: project_role
@@ -43,22 +43,15 @@ msgstr "%s kot %s na %s"
 
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
-#, fuzzy
-#| msgid ""
-#| "<span class=\"o_form_label\">Project Roles</span>\n"
-#| "                                <span class=\"fa fa-lg fa-building-o\" "
-#| "title=\"Values set here are company-specific.\" role=\"img\" aria-label="
-#| "\"Values set here are company-specific.\" groups=\"base."
-#| "group_multi_company\"/>"
 msgid ""
 "<span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-"
 "specific.\" role=\"img\" aria-label=\"Values set here are company-specific."
 "\" groups=\"base.group_multi_company\"/>"
 msgstr ""
-"<span class=\"o_form_label\">Projektne vloge</span>\n"
-"                                <span class=\"fa fa-lg fa-building-o\" title="
-"\"Vrednosti za posamezno družbo.\" role=\"img\" aria-label=\"Vrednosti za "
-"posamezno družbo.\" groups=\"base.group_multi_company\"/>"
+"<span class=\"fa fa-lg fa-building-o\" title=\"Tukajšnje vrednosti so "
+"specifične za posamezno družbo.\" role=\"img\" aria-label=\"Tukajšnje "
+"vrednosti so specifične za posamezno družbo.\" groups=\"base."
+"group_multi_company\"/>"
 
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
@@ -110,12 +103,12 @@ msgstr "Št. priponk"
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
 msgid "Check to configure projects to inherit company assignments by default."
-msgstr ""
+msgstr "Označite, da bi projekti privzeto dedovali zadolžitve družbe."
 
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
 msgid "Check to configure projects to limit role to assignments by default."
-msgstr ""
+msgstr "Označite, da bi privzeto omejili projektno vlogo na zadolžitve."
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_role__child_ids
@@ -124,10 +117,8 @@ msgstr "Podrejene vloge"
 
 #. module: project_role
 #: model:ir.model,name:project_role.model_res_company
-#, fuzzy
-#| msgid "Company-Wide"
 msgid "Companies"
-msgstr "V sklopu družbe"
+msgstr "Družbe"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__company_id
@@ -149,7 +140,7 @@ msgstr "Poln naziv"
 #. module: project_role
 #: model:ir.model,name:project_role.model_res_config_settings
 msgid "Config Settings"
-msgstr ""
+msgstr "Nastavitve"
 
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
@@ -229,10 +220,8 @@ msgstr "Neaktivno"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_project__inherit_assignments
-#, fuzzy
-#| msgid "Project Assignments"
 msgid "Inherit assignments"
-msgstr "Projektne zadolžitve"
+msgstr "Deduj zadolžitve"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_is_follower
@@ -261,17 +250,13 @@ msgstr "Zadnjič posodobljeno"
 #: model:ir.model.fields,field_description:project_role.field_res_company__project_limit_role_to_assignments
 #: model:ir.model.fields,field_description:project_role.field_res_config_settings__project_limit_role_to_assignments
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
-#, fuzzy
-#| msgid "Project Assignments"
 msgid "Limit Project Role to Assignments"
-msgstr "Projektne zadolžitve"
+msgstr "Omeji projektne vloge na zadolžitve"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_project__limit_role_to_assignments
-#, fuzzy
-#| msgid "Project Assignments"
 msgid "Limit role to assignments"
-msgstr "Projektne zadolžitve"
+msgstr "Omeji vlogo na zadolžitve"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_main_attachment_id
@@ -372,17 +357,13 @@ msgstr "Projektne vloge"
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_res_company__project_inherit_assignments
 #: model:ir.model.fields,field_description:project_role.field_res_config_settings__project_inherit_assignments
-#, fuzzy
-#| msgid "Project Assignments"
 msgid "Projects Inherit Assignments"
-msgstr "Projektne zadolžitve"
+msgstr "Projekti dedujejo zadolžitve"
 
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
-#, fuzzy
-#| msgid "Project Assignments"
 msgid "Projects inherit Company assignments"
-msgstr "Projektne zadolžitve"
+msgstr "Projekti dedujejo zadolžitve iz družbe"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__role_id
@@ -434,10 +415,9 @@ msgstr "Uporabnik"
 
 #. module: project_role
 #: code:addons/project_role/models/project_assignment.py:136
-#, fuzzy, python-format
-#| msgid "User %s can not be assigned to role %s."
+#, python-format
 msgid "User %s can not be assigned to role %s on %s."
-msgstr "Uporabniku %s ni mogoče dodeliti vloge %s."
+msgstr "Uporabniku %s ni mogoče dodeliti vloge %s na %s."
 
 #. module: project_role
 #: code:addons/project_role/models/project_assignment.py:144
