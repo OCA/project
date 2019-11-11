@@ -239,7 +239,6 @@ msgid "Product"
 msgstr ""
 
 #. module: project_timesheet_time_control
-#: model:ir.model,name:project_timesheet_time_control.model_project_project
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__project_id
 msgid "Project"
 msgstr ""
@@ -378,6 +377,11 @@ msgstr ""
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__user_id
 msgid "User"
+msgstr ""
+
+#. module: project_timesheet_time_control
+#: model:ir.model,name:project_timesheet_time_control.model_project_project
+msgid "WBS element"
 msgstr ""
 
 #. module: project_timesheet_time_control
