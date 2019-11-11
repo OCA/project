@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_account_analytic_account_list" model="ir.ui.view">
+        <field name="name">account.analytic.account.list</field>
+        <field name="model">account.analytic.account</field>
+        <field name="type">tree</field>
+        <field eval="8" name="priority"/>
+        <field name="inherit_id" ref="analytic.view_account_analytic_account_list"/>
+        <field name="arch" type="xml">
+            <field name="code" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </field>
+
+            <field name="partner_id" position="after">
+                <field name="code"/>
+                <field name="user_id" invisible="1"/>
+                <field name="manager_id"/>
+                <field name="parent_id" invisible="1"/>
+                <field name="account_class" invisible="1"/>
+                <field name="complete_wbs_code" string="WBS code"/>
+                <field name="project_analytic_id"
+                       domain="[('account_class', '=', 'project')]"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_account_analytic_account_search" model="ir.ui.view">
+        <field name="name">account.analytic.account.search</field>
+        <field name="model">account.analytic.account</field>
+        <field name="type">search</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_account_search"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="complete_wbs_name" string="WBS name"/>
+                <field name="complete_wbs_code" string="WBS code"/>
+                <field name="account_class" string="Class"/>
+                <field name="project_analytic_id"
+                       domain="[('account_class', '=', 'project')]"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_account_analytic_account_form" model="ir.ui.view">
+        <field name="name">account.analytic.account.form</field>
+        <field name="model">account.analytic.account</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_account_form"/>
+        <field name="arch" type="xml">
+            <field name="group_id" position="after">
+                <field name="account_class" string="Class"/>
+                <field name="manager_id"/>
+                <field name="project_analytic_id"
+                       domain="[('account_class', '=', 'project')]"/>
+                <field name="complete_wbs_code" string="WBS code" readonly="1"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="view_account_analytic_account_search2" model="ir.ui.view">
+        <field name="name">account.analytic.account.search</field>
+        <field name="model">account.analytic.account</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_account_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group" position="inside">
+                <filter string="Master Project" name="Master Project" context="{'group_by':'project_analytic_id', 'order_by':'complete_wbs_code asc'}"/>
+            </xpath>
+            <field name="partner_id" position="after">
+                <filter string="Project" domain="[('account_class', '=', 'project')]" name="class_project"/>
+                <filter string="Deliverable" domain="[('account_class', '=', 'deliverable')]" name="class_project"/>
+                <filter string="Work Package" domain="[('account_class', '=', 'work_package')]" name="class_project"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>
