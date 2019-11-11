@@ -76,11 +76,6 @@ msgid "Old Task"
 msgstr "Tarefa pasada"
 
 #. module: project_task_dependency
-#: model:ir.model,name:project_task_dependency.model_project_project
-msgid "Project"
-msgstr "Proxecto"
-
-#. module: project_task_dependency
 #: model:ir.model,name:project_task_dependency.model_project_task_copy_map
 msgid "Project Task Copy Map"
 msgstr "Mapa de copia de tarefa"
@@ -111,7 +106,15 @@ msgid "Tasks that are dependent on this task."
 msgstr "Tarefas que son dependentes desta tarefa."
 
 #. module: project_task_dependency
+#: model:ir.model,name:project_task_dependency.model_project_project
+msgid "WBS element"
+msgstr ""
+
+#. module: project_task_dependency
 #: code:addons/project_task_dependency/models/project_task.py:82
 #, python-format
 msgid "You cannot create recursive dependencies between tasks."
 msgstr "Non se poden crear dependencias recursivas entre tarefas."
+
+#~ msgid "Project"
+#~ msgstr "Proxecto"
