@@ -27,5 +27,8 @@ msgstr "说明"
 
 #. module: project_description
 #: model:ir.model,name:project_description.model_project_project
-msgid "Project"
-msgstr "项目"
+msgid "WBS element"
+msgstr ""
+
+#~ msgid "Project"
+#~ msgstr "项目"
