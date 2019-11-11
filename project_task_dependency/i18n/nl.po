@@ -78,11 +78,6 @@ msgid "Old Task"
 msgstr "Taak"
 
 #. module: project_task_dependency
-#: model:ir.model,name:project_task_dependency.model_project_project
-msgid "Project"
-msgstr ""
-
-#. module: project_task_dependency
 #: model:ir.model,name:project_task_dependency.model_project_task_copy_map
 msgid "Project Task Copy Map"
 msgstr ""
@@ -111,6 +106,11 @@ msgstr "Taken welke afhankelijk zijn van deze taak (recursief)."
 #: model:ir.model.fields,help:project_task_dependency.field_project_task__depending_task_ids
 msgid "Tasks that are dependent on this task."
 msgstr "Taken welke afhankelijk zijn van deze taak."
+
+#. module: project_task_dependency
+#: model:ir.model,name:project_task_dependency.model_project_project
+msgid "WBS element"
+msgstr ""
 
 #. module: project_task_dependency
 #: code:addons/project_task_dependency/models/project_task.py:82
