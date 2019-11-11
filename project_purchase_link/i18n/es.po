@@ -27,11 +27,6 @@ msgid "# Purchase Invoice"
 msgstr "N.º de facturas de compra"
 
 #. module: project_purchase_link
-#: model:ir.model,name:project_purchase_link.model_project_project
-msgid "Project"
-msgstr "Proyecto"
-
-#. module: project_purchase_link
 #: code:addons/project_purchase_link/models/project_project.py:100
 #, python-format
 msgid "Purchase Invoice Lines"
@@ -72,6 +67,14 @@ msgstr "Compras"
 #: model_terms:ir.ui.view,arch_db:project_purchase_link.project_project_view_form
 msgid "Purchases"
 msgstr "Compras"
+
+#. module: project_purchase_link
+#: model:ir.model,name:project_purchase_link.model_project_project
+msgid "WBS element"
+msgstr ""
+
+#~ msgid "Project"
+#~ msgstr "Proyecto"
 
 #~ msgid "Purchase Lines"
 #~ msgstr "Líneas de compra"
