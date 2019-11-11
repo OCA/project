@@ -166,7 +166,6 @@ msgid "Last Updated on"
 msgstr "Atualizado pela última vez em"
 
 #. module: project_recalculate
-#: model:ir.model,name:project_recalculate.model_project_project
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__project_id
 msgid "Project"
 msgstr "Projeto"
@@ -223,4 +222,9 @@ msgstr "Etapa da Tarefa"
 #. module: project_recalculate
 #: model_terms:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
 msgid "This Project task will be recalculated according reference date:"
+msgstr ""
+
+#. module: project_recalculate
+#: model:ir.model,name:project_recalculate.model_project_project
+msgid "WBS element"
 msgstr ""

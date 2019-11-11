@@ -17,8 +17,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
-"n%100==4 ? 2 : 3;\n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
+"%100==4 ? 2 : 3;\n"
 "X-Generator: Weblate 3.8\n"
 
 #. module: project_recalculate
@@ -179,7 +179,6 @@ msgid "Last Updated on"
 msgstr "Zadnjič posodobljeno"
 
 #. module: project_recalculate
-#: model:ir.model,name:project_recalculate.model_project_project
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__project_id
 msgid "Project"
 msgstr "Projekt"
@@ -235,6 +234,11 @@ msgstr "Stopnja opravila"
 #: model_terms:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
 msgid "This Project task will be recalculated according reference date:"
 msgstr "Ta projekt bo ponovno preračunan glede na referenčni datum:"
+
+#. module: project_recalculate
+#: model:ir.model,name:project_recalculate.model_project_project
+msgid "WBS element"
+msgstr ""
 
 #~ msgid "Resource Calendar"
 #~ msgstr "Koledar virov"
