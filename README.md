@@ -50,7 +50,7 @@ addon | version | summary
 [project_timeline_hr_timesheet](project_timeline_hr_timesheet/) | 12.0.1.0.1 | Shows the progress of tasks on the timeline view.
 [project_timeline_task_dependency](project_timeline_task_dependency/) | 12.0.1.0.0 | Render arrows between dependencies.
 [project_timesheet_time_control](project_timesheet_time_control/) | 12.0.2.1.0 | Project timesheet time control
-[project_wbs](project_wbs/) | 12.0.1.0.0 | Apply Work Breakdown Structure
+[project_wbs](project_wbs/) | 12.0.1.0.1 | Apply Work Breakdown Structure
 
 [//]: # (end addons)
 
