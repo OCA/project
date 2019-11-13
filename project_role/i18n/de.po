@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2019-07-12 15:43+0000\n"
+"PO-Revision-Date: 2019-11-13 14:34+0000\n"
 "Last-Translator: Maria Sparenberg <maria.sparenberg@gmx.net>\n"
 "Language-Team: none\n"
 "Language: de\n"
@@ -14,25 +14,23 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.7.1\n"
+"X-Generator: Weblate 3.8\n"
 
 #. module: project_role
 #: code:addons/project_role/models/project_role.py:97
 #, python-format
 msgid "%(parent)s / %(own)s"
-msgstr ""
+msgstr "%(parent)s / %(own)s"
 
 #. module: project_role
 #: code:addons/project_role/models/project_assignment.py:94
-#, fuzzy, python-format
-#| msgid "%s as %s on %s"
+#, python-format
 msgid "%s as %s"
-msgstr "%s als %s für %s"
+msgstr "%s als %s"
 
 #. module: project_role
 #: code:addons/project_role/models/project_assignment.py:88
-#, fuzzy, python-format
-#| msgid "%s as %s on %s"
+#, python-format
 msgid "%s as %s in %s"
 msgstr "%s als %s für %s"
 
@@ -44,23 +42,14 @@ msgstr "%s als %s für %s"
 
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
-#, fuzzy
-#| msgid ""
-#| "<span class=\"o_form_label\">Project Roles</span>\n"
-#| "                                <span class=\"fa fa-lg fa-building-o\" "
-#| "title=\"Values set here are company-specific.\" role=\"img\" aria-label="
-#| "\"Values set here are company-specific.\" groups=\"base."
-#| "group_multi_company\"/>"
 msgid ""
 "<span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-"
 "specific.\" role=\"img\" aria-label=\"Values set here are company-specific."
 "\" groups=\"base.group_multi_company\"/>"
 msgstr ""
-"<span class=\"o_form_label\">Projektrollen</span>\n"
-"                                <span class=\"fa fa-lg fa-building-o\" title="
-"\"Die hier gesetzten Werte sind firmenspezifisch.\" role=\"img\" aria-label="
-"\"Die hier gesetzten Werte sind firmenspezifisch.\" groups=\"base."
-"group_multi_company\"/>"
+"<span class=\"fa fa-lg fa-building-o\" title=\"Die hier gesetzten Werte sind "
+"firmenspezifisch.\" role=\"img\" aria-label=\"Die hier gesetzten Werte sind "
+"firmenspezifisch.\" groups=\"base.group_multi_company\"/>"
 
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
@@ -84,24 +73,20 @@ msgstr "Aktion benötigt"
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__active
 #: model:ir.model.fields,field_description:project_role.field_project_role__active
-#, fuzzy
-#| msgid "Activities"
 msgid "Active"
-msgstr "Aktivitäten"
+msgstr "Aktiv"
 
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.project_role_search
 msgid "Archived"
-msgstr ""
+msgstr "Archiviert"
 
 #. module: project_role
 #: code:addons/project_role/models/project_assignment.py:127
-#, fuzzy, python-format
-#| msgid "Role \"%s\" conflicts with another role due to same name."
+#, python-format
 msgid "Assignment %s conflicts with another assignment: %s"
 msgstr ""
-"Die Rolle \"%s\" steht im Konflikt mit einer anderen Rolle, die denselben "
-"Namen hat."
+"Die Rollenzuweisung %s steht im Konflikt mit einer anderen Zuweisung: %s"
 
 #. module: project_role
 #: model:ir.actions.act_window,name:project_role.project_assignment_view_project_action
@@ -128,12 +113,10 @@ msgstr ""
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_role__child_ids
 msgid "Child Roles"
-msgstr ""
+msgstr "Untergeordnete Rollen"
 
 #. module: project_role
 #: model:ir.model,name:project_role.model_res_company
-#, fuzzy
-#| msgid "Company"
 msgid "Companies"
 msgstr "Unternehmen"
 
@@ -146,20 +129,18 @@ msgstr "Unternehmen"
 
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
-#, fuzzy
-#| msgid "Company"
 msgid "Company-Wide"
-msgstr "Unternehmen"
+msgstr "unternehmensweit"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_role__complete_name
 msgid "Complete Name"
-msgstr ""
+msgstr "Vollständige Bezeichnung"
 
 #. module: project_role
 #: model:ir.model,name:project_role.model_res_config_settings
 msgid "Config Settings"
-msgstr ""
+msgstr "Konfigurationseinstellungen"
 
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
@@ -234,14 +215,12 @@ msgstr ""
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
 msgid "Inactive"
-msgstr ""
+msgstr "Inaktiv"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_project__inherit_assignments
-#, fuzzy
-#| msgid "Project Assignments"
 msgid "Inherit assignments"
-msgstr "Projekt-Rollenzuweisungen"
+msgstr "Zuweisung vererben"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_is_follower
@@ -340,16 +319,14 @@ msgstr ""
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_role__parent_id
-#, fuzzy
-#| msgid "Project Role"
 msgid "Parent Role"
-msgstr "Projektrolle"
+msgstr "Übergeordnete Rolle"
 
 #. module: project_role
 #: code:addons/project_role/models/project_role.py:112
 #, python-format
 msgid "Please activate first parent role %s"
-msgstr ""
+msgstr "Bitte zuerst die übergeordnete Rolle %s aktivieren."
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__project_id
@@ -446,10 +423,10 @@ msgstr "Benutzer"
 
 #. module: project_role
 #: code:addons/project_role/models/project_assignment.py:136
-#, fuzzy, python-format
-#| msgid "User %s can not be assigned to role %s."
+#, python-format
 msgid "User %s can not be assigned to role %s on %s."
-msgstr "Der Benutzer %s kann der Rolle %s nicht zugewiesen werden."
+msgstr ""
+"Der Benutzer %s kann der Rolle %s in dem Projekt %s nicht zugewiesen werden."
 
 #. module: project_role
 #: code:addons/project_role/models/project_assignment.py:144
@@ -459,11 +436,9 @@ msgstr "Der Benutzer %s kann der Rolle %s nicht zugewiesen werden."
 
 #. module: project_role
 #: sql_constraint:project.assignment:0
-#, fuzzy
-#| msgid "User may be assigned per role only once within a project!"
 msgid "User may be assigned per role only once within a company!"
 msgstr ""
-"Der Benutzer sollte einer Rolle innerhalb eines Projekts nur einmal "
+"Der Benutzer sollte einer Rolle innerhalb eines Unternehmens nur einmal "
 "zugewiesen sein!"
 
 #. module: project_role
@@ -475,12 +450,8 @@ msgstr ""
 
 #. module: project_role
 #: sql_constraint:project.assignment:0
-#, fuzzy
-#| msgid "User may be assigned per role only once within a project!"
 msgid "User may be assigned per role only once!"
-msgstr ""
-"Der Benutzer sollte einer Rolle innerhalb eines Projekts nur einmal "
-"zugewiesen sein!"
+msgstr "Der Benutzer sollte einer Rolle nur einmal zugewiesen sein!"
 
 #. module: project_role
 #: model:ir.model,name:project_role.model_project_project
@@ -501,7 +472,7 @@ msgstr "Website-Kommunikationshistorie"
 #: code:addons/project_role/models/project_role.py:90
 #, python-format
 msgid "You cannot create recursive roles."
-msgstr ""
+msgstr "Es können keine rekursive Rollen erstellt werden."
 
 #~ msgid "Activity State"
 #~ msgstr "Aktivitätsstatus"
