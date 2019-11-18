@@ -8,6 +8,7 @@ setuptools.setup(
     description="Meta package for oca-project Odoo addons",
     version=version,
     install_requires=[
+        'odoo13-addon-project_category',
         'odoo13-addon-project_description',
         'odoo13-addon-project_parent_task_filter',
         'odoo13-addon-project_stage_closed',
