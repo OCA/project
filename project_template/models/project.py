@@ -10,6 +10,7 @@ class Project(models.Model):
 
     # CREATE A PROJECT FROM A TEMPLATE AND OPEN THE NEWLY CREATED PROJECT
     def create_project_from_template(self):
+        new_name = self.name
         if " (TEMPLATE)" in self.name:
             new_name = self.name.replace(" (TEMPLATE)", " (COPY)")
 
