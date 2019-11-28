@@ -21,5 +21,5 @@ class ProjectTask(models.Model):
 
     def update_date_end(self, stage_id):
         res = super(ProjectTask, self).update_date_end(stage_id)
-        res.pop('date_end')
+        res.pop('date_end', None)
         return res
