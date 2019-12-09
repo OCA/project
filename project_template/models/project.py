@@ -12,6 +12,8 @@ class Project(models.Model):
     def create_project_from_template(self):
         if " (TEMPLATE)" in self.name:
             new_name = self.name.replace(" (TEMPLATE)", " (COPY)")
+        else:
+            new_name = self.name + " (COPY)"
 
         new_project = self.copy(default={'name': new_name,
                                          'active': True,
@@ -46,6 +48,8 @@ class Project(models.Model):
             if self.is_template:
                 if "(TEMPLATE)" not in self.name:
                     self.name = self.name + " (TEMPLATE)"
+                elif "(COPY)" not in self.name:
+                    self.name = self.name + " (COPY)"
                 if self.user_id:
                     self.user_id = False
                 if self.partner_id:
@@ -56,3 +60,5 @@ class Project(models.Model):
             else:
                 if " (TEMPLATE)" in self.name:
                     self.name = self.name.replace(" (TEMPLATE)", "")
+                elif " (COPY)" in self.name:
+                    self.name = self.name.replace(" (COPY)", "")
