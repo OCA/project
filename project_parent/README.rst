@@ -47,6 +47,7 @@ Contributors
 ------------
 
 * Eric Caudal <eric.caudal@elico-corp.com>
+* Giovanni Francesco Capalbo <giovanni@therp.nl>
 
 Maintainer
 ----------
