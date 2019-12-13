@@ -42,7 +42,7 @@ addon | version | summary
 [project_timeline](project_timeline/) | 10.0.1.1.0 | Timeline view for projects
 [project_timesheet_currency](project_timesheet_currency/) | 10.0.1.0.0 | Multi-currency analytic costs
 [project_timesheet_time_control](project_timesheet_time_control/) | 10.0.1.0.1 | Project timesheet time control
-[project_wbs](project_wbs/) | 10.0.1.0.0 | Project Work Breakdown Structure
+[project_wbs](project_wbs/) | 10.0.1.1.0 | Project Work Breakdown Structure
 [sale_order_project](sale_order_project/) | 10.0.1.0.0 | Sale Order Project
 
 
