@@ -29,11 +29,6 @@ msgid "Append this project to another one using analytic accounts hierarchy"
 msgstr ""
 
 #. module: project_wbs
-#: selection:account.analytic.account,state:0
-msgid "Cancelled"
-msgstr ""
-
-#. module: project_wbs
 #: model:ir.ui.view,arch_db:project_wbs.view_project
 msgid "Child WBS elements"
 msgstr ""
@@ -56,20 +51,9 @@ msgid "Click to start a new project."
 msgstr ""
 
 #. module: project_wbs
-#: selection:account.analytic.account,state:0
-msgid "Closed"
-msgstr ""
-
-#. module: project_wbs
 #: model:ir.ui.view,arch_db:project_wbs.edit_project
 #: model:ir.ui.view,arch_db:project_wbs.view_project
 msgid "Code"
-msgstr ""
-
-#. module: project_wbs
-#: model:ir.model.fields,help:project_wbs.field_account_analytic_account_complete_wbs_code_calc
-#: model:ir.model.fields,help:project_wbs.field_project_project_complete_wbs_code_calc
-msgid "Computed WBS code"
 msgstr ""
 
 #. module: project_wbs
@@ -89,7 +73,7 @@ msgid "Deliverables"
 msgstr ""
 
 #. module: project_wbs
-#: code:addons/project_wbs/models/project_project.py:248
+#: code:addons/project_wbs/models/project_project.py:266
 #, python-format
 msgid "Details"
 msgstr ""
@@ -106,9 +90,7 @@ msgstr ""
 
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account_complete_wbs_code
-#: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account_complete_wbs_code_calc
 #: model:ir.model.fields,field_description:project_wbs.field_project_project_complete_wbs_code
-#: model:ir.model.fields,field_description:project_wbs.field_project_project_complete_wbs_code_calc
 msgid "Full WBS Code"
 msgstr ""
 
@@ -122,11 +104,6 @@ msgstr ""
 #: model:ir.model.fields,help:project_wbs.field_account_analytic_account_complete_wbs_name
 #: model:ir.model.fields,help:project_wbs.field_project_project_complete_wbs_name
 msgid "Full path in the WBS hierarchy"
-msgstr ""
-
-#. module: project_wbs
-#: selection:account.analytic.account,state:0
-msgid "In Progress"
 msgstr ""
 
 #. module: project_wbs
@@ -145,11 +122,6 @@ msgstr ""
 #: model:ir.ui.view,arch_db:project_wbs.view_account_analytic_account_search2
 #: model:ir.ui.view,arch_db:project_wbs.view_project_project_group_filter
 msgid "Master Project"
-msgstr ""
-
-#. module: project_wbs
-#: selection:account.analytic.account,state:0
-msgid "New"
 msgstr ""
 
 #. module: project_wbs
@@ -223,17 +195,6 @@ msgid "Start Date"
 msgstr ""
 
 #. module: project_wbs
-#: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account_state
-#: model:ir.model.fields,field_description:project_wbs.field_project_project_state
-msgid "Status"
-msgstr ""
-
-#. module: project_wbs
-#: selection:account.analytic.account,state:0
-msgid "Template"
-msgstr ""
-
-#. module: project_wbs
 #: model:ir.model.fields,help:project_wbs.field_account_analytic_account_account_class
 #: model:ir.model.fields,help:project_wbs.field_project_project_account_class
 msgid "The classification allows you to create a proper project Work Breakdown Structure"
@@ -241,13 +202,22 @@ msgstr ""
 
 #. module: project_wbs
 #: model:ir.model.fields,help:project_wbs.field_account_analytic_account_complete_wbs_code
+#: model:ir.model.fields,help:project_wbs.field_project_project_c_wbs_code
 #: model:ir.model.fields,help:project_wbs.field_project_project_complete_wbs_code
 msgid "The full WBS code describes the full path of this component within the project WBS hierarchy"
 msgstr ""
 
 #. module: project_wbs
-#: selection:account.analytic.account,state:0
-msgid "To Renew"
+#: sql_constraint:account.analytic.account:0
+#: code:addons/project_wbs/models/account_analytic_account.py:217
+#, python-format
+msgid "The full wbs code must be unique!"
+msgstr ""
+
+#. module: project_wbs
+#: code:addons/project_wbs/models/project_project.py:120
+#, python-format
+msgid "Unknown Analytic Account"
 msgstr ""
 
 #. module: project_wbs
