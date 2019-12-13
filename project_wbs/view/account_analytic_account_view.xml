@@ -17,7 +17,6 @@
                     <field name="user_id" invisible="1"/>
                     <field name="manager_id"/>
                     <field name="parent_id" invisible="1"/>
-                    <field name="state" invisible="1"/>
                     <field name="account_class" invisible="1"/>
                     <field name="complete_wbs_code" string="WBS code"/>
                     <field name="project_analytic_id"

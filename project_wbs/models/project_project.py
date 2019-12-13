@@ -30,7 +30,6 @@ class Project(models.Model):
             INNER JOIN project_project p
             ON a.id = p.analytic_account_id
             JOIN children b ON(a.parent_id = b.id)
-            --WHERE p.state not in ('template', 'cancelled')
             )
             SELECT * FROM children order by ppid
         ''', (tuple(self.ids),))
@@ -96,6 +95,8 @@ class Project(models.Model):
     @api.depends('parent_id')
     def _compute_child(self):
         for project_item in self:
+            if not project_item.analytic_account_id:
+                continue
             child_ids = self.search(
                 [('parent_id', '=', project_item.analytic_account_id.id)]
             )
@@ -114,11 +115,13 @@ class Project(models.Model):
             return context['default_parent_id']
         return None
 
-    @api.multi
-    def _compute_analytic_complete_wbs_code(self):
-        for project in self:
-            project.c_wbs_code = \
-                project.analytic_account_id.complete_wbs_code
+    def prepare_analytics_vals(self, vals):
+        return {
+            'name': vals.get('name', _('Unknown Analytic Account')),
+            'company_id': vals.get('company_id', self.env.user.company_id.id),
+            'partner_id': vals.get('partner_id'),
+            'active': True,
+        }
 
     project_child_complete_ids = fields.Many2many(
         comodel_name='project.project',
@@ -126,7 +129,7 @@ class Project(models.Model):
         compute="_compute_child"
     )
     c_wbs_code = fields.Char(
-        compute="_compute_analytic_complete_wbs_code",
+        related="analytic_account_id.complete_wbs_code",
         string='WBS Code',
         readonly=True,
         store=True
@@ -136,6 +139,14 @@ class Project(models.Model):
         store=True,
         default='project',
     )
+
+    @api.multi
+    def copy(self, default=None):
+        if default is None:
+            default = {}
+        default['code'] = self.env['ir.sequence'].next_by_code(
+            'account.analytic.account.code')
+        return super(Project, self).copy(default)
 
     @api.multi
     def action_open_child_view(self, module, act_window):
@@ -164,15 +175,11 @@ class Project(models.Model):
             })
         domain.append(('id', 'in', project_ids))
         res.update({
+            "display_name": project.name,
             "domain": domain,
             "nodestroy": False
         })
         return res
-
-    @api.multi
-    def action_open_projects_view(self):
-        return self.action_open_child_view(
-            'project_wbs', 'open_view_project_projects')
 
     @api.multi
     def action_open_child_tree_view(self):
@@ -206,6 +213,17 @@ class Project(models.Model):
                 "domain": domain,
                 "nodestroy": False
             })
+        res['display_name'] = project.name
+        return res
+
+    @api.multi
+    def write(self, vals):
+        res = super(Project, self).write(vals)
+        if 'parent_id' in vals:
+            for account in self.env['account.analytic.account'].browse(
+                    self.analytic_account_id.get_child_accounts().keys()):
+                account._complete_wbs_code_calc()
+                account._complete_wbs_name_calc()
         return res
 
     @api.multi
@@ -239,7 +257,7 @@ class Project(models.Model):
     @api.multi
     @api.onchange('parent_id')
     def on_change_parent(self):
-        return self.analytic_account_id._onchange_parent_id()
+        self.analytic_account_id._onchange_parent_id()
 
     @api.multi
     def action_open_view_project_form(self):
@@ -247,7 +265,7 @@ class Project(models.Model):
         view = {
             'name': _('Details'),
             'view_type': 'form',
-            'view_mode': 'form,tree,kanban,gantt',
+            'view_mode': 'form,tree,kanban',
             'res_model': 'project.project',
             'view_id': False,
             'type': 'ir.actions.act_window',
