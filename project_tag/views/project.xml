@@ -72,7 +72,6 @@
           <field name="tag_ids"/>
         </xpath>
     </field>
-  </record>     
-     
-</odoo>
+  </record>
 
+</odoo>
