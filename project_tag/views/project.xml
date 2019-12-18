@@ -11,7 +11,7 @@
     <field name="field_parent">child_ids</field>
     <field name="arch" type="xml">
       <field name="partner_id" position="before">
-        <field name="tag_ids"
+          <field name="tag_ids"
                widget="many2many_tags"/>
       </field>
     </field>
@@ -43,7 +43,7 @@
     <field name="type">form</field>
     <field name="arch" type="xml">
         <field name="name" position="after">
-          <field name="tag_ids"
+            <field name="tag_ids"
                  widget="many2many_tags"
                  options="{'color_field': 'color'}"/>
         </field>
@@ -57,7 +57,7 @@
     <field name="inherit_id" ref="project.view_project_kanban"/>
     <field name="arch" type="xml">
         <xpath expr="//div[hasclass('o_primary')]" position="after">
-          <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+            <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
         </xpath>
     </field>
   </record>
@@ -69,7 +69,7 @@
     <field name="inherit_id" ref="project.view_project_project_filter"/>
     <field name="arch" type="xml">
         <xpath expr="//field[@name='partner_id']" position="after">
-          <field name="tag_ids"/>
+            <field name="tag_ids"/>
         </xpath>
     </field>
   </record>
