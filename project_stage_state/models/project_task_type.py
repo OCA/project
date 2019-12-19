@@ -3,18 +3,18 @@
 
 from odoo import fields, models
 
-
 _TASK_STATE = [
-    ('draft', 'New'),
-    ('open', 'In Progress'),
-    ('pending', 'Pending'),
-    ('done', 'Done'),
-    ('cancelled', 'Cancelled')]
+    ("draft", "New"),
+    ("open", "In Progress"),
+    ("pending", "Pending"),
+    ("done", "Done"),
+    ("cancelled", "Cancelled"),
+]
 
 
 class ProjectTaskType(models.Model):
     """Added state in the Project Task Type."""
 
-    _inherit = 'project.task.type'
+    _inherit = "project.task.type"
 
-    state = fields.Selection(_TASK_STATE, 'State')
+    state = fields.Selection(_TASK_STATE, "State")
