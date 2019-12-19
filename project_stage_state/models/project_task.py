@@ -7,7 +7,6 @@ from odoo import fields, models
 class ProjectTask(models.Model):
     """Added state in the Project Task."""
 
-    _inherit = 'project.task'
+    _inherit = "project.task"
 
-    state = fields.Selection(
-        related='stage_id.state', store=True)
+    state = fields.Selection(related="stage_id.state", store=True)
