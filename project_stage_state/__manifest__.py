@@ -6,7 +6,7 @@
     "version": "13.0.1.0.0",
     "category": "Project Management",
     "summary": "Restore State attribute removed from Project Stages in 8.0",
-    "author": "Daniel Reis,Odoo Community Association (OCA)",
+    "author": "Daniel Reis, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/project",
     "license": "AGPL-3",
     "installable": True,
