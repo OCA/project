@@ -16,14 +16,12 @@ class Task(models.Model):
 
     _sql_constraints = [("task_key_unique", "UNIQUE(key)", "Task key must be unique!")]
 
-    @api.multi
     def _compute_task_url(self):
         action_id = self.env.ref("project.action_view_task").id
         for task in self:
             task.url = TASK_URL % (task.id, action_id)
 
     @api.model
-    @api.returns("self", lambda value: value.id)
     def create(self, vals):
         get = self.env.context.get
 
@@ -39,7 +37,6 @@ class Task(models.Model):
             vals["key"] = project.get_next_task_key()
         return super(Task, self).create(vals)
 
-    @api.multi
     def write(self, vals):
         project_id = vals.get("project_id", False)
         if not project_id:
@@ -76,7 +73,6 @@ class Task(models.Model):
         tasks = self.search(domain + args, limit=limit)
         return tasks.name_get()
 
-    @api.multi
     def name_get(self):
         result = []
 
