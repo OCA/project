@@ -19,7 +19,6 @@ class Project(models.Model):
         ("project_key_unique", "UNIQUE(key)", "Project key must be unique")
     ]
 
-    @api.multi
     @api.onchange("name")
     def _onchange_project_name(self):
         for rec in self:
@@ -41,7 +40,6 @@ class Project(models.Model):
 
         return new_project
 
-    @api.multi
     def write(self, values):
         update_key = False
 
@@ -59,7 +57,6 @@ class Project(models.Model):
 
         return res
 
-    @api.multi
     def unlink(self):
         for project in self:
             sequence = project.task_key_sequence_id
@@ -144,13 +141,12 @@ class Project(models.Model):
             key.append(item[0].upper())
         return "".join(key)
 
-    @api.multi
     def _update_task_keys(self):
         """
         This method will update task keys of the current project.
         """
         self.ensure_one()
-
+        self.flush()
         reindex_query = """
         UPDATE project_task
         SET key = x.key
