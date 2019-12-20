@@ -5,7 +5,6 @@ from .test_common import TestCommon
 
 
 class TestTask(TestCommon):
-
     def test_01_key(self):
         self.assertEqual(self.task11.key, "OCA-1")
         self.assertEqual(self.task12.key, "OCA-2")
@@ -20,19 +19,18 @@ class TestTask(TestCommon):
 
     def test_03_create_task_project_in_context(self):
         self.Task.with_context(
-            active_model='project.project',
-            active_id=self.project_1.id,
-        ).create({'name': '4'})
+            active_model="project.project", active_id=self.project_1.id
+        ).create({"name": "4"})
 
     def test_04_no_switch_project(self):
-        self.task11.write({'project_id': self.project_1.id})
-        self.assertEqual(self.task11.key, 'OCA-1')
-        self.assertEqual(self.task12.key, 'OCA-2')
+        self.task11.write({"project_id": self.project_1.id})
+        self.assertEqual(self.task11.key, "OCA-1")
+        self.assertEqual(self.task12.key, "OCA-2")
 
     def test_05_switch_project(self):
-        self.task11.write({'project_id': self.project_2.id})
-        self.assertEqual(self.task11.key, 'ODOO-2')
-        self.assertEqual(self.task12.key, 'ODOO-3')
+        self.task11.write({"project_id": self.project_2.id})
+        self.assertEqual(self.task11.key, "ODOO-2")
+        self.assertEqual(self.task12.key, "ODOO-3")
 
     def test_06_name_search(self):
         oca_tasks = self.Task.name_search("OCA")
@@ -49,5 +47,5 @@ class TestTask(TestCommon):
         self.assertEqual(len(oca_tasks), 0)
 
     def test_07_name_search_empty(self):
-        tasks = self.Task.name_search('')
+        tasks = self.Task.name_search("")
         self.assertGreater(len(tasks), 0)
