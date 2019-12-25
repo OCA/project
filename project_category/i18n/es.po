@@ -128,7 +128,7 @@ msgid "Type"
 msgstr "Tipo"
 
 #. module: project_category
-#: code:addons/project_category/models/project_type.py:46
+#: code:addons/project_category/models/project_type.py:0
 #, python-format
 msgid "You cannot create recursive project types."
 msgstr "No se puede crear Tipos de Proyectos recursivos."
