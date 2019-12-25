@@ -10,6 +10,7 @@ setuptools.setup(
     install_requires=[
         'odoo13-addon-project_category',
         'odoo13-addon-project_description',
+        'odoo13-addon-project_list',
         'odoo13-addon-project_parent_task_filter',
         'odoo13-addon-project_stage_closed',
         'odoo13-addon-project_task_add_very_high',
