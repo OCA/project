@@ -11,6 +11,7 @@ class ProjectWip(models.Model):
 
     project_id = fields.Many2one(
         comodel_name="project.project",
+        related="task_id.project_id",
         string="Project",
         required=False,
     )
@@ -27,23 +28,24 @@ class ProjectWip(models.Model):
             ('running', 'Running'),
             ('closed', 'Closed'),
         ],
+        default='running',
         required=True,
     )
 
     date_hour_start = fields.Datetime(
         string="Start",
-        default=datetime.datetime.now(),
+        default=fields.Datetime.now,
         required=True,
     )
 
     date_start = fields.Date(
         string="Date Start",
+        # related="date_hour_start",
         required=False,
     )
 
     date_hour_stop = fields.Datetime(
         string="Stop",
-        default=datetime.datetime.now(),
         required=False,
     )
 
@@ -58,9 +60,10 @@ class ProjectWip(models.Model):
         store=True
     )
 
-    task_stage_id = fields.Char(
+    task_stage_id = fields.Many2one(
+        comodel_name="project.task.type",
         string="Stage",
-        required=True,
+        required=False,
     )
 
     user_id = fields.Many2one(
@@ -79,3 +82,18 @@ class ProjectWip(models.Model):
                 d2 = datetime.datetime.now()
             diff = d2 - d1
             blocktime.lead_time = round(diff.total_seconds() / 60.0, 2)
+
+    def stop(self):
+        for record in self.filtered(lambda o: o.state == 'running'):
+            record.sudo().write({
+                'state': 'closed',
+                'date_hour_stop': fields.Datetime.now(),
+            })
+
+    def start(self, task_id, stage_id):
+        stage_id = self.env['project.task.type'].browse(stage_id)
+        if stage_id.state in ['open', 'pending']:
+            self.env['project.wip'].sudo().create({
+                'task_id': task_id,
+                'task_stage_id': stage_id.id,
+            })

@@ -11,6 +11,7 @@
     'website': 'kmee.com.br',
     'depends': [
         'project',
+        'project_stage_state',
     ],
     'data': [
         'security/project_wip.xml',

@@ -8,18 +8,23 @@ from odoo.exceptions import UserError, ValidationError
 class Task(models.Model):
     _inherit = "project.task"
 
+    wip_ids = fields.One2many(
+        comodel_name="project.wip",
+        inverse_name="task_id",
+        string="Project wip",
+        required=False,
+    )
+
     @api.model
     def create(self, vals):
         task = super(Task, self).create(vals)
-        self.env['project.wip'].sudo().create({
-            'project_id': task.project_id.id,
-            'task_id': task.id,
-            'task_stage_id': task.stage_id.name,
-            'state': 'running',
-        })
+        task.wip_ids.start(task.id, task.stage_id.id)
         return task
 
     @api.multi
     def write(self, vals):
+        if vals.get('stage_id'):
+            self.wip_ids.stop()
+            self.wip_ids.start(self.id, vals.get('stage_id'))
         result = super(Task, self).write(vals)
         return result
