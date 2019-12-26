@@ -40,7 +40,7 @@ class ProjectWip(models.Model):
 
     date_start = fields.Date(
         string="Date Start",
-        # related="date_hour_start",
+        default=fields.Date.context_today,
         required=False,
     )
 
@@ -70,6 +70,7 @@ class ProjectWip(models.Model):
         comodel_name="res.users",
         string="User",
         required=False,
+        default=lambda self: self.env.uid,
     )
 
     @api.depends('date_hour_stop', 'date_hour_start')
@@ -85,15 +86,16 @@ class ProjectWip(models.Model):
 
     def stop(self):
         for record in self.filtered(lambda o: o.state == 'running'):
-            record.sudo().write({
+            record.write({
                 'state': 'closed',
                 'date_hour_stop': fields.Datetime.now(),
+                'date_stop': fields.Date.context_today(self),
             })
 
     def start(self, task_id, stage_id):
         stage_id = self.env['project.task.type'].browse(stage_id)
         if stage_id.state in ['open', 'pending']:
-            self.env['project.wip'].sudo().create({
+            self.env['project.wip'].create({
                 'task_id': task_id,
                 'task_stage_id': stage_id.id,
             })
