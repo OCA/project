@@ -18,7 +18,6 @@
 <!--                        <field name="name"/>-->
 <!--                    </group>-->
 <!--                </sheet>-->
-<!--                <div class="oe_chatter"></div>-->
 <!--            </form>-->
 <!--        </field>-->
 <!--    </record>-->
@@ -33,30 +32,33 @@
 <!--        </field>-->
 <!--    </record>-->
 
-<!--    <record model="ir.ui.view" id="project_wip_tree_view">-->
-<!--        <field name="name">project.wip.tree (in project_wip)</field>-->
-<!--        <field name="model">project.wip</field>-->
-<!--        <field name="arch" type="xml">-->
-<!--            <tree>-->
-<!--                &lt;!&ndash; TODO &ndash;&gt;-->
-<!--                <field name="name"/>-->
-<!--            </tree>-->
-<!--        </field>-->
-<!--    </record>-->
+    <record model="ir.ui.view" id="project_wip_tree_view">
+        <field name="name">project.wip.tree</field>
+        <field name="model">project.wip</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="project_id"/>
+                <field name="task_id"/>
+                <field name="task_stage_id"/>
+                <field name="date_hour_start"/>
+                <field name="date_hour_stop"/>
+                <field name="lead_time"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
 
-<!--    <record model="ir.actions.act_window" id="project_wip_act_window">-->
-<!--        <field name="name">Project Wip</field> &lt;!&ndash; TODO &ndash;&gt;-->
-<!--        <field name="res_model">project.wip</field>-->
-<!--        <field name="view_mode">tree,form</field>-->
-<!--        <field name="domain">[]</field>-->
-<!--        <field name="context">{}</field>-->
-<!--    </record>-->
+    <record model="ir.actions.act_window" id="project_wip_act_window">
+        <field name="name">Project Wip</field> <!-- TODO -->
+        <field name="res_model">project.wip</field>
+        <field name="view_mode">tree,form</field>
+    </record>
 
-<!--    <record model="ir.ui.menu" id="project_wip_menu">-->
-<!--        <field name="name">Project Wip</field>-->
-<!--        <field name="parent_id" ref="xmlid of parent menu"/> &lt;!&ndash; TODO &ndash;&gt;-->
-<!--        <field name="action" ref="project_wip_act_window"/>-->
-<!--        <field name="sequence" eval="16"/> &lt;!&ndash; TODO &ndash;&gt;-->
-<!--    </record>-->
+    <record model="ir.ui.menu" id="project_wip_menu">
+        <field name="name">Project Wip</field>
+        <field name="parent_id" ref="project.menu_main_pm"/>
+        <field name="action" ref="project_wip_act_window"/>
+        <field name="sequence" eval="16"/>
+    </record>
 
 </odoo>
