@@ -44,6 +44,7 @@
                 <field name="date_hour_stop"/>
                 <field name="lead_time"/>
                 <field name="state"/>
+                <field name="user_id"/>
             </tree>
         </field>
     </record>
