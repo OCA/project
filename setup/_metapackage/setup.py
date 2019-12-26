@@ -33,6 +33,7 @@ setuptools.setup(
         'odoo12-addon-project_task_material',
         'odoo12-addon-project_task_project_required',
         'odoo12-addon-project_task_pull_request',
+        'odoo12-addon-project_task_send_by_mail',
         'odoo12-addon-project_template',
         'odoo12-addon-project_template_milestone',
         'odoo12-addon-project_timeline',
