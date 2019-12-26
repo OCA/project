@@ -3,8 +3,7 @@
 
 {
     'name': 'Project Wip',
-    'summary': """
-        Módulo para armazenar o tempo de cada atividade em cada estado""",
+    'summary': """Project Work in Progress metrics.""",
     'version': '12.0.1.0.0',
     'license': 'AGPL-3',
     'author': 'KMEE INFORMÁTICA LTDA,Odoo Community Association (OCA)',
@@ -16,6 +15,7 @@
     'data': [
         'security/ir.model.access.csv',
         'views/project_wip.xml',
+        'views/project_task_view.xml',
     ],
     'demo': [
     ],
