@@ -45,6 +45,7 @@ addon | version | summary
 [project_task_material](project_task_material/) | 12.0.1.0.0 | Record products spent in a Task
 [project_task_project_required](project_task_project_required/) | 12.0.1.0.0 | Set project on task as a mandatory field
 [project_task_pull_request](project_task_pull_request/) | 12.0.1.1.0 | Adds a field for a PR URI to project tasks
+[project_task_send_by_mail](project_task_send_by_mail/) | 12.0.1.0.0 | Send task report by email
 [project_template](project_template/) | 12.0.1.0.0 | Project Templates
 [project_template_milestone](project_template_milestone/) | 12.0.1.0.0 | Adds function to copy of milestones when creating a project from template
 [project_timeline](project_timeline/) | 12.0.1.2.0 | Timeline view for projects
