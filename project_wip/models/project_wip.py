@@ -12,7 +12,7 @@ class ProjectWip(models.Model):
     project_id = fields.Many2one(
         comodel_name="project.project",
         string="Project",
-        required=True,
+        required=False,
     )
 
     task_id = fields.Many2one(
@@ -66,14 +66,14 @@ class ProjectWip(models.Model):
     user_id = fields.Many2one(
         comodel_name="res.users",
         string="User",
-        required=True,
+        required=False,
     )
 
     @api.depends('date_hour_stop', 'date_hour_start')
     def _compute_lead_time(self):
         for blocktime in self:
             d1 = fields.Datetime.from_string(blocktime.date_hour_start)
-            if blocktime.date_end:
+            if blocktime.date_hour_stop:
                 d2 = fields.Datetime.from_string(blocktime.date_hour_stop)
             else:
                 d2 = datetime.datetime.now()
