@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2019 KMEE INFORMÁTICA LTDA
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+<!--    <record model="ir.ui.view" id="project_wip_form_view">-->
+<!--        <field name="name">project.wip.form (in project_wip)</field>-->
+<!--        <field name="model">project.wip</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <form>-->
+<!--                <header>-->
+<!--                    &lt;!&ndash; TODO &ndash;&gt;-->
+<!--                </header>-->
+<!--                <sheet>-->
+<!--                    &lt;!&ndash; TODO &ndash;&gt;-->
+<!--                    <group>-->
+<!--                        <field name="name"/>-->
+<!--                    </group>-->
+<!--                </sheet>-->
+<!--                <div class="oe_chatter"></div>-->
+<!--            </form>-->
+<!--        </field>-->
+<!--    </record>-->
+
+<!--    <record model="ir.ui.view" id="project_wip_search_view">-->
+<!--        <field name="name">project.wip.search (in project_wip)</field>-->
+<!--        <field name="model">project.wip</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <search>-->
+<!--                &lt;!&ndash; TODO &ndash;&gt;-->
+<!--            </search>-->
+<!--        </field>-->
+<!--    </record>-->
+
+<!--    <record model="ir.ui.view" id="project_wip_tree_view">-->
+<!--        <field name="name">project.wip.tree (in project_wip)</field>-->
+<!--        <field name="model">project.wip</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <tree>-->
+<!--                &lt;!&ndash; TODO &ndash;&gt;-->
+<!--                <field name="name"/>-->
+<!--            </tree>-->
+<!--        </field>-->
+<!--    </record>-->
+
+<!--    <record model="ir.actions.act_window" id="project_wip_act_window">-->
+<!--        <field name="name">Project Wip</field> &lt;!&ndash; TODO &ndash;&gt;-->
+<!--        <field name="res_model">project.wip</field>-->
+<!--        <field name="view_mode">tree,form</field>-->
+<!--        <field name="domain">[]</field>-->
+<!--        <field name="context">{}</field>-->
+<!--    </record>-->
+
+<!--    <record model="ir.ui.menu" id="project_wip_menu">-->
+<!--        <field name="name">Project Wip</field>-->
+<!--        <field name="parent_id" ref="xmlid of parent menu"/> &lt;!&ndash; TODO &ndash;&gt;-->
+<!--        <field name="action" ref="project_wip_act_window"/>-->
+<!--        <field name="sequence" eval="16"/> &lt;!&ndash; TODO &ndash;&gt;-->
+<!--    </record>-->
+
+</odoo>
