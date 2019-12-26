@@ -14,7 +14,7 @@
         'project_stage_state',
     ],
     'data': [
-        'security/project_wip.xml',
+        'security/ir.model.access.csv',
         'views/project_wip.xml',
     ],
     'demo': [
