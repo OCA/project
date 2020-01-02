@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="edit_project" model="ir.ui.view">
+        <field name="name">project.project.form</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <page name="emails" position="after">
+                <page name="WSJF" string="WSJF">
+                    <group>
+                        <field name="business_value"/>
+                        <field name="time_criticality"/>
+                        <field name="risk_reduction"/>
+                        <field name="internal_pressure"/>
+                        <field name="job_size"/>
+                        <field name="wsjf"/>
+                    </group>
+                </page>
+            </page>
+        </field>
+    </record>
+
+    <record id="project_wsjf_tree" model="ir.ui.view">
+        <field name="name">project.project.tree</field>
+        <field name="model">project.project</field>
+        <field name="arch" type="xml">
+            <tree string="Projects" editable="bottom">
+                <field name="name" string="Project Name" readonly="True"/>
+                <field name="business_value"/>
+                <field name="time_criticality"/>
+                <field name="risk_reduction"/>
+                <field name="internal_pressure"/>
+                <field name="job_size"/>
+                <field name="wsjf" readonly="True"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="wsjf_project" model="ir.actions.act_window">
+        <field name="name">Projects</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">project.project</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="project_wsjf_tree"/>
+    </record>
+
+    <menuitem id="menu_wsjf" name="WSJF" parent="project.menu_main_pm" sequence="3"/>
+    <menuitem id="menu_wsjf_project" name="Projects" parent="menu_wsjf" sequence="1"
+              action="wsjf_project"/>
+</odoo>

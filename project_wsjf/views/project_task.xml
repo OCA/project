@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_task_form2" model="ir.ui.view">
+        <field name="name">project.task.form</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <page name="extra_info" position="after">
+                <page name="WSJF" string="WSJF">
+                    <group>
+                        <field name="business_value"/>
+                        <field name="time_criticality"/>
+                        <field name="risk_reduction"/>
+                        <field name="internal_pressure" attrs="{'readonly': [('project_id', '!=', False)]}"/>
+                        <field name="job_size"/>
+                        <field name="wsjf"/>
+                    </group>
+                </page>
+            </page>
+        </field>
+    </record>
+
+    <record id="task_wsjf_tree" model="ir.ui.view">
+        <field name="name">project.task.tree</field>
+        <field name="model">project.task</field>
+        <field name="arch" type="xml">
+            <tree string="Tasks" editable="bottom">
+                <field name="name" string="Task Name" readonly="True"/>
+                <field name="project_id" string="Project Name" readonly="True"/>
+                <field name="business_value"/>
+                <field name="time_criticality"/>
+                <field name="risk_reduction"/>
+                <field name="internal_pressure" attrs="{'readonly': [('project_id', '!=', False)]}"/>
+                <field name="job_size"/>
+                <field name="wsjf" readonly="True"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="wsjf_task" model="ir.actions.act_window">
+        <field name="name">Tasks</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">project.task</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree</field>
+        <field name="view_id" ref="task_wsjf_tree"/>
+    </record>
+
+    <menuitem id="menu_wsjf_task" name="Tasks" parent="menu_wsjf" sequence="2"
+              action="wsjf_task"/>
+</odoo>
