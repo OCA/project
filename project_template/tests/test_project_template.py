@@ -44,3 +44,18 @@ class TestProjectTemplate(common.TransactionCase):
         new_project = self.env['project.project'].search([(
             'name', '=', 'TestProject (COPY)')])
         self.assertEqual(len(new_project), 1)
+
+    # TEST 03: Create project from template using non-standard name
+    def test_create_project_from_template_non_standard_name(self):
+        # Set Project Template
+        project_01 = self.test_project
+        project_01.is_template = True
+        project_01.on_change_is_template()
+        # Change the name of project template
+        project_01.name = "TestProject(TEST)"
+
+        # Create new Project from Template
+        project_01.create_project_from_template()
+        new_project = self.env['project.project'].search([(
+            'name', '=', 'TestProject(TEST) (COPY)')])
+        self.assertEqual(len(new_project), 1)
