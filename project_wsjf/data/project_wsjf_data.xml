@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="project.project_project_data" model="project.project">
+        <field name="active" eval="True"/>
+        <field name="business_value" eval="2"/>
+        <field name="time_criticality" eval="2"/>
+        <field name="risk_reduction" eval="2"/>
+        <field name="internal_pressure" eval="8"/>
+        <field name="job_size" eval="1"/>
+    </record>
+
+    <record id="project_task_data_15" model="project.task">
+        <field name="user_id" ref="base.user_admin"/>
+        <field name="priority">0</field>
+        <field name="project_id" ref="project.project_project_data"/>
+        <field name="active" eval="True"/>
+        <field name="name">Testing WSJF prioritization model</field>
+        <field name="stage_id" ref="project.project_stage_data_2"/>
+        <field name="description">This task should inherit the WSJF values from the project it belongs</field>
+    </record>
+
+    <record id="project_project_data_1" model="project.project">
+        <field name="name">WSJF test 1</field>
+        <field name="privacy_visibility">followers</field>
+        <field name="user_id" ref="base.user_admin"/>
+        <field name="active" eval="True"/>
+        <field name="alias_name">discover</field>
+        <field name="alias_model_id" ref="model_project_task"/>
+        <field name="alias_contact">everyone</field>
+        <field name="alias_defaults">{'project_id': 1}</field>
+        <field name="alias_force_thread_id">0</field>
+        <field name="alias_parent_model_id" ref="model_project_project"/>
+        <field name="business_value" eval="1"/>
+        <field name="time_criticality" eval="2"/>
+        <field name="risk_reduction" eval="2"/>
+        <field name="internal_pressure" eval="8"/>
+        <field name="job_size" eval="1"/>
+    </record>
+</odoo>

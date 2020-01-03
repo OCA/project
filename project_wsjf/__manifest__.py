@@ -17,6 +17,7 @@
     'data': [
         'views/project_project.xml',
         'views/project_task.xml',
+        'data/project_wsjf_data.xml'
     ],
     'demo': [
     ],
