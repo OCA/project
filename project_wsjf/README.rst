@@ -6,48 +6,56 @@
 Project Wsjf
 ============
 
-This module implements the Weighted Shortest Job First priorization model.
+        This module implements the Weighted Shortest Job First prioritization model.
+
+        Weighted Shortest Job First (WSJF) is a prioritization model used to sequence jobs (eg., Features, Capabilities, and Epics) to produce maximum economic benefit. WSJF is estimated as the Cost of Delay (CoD) divided by job size.
+
+        Calculating the Cost of Delay
+
+        Four primary elements contribute to the Cost of Delay:
+         - User-business value – Do our users prefer this over that? What is the revenue impact on our business? Is there a potential penalty or other adverse consequences if we delay?
+         - Time criticality – How does the user/business value decay over time? Is there a fixed deadline? Will they wait for us or move to another solution? Are there Milestones on the critical path impacted by this?
+         - Risk reduction-opportunity enablement value – What else does this do for our business? Does it reduce the risk of this or a future delivery? Is there value in the information we will receive? Will this feature open up new business opportunities?
+         - Internal pressure – It is the pressure given internally, given a trade agreement, a defaulting customer, need for cash increase (work harder on a project that gives you more revenue)
+
+        Duration
+
+        Next, we need to understand the job duration. That can be pretty difficult to determine, especially early on when we might not know who is going to do the work or the capacity allocation for the teams. Fortunately, we have a ready proxy: job size. In systems with fixed resources, job size is a good proxy for the duration. (If I’m the only one mowing my lawn, and the front yard is three times bigger than the backyard, it’s going to take three times longer.) Also, we know how to estimate item size in Story points already. Taking job size, we have a reasonably straightforward calculation for comparing jobs via WSJF: WSJF = Cost of Delay / Job size.
 
 Installation
 ============
 
-To install this module, you need to:
-
-#. Do this ...
+This module depends on :
+* project
 
 Configuration
 =============
 
-To configure this module, you need to:
-
-#. Go to ...
+There is nothing to configure.
 
 Usage
 =====
 
-To use this module, you need to:
-
-#. Go to ...
-
-.. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
-   :alt: Try me on Runbot
-   :target: https://runbot.odoo-community.org/runbot/{repo_id}/{branch}
-
-.. repo_id is available in https://github.com/OCA/maintainer-tools/blob/master/tools/repos_with_ids.txt
-.. branch is "8.0" for example
+To use this module, you need only to install it. After installation, the fields
+Business value, Time criticality, Risk reduction, Internal pressure and Job size will
+appear in the projects and tasks forms. Filling these fields, the field WSJF will be
+calculated and the order of presentation of the records will be given by the highest
+value of WSJF.
 
 Known issues / Roadmap
 ======================
 
-* ...
+* N/A
 
 Bug Tracker
 ===========
 
 Bugs are tracked on `GitHub Issues
-<https://github.com/OCA/{project_repo}/issues>`_. In case of trouble, please
+<https://github.com/OCA/project/issues>`_. In case of trouble, please
 check there if your issue has already been reported. If you spotted it first,
 help us smashing it by providing a detailed and welcomed feedback.
+
+Do not contact contributors directly about support or help with technical issues.
 
 Credits
 =======
@@ -57,11 +65,15 @@ Images
 
 * Odoo Community Association: `Icon <https://github.com/OCA/maintainer-tools/blob/master/template/module/static/description/icon.svg>`_.
 
+Authors
+-------
+
+* KMEE INFORMATICA LTDA
+
 Contributors
 ------------
 
-* Firstname Lastname <email.address@example.org>
-* Second Person <second.person@example.org>
+* Gabriel Cardoso de Faria <gabriel.cardoso@kmee.com.br>
 
 Maintainer
 ----------
