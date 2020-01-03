@@ -36,4 +36,14 @@
         <field name="internal_pressure" eval="8"/>
         <field name="job_size" eval="1"/>
     </record>
+
+    <record id="project_task_data_16" model="project.task">
+        <field name="user_id" ref="base.user_admin"/>
+        <field name="priority">0</field>
+        <field name="project_id" ref="project_project_data_1"/>
+        <field name="active" eval="True"/>
+        <field name="name">Testing WSJF prioritization model</field>
+        <field name="stage_id" ref="project.project_stage_data_2"/>
+        <field name="description">This task should inherit the WSJF values from the project it belongs</field>
+    </record>
 </odoo>
