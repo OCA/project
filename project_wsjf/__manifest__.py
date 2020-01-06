@@ -10,7 +10,7 @@
     'version': '12.0.1.0.0',
     'license': 'AGPL-3',
     'author': 'Kmee Informática LTDA,Odoo Community Association (OCA)',
-    'website': 'www.kmee.com.br',
+    'website': 'https://github.com/OCA/project/',
     'depends': [
         'project',
     ],
