@@ -18,7 +18,8 @@ class Task(models.Model):
     @api.model
     def create(self, vals):
         task = super(Task, self).create(vals)
-        task.wip_ids.start(task.id, task.stage_id.id)
+        if task.active:
+            task.wip_ids.start(task.id, task.stage_id.id)
         return task
 
     @api.multi
@@ -26,5 +27,10 @@ class Task(models.Model):
         if vals.get('stage_id'):
             self.wip_ids.stop()
             self.wip_ids.start(self.id, vals.get('stage_id'))
-        result = super(Task, self).write(vals)
-        return result
+        if 'active' in vals:
+            if not vals.get('active'):
+                self.wip_ids.stop()
+            else:
+                self.wip_ids.start(self.id, vals.get('stage_id',
+                                                     self.stage_id.id))
+        return super(Task, self).write(vals)

@@ -14,6 +14,7 @@ class ProjectWip(models.Model):
         related="task_id.project_id",
         string="Project",
         required=False,
+        store=True,
     )
 
     task_id = fields.Many2one(
@@ -94,7 +95,7 @@ class ProjectWip(models.Model):
 
     def start(self, task_id, stage_id):
         stage_id = self.env['project.task.type'].browse(stage_id)
-        if stage_id.state in ['open', 'pending']:
+        if stage_id.state != 'cancelled':
             self.env['project.wip'].create({
                 'task_id': task_id,
                 'task_stage_id': stage_id.id,
