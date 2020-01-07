@@ -2,3 +2,4 @@ id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_project_wip_all,project.wip all,model_project_wip,,1,0,0,0
 access_project_wip_user,project.wip manager,model_project_wip,project.group_project_user,1,1,1,0
 access_project_wip_manager,project.wip manager,model_project_wip,project.group_project_manager,1,1,1,1
+access_report_project_value_stream,access_report_project_value_stream,model_report_project_value_stream,base.group_user,1,0,0,0
