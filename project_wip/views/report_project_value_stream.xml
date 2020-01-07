@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2020 Kmee Informática LTDA
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+    <record id="report_project_value_stream_pivot_view" model="ir.ui.view">
+        <field name="name">report.project.value.stream.pivot</field>
+        <field name="model">report.project.value.stream</field>
+        <field name="arch" type="xml">
+            <pivot string="Value Stream">
+                <field name="project_id" type="row"/>
+                <field name="date_due" type="row" interval="day"/>
+                <field name="in_qty" type="measure"/>
+                <field name="out_qty" type="measure"/>
+            </pivot>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="report_project_value_stream_act_window">
+        <field name="name">Report Project Value Stream</field>
+        <field name="res_model">report.project.value.stream</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">pivot</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <record model="ir.ui.menu" id="report_project_value_stream_menu">
+        <field name="name">Report Project Value Stream</field>
+        <field name="parent_id" ref="project.menu_project_report"/>
+        <field name="action" ref="report_project_value_stream_act_window"/>
+        <field name="sequence" eval="16"/>
+    </record>
+
+</odoo>

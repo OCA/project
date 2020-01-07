@@ -16,6 +16,8 @@
         'security/ir.model.access.csv',
         'views/project_wip.xml',
         'views/project_task_view.xml',
+        'views/project_project.xml',
+        'views/report_project_value_stream.xml',
     ],
     'demo': [
     ],

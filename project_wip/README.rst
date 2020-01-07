@@ -6,52 +6,44 @@
 Project Wip
 ===========
 
-Módulo para armazenar o tempo de cada atividade em cada estado
+Statistics of how much time each task spends at each stage and
+statistics related to the amount of tasks that enter our work system and leave our work system.
 
 Installation
 ============
 
-To install this module, you need to:
-
-#. Do this ...
+This module depends on :
+* project
+* project_stage_state
 
 Configuration
 =============
 
-To configure this module, you need to:
-
-#. Go to ...
-
-.. figure:: path/to/local/image.png
-   :alt: alternative description
-   :width: 600 px
+There is nothing to configure.
 
 Usage
 =====
 
-To use this module, you need to:
-
-#. Go to ...
-
-.. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
-   :alt: Try me on Runbot
-   :target: https://runbot.odoo-community.org/runbot/{repo_id}/{branch}
-
-.. repo_id is available in https://github.com/OCA/maintainer-tools/blob/master/tools/repos_with_ids.txt
-.. branch is "8.0" for example
+To use this module, you need only to install it. After installation, it will be created
+a register of how much time the task spend in each state in the task form. Also, the menu
+Report Project Value Stream will appear in the Reporting menu in Project. There
+it will be possible to see a spreadsheet with the data about how many tasks are
+in the work system and how many are out of it.
 
 Known issues / Roadmap
 ======================
 
-* ...
+* N/A
 
 Bug Tracker
 ===========
 
 Bugs are tracked on `GitHub Issues
-<https://github.com/OCA/{project_repo}/issues>`_. In case of trouble, please
+<https://github.com/OCA/project/issues>`_. In case of trouble, please
 check there if your issue has already been reported. If you spotted it first,
-help us smash it by providing detailed and welcomed feedback.
+help us smashing it by providing a detailed and welcomed feedback.
+
+Do not contact contributors directly about support or help with technical issues.
 
 Credits
 =======
@@ -61,19 +53,15 @@ Images
 
 * Odoo Community Association: `Icon <https://github.com/OCA/maintainer-tools/blob/master/template/module/static/description/icon.svg>`_.
 
+Authors
+-------
+
+* KMEE INFORMATICA LTDA
+
 Contributors
 ------------
 
-* Firstname Lastname <email.address@example.org>
-* Second Person <second.person@example.org>
-
-Funders
--------
-
-The development of this module has been financially supported by:
-
-* Company 1 name
-* Company 2 name
+* Gabriel Cardoso de Faria <gabriel.cardoso@kmee.com.br>
 
 Maintainer
 ----------

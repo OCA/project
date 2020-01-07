@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2020 Kmee Informática LTDA
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+<data>
+
+    <record model="ir.ui.view" id="project_project_form_view">
+        <field name="name">project.project.form (in project_value_stream)</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="TODO othermodule.form_view"/>
+        <field name="arch" type="xml">
+            <!-- TODO -->
+        </field>
+    </record>
+
+
+
+
+</data>
+</odoo>
