@@ -77,7 +77,7 @@ msgid "Quantity"
 msgstr "Anzahl"
 
 #. module: project_task_material
-#: code:addons/project_task_material/models/project.py:40
+#: code:addons/project_task_material/models/project.py:0
 #, python-format
 msgid "Quantity of material consumed must be greater than 0."
 msgstr "Menge verbrauchter Materialien muss größer 0 sein."
