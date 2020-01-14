@@ -34,7 +34,6 @@ class ProjectTaskMaterial(models.Model):
     )
     quantity = fields.Float(string="Quantity")
 
-    @api.multi
     @api.constrains("quantity")
     def _check_quantity(self):
         for material in self:
