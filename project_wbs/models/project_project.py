@@ -197,7 +197,8 @@ class Project(models.Model):
     )
     project_analytic_id = fields.Many2one(
         related="analytic_account_id.project_analytic_id",
-        readonly=False,
+        readonly=True,
+        store=True
     )
     account_class = fields.Selection(
         related='analytic_account_id.account_class',
