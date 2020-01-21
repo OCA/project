@@ -35,7 +35,7 @@ addon | version | summary
 [project_role](project_role/) | 12.0.3.0.0 | Project role-based roster
 [project_stage_closed](project_stage_closed/) | 12.0.1.0.0 | Make the Closed flag on Task Stages available without installing sale_service
 [project_stage_state](project_stage_state/) | 12.0.1.0.0 | Restore State attribute removed from Project Stages in 8.0
-[project_status](project_status/) | 12.0.1.1.0 | Project Status
+[project_status](project_status/) | 12.0.1.1.1 | Project Status
 [project_stock_request](project_stock_request/) | 12.0.1.0.0 | Create stock requests from a projects and project tasks
 [project_tag](project_tag/) | 12.0.1.0.0 | Project Tags
 [project_task_add_very_high](project_task_add_very_high/) | 12.0.1.0.1 | Adds extra options 'High' and 'Very High' on tasks
