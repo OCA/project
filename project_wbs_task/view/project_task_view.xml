@@ -3,7 +3,7 @@
     <record id="action_task_tree_view" model="ir.actions.act_window">
         <field name="name">Tasks</field>
         <field name="res_model">project.task</field>
-        <field name="view_mode">tree,kanban,form,calendar,gantt,graph</field>
+        <field name="view_mode">tree,kanban,form,calendar,graph</field>
         <field name="context">{
             'search_default_project_id': [active_id],
             'default_project_id': active_id

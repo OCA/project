@@ -11,7 +11,7 @@ class Task(models.Model):
     analytic_account_id = fields.Many2one(
         related='project_id.analytic_account_id',
         relation='account.analytic.account',
-        string='Analytic Account', store=True, readonly=True,
+        string='Project Analytic Account', store=True, readonly=True,
         copy=False
     )
     project_complete_wbs_code = fields.Char(

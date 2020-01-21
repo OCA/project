@@ -14,7 +14,7 @@ class TestProjectWbsTask(test_project_wbs.TestProjectWbs):
 
     def test_search_task(self):
         task = self.env['project.task'].search(
-            [('project_complete_wbs_code', '=', '0001/01/02')])
+            [('project_complete_wbs_code', '=', '[0001 / 01 / 02]')])
         self.assertEqual(len(task), 1, 'should find task with wbs code')
         task = self.env['project.task'].search(
             [('project_complete_wbs_name', '=',
