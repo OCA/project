@@ -87,7 +87,6 @@ msgid "Deliverables"
 msgstr ""
 
 #. module: project_wbs
-#: code:addons/project_wbs/models/project_project.py:338
 #: code:addons/project_wbs/models/project_project.py:339
 #, python-format
 msgid "Details"
