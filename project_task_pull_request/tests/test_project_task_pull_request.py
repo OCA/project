@@ -14,12 +14,17 @@ class TestProjectTaskPullRequest(TransactionCase):
 
         project_obj = self.env["project.project"]
         task_obj = self.env["project.task"]
+        done_stage = self.ref("project.project_stage_2")
+        inprogress_stage = self.ref("project.project_stage_1")
 
         self.project_1 = project_obj.create(
-            {"name": "Test Project 1", "pr_required_states": [(4, 6, 0)]}
+            {"name": "Test Project 1", "pr_required_states": [(4, done_stage)]}
         )
         self.project_2 = project_obj.create(
-            {"name": "Test Project 2", "pr_required_states": [(4, 6, 0), (4, 5, 0)]}
+            {
+                "name": "Test Project 2",
+                "pr_required_states": [(4, done_stage), (4, inprogress_stage)],
+            }
         )
 
         self.task_1 = task_obj.create(
