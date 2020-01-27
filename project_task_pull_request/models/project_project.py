@@ -9,9 +9,9 @@ class Project(models.Model):
     _name = "project.project"
 
     pr_required_states = fields.Many2many(
-        'project.task.type',
-        'project_pr_required',
-        'project_id',
-        'state_id',
-        'PR Required States',
+        "project.task.type",
+        "project_pr_required",
+        "project_id",
+        "state_id",
+        "PR Required States",
     )
