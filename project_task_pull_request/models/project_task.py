@@ -6,13 +6,10 @@ from odoo import _, api, exceptions, fields, models
 
 class ProjectTask(models.Model):
     _inherit = "project.task"
-    _name = "project.task"
 
     pr_uri = fields.Char(string="PR URI", track_visibility="onchange")
 
-    pr_required_states = fields.Many2many(
-        related="project_id.pr_required_states", readonly=True
-    )
+    pr_required_states = fields.Many2many(related="project_id.pr_required_states")
 
     @api.constrains("pr_uri", "stage_id", "project_id")
     def _check_pr_uri_required(self):
