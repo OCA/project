@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-12-11 13:04+0000\n"
-"PO-Revision-Date: 2019-08-04 17:43+0000\n"
+"PO-Revision-Date: 2020-02-02 21:13+0000\n"
 "Last-Translator: eduardgm <eduard.garcia@qubiq.es>\n"
 "Language-Team: Spanish (https://www.transifex.com/adhoc/teams/46451/es/)\n"
 "Language: es\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.7.1\n"
+"X-Generator: Weblate 3.10\n"
 
 #. module: project_category
 #: model_terms:ir.ui.view,arch_db:project_category.project_type_form
@@ -89,10 +89,8 @@ msgstr "Nombre"
 
 #. module: project_category
 #: model:ir.model.fields,field_description:project_category.field_project_type__parent_id
-#, fuzzy
-#| msgid "Project Type"
 msgid "Parent Type"
-msgstr "Tipos de Proyectos"
+msgstr "Tipo de Contacto"
 
 #. module: project_category
 #: model:ir.model,name:project_category.model_project_project
