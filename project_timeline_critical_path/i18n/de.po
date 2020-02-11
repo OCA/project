@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* project_timeline_critical_path
+# 	* project_timeline_critical_path
 #
 msgid ""
 msgstr ""
@@ -38,11 +38,6 @@ msgid "Initially planned hours"
 msgstr "geplante Stunden"
 
 #. module: project_timeline_critical_path
-#: model:ir.model,name:project_timeline_critical_path.model_project_project
-msgid "Project"
-msgstr "Projekt"
-
-#. module: project_timeline_critical_path
 #: selection:res.company,critical_path_duration_base:0
 msgid "Start and end date"
 msgstr "Start- und Enddatum"
@@ -58,6 +53,14 @@ msgid "The way to calculate the project critical path."
 msgstr "Bitte hier die Berechnungsart für den kritischen Pfad wählen."
 
 #. module: project_timeline_critical_path
+#: model:ir.model,name:project_timeline_critical_path.model_project_project
+msgid "WBS element"
+msgstr ""
+
+#. module: project_timeline_critical_path
 #: model:ir.model,name:project_timeline_critical_path.model_res_config_settings
 msgid "res.config.settings"
 msgstr "res.config.settings"
+
+#~ msgid "Project"
+#~ msgstr "Projekt"
