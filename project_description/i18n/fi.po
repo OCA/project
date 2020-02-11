@@ -27,5 +27,8 @@ msgstr "Kuvaus"
 
 #. module: project_description
 #: model:ir.model,name:project_description.model_project_project
-msgid "Project"
-msgstr "Projekti"
+msgid "WBS element"
+msgstr ""
+
+#~ msgid "Project"
+#~ msgstr "Projekti"

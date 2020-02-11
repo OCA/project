@@ -27,5 +27,8 @@ msgstr ""
 
 #. module: project_description
 #: model:ir.model,name:project_description.model_project_project
-msgid "Project"
-msgstr "Proyecto"
+msgid "WBS element"
+msgstr ""
+
+#~ msgid "Project"
+#~ msgstr "Proyecto"
