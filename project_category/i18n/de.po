@@ -90,11 +90,6 @@ msgid "Parent Type"
 msgstr "Übergeordneter Typ"
 
 #. module: project_category
-#: model:ir.model,name:project_category.model_project_project
-msgid "Project"
-msgstr "Projekt"
-
-#. module: project_category
 #: model:ir.model,name:project_category.model_project_type
 #: model:ir.ui.menu,name:project_category.project_category
 msgid "Project Type"
@@ -114,7 +109,7 @@ msgstr "Aufgabe"
 #. module: project_category
 #: model:ir.actions.act_window,name:project_category.action_project_type
 #: model:ir.model.fields,field_description:project_category.field_project_project_type_id
-#: model:ir.model.fields,field_description:project_category.field_project_task_type_id_5402
+#: model:ir.model.fields,field_description:project_category.field_project_task_type_id_5410
 #: model:ir.ui.view,arch_db:project_category.project_search
 #: model:ir.ui.view,arch_db:project_category.project_task_search
 #: model:ir.ui.view,arch_db:project_category.project_type_form
@@ -123,7 +118,15 @@ msgid "Type"
 msgstr "Typ"
 
 #. module: project_category
+#: model:ir.model,name:project_category.model_project_project
+msgid "WBS element"
+msgstr ""
+
+#. module: project_category
 #: code:addons/project_category/models/project_type.py:44
 #, python-format
 msgid "You cannot create recursive project types."
 msgstr "Es können keine rekursiven Projekttypen erstellt werden."
+
+#~ msgid "Project"
+#~ msgstr "Projekt"
