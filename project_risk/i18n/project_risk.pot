@@ -198,7 +198,6 @@ msgid "Probability"
 msgstr ""
 
 #. module: project_risk
-#: model:ir.model,name:project_risk.model_project_project
 #: model:ir.model.fields,field_description:project_risk.field_project_risk_project_id
 #: model:ir.ui.view,arch_db:project_risk.project_risk_search_view
 msgid "Project"
@@ -307,6 +306,11 @@ msgstr ""
 #. module: project_risk
 #: selection:project.risk,proximity:0
 msgid "Very low"
+msgstr ""
+
+#. module: project_risk
+#: model:ir.model,name:project_risk.model_project_project
+msgid "WBS element"
 msgstr ""
 
 #. module: project_risk
