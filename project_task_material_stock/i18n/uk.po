@@ -118,11 +118,6 @@ msgid "Products"
 msgstr ""
 
 #. module: project_task_material_stock
-#: model:ir.model,name:project_task_material_stock.model_project_project
-msgid "Project"
-msgstr ""
-
-#. module: project_task_material_stock
 #: model:stock.picking.type,name:project_task_material_stock.project_task_material_picking_type
 msgid "Project Task Material Operations"
 msgstr ""
@@ -177,6 +172,11 @@ msgstr ""
 #. module: project_task_material_stock
 #: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_material_product_uom_id
 msgid "Unit of Measure"
+msgstr ""
+
+#. module: project_task_material_stock
+#: model:ir.model,name:project_task_material_stock.model_project_project
+msgid "WBS element"
 msgstr ""
 
 #. module: project_task_material_stock
