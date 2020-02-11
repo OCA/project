@@ -1,13 +1,13 @@
 # Copyright 2018 Onestein
+# Copyright 2020 Tecnativa - Manuel Calero
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import api, models
+from odoo import models
 
 
 class ProjectProject(models.Model):
     _inherit = "project.project"
 
-    @api.multi
     def copy(self, default=None):
         self.ensure_one()
         res = super(ProjectProject, self.with_context(project_copy=True)).copy(default)
