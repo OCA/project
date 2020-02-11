@@ -1,4 +1,5 @@
 # Copyright 2016-2018 Onestein (<http://www.onestein.eu>)
+# Copyright 2020 Tecnativa - Manuel Calero
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from odoo import _, api, fields, models
@@ -75,9 +76,7 @@ class ProjectTask(models.Model):
                 _("You cannot create recursive dependencies between tasks.")
             )
 
-    @api.multi
     def copy(self, default=None):
-        self.ensure_one()
         res = super(ProjectTask, self).copy(default)
         if self.env.context.get("project_copy"):
             self.env["project.task.copy.map"].create(

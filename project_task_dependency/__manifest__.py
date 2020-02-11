@@ -1,9 +1,10 @@
 # © 2016 Onestein (<http://www.onestein.eu>)
+# Copyright 2020 Tecnativa - Manuel Calero
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 {
     "name": "Project Task Dependencies",
-    "version": "12.0.1.0.0",
+    "version": "13.0.1.0.0",
     "category": "Project",
     "website": "https://github.com/OCA/project",
     "summary": "Enables to define dependencies (other tasks) of a task",
