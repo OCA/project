@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* project_hr
+# 	* project_hr
 #
 msgid ""
 msgstr ""
@@ -39,14 +39,19 @@ msgstr "HR Kategorien"
 
 #. module: project_hr
 #: model:ir.model.fields,help:project_hr.field_project_project_hr_category_ids
-msgid "Here you can link the project to several employee categories, that will be the allowed in tasks."
+msgid ""
+"Here you can link the project to several employee categories, that will be "
+"the allowed in tasks."
 msgstr ""
 "Einem Projekt können mehrere Mitarbeiter-Kategorien zugewiesen werden. Nur "
 "diese können in Aufgaben ausgewählt werden."
 
 #. module: project_hr
 #: model:ir.model.fields,help:project_hr.field_project_task_hr_category_ids
-msgid "Here you can select the employee category suitable to perform this task, limiting the selectable users to be assigned to those that belongs to that category."
+msgid ""
+"Here you can select the employee category suitable to perform this task, "
+"limiting the selectable users to be assigned to those that belongs to that "
+"category."
 msgstr ""
 "Einer Aufgabe kann eine Mitarbeiter-Kategorie zugewiesen werden. Aufgaben "
 "dürfen dann nur Mitarbeitern dieser Kategorie zugewiesen werden."
@@ -57,32 +62,32 @@ msgid "Linked employee"
 msgstr "Zugehöriger Mitarbeiter"
 
 #. module: project_hr
-#: model:ir.model,name:project_hr.model_project_project
-msgid "Project"
-msgstr "Projekt"
-
-#. module: project_hr
 #: model:ir.model,name:project_hr.model_project_task
 msgid "Task"
 msgstr "Aufgabe"
 
 #. module: project_hr
 #: model:ir.model.fields,help:project_hr.field_project_task_allowed_hr_category_ids
-msgid "Technical field for computing allowed employee categories according categories at project level."
+msgid ""
+"Technical field for computing allowed employee categories according "
+"categories at project level."
 msgstr ""
 "Dies ist ein technisch benötigtes Feld zur Berechnung der erlaubten "
 "Mitarbeiter-Kategorien, die auf Projektebene festgelegt wurden."
 
 #. module: project_hr
 #: model:ir.model.fields,help:project_hr.field_project_task_allowed_user_ids
-msgid "Technical field for computing allowed users according employee category."
+msgid ""
+"Technical field for computing allowed users according employee category."
 msgstr ""
 "Dies ist ein technisch benötigtes Feld zur Berechnung der erlaubten "
 "Mitarbeiter, die zur Mitarbeiter-Kategorie gehören."
 
 #. module: project_hr
 #: model:ir.model.fields,help:project_hr.field_res_users_hr_category_ids
-msgid "Technical field for computing dynamically employee categories linked to the user in the current company."
+msgid ""
+"Technical field for computing dynamically employee categories linked to the "
+"user in the current company."
 msgstr ""
 "Dies ist ein technisch benötigtes Feld zur dynamischen Berechnung der "
 "Mitarbeiter-Kategorien, die zum Benutzer des aktuellen Unternehmens gehören."
@@ -91,6 +96,11 @@ msgstr ""
 #: model:ir.model,name:project_hr.model_res_users
 msgid "Users"
 msgstr "Benutzer"
+
+#. module: project_hr
+#: model:ir.model,name:project_hr.model_project_project
+msgid "WBS element"
+msgstr ""
 
 #. module: project_hr
 #: code:addons/project_hr/models/project_task.py:89
@@ -103,7 +113,11 @@ msgstr ""
 #. module: project_hr
 #: code:addons/project_hr/models/project_task.py:78
 #, python-format
-msgid "You can't assign a user not belonging to the selected employee category."
+msgid ""
+"You can't assign a user not belonging to the selected employee category."
 msgstr ""
 "Der Aufgabe darf kein Benutzer zugewiesen werden, der nicht zur gewählten "
 "Mitarbeiter-Kategorie gehört."
+
+#~ msgid "Project"
+#~ msgstr "Projekt"
