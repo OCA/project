@@ -35,11 +35,6 @@ msgid "Initially planned hours"
 msgstr ""
 
 #. module: project_timeline_critical_path
-#: model:ir.model,name:project_timeline_critical_path.model_project_project
-msgid "Project"
-msgstr ""
-
-#. module: project_timeline_critical_path
 #: selection:res.company,critical_path_duration_base:0
 msgid "Start and end date"
 msgstr ""
@@ -52,6 +47,11 @@ msgstr ""
 #. module: project_timeline_critical_path
 #: model:ir.ui.view,arch_db:project_timeline_critical_path.res_config_settings_view_form
 msgid "The way to calculate the project critical path."
+msgstr ""
+
+#. module: project_timeline_critical_path
+#: model:ir.model,name:project_timeline_critical_path.model_project_project
+msgid "WBS element"
 msgstr ""
 
 #. module: project_timeline_critical_path
