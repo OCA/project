@@ -17,8 +17,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
-"n%100==4 ? 2 : 3;\n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
+"%100==4 ? 2 : 3;\n"
 "X-Generator: Weblate 3.7.1\n"
 
 #. module: project_task_dependency
@@ -78,11 +78,6 @@ msgid "Old Task"
 msgstr "Staro opravilo"
 
 #. module: project_task_dependency
-#: model:ir.model,name:project_task_dependency.model_project_project
-msgid "Project"
-msgstr "Projekt"
-
-#. module: project_task_dependency
 #: model:ir.model.fields,field_description:project_task_dependency.field_project_task_recursive_dependency_task_ids
 msgid "Recursive Dependencies"
 msgstr "Rekurzivne odvisnosti"
@@ -108,6 +103,11 @@ msgid "Tasks that are dependent on this task."
 msgstr "Opravila, ki so odvisna od tega opravila."
 
 #. module: project_task_dependency
+#: model:ir.model,name:project_task_dependency.model_project_project
+msgid "WBS element"
+msgstr ""
+
+#. module: project_task_dependency
 #: code:addons/project_task_dependency/models/project_task.py:82
 #, python-format
 msgid "You cannot create recursive dependencies between tasks."
@@ -117,3 +117,6 @@ msgstr "Ne smete ustvariti rekurzivnih odvisnosti med opravili."
 #: model:ir.model,name:project_task_dependency.model_project_task_copy_map
 msgid "project.task.copy.map"
 msgstr "project.task.copy.map"
+
+#~ msgid "Project"
+#~ msgstr "Projekt"

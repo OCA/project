@@ -80,11 +80,6 @@ msgid "Old Task"
 msgstr "Tarefa"
 
 #. module: project_task_dependency
-#: model:ir.model,name:project_task_dependency.model_project_project
-msgid "Project"
-msgstr ""
-
-#. module: project_task_dependency
 #: model:ir.model.fields,field_description:project_task_dependency.field_project_task_recursive_dependency_task_ids
 msgid "Recursive Dependencies"
 msgstr "Dependências recursivas"
@@ -108,6 +103,11 @@ msgstr "Tarefas que são dependendentes desta tarefa (Recursivo)."
 #: model:ir.model.fields,help:project_task_dependency.field_project_task_depending_task_ids
 msgid "Tasks that are dependent on this task."
 msgstr "Tarefas dependentes dessa tarefa."
+
+#. module: project_task_dependency
+#: model:ir.model,name:project_task_dependency.model_project_project
+msgid "WBS element"
+msgstr ""
 
 #. module: project_task_dependency
 #: code:addons/project_task_dependency/models/project_task.py:82
