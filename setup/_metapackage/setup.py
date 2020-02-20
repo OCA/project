@@ -13,6 +13,7 @@ setuptools.setup(
         'odoo13-addon-project_list',
         'odoo13-addon-project_parent_task_filter',
         'odoo13-addon-project_stage_closed',
+        'odoo13-addon-project_tag',
         'odoo13-addon-project_task_add_very_high',
         'odoo13-addon-project_task_code',
         'odoo13-addon-project_task_default_stage',
