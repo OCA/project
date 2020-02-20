@@ -17,7 +17,7 @@ Project Task Material
     :target: https://github.com/OCA/project/tree/13.0/project_task_material
     :alt: OCA/project
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/project-12-0/project-12-0-project_task_material
+    :target: https://translation.odoo-community.org/projects/project-13-0/project-13-0-project_task_material
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runbot-Try%20me-875A7B.png
     :target: https://runbot.odoo-community.org/runbot/140/13.0
