@@ -12,8 +12,8 @@ msgstr ""
 "POT-Creation-Date: 2017-05-30 09:43+0000\n"
 "PO-Revision-Date: 2019-08-30 13:23+0000\n"
 "Last-Translator: Rodrigo Macedo <rmsolucoeseminformatic4@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/teams/"
-"23907/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/"
+"teams/23907/pt_BR/)\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -78,7 +78,7 @@ msgid "Quantity"
 msgstr "Quantidade"
 
 #. module: project_task_material
-#: code:addons/project_task_material/models/project.py:40
+#: code:addons/project_task_material/models/project.py:0
 #, python-format
 msgid "Quantity of material consumed must be greater than 0."
 msgstr "A quantidade de material consumido deve ser maior que 0."
