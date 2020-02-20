@@ -43,6 +43,7 @@ addon | version | summary
 [project_task_default_stage](project_task_default_stage/) | 12.0.1.0.0 | Recovery default task stage projects from v8
 [project_task_dependency](project_task_dependency/) | 12.0.1.0.0 | Enables to define dependencies (other tasks) of a task
 [project_task_material](project_task_material/) | 12.0.1.0.0 | Record products spent in a Task
+[project_task_material_stock](project_task_material_stock/) | 12.0.1.0.0 | Create stock and analytic moves from record products spent in a Task
 [project_task_project_required](project_task_project_required/) | 12.0.1.0.0 | Set project on task as a mandatory field
 [project_task_pull_request](project_task_pull_request/) | 12.0.1.1.0 | Adds a field for a PR URI to project tasks
 [project_task_send_by_mail](project_task_send_by_mail/) | 12.0.1.0.0 | Send task report by email
