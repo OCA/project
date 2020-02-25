@@ -1,7 +1,8 @@
 # Copyright 2019 Onestein
+# Copyright 2020 Manuel Calero - Tecnativa
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import models, fields, api
+from odoo import models, fields
 
 
 class Project(models.Model):
@@ -16,12 +17,10 @@ class Project(models.Model):
         compute='_compute_risk_count'
     )
 
-    @api.multi
     def _compute_risk_count(self):
         for project in self:
             project.project_risk_count = len(project.project_risk_ids)
 
-    @api.multi
     def view_risk(self):
         self.ensure_one()
         action = self.env.ref('project_risk.project_risk_action')
