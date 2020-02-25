@@ -1,4 +1,5 @@
 # Copyright 2019 Onestein
+# Copyright 2020 Manuel Calero - Tecnativa
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import models, fields, api
@@ -119,25 +120,7 @@ class ProjectRisk(models.Model):
         inverse_name='project_risk_id'
     )
 
-    @api.multi
     @api.depends('probability', 'impact')
     def _compute_rating(self):
         for risk in self:
             risk.rating = risk.probability + risk.impact
-
-    @api.multi
-    def write(self, vals):
-        res = super(ProjectRisk, self).write(vals)
-        if vals.get("actionee_id"):
-            self.message_subscribe_users(user_ids=[vals.get("actionee_id")])
-        if vals.get("owner_id"):
-            self.message_subscribe_users(user_ids=[vals.get("owner_id")])
-        return res
-
-    @api.model
-    def create(self, vals):
-        res = super(ProjectRisk, self).create(vals)
-        res.message_subscribe_users(user_ids=[
-            res.owner_id.id, res.actionee_id.id
-        ])
-        return res
