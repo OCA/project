@@ -4,10 +4,13 @@ from odoo.tests.common import TransactionCase
 class TestProjectRisk(TransactionCase):
     def setUp(self):
         super().setUp()
-        self.project = self.env.ref('project.project_project_5')
-        self.risk_category = self.env.ref(
-            'project_risk.project_risk_category_quality'
-        )
+        self.project = self.env['project.project'].create({
+            'name': "Research &amp; Development",
+            "privacy_visibility": "followers",
+        })
+        self.risk_category = self.env["project.risk.category"].create({
+            "name": "Quality"
+        })
         self.risk = self.env['project.risk'].create({
             'name': 'Risk X',
             'project_id': self.project.id,

@@ -6,5 +6,6 @@ from odoo import models, fields
 
 class ProjectRiskResponseCategory(models.Model):
     _name = 'project.risk.response.category'
+    _description = 'Project Risks Responses Categories'
 
     name = fields.Char(required=True)
