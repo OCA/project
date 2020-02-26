@@ -5,11 +5,11 @@ from odoo import api, models
 
 
 class HrEmployee(models.Model):
-    _inherit = 'hr.employee'
+    _inherit = "hr.employee"
 
     @api.model
     def create(self, vals):
         employee = super().create(vals)
         if employee.category_ids:
-            self.env['project.task'].invalidate_cache()
+            self.env["project.task"].invalidate_cache()
         return employee
