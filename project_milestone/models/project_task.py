@@ -13,7 +13,6 @@ class ProjectTask(models.Model):
     use_milestones = fields.Boolean(related='project_id.use_milestones',
                                     help="Does this project use milestones?")
 
-    @api.model
     def _read_group_milestone_ids(self, milestone_ids, domain, order):
         if 'default_project_id' in self.env.context:
             milestone_ids = self.env['project.milestone'].search([(

@@ -24,7 +24,6 @@ class ProjectMilestone(models.Model):
     fold = fields.Boolean(string="Kanban Folded?")
     sequence = fields.Integer()
 
-    @api.model
     def create(self, vals):
         seq = self.env['ir.sequence'].next_by_code('project.milestone') or 0
         vals['sequence'] = seq
