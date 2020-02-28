@@ -17,4 +17,5 @@
         "views/project_task.xml",
     ],
     "installable": True,
+    'maintainers': ['emagdalenaC2i'],
 }
