@@ -6,49 +6,51 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2020-03-01 22:13+0000\n"
+"Last-Translator: Antonio Pérez Ruth <antonio.perez@makrin.es>\n"
 "Language-Team: none\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.10\n"
 
 #. module: project_milestone
 #: model:ir.ui.menu,name:project_milestone.milestone_configuration_menu
 msgid "All Milestones"
-msgstr ""
+msgstr "Todos los hitos"
 
 #. module: project_milestone
 #: model:ir.model.fields,field_description:project_milestone.field_project_milestone__create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Creado por"
 
 #. module: project_milestone
 #: model:ir.model.fields,field_description:project_milestone.field_project_milestone__create_date
 msgid "Created on"
-msgstr ""
+msgstr "Creado el"
 
 #. module: project_milestone
 #: model:ir.model.fields,field_description:project_milestone.field_project_milestone__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nombre para mostrar"
 
 #. module: project_milestone
 #: model:ir.model.fields,help:project_milestone.field_project_project__use_milestones
 #: model:ir.model.fields,help:project_milestone.field_project_task__use_milestones
 msgid "Does this project use milestones?"
-msgstr ""
+msgstr "¿Este proyecto usa hitos?"
 
 #. module: project_milestone
 #: model_terms:ir.ui.view,arch_db:project_milestone.project_milestone_view_search
 msgid "Group By"
-msgstr ""
+msgstr "Agrupado por"
 
 #. module: project_milestone
 #: model:ir.model.fields,field_description:project_milestone.field_project_milestone__id
 msgid "ID"
-msgstr ""
+msgstr "Identificador"
 
 #. module: project_milestone
 #: model:ir.model.fields,field_description:project_milestone.field_project_milestone__fold
@@ -58,32 +60,32 @@ msgstr ""
 #. module: project_milestone
 #: model:ir.model.fields,field_description:project_milestone.field_project_milestone____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Última modificación el"
 
 #. module: project_milestone
 #: model:ir.model.fields,field_description:project_milestone.field_project_milestone__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Última actualización realizada por"
 
 #. module: project_milestone
 #: model:ir.model.fields,field_description:project_milestone.field_project_milestone__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Última actualización realizada el"
 
 #. module: project_milestone
 #: model:ir.model.fields,field_description:project_milestone.field_project_milestone__name
 msgid "Milestone"
-msgstr ""
+msgstr "Hito"
 
 #. module: project_milestone
 #: model_terms:ir.ui.view,arch_db:project_milestone.project_milestone_view_form
 msgid "Milestone Form"
-msgstr ""
+msgstr "Formulario del hito"
 
 #. module: project_milestone
 #: model_terms:ir.ui.view,arch_db:project_milestone.project_enhancements_milestone_inherit_search_view
 msgid "Milestone Projects"
-msgstr ""
+msgstr "Hitos del proyecto"
 
 #. module: project_milestone
 #: model:ir.model.fields,field_description:project_milestone.field_project_project__milestone_ids
@@ -91,69 +93,70 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_milestone.project_enhancement_milestone_view_inherit_form
 #: model_terms:ir.ui.view,arch_db:project_milestone.view_task_enhancement_search_milestone_form
 msgid "Milestones"
-msgstr ""
+msgstr "Hitos"
 
 #. module: project_milestone
 #: model_terms:ir.ui.view,arch_db:project_milestone.project_milestone_view_form
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #. module: project_milestone
 #: model:ir.model.fields,help:project_milestone.field_project_milestone__progress
 msgid "Percentage of Completed Tasks vs Incomplete Tasks."
 msgstr ""
+"Porcentaje de tareas completadas en relación a las tareas no completadas."
 
 #. module: project_milestone
 #: model:ir.model.fields,field_description:project_milestone.field_project_milestone__progress
 msgid "Progress"
-msgstr ""
+msgstr "Progreso"
 
 #. module: project_milestone
 #: model:ir.model.fields,field_description:project_milestone.field_project_milestone__project_id
 #: model_terms:ir.ui.view,arch_db:project_milestone.project_milestone_view_search
 msgid "Project"
-msgstr ""
+msgstr "Proyecto"
 
 #. module: project_milestone
 #: model:ir.model,name:project_milestone.model_project_milestone
 msgid "Project Milestone"
-msgstr ""
+msgstr "Hito del proyecto"
 
 #. module: project_milestone
 #: model:ir.actions.act_window,name:project_milestone.project_milestone_action
 msgid "Project Milestones"
-msgstr ""
+msgstr "Hitos del proyecto"
 
 #. module: project_milestone
 #: model:ir.model.fields,field_description:project_milestone.field_project_milestone__project_task_ids
 msgid "Project Tasks"
-msgstr ""
+msgstr "Tareas del proyecto"
 
 #. module: project_milestone
 #: model:ir.model.fields,field_description:project_milestone.field_project_milestone__sequence
 msgid "Sequence"
-msgstr ""
+msgstr "Secuencia"
 
 #. module: project_milestone
 #: model:ir.model.fields,field_description:project_milestone.field_project_milestone__target_date
 msgid "Target Date"
-msgstr ""
+msgstr "Fecha objetivo"
 
 #. module: project_milestone
 #: model:ir.model,name:project_milestone.model_project_task
 msgid "Task"
-msgstr ""
+msgstr "Tarea"
 
 #. module: project_milestone
 #: model:ir.model.fields,help:project_milestone.field_project_milestone__target_date
 msgid "The date when the Milestone should be complete."
-msgstr ""
+msgstr "Fecha en la que el hito debe ser completado."
 
 #. module: project_milestone
 #: model:ir.model.fields,field_description:project_milestone.field_project_project__use_milestones
 #: model:ir.model.fields,field_description:project_milestone.field_project_task__use_milestones
 msgid "Use Milestones"
-msgstr ""
+msgstr "Usar hitos"
 
 #. module: project_milestone
 #: model:ir.model,name:project_milestone.model_project_project
