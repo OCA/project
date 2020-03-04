@@ -5,7 +5,7 @@
 {
     "name": "Project timeline",
     "summary": "Timeline view for projects",
-    "version": "12.0.1.2.0",
+    "version": "12.0.1.2.1",
     "category": "Project Management",
     "website": "https://github.com/OCA/project",
     "author": "Tecnativa, Onestein, "
