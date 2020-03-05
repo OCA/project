@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-10 02:49+0000\n"
-"PO-Revision-Date: 2019-09-13 21:24+0000\n"
-"Last-Translator: gslabit <giovanni@gslab.it>\n"
+"PO-Revision-Date: 2020-03-05 12:13+0000\n"
+"Last-Translator: Francesco Foresti <francesco.foresti@ooops404.com>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.8\n"
+"X-Generator: Weblate 3.10\n"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_analysis
@@ -80,7 +80,7 @@ msgstr ""
 #: model:project.task.type,legend_normal:project_task_default_stage.project_tt_specification
 #: model:project.task.type,legend_normal:project_task_default_stage.project_tt_testing
 msgid "In Progress"
-msgstr "In corso"
+msgstr "In lavorazione"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_merge
@@ -112,7 +112,7 @@ msgstr "Specifiche"
 #. module: project_task_default_stage
 #: model:ir.model,name:project_task_default_stage.model_project_task_type
 msgid "Task Stage"
-msgstr "Fase lavoro"
+msgstr "Fase Task"
 
 #. module: project_task_default_stage
 #: model:ir.model.fields,field_description:project_task_default_stage.field_project_project__type_ids
@@ -122,12 +122,12 @@ msgstr "Fasi lavori"
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_testing
 msgid "Testing"
-msgstr ""
+msgstr "Testing"
 
 #. module: project_task_default_stage
 #: model:ir.model,name:project_task_default_stage.model_project_project
 msgid "WBS element"
-msgstr ""
+msgstr "Elemento WBS"
 
 #~ msgid "Project"
 #~ msgstr "Progetto"
