@@ -17,6 +17,7 @@ setuptools.setup(
         'odoo13-addon-project_task_add_very_high',
         'odoo13-addon-project_task_code',
         'odoo13-addon-project_task_default_stage',
+        'odoo13-addon-project_task_dependency',
         'odoo13-addon-project_task_material',
     ],
     classifiers=[
