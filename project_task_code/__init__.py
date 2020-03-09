@@ -5,6 +5,7 @@
 from . import models
 from odoo import api, SUPERUSER_ID
 
+
 def create_code_equal_to_id(cr):
     """
     With this pre-init-hook we want to avoid error when creating the UNIQUE

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 # Copyright 2016 Tecnativa <vicent.cubells@tecnativa.com>
+# Copyright 2020 Therp BV <http://therp.nl>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 import openerp.tests.common as common
@@ -34,3 +35,16 @@ class TestProjectTaskCode(common.TransactionCase):
         project_task_copy = self.project_task.copy()
         self.assertNotEqual(project_task_copy.code, self.project_task.code)
         self.assertEqual(project_task_copy.code, code)
+
+    def test_name_search(self):
+        tasks = self.project_task_model
+        for i in range(10):
+            task = tasks.create({'name': 'task0%s' % str(i)})
+            tasks += task
+        for task in tasks:
+            self.assertEqual(
+                task,
+                tasks.browse(tasks.name_search(name=task.code)[0][0]))
+            self.assertEqual(
+                tasks.name_search(name=task.code),
+                tasks.name_search(name=task.name))

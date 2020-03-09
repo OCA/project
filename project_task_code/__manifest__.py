@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 # Copyright 2016 Tecnativa <vicent.cubells@tecnativa.com>
+# Copyright 2020 Therp BV <http://therp.nl>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 {
     "name": "Sequential Code for Tasks",
-    "version": "10.0.1.0.0",
+    "version": "10.0.1.0.1",
     "category": "Project Management",
     "author": "OdooMRP team, "
               "AvanzOSC, "
@@ -17,6 +18,7 @@
         "Pedro M. Baeza <pedro.baeza@serviciosbaeza.com>",
         "Ana Juaristi <ajuaristo@gmail.com>",
         "Vicent Cubells <vicent.cubells@tecnativa.com>",
+        "Nikos Tsirintanis <ntsirintanis@therp.nl>",
     ],
     "depends": [
         "project",
