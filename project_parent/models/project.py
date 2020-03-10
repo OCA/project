@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Copyright 2019 Therp BV <https://therp.nl>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 from odoo import api, fields, models
@@ -22,6 +21,7 @@ class Project(models.Model):
             return {
                 'type': 'ir.actions.act_window',
                 'view_type': 'form',
+                'name': 'Children of %s' % rec.name,
                 'view_mode': 'tree,form,graph',
                 'res_model': 'project.project',
                 'target': 'current',
