@@ -5,24 +5,17 @@
 {
     "name": "Project timeline",
     "summary": "Timeline view for projects",
-    "version": "12.0.1.2.1",
+    "version": "13.0.1.0.0",
     "category": "Project Management",
     "website": "https://github.com/OCA/project",
-    "author": "Tecnativa, Onestein, "
-              "Odoo Community Association (OCA)",
+    "author": "Tecnativa, Onestein, " "Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "installable": True,
-    "depends": [
-        "project",
-        "web_timeline",
-    ],
+    "depends": ["project", "web_timeline"],
     "data": [
         "templates/assets.xml",
         "views/project_project_view.xml",
         "views/project_task_view.xml",
     ],
-    "demo": [
-        'demo/project_project_demo.xml',
-        'demo/project_task_demo.xml',
-    ]
+    "demo": ["demo/project_project_demo.xml", "demo/project_task_demo.xml"],
 }

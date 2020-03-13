@@ -8,7 +8,7 @@ from odoo import api, models
 class ProjectTask(models.Model):
     _inherit = "project.task"
 
-    @api.onchange('user_id')
+    @api.onchange("user_id")
     def _onchange_user(self):  # pragma: no cover
         """Don't change date_start when changing the user_id. This screws up
         the default value passed by context when creating a record. It's also
@@ -21,5 +21,5 @@ class ProjectTask(models.Model):
 
     def update_date_end(self, stage_id):
         res = super(ProjectTask, self).update_date_end(stage_id)
-        res.pop('date_end', None)
+        res.pop("date_end", None)
         return res
