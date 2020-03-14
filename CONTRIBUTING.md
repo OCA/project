@@ -1,6 +1,7 @@
 # OCA Guidelines
 
-Please follow the official guide from the [OCA Guidelines page](https://github.com/OCA/maintainer-tools/blob/master/CONTRIBUTING.md).
+Please follow the official guide from the
+[OCA Guidelines page](https://github.com/OCA/maintainer-tools/blob/master/CONTRIBUTING.md).
 
 ## Project Specific Guidelines
 
