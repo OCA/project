@@ -3,7 +3,7 @@ sudo: false
 cache: pip
 
 python:
-  - "2.7.13"
+  - "2.7"
 
 addons:
   postgresql: "9.6"
@@ -23,6 +23,9 @@ env:
   - LINT_CHECK="1"
   - TESTS="1" ODOO_REPO="odoo/odoo" MAKEPOT="1"
   - TESTS="1" ODOO_REPO="OCA/OCB"
+
+virtualenv:
+  system_site_packages: true
 
 install:
   - git clone --depth=1 https://github.com/OCA/maintainer-quality-tools.git ${HOME}/maintainer-quality-tools
