@@ -103,12 +103,6 @@ msgid "Materials used"
 msgstr "Materiais utilizados"
 
 #. module: project_task_material_stock
-#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task__analytic_account_id
-#, fuzzy
-msgid "Move Analytic Account"
-msgstr "Linha Analítica"
-
-#. module: project_task_material_stock
 #: model:ir.model.fields,help:project_task_material_stock.field_project_task__analytic_account_id
 msgid "Move created will be assigned to this analytic account"
 msgstr ""
@@ -129,6 +123,12 @@ msgstr "Produtos"
 #: model_terms:ir.ui.view,arch_db:project_task_material_stock.view_project_task_form_material_stock
 msgid "Products"
 msgstr "Produtos"
+
+#. module: project_task_material_stock
+#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task__analytic_account_id
+#, fuzzy
+msgid "Project Analytic Account"
+msgstr "Linha Analítica"
 
 #. module: project_task_material_stock
 #: model:ir.model.fields,field_description:project_task_material_stock.field_account_analytic_line__task_material_id
