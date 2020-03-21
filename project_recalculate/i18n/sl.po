@@ -10,16 +10,16 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-02 01:51+0000\n"
-"PO-Revision-Date: 2019-10-24 07:33+0000\n"
+"PO-Revision-Date: 2020-03-21 11:13+0000\n"
 "Last-Translator: Matjaz Mozetic <matjaz@matmoz.si>\n"
 "Language-Team: Slovenian (https://www.transifex.com/oca/teams/23907/sl/)\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
-"%100==4 ? 2 : 3;\n"
-"X-Generator: Weblate 3.8\n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
+"n%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 3.10\n"
 
 #. module: project_recalculate
 #: model:ir.model.fields,help:project_recalculate.field_project_task__from_days
@@ -102,7 +102,7 @@ msgstr "Sklic datuma"
 #. module: project_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__display_name
 msgid "Display Name"
-msgstr "Prikazni naziv"
+msgstr "Prikazani naziv"
 
 #. module: project_recalculate
 #: code:addons/project_recalculate/models/project_task.py:184
@@ -171,7 +171,7 @@ msgstr "Zadnjič spremenjeno"
 #. module: project_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__write_uid
 msgid "Last Updated by"
-msgstr "Zadnjič posodobil"
+msgstr "Zadnji posodobil"
 
 #. module: project_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__write_date
@@ -238,7 +238,7 @@ msgstr "Ta projekt bo ponovno preračunan glede na referenčni datum:"
 #. module: project_recalculate
 #: model:ir.model,name:project_recalculate.model_project_project
 msgid "WBS element"
-msgstr ""
+msgstr "Projektni člen"
 
 #~ msgid "Resource Calendar"
 #~ msgstr "Koledar virov"
