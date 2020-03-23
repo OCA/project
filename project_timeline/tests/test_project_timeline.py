@@ -11,7 +11,7 @@ class TestProjectTimeline(TransactionCase):
         task = self.env["project.task"].create(
             {
                 "name": "1",
-                "date_start": "2018-05-01 00:00:00",
+                "date_assign": "2018-05-01 00:00:00",
                 "date_end": "2018-05-07 00:00:00",
             }
         )
