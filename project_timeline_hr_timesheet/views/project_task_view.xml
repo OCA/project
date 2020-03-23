@@ -9,11 +9,12 @@
         <field name="arch" type="xml">
             <field name="user_id" position="after">
                 <field name="progress" />
+                <field name="remaining_hours" />
             </field>
-            <xpath expr="//div[hasclass('o_project_timeline_item')]" position="after">
+            <xpath expr="//small[@name='planned_hours']" position="after">
                 <div class="o_project_timeline_hr_timesheet_progress">
                     <div
-                        t-att-class="record.progress > 100 and 'danger'"
+                        t-att-class="record.remaining_hours &lt; 0 and 'danger' or ''"
                         t-attf-style="width: #{record.progress}%"
                     />
                 </div>
