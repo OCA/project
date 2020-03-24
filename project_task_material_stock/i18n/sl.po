@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-02 01:51+0000\n"
-"PO-Revision-Date: 2020-03-21 11:13+0000\n"
+"PO-Revision-Date: 2020-03-24 14:13+0000\n"
 "Last-Translator: Matjaz Mozetic <matjaz@matmoz.si>\n"
 "Language-Team: Slovenian (https://www.transifex.com/oca/teams/23907/sl/)\n"
 "Language: sl\n"
@@ -219,7 +219,7 @@ msgid ""
 "You can't move to a not consume stage if there are already analytic lines"
 msgstr ""
 "Ne morete premakniti v stopnjo brez potrošnje, če že obstajajo analitične "
-"postavke."
+"postavke"
 
 #. module: project_task_material_stock
 #: code:addons/project_task_material_stock/models/project_task.py:217
