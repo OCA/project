@@ -25,8 +25,13 @@ class AccountAnalyticLine(models.Model):
     @api.model
     def _eval_date(self, vals):
         if vals.get('date_time'):
-            return dict(vals, date=fields.Date.to_date(vals['date_time']))
+            return dict(vals, date=self._convert_datetime_to_date(vals['date_time']))
         return vals
+
+    def _convert_datetime_to_date(self, datetime_):
+        if isinstance(datetime_, str):
+            datetime_ = fields.Datetime.from_string(datetime_)
+        return fields.Date.context_today(self, datetime_)
 
     @api.model
     def _running_domain(self):
