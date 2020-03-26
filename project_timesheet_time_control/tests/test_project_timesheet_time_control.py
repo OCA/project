@@ -2,7 +2,7 @@
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0
 
 from odoo.tests import common
-from odoo import exceptions, fields
+from odoo import exceptions
 from datetime import timedelta, date, datetime
 
 
