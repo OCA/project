@@ -7,17 +7,17 @@ class Project(models.Model):
     _inherit = 'project.project'
     _parent_store = True
 
-    parent_id = fields.Many2one(
-       comodel_name='project.project', string='Parent Project'
+    project_parent_id = fields.Many2one(
+        comodel_name='project.project', string='Parent Project'
     )
     child_ids = fields.One2many(comodel_name='project.project',
-                                inverse_name='parent_id')
+                                inverse_name='project_parent_id')
     parent_path = fields.Char(index=True)
 
     @api.multi
     def action_open_child_project(self):
         for rec in self:
-            domain = [('parent_id', '=', rec.id)]
+            domain = [('project_parent_id', '=', rec.id)]
             return {
                 'type': 'ir.actions.act_window',
                 'view_type': 'form',
