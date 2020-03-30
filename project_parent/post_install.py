@@ -13,18 +13,19 @@ def restore_parents(cr, registry):
     # check if openupgrade field exists (instance has been migrated using
     # openupgrade library)
     cr.execute(
-        'SELECT count(attname) FROM pg_attribute '
-        'WHERE attrelid = '
-        '( SELECT oid FROM pg_class WHERE relname = %s ) '
-        'AND attname = %s',
-        ('project_project',
-         'openupgrade_legacy_12_0_analytic_account_id')
+        """
+        SELECT count(attname)
+        FROM pg_attribute
+        WHERE attrelid = ( SELECT oid FROM pg_class WHERE relname = %s )
+        AND attname = %s
+        """,
+        ('project_project', 'openupgrade_legacy_12_0_analytic_account_id')
     )
     if cr.fetchone()[0] == 1:
         cr.execute(
             """
             UPDATE project_project pp
-            SET parent_id = aaa.parent_project_id
+            SET project_parent_id = aaa.parent_project_id
             FROM account_analytic_account aaa
             WHERE pp.openupgrade_legacy_12_0_analytic_account_id = aaa.id""",
         )
@@ -43,7 +44,7 @@ def restore_parents(cr, registry):
         cr.execute(
             """
             UPDATE project_project pp
-            SET parent_id = aaa.parent_project_id
+            SET project_parent_id = aaa.parent_project_id
             FROM account_analytic_account aaa
             WHERE pp.analytic_account_id = aaa.id""",
         )

@@ -10,7 +10,7 @@ License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
         <field name="inherit_id" ref="project.edit_project"/>
         <field name="arch" type="xml">
             <field name="user_id" position="after">
-                <field name="parent_id"/>
+                <field name="project_parent_id"/>
             </field>
             <div name="button_box" position="inside">
                   <button name="action_open_child_project"
@@ -21,7 +21,6 @@ License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
             </div>
         </field>
     </record>
-    <!--
     <record id="view_project_parent_project_filter" model="ir.ui.view">
          <field name="name">project.project.select</field>
          <field name="model">project.project</field>
@@ -29,14 +28,13 @@ License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
          <field name="type">search</field>
          <field name="arch" type="xml">
             <field name="name" position="after">
-                <field name="parent_id"/>
+                <field name="project_parent_id"/>
             </field>
            <xpath expr="//filter[contains(@domain, user_id)]" position="after">
-              <filter string="Parent" domain="[]" context="{'group_by':'parent_id'}"/>
+              <filter string="Parent" domain="[]" context="{'group_by':'project_parent_id'}"/>
            </xpath>
          </field>
         </record>
-    -->
     <record id="view_project_parent_inherited_tree" model="ir.ui.view">
         <field name="name">project.project.tree.inherited</field>
         <field name="model">project.project</field>
@@ -44,7 +42,7 @@ License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
         <field name="priority">16</field>
         <field name="arch" type="xml">
             <field name="partner_id" position="after">
-                <field name="parent_id"/>
+                <field name="project_parent_id"/>
             </field>
         </field>
     </record>
@@ -55,11 +53,11 @@ License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
         <field name="priority">16</field>
         <field name="arch" type="xml">
             <field name="rating_status" position="after">
-                <field name="parent_id"/>
-            </field>
-            <xpath expr="//div[contains(@class, 'o_project_kanban_main')]/div[last()]" position="after">
+                <field name="project_parent_id"/>
+            </field> 
+            <xpath expr="//div[hasclass('o_project_kanban_main')]/div[last()]" position="after">
                 <div class="o_primary">
-                    <span> <t t-esc="record.parent_id.value"/></span>
+                    <span> <t t-esc="record.project_parent_id.value"/></span>
                 </div>
             </xpath>
         </field>
