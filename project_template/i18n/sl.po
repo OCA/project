@@ -6,7 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2020-03-31 10:13+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@matmoz.si>\n"
 "Language-Team: none\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -14,38 +15,39 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 3.10\n"
 
 #. module: project_template
 #: model_terms:ir.ui.view,arch_db:project_template.project_template_view_inherit_form
 msgid "Create Project From Template"
-msgstr ""
+msgstr "Ustvari projekt iz predloge"
 
 #. module: project_template
 #: model_terms:ir.ui.view,arch_db:project_template.project_template_view_inherit_kanban
 msgid "Create Project from Template"
-msgstr ""
+msgstr "Ustvari projekt iz predloge"
 
 #. module: project_template
 #: model:ir.model.fields,field_description:project_template.field_project_project__is_template
 msgid "Is Template"
-msgstr ""
+msgstr "Je predloga"
 
 #. module: project_template
 #: model_terms:ir.ui.view,arch_db:project_template.project_template_view_inherit_form
 msgid "Is Template?"
-msgstr ""
+msgstr "Je predloga?"
 
 #. module: project_template
 #: model_terms:ir.ui.view,arch_db:project_template.project_template_view_inherit_search
 msgid "Non-Templates"
-msgstr ""
+msgstr "Niso predloge"
 
 #. module: project_template
 #: model_terms:ir.ui.view,arch_db:project_template.project_template_view_inherit_search
 msgid "Templates"
-msgstr ""
+msgstr "Predloge"
 
 #. module: project_template
 #: model:ir.model,name:project_template.model_project_project
 msgid "WBS element"
-msgstr ""
+msgstr "Projektni člen"
