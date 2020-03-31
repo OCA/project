@@ -7,15 +7,16 @@ msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-09-29 20:06+0200\n"
-"PO-Revision-Date: 2016-09-29 20:07+0200\n"
-"Last-Translator: Matjaz Mozetic <m.mozetic@matmoz.si>\n"
+"PO-Revision-Date: 2020-03-31 10:13+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@matmoz.si>\n"
 "Language-Team: \n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: \n"
-"X-Generator: Poedit 1.8.9\n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
+"n%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 3.10\n"
 
 #. module: project_wbs_task
 #: field:project.task,analytic_account_id:0
@@ -35,7 +36,7 @@ msgstr "Polni naziv členitve"
 #. module: project_wbs_task
 #: help:project.task,project_complete_wbs_name:0
 msgid "Full path in the WBS hierarchy"
-msgstr "Polna pot v WBS hierarhiji"
+msgstr "Polna pot v razčlenitveni hierarhiji"
 
 #. module: project_wbs_task
 #: help:project.task,analytic_account_id:0
@@ -43,7 +44,10 @@ msgid ""
 "Link this project to an analytic account if you need financial management on "
 "projects. It enables you to connect projects with budgets, planning, cost "
 "and revenue analysis, timesheets on projects, etc."
-msgstr "Povežite ta projekt z analitičnim kontom."
+msgstr ""
+"Če želite upravljanje stroškov na projektih, povežite ta projekt z "
+"analitičnim kontom. To omogoča povezavo projektov s proračuni, plani, "
+"analizo stroškov in prihodkov, časovnice, itd."
 
 #. module: project_wbs_task
 #: model:ir.model,name:project_wbs_task.model_project_task
@@ -62,8 +66,8 @@ msgid ""
 "The full WBS code describes the full path of this component within the "
 "project WBS hierarchy"
 msgstr ""
-"Polna WBS koda opisuje polno pot te komponente v sklopu WBS hierarhije "
-"projekta"
+"Polna koda razčlenitve opisuje polno pot te komponente v sklopu "
+"razčlenitvene hierarhije projekta"
 
 #~ msgid "Project"
 #~ msgstr "Projekt"
