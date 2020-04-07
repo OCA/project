@@ -10,6 +10,7 @@ from odoo import _, api, fields, models
 class AccountAnalyticAccount(models.Model):
     _inherit = 'account.analytic.account'
     _order = 'complete_wbs_code'
+    _rec_name = 'name'
 
     @api.multi
     def get_child_accounts(self):
