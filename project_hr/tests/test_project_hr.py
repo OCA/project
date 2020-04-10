@@ -22,6 +22,11 @@ class TestProjectHr(SavepointCase):
         cls.hr_category_2 = cls.env["hr.employee.category"].create(
             {"name": "Test employee category 2"}
         )
+
+        cls.hr_category_3 = cls.env["hr.employee.category"].create(
+            {"name": "Test employee category 3"}
+        )
+
         cls.employee = cls.env["hr.employee"].create(
             {
                 "name": "Test employee",
@@ -46,9 +51,6 @@ class TestProjectHr(SavepointCase):
         self.employee.category_ids = [(4, self.hr_category_2.id)]
         self.assertEqual(
             self.user.hr_category_ids, self.hr_category + self.hr_category_2
-        )
-        self.hr_category_3 = self.env["hr.employee.category"].create(
-            {"name": "Test employee category 3"}
         )
         # Check if need invalidate cache
         self.employee.category_ids = [(4, self.hr_category_3.id)]
@@ -82,6 +84,11 @@ class TestProjectHr(SavepointCase):
         self.project.hr_category_ids = [(4, self.hr_category_2.id)]
         with self.assertRaises(ValidationError):
             self.task.hr_category_ids = [(4, self.hr_category_2.id)]
+        # add employee to category hr_category_3
+        self.employee.category_ids = [(4, self.hr_category_3.id)]
+        # test assign a category no in project categories
+        with self.assertRaises(ValidationError):
+            self.task.hr_category_ids = [(4, self.hr_category_3.id)]
 
     def test_task_project_wo_categories(self):
         self.project.hr_category_ids = False
