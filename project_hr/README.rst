@@ -107,6 +107,7 @@ Contributors
   * Victor M.M. Torres
 
 * Alexey Pelykh <alexey.pelykh@brainbeanapps.com>
+* Alfadil Tabar <alfadil.tabar@gmail.com>
 
 Maintainers
 ~~~~~~~~~~~
