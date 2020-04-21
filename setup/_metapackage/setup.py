@@ -20,6 +20,7 @@ setuptools.setup(
         'odoo13-addon-project_task_default_stage',
         'odoo13-addon-project_task_dependency',
         'odoo13-addon-project_task_material',
+        'odoo13-addon-project_hr',
     ],
     classifiers=[
         'Programming Language :: Python',

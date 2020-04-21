@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2018 Tecnativa - Pedro M. Baeza
+     Copyright 2019 Brainbean Apps (https://brainbeanapps.com)
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+
+    <record model="ir.ui.view" id="view_task_form2">
+        <field name="name">Project task form: Add linked employee and Employee category</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+            <field name="user_id" position="before">
+                <field name="allowed_hr_category_ids" invisible="1"/>
+                <field name="allowed_user_ids" invisible="1"/>
+                <field name="hr_category_ids" widget="many2many_tags"/>
+            </field>
+            <field name="user_id" position="attributes">
+                <attribute name="domain">[('id', 'in', allowed_user_ids)]</attribute>
+            </field>
+            <field name="date_assign" position="after">
+                <field name="employee_id"/>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="quick_create_task_form">
+        <field name="name">project.task.form.quick_create</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.quick_create_task_form"/>
+        <field name="arch" type="xml">
+            <field name="user_id" position="before">
+                <field name="allowed_user_ids" invisible="1"/>
+            </field>
+            <field name="user_id" position="attributes">
+                <attribute name="domain">[('id', 'in', allowed_user_ids)]</attribute>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_task_tree2">
+        <field name="name">project.task.tree</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_tree2"/>
+        <field name="arch" type="xml">
+            <field name="user_id" position="before">
+                <field name="allowed_user_ids" invisible="1"/>
+            </field>
+            <field name="user_id" position="attributes">
+                <attribute name="domain">[('id', 'in', allowed_user_ids)]</attribute>
+            </field>
+        </field>
+    </record>
+
+</odoo>

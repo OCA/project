@@ -1,0 +1,127 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_hr
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2019-10-24 07:33+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@matmoz.si>\n"
+"Language-Team: none\n"
+"Language: sl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
+"%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 3.8\n"
+
+#. module: project_hr
+#: model:ir.model.fields,field_description:project_hr.field_project_task__allowed_hr_category_ids
+msgid "Allowed HR categories"
+msgstr "Dovoljene kategorije kadrov"
+
+#. module: project_hr
+#: model:ir.model.fields,field_description:project_hr.field_project_task__allowed_user_ids
+msgid "Allowed users"
+msgstr "Dovoljeni uporabniki"
+
+#. module: project_hr
+#: model:ir.model,name:project_hr.model_hr_employee
+msgid "Employee"
+msgstr "Kader"
+
+#. module: project_hr
+#: model:ir.model.fields,field_description:project_hr.field_project_project__hr_category_ids
+#: model:ir.model.fields,field_description:project_hr.field_project_task__hr_category_ids
+msgid "Employee Categories"
+msgstr "Kategorije zaposlenih"
+
+#. module: project_hr
+#: model:ir.model.fields,field_description:project_hr.field_res_users__hr_category_ids
+msgid "HR categories"
+msgstr "Kadrovske kategorije"
+
+#. module: project_hr
+#: model:ir.model.fields,help:project_hr.field_project_project__hr_category_ids
+msgid ""
+"Here you can link the project to several employee categories, that will be "
+"the allowed in tasks."
+msgstr ""
+"Tu lahko povežete projekt z več kategorijami kadrov, ki bodo dovoljeni v "
+"opravilih."
+
+#. module: project_hr
+#: model:ir.model.fields,help:project_hr.field_project_task__hr_category_ids
+msgid ""
+"Here you can select the employee category suitable to perform this task, "
+"limiting the selectable users to be assigned to those that belongs to that "
+"category."
+msgstr ""
+"Tu lahko izberete kategorijo kadrov primerno za opravljanje tega opravila in "
+"tako omejite izbor uporabnikov, ki se jim lahko opravilo dodeli na to "
+"kategorijo."
+
+#. module: project_hr
+#: model:ir.model.fields,field_description:project_hr.field_project_task__employee_id
+msgid "Linked employee"
+msgstr "Povezani kader"
+
+#. module: project_hr
+#: model:ir.model,name:project_hr.model_project_task
+msgid "Task"
+msgstr "Opravilo"
+
+#. module: project_hr
+#: model:ir.model.fields,help:project_hr.field_project_task__allowed_hr_category_ids
+msgid ""
+"Technical field for computing allowed employee categories according "
+"categories at project level."
+msgstr ""
+"Tehnično polje za obdelavo dovoljenih kadrovskih kategorij glede na "
+"kategorije na projektnem nivoju."
+
+#. module: project_hr
+#: model:ir.model.fields,help:project_hr.field_project_task__allowed_user_ids
+msgid ""
+"Technical field for computing allowed users according employee category."
+msgstr ""
+"Tehnično polje za obdelavo dovoljenih uporabnikov glede na kadrovsko "
+"kategorijo."
+
+#. module: project_hr
+#: model:ir.model.fields,help:project_hr.field_res_users__hr_category_ids
+msgid ""
+"Technical field for computing dynamically employee categories linked to the "
+"user in the current company."
+msgstr ""
+"Tehnično polje za dinamično obdelavo kategorij kadrov povezanih z "
+"uporabnikom in trenutno družbo."
+
+#. module: project_hr
+#: model:ir.model,name:project_hr.model_res_users
+msgid "Users"
+msgstr "Uporabniki"
+
+#. module: project_hr
+#: model:ir.model,name:project_hr.model_project_project
+msgid "WBS element"
+msgstr ""
+
+#. module: project_hr
+#: code:addons/project_hr/models/project_task.py:87
+#, python-format
+msgid "You can't assign a category that is not allowed at project level."
+msgstr "Kategorije, ki ni dovoljena na projektnem nivoju, ne morete dodeliti."
+
+#. module: project_hr
+#: code:addons/project_hr/models/project_task.py:76
+#, python-format
+msgid ""
+"You can't assign a user not belonging to the selected employee category."
+msgstr ""
+"Ne morete dodeliti uporabnika, ki ne spada v izbrano kadrovsko kategorijo."
+
+#~ msgid "Project"
+#~ msgstr "Projekt"
