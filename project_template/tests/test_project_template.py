@@ -12,12 +12,19 @@ class TestProjectTemplate(common.TransactionCase):
             {
                 "name": "TestProject",
                 "alias_name": "test_alias",
-                "total_planned_hours": 0.0,
                 "partner_id": self.test_customer.id,
             }
         )
         self.env["project.task"].create(
             {"name": "TestTask", "project_id": self.test_project.id}
+        )
+
+        self.test_project_b = self.env["project.project"].create(
+            {
+                "name": "TestProjectB",
+                "alias_name": "test_alias",
+                "partner_id": self.test_customer.id,
+            }
         )
 
     # TEST 01: Set project to be a template and test name change
@@ -62,3 +69,24 @@ class TestProjectTemplate(common.TransactionCase):
             [("name", "=", "TestProject(TEST) (COPY)")]
         )
         self.assertEqual(len(new_project), 1)
+
+    # TEST 04: change subtask_project_id of a project
+    #  template and create a project form it
+    def test_cross_subtask_project(self):
+        project_01 = self.test_project
+        project_01.is_template = True
+        project_01.on_change_is_template()
+
+        # set up default subtask project
+        project_01.write({"subtask_project_id": self.test_project_b.id})
+        # Create new Project from Template
+        project_01.create_project_from_template()
+
+        new_project = self.env["project.project"].search(
+            [("name", "=", "TestProject (COPY)")]
+        )
+
+        self.assertEqual(
+            new_project.mapped("subtask_project_id").mapped("id"),
+            new_project.mapped("id"),
+        )
