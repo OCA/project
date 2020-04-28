@@ -6,6 +6,7 @@ from odoo import api, fields, models
 class Project(models.Model):
     _inherit = 'project.project'
     _parent_store = True
+    _parent_name = 'project_parent_id'
 
     project_parent_id = fields.Many2one(
         comodel_name='project.project', string='Parent Project'
