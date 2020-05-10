@@ -4,11 +4,11 @@
 {
     'name': 'Webhook for Gitlab',
     'summary': 'Controllers needed to notify actions with gitlab',
-    'version': '12.0.1.0.0',
+    'version': '14.0.1.0.0',
     'category': 'Development',
     'author': 'Jarsa Sistemas',
     'website': 'https://www.jarsa.com.mx',
-    'license': 'AGPL-3',
+    'license': 'LGPL-3',
     'depends': [
         'helpdesk_timesheet',
         'project',

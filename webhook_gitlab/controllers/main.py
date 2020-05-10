@@ -6,7 +6,7 @@ import logging
 import re
 
 import gitlab  # pylint: disable=W7935
-from odoo import _, http
+from odoo import _, http, SUPERUSER_ID
 from odoo.http import request
 from odoo.tools import consteq
 
@@ -24,8 +24,8 @@ def token_authorization(function):
     def wrapper(self, *args, **kw):
         headers = request.httprequest.headers
         gitlab_token = headers.get('X-Gitlab-Token')
-        token = request.env['ir.config_parameter'].sudo().get_param(
-            'webhook_gitlab.authorization_token')
+        token = request.env['ir.config_parameter'].with_user(
+            SUPERUSER_ID).get_param('webhook_gitlab.authorization_token')
         if gitlab_token is None or not consteq(gitlab_token, token):
             _logger.warning(
                 "Token %s is not the expected", gitlab_token)
@@ -80,7 +80,7 @@ class WebhookGitlab(http.Controller):
         if id_found['type'] in ['ticket', 'i', 'issue']:
             model = 'helpdesk.ticket'
             rec_type = 'ticket'
-        record = request.env[model].sudo().browse(int(id_found['id']))
+        record = request.env[model].with_user(SUPERUSER_ID).browse(int(id_found['id']))
         if not record:
             message = _('The %s #%s cannot be found in Odoo.') % (
                 rec_type, id_found['id'])
@@ -165,10 +165,10 @@ class WebhookGitlab(http.Controller):
 
     def _connect_gitlab(self):
         """Connect to gitlab instance and return gitlab object"""
-        url = request.env['ir.config_parameter'].sudo(
-            ).get_param('webhook_gitlab.gitlab_url')
-        token = request.env['ir.config_parameter'].sudo().get_param(
-            'webhook_gitlab.gitlab_token')
+        url = request.env['ir.config_parameter'].with_user(
+            SUPERUSER_ID).get_param('webhook_gitlab.gitlab_url')
+        token = request.env['ir.config_parameter'].with_user(
+            SUPERUSER_ID).get_param('webhook_gitlab.gitlab_token')
         return gitlab.Gitlab(url, private_token=token)
 
     def _post_gitlab_message(self, event, message):

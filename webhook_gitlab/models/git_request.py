@@ -37,9 +37,8 @@ class GitRequest(models.Model):
         ('unknown', 'Unknown'),
     ], default='pending', string="CI Status")
     url = fields.Char()
-    user_id = fields.Many2one('res.users', string="Created by")
+    user_id = fields.Many2one('res.users', string="Created by User")
 
-    @api.multi
     def open_merge_request(self):
         self.ensure_one()
         return {
@@ -53,13 +52,11 @@ class GitRequest(models.Model):
         rec.assing_tags()
         return rec
 
-    @api.multi
     def write(self, vals):
         res = super().write(vals)
         self.assing_tags()
         return res
 
-    @api.multi
     def assing_tags(self):
         for rec in self:
             tags = []
