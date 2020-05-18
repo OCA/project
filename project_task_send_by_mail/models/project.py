@@ -1,16 +1,15 @@
 # Copyright 2017 Tecnativa - Vicent Cubells
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import _, api, models
+from odoo import _, models
 
 
 class ProjectTask(models.Model):
     _inherit = "project.task"
 
-    @api.multi
     def action_task_send(self):
         self.ensure_one()
-        template = self.env.ref("project_task_send_by_mail.email_task_template", False,)
+        template = self.env.ref("project_task_send_by_mail.email_task_template", False)
         compose_form = self.env.ref("mail.email_compose_message_wizard_form", False)
         ctx = dict(
             default_model="project.task",
