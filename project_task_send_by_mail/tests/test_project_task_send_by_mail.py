@@ -8,7 +8,7 @@ class TestProjectTaskSendByMail(common.SavepointCase):
     @classmethod
     def setUpClass(cls):
         super(TestProjectTaskSendByMail, cls).setUpClass()
-        cls.task = cls.env["project.task"].create({"name": "task test",})
+        cls.task = cls.env["project.task"].create({"name": "task test"})
 
     def test_send_mail(self):
         result = self.task.action_task_send()
