@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* project_status
+# 	* project_status
 #
 msgid ""
 msgstr ""
@@ -13,8 +13,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
-"n%100==4 ? 2 : 3;\n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
+"%100==4 ? 2 : 3;\n"
 "X-Generator: Weblate 3.10\n"
 
 #. module: project_status
@@ -98,6 +98,13 @@ msgid "Pending"
 msgstr "Na čakanju"
 
 #. module: project_status
+#: model:ir.model,name:project_status.model_project_project
+#, fuzzy
+#| msgid "Project Status"
+msgid "Project"
+msgstr "Projektni status"
+
+#. module: project_status
 #: model:ir.model,name:project_status.model_project_status
 #: model:ir.model.fields,field_description:project_status.field_project_project__project_status
 msgid "Project Status"
@@ -139,7 +146,5 @@ msgstr "Določite, če je to zaključni status."
 msgid "Status"
 msgstr "Status"
 
-#. module: project_status
-#: model:ir.model,name:project_status.model_project_project
-msgid "WBS element"
-msgstr "Projektni člen"
+#~ msgid "WBS element"
+#~ msgstr "Projektni člen"
