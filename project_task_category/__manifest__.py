@@ -4,7 +4,7 @@
 {
     "name": "Project Task Categories",
     "summary": "Allow unique category for Tasks",
-    "version": "11.0.1.0.0",
+    "version": "12.0.1.0.0",
     "author": "Elico Corp, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "category": "Project Management",
