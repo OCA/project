@@ -9,14 +9,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-01 03:31+0000\n"
-"PO-Revision-Date: 2017-07-01 03:31+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"PO-Revision-Date: 2020-05-30 12:19+0000\n"
+"Last-Translator: Sergio Zanchetta <primes2h@gmail.com>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.10\n"
 
 #. module: project_recalculate
 #: model:ir.model.fields,help:project_recalculate.field_project_task__from_days
@@ -32,7 +33,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_recalculate.field_project_project__calculation_type
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__calculation_type
 msgid "Calculation type"
-msgstr ""
+msgstr "Tipo di calcolo"
 
 #. module: project_recalculate
 #: model_terms:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
@@ -68,22 +69,22 @@ msgstr "Continua"
 #. module: project_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__create_uid
 msgid "Created by"
-msgstr "Created by"
+msgstr "Creato da"
 
 #. module: project_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__create_date
 msgid "Created on"
-msgstr "Created on"
+msgstr "Creato il"
 
 #. module: project_recalculate
 #: selection:project.project,calculation_type:0
 msgid "Date begin"
-msgstr ""
+msgstr "Data inizio"
 
 #. module: project_recalculate
 #: selection:project.project,calculation_type:0
 msgid "Date end"
-msgstr ""
+msgstr "Data fine"
 
 #. module: project_recalculate
 #: model_terms:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
@@ -93,7 +94,7 @@ msgstr ""
 #. module: project_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__display_name
 msgid "Display Name"
-msgstr "Nome da visualizzare"
+msgstr "Nome visualizzato"
 
 #. module: project_recalculate
 #: code:addons/project_recalculate/models/project_task.py:184
@@ -104,7 +105,7 @@ msgstr ""
 #. module: project_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_task__estimated_days
 msgid "Estimated days"
-msgstr ""
+msgstr "Giorni stimati"
 
 #. module: project_recalculate
 #: code:addons/project_recalculate/models/project_task.py:32
@@ -115,7 +116,7 @@ msgstr ""
 #. module: project_recalculate
 #: model:ir.model.fields,help:project_recalculate.field_project_task__estimated_days
 msgid "Estimated days to end"
-msgstr ""
+msgstr "Giorni stimati alla chiusura"
 
 #. module: project_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_task__from_days
@@ -157,43 +158,43 @@ msgstr "Ultima modifica il"
 #. module: project_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__write_uid
 msgid "Last Updated by"
-msgstr "Last Updated by"
+msgstr "Ultimo aggiornamento di"
 
 #. module: project_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__write_date
 msgid "Last Updated on"
-msgstr "Last Updated on"
+msgstr "Ultimo aggiornamento il"
 
 #. module: project_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__project_id
 msgid "Project"
-msgstr ""
+msgstr "Progetto"
 
 #. module: project_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__project_date
 msgid "Project Date"
-msgstr ""
+msgstr "Data progetto"
 
 #. module: project_recalculate
 #: model_terms:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
 msgid "Project name"
-msgstr ""
+msgstr "Nome progetto"
 
 #. module: project_recalculate
 #: model:ir.actions.act_window,name:project_recalculate.wizard_project_recalculate
 msgid "Project recalculate"
-msgstr ""
+msgstr "Ricalcolo progetto"
 
 #. module: project_recalculate
 #: model:ir.model,name:project_recalculate.model_project_recalculate_wizard
 msgid "Project recalculate wizard"
-msgstr ""
+msgstr "Procedura ricalcolo progetto"
 
 #. module: project_recalculate
 #: model_terms:ir.ui.view,arch_db:project_recalculate.edit_project_recalculate
 #: model_terms:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
 msgid "Recalculate project"
-msgstr ""
+msgstr "Ricalcola progetto"
 
 #. module: project_recalculate
 #: model:ir.model,name:project_recalculate.model_resource_calendar
@@ -209,12 +210,12 @@ msgstr ""
 #. module: project_recalculate
 #: model:ir.model,name:project_recalculate.model_project_task
 msgid "Task"
-msgstr "Attività"
+msgstr "Lavoro"
 
 #. module: project_recalculate
 #: model:ir.model,name:project_recalculate.model_project_task_type
 msgid "Task Stage"
-msgstr ""
+msgstr "Fase lavoro"
 
 #. module: project_recalculate
 #: model_terms:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
@@ -224,4 +225,4 @@ msgstr ""
 #. module: project_recalculate
 #: model:ir.model,name:project_recalculate.model_project_project
 msgid "WBS element"
-msgstr ""
+msgstr "Elemento WBS"
