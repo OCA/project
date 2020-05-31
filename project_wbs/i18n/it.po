@@ -6,13 +6,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2020-05-31 10:09+0000\n"
+"Last-Translator: Sergio Zanchetta <primes2h@gmail.com>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.10\n"
 
 #. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project_kanban
@@ -23,7 +25,7 @@ msgstr ""
 #: model:ir.model,name:project_wbs.model_account_analytic_account
 #: model:ir.model.fields,field_description:project_wbs.field_project_project__analytic_account_id
 msgid "Analytic Account"
-msgstr ""
+msgstr "Conto analitico"
 
 #. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.edit_project
@@ -50,18 +52,18 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project_project_filter
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project_project_group_filter
 msgid "Class"
-msgstr ""
+msgstr "Classe"
 
 #. module: project_wbs
 #: model_terms:ir.actions.act_window,help:project_wbs.open_view_project_wbs
 msgid "Click to start a new project."
-msgstr ""
+msgstr "Fai clic per avviare un nuovo progetto."
 
 #. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.edit_project
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project
 msgid "Code"
-msgstr ""
+msgstr "Codice"
 
 #. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.edit_project
@@ -71,7 +73,7 @@ msgstr ""
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__partner_id
 msgid "Customer"
-msgstr ""
+msgstr "Cliente"
 
 #. module: project_wbs
 #: selection:account.analytic.account,account_class:0
@@ -88,7 +90,7 @@ msgstr ""
 #: code:addons/project_wbs/models/project_project.py:339
 #, python-format
 msgid "Details"
-msgstr ""
+msgstr "Dettagli"
 
 #. module: project_wbs
 #: code:addons/project_wbs/models/account_analytic_account.py:181
@@ -99,7 +101,7 @@ msgstr ""
 #. module: project_wbs
 #: model:ir.actions.act_window,name:project_wbs.open_view_project_form
 msgid "Edit project"
-msgstr ""
+msgstr "Modifica progetto"
 
 #. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project
@@ -109,19 +111,19 @@ msgstr ""
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__complete_wbs_code
 msgid "Full WBS Code"
-msgstr ""
+msgstr "Codice WBS completo"
 
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__complete_wbs_name
 #: model:ir.model.fields,field_description:project_wbs.field_project_project__complete_wbs_name
 msgid "Full WBS path"
-msgstr ""
+msgstr "Percorso WBS completo"
 
 #. module: project_wbs
 #: model:ir.model.fields,help:project_wbs.field_account_analytic_account__complete_wbs_name
 #: model:ir.model.fields,help:project_wbs.field_project_project__complete_wbs_name
 msgid "Full path in the WBS hierarchy"
-msgstr ""
+msgstr "Percorso completo nella gerarchia WBS"
 
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_project_project__has_project_child_complete_ids
@@ -132,7 +134,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__wbs_indent
 #: model:ir.model.fields,field_description:project_wbs.field_project_project__wbs_indent
 msgid "Level"
-msgstr ""
+msgstr "Livello"
 
 #. module: project_wbs
 #: model:ir.model.fields,help:project_wbs.field_project_project__analytic_account_id
@@ -142,13 +144,13 @@ msgstr ""
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__manager_id
 msgid "Manager"
-msgstr ""
+msgstr "Responsabile"
 
 #. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_account_analytic_account_search2
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project_project_group_filter
 msgid "Master Project"
-msgstr ""
+msgstr "Progetto principale"
 
 #. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project
@@ -181,28 +183,28 @@ msgstr ""
 #: selection:account.analytic.account,account_class:0
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_account_analytic_account_search2
 msgid "Project"
-msgstr ""
+msgstr "Progetto"
 
 #. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project
 msgid "Project Form View"
-msgstr ""
+msgstr "Vista modulo progetto"
 
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_project_project__project_child_complete_ids
 msgid "Project Hierarchy"
-msgstr ""
+msgstr "Gerarchia progetto"
 
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__user_id
 msgid "Project Manager"
-msgstr ""
+msgstr "Responsabile progetto"
 
 #. module: project_wbs
 #: model:ir.actions.act_window,name:project_wbs.group_project
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__project_ids
 msgid "Projects"
-msgstr ""
+msgstr "Progetti"
 
 #. module: project_wbs
 #: model_terms:ir.actions.act_window,help:project_wbs.open_view_project_wbs
@@ -216,7 +218,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__code
 #: model:ir.model.fields,field_description:project_wbs.field_project_project__code
 msgid "Reference"
-msgstr ""
+msgstr "Riferimento"
 
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__project_analytic_id
@@ -227,7 +229,7 @@ msgstr ""
 #. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project
 msgid "Start Date"
-msgstr ""
+msgstr "Data inizio"
 
 #. module: project_wbs
 #: model:ir.model.fields,help:project_wbs.field_account_analytic_account__account_class
@@ -246,28 +248,28 @@ msgstr ""
 #: code:addons/project_wbs/models/account_analytic_account.py:230
 #, python-format
 msgid "The full wbs code must be unique!"
-msgstr ""
+msgstr "Il codice WBS completo deve essere univoco!"
 
 #. module: project_wbs
 #: code:addons/project_wbs/models/project_project.py:141
 #, python-format
 msgid "Unknown Analytic Account"
-msgstr ""
+msgstr "Conto analitico sconosciuto"
 
 #. module: project_wbs
 #: model:ir.ui.menu,name:project_wbs.menu_project_wbs_project
 msgid "WBS"
-msgstr ""
+msgstr "WBS"
 
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_project_project__complete_wbs_code
 msgid "WBS Code"
-msgstr ""
+msgstr "Codice WBS"
 
 #. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project_kanban
 msgid "WBS Elements:"
-msgstr ""
+msgstr "Elementi WBS:"
 
 #. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.edit_project
@@ -276,39 +278,39 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_account_analytic_account_search
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project_project_filter
 msgid "WBS code"
-msgstr ""
+msgstr "Codice WBS"
 
 #. module: project_wbs
 #: model:ir.model,name:project_wbs.model_project_project
 msgid "WBS element"
-msgstr ""
+msgstr "Elemento WBS"
 
 #. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.edit_project
 msgid "WBS element name"
-msgstr ""
+msgstr "Nome elemento WBS"
 
 #. module: project_wbs
 #: model:ir.actions.act_window,name:project_wbs.create_wbs_element
 #: model:ir.actions.act_window,name:project_wbs.open_view_project_wbs
 #: model:ir.actions.act_window,name:project_wbs.open_view_wbs_kanban
 msgid "WBS elements"
-msgstr ""
+msgstr "Elementi WBS"
 
 #. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_account_analytic_account_search
 msgid "WBS name"
-msgstr ""
+msgstr "Nome WBS"
 
 #. module: project_wbs
 #: model:ir.actions.act_window,name:project_wbs.open_view_wbs_tree
 msgid "WBS overview"
-msgstr ""
+msgstr "Panoramica WBS"
 
 #. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.edit_project
 msgid "Work Breakdown Structure"
-msgstr ""
+msgstr "Struttura analitica di progetto (WBS)"
 
 #. module: project_wbs
 #: selection:account.analytic.account,account_class:0
