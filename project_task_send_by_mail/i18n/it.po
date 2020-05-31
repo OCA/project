@@ -9,14 +9,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-23 02:56+0000\n"
-"PO-Revision-Date: 2017-08-23 02:56+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"PO-Revision-Date: 2020-05-31 10:09+0000\n"
+"Last-Translator: Sergio Zanchetta <primes2h@gmail.com>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.10\n"
 
 #. module: project_task_send_by_mail
 #: model:mail.template,body_html:project_task_send_by_mail.email_task_template
@@ -79,13 +80,13 @@ msgstr ""
 #. module: project_task_send_by_mail
 #: model:mail.template,subject:project_task_send_by_mail.email_task_template
 msgid "${object.company_id.name} Task (Ref ${object.name or 'n/a'})"
-msgstr ""
+msgstr "${object.company_id.name} Lavoro (Rif. ${object.name or 'n/d'})"
 
 #. module: project_task_send_by_mail
 #: code:addons/project_task_send_by_mail/models/project.py:27
 #, python-format
 msgid "Compose Email"
-msgstr "Componi Email"
+msgstr "Componi e-mail"
 
 #. module: project_task_send_by_mail
 #: model_terms:ir.ui.view,arch_db:project_task_send_by_mail.view_task_form2
@@ -96,4 +97,4 @@ msgstr ""
 #: model:ir.model,name:project_task_send_by_mail.model_project_task
 #: model:mail.template,report_name:project_task_send_by_mail.email_task_template
 msgid "Task"
-msgstr "Attività"
+msgstr "Lavoro"
