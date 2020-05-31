@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2020-05-30 15:19+0000\n"
+"PO-Revision-Date: 2020-06-01 00:19+0000\n"
 "Last-Translator: Sergio Zanchetta <primes2h@gmail.com>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -66,7 +66,7 @@ msgstr ""
 #. module: project_risk
 #: selection:project.risk,rating:0
 msgid "Critical"
-msgstr "Critico"
+msgstr "Critica"
 
 #. module: project_risk
 #: model:ir.model.fields,field_description:project_risk.field_project_risk__description
@@ -117,7 +117,7 @@ msgstr "Raggruppa per..."
 #: selection:project.risk,proximity:0
 #: selection:project.risk,rating:0
 msgid "High"
-msgstr "Alto"
+msgstr "Alta"
 
 #. module: project_risk
 #: model:ir.model.fields,field_description:project_risk.field_project_risk__id
@@ -190,12 +190,12 @@ msgstr "Probabile"
 #: selection:project.risk,proximity:0
 #: selection:project.risk,rating:0
 msgid "Low"
-msgstr "Basso"
+msgstr "Bassa"
 
 #. module: project_risk
 #: selection:project.risk,rating:0
 msgid "Low-Medium"
-msgstr "Medio-basso"
+msgstr "Medio-bassa"
 
 #. module: project_risk
 #: model:ir.model.fields,field_description:project_risk.field_project_risk__message_main_attachment_id
@@ -206,12 +206,12 @@ msgstr "Allegato principale"
 #: selection:project.risk,proximity:0
 #: selection:project.risk,rating:0
 msgid "Medium"
-msgstr "Medio"
+msgstr "Media"
 
 #. module: project_risk
 #: selection:project.risk,rating:0
 msgid "Medium-High"
-msgstr "Medio-alto"
+msgstr "Medio-alta"
 
 #. module: project_risk
 #: model:ir.model.fields,field_description:project_risk.field_project_risk__message_has_error
@@ -226,7 +226,7 @@ msgstr "Messaggi"
 #. module: project_risk
 #: selection:project.risk,impact:0
 msgid "Minor"
-msgstr ""
+msgstr "Minore"
 
 #. module: project_risk
 #: selection:project.risk,impact:0
@@ -372,7 +372,7 @@ msgstr "Sequenza"
 #. module: project_risk
 #: selection:project.risk,impact:0
 msgid "Significant"
-msgstr ""
+msgstr "Significativo"
 
 #. module: project_risk
 #: model:ir.model.fields,field_description:project_risk.field_project_risk__state
@@ -383,7 +383,7 @@ msgstr "Stato"
 #: selection:project.risk,impact:0
 #: selection:project.risk,rating:0
 msgid "Trivial"
-msgstr ""
+msgstr "Irrilevante"
 
 #. module: project_risk
 #: selection:project.risk,probability:0
@@ -404,12 +404,12 @@ msgstr "Numero messaggi non letti"
 #: selection:project.risk,proximity:0
 #: selection:project.risk,rating:0
 msgid "Very High"
-msgstr "Molto alto"
+msgstr "Molto alta"
 
 #. module: project_risk
 #: selection:project.risk,rating:0
 msgid "Very Low"
-msgstr "Molto basso"
+msgstr "Molto bassa"
 
 #. module: project_risk
 #: selection:project.risk,probability:0
@@ -419,7 +419,7 @@ msgstr "Molto probabile"
 #. module: project_risk
 #: selection:project.risk,proximity:0
 msgid "Very low"
-msgstr "Molto basso"
+msgstr "Molto bassa"
 
 #. module: project_risk
 #: model:ir.model,name:project_risk.model_project_project
