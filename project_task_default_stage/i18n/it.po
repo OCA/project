@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-10 02:49+0000\n"
-"PO-Revision-Date: 2020-05-31 10:09+0000\n"
+"PO-Revision-Date: 2020-06-01 00:19+0000\n"
 "Last-Translator: Sergio Zanchetta <primes2h@gmail.com>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
@@ -107,7 +107,7 @@ msgstr "Pronto per prossima fase"
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_specification
 msgid "Specification"
-msgstr "Specifica"
+msgstr "Specifiche"
 
 #. module: project_task_default_stage
 #: model:ir.model,name:project_task_default_stage.model_project_task_type
