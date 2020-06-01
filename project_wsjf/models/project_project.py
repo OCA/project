@@ -12,12 +12,8 @@ class ProjectProject(models.Model):
     ]
     _order = 'wsjf desc, sequence'
 
-    internal_pressure = fields.Selection(
-        inverse='_inverse_internal_pressure'
-    )
-
-    @api.multi
-    def _inverse_internal_pressure(self):
+    @api.onchange('internal_pressure')
+    def _onchange_internal_pressure(self):
         for record in self:
             for task in record.task_ids:
                 task.internal_pressure = record.internal_pressure

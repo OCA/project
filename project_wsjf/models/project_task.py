@@ -12,12 +12,8 @@ class ProjectTask(models.Model):
     ]
     _order = 'wsjf desc, sequence'
 
-    project_id = fields.Many2one(
-        inverse='_inverse_project_id',
-    )
-
-    @api.multi
-    def _inverse_project_id(self):
+    @api.onchange('project_id')
+    def _onchange_project_id(self):
         for record in self:
             if record.project_id:
                 record.write({
