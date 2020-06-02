@@ -4,11 +4,10 @@
     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 -->
 <odoo>
-
     <record id="edit_project" model="ir.ui.view">
         <field name="name">project.project.form</field>
         <field name="model">project.project</field>
-        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="inherit_id" ref="project.edit_project" />
         <field name="arch" type="xml">
             <button name="toggle_active" position="before">
                 <button
@@ -21,11 +20,10 @@
             </button>
             <page name="settings">
                 <group name="roles" string="Assignments">
-                    <field name="inherit_assignments"/>
-                    <field name="limit_role_to_assignments"/>
+                    <field name="inherit_assignments" />
+                    <field name="limit_role_to_assignments" />
                 </group>
             </page>
         </field>
     </record>
-
 </odoo>
