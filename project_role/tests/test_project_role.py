@@ -5,7 +5,7 @@ from unittest import mock
 
 from psycopg2 import IntegrityError
 
-from odoo.exceptions import ValidationError
+from odoo.exceptions import UserError, ValidationError
 from odoo.tests import common
 from odoo.tools.misc import mute_logger
 
@@ -22,7 +22,7 @@ class TestProjectRole(common.TransactionCase):
         self.Project = self.env["project.project"]
         self.Role = self.env["project.role"]
         self.Assignment = self.env["project.assignment"]
-        self.company_id = self.env["res.company"]._company_default_get()
+        self.company_id = self.env.user.company_id
 
     def test_create_assignment(self):
         user = self.ResUsers.sudo().create(
@@ -72,13 +72,17 @@ class TestProjectRole(common.TransactionCase):
         )
         project = self.Project.create({"name": "Project"})
         role = self.Role.create({"name": "Role"})
-
+        company_1 = self.Company.create({"name": "Company #1"})
         with mock.patch(
             _project_role_class + ".can_assign", return_value=False,
         ):
             with self.assertRaises(ValidationError):
                 self.Assignment.create(
                     {"project_id": project.id, "role_id": role.id, "user_id": user.id}
+                )
+            with self.assertRaises(ValidationError):
+                self.Assignment.create(
+                    {"role_id": role.id, "user_id": user.id, "company_id": company_1.id}
                 )
             with self.assertRaises(ValidationError):
                 self.Assignment.create(
@@ -116,7 +120,7 @@ class TestProjectRole(common.TransactionCase):
 
         self.assertTrue(child_role.complete_name, "Parent Role / Child Role")
 
-        with self.assertRaises(ValidationError):
+        with self.assertRaises(UserError):
             parent_role.parent_id = child_role
 
         child_role.active = False

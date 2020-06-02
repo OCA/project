@@ -36,7 +36,7 @@ class ProjectRole(models.Model):
     company_id = fields.Many2one(
         comodel_name="res.company",
         string="Company",
-        default=lambda self: self.env["res.company"]._company_default_get(),
+        default=lambda self: self.env.company,
         ondelete="cascade",
     )
 
@@ -53,7 +53,6 @@ class ProjectRole(models.Model):
         ),
     ]
 
-    @api.multi
     @api.constrains("name")
     def _check_name(self):
         for role in self:
@@ -69,13 +68,6 @@ class ProjectRole(models.Model):
                     % (role.name,)
                 )
 
-    @api.multi
-    @api.constrains("parent_id")
-    def _check_parent_id(self):
-        if not self._check_recursion():
-            raise ValidationError(_("You cannot create recursive roles."))
-
-    @api.multi
     @api.depends("name", "parent_id.complete_name")
     def _compute_complete_name(self):
         for role in self:
@@ -87,7 +79,6 @@ class ProjectRole(models.Model):
             else:
                 role.complete_name = role.name
 
-    @api.multi
     @api.constrains("active")
     def _check_active(self):
         for role in self:
@@ -104,7 +95,6 @@ class ProjectRole(models.Model):
                     )
                 )
 
-    @api.multi
     def can_assign(self, user_id, project_id):
         """ Extension point to check if user can be assigned to this role """
         self.ensure_one()
@@ -138,10 +128,3 @@ class ProjectRole(models.Model):
                 ("company_id", "=", user_id.company_id.id),
             ]
         return self.env["project.assignment"].search(domain).mapped("role_id")
-
-    # TODO: Should be removed once not used anywhere
-    @api.model
-    def get_available_roles_domain(self, user_id, project_id):
-        return [
-            ("id", "in", self.get_available_roles(user_id, project_id).ids),
-        ]
