@@ -9,7 +9,7 @@
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.edit_project" />
         <field name="arch" type="xml">
-            <button name="toggle_active" position="before">
+            <div name="button_box" position="inside">
                 <button
                     class="oe_stat_button"
                     name="%(project_assignment_view_project_action)d"
@@ -17,7 +17,7 @@
                     icon="fa-users"
                     string="Assignments"
                 />
-            </button>
+            </div>
             <page name="settings">
                 <group name="roles" string="Assignments">
                     <field name="inherit_assignments" />
