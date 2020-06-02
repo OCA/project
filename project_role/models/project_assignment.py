@@ -15,7 +15,7 @@ class ProjectAssignment(models.Model):
     company_id = fields.Many2one(
         comodel_name="res.company",
         string="Company",
-        default=lambda self: self.env["res.company"]._company_default_get(),
+        default=lambda self: self.env.company,
         ondelete="cascade",
     )
     project_id = fields.Many2one(
@@ -79,7 +79,6 @@ class ProjectAssignment(models.Model):
                     assignment.role_id.name,
                 )
 
-    @api.multi
     def _get_conflicting_domain(self):
         self.ensure_one()
         return (
@@ -100,7 +99,6 @@ class ProjectAssignment(models.Model):
             )
         )
 
-    @api.multi
     @api.constrains("company_id", "project_id", "role_id", "user_id")
     def _check(self):
         """

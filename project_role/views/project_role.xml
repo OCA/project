@@ -64,7 +64,6 @@
         <field name="name">Project Roles</field>
         <field name="res_model">project.role</field>
         <field name="view_mode">tree,form</field>
-        <field name="view_type">form</field>
     </record>
     <menuitem
         id="project_menu_config_roles"
