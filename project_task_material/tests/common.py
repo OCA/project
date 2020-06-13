@@ -28,4 +28,4 @@ class TestProjectCases(TransactionCase):
         self.product = self.env.ref("product.consu_delivery_03")
 
         # Refer to a action from the user created
-        self.action = self.task.sudo(self.project_user.id)
+        self.action = self.task.with_user(self.project_user.id)
