@@ -43,6 +43,7 @@ addon | version | summary
 [project_task_code](project_task_code/) | 12.0.1.0.1 | Sequential Code for Tasks
 [project_task_default_stage](project_task_default_stage/) | 12.0.1.0.0 | Recovery default task stage projects from v8
 [project_task_dependency](project_task_dependency/) | 12.0.1.0.0 | Enables to define dependencies (other tasks) of a task
+[project_task_digitized_signature](project_task_digitized_signature/) | 12.0.1.0.0 | Project Task Digitized Signature
 [project_task_material](project_task_material/) | 12.0.1.0.0 | Record products spent in a Task
 [project_task_material_stock](project_task_material_stock/) | 12.0.1.0.0 | Create stock and analytic moves from record products spent in a Task
 [project_task_project_required](project_task_project_required/) | 12.0.1.0.0 | Set project on task as a mandatory field
