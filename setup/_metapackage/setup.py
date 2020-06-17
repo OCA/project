@@ -31,6 +31,7 @@ setuptools.setup(
         'odoo12-addon-project_task_code',
         'odoo12-addon-project_task_default_stage',
         'odoo12-addon-project_task_dependency',
+        'odoo12-addon-project_task_digitized_signature',
         'odoo12-addon-project_task_material',
         'odoo12-addon-project_task_material_stock',
         'odoo12-addon-project_task_project_required',
