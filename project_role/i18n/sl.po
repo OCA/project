@@ -13,30 +13,30 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
-"n%100==4 ? 2 : 3;\n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
+"%100==4 ? 2 : 3;\n"
 "X-Generator: Weblate 3.10\n"
 
 #. module: project_role
-#: code:addons/project_role/models/project_role.py:97
+#: code:addons/project_role/models/project_role.py:0
 #, python-format
 msgid "%(parent)s / %(own)s"
 msgstr "%(parent)s / %(own)s"
 
 #. module: project_role
-#: code:addons/project_role/models/project_assignment.py:94
+#: code:addons/project_role/models/project_assignment.py:0
 #, python-format
 msgid "%s as %s"
 msgstr "%s kot %s"
 
 #. module: project_role
-#: code:addons/project_role/models/project_assignment.py:88
+#: code:addons/project_role/models/project_assignment.py:0
 #, python-format
 msgid "%s as %s in %s"
 msgstr "%s kot %s v %s"
 
 #. module: project_role
-#: code:addons/project_role/models/project_assignment.py:82
+#: code:addons/project_role/models/project_assignment.py:0
 #, python-format
 msgid "%s as %s on %s"
 msgstr "%s kot %s na %s"
@@ -83,7 +83,7 @@ msgid "Archived"
 msgstr "Arhivirano"
 
 #. module: project_role
-#: code:addons/project_role/models/project_assignment.py:127
+#: code:addons/project_role/models/project_assignment.py:0
 #, python-format
 msgid "Assignment %s conflicts with another assignment: %s"
 msgstr "Zadolžitev %s je v konfliktu z zadolžitvijo: %s"
@@ -197,17 +197,14 @@ msgid "ID"
 msgstr "ID"
 
 #. module: project_role
-#: model:ir.model.fields,help:project_role.field_project_assignment__message_unread
-msgid "If checked new messages require your attention."
-msgstr "Če označeno pomeni, da nova sporočila zahtevajo vašo pozornost."
-
-#. module: project_role
 #: model:ir.model.fields,help:project_role.field_project_assignment__message_needaction
+#: model:ir.model.fields,help:project_role.field_project_assignment__message_unread
 msgid "If checked, new messages require your attention."
 msgstr "Če označeno pomeni, da nova sporočila zahtevajo vašo pozornost."
 
 #. module: project_role
 #: model:ir.model.fields,help:project_role.field_project_assignment__message_has_error
+#: model:ir.model.fields,help:project_role.field_project_assignment__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
 msgstr ""
 "Če označeno pomeni, da je pri nekaterih sporočilih prišlo do napake pri "
@@ -291,7 +288,9 @@ msgstr "Število ukrepov"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_has_error_counter
-msgid "Number of error"
+#, fuzzy
+#| msgid "Number of error"
+msgid "Number of errors"
 msgstr "Število napak"
 
 #. module: project_role
@@ -320,12 +319,13 @@ msgid "Parent Role"
 msgstr "Nadrejena vloga"
 
 #. module: project_role
-#: code:addons/project_role/models/project_role.py:112
+#: code:addons/project_role/models/project_role.py:0
 #, python-format
 msgid "Please activate first parent role %s"
 msgstr "Najprej aktivirajte nadrejeno vlogo %s"
 
 #. module: project_role
+#: model:ir.model,name:project_role.model_project_project
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__project_id
 #: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
 msgid "Project"
@@ -371,13 +371,13 @@ msgid "Role"
 msgstr "Vloga"
 
 #. module: project_role
-#: code:addons/project_role/models/project_role.py:80
+#: code:addons/project_role/models/project_role.py:0
 #, python-format
 msgid "Role \"%s\" conflicts with another role due to same name."
 msgstr "Vloga \"%s\" je v konfliktu z drugo vlogo z istim nazivom."
 
 #. module: project_role
-#: sql_constraint:project.role:0
+#: model:ir.model.constraint,message:project_role.constraint_project_role_name_company_uniq
 msgid "Role with such name already exists in the company!"
 msgstr "Vloga s takim nazivom že obstaja v sklopu družbe!"
 
@@ -387,12 +387,19 @@ msgid "Roles &amp; Assignments"
 msgstr "Vloge in zadolžitve"
 
 #. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__message_has_sms_error
+#, fuzzy
+#| msgid "Message Delivery error"
+msgid "SMS Delivery error"
+msgstr "Napaka ob dostavi sporočila"
+
+#. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
 msgid "Setup project roles"
 msgstr "Nastavi projektne vloge"
 
 #. module: project_role
-#: sql_constraint:project.role:0
+#: model:ir.model.constraint,message:project_role.constraint_project_role_name_nocompany_uniq
 msgid "Shared role with such name already exists!"
 msgstr "Vloga v souporabi s takim nazivom že obstaja!"
 
@@ -413,36 +420,31 @@ msgid "User"
 msgstr "Uporabnik"
 
 #. module: project_role
-#: code:addons/project_role/models/project_assignment.py:136
+#: code:addons/project_role/models/project_assignment.py:0
 #, python-format
 msgid "User %s can not be assigned to role %s on %s."
 msgstr "Uporabniku %s ni mogoče dodeliti vloge %s na %s."
 
 #. module: project_role
-#: code:addons/project_role/models/project_assignment.py:144
+#: code:addons/project_role/models/project_assignment.py:0
 #, python-format
 msgid "User %s can not be assigned to role %s."
 msgstr "Uporabniku %s ni mogoče dodeliti vloge %s."
 
 #. module: project_role
-#: sql_constraint:project.assignment:0
+#: model:ir.model.constraint,message:project_role.constraint_project_assignment_company_role_user_uniq
 msgid "User may be assigned per role only once within a company!"
 msgstr "Uporabniku se lahko dodeli določena vloga le enkrat v sklopu družbe!"
 
 #. module: project_role
-#: sql_constraint:project.assignment:0
+#: model:ir.model.constraint,message:project_role.constraint_project_assignment_project_role_user_uniq
 msgid "User may be assigned per role only once within a project!"
 msgstr "Uporabniku se lahko dodeli določena vloga le enkrat v sklopu projekta!"
 
 #. module: project_role
-#: sql_constraint:project.assignment:0
+#: model:ir.model.constraint,message:project_role.constraint_project_assignment_nocompany_role_user_uniq
 msgid "User may be assigned per role only once!"
 msgstr "Uporabniku se lahko dodeli določeno vlogo le enkrat!"
-
-#. module: project_role
-#: model:ir.model,name:project_role.model_project_project
-msgid "WBS element"
-msgstr "Projektni člen"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__website_message_ids
@@ -454,8 +456,11 @@ msgstr "Spletna sporočila"
 msgid "Website communication history"
 msgstr "Spletna kronologija komunikacij"
 
-#. module: project_role
-#: code:addons/project_role/models/project_role.py:90
-#, python-format
-msgid "You cannot create recursive roles."
-msgstr "Rekurzivne vloge niso dovoljene."
+#~ msgid "If checked new messages require your attention."
+#~ msgstr "Če označeno pomeni, da nova sporočila zahtevajo vašo pozornost."
+
+#~ msgid "WBS element"
+#~ msgstr "Projektni člen"
+
+#~ msgid "You cannot create recursive roles."
+#~ msgstr "Rekurzivne vloge niso dovoljene."
