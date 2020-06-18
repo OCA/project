@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="nps_rating_request_email" model="mail.template">
+      <field name="name">Net Promoter Score: rating request</field>
+      <field name="email_from">${object.rating_get_rated_partner_id().email or '' | safe}</field>
+      <field name="subject">${object.project_id.company_id.name}: Service Rating Request</field>
+      <field name="model_id" ref="project.model_project_task"/>
+      <field name="partner_to" >${object.rating_get_partner_id().id}</field>
+      <field name="auto_delete" eval="True"/>
+      <field name="body_html"><![CDATA[
+<div style="background:#F0F0F0;color:#515166;padding:10px 0px;font-family:Arial,Helvetica,sans-serif;font-size:14px;">
+  % set access_token = object.rating_get_access_token()
+  <table style="width:600px;margin:5px auto;">
+    <tbody>
+      <tr>
+        <td>
+          <a href="/"><img src="/web/binary/company_logo" style="vertical-align:baseline;max-width:100px;"></a>
+        </td>
+        <td style="text-align:right;vertical-align:middle;">
+          Satisfaction Survey
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <table style="width:600px;margin:0px auto;background:white;border:1px solid #e1e1e1;">
+    <tbody>
+      <tr>
+        <td style="padding:15px 20px 10px 20px;">
+          <p>Hello,</p>
+          <p>Please take a moment to rate our services related to the task "<strong>${object.name}</strong>"
+            assigned to <strong>${object.rating_get_rated_partner_id().name}</strong>.</p>
+          <p>We appreciate your feedback. It helps us to improve continuously.</p>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding:10px 20px">
+          <table summary="o_mail_notification" style="width:100%;border-top:1px solid #e1e1e1;">
+            <tbody>
+              <tr>
+                <td style="text-align:center;">
+                  <h2 style="font-weight:300;font-size:18px;">
+                    How likely is it you recommend us to a friend?
+                  </h2>
+                  <div style="text-color: #888888">(click on one of these smileys)</div>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:10px 10px;">
+                  <table style="width:100%;text-align:center;">
+                    <tr>
+                      <td style="padding:10px 10px;">
+                        <a href="/rating/${access_token}/10">
+                          <img alt="10/10" src="/rating_project_issue_nps/static/src/img/rate_10.png"/>
+                        </a>
+                      </td>
+                      <td style="padding:10px 10px;">
+                        <a href="/rating/${access_token}/9">
+                          <img alt="9/10" src="/rating_project_issue_nps/static/src/img/rate_9.png"/>
+                        </a>
+                      </td>
+                      <td style="padding:10px 10px;">
+                        <a href="/rating/${access_token}/8">
+                          <img alt="8/10" src="/rating_project_issue_nps/static/src/img/rate_8.png"/>
+                        </a>
+                      </td>
+                      <td style="padding:10px 10px;">
+                        <a href="/rating/${access_token}/7">
+                          <img alt="7/10" src="/rating_project_issue_nps/static/src/img/rate_7.png"/>
+                        </a>
+                      </td>
+                      <td style="padding:10px 10px;">
+                        <a href="/rating/${access_token}/6">
+                          <img alt="6/10" src="/rating_project_issue_nps/static/src/img/rate_6.png"/>
+                        </a>
+                      </td>
+                      <td style="padding:10px 10px;">
+                        <a href="/rating/${access_token}/5">
+                          <img alt="5/10" src="/rating_project_issue_nps/static/src/img/rate_5.png"/>
+                        </a>
+                      </td>
+                      <td style="padding:10px 10px;">
+                        <a href="/rating/${access_token}/4">
+                          <img alt="4/10" src="/rating_project_issue_nps/static/src/img/rate_4.png"/>
+                        </a>
+                      </td>
+                      <td style="padding:10px 10px;">
+                        <a href="/rating/${access_token}/3">
+                          <img alt="3/10" src="/rating_project_issue_nps/static/src/img/rate_3.png"/>
+                        </a>
+                      </td>
+                      <td style="padding:10px 10px;">
+                        <a href="/rating/${access_token}/2">
+                          <img alt="2/10" src="/rating_project_issue_nps/static/src/img/rate_2.png"/>
+                        </a>
+                      </td>
+                      <td style="padding:10px 10px;">
+                        <a href="/rating/${access_token}/1">
+                          <img alt="1/10" src="/rating_project_issue_nps/static/src/img/rate_1.png"/>
+                        </a>
+                      </td>
+                      <td style="padding:10px 10px;">
+                        <a href="/rating/${access_token}/0">
+                          <img alt="0/10" src="/rating_project_issue_nps/static/src/img/rate_0.png"/>
+                        </a>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <table style="width:100%">
+            <tbody>
+              <tr>
+                <td style="text-align: left;">Very likely</td>
+                <td style="text-align: right;>Very unlikely</td>
+              </tr>
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      <tr><td style="padding:15px 20px 10px 20px;">${(object.user_id.signature or '')| safe}</td></tr>
+    </tbody>
+  </table>
+  <table style="width:600px;margin:auto;text-align:center;font-size:12px;">
+    <tbody>
+      <tr>
+        <td style="padding-top:10px;color:#afafaf;">
+          % if object.project_id.rating_status == 'stage':
+          <p>This customer survey has been sent because your task has been moved to the stage <b>${object.stage_id.name}</b></p>
+          % endif
+          % if object.project_id.rating_status == 'periodic':
+          <p>This customer survey is sent <b>${object.project_id.rating_status_period}</b> as long as the task is in the <b>${object.stage_id.name}</b> stage.
+          </p>
+          % endif
+          <p>Email automatically sent by <a href="${object.project_id.company_id.website}" style="color:#875A7B;">${object.project_id.company_id.name}</a></p>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+]]>
+    </field>
+  </record>
+
+</odoo>

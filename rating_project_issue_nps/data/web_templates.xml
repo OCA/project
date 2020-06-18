@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="rating_external_page_submit">
+      <head>
+        <link rel='stylesheet' href='/web/static/lib/bootstrap/css/bootstrap.css'/>
+      </head>
+      <div class="container">
+        <div clas="row">
+          <h1 class="text-center">Thanks! We appreciate your feedback.</h1>
+          <h4 class="text-center text-muted" style="margin-bottom: 32px;">Your rating has been submitted.</h4>
+          <div class="pull-left">
+            <img t-attf-src='/rating_project_issue_nps/static/src/img/#{rate_name}.png'/>
+          </div>
+          <div style="margin-left: 80px;">
+            <p>
+              <span>Your answer to the question</span>
+              <i>How likely is it you recommend us to a friend?</i>
+              <span>is:</span> <b><t t-esc="rate"></t>/10</b>
+              <p>(10: Very likely, 0: Very unlikely)</p>
+            </p>
+          </div>
+          <div class="clearfix"></div>
+          <p style="margin-top:32px;">
+            Would be great if you can provide more information:
+          </p>
+          <form class="form-horizontal" t-attf-action="/rating/#{token}/#{rate}/submit_feedback" method="post">
+            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+            <textarea class="form-control" name="feedback" rows="8" t-att-value="rating.feedback"></textarea>
+            <button type="submit" class="btn btn-primary" style="margin-top:8px;">Send Feedback</button>
+          </form>
+        </div>
+      </div>
+    </template>
+
+</odoo>
