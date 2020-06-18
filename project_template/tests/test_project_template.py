@@ -12,7 +12,6 @@ class TestProjectTemplate(common.TransactionCase):
             {
                 "name": "TestProject",
                 "alias_name": "test_alias",
-                "total_planned_hours": 0.0,
                 "partner_id": self.test_customer.id,
             }
         )
@@ -60,5 +59,28 @@ class TestProjectTemplate(common.TransactionCase):
         project_01.create_project_from_template()
         new_project = self.env["project.project"].search(
             [("name", "=", "TestProject(TEST) (COPY)")]
+        )
+        self.assertEqual(len(new_project), 1)
+
+    # TEST 02: Create project from template
+    def test_create_project_from_template_with_different_subtask_project(self):
+        # Set Project Template
+        project_01 = self.test_project
+        project_01.is_template = True
+        project_01.on_change_is_template()
+
+        # Create a new project
+        subtask_project = self.env["project.project"].create(
+            {
+                "name": "test_subtask_project",
+                "alias_name": "test_subtask_project",
+                "partner_id": self.test_customer.id,
+            }
+        )
+        project_01.subtask_project_id = subtask_project.id
+        # Create new Project from Template
+        project_01.create_project_from_template()
+        new_project = self.env["project.project"].search(
+            [("name", "=", "TestProject (COPY)")]
         )
         self.assertEqual(len(new_project), 1)
