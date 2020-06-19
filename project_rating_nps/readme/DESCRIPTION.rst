@@ -1,11 +1,3 @@
-.. image:: https://img.shields.io/badge/license-AGPL--3-blue.png
-   :target: https://www.gnu.org/licenses/agpl
-   :alt: License: AGPL-3
-
-==========================================
- Project issue rating: Net Promoter Score
-==========================================
-
 This module implements the `Net Promoter Score`_ (NPS) customer
 satisfaction measure.
 

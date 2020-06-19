@@ -1,4 +1,5 @@
-# -*- coding: utf-8 -*-
+# Copyright 2020 Commown SCIC SAS (https://commown.fr)
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from datetime import timedelta
 
@@ -59,7 +60,7 @@ class ProjectTask(models.Model):
                 {'rating': rate, 'feedback': feedback, 'consumed': True})
             if hasattr(self, 'message_post'):
                 feedback = tools.plaintext2html(feedback or '')
-                body = ("<img src='/rating_project_issue_nps/static/src"
+                body = ("<img src='/project_rating_nps/static/src"
                         "/img/rate_%s.png' style='width:20px;height:20px;"
                         "float:left;margin-right: 5px;'/>%s")
                 # None will set the default author in mail_thread.py

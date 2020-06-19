@@ -7,7 +7,7 @@
         <field name="inherit_id" ref="rating.rating_rating_view_kanban"/>
         <field name="arch" type="xml">
             <xpath expr="//img" position="attributes">
-                <attribute name="t-attf-src">/rating_project_issue_nps/static/src/img/rate_with_icon_#{record.rating.raw_value}.png</attribute>
+                <attribute name="t-attf-src">/project_rating_nps/static/src/img/rate_with_icon_#{record.rating.raw_value}.png</attribute>
             </xpath>
         </field>
     </record>
@@ -37,7 +37,7 @@
             <field name="partner_id" position="after">
                 <field name="net_promoter_score" invisible="1"/>
             </field>
-            <xpath expr="//div[@class='o_kanban_primary_left']/div[3]" position="replace">
+            <xpath expr="//div[1]/div[1]/div[1]/div[1]/div[3]" position="replace">
               <div t-if="record.rating_status.raw_value != 'no'" class="mt8 text-primary"
                    title="Net promoter score over the past 30 days. Get rating details from the More menu.">
                 <b>
@@ -46,7 +46,7 @@
                     <t t-set="nps_names" t-value="['detractor', 'passive', 'promoter']"/>
                     <t t-set="nps_index" t-value="1 + Math.sign(record.net_promoter_score.raw_value)"/>
                     <t t-debug=""/>
-                    <img t-attf-src="rating_project_issue_nps/static/src/img/{{ nps_names[nps_index] }}.png" t-att-alt="record.net_promoter_score.value" style="width: 32px;"/>
+                    <img t-attf-src="project_rating_nps/static/src/img/{{ nps_names[nps_index] }}.png" t-att-alt="record.net_promoter_score.value" style="width: 32px;"/>
                     <t t-esc="record.net_promoter_score.raw_value"/>
                     <t t-esc="nps_name"/>
                   </span>

@@ -1,3 +1,6 @@
+# Copyright 2020 Commown SCIC SAS (https://commown.fr)
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+
 from odoo import models, fields, api
 
 

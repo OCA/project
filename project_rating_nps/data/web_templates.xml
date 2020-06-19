@@ -10,7 +10,7 @@
           <h1 class="text-center">Thanks! We appreciate your feedback.</h1>
           <h4 class="text-center text-muted" style="margin-bottom: 32px;">Your rating has been submitted.</h4>
           <div class="pull-left">
-            <img t-attf-src='/rating_project_issue_nps/static/src/img/#{rate_name}.png'/>
+            <img t-attf-src='/project_rating_nps/static/src/img/#{rate_name}.png'/>
           </div>
           <div style="margin-left: 80px;">
             <p>

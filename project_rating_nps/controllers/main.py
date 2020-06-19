@@ -1,3 +1,6 @@
+# Copyright 2020 Commown SCIC SAS (https://commown.fr)
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+
 from odoo import http
 from odoo.http import request
 
@@ -17,7 +20,7 @@ class NetPromoterScoreRating(Rating):
         rate_name = (rate >= 9 and 'promoter' or rate >= 7 and 'passive'
                      or 'detractor')
         return request.render(
-            'rating_project_issue_nps.rating_external_page_submit', {
+            'project_rating_nps.rating_external_page_submit', {
                 'rating': rating, 'token': token,
                 'rate_name': rate_name, 'rate': rate,
             })
