@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-10 02:50+0000\n"
-"PO-Revision-Date: 2020-06-22 03:19+0000\n"
+"PO-Revision-Date: 2020-06-23 15:19+0000\n"
 "Last-Translator: Fernando Colus <fcolus1@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/teams/"
 "23907/pt_BR/)\n"
@@ -50,7 +50,7 @@ msgstr "Confirmado"
 #: model:ir.model.fields,field_description:project_task_material_stock.field_project_task__consume_material
 #: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_type__consume_material
 msgid "Consume Material"
-msgstr "Consumir material"
+msgstr "Consumir Material"
 
 #. module: project_task_material_stock
 #: model:ir.model.fields,help:project_task_material_stock.field_project_project__location_source_id
@@ -71,7 +71,7 @@ msgstr "Localização de Destino"
 #. module: project_task_material_stock
 #: selection:project.task,stock_state:0
 msgid "Done"
-msgstr "Feito"
+msgstr "Concluído"
 
 #. module: project_task_material_stock
 #: model:ir.model.fields,help:project_task_material_stock.field_project_task__consume_material
@@ -118,7 +118,7 @@ msgstr "Pendente"
 #. module: project_task_material_stock
 #: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_material__product_id
 msgid "Product"
-msgstr "Produtos"
+msgstr "Produto"
 
 #. module: project_task_material_stock
 #: model_terms:ir.ui.view,arch_db:project_task_material_stock.view_project_task_form_material_stock
