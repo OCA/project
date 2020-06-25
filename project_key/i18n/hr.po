@@ -1,0 +1,64 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* project_key
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2019-12-02 16:28+0000\n"
+"Last-Translator: Bole <bole@dajmi5.com>\n"
+"Language-Team: none\n"
+"Language: hr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<="
+"4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 3.9.1\n"
+
+#. module: project_key
+#: model:ir.model.fields,field_description:project_key.field_project_project__key
+msgid "Key"
+msgstr "Šifra"
+
+#. module: project_key
+#: model:ir.model.fields,field_description:project_key.field_project_project__task_key_sequence_id
+msgid "Key Sequence"
+msgstr "Redosljed šifre"
+
+#. module: project_key
+#: sql_constraint:project.project:0
+msgid "Project key must be unique"
+msgstr "Šifra projekta mora biti jedinstvena"
+
+#. module: project_key
+#: code:addons/project_key/models/project_project.py:121
+#, python-format
+msgid "Project task sequence for project "
+msgstr "Redosljed zadatka na projektu "
+
+#. module: project_key
+#: model:ir.model,name:project_key.model_project_task
+msgid "Task"
+msgstr "Zadatak"
+
+#. module: project_key
+#: sql_constraint:project.task:0
+msgid "Task key must be unique!"
+msgstr "Šifra zadatka mora biti jednistvena!"
+
+#. module: project_key
+#: model:ir.model.fields,field_description:project_key.field_project_task__url
+msgid "URL"
+msgstr "URL"
+
+#. module: project_key
+#: model:ir.model,name:project_key.model_project_project
+msgid "WBS element"
+msgstr "WBS element"
+
+#. module: project_key
+#: model:ir.model.fields,field_description:project_key.field_project_task__key
+msgid "key"
+msgstr "šifra"

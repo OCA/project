@@ -29,7 +29,8 @@
             <field name="milestone_id"
                    domain="[('project_id', '=', project_id)]"
                    option="{'no_create_edit': True}"
-                   attrs="{'invisible':[('use_milestones','=', False)]}"/>
+                   attrs="{'invisible':[('use_milestones','=', False)]}"
+                   context="{'default_project_id': project_id}"/>
           </xpath>
       </field>
     </record>

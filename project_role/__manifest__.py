@@ -3,7 +3,7 @@
 
 {
     'name': 'Project Roles',
-    'version': '12.0.2.0.0',
+    'version': '12.0.3.0.0',
     'category': 'Project',
     'website': 'https://github.com/OCA/project',
     'author':
@@ -24,5 +24,8 @@
         'views/project_project.xml',
         'views/project_role.xml',
         'views/res_config_settings.xml',
+    ],
+    'maintainers': [
+        'alexey-pelykh',
     ],
 }

@@ -1,0 +1,66 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* project_wbs_task
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: project_wbs_task
+#: model:ir.model.fields,field_description:project_wbs_task.field_project_task__project_complete_wbs_code
+msgid "Full WBS Code"
+msgstr ""
+
+#. module: project_wbs_task
+#: model:ir.model.fields,field_description:project_wbs_task.field_project_task__project_complete_wbs_name
+msgid "Full WBS Name"
+msgstr ""
+
+#. module: project_wbs_task
+#: model:ir.model.fields,help:project_wbs_task.field_project_task__project_complete_wbs_name
+msgid "Full path in the WBS hierarchy"
+msgstr ""
+
+#. module: project_wbs_task
+#: model:ir.model.fields,help:project_wbs_task.field_project_task__analytic_account_id
+msgid "Move created will be assigned to this analytic account"
+msgstr ""
+
+#. module: project_wbs_task
+#: model:ir.model.fields,field_description:project_wbs_task.field_project_task__analytic_account_id
+msgid "Project Analytic Account"
+msgstr ""
+
+#. module: project_wbs_task
+#: model:ir.model,name:project_wbs_task.model_project_task
+msgid "Task"
+msgstr ""
+
+#. module: project_wbs_task
+#: model:ir.actions.act_window,name:project_wbs_task.action_task_tree_view
+#: model_terms:ir.ui.view,arch_db:project_wbs_task.view_project
+msgid "Tasks"
+msgstr ""
+
+#. module: project_wbs_task
+#: model:ir.model.fields,help:project_wbs_task.field_project_task__project_complete_wbs_code
+msgid "The full WBS code describes the full path of this component within the project WBS hierarchy"
+msgstr ""
+
+#. module: project_wbs_task
+#: model_terms:ir.ui.view,arch_db:project_wbs_task.view_task_search_form
+msgid "WBS code"
+msgstr ""
+
+#. module: project_wbs_task
+#: model_terms:ir.ui.view,arch_db:project_wbs_task.view_task_search_form
+msgid "WBS name"
+msgstr ""
+

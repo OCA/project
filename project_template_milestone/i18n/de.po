@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* project_template_milestone
+# 	* project_template_milestone
 #
 msgid ""
 msgstr ""
@@ -18,5 +18,8 @@ msgstr ""
 
 #. module: project_template_milestone
 #: model:ir.model,name:project_template_milestone.model_project_project
-msgid "Project"
-msgstr "Projekt"
+msgid "WBS element"
+msgstr ""
+
+#~ msgid "Project"
+#~ msgstr "Projekt"

@@ -52,7 +52,6 @@ msgid "Practical Amount"
 msgstr ""
 
 #. module: project_budget
-#: model:ir.model,name:project_budget.model_project_project
 #: model:ir.model.fields,field_description:project_budget.field_crossovered_budget__project_id
 msgid "Project"
 msgstr ""
@@ -80,5 +79,10 @@ msgstr ""
 #. module: project_budget
 #: model:res.groups,name:project_budget.group_project_budget_viewer
 msgid "Viewer"
+msgstr ""
+
+#. module: project_budget
+#: model:ir.model,name:project_budget.model_project_project
+msgid "WBS element"
 msgstr ""
 

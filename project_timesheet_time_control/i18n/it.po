@@ -9,14 +9,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-05-10 02:40+0000\n"
-"PO-Revision-Date: 2017-05-10 02:40+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"PO-Revision-Date: 2020-05-31 10:09+0000\n"
+"Last-Translator: Sergio Zanchetta <primes2h@gmail.com>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.10\n"
 
 #. module: project_timesheet_time_control
 #: code:addons/project_timesheet_time_control/wizards/hr_timesheet_switch.py:45
@@ -25,6 +26,8 @@ msgid ""
 "%d running timers found. Cannot know which one to stop. Please stop them "
 "manually."
 msgstr ""
+"%d timer in corso trovati. Non è chiaro quali fermare. Per favore, fermali "
+"manualmente."
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
@@ -32,6 +35,8 @@ msgid ""
 ".\n"
 "                        If you continue, it will be stopped with"
 msgstr ""
+".\n"
+"                        Se continui, sarà fermato con"
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_project_kanban_inherited
@@ -42,6 +47,11 @@ msgid ""
 "                            Start work\n"
 "                        </span>"
 msgstr ""
+"<span class=\"o_label\">\n"
+"                            <i class=\"fa fa-lg fa-play-circle text-success\""
+"/>\n"
+"                            Avvia lavoro\n"
+"                        </span>"
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_project_kanban_inherited
@@ -52,28 +62,31 @@ msgid ""
 "                            Stop work\n"
 "                        </span>"
 msgstr ""
+"<span class=\"o_label\">\n"
+"                            <i class=\"fa fa-lg fa-stop-circle text-warning\""
+"/>\n"
+"                            Ferma lavoro\n"
+"                        </span>"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__amount
 msgid "Amount"
-msgstr ""
+msgstr "Importo"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__account_id
-#, fuzzy
-#| msgid "Analytic Line"
 msgid "Analytic Account"
-msgstr "Riga Analitica"
+msgstr "Conto analitico"
 
 #. module: project_timesheet_time_control
 #: model:ir.model,name:project_timesheet_time_control.model_account_analytic_line
 msgid "Analytic Line"
-msgstr "Riga Analitica"
+msgstr "Riga analitica"
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
 msgid "Cancel"
-msgstr ""
+msgstr "Annulla"
 
 #. module: project_timesheet_time_control
 #: code:addons/project_timesheet_time_control/models/account_analytic_line.py:86
@@ -82,36 +95,38 @@ msgid ""
 "Cannot stop timer %d because it is not running. Refresh the page and check "
 "again."
 msgstr ""
+"Non posso fermare il timer %d perchè non è in corso. Aggiorna la pagina e "
+"riprova."
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__is_task_closed
 msgid "Closed"
-msgstr ""
+msgstr "Chiuso"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__code
 msgid "Code"
-msgstr ""
+msgstr "Codice"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__company_id
 msgid "Company"
-msgstr ""
+msgstr "Azienda"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Creato da"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__create_date
 msgid "Created on"
-msgstr ""
+msgstr "Creato il"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__currency_id
 msgid "Currency"
-msgstr ""
+msgstr "Valuta"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__date
@@ -124,41 +139,39 @@ msgstr "Data"
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_account_analytic_line__date_time
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__date_time
-#, fuzzy
-#| msgid "Date"
 msgid "Date Time"
-msgstr "Data"
+msgstr "Data e ora"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__department_id
 msgid "Department"
-msgstr ""
+msgstr "Ufficio"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__name
 msgid "Description"
-msgstr ""
+msgstr "Descrizione"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__display_name
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_time_control_mixin__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nome visualizzato"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__employee_id
 msgid "Employee"
-msgstr ""
+msgstr "Dipendente"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__general_account_id
 msgid "Financial Account"
-msgstr ""
+msgstr "Conto finanziario"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__group_id
 msgid "Group"
-msgstr ""
+msgstr "Gruppo"
 
 #. module: project_timesheet_time_control
 #: model:ir.model,name:project_timesheet_time_control.model_hr_timesheet_switch
@@ -169,7 +182,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__id
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_time_control_mixin__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,help:project_timesheet_time_control.field_account_analytic_line__show_time_control
@@ -178,28 +191,28 @@ msgstr ""
 #: model:ir.model.fields,help:project_timesheet_time_control.field_project_project__show_time_control
 #: model:ir.model.fields,help:project_timesheet_time_control.field_project_task__show_time_control
 msgid "Indicate which time control button to show, if any."
-msgstr ""
+msgstr "Indica quale pulsante foglio ore mostrare, se attivo."
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__move_id
 msgid "Journal Item"
-msgstr ""
+msgstr "Movimento contabile"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch____last_update
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_time_control_mixin____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Ultima modifica il"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Ultimo aggiornamento di"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Ultimo aggiornamento il"
 
 #. module: project_timesheet_time_control
 #: model:ir.model,name:project_timesheet_time_control.model_hr_timesheet_time_control_mixin
@@ -217,7 +230,7 @@ msgstr ""
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__partner_id
 msgid "Partner"
-msgstr ""
+msgstr "Partner"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__running_timer_id
@@ -238,29 +251,33 @@ msgstr ""
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__product_id
 msgid "Product"
-msgstr ""
+msgstr "Prodotto"
 
 #. module: project_timesheet_time_control
-#: model:ir.model,name:project_timesheet_time_control.model_project_project
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__project_id
 msgid "Project"
-msgstr ""
+msgstr "Progetto"
+
+#. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__task_material_id
+msgid "Project Task Material"
+msgstr "Materiale per lavoro del progetto"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__unit_amount
 msgid "Quantity"
-msgstr ""
+msgstr "Quantità"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__ref
 msgid "Ref."
-msgstr ""
+msgstr "Rif."
 
 #. module: project_timesheet_time_control
 #: selection:account.analytic.line,show_time_control:0
 #: selection:hr.timesheet.switch,show_time_control:0
 msgid "Resume"
-msgstr ""
+msgstr "Riprendi"
 
 #. module: project_timesheet_time_control
 #: code:addons/project_timesheet_time_control/models/account_analytic_line.py:71
@@ -270,7 +287,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_form2_inherited
 #, python-format
 msgid "Resume work"
-msgstr ""
+msgstr "Riprendi lavoro"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_account_analytic_line__show_time_control
@@ -279,21 +296,19 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_project_project__show_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_project_task__show_time_control
 msgid "Show Time Control"
-msgstr ""
+msgstr "Mostra Controllo Tempo"
 
 #. module: project_timesheet_time_control
 #: selection:hr.timesheet.time_control.mixin,show_time_control:0
 #: selection:project.project,show_time_control:0
 #: selection:project.task,show_time_control:0
 msgid "Start"
-msgstr ""
+msgstr "Avvia"
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
-#, fuzzy
-#| msgid "Date"
 msgid "Start new timer"
-msgstr "Data"
+msgstr "Inizia nuovo timer"
 
 #. module: project_timesheet_time_control
 #: code:addons/project_timesheet_time_control/models/hr_timesheet_time_control_mixin.py:56
@@ -306,7 +321,7 @@ msgstr "Data"
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_tree2_inherited
 #, python-format
 msgid "Start work"
-msgstr ""
+msgstr "Avvia lavoro"
 
 #. module: project_timesheet_time_control
 #: selection:account.analytic.line,show_time_control:0
@@ -315,7 +330,7 @@ msgstr ""
 #: selection:project.project,show_time_control:0
 #: selection:project.task,show_time_control:0
 msgid "Stop"
-msgstr "Fine"
+msgstr "Ferma"
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
@@ -336,31 +351,29 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_form2_inherited
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_kanban
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_tree2_inherited
-#, fuzzy
-#| msgid "Stop"
 msgid "Stop work"
-msgstr "Fine"
+msgstr "Ferma lavoro"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__tag_ids
 msgid "Tags"
-msgstr ""
+msgstr "Etichette"
 
 #. module: project_timesheet_time_control
 #: model:ir.model,name:project_timesheet_time_control.model_project_task
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__task_id
 msgid "Task"
-msgstr ""
+msgstr "Lavoro"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,help:project_timesheet_time_control.field_hr_timesheet_switch__is_task_closed
 msgid "Tasks in this stage are considered closed."
-msgstr ""
+msgstr "I lavori di questa fase sono considerate chiusi."
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
 msgid "That is a lot of time! Make sure it is fine before saving."
-msgstr ""
+msgstr "Sono un sacco di ore! Assicurati sia corretto prima di salvare."
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
@@ -375,12 +388,17 @@ msgstr ""
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__product_uom_id
 msgid "Unit of Measure"
-msgstr ""
+msgstr "Unità di misura"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__user_id
 msgid "User"
-msgstr ""
+msgstr "Utente"
+
+#. module: project_timesheet_time_control
+#: model:ir.model,name:project_timesheet_time_control.model_project_project
+msgid "WBS element"
+msgstr "Elemento WBS"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,help:project_timesheet_time_control.field_hr_timesheet_switch__running_timer_duration
