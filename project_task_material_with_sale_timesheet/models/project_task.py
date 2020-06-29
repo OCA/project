@@ -8,6 +8,6 @@ class ProjectTaskMaterial(models.Model):
 
     @api.multi
     def create_analytic_line(self):
-        super(ProjectTaskMaterial, self.with_context(
+        return super(ProjectTaskMaterial, self.with_context(
             norecompute_amount=True
         )).create_analytic_line()
