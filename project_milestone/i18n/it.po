@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2020-06-08 01:19+0000\n"
-"Last-Translator: Sergio Zanchetta <primes2h@gmail.com>\n"
+"PO-Revision-Date: 2020-07-03 12:19+0000\n"
+"Last-Translator: Lorenzo Battistini <lb@takobi.online>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -19,12 +19,12 @@ msgstr ""
 #. module: project_milestone
 #: model:ir.ui.menu,name:project_milestone.milestone_configuration_menu
 msgid "All Milestones"
-msgstr ""
+msgstr "Tutte le milestone"
 
 #. module: project_milestone
 #: model:ir.model.fields,field_description:project_milestone.field_project_milestone__create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Creato da"
 
 #. module: project_milestone
 #: model:ir.model.fields,field_description:project_milestone.field_project_milestone__create_date
@@ -40,7 +40,7 @@ msgstr "Nome visualizzato"
 #: model:ir.model.fields,help:project_milestone.field_project_project__use_milestones
 #: model:ir.model.fields,help:project_milestone.field_project_task__use_milestones
 msgid "Does this project use milestones?"
-msgstr ""
+msgstr "Questo progetto utilizza milestone?"
 
 #. module: project_milestone
 #: model_terms:ir.ui.view,arch_db:project_milestone.project_milestone_view_search
@@ -85,7 +85,7 @@ msgstr ""
 #. module: project_milestone
 #: model_terms:ir.ui.view,arch_db:project_milestone.project_enhancements_milestone_inherit_search_view
 msgid "Milestone Projects"
-msgstr ""
+msgstr "Progetti milestone"
 
 #. module: project_milestone
 #: model:ir.model.fields,field_description:project_milestone.field_project_project__milestone_ids
@@ -93,7 +93,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_milestone.project_enhancement_milestone_view_inherit_form
 #: model_terms:ir.ui.view,arch_db:project_milestone.view_task_enhancement_search_milestone_form
 msgid "Milestones"
-msgstr ""
+msgstr "Milestone"
 
 #. module: project_milestone
 #: model_terms:ir.ui.view,arch_db:project_milestone.project_milestone_view_form
@@ -119,12 +119,12 @@ msgstr "Progetto"
 #. module: project_milestone
 #: model:ir.model,name:project_milestone.model_project_milestone
 msgid "Project Milestone"
-msgstr ""
+msgstr "Milestone progetto"
 
 #. module: project_milestone
 #: model:ir.actions.act_window,name:project_milestone.project_milestone_action
 msgid "Project Milestones"
-msgstr ""
+msgstr "Milestone progetto"
 
 #. module: project_milestone
 #: model:ir.model.fields,field_description:project_milestone.field_project_milestone__project_task_ids
@@ -149,13 +149,13 @@ msgstr "Lavoro"
 #. module: project_milestone
 #: model:ir.model.fields,help:project_milestone.field_project_milestone__target_date
 msgid "The date when the Milestone should be complete."
-msgstr ""
+msgstr "La data in cui la milestone dovrebbe essere completata."
 
 #. module: project_milestone
 #: model:ir.model.fields,field_description:project_milestone.field_project_project__use_milestones
 #: model:ir.model.fields,field_description:project_milestone.field_project_task__use_milestones
 msgid "Use Milestones"
-msgstr ""
+msgstr "Utilizzare milestone"
 
 #. module: project_milestone
 #: model:ir.model,name:project_milestone.model_project_project
