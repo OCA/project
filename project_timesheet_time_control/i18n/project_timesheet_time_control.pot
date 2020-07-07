@@ -1,12 +1,12 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* project_timesheet_time_control
+# 	* project_timesheet_time_control
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 12.0\n"
+"Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: <>\n"
+"Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -14,20 +14,24 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: project_timesheet_time_control
-#: code:addons/project_timesheet_time_control/wizards/hr_timesheet_switch.py:45
+#: code:addons/project_timesheet_time_control/wizards/hr_timesheet_switch.py:0
 #, python-format
-msgid "%d running timers found. Cannot know which one to stop. Please stop them manually."
+msgid ""
+"%d running timers found. Cannot know which one to stop. Please stop them "
+"manually."
 msgstr ""
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
-msgid ".\n"
+msgid ""
+".\n"
 "                        If you continue, it will be stopped with"
 msgstr ""
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_project_kanban_inherited
-msgid "<span class=\"o_label\">\n"
+msgid ""
+"<span class=\"o_label\">\n"
 "                            <i class=\"fa fa-lg fa-play-circle text-success\"/>\n"
 "                            Start work\n"
 "                        </span>"
@@ -35,7 +39,8 @@ msgstr ""
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_project_kanban_inherited
-msgid "<span class=\"o_label\">\n"
+msgid ""
+"<span class=\"o_label\">\n"
 "                            <i class=\"fa fa-lg fa-stop-circle text-warning\"/>\n"
 "                            Stop work\n"
 "                        </span>"
@@ -62,9 +67,16 @@ msgid "Cancel"
 msgstr ""
 
 #. module: project_timesheet_time_control
-#: code:addons/project_timesheet_time_control/models/account_analytic_line.py:86
+#: code:addons/project_timesheet_time_control/models/account_analytic_line.py:0
 #, python-format
-msgid "Cannot stop timer %d because it is not running. Refresh the page and check again."
+msgid ""
+"Cannot stop timer %d because it is not running. Refresh the page and check "
+"again."
+msgstr ""
+
+#. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__product_uom_category_id
+msgid "Category"
 msgstr ""
 
 #. module: project_timesheet_time_control
@@ -80,6 +92,13 @@ msgstr ""
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__company_id
 msgid "Company"
+msgstr ""
+
+#. module: project_timesheet_time_control
+#: model:ir.model.fields,help:project_timesheet_time_control.field_hr_timesheet_switch__product_uom_category_id
+msgid ""
+"Conversion between Units of Measure can only occur if they belong to the "
+"same category. The conversion will be made based on the ratios."
 msgstr ""
 
 #. module: project_timesheet_time_control
@@ -130,6 +149,11 @@ msgstr ""
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__employee_id
 msgid "Employee"
+msgstr ""
+
+#. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__encoding_uom_id
+msgid "Encoding Uom"
 msgstr ""
 
 #. module: project_timesheet_time_control
@@ -189,9 +213,11 @@ msgid "Mixin for records related with timesheet lines"
 msgstr ""
 
 #. module: project_timesheet_time_control
-#: code:addons/project_timesheet_time_control/models/hr_timesheet_time_control_mixin.py:70
+#: code:addons/project_timesheet_time_control/models/hr_timesheet_time_control_mixin.py:0
 #, python-format
-msgid "No running timer found in %(model)s %(record)s. Refresh the page and check again."
+msgid ""
+"No running timer found in %(model)s %(record)s. Refresh the page and check "
+"again."
 msgstr ""
 
 #. module: project_timesheet_time_control
@@ -221,6 +247,7 @@ msgid "Product"
 msgstr ""
 
 #. module: project_timesheet_time_control
+#: model:ir.model,name:project_timesheet_time_control.model_project_project
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__project_id
 msgid "Project"
 msgstr ""
@@ -236,13 +263,13 @@ msgid "Ref."
 msgstr ""
 
 #. module: project_timesheet_time_control
-#: selection:account.analytic.line,show_time_control:0
-#: selection:hr.timesheet.switch,show_time_control:0
+#: model:ir.model.fields.selection,name:project_timesheet_time_control.selection__account_analytic_line__show_time_control__resume
+#: model:ir.model.fields.selection,name:project_timesheet_time_control.selection__hr_timesheet_switch__show_time_control__resume
 msgid "Resume"
 msgstr ""
 
 #. module: project_timesheet_time_control
-#: code:addons/project_timesheet_time_control/models/account_analytic_line.py:71
+#: code:addons/project_timesheet_time_control/models/account_analytic_line.py:0
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.account_analytic_line_tree
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_line_form
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_kanban_account_analytic_line
@@ -261,9 +288,9 @@ msgid "Show Time Control"
 msgstr ""
 
 #. module: project_timesheet_time_control
-#: selection:hr.timesheet.time_control.mixin,show_time_control:0
-#: selection:project.project,show_time_control:0
-#: selection:project.task,show_time_control:0
+#: model:ir.model.fields.selection,name:project_timesheet_time_control.selection__hr_timesheet_time_control_mixin__show_time_control__start
+#: model:ir.model.fields.selection,name:project_timesheet_time_control.selection__project_project__show_time_control__start
+#: model:ir.model.fields.selection,name:project_timesheet_time_control.selection__project_task__show_time_control__start
 msgid "Start"
 msgstr ""
 
@@ -273,7 +300,7 @@ msgid "Start new timer"
 msgstr ""
 
 #. module: project_timesheet_time_control
-#: code:addons/project_timesheet_time_control/models/hr_timesheet_time_control_mixin.py:56
+#: code:addons/project_timesheet_time_control/models/hr_timesheet_time_control_mixin.py:0
 #: model:ir.actions.act_window,name:project_timesheet_time_control.hr_timesheet_switch_action
 #: model:ir.ui.menu,name:project_timesheet_time_control.hr_timesheet_switch_menu
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.project_invoice_form
@@ -286,11 +313,11 @@ msgid "Start work"
 msgstr ""
 
 #. module: project_timesheet_time_control
-#: selection:account.analytic.line,show_time_control:0
-#: selection:hr.timesheet.switch,show_time_control:0
-#: selection:hr.timesheet.time_control.mixin,show_time_control:0
-#: selection:project.project,show_time_control:0
-#: selection:project.task,show_time_control:0
+#: model:ir.model.fields.selection,name:project_timesheet_time_control.selection__account_analytic_line__show_time_control__stop
+#: model:ir.model.fields.selection,name:project_timesheet_time_control.selection__hr_timesheet_switch__show_time_control__stop
+#: model:ir.model.fields.selection,name:project_timesheet_time_control.selection__hr_timesheet_time_control_mixin__show_time_control__stop
+#: model:ir.model.fields.selection,name:project_timesheet_time_control.selection__project_project__show_time_control__stop
+#: model:ir.model.fields.selection,name:project_timesheet_time_control.selection__project_task__show_time_control__stop
 msgid "Stop"
 msgstr ""
 
@@ -358,11 +385,6 @@ msgid "User"
 msgstr ""
 
 #. module: project_timesheet_time_control
-#: model:ir.model,name:project_timesheet_time_control.model_project_project
-msgid "WBS element"
-msgstr ""
-
-#. module: project_timesheet_time_control
 #: model:ir.model.fields,help:project_timesheet_time_control.field_hr_timesheet_switch__running_timer_duration
 msgid "When the previous timer is stopped, it will save this duration."
 msgstr ""
@@ -381,4 +403,3 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
 msgid "hour(s)."
 msgstr ""
-
