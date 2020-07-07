@@ -12,8 +12,11 @@ class ProjectTask(models.Model):
     def _relation_with_timesheet_line(self):
         return "task_id"
 
-    @api.depends("project_id.allow_timesheets", "timesheet_ids.employee_id",
-                 "timesheet_ids.unit_amount")
+    @api.depends(
+        "project_id.allow_timesheets",
+        "timesheet_ids.employee_id",
+        "timesheet_ids.unit_amount",
+    )
     def _compute_show_time_control(self):
         result = super()._compute_show_time_control()
         for task in self:
@@ -24,7 +27,7 @@ class ProjectTask(models.Model):
 
     def button_start_work(self):
         result = super().button_start_work()
-        result["context"].update({
-            "default_project_id": self.project_id.id,
-        })
+        result["context"].update(
+            {"default_project_id": self.project_id.id,}
+        )
         return result

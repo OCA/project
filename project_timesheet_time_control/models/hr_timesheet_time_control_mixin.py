@@ -1,7 +1,7 @@
 # Copyright 2019 Tecnativa - Jairo Llopis
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import _, api, models, fields
+from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
 
@@ -42,17 +42,14 @@ class HrTimesheetTimeControlMixin(models.AbstractModel):
         button_per_lines = {0: "start", 1: "stop"}
         for record in self:
             record.show_time_control = button_per_lines.get(
-                lines_per_record.get(record.id, 0),
-                False,
+                lines_per_record.get(record.id, 0), False,
             )
 
     def button_start_work(self):
         """Create a new record starting now, with a running timer."""
         related_field = self._relation_with_timesheet_line()
         return {
-            "context": {
-                "default_%s" % related_field: self.id,
-            },
+            "context": {"default_%s" % related_field: self.id,},
             "name": _("Start work"),
             "res_model": "hr.timesheet.switch",
             "target": "new",
@@ -67,10 +64,11 @@ class HrTimesheetTimeControlMixin(models.AbstractModel):
         )
         if not running_lines:
             model = self.env["ir.model"].search([("model", "=", self._name)])
-            message = _("No running timer found in %(model)s %(record)s. "
-                        "Refresh the page and check again.")
-            raise UserError(message % {
-                "model": model.name,
-                "record": self.display_name
-            })
+            message = _(
+                "No running timer found in %(model)s %(record)s. "
+                "Refresh the page and check again."
+            )
+            raise UserError(
+                message % {"model": model.name, "record": self.display_name}
+            )
         return running_lines.button_end_work()

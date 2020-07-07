@@ -1,7 +1,7 @@
 # Copyright 2019 Tecnativa - Jairo Llopis
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import _, api, models, fields
+from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
 
@@ -34,17 +34,23 @@ class HrTimesheetSwitch(models.TransientModel):
         """Obtain running timer."""
         employee = employee or self.env.user.employee_ids
         # Find running work
-        running = self.env["account.analytic.line"].search([
-            ("date_time", "!=", False),
-            ("employee_id", "in", employee.ids),
-            ("id", "not in", self.env.context.get("resuming_lines", [])),
-            ("project_id", "!=", False),
-            ("unit_amount", "=", 0),
-        ])
+        running = self.env["account.analytic.line"].search(
+            [
+                ("date_time", "!=", False),
+                ("employee_id", "in", employee.ids),
+                ("id", "not in", self.env.context.get("resuming_lines", [])),
+                ("project_id", "!=", False),
+                ("unit_amount", "=", 0),
+            ]
+        )
         if len(running) > 1:
-            raise UserError(_(
-                "%d running timers found. Cannot know which one to stop. "
-                "Please stop them manually.") % len(running))
+            raise UserError(
+                _(
+                    "%d running timers found. Cannot know which one to stop. "
+                    "Please stop them manually."
+                )
+                % len(running)
+            )
         return running
 
     @api.depends("date_time", "running_timer_id")
@@ -52,8 +58,7 @@ class HrTimesheetSwitch(models.TransientModel):
         """Compute duration of running timer when stopped."""
         for one in self:
             one.running_timer_duration = one._duration(
-                one.running_timer_id.date_time,
-                one.date_time,
+                one.running_timer_id.date_time, one.date_time,
             )
 
     @api.model
@@ -61,7 +66,8 @@ class HrTimesheetSwitch(models.TransientModel):
         """Find most similar account.analytic.line record."""
         try:
             active = self.env[self.env.context["active_model"]].browse(
-                self.env.context["active_id"])
+                self.env.context["active_id"]
+            )
         except KeyError:
             # If I don't know where's the user, I don't know what to suggest
             return self.env["account.analytic.line"].browse()
@@ -81,9 +87,7 @@ class HrTimesheetSwitch(models.TransientModel):
             # No clues for other records, sorry
             return self.env["account.analytic.line"].browse()
         return self.env["account.analytic.line"].search(
-            domain,
-            order="date_time DESC",
-            limit=1,
+            domain, order="date_time DESC", limit=1,
         )
 
     @api.model
@@ -119,17 +123,15 @@ class HrTimesheetSwitch(models.TransientModel):
         self.ensure_one()
         # Stop old timer
         self.with_context(
-            resuming_lines=self.ids,
-            stop_dt=self.date_time,
+            resuming_lines=self.ids, stop_dt=self.date_time,
         ).running_timer_id.button_end_work()
         # Start new timer
         _fields = self.env["account.analytic.line"]._fields.keys()
         self.read(_fields)
         values = self._convert_to_write(self._cache)
-        new = self.env["account.analytic.line"].create({
-            field: value for (field, value) in values.items()
-            if field in _fields
-        })
+        new = self.env["account.analytic.line"].create(
+            {field: value for (field, value) in values.items() if field in _fields}
+        )
         # Display created timer record if requested
         if self.env.context.get("show_created_timer"):
             form_view = self.env.ref("hr_timesheet.hr_timesheet_line_form")
@@ -139,9 +141,7 @@ class HrTimesheetSwitch(models.TransientModel):
                 "type": "ir.actions.act_window",
                 "view_mode": "form",
                 "view_type": "form",
-                "views": [
-                    (form_view.id, "form"),
-                ],
+                "views": [(form_view.id, "form"),],
             }
         # Close wizard and reload view
         return {
