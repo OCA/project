@@ -24,7 +24,7 @@ class ProjectProject(models.Model):
     def button_start_work(self):
         result = super().button_start_work()
         # When triggering from project is usually to start timer without task
-        result["context"].update({
-            "default_task_id": False,
-        })
+        result["context"].update(
+            {"default_task_id": False,}
+        )
         return result
