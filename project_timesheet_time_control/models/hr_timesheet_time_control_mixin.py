@@ -49,7 +49,7 @@ class HrTimesheetTimeControlMixin(models.AbstractModel):
         """Create a new record starting now, with a running timer."""
         related_field = self._relation_with_timesheet_line()
         return {
-            "context": {"default_%s" % related_field: self.id,},
+            "context": {"default_%s" % related_field: self.id},
             "name": _("Start work"),
             "res_model": "hr.timesheet.switch",
             "target": "new",
