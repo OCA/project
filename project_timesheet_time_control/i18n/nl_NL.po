@@ -20,7 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: project_timesheet_time_control
-#: code:addons/project_timesheet_time_control/wizards/hr_timesheet_switch.py:45
+#: code:addons/project_timesheet_time_control/wizards/hr_timesheet_switch.py:0
 #, python-format
 msgid ""
 "%d running timers found. Cannot know which one to stop. Please stop them "
@@ -77,11 +77,16 @@ msgid "Cancel"
 msgstr ""
 
 #. module: project_timesheet_time_control
-#: code:addons/project_timesheet_time_control/models/account_analytic_line.py:86
+#: code:addons/project_timesheet_time_control/models/account_analytic_line.py:0
 #, python-format
 msgid ""
 "Cannot stop timer %d because it is not running. Refresh the page and check "
 "again."
+msgstr ""
+
+#. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__product_uom_category_id
+msgid "Category"
 msgstr ""
 
 #. module: project_timesheet_time_control
@@ -97,6 +102,13 @@ msgstr ""
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__company_id
 msgid "Company"
+msgstr ""
+
+#. module: project_timesheet_time_control
+#: model:ir.model.fields,help:project_timesheet_time_control.field_hr_timesheet_switch__product_uom_category_id
+msgid ""
+"Conversion between Units of Measure can only occur if they belong to the "
+"same category. The conversion will be made based on the ratios."
 msgstr ""
 
 #. module: project_timesheet_time_control
@@ -149,6 +161,11 @@ msgstr ""
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__employee_id
 msgid "Employee"
+msgstr ""
+
+#. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__encoding_uom_id
+msgid "Encoding Uom"
 msgstr ""
 
 #. module: project_timesheet_time_control
@@ -208,7 +225,7 @@ msgid "Mixin for records related with timesheet lines"
 msgstr ""
 
 #. module: project_timesheet_time_control
-#: code:addons/project_timesheet_time_control/models/hr_timesheet_time_control_mixin.py:70
+#: code:addons/project_timesheet_time_control/models/hr_timesheet_time_control_mixin.py:0
 #, python-format
 msgid ""
 "No running timer found in %(model)s %(record)s. Refresh the page and check "
@@ -242,6 +259,7 @@ msgid "Product"
 msgstr ""
 
 #. module: project_timesheet_time_control
+#: model:ir.model,name:project_timesheet_time_control.model_project_project
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__project_id
 msgid "Project"
 msgstr ""
@@ -257,13 +275,13 @@ msgid "Ref."
 msgstr ""
 
 #. module: project_timesheet_time_control
-#: selection:account.analytic.line,show_time_control:0
-#: selection:hr.timesheet.switch,show_time_control:0
+#: model:ir.model.fields.selection,name:project_timesheet_time_control.selection__account_analytic_line__show_time_control__resume
+#: model:ir.model.fields.selection,name:project_timesheet_time_control.selection__hr_timesheet_switch__show_time_control__resume
 msgid "Resume"
 msgstr ""
 
 #. module: project_timesheet_time_control
-#: code:addons/project_timesheet_time_control/models/account_analytic_line.py:71
+#: code:addons/project_timesheet_time_control/models/account_analytic_line.py:0
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.account_analytic_line_tree
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_line_form
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_kanban_account_analytic_line
@@ -282,9 +300,9 @@ msgid "Show Time Control"
 msgstr ""
 
 #. module: project_timesheet_time_control
-#: selection:hr.timesheet.time_control.mixin,show_time_control:0
-#: selection:project.project,show_time_control:0
-#: selection:project.task,show_time_control:0
+#: model:ir.model.fields.selection,name:project_timesheet_time_control.selection__hr_timesheet_time_control_mixin__show_time_control__start
+#: model:ir.model.fields.selection,name:project_timesheet_time_control.selection__project_project__show_time_control__start
+#: model:ir.model.fields.selection,name:project_timesheet_time_control.selection__project_task__show_time_control__start
 msgid "Start"
 msgstr ""
 
@@ -296,7 +314,7 @@ msgid "Start new timer"
 msgstr "Datum"
 
 #. module: project_timesheet_time_control
-#: code:addons/project_timesheet_time_control/models/hr_timesheet_time_control_mixin.py:56
+#: code:addons/project_timesheet_time_control/models/hr_timesheet_time_control_mixin.py:0
 #: model:ir.actions.act_window,name:project_timesheet_time_control.hr_timesheet_switch_action
 #: model:ir.ui.menu,name:project_timesheet_time_control.hr_timesheet_switch_menu
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.project_invoice_form
@@ -309,11 +327,11 @@ msgid "Start work"
 msgstr ""
 
 #. module: project_timesheet_time_control
-#: selection:account.analytic.line,show_time_control:0
-#: selection:hr.timesheet.switch,show_time_control:0
-#: selection:hr.timesheet.time_control.mixin,show_time_control:0
-#: selection:project.project,show_time_control:0
-#: selection:project.task,show_time_control:0
+#: model:ir.model.fields.selection,name:project_timesheet_time_control.selection__account_analytic_line__show_time_control__stop
+#: model:ir.model.fields.selection,name:project_timesheet_time_control.selection__hr_timesheet_switch__show_time_control__stop
+#: model:ir.model.fields.selection,name:project_timesheet_time_control.selection__hr_timesheet_time_control_mixin__show_time_control__stop
+#: model:ir.model.fields.selection,name:project_timesheet_time_control.selection__project_project__show_time_control__stop
+#: model:ir.model.fields.selection,name:project_timesheet_time_control.selection__project_task__show_time_control__stop
 msgid "Stop"
 msgstr "Stop"
 
@@ -380,11 +398,6 @@ msgstr ""
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__user_id
 msgid "User"
-msgstr ""
-
-#. module: project_timesheet_time_control
-#: model:ir.model,name:project_timesheet_time_control.model_project_project
-msgid "WBS element"
 msgstr ""
 
 #. module: project_timesheet_time_control
