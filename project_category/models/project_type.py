@@ -38,6 +38,18 @@ class ProjectType(models.Model):
     task_ok = fields.Boolean(
         string='Can be applied for tasks'
     )
+    is_billable = fields.Boolean(
+        string="Is Billable"
+    )
+    is_internal = fields.Boolean(
+        string="Is Internal"
+    )
+    is_budgeted = fields.Boolean(
+        string="Is Budgeted"
+    )
+    code = fields.Char(
+        string="Code"
+    )
 
     @api.constrains('parent_id')
     def check_parent_id(self):

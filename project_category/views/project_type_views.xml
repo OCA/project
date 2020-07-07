@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
     <record id="project_type_form" model="ir.ui.view">
         <field name="model">project.type</field>
         <field name="arch" type="xml">
             <form string="Type">
                 <sheet>
                     <div class="oe_title">
-                        <label for="name" class="oe_edit_only"/>
-                        <h1><field name="name"/></h1>
+                        <label class="oe_edit_only" for="name"/>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
                         <div>
                             <field name="project_ok"/>
                             <label for="project_ok"/>
@@ -17,23 +18,33 @@
                             <field name="task_ok"/>
                             <label for="task_ok"/>
                         </div>
+                        <div>
+                            <field name="is_billable"/>
+                            <label for="is_billable"/>
+                        </div>
+                        <div>
+                            <field name="is_internal"/>
+                            <label for="is_internal"/>
+                        </div>
+                        <div>
+                            <field name="is_budgeted"/>
+                            <label for="is_budgeted"/>
+                        </div>
                     </div>
-
                     <group>
                         <group>
                             <field name="parent_id"/>
+                            <field name="code"/>
                         </group>
                     </group>
-
                     <notebook>
-                        <page string="Description" name="page_description">
-                            <field name="description" placeholder="Add a description..." />
+                        <page name="page_description" string="Description">
+                            <field name="description" placeholder="Add a description..."/>
                         </page>
-
-                        <page string="Subtypes" name="page_subtypes">
+                        <page name="page_subtypes" string="Subtypes">
                             <field name="child_ids">
                                 <tree>
-                                    <field name="name" />
+                                    <field name="name"/>
                                 </tree>
                             </field>
                         </page>
@@ -42,33 +53,34 @@
             </form>
         </field>
     </record>
-
     <record id="project_type_search" model="ir.ui.view">
         <field name="model">project.type</field>
-        <field name="inherit_id" eval="False"/>
+        <field eval="False" name="inherit_id"/>
         <field name="arch" type="xml">
             <search string="Type">
                 <field name="complete_name"/>
                 <field name="parent_id"/>
-
-                <filter name="project_ok" string="Can be applied for projects" domain="[('project_ok','=',True)]"/>
-                <filter name="task_ok" string="Can be applied for tasks" domain="[('task_ok','=',True)]"/>
+                <filter domain="[('project_ok','=',True)]" name="project_ok" string="Can be applied for projects"/>
+                <filter domain="[('task_ok','=',True)]" name="task_ok" string="Can be applied for tasks"/>
             </search>
         </field>
     </record>
-
+    <record id="project_type_tree" model="ir.ui.view">
+        <field name="name">project.type.list</field>
+        <field name="model">project.type</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="code"/>
+                <field name="name"/>
+                <field name="parent_id"/>
+            </tree>
+        </field>
+    </record>
     <record id="action_project_type" model="ir.actions.act_window">
         <field name="name">Type</field>
         <field name="res_model">project.type</field>
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
     </record>
-
-    <menuitem name="Project Type"
-              id="project_category"
-              parent="project.menu_project_config"
-              action="action_project_type"
-              sequence="20"
-    />
-
+    <menuitem action="action_project_type" id="project_category" name="Project Type" parent="project.menu_project_config" sequence="20"/>
 </odoo>
