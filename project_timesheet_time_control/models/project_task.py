@@ -27,7 +27,5 @@ class ProjectTask(models.Model):
 
     def button_start_work(self):
         result = super().button_start_work()
-        result["context"].update(
-            {"default_project_id": self.project_id.id,}
-        )
+        result["context"].update({"default_project_id": self.project_id.id})
         return result
