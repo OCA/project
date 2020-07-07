@@ -28,6 +28,8 @@ class HrTimesheetSwitch(models.TransientModel):
         compute="_compute_running_timer_duration",
         help="When the previous timer is stopped, it will save this duration.",
     )
+    # Redefine the relation to avoid using the same table than parent model
+    tag_ids = fields.Many2many(relation="hr_timesheet_switch_line_tag_rel")
 
     @api.model
     def _default_running_timer_id(self, employee=None):
@@ -101,6 +103,7 @@ class HrTimesheetSwitch(models.TransientModel):
             # Convert inherited to RPC-style values
             _fields = set(fields_list) & set(inherited._fields) - {
                 # These fields must always be reset
+                "id",
                 "amount",
                 "date_time",
                 "date",
@@ -141,7 +144,7 @@ class HrTimesheetSwitch(models.TransientModel):
                 "type": "ir.actions.act_window",
                 "view_mode": "form",
                 "view_type": "form",
-                "views": [(form_view.id, "form"),],
+                "views": [(form_view.id, "form")],
             }
         # Close wizard and reload view
         return {
