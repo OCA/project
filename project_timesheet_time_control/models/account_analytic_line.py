@@ -4,18 +4,16 @@
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
 from datetime import datetime
+
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
 
 class AccountAnalyticLine(models.Model):
-    _inherit = 'account.analytic.line'
-    _order = 'date_time desc'
+    _inherit = "account.analytic.line"
+    _order = "date_time desc"
 
-    date_time = fields.Datetime(
-        default=fields.Datetime.now,
-        copy=False,
-    )
+    date_time = fields.Datetime(default=fields.Datetime.now, copy=False,)
     show_time_control = fields.Selection(
         selection=[("resume", "Resume"), ("stop", "Stop")],
         compute="_compute_show_time_control",
@@ -24,8 +22,8 @@ class AccountAnalyticLine(models.Model):
 
     @api.model
     def _eval_date(self, vals):
-        if vals.get('date_time'):
-            return dict(vals, date=fields.Date.to_date(vals['date_time']))
+        if vals.get("date_time"):
+            return dict(vals, date=fields.Date.to_date(vals["date_time"]))
         return vals
 
     @api.model
@@ -79,13 +77,16 @@ class AccountAnalyticLine(models.Model):
     @api.multi
     def button_end_work(self):
         end = fields.Datetime.to_datetime(
-            self.env.context.get("stop_dt", datetime.now()))
+            self.env.context.get("stop_dt", datetime.now())
+        )
         for line in self:
             if line.unit_amount:
                 raise UserError(
-                    _("Cannot stop timer %d because it is not running. "
-                      "Refresh the page and check again.") %
-                    line.id
+                    _(
+                        "Cannot stop timer %d because it is not running. "
+                        "Refresh the page and check again."
+                    )
+                    % line.id
                 )
             line.unit_amount = line._duration(line.date_time, end)
         return True
