@@ -59,7 +59,6 @@ class AccountAnalyticLine(models.Model):
     def create(self, vals_list):
         return super().create(list(map(self._eval_date, vals_list)))
 
-    @api.multi
     def write(self, vals):
         return super().write(self._eval_date(vals))
 
@@ -74,7 +73,6 @@ class AccountAnalyticLine(models.Model):
             "view_type": "form",
         }
 
-    @api.multi
     def button_end_work(self):
         end = fields.Datetime.to_datetime(
             self.env.context.get("stop_dt", datetime.now())
