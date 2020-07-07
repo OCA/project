@@ -13,16 +13,16 @@ class TestProjectTimesheetTimeControl(common.TransactionCase):
         admin = self.browse_ref("base.user_admin")
         admin.groups_id |= self.browse_ref("hr_timesheet.group_hr_timesheet_user")
         self.uid = admin.id
-        self.other_employee = self.env["hr.employee"].create({"name": "Somebody else",})
+        self.other_employee = self.env["hr.employee"].create({"name": "Somebody else"})
         self.project = self.env["project.project"].create(
-            {"name": "Test project", "allow_timesheets": True,}
+            {"name": "Test project", "allow_timesheets": True}
         )
         self.project_without_timesheets = self.env["project.project"].create(
-            {"name": "Test project", "allow_timesheets": False,}
+            {"name": "Test project", "allow_timesheets": False}
         )
         self.analytic_account = self.project.analytic_account_id
         self.task = self.env["project.task"].create(
-            {"name": "Test task", "project_id": self.project.id,}
+            {"name": "Test task", "project_id": self.project.id}
         )
         self.line = self.env["account.analytic.line"].create(
             {
@@ -84,7 +84,7 @@ class TestProjectTimesheetTimeControl(common.TransactionCase):
         with self.assertRaises(exceptions.UserError):
             self.line.button_end_work()
         # Open a new running AAL without wizard
-        running_timer = self.line.copy({"unit_amount": False,})
+        running_timer = self.line.copy({"unit_amount": False})
         # Use resume wizard
         self.line.invalidate_cache()
         self.assertEqual(self.line.show_time_control, "resume")
@@ -138,7 +138,7 @@ class TestProjectTimesheetTimeControl(common.TransactionCase):
         """Test project.project time controls."""
         # Resuming a project will try to find lines without task
         line_without_task = self.line.copy(
-            {"task_id": False, "project_id": self.project.id, "name": "No task here",}
+            {"task_id": False, "project_id": self.project.id, "name": "No task here"}
         )
         self.assertFalse(line_without_task.unit_amount)
         # Multiple running lines found, no buttons
@@ -212,7 +212,7 @@ class TestProjectTimesheetTimeControl(common.TransactionCase):
         """Standalone wizard usage works properly."""
         # It detects the running timer
         wizard = self.env["hr.timesheet.switch"].create(
-            {"name": "Standalone 1", "project_id": self.project.id,}
+            {"name": "Standalone 1", "project_id": self.project.id}
         )
         self.assertEqual(wizard.running_timer_id, self.line)
         self.assertTrue(wizard.running_timer_duration)
@@ -225,7 +225,7 @@ class TestProjectTimesheetTimeControl(common.TransactionCase):
         wizard = (
             self.env["hr.timesheet.switch"]
             .with_context(active_model="unknown", active_id=1)
-            .create({"name": "Standalone 2", "project_id": self.project.id,})
+            .create({"name": "Standalone 2", "project_id": self.project.id})
         )
         self.assertFalse(wizard.running_timer_id)
         self.assertFalse(wizard.running_timer_duration)
