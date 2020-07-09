@@ -35,7 +35,7 @@ addon | version | summary
 [project_task_digitized_signature](project_task_digitized_signature/) | 11.0.1.0.0 | Project Task Digitized Signature
 [project_task_material](project_task_material/) | 11.0.1.0.0 | Record products spent in a Task
 [project_task_material_stock](project_task_material_stock/) | 11.0.1.0.2 | Create stock and analytic moves from record products spent in a Task
-[project_task_material_with_sale_timesheet](project_task_material_with_sale_timesheet/) | 11.0.1.0.0 | Add compatibility between project_task_material_stockand sale_timesheet module
+[project_task_material_with_sale_timesheet](project_task_material_with_sale_timesheet/) | 11.0.1.0.1 | Add compatibility between project_task_material_stockand sale_timesheet module
 [project_task_pull_request](project_task_pull_request/) | 11.0.1.0.0 | Adds a field for a PR URI to project tasks
 [project_task_send_by_mail](project_task_send_by_mail/) | 11.0.1.0.0 | Send task report by email
 [project_task_type_active](project_task_type_active/) | 11.0.1.0.0 | Adds active field on project task type
