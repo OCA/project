@@ -11,8 +11,8 @@ msgstr ""
 "POT-Creation-Date: 2017-08-04 02:52+0000\n"
 "PO-Revision-Date: 2020-06-22 03:19+0000\n"
 "Last-Translator: Fernando Colus <fcolus1@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/teams/"
-"23907/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/"
+"teams/23907/pt_BR/)\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,12 +21,12 @@ msgstr ""
 "X-Generator: Weblate 3.10\n"
 
 #. module: project_task_digitized_signature
-#: model:ir.ui.view,arch_db:project_task_digitized_signature.report_taskorder_document
+#: model_terms:ir.ui.view,arch_db:project_task_digitized_signature.report_taskorder_document
 msgid "<strong>Customer acceptance:</strong>"
 msgstr "<strong>Aceite do cliente:</strong>"
 
 #. module: project_task_digitized_signature
-#: model:ir.model.fields,field_description:project_task_digitized_signature.field_project_task_customer_signature
+#: model:ir.model.fields,field_description:project_task_digitized_signature.field_project_task__customer_signature
 msgid "Customer acceptance"
 msgstr "Aceite do cliente"
 
