@@ -29,6 +29,7 @@ setuptools.setup(
         'odoo13-addon-project_timeline',
         'odoo13-addon-project_timeline_hr_timesheet',
         'odoo13-addon-project_timeline_task_dependency',
+        'odoo13-addon-project_timesheet_time_control',
     ],
     classifiers=[
         'Programming Language :: Python',
