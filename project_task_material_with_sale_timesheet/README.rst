@@ -57,6 +57,9 @@ Contributors
 
   * Juan Carlos Montoya <jcmontoya@praxya.es>
 
+* Punt Sistemes
+
+  * Isaac Gallart <igallart@puntsistemes.es>
 
 Maintainers
 -----------
