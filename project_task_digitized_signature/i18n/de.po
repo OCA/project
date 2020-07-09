@@ -20,12 +20,12 @@ msgstr ""
 "X-Generator: Weblate 3.5.1\n"
 
 #. module: project_task_digitized_signature
-#: model:ir.ui.view,arch_db:project_task_digitized_signature.report_taskorder_document
+#: model_terms:ir.ui.view,arch_db:project_task_digitized_signature.report_taskorder_document
 msgid "<strong>Customer acceptance:</strong>"
 msgstr "<strong>Bestätigung (Kunde):</strong>"
 
 #. module: project_task_digitized_signature
-#: model:ir.model.fields,field_description:project_task_digitized_signature.field_project_task_customer_signature
+#: model:ir.model.fields,field_description:project_task_digitized_signature.field_project_task__customer_signature
 msgid "Customer acceptance"
 msgstr "Bestätigung (Kunde)"
 
