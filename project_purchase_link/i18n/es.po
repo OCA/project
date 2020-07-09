@@ -32,7 +32,7 @@ msgid "Project"
 msgstr "Proyecto"
 
 #. module: project_purchase_link
-#: code:addons/project_purchase_link/models/project_project.py:100
+#: code:addons/project_purchase_link/models/project_project.py:0
 #, python-format
 msgid "Purchase Invoice Lines"
 msgstr "Líneas de factura de compra"
@@ -50,13 +50,13 @@ msgid "Purchase Invoices"
 msgstr "Facturas de compra"
 
 #. module: project_purchase_link
-#: code:addons/project_purchase_link/models/project_project.py:60
+#: code:addons/project_purchase_link/models/project_project.py:0
 #, python-format
 msgid "Purchase Order"
 msgstr "Pedido de compra"
 
 #. module: project_purchase_link
-#: code:addons/project_purchase_link/models/project_project.py:73
+#: code:addons/project_purchase_link/models/project_project.py:0
 #, python-format
 msgid "Purchase Order Lines"
 msgstr "Líneas de pedido de compra"
