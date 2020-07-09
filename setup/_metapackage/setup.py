@@ -17,6 +17,7 @@ setuptools.setup(
         'odoo13-addon-project_purchase_link',
         'odoo13-addon-project_role',
         'odoo13-addon-project_stage_closed',
+        'odoo13-addon-project_stage_state',
         'odoo13-addon-project_status',
         'odoo13-addon-project_tag',
         'odoo13-addon-project_task_add_very_high',
