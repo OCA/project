@@ -8,7 +8,7 @@
     "name": "Project Task Material With Sale Timesheet",
     "summary": "Add compatibility between  project_task_material_stock"
                "and sale_timesheet module ",
-    "version": "11.0.1.0.0",
+    "version": "11.0.1.0.1",
     "category": "Project Management",
     "website": "https://github.com/OCA/project/",
     "author": "Tecnativa, Praxya, "
