@@ -29,6 +29,9 @@
                 <field name="date_start"/>
                 <field name="date"/>
             </xpath>
+            <xpath expr="//field[@name='resource_calendar_id']/.." position="attributes">
+                <attribute name="groups"/>
+            </xpath>
         </field>
     </record>
 
