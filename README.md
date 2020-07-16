@@ -51,7 +51,7 @@ addon | version | summary
 [project_task_send_by_mail](project_task_send_by_mail/) | 12.0.1.0.0 | Send task report by email
 [project_template](project_template/) | 12.0.1.0.1 | Project Templates
 [project_template_milestone](project_template_milestone/) | 12.0.1.0.0 | Adds function to copy of milestones when creating a project from template
-[project_timeline](project_timeline/) | 12.0.1.2.1 | Timeline view for projects
+[project_timeline](project_timeline/) | 12.0.1.3.0 | Timeline view for projects
 [project_timeline_hr_timesheet](project_timeline_hr_timesheet/) | 12.0.1.0.1 | Shows the progress of tasks on the timeline view.
 [project_timeline_task_dependency](project_timeline_task_dependency/) | 12.0.1.0.0 | Render arrows between dependencies.
 [project_timesheet_time_control](project_timesheet_time_control/) | 12.0.2.1.0 | Project timesheet time control
