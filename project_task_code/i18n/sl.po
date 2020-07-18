@@ -30,7 +30,6 @@ msgid "Task Number"
 msgstr "Številka opravila"
 
 #. module: project_task_code
-#: code:addons/project_task_code/models/project_task.py:21
 #: code:addons/project_task_code/models/project_task.py:22
 #: sql_constraint:project.task:0
 #, python-format
