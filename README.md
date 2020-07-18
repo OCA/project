@@ -40,7 +40,7 @@ addon | version | summary
 [project_stock_request](project_stock_request/) | 12.0.1.0.0 | Create stock requests from a projects and project tasks
 [project_tag](project_tag/) | 12.0.1.0.0 | Project Tags
 [project_task_add_very_high](project_task_add_very_high/) | 12.0.1.0.1 | Adds extra options 'High' and 'Very High' on tasks
-[project_task_code](project_task_code/) | 12.0.1.0.1 | Sequential Code for Tasks
+[project_task_code](project_task_code/) | 12.0.1.0.2 | Sequential Code for Tasks
 [project_task_default_stage](project_task_default_stage/) | 12.0.1.0.0 | Recovery default task stage projects from v8
 [project_task_dependency](project_task_dependency/) | 12.0.1.0.0 | Enables to define dependencies (other tasks) of a task
 [project_task_digitized_signature](project_task_digitized_signature/) | 12.0.1.0.0 | Project Task Digitized Signature
