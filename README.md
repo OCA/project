@@ -40,7 +40,7 @@ addon | version | summary
 [project_task_pull_request](project_task_pull_request/) | 13.0.1.0.0 | Adds a field for a PR URI to project tasks
 [project_task_send_by_mail](project_task_send_by_mail/) | 13.0.1.0.0 | Send task report by email
 [project_template](project_template/) | 13.0.1.0.0 | Project Templates
-[project_timeline](project_timeline/) | 13.0.1.0.0 | Timeline view for projects
+[project_timeline](project_timeline/) | 13.0.1.1.0 | Timeline view for projects
 [project_timeline_hr_timesheet](project_timeline_hr_timesheet/) | 13.0.1.0.0 | Shows the progress of tasks on the timeline view.
 [project_timeline_task_dependency](project_timeline_task_dependency/) | 13.0.1.0.0 | Render arrows between dependencies.
 [project_timesheet_time_control](project_timesheet_time_control/) | 13.0.1.0.0 | Project timesheet time control
