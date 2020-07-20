@@ -21,33 +21,34 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: project_stage_state
-#: selection:project.task.type,state:0
+#: model:ir.model.fields.selection,name:project_stage_state.selection__project_task_type__state__cancelled
 msgid "Cancelled"
 msgstr "Geannuleerd"
 
 #. module: project_stage_state
-#: selection:project.task.type,state:0
+#: model:ir.model.fields.selection,name:project_stage_state.selection__project_task_type__state__done
 msgid "Done"
 msgstr "Voltooid"
 
 #. module: project_stage_state
-#: selection:project.task.type,state:0
+#: model:ir.model.fields.selection,name:project_stage_state.selection__project_task_type__state__open
 msgid "In Progress"
 msgstr "In behandeling"
 
 #. module: project_stage_state
-#: selection:project.task.type,state:0
+#: model:ir.model.fields.selection,name:project_stage_state.selection__project_task_type__state__draft
 msgid "New"
 msgstr "Nieuw"
 
 #. module: project_stage_state
-#: selection:project.task.type,state:0
+#: model:ir.model.fields.selection,name:project_stage_state.selection__project_task_type__state__pending
 msgid "Pending"
 msgstr "In afwachting"
 
 #. module: project_stage_state
 #: model:ir.model.fields,field_description:project_stage_state.field_project_task__state
 #: model:ir.model.fields,field_description:project_stage_state.field_project_task_type__state
+#: model_terms:ir.ui.view,arch_db:project_stage_state.view_task_search_form
 msgid "State"
 msgstr "Status"
 
