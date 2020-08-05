@@ -68,6 +68,7 @@ msgstr ""
 
 #. module: project_timesheet_time_control
 #: code:addons/project_timesheet_time_control/models/account_analytic_line.py:0
+#: code:addons/project_timesheet_time_control/models/account_analytic_line.py:0
 #, python-format
 msgid ""
 "Cannot stop timer %d because it is not running. Refresh the page and check "
@@ -269,6 +270,7 @@ msgid "Resume"
 msgstr ""
 
 #. module: project_timesheet_time_control
+#: code:addons/project_timesheet_time_control/models/account_analytic_line.py:0
 #: code:addons/project_timesheet_time_control/models/account_analytic_line.py:0
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.account_analytic_line_tree
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_line_form
