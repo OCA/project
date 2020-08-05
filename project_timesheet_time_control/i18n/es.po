@@ -184,7 +184,6 @@ msgstr ""
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__general_account_id
 #, fuzzy
-#| msgid "Analytic Account"
 msgid "Financial Account"
 msgstr "Cuenta analítica"
 
