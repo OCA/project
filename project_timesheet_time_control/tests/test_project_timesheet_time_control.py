@@ -3,8 +3,9 @@
 
 from datetime import date, datetime, timedelta
 
-from odoo import exceptions, fields
+from odoo import exceptions
 from odoo.tests import common
+from odoo.tools.float_utils import float_compare
 
 
 class TestProjectTimesheetTimeControl(common.TransactionCase):
@@ -61,17 +62,36 @@ class TestProjectTimesheetTimeControl(common.TransactionCase):
         self.line.employee_id = self.other_employee
         self.assertFalse(self.line.show_time_control)
 
-    def test_create_write_analytic_line(self):
-        line = self.env["account.analytic.line"].create(
-            {
-                "date_time": fields.Datetime.now(),
-                "project_id": self.project.id,
-                "name": "Test line",
-            }
-        )
-        self.assertEqual(line.date, fields.Date.today())
-        line.date_time = "2016-03-23 18:27:00"
+    def test_create_analytic_line(self):
+        line = self._create_analytic_line(datetime(2016, 3, 24, 3), tz="EST")
         self.assertEqual(line.date, date(2016, 3, 23))
+
+    def test_create_analytic_line_with_string_datetime(self):
+        line = self._create_analytic_line("2016-03-24 03:00:00", tz="EST")
+        self.assertEqual(line.date, date(2016, 3, 23))
+
+    def test_write_analytic_line(self):
+        line = self._create_analytic_line(datetime.now())
+        line.with_context(tz="EST").date_time = "2016-03-24 03:00:00"
+        self.assertEqual(line.date, date(2016, 3, 23))
+
+    def test_write_analytic_line_with_string_datetime(self):
+        line = self._create_analytic_line(datetime.now())
+        line.with_context(tz="EST").date_time = datetime(2016, 3, 24, 3)
+        self.assertEqual(line.date, date(2016, 3, 23))
+
+    def _create_analytic_line(self, datetime_, tz=None):
+        return (
+            self.env["account.analytic.line"]
+            .with_context(tz=tz)
+            .create(
+                {
+                    "date_time": datetime_,
+                    "project_id": self.project.id,
+                    "name": "Test line",
+                }
+            )
+        )
 
     def test_aal_time_control_flow(self):
         """Test account.analytic.line time controls."""
@@ -249,3 +269,25 @@ class TestProjectTimesheetTimeControl(common.TransactionCase):
             ]
         )
         self.assertEqual(len(new_line), 1)
+
+    def test_start_end_time(self):
+        line = self.line.copy(
+            {"task_id": False, "project_id": self.project.id, "name": "No task here"}
+        )
+        line.date_time = datetime(2020, 8, 1, 10, 0, 0)
+        line.unit_amount = 2.0
+        self.assertTrue(line.date_time_end == datetime(2020, 8, 1, 12, 0, 0))
+        line.date_time_end = datetime(2020, 8, 1, 15, 0, 0)
+        self.assertFalse(float_compare(line.unit_amount, 5.0, precision_digits=2))
+
+    def test_non_timesheet_analytic_line(self):
+        line = self.env["account.analytic.line"].create(
+            {
+                "project_id": self.project.id,
+                "account_id": self.analytic_account.id,
+                "name": "Test non-timesheet line",
+                "product_uom_id": self.env.ref("uom.product_uom_gram").id,
+            }
+        )
+        line.unit_amount = 500.0
+        self.assertFalse(line.date_time_end)
