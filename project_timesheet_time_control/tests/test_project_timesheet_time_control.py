@@ -3,7 +3,7 @@
 
 from datetime import date, datetime, timedelta
 
-from odoo import exceptions, fields
+from odoo import exceptions
 from odoo.tests import common
 
 
@@ -61,17 +61,36 @@ class TestProjectTimesheetTimeControl(common.TransactionCase):
         self.line.employee_id = self.other_employee
         self.assertFalse(self.line.show_time_control)
 
-    def test_create_write_analytic_line(self):
-        line = self.env["account.analytic.line"].create(
-            {
-                "date_time": fields.Datetime.now(),
-                "project_id": self.project.id,
-                "name": "Test line",
-            }
-        )
-        self.assertEqual(line.date, fields.Date.today())
-        line.date_time = "2016-03-23 18:27:00"
+    def test_create_analytic_line(self):
+        line = self._create_analytic_line(datetime(2016, 3, 24, 3), tz="EST")
         self.assertEqual(line.date, date(2016, 3, 23))
+
+    def test_create_analytic_line_with_string_datetime(self):
+        line = self._create_analytic_line("2016-03-24 03:00:00", tz="EST")
+        self.assertEqual(line.date, date(2016, 3, 23))
+
+    def test_write_analytic_line(self):
+        line = self._create_analytic_line(datetime.now())
+        line.with_context(tz="EST").date_time = "2016-03-24 03:00:00"
+        self.assertEqual(line.date, date(2016, 3, 23))
+
+    def test_write_analytic_line_with_string_datetime(self):
+        line = self._create_analytic_line(datetime.now())
+        line.with_context(tz="EST").date_time = datetime(2016, 3, 24, 3)
+        self.assertEqual(line.date, date(2016, 3, 23))
+
+    def _create_analytic_line(self, datetime_, tz=None):
+        return (
+            self.env["account.analytic.line"]
+            .with_context(tz=tz)
+            .create(
+                {
+                    "date_time": datetime_,
+                    "project_id": self.project.id,
+                    "name": "Test line",
+                }
+            )
+        )
 
     def test_aal_time_control_flow(self):
         """Test account.analytic.line time controls."""
