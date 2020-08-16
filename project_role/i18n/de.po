@@ -247,14 +247,12 @@ msgstr "Zuletzt aktualisiert am"
 #: model:ir.model.fields,field_description:project_role.field_res_config_settings__project_limit_role_to_assignments
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
 #, fuzzy
-#| msgid "Project Assignments"
 msgid "Limit Project Role to Assignments"
 msgstr "Projekt-Rollenzuweisungen"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_project__limit_role_to_assignments
 #, fuzzy
-#| msgid "Project Assignments"
 msgid "Limit role to assignments"
 msgstr "Projekt-Rollenzuweisungen"
 
@@ -292,7 +290,6 @@ msgstr "Anzahl der Aktionen"
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_has_error_counter
 #, fuzzy
-#| msgid "Number of error"
 msgid "Number of errors"
 msgstr "Anzahl der Fehler"
 
@@ -360,14 +357,12 @@ msgstr "Projektrollen"
 #: model:ir.model.fields,field_description:project_role.field_res_company__project_inherit_assignments
 #: model:ir.model.fields,field_description:project_role.field_res_config_settings__project_inherit_assignments
 #, fuzzy
-#| msgid "Project Assignments"
 msgid "Projects Inherit Assignments"
 msgstr "Projekt-Rollenzuweisungen"
 
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
 #, fuzzy
-#| msgid "Project Assignments"
 msgid "Projects inherit Company assignments"
 msgstr "Projekt-Rollenzuweisungen"
 
@@ -398,7 +393,6 @@ msgstr "Rollen und Zuweisungen"
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_has_sms_error
 #, fuzzy
-#| msgid "Message Delivery error"
 msgid "SMS Delivery error"
 msgstr "Nachrichten-Übertragungsfehler"
 
