@@ -29,7 +29,6 @@ msgstr "Usuarios permitidos"
 #. module: project_hr
 #: model:ir.model,name:project_hr.model_hr_employee
 #, fuzzy
-#| msgid "Linked employee"
 msgid "Employee"
 msgstr "Empleado relacionado"
 
