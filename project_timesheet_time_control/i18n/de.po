@@ -136,7 +136,6 @@ msgstr "Datum"
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_account_analytic_line__date_time
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__date_time
 #, fuzzy
-#| msgid "Date"
 msgid "Date Time"
 msgstr "Datum"
 
@@ -307,7 +306,6 @@ msgstr ""
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
 #, fuzzy
-#| msgid "Date"
 msgid "Start new timer"
 msgstr "Datum"
 
@@ -353,7 +351,6 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_kanban
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_tree2_inherited
 #, fuzzy
-#| msgid "Stop"
 msgid "Stop work"
 msgstr "Stop"
 
