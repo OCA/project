@@ -116,7 +116,6 @@ msgstr ""
 #. module: project_task_material_stock
 #: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_material__product_id
 #, fuzzy
-#| msgid "Products"
 msgid "Product"
 msgstr "Ürünler"
 
