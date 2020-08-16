@@ -129,7 +129,6 @@ msgstr "Prodotti"
 #. module: project_task_material_stock
 #: model:ir.model.fields,field_description:project_task_material_stock.field_project_task__analytic_account_id
 #, fuzzy
-#| msgid "Move Analytic Account"
 msgid "Project Analytic Account"
 msgstr "Conto Analitico Movimentazione"
 

@@ -115,7 +115,6 @@ msgstr "Odottaa"
 #. module: project_task_material_stock
 #: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_material__product_id
 #, fuzzy
-#| msgid "Products"
 msgid "Product"
 msgstr "Tuotteet"
 
@@ -134,14 +133,12 @@ msgstr "Analyyttinen rivi"
 #: model:ir.model.fields,field_description:project_task_material_stock.field_account_analytic_line__task_material_id
 #: model:ir.model.fields,field_description:project_task_material_stock.field_stock_move__task_material_id
 #, fuzzy
-#| msgid "Task Material Used"
 msgid "Project Task Material"
 msgstr "Tehtävän materiaaleja käytetty"
 
 #. module: project_task_material_stock
 #: model:stock.picking.type,name:project_task_material_stock.project_task_material_picking_type
 #, fuzzy
-#| msgid "Task Material Used"
 msgid "Project Task Material Operations"
 msgstr "Tehtävän materiaaleja käytetty"
 
@@ -197,7 +194,6 @@ msgstr "Siirrä materiaalit"
 #. module: project_task_material_stock
 #: model:ir.model.fields,field_description:project_task_material_stock.field_project_task__picking_id
 #, fuzzy
-#| msgid "Transfer Materials"
 msgid "Transfer Reference"
 msgstr "Siirrä materiaalit"
 
