@@ -125,7 +125,6 @@ msgstr "Proizvodi"
 #. module: project_task_material_stock
 #: model:stock.picking.type,name:project_task_material_stock.project_task_material_picking_type
 #, fuzzy
-#| msgid "Task Material Used"
 msgid "Project Task Material Operations"
 msgstr "Materijal utrošen na zadatku"
 
@@ -175,7 +174,6 @@ msgstr "Prebaci materijale"
 #. module: project_task_material_stock
 #: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_picking_id
 #, fuzzy
-#| msgid "Transfer Materials"
 msgid "Transfer Reference"
 msgstr "Prebaci materijale"
 

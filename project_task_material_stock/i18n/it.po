@@ -120,7 +120,6 @@ msgstr "Prodotti"
 #. module: project_task_material_stock
 #: model:stock.picking.type,name:project_task_material_stock.project_task_material_picking_type
 #, fuzzy
-#| msgid "Task Material Used"
 msgid "Project Task Material Operations"
 msgstr "Materiale usato per l'attività"
 
