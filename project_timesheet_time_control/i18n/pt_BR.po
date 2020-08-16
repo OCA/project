@@ -48,9 +48,6 @@ msgstr ""
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_project_kanban_inherited
 #, fuzzy
-#| msgid ""
-#| "<i class=\"fa fa-stop-circle\"/>\n"
-#| "                                            Stop"
 msgid ""
 "<span class=\"o_label\">\n"
 "                            <i class=\"fa fa-lg fa-stop-circle text-warning"
@@ -69,7 +66,6 @@ msgstr ""
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__account_id
 #, fuzzy
-#| msgid "Analytic Line"
 msgid "Analytic Account"
 msgstr "Linhas Analíticas"
 
@@ -145,7 +141,6 @@ msgstr "Data"
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_account_analytic_line__date_time
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__date_time
 #, fuzzy
-#| msgid "Date time"
 msgid "Date Time"
 msgstr "Data hora"
 
@@ -157,7 +152,6 @@ msgstr ""
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__name
 #, fuzzy
-#| msgid "Duration"
 msgid "Description"
 msgstr "Duração"
 
@@ -318,7 +312,6 @@ msgstr ""
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
 #, fuzzy
-#| msgid "Date time"
 msgid "Start new timer"
 msgstr "Data hora"
 
@@ -364,7 +357,6 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_kanban
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_tree2_inherited
 #, fuzzy
-#| msgid "Stop"
 msgid "Stop work"
 msgstr "Parar"
 
