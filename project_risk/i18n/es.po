@@ -20,7 +20,6 @@ msgstr ""
 #. module: project_risk
 #: model:ir.model.fields,field_description:project_risk.field_project_risk__message_needaction
 #, fuzzy
-#| msgid "Actionee"
 msgid "Action Needed"
 msgstr "Actionee"
 
@@ -308,21 +307,18 @@ msgstr "Cuenta de riesgo del proyecto"
 #. module: project_risk
 #: model:ir.model,name:project_risk.model_project_risk_category
 #, fuzzy
-#| msgid "Risk Categories"
 msgid "Project Risks Categories"
 msgstr "Categoría de riesgo"
 
 #. module: project_risk
 #: model:ir.model,name:project_risk.model_project_risk_response
 #, fuzzy
-#| msgid "Project Risk Count"
 msgid "Project Risks Responses"
 msgstr "Cuenta de riesgo del proyecto"
 
 #. module: project_risk
 #: model:ir.model,name:project_risk.model_project_risk_response_category
 #, fuzzy
-#| msgid "Risk Response Categories"
 msgid "Project Risks Responses Categories"
 msgstr "Categorías de respuesta al riesgo"
 
