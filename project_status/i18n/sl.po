@@ -100,7 +100,6 @@ msgstr "Na čakanju"
 #. module: project_status
 #: model:ir.model,name:project_status.model_project_project
 #, fuzzy
-#| msgid "Project Status"
 msgid "Project"
 msgstr "Projektni status"
 
