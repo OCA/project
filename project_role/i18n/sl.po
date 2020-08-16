@@ -289,7 +289,6 @@ msgstr "Število ukrepov"
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_has_error_counter
 #, fuzzy
-#| msgid "Number of error"
 msgid "Number of errors"
 msgstr "Število napak"
 
@@ -389,7 +388,6 @@ msgstr "Vloge in zadolžitve"
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_has_sms_error
 #, fuzzy
-#| msgid "Message Delivery error"
 msgid "SMS Delivery error"
 msgstr "Napaka ob dostavi sporočila"
 
