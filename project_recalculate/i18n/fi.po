@@ -172,7 +172,6 @@ msgstr "Projekti"
 #. module: project_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__project_date
 #, fuzzy
-#| msgid "Project"
 msgid "Project Date"
 msgstr "Projekti"
 
