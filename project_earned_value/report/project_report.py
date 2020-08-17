@@ -70,13 +70,13 @@ class ReportProjectTaskUser(models.Model):
             if len(self._context.get('project_ids')) > 1:
                 query += """
                     AND
-                    t.project_id IN
-                """ + str(tuple(self._context.get('project_ids')))
+                    t.project_id IN %s
+                """ % (str(tuple(self._context.get('project_ids'))))
             else:
                 query += """
                     AND
-                    t.project_id =
-                """ + str(self._context.get('project_ids')[0])
+                    t.project_id = %s
+                """ % (str(self._context.get('project_ids')[0]))
         return query
 
     @api.model_cr
