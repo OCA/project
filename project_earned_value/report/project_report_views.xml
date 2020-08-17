@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+        <record id="view_task_project_user_pivot" model="ir.ui.view">
+            <field name="name">report.project.task.user.pivot.inherit</field>
+            <field name="model">report.project.task.user</field>
+            <field name="inherit_id" ref="project.view_task_project_user_pivot"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='project_id']" position="before" >
+                    <field name="planned_value" type="measure"/>
+                    <field name="earned_value" type="measure"/>
+                    <field name="actual_cost" type="measure"/>
+                    <field name="schedule_variance" type="measure"/>
+                    <field name="cost_variance" type="measure"/>
+                </xpath>
+            </field>
+        </record>
+</odoo>
