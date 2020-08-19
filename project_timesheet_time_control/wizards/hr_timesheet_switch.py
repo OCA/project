@@ -114,6 +114,11 @@ class HrTimesheetSwitch(models.TransientModel):
                 # resume an invoiced AAL if that module is installed,
                 # and it doesn't hurt here
                 "timesheet_invoice_id",
+                # These fields are from the hr_timesheet_activity_begin_end
+                # module. Unless ignored, these fields will cause a validation
+                # error because time_stop - time_start must equal duration.
+                "time_start",
+                "time_stop",
             }
             inherited.read(_fields)
             values = inherited._convert_to_write(inherited._cache)
