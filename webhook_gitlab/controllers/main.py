@@ -80,8 +80,7 @@ class WebhookGitlab(http.Controller):
         if id_found['type'] in ['ticket', 'i', 'issue']:
             model = 'helpdesk.ticket'
             rec_type = 'ticket'
-        record = request.env[model].sudo().search([
-            ('id', '=', id_found['id'])])
+        record = request.env[model].sudo().browse(id_found['id'])
         if not record:
             message = _('The %s #%s cannot be found in Odoo.') % (
                 rec_type, id_found['id'])
