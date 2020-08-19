@@ -7,7 +7,5 @@ from odoo import fields, models
 class HelpdeskTicket(models.Model):
     _inherit = 'helpdesk.ticket'
 
-    gitlab_link = fields.Boolean(
-        help='Technical field used to map if the record have link to the '
-             'Merge Request'
-    )
+    git_request_ids = fields.One2many(
+        'git.request', 'ticket_id', string='Merge Requests')

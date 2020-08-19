@@ -7,7 +7,5 @@ from odoo import fields, models
 class ProjectTask(models.Model):
     _inherit = 'project.task'
 
-    gitlab_link = fields.Boolean(
-        help='Technical field used to map if the record have link to the '
-             'Merge Request'
-    )
+    git_request_ids = fields.One2many(
+        'git.request', 'task_id', string='Merge Requests')

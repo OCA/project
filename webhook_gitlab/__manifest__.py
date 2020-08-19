@@ -10,12 +10,17 @@
     'website': 'https://www.jarsa.com.mx',
     'license': 'AGPL-3',
     'depends': [
-        'helpdesk',
+        'helpdesk_timesheet',
         'project',
     ],
     'data': [
         'views/message_templates.xml',
         'data/ir_config_parameter.xml',
+        'views/git_request_view.xml',
+        'views/project_task_view.xml',
+        'views/helpdesk_ticket_view.xml',
+        'views/res_users_view.xml',
+        'security/ir.model.access.csv',
     ],
     'external_dependencies': {
         'python': [

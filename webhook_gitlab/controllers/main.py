@@ -73,29 +73,55 @@ class WebhookGitlab(http.Controller):
 
     def _link_record(self, event, id_found):
         """Add link to Gitlab to access Odoo ticket or task.
-        Post a message in the task or ticket with the access of Gitlab MR.
+        Create the git.request related to ticket or task.
         """
         model = 'project.task'
         rec_type = 'task'
         if id_found['type'] in ['ticket', 'i', 'issue']:
             model = 'helpdesk.ticket'
             rec_type = 'ticket'
-        record = request.env[model].sudo().browse(id_found['id'])
+        record = request.env[model].sudo().browse(int(id_found['id']))
         if not record:
             message = _('The %s #%s cannot be found in Odoo.') % (
                 rec_type, id_found['id'])
             self._post_gitlab_message(event, message)
             return False
-        if record.gitlab_link:
+        project_id = event['project']['id']
+        merge_request_id = event['object_attributes']['iid']
+        git_request = request.env['git.request'].sudo().search([
+            ('id_request', '=', merge_request_id),
+            ('id_project', '=', project_id),
+        ])
+        git_request_vals = self._prepare_git_request(record, event)
+        if git_request:
+            git_request.sudo().write(git_request_vals)
             return False
-        record.gitlab_link = True
-        body = request.env['ir.qweb'].render(
-            'webhook_gitlab.gitlab_new_merge_request', dict(event=event))
-        record.message_post(body=body)
+        git_request.sudo().create(git_request_vals)
         url = record._notify_get_action_link('view')
         message = _('Linked to Odoo %s [#%s](%s)') % (rec_type, record.id, url)
         self._post_gitlab_message(event, message)
         return True
+
+    def _prepare_git_request(self, record, event):
+        vals = {
+            'id_request': event['object_attributes']['iid'],
+            'id_project': event['project']['id'],
+            'name': event['object_attributes']['title'],
+            'wip': event['object_attributes']['work_in_progress'],
+            'state': event['object_attributes']['state'],
+            'url': event['object_attributes']['url'],
+            'branch': event['object_attributes']['source_branch'],
+            'last_commit': event['object_attributes']['last_commit']['id'],
+        }
+        user = request.env['res.users'].sudo().search([
+            ('gitlab_username', '=', event['user']['username'])])
+        if user:
+            vals['user_id'] = user.id
+        if record._name == 'project.task':
+            vals['task_id'] = record.id
+        else:
+            vals['ticket_id'] = record.id
+        return vals
 
     def _process_merge_request(self, event):
         """Post messages in helpdesk.ticket or project.task based on the
@@ -113,6 +139,23 @@ class WebhookGitlab(http.Controller):
             self._post_gitlab_message(event, message)
             return False
         return self._link_record(event, id_found)
+
+    def _process_pipeline(self, event):
+        """Process pipeline status and update git.request in task or ticket.
+        The title must contain the type of registry and the ID preceded by a #
+        sign.
+
+        Ex. [IMP] webhook_gitlab: new module task #1234
+        """
+        git_request = request.env['git.request'].sudo().search([
+            ('branch', '=', event['object_attributes']['ref']),
+            ('last_commit', '=', event['object_attributes']['sha']),
+        ])
+        if git_request:
+            git_request.sudo().write({
+                'ci_status': event['object_attributes']['status'],
+            })
+        return True
 
     def _connect_gitlab(self):
         """Connect to gitlab instance and return gitlab object"""

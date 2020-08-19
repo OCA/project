@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <template id="gitlab_new_merge_request" name="Gitlab: New Merge Request">
-        <ul>
-            <li><a t-att-href="event['object_attributes']['url']"><t t-esc="event['object_attributes']['title']"/></a></li>
-            <li>Created by: <t t-esc="event['user']['name']"/></li>
-            <li>Username: <t t-esc="event['user']['username']"/></li>
-        </ul>
-    </template>
-
     <template id="gitlab_id_not_in_title" name="Gitlab: ID not found in title">
         <t>**WARNING**: Could not link to Odoo task or ticket. Record ID not found in the title of the MR, supported formats:
 ```

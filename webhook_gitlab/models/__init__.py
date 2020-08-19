@@ -3,3 +3,5 @@
 
 from . import helpdesk_ticket
 from . import project_task
+from . import git_request
+from . import res_users
