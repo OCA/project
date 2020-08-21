@@ -5,6 +5,7 @@ from datetime import date, datetime, timedelta
 
 from odoo import exceptions
 from odoo.tests import common
+from odoo.tools.float_utils import float_compare
 
 
 class TestProjectTimesheetTimeControl(common.TransactionCase):
@@ -268,3 +269,25 @@ class TestProjectTimesheetTimeControl(common.TransactionCase):
             ]
         )
         self.assertEqual(len(new_line), 1)
+
+    def test_start_end_time(self):
+        line = self.line.copy(
+            {"task_id": False, "project_id": self.project.id, "name": "No task here"}
+        )
+        line.date_time = datetime(2020, 8, 1, 10, 0, 0)
+        line.unit_amount = 2.0
+        self.assertTrue(line.date_time_end == datetime(2020, 8, 1, 12, 0, 0))
+        line.date_time_end = datetime(2020, 8, 1, 15, 0, 0)
+        self.assertFalse(float_compare(line.unit_amount, 5.0, precision_digits=2))
+
+    def test_non_timesheet_analytic_line(self):
+        line = self.env["account.analytic.line"].create(
+            {
+                "project_id": self.project.id,
+                "account_id": self.analytic_account.id,
+                "name": "Test non-timesheet line",
+                "product_uom_id": self.env.ref("uom.product_uom_gram").id,
+            }
+        )
+        line.unit_amount = 500.0
+        self.assertFalse(line.date_time_end)
