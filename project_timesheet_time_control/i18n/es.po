@@ -40,6 +40,13 @@ msgstr ""
 "                        Si continúa, se detendrá con"
 
 #. module: project_timesheet_time_control
+#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_kanban_account_analytic_line
+msgid ""
+"<br/>\n"
+"                    <span>to</span>"
+msgstr ""
+
+#. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_project_kanban_inherited
 msgid ""
 "<span class=\"o_label\">\n"
@@ -143,17 +150,9 @@ msgstr "Moneda"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__date
-#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.account_analytic_line_tree
-#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_line_form
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_form2_inherited
 msgid "Date"
 msgstr "Fecha"
-
-#. module: project_timesheet_time_control
-#: model:ir.model.fields,field_description:project_timesheet_time_control.field_account_analytic_line__date_time
-#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__date_time
-msgid "Date Time"
-msgstr "Fecha y hora"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__department_id
@@ -179,6 +178,12 @@ msgstr "Empleado"
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__encoding_uom_id
 msgid "Encoding Uom"
+msgstr ""
+
+#. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_account_analytic_line__date_time_end
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__date_time_end
+msgid "End Time"
 msgstr ""
 
 #. module: project_timesheet_time_control
@@ -325,6 +330,12 @@ msgid "Start"
 msgstr "Comenzar"
 
 #. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_account_analytic_line__date_time
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__date_time
+msgid "Start Time"
+msgstr ""
+
+#. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
 msgid "Start new timer"
 msgstr "Comenzar nuevo cronómetro"
@@ -436,3 +447,6 @@ msgstr "que comenzó el"
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
 msgid "hour(s)."
 msgstr "hora(s)."
+
+#~ msgid "Date Time"
+#~ msgstr "Fecha y hora"
