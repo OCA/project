@@ -40,7 +40,7 @@ class ProjectTask(models.Model):
     @api.depends("dependency_task_ids")
     def _compute_recursive_dependency_task_ids(self):
         for task in self:
-            task.recursive_dependency_task_ids = task.get_dependency_tasks(task, True)
+            task.recursive_dependency_task_ids = task.get_dependency_tasks()
 
     @api.depends("dependency_task_ids")
     def _compute_depending_task_ids(self):
@@ -52,12 +52,16 @@ class ProjectTask(models.Model):
         for task in self:
             task.recursive_depending_task_ids = task.get_depending_tasks(task, True)
 
-    @api.model
-    def get_dependency_tasks(self, task, recursive=False):
-        dependency_tasks = task.with_context(prefetch_fields=False).dependency_task_ids
-        if recursive:
-            for t in dependency_tasks:
-                dependency_tasks |= self.get_dependency_tasks(t, recursive)
+    def get_dependency_tasks(self):
+        self.ensure_one()
+        dependency_tasks = self.dependency_task_ids
+        tasks_stack = dependency_tasks
+        processed_tasks = self.env["project.task"]
+        while tasks_stack:
+            actual_task = fields.first(tasks_stack)
+            processed_tasks |= actual_task
+            dependency_tasks |= actual_task.dependency_task_ids
+            tasks_stack = dependency_tasks - processed_tasks
         return dependency_tasks
 
     @api.model
