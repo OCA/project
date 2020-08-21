@@ -106,6 +106,7 @@ class HrTimesheetSwitch(models.TransientModel):
                 "id",
                 "amount",
                 "date_time",
+                "date_time_end",
                 "date",
                 "is_task_closed",
                 "unit_amount",
