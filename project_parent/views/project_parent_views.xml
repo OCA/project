@@ -1,16 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<!--
-© 2017-2019 Elico Corp (https://www.elico-corp.com).
-License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
--->
+<!-- © 2017-2019 Elico Corp (https://www.elico-corp.com).
+License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html). -->
 <odoo>
-    <record id="view_project_parent_edit_project" model="ir.ui.view">
+    <record id="edit_project" model="ir.ui.view">
         <field name="name">project.project.form</field>
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.edit_project" />
         <field name="arch" type="xml">
             <field name="user_id" position="after">
-                <field name="project_parent_id" />
+                <field name="parent_id" />
             </field>
             <div name="button_box" position="inside">
                 <button
@@ -23,36 +21,23 @@ License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
             </div>
         </field>
     </record>
-    <record id="view_project_parent_project_filter" model="ir.ui.view">
-        <field name="name">project.project.select</field>
-        <field name="model">project.project</field>
-        <field name="inherit_id" ref="project.view_project_project_filter" />
-        <field name="type">search</field>
-        <field name="arch" type="xml">
-            <field name="name" position="after">
-                <field name="project_parent_id" />
-            </field>
-        </field>
-    </record>
-    <record id="view_project_parent_inherited_tree" model="ir.ui.view">
-        <field name="name">project.project.tree.inherited</field>
+    <record id="view_project" model="ir.ui.view">
+        <field name="name">project.project.tree</field>
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.view_project" />
-        <field name="priority">16</field>
         <field name="arch" type="xml">
             <field name="partner_id" position="after">
-                <field name="project_parent_id" />
+                <field name="parent_id" />
             </field>
         </field>
     </record>
-    <record id="view_project_kanban_inherited" model="ir.ui.view">
+    <record id="view_project_kanban" model="ir.ui.view">
         <field name="name">project.project.kanban.inherited</field>
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.view_project_kanban" />
-        <field name="priority">16</field>
         <field name="arch" type="xml">
             <field name="rating_status" position="after">
-                <field name="project_parent_id" />
+                <field name="parent_id" />
             </field>
             <xpath
                 expr="//div[hasclass('o_project_kanban_main')]/div[last()]"
@@ -60,10 +45,21 @@ License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
             >
                 <div class="o_primary">
                     <span>
-                        <t t-esc="record.project_parent_id.value" />
+                        <t t-esc="record.parent_id.value" />
                     </span>
                 </div>
             </xpath>
+        </field>
+    </record>
+    <record id="view_project_project_filter" model="ir.ui.view">
+        <field name="name">project.project.filter</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project_project_filter" />
+        <field name="type">search</field>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="parent_id" />
+            </field>
         </field>
     </record>
 </odoo>
