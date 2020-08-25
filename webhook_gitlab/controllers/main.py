@@ -103,12 +103,16 @@ class WebhookGitlab(http.Controller):
         return True
 
     def _prepare_git_request(self, record, event):
+        approved = False
+        if event['object_attributes']['action'] == 'approved':
+            approved = True
         vals = {
             'id_request': event['object_attributes']['iid'],
             'id_project': event['project']['id'],
             'name': event['object_attributes']['title'],
             'wip': event['object_attributes']['work_in_progress'],
             'state': event['object_attributes']['state'],
+            'approved': approved,
             'url': event['object_attributes']['url'],
             'branch': event['object_attributes']['source_branch'],
             'last_commit': event['object_attributes']['last_commit']['id'],

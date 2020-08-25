@@ -19,6 +19,7 @@ class GitRequest(models.Model):
     wip = fields.Boolean(string='WIP')
     branch = fields.Char()
     last_commit = fields.Char()
+    approved = fields.Boolean()
     state = fields.Selection([
         ('opened', 'Opened'),
         ('merged', 'Merged'),
