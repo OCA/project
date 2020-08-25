@@ -5,10 +5,9 @@
     "version": "13.0.1.0.0",
     "license": "LGPL-3",
     "category": "project",
-    "author": "Therp B.V., Elico Corp, Odoo Community Association (OCA)",
+    "author": "haulogy SA/NV, Therp B.V., Elico Corp, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/project",
     "depends": ["project"],
-    "data": ["views/project_parent.xml"],
-    "post_init_hook": "restore_parents",
-    "installable": True,
+    "data": ["views/project_parent_views.xml"],
+    "demo": ["demo/project_project_demo.xml"],
 }
