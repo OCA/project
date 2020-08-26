@@ -19,7 +19,7 @@ def restore_parents(cr, registry):
         WHERE attrelid = ( SELECT oid FROM pg_class WHERE relname = %s )
         AND attname = %s
         """,
-        ('project_project', 'openupgrade_legacy_12_0_analytic_account_id')
+        ("project_project", "openupgrade_legacy_12_0_analytic_account_id"),
     )
     if cr.fetchone()[0] == 1:
         cr.execute(
@@ -33,12 +33,11 @@ def restore_parents(cr, registry):
     # check if disregarded columns exist (instance has been previously migrated
     # using migration scripts without openupgrade)
     cr.execute(
-        'SELECT count(attname) FROM pg_attribute '
-        'WHERE attrelid = '
-        '( SELECT oid FROM pg_class WHERE relname = %s ) '
-        'AND attname = %s',
-        ('account_analytic_account',
-         'parent_project_id')
+        "SELECT count(attname) FROM pg_attribute "
+        "WHERE attrelid = "
+        "( SELECT oid FROM pg_class WHERE relname = %s ) "
+        "AND attname = %s",
+        ("account_analytic_account", "parent_project_id"),
     )
     if cr.fetchone()[0] == 1:
         cr.execute(
