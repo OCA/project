@@ -4,27 +4,28 @@ from odoo import api, fields, models
 
 
 class Project(models.Model):
-    _inherit = 'project.project'
+    _inherit = "project.project"
     _parent_store = True
-    _parent_name = 'project_parent_id'
+    _parent_name = "project_parent_id"
 
     project_parent_id = fields.Many2one(
-        comodel_name='project.project', string='Parent Project'
+        comodel_name="project.project", string="Parent Project"
     )
-    child_ids = fields.One2many(comodel_name='project.project',
-                                inverse_name='project_parent_id')
+    child_ids = fields.One2many(
+        comodel_name="project.project", inverse_name="project_parent_id"
+    )
     parent_path = fields.Char(index=True)
 
     @api.multi
     def action_open_child_project(self):
         for rec in self:
-            domain = [('project_parent_id', '=', rec.id)]
+            domain = [("project_parent_id", "=", rec.id)]
             return {
-                'type': 'ir.actions.act_window',
-                'view_type': 'form',
-                'name': 'Children of %s' % rec.name,
-                'view_mode': 'tree,form,graph',
-                'res_model': 'project.project',
-                'target': 'current',
-                'domain': domain
+                "type": "ir.actions.act_window",
+                "view_type": "form",
+                "name": "Children of %s" % rec.name,
+                "view_mode": "tree,form,graph",
+                "res_model": "project.project",
+                "target": "current",
+                "domain": domain,
             }
