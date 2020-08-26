@@ -13,11 +13,16 @@ License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html). -->
             <div name="button_box" position="inside">
                 <button
                     name="action_open_child_project"
-                    class="oe_inline oe_stat_button"
+                    class="oe_stat_button"
                     type="object"
-                    string="Child Projects"
                     icon="fa-tasks"
-                />
+                >
+                    <field
+                        string="Child Projects"
+                        name="child_ids_count"
+                        widget="statinfo"
+                    />
+                </button>
             </div>
         </field>
     </record>
