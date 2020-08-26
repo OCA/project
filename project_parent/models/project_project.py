@@ -1,7 +1,7 @@
 # Copyright 2019 Therp BV <https://therp.nl>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class Project(models.Model):
@@ -18,8 +18,18 @@ class Project(models.Model):
 
     parent_path = fields.Char(index=True)
 
+    child_ids_count = fields.Integer(compute="_compute_child_ids_count", store=True)
+
+    @api.depends("child_ids")
+    def _compute_child_ids_count(self):
+        for project in self:
+            project.child_ids_count = len(project.child_ids)
+
     def action_open_child_project(self):
         self.ensure_one()
+        ctx = self.env.context.copy()
+        ctx.update(default_parent_id=self.id)
+        domain = [("parent_id", "=", self.id)]
         return {
             "type": "ir.actions.act_window",
             "view_type": "form",
@@ -27,5 +37,6 @@ class Project(models.Model):
             "view_mode": "tree,form,graph",
             "res_model": "project.project",
             "target": "current",
-            "domain": [("parent_id", "=", self.id)],
+            "context": ctx,
+            "domain": domain,
         }
