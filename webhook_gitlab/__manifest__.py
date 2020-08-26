@@ -16,6 +16,8 @@
     'data': [
         'views/message_templates.xml',
         'data/ir_config_parameter.xml',
+        'data/project_tags_data.xml',
+        'data/helpdesk_tag_data.xml',
         'views/git_request_view.xml',
         'views/project_task_view.xml',
         'views/helpdesk_ticket_view.xml',

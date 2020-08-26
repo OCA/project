@@ -116,6 +116,8 @@ class WebhookGitlab(http.Controller):
             'url': event['object_attributes']['url'],
             'branch': event['object_attributes']['source_branch'],
             'last_commit': event['object_attributes']['last_commit']['id'],
+            'task_id': False,
+            'ticket_id': False,
         }
         user = request.env['res.users'].sudo().search([
             ('gitlab_username', '=', event['user']['username'])])
