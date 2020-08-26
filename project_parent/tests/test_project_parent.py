@@ -20,5 +20,8 @@ class TestProjectParent(TransactionCase):
     def test_action_open_child_project(self):
         res = self.project_project_1.action_open_child_project()
         self.assertEquals(
-            res["domain"], [("parent_id", "=", self.project_project_1.id)]
+            res.get("domain"), [("parent_id", "=", self.project_project_1.id)]
+        )
+        self.assertEquals(
+            res.get("context").get("default_parent_id"), self.project_project_1.id
         )
