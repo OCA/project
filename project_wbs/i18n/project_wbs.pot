@@ -91,6 +91,7 @@ msgstr ""
 
 #. module: project_wbs
 #: code:addons/project_wbs/models/account_analytic_account.py:181
+#: code:addons/project_wbs/models/account_analytic_account.py:184
 #, python-format
 msgid "Duplicate the project instead of the Analytic Account"
 msgstr ""
@@ -243,6 +244,7 @@ msgstr ""
 #. module: project_wbs
 #: sql_constraint:account.analytic.account:0
 #: code:addons/project_wbs/models/account_analytic_account.py:230
+#: code:addons/project_wbs/models/account_analytic_account.py:233
 #, python-format
 msgid "The full wbs code must be unique!"
 msgstr ""
