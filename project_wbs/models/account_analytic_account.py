@@ -109,10 +109,13 @@ class AccountAnalyticAccount(models.Model):
     @api.depends('account_class', 'parent_id')
     def _compute_project_analytic_id(self):
         for analytic in self:
-            current = analytic
-            while current:
+            if analytic.parent_id:
+                current = analytic.parent_id
+            else:
+                current = analytic
+            while current.id:
                 if current.account_class == 'project':
-                    analytic.project_analytic_id = current.id
+                    analytic.project_analytic_id = current
                     break
                 current = current.parent_id
 
