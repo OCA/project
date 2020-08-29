@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* project_wbs
+# 	* project_wbs
 #
 msgid ""
 msgstr ""
@@ -94,6 +94,7 @@ msgstr "Dettagli"
 
 #. module: project_wbs
 #: code:addons/project_wbs/models/account_analytic_account.py:181
+#: code:addons/project_wbs/models/account_analytic_account.py:184
 #, python-format
 msgid "Duplicate the project instead of the Analytic Account"
 msgstr ""
@@ -138,7 +139,10 @@ msgstr "Livello"
 
 #. module: project_wbs
 #: model:ir.model.fields,help:project_wbs.field_project_project__analytic_account_id
-msgid "Link this project to an analytic account if you need financial management on projects. It enables you to connect projects with budgets, planning, cost and revenue analysis, timesheets on projects, etc."
+msgid ""
+"Link this project to an analytic account if you need financial management on "
+"projects. It enables you to connect projects with budgets, planning, cost "
+"and revenue analysis, timesheets on projects, etc."
 msgstr ""
 
 #. module: project_wbs
@@ -208,7 +212,8 @@ msgstr "Progetti"
 
 #. module: project_wbs
 #: model_terms:ir.actions.act_window,help:project_wbs.open_view_project_wbs
-msgid "Projects are used to organize your activities; plan\n"
+msgid ""
+"Projects are used to organize your activities; plan\n"
 "              tasks, track issues, invoice timesheets. You can define\n"
 "              internal projects (R&amp;D, Improve Sales Process),\n"
 "              private projects (My Todos) or customer ones."
@@ -234,18 +239,23 @@ msgstr "Data inizio"
 #. module: project_wbs
 #: model:ir.model.fields,help:project_wbs.field_account_analytic_account__account_class
 #: model:ir.model.fields,help:project_wbs.field_project_project__account_class
-msgid "The classification allows you to create a proper project Work Breakdown Structure"
+msgid ""
+"The classification allows you to create a proper project Work Breakdown "
+"Structure"
 msgstr ""
 
 #. module: project_wbs
 #: model:ir.model.fields,help:project_wbs.field_account_analytic_account__complete_wbs_code
 #: model:ir.model.fields,help:project_wbs.field_project_project__complete_wbs_code
-msgid "The full WBS code describes the full path of this component within the project WBS hierarchy"
+msgid ""
+"The full WBS code describes the full path of this component within the "
+"project WBS hierarchy"
 msgstr ""
 
 #. module: project_wbs
 #: sql_constraint:account.analytic.account:0
 #: code:addons/project_wbs/models/account_analytic_account.py:230
+#: code:addons/project_wbs/models/account_analytic_account.py:233
 #, python-format
 msgid "The full wbs code must be unique!"
 msgstr "Il codice WBS completo deve essere univoco!"
@@ -325,6 +335,7 @@ msgstr ""
 
 #. module: project_wbs
 #: model_terms:ir.actions.act_window,help:project_wbs.open_view_project_wbs
-msgid "You will be able collaborate with internal users on\n"
+msgid ""
+"You will be able collaborate with internal users on\n"
 "              projects or invite customers to share your activities."
 msgstr ""
