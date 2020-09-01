@@ -26,7 +26,7 @@ class ProjectMilestone(models.Model):
     def create(self, vals):
         seq = self.env["ir.sequence"].next_by_code("project.milestone") or 0
         vals["sequence"] = seq
-        return super(ProjectMilestone, self).create(vals)
+        return super().create(vals)
 
     @api.depends("project_task_ids.stage_id")
     def _compute_milestone_progress(self):

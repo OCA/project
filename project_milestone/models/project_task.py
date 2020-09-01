@@ -8,7 +8,7 @@ class ProjectTask(models.Model):
 
     milestone_id = fields.Many2one(
         "project.milestone",
-        string="Milestones",
+        string="Milestone",
         group_expand="_read_group_milestone_ids",
         domain="[('project_id', '=', project_id)]",
     )
