@@ -43,9 +43,8 @@ class TestProjectMilestone(common.TransactionCase):
         self.assertGreater(milestone2.sequence, milestone1.sequence)
 
     def test_milestone_progress(self):
-        milestone1 = self.test_project_milestone_1
-
-        self.assertEqual(milestone1.progress, 50)
+        self.assertEqual(self.test_project_milestone_1.progress, 50)
+        self.assertEqual(self.test_project_milestone_2.progress, 0)
 
     def test_read_group_milestone_ids(self):
         domain = [("project_id", "=", self.test_project.id)]
