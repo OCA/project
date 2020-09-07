@@ -8,16 +8,25 @@ class AccountAnalyticLine(models.Model):
     _inherit = "account.analytic.line"
 
     project_user_id = fields.Many2one('res.users',
-                                      related='task_id.project_id.user_id',
                                       string='Project Manager',
                                       store=True,
                                       readonly=True)
-    is_manager = fields.Boolean('Is Manager?',
-                                compute='_compute_is_manager',
-                                store=True)
 
     @api.depends('employee_id', 'project_user_id')
     def _compute_is_manager(self):
         for rec in self:
             if rec.employee_id.user_id == rec.project_user_id:
                 rec.is_manager = True
+
+    @api.model
+    def create(self, vals):
+        project_user_id = vals.get('task_id', False).project_id.user_id
+        vals.update({'project_user_id': project_user_id})
+        return super(AccountAnalyticLine, self).create(vals)
+
+    @api.multi
+    def write(self, vals):
+        if vals.get('task_id', False):
+            project_user_id = vals.get('task_id', False).project_id.user_id
+            vals.update({'project_user_id': project_user_id})
+        return super(AccountAnalyticLine, self).write(vals)

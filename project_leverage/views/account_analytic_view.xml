@@ -27,7 +27,7 @@
             sequence="10"/>
 
         <template id="timesheet_plan_leverage_inherit" inherit_id="sale_timesheet.timesheet_plan">
-            <xpath expr="//div[hasclass('o_timesheet_plan_sale_timesheet_people_time')]" position="after">
+            <xpath expr="//div[@class='o_timesheet_plan_sale_timesheet_people_time']" position="after">
                 <div class="o_timesheet_plan_sale_timesheet_earned_value_analysis">
                     <h3>Leverage</h3>
                     <table width="70%" border="1" cellpadding="4" style="min-width: 70%; background-color: white; border-collapse:collapse;">
