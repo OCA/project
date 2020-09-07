@@ -19,7 +19,7 @@ class SaleTimesheetController(SaleTimesheetController):
                        self)._plan_prepare_values(projects)
         _select = self.select_line()
         _from = self.line_from()
-        _where = self.line_where(projects.ids)
+        _where = self.line_where(projects)
         _group = self.line_group()
         query = _select + _from + _where + _group
         request.env.cr.execute(query)
@@ -28,11 +28,7 @@ class SaleTimesheetController(SaleTimesheetController):
         month_list = []
         month_name_list = []
         for rec in raw_data:
-            if str(rec.get('month')).strip() + ' ' + str(
-                    int(rec.get('year'))) not in month_name_list:
-                month_name_list.append(
-                    str(rec.get('month')).strip() + ' ' + str(
-                        int(rec.get('year'))))
+            month_name_list.append(rec.get('month_year'))
             if str(rec.get('date_mm')).strip() + str(
                     int(rec.get('year'))) not in month_list:
                 month_list.append(
@@ -66,7 +62,8 @@ class SaleTimesheetController(SaleTimesheetController):
         select_str = """
             Select to_char(date , 'Month') as month, sum(unit_amount),
             EXTRACT(YEAR FROM date) AS Year, to_char(date, 'MM') as date_mm,
-            employee_id
+            CONCAT(to_char(date , 'Month'), EXTRACT(YEAR FROM date))
+            AS month_year, employee_id
         """
         return select_str
 
@@ -75,35 +72,22 @@ class SaleTimesheetController(SaleTimesheetController):
             FROM account_analytic_line
         """
 
-    def line_where(self, project_ids):
-        project_mananger_ids = [
-            project.user_id.id
-            for project in request.env['project.project'].browse(project_ids)]
+    def line_where(self, projects):
+        project_mananger_ids = projects.mapped('user_id')
         employee_ids = request.env['hr.employee'].search(
-            [('user_id', 'in', project_mananger_ids),
+            [('user_id', 'in', project_mananger_ids.ids),
              ('user_id', '!=', False)])
-        query = """
-            WHERE
-        """
+        query = ""
         if not employee_ids:
             raise UserError('Project Manager is not defined or no '
                             'timesheet entry found for project manager.')
-        if len(project_ids) > 1 and len(employee_ids) > 1:
+        if projects and employee_ids:
             query += """
-                project_id IN %s AND employee_id IN %s AND is_manager IS %s
-            """ % (str(tuple(project_ids)),
-                   str(tuple(employee_ids.ids)), 'TRUE')
-        elif len(project_ids) > 1 and len(employee_ids) == 1:
-            query += """
-                project_id IN %s AND employee_id = %s AND is_manager IS %s
-            """ % (str(tuple(project_ids)), str(employee_ids.id), 'TRUE')
-        else:
-            query += """
-                project_id = %s AND employee_id = %s AND is_manager IS %s
-            """ % (str(project_ids[0]), str(employee_ids.id), 'TRUE')
+                WHERE project_id IN %s AND employee_id IN %s
+            """ % ([tuple(projects.ids)], [tuple(employee_ids.ids)])
         return query
 
     def line_group(self):
         return """
-            group by Year, month, date_mm, employee_id order by month
+            group by Year, month, date_mm, employee_id order by month, Year
         """
