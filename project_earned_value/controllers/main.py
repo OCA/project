@@ -17,10 +17,20 @@ class SaleTimesheetController(SaleTimesheetController):
             SaleTimesheetController, self)._plan_prepare_values(projects)
         _select = request.env['report.project.task.user']._select()
         _from = request.env['report.project.task.user']._from()
-        _join = request.env['report.project.task.user']._join()
         _where = request.env['report.project.task.user'].with_context(
             project_ids=projects.ids)._where()
-        query = _select + _from + _join + _where
+        if len(projects.ids) > 1:
+            _where += """
+                    AND
+                    t.project_id IN %s
+                """ % (str(tuple(projects.ids)))
+        else:
+            _where += """
+                    AND
+                    t.project_id = %s
+                """ % (str(projects.ids[0]))
+        _group_by = request.env['report.project.task.user']._group_by()
+        query = _select + _from + _where + _group_by
         request.env.cr.execute(query)
         raw_data = request.env.cr.dictfetchall()
         project_data = {}
