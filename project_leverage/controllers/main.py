@@ -19,10 +19,10 @@ class SaleTimesheetController(SaleTimesheetController):
                        self)._plan_prepare_values(projects)
         _select = self.select_line()
         _from = self.line_from()
-        _where = self.line_where(projects)
+        _where, param = self.line_where(projects)
         _group = self.line_group()
         query = _select + _from + _where + _group
-        request.env.cr.execute(query)
+        request.env.cr.execute(query, param)
         raw_data = request.env.cr.dictfetchall()
         project_data = {}
         month_list = []
@@ -81,11 +81,13 @@ class SaleTimesheetController(SaleTimesheetController):
         if not employee_ids:
             raise UserError('Project Manager is not defined or no '
                             'timesheet entry found for project manager.')
+
         if projects and employee_ids:
             query += """
                 WHERE project_id IN %s AND employee_id IN %s
-            """ % ([tuple(projects.ids)], [tuple(employee_ids.ids)])
-        return query
+            """
+        param = [tuple(projects.ids), tuple(employee_ids.ids)]
+        return query, param
 
     def line_group(self):
         return """
