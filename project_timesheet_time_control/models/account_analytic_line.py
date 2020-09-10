@@ -68,7 +68,7 @@ class AccountAnalyticLine(models.Model):
         """Domain to find running timesheet lines."""
         return [
             ("date_time", "!=", False),
-            ("employee_id", "in", self.env.user.employee_ids.ids),
+            ("user_id", "=", self.env.user.id),
             ("project_id.allow_timesheets", "=", True),
             ("unit_amount", "=", 0),
         ]
