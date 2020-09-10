@@ -57,11 +57,26 @@ class ReportProjectTaskUser(models.Model):
         return query
 
     def _group_by(self):
-        group_by_str = super()._group_by()
-        group_by_str += """
-                    ,COALESCE(l.price_unit, 0),
-                    COALESCE(s.ev_percent, 0),
-                    COALESCE(e.timesheet_cost, 0)
+        super()._group_by()
+        group_by_str = """
+                GROUP BY
+                    t.id,
+                    t.create_date,
+                    t.write_date,
+                    t.date_start,
+                    t.date_end,
+                    t.date_deadline,
+                    t.date_last_stage_update,
+                    t.user_id,
+                    t.project_id,
+                    t.priority,
+                    t.name,
+                    t.company_id,
+                    t.partner_id,
+                    t.stage_id,
+                    l.price_unit,
+                    s.ev_percent,
+                    e.timesheet_cost
         """
         return group_by_str
 

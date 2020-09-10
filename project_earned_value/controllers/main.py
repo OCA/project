@@ -19,19 +19,15 @@ class SaleTimesheetController(SaleTimesheetController):
         _from = request.env['report.project.task.user']._from()
         _where = request.env['report.project.task.user'].with_context(
             project_ids=projects.ids)._where()
-        if len(projects.ids) > 1:
+        if projects:
             _where += """
                     AND
                     t.project_id IN %s
-                """ % (str(tuple(projects.ids)))
-        else:
-            _where += """
-                    AND
-                    t.project_id = %s
-                """ % (str(projects.ids[0]))
+                """
+        param = [tuple(projects.ids)]
         _group_by = request.env['report.project.task.user']._group_by()
         query = _select + _from + _where + _group_by
-        request.env.cr.execute(query)
+        request.env.cr.execute(query, param)
         raw_data = request.env.cr.dictfetchall()
         project_data = {}
         for data in raw_data:
