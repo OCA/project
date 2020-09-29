@@ -13,6 +13,7 @@ class ProjectTask(models.Model):
         required=True,
         default='/',
         readonly=True,
+        copy=False,
     )
 
     _sql_constraints = [
@@ -23,22 +24,29 @@ class ProjectTask(models.Model):
         ),
     ]
 
+    def _get_next_task_code(self):
+        """
+        Returns the next code to assign to a Task.
+        values contains the create values, when called from create()
+        """
+        self and self.ensure_one()
+        return self.env['ir.sequence'].next_by_code('project.task')
+
     @api.model_create_multi
     def create(self, vals_list):
-        for vals in vals_list:
-            if vals.get('code', '/') == '/':
-                vals['code'] = self.env['ir.sequence'].next_by_code(
-                    'project.task'
-                )
-        return super().create(vals_list)
+        tasks = super().create(vals_list)
+        for task in tasks:
+            if task.code == '/':
+                task.code = task._get_next_task_code()
+        return tasks
 
     @api.multi
     def copy(self, default=None):
         self.ensure_one()
-        if default is None:
-            default = {}
-        default['code'] = self.env['ir.sequence'].next_by_code('project.task')
-        return super().copy(default)
+        task = super().copy(default)
+        if task.code == '/':
+            task.code = task._get_next_task_code()
+        return task
 
     def name_get(self):
         result = super().name_get()
