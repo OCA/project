@@ -20,13 +20,22 @@ class AccountAnalyticLine(models.Model):
 
     @api.model
     def create(self, vals):
-        project_user_id = vals.get('task_id', False).project_id.user_id
-        vals.update({'project_user_id': project_user_id})
+        if "task_id" in vals:
+            Task = self.env["project.task"]
+            task_id = vals.get('task_id')
+            task = Task.browse(task_id) if task_id else Task
+            project_user_id = task.project_id.user_id and \
+                task.project_id.user_id.id
+            vals.update({'project_user_id': project_user_id or None})
         return super(AccountAnalyticLine, self).create(vals)
 
     @api.multi
     def write(self, vals):
-        if vals.get('task_id', False):
-            project_user_id = vals.get('task_id', False).project_id.user_id
-            vals.update({'project_user_id': project_user_id})
+        if "task_id" in vals:
+            Task = self.env["project.task"]
+            task_id = vals.get('task_id')
+            task = Task.browse(task_id) if task_id else Task
+            project_user_id = task.project_id.user_id and \
+                task.project_id.user_id.id
+            vals.update({'project_user_id': project_user_id or None})
         return super(AccountAnalyticLine, self).write(vals)
