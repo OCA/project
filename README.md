@@ -1,3 +1,5 @@
+an amazing project sir but plz make index page of resources
+
 [![Runbot Status](https://runbot.odoo-community.org/runbot/badge/flat/140/13.0.svg)](https://runbot.odoo-community.org/runbot/repo/github-com-oca-project-140)
 [![Build Status](https://travis-ci.org/OCA/project.svg?branch=13.0)](https://travis-ci.org/OCA/project)
 [![codecov](https://codecov.io/gh/OCA/project/branch/13.0/graph/badge.svg)](https://codecov.io/gh/OCA/project)
