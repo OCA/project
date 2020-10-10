@@ -1,0 +1,164 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_milestone
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2020-03-21 11:13+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@matmoz.si>\n"
+"Language-Team: none\n"
+"Language: sl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
+"n%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 3.10\n"
+
+#. module: project_milestone
+#: model:ir.ui.menu,name:project_milestone.milestone_configuration_menu
+msgid "All Milestones"
+msgstr "Vsi mejniki"
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__create_uid
+msgid "Created by"
+msgstr "Ustvaril"
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__create_date
+msgid "Created on"
+msgstr "Ustvarjeno"
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__display_name
+msgid "Display Name"
+msgstr "Prikazani naziv"
+
+#. module: project_milestone
+#: model:ir.model.fields,help:project_milestone.field_project_project__use_milestones
+#: model:ir.model.fields,help:project_milestone.field_project_task__use_milestones
+msgid "Does this project use milestones?"
+msgstr "Ali ta projekt uporablja mejnike?"
+
+#. module: project_milestone
+#: model_terms:ir.ui.view,arch_db:project_milestone.project_milestone_view_search
+msgid "Group By"
+msgstr "Združi po"
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__id
+msgid "ID"
+msgstr "ID"
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__fold
+msgid "Kanban Folded?"
+msgstr "Kanban zložen?"
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone____last_update
+msgid "Last Modified on"
+msgstr "Zadnjič spremenjeno"
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__write_uid
+msgid "Last Updated by"
+msgstr "Zadnji posodobil"
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__write_date
+msgid "Last Updated on"
+msgstr "Zadnjič posodobljeno"
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__name
+msgid "Milestone"
+msgstr "Mejnik"
+
+#. module: project_milestone
+#: model_terms:ir.ui.view,arch_db:project_milestone.project_milestone_view_form
+msgid "Milestone Form"
+msgstr "Obrazec mejnika"
+
+#. module: project_milestone
+#: model_terms:ir.ui.view,arch_db:project_milestone.project_enhancements_milestone_inherit_search_view
+msgid "Milestone Projects"
+msgstr "Projekti z mejniki"
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_project__milestone_ids
+#: model:ir.model.fields,field_description:project_milestone.field_project_task__milestone_id
+#: model_terms:ir.ui.view,arch_db:project_milestone.project_enhancement_milestone_view_inherit_form
+#: model_terms:ir.ui.view,arch_db:project_milestone.view_task_enhancement_search_milestone_form
+msgid "Milestones"
+msgstr "Mejniki"
+
+#. module: project_milestone
+#: model_terms:ir.ui.view,arch_db:project_milestone.project_milestone_view_form
+msgid "Name"
+msgstr "Naziv"
+
+#. module: project_milestone
+#: model:ir.model.fields,help:project_milestone.field_project_milestone__progress
+msgid "Percentage of Completed Tasks vs Incomplete Tasks."
+msgstr "Odstotek dokončanih opravil proti nedokončanim."
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__progress
+msgid "Progress"
+msgstr "Napredek"
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__project_id
+#: model_terms:ir.ui.view,arch_db:project_milestone.project_milestone_view_search
+msgid "Project"
+msgstr "Projekt"
+
+#. module: project_milestone
+#: model:ir.model,name:project_milestone.model_project_milestone
+msgid "Project Milestone"
+msgstr "Projektni mejnik"
+
+#. module: project_milestone
+#: model:ir.actions.act_window,name:project_milestone.project_milestone_action
+msgid "Project Milestones"
+msgstr "Projektni mejniki"
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__project_task_ids
+msgid "Project Tasks"
+msgstr "Projektna opravila"
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__sequence
+msgid "Sequence"
+msgstr "Zaporedje"
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__target_date
+msgid "Target Date"
+msgstr "Ciljni datum"
+
+#. module: project_milestone
+#: model:ir.model,name:project_milestone.model_project_task
+msgid "Task"
+msgstr "Opravilo"
+
+#. module: project_milestone
+#: model:ir.model.fields,help:project_milestone.field_project_milestone__target_date
+msgid "The date when the Milestone should be complete."
+msgstr "Datum do katerega bi moral biti mejnik dokončan."
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_project__use_milestones
+#: model:ir.model.fields,field_description:project_milestone.field_project_task__use_milestones
+msgid "Use Milestones"
+msgstr "Uporabi mejnike"
+
+#. module: project_milestone
+#: model:ir.model,name:project_milestone.model_project_project
+msgid "WBS element"
+msgstr "Projektni člen"
