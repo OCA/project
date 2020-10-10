@@ -13,6 +13,7 @@ setuptools.setup(
         'odoo13-addon-project_hr',
         'odoo13-addon-project_key',
         'odoo13-addon-project_list',
+        'odoo13-addon-project_milestone',
         'odoo13-addon-project_parent_task_filter',
         'odoo13-addon-project_purchase_link',
         'odoo13-addon-project_role',
