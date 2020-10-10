@@ -132,7 +132,6 @@ msgid "WBS element"
 msgstr "Elemento WBS"
 
 #. module: project_category
-#: code:addons/project_category/models/project_type.py:46
 #: code:addons/project_category/models/project_type.py:47
 #, python-format
 msgid "You cannot create recursive project types."
