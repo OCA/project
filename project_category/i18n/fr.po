@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* project_category
+# 	* project_category
 #
 msgid ""
 msgstr ""
@@ -32,6 +32,11 @@ msgstr "Peut être appliqué pour les projets"
 #: model_terms:ir.ui.view,arch_db:project_category.project_type_search
 msgid "Can be applied for tasks"
 msgstr "Peut être appliqué pour les tâches"
+
+#. module: project_category
+#: model:ir.model.fields,field_description:project_category.field_project_type__code
+msgid "Code"
+msgstr ""
 
 #. module: project_category
 #: model:ir.model.fields,field_description:project_category.field_project_type__complete_name
@@ -124,6 +129,7 @@ msgstr "Élément SDP"
 
 #. module: project_category
 #: code:addons/project_category/models/project_type.py:46
+#: code:addons/project_category/models/project_type.py:47
 #, python-format
 msgid "You cannot create recursive project types."
 msgstr "Impossible de créer des types de projet récursifs."
