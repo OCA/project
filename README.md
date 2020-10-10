@@ -23,7 +23,7 @@ addon | version | summary
 [project_description](project_description/) | 10.0.1.0.0 | Add a description to projects
 [project_double_alias](project_double_alias/) | 10.0.1.0.1 | Define an alias for tasks and another alias for issues
 [project_gtd](project_gtd/) | 10.0.1.0.0 | Personal Tasks, Contexts, Timeboxes
-[project_issue_code](project_issue_code/) | 10.0.1.0.0 | Adding Field Code For Project Issue
+[project_issue_code](project_issue_code/) | 10.0.1.1.0 | Adding Field Code For Project Issue
 [project_issue_timesheet_time_control](project_issue_timesheet_time_control/) | 10.0.1.1.0 | Project issue timesheet time control
 [project_model_to_task](project_model_to_task/) | 10.0.0.1.0 | Project Model to Task
 [project_parent](project_parent/) | 10.0.1.0.0 | Project Parent
