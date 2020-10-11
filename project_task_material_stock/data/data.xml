@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
     <!--
         Copyright 2015 Tecnativa - Sergio Teruel
@@ -23,10 +23,13 @@
             <field name="name">Project Task Material Operations</field>
             <field name="code">outgoing</field>
             <field name="sequence_code">PTM</field>
-            <field name="sequence_id" ref="project_task_material_sequence"/>
-            <field name="warehouse_id" ref="stock.warehouse0"/>
-            <field name="default_location_src_id" ref="stock.stock_location_stock"/>
-            <field name="default_location_dest_id" ref="stock.stock_location_customers"/>
+            <field name="sequence_id" ref="project_task_material_sequence" />
+            <field name="warehouse_id" ref="stock.warehouse0" />
+            <field name="default_location_src_id" ref="stock.stock_location_stock" />
+            <field 
+                name="default_location_dest_id" 
+                ref="stock.stock_location_customers"
+            />
         </record>
     </data>
 </odoo>
