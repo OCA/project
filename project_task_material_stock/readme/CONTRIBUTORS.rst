@@ -9,3 +9,7 @@
 * `Qubiq <https://www.qubiq.com>`_:
 
   * Valentin Vinagre <valentin.vinagre@qubiq.es>
+
+* `jeo Software <https://www.jeosoft.com.ar>`_:
+
+  * Jorge Obiols <jorge.obiols@gmail.com>
