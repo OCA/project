@@ -17,7 +17,6 @@
             <field name="number_increment">1</field>
             <field name="implementation">standard</field>
         </record>
-
         <!-- New Picking type -->
         <record model="stock.picking.type" id="project_task_material_picking_type">
             <field name="name">Project Task Material Operations</field>
