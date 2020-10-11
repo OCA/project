@@ -14,12 +14,12 @@ class TestTaskMaterial(common.SavepointCase):
     def setUpClass(cls):
         super(TestTaskMaterial, cls).setUpClass()
 
-        cls.company = cls.env["res.company"].create({"name": "Test company",})
+        cls.company = cls.env["res.company"].browse([1])
         cls.stage_deployed = cls.env["project.task.type"].create(
-            {"name": "State Deployed example",}
+            {"name": "State Deployed example"}
         )
         cls.stage_deployed.consume_material = True
-        cls.project = cls.env["project.project"].create({"name": "Project example",})
+        cls.project = cls.env["project.project"].create({"name": "Project example"})
         cls.product1_uom = cls.env.ref("uom.product_uom_unit")
         cls.product2_uom = cls.env.ref("uom.product_uom_kgm")
         product_obj = cls.env["product.product"]
@@ -116,3 +116,4 @@ class TestTaskMaterial(common.SavepointCase):
         self.task.action_done()
         self.assertEqual(self.task.stock_state, "done")
         self.assertRaises(Exception, self.task.unlink)
+        self.assertRaises(Exception, self.task_material.unlink)
