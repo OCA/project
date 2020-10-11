@@ -17,22 +17,28 @@ class TestProjectTaskProjectRequired(TransactionCase):
             'name': 'Project',
         })
 
-    def test_project_required(self):
+    def test_project_required_project_not_set(self):
         self.env.user.company_id.is_project_task_project_required = True
         with self.assertRaises(ValidationError):
             self.ProjectTask.create({
                 'name': 'Task A',
             })
+
+    def test_project_required_project_set(self):
+        self.env.user.company_id.is_project_task_project_required = True
         self.ProjectTask.create({
             'name': 'Task B',
             'project_id': self.project.id,
         })
 
-    def test_project_not_required(self):
+    def test_project_not_required_project_not_set(self):
         self.env.user.company_id.is_project_task_project_required = False
         self.ProjectTask.create({
             'name': 'Task A',
         })
+
+    def test_project_not_required_project_set(self):
+        self.env.user.company_id.is_project_task_project_required = False
         self.ProjectTask.create({
             'name': 'Task B',
             'project_id': self.project.id,
