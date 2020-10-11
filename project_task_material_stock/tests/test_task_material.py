@@ -18,10 +18,12 @@ class TestTaskMaterial(common.SavepointCase):
 
         cls.company = cls.env["res.company"].browse([1])
         cls.stage_deployed = cls.env["project.task.type"].create(
-            {"name": "State Deployed example",})
+            {"name": "State Deployed example", }
+        )
         cls.stage_deployed.consume_material = True
         cls.project = cls.env["project.project"].create(
-            {"name": "Project example",})
+            {"name": "Project example", }
+        )
         cls.product1_uom = cls.env.ref("uom.product_uom_unit")
         cls.product2_uom = cls.env.ref("uom.product_uom_kgm")
         product_obj = cls.env["product.product"]
@@ -47,7 +49,7 @@ class TestTaskMaterial(common.SavepointCase):
                 "project_id": cls.project.id,
                 "analytic_account_id": cls.env["account.analytic.account"]
                 .search([], limit=1)
-                .id
+                .id,
             }
         )
         cls.task_material = cls.env["project.task.material"].create(
@@ -97,11 +99,8 @@ class TestTaskMaterial(common.SavepointCase):
         moves = self.task2.stock_move_ids.ids
         analytics = self.task2.analytic_line_ids.ids
         self.task2.unlink()
-        self.assertEqual(
-            len(self.env["stock.move"].search([("id", "in", moves)])), 0)
-        self.assertEqual(
-            len(self.env["account.analytic.line"].search(
-                [("id", "in", analytics)])), 0)
+        self.assertEqual(len(self.env["stock.move"].search([("id", "in", moves)])), 0)
+        self.assertEqual(len(self.env["account.analytic.line"].search([("id", "in", analytics)])), 0)
         self.task.stock_move_ids.write({"state": "confirmed"})
         self.assertEqual(self.task.stock_state, "confirmed")
         self.assertEqual(len(self.task.analytic_line_ids), 1)

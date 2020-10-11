@@ -58,13 +58,14 @@ class Task(models.Model):
         compute="_compute_analytic_line",
         string="Analytic Lines",
     )
-    consume_material = fields.Boolean(related='stage_id.consume_material',)
+    consume_material = fields.Boolean(related="stage_id.consume_material",)
     stock_state = fields.Selection(
         selection=[
             ("pending", "Pending"),
             ("confirmed", "Confirmed"),
             ("assigned", "Assigned"),
-            ("done", "Done")],
+            ("done", "Done"),
+        ],
         compute="_compute_stock_state"
     )
     location_source_id = fields.Many2one(
@@ -105,11 +106,12 @@ class Task(models.Model):
                         todo_lines.create_analytic_line()
                 else:
                     if task.unlink_stock_move() and task.material_ids.mapped(
-                            "analytic_line_id"):
+                        "analytic_line_id"
+                    ):
                         raise exceptions.Warning(
                             _(
                                 "You can't move to a not consume stage if "
-                              "there are already analytic lines"
+                                "there are already analytic lines"
                             )
                         )
                     task.material_ids.mapped("analytic_line_id").unlink()
@@ -137,13 +139,9 @@ class ProjectTaskMaterial(models.Model):
         string="Stock Move",
     )
     analytic_line_id = fields.Many2one(
-        comodel_name="account.analytic.line",
-        string="Analytic Line",
+        comodel_name="account.analytic.line", string="Analytic Line",
     )
-    product_uom_id = fields.Many2one(
-        comodel_name="uom.uom",
-        string="Unit of Measure"
-    )
+    product_uom_id = fields.Many2one(comodel_name="uom.uom", string="Unit of Measure")
     product_id = fields.Many2one(domain="[('type', 'in', ('consu', 'product'))]")
 
     @api.onchange("product_id")
@@ -152,7 +150,7 @@ class ProjectTaskMaterial(models.Model):
         return {
             "domain": {
                 "product_uom_id": [
-                    ('category_id', '=', self.product_id.uom_id.category_id.id)
+                    ("category_id", "=", self.product_id.uom_id.category_id.id)
                 ]
             }
         }
@@ -177,7 +175,8 @@ class ProjectTaskMaterial(models.Model):
 
     def create_stock_move(self):
         pick_type = self.env.ref(
-            "project_task_material_stock.project_task_material_picking_type")
+            "project_task_material_stock.project_task_material_picking_type"
+        )
         task = self[0].task_id
         picking_id = task.picking_id or self.env["stock.picking"].create(
             {
@@ -200,7 +199,7 @@ class ProjectTaskMaterial(models.Model):
         company_id = self.env.company
         analytic_account = getattr(
             self.task_id, "analytic_account_id", False
-            ) or getattr(self.task_id.project_id, "analytic_account_id", False)
+        ) or getattr(self.task_id.project_id, "analytic_account_id", False)
         if not analytic_account:
             raise exceptions.Warning(
                 _("You must assign an analytic account for this task/project.")
@@ -247,7 +246,7 @@ class ProjectTaskMaterial(models.Model):
             picking_id = self.stock_move_id.picking_id
             self.stock_move_id.unlink()
             if (
-                not picking_id.move_line_ids_without_package 
+                not picking_id.move_line_ids_without_package
                 and picking_id.state == "draft"
             ):
                 picking_id.unlink()
@@ -258,7 +257,7 @@ class ProjectTaskMaterial(models.Model):
         # lot / serial number, the cost when creating the
         # analytical line is not correct.
         for sel in self.filtered(
-            lambda x: x.stock_move_id.state == 'done'
+            lambda x: x.stock_move_id.state == "done"
             and x.analytic_line_id.amount != x.stock_move_id.product_id.standard_price
         ):
             sel.analytic_line_id.amount = sel.stock_move_id.product_id.standard_price

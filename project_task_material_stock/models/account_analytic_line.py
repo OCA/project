@@ -1,7 +1,7 @@
 # Copyright 2019 Valentin Vinagre <valentin.vinagre@qubiq.es>
 # Copyright 2020 jeo Software Jorge Obiols <jorge.obiols@gmail.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
-from odoo import api, fields, models
+from odoo import fields, models
 
 
 class AccountAnalyticLine(models.Model):
@@ -12,10 +12,9 @@ class AccountAnalyticLine(models.Model):
     )
 
     def _timesheet_postprocess_values(self, values):
-        res = super(AccountAnalyticLine, self)._timesheet_postprocess_values(
-            values)
+        res = super(AccountAnalyticLine, self)._timesheet_postprocess_values(values)
         # Delete the changes in amount if the analytic lines
         # come from task material.
-        for key in (self.filtered(lambda x: x.task_material_id).ids):
+        for key in self.filtered(lambda x: x.task_material_id).ids:
             res[key].pop("amount", None)
         return res

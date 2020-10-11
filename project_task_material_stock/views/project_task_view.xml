@@ -22,26 +22,26 @@
         <field name="name">project.task.form.material</field>
         <field name="model">project.task</field>
         <field 
-            name="inherit_id" 
+            name="inherit_id"
             ref="project_task_material.view_project_task_form_material"
         />
         <field name="arch" type="xml">
             <field name="project_id" position="after">
                 <field 
-                    name="analytic_account_id" 
+                    name="analytic_account_id"
                     groups="analytic.group_analytic_accounting"
                     attrs="{'required': [('project_id', '=', False)]}"
                 />
             </field>
             <field name="stage_id" position="before">
-                <button 
-                    name="action_assign" 
+                <button
+                    name="action_assign"
                     type="object"
                     string="Check Availability"
                     attrs="{'invisible':[('stock_state','!=','confirmed')]}"
                     class="oe_highlight"
                 />
-                <button 
+                <button
                     name="action_done"
                     type="object"
                     string="Transfer Materials"
@@ -52,7 +52,7 @@
             <field name="material_ids" position="replace">
                 <field name="stock_state" invisible="1" />
                 <field name="consume_material" invisible="1" />
-                <group 
+                <group
                     string="Locations to consume"
                     name="materials"
                     groups="stock.group_stock_multi_locations"
@@ -71,7 +71,10 @@
                                 <tree string="Materials used" editable="top">
                                     <field name="product_id" />
                                     <field name="quantity" />
-                                    <field name="product_uom_id" groups="uom.group_uom" />
+                                    <field
+                                        name="product_uom_id"
+                                        groups="uom.group_uom"
+                                    />
                                 </tree>
                             </field>
                         </page>
@@ -85,7 +88,7 @@
                                     <field name="product_id" />
                                     <field name="product_uom_qty" />
                                     <field name="state" />
-                                    <button 
+                                    <button
                                         name="action_show_details"
                                         string="Register lots, packs, location"
                                         type="object"

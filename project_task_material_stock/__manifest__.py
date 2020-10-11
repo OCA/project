@@ -15,7 +15,7 @@
     "author": "Tecnativa, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "installable": True,
-    'application': False,
-    "depends": ["stock_account", "project_task_material",],
-    "data": ["data/data.xml", "views/project_view.xml", "views/project_task_view.xml",],
+    "application": False,
+    "depends": ["stock_account", "project_task_material", ],
+    "data": ["data/data.xml", "views/project_view.xml", "views/project_task_view.xml", ],
 }
