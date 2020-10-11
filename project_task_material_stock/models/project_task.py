@@ -66,7 +66,7 @@ class Task(models.Model):
             ("assigned", "Assigned"),
             ("done", "Done"),
         ],
-        compute="_compute_stock_state"
+        compute="_compute_stock_state",
     )
     location_source_id = fields.Many2one(
         comodel_name="stock.location",
@@ -78,7 +78,7 @@ class Task(models.Model):
         comodel_name="stock.location",
         string="Destination Location",
         index=True,
-        help="Keep this field empty to use the default value from the project."
+        help="Keep this field empty to use the default value from the project.",
     )
 
     def unlink_stock_move(self):
@@ -134,10 +134,7 @@ class Task(models.Model):
 class ProjectTaskMaterial(models.Model):
     _inherit = "project.task.material"
 
-    stock_move_id = fields.Many2one(
-        comodel_name="stock.move",
-        string="Stock Move",
-    )
+    stock_move_id = fields.Many2one(comodel_name="stock.move", string="Stock Move",)
     analytic_line_id = fields.Many2one(
         comodel_name="account.analytic.line", string="Analytic Line",
     )

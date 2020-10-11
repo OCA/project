@@ -21,13 +21,13 @@
     <record id="view_project_task_form_material_stock" model="ir.ui.view">
         <field name="name">project.task.form.material</field>
         <field name="model">project.task</field>
-        <field 
+        <field
             name="inherit_id"
             ref="project_task_material.view_project_task_form_material"
         />
         <field name="arch" type="xml">
             <field name="project_id" position="after">
-                <field 
+                <field
                     name="analytic_account_id"
                     groups="analytic.group_analytic_accounting"
                     attrs="{'required': [('project_id', '=', False)]}"
