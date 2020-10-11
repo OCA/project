@@ -1,0 +1,228 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * project_task_material_stock
+#
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
+# Erwin van der Ploeg <erwin@odooexperts.nl>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-08-10 02:50+0000\n"
+"PO-Revision-Date: 2018-09-06 15:13+0000\n"
+"Last-Translator: lfreeke <lfreeke@therp.nl>\n"
+"Language-Team: Dutch (https://www.transifex.com/oca/teams/23907/nl/)\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 3.1.1\n"
+
+#. module: project_task_material_stock
+#: model:ir.model,name:project_task_material_stock.model_account_analytic_line
+#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_material__analytic_line_id
+msgid "Analytic Line"
+msgstr "Kostenplaatsregel"
+
+#. module: project_task_material_stock
+#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task__analytic_line_ids
+msgid "Analytic Lines"
+msgstr "Kostenplaatsregels"
+
+#. module: project_task_material_stock
+#: selection:project.task,stock_state:0
+msgid "Assigned"
+msgstr "Toegewezen"
+
+#. module: project_task_material_stock
+#: model_terms:ir.ui.view,arch_db:project_task_material_stock.view_project_task_form_material_stock
+msgid "Check Availability"
+msgstr "Controleer beschikbaarheid"
+
+#. module: project_task_material_stock
+#: selection:project.task,stock_state:0
+msgid "Confirmed"
+msgstr "Bevestigd"
+
+#. module: project_task_material_stock
+#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task__consume_material
+#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_type__consume_material
+#, fuzzy
+msgid "Consume Material"
+msgstr "Verbruik materiaal"
+
+#. module: project_task_material_stock
+#: model:ir.model.fields,help:project_task_material_stock.field_project_project__location_source_id
+msgid "Default location from which materials are consumed."
+msgstr ""
+
+#. module: project_task_material_stock
+#: model:ir.model.fields,help:project_task_material_stock.field_project_project__location_dest_id
+msgid "Default location to which materials are consumed."
+msgstr ""
+
+#. module: project_task_material_stock
+#: model:ir.model.fields,field_description:project_task_material_stock.field_project_project__location_dest_id
+#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task__location_dest_id
+msgid "Destination Location"
+msgstr ""
+
+#. module: project_task_material_stock
+#: selection:project.task,stock_state:0
+msgid "Done"
+msgstr "Gereed"
+
+#. module: project_task_material_stock
+#: model:ir.model.fields,help:project_task_material_stock.field_project_task__consume_material
+#: model:ir.model.fields,help:project_task_material_stock.field_project_task_type__consume_material
+msgid ""
+"If you mark this check, when a task goes to this state, it will consume the "
+"associated materials"
+msgstr ""
+
+#. module: project_task_material_stock
+#: model:ir.model.fields,help:project_task_material_stock.field_project_task__location_dest_id
+#: model:ir.model.fields,help:project_task_material_stock.field_project_task__location_source_id
+msgid "Keep this field empty to use the default value from the project."
+msgstr ""
+
+#. module: project_task_material_stock
+#: model_terms:ir.ui.view,arch_db:project_task_material_stock.edit_project_consume_material
+#: model_terms:ir.ui.view,arch_db:project_task_material_stock.view_project_task_form_material_stock
+msgid "Locations to consume"
+msgstr ""
+
+#. module: project_task_material_stock
+#: model_terms:ir.ui.view,arch_db:project_task_material_stock.view_project_task_form_material_stock
+msgid "Materials consumed"
+msgstr ""
+
+#. module: project_task_material_stock
+#: model_terms:ir.ui.view,arch_db:project_task_material_stock.view_project_task_form_material_stock
+msgid "Materials used"
+msgstr ""
+
+#. module: project_task_material_stock
+#: model:ir.model.fields,help:project_task_material_stock.field_project_task__analytic_account_id
+msgid "Move created will be assigned to this analytic account"
+msgstr ""
+
+#. module: project_task_material_stock
+#: selection:project.task,stock_state:0
+msgid "Pending"
+msgstr "Wachtend"
+
+#. module: project_task_material_stock
+#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_material__product_id
+msgid "Product"
+msgstr ""
+
+#. module: project_task_material_stock
+#: model_terms:ir.ui.view,arch_db:project_task_material_stock.view_project_task_form_material_stock
+msgid "Products"
+msgstr ""
+
+#. module: project_task_material_stock
+#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task__analytic_account_id
+#, fuzzy
+msgid "Project Analytic Account"
+msgstr "Kostenplaatsregel"
+
+#. module: project_task_material_stock
+#: model:ir.model.fields,field_description:project_task_material_stock.field_account_analytic_line__task_material_id
+#: model:ir.model.fields,field_description:project_task_material_stock.field_stock_move__task_material_id
+msgid "Project Task Material"
+msgstr ""
+
+#. module: project_task_material_stock
+#: model:stock.picking.type,name:project_task_material_stock.project_task_material_picking_type
+msgid "Project Task Material Operations"
+msgstr ""
+
+#. module: project_task_material_stock
+#: model_terms:ir.ui.view,arch_db:project_task_material_stock.view_project_task_form_material_stock
+msgid "Register lots, packs, location"
+msgstr ""
+
+#. module: project_task_material_stock
+#: model:ir.model.fields,field_description:project_task_material_stock.field_project_project__location_source_id
+#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task__location_source_id
+msgid "Source Location"
+msgstr ""
+
+#. module: project_task_material_stock
+#: model:ir.model,name:project_task_material_stock.model_stock_move
+#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_material__stock_move_id
+msgid "Stock Move"
+msgstr ""
+
+#. module: project_task_material_stock
+#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task__stock_move_ids
+#: model_terms:ir.ui.view,arch_db:project_task_material_stock.view_project_task_form_material_stock
+msgid "Stock Moves"
+msgstr ""
+
+#. module: project_task_material_stock
+#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task__stock_state
+msgid "Stock State"
+msgstr ""
+
+#. module: project_task_material_stock
+#: model:ir.model,name:project_task_material_stock.model_project_task
+msgid "Task"
+msgstr "Taak"
+
+#. module: project_task_material_stock
+#: model:ir.model,name:project_task_material_stock.model_project_task_material
+msgid "Task Material Used"
+msgstr ""
+
+#. module: project_task_material_stock
+#: model:ir.model,name:project_task_material_stock.model_project_task_type
+msgid "Task Stage"
+msgstr "Taak fase"
+
+#. module: project_task_material_stock
+#: model_terms:ir.ui.view,arch_db:project_task_material_stock.view_project_task_form_material_stock
+msgid "Transfer Materials"
+msgstr ""
+
+#. module: project_task_material_stock
+#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task__picking_id
+msgid "Transfer Reference"
+msgstr ""
+
+#. module: project_task_material_stock
+#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_material__product_uom_id
+msgid "Unit of Measure"
+msgstr "Maateenheid"
+
+#. module: project_task_material_stock
+#: model:ir.model,name:project_task_material_stock.model_project_project
+msgid "WBS element"
+msgstr ""
+
+#. module: project_task_material_stock
+#: code:addons/project_task_material_stock/models/project_task.py:283
+#, python-format
+msgid ""
+"You can't delete a consumed material if already have stock movements done."
+msgstr ""
+
+#. module: project_task_material_stock
+#: code:addons/project_task_material_stock/models/project_task.py:121
+#, python-format
+msgid ""
+"You can't move to a not consume stage if there are already analytic lines"
+msgstr ""
+
+#. module: project_task_material_stock
+#: code:addons/project_task_material_stock/models/project_task.py:217
+#, python-format
+msgid "You must assign an analytic account for this task/project."
+msgstr ""
+
+#~ msgid "Project"
+#~ msgstr "Project"

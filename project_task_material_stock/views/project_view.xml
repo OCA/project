@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--
+        Copyright 2015 Tecnativa - Sergio Teruel
+        Copyright 2015 Tecnativa - Carlos Dauden
+        Copyright 2016-2017 Tecnativa - Vicent Cubells
+        License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
+    -->
+    <record id="edit_project_consume_material" model="ir.ui.view">
+        <field name="name">project.project.form</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="///group[@name='misc']" position="before">
+                <group string="Locations to consume" name="materials" groups="stock.group_stock_multi_locations">
+                    <field name="location_source_id"/>
+                    <field name="location_dest_id"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
