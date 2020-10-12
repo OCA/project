@@ -116,3 +116,4 @@ class TestTaskMaterial(common.SavepointCase):
         self.task.action_done()
         self.assertEqual(self.task.stock_state, "done")
         self.assertRaises(Exception, self.task.unlink)
+        self.assertRaises(Exception, self.task_material.unlink)
