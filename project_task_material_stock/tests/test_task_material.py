@@ -1,7 +1,6 @@
 # Copyright 2015 Tecnativa - Sergio Teruel
 # Copyright 2015 Tecnativa - Carlos Dauden
 # Copyright 2016 Tecnativa - Vicent Cubells
-# Copyright 2020 jeo Software Jorge Obiols <jorge.obiols@gmail.com>
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
 import odoo.tests.common as common

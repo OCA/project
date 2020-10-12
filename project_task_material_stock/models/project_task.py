@@ -2,7 +2,6 @@
 # Copyright 2015 Tecnativa - Carlos Dauden
 # Copyright 2016-2017 Tecnativa - Vicent Cubells
 # Copyright 2019 Valentin Vinagre <valentin.vinagre@qubiq.es>
-# Copyright 2020 jeo Software Jorge Obiols <jorge.obiols@gmail.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 from odoo import _, api, exceptions, fields, models
 
