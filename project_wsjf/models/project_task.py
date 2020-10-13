@@ -12,6 +12,19 @@ class ProjectTask(models.Model):
     ]
     _order = 'wsjf desc, sequence'
 
+    @api.depends('project_id.business_value', 'project_id.time_criticality',
+                 'project_id.risk_reduction', 'project_id.internal_pressure',
+                 'project_id.job_size', 'business_value', 'time_criticality',
+                 'risk_reduction', 'internal_pressure', 'job_size')
+    def _compute_wsjf_value(self):
+        for record in self:
+            record.business_value = record.project_id.business_value
+            record.time_criticality = record.project_id.time_criticality
+            record.risk_reduction = record.project_id.risk_reduction
+            record.internal_pressure = record.project_id.internal_pressure
+            record.job_size = record.project_id.job_size
+        super()._compute_wsjf_value()
+
     @api.onchange('project_id')
     def _onchange_project_id(self):
         for record in self:
