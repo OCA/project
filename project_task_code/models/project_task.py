@@ -12,7 +12,7 @@ class ProjectTask(models.Model):
         string='Task Number',
         required=True,
         default='/',
-        readonly=True,
+        readonly=False,
     )
 
     _sql_constraints = [
