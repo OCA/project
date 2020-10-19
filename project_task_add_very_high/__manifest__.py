@@ -1,10 +1,10 @@
-# Copyright 2016-2018 Onestein (<https://www.onestein.eu>)
+# Copyright 2016-2020 Onestein (<https://www.onestein.eu>)
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 {
     "name": "Project Task Add Very High",
     "summary": "Adds extra options 'High' and 'Very High' on tasks",
-    "version": "13.0.1.0.0",
+    "version": "14.0.1.0.0",
     "development_status": "Production/Stable",
     "author": "Onestein, Odoo Community Association (OCA)",
     "maintainers": ["astirpe"],
