@@ -6,7 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2020-10-19 07:08+0000\n"
+"Last-Translator: Yves Goldberg <admin@ygol.com>\n"
 "Language-Team: none\n"
 "Language: he\n"
 "MIME-Version: 1.0\n"
@@ -14,101 +15,102 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=4; plural=(n == 1) ? 0 : ((n == 2) ? 1 : ((n > 10 && "
 "n % 10 == 0) ? 2 : 3));\n"
+"X-Generator: Weblate 3.10\n"
 
 #. module: project_category
 #: model_terms:ir.ui.view,arch_db:project_category.project_type_form
 msgid "Add a description..."
-msgstr ""
+msgstr "הוסף תיאור..."
 
 #. module: project_category
 #: model:ir.model.fields,field_description:project_category.field_project_type__project_ok
 #: model_terms:ir.ui.view,arch_db:project_category.project_type_search
 msgid "Can be applied for projects"
-msgstr ""
+msgstr "ניתן ליישם עבור תיקים"
 
 #. module: project_category
 #: model:ir.model.fields,field_description:project_category.field_project_type__task_ok
 #: model_terms:ir.ui.view,arch_db:project_category.project_type_search
 msgid "Can be applied for tasks"
-msgstr ""
+msgstr "ניתן ליישם עבור משימות"
 
 #. module: project_category
 #: model:ir.model.fields,field_description:project_category.field_project_type__complete_name
 msgid "Complete Name"
-msgstr ""
+msgstr "שם מלא"
 
 #. module: project_category
 #: model:ir.model.fields,field_description:project_category.field_project_type__create_uid
 msgid "Created by"
-msgstr ""
+msgstr "נוצר על-ידי"
 
 #. module: project_category
 #: model:ir.model.fields,field_description:project_category.field_project_type__create_date
 msgid "Created on"
-msgstr ""
+msgstr "נוצר ב-"
 
 #. module: project_category
 #: model:ir.model.fields,field_description:project_category.field_project_type__description
 #: model_terms:ir.ui.view,arch_db:project_category.project_type_form
 msgid "Description"
-msgstr ""
+msgstr "תיאור"
 
 #. module: project_category
 #: model:ir.model.fields,field_description:project_category.field_project_type__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "שם תצוגה"
 
 #. module: project_category
 #: model:ir.model.fields,field_description:project_category.field_project_type__id
 msgid "ID"
-msgstr ""
+msgstr "מזהה"
 
 #. module: project_category
 #: model:ir.model.fields,field_description:project_category.field_project_type____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "שינוי אחרון ב"
 
 #. module: project_category
 #: model:ir.model.fields,field_description:project_category.field_project_type__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "עודכן לאחרונה על-ידי"
 
 #. module: project_category
 #: model:ir.model.fields,field_description:project_category.field_project_type__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "עדכון אחרון ב"
 
 #. module: project_category
 #: model:ir.model.fields,field_description:project_category.field_project_type__name
 msgid "Name"
-msgstr ""
+msgstr "שם"
 
 #. module: project_category
 #: model:ir.model.fields,field_description:project_category.field_project_type__parent_id
 msgid "Parent Type"
-msgstr ""
+msgstr "סוג תיק על"
 
 #. module: project_category
 #: model:ir.model,name:project_category.model_project_project
 msgid "Project"
-msgstr ""
+msgstr "פרויקט"
 
 #. module: project_category
 #: model:ir.model,name:project_category.model_project_type
 #: model:ir.ui.menu,name:project_category.project_category
 msgid "Project Type"
-msgstr ""
+msgstr "תיק מסוג"
 
 #. module: project_category
 #: model:ir.model.fields,field_description:project_category.field_project_type__child_ids
 #: model_terms:ir.ui.view,arch_db:project_category.project_type_form
 msgid "Subtypes"
-msgstr ""
+msgstr "תתי סוגים"
 
 #. module: project_category
 #: model:ir.model,name:project_category.model_project_task
 msgid "Task"
-msgstr ""
+msgstr "משימה"
 
 #. module: project_category
 #: model:ir.actions.act_window,name:project_category.action_project_type
@@ -119,10 +121,10 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_category.project_type_form
 #: model_terms:ir.ui.view,arch_db:project_category.project_type_search
 msgid "Type"
-msgstr ""
+msgstr "סוג"
 
 #. module: project_category
 #: code:addons/project_category/models/project_type.py:0
 #, python-format
 msgid "You cannot create recursive project types."
-msgstr ""
+msgstr "אין אפשרות ליצור סוג תיק רקורסיבי."
