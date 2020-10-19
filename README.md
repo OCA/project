@@ -15,7 +15,11 @@ TODO: add repo description.
 
 [//]: # (addons)
 
-This part will be replaced when running the oca-gen-addons-table script from OCA/maintainer-tools.
+Available addons
+----------------
+addon | version | summary
+--- | --- | ---
+[project_task_add_very_high](project_task_add_very_high/) | 14.0.1.0.0 | Adds extra options 'High' and 'Very High' on tasks
 
 [//]: # (end addons)
 
