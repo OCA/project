@@ -1,4 +1,4 @@
-# Copyright 2017 Onestein (<https://www.onestein.eu>)
+# Copyright 2017-2020 Onestein (<https://www.onestein.eu>)
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 
