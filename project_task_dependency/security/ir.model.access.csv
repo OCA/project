@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_project_task_copy_map_project_user,access_project_task_copy_map project_user,model_project_task_copy_map,project.group_project_user,1,1,1,1
+access_project_task_copy_map_base_user,access_project_task_copy_map base_user,model_project_task_copy_map,base.group_user,1,0,0,0
+access_project_task_copy_map_portal,access_project_task_copy_map portal,model_project_task_copy_map,base.group_portal,1,0,0,0

@@ -1,4 +1,4 @@
-# Copyright 2016-2018 Onestein (<http://www.onestein.eu>)
+# Copyright 2016-2020 Onestein (<http://www.onestein.eu>)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from odoo.exceptions import ValidationError
@@ -7,7 +7,7 @@ from odoo.tests.common import TransactionCase
 
 class TestProjectTaskDependency(TransactionCase):
     def setUp(self):
-        super(TestProjectTaskDependency, self).setUp()
+        super().setUp()
 
         self.project1 = self.env["project.project"].create(
             {"name": "Nice Project Test Dependencies One"}

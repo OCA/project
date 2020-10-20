@@ -1,4 +1,4 @@
-# Copyright 2016-2018 Onestein (<http://www.onestein.eu>)
+# Copyright 2016-2020 Onestein (<http://www.onestein.eu>)
 # Copyright 2020 Tecnativa - Manuel Calero
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
@@ -81,7 +81,7 @@ class ProjectTask(models.Model):
             )
 
     def copy(self, default=None):
-        res = super(ProjectTask, self).copy(default)
+        res = super().copy(default)
         if self.env.context.get("project_copy"):
             self.env["project.task.copy.map"].create(
                 {"old_task_id": self.id, "new_task_id": res.id}
