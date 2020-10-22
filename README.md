@@ -20,6 +20,7 @@ Available addons
 addon | version | summary
 --- | --- | ---
 [project_task_add_very_high](project_task_add_very_high/) | 14.0.1.0.0 | Adds extra options 'High' and 'Very High' on tasks
+[project_task_dependency](project_task_dependency/) | 14.0.1.0.0 | Enables to define dependencies (other tasks) of a task
 
 [//]: # (end addons)
 
