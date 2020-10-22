@@ -106,7 +106,6 @@ msgstr ""
 
 #. module: project_task_dependency
 #: code:addons/project_task_dependency/models/project_task.py:0
-#: code:addons/project_task_dependency/models/project_task.py:0
 #, python-format
 msgid "You cannot create recursive dependencies between tasks."
 msgstr ""
