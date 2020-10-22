@@ -4,7 +4,7 @@
 
 {
     "name": "Project Task Dependencies",
-    "version": "13.0.1.0.0",
+    "version": "13.0.1.0.1",
     "category": "Project",
     "website": "https://github.com/OCA/project",
     "summary": "Enables to define dependencies (other tasks) of a task",
