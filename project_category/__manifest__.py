@@ -1,10 +1,10 @@
 # Copyright 2015 ADHOC SA (http://www.adhoc.com.ar)
 # Copyright 2017 Tecnativa - Pedro M. Baeza
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 {
     "name": "Project Types",
-    "version": "13.0.1.1.0",
+    "version": "14.0.1.0.0",
     "category": "Project",
     "author": "ADHOC SA," "Tecnativa, " "Onestein, " "Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/project",
