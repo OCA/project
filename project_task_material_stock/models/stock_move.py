@@ -4,12 +4,10 @@ from odoo import api, fields, models
 
 
 class StockMove(models.Model):
-    _inherit = 'stock.move'
+    _inherit = "stock.move"
 
     task_material_id = fields.One2many(
-        'project.task.material',
-        'stock_move_id',
-        string='Project Task Material',
+        "project.task.material", "stock_move_id", string="Project Task Material",
     )
 
     @api.multi
@@ -19,5 +17,5 @@ class StockMove(models.Model):
         # lot / serial number, the cost when creating the
         # analytical line is not correct.
         res = super(StockMove, self)._action_done()
-        self.mapped('task_material_id')._update_unit_amount()
+        self.mapped("task_material_id")._update_unit_amount()
         return res
