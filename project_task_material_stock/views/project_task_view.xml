@@ -48,7 +48,7 @@
                     class="oe_highlight"
                 />
             </field>
-            <field name="material_ids" position="replace">
+            <field name="material_ids" position="after">
                 <field name="stock_state" invisible="1" />
                 <field name="consume_material" invisible="1" />
                 <group
@@ -99,6 +99,9 @@
                         </page>
                     </notebook>
                 </group>
+            </field>
+            <field name="material_ids" position="attributes">
+                <attribute name="invisible">1</attribute>
             </field>
         </field>
     </record>

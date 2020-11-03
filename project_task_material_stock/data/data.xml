@@ -21,6 +21,7 @@
             <field name="name">Project Task Material Operations</field>
             <field name="code">outgoing</field>
             <field name="sequence_id" ref="project_task_material_sequence" />
+            <field name="sequence_code">5</field>
             <field name="warehouse_id" ref="stock.warehouse0" />
             <field name="default_location_src_id" ref="stock.stock_location_stock" />
             <field

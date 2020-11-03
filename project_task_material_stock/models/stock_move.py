@@ -1,6 +1,6 @@
 # Copyright 2019 Valentin Vinagre <valentin.vinagre@qubiq.es>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
-from odoo import api, fields, models
+from odoo import fields, models
 
 
 class StockMove(models.Model):
@@ -10,7 +10,6 @@ class StockMove(models.Model):
         "project.task.material", "stock_move_id", string="Project Task Material",
     )
 
-    @api.multi
     def _action_done(self):
         # The analytical amount is updated with the value of the
         # stock movement, because if the product has a tracking by

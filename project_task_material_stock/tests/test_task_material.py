@@ -19,7 +19,16 @@ class TestTaskMaterial(common.SavepointCase):
             {"name": "State Deployed example"}
         )
         cls.stage_deployed.consume_material = True
-        cls.project = cls.env["project.project"].create({"name": "Project example"})
+        cls.analytic_account_obj1 = cls.env["account.analytic.account"].create(
+            {"name": "Analytic account #1", "company_id": cls.company.id}
+        )
+        cls.project = cls.env["project.project"].create(
+            {
+                "name": "Project example",
+                "company_id": cls.company.id,
+                "analytic_account_id": cls.analytic_account_obj1.id,
+            }
+        )
         cls.product1_uom = cls.env.ref("uom.product_uom_unit")
         cls.product2_uom = cls.env.ref("uom.product_uom_kgm")
         product_obj = cls.env["product.product"]
@@ -28,7 +37,6 @@ class TestTaskMaterial(common.SavepointCase):
                 "name": "Product example #1",
                 "uom_id": cls.product1_uom.id,
                 "uom_po_id": cls.product1_uom.id,
-                "company_id": cls.company.id,
             }
         )
         cls.product2 = product_obj.create(
@@ -36,7 +44,6 @@ class TestTaskMaterial(common.SavepointCase):
                 "name": "Product example #2",
                 "uom_id": cls.product2_uom.id,
                 "uom_po_id": cls.product2_uom.id,
-                "company_id": cls.company.id,
             }
         )
         cls.task = cls.env["project.task"].create(
@@ -60,8 +67,9 @@ class TestTaskMaterial(common.SavepointCase):
         cls.expected_amount = -(100.0 * 3)
 
     def test_task_material(self):
-
         self.assertEqual(self.task_material.product_uom_id.id, self.product1_uom.id)
+        self.assertEqual(self.task_material.product_id.id, self.product1.id)
+        self.assertEqual(self.task_material.quantity, 3)
         self.task.material_ids.write({"product_id": self.product2.id})
         self.task_material._onchange_product_id()
         self.assertEqual(self.task_material.product_uom_id.id, self.product2_uom.id)
@@ -76,6 +84,12 @@ class TestTaskMaterial(common.SavepointCase):
         self.assertEqual(len(self.task.stock_move_ids), 0)
         self.assertEqual(len(self.task.analytic_line_ids), 0)
         self.task.stage_id = self.stage_deployed.id
+        self.assertEqual(self.task.stock_state, "confirmed")
+        self.assertEqual(self.task.stock_move_ids[0].state, "confirmed")
+        self.assertEqual(len(self.task.stock_move_ids), 1)
+        self.task.action_assign()
+        self.assertEqual(self.task.stock_state, "assigned")
+        self.assertEqual(self.task.stock_move_ids[0].state, "assigned")
         self.assertEqual(len(self.task.stock_move_ids), 1)
         self.task2 = self.task.copy()
         self.assertEqual(len(self.task2.stock_move_ids), 0)
