@@ -23,7 +23,7 @@ Sequential Code for Tasks
     :target: https://runbot.odoo-community.org/runbot/140/12.0
     :alt: Try me on Runbot
 
-|badge1| |badge2| |badge3| |badge4| |badge5| 
+|badge1| |badge2| |badge3| |badge4| |badge5|
 
 This module adds a sequential code for tasks.
 
@@ -84,7 +84,9 @@ Contributors
 * Vicent Cubells <vicent.cubells@tecnativa.com>
 * Rodrigo Ferreira <rodrigosferreira91@gmail.com>
 * Damien Bouvy <dbo@odoo.com>
-* Alexey Pelykh <alexey.pelykh@brainbeanapps.com>
+* `CorporateHub <https://corporatehub.eu/>`__
+
+  * Alexey Pelykh <alexey.pelykh@corphub.eu>
 
 Maintainers
 ~~~~~~~~~~~
