@@ -23,7 +23,7 @@ Project HR
     :target: https://runbot.odoo-community.org/runbot/140/12.0
     :alt: Try me on Runbot
 
-|badge1| |badge2| |badge3| |badge4| |badge5|
+|badge1| |badge2| |badge3| |badge4| |badge5| 
 
 This is a technical module for adding some HR information to projects and
 provide technical fields with HR information:
@@ -129,7 +129,7 @@ promote its widespread use.
 
 Current `maintainer <https://odoo-community.org/page/maintainer-role>`__:
 
-|maintainer-pedrobaeza|
+|maintainer-pedrobaeza| 
 
 This module is part of the `OCA/project <https://github.com/OCA/project/tree/12.0/project_hr>`_ project on GitHub.
 

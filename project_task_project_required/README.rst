@@ -23,7 +23,7 @@ Project: require Project on Task
     :target: https://runbot.odoo-community.org/runbot/140/12.0
     :alt: Try me on Runbot
 
-|badge1| |badge2| |badge3| |badge4| |badge5|
+|badge1| |badge2| |badge3| |badge4| |badge5| 
 
 This module allows to configure task as having project as a mandatory field.
 
