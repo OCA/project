@@ -73,3 +73,19 @@ class TestProjectPurchaseUtilities(common.SavepointCase):
         self.assertEquals(purchase_dict.get("domain"), order_domain)
         purchase_line_dict = self.project.button_open_purchase_order_line()
         self.assertEquals(purchase_line_dict.get("domain"), purchase_domain)
+        invoice_domain = [
+            "&",
+            ("id", "in", [invoice.id]),  # only one test invoice (line)
+            ("type", "=", "in_invoice"),
+        ]
+        invoice_dict = self.project.button_open_purchase_invoice()
+        self.assertEquals(invoice_dict.get("domain"), invoice_domain)
+        invoice_line_domain = [
+            (
+                "analytic_account_id",
+                "in",
+                [self.project.analytic_account_id.id],  # one test invoice (line)
+            )
+        ]
+        invoice_line_dict = self.project.button_open_purchase_invoice_line()
+        self.assertEquals(invoice_line_dict.get("domain"), invoice_line_domain)
