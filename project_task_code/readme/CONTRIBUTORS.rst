@@ -4,5 +4,8 @@
 * Vicent Cubells <vicent.cubells@tecnativa.com>
 * Rodrigo Ferreira <rodrigosferreira91@gmail.com>
 * Damien Bouvy <dbo@odoo.com>
-* Alexey Pelykh <alexey.pelykh@brainbeanapps.com>
+* `CorporateHub <https://corporatehub.eu/>`__
+
+  * Alexey Pelykh <alexey.pelykh@corphub.eu>
+
 * Saran Lim. <saranl@ecosoft.co.th>
