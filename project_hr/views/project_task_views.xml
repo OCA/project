@@ -13,7 +13,11 @@
             <field name="user_id" position="before">
                 <field name="allowed_hr_category_ids" invisible="1" />
                 <field name="allowed_user_ids" invisible="1" />
-                <field name="hr_category_ids" widget="many2many_tags" />
+                <field
+                    name="hr_category_ids"
+                    widget="many2many_tags"
+                    options="{'no_create': True}"
+                />
             </field>
             <field name="user_id" position="attributes">
                 <attribute name="domain">[('id', 'in', allowed_user_ids)]</attribute>
