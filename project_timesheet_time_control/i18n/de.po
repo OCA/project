@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-05-10 02:40+0000\n"
-"PO-Revision-Date: 2019-12-13 18:05+0000\n"
-"Last-Translator: Maria Sparenberg <maria.sparenberg@gmx.net>\n"
+"PO-Revision-Date: 2020-11-09 14:08+0000\n"
+"Last-Translator: Janik Vonrotz <janikvonrotz@gmail.com>\n"
 "Language-Team: German (https://www.transifex.com/oca/teams/23907/de/)\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.9.1\n"
+"X-Generator: Weblate 3.10\n"
 
 #. module: project_timesheet_time_control
 #: code:addons/project_timesheet_time_control/wizards/hr_timesheet_switch.py:0
@@ -26,6 +26,8 @@ msgid ""
 "%d running timers found. Cannot know which one to stop. Please stop them "
 "manually."
 msgstr ""
+"%d laufende Timer gefunden. Unklar welcher gestoppt werden soll. Bitte den "
+"Timer manuell stoppen."
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
@@ -79,7 +81,7 @@ msgstr "Kostenposition"
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
 msgid "Cancel"
-msgstr ""
+msgstr "Abbrechen"
 
 #. module: project_timesheet_time_control
 #: code:addons/project_timesheet_time_control/models/account_analytic_line.py:0
@@ -88,11 +90,13 @@ msgid ""
 "Cannot stop timer %d because it is not running. Refresh the page and check "
 "again."
 msgstr ""
+"Der Timer %d kann nicht gestoppt werden, weil er nicht läuft. Aktualisieren "
+"Sie die Seite und prüfen den Status erneut."
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__product_uom_category_id
 msgid "Category"
-msgstr ""
+msgstr "Kategorie"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__is_task_closed
@@ -102,12 +106,12 @@ msgstr "Beendet"
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__code
 msgid "Code"
-msgstr ""
+msgstr "Code"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__company_id
 msgid "Company"
-msgstr ""
+msgstr "Unternehmen"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,help:project_timesheet_time_control.field_hr_timesheet_switch__product_uom_category_id
