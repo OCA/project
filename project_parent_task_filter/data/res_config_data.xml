@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data noupdate="1">
+        <record id="project_config_settings" model="res.config.settings">
+            <field name="group_subtask_project" eval="True" />
+        </record>
+        <function model="res.config.settings" name="execute">
+            <value
+                model="res.config.settings"
+                search="[('id', '=', ref('project_config_settings'))]"
+            />
+        </function>
+    </data>
+</odoo>
