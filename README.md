@@ -26,7 +26,7 @@ addon | version | summary
 [project_deadline](project_deadline/) | 12.0.1.0.0 | Start date and deadline of projects.
 [project_description](project_description/) | 12.0.1.0.0 | Add a description to projects
 [project_hr](project_hr/) | 12.0.1.0.1 | Link HR with project
-[project_key](project_key/) | 12.0.1.0.0 | Module decorates projects and tasks with Project Key
+[project_key](project_key/) | 12.0.1.0.1 | Module decorates projects and tasks with Project Key
 [project_list](project_list/) | 12.0.1.0.0 | Projects list view
 [project_milestone](project_milestone/) | 12.0.1.0.0 | Project Milestones
 [project_parent_task_filter](project_parent_task_filter/) | 12.0.1.2.0 | Add a filter to show the parent tasks
