@@ -9,6 +9,5 @@ class ProjectProject(models.Model):
     type_id = fields.Many2one(
         comodel_name="project.type",
         string="Type",
-        copy=False,
         domain="[('project_ok', '=', True)]",
     )
