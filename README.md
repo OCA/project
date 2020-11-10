@@ -23,7 +23,7 @@ addon | version | summary
 [project_category](project_category/) | 13.0.1.1.0 | Project Types
 [project_description](project_description/) | 13.0.1.0.0 | Add a description to projects
 [project_hr](project_hr/) | 13.0.1.0.0 | Link HR with project
-[project_key](project_key/) | 13.0.1.0.0 | Module decorates projects and tasks with Project Key
+[project_key](project_key/) | 13.0.1.0.1 | Module decorates projects and tasks with Project Key
 [project_list](project_list/) | 13.0.1.0.0 | Projects list view
 [project_milestone](project_milestone/) | 13.0.1.0.0 | Project Milestones
 [project_parent_task_filter](project_parent_task_filter/) | 13.0.1.0.0 | Add a filter to show the parent tasks
