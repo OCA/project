@@ -14,6 +14,7 @@
         "project",
     ],
     "data": [
+        "data/res_config_data.xml",
         "views/project_task.xml",
     ],
     "installable": True,
