@@ -4,10 +4,10 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 {
     "name": "Project Task Default Stage",
-    "summary": "Recovery default task stage projects from v8",
-    "version": "13.0.1.0.0",
+    "summary": "Recovery default task stages for projects from v8",
+    "version": "14.0.1.0.0",
     "category": "Project",
-    "author": "Tecnativa, " "Odoo Community Association (OCA)",
+    "author": "Tecnativa, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/project",
     "license": "AGPL-3",
     "depends": ["project"],
