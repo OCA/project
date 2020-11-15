@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <data noupdate="1">
+        <!-- Sequence for project copy key -->
+        <record id="seq_project_key" model="ir.sequence">
+            <field name="name">Project Copy Key sequence</field>
+            <field name="code">project.project.copy.key</field>
+            <field name="prefix">P</field>
+            <field name="padding">0</field>
+            <field name="company_id" eval="False" />
+        </record>
+    </data>
+</odoo>
