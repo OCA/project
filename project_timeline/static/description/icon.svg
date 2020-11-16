@@ -1,64 +1,61 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
-
 <svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   id="svg2"
-   version="1.1"
-   inkscape:version="0.91 r13725"
-   width="160"
-   height="160"
-   viewBox="0 0 160 160"
-   sodipodi:docname="icon.svg"
-   inkscape:export-filename="icon.png"
-   inkscape:export-xdpi="72"
-   inkscape:export-ydpi="72">
-  <metadata
-     id="metadata8">
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:cc="http://creativecommons.org/ns#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:svg="http://www.w3.org/2000/svg"
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+  xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+  id="svg2"
+  version="1.1"
+  inkscape:version="0.91 r13725"
+  width="160"
+  height="160"
+  viewBox="0 0 160 160"
+  sodipodi:docname="icon.svg"
+  inkscape:export-filename="icon.png"
+  inkscape:export-xdpi="72"
+  inkscape:export-ydpi="72"
+>
+  <metadata id="metadata8">
     <rdf:RDF>
-      <cc:Work
-         rdf:about="">
+      <cc:Work rdf:about="">
         <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
       </cc:Work>
     </rdf:RDF>
   </metadata>
-  <defs
-     id="defs6" />
+  <defs id="defs6" />
   <sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="1855"
-     inkscape:window-height="1176"
-     id="namedview4"
-     showgrid="false"
-     inkscape:zoom="1.475"
-     inkscape:cx="202.62719"
-     inkscape:cy="74.435981"
-     inkscape:window-x="65"
-     inkscape:window-y="24"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="svg2" />
+    pagecolor="#ffffff"
+    bordercolor="#666666"
+    borderopacity="1"
+    objecttolerance="10"
+    gridtolerance="10"
+    guidetolerance="10"
+    inkscape:pageopacity="0"
+    inkscape:pageshadow="2"
+    inkscape:window-width="1855"
+    inkscape:window-height="1176"
+    id="namedview4"
+    showgrid="false"
+    inkscape:zoom="1.475"
+    inkscape:cx="202.62719"
+    inkscape:cy="74.435981"
+    inkscape:window-x="65"
+    inkscape:window-y="24"
+    inkscape:window-maximized="1"
+    inkscape:current-layer="svg2"
+  />
   <image
-     width="160"
-     height="160"
-     preserveAspectRatio="none"
-     style="image-rendering:optimizeQuality"
-     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAIAAABMXPacAAAKT2lDQ1BQaG90b3Nob3AgSUNDIHBy
+    width="160"
+    height="160"
+    preserveAspectRatio="none"
+    style="image-rendering:optimizeQuality"
+    xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAIAAABMXPacAAAKT2lDQ1BQaG90b3Nob3AgSUNDIHBy
 b2ZpbGUAAHjanVNnVFPpFj333vRCS4iAlEtvUhUIIFJCi4AUkSYqIQkQSoghodkVUcERRUUEG8ig
 iAOOjoCMFVEsDIoK2AfkIaKOg6OIisr74Xuja9a89+bN/rXXPues852zzwfACAyWSDNRNYAMqUIe
 EeCDx8TG4eQuQIEKJHAAEAizZCFz/SMBAPh+PDwrIsAHvgABeNMLCADATZvAMByH/w/qQplcAYCE
@@ -270,14 +267,15 @@ vVbTdBImRxiGS38d1o3dA5RSYRgKcY1HGMMwDIJg7hoyO56AlkJqAERkW4YQYq64rBACIMu2pBBz
 97YQkdZ6LruSiEkptdZEzDJp7mnz1hMRI3LcmNZCCDIMQ0qh51uYt7DOf/lmXAG+709PT5umeW2F
 W8+FG22s0DXR/weGVSy7d+gJ9AAAAABJRU5ErkJggg==
 "
-     id="image10"
-     x="0"
-     y="0" />
+    id="image10"
+    x="0"
+    y="0"
+  />
   <image
-     y="77.627113"
-     x="77.627113"
-     id="image4146"
-     xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAIAAAAiOjnJAAAABGdBTUEAALGPC/xhBQAAACBjSFJN
+    y="77.627113"
+    x="77.627113"
+    id="image4146"
+    xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAIAAAAiOjnJAAAABGdBTUEAALGPC/xhBQAAACBjSFJN
 AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QA/wD/AP+gvaeTAAAA
 CXBIWXMAAC4jAAAuIwF4pT92AAAAB3RJTUUH3wUGExEx3lDq9QAAHwhJREFUeNrtnXmQXMd52L/u
 fudcO3ufWOwxi5MECYAAKIGiSVniCUqx5SSMTJVoJYpiV1JlObYTO3GOSlJl2bIjxUklJSsxE8qW
@@ -423,8 +421,9 @@ aVVJ/H/qteLtfd+1KgAAACV0RVh0ZGF0ZTpjcmVhdGUAMjAxNS0wNS0wNlQxNToyNDoxNiswMjow
 MIg/+qAAAAAldEVYdGRhdGU6bW9kaWZ5ADIwMTUtMDUtMDZUMTU6MTM6NTkrMDI6MDDwXkF3AAAA
 GXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAABJRU5ErkJggg==
 "
-     style="image-rendering:optimizeQuality"
-     preserveAspectRatio="none"
-     height="82.372887"
-     width="82.372887" />
+    style="image-rendering:optimizeQuality"
+    preserveAspectRatio="none"
+    height="82.372887"
+    width="82.372887"
+  />
 </svg>
