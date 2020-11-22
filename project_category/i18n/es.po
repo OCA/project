@@ -90,7 +90,6 @@ msgstr "Nombre"
 #. module: project_category
 #: model:ir.model.fields,field_description:project_category.field_project_type_parent_id
 #, fuzzy
-#| msgid "Project Type"
 msgid "Parent Type"
 msgstr "Tipos de Proyectos"
 
