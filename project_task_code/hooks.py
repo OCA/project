@@ -10,8 +10,10 @@ def pre_init_hook(cr):
     code constraint when the module is installed and before the post-init-hook
     is launched.
     """
-    cr.execute("ALTER TABLE project_task " "ADD COLUMN code character varying;")
-    cr.execute("UPDATE project_task " "SET code = id;")
+    cr.execute(
+        "ALTER TABLE project_task " "ADD COLUMN IF NOT EXISTS code character varying;"
+    )
+    cr.execute("UPDATE project_task " "SET code = id where code is null;")
 
 
 def post_init_hook(cr, registry):
