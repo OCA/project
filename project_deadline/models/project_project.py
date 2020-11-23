@@ -1,4 +1,4 @@
-# Copyright 2019 Onestein
+# Copyright 2019-2020 Onestein
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from lxml import etree
@@ -15,7 +15,7 @@ class ProjectProject(models.Model):
     ):
         # This is moved here to prevent dependency to this module
         # (e.g. in project_timeline)
-        res = super(ProjectProject, self).fields_view_get(
+        res = super().fields_view_get(
             view_id=view_id, view_type=view_type, toolbar=toolbar, submenu=submenu
         )
         if view_type == "form":
