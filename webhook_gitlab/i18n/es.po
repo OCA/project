@@ -1,0 +1,257 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* webhook_gitlab
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-11-26 02:51+0000\n"
+"PO-Revision-Date: 2020-11-25 20:57-0600\n"
+"Last-Translator: Jesús Alan Ramos Rodríguez <alan.ramos@jarsa.com.mx>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"Language: es\n"
+"X-Generator: Poedit 2.4.2\n"
+
+#. module: webhook_gitlab
+#: model_terms:ir.ui.view,arch_db:webhook_gitlab.gitlab_id_not_in_title
+msgid ""
+"**WARNING**: Could not link to Odoo task or ticket. Record ID not found in the title of the MR, supported formats:\n"
+"```\n"
+"{ record type }#{ number }\n"
+"```\n"
+"Available types: 'task#', 't#', 'ticket#', 'issue#', 'i#' (case insensitive)\n"
+"\n"
+"_Examples_: \n"
+"\n"
+"- task#123\n"
+"\n"
+"- i#123"
+msgstr ""
+"**ADVERTENCIA**: No se pudo vincular a la tarea o ticket de Odoo. ID de registro no encontrado en el título del MR, formatos admitidos:\n"
+"```\n"
+"{ tipo de registro }#{ número }\n"
+"```\n"
+"Tipos disponibles: ‘task#’, ’t#’, ‘ticket#’, ‘issue#’, ‘i#’ (no distingue entre mayúsculas y minúsculas)\n"
+"\n"
+"_Ejemplos_: \n"
+"\n"
+"- task#123\n"
+"\n"
+"- i#123"
+
+#. module: webhook_gitlab
+#: model:ir.model.fields,field_description:webhook_gitlab.field_git_request__approved
+msgid "Approved"
+msgstr "Aprobado"
+
+#. module: webhook_gitlab
+#: model:ir.model.fields,field_description:webhook_gitlab.field_git_request__branch
+msgid "Branch"
+msgstr "Branch"
+
+#. module: webhook_gitlab
+#: model:ir.model.fields,field_description:webhook_gitlab.field_git_request__ci_status
+msgid "CI Status"
+msgstr "Estado CI"
+
+#. module: webhook_gitlab
+#: selection:git.request,ci_status:0
+msgid "Canceled"
+msgstr "Cancelado"
+
+#. module: webhook_gitlab
+#: selection:git.request,state:0
+msgid "Closed"
+msgstr "Cerrado"
+
+#. module: webhook_gitlab
+#: model:ir.model.fields,field_description:webhook_gitlab.field_git_request__create_uid
+#: model:ir.model.fields,field_description:webhook_gitlab.field_git_request__user_id
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: webhook_gitlab
+#: model:ir.model.fields,field_description:webhook_gitlab.field_git_request__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: webhook_gitlab
+#: model:ir.model.fields,field_description:webhook_gitlab.field_git_request__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: webhook_gitlab
+#: selection:git.request,ci_status:0
+msgid "Failed"
+msgstr "Fallido"
+
+#. module: webhook_gitlab
+#: model_terms:ir.ui.view,arch_db:webhook_gitlab.git_request_tree
+msgid "Git Requests"
+msgstr "Git Requests"
+
+#. module: webhook_gitlab
+#: model:ir.model.fields,field_description:webhook_gitlab.field_res_users__gitlab_username
+msgid "Gitlab Username"
+msgstr "Usuario de Gitlab"
+
+#. module: webhook_gitlab
+#: model:ir.model,name:webhook_gitlab.model_helpdesk_ticket
+msgid "Helpdesk Ticket"
+msgstr "Ticket del Servicio de Asistencia"
+
+#. module: webhook_gitlab
+#: model:ir.model.fields,field_description:webhook_gitlab.field_git_request__id
+msgid "ID"
+msgstr "ID (Identificador)"
+
+#. module: webhook_gitlab
+#: model:ir.model.fields,field_description:webhook_gitlab.field_git_request__last_commit
+msgid "Last Commit"
+msgstr "Último commit"
+
+#. module: webhook_gitlab
+#: model:ir.model.fields,field_description:webhook_gitlab.field_git_request____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: webhook_gitlab
+#: model:ir.model.fields,field_description:webhook_gitlab.field_git_request__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: webhook_gitlab
+#: model:ir.model.fields,field_description:webhook_gitlab.field_git_request__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: webhook_gitlab
+#: code:addons/webhook_gitlab/controllers/main.py:101
+#, python-format
+msgid "Linked to Odoo %s [#%s](%s)"
+msgstr "Vinculado a Odoo %s [#%s](%s)"
+
+#. module: webhook_gitlab
+#: selection:git.request,state:0
+msgid "Locked"
+msgstr "Bloqueado"
+
+#. module: webhook_gitlab
+#: model:ir.model.fields,field_description:webhook_gitlab.field_helpdesk_ticket__git_request_ids
+#: model:ir.model.fields,field_description:webhook_gitlab.field_project_task__git_request_ids
+#: model_terms:ir.ui.view,arch_db:webhook_gitlab.helpdesk_ticket_form
+#: model_terms:ir.ui.view,arch_db:webhook_gitlab.project_task_form
+msgid "Merge Requests"
+msgstr "Solicitudes de Mezcla"
+
+#. module: webhook_gitlab
+#: selection:git.request,state:0
+msgid "Merged"
+msgstr "Mezclado"
+
+#. module: webhook_gitlab
+#: model_terms:ir.ui.view,arch_db:webhook_gitlab.git_request_tree
+msgid "Open Merge Request"
+msgstr "Abrir Solicitud de Mezcla"
+
+#. module: webhook_gitlab
+#: selection:git.request,state:0
+msgid "Opened"
+msgstr "Abierto"
+
+#. module: webhook_gitlab
+#: selection:git.request,ci_status:0
+msgid "Pending"
+msgstr "Pendiente"
+
+#. module: webhook_gitlab
+#: model:ir.model.fields,field_description:webhook_gitlab.field_git_request__id_project
+msgid "Project ID"
+msgstr "ID de proyecto"
+
+#. module: webhook_gitlab
+#: model:ir.model.fields,field_description:webhook_gitlab.field_git_request__id_request
+msgid "Request ID"
+msgstr "ID Solicitud"
+
+#. module: webhook_gitlab
+#: selection:git.request,ci_status:0
+msgid "Running"
+msgstr "En proceso"
+
+#. module: webhook_gitlab
+#: selection:git.request,ci_status:0
+msgid "Skipped"
+msgstr "Omitido"
+
+#. module: webhook_gitlab
+#: model:ir.model.fields,field_description:webhook_gitlab.field_git_request__state
+msgid "State"
+msgstr "Estado"
+
+#. module: webhook_gitlab
+#: selection:git.request,ci_status:0
+msgid "Success"
+msgstr "Éxito"
+
+#. module: webhook_gitlab
+#: model:ir.model,name:webhook_gitlab.model_project_task
+#: model:ir.model.fields,field_description:webhook_gitlab.field_git_request__task_id
+msgid "Task"
+msgstr "Tarea"
+
+#. module: webhook_gitlab
+#: model:ir.model.fields,help:webhook_gitlab.field_git_request__id_request
+msgid "Technical field used to track the merge request id"
+msgstr "Campo técnico utilizado para rastrear el ID de solicitud de mezcla"
+
+#. module: webhook_gitlab
+#: model:ir.model.fields,help:webhook_gitlab.field_git_request__id_project
+msgid "Technical field used to track the project id in Gitlab"
+msgstr "Campo técnico utilizado para rastrear la identificación del proyecto en Gitlab"
+
+#. module: webhook_gitlab
+#: code:addons/webhook_gitlab/controllers/main.py:85
+#, python-format
+msgid "The %s #%s cannot be found in Odoo."
+msgstr "El %s #%s no se puede encontrar en Odoo."
+
+#. module: webhook_gitlab
+#: model:ir.model.fields,field_description:webhook_gitlab.field_git_request__ticket_id
+msgid "Ticket"
+msgstr "Tiquet"
+
+#. module: webhook_gitlab
+#: model:ir.model.fields,field_description:webhook_gitlab.field_git_request__name
+msgid "Title"
+msgstr "Título"
+
+#. module: webhook_gitlab
+#: selection:git.request,ci_status:0
+msgid "Unknown"
+msgstr "Desconocido"
+
+#. module: webhook_gitlab
+#: model:ir.model.fields,field_description:webhook_gitlab.field_git_request__url
+msgid "Url"
+msgstr "URL"
+
+#. module: webhook_gitlab
+#: model:ir.model,name:webhook_gitlab.model_res_users
+msgid "Users"
+msgstr "Usuarios"
+
+#. module: webhook_gitlab
+#: model:ir.model.fields,field_description:webhook_gitlab.field_git_request__wip
+msgid "WIP"
+msgstr "WIP"
+
+#. module: webhook_gitlab
+#: model:ir.model,name:webhook_gitlab.model_git_request
+msgid "git.request"
+msgstr "git.request"
