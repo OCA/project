@@ -17,12 +17,13 @@
     <record id="project.open_view_project_all" model="ir.actions.act_window">
         <field name="view_mode">kanban,timeline,form</field>
     </record>
-    <record id="project_project_form" model="ir.ui.view">
+   <record id="project_project_form" model="ir.ui.view">
         <field name="name">project.project.form</field>
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.edit_project" />
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='resource_calendar_id']" position="after">
+            <!-- <xpath expr="//group[@name='extra_settings']" position="after"> -->
+            <xpath expr="//field[@name='resource_calendar_id']" position="inside">
                 <field name="date_start" />
                 <field name="date" />
             </xpath>
