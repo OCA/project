@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+    Copyright 2019 Brainbean Apps (https://brainbeanapps.com)
+    License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+    <record id="open_view_project_all_kanban" model="ir.actions.act_window.view">
+        <field name="act_window_id" ref="project.open_view_project_all" />
+        <field name="view_mode">kanban</field>
+        <field name="sequence">1</field>
+        <field name="view_id" ref="project.view_project_kanban" />
+    </record>
+    <record id="open_view_project_all_tree" model="ir.actions.act_window.view">
+        <field name="act_window_id" ref="project.open_view_project_all" />
+        <field name="view_mode">tree</field>
+        <field name="sequence">2</field>
+        <field name="view_id" ref="project.view_project" />
+    </record>
+</odoo>
