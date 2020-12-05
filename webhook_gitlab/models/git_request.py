@@ -6,6 +6,7 @@ from odoo import api, fields, models
 
 class GitRequest(models.Model):
     _name = 'git.request'
+    _description = 'Information for Pull/Merge Requests'
 
     task_id = fields.Many2one('project.task', ondelete='cascade')
     ticket_id = fields.Many2one('helpdesk.ticket', ondelete='cascade')
