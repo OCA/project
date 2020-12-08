@@ -5,9 +5,7 @@
 
 {
     "name": "Project Task Stage Closed",
-    "summary": "Make the Closed flag on Task Stages available without "
-    "installing sale_service"
-    "",
+    "summary": "Project Task Stage Closed" "",
     "author": "ACSONE SA/NV," "Tecnativa," "Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/project",
     "category": "Project Management",
