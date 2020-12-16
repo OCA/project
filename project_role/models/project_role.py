@@ -94,7 +94,7 @@ class ProjectRole(models.Model):
     def _compute_complete_name(self):
         for role in self:
             if role.parent_id:
-                role.complete_name = _('%(parent)s / %(own)s') % {
+                role.complete_name = ('%(parent)s / %(own)s') % {
                     'parent': role.parent_id.complete_name,
                     'own': role.name,
                 }
