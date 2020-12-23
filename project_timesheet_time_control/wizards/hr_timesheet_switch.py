@@ -60,7 +60,8 @@ class HrTimesheetSwitch(models.TransientModel):
         """Compute duration of running timer when stopped."""
         for one in self:
             one.running_timer_duration = one._duration(
-                one.running_timer_id.date_time, one.date_time,
+                one.running_timer_id.date_time,
+                one.date_time,
             )
 
     @api.model
@@ -89,7 +90,9 @@ class HrTimesheetSwitch(models.TransientModel):
             # No clues for other records, sorry
             return self.env["account.analytic.line"].browse()
         return self.env["account.analytic.line"].search(
-            domain, order="date_time DESC", limit=1,
+            domain,
+            order="date_time DESC",
+            limit=1,
         )
 
     @api.model
@@ -132,7 +135,8 @@ class HrTimesheetSwitch(models.TransientModel):
         self.ensure_one()
         # Stop old timer
         self.with_context(
-            resuming_lines=self.ids, stop_dt=self.date_time,
+            resuming_lines=self.ids,
+            stop_dt=self.date_time,
         ).running_timer_id.button_end_work()
         # Start new timer
         _fields = self.env["account.analytic.line"]._fields.keys()
