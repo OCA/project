@@ -13,7 +13,6 @@ DEFAULT_MONTH_RANGE = 3
 class SaleTimesheetController(SaleTimesheetController):
 
     def _plan_prepare_values(self, projects):
-
         employee_obj = request.env['hr.employee']
         values = super(SaleTimesheetController,
                        self)._plan_prepare_values(projects)
@@ -38,7 +37,8 @@ class SaleTimesheetController(SaleTimesheetController):
                 project_data[rec.get('employee_id') or 0].update(
                     {str(rec.get('date_mm')).strip() + str(
                         int(rec.get('year'))): {'name':
-                                                employee_obj.browse(int(
+                                                employee_obj.browse(rec.get(
+                                                    'employee_id') and int(
                                                     rec.get(
                                                         'employee_id'))).name,
                                                 'month_name': rec.get('month'),
@@ -78,15 +78,14 @@ class SaleTimesheetController(SaleTimesheetController):
             [('user_id', 'in', project_mananger_ids.ids),
              ('user_id', '!=', False)])
         query = ""
-        if not employee_ids:
-            raise UserError('Project Manager is not defined or no '
-                            'timesheet entry found for project manager.')
-
-        if projects and employee_ids:
+        if employee_ids:
             query += """
                 WHERE project_id IN %s AND employee_id IN %s
             """
         param = [tuple(projects.ids), tuple(employee_ids.ids)]
+        if not query:
+            query = "WHERE project_id IN %s AND employee_id IS NULL"
+            param = [tuple(projects.ids)]
         return query, param
 
     def line_group(self):
