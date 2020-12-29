@@ -23,7 +23,7 @@ Project Deadline
     :target: https://runbot.odoo-community.org/runbot/140/13.0
     :alt: Try me on Runbot
 
-|badge1| |badge2| |badge3| |badge4| |badge5|
+|badge1| |badge2| |badge3| |badge4| |badge5| 
 
 This module makes the start and end date of projects editable:
 
@@ -70,7 +70,7 @@ Contributors
 ~~~~~~~~~~~~
 
 * Dennis Sluijk <d.sluijk@onestein.nl>
-* Ronak Baxi <rbaodoo@gmail.com>
+* Andrea Stirpe <a.stirpe@onestein.nl>
 
 Maintainers
 ~~~~~~~~~~~
