@@ -21,7 +21,7 @@ addon | version | summary
 --- | --- | ---
 [project_category](project_category/) | 14.0.1.0.0 | Project Types
 [project_list](project_list/) | 14.0.1.0.0 | Projects list view
-[project_parent_task_filter](project_parent_task_filter/) | 14.0.1.0.0 | Add a filter to show the parent tasks
+[project_parent_task_filter](project_parent_task_filter/) | 14.0.1.1.0 | Add a filter to show the parent tasks
 [project_task_add_very_high](project_task_add_very_high/) | 14.0.1.0.0 | Adds extra options 'High' and 'Very High' on tasks
 [project_task_default_stage](project_task_default_stage/) | 14.0.1.0.0 | Recovery default task stages for projects from v8
 [project_task_dependency](project_task_dependency/) | 14.0.1.0.0 | Enables to define dependencies (other tasks) of a task
