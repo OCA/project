@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* project_deadline
+# 	* project_deadline
 #
 msgid ""
 msgstr ""
@@ -15,6 +15,11 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 3.10\n"
+
+#. module: project_deadline
+#: model:ir.model,name:project_deadline.model_project_project
+msgid "Project"
+msgstr ""
 
 #. module: project_deadline
 #: model:ir.model.fields,field_description:project_deadline.field_project_task__project_date_deadline
@@ -32,11 +37,9 @@ msgid "Task"
 msgstr "Tarea"
 
 #. module: project_deadline
-#: model:ir.model,name:project_deadline.model_project_project
-msgid "WBS element"
-msgstr "Elemento WBS"
-
-#. module: project_deadline
 #: model_terms:ir.ui.view,arch_db:project_deadline.view_project_kanban
 msgid "oe_kanban_text_red"
 msgstr ""
+
+#~ msgid "WBS element"
+#~ msgstr "Elemento WBS"
