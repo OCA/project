@@ -16,6 +16,7 @@ setuptools.setup(
         'odoo12-addon-project_hr',
         'odoo12-addon-project_key',
         'odoo12-addon-project_list',
+        'odoo12-addon-project_mail_chatter',
         'odoo12-addon-project_milestone',
         'odoo12-addon-project_parent_task_filter',
         'odoo12-addon-project_purchase_link',
