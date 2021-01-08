@@ -1,9 +1,10 @@
-# Copyright 2015-2017 Tecnativa - Jairo Llopis <jairo.llopis@tecnativa.com>
+# Copyright (C) 2020 Open Source Integrators
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+
 
 {
     "name": "Project Mail Chatter",
-    "summary": "Display Project log in a chatter view.",
+    "summary": "Add message chatter on the Project form.",
     "version": "12.0.1.0.0",
     "category": "Project",
     "website": "https://github.com/OCA/project",
