@@ -20,9 +20,9 @@ class ProjectProject(models.Model):
         )
         if view_type == "form":
             doc = etree.XML(res["arch"])
-            target = doc.xpath("//field[@name='resource_calendar_id']")
+            target = doc.xpath("//group[@name='extra_settings']")
             if target:
-                target = target[0].getparent()
+                target = target[0]
                 if not doc.xpath("//field[@name='date_start']"):
                     target.append(doc.makeelement("field", {"name": "date_start"}))
                 if not doc.xpath("//field[@name='date']"):
