@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-22 01:55+0000\n"
-"PO-Revision-Date: 2019-07-12 15:43+0000\n"
-"Last-Translator: Maria Sparenberg <maria.sparenberg@gmx.net>\n"
+"PO-Revision-Date: 2021-01-22 06:44+0000\n"
+"Last-Translator: Ben Brich <b.brich@humanilog.org>\n"
 "Language-Team: German (https://www.transifex.com/oca/teams/23907/de/)\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.7.1\n"
+"X-Generator: Weblate 4.3.2\n"
 
 #. module: project_recalculate
 #: model:ir.model.fields,help:project_recalculate.field_project_task__from_days
@@ -237,7 +237,7 @@ msgstr "Die Projektenaufgaben werden gemäß des Referenzdatums neu terminiert:"
 #. module: project_recalculate
 #: model:ir.model,name:project_recalculate.model_project_project
 msgid "WBS element"
-msgstr ""
+msgstr "WBS Element"
 
 #~ msgid "Resource Calendar"
 #~ msgstr "Ressourcenkalender"
