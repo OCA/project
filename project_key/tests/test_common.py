@@ -18,6 +18,10 @@ class TestCommon(TransactionCase):
         self.project_2 = self.Project.create({"name": "Odoo", "key": "ODOO"})
         self.project_3 = self.Project.create({"name": "Python"})
 
+        self.project_4 = self.Project.create({"name": "Ooo Cccc Aaaa"})
+        self.project_5 = self.Project.create({"name": "Oooo Ccccc Aaaaa"})
+        self.project_6 = self.Project.create({"name": "Ooooo Cccccc Aaaaaa"})
+
         self.task11 = self.Task.create({"name": "1", "project_id": self.project_1.id})
 
         self.task12 = self.Task.create(

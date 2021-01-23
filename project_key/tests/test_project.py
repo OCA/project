@@ -9,6 +9,9 @@ class TestProject(TestCommon):
         self.assertEqual(self.project_1.key, "OCA")
         self.assertEqual(self.project_2.key, "ODOO")
         self.assertEqual(self.project_3.key, "PYT")
+        self.assertEqual(self.project_4.key, "OCA2")
+        self.assertEqual(self.project_5.key, "OCA3")
+        self.assertEqual(self.project_6.key, "OCA4")
 
     def test_02_change_key(self):
         self.project_1.key = "XXX"

@@ -134,12 +134,27 @@ class Project(models.Model):
 
         data = text.split(" ")
         if len(data) == 1:
-            return data[0][:3].upper()
+            key = data[0][:3].upper()
+        else:
+            key = []
+            for item in data:
+                key.append(item[:1].upper())
+            key = "".join(key)
 
-        key = []
-        for item in data:
-            key.append(item[:1].upper())
-        return "".join(key)
+        found = True
+        i = 1
+        while found:
+            project_ids = self.env["project.project"].search(
+                [("key", "=", key), "|", ("active", "=", False), ("active", "=", True)]
+            )
+            if project_ids:
+                i += 1
+                if i == 2:
+                    key += str(i)
+                else:
+                    key = key[:-1] + str(i)
+            found = project_ids
+        return key
 
     def _update_task_keys(self):
         """
@@ -172,10 +187,12 @@ class Project(models.Model):
         :return:
         """
         for project in self.with_context(active_test=False).search(
-            [("key", "=", False)]
+            [("key", "=", False), "|", ("active", "=", False), ("active", "=", True)],
+            order="name",
         ):
             project.key = self.generate_project_key(project.name)
             project.create_sequence()
 
             for task in project.task_ids:
                 task.key = project.get_next_task_key()
+            project.flush()
