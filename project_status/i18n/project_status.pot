@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 13.0\n"
+"Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -39,6 +39,7 @@ msgid "Description"
 msgstr ""
 
 #. module: project_status
+#: model:ir.model.fields,field_description:project_status.field_project_project__display_name
 #: model:ir.model.fields,field_description:project_status.field_project_status__display_name
 msgid "Display Name"
 msgstr ""
@@ -49,6 +50,7 @@ msgid "Folded"
 msgstr ""
 
 #. module: project_status
+#: model:ir.model.fields,field_description:project_status.field_project_project__id
 #: model:ir.model.fields,field_description:project_status.field_project_status__id
 msgid "ID"
 msgstr ""
@@ -64,6 +66,7 @@ msgid "Is Closed Status"
 msgstr ""
 
 #. module: project_status
+#: model:ir.model.fields,field_description:project_status.field_project_project____last_update
 #: model:ir.model.fields,field_description:project_status.field_project_status____last_update
 msgid "Last Modified on"
 msgstr ""
