@@ -24,6 +24,7 @@ addon | version | summary
 [project_parent_task_filter](project_parent_task_filter/) | 14.0.1.1.0 | Add a filter to show the parent tasks
 [project_stage_closed](project_stage_closed/) | 14.0.1.1.0 | Project Task Stage Closed
 [project_stage_state](project_stage_state/) | 14.0.1.1.0 | Restore State attribute removed from Project Stages in 8.0
+[project_status](project_status/) | 14.0.1.0.0 | Project Status
 [project_task_add_very_high](project_task_add_very_high/) | 14.0.1.0.0 | Adds extra options 'High' and 'Very High' on tasks
 [project_task_default_stage](project_task_default_stage/) | 14.0.1.0.0 | Recovery default task stages for projects from v8
 [project_task_dependency](project_task_dependency/) | 14.0.1.0.0 | Enables to define dependencies (other tasks) of a task
