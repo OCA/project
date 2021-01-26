@@ -11,7 +11,7 @@ class ProjectProject(models.Model):
         string="Project Assignments",
         comodel_name="project.assignment",
         inverse_name="project_id",
-        track_visibility="onchange",
+        tracking=True,
     )
     inherit_assignments = fields.Boolean(
         string="Inherit assignments",

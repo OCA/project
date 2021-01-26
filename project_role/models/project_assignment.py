@@ -10,8 +10,14 @@ class ProjectAssignment(models.Model):
     _description = "Project Assignment"
     _inherit = ["mail.thread"]
 
-    active = fields.Boolean(default=True,)
-    name = fields.Char(compute="_compute_name", store=True, index=True,)
+    active = fields.Boolean(
+        default=True,
+    )
+    name = fields.Char(
+        compute="_compute_name",
+        store=True,
+        index=True,
+    )
     company_id = fields.Many2one(
         comodel_name="res.company",
         string="Company",
@@ -19,13 +25,21 @@ class ProjectAssignment(models.Model):
         ondelete="cascade",
     )
     project_id = fields.Many2one(
-        comodel_name="project.project", string="Project", ondelete="cascade",
+        comodel_name="project.project",
+        string="Project",
+        ondelete="cascade",
     )
     role_id = fields.Many2one(
-        comodel_name="project.role", string="Role", required=True, ondelete="restrict",
+        comodel_name="project.role",
+        string="Role",
+        required=True,
+        ondelete="restrict",
     )
     user_id = fields.Many2one(
-        comodel_name="res.users", string="User", required=True, ondelete="restrict",
+        comodel_name="res.users",
+        string="User",
+        required=True,
+        ondelete="restrict",
     )
 
     _sql_constraints = [
@@ -57,7 +71,10 @@ class ProjectAssignment(models.Model):
     ]
 
     @api.depends(
-        "company_id.name", "project_id.name", "role_id.name", "user_id.name",
+        "company_id.name",
+        "project_id.name",
+        "role_id.name",
+        "user_id.name",
     )
     def _compute_name(self):
         for assignment in self:
@@ -107,12 +124,16 @@ class ProjectAssignment(models.Model):
         """
         for assignment in self:
             conflicting_assignment = self.search(
-                assignment._get_conflicting_domain(), limit=1,
+                assignment._get_conflicting_domain(),
+                limit=1,
             )
             if conflicting_assignment:
                 raise ValidationError(
                     _("Assignment %s conflicts with another assignment: %s")
-                    % (assignment.name, conflicting_assignment.name,)
+                    % (
+                        assignment.name,
+                        conflicting_assignment.name,
+                    )
                 )
             if not assignment.role_id.can_assign(
                 assignment.user_id, assignment.project_id
