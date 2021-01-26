@@ -74,7 +74,8 @@ class TestProjectRole(common.TransactionCase):
         role = self.Role.create({"name": "Role"})
         company_1 = self.Company.create({"name": "Company #1"})
         with mock.patch(
-            _project_role_class + ".can_assign", return_value=False,
+            _project_role_class + ".can_assign",
+            return_value=False,
         ):
             with self.assertRaises(ValidationError):
                 self.Assignment.create(
@@ -198,9 +199,9 @@ class TestProjectRole(common.TransactionCase):
         )
 
         with self.assertRaises(ValidationError):
-            self.Assignment.with_context(company_id=self.company_id.id,).create(
-                {"role_id": role.id, "user_id": user.id}
-            )
+            self.Assignment.with_context(
+                company_id=self.company_id.id,
+            ).create({"role_id": role.id, "user_id": user.id})
 
     def test_crosscompany_assignments_2(self):
         user = self.ResUsers.sudo().create(
@@ -219,9 +220,9 @@ class TestProjectRole(common.TransactionCase):
         )
 
         with self.assertRaises(ValidationError):
-            self.Assignment.with_context(company_id=self.company_id.id,).create(
-                {"role_id": role.id, "user_id": user.id, "project_id": project.id}
-            )
+            self.Assignment.with_context(
+                company_id=self.company_id.id,
+            ).create({"role_id": role.id, "user_id": user.id, "project_id": project.id})
 
     def test_crosscompany_assignments_3(self):
         user = self.ResUsers.sudo().create(
@@ -239,9 +240,9 @@ class TestProjectRole(common.TransactionCase):
             {"role_id": role_1.id, "user_id": user.id, "company_id": False}
         )
 
-        self.Assignment.with_context(company_id=self.company_id.id,).create(
-            {"role_id": role_2.id, "user_id": user.id}
-        )
+        self.Assignment.with_context(
+            company_id=self.company_id.id,
+        ).create({"role_id": role_2.id, "user_id": user.id})
 
     def test_no_project(self):
         user = self.ResUsers.sudo().create(

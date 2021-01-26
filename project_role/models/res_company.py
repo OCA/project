@@ -8,8 +8,10 @@ class ResCompany(models.Model):
     _inherit = "res.company"
 
     project_inherit_assignments = fields.Boolean(
-        string="Projects Inherit Assignments", default=True,
+        string="Projects Inherit Assignments",
+        default=True,
     )
     project_limit_role_to_assignments = fields.Boolean(
-        string="Limit Project Role to Assignments", default=False,
+        string="Limit Project Role to Assignments",
+        default=False,
     )
