@@ -4,10 +4,10 @@
 
 {
     "name": "Project Roles",
-    "version": "13.0.1.0.0",
+    "version": "14.0.1.0.0",
     "category": "Project",
     "website": "https://github.com/OCA/project",
-    "author": "CorporateHub, " "Odoo Community Association (OCA)",
+    "author": "CorporateHub, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "installable": True,
     "application": False,
