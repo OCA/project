@@ -10,14 +10,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-10 02:50+0000\n"
-"PO-Revision-Date: 2017-08-10 02:50+0000\n"
-"Last-Translator: Quentin THEURET <odoo@kerpeo.com>, 2017\n"
+"PO-Revision-Date: 2021-01-27 15:57+0000\n"
+"Last-Translator: Yann Papouin <y.papouin@dec-industrie.com>\n"
 "Language-Team: French (https://www.transifex.com/oca/teams/23907/fr/)\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.3.2\n"
 
 #. module: project_task_material_stock
 #: model:ir.model,name:project_task_material_stock.model_account_analytic_line
@@ -48,7 +49,6 @@ msgstr "Confirmé"
 #. module: project_task_material_stock
 #: model:ir.model.fields,field_description:project_task_material_stock.field_project_task__consume_material
 #: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_type__consume_material
-#, fuzzy
 msgid "Consume Material"
 msgstr "Consommer les matériaux"
 
@@ -87,7 +87,7 @@ msgstr ""
 #: model:ir.model.fields,help:project_task_material_stock.field_project_task__location_dest_id
 #: model:ir.model.fields,help:project_task_material_stock.field_project_task__location_source_id
 msgid "Keep this field empty to use the default value from the project."
-msgstr ""
+msgstr "Gardez ce champ vide pour utiliser la valeur par défaut du projet."
 
 #. module: project_task_material_stock
 #: model_terms:ir.ui.view,arch_db:project_task_material_stock.edit_project_consume_material
@@ -108,7 +108,7 @@ msgstr "Matériaux utilisés"
 #. module: project_task_material_stock
 #: model:ir.model.fields,help:project_task_material_stock.field_project_task__analytic_account_id
 msgid "Move created will be assigned to this analytic account"
-msgstr ""
+msgstr "Le mouvement de stock créé sera attribué à ce compte analytique"
 
 #. module: project_task_material_stock
 #: selection:project.task,stock_state:0
@@ -117,9 +117,8 @@ msgstr "En attente"
 
 #. module: project_task_material_stock
 #: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_material__product_id
-#, fuzzy
 msgid "Product"
-msgstr "Articles"
+msgstr "Article"
 
 #. module: project_task_material_stock
 #: model_terms:ir.ui.view,arch_db:project_task_material_stock.view_project_task_form_material_stock
@@ -128,27 +127,24 @@ msgstr "Articles"
 
 #. module: project_task_material_stock
 #: model:ir.model.fields,field_description:project_task_material_stock.field_project_task__analytic_account_id
-#, fuzzy
 msgid "Project Analytic Account"
-msgstr "Ligne analytique"
+msgstr "Compte analytique du projet"
 
 #. module: project_task_material_stock
 #: model:ir.model.fields,field_description:project_task_material_stock.field_account_analytic_line__task_material_id
 #: model:ir.model.fields,field_description:project_task_material_stock.field_stock_move__task_material_id
-#, fuzzy
 msgid "Project Task Material"
-msgstr "Matériaux utilisés pour la tâche"
+msgstr "Matériaux de tâche de projet"
 
 #. module: project_task_material_stock
 #: model:stock.picking.type,name:project_task_material_stock.project_task_material_picking_type
-#, fuzzy
 msgid "Project Task Material Operations"
-msgstr "Matériaux utilisés pour la tâche"
+msgstr "Opérations sur les matériaux de tâche de projet"
 
 #. module: project_task_material_stock
 #: model_terms:ir.ui.view,arch_db:project_task_material_stock.view_project_task_form_material_stock
 msgid "Register lots, packs, location"
-msgstr ""
+msgstr "Enregistrer des lots, emballages, emplacements"
 
 #. module: project_task_material_stock
 #: model:ir.model.fields,field_description:project_task_material_stock.field_project_project__location_source_id
@@ -170,7 +166,6 @@ msgstr "Mouvements de stock"
 
 #. module: project_task_material_stock
 #: model:ir.model.fields,field_description:project_task_material_stock.field_project_task__stock_state
-#, fuzzy
 msgid "Stock State"
 msgstr "État du stock"
 
@@ -196,9 +191,8 @@ msgstr "Transférer les matériaux"
 
 #. module: project_task_material_stock
 #: model:ir.model.fields,field_description:project_task_material_stock.field_project_task__picking_id
-#, fuzzy
 msgid "Transfer Reference"
-msgstr "Transférer les matériaux"
+msgstr "Référence de transfert"
 
 #. module: project_task_material_stock
 #: model:ir.model.fields,field_description:project_task_material_stock.field_project_task_material__product_uom_id
@@ -208,7 +202,7 @@ msgstr "Unité de mesure"
 #. module: project_task_material_stock
 #: model:ir.model,name:project_task_material_stock.model_project_project
 msgid "WBS element"
-msgstr ""
+msgstr "Élément SDP"
 
 #. module: project_task_material_stock
 #: code:addons/project_task_material_stock/models/project_task.py:283
@@ -216,6 +210,8 @@ msgstr ""
 msgid ""
 "You can't delete a consumed material if already have stock movements done."
 msgstr ""
+"Vous ne pouvez pas supprimer un article consommé si des mouvements de stock "
+"ont déjà été effectués."
 
 #. module: project_task_material_stock
 #: code:addons/project_task_material_stock/models/project_task.py:121
@@ -230,7 +226,7 @@ msgstr ""
 #: code:addons/project_task_material_stock/models/project_task.py:217
 #, python-format
 msgid "You must assign an analytic account for this task/project."
-msgstr ""
+msgstr "Vous devez attribuer un compte analytique à cette tâche ou ce projet."
 
 #~ msgid "Project"
 #~ msgstr "Projet"
