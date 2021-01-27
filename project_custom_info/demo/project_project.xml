@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2021 Tecnativa - Carlos Roca
+     License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl). -->
+<odoo>
+    <record id="project_with_custom_info_demo" model="project.project">
+        <field name="name">Module analysis</field>
+        <field name="user_id" ref="base.user_admin" />
+        <field name="privacy_visibility">portal</field>
+        <field name="custom_info_template_id" ref="tpl_module" />
+    </record>
+</odoo>

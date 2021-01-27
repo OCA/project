@@ -1,0 +1,4 @@
+id,name,template_id:id,widget,required,minimum,maximum,category_id:id,default_value,sequence
+prop_name,Search a name for module,tpl_module,text,,1,100,cat_analysis,,100
+prop_similar,Is there a similar module?,tpl_module,boolean,,0,-1,cat_analysis,,200
+prop_time,How long will development take?,tpl_module,float,,0,-1,cat_development,3,300
