@@ -4,7 +4,7 @@
 {
     "name": "Project Description",
     "summary": "Add a description to projects",
-    "version": "13.0.1.0.0",
+    "version": "14.0.1.0.0",
     "category": "Project",
     "website": "https://github.com/OCA/project",
     "author": "Tecnativa, " "C2i Change 2 improve, " "Odoo Community Association (OCA)",
