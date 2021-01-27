@@ -9,3 +9,4 @@
   * Alexey Pelykh <alexey.pelykh@corphub.eu>
 
 * Saran Lim. <saranl@ecosoft.co.th>
+* Tharathip Chaweewongphan <tharathipc@ecosoft.co.th>
