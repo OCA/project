@@ -21,6 +21,7 @@ Available addons
 addon | version | summary
 --- | --- | ---
 [project_category](project_category/) | 13.0.1.2.0 | Project Types
+[project_custom_info](project_custom_info/) | 13.0.1.0.0 | Add custom info in projects
 [project_deadline](project_deadline/) | 13.0.1.0.0 | Start date and deadline of projects.
 [project_description](project_description/) | 13.0.1.0.0 | Add a description to projects
 [project_hr](project_hr/) | 13.0.1.1.0 | Link HR with project
