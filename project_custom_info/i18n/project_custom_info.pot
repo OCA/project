@@ -1,17 +1,22 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* project_custom_info
+# 	* project_custom_info
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 12.0\n"
+"Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: <>\n"
+"Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
+
+#. module: project_custom_info
+#: model:custom.info.category,name:project_custom_info.cat_analysis
+msgid "Analysis"
+msgstr ""
 
 #. module: project_custom_info
 #: model_terms:ir.ui.view,arch_db:project_custom_info.edit_project
@@ -29,7 +34,36 @@ msgid "Custom Properties"
 msgstr ""
 
 #. module: project_custom_info
-#: model:ir.model,name:project_custom_info.model_project_project
-msgid "WBS element"
+#: model:custom.info.category,name:project_custom_info.cat_development
+msgid "Development"
 msgstr ""
 
+#. module: project_custom_info
+#: model:custom.info.property,name:project_custom_info.prop_time
+msgid "How long will development take?"
+msgstr ""
+
+#. module: project_custom_info
+#: model:custom.info.property,name:project_custom_info.prop_similar
+msgid "Is there a similar module?"
+msgstr ""
+
+#. module: project_custom_info
+#: model:custom.info.template,name:project_custom_info.tpl_module
+msgid "Module"
+msgstr ""
+
+#. module: project_custom_info
+#: model:ir.model,name:project_custom_info.model_project_project
+msgid "Project"
+msgstr ""
+
+#. module: project_custom_info
+#: model:custom.info.property,name:project_custom_info.prop_name
+msgid "Search a name for module"
+msgstr ""
+
+#. module: project_custom_info
+#: model:project.project,label_tasks:project_custom_info.project_with_custom_info_demo
+msgid "Tasks"
+msgstr ""
