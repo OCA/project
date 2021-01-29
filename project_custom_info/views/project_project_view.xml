@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2019 Alexandre Díaz
+     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). -->
+<odoo>
+    <record id="edit_project" model="ir.ui.view">
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project" />
+        <field name="arch" type="xml">
+            <xpath expr="//notebook[1]">
+                <page name="custom_info" string="Custom Information">
+                    <group>
+                        <group>
+                            <field
+                                name="custom_info_template_id"
+                                options='{"no_quick_create": True}'
+                            />
+                        </group>
+                        <field
+                            name="custom_info_ids"
+                            colspan="4"
+                            nolabel="1"
+                            mode="custom_info"
+                        />
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
