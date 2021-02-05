@@ -85,6 +85,26 @@ class TestProjectTimesheetTimeControl(common.TransactionCase):
             'name': 'Test line',
         })
 
+    def test_create_analytic_line_notime(self):
+        line = self._create_analytic_line_notime(date(2016, 3, 24), tz="EST")
+        self.assertEqual(line.date_time, datetime(2016, 3, 24, 7, 0))
+
+    def test_write_analytic_line_notime(self):
+        line = self._create_analytic_line_notime(date.today())
+        time = line.date_time.time()
+        line.with_context(tz="EST").date = '2016-03-24'
+        self.assertEqual(
+            line.date_time,
+            datetime(2016, 3, 24, time.hour, time.minute, time.second)
+        )
+
+    def _create_analytic_line_notime(self, date_, tz=None):
+        return self.env['account.analytic.line'].with_context(tz=tz).create({
+            'date': date_,
+            'project_id': self.project.id,
+            'name': 'Test line',
+        })
+
     def test_aal_time_control_flow(self):
         """Test account.analytic.line time controls."""
         # Duration == 0, stop the timer

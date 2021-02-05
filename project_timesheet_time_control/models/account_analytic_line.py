@@ -4,8 +4,11 @@
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
 from datetime import datetime
+from pytz import timezone, UTC
+
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
+from odoo.addons.resource.models.resource import float_to_time
 
 
 class AccountAnalyticLine(models.Model):
@@ -62,12 +65,51 @@ class AccountAnalyticLine(models.Model):
             else:
                 one.show_time_control = "stop"
 
+    @api.model
+    def _get_employee_start_time(self, employee_id, date):
+        """Get datetime from date using employee calendars attendance"""
+        employee_timezone = timezone(employee_id.tz or 'UTC')
+        calendar = employee_id.resource_calendar_id
+        for attendance in calendar.attendance_ids:
+            weekday = int(attendance.dayofweek)
+            if weekday == date.weekday():
+                time = float_to_time(attendance.hour_from)
+                dt_user = datetime.combine(date, time)
+                dt_server = employee_timezone.localize(dt_user).astimezone(UTC)
+                return fields.Datetime.to_string(dt_server)
+        return False
+
     @api.model_create_multi
     def create(self, vals_list):
-        return super().create(list(map(self._eval_date, vals_list)))
+        for vals in vals_list:
+            # Set or override date from date_time to avoid inconsistent state
+            if vals.get('date_time'):
+                vals.update(self._eval_date(vals))
+            # If no date_time is provided, made an attempt to guess the
+            # start time from employee calendar if set at the same time
+            if vals.get('date') and not vals.get('date_time'):
+                date = fields.Date.from_string(vals.get('date'))
+                if vals.get('employee_id'):
+                    employee_id = self.env['hr.employee'].browse(
+                        vals.get('employee_id')
+                    )
+                elif self.env.user.employee_ids:
+                    employee_id = self.env.user.employee_ids[0]
+                else:
+                    employee_id = False
+                if employee_id:
+                    date_time = self._get_employee_start_time(employee_id, date)
+                    if date_time:
+                        vals['date_time'] = date_time
+        return super().create(vals_list)
 
     @api.multi
     def write(self, vals):
+        if 'date' in vals and 'date_to_date_time' not in self.env.context:
+            date = fields.Date.from_string(vals.get('date'))
+            for rec in self.with_context(date_to_date_time=True):
+                time = self.date_time.time()
+                rec.write({'date_time': datetime.combine(date, time)})
         return super().write(self._eval_date(vals))
 
     def button_resume_work(self):
