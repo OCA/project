@@ -8,7 +8,7 @@
     "category": "Project Management",
     "version": "14.0.1.0.0",
     "license": "AGPL-3",
-    "depends": ["project", "project_stage_closed"],
+    "depends": ["project"],
     "data": [
         "views/project.xml",
         "views/project_task.xml",

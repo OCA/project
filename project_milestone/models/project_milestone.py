@@ -28,14 +28,14 @@ class ProjectMilestone(models.Model):
         vals["sequence"] = seq
         return super().create(vals)
 
-    @api.depends("project_task_ids.stage_id", "project_task_ids.stage_id.closed")
+    @api.depends("project_task_ids.stage_id", "project_task_ids.stage_id.is_closed")
     def _compute_milestone_progress(self):
         for record in self:
             total_tasks_count = 0.0
             closed_tasks_count = 0.0
             for task_record in record.project_task_ids:
                 total_tasks_count += 1
-                if task_record.stage_id.closed:
+                if task_record.stage_id.is_closed:
                     closed_tasks_count += 1
             if total_tasks_count > 0:
                 record.progress = (closed_tasks_count / total_tasks_count) * 100
