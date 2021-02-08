@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* project_milestone
+# 	* project_milestone
 #
 msgid ""
 msgstr ""
@@ -74,6 +74,7 @@ msgstr "Última actualización realizada el"
 
 #. module: project_milestone
 #: model:ir.model.fields,field_description:project_milestone.field_project_milestone__name
+#: model:ir.model.fields,field_description:project_milestone.field_project_task__milestone_id
 msgid "Milestone"
 msgstr "Hito"
 
@@ -89,7 +90,6 @@ msgstr "Hitos del proyecto"
 
 #. module: project_milestone
 #: model:ir.model.fields,field_description:project_milestone.field_project_project__milestone_ids
-#: model:ir.model.fields,field_description:project_milestone.field_project_task__milestone_id
 #: model_terms:ir.ui.view,arch_db:project_milestone.project_enhancement_milestone_view_inherit_form
 #: model_terms:ir.ui.view,arch_db:project_milestone.view_task_enhancement_search_milestone_form
 msgid "Milestones"
@@ -112,6 +112,7 @@ msgid "Progress"
 msgstr "Progreso"
 
 #. module: project_milestone
+#: model:ir.model,name:project_milestone.model_project_project
 #: model:ir.model.fields,field_description:project_milestone.field_project_milestone__project_id
 #: model_terms:ir.ui.view,arch_db:project_milestone.project_milestone_view_search
 msgid "Project"
@@ -157,8 +158,3 @@ msgstr "Fecha en la que el hito debe ser completado."
 #: model:ir.model.fields,field_description:project_milestone.field_project_task__use_milestones
 msgid "Use Milestones"
 msgstr "Usar hitos"
-
-#. module: project_milestone
-#: model:ir.model,name:project_milestone.model_project_project
-msgid "WBS element"
-msgstr ""
