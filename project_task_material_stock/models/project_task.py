@@ -174,37 +174,77 @@ class ProjectTaskMaterial(models.Model):
             'name': product.partner_ref,
             'state': 'confirmed',
             'product_uom': self.product_uom_id.id or product.uom_id.id,
-            'product_uom_qty': self.quantity,
+            'product_uom_qty': abs(self.quantity),
             'origin': self.task_id.name,
-            'location_id':
-                self.task_id.location_source_id.id or
-                self.task_id.project_id.location_source_id.id or
-                self.env.ref('stock.stock_location_stock').id,
-            'location_dest_id':
-                self.task_id.location_dest_id.id or
-                self.task_id.project_id.location_dest_id.id or
-                self.env.ref('stock.stock_location_customers').id,
         }
+        if self.quantity > 0:
+            res.update({
+                'location_id':
+                    self.task_id.location_source_id.id or
+                    self.task_id.project_id.location_source_id.id or
+                    self.env.ref('stock.stock_location_stock').id,
+                'location_dest_id':
+                    self.task_id.location_dest_id.id or
+                    self.task_id.project_id.location_dest_id.id or
+                    self.env.ref('stock.stock_location_customers').id,
+            })
+        else:
+            res.update({
+                'location_dest_id':
+                    self.task_id.location_source_id.id or
+                    self.task_id.project_id.location_source_id.id or
+                    self.env.ref('stock.stock_location_stock').id,
+                'location_id':
+                    self.task_id.location_dest_id.id or
+                    self.task_id.project_id.location_dest_id.id or
+                    self.env.ref('stock.stock_location_customers').id,
+            })
         return res
 
     @api.multi
     def create_stock_move(self):
+        def _create_picking(material, pick_type, location_src_id, location_dst_id):
+            picking_id = task.picking_id or self.env['stock.picking'].create({
+                'origin': "{}/{}".format(task.project_id.name, task.name),
+                'partner_id': task.partner_id.id,
+                'picking_type_id': pick_type.id,
+                'location_id': location_src_id,
+                'location_dest_id': location_dst_id,
+            })
+            for line in material:
+                if not line.stock_move_id:
+                    move_vals = line._prepare_stock_move()
+                    move_vals.update({'picking_id': picking_id.id or False})
+                    move_id = self.env['stock.move'].create(move_vals)
+                    line.stock_move_id = move_id.id
+
         pick_type = self.env.ref(
             'project_task_material_stock.project_task_material_picking_type')
         task = self[0].task_id
-        picking_id = task.picking_id or self.env['stock.picking'].create({
-            'origin': "{}/{}".format(task.project_id.name, task.name),
-            'partner_id': task.partner_id.id,
-            'picking_type_id': pick_type.id,
-            'location_id': pick_type.default_location_src_id.id,
-            'location_dest_id': pick_type.default_location_dest_id.id,
-        })
-        for line in self:
-            if not line.stock_move_id:
-                move_vals = line._prepare_stock_move()
-                move_vals.update({'picking_id': picking_id.id or False})
-                move_id = self.env['stock.move'].create(move_vals)
-                line.stock_move_id = move_id.id
+        pos_material = self.filtered(lambda m: m.quantity > 0)
+        neg_material = self.filtered(lambda m: m.quantity < 0)
+        if pos_material:
+            _create_picking(
+                pos_material,
+                pick_type,
+                pick_type.default_location_src_id.id,
+                pick_type.default_location_dest_id.id
+            )
+        if neg_material:
+            if pick_type.return_picking_type_id:
+                _create_picking(
+                    neg_material,
+                    pick_type.return_picking_type_id,
+                    pick_type.return_picking_type_id.default_location_src_id.id,
+                    pick_type.return_picking_type_id.default_location_dest_id.id
+                )
+            else:
+                _create_picking(
+                    neg_material,
+                    pick_type,
+                    pick_type.default_location_dest_id.id,
+                    pick_type.default_location_src_id.id
+                )
 
     def _prepare_analytic_line(self):
         product = self.product_id

@@ -5,7 +5,6 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl-3.0).
 
 from odoo import api, fields, models, _
-from odoo.exceptions import ValidationError
 
 
 class Task(models.Model):
@@ -30,12 +29,3 @@ class ProjectTaskMaterial(models.Model):
     product_id = fields.Many2one(
         comodel_name='product.product', string='Product', required=True)
     quantity = fields.Float(string='Quantity')
-
-    @api.multi
-    @api.constrains('quantity')
-    def _check_quantity(self):
-        for material in self:
-            if not material.quantity > 0.0:
-                raise ValidationError(
-                    _('Quantity of material consumed must be greater than 0.')
-                )
