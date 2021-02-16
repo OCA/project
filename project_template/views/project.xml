@@ -73,4 +73,29 @@
             name="context"
         >{"search_default_projects":1, "search_default_not_closed":1}</field>
     </record>
+    <record id="project_task_template_view_inherit_search" model="ir.ui.view">
+        <field name="name">project.task.template.filter</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_search_form" />
+        <field name="arch" type="xml">
+            <filter name="inactive" position="before">
+                <filter
+                    string="Template Tasks"
+                    name="template_tasks"
+                    domain="[('is_template_task', '=', True)]"
+                />
+                <filter
+                    string="Non-Templates Tasks"
+                    name="project_tasks"
+                    domain="[('is_template_task', '=', False)]"
+                />
+                <separator />
+            </filter>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="project.action_view_all_task">
+        <field
+            name="context"
+        >{'search_default_my_tasks': 1, 'all_task': 0, 'search_default_project_tasks': 1}</field>
+    </record>
 </odoo>
