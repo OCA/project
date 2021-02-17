@@ -9,6 +9,7 @@ setuptools.setup(
     version=version,
     install_requires=[
         'odoo14-addon-project_category',
+        'odoo14-addon-project_deadline',
         'odoo14-addon-project_list',
         'odoo14-addon-project_parent_task_filter',
         'odoo14-addon-project_stage_closed',
