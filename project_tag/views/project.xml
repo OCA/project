@@ -10,7 +10,11 @@
         <field name="field_parent">child_ids</field>
         <field name="arch" type="xml">
             <field name="partner_id" position="before">
-                <field name="tag_ids" widget="many2many_tags" />
+                <field
+                    name="tag_ids"
+                    widget="many2many_tags"
+                    options="{'color_field': 'color'}"
+                />
             </field>
         </field>
     </record>
