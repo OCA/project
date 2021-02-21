@@ -3,7 +3,7 @@
 
 
 def post_init_hook(cr, registry):
-    from odoo import api, SUPERUSER_ID
+    from odoo import SUPERUSER_ID, api
 
     env = api.Environment(cr, SUPERUSER_ID, {})
     env["project.project"]._set_default_project_key()
