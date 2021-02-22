@@ -106,7 +106,7 @@ class Project(models.Model):
         for number_increment and number_next_actual
         """
         values = {
-            "name": "{} {}".format(_("Project task sequence for project "), self.name),
+            "name": "{} {}".format(_("Project task sequence for project"), self.name),
             "implementation": "standard",
             "code": "project.task.key.{}".format(self.id),
             "prefix": "{}-".format(self.key),
