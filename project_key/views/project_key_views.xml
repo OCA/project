@@ -69,7 +69,7 @@
             </field>
         </field>
     </record>
-    <record model="ir.ui.view" id="view_task_kanban_key">
+    <record id="view_task_kanban_key" model="ir.ui.view">
         <field name="name">project.task.kanban.key</field>
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_kanban" />
@@ -98,7 +98,7 @@
             </div>
         </field>
     </record>
-    <record model="ir.ui.view" id="view_project_kanban_details">
+    <record id="view_project_kanban_details" model="ir.ui.view">
         <field name="name">project.project.kanban</field>
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.view_project_kanban" />
