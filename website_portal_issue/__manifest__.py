@@ -9,7 +9,7 @@
     'version': '10.0.1.0.0',
     'license': 'AGPL-3',
     'author': 'KMEE,Odoo Community Association (OCA)',
-    'website': 'www.kmee.com.br',
+    'website': 'https://github.com/OCA/project',
     'depends': [
         'website_form',
         'website_partner',
