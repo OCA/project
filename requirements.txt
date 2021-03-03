@@ -1,0 +1,2 @@
+# generated from manifests external_dependencies
+mock==3.0.5
