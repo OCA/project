@@ -18,6 +18,7 @@ setuptools.setup(
         'odoo14-addon-project_status',
         'odoo14-addon-project_tag',
         'odoo14-addon-project_task_add_very_high',
+        'odoo14-addon-project_task_code',
         'odoo14-addon-project_task_default_stage',
         'odoo14-addon-project_task_dependency',
         'odoo14-addon-project_template',
