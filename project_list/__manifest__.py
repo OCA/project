@@ -4,7 +4,7 @@
 
 {
     "name": "Projects List View",
-    "version": "13.0.1.0.0",
+    "version": "11.0.1.0.0",
     "category": "Project",
     "website": "https://github.com/OCA/project",
     "author": "CorporateHub, " "Odoo Community Association (OCA)",
