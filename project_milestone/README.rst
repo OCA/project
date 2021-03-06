@@ -14,13 +14,13 @@ Project Milestones
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fproject-lightgray.png?logo=github
-    :target: https://github.com/OCA/project/tree/12.0/project_milestone
+    :target: https://github.com/OCA/project/tree/11.0/project_milestone
     :alt: OCA/project
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/project-12-0/project-12-0-project_milestone
+    :target: https://translation.odoo-community.org/projects/project-11-0/project-11-0-project_milestone
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runbot-Try%20me-875A7B.png
-    :target: https://runbot.odoo-community.org/runbot/140/12.0
+    :target: https://runbot.odoo-community.org/runbot/140/11.0
     :alt: Try me on Runbot
 
 |badge1| |badge2| |badge3| |badge4| |badge5| 
@@ -87,6 +87,6 @@ Current `maintainer <https://odoo-community.org/page/maintainer-role>`__:
 
 |maintainer-patrickrwilson| 
 
-This module is part of the `OCA/project <https://github.com/OCA/project/tree/12.0/project_milestone>`_ project on GitHub.
+This module is part of the `OCA/project <https://github.com/OCA/project/tree/11.0/project_milestone>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.

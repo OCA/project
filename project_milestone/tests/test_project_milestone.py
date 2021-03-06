@@ -46,5 +46,5 @@ class TestProjectMilestone(common.TransactionCase):
         domain = [('project_id', '=', self.test_project.id)]
         Task = self.env['project.task']
         Task = Task.with_context(default_project_id=self.test_project.id)
-        grouped_tasks = Task.read_group(domain, ['name'], ['milestone_id'])
+        grouped_tasks = Task.read_group(domain, ['milestone_id'], ['milestone_id'])
         self.assertEqual(len(grouped_tasks), 2)
