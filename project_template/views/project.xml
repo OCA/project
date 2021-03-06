@@ -6,12 +6,14 @@
     <field name="inherit_id" ref="project.edit_project"/>
     <field name="type">form</field>
     <field name="arch" type="xml">
-        <xpath expr="//header" position="inside">
-          <button string="Create Project From Template"
-                  type="object"
-                  name="create_project_from_template"
-                  class="oe_highlight"
-                  attrs="{'invisible': [('is_template', '=', False)]}"/>
+        <xpath expr="//sheet" position="before">
+          <header>
+            <button string="Create Project From Template"
+                    type="object"
+                    name="create_project_from_template"
+                    class="oe_highlight"
+                    attrs="{'invisible': [('is_template', '=', False)]}"/>
+          </header>
         </xpath>
         <xpath expr="//div[@name='options_active']" position="inside">
           <div>
