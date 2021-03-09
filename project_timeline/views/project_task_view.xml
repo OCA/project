@@ -27,6 +27,7 @@
                                 width="16"
                                 height="16"
                                 class="mr8"
+                                alt="User"
                             />
                             <span name="display_name">
                                 <t t-esc="record.display_name" />
