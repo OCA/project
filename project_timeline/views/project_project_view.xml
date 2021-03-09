@@ -22,10 +22,10 @@
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.edit_project" />
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='resource_calendar_id']" position="after">
+            <field name="analytic_account_id" position="before">
                 <field name="date_start" />
                 <field name="date" />
-            </xpath>
+            </field>
         </field>
     </record>
 </odoo>
