@@ -1,5 +1,6 @@
 # Copyright 2016-2017 Tecnativa - Pedro M. Baeza
 # Copyright 2017 Tecnativa - Carlos Dauden
+# Copyright 2021 Open Source Integrators - Daniel Reis
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 {
@@ -17,4 +18,5 @@
         "views/project_task_view.xml",
     ],
     "demo": ["demo/project_project_demo.xml", "demo/project_task_demo.xml"],
+    "post_init_hook": "populate_date_start",
 }
