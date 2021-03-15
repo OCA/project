@@ -2,14 +2,16 @@
 <!-- Copyright 2016-2017 Tecnativa - Pedro M. Baeza
      Copyright 2017 Tecnativa - Carlos Dauden
      Copyright 2017 Doscaal - Alexandre Moreau
+     Copyright 2021 Open Source Integrators - Daniel Reis
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
 <odoo>
+
     <record id="project_task_timeline" model="ir.ui.view">
         <field name="model">project.task</field>
         <field name="type">timeline</field>
         <field name="arch" type="xml">
             <timeline
-                date_start="date_assign"
+                date_start="date_start"
                 date_stop="date_end"
                 default_group_by="project_id"
                 event_open_popup="true"
@@ -67,6 +69,7 @@
         <field name="inherit_id" ref="project.view_task_form2" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='date_assign']" position="after">
+                <field name="date_start" />
                 <field name="date_end" />
             </xpath>
         </field>
