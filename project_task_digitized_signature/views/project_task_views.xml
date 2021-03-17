@@ -1,6 +1,5 @@
 <?xml version="1.0" ?>
 <odoo>
-
     <record id="view_task_form2" model="ir.ui.view">
         <field name="name">project.task.form</field>
         <field name="model">project.task</field>
@@ -13,5 +12,4 @@
             </xpath>
         </field>
     </record>
-
 </odoo>
