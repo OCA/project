@@ -17,7 +17,6 @@ class ProjectTask(models.Model):
             task._track_signature(values, "customer_signature")
         return task
 
-    @api.multi
     def write(self, values):
         self._track_signature(values, "customer_signature")
         return super(ProjectTask, self).write(values)
