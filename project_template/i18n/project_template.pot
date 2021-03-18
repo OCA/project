@@ -14,32 +14,32 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: project_template
-#: model_terms:ir.ui.view,arch_db:project_template.project_template_view_inherit_form
+#: model:ir.ui.view,arch_db:project_template.project_template_view_inherit_form
 msgid "Create Project From Template"
 msgstr ""
 
 #. module: project_template
-#: model_terms:ir.ui.view,arch_db:project_template.project_template_view_inherit_kanban
+#: model:ir.ui.view,arch_db:project_template.project_template_view_inherit_kanban
 msgid "Create Project from Template"
 msgstr ""
 
 #. module: project_template
-#: model:ir.model.fields,field_description:project_template.field_project_project__is_template
+#: model:ir.model.fields,field_description:project_template.field_project_project_is_template
 msgid "Is Template"
 msgstr ""
 
 #. module: project_template
-#: model_terms:ir.ui.view,arch_db:project_template.project_template_view_inherit_form
+#: model:ir.ui.view,arch_db:project_template.project_template_view_inherit_form
 msgid "Is Template?"
 msgstr ""
 
 #. module: project_template
-#: model_terms:ir.ui.view,arch_db:project_template.project_template_view_inherit_search
+#: model:ir.ui.view,arch_db:project_template.project_template_view_inherit_search
 msgid "Non-Templates"
 msgstr ""
 
 #. module: project_template
-#: model_terms:ir.ui.view,arch_db:project_template.project_template_view_inherit_search
+#: model:ir.ui.view,arch_db:project_template.project_template_view_inherit_search
 msgid "Templates"
 msgstr ""
 
