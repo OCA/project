@@ -1,6 +1,6 @@
 To define risks for your projects:
 
-#. Go to *Project > Search > Risks*;
+#. Go to *Project > Risks*;
 #. create a new risk;
 #. the rating is automatically calculated based on this risk matrix:
     .. image:: ../static/description/matrix.png

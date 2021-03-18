@@ -4,7 +4,8 @@
 <odoo>
     <menuitem
         id="project_risk_menu"
-        parent="project.menu_project_management"
+        parent="project.menu_main_pm"
+        sequence="3"
         action="project_risk_action"
     />
     <menuitem
