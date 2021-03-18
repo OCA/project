@@ -5,7 +5,7 @@ class TestProjectRisk(TransactionCase):
     def setUp(self):
         super().setUp()
         self.project = self.env["project.project"].create(
-            {"name": "Research &amp; Development", "privacy_visibility": "followers",}
+            {"name": "Research &amp; Development", "privacy_visibility": "followers"}
         )
         self.risk_category = self.env["project.risk.category"].create(
             {"name": "Quality"}
@@ -15,8 +15,8 @@ class TestProjectRisk(TransactionCase):
                 "name": "Risk X",
                 "project_id": self.project.id,
                 "project_risk_category_id": self.risk_category.id,
-                "probability": 2,
-                "impact": 2,
+                "probability": "2",
+                "impact": "2",
             }
         )
 
@@ -28,4 +28,4 @@ class TestProjectRisk(TransactionCase):
 
     def test_risk(self):
         self.risk.write({"actionee_id": self.env.user.id, "owner_id": self.env.user.id})
-        self.assertEqual(self.risk.rating, 4)
+        self.assertEqual(self.risk.rating, "4")

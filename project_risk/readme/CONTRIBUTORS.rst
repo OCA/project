@@ -1,2 +1,5 @@
 * Dennis Sluijk <d.sluijk@onestein.nl>
-* Manuel Calero - Tecnativa
+* `Tecnativa <https://www.tecnativa.com>`_:
+
+  * Manuel Calero
+  * Ernesto Tejeda
