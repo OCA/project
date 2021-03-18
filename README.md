@@ -40,6 +40,7 @@ addon | version | summary
 [project_task_pull_request](project_task_pull_request/) | 11.0.1.0.0 | Adds a field for a PR URI to project tasks
 [project_task_send_by_mail](project_task_send_by_mail/) | 11.0.1.0.0 | Send task report by email
 [project_task_type_active](project_task_type_active/) | 11.0.1.0.0 | Adds active field on project task type
+[project_template](project_template/) | 11.0.1.0.1 | Project Templates
 [project_timeline](project_timeline/) | 11.0.1.1.0 | Timeline view for projects
 [project_timeline_critical_path](project_timeline_critical_path/) | 11.0.1.0.0 | Highlight the critical paths of your projects.
 [project_timeline_hr_timesheet](project_timeline_hr_timesheet/) | 11.0.1.0.0 | Shows the progress of tasks on the timeline view.
