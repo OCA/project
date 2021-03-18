@@ -12,6 +12,7 @@ setuptools.setup(
         'odoo14-addon-project_deadline',
         'odoo14-addon-project_key',
         'odoo14-addon-project_list',
+        'odoo14-addon-project_milestone',
         'odoo14-addon-project_parent_task_filter',
         'odoo14-addon-project_stage_closed',
         'odoo14-addon-project_stage_state',
