@@ -25,6 +25,5 @@
     <record id="project_risk_response_category_action" model="ir.actions.act_window">
         <field name="name">Risk Response Categories</field>
         <field name="res_model">project.risk.response.category</field>
-        <field name="view_type">form</field>
     </record>
 </odoo>

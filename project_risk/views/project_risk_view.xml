@@ -11,10 +11,76 @@
                         name="state"
                         widget="statusbar"
                         statusbar_visible="draft,active,closed"
-                        clickable="True"
+                        options="{'clickable': '1'}"
                     />
                 </header>
                 <sheet>
+                    <widget
+                        name="web_ribbon"
+                        title="Draft"
+                        bg_color="bg-primary"
+                        attrs="{'invisible': [('state', '!=', 'draft')]}"
+                    />
+                    <widget
+                        name="web_ribbon"
+                        title="Trivial"
+                        bg_color="bg-info"
+                        attrs="{'invisible': ['|', ('state', '!=', 'active'),('rating', '!=', '2')]}"
+                    />
+                    <widget
+                        name="web_ribbon"
+                        title="Very Low"
+                        bg_color="bg-success"
+                        attrs="{'invisible': ['|', ('state', '!=', 'active'),('rating', '!=', '3')]}"
+                    />
+                    <widget
+                        name="web_ribbon"
+                        title="Low"
+                        bg_color="bg-success"
+                        attrs="{'invisible': ['|', ('state', '!=', 'active'),('rating', '!=', '4')]}"
+                    />
+                    <widget
+                        name="web_ribbon"
+                        title="Low-Medium"
+                        bg_color="bg-warning"
+                        attrs="{'invisible': ['|', ('state', '!=', 'active'),('rating', '!=', '5')]}"
+                    />
+                    <widget
+                        name="web_ribbon"
+                        title="Medium"
+                        bg_color="bg-warning"
+                        attrs="{'invisible': ['|', ('state', '!=', 'active'),('rating', '!=', '6')]}"
+                    />
+                    <widget
+                        name="web_ribbon"
+                        title="Medium-High"
+                        bg_color="bg-warning"
+                        attrs="{'invisible': ['|', ('state', '!=', 'active'),('rating', '!=', '7')]}"
+                    />
+                    <widget
+                        name="web_ribbon"
+                        title="High"
+                        bg_color="bg-danger"
+                        attrs="{'invisible': ['|', ('state', '!=', 'active'),('rating', '!=', '8')]}"
+                    />
+                    <widget
+                        name="web_ribbon"
+                        title="Very High"
+                        bg_color="bg-danger"
+                        attrs="{'invisible': ['|', ('state', '!=', 'active'),('rating', '!=', '9')]}"
+                    />
+                    <widget
+                        name="web_ribbon"
+                        title="Critical"
+                        bg_color="bg-danger"
+                        attrs="{'invisible': ['|', ('state', '!=', 'active'),('rating', '!=', '10')]}"
+                    />
+                    <widget
+                        name="web_ribbon"
+                        title="Closed"
+                        bg_color="bg-primary"
+                        attrs="{'invisible': [('state', '!=', 'closed')]}"
+                    />
                     <div class="oe_title">
                         <label for="name" class="oe_edit_only" />
                         <h1>
@@ -110,6 +176,5 @@
     <record id="project_risk_action" model="ir.actions.act_window">
         <field name="name">Risks</field>
         <field name="res_model">project.risk</field>
-        <field name="view_type">form</field>
     </record>
 </odoo>
