@@ -9,7 +9,7 @@ class ProjectRiskResponse(models.Model):
     _description = 'Project Risks Responses'
 
     project_risk_id = fields.Many2one(
-        comodel_name='project.risk.response'
+        comodel_name='project.risk'
     )
 
     sequence = fields.Integer()
