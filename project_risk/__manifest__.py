@@ -5,7 +5,7 @@
     'license': 'AGPL-3',
     'website': 'https://github.com/OCA/project',
     'category': 'Project Management',
-    'version': '11.0.1.0.0',
+    'version': '11.0.1.0.1',
     'depends': [
         'project'
     ],
