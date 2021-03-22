@@ -19,6 +19,7 @@ setuptools.setup(
         'odoo13-addon-project_parent',
         'odoo13-addon-project_parent_task_filter',
         'odoo13-addon-project_purchase_link',
+        'odoo13-addon-project_risk',
         'odoo13-addon-project_role',
         'odoo13-addon-project_stage_closed',
         'odoo13-addon-project_stage_state',
