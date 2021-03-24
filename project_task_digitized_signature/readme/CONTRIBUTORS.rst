@@ -6,4 +6,7 @@
 
   * Lorenzo Battistini
 
-* Murtaza Mithaiwala <mmithaiwala@opensourceintegrators.com>
+* `Open Source Integrators <https://www.opensourceintegrators.com>`_:
+
+  * Bhavesh Odedra <bodedra@opensourceintegrators.com>
+  * Murtaza Mithaiwala <mmithaiwala@opensourceintegrators.com>

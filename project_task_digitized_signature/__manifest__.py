@@ -8,7 +8,7 @@
     "website": "https://github.com/OCA/project",
     "category": "Project Management",
     "license": "AGPL-3",
-    "depends": ["project_task_report", "web_widget_digitized_signature"],
+    "depends": ["project_task_report"],
     "data": ["report/project_task_report.xml", "views/project_task_views.xml"],
     "installable": True,
 }
