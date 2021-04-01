@@ -6,18 +6,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2021-04-01 03:48+0000\n"
+"Last-Translator: Ignacio Buioli <ibuioli@gmail.com>\n"
 "Language-Team: none\n"
 "Language: es_AR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.3.2\n"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_analysis
 msgid "Analysis"
-msgstr ""
+msgstr "Análisis"
 
 #. module: project_task_default_stage
 #: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_analysis
@@ -29,44 +31,44 @@ msgstr ""
 #: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_specification
 #: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_testing
 msgid "Blocked"
-msgstr ""
+msgstr "Bloqueado"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_cancel
 msgid "Cancelled"
-msgstr ""
+msgstr "Cancelado"
 
 #. module: project_task_default_stage
 #: model:ir.model.fields,field_description:project_task_default_stage.field_project_task_type__case_default
 msgid "Default for New Projects"
-msgstr ""
+msgstr "Defecto para Nuevos Proyectos"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_design
 msgid "Design"
-msgstr ""
+msgstr "Diseño"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_development
 msgid "Development"
-msgstr ""
+msgstr "Desarrollo"
 
 #. module: project_task_default_stage
 #: model:ir.model.fields,field_description:project_task_default_stage.field_project_project__display_name
 #: model:ir.model.fields,field_description:project_task_default_stage.field_project_task_type__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Mostrar Nombre"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_deployment
 msgid "Done"
-msgstr ""
+msgstr "Hecho"
 
 #. module: project_task_default_stage
 #: model:ir.model.fields,field_description:project_task_default_stage.field_project_project__id
 #: model:ir.model.fields,field_description:project_task_default_stage.field_project_task_type__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_task_default_stage
 #: model:ir.model.fields,help:project_task_default_stage.field_project_task_type__case_default
@@ -74,6 +76,8 @@ msgid ""
 "If you check this field, this stage will be proposed by default on each new "
 "project. It will not assign this stage to existing projects."
 msgstr ""
+"Si marca este campo, esta etapa se propondrá por defecto en cada nuevo "
+"proyecto. No asignará esta etapa a proyectos existentes."
 
 #. module: project_task_default_stage
 #: model:project.task.type,legend_normal:project_task_default_stage.project_tt_analysis
@@ -85,28 +89,28 @@ msgstr ""
 #: model:project.task.type,legend_normal:project_task_default_stage.project_tt_specification
 #: model:project.task.type,legend_normal:project_task_default_stage.project_tt_testing
 msgid "In Progress"
-msgstr ""
+msgstr "En Progreso"
 
 #. module: project_task_default_stage
 #: model:ir.model.fields,field_description:project_task_default_stage.field_project_project____last_update
 #: model:ir.model.fields,field_description:project_task_default_stage.field_project_task_type____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Última Modificación el"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_merge
 msgid "Merge"
-msgstr ""
+msgstr "Mezclar"
 
 #. module: project_task_default_stage
 #: model:ir.model,name:project_task_default_stage.model_project_project
 msgid "Project"
-msgstr ""
+msgstr "Proyecto"
 
 #. module: project_task_default_stage
 #: model_terms:ir.ui.view,arch_db:project_task_default_stage.edit_project
 msgid "Project Stages"
-msgstr ""
+msgstr "Etapas del Proyecto"
 
 #. module: project_task_default_stage
 #: model:project.task.type,legend_done:project_task_default_stage.project_tt_analysis
@@ -118,24 +122,24 @@ msgstr ""
 #: model:project.task.type,legend_done:project_task_default_stage.project_tt_specification
 #: model:project.task.type,legend_done:project_task_default_stage.project_tt_testing
 msgid "Ready"
-msgstr ""
+msgstr "Listo"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_specification
 msgid "Specification"
-msgstr ""
+msgstr "Especificación"
 
 #. module: project_task_default_stage
 #: model:ir.model,name:project_task_default_stage.model_project_task_type
 msgid "Task Stage"
-msgstr ""
+msgstr "Etapa de la Tarea"
 
 #. module: project_task_default_stage
 #: model:ir.model.fields,field_description:project_task_default_stage.field_project_project__type_ids
 msgid "Tasks Stages"
-msgstr ""
+msgstr "Etapas de la Tarea"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_testing
 msgid "Testing"
-msgstr ""
+msgstr "Evaluación"
