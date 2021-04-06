@@ -35,6 +35,7 @@ addon | version | summary
 [project_task_dependency](project_task_dependency/) | 14.0.1.0.0 | Enables to define dependencies (other tasks) of a task
 [project_task_material](project_task_material/) | 14.0.1.0.0 | Record products spent in a Task
 [project_template](project_template/) | 14.0.1.1.0 | Project Templates
+[project_timeline](project_timeline/) | 14.0.1.1.0 | Timeline view for projects
 
 [//]: # (end addons)
 
