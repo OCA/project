@@ -1,0 +1,81 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_key
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2021-04-11 16:46+0000\n"
+"Last-Translator: Yves Le Doeuff <yld@alliasys.fr>\n"
+"Language-Team: none\n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.3.2\n"
+
+#. module: project_key
+#: model:ir.model.fields,field_description:project_key.field_project_project__display_name
+#: model:ir.model.fields,field_description:project_key.field_project_task__display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: project_key
+#: model:ir.model.fields,field_description:project_key.field_project_project__id
+#: model:ir.model.fields,field_description:project_key.field_project_task__id
+msgid "ID"
+msgstr ""
+
+#. module: project_key
+#: model:ir.model.fields,field_description:project_key.field_project_project__key
+msgid "Key"
+msgstr "Clé"
+
+#. module: project_key
+#: model:ir.model.fields,field_description:project_key.field_project_project__task_key_sequence_id
+msgid "Key Sequence"
+msgstr "Séquence de clé"
+
+#. module: project_key
+#: model:ir.model.fields,field_description:project_key.field_project_project____last_update
+#: model:ir.model.fields,field_description:project_key.field_project_task____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: project_key
+#: model:ir.model,name:project_key.model_project_project
+msgid "Project"
+msgstr "Projet"
+
+#. module: project_key
+#: model:ir.model.constraint,message:project_key.constraint_project_project_project_key_unique
+msgid "Project key must be unique"
+msgstr "La clé de projet doit être unique"
+
+#. module: project_key
+#: code:addons/project_key/models/project_project.py:0
+#, python-format
+msgid "Project task sequence for project"
+msgstr "Séquence des tâches pour le projet"
+
+#. module: project_key
+#: model:ir.model,name:project_key.model_project_task
+msgid "Task"
+msgstr "Tâche"
+
+#. module: project_key
+#: model:ir.model.constraint,message:project_key.constraint_project_task_task_key_unique
+msgid "Task key must be unique!"
+msgstr "La clé de tâche doit être unique"
+
+#. module: project_key
+#: model:ir.model.fields,field_description:project_key.field_project_task__url
+msgid "URL"
+msgstr ""
+
+#. module: project_key
+#: model:ir.model.fields,field_description:project_key.field_project_task__key
+msgid "key"
+msgstr "Clé"
