@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-05-10 02:40+0000\n"
-"PO-Revision-Date: 2021-04-21 15:47+0000\n"
+"PO-Revision-Date: 2021-04-21 19:47+0000\n"
 "Last-Translator: Bosd <c5e2fd43-d292-4c90-9d1f-74ff3436329a@anonaddy.me>\n"
 "Language-Team: Dutch (https://www.transifex.com/oca/teams/23907/nl/)\n"
 "Language: nl\n"
@@ -26,6 +26,8 @@ msgid ""
 "%d running timers found. Cannot know which one to stop. Please stop them "
 "manually."
 msgstr ""
+"%d lopende timers gevondend. Er kan niet bepaald worden welke gestopt dient "
+"te worden. Stop de timers handmatig."
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
@@ -33,6 +35,8 @@ msgid ""
 ".\n"
 "                        If you continue, it will be stopped with"
 msgstr ""
+".\n"
+"                        als u doorgaat zal dit gestopt worden met"
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_kanban_account_analytic_line
@@ -50,6 +54,11 @@ msgid ""
 "                            Start work\n"
 "                        </span>"
 msgstr ""
+"<span class=\"o_label\">\n"
+"                            <i class=\"fa fa-lg fa-play-circle text-success\""
+"/>\n"
+"                            Start werk\n"
+"                        </span>"
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_project_kanban_inherited
@@ -60,6 +69,11 @@ msgid ""
 "                            Stop work\n"
 "                        </span>"
 msgstr ""
+"<span class=\"o_label\">\n"
+"                            <i class=\"fa fa-lg fa-stop-circle text-warning\""
+"/>\n"
+"                            Stop werk\n"
+"                        </span>"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__amount
@@ -88,6 +102,8 @@ msgid ""
 "Cannot stop timer %d because it is not running. Refresh the page and check "
 "again."
 msgstr ""
+"De timer %d kan niet gestopt worden omdat deze niet loopt. Ververs de pagina "
+"en controleer het opnieuw."
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__product_uom_category_id
@@ -160,8 +176,9 @@ msgstr "Werknemer"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__encoding_uom_id
+#, fuzzy
 msgid "Encoding Uom"
-msgstr ""
+msgstr "Encoding Uom"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_account_analytic_line__date_time_end
@@ -182,7 +199,7 @@ msgstr "Groep"
 #. module: project_timesheet_time_control
 #: model:ir.model,name:project_timesheet_time_control.model_hr_timesheet_switch
 msgid "Helper to quickly switch between timesheet lines"
-msgstr ""
+msgstr "Hulp om snel te wisselen tussen tijdlijst regels"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__id
@@ -202,7 +219,7 @@ msgstr ""
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__move_id
 msgid "Journal Item"
-msgstr ""
+msgstr "Boekingsregel"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch____last_update
@@ -232,6 +249,8 @@ msgid ""
 "No running timer found in %(model)s %(record)s. Refresh the page and check "
 "again."
 msgstr ""
+"Geen lopende timers gevonden in %(model)s %(record)s. Ververs de pagina en "
+"controleer opnieuw."
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__partner_id
@@ -247,7 +266,7 @@ msgstr "Vorige timer"
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__running_timer_duration
 msgid "Previous timer duration"
-msgstr ""
+msgstr "Tijdsduur vorige timer"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__running_timer_start
@@ -364,8 +383,9 @@ msgstr "Stoptijd"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__tag_ids
+#, fuzzy
 msgid "Tags"
-msgstr ""
+msgstr "Tags"
 
 #. module: project_timesheet_time_control
 #: model:ir.model,name:project_timesheet_time_control.model_project_task
@@ -381,12 +401,12 @@ msgstr ""
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
 msgid "That is a lot of time! Make sure it is fine before saving."
-msgstr ""
+msgstr "Dat is veel tijd! Controleer voor het opslaan of dit correct is."
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
 msgid "The previous timer is old. Do you really want to stop it now?"
-msgstr ""
+msgstr "De vorige timer is oud. Weet u zeker dat u deze nu wilt stoppen?"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,help:project_timesheet_time_control.field_hr_timesheet_switch__running_timer_id
@@ -407,6 +427,7 @@ msgstr "Gebruiker"
 #: model:ir.model.fields,help:project_timesheet_time_control.field_hr_timesheet_switch__running_timer_duration
 msgid "When the previous timer is stopped, it will save this duration."
 msgstr ""
+"Wanner de vorige timer is gestopd, dan zal de tijdsduur worden opgeslagen."
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
@@ -421,7 +442,7 @@ msgstr "en gestart op"
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
 msgid "hour(s)."
-msgstr ""
+msgstr "uur/uren."
 
 #, fuzzy
 #~ msgid "Date Time"
