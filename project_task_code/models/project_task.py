@@ -38,7 +38,7 @@ class ProjectTask(models.Model):
         if code:
             # We are searching for codes
             tasks = self.search(
-                [('code', '=ilike', code + '%')] + args,
+                [('code', '=ilike', code)] + args,
                 limit=limit).name_get()
             if limit and len(tasks) == limit:
                 return tasks

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Copyright 2016 Tecnativa <vicent.cubells@tecnativa.com>
-# Copyright 2020 Therp BV <http://therp.nl>
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+# Copyright 2020 Therp BV <https://therp.nl>
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 import openerp.tests.common as common
 
