@@ -3,6 +3,7 @@
     <record id="project_project_view_form" model="ir.ui.view">
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.edit_project" />
+        <field name="groups_id" eval="[(4,ref('purchase.group_purchase_user'))]"/>
         <field name="arch" type="xml">
             <div name="button_box" position="inside">
                 <button class="oe_stat_button" name="button_open_purchase_order" type="object" icon="fa-shopping-cart">
