@@ -135,7 +135,16 @@ class HrTimesheetSwitch(models.TransientModel):
             resuming_lines=self.ids, stop_dt=self.date_time,
         ).running_timer_id.button_end_work()
         # Start new timer
-        _fields = self.env["account.analytic.line"]._fields.keys()
+        _fields = (
+            self.env["ir.model.fields"]
+            .search(
+                [
+                    ("model_id.model", "=", "account.analytic.line"),
+                    ("state", "=", "base"),
+                ]
+            )
+            .mapped("name")
+        )
         self.read(_fields)
         values = self._convert_to_write(self._cache)
         new = self.env["account.analytic.line"].create(
