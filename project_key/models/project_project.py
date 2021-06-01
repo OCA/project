@@ -46,16 +46,27 @@ class Project(models.Model):
         if "key" in values:
             key = values["key"]
             update_key = self.key != key
-
+            old_prefix = self.task_key_sequence_id.prefix or ""
         res = super(Project, self).write(values)
 
-        if update_key:
+        if update_key or "name" in values:
             # Here we don't expect to have more than one record
             # because we can not have multiple projects with the same KEY.
             self.update_sequence()
-            self._update_task_keys()
+        if update_key:
+            self._update_task_keys(old_prefix)
 
         return res
+
+    def copy(self, default=None):
+        self.ensure_one()
+        if default is None:
+            default = {}
+        if "key" not in default:
+            default["key"] = self.env["ir.sequence"].next_by_code(
+                "project.project.copy.key"
+            )
+        return super().copy(default)
 
     def unlink(self):
         for project in self:
@@ -141,7 +152,7 @@ class Project(models.Model):
             key.append(item[:1].upper())
         return "".join(key)
 
-    def _update_task_keys(self):
+    def _update_task_keys(self, old_prefix=""):
         """
         This method will update task keys of the current project.
         """
@@ -151,7 +162,7 @@ class Project(models.Model):
         UPDATE project_task
         SET key = x.key
         FROM (
-          SELECT t.id, p.key || '-' || split_part(t.key, '-', 2) AS key
+          SELECT t.id, p.key || substr(t.key, %s) AS key
           FROM project_task t
           INNER JOIN project_project p ON t.project_id = p.id
           WHERE t.project_id = %s
@@ -159,7 +170,13 @@ class Project(models.Model):
         WHERE project_task.id = x.id;
         """
 
-        self.env.cr.execute(reindex_query, (self.id,))
+        self.env.cr.execute(
+            reindex_query,
+            (
+                len(old_prefix),
+                self.id,
+            ),
+        )
         self.env["project.task"].invalidate_cache(["key"], self.task_ids.ids)
 
     @api.model
@@ -177,5 +194,9 @@ class Project(models.Model):
             project.key = self.generate_project_key(project.name)
             project.create_sequence()
 
-            for task in project.task_ids:
+            for task in (
+                self.env["project.task"]
+                .with_context(active_test=False)
+                .search([("project_id", "=", project.id)])
+            ):
                 task.key = project.get_next_task_key()

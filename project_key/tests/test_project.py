@@ -11,10 +11,9 @@ class TestProject(TestCommon):
         self.assertEqual(self.project_3.key, "PYT")
 
     def test_02_change_key(self):
-        self.project_1.key = "XXX"
-
-        self.assertEqual(self.task11.key, "XXX-1")
-        self.assertEqual(self.task12.key, "XXX-2")
+        self.project_1.key = "XX-X"
+        self.assertEqual(self.task11.key, "XX-X-1")
+        self.assertEqual(self.task12.key, "XX-X-2")
 
     def test_03_name_search(self):
 
@@ -62,3 +61,7 @@ class TestProject(TestCommon):
         project = self.Project.new({"name": "Software Development", "key": "TEST"})
         project._onchange_project_name()
         self.assertEqual(project.key, "TEST")
+
+    def test_10_copy_project_key_assign(self):
+        project_copy = self.project_1.copy()
+        self.assertNotEqual(self.project_1.key, project_copy.key)
