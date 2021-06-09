@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2021 Graeme Gellatly <graeme@o4sb.com>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="action_qc_inspection_per_project" model="ir.actions.act_window">
+        <field name="name">Quality Inspections from Project</field>
+        <field name="res_model">qc.inspection</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('project_id', '=', active_id)]</field>
+    </record>
+    <record id="action_qc_inspection_per_project_done" model="ir.actions.act_window">
+        <field name="name">Completed Quality Inspections from Project</field>
+        <field name="res_model">qc.inspection</field>
+        <field name="view_mode">tree,form</field>
+        <field
+            name="domain"
+        >[('project_id', '=', active_id), ('state', 'not in', ['draft', 'waiting'])]</field>
+    </record>
+    <record id="action_qc_inspection_per_project_passed" model="ir.actions.act_window">
+        <field name="name">Passed Quality inspections from Project</field>
+        <field name="res_model">qc.inspection</field>
+        <field name="view_mode">tree,form</field>
+        <field
+            name="domain"
+        >[('project_id', '=', active_id), ('state', '=', 'success')]</field>
+    </record>
+    <record id="action_qc_inspection_per_project_failed" model="ir.actions.act_window">
+        <field name="name">Failed Quality Inspections from Project</field>
+        <field name="res_model">qc.inspection</field>
+        <field name="view_mode">tree,form</field>
+        <field
+            name="domain"
+        >[('project_id', '=', active_id), ('state', '=', 'failed')]</field>
+    </record>
+    <record model="ir.ui.view" id="project_project_form_view">
+        <field name="name">project.project.form (in quality_control_project_oca)</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project" />
+        <field
+            name="groups_id"
+            eval="[(4, ref('quality_control_oca.group_quality_control_user'))]"
+        />
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button
+                    class="oe_inline oe_stat_button"
+                    type="action"
+                    name="%(action_qc_inspection_per_project)d"
+                    icon="fa-list"
+                >
+                    <field
+                        name="created_inspections"
+                        widget="statinfo"
+                        string="inspections"
+                    />
+                </button>
+                <button
+                    class="oe_inline oe_stat_button"
+                    type="action"
+                    name="%(action_qc_inspection_per_project_done)d"
+                    icon="fa-pencil"
+                >
+                    <field name="done_inspections" widget="statinfo" />
+                </button>
+                <button
+                    class="oe_inline oe_stat_button"
+                    type="action"
+                    name="%(action_qc_inspection_per_project_passed)d"
+                    icon="fa-thumbs-o-up"
+                >
+                    <field name="passed_inspections" widget="statinfo" />
+                </button>
+                <button
+                    class="oe_inline oe_stat_button"
+                    type="action"
+                    name="%(action_qc_inspection_per_project_failed)d"
+                    icon="fa-thumbs-o-down"
+                >
+                    <field name="failed_inspections" widget="statinfo" />
+                </button>
+            </div>
+        </field>
+    </record>
+</odoo>

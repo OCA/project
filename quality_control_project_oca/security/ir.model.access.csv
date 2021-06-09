@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_user_qc_inspection_project_user,qc_inspection project user,quality_control_oca.model_qc_inspection,project.group_project_user,1,1,1,0
+access_user_qc_inspection_line_project_user,qc_inspection_line project user,quality_control_oca.model_qc_inspection_line,project.group_project_user,1,1,1,0
+access_user_qc_test_project_user,qc_test project_user,quality_control_oca.model_qc_test,project.group_project_user,1,0,0,0
+access_user_qc_test_question_project_user,qc_test_question project user,quality_control_oca.model_qc_test_question,project.group_project_user,1,0,0,0
+access_user_qc_test_question_value_project_user,qc_test_question_value_project_user,quality_control_oca.model_qc_test_question_value,project.group_project_user,1,0,0,0
+access_manager_qc_trigger_project_user,qc_trigger project user,quality_control_oca.model_qc_trigger,project.group_project_user,1,0,0,0

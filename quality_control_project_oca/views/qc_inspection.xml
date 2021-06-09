@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2021 Graeme Gellatly <graeme@o4sb.com>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record model="ir.ui.view" id="qc_inspection_form_view">
+        <field name="name">qc.inspection.form (in quality_control_project_oca)</field>
+        <field name="model">qc.inspection</field>
+        <field name="inherit_id" ref="quality_control_oca.qc_inspection_form_view" />
+        <field name="arch" type="xml">
+            <field name="product_id" position="after">
+                <field name="project_id" groups="project.group_project_user" />
+                <field name="task_id" groups="project.group_project_user" />
+            </field>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="qc_inspection_search_view">
+        <field name="name">qc.inspection.search (in quality_control_project_oca)</field>
+        <field name="model">qc.inspection</field>
+        <field name="inherit_id" ref="quality_control_oca.qc_inspection_search_view" />
+        <field name="arch" type="xml">
+            <field name="product_id" position="after">
+                <field name="project_id" groups="project.group_project_user" />
+                <field name="task_id" groups="project.group_project_user" />
+            </field>
+            <group expand="0" position="inside">
+                <filter
+                    string="Project"
+                    domain="[]"
+                    name="group_by_project_id"
+                    groups="project.group_project_user"
+                    context="{'group_by': 'project_id'}"
+                />
+            </group>
+        </field>
+    </record>
+    <record model="ir.ui.view" id="qc_inspection_tree_view">
+        <field name="name">qc.inspection.tree (in quality_control_project_oca)</field>
+        <field name="model">qc.inspection</field>
+        <field name="inherit_id" ref="quality_control_oca.qc_inspection_tree_view" />
+        <field name="arch" type="xml">
+            <field name="product_id" position="after">
+                <field name="project_id" groups="project.group_project_user" />
+                <field name="task_id" groups="project.group_project_user" />
+            </field>
+        </field>
+    </record>
+</odoo>
