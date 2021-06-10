@@ -45,6 +45,7 @@ class TestProjectPurchaseUtilities(common.SavepointCase):
             {
                 "partner_id": self.purchase.partner_id.id,
                 "purchase_id": self.purchase.id,
+                "type": "in_invoice",
             }
         )
         for line in self.purchase.order_line:
