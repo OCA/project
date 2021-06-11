@@ -7,6 +7,11 @@ class ProjectStatus(models.Model):
     _description = "Project Status"
 
     name = fields.Char(string="Name", required=True, translate=True)
+    company_id = fields.Many2one(
+        comodel_name="res.company",
+        string="Company",
+        default=lambda self: self.env.company,
+    )
     description = fields.Char(string="Description", translate=True)
     status_sequence = fields.Integer(string="Sequence")
     is_closed = fields.Boolean(
