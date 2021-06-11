@@ -32,8 +32,7 @@ Project Task Stage Closed
   migration script.
 
 
-This module provides a 'closed' flag on project task stages.
-
+  This module used to provides a 'closed' flag on project task stages.
 
 **Table of contents**
 
@@ -80,6 +79,7 @@ Contributors
 
 * Saran Lim. <saranl@ecosoft.co.th>
 * Nattapol Sinsuphan<gamso321@gmail.com>
+* Pierre Verkest <pierreverkest84@gmail.com>
 
 Maintainers
 ~~~~~~~~~~~
