@@ -7,3 +7,4 @@
 
 * Saran Lim. <saranl@ecosoft.co.th>
 * Nattapol Sinsuphan<gamso321@gmail.com>
+* Pierre Verkest <pierreverkest84@gmail.com>
