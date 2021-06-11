@@ -26,7 +26,7 @@ addon | version | summary
 [project_milestone](project_milestone/) | 14.0.1.0.0 | Project Milestones
 [project_parent_task_filter](project_parent_task_filter/) | 14.0.1.1.0 | Add a filter to show the parent tasks
 [project_role](project_role/) | 14.0.1.0.0 | Project role-based roster
-[project_stage_closed](project_stage_closed/) | 14.0.1.1.0 | Project Task Stage Closed
+[project_stage_closed](project_stage_closed/) | 14.0.2.0.0 | Project Task Stage Closed
 [project_stage_state](project_stage_state/) | 14.0.1.1.0 | Restore State attribute removed from Project Stages in 8.0
 [project_status](project_status/) | 14.0.1.0.0 | Project Status
 [project_tag](project_tag/) | 14.0.1.0.0 | Project Tags
