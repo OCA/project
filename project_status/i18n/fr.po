@@ -45,7 +45,7 @@ msgstr "Description"
 #. module: project_status
 #: model:ir.model.fields,field_description:project_status.field_project_status__display_name
 msgid "Display Name"
-msgstr "Nom"
+msgstr "Nom affiché"
 
 #. module: project_status
 #: model:ir.model.fields,field_description:project_status.field_project_status__fold
