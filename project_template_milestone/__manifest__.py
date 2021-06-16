@@ -4,15 +4,13 @@
     "name": "Project Template & Milestone",
     "summary": """Adds function to copy of milestones when creating
                   a project from template""",
-    "author": "Patrick Wilson, Odoo Community Association (OCA)",
+    "author": "Patrick Wilson, Odoo Community Association (OCA),"
+    "Open Source Integrators",
     "website": "https://github.com/OCA/project",
     "category": "Project Management",
     "version": "14.0.1.0.0",
     "license": "AGPL-3",
-    "depends": [
-        "project_template",
-        "project_milestone",
-    ],
+    "depends": ["project_template", "project_milestone"],
     "application": False,
     "auto_install": True,
     "development_status": "Beta",

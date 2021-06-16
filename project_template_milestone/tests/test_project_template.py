@@ -1,4 +1,6 @@
 # Copyright 2019 Patrick Wilson <patrickraymondwilson@gmail.com>
+# Copyright (C) 2021 Open Source Integrators
+# Copyright (C) 2021 Serpent Consulting Services
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo.tests import common
@@ -14,7 +16,6 @@ class TestProjectTemplate(common.TransactionCase):
             {
                 "name": "TestProject",
                 "alias_name": "test_alias",
-                "total_planned_hours": 0.0,
                 "partner_id": self.test_customer.id,
             }
         )
