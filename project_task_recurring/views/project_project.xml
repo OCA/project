@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2020 ACSONE SA/NV
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record model="ir.ui.view" id="project_project_form_view">
+        <field name="name">project.project.form (in project_task_recurring)</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project" />
+        <field name="arch" type="xml">
+            <page name="settings" position="after">
+                <page
+                    name="recurrency"
+                    string="Recurrency"
+                    groups="project_task_recurring.group_project_task_recurrency"
+                >
+                    <field name="task_schedule_ids" />
+                </page>
+            </page>
+        </field>
+    </record>
+</odoo>

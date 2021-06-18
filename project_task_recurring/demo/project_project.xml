@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2021 ACSONE SA/NV
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo noupdate="1">
+    <record id="project_project_with_recurrence" model="project.project">
+        <field name="date_start" eval="time.strftime('%Y-%m-01 10:00:00')" />
+        <field name="name">Contract Management</field>
+        <field name="color">4</field>
+        <field name="user_id" ref="base.user_demo" />
+        <field
+            name="type_ids"
+            eval="[(4, ref('project.project_stage_0')), (4, ref('project.project_stage_1')), (4, ref('project.project_stage_2')), (4, ref('project.project_stage_3'))]"
+        />
+        <field name="partner_id" ref="base.partner_demo_portal" />
+        <field name="privacy_visibility">portal</field>
+    </record>
+    <record id="project_project_recurrence_template" model="project.project">
+        <field name="date_start" eval="time.strftime('%Y-%m-01 10:00:00')" />
+        <field name="name">Contract Management (Template)</field>
+        <field name="color">4</field>
+        <field name="user_id" ref="base.user_demo" />
+        <field
+            name="type_ids"
+            eval="[(4, ref('project.project_stage_0')), (4, ref('project.project_stage_1')), (4, ref('project.project_stage_2')), (4, ref('project.project_stage_3'))]"
+        />
+        <field name="partner_id" ref="base.partner_demo_portal" />
+        <field name="privacy_visibility">portal</field>
+        <field name="is_template" eval="True" />
+    </record>
+</odoo>

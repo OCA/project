@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2021 ACSONE SA/NV
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo noupdate="1">
+    <record model="project.task.schedule" id="project_task_schedule_contract">
+        <field name="name">Check invoices</field>
+        <field name="project_id" ref="project_project_with_recurrence" />
+        <field name="task_template_id" ref="project_task_check_invoicing" />
+        <field name="recurrence_type">monthlylastday</field>
+        <field name="state">draft</field>
+    </record>
+    <record model="project.task.schedule" id="project_task_schedule_customer">
+        <field name="name">Call customer</field>
+        <field name="project_id" ref="project_project_with_recurrence" />
+        <field name="task_template_id" ref="project_task_call_customer" />
+        <field name="recurrence_type">yearly</field>
+        <field name="state">active</field>
+    </record>
+</odoo>
