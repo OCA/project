@@ -19,6 +19,11 @@ msgid "Closed"
 msgstr ""
 
 #. module: project_status
+#: model:ir.model.fields,field_description:project_status.field_project_status__company_id
+msgid "Company"
+msgstr ""
+
+#. module: project_status
 #: model:project.status,name:project_status.project_status_complete
 msgid "Complete"
 msgstr ""
