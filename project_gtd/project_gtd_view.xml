@@ -5,8 +5,8 @@
         <field name="model">project.gtd.context</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="sequence" invisible="1"/>
-                <field name="name"/>
+                <field name="sequence" invisible="1" />
+                <field name="name" />
             </tree>
         </field>
     </record>
@@ -17,8 +17,8 @@
         <field name="arch" type="xml">
             <form name="Context">
                 <group col="4">
-                    <field name="name"/>
-                    <field name="sequence"/>
+                    <field name="name" />
+                    <field name="sequence" />
                 </group>
             </form>
         </field>
@@ -27,19 +27,26 @@
     <record model="ir.actions.act_window" id="open_gtd_context_tree">
         <field name="name">Contexts</field>
         <field name="res_model">project.gtd.context</field>
-        <field name="help">Contexts are defined in the "Getting Things Done" methodology. It allows you to categorize your tasks according to the context in which they have to be done: at the office, at home, when I take my car, etc.</field>
+        <field
+            name="help"
+        >Contexts are defined in the "Getting Things Done" methodology. It allows you to categorize your tasks according to the context in which they have to be done: at the office, at home, when I take my car, etc.</field>
     </record>
 
-    <menuitem name="Contexts" id="menu_open_gtd_time_contexts"
-                parent="project.menu_tasks_config" action="open_gtd_context_tree" groups="base.group_no_one"/>
+    <menuitem
+        name="Contexts"
+        id="menu_open_gtd_time_contexts"
+        parent="project.menu_tasks_config"
+        action="open_gtd_context_tree"
+        groups="base.group_no_one"
+    />
 
     <record model="ir.ui.view" id="view_gtd_timebox_tree">
         <field name="name">project.gtd.timebox.tree</field>
         <field name="model">project.gtd.timebox</field>
         <field name="arch" type="xml">
             <tree name="Timebox">
-                <field name="sequence" invisible="1"/>
-                <field name="name"/>
+                <field name="sequence" invisible="1" />
+                <field name="name" />
             </tree>
         </field>
     </record>
@@ -50,8 +57,8 @@
         <field name="arch" type="xml">
             <form name="Timeboxes" version="7.0">
                 <group col="4" name="Timebox Definition">
-                    <field name="name"/>
-                    <field name="sequence"/>
+                    <field name="name" />
+                    <field name="sequence" />
                 </group>
             </form>
         </field>
@@ -62,11 +69,19 @@
         <field name="res_model">project.gtd.timebox</field>
         <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
-        <field name="view_id" ref="view_gtd_timebox_tree"/>
-        <field name="help">Timeboxes are defined in the "Getting Things Done" methodology. A timebox defines a period of time in order to categorize your tasks: today, this week, this month, long term.</field>
+        <field name="view_id" ref="view_gtd_timebox_tree" />
+        <field
+            name="help"
+        >Timeboxes are defined in the "Getting Things Done" methodology. A timebox defines a period of time in order to categorize your tasks: today, this week, this month, long term.</field>
     </record>
 
-    <menuitem name="Timeboxes" id="menu_open_gtd_time_timeboxes" parent="project.menu_tasks_config" action="open_gtd_timebox_tree" groups="base.group_no_one"/>
+    <menuitem
+        name="Timeboxes"
+        id="menu_open_gtd_time_timeboxes"
+        parent="project.menu_tasks_config"
+        action="open_gtd_timebox_tree"
+        groups="base.group_no_one"
+    />
 
     <record model="ir.ui.view" id="project_task_tree">
         <field name="name">project.task.tree.timebox</field>
@@ -75,8 +90,16 @@
         <field name="arch" type="xml">
             <!-- TODO -->
             <field name="date_deadline" position="after">
-                <field string="Timeframe" name="timebox_id" invisible=" not context.get('gtd', False)"/>
-                <field name="context_id" invisible="not context.get('context_show', False)" widget="selection"/>
+                <field
+                    string="Timeframe"
+                    name="timebox_id"
+                    invisible=" not context.get('gtd', False)"
+                />
+                <field
+                    name="context_id"
+                    invisible="not context.get('context_show', False)"
+                    widget="selection"
+                />
             </field>
         </field>
     </record>
@@ -88,8 +111,17 @@
         <field name="arch" type="xml">
             <!-- TODO -->
             <field name="tag_ids" position="after">
-                <field name="context_id" widget="selection" options='{"no_open": True}'/>
-                <field name="timebox_id" widget="selection" options='{"no_open": True}'  string="Timeframe"/>
+                <field
+                    name="context_id"
+                    widget="selection"
+                    options='{"no_open": True}'
+                />
+                <field
+                    name="timebox_id"
+                    widget="selection"
+                    options='{"no_open": True}'
+                    string="Timeframe"
+                />
             </field>
         </field>
     </record>
@@ -97,16 +129,26 @@
     <record id="view_task_gtd_search" model="ir.ui.view">
         <field name="name">project.task.search.inherit</field>
         <field name="model">project.task</field>
-        <field name="inherit_id" ref="project.view_task_search_form"/>
+        <field name="inherit_id" ref="project.view_task_search_form" />
         <field name="arch" type="xml">
             <filter name="message_needaction" position="after">
                 <group name="Timebox">
-                    <separator name="gtdsep"/>
+                    <separator name="gtdsep" />
                 </group>
             </filter>
             <filter name="group_message_last_post" position="after">
-                <filter name="timebox_id" string="Timebox" domain="[]" context="{'group_by': 'timebox_id'}"/>
-                <filter name="context_id" string="Context" domain="[]" context="{'group_by': 'context_id'}"/>
+                <filter
+                    name="timebox_id"
+                    string="Timebox"
+                    domain="[]"
+                    context="{'group_by': 'timebox_id'}"
+                />
+                <filter
+                    name="context_id"
+                    string="Context"
+                    domain="[]"
+                    context="{'group_by': 'context_id'}"
+                />
             </filter>
         </field>
     </record>
@@ -114,7 +156,7 @@
     <record model="ir.actions.act_window" id="open_gtd_all_tasks">
         <field name="name">Tasks (GTD)</field>
         <field name="res_model">project.task</field>
-        <field name="search_view_id" ref="view_task_gtd_search"/>
+        <field name="search_view_id" ref="view_task_gtd_search" />
         <field name="context">
             {'set_visible': True, 'gtd': True, 'search_default_timebox_id': 1}
         </field>
@@ -124,13 +166,17 @@
         <field name="view_type">form</field>
         <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
     </record>
-    <menuitem action="open_gtd_all_tasks" id="menu_open_gtd_timebox_all_tree"
-        parent="project.menu_project_management" sequence="10"/>
+    <menuitem
+        action="open_gtd_all_tasks"
+        id="menu_open_gtd_timebox_all_tree"
+        parent="project.menu_project_management"
+        sequence="10"
+    />
 
     <record model="ir.actions.act_window" id="open_gtd_task">
         <field name="name">My Tasks (GTD)</field>
         <field name="res_model">project.task</field>
-        <field name="search_view_id" ref="view_task_gtd_search"/>
+        <field name="search_view_id" ref="view_task_gtd_search" />
         <field name="context">
             {'set_visible': True, 'gtd': True,
              'user_invisible': True, 'search_default_timebox_id': 1}
@@ -142,7 +188,11 @@
         <field name="view_type">form</field>
         <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
     </record>
-    <menuitem action="open_gtd_task" id="menu_open_gtd_timebox_tree"
-        parent="project.menu_project_management" sequence="11"/>
+    <menuitem
+        action="open_gtd_task"
+        id="menu_open_gtd_timebox_tree"
+        parent="project.menu_project_management"
+        sequence="11"
+    />
 
 </odoo>
