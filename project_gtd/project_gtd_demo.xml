@@ -12,23 +12,23 @@
     </record>
 
     <record id="project.project_task_10" model="project.task">
-        <field name="timebox_id" ref="timebox_daily"/>
-        <field name="context_id" ref="context_office"/>
+        <field name="timebox_id" ref="timebox_daily" />
+        <field name="context_id" ref="context_office" />
     </record>
 
     <record id="project.project_task_11" model="project.task">
-        <field name="timebox_id" ref="timebox_daily"/>
-        <field name="context_id" ref="context_office"/>
+        <field name="timebox_id" ref="timebox_daily" />
+        <field name="context_id" ref="context_office" />
     </record>
 
     <record id="project.project_task_12" model="project.task">
-        <field name="timebox_id" ref="timebox_daily"/>
-        <field name="context_id" ref="context_car"/>
+        <field name="timebox_id" ref="timebox_daily" />
+        <field name="context_id" ref="context_car" />
     </record>
 
     <record id="project.project_task_13" model="project.task">
-        <field name="timebox_id" ref="timebox_daily"/>
-        <field name="context_id" ref="context_car"/>
+        <field name="timebox_id" ref="timebox_daily" />
+        <field name="context_id" ref="context_car" />
     </record>
 
     </data>

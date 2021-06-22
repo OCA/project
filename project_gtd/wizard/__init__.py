@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 ##############################################################################
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -19,4 +18,4 @@
 from . import project_gtd_empty
 from . import project_gtd_fill
 
-__all__ = ['project_gtd_empty', 'project_gtd_fill']
+__all__ = ["project_gtd_empty", "project_gtd_fill"]
