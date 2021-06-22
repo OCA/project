@@ -56,8 +56,8 @@
     <field name="model">project.project</field>
     <field name="inherit_id" ref="project.view_project_kanban"/>
     <field name="arch" type="xml">
-        <xpath expr="//div[hasclass('o_primary')]" position="after">
-          <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>
+        <xpath expr="//div[hasclass('o_primary')]" position="before">
+            <field name="tag_ids"/>
         </xpath>
     </field>
   </record>
@@ -72,7 +72,7 @@
           <field name="tag_ids"/>
         </xpath>
     </field>
-  </record>     
-     
+  </record>
+
 </odoo>
 
