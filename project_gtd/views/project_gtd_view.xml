@@ -67,7 +67,6 @@
     <record model="ir.actions.act_window" id="open_gtd_timebox_tree">
         <field name="name">Timeboxes</field>
         <field name="res_model">project.gtd.timebox</field>
-        <field name="view_type">form</field>
         <field name="view_mode">tree,form</field>
         <field name="view_id" ref="view_gtd_timebox_tree" />
         <field
@@ -88,7 +87,6 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_tree2" />
         <field name="arch" type="xml">
-            <!-- TODO -->
             <field name="date_deadline" position="after">
                 <field
                     string="Timeframe"
@@ -109,7 +107,6 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_form2" />
         <field name="arch" type="xml">
-            <!-- TODO -->
             <field name="tag_ids" position="after">
                 <field
                     name="context_id"
@@ -136,7 +133,7 @@
                     <separator name="gtdsep" />
                 </group>
             </filter>
-            <filter name="group_message_last_post" position="after">
+            <filter name="group_create_date" position="after">
                 <filter
                     name="timebox_id"
                     string="Timebox"
@@ -163,8 +160,7 @@
         <field name="domain">
             ['|', ('stage_id.sequence', '&lt;', 20), ('stage_id', '=', False)]
         </field>
-        <field name="view_type">form</field>
-        <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
+        <field name="view_mode">kanban,tree,form,calendar,graph</field>
     </record>
     <menuitem
         action="open_gtd_all_tasks"
@@ -185,8 +181,7 @@
             [('user_id', '=', uid),
             '|', ('stage_id.sequence', '&lt;', 20), ('stage_id', '=', False)]
         </field>
-        <field name="view_type">form</field>
-        <field name="view_mode">kanban,tree,form,calendar,gantt,graph</field>
+        <field name="view_mode">kanban,tree,form,calendar,graph</field>
     </record>
     <menuitem
         action="open_gtd_task"

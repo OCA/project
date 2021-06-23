@@ -1,6 +1,5 @@
 <?xml version="1.0" ?>
-<openerp>
-    <data>
+<odoo>
 
     <record model="project.gtd.context" id="context_home">
         <field name="name">Home</field>
@@ -26,10 +25,4 @@
         <field name="context_id" ref="context_car" />
     </record>
 
-    <record id="project.project_task_13" model="project.task">
-        <field name="timebox_id" ref="timebox_daily" />
-        <field name="context_id" ref="context_car" />
-    </record>
-
-    </data>
-</openerp>
+</odoo>

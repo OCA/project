@@ -3,3 +3,5 @@ access_project_gtd_context_user,project.gtd.context project user,model_project_g
 access_project_gtd_timebox_user,project.gtd.timebox project user,model_project_gtd_timebox,project.group_project_user,1,0,0,0
 access_project_gtd_context_manager,project.gtd.context project manager,model_project_gtd_context,project.group_project_manager,1,1,1,1
 access_project_gtd_timebox_manager,project.gtd.timebox project manager,model_project_gtd_timebox,project.group_project_manager,1,1,1,1
+access_project_timebox_empty_wizard,project.timebox.empty widard,model_project_timebox_empty,,1,1,1,1
+access_project_timebox_fill_plan_wizard,project.timebox.fill.plan wizard,model_project_timebox_fill_plan,,1,1,1,1

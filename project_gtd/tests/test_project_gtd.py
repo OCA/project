@@ -6,8 +6,11 @@ from odoo.tests.common import TransactionCase
 
 
 class TestProjectGtd(TransactionCase):
-    def setUp(self, *args, **kwargs):
-        super(TestProjectGtd, self).setUp(*args, **kwargs)
+    def setUp(self):
+        super().setUp()
+
+        self.project_timebox_empty = self.env["project.timebox.empty"]
+
         # Timeboxes
         self.timebox_weekly = self.env.ref("project_gtd.timebox_weekly")
         self.timebox_daily = self.env.ref("project_gtd.timebox_daily")
@@ -42,10 +45,23 @@ class TestProjectGtd(TransactionCase):
         self.plan.process()
         self.assertTrue(self.task.timebox_id.id == self.timebox_weekly.id)
 
-    def test_timebox_empty(self):
+    def test_timebox_empty_close(self):
         """
         Check if timebox is empty after emptiying task.
         """
+        self.process()
+        self.assertFalse(self.task.timebox_id)
+
+    def test_timebox_empty_up(self):
+        """
+        Check correct timebox after emptiying task.
+        """
+        self.task.user_id = self.env.uid
+        self.process()
+        self.assertTrue(self.task.timebox_id == self.timebox_daily)
+
+    def process(self):
+        self.plan.process()
         context = {
             "active_model": "project.gtd.timebox",
             "active_ids": [
@@ -53,5 +69,4 @@ class TestProjectGtd(TransactionCase):
             ],
             "active_id": self.timebox_weekly.id,
         }
-        self.env["project.timebox.empty"].with_context(context)._empty()
-        self.assertTrue(self.task.timebox_id != self.timebox_weekly)
+        self.project_timebox_empty.with_context(context).process()
