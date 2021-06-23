@@ -5,36 +5,34 @@
         <field name="name">Empty Timebox</field>
         <field name="model">project.timebox.empty</field>
         <field name="arch" type="xml">
-            <form name="Empty Timebox" version="7.0">
-                <label string="Timebox Empty Process Completed Successfully." />
+            <form name="Empty Timebox">
+                <field name="state" invisible="1" />
+                <div states="init">Start Timebox Empty Process.</div>
+                <div states="done">Timebox Empty Process Completed Successfully.</div>
                 <footer>
-                    <button special="cancel" string="Close" class="oe_inline" />
+                    <button
+                        name="process"
+                        string="Empty Timebox"
+                        type="object"
+                        class="btn-primary"
+                        states="init"
+                    />
+                    <button special="cancel" string="Close" class="btn-secondary" />
                 </footer>
             </form>
         </field>
     </record>
 
     <record id="action_project_gtd_empty" model="ir.actions.act_window">
-           <field name="name">Empty Timebox</field>
-           <field name="type">ir.actions.act_window</field>
-           <field name="res_model">project.timebox.empty</field>
-           <field name="view_type">form</field>
-           <field name="view_mode">form</field>
-           <field name="view_id" ref="view_project_gtd_empty" />
-           <field name="context">{'record_id' : active_id}</field>
-           <field name="target">new</field>
-    </record>
-
-    <record model="ir.values" id="project_gtd_empty_values">
-        <field name="model_id" ref="model_project_gtd_timebox" />
         <field name="name">Empty Timebox</field>
-        <field name="key2">client_action_multi</field>
-        <field
-            name="value"
-            eval="'ir.actions.act_window,' + str(ref('action_project_gtd_empty'))"
-        />
-        <field name="key">action</field>
-        <field name="model">project.gtd.timebox</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">project.timebox.empty</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_project_gtd_empty" />
+        <field name="context">{'record_id' : active_id}</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="project_gtd.model_project_gtd_timebox" />
+        <field name="binding_view_types">list,form</field>
     </record>
 
 </odoo>

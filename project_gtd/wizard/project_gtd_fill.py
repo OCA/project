@@ -28,10 +28,10 @@ class ProjectTimeboxFill(models.TransientModel):
         "project.task", "project_task_rel", "task_id", "fill_id", "Tasks selection"
     )
 
-    @api.multi
     def process(self):
-        self.ensure_one()
         if not self.task_ids:
             return {}
         self.task_ids.write({"timebox_id": self.timebox_to_id.id})
-        return {"type": "ir.actions.act_window_close"}
+        return {
+            "type": "ir.actions.act_window_close",
+        }

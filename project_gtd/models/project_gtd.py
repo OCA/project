@@ -5,6 +5,10 @@
 from odoo import api, fields, models, tools
 
 
+def cmp(a, b):
+    return (a > b) - (a < b)
+
+
 class ProjectGtdContext(models.Model):
     _name = "project.gtd.context"
     _description = "Context"
@@ -20,6 +24,7 @@ class ProjectGtdContext(models.Model):
 
 class ProjectGtdTimebox(models.Model):
     _name = "project.gtd.timebox"
+    _description = "Timebox"
     _order = "sequence"
 
     name = fields.Char("Timebox", size=64, required=True, index=1, translate=1)
@@ -84,7 +89,7 @@ class ProjectTask(models.Model):
             timeboxes = timebox_model.search([])
             search_extended = ""
             for timebox in timeboxes:
-                filter_ = u"""
+                filter_ = """
                     <filter domain="[('timebox_id', '=', {timebox_id})]"
                             string="{string}"/>\n
                     """.format(
