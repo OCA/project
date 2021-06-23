@@ -2,7 +2,7 @@
 # Copyright 2017 ABF OSIELL <http://osiell.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import api, exceptions, fields, models
+from odoo import exceptions, fields, models
 from odoo.tools.translate import _
 
 
@@ -10,10 +10,13 @@ class ProjectTimeboxEmpty(models.TransientModel):
     _name = "project.timebox.empty"
     _description = "Project Timebox Empty"
 
-    name = fields.Char("Name", size=32)
+    state = fields.Selection(
+        [("init", "init"), ("done", "done")],
+        readonly=True,
+        default="init",
+    )
 
-    @api.model
-    def _empty(self):
+    def process(self):
         close = []
         up = []
         timebox_model = self.env["project.gtd.timebox"]
@@ -37,4 +40,12 @@ class ProjectTimeboxEmpty(models.TransientModel):
             task_model.browse(up).write({"timebox_id": timeboxes[0].id})
         if close:
             task_model.browse(close).write({"timebox_id": False})
-        return {}
+        self.write({"state": "done"})
+        action = self.env.ref("project_gtd.action_project_gtd_empty")
+        result = action.read()[0]
+        result.update(
+            {
+                "res_id": self.id,
+            }
+        )
+        return result

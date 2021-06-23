@@ -1,4 +1,2 @@
-from . import project_gtd
+from . import models
 from . import wizard
-
-__all__ = ["project_gtd", "wizard"]
