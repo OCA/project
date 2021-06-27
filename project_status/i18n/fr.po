@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2021-06-24 09:48+0000\n"
-"Last-Translator: Denis Leemann <denis.leemann@camptocamp.com>\n"
+"PO-Revision-Date: 2021-06-27 17:48+0000\n"
+"Last-Translator: tfo <fossoul.t@gmail.com>\n"
 "Language-Team: none\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
@@ -49,12 +49,12 @@ msgstr "Description"
 #. module: project_status
 #: model:ir.model.fields,field_description:project_status.field_project_status__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nom à afficher"
 
 #. module: project_status
 #: model:ir.model.fields,field_description:project_status.field_project_status__fold
 msgid "Folded"
-msgstr ""
+msgstr "Plié"
 
 #. module: project_status
 #: model:ir.model.fields,field_description:project_status.field_project_status__id
@@ -64,86 +64,86 @@ msgstr ""
 #. module: project_status
 #: model:project.status,name:project_status.project_status_in_progress
 msgid "In Progress"
-msgstr ""
+msgstr "En cours"
 
 #. module: project_status
 #: model:ir.model.fields,field_description:project_status.field_project_status__is_closed
 msgid "Is Closed Status"
-msgstr ""
+msgstr "Est considéré comme statut de clôture"
 
 #. module: project_status
 #: model:ir.model.fields,field_description:project_status.field_project_status____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Dernière modification le"
 
 #. module: project_status
 #: model:ir.model.fields,field_description:project_status.field_project_status__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Modifié dernièrement par"
 
 #. module: project_status
 #: model:ir.model.fields,field_description:project_status.field_project_status__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Dernière modification le"
 
 #. module: project_status
 #: model:ir.model.fields,field_description:project_status.field_project_status__name
 msgid "Name"
-msgstr ""
+msgstr "Nom"
 
 #. module: project_status
 #: model_terms:ir.ui.view,arch_db:project_status.view_project_project_filter
 msgid "Not Closed"
-msgstr ""
+msgstr "Non clôturé"
 
 #. module: project_status
 #: model:project.status,name:project_status.project_status_pending
 msgid "Pending"
-msgstr ""
+msgstr "En attente"
 
 #. module: project_status
 #: model:ir.model,name:project_status.model_project_project
 msgid "Project"
-msgstr ""
+msgstr "Projet"
 
 #. module: project_status
 #: model:ir.model,name:project_status.model_project_status
 #: model:ir.model.fields,field_description:project_status.field_project_project__project_status
 msgid "Project Status"
-msgstr ""
+msgstr "Statut"
 
 #. module: project_status
 #: model:ir.actions.act_window,name:project_status.project_status_action
 #: model:ir.ui.menu,name:project_status.project_status_menu
 msgid "Project Statuses"
-msgstr ""
+msgstr "Statut de projet"
 
 #. module: project_status
 #: model:project.status,description:project_status.project_status_complete
 msgid "Project has been completed."
-msgstr ""
+msgstr "Le projet a été clôturé."
 
 #. module: project_status
 #: model:project.status,description:project_status.project_status_in_progress
 msgid "Project is currently initiated and being worked."
-msgstr ""
+msgstr "Le projet a été initialisé et est en cours de traitement."
 
 #. module: project_status
 #: model:project.status,description:project_status.project_status_pending
 msgid "Project is new and being built. Has not been started yet."
-msgstr ""
+msgstr "Le projet est en cours d'initialisation. Il n'a pas encore démarré."
 
 #. module: project_status
 #: model:ir.model.fields,field_description:project_status.field_project_status__status_sequence
 msgid "Sequence"
-msgstr ""
+msgstr "Séquence"
 
 #. module: project_status
 #: model:ir.model.fields,help:project_status.field_project_status__is_closed
 msgid "Specify if this is a closing status."
-msgstr ""
+msgstr "Spécifier s'il s'agit d'un statut de clôture."
 
 #. module: project_status
 #: model_terms:ir.ui.view,arch_db:project_status.view_project_project_filter
 msgid "Status"
-msgstr ""
+msgstr "Statut"
