@@ -2,10 +2,10 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 
-from odoo import fields, models
+from odoo import models, fields
 
 
 class ProjectTask(models.Model):
     _inherit = "project.task"
 
-    description = fields.Char(string="Description")
+    description = fields.Text(string="Description")
