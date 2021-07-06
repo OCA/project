@@ -5,9 +5,11 @@ from odoo import fields, models
 
 
 class StockRequestOrder(models.Model):
-    _inherit = 'stock.request.order'
+    _inherit = "stock.request.order"
 
-    project_id = fields.Many2one('project.project', string='Project',
-                                 track_visibility='onchange')
-    project_task_id = fields.Many2one('project.task', string='Project Task',
-                                      track_visibility='onchange')
+    project_id = fields.Many2one(
+        "project.project", string="Project", track_visibility="onchange"
+    )
+    project_task_id = fields.Many2one(
+        "project.task", string="Project Task", track_visibility="onchange"
+    )
