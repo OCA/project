@@ -33,7 +33,9 @@
         <field name="inherit_id" ref="project.quick_create_task_form" />
         <field name="arch" type="xml">
             <field name="user_id" position="before">
+                <field name="allowed_hr_category_ids" invisible="1" />
                 <field name="allowed_user_ids" invisible="1" />
+                <field name="hr_category_ids" invisible="1" />
             </field>
             <field name="user_id" position="attributes">
                 <attribute name="domain">[('id', 'in', allowed_user_ids)]</attribute>
@@ -46,7 +48,9 @@
         <field name="inherit_id" ref="project.view_task_tree2" />
         <field name="arch" type="xml">
             <field name="user_id" position="before">
+                <field name="allowed_hr_category_ids" invisible="1" />
                 <field name="allowed_user_ids" invisible="1" />
+                <field name="hr_category_ids" invisible="1" />
             </field>
             <field name="user_id" position="attributes">
                 <attribute name="domain">[('id', 'in', allowed_user_ids)]</attribute>
