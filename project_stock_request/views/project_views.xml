@@ -1,0 +1,28 @@
+<odoo>
+    <record id="project_stock_request_order_view_form2" model="ir.ui.view">
+        <field name="name">project.stock.request.order.form2</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project" />
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page
+                    string="Stock Request Orders"
+                    groups="stock_request.group_stock_request_user"
+                >
+                    <field
+                        name="stock_request_order_ids"
+                        context="{'default_project_id': id}"
+                    >
+                        <tree>
+                            <field name="name" />
+                            <field name="project_task_id" />
+                            <field name="expected_date" />
+                            <field name="create_date" />
+                            <field name="state" />
+                        </tree>
+                    </field>
+                </page>
+            </notebook>
+        </field>
+    </record>
+</odoo>
