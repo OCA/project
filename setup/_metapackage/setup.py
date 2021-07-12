@@ -18,6 +18,7 @@ setuptools.setup(
         'odoo14-addon-project_stage_closed',
         'odoo14-addon-project_stage_state',
         'odoo14-addon-project_status',
+        'odoo14-addon-project_stock_request',
         'odoo14-addon-project_tag',
         'odoo14-addon-project_task_add_very_high',
         'odoo14-addon-project_task_code',
