@@ -22,6 +22,11 @@
                     </field>
                 </page>
             </xpath>
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button name="view_dependency_task_ids" type="object" class="oe_stat_button" icon="fa-tasks" attrs="{'invisible' : [('dependency_task_ids_count', '=', 0)]}">
+                    <field string="Dependencies" name="dependency_task_ids_count" widget="statinfo"/>
+                </button>
+            </xpath>
         </field>
     </record>
 </odoo>

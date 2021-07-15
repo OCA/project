@@ -17,6 +17,11 @@ class ProjectTask(models.Model):
         column2="dependency_task_id",
     )
 
+    dependency_task_ids_count = fields.Integer(
+        string="Dependency Tasks Count",
+        compute="_compute_dependency_task_ids_count"
+    )
+
     recursive_dependency_task_ids = fields.Many2many(
         string="Recursive Dependencies",
         comodel_name="project.task",
@@ -41,6 +46,10 @@ class ProjectTask(models.Model):
     def _compute_recursive_dependency_task_ids(self):
         for task in self:
             task.recursive_dependency_task_ids = task.get_dependency_tasks()
+
+    def _compute_dependency_task_ids_count(self):
+        for task in self:
+            task.dependency_task_ids_count = len(task.get_dependency_tasks())
 
     @api.depends("dependency_task_ids")
     def _compute_depending_task_ids(self):
@@ -87,3 +96,14 @@ class ProjectTask(models.Model):
                 {"old_task_id": self.id, "new_task_id": res.id}
             )
         return res
+
+
+    def view_dependency_task_ids(self):
+        self.ensure_one()
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Dependencies',
+            'view_mode': 'kanban,form',
+            'res_model': 'project.task',
+            'domain': [('id', 'in',  [t.id for t in self.dependency_task_ids])]
+        }
