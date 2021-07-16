@@ -4,10 +4,10 @@
 {
     "name": "Project Custom Info",
     "summary": "Add custom info in projects",
-    "author": "Tecnativa, " "Odoo Community Association (OCA)",
+    "author": "Tecnativa,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/project",
     "category": "Project",
-    "version": "13.0.1.0.0",
+    "version": "14.0.1.0.0",
     "license": "AGPL-3",
     "depends": ["base_custom_info", "project"],
     "demo": [
