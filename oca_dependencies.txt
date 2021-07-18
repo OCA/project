@@ -1,5 +1,6 @@
 project-reporting
 sale-workflow
 server-tools
+server-ux https://github.com/acsone/server-ux 13.0-add-base_recurrence-dro
 timesheet
 web
