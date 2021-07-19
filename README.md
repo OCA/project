@@ -33,7 +33,7 @@ addon | version | summary
 [project_tag](project_tag/) | 14.0.1.0.0 | Project Tags
 [project_task_add_very_high](project_task_add_very_high/) | 14.0.1.0.0 | Adds extra options 'High' and 'Very High' on tasks
 [project_task_code](project_task_code/) | 14.0.1.0.0 | Sequential Code for Tasks
-[project_task_default_stage](project_task_default_stage/) | 14.0.1.0.0 | Recovery default task stages for projects from v8
+[project_task_default_stage](project_task_default_stage/) | 14.0.1.1.0 | Recovery default task stages for projects from v8
 [project_task_dependency](project_task_dependency/) | 14.0.1.0.0 | Enables to define dependencies (other tasks) of a task
 [project_task_material](project_task_material/) | 14.0.1.0.0 | Record products spent in a Task
 [project_template](project_template/) | 14.0.1.1.0 | Project Templates
