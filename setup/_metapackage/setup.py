@@ -12,6 +12,7 @@ setuptools.setup(
         'odoo13-addon-project_custom_info',
         'odoo13-addon-project_deadline',
         'odoo13-addon-project_description',
+        'odoo13-addon-project_duplicate_subtask',
         'odoo13-addon-project_hr',
         'odoo13-addon-project_key',
         'odoo13-addon-project_list',
