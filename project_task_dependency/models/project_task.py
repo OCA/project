@@ -18,8 +18,7 @@ class ProjectTask(models.Model):
     )
 
     dependency_task_ids_count = fields.Integer(
-        string="Dependency Tasks Count",
-        compute="_compute_dependency_task_ids_count"
+        string="Dependency Tasks Count", compute="_compute_dependency_task_ids_count"
     )
 
     recursive_dependency_task_ids = fields.Many2many(
@@ -97,13 +96,12 @@ class ProjectTask(models.Model):
             )
         return res
 
-
     def view_dependency_task_ids(self):
         self.ensure_one()
         return {
-            'type': 'ir.actions.act_window',
-            'name': 'Dependencies',
-            'view_mode': 'kanban,form',
-            'res_model': 'project.task',
-            'domain': [('id', 'in',  [t.id for t in self.dependency_task_ids])]
+            "type": "ir.actions.act_window",
+            "name": "Dependencies",
+            "view_mode": "kanban,form",
+            "res_model": "project.task",
+            "domain": [("id", "in", [t.id for t in self.dependency_task_ids])],
         }
