@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!--
+        Copyright 2015 Tecnativa - Sergio Teruel
+        Copyright 2015 Tecnativa - Carlos Dauden
+        Copyright 2016-2017 Tecnativa - Vicent Cubells
+        License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
+    -->
+    <data>
+        <!-- Sequence new picking type -->
+        <record model="ir.sequence" id="project_task_material_sequence">
+            <field name="name">Project Task Material Sequence</field>
+            <field name="active">1</field>
+            <field name="prefix">CONSUM/</field>
+            <field name="padding">5</field>
+            <field name="number_increment">1</field>
+            <field name="implementation">standard</field>
+        </record>
+        <!-- New Picking type -->
+        <record model="stock.picking.type" id="project_task_material_picking_type">
+            <field name="name">Project Task Material Operations</field>
+            <field name="code">outgoing</field>
+            <field name="sequence_code">PTM</field>
+            <field name="sequence_id" ref="project_task_material_sequence" />
+            <field name="warehouse_id" ref="stock.warehouse0" />
+            <field name="default_location_src_id" ref="stock.stock_location_stock" />
+            <field
+                name="default_location_dest_id"
+                ref="stock.stock_location_customers"
+            />
+        </record>
+    </data>
+</odoo>
