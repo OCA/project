@@ -24,6 +24,7 @@ addon | version | summary
 [project_custom_info](project_custom_info/) | 13.0.1.0.0 | Add custom info in projects
 [project_deadline](project_deadline/) | 13.0.1.0.0 | Start date and deadline of projects.
 [project_description](project_description/) | 13.0.1.0.0 | Add a description to projects
+[project_duplicate_subtask](project_duplicate_subtask/) | 13.0.1.0.1 | The module adds an action to duplicate tasks with the child subtasks
 [project_hr](project_hr/) | 13.0.1.1.0 | Link HR with project
 [project_key](project_key/) | 13.0.1.0.1 | Module decorates projects and tasks with Project Key
 [project_list](project_list/) | 13.0.1.0.0 | Projects list view
