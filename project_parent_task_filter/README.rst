@@ -25,9 +25,10 @@ Project Parent Task Filter
 
 |badge1| |badge2| |badge3| |badge4| |badge5| 
 
-This module adds a filter to show only the parent tasks in a project and 
+This module adds a filter to show only the parent tasks in a project and
 a group to sort tasks by its parent tasks.
-It also add the subtask number in the kanban view.
+It also adds the subtask number in the kanban view and activates the use
+of subtasks in the project settings.
 
 **Table of contents**
 
@@ -45,7 +46,6 @@ Known issues / Roadmap
 ======================
 
 * Rename the module name
-* Activate the configuration option to use subtasks
 * In Products of type Service add an option to create a subtask of an existing task
 
 Bug Tracker
@@ -72,6 +72,8 @@ Contributors
 * `C2i Change 2 improve <http://c2i.es/>`_:
 
   * Eduardo Magdalena <emagdalena@c2i.es>
+
+* Stephan Keller <MiStK@gmx.de>
 
 Maintainers
 ~~~~~~~~~~~
