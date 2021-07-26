@@ -30,7 +30,7 @@ addon | version | summary
 [project_list](project_list/) | 13.0.1.0.0 | Projects list view
 [project_milestone](project_milestone/) | 13.0.1.0.0 | Project Milestones
 [project_parent](project_parent/) | 13.0.1.0.0 | Project Parent
-[project_parent_task_filter](project_parent_task_filter/) | 13.0.1.0.0 | Add a filter to show the parent tasks
+[project_parent_task_filter](project_parent_task_filter/) | 13.0.1.1.0 | Add a filter to show the parent tasks
 [project_purchase_link](project_purchase_link/) | 13.0.1.0.0 | Project Purchase Link
 [project_risk](project_risk/) | 13.0.1.0.0 | MOR risk management method
 [project_role](project_role/) | 13.0.1.0.0 | Project role-based roster
