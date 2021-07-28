@@ -19,97 +19,97 @@ msgid "All Milestones"
 msgstr ""
 
 #. module: project_milestone
-#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__create_uid
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone_create_uid
 msgid "Created by"
 msgstr ""
 
 #. module: project_milestone
-#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__create_date
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone_create_date
 msgid "Created on"
 msgstr ""
 
 #. module: project_milestone
-#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__display_name
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone_display_name
 msgid "Display Name"
 msgstr ""
 
 #. module: project_milestone
-#: model:ir.model.fields,help:project_milestone.field_project_project__use_milestones
-#: model:ir.model.fields,help:project_milestone.field_project_task__use_milestones
+#: model:ir.model.fields,help:project_milestone.field_project_project_use_milestones
+#: model:ir.model.fields,help:project_milestone.field_project_task_use_milestones
 msgid "Does this project use milestones?"
 msgstr ""
 
 #. module: project_milestone
-#: model_terms:ir.ui.view,arch_db:project_milestone.project_milestone_view_search
+#: model:ir.ui.view,arch_db:project_milestone.project_milestone_view_search
 msgid "Group By"
 msgstr ""
 
 #. module: project_milestone
-#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__id
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone_id
 msgid "ID"
 msgstr ""
 
 #. module: project_milestone
-#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__fold
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone_fold
 msgid "Kanban Folded?"
 msgstr ""
 
 #. module: project_milestone
-#: model:ir.model.fields,field_description:project_milestone.field_project_milestone____last_update
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone___last_update
 msgid "Last Modified on"
 msgstr ""
 
 #. module: project_milestone
-#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__write_uid
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone_write_uid
 msgid "Last Updated by"
 msgstr ""
 
 #. module: project_milestone
-#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__write_date
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone_write_date
 msgid "Last Updated on"
 msgstr ""
 
 #. module: project_milestone
-#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__name
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone_name
 msgid "Milestone"
 msgstr ""
 
 #. module: project_milestone
-#: model_terms:ir.ui.view,arch_db:project_milestone.project_milestone_view_form
+#: model:ir.ui.view,arch_db:project_milestone.project_milestone_view_form
 msgid "Milestone Form"
 msgstr ""
 
 #. module: project_milestone
-#: model_terms:ir.ui.view,arch_db:project_milestone.project_enhancements_milestone_inherit_search_view
+#: model:ir.ui.view,arch_db:project_milestone.project_enhancements_milestone_inherit_search_view
 msgid "Milestone Projects"
 msgstr ""
 
 #. module: project_milestone
-#: model:ir.model.fields,field_description:project_milestone.field_project_project__milestone_ids
-#: model:ir.model.fields,field_description:project_milestone.field_project_task__milestone_id
-#: model_terms:ir.ui.view,arch_db:project_milestone.project_enhancement_milestone_view_inherit_form
-#: model_terms:ir.ui.view,arch_db:project_milestone.view_task_enhancement_search_milestone_form
+#: model:ir.model.fields,field_description:project_milestone.field_project_project_milestone_ids
+#: model:ir.model.fields,field_description:project_milestone.field_project_task_milestone_id
+#: model:ir.ui.view,arch_db:project_milestone.project_enhancement_milestone_view_inherit_form
+#: model:ir.ui.view,arch_db:project_milestone.view_task_enhancement_search_milestone_form
 msgid "Milestones"
 msgstr ""
 
 #. module: project_milestone
-#: model_terms:ir.ui.view,arch_db:project_milestone.project_milestone_view_form
+#: model:ir.ui.view,arch_db:project_milestone.project_milestone_view_form
 msgid "Name"
 msgstr ""
 
 #. module: project_milestone
-#: model:ir.model.fields,help:project_milestone.field_project_milestone__progress
+#: model:ir.model.fields,help:project_milestone.field_project_milestone_progress
 msgid "Percentage of Completed Tasks vs Incomplete Tasks."
 msgstr ""
 
 #. module: project_milestone
-#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__progress
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone_progress
 msgid "Progress"
 msgstr ""
 
 #. module: project_milestone
-#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__project_id
-#: model_terms:ir.ui.view,arch_db:project_milestone.project_milestone_view_search
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone_project_id
+#: model:ir.ui.view,arch_db:project_milestone.project_milestone_view_search
 msgid "Project"
 msgstr ""
 
@@ -124,17 +124,17 @@ msgid "Project Milestones"
 msgstr ""
 
 #. module: project_milestone
-#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__project_task_ids
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone_project_task_ids
 msgid "Project Tasks"
 msgstr ""
 
 #. module: project_milestone
-#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__sequence
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone_sequence
 msgid "Sequence"
 msgstr ""
 
 #. module: project_milestone
-#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__target_date
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone_target_date
 msgid "Target Date"
 msgstr ""
 
@@ -144,13 +144,13 @@ msgid "Task"
 msgstr ""
 
 #. module: project_milestone
-#: model:ir.model.fields,help:project_milestone.field_project_milestone__target_date
+#: model:ir.model.fields,help:project_milestone.field_project_milestone_target_date
 msgid "The date when the Milestone should be complete."
 msgstr ""
 
 #. module: project_milestone
-#: model:ir.model.fields,field_description:project_milestone.field_project_project__use_milestones
-#: model:ir.model.fields,field_description:project_milestone.field_project_task__use_milestones
+#: model:ir.model.fields,field_description:project_milestone.field_project_project_use_milestones
+#: model:ir.model.fields,field_description:project_milestone.field_project_task_use_milestones
 msgid "Use Milestones"
 msgstr ""
 
