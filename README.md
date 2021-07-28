@@ -31,7 +31,7 @@ addon | version | summary
 [project_mail_chatter](project_mail_chatter/) | 12.0.1.0.0 | Add message chatter on the Project form.
 [project_milestone](project_milestone/) | 12.0.1.0.0 | Project Milestones
 [project_parent_task_filter](project_parent_task_filter/) | 12.0.1.3.0 | Add a filter to show the parent tasks
-[project_purchase_link](project_purchase_link/) | 12.0.1.0.0 | Project Purchase Link
+[project_purchase_link](project_purchase_link/) | 12.0.1.1.0 | Project Purchase Link
 [project_recalculate](project_recalculate/) | 12.0.1.0.0 | Project Recalculate
 [project_risk](project_risk/) | 12.0.1.0.1 | MOR risk management method
 [project_role](project_role/) | 12.0.3.0.0 | Project role-based roster
