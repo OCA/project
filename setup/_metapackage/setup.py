@@ -14,6 +14,7 @@ setuptools.setup(
         'odoo11-addon-project_hr',
         'odoo11-addon-project_key',
         'odoo11-addon-project_list',
+        'odoo11-addon-project_milestone',
         'odoo11-addon-project_risk',
         'odoo11-addon-project_stage_closed',
         'odoo11-addon-project_stage_state',
