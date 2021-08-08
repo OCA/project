@@ -50,12 +50,6 @@
                                     WBS Elements:
                                     <field name="project_child_complete_ids" />
                             </div>
-                        <t
-                            t-foreach="record.project_child_complete_ids.raw_value"
-                            t-as='child'
-                        >
-                            <t t-esc="child.complete_name" />
-                        </t>
                     </a>
                 </div>
             </xpath>
@@ -154,7 +148,6 @@
         <field name="name">WBS elements</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">project.project</field>
-        <field name="view_type">form</field>
         <field name="view_mode">form</field>
         <field name="target">current</field>
     </record>
@@ -182,32 +175,32 @@
                 <attribute name="required">0</attribute>
                 <attribute name="readonly">1</attribute>
             </field>
-            <field name="sequence" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </field>
-            <field name="sequence" position="after">
-                <field
-                    name="account_class"
-                    string="Class"
-                    invisible="context.get('default_parent_id', False)"
-                />
-                <field
-                    name="project_analytic_id"
-                    domain="[('account_class', '=', 'project')]"
-                    invisible="context.get('default_parent_id', False)"
-                />
-                <field
-                    name="code"
-                    string="Code"
-                    invisible="context.get('default_parent_id', False)"
-                />
-                <field
-                    name="complete_wbs_code"
-                    string="WBS code"
-                    readonly="1"
-                    invisible="context.get('default_parent_id', False)"
-                />
-            </field>
+            <xpath expr="//group[@name='misc']" position='inside'>
+                <group string="Configuration" groups="base.group_no_one" name="configuration">
+                    <field
+                        name="account_class"
+                        string="Class"
+                        invisible="context.get('default_parent_id', False)"
+                    />
+                    <field
+                        name="project_analytic_id"
+                        domain="[('account_class', '=', 'project')]"
+                        invisible="context.get('default_parent_id', False)"
+                    />
+                    <field
+                        name="code"
+                        string="Code"
+                        invisible="context.get('default_parent_id', False)"
+                    />
+                    <field
+                        name="complete_wbs_code"
+                        string="WBS code"
+                        readonly="1"
+                        invisible="context.get('default_parent_id', False)"
+                    />
+                </group>
+            </xpath>    
+            <!-- </field> -->
             <notebook position="inside">
                 <page string="Work Breakdown Structure" name="wbs">
                     <group name="button">
@@ -234,7 +227,6 @@
     <record id="open_view_wbs_tree" model="ir.actions.act_window">
         <field name="name">WBS overview</field>
         <field name="res_model">project.project</field>
-        <field name="view_type">form</field>
         <field name="view_mode">kanban,tree,form</field>
         <field name="view_id" ref="project.view_project" />
         <field name="search_view_id" ref="project.view_project_project_filter" />
@@ -250,7 +242,6 @@
     <record id="open_view_wbs_kanban" model="ir.actions.act_window">
         <field name="name">WBS elements</field>
         <field name="res_model">project.project</field>
-        <field name="view_type">form</field>
         <field name="view_mode">kanban,tree,form</field>
         <field name="view_id" ref="project.view_project_kanban" />
         <field name="search_view_id" ref="project.view_project_project_filter" />
@@ -261,7 +252,6 @@
     <record id="open_view_project_wbs" model="ir.actions.act_window">
         <field name="name">WBS elements</field>
         <field name="res_model">project.project</field>
-        <field name="view_type">form</field>
         <field name="domain">[]</field>
         <field name="view_mode">tree,form</field>
         <field name="view_id" ref="project.view_project" />
@@ -286,7 +276,6 @@
     <record id="group_project" model="ir.actions.act_window">
         <field name="name">Projects</field>
         <field name="res_model">project.project</field>
-        <field name="view_type">form</field>
         <field name="domain">[('account_class','in',['project'])]</field>
         <field name="view_mode">kanban,tree,form</field>
         <field name="view_id" ref="project.view_project" />
@@ -298,7 +287,6 @@
     <record id="open_view_project_phases" model="ir.actions.act_window">
         <field name="name">Phases</field>
         <field name="res_model">project.project</field>
-        <field name="view_type">form</field>
         <field name="domain">
             [('account_class','in',['phase'])]
         </field>
@@ -312,7 +300,6 @@
     <record id="open_view_project_deliverables" model="ir.actions.act_window">
         <field name="name">Deliverables</field>
         <field name="res_model">project.project</field>
-        <field name="view_type">form</field>
         <field name="domain">
             [('account_class','in',['deliverable'])]
         </field>
@@ -326,7 +313,6 @@
     <record id="open_view_project_work_packages" model="ir.actions.act_window">
         <field name="name">Work Packages</field>
         <field name="res_model">project.project</field>
-        <field name="view_type">form</field>
         <field name="domain">
             [('account_class','in',['work_package'])]
         </field>
@@ -340,7 +326,6 @@
     <record id="open_view_project_form" model="ir.actions.act_window">
         <field name="name">Edit project</field>
         <field name="res_model">project.project</field>
-        <field name="view_type">form</field>
         <field name="view_mode">form,tree,kanban</field>
         <field name="view_id" ref="project.edit_project" />
         <field name="search_view_id" ref="project.view_project_project_filter" />
