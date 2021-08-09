@@ -1,0 +1,10 @@
+<odoo>
+    <data noupdate="1">
+       <record id="project_stage_duplicated" model="project.task.type">
+           <field name="sequence">200</field>
+           <field name="name">Duplicated</field>
+           <field name="fold" eval="True" />
+           <field name="is_closed" eval="True" />
+       </record>
+    </data>
+</odoo>

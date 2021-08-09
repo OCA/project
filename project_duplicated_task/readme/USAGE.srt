@@ -1,0 +1,3 @@
+Select the task to close, click on "Set As Duplicated Task" button and indicate the duplicate task that will remain to be processed ("Duplicate Open Taskk"). By default, a "Duplicate" column / stage will be created and closed duplicates will be automatically added to it.
+
+If a parent task is declared as a duplicate, the subtasks will also be considered as duplicates and will have, as open referent duplicate, the same one as parent task.

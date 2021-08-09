@@ -1,0 +1,46 @@
+<odoo>
+    <data>
+        <record id="view_task_form_duplicated" model="ir.ui.view">
+            <field name="name">project.task.form</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2" />
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_assign_to_me']" position="after">
+                    <button
+                        class="oe_edit_only"
+                        string="Set As Duplicated Task"
+                        type="object"
+                        name="duplicated_task_status_action"
+                        attrs="{'invisible' : [('is_duplicate','=', True)]}"
+                    />
+                    <button
+                        class="oe_edit_only"
+                        string="Remove Duplicated Status"
+                        type="object"
+                        name="duplicated_task_status_action"
+                        attrs="{'invisible' : [('is_duplicate','=', False)]}"
+                    />
+                </xpath>
+                <xpath expr="//field[@name='legend_done']" position="after">
+                    <group>
+                        <field name="is_duplicate" invisible="1" />
+                        <field name="have_duplicate" invisible="1" />
+                        <field
+                            name="task_duplicated_open_ids"
+                            widget="many2many_tags"
+                            attrs="{'invisible' : [('is_duplicate','=', False)]}"
+                            options="{'no_create_edit': True, 'no_quick_create':True}"
+                            domain="[('project_id','=', project_id), ('id','!=', active_id), ('is_duplicate','=',False)]"
+                        />
+                        <field
+                            name="task_duplicated_closed_ids"
+                            widget="many2many_tags"
+                            attrs="{'invisible' : ['|', ('is_duplicate','=', True), ('have_duplicate','=', False)]}"
+                            options="{'no_create_edit': True, 'no_quick_create':True}"
+                        />
+                   </group>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

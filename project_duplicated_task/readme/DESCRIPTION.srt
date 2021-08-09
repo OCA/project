@@ -1,0 +1,1 @@
+Allow to close a task and categorize it as a duplicate. This  takes into account subtasks, spliting and cascading duplicates.
