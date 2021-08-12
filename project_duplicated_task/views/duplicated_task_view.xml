@@ -26,14 +26,14 @@
                         <field name="is_duplicate" invisible="1" />
                         <field name="have_duplicate" invisible="1" />
                         <field
-                            name="task_duplicated_open_ids"
+                            name="duplicated_main_task_ids"
                             widget="many2many_tags"
                             attrs="{'invisible' : [('is_duplicate','=', False)]}"
                             options="{'no_create_edit': True, 'no_quick_create':True}"
                             domain="[('project_id','=', project_id), ('id','!=', active_id), ('is_duplicate','=',False)]"
                         />
                         <field
-                            name="task_duplicated_closed_ids"
+                            name="duplicated_task_ids"
                             widget="many2many_tags"
                             attrs="{'invisible' : ['|', ('is_duplicate','=', True), ('have_duplicate','=', False)]}"
                             options="{'no_create_edit': True, 'no_quick_create':True}"
@@ -42,5 +42,27 @@
                 </xpath>
             </field>
         </record>
+
+        <record id="duplicated_tasks_form" model="ir.ui.view">
+            <field name="name">duplicated.tasks</field>
+            <field name="model">project.task</field>
+            <field name="arch" type="xml">
+                <form string="Duplicate Task">
+                     <group class="oe_title">
+                        <field name="is_duplicate" invisible="1" />
+                        <field name="project_id" invisible="1" />
+                        <field name="company_id" invisible="1" />
+                        <field
+                            name="duplicated_main_task_ids"
+                            widget="many2many_tags"
+                            attrs="{'invisible' : [('is_duplicate','=', False)]}"
+                            options="{'no_create_edit': True, 'no_quick_create':True}"
+                            domain="[('project_id','=', project_id), ('id','!=', active_id),  ('is_duplicate','=',False)]"
+                        />
+                     </group>
+                </form>
+            </field>
+        </record>
+
     </data>
 </odoo>
