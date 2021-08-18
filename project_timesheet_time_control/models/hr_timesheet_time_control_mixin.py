@@ -42,7 +42,8 @@ class HrTimesheetTimeControlMixin(models.AbstractModel):
         button_per_lines = {0: "start", 1: "stop"}
         for record in self:
             record.show_time_control = button_per_lines.get(
-                lines_per_record.get(record.id, 0), False,
+                lines_per_record.get(record.id, 0),
+                False,
             )
 
     def button_start_work(self):
