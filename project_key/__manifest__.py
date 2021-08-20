@@ -12,7 +12,4 @@
     "depends": ["project"],
     "data": ["views/project_key_views.xml"],
     "post_init_hook": "post_init_hook",
-    "external_dependencies": {
-        "python": ["mock==3.0.5"],
-    },
 }
