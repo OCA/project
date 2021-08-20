@@ -1,6 +1,8 @@
 # Copyright 2017 - 2018 Modoolar <info@modoolar.com>
 # License LGPLv3.0 or later (https://www.gnu.org/licenses/lgpl-3.0.en.html).
 
+from odoo.tools import mute_logger
+
 from .test_common import TestCommon
 
 
@@ -45,6 +47,7 @@ class TestProject(TestCommon):
         project._onchange_project_name()
         self.assertEqual(project.key, "")
 
+    @mute_logger("odoo.models.unlink")
     def test_07_delete(self):
         self.project_1.task_ids.unlink()
         self.project_1.unlink()
