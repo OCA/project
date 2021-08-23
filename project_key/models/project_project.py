@@ -3,7 +3,6 @@
 
 from odoo import _, api, fields, models
 from odoo.osv import expression
-from odoo.tools import config
 
 
 class Project(models.Model):
@@ -119,15 +118,15 @@ class Project(models.Model):
         return values
 
     def get_next_task_key(self):
-        test_project_key = self.env.context.get("test_project_key")
-        if config["test_enable"] and not test_project_key:
-            return False
+        self.env.context.get("test_project_key")
+        # if config["test_enable"] and not test_project_key:
+        #     return False
         return self.sudo().task_key_sequence_id.next_by_id()
 
     def generate_project_key(self, text):
-        test_project_key = self.env.context.get("test_project_key")
-        if config["test_enable"] and not test_project_key:
-            return False
+        self.env.context.get("test_project_key")
+        # if config["test_enable"] and not test_project_key:
+        #     return False
 
         if not text:
             return ""
@@ -139,6 +138,16 @@ class Project(models.Model):
         key = []
         for item in data:
             key.append(item[:1].upper())
+
+        exist_key = (
+            self.env["project.project"]
+            .sudo()
+            .search_count([("key", "=", "".join(key))])
+        )
+
+        if exist_key > 0:
+            key.append(str(exist_key + 1))
+
         return "".join(key)
 
     def _update_task_keys(self):
