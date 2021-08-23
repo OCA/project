@@ -128,12 +128,22 @@ class Project(models.Model):
         # if config["test_enable"] and not test_project_key:
         #     return False
 
+        key = ""
+
         if not text:
             return ""
 
         data = text.split(" ")
         if len(data) == 1:
-            return data[0][:3].upper()
+            key = data[0][:3].upper()
+            exist_key = (
+                self.env["project.project"].sudo().search_count([("key", "=", key)])
+            )
+
+            if exist_key > 0:
+                key += str(exist_key + 1)
+
+            return key
 
         key = []
         for item in data:
