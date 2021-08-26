@@ -21,6 +21,7 @@
                     icon="fa-play-circle text-success"
                     attrs="{'invisible': [('show_time_control', '!=', 'resume')]}"
                     class="oe_stat_button"
+                    title="Start work"
                 />
                 <button
                     name="button_end_work"
@@ -30,6 +31,7 @@
                     icon="fa-stop-circle text-warning"
                     attrs="{'invisible': [('show_time_control', '!=', 'stop')]}"
                     class="oe_stat_button"
+                    title="End work"
                 />
             </field>
         </field>
@@ -52,6 +54,7 @@
                     attrs="{'invisible': [('show_time_control', '!=', 'resume')]}"
                     class="oe_stat_button"
                     context="{'show_created_timer': True}"
+                    title="Start work"
                 />
                 <button
                     name="button_end_work"
@@ -60,6 +63,7 @@
                     icon="fa-stop-circle text-warning"
                     attrs="{'invisible': [('show_time_control', '!=', 'stop')]}"
                     class="oe_stat_button"
+                    title="End work"
                 />
             </div>
             <field name="date" position="attributes">
@@ -85,6 +89,7 @@
                     type="object"
                     attrs="{'invisible': [('show_time_control', '!=', 'resume')]}"
                     class="o_kanban_inline_block fa fa-lg fa-play-circle text-success"
+                    title="Start work"
                 />
                 <a
                     name="button_end_work"
@@ -93,6 +98,7 @@
                     type="object"
                     attrs="{'invisible': [('show_time_control', '!=', 'stop')]}"
                     class="o_kanban_inline_block fa fa-lg fa-stop-circle text-warning"
+                    title="End work"
                 />
             </xpath>
             <field name="date" position="after">
