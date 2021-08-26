@@ -18,6 +18,7 @@
                     icon="fa-play-circle text-success"
                     attrs="{'invisible': [('show_time_control', '!=', 'start')]}"
                     class="oe_stat_button"
+                    title="Start work"
                 />
                 <button
                     name="button_end_work"
@@ -26,6 +27,7 @@
                     icon="fa-stop-circle text-warning"
                     attrs="{'invisible': [('show_time_control', '!=', 'stop')]}"
                     class="oe_stat_button"
+                    title="End work"
                 />
             </div>
         </field>
@@ -91,6 +93,7 @@
                     icon="fa-play-circle text-success"
                     attrs="{'invisible': [('show_time_control', '!=', 'start')]}"
                     class="oe_stat_button"
+                    title="Start work"
                 />
                 <button
                     name="button_end_work"
@@ -100,6 +103,7 @@
                     icon="fa-stop-circle text-warning"
                     attrs="{'invisible': [('show_time_control', '!=', 'stop')]}"
                     class="oe_stat_button"
+                    title="End work"
                 />
             </tree>
         </field>
