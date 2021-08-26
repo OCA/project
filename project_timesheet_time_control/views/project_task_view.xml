@@ -19,6 +19,7 @@
                     icon="fa-play-circle text-success"
                     attrs="{'invisible': [('show_time_control', '!=', 'start')]}"
                     class="oe_stat_button"
+                    title="Start work"
                 />
                 <button
                     name="button_end_work"
@@ -27,6 +28,7 @@
                     icon="fa-stop-circle text-warning"
                     attrs="{'invisible': [('show_time_control', '!=', 'stop')]}"
                     class="oe_stat_button"
+                    title="End work"
                 />
             </div>
             <!-- Sub-tree view for timesheet_ids -->
@@ -126,6 +128,7 @@
                         attrs="{'invisible': [('show_time_control', '!=', 'resume')]}"
                         class="oe_stat_button"
                         context="{'show_created_timer': True}"
+                        title="Start work"
                     />
                     <button
                         name="button_end_work"
@@ -135,6 +138,7 @@
                         icon="fa-stop-circle text-warning"
                         attrs="{'invisible': [('show_time_control', '!=', 'stop')]}"
                         class="oe_stat_button"
+                        title="End work"
                     />
                 </div>
             </xpath>
@@ -158,6 +162,7 @@
                     string="Start work"
                     tabindex="-1"
                     type="object"
+                    title="Start work"
                 />
                 <a
                     name="button_end_work"
@@ -166,6 +171,7 @@
                     string="Stop work"
                     tabindex="-1"
                     type="object"
+                    title="End work"
                 />
             </xpath>
         </field>
@@ -189,6 +195,7 @@
                     icon="fa-play-circle text-success"
                     attrs="{'invisible': [('show_time_control', '!=', 'start')]}"
                     class="oe_stat_button"
+                    title="Start work"
                 />
                 <button
                     name="button_end_work"
@@ -198,6 +205,7 @@
                     icon="fa-stop-circle text-warning"
                     attrs="{'invisible': [('show_time_control', '!=', 'stop')]}"
                     class="oe_stat_button"
+                    title="End work"
                 />
             </tree>
         </field>
