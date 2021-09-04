@@ -27,6 +27,7 @@ setuptools.setup(
         'odoo14-addon-project_task_material',
         'odoo14-addon-project_template',
         'odoo14-addon-project_timeline',
+        'odoo14-addon-project_timesheet_time_control',
     ],
     classifiers=[
         'Programming Language :: Python',
