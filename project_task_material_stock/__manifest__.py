@@ -8,9 +8,9 @@
     "name": "Project Task Material Stock",
     "summary": "Create stock and analytic moves from "
     "record products spent in a Task",
-    "version": "13.0.1.0.0",
+    "version": "14.0.1.0.0",
     "category": "Project Management",
-    "website": "https://github.com/OCA/project/",
+    "website": "https://github.com/OCA/project",
     "author": "Tecnativa, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "installable": True,

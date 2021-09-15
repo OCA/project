@@ -40,7 +40,10 @@ class Task(models.Model):
                         task.stock_state = state
                         break
 
-    picking_id = fields.Many2one("stock.picking", related="stock_move_ids.picking_id",)
+    picking_id = fields.Many2one(
+        "stock.picking",
+        related="stock_move_ids.picking_id",
+    )
     stock_move_ids = fields.Many2many(
         comodel_name="stock.move",
         compute="_compute_stock_move",
@@ -57,7 +60,9 @@ class Task(models.Model):
         compute="_compute_analytic_line",
         string="Analytic Lines",
     )
-    consume_material = fields.Boolean(related="stage_id.consume_material",)
+    consume_material = fields.Boolean(
+        related="stage_id.consume_material",
+    )
     stock_state = fields.Selection(
         selection=[
             ("pending", "Pending"),
@@ -93,7 +98,7 @@ class Task(models.Model):
         return res
 
     def write(self, vals):
-        res = super(Task, self).write(vals)
+        res = super().write(vals)
         for task in self:
             if "stage_id" in vals or "material_ids" in vals:
                 if task.consume_material:
@@ -133,9 +138,13 @@ class Task(models.Model):
 class ProjectTaskMaterial(models.Model):
     _inherit = "project.task.material"
 
-    stock_move_id = fields.Many2one(comodel_name="stock.move", string="Stock Move",)
+    stock_move_id = fields.Many2one(
+        comodel_name="stock.move",
+        string="Stock Move",
+    )
     analytic_line_id = fields.Many2one(
-        comodel_name="account.analytic.line", string="Analytic Line",
+        comodel_name="account.analytic.line",
+        string="Analytic Line",
     )
     product_uom_id = fields.Many2one(comodel_name="uom.uom", string="Unit of Measure")
     product_id = fields.Many2one(domain="[('type', 'in', ('consu', 'product'))]")
@@ -268,4 +277,4 @@ class ProjectTaskMaterial(models.Model):
                 )
             )
         self.analytic_line_id.unlink()
-        return super(ProjectTaskMaterial, self).unlink()
+        return super().unlink()

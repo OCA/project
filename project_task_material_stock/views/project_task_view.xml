@@ -81,7 +81,7 @@
                             <field name="stock_move_ids">
                                 <tree string="Stock Moves">
                                     <field name="picking_id" />
-                                    <field name="date_expected" />
+                                    <field name="date_deadline" />
                                     <field name="date" />
                                     <field name="origin" />
                                     <field name="product_id" />

@@ -13,3 +13,7 @@
 * `jeo Software <https://www.jeosoft.com.ar>`_:
 
   * Jorge Obiols <jorge.obiols@gmail.com>
+
+* `Comunitea <https://www.comunitea.com>`_:
+
+  * Omar Castiñeira Saavedra <omar@comunitea.com>
