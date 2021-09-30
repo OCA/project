@@ -38,6 +38,7 @@ addon | version | maintainers | summary
 [project_task_material](project_task_material/) | 14.0.1.0.0 |  | Record products spent in a Task
 [project_template](project_template/) | 14.0.1.1.0 | [![patrickrwilson](https://github.com/patrickrwilson.png?size=30px)](https://github.com/patrickrwilson) | Project Templates
 [project_timeline](project_timeline/) | 14.0.1.1.0 |  | Timeline view for projects
+[project_timeline_task_dependency](project_timeline_task_dependency/) | 14.0.1.0.0 |  | Render arrows between dependencies.
 [project_timesheet_time_control](project_timesheet_time_control/) | 14.0.1.0.0 | [![ernestotejeda](https://github.com/ernestotejeda.png?size=30px)](https://github.com/ernestotejeda) | Project timesheet time control
 
 [//]: # (end addons)
