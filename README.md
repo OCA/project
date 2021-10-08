@@ -36,6 +36,7 @@ addon | version | maintainers | summary
 [project_task_default_stage](project_task_default_stage/) | 14.0.1.1.0 |  | Recovery default task stages for projects from v8
 [project_task_dependency](project_task_dependency/) | 14.0.1.0.0 | [![astirpe](https://github.com/astirpe.png?size=30px)](https://github.com/astirpe) | Enables to define dependencies (other tasks) of a task
 [project_task_material](project_task_material/) | 14.0.1.0.0 |  | Record products spent in a Task
+[project_task_pull_request](project_task_pull_request/) | 14.0.1.0.0 |  | Adds a field for a PR URI to project tasks
 [project_template](project_template/) | 14.0.1.1.0 | [![patrickrwilson](https://github.com/patrickrwilson.png?size=30px)](https://github.com/patrickrwilson) | Project Templates
 [project_timeline](project_timeline/) | 14.0.1.1.0 |  | Timeline view for projects
 [project_timeline_task_dependency](project_timeline_task_dependency/) | 14.0.1.0.0 |  | Render arrows between dependencies.
