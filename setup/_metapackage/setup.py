@@ -25,6 +25,7 @@ setuptools.setup(
         'odoo14-addon-project_task_default_stage',
         'odoo14-addon-project_task_dependency',
         'odoo14-addon-project_task_material',
+        'odoo14-addon-project_task_pull_request',
         'odoo14-addon-project_template',
         'odoo14-addon-project_timeline',
         'odoo14-addon-project_timeline_task_dependency',
