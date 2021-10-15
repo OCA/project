@@ -12,21 +12,6 @@
          </field>
      </record>
 
-    <record id="view_project_project_filter" model="ir.ui.view">
-         <field name="name">project.project.select</field>
-         <field name="model">project.project</field>
-         <field name="inherit_id" ref="project.view_project_project_filter"/>
-         <field name="type">search</field>
-         <field name="arch" type="xml">
-               <field name="partner_id" position="before">
-                  <field name="department_id"/>
-               </field>
-               <xpath expr="//search" position="inside">
-                  <filter string="Department" context="{'group_by':'department_id'}"/>
-               </xpath>
-         </field>
-     </record>
-
      <record id="view_project" model="ir.ui.view">
          <field name="name">project.project.tree</field>
          <field name="model">project.project</field>
@@ -48,7 +33,7 @@
           <field name="user_id" position="after">
             <field name="project_department_id"/>
           </field>
-          <filter name="User" position="after">
+          <filter name="my_tasks" position="after">
             <filter string="Project Department" name="group_department_id" context="{'group_by':'project_department_id'}"/>
           </filter>
         </field>
