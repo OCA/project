@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
     "name": "Project Task Pull Request",
-    "summary": "Adds a field for a PR URI to project tasks",
+    "summary": "Adds a field for a PR URI to project tasks and task search by PR URI",
     "version": "11.0.1.0.0",
     "category": "Project Management",
     "website": "https://odoo-community.org/",
