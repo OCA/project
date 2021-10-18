@@ -8,3 +8,8 @@
   * Pedro M. Baeza
   * Carlos Dauden
   * Alexandre Díaz
+  * Sergio Teruel
+
+* `Open Source Integrators <https://www.opensourceintegrators.com>`_:
+
+  * Daniel Reis
