@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-12-23 03:43+0000\n"
-"PO-Revision-Date: 2021-11-11 15:36+0000\n"
+"PO-Revision-Date: 2021-11-15 15:36+0000\n"
 "Last-Translator: Simon S <simon.stromberg@vertel.se>\n"
 "Language-Team: Swedish (https://www.transifex.com/oca/teams/23907/sv/)\n"
 "Language: sv\n"
@@ -32,7 +32,7 @@ msgstr "Skapad den"
 #. module: project_task_material
 #: model:ir.model.fields,field_description:project_task_material.field_project_task_material__display_name
 msgid "Display Name"
-msgstr "Visa namn"
+msgstr "Visningsnamn"
 
 #. module: project_task_material
 #: model:ir.model.fields,field_description:project_task_material.field_project_task_material__id
@@ -42,7 +42,7 @@ msgstr "ID"
 #. module: project_task_material
 #: model:ir.model.fields,field_description:project_task_material.field_project_task_material____last_update
 msgid "Last Modified on"
-msgstr "Senast redigerad"
+msgstr "Senast redigerad den"
 
 #. module: project_task_material
 #: model:ir.model.fields,field_description:project_task_material.field_project_task_material__write_uid
@@ -52,7 +52,7 @@ msgstr "Senast uppdaterad av"
 #. module: project_task_material
 #: model:ir.model.fields,field_description:project_task_material.field_project_task_material__write_date
 msgid "Last Updated on"
-msgstr "Senast uppdaterad"
+msgstr "Senast uppdaterad den"
 
 #. module: project_task_material
 #: model_terms:ir.ui.view,arch_db:project_task_material.view_project_task_form_material
