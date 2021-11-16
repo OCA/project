@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <odoo>
 
     <record id="task_type_edit" model="ir.ui.view">
@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="project.task_type_edit" />
         <field name="arch" type="xml">
             <field name="fold" position="after">
-                <field name="include_in_recalculate"/>
+                <field name="include_in_recalculate" />
             </field>
         </field>
     </record>
