@@ -4,13 +4,12 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 11.0\n"
+"Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-11-17 16:50+0000\n"
 "PO-Revision-Date: 2021-11-18 17:36+0000\n"
 "Last-Translator: pere-aquarian <pere@aquarian.tech>\n"
-"Language-Team: \n"
-"Language: es\n"
+"Language-Team: none\n"
+"Language: ca\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -20,28 +19,28 @@ msgstr ""
 #. module: project_hr
 #: model:ir.model.fields,field_description:project_hr.field_project_task__allowed_hr_category_ids
 msgid "Allowed HR categories"
-msgstr "Categorías RRHH permitidas"
+msgstr "Categories de RRHH permeses"
 
 #. module: project_hr
 #: model:ir.model.fields,field_description:project_hr.field_project_task__allowed_user_ids
 msgid "Allowed users"
-msgstr "Usuarios permitidos"
+msgstr "Usuaris/àries permesos/es"
 
 #. module: project_hr
 #: model:ir.model,name:project_hr.model_hr_employee
 msgid "Employee"
-msgstr "Empleado/a"
+msgstr "Empleat/da"
 
 #. module: project_hr
 #: model:ir.model.fields,field_description:project_hr.field_project_project__hr_category_ids
 #: model:ir.model.fields,field_description:project_hr.field_project_task__hr_category_ids
 msgid "Employee Categories"
-msgstr "Categorías de empleado"
+msgstr "Categories d'empleat/da"
 
 #. module: project_hr
 #: model:ir.model.fields,field_description:project_hr.field_res_users__hr_category_ids
 msgid "HR categories"
-msgstr "Categorías RRHH"
+msgstr "Categories de RRHH"
 
 #. module: project_hr
 #: model:ir.model.fields,help:project_hr.field_project_project__hr_category_ids
@@ -49,8 +48,8 @@ msgid ""
 "Here you can link the project to several employee categories, that will be "
 "the allowed in tasks."
 msgstr ""
-"Aquí puede enlazar el proyecto a varias categorías de empleado, que serán "
-"las permitidas en las tareas."
+"Aquí pot enllaçar el projecte a vàries categories de l'empleat/da, que seran "
+"les permeses a les tasques."
 
 #. module: project_hr
 #: model:ir.model.fields,help:project_hr.field_project_task__hr_category_ids
@@ -59,24 +58,24 @@ msgid ""
 "limiting the selectable users to be assigned to those that belongs to that "
 "category."
 msgstr ""
-"Aquí puede seleccionar la categoría de empleado adecuada para realizar esta "
-"tarea, limitando los usuarios seleccionables para ser asignados a aquellos "
-"que pertenezcan a la categoría."
+"Aquí pot seleccionar la categoria de l'empleat/da adequada per a realitzar "
+"aquesta tasca, limitant els/les usuaris/àries seleccionables per a ser "
+"assignats/ades a aquells que pertanyen a la categoria."
 
 #. module: project_hr
 #: model:ir.model.fields,field_description:project_hr.field_project_task__employee_id
 msgid "Linked employee"
-msgstr "Empleado relacionado"
+msgstr "Empleat/da relacionat/da"
 
 #. module: project_hr
 #: model:ir.model,name:project_hr.model_project_project
 msgid "Project"
-msgstr "Proyecto"
+msgstr "Projecte"
 
 #. module: project_hr
 #: model:ir.model,name:project_hr.model_project_task
 msgid "Task"
-msgstr "Tarea"
+msgstr "Tasca"
 
 #. module: project_hr
 #: model:ir.model.fields,help:project_hr.field_project_task__allowed_hr_category_ids
@@ -84,16 +83,16 @@ msgid ""
 "Technical field for computing allowed employee categories according "
 "categories at project level."
 msgstr ""
-"Campo técnico para calcular las categorías de empleado permitidos conforme "
-"las categorías a nivel de proyecto."
+"Camp tècnic per a calcular les categories de l'empleat/da permeses conforme "
+"a les categories establertes a nivell de projecte."
 
 #. module: project_hr
 #: model:ir.model.fields,help:project_hr.field_project_task__allowed_user_ids
 msgid ""
 "Technical field for computing allowed users according employee category."
 msgstr ""
-"Campo técnico para calcular los usuarios permitidos conforme a la categoría "
-"de empleado."
+"Camp tècnic per a calcular els/les usuaris/àries permesos/es conforme a les "
+"categories establertes a nivell d'empleat/ada."
 
 #. module: project_hr
 #: model:ir.model.fields,help:project_hr.field_res_users__hr_category_ids
@@ -101,20 +100,19 @@ msgid ""
 "Technical field for computing dynamically employee categories linked to the "
 "user in the current company."
 msgstr ""
-"Campo técnico para calcular dinámicamente las categorías de empleado "
-"enlazadas con el usuario en la compañía actual."
+"Camp tècnic per a calcular dinàmicament les categories de l'empleat/da "
+"relacionat/da a l'usuari de la companyia actual."
 
 #. module: project_hr
 #: model:ir.model,name:project_hr.model_res_users
 msgid "Users"
-msgstr "Usuarios"
+msgstr "Usuaris/àries"
 
 #. module: project_hr
 #: code:addons/project_hr/models/project_task.py:0
 #, python-format
 msgid "You can't assign a category that is not allowed at project level."
-msgstr ""
-"No puede asignar una categoría que no está permitida a nivel de proyecto."
+msgstr "No pot assignar una categoria que no està permesa a nivell de projecte."
 
 #. module: project_hr
 #: code:addons/project_hr/models/project_task.py:0
@@ -122,5 +120,5 @@ msgstr ""
 msgid ""
 "You can't assign a user not belonging to the selected employee category."
 msgstr ""
-"No puede asignar un usuario que no pertenezca a la categoría de empleado "
+"No pot assignar un/a usuari/ària que no pertany a la categoria d'empleat/ada "
 "seleccionada."
