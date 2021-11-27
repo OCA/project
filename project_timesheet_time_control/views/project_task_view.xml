@@ -93,6 +93,7 @@
                     string="Resume work"
                     attrs="{'invisible': [('show_time_control', '!=', 'resume')]}"
                     class="o_kanban_inline_block fa fa-lg fa-play-circle text-success"
+                    title="Resume work"
                 />
                 <a
                     name="button_end_work"
@@ -101,6 +102,7 @@
                     string="Stop work"
                     attrs="{'invisible': [('show_time_control', '!=', 'stop')]}"
                     class="o_kanban_inline_block fa fa-lg fa-stop-circle text-warning"
+                    title="Stop work"
                 />
             </xpath>
             <!-- Sub-form view for timesheet_ids -->
