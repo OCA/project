@@ -7,7 +7,7 @@ from odoo import _, api, exceptions, fields, models
 class ProjectTask(models.Model):
     _inherit = "project.task"
 
-    pr_uri = fields.Char(string="PR URI", track_visibility="onchange")
+    pr_uri = fields.Char(string="PR URI", tracking=True)
 
     pr_required_states = fields.Many2many(related="project_id.pr_required_states")
 
