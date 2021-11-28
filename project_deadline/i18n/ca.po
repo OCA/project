@@ -1,0 +1,42 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_deadline
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2021-11-18 17:36+0000\n"
+"Last-Translator: pere-aquarian <pere@aquarian.tech>\n"
+"Language-Team: none\n"
+"Language: ca\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.3.2\n"
+
+#. module: project_deadline
+#: model:ir.model,name:project_deadline.model_project_project
+msgid "Project"
+msgstr "Projecte"
+
+#. module: project_deadline
+#: model:ir.model.fields,field_description:project_deadline.field_project_task__project_date_deadline
+msgid "Project Deadline"
+msgstr "Data límit del projecte"
+
+#. module: project_deadline
+#: model:ir.model.fields,field_description:project_deadline.field_project_task__project_date_start
+msgid "Project Start Date"
+msgstr "Data d'inici del projecte"
+
+#. module: project_deadline
+#: model:ir.model,name:project_deadline.model_project_task
+msgid "Task"
+msgstr "Tasca"
+
+#. module: project_deadline
+#: model_terms:ir.ui.view,arch_db:project_deadline.view_project_kanban
+msgid "oe_kanban_text_red"
+msgstr "oe_kanban_text_red"

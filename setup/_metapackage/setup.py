@@ -12,6 +12,7 @@ setuptools.setup(
         'odoo13-addon-project_custom_info',
         'odoo13-addon-project_deadline',
         'odoo13-addon-project_description',
+        'odoo13-addon-project_duplicate_subtask',
         'odoo13-addon-project_hr',
         'odoo13-addon-project_key',
         'odoo13-addon-project_list',
@@ -29,6 +30,7 @@ setuptools.setup(
         'odoo13-addon-project_task_code',
         'odoo13-addon-project_task_default_stage',
         'odoo13-addon-project_task_dependency',
+        'odoo13-addon-project_task_markdown',
         'odoo13-addon-project_task_material',
         'odoo13-addon-project_task_pull_request',
         'odoo13-addon-project_task_send_by_mail',
@@ -41,5 +43,6 @@ setuptools.setup(
     classifiers=[
         'Programming Language :: Python',
         'Framework :: Odoo',
+        'Framework :: Odoo :: 13.0',
     ]
 )

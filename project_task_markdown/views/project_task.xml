@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_task_form_with_pad" model="ir.ui.view">
+        <field name="name">project.task.form.pad</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2" />
+        <field name="arch" type="xml">
+            <page name="description_page" position="replace">
+                <page name="description_page" string="Description">
+                    <field name="description" widget="bootstrap_markdown" />
+                </page>
+            </page>
+        </field>
+    </record>
+</odoo>

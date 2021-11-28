@@ -1,5 +1,5 @@
 project-reporting
 server-tools
 timesheet
-web
 manufacture
+web https://github.com/KKamaa/web.git 13.0-mig-web-widget-text-markdown
