@@ -16,7 +16,7 @@ def uniqify_codes(env):
             env.cr.execute("SELECT id FROM project_task WHERE code = %s",
                 [task_code])
         else:
-            env.cr.execute("SELECT id FROM project_task"
+            env.cr.execute("SELECT id FROM project_task "
                            "WHERE code IS NULL OR code = '/'")
         similar_task_ids = [x['id'] for x in env.cr.dictfetchall()]
 
