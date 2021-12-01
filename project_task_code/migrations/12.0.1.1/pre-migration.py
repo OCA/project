@@ -14,7 +14,7 @@ def uniqify_codes(env):
 
         if not code_is_null:
             env.cr.execute("SELECT id FROM project_task WHERE code = %s",
-                [task_code])
+                           [task_code])
         else:
             env.cr.execute("SELECT id FROM project_task "
                            "WHERE code IS NULL OR code = '/'")
