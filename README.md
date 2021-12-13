@@ -21,6 +21,7 @@ addon | version | maintainers | summary
 --- | --- | --- | ---
 [project_category](project_category/) | 14.0.1.0.0 |  | Project Types
 [project_deadline](project_deadline/) | 14.0.1.0.0 |  | Start date and deadline of projects.
+[project_duplicate_subtask](project_duplicate_subtask/) | 14.0.1.0.0 |  | The module adds an action to duplicate tasks with the child subtasks
 [project_key](project_key/) | 14.0.1.0.1 |  | Module decorates projects and tasks with Project Key
 [project_list](project_list/) | 14.0.1.0.0 |  | Projects list view
 [project_milestone](project_milestone/) | 14.0.1.0.0 | [![patrickrwilson](https://github.com/patrickrwilson.png?size=30px)](https://github.com/patrickrwilson) | Project Milestones
