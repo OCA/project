@@ -10,6 +10,7 @@ setuptools.setup(
     install_requires=[
         'odoo14-addon-project_category',
         'odoo14-addon-project_deadline',
+        'odoo14-addon-project_duplicate_subtask',
         'odoo14-addon-project_key',
         'odoo14-addon-project_list',
         'odoo14-addon-project_milestone',
