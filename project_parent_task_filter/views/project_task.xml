@@ -23,11 +23,23 @@
             </xpath>
         </field>
     </record>
+
+    <record id="view_task_tree_subtask" model="ir.ui.view">
+        <field name="name">project.task.tree.substask</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_tree2" />
+        <field name="arch" type="xml">
+            <tree position="attributes">
+                <attribute name="create">0</attribute>
+            </tree>
+        </field>
+    </record>
     <record id="view_task_kanban_subtask" model="ir.ui.view">
         <field name="name">project.task.kanban</field>
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_kanban" />
         <field name="arch" type="xml">
+
             <kanban position="inside">
                 <field name="allow_subtasks" />
             </kanban>
