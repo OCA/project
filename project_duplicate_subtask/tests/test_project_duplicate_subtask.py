@@ -28,3 +28,24 @@ class TestProjectDuplicateSubtask(TransactionCase):
         self.assertEqual(
             len(new_task.child_ids), 2, "Two subtasks should have been created"
         )
+
+    def test_check_subtasks_of_substasks(self):
+        self.sub_subtask1_1 = self.env["project.task"].create(
+            {"name": "4", "project_id": self.project1.id, "parent_id": self.subtask1.id}
+        )
+        self.task1.action_duplicate_subtasks()
+
+        new_task = self.env["project.task"].search(
+            [("name", "ilike", self.task1.name), ("name", "ilike", "copy")]
+        )
+        self.assertEqual(
+            len(new_task.child_ids), 2, "Two subtasks should have been created"
+        )
+        new_subtask = self.env["project.task"].search(
+            [
+                ("name", "=", self.subtask1.name + " (copy)"),
+            ]
+        )
+        self.assertEqual(
+            len(new_subtask.child_ids), 1, "One subtask should have been created"
+        )
