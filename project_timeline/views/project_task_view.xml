@@ -50,6 +50,18 @@
             name="view_mode"
         >kanban,tree,form,calendar,timeline,pivot,graph,activity</field>
     </record>
+    <record id="project.action_project_task_user_tree" model="ir.actions.act_window">
+        <field name="view_mode">graph,pivot,timeline</field>
+    </record>
+    <record
+        id="project.act_res_users_2_project_task_opened"
+        model="ir.actions.act_window"
+    >
+        <field name="view_mode">tree,form,calendar,graph,timeline</field>
+    </record>
+    <record id="project.project_task_action_from_partner" model="ir.actions.act_window">
+        <field name="view_mode">kanban,tree,form,timeline</field>
+    </record>
     <record
         id="project.act_project_project_2_project_task_all"
         model="ir.actions.act_window"
@@ -58,10 +70,24 @@
             name="view_mode"
         >kanban,tree,form,calendar,timeline,pivot,graph,activity</field>
     </record>
+    <record id="project.action_view_all_task" model="ir.actions.act_window">
+        <field
+            name="view_mode"
+        >tree,kanban,form,calendar,timeline,pivot,graph,gantt,activity,map</field>
+    </record>
+    <record
+        id="project.action_view_task_overpassed_draft"
+        model="ir.actions.act_window"
+    >
+        <field name="view_mode">tree,form,calendar,timeline,graph,kanban</field>
+    </record>
     <record id="project.project_task_action_sub_task" model="ir.actions.act_window">
         <field
             name="view_mode"
         >kanban,tree,form,calendar,timeline,pivot,graph,activity</field>
+    </record>
+    <record id="project.dblc_proj" model="ir.actions.act_window">
+        <field name="view_mode">tree,form,calendar,timeline,graph,kanban</field>
     </record>
     <record id="view_task_form2" model="ir.ui.view">
         <field name="name">project.task.form</field>
