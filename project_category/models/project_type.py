@@ -13,10 +13,8 @@ class ProjectType(models.Model):
     child_ids = fields.One2many(
         comodel_name="project.type", inverse_name="parent_id", string="Subtypes"
     )
-    name = fields.Char(string="Name", required=True, translate=True)
-    complete_name = fields.Char(
-        string="Complete Name", compute="_compute_complete_name", store=True
-    )
+    name = fields.Char(required=True, translate=True)
+    complete_name = fields.Char(compute="_compute_complete_name", store=True)
     description = fields.Text(translate=True)
     project_ok = fields.Boolean(string="Can be applied for projects", default=True)
     task_ok = fields.Boolean(string="Can be applied for tasks")
