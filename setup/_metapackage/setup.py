@@ -29,6 +29,7 @@ setuptools.setup(
         'odoo14-addon-project_task_pull_request',
         'odoo14-addon-project_template',
         'odoo14-addon-project_timeline',
+        'odoo14-addon-project_timeline_hr_timesheet',
         'odoo14-addon-project_timeline_task_dependency',
         'odoo14-addon-project_timesheet_time_control',
     ],
