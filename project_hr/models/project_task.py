@@ -28,6 +28,7 @@ class ProjectTask(models.Model):
         compute="_compute_allowed_hr_category_ids",
         help="Technical field for computing allowed employee categories "
         "according categories at project level.",
+        store=False,
     )
     allowed_user_ids = fields.Many2many(
         comodel_name="res.users",
@@ -35,7 +36,24 @@ class ProjectTask(models.Model):
         compute="_compute_allowed_user_ids",
         help="Technical field for computing allowed users according employee "
         "category.",
+        store=False,
+        search="_search_invoice_ids",
     )
+
+    def _search_invoice_ids(self, operator, value):
+        if operator == "in" and value:
+            self.env.cr.execute(
+                """
+                SELECT array_agg(users.id)
+                    FROM res_users users
+                WHERE
+                    users.id = ANY(%s)
+            """,
+                (list(value),),
+            )
+
+        user_ids = self.env.cr.fetchone()[0] or []
+        return [("id", "in", user_ids)]
 
     @api.depends("user_id", "company_id")
     def _compute_employee_id(self):
