@@ -1,6 +1,6 @@
 # See README.rst file on addon root folder for license details
 
-from odoo import _, api, fields, models
+from odoo import _, fields, models
 from odoo.exceptions import UserError
 
 
@@ -41,7 +41,6 @@ class ProjectProject(models.Model):
             vals["date_start"] = start_task.date_start.date()
         return vals
 
-    @api.multi
     def project_recalculate(self):
         """
         Recalculate project tasks start and end dates.

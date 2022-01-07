@@ -25,4 +25,11 @@
         </field>
     </record>
 
+    <record id="wizard_project_recalculate" model="ir.actions.act_window">
+        <field name="name">Project recalculate</field>
+        <field name="res_model">project.recalculate.wizard</field>
+        <field name="binding_view_types">list</field>
+        <field name="target">new</field>
+        <field name="view_mode">form</field>
+    </record>
 </odoo>

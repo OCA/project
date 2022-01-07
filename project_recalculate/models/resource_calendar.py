@@ -3,7 +3,7 @@
 from datetime import datetime, timedelta
 from functools import partial
 
-from odoo import api, models
+from odoo import models
 
 from odoo.addons.resource.models.resource import make_aware
 
@@ -29,7 +29,6 @@ class ResourceCalendar(models.Model):
             current += timedelta(days=1)
         return days
 
-    @api.multi
     def plan_days_to_resource(
         self, days, day_dt, compute_leaves=False, resource=None, domain=None
     ):
@@ -48,7 +47,7 @@ class ResourceCalendar(models.Model):
             delta = timedelta(days=14)
             for n in range(100):
                 dt = day_dt + delta * n
-                for start, stop, meta in get_intervals(dt, dt + delta):
+                for start, stop, meta in get_intervals(dt, dt + delta):  # noqa: B007
                     found.add(start.date())
                     if len(found) == days:
                         return revert(stop)
@@ -60,8 +59,10 @@ class ResourceCalendar(models.Model):
             delta = timedelta(days=14)
             for n in range(100):
                 dt = day_dt - delta * n
-                for start, stop, meta in reversed(get_intervals(dt - delta, dt)):
-                    found.add(start.date())
+                for start, stop, meta in reversed(  # noqa: B007
+                    get_intervals(dt - delta, dt)
+                ):
+                    found.add(stop.date())
                     if len(found) == days:
                         return revert(start)
             return False

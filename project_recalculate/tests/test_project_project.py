@@ -54,7 +54,6 @@ class TestProjectProjectBegin(base.BaseCase):
                     "name": name,
                     "date_start": start,
                     "date": end,
-                    "resource_calendar_id": False,
                 },
             )
             # Set days (estimated_days and from_days to tasks)
@@ -122,7 +121,6 @@ class TestProjectProjectBegin(base.BaseCase):
                     "name": name,
                     "date_start": start,
                     "date": end,
-                    "resource_calendar_id": False,
                 },
             )
             # Set days (estimated_days and from_days to tasks)
@@ -191,7 +189,6 @@ class TestProjectProjectBegin(base.BaseCase):
                             "name": name + "_%d" % num_tasks,
                             "date_start": start,
                             "date": end,
-                            "resource_calendar_id": False,
                         },
                     )
                     project.project_recalculate()

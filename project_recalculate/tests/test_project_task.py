@@ -54,7 +54,6 @@ class TestProjectTaskBegin(base.BaseCase):
                 "name": "Test project",
                 "date_start": date(2015, 8, 1),
                 "date": date(2015, 8, 31),
-                "resource_calendar_id": False,
             },
         )
         task = project.tasks[0]
@@ -83,7 +82,6 @@ class TestProjectTaskBegin(base.BaseCase):
                     "name": name,
                     "date_start": start,
                     "date": end,
-                    "resource_calendar_id": False,
                 },
             )
 
@@ -134,7 +132,6 @@ class TestProjectTaskBegin(base.BaseCase):
             {
                 "calculation_type": self.calculation_type,
                 "name": "test",
-                "resource_calendar_id": False,
             },
         )
         # ValidationError cases

@@ -9,6 +9,10 @@
                 <field name="from_days" />
                 <field name="estimated_days" />
             </field>
+            <field name='date_assign' position="after">
+                <field name="date_start" />
+                <field name="date_end" />
+            </field>
         </field>
     </record>
 

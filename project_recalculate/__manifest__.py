@@ -6,8 +6,8 @@
 
 {
     "name": "Project Recalculate",
-    "version": "12.0.1.0.0",
-    "author": "Tecnativa, " "Odoo Community Association (OCA)",
+    "version": "14.0.1.0.0",
+    "author": "Tecnativa, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/project",
     "license": "AGPL-3",
     "category": "Project",
@@ -15,10 +15,11 @@
         "hr_timesheet",
     ],
     "data": [
+        "security/ir.model.access.csv",
+        "wizard/recalculate_wizard.xml",
         "views/project_project_view.xml",
         "views/project_task_view.xml",
         "views/project_task_stage_view.xml",
-        "wizard/recalculate_wizard.xml",
     ],
     "installable": True,
 }

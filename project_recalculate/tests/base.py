@@ -120,7 +120,7 @@ class BaseCase(TransactionCase):
             ("Monday", "0", 8, 16),
             ("Tuesday", "1", 8, 16),
             ("Wednesday", "2", 8, 16),
-            ("Tuesday", "3", 8, 16),
+            ("Thursday", "3", 8, 16),
             ("Friday", "4", 8, 16),
         )
         for day in days:
