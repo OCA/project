@@ -15,7 +15,7 @@
                 date_stop="date_end"
                 default_group_by="project_id"
                 event_open_popup="true"
-                colors="#ec7063: user_id == false; #2ecb71: kanban_state == 'done';"
+                colors="white: user_id == false; #2ecb71: kanban_state == 'done'; #ec7063: kanban_state == 'blocked'"
             >
                 <field name="user_id" />
                 <field name="planned_hours" />
@@ -34,7 +34,11 @@
                             <span name="display_name">
                                 <t t-esc="record.display_name" />
                             </span>
-                            <small name="planned_hours" class="text-info ml4">
+                            <small
+                                name="planned_hours"
+                                class="text-info ml4"
+                                t-if="record.planned_hours"
+                            >
                                 <t
                                     t-esc="field_utils.format.float_time(record.planned_hours)"
                                 />
