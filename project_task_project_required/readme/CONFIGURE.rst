@@ -1,4 +1,7 @@
-To make project selection mandatory on task:
+By installing this module, the project field
+will be mandatory for all the companies.
+
+To make project selection optional on task for a given company:
 
 # Go to *Project > Configuration > Settings*
-# Make task selection mandatory for new tasks by checking *Require Projects on Tasks*
+# Uncheck *Require Projects on Tasks*
