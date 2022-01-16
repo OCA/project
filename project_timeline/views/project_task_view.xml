@@ -5,7 +5,6 @@
      Copyright 2021 Open Source Integrators - Daniel Reis
      License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
 <odoo>
-
     <record id="project_task_timeline" model="ir.ui.view">
         <field name="model">project.task</field>
         <field name="type">timeline</field>
@@ -73,11 +72,12 @@
             name="view_mode"
         >kanban,tree,form,calendar,timeline,pivot,graph,activity</field>
     </record>
+    <!--
     <record id="project.action_view_all_task" model="ir.actions.act_window">
         <field
             name="view_mode"
-        >tree,kanban,form,calendar,timeline,pivot,graph,gantt,activity,map</field>
-    </record>
+        >tree,kanban,form,calendar,timeline,pivot,graph,activity</field>
+    </record>-->
     <record
         id="project.action_view_task_overpassed_draft"
         model="ir.actions.act_window"
