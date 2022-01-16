@@ -77,7 +77,7 @@
     <record id="project.action_view_all_task" model="ir.actions.act_window">
         <field
             name="view_mode"
-        >tree,kanban,form,calendar,timeline,pivot,graph,gantt,activity,map</field>
+        >tree,kanban,form,calendar,timeline,pivot,graph,activity</field>
     </record>
     <record
         id="project.action_view_task_overpassed_draft"
