@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="edit_project_recalculate" model="ir.ui.view">
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project" />
+        <field name="arch" type="xml">
+            <group name="extra_settings" position="before">
+                <group string="Time Scheduling" name="time_scheduling">
+                    <field name="resource_calendar_id" />
+                    <field
+                        name="date_start"
+                        attrs="{'readonly': [('calculation_type', '=', 'date_end')]}"
+                    />
+                    <field
+                        name="date"
+                        attrs="{'readonly': [('calculation_type', '=', 'date_begin')]}"
+                    />
+                    <field name="calculation_type" />
+                    <button
+                        name="%(wizard_project_recalculate)d"
+                        type="action"
+                        string="Recalculate project"
+                        icon="fa-cogs"
+                        attrs="{'invisible': [('calculation_type', '=', False)]}"
+                    />
+                </group>
+            </group>
+        </field>
+    </record>
+
+</odoo>
