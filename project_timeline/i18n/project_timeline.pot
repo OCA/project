@@ -30,7 +30,7 @@ msgstr ""
 
 #. module: project_timeline
 #: model:ir.model.fields,field_description:project_timeline.field_project_task__date_start
-msgid "Start Date"
+msgid "Starting Date"
 msgstr ""
 
 #. module: project_timeline
