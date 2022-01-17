@@ -39,7 +39,8 @@ class ProjectProject(models.Model):
         for project in self:
             groups = self.env['account.invoice.line'].read_group(
                 [('account_analytic_id', '=', project.analytic_account_id.id),
-                 ('invoice_id.state', '!=', 'cancel')],
+                 ('invoice_id.state', '!=', 'cancel'),
+                 ('invoice_id.type', 'in', ['in_invoice', 'in_refund'])],
                 ['price_subtotal'],
                 ['invoice_id'])
             purchase_invoice_line_total = 0
@@ -84,7 +85,9 @@ class ProjectProject(models.Model):
         action_dict = action.read()[0] if action else {}
         lines = self.env['account.invoice.line'].search([
             ('account_analytic_id', 'in',
-             self.mapped('analytic_account_id').ids)])
+             self.mapped('analytic_account_id').ids),
+            ('invoice_id.state', '!=', 'cancel'),
+            ('invoice_id.type', 'in', ['in_invoice', 'in_refund'])])
         domain = expression.AND([
             [('id', 'in', lines.mapped('invoice_id').ids)],
             safe_eval(action.domain or '[]')])
@@ -95,7 +98,9 @@ class ProjectProject(models.Model):
     def button_open_purchase_invoice_line(self):
         self.ensure_one()
         domain = [('account_analytic_id', 'in',
-                   self.mapped('analytic_account_id').ids)]
+                   self.mapped('analytic_account_id').ids),
+                  ('invoice_id.state', '!=', 'cancel'),
+                  ('invoice_id.type', 'in', ['in_invoice', 'in_refund'])]
         return {
             'name': _('Purchase Invoice Lines'),
             'domain': domain,

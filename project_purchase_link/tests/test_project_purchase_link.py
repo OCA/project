@@ -70,4 +70,7 @@ class TestProjectPurchaseUtilities(common.SavepointCase):
         invoice_dict = self.project.button_open_purchase_invoice()
         self.assertEquals(invoice_dict.get('domain'), invoice_domain)
         invoice_line_dict = self.project.button_open_purchase_invoice_line()
+        purchase_domain.append(('invoice_id.state', '!=', 'cancel'))
+        purchase_domain.append(('invoice_id.type', 'in',
+                                ['in_invoice', 'in_refund']))
         self.assertEquals(invoice_line_dict.get('domain'), purchase_domain)
