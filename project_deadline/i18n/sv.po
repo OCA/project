@@ -6,51 +6,53 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2022-01-20 13:39+0000\n"
+"Last-Translator: Simon S <simon.stromberg@vertel.se>\n"
 "Language-Team: none\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.3.2\n"
 
 #. module: project_deadline
 #: model:ir.model.fields,field_description:project_deadline.field_project_project__display_name
 #: model:ir.model.fields,field_description:project_deadline.field_project_task__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Visningsnamn"
 
 #. module: project_deadline
 #: model:ir.model.fields,field_description:project_deadline.field_project_project__id
 #: model:ir.model.fields,field_description:project_deadline.field_project_task__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_deadline
 #: model:ir.model.fields,field_description:project_deadline.field_project_project____last_update
 #: model:ir.model.fields,field_description:project_deadline.field_project_task____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Senast ändrad den"
 
 #. module: project_deadline
 #: model:ir.model,name:project_deadline.model_project_project
 msgid "Project"
-msgstr ""
+msgstr "Projekt"
 
 #. module: project_deadline
 #: model:ir.model.fields,field_description:project_deadline.field_project_task__project_date_deadline
 msgid "Project Deadline"
-msgstr ""
+msgstr "Projektets slutdatum"
 
 #. module: project_deadline
 #: model:ir.model.fields,field_description:project_deadline.field_project_task__project_date_start
 msgid "Project Start Date"
-msgstr ""
+msgstr "Projektets startdatum"
 
 #. module: project_deadline
 #: model:ir.model,name:project_deadline.model_project_task
 msgid "Task"
-msgstr ""
+msgstr "Aktivitet"
 
 #. module: project_deadline
 #: model_terms:ir.ui.view,arch_db:project_deadline.view_project_kanban
