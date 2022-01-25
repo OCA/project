@@ -1,0 +1,42 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_task_milestone
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2023-04-14 14:34+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
+"Language-Team: none\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.14.1\n"
+
+#. module: project_task_milestone
+#: model:ir.model.fields,field_description:project_task_milestone.field_project_task__milestone_id
+msgid "Milestone"
+msgstr "Tappa"
+
+#. module: project_task_milestone
+#: model_terms:ir.ui.view,arch_db:project_task_milestone.view_task_enhancement_search_milestone_form
+msgid "Milestones"
+msgstr "Tappe"
+
+#. module: project_task_milestone
+#: model:ir.model,name:project_task_milestone.model_project_milestone
+msgid "Project Milestone"
+msgstr "Tappa progetto"
+
+#. module: project_task_milestone
+#: model:ir.model.fields,field_description:project_task_milestone.field_project_milestone__project_task_ids
+msgid "Project Tasks"
+msgstr "Attività progetto"
+
+#. module: project_task_milestone
+#: model:ir.model,name:project_task_milestone.model_project_task
+msgid "Task"
+msgstr "Attività"
