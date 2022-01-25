@@ -15,7 +15,7 @@
                     attrs="{'invisible': [('is_template', '=', False)]}"
                 />
             </xpath>
-            <xpath expr="//div[@name='options_active']" position="inside">
+            <xpath expr="//field[@name='label_tasks']/.." position="inside">
                 <div>
                     <field name="is_template" class="oe_inline" string="Is Template?" />
                     <label for="is_template" />
