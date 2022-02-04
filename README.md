@@ -20,6 +20,7 @@ Available addons
 addon | version | maintainers | summary
 --- | --- | --- | ---
 [project_parent_task_filter](project_parent_task_filter/) | 15.0.1.0.0 |  | Add a filter to show the parent tasks
+[project_task_default_stage](project_task_default_stage/) | 15.0.1.0.0 |  | Recovery default task stages for projects from v8
 
 [//]: # (end addons)
 
