@@ -4,7 +4,7 @@
 
 {
     "name": "Project Task Dependencies",
-    "version": "14.0.1.0.0",
+    "version": "15.0.1.0.0",
     "category": "Project",
     "website": "https://github.com/OCA/project",
     "summary": "Enables to define dependencies (other tasks) of a task",
@@ -13,10 +13,7 @@
     "development_status": "Production/Stable",
     "maintainers": ["astirpe"],
     "depends": ["project"],
-    "data": [
-        "security/ir.model.access.csv",
-        "views/project_task_view.xml",
-    ],
+    "external_dependencies": {"python": ["openupgradelib"]},
     "installable": True,
     "auto_install": False,
 }

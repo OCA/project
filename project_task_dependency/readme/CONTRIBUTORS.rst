@@ -5,3 +5,4 @@
 * `Tecnativa <https://www.tecnativa.com>` _:
 
   * Manuel Calero
+* Mantas Šniukas <mantas@vialaurea.lt>
