@@ -15,6 +15,23 @@ class TaskSub(models.Model):
         return res
 
     def action_subtask(self):
+        if self._context.get("default_project_id"):
+            default_project = self.env["project.project"].browse(
+                self.env.context["default_project_id"]
+            )
+        else:
+            default_project = self.project_id or self.project_id.subtask_project_id
+        ctx = dict(self.env.context)
+        ctx = {k: v for k, v in ctx.items() if not k.startswith("search_default_")}
+        ctx.update(
+            {
+                "default_name": self.env.context.get("name", self.name) + ": ",
+                "default_parent_id": self.id,
+                "default_company_id": default_project.company_id.id
+                if default_project
+                else self.env.company.id,
+            }
+        )
         action = {
             "type": "ir.actions.act_window",
             "name": "Subtasks of " + self.name,
@@ -26,4 +43,7 @@ class TaskSub(models.Model):
             ],
             "domain": [("id", "!=", self.id), ("id", "child_of", self.id)],
         }
+
+        action["context"] = ctx
+
         return action
