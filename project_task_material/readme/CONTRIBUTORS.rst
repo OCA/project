@@ -4,3 +4,4 @@
 - David Vidal <david.vidal@tecnativa.com>
 - Carlos Jesus Cebrian <carlos.cebrian-sanchez@braintec-group.org>
 - Anand Kansagra <kansagraanand@hotmail.com>
+- Ruchir Shukla <ruchir@bizzappdev.com>
