@@ -32,7 +32,7 @@ class ProjectTaskMaterial(models.Model):
     product_id = fields.Many2one(
         comodel_name="product.product", string="Product", required=True
     )
-    quantity = fields.Float(string="Quantity")
+    quantity = fields.Float()
 
     @api.constrains("quantity")
     def _check_quantity(self):
