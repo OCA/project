@@ -19,7 +19,7 @@
                     groups="project.group_project_user"
                 >
                     <field name="material_ids">
-                        <tree string="Material Used" editable="top">
+                        <tree editable="top">
                             <field name="product_id" />
                             <field name="quantity" />
                         </tree>
