@@ -60,7 +60,7 @@ class TestProjectTaskPullRequest(TransactionCase):
     def test_write_allowed_when_allowed(self):
         self.task_1.write({"stage_id": self.inprogress_stage})
         self.task_1.refresh()
-        self.assertEquals(self.inprogress_stage, self.task_1.stage_id.id)
+        self.assertEqual(self.inprogress_stage, self.task_1.stage_id.id)
 
     def test_write_not_allowed_without_pr(self):
         with self.assertRaises(ValidationError):
@@ -73,4 +73,4 @@ class TestProjectTaskPullRequest(TransactionCase):
     def test_write_allowed_with_pr(self):
         self.task_3.write({"stage_id": self.done_stage})
         self.task_3.refresh()
-        self.assertEquals(self.done_stage, self.task_3.stage_id.id)
+        self.assertEqual(self.done_stage, self.task_3.stage_id.id)
