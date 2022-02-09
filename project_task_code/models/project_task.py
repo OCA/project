@@ -12,6 +12,7 @@ class ProjectTask(models.Model):
         required=True,
         default="/",
         readonly=True,
+        copy=False,
     )
 
     _sql_constraints = [
@@ -24,13 +25,6 @@ class ProjectTask(models.Model):
             if vals.get("code", "/") == "/":
                 vals["code"] = self.env["ir.sequence"].next_by_code("project.task")
         return super().create(vals_list)
-
-    def copy(self, default=None):
-        self.ensure_one()
-        if default is None:
-            default = {}
-        default["code"] = self.env["ir.sequence"].next_by_code("project.task")
-        return super().copy(default)
 
     def name_get(self):
         result = super().name_get()
