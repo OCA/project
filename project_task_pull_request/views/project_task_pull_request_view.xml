@@ -7,14 +7,17 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_form2" />
         <field name="arch" type="xml">
-            <field name="sequence" position="before">
+            <xpath
+                expr="//page[@name='extra_info']//field[@name='sequence']"
+                position="before"
+            >
                 <field name="pr_required_states" attrs="{'invisible':True}" />
                 <field
                     name="pr_uri"
                     widget="url"
                     attrs="{'invisible':[('pr_required_states', '=', [])]}"
                 />
-            </field>
+            </xpath>
         </field>
     </record>
     <record id="edit_project" model="ir.ui.view">
