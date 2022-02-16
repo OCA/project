@@ -23,7 +23,7 @@ addon | version | maintainers | summary
 [project_parent_task_filter](project_parent_task_filter/) | 15.0.1.0.0 |  | Add a filter to show the parent tasks
 [project_task_add_very_high](project_task_add_very_high/) | 15.0.1.0.0 | [![astirpe](https://github.com/astirpe.png?size=30px)](https://github.com/astirpe) | Adds extra options 'High' and 'Very High' on tasks
 [project_task_default_stage](project_task_default_stage/) | 15.0.1.0.0 |  | Recovery default task stages for projects from v8
-[project_task_personal_stage_auto_fold](project_task_personal_stage_auto_fold/) | 15.0.1.0.0 |  | Moves task to the first fold personal stage when done
+[project_task_personal_stage_auto_fold](project_task_personal_stage_auto_fold/) | 15.0.1.0.1 |  | Moves task to the first fold personal stage when done
 
 [//]: # (end addons)
 
