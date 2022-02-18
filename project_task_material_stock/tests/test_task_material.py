@@ -12,9 +12,8 @@ from odoo.exceptions import UserError
 class TestTaskMaterial(common.SavepointCase):
     @classmethod
     def setUpClass(cls):
-        super(TestTaskMaterial, cls).setUpClass()
+        super().setUpClass()
 
-        cls.company = cls.env["res.company"].browse([1])
         cls.stage_deployed = cls.env["project.task.type"].create(
             {"name": "State Deployed example"}
         )
@@ -28,7 +27,6 @@ class TestTaskMaterial(common.SavepointCase):
                 "name": "Product example #1",
                 "uom_id": cls.product1_uom.id,
                 "uom_po_id": cls.product1_uom.id,
-                "company_id": cls.company.id,
             }
         )
         cls.product2 = product_obj.create(
@@ -36,16 +34,16 @@ class TestTaskMaterial(common.SavepointCase):
                 "name": "Product example #2",
                 "uom_id": cls.product2_uom.id,
                 "uom_po_id": cls.product2_uom.id,
-                "company_id": cls.company.id,
             }
+        )
+        cls.analytic_account = cls.env["account.analytic.account"].create(
+            {"name": "Test account"}
         )
         cls.task = cls.env["project.task"].create(
             {
                 "name": "task test 1",
                 "project_id": cls.project.id,
-                "analytic_account_id": cls.env["account.analytic.account"]
-                .search([], limit=1)
-                .id,
+                "analytic_account_id": cls.analytic_account.id,
             }
         )
         cls.task_material = cls.env["project.task.material"].create(
@@ -60,7 +58,6 @@ class TestTaskMaterial(common.SavepointCase):
         cls.expected_amount = -(100.0 * 3)
 
     def test_task_material(self):
-
         self.assertEqual(self.task_material.product_uom_id.id, self.product1_uom.id)
         self.task.material_ids.write({"product_id": self.product2.id})
         self.task_material._onchange_product_id()

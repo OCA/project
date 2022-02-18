@@ -1,10 +1,10 @@
 * `Tecnativa <https://www.tecnativa.com>`_:
 
-  * Rafael Blasco <rafael.blasco@tecnativa.com>
-  * Pedro M. Baeza <pedro.baeza@tecnativa.com>
-  * Carlos Dauden <carlos.dauden@tecnativa.com>
-  * Sergio Teruel <sergio.teruel@tecnativa.com>
-  * Vicent Cubells <vicent.cubells@tecnativa.com>
+  * Rafael Blasco
+  * Pedro M. Baeza
+  * Carlos Dauden
+  * Sergio Teruel
+  * Vicent Cubells
 
 * `Qubiq <https://www.qubiq.com>`_:
 

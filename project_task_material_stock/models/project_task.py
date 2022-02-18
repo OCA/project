@@ -18,29 +18,9 @@ class ProjectTaskType(models.Model):
 class Task(models.Model):
     _inherit = "project.task"
 
-    @api.depends("material_ids.stock_move_id")
-    def _compute_stock_move(self):
-        for task in self:
-            task.stock_move_ids = task.mapped("material_ids.stock_move_id")
-
-    @api.depends("material_ids.analytic_line_id")
-    def _compute_analytic_line(self):
-        for task in self:
-            task.analytic_line_ids = task.mapped("material_ids.analytic_line_id")
-
-    @api.depends("stock_move_ids.state")
-    def _compute_stock_state(self):
-        for task in self:
-            if not task.stock_move_ids:
-                task.stock_state = "pending"
-            else:
-                states = task.mapped("stock_move_ids.state")
-                for state in ("confirmed", "assigned", "done"):
-                    if state in states:
-                        task.stock_state = state
-                        break
-
-    picking_id = fields.Many2one("stock.picking", related="stock_move_ids.picking_id",)
+    picking_id = fields.Many2one(
+        string="stock.picking", related="stock_move_ids.picking_id",
+    )
     stock_move_ids = fields.Many2many(
         comodel_name="stock.move",
         compute="_compute_stock_move",
@@ -80,6 +60,28 @@ class Task(models.Model):
         help="Keep this field empty to use the default value from the project.",
     )
 
+    @api.depends("material_ids.stock_move_id")
+    def _compute_stock_move(self):
+        for task in self:
+            task.stock_move_ids = task.mapped("material_ids.stock_move_id")
+
+    @api.depends("material_ids.analytic_line_id")
+    def _compute_analytic_line(self):
+        for task in self:
+            task.analytic_line_ids = task.mapped("material_ids.analytic_line_id")
+
+    @api.depends("stock_move_ids.state")
+    def _compute_stock_state(self):
+        for task in self:
+            if not task.stock_move_ids:
+                task.stock_state = "pending"
+            else:
+                states = task.mapped("stock_move_ids.state")
+                for state in ("confirmed", "assigned", "done"):
+                    if state in states:
+                        task.stock_state = state
+                        break
+
     def unlink_stock_move(self):
         res = False
         moves = self.mapped("stock_move_ids")
@@ -93,7 +95,7 @@ class Task(models.Model):
         return res
 
     def write(self, vals):
-        res = super(Task, self).write(vals)
+        res = super().write(vals)
         for task in self:
             if "stage_id" in vals or "material_ids" in vals:
                 if task.consume_material:
@@ -119,7 +121,7 @@ class Task(models.Model):
     def unlink(self):
         self.mapped("stock_move_ids").unlink()
         self.mapped("analytic_line_ids").unlink()
-        return super(Task, self).unlink()
+        return super().unlink()
 
     def action_assign(self):
         self.mapped("stock_move_ids")._action_assign()
@@ -133,7 +135,7 @@ class Task(models.Model):
 class ProjectTaskMaterial(models.Model):
     _inherit = "project.task.material"
 
-    stock_move_id = fields.Many2one(comodel_name="stock.move", string="Stock Move",)
+    stock_move_id = fields.Many2one(comodel_name="stock.move", string="Stock Move")
     analytic_line_id = fields.Many2one(
         comodel_name="account.analytic.line", string="Analytic Line",
     )
@@ -208,7 +210,7 @@ class ProjectTaskMaterial(models.Model):
             "account_id": analytic_account.id,
             "user_id": self._uid,
             "product_uom_id": self.product_uom_id.id,
-            "company_id": analytic_account.company_id.id or self.env.user.company_id.id,
+            "company_id": analytic_account.company_id.id or self.env.company.id,
             "partner_id": self.task_id.partner_id.id
             or self.task_id.project_id.partner_id.id
             or None,
@@ -268,4 +270,4 @@ class ProjectTaskMaterial(models.Model):
                 )
             )
         self.analytic_line_id.unlink()
-        return super(ProjectTaskMaterial, self).unlink()
+        return super().unlink()
