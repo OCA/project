@@ -36,8 +36,8 @@ class TestProjectPurchaseUtilities(common.SavepointCase):
             }
         )
         self.project.invalidate_cache()
-        self.assertEquals(self.project.purchase_count, 1)
-        self.assertEquals(self.project.purchase_line_total, 200)
+        self.assertEqual(self.project.purchase_count, 1)
+        self.assertEqual(self.project.purchase_line_total, 200)
         self.assertFalse(self.project.purchase_invoice_count)
         self.assertFalse(self.project.purchase_invoice_line_total)
         self.purchase.button_confirm()
@@ -45,7 +45,7 @@ class TestProjectPurchaseUtilities(common.SavepointCase):
             {
                 "partner_id": self.purchase.partner_id.id,
                 "purchase_id": self.purchase.id,
-                "type": "in_invoice",
+                "move_type": "in_invoice",
             }
         )
         for line in self.purchase.order_line:
@@ -59,7 +59,7 @@ class TestProjectPurchaseUtilities(common.SavepointCase):
             }
             self.invoice_line_model.create(vals)
         self.project.invalidate_cache()
-        self.assertEquals(self.project.purchase_invoice_count, 1)
+        self.assertEqual(self.project.purchase_invoice_count, 1)
         purchase_domain = [
             (
                 "account_analytic_id",
@@ -70,6 +70,6 @@ class TestProjectPurchaseUtilities(common.SavepointCase):
         lines = self.env["purchase.order.line"].search(purchase_domain)
         order_domain = [("id", "in", lines.mapped("order_id").ids)]
         purchase_dict = self.project.button_open_purchase_order()
-        self.assertEquals(purchase_dict.get("domain"), order_domain)
+        self.assertEqual(purchase_dict.get("domain"), order_domain)
         purchase_line_dict = self.project.button_open_purchase_order_line()
-        self.assertEquals(purchase_line_dict.get("domain"), purchase_domain)
+        self.assertEqual(purchase_line_dict.get("domain"), purchase_domain)
