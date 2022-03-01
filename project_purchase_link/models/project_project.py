@@ -40,13 +40,10 @@ class ProjectProject(models.Model):
 
     def _compute_purchase_invoice_info(self):
         for project in self:
+            domain = project._get_purchase_invoice_domain()
+            domain = expression.AND([domain, [("move_id.state", "!=", "cancel")]])
             groups = self.env["account.move.line"].read_group(
-                [
-                    ("analytic_account_id", "=", project.analytic_account_id.id),
-                    ("move_id.state", "!=", "cancel"),
-                ],
-                ["price_subtotal"],
-                ["move_id"],
+                domain, ["price_subtotal"], ["move_id"],
             )
             purchase_invoice_line_total = 0
             for group in groups:
@@ -68,6 +65,12 @@ class ProjectProject(models.Model):
             "res_model": "purchase.order",
         }
 
+    def _get_purchase_invoice_domain(self):
+        return [
+            ("analytic_account_id", "in", self.mapped("analytic_account_id").ids),
+            ("move_id.type", "=", "in_invoice"),
+        ]
+
     def button_open_purchase_order_line(self):
         self.ensure_one()
         domain = [("account_analytic_id", "in", self.mapped("analytic_account_id").ids)]
@@ -84,7 +87,7 @@ class ProjectProject(models.Model):
         action = self.env.ref("account.action_move_in_invoice_type")
         action_dict = action.read()[0] if action else {}
         lines = self.env["account.move.line"].search(
-            [("analytic_account_id", "in", self.mapped("analytic_account_id").ids)]
+            self._get_purchase_invoice_domain()
         )
         domain = expression.AND(
             [
@@ -97,7 +100,7 @@ class ProjectProject(models.Model):
 
     def button_open_purchase_invoice_line(self):
         self.ensure_one()
-        domain = [("analytic_account_id", "in", self.mapped("analytic_account_id").ids)]
+        domain = self._get_purchase_invoice_domain()
         return {
             "name": _("Purchase Invoice Lines"),
             "domain": domain,
