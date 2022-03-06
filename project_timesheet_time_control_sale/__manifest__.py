@@ -3,7 +3,7 @@
 {
     "name": "Project timesheet time control - Sales Timesheet",
     "summary": "Make 'Project timesheet time control' and 'Sales Timesheet' "
-               "work together",
+    "work together",
     "version": "12.0.1.0.0",
     "development_status": "Beta",
     "category": "Hidden",
@@ -14,10 +14,6 @@
     "application": False,
     "installable": True,
     "auto_install": True,
-    "depends": [
-        "project_timesheet_time_control",
-        "sale_timesheet",
-    ],
-    "data": [
-    ],
+    "depends": ["project_timesheet_time_control", "sale_timesheet"],
+    "data": [],
 }
