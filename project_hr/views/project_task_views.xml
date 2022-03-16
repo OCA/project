@@ -12,7 +12,7 @@
         <field name="arch" type="xml">
             <field name="user_id" position="before">
                 <field name="allowed_hr_category_ids" invisible="1" />
-                <field name="allowed_user_ids" invisible="1" />
+                <field name="allowed_assigned_user_ids" invisible="1" />
                 <field
                     name="hr_category_ids"
                     widget="many2many_tags"
@@ -20,7 +20,9 @@
                 />
             </field>
             <field name="user_id" position="attributes">
-                <attribute name="domain">[('id', 'in', allowed_user_ids)]</attribute>
+                <attribute
+                    name="domain"
+                >[('id', 'in', allowed_assigned_user_ids)]</attribute>
             </field>
             <field name="date_assign" position="after">
                 <field name="employee_id" />
@@ -33,10 +35,12 @@
         <field name="inherit_id" ref="project.quick_create_task_form" />
         <field name="arch" type="xml">
             <field name="user_id" position="before">
-                <field name="allowed_user_ids" invisible="1" />
+                <field name="allowed_assigned_user_ids" invisible="1" />
             </field>
             <field name="user_id" position="attributes">
-                <attribute name="domain">[('id', 'in', allowed_user_ids)]</attribute>
+                <attribute
+                    name="domain"
+                >[('id', 'in', allowed_assigned_user_ids)]</attribute>
             </field>
         </field>
     </record>
@@ -46,10 +50,12 @@
         <field name="inherit_id" ref="project.view_task_tree2" />
         <field name="arch" type="xml">
             <field name="user_id" position="before">
-                <field name="allowed_user_ids" invisible="1" />
+                <field name="allowed_assigned_user_ids" invisible="1" />
             </field>
             <field name="user_id" position="attributes">
-                <attribute name="domain">[('id', 'in', allowed_user_ids)]</attribute>
+                <attribute
+                    name="domain"
+                >[('id', 'in', allowed_assigned_user_ids)]</attribute>
             </field>
         </field>
     </record>
