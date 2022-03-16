@@ -29,7 +29,9 @@ class ProjectTask(models.Model):
         help="Technical field for computing allowed employee categories "
         "according categories at project level.",
     )
-    allowed_user_ids = fields.Many2many(
+    # This field could have been named allowed_user_ids but a field with
+    # that name already exists in the Odoo core 'project' module
+    allowed_assigned_user_ids = fields.Many2many(
         comodel_name="res.users",
         string="Allowed users",
         compute="_compute_allowed_user_ids",
@@ -63,7 +65,7 @@ class ProjectTask(models.Model):
                     ("employee_ids.company_id", "=", task.company_id.id),
                     ("employee_ids.category_ids", "in", task.hr_category_ids.ids),
                 ]
-            task.allowed_user_ids = user_obj.search(domain)
+            task.allowed_assigned_user_ids = user_obj.search(domain)
 
     @api.constrains("hr_category_ids", "user_id")
     def _check_employee_category_user(self):
