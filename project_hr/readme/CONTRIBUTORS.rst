@@ -2,6 +2,7 @@
 
   * Pedro M. Baeza
   * Victor M.M. Torres
+  * Ernesto Tejeda
 
 * `CorporateHub <https://corporatehub.eu/>`__
 

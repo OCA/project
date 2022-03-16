@@ -66,7 +66,7 @@ class TestProjectHr(SavepointCase):
         self.assertEqual(
             self.task.allowed_hr_category_ids, self.hr_category + self.hr_category_2
         )
-        self.assertEqual(self.task.allowed_user_ids, self.user)
+        self.assertEqual(self.task.allowed_assigned_user_ids, self.user)
         self.env["hr.employee"].create(
             {
                 "name": "Test employee 2",
@@ -74,7 +74,7 @@ class TestProjectHr(SavepointCase):
                 "category_ids": [(6, 0, self.hr_category.ids)],
             }
         )
-        self.assertEqual(self.task.allowed_user_ids, self.user + self.user_2)
+        self.assertEqual(self.task.allowed_assigned_user_ids, self.user + self.user_2)
         # Test _check_employee_category_user constraint
         with self.assertRaises(ValidationError):
             self.task.hr_category_ids = [(4, self.hr_category_2.id)]
