@@ -36,7 +36,7 @@ addon | version | maintainers | summary
 [project_role](project_role/) | 13.0.1.0.0 | [![alexey-pelykh](https://github.com/alexey-pelykh.png?size=30px)](https://github.com/alexey-pelykh) | Project role-based roster
 [project_stage_closed](project_stage_closed/) | 13.0.1.0.0 |  | Make the Closed flag on Task Stages available without installing sale_service
 [project_stage_state](project_stage_state/) | 13.0.1.0.0 |  | Restore State attribute removed from Project Stages in 8.0
-[project_status](project_status/) | 13.0.2.1.0 | [![patrickrwilson](https://github.com/patrickrwilson.png?size=30px)](https://github.com/patrickrwilson) | Project Status
+[project_status](project_status/) | 13.0.2.1.1 | [![patrickrwilson](https://github.com/patrickrwilson.png?size=30px)](https://github.com/patrickrwilson) | Project Status
 [project_tag](project_tag/) | 13.0.1.0.0 | [![patrickrwilson](https://github.com/patrickrwilson.png?size=30px)](https://github.com/patrickrwilson) | Project Tags
 [project_task_add_very_high](project_task_add_very_high/) | 13.0.1.0.0 | [![astirpe](https://github.com/astirpe.png?size=30px)](https://github.com/astirpe) | Adds extra options 'High' and 'Very High' on tasks
 [project_task_code](project_task_code/) | 13.0.1.0.0 |  | Sequential Code for Tasks
