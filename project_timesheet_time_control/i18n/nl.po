@@ -48,8 +48,8 @@ msgid ""
 "                        </span>"
 msgstr ""
 "<span class=\"o_label\">\n"
-"                            <i class=\"fa fa-lg fa-play-circle text-success\""
-"/>\n"
+"                            <i class=\"fa fa-lg fa-play-circle text-success"
+"\"/>\n"
 "                            Start werk\n"
 "                        </span>"
 
@@ -63,8 +63,8 @@ msgid ""
 "                        </span>"
 msgstr ""
 "<span class=\"o_label\">\n"
-"                            <i class=\"fa fa-lg fa-stop-circle text-warning\""
-"/>\n"
+"                            <i class=\"fa fa-lg fa-stop-circle text-warning"
+"\"/>\n"
 "                            Stop werk\n"
 "                        </span>"
 
@@ -82,6 +82,21 @@ msgstr "Kostenplaats"
 #: model:ir.model,name:project_timesheet_time_control.model_account_analytic_line
 msgid "Analytic Line"
 msgstr "Kostenplaatsregel"
+
+#. module: project_timesheet_time_control
+#: selection:hr.timesheet.switch,timesheet_invoice_type:0
+msgid "Billable Fixed"
+msgstr ""
+
+#. module: project_timesheet_time_control
+#: selection:hr.timesheet.switch,timesheet_invoice_type:0
+msgid "Billable Time"
+msgstr ""
+
+#. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__timesheet_invoice_type
+msgid "Billable Type"
+msgstr ""
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
@@ -195,6 +210,16 @@ msgid "Indicate which time control button to show, if any."
 msgstr ""
 
 #. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__timesheet_invoice_id
+msgid "Invoice"
+msgstr ""
+
+#. module: project_timesheet_time_control
+#: model:ir.model.fields,help:project_timesheet_time_control.field_hr_timesheet_switch__timesheet_invoice_id
+msgid "Invoice created from the timesheet"
+msgstr ""
+
+#. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__move_id
 msgid "Journal Item"
 msgstr "Boekingsregel"
@@ -229,6 +254,16 @@ msgid ""
 msgstr ""
 "Geen lopende timers gevonden in %(model)s %(record)s. Ververs de pagina en "
 "controleer opnieuw."
+
+#. module: project_timesheet_time_control
+#: selection:hr.timesheet.switch,timesheet_invoice_type:0
+msgid "No task found"
+msgstr ""
+
+#. module: project_timesheet_time_control
+#: selection:hr.timesheet.switch,timesheet_invoice_type:0
+msgid "Non Billable"
+msgstr ""
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__partner_id
@@ -291,6 +326,11 @@ msgstr "Hervatten"
 #, python-format
 msgid "Resume work"
 msgstr "Werk hervatten"
+
+#. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__so_line
+msgid "Sales Order Item"
+msgstr ""
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_account_analytic_line__show_time_control

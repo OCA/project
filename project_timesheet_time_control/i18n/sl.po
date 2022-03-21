@@ -86,6 +86,21 @@ msgid "Analytic Line"
 msgstr "Analitična postavka"
 
 #. module: project_timesheet_time_control
+#: selection:hr.timesheet.switch,timesheet_invoice_type:0
+msgid "Billable Fixed"
+msgstr ""
+
+#. module: project_timesheet_time_control
+#: selection:hr.timesheet.switch,timesheet_invoice_type:0
+msgid "Billable Time"
+msgstr ""
+
+#. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__timesheet_invoice_type
+msgid "Billable Type"
+msgstr ""
+
+#. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
 msgid "Cancel"
 msgstr "Preklic"
@@ -196,6 +211,16 @@ msgid "Indicate which time control button to show, if any."
 msgstr "Kaže katere gumbe časovne kontrole se prikazuje, če sploh katerega."
 
 #. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__timesheet_invoice_id
+msgid "Invoice"
+msgstr ""
+
+#. module: project_timesheet_time_control
+#: model:ir.model.fields,help:project_timesheet_time_control.field_hr_timesheet_switch__timesheet_invoice_id
+msgid "Invoice created from the timesheet"
+msgstr ""
+
+#. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__move_id
 msgid "Journal Item"
 msgstr "Dnevniška postavka"
@@ -230,6 +255,16 @@ msgid ""
 msgstr ""
 "Za %(model)s %(record)s ni najdenih zagnanih časovnikov. Osvežite stran in "
 "ponovno preverite."
+
+#. module: project_timesheet_time_control
+#: selection:hr.timesheet.switch,timesheet_invoice_type:0
+msgid "No task found"
+msgstr ""
+
+#. module: project_timesheet_time_control
+#: selection:hr.timesheet.switch,timesheet_invoice_type:0
+msgid "Non Billable"
+msgstr ""
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__partner_id
@@ -292,6 +327,11 @@ msgstr "Nadaljuj"
 #, python-format
 msgid "Resume work"
 msgstr "Nadaljuj z delom"
+
+#. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__so_line
+msgid "Sales Order Item"
+msgstr ""
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_account_analytic_line__show_time_control
