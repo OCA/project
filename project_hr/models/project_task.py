@@ -34,7 +34,7 @@ class ProjectTask(models.Model):
     allowed_assigned_user_ids = fields.Many2many(
         comodel_name="res.users",
         string="Allowed users",
-        compute="_compute_allowed_user_ids",
+        compute="_compute_allowed_assigned_user_ids",
         help="Technical field for computing allowed users according employee "
         "category.",
     )
@@ -56,7 +56,7 @@ class ProjectTask(models.Model):
                 task.allowed_hr_category_ids = hr_category_obj.search([])
 
     @api.depends("hr_category_ids", "company_id")
-    def _compute_allowed_user_ids(self):
+    def _compute_allowed_assigned_user_ids(self):
         user_obj = self.env["res.users"]
         for task in self:
             domain = []
