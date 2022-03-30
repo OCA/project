@@ -8,3 +8,4 @@ class ResUsers(models.Model):
     _inherit = 'res.users'
 
     gitlab_username = fields.Char()
+    github_username = fields.Char()
