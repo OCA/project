@@ -109,7 +109,7 @@ class ProjectRole(models.Model):
                 )
 
     def can_assign(self, user_id, project_id):
-        """ Extension point to check if user can be assigned to this role """
+        """Extension point to check if user can be assigned to this role"""
         self.ensure_one()
         return self.active
 
