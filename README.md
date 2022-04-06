@@ -29,6 +29,7 @@ addon | version | maintainers | summary
 [project_task_dependency](project_task_dependency/) | 15.0.1.0.0 | [![astirpe](https://github.com/astirpe.png?size=30px)](https://github.com/astirpe) | Enables to define dependencies (other tasks) of a task
 [project_task_material](project_task_material/) | 15.0.1.0.0 |  | Record products spent in a Task
 [project_task_personal_stage_auto_fold](project_task_personal_stage_auto_fold/) | 15.0.1.0.1 |  | Moves task to the first fold personal stage when done
+[project_task_pull_request](project_task_pull_request/) | 15.0.1.0.1 |  | Adds a field for a PR URI to project tasks
 
 [//]: # (end addons)
 
