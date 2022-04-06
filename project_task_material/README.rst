@@ -75,7 +75,6 @@ Contributors
 - Anand Kansagra <kansagraanand@hotmail.com>
 - Ruchir Shukla <ruchir@bizzappdev.com>
 
-
 Maintainers
 ~~~~~~~~~~~
 
