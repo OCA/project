@@ -4,7 +4,7 @@
     "name": "Project timesheet time control - Sales Timesheet",
     "summary": "Make 'Project timesheet time control' and 'Sales Timesheet' "
     "work together",
-    "version": "13.0.1.0.0",
+    "version": "14.0.1.0.0",
     "development_status": "Beta",
     "category": "Hidden",
     "website": "https://github.com/OCA/project",
