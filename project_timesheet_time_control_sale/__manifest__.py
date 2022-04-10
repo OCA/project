@@ -1,4 +1,5 @@
 # Copyright 2021 Lorenzo Battistini @ TAKOBI
+# Copyright 2022 bosd
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 {
     "name": "Project timesheet time control - Sales Timesheet",
