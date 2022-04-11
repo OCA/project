@@ -186,7 +186,8 @@ class Task(models.Model):
         if "stage_id" in vals:
             stage = self.env["project.task.type"].browse(vals.get("stage_id"))
             if stage.done_stock_moves:
-                self.action_confirm()
+                # Avoid permissions error if the user does not have access to stock.
+                self.sudo().action_confirm()
         return res
 
     def unlink(self):
