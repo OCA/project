@@ -30,6 +30,7 @@ addon | version | maintainers | summary
 [project_task_material](project_task_material/) | 15.0.1.0.0 |  | Record products spent in a Task
 [project_task_personal_stage_auto_fold](project_task_personal_stage_auto_fold/) | 15.0.1.0.1 |  | Moves task to the first fold personal stage when done
 [project_task_pull_request](project_task_pull_request/) | 15.0.1.0.1 |  | Adds a field for a PR URI to project tasks
+[project_template](project_template/) | 15.0.1.0.0 | [![patrickrwilson](https://github.com/patrickrwilson.png?size=30px)](https://github.com/patrickrwilson) | Project Templates
 
 [//]: # (end addons)
 
