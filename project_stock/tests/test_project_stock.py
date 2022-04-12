@@ -17,9 +17,9 @@ class TestProjectStock(TestProjectStockBase):
         )
 
     def test_project_task_misc(self):
-        self.assertEqual(self.task.picking_type_id, self.picking_type)
-        self.assertEqual(self.task.location_id, self.location)
-        self.assertEqual(self.task.location_dest_id, self.location_dest)
+        self.assertFalse(self.task.picking_type_id)
+        self.assertFalse(self.task.location_id)
+        self.assertFalse(self.task.location_dest_id)
         self.assertEqual(self.move_product_a.name, self.task.name)
         self.assertEqual(self.move_product_a.reference, self.task.name)
         self.assertEqual(self.move_product_a.location_id, self.location)

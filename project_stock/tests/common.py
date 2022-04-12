@@ -74,10 +74,6 @@ class TestProjectStockBase(common.SavepointCase):
         return {
             "default_project_id": self.project.id,
             "default_stage_id": self.stage_in_progress.id,
-            # We need to set default values according to compute store fields
-            "default_location_id": self.project.location_id.id,
-            "default_location_dest_id": self.project.location_dest_id.id,
-            "default_picking_type_id": self.project.picking_type_id.id,
         }
 
     def _create_task(self, products):
@@ -85,6 +81,7 @@ class TestProjectStockBase(common.SavepointCase):
             self.env["project.task"].with_context(self._prepare_context_task(self))
         )
         task_form.name = "Test task"
+        task_form.save()
         for product in products:
             with task_form.move_ids.new() as move_form:
                 move_form.product_id = product[0]

@@ -100,18 +100,20 @@ class Task(models.Model):
             item.unreserve_visible = not any_quantity_done and already_reserved
 
     @api.onchange("picking_type_id")
-    def onchange_picking_type(self):
-        self.location_id = self.picking_type_id.default_location_src_id.id
-        self.location_dest_id = self.picking_type_id.default_location_dest_id.id
+    def _onchange_picking_type_id(self):
+        if self.picking_type_id:
+            self.location_id = self.picking_type_id.default_location_src_id.id
+            self.location_dest_id = self.picking_type_id.default_location_dest_id.id
 
-    @api.onchange("location_id", "move_ids")
-    def _onchange_location(self):
-        self.move_ids.update(
-            {
-                "warehouse_id": self.location_id.get_warehouse().id,
-                "location_id": self.location_id.id,
-            }
-        )
+    @api.onchange("location_id")
+    def _onchange_location_id(self):
+        if self.location_id:
+            self.move_ids.update(
+                {
+                    "warehouse_id": self.location_id.get_warehouse().id,
+                    "location_id": self.location_id.id,
+                }
+            )
 
     @api.model
     def _prepare_procurement_group_vals(self, values):
