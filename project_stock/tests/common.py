@@ -14,6 +14,9 @@ class TestProjectStockBase(common.SavepointCase):
         cls.product_b = cls.env["product.product"].create(
             {"name": "Test product B", "standard_price": 20}
         )
+        cls.product_c = cls.env["product.product"].create(
+            {"name": "Test product C", "standard_price": 0}
+        )
         warehouse = cls.env["stock.warehouse"].search(
             [("company_id", "=", cls.env.company.id)], limit=1
         )
