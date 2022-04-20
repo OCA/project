@@ -53,7 +53,7 @@ Maintainer
 ----------
 
 .. image:: http://www.jarsa.com.mx/logo.png
-   :alt: Jarsa Sistemas, S.A. de C.V.
+   :alt: Jarsa
    :target: http://www.jarsa.com.mx
 
-This module is maintained by Jarsa Sistemas, S.A. de C.V.
+This module is maintained by Jarsa
