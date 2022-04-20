@@ -1,5 +1,6 @@
 # Copyright 2022 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+from odoo.tests import Form
 
 from .common import TestProjectStockBase
 
@@ -83,12 +84,27 @@ class TestProjectStock(TestProjectStockBase):
         self.assertEqual(self.move_product_b.state, "assigned")
         self.assertEqual(self.move_product_a.reserved_availability, 2)
         self.assertEqual(self.move_product_b.reserved_availability, 1)
+        # Add new stock_move
+        self.task.write({"stage_id": self.stage_in_progress.id})
+        task_form = Form(self.task)
+        with task_form.move_ids.new() as move_form:
+            move_form.product_id = self.product_c
+            move_form.product_uom_qty = 1
+        task_form.save()
+        move_product_c = self.task.move_ids.filtered(
+            lambda x: x.product_id == self.product_c
+        )
+        self.assertEqual(move_product_c.state, "draft")
+        self.task.action_assign()
+        self.assertEqual(move_product_c.state, "assigned")
+        self.task.write({"stage_id": self.stage_done.id})
         # action_done
         self.task.action_done()
         self.assertEqual(self.move_product_a.state, "done")
         self.assertEqual(self.move_product_b.state, "done")
         self.assertEqual(self.move_product_a.quantity_done, 2)
         self.assertEqual(self.move_product_b.quantity_done, 1)
+        self.assertEqual(move_product_c.quantity_done, 1)
 
     def test_project_task_process_cancel(self):
         self.assertEqual(self.move_product_a.state, "draft")
