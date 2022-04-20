@@ -118,10 +118,10 @@ class Task(models.Model):
         return {"name": values["name"]}
 
     def action_confirm(self):
-        self.mapped("move_ids").write({"state": "confirmed"})
-        self.action_assign()
+        self.mapped("move_ids")._action_confirm()
 
     def action_assign(self):
+        self.action_confirm()
         self.mapped("move_ids")._action_assign()
 
     def button_scrap(self):
@@ -187,7 +187,7 @@ class Task(models.Model):
             stage = self.env["project.task.type"].browse(vals.get("stage_id"))
             if stage.done_stock_moves:
                 # Avoid permissions error if the user does not have access to stock.
-                self.sudo().action_confirm()
+                self.sudo().action_assign()
         return res
 
     def unlink(self):
