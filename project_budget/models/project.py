@@ -4,12 +4,10 @@ from odoo import fields, models
 
 
 class Project(models.Model):
-    _inherit = 'project.project'
+    _inherit = "project.project"
 
-    budget_id = fields.Many2one('crossovered.budget', string="Budget")
+    budget_id = fields.Many2one("crossovered.budget", string="Budget")
     budget_id_lines = fields.One2many(
-        related='budget_id.crossovered_budget_line_ids',
-        string="Budget Lines")
-    budget_state = fields.Selection(
-        related='budget_id.state',
-        string="Budget Status")
+        related="budget_id.crossovered_budget_line_ids", string="Budget Lines"
+    )
+    budget_state = fields.Selection(related="budget_id.state", string="Budget Status")

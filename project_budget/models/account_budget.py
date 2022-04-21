@@ -4,8 +4,9 @@ from odoo import fields, models
 
 
 class CrossoveredBudget(models.Model):
-    _inherit = 'crossovered.budget'
+    _inherit = "crossovered.budget"
 
-    project_id = fields.Many2one('project.project', string="Project")
-    analytic_account_id = fields.Many2one('account.analytic.account',
-                                          string="Default Analytic Account")
+    project_id = fields.Many2one("project.project", string="Project")
+    analytic_account_id = fields.Many2one(
+        "account.analytic.account", string="Default Analytic Account"
+    )
