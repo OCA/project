@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="project.edit_project" />
         <field name="arch" type="xml">
             <field name="message_follower_ids" position="after">
-                <field name="message_ids" widget="mail_thread" />
+                <field name="message_ids" />
             </field>
         </field>
     </record>
