@@ -116,18 +116,12 @@
                 <group
                     string="Stock Info"
                     name="stock_ifno_misc"
-                    groups="stock.group_stock_manager"
+                    groups="stock.group_stock_user"
                     attrs="{'invisible': [('use_stock_moves', '=', False)]}"
                 >
                     <field name="picking_type_id" />
-                    <field
-                        name="location_id"
-                        groups="stock.group_stock_multi_locations"
-                    />
-                    <field
-                        name="location_dest_id"
-                        groups="stock.group_stock_multi_locations"
-                    />
+                    <field name="location_id" />
+                    <field name="location_dest_id" />
                 </group>
             </xpath>
         </field>
