@@ -1,12 +1,11 @@
-from odoo.tests.common import SavepointCase
+import odoo.tests.common as common
 
 
-class TestProjectStatus(SavepointCase):
-    @classmethod
-    def setUpClass(cls):
-        super().setUpClass()
-        cls.ProjectStatus = cls.env["project.status"]
-        cls.status = cls.ProjectStatus.create(
+class TestProjectTaskCode(common.TransactionCase):
+    def setUp(self):
+        super().setUp()
+        self.ProjectStatus = self.env["project.status"]
+        self.status = self.ProjectStatus.create(
             {
                 "name": "New Status",
             }
