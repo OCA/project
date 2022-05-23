@@ -1,6 +1,7 @@
 # Copyright 2022 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 from odoo import _, api, fields, models
+from odoo.exceptions import UserError
 
 
 class Task(models.Model):
@@ -100,18 +101,35 @@ class Task(models.Model):
             item.unreserve_visible = not any_quantity_done and already_reserved
 
     @api.onchange("picking_type_id")
-    def onchange_picking_type(self):
+    def _onchange_picking_type_id(self):
         self.location_id = self.picking_type_id.default_location_src_id.id
         self.location_dest_id = self.picking_type_id.default_location_dest_id.id
 
-    @api.onchange("location_id", "move_ids")
-    def _onchange_location(self):
-        self.move_ids.update(
-            {
-                "warehouse_id": self.location_id.get_warehouse().id,
-                "location_id": self.location_id.id,
-            }
-        )
+    def _check_tasks_with_pending_moves(self):
+        if self.move_ids and "assigned" in self.mapped("move_ids.state"):
+            raise UserError(
+                _("It is not possible to change this with reserved movements in tasks.")
+            )
+
+    def _update_moves_info(self):
+        self._check_tasks_with_pending_moves()
+        for item in self:
+            picking_type = item.picking_type_id or item.project_id.picking_type_id
+            location = item.location_id or item.project_id.location_id
+            location_dest = item.location_dest_id or item.project_id.location_dest_id
+            moves = item.move_ids.filtered(
+                lambda x: x.state not in ("cancel", "done")
+                and (x.location_id != location or x.location_dest_id != location_dest)
+            )
+            moves.update(
+                {
+                    "warehouse_id": location.get_warehouse().id,
+                    "location_id": location.id,
+                    "location_dest_id": location_dest.id,
+                    "picking_type_id": picking_type.id,
+                }
+            )
+        self.action_assign()
 
     @api.model
     def _prepare_procurement_group_vals(self, values):
@@ -188,6 +206,10 @@ class Task(models.Model):
             if stage.done_stock_moves:
                 # Avoid permissions error if the user does not have access to stock.
                 self.sudo().action_assign()
+        # Update info
+        field_names = ("location_id", "location_dest_id")
+        if any(vals.get(field) for field in field_names):
+            self._update_moves_info()
         return res
 
     def unlink(self):
