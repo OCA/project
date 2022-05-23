@@ -106,6 +106,12 @@ msgid "Inventory Moves"
 msgstr ""
 
 #. module: project_stock
+#: code:addons/project_stock/models/project_task.py:0
+#, python-format
+msgid "It is not possible to change this with reserved movements in tasks."
+msgstr ""
+
+#. module: project_stock
 #: model_terms:ir.ui.view,arch_db:project_stock.view_task_form2
 msgid "Lock"
 msgstr ""

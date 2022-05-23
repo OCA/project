@@ -32,6 +32,14 @@ class ProjectProject(models.Model):
     )
 
     @api.onchange("picking_type_id")
-    def onchange_picking_type(self):
+    def _onchange_picking_type_id(self):
         self.location_id = self.picking_type_id.default_location_src_id.id
         self.location_dest_id = self.picking_type_id.default_location_dest_id.id
+
+    def write(self, vals):
+        """Update location information on pending moves when changed."""
+        res = super().write(vals)
+        field_names = ("location_id", "location_dest_id")
+        if any(vals.get(field) for field in field_names):
+            self.task_ids._update_moves_info()
+        return res
