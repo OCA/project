@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 {
     "name": "Project Stock",
-    "version": "13.0.1.1.1",
+    "version": "13.0.1.1.2",
     "category": "Project Management",
     "website": "https://github.com/OCA/project",
     "author": "Tecnativa, Odoo Community Association (OCA)",
