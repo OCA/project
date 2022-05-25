@@ -11,14 +11,14 @@ class ProjectRisk(models.Model):
     _description = "Project Risk"
 
     project_id = fields.Many2one(
-        comodel_name="project.project", 
-        required=True
+        comodel_name = "project.project", 
+        required = True
     )
 
     project_risk_category_id = fields.Many2one(
-        string="Category", 
-        comodel_name="project.risk.category", 
-        required=True,
+        string = "Category", 
+        comodel_name = "project.risk.category", 
+        required = True,
     )
 
     name = fields.Char(required=1)
@@ -26,20 +26,20 @@ class ProjectRisk(models.Model):
     description = fields.Html()
 
     probability = fields.Selection(
-        required=True,
-        selection=[
+        required = True,
+        selection = [
             ("1", "Rare"),
             ("2", "Unlikely"),
             ("3", "Possible"),
             ("4", "Likely"),
             ("5", "Very likely"),
         ],
-        tracking=True,
+        tracking = True,
     )
 
     impact = fields.Selection(
-        required=True,
-        selection=[
+        required = True,
+        selection = [
             ("1", "Trivial"),
             ("2", "Minor"),
             ("3", "Moderate"),
@@ -49,9 +49,9 @@ class ProjectRisk(models.Model):
     )
 
     rating = fields.Selection(
-        compute="_compute_rating",
-        store=True,
-        selection=[
+        compute = "_compute_rating",
+        store = True,
+        selection = [
             ("1", "N/A"),
             ("2", "Trivial"),
             ("3", "Very Low"),
@@ -66,7 +66,7 @@ class ProjectRisk(models.Model):
     )
 
     proximity = fields.Selection(
-        selection=[
+        selection = [
             ("1", "Very low"),
             ("2", "Low"),
             ("3", "Medium"),
@@ -74,39 +74,39 @@ class ProjectRisk(models.Model):
             ("5", "Very High"),
             ("6", "Imminent"),
         ],
-        tracking=True,
+        tracking = True,
     )
 
     project_risk_response_category_id = fields.Many2one(
-        comodel_name="project.risk.response.category", 
-        string="Response Category",
+        comodel_name = "project.risk.response.category", 
+        string = "Response Category",
     )
 
     state = fields.Selection(
-        selection=[
+        selection = [
             ("draft", "Draft"), 
             ("active", "Active"), 
             ("closed", "Closed")],
-        default="draft",
-        tracking=True,
+        default = "draft",
+        tracking = True,
     )
 
     owner_id = fields.Many2one(
-        string="Owner", 
-        comodel_name="res.users", 
-        tracking=True
+        string = "Owner", 
+        comodel_name = "res.users", 
+        tracking = True
     )
 
     actionee_id = fields.Many2one(
-        string="Actionee", 
-        comodel_name="res.users", 
-        tracking=True,
+        string = "Actionee", 
+        comodel_name = "res.users", 
+        tracking = True,
     )
 
     project_risk_response_ids = fields.One2many(
-        string="Response",
-        comodel_name="project.risk.response",
-        inverse_name="project_risk_id",
+        string = "Response",
+        comodel_name = "project.risk.response",
+        inverse_name = "project_risk_id",
     )
 
     @api.depends("probability", "impact")
