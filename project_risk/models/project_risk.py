@@ -10,10 +10,15 @@ class ProjectRisk(models.Model):
     _name = "project.risk"
     _description = "Project Risk"
 
-    project_id = fields.Many2one(comodel_name="project.project", required=True)
+    project_id = fields.Many2one(
+        comodel_name="project.project", 
+        required=True
+    )
 
     project_risk_category_id = fields.Many2one(
-        string="Category", comodel_name="project.risk.category", required=True,
+        string="Category", 
+        comodel_name="project.risk.category", 
+        required=True,
     )
 
     name = fields.Char(required=1)
@@ -73,19 +78,29 @@ class ProjectRisk(models.Model):
     )
 
     project_risk_response_category_id = fields.Many2one(
-        comodel_name="project.risk.response.category", string="Response Category",
+        comodel_name="project.risk.response.category", 
+        string="Response Category",
     )
 
     state = fields.Selection(
-        selection=[("draft", "Draft"), ("active", "Active"), ("closed", "Closed")],
+        selection=[
+            ("draft", "Draft"), 
+            ("active", "Active"), 
+            ("closed", "Closed")],
         default="draft",
         tracking=True,
     )
 
-    owner_id = fields.Many2one(string="Owner", comodel_name="res.users", tracking=True)
+    owner_id = fields.Many2one(
+        string="Owner", 
+        comodel_name="res.users", 
+        tracking=True
+    )
 
     actionee_id = fields.Many2one(
-        string="Actionee", comodel_name="res.users", tracking=True,
+        string="Actionee", 
+        comodel_name="res.users", 
+        tracking=True,
     )
 
     project_risk_response_ids = fields.One2many(
