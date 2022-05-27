@@ -19,6 +19,13 @@
             <field name="unit_amount" position="attributes">
                 <attribute name="invisible">1</attribute>
             </field>
+            <field name="project_id" position="before">
+                <field
+                    name="unit_amount"
+                    widget="timesheet_uom"
+                    decoration-danger="unit_amount &gt; 24"
+                />
+            </field>
             <xpath expr="//sheet/group/group" position="attributes">
                 <attribute name="colspan">4</attribute>
             </xpath>
