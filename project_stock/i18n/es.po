@@ -112,7 +112,6 @@ msgid "Inventory Moves"
 msgstr "Movimientos de inventario"
 
 #. module: project_stock
-#: code:addons/project_stock/models/project_project.py:0
 #: code:addons/project_stock/models/project_task.py:0
 #, python-format
 msgid "It is not possible to change this with reserved movements in tasks."
