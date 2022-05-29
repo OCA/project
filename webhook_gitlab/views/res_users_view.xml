@@ -11,6 +11,7 @@
                 <br />
                 <label for="github_username" />
                 <field name="github_username" />
+                <br />
             </xpath>
         </field>
     </record>
