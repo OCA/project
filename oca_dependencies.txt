@@ -1,4 +1,5 @@
 project-reporting
+sale-workflow
 server-tools
 timesheet
 web
