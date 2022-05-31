@@ -92,8 +92,14 @@ msgstr ""
 
 #. module: project_stock
 #: model:ir.model.fields,help:project_stock.field_project_task__done_stock_moves
-#: model:ir.model.fields,help:project_stock.field_project_task__use_stock_moves
 #: model:ir.model.fields,help:project_stock.field_project_task_type__done_stock_moves
+msgid ""
+"If you check this box, when a task is in this state, you will not be able to"
+" add more stock moves but they can be viewed."
+msgstr ""
+
+#. module: project_stock
+#: model:ir.model.fields,help:project_stock.field_project_task__use_stock_moves
 #: model:ir.model.fields,help:project_stock.field_project_task_type__use_stock_moves
 msgid ""
 "If you mark this check, when a task goes to this state, it will use stock "
