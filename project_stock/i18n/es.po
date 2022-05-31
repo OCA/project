@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-23 13:05+0000\n"
-"PO-Revision-Date: 2022-05-23 15:05+0200\n"
+"POT-Creation-Date: 2022-05-31 15:24+0000\n"
+"PO-Revision-Date: 2022-05-31 17:25+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -96,8 +96,16 @@ msgstr "Realizar movimientos hechos"
 
 #. module: project_stock
 #: model:ir.model.fields,help:project_stock.field_project_task__done_stock_moves
-#: model:ir.model.fields,help:project_stock.field_project_task__use_stock_moves
 #: model:ir.model.fields,help:project_stock.field_project_task_type__done_stock_moves
+msgid ""
+"If you check this box, when a task is in this state, you will not be able to "
+"add more stock moves but they can be viewed."
+msgstr ""
+"Si marca esta casilla, cuando una tarea esté en este estado, no se podrán "
+"añadir mas movimientos de stock pero se podrán ver."
+
+#. module: project_stock
+#: model:ir.model.fields,help:project_stock.field_project_task__use_stock_moves
 #: model:ir.model.fields,help:project_stock.field_project_task_type__use_stock_moves
 msgid ""
 "If you mark this check, when a task goes to this state, it will use stock "
@@ -280,21 +288,3 @@ msgstr "Anular reserva"
 #: model:ir.model.fields,field_description:project_stock.field_project_task_type__use_stock_moves
 msgid "Use Stock Moves"
 msgstr "Usar movimientos de stock"
-
-#~ msgid "Lock Stock Moves"
-#~ msgstr "Bloquear movimientos de stock"
-
-#~ msgid "You must assign an analytic account for this task/project."
-#~ msgstr "Debe asignar una cuenta analítica para esta tarea/proyecto."
-
-#~ msgid "Picking Type"
-#~ msgstr "Tipo de albarán"
-
-#~ msgid "Sequence"
-#~ msgstr "Secuencia"
-
-#~ msgid "Type of Operation"
-#~ msgstr "Tipo de operación"
-
-#~ msgid "Warehouse"
-#~ msgstr "Almacén"
