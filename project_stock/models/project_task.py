@@ -225,6 +225,6 @@ class ProjectTaskType(models.Model):
         "it will use stock moves",
     )
     done_stock_moves = fields.Boolean(
-        help="If you mark this check, when a task goes to this state, "
-        "it will use stock moves",
+        help="If you check this box, when a task is in this state, you will not "
+        "be able to add more stock moves but they can be viewed."
     )
