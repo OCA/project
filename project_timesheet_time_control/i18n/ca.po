@@ -57,8 +57,8 @@ msgid ""
 "                        </span>"
 msgstr ""
 "<span class=\"o_label\">\n"
-"                            <i class=\"fa fa-lg fa-play-circle text-success\""
-"/>\n"
+"                            <i class=\"fa fa-lg fa-play-circle text-success"
+"\"/>\n"
 "                            Començar la feina\n"
 "                        </span>"
 
@@ -72,8 +72,8 @@ msgid ""
 "                        </span>"
 msgstr ""
 "<span class=\"o_label\">\n"
-"                            <i class=\"fa fa-lg fa-stop-circle text-warning\""
-"/>\n"
+"                            <i class=\"fa fa-lg fa-stop-circle text-warning"
+"\"/>\n"
 "                            Atura la feina\n"
 "                        </span>"
 
@@ -317,6 +317,11 @@ msgstr "Resum"
 #, python-format
 msgid "Resume work"
 msgstr "Reprendre la feina"
+
+#. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__so_line
+msgid "Sales Order Item"
+msgstr ""
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_account_analytic_line__show_time_control
