@@ -61,7 +61,7 @@
         <field eval="2" name="priority"/>
         <field name="arch" type="xml">
             <field name="partner_id" position="after">
-              <field name="project_department_id" />
+                <field name="project_department_id" />
             </field>
         </field>
     </record>
