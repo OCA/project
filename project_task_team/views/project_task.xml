@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_task_form2" model="ir.ui.view">
+        <field name="name">project.task</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2" />
+        <field name="arch" type="xml">
+            <field name="tag_ids" position="after">
+                <field
+                    name="task_team_ids"
+                    widget="many2many_tags"
+                    groups="!project_task_team.project_task_group"
+                    options="{'no_open': True, 'no_create': True}"
+                />
+            </field>
+        </field>
+    </record>
+</odoo>
