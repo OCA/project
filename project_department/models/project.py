@@ -12,3 +12,11 @@ class ProjectTask(models.Model):
         store=True,
         readonly=True,
     )
+
+
+class ProjectProject(models.Model):
+    _inherit = "project.project"
+
+    department_id = fields.Many2one(
+        comodel_name="hr.department", string="Project Department"
+    )
