@@ -36,9 +36,13 @@ them, and also adds the needed fields in the view for handling them.
 Usage
 =====
 
+To view the timeline:
+
 * Go to *Project > Search > Tasks* or *Project > Dashboard*.
 * Click on the timeline view icon.
 * You will see the tasks or projects in the new view.
+
+The Task timeline uses the Start Date and End Date fields, in the Extra Info tab.
 
 Bug Tracker
 ===========
@@ -72,6 +76,11 @@ Contributors
   * Pedro M. Baeza
   * Carlos Dauden
   * Alexandre Díaz
+  * Sergio Teruel
+
+* `Open Source Integrators <https://www.opensourceintegrators.com>`_:
+
+  * Daniel Reis
 
 Maintainers
 ~~~~~~~~~~~
