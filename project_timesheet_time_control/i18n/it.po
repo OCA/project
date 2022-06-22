@@ -9,14 +9,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-05-10 02:40+0000\n"
-"PO-Revision-Date: 2017-05-10 02:40+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"PO-Revision-Date: 2022-06-22 13:05+0000\n"
+"Last-Translator: Francesco Foresti <francesco.foresti@ooops404.com>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.3.2\n"
 
 #. module: project_timesheet_time_control
 #: code:addons/project_timesheet_time_control/wizards/hr_timesheet_switch.py:0
@@ -67,9 +68,8 @@ msgstr ""
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__account_id
-#, fuzzy
 msgid "Analytic Account"
-msgstr "Riga Analitica"
+msgstr "Conto Analitico"
 
 #. module: project_timesheet_time_control
 #: model:ir.model,name:project_timesheet_time_control.model_account_analytic_line
@@ -124,12 +124,12 @@ msgstr ""
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__create_date
 msgid "Created on"
-msgstr ""
+msgstr "Creato il"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__currency_id
 msgid "Currency"
-msgstr ""
+msgstr "Valuta"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__date
@@ -263,12 +263,12 @@ msgstr ""
 #: model:ir.model,name:project_timesheet_time_control.model_project_project
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__project_id
 msgid "Project"
-msgstr ""
+msgstr "Progetto"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__unit_amount
 msgid "Quantity"
-msgstr ""
+msgstr "Quantità"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__ref
@@ -315,9 +315,8 @@ msgstr ""
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
-#, fuzzy
 msgid "Start new timer"
-msgstr "Data"
+msgstr "Avvia nuovo timer"
 
 #. module: project_timesheet_time_control
 #: code:addons/project_timesheet_time_control/models/hr_timesheet_time_control_mixin.py:0
@@ -360,9 +359,8 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_form2_inherited
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_kanban
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_tree2_inherited
-#, fuzzy
 msgid "Stop work"
-msgstr "Fine"
+msgstr "Ferma lavoro"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__tag_ids
