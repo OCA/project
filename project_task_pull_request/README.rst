@@ -45,7 +45,7 @@ To use this module, you need to:
 #. Go to Dashboard and select a project
 #. Attempt to move one of the project's task without a PR URI into one of
    the stages you selected to require a PR; you will receive a Validation Error
-#. To add a PR URI to a task, click on the task and go to the "Extra Info" tag
+#. To add a PR URI to a task, click on the task and set it in the corresponding field in the header.
 
 Bug Tracker
 ===========
@@ -74,6 +74,10 @@ Contributors
 
   * Ernesto Tejeda
   * Jairo Llopis
+
+* Ooops404 <https://ooops404.com>
+
+  * Ilyas <irazor147@gmail.com>
 
 Maintainers
 ~~~~~~~~~~~
