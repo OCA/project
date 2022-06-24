@@ -88,6 +88,8 @@ class TestProjectStockBase(common.SavepointCase):
             self.env["project.task"].with_context(self._prepare_context_task(self))
         )
         task_form.name = "Test task"
+        # Save task to use default_get() correctlly in stock.moves
+        task_form.save()
         for product in products:
             with task_form.move_ids.new() as move_form:
                 move_form.product_id = product[0]

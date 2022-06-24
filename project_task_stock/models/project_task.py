@@ -79,6 +79,7 @@ class Task(models.Model):
         inverse_name="stock_task_id",
         string="Analytic Lines",
     )
+    group_id = fields.Many2one(comodel_name="procurement.group",)
 
     def _compute_scrap_move_count(self):
         data = self.env["stock.scrap"].read_group(
@@ -151,8 +152,8 @@ class Task(models.Model):
         self.action_assign()
 
     @api.model
-    def _prepare_procurement_group_vals(self, values):
-        return {"name": values["name"]}
+    def _prepare_procurement_group_vals(self):
+        return {"name": "Task-ID: %s" % self.id}
 
     def action_confirm(self):
         self.mapped("move_ids")._action_confirm()
