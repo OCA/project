@@ -83,8 +83,13 @@ class StockMove(models.Model):
             task = self.env["project.task"].browse(
                 self.env.context.get("default_raw_material_task_id")
             )
+            if not task.group_id:
+                task.group_id = self.env["procurement.group"].create(
+                    task._prepare_procurement_group_vals()
+                )
             defaults.update(
                 {
+                    "group_id": task.group_id.id,
                     "location_id": (
                         task.location_id.id or task.project_id.location_id.id
                     ),
