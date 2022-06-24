@@ -18,15 +18,18 @@ class TestProjectStock(TestProjectStockBase):
         )
 
     def test_project_task_misc(self):
+        self.assertTrue(self.task.group_id)
         self.assertEqual(self.task.picking_type_id, self.picking_type)
         self.assertEqual(self.task.location_id, self.location)
         self.assertEqual(self.task.location_dest_id, self.location_dest)
         self.assertEqual(self.move_product_a.name, self.task.name)
+        self.assertEqual(self.move_product_a.group_id, self.task.group_id)
         self.assertEqual(self.move_product_a.reference, self.task.name)
         self.assertEqual(self.move_product_a.location_id, self.location)
         self.assertEqual(self.move_product_a.location_dest_id, self.location_dest)
         self.assertEqual(self.move_product_a.picking_type_id, self.picking_type)
         self.assertEqual(self.move_product_a.raw_material_task_id, self.task)
+        self.assertEqual(self.move_product_b.group_id, self.task.group_id)
         self.assertEqual(self.move_product_b.location_id, self.location)
         self.assertEqual(self.move_product_b.location_dest_id, self.location_dest)
         self.assertEqual(self.move_product_b.picking_type_id, self.picking_type)
@@ -94,6 +97,7 @@ class TestProjectStock(TestProjectStockBase):
         move_product_c = self.task.move_ids.filtered(
             lambda x: x.product_id == self.product_c
         )
+        self.assertEqual(move_product_c.group_id, self.task.group_id)
         self.assertEqual(move_product_c.state, "draft")
         self.task.action_assign()
         self.assertEqual(move_product_c.state, "assigned")

@@ -14,6 +14,16 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: project_stock
+#: model:ir.model.fields,field_description:project_stock.field_project_task__allow_moves_action_assign
+msgid "Allow Moves Action Assign"
+msgstr ""
+
+#. module: project_stock
+#: model:ir.model.fields,field_description:project_stock.field_project_task__allow_moves_action_confirm
+msgid "Allow Moves Action Confirm"
+msgstr ""
+
+#. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_task__unreserve_visible
 msgid "Allowed to Unreserve Inventory"
 msgstr ""
@@ -88,6 +98,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_stock.field_project_task__done_stock_moves
 #: model:ir.model.fields,field_description:project_stock.field_project_task_type__done_stock_moves
 msgid "Done Stock Moves"
+msgstr ""
+
+#. module: project_stock
+#: model:ir.model.fields,field_description:project_stock.field_project_task__group_id
+msgid "Group"
 msgstr ""
 
 #. module: project_stock
