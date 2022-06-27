@@ -15,6 +15,9 @@
                        widget="url"
                        attrs="{'invisible':[('pr_required_states', '=', [])]}"/>
             </field>
+            <field name="tag_ids" position="after">
+                <field name="pr_uri" widget="url"/>
+            </field>
         </field>
     </record>
 
