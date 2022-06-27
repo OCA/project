@@ -44,14 +44,14 @@
                     string="Confirm materials"
                     type="object"
                     class="oe_highlight"
-                    attrs="{'invisible':['|','|',('stock_state', '!=', 'pending'),('done_stock_moves', '=', False),('stock_moves_is_locked','=',False)]}"
+                    attrs="{'invisible':[('allow_moves_action_confirm','=',False)]}"
                 />
                 <button
                     name="action_assign"
                     string="Check availability materials"
                     type="object"
                     class="oe_highlight"
-                    attrs="{'invisible':['|', ('stock_state', '!=', 'confirmed'),('stock_moves_is_locked','=',False)]}"
+                    attrs="{'invisible':[('allow_moves_action_assign','=',False)]}"
                 />
                 <button
                     name="button_scrap"
@@ -104,6 +104,8 @@
                     <field name="done_stock_moves" invisible="1" />
                     <field name="stock_moves_is_locked" invisible="1" />
                     <field name="stock_state" invisible="1" />
+                    <field name="allow_moves_action_confirm" invisible="1" />
+                    <field name="allow_moves_action_assign" invisible="1" />
                     <field name="unreserve_visible" invisible="1" />
                     <field
                         name="move_ids"
