@@ -23,6 +23,12 @@ class Task(models.Model):
     use_stock_moves = fields.Boolean(related="stage_id.use_stock_moves")
     done_stock_moves = fields.Boolean(related="stage_id.done_stock_moves")
     stock_moves_is_locked = fields.Boolean(default=True)
+    allow_moves_action_confirm = fields.Boolean(
+        compute="_compute_allow_moves_action_confirm"
+    )
+    allow_moves_action_assign = fields.Boolean(
+        compute="_compute_allow_moves_action_assign"
+    )
     stock_state = fields.Selection(
         selection=[
             ("pending", "Pending"),
@@ -81,6 +87,19 @@ class Task(models.Model):
         count_data = {item["task_id"][0]: item["task_id_count"] for item in data}
         for item in self:
             item.scrap_count = count_data.get(item.id, 0)
+
+    def _compute_allow_moves_action_confirm(self):
+        for item in self:
+            item.allow_moves_action_confirm = any(
+                move.state == "draft" for move in item.move_ids
+            )
+
+    def _compute_allow_moves_action_assign(self):
+        for item in self:
+            item.allow_moves_action_assign = any(
+                move.state in ("confirmed", "partially_available")
+                for move in item.move_ids
+            )
 
     @api.depends("move_ids.state")
     def _compute_stock_state(self):
