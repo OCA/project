@@ -8,6 +8,6 @@ from openupgradelib import openupgrade
 def migrate(env, version):
     pg_model = env["procurement.group"]
     for task in env["project.task"].search([("move_ids", "!=", False)]):
-        group = pg_model.create({task._prepare_procurement_group_vals()})
+        group = pg_model.create(task._prepare_procurement_group_vals())
         task.write({"group_id": group.id})
         task.move_ids.write({"group_id": group.id})
