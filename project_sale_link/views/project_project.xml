@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2022 ACSONE SA/NV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record model="ir.ui.view" id="project_project_form_view">
+        <field name="name">project.project.form (in project_sale_link)</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button
+                    name="action_open_sale_orders"
+                    type="object"
+                    class="oe_stat_button"
+                    icon="fa-home"
+                >
+                <field name="sale_order_count" widget="statinfo" />
+                </button>
+                <button
+                    name="action_open_customer_invoice"
+                    type="object"
+                    class="oe_stat_button"
+                    icon="fa-money"
+                >
+                <field name="customer_invoice_count" widget="statinfo" />
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+
+
+</odoo>
