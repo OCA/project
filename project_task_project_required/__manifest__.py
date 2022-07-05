@@ -19,4 +19,7 @@
         'views/project_task.xml',
         'views/res_config_settings.xml',
     ],
+    'demo': [
+        'demo/res_company.xml',
+    ],
 }
