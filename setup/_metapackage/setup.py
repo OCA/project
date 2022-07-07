@@ -10,6 +10,7 @@ setuptools.setup(
     install_requires=[
         'odoo-addon-project_duplicate_subtask>=15.0dev,<15.1dev',
         'odoo-addon-project_list>=15.0dev,<15.1dev',
+        'odoo-addon-project_milestone>=15.0dev,<15.1dev',
         'odoo-addon-project_parent_task_filter>=15.0dev,<15.1dev',
         'odoo-addon-project_task_add_very_high>=15.0dev,<15.1dev',
         'odoo-addon-project_task_code>=15.0dev,<15.1dev',
