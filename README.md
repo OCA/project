@@ -23,6 +23,7 @@ addon | version | maintainers | summary
 --- | --- | --- | ---
 [project_duplicate_subtask](project_duplicate_subtask/) | 15.0.1.0.0 |  | The module adds an action to duplicate tasks with the child subtasks
 [project_list](project_list/) | 15.0.2.0.0 |  | Projects list view
+[project_milestone](project_milestone/) | 15.0.1.0.0 | [![patrickrwilson](https://github.com/patrickrwilson.png?size=30px)](https://github.com/patrickrwilson) | Project Milestones
 [project_parent_task_filter](project_parent_task_filter/) | 15.0.1.1.0 |  | Add a filter to show the parent tasks
 [project_task_add_very_high](project_task_add_very_high/) | 15.0.1.0.0 | [![astirpe](https://github.com/astirpe.png?size=30px)](https://github.com/astirpe) | Adds extra options 'High' and 'Very High' on tasks
 [project_task_code](project_task_code/) | 15.0.1.0.1 |  | Sequential Code for Tasks
