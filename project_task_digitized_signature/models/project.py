@@ -7,4 +7,6 @@ from odoo import fields, models
 class ProjectTask(models.Model):
     _inherit = "project.task"
 
-    customer_signature = fields.Binary(string="Customer acceptance",)
+    customer_signature = fields.Binary(
+        string="Customer acceptance",
+    )
