@@ -1,14 +1,21 @@
 <?xml version="1.0" ?>
 <odoo>
 
-    <template id="report_taskorder_document" inherit_id="project_task_report.task_report">
+    <template
+        id="report_taskorder_document"
+        inherit_id="project_task_report.task_report"
+    >
         <xpath expr="//span[@t-field='o.description']" position="after">
             <div class="row">
                 <div id="signature">
                     <p>
                         <strong>Customer acceptance:</strong>
                         <span t-if="o.customer_signature">
-                            <img class="image" t-att-src="'data:image/png;base64,%s' % to_text(o.customer_signature)" style="border:auto;"/>
+                            <img
+                                class="image"
+                                t-att-src="'data:image/png;base64,%s' % to_text(o.customer_signature)"
+                                style="border:auto;"
+                            />
                         </span>
                     </p>
                 </div>
