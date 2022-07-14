@@ -48,6 +48,9 @@ class ProjectTaskSchedule(models.Model):
 
     @api.model
     def _schedule_cron(self):
+        """
+            Get all schedules that are eligible to task generation
+        """
         schedules = self.search(self._get_schedule_domain())
         now = fields.Datetime.now()
         for schedule in schedules.filtered(
@@ -56,3 +59,9 @@ class ProjectTaskSchedule(models.Model):
             default_values = schedule._get_task_default_values()
             schedule.task_template_id.copy(default_values)
             schedule._update_dates()
+
+    def activate(self):
+        for schedule in self:
+            if schedule.state != "active":
+                schedule.write({"state": "active"})
+        return True

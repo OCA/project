@@ -59,6 +59,12 @@
                 <field name="last_recurrency_date" />
                 <field name="next_recurrency_date" />
                 <field name="state" />
+                <button
+                    name="activate"
+                    type="object"
+                    class="fa fa-play"
+                    attrs="{'invisible': [('state', '!=', 'active')]}"
+                />
             </tree>
         </field>
     </record>
