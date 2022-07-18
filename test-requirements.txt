@@ -1,0 +1,1 @@
+odoo-addon-project_capacity_line @ git+https://github.com/OCA/project@refs/pull/944/head#subdirectory=setup/project_capacity_line
