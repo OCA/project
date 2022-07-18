@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_forecast_line_reporting" model="ir.ui.view">
+        <field name="model">forecast.line.reporting</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <h1>Forecast Reporting</h1>
+                    <group>
+                        <group>
+                            <field name="date_from" />
+                            <field name="nb_months" />
+                            <field name="granularity" />
+                        </group>
+                        <group>
+                            <field name="employee_ids" widget="many2many_tags" />
+                            <field name="project_ids" widget="many2many_tags" />
+                        </group>
+                    </group>
+                        <field name="bokeh_chart" widget="bokeh_chart" nolabel="1" />
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_forecast_lines_reporting" model="ir.actions.act_window">
+        <field name="name">Forecast Reporting</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">forecast.line.reporting</field>
+        <field name="view_mode">form</field>
+    </record>
+
+    <menuitem
+        id="menu_forecast_line_reporting"
+        parent="project_forecast_line.forecast_menu_root"
+        sequence="10"
+        name="Forecast Reporting"
+        action="action_forecast_lines_reporting"
+    />
+
+</odoo>
