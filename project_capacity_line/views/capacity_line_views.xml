@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_capacity_line_search" model="ir.ui.view">
+        <field name="model">capacity.line</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="capacity_role_id" />
+                <field name="project_id" />
+                <field name="employee_id" />
+                <field name="company_id" groups="base.group_multi_company" />
+                <filter
+                    string="Forecast"
+                    domain="[('type', '=', 'forecast')]"
+                    name="capacity_forcast_filter"
+                />
+                <filter
+                    string="Confirmed"
+                    domain="[('type', '=', 'confirmed')]"
+                    name="capacity_confirmed_filter"
+                />
+                <group expand="0" string="Group By">
+                    <filter
+                        string="Project"
+                        name="project"
+                        domain="[]"
+                        context="{'group_by': 'project_id'}"
+                    />
+                    <filter
+                        string="Role"
+                        name="role"
+                        domain="[]"
+                        context="{'group_by': 'capacity_role_id'}"
+                    />
+                    <filter
+                        string="Date from"
+                        name="date_from"
+                        domain="[]"
+                        context="{'group_by': 'date_from'}"
+                    />
+                    <filter
+                        string="Employee"
+                        name="employee"
+                        domain="[]"
+                        context="{'group_by': 'employee_id'}"
+                    />
+                    <filter
+                        string="Model"
+                        name="model"
+                        domain="[]"
+                        context="{'group_by': 'res_model'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="view_capacity_line_list" model="ir.ui.view">
+        <field name="model">capacity.line</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="date_from" />
+                <field name="date_to" />
+                <field name="capacity_hours" />
+                <field name="cost" />
+                <field name="consolidated_capacity_hours" />
+                <field name="capacity_role_id" />
+                <field name="currency_id" invisible="1" />
+            </tree>
+        </field>
+    </record>
+    <record id="view_capacity_line_graph" model="ir.ui.view">
+        <field name="model">capacity.line</field>
+        <field name="arch" type="xml">
+            <graph type="bar" stacked="0">
+                <field name="date_from" type="row" />
+                <field name="capacity_role_id" type="col" />
+                <field name="consolidated_capacity_hours" type="measure" />
+                <field name="cost" type="measure" />
+                <field name="capacity_hours" type="measure" />
+                <field name="currency_id" invisible="1" />
+            </graph>
+        </field>
+    </record>
+    <record id="view_capacity_line_graph_stacked" model="ir.ui.view">
+        <field name="model">capacity.line</field>
+        <field name="priority" eval="20" />
+        <field name="arch" type="xml">
+            <graph type="bar" stacked="1">
+                <field name="date_from" type="row" />
+                <field name="employee_id" type="col" />
+                <field name="project_id" type="col" />
+                <field name="consolidated_capacity_hours" type="measure" />
+            </graph>
+        </field>
+    </record>
+    <record id="view_capacity_line_pivot" model="ir.ui.view">
+        <field name="model">capacity.line</field>
+        <field name="arch" type="xml">
+            <pivot>
+                <field name="date_from" type="col" />
+                <field name="capacity_role_id" type="row" />
+                <field name="consolidated_capacity_hours" type="measure" />
+                <field name="cost" type="measure" />
+                <field name="capacity_hours" type="measure" />
+                <field name="currency_id" invisible="1" />
+            </pivot>
+        </field>
+    </record>
+
+    <record id="action_capacity_lines" model="ir.actions.act_window">
+        <field name="name">Capacity Lines</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">capacity.line</field>
+        <field name="view_mode">tree,graph,pivot</field>
+    </record>
+    <record id="action_capacity_lines_consolidated" model="ir.actions.act_window">
+        <field name="name">Capacity Lines (Consolidated)</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">capacity.line</field>
+        <field name="view_mode">graph,pivot,tree</field>
+        <field name="view_id" ref="view_capacity_line_graph_stacked" />
+        <field name="search_view_id" ref="view_capacity_line_search" />
+        <field name="domain">[('employee_id', '!=', False)]</field>
+        <field
+            name="context"
+        >{'graph_groupbys': ['date_from:month', 'project_id']}</field>
+    </record>
+
+    <menuitem
+        id="menu_capacity_line"
+        parent="project.menu_project_report"
+        sequence="50"
+        name="Capacity Lines"
+        action="action_capacity_lines"
+    />
+    <menuitem
+        id="menu_capacity_line_consolidated"
+        parent="project.menu_project_report"
+        sequence="55"
+        name="Capacity Lines (Consolidated)"
+        action="action_capacity_lines_consolidated"
+    />
+
+
+</odoo>
