@@ -1,0 +1,3 @@
+This module allows to plan your resources using forecast lines.
+For each employee of the company, the module will generate forecast line records with a positive capacity based on their working time schedules. Then, tasks assigned to employees will generate forecast lines with a negative capacity which will "consume" the work time capacity of the employees.
+Forecast lines also come in two states "forecast" or "confirmed", depending on whether the consumption is confirmed or not. For instance, holidays requests and sales quotation lines create lines of type "forecast", whereas tasks for project which are in a running state create lines with type "confirmed".
