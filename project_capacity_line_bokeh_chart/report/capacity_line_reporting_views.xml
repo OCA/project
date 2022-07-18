@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_capacity_line_reporting" model="ir.ui.view">
+        <field name="model">capacity.line.reporting</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <h1>Capacity Lines Reporting</h1>
+                    <group>
+                        <group>
+                            <field name="date_from" />
+                            <field name="nb_months" />
+                            <field name="granularity" />
+                        </group>
+                        <group>
+                            <field name="employee_ids" widget="many2many_tags" />
+                            <field name="project_ids" widget="many2many_tags" />
+                        </group>
+                    </group>
+                        <field name="bokeh_chart" widget="bokeh_chart" nolabel="1" />
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="action_capacity_lines_reporting" model="ir.actions.act_window">
+        <field name="name">Capacity Lines Reporting</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">capacity.line.reporting</field>
+        <field name="view_mode">form</field>
+    </record>
+
+    <menuitem
+        id="menu_capacity_line_reporting"
+        parent="project.menu_project_report"
+        sequence="60"
+        name="Capacity Lines Reporting"
+        action="action_capacity_lines_reporting"
+    />
+
+</odoo>

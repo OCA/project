@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+project_capacity_line_bokeh_chart.access_capacity_line_reporting,access_capacity_line_reporting,project_capacity_line_bokeh_chart.model_capacity_line_reporting,base.group_user,1,1,1,1
