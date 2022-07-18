@@ -10,7 +10,11 @@ _logger = logging.getLogger(__name__)
 class ProjectTask(models.Model):
     _inherit = "project.task"
 
+<<<<<<< HEAD
     forecast_role_id = fields.Many2one("forecast.role", ondelete="restrict")
+=======
+    forecast_role_id = fields.Many2one("forecast.role")
+>>>>>>> [15.0][ADD] project_forecast_line
     forecast_date_planned_start = fields.Date("Planned start date")
     forecast_date_planned_end = fields.Date("Planned end date")
 
@@ -18,9 +22,15 @@ class ProjectTask(models.Model):
     def create(self, vals_list):
         # compatibility with fields from project_enterprise
         for vals in vals_list:
+<<<<<<< HEAD
             if vals.get("planned_date_begin"):
                 vals["forecast_date_planned_start"] = vals["planned_date_begin"]
             if vals.get("planned_date_end"):
+=======
+            if "planned_date_begin" in vals:
+                vals["forecast_date_planned_start"] = vals["planned_date_begin"]
+            if "planned_date_end" in vals:
+>>>>>>> [15.0][ADD] project_forecast_line
                 vals["forecast_date_planned_end"] = vals["planned_date_end"]
         tasks = super().create(vals_list)
         tasks._update_forecast_lines()
@@ -94,7 +104,10 @@ class ProjectTask(models.Model):
                     # are not generating forecast lines from SO
                     _logger.info("skip task %s: draft sale")
                     continue
+<<<<<<< HEAD
 
+=======
+>>>>>>> [15.0][ADD] project_forecast_line
             if (
                 not task.forecast_date_planned_start
                 or not task.forecast_date_planned_end

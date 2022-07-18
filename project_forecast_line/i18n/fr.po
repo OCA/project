@@ -55,16 +55,20 @@ msgid "Confirmed"
 msgstr ""
 
 #. module: project_forecast_line
+<<<<<<< HEAD
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__confirmed_consolidated_forecast
 msgid "Confirmed lines consolidated forecast"
 msgstr ""
 
 #. module: project_forecast_line
+=======
+>>>>>>> [15.0][ADD] project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__consolidated_forecast
 msgid "Consolidated Forecast"
 msgstr ""
 
 #. module: project_forecast_line
+<<<<<<< HEAD
 #: model:ir.model.fields,help:project_forecast_line.field_forecast_line__consolidated_forecast
 msgid "Consolidated forecast for lines of all types consumed"
 msgstr ""
@@ -75,6 +79,8 @@ msgid "Consolidated forecast for lines of type confirmed"
 msgstr ""
 
 #. module: project_forecast_line
+=======
+>>>>>>> [15.0][ADD] project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__cost
 msgid "Cost"
 msgstr ""

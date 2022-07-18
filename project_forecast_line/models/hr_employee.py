@@ -9,16 +9,24 @@ from odoo import api, fields, models
 class HrJob(models.Model):
     _inherit = "hr.job"
 
+<<<<<<< HEAD
     role_id = fields.Many2one("forecast.role", ondelete="restrict")
+=======
+    role_id = fields.Many2one("forecast.role")
+>>>>>>> [15.0][ADD] project_forecast_line
 
 
 class HrEmployee(models.Model):
     _inherit = "hr.employee"
 
     role_ids = fields.One2many("hr.employee.forecast.role", "employee_id")
+<<<<<<< HEAD
     main_role_id = fields.Many2one(
         "forecast.role", compute="_compute_main_role_id", ondelete="restrict"
     )
+=======
+    main_role_id = fields.Many2one("forecast.role", compute="_compute_main_role_id")
+>>>>>>> [15.0][ADD] project_forecast_line
 
     def _compute_main_role_id(self):
         # can"t store as it depends on current date
@@ -120,7 +128,11 @@ class HrEmployeeForecastRole(models.Model):
                 date_from=rec.date_start,
                 date_to=date_end,
                 forecast_hours=forecast * rec.rate / 100.0,
+<<<<<<< HEAD
                 unit_cost=rec.employee_id.hourly_cost,  # XXX to check
+=======
+                unit_cost=rec.employee_id.timesheet_cost,  # XXX to check
+>>>>>>> [15.0][ADD] project_forecast_line
                 ttype="confirmed",
                 forecast_role_id=rec.role_id.id,
                 employee_id=rec.employee_id.id,

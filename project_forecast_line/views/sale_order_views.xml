@@ -4,17 +4,38 @@
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form" />
         <field name="arch" type="xml">
+<<<<<<< HEAD
+=======
+            <field name="date_order" position="after">
+                <field
+                    name="default_forecast_date_start"
+                    groups="project_forecast_line.group_forecast_line_on_quotation"
+                />
+                <field
+                    name="default_forecast_date_end"
+                    groups="project_forecast_line.group_forecast_line_on_quotation"
+                />
+            </field>
+>>>>>>> [15.0][ADD] project_forecast_line
             <xpath
                 expr="//field[@name='order_line']/form//field[@name='product_id']"
                 position="before"
             >
                 <field
                     name="forecast_date_start"
+<<<<<<< HEAD
                     group_id="project_forecast_line.group_forecast_line_on_quotation"
                 />
                 <field
                     name="forecast_date_end"
                     group_id="project_forecast_line.group_forecast_line_on_quotation"
+=======
+                    groups="project_forecast_line.group_forecast_line_on_quotation"
+                />
+                <field
+                    name="forecast_date_end"
+                    groups="project_forecast_line.group_forecast_line_on_quotation"
+>>>>>>> [15.0][ADD] project_forecast_line
                 />
             </xpath>
             <xpath
@@ -24,11 +45,16 @@
                 <field
                     name="forecast_date_start"
                     optional="show"
+<<<<<<< HEAD
                     group_id="project_forecast_line.group_forecast_line_on_quotation"
+=======
+                    groups="project_forecast_line.group_forecast_line_on_quotation"
+>>>>>>> [15.0][ADD] project_forecast_line
                 />
                 <field
                     name="forecast_date_end"
                     optional="show"
+<<<<<<< HEAD
                     group_id="project_forecast_line.group_forecast_line_on_quotation"
                 />
             </xpath>
@@ -42,6 +68,11 @@
                     group_id="project_forecast_line.group_forecast_line_on_quotation"
                 />
             </field>
+=======
+                    groups="project_forecast_line.group_forecast_line_on_quotation"
+                />
+            </xpath>
+>>>>>>> [15.0][ADD] project_forecast_line
         </field>
     </record>
 

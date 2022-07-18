@@ -4,7 +4,11 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_form2" />
         <field name="arch" type="xml">
+<<<<<<< HEAD
             <field name="user_ids" position="after">
+=======
+            <field name="parent_id" position="before">
+>>>>>>> [15.0][ADD] project_forecast_line
                 <field name="forecast_role_id" />
             </field>
             <field name="analytic_account_id" position="before">
