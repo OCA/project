@@ -33,6 +33,8 @@
                     string="Milestones"
                     attrs="{'invisible':[('use_milestones','=', False)]}"
                 >
+                    <field name="milestones_required" />
+                    <label for="milestones_required" />
                     <group>
                         <field
                             name="milestone_ids"

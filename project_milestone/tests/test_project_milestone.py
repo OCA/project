@@ -1,6 +1,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo.tests import common
+from odoo.tests.common import Form
 
 
 class TestProjectMilestone(common.TransactionCase):
@@ -52,3 +53,15 @@ class TestProjectMilestone(common.TransactionCase):
         Task = Task.with_context(default_project_id=self.test_project.id)
         grouped_tasks = Task.read_group(domain, ["name"], ["milestone_id"])
         self.assertEqual(len(grouped_tasks), 2)
+
+    def test_sub_task(self):
+        Task = self.env["project.task"]
+        test_task = Task.search([("name", "=", "TestTask")], limit=1)
+        self.test_project.use_milestones = False
+        self.test_project.milestones_required = True
+        self.test_project._onchange_use_milestones()
+        with Form(Task.with_context(default_parent_id=test_task.id)) as task:
+            task.name = "SubTask"
+        with Form(Task) as task:
+            task.project_id = self.test_project
+            task.name = "SubTask"

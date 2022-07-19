@@ -26,10 +26,29 @@
                     name="milestone_id"
                     domain="[('project_id', '=', project_id)]"
                     option="{'no_create_edit': True}"
-                    attrs="{'invisible':[('use_milestones','=', False)]}"
+                    attrs="{'invisible':[('use_milestones', '=', False)], 'required': [('milestones_required', '=', True)]}"
                     context="{'default_project_id': project_id}"
                 />
+                <field name="milestones_required" invisible="1" />
             </xpath>
+        </field>
+    </record>
+    <record id="quick_create_task_form" model="ir.ui.view">
+        <field name="name">project.task</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.quick_create_task_form" />
+        <field name="arch" type="xml">
+            <field name="user_id" position="after">
+                <field name="project_id" invisible="1" />
+                <field name="parent_id" invisible="1" />
+                <field name="use_milestones" invisible="1" />
+                <field name="milestones_required" invisible="1" />
+                <field
+                    name="milestone_id"
+                    domain="[('project_id', '=', project_id)]"
+                    attrs="{'invisible':[('use_milestones', '=', False)], 'required': [('milestones_required', '=', True)]}"
+                />
+            </field>
         </field>
     </record>
     <!-- Kanban View -->
@@ -40,7 +59,11 @@
         <field name="arch" type="xml">
             <xpath expr="//div[hasclass('o_kanban_record_body')]" position="after">
                 <span class="o_value">
-                    <field name="milestone_id" />
+                    <field
+                        name="milestone_id"
+                        attrs="{'invisible':[('use_milestones','=', False)]}"
+                    />
+                    <field name="use_milestones" invisible='1' />
                 </span>
             </xpath>
         </field>
