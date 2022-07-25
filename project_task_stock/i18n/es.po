@@ -218,7 +218,7 @@ msgstr "Movimiento de desecho"
 #: model:ir.model.fields,field_description:project_stock.field_project_task__scrap_ids
 #: model_terms:ir.ui.view,arch_db:project_stock.view_task_form2
 msgid "Scraps"
-msgstr "Dsechos"
+msgstr "Desechos"
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_project__location_id
