@@ -235,10 +235,6 @@ class Task(models.Model):
             self._update_moves_info()
         return res
 
-    def unlink(self):
-        self.mapped("stock_analytic_line_ids").unlink()
-        return super().unlink()
-
 
 class ProjectTaskType(models.Model):
     _inherit = "project.task.type"
