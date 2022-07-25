@@ -33,17 +33,14 @@ class ProjectRole(models.Model):
         copy=True,
     )
     complete_name = fields.Char(
-        string="Complete Name",
         compute="_compute_complete_name",
         store=True,
     )
     name = fields.Char(
-        string="Name",
         translate=True,
         required=True,
     )
     description = fields.Html(
-        string="Description",
         translate=html_translate,
     )
     company_id = fields.Many2one(
@@ -102,10 +99,8 @@ class ProjectRole(models.Model):
                 and not role.parent_id.active
             ):
                 raise ValidationError(
-                    _(
-                        "Please activate first parent role %s"
-                        % (role.parent_id.complete_name,)
-                    )
+                    _("Please activate first parent role %s")
+                    % (role.parent_id.complete_name,)
                 )
 
     def can_assign(self, user_id, project_id):
