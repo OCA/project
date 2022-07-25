@@ -7,7 +7,9 @@ class StockMove(models.Model):
     _inherit = "stock.move"
 
     task_id = fields.Many2one(
-        comodel_name="project.task", string="Related Task", check_company=True,
+        comodel_name="project.task",
+        string="Related Task",
+        check_company=True,
     )
     raw_material_task_id = fields.Many2one(
         comodel_name="project.task", string="Task for material", check_company=True

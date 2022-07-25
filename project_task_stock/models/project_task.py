@@ -72,14 +72,17 @@ class Task(models.Model):
         help="Move created will be assigned to this analytic account",
     )
     stock_analytic_tag_ids = fields.Many2many(
-        comodel_name="account.analytic.tag", string="Move Analytic Tags",
+        comodel_name="account.analytic.tag",
+        string="Move Analytic Tags",
     )
     stock_analytic_line_ids = fields.One2many(
         comodel_name="account.analytic.line",
         inverse_name="stock_task_id",
         string="Analytic Lines",
     )
-    group_id = fields.Many2one(comodel_name="procurement.group",)
+    group_id = fields.Many2one(
+        comodel_name="procurement.group",
+    )
 
     def _compute_scrap_move_count(self):
         data = self.env["stock.scrap"].read_group(
