@@ -5,7 +5,7 @@
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.edit_project" />
         <field name="arch" type="xml">
-            <xpath expr="///group[@name='misc']" position="inside">
+            <xpath expr="///group[@name='extra_settings']" position="before">
                 <group string="Stock" name="stock_misc" groups="stock.group_stock_user">
                     <field name="picking_type_id" />
                     <field
