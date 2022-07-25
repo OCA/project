@@ -79,22 +79,22 @@ class ProjectAssignment(models.Model):
     def _compute_name(self):
         for assignment in self:
             if assignment.project_id:
-                assignment.name = _("%s as %s on %s") % (
-                    assignment.user_id.name,
-                    assignment.role_id.name,
-                    assignment.project_id.name,
-                )
+                assignment.name = _("%(USER)s as %(ROLE)s on %(PROJECT)s") % {
+                    "USER": assignment.user_id.name,
+                    "ROLE": assignment.role_id.name,
+                    "PROJECT": assignment.project_id.name,
+                }
             elif assignment.company_id:
-                assignment.name = _("%s as %s in %s") % (
-                    assignment.user_id.name,
-                    assignment.role_id.name,
-                    assignment.company_id.name,
-                )
+                assignment.name = _("%(USER)s as %(ROLE)s in %(PROJECT)s") % {
+                    "USER": assignment.user_id.name,
+                    "ROLE": assignment.role_id.name,
+                    "PROJECT": assignment.company_id.name,
+                }
             else:
-                assignment.name = _("%s as %s") % (
-                    assignment.user_id.name,
-                    assignment.role_id.name,
-                )
+                assignment.name = _("%(USER)s as %(ROLE)s") % {
+                    "USER": assignment.user_id.name,
+                    "ROLE": assignment.role_id.name,
+                }
 
     def _get_conflicting_domain(self):
         self.ensure_one()
@@ -129,24 +129,29 @@ class ProjectAssignment(models.Model):
             )
             if conflicting_assignment:
                 raise ValidationError(
-                    _("Assignment %s conflicts with another assignment: %s")
-                    % (
-                        assignment.name,
-                        conflicting_assignment.name,
+                    _(
+                        "Assignment %(ASSIGNMENT)s conflicts with another assignment: "
+                        "%(OTHER_ASSIGNMENT)s"
                     )
+                    % {
+                        "ASSIGNMENT": assignment.name,
+                        "OTHER_ASSIGNMENT": conflicting_assignment.name,
+                    }
                 )
             if not assignment.role_id.can_assign(
                 assignment.user_id, assignment.project_id
             ):
                 if assignment.project_id:
-                    error = _("User %s can not be assigned to role %s on %s.") % (
-                        assignment.user_id.name,
-                        assignment.role_id.name,
-                        assignment.project_id.name,
-                    )
+                    error = _(
+                        "User %(USER)s can not be assigned to role %(ROLE)s on %(PROJECT)s."
+                    ) % {
+                        "USER": assignment.user_id.name,
+                        "ROLE": assignment.role_id.name,
+                        "PROJECT": assignment.project_id.name,
+                    }
                 else:
-                    error = _("User %s can not be assigned to role %s.") % (
-                        assignment.user_id.name,
-                        assignment.role_id.name,
-                    )
+                    error = _("User %(USER)s can not be assigned to role %(ROLE)s.") % {
+                        "USER": assignment.user_id.name,
+                        "ROLE": assignment.role_id.name,
+                    }
                 raise ValidationError(error)
