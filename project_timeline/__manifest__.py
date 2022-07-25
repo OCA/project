@@ -13,10 +13,14 @@
     "license": "AGPL-3",
     "depends": ["project", "web_timeline"],
     "data": [
-        "templates/assets.xml",
         "views/project_project_view.xml",
         "views/project_task_view.xml",
     ],
     "demo": ["demo/project_project_demo.xml", "demo/project_task_demo.xml"],
     "post_init_hook": "populate_date_start",
+    "assets": {
+        "web.assets_backend": [
+            "/project_timeline/static/src/scss/project_timeline.scss"
+        ]
+    },
 }
