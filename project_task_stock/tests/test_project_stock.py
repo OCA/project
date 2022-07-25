@@ -87,6 +87,9 @@ class TestProjectStock(TestProjectStockBase):
         self.assertEqual(self.move_product_b.state, "assigned")
         self.assertEqual(self.move_product_a.reserved_availability, 2)
         self.assertEqual(self.move_product_b.reserved_availability, 1)
+        self.assertTrue(self.task.stock_moves_is_locked)
+        self.task.action_toggle_stock_moves_is_locked()
+        self.assertFalse(self.task.stock_moves_is_locked)
         # Add new stock_move
         self.task.write({"stage_id": self.stage_in_progress.id})
         task_form = Form(self.task)
@@ -119,6 +122,7 @@ class TestProjectStock(TestProjectStockBase):
         self.assertEqual(self.move_product_b.state, "assigned")
         # action_cancel
         self.task.action_cancel()
+        self.assertTrue(self.task.stock_moves_is_locked)
         self.assertEqual(self.move_product_a.state, "cancel")
         self.assertEqual(self.move_product_b.state, "cancel")
 
