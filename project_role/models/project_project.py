@@ -14,11 +14,9 @@ class ProjectProject(models.Model):
         tracking=True,
     )
     inherit_assignments = fields.Boolean(
-        string="Inherit assignments",
         default=lambda self: self._default_inherit_assignments(),
     )
     limit_role_to_assignments = fields.Boolean(
-        string="Limit role to assignments",
         default=lambda self: self._default_limit_role_to_assignments(),
     )
 
