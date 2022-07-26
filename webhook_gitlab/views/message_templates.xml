@@ -3,7 +3,7 @@
 
     <template id="gitlab_id_not_in_title" name="Gitlab: ID not found in title">
         <t
-    >**WARNING**: Could not link to Odoo task or ticket. Record ID not found in the title of the MR, supported formats:
+        >**WARNING**: Could not link to Odoo task or ticket. Record ID not found in the title of the MR, supported formats:
 ```
 { record type }#{ number }
 ```

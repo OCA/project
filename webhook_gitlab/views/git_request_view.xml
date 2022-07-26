@@ -5,12 +5,12 @@
         <field name='model'>git.request</field>
         <field name='arch' type='xml'>
             <tree
-        decoration-danger="ci_status=='failed'"
-        decoration-info="ci_status=='pending'"
-        decoration-success="ci_status=='success'"
-        decoration-muted="ci_status in ['skipped', 'canceled']"
-        decoration-primary="ci_status=='running'"
-      >
+                decoration-danger="ci_status=='failed'"
+                decoration-info="ci_status=='pending'"
+                decoration-success="ci_status=='success'"
+                decoration-muted="ci_status in ['skipped', 'canceled']"
+                decoration-primary="ci_status=='running'"
+            >
                 <field name="id_request" />
                 <field name="user_id" />
                 <field name="branch" />
@@ -20,11 +20,11 @@
                 <field name="state" />
                 <field name="ci_status" />
                 <button
-          name="open_merge_request"
-          icon="fa-gitlab"
-          string="Open Merge Request"
-          type="object"
-        />
+                    name="open_merge_request"
+                    icon="fa-gitlab"
+                    string="Open Merge Request"
+                    type="object"
+                />
             </tree>
         </field>
     </record>

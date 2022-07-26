@@ -4,15 +4,15 @@
         <field name="name">helpdesk_ticket.form</field>
         <field name="model">helpdesk.ticket</field>
         <field
-      name="inherit_id"
-      ref="helpdesk_timesheet.helpdesk_ticket_view_form_inherit_helpdesk_timesheet"
-    />
+            name="inherit_id"
+            ref="helpdesk_timesheet.helpdesk_ticket_view_form_inherit_helpdesk_timesheet"
+        />
         <field name="arch" type="xml">
             <xpath expr="//notebook" position="inside">
                 <page
-          string="Merge Requests"
-          attrs="{'invisible': [('git_request_ids', '=', [])]}"
-        >
+                    string="Merge Requests"
+                    attrs="{'invisible': [('git_request_ids', '=', [])]}"
+                >
                     <field name="git_request_ids" />
                 </page>
             </xpath>
