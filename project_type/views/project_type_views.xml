@@ -21,8 +21,8 @@
                     </div>
                     <group>
                         <group>
-                            <field name="parent_id"/>
-                            <field name="code"/>
+                            <field name="parent_id" />
+                            <field name="code" />
                         </group>
                     </group>
                     <notebook>
