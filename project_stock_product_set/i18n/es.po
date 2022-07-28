@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-05-10 06:29+0000\n"
-"PO-Revision-Date: 2022-05-10 08:30+0200\n"
+"POT-Creation-Date: 2022-08-10 10:27+0000\n"
+"PO-Revision-Date: 2022-08-10 12:28+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: es\n"
@@ -18,20 +18,15 @@ msgstr ""
 "X-Generator: Poedit 2.3\n"
 
 #. module: project_stock_product_set
-#: model_terms:ir.ui.view,arch_db:project_stock_product_set.product_set_add_from_task_form_view
-#: model_terms:ir.ui.view,arch_db:project_stock_product_set.view_task_form2
-msgid "Add set"
-msgstr "Añadir conjunto"
-
-#. module: project_stock_product_set
 #: model:ir.actions.act_window,name:project_stock_product_set.act_open_wizard_product_set_add_from_task
-msgid "Add set in poject task"
+msgid "Add a set in a project task"
 msgstr "Añadir conjunto en la tarea"
 
 #. module: project_stock_product_set
 #: model_terms:ir.ui.view,arch_db:project_stock_product_set.product_set_add_from_task_form_view
-msgid "Add set in sale order line"
-msgstr "Agregar conjunto en línea de pedido de venta"
+#: model_terms:ir.ui.view,arch_db:project_stock_product_set.view_task_form2
+msgid "Add set"
+msgstr "Añadir conjunto"
 
 #. module: project_stock_product_set
 #: model_terms:ir.ui.view,arch_db:project_stock_product_set.product_set_add_from_task_form_view
@@ -55,21 +50,27 @@ msgstr "Cliente"
 
 #. module: project_stock_product_set
 #: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__display_name
+#: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_line__display_name
 msgid "Display Name"
 msgstr "Nombre mostrado"
 
 #. module: project_stock_product_set
 #: model:ir.model.fields,help:project_stock_product_set.field_product_set_add_from_task__skip_existing_products
-msgid "Enable this to not add new lines for products already included in SO lines."
+msgid ""
+"Enable this to not add new lines for products already included in SO lines."
 msgstr ""
+"Habilite esto para no agregar nuevas líneas para productos ya incluidos en "
+"las líneas SO."
 
 #. module: project_stock_product_set
 #: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__id
+#: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_line__id
 msgid "ID"
 msgstr "ID"
 
 #. module: project_stock_product_set
 #: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task____last_update
+#: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_line____last_update
 msgid "Last Modified on"
 msgstr "Última modificación en"
 
@@ -84,11 +85,6 @@ msgid "Last Updated on"
 msgstr "Última actualización el"
 
 #. module: project_stock_product_set
-#: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__product_set_line_ids
-msgid "Product Set Line"
-msgstr "Definir línea de conjunto de productos"
-
-#. module: project_stock_product_set
 #: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__product_set_id
 msgid "Product set"
 msgstr "Línea de conjunto de productos"
@@ -99,6 +95,7 @@ msgid "Product set line"
 msgstr "Línea de conjunto de productos"
 
 #. module: project_stock_product_set
+#: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__product_set_line_ids
 #: model_terms:ir.ui.view,arch_db:project_stock_product_set.product_set_add_from_task_form_view
 msgid "Product set lines"
 msgstr "Línea de conjunto de productos"
@@ -126,4 +123,4 @@ msgstr "Tarea"
 #. module: project_stock_product_set
 #: model:ir.model,name:project_stock_product_set.model_product_set_add_from_task
 msgid "product.set.add.from.task"
-msgstr ""
+msgstr "product.set.add.from.task"
