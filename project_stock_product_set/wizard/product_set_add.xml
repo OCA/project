@@ -4,7 +4,7 @@
         <field name="name">product.set.add.from.taskform.view</field>
         <field name="model">product.set.add.from.task</field>
         <field name="arch" type="xml">
-            <form string="Add set in sale order line">
+            <form>
                 <group name="main" colspan="4">
                     <field name="task_id" invisible="context.get('default_task_id')" />
                     <field name="partner_id" invisible="1" />
@@ -13,7 +13,6 @@
                         domain="['|',('partner_id', '=', False),('partner_id', '=', partner_id)]"
                     />
                     <field name="quantity" />
-                    <field name="skip_existing_products" />
                 </group>
                 <group name="lines" colspan="4">
                     <field
@@ -46,7 +45,7 @@
         id="act_open_wizard_product_set_add_from_task"
         model="ir.actions.act_window"
     >
-        <field name="name">Add set in poject task</field>
+        <field name="name">Add a set in a project task</field>
         <field name="res_model">product.set.add.from.task</field>
         <field name="view_mode">form</field>
         <field name="view_id" ref="product_set_add_from_task_form_view" />
