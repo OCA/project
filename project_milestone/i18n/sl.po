@@ -34,6 +34,8 @@ msgstr "Ustvarjeno"
 
 #. module: project_milestone
 #: model:ir.model.fields,field_description:project_milestone.field_project_milestone__display_name
+#: model:ir.model.fields,field_description:project_milestone.field_project_project__display_name
+#: model:ir.model.fields,field_description:project_milestone.field_project_task__display_name
 msgid "Display Name"
 msgstr "Prikazani naziv"
 
@@ -50,6 +52,8 @@ msgstr "Združi po"
 
 #. module: project_milestone
 #: model:ir.model.fields,field_description:project_milestone.field_project_milestone__id
+#: model:ir.model.fields,field_description:project_milestone.field_project_project__id
+#: model:ir.model.fields,field_description:project_milestone.field_project_task__id
 msgid "ID"
 msgstr "ID"
 
@@ -60,6 +64,8 @@ msgstr "Kanban zložen?"
 
 #. module: project_milestone
 #: model:ir.model.fields,field_description:project_milestone.field_project_milestone____last_update
+#: model:ir.model.fields,field_description:project_milestone.field_project_project____last_update
+#: model:ir.model.fields,field_description:project_milestone.field_project_task____last_update
 msgid "Last Modified on"
 msgstr "Zadnjič spremenjeno"
 
@@ -95,6 +101,12 @@ msgstr "Projekti z mejniki"
 #: model_terms:ir.ui.view,arch_db:project_milestone.view_task_enhancement_search_milestone_form
 msgid "Milestones"
 msgstr "Mejniki"
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_project__milestones_required
+#: model:ir.model.fields,field_description:project_milestone.field_project_task__milestones_required
+msgid "Milestones Required"
+msgstr ""
 
 #. module: project_milestone
 #: model_terms:ir.ui.view,arch_db:project_milestone.project_milestone_view_form

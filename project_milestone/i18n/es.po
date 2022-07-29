@@ -33,6 +33,8 @@ msgstr "Creado el"
 
 #. module: project_milestone
 #: model:ir.model.fields,field_description:project_milestone.field_project_milestone__display_name
+#: model:ir.model.fields,field_description:project_milestone.field_project_project__display_name
+#: model:ir.model.fields,field_description:project_milestone.field_project_task__display_name
 msgid "Display Name"
 msgstr "Nombre para mostrar"
 
@@ -49,6 +51,8 @@ msgstr "Agrupado por"
 
 #. module: project_milestone
 #: model:ir.model.fields,field_description:project_milestone.field_project_milestone__id
+#: model:ir.model.fields,field_description:project_milestone.field_project_project__id
+#: model:ir.model.fields,field_description:project_milestone.field_project_task__id
 msgid "ID"
 msgstr "Identificador"
 
@@ -59,6 +63,8 @@ msgstr "¿Kanban Replegado?"
 
 #. module: project_milestone
 #: model:ir.model.fields,field_description:project_milestone.field_project_milestone____last_update
+#: model:ir.model.fields,field_description:project_milestone.field_project_project____last_update
+#: model:ir.model.fields,field_description:project_milestone.field_project_task____last_update
 msgid "Last Modified on"
 msgstr "Última modificación el"
 
@@ -94,6 +100,12 @@ msgstr "Hitos del proyecto"
 #: model_terms:ir.ui.view,arch_db:project_milestone.view_task_enhancement_search_milestone_form
 msgid "Milestones"
 msgstr "Hitos"
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_project__milestones_required
+#: model:ir.model.fields,field_description:project_milestone.field_project_task__milestones_required
+msgid "Milestones Required"
+msgstr ""
 
 #. module: project_milestone
 #: model_terms:ir.ui.view,arch_db:project_milestone.project_milestone_view_form
