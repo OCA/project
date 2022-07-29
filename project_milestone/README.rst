@@ -40,8 +40,27 @@ To use this module, you need to:
 #. Have Manager rights for Project group to edit projects.
 #. On the project form, set the "Use Milestones" option to enable milestones for the project.
 #. Add the milestones to the project via the milestone tab on the project form.
+#. Use 'Milestone Required' field to make milestone selection on tasks mendatory.
 #. Tasks will show a "Milestone" where you can set tasks into the proper milestone.
 #. You also have the group by "Milestones" for task views.
+#. All the subtask will inherit the milestone from parent task (if assigned)
+
+Changelog
+=========
+
+14.0.1.0.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* Initial release
+
+
+14.0.1.1.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+* New features added
+    #. Subtask inherit the milestones from parent task
+    #. 'Milestone Required' field is added on project
+    #. Milestone can be assigned directly from Task Kanban
 
 Bug Tracker
 ===========
@@ -65,6 +84,9 @@ Contributors
 ~~~~~~~~~~~~
 
 * Patrick Wilson <patrickraymondwilson@gmail.com>
+* `Ooops <https://www.ooops404.com>`_:
+
+  * Ashish Hirpara
 
 Maintainers
 ~~~~~~~~~~~
