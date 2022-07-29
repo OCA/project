@@ -99,6 +99,12 @@ msgid "Milestones"
 msgstr ""
 
 #. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_project__milestones_required
+#: model:ir.model.fields,field_description:project_milestone.field_project_task__milestones_required
+msgid "Milestones Required"
+msgstr ""
+
+#. module: project_milestone
 #: model_terms:ir.ui.view,arch_db:project_milestone.project_milestone_view_form
 msgid "Name"
 msgstr ""
