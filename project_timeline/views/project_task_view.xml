@@ -22,15 +22,17 @@
                 <templates>
                     <t t-name="timeline-item">
                         <div class="o_project_timeline_item">
-                            <img
-                                t-if="record.user_ids"
-                                t-attf-src="/web/image/res.users/#{record.user_ids[0][0]}/image_128/16x16"
-                                t-att-title="record.user_ids[0][1]"
-                                width="16"
-                                height="16"
-                                class="mr8"
-                                alt="User"
-                            />
+                            <t t-foreach="record.user_ids" t-as="user">
+                                <img
+                                    t-if="record.user_ids"
+                                    t-attf-src="/web/image/res.users/#{user}/image_128/16x16"
+                                    t-att-title="record.user"
+                                    width="16"
+                                    height="16"
+                                    class="mr8"
+                                    alt="User"
+                                />
+                            </t>
                             <span name="display_name">
                                 <t t-esc="record.display_name" />
                             </span>
