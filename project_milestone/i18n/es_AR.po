@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2021-04-02 22:46+0000\n"
+"PO-Revision-Date: 2022-08-02 21:06+0000\n"
 "Last-Translator: Ignacio Buioli <ibuioli@gmail.com>\n"
 "Language-Team: none\n"
 "Language: es_AR\n"
@@ -105,7 +105,7 @@ msgstr "Hitos"
 #: model:ir.model.fields,field_description:project_milestone.field_project_project__milestones_required
 #: model:ir.model.fields,field_description:project_milestone.field_project_task__milestones_required
 msgid "Milestones Required"
-msgstr ""
+msgstr "Hitos Obligatorios"
 
 #. module: project_milestone
 #: model_terms:ir.ui.view,arch_db:project_milestone.project_milestone_view_form
