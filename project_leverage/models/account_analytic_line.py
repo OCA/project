@@ -1,4 +1,4 @@
-# Copyright (C) 2020 Open Source Integrators
+# Copyright (C) 2022 Open Source Integrators
 # Copyright (C) 2020 Serpent Consulting Services
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 from odoo import api, fields, models
@@ -29,7 +29,6 @@ class AccountAnalyticLine(models.Model):
             vals.update({'project_user_id': project_user_id or None})
         return super(AccountAnalyticLine, self).create(vals)
 
-    @api.multi
     def write(self, vals):
         if "task_id" in vals:
             Task = self.env["project.task"]

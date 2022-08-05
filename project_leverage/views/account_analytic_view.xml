@@ -15,7 +15,6 @@
        <record id="action_timesheet_pivot" model="ir.actions.act_window">
             <field name="name">Timesheet Analysis</field>
             <field name="res_model">account.analytic.line</field>
-            <field name="view_type">form</field>
             <field name="view_mode">pivot</field>
             <field name="view_id" ref="view_task_project_user_pivot"/>
        </record>
@@ -26,49 +25,4 @@
             parent="project.menu_project_report"
             sequence="10"/>
 
-        <template id="timesheet_plan_leverage_inherit" inherit_id="sale_timesheet.timesheet_plan">
-            <xpath expr="//div[@class='o_timesheet_plan_sale_timesheet_people_time']" position="after">
-                <div class="o_timesheet_plan_sale_timesheet_earned_value_analysis">
-                    <h3>Leverage</h3>
-                    <table width="70%" border="1" cellpadding="4" style="min-width: 70%; background-color: white; border-collapse:collapse;">
-                        <thead style="background-color: white;color: black;text-align: center;">
-                            <tr>
-                                <th></th>
-                                <t t-foreach="month_name_list" t-as="name">
-                                    <th><t t-esc="name" /></th>
-                                </t>
-                            </tr>
-                            <tr>
-                                <th>
-                                    Project Manager
-                                </th>
-                                <t t-foreach="month_name_list" t-as="name">
-                                    <th>Hours</th>
-                                </t>
-                            </tr>
-                        </thead>
-                            <tbody style="text-align: center;">
-                            <t t-foreach="leverage" t-as="value">
-                                <tr>
-                                    <td class="o_timesheet_plan_dashboard_cell">
-                                        <t t-esc="leverage[value]['name']" />
-                                    </td>
-                                    <t t-foreach="month_list" t-as="name">
-                                        <td class="o_timesheet_plan_dashboard_cell">
-                                            <t t-if="leverage[value].get(name)">
-                                                <t t-esc="leverage[value][name].get('hours')" />
-                                            </t>
-                                            <t t-else="0">
-                                                0
-                                            </t>
-                                        </td>
-                                    </t>
-                                </tr>
-                            </t>
-                        </tbody>
-                    </table>
-                </div>
-                <p></p>
-            </xpath>
-        </template>
 </odoo>

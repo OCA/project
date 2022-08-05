@@ -1,16 +1,16 @@
-# Copyright (C) 2020 Open Source Integrators
+# Copyright (C) 2022 Open Source Integrators
 # Copyright (C) 2020 Serpent Consulting Services
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 from odoo.http import request
 from odoo.exceptions import UserError
 
-from odoo.addons.sale_timesheet.controllers.main import SaleTimesheetController
+from odoo.addons.sale_timesheet.controllers.portal import SaleTimesheetCustomerPortal
 
 
 DEFAULT_MONTH_RANGE = 3
 
 
-class SaleTimesheetController(SaleTimesheetController):
+class SaleTimesheetController(SaleTimesheetCustomerPortal):
 
     def _plan_prepare_values(self, projects):
         employee_obj = request.env['hr.employee']
