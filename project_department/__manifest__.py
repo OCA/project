@@ -9,6 +9,7 @@
     "website": "https://github.com/OCA/project",
     "depends": [
         "project",
+        "hr",
     ],
     "data": ["views/project.xml"],
 }
