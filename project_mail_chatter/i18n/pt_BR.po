@@ -12,3 +12,104 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
+
+#. module: project_mail_chatter
+#: model:ir.model.fields,field_description:project_mail_chatter.field_project_project__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: project_mail_chatter
+#: model:ir.model.fields,field_description:project_mail_chatter.field_project_project__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr ""
+
+#. module: project_mail_chatter
+#: model:ir.model.fields,field_description:project_mail_chatter.field_project_project__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: project_mail_chatter
+#: model:ir.model.fields,field_description:project_mail_chatter.field_project_project__activity_type_icon
+msgid "Activity Type Icon"
+msgstr ""
+
+#. module: project_mail_chatter
+#: model:ir.model.fields,field_description:project_mail_chatter.field_project_project__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: project_mail_chatter
+#: model_terms:ir.ui.view,arch_db:project_mail_chatter.project_form
+msgid ""
+"Follow this project to automatically track the events associated to tasks "
+"and issues of this project."
+msgstr ""
+
+#. module: project_mail_chatter
+#: model:ir.model.fields,help:project_mail_chatter.field_project_project__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: project_mail_chatter
+#: model:ir.model.fields,field_description:project_mail_chatter.field_project_project__id
+msgid "ID"
+msgstr ""
+
+#. module: project_mail_chatter
+#: model:ir.model.fields,field_description:project_mail_chatter.field_project_project__activity_exception_icon
+msgid "Icon"
+msgstr ""
+
+#. module: project_mail_chatter
+#: model:ir.model.fields,help:project_mail_chatter.field_project_project__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr ""
+
+#. module: project_mail_chatter
+#: model:ir.model.fields,field_description:project_mail_chatter.field_project_project____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: project_mail_chatter
+#: model:ir.model.fields,field_description:project_mail_chatter.field_project_project__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr ""
+
+#. module: project_mail_chatter
+#: model:ir.model.fields,field_description:project_mail_chatter.field_project_project__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: project_mail_chatter
+#: model:ir.model.fields,field_description:project_mail_chatter.field_project_project__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: project_mail_chatter
+#: model:ir.model.fields,field_description:project_mail_chatter.field_project_project__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: project_mail_chatter
+#: model:ir.model,name:project_mail_chatter.model_project_project
+msgid "Project"
+msgstr ""
+
+#. module: project_mail_chatter
+#: model:ir.model.fields,field_description:project_mail_chatter.field_project_project__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: project_mail_chatter
+#: model:ir.model.fields,help:project_mail_chatter.field_project_project__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: project_mail_chatter
+#: model:ir.model.fields,help:project_mail_chatter.field_project_project__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr ""
