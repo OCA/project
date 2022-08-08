@@ -39,6 +39,13 @@ msgid "Display Name"
 msgstr ""
 
 #. module: project_mail_chatter
+#: model_terms:ir.ui.view,arch_db:project_mail_chatter.project_form
+msgid ""
+"Follow this project to automatically track the events associated to tasks "
+"and issues of this project."
+msgstr ""
+
+#. module: project_mail_chatter
 #: model:ir.model.fields,help:project_mail_chatter.field_project_project__activity_type_icon
 msgid "Font awesome icon e.g. fa-tasks"
 msgstr ""
