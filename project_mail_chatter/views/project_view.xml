@@ -4,11 +4,22 @@
         <field name="name">Project description</field>
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.edit_project" />
+        <field name="priority">99</field>
         <field name="arch" type="xml">
-            <field name="message_follower_ids" position="after">
-                <field name="activity_ids" />
-                <field name="message_ids" />
-            </field>
+            <!-- We need to replace oe_chatter div to place it after the sheet and show as expected. !-->
+            <xpath expr="//div[hasclass('oe_chatter')]" position="replace" />
+            <sheet position="after">
+                <div class="oe_chatter">
+                    <field
+                        name="message_follower_ids"
+                        options="{'post_refresh':True}"
+                        help="Follow this project to automatically track the events associated to tasks and issues of this project."
+                        groups="base.group_user"
+                    />
+                    <field name="activity_ids" />
+                    <field name="message_ids" />
+                </div>
+            </sheet>
         </field>
     </record>
 </odoo>
