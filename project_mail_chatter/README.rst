@@ -32,6 +32,11 @@ Add message chatter on the Project form.
 .. contents::
    :local:
 
+Known issues / Roadmap
+======================
+
+This module is not needed in v15 because odoo core has already added the messaging in project.
+
 Bug Tracker
 ===========
 
