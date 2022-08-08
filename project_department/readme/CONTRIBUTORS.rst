@@ -4,3 +4,6 @@
 * Dave Burkholder <dave@thinkwelldesigns.com>
 * Artem Kostyuk <a.kostyuk@mobilunity.com>
 * Vaidehi Vasani <er.vaidehi.vasani@gmail.com>
+* `Tecnativa <https://www.tecnativa.com>`_
+
+  * Carlos Roca
