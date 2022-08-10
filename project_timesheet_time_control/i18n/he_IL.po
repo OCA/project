@@ -48,13 +48,14 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_project_kanban_inherited
 msgid ""
 "<span class=\"o_label\">\n"
-"                            <i class=\"fa fa-lg fa-play-circle text-success\"/>\n"
+"                            <i class=\"fa fa-lg fa-play-circle text-success"
+"\"/>\n"
 "                            Start work\n"
 "                        </span>"
 msgstr ""
 "<span class=\"o_label\">\n"
-"                            <i class=\"fa fa-lg fa-play-circle text-success\""
-"/>\n"
+"                            <i class=\"fa fa-lg fa-play-circle text-success"
+"\"/>\n"
 "                            תתחיל לעבוד\n"
 "                        </span>"
 
@@ -62,13 +63,14 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_project_kanban_inherited
 msgid ""
 "<span class=\"o_label\">\n"
-"                            <i class=\"fa fa-lg fa-stop-circle text-warning\"/>\n"
+"                            <i class=\"fa fa-lg fa-stop-circle text-warning"
+"\"/>\n"
 "                            Stop work\n"
 "                        </span>"
 msgstr ""
 "<span class=\"o_label\">\n"
-"                            <i class=\"fa fa-lg fa-stop-circle text-warning\""
-"/>\n"
+"                            <i class=\"fa fa-lg fa-stop-circle text-warning"
+"\"/>\n"
 "                            עצור עבודה\n"
 "                        </span>"
 
@@ -108,13 +110,8 @@ msgstr "קטגוריה"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__is_task_closed
-msgid "Closed"
-msgstr "סגור"
-
-#. module: project_timesheet_time_control
-#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__code
-msgid "Code"
-msgstr "קוד"
+msgid "Closing Stage"
+msgstr ""
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__company_id
@@ -162,8 +159,11 @@ msgid "Description"
 msgstr "תיאור"
 
 #. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_account_analytic_line__display_name
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__display_name
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_time_control_mixin__display_name
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_project_project__display_name
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_project_task__display_name
 msgid "Display Name"
 msgstr "שם תצוגה"
 
@@ -184,9 +184,16 @@ msgid "End Time"
 msgstr "זמן סיום"
 
 #. module: project_timesheet_time_control
-#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__general_account_id
-msgid "Financial Account"
-msgstr "חשבון פיננסי"
+#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.account_analytic_line_tree
+#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_line_form
+#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.project_invoice_form
+#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_kanban_account_analytic_line
+#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_project_tree
+#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_form2_inherited
+#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_kanban
+#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_tree2_inherited
+msgid "End work"
+msgstr ""
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__group_id
@@ -199,8 +206,11 @@ msgid "Helper to quickly switch between timesheet lines"
 msgstr "עוזר לעבור במהירות בין שורות לוח הזמנים"
 
 #. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_account_analytic_line__id
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__id
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_time_control_mixin__id
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_project_project__id
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_project_task__id
 msgid "ID"
 msgstr "מזהה"
 
@@ -214,13 +224,11 @@ msgid "Indicate which time control button to show, if any."
 msgstr "ציין איזה לחצן בקרת זמן להציג, אם בכלל."
 
 #. module: project_timesheet_time_control
-#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__move_id
-msgid "Journal Item"
-msgstr "פקודת יומן"
-
-#. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_account_analytic_line____last_update
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch____last_update
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_time_control_mixin____last_update
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_project_project____last_update
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_project_task____last_update
 msgid "Last Modified on"
 msgstr "שינוי אחרון ב"
 
@@ -269,25 +277,20 @@ msgid "Previous timer start"
 msgstr "תחילת הטיימר הקודמת"
 
 #. module: project_timesheet_time_control
-#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__product_id
-msgid "Product"
-msgstr "מוצר"
-
-#. module: project_timesheet_time_control
 #: model:ir.model,name:project_timesheet_time_control.model_project_project
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__project_id
 msgid "Project"
 msgstr "פרויקט"
 
 #. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__stock_task_id
+msgid "Project Task"
+msgstr ""
+
+#. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__unit_amount
 msgid "Quantity"
 msgstr "כמות"
-
-#. module: project_timesheet_time_control
-#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__ref
-msgid "Ref."
-msgstr "מזהה"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields.selection,name:project_timesheet_time_control.selection__account_analytic_line__show_time_control__resume
@@ -336,7 +339,10 @@ msgstr "התחל טיימר חדש"
 #: code:addons/project_timesheet_time_control/models/hr_timesheet_time_control_mixin.py:0
 #: model:ir.actions.act_window,name:project_timesheet_time_control.hr_timesheet_switch_action
 #: model:ir.ui.menu,name:project_timesheet_time_control.hr_timesheet_switch_menu
+#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.account_analytic_line_tree
+#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_line_form
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.project_invoice_form
+#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_kanban_account_analytic_line
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_project_tree
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_form2_inherited
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_kanban
@@ -389,8 +395,8 @@ msgstr "משימה"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,help:project_timesheet_time_control.field_hr_timesheet_switch__is_task_closed
-msgid "Tasks in this stage are considered closed."
-msgstr "המשימות בשלב זה נחשבים לסגורים."
+msgid "Tasks in this stage are considered as closed."
+msgstr ""
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
@@ -436,3 +442,24 @@ msgstr "והחל ב"
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
 msgid "hour(s)."
 msgstr "שעה (ות)."
+
+#~ msgid "Closed"
+#~ msgstr "סגור"
+
+#~ msgid "Code"
+#~ msgstr "קוד"
+
+#~ msgid "Financial Account"
+#~ msgstr "חשבון פיננסי"
+
+#~ msgid "Journal Item"
+#~ msgstr "פקודת יומן"
+
+#~ msgid "Product"
+#~ msgstr "מוצר"
+
+#~ msgid "Ref."
+#~ msgstr "מזהה"
+
+#~ msgid "Tasks in this stage are considered closed."
+#~ msgstr "המשימות בשלב זה נחשבים לסגורים."
