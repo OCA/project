@@ -90,6 +90,11 @@ msgid "Analytic Line"
 msgstr "שורה אנליטית"
 
 #. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__timesheet_invoice_type
+msgid "Billable Type"
+msgstr ""
+
+#. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
 msgid "Cancel"
 msgstr "בטל"
@@ -112,6 +117,11 @@ msgstr "קטגוריה"
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__is_task_closed
 msgid "Closing Stage"
 msgstr ""
+
+#. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__code
+msgid "Code"
+msgstr "קוד"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__company_id
@@ -196,6 +206,11 @@ msgid "End work"
 msgstr ""
 
 #. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__general_account_id
+msgid "Financial Account"
+msgstr "חשבון פיננסי"
+
+#. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__group_id
 msgid "Group"
 msgstr "קבוצה"
@@ -222,6 +237,26 @@ msgstr "מזהה"
 #: model:ir.model.fields,help:project_timesheet_time_control.field_project_task__show_time_control
 msgid "Indicate which time control button to show, if any."
 msgstr "ציין איזה לחצן בקרת זמן להציג, אם בכלל."
+
+#. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__timesheet_invoice_id
+msgid "Invoice"
+msgstr ""
+
+#. module: project_timesheet_time_control
+#: model:ir.model.fields,help:project_timesheet_time_control.field_hr_timesheet_switch__timesheet_invoice_id
+msgid "Invoice created from the timesheet"
+msgstr ""
+
+#. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__is_so_line_edited
+msgid "Is So Line Edited"
+msgstr ""
+
+#. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__move_id
+msgid "Journal Item"
+msgstr "פקודת יומן"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_account_analytic_line____last_update
@@ -256,6 +291,11 @@ msgid ""
 msgstr "לא נמצא טיימר פועל ב %(model)s %(record)s. רענן את הדף ובדוק שוב."
 
 #. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__non_allow_billable
+msgid "Non-Billable"
+msgstr ""
+
+#. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__partner_id
 msgid "Partner"
 msgstr "לקוח/ספק"
@@ -277,6 +317,11 @@ msgid "Previous timer start"
 msgstr "תחילת הטיימר הקודמת"
 
 #. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__product_id
+msgid "Product"
+msgstr "מוצר"
+
+#. module: project_timesheet_time_control
 #: model:ir.model,name:project_timesheet_time_control.model_project_project
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__project_id
 msgid "Project"
@@ -293,6 +338,11 @@ msgid "Quantity"
 msgstr "כמות"
 
 #. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__ref
+msgid "Ref."
+msgstr "מזהה"
+
+#. module: project_timesheet_time_control
 #: model:ir.model.fields.selection,name:project_timesheet_time_control.selection__account_analytic_line__show_time_control__resume
 #: model:ir.model.fields.selection,name:project_timesheet_time_control.selection__hr_timesheet_switch__show_time_control__resume
 msgid "Resume"
@@ -307,6 +357,11 @@ msgstr "המשך"
 #, python-format
 msgid "Resume work"
 msgstr "המשך העבודה"
+
+#. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__so_line
+msgid "Sales Order Item"
+msgstr ""
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_account_analytic_line__show_time_control
@@ -434,6 +489,11 @@ msgid "You have a running timer called"
 msgstr "יש לך טיימר פועל שנקרא"
 
 #. module: project_timesheet_time_control
+#: model:ir.model.fields,help:project_timesheet_time_control.field_hr_timesheet_switch__non_allow_billable
+msgid "Your timesheet will not be billed."
+msgstr ""
+
+#. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
 msgid "and started at"
 msgstr "והחל ב"
@@ -445,21 +505,6 @@ msgstr "שעה (ות)."
 
 #~ msgid "Closed"
 #~ msgstr "סגור"
-
-#~ msgid "Code"
-#~ msgstr "קוד"
-
-#~ msgid "Financial Account"
-#~ msgstr "חשבון פיננסי"
-
-#~ msgid "Journal Item"
-#~ msgstr "פקודת יומן"
-
-#~ msgid "Product"
-#~ msgstr "מוצר"
-
-#~ msgid "Ref."
-#~ msgstr "מזהה"
 
 #~ msgid "Tasks in this stage are considered closed."
 #~ msgstr "המשימות בשלב זה נחשבים לסגורים."

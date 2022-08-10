@@ -92,6 +92,11 @@ msgid "Analytic Line"
 msgstr "Línea analítica"
 
 #. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__timesheet_invoice_type
+msgid "Billable Type"
+msgstr ""
+
+#. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
 msgid "Cancel"
 msgstr "Cancelar"
@@ -114,6 +119,11 @@ msgstr ""
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__is_task_closed
 msgid "Closing Stage"
+msgstr ""
+
+#. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__code
+msgid "Code"
 msgstr ""
 
 #. module: project_timesheet_time_control
@@ -197,6 +207,12 @@ msgid "End work"
 msgstr ""
 
 #. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__general_account_id
+#, fuzzy
+msgid "Financial Account"
+msgstr "Cuenta analítica"
+
+#. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__group_id
 msgid "Group"
 msgstr "Grupo"
@@ -225,6 +241,26 @@ msgid "Indicate which time control button to show, if any."
 msgstr ""
 "Indica qué botón de control del tiempo mostrar, si es que hay que mostrar "
 "alguno."
+
+#. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__timesheet_invoice_id
+msgid "Invoice"
+msgstr ""
+
+#. module: project_timesheet_time_control
+#: model:ir.model.fields,help:project_timesheet_time_control.field_hr_timesheet_switch__timesheet_invoice_id
+msgid "Invoice created from the timesheet"
+msgstr ""
+
+#. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__is_so_line_edited
+msgid "Is So Line Edited"
+msgstr ""
+
+#. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__move_id
+msgid "Journal Item"
+msgstr ""
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_account_analytic_line____last_update
@@ -261,6 +297,11 @@ msgstr ""
 "%(record)s. Refresque la página y pruebe de nuevo."
 
 #. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__non_allow_billable
+msgid "Non-Billable"
+msgstr ""
+
+#. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__partner_id
 msgid "Partner"
 msgstr "Contacto"
@@ -282,6 +323,11 @@ msgid "Previous timer start"
 msgstr "Comienzo del cronómetro anterior"
 
 #. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__product_id
+msgid "Product"
+msgstr ""
+
+#. module: project_timesheet_time_control
 #: model:ir.model,name:project_timesheet_time_control.model_project_project
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__project_id
 msgid "Project"
@@ -298,6 +344,11 @@ msgid "Quantity"
 msgstr "Cantidad"
 
 #. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__ref
+msgid "Ref."
+msgstr ""
+
+#. module: project_timesheet_time_control
 #: model:ir.model.fields.selection,name:project_timesheet_time_control.selection__account_analytic_line__show_time_control__resume
 #: model:ir.model.fields.selection,name:project_timesheet_time_control.selection__hr_timesheet_switch__show_time_control__resume
 msgid "Resume"
@@ -312,6 +363,11 @@ msgstr "Continuar"
 #, python-format
 msgid "Resume work"
 msgstr "Continuar trabajo"
+
+#. module: project_timesheet_time_control
+#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__so_line
+msgid "Sales Order Item"
+msgstr ""
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_account_analytic_line__show_time_control
@@ -442,6 +498,11 @@ msgid "You have a running timer called"
 msgstr "Tiene un cronómetro en marcha llamado"
 
 #. module: project_timesheet_time_control
+#: model:ir.model.fields,help:project_timesheet_time_control.field_hr_timesheet_switch__non_allow_billable
+msgid "Your timesheet will not be billed."
+msgstr ""
+
+#. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
 msgid "and started at"
 msgstr "que comenzó el"
@@ -453,10 +514,6 @@ msgstr "hora(s)."
 
 #~ msgid "Closed"
 #~ msgstr "Cerrado"
-
-#, fuzzy
-#~ msgid "Financial Account"
-#~ msgstr "Cuenta analítica"
 
 #~ msgid "Tasks in this stage are considered closed."
 #~ msgstr "Tareas en esta etapa se considerarán cerradas."
