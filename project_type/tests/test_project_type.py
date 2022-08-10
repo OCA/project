@@ -5,9 +5,9 @@ from odoo.exceptions import ValidationError
 from odoo.tests.common import TransactionCase
 
 
-class TestProjectCategory(TransactionCase):
+class TestProjectType(TransactionCase):
     def setUp(self):
-        super(TestProjectCategory, self).setUp()
+        super(TestProjectType, self).setUp()
         self.cat = self.env["project.type"].create({"name": "General"})
         self.cat2 = self.env["project.type"].create({"name": "Discussion"})
 
