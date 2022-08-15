@@ -76,6 +76,11 @@ msgid "Old Task"
 msgstr "Vecchio lavoro"
 
 #. module: project_task_dependency
+#: model_terms:ir.ui.view,arch_db:project_task_dependency.project_task_form
+msgid "Open Task"
+msgstr ""
+
+#. module: project_task_dependency
 #: model:ir.model,name:project_task_dependency.model_project_task_copy_map
 msgid "Project Task Copy Map"
 msgstr ""
@@ -91,7 +96,9 @@ msgid "Recursive Depending Tasks"
 msgstr "Lavori dipendenti ricorsivi"
 
 #. module: project_task_dependency
+#: code:addons/project_task_dependency/models/project_task.py:98
 #: model:ir.model,name:project_task_dependency.model_project_task
+#, python-format
 msgid "Task"
 msgstr "Lavoro"
 

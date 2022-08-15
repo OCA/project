@@ -12,8 +12,8 @@ msgstr ""
 "POT-Creation-Date: 2017-07-01 03:31+0000\n"
 "PO-Revision-Date: 2020-06-23 03:19+0000\n"
 "Last-Translator: Fernando Colus <fcolus1@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/teams/"
-"23907/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/"
+"teams/23907/pt_BR/)\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -78,6 +78,11 @@ msgid "Old Task"
 msgstr "Tarefa Antiga"
 
 #. module: project_task_dependency
+#: model_terms:ir.ui.view,arch_db:project_task_dependency.project_task_form
+msgid "Open Task"
+msgstr ""
+
+#. module: project_task_dependency
 #: model:ir.model,name:project_task_dependency.model_project_task_copy_map
 msgid "Project Task Copy Map"
 msgstr "Mapa de Cópia da Tarefa do Projeto"
@@ -93,7 +98,9 @@ msgid "Recursive Depending Tasks"
 msgstr "Tarefas Recursivas Dependente"
 
 #. module: project_task_dependency
+#: code:addons/project_task_dependency/models/project_task.py:98
 #: model:ir.model,name:project_task_dependency.model_project_task
+#, python-format
 msgid "Task"
 msgstr "Tarefa"
 
