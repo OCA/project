@@ -75,3 +75,7 @@ class TestProjectTaskDependency(TransactionCase):
         new_count = self.env['project.task.copy.map'].search_count(
             [('old_task_id', '=', self.task4.id)])
         self.assertEqual(old_count, new_count)
+
+    def test_open_task_button(self):
+        res = self.task4.dependency_task_ids[0].button_open_task()
+        self.assertEqual(res["res_id"], self.task4.dependency_task_ids[0].id)

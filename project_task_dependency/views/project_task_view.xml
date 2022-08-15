@@ -16,6 +16,11 @@
                             <field name="user_id"/>
                             <field name="date_deadline"/>
                             <field name="stage_id"/>
+                            <button name="button_open_task"
+                                    type="object" title="Open Task"
+                                    icon="fa-arrow-right"
+                                    aria-label="Open Task"
+                                    class="btn-link"/>
                         </tree>
                     </field>
                 </page>
