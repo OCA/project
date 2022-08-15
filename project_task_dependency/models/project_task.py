@@ -92,3 +92,14 @@ class ProjectTask(models.Model):
                 'new_task_id': res.id
             })
         return res
+
+    def button_open_task(self):
+        action = {
+            'name': _('Task'),
+            'type': 'ir.actions.act_window',
+            'res_model': 'project.task',
+            'res_id': self.id,
+            'view_mode': 'form',
+            'view_type': 'form',
+        }
+        return action
