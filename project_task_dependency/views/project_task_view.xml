@@ -13,14 +13,65 @@
                         name="dependency_task_ids"
                         domain="[('id', '!=', id), ('id', 'not in', recursive_dependency_task_ids)]"
                     >
-                        <tree>
-                            <field name="name" />
-                            <field name="user_id" />
-                            <field name="date_deadline" />
-                            <field name="stage_id" />
+                        <tree sample="1" multi_edit="1">
+                            <field name="name" optional="show" />
+                            <field name="user_id" optional="show" />
+                            <field name="date_deadline" optional="show" />
+                            <field name="stage_id" optional="show" />
+                            <field name="project_id" optional="hide" />
+                            <field
+                                name="tag_ids"
+                                widget="many2many_tags"
+                                optional="hide"
+                                options="{'color_field': 'color', 'no_create_edit': True}"
+                            />
+                            <field name="partner_id" optional="hide" />
+                            <button
+                                name="button_open_task"
+                                type="object"
+                                title="Open Task"
+                                icon="fa-arrow-right"
+                                aria-label="Open Task"
+                                class="btn-link"
+                            />
                         </tree>
                     </field>
                 </page>
+            </xpath>
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button
+                    name="button_open_blocking_tasks"
+                    type="object"
+                    class="oe_stat_button"
+                    icon="fa-level-up"
+                    attrs="{'invisible': [('dependent_tasks_count', '=', 0)]}"
+                >
+                    <div class="o_stat_info">
+                        <field name="dependent_tasks_count" />
+                        <span class="o_stat_text"> Blocked</span>
+                    </div>
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_task_kanban_blocked" model="ir.ui.view">
+        <field name="name">project.task.kanban.blocked</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_kanban" />
+        <field name="arch" type="xml">
+            <field name="color" position="after">
+                <field name="dependent_tasks_count" />
+            </field>
+            <xpath expr="//div[hasclass('o_kanban_record_bottom')]" position="before">
+                <a
+                    name="button_open_blocking_tasks"
+                    role="button"
+                    type="object"
+                    class="btn-link"
+                    attrs="{'invisible': [('dependent_tasks_count', '=', 0)]}"
+                >Blocked <field name="dependent_tasks_count" /></a>
+                <br />
             </xpath>
         </field>
     </record>

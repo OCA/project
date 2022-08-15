@@ -79,3 +79,13 @@ class TestProjectTaskDependency(TransactionCase):
             [("old_task_id", "=", self.task4.id)]
         )
         self.assertEqual(old_count, new_count)
+
+    def test_open_task_button(self):
+        res = self.task4.dependency_task_ids[0].button_open_task()
+        self.assertEqual(res["res_id"], self.task4.dependency_task_ids[0].id)
+
+    def test_open_blocking_tasks_button(self):
+        res = self.task4.button_open_blocking_tasks()
+        self.assertEqual(
+            res["domain"], [("id", "in", self.task4.depending_task_ids.ids)]
+        )
