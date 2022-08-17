@@ -23,6 +23,7 @@ addon | version | maintainers | summary
 --- | --- | --- | ---
 [project_department](project_department/) | 15.0.1.0.1 |  | Project Department Categorization
 [project_duplicate_subtask](project_duplicate_subtask/) | 15.0.1.0.0 |  | The module adds an action to duplicate tasks with the child subtasks
+[project_forecast_line](project_forecast_line/) | 15.0.1.0.0 |  | Project Forecast Lines
 [project_list](project_list/) | 15.0.2.0.0 |  | Projects list view
 [project_milestone](project_milestone/) | 15.0.1.0.0 | [![patrickrwilson](https://github.com/patrickrwilson.png?size=30px)](https://github.com/patrickrwilson) | Project Milestones
 [project_parent_task_filter](project_parent_task_filter/) | 15.0.1.1.0 |  | Add a filter to show the parent tasks
