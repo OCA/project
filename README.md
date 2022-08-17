@@ -41,6 +41,7 @@ addon | version | maintainers | summary
 [project_purchase_link](project_purchase_link/) | 13.0.1.0.0 |  | Project Purchase Link
 [project_risk](project_risk/) | 13.0.1.0.0 |  | MOR risk management method
 [project_role](project_role/) | 13.0.1.0.0 | [![alexey-pelykh](https://github.com/alexey-pelykh.png?size=30px)](https://github.com/alexey-pelykh) | Project role-based roster
+[project_sale_link](project_sale_link/) | 13.0.1.0.0 |  | Add sale and sale invoice link in project
 [project_stage_closed](project_stage_closed/) | 13.0.1.0.0 |  | Make the Closed flag on Task Stages available without installing sale_service
 [project_stage_state](project_stage_state/) | 13.0.1.0.0 |  | Restore State attribute removed from Project Stages in 8.0
 [project_status](project_status/) | 13.0.2.1.1 | [![patrickrwilson](https://github.com/patrickrwilson.png?size=30px)](https://github.com/patrickrwilson) | Project Status
