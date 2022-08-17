@@ -11,6 +11,7 @@ setuptools.setup(
         'odoo-addon-project_department>=15.0dev,<15.1dev',
         'odoo-addon-project_duplicate_subtask>=15.0dev,<15.1dev',
         'odoo-addon-project_forecast_line>=15.0dev,<15.1dev',
+        'odoo-addon-project_forecast_line_holidays_public>=15.0dev,<15.1dev',
         'odoo-addon-project_list>=15.0dev,<15.1dev',
         'odoo-addon-project_milestone>=15.0dev,<15.1dev',
         'odoo-addon-project_parent_task_filter>=15.0dev,<15.1dev',
