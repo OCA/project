@@ -25,8 +25,7 @@ Project Sale Link
 
 |badge1| |badge2| |badge3| |badge4| |badge5| 
 
-This module allows to use analytic tags from sale order line on analytic lines
-generated from tasks
+This module adds links to sales orders and customer invoices on projects
 
 **Table of contents**
 
