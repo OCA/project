@@ -35,6 +35,13 @@ class ProjectTask(models.Model):
         compute='_compute_recursive_depending_task_ids'
     )
 
+    blocking_count = fields.Integer(compute="_compute_blocking_count")
+
+    @api.depends("dependency_task_ids")
+    def _compute_blocking_count(self):
+        for task in self:
+            task.blocking_count = len(task.depending_task_ids)
+
     @api.depends('dependency_task_ids')
     def _compute_recursive_dependency_task_ids(self):
         for task in self:
@@ -101,5 +108,16 @@ class ProjectTask(models.Model):
             'res_id': self.id,
             'view_mode': 'form',
             'view_type': 'form',
+        }
+        return action
+
+    def button_open_blocking_tasks(self):
+        action = {
+            "name": _("Task"),
+            "type": "ir.actions.act_window",
+            "res_model": "project.task",
+            "view_mode": "kanban,form,list",
+            "view_type": "form",
+            "domain": [("id", "in", self.depending_task_ids.ids)],
         }
         return action

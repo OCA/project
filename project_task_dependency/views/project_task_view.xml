@@ -25,6 +25,42 @@
                     </field>
                 </page>
             </xpath>
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button
+                    name="button_open_blocking_tasks"
+                    type="object"
+                    class="oe_stat_button"
+                    icon="fa-level-up"
+                    attrs="{'invisible': [('blocking_count', '=', 0)]}"
+                >
+                    <div class="o_stat_info">
+                        <field name="blocking_count" />
+                        <span class="o_stat_text"> Blocked</span>
+                    </div>
+                </button>
+            </xpath>
         </field>
     </record>
+
+    <record id="view_task_kanban_blocked" model="ir.ui.view">
+        <field name="name">project.task.kanban.blocked</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_kanban" />
+        <field name="arch" type="xml">
+            <field name="color" position="after">
+                <field name="blocking_count" />
+            </field>
+            <xpath expr="//div[hasclass('o_kanban_record_bottom')]" position="before">
+                <a
+                    name="button_open_blocking_tasks"
+                    role="button"
+                    type="object"
+                    class="btn-link"
+                    attrs="{'invisible': [('blocking_count', '=', 0)]}"
+                >Blocked <field name="blocking_count" /></a>
+                <br />
+            </xpath>
+        </field>
+    </record>
+
 </odoo>
