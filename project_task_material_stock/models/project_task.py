@@ -88,6 +88,11 @@ class Task(models.Model):
         help='Keep this field empty to use the default value from'
         ' the project.'
     )
+    picking_type_id = fields.Many2one(
+        comodel_name="stock.picking.type",
+        string="Operation Type",
+        index=True,
+    )
 
     @api.multi
     def unlink_stock_move(self):
@@ -189,9 +194,9 @@ class ProjectTaskMaterial(models.Model):
 
     @api.multi
     def create_stock_move(self):
-        pick_type = self.env.ref(
-            'project_task_material_stock.project_task_material_picking_type')
         task = self[0].task_id
+        pick_type = task.picking_type_id or self.env.ref(
+            'project_task_material_stock.project_task_material_picking_type')
         picking_id = task.picking_id or self.env['stock.picking'].create({
             'origin': "{}/{}".format(task.project_id.name, task.name),
             'partner_id': task.partner_id.id,
