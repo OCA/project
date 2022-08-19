@@ -110,6 +110,11 @@ msgid "Move created will be assigned to this analytic account"
 msgstr ""
 
 #. module: project_task_material_stock
+#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task__picking_type_id
+msgid "Operation Type"
+msgstr ""
+
+#. module: project_task_material_stock
 #: selection:project.task,stock_state:0
 msgid "Pending"
 msgstr "laufend"
@@ -211,6 +216,7 @@ msgstr ""
 
 #. module: project_task_material_stock
 #: code:addons/project_task_material_stock/models/project_task.py:283
+#: code:addons/project_task_material_stock/models/project_task.py:288
 #, python-format
 msgid ""
 "You can't delete a consumed material if already have stock movements done."
@@ -218,6 +224,7 @@ msgstr ""
 
 #. module: project_task_material_stock
 #: code:addons/project_task_material_stock/models/project_task.py:121
+#: code:addons/project_task_material_stock/models/project_task.py:126
 #, python-format
 msgid ""
 "You can't move to a not consume stage if there are already analytic lines"
@@ -227,6 +234,7 @@ msgstr ""
 
 #. module: project_task_material_stock
 #: code:addons/project_task_material_stock/models/project_task.py:217
+#: code:addons/project_task_material_stock/models/project_task.py:222
 #, python-format
 msgid "You must assign an analytic account for this task/project."
 msgstr ""

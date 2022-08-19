@@ -107,11 +107,6 @@ msgid "Materials used"
 msgstr "Materiales usados"
 
 #. module: project_task_material_stock
-#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task__analytic_account_id
-msgid "Move Analytic Account"
-msgstr "Línea analítica"
-
-#. module: project_task_material_stock
 #: model:ir.model.fields,help:project_task_material_stock.field_project_task__analytic_account_id
 msgid "Move created will be assigned to this analytic account"
 msgstr "El movimiento generado se asignará a esta cuenta analítica"
@@ -137,14 +132,20 @@ msgid "Products"
 msgstr "Productos"
 
 #. module: project_task_material_stock
-#: model:ir.model,name:project_task_material_stock.model_project_project
-msgid "Project"
-msgstr "Proyecto"
+#: model:ir.model.fields,field_description:project_task_material_stock.field_project_task__analytic_account_id
+msgid "Project Analytic Account"
+msgstr ""
 
 #. module: project_task_material_stock
 #: model:ir.model.fields,field_description:project_task_material_stock.field_account_analytic_line__task_material_id
 #: model:ir.model.fields,field_description:project_task_material_stock.field_stock_move__task_material_id
 msgid "Project Task Material"
+msgstr "Materiales usados en la tarea"
+
+#. module: project_task_material_stock
+#: model:stock.picking.type,name:project_task_material_stock.project_task_material_picking_type
+#, fuzzy
+msgid "Project Task Material Operations"
 msgstr "Materiales usados en la tarea"
 
 #. module: project_task_material_stock
@@ -206,7 +207,13 @@ msgid "Unit of Measure"
 msgstr "Unidad de medida"
 
 #. module: project_task_material_stock
-#: code:addons/project_task_material_stock/models/project_task.py:286
+#: model:ir.model,name:project_task_material_stock.model_project_project
+msgid "WBS element"
+msgstr ""
+
+#. module: project_task_material_stock
+#: code:addons/project_task_material_stock/models/project_task.py:283
+#: code:addons/project_task_material_stock/models/project_task.py:288
 #, python-format
 msgid ""
 "You can't delete a consumed material if already have stock movements done."
@@ -215,6 +222,7 @@ msgstr ""
 "realizados."
 
 #. module: project_task_material_stock
+#: code:addons/project_task_material_stock/models/project_task.py:121
 #: code:addons/project_task_material_stock/models/project_task.py:126
 #, python-format
 msgid ""
@@ -224,11 +232,14 @@ msgstr ""
 "analíticas."
 
 #. module: project_task_material_stock
-#: code:addons/project_task_material_stock/models/project_task.py:220
+#: code:addons/project_task_material_stock/models/project_task.py:217
+#: code:addons/project_task_material_stock/models/project_task.py:222
 #, python-format
 msgid "You must assign an analytic account for this task/project."
 msgstr "Debe asignar una cuenta analítica a esta tarea/proyecto."
 
-#, fuzzy
-#~ msgid "Project Task Material Operations"
-#~ msgstr "Materiales usados en la tarea"
+#~ msgid "Move Analytic Account"
+#~ msgstr "Línea analítica"
+
+#~ msgid "Project"
+#~ msgstr "Proyecto"
