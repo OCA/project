@@ -14,10 +14,7 @@
     "category": "Project",
     "maintainers": ["Open Source Integrators"],
     "website": "https://github.com/OCA/project",
-    "depends": [
-        "project",
-        "sale_timesheet"
-    ],
+    "depends": ["project", "sale_timesheet"],
     "data": [
         "views/account_analytic_view.xml",
     ],

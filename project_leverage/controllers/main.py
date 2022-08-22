@@ -2,20 +2,16 @@
 # Copyright (C) 2020 Serpent Consulting Services
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 from odoo.http import request
-from odoo.exceptions import UserError
 
 from odoo.addons.sale_timesheet.controllers.portal import SaleTimesheetCustomerPortal
-
 
 DEFAULT_MONTH_RANGE = 3
 
 
 class SaleTimesheetController(SaleTimesheetCustomerPortal):
-
     def _plan_prepare_values(self, projects):
-        employee_obj = request.env['hr.employee']
-        values = super(SaleTimesheetController,
-                       self)._plan_prepare_values(projects)
+        employee_obj = request.env["hr.employee"]
+        values = super(SaleTimesheetController, self)._plan_prepare_values(projects)
         _select = self.select_line()
         _from = self.line_from()
         _where, param = self.line_where(projects)
@@ -27,35 +23,46 @@ class SaleTimesheetController(SaleTimesheetCustomerPortal):
         month_list = []
         month_name_list = []
         for rec in raw_data:
-            month_name_list.append(rec.get('month_year'))
-            if str(rec.get('date_mm')).strip() + str(
-                    int(rec.get('year'))) not in month_list:
+            month_name_list.append(rec.get("month_year"))
+            if (
+                str(rec.get("date_mm")).strip() + str(int(rec.get("year")))
+                not in month_list
+            ):
                 month_list.append(
-                    str(rec.get('date_mm')).strip() + str(
-                        int(rec.get('year'))))
-            if project_data.get(rec.get('employee_id') or 0):
-                project_data[rec.get('employee_id') or 0].update(
-                    {str(rec.get('date_mm')).strip() + str(
-                        int(rec.get('year'))): {'name':
-                                                employee_obj.browse(rec.get(
-                                                    'employee_id') and int(
-                                                    rec.get(
-                                                        'employee_id'))).name,
-                                                'month_name': rec.get('month'),
-                                                'hours': rec.get('sum'),
-                                                }})
+                    str(rec.get("date_mm")).strip() + str(int(rec.get("year")))
+                )
+            if project_data.get(rec.get("employee_id") or 0):
+                project_data[rec.get("employee_id") or 0].update(
+                    {
+                        str(rec.get("date_mm")).strip()
+                        + str(int(rec.get("year"))): {
+                            "name": employee_obj.browse(
+                                rec.get("employee_id") and int(rec.get("employee_id"))
+                            ).name,
+                            "month_name": rec.get("month"),
+                            "hours": rec.get("sum"),
+                        }
+                    }
+                )
             else:
-                project_data.update({rec.get('employee_id') or 0: {
-                    str(rec.get('date_mm')).strip() + str(
-                        int(rec.get('year'))): {'month_name': rec.get('month'),
-                                                'hours': rec.get('sum'),
-                                                },
-                    'name': rec.get('employee_id') and employee_obj.browse(
-                        int(rec.get('employee_id'))).name or "undefine"
-                }, })
-        values['month_name_list'] = month_name_list
-        values['month_list'] = month_list
-        values['leverage'] = project_data
+                project_data.update(
+                    {
+                        rec.get("employee_id")
+                        or 0: {
+                            str(rec.get("date_mm")).strip()
+                            + str(int(rec.get("year"))): {
+                                "month_name": rec.get("month"),
+                                "hours": rec.get("sum"),
+                            },
+                            "name": rec.get("employee_id")
+                            and employee_obj.browse(int(rec.get("employee_id"))).name
+                            or "undefine",
+                        },
+                    }
+                )
+        values["month_name_list"] = month_name_list
+        values["month_list"] = month_list
+        values["leverage"] = project_data
         return values
 
     def select_line(self):
@@ -73,10 +80,10 @@ class SaleTimesheetController(SaleTimesheetCustomerPortal):
         """
 
     def line_where(self, projects):
-        project_mananger_ids = projects.mapped('user_id')
-        employee_ids = request.env['hr.employee'].search(
-            [('user_id', 'in', project_mananger_ids.ids),
-             ('user_id', '!=', False)])
+        project_mananger_ids = projects.mapped("user_id")
+        employee_ids = request.env["hr.employee"].search(
+            [("user_id", "in", project_mananger_ids.ids), ("user_id", "!=", False)]
+        )
         query = ""
         if employee_ids:
             query += """
