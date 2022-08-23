@@ -90,6 +90,7 @@ class Task(models.Model):
     )
     picking_type_id = fields.Many2one(
         comodel_name="stock.picking.type",
+        domain=[("code", "in", ("outgoing", "internal"))],
         string="Operation Type",
         index=True,
     )
