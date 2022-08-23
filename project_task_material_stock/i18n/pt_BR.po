@@ -212,7 +212,6 @@ msgstr ""
 "Trabalho"
 
 #. module: project_task_material_stock
-#: code:addons/project_task_material_stock/models/project_task.py:288
 #: code:addons/project_task_material_stock/models/project_task.py:289
 #, python-format
 msgid ""
@@ -222,7 +221,6 @@ msgstr ""
 "estoque realizadas."
 
 #. module: project_task_material_stock
-#: code:addons/project_task_material_stock/models/project_task.py:126
 #: code:addons/project_task_material_stock/models/project_task.py:127
 #, python-format
 msgid ""
@@ -232,7 +230,6 @@ msgstr ""
 "analíticas"
 
 #. module: project_task_material_stock
-#: code:addons/project_task_material_stock/models/project_task.py:222
 #: code:addons/project_task_material_stock/models/project_task.py:223
 #, python-format
 msgid "You must assign an analytic account for this task/project."
