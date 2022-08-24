@@ -35,12 +35,14 @@ class ProjectTask(models.Model):
         compute='_compute_recursive_depending_task_ids'
     )
 
-    blocking_count = fields.Integer(compute="_compute_blocking_count")
+    dependent_tasks_count = fields.Integer(
+        string="Dependent Tasks", compute="_compute_dependent_tasks_count"
+    )
 
     @api.depends("dependency_task_ids")
-    def _compute_blocking_count(self):
+    def _compute_dependent_tasks_count(self):
         for task in self:
-            task.blocking_count = len(task.depending_task_ids)
+            task.dependent_tasks_count = len(task.depending_task_ids)
 
     @api.depends('dependency_task_ids')
     def _compute_recursive_dependency_task_ids(self):

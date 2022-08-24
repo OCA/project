@@ -31,10 +31,10 @@
                     type="object"
                     class="oe_stat_button"
                     icon="fa-level-up"
-                    attrs="{'invisible': [('blocking_count', '=', 0)]}"
+                    attrs="{'invisible': [('dependent_tasks_count', '=', 0)]}"
                 >
                     <div class="o_stat_info">
-                        <field name="blocking_count" />
+                        <field name="dependent_tasks_count" />
                         <span class="o_stat_text"> Blocked</span>
                     </div>
                 </button>
@@ -48,7 +48,7 @@
         <field name="inherit_id" ref="project.view_task_kanban" />
         <field name="arch" type="xml">
             <field name="color" position="after">
-                <field name="blocking_count" />
+                <field name="dependent_tasks_count" />
             </field>
             <xpath expr="//div[hasclass('o_kanban_record_bottom')]" position="before">
                 <a
@@ -56,8 +56,8 @@
                     role="button"
                     type="object"
                     class="btn-link"
-                    attrs="{'invisible': [('blocking_count', '=', 0)]}"
-                >Blocked <field name="blocking_count" /></a>
+                    attrs="{'invisible': [('dependent_tasks_count', '=', 0)]}"
+                >Blocked <field name="dependent_tasks_count" /></a>
                 <br />
             </xpath>
         </field>
