@@ -17,6 +17,16 @@ msgstr ""
 "X-Generator: Weblate 4.3.2\n"
 
 #. module: project_task_dependency
+#: model_terms:ir.ui.view,arch_db:project_task_dependency.project_task_form
+msgid "<span class=\"o_stat_text\"> Blocked</span>"
+msgstr ""
+
+#. module: project_task_dependency
+#: model_terms:ir.ui.view,arch_db:project_task_dependency.view_task_kanban_blocked
+msgid "Blocked"
+msgstr ""
+
+#. module: project_task_dependency
 #: model:ir.model.fields,field_description:project_task_dependency.field_project_task_copy_map__create_uid
 msgid "Created by"
 msgstr "Creado por"
@@ -31,6 +41,11 @@ msgstr "Creado en"
 #: model_terms:ir.ui.view,arch_db:project_task_dependency.project_task_form
 msgid "Dependencies"
 msgstr "Dependencias"
+
+#. module: project_task_dependency
+#: model:ir.model.fields,field_description:project_task_dependency.field_project_task__dependent_tasks_count
+msgid "Dependent Tasks"
+msgstr ""
 
 #. module: project_task_dependency
 #: model:ir.model.fields,field_description:project_task_dependency.field_project_task__depending_task_ids
@@ -79,6 +94,11 @@ msgid "Old Task"
 msgstr "Tarea Vieja"
 
 #. module: project_task_dependency
+#: model_terms:ir.ui.view,arch_db:project_task_dependency.project_task_form
+msgid "Open Task"
+msgstr ""
+
+#. module: project_task_dependency
 #: model:ir.model,name:project_task_dependency.model_project_project
 msgid "Project"
 msgstr "Proyecto"
@@ -99,7 +119,9 @@ msgid "Recursive Depending Tasks"
 msgstr "Recursividad de Tareas Dependientes"
 
 #. module: project_task_dependency
+#: code:addons/project_task_dependency/models/project_task.py:0
 #: model:ir.model,name:project_task_dependency.model_project_task
+#, python-format
 msgid "Task"
 msgstr "Tarea"
 

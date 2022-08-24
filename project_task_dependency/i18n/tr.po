@@ -20,6 +20,16 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. module: project_task_dependency
+#: model_terms:ir.ui.view,arch_db:project_task_dependency.project_task_form
+msgid "<span class=\"o_stat_text\"> Blocked</span>"
+msgstr ""
+
+#. module: project_task_dependency
+#: model_terms:ir.ui.view,arch_db:project_task_dependency.view_task_kanban_blocked
+msgid "Blocked"
+msgstr ""
+
+#. module: project_task_dependency
 #: model:ir.model.fields,field_description:project_task_dependency.field_project_task_copy_map__create_uid
 msgid "Created by"
 msgstr ""
@@ -36,21 +46,32 @@ msgid "Dependencies"
 msgstr "Bağımlılıklar"
 
 #. module: project_task_dependency
+#: model:ir.model.fields,field_description:project_task_dependency.field_project_task__dependent_tasks_count
+msgid "Dependent Tasks"
+msgstr ""
+
+#. module: project_task_dependency
 #: model:ir.model.fields,field_description:project_task_dependency.field_project_task__depending_task_ids
 msgid "Depending Tasks"
 msgstr "Bağımlı Görevler"
 
 #. module: project_task_dependency
+#: model:ir.model.fields,field_description:project_task_dependency.field_project_project__display_name
+#: model:ir.model.fields,field_description:project_task_dependency.field_project_task__display_name
 #: model:ir.model.fields,field_description:project_task_dependency.field_project_task_copy_map__display_name
 msgid "Display Name"
 msgstr ""
 
 #. module: project_task_dependency
+#: model:ir.model.fields,field_description:project_task_dependency.field_project_project__id
+#: model:ir.model.fields,field_description:project_task_dependency.field_project_task__id
 #: model:ir.model.fields,field_description:project_task_dependency.field_project_task_copy_map__id
 msgid "ID"
 msgstr ""
 
 #. module: project_task_dependency
+#: model:ir.model.fields,field_description:project_task_dependency.field_project_project____last_update
+#: model:ir.model.fields,field_description:project_task_dependency.field_project_task____last_update
 #: model:ir.model.fields,field_description:project_task_dependency.field_project_task_copy_map____last_update
 msgid "Last Modified on"
 msgstr ""
@@ -78,6 +99,11 @@ msgid "Old Task"
 msgstr "Görev"
 
 #. module: project_task_dependency
+#: model_terms:ir.ui.view,arch_db:project_task_dependency.project_task_form
+msgid "Open Task"
+msgstr ""
+
+#. module: project_task_dependency
 #: model:ir.model,name:project_task_dependency.model_project_project
 msgid "Project"
 msgstr ""
@@ -98,7 +124,9 @@ msgid "Recursive Depending Tasks"
 msgstr "Özyinelemeli Bağımlı Görevler"
 
 #. module: project_task_dependency
+#: code:addons/project_task_dependency/models/project_task.py:0
 #: model:ir.model,name:project_task_dependency.model_project_task
+#, python-format
 msgid "Task"
 msgstr "Görev"
 
