@@ -89,3 +89,7 @@ class TestProjectTaskDependency(TransactionCase):
         self.assertEqual(
             res["domain"], [("id", "in", self.task4.depending_task_ids.ids)]
         )
+
+    def test_compute_dependent_tasks_count(self):
+        self.task1._compute_dependent_tasks_count()
+        self.assertEqual(len(self.task1.depending_task_ids), self.task1.dependent_tasks_count)
