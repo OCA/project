@@ -65,3 +65,7 @@ class TestProject(TestCommon):
         project = self.Project.new({"name": "Software Development", "key": "TEST"})
         project._onchange_project_name()
         self.assertEqual(project.key, "TEST")
+
+    def test_10_generate_unique_key_with_counter(self):
+        project = self.Project.create({"name": "OCA"})
+        self.assertEqual(project.key, "OCA1")
