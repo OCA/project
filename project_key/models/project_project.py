@@ -138,12 +138,24 @@ class Project(models.Model):
 
         data = text.split(" ")
         if len(data) == 1:
-            return data[0][:3].upper()
+            return self._generate_project_unique_key(data[0][:3].upper())
 
         key = []
         for item in data:
             key.append(item[:1].upper())
-        return "".join(key)
+        return self._generate_project_unique_key("".join(key))
+
+    def _generate_project_unique_key(self, text):
+        res = text
+        unique_key = False
+        counter = 0
+        while not unique_key:
+            if counter != 0:
+                res = "%s%s" % (text, counter)
+            unique_key = not bool(self.search([("key", "=", res)]))
+            counter += 1
+
+        return res
 
     def _update_task_keys(self):
         """
