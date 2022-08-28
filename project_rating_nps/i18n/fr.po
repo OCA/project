@@ -1,0 +1,211 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* project_rating_nps
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-28 10:21+0000\n"
+"PO-Revision-Date: 2022-08-28 10:21+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: project_rating_nps
+#: model:mail.template,subject:project_rating_nps.nps_rating_request_email
+msgid "${object.project_id.company_id.name}: Service Rating Request"
+msgstr "${object.project_id.company_id.name}: Demande d'avis concernant le service"
+
+#. module: project_rating_nps
+#: model_terms:ir.ui.view,arch_db:project_rating_nps.rating_external_page_submit
+msgid "(10: Very likely, 0: Very unlikely)"
+msgstr "(10: Très probable, 0: Très improbable)"
+
+#. module: project_rating_nps
+#: model_terms:ir.ui.view,arch_db:project_rating_nps.rating_external_page_submit
+msgid "/10"
+msgstr "/10"
+
+#. module: project_rating_nps
+#: model:mail.template,body_html:project_rating_nps.nps_rating_request_email
+msgid "<div>\n"
+"  % set access_token = object.rating_get_access_token()\n"
+"  % set partner = object.rating_get_partner_id()\n"
+"  <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" style=\"width:100%; margin:0px auto;\">\n"
+"    <tbody>\n"
+"      <tr><td valign=\"top\" style=\"font-size: 13px;\">\n"
+"        Hello ${partner.name},<br/>\n"
+"        Please take a moment to rate our services related to the task \"<strong>${object.name}</strong>\"\n"
+"        % if object.rating_get_rated_partner_id().name:\n"
+"        assigned to <strong>${object.rating_get_rated_partner_id().name}</strong>.<br/>\n"
+"        % else:\n"
+"        .<br/>\n"
+"        % endif\n"
+"      </td></tr>\n"
+"      <tr><td style=\"text-align: center;\">\n"
+"        <table border=\"0\" cellpadding=\"0\" cellspacing=\"0\" width=\"590\" summary=\"o_mail_notification\" style=\"width:100%; margin: 32px 0px 32px 0px;\">\n"
+"          <tr><td style=\"font-size: 13px;\">\n"
+"            <strong>How likely is it you recommend us to a friend?</strong><br/>\n"
+"            <span style=\"text-color: #888888\">(click on one of these smileys)</span>\n"
+"          </td></tr>\n"
+"          <tr><td style=\"font-size: 13px;\">\n"
+"            <table style=\"width:100%;text-align:center;\">\n"
+"              <tr>\n"
+"                <td style=\"padding:10px 10px;\">\n"
+"                  <a href=\"/rating/${access_token}/10\">\n"
+"                    <img alt=\"10/10\" src=\"/project_rating_nps/static/src/img/rate_10.png\"/>\n"
+"                  </a>\n"
+"                </td>\n"
+"                <td style=\"padding:10px 10px;\">\n"
+"                  <a href=\"/rating/${access_token}/9\">\n"
+"                    <img alt=\"9/10\" src=\"/project_rating_nps/static/src/img/rate_9.png\"/>\n"
+"                  </a>\n"
+"                </td>\n"
+"                <td style=\"padding:10px 10px;\">\n"
+"                  <a href=\"/rating/${access_token}/8\">\n"
+"                    <img alt=\"8/10\" src=\"/project_rating_nps/static/src/img/rate_8.png\"/>\n"
+"                  </a>\n"
+"                </td>\n"
+"                <td style=\"padding:10px 10px;\">\n"
+"                  <a href=\"/rating/${access_token}/7\">\n"
+"                    <img alt=\"7/10\" src=\"/project_rating_nps/static/src/img/rate_7.png\"/>\n"
+"                  </a>\n"
+"                </td>\n"
+"                <td style=\"padding:10px 10px;\">\n"
+"                  <a href=\"/rating/${access_token}/6\">\n"
+"                    <img alt=\"6/10\" src=\"/project_rating_nps/static/src/img/rate_6.png\"/>\n"
+"                  </a>\n"
+"                </td>\n"
+"                <td style=\"padding:10px 10px;\">\n"
+"                  <a href=\"/rating/${access_token}/5\">\n"
+"                    <img alt=\"5/10\" src=\"/project_rating_nps/static/src/img/rate_5.png\"/>\n"
+"                  </a>\n"
+"                </td>\n"
+"                <td style=\"padding:10px 10px;\">\n"
+"                  <a href=\"/rating/${access_token}/4\">\n"
+"                    <img alt=\"4/10\" src=\"/project_rating_nps/static/src/img/rate_4.png\"/>\n"
+"                  </a>\n"
+"                </td>\n"
+"                <td style=\"padding:10px 10px;\">\n"
+"                  <a href=\"/rating/${access_token}/3\">\n"
+"                    <img alt=\"3/10\" src=\"/project_rating_nps/static/src/img/rate_3.png\"/>\n"
+"                  </a>\n"
+"                </td>\n"
+"                <td style=\"padding:10px 10px;\">\n"
+"                  <a href=\"/rating/${access_token}/2\">\n"
+"                    <img alt=\"2/10\" src=\"/project_rating_nps/static/src/img/rate_2.png\"/>\n"
+"                  </a>\n"
+"                </td>\n"
+"                <td style=\"padding:10px 10px;\">\n"
+"                  <a href=\"/rating/${access_token}/1\">\n"
+"                    <img alt=\"1/10\" src=\"/project_rating_nps/static/src/img/rate_1.png\"/>\n"
+"                  </a>\n"
+"                </td>\n"
+"                <td style=\"padding:10px 10px;\">\n"
+"                  <a href=\"/rating/${access_token}/0\">\n"
+"                    <img alt=\"0/10\" src=\"/project_rating_nps/static/src/img/rate_0.png\"/>\n"
+"                  </a>\n"
+"                </td>\n"
+"              </tr>\n"
+"            </table>\n"
+"          </td></tr>\n"
+"        </table>\n"
+"      </td></tr>\n"
+"      <tr><td valign=\"top\" style=\"font-size: 13px;\">\n"
+"        We appreciate your feedback. It helps us to improve continuously.\n"
+"        % if object.project_id.rating_status == 'stage':\n"
+"        <br/><span style=\"margin: 0px 0px 0px 0px; font-size: 12px; opacity: 0.5; color: #454748;\">This customer survey has been sent because your task has been moved to the stage <b>${object.stage_id.name}</b></span>\n"
+"        % endif\n"
+"        % if object.project_id.rating_status == 'periodic':\n"
+"        <br/><span style=\"margin: 0px 0px 0px 0px; font-size: 12px; opacity: 0.5; color: #454748;\">This customer survey is sent <b>${object.project_id.rating_status_period}</b> as long as the task is in the <b>${object.stage_id.name}</b> stage.</span>\n"
+"        % endif\n"
+"      </td></tr>\n"
+"    </tbody>\n"
+"  </table>\n"
+"</div>\n"
+""
+msgstr ""
+
+#. module: project_rating_nps
+#: model_terms:ir.ui.view,arch_db:project_rating_nps.rating_external_page_submit
+msgid "<span>Your answer to the question</span>\n"
+"              <i>How likely is it you recommend us to a friend?</i>\n"
+"              <span>is:</span>"
+msgstr "<span>Votre réponse à la question</span>\n"
+"              <i> Quelle est la probabilité que vous recommandiez nos services à un ami ?</i>\n"
+"              <span>est :</span>"
+
+#. module: project_rating_nps
+#: model_terms:ir.ui.view,arch_db:project_rating_nps.rating_rating_view_search
+msgid "Detractors"
+msgstr "Détracteurs"
+
+#. module: project_rating_nps
+#: model:ir.model.fields,field_description:project_rating_nps.field_project_project__net_promoter_score
+#: model:ir.model.fields,field_description:project_rating_nps.field_rating_rating__net_promoter_score
+msgid "NPS"
+msgstr "NPS"
+
+#. module: project_rating_nps
+#: model_terms:ir.ui.view,arch_db:project_rating_nps.view_project_kanban
+msgid "Net promoter score over the past 30 days. Get rating details from the More menu."
+msgstr "Net promoter score sur les 30 derniers jours. Détail accessible grâce au menu Plus."
+
+#. module: project_rating_nps
+#: model_terms:ir.ui.view,arch_db:project_rating_nps.view_project_kanban
+msgid "No NPS"
+msgstr "Pas de NPS"
+
+#. module: project_rating_nps
+#: model_terms:ir.ui.view,arch_db:project_rating_nps.rating_rating_view_search
+msgid "Passives"
+msgstr "Passifs"
+
+#. module: project_rating_nps
+#: model:ir.model,name:project_rating_nps.model_project_project
+msgid "Project"
+msgstr "Projet"
+
+#. module: project_rating_nps
+#: model_terms:ir.ui.view,arch_db:project_rating_nps.rating_rating_view_search
+msgid "Promoters"
+msgstr "Promoteurs"
+
+#. module: project_rating_nps
+#: model:ir.model,name:project_rating_nps.model_rating_rating
+msgid "Rating"
+msgstr "Évaluation"
+
+#. module: project_rating_nps
+#: model:ir.model,name:project_rating_nps.model_rating_mixin
+msgid "Rating Mixin"
+msgstr "Rating Mixin"
+
+#. module: project_rating_nps
+#: model_terms:ir.ui.view,arch_db:project_rating_nps.rating_external_page_submit
+msgid "Send Feedback"
+msgstr "Envoyer un feedback"
+
+#. module: project_rating_nps
+#: model:ir.model,name:project_rating_nps.model_project_task
+msgid "Task"
+msgstr "Tâche"
+
+#. module: project_rating_nps
+#: model_terms:ir.ui.view,arch_db:project_rating_nps.rating_external_page_submit
+msgid "Thanks! We appreciate your feedback."
+msgstr "Merci ! Nous apprécions votre retour."
+
+#. module: project_rating_nps
+#: model_terms:ir.ui.view,arch_db:project_rating_nps.rating_external_page_submit
+msgid "Would be great if you can provide more information:"
+msgstr "Ce serait parfait si vous pouviez fournir de plus amples informations:"
+
+#. module: project_rating_nps
+#: model_terms:ir.ui.view,arch_db:project_rating_nps.rating_external_page_submit
+msgid "Your rating has been submitted."
+msgstr "Votre évaluation a été soumise."
