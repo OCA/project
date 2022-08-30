@@ -20,17 +20,11 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
-#. module: project_stage_closed
-#: model:ir.model.fields,field_description:project_stage_closed.field_project_task_type__closed
-msgid "Closed"
-msgstr "Zatvoreno"
+#~ msgid "Closed"
+#~ msgstr "Zatvoreno"
 
-#. module: project_stage_closed
-#: model:ir.model,name:project_stage_closed.model_project_task_type
-msgid "Task Stage"
-msgstr "Etapa zadatka"
+#~ msgid "Task Stage"
+#~ msgstr "Etapa zadatka"
 
-#. module: project_stage_closed
-#: model:ir.model.fields,help:project_stage_closed.field_project_task_type__closed
-msgid "Tasks in this stage are considered closed."
-msgstr "Zadaci sa ovim statusom smatraju se zatvorenima."
+#~ msgid "Tasks in this stage are considered closed."
+#~ msgstr "Zadaci sa ovim statusom smatraju se zatvorenima."
