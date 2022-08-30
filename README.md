@@ -50,7 +50,7 @@ addon | version | maintainers | summary
 [project_timeline](project_timeline/) | 14.0.1.4.0 |  | Timeline view for projects
 [project_timeline_hr_timesheet](project_timeline_hr_timesheet/) | 14.0.1.0.0 |  | Shows the progress of tasks on the timeline view.
 [project_timeline_task_dependency](project_timeline_task_dependency/) | 14.0.1.0.0 |  | Render arrows between dependencies.
-[project_timesheet_time_control](project_timesheet_time_control/) | 14.0.1.0.0 | [![ernestotejeda](https://github.com/ernestotejeda.png?size=30px)](https://github.com/ernestotejeda) | Project timesheet time control
+[project_timesheet_time_control](project_timesheet_time_control/) | 14.0.1.0.1 | [![ernestotejeda](https://github.com/ernestotejeda.png?size=30px)](https://github.com/ernestotejeda) | Project timesheet time control
 
 [//]: # (end addons)
 
