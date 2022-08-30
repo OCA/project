@@ -18,9 +18,9 @@ class ProjectTask(models.Model):
     def create(self, vals_list):
         # compatibility with fields from project_enterprise
         for vals in vals_list:
-            if "planned_date_begin" in vals:
+            if vals.get("planned_date_begin"):
                 vals["forecast_date_planned_start"] = vals["planned_date_begin"]
-            if "planned_date_end" in vals:
+            if vals.get("planned_date_end"):
                 vals["forecast_date_planned_end"] = vals["planned_date_end"]
         tasks = super().create(vals_list)
         tasks._update_forecast_lines()
@@ -94,6 +94,7 @@ class ProjectTask(models.Model):
                     # are not generating forecast lines from SO
                     _logger.info("skip task %s: draft sale")
                     continue
+
             if (
                 not task.forecast_date_planned_start
                 or not task.forecast_date_planned_end
