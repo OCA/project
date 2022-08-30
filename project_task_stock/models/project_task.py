@@ -4,7 +4,7 @@ from odoo import _, api, fields, models
 from odoo.exceptions import UserError
 
 
-class Task(models.Model):
+class ProjectTask(models.Model):
     _inherit = "project.task"
 
     scrap_ids = fields.One2many(
@@ -195,8 +195,12 @@ class Task(models.Model):
         return True
 
     def action_cancel(self):
+        """Cancel the stock moves and remove the analytic lines created from
+        stock moves when cancelling the task.
+        """
         self.move_ids.write({"state": "cancel"})
-        self.stock_analytic_line_ids.unlink()
+        # Use sudo to avoid error for users with no access to analytic
+        self.sudo().stock_analytic_line_ids.unlink()
         self.stock_moves_is_locked = True
         return True
 
@@ -209,7 +213,8 @@ class Task(models.Model):
         for move in self.mapped("move_ids"):
             move.quantity_done = move.reserved_availability
         self.mapped("move_ids")._action_done()
-        analytic_line_model = self.env["account.analytic.line"]
+        # Use sudo to avoid error for users with no access to analytic
+        analytic_line_model = self.env["account.analytic.line"].sudo()
         for move in self.move_ids.filtered(lambda x: x.state == "done"):
             vals = move._prepare_analytic_line_from_task()
             if vals:
@@ -234,6 +239,11 @@ class Task(models.Model):
         if any(vals.get(field) for field in field_names):
             self._update_moves_info()
         return res
+
+    def unlink(self):
+        # Use sudo to avoid error to users with no access to analytic
+        # related to hr_timesheet addon
+        return super(ProjectTask, self.sudo()).unlink()
 
 
 class ProjectTaskType(models.Model):
