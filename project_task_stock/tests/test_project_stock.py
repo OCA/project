@@ -1,6 +1,7 @@
 # Copyright 2022 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 from odoo.tests import Form
+from odoo.tests.common import new_test_user
 
 from .common import TestProjectStockBase
 
@@ -15,6 +16,11 @@ class TestProjectStock(TestProjectStockBase):
         )
         cls.move_product_b = cls.task.move_ids.filtered(
             lambda x: x.product_id == cls.product_b
+        )
+        cls.basic_user = new_test_user(
+            cls.env,
+            login="basic-user",
+            groups="project.group_project_user,stock.group_stock_user",
         )
 
     def test_project_task_misc(self):
@@ -145,3 +151,15 @@ class TestProjectStock(TestProjectStockBase):
         self.assertEqual(self.move_product_a.reserved_availability, 0)
         self.assertEqual(self.move_product_b.reserved_availability, 0)
         self.assertFalse(self.task.unreserve_visible)
+
+    def test_project_task_action_cancel_basic_user(self):
+        self.assertTrue(self.task.with_user(self.basic_user).action_cancel())
+
+    def test_project_task_action_done_basic_user(self):
+        task = self.task.with_user(self.basic_user)
+        task.write({"stage_id": self.stage_done.id})
+        task.action_done()
+        self.assertTrue(task.sudo().stock_analytic_line_ids)
+
+    def test_project_task_unlink_basic_user(self):
+        self.assertTrue(self.task.with_user(self.basic_user).unlink())
