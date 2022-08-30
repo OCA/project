@@ -16,32 +16,20 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 4.3.2\n"
 
-#. module: project_stage_closed
-#: model:ir.model.fields,field_description:project_stage_closed.field_project_task_type__closed
-msgid "Closed"
-msgstr "Cerrado"
+#~ msgid "Closed"
+#~ msgstr "Cerrado"
 
-#. module: project_stage_closed
-#: model:ir.model.fields,field_description:project_stage_closed.field_project_task_type__display_name
-msgid "Display Name"
-msgstr "Mostrar Nombre"
+#~ msgid "Display Name"
+#~ msgstr "Mostrar Nombre"
 
-#. module: project_stage_closed
-#: model:ir.model.fields,field_description:project_stage_closed.field_project_task_type__id
-msgid "ID"
-msgstr "ID"
+#~ msgid "ID"
+#~ msgstr "ID"
 
-#. module: project_stage_closed
-#: model:ir.model.fields,field_description:project_stage_closed.field_project_task_type____last_update
-msgid "Last Modified on"
-msgstr "Última Modificación el"
+#~ msgid "Last Modified on"
+#~ msgstr "Última Modificación el"
 
-#. module: project_stage_closed
-#: model:ir.model,name:project_stage_closed.model_project_task_type
-msgid "Task Stage"
-msgstr "Etapa de la Tarea"
+#~ msgid "Task Stage"
+#~ msgstr "Etapa de la Tarea"
 
-#. module: project_stage_closed
-#: model:ir.model.fields,help:project_stage_closed.field_project_task_type__closed
-msgid "Tasks in this stage are considered closed."
-msgstr "Las tareas en esta etapa se consideran cerradas."
+#~ msgid "Tasks in this stage are considered closed."
+#~ msgstr "Las tareas en esta etapa se consideran cerradas."

@@ -20,17 +20,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 3.0.1\n"
 
-#. module: project_stage_closed
-#: model:ir.model.fields,field_description:project_stage_closed.field_project_task_type__closed
-msgid "Closed"
-msgstr "Fechado"
+#~ msgid "Closed"
+#~ msgstr "Fechado"
 
-#. module: project_stage_closed
-#: model:ir.model,name:project_stage_closed.model_project_task_type
-msgid "Task Stage"
-msgstr "Estágio da Tarefa"
+#~ msgid "Task Stage"
+#~ msgstr "Estágio da Tarefa"
 
-#. module: project_stage_closed
-#: model:ir.model.fields,help:project_stage_closed.field_project_task_type__closed
-msgid "Tasks in this stage are considered closed."
-msgstr "As tarefas nesta fase são consideradas fechadas."
+#~ msgid "Tasks in this stage are considered closed."
+#~ msgstr "As tarefas nesta fase são consideradas fechadas."
