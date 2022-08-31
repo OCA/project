@@ -245,10 +245,11 @@ class ForecastLine(models.Model):
                 resource,
                 calendar,
             )
-            if period_forecast == 0:
-                # don"t create forecast lines with a forecast of 0
-                curr_date = next_date
-                continue
+            # note we do create lines even if the period_forecast is 0, as this
+            # ensures that consolidated capacity can be computed: if there is
+            # no line for a day when the employee does not work, but for some
+            # reason there is a need on that day, we need the 0 capacity line
+            # to compute the negative consolidated capacity.
             period_forecast *= daily_forecast
             period_cost = period_forecast * unit_cost
             updates = {
