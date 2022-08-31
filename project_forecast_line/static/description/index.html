@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Docutils: http://docutils.sourceforge.net/" />
+<meta name="generator" content="Docutils 0.15.1: http://docutils.sourceforge.net/" />
 <title>Project Forecast Lines</title>
 <style type="text/css">
 
@@ -384,6 +384,13 @@ customers with an estimate of when a project would be able to start.</p>
 whether the consumption is confirmed or not. For instance, holidays requests
 and sales quotation lines create lines of type “forecast”, whereas tasks for
 project which are in a running state create lines with type “confirmed”.</p>
+<p>To get the best experience using the Forecast application you may want to install:</p>
+<ul class="simple">
+<li>project_forecast_line_holidays_public module which takes public holidays into
+account during forecast lines creation</li>
+<li>project_forecast_line_bokeh_chart module which improves the reports of
+project_forecast_line module by using the bokeh widget available in OCA/web</li>
+</ul>
 <p><strong>Table of contents</strong></p>
 <div class="contents local topic" id="contents">
 <ul class="simple">
@@ -402,7 +409,7 @@ project which are in a running state create lines with type “confirmed”.</p>
 <p>Forecast lines have the following data:</p>
 <ul class="simple">
 <li>Forecast hours: it is positive for resources (employees) and negative for
-things which consume time</li>
+things which consume time (project tasks, for instance)</li>
 <li>From and To date which are the beginning and ending of the period of the
 capacity</li>
 <li>Consolidated forecast: this is a computed field, which is computed as follows:<ul>
@@ -412,6 +419,8 @@ forecast hours (so it is a positive number)</li>
 substract all the costs for that employee on the same period. So it will be
 positive if the employee still has some free time, and negative if he is
 overloaded with work.</li>
+<li>this consolidated forecast is currently converted to days to ease
+readability of the forecast report</li>
 </ul>
 </li>
 </ul>
@@ -426,9 +435,9 @@ type “forecast” for each sale order line having a product with a forecast
 role and start and end dates. The forecast hours are negative</li>
 <li>confirmed sale orders don’t create forecast lines. This is handled by the
 tasks created at the confirmation of the sale order</li>
-<li>project tasks create forecast lines if they have a linked role and start/end
-date. The type of the line will depend on the related project’s stage. The
-forecast quantity is based on the remaining time of the task, which is spread
+<li>project tasks create forecast lines if they have a linked role and planned start/end
+dates. The type of the line will depend on the related project’s stage. The
+<cite>forecast_hours</cite> field is based on the remaining time of the task, which is spread
 on the work days of the planned start and end date of the task. If the
 current date is in the middle of the planned duration of the task, it is used
 as the start date. If the planned end date is in the past the task does not
@@ -441,6 +450,15 @@ they are pending manager validation.</li>
 work calendar of the employee: the employee will not have a positive line
 associated to his leave days.</li>
 </ul>
+<p>The creation of forecast lines is done either in real time when some actions
+are performed by the user (requesting leaves, updating the remaining time on a
+project task, timesheeting) and also via a cron that runs on a daily basis. The
+cron is required to cleanup lines related to dates in the past and to recompute
+the lines related to project tasks by computing the ratio of remaing time on
+the tasks on the remaining days, for tasks which are in progress. So, to start
+using consolidated forecast report you first need to set everything mentioned
+in Usage section. Then, probably run Forecast recomputation cron manually from
+Scheduled Actions or wait till cron creates records.</p>
 </div>
 <div class="section" id="bug-tracker">
 <h1><a class="toc-backref" href="#id2">Bug Tracker</a></h1>
