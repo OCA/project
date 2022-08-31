@@ -103,7 +103,8 @@ class ForecastLineReporting(models.TransientModel):
         )
         employees = set()
         projects = set()
-        data = {}
+        data_project = {}
+        data_overload = {}
         for d in groupdata:
             employee = d.get("employee_id")
             if employee:
@@ -111,18 +112,24 @@ class ForecastLineReporting(models.TransientModel):
             else:
                 employee = _("Not assigned to an employee")
             employees.add(employee)
-            if employee not in data:
-                data[employee] = {}
+            if employee not in data_project:
+                data_project[employee] = {}
+                data_overload[employee] = {}
+            forecast = d["consolidated_forecast"]
+            date = d["__range"]["date_from"]["from"]
             project = d.get("project_id")
             if project:
                 project = project[1]._value
+                data = data_project
+            elif forecast >= 0:
+                project = _("Available")
+                data = data_project
             else:
-                project = _("Available or Overload")
+                project = _("Overload")
+                data = data_overload
             projects.add(project)
             if project not in data[employee]:
                 data[employee][project] = {}
-            forecast = d["consolidated_forecast"]
-            date = d["__range"]["date_from"]["from"]
             x_key = date
             data[employee][project][x_key] = forecast
         employees = list(employees)
@@ -133,11 +140,12 @@ class ForecastLineReporting(models.TransientModel):
             employees.append(_("Not assigned to an employee"))
         projects = list(projects)
         projects.sort()
-        if _("Available or Overload") in projects:
-            # make sure it is the 1st one
-            projects.remove(_("Available or Overload"))
-            projects.insert(0, _("Available or Overload"))
-        return employees, projects, data
+        for name in [_("Available"), _("Overload")]:
+            if name in projects:
+                # make sure these two get in the first tow positions
+                projects.remove(name)
+                projects.insert(0, name)
+        return employees, projects, data_project, data_overload
 
     def _get_time_range(self):
         end_date = self.date_from + relativedelta(months=self.nb_months)
@@ -166,7 +174,7 @@ class ForecastLineReporting(models.TransientModel):
         return dict(zip(projects, project_colors))
 
     def _build_plots(self, height=300, width=1024):
-        employees, projects, data = self._prepare_bokeh_chart_data()
+        employees, projects, data, data_overload = self._prepare_bokeh_chart_data()
         if not data:
             return self._build_empty_plot(height, width)
         project_color_map = self._get_palette(projects)
@@ -174,28 +182,38 @@ class ForecastLineReporting(models.TransientModel):
         plots = []
         for employee in employees:
             plot_data = {"dates": dates}
+            plot_data_overload = {"dates": dates}
             for project in data[employee]:
                 forecast = data[employee][project]
                 plot_data[project] = [forecast.get(date, 0) for date in dates]
-            plot_projects = data[employee].keys()
+            for project in data_overload[employee]:
+                forecast = data_overload[employee][project]
+                plot_data_overload[project] = [forecast.get(date, 0) for date in dates]
+            plot_projects = [
+                p
+                for p in projects
+                if p in data[employee] or p in data_overload[employee]
+            ]
             source = ColumnDataSource(data=plot_data)
+            source_overload = ColumnDataSource(data=plot_data_overload)
             p = figure(
                 x_range=FactorRange(*dates),
                 height=max(height, len(plot_projects) * 30),
                 width=width,
             )
-            p.vbar_stack(
-                plot_projects,
-                x="dates",
-                source=source,
-                width=0.4,
-                alpha=0.5,
-                color=[project_color_map[p] for p in plot_projects],
-                legend_label=[
-                    (proj_name if len(proj_name) < 20 else proj_name[:19] + "…")
-                    for proj_name in plot_projects
-                ],
-            )
+            for src in (source, source_overload):
+                p.vbar_stack(
+                    plot_projects,
+                    x="dates",
+                    source=src,
+                    width=0.4,
+                    alpha=0.5,
+                    color=[project_color_map[p] for p in plot_projects],
+                    legend_label=[
+                        (proj_name if len(proj_name) < 20 else proj_name[:19] + "…")
+                        for proj_name in plot_projects
+                    ],
+                )
             p.xaxis.major_label_orientation = "vertical"
             p.title.text = employee
             p.legend.click_policy = "mute"
