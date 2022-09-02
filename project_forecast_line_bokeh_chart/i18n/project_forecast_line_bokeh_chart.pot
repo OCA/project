@@ -16,10 +16,8 @@ msgstr ""
 #. module: project_forecast_line_bokeh_chart
 #: code:addons/project_forecast_line_bokeh_chart/report/forecast_line_reporting.py:0
 #: code:addons/project_forecast_line_bokeh_chart/report/forecast_line_reporting.py:0
-#: code:addons/project_forecast_line_bokeh_chart/report/forecast_line_reporting.py:0
-#: code:addons/project_forecast_line_bokeh_chart/report/forecast_line_reporting.py:0
 #, python-format
-msgid "Available or Overload"
+msgid "Available"
 msgstr ""
 
 #. module: project_forecast_line_bokeh_chart
@@ -117,6 +115,13 @@ msgstr ""
 #: code:addons/project_forecast_line_bokeh_chart/report/forecast_line_reporting.py:0
 #, python-format
 msgid "Nothing to plot. Select some employees"
+msgstr ""
+
+#. module: project_forecast_line_bokeh_chart
+#: code:addons/project_forecast_line_bokeh_chart/report/forecast_line_reporting.py:0
+#: code:addons/project_forecast_line_bokeh_chart/report/forecast_line_reporting.py:0
+#, python-format
+msgid "Overload"
 msgstr ""
 
 #. module: project_forecast_line_bokeh_chart
