@@ -38,7 +38,7 @@ addon | version | maintainers | summary
 [project_milestone](project_milestone/) | 13.0.1.0.0 | [![patrickrwilson](https://github.com/patrickrwilson.png?size=30px)](https://github.com/patrickrwilson) | Project Milestones
 [project_parent](project_parent/) | 13.0.1.0.0 |  | Project Parent
 [project_parent_task_filter](project_parent_task_filter/) | 13.0.1.1.0 |  | Add a filter to show the parent tasks
-[project_purchase_link](project_purchase_link/) | 13.0.1.0.0 |  | Project Purchase Link
+[project_purchase_link](project_purchase_link/) | 13.0.1.0.1 |  | Project Purchase Link
 [project_risk](project_risk/) | 13.0.1.0.0 |  | MOR risk management method
 [project_role](project_role/) | 13.0.1.0.0 | [![alexey-pelykh](https://github.com/alexey-pelykh.png?size=30px)](https://github.com/alexey-pelykh) | Project role-based roster
 [project_sale_link](project_sale_link/) | 13.0.1.0.0 |  | Add sale and sale invoice link in project
