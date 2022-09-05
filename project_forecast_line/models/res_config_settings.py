@@ -12,7 +12,9 @@ class ResConfigSettings(models.TransientModel):
     forecast_line_horizon = fields.Integer(
         related="company_id.forecast_line_horizon", readonly=False
     )
-
+    forecast_consumption_states = fields.Selection(
+        related="company_id.forecast_consumption_states", readonly=False
+    )
     group_forecast_line_on_quotation = fields.Boolean(
         "Forecast Line on Quotations",
         implied_group="project_forecast_line.group_forecast_line_on_quotation",

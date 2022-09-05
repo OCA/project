@@ -85,15 +85,23 @@ class ForecastLine(models.Model):
         "forecast.line", "employee_resource_forecast_line_id"
     )
 
+    def _get_consumption_states(self):
+        consumption_states = self.env.company.forecast_consumption_states
+        return tuple(consumption_states.split("_"))
+
     @api.depends("employee_id", "date_from", "type", "res_model")
     def _compute_employee_forecast_line_id(self):
+        consumption_states = self._get_consumption_states()
         employees = self.mapped("employee_id")
+        main_roles = employees.mapped("main_role_id")
         date_froms = self.mapped("date_from")
         date_tos = self.mapped("date_to")
+        forecast_roles = self.mapped("forecast_role_id") | main_roles
         if employees:
             lines = self.search(
                 [
                     ("employee_id", "in", employees.ids),
+                    ("forecast_role_id", "in", forecast_roles.ids),
                     ("res_model", "=", "hr.employee.forecast.role"),
                     ("date_from", ">=", min(date_froms)),
                     ("date_to", "<=", max(date_tos)),
@@ -104,12 +112,26 @@ class ForecastLine(models.Model):
             lines = self.env["forecast.line"]
         capacities = {}
         for line in lines:
-            capacities[(line.employee_id.id, line.date_from)] = line.id
+            capacities[
+                (line.employee_id.id, line.date_from, line.forecast_role_id.id)
+            ] = line.id
         for rec in self:
-            if rec.type == "confirmed" and rec.res_model != "hr.employee.forecast.role":
-                rec.employee_resource_forecast_line_id = capacities.get(
-                    (rec.employee_id.id, rec.date_from), False
+            if (
+                rec.type in consumption_states
+                and rec.res_model != "hr.employee.forecast.role"
+            ):
+                resource_forecast_line = capacities.get(
+                    (rec.employee_id.id, rec.date_from, rec.forecast_role_id.id), False
                 )
+                if resource_forecast_line:
+                    rec.employee_resource_forecast_line_id = resource_forecast_line
+                else:
+                    # if we didn't find a forecast line with a matching role
+                    # we get forecast line with the main role of the employee
+                    main_role_id = rec.employee_id.main_role_id
+                    rec.employee_resource_forecast_line_id = capacities.get(
+                        (rec.employee_id.id, rec.date_from, main_role_id.id), False
+                    )
             else:
                 rec.employee_resource_forecast_line_id = False
 
