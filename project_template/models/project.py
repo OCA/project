@@ -55,3 +55,9 @@ class Project(models.Model):
             else:
                 if " (TEMPLATE)" in self.name:
                     self.name = self.name.replace(" (TEMPLATE)", "")
+
+
+class ProjectTask(models.Model):
+    _inherit = "project.task"
+
+    is_template_task = fields.Boolean(related="project_id.is_template")
