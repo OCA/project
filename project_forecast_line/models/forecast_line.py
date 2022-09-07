@@ -27,11 +27,16 @@ class ForecastLine(models.Model):
     )
     date_to = fields.Date(required=True)
     forecast_role_id = fields.Many2one(
-        "forecast.role", string="Forecast role", required=True, index=True
+        "forecast.role",
+        string="Forecast role",
+        required=True,
+        index=True,
+        ondelete="restrict",
     )
     employee_id = fields.Many2one("hr.employee", string="Employee")
     employee_forecast_role_id = fields.Many2one(
-        "hr.employee.forecast.role", string="Employee Forecast Role"
+        "hr.employee.forecast.role",
+        string="Employee Forecast Role",
     )
     project_id = fields.Many2one("project.project", index=True, string="Project")
     task_id = fields.Many2one("project.task", index=True, string="Task")
