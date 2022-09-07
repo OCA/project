@@ -9,14 +9,16 @@ from odoo import api, fields, models
 class HrJob(models.Model):
     _inherit = "hr.job"
 
-    role_id = fields.Many2one("forecast.role")
+    role_id = fields.Many2one("forecast.role", ondelete="restrict")
 
 
 class HrEmployee(models.Model):
     _inherit = "hr.employee"
 
     role_ids = fields.One2many("hr.employee.forecast.role", "employee_id")
-    main_role_id = fields.Many2one("forecast.role", compute="_compute_main_role_id")
+    main_role_id = fields.Many2one(
+        "forecast.role", compute="_compute_main_role_id", ondelete="restrict"
+    )
 
     def _compute_main_role_id(self):
         # can"t store as it depends on current date
