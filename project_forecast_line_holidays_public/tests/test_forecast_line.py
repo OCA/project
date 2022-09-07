@@ -2,8 +2,6 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 from freezegun import freeze_time
 
-from odoo import fields
-
 from odoo.addons.project_forecast_line.tests import test_forecast_line
 
 
@@ -25,11 +23,7 @@ class PublicHolidaysForecastTest(test_forecast_line.BaseForecastLineTest):
         self.env["hr.holidays.public"].create(
             {
                 "year": 2022,
-                "line_ids": [
-                    fields.Command.create(
-                        {"date": "2022-04-18", "name": "Easter Monday"}
-                    )
-                ],
+                "line_ids": [(0, 0, {"date": "2022-04-18", "name": "Easter Monday"})],
             }
         )
         lines = self.env["forecast.line"].search(
