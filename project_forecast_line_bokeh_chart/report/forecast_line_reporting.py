@@ -1,6 +1,5 @@
 # Copyright 2022 Camptocamp SA
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
-import json
 
 # pylint: disable=W7936
 from bokeh import palettes
@@ -38,9 +37,7 @@ class ForecastLineReporting(models.TransientModel):
     @api.onchange("project_ids")
     def onchange_project_ids(self):
         if self.project_ids:
-            self.employee_ids |= self.project_ids.mapped(
-                "task_ids.user_ids.employee_ids"
-            )
+            self.employee_ids |= self.project_ids.mapped("task_ids.user_id.employee_id")
 
     @api.depends("date_from", "nb_months", "employee_ids", "granularity", "project_ids")
     def _compute_bokeh_chart(self):
@@ -52,8 +49,8 @@ class ForecastLineReporting(models.TransientModel):
         # period.
         plots = self._build_plots()
         grid = column(*plots)
-        script, div = components(grid, wrap_script=False)
-        self.bokeh_chart = json.dumps({"div": div, "script": script})
+        script, div = components(grid)
+        self.bokeh_chart = "%s%s" % (div, script)
 
     def _prepare_bokeh_chart_data(self):
         """compute the data that will be plotted.
@@ -116,7 +113,7 @@ class ForecastLineReporting(models.TransientModel):
                 data_project[employee] = {}
                 data_overload[employee] = {}
             forecast = d["consolidated_forecast"]
-            date = d["__range"]["date_from"]["from"]
+            date = d["forecast_date_start"]
             project = d.get("project_id")
             if project:
                 project = project[1]._value
