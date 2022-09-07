@@ -10,7 +10,7 @@ _logger = logging.getLogger(__name__)
 class ProjectTask(models.Model):
     _inherit = "project.task"
 
-    forecast_role_id = fields.Many2one("forecast.role")
+    forecast_role_id = fields.Many2one("forecast.role", ondelete="restrict")
     forecast_date_planned_start = fields.Date("Planned start date")
     forecast_date_planned_end = fields.Date("Planned end date")
 

@@ -24,5 +24,6 @@
         "data/project_data.xml",
     ],
     "installable": True,
+    "development_status": "Alpha",
     "application": True,
 }
