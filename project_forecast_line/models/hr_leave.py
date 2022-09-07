@@ -81,7 +81,7 @@ class HrLeave(models.Model):
             to_update = self.with_company(company).search(
                 [
                     ("date_to", ">=", today),
-                    ("employee_company_id", "=", company.id),
+                    ("employee_id.company_id", "=", company.id),
                 ]
             )
             to_update._update_forecast_lines()

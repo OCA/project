@@ -3,7 +3,7 @@
 {
     "name": "Project Forecast Lines",
     "summary": "Project Forecast Lines",
-    "version": "15.0.1.0.3",
+    "version": "14.0.1.0.3",
     "author": "Camptocamp SA, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "category": "Project",
@@ -18,10 +18,8 @@
         "views/forecast_role_views.xml",
         "views/product_views.xml",
         "views/project_task_views.xml",
-        "views/project_project_stage_views.xml",
         "views/res_config_settings_views.xml",
         "data/ir_cron.xml",
-        "data/project_data.xml",
     ],
     "demo": [
         "demo/res_users.xml",

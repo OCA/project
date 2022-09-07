@@ -41,10 +41,8 @@ class ProjectTask(models.Model):
             "forecast_date_planned_end",
             # "remaining_hours",
             "name",
-            # "planned_time",
+            "planned_time",
             "user_id",
-            "project_id.project_status",
-            "project_id.project_status.forecast_line_type",
         ]
 
     @api.depends(_update_forecast_lines_trigger_fields)
@@ -69,18 +67,17 @@ class ProjectTask(models.Model):
             self._quick_update_forecast_lines()
         return res
 
-    @api.onchange("user_ids")
-    def onchange_user_ids(self):
+    @api.onchange("user_id")
+    def onchange_user_id(self):
         for task in self:
-            if not task.user_ids:
+            if not task.user_id:
                 continue
             if task.forecast_role_id:
                 continue
-            employees = task.mapped("user_ids.employee_id")
-            for employee in employees:
-                if employee.main_role_id:
-                    task.forecast_role_id = employee.main_role_id
-                    break
+            employee = task.user_id.employee_id
+            if employee.main_role_id:
+                task.forecast_role_id = employee.main_role_id
+                break
 
     def _get_task_employees(self):
         return self.with_context(active_test=False).mapped("user_ids.employee_id")
@@ -149,14 +146,15 @@ class ProjectTask(models.Model):
         ForecastLine = self.env["forecast.line"].sudo()
         task_with_lines_to_clean = []
         for task in self:
-            task = task.with_company(task.company_id)
-            if not task._should_have_forecast():
-                task_with_lines_to_clean.append(task.id)
+            forecast_type = "forecast"
+            if not task.forecast_role_id:
+                _logger.info("skip task %s: no forecast role", task)
                 continue
-            if task.project_id.project_status:
-                forecast_type = task.project_id.project_status.forecast_line_type
-            elif task.sale_line_id:
-                if task.sale_line_id.state == "sale":
+            if task.sale_line_id:
+                sale_state = task.sale_line_id.state
+                if sale_state == "cancel":
+                    _logger.info("skip task %s: cancelled sale", task)
+                elif sale_state == "sale":
                     forecast_type = "confirmed"
                 else:
                     forecast_type = "forecast"
@@ -168,10 +166,8 @@ class ProjectTask(models.Model):
 
             date_start = max(today, task.forecast_date_planned_start)
             date_end = max(today, task.forecast_date_planned_end)
-            employees = task._get_task_employees()
-            employee_ids = employees.ids
-            if not employees:
-                employees = [False]
+            employee_ids = task.mapped("user_id.employee_id").ids
+            if not employee_ids:
                 employee_ids = [False]
             _logger.debug(
                 "compute forecast for task %s: %s to %s %sh",

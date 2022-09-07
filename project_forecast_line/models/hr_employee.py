@@ -48,10 +48,7 @@ class HrEmployee(models.Model):
             job = self.env["hr.job"].browse(new_job_id)
             if job.role_id and "role_ids" not in values:
                 values = values.copy()
-                values["role_ids"] = [
-                    fields.Command.clear(),
-                    fields.Command.create({"role_id": job.role_id.id}),
-                ]
+                values["role_ids"] = [(6, 0, job.role_id.ids)]
         return values
 
 
