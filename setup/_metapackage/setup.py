@@ -29,6 +29,7 @@ setuptools.setup(
         'odoo-addon-project_task_pull_request>=15.0dev,<15.1dev',
         'odoo-addon-project_task_stage_state>=15.0dev,<15.1dev',
         'odoo-addon-project_template>=15.0dev,<15.1dev',
+        'odoo-addon-project_timeline>=15.0dev,<15.1dev',
     ],
     classifiers=[
         'Programming Language :: Python',
