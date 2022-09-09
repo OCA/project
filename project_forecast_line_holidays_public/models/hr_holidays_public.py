@@ -10,6 +10,7 @@ class HrHolidaysPublicLine(models.Model):
     def create(self, values):
         records = super().create(values)
         # TODO: only recompute if one of the created line is a public holiday
-        # in the horizon
-        self.env["forecast.line"].sudo()._cron_recompute_all()
+        # in the horizon and immediate_compute_forecast_line is checked
+        if self.env.company.immediate_compute_forecast_line:
+            self.env["forecast.line"].sudo()._cron_recompute_all()
         return records
