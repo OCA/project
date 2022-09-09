@@ -9,6 +9,7 @@
     "category": "Project",
     "website": "https://github.com/OCA/project",
     "depends": ["project_forecast_line", "hr_holidays_public"],
-    "data": [],
+    "data": ["views/res_config_settings_views.xml"],
+    "development_status": "Alpha",
     "installable": True,
 }
