@@ -1,0 +1,50 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * project_timeline
+#
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0c\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-05-31 01:34+0000\n"
+"PO-Revision-Date: 2021-11-16 17:36+0000\n"
+"Last-Translator: Simon S <simon.stromberg@vertel.se>\n"
+"Language-Team: Swedish (https://www.transifex.com/oca/teams/23907/sv/)\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.3.2\n"
+
+#. module: project_timeline
+#: model:ir.model.fields,field_description:project_timeline.field_project_task__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: project_timeline
+#: model:ir.model.fields,field_description:project_timeline.field_project_task__id
+msgid "ID"
+msgstr ""
+
+#. module: project_timeline
+#: model:ir.model.fields,field_description:project_timeline.field_project_task____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: project_timeline
+#: model:ir.model.fields,field_description:project_timeline.field_project_task__date_start
+msgid "Starting Date"
+msgstr ""
+
+#. module: project_timeline
+#: model:ir.model,name:project_timeline.model_project_task
+msgid "Task"
+msgstr "Aktivitet"
+
+#. module: project_timeline
+#: model_terms:ir.ui.view,arch_db:project_timeline.project_task_timeline
+msgid "User"
+msgstr ""
