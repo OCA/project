@@ -3,7 +3,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="Docutils 0.15.1: http://docutils.sourceforge.net/" />
+<meta name="generator" content="Docutils: http://docutils.sourceforge.net/" />
 <title>Project Recurring Task</title>
 <style type="text/css">
 
@@ -369,21 +369,39 @@ ul.auto-toc {
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 <p><a class="reference external" href="https://odoo-community.org/page/development-status"><img alt="Beta" src="https://img.shields.io/badge/maturity-Beta-yellow.png" /></a> <a class="reference external" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/licence-AGPL--3-blue.png" /></a> <a class="reference external" href="https://github.com/OCA/project/tree/13.0/project_task_recurring"><img alt="OCA/project" src="https://img.shields.io/badge/github-OCA%2Fproject-lightgray.png?logo=github" /></a> <a class="reference external" href="https://translation.odoo-community.org/projects/project-13-0/project-13-0-project_task_recurring"><img alt="Translate me on Weblate" src="https://img.shields.io/badge/weblate-Translate%20me-F47D42.png" /></a> <a class="reference external" href="https://runbot.odoo-community.org/runbot/140/13.0"><img alt="Try me on Runbot" src="https://img.shields.io/badge/runbot-Try%20me-875A7B.png" /></a></p>
 <p>This module allows to create project task schedules in order to create
-tasks automatically.</p>
+tasks automatically on defined windows of time.</p>
 <p><strong>Table of contents</strong></p>
 <div class="contents local topic" id="contents">
 <ul class="simple">
-<li><a class="reference internal" href="#bug-tracker" id="id1">Bug Tracker</a></li>
-<li><a class="reference internal" href="#credits" id="id2">Credits</a><ul>
-<li><a class="reference internal" href="#authors" id="id3">Authors</a></li>
-<li><a class="reference internal" href="#contributors" id="id4">Contributors</a></li>
-<li><a class="reference internal" href="#maintainers" id="id5">Maintainers</a></li>
+<li><a class="reference internal" href="#configuration" id="id1">Configuration</a></li>
+<li><a class="reference internal" href="#usage" id="id2">Usage</a></li>
+<li><a class="reference internal" href="#bug-tracker" id="id3">Bug Tracker</a></li>
+<li><a class="reference internal" href="#credits" id="id4">Credits</a><ul>
+<li><a class="reference internal" href="#authors" id="id5">Authors</a></li>
+<li><a class="reference internal" href="#contributors" id="id6">Contributors</a></li>
+<li><a class="reference internal" href="#maintainers" id="id7">Maintainers</a></li>
 </ul>
 </li>
 </ul>
 </div>
+<div class="section" id="configuration">
+<h1><a class="toc-backref" href="#id1">Configuration</a></h1>
+<ul class="simple">
+<li>To allow people to see recurring tasks configuration on projects, add
+users to ‘Project Task Recurrency’ group.</li>
+</ul>
+</div>
+<div class="section" id="usage">
+<h1><a class="toc-backref" href="#id2">Usage</a></h1>
+<ul class="simple">
+<li>Create a project Template with some tasks in it.</li>
+<li>In a project, create recurring tasks (in ‘Recurrency’ tab).</li>
+<li>To be able to create tasks with some default values, you can fill in
+the Task Template’ field with one of the tasks you created in Project Template.</li>
+</ul>
+</div>
 <div class="section" id="bug-tracker">
-<h1><a class="toc-backref" href="#id1">Bug Tracker</a></h1>
+<h1><a class="toc-backref" href="#id3">Bug Tracker</a></h1>
 <p>Bugs are tracked on <a class="reference external" href="https://github.com/OCA/project/issues">GitHub Issues</a>.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us smashing it by providing a detailed and welcomed
@@ -391,21 +409,21 @@ If you spotted it first, help us smashing it by providing a detailed and welcome
 <p>Do not contact contributors directly about support or help with technical issues.</p>
 </div>
 <div class="section" id="credits">
-<h1><a class="toc-backref" href="#id2">Credits</a></h1>
+<h1><a class="toc-backref" href="#id4">Credits</a></h1>
 <div class="section" id="authors">
-<h2><a class="toc-backref" href="#id3">Authors</a></h2>
+<h2><a class="toc-backref" href="#id5">Authors</a></h2>
 <ul class="simple">
 <li>ACSONE SA/NV</li>
 </ul>
 </div>
 <div class="section" id="contributors">
-<h2><a class="toc-backref" href="#id4">Contributors</a></h2>
+<h2><a class="toc-backref" href="#id6">Contributors</a></h2>
 <ul class="simple">
 <li>Denis Roussel &lt;<a class="reference external" href="mailto:denis.roussel&#64;acsone.eu">denis.roussel&#64;acsone.eu</a>&gt;</li>
 </ul>
 </div>
 <div class="section" id="maintainers">
-<h2><a class="toc-backref" href="#id5">Maintainers</a></h2>
+<h2><a class="toc-backref" href="#id7">Maintainers</a></h2>
 <p>This module is maintained by the OCA.</p>
 <a class="reference external image-reference" href="https://odoo-community.org"><img alt="Odoo Community Association" src="https://odoo-community.org/logo.png" /></a>
 <p>OCA, or the Odoo Community Association, is a nonprofit organization whose

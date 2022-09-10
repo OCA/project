@@ -1,2 +1,2 @@
 This module allows to create project task schedules in order to create
-tasks automatically.
+tasks automatically on defined windows of time.

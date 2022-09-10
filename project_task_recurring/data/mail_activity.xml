@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2021 ACSONE SA/NV
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo noupdate="1">
+
+    <record id="mail_act_new_recurring_task" model="mail.activity.type">
+        <field name="name">New Recurring Task</field>
+        <field name="icon">fa-calendar-check-o</field>
+        <field name="res_model_id" ref="project.model_project_task" />
+    </record>
+</odoo>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2022 ACSONE SA/NV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo noupdate="1">
+    <record
+        id="mail_message_subtype_recurring_task_created"
+        model="mail.message.subtype"
+    >
+        <field name="name">Recurring task created</field>
+        <field name="res_model">contract.task</field>
+    </record>
+</odoo>

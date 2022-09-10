@@ -15,6 +15,8 @@
         "views/project_project.xml",
         "views/project_task_schedule.xml",
         "data/ir_cron.xml",
+        "data/mail_subtype.xml",
+        "data/mail_activity.xml",
     ],
     "demo": [
         "demo/project_project.xml",

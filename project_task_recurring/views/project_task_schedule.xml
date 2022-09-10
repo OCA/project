@@ -28,6 +28,8 @@
                         </group>
                         <group string="Recurrency">
                             <field name="recurrence_type" />
+                            <field name="last_recurrency_date" />
+                            <field name="next_recurrency_date" />
                         </group>
                     </group>
                 </sheet>
@@ -60,10 +62,22 @@
                 <field name="next_recurrency_date" />
                 <field name="state" />
                 <button
-                    name="activate"
+                    name="active"
                     type="object"
                     class="fa fa-play"
-                    attrs="{'invisible': [('state', '!=', 'active')]}"
+                    attrs="{'invisible': [('state', 'in', ('active', 'inactive'))]}"
+                />
+                <button
+                    name="inactive"
+                    type="object"
+                    class="fa fa-ban"
+                    attrs="{'invisible': [('state', 'in', ('draft', 'inactive'))]}"
+                />
+                <button
+                    name="draft"
+                    type="object"
+                    class="fa fa-pencil-square-o"
+                    attrs="{'invisible': [('state', 'in', ('draft', 'active'))]}"
                 />
             </tree>
         </field>

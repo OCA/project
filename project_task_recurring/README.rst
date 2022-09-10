@@ -26,12 +26,27 @@ Project Recurring Task
 |badge1| |badge2| |badge3| |badge4| |badge5| 
 
 This module allows to create project task schedules in order to create
-tasks automatically.
+tasks automatically on defined windows of time.
 
 **Table of contents**
 
 .. contents::
    :local:
+
+Configuration
+=============
+
+* To allow people to see recurring tasks configuration on projects, add
+  users to 'Project Task Recurrency' group.
+  
+
+Usage
+=====
+
+* Create a project Template with some tasks in it.
+* In a project, create recurring tasks (in 'Recurrency' tab).
+* To be able to create tasks with some default values, you can fill in
+  the Task Template' field with one of the tasks you created in Project Template.
 
 Bug Tracker
 ===========
