@@ -49,6 +49,9 @@ class ProjectTaskSchedule(models.Model):
         return {"project_id": self.project_id.id}
 
     def _update_dates(self):
+        self._update_recurrency_date()
+
+    def _create_dates(self):
         self._set_next_recurrency_date()
 
     def _create_tasks(self):
@@ -92,7 +95,7 @@ class ProjectTaskSchedule(models.Model):
         for schedule in self:
             if schedule.state != "active":
                 schedule.write({"state": "active"})
-                schedule._update_dates()
+                schedule._create_dates()
         return True
 
     def inactive(self):
