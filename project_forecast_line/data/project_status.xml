@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Project Status -->
+    <record id="project_status.project_status_pending" model="project.status">
+        <field name="forecast_line_type">forecast</field>
+    </record>
+
+    <record id="project_status.project_status_in_progress" model="project.status">
+        <field name="forecast_line_type">confirmed</field>
+    </record>
+
+</odoo>
