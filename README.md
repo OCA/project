@@ -27,7 +27,7 @@ addon | version | maintainers | summary
 [project_forecast_line_bokeh_chart](project_forecast_line_bokeh_chart/) | 15.0.1.0.2 |  | Project Forecast Lines Bokeh Chart
 [project_forecast_line_holidays_public](project_forecast_line_holidays_public/) | 15.0.1.0.1 |  | Project Forecast Lines taking public holidays into account
 [project_list](project_list/) | 15.0.2.0.0 |  | Projects list view
-[project_milestone](project_milestone/) | 15.0.1.0.0 | [![patrickrwilson](https://github.com/patrickrwilson.png?size=30px)](https://github.com/patrickrwilson) | Project Milestones
+[project_milestone](project_milestone/) | 15.0.1.0.1 | [![patrickrwilson](https://github.com/patrickrwilson.png?size=30px)](https://github.com/patrickrwilson) | Project Milestones
 [project_parent_task_filter](project_parent_task_filter/) | 15.0.1.1.0 |  | Add a filter to show the parent tasks
 [project_purchase_analytic_global](project_purchase_analytic_global/) | 15.0.1.0.0 |  | Project - Create Purchase Orders with Analytic Account
 [project_role](project_role/) | 15.0.1.0.0 | [![alexey-pelykh](https://github.com/alexey-pelykh.png?size=30px)](https://github.com/alexey-pelykh) | Project role-based roster
