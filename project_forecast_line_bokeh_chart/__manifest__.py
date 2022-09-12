@@ -13,5 +13,6 @@
         "security/ir.model.access.csv",
         "report/forecast_line_reporting_views.xml",
     ],
+    "development_status": "Alpha",
     "installable": True,
 }
