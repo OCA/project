@@ -3,7 +3,7 @@
 
 {
     "name": "Sequential Code for Tasks",
-    "version": "14.0.1.0.0",
+    "version": "14.0.1.0.1",
     "category": "Project Management",
     "author": "OdooMRP team, "
     "AvanzOSC, "
