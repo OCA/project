@@ -348,3 +348,26 @@ class ForecastLine(models.Model):
         # we routinely unlink forecast lines, let"s not fill the logs with this
         with mute_logger("odoo.models.unlink"):
             return super().unlink()
+
+    @api.model_create_multi
+    @api.returns("self", lambda value: value.id)
+    def create(self, vals_list):
+        records = super().create(vals_list)
+        employee_role_lines = records.filtered(
+            lambda r: r.res_model == "hr.employee.forecast.role"
+        )
+        if employee_role_lines:
+            # check for existing records which could have the new lines as
+            # employee_resource_forecast_line_id
+            other_lines = self.search(
+                [
+                    ("employee_resource_forecast_line_id", "=", False),
+                    (
+                        "employee_id",
+                        "in",
+                        employee_role_lines.mapped("employee_id").ids,
+                    ),
+                ]
+            )
+            other_lines._compute_employee_forecast_line_id()
+        return records
