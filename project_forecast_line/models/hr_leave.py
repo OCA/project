@@ -53,6 +53,7 @@ class HrLeave(models.Model):
                 unit_cost=leave.employee_id.timesheet_cost,
                 forecast_role_id=leave.employee_id.main_role_id.id,
                 hr_leave_id=leave.id,
+                employee_id=leave.employee_id.id,
                 res_model=self._name,
                 res_id=leave.id,
             )
