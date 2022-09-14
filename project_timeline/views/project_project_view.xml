@@ -17,6 +17,12 @@
     <record id="project.open_view_project_all" model="ir.actions.act_window">
         <field name="view_mode">kanban,timeline,form</field>
     </record>
+    <record
+        id="project.open_view_project_all_group_stage"
+        model="ir.actions.act_window"
+    >
+        <field name="view_mode">kanban,timeline,form</field>
+    </record>
     <record id="project_project_form" model="ir.ui.view">
         <field name="name">project.project.form</field>
         <field name="model">project.project</field>
