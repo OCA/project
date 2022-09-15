@@ -4,9 +4,10 @@ from datetime import date
 
 from freezegun import freeze_time
 
-from odoo.tests.common import Form, TransactionCase
+from odoo.tests.common import Form, TransactionCase, tagged
 
 
+@tagged("-at_install", "post_install")
 class BaseForecastLineTest(TransactionCase):
     @classmethod
     @freeze_time("2022-01-01")
@@ -489,39 +490,91 @@ class TestForecastLineProject(BaseForecastLineTest):
             }
         )
 
+    def _get_employee_forecast(self):
+        employee_forecast = self.env["forecast.line"].search(
+            [("employee_id", "=", self.employee_consultant.id)]
+        )
+        # we can take first line to check as forecast values are equal
+        forecast_consultant = employee_forecast.filtered(
+            lambda l: l.res_model == "hr.employee.forecast.role"
+            and l.forecast_role_id == self.role_consultant
+        )[0]
+        forecast_pm = employee_forecast.filtered(
+            lambda l: l.res_model == "hr.employee.forecast.role"
+            and l.forecast_role_id == self.role_pm
+        )[0]
+        return forecast_consultant, forecast_pm
+
     def test_task_forecast_lines_consolidated_forecast(self):
-        with freeze_time("2022-01-01"):
-            employee_forecast = self.env["forecast.line"].search(
-                [
-                    ("employee_id", "=", self.employee_consultant.id),
-                    ("date_from", "=", "2022-02-14"),
-                ]
-            )
-            self.assertEqual(len(employee_forecast), 1)
-            project = self.env["project.project"].create({"name": "TestProject"})
-            # set project in stage "in progress" to get confirmed forecast
-            project.stage_id = self.env.ref("project.project_project_stage_1")
-            task = self.env["project.task"].create(
-                {
-                    "name": "Task1",
-                    "project_id": project.id,
-                    "forecast_role_id": self.role_consultant.id,
-                    "forecast_date_planned_start": "2022-02-14",
-                    "forecast_date_planned_end": "2022-02-14",
-                    "planned_hours": 6,
-                }
-            )
-            task.remaining_hours = 6
-            task.user_ids = self.user_consultant
-            forecast = self.env["forecast.line"].search([("task_id", "=", task.id)])
-            self.assertEqual(len(forecast), 1)
-            # using assertEqual on purpose here
-            self.assertEqual(forecast.forecast_hours, -6.0)
-            self.assertAlmostEqual(forecast.consolidated_forecast, 0.75)
-            self.assertEqual(
-                forecast.employee_resource_forecast_line_id.consolidated_forecast,
-                0.25,
-            )
+        self.env["hr.employee.forecast.role"].create(
+            {
+                "employee_id": self.employee_consultant.id,
+                "role_id": self.role_pm.id,
+                "date_start": "2022-01-01",
+                "rate": 25,
+                "sequence": 1,
+            }
+        )
+        consultant_role = self.env["hr.employee.forecast.role"].search(
+            [
+                ("employee_id", "=", self.employee_consultant.id),
+                ("role_id", "=", self.role_consultant.id),
+            ]
+        )
+        consultant_role.rate = 75
+        project_1 = self.env["project.project"].create({"name": "TestProject1"})
+        # set project in stage "to do" to get forecast
+        project_1.stage_id = self.env.ref("project.project_project_stage_0")
+        task_values = {
+            "project_id": project_1.id,
+            "forecast_role_id": self.role_consultant.id,
+            "forecast_date_planned_start": date.today(),
+            "forecast_date_planned_end": date.today(),
+            "planned_hours": 8,
+        }
+        task_values.update({"name": "Task1"})
+        task_1 = self.env["project.task"].create(task_values)
+        task_1.user_ids = self.user_consultant
+        task_values.update({"name": "Task2"})
+        task_2 = self.env["project.task"].create(task_values)
+        task_2.user_ids = self.user_consultant
+        project_2 = self.env["project.project"].create({"name": "TestProject2"})
+        # set project in stage "in progress" to get forecast
+        project_2.stage_id = self.env.ref("project.project_project_stage_1")
+        task_values.update({"project_id": project_2.id, "name": "Task3"})
+        task_3 = self.env["project.task"].create(task_values)
+        task_3.user_ids = self.user_consultant
+        task_values.update({"name": "Task4"})
+        task_4 = self.env["project.task"].create(task_values)
+        task_4.user_ids = self.user_consultant
+        forecast = self.env["forecast.line"].search(
+            [("task_id", "in", (task_1.id, task_2.id, task_3.id, task_4.id))]
+        )
+        self.assertEqual(len(forecast), 4)
+        # as we have multiple tasks to check we will divide by 4
+        self.assertAlmostEqual(sum(f.forecast_hours for f in forecast), -32.0)
+        self.assertAlmostEqual(sum(f.consolidated_forecast for f in forecast), 4.0)
+        self.assertAlmostEqual(
+            sum(f.confirmed_consolidated_forecast for f in forecast), 4.0
+        )
+        consol_employee_forecast = sum(
+            f.employee_resource_forecast_line_id.consolidated_forecast for f in forecast
+        )
+        confir_employee_forecast = sum(
+            f.employee_resource_forecast_line_id.confirmed_consolidated_forecast
+            for f in forecast
+        )
+        self.assertAlmostEqual(consol_employee_forecast, -13.0)
+        self.assertAlmostEqual(confir_employee_forecast, -5.0)
+        forecast_consultant, forecast_pm = self._get_employee_forecast()
+        self.assertEqual(forecast_consultant.forecast_hours, 6.0)
+        self.assertAlmostEqual(forecast_consultant.consolidated_forecast, -3.25)
+        self.assertAlmostEqual(
+            forecast_consultant.confirmed_consolidated_forecast, -1.25
+        )
+        self.assertEqual(forecast_pm.forecast_hours, 2.0)
+        self.assertAlmostEqual(forecast_pm.consolidated_forecast, 0.25)
+        self.assertAlmostEqual(forecast_pm.confirmed_consolidated_forecast, 0.25)
 
     @freeze_time("2022-01-01 12:00:00")
     def test_forecast_with_holidays(self):
@@ -584,8 +637,13 @@ class TestForecastLineProject(BaseForecastLineTest):
             # using assertEqual on purpose here
             self.assertEqual(forecast.forecast_hours, -10.0)
             self.assertEqual(forecast.consolidated_forecast, 1.25)
+            self.assertEqual(forecast.confirmed_consolidated_forecast, 1.25)
             self.assertEqual(
                 forecast.employee_resource_forecast_line_id.consolidated_forecast,
+                -0.25,
+            )
+            self.assertEqual(
+                forecast.employee_resource_forecast_line_id.confirmed_consolidated_forecast,
                 -0.25,
             )
 
@@ -637,6 +695,10 @@ class TestForecastLineProject(BaseForecastLineTest):
             )
             self.assertAlmostEqual(
                 forecast1.employee_resource_forecast_line_id.consolidated_forecast,
+                -0.75,
+            )
+            self.assertAlmostEqual(
+                forecast1.employee_resource_forecast_line_id.confirmed_consolidated_forecast,
                 -0.75,
             )
 
@@ -693,22 +755,16 @@ class TestForecastLineProject(BaseForecastLineTest):
         # using assertEqual on purpose here
         self.assertEqual(task_forecast.forecast_hours, -8.0)
         self.assertEqual(task_forecast.consolidated_forecast, 1.0)
-        employee_forecast = self.env["forecast.line"].search(
-            [("employee_id", "=", self.employee_consultant.id)]
-        )
-        # we can take first line to check as forecast values are equal
-        forecast_consultant = employee_forecast.filtered(
-            lambda l: l.res_model == "hr.employee.forecast.role"
-            and l.forecast_role_id == self.role_consultant
-        )[0]
+        self.assertEqual(task_forecast.confirmed_consolidated_forecast, 1.0)
+        forecast_consultant, forecast_pm = self._get_employee_forecast()
         self.assertEqual(forecast_consultant.forecast_hours, 6.0)
         self.assertAlmostEqual(forecast_consultant.consolidated_forecast, -0.25)
-        forecast_pm = employee_forecast.filtered(
-            lambda l: l.res_model == "hr.employee.forecast.role"
-            and l.forecast_role_id == self.role_pm
-        )[0]
+        self.assertAlmostEqual(
+            forecast_consultant.confirmed_consolidated_forecast, -0.25
+        )
         self.assertEqual(forecast_pm.forecast_hours, 2.0)
         self.assertAlmostEqual(forecast_pm.consolidated_forecast, 0.25)
+        self.assertAlmostEqual(forecast_pm.confirmed_consolidated_forecast, 0.25)
 
     def test_task_forecast_lines_employee_main_role(self):
         """
@@ -764,19 +820,13 @@ class TestForecastLineProject(BaseForecastLineTest):
         # using assertEqual on purpose here
         self.assertEqual(task_forecast.forecast_hours, -8.0)
         self.assertEqual(task_forecast.consolidated_forecast, 1.0)
-        employee_forecast = self.env["forecast.line"].search(
-            [("employee_id", "=", self.employee_consultant.id)]
-        )
-        # we can take first line to check as forecast values are equal
-        forecast_consultant = employee_forecast.filtered(
-            lambda l: l.res_model == "hr.employee.forecast.role"
-            and l.forecast_role_id == self.role_consultant
-        )[0]
+        self.assertEqual(task_forecast.confirmed_consolidated_forecast, 1.0)
+        forecast_consultant, forecast_pm = self._get_employee_forecast()
         self.assertEqual(forecast_consultant.forecast_hours, 6.0)
         self.assertAlmostEqual(forecast_consultant.consolidated_forecast, -0.25)
-        forecast_pm = employee_forecast.filtered(
-            lambda l: l.res_model == "hr.employee.forecast.role"
-            and l.forecast_role_id == self.role_pm
-        )[0]
+        self.assertAlmostEqual(
+            forecast_consultant.confirmed_consolidated_forecast, -0.25
+        )
         self.assertEqual(forecast_pm.forecast_hours, 2.0)
         self.assertAlmostEqual(forecast_pm.consolidated_forecast, 0.25)
+        self.assertAlmostEqual(forecast_pm.confirmed_consolidated_forecast, 0.25)
