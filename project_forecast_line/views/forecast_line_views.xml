@@ -64,7 +64,8 @@
                 <field name="date_to" />
                 <field name="forecast_hours" />
                 <field name="cost" />
-                <field name="consolidated_forecast" />
+                <field name="confirmed_consolidated_forecast" optional="show" />
+                <field name="consolidated_forecast" optional="show" />
                 <field name="forecast_role_id" />
                 <field name="currency_id" invisible="1" />
             </tree>
@@ -76,6 +77,7 @@
             <graph type="bar" stacked="0">
                 <field name="date_from" type="row" />
                 <field name="forecast_role_id" type="col" />
+                <field name="confirmed_consolidated_forecast" type="measure" />
                 <field name="consolidated_forecast" type="measure" />
                 <field name="cost" type="measure" />
                 <field name="forecast_hours" type="measure" />
@@ -91,6 +93,7 @@
                 <field name="date_from" type="row" />
                 <field name="employee_id" type="col" />
                 <field name="project_id" type="col" />
+                <field name="confirmed_consolidated_forecast" type="measure" />
                 <field name="consolidated_forecast" type="measure" />
             </graph>
         </field>
@@ -101,6 +104,7 @@
             <pivot>
                 <field name="date_from" type="col" />
                 <field name="forecast_role_id" type="row" />
+                <field name="confirmed_consolidated_forecast" type="measure" />
                 <field name="consolidated_forecast" type="measure" />
                 <field name="cost" type="measure" />
                 <field name="forecast_hours" type="measure" />
