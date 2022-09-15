@@ -50,17 +50,6 @@
                                             class="o_field_integer o_field_number o_field_widget o_input oe_inline col-lg-2"
                                         />
                                     </div>
-                                    <div class="mt8">
-                                        <label for="forecast_consumption_states" />
-                                        <div class="text-muted">
-                                            Select the states for which the consumption is confirmed or not
-                                        </div>
-                                        <field
-                                            name="forecast_consumption_states"
-                                            required="1"
-                                            class="o_light_label"
-                                        />
-                                    </div>
                                 </div>
                             </div>
                         </div>

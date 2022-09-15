@@ -14,22 +14,6 @@ class ResCompany(models.Model):
     forecast_line_horizon = fields.Integer(
         help="Number of month for the forecast planning", default=12
     )
-    forecast_consumption_states = fields.Selection(
-        selection=[
-            ("confirmed", "Compute consolidated forecast for lines of type confirmed"),
-            (
-                "forecast_confirmed",
-                "Include lines of type forecast in consolidated forecast computation",
-            ),
-        ],
-        string="Consumption state rules",
-        help="For instance, holidays requests and sales quotation lines"
-        "create lines of type forecast and won't be taken into account"
-        "during consolidated forecast computation, whereas tasks for project"
-        "which are in a running state create lines with type confirmed"
-        "and will be used to compute consolidated forecast.",
-        default="confirmed",
-    )
 
     def write(self, values):
         res = super().write(values)
