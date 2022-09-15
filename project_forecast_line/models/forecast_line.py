@@ -61,11 +61,18 @@ class ForecastLine(models.Model):
         "holidays, sales, or tasks. ",
     )
     consolidated_forecast = fields.Float(
+        help="Consolidated forecast for lines of all types consumed",
         digits=(12, 5),
         store=True,
         compute="_compute_consolidated_forecast",
     )
-
+    confirmed_consolidated_forecast = fields.Float(
+        string="Confirmed lines consolidated forecast",
+        help="Consolidated forecast for lines of type confirmed",
+        digits=(12, 5),
+        store=True,
+        compute="_compute_consolidated_forecast",
+    )
     currency_id = fields.Many2one(related="company_id.currency_id", store=True)
     company_id = fields.Many2one(
         "res.company", required=True, default=lambda s: s.env.company
@@ -112,11 +119,15 @@ class ForecastLine(models.Model):
             lines = self.env["forecast.line"]
         capacities = {}
         for line in lines:
-            capacities[
-                (line.employee_id.id, line.date_from, line.forecast_role_id.id)
-            ] = line.id
+            employee_id = line.employee_id
+            date_from = line.date_from
+            forecast_role_id = line.forecast_role_id
+            capacities[(employee_id.id, date_from, forecast_role_id.id)] = line.id
         for rec in self:
-            if rec.type == "confirmed" and rec.res_model != "hr.employee.forecast.role":
+            if (
+                rec.type in ("forecast", "confirmed")
+                and rec.res_model != "hr.employee.forecast.role"
+            ):
                 resource_forecast_line = capacities.get(
                     (rec.employee_id.id, rec.date_from, rec.forecast_role_id.id), False
                 )
@@ -132,34 +143,55 @@ class ForecastLine(models.Model):
             else:
                 rec.employee_resource_forecast_line_id = False
 
-    def _convert_forecast(self, data):
-        """
-        Converts consolidated forecast from hours to days
-        """
-        self.ensure_one()
+    def _get_grouped_line_values(self):
+        data = {}
+        grouped_line_result = self.env["forecast.line"].read_group(
+            [("employee_resource_forecast_line_id", "in", self.ids)],
+            fields=["forecast_hours"],
+            groupby=["employee_resource_forecast_line_id", "type"],
+            lazy=False,
+        )
+        for d in grouped_line_result:
+            line_id = d["employee_resource_forecast_line_id"][0]
+            if line_id not in data:
+                data[line_id] = {"confirmed": 0, "forecast": 0}
+            data[line_id][d["type"]] += d["forecast_hours"]
+        return data
+
+    def _convert_hours_to_days(self, hours):
         to_convert_uom = self.env.ref("uom.product_uom_day")
         project_time_mode_id = self.company_id.project_time_mode_id
-        if self.res_model != "hr.employee.forecast.role":
-            return -project_time_mode_id._compute_quantity(
-                self.forecast_hours, to_convert_uom, round=False
-            )
-        else:
-            forecast_hours = self.forecast_hours + data.get(self.id, 0)
-            return project_time_mode_id._compute_quantity(
-                forecast_hours, to_convert_uom, round=False
-            )
+        return project_time_mode_id._compute_quantity(
+            hours, to_convert_uom, round=False
+        )
 
     @api.depends("employee_resource_consumption_ids.forecast_hours", "forecast_hours")
     def _compute_consolidated_forecast(self):
-        data = {}
-        for d in self.env["forecast.line"].read_group(
-            [("employee_resource_forecast_line_id", "in", self.ids)],
-            fields=["forecast_hours"],
-            groupby=["employee_resource_forecast_line_id"],
-        ):
-            data[d["employee_resource_forecast_line_id"][0]] = d["forecast_hours"]
+        grouped_lines_values = self._get_grouped_line_values()
         for rec in self:
-            rec.consolidated_forecast = rec._convert_forecast(data)
+            if rec.res_model != "hr.employee.forecast.role":
+                rec.consolidated_forecast = (
+                    self._convert_hours_to_days(rec.forecast_hours) * -1
+                )
+                rec.confirmed_consolidated_forecast = (
+                    self._convert_hours_to_days(rec.forecast_hours) * -1
+                )
+            else:
+                resource_forecast = grouped_lines_values.get(rec.id, 0)
+                confirmed_forecast = (
+                    resource_forecast.get("confirmed", 0) if resource_forecast else 0
+                )
+                consumable_forecast = (
+                    confirmed_forecast + resource_forecast.get("forecast", 0)
+                    if resource_forecast
+                    else 0
+                )
+                rec.consolidated_forecast = self._convert_hours_to_days(
+                    rec.forecast_hours + consumable_forecast
+                )
+                rec.confirmed_consolidated_forecast = self._convert_hours_to_days(
+                    rec.forecast_hours + confirmed_forecast
+                )
 
     def prepare_forecast_lines(
         self,
