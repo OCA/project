@@ -16,6 +16,7 @@
                         name="location_dest_id"
                         groups="stock.group_stock_multi_locations"
                     />
+                    <field name="stock_analytic_date" />
                 </group>
             </xpath>
         </field>

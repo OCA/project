@@ -39,6 +39,12 @@ msgid "Analytic Lines"
 msgstr ""
 
 #. module: project_stock
+#: model:ir.model.fields,field_description:project_stock.field_project_project__stock_analytic_date
+#: model:ir.model.fields,field_description:project_stock.field_project_task__stock_analytic_date
+msgid "Analytic date"
+msgstr ""
+
+#. module: project_stock
 #: model:ir.model.fields.selection,name:project_stock.selection__project_task__stock_state__assigned
 msgid "Assigned"
 msgstr ""
