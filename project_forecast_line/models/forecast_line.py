@@ -90,13 +90,8 @@ class ForecastLine(models.Model):
         "forecast.line", "employee_resource_forecast_line_id"
     )
 
-    def _get_consumption_states(self):
-        consumption_states = self.env.company.forecast_consumption_states
-        return tuple(consumption_states.split("_"))
-
     @api.depends("employee_id", "date_from", "type", "res_model")
     def _compute_employee_forecast_line_id(self):
-        consumption_states = self._get_consumption_states()
         employees = self.mapped("employee_id")
         main_roles = employees.mapped("main_role_id")
         date_froms = self.mapped("date_from")
@@ -121,10 +116,7 @@ class ForecastLine(models.Model):
                 (line.employee_id.id, line.date_from, line.forecast_role_id.id)
             ] = line.id
         for rec in self:
-            if (
-                rec.type in consumption_states
-                and rec.res_model != "hr.employee.forecast.role"
-            ):
+            if rec.type == "confirmed" and rec.res_model != "hr.employee.forecast.role":
                 resource_forecast_line = capacities.get(
                     (rec.employee_id.id, rec.date_from, rec.forecast_role_id.id), False
                 )
