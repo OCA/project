@@ -64,6 +64,7 @@ class TestProjectStockBase(common.SavepointCase):
                 "picking_type_id": cls.picking_type.id,
                 "location_id": cls.picking_type.default_location_src_id.id,
                 "location_dest_id": cls.picking_type.default_location_dest_id.id,
+                "stock_analytic_date": "1990-01-01",
             }
         )
         cls.stage_in_progress = cls.env["project.task.type"].create(

@@ -30,6 +30,7 @@ class ProjectProject(models.Model):
         check_company=True,
         help="Default location to which materials are consumed.",
     )
+    stock_analytic_date = fields.Date(string="Analytic date")
 
     @api.onchange("picking_type_id")
     def _onchange_picking_type_id(self):

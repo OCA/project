@@ -37,6 +37,7 @@
                     attrs="{'invisible': [('use_stock_moves', '=', False)]}"
                     widget="many2many_tags"
                 />
+                <field name="stock_analytic_date" />
             </field>
             <field name="stage_id" position="before">
                 <button
