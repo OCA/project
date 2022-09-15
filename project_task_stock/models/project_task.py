@@ -61,6 +61,7 @@ class ProjectTask(models.Model):
         index=True,
         check_company=True,
     )
+    stock_analytic_date = fields.Date(string="Analytic date")
     unreserve_visible = fields.Boolean(
         string="Allowed to Unreserve Inventory",
         compute="_compute_unreserve_visible",

@@ -1,5 +1,6 @@
 # Copyright 2022 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+from odoo import fields
 from odoo.tests import Form
 from odoo.tests.common import new_test_user
 
@@ -71,18 +72,35 @@ class TestProjectStock(TestProjectStockBase):
         self.task.write({"stage_id": self.stage_done.id})
         self.task.action_done()
         self._test_task_analytic_lines_from_task(-40)
+        self.assertEqual(
+            fields.first(self.task.stock_analytic_line_ids).date,
+            fields.Date.from_string("1990-01-01"),
+        )
 
     def test_project_task_analytic_lines_with_tag_1(self):
-        self.task.write({"stock_analytic_tag_ids": self.analytic_tag_1.ids})
+        self.task.write(
+            {
+                "stock_analytic_date": "1991-01-01",
+                "stock_analytic_tag_ids": self.analytic_tag_1.ids,
+            }
+        )
         self.task.write({"stage_id": self.stage_done.id})
         self.task.action_done()
         self._test_task_analytic_lines_from_task(-40)
+        self.assertEqual(
+            fields.first(self.task.stock_analytic_line_ids).date,
+            fields.Date.from_string("1991-01-01"),
+        )
 
     def test_project_task_analytic_lines_with_tag_2(self):
+        self.task.project_id.stock_analytic_date = False
         self.task.write({"stock_analytic_tag_ids": self.analytic_tag_2.ids})
         self.task.write({"stage_id": self.stage_done.id})
         self.task.action_done()
         self._test_task_analytic_lines_from_task(-20)
+        self.assertEqual(
+            fields.first(self.task.stock_analytic_line_ids).date, fields.date.today()
+        )
 
     def test_project_task_process_done(self):
         self.assertEqual(self.move_product_a.state, "draft")

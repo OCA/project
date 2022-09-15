@@ -33,6 +33,11 @@ class StockMove(models.Model):
         if not analytic_account:
             return False
         res = {
+            "date": (
+                task.stock_analytic_date
+                or task.project_id.stock_analytic_date
+                or fields.date.today()
+            ),
             "name": task.name + ": " + product.name,
             "unit_amount": self.quantity_done,
             "account_id": analytic_account.id,

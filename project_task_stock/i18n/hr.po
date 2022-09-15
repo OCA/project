@@ -43,6 +43,12 @@ msgid "Analytic Lines"
 msgstr "Analitičke stavke"
 
 #. module: project_stock
+#: model:ir.model.fields,field_description:project_stock.field_project_project__stock_analytic_date
+#: model:ir.model.fields,field_description:project_stock.field_project_task__stock_analytic_date
+msgid "Analytic date"
+msgstr ""
+
+#. module: project_stock
 #: model:ir.model.fields.selection,name:project_stock.selection__project_task__stock_state__assigned
 msgid "Assigned"
 msgstr "Dodijeljeno"
@@ -135,8 +141,8 @@ msgstr "ID"
 #: model:ir.model.fields,help:project_stock.field_project_task__done_stock_moves
 #: model:ir.model.fields,help:project_stock.field_project_task_type__done_stock_moves
 msgid ""
-"If you check this box, when a task is in this state, you will not be able to"
-" add more stock moves but they can be viewed."
+"If you check this box, when a task is in this state, you will not be able to "
+"add more stock moves but they can be viewed."
 msgstr ""
 "Ako označite ovo, kad zadatak dođe u ovo stanje, nećete više moći dodati "
 "skladišna kretanja, ali ona ostaju vidljiva."
