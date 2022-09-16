@@ -100,6 +100,17 @@ msgid "Destination Location"
 msgstr "Ubicación destino"
 
 #. module: project_stock
+#: model:ir.model.fields,field_description:project_stock.field_account_analytic_line__display_name
+#: model:ir.model.fields,field_description:project_stock.field_project_project__display_name
+#: model:ir.model.fields,field_description:project_stock.field_project_task__display_name
+#: model:ir.model.fields,field_description:project_stock.field_project_task_type__display_name
+#: model:ir.model.fields,field_description:project_stock.field_stock_move__display_name
+#: model:ir.model.fields,field_description:project_stock.field_stock_move_line__display_name
+#: model:ir.model.fields,field_description:project_stock.field_stock_scrap__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: project_stock
 #: model:ir.model.fields.selection,name:project_stock.selection__project_task__stock_state__done
 msgid "Done"
 msgstr "Hecho"
@@ -114,6 +125,17 @@ msgstr "Realizar movimientos hechos"
 #: model:ir.model.fields,field_description:project_stock.field_project_task__group_id
 msgid "Group"
 msgstr "Grupo"
+
+#. module: project_stock
+#: model:ir.model.fields,field_description:project_stock.field_account_analytic_line__id
+#: model:ir.model.fields,field_description:project_stock.field_project_project__id
+#: model:ir.model.fields,field_description:project_stock.field_project_task__id
+#: model:ir.model.fields,field_description:project_stock.field_project_task_type__id
+#: model:ir.model.fields,field_description:project_stock.field_stock_move__id
+#: model:ir.model.fields,field_description:project_stock.field_stock_move_line__id
+#: model:ir.model.fields,field_description:project_stock.field_stock_scrap__id
+msgid "ID"
+msgstr ""
 
 #. module: project_stock
 #: model:ir.model.fields,help:project_stock.field_project_task__done_stock_moves
@@ -145,6 +167,17 @@ msgstr "Movimientos de inventario"
 #, python-format
 msgid "It is not possible to change this with reserved movements in tasks."
 msgstr "No es posible cambiar esto con movimientos reservados en tareas."
+
+#. module: project_stock
+#: model:ir.model.fields,field_description:project_stock.field_account_analytic_line____last_update
+#: model:ir.model.fields,field_description:project_stock.field_project_project____last_update
+#: model:ir.model.fields,field_description:project_stock.field_project_task____last_update
+#: model:ir.model.fields,field_description:project_stock.field_project_task_type____last_update
+#: model:ir.model.fields,field_description:project_stock.field_stock_move____last_update
+#: model:ir.model.fields,field_description:project_stock.field_stock_move_line____last_update
+#: model:ir.model.fields,field_description:project_stock.field_stock_scrap____last_update
+msgid "Last Modified on"
+msgstr ""
 
 #. module: project_stock
 #: model_terms:ir.ui.view,arch_db:project_stock.view_task_form2
