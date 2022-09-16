@@ -29,7 +29,13 @@ class HrLeave(models.Model):
             [("res_id", "in", self.ids), ("res_model", "=", self._name)]
         ).unlink()
         leaves = self.filtered_domain([("state", "!=", "refuse")])
-        for leave in leaves:
+        # we need to use sudo here, because forecast line creation
+        # requires access to fields declared on hr.employee
+        # we don't want to restrict them with `groups="hr.group_hr_user"`
+        # as this will require giving access to employee app,
+        # which isn't wanted on some projects
+        # for more details see here: .../addons/hr/models/hr_employee.py#L22
+        for leave in leaves.sudo():
             if not leave.employee_id.main_role_id:
                 _logger.warning(
                     "No forecast role for employee %s (%s)",
