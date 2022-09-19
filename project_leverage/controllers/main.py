@@ -54,9 +54,8 @@ class SaleTimesheetController(SaleTimesheetCustomerPortal):
                                 "month_name": rec.get("month"),
                                 "hours": rec.get("sum"),
                             },
-                            "name": rec.get("employee_id")
-                            and employee_obj.browse(int(rec.get("employee_id"))).name
-                            or "undefine",
+                            "name": employee_obj.browse(int(rec["employee_id"])).name if 'employee_id' in rec else _("undefined"),
+                        
                         },
                     }
                 )
