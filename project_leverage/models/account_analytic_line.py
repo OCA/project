@@ -32,6 +32,6 @@ class AccountAnalyticLine(models.Model):
             Task = self.env["project.task"]
             task_id = vals.get("task_id")
             task = Task.browse(task_id) if task_id else Task
-            project_user_id = task.project_id.user_id and task.project_id.user_id.id
+            project_user_id = task.manager_id and task.manager_id.id
             vals.update({"project_user_id": project_user_id or None})
         return super(AccountAnalyticLine, self).write(vals)
