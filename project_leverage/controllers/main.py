@@ -32,7 +32,7 @@ class SaleTimesheetController(SaleTimesheetCustomerPortal):
                     str(rec.get("date_mm")).strip() + str(int(rec.get("year")))
                 )
             if project_data.get(rec.get("employee_id", 0)):
-                project_data[rec.get("employee_id") or 0].update(
+                project_data[rec.get("employee_id", 0)].update(
                     {
                         str(rec.get("date_mm")).strip()
                         + str(int(rec.get("year"))): {
