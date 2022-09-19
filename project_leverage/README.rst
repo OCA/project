@@ -19,7 +19,7 @@ Usage
 
 * Go to Project > Reporting > Timesheets
 * Select the measure Duration
-* Group by Project Manage
+* Group by Project Manager
 
 Credits
 =======
