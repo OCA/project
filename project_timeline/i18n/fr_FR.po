@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2021-04-11 16:46+0000\n"
-"Last-Translator: Yves Le Doeuff <yld@alliasys.fr>\n"
+"PO-Revision-Date: 2022-09-21 08:07+0000\n"
+"Last-Translator: Rémi <remi@le-filament.com>\n"
 "Language-Team: none\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
@@ -34,7 +34,7 @@ msgstr "Dernière modification"
 #. module: project_timeline
 #: model:ir.model.fields,field_description:project_timeline.field_project_task__date_start
 msgid "Starting Date"
-msgstr ""
+msgstr "Date de début"
 
 #. module: project_timeline
 #: model:ir.model,name:project_timeline.model_project_task
