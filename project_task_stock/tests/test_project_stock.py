@@ -11,6 +11,9 @@ class TestProjectStock(TestProjectStockBase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
+        cls._create_stock_quant(cls, cls.product_a, cls.location, 2)
+        cls._create_stock_quant(cls, cls.product_b, cls.location, 1)
+        cls._create_stock_quant(cls, cls.product_c, cls.location, 1)
         cls.task = cls._create_task(cls, [(cls.product_a, 2), (cls.product_b, 1)])
         cls.move_product_a = cls.task.move_ids.filtered(
             lambda x: x.product_id == cls.product_a
@@ -22,6 +25,11 @@ class TestProjectStock(TestProjectStockBase):
             cls.env,
             login="basic-user",
             groups="project.group_project_user,stock.group_stock_user",
+        )
+
+    def _create_stock_quant(self, product, location, qty):
+        self.env["stock.quant"].create(
+            {"product_id": product.id, "location_id": location.id, "quantity": qty}
         )
 
     def test_project_task_misc(self):
@@ -144,11 +152,32 @@ class TestProjectStock(TestProjectStockBase):
         self.task.write({"stage_id": self.stage_done.id})
         self.assertEqual(self.move_product_a.state, "assigned")
         self.assertEqual(self.move_product_b.state, "assigned")
+        # action_done
+        self.task.action_done()
+        self.assertEqual(self.move_product_a.state, "done")
+        self.assertEqual(self.move_product_b.state, "done")
+        self.assertEqual(self.move_product_a.quantity_done, 2)
+        self.assertEqual(self.move_product_b.quantity_done, 1)
+        self.assertTrue(self.task.stock_analytic_line_ids)
         # action_cancel
         self.task.action_cancel()
-        self.assertTrue(self.task.stock_moves_is_locked)
-        self.assertEqual(self.move_product_a.state, "cancel")
-        self.assertEqual(self.move_product_b.state, "cancel")
+        self.assertEqual(self.move_product_a.state, "done")
+        self.assertEqual(self.move_product_b.state, "done")
+        self.assertEqual(self.move_product_a.quantity_done, 0)
+        self.assertEqual(self.move_product_b.quantity_done, 0)
+        self.assertFalse(self.task.stock_analytic_line_ids)
+        quant_a = self.product_a.stock_quant_ids.filtered(
+            lambda x: x.location_id == self.location
+        )
+        quant_b = self.product_b.stock_quant_ids.filtered(
+            lambda x: x.location_id == self.location
+        )
+        quant_c = self.product_c.stock_quant_ids.filtered(
+            lambda x: x.location_id == self.location
+        )
+        self.assertEqual(quant_a.quantity, 2)
+        self.assertEqual(quant_b.quantity, 1)
+        self.assertEqual(quant_c.quantity, 1)
 
     def test_project_task_process_unreserve(self):
         self.assertEqual(self.move_product_a.state, "draft")
