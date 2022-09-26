@@ -138,8 +138,8 @@ class ProjectTask(models.Model):
             )
 
     def _update_moves_info(self):
-        self._check_tasks_with_pending_moves()
         for item in self:
+            item._check_tasks_with_pending_moves()
             picking_type = item.picking_type_id or item.project_id.picking_type_id
             location = item.location_id or item.project_id.location_id
             location_dest = item.location_dest_id or item.project_id.location_dest_id
