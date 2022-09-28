@@ -13,6 +13,11 @@
                     name="parent_only"
                     domain="[('parent_id','=',False)]"
                 />
+                <filter
+                    string="Non-parent tasks"
+                    name="parent_only"
+                    domain="[('child_ids','=',False)]"
+                />
             </xpath>
             <xpath expr="//filter[@name='group_create_date']" position="after">
                 <filter

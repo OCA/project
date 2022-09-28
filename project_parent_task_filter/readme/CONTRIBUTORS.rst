@@ -3,3 +3,7 @@
   * Eduardo Magdalena <emagdalena@c2i.es>
 
 * Stephan Keller <MiStK@gmx.de>
+
+* `Ooops <http://ooops404.com/>`_:
+
+  * Ashish Hirpara <ashish.hirapara1995@gmail.com>

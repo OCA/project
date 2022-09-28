@@ -3,7 +3,7 @@
 
 {
     "name": "Project Parent Task Filter",
-    "summary": "Add a filter to show the parent tasks",
+    "summary": "Add filters to show the parent or non parent tasks",
     "version": "14.0.1.1.0",
     "category": "Project",
     "website": "https://github.com/OCA/project",
