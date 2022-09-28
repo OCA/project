@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* project_parent_task_filter
+# 	* project_parent_task_filter
 #
 msgid ""
 msgstr ""
@@ -18,10 +18,13 @@ msgstr ""
 
 #. module: project_parent_task_filter
 #: model_terms:ir.ui.view,arch_db:project_parent_task_filter.view_task_search_form
-msgid "Parent task"
-msgstr "Übergeordnete Aufgabe"
+msgid "Non-parent tasks"
+msgstr ""
 
 #. module: project_parent_task_filter
 #: model_terms:ir.ui.view,arch_db:project_parent_task_filter.view_task_search_form
 msgid "Parent tasks"
 msgstr "Übergeordnete Aufgaben"
+
+#~ msgid "Parent task"
+#~ msgstr "Übergeordnete Aufgabe"
