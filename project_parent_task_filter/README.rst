@@ -25,7 +25,7 @@ Project Parent Task Filter
 
 |badge1| |badge2| |badge3| |badge4| |badge5| 
 
-This module adds a filter to show only the parent tasks in a project and
+This module adds two filters to show only the parent or non-parent tasks in a project and
 a group to sort tasks by its parent tasks.
 It also adds the subtask number in the kanban view and activates the use
 of subtasks in the project settings.
@@ -74,6 +74,10 @@ Contributors
   * Eduardo Magdalena <emagdalena@c2i.es>
 
 * Stephan Keller <MiStK@gmx.de>
+
+* `Ooops <http://ooops404.com/>`_:
+
+  * Ashish Hirpara <ashish.hirapara1995@gmail.com>
 
 Maintainers
 ~~~~~~~~~~~
