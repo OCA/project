@@ -73,7 +73,7 @@ class WebhookGitlab(http.Controller):
         return func(event)
 
     def _get_record_type_and_id(self, title):
-        """Searches in the title of the MR for the task or ticket ID with the
+        """Searches in the title of the MR for the task ID with the
         correct format and returns the type of record and id if it can find it.
 
         :param title: Title of the MR
@@ -84,7 +84,7 @@ class WebhookGitlab(http.Controller):
         """
         exp = (
             r"^(.*[ \(\[\<])?"
-            r"(?P<type>t(ask)?|i(ssue)?|ticket?)#?(?P<id>\d+)"
+            r"(?P<type>t(ask)?)#?(?P<id>\d+)"
             r"([\)\]\>:=, \.,].*)?$"
         )
         match = re.match(exp, title, re.IGNORECASE)
@@ -93,14 +93,11 @@ class WebhookGitlab(http.Controller):
         return False
 
     def _link_record(self, event, id_found):
-        """Add link to Gitlab to access Odoo ticket or task.
-        Create the git.request related to ticket or task.
+        """Add link to Gitlab to access Odoo task.
+        Create the git.request related to task.
         """
         model = "project.task"
         rec_type = "task"
-        if id_found["type"] in ["ticket", "i", "issue"]:
-            model = "helpdesk.ticket"
-            rec_type = "ticket"
         record = request.env[model].with_user(SUPERUSER_ID).browse(int(id_found["id"]))
         if not record:
             message = _("The %(type)s #%(id)s cannot be found in Odoo.") % {
@@ -146,8 +143,6 @@ class WebhookGitlab(http.Controller):
             vals = self._prepare_github_git_request(event)
         if record._name == "project.task":
             vals["task_id"] = record.id
-        else:
-            vals["ticket_id"] = record.id
         return vals
 
     def _prepare_gilab_git_request(self, event):
@@ -170,7 +165,6 @@ class WebhookGitlab(http.Controller):
             "branch": event["object_attributes"]["source_branch"],
             "last_commit": event["object_attributes"]["last_commit"]["id"],
             "task_id": False,
-            "ticket_id": False,
             "user_id": user.id,
         }
 
@@ -198,12 +192,11 @@ class WebhookGitlab(http.Controller):
             "branch": event["pull_request"]["head"]["ref"],
             "last_commit": event["pull_request"]["head"]["sha"],
             "task_id": False,
-            "ticket_id": False,
             "user_id": user.id,
         }
 
     def _process_merge_request(self, event):
-        """Post messages in helpdesk.ticket or project.task based on the
+        """Post messages in project.task based on the
         title of the Merge Request.
         The title must contain the type of registry and the ID preceded by a #
         sign.
@@ -221,7 +214,7 @@ class WebhookGitlab(http.Controller):
         return self._link_record(event, id_found)
 
     def _process_pull_request(self, event):
-        """Post messages in helpdesk.ticket or project.task based on the
+        """Post messages in project.task based on the
         title of the Pull Request.
         The title must contain the type of registry and the ID preceded by a #
         sign.
@@ -239,7 +232,7 @@ class WebhookGitlab(http.Controller):
         return self._link_record(event, id_found)
 
     def _process_pipeline(self, event):
-        """Process pipeline status and update git.request in task or ticket.
+        """Process pipeline status and update git.request in task.
         The title must contain the type of registry and the ID preceded by a #
         sign.
 

@@ -9,7 +9,6 @@ class GitRequest(models.Model):
     _description = "Information for Pull/Merge Requests"
 
     task_id = fields.Many2one("project.task", ondelete="cascade")
-    ticket_id = fields.Many2one("helpdesk.ticket", ondelete="cascade")
     id_request = fields.Integer(
         string="Request ID", help="Technical field used to track the merge request id"
     )
@@ -67,7 +66,7 @@ class GitRequest(models.Model):
     def assing_tags(self):
         for rec in self:
             tags = []
-            record = rec.task_id or rec.ticket_id
+            record = rec.task_id
             tag_model = record.tag_ids._name
             current_tags = self.env[tag_model]
             current_tags |= record.tag_ids.filtered(
@@ -77,7 +76,7 @@ class GitRequest(models.Model):
                 tags.append((3, tag.id, 0))
             # Create prefix to have a base to get the external ID.
             # Possible values of prefix:
-            # 'webhook_gitlab.project_tags_' or 'webhook_gitlab.helpdesk_tag_'
+            # 'webhook_gitlab.project_tags_'
             prefix = "webhook_gitlab." + tag_model.replace(".", "_") + "_"
             # Get CI status tag.
             tags.append((4, self.env.ref(prefix + rec.ci_status).id, 0))

@@ -20,12 +20,12 @@ msgstr ""
 #. module: webhook_gitlab
 #: model_terms:ir.ui.view,arch_db:webhook_gitlab.gitlab_id_not_in_title
 msgid ""
-"**WARNING**: Could not link to Odoo task or ticket. Record ID not found "
+"**WARNING**: Could not link to Odoo task. Record ID not found "
 "in the title of the MR, supported formats:\n"
 "```\n"
 "{ record type }#{ number }\n"
 "```\n"
-"Available types: 'task#', 't#', 'ticket#', 'issue#', 'i#' (case "
+"Available types: 'task#', 't#', (case "
 "insensitive)\n"
 "\n"
 "_Examples_: \n"
@@ -34,12 +34,12 @@ msgid ""
 "\n"
 "- i#123"
 msgstr ""
-"**ADVERTENCIA**: No se pudo vincular a la tarea o ticket de Odoo. ID de "
+"**ADVERTENCIA**: No se pudo vincular a la tarea de Odoo. ID de "
 "registro no encontrado en el título del MR, formatos admitidos:\n"
 "```\n"
 "{ tipo de registro }#{ número }\n"
 "```\n"
-"Tipos disponibles: ‘task#’, ’t#’, ‘ticket#’, ‘issue#’, ‘i#’ (no "
+"Tipos disponibles: ‘task#’, ’t#’, (no "
 "distingue entre mayúsculas y minúsculas)\n"
 "\n"
 "_Ejemplos_: \n"
@@ -90,7 +90,6 @@ msgstr "Creado el"
 
 #. module: webhook_gitlab
 #: model:ir.model.fields,field_description:webhook_gitlab.field_git_request__display_name
-#: model:ir.model.fields,field_description:webhook_gitlab.field_helpdesk_ticket__display_name
 #: model:ir.model.fields,field_description:webhook_gitlab.field_project_task__display_name
 #: model:ir.model.fields,field_description:webhook_gitlab.field_res_users__display_name
 msgid "Display Name"
@@ -112,13 +111,7 @@ msgid "Gitlab Username"
 msgstr "Usuario de Gitlab"
 
 #. module: webhook_gitlab
-#: model:ir.model,name:webhook_gitlab.model_helpdesk_ticket
-msgid "Helpdesk Ticket"
-msgstr "Ticket de servicio de asistencia"
-
-#. module: webhook_gitlab
 #: model:ir.model.fields,field_description:webhook_gitlab.field_git_request__id
-#: model:ir.model.fields,field_description:webhook_gitlab.field_helpdesk_ticket__id
 #: model:ir.model.fields,field_description:webhook_gitlab.field_project_task__id
 #: model:ir.model.fields,field_description:webhook_gitlab.field_res_users__id
 msgid "ID"
@@ -136,7 +129,6 @@ msgstr "Último commit"
 
 #. module: webhook_gitlab
 #: model:ir.model.fields,field_description:webhook_gitlab.field_git_request____last_update
-#: model:ir.model.fields,field_description:webhook_gitlab.field_helpdesk_ticket____last_update
 #: model:ir.model.fields,field_description:webhook_gitlab.field_project_task____last_update
 #: model:ir.model.fields,field_description:webhook_gitlab.field_res_users____last_update
 msgid "Last Modified on"
@@ -164,9 +156,7 @@ msgid "Locked"
 msgstr "Bloqueado"
 
 #. module: webhook_gitlab
-#: model:ir.model.fields,field_description:webhook_gitlab.field_helpdesk_ticket__git_request_ids
 #: model:ir.model.fields,field_description:webhook_gitlab.field_project_task__git_request_ids
-#: model_terms:ir.ui.view,arch_db:webhook_gitlab.helpdesk_ticket_form
 #: model_terms:ir.ui.view,arch_db:webhook_gitlab.project_task_form
 msgid "Merge Requests"
 msgstr "Solicitudes de Mezcla"
@@ -244,11 +234,6 @@ msgstr ""
 #, python-format
 msgid "The %s #%s cannot be found in Odoo."
 msgstr "El %s #%s no se puede encontrar en Odoo."
-
-#. module: webhook_gitlab
-#: model:ir.model.fields,field_description:webhook_gitlab.field_git_request__ticket_id
-msgid "Ticket"
-msgstr "Tiquet"
 
 #. module: webhook_gitlab
 #: model:ir.model.fields,field_description:webhook_gitlab.field_git_request__name
