@@ -20,10 +20,16 @@ class ProjectTask(models.Model):
 
     @api.model_create_multi
     def create(self, vals_list):
+        new_list = []
         for vals in vals_list:
             if vals.get("code", "/") == "/":
-                vals["code"] = self.env["ir.sequence"].next_by_code("project.task")
-        return super().create(vals_list)
+                new_vals = dict(
+                    vals, code=self.env["ir.sequence"].next_by_code("project.task")
+                )
+            else:
+                new_vals = vals
+            new_list.append(new_vals)
+        return super().create(new_list)
 
     def copy(self, default=None):
         self.ensure_one()
