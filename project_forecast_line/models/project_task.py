@@ -81,6 +81,9 @@ class ProjectTask(models.Model):
                 if not forecast_type:
                     _logger.info("skip task %s: no forecast for project state", task)
                     continue  # closed / cancelled stage
+            elif not task.project_id.project_status:
+                _logger.info("skip task %s: no project status set", task)
+                continue  # not status on project
             elif task.sale_line_id:
                 sale_state = task.sale_line_id.state
                 if sale_state == "cancel":
