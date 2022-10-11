@@ -173,24 +173,25 @@ class ForecastLine(models.Model):
                 rec.consolidated_forecast = (
                     self._convert_hours_to_days(rec.forecast_hours) * -1
                 )
-                rec.confirmed_consolidated_forecast = (
-                    self._convert_hours_to_days(rec.forecast_hours) * -1
-                )
+                if rec.type == "confirmed":
+                    rec.confirmed_consolidated_forecast = rec.consolidated_forecast
+                else:
+                    rec.confirmed_consolidated_forecast = 0.0
             else:
                 resource_forecast = grouped_lines_values.get(rec.id, 0)
-                confirmed_forecast = (
+                confirmed = (
                     resource_forecast.get("confirmed", 0) if resource_forecast else 0
                 )
-                consumable_forecast = (
-                    confirmed_forecast + resource_forecast.get("forecast", 0)
+                unconfirmed = (
+                    confirmed + resource_forecast.get("forecast", 0)
                     if resource_forecast
                     else 0
                 )
                 rec.consolidated_forecast = self._convert_hours_to_days(
-                    rec.forecast_hours + consumable_forecast
+                    rec.forecast_hours + unconfirmed
                 )
                 rec.confirmed_consolidated_forecast = self._convert_hours_to_days(
-                    rec.forecast_hours + confirmed_forecast
+                    rec.forecast_hours + confirmed
                 )
 
     def prepare_forecast_lines(
