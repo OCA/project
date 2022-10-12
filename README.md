@@ -43,6 +43,7 @@ addon | version | maintainers | summary
 [project_task_stage_state](project_task_stage_state/) | 15.0.1.0.1 |  | Restore State attribute removed from Project Stages in 8.0
 [project_template](project_template/) | 15.0.1.0.0 | [![patrickrwilson](https://github.com/patrickrwilson.png?size=30px)](https://github.com/patrickrwilson) | Project Templates
 [project_timeline](project_timeline/) | 15.0.1.1.0 |  | Timeline view for projects
+[project_type](project_type/) | 15.0.1.0.0 |  | Project Types
 
 [//]: # (end addons)
 
