@@ -35,11 +35,6 @@ msgid "Company"
 msgstr ""
 
 #. module: project_forecast_line
-#: model:ir.model.fields.selection,name:project_forecast_line.selection__res_company__forecast_consumption_states__confirmed
-msgid "Compute consolidated forecast for lines of type confirmed"
-msgstr ""
-
-#. module: project_forecast_line
 #: model:ir.model,name:project_forecast_line.model_res_config_settings
 msgid "Config Settings"
 msgstr ""
@@ -57,14 +52,23 @@ msgid "Confirmed"
 msgstr ""
 
 #. module: project_forecast_line
+#: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__confirmed_consolidated_forecast
+msgid "Confirmed lines consolidated forecast"
+msgstr ""
+
+#. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__consolidated_forecast
 msgid "Consolidated Forecast"
 msgstr ""
 
 #. module: project_forecast_line
-#: model:ir.model.fields,field_description:project_forecast_line.field_res_company__forecast_consumption_states
-#: model:ir.model.fields,field_description:project_forecast_line.field_res_config_settings__forecast_consumption_states
-msgid "Consumption state rules"
+#: model:ir.model.fields,help:project_forecast_line.field_forecast_line__consolidated_forecast
+msgid "Consolidated forecast for lines of all types consumed"
+msgstr ""
+
+#. module: project_forecast_line
+#: model:ir.model.fields,help:project_forecast_line.field_forecast_line__confirmed_consolidated_forecast
+msgid "Consolidated forecast for lines of type confirmed"
 msgstr ""
 
 #. module: project_forecast_line
@@ -190,16 +194,6 @@ msgid "Employee role for task matching"
 msgstr ""
 
 #. module: project_forecast_line
-#: model:ir.model.fields,help:project_forecast_line.field_res_company__forecast_consumption_states
-#: model:ir.model.fields,help:project_forecast_line.field_res_config_settings__forecast_consumption_states
-msgid ""
-"For instance, holidays requests and sales quotation linescreate lines of "
-"type forecast and won't be taken into accountduring consolidated forecast "
-"computation, whereas tasks for projectwhich are in a running state create "
-"lines with type confirmedand will be used to compute consolidated forecast."
-msgstr ""
-
-#. module: project_forecast_line
 #: model:ir.actions.act_window,name:project_forecast_line.action_forecast_lines
 #: model:ir.model,name:project_forecast_line.model_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__forecast_hours
@@ -298,11 +292,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_role__id
 #: model:ir.model.fields,field_description:project_forecast_line.field_hr_employee_forecast_role__id
 msgid "ID"
-msgstr ""
-
-#. module: project_forecast_line
-#: model:ir.model.fields.selection,name:project_forecast_line.selection__res_company__forecast_consumption_states__forecast_confirmed
-msgid "Include lines of type forecast in consolidated forecast computation"
 msgstr ""
 
 #. module: project_forecast_line
@@ -447,11 +436,6 @@ msgstr ""
 #. module: project_forecast_line
 #: model:ir.model,name:project_forecast_line.model_sale_order_line
 msgid "Sales Order Line"
-msgstr ""
-
-#. module: project_forecast_line
-#: model_terms:ir.ui.view,arch_db:project_forecast_line.res_config_settings_view_form
-msgid "Select the states for which the consumption is confirmed or not"
 msgstr ""
 
 #. module: project_forecast_line
