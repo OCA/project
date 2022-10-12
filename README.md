@@ -33,7 +33,7 @@ addon | version | maintainers | summary
 [project_deadline](project_deadline/) | 13.0.1.0.0 |  | Start date and deadline of projects.
 [project_description](project_description/) | 13.0.1.0.0 |  | Add a description to projects
 [project_duplicate_subtask](project_duplicate_subtask/) | 13.0.1.0.2 |  | The module adds an action to duplicate tasks with the child subtasks
-[project_hr](project_hr/) | 13.0.1.1.0 | [![pedrobaeza](https://github.com/pedrobaeza.png?size=30px)](https://github.com/pedrobaeza) | Link HR with project
+[project_hr](project_hr/) | 13.0.1.1.1 | [![pedrobaeza](https://github.com/pedrobaeza.png?size=30px)](https://github.com/pedrobaeza) | Link HR with project
 [project_key](project_key/) | 13.0.1.0.1 |  | Module decorates projects and tasks with Project Key
 [project_list](project_list/) | 13.0.1.0.0 |  | Projects list view
 [project_milestone](project_milestone/) | 13.0.1.0.0 | [![patrickrwilson](https://github.com/patrickrwilson.png?size=30px)](https://github.com/patrickrwilson) | Project Milestones
