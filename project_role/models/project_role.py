@@ -35,6 +35,7 @@ class ProjectRole(models.Model):
     complete_name = fields.Char(
         compute="_compute_complete_name",
         store=True,
+        recursive=True,
     )
     name = fields.Char(
         translate=True,
