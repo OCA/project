@@ -14,7 +14,9 @@ class ProjectType(models.Model):
         comodel_name="project.type", inverse_name="parent_id", string="Subtypes"
     )
     name = fields.Char(required=True, translate=True)
-    complete_name = fields.Char(compute="_compute_complete_name", store=True)
+    complete_name = fields.Char(
+        compute="_compute_complete_name", store=True, recursive=True
+    )
     description = fields.Text(translate=True)
     project_ok = fields.Boolean(string="Can be applied for projects", default=True)
     task_ok = fields.Boolean(string="Can be applied for tasks")
