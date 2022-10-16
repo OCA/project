@@ -4,7 +4,7 @@
 
 {
     'name': 'Project Roles',
-    'version': '12.0.3.0.0',
+    'version': '12.0.3.0.1',
     'category': 'Project',
     'website': 'https://github.com/OCA/project',
     'author':
