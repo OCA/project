@@ -6,13 +6,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2022-10-19 14:43+0000\n"
+"Last-Translator: Sergio Zanchetta <primes2h@gmail.com>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #. module: project_stock_product_set
 #: model:ir.actions.act_window,name:project_stock_product_set.act_open_wizard_product_set_add_from_task
@@ -28,7 +30,7 @@ msgstr ""
 #. module: project_stock_product_set
 #: model_terms:ir.ui.view,arch_db:project_stock_product_set.product_set_add_from_task_form_view
 msgid "Cancel"
-msgstr ""
+msgstr "Annulla"
 
 #. module: project_stock_product_set
 #: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__create_uid
@@ -43,13 +45,13 @@ msgstr ""
 #. module: project_stock_product_set
 #: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__partner_id
 msgid "Customer"
-msgstr ""
+msgstr "Cliente"
 
 #. module: project_stock_product_set
 #: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__display_name
 #: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_line__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nome visualizzato"
 
 #. module: project_stock_product_set
 #: model:ir.model.fields,help:project_stock_product_set.field_product_set_add_from_task__skip_existing_products
@@ -61,23 +63,23 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__id
 #: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_line__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_stock_product_set
 #: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task____last_update
 #: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_line____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Ultima modifica il"
 
 #. module: project_stock_product_set
 #: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Ultimo aggiornamento di"
 
 #. module: project_stock_product_set
 #: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Ultimo aggiornamento da"
 
 #. module: project_stock_product_set
 #: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__product_set_id
@@ -98,12 +100,12 @@ msgstr ""
 #. module: project_stock_product_set
 #: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__quantity
 msgid "Quantity"
-msgstr ""
+msgstr "Quantità"
 
 #. module: project_stock_product_set
 #: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__order_id
 msgid "Sale Order"
-msgstr ""
+msgstr "Ordine di vendita"
 
 #. module: project_stock_product_set
 #: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__skip_existing_products
@@ -113,9 +115,9 @@ msgstr ""
 #. module: project_stock_product_set
 #: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__task_id
 msgid "Task"
-msgstr ""
+msgstr "Lavoro"
 
 #. module: project_stock_product_set
 #: model:ir.model,name:project_stock_product_set.model_product_set_add_from_task
 msgid "product.set.add.from.task"
-msgstr ""
+msgstr "product.set.add.from.task"
