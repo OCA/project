@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-01-13 03:39+0000\n"
-"PO-Revision-Date: 2022-06-22 13:05+0000\n"
-"Last-Translator: Francesco Foresti <francesco.foresti@ooops404.com>\n"
+"PO-Revision-Date: 2022-10-19 14:43+0000\n"
+"Last-Translator: Sergio Zanchetta <primes2h@gmail.com>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.3.2\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #. module: project_task_dependency
 #: model_terms:ir.ui.view,arch_db:project_task_dependency.project_task_form
@@ -32,7 +32,7 @@ msgstr ""
 #. module: project_task_dependency
 #: model:ir.model.fields,field_description:project_task_dependency.field_project_task_copy_map__create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Creato da"
 
 #. module: project_task_dependency
 #: model:ir.model.fields,field_description:project_task_dependency.field_project_task_copy_map__create_date
@@ -60,31 +60,31 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_task_dependency.field_project_task__display_name
 #: model:ir.model.fields,field_description:project_task_dependency.field_project_task_copy_map__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nome visualizzato"
 
 #. module: project_task_dependency
 #: model:ir.model.fields,field_description:project_task_dependency.field_project_project__id
 #: model:ir.model.fields,field_description:project_task_dependency.field_project_task__id
 #: model:ir.model.fields,field_description:project_task_dependency.field_project_task_copy_map__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_task_dependency
 #: model:ir.model.fields,field_description:project_task_dependency.field_project_project____last_update
 #: model:ir.model.fields,field_description:project_task_dependency.field_project_task____last_update
 #: model:ir.model.fields,field_description:project_task_dependency.field_project_task_copy_map____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Ultima modifica il"
 
 #. module: project_task_dependency
 #: model:ir.model.fields,field_description:project_task_dependency.field_project_task_copy_map__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Ultimo aggiornamento di"
 
 #. module: project_task_dependency
 #: model:ir.model.fields,field_description:project_task_dependency.field_project_task_copy_map__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Ultimo aggiornamento il"
 
 #. module: project_task_dependency
 #: model:ir.model.fields,field_description:project_task_dependency.field_project_task_copy_map__new_task_id
@@ -114,7 +114,7 @@ msgstr ""
 #. module: project_task_dependency
 #: model:ir.model.fields,field_description:project_task_dependency.field_project_task__recursive_dependency_task_ids
 msgid "Recursive Dependencies"
-msgstr ""
+msgstr "Dipendenze ricorsive"
 
 #. module: project_task_dependency
 #: model:ir.model.fields,field_description:project_task_dependency.field_project_task__recursive_depending_task_ids
@@ -131,15 +131,15 @@ msgstr "Lavoro"
 #. module: project_task_dependency
 #: model:ir.model.fields,help:project_task_dependency.field_project_task__recursive_depending_task_ids
 msgid "Tasks that are dependent on this task (recursive)."
-msgstr ""
+msgstr "Lavori che dipendono da questo lavoro (ricorsivi)."
 
 #. module: project_task_dependency
 #: model:ir.model.fields,help:project_task_dependency.field_project_task__depending_task_ids
 msgid "Tasks that are dependent on this task."
-msgstr ""
+msgstr "Lavori che dipendono da questo lavoro."
 
 #. module: project_task_dependency
 #: code:addons/project_task_dependency/models/project_task.py:0
 #, python-format
 msgid "You cannot create recursive dependencies between tasks."
-msgstr ""
+msgstr "Impossibile creare dipendenze ricorsive tra i lavori."
