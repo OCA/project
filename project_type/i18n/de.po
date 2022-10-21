@@ -34,6 +34,11 @@ msgid "Can be applied for tasks"
 msgstr "für Aufgaben verwenden"
 
 #. module: project_type
+#: model:ir.model.fields,field_description:project_type.field_project_type__code
+msgid "Code"
+msgstr ""
+
+#. module: project_type
 #: model:ir.model.fields,field_description:project_type.field_project_type__complete_name
 msgid "Complete Name"
 msgstr "Vollständige Bezeichnung"
@@ -96,9 +101,15 @@ msgstr "Projekt"
 
 #. module: project_type
 #: model:ir.model,name:project_type.model_project_type
-#: model:ir.ui.menu,name:project_type.project_type
+#: model_terms:ir.ui.view,arch_db:project_type.project_type_form
 msgid "Project Type"
 msgstr "Projekttyp"
+
+#. module: project_type
+#: model:ir.actions.act_window,name:project_type.action_project_type
+#: model:ir.ui.menu,name:project_type.project_category
+msgid "Project Types"
+msgstr ""
 
 #. module: project_type
 #: model:ir.model.fields,field_description:project_type.field_project_type__child_ids
@@ -112,12 +123,10 @@ msgid "Task"
 msgstr "Aufgabe"
 
 #. module: project_type
-#: model:ir.actions.act_window,name:project_type.action_project_type
 #: model:ir.model.fields,field_description:project_type.field_project_project__type_id
 #: model:ir.model.fields,field_description:project_type.field_project_task__type_id
 #: model_terms:ir.ui.view,arch_db:project_type.project_search
 #: model_terms:ir.ui.view,arch_db:project_type.project_task_search
-#: model_terms:ir.ui.view,arch_db:project_type.project_type_form
 #: model_terms:ir.ui.view,arch_db:project_type.project_type_search
 msgid "Type"
 msgstr "Typ"
