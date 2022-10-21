@@ -34,6 +34,11 @@ msgid "Can be applied for tasks"
 msgstr "Può essere applicato ai lavori"
 
 #. module: project_type
+#: model:ir.model.fields,field_description:project_type.field_project_type__code
+msgid "Code"
+msgstr ""
+
+#. module: project_type
 #: model:ir.model.fields,field_description:project_type.field_project_type__complete_name
 msgid "Complete Name"
 msgstr "Nome completo"
@@ -55,22 +60,16 @@ msgid "Description"
 msgstr "Descrizione"
 
 #. module: project_type
-#: model:ir.model.fields,field_description:project_type.field_project_project__display_name
-#: model:ir.model.fields,field_description:project_type.field_project_task__display_name
 #: model:ir.model.fields,field_description:project_type.field_project_type__display_name
 msgid "Display Name"
 msgstr "Nome visualizzato"
 
 #. module: project_type
-#: model:ir.model.fields,field_description:project_type.field_project_project__id
-#: model:ir.model.fields,field_description:project_type.field_project_task__id
 #: model:ir.model.fields,field_description:project_type.field_project_type__id
 msgid "ID"
 msgstr "ID"
 
 #. module: project_type
-#: model:ir.model.fields,field_description:project_type.field_project_project____last_update
-#: model:ir.model.fields,field_description:project_type.field_project_task____last_update
 #: model:ir.model.fields,field_description:project_type.field_project_type____last_update
 msgid "Last Modified on"
 msgstr "Ultima modifica il"
@@ -108,7 +107,7 @@ msgstr "Tipo Progetto"
 
 #. module: project_type
 #: model:ir.actions.act_window,name:project_type.action_project_type
-#: model:ir.ui.menu,name:project_type.project_type
+#: model:ir.ui.menu,name:project_type.project_category
 msgid "Project Types"
 msgstr "Tipi Progetto"
 
