@@ -3,12 +3,12 @@
 {
     "name": "Project Forecast Lines",
     "summary": "Project Forecast Lines",
-    "version": "15.0.1.1.0",
+    "version": "16.0.1.0.0",
     "author": "Camptocamp SA, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "category": "Project",
     "website": "https://github.com/OCA/project",
-    "depends": ["sale_timesheet", "sale_project", "hr_holidays"],
+    "depends": ["sale_timesheet", "sale_project", "hr_holidays", "sale"],
     "data": [
         "security/forecast_line_security.xml",
         "security/ir.model.access.csv",
