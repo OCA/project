@@ -235,7 +235,7 @@ class TestForecastLineSales(BaseForecastLineTest):
         with Form(self.env["sale.order"]) as form:
             form.partner_id = self.customer
             # form.date_order = "2022-01-10 08:00:00"
-            form.default_forecast_date_start = "2022-02-07"
+            form.default_forecast_date_start = '2022-02-07'
             form.default_forecast_date_end = "2022-02-20"
             with form.order_line.new() as line:
                 line.product_id = self.product_dev_tm
@@ -268,7 +268,7 @@ class TestForecastLineSales(BaseForecastLineTest):
         with Form(self.env["sale.order"]) as form:
             form.partner_id = self.customer
             # form.date_order = "2022-01-10 08:00:00"
-            form.default_forecast_date_start = "2022-02-07"
+            form.default_forecast_date_start = '2022-02-07'
             form.default_forecast_date_end = False
             with form.order_line.new() as line:
                 line.product_id = self.product_dev_tm
@@ -291,7 +291,7 @@ class TestForecastLineSales(BaseForecastLineTest):
         with Form(self.env["sale.order"]) as form:
             form.partner_id = self.customer
             # form.date_order = "2022-01-10 08:00:00"
-            form.default_forecast_date_start = "2022-02-07"
+            form.default_forecast_date_start = '2022-02-07'
             form.default_forecast_date_end = "2022-04-17"
             with form.order_line.new() as line:
                 line.product_id = self.product_dev_tm
@@ -336,7 +336,7 @@ class TestForecastLineSales(BaseForecastLineTest):
         with Form(self.env["sale.order"]) as form:
             form.partner_id = self.customer
             # form.date_order = "2022-01-10 08:00:00"
-            form.default_forecast_date_start = "2022-02-14"
+            form.default_forecast_date_start = '2022-02-14'
             form.default_forecast_date_end = "2022-04-14"
             with form.order_line.new() as line:
                 line.product_id = self.product_dev_tm
@@ -359,7 +359,7 @@ class TestForecastLineSales(BaseForecastLineTest):
         with Form(self.env["sale.order"]) as form:
             form.partner_id = self.customer
             # form.date_order = "2022-01-10 08:00:00"
-            form.default_forecast_date_start = "2022-02-14"
+            form.default_forecast_date_start = '2022-02-14'
             form.default_forecast_date_end = "2022-04-17"
             with form.order_line.new() as line:
                 line.product_id = self.product_dev_tm
@@ -395,7 +395,7 @@ class TestForecastLineTimesheet(BaseForecastLineTest):
             with Form(self.env["sale.order"]) as form:
                 form.partner_id = self.customer
                 # form.date_order = "2022-01-10 08:00:00"
-                form.default_forecast_date_start = "2022-02-14"
+                form.default_forecast_date_start = '2022-02-14'
                 form.default_forecast_date_end = "2022-04-17"
                 with form.order_line.new() as line:
                     line.product_id = self.product_dev_tm
