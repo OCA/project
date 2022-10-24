@@ -236,7 +236,7 @@ class TestForecastLineSales(BaseForecastLineTest):
             form.partner_id = self.customer
             # form.date_order = "2022-01-10 08:00:00"
             # form.default_forecast_date_start = "2022-02-07"
-            form.default_forecast_date_end = "2022-02-20"
+            # form.default_forecast_date_end = "2022-02-20"
             with form.order_line.new() as line:
                 line.product_id = self.product_dev_tm
                 line.product_uom_qty = 10  # 1 FTE sold
@@ -292,7 +292,7 @@ class TestForecastLineSales(BaseForecastLineTest):
             form.partner_id = self.customer
             # form.date_order = "2022-01-10 08:00:00"
             # form.default_forecast_date_start = "2022-02-07"
-            form.default_forecast_date_end = "2022-04-17"
+            # form.default_forecast_date_end = "2022-04-17"
             with form.order_line.new() as line:
                 line.product_id = self.product_dev_tm
                 line.product_uom_qty = 100  # sell 2 FTE
@@ -337,7 +337,7 @@ class TestForecastLineSales(BaseForecastLineTest):
             form.partner_id = self.customer
             # form.date_order = "2022-01-10 08:00:00"
             # form.default_forecast_date_start = "2022-02-14"
-            form.default_forecast_date_end = "2022-04-14"
+            # form.default_forecast_date_end = "2022-04-14"
             with form.order_line.new() as line:
                 line.product_id = self.product_dev_tm
                 line.product_uom_qty = 60
@@ -360,7 +360,7 @@ class TestForecastLineSales(BaseForecastLineTest):
             form.partner_id = self.customer
             # form.date_order = "2022-01-10 08:00:00"
             # form.default_forecast_date_start = "2022-02-14"
-            form.default_forecast_date_end = "2022-04-17"
+            # form.default_forecast_date_end = "2022-04-17"
             with form.order_line.new() as line:
                 line.product_id = self.product_dev_tm
                 line.product_uom_qty = 45 * 2  # 2 FTE
@@ -396,7 +396,7 @@ class TestForecastLineTimesheet(BaseForecastLineTest):
                 form.partner_id = self.customer
                 # form.date_order = "2022-01-10 08:00:00"
                 # form.default_forecast_date_start = "2022-02-14"
-                form.default_forecast_date_end = "2022-04-17"
+                # form.default_forecast_date_end = "2022-04-17"
                 with form.order_line.new() as line:
                     line.product_id = self.product_dev_tm
                     line.product_uom_qty = (
