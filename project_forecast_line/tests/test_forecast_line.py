@@ -604,10 +604,11 @@ class TestForecastLineProject(BaseForecastLineTest):
             form.holiday_status_id = self.env.ref("hr_holidays.holiday_status_unpaid")
             form.request_date_from = "2022-02-14"
             form.request_unit_hours = False
+            form.request_unit_half = False
             # form.state = 'draft'
             form.request_date_to = "2022-02-15"
-            # form.request_hour_from = "8"
-            # form.request_hour_to = "18"
+            form.request_hour_from = "8"
+            form.request_hour_to = "18"
         leave_request = form.sudo().save()
         # validating the leave request will recompute the forecast lines for
         # the employee capactities (actually delete the existing ones and
