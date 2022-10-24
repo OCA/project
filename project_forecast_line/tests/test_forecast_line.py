@@ -358,9 +358,9 @@ class TestForecastLineSales(BaseForecastLineTest):
     def test_confirm_order_sale_order_create_project_task_with_forecast_line(self):
         with Form(self.env["sale.order"]) as form:
             form.partner_id = self.customer
-            form.date_order = "2022-01-10 08:00:00"
-            form.default_forecast_date_start = "2022-02-14"
-            form.default_forecast_date_end = "2022-04-17"
+            form.date_order = "2022-10-10 08:00:00"
+            form.default_forecast_date_start = "2022-11-14"
+            form.default_forecast_date_end = "2022-12-17"
             with form.order_line.new() as line:
                 line.product_id = self.product_dev_tm
                 line.product_uom_qty = 45 * 2  # 2 FTE
