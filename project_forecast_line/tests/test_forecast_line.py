@@ -241,7 +241,7 @@ class TestForecastLineSales(BaseForecastLineTest):
                 line.product_id = self.product_dev_tm
                 line.product_uom_qty = 10  # 1 FTE sold
                 line.product_uom = self.env.ref("uom.product_uom_day")
-        so = form.save()
+        so = form.sudo().save()
         line = so.order_line[0]
         self.assertEqual(line.forecast_date_start, date(2022, 2, 7))
         self.assertEqual(line.forecast_date_end, date(2022, 2, 20))
@@ -274,7 +274,7 @@ class TestForecastLineSales(BaseForecastLineTest):
                 line.product_id = self.product_dev_tm
                 line.product_uom_qty = 10  # 1 FTE sold
                 line.product_uom = self.env.ref("uom.product_uom_day")
-        so = form.save()
+        so = form.sudo().save()
         line = so.order_line[0]
         self.assertEqual(line.forecast_date_start, date(2022, 2, 7))
         self.assertEqual(line.forecast_date_end, False)
@@ -298,7 +298,7 @@ class TestForecastLineSales(BaseForecastLineTest):
                 line.product_uom_qty = 100  # sell 2 FTE
                 line.product_uom = self.env.ref("uom.product_uom_day")
 
-        so = form.save()
+        so = form.sudo().save()
         line = so.order_line[0]
         self.assertEqual(line.forecast_date_start, date(2022, 2, 7))
         self.assertEqual(line.forecast_date_end, date(2022, 4, 17))
@@ -343,7 +343,7 @@ class TestForecastLineSales(BaseForecastLineTest):
                 line.product_uom_qty = 60
                 line.product_uom = self.env.ref("uom.product_uom_day")
 
-        so = form.save()
+        so = form.sudo().save()
         so.action_confirm()
         line = so.order_line[0]
         forecast_lines = self.env["forecast.line"].search(
@@ -365,7 +365,7 @@ class TestForecastLineSales(BaseForecastLineTest):
                 line.product_id = self.product_dev_tm
                 line.product_uom_qty = 45 * 2  # 2 FTE
                 line.product_uom = self.env.ref("uom.product_uom_day")
-        so = form.save()
+        so = form.sudo().save()
         so.action_confirm()
         line = so.order_line[0]
         task = self.env["project.task"].search([("sale_line_id", "=", line.id)])
@@ -403,7 +403,7 @@ class TestForecastLineTimesheet(BaseForecastLineTest):
                         45 * 2
                     )  # 45 working days in the period, sell 2 FTE
                     line.product_uom = self.env.ref("uom.product_uom_day")
-            so = form.save()
+            so = form.sudo().save()
             so.action_confirm()
 
         with freeze_time("2022-02-14"):
@@ -604,7 +604,7 @@ class TestForecastLineProject(BaseForecastLineTest):
             form.request_date_to = "2022-02-15"
             form.request_hour_from = "8"
             form.request_hour_to = "18"
-        leave_request = form.save()
+        leave_request = form.sudo().save()
         # validating the leave request will recompute the forecast lines for
         # the employee capactities (actually delete the existing ones and
         # create new ones -> we check that the project task lines are
