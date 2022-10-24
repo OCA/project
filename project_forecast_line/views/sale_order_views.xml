@@ -42,6 +42,9 @@
                     groups="project_forecast_line.group_forecast_line_on_quotation"
                 />
             </xpath>
+            <xpath expr="//field[@name='date_order']" position="attributes">
+                <attribute name="invisible">[('state','in',['draft','sent'])]</attribute>
+            </xpath>
         </field>
     </record>
 
