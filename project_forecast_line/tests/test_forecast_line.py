@@ -267,14 +267,14 @@ class TestForecastLineSales(BaseForecastLineTest):
         """a draft sale order with no dates on the line does not create forecast"""
         with Form(self.env["sale.order"]) as form:
             form.partner_id = self.customer
-            # form.date_order = "2022-01-10 08:00:00"
+            form.date_order = "2022-01-10 08:00:00"
             form.default_forecast_date_start = "2022-02-07"
             form.default_forecast_date_end = False
             with form.order_line.new() as line:
                 line.product_id = self.product_dev_tm
                 line.product_uom_qty = 10  # 1 FTE sold
                 line.product_uom = self.env.ref("uom.product_uom_day")
-        so = form.save()
+        so = form.sudo().save()
         line = so.order_line[0]
         self.assertEqual(line.forecast_date_start, date(2022, 2, 7))
         self.assertEqual(line.forecast_date_end, False)
