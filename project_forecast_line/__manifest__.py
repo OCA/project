@@ -8,7 +8,7 @@
     "license": "AGPL-3",
     "category": "Project",
     "website": "https://github.com/OCA/project",
-    "depends": ["sale_timesheet", "sale_project", "hr_holidays", "sale"],
+    "depends": ["sale", "sale_timesheet", "sale_project", "hr_holidays"],
     "data": [
         "security/forecast_line_security.xml",
         "security/ir.model.access.csv",
