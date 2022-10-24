@@ -234,9 +234,9 @@ class TestForecastLineSales(BaseForecastLineTest):
     def test_draft_sale_order_creates_negative_forecast_forecast(self):
         with Form(self.env["sale.order"]) as form:
             form.partner_id = self.customer
-            # form.date_order = "2022-01-10 08:00:00"
-            # form.default_forecast_date_start = "2022-02-07"
-            # form.default_forecast_date_end = "2022-02-20"
+            form.date_order = "2022-01-10 08:00:00"
+            form.default_forecast_date_start = "2022-02-07"
+            form.default_forecast_date_end = "2022-02-20"
             with form.order_line.new() as line:
                 line.product_id = self.product_dev_tm
                 line.product_uom_qty = 10  # 1 FTE sold
@@ -268,7 +268,7 @@ class TestForecastLineSales(BaseForecastLineTest):
         with Form(self.env["sale.order"]) as form:
             form.partner_id = self.customer
             form.date_order = "2022-01-10 08:00:00"
-            # form.default_forecast_date_start = "2022-02-07"
+            form.default_forecast_date_start = "2022-02-07"
             form.default_forecast_date_end = False
             with form.order_line.new() as line:
                 line.product_id = self.product_dev_tm
@@ -290,9 +290,9 @@ class TestForecastLineSales(BaseForecastLineTest):
     def test_draft_sale_order_forecast_spread(self):
         with Form(self.env["sale.order"]) as form:
             form.partner_id = self.customer
-            # form.date_order = "2022-01-10 08:00:00"
-            # form.default_forecast_date_start = "2022-02-07"
-            # form.default_forecast_date_end = "2022-04-17"
+            form.date_order = "2022-01-10 08:00:00"
+            form.default_forecast_date_start = "2022-02-07"
+            form.default_forecast_date_end = "2022-04-17"
             with form.order_line.new() as line:
                 line.product_id = self.product_dev_tm
                 line.product_uom_qty = 100  # sell 2 FTE
@@ -335,9 +335,9 @@ class TestForecastLineSales(BaseForecastLineTest):
     def test_confirm_order_sale_order_no_forecast_line(self):
         with Form(self.env["sale.order"]) as form:
             form.partner_id = self.customer
-            # form.date_order = "2022-01-10 08:00:00"
-            # form.default_forecast_date_start = "2022-02-14"
-            # form.default_forecast_date_end = "2022-04-14"
+            form.date_order = "2022-01-10 08:00:00"
+            form.default_forecast_date_start = "2022-02-14"
+            form.default_forecast_date_end = "2022-04-14"
             with form.order_line.new() as line:
                 line.product_id = self.product_dev_tm
                 line.product_uom_qty = 60
@@ -358,9 +358,9 @@ class TestForecastLineSales(BaseForecastLineTest):
     def test_confirm_order_sale_order_create_project_task_with_forecast_line(self):
         with Form(self.env["sale.order"]) as form:
             form.partner_id = self.customer
-            # form.date_order = "2022-01-10 08:00:00"
-            # form.default_forecast_date_start = "2022-02-14"
-            # form.default_forecast_date_end = "2022-04-17"
+            form.date_order = "2022-01-10 08:00:00"
+            form.default_forecast_date_start = "2022-02-14"
+            form.default_forecast_date_end = "2022-04-17"
             with form.order_line.new() as line:
                 line.product_id = self.product_dev_tm
                 line.product_uom_qty = 45 * 2  # 2 FTE
@@ -394,9 +394,9 @@ class TestForecastLineTimesheet(BaseForecastLineTest):
         with freeze_time("2022-01-01"):
             with Form(self.env["sale.order"]) as form:
                 form.partner_id = self.customer
-                # form.date_order = "2022-01-10 08:00:00"
-                # form.default_forecast_date_start = "2022-02-14"
-                # form.default_forecast_date_end = "2022-04-17"
+                form.date_order = "2022-01-10 08:00:00"
+                form.default_forecast_date_start = "2022-02-14"
+                form.default_forecast_date_end = "2022-04-17"
                 with form.order_line.new() as line:
                     line.product_id = self.product_dev_tm
                     line.product_uom_qty = (
