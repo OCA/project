@@ -4,7 +4,7 @@
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form" />
         <field name="arch" type="xml">
-            <field name="date_order" position="after">
+            <xpath expr="//field[@name='date_order']" position="after">
                 <field
                     name="default_forecast_date_start"
                     groups="project_forecast_line.group_forecast_line_on_quotation"
@@ -13,7 +13,7 @@
                     name="default_forecast_date_end"
                     groups="project_forecast_line.group_forecast_line_on_quotation"
                 />
-            </field>
+            </xpath>
             <xpath
                 expr="//field[@name='order_line']/form//field[@name='product_id']"
                 position="before"
