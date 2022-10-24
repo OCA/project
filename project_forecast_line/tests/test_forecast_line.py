@@ -603,6 +603,8 @@ class TestForecastLineProject(BaseForecastLineTest):
             # form.employee_id = self.employee_consultant
             form.holiday_status_id = self.env.ref("hr_holidays.holiday_status_unpaid")
             form.request_date_from = "2022-02-14"
+            form.request_unit_hours = True
+            # form.state = 'draft'
             form.request_date_to = "2022-02-15"
             form.request_hour_from = "8"
             form.request_hour_to = "18"
