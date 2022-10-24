@@ -16,10 +16,7 @@
                 />
             </xpath>
             <xpath expr="//field[@name='label_tasks']/.." position="inside">
-                <div>
-                    <field name="is_template" class="oe_inline" string="Is Template?" />
-                    <label for="is_template" />
-                </div>
+                <field name="is_template" class="oe_inline" string="Is Template?" />
             </xpath>
         </field>
     </record>
