@@ -600,19 +600,19 @@ class TestForecastLineProject(BaseForecastLineTest):
         self.test_task_forecast_lines_consolidated_forecast()
         # with Form(self.env["hr.leave"]) as form:
         holiday_type = "employee"
-        # employee_id = self.employee_consultant
+        employee_id = self.employee_consultant
         holiday_status_id = self.env.ref("hr_holidays.holiday_status_unpaid")
         request_date_from = "2022-02-20"
         request_date_to = "2022-02-21"
         request_hour_from = "8"
-        request_hour_to = "18"
+        request_hour_to = "17"
         # setattr(form, request_date_to, '2022-02-15')
 
         leave_request = Form(
             self.env["hr.leave"].create(
                 {
                     "holiday_type": holiday_type,
-                    "employee_id": 1,
+                    "employee_id": employee_id.id,
                     "holiday_status_id": holiday_status_id.id,
                     "request_date_from": request_date_from,
                     "request_date_to": request_date_to,
@@ -628,7 +628,7 @@ class TestForecastLineProject(BaseForecastLineTest):
         leave_request.action_validate()
         forecast_lines = self.env["forecast.line"].search(
             [
-                ("employee_id", "=", 1),
+                ("employee_id", "=", self.employee_consultant.id),
                 ("res_model", "=", "hr.employee.forecast.role"),
                 ("date_from", ">=", "2022-02-27"),
                 ("date_to", "<=", "2022-02-28"),
