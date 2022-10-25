@@ -6,6 +6,7 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='employee_id']" position="attributes">
                 <attribute name="force_save">1</attribute>
+                <attribute name="readonly">0</attribute>
             </xpath>
         </field>
     </record>
