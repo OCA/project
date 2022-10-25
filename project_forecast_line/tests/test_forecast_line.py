@@ -602,8 +602,8 @@ class TestForecastLineProject(BaseForecastLineTest):
         holiday_type = "employee"
         employee_id = self.employee_consultant
         holiday_status_id = self.env.ref("hr_holidays.holiday_status_unpaid")
-        request_date_from = "2022-11-27"
-        request_date_to = "2022-11-28"
+        request_date_from = "2022-11-01"
+        request_date_to = "2022-11-02"
         # request_hour_from = "8"
         # request_hour_to = "17"
         # setattr(form, request_date_to, '2022-02-15')
@@ -623,13 +623,13 @@ class TestForecastLineProject(BaseForecastLineTest):
         # the employee capactities (actually delete the existing ones and
         # create new ones -> we check that the project task lines are
         # automatically related to the new newly created employee role lines.
-        leave_request.sudo().action_validate()
+        leave_request.action_validate()
         forecast_lines = self.env["forecast.line"].search(
             [
                 ("employee_id", "=", self.employee_consultant.id),
                 ("res_model", "=", "hr.employee.forecast.role"),
-                ("date_from", ">=", "2022-11-27"),
-                ("date_to", "<=", "2022-11-28"),
+                ("date_from", ">=", "2022-11-01"),
+                ("date_to", "<=", "2022-11-02"),
             ]
         )
         # 1 line per role per day -> 4 lines
