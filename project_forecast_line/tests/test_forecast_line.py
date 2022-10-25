@@ -623,7 +623,7 @@ class TestForecastLineProject(BaseForecastLineTest):
         # the employee capactities (actually delete the existing ones and
         # create new ones -> we check that the project task lines are
         # automatically related to the new newly created employee role lines.
-        leave_request.action_validate()
+        leave_request.sudo().action_validate()
         forecast_lines = self.env["forecast.line"].search(
             [
                 ("employee_id", "=", self.employee_consultant.id),
