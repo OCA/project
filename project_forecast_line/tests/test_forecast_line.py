@@ -611,8 +611,8 @@ class TestForecastLineProject(BaseForecastLineTest):
         leave_request = Form(
             self.env["hr.leave"].create(
                 {
-                    "employee_id": employee_id,
-                    "holiday_status_id": holiday_status_id,
+                    "employee_id": employee_id.id,
+                    "holiday_status_id": holiday_status_id.id,
                     "request_date_from": request_date_from,
                     "request_date_to": request_date_to,
                     "request_hour_from": request_hour_from,
