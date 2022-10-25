@@ -629,8 +629,8 @@ class TestForecastLineProject(BaseForecastLineTest):
             [
                 ("employee_id", "=", self.employee_consultant.id),
                 ("res_model", "=", "hr.employee.forecast.role"),
-                ("date_from", ">=", "2022-02-20"),
-                ("date_to", "<=", "2022-02-21"),
+                ("date_from", ">=", "2022-02-27"),
+                ("date_to", "<=", "2022-02-28"),
             ]
         )
         # 1 line per role per day -> 4 lines
