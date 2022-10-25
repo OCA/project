@@ -17,13 +17,13 @@ Project timesheet time control
     :target: https://github.com/OCA/project/tree/15.0/project_timesheet_time_control
     :alt: OCA/project
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/project-14-0/project-14-0-project_timesheet_time_control
+    :target: https://translation.odoo-community.org/projects/project-15-0/project-15-0-project_timesheet_time_control
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runbot-Try%20me-875A7B.png
     :target: https://runbot.odoo-community.org/runbot/140/15.0
     :alt: Try me on Runbot
 
-|badge1| |badge2| |badge3| |badge4| |badge5|
+|badge1| |badge2| |badge3| |badge4| |badge5| 
 
 Allow to track the exact moment when a timesheet line is started (not only
 the day, but also the minute and second) and let users start and stop timers
@@ -158,7 +158,7 @@ promote its widespread use.
 
 Current `maintainer <https://odoo-community.org/page/maintainer-role>`__:
 
-|maintainer-ernestotejeda|
+|maintainer-ernestotejeda| 
 
 This module is part of the `OCA/project <https://github.com/OCA/project/tree/15.0/project_timesheet_time_control>`_ project on GitHub.
 

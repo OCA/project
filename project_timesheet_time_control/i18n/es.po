@@ -33,9 +33,6 @@ msgstr ""
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
 #, fuzzy
-#| msgid ""
-#| ".\n"
-#| "                        If you continue, it will be stopped with"
 msgid ""
 ".\n"
 "                            If you continue, it will be stopped with"
@@ -139,13 +136,10 @@ msgid "End Time"
 msgstr "Fecha final"
 
 #. module: project_timesheet_time_control
-#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.account_analytic_line_tree
-#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_line_form
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.project_invoice_form
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_kanban_account_analytic_line
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_project_tree
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_form2_inherited
-#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_kanban
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_tree2_inherited
 msgid "End work"
 msgstr "Finalizar trabajo"
@@ -234,6 +228,7 @@ msgstr "Continuar"
 
 #. module: project_timesheet_time_control
 #: code:addons/project_timesheet_time_control/models/account_analytic_line.py:0
+#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.account_analytic_line_tree
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_line_form
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_kanban_account_analytic_line
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_form2_inherited
@@ -271,8 +266,6 @@ msgstr "Comenzar nuevo cronómetro"
 #: code:addons/project_timesheet_time_control/models/hr_timesheet_time_control_mixin.py:0
 #: model:ir.actions.act_window,name:project_timesheet_time_control.hr_timesheet_switch_action
 #: model:ir.ui.menu,name:project_timesheet_time_control.hr_timesheet_switch_menu
-#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.account_analytic_line_tree
-#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_line_form
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.project_invoice_form
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_kanban_account_analytic_line
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_project_tree
@@ -302,6 +295,7 @@ msgid "Stop that very old timer and start the new one"
 msgstr "Detener ese cronómetro tan antiguo y comenzar el nuevo"
 
 #. module: project_timesheet_time_control
+#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.account_analytic_line_tree
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_line_form
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.project_invoice_form
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_kanban_account_analytic_line
