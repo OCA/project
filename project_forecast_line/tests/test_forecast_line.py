@@ -600,7 +600,7 @@ class TestForecastLineProject(BaseForecastLineTest):
         with Form(self.env["hr.leave"]) as form:
             form.holiday_type = "employee"
             form.state = "validate"
-            form.employee_id = self.employee_consultant
+            # form.employee_id = self.employee_consultant
             form.holiday_status_id = self.env.ref("hr_holidays.holiday_status_unpaid")
             form.request_unit_hour = False
             # form.request_hour_from = "8"
