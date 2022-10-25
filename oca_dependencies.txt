@@ -3,4 +3,5 @@ sale-workflow
 server-tools
 timesheet
 manufacture
+account-budgeting
 web

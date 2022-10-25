@@ -1,6 +1,8 @@
 # Copyright 2022 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+from odoo import fields
 from odoo.tests import Form
+from odoo.tests.common import new_test_user
 
 from .common import TestProjectStockBase
 
@@ -16,17 +18,25 @@ class TestProjectStock(TestProjectStockBase):
         cls.move_product_b = cls.task.move_ids.filtered(
             lambda x: x.product_id == cls.product_b
         )
+        cls.basic_user = new_test_user(
+            cls.env,
+            login="basic-user",
+            groups="project.group_project_user,stock.group_stock_user",
+        )
 
     def test_project_task_misc(self):
+        self.assertTrue(self.task.group_id)
         self.assertEqual(self.task.picking_type_id, self.picking_type)
         self.assertEqual(self.task.location_id, self.location)
         self.assertEqual(self.task.location_dest_id, self.location_dest)
         self.assertEqual(self.move_product_a.name, self.task.name)
+        self.assertEqual(self.move_product_a.group_id, self.task.group_id)
         self.assertEqual(self.move_product_a.reference, self.task.name)
         self.assertEqual(self.move_product_a.location_id, self.location)
         self.assertEqual(self.move_product_a.location_dest_id, self.location_dest)
         self.assertEqual(self.move_product_a.picking_type_id, self.picking_type)
         self.assertEqual(self.move_product_a.raw_material_task_id, self.task)
+        self.assertEqual(self.move_product_b.group_id, self.task.group_id)
         self.assertEqual(self.move_product_b.location_id, self.location)
         self.assertEqual(self.move_product_b.location_dest_id, self.location_dest)
         self.assertEqual(self.move_product_b.picking_type_id, self.picking_type)
@@ -62,18 +72,35 @@ class TestProjectStock(TestProjectStockBase):
         self.task.write({"stage_id": self.stage_done.id})
         self.task.action_done()
         self._test_task_analytic_lines_from_task(-40)
+        self.assertEqual(
+            fields.first(self.task.stock_analytic_line_ids).date,
+            fields.Date.from_string("1990-01-01"),
+        )
 
     def test_project_task_analytic_lines_with_tag_1(self):
-        self.task.write({"stock_analytic_tag_ids": self.analytic_tag_1.ids})
+        self.task.write(
+            {
+                "stock_analytic_date": "1991-01-01",
+                "stock_analytic_tag_ids": self.analytic_tag_1.ids,
+            }
+        )
         self.task.write({"stage_id": self.stage_done.id})
         self.task.action_done()
         self._test_task_analytic_lines_from_task(-40)
+        self.assertEqual(
+            fields.first(self.task.stock_analytic_line_ids).date,
+            fields.Date.from_string("1991-01-01"),
+        )
 
     def test_project_task_analytic_lines_with_tag_2(self):
+        self.task.project_id.stock_analytic_date = False
         self.task.write({"stock_analytic_tag_ids": self.analytic_tag_2.ids})
         self.task.write({"stage_id": self.stage_done.id})
         self.task.action_done()
         self._test_task_analytic_lines_from_task(-20)
+        self.assertEqual(
+            fields.first(self.task.stock_analytic_line_ids).date, fields.date.today()
+        )
 
     def test_project_task_process_done(self):
         self.assertEqual(self.move_product_a.state, "draft")
@@ -94,6 +121,7 @@ class TestProjectStock(TestProjectStockBase):
         move_product_c = self.task.move_ids.filtered(
             lambda x: x.product_id == self.product_c
         )
+        self.assertEqual(move_product_c.group_id, self.task.group_id)
         self.assertEqual(move_product_c.state, "draft")
         self.task.action_assign()
         self.assertEqual(move_product_c.state, "assigned")
@@ -137,3 +165,15 @@ class TestProjectStock(TestProjectStockBase):
         self.assertEqual(self.move_product_a.reserved_availability, 0)
         self.assertEqual(self.move_product_b.reserved_availability, 0)
         self.assertFalse(self.task.unreserve_visible)
+
+    def test_project_task_action_cancel_basic_user(self):
+        self.assertTrue(self.task.with_user(self.basic_user).action_cancel())
+
+    def test_project_task_action_done_basic_user(self):
+        task = self.task.with_user(self.basic_user)
+        task.write({"stage_id": self.stage_done.id})
+        task.action_done()
+        self.assertTrue(task.sudo().stock_analytic_line_ids)
+
+    def test_project_task_unlink_basic_user(self):
+        self.assertTrue(self.task.with_user(self.basic_user).unlink())

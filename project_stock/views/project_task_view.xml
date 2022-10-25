@@ -37,6 +37,7 @@
                     attrs="{'invisible': [('use_stock_moves', '=', False)]}"
                     widget="many2many_tags"
                 />
+                <field name="stock_analytic_date" />
             </field>
             <field name="stage_id" position="before">
                 <button
@@ -44,14 +45,14 @@
                     string="Confirm materials"
                     type="object"
                     class="oe_highlight"
-                    attrs="{'invisible':['|','|',('stock_state', '!=', 'pending'),('done_stock_moves', '=', False),('stock_moves_is_locked','=',False)]}"
+                    attrs="{'invisible':[('allow_moves_action_confirm','=',False)]}"
                 />
                 <button
                     name="action_assign"
                     string="Check availability materials"
                     type="object"
                     class="oe_highlight"
-                    attrs="{'invisible':['|', ('stock_state', '!=', 'confirmed'),('stock_moves_is_locked','=',False)]}"
+                    attrs="{'invisible':[('allow_moves_action_assign','=',False)]}"
                 />
                 <button
                     name="button_scrap"
@@ -104,6 +105,8 @@
                     <field name="done_stock_moves" invisible="1" />
                     <field name="stock_moves_is_locked" invisible="1" />
                     <field name="stock_state" invisible="1" />
+                    <field name="allow_moves_action_confirm" invisible="1" />
+                    <field name="allow_moves_action_assign" invisible="1" />
                     <field name="unreserve_visible" invisible="1" />
                     <field
                         name="move_ids"
@@ -116,18 +119,12 @@
                 <group
                     string="Stock Info"
                     name="stock_ifno_misc"
-                    groups="stock.group_stock_manager"
+                    groups="stock.group_stock_user"
                     attrs="{'invisible': [('use_stock_moves', '=', False)]}"
                 >
                     <field name="picking_type_id" />
-                    <field
-                        name="location_id"
-                        groups="stock.group_stock_multi_locations"
-                    />
-                    <field
-                        name="location_dest_id"
-                        groups="stock.group_stock_multi_locations"
-                    />
+                    <field name="location_id" />
+                    <field name="location_dest_id" />
                 </group>
             </xpath>
         </field>
