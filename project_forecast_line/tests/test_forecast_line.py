@@ -604,8 +604,8 @@ class TestForecastLineProject(BaseForecastLineTest):
         holiday_status_id = self.env.ref("hr_holidays.holiday_status_unpaid")
         request_date_from = "2022-02-20"
         request_date_to = "2022-02-21"
-        request_hour_from = "8"
-        request_hour_to = "17"
+        # request_hour_from = "8"
+        # request_hour_to = "17"
         # setattr(form, request_date_to, '2022-02-15')
 
         leave_request = Form(
@@ -616,8 +616,6 @@ class TestForecastLineProject(BaseForecastLineTest):
                     "holiday_status_id": holiday_status_id.id,
                     "request_date_from": request_date_from,
                     "request_date_to": request_date_to,
-                    "request_hour_from": request_hour_from,
-                    "request_hour_to": request_hour_to,
                 }
             )
         ).save()
