@@ -610,7 +610,6 @@ class TestForecastLineProject(BaseForecastLineTest):
 
         leave_request = self.env["hr.leave"].create(
             {
-                "holiday_type": holiday_type,
                 "employee_id": employee_id,
                 "holiday_status_id": holiday_status_id,
                 "request_date_from": request_date_from,
