@@ -13,6 +13,7 @@
         "security/forecast_line_security.xml",
         "security/ir.model.access.csv",
         "views/sale_order_views.xml",
+        "views/hr_leave.xml",
         "views/hr_employee_views.xml",
         "views/forecast_line_views.xml",
         "views/forecast_role_views.xml",
