@@ -608,16 +608,18 @@ class TestForecastLineProject(BaseForecastLineTest):
         request_hour_to = "18"
         # setattr(form, request_date_to, '2022-02-15')
 
-        leave_request = Form(self.env["hr.leave"].create(
-            {
-                "employee_id": employee_id,
-                "holiday_status_id": holiday_status_id,
-                "request_date_from": request_date_from,
-                "request_date_to": request_date_to,
-                "request_hour_from": request_hour_from,
-                "request_hour_to": request_hour_to,
-            }
-        )).save()
+        leave_request = Form(
+            self.env["hr.leave"].create(
+                {
+                    "employee_id": employee_id,
+                    "holiday_status_id": holiday_status_id,
+                    "request_date_from": request_date_from,
+                    "request_date_to": request_date_to,
+                    "request_hour_from": request_hour_from,
+                    "request_hour_to": request_hour_to,
+                }
+            )
+        ).save()
         # validating the leave request will recompute the forecast lines for
         # the employee capactities (actually delete the existing ones and
         # create new ones -> we check that the project task lines are
