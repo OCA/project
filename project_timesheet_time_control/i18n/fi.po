@@ -58,8 +58,8 @@ msgid ""
 "                        </span>"
 msgstr ""
 "<span class=\"o_label\">\n"
-"                            <i class=\"fa fa-lg fa-play-circle text-success\""
-"/>\n"
+"                            <i class=\"fa fa-lg fa-play-circle text-success"
+"\"/>\n"
 "                            Aloita työt\n"
 "                        </span>"
 
@@ -73,8 +73,8 @@ msgid ""
 "                        </span>"
 msgstr ""
 "<span class=\"o_label\">\n"
-"                            <i class=\"fa fa-lg fa-stop-circle text-warning\""
-"/>\n"
+"                            <i class=\"fa fa-lg fa-stop-circle text-warning"
+"\"/>\n"
 "                            Keskeytä työ\n"
 "                        </span>"
 
@@ -199,13 +199,10 @@ msgid "End Time"
 msgstr "Päättymisaika"
 
 #. module: project_timesheet_time_control
-#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.account_analytic_line_tree
-#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_line_form
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.project_invoice_form
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_kanban_account_analytic_line
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_project_tree
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_form2_inherited
-#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_kanban
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_tree2_inherited
 msgid "End work"
 msgstr "Lopeta työ"
@@ -401,8 +398,6 @@ msgstr "Käynnistä ajastin"
 #: code:addons/project_timesheet_time_control/models/hr_timesheet_time_control_mixin.py:0
 #: model:ir.actions.act_window,name:project_timesheet_time_control.hr_timesheet_switch_action
 #: model:ir.ui.menu,name:project_timesheet_time_control.hr_timesheet_switch_menu
-#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.account_analytic_line_tree
-#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_line_form
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.project_invoice_form
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_kanban_account_analytic_line
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_project_tree
