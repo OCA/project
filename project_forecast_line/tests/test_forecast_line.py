@@ -4,7 +4,7 @@ from datetime import date
 
 from freezegun import freeze_time
 
-from odoo.tests.common import Form, TransactionCase, tagged
+from odoo.tests.common import TransactionCase, tagged
 
 
 @tagged("-at_install", "post_install")
@@ -400,7 +400,7 @@ class TestForecastLineTimesheet(BaseForecastLineTest):
         # with freeze_time("2022-01-01"):
         #     with Form(self.env["sale.order"]) as form:
         #         form.partner_id = self.customer
-        #         # form.date_order = "2022-01-10 08:00:00"
+        #         form.date_order = "2022-01-10 08:00:00"
         #         form.default_forecast_date_start = "2022-02-14"
         #         form.default_forecast_date_end = "2022-04-17"
         #         with form.order_line.new() as line:
@@ -415,7 +415,7 @@ class TestForecastLineTimesheet(BaseForecastLineTest):
         # with freeze_time("2022-02-14"):
         #     line = so.order_line[0]
         #     task = self.env["project.task"].search([("sale_line_id", "=", line.id)])
-        #     # timesheet 1d
+        # timesheet 1d
         #     self.env["account.analytic.line"].create(
         #         {
         #             "employee_id": self.employee_dev.id,
