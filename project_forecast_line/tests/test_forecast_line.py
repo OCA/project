@@ -232,7 +232,6 @@ class TestForecastLineEmployee(BaseForecastLineTest):
 class TestForecastLineSales(BaseForecastLineTest):
     @freeze_time("2022-01-01")
     def test_draft_sale_order_creates_negative_forecast_forecast(self):
-        pass
         with Form(self.env["sale.order"]) as form:
             form.partner_id = self.customer
             form.state = "draft"
@@ -290,7 +289,6 @@ class TestForecastLineSales(BaseForecastLineTest):
 
     @freeze_time("2022-01-01")
     def test_draft_sale_order_forecast_spread(self):
-        pass
         with Form(self.env["sale.order"]) as form:
             form.partner_id = self.customer
             # form.date_order = "2022-01-10 08:00:00"
@@ -394,7 +392,6 @@ class TestForecastLineSales(BaseForecastLineTest):
 
 class TestForecastLineTimesheet(BaseForecastLineTest):
     def test_timesheet_forecast_lines(self):
-        pass
         with freeze_time("2022-01-01"):
             with Form(self.env["sale.order"]) as form:
                 form.partner_id = self.customer
@@ -413,7 +410,7 @@ class TestForecastLineTimesheet(BaseForecastLineTest):
         with freeze_time("2022-02-14"):
             line = so.order_line[0]
             task = self.env["project.task"].search([("sale_line_id", "=", line.id)])
-        # timesheet 1d
+            # timesheet 1d
             self.env["account.analytic.line"].create(
                 {
                     "employee_id": self.employee_dev.id,
