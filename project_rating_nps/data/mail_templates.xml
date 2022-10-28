@@ -35,48 +35,8 @@
             <table style="width:100%;text-align:center;">
               <tr>
                 <td style="padding:10px 10px;">
-                  <a href="/rating/${access_token}/10">
-                    <img alt="10/10" src="/project_rating_nps/static/src/img/rate_10.png"/>
-                  </a>
-                </td>
-                <td style="padding:10px 10px;">
-                  <a href="/rating/${access_token}/9">
-                    <img alt="9/10" src="/project_rating_nps/static/src/img/rate_9.png"/>
-                  </a>
-                </td>
-                <td style="padding:10px 10px;">
-                  <a href="/rating/${access_token}/8">
-                    <img alt="8/10" src="/project_rating_nps/static/src/img/rate_8.png"/>
-                  </a>
-                </td>
-                <td style="padding:10px 10px;">
-                  <a href="/rating/${access_token}/7">
-                    <img alt="7/10" src="/project_rating_nps/static/src/img/rate_7.png"/>
-                  </a>
-                </td>
-                <td style="padding:10px 10px;">
-                  <a href="/rating/${access_token}/6">
-                    <img alt="6/10" src="/project_rating_nps/static/src/img/rate_6.png"/>
-                  </a>
-                </td>
-                <td style="padding:10px 10px;">
-                  <a href="/rating/${access_token}/5">
-                    <img alt="5/10" src="/project_rating_nps/static/src/img/rate_5.png"/>
-                  </a>
-                </td>
-                <td style="padding:10px 10px;">
-                  <a href="/rating/${access_token}/4">
-                    <img alt="4/10" src="/project_rating_nps/static/src/img/rate_4.png"/>
-                  </a>
-                </td>
-                <td style="padding:10px 10px;">
-                  <a href="/rating/${access_token}/3">
-                    <img alt="3/10" src="/project_rating_nps/static/src/img/rate_3.png"/>
-                  </a>
-                </td>
-                <td style="padding:10px 10px;">
-                  <a href="/rating/${access_token}/2">
-                    <img alt="2/10" src="/project_rating_nps/static/src/img/rate_2.png"/>
+                  <a href="/rating/${access_token}/0">
+                    <img alt="0/10" src="/project_rating_nps/static/src/img/rate_0.png"/>
                   </a>
                 </td>
                 <td style="padding:10px 10px;">
@@ -85,8 +45,48 @@
                   </a>
                 </td>
                 <td style="padding:10px 10px;">
-                  <a href="/rating/${access_token}/0">
-                    <img alt="0/10" src="/project_rating_nps/static/src/img/rate_0.png"/>
+                  <a href="/rating/${access_token}/2">
+                    <img alt="2/10" src="/project_rating_nps/static/src/img/rate_2.png"/>
+                  </a>
+                </td>
+                <td style="padding:10px 10px;">
+                  <a href="/rating/${access_token}/3">
+                    <img alt="3/10" src="/project_rating_nps/static/src/img/rate_3.png"/>
+                  </a>
+                </td>
+                <td style="padding:10px 10px;">
+                  <a href="/rating/${access_token}/4">
+                    <img alt="4/10" src="/project_rating_nps/static/src/img/rate_4.png"/>
+                  </a>
+                </td>
+                <td style="padding:10px 10px;">
+                  <a href="/rating/${access_token}/5">
+                    <img alt="5/10" src="/project_rating_nps/static/src/img/rate_5.png"/>
+                  </a>
+                </td>
+                <td style="padding:10px 10px;">
+                  <a href="/rating/${access_token}/6">
+                    <img alt="6/10" src="/project_rating_nps/static/src/img/rate_6.png"/>
+                  </a>
+                </td>
+                <td style="padding:10px 10px;">
+                  <a href="/rating/${access_token}/7">
+                    <img alt="7/10" src="/project_rating_nps/static/src/img/rate_7.png"/>
+                  </a>
+                </td>
+                <td style="padding:10px 10px;">
+                  <a href="/rating/${access_token}/8">
+                    <img alt="8/10" src="/project_rating_nps/static/src/img/rate_8.png"/>
+                  </a>
+                </td>
+                <td style="padding:10px 10px;">
+                  <a href="/rating/${access_token}/9">
+                    <img alt="9/10" src="/project_rating_nps/static/src/img/rate_9.png"/>
+                  </a>
+                </td>
+                <td style="padding:10px 10px;">
+                  <a href="/rating/${access_token}/10">
+                    <img alt="10/10" src="/project_rating_nps/static/src/img/rate_10.png"/>
                   </a>
                 </td>
               </tr>
