@@ -19,13 +19,19 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : 1;\n"
 
 #. module: project_department
-#: model:ir.ui.view,arch_db:project_department.view_project_project_filter
+#: model_terms:ir.ui.view,arch_db:project_department.view_project_project_filter
 msgid "Department"
 msgstr ""
 
 #. module: project_department
-#: model:ir.model.fields,field_description:project_department.field_project_task_project_department_id
-#: model:ir.ui.view,arch_db:project_department.view_task_search_form
+#: model:ir.model,name:project_department.model_project_project
+msgid "Project"
+msgstr ""
+
+#. module: project_department
+#: model:ir.model.fields,field_description:project_department.field_project_project__department_id
+#: model:ir.model.fields,field_description:project_department.field_project_task__project_department_id
+#: model_terms:ir.ui.view,arch_db:project_department.view_task_search_form
 msgid "Project Department"
 msgstr ""
 
