@@ -503,11 +503,11 @@ class TestForecastLineProject(BaseForecastLineTest):
         # we can take first line to check as forecast values are equal
         forecast_consultant = employee_forecast.filtered(
             lambda l: l.res_model == "hr.employee.forecast.role"
-                      and l.forecast_role_id == self.role_consultant
+            and l.forecast_role_id == self.role_consultant
         )[0]
         forecast_pm = employee_forecast.filtered(
             lambda l: l.res_model == "hr.employee.forecast.role"
-                      and l.forecast_role_id == self.role_pm
+            and l.forecast_role_id == self.role_pm
         )[0]
         return forecast_consultant, forecast_pm
 
@@ -612,8 +612,7 @@ class TestForecastLineProject(BaseForecastLineTest):
         request_hour_from = "8"
         request_hour_to = "18"
         leave_request = Form(
-            self.env["hr.leave"]
-            .create(
+            self.env["hr.leave"].create(
                 {
                     "holiday_type": holiday_type,
                     "employee_id": employee_id.id,
