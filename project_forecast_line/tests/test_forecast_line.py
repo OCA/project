@@ -4,7 +4,7 @@ from datetime import date
 
 from freezegun import freeze_time
 
-from odoo.tests.common import TransactionCase, tagged
+from odoo.tests.common import Form, TransactionCase, tagged
 
 
 @tagged("-at_install", "post_install")
@@ -232,255 +232,255 @@ class TestForecastLineEmployee(BaseForecastLineTest):
 class TestForecastLineSales(BaseForecastLineTest):
     @freeze_time("2022-01-01")
     def test_draft_sale_order_creates_negative_forecast_forecast(self):
-        pass
-        # with Form(self.env["sale.order"]) as form:
-        #     form.partner_id = self.customer
-        #     form.state = "draft"
-        #     form.date_order = "2022-01-10 08:00:00"
-        #     form.default_forecast_date_start = "2022-02-07"
-        #     form.default_forecast_date_end = "2022-02-20"
-        #     with form.order_line.new() as line:
-        #         line.product_id = self.product_dev_tm
-        #         line.product_uom_qty = 10  # 1 FTE sold
-        #         line.product_uom = self.env.ref("uom.product_uom_day")
-        # so = form.save()
-        # line = so.order_line[0]
-        # self.assertEqual(line.forecast_date_start, date(2022, 2, 7))
-        # self.assertEqual(line.forecast_date_end, date(2022, 2, 20))
-        # forecast_lines = self.env["forecast.line"].search(
-        #     [
-        #         ("sale_line_id", "=", line.id),
-        #         ("res_model", "=", "sale.order.line"),
-        #     ]
-        # )
-        # self.assertEqual(len(forecast_lines), 1)  # 10 days on 2022-02-01 to 2022-02-10
-        # self.assertEqual(forecast_lines.type, "forecast")
-        # self.assertEqual(
-        #     forecast_lines.forecast_role_id,
-        #     self.product_dev_tm.forecast_role_id,
-        # )
-        # self.assertEqual(forecast_lines.forecast_hours, -10 * 8)
-        # self.assertEqual(forecast_lines.cost, -10 * 8 * 75)
-        # self.assertEqual(forecast_lines.date_from, date(2022, 2, 1))
-        # self.assertEqual(forecast_lines.date_to, date(2022, 2, 28))
+        with Form(self.env["sale.order"]) as form:
+            form.partner_id = self.customer
+            form.state = "draft"
+            form.date_order = "2022-01-10 08:00:00"
+            form.default_forecast_date_start = "2022-02-07"
+            form.default_forecast_date_end = "2022-02-20"
+            with form.order_line.new() as line:
+                line.product_id = self.product_dev_tm
+                line.product_uom_qty = 10  # 1 FTE sold
+                line.product_uom = self.env.ref("uom.product_uom_day")
+        so = form.save()
+        line = so.order_line[0]
+        self.assertEqual(line.forecast_date_start, date(2022, 2, 7))
+        self.assertEqual(line.forecast_date_end, date(2022, 2, 20))
+        forecast_lines = self.env["forecast.line"].search(
+            [
+                ("sale_line_id", "=", line.id),
+                ("res_model", "=", "sale.order.line"),
+            ]
+        )
+        self.assertEqual(len(forecast_lines), 1)  # 10 days on 2022-02-01 to 2022-02-10
+        self.assertEqual(forecast_lines.type, "forecast")
+        self.assertEqual(
+            forecast_lines.forecast_role_id,
+            self.product_dev_tm.forecast_role_id,
+        )
+        self.assertEqual(forecast_lines.forecast_hours, -10 * 8)
+        self.assertEqual(forecast_lines.cost, -10 * 8 * 75)
+        self.assertEqual(forecast_lines.date_from, date(2022, 2, 1))
+        self.assertEqual(forecast_lines.date_to, date(2022, 2, 28))
 
     @freeze_time("2022-01-01")
     def test_draft_sale_order_without_dates_no_forecast(self):
         """a draft sale order with no dates on the line does not create forecast"""
-        # with Form(self.env["sale.order"]) as form:
-        #     form.partner_id = self.customer
-        #     # form.date_order = "2022-01-10 08:00:00"
-        #     form.default_forecast_date_start = "2022-02-07"
-        #     form.default_forecast_date_end = False
-        #     with form.order_line.new() as line:
-        #         line.product_id = self.product_dev_tm
-        #         line.product_uom_qty = 10  # 1 FTE sold
-        #         line.product_uom = self.env.ref("uom.product_uom_day")
-        # so = form.sudo().save()
-        # line = so.order_line[0]
-        # self.assertEqual(line.forecast_date_start, date(2022, 2, 7))
-        # self.assertEqual(line.forecast_date_end, False)
-        # forecast_lines = self.env["forecast.line"].search(
-        #     [
-        #         ("sale_line_id", "=", line.id),
-        #         ("res_model", "=", "sale.order.line"),
-        #     ]
-        # )
-        # self.assertFalse(forecast_lines)
+        with Form(self.env["sale.order"]) as form:
+            form.partner_id = self.customer
+            form.state = "draft"
+            form.date_order = "2022-01-10 08:00:00"
+            form.default_forecast_date_start = "2022-02-07"
+            form.default_forecast_date_end = False
+            with form.order_line.new() as line:
+                line.product_id = self.product_dev_tm
+                line.product_uom_qty = 10  # 1 FTE sold
+                line.product_uom = self.env.ref("uom.product_uom_day")
+        so = form.sudo().save()
+        line = so.order_line[0]
+        self.assertEqual(line.forecast_date_start, date(2022, 2, 7))
+        self.assertEqual(line.forecast_date_end, False)
+        forecast_lines = self.env["forecast.line"].search(
+            [
+                ("sale_line_id", "=", line.id),
+                ("res_model", "=", "sale.order.line"),
+            ]
+        )
+        self.assertFalse(forecast_lines)
 
     @freeze_time("2022-01-01")
     def test_draft_sale_order_forecast_spread(self):
-        pass
-        # with Form(self.env["sale.order"]) as form:
-        #     form.partner_id = self.customer
-        #     # form.date_order = "2022-01-10 08:00:00"
-        #     form.default_forecast_date_start = "2022-02-07"
-        #     form.default_forecast_date_end = "2022-04-17"
-        #     with form.order_line.new() as line:
-        #         line.product_id = self.product_dev_tm
-        #         line.product_uom_qty = 100  # sell 2 FTE
-        #         line.product_uom = self.env.ref("uom.product_uom_day")
-        #
-        # so = form.save()
-        # line = so.order_line[0]
-        # self.assertEqual(line.forecast_date_start, date(2022, 2, 7))
-        # self.assertEqual(line.forecast_date_end, date(2022, 4, 17))
-        # forecast_lines = self.env["forecast.line"].search(
-        #     [
-        #         ("sale_line_id", "=", line.id),
-        #         ("res_model", "=", "sale.order.line"),
-        #     ]
-        # )
-        # self.assertEqual(len(forecast_lines), 3)
-        # daily_ratio = 2 * 8  # 2 FTE * 8h days
-        # self.assertAlmostEqual(
-        #     forecast_lines[0].forecast_hours,
-        #     -1 * daily_ratio * 16,  # 16 worked days between 2022 Feb 7 and Feb 28
-        # )
-        # self.assertAlmostEqual(
-        #     forecast_lines[1].forecast_hours,
-        #     -1 * daily_ratio * 23,  # 23 worked days in march 2022
-        # )
-        # self.assertAlmostEqual(
-        #     forecast_lines[2].forecast_hours,
-        #     -1 * daily_ratio * 11,  # 11 worked day between april 1 and 17 2022
-        # )
-        # self.assertEqual(
-        #     forecast_lines.mapped("date_from"),
-        #     [date(2022, 2, 1), date(2022, 3, 1), date(2022, 4, 1)],
-        # )
-        # self.assertEqual(
-        #     forecast_lines.mapped("date_to"),
-        #     [date(2022, 2, 28), date(2022, 3, 31), date(2022, 4, 30)],
-        # )
+        with Form(self.env["sale.order"]) as form:
+            form.partner_id = self.customer
+            form.state = "draft"
+            form.date_order = "2022-01-10 08:00:00"
+            form.default_forecast_date_start = "2022-02-07"
+            form.default_forecast_date_end = "2022-04-17"
+            with form.order_line.new() as line:
+                line.product_id = self.product_dev_tm
+                line.product_uom_qty = 100  # sell 2 FTE
+                line.product_uom = self.env.ref("uom.product_uom_day")
+
+        so = form.save()
+        line = so.order_line[0]
+        self.assertEqual(line.forecast_date_start, date(2022, 2, 7))
+        self.assertEqual(line.forecast_date_end, date(2022, 4, 17))
+        forecast_lines = self.env["forecast.line"].search(
+            [
+                ("sale_line_id", "=", line.id),
+                ("res_model", "=", "sale.order.line"),
+            ]
+        )
+        self.assertEqual(len(forecast_lines), 3)
+        daily_ratio = 2 * 8  # 2 FTE * 8h days
+        self.assertAlmostEqual(
+            forecast_lines[0].forecast_hours,
+            -1 * daily_ratio * 16,  # 16 worked days between 2022 Feb 7 and Feb 28
+        )
+        self.assertAlmostEqual(
+            forecast_lines[1].forecast_hours,
+            -1 * daily_ratio * 23,  # 23 worked days in march 2022
+        )
+        self.assertAlmostEqual(
+            forecast_lines[2].forecast_hours,
+            -1 * daily_ratio * 11,  # 11 worked day between april 1 and 17 2022
+        )
+        self.assertEqual(
+            forecast_lines.mapped("date_from"),
+            [date(2022, 2, 1), date(2022, 3, 1), date(2022, 4, 1)],
+        )
+        self.assertEqual(
+            forecast_lines.mapped("date_to"),
+            [date(2022, 2, 28), date(2022, 3, 31), date(2022, 4, 30)],
+        )
 
     @freeze_time("2022-01-01")
     def test_confirm_order_sale_order_no_forecast_line(self):
-        pass
-        # with Form(self.env["sale.order"]) as form:
-        #     form.partner_id = self.customer
-        #     # form.date_order = "2022-01-10 08:00:00"
-        #     form.default_forecast_date_start = "2022-02-14"
-        #     form.default_forecast_date_end = "2022-04-14"
-        #     with form.order_line.new() as line:
-        #         line.product_id = self.product_dev_tm
-        #         line.product_uom_qty = 60
-        #         line.product_uom = self.env.ref("uom.product_uom_day")
-        #
-        # so = form.save()
-        # so.action_confirm()
-        # line = so.order_line[0]
-        # forecast_lines = self.env["forecast.line"].search(
-        #     [
-        #         ("sale_line_id", "=", line.id),
-        #         ("res_model", "=", "sale.order.line"),
-        #     ]
-        # )
-        # self.assertFalse(forecast_lines)
+        with Form(self.env["sale.order"]) as form:
+            form.partner_id = self.customer
+            form.state = "draft"
+            form.date_order = "2022-01-10 08:00:00"
+            form.default_forecast_date_start = "2022-02-14"
+            form.default_forecast_date_end = "2022-04-14"
+            with form.order_line.new() as line:
+                line.product_id = self.product_dev_tm
+                line.product_uom_qty = 60
+                line.product_uom = self.env.ref("uom.product_uom_day")
+
+        so = form.save()
+        so.action_confirm()
+        line = so.order_line[0]
+        forecast_lines = self.env["forecast.line"].search(
+            [
+                ("sale_line_id", "=", line.id),
+                ("res_model", "=", "sale.order.line"),
+            ]
+        )
+        self.assertFalse(forecast_lines)
 
     @freeze_time("2022-01-01")
     def test_confirm_order_sale_order_create_project_task_with_forecast_line(self):
-        pass
-        # with Form(self.env["sale.order"]) as form:
-        #     form.partner_id = self.customer
-        #     # form.date_order = "2022-10-10 08:00:00"
-        #     form.default_forecast_date_start = "2022-11-14"
-        #     form.default_forecast_date_end = "2022-12-17"
-        #     with form.order_line.new() as line:
-        #         line.product_id = self.product_dev_tm
-        #         line.product_uom_qty = 45 * 2  # 2 FTE
-        #         line.product_uom = self.env.ref("uom.product_uom_day")
-        # so = form.save()
-        # so.action_confirm()
-        # line = so.order_line[0]
-        # task = self.env["project.task"].search([("sale_line_id", "=", line.id)])
-        # forecast_lines = self.env["forecast.line"].search(
-        #     [("res_id", "=", task.id), ("res_model", "=", "project.task")]
-        # )
-        # self.assertEqual(len(forecast_lines), 3)
-        # self.assertEqual(forecast_lines.mapped("forecast_role_id"), self.role_developer)
-        # daily_ratio = 8 * 2  # 2 FTE
-        # self.assertAlmostEqual(
-        #     forecast_lines[0].forecast_hours,
-        #     -1 * daily_ratio * 11,  # 11 working days on 2022-02-14 -> 2022-02-28
-        # )
-        # self.assertAlmostEqual(
-        #     forecast_lines[1].forecast_hours,
-        #     -1 * daily_ratio * 23,  # 23 working days on 2022-03-01 -> 2022-03-31
-        # )
-        # self.assertAlmostEqual(
-        #     forecast_lines[2].forecast_hours,
-        #     -1 * daily_ratio * 11,  # 11 working days on 2022-04-01 -> 2022-04-17
-        # )
+        with Form(self.env["sale.order"]) as form:
+            form.partner_id = self.customer
+            form.state = "draft"
+            form.date_order = "2022-10-10 08:00:00"
+            form.default_forecast_date_start = "2022-11-14"
+            form.default_forecast_date_end = "2022-12-17"
+            with form.order_line.new() as line:
+                line.product_id = self.product_dev_tm
+                line.product_uom_qty = 45 * 2  # 2 FTE
+                line.product_uom = self.env.ref("uom.product_uom_day")
+        so = form.save()
+        so.action_confirm()
+        line = so.order_line[0]
+        task = self.env["project.task"].search([("sale_line_id", "=", line.id)])
+        forecast_lines = self.env["forecast.line"].search(
+            [("res_id", "=", task.id), ("res_model", "=", "project.task")]
+        )
+        self.assertEqual(len(forecast_lines), 3)
+        self.assertEqual(forecast_lines.mapped("forecast_role_id"), self.role_developer)
+        daily_ratio = 8 * 2  # 2 FTE
+        self.assertAlmostEqual(
+            forecast_lines[0].forecast_hours,
+            -1 * daily_ratio * 11,  # 11 working days on 2022-02-14 -> 2022-02-28
+        )
+        self.assertAlmostEqual(
+            forecast_lines[1].forecast_hours,
+            -1 * daily_ratio * 23,  # 23 working days on 2022-03-01 -> 2022-03-31
+        )
+        self.assertAlmostEqual(
+            forecast_lines[2].forecast_hours,
+            -1 * daily_ratio * 11,  # 11 working days on 2022-04-01 -> 2022-04-17
+        )
 
 
 class TestForecastLineTimesheet(BaseForecastLineTest):
     def test_timesheet_forecast_lines(self):
-        pass
-        # with freeze_time("2022-01-01"):
-        #     with Form(self.env["sale.order"]) as form:
-        #         form.partner_id = self.customer
-        #         form.date_order = "2022-01-10 08:00:00"
-        #         form.default_forecast_date_start = "2022-02-14"
-        #         form.default_forecast_date_end = "2022-04-17"
-        #         with form.order_line.new() as line:
-        #             line.product_id = self.product_dev_tm
-        #             line.product_uom_qty = (
-        #                 45 * 2
-        #             )  # 45 working days in the period, sell 2 FTE
-        #             line.product_uom = self.env.ref("uom.product_uom_day")
-        #     so = form.save()
-        #     so.action_confirm()
-        #
-        # with freeze_time("2022-02-14"):
-        #     line = so.order_line[0]
-        #     task = self.env["project.task"].search([("sale_line_id", "=", line.id)])
-        # timesheet 1d
-        #     self.env["account.analytic.line"].create(
-        #         {
-        #             "employee_id": self.employee_dev.id,
-        #             "task_id": task.id,
-        #             "project_id": task.project_id.id,
-        #             "unit_amount": 8,
-        #         }
-        #     )
-        #     forecast_lines = self.env["forecast.line"].search(
-        #         [("res_id", "=", task.id), ("res_model", "=", "project.task")]
-        #     )
-        #     self.assertEqual(len(forecast_lines), 3)
-        #     daily_ratio = (45 * 2 - 1) * 8 / 45
-        #     self.assertAlmostEqual(
-        #         forecast_lines[0].forecast_hours, -1 * daily_ratio * 11
-        #     )
-        #     self.assertAlmostEqual(
-        #         forecast_lines[1].forecast_hours, -1 * daily_ratio * 23
-        #     )
-        #     self.assertAlmostEqual(
-        #         forecast_lines[2].forecast_hours, -1 * daily_ratio * 11
-        #     )
-        #     self.assertEqual(
-        #         forecast_lines.mapped("date_from"),
-        #         [date(2022, 2, 1), date(2022, 3, 1), date(2022, 4, 1)],
-        #     )
-        #     self.assertEqual(
-        #         forecast_lines.mapped("date_to"),
-        #         [date(2022, 2, 28), date(2022, 3, 31), date(2022, 4, 30)],
-        #     )
+        with freeze_time("2022-01-01"):
+            with Form(self.env["sale.order"]) as form:
+                form.partner_id = self.customer
+                form.state = "draft"
+                form.date_order = "2022-01-10 08:00:00"
+                form.default_forecast_date_start = "2022-02-14"
+                form.default_forecast_date_end = "2022-04-17"
+                with form.order_line.new() as line:
+                    line.product_id = self.product_dev_tm
+                    line.product_uom_qty = (
+                        45 * 2
+                    )  # 45 working days in the period, sell 2 FTE
+                    line.product_uom = self.env.ref("uom.product_uom_day")
+            so = form.save()
+            so.action_confirm()
+
+        with freeze_time("2022-02-14"):
+            line = so.order_line[0]
+            task = self.env["project.task"].search([("sale_line_id", "=", line.id)])
+            # timesheet 1d
+            self.env["account.analytic.line"].create(
+                {
+                    "employee_id": self.employee_dev.id,
+                    "task_id": task.id,
+                    "project_id": task.project_id.id,
+                    "unit_amount": 8,
+                }
+            )
+            forecast_lines = self.env["forecast.line"].search(
+                [("res_id", "=", task.id), ("res_model", "=", "project.task")]
+            )
+            self.assertEqual(len(forecast_lines), 3)
+            daily_ratio = (45 * 2 - 1) * 8 / 45
+            self.assertAlmostEqual(
+                forecast_lines[0].forecast_hours, -1 * daily_ratio * 11
+            )
+            self.assertAlmostEqual(
+                forecast_lines[1].forecast_hours, -1 * daily_ratio * 23
+            )
+            self.assertAlmostEqual(
+                forecast_lines[2].forecast_hours, -1 * daily_ratio * 11
+            )
+            self.assertEqual(
+                forecast_lines.mapped("date_from"),
+                [date(2022, 2, 1), date(2022, 3, 1), date(2022, 4, 1)],
+            )
+            self.assertEqual(
+                forecast_lines.mapped("date_to"),
+                [date(2022, 2, 28), date(2022, 3, 31), date(2022, 4, 30)],
+            )
 
     def test_timesheet_forecast_lines_cron(self):
         """check recomputation of forecast lines of tasks even if we don"t TS"""
         self.test_timesheet_forecast_lines()
-        # with freeze_time("2022-03-10"):
-        #     self.env["forecast.line"]._cron_recompute_all()
-        #     forecast_lines = self.env["forecast.line"].search(
-        #         [("res_model", "=", "project.task")]
-        #     )
-        #     self.assertEqual(len(forecast_lines), 2)
-        #     daily_ratio = (
-        #         8
-        #         * (45 * 2 - 1)
-        #         / 27  # 27 worked days between 2022-03-10 and 2022-04-17
-        #     )
-        #     self.assertAlmostEqual(
-        #         forecast_lines[0].forecast_hours,
-        #         -1
-        #         * daily_ratio
-        #         * 16,  # 16 worked days between 2022-03-10 and 2022-03-31
-        #     )
-        #     self.assertAlmostEqual(
-        #         forecast_lines[1].forecast_hours,
-        #         -1
-        #         * daily_ratio
-        #         * 11,  # 11 worked days between 2022-04-01 and 2022-04-17
-        #     )
-        #     self.assertEqual(
-        #         forecast_lines.mapped("date_from"),
-        #         [date(2022, 3, 1), date(2022, 4, 1)],
-        #     )
-        #     self.assertEqual(
-        #         forecast_lines.mapped("date_to"),
-        #         [date(2022, 3, 31), date(2022, 4, 30)],
-        #     )
+        with freeze_time("2022-03-10"):
+            self.env["forecast.line"]._cron_recompute_all()
+            forecast_lines = self.env["forecast.line"].search(
+                [("res_model", "=", "project.task")]
+            )
+            self.assertEqual(len(forecast_lines), 2)
+            daily_ratio = (
+                8
+                * (45 * 2 - 1)
+                / 27  # 27 worked days between 2022-03-10 and 2022-04-17
+            )
+            self.assertAlmostEqual(
+                forecast_lines[0].forecast_hours,
+                -1
+                * daily_ratio
+                * 16,  # 16 worked days between 2022-03-10 and 2022-03-31
+            )
+            self.assertAlmostEqual(
+                forecast_lines[1].forecast_hours,
+                -1
+                * daily_ratio
+                * 11,  # 11 worked days between 2022-04-01 and 2022-04-17
+            )
+            self.assertEqual(
+                forecast_lines.mapped("date_from"),
+                [date(2022, 3, 1), date(2022, 4, 1)],
+            )
+            self.assertEqual(
+                forecast_lines.mapped("date_to"),
+                [date(2022, 3, 31), date(2022, 4, 30)],
+            )
 
 
 class TestForecastLineProject(BaseForecastLineTest):
