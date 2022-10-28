@@ -244,8 +244,8 @@ class TestForecastLineSales(BaseForecastLineTest):
                 line.product_uom = self.env.ref("uom.product_uom_day")
         so = form.save()
         line = so.order_line[0]
-        self.assertEqual(line.forecast_date_start, date(2022, 2, 7))
-        self.assertEqual(line.forecast_date_end, date(2022, 2, 20))
+        self.assertEqual(line.forecast_date_start, date(2022, 11, 7))
+        self.assertEqual(line.forecast_date_end, date(2022, 11, 20))
         forecast_lines = self.env["forecast.line"].search(
             [
                 ("sale_line_id", "=", line.id),
@@ -278,7 +278,7 @@ class TestForecastLineSales(BaseForecastLineTest):
                 line.product_uom = self.env.ref("uom.product_uom_day")
         so = form.save()
         line = so.order_line[0]
-        self.assertEqual(line.forecast_date_start, date(2022, 2, 7))
+        self.assertEqual(line.forecast_date_start, date(2022, 11, 7))
         self.assertEqual(line.forecast_date_end, False)
         forecast_lines = self.env["forecast.line"].search(
             [
@@ -303,8 +303,8 @@ class TestForecastLineSales(BaseForecastLineTest):
 
         so = form.save()
         line = so.order_line[0]
-        self.assertEqual(line.forecast_date_start, date(2022, 2, 7))
-        self.assertEqual(line.forecast_date_end, date(2022, 4, 17))
+        self.assertEqual(line.forecast_date_start, date(2022, 11, 7))
+        self.assertEqual(line.forecast_date_end, date(2023, 1, 17))
         forecast_lines = self.env["forecast.line"].search(
             [
                 ("sale_line_id", "=", line.id),
@@ -604,7 +604,7 @@ class TestForecastLineProject(BaseForecastLineTest):
     def test_forecast_with_holidays(self):
         self.test_task_forecast_lines_consolidated_forecast()
         with Form(self.env["hr.leave"]) as form:
-            form.employee_id = self.employee_consultant
+            form.employee_ids = [self.employee_consultant]
             form.holiday_status_id = self.env.ref("hr_holidays.holiday_status_unpaid")
             form.request_date_from = "2022-11-14"
             form.request_date_to = "2022-11-15"
