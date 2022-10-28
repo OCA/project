@@ -14,16 +14,16 @@ Project Forecast Lines
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fproject-lightgray.png?logo=github
-    :target: https://github.com/OCA/project/tree/15.0/project_forecast_line
+    :target: https://github.com/OCA/project/tree/16.0/project_forecast_line
     :alt: OCA/project
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/project-15-0/project-15-0-project_forecast_line
+    :target: https://translation.odoo-community.org/projects/project-16-0/project-16-0-project_forecast_line
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runbot-Try%20me-875A7B.png
-    :target: https://runbot.odoo-community.org/runbot/140/15.0
+    :target: https://runbot.odoo-community.org/runbot/140/16.0
     :alt: Try me on Runbot
 
-|badge1| |badge2| |badge3| |badge4| |badge5| 
+|badge1| |badge2| |badge3| |badge4| |badge5|
 
 This module allows to plan your resources using forecast lines.
 
@@ -166,6 +166,6 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
-This module is part of the `OCA/project <https://github.com/OCA/project/tree/15.0/project_forecast_line>`_ project on GitHub.
+This module is part of the `OCA/project <https://github.com/OCA/project/tree/16.0/project_forecast_line>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.

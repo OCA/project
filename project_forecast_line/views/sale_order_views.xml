@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <record id="view_order_form_inherits" model="ir.ui.view">
+    <record id="view_order_form" model="ir.ui.view">
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form" />
         <field name="arch" type="xml">
@@ -10,11 +10,11 @@
             >
                 <field
                     name="forecast_date_start"
-                    groups="project_forecast_line.group_forecast_line_on_quotation"
+                    group_id="project_forecast_line.group_forecast_line_on_quotation"
                 />
                 <field
                     name="forecast_date_end"
-                    groups="project_forecast_line.group_forecast_line_on_quotation"
+                    group_id="project_forecast_line.group_forecast_line_on_quotation"
                 />
             </xpath>
             <xpath
@@ -24,22 +24,22 @@
                 <field
                     name="forecast_date_start"
                     optional="show"
-                    groups="project_forecast_line.group_forecast_line_on_quotation"
+                    group_id="project_forecast_line.group_forecast_line_on_quotation"
                 />
                 <field
                     name="forecast_date_end"
                     optional="show"
-                    groups="project_forecast_line.group_forecast_line_on_quotation"
+                    group_id="project_forecast_line.group_forecast_line_on_quotation"
                 />
             </xpath>
             <field name="date_order" position="after">
                 <field
                     name="default_forecast_date_start"
-                    groups="project_forecast_line.group_forecast_line_on_quotation"
+                    group_id="project_forecast_line.group_forecast_line_on_quotation"
                 />
                 <field
                     name="default_forecast_date_end"
-                    groups="project_forecast_line.group_forecast_line_on_quotation"
+                    group_id="project_forecast_line.group_forecast_line_on_quotation"
                 />
             </field>
         </field>
