@@ -276,7 +276,7 @@ class TestForecastLineSales(BaseForecastLineTest):
                 line.product_id = self.product_dev_tm
                 line.product_uom_qty = 10  # 1 FTE sold
                 line.product_uom = self.env.ref("uom.product_uom_day")
-        so = form.sudo().save()
+        so = form.save()
         line = so.order_line[0]
         self.assertEqual(line.forecast_date_start, date(2022, 2, 7))
         self.assertEqual(line.forecast_date_end, False)
