@@ -607,8 +607,8 @@ class TestForecastLineProject(BaseForecastLineTest):
         holiday_type = "employee"
         employee_id = self.employee_consultant
         holiday_status_id = self.env.ref("hr_holidays.holiday_status_unpaid")
-        request_date_from = "2022-11-14"
-        request_date_to = "2022-11-15"
+        request_date_from = "2022-01-14"
+        request_date_to = "2022-01-15"
         request_hour_from = "8"
         request_hour_to = "18"
         leave_request = Form(
@@ -633,8 +633,8 @@ class TestForecastLineProject(BaseForecastLineTest):
             [
                 ("employee_id", "=", self.employee_consultant.id),
                 ("res_model", "=", "hr.employee.forecast.role"),
-                ("date_from", ">=", "2022-11-14"),
-                ("date_to", "<=", "2022-11-15"),
+                ("date_from", ">=", "2022-01-14"),
+                ("date_to", "<=", "2022-01-15"),
             ]
         )
         # 1 line per role per day -> 4 lines
