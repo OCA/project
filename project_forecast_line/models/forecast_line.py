@@ -27,7 +27,6 @@ class ForecastLine(models.Model):
     )
     date_to = fields.Date(required=True)
     forecast_role_id = fields.Many2one(
-<<<<<<< HEAD
         "forecast.role",
         string="Forecast role",
         required=True,
@@ -38,13 +37,11 @@ class ForecastLine(models.Model):
     employee_forecast_role_id = fields.Many2one(
         "hr.employee.forecast.role",
         string="Employee Forecast Role",
-=======
-        "forecast.role", string="Forecast role", required=True, index=True
+        required=True, index=True
     )
     employee_id = fields.Many2one("hr.employee", string="Employee")
     employee_forecast_role_id = fields.Many2one(
         "hr.employee.forecast.role", string="Employee Forecast Role"
->>>>>>> [15.0][ADD] project_forecast_line
     )
     project_id = fields.Many2one("project.project", index=True, string="Project")
     task_id = fields.Many2one("project.task", index=True, string="Task")
@@ -69,7 +66,6 @@ class ForecastLine(models.Model):
         "holidays, sales, or tasks. ",
     )
     consolidated_forecast = fields.Float(
-<<<<<<< HEAD
         help="Consolidated forecast for lines of all types consumed",
         digits=(12, 5),
         store=True,
@@ -78,16 +74,11 @@ class ForecastLine(models.Model):
     confirmed_consolidated_forecast = fields.Float(
         string="Confirmed lines consolidated forecast",
         help="Consolidated forecast for lines of type confirmed",
-=======
->>>>>>> [15.0][ADD] project_forecast_line
         digits=(12, 5),
         store=True,
         compute="_compute_consolidated_forecast",
     )
-<<<<<<< HEAD
-=======
 
->>>>>>> [15.0][ADD] project_forecast_line
     currency_id = fields.Many2one(related="company_id.currency_id", store=True)
     company_id = fields.Many2one(
         "res.company", required=True, default=lambda s: s.env.company
@@ -115,23 +106,17 @@ class ForecastLine(models.Model):
     @api.depends("employee_id", "date_from", "type", "res_model")
     def _compute_employee_forecast_line_id(self):
         employees = self.mapped("employee_id")
-<<<<<<< HEAD
         main_roles = employees.mapped("main_role_id")
         date_froms = self.mapped("date_from")
         date_tos = self.mapped("date_to")
         forecast_roles = self.mapped("forecast_role_id") | main_roles
-=======
         date_froms = self.mapped("date_from")
         date_tos = self.mapped("date_to")
->>>>>>> [15.0][ADD] project_forecast_line
         if employees:
             lines = self.search(
                 [
                     ("employee_id", "in", employees.ids),
-<<<<<<< HEAD
                     ("forecast_role_id", "in", forecast_roles.ids),
-=======
->>>>>>> [15.0][ADD] project_forecast_line
                     ("res_model", "=", "hr.employee.forecast.role"),
                     ("date_from", ">=", min(date_froms)),
                     ("date_to", "<=", max(date_tos)),
@@ -142,7 +127,6 @@ class ForecastLine(models.Model):
             lines = self.env["forecast.line"]
         capacities = {}
         for line in lines:
-<<<<<<< HEAD
             employee_id = line.employee_id
             date_from = line.date_from
             forecast_role_id = line.forecast_role_id
@@ -192,6 +176,7 @@ class ForecastLine(models.Model):
     @api.depends("employee_resource_consumption_ids.forecast_hours", "forecast_hours")
     def _compute_consolidated_forecast(self):
         grouped_lines_values = self._get_grouped_line_values()
+        capacities = {}
         for rec in self:
             if rec.res_model != "hr.employee.forecast.role":
                 rec.consolidated_forecast = (
@@ -217,7 +202,6 @@ class ForecastLine(models.Model):
                 rec.confirmed_consolidated_forecast = self._convert_hours_to_days(
                     rec.forecast_hours + confirmed
                 )
-=======
             capacities[(line.employee_id.id, line.date_from)] = line.id
         for rec in self:
             if rec.type == "confirmed" and rec.res_model != "hr.employee.forecast.role":
@@ -255,7 +239,6 @@ class ForecastLine(models.Model):
             data[d["employee_resource_forecast_line_id"][0]] = d["forecast_hours"]
         for rec in self:
             rec.consolidated_forecast = rec._convert_forecast(data)
->>>>>>> [15.0][ADD] project_forecast_line
 
     def prepare_forecast_lines(
         self,
@@ -360,18 +343,15 @@ class ForecastLine(models.Model):
                 resource,
                 calendar,
             )
-<<<<<<< HEAD
             # note we do create lines even if the period_forecast is 0, as this
             # ensures that consolidated capacity can be computed: if there is
             # no line for a day when the employee does not work, but for some
             # reason there is a need on that day, we need the 0 capacity line
             # to compute the negative consolidated capacity.
-=======
             if period_forecast == 0:
                 # don"t create forecast lines with a forecast of 0
                 curr_date = next_date
                 continue
->>>>>>> [15.0][ADD] project_forecast_line
             period_forecast *= daily_forecast
             period_cost = period_forecast * unit_cost
             updates = {
@@ -443,7 +423,6 @@ class ForecastLine(models.Model):
         # we routinely unlink forecast lines, let"s not fill the logs with this
         with mute_logger("odoo.models.unlink"):
             return super().unlink()
-<<<<<<< HEAD
 
     @api.model_create_multi
     @api.returns("self", lambda value: value.id)
@@ -467,5 +446,3 @@ class ForecastLine(models.Model):
             )
             other_lines._compute_employee_forecast_line_id()
         return records
-=======
->>>>>>> [15.0][ADD] project_forecast_line
