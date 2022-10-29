@@ -603,18 +603,14 @@ class TestForecastLineProject(BaseForecastLineTest):
     @freeze_time("2022-01-01 12:00:00")
     def test_forecast_with_holidays(self):
         self.test_task_forecast_lines_consolidated_forecast()
-        # with Form(self.env["hr.leave"]) as form:
-        # holiday_type = "employee"
-        employee_id = self.employee_consultant
+        employee_id = 7
         holiday_status_id = self.env.ref("hr_holidays.holiday_status_unpaid")
-        request_date_from = "2023-01-16"
-        request_date_to = "2023-01-17"
-        # request_hour_from = "8"
-        # request_hour_to = "17"
+        request_date_from = "2023-01-15"
+        request_date_to = "2023-01-16"
         leave_request = Form(
             self.env["hr.leave"].create(
                 {
-                    "employee_id": employee_id.id,
+                    "employee_id": employee_id,
                     "holiday_status_id": holiday_status_id.id,
                     "request_date_from": request_date_from,
                     "request_date_to": request_date_to,
@@ -625,13 +621,13 @@ class TestForecastLineProject(BaseForecastLineTest):
         # the employee capactities (actually delete the existing ones and
         # create new ones -> we check that the project task lines are
         # automatically related to the new newly created employee role lines.
-        leave_request.action_validate()
+        leave_request.sudo().action_validate()
         forecast_lines = self.env["forecast.line"].search(
             [
                 ("employee_id", "=", self.employee_consultant.id),
                 ("res_model", "=", "hr.employee.forecast.role"),
-                ("date_from", ">=", "2023-01-16"),
-                ("date_to", "<=", "2023-01-17"),
+                ("date_from", ">=", "2023-01-15"),
+                ("date_to", "<=", "2023-01-16"),
             ]
         )
         # 1 line per role per day -> 4 lines
