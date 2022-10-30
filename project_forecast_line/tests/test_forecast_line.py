@@ -527,7 +527,7 @@ class TestForecastLineProject(BaseForecastLineTest):
     def test_forecast_with_holidays(self):
         self.test_task_forecast_lines_consolidated_forecast()
         with Form(self.env["hr.leave"]) as form:
-            form.employee_id = self.employee_consultant
+            # form.employee_id = self.employee_consultant
             form.holiday_status_id = self.env.ref("hr_holidays.holiday_status_unpaid")
             form.request_date_from = "2022-02-14"
             form.request_date_to = "2022-02-15"
