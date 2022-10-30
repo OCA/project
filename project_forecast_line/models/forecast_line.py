@@ -37,11 +37,6 @@ class ForecastLine(models.Model):
     employee_forecast_role_id = fields.Many2one(
         "hr.employee.forecast.role",
         string="Employee Forecast Role",
-        required=True, index=True
-    )
-    employee_id = fields.Many2one("hr.employee", string="Employee")
-    employee_forecast_role_id = fields.Many2one(
-        "hr.employee.forecast.role", string="Employee Forecast Role"
     )
     project_id = fields.Many2one("project.project", index=True, string="Project")
     task_id = fields.Many2one("project.task", index=True, string="Task")
@@ -66,14 +61,6 @@ class ForecastLine(models.Model):
         "holidays, sales, or tasks. ",
     )
     consolidated_forecast = fields.Float(
-        help="Consolidated forecast for lines of all types consumed",
-        digits=(12, 5),
-        store=True,
-        compute="_compute_consolidated_forecast",
-    )
-    confirmed_consolidated_forecast = fields.Float(
-        string="Confirmed lines consolidated forecast",
-        help="Consolidated forecast for lines of type confirmed",
         digits=(12, 5),
         store=True,
         compute="_compute_consolidated_forecast",
@@ -103,15 +90,19 @@ class ForecastLine(models.Model):
         "forecast.line", "employee_resource_forecast_line_id"
     )
 
+    def _get_consumption_states(self):
+        consumption_states = self.env.company.forecast_consumption_states
+        return tuple(consumption_states.split("_"))
+
     @api.depends("employee_id", "date_from", "type", "res_model")
     def _compute_employee_forecast_line_id(self):
+        consumption_states = self._get_consumption_states()
         employees = self.mapped("employee_id")
         main_roles = employees.mapped("main_role_id")
         date_froms = self.mapped("date_from")
         date_tos = self.mapped("date_to")
         forecast_roles = self.mapped("forecast_role_id") | main_roles
-        date_froms = self.mapped("date_from")
-        date_tos = self.mapped("date_to")
+
         if employees:
             lines = self.search(
                 [
@@ -127,13 +118,12 @@ class ForecastLine(models.Model):
             lines = self.env["forecast.line"]
         capacities = {}
         for line in lines:
-            employee_id = line.employee_id
-            date_from = line.date_from
-            forecast_role_id = line.forecast_role_id
-            capacities[(employee_id.id, date_from, forecast_role_id.id)] = line.id
+            capacities[
+                (line.employee_id.id, line.date_from, line.forecast_role_id.id)
+            ] = line.id
         for rec in self:
             if (
-                rec.type in ("forecast", "confirmed")
+                rec.type in consumption_states
                 and rec.res_model != "hr.employee.forecast.role"
             ):
                 resource_forecast_line = capacities.get(
@@ -148,66 +138,6 @@ class ForecastLine(models.Model):
                     rec.employee_resource_forecast_line_id = capacities.get(
                         (rec.employee_id.id, rec.date_from, main_role_id.id), False
                     )
-            else:
-                rec.employee_resource_forecast_line_id = False
-
-    def _get_grouped_line_values(self):
-        data = {}
-        grouped_line_result = self.env["forecast.line"].read_group(
-            [("employee_resource_forecast_line_id", "in", self.ids)],
-            fields=["forecast_hours"],
-            groupby=["employee_resource_forecast_line_id", "type"],
-            lazy=False,
-        )
-        for d in grouped_line_result:
-            line_id = d["employee_resource_forecast_line_id"][0]
-            if line_id not in data:
-                data[line_id] = {"confirmed": 0, "forecast": 0}
-            data[line_id][d["type"]] += d["forecast_hours"]
-        return data
-
-    def _convert_hours_to_days(self, hours):
-        to_convert_uom = self.env.ref("uom.product_uom_day")
-        project_time_mode_id = self.company_id.project_time_mode_id
-        return project_time_mode_id._compute_quantity(
-            hours, to_convert_uom, round=False
-        )
-
-    @api.depends("employee_resource_consumption_ids.forecast_hours", "forecast_hours")
-    def _compute_consolidated_forecast(self):
-        grouped_lines_values = self._get_grouped_line_values()
-        capacities = {}
-        for rec in self:
-            if rec.res_model != "hr.employee.forecast.role":
-                rec.consolidated_forecast = (
-                    self._convert_hours_to_days(rec.forecast_hours) * -1
-                )
-                if rec.type == "confirmed":
-                    rec.confirmed_consolidated_forecast = rec.consolidated_forecast
-                else:
-                    rec.confirmed_consolidated_forecast = 0.0
-            else:
-                resource_forecast = grouped_lines_values.get(rec.id, 0)
-                confirmed = (
-                    resource_forecast.get("confirmed", 0) if resource_forecast else 0
-                )
-                unconfirmed = (
-                    confirmed + resource_forecast.get("forecast", 0)
-                    if resource_forecast
-                    else 0
-                )
-                rec.consolidated_forecast = self._convert_hours_to_days(
-                    rec.forecast_hours + unconfirmed
-                )
-                rec.confirmed_consolidated_forecast = self._convert_hours_to_days(
-                    rec.forecast_hours + confirmed
-                )
-            capacities[(line.employee_id.id, line.date_from)] = line.id
-        for rec in self:
-            if rec.type == "confirmed" and rec.res_model != "hr.employee.forecast.role":
-                rec.employee_resource_forecast_line_id = capacities.get(
-                    (rec.employee_id.id, rec.date_from), False
-                )
             else:
                 rec.employee_resource_forecast_line_id = False
 
@@ -348,10 +278,6 @@ class ForecastLine(models.Model):
             # no line for a day when the employee does not work, but for some
             # reason there is a need on that day, we need the 0 capacity line
             # to compute the negative consolidated capacity.
-            if period_forecast == 0:
-                # don"t create forecast lines with a forecast of 0
-                curr_date = next_date
-                continue
             period_forecast *= daily_forecast
             period_cost = period_forecast * unit_cost
             updates = {

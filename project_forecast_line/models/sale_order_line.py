@@ -26,10 +26,6 @@ class SaleOrderLine(models.Model):
         ForecastLine.search(
             [("res_id", "in", self.ids), ("res_model", "=", self._name)]
         ).unlink()
-<<<<<<< HEAD
-
-=======
->>>>>>> [15.0][ADD] project_forecast_line
         for line in self:
             if not line.product_id.forecast_role_id:
                 continue
@@ -98,13 +94,8 @@ class SaleOrderLine(models.Model):
         return res
 
     @api.onchange("product_id")
-<<<<<<< HEAD
     def _onchange_product_id_warning(self):
         res = super()._onchange_product_id_warning()
-=======
-    def product_id_change(self):
-        res = super().product_id_change()
->>>>>>> [15.0][ADD] project_forecast_line
         for line in self:
             if not line.product_id.forecast_role_id:
                 line.forecast_date_start = False

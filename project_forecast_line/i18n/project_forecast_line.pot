@@ -4,20 +4,13 @@
 #
 msgid ""
 msgstr ""
-<<<<<<< HEAD
-<<<<<<< HEAD
-"Project-Id-Version: Odoo Server 15.0\n"
-"Report-Msgid-Bugs-To: \n"
-=======
+
 "Project-Id-Version: Odoo Server 15.0+e\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-08-09 11:54+0000\n"
 "PO-Revision-Date: 2022-08-09 11:54+0000\n"
->>>>>>> [15.0][ADD] project_forecast_line
-=======
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
->>>>>>> [UPD] Update project_forecast_line.pot
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -64,20 +57,16 @@ msgid "Confirmed"
 msgstr ""
 
 #. module: project_forecast_line
-<<<<<<< HEAD
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__confirmed_consolidated_forecast
 msgid "Confirmed lines consolidated forecast"
 msgstr ""
 
 #. module: project_forecast_line
-=======
->>>>>>> [15.0][ADD] project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__consolidated_forecast
 msgid "Consolidated Forecast"
 msgstr ""
 
 #. module: project_forecast_line
-<<<<<<< HEAD
 #: model:ir.model.fields,help:project_forecast_line.field_forecast_line__consolidated_forecast
 msgid "Consolidated forecast for lines of all types consumed"
 msgstr ""
@@ -88,8 +77,6 @@ msgid "Consolidated forecast for lines of type confirmed"
 msgstr ""
 
 #. module: project_forecast_line
-=======
->>>>>>> [15.0][ADD] project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__cost
 msgid "Cost"
 msgstr ""
