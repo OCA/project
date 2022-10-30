@@ -527,7 +527,6 @@ class TestForecastLineProject(BaseForecastLineTest):
     def test_forecast_with_holidays(self):
         self.test_task_forecast_lines_consolidated_forecast()
 
-
     def test_task_forecast_lines_consolidated_forecast_overallocation(self):
         with freeze_time("2022-01-01"):
             employee_forecast = self.env["forecast.line"].search(
