@@ -55,9 +55,7 @@ class ProjectTask(models.Model):
     @api.onchange("user_ids")
     def onchange_user_ids(self):
         for task in self:
-            if not task.user_ids:
-                continue
-            if task.forecast_role_id:
+            if not task.user_ids or task.forecast_role_id:
                 continue
             employees = task.mapped("user_ids.employee_id")
             for employee in employees:
