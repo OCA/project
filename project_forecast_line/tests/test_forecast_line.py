@@ -529,8 +529,8 @@ class TestForecastLineProject(BaseForecastLineTest):
         # with Form(self.env["hr.leave"]) as form:
         employee_id = self.employee_consultant
         holiday_status_id = self.env.ref("hr_holidays.holiday_status_unpaid")
-        request_date_from = "2022-02-14"
-        request_date_to = "2022-02-15"
+        request_date_from = "2022-12-14"
+        request_date_to = "2022-12-15"
         request_hour_from = "8"
         request_hour_to = "18"
         leave_request = Form(
@@ -554,8 +554,8 @@ class TestForecastLineProject(BaseForecastLineTest):
             [
                 ("employee_id", "=", self.employee_consultant.id),
                 ("res_model", "=", "hr.employee.forecast.role"),
-                ("date_from", ">=", "2022-02-14"),
-                ("date_to", "<=", "2022-02-15"),
+                ("date_from", ">=", "2022-12-14"),
+                ("date_to", "<=", "2022-12-15"),
             ]
         )
         self.assertEqual(len(forecast_lines), 2)
