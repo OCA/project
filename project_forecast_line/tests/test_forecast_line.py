@@ -526,14 +526,25 @@ class TestForecastLineProject(BaseForecastLineTest):
     @freeze_time("2022-01-01 12:00:00")
     def test_forecast_with_holidays(self):
         self.test_task_forecast_lines_consolidated_forecast()
-        with Form(self.env["hr.leave"]) as form:
-            # form.employee_id = self.employee_consultant
-            form.holiday_status_id = self.env.ref("hr_holidays.holiday_status_unpaid")
-            form.request_date_from = "2022-02-14"
-            form.request_date_to = "2022-02-15"
-            # form.request_hour_from = "8"
-            # form.request_hour_to = "18"
-        leave_request = form.save()
+        # with Form(self.env["hr.leave"]) as form:
+        employee_id = self.employee_consultant
+        holiday_status_id = self.env.ref("hr_holidays.holiday_status_unpaid")
+        request_date_from = "2022-02-14"
+        request_date_to = "2022-02-15"
+        request_hour_from = "8"
+        request_hour_to = "18"
+        leave_request = Form(
+            self.env["hr.leave"].create(
+                {
+                    "employee_id": employee_id.id,
+                    "holiday_status_id": holiday_status_id.id,
+                    "request_date_from": request_date_from,
+                    "request_date_to": request_date_to,
+                    "request_hour_from": request_hour_from,
+                    "request_hour_to": request_hour_to,
+                }
+            )
+        ).save()
         # validating the leave request will recompute the forecast lines for
         # the employee capactities (actually delete the existing ones and
         # create new ones -> we check that the project task lines are
