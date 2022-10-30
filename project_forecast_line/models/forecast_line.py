@@ -75,6 +75,13 @@ class ForecastLine(models.Model):
         required=True,
         default="forecast",
     )
+    confirmed_consolidated_forecast = fields.Float(
+        string="Confirmed lines consolidated forecast",
+        help="Consolidated forecast for lines of type confirmed",
+        digits=(12, 5),
+        store=True,
+        compute="_compute_consolidated_forecast",
+    )
     res_model = fields.Char(string="Model", index=True)
     res_id = fields.Integer(string="Record ID", index=True)
     employee_resource_forecast_line_id = fields.Many2one(
