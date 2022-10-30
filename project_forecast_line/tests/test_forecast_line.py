@@ -526,7 +526,6 @@ class TestForecastLineProject(BaseForecastLineTest):
     @freeze_time("2022-01-01 12:00:00")
     def test_forecast_with_holidays(self):
         self.test_task_forecast_lines_consolidated_forecast()
-        pass
         # with Form(self.env["hr.leave"]) as form:
         # employee_id = self.employee_consultant
         # holiday_status_id = self.env.ref("hr_holidays.holiday_status_unpaid")
