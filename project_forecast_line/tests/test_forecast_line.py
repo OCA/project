@@ -527,24 +527,24 @@ class TestForecastLineProject(BaseForecastLineTest):
     def test_forecast_with_holidays(self):
         self.test_task_forecast_lines_consolidated_forecast()
         # with Form(self.env["hr.leave"]) as form:
-        employee_id = self.employee_consultant
-        holiday_status_id = self.env.ref("hr_holidays.holiday_status_unpaid")
-        request_date_from = "2022-12-14"
-        request_date_to = "2022-12-15"
-        request_hour_from = "8"
-        request_hour_to = "17"
-        leave_request = Form(
-            self.env["hr.leave"].create(
-                {
-                    "employee_id": employee_id.id,
-                    "holiday_status_id": holiday_status_id.id,
-                    "request_date_from": request_date_from,
-                    "request_date_to": request_date_to,
-                    "request_hour_from": request_hour_from,
-                    "request_hour_to": request_hour_to,
-                }
-            )
-        ).save()
+        # employee_id = self.employee_consultant
+        # holiday_status_id = self.env.ref("hr_holidays.holiday_status_unpaid")
+        # request_date_from = "2022-12-14"
+        # request_date_to = "2022-12-15"
+        # request_hour_from = "8"
+        # request_hour_to = "17"
+        # leave_request = Form(
+        #     self.env["hr.leave"].create(
+        #         {
+        #             "employee_id": employee_id.id,
+        #             "holiday_status_id": holiday_status_id.id,
+        #             "request_date_from": request_date_from,
+        #             "request_date_to": request_date_to,
+        #             "request_hour_from": request_hour_from,
+        #             "request_hour_to": request_hour_to,
+        #         }
+        #     )
+        # ).save()
         # validating the leave request will recompute the forecast lines for
         # the employee capactities (actually delete the existing ones and
         # create new ones -> we check that the project task lines are
