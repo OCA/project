@@ -19,9 +19,9 @@ class ProjectTask(models.Model):
     def create(self, vals_list):
         # compatibility with fields from project_enterprise
         for vals in vals_list:
-            if vals.get("planned_date_begin"):
+            if "planned_date_begin" in vals:
                 vals["forecast_date_planned_start"] = vals["planned_date_begin"]
-            if vals.get("planned_date_end"):
+            if "planned_date_end" in vals:
                 vals["forecast_date_planned_end"] = vals["planned_date_end"]
         tasks = super().create(vals_list)
         tasks._update_forecast_lines()
