@@ -1,7 +1,9 @@
 # Copyright 2016 Tecnativa <vicent.cubells@tecnativa.com>
+# Copyright 2023 Abraham Anes <abrahamanes@gmail.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import _, api, fields, models
+from odoo.exceptions import ValidationError
 
 
 class ProjectTask(models.Model):
@@ -15,23 +17,36 @@ class ProjectTask(models.Model):
         copy=False,
     )
 
-    _sql_constraints = [
-        ("project_task_unique_code", "UNIQUE (code)", _("The code must be unique!")),
-    ]
+    @api.constrains("code")
+    def _check_project_task_unique_code(self):
+        for task in self:
+            if (
+                task.code
+                and task.code != "/"
+                and self.search(
+                    [
+                        ("code", "=", task.code),
+                        ("id", "!=", task.id),
+                        ("company_id", "=", task.company_id.id),
+                    ],
+                    limit=1,
+                )
+            ):
+                raise ValidationError(_("The code must be unique!"))
 
     @api.model_create_multi
     def create(self, vals_list):
-        new_list = []
         for vals in vals_list:
             if vals.get("code", "/") == "/":
-                new_vals = dict(
-                    vals,
-                    code=self.env["ir.sequence"].next_by_code("project.task") or "/",
+                company_id = vals.get("company_id")
+                company = (
+                    self.env["res.company"].browse(company_id)
+                    if company_id
+                    else self._default_company_id()
                 )
-            else:
-                new_vals = vals
-            new_list.append(new_vals)
-        return super().create(new_list)
+                if company.project_task_seq_id:
+                    vals["code"] = company.project_task_seq_id._next()
+        return super().create(vals_list)
 
     def name_get(self):
         result = super().name_get()
@@ -39,6 +54,10 @@ class ProjectTask(models.Model):
 
         for task in result:
             rec = self.browse(task[0])
-            name = "[{}] {}".format(rec.code, task[1])
+            name = (
+                "[{}] {}".format(rec.code, task[1])
+                if rec.code and rec.code != "/"
+                else task[1]
+            )
             new_result.append((rec.id, name))
         return new_result

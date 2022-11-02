@@ -6,8 +6,15 @@
         <field name="inherit_id" ref="project.view_task_form2" />
         <field name="arch" type="xml">
             <field name="name" position="before">
-                <field name="code" class="oe_inline" />
-                <span class="oe_inline"> - </span>
+                <field
+                    name="code"
+                    class="oe_inline"
+                    attrs="{'invisible': [('code', 'in', ['/', False])]}"
+                />
+                <span
+                    class="oe_inline"
+                    attrs="{'invisible': [('code', 'in', ['/', False])]}"
+                > - </span>
             </field>
         </field>
     </record>
@@ -17,7 +24,7 @@
         <field name="inherit_id" ref="project.view_task_tree2" />
         <field name="arch" type="xml">
             <field name="name" position="before">
-                <field name="code" />
+                <field name="code" optional="hide" />
             </field>
         </field>
     </record>
@@ -26,9 +33,13 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_kanban" />
         <field name="arch" type="xml">
-            <field name="name" position="before">
-                <field name="code" />
-            </field>
+            <xpath expr="//field[@name='name']/.." position="before">
+                <field
+                    name="code"
+                    class="me-2"
+                    attrs="{'invisible': [('code', '=', '/')]}"
+                />
+            </xpath>
         </field>
     </record>
     <record id="project_task_code_search_view" model="ir.ui.view">

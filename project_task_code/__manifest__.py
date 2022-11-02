@@ -3,7 +3,7 @@
 
 {
     "name": "Sequential Code for Tasks",
-    "version": "15.0.1.0.4",
+    "version": "16.0.1.0.0",
     "category": "Project Management",
     "author": "OdooMRP team, "
     "AvanzOSC, "
@@ -17,8 +17,7 @@
     "data": [
         "data/task_sequence.xml",
         "views/project_view.xml",
+        "views/res_config_settings_view.xml",
     ],
     "installable": True,
-    "pre_init_hook": "pre_init_hook",
-    "post_init_hook": "post_init_hook",
 }
