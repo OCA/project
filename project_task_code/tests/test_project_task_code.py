@@ -10,7 +10,7 @@ class TestProjectTaskCode(common.TransactionCase):
         self.project_task_model = self.env["project.task"]
         self.ir_sequence_model = self.env["ir.sequence"]
         self.task_sequence = self.env.ref("project_task_code.sequence_task")
-        self.project_task = self.env.ref("project.project_task_1")
+        self.project_task = self.env.ref("project.project_1_task_1")
 
     def test_old_task_code_assign(self):
         project_tasks = self.project_task_model.search([])
