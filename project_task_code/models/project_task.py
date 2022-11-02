@@ -21,17 +21,12 @@ class ProjectTask(models.Model):
 
     @api.model_create_multi
     def create(self, vals_list):
-        new_list = []
         for vals in vals_list:
             if vals.get("code", "/") == "/":
-                new_vals = dict(
-                    vals,
-                    code=self.env["ir.sequence"].next_by_code("project.task") or "/",
+                vals["code"] = (
+                    self.env["ir.sequence"].next_by_code("project.task") or "/"
                 )
-            else:
-                new_vals = vals
-            new_list.append(new_vals)
-        return super().create(new_list)
+        return super().create(vals_list)
 
     def name_get(self):
         result = super().name_get()
