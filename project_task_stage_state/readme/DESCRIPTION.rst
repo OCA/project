@@ -1,4 +1,4 @@
-This module restores the `state` fields to Project Stages, removed in Odoo 8.0.
+This module restores the `state` fields to Project Task Stages, removed in Odoo 8.0.
 
 For some use cases it‘s necessary to be able to map the multiple Stages into
 a few broad groups.

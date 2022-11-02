@@ -1,1 +1,1 @@
-You can configure stages from Project -> Configuration -> Stages
+You can configure stages from Project -> Configuration -> Task Stages
