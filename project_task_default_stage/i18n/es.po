@@ -107,8 +107,8 @@ msgstr "Etapas del proyecto"
 #: model:project.task.type,legend_done:project_task_default_stage.project_tt_merge
 #: model:project.task.type,legend_done:project_task_default_stage.project_tt_specification
 #: model:project.task.type,legend_done:project_task_default_stage.project_tt_testing
-msgid "Ready for Next Stage"
-msgstr "Listo para la siguiente etapa"
+msgid "Ready"
+msgstr ""
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_specification
@@ -129,3 +129,6 @@ msgstr "Fase de la tarea"
 #: model:project.task.type,name:project_task_default_stage.project_tt_testing
 msgid "Testing"
 msgstr "Testeo"
+
+#~ msgid "Ready for Next Stage"
+#~ msgstr "Listo para la siguiente etapa"
