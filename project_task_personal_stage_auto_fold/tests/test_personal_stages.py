@@ -1,13 +1,55 @@
 # Copyright 2022 Moduon - Eduardo de Miguel <edu@moduon.team>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo.addons.project.tests.test_project_base import TestProjectCommon
+from odoo.tests import TransactionCase
 
 
-class TestAutoFoldPersonalStages(TestProjectCommon):
+class TestAutoFoldPersonalStages(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
+        user_group_employee = cls.env.ref("base.group_user")
+        user_group_project_user = cls.env.ref("project.group_project_user")
+        user_group_project_manager = cls.env.ref("project.group_project_manager")
+        cls.partner_1 = cls.env["res.partner"].create(
+            {"name": "Valid Lelitre", "email": "valid.lelitre@agrolait.com"}
+        )
+        # Test users to use through the various tests
+        Users = cls.env["res.users"].with_context(no_reset_password=True)
+        cls.user_projectuser = Users.create(
+            {
+                "name": "Armande ProjectUser",
+                "login": "armandel",
+                "password": "armandel",
+                "email": "armande.projectuser@example.com",
+                "groups_id": [
+                    (6, 0, [user_group_employee.id, user_group_project_user.id])
+                ],
+            }
+        )
+        cls.user_projectmanager = Users.create(
+            {
+                "name": "Bastien ProjectManager",
+                "login": "bastien",
+                "email": "bastien.projectmanager@example.com",
+                "groups_id": [
+                    (6, 0, [user_group_employee.id, user_group_project_manager.id])
+                ],
+            }
+        )
+        # Test 'Pigs' project
+        cls.project_pigs = (
+            cls.env["project.project"]
+            .with_context(mail_create_nolog=True)
+            .create(
+                {
+                    "name": "Pigs",
+                    "privacy_visibility": "employees",
+                    "alias_name": "project+pigs",
+                    "partner_id": cls.partner_1.id,
+                }
+            )
+        )
         cls.project_task_stages = cls.env["project.task.type"].create(
             [
                 {"sequence": 1, "name": "New"},
