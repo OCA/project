@@ -90,12 +90,14 @@ class Task(models.Model):
         for item in self:
             item.scrap_count = count_data.get(item.id, 0)
 
+    @api.depends("move_ids", "move_ids.state")
     def _compute_allow_moves_action_confirm(self):
         for item in self:
             item.allow_moves_action_confirm = any(
                 move.state == "draft" for move in item.move_ids
             )
 
+    @api.depends("move_ids", "move_ids.state")
     def _compute_allow_moves_action_assign(self):
         for item in self:
             item.allow_moves_action_assign = any(
@@ -103,7 +105,7 @@ class Task(models.Model):
                 for move in item.move_ids
             )
 
-    @api.depends("move_ids.state")
+    @api.depends("move_ids", "move_ids.state")
     def _compute_stock_state(self):
         for task in self:
             task.stock_state = "pending"
@@ -133,8 +135,8 @@ class Task(models.Model):
             )
 
     def _update_moves_info(self):
-        self._check_tasks_with_pending_moves()
         for item in self:
+            item._check_tasks_with_pending_moves()
             picking_type = item.picking_type_id or item.project_id.picking_type_id
             location = item.location_id or item.project_id.location_id
             location_dest = item.location_dest_id or item.project_id.location_dest_id
@@ -196,7 +198,7 @@ class Task(models.Model):
         """Cancel the stock moves and remove the analytic lines created from
         stock moves when cancelling the task.
         """
-        self.move_ids.write({"state": "cancel"})
+        self.mapped("move_ids.move_line_ids").write({"qty_done": 0})
         # Use sudo to avoid error for users with no access to analytic
         self.sudo().stock_analytic_line_ids.unlink()
         self.stock_moves_is_locked = True
