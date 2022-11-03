@@ -26,4 +26,40 @@
             </group>
         </field>
     </record>
+    <record id="project_task_tree" model="ir.ui.view">
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_tree2" />
+        <field name="arch" type="xml">
+            <field name="stage_id" position="after">
+                <field name="type_id" optional="hide" />
+            </field>
+        </field>
+    </record>
+    <record id="project_task_kanban" model="ir.ui.view">
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_kanban" />
+        <field name="arch" type="xml">
+            <field name="rating_ids" position="after">
+                <field name="type_id" />
+                <field name="type_color" />
+            </field>
+            <xpath expr="//div[hasclass('o_kanban_record_headings')]" position="inside">
+                <t t-if="record.type_id.raw_value">
+                    <div>
+                        <div
+                            class="o_field_many2manytags o_field_widget d-flex mt-auto"
+                        >
+                            <div
+                                t-attf-class="badge badge-pill o_tag_color_#{record.type_color.raw_value}"
+                            >
+                                <span class="o_badge_text"><t
+                                        t-esc="record.type_id.value"
+                                    /></span>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </xpath>
+        </field>
+    </record>
 </odoo>

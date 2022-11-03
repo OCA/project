@@ -20,6 +20,7 @@ class ProjectType(models.Model):
     description = fields.Text(translate=True)
     project_ok = fields.Boolean(string="Can be applied for projects", default=True)
     task_ok = fields.Boolean(string="Can be applied for tasks")
+    color = fields.Integer("Color Index")
 
     @api.constrains("parent_id")
     def check_parent_id(self):

@@ -9,3 +9,4 @@ class ProjectTask(models.Model):
     type_id = fields.Many2one(
         comodel_name="project.type", string="Type", domain="[('task_ok', '=', True)]"
     )
+    type_color = fields.Integer(string="Type Color Index", related="type_id.color")

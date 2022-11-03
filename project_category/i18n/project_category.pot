@@ -6,6 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-11-03 14:47+0000\n"
+"PO-Revision-Date: 2022-11-03 14:47+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -28,6 +30,11 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_category.field_project_type__task_ok
 #: model_terms:ir.ui.view,arch_db:project_category.project_type_search
 msgid "Can be applied for tasks"
+msgstr ""
+
+#. module: project_category
+#: model:ir.model.fields,field_description:project_category.field_project_type__color
+msgid "Color Index"
 msgstr ""
 
 #. module: project_category
@@ -100,6 +107,7 @@ msgstr ""
 #. module: project_category
 #: model:ir.model,name:project_category.model_project_type
 #: model_terms:ir.ui.view,arch_db:project_category.project_type_form
+#: model_terms:ir.ui.view,arch_db:project_category.project_type_tree
 msgid "Project Type"
 msgstr ""
 
@@ -130,6 +138,13 @@ msgid "Type"
 msgstr ""
 
 #. module: project_category
+#: model:ir.model.fields,field_description:project_category.field_project_project__type_color
+#: model:ir.model.fields,field_description:project_category.field_project_task__type_color
+msgid "Type Color Index"
+msgstr ""
+
+#. module: project_category
+#: code:addons/oca/project/project_category/models/project_type.py:0
 #: code:addons/project_category/models/project_type.py:0
 #, python-format
 msgid "You cannot create recursive project types."

@@ -12,3 +12,4 @@ class ProjectProject(models.Model):
         copy=False,
         domain="[('project_ok', '=', True)]",
     )
+    type_color = fields.Integer(string="Type Color Index", related="type_id.color")
