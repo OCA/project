@@ -16,12 +16,13 @@ class StockMove(models.Model):
     )
 
     @api.onchange("product_id")
-    def onchange_product_id(self):
+    def _onchange_product_id(self):
         """It is necessary to overwrite the name to prevent set product name
         from being auto-defined."""
-        super().onchange_product_id()
+        res = super()._onchange_product_id()
         if self.raw_material_task_id:
             self.name = self.raw_material_task_id.name
+        return res
 
     def _prepare_analytic_line_from_task(self):
         product = self.product_id
@@ -59,13 +60,6 @@ class StockMove(models.Model):
             vals["ref"] = task.name
         if "product_id" in analytic_line_fields:
             vals["product_id"] = product.id
-        # Extra field added in hr_timesheet addon
-        if "employee_id" in analytic_line_fields:
-            vals["employee_id"] = (
-                self.env["hr.employee"]
-                .search([("user_id", "=", task.user_id.id)], limit=1)
-                .id
-            )
         # tags + distributions
         if task.stock_analytic_tag_ids:
             vals["tag_ids"] = [(6, 0, task.stock_analytic_tag_ids.ids)]
