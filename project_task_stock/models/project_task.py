@@ -74,6 +74,9 @@ class ProjectTask(models.Model):
     )
     stock_analytic_tag_ids = fields.Many2many(
         comodel_name="account.analytic.tag",
+        relation="account_analytic_tag_project_task_stock_rel",
+        column1="project_task_id",
+        column2="account_analytic_tag_id",
         string="Move Analytic Tags",
     )
     stock_analytic_line_ids = fields.One2many(
@@ -221,11 +224,11 @@ class ProjectTask(models.Model):
         for move in self.move_ids.filtered(lambda x: x.state == "done"):
             vals = move._prepare_analytic_line_from_task()
             if vals:
-                analytic_line_model.create(move._prepare_analytic_line_from_task())
+                analytic_line_model.create(vals)
 
     def action_see_move_scrap(self):
         self.ensure_one()
-        action = self.env.ref("stock.action_stock_scrap").read()[0]
+        action = self.env["ir.actions.actions"]._for_xml_id("stock.action_stock_scrap")
         action["domain"] = [("task_id", "=", self.id)]
         action["context"] = dict(self._context, default_origin=self.name)
         return action
