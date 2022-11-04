@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 {
     "name": "Project Stock",
-    "version": "14.0.1.1.1",
+    "version": "15.0.1.0.0",
     "category": "Project Management",
     "website": "https://github.com/OCA/project",
     "author": "Tecnativa, Odoo Community Association (OCA)",
@@ -14,6 +14,10 @@
         "views/project_task_type_view.xml",
         "views/stock_move_view.xml",
         "views/project_task_view.xml",
+    ],
+    "demo": [
+        "demo/stock_picking_type_data.xml",
+        "demo/project_data.xml",
     ],
     "maintainers": ["victoralmau"],
 }

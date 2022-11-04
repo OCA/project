@@ -12,6 +12,6 @@ To configure this module, you need to:
 #. Create a new project with the following options:
     * `Name`: Task material
     * `Operation type`: Task material
-#. Go to *Project -> Configuration -> Stages* and edit some records.
+#. Go to *Project -> Configuration -> Task Stages* and edit some records.
     * `In progress`: Check Use Stock Moves option and add the created project.
-    * `Done`: Check Use Stock Moves option + Lock Stock Moves and add the created project.
+    * `Done`: Check Use Stock Moves option + Done Stock Moves and add the created project.
