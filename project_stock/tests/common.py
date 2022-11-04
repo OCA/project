@@ -4,36 +4,22 @@
 from odoo.tests import Form, common
 
 
-class TestProjectStockBase(common.SavepointCase):
+class TestProjectStockBase(common.TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
         cls.product_a = cls.env["product.product"].create(
-            {"name": "Test product A", "type": "product", "standard_price": 10}
+            {"name": "Test product A", "detailed_type": "product", "standard_price": 10}
         )
         cls.product_b = cls.env["product.product"].create(
-            {"name": "Test product B", "type": "product", "standard_price": 20}
+            {"name": "Test product B", "detailed_type": "product", "standard_price": 20}
         )
         cls.product_c = cls.env["product.product"].create(
-            {"name": "Test product C", "type": "product", "standard_price": 0}
+            {"name": "Test product C", "detailed_type": "product", "standard_price": 0}
         )
-        warehouse = cls.env["stock.warehouse"].search(
-            [("company_id", "=", cls.env.company.id)], limit=1
-        )
-        cls.location = warehouse.lot_stock_id
-        cls.location_dest = cls.env["stock.location"].create(
-            {"name": "Test internal", "usage": "internal"}
-        )
-        cls.picking_type = cls.env["stock.picking.type"].create(
-            {
-                "name": "Test",
-                "code": "outgoing",
-                "sequence_code": "PS-TEST",
-                "warehouse_id": warehouse.id,
-                "default_location_src_id": cls.location.id,
-                "default_location_dest_id": cls.location_dest.id,
-            }
-        )
+        cls.picking_type = cls.env.ref("project_stock.stock_picking_type_tm_test")
+        cls.location = cls.picking_type.default_location_src_id
+        cls.location_dest = cls.picking_type.default_location_dest_id
         cls.analytic_account = cls.env["account.analytic.account"].create(
             {"name": "Test account"}
         )
@@ -57,22 +43,10 @@ class TestProjectStockBase(common.SavepointCase):
                 ],
             }
         )
-        cls.project = cls.env["project.project"].create(
-            {
-                "name": "Test project",
-                "analytic_account_id": cls.analytic_account.id,
-                "picking_type_id": cls.picking_type.id,
-                "location_id": cls.picking_type.default_location_src_id.id,
-                "location_dest_id": cls.picking_type.default_location_dest_id.id,
-                "stock_analytic_date": "1990-01-01",
-            }
-        )
-        cls.stage_in_progress = cls.env["project.task.type"].create(
-            {"name": "In progress", "use_stock_moves": True}
-        )
-        cls.stage_done = cls.env["project.task.type"].create(
-            {"name": "Done", "done_stock_moves": True}
-        )
+        cls.project = cls.env.ref("project_stock.project_project_tm_test")
+        cls.project.analytic_account_id = cls.analytic_account
+        cls.stage_in_progress = cls.env.ref("project.project_stage_1")
+        cls.stage_done = cls.env.ref("project.project_stage_2")
 
     def _prepare_context_task(self):
         return {
@@ -86,7 +60,7 @@ class TestProjectStockBase(common.SavepointCase):
 
     def _create_task(self, products):
         task_form = Form(
-            self.env["project.task"].with_context(self._prepare_context_task(self))
+            self.env["project.task"].with_context(**self._prepare_context_task(self))
         )
         task_form.name = "Test task"
         # Save task to use default_get() correctlly in stock.moves
