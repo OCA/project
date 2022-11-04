@@ -6,25 +6,25 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2021-08-18 19:49+0000\n"
-"Last-Translator: Álvaro Estébanez <alvaro.estebanez@braintec-group.com>\n"
+"PO-Revision-Date: 2022-11-04 14:45+0000\n"
+"Last-Translator: Maria Sparenberg <maria.sparenberg@gmx.net>\n"
 "Language-Team: none\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.3.2\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #. module: project_template
 #: model_terms:ir.ui.view,arch_db:project_template.project_template_view_inherit_form
 msgid "Create Project From Template"
-msgstr "Projekterstellung aus dieser Vorlage"
+msgstr "Projekt aus dieser Vorlage erstellen"
 
 #. module: project_template
 #: model_terms:ir.ui.view,arch_db:project_template.project_template_view_inherit_kanban
 msgid "Create Project from Template"
-msgstr "Projekterstellung aus dieser Vorlage"
+msgstr "Projekt aus dieser Vorlage erstellen"
 
 #. module: project_template
 #: model:ir.model.fields,field_description:project_template.field_project_project__display_name
@@ -49,7 +49,7 @@ msgstr "Projekt-Vorlage?"
 #. module: project_template
 #: model:ir.model.fields,field_description:project_template.field_project_project____last_update
 msgid "Last Modified on"
-msgstr "Letzte Änderung am"
+msgstr "Zuletzt geändert am"
 
 #. module: project_template
 #: model_terms:ir.ui.view,arch_db:project_template.project_template_view_inherit_search
