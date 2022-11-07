@@ -33,6 +33,7 @@ addon | version | maintainers | summary
 [project_recalculate](project_recalculate/) | 14.0.1.0.0 |  | Project Recalculate
 [project_role](project_role/) | 14.0.1.0.0 | [![alexey-pelykh](https://github.com/alexey-pelykh.png?size=30px)](https://github.com/alexey-pelykh) | Project role-based roster
 [project_stage_closed](project_stage_closed/) | 14.0.2.0.0 |  | Project Task Stage Closed
+[project_stage_mgmt](project_stage_mgmt/) | 14.0.1.0.0 | [![DavidJForgeFlow](https://github.com/DavidJForgeFlow.png?size=30px)](https://github.com/DavidJForgeFlow) | Allows to assign and create stages on project creation wizard
 [project_stage_state](project_stage_state/) | 14.0.1.1.0 |  | Restore State attribute removed from Project Stages in 8.0
 [project_status](project_status/) | 14.0.1.0.0 | [![patrickrwilson](https://github.com/patrickrwilson.png?size=30px)](https://github.com/patrickrwilson) | Project Status
 [project_stock](project_stock/) | 14.0.1.1.1 | [![victoralmau](https://github.com/victoralmau.png?size=30px)](https://github.com/victoralmau) | Project Stock
