@@ -22,20 +22,9 @@ class ProductSetAddFromTask(models.TransientModel):
     def _prepare_stock_move_lines(self):
         move_lines = []
         for _seq, set_line in enumerate(self._get_lines(), start=1):
-            values = self.prepare_stock_move_data(set_line)
+            values = set_line._prepare_stock_move_values(self.task_id, self.quantity)
             move_lines.append((0, 0, values))
         return move_lines
-
-    def prepare_stock_move_data(self, set_line):
-        self.ensure_one()
-        line_values = set_line.prepare_stock_move_values(self.task_id, self.quantity)
-        sm_model = self.env["stock.move"]
-        line_values.update(sm_model.play_onchanges(line_values, line_values.keys()))
-        # We need to remove product_qty to prevent error
-        # The requested operation cannot be processed because of a programming error
-        # setting the `product_qty` field instead of the `product_uom_qty`.
-        del line_values["product_qty"]
-        return line_values
 
     def add_set(self):
         if not self.task_id:

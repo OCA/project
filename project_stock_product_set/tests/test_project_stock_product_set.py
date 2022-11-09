@@ -2,6 +2,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo.tests import Form
+from odoo.tests.common import users
 
 from odoo.addons.project_stock.tests.common import TestProjectStockBase
 
@@ -22,6 +23,7 @@ class TestProjectStockProductSet(TestProjectStockBase):
         )
 
     def test_wizard_product_set_add(self):
+        self.task = self.env["project.task"].browse(self.task.id)
         self.assertFalse(self.task.move_ids)
         wizard_form = Form(
             self.env["product.set.add.from.task"].with_context(
@@ -35,3 +37,7 @@ class TestProjectStockProductSet(TestProjectStockBase):
         self.assertIn(self.product_a, self.task.move_ids.mapped("product_id"))
         self.assertIn(self.product_b, self.task.move_ids.mapped("product_id"))
         self.assertEqual(sum(self.task.move_ids.mapped("product_uom_qty")), 3)
+
+    @users("basic-user")
+    def test_wizard_product_set_add_basic_user(self):
+        self.test_wizard_product_set_add()
