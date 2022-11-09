@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 from odoo import fields
 from odoo.tests import Form
-from odoo.tests.common import new_test_user, users
+from odoo.tests.common import users
 
 from .common import TestProjectStockBase
 
@@ -20,18 +20,6 @@ class TestProjectStock(TestProjectStockBase):
         )
         cls.move_product_b = cls.task.move_ids.filtered(
             lambda x: x.product_id == cls.product_b
-        )
-        group_stock_user = "stock.group_stock_user"
-        new_test_user(
-            cls.env,
-            login="basic-user",
-            groups="project.group_project_user,%s" % group_stock_user,
-        )
-        new_test_user(
-            cls.env,
-            login="manager-user",
-            groups="project.group_project_manager,%s,analytic.group_analytic_accounting"
-            % group_stock_user,
         )
         cls.env.ref("base.user_admin").write(
             {
