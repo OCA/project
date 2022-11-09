@@ -4,9 +4,10 @@ from datetime import date
 
 from freezegun import freeze_time
 
-from odoo.tests.common import Form, SavepointCase
+from odoo.tests.common import Form, SavepointCase, tagged
 
 
+@tagged("-at_install", "post_install")
 class BaseForecastLineTest(SavepointCase):
     @classmethod
     @freeze_time("2022-01-01")
@@ -384,6 +385,10 @@ class TestForecastLineSales(BaseForecastLineTest):
         so.action_confirm()
         line = so.order_line[0]
         task = self.env["project.task"].search([("sale_line_id", "=", line.id)])
+        # Give a project_status to the project
+        task.project_id.project_status = self.env.ref(
+            "project_status.project_status_in_progress"
+        )
         forecast_lines = self.env["forecast.line"].search(
             [("res_id", "=", task.id), ("res_model", "=", "project.task")]
         )
@@ -424,6 +429,10 @@ class TestForecastLineTimesheet(BaseForecastLineTest):
         with freeze_time("2022-02-14"):
             line = so.order_line[0]
             task = self.env["project.task"].search([("sale_line_id", "=", line.id)])
+            # Give a project_status to the project
+            task.project_id.project_status = self.env.ref(
+                "project_status.project_status_in_progress"
+            )
             # timesheet 1d
             self.env["account.analytic.line"].create(
                 {
@@ -641,40 +650,131 @@ class TestForecastLineProject(BaseForecastLineTest):
 
     @freeze_time("2022-02-14 12:00:00")
     def test_task_forecast_lines_consolidated_forecast(self):
-        with freeze_time("2022-01-01"):
-            employee_forecast = self.env["forecast.line"].search(
-                [
-                    ("employee_id", "=", self.employee_consultant.id),
-                    ("date_from", "=", "2022-02-14"),
-                ]
-            )
-            self.assertEqual(len(employee_forecast), 1)
-            project = self.env["project.project"].create({"name": "TestProject"})
-            # set project in stage "in progress" to get confirmed forecast
-            project.project_status = self.env.ref(
-                "project_status.project_status_in_progress"
-            )
-            task = self.env["project.task"].create(
-                {
-                    "name": "Task1",
-                    "project_id": project.id,
-                    "forecast_role_id": self.role_consultant.id,
-                    "forecast_date_planned_start": "2022-02-14",
-                    "forecast_date_planned_end": "2022-02-14",
-                    "planned_hours": 6,
-                }
-            )
-            task.remaining_hours = 6
-            task.user_id = self.user_consultant
-            forecast = self.env["forecast.line"].search([("task_id", "=", task.id)])
-            self.assertEqual(len(forecast), 1)
-            # using assertEqual on purpose here
-            self.assertEqual(forecast.forecast_hours, -6.0)
-            self.assertAlmostEqual(forecast.consolidated_forecast, 0.75)
-            self.assertEqual(
-                forecast.employee_resource_forecast_line_id.consolidated_forecast,
-                0.25,
-            )
+        # set the consultant employee to 75% consultant and 25% PM
+        self.env["hr.employee.forecast.role"].create(
+            {
+                "employee_id": self.employee_consultant.id,
+                "role_id": self.role_pm.id,
+                "date_start": "2022-01-01",
+                "rate": 25,
+                "sequence": 1,
+            }
+        )
+        consultant_role = self.env["hr.employee.forecast.role"].search(
+            [
+                ("employee_id", "=", self.employee_consultant.id),
+                ("role_id", "=", self.role_consultant.id),
+            ]
+        )
+        consultant_role.rate = 75
+
+        # Create 2 project and 2 tasks with role consultant with 8h planned on
+        # 1 day, assigned to the consultant
+        #
+        # Projet 1 is in TODO (not confirmed forecast)
+        project_1 = self.env["project.project"].create({"name": "TestProject1"})
+        # set project in stage "Pending" to get confirmed forecast
+        project_1.project_status = self.env.ref("project_status.project_status_pending")
+        task_values = {
+            "project_id": project_1.id,
+            "forecast_role_id": self.role_consultant.id,
+            "forecast_date_planned_start": "2022-02-14",
+            "forecast_date_planned_end": "2022-02-14",
+            "planned_hours": 8,
+        }
+        task_values.update({"name": "Task1"})
+        task_1 = self.env["project.task"].create(task_values)
+        task_1.user_id = self.user_consultant
+        task_values.update({"name": "Task2"})
+        task_2 = self.env["project.task"].create(task_values)
+        task_2.user_id = self.user_consultant
+
+        # Project 2 is in stage "in progress" to get forecast
+        project_2 = self.env["project.project"].create({"name": "TestProject2"})
+        project_2.project_status = self.env.ref(
+            "project_status.project_status_in_progress"
+        )
+        task_values.update({"project_id": project_2.id, "name": "Task3"})
+        task_3 = self.env["project.task"].create(task_values)
+        task_3.user_id = self.user_consultant
+        task_values.update({"name": "Task4"})
+        task_4 = self.env["project.task"].create(task_values)
+        task_4.user_id = self.user_consultant
+
+        # check forecast lines
+        forecast = self.env["forecast.line"].search(
+            [("task_id", "in", (task_1.id, task_2.id, task_3.id, task_4.id))]
+        )
+        self.assertEqual(len(forecast), 4)
+        self.assertEqual(
+            forecast.mapped("forecast_hours"),
+            [
+                -8.0,
+            ]
+            * 4,
+        )
+        # consolidated forecast is in days of 8 hours
+        self.assertEqual(forecast.mapped("consolidated_forecast"), [1.0] * 4)
+        self.assertEqual(
+            forecast.filtered(lambda r: r.type == "forecast").mapped(
+                "confirmed_consolidated_forecast"
+            ),
+            [0.0] * 2,
+        )
+        self.assertEqual(
+            forecast.filtered(lambda r: r.type == "confirmed").mapped(
+                "confirmed_consolidated_forecast"
+            ),
+            [1.0] * 2,
+        )
+        forecast_consultant, forecast_pm = self._get_employee_forecast()
+        self.assertEqual(forecast_consultant.forecast_hours, 6.0)
+        self.assertAlmostEqual(
+            forecast_consultant.consolidated_forecast, 1.0 * 75 / 100 - 4
+        )
+        self.assertAlmostEqual(
+            forecast_consultant.confirmed_consolidated_forecast, 1.0 * 75 / 100 - 2
+        )
+        self.assertEqual(forecast_pm.forecast_hours, 2.0)
+        self.assertAlmostEqual(forecast_pm.consolidated_forecast, 0.25)
+        self.assertAlmostEqual(forecast_pm.confirmed_consolidated_forecast, 0.25)
+
+    @freeze_time("2022-01-01 12:00:00")
+    def test_forecast_with_holidays(self):
+        self.test_task_forecast_lines_consolidated_forecast()
+        with Form(self.env["hr.leave"]) as form:
+            form.employee_id = self.employee_consultant
+            form.holiday_status_id = self.env.ref("hr_holidays.holiday_status_unpaid")
+            form.request_date_from = "2022-02-14"
+            form.request_date_to = "2022-02-15"
+            form.request_hour_from = "8"
+            form.request_hour_to = "18"
+        leave_request = form.save()
+        # validating the leave request will recompute the forecast lines for
+        # the employee capactities (actually delete the existing ones and
+        # create new ones -> we check that the project task lines are
+        # automatically related to the new newly created employee role lines.
+        leave_request.action_validate()
+        forecast_lines = self.env["forecast.line"].search(
+            [
+                ("employee_id", "=", self.employee_consultant.id),
+                ("res_model", "=", "hr.employee.forecast.role"),
+                ("date_from", ">=", "2022-02-14"),
+                ("date_to", "<=", "2022-02-15"),
+            ]
+        )
+        # 1 line per role per day -> 4 lines
+        self.assertEqual(len(forecast_lines), 2 * 2)
+        forecast_lines_consultant = forecast_lines.filtered(
+            lambda r: r.forecast_role_id == self.role_consultant
+        )
+        # both new lines have now a capacity of 0 (employee is on holidays)
+        self.assertEqual(forecast_lines_consultant[0].forecast_hours, 0)
+        self.assertEqual(forecast_lines_consultant[1].forecast_hours, 0)
+        # first line has a negative consolidated forecast (because of the task)
+        self.assertEqual(forecast_lines_consultant[0].consolidated_forecast, 0 - 4)
+        self.assertEqual(forecast_lines_consultant[1].consolidated_forecast, -0)
+>>>>>>> b3458a23 ([14.0][IMP][WIP] project_forecast_line: fix backport unit tests)
 
     def test_task_forecast_lines_consolidated_forecast_overallocation(self):
         ProjectProject = self.env["project.project"].with_context(tracking_disable=1)
