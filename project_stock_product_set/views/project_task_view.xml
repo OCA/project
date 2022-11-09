@@ -12,7 +12,7 @@
                     type="action"
                     name="%(act_open_wizard_product_set_add_from_task)d"
                     icon="fa-cubes"
-                    attrs="{'invisible': [('use_stock_moves','=',False)]}"
+                    attrs="{'invisible': ['|', ('use_stock_moves','=',False), ('done_stock_moves', '=', True)]}"
                     string="Add set"
                 />
             </xpath>
