@@ -25,6 +25,12 @@
         <field name="inherit_id" ref="project.edit_project" />
         <field name="type">form</field>
         <field name="arch" type="xml">
+            <xpath expr="//div[@name='options_active']" position="inside">
+                <div>
+                    <field name="tags_required" class="oe_inline" />
+                    <label for="tags_required" />
+                </div>
+            </xpath>
             <xpath
                 expr="//div[hasclass('oe_title')]/h1[./field[@name='name']]"
                 position="after"
@@ -40,6 +46,7 @@
             </xpath>
         </field>
     </record>
+
     <!-- Simplified Form View -->
     <record id="project_tags_view_inherit_simple" model="ir.ui.view">
         <field name="name">project.tags.simpleform</field>
@@ -82,4 +89,5 @@
             </xpath>
         </field>
     </record>
+
 </odoo>
