@@ -20,9 +20,9 @@ msgstr ""
 "X-Generator: Weblate 4.3.2\n"
 
 #. module: project_task_add_very_high
-#: model:ir.model.fields.selection,name:project_task_add_very_high.selection__project_task__priority__2
-msgid "High"
-msgstr "Haute"
+#: model:ir.model.fields.selection,name:project_task_add_very_high.selection__project_task__priority__3
+msgid "Most Important"
+msgstr ""
 
 #. module: project_task_add_very_high
 #: model:ir.model.fields,field_description:project_task_add_very_high.field_project_task__priority
@@ -35,6 +35,9 @@ msgid "Task"
 msgstr "Tâche"
 
 #. module: project_task_add_very_high
-#: model:ir.model.fields.selection,name:project_task_add_very_high.selection__project_task__priority__3
+#: model:ir.model.fields.selection,name:project_task_add_very_high.selection__project_task__priority__2
 msgid "Very High"
 msgstr "Très haute"
+
+#~ msgid "High"
+#~ msgstr "Haute"

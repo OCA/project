@@ -20,8 +20,8 @@ msgstr ""
 "%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #. module: project_task_add_very_high
-#: model:ir.model.fields.selection,name:project_task_add_very_high.selection__project_task__priority__2
-msgid "High"
+#: model:ir.model.fields.selection,name:project_task_add_very_high.selection__project_task__priority__3
+msgid "Most Important"
 msgstr ""
 
 #. module: project_task_add_very_high
@@ -35,6 +35,6 @@ msgid "Task"
 msgstr "Užduotis"
 
 #. module: project_task_add_very_high
-#: model:ir.model.fields.selection,name:project_task_add_very_high.selection__project_task__priority__3
+#: model:ir.model.fields.selection,name:project_task_add_very_high.selection__project_task__priority__2
 msgid "Very High"
 msgstr ""

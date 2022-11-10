@@ -13,7 +13,7 @@ Project Task Add Very High
 .. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
-.. |badge3| image:: https://img.shields.io/badge/github-project-lightgray.png?logo=github
+.. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fproject-lightgray.png?logo=github
     :target: https://github.com/OCA/project/tree/16.0/project_task_add_very_high
     :alt: OCA/project
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
