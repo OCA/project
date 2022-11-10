@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 15.0\n"
+"Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -14,13 +14,13 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: project_task_add_very_high
-#: model:ir.model.fields.selection,name:project_task_add_very_high.selection__project_task__priority__2
-msgid "High"
+#: model:ir.model.fields.selection,name:project_task_add_very_high.selection__project_task__priority__3
+msgid "Most Important"
 msgstr ""
 
 #. module: project_task_add_very_high
 #: model:ir.model.fields,field_description:project_task_add_very_high.field_project_task__priority
-msgid "Starred"
+msgid "Priority"
 msgstr ""
 
 #. module: project_task_add_very_high
@@ -29,6 +29,6 @@ msgid "Task"
 msgstr ""
 
 #. module: project_task_add_very_high
-#: model:ir.model.fields.selection,name:project_task_add_very_high.selection__project_task__priority__3
+#: model:ir.model.fields.selection,name:project_task_add_very_high.selection__project_task__priority__2
 msgid "Very High"
 msgstr ""
