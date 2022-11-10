@@ -107,7 +107,7 @@ msgstr "Etape projekta"
 #: model:project.task.type,legend_done:project_task_default_stage.project_tt_merge
 #: model:project.task.type,legend_done:project_task_default_stage.project_tt_specification
 #: model:project.task.type,legend_done:project_task_default_stage.project_tt_testing
-msgid "Ready for Next Stage"
+msgid "Ready"
 msgstr ""
 
 #. module: project_task_default_stage
