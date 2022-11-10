@@ -106,8 +106,8 @@ msgstr "Projektové fáze"
 #: model:project.task.type,legend_done:project_task_default_stage.project_tt_merge
 #: model:project.task.type,legend_done:project_task_default_stage.project_tt_specification
 #: model:project.task.type,legend_done:project_task_default_stage.project_tt_testing
-msgid "Ready for Next Stage"
-msgstr "Připraveno pro další fázi"
+msgid "Ready"
+msgstr ""
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_specification
@@ -129,3 +129,6 @@ msgstr "Úkolová fáze"
 #: model:project.task.type,name:project_task_default_stage.project_tt_testing
 msgid "Testing"
 msgstr "Testování"
+
+#~ msgid "Ready for Next Stage"
+#~ msgstr "Připraveno pro další fázi"
