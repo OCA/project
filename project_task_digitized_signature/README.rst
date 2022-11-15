@@ -58,6 +58,16 @@ Usage
    located on the right side of signature box.
 #. If you print Task, signature was added to report task.
 
+Known issues / Roadmap
+======================
+
+Purpose for this module to mimic sales order signature. Currently, it will take signature on project task form view.
+
+
+#. Add signature template in Task portal view to accept signature.
+#. Send "Print Task" report in a Task chatter area.
+#. Add unit test case.
+
 Bug Tracker
 ===========
 
@@ -87,7 +97,10 @@ Contributors
 
   * Lorenzo Battistini
 
-* Murtaza Mithaiwala <mmithaiwala@opensourceintegrators.com>
+* `Open Source Integrators <https://www.opensourceintegrators.com>`_:
+
+  * Bhavesh Odedra <bodedra@opensourceintegrators.com>
+  * Murtaza Mithaiwala <mmithaiwala@opensourceintegrators.com>
 
 Maintainers
 ~~~~~~~~~~~
