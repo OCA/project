@@ -1,9 +1,13 @@
-This module adds the behavior to change the Personal Stage of the task to the first
-Closed or Folded (Closed Personal Stages has high priority than Folded) stage when
-the task reachs an Stage marked as Closed Stage.
-If there's a folded personal stage with the same name as the folded shared stage,
-that one will be used.
-If the Personal Stage is already Folded, does nothing.
-Only applies to the Personal Stage of the User that Closes the task.
-Simplifies the behavior of closing a task and then go back to Personal Stages
-and move it to the Pesonal Done stage.
+When you close a task, its personal stage will change as well.
+
+This module simplifies to close or to cancel a task from the project stage
+and the personal stage.
+
+In the case a task is assigned to more than one user,
+only the personal task stage of the user will be updated.
+
+Notice: This module don't change the project task stage from the personal task stage.
+It is intended so no change about this functionality is desired or required.
+Furthermore, also is intended that only the personal stage of the user who finish
+the task with the project task stage will be update. So the other users assigned to
+the task have to update the personal task stage manually when they finish it
