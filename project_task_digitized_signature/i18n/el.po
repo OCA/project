@@ -29,6 +29,21 @@ msgid "Customer acceptance"
 msgstr ""
 
 #. module: project_task_digitized_signature
+#: model:ir.model.fields,field_description:project_task_digitized_signature.field_project_task__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: project_task_digitized_signature
+#: model:ir.model.fields,field_description:project_task_digitized_signature.field_project_task__id
+msgid "ID"
+msgstr ""
+
+#. module: project_task_digitized_signature
+#: model:ir.model.fields,field_description:project_task_digitized_signature.field_project_task____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: project_task_digitized_signature
 #: model:ir.model,name:project_task_digitized_signature.model_project_task
 msgid "Task"
 msgstr "Εργασία"
