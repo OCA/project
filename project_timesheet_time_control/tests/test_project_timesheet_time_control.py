@@ -4,7 +4,7 @@
 from datetime import date, datetime, timedelta
 
 from odoo import exceptions
-from odoo.tests import common
+from odoo.tests import Form, common
 from odoo.tools.float_utils import float_compare
 
 
@@ -55,16 +55,15 @@ class TestProjectTimesheetTimeControl(common.TransactionCase):
         self.assertEqual(action["type"], "ir.actions.act_window")
         self.assertEqual(action["view_mode"], "form")
         self.assertEqual(action["view_type"], "form")
-        return (
-            active_record.env[action["res_model"]]
-            .with_context(
+        wiz_form = Form(
+            active_record.env[action["res_model"]].with_context(
                 active_id=active_record.id,
                 active_ids=active_record.ids,
                 active_model=active_record._name,
                 **action.get("context", {}),
             )
-            .create({})
         )
+        return wiz_form.save()
 
     def test_aal_from_other_employee_no_button(self):
         """Lines from other employees have no resume/stop button."""
@@ -119,13 +118,8 @@ class TestProjectTimesheetTimeControl(common.TransactionCase):
         self.assertEqual(self.line.show_time_control, "resume")
         resume_action = self.line.button_resume_work()
         wizard = self._create_wizard(resume_action, self.line)
-        self.assertFalse(wizard.amount)
         self.assertLessEqual(wizard.date_time, datetime.now())
-        self.assertLessEqual(wizard.date, date.today())
-        self.assertFalse(wizard.is_task_closed)
-        self.assertFalse(wizard.unit_amount)
-        self.assertEqual(wizard.account_id, self.line.account_id)
-        self.assertEqual(wizard.employee_id, self.line.employee_id)
+        self.assertEqual(wizard.analytic_line_id, self.line)
         self.assertEqual(wizard.name, self.line.name)
         self.assertEqual(wizard.project_id, self.line.project_id)
         self.assertEqual(wizard.running_timer_id, running_timer)
@@ -185,13 +179,10 @@ class TestProjectTimesheetTimeControl(common.TransactionCase):
         self.assertEqual(self.project.show_time_control, "start")
         start_action = self.project.button_start_work()
         wizard = self._create_wizard(start_action, self.project)
-        self.assertFalse(wizard.amount)
         self.assertLessEqual(wizard.date_time, datetime.now())
-        self.assertLessEqual(wizard.date, date.today())
-        self.assertFalse(wizard.is_task_closed)
-        self.assertFalse(wizard.unit_amount)
-        self.assertEqual(wizard.account_id, self.project.analytic_account_id)
-        self.assertEqual(wizard.employee_id, self.env.user.employee_ids)
+        self.assertEqual(
+            wizard.analytic_line_id.account_id, self.project.analytic_account_id
+        )
         self.assertEqual(wizard.name, "No task here")
         self.assertEqual(wizard.project_id, self.project)
         self.assertFalse(wizard.running_timer_id, self.line)
@@ -219,13 +210,10 @@ class TestProjectTimesheetTimeControl(common.TransactionCase):
         self.assertEqual(self.task.show_time_control, "start")
         start_action = self.task.button_start_work()
         wizard = self._create_wizard(start_action, self.task)
-        self.assertFalse(wizard.amount)
         self.assertLessEqual(wizard.date_time, datetime.now())
-        self.assertLessEqual(wizard.date, date.today())
-        self.assertFalse(wizard.is_task_closed)
-        self.assertFalse(wizard.unit_amount)
-        self.assertEqual(wizard.account_id, self.task.project_id.analytic_account_id)
-        self.assertEqual(wizard.employee_id, self.env.user.employee_ids)
+        self.assertEqual(
+            wizard.analytic_line_id.account_id, self.task.project_id.analytic_account_id
+        )
         self.assertEqual(wizard.name, self.line.name)
         self.assertEqual(wizard.project_id, self.task.project_id)
         self.assertEqual(wizard.task_id, self.task)

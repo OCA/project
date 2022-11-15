@@ -6,71 +6,65 @@
     <record id="hr_timesheet_switch_form" model="ir.ui.view">
         <field name="name">hr.timesheet.switch resume form</field>
         <field name="model">hr.timesheet.switch</field>
-        <field name="mode">primary</field>
-        <field name="inherit_id" ref="hr_timesheet_line_form" />
         <field name="arch" type="xml">
-            <!-- Unclutter form -->
-            <div name="button_box" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </div>
-            <field name="amount" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </field>
-            <field name="unit_amount" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </field>
-            <xpath expr="//sheet/group/group" position="attributes">
-                <attribute name="colspan">4</attribute>
-            </xpath>
-            <xpath expr="//group/field[@name='name']" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </xpath>
-            <!-- Display messages -->
-            <xpath expr="//sheet/group" position="after">
-                <group
-                    name="messages"
-                    string="Previous timer"
-                    attrs="{'invisible': [('running_timer_id', '=', False)]}"
-                >
-                    <p>
-                        You have a running timer called
-                        <field
-                            name="running_timer_id"
-                            class="oe_inline"
-                            context="{'form_view_ref': 'hr_timesheet.hr_timesheet_line_form'}"
-                        />
-                        and started at
-                        <field name="running_timer_start" class="oe_inline" />
-                        .
-                        If you continue, it will be stopped with
-                        <strong>
-                            <field
-                                name="running_timer_duration"
-                                class="text-info"
-                                widget="float_time"
-                                attrs="{'invisible': [('running_timer_duration', '&gt;=', 5)]}"
-                            />
-                            <field
-                                name="running_timer_duration"
-                                class="text-warning"
-                                widget="float_time"
-                                attrs="{'invisible': [('running_timer_duration', '&lt;', 5)]}"
-                            />
-                            hour(s).
-                        </strong>
-                    </p>
-                    <div
-                        class="alert alert-warning"
-                        colspan="4"
-                        role="alert"
-                        attrs="{'invisible': [('running_timer_duration', '&lt;', 5)]}"
-                    >
-                        That is a lot of time! Make sure it is fine before saving.
+            <form>
+                <sheet>
+                    <div class="oe_title" modifiers="{}">
+                        <label class="oe_edit_only" for="name" />
+                        <h1>
+                            <field name="name" />
+                        </h1>
                     </div>
-                </group>
-            </xpath>
-            <!-- Footer buttons -->
-            <sheet position="after">
+                    <group colspan="4">
+                        <field name="date_time" />
+                        <field name="date_time_end" />
+                        <field name="project_id" required="1" />
+                        <field name="task_id" />
+                        <field name="company_id" />
+                    </group>
+                    <group
+                        name="messages"
+                        string="Previous timer"
+                        attrs="{'invisible': [('running_timer_id', '=', False)]}"
+                    >
+                        <p>
+                            You have a running timer called
+                            <field
+                                name="running_timer_id"
+                                class="oe_inline"
+                                context="{'form_view_ref': 'hr_timesheet.hr_timesheet_line_form'}"
+                            />
+                            and started at
+                            <field name="running_timer_start" class="oe_inline" />
+                            .
+                            If you continue, it will be stopped with
+                            <strong>
+                                <field
+                                    name="running_timer_duration"
+                                    class="text-info"
+                                    widget="float_time"
+                                    attrs="{'invisible': [('running_timer_duration', '&gt;=', 5)]}"
+                                />
+                                <field
+                                    name="running_timer_duration"
+                                    class="text-warning"
+                                    widget="float_time"
+                                    attrs="{'invisible': [('running_timer_duration', '&lt;', 5)]}"
+                                />
+                                hour(s).
+                            </strong>
+                        </p>
+                        <div
+                            class="alert alert-warning"
+                            colspan="4"
+                            role="alert"
+                            attrs="{'invisible': [('running_timer_duration', '&lt;', 5)]}"
+                        >
+                            That is a lot of time! Make sure it is fine before saving.
+                        </div>
+                    </group>
+                </sheet>
+                <!-- Footer buttons -->
                 <footer>
                     <button
                         name="action_switch"
@@ -96,7 +90,7 @@
                     />
                     <button special="cancel" string="Cancel" />
                 </footer>
-            </sheet>
+            </form>
         </field>
     </record>
     <record id="hr_timesheet_switch_action" model="ir.actions.act_window">
