@@ -9,13 +9,13 @@ class TestProjectStockBase(common.SavepointCase):
     def setUpClass(cls):
         super().setUpClass()
         cls.product_a = cls.env["product.product"].create(
-            {"name": "Test product A", "standard_price": 10}
+            {"name": "Test product A", "type": "product", "standard_price": 10}
         )
         cls.product_b = cls.env["product.product"].create(
-            {"name": "Test product B", "standard_price": 20}
+            {"name": "Test product B", "type": "product", "standard_price": 20}
         )
         cls.product_c = cls.env["product.product"].create(
-            {"name": "Test product C", "standard_price": 0}
+            {"name": "Test product C", "type": "product", "standard_price": 0}
         )
         warehouse = cls.env["stock.warehouse"].search(
             [("company_id", "=", cls.env.company.id)], limit=1
@@ -64,6 +64,7 @@ class TestProjectStockBase(common.SavepointCase):
                 "picking_type_id": cls.picking_type.id,
                 "location_id": cls.picking_type.default_location_src_id.id,
                 "location_dest_id": cls.picking_type.default_location_dest_id.id,
+                "stock_analytic_date": "1990-01-01",
             }
         )
         cls.stage_in_progress = cls.env["project.task.type"].create(

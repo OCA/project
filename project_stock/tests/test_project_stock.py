@@ -1,6 +1,8 @@
 # Copyright 2022 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+from odoo import fields
 from odoo.tests import Form
+from odoo.tests.common import new_test_user
 
 from .common import TestProjectStockBase
 
@@ -9,12 +11,25 @@ class TestProjectStock(TestProjectStockBase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
+        cls._create_stock_quant(cls, cls.product_a, cls.location, 2)
+        cls._create_stock_quant(cls, cls.product_b, cls.location, 1)
+        cls._create_stock_quant(cls, cls.product_c, cls.location, 1)
         cls.task = cls._create_task(cls, [(cls.product_a, 2), (cls.product_b, 1)])
         cls.move_product_a = cls.task.move_ids.filtered(
             lambda x: x.product_id == cls.product_a
         )
         cls.move_product_b = cls.task.move_ids.filtered(
             lambda x: x.product_id == cls.product_b
+        )
+        cls.basic_user = new_test_user(
+            cls.env,
+            login="basic-user",
+            groups="project.group_project_user,stock.group_stock_user",
+        )
+
+    def _create_stock_quant(self, product, location, qty):
+        self.env["stock.quant"].create(
+            {"product_id": product.id, "location_id": location.id, "quantity": qty}
         )
 
     def test_project_task_misc(self):
@@ -65,18 +80,35 @@ class TestProjectStock(TestProjectStockBase):
         self.task.write({"stage_id": self.stage_done.id})
         self.task.action_done()
         self._test_task_analytic_lines_from_task(-40)
+        self.assertEqual(
+            fields.first(self.task.stock_analytic_line_ids).date,
+            fields.Date.from_string("1990-01-01"),
+        )
 
     def test_project_task_analytic_lines_with_tag_1(self):
-        self.task.write({"stock_analytic_tag_ids": self.analytic_tag_1.ids})
+        self.task.write(
+            {
+                "stock_analytic_date": "1991-01-01",
+                "stock_analytic_tag_ids": self.analytic_tag_1.ids,
+            }
+        )
         self.task.write({"stage_id": self.stage_done.id})
         self.task.action_done()
         self._test_task_analytic_lines_from_task(-40)
+        self.assertEqual(
+            fields.first(self.task.stock_analytic_line_ids).date,
+            fields.Date.from_string("1991-01-01"),
+        )
 
     def test_project_task_analytic_lines_with_tag_2(self):
+        self.task.project_id.stock_analytic_date = False
         self.task.write({"stock_analytic_tag_ids": self.analytic_tag_2.ids})
         self.task.write({"stage_id": self.stage_done.id})
         self.task.action_done()
         self._test_task_analytic_lines_from_task(-20)
+        self.assertEqual(
+            fields.first(self.task.stock_analytic_line_ids).date, fields.date.today()
+        )
 
     def test_project_task_process_done(self):
         self.assertEqual(self.move_product_a.state, "draft")
@@ -117,10 +149,32 @@ class TestProjectStock(TestProjectStockBase):
         self.task.write({"stage_id": self.stage_done.id})
         self.assertEqual(self.move_product_a.state, "assigned")
         self.assertEqual(self.move_product_b.state, "assigned")
+        # action_done
+        self.task.action_done()
+        self.assertEqual(self.move_product_a.state, "done")
+        self.assertEqual(self.move_product_b.state, "done")
+        self.assertEqual(self.move_product_a.quantity_done, 2)
+        self.assertEqual(self.move_product_b.quantity_done, 1)
+        self.assertTrue(self.task.stock_analytic_line_ids)
         # action_cancel
         self.task.action_cancel()
-        self.assertEqual(self.move_product_a.state, "cancel")
-        self.assertEqual(self.move_product_b.state, "cancel")
+        self.assertEqual(self.move_product_a.state, "done")
+        self.assertEqual(self.move_product_b.state, "done")
+        self.assertEqual(self.move_product_a.quantity_done, 0)
+        self.assertEqual(self.move_product_b.quantity_done, 0)
+        self.assertFalse(self.task.stock_analytic_line_ids)
+        quant_a = self.product_a.stock_quant_ids.filtered(
+            lambda x: x.location_id == self.location
+        )
+        quant_b = self.product_b.stock_quant_ids.filtered(
+            lambda x: x.location_id == self.location
+        )
+        quant_c = self.product_c.stock_quant_ids.filtered(
+            lambda x: x.location_id == self.location
+        )
+        self.assertEqual(quant_a.quantity, 2)
+        self.assertEqual(quant_b.quantity, 1)
+        self.assertEqual(quant_c.quantity, 1)
 
     def test_project_task_process_unreserve(self):
         self.assertEqual(self.move_product_a.state, "draft")
@@ -141,3 +195,15 @@ class TestProjectStock(TestProjectStockBase):
         self.assertEqual(self.move_product_a.reserved_availability, 0)
         self.assertEqual(self.move_product_b.reserved_availability, 0)
         self.assertFalse(self.task.unreserve_visible)
+
+    def test_project_task_action_cancel_basic_user(self):
+        self.assertTrue(self.task.with_user(self.basic_user).action_cancel())
+
+    def test_project_task_action_done_basic_user(self):
+        task = self.task.with_user(self.basic_user)
+        task.write({"stage_id": self.stage_done.id})
+        task.action_done()
+        self.assertTrue(task.sudo().stock_analytic_line_ids)
+
+    def test_project_task_unlink_basic_user(self):
+        self.assertTrue(self.task.with_user(self.basic_user).unlink())

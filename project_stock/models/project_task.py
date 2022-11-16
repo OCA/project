@@ -61,6 +61,7 @@ class Task(models.Model):
         index=True,
         check_company=True,
     )
+    stock_analytic_date = fields.Date(string="Analytic date")
     unreserve_visible = fields.Boolean(
         string="Allowed to Unreserve Inventory",
         compute="_compute_unreserve_visible",
@@ -89,12 +90,14 @@ class Task(models.Model):
         for item in self:
             item.scrap_count = count_data.get(item.id, 0)
 
+    @api.depends("move_ids", "move_ids.state")
     def _compute_allow_moves_action_confirm(self):
         for item in self:
             item.allow_moves_action_confirm = any(
                 move.state == "draft" for move in item.move_ids
             )
 
+    @api.depends("move_ids", "move_ids.state")
     def _compute_allow_moves_action_assign(self):
         for item in self:
             item.allow_moves_action_assign = any(
@@ -102,7 +105,7 @@ class Task(models.Model):
                 for move in item.move_ids
             )
 
-    @api.depends("move_ids.state")
+    @api.depends("move_ids", "move_ids.state")
     def _compute_stock_state(self):
         for task in self:
             task.stock_state = "pending"
@@ -132,8 +135,8 @@ class Task(models.Model):
             )
 
     def _update_moves_info(self):
-        self._check_tasks_with_pending_moves()
         for item in self:
+            item._check_tasks_with_pending_moves()
             picking_type = item.picking_type_id or item.project_id.picking_type_id
             location = item.location_id or item.project_id.location_id
             location_dest = item.location_dest_id or item.project_id.location_dest_id
@@ -192,8 +195,12 @@ class Task(models.Model):
         return True
 
     def action_cancel(self):
-        self.move_ids.write({"state": "cancel"})
-        self.stock_analytic_line_ids.unlink()
+        """Cancel the stock moves and remove the analytic lines created from
+        stock moves when cancelling the task.
+        """
+        self.mapped("move_ids.move_line_ids").write({"qty_done": 0})
+        # Use sudo to avoid error for users with no access to analytic
+        self.sudo().stock_analytic_line_ids.unlink()
         self.stock_moves_is_locked = True
         return True
 
@@ -206,7 +213,8 @@ class Task(models.Model):
         for move in self.mapped("move_ids"):
             move.quantity_done = move.reserved_availability
         self.mapped("move_ids")._action_done()
-        analytic_line_model = self.env["account.analytic.line"]
+        # Use sudo to avoid error for users with no access to analytic
+        analytic_line_model = self.env["account.analytic.line"].sudo()
         for move in self.move_ids.filtered(lambda x: x.state == "done"):
             vals = move._prepare_analytic_line_from_task()
             if vals:
@@ -233,7 +241,8 @@ class Task(models.Model):
         return res
 
     def unlink(self):
-        self.mapped("stock_analytic_line_ids").unlink()
+        # Use sudo to avoid error to users with no access to analytic
+        self.sudo().mapped("stock_analytic_line_ids").unlink()
         return super().unlink()
 
 
