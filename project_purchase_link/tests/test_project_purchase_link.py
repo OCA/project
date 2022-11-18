@@ -69,7 +69,11 @@ class TestProjectPurchaseUtilities(common.SavepointCase):
         self.assertEqual(purchase_dict.get("domain"), order_domain)
         purchase_line_dict = self.project.button_open_purchase_order_line()
         self.assertEqual(purchase_line_dict.get("domain"), purchase_domain)
-        invoice_domain = ['&', ("id", "in", [invoice.id]), ('move_type', '=', 'in_invoice')]  # only one test invoice (line)
+        invoice_domain = [
+            "&",
+            ("id", "in", [invoice.id]),
+            ("move_type", "=", "in_invoice"),
+        ]  # only one test invoice (line)
         invoice_dict = self.project.button_open_purchase_invoice()
         self.assertEqual(invoice_dict.get("domain"), invoice_domain)
         invoice_line_domain = [
