@@ -71,6 +71,9 @@ class ProjectTask(models.Model):
                     task.forecast_role_id = employee.main_role_id
                     break
 
+    def _get_task_employees(self):
+        return self.with_context(active_test=False).mapped("user_ids.employee_id")
+
     def _update_forecast_lines(self):
         today = fields.Date.context_today(self)
         forecast_vals = []
@@ -116,7 +119,7 @@ class ProjectTask(models.Model):
                 continue
             date_start = max(today, task.forecast_date_planned_start)
             date_end = max(today, task.forecast_date_planned_end)
-            employee_ids = task.mapped("user_ids.employee_id").ids
+            employee_ids = task._get_task_employees().ids
             if not employee_ids:
                 employee_ids = [False]
             _logger.debug(
