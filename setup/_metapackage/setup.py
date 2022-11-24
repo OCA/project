@@ -44,6 +44,7 @@ setuptools.setup(
         'odoo13-addon-project_timeline_hr_timesheet',
         'odoo13-addon-project_timeline_task_dependency',
         'odoo13-addon-project_timesheet_time_control',
+        'odoo13-addon-project_timesheet_time_control_sale',
     ],
     classifiers=[
         'Programming Language :: Python',
