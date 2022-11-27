@@ -7,7 +7,7 @@ import pytz
 from dateutil.relativedelta import relativedelta
 
 from odoo import api, fields, models
-from odoo.tools import date_utils, mute_logger
+from odoo.tools import date_utils
 
 _logger = logging.getLogger(__name__)
 
@@ -202,7 +202,47 @@ class ForecastLine(models.Model):
                     rec.forecast_hours + confirmed
                 )
 
-    def prepare_forecast_lines(
+    def _update_forecast_lines(
+        self,
+        name,
+        date_from,
+        date_to,
+        ttype,
+        forecast_hours,
+        unit_cost,
+        res_model,
+        res_id=0,
+        **kwargs
+    ):
+        """this method is called on a recordset, it will update it so that all the
+        lines in the set are correct, removing the ones which need removing and
+        creating the missing ones. Updates lines, and return a list of dict to pass to
+        create"""
+        values = self._prepare_forecast_lines(
+            name,
+            date_from,
+            date_to,
+            ttype,
+            forecast_hours,
+            unit_cost,
+            res_model=res_model,
+            res_id=res_id,
+            **kwargs
+        )
+        to_create = []
+        self_by_start_date = {r.date_from: r for r in self}
+        for vals in values:
+            start_date = vals["date_from"]
+            rec = self_by_start_date.pop(start_date, None)
+            if rec is None:
+                to_create.append(vals)
+            else:
+                rec.write(vals)
+        to_remove = self.browse([r.id for r in self_by_start_date.values()])
+        to_remove.unlink()
+        return to_create
+
+    def _prepare_forecast_lines(
         self,
         name,
         date_from,
@@ -253,13 +293,8 @@ class ForecastLine(models.Model):
         horizon_end = today + relativedelta(months=company.forecast_line_horizon)
         return horizon_end
 
-    def _split_per_period(
-        self, date_from, date_to, forecast_hours, unit_cost, resource, calendar
-    ):
-        company = self.env.company
+    def _compute_horizon(self, date_from, date_to):
         today = fields.Date.context_today(self)
-        granularity = company.forecast_line_granularity
-        delta = date_utils.get_timedelta(1, granularity)
         horizon_end = self._company_horizon_end()
         # the date_to passed as argument is "included". We want to be able to
         # reason with this date "excluded" when doing substractions to compute
@@ -267,6 +302,17 @@ class ForecastLine(models.Model):
         date_to += relativedelta(days=1)
         horiz_date_from = max(date_from, today)
         horiz_date_to = min(date_to, horizon_end)
+        return horiz_date_from, horiz_date_to, date_to
+
+    def _split_per_period(
+        self, date_from, date_to, forecast_hours, unit_cost, resource, calendar
+    ):
+        company = self.env.company
+        granularity = company.forecast_line_granularity
+        delta = date_utils.get_timedelta(1, granularity)
+        horiz_date_from, horiz_date_to, date_to = self._compute_horizon(
+            date_from, date_to
+        )
         curr_date = date_utils.start_of(horiz_date_from, granularity)
         if horiz_date_to <= horiz_date_from:
             return
@@ -377,10 +423,10 @@ class ForecastLine(models.Model):
         )
         return nb_hours
 
-    def unlink(self):
-        # we routinely unlink forecast lines, let"s not fill the logs with this
-        with mute_logger("odoo.models.unlink"):
-            return super().unlink()
+    # def unlink(self):
+    #     # we routinely unlink forecast lines, let's not fill the logs with this
+    #     with mute_logger("odoo.models.unlink"):
+    #         return super().unlink()
 
     @api.model_create_multi
     @api.returns("self", lambda value: value.id)
