@@ -1,10 +1,9 @@
 # Copyright 2022 Camptocamp SA
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 import logging
+import random
 
 from odoo import api, fields, models
-
-from ..utils import get_written_computed_fields
 
 _logger = logging.getLogger(__name__)
 
@@ -15,6 +14,11 @@ class ProjectTask(models.Model):
     forecast_role_id = fields.Many2one("forecast.role", ondelete="restrict")
     forecast_date_planned_start = fields.Date("Planned start date")
     forecast_date_planned_end = fields.Date("Planned end date")
+    forecast_recomputation_trigger = fields.Float(
+        compute="_compute_forecast_recomputation_trigger",
+        store=True,
+        help="Technical field used to trigger the forecast recomputation",
+    )
 
     @api.model_create_multi
     def create(self, vals_list):
@@ -25,36 +29,48 @@ class ProjectTask(models.Model):
             if vals.get("planned_date_end"):
                 vals["forecast_date_planned_end"] = vals["planned_date_end"]
         tasks = super().create(vals_list)
-        tasks._update_forecast_lines()
+        # tasks._update_forecast_lines()
         return tasks
+
+    def _get_forecast_lines(self, domain=None):
+        self.ensure_one()
+        base_domain = [("res.model", "=", self._name), ("res_id", "=", self.id)]
+        if domain is not None:
+            base_domain += domain
+        return self.env["forecast.line"].search(base_domain)
 
     def _update_forecast_lines_trigger_fields(self):
         return [
-            "sale_order_line_id",
+            # "sale_order_line_id",
             "forecast_role_id",
             "forecast_date_planned_start",
             "forecast_date_planned_end",
             "remaining_hours",
             "name",
-            "planned_time",
-            "user_ids",
+            # "planned_time",
+            "user_id",
+            "project_id.project_status",
+            "project_id.project_status.forecast_line_type",
         ]
 
-    # TODO: Stored computed fields updates don't go through write,
-    # but they do go through _write. Check if possible to override
-    # that method instead, to avoid maintaing get_written_computed_fields
+    @api.depends(_update_forecast_lines_trigger_fields)
+    def _compute_forecast_recomputation_trigger(self):
+        value = random.random()
+        _logger.info("TRIGGER %s", self)
+        for rec in self:
+            rec.forecast_recomputation_trigger = value
+
     def write(self, values):
         # compatibility with fields from project_enterprise
         if "planned_date_begin" in values:
             values["forecast_date_planned_start"] = values["planned_date_begin"]
         if "planned_date_end" in values:
             values["forecast_date_planned_end"] = values["planned_date_end"]
-        res = super().write(values)
-        written_computed_fields = get_written_computed_fields(
-            self, tuple(sorted(values))
-        )
-        trigger_fields = self._update_forecast_lines_trigger_fields()
-        if any(field in written_computed_fields for field in trigger_fields):
+        return super().write(values)
+
+    def _write(self, values):
+        res = super()._write(values)
+        if "forecast_recomputation_trigger" in values:
             self._update_forecast_lines()
         return res
 
@@ -78,18 +94,25 @@ class ProjectTask(models.Model):
         today = fields.Date.context_today(self)
         forecast_vals = []
         ForecastLine = self.env["forecast.line"].sudo()
-        # XXX try to be smarter and only unlink those needing unlinking, update the others
-        ForecastLine.search(
-            [("res_id", "in", self.ids), ("res_model", "=", self._name)]
-        ).unlink()
+        # # XXX try to be smarter and only unlink those needing unlinking, update the others
+        # #self.flush() # required to make tests pass WTF
+        # fl = ForecastLine.search(
+        #     [("res_id", "in", self.ids), ("res_model", "=", self._name)]
+        # )
+        # print('unlink', fl)
+        # fl.unlink()
+        # fl.flush() # required to make tests pass WTF
+        task_with_lines_to_clean = []
         for task in self:
             if not task.forecast_role_id:
                 _logger.info("skip task %s: no forecast role", task)
+                task_with_lines_to_clean.append(task.id)
                 continue
             elif task.project_id.stage_id:
                 forecast_type = task.project_id.stage_id.forecast_line_type
                 if not forecast_type:
                     _logger.info("skip task %s: no forecast for project state", task)
+                    task_with_lines_to_clean.append(task.id)
                     continue  # closed / cancelled stage
             elif not task.project_id.project_status:
                 _logger.info("skip task %s: no project status set", task)
@@ -106,6 +129,7 @@ class ProjectTask(models.Model):
                     # TODO have forecast quantity if the sale is in Draft and we
                     # are not generating forecast lines from SO
                     _logger.info("skip task %s: draft sale")
+                    task_with_lines_to_clean.append(task.id)
                     continue
 
             if (
@@ -113,12 +137,14 @@ class ProjectTask(models.Model):
                 or not task.forecast_date_planned_end
             ):
                 _logger.info("skip task %s: no planned dates", task)
+                task_with_lines_to_clean.append(task.id)
                 continue
             if not task.remaining_hours:
                 _logger.info("skip task %s: no remaining hours", task)
                 continue
             if task.remaining_hours < 0:
                 _logger.info("skip task %s: negative remaining hours", task)
+                task_with_lines_to_clean.append(task.id)
                 continue
             date_start = max(today, task.forecast_date_planned_start)
             date_end = max(today, task.forecast_date_planned_end)
@@ -133,8 +159,22 @@ class ProjectTask(models.Model):
                 task.remaining_hours,
             )
             forecast_hours = task.remaining_hours / len(employee_ids)
+            ForecastLine.search(
+                [
+                    ("res_model", "=", self._name),
+                    ("res_id", "=", task.id),
+                    ("employee_id", "not in", tuple(employee_ids)),
+                ]
+            ).unlink()
             for employee_id in employee_ids:
-                forecast_vals += ForecastLine.prepare_forecast_lines(
+                employee_lines = ForecastLine.search(
+                    [
+                        ("res_model", "=", self._name),
+                        ("res_id", "=", task.id),
+                        ("employee_id", "=", employee_id),
+                    ]
+                )
+                forecast_vals += employee_lines._update_forecast_lines(
                     name=task.name,
                     date_from=date_start,
                     date_to=date_end,
@@ -150,7 +190,17 @@ class ProjectTask(models.Model):
                     res_model=self._name,
                     res_id=task.id,
                 )
-        return ForecastLine.create(forecast_vals)
+        if task_with_lines_to_clean:
+            to_clean = ForecastLine.search(
+                [
+                    ("res_model", "=", self._name),
+                    ("res_id", "in", tuple(task_with_lines_to_clean)),
+                ]
+            )
+            if to_clean:
+                to_clean.unlink()
+        lines = ForecastLine.create(forecast_vals)
+        return lines
 
     @api.model
     def _recompute_forecast_lines(self, force_company_id=None):
