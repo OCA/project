@@ -114,7 +114,7 @@ class HrEmployeeForecastRole(models.Model):
                 resource,
                 calendar,
             )
-            forecast_vals += ForecastLine.prepare_forecast_lines(
+            forecast_vals += ForecastLine._prepare_forecast_lines(
                 name="Employee %s as %s (%d%%)"
                 % (rec.employee_id.name, rec.role_id.name, rec.rate),
                 date_from=rec.date_start,
