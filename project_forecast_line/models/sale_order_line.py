@@ -4,8 +4,6 @@ import logging
 
 from odoo import api, fields, models
 
-from ..utils import get_written_computed_fields
-
 _logger = logging.getLogger(__name__)
 
 
@@ -46,7 +44,7 @@ class SaleOrderLine(models.Model):
             quantity_hours = uom._compute_quantity(
                 line.product_uom_qty, self.env.ref("uom.product_uom_hour")
             )
-            forecast_vals += ForecastLine.prepare_forecast_lines(
+            forecast_vals += ForecastLine._prepare_forecast_lines(
                 name=line.name,
                 date_from=line.forecast_date_start,
                 date_to=line.forecast_date_end,
@@ -87,16 +85,10 @@ class SaleOrderLine(models.Model):
             "name",
         ]
 
-    # TODO: Stored computed fields updates don't go through write,
-    # but they do go through _write. Check if possible to override
-    # that method instead, to avoid maintaing get_written_computed_fields
-    def write(self, values):
-        res = super().write(values)
-        written_computed_fields = get_written_computed_fields(
-            self, tuple(sorted(values))
-        )
+    def _write(self, values):
+        res = super()._write(values)
         trigger_fields = self._update_forecast_lines_trigger_fields()
-        if any(field in written_computed_fields for field in trigger_fields):
+        if any(field in values for field in trigger_fields):
             self._update_forecast_lines()
         return res
 
