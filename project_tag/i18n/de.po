@@ -18,16 +18,19 @@ msgstr ""
 
 #. module: project_tag
 #: model:ir.model.fields,field_description:project_tag.field_project_project__display_name
+#: model:ir.model.fields,field_description:project_tag.field_project_task__display_name
 msgid "Display Name"
 msgstr "Anzeigename"
 
 #. module: project_tag
 #: model:ir.model.fields,field_description:project_tag.field_project_project__id
+#: model:ir.model.fields,field_description:project_tag.field_project_task__id
 msgid "ID"
 msgstr "ID"
 
 #. module: project_tag
 #: model:ir.model.fields,field_description:project_tag.field_project_project____last_update
+#: model:ir.model.fields,field_description:project_tag.field_project_task____last_update
 msgid "Last Modified on"
 msgstr "Zuletzt geändert am"
 
@@ -42,6 +45,17 @@ msgid "Tags"
 msgstr "Stichwörter"
 
 #. module: project_tag
+#: model:ir.model.fields,field_description:project_tag.field_project_project__tags_required
+#: model:ir.model.fields,field_description:project_tag.field_project_task__tags_required
+msgid "Tags Required"
+msgstr ""
+
+#. module: project_tag
 #: model_terms:ir.ui.view,arch_db:project_tag.project_tags_view_inherit_form
 msgid "Tags..."
 msgstr "Stichwörter..."
+
+#. module: project_tag
+#: model:ir.model,name:project_tag.model_project_task
+msgid "Task"
+msgstr ""
