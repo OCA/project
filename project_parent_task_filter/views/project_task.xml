@@ -7,7 +7,7 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_search_form" />
         <field name="arch" type="xml">
-            <xpath expr="//filter[@name='rating_task']" position="after">
+            <xpath expr="//filter[@name='no_rating']" position="after">
                 <filter
                     string="Parent tasks"
                     name="parent_only"
