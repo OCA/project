@@ -1,10 +1,7 @@
-# Copyright 2019 Oihane Crucelaegui - AvanzOSC
-# License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
+# Copyright 2022 Open Source Integrators
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-# from odoo.osv import expression
 from odoo.tests import common
-
-# from odoo.tools.safe_eval import safe_eval
 
 
 class TestProjectPurchaseUtilities(common.SavepointCase):
@@ -70,6 +67,18 @@ class TestProjectPurchaseUtilities(common.SavepointCase):
         lines = self.env["purchase.order.line"].search(purchase_domain)
         order_domain = [("id", "in", lines.mapped("order_id").ids)]
         purchase_dict = self.project.button_open_purchase_order()
-        self.assertEquals(purchase_dict.get("domain"), order_domain)
+        self.assertEqual(purchase_dict.get("domain"), order_domain)
         purchase_line_dict = self.project.button_open_purchase_order_line()
-        self.assertEquals(purchase_line_dict.get("domain"), purchase_domain)
+        self.assertEqual(purchase_line_dict.get("domain"), purchase_domain)
+        invoice_domain = ['&', ("id", "in", [invoice.id]), ('move_type', '=', 'in_invoice')]  # only one test invoice (line)
+        invoice_dict = self.project.button_open_purchase_invoice()
+        self.assertEqual(invoice_dict.get("domain"), invoice_domain)
+        invoice_line_domain = [
+            (
+                "analytic_account_id",
+                "in",
+                [self.project.analytic_account_id.id],  # one test invoice (line)
+            )
+        ]
+        invoice_line_dict = self.project.button_open_purchase_invoice_line()
+        self.assertEqual(invoice_line_dict.get("domain"), invoice_line_domain)

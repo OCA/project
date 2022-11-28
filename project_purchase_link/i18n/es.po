@@ -33,6 +33,28 @@ msgstr "Proyecto"
 
 #. module: project_purchase_link
 #: code:addons/project_purchase_link/models/project_project.py:0
+
+#. module: project_purchase_utilities
+#: model:ir.model.fields,field_description:project_purchase_utilities.field_project_project_purchase_count
+#: model:ir.model.fields,field_description:project_purchase_utilities.field_project_project_purchase_line_count
+msgid "# Purchase"
+msgstr "N.º de compras"
+
+#. module: project_purchase_utilities
+#: model:ir.model.fields,field_description:project_purchase_utilities.field_project_project_purchase_invoice_count
+#: model:ir.model.fields,field_description:project_purchase_utilities.field_project_project_purchase_invoice_line_count
+msgid "# Purchase Invoice"
+msgstr "N.º de facturas de compra"
+
+#. module: project_purchase_utilities
+#: model:ir.model,name:project_purchase_utilities.model_project_project
+msgid "Project"
+msgstr "Proyecto"
+
+#. module: project_purchase_utilities
+#: code:addons/project_purchase_utilities/models/project_project.py:86
+#: model:ir.ui.view,arch_db:project_purchase_utilities.project_project_view_form
+>>>>>>> [FIX] no plural in module name
 #, python-format
 msgid "Purchase Invoice Lines"
 msgstr "Líneas de factura de compra"
@@ -51,6 +73,20 @@ msgstr "Facturas de compra"
 
 #. module: project_purchase_link
 #: code:addons/project_purchase_link/models/project_project.py:0
+
+#. module: project_purchase_utilities
+#: model:ir.ui.view,arch_db:project_purchase_utilities.project_project_view_form
+msgid "Purchase Invoices"
+msgstr "Facturas de compra"
+
+#. module: project_purchase_utilities
+#: model:ir.ui.view,arch_db:project_purchase_utilities.project_project_view_form
+msgid "Purchase Lines"
+msgstr "Líneas de compra"
+
+#. module: project_purchase_utilities
+#: code:addons/project_purchase_utilities/models/project_project.py:46
+>>>>>>> [FIX] no plural in module name
 #, python-format
 msgid "Purchase Order"
 msgstr "Pedido de compra"
@@ -75,3 +111,10 @@ msgstr "Compras"
 
 #~ msgid "Purchase Lines"
 #~ msgstr "Líneas de compra"
+
+#. module: project_purchase_utilities
+#: model:ir.ui.view,arch_db:project_purchase_utilities.project_project_view_form
+msgid "Purchases"
+msgstr "Compras"
+
+>>>>>>> [FIX] no plural in module name
