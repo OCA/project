@@ -31,8 +31,9 @@ msgstr "N.º de facturas de compra"
 msgid "Project"
 msgstr "Proyecto"
 
-#. module: project_purchase_link
-#: code:addons/project_purchase_link/models/project_project.py:0
+#. module: project_purchase_utilities
+#: code:addons/project_purchase_utilities/models/project_project.py:86
+#: model:ir.ui.view,arch_db:project_purchase_utilities.project_project_view_form
 #, python-format
 msgid "Purchase Invoice Lines"
 msgstr "Líneas de factura de compra"
@@ -49,14 +50,21 @@ msgstr "Facturas de compra"
 msgid "Purchase Invoices"
 msgstr "Facturas de compra"
 
-#. module: project_purchase_link
-#: code:addons/project_purchase_link/models/project_project.py:0
+#. module: project_purchase_utilities
+#: model:ir.ui.view,arch_db:project_purchase_utilities.project_project_view_form
+msgid "Purchase Lines"
+msgstr "Líneas de compra"
+
+#. module: project_purchase_utilities
+#: code:addons/project_purchase_utilities/models/project_project.py:46
 #, python-format
 msgid "Purchase Order"
 msgstr "Pedido de compra"
 
 #. module: project_purchase_link
 #: code:addons/project_purchase_link/models/project_project.py:0
+#. module: project_purchase_utilities
+#: code:addons/project_purchase_utilities/models/project_project.py:59
 #, python-format
 msgid "Purchase Order Lines"
 msgstr "Líneas de pedido de compra"
@@ -72,6 +80,3 @@ msgstr "Compras"
 #: model_terms:ir.ui.view,arch_db:project_purchase_link.project_project_view_form
 msgid "Purchases"
 msgstr "Compras"
-
-#~ msgid "Purchase Lines"
-#~ msgstr "Líneas de compra"

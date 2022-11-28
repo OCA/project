@@ -10,6 +10,7 @@
                     name="button_open_purchase_order"
                     type="object"
                     icon="fa-shopping-cart"
+                    attrs="{'invisible': [('purchase_count', '=', 0)]}"
                 >
                     <field string="Purchases" name="purchase_count" widget="statinfo" />
                 </button>
@@ -18,10 +19,11 @@
                     name="button_open_purchase_order_line"
                     type="object"
                     icon="fa-shopping-cart"
+                    attrs="{'invisible': [('purchase_count', '=', 0)]}"
                 >
                     <field
                         string="Purchase Total"
-                        name="purchase_line_total"
+                        name="purchase_count"
                         widget="statinfo"
                     />
                 </button>
@@ -30,9 +32,10 @@
                     name="button_open_purchase_invoice"
                     type="object"
                     icon="fa-pencil-square-o"
+                    attrs="{'invisible': [('purchase_invoice_count', '=', 0)]}"
                 >
                     <field
-                        string="Purchase Invoices"
+                        string="PO Invoices"
                         name="purchase_invoice_count"
                         widget="statinfo"
                     />
@@ -42,9 +45,10 @@
                     name="button_open_purchase_invoice_line"
                     type="object"
                     icon="fa-pencil-square-o"
+                    attrs="{'invisible': [('purchase_invoice_line_total', '=', 0)]}"
                 >
                     <field
-                        string="Purchase Invoice Total"
+                        string="PO Invoice Total"
                         name="purchase_invoice_line_total"
                         widget="statinfo"
                     />
