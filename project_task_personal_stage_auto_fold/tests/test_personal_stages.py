@@ -54,8 +54,8 @@ class TestAutoFoldPersonalStages(TransactionCase):
             [
                 {"sequence": 1, "name": "New"},
                 {"sequence": 2, "name": "In progress"},
-                {"sequence": 3, "name": "Finished", "is_closed": True},
-                {"sequence": 4, "name": "Canceled", "is_closed": True},
+                {"sequence": 3, "name": "Finished", "fold": True},
+                {"sequence": 4, "name": "Canceled", "fold": True},
             ]
         )
         cls.project_pigs.type_ids = [(6, 0, cls.project_task_stages.ids)]
@@ -129,11 +129,9 @@ class TestAutoFoldPersonalStages(TransactionCase):
         personal_target_closing_stage = self.env["project.task.type"].search(
             [
                 ("user_id", "=", self.user_projectmanager.id),
-                "|",
                 ("fold", "=", True),
-                ("is_closed", "=", True),
             ],
-            order="is_closed desc",
+            order="fold desc",
             limit=1,
         )
         target_task_stage = self.project_task_stages[2]  # Finished stage
