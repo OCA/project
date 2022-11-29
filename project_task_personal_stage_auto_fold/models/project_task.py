@@ -8,7 +8,7 @@ class Task(models.Model):
         result = super().write(vals)
         if (
             vals.get("stage_id")
-            and self.env["project.task.type"].browse(vals.get("stage_id")).is_closed
+            and self.env["project.task.type"].browse(vals.get("stage_id")).fold
         ):
             self._fold_personal_stage_task()
         return result
@@ -20,12 +20,10 @@ class Task(models.Model):
             .search(
                 [
                     ("user_id", "=", self.env.user.id),
-                    "|",
                     ("fold", "=", True),
-                    ("is_closed", "=", True),
                 ],
             )
-            .sorted(lambda ptt: ptt.is_closed, reverse=True)
+            .sorted(lambda ptt: ptt.fold, reverse=True)
         )
         if not folded_stages:
             return
