@@ -20,7 +20,6 @@ class Task(models.Model):
             .search(
                 [
                     ("user_id", "=", self.env.user.id),
-                    "|",
                     ("fold", "=", True),
                 ],
             )
