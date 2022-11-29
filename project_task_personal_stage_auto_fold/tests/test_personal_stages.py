@@ -129,7 +129,6 @@ class TestAutoFoldPersonalStages(TransactionCase):
         personal_target_closing_stage = self.env["project.task.type"].search(
             [
                 ("user_id", "=", self.user_projectmanager.id),
-                "|",
                 ("fold", "=", True),
             ],
             order="fold desc",
