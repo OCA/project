@@ -19,6 +19,7 @@ class Task(models.Model):
             self.env["project.task.type"]
             .search(
                 [
+                    "&",
                     ("user_id", "=", self.env.user.id),
                     ("fold", "=", True),
                 ],
