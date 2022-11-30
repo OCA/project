@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2021-04-01 03:48+0000\n"
+"PO-Revision-Date: 2022-11-30 02:45+0000\n"
 "Last-Translator: Ignacio Buioli <ibuioli@gmail.com>\n"
 "Language-Team: none\n"
 "Language: es_AR\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.3.2\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #. module: project_tag
 #: model:ir.model.fields,field_description:project_tag.field_project_project__display_name
@@ -48,7 +48,7 @@ msgstr "Etiquetas"
 #: model:ir.model.fields,field_description:project_tag.field_project_project__tags_required
 #: model:ir.model.fields,field_description:project_tag.field_project_task__tags_required
 msgid "Tags Required"
-msgstr ""
+msgstr "Etiquetas Requeridas"
 
 #. module: project_tag
 #: model_terms:ir.ui.view,arch_db:project_tag.project_tags_view_inherit_form
@@ -58,4 +58,4 @@ msgstr "Etiquetas..."
 #. module: project_tag
 #: model:ir.model,name:project_tag.model_project_task
 msgid "Task"
-msgstr ""
+msgstr "Tarea"
