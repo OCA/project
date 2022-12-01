@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="view_project_gtd_empty" model="ir.ui.view">
+        <field name="name">Empty Timebox</field>
+        <field name="model">project.timebox.empty</field>
+        <field name="arch" type="xml">
+            <form name="Empty Timebox">
+                <field name="state" invisible="1" />
+                <div states="init">Start Timebox Empty Process.</div>
+                <div states="done">Timebox Empty Process Completed Successfully.</div>
+                <footer>
+                    <button
+                        name="process"
+                        string="Empty Timebox"
+                        type="object"
+                        class="btn-primary"
+                        states="init"
+                    />
+                    <button special="cancel" string="Close" class="btn-secondary" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_project_gtd_empty" model="ir.actions.act_window">
+        <field name="name">Empty Timebox</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">project.timebox.empty</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_project_gtd_empty" />
+        <field name="context">{'record_id' : active_id}</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="project_gtd.model_project_gtd_timebox" />
+        <field name="binding_view_types">list,form</field>
+    </record>
+
+</odoo>

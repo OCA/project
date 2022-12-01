@@ -1,0 +1,286 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * project_gtd
+#
+# Translators:
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2011
+msgid ""
+msgstr ""
+"Project-Id-Version: project (8.0)\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-08-31 18:04+0000\n"
+"PO-Revision-Date: 2015-07-21 19:20+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
+"Language-Team: Galician (http://www.transifex.com/oca/OCA-project-8-0/"
+"language/gl/)\n"
+"Language: gl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: project_gtd
+#: model:ir.ui.view,arch_db:project_gtd.view_project_gtd_fill
+msgid "Add to Timebox"
+msgstr "Engadir ó período de tempo"
+
+#. module: project_gtd
+#: model:project.gtd.context,name:project_gtd.context_car
+msgid "Car"
+msgstr "Automóbil"
+
+#. module: project_gtd
+#: model:ir.ui.view,arch_db:project_gtd.view_project_gtd_empty
+msgid "Close"
+msgstr ""
+
+#. module: project_gtd
+#: model:ir.model,name:project_gtd.model_project_gtd_context
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context_name
+#: model:ir.model.fields,field_description:project_gtd.field_project_task_context_id
+#: model:ir.ui.view,arch_db:project_gtd.view_task_gtd_search
+msgid "Context"
+msgstr "Contexto"
+
+#. module: project_gtd
+#: model:ir.actions.act_window,name:project_gtd.open_gtd_context_tree
+#: model:ir.ui.menu,name:project_gtd.menu_open_gtd_time_contexts
+msgid "Contexts"
+msgstr "Contextos"
+
+#. module: project_gtd
+#: model:ir.actions.act_window,help:project_gtd.open_gtd_context_tree
+msgid ""
+"Contexts are defined in the \"Getting Things Done\" methodology. It allows "
+"you to categorize your tasks according to the context in which they have to "
+"be done: at the office, at home, when I take my car, etc."
+msgstr ""
+"Os contextos defínense na metodoloxía \"Getting Things Done\" (Facendo as "
+"cousas). Permítelle clasificar as súas tarefas de acordo co contexto no que "
+"se teñen que realizar: na oficina, na casa, ó coller o coche, etc."
+
+#. module: project_gtd
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context_create_uid
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_timebox_create_uid
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty_create_uid
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: project_gtd
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context_create_date
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_timebox_create_date
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty_create_date
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_create_date
+msgid "Created on"
+msgstr ""
+
+#. module: project_gtd
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context_display_name
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_timebox_display_name
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty_display_name
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: project_gtd
+#: model:ir.actions.act_window,name:project_gtd.action_project_gtd_empty
+msgid "Empty Timebox"
+msgstr "Período de tempo baleiro"
+
+#. module: project_gtd
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_timebox_id
+msgid "Get from Timebox"
+msgstr "Obter desde período de tempo"
+
+#. module: project_gtd
+#: model:ir.model.fields,help:project_gtd.field_project_gtd_context_sequence
+msgid "Gives the sequence order when displaying a list of contexts."
+msgstr "Indica a orde de secuencia cando se amosa unha lista de contextos."
+
+#. module: project_gtd
+#: model:ir.model.fields,help:project_gtd.field_project_gtd_timebox_sequence
+msgid "Gives the sequence order when displaying a list of timebox."
+msgstr ""
+"Indica a orde de secuencia cando se amosa unha lista de períodos de tempo."
+
+#. module: project_gtd
+#: model:project.gtd.context,name:project_gtd.context_home
+msgid "Home"
+msgstr "Inicio"
+
+#. module: project_gtd
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context_id
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_timebox_id
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty_id
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_id
+msgid "ID"
+msgstr ""
+
+#. module: project_gtd
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context___last_update
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_timebox___last_update
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty___last_update
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan___last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: project_gtd
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context_write_uid
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_timebox_write_uid
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty_write_uid
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: project_gtd
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context_write_date
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_timebox_write_date
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty_write_date
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: project_gtd
+#: model:project.gtd.timebox,name:project_gtd.timebox_lt
+msgid "Long Term"
+msgstr "Longo prazo"
+
+#. module: project_gtd
+#: model:ir.actions.act_window,name:project_gtd.open_gtd_task
+#: model:ir.ui.menu,name:project_gtd.menu_open_gtd_timebox_tree
+msgid "My Tasks (GTD)"
+msgstr ""
+
+#. module: project_gtd
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty_name
+msgid "Name"
+msgstr "Nome"
+
+#. module: project_gtd
+#: code:addons/project_gtd/wizard/project_gtd_empty.py:29
+#, python-format
+msgid "No timebox child of this one!"
+msgstr ""
+
+#. module: project_gtd
+#: model:project.gtd.context,name:project_gtd.context_office
+msgid "Office"
+msgstr "Oficina"
+
+#. module: project_gtd
+#: model:ir.actions.act_window,name:project_gtd.action_project_gtd_fill
+msgid "Plannify Timebox"
+msgstr "Planifica período de tempo"
+
+#. module: project_gtd
+#: model:ir.model,name:project_gtd.model_project_timebox_empty
+msgid "Project Timebox Empty"
+msgstr "Período de tempo do proxecto baleiro"
+
+#. module: project_gtd
+#: model:ir.model,name:project_gtd.model_project_timebox_fill_plan
+msgid "Project Timebox Fill"
+msgstr "Período de tempo do proxecto completo"
+
+#. module: project_gtd
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context_sequence
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_timebox_sequence
+msgid "Sequence"
+msgstr "Secuencia"
+
+#. module: project_gtd
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_timebox_to_id
+msgid "Set to Timebox"
+msgstr "Configurar en período de tempo"
+
+#. module: project_gtd
+#: model:ir.model,name:project_gtd.model_project_task
+msgid "Task"
+msgstr "Tarefa"
+
+#. module: project_gtd
+#: model:ir.actions.act_window,name:project_gtd.open_gtd_all_tasks
+#: model:ir.ui.menu,name:project_gtd.menu_open_gtd_timebox_all_tree
+msgid "Tasks (GTD)"
+msgstr ""
+
+#. module: project_gtd
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_task_ids
+msgid "Tasks selection"
+msgstr "Selección de tarefas"
+
+#. module: project_gtd
+#: model:ir.model.fields,help:project_gtd.field_project_task_context_id
+msgid "The context place where user has to treat task"
+msgstr "O lugar de contexto onde o usuario ten que realizar a tarefa."
+
+#. module: project_gtd
+#: model:project.gtd.timebox,name:project_gtd.timebox_weekly
+msgid "This Week"
+msgstr "Esta semana"
+
+#. module: project_gtd
+#: model:ir.model.fields,help:project_gtd.field_project_task_timebox_id
+msgid "Time-laps during which task has to be treated"
+msgstr "Iteracións de tempo durante as que a tarefa tense que realizar."
+
+#. module: project_gtd
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_timebox_name
+#: model:ir.model.fields,field_description:project_gtd.field_project_task_timebox_id
+#: model:ir.ui.view,arch_db:project_gtd.view_task_gtd_search
+msgid "Timebox"
+msgstr "Período de tempo"
+
+#. module: project_gtd
+#: model:ir.ui.view,arch_db:project_gtd.view_project_gtd_empty
+msgid "Timebox Empty Process Completed Successfully."
+msgstr "O proceso de períodos de tempo baleiros realizouse corretamente."
+
+#. module: project_gtd
+#: model:ir.actions.act_window,name:project_gtd.open_gtd_timebox_tree
+#: model:ir.ui.menu,name:project_gtd.menu_open_gtd_time_timeboxes
+msgid "Timeboxes"
+msgstr "Períodos de tempo"
+
+#. module: project_gtd
+#: model:ir.actions.act_window,help:project_gtd.open_gtd_timebox_tree
+msgid ""
+"Timeboxes are defined in the \"Getting Things Done\" methodology. A timebox "
+"defines a period of time in order to categorize your tasks: today, this "
+"week, this month, long term."
+msgstr ""
+"Os 'períodos de tempo' defínense na metodoloxía \"Getting Things Done"
+"\" (Facendo as cousas). Un \"período de tempo\" define un lapso coa "
+"finalidade de clasificar as súas tarefas: hoxe, esta semana, este mes, a "
+"longo prazo."
+
+#. module: project_gtd
+#: model:ir.ui.view,arch_db:project_gtd.project_task
+#: model:ir.ui.view,arch_db:project_gtd.project_task_tree
+msgid "Timeframe"
+msgstr ""
+
+#. module: project_gtd
+#: model:project.gtd.timebox,name:project_gtd.timebox_daily
+msgid "Today"
+msgstr "Hoxe"
+
+#. module: project_gtd
+#: model:project.gtd.context,name:project_gtd.context_travel
+msgid "Travel"
+msgstr "Viaxe"
+
+#. module: project_gtd
+#: model:ir.ui.view,arch_db:project_gtd.view_project_gtd_fill
+msgid "or"
+msgstr ""
+
+#. module: project_gtd
+#: model:ir.model,name:project_gtd.model_project_gtd_timebox
+#, fuzzy
+msgid "project.gtd.timebox"
+msgstr "Período de tempo do proxecto completo"
+
+#~ msgid "Timebox Definition"
+#~ msgstr "Definición períodos de tempo"

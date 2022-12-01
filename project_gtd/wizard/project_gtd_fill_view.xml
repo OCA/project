@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_project_gtd_fill" model="ir.ui.view">
+        <field name="name">Plannify Timebox</field>
+        <field name="model">project.timebox.fill.plan</field>
+        <field name="arch" type="xml">
+            <form name="Plannify Timebox" version="7.0">
+                <group col="4">
+                    <field
+                        name="timebox_id"
+                        widget="selection"
+                        options='{"no_open": True}'
+                    />
+                    <field name="timebox_to_id" widget="selection" />
+                </group>
+                <field
+                    name="task_ids"
+                    domain="[('timebox_id', '=', timebox_id), ('stage_id.fold', '=', False)]"
+                />
+                <footer>
+                    <button
+                        name="process"
+                        string="Add to Timebox"
+                        type="object"
+                        class="btn-primary"
+                    />
+                    <button string="Close" class="btn-secondary" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_project_gtd_fill" model="ir.actions.act_window">
+        <field name="name">Plannify Timebox</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">project.timebox.fill.plan</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_project_gtd_fill" />
+        <field name="context">{'record_id' : active_id}</field>
+        <field name="target">new</field>
+        <field name="binding_model_id" ref="project_gtd.model_project_gtd_timebox" />
+        <field name="binding_view_types">list,form</field>
+    </record>
+
+</odoo>

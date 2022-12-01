@@ -1,0 +1,323 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+# 	* project_gtd
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 5.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-08-06 12:33+0200\n"
+"PO-Revision-Date: 2015-08-06 12:33+0200\n"
+"Last-Translator: Matjaz Mozetic <m.mozetic@matmoz.si>\n"
+"Language-Team: \n"
+"Language: nl_BE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Launchpad-Export-Date: 2014-04-22 07:06+0000\n"
+"X-Generator: Poedit 1.8.2\n"
+
+#. module: project_gtd
+#: model:ir.ui.view,arch_db:project_gtd.view_project_gtd_fill
+#, fuzzy
+msgid "Add to Timebox"
+msgstr "Voeg toe aan timebox"
+
+#. module: project_gtd
+#: model:project.gtd.context,name:project_gtd.context_car
+msgid "Car"
+msgstr ""
+
+#. module: project_gtd
+#: model:ir.ui.view,arch_db:project_gtd.view_project_gtd_empty
+msgid "Close"
+msgstr ""
+
+#. module: project_gtd
+#: model:ir.model,name:project_gtd.model_project_gtd_context
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context_name
+#: model:ir.model.fields,field_description:project_gtd.field_project_task_context_id
+#: model:ir.ui.view,arch_db:project_gtd.view_task_gtd_search
+#, fuzzy
+msgid "Context"
+msgstr "Context"
+
+#. module: project_gtd
+#: model:ir.actions.act_window,name:project_gtd.open_gtd_context_tree
+#: model:ir.ui.menu,name:project_gtd.menu_open_gtd_time_contexts
+#, fuzzy
+msgid "Contexts"
+msgstr "Contexten"
+
+#. module: project_gtd
+#: model:ir.actions.act_window,help:project_gtd.open_gtd_context_tree
+#, fuzzy
+msgid ""
+"Contexts are defined in the \"Getting Things Done\" methodology. It allows "
+"you to categorize your tasks according to the context in which they have to "
+"be done: at the office, at home, when I take my car, etc."
+msgstr ""
+"Contexten zijn gedefinieerd in de \"Getting Things Done\" methode. Ze laten "
+"u de taken categoriseren in de context waarbinnen ze worden uitgevoerd: op "
+"kantoor, thuis, als ik met de auto ga, etc."
+
+#. module: project_gtd
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context_create_uid
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_timebox_create_uid
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty_create_uid
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_create_uid
+#, fuzzy
+msgid "Created by"
+msgstr "Aangemaakt op"
+
+#. module: project_gtd
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context_create_date
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_timebox_create_date
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty_create_date
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_create_date
+#, fuzzy
+msgid "Created on"
+msgstr "Aangemaakt op"
+
+#. module: project_gtd
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context_display_name
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_timebox_display_name
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty_display_name
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: project_gtd
+#: model:ir.actions.act_window,name:project_gtd.action_project_gtd_empty
+#, fuzzy
+msgid "Empty Timebox"
+msgstr "Lege timebox"
+
+#. module: project_gtd
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_timebox_id
+#, fuzzy
+msgid "Get from Timebox"
+msgstr "Haal uit timebox"
+
+#. module: project_gtd
+#: model:ir.model.fields,help:project_gtd.field_project_gtd_context_sequence
+#, fuzzy
+msgid "Gives the sequence order when displaying a list of contexts."
+msgstr "Bepaalt de volgorde waarin de lijst van contexten wordt afgebeeld."
+
+#. module: project_gtd
+#: model:ir.model.fields,help:project_gtd.field_project_gtd_timebox_sequence
+#, fuzzy
+msgid "Gives the sequence order when displaying a list of timebox."
+msgstr "Bepaalt de volgorde bij het afbeelden van de lijst van timeboxen."
+
+#. module: project_gtd
+#: model:project.gtd.context,name:project_gtd.context_home
+msgid "Home"
+msgstr ""
+
+#. module: project_gtd
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context_id
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_timebox_id
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty_id
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_id
+msgid "ID"
+msgstr ""
+
+#. module: project_gtd
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context___last_update
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_timebox___last_update
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty___last_update
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan___last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: project_gtd
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context_write_uid
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_timebox_write_uid
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty_write_uid
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: project_gtd
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context_write_date
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_timebox_write_date
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty_write_date
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: project_gtd
+#: model:project.gtd.timebox,name:project_gtd.timebox_lt
+#, fuzzy
+msgid "Long Term"
+msgstr "Lange termijn"
+
+#. module: project_gtd
+#: model:ir.actions.act_window,name:project_gtd.open_gtd_task
+#: model:ir.ui.menu,name:project_gtd.menu_open_gtd_timebox_tree
+msgid "My Tasks (GTD)"
+msgstr ""
+
+#. module: project_gtd
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty_name
+#, fuzzy
+msgid "Name"
+msgstr "Naam"
+
+#. module: project_gtd
+#: code:addons/project_gtd/wizard/project_gtd_empty.py:29
+#, python-format
+msgid "No timebox child of this one!"
+msgstr ""
+
+#. module: project_gtd
+#: model:project.gtd.context,name:project_gtd.context_office
+#, fuzzy
+msgid "Office"
+msgstr "Kantoor"
+
+#. module: project_gtd
+#: model:ir.actions.act_window,name:project_gtd.action_project_gtd_fill
+#, fuzzy
+msgid "Plannify Timebox"
+msgstr "Planning van timebox"
+
+#. module: project_gtd
+#: model:ir.model,name:project_gtd.model_project_timebox_empty
+#, fuzzy
+msgid "Project Timebox Empty"
+msgstr "Project timebox legen"
+
+#. module: project_gtd
+#: model:ir.model,name:project_gtd.model_project_timebox_fill_plan
+#, fuzzy
+msgid "Project Timebox Fill"
+msgstr "Project Timebox vullen"
+
+#. module: project_gtd
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context_sequence
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_timebox_sequence
+#, fuzzy
+msgid "Sequence"
+msgstr "Reeks"
+
+#. module: project_gtd
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_timebox_to_id
+#, fuzzy
+msgid "Set to Timebox"
+msgstr "Zet op timebox"
+
+#. module: project_gtd
+#: model:ir.model,name:project_gtd.model_project_task
+#, fuzzy
+msgid "Task"
+msgstr "Taak"
+
+#. module: project_gtd
+#: model:ir.actions.act_window,name:project_gtd.open_gtd_all_tasks
+#: model:ir.ui.menu,name:project_gtd.menu_open_gtd_timebox_all_tree
+msgid "Tasks (GTD)"
+msgstr ""
+
+#. module: project_gtd
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_task_ids
+#, fuzzy
+msgid "Tasks selection"
+msgstr "Taakkeuze"
+
+#. module: project_gtd
+#: model:ir.model.fields,help:project_gtd.field_project_task_context_id
+#, fuzzy
+msgid "The context place where user has to treat task"
+msgstr "De context plaats waar de gebruiker de taak moet behandelen"
+
+#. module: project_gtd
+#: model:project.gtd.timebox,name:project_gtd.timebox_weekly
+#, fuzzy
+msgid "This Week"
+msgstr "Deze week"
+
+#. module: project_gtd
+#: model:ir.model.fields,help:project_gtd.field_project_task_timebox_id
+#, fuzzy
+msgid "Time-laps during which task has to be treated"
+msgstr "Tijdspanne waarbinnen de taak moet worden behandeld"
+
+#. module: project_gtd
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_timebox_name
+#: model:ir.model.fields,field_description:project_gtd.field_project_task_timebox_id
+#: model:ir.ui.view,arch_db:project_gtd.view_task_gtd_search
+#, fuzzy
+msgid "Timebox"
+msgstr "Timebox"
+
+#. module: project_gtd
+#: model:ir.ui.view,arch_db:project_gtd.view_project_gtd_empty
+#, fuzzy
+msgid "Timebox Empty Process Completed Successfully."
+msgstr "Timebox legen proces met succes afgerond."
+
+#. module: project_gtd
+#: model:ir.actions.act_window,name:project_gtd.open_gtd_timebox_tree
+#: model:ir.ui.menu,name:project_gtd.menu_open_gtd_time_timeboxes
+#, fuzzy
+msgid "Timeboxes"
+msgstr "Timeboxen"
+
+#. module: project_gtd
+#: model:ir.actions.act_window,help:project_gtd.open_gtd_timebox_tree
+#, fuzzy
+msgid ""
+"Timeboxes are defined in the \"Getting Things Done\" methodology. A timebox "
+"defines a period of time in order to categorize your tasks: today, this "
+"week, this month, long term."
+msgstr ""
+"Timeboxen zijn gedefinieerd in de \"Getting Things Done\" methodiek. Een "
+"timebox definieert de tijdsperiode om uw taken te categoriseren: vandaag, "
+"deze week, deze maand, lange termijn."
+
+#. module: project_gtd
+#: model:ir.ui.view,arch_db:project_gtd.project_task
+#: model:ir.ui.view,arch_db:project_gtd.project_task_tree
+#, fuzzy
+msgid "Timeframe"
+msgstr "Periode"
+
+#. module: project_gtd
+#: model:project.gtd.timebox,name:project_gtd.timebox_daily
+#, fuzzy
+msgid "Today"
+msgstr "Vandaag"
+
+#. module: project_gtd
+#: model:project.gtd.context,name:project_gtd.context_travel
+#, fuzzy
+msgid "Travel"
+msgstr "Reizen"
+
+#. module: project_gtd
+#: model:ir.ui.view,arch_db:project_gtd.view_project_gtd_fill
+msgid "or"
+msgstr ""
+
+#. module: project_gtd
+#: model:ir.model,name:project_gtd.model_project_gtd_timebox
+#, fuzzy
+msgid "project.gtd.timebox"
+msgstr "Project Timebox vullen"
+
+#, fuzzy
+#~ msgid "Cancel"
+#~ msgstr "Annuleren"
+
+#, fuzzy
+#~ msgid "Timebox Definition"
+#~ msgstr "Timeboxdefinitie"
+
+#~ msgid ""
+#~ "The Object name must start with x_ and not contain any special character !"
+#~ msgstr ""
+#~ "De objectnaam moet beginnen met x_ en mag geen speciale karakters "
+#~ "bevatten !"
