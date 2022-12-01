@@ -25,9 +25,9 @@ class HrEmployee(models.Model):
         today = fields.Date.context_today(self)
         for rec in self:
             rec.main_role_id = rec.role_ids.filtered(
-                lambda r: r.date_start <= today
-                and not r.date_end
-                or r.date_end >= today
+                lambda r: r.date_start <= today and (r.date_end >= today)
+                if r.date_end
+                else True
             )[:1].role_id
 
     def write(self, values):
