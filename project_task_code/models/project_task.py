@@ -25,7 +25,8 @@ class ProjectTask(models.Model):
         for vals in vals_list:
             if vals.get("code", "/") == "/":
                 new_vals = dict(
-                    vals, code=self.env["ir.sequence"].next_by_code("project.task")
+                    vals,
+                    code=self.env["ir.sequence"].next_by_code("project.task") or "/",
                 )
             else:
                 new_vals = vals
