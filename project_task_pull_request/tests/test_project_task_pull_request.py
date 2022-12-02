@@ -57,3 +57,12 @@ class TestProjectTaskPullRequest(TransactionCase):
         self.task_3.write({'stage_id': 6, })
         self.task_3.refresh()
         self.assertEquals(6, self.task_3.stage_id.id)
+
+    def test_pr_uri(self):
+        search_1 = self.env['project.task'].search([('pr_uri', '=', 'github.com')])
+        self.assertEquals(search_1.id, self.task_3.id)
+        self.assertEquals(self.task_2.pr_uri, False)
+        self.task_2.write({"pr_uri": "test pull request"})
+        search_2 = self.env['project.task'].search([('pr_uri', '=', 'test pull request')])
+        self.assertEquals(search_2.id, self.task_2.id)
+

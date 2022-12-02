@@ -31,4 +31,15 @@
         </field>
     </record>
 
+    <record id="pr_uri_view_search" model="ir.ui.view">
+        <field name="name">Project.task.pr_uri_search</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_search_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='stage_id']" position="after">
+                <field string="URI" name="pr_uri" domain="[('pr_uri', 'ilike', self)]"/>
+            </xpath>
+        </field>
+    </record>
+
 </odoo>
