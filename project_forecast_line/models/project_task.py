@@ -2,6 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 import logging
 import random
+import time
 
 from odoo import api, fields, models
 
@@ -45,7 +46,7 @@ class ProjectTask(models.Model):
             "forecast_role_id",
             "forecast_date_planned_start",
             "forecast_date_planned_end",
-            "remaining_hours",
+            # "remaining_hours",
             "name",
             # "planned_time",
             "user_id",
@@ -72,6 +73,8 @@ class ProjectTask(models.Model):
         res = super()._write(values)
         if "forecast_recomputation_trigger" in values:
             self._update_forecast_lines()
+        elif "remaining_hours" in values:
+            self._quick_update_forecast_lines()
         return res
 
     @api.onchange("user_ids")
@@ -90,62 +93,79 @@ class ProjectTask(models.Model):
     def _get_task_employees(self):
         return self.with_context(active_test=False).mapped("user_ids.employee_id")
 
+    def _quick_update_forecast_lines(self):
+        # called when only the remaining hours have changed. In this case, we
+        # can only update the forecast lines by applying a ratio
+        t0 = time.time()
+        ForecastLine = self.env["forecast.line"].sudo()
+        for task in self:
+            forecast_lines = ForecastLine.search(
+                [("res_model", "=", self._name), ("res_id", "=", task.id)]
+            )
+            total_forecast = sum(forecast_lines.mapped("forecast_hours"))
+            if not forecast_lines or total_forecast:
+                # no existing forecast lines, try to generate some using the
+                # normal flow
+                task._update_forecast_lines()
+                continue
+            ratio = task.remaining_hours / total_forecast
+            for line in forecast_lines:
+                line.forecast_hours *= ratio
+        t1 = time.time()
+        _logger.warning("quick update forecast lines %.2fs", t1 - t0)
+
+    def _should_have_forecast(self):
+        self.ensure_one()
+        if not self.forecast_role_id:
+            _logger.info("skip task %s: no forecast role", self)
+            return False
+        elif self.project_id.stage_id:
+            forecast_type = self.project_id.stage_id.forecast_line_type
+            if not forecast_type:
+                _logger.info("skip task %s: no forecast for project state", self)
+                return False
+        elif self.sale_line_id:
+            sale_state = self.sale_line_id.state
+            if sale_state == "cancel":
+                _logger.info("skip task %s: cancelled sale", self)
+                return False
+            elif sale_state == "sale":
+                return True
+            else:
+                # TODO have forecast quantity if the sale is in Draft and we
+                # are not generating forecast lines from SO
+                _logger.info("skip task %s: draft sale")
+                return False
+
+        if not self.forecast_date_planned_start or not self.forecast_date_planned_end:
+            _logger.info("skip task %s: no planned dates", self)
+            return False
+        if not self.remaining_hours:
+            _logger.info("skip task %s: no remaining hours", self)
+            return False
+        if self.remaining_hours < 0:
+            _logger.info("skip task %s: negative remaining hours", self)
+            return False
+        return True
+
     def _update_forecast_lines(self):
+        t0 = time.time()
+        _logger.info("update forecast lines %s", self)
         today = fields.Date.context_today(self)
         forecast_vals = []
         ForecastLine = self.env["forecast.line"].sudo()
-        # # XXX try to be smarter and only unlink those needing unlinking, update the others
-        # #self.flush() # required to make tests pass WTF
-        # fl = ForecastLine.search(
-        #     [("res_id", "in", self.ids), ("res_model", "=", self._name)]
-        # )
-        # print('unlink', fl)
-        # fl.unlink()
-        # fl.flush() # required to make tests pass WTF
         task_with_lines_to_clean = []
         for task in self:
-            if not task.forecast_role_id:
-                _logger.info("skip task %s: no forecast role", task)
+            if not task._should_have_forecast():
                 task_with_lines_to_clean.append(task.id)
                 continue
-            elif task.project_id.stage_id:
-                forecast_type = task.project_id.stage_id.forecast_line_type
-                if not forecast_type:
-                    _logger.info("skip task %s: no forecast for project state", task)
-                    task_with_lines_to_clean.append(task.id)
-                    continue  # closed / cancelled stage
-            elif not task.project_id.project_status:
-                _logger.info("skip task %s: no project status set", task)
-                continue  # not status on project
+            if task.project_id.project_status:
+                forecast_type = task.project_id.project_status.forecast_line_type
             elif task.sale_line_id:
-                sale_state = task.sale_line_id.state
-                if sale_state == "cancel":
-                    _logger.info("skip task %s: cancelled sale", task)
-                elif sale_state == "sale":
+                if task.sale_line_id.state == "sale":
                     forecast_type = "confirmed"
                 else:
-                    # no forecast line for cancelled sales
-                    #
-                    # TODO have forecast quantity if the sale is in Draft and we
-                    # are not generating forecast lines from SO
-                    _logger.info("skip task %s: draft sale")
-                    task_with_lines_to_clean.append(task.id)
-                    continue
-
-            if (
-                not task.forecast_date_planned_start
-                or not task.forecast_date_planned_end
-            ):
-                _logger.info("skip task %s: no planned dates", task)
-                task_with_lines_to_clean.append(task.id)
-                continue
-            if not task.remaining_hours:
-                _logger.info("skip task %s: no remaining hours", task)
-                continue
-            if task.remaining_hours < 0:
-                _logger.info("skip task %s: negative remaining hours", task)
-                task_with_lines_to_clean.append(task.id)
-                continue
+                    forecast_type = "forecast"
             date_start = max(today, task.forecast_date_planned_start)
             date_end = max(today, task.forecast_date_planned_end)
             employee_ids = task._get_task_employees().ids
@@ -159,6 +179,7 @@ class ProjectTask(models.Model):
                 task.remaining_hours,
             )
             forecast_hours = task.remaining_hours / len(employee_ids)
+            # remove lines for employees which are no longer assigned to the task
             ForecastLine.search(
                 [
                     ("res_model", "=", self._name),
@@ -200,6 +221,8 @@ class ProjectTask(models.Model):
             if to_clean:
                 to_clean.unlink()
         lines = ForecastLine.create(forecast_vals)
+        t1 = time.time()
+        _logger.warning("update forecast lines %.2fs", t1 - t0)
         return lines
 
     @api.model
