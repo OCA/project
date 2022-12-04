@@ -97,6 +97,21 @@ class ForecastLine(models.Model):
         "forecast.line", "employee_resource_forecast_line_id"
     )
 
+    def write(self, vals):
+        # avoid retriggering the costly recomputation of
+        # employee_forecast_line_id when updating the lines during
+        # recomputation if the values have not changed for the trigger fields
+        if len(self) == 1:
+            for key in ("date_from", "type", "res_model"):
+                if key in vals and self[key] == vals[key]:
+                    del vals[key]
+            if "employee_id" in vals and self["employee_id"].id == vals["employee_id"]:
+                del vals["employee_id"]
+        if vals:
+            return super().write(vals)
+        else:
+            return True
+
     @api.depends("employee_id", "date_from", "type", "res_model")
     def _compute_employee_forecast_line_id(self):
         employees = self.mapped("employee_id")
