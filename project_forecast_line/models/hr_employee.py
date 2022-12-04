@@ -128,7 +128,6 @@ class HrEmployeeForecastRole(models.Model):
                 res_model=self._name,
                 res_id=rec.id,
             )
-
         return ForecastLine.create(forecast_vals)
 
     @api.model
