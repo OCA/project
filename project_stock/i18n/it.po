@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2022-10-19 14:43+0000\n"
-"Last-Translator: Sergio Zanchetta <primes2h@gmail.com>\n"
+"PO-Revision-Date: 2022-12-05 12:44+0000\n"
+"Last-Translator: Francesco Foresti <francesco.foresti@ooops404.com>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -107,12 +107,12 @@ msgstr "Ubicazione di destinazione"
 #: model:ir.model.fields,field_description:project_stock.field_stock_move_line__display_name
 #: model:ir.model.fields,field_description:project_stock.field_stock_scrap__display_name
 msgid "Display Name"
-msgstr "Nome da visualizzato"
+msgstr "Nome visualizzato"
 
 #. module: project_stock
 #: model:ir.model.fields.selection,name:project_stock.selection__project_task__stock_state__done
 msgid "Done"
-msgstr ""
+msgstr "Completato"
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_task__done_stock_moves
