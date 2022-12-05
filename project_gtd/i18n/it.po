@@ -8,15 +8,16 @@ msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-31 18:04+0000\n"
-"PO-Revision-Date: 2015-08-10 12:49+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
+"PO-Revision-Date: 2022-12-05 12:44+0000\n"
+"Last-Translator: Francesco Foresti <francesco.foresti@ooops404.com>\n"
 "Language-Team: Italian (http://www.transifex.com/oca/OCA-project-8-0/"
 "language/it/)\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #. module: project_gtd
 #: model:ir.ui.view,arch_db:project_gtd.view_project_gtd_fill
@@ -31,7 +32,7 @@ msgstr "Macchina"
 #. module: project_gtd
 #: model:ir.ui.view,arch_db:project_gtd.view_project_gtd_empty
 msgid "Close"
-msgstr ""
+msgstr "Chiudi"
 
 #. module: project_gtd
 #: model:ir.model,name:project_gtd.model_project_gtd_context
@@ -64,7 +65,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty_create_uid
 #: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_create_uid
 msgid "Created by"
-msgstr "Created by"
+msgstr "Creato da"
 
 #. module: project_gtd
 #: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context_create_date
@@ -72,7 +73,7 @@ msgstr "Created by"
 #: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty_create_date
 #: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_create_date
 msgid "Created on"
-msgstr "Created on"
+msgstr "Creato il"
 
 #. module: project_gtd
 #: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context_display_name
@@ -80,7 +81,7 @@ msgstr "Created on"
 #: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty_display_name
 #: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nome visualizzato"
 
 #. module: project_gtd
 #: model:ir.actions.act_window,name:project_gtd.action_project_gtd_empty
@@ -120,9 +121,8 @@ msgstr "ID"
 #: model:ir.model.fields,field_description:project_gtd.field_project_gtd_timebox___last_update
 #: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty___last_update
 #: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan___last_update
-#, fuzzy
 msgid "Last Modified on"
-msgstr "Last Updated on"
+msgstr "Ultima modifica il"
 
 #. module: project_gtd
 #: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context_write_uid
@@ -130,7 +130,7 @@ msgstr "Last Updated on"
 #: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty_write_uid
 #: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_write_uid
 msgid "Last Updated by"
-msgstr "Last Updated by"
+msgstr "Ultimo aggiornamento di"
 
 #. module: project_gtd
 #: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context_write_date
@@ -138,7 +138,7 @@ msgstr "Last Updated by"
 #: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty_write_date
 #: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_write_date
 msgid "Last Updated on"
-msgstr "Last Updated on"
+msgstr "Ultimo aggiornamento il"
 
 #. module: project_gtd
 #: model:project.gtd.timebox,name:project_gtd.timebox_lt
@@ -196,13 +196,13 @@ msgstr "Imposta a Timebox"
 #. module: project_gtd
 #: model:ir.model,name:project_gtd.model_project_task
 msgid "Task"
-msgstr "Attività"
+msgstr "Lavoro"
 
 #. module: project_gtd
 #: model:ir.actions.act_window,name:project_gtd.open_gtd_all_tasks
 #: model:ir.ui.menu,name:project_gtd.menu_open_gtd_timebox_all_tree
 msgid "Tasks (GTD)"
-msgstr "Tasks (GTD)"
+msgstr "Lavori (GTD)"
 
 #. module: project_gtd
 #: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_task_ids
@@ -276,9 +276,8 @@ msgstr "o"
 
 #. module: project_gtd
 #: model:ir.model,name:project_gtd.model_project_gtd_timebox
-#, fuzzy
 msgid "project.gtd.timebox"
-msgstr "Riempi il Timebox progettuale"
+msgstr "project.gtd.timebox"
 
 #~ msgid "Cancel"
 #~ msgstr "Annulla"
