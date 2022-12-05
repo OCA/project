@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2022-10-19 14:43+0000\n"
-"Last-Translator: Sergio Zanchetta <primes2h@gmail.com>\n"
+"PO-Revision-Date: 2022-12-05 12:44+0000\n"
+"Last-Translator: Francesco Foresti <francesco.foresti@ooops404.com>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -19,12 +19,12 @@ msgstr ""
 #. module: project_duplicate_subtask
 #: model:ir.model.fields,field_description:project_duplicate_subtask.field_project_task__display_name
 msgid "Display Name"
-msgstr "Nome da visualizzato"
+msgstr "Nome visualizzato"
 
 #. module: project_duplicate_subtask
 #: model:ir.actions.server,name:project_duplicate_subtask.action_server_duplicate_subtasks
 msgid "Duplicate with subtasks"
-msgstr ""
+msgstr "Duplica con sottolavori"
 
 #. module: project_duplicate_subtask
 #: model:ir.model.fields,field_description:project_duplicate_subtask.field_project_task__id
