@@ -7,7 +7,7 @@ import pytz
 from dateutil.relativedelta import relativedelta
 
 from odoo import api, fields, models
-from odoo.tools import date_utils
+from odoo.tools import date_utils, mute_logger
 
 _logger = logging.getLogger(__name__)
 
@@ -255,10 +255,10 @@ class ForecastLine(models.Model):
             else:
                 rec.write(vals)
                 updated.append(rec.id)
-        _logger.info("updated lines %s", updated)
+        _logger.debug("updated lines %s", updated)
         to_remove = self.browse([r.id for r in self_by_start_date.values()])
         to_remove.unlink()
-        _logger.info("%d records to create", len(to_create))
+        _logger.debug("%d records to create", len(to_create))
         return to_create
 
     def _prepare_forecast_lines(
@@ -449,10 +449,10 @@ class ForecastLine(models.Model):
         )
         return nb_hours
 
-    # def unlink(self):
-    #     # we routinely unlink forecast lines, let's not fill the logs with this
-    #     with mute_logger("odoo.models.unlink"):
-    #         return super().unlink()
+    def unlink(self):
+        # we routinely unlink forecast lines, let's not fill the logs with this
+        with mute_logger("odoo.models.unlink"):
+            return super().unlink()
 
     @api.model_create_multi
     @api.returns("self", lambda value: value.id)
