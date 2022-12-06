@@ -240,3 +240,14 @@ class ProjectTask(models.Model):
                 ]
             )
             to_update._update_forecast_lines()
+
+    def unlink(self):
+        ForecastLine = self.env["forecast.line"].sudo()
+        to_clean = ForecastLine.search(
+            [
+                ("res_model", "=", self._name),
+                ("res_id", "in", tuple(self.ids)),
+            ]
+        )
+        to_clean.unlink()
+        return super().unlink()
