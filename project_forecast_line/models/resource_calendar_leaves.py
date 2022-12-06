@@ -19,7 +19,7 @@ class ResourceCalendarLeaves(models.Model):
         self._update_forecast_lines()
         return res
 
-    def _update_forecast_lines(self):
+    def _get_resource_roles(self):
         resources = self.mapped("resource_id")
         if resources:
             employees = self.env["hr.employee"].search([("id", "in", resources.ids)])
@@ -30,4 +30,14 @@ class ResourceCalendarLeaves(models.Model):
         roles = self.env["hr.employee.forecast.role"].search(
             [("employee_id", "in", employees.ids)]
         )
+        return roles
+
+    def _update_forecast_lines(self):
+        roles = self._get_resource_roles()
         roles._update_forecast_lines()
+
+    def unlink(self):
+        roles = self._get_resource_roles()
+        res = super().unlink()
+        roles._update_forecast_lines()
+        return res
