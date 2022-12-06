@@ -97,7 +97,11 @@ class HrEmployeeForecastRole(models.Model):
         leaves._update_forecast_lines()
         forecast_vals = []
         ForecastLine.search(
-            [("res_id", "in", self.ids), ("res_model", "=", self._name)]
+            [
+                ("res_id", "in", self.ids),
+                ("res_model", "=", self._name),
+                ("date_from", "<", today),
+            ]
         ).unlink()
         horizon_end = ForecastLine._company_horizon_end()
         for rec in self:
@@ -115,10 +119,18 @@ class HrEmployeeForecastRole(models.Model):
                 resource,
                 calendar,
             )
-            forecast_vals += ForecastLine._prepare_forecast_lines(
+            forecast_lines = ForecastLine.search(
+                [
+                    ("res_model", "=", self._name),
+                    ("res_id", "in", self.ids),
+                    ("date_from", ">=", date_start),
+                    ("date_to", "<=", date_end),
+                ]
+            )
+            forecast_vals += forecast_lines._update_forecast_lines(
                 name="Employee %s as %s (%d%%)"
                 % (rec.employee_id.name, rec.role_id.name, rec.rate),
-                date_from=rec.date_start,
+                date_from=date_start,
                 date_to=date_end,
                 forecast_hours=forecast * rec.rate / 100.0,
                 unit_cost=rec.employee_id.timesheet_cost,  # XXX to check
