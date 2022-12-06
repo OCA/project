@@ -57,6 +57,7 @@ class HrEmployee(models.Model):
 
 class HrEmployeeForecastRole(models.Model):
     _name = "hr.employee.forecast.role"
+    _inherit = "forecast.line.mixin"
     _description = "Employee forecast role"
     _order = "employee_id, date_start, sequence, rate DESC, id"
 
@@ -147,14 +148,3 @@ class HrEmployeeForecastRole(models.Model):
                 ]
             )
             to_update._update_forecast_lines()
-
-    def unlink(self):
-        ForecastLine = self.env["forecast.line"].sudo()
-        to_clean = ForecastLine.search(
-            [
-                ("res_model", "=", self._name),
-                ("res_id", "in", tuple(self.ids)),
-            ]
-        )
-        to_clean.unlink()
-        return super().unlink()
