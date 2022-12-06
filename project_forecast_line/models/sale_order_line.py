@@ -8,7 +8,8 @@ _logger = logging.getLogger(__name__)
 
 
 class SaleOrderLine(models.Model):
-    _inherit = "sale.order.line"
+    _name = "sale.order.line"
+    _inherit = ["sale.order.line", "forecast.line.mixin"]
 
     forecast_date_start = fields.Date()
     forecast_date_end = fields.Date()
@@ -134,14 +135,3 @@ class SaleOrderLine(models.Model):
                 }
             )
         return project
-
-    def unlink(self):
-        ForecastLine = self.env["forecast.line"].sudo()
-        to_clean = ForecastLine.search(
-            [
-                ("res_model", "=", self._name),
-                ("res_id", "in", tuple(self.ids)),
-            ]
-        )
-        to_clean.unlink()
-        return super().unlink()
