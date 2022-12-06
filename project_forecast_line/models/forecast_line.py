@@ -430,7 +430,14 @@ class ForecastLine(models.Model):
         return uom_day._compute_quantity(days, uom_hour)
 
     @api.model
-    def _number_of_hours(self, date_from, date_to, resource, calendar):
+    def _number_of_hours(
+        self, date_from, date_to, resource, calendar, force_granularity=False
+    ):
+        if force_granularity:
+            company = self.env.company
+            granularity = company.forecast_line_granularity
+            date_from = date_utils.start_of(date_from, granularity)
+            date_to = date_utils.end_of(date_to, granularity) + relativedelta(days=1)
         tzinfo = pytz.timezone(calendar.tz)
         start_dt = tzinfo.localize(datetime.combine(date_from, time(0)))
         end_dt = tzinfo.localize(datetime.combine(date_to, time(0)))
