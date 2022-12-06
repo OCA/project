@@ -1,3 +1,4 @@
+from . import forecast_line_mixin
 from . import forecast_line
 from . import forecast_role
 from . import hr_employee
@@ -10,4 +11,3 @@ from . import project_task
 from . import res_config_settings
 from . import resource_calendar_leaves
 from . import project_project_stage
-from . import project_project
