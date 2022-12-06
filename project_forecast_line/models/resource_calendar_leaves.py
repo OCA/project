@@ -1,5 +1,6 @@
 # Copyright 2022 Camptocamp SA
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+from dateutil.relativedelta import relativedelta
 
 from odoo import api, models
 
@@ -34,7 +35,14 @@ class ResourceCalendarLeaves(models.Model):
 
     def _update_forecast_lines(self):
         roles = self._get_resource_roles()
-        roles._update_forecast_lines()
+        if self:
+            date_start = min(self.mapped("date_from")).date() - relativedelta(days=1)
+            date_to = max(self.mapped("date_to")).date() + relativedelta(days=1)
+        else:
+            date_start = date_to = None
+        roles.with_context(
+            date_start=date_start, date_to=date_to
+        )._update_forecast_lines()
 
     def unlink(self):
         roles = self._get_resource_roles()

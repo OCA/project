@@ -172,6 +172,7 @@ class TestForecastLineEmployee(BaseForecastLineTest):
         # employee becomes 50% consultant, 50% PM on Feb 1st
         roles = self.employee_consultant.role_ids
         roles.write({"date_end": "2022-01-31"})
+        self.env["base"].flush()
         lines = self.env["forecast.line"].search(
             [
                 ("employee_id", "=", self.employee_consultant.id),
@@ -199,6 +200,7 @@ class TestForecastLineEmployee(BaseForecastLineTest):
                 },
             ]
         )
+        self.env["base"].flush()
         lines = self.env["forecast.line"].search(
             [
                 ("employee_id", "=", self.employee_consultant.id),
@@ -231,6 +233,7 @@ class TestForecastLineEmployee(BaseForecastLineTest):
                 "time_type": "leave",
             }
         )
+        self.env["base"].flush()
         lines = self.env["forecast.line"].search(
             [
                 ("employee_id", "=", self.employee_dev.id),
@@ -531,7 +534,6 @@ class TestForecastLineProjectReschedule(BaseForecastLineTest):
     def test_task_forecast_line_reschedule_employee(self):
         """changing the employee will create new lines"""
         self.task.user_ids = self.user_consultant
-        # import pdb; pdb.set_trace()
         task_forecast = self.env["forecast.line"].search(
             [("task_id", "=", self.task.id)]
         )
@@ -742,6 +744,7 @@ class TestForecastLineProject(BaseForecastLineTest):
         # create new ones -> we check that the project task lines are
         # automatically related to the new newly created employee role lines.
         leave_request.action_validate()
+        leave_request.flush()
         forecast_lines = self.env["forecast.line"].search(
             [
                 ("employee_id", "=", self.employee_consultant.id),
