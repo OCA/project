@@ -2,7 +2,6 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 import logging
 import random
-import time
 
 from odoo import api, fields, models
 
@@ -51,7 +50,6 @@ class ProjectTask(models.Model):
     @api.depends(_update_forecast_lines_trigger_fields)
     def _compute_forecast_recomputation_trigger(self):
         value = random.random()
-        _logger.info("TRIGGER %s", self)
         for rec in self:
             rec.forecast_recomputation_trigger = value
 
@@ -90,7 +88,6 @@ class ProjectTask(models.Model):
     def _quick_update_forecast_lines(self):
         # called when only the remaining hours have changed. In this case, we
         # can only update the forecast lines by applying a ratio
-        t0 = time.time()
         ForecastLine = self.env["forecast.line"].sudo()
         for task in self:
             forecast_lines = ForecastLine.search(
@@ -105,8 +102,6 @@ class ProjectTask(models.Model):
             ratio = task.remaining_hours / total_forecast
             for line in forecast_lines:
                 line.forecast_hours *= ratio
-        t1 = time.time()
-        _logger.warning("quick update forecast lines %.2fs", t1 - t0)
 
     def _should_have_forecast(self):
         self.ensure_one()
@@ -143,8 +138,7 @@ class ProjectTask(models.Model):
         return True
 
     def _update_forecast_lines(self):
-        t0 = time.time()
-        _logger.info("update forecast lines %s", self)
+        _logger.debug("update forecast lines %s", self)
         today = fields.Date.context_today(self)
         forecast_vals = []
         ForecastLine = self.env["forecast.line"].sudo()
@@ -215,8 +209,6 @@ class ProjectTask(models.Model):
             if to_clean:
                 to_clean.unlink()
         lines = ForecastLine.create(forecast_vals)
-        t1 = time.time()
-        _logger.warning("update forecast lines %.2fs", t1 - t0)
         return lines
 
     @api.model
