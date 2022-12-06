@@ -1,3 +1,4 @@
+from . import forecast_line_mixin
 from . import forecast_line
 from . import forecast_role
 from . import hr_employee
