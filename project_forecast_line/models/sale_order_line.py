@@ -134,3 +134,14 @@ class SaleOrderLine(models.Model):
                 }
             )
         return project
+
+    def unlink(self):
+        ForecastLine = self.env["forecast.line"].sudo()
+        to_clean = ForecastLine.search(
+            [
+                ("res_model", "=", self._name),
+                ("res_id", "in", tuple(self.ids)),
+            ]
+        )
+        to_clean.unlink()
+        return super().unlink()
