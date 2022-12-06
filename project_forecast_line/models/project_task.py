@@ -10,7 +10,8 @@ _logger = logging.getLogger(__name__)
 
 
 class ProjectTask(models.Model):
-    _inherit = "project.task"
+    _name = "project.task"
+    _inherit = ["project.task", "forecast.line.mixin"]
 
     forecast_role_id = fields.Many2one("forecast.role", ondelete="restrict")
     forecast_date_planned_start = fields.Date("Planned start date")
@@ -32,13 +33,6 @@ class ProjectTask(models.Model):
         tasks = super().create(vals_list)
         # tasks._update_forecast_lines()
         return tasks
-
-    def _get_forecast_lines(self, domain=None):
-        self.ensure_one()
-        base_domain = [("res.model", "=", self._name), ("res_id", "=", self.id)]
-        if domain is not None:
-            base_domain += domain
-        return self.env["forecast.line"].search(base_domain)
 
     def _update_forecast_lines_trigger_fields(self):
         return [
@@ -241,14 +235,3 @@ class ProjectTask(models.Model):
                 ]
             )
             to_update._update_forecast_lines()
-
-    def unlink(self):
-        ForecastLine = self.env["forecast.line"].sudo()
-        to_clean = ForecastLine.search(
-            [
-                ("res_model", "=", self._name),
-                ("res_id", "in", tuple(self.ids)),
-            ]
-        )
-        to_clean.unlink()
-        return super().unlink()

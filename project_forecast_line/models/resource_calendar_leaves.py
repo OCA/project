@@ -5,7 +5,8 @@ from odoo import api, models
 
 
 class ResourceCalendarLeaves(models.Model):
-    _inherit = "resource.calendar.leaves"
+    _name = "resource.calendar.leaves"
+    _inherit = ["resource.calendar.leaves", "forecast.line.mixin"]
 
     @api.model_create_multi
     def create(self, vals_list):
