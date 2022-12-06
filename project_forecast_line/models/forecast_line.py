@@ -246,6 +246,7 @@ class ForecastLine(models.Model):
         )
         to_create = []
         self_by_start_date = {r.date_from: r for r in self}
+        updated = []
         for vals in values:
             start_date = vals["date_from"]
             rec = self_by_start_date.pop(start_date, None)
@@ -253,8 +254,11 @@ class ForecastLine(models.Model):
                 to_create.append(vals)
             else:
                 rec.write(vals)
+                updated.append(rec.id)
+        _logger.info("updated lines %s", updated)
         to_remove = self.browse([r.id for r in self_by_start_date.values()])
         to_remove.unlink()
+        _logger.info("%d records to create", len(to_create))
         return to_create
 
     def _prepare_forecast_lines(
