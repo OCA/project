@@ -9,6 +9,7 @@ class SaleOrder(models.Model):
     default_forecast_date_start = fields.Date()
     default_forecast_date_end = fields.Date()
 
+    # XXX rewrite this based on a trigger field on so lines
     def action_cancel(self):
         res = super().action_cancel()
         self.filtered(lambda r: r.state == "cancel").mapped(
