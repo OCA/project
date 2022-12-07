@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-01-13 03:39+0000\n"
-"PO-Revision-Date: 2022-10-19 14:43+0000\n"
-"Last-Translator: Sergio Zanchetta <primes2h@gmail.com>\n"
+"PO-Revision-Date: 2022-12-07 14:44+0000\n"
+"Last-Translator: Francesco Foresti <francesco.foresti@ooops404.com>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -22,12 +22,12 @@ msgstr ""
 #. module: project_task_dependency
 #: model_terms:ir.ui.view,arch_db:project_task_dependency.project_task_form
 msgid "<span class=\"o_stat_text\"> Blocked</span>"
-msgstr ""
+msgstr "<span class=\"o_stat_text\"> Bloccato</span>"
 
 #. module: project_task_dependency
 #: model_terms:ir.ui.view,arch_db:project_task_dependency.view_task_kanban_blocked
 msgid "Blocked"
-msgstr ""
+msgstr "Bloccato"
 
 #. module: project_task_dependency
 #: model:ir.model.fields,field_description:project_task_dependency.field_project_task_copy_map__create_uid
@@ -48,12 +48,12 @@ msgstr "Dipendenze"
 #. module: project_task_dependency
 #: model:ir.model.fields,field_description:project_task_dependency.field_project_task__dependent_tasks_count
 msgid "Dependent Tasks"
-msgstr ""
+msgstr "Lavori dipendenti"
 
 #. module: project_task_dependency
 #: model:ir.model.fields,field_description:project_task_dependency.field_project_task__depending_task_ids
 msgid "Depending Tasks"
-msgstr ""
+msgstr "Lavori da cui dipende"
 
 #. module: project_task_dependency
 #: model:ir.model.fields,field_description:project_task_dependency.field_project_project__display_name
@@ -99,7 +99,7 @@ msgstr "Vecchio lavoro"
 #. module: project_task_dependency
 #: model_terms:ir.ui.view,arch_db:project_task_dependency.project_task_form
 msgid "Open Task"
-msgstr ""
+msgstr "Lavoro aperto"
 
 #. module: project_task_dependency
 #: model:ir.model,name:project_task_dependency.model_project_project
