@@ -14,17 +14,6 @@ class ForecastLineModelMixin(models.Model):
             base_domain += domain
         return self.env["forecast.line"].search(base_domain)
 
-    def unlink(self):
-        ForecastLine = self.env["forecast.line"].sudo()
-        to_clean = ForecastLine.search(
-            [
-                ("res_model", "=", self._name),
-                ("res_id", "in", tuple(self.ids)),
-            ]
-        )
-        to_clean.unlink()
-        return super().unlink()
-
     @api.model
     def _recompute_forecast_lines(self, force_company_id=None):
         return super()._recompute_forecast_lines(force_company_id=force_company_id)
