@@ -250,18 +250,24 @@ class TestForecastLineEmployee(BaseForecastLineTest):
 
 
 class TestForecastLineSales(BaseForecastLineTest):
-    @freeze_time("2022-01-01")
-    def test_draft_sale_order_creates_negative_forecast_forecast(self):
+    def _create_sale(
+        self, default_forecast_date_start, default_forecast_date_end, uom_qty=10
+    ):
         with Form(self.env["sale.order"]) as form:
             form.partner_id = self.customer
             form.date_order = "2022-01-10 08:00:00"
-            form.default_forecast_date_start = "2022-02-07"
-            form.default_forecast_date_end = "2022-02-20"
+            form.default_forecast_date_start = default_forecast_date_start
+            form.default_forecast_date_end = default_forecast_date_end
             with form.order_line.new() as line:
                 line.product_id = self.product_dev_tm
-                line.product_uom_qty = 10  # 1 FTE sold
+                line.product_uom_qty = uom_qty  # 1 FTE sold
                 line.product_uom = self.env.ref("uom.product_uom_day")
         so = form.save()
+        return so
+
+    @freeze_time("2022-01-01")
+    def test_draft_sale_order_creates_negative_forecast_forecast(self):
+        so = self._create_sale("2022-02-07", "2022-02-20")
         line = so.order_line[0]
         self.assertEqual(line.forecast_date_start, date(2022, 2, 7))
         self.assertEqual(line.forecast_date_end, date(2022, 2, 20))
@@ -285,16 +291,7 @@ class TestForecastLineSales(BaseForecastLineTest):
     @freeze_time("2022-01-01")
     def test_draft_sale_order_without_dates_no_forecast(self):
         """a draft sale order with no dates on the line does not create forecast"""
-        with Form(self.env["sale.order"]) as form:
-            form.partner_id = self.customer
-            form.date_order = "2022-01-10 08:00:00"
-            form.default_forecast_date_start = "2022-02-07"
-            form.default_forecast_date_end = False
-            with form.order_line.new() as line:
-                line.product_id = self.product_dev_tm
-                line.product_uom_qty = 10  # 1 FTE sold
-                line.product_uom = self.env.ref("uom.product_uom_day")
-        so = form.save()
+        so = self._create_sale("2022-02-07", False)
         line = so.order_line[0]
         self.assertEqual(line.forecast_date_start, date(2022, 2, 7))
         self.assertEqual(line.forecast_date_end, False)
@@ -308,17 +305,8 @@ class TestForecastLineSales(BaseForecastLineTest):
 
     @freeze_time("2022-01-01")
     def test_draft_sale_order_forecast_spread(self):
-        with Form(self.env["sale.order"]) as form:
-            form.partner_id = self.customer
-            form.date_order = "2022-01-10 08:00:00"
-            form.default_forecast_date_start = "2022-02-07"
-            form.default_forecast_date_end = "2022-04-17"
-            with form.order_line.new() as line:
-                line.product_id = self.product_dev_tm
-                line.product_uom_qty = 100  # sell 2 FTE
-                line.product_uom = self.env.ref("uom.product_uom_day")
+        so = self._create_sale("2022-02-07", "2022-04-17", uom_qty=100)
 
-        so = form.save()
         line = so.order_line[0]
         self.assertEqual(line.forecast_date_start, date(2022, 2, 7))
         self.assertEqual(line.forecast_date_end, date(2022, 4, 17))
@@ -353,17 +341,8 @@ class TestForecastLineSales(BaseForecastLineTest):
 
     @freeze_time("2022-01-01")
     def test_confirm_order_sale_order_no_forecast_line(self):
-        with Form(self.env["sale.order"]) as form:
-            form.partner_id = self.customer
-            form.date_order = "2022-01-10 08:00:00"
-            form.default_forecast_date_start = "2022-02-14"
-            form.default_forecast_date_end = "2022-04-14"
-            with form.order_line.new() as line:
-                line.product_id = self.product_dev_tm
-                line.product_uom_qty = 60
-                line.product_uom = self.env.ref("uom.product_uom_day")
+        so = self._create_sale("2022-02-14", "2022-04-14", uom_qty=60)
 
-        so = form.save()
         so.action_confirm()
         line = so.order_line[0]
         forecast_lines = self.env["forecast.line"].search(
@@ -376,16 +355,7 @@ class TestForecastLineSales(BaseForecastLineTest):
 
     @freeze_time("2022-01-01")
     def test_confirm_order_sale_order_create_project_task_with_forecast_line(self):
-        with Form(self.env["sale.order"]) as form:
-            form.partner_id = self.customer
-            form.date_order = "2022-01-10 08:00:00"
-            form.default_forecast_date_start = "2022-02-14"
-            form.default_forecast_date_end = "2022-04-17"
-            with form.order_line.new() as line:
-                line.product_id = self.product_dev_tm
-                line.product_uom_qty = 45 * 2  # 2 FTE
-                line.product_uom = self.env.ref("uom.product_uom_day")
-        so = form.save()
+        so = self._create_sale("2022-02-14", "2022-04-17", uom_qty=45 * 2)  # 2 FTE
         so.action_confirm()
         line = so.order_line[0]
         task = self.env["project.task"].search([("sale_line_id", "=", line.id)])
