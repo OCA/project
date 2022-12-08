@@ -20,6 +20,6 @@ class ResCompany(models.Model):
         if "forecast_line_granularity" in values or "forecast_line_horizon" in values:
             for company in self:
                 self.env["forecast.line"]._cron_recompute_all(
-                    force_company_id=company.id
+                    force_company_id=company.id, force_delete=True
                 )
         return res
