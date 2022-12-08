@@ -33,13 +33,16 @@ class ForecastLine(models.Model):
         index=True,
         ondelete="restrict",
     )
-    employee_id = fields.Many2one("hr.employee", string="Employee")
+    employee_id = fields.Many2one("hr.employee", string="Employee", ondelete="cascade")
     employee_forecast_role_id = fields.Many2one(
-        "hr.employee.forecast.role",
-        string="Employee Forecast Role",
+        "hr.employee.forecast.role", string="Employee Forecast Role", ondelete="cascade"
     )
-    project_id = fields.Many2one("project.project", index=True, string="Project")
-    task_id = fields.Many2one("project.task", index=True, string="Task")
+    project_id = fields.Many2one(
+        "project.project", index=True, string="Project", ondelete="cascade"
+    )
+    task_id = fields.Many2one(
+        "project.task", index=True, string="Task", ondelete="cascade"
+    )
     sale_id = fields.Many2one(
         "sale.order",
         related="sale_line_id.order_id",
@@ -47,8 +50,12 @@ class ForecastLine(models.Model):
         index=True,
         string="Sale",
     )
-    sale_line_id = fields.Many2one("sale.order.line", index=True, string="Sale line")
-    hr_leave_id = fields.Many2one("hr.leave", index=True, string="Leave")
+    sale_line_id = fields.Many2one(
+        "sale.order.line", index=True, string="Sale line", ondelete="cascade"
+    )
+    hr_leave_id = fields.Many2one(
+        "hr.leave", index=True, string="Leave", ondelete="cascade"
+    )
     forecast_hours = fields.Float(
         "Forecast",
         help="Forecast (in hours). Forecast is positive for resources which add forecast, "
