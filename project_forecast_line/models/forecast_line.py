@@ -265,6 +265,7 @@ class ForecastLine(models.Model):
         _logger.debug("updated lines %s", updated)
         to_remove = self.browse([r.id for r in self_by_start_date.values()])
         to_remove.unlink()
+        _logger.debug("removed lines %s", to_remove.ids)
         _logger.debug("%d records to create", len(to_create))
         return to_create
 
@@ -394,7 +395,7 @@ class ForecastLine(models.Model):
             curr_date = next_date
 
     @api.model
-    def _cron_recompute_all(self, force_company_id=None):
+    def _cron_recompute_all(self, force_company_id=None, force_delete=False):
         today = fields.Date.context_today(self)
         ForecastLine = self.env["forecast.line"].sudo()
         if force_company_id:
@@ -404,12 +405,19 @@ class ForecastLine(models.Model):
         for company in companies:
             ForecastLine = ForecastLine.with_company(company)
             limit_date = date_utils.start_of(today, company.forecast_line_granularity)
-            stale_forecast_lines = ForecastLine.search(
-                [
-                    ("date_from", "<", limit_date),
-                    ("company_id", "=", company.id),
-                ]
-            )
+            if force_delete:
+                stale_forecast_lines = ForecastLine.search(
+                    [
+                        ("company_id", "=", company.id),
+                    ]
+                )
+            else:
+                stale_forecast_lines = ForecastLine.search(
+                    [
+                        ("date_from", "<", limit_date),
+                        ("company_id", "=", company.id),
+                    ]
+                )
             stale_forecast_lines.unlink()
 
         # always start with forecast role to ensure we can compute the
