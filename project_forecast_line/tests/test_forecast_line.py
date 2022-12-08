@@ -168,6 +168,19 @@ class TestForecastLineEmployee(BaseForecastLineTest):
         )
 
     @freeze_time("2022-01-01")
+    def test_employee_forecast_unlink(self):
+        roles = self.employee_consultant.role_ids
+        lines = self.env["forecast.line"].search(
+            [
+                ("employee_id", "=", self.employee_consultant.id),
+                ("forecast_role_id", "=", self.role_consultant.id),
+                ("res_model", "=", "hr.employee.forecast.role"),
+            ]
+        )
+        roles.unlink()
+        self.assertFalse(lines.exists())
+
+    @freeze_time("2022-01-01")
     def test_employee_forecast_change_roles(self):
         # employee becomes 50% consultant, 50% PM on Feb 1st
         roles = self.employee_consultant.role_ids
@@ -287,6 +300,19 @@ class TestForecastLineSales(BaseForecastLineTest):
         self.assertEqual(forecast_lines.cost, -10 * 8 * 75)
         self.assertEqual(forecast_lines.date_from, date(2022, 2, 1))
         self.assertEqual(forecast_lines.date_to, date(2022, 2, 28))
+
+    @freeze_time("2022-01-01")
+    def test_sale_line_unlink(self):
+        so = self._create_sale("2022-02-07", "2022-02-20")
+        line = so.order_line[0]
+        forecast_lines = self.env["forecast.line"].search(
+            [
+                ("sale_line_id", "=", line.id),
+                ("res_model", "=", "sale.order.line"),
+            ]
+        )
+        line.unlink()
+        self.assertFalse(forecast_lines.exists())
 
     @freeze_time("2022-01-01")
     def test_draft_sale_order_without_dates_no_forecast(self):
@@ -499,6 +525,14 @@ class TestForecastLineProjectReschedule(BaseForecastLineTest):
             # frozen time (otherwise it is called by the test runner before the
             # tests, outside of the context manager.
             cls.task.flush()
+
+    @freeze_time("2022-02-01 12:00:00")
+    def test_task_unlink(self):
+        task_forecast = self.env["forecast.line"].search(
+            [("task_id", "=", self.task.id)]
+        )
+        self.task.unlink()
+        self.assertFalse(task_forecast.exists())
 
     @freeze_time("2022-02-01 12:00:00")
     def test_task_forecast_line_reschedule_employee(self):
