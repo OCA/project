@@ -13,6 +13,13 @@ class BaseForecastLineTest(TransactionCase):
     @freeze_time("2022-01-01")
     def setUpClass(cls):
         super().setUpClass()
+        cls.env = cls.env(context=dict(cls.env.context, tracking_disable=True))
+        cls.ResUsers = cls.env["res.users"]
+        cls.ResPartner = cls.env["res.partner"]
+        cls.HrEmployee = cls.env["hr.employee"]
+        cls.HrEmployeeForecastRole = cls.env["hr.employee.forecast.role"]
+        cls.role_model = cls.HrEmployeeForecastRole._name
+        ProductProduct = cls.env["product.product"]
         cls.env.company.write(
             {
                 "forecast_line_granularity": "month",
@@ -22,22 +29,21 @@ class BaseForecastLineTest(TransactionCase):
         cls.role_developer = cls.env["forecast.role"].create({"name": "developer"})
         cls.role_consultant = cls.env["forecast.role"].create({"name": "consultant"})
         cls.role_pm = cls.env["forecast.role"].create({"name": "project manager"})
-        ResUsers = cls.env["res.users"].with_context(tracking_disable=1)
-        ResPartner = cls.env["res.partner"].with_context(tracking_disable=1)
-        HrEmployee = cls.env["hr.employee"].with_context(tracking_disable=1)
-        ProductProduct = cls.env["product.product"].with_context(tracking_disable=1)
-        cls.employee_dev = HrEmployee.create({"name": "John Dev"})
-        cls.user_consultant = ResUsers.create(
+
+        cls.employee_dev = cls.HrEmployee.create({"name": "John Dev"})
+        cls.user_consultant = cls.ResUsers.create(
             {"name": "John Consultant", "login": "jc@example.com"}
         )
-        cls.employee_consultant = HrEmployee.create(
+        cls.employee_consultant = cls.HrEmployee.create(
             {"name": "John Consultant", "user_id": cls.user_consultant.id}
         )
-        cls.user_pm = ResUsers.create({"name": "John Peem", "login": "jp@example.com"})
-        cls.employee_pm = HrEmployee.create(
+        cls.user_pm = cls.ResUsers.create(
+            {"name": "John Peem", "login": "jp@example.com"}
+        )
+        cls.employee_pm = cls.HrEmployee.create(
             {"name": "John Peem", "user_id": cls.user_pm.id}
         )
-        cls.env["hr.employee.forecast.role"].create(
+        cls.dev_employee_forecast_role = cls.HrEmployeeForecastRole.create(
             {
                 "employee_id": cls.employee_dev.id,
                 "role_id": cls.role_developer.id,
@@ -45,7 +51,7 @@ class BaseForecastLineTest(TransactionCase):
                 "sequence": 1,
             }
         )
-        cls.env["hr.employee.forecast.role"].create(
+        cls.consult_employee_forecast_role = cls.HrEmployeeForecastRole.create(
             {
                 "employee_id": cls.employee_consultant.id,
                 "role_id": cls.role_consultant.id,
@@ -53,7 +59,7 @@ class BaseForecastLineTest(TransactionCase):
                 "sequence": 1,
             }
         )
-        cls.env["hr.employee.forecast.role"].create(
+        cls.pm_employee_forecast_role = cls.HrEmployeeForecastRole.create(
             {
                 "employee_id": cls.employee_pm.id,
                 "role_id": cls.role_pm.id,
@@ -99,12 +105,12 @@ class BaseForecastLineTest(TransactionCase):
                 "uom_po_id": cls.env.ref("uom.product_uom_hour").id,
             }
         )
-        cls.customer = ResPartner.create({"name": "Some Customer"})
+        cls.customer = cls.ResPartner.create({"name": "Some Customer"})
 
 
 class TestForecastLineEmployee(BaseForecastLineTest):
     def test_employee_main_role(self):
-        self.env["hr.employee.forecast.role"].create(
+        self.HrEmployeeForecastRole.create(
             {
                 "employee_id": self.employee_consultant.id,
                 "role_id": self.role_developer.id,
@@ -116,35 +122,25 @@ class TestForecastLineEmployee(BaseForecastLineTest):
         self.assertEqual(self.employee_consultant.main_role_id, self.role_consultant)
 
     def test_employee_job_role(self):
-        job = (
-            self.env["hr.job"]
-            .with_context(tracking_disable=1)
-            .create({"name": "Developer", "role_id": self.role_developer.id})
+        job = self.env["hr.job"].create(
+            {"name": "Developer", "role_id": self.role_developer.id}
         )
-        employee = (
-            self.env["hr.employee"]
-            .with_context(tracking_disable=1)
-            .create({"name": "John Dev", "job_id": job.id})
+        employee = self.env["hr.employee"].create(
+            {"name": "John Dev", "job_id": job.id}
         )
         self.assertEqual(employee.main_role_id, self.role_developer)
         self.assertEqual(len(employee.role_ids), 1)
         self.assertEqual(employee.role_ids.rate, 100)
 
     def test_employee_job_role_change(self):
-        job1 = (
-            self.env["hr.job"]
-            .with_context(tracking_disable=1)
-            .create({"name": "Consultant", "role_id": self.role_consultant.id})
+        job1 = self.env["hr.job"].create(
+            {"name": "Consultant", "role_id": self.role_consultant.id}
         )
-        job2 = (
-            self.env["hr.job"]
-            .with_context(tracking_disable=1)
-            .create({"name": "Developer", "role_id": self.role_developer.id})
+        job2 = self.env["hr.job"].create(
+            {"name": "Developer", "role_id": self.role_developer.id}
         )
-        employee = (
-            self.env["hr.employee"]
-            .with_context(tracking_disable=1)
-            .create({"name": "John Dev", "job_id": job2.id})
+        employee = self.env["hr.employee"].create(
+            {"name": "John Dev", "job_id": job2.id}
         )
         employee.job_id = job1
         self.assertEqual(employee.main_role_id, self.role_consultant)
@@ -157,7 +153,7 @@ class TestForecastLineEmployee(BaseForecastLineTest):
             [
                 ("employee_id", "=", self.employee_consultant.id),
                 ("forecast_role_id", "=", self.role_consultant.id),
-                ("res_model", "=", "hr.employee.forecast.role"),
+                ("res_model", "=", self.role_model),
             ]
         )
         self.assertEqual(len(lines), 6)  # 6 months horizon
@@ -166,6 +162,12 @@ class TestForecastLineEmployee(BaseForecastLineTest):
             # number of working days in the first 6 months of 2022, no vacations
             [21.0 * 8, 20.0 * 8, 23.0 * 8, 21.0 * 8, 22.0 * 8, 22.0 * 8],
         )
+        res_ids = self.consult_employee_forecast_role.ids
+        self.consult_employee_forecast_role.unlink()
+        to_remove_lines = self.env["forecast.line"].search(
+            [("res_id", "in", res_ids), ("res_model", "=", "hr.employee.forecast.role")]
+        )
+        self.assertFalse(to_remove_lines.exists())
 
     @freeze_time("2022-01-01")
     def test_employee_forecast_unlink(self):
@@ -174,7 +176,7 @@ class TestForecastLineEmployee(BaseForecastLineTest):
             [
                 ("employee_id", "=", self.employee_consultant.id),
                 ("forecast_role_id", "=", self.role_consultant.id),
-                ("res_model", "=", "hr.employee.forecast.role"),
+                ("res_model", "=", self.role_model),
             ]
         )
         roles.unlink()
@@ -190,12 +192,12 @@ class TestForecastLineEmployee(BaseForecastLineTest):
             [
                 ("employee_id", "=", self.employee_consultant.id),
                 ("forecast_role_id", "=", self.role_consultant.id),
-                ("res_model", "=", "hr.employee.forecast.role"),
+                ("res_model", "=", self.role_model),
             ]
         )
         self.assertEqual(len(lines), 1)  # 100% consultant role now ends on 31/01
         self.assertEqual(lines.forecast_hours, 21.0 * 8)
-        self.env["hr.employee.forecast.role"].create(
+        self.HrEmployeeForecastRole.create(
             [
                 {
                     "employee_id": self.employee_consultant.id,
@@ -233,6 +235,12 @@ class TestForecastLineEmployee(BaseForecastLineTest):
                 22.0 * 8 / 2,
             ],
         )
+        res_ids = self.consult_employee_forecast_role.ids
+        self.consult_employee_forecast_role.unlink()
+        to_remove_lines = self.env["forecast.line"].search(
+            [("res_id", "in", res_ids), ("res_model", "=", "hr.employee.forecast.role")]
+        )
+        self.assertFalse(to_remove_lines.exists())
 
     @freeze_time("2022-01-01 12:00:00")
     def test_forecast_with_calendar(self):
@@ -251,7 +259,7 @@ class TestForecastLineEmployee(BaseForecastLineTest):
             [
                 ("employee_id", "=", self.employee_dev.id),
                 ("forecast_role_id", "=", self.role_developer.id),
-                ("res_model", "=", "hr.employee.forecast.role"),
+                ("res_model", "=", self.role_model),
             ]
         )
         self.assertEqual(len(lines), 6)  # 6 months horizon
@@ -260,6 +268,12 @@ class TestForecastLineEmployee(BaseForecastLineTest):
             # number of days in the first 6 months of 2022, minus easter in April
             [21.0 * 8, 20.0 * 8, 23.0 * 8, (21.0 - 1) * 8, 22.0 * 8, 22.0 * 8],
         )
+        res_ids = self.dev_employee_forecast_role.ids
+        self.dev_employee_forecast_role.unlink()
+        to_remove_lines = self.env["forecast.line"].search(
+            [("res_id", "in", res_ids), ("res_model", "=", "hr.employee.forecast.role")]
+        )
+        self.assertFalse(to_remove_lines.exists())
 
 
 class TestForecastLineSales(BaseForecastLineTest):
@@ -505,8 +519,8 @@ class TestForecastLineProjectReschedule(BaseForecastLineTest):
                 "forecast_line_horizon": 2,  # months
             }
         )
-        ProjectProject = cls.env["project.project"].with_context(tracking_disable=1)
-        ProjectTask = cls.env["project.task"].with_context(tracking_disable=1)
+        ProjectProject = cls.env["project.project"]
+        ProjectTask = cls.env["project.task"]
         project = ProjectProject.create({"name": "TestProjectReschedule"})
         # set project in stage "in progress" to get confirmed forecast
         project.stage_id = cls.env.ref("project.project_project_stage_1")
@@ -631,11 +645,11 @@ class TestForecastLineProject(BaseForecastLineTest):
         )
         # we can take first line to check as forecast values are equal
         forecast_consultant = employee_forecast.filtered(
-            lambda l: l.res_model == "hr.employee.forecast.role"
+            lambda l: l.res_model == self.role_model
             and l.forecast_role_id == self.role_consultant
         )[0]
         forecast_pm = employee_forecast.filtered(
-            lambda l: l.res_model == "hr.employee.forecast.role"
+            lambda l: l.res_model == self.role_model
             and l.forecast_role_id == self.role_pm
         )[0]
         return forecast_consultant, forecast_pm
@@ -643,7 +657,7 @@ class TestForecastLineProject(BaseForecastLineTest):
     @freeze_time("2022-02-14 12:00:00")
     def test_task_forecast_lines_consolidated_forecast(self):
         # set the consultant employee to 75% consultant and 25% PM
-        self.env["hr.employee.forecast.role"].with_context(tracking_disable=1).create(
+        self.HrEmployeeForecastRole.create(
             {
                 "employee_id": self.employee_consultant.id,
                 "role_id": self.role_pm.id,
@@ -652,15 +666,15 @@ class TestForecastLineProject(BaseForecastLineTest):
                 "sequence": 1,
             }
         )
-        consultant_role = self.env["hr.employee.forecast.role"].search(
+        consultant_role = self.HrEmployeeForecastRole.search(
             [
                 ("employee_id", "=", self.employee_consultant.id),
                 ("role_id", "=", self.role_consultant.id),
             ]
         )
         consultant_role.rate = 75
-        ProjectProject = self.env["project.project"].with_context(tracking_disable=1)
-        ProjectTask = self.env["project.task"].with_context(tracking_disable=1)
+        ProjectProject = self.env["project.project"]
+        ProjectTask = self.env["project.task"]
         # Create 2 project and 2 tasks with role consultant with 8h planned on
         # 1 day, assigned to the consultant
         #
@@ -731,11 +745,17 @@ class TestForecastLineProject(BaseForecastLineTest):
         self.assertEqual(forecast_pm.forecast_hours, 2.0)
         self.assertAlmostEqual(forecast_pm.consolidated_forecast, 0.25)
         self.assertAlmostEqual(forecast_pm.confirmed_consolidated_forecast, 0.25)
+        res_ids = project_1.task_ids.ids
+        project_1.task_ids.unlink()
+        to_remove_lines = self.env["forecast.line"].search(
+            [("res_id", "in", res_ids), ("res_model", "=", "project.task")]
+        )
+        self.assertFalse(to_remove_lines.exists())
 
     @freeze_time("2022-01-01 12:00:00")
     def test_forecast_with_holidays(self):
         self.test_task_forecast_lines_consolidated_forecast()
-        with Form(self.env["hr.leave"].with_context(tracking_disable=1)) as form:
+        with Form(self.env["hr.leave"]) as form:
             form.employee_id = self.employee_consultant
             form.holiday_status_id = self.env.ref("hr_holidays.holiday_status_unpaid")
             form.request_date_from = "2022-02-14"
@@ -752,7 +772,7 @@ class TestForecastLineProject(BaseForecastLineTest):
         forecast_lines = self.env["forecast.line"].search(
             [
                 ("employee_id", "=", self.employee_consultant.id),
-                ("res_model", "=", "hr.employee.forecast.role"),
+                ("res_model", "=", self.role_model),
                 ("date_from", ">=", "2022-02-14"),
                 ("date_to", "<=", "2022-02-15"),
             ]
@@ -766,12 +786,12 @@ class TestForecastLineProject(BaseForecastLineTest):
         self.assertEqual(forecast_lines_consultant[0].forecast_hours, 0)
         self.assertEqual(forecast_lines_consultant[1].forecast_hours, 0)
         # first line has a negative consolidated forecast (because of the task)
-        self.assertEqual(forecast_lines_consultant[0].consolidated_forecast, 0 - 4)
+        self.assertEqual(forecast_lines_consultant[0].consolidated_forecast, 0 - 2)
         self.assertEqual(forecast_lines_consultant[1].consolidated_forecast, -0)
 
     def test_task_forecast_lines_consolidated_forecast_overallocation(self):
-        ProjectProject = self.env["project.project"].with_context(tracking_disable=1)
-        ProjectTask = self.env["project.task"].with_context(tracking_disable=1)
+        ProjectProject = self.env["project.project"]
+        ProjectTask = self.env["project.task"]
         with freeze_time("2022-01-01"):
             employee_forecast = self.env["forecast.line"].search(
                 [
@@ -814,8 +834,8 @@ class TestForecastLineProject(BaseForecastLineTest):
     def test_task_forecast_lines_consolidated_forecast_overallocation_multiple_tasks(
         self,
     ):
-        ProjectProject = self.env["project.project"].with_context(tracking_disable=1)
-        ProjectTask = self.env["project.task"].with_context(tracking_disable=1)
+        ProjectProject = self.env["project.project"]
+        ProjectTask = self.env["project.task"]
         with freeze_time("2022-01-01"):
             employee_forecast = self.env["forecast.line"].search(
                 [
@@ -888,9 +908,9 @@ class TestForecastLineProject(BaseForecastLineTest):
         hr.employee.forecast.role	project manager	      2	             0.25 (in days)
 
         """
-        ProjectProject = self.env["project.project"].with_context(tracking_disable=1)
-        ProjectTask = self.env["project.task"].with_context(tracking_disable=1)
-        self.env["hr.employee.forecast.role"].create(
+        ProjectProject = self.env["project.project"]
+        ProjectTask = self.env["project.task"]
+        self.HrEmployeeForecastRole.create(
             {
                 "employee_id": self.employee_consultant.id,
                 "role_id": self.role_pm.id,
@@ -899,7 +919,7 @@ class TestForecastLineProject(BaseForecastLineTest):
                 "sequence": 1,
             }
         )
-        consultant_role = self.env["hr.employee.forecast.role"].search(
+        consultant_role = self.HrEmployeeForecastRole.search(
             [
                 ("employee_id", "=", self.employee_consultant.id),
                 ("role_id", "=", self.role_consultant.id),
@@ -957,9 +977,9 @@ class TestForecastLineProject(BaseForecastLineTest):
         hr.employee.forecast.role	project manager	      2	             0.25 (in days)
 
         """
-        ProjectProject = self.env["project.project"].with_context(tracking_disable=1)
-        ProjectTask = self.env["project.task"].with_context(tracking_disable=1)
-        self.env["hr.employee.forecast.role"].create(
+        ProjectProject = self.env["project.project"]
+        ProjectTask = self.env["project.task"]
+        self.HrEmployeeForecastRole.create(
             {
                 "employee_id": self.employee_consultant.id,
                 "role_id": self.role_pm.id,
@@ -968,7 +988,7 @@ class TestForecastLineProject(BaseForecastLineTest):
                 "sequence": 1,
             }
         )
-        consultant_role = self.env["hr.employee.forecast.role"].search(
+        consultant_role = self.HrEmployeeForecastRole.search(
             [
                 ("employee_id", "=", self.employee_consultant.id),
                 ("role_id", "=", self.role_consultant.id),
