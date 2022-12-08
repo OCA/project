@@ -30,7 +30,7 @@ class BaseForecastLineTest(TransactionCase):
             {"name": "John Consultant", "user_id": cls.user_consultant.id}
         )
         cls.employee_pm = cls.env["hr.employee"].create({"name": "John Peem"})
-        cls.env["hr.employee.forecast.role"].create(
+        cls.dev_employee_forecast_role = cls.env["hr.employee.forecast.role"].create(
             {
                 "employee_id": cls.employee_dev.id,
                 "role_id": cls.role_developer.id,
@@ -38,7 +38,9 @@ class BaseForecastLineTest(TransactionCase):
                 "sequence": 1,
             }
         )
-        cls.env["hr.employee.forecast.role"].create(
+        cls.consult_employee_forecast_role = cls.env[
+            "hr.employee.forecast.role"
+        ].create(
             {
                 "employee_id": cls.employee_consultant.id,
                 "role_id": cls.role_consultant.id,
@@ -46,7 +48,7 @@ class BaseForecastLineTest(TransactionCase):
                 "sequence": 1,
             }
         )
-        cls.env["hr.employee.forecast.role"].create(
+        cls.pm_employee_forecast_role = cls.env["hr.employee.forecast.role"].create(
             {
                 "employee_id": cls.employee_pm.id,
                 "role_id": cls.role_pm.id,
@@ -149,6 +151,12 @@ class TestForecastLineEmployee(BaseForecastLineTest):
             # number of working days in the first 6 months of 2022, no vacations
             [21.0 * 8, 20.0 * 8, 23.0 * 8, 21.0 * 8, 22.0 * 8, 22.0 * 8],
         )
+        res_ids = self.consult_employee_forecast_role.ids
+        self.consult_employee_forecast_role.unlink()
+        to_remove_lines = self.env["forecast.line"].search(
+            [("res_id", "in", res_ids), ("res_model", "=", "hr.employee.forecast.role")]
+        )
+        self.assertFalse(to_remove_lines.exists())
 
     @freeze_time("2022-01-01")
     def test_employee_forecast_change_roles(self):
@@ -201,6 +209,12 @@ class TestForecastLineEmployee(BaseForecastLineTest):
                 22.0 * 8 / 2,
             ],
         )
+        res_ids = self.consult_employee_forecast_role.ids
+        self.consult_employee_forecast_role.unlink()
+        to_remove_lines = self.env["forecast.line"].search(
+            [("res_id", "in", res_ids), ("res_model", "=", "hr.employee.forecast.role")]
+        )
+        self.assertFalse(to_remove_lines.exists())
 
     @freeze_time("2022-01-01 12:00:00")
     def test_forecast_with_calendar(self):
@@ -227,6 +241,12 @@ class TestForecastLineEmployee(BaseForecastLineTest):
             # number of days in the first 6 months of 2022, minus easter in April
             [21.0 * 8, 20.0 * 8, 23.0 * 8, (21.0 - 1) * 8, 22.0 * 8, 22.0 * 8],
         )
+        res_ids = self.dev_employee_forecast_role.ids
+        self.dev_employee_forecast_role.unlink()
+        to_remove_lines = self.env["forecast.line"].search(
+            [("res_id", "in", res_ids), ("res_model", "=", "hr.employee.forecast.role")]
+        )
+        self.assertFalse(to_remove_lines.exists())
 
 
 class TestForecastLineSales(BaseForecastLineTest):
@@ -593,6 +613,12 @@ class TestForecastLineProject(BaseForecastLineTest):
         self.assertEqual(forecast_pm.forecast_hours, 2.0)
         self.assertAlmostEqual(forecast_pm.consolidated_forecast, 0.25)
         self.assertAlmostEqual(forecast_pm.confirmed_consolidated_forecast, 0.25)
+        res_ids = project_1.task_ids.ids
+        project_1.task_ids.unlink()
+        to_remove_lines = self.env["forecast.line"].search(
+            [("res_id", "in", res_ids), ("res_model", "=", "project.task")]
+        )
+        self.assertFalse(to_remove_lines.exists())
 
     @freeze_time("2022-01-01 12:00:00")
     def test_forecast_with_holidays(self):
@@ -627,7 +653,7 @@ class TestForecastLineProject(BaseForecastLineTest):
         self.assertEqual(forecast_lines_consultant[0].forecast_hours, 0)
         self.assertEqual(forecast_lines_consultant[1].forecast_hours, 0)
         # first line has a negative consolidated forecast (because of the task)
-        self.assertEqual(forecast_lines_consultant[0].consolidated_forecast, 0 - 4)
+        self.assertEqual(forecast_lines_consultant[0].consolidated_forecast, 0 - 2)
         self.assertEqual(forecast_lines_consultant[1].consolidated_forecast, -0)
 
     def test_task_forecast_lines_consolidated_forecast_overallocation(self):
