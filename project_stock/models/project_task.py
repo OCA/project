@@ -152,7 +152,7 @@ class ProjectTask(models.Model):
             )
             moves.update(
                 {
-                    "warehouse_id": location.get_warehouse().id,
+                    "warehouse_id": location.warehouse_id.id,
                     "location_id": location.id,
                     "location_dest_id": location_dest.id,
                     "picking_type_id": picking_type.id,
