@@ -66,6 +66,9 @@ class TestProjectStock(TestProjectStockBase):
             self.analytic_account,
             self.task.stock_analytic_line_ids.mapped("account_id"),
         )
+        # Prevent incoherence when hr_timesheet addon is installed.
+        if "project_id" in self.task.stock_analytic_line_ids._fields:
+            self.assertFalse(self.task.stock_analytic_line_ids.project_id)
 
     def test_project_task_without_analytic_account(self):
         # Prevent error when hr_timesheet addon is installed.
