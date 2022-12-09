@@ -60,6 +60,9 @@ class StockMove(models.Model):
             vals["ref"] = task.name
         if "product_id" in analytic_line_fields:
             vals["product_id"] = product.id
+        # Prevent incoherence when hr_timesheet addon is installed.
+        if "project_id" in analytic_line_fields:
+            vals["project_id"] = False
         # tags + distributions
         if task.stock_analytic_tag_ids:
             vals["tag_ids"] = [(6, 0, task.stock_analytic_tag_ids.ids)]
