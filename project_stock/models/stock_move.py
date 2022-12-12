@@ -59,6 +59,9 @@ class StockMove(models.Model):
             vals["ref"] = task.name
         if "product_id" in analytic_line_fields:
             vals["product_id"] = product.id
+        # Prevent incoherence when hr_timesheet addon is installed.
+        if "project_id" in analytic_line_fields:
+            vals["project_id"] = False
         # Extra field added in hr_timesheet addon
         if "employee_id" in analytic_line_fields:
             vals["employee_id"] = (
