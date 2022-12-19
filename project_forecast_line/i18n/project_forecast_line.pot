@@ -19,11 +19,6 @@ msgid "Allow to see forecast dates on quotations"
 msgstr ""
 
 #. module: project_forecast_line
-#: model:ir.model,name:project_forecast_line.model_account_analytic_line
-msgid "Analytic Line"
-msgstr ""
-
-#. module: project_forecast_line
 #: model:project.task,legend_blocked:project_forecast_line.software_project_task_consultant
 #: model:project.task,legend_blocked:project_forecast_line.software_project_task_consultant_cust_test
 #: model:project.task,legend_blocked:project_forecast_line.software_project_task_consultant_internal_test
@@ -100,16 +95,30 @@ msgid ""
 msgstr ""
 
 #. module: project_forecast_line
+#: model:ir.model.fields,field_description:project_forecast_line.field_project_task__create_date
+msgid "Created On"
+msgstr ""
+
+#. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__create_uid
+#: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line_mixin__create_uid
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_role__create_uid
 #: model:ir.model.fields,field_description:project_forecast_line.field_hr_employee_forecast_role__create_uid
+#: model:ir.model.fields,field_description:project_forecast_line.field_hr_leave__create_uid
+#: model:ir.model.fields,field_description:project_forecast_line.field_project_task__create_uid
+#: model:ir.model.fields,field_description:project_forecast_line.field_resource_calendar_leaves__create_uid
+#: model:ir.model.fields,field_description:project_forecast_line.field_sale_order_line__create_uid
 msgid "Created by"
 msgstr ""
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__create_date
+#: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line_mixin__create_date
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_role__create_date
 #: model:ir.model.fields,field_description:project_forecast_line.field_hr_employee_forecast_role__create_date
+#: model:ir.model.fields,field_description:project_forecast_line.field_hr_leave__create_date
+#: model:ir.model.fields,field_description:project_forecast_line.field_resource_calendar_leaves__create_date
+#: model:ir.model.fields,field_description:project_forecast_line.field_sale_order_line__create_date
 msgid "Created on"
 msgstr ""
 
@@ -170,8 +179,13 @@ msgstr ""
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__display_name
+#: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line_mixin__display_name
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_role__display_name
 #: model:ir.model.fields,field_description:project_forecast_line.field_hr_employee_forecast_role__display_name
+#: model:ir.model.fields,field_description:project_forecast_line.field_hr_leave__display_name
+#: model:ir.model.fields,field_description:project_forecast_line.field_project_task__display_name
+#: model:ir.model.fields,field_description:project_forecast_line.field_resource_calendar_leaves__display_name
+#: model:ir.model.fields,field_description:project_forecast_line.field_sale_order_line__display_name
 msgid "Display Name"
 msgstr ""
 
@@ -272,6 +286,11 @@ msgid "Forecast Management"
 msgstr ""
 
 #. module: project_forecast_line
+#: model:ir.model.fields,field_description:project_forecast_line.field_project_task__forecast_recomputation_trigger
+msgid "Forecast Recomputation Trigger"
+msgstr ""
+
+#. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_product_product__forecast_role_id
 #: model:ir.model.fields,field_description:project_forecast_line.field_product_template__forecast_role_id
 #: model:ir.model.fields,field_description:project_forecast_line.field_project_task__forecast_role_id
@@ -314,8 +333,13 @@ msgstr ""
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__id
+#: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line_mixin__id
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_role__id
 #: model:ir.model.fields,field_description:project_forecast_line.field_hr_employee_forecast_role__id
+#: model:ir.model.fields,field_description:project_forecast_line.field_hr_leave__id
+#: model:ir.model.fields,field_description:project_forecast_line.field_project_task__id
+#: model:ir.model.fields,field_description:project_forecast_line.field_resource_calendar_leaves__id
+#: model:ir.model.fields,field_description:project_forecast_line.field_sale_order_line__id
 msgid "ID"
 msgstr ""
 
@@ -335,22 +359,41 @@ msgstr ""
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line____last_update
+#: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line_mixin____last_update
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_role____last_update
 #: model:ir.model.fields,field_description:project_forecast_line.field_hr_employee_forecast_role____last_update
+#: model:ir.model.fields,field_description:project_forecast_line.field_hr_leave____last_update
+#: model:ir.model.fields,field_description:project_forecast_line.field_project_task____last_update
+#: model:ir.model.fields,field_description:project_forecast_line.field_resource_calendar_leaves____last_update
+#: model:ir.model.fields,field_description:project_forecast_line.field_sale_order_line____last_update
 msgid "Last Modified on"
 msgstr ""
 
 #. module: project_forecast_line
+#: model:ir.model.fields,field_description:project_forecast_line.field_project_task__write_date
+msgid "Last Updated On"
+msgstr ""
+
+#. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__write_uid
+#: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line_mixin__write_uid
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_role__write_uid
 #: model:ir.model.fields,field_description:project_forecast_line.field_hr_employee_forecast_role__write_uid
+#: model:ir.model.fields,field_description:project_forecast_line.field_hr_leave__write_uid
+#: model:ir.model.fields,field_description:project_forecast_line.field_project_task__write_uid
+#: model:ir.model.fields,field_description:project_forecast_line.field_resource_calendar_leaves__write_uid
+#: model:ir.model.fields,field_description:project_forecast_line.field_sale_order_line__write_uid
 msgid "Last Updated by"
 msgstr ""
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__write_date
+#: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line_mixin__write_date
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_role__write_date
 #: model:ir.model.fields,field_description:project_forecast_line.field_hr_employee_forecast_role__write_date
+#: model:ir.model.fields,field_description:project_forecast_line.field_hr_leave__write_date
+#: model:ir.model.fields,field_description:project_forecast_line.field_resource_calendar_leaves__write_date
+#: model:ir.model.fields,field_description:project_forecast_line.field_sale_order_line__write_date
 msgid "Last Updated on"
 msgstr ""
 
@@ -423,7 +466,6 @@ msgid "Product Template"
 msgstr ""
 
 #. module: project_forecast_line
-#: model:ir.model,name:project_forecast_line.model_project_project
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__project_id
 #: model_terms:ir.ui.view,arch_db:project_forecast_line.view_forecast_line_search
 msgid "Project"
@@ -521,6 +563,11 @@ msgid "Tasks"
 msgstr ""
 
 #. module: project_forecast_line
+#: model:ir.model.fields,help:project_forecast_line.field_project_task__forecast_recomputation_trigger
+msgid "Technical field used to trigger the forecast recomputation"
+msgstr ""
+
+#. module: project_forecast_line
 #: model:ir.model,name:project_forecast_line.model_hr_leave
 msgid "Time Off"
 msgstr ""
@@ -533,6 +580,11 @@ msgstr ""
 #. module: project_forecast_line
 #: model:ir.model.fields.selection,name:project_forecast_line.selection__res_company__forecast_line_granularity__week
 msgid "Week"
+msgstr ""
+
+#. module: project_forecast_line
+#: model:ir.model,name:project_forecast_line.model_forecast_line_mixin
+msgid "mixin for models which generate forecast lines"
 msgstr ""
 
 #. module: project_forecast_line
