@@ -8,7 +8,8 @@ _logger = logging.getLogger(__name__)
 
 
 class HrLeave(models.Model):
-    _inherit = "hr.leave"
+    _name = "hr.leave"
+    _inherit = ["hr.leave", "forecast.line.mixin"]
 
     @api.model_create_multi
     def create(self, vals_list):
@@ -48,7 +49,7 @@ class HrLeave(models.Model):
                 continue
             else:
                 forecast_type = "forecast"
-            forecast_vals += ForecastLine.prepare_forecast_lines(
+            forecast_vals += ForecastLine._prepare_forecast_lines(
                 name=_("Leave"),
                 date_from=leave.date_from.date(),
                 date_to=leave.date_to.date(),

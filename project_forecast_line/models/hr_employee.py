@@ -57,6 +57,7 @@ class HrEmployee(models.Model):
 
 class HrEmployeeForecastRole(models.Model):
     _name = "hr.employee.forecast.role"
+    _inherit = "forecast.line.mixin"
     _description = "Employee forecast role"
     _order = "employee_id, date_start, sequence, rate DESC, id"
 
@@ -83,6 +84,8 @@ class HrEmployeeForecastRole(models.Model):
 
     def _update_forecast_lines(self):
         today = fields.Date.context_today(self)
+        leave_date_start = self.env.context.get("date_start")
+        leave_date_to = self.env.context.get("date_to")
         ForecastLine = self.env["forecast.line"].sudo()
         if not self:
             return ForecastLine
@@ -96,28 +99,48 @@ class HrEmployeeForecastRole(models.Model):
         leaves._update_forecast_lines()
         forecast_vals = []
         ForecastLine.search(
-            [("res_id", "in", self.ids), ("res_model", "=", self._name)]
+            [
+                ("res_id", "in", self.ids),
+                ("res_model", "=", self._name),
+                ("date_from", "<", today),
+            ]
         ).unlink()
         horizon_end = ForecastLine._company_horizon_end()
         for rec in self:
             if rec.date_end:
                 date_end = rec.date_end
+                ForecastLine.search(
+                    [
+                        ("res_id", "in", self.ids),
+                        ("res_model", "=", self._name),
+                        ("date_to", ">=", date_end),
+                    ]
+                ).unlink()
             else:
                 date_end = horizon_end - relativedelta(days=1)
+            if leave_date_to is not None:
+                date_end = min(leave_date_to, date_end)
             date_start = max(rec.date_start, today)
+            if leave_date_start is not None:
+                date_start = max(date_start, leave_date_start)
             resource = rec.employee_id.resource_id
             calendar = resource.calendar_id
 
             forecast = ForecastLine._number_of_hours(
-                date_start,
-                date_end + relativedelta(days=1),
-                resource,
-                calendar,
+                date_start, date_end, resource, calendar, force_granularity=True
             )
-            forecast_vals += ForecastLine.prepare_forecast_lines(
+            forecast_lines = ForecastLine.search(
+                [
+                    ("res_model", "=", self._name),
+                    ("res_id", "in", rec.ids),
+                    ("date_from", "<=", date_end),
+                    ("date_to", ">=", date_start),
+                ]
+            )
+            forecast_vals += forecast_lines._update_forecast_lines(
                 name="Employee %s as %s (%d%%)"
                 % (rec.employee_id.name, rec.role_id.name, rec.rate),
-                date_from=rec.date_start,
+                date_from=date_start,
                 date_to=date_end,
                 forecast_hours=forecast * rec.rate / 100.0,
                 unit_cost=rec.employee_id.timesheet_cost,  # XXX to check
@@ -128,7 +151,6 @@ class HrEmployeeForecastRole(models.Model):
                 res_model=self._name,
                 res_id=rec.id,
             )
-
         return ForecastLine.create(forecast_vals)
 
     @api.model

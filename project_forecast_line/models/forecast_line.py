@@ -33,13 +33,16 @@ class ForecastLine(models.Model):
         index=True,
         ondelete="restrict",
     )
-    employee_id = fields.Many2one("hr.employee", string="Employee")
+    employee_id = fields.Many2one("hr.employee", string="Employee", ondelete="cascade")
     employee_forecast_role_id = fields.Many2one(
-        "hr.employee.forecast.role",
-        string="Employee Forecast Role",
+        "hr.employee.forecast.role", string="Employee Forecast Role", ondelete="cascade"
     )
-    project_id = fields.Many2one("project.project", index=True, string="Project")
-    task_id = fields.Many2one("project.task", index=True, string="Task")
+    project_id = fields.Many2one(
+        "project.project", index=True, string="Project", ondelete="cascade"
+    )
+    task_id = fields.Many2one(
+        "project.task", index=True, string="Task", ondelete="cascade"
+    )
     sale_id = fields.Many2one(
         "sale.order",
         related="sale_line_id.order_id",
@@ -47,8 +50,12 @@ class ForecastLine(models.Model):
         index=True,
         string="Sale",
     )
-    sale_line_id = fields.Many2one("sale.order.line", index=True, string="Sale line")
-    hr_leave_id = fields.Many2one("hr.leave", index=True, string="Leave")
+    sale_line_id = fields.Many2one(
+        "sale.order.line", index=True, string="Sale line", ondelete="cascade"
+    )
+    hr_leave_id = fields.Many2one(
+        "hr.leave", index=True, string="Leave", ondelete="cascade"
+    )
     forecast_hours = fields.Float(
         "Forecast",
         help="Forecast (in hours). Forecast is positive for resources which add forecast, "
@@ -96,6 +103,21 @@ class ForecastLine(models.Model):
     employee_resource_consumption_ids = fields.One2many(
         "forecast.line", "employee_resource_forecast_line_id"
     )
+
+    def write(self, vals):
+        # avoid retriggering the costly recomputation of
+        # employee_forecast_line_id when updating the lines during
+        # recomputation if the values have not changed for the trigger fields
+        if len(self) == 1:
+            for key in ("date_from", "type", "res_model"):
+                if key in vals and self[key] == vals[key]:
+                    del vals[key]
+            if "employee_id" in vals and self["employee_id"].id == vals["employee_id"]:
+                del vals["employee_id"]
+        if vals:
+            return super().write(vals)
+        else:
+            return True
 
     @api.depends("employee_id", "date_from", "type", "res_model")
     def _compute_employee_forecast_line_id(self):
@@ -202,7 +224,52 @@ class ForecastLine(models.Model):
                     rec.forecast_hours + confirmed
                 )
 
-    def prepare_forecast_lines(
+    def _update_forecast_lines(
+        self,
+        name,
+        date_from,
+        date_to,
+        ttype,
+        forecast_hours,
+        unit_cost,
+        res_model,
+        res_id=0,
+        **kwargs
+    ):
+        """this method is called on a recordset, it will update it so that all the
+        lines in the set are correct, removing the ones which need removing and
+        creating the missing ones. Updates lines, and return a list of dict to pass to
+        create"""
+        values = self._prepare_forecast_lines(
+            name,
+            date_from,
+            date_to,
+            ttype,
+            forecast_hours,
+            unit_cost,
+            res_model=res_model,
+            res_id=res_id,
+            **kwargs
+        )
+        to_create = []
+        self_by_start_date = {r.date_from: r for r in self}
+        updated = []
+        for vals in values:
+            start_date = vals["date_from"]
+            rec = self_by_start_date.pop(start_date, None)
+            if rec is None:
+                to_create.append(vals)
+            else:
+                rec.write(vals)
+                updated.append(rec.id)
+        _logger.debug("updated lines %s", updated)
+        to_remove = self.browse([r.id for r in self_by_start_date.values()])
+        to_remove.unlink()
+        _logger.debug("removed lines %s", to_remove.ids)
+        _logger.debug("%d records to create", len(to_create))
+        return to_create
+
+    def _prepare_forecast_lines(
         self,
         name,
         date_from,
@@ -253,13 +320,8 @@ class ForecastLine(models.Model):
         horizon_end = today + relativedelta(months=company.forecast_line_horizon)
         return horizon_end
 
-    def _split_per_period(
-        self, date_from, date_to, forecast_hours, unit_cost, resource, calendar
-    ):
-        company = self.env.company
+    def _compute_horizon(self, date_from, date_to):
         today = fields.Date.context_today(self)
-        granularity = company.forecast_line_granularity
-        delta = date_utils.get_timedelta(1, granularity)
         horizon_end = self._company_horizon_end()
         # the date_to passed as argument is "included". We want to be able to
         # reason with this date "excluded" when doing substractions to compute
@@ -267,6 +329,17 @@ class ForecastLine(models.Model):
         date_to += relativedelta(days=1)
         horiz_date_from = max(date_from, today)
         horiz_date_to = min(date_to, horizon_end)
+        return horiz_date_from, horiz_date_to, date_to
+
+    def _split_per_period(
+        self, date_from, date_to, forecast_hours, unit_cost, resource, calendar
+    ):
+        company = self.env.company
+        granularity = company.forecast_line_granularity
+        delta = date_utils.get_timedelta(1, granularity)
+        horiz_date_from, horiz_date_to, date_to = self._compute_horizon(
+            date_from, date_to
+        )
         curr_date = date_utils.start_of(horiz_date_from, granularity)
         if horiz_date_to <= horiz_date_from:
             return
@@ -322,7 +395,7 @@ class ForecastLine(models.Model):
             curr_date = next_date
 
     @api.model
-    def _cron_recompute_all(self, force_company_id=None):
+    def _cron_recompute_all(self, force_company_id=None, force_delete=False):
         today = fields.Date.context_today(self)
         ForecastLine = self.env["forecast.line"].sudo()
         if force_company_id:
@@ -332,12 +405,19 @@ class ForecastLine(models.Model):
         for company in companies:
             ForecastLine = ForecastLine.with_company(company)
             limit_date = date_utils.start_of(today, company.forecast_line_granularity)
-            stale_forecast_lines = ForecastLine.search(
-                [
-                    ("date_from", "<", limit_date),
-                    ("company_id", "=", company.id),
-                ]
-            )
+            if force_delete:
+                stale_forecast_lines = ForecastLine.search(
+                    [
+                        ("company_id", "=", company.id),
+                    ]
+                )
+            else:
+                stale_forecast_lines = ForecastLine.search(
+                    [
+                        ("date_from", "<", limit_date),
+                        ("company_id", "=", company.id),
+                    ]
+                )
             stale_forecast_lines.unlink()
 
         # always start with forecast role to ensure we can compute the
@@ -365,7 +445,14 @@ class ForecastLine(models.Model):
         return uom_day._compute_quantity(days, uom_hour)
 
     @api.model
-    def _number_of_hours(self, date_from, date_to, resource, calendar):
+    def _number_of_hours(
+        self, date_from, date_to, resource, calendar, force_granularity=False
+    ):
+        if force_granularity:
+            company = self.env.company
+            granularity = company.forecast_line_granularity
+            date_from = date_utils.start_of(date_from, granularity)
+            date_to = date_utils.end_of(date_to, granularity) + relativedelta(days=1)
         tzinfo = pytz.timezone(calendar.tz)
         start_dt = tzinfo.localize(datetime.combine(date_from, time(0)))
         end_dt = tzinfo.localize(datetime.combine(date_to, time(0)))
@@ -378,7 +465,7 @@ class ForecastLine(models.Model):
         return nb_hours
 
     def unlink(self):
-        # we routinely unlink forecast lines, let"s not fill the logs with this
+        # we routinely unlink forecast lines, let's not fill the logs with this
         with mute_logger("odoo.models.unlink"):
             return super().unlink()
 
