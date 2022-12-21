@@ -1,12 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright <YEAR(S)> <AUTHOR(S)>
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
-
 <odoo>
 
 <record id="hr_timesheet_line_tree" model="ir.ui.view">
     <field name="model">account.analytic.line</field>
-    <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree"/>
+    <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree" />
     <field name="arch" type="xml">
         <field name="task_id" position="after">
             <field name="project_type_id" optional="show" />
@@ -17,7 +16,7 @@
 <record id="hr_timesheet_line_form" model="ir.ui.view">
     <field name="name">account.analytic.line.form.project_type</field>
     <field name="model">account.analytic.line</field>
-    <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_form"/>
+    <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_form" />
     <field name="arch" type="xml">
         <field name="task_id" position="after">
             <field name="project_type_id" />
@@ -28,13 +27,18 @@
 <record id="hr_timesheet_line_search" model="ir.ui.view">
     <field name="name">account.analytic.line.search.project_type</field>
     <field name="model">account.analytic.line</field>
-    <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_search"/>
+    <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_search" />
     <field name="arch" type="xml">
         <field name="task_id" position="after">
             <field name="project_type_id" />
         </field>
         <filter name="groupby_task" position="after">
-            <filter string="Type" name="groupby_project_type" domain="[]" context="{'group_by': 'project_type_id'}"/>
+            <filter
+                    string="Type"
+                    name="groupby_project_type"
+                    domain="[]"
+                    context="{'group_by': 'project_type_id'}"
+                />
         </filter>
     </field>
 

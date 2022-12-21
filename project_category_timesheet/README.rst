@@ -28,9 +28,9 @@ Project Timesheet by Category
 
 Group timesheets by category.
 
+There are certain types of work, such as support or meetings, that we want to count the time spent regardless of the project or task.
+
 The category, "Type" label, comes from "Project Types" marked as "Can be applied for timesheets".
-
-
 
 **Table of contents**
 
@@ -52,7 +52,6 @@ Usage
 #. Create "Project > Configuration > Project types". And set "Can be applied for timesheets".
 #. Assign default types in Projects and Tasks.
 #. In timesheets set the task or project type by default. But we can change to any timesheet-ready type.
-
 
 Bug Tracker
 ===========
