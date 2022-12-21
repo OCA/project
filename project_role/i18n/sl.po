@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2020-03-21 11:13+0000\n"
-"Last-Translator: Matjaz Mozetic <matjaz@matmoz.si>\n"
+"PO-Revision-Date: 2023-04-12 13:35+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: none\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -15,31 +15,35 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
 "%100==4 ? 2 : 3;\n"
-"X-Generator: Weblate 3.10\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #. module: project_role
+#. odoo-python
+#: code:addons/project_role/models/project_assignment.py:0
+#, python-format
+msgid "%(USER)s as %(ROLE)s"
+msgstr ""
+
+#. module: project_role
+#. odoo-python
+#: code:addons/project_role/models/project_assignment.py:0
+#, python-format
+msgid "%(USER)s as %(ROLE)s in %(PROJECT)s"
+msgstr ""
+
+#. module: project_role
+#. odoo-python
+#: code:addons/project_role/models/project_assignment.py:0
+#, python-format
+msgid "%(USER)s as %(ROLE)s on %(PROJECT)s"
+msgstr ""
+
+#. module: project_role
+#. odoo-python
 #: code:addons/project_role/models/project_role.py:0
 #, python-format
 msgid "%(parent)s / %(own)s"
 msgstr "%(parent)s / %(own)s"
-
-#. module: project_role
-#: code:addons/project_role/models/project_assignment.py:0
-#, python-format
-msgid "%s as %s"
-msgstr "%s kot %s"
-
-#. module: project_role
-#: code:addons/project_role/models/project_assignment.py:0
-#, python-format
-msgid "%s as %s in %s"
-msgstr "%s kot %s v %s"
-
-#. module: project_role
-#: code:addons/project_role/models/project_assignment.py:0
-#, python-format
-msgid "%s as %s on %s"
-msgstr "%s kot %s na %s"
 
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
@@ -69,7 +73,7 @@ msgstr ""
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_needaction
 msgid "Action Needed"
-msgstr "Potrebno je ukrepanje"
+msgstr "Potrebno ukrepanje"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__active
@@ -78,15 +82,21 @@ msgid "Active"
 msgstr "Aktivno"
 
 #. module: project_role
+#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_form
+#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
 #: model_terms:ir.ui.view,arch_db:project_role.project_role_search
+#: model_terms:ir.ui.view,arch_db:project_role.project_role_view_form
 msgid "Archived"
 msgstr "Arhivirano"
 
 #. module: project_role
+#. odoo-python
 #: code:addons/project_role/models/project_assignment.py:0
 #, python-format
-msgid "Assignment %s conflicts with another assignment: %s"
-msgstr "Zadolžitev %s je v konfliktu z zadolžitvijo: %s"
+msgid ""
+"Assignment %(ASSIGNMENT)s conflicts with another assignment: "
+"%(OTHER_ASSIGNMENT)s"
+msgstr ""
 
 #. module: project_role
 #: model:ir.actions.act_window,name:project_role.project_assignment_view_project_action
@@ -176,11 +186,6 @@ msgid "Followers"
 msgstr "Sledilci"
 
 #. module: project_role
-#: model:ir.model.fields,field_description:project_role.field_project_assignment__message_channel_ids
-msgid "Followers (Channels)"
-msgstr "Sledilci (kanali)"
-
-#. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_partner_ids
 msgid "Followers (Partners)"
 msgstr "Sledilci (partnerji)"
@@ -191,6 +196,11 @@ msgid "Group By"
 msgstr "Združi po"
 
 #. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__id
 #: model:ir.model.fields,field_description:project_role.field_project_role__id
 msgid "ID"
@@ -198,7 +208,6 @@ msgstr "ID"
 
 #. module: project_role
 #: model:ir.model.fields,help:project_role.field_project_assignment__message_needaction
-#: model:ir.model.fields,help:project_role.field_project_assignment__message_unread
 msgid "If checked, new messages require your attention."
 msgstr "Če označeno pomeni, da nova sporočila zahtevajo vašo pozornost."
 
@@ -211,14 +220,9 @@ msgstr ""
 "dostavi."
 
 #. module: project_role
-#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
-msgid "Inactive"
-msgstr "Neaktivno"
-
-#. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_project__inherit_assignments
-msgid "Inherit assignments"
-msgstr "Deduj zadolžitve"
+msgid "Inherit Assignments"
+msgstr ""
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_is_follower
@@ -252,8 +256,8 @@ msgstr "Omeji projektne vloge na zadolžitve"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_project__limit_role_to_assignments
-msgid "Limit role to assignments"
-msgstr "Omeji vlogo na zadolžitve"
+msgid "Limit Role To Assignments"
+msgstr ""
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_main_attachment_id
@@ -295,17 +299,12 @@ msgstr "Število napak"
 #. module: project_role
 #: model:ir.model.fields,help:project_role.field_project_assignment__message_needaction_counter
 msgid "Number of messages which requires an action"
-msgstr "Število sporočil, ki potrebujejo ukrepanje"
+msgstr "Število sporočil, kjer je potrebno ukrepati"
 
 #. module: project_role
 #: model:ir.model.fields,help:project_role.field_project_assignment__message_has_error_counter
 msgid "Number of messages with delivery error"
 msgstr "Število sporočil z napako ob dostavi"
-
-#. module: project_role
-#: model:ir.model.fields,help:project_role.field_project_assignment__message_unread_counter
-msgid "Number of unread messages"
-msgstr "Število neprebranih sporočil"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_role__parent_path
@@ -318,6 +317,7 @@ msgid "Parent Role"
 msgstr "Nadrejena vloga"
 
 #. module: project_role
+#. odoo-python
 #: code:addons/project_role/models/project_role.py:0
 #, python-format
 msgid "Please activate first parent role %s"
@@ -370,6 +370,7 @@ msgid "Role"
 msgstr "Vloga"
 
 #. module: project_role
+#. odoo-python
 #: code:addons/project_role/models/project_role.py:0
 #, python-format
 msgid "Role \"%s\" conflicts with another role due to same name."
@@ -402,32 +403,24 @@ msgid "Shared role with such name already exists!"
 msgstr "Vloga v souporabi s takim nazivom že obstaja!"
 
 #. module: project_role
-#: model:ir.model.fields,field_description:project_role.field_project_assignment__message_unread
-msgid "Unread Messages"
-msgstr "Neprebrana sporočila"
-
-#. module: project_role
-#: model:ir.model.fields,field_description:project_role.field_project_assignment__message_unread_counter
-msgid "Unread Messages Counter"
-msgstr "Št. neprebranih sporočil"
-
-#. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__user_id
 #: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
 msgid "User"
 msgstr "Uporabnik"
 
 #. module: project_role
+#. odoo-python
 #: code:addons/project_role/models/project_assignment.py:0
 #, python-format
-msgid "User %s can not be assigned to role %s on %s."
-msgstr "Uporabniku %s ni mogoče dodeliti vloge %s na %s."
+msgid "User %(USER)s can not be assigned to role %(ROLE)s on %(PROJECT)s."
+msgstr ""
 
 #. module: project_role
+#. odoo-python
 #: code:addons/project_role/models/project_assignment.py:0
 #, python-format
-msgid "User %s can not be assigned to role %s."
-msgstr "Uporabniku %s ni mogoče dodeliti vloge %s."
+msgid "User %(USER)s can not be assigned to role %(ROLE)s."
+msgstr ""
 
 #. module: project_role
 #: model:ir.model.constraint,message:project_role.constraint_project_assignment_company_role_user_uniq
@@ -447,12 +440,57 @@ msgstr "Uporabniku se lahko dodeli določeno vlogo le enkrat!"
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__website_message_ids
 msgid "Website Messages"
-msgstr "Spletna sporočila"
+msgstr "Sporočila spletne strani"
 
 #. module: project_role
 #: model:ir.model.fields,help:project_role.field_project_assignment__website_message_ids
 msgid "Website communication history"
-msgstr "Spletna kronologija komunikacij"
+msgstr "Kronologija komunikacij spletne strani"
+
+#, python-format
+#~ msgid "%s as %s"
+#~ msgstr "%s kot %s"
+
+#, python-format
+#~ msgid "%s as %s in %s"
+#~ msgstr "%s kot %s v %s"
+
+#, python-format
+#~ msgid "%s as %s on %s"
+#~ msgstr "%s kot %s na %s"
+
+#, python-format
+#~ msgid "Assignment %s conflicts with another assignment: %s"
+#~ msgstr "Zadolžitev %s je v konfliktu z zadolžitvijo: %s"
+
+#~ msgid "Followers (Channels)"
+#~ msgstr "Sledilci (kanali)"
+
+#~ msgid "Inactive"
+#~ msgstr "Neaktivno"
+
+#~ msgid "Inherit assignments"
+#~ msgstr "Deduj zadolžitve"
+
+#~ msgid "Limit role to assignments"
+#~ msgstr "Omeji vlogo na zadolžitve"
+
+#~ msgid "Number of unread messages"
+#~ msgstr "Število neprebranih sporočil"
+
+#~ msgid "Unread Messages"
+#~ msgstr "Neprebrana sporočila"
+
+#~ msgid "Unread Messages Counter"
+#~ msgstr "Št. neprebranih sporočil"
+
+#, python-format
+#~ msgid "User %s can not be assigned to role %s on %s."
+#~ msgstr "Uporabniku %s ni mogoče dodeliti vloge %s na %s."
+
+#, python-format
+#~ msgid "User %s can not be assigned to role %s."
+#~ msgstr "Uporabniku %s ni mogoče dodeliti vloge %s."
 
 #~ msgid "If checked new messages require your attention."
 #~ msgstr "Če označeno pomeni, da nova sporočila zahtevajo vašo pozornost."

@@ -17,35 +17,39 @@ msgstr ""
 "X-Generator: Weblate 4.3.2\n"
 
 #. module: project_role
+#. odoo-python
+#: code:addons/project_role/models/project_assignment.py:0
+#, python-format
+msgid "%(USER)s as %(ROLE)s"
+msgstr ""
+
+#. module: project_role
+#. odoo-python
+#: code:addons/project_role/models/project_assignment.py:0
+#, python-format
+msgid "%(USER)s as %(ROLE)s in %(PROJECT)s"
+msgstr ""
+
+#. module: project_role
+#. odoo-python
+#: code:addons/project_role/models/project_assignment.py:0
+#, python-format
+msgid "%(USER)s as %(ROLE)s on %(PROJECT)s"
+msgstr ""
+
+#. module: project_role
+#. odoo-python
 #: code:addons/project_role/models/project_role.py:0
 #, python-format
 msgid "%(parent)s / %(own)s"
 msgstr "%(parent)s / %(own)s"
 
 #. module: project_role
-#: code:addons/project_role/models/project_assignment.py:0
-#, python-format
-msgid "%s as %s"
-msgstr "%s como %s"
-
-#. module: project_role
-#: code:addons/project_role/models/project_assignment.py:0
-#, python-format
-msgid "%s as %s in %s"
-msgstr "%s como %s en %s"
-
-#. module: project_role
-#: code:addons/project_role/models/project_assignment.py:0
-#, python-format
-msgid "%s as %s on %s"
-msgstr "%s como %s el %s"
-
-#. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
 msgid ""
 "<span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-"
-"specific.\" role=\"img\" aria-label=\"Values set here are company-"
-"specific.\" groups=\"base.group_multi_company\"/>"
+"specific.\" role=\"img\" aria-label=\"Values set here are company-specific."
+"\" groups=\"base.group_multi_company\"/>"
 msgstr ""
 "<span class=\"fa fa-lg fa-building-o\" title=\"Los valores configurados acá "
 "son específicos de la compañía.\" role=\"img\" aria-label=\"Los valores "
@@ -56,13 +60,15 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
 msgid ""
 "<span class=\"o_form_label\">Project Roles</span>\n"
-"                                <span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-specific.\" role=\"img\" aria-label=\"Values set here are company-specific.\" groups=\"base.group_multi_company\"/>"
+"                                <span class=\"fa fa-lg fa-building-o\" title="
+"\"Values set here are company-specific.\" role=\"img\" aria-label=\"Values "
+"set here are company-specific.\" groups=\"base.group_multi_company\"/>"
 msgstr ""
 "<span class=\"o_form_label\">Roles de Proyecto</span>\n"
 "                                <span class=\"fa fa-lg fa-building-o\" title="
-"\"Los valores configurados acá son específicos de la compañía.\" role=\"img\""
-" aria-label=\"Los valores configurados acá son específicos de la compañía.\" "
-"groups=\"base.group_multi_company\"/>"
+"\"Los valores configurados acá son específicos de la compañía.\" role=\"img"
+"\" aria-label=\"Los valores configurados acá son específicos de la compañía."
+"\" groups=\"base.group_multi_company\"/>"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_needaction
@@ -84,10 +90,13 @@ msgid "Archived"
 msgstr "Archivado"
 
 #. module: project_role
+#. odoo-python
 #: code:addons/project_role/models/project_assignment.py:0
 #, python-format
-msgid "Assignment %s conflicts with another assignment: %s"
-msgstr "La asignación %s entra en conflicto con otra asignación: %s"
+msgid ""
+"Assignment %(ASSIGNMENT)s conflicts with another assignment: "
+"%(OTHER_ASSIGNMENT)s"
+msgstr ""
 
 #. module: project_role
 #: model:ir.actions.act_window,name:project_role.project_assignment_view_project_action
@@ -171,10 +180,7 @@ msgstr "Descripción"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__display_name
-#: model:ir.model.fields,field_description:project_role.field_project_project__display_name
 #: model:ir.model.fields,field_description:project_role.field_project_role__display_name
-#: model:ir.model.fields,field_description:project_role.field_res_company__display_name
-#: model:ir.model.fields,field_description:project_role.field_res_config_settings__display_name
 msgid "Display Name"
 msgstr "Mostrar Nombre"
 
@@ -182,11 +188,6 @@ msgstr "Mostrar Nombre"
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_follower_ids
 msgid "Followers"
 msgstr "Seguidores"
-
-#. module: project_role
-#: model:ir.model.fields,field_description:project_role.field_project_assignment__message_channel_ids
-msgid "Followers (Channels)"
-msgstr "Seguidores (Canales)"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_partner_ids
@@ -199,17 +200,18 @@ msgid "Group By"
 msgstr "Agrupar Por"
 
 #. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__has_message
+msgid "Has Message"
+msgstr ""
+
+#. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__id
-#: model:ir.model.fields,field_description:project_role.field_project_project__id
 #: model:ir.model.fields,field_description:project_role.field_project_role__id
-#: model:ir.model.fields,field_description:project_role.field_res_company__id
-#: model:ir.model.fields,field_description:project_role.field_res_config_settings__id
 msgid "ID"
 msgstr "ID"
 
 #. module: project_role
 #: model:ir.model.fields,help:project_role.field_project_assignment__message_needaction
-#: model:ir.model.fields,help:project_role.field_project_assignment__message_unread
 msgid "If checked, new messages require your attention."
 msgstr "Si está seleccionado, los nuevos mensajes requieren su atención."
 
@@ -221,8 +223,8 @@ msgstr "Si está seleccionado, algunos mensajes tienen error de entrega."
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_project__inherit_assignments
-msgid "Inherit assignments"
-msgstr "Asignaciones heredadas"
+msgid "Inherit Assignments"
+msgstr ""
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_is_follower
@@ -231,10 +233,7 @@ msgstr "Es Seguidor"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment____last_update
-#: model:ir.model.fields,field_description:project_role.field_project_project____last_update
 #: model:ir.model.fields,field_description:project_role.field_project_role____last_update
-#: model:ir.model.fields,field_description:project_role.field_res_company____last_update
-#: model:ir.model.fields,field_description:project_role.field_res_config_settings____last_update
 msgid "Last Modified on"
 msgstr "Última modificación en"
 
@@ -259,8 +258,8 @@ msgstr "Limitar el Rol del Proyecto a las Asignaciones"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_project__limit_role_to_assignments
-msgid "Limit role to assignments"
-msgstr "Limitar rol a asignaciones"
+msgid "Limit Role To Assignments"
+msgstr ""
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_main_attachment_id
@@ -309,11 +308,6 @@ msgid "Number of messages with delivery error"
 msgstr "Número de mensajes con error de entrega"
 
 #. module: project_role
-#: model:ir.model.fields,help:project_role.field_project_assignment__message_unread_counter
-msgid "Number of unread messages"
-msgstr "Número de mensajes sin leer"
-
-#. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_role__parent_path
 msgid "Parent Path"
 msgstr "Ruta del Padre"
@@ -324,6 +318,7 @@ msgid "Parent Role"
 msgstr "Rol del Padre"
 
 #. module: project_role
+#. odoo-python
 #: code:addons/project_role/models/project_role.py:0
 #, python-format
 msgid "Please activate first parent role %s"
@@ -376,6 +371,7 @@ msgid "Role"
 msgstr "Rol"
 
 #. module: project_role
+#. odoo-python
 #: code:addons/project_role/models/project_role.py:0
 #, python-format
 msgid "Role \"%s\" conflicts with another role due to same name."
@@ -407,32 +403,24 @@ msgid "Shared role with such name already exists!"
 msgstr "¡El Rol compartido con ese nombre ya existe!"
 
 #. module: project_role
-#: model:ir.model.fields,field_description:project_role.field_project_assignment__message_unread
-msgid "Unread Messages"
-msgstr "Mensajes sin Leer"
-
-#. module: project_role
-#: model:ir.model.fields,field_description:project_role.field_project_assignment__message_unread_counter
-msgid "Unread Messages Counter"
-msgstr "Contador de los Mensajes sin Leer"
-
-#. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__user_id
 #: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
 msgid "User"
 msgstr "Usuario"
 
 #. module: project_role
+#. odoo-python
 #: code:addons/project_role/models/project_assignment.py:0
 #, python-format
-msgid "User %s can not be assigned to role %s on %s."
-msgstr "El usuario %s no se puede asignar al rol %s en %s."
+msgid "User %(USER)s can not be assigned to role %(ROLE)s on %(PROJECT)s."
+msgstr ""
 
 #. module: project_role
+#. odoo-python
 #: code:addons/project_role/models/project_assignment.py:0
 #, python-format
-msgid "User %s can not be assigned to role %s."
-msgstr "El usuario %s no se puede asignar al rol %s."
+msgid "User %(USER)s can not be assigned to role %(ROLE)s."
+msgstr ""
 
 #. module: project_role
 #: model:ir.model.constraint,message:project_role.constraint_project_assignment_company_role_user_uniq
@@ -460,3 +448,45 @@ msgstr "Mensajes del Sitio Web"
 #: model:ir.model.fields,help:project_role.field_project_assignment__website_message_ids
 msgid "Website communication history"
 msgstr "Historial de comunicación del Sitio Web"
+
+#, python-format
+#~ msgid "%s as %s"
+#~ msgstr "%s como %s"
+
+#, python-format
+#~ msgid "%s as %s in %s"
+#~ msgstr "%s como %s en %s"
+
+#, python-format
+#~ msgid "%s as %s on %s"
+#~ msgstr "%s como %s el %s"
+
+#, python-format
+#~ msgid "Assignment %s conflicts with another assignment: %s"
+#~ msgstr "La asignación %s entra en conflicto con otra asignación: %s"
+
+#~ msgid "Followers (Channels)"
+#~ msgstr "Seguidores (Canales)"
+
+#~ msgid "Inherit assignments"
+#~ msgstr "Asignaciones heredadas"
+
+#~ msgid "Limit role to assignments"
+#~ msgstr "Limitar rol a asignaciones"
+
+#~ msgid "Number of unread messages"
+#~ msgstr "Número de mensajes sin leer"
+
+#~ msgid "Unread Messages"
+#~ msgstr "Mensajes sin Leer"
+
+#~ msgid "Unread Messages Counter"
+#~ msgstr "Contador de los Mensajes sin Leer"
+
+#, python-format
+#~ msgid "User %s can not be assigned to role %s on %s."
+#~ msgstr "El usuario %s no se puede asignar al rol %s en %s."
+
+#, python-format
+#~ msgid "User %s can not be assigned to role %s."
+#~ msgstr "El usuario %s no se puede asignar al rol %s."
