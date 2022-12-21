@@ -132,6 +132,7 @@ msgid "Type"
 msgstr "Typ"
 
 #. module: project_type
+#. odoo-python
 #: code:addons/project_type/models/project_type.py:0
 #, python-format
 msgid "You cannot create recursive project types."
