@@ -63,19 +63,11 @@ class StockMove(models.Model):
         # Prevent incoherence when hr_timesheet addon is installed.
         if "project_id" in analytic_line_fields:
             vals["project_id"] = False
-        # tags + distributions
-        if task.stock_analytic_tag_ids:
-            vals["tag_ids"] = [(6, 0, task.stock_analytic_tag_ids.ids)]
+        # distributions
+        if task.stock_analytic_distribution:
             new_amount = 0
-            distributions = self.env["account.analytic.distribution"].search(
-                [
-                    ("account_id", "=", analytic_account.id),
-                    ("tag_id", "in", task.stock_analytic_tag_ids.ids),
-                    ("percentage", ">", 0),
-                ]
-            )
-            for distribution in distributions:
-                new_amount -= (amount / 100) * distribution.percentage
+            for distribution in task.stock_analytic_distribution.values():
+                new_amount -= (amount / 100) * distribution
             vals["amount"] = new_amount
         res.update(vals)
         return res
