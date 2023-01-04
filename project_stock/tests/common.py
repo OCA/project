@@ -21,27 +21,22 @@ class TestProjectStockBase(common.TransactionCase):
         cls.picking_type = cls.env.ref("project_stock.stock_picking_type_tm_test")
         cls.location = cls.picking_type.default_location_src_id
         cls.location_dest = cls.picking_type.default_location_dest_id
-        cls.analytic_account = cls.env["account.analytic.account"].create(
-            {"name": "Test account"}
-        )
-        cls.analytic_tag_1 = cls.env["account.analytic.tag"].create(
+        cls.plan = cls.env["account.analytic.plan"].create(
             {
-                "name": "Test tag 1",
-                "active_analytic_distribution": True,
-                "analytic_distribution_ids": [
-                    (0, 0, {"account_id": cls.analytic_account.id, "percentage": 100}),
-                ],
+                "name": "Projects Plan",
+                "company_id": False,
             }
         )
-        analytic_account_2 = cls.analytic_account.copy({"name": "Test account 2"})
-        cls.analytic_tag_2 = cls.env["account.analytic.tag"].create(
+        cls.analytic_account = cls.env["account.analytic.account"].create(
             {
-                "name": "Test tag 2",
-                "active_analytic_distribution": True,
-                "analytic_distribution_ids": [
-                    (0, 0, {"account_id": cls.analytic_account.id, "percentage": 50}),
-                    (0, 0, {"account_id": analytic_account_2.id, "percentage": 50}),
-                ],
+                "name": "Test account",
+                "plan_id": cls.plan.id,
+            },
+        )
+        cls.analytic_account_2 = cls.analytic_account.copy(
+            {
+                "name": "Test account 2",
+                "plan_id": cls.plan.id,
             }
         )
         cls.project = cls.env.ref("project_stock.project_project_tm_test")

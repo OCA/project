@@ -5,7 +5,8 @@ from odoo.exceptions import UserError
 
 
 class ProjectTask(models.Model):
-    _inherit = "project.task"
+    _name = "project.task"
+    _inherit = ["project.task", "analytic.mixin"]
 
     scrap_ids = fields.One2many(
         comodel_name="stock.scrap", inverse_name="task_id", string="Scraps"
@@ -72,12 +73,10 @@ class ProjectTask(models.Model):
         string="Move Analytic Account",
         help="Move created will be assigned to this analytic account",
     )
-    stock_analytic_tag_ids = fields.Many2many(
-        comodel_name="account.analytic.tag",
-        relation="account_analytic_tag_project_task_stock_rel",
-        column1="project_task_id",
-        column2="account_analytic_tag_id",
-        string="Move Analytic Tags",
+    stock_analytic_distribution = fields.Json(
+        "Move Analytic Tags",
+        copy=True,
+        readonly=False,
     )
     stock_analytic_line_ids = fields.One2many(
         comodel_name="account.analytic.line",
