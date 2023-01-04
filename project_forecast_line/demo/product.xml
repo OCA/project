@@ -5,7 +5,7 @@
         <field name="categ_id" ref="product.product_category_1" />
         <field name="standard_price">80</field>
         <field name="list_price">120</field>
-        <field name="detailed_type">service</field>
+        <field name="type">service</field>
         <field name="uom_id" ref="uom.product_uom_hour" />
         <field name="uom_po_id" ref="uom.product_uom_hour" />
         <field name="forecast_role_id" ref="forecast_role_consultant" />
@@ -17,7 +17,7 @@
         <field name="categ_id" ref="product.product_category_1" />
         <field name="standard_price">950</field>
         <field name="list_price">150</field>
-        <field name="detailed_type">service</field>
+        <field name="type">service</field>
         <field name="uom_id" ref="uom.product_uom_hour" />
         <field name="uom_po_id" ref="uom.product_uom_hour" />
         <field name="forecast_role_id" ref="forecast_role_pm" />
@@ -29,7 +29,7 @@
         <field name="categ_id" ref="product.product_category_1" />
         <field name="standard_price">80</field>
         <field name="list_price">120</field>
-        <field name="detailed_type">service</field>
+        <field name="type">service</field>
         <field name="uom_id" ref="uom.product_uom_hour" />
         <field name="uom_po_id" ref="uom.product_uom_hour" />
         <field name="forecast_role_id" ref="forecast_role_dev" />

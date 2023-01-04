@@ -19,7 +19,8 @@ class HrLeave(models.Model):
 
     def write(self, values):
         res = super().write(values)
-        self._update_forecast_lines()
+        if not self.env.context.get("pfl_no_leave_loop"):
+            self.with_context(pfl_no_leave_loop=True)._update_forecast_lines()
         return res
 
     def _update_forecast_lines(self):
@@ -47,12 +48,8 @@ class HrLeave(models.Model):
             if leave.state == "validate":
                 # will be handled by the resource.calendar.leaves
                 continue
-            else:
-                forecast_type = "forecast"
-<<<<<<< HEAD
-=======
             ForecastLine = ForecastLine.with_company(leave.employee_company_id)
->>>>>>> 74748874 ([FIX] forecast_line: issue in multicompany)
+            forecast_type = "forecast"
             forecast_vals += ForecastLine._prepare_forecast_lines(
                 name=_("Leave"),
                 date_from=leave.date_from.date(),
@@ -68,6 +65,9 @@ class HrLeave(models.Model):
                 res_model=self._name,
                 res_id=leave.id,
             )
+        leaves.sudo().mapped("employee_id.role_ids").with_context(
+            dont_circle_back_on_leaves=True
+        )._update_forecast_lines()
         return ForecastLine.create(forecast_vals)
 
     @api.model

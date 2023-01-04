@@ -517,7 +517,9 @@ class TestForecastLineProjectReschedule(BaseForecastLineTest):
         ProjectTask = cls.env["project.task"].with_context(tracking_disable=1)
         project = ProjectProject.create({"name": "TestProjectReschedule"})
         # set project in stage "in progress" to get confirmed forecast
-        project.stage_id = cls.env.ref("project.project_project_stage_1")
+        project.project_status = cls.env.ref(
+            "project_status.project_status_in_progress"
+        )
         with freeze_time("2022-02-01 12:00:00"):
             cls.task = ProjectTask.create(
                 {
@@ -545,12 +547,13 @@ class TestForecastLineProjectReschedule(BaseForecastLineTest):
     @freeze_time("2022-02-01 12:00:00")
     def test_task_forecast_line_reschedule_employee(self):
         """changing the employee will create new lines"""
-        self.task.user_ids = self.user_consultant
+        self.task.user_id = self.user_consultant
+        self.task.flush()
         task_forecast = self.env["forecast.line"].search(
             [("task_id", "=", self.task.id)]
         )
         self.assertEqual(task_forecast.mapped("employee_id"), self.employee_consultant)
-        self.task.user_ids = self.user_pm
+        self.task.user_id = self.user_pm
         self.task.flush()
         task_forecast_after = self.env["forecast.line"].search(
             [("task_id", "=", self.task.id)]
@@ -588,7 +591,7 @@ class TestForecastLineProjectReschedule(BaseForecastLineTest):
     @freeze_time("2022-02-01 12:00:00")
     def test_task_forecast_line_reschedule_time(self):
         """changing the remaining time will keep the forecast lines"""
-        self.task.user_ids = self.user_consultant
+        self.task.user_id = self.user_consultant
         self.task.flush()
         task_forecast = self.env["forecast.line"].search(
             [("task_id", "=", self.task.id)]
@@ -672,7 +675,7 @@ class TestForecastLineProject(BaseForecastLineTest):
         # 1 day, assigned to the consultant
         #
         # Projet 1 is in TODO (not confirmed forecast)
-        project_1 = self.env["project.project"].create({"name": "TestProject1"})
+        project_1 = ProjectProject.create({"name": "TestProject1"})
         # set project in stage "Pending" to get confirmed forecast
         project_1.project_status = self.env.ref("project_status.project_status_pending")
         task_values = {
@@ -683,24 +686,28 @@ class TestForecastLineProject(BaseForecastLineTest):
             "planned_hours": 8,
         }
         task_values.update({"name": "Task1"})
-        task_1 = self.env["project.task"].create(task_values)
+        task_1 = ProjectTask.create(task_values)
         task_1.user_id = self.user_consultant
+        task_1.flush()
         task_values.update({"name": "Task2"})
-        task_2 = self.env["project.task"].create(task_values)
+        task_2 = ProjectTask.create(task_values)
         task_2.user_id = self.user_consultant
+        task_2.flush()
 
         # Project 2 is in stage "in progress" to get forecast
-        project_2 = self.env["project.project"].create({"name": "TestProject2"})
+        project_2 = ProjectProject.create({"name": "TestProject2"})
         project_2.project_status = self.env.ref(
             "project_status.project_status_in_progress"
         )
         task_values.update({"project_id": project_2.id, "name": "Task3"})
-        task_3 = self.env["project.task"].create(task_values)
+        task_3 = ProjectTask.create(task_values)
         task_3.user_id = self.user_consultant
+        task_3.flush()
         task_values.update({"name": "Task4"})
-        task_4 = self.env["project.task"].create(task_values)
+        task_4 = ProjectTask.create(task_values)
         task_4.user_id = self.user_consultant
 
+        task_4.flush()
         # check forecast lines
         forecast = self.env["forecast.line"].search(
             [("task_id", "in", (task_1.id, task_2.id, task_3.id, task_4.id))]
@@ -742,16 +749,19 @@ class TestForecastLineProject(BaseForecastLineTest):
     @freeze_time("2022-01-01 12:00:00")
     def test_forecast_with_holidays(self):
         self.test_task_forecast_lines_consolidated_forecast()
-        with Form(self.env["hr.leave"]) as form:
+        holiday_status_unpaid = self.env.ref("hr_holidays.holiday_status_unpaid")
+        holiday_status_unpaid.validity_start = "2021-12-31"
+        holiday_status_unpaid.flush()
+        with Form(self.env["hr.leave"].with_context(tracking_disable=1)) as form:
             form.employee_id = self.employee_consultant
-            form.holiday_status_id = self.env.ref("hr_holidays.holiday_status_unpaid")
+            form.holiday_status_id = holiday_status_unpaid
             form.request_date_from = "2022-02-14"
             form.request_date_to = "2022-02-15"
             form.request_hour_from = "8"
             form.request_hour_to = "18"
         leave_request = form.save()
         # validating the leave request will recompute the forecast lines for
-        # the employee capactities (actually delete the existing ones and
+        # the employee capacities (actually delete the existing ones and
         # create new ones -> we check that the project task lines are
         # automatically related to the new newly created employee role lines.
         leave_request.action_validate()
@@ -792,7 +802,8 @@ class TestForecastLineProject(BaseForecastLineTest):
             project.project_status = self.env.ref(
                 "project_status.project_status_in_progress"
             )
-            task = self.env["project.task"].create(
+            project.flush()
+            task = ProjectTask.create(
                 {
                     "name": "Task1",
                     "project_id": project.id,
@@ -804,6 +815,7 @@ class TestForecastLineProject(BaseForecastLineTest):
             )
             task.remaining_hours = 10
             task.user_id = self.user_consultant
+            task.flush()
             forecast = self.env["forecast.line"].search([("task_id", "=", task.id)])
             self.assertEqual(len(forecast), 1)
             # using assertEqual on purpose here
@@ -849,6 +861,7 @@ class TestForecastLineProject(BaseForecastLineTest):
             )
             task1.remaining_hours = 10
             task1.user_id = self.user_consultant
+            task1.flush()
             forecast1 = self.env["forecast.line"].search([("task_id", "=", task1.id)])
             self.assertEqual(len(forecast1), 1)
             task2 = ProjectTask.create(
@@ -863,6 +876,7 @@ class TestForecastLineProject(BaseForecastLineTest):
             )
             task2.remaining_hours = 4
             task2.user_id = self.user_consultant
+            task2.flush()
             forecast2 = self.env["forecast.line"].search([("task_id", "=", task2.id)])
             forecast2.type = "confirmed"
             # using assertEqual on purpose here
@@ -921,7 +935,8 @@ class TestForecastLineProject(BaseForecastLineTest):
         project.project_status = self.env.ref(
             "project_status.project_status_in_progress"
         )
-        task = self.env["project.task"].create(
+        project.flush()
+        task = ProjectTask.create(
             {
                 "name": "TaskDiffRoles",
                 "project_id": project.id,
@@ -932,6 +947,7 @@ class TestForecastLineProject(BaseForecastLineTest):
             }
         )
         task.user_id = self.user_consultant
+        task.flush()
         task_forecast = self.env["forecast.line"].search([("task_id", "=", task.id)])
         self.assertEqual(len(task_forecast), 1)
         # using assertEqual on purpose here
@@ -997,7 +1013,8 @@ class TestForecastLineProject(BaseForecastLineTest):
         project.project_status = self.env.ref(
             "project_status.project_status_in_progress"
         )
-        task = self.env["project.task"].create(
+        project.flush()
+        task = ProjectTask.create(
             {
                 "name": "TaskDiffRoles",
                 "project_id": project.id,
@@ -1008,6 +1025,7 @@ class TestForecastLineProject(BaseForecastLineTest):
             }
         )
         task.user_id = self.user_consultant
+        task.flush()
         task_forecast = self.env["forecast.line"].search([("task_id", "=", task.id)])
         self.assertEqual(len(task_forecast), 1)
         # using assertEqual on purpose here

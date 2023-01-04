@@ -15,9 +15,16 @@ class HrJob(models.Model):
 class HrEmployee(models.Model):
     _inherit = "hr.employee"
 
-    role_ids = fields.One2many("hr.employee.forecast.role", "employee_id")
+    role_ids = fields.One2many(
+        "hr.employee.forecast.role",
+        "employee_id",
+        groups="hr.group_hr_user",
+    )
     main_role_id = fields.Many2one(
-        "forecast.role", compute="_compute_main_role_id", ondelete="restrict"
+        "forecast.role",
+        compute="_compute_main_role_id",
+        ondelete="restrict",
+        groups="hr.group_hr_user",
     )
 
     def _compute_main_role_id(self):
@@ -48,7 +55,12 @@ class HrEmployee(models.Model):
             job = self.env["hr.job"].browse(new_job_id)
             if job.role_id and "role_ids" not in values:
                 values = values.copy()
-                values["role_ids"] = [(6, 0, job.role_id.ids)]
+                # Retrieve all hr.employee.forecast.role records
+                # with job.role_id
+                role_ids = self.env["hr.employee.forecast.role"].search(
+                    [("role_id", "=", job.role_id.id)]
+                )
+                values["role_ids"] = [(6, 0, role_ids.ids)]
         return values
 
 
@@ -76,7 +88,8 @@ class HrEmployeeForecastRole(models.Model):
 
     def write(self, values):
         res = super().write(values)
-        self._update_forecast_lines()
+        if not self.env.context.get("pfl_no_role_loop"):
+            self.with_context(pfl_no_role_loop=True)._update_forecast_lines()
         return res
 
     def _update_forecast_lines(self):
@@ -86,14 +99,15 @@ class HrEmployeeForecastRole(models.Model):
         ForecastLine = self.env["forecast.line"].sudo()
         if not self:
             return ForecastLine
-        leaves = self.env["hr.leave"].search(
-            [
-                ("employee_id", "in", self.mapped("employee_id").ids),
-                ("state", "!=", "cancel"),
-                ("date_to", ">=", min(self.mapped("date_start"))),
-            ]
-        )
-        leaves._update_forecast_lines()
+        if not self.env.context.get("dont_circle_back_on_leaves"):
+            leaves = self.env["hr.leave"].search(
+                [
+                    ("employee_id", "in", self.mapped("employee_id").ids),
+                    ("state", "!=", "cancel"),
+                    ("date_to", ">=", min(self.mapped("date_start"))),
+                ]
+            )
+            leaves._update_forecast_lines()
         forecast_vals = []
         ForecastLine.search(
             [

@@ -43,6 +43,8 @@ class ProjectTask(models.Model):
             "name",
             "planned_time",
             "user_id",
+            "project_id.project_status",
+            "project_id.project_status.forecast_line_type",
         ]
 
     @api.depends(_update_forecast_lines_trigger_fields)
@@ -61,6 +63,9 @@ class ProjectTask(models.Model):
 
     def _write(self, values):
         res = super()._write(values)
+        if self.env.context.get("project_forecast_line_task_noloop"):
+            return res
+        self = self.with_context(project_forecast_line_task_noloop=True)
         if "forecast_recomputation_trigger" in values:
             self._update_forecast_lines()
         elif "remaining_hours" in values:
@@ -80,7 +85,7 @@ class ProjectTask(models.Model):
                 break
 
     def _get_task_employees(self):
-        return self.with_context(active_test=False).mapped("user_ids.employee_id")
+        return self.with_context(active_test=False).mapped("user_id.employee_id")
 
     def _quick_update_forecast_lines(self):
         # called when only the remaining hours have changed. In this case, we
@@ -108,8 +113,6 @@ class ProjectTask(models.Model):
         if not self.forecast_role_id:
             _logger.info("skip task %s: no forecast role", self)
             return False
-        elif not self.project_id:
-            _logger.info("skip task %s: no project", self)
         elif self.project_id.project_status:
             forecast_type = self.project_id.project_status.forecast_line_type
             if not forecast_type:
