@@ -23,11 +23,3 @@ class StockMove(models.Model):
             vals["origin"] = vals["origin"] or self.task_id.name
             vals.update({"raw_material_task_id": self.task_id.id})
         return vals
-
-    def _get_origin_moves(self):
-        return super()._get_origin_moves() or (
-            self.task_id
-            and self.task_id.move_raw_ids.filtered(
-                lambda x: x.product_id == self.product_id
-            )
-        )

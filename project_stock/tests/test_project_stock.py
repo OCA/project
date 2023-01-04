@@ -25,7 +25,6 @@ class TestProjectStock(TestProjectStockBase):
             {
                 "groups_id": [
                     (4, cls.env.ref("analytic.group_analytic_accounting").id),
-                    (4, cls.env.ref("analytic.group_analytic_tags").id),
                 ],
             }
         )
@@ -60,10 +59,6 @@ class TestProjectStock(TestProjectStockBase):
         self.assertEqual(len(stock_analytic_lines), 2)
         self.assertEqual(sum(stock_analytic_lines.mapped("unit_amount")), 3)
         self.assertEqual(sum(stock_analytic_lines.mapped("amount")), amount)
-        self.assertEqual(
-            self.task.stock_analytic_tag_ids,
-            stock_analytic_lines.mapped("tag_ids"),
-        )
         self.assertIn(
             self.analytic_account,
             stock_analytic_lines.mapped("account_id"),
@@ -105,7 +100,6 @@ class TestProjectStock(TestProjectStockBase):
         self.task.write(
             {
                 "stock_analytic_date": "1991-01-01",
-                "stock_analytic_tag_ids": self.analytic_tag_1.ids,
             }
         )
         self.task.write({"stage_id": self.stage_done.id})
@@ -118,21 +112,25 @@ class TestProjectStock(TestProjectStockBase):
 
     @users("manager-user")
     def test_project_task_analytic_lines_with_tag_1_manager_user(self):
+        self.task.stock_analytic_distribution = {self.analytic_account.id: 100}
         self.test_project_task_analytic_lines_with_tag_1()
 
     def test_project_task_analytic_lines_with_tag_2(self):
         self.task = self.env["project.task"].browse(self.task.id)
         self.task.project_id.stock_analytic_date = False
-        self.task.write({"stock_analytic_tag_ids": self.analytic_tag_2.ids})
         self.task.write({"stage_id": self.stage_done.id})
         self.task.action_done()
-        self._test_task_analytic_lines_from_task(-20)
+        self._test_task_analytic_lines_from_task(-40)
         self.assertEqual(
             fields.first(self.task.stock_analytic_line_ids).date, fields.date.today()
         )
 
     @users("manager-user")
     def test_project_task_analytic_lines_with_tag_2_manager_user(self):
+        self.task.stock_analytic_distribution = {
+            self.analytic_account.id: 50,
+            self.analytic_account_2.id: 50,
+        }
         self.test_project_task_analytic_lines_with_tag_2()
 
     def test_project_task_process_done(self):
@@ -262,3 +260,32 @@ class TestProjectStock(TestProjectStockBase):
     @users("basic-user")
     def test_project_task_unlink_basic_user(self):
         self.test_project_task_unlink()
+
+    def test_project_project_onchange(self):
+        new_type = self.env.ref("stock.picking_type_out")
+        self.project.write({"picking_type_id": new_type.id})
+        self.project._onchange_picking_type_id()
+        self.assertEqual(self.project.location_id, new_type.default_location_src_id)
+        self.assertEqual(
+            self.project.location_dest_id, new_type.default_location_dest_id
+        )
+        self.task.do_unreserve()
+        self.task.write({"picking_type_id": new_type.id})
+        self.task._onchange_picking_type_id()
+        self.assertEqual(self.task.location_id, new_type.default_location_src_id)
+        self.assertEqual(self.task.location_dest_id, new_type.default_location_dest_id)
+        move = fields.first(self.task.move_ids)
+        self.assertEqual(move.location_id, new_type.default_location_src_id)
+
+    def test_project_task_scrap(self):
+        move = fields.first(self.task.move_ids)
+        scrap = self.env["stock.scrap"].create(
+            {
+                "product_id": move.product_id.id,
+                "product_uom_id": move.product_id.uom_id.id,
+                "scrap_qty": 1,
+                "task_id": self.task.id,
+            }
+        )
+        scrap.do_scrap()
+        self.assertEqual(scrap.move_id.raw_material_task_id, self.task)
