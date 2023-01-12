@@ -6,95 +6,97 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2023-01-12 03:29+0000\n"
+"Last-Translator: Marcel Savegnago <marcel.savegnago@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_task__allow_moves_action_assign
 msgid "Allow Moves Action Assign"
-msgstr ""
+msgstr "Permitir Ações de Designação dos Movimentos"
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_task__allow_moves_action_confirm
 msgid "Allow Moves Action Confirm"
-msgstr ""
+msgstr "Permitir Ações de Confirmação de Movimentos"
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_task__unreserve_visible
 msgid "Allowed to Unreserve Inventory"
-msgstr ""
+msgstr "Permitido para Cancelamento de Reserva de Inventário"
 
 #. module: project_stock
 #: model:ir.model,name:project_stock.model_account_analytic_line
 msgid "Analytic Line"
-msgstr ""
+msgstr "Linha Analítica"
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_task__stock_analytic_line_ids
 msgid "Analytic Lines"
-msgstr ""
+msgstr "Linhas Analíticas"
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_project__stock_analytic_date
 #: model:ir.model.fields,field_description:project_stock.field_project_task__stock_analytic_date
 msgid "Analytic date"
-msgstr ""
+msgstr "Data analítica"
 
 #. module: project_stock
 #: model:ir.model.fields.selection,name:project_stock.selection__project_task__stock_state__assigned
 msgid "Assigned"
-msgstr ""
+msgstr "Atribuído"
 
 #. module: project_stock
 #: model:ir.model.fields.selection,name:project_stock.selection__project_task__stock_state__cancel
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #. module: project_stock
 #: model_terms:ir.ui.view,arch_db:project_stock.view_task_form2
 msgid "Cancel Materials"
-msgstr ""
+msgstr "Cancelar Materiais"
 
 #. module: project_stock
 #: model_terms:ir.ui.view,arch_db:project_stock.view_task_form2
 msgid "Check availability materials"
-msgstr ""
+msgstr "Verificar disponibilidade de materiais"
 
 #. module: project_stock
 #: model_terms:ir.ui.view,arch_db:project_stock.view_task_form2
 msgid "Confirm materials"
-msgstr ""
+msgstr "Confirmar materiais"
 
 #. module: project_stock
 #: model:ir.model.fields.selection,name:project_stock.selection__project_task__stock_state__confirmed
 msgid "Confirmed"
-msgstr ""
+msgstr "Confirmado"
 
 #. module: project_stock
 #: model_terms:ir.ui.view,arch_db:project_stock.view_stock_move_raw_tree
 msgid "Consumed"
-msgstr ""
+msgstr "Consumido"
 
 #. module: project_stock
 #: model:ir.model.fields,help:project_stock.field_project_project__location_id
 msgid "Default location from which materials are consumed."
-msgstr ""
+msgstr "Local padrão a partir do qual os materiais são consumidos."
 
 #. module: project_stock
 #: model:ir.model.fields,help:project_stock.field_project_project__location_dest_id
 msgid "Default location to which materials are consumed."
-msgstr ""
+msgstr "Local padrão para o qual os materiais são consumidos."
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_project__location_dest_id
 #: model:ir.model.fields,field_description:project_stock.field_project_task__location_dest_id
 msgid "Destination Location"
-msgstr ""
+msgstr "Local do Destino"
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_account_analytic_line__display_name
@@ -105,23 +107,23 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_stock.field_stock_move_line__display_name
 #: model:ir.model.fields,field_description:project_stock.field_stock_scrap__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nome de Exibição"
 
 #. module: project_stock
 #: model:ir.model.fields.selection,name:project_stock.selection__project_task__stock_state__done
 msgid "Done"
-msgstr ""
+msgstr "Concluído"
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_task__done_stock_moves
 #: model:ir.model.fields,field_description:project_stock.field_project_task_type__done_stock_moves
 msgid "Done Stock Moves"
-msgstr ""
+msgstr "Concluir Movimentos de Estoque"
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_task__group_id
 msgid "Group"
-msgstr ""
+msgstr "Agrupar"
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_account_analytic_line__id
@@ -132,7 +134,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_stock.field_stock_move_line__id
 #: model:ir.model.fields,field_description:project_stock.field_stock_scrap__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_stock
 #: model:ir.model.fields,help:project_stock.field_project_task__done_stock_moves
@@ -141,6 +143,8 @@ msgid ""
 "If you check this box, when a task is in this state, you will not be able to"
 " add more stock moves but they can be viewed."
 msgstr ""
+"Se você marcar esta caixa, quando uma tarefa estiver nesta situação, você "
+"não poderá adicionar mais movimentos de estoque, mas eles podem ser vistos."
 
 #. module: project_stock
 #: model:ir.model.fields,help:project_stock.field_project_task__use_stock_moves
@@ -149,17 +153,19 @@ msgid ""
 "If you mark this check, when a task goes to this state, it will use stock "
 "moves"
 msgstr ""
+"Se você marcar esta verificação, quando uma tarefa vai para esta situação, "
+"ela usará movimentos de estoque"
 
 #. module: project_stock
 #: model:ir.actions.act_window,name:project_stock.action_project_task_moves
 msgid "Inventory Moves"
-msgstr ""
+msgstr "Movimentos do Inventário"
 
 #. module: project_stock
 #: code:addons/project_stock/models/project_task.py:0
 #, python-format
 msgid "It is not possible to change this with reserved movements in tasks."
-msgstr ""
+msgstr "Não é possível mudar isso com movimentos reservados nas tarefas."
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_account_analytic_line____last_update
@@ -170,68 +176,68 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_stock.field_stock_move_line____last_update
 #: model:ir.model.fields,field_description:project_stock.field_stock_scrap____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Última Modificação em"
 
 #. module: project_stock
 #: model_terms:ir.ui.view,arch_db:project_stock.view_task_form2
 msgid "Lock"
-msgstr ""
+msgstr "Travar"
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_task__stock_analytic_account_id
 msgid "Move Analytic Account"
-msgstr ""
+msgstr "Conta Analítica do Movimento"
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_task__stock_analytic_tag_ids
 msgid "Move Analytic Tags"
-msgstr ""
+msgstr "Tag Analítica do Movimento"
 
 #. module: project_stock
 #: model:ir.model.fields,help:project_stock.field_project_task__stock_analytic_account_id
 msgid "Move created will be assigned to this analytic account"
-msgstr ""
+msgstr "O movimento criado será atribuído a esta conta analítica"
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_project__picking_type_id
 #: model:ir.model.fields,field_description:project_stock.field_project_task__picking_type_id
 msgid "Operation Type"
-msgstr ""
+msgstr "Tipo de Operação"
 
 #. module: project_stock
 #: model:ir.model.fields.selection,name:project_stock.selection__project_task__stock_state__pending
 msgid "Pending"
-msgstr ""
+msgstr "Pendente"
 
 #. module: project_stock
 #: model_terms:ir.ui.view,arch_db:project_stock.view_task_form2
 msgid "Product Moves"
-msgstr ""
+msgstr "Movimentos do Produto"
 
 #. module: project_stock
 #: model:ir.model,name:project_stock.model_stock_move_line
 msgid "Product Moves (Stock Move Line)"
-msgstr ""
+msgstr "Movimentos do Produto (Linha do Movimento de Estoque)"
 
 #. module: project_stock
 #: model:ir.model,name:project_stock.model_project_project
 msgid "Project"
-msgstr ""
+msgstr "Projeto"
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_account_analytic_line__stock_task_id
 msgid "Project Task"
-msgstr ""
+msgstr "Tarefa do Projeto"
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_stock_move__task_id
 msgid "Related Task"
-msgstr ""
+msgstr "Tarefa Relacionada"
 
 #. module: project_stock
 #: model_terms:ir.ui.view,arch_db:project_stock.view_stock_move_raw_tree
 msgid "Reserved"
-msgstr ""
+msgstr "Reservado"
 
 #. module: project_stock
 #: code:addons/project_stock/models/project_task.py:0
@@ -239,99 +245,99 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_stock.view_task_form2
 #, python-format
 msgid "Scrap"
-msgstr ""
+msgstr "Sucata"
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_task__scrap_count
 msgid "Scrap Move"
-msgstr ""
+msgstr "Movimento de Sucata"
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_task__scrap_ids
 #: model_terms:ir.ui.view,arch_db:project_stock.view_task_form2
 msgid "Scraps"
-msgstr ""
+msgstr "Sucatas"
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_project__location_id
 #: model:ir.model.fields,field_description:project_stock.field_project_task__location_id
 msgid "Source Location"
-msgstr ""
+msgstr "Local de Origem"
 
 #. module: project_stock
 #: model_terms:ir.ui.view,arch_db:project_stock.edit_project
 msgid "Stock"
-msgstr ""
+msgstr "Estoque"
 
 #. module: project_stock
 #: model_terms:ir.ui.view,arch_db:project_stock.view_task_form2
 msgid "Stock Info"
-msgstr ""
+msgstr "Informação de Estoque"
 
 #. module: project_stock
 #: model:ir.model,name:project_stock.model_stock_move
 msgid "Stock Move"
-msgstr ""
+msgstr "Movimento de Estoque"
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_task__move_ids
 msgid "Stock Moves"
-msgstr ""
+msgstr "Movimentos de Estoque"
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_task__stock_moves_is_locked
 msgid "Stock Moves Is Locked"
-msgstr ""
+msgstr "Movimentos de Estoque Travados"
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_task__stock_state
 msgid "Stock State"
-msgstr ""
+msgstr "Situação de Estoque"
 
 #. module: project_stock
 #: model:ir.model,name:project_stock.model_project_task
 #: model:ir.model.fields,field_description:project_stock.field_stock_move_line__task_id
 #: model:ir.model.fields,field_description:project_stock.field_stock_scrap__task_id
 msgid "Task"
-msgstr ""
+msgstr "Tarefa"
 
 #. module: project_stock
 #: model:ir.model,name:project_stock.model_project_task_type
 msgid "Task Stage"
-msgstr ""
+msgstr "Estágio da Tarefa"
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_stock_move__raw_material_task_id
 msgid "Task for material"
-msgstr ""
+msgstr "Tarefa para material"
 
 #. module: project_stock
 #: model:ir.model.fields,help:project_stock.field_project_task__unreserve_visible
 msgid "Technical field to check when we can unreserve"
-msgstr ""
+msgstr "Campo técnico para checar quando podemos cancelar reserva"
 
 #. module: project_stock
 #: model_terms:ir.ui.view,arch_db:project_stock.view_stock_move_raw_tree
 msgid "To Consume"
-msgstr ""
+msgstr "Para Consumo"
 
 #. module: project_stock
 #: model_terms:ir.ui.view,arch_db:project_stock.view_task_form2
 msgid "Transfer Materials"
-msgstr ""
+msgstr "Transferir Materiais"
 
 #. module: project_stock
 #: model_terms:ir.ui.view,arch_db:project_stock.view_task_form2
 msgid "Unlock"
-msgstr ""
+msgstr "Destravar"
 
 #. module: project_stock
 #: model_terms:ir.ui.view,arch_db:project_stock.view_task_form2
 msgid "Unreserve"
-msgstr ""
+msgstr "Cancelar Reserva"
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_task__use_stock_moves
 #: model:ir.model.fields,field_description:project_stock.field_project_task_type__use_stock_moves
 msgid "Use Stock Moves"
-msgstr ""
+msgstr "Usar Movimentos de Estoque"
