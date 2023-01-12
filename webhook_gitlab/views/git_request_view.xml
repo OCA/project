@@ -19,12 +19,7 @@
                 <field name="approved" />
                 <field name="state" />
                 <field name="ci_status" />
-                <button
-                    name="open_merge_request"
-                    icon="fa-gitlab"
-                    string="Open Merge Request"
-                    type="object"
-                />
+                <button name="open_merge_request" icon="fa-gitlab" string="Open Merge Request" type="object" />
             </tree>
         </field>
     </record>

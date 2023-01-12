@@ -9,6 +9,7 @@ from hmac import HMAC, compare_digest
 
 import gitlab  # pylint: disable=W7935
 from github import Github
+
 from odoo import SUPERUSER_ID, _, http
 from odoo.http import request
 from odoo.tools import consteq
@@ -30,9 +31,7 @@ def token_authorization(function):
         gitlab_token = headers.get("X-Gitlab-Token")
         github_token = headers.get("X-Hub-Signature-256")
         token = (
-            request.env["ir.config_parameter"]
-            .with_user(SUPERUSER_ID)
-            .get_param("webhook_gitlab.authorization_token")
+            request.env["ir.config_parameter"].with_user(SUPERUSER_ID).get_param("webhook_gitlab.authorization_token")
         )
         if github_token:
             expected_token = HMAC(
@@ -40,9 +39,7 @@ def token_authorization(function):
                 msg=request.httprequest.data,
                 digestmod=sha256,
             ).hexdigest()
-            authorization = compare_digest(
-                github_token.split("sha256=")[-1].strip(), expected_token
-            )
+            authorization = compare_digest(github_token.split("sha256=")[-1].strip(), expected_token)
         elif gitlab_token:
             authorization = consteq(gitlab_token, token)
         if not authorization:
@@ -82,11 +79,7 @@ class WebhookGitlab(http.Controller):
         title or False if the title does not contain a correct format.
         :rtype: dictionary or boolean
         """
-        exp = (
-            r"^(.*[ \(\[\<])?"
-            r"(?P<type>t(ask)?)#?(?P<id>\d+)"
-            r"([\)\]\>:=, \.,].*)?$"
-        )
+        exp = r"^(.*[ \(\[\<])?(?P<type>t(ask)?)#?(?P<id>\d+)([\)\]\>:=, \.,].*)?$"
         match = re.match(exp, title, re.IGNORECASE)
         if match:
             return match.groupdict()
@@ -100,10 +93,13 @@ class WebhookGitlab(http.Controller):
         rec_type = "task"
         record = request.env[model].with_user(SUPERUSER_ID).browse(int(id_found["id"]))
         if not record:
-            message = _("The %(type)s #%(id)s cannot be found in Odoo.") % {
-                "tyoe": rec_type,
-                "id": id_found["id"],
-            }
+            message = _(
+                "The %(type)s #%(id)s cannot be found in Odoo.",
+                {
+                    "tyoe": rec_type,
+                    "id": id_found["id"],
+                },
+            )
             self._post_message(event, message)
             return False
         if event.get("object_kind"):
@@ -128,11 +124,14 @@ class WebhookGitlab(http.Controller):
             return False
         git_request.sudo().create(git_request_vals)
         url = record._notify_get_action_link("view")
-        message = _("Linked to Odoo %(type)s [#%(id)s](%(url)s)") % {
-            "type": rec_type,
-            "id": record.id,
-            "url": url,
-        }
+        message = _(
+            "Linked to Odoo %(type)s [#%(id)s](%(url)s)",
+            {
+                "type": rec_type,
+                "id": record.id,
+                "url": url,
+            },
+        )
         self._post_message(event, message)
         return True
 
@@ -149,11 +148,7 @@ class WebhookGitlab(http.Controller):
         approved = False
         if event["object_attributes"]["action"] == "approved":
             approved = True
-        user = (
-            request.env["res.users"]
-            .sudo()
-            .search([("gitlab_username", "=", event["user"]["username"])])
-        )
+        user = request.env["res.users"].sudo().search([("gitlab_username", "=", event["user"]["username"])])
         return {
             "id_request": event["object_attributes"]["iid"],
             "id_project": event["project"]["id"],
@@ -206,9 +201,7 @@ class WebhookGitlab(http.Controller):
         title = event["object_attributes"]["title"]
         id_found = self._get_record_type_and_id(title)
         if not id_found:
-            message = request.env["ir.qweb"].render(
-                "webhook_gitlab.gitlab_id_not_in_title"
-            )
+            message = request.env["ir.qweb"].render("webhook_gitlab.gitlab_id_not_in_title")
             self._post_message(event, message)
             return False
         return self._link_record(event, id_found)
@@ -224,9 +217,7 @@ class WebhookGitlab(http.Controller):
         title = event["pull_request"]["title"]
         id_found = self._get_record_type_and_id(title)
         if not id_found:
-            message = request.env["ir.qweb"].render(
-                "webhook_gitlab.gitlab_id_not_in_title"
-            )
+            message = request.env["ir.qweb"].render("webhook_gitlab.gitlab_id_not_in_title")
             self._post_message(event, message)
             return False
         return self._link_record(event, id_found)
@@ -258,25 +249,13 @@ class WebhookGitlab(http.Controller):
 
     def _connect_gitlab(self):
         """Connect to gitlab instance and return gitlab object"""
-        url = (
-            request.env["ir.config_parameter"]
-            .with_user(SUPERUSER_ID)
-            .get_param("webhook_gitlab.gitlab_url")
-        )
-        token = (
-            request.env["ir.config_parameter"]
-            .with_user(SUPERUSER_ID)
-            .get_param("webhook_gitlab.gitlab_token")
-        )
+        url = request.env["ir.config_parameter"].with_user(SUPERUSER_ID).get_param("webhook_gitlab.gitlab_url")
+        token = request.env["ir.config_parameter"].with_user(SUPERUSER_ID).get_param("webhook_gitlab.gitlab_token")
         return gitlab.Gitlab(url, private_token=token)
 
     def _connect_github(self):
         """Connect to github instance and return github object"""
-        token = (
-            request.env["ir.config_parameter"]
-            .with_user(SUPERUSER_ID)
-            .get_param("webhook_gitlab.github_token")
-        )
+        token = request.env["ir.config_parameter"].with_user(SUPERUSER_ID).get_param("webhook_gitlab.github_token")
         return Github(token)
 
     def _post_message(self, event, message):

@@ -38,7 +38,7 @@ Usage
 
 To use this module, you need to:
 
-#. Use Gitlab 
+#. Use Gitlab
 
 
 Credits

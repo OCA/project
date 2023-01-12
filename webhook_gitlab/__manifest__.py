@@ -6,7 +6,7 @@
     "summary": "Controllers needed to notify actions with gitlab",
     "version": "15.0.1.0.1",
     "category": "Development",
-    "author": "Jarsa",
+    "author": "Jarsa Sistemas",
     "website": "https://git.vauxoo.com/jarsa/jarsa",
     "license": "LGPL-3",
     "depends": [
