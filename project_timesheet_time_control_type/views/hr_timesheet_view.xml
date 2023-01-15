@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright <YEAR(S)> <AUTHOR(S)>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+<record id="hr_timesheet_line_form" model="ir.ui.view">
+    <field name="name">account.analytic.line.form.project_type</field>
+    <field name="model">account.analytic.line</field>
+    <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_form" />
+    <field name="arch" type="xml">
+        <field name="task_id" position="after">
+            <field name="time_type_id" />
+        </field>
+    </field>
+</record>
+
+<record id="hr_timesheet_line_search" model="ir.ui.view">
+    <field name="name">account.analytic.line.search.time_type</field>
+    <field name="model">account.analytic.line</field>
+    <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_search" />
+    <field name="arch" type="xml">
+        <field name="task_id" position="after">
+            <field name="time_type_id" />
+        </field>
+        <filter name="groupby_task" position="after">
+            <filter
+                    string="Type"
+                    name="groupby_time_type"
+                    domain="[]"
+                    context="{'group_by': 'time_type_id'}"
+                />
+        </filter>
+    </field>
+
+</record>
+
+</odoo>
