@@ -18,7 +18,15 @@ class TestProjectStockBase(common.SavepointCase):
             {"name": "Test product C", "type": "product", "standard_price": 0}
         )
         warehouse = cls.env["stock.warehouse"].search(
-            [("company_id", "=", cls.env.company.id)], limit=1
+            [("company_id", "=", cls.env.user.company_id.id)], limit=1
+        )
+        picking_type_sequence = cls.env["ir.sequence"].create(
+            {
+                "name": "Task Material Sequence",
+                "prefix": "TM",
+                "padding": 5,
+                "company_id": warehouse.company_id.id
+            }
         )
         cls.location = warehouse.lot_stock_id
         cls.location_dest = cls.env["stock.location"].create(
@@ -28,7 +36,7 @@ class TestProjectStockBase(common.SavepointCase):
             {
                 "name": "Test",
                 "code": "outgoing",
-                "sequence_code": "PS-TEST",
+                "sequence_id": picking_type_sequence.id,
                 "warehouse_id": warehouse.id,
                 "default_location_src_id": cls.location.id,
                 "default_location_dest_id": cls.location_dest.id,
@@ -89,6 +97,7 @@ class TestProjectStockBase(common.SavepointCase):
             self.env["project.task"].with_context(self._prepare_context_task(self))
         )
         task_form.name = "Test task"
+        task_form.stage_id = self.stage_in_progress
         # Save task to use default_get() correctlly in stock.moves
         task_form.save()
         for product in products:

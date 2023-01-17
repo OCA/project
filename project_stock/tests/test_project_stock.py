@@ -68,7 +68,7 @@ class TestProjectStock(TestProjectStockBase):
         )
         # Prevent incoherence when hr_timesheet addon is installed.
         if "project_id" in self.task.stock_analytic_line_ids._fields:
-            self.assertFalse(self.task.stock_analytic_line_ids.project_id)
+            self.assertFalse(any(self.task.stock_analytic_line_ids.mapped('project_id')))
 
     def test_project_task_without_analytic_account(self):
         # Prevent error when hr_timesheet addon is installed.
@@ -92,7 +92,7 @@ class TestProjectStock(TestProjectStockBase):
         self.task.write(
             {
                 "stock_analytic_date": "1991-01-01",
-                "stock_analytic_tag_ids": self.analytic_tag_1.ids,
+                "stock_analytic_tag_ids": [(6, False, self.analytic_tag_1.ids)]
             }
         )
         self.task.write({"stage_id": self.stage_done.id})
@@ -105,7 +105,7 @@ class TestProjectStock(TestProjectStockBase):
 
     def test_project_task_analytic_lines_with_tag_2(self):
         self.task.project_id.stock_analytic_date = False
-        self.task.write({"stock_analytic_tag_ids": self.analytic_tag_2.ids})
+        self.task.write({"stock_analytic_tag_ids": [(6, False, self.analytic_tag_2.ids)]})
         self.task.write({"stage_id": self.stage_done.id})
         self.task.action_done()
         self._test_task_analytic_lines_from_task(-20)
@@ -203,13 +203,13 @@ class TestProjectStock(TestProjectStockBase):
         self.assertFalse(self.task.unreserve_visible)
 
     def test_project_task_action_cancel_basic_user(self):
-        self.assertTrue(self.task.with_user(self.basic_user).action_cancel())
+        self.assertTrue(self.task.sudo(self.basic_user).action_cancel())
 
     def test_project_task_action_done_basic_user(self):
-        task = self.task.with_user(self.basic_user)
+        task = self.task.sudo(self.basic_user)
         task.write({"stage_id": self.stage_done.id})
         task.action_done()
         self.assertTrue(task.sudo().stock_analytic_line_ids)
 
     def test_project_task_unlink_basic_user(self):
-        self.assertTrue(self.task.with_user(self.basic_user).unlink())
+        self.assertTrue(self.task.sudo(self.basic_user).unlink())

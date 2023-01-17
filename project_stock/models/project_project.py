@@ -10,7 +10,7 @@ class ProjectProject(models.Model):
         comodel_name="stock.picking.type",
         string="Operation Type",
         readonly=False,
-        domain="[('company_id', '=', company_id)]",
+        domain="[('warehouse_id.company_id', '=', company_id)]",
         index=True,
         check_company=True,
     )
@@ -37,6 +37,7 @@ class ProjectProject(models.Model):
         self.location_id = self.picking_type_id.default_location_src_id.id
         self.location_dest_id = self.picking_type_id.default_location_dest_id.id
 
+    @api.multi
     def write(self, vals):
         """Update location information on pending moves when changed."""
         res = super().write(vals)

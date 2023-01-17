@@ -14,6 +14,8 @@ class StockMove(models.Model):
     raw_material_task_id = fields.Many2one(
         comodel_name="project.task", string="Task for material", check_company=True
     )
+    # product_uom_category_id not exits on stock.move model in Odoo 12.0
+    product_uom_category_id = fields.Many2one(related='product_id.uom_id.category_id')
 
     @api.onchange("product_id")
     def onchange_product_id(self):
@@ -25,7 +27,7 @@ class StockMove(models.Model):
 
     def _prepare_analytic_line_from_task(self):
         product = self.product_id
-        company_id = self.env.company
+        company_id = self.company_id or self.env.user.company_id
         task = self.task_id or self.raw_material_task_id
         analytic_account = (
             task.stock_analytic_account_id or task.project_id.analytic_account_id

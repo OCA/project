@@ -24,16 +24,14 @@
             >
                 <field name="company_id" invisible="1" />
                 <field name="product_id" required="1" />
-                <field name="location_id" optional="hide" readonly="1" force_save="1" />
+                <field name="location_id" readonly="1" force_save="1" />
                 <field
                     name="location_dest_id"
-                    optional="hide"
                     readonly="1"
                     force_save="1"
                 />
                 <field
                     name="picking_type_id"
-                    optional="hide"
                     readonly="1"
                     force_save="1"
                 />

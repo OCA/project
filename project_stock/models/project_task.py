@@ -201,6 +201,7 @@ class ProjectTask(models.Model):
         """Cancel the stock moves and remove the analytic lines created from
         stock moves when cancelling the task.
         """
+        self.ensure_one()
         self.mapped("move_ids.move_line_ids").write({"qty_done": 0})
         # Use sudo to avoid error for users with no access to analytic
         self.sudo().stock_analytic_line_ids.unlink()
@@ -230,6 +231,7 @@ class ProjectTask(models.Model):
         action["context"] = dict(self._context, default_origin=self.name)
         return action
 
+    @api.multi
     def write(self, vals):
         res = super().write(vals)
         if "stage_id" in vals:
@@ -243,6 +245,7 @@ class ProjectTask(models.Model):
             self._update_moves_info()
         return res
 
+    @api.multi
     def unlink(self):
         # Use sudo to avoid error to users with no access to analytic
         # related to hr_timesheet addon
