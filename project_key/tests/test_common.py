@@ -1,7 +1,7 @@
 # Copyright 2017 - 2018 Modoolar <info@modoolar.com>
 # License LGPLv3.0 or later (https://www.gnu.org/licenses/lgpl-3.0.en.html).
 
-from odoo.tests.common import HttpCase, SavepointCase
+from odoo.tests.common import HttpCase, TransactionCase
 
 
 class TestMixin(object):
@@ -40,7 +40,7 @@ class TestMixin(object):
         return self.get_record_url(project, project._name, self.project_action.id)
 
 
-class TestCommon(SavepointCase, TestMixin):
+class TestCommon(TransactionCase, TestMixin):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()

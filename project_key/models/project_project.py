@@ -13,7 +13,7 @@ class Project(models.Model):
         comodel_name="ir.sequence", string="Key Sequence", ondelete="restrict"
     )
 
-    key = fields.Char(string="Key", size=10, required=False, index=True, copy=False)
+    key = fields.Char(size=10, required=False, index=True, copy=False)
 
     _sql_constraints = [
         ("project_key_unique", "UNIQUE(key)", "Project key must be unique")
