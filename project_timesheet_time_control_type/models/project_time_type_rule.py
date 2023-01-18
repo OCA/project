@@ -28,9 +28,7 @@ class ProjectTimeTypeRule(models.Model):
     # user_id = fields.Many2one(
     #    comodel_name="res.users"
     # )
-    employee_id = fields.Many2one(
-        comodel_name="hr.employee", domain="[('department_id','=',department_id)]"
-    )
+    employee_id = fields.Many2one(comodel_name="hr.employee")
     department_id = fields.Many2one(comodel_name="hr.department")
 
     project_id = fields.Many2one(comodel_name="project.project")

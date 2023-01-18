@@ -24,6 +24,9 @@ class TestProjectTimesheetTimetype(TestCommonTimesheet):
         self.timetype3 = self.env["project.time.type"].create({"name": "timetype3"})
         self.timetype4 = self.env["project.time.type"].create({"name": "timetype4"})
 
+        self.department1 = self.env["hr.department"].create({"name": "Department1"})
+        self.empl_employee.department_id = self.department1
+
         # Default rules
         self.timetype_rule_1 = self.env["project.time.type.rule"].create(
             {
@@ -32,7 +35,7 @@ class TestProjectTimesheetTimetype(TestCommonTimesheet):
             }
         )
 
-    def test_rules(self):
+    def test_rules_precedence(self):
         """Rule precedence: employee, department, project, project_type"""
 
         Timesheet = self.env["account.analytic.line"]
@@ -51,28 +54,38 @@ class TestProjectTimesheetTimetype(TestCommonTimesheet):
                 "project_id": self.project_customer.id,
                 "task_id": self.task1.id,
                 "name": "my first timesheet",
-                "unit_amount": 2,
+                "unit_amount": 11,
             }
         )
         self.assertEqual(timesheet1.time_type_id, self.timetype1)
-        # Project rule has precedence
+
         self.timetype_rule_2 = self.env["project.time.type.rule"].create(
             {"project_id": self.project_customer.id, "time_type_id": self.timetype2.id}
         )
+        # Project rule has precedence
         timesheet2 = Timesheet.with_user(self.user_manager).create(
             {
                 "project_id": self.project_customer.id,
                 "task_id": self.task1.id,
                 "name": "my Second timesheet",
-                "unit_amount": 3,
+                "unit_amount": 12,
             }
         )
         self.assertEqual(timesheet2.time_type_id, self.timetype2)
 
         # department has precedence
-        # self.timetype_rule_3 = self.env["project.time.type.rule"].create(
-        #    {"department_id": self.emp_employee.id, "time_type_id": self.timetype2.id}
-        # )
+        self.timetype_rule_3 = self.env["project.time.type.rule"].create(
+            {"department_id": self.department1.id, "time_type_id": self.timetype3.id}
+        )
+        timesheet3 = Timesheet.with_user(self.user_employee).create(
+            {
+                "project_id": self.project_customer.id,
+                "task_id": self.task1.id,
+                "name": "my timesheet as user_employee.department_id",
+                "unit_amount": 13,
+            }
+        )
+        self.assertEqual(timesheet3.time_type_id, self.timetype3)
 
         # user has precedence
         self.timetype_rule_4 = self.env["project.time.type.rule"].create(
@@ -83,7 +96,23 @@ class TestProjectTimesheetTimetype(TestCommonTimesheet):
                 "project_id": self.project_customer.id,
                 "task_id": self.task1.id,
                 "name": "my timesheet as user_employee",
-                "unit_amount": 5,
+                "unit_amount": 14,
             }
         )
         self.assertEqual(timesheet4.time_type_id, self.timetype4)
+
+    def test_rules_default_user(self):
+        Timesheet = self.env["account.analytic.line"]
+        # Default employee
+        timesheet5 = Timesheet.with_context(
+            default_employee_id=self.empl_employee2.id
+        ).create(
+            {
+                "project_id": self.project_customer.id,
+                "task_id": self.task1.id,
+                "name": "my timesheet as default user_employee2",
+                "unit_amount": 15,
+            }
+        )
+        # Stage time type? Project precedence?
+        self.assertEqual(timesheet5.time_type_id, self.timetype1)
