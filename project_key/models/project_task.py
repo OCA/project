@@ -10,7 +10,7 @@ TASK_URL = "/web#id=%s&view_type=form&model=project.task&action=%s"
 class Task(models.Model):
     _inherit = "project.task"
 
-    key = fields.Char(string="key", size=20, required=False, index=True)
+    key = fields.Char(size=20, required=False, index=True)
 
     url = fields.Char(string="URL", compute="_compute_task_url")
 
