@@ -79,7 +79,7 @@
                 <field name="key" />
             </field>
             <xpath
-                expr="//t[@t-name='kanban-box']//field[@name='name']/parent::strong"
+                expr="//t[@t-name='kanban-box']//field[@name='name']/parent::s/parent::strong"
                 position="before"
             >
                 <a t-att-href="record.url.raw_value">
