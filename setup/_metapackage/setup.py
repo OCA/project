@@ -13,6 +13,7 @@ setuptools.setup(
         'odoo-addon-project_role>=16.0dev,<16.1dev',
         'odoo-addon-project_task_add_very_high>=16.0dev,<16.1dev',
         'odoo-addon-project_task_default_stage>=16.0dev,<16.1dev',
+        'odoo-addon-project_task_personal_stage_auto_fold>=16.0dev,<16.1dev',
         'odoo-addon-project_template>=16.0dev,<16.1dev',
         'odoo-addon-project_type>=16.0dev,<16.1dev',
     ],
