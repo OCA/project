@@ -49,3 +49,6 @@ class TestTask(TestCommon):
     def test_07_name_search_empty(self):
         tasks = self.Task.name_search("")
         self.assertGreater(len(tasks), 0)
+
+    def test_08_create_new_company(self):
+        self.env["res.company"].create({"name": "New company"})
