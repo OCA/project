@@ -39,10 +39,10 @@ class ProjectTask(models.Model):
         "category.",
     )
 
-    @api.depends("user_id", "company_id")
+    @api.depends("user_ids", "company_id")
     def _compute_employee_id(self):
-        for task in self.filtered("user_id"):
-            task.employee_id = task.user_id.employee_ids.filtered(
+        for task in self.filtered("user_ids"):
+            task.employee_id = task.user_ids.employee_ids.filtered(
                 lambda x: x.company_id == task.company_id
             )[:1]
 
@@ -67,10 +67,10 @@ class ProjectTask(models.Model):
                 ]
             task.allowed_assigned_user_ids = user_obj.search(domain)
 
-    @api.constrains("hr_category_ids", "user_id")
+    @api.constrains("hr_category_ids", "user_ids")
     def _check_employee_category_user(self):
         """Check user's employee belong to the selected category."""
-        for task in self.filtered(lambda x: x.hr_category_ids and x.user_id):
+        for task in self.filtered(lambda x: x.hr_category_ids and x.user_ids):
             if any(
                 x not in task.employee_id.category_ids for x in task.hr_category_ids
             ):
