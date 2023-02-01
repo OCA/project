@@ -8,10 +8,10 @@ from odoo import _, api, exceptions, fields, models
 class ProjectTask(models.Model):
     _inherit = "project.task"
 
-    employee_id = fields.Many2one(
+    employee_ids = fields.Many2many(
         comodel_name="hr.employee",
         string="Linked employee",
-        compute="_compute_employee_id",
+        compute="_compute_employee_ids",
         store=True,
     )
     hr_category_ids = fields.Many2many(
@@ -39,12 +39,12 @@ class ProjectTask(models.Model):
         "category.",
     )
 
-    @api.depends("user_id", "company_id")
-    def _compute_employee_id(self):
-        for task in self.filtered("user_id"):
-            task.employee_id = task.user_id.employee_ids.filtered(
+    @api.depends("user_ids", "company_id")
+    def _compute_employee_ids(self):
+        for task in self.filtered("user_ids"):
+            task.employee_ids = task.user_ids.employee_ids.filtered(
                 lambda x: x.company_id == task.company_id
-            )[:1]
+            )
 
     @api.depends("project_id", "project_id.hr_category_ids")
     def _compute_allowed_hr_category_ids(self):
@@ -67,12 +67,12 @@ class ProjectTask(models.Model):
                 ]
             task.allowed_assigned_user_ids = user_obj.search(domain)
 
-    @api.constrains("hr_category_ids", "user_id")
+    @api.constrains("hr_category_ids", "user_ids")
     def _check_employee_category_user(self):
         """Check user's employee belong to the selected category."""
-        for task in self.filtered(lambda x: x.hr_category_ids and x.user_id):
+        for task in self.filtered(lambda x: x.hr_category_ids and x.user_ids):
             if any(
-                x not in task.employee_id.category_ids for x in task.hr_category_ids
+                x not in task.employee_ids.category_ids for x in task.hr_category_ids
             ):
                 raise exceptions.ValidationError(
                     _(

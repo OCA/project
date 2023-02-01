@@ -64,7 +64,7 @@ msgstr ""
 "que pertenezcan a la categoría."
 
 #. module: project_hr
-#: model:ir.model.fields,field_description:project_hr.field_project_task__employee_id
+#: model:ir.model.fields,field_description:project_hr.field_project_task__employee_ids
 msgid "Linked employee"
 msgstr "Empleado relacionado"
 

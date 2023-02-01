@@ -59,7 +59,7 @@ msgid ""
 msgstr ""
 
 #. module: project_hr
-#: model:ir.model.fields,field_description:project_hr.field_project_task__employee_id
+#: model:ir.model.fields,field_description:project_hr.field_project_task__employee_ids
 msgid "Linked employee"
 msgstr ""
 
