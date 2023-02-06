@@ -24,6 +24,7 @@ addon | version | maintainers | summary
 [project_department](project_department/) | 16.0.1.0.0 |  | Project Department Categorization
 [project_list](project_list/) | 16.0.1.0.0 |  | Projects list view
 [project_role](project_role/) | 16.0.1.0.0 | [![alexey-pelykh](https://github.com/alexey-pelykh.png?size=30px)](https://github.com/alexey-pelykh) | Project role-based roster
+[project_stock](project_stock/) | 16.0.1.0.0 | [![victoralmau](https://github.com/victoralmau.png?size=30px)](https://github.com/victoralmau) | Project Stock
 [project_task_add_very_high](project_task_add_very_high/) | 16.0.1.0.0 | [![astirpe](https://github.com/astirpe.png?size=30px)](https://github.com/astirpe) | Adds extra options 'High' and 'Very High' on tasks
 [project_task_default_stage](project_task_default_stage/) | 16.0.1.0.0 |  | Recovery default task stages for projects from v8
 [project_task_personal_stage_auto_fold](project_task_personal_stage_auto_fold/) | 16.0.1.0.0 |  | Moves task to the first fold personal stage when done
