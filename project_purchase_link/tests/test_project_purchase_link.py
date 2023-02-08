@@ -1,21 +1,33 @@
 # Copyright 2019 Oihane Crucelaegui - AvanzOSC
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
-# from odoo.osv import expression
+from odoo.osv import expression
 from odoo.tests import common
+from odoo.tools.safe_eval import safe_eval
 
-# from odoo.tools.safe_eval import safe_eval
 
-
-class TestProjectPurchaseUtilities(common.SavepointCase):
+class TestProjectPurchaseUtilities(common.TransactionCase):
     @classmethod
     def setUpClass(cls):
-        super(TestProjectPurchaseUtilities, cls).setUpClass()
+        super().setUpClass()
+        cls.env = cls.env(context=dict(cls.env.context, tracking_disable=True))
         cls.project_model = cls.env["project.project"]
         cls.project = cls.project_model.create({"name": "Test Project"})
         cls.purchase_model = cls.env["purchase.order"]
-        cls.purchase = cls.purchase_model.search(
-            [("state", "in", ("draft", "sent")), ("order_line", "!=", False)], limit=1
+        cls.partner = cls.env.ref("base.res_partner_2")
+        cls.product = cls.env["product.product"].create(
+            {
+                "name": "Product Product 4",
+                "standard_price": 500.0,
+                "list_price": 750.0,
+                "type": "consu",
+                "categ_id": cls.env.ref("product.product_category_all").id,
+            }
+        )
+        cls.purchase = cls.purchase_model.create(
+            {
+                "partner_id": cls.partner.id,
+            }
         )
         cls.invoice_model = cls.env["account.move"]
         cls.invoice_line_model = cls.env["account.move.line"]
@@ -27,15 +39,30 @@ class TestProjectPurchaseUtilities(common.SavepointCase):
         self.assertFalse(self.project.purchase_line_total)
         self.assertFalse(self.project.purchase_invoice_count)
         self.assertFalse(self.project.purchase_invoice_line_total)
-        self.purchase.order_line[:1].write(
+        self.purchase.write(
             {
-                "account_analytic_id": self.project.analytic_account_id.id,
-                "price_unit": 50,
-                "product_qty": 4,
-                "qty_received": 4,
+                "order_line": [
+                    (
+                        0,
+                        0,
+                        {
+                            "name": "Test line",
+                            "analytic_distribution": {
+                                self.project.analytic_account_id.id: 100
+                            },
+                            "price_unit": 50,
+                            "product_qty": 4,
+                            "qty_received": 4,
+                            "product_uom": self.product.uom_id.id,
+                            "product_id": self.product.id,
+                        },
+                    )
+                ]
             }
         )
-        self.project.invalidate_cache()
+
+        self.env.invalidate_all()
+
         self.assertEqual(self.project.purchase_count, 1)
         self.assertEqual(self.project.purchase_line_total, 200)
         self.assertFalse(self.project.purchase_invoice_count)
@@ -45,6 +72,7 @@ class TestProjectPurchaseUtilities(common.SavepointCase):
             {
                 "partner_id": self.purchase.partner_id.id,
                 "purchase_id": self.purchase.id,
+                "move_type": "in_invoice",
             }
         )
         for line in self.purchase.order_line:
@@ -54,33 +82,30 @@ class TestProjectPurchaseUtilities(common.SavepointCase):
                 "move_id": invoice.id,
                 "name": line.name,
                 "account_id": account_id,
-                "analytic_account_id": line.account_analytic_id.id,
+                "analytic_distribution": line.analytic_distribution,
             }
             self.invoice_line_model.create(vals)
-        self.project.invalidate_cache()
+        self.env.invalidate_all()
         self.assertEqual(self.project.purchase_invoice_count, 1)
-        purchase_domain = [
-            (
-                "account_analytic_id",
-                "in",
-                self.project.mapped("analytic_account_id").ids,
-            )
-        ]
+
+        purchase_domain = self.project._domain_purchase_order_line()
+
         lines = self.env["purchase.order.line"].search(purchase_domain)
         order_domain = [("id", "in", lines.mapped("order_id").ids)]
         purchase_dict = self.project.button_open_purchase_order()
         self.assertEqual(purchase_dict.get("domain"), order_domain)
         purchase_line_dict = self.project.button_open_purchase_order_line()
         self.assertEqual(purchase_line_dict.get("domain"), purchase_domain)
-        invoice_domain = [("id", "in", [invoice.id])]  # only one test invoice (line)
+
+        action = self.env.ref("account.action_move_in_invoice_type")
+        invoice_domain = expression.AND(
+            [safe_eval(action.domain or "[]"), self.project._domain_purchase_invoice()]
+        )  # only one test invoice (line)
+
         invoice_dict = self.project.button_open_purchase_invoice()
         self.assertEqual(invoice_dict.get("domain"), invoice_domain)
-        invoice_line_domain = [
-            (
-                "analytic_account_id",
-                "in",
-                [self.project.analytic_account_id.id],  # one test invoice (line)
-            )
-        ]
+
+        invoice_line_domain = self.project._domain_purchase_invoice_line()
+
         invoice_line_dict = self.project.button_open_purchase_invoice_line()
         self.assertEqual(invoice_line_dict.get("domain"), invoice_line_domain)
