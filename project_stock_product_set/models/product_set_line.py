@@ -8,7 +8,8 @@ class ProductSetLine(models.Model):
 
     def _prepare_stock_move_values(self, task, quantity):
         self.ensure_one()
-        values = {
+        return {
+            "name": self.product_id.display_name,
             "product_id": self.product_id.id,
             "product_uom_qty": self.quantity * quantity,
             "product_uom": self.product_id.uom_id.id,
@@ -22,9 +23,3 @@ class ProductSetLine(models.Model):
             "picking_type_id": task.picking_type_id.id
             or task.project_id.picking_type_id.id,
         }
-        values.update(self.env["stock.move"].play_onchanges(values, values.keys()))
-        # We need to remove product_qty to prevent error
-        # The requested operation cannot be processed because of a programming error
-        # setting the `product_qty` field instead of the `product_uom_qty`.
-        del values["product_qty"]
-        return values
