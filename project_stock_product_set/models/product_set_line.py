@@ -19,5 +19,6 @@ class ProductSetLine(models.Model):
             ),
             "state": "draft",
             "raw_material_task_id": task.id,
-            "picking_type_id": task.picking_type_id.id,
+            "picking_type_id": task.picking_type_id.id
+            or task.project_id.picking_type_id.id,
         }
