@@ -9,6 +9,7 @@ class ProductSetLine(models.Model):
     def prepare_stock_move_values(self, task, quantity):
         self.ensure_one()
         return {
+            "name": self.product_id.display_name,
             "product_id": self.product_id.id,
             "product_uom_qty": self.quantity * quantity,
             "product_uom": self.product_id.uom_id.id,
@@ -19,5 +20,6 @@ class ProductSetLine(models.Model):
             ),
             "state": "draft",
             "raw_material_task_id": task.id,
-            "picking_type_id": task.picking_type_id.id,
+            "picking_type_id": task.picking_type_id.id
+            or task.project_id.picking_type_id.id,
         }

@@ -1,7 +1,7 @@
-# Copyright 2022 Tecnativa - Víctor Martínez
+# Copyright 2022-2023 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
-
 from odoo.tests import Form
+from odoo.tests.common import users
 
 from odoo.addons.project_stock.tests.common import TestProjectStockBase
 
@@ -21,6 +21,7 @@ class TestProjectStockProductSet(TestProjectStockBase):
             }
         )
 
+    @users("project-task-user")
     def test_wizard_product_set_add(self):
         self.assertFalse(self.task.move_ids)
         wizard_form = Form(
