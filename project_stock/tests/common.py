@@ -1,8 +1,6 @@
-# Copyright 2022 Tecnativa - Víctor Martínez
+# Copyright 2022-2023 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
-
-from odoo.tests import Form, common
-from odoo.tests.common import new_test_user
+from odoo.tests import Form, common, new_test_user
 
 
 class TestProjectStockBase(common.TransactionCase):
@@ -66,6 +64,18 @@ class TestProjectStockBase(common.TransactionCase):
             login="manager-user",
             groups="project.group_project_manager,%s,analytic.group_analytic_accounting"
             % group_stock_user,
+            context=ctx,
+        )
+        ctx = {
+            "mail_create_nolog": True,
+            "mail_create_nosubscribe": True,
+            "mail_notrack": True,
+            "no_reset_password": True,
+        }
+        new_test_user(
+            cls.env,
+            login="project-task-user",
+            groups="project.group_project_user,stock.group_stock_user",
             context=ctx,
         )
 
