@@ -1,4 +1,4 @@
-# Copyright 2022 Tecnativa - Víctor Martínez
+# Copyright 2022-2023 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 from odoo import fields, models
 
@@ -28,14 +28,7 @@ class ProductSetAddFromTask(models.TransientModel):
 
     def prepare_stock_move_data(self, set_line):
         self.ensure_one()
-        line_values = set_line.prepare_stock_move_values(self.task_id, self.quantity)
-        sm_model = self.env["stock.move"]
-        line_values.update(sm_model.play_onchanges(line_values, line_values.keys()))
-        # We need to remove product_qty to prevent error
-        # The requested operation cannot be processed because of a programming error
-        # setting the `product_qty` field instead of the `product_uom_qty`.
-        del line_values["product_qty"]
-        return line_values
+        return set_line.prepare_stock_move_values(self.task_id, self.quantity)
 
     def add_set(self):
         if not self.task_id:

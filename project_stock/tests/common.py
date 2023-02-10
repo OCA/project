@@ -1,7 +1,6 @@
-# Copyright 2022 Tecnativa - Víctor Martínez
+# Copyright 2022-2023 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
-
-from odoo.tests import Form, common
+from odoo.tests import Form, common, new_test_user
 
 
 class TestProjectStockBase(common.SavepointCase):
@@ -72,6 +71,18 @@ class TestProjectStockBase(common.SavepointCase):
         )
         cls.stage_done = cls.env["project.task.type"].create(
             {"name": "Done", "done_stock_moves": True}
+        )
+        ctx = {
+            "mail_create_nolog": True,
+            "mail_create_nosubscribe": True,
+            "mail_notrack": True,
+            "no_reset_password": True,
+        }
+        new_test_user(
+            cls.env,
+            login="project-task-user",
+            groups="project.group_project_user,stock.group_stock_user",
+            context=ctx,
         )
 
     def _prepare_context_task(self):
