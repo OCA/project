@@ -10,6 +10,7 @@ class ProjectTemplate(models.Model):
     _inherit = "project.project"
 
     def create_project_from_template(self):
+        self.ensure_one()
         res = super().create_project_from_template()
         project = self.env["project.project"].browse(res["res_id"])
         # LINK THE NEWLY CREATED TASKS TO THE NEWLY CREATED MILESTONES
