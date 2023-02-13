@@ -12,7 +12,7 @@
     ],
     "author": "AvanzOSC, "
               'Odoo Community Association (OCA)',
-    "website": "http://github.com/OCA/project.git",
+    "website": "https://github.com/OCA/project",
     "category": "Project",
     "data": [
         "views/project_project_view.xml",
