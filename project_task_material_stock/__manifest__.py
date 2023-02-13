@@ -10,7 +10,7 @@
                "record products spent in a Task",
     "version": "12.0.1.2.0",
     "category": "Project Management",
-    "website": "https://github.com/OCA/project/",
+    "website": "https://github.com/OCA/project",
     "author": "Tecnativa, "
               "Odoo Community Association (OCA)",
     "license": "AGPL-3",
