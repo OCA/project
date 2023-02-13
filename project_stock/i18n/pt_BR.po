@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-01-12 03:29+0000\n"
-"Last-Translator: Marcel Savegnago <marcel.savegnago@gmail.com>\n"
+"PO-Revision-Date: 2023-02-13 21:22+0000\n"
+"Last-Translator: Douglas Custódio <douglascstd@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
@@ -191,7 +191,7 @@ msgstr "Conta Analítica do Movimento"
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_task__stock_analytic_tag_ids
 msgid "Move Analytic Tags"
-msgstr "Tag Analítica do Movimento"
+msgstr "Etiquetas Analíticas do Movimento"
 
 #. module: project_stock
 #: model:ir.model.fields,help:project_stock.field_project_task__stock_analytic_account_id
