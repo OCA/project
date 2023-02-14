@@ -3,7 +3,7 @@
 from openupgradelib import openupgrade
 
 _field_renames = [
-    ('project.project', 'project_project', 'c_wbs_code', 'complete_wbs_code'),
+    ("project.project", "project_project", "c_wbs_code", "complete_wbs_code"),
 ]
 
 
