@@ -13,7 +13,6 @@ class AccountAnalyticAccount(models.Model):
     _inherit = "account.analytic.account"
     _order = "complete_wbs_code"
 
-    @api.multi
     def get_child_accounts(self):
         result = {}
         if not self.ids:
@@ -37,11 +36,10 @@ class AccountAnalyticAccount(models.Model):
             (tuple(self.ids),),
         )
         res = self.env.cr.fetchall()
-        for x, y in res:
+        for _x, y in res:
             result[y] = True
         return result
 
-    @api.multi
     def write(self, vals):
         res = super(AccountAnalyticAccount, self).write(vals)
         if vals.get("parent_id"):
@@ -55,7 +53,6 @@ class AccountAnalyticAccount(models.Model):
                 ).write({"active": account.active})
         return res
 
-    @api.multi
     @api.depends("code")
     def _complete_wbs_code_calc(self):
         for account in self:
@@ -74,7 +71,6 @@ class AccountAnalyticAccount(models.Model):
                 data = "[" + data + "]"
             account.complete_wbs_code = data or ""
 
-    @api.multi
     @api.depends("name")
     def _complete_wbs_name_calc(self):
         for account in self:
@@ -91,7 +87,6 @@ class AccountAnalyticAccount(models.Model):
                     data = data[0]
             account.complete_wbs_name = data or ""
 
-    @api.multi
     def _wbs_indent_calc(self):
         for account in self:
             data = []
@@ -108,7 +103,6 @@ class AccountAnalyticAccount(models.Model):
                     data = data[0]
             account.wbs_indent = data or ""
 
-    @api.multi
     @api.depends("account_class", "parent_id")
     def _compute_project_analytic_id(self):
         for analytic in self:
@@ -164,10 +158,10 @@ class AccountAnalyticAccount(models.Model):
     user_id = fields.Many2one(
         "res.users",
         "Project Manager",
-        track_visibility="onchange",
+        tracking=True,
         default=_default_user,
     )
-    manager_id = fields.Many2one("res.users", "Manager", track_visibility="onchange")
+    manager_id = fields.Many2one("res.users", "Manager", tracking=True)
 
     account_class = fields.Selection(
         [
@@ -186,7 +180,6 @@ class AccountAnalyticAccount(models.Model):
     )
     partner_id = fields.Many2one(default=_default_partner)
 
-    @api.multi
     def copy(self, default=None):
         if self.mapped("project_ids"):
             raise ValidationError(
@@ -198,7 +191,6 @@ class AccountAnalyticAccount(models.Model):
         )
         return super(AccountAnalyticAccount, self).copy(default)
 
-    @api.multi
     @api.depends("code")
     def code_get(self):
         res = []
@@ -216,7 +208,6 @@ class AccountAnalyticAccount(models.Model):
             res.append((account.id, data))
         return res
 
-    @api.multi
     @api.depends("name")
     def name_get(self):
         res = []
