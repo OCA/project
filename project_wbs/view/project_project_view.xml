@@ -14,12 +14,12 @@
             </xpath>
             <xpath expr="//div[hasclass('o_primary')]" position="inside">
                 <a type="object" name="action_open_view_project_form">
-                <div class="oe_wbs_subtitle">
-                    <div class="parentheading">
-                        <field name="account_class" />
-                        <field name="complete_wbs_code" />
+                    <div class="oe_wbs_subtitle">
+                        <div class="parentheading">
+                            <field name="account_class" />
+                            <field name="complete_wbs_code" />
+                        </div>
                     </div>
-                </div>
                 </a>
                 <div
                     class="oe_nav_buttons"
@@ -27,13 +27,15 @@
                     attrs="{'invisible': [('parent_id', '=', False)]}"
                 >
                     <a name="action_open_parent_kanban_view" type="object">
-                        <!--GO UP-->
+                        <!--GO
+                        UP-->
                         <div class="oe_wbs_navigation">
-                            <div class="oe_tag">
-                                (Parent: <field name="parent_id" />)
-                            </div>
+                            <div class="oe_tag"> (Parent: <field
+                                    name="parent_id"
+                                />) </div>
                             <div
                                 class="fa fa-level-up text-center parentheading oe_kanban_action_a"
+                                title="Go Up"
                             />
                         </div>
                     </a>
@@ -41,31 +43,28 @@
                 <hr />
                 <div class="oe_nav_buttons" name="wbs_navigation_down">
                     <a name="action_open_child_kanban_view" type="object">
-                        <!--GO DOWN-->
-                            <field
-                            name="has_project_child_complete_ids"
-                            invisible="1"
-                        />
-                            <div
+                        <!--GO
+                        DOWN-->
+                        <field name="has_project_child_complete_ids" invisible="1" />
+                        <div
                             class="oe_wbs_navigation parentheading oe_kanban_action_a"
                             t-if="record.has_project_child_complete_ids.raw_value"
-                        >
-                                    WBS Elements:
-                                    <field name="project_child_complete_ids" />
-                            </div>
-                            <t
+                        > WBS Elements: <field name="project_child_complete_ids" />
+                        </div>
+                        <t
                             t-foreach="record.project_child_complete_ids.raw_value"
                             t-as='child'
                         >
-                                <t t-esc="child.complete_name" />
-                            </t>
+                            <t t-esc="child.complete_name" />
+                        </t>
                     </a>
                 </div>
             </xpath>
         </field>
     </record>
 
-    <!--TREE VIEW-->
+    <!--TREE
+    VIEW-->
     <record id="view_project" model="ir.ui.view">
         <field name="name">project.project.tree</field>
         <field name="model">project.project</field>
@@ -84,19 +83,19 @@
                 <field name="complete_wbs_code" string="Code" />
                 <field name="wbs_indent" />
                 <button
-                    string="Parent WBS element"
+                    title="Parent WBS element"
                     name="action_open_parent_tree_view"
                     type="object"
                     icon="fa-arrow-up"
                 />
                 <button
-                    string="Child WBS elements"
+                    title="Child WBS elements"
                     name="action_open_child_tree_view"
                     type="object"
                     icon="fa-arrow-down"
                 />
                 <button
-                    string="Project Form View"
+                    title="Project Form View"
                     name="action_open_view_project_form"
                     type="object"
                     icon="fa-pencil-square-o"
@@ -117,7 +116,8 @@
         </field>
     </record>
 
-    <!--FILTER VIEW-->
+    <!--FILTER
+    VIEW-->
     <record id="view_project_project_filter" model="ir.ui.view">
         <field name="name">project.project.select</field>
         <field name="model">project.project</field>
@@ -135,7 +135,8 @@
         </field>
     </record>
 
-    <!--FILTER group by-->
+    <!--FILTER
+    group by-->
     <record id="view_project_project_group_filter" model="ir.ui.view">
         <field name="name">project.project.group</field>
         <field name="model">project.project</field>
@@ -156,17 +157,18 @@
         </field>
     </record>
 
-    <!--FORM VIEW ACTION-->
+    <!--FORM
+    VIEW ACTION-->
     <record id="create_wbs_element" model="ir.actions.act_window">
         <field name="name">WBS elements</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">project.project</field>
-        <field name="view_type">form</field>
         <field name="view_mode">form</field>
         <field name="target">current</field>
     </record>
 
-    <!--FORM VIEW-->
+    <!--FORM
+    VIEW-->
     <record id="edit_project" model="ir.ui.view">
         <field name="name">project.project.form</field>
         <field name="model">project.project</field>
@@ -191,11 +193,8 @@
                 <attribute name="required">0</attribute>
                 <attribute name="readonly">1</attribute>
             </field>
-            <field name="sequence" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </field>
 
-            <field name="sequence" position="after">
+            <xpath expr="//page[@name='settings']/group/group[2]" position="inside">
                 <field
                     name="account_class"
                     string="Class"
@@ -217,7 +216,7 @@
                     readonly="1"
                     invisible="context.get('default_parent_id', False)"
                 />
-            </field>
+            </xpath>
 
             <notebook position="inside">
                 <page string="Work Breakdown Structure" name="wbs">
@@ -243,11 +242,11 @@
     </record>
 
     <!--ACTIONS-->
-    <!--OPEN wbs overview-->
+    <!--OPEN
+    wbs overview-->
     <record id="open_view_wbs_tree" model="ir.actions.act_window">
         <field name="name">WBS overview</field>
         <field name="res_model">project.project</field>
-        <field name="view_type">form</field>
         <field name="view_mode">kanban,tree,form</field>
         <field name="view_id" ref="project.view_project" />
         <field name="search_view_id" ref="project.view_project_project_filter" />
@@ -255,15 +254,15 @@
             {'search_default_current': 1,
             'default_account_class': False,
             'group_by': [
-                'project_analytic_id'
+            'project_analytic_id'
             ]}
         </field>
     </record>
-    <!--OPEN KANBAN ACTION BUTTON-->
+    <!--OPEN
+    KANBAN ACTION BUTTON-->
     <record id="open_view_wbs_kanban" model="ir.actions.act_window">
         <field name="name">WBS elements</field>
         <field name="res_model">project.project</field>
-        <field name="view_type">form</field>
         <field name="view_mode">kanban,tree,form</field>
         <field name="view_id" ref="project.view_project_kanban" />
         <field name="search_view_id" ref="project.view_project_project_filter" />
@@ -271,11 +270,11 @@
         <field name="domain">[]</field>
     </record>
 
-    <!--MENU ACTION OPEN FULL WBS-->
+    <!--MENU
+    ACTION OPEN FULL WBS-->
     <record id="open_view_project_wbs" model="ir.actions.act_window">
         <field name="name">WBS elements</field>
         <field name="res_model">project.project</field>
-        <field name="view_type">form</field>
         <field name="domain">[]</field>
         <field name="view_mode">tree,form</field>
         <field name="view_id" ref="project.view_project" />
@@ -283,36 +282,36 @@
         <field name="context">{'search_default_current': 1}</field>
         <field name="help" type="html">
             <p class="oe_view_nocontent_create">
-              Click to start a new project.
-            </p><p>
-              Projects are used to organize your activities; plan
-              tasks, track issues, invoice timesheets. You can define
-              internal projects (R&amp;D, Improve Sales Process),
-              private projects (My Todos) or customer ones.
-            </p><p>
-              You will be able collaborate with internal users on
-              projects or invite customers to share your activities.
+                Click to start a new project.
+            </p>
+            <p>
+                Projects are used to organize your activities; plan
+                tasks, track issues, invoice timesheets. You can define
+                internal projects (R&amp;D, Improve Sales Process),
+                private projects (My Todos) or customer ones.
+            </p>
+            <p>
+                You will be able collaborate with internal users on
+                projects or invite customers to share your activities.
             </p>
         </field>
     </record>
 
     <record id="group_project" model="ir.actions.act_window">
-       <field name="name">Projects</field>
-       <field name="res_model">project.project</field>
-       <field name="view_type">form</field>
-       <field name="domain">[('account_class','in',['project'])]</field>
-       <field name="view_mode">kanban,tree,form</field>
-       <field name="view_id" ref="project.view_project" />
-       <field name="search_view_id" ref="project.view_project_project_filter" />
-       <field
+        <field name="name">Projects</field>
+        <field name="res_model">project.project</field>
+        <field name="domain">[('account_class','in',['project'])]</field>
+        <field name="view_mode">kanban,tree,form</field>
+        <field name="view_id" ref="project.view_project" />
+        <field name="search_view_id" ref="project.view_project_project_filter" />
+        <field
             name="context"
         >{'search_default_current': 1, 'default_account_class':'project'}</field>
     </record>
 
     <record id="open_view_project_phases" model="ir.actions.act_window">
-       <field name="name">Phases</field>
+        <field name="name">Phases</field>
         <field name="res_model">project.project</field>
-        <field name="view_type">form</field>
         <field name="domain">
             [('account_class','in',['phase'])]
         </field>
@@ -325,9 +324,8 @@
     </record>
 
     <record id="open_view_project_deliverables" model="ir.actions.act_window">
-       <field name="name">Deliverables</field>
+        <field name="name">Deliverables</field>
         <field name="res_model">project.project</field>
-        <field name="view_type">form</field>
         <field name="domain">
             [('account_class','in',['deliverable'])]
         </field>
@@ -340,9 +338,8 @@
     </record>
 
     <record id="open_view_project_work_packages" model="ir.actions.act_window">
-       <field name="name">Work Packages</field>
+        <field name="name">Work Packages</field>
         <field name="res_model">project.project</field>
-        <field name="view_type">form</field>
         <field name="domain">
             [('account_class','in',['work_package'])]
         </field>
@@ -357,7 +354,6 @@
     <record id="open_view_project_form" model="ir.actions.act_window">
         <field name="name">Edit project</field>
         <field name="res_model">project.project</field>
-        <field name="view_type">form</field>
         <field name="view_mode">form,tree,kanban</field>
         <field name="view_id" ref="project.edit_project" />
         <field name="search_view_id" ref="project.view_project_project_filter" />

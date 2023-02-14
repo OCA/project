@@ -21,7 +21,6 @@ class Project(models.Model):
         index=True,
     )
 
-    @api.multi
     def _get_project_analytic_wbs(self):
         result = {}
         self.env.cr.execute(
@@ -52,7 +51,6 @@ class Project(models.Model):
 
         return result
 
-    @api.multi
     def _get_project_wbs(self):
         result = []
         projects_data = self._get_project_analytic_wbs()
@@ -60,7 +58,6 @@ class Project(models.Model):
             result.extend(ppid.keys())
         return result
 
-    @api.multi
     @api.depends("name")
     def name_get(self):
         res = []
@@ -87,7 +84,6 @@ class Project(models.Model):
             res.append((project_item.id, data))
         return res
 
-    @api.multi
     @api.depends("analytic_account_id.code")
     def code_get(self):
         res = []
@@ -112,22 +108,22 @@ class Project(models.Model):
             res.append((project_item.id, data))
         return res
 
-    @api.multi
     @api.depends("analytic_account_id.parent_id")
     def _compute_child(self):
         for project_item in self:
-            child_ids = self.env["project.project"].search(
-                [
-                    (
-                        "analytic_account_id.parent_id",
-                        "=",
-                        project_item.analytic_account_id.id,
-                    )
-                ]
-            )
+            child_ids = False
+            if project_item.analytic_account_id:
+                child_ids = self.env["project.project"].search(
+                    [
+                        (
+                            "analytic_account_id.parent_id",
+                            "=",
+                            project_item.analytic_account_id.id,
+                        )
+                    ]
+                )
             project_item.project_child_complete_ids = child_ids
 
-    @api.multi
     @api.depends("project_child_complete_ids")
     def _compute_has_child(self):
         for project_item in self:
@@ -135,7 +131,6 @@ class Project(models.Model):
                 len(project_item.project_child_complete_ids.ids) > 0
             )
 
-    @api.multi
     def _resolve_analytic_account_id_from_context(self):
         """
         Returns ID of parent analytic account based on the value of
@@ -228,17 +223,18 @@ class Project(models.Model):
         if "analytic_account_id" not in vals:
             aa = self.env["account.analytic.account"].create(analytic_vals)
             vals.update({"analytic_account_id": aa.id})
+            if not vals.get("code"):
+                vals.update({"code": aa.code})
             vals = self.update_project_from_analytic_vals(vals)
         res = super(Project, self).create(vals)
-
         return res
 
     @api.model
-    def action_open_child_view(self, module, act_window):
+    def action_open_child_view(self, act_window):
         """
         :return dict: dictionary value for created view
         """
-        res = self.env["ir.actions.act_window"].for_xml_id(module, act_window)
+        res = self.env["ir.actions.act_window"]._for_xml_id(act_window)
         domain = []
         project_ids = []
         child_project_ids = self.env["project.project"].search(
@@ -257,17 +253,14 @@ class Project(models.Model):
         res.update({"display_name": self.name, "domain": domain, "nodestroy": False})
         return res
 
-    @api.multi
     def action_open_child_tree_view(self):
         self.ensure_one()
-        return self.action_open_child_view("project_wbs", "open_view_project_wbs")
+        return self.action_open_child_view("project_wbs.open_view_project_wbs")
 
-    @api.multi
     def action_open_child_kanban_view(self):
         self.ensure_one()
-        return self.action_open_child_view("project_wbs", "open_view_wbs_kanban")
+        return self.action_open_child_view("project_wbs.open_view_wbs_kanban")
 
-    @api.multi
     def action_open_parent_tree_view(self):
         """
         :return dict: dictionary value for created view
@@ -275,8 +268,8 @@ class Project(models.Model):
         self.ensure_one()
         domain = []
         analytic_account_ids = []
-        res = self.env["ir.actions.act_window"].for_xml_id(
-            "project_wbs", "open_view_project_wbs"
+        res = self.env["ir.actions.act_window"]._for_xml_id(
+            "project_wbs.open_view_project_wbs"
         )
         if self.analytic_account_id.parent_id:
             for parent_project_id in self.env["project.project"].search(
@@ -289,7 +282,6 @@ class Project(models.Model):
         res["display_name"] = self.name
         return res
 
-    @api.multi
     def write(self, vals):
         res = super(Project, self).write(vals)
         if "parent_id" in vals:
@@ -303,7 +295,6 @@ class Project(models.Model):
                 project.analytic_account_id.active = True
         return res
 
-    @api.multi
     def action_open_parent_kanban_view(self):
         """
         :return dict: dictionary value for created view
@@ -311,8 +302,8 @@ class Project(models.Model):
         self.ensure_one()
         domain = []
         analytic_account_ids = []
-        res = self.env["ir.actions.act_window"].for_xml_id(
-            "project_wbs", "open_view_wbs_kanban"
+        res = self.env["ir.actions.act_window"]._for_xml_id(
+            "project_wbs.open_view_wbs_kanban"
         )
         if self.analytic_account_id.parent_id:
             for parent_project_id in self.env["project.project"].search(
@@ -324,16 +315,13 @@ class Project(models.Model):
             res.update({"domain": domain, "nodestroy": False})
         return res
 
-    @api.multi
     @api.onchange("parent_id")
     def on_change_parent(self):
         self.analytic_account_id._onchange_parent_id()
 
-    @api.multi
     def action_open_view_project_form(self):
         view = {
             "name": _("Details"),
-            "view_type": "form",
             "view_mode": "form,tree,kanban",
             "res_model": "project.project",
             "view_id": False,
