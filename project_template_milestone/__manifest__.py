@@ -12,7 +12,7 @@
     'depends': [
         'project_template',
         'project_milestone',
-        ],
+    ],
     'application': False,
     'auto_install': True,
     'development_status': 'Beta',

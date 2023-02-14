@@ -13,7 +13,7 @@
               'Deneroteam, '
               'Eficent, '
               'Odoo Community Association (OCA)',
-    'website': 'https://www.github.com/OCA/project',
+    'website': 'https://github.com/OCA/project',
     'depends': [
         'account_analytic_parent',
         'account_analytic_sequence',
