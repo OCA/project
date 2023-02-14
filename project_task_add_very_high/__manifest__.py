@@ -4,7 +4,7 @@
 {
     "name": "Project Task Add Very High",
     "summary": "Adds extra options 'High' and 'Very High' on tasks",
-    "version": "12.0.1.0.1",
+    "version": "12.0.1.0.2",
     "development_status": "Production/Stable",
     "author": "Onestein, Odoo Community Association (OCA)",
     "maintainers": ["astirpe"],
