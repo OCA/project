@@ -232,7 +232,7 @@
                           }"
                         />
                     </group>
-                    <tree string="Work Breakdown Structure" editable="bottom">
+                    <tree editable="bottom">
                         <field name="project_child_complete_ids" nolabel="1" />
                     </tree>
                 </page>
