@@ -8,9 +8,14 @@
     "license": "AGPL-3",
     "website": "https://github.com/OCA/project",
     "category": "Project Management",
-    "version": "14.0.1.0.1",
+    "version": "15.0.1.0.0",
     "depends": ["project_timeline", "hr_timesheet"],
-    "data": ["templates/assets.xml", "views/project_task_view.xml"],
+    "data": ["views/project_task_view.xml"],
+    "assets": {
+        "web.assets_backend": [
+            "/project_timeline_hr_timesheet/static/src/scss/project_timeline_hr_timesheet.scss"
+        ]
+    },
     "installable": True,
     "auto_install": True,
 }
