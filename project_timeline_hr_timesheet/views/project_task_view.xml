@@ -7,7 +7,7 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project_timeline.project_task_timeline" />
         <field name="arch" type="xml">
-            <field name="user_id" position="after">
+            <field name="user_ids" position="after">
                 <field name="progress" />
                 <field name="remaining_hours" />
             </field>
