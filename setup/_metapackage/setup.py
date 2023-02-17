@@ -42,6 +42,7 @@ setuptools.setup(
         'odoo14-addon-project_timeline_task_dependency',
         'odoo14-addon-project_timesheet_time_control',
         'odoo14-addon-project_timesheet_time_control_sale',
+        'odoo14-addon-project_wbs',
     ],
     classifiers=[
         'Programming Language :: Python',
