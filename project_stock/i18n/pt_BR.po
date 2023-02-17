@@ -140,8 +140,8 @@ msgstr "ID"
 #: model:ir.model.fields,help:project_stock.field_project_task__done_stock_moves
 #: model:ir.model.fields,help:project_stock.field_project_task_type__done_stock_moves
 msgid ""
-"If you check this box, when a task is in this state, you will not be able to"
-" add more stock moves but they can be viewed."
+"If you check this box, when a task is in this state, you will not be able to "
+"add more stock moves but they can be viewed."
 msgstr ""
 "Se você marcar esta caixa, quando uma tarefa estiver nesta situação, você "
 "não poderá adicionar mais movimentos de estoque, mas eles podem ser vistos."
@@ -218,11 +218,6 @@ msgstr "Movimentos do Produto"
 #: model:ir.model,name:project_stock.model_stock_move_line
 msgid "Product Moves (Stock Move Line)"
 msgstr "Movimentos do Produto (Linha do Movimento de Estoque)"
-
-#. module: project_stock
-#: model:ir.model,name:project_stock.model_project_project
-msgid "Project"
-msgstr "Projeto"
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_account_analytic_line__stock_task_id
@@ -341,3 +336,11 @@ msgstr "Cancelar Reserva"
 #: model:ir.model.fields,field_description:project_stock.field_project_task_type__use_stock_moves
 msgid "Use Stock Moves"
 msgstr "Usar Movimentos de Estoque"
+
+#. module: project_stock
+#: model:ir.model,name:project_stock.model_project_project
+msgid "WBS element"
+msgstr ""
+
+#~ msgid "Project"
+#~ msgstr "Projeto"
