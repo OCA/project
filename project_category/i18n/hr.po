@@ -97,11 +97,6 @@ msgid "Parent Type"
 msgstr "Tip nadređenog"
 
 #. module: project_category
-#: model:ir.model,name:project_category.model_project_project
-msgid "Project"
-msgstr "Projekt"
-
-#. module: project_category
 #: model:ir.model,name:project_category.model_project_type
 #: model_terms:ir.ui.view,arch_db:project_category.project_type_form
 msgid "Project Type"
@@ -134,7 +129,15 @@ msgid "Type"
 msgstr "Tip"
 
 #. module: project_category
+#: model:ir.model,name:project_category.model_project_project
+msgid "WBS element"
+msgstr ""
+
+#. module: project_category
 #: code:addons/project_category/models/project_type.py:0
 #, python-format
 msgid "You cannot create recursive project types."
 msgstr "Nije moguće kreirati rekurzivne tipove projekata."
+
+#~ msgid "Project"
+#~ msgstr "Projekt"

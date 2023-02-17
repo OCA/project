@@ -55,16 +55,22 @@ msgid "Description"
 msgstr "Descripció"
 
 #. module: project_category
+#: model:ir.model.fields,field_description:project_category.field_project_project__display_name
+#: model:ir.model.fields,field_description:project_category.field_project_task__display_name
 #: model:ir.model.fields,field_description:project_category.field_project_type__display_name
 msgid "Display Name"
 msgstr "Nom mostrat"
 
 #. module: project_category
+#: model:ir.model.fields,field_description:project_category.field_project_project__id
+#: model:ir.model.fields,field_description:project_category.field_project_task__id
 #: model:ir.model.fields,field_description:project_category.field_project_type__id
 msgid "ID"
 msgstr "ID"
 
 #. module: project_category
+#: model:ir.model.fields,field_description:project_category.field_project_project____last_update
+#: model:ir.model.fields,field_description:project_category.field_project_task____last_update
 #: model:ir.model.fields,field_description:project_category.field_project_type____last_update
 msgid "Last Modified on"
 msgstr "Última modificació en"
@@ -90,15 +96,16 @@ msgid "Parent Type"
 msgstr "Tipus de Contacte"
 
 #. module: project_category
-#: model:ir.model,name:project_category.model_project_project
-msgid "Project"
-msgstr "Projecte"
-
-#. module: project_category
 #: model:ir.model,name:project_category.model_project_type
-#: model:ir.ui.menu,name:project_category.project_category
+#: model_terms:ir.ui.view,arch_db:project_category.project_type_form
 msgid "Project Type"
 msgstr "Tipus de Projectes"
+
+#. module: project_category
+#: model:ir.actions.act_window,name:project_category.action_project_type
+#: model:ir.ui.menu,name:project_category.project_category
+msgid "Project Types"
+msgstr ""
 
 #. module: project_category
 #: model:ir.model.fields,field_description:project_category.field_project_type__child_ids
@@ -112,18 +119,24 @@ msgid "Task"
 msgstr "Tasca"
 
 #. module: project_category
-#: model:ir.actions.act_window,name:project_category.action_project_type
 #: model:ir.model.fields,field_description:project_category.field_project_project__type_id
 #: model:ir.model.fields,field_description:project_category.field_project_task__type_id
 #: model_terms:ir.ui.view,arch_db:project_category.project_search
 #: model_terms:ir.ui.view,arch_db:project_category.project_task_search
-#: model_terms:ir.ui.view,arch_db:project_category.project_type_form
 #: model_terms:ir.ui.view,arch_db:project_category.project_type_search
 msgid "Type"
 msgstr "Tipus"
+
+#. module: project_category
+#: model:ir.model,name:project_category.model_project_project
+msgid "WBS element"
+msgstr ""
 
 #. module: project_category
 #: code:addons/project_category/models/project_type.py:0
 #, python-format
 msgid "You cannot create recursive project types."
 msgstr "No es poden crear tipus de projecte recursivament."
+
+#~ msgid "Project"
+#~ msgstr "Projecte"
