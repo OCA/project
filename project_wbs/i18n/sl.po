@@ -1,0 +1,352 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_wbs
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2020-04-12 08:19+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@matmoz.si>\n"
+"Language-Team: none\n"
+"Language: sl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
+"%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 3.10\n"
+
+#. module: project_wbs
+#: model_terms:ir.ui.view,arch_db:project_wbs.view_project_kanban
+msgid "(Parent:"
+msgstr "(Nadrejeni:"
+
+#. module: project_wbs
+#: model:ir.model,name:project_wbs.model_account_analytic_account
+#: model:ir.model.fields,field_description:project_wbs.field_project_project__analytic_account_id
+msgid "Analytic Account"
+msgstr "Analitični konto"
+
+#. module: project_wbs
+#: model_terms:ir.ui.view,arch_db:project_wbs.edit_project
+msgid "Append this project to another one using analytic accounts hierarchy"
+msgstr "Obesi ta projekt pod drugega preko hierarhije analitičnih kontov"
+
+#. module: project_wbs
+#: model:ir.model.fields,field_description:project_wbs.field_project_project__child_ids
+msgid "Child Accounts"
+msgstr "Podrejeni konti"
+
+#. module: project_wbs
+#: model_terms:ir.ui.view,arch_db:project_wbs.view_project
+msgid "Child WBS elements"
+msgstr "Podrejeni členi"
+
+#. module: project_wbs
+#: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__account_class
+#: model:ir.model.fields,field_description:project_wbs.field_project_project__account_class
+#: model_terms:ir.ui.view,arch_db:project_wbs.edit_project
+#: model_terms:ir.ui.view,arch_db:project_wbs.view_account_analytic_account_form
+#: model_terms:ir.ui.view,arch_db:project_wbs.view_account_analytic_account_search
+#: model_terms:ir.ui.view,arch_db:project_wbs.view_project
+#: model_terms:ir.ui.view,arch_db:project_wbs.view_project_project_filter
+#: model_terms:ir.ui.view,arch_db:project_wbs.view_project_project_group_filter
+msgid "Class"
+msgstr "Razred"
+
+#. module: project_wbs
+#: model_terms:ir.actions.act_window,help:project_wbs.open_view_project_wbs
+msgid "Click to start a new project."
+msgstr "Ustvari nov projekt."
+
+#. module: project_wbs
+#: model_terms:ir.ui.view,arch_db:project_wbs.edit_project
+#: model_terms:ir.ui.view,arch_db:project_wbs.view_project
+msgid "Code"
+msgstr "Koda"
+
+#. module: project_wbs
+#: model_terms:ir.ui.view,arch_db:project_wbs.edit_project
+msgid "Create child WBS element"
+msgstr "Ustvari podrejeni člen"
+
+#. module: project_wbs
+#: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__partner_id
+msgid "Customer"
+msgstr "Stranka"
+
+#. module: project_wbs
+#: selection:account.analytic.account,account_class:0
+#: model_terms:ir.ui.view,arch_db:project_wbs.view_account_analytic_account_search2
+msgid "Deliverable"
+msgstr "Dobavna postavka"
+
+#. module: project_wbs
+#: model:ir.actions.act_window,name:project_wbs.open_view_project_deliverables
+msgid "Deliverables"
+msgstr "Dobavne postavke"
+
+#. module: project_wbs
+#: code:addons/project_wbs/models/project_project.py:339
+#, python-format
+msgid "Details"
+msgstr "Podrobnosti"
+
+#. module: project_wbs
+#: code:addons/project_wbs/models/account_analytic_account.py:184
+#, python-format
+msgid "Duplicate the project instead of the Analytic Account"
+msgstr "Podvojite projekt namesto analitičnega konta"
+
+#. module: project_wbs
+#: model:ir.actions.act_window,name:project_wbs.open_view_project_form
+msgid "Edit project"
+msgstr "Uredi projekt"
+
+#. module: project_wbs
+#: model_terms:ir.ui.view,arch_db:project_wbs.view_project
+msgid "End Date"
+msgstr "Končni datum"
+
+#. module: project_wbs
+#: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__complete_wbs_code
+msgid "Full WBS Code"
+msgstr "Polna koda členitve"
+
+#. module: project_wbs
+#: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__complete_wbs_name
+#: model:ir.model.fields,field_description:project_wbs.field_project_project__complete_wbs_name
+msgid "Full WBS path"
+msgstr "Pot členitve"
+
+#. module: project_wbs
+#: model:ir.model.fields,help:project_wbs.field_account_analytic_account__complete_wbs_name
+#: model:ir.model.fields,help:project_wbs.field_project_project__complete_wbs_name
+msgid "Full path in the WBS hierarchy"
+msgstr "Polna pot v razčlenitveni hierarhiji"
+
+#. module: project_wbs
+#: model:ir.model.fields,field_description:project_wbs.field_project_project__has_project_child_complete_ids
+msgid "Has Project Child Complete"
+msgstr "Vsebuje dokončan podrejen projekt"
+
+#. module: project_wbs
+#: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__wbs_indent
+#: model:ir.model.fields,field_description:project_wbs.field_project_project__wbs_indent
+msgid "Level"
+msgstr "Nivo"
+
+#. module: project_wbs
+#: model:ir.model.fields,help:project_wbs.field_project_project__analytic_account_id
+msgid ""
+"Link this project to an analytic account if you need financial management on "
+"projects. It enables you to connect projects with budgets, planning, cost "
+"and revenue analysis, timesheets on projects, etc."
+msgstr ""
+"Če želite upravljanje stroškov na projektih, povežite ta projekt z "
+"analitičnim kontom. To omogoča povezavo projektov s proračuni, plani, "
+"analizo stroškov in prihodkov, časovnice, itd."
+
+#. module: project_wbs
+#: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__manager_id
+msgid "Manager"
+msgstr "Upravitelj"
+
+#. module: project_wbs
+#: model_terms:ir.ui.view,arch_db:project_wbs.view_account_analytic_account_search2
+#: model_terms:ir.ui.view,arch_db:project_wbs.view_project_project_group_filter
+msgid "Master Project"
+msgstr "Nosilni projekt"
+
+#. module: project_wbs
+#: model_terms:ir.ui.view,arch_db:project_wbs.view_project
+msgid "Parent"
+msgstr "Nadrejeni"
+
+#. module: project_wbs
+#: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__parent_id
+#: model:ir.model.fields,field_description:project_wbs.field_project_project__parent_id
+#: model_terms:ir.ui.view,arch_db:project_wbs.edit_project
+msgid "Parent Analytic Account"
+msgstr "Nadrejeni konto"
+
+#. module: project_wbs
+#: model_terms:ir.ui.view,arch_db:project_wbs.view_project
+msgid "Parent WBS element"
+msgstr "Nadrejeni člen"
+
+#. module: project_wbs
+#: selection:account.analytic.account,account_class:0
+msgid "Phase"
+msgstr "Faza"
+
+#. module: project_wbs
+#: model:ir.actions.act_window,name:project_wbs.open_view_project_phases
+msgid "Phases"
+msgstr "Faze"
+
+#. module: project_wbs
+#: selection:account.analytic.account,account_class:0
+#: model_terms:ir.ui.view,arch_db:project_wbs.view_account_analytic_account_search2
+msgid "Project"
+msgstr "Projekt"
+
+#. module: project_wbs
+#: model_terms:ir.ui.view,arch_db:project_wbs.view_project
+msgid "Project Form View"
+msgstr "Projektni obrazec"
+
+#. module: project_wbs
+#: model:ir.model.fields,field_description:project_wbs.field_project_project__project_child_complete_ids
+msgid "Project Hierarchy"
+msgstr "Projektna hierarhija"
+
+#. module: project_wbs
+#: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__user_id
+msgid "Project Manager"
+msgstr "Upravitelj projekta"
+
+#. module: project_wbs
+#: model:ir.actions.act_window,name:project_wbs.group_project
+#: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__project_ids
+msgid "Projects"
+msgstr "Projekti"
+
+#. module: project_wbs
+#: model_terms:ir.actions.act_window,help:project_wbs.open_view_project_wbs
+msgid ""
+"Projects are used to organize your activities; plan\n"
+"              tasks, track issues, invoice timesheets. You can define\n"
+"              internal projects (R&amp;D, Improve Sales Process),\n"
+"              private projects (My Todos) or customer ones."
+msgstr ""
+"Projekte se uporablja za organizacijo aktivnosti, planiranje\n"
+"              opravil, sledenje problematiki, obračun po času. Določite "
+"lahko\n"
+"              interne projekte (in izboljšate prodajne procese),\n"
+"              privatne projekte (seznami opravkov) ali projekte strank."
+
+#. module: project_wbs
+#: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__code
+#: model:ir.model.fields,field_description:project_wbs.field_project_project__code
+msgid "Reference"
+msgstr "Sklic"
+
+#. module: project_wbs
+#: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__project_analytic_id
+#: model:ir.model.fields,field_description:project_wbs.field_project_project__project_analytic_id
+msgid "Root Analytic Account"
+msgstr "Temeljni konto"
+
+#. module: project_wbs
+#: model_terms:ir.ui.view,arch_db:project_wbs.view_project
+msgid "Start Date"
+msgstr "Datum začetka"
+
+#. module: project_wbs
+#: model:ir.model.fields,help:project_wbs.field_account_analytic_account__account_class
+#: model:ir.model.fields,help:project_wbs.field_project_project__account_class
+msgid ""
+"The classification allows you to create a proper project Work Breakdown "
+"Structure"
+msgstr "Klasifikacija omogoča ustvarjanje primerne razčlenitvene strukture"
+
+#. module: project_wbs
+#: model:ir.model.fields,help:project_wbs.field_account_analytic_account__complete_wbs_code
+#: model:ir.model.fields,help:project_wbs.field_project_project__complete_wbs_code
+msgid ""
+"The full WBS code describes the full path of this component within the "
+"project WBS hierarchy"
+msgstr ""
+"Polna koda razčlenitve opisuje polno pot te komponente v sklopu "
+"razčlenitvene hierarhije projekta"
+
+#. module: project_wbs
+#: sql_constraint:account.analytic.account:0
+#: code:addons/project_wbs/models/account_analytic_account.py:233
+#, python-format
+msgid "The full wbs code must be unique!"
+msgstr "Polna koda členitve mora biti unikatna!"
+
+#. module: project_wbs
+#: code:addons/project_wbs/models/project_project.py:141
+#, python-format
+msgid "Unknown Analytic Account"
+msgstr "Neznan konto"
+
+#. module: project_wbs
+#: model:ir.ui.menu,name:project_wbs.menu_project_wbs_project
+msgid "WBS"
+msgstr "Razčlenitev"
+
+#. module: project_wbs
+#: model:ir.model.fields,field_description:project_wbs.field_project_project__complete_wbs_code
+msgid "WBS Code"
+msgstr "Koda člena"
+
+#. module: project_wbs
+#: model_terms:ir.ui.view,arch_db:project_wbs.view_project_kanban
+msgid "WBS Elements:"
+msgstr "Členi:"
+
+#. module: project_wbs
+#: model_terms:ir.ui.view,arch_db:project_wbs.edit_project
+#: model_terms:ir.ui.view,arch_db:project_wbs.view_account_analytic_account_form
+#: model_terms:ir.ui.view,arch_db:project_wbs.view_account_analytic_account_list
+#: model_terms:ir.ui.view,arch_db:project_wbs.view_account_analytic_account_search
+#: model_terms:ir.ui.view,arch_db:project_wbs.view_project_project_filter
+msgid "WBS code"
+msgstr "Koda člena"
+
+#. module: project_wbs
+#: model:ir.model,name:project_wbs.model_project_project
+msgid "WBS element"
+msgstr "Projektni člen"
+
+#. module: project_wbs
+#: model_terms:ir.ui.view,arch_db:project_wbs.edit_project
+msgid "WBS element name"
+msgstr "Naziv člena"
+
+#. module: project_wbs
+#: model:ir.actions.act_window,name:project_wbs.create_wbs_element
+#: model:ir.actions.act_window,name:project_wbs.open_view_project_wbs
+#: model:ir.actions.act_window,name:project_wbs.open_view_wbs_kanban
+msgid "WBS elements"
+msgstr "Členi"
+
+#. module: project_wbs
+#: model_terms:ir.ui.view,arch_db:project_wbs.view_account_analytic_account_search
+msgid "WBS name"
+msgstr "Naziv člena"
+
+#. module: project_wbs
+#: model:ir.actions.act_window,name:project_wbs.open_view_wbs_tree
+msgid "WBS overview"
+msgstr "Pregled členitve"
+
+#. module: project_wbs
+#: model_terms:ir.ui.view,arch_db:project_wbs.edit_project
+msgid "Work Breakdown Structure"
+msgstr "Razčlenitvena struktura"
+
+#. module: project_wbs
+#: selection:account.analytic.account,account_class:0
+#: model_terms:ir.ui.view,arch_db:project_wbs.view_account_analytic_account_search2
+msgid "Work Package"
+msgstr "Paket opravil"
+
+#. module: project_wbs
+#: model:ir.actions.act_window,name:project_wbs.open_view_project_work_packages
+msgid "Work Packages"
+msgstr "Paketi opravil"
+
+#. module: project_wbs
+#: model_terms:ir.actions.act_window,help:project_wbs.open_view_project_wbs
+msgid ""
+"You will be able collaborate with internal users on\n"
+"              projects or invite customers to share your activities."
+msgstr ""
+"Omogočeno bo sodelovanje na projektih z internimi\n"
+"              uporabniki ali pa povabite stranke k souporabi aktivnosti."
