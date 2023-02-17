@@ -40,7 +40,7 @@ msgid "Cancel"
 msgstr "キャンセル"
 
 #. module: project_recalculate
-#: code:addons/project_recalculate/models/project_project.py:51
+#: code:addons/project_recalculate/models/project_project.py:0
 #, python-format
 msgid ""
 "Cannot recalculate project because your project doesn't have calculation "
@@ -48,13 +48,13 @@ msgid ""
 msgstr ""
 
 #. module: project_recalculate
-#: code:addons/project_recalculate/models/project_project.py:59
+#: code:addons/project_recalculate/models/project_project.py:0
 #, python-format
 msgid "Cannot recalculate project because your project doesn't have date end."
 msgstr ""
 
 #. module: project_recalculate
-#: code:addons/project_recalculate/models/project_project.py:55
+#: code:addons/project_recalculate/models/project_project.py:0
 #, python-format
 msgid ""
 "Cannot recalculate project because your project doesn't have date start."
@@ -76,12 +76,12 @@ msgid "Created on"
 msgstr "作成日"
 
 #. module: project_recalculate
-#: selection:project.project,calculation_type:0
+#: model:ir.model.fields.selection,name:project_recalculate.selection__project_project__calculation_type__date_begin
 msgid "Date begin"
 msgstr ""
 
 #. module: project_recalculate
-#: selection:project.project,calculation_type:0
+#: model:ir.model.fields.selection,name:project_recalculate.selection__project_project__calculation_type__date_end
 msgid "Date end"
 msgstr ""
 
@@ -91,12 +91,16 @@ msgid "Date reference"
 msgstr ""
 
 #. module: project_recalculate
+#: model:ir.model.fields,field_description:project_recalculate.field_project_project__display_name
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__display_name
+#: model:ir.model.fields,field_description:project_recalculate.field_project_task__display_name
+#: model:ir.model.fields,field_description:project_recalculate.field_project_task_type__display_name
+#: model:ir.model.fields,field_description:project_recalculate.field_resource_calendar__display_name
 msgid "Display Name"
 msgstr "表示名"
 
 #. module: project_recalculate
-#: code:addons/project_recalculate/models/project_task.py:184
+#: code:addons/project_recalculate/models/project_task.py:0
 #, python-format
 msgid "End Date field must be defined."
 msgstr ""
@@ -107,7 +111,7 @@ msgid "Estimated days"
 msgstr ""
 
 #. module: project_recalculate
-#: code:addons/project_recalculate/models/project_task.py:32
+#: code:addons/project_recalculate/models/project_task.py:0
 #, python-format
 msgid "Estimated days must be greater than 0."
 msgstr ""
@@ -131,7 +135,11 @@ msgid ""
 msgstr ""
 
 #. module: project_recalculate
+#: model:ir.model.fields,field_description:project_recalculate.field_project_project__id
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__id
+#: model:ir.model.fields,field_description:project_recalculate.field_project_task__id
+#: model:ir.model.fields,field_description:project_recalculate.field_project_task_type__id
+#: model:ir.model.fields,field_description:project_recalculate.field_resource_calendar__id
 msgid "ID"
 msgstr "ID"
 
@@ -150,7 +158,11 @@ msgid "Include in project recalculate"
 msgstr ""
 
 #. module: project_recalculate
+#: model:ir.model.fields,field_description:project_recalculate.field_project_project____last_update
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard____last_update
+#: model:ir.model.fields,field_description:project_recalculate.field_project_task____last_update
+#: model:ir.model.fields,field_description:project_recalculate.field_project_task_type____last_update
+#: model:ir.model.fields,field_description:project_recalculate.field_resource_calendar____last_update
 msgid "Last Modified on"
 msgstr "最終更新日"
 
@@ -201,9 +213,14 @@ msgid "Resource Working Time"
 msgstr ""
 
 #. module: project_recalculate
-#: code:addons/project_recalculate/models/project_task.py:177
+#: code:addons/project_recalculate/models/project_task.py:0
 #, python-format
 msgid "Start Date field must be defined."
+msgstr ""
+
+#. module: project_recalculate
+#: model:ir.model.fields,field_description:project_recalculate.field_project_task__date_start
+msgid "Starting Date"
 msgstr ""
 
 #. module: project_recalculate
@@ -219,6 +236,11 @@ msgstr ""
 #. module: project_recalculate
 #: model_terms:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
 msgid "This Project task will be recalculated according reference date:"
+msgstr ""
+
+#. module: project_recalculate
+#: model_terms:ir.ui.view,arch_db:project_recalculate.edit_project_recalculate
+msgid "Time Scheduling"
 msgstr ""
 
 #. module: project_recalculate
