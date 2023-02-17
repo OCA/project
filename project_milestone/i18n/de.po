@@ -125,7 +125,6 @@ msgid "Progress"
 msgstr "Fortschritt"
 
 #. module: project_milestone
-#: model:ir.model,name:project_milestone.model_project_project
 #: model:ir.model.fields,field_description:project_milestone.field_project_milestone__project_id
 #: model_terms:ir.ui.view,arch_db:project_milestone.project_milestone_view_search
 msgid "Project"
@@ -171,3 +170,8 @@ msgstr "Das ist das Datum, an dem der Meilenstein erledigt sein sollte."
 #: model:ir.model.fields,field_description:project_milestone.field_project_task__use_milestones
 msgid "Use Milestones"
 msgstr "Meilensteine verwenden"
+
+#. module: project_milestone
+#: model:ir.model,name:project_milestone.model_project_project
+msgid "WBS element"
+msgstr ""

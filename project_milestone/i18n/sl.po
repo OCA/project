@@ -124,7 +124,6 @@ msgid "Progress"
 msgstr "Napredek"
 
 #. module: project_milestone
-#: model:ir.model,name:project_milestone.model_project_project
 #: model:ir.model.fields,field_description:project_milestone.field_project_milestone__project_id
 #: model_terms:ir.ui.view,arch_db:project_milestone.project_milestone_view_search
 msgid "Project"
@@ -171,5 +170,7 @@ msgstr "Datum do katerega bi moral biti mejnik dokončan."
 msgid "Use Milestones"
 msgstr "Uporabi mejnike"
 
-#~ msgid "WBS element"
-#~ msgstr "Projektni člen"
+#. module: project_milestone
+#: model:ir.model,name:project_milestone.model_project_project
+msgid "WBS element"
+msgstr "Projektni člen"
