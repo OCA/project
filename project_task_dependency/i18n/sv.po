@@ -102,11 +102,6 @@ msgid "Open Task"
 msgstr ""
 
 #. module: project_task_dependency
-#: model:ir.model,name:project_task_dependency.model_project_project
-msgid "Project"
-msgstr "Projekt"
-
-#. module: project_task_dependency
 #: model:ir.model,name:project_task_dependency.model_project_task_copy_map
 msgid "Project Task Copy Map"
 msgstr ""
@@ -139,7 +134,15 @@ msgid "Tasks that are dependent on this task."
 msgstr "Aktiviteter som är beroende av den här aktiviteten."
 
 #. module: project_task_dependency
+#: model:ir.model,name:project_task_dependency.model_project_project
+msgid "WBS element"
+msgstr ""
+
+#. module: project_task_dependency
 #: code:addons/project_task_dependency/models/project_task.py:0
 #, python-format
 msgid "You cannot create recursive dependencies between tasks."
 msgstr "Du kan inte skapa rekursiva beroenden mellan aktiviteter."
+
+#~ msgid "Project"
+#~ msgstr "Projekt"
