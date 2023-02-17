@@ -20,6 +20,24 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. module: project_task_pull_request
+#: model:ir.model.fields,field_description:project_task_pull_request.field_project_project__display_name
+#: model:ir.model.fields,field_description:project_task_pull_request.field_project_task__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: project_task_pull_request
+#: model:ir.model.fields,field_description:project_task_pull_request.field_project_project__id
+#: model:ir.model.fields,field_description:project_task_pull_request.field_project_task__id
+msgid "ID"
+msgstr ""
+
+#. module: project_task_pull_request
+#: model:ir.model.fields,field_description:project_task_pull_request.field_project_project____last_update
+#: model:ir.model.fields,field_description:project_task_pull_request.field_project_task____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: project_task_pull_request
 #: model:ir.model.fields,field_description:project_task_pull_request.field_project_project__pr_required_states
 #: model:ir.model.fields,field_description:project_task_pull_request.field_project_task__pr_required_states
 msgid "PR Required States"
@@ -38,11 +56,6 @@ msgid ""
 msgstr ""
 
 #. module: project_task_pull_request
-#: model:ir.model,name:project_task_pull_request.model_project_project
-msgid "Project"
-msgstr "项目"
-
-#. module: project_task_pull_request
 #: model_terms:ir.ui.view,arch_db:project_task_pull_request.edit_project
 msgid "Pull Request URIs"
 msgstr ""
@@ -51,3 +64,11 @@ msgstr ""
 #: model:ir.model,name:project_task_pull_request.model_project_task
 msgid "Task"
 msgstr "任务"
+
+#. module: project_task_pull_request
+#: model:ir.model,name:project_task_pull_request.model_project_project
+msgid "WBS element"
+msgstr ""
+
+#~ msgid "Project"
+#~ msgstr "项目"
