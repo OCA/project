@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* project_template_milestone
+# 	* project_template_milestone
 #
 msgid ""
 msgstr ""
@@ -13,6 +13,21 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
+
+#. module: project_template_milestone
+#: model:ir.model.fields,field_description:project_template_milestone.field_project_project__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: project_template_milestone
+#: model:ir.model.fields,field_description:project_template_milestone.field_project_project__id
+msgid "ID"
+msgstr ""
+
+#. module: project_template_milestone
+#: model:ir.model.fields,field_description:project_template_milestone.field_project_project____last_update
+msgid "Last Modified on"
+msgstr ""
 
 #. module: project_template_milestone
 #: model:ir.model,name:project_template_milestone.model_project_project
