@@ -94,11 +94,6 @@ msgid "Next Activity Type"
 msgstr ""
 
 #. module: project_mail_chatter
-#: model:ir.model,name:project_mail_chatter.model_project_project
-msgid "Project"
-msgstr "Progetto"
-
-#. module: project_mail_chatter
 #: model:ir.model.fields,field_description:project_mail_chatter.field_project_project__activity_user_id
 msgid "Responsible User"
 msgstr ""
@@ -116,3 +111,11 @@ msgstr ""
 #: model:ir.model.fields,help:project_mail_chatter.field_project_project__activity_exception_decoration
 msgid "Type of the exception activity on record."
 msgstr ""
+
+#. module: project_mail_chatter
+#: model:ir.model,name:project_mail_chatter.model_project_project
+msgid "WBS element"
+msgstr ""
+
+#~ msgid "Project"
+#~ msgstr "Progetto"
