@@ -42,11 +42,6 @@ msgid "Last Modified on"
 msgstr ""
 
 #. module: project_key
-#: model:ir.model,name:project_key.model_project_project
-msgid "Project"
-msgstr ""
-
-#. module: project_key
 #: model:ir.model.constraint,message:project_key.constraint_project_project_project_key_unique
 msgid "Project key must be unique"
 msgstr ""
@@ -70,6 +65,11 @@ msgstr ""
 #. module: project_key
 #: model:ir.model.fields,field_description:project_key.field_project_task__url
 msgid "URL"
+msgstr ""
+
+#. module: project_key
+#: model:ir.model,name:project_key.model_project_project
+msgid "WBS element"
 msgstr ""
 
 #. module: project_key
