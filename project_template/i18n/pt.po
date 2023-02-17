@@ -66,11 +66,6 @@ msgid "Non-Templates Tasks"
 msgstr ""
 
 #. module: project_template
-#: model:ir.model,name:project_template.model_project_project
-msgid "Project"
-msgstr ""
-
-#. module: project_template
 #: model:ir.model,name:project_template.model_project_task
 msgid "Task"
 msgstr ""
@@ -85,5 +80,7 @@ msgstr ""
 msgid "Templates"
 msgstr "Modelos"
 
-#~ msgid "WBS element"
-#~ msgstr "Elemento WBS"
+#. module: project_template
+#: model:ir.model,name:project_template.model_project_project
+msgid "WBS element"
+msgstr "Elemento WBS"
