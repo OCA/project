@@ -32,11 +32,6 @@ msgid "Last Modified on"
 msgstr ""
 
 #. module: project_deadline
-#: model:ir.model,name:project_deadline.model_project_project
-msgid "Project"
-msgstr ""
-
-#. module: project_deadline
 #: model:ir.model.fields,field_description:project_deadline.field_project_task__project_date_deadline
 msgid "Project Deadline"
 msgstr ""
@@ -49,6 +44,11 @@ msgstr ""
 #. module: project_deadline
 #: model:ir.model,name:project_deadline.model_project_task
 msgid "Task"
+msgstr ""
+
+#. module: project_deadline
+#: model:ir.model,name:project_deadline.model_project_project
+msgid "WBS element"
 msgstr ""
 
 #. module: project_deadline
