@@ -77,7 +77,10 @@ msgid "Active"
 msgstr "Aktiv"
 
 #. module: project_role
+#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_form
+#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
 #: model_terms:ir.ui.view,arch_db:project_role.project_role_search
+#: model_terms:ir.ui.view,arch_db:project_role.project_role_view_form
 msgid "Archived"
 msgstr "Archiviert"
 
@@ -166,7 +169,10 @@ msgstr "Beschreibung"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__display_name
+#: model:ir.model.fields,field_description:project_role.field_project_project__display_name
 #: model:ir.model.fields,field_description:project_role.field_project_role__display_name
+#: model:ir.model.fields,field_description:project_role.field_res_company__display_name
+#: model:ir.model.fields,field_description:project_role.field_res_config_settings__display_name
 msgid "Display Name"
 msgstr "Anzeigename"
 
@@ -192,7 +198,10 @@ msgstr "Gruppieren nach"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__id
+#: model:ir.model.fields,field_description:project_role.field_project_project__id
 #: model:ir.model.fields,field_description:project_role.field_project_role__id
+#: model:ir.model.fields,field_description:project_role.field_res_company__id
+#: model:ir.model.fields,field_description:project_role.field_res_config_settings__id
 msgid "ID"
 msgstr "ID"
 
@@ -210,11 +219,6 @@ msgstr ""
 "Wenn es gesetzt ist, gibt es einige Nachrichten mit einem Übertragungsfehler."
 
 #. module: project_role
-#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
-msgid "Inactive"
-msgstr "Inaktiv"
-
-#. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_project__inherit_assignments
 msgid "Inherit assignments"
 msgstr "Zuweisung vererben"
@@ -226,7 +230,10 @@ msgstr "Ist Abonnent"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment____last_update
+#: model:ir.model.fields,field_description:project_role.field_project_project____last_update
 #: model:ir.model.fields,field_description:project_role.field_project_role____last_update
+#: model:ir.model.fields,field_description:project_role.field_res_company____last_update
+#: model:ir.model.fields,field_description:project_role.field_res_config_settings____last_update
 msgid "Last Modified on"
 msgstr "Zuletzt geändert am"
 
@@ -325,7 +332,6 @@ msgid "Please activate first parent role %s"
 msgstr "Bitte zuerst die übergeordnete Rolle %s aktivieren."
 
 #. module: project_role
-#: model:ir.model,name:project_role.model_project_project
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__project_id
 #: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
 msgid "Project"
@@ -455,6 +461,11 @@ msgid "User may be assigned per role only once!"
 msgstr "Der Benutzer sollte einer Rolle nur einmal zugewiesen sein!"
 
 #. module: project_role
+#: model:ir.model,name:project_role.model_project_project
+msgid "WBS element"
+msgstr ""
+
+#. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__website_message_ids
 msgid "Website Messages"
 msgstr "Website-Nachrichten"
@@ -463,6 +474,9 @@ msgstr "Website-Nachrichten"
 #: model:ir.model.fields,help:project_role.field_project_assignment__website_message_ids
 msgid "Website communication history"
 msgstr "Website-Kommunikationshistorie"
+
+#~ msgid "Inactive"
+#~ msgstr "Inaktiv"
 
 #~ msgid "If checked new messages require your attention."
 #~ msgstr ""

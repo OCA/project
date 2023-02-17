@@ -44,8 +44,8 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
 msgid ""
 "<span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-"
-"specific.\" role=\"img\" aria-label=\"Values set here are company-"
-"specific.\" groups=\"base.group_multi_company\"/>"
+"specific.\" role=\"img\" aria-label=\"Values set here are company-specific."
+"\" groups=\"base.group_multi_company\"/>"
 msgstr ""
 "<span class=\"fa fa-lg fa-building-o\" title=\"I valori impostati qui sono "
 "specifici per azienda.\" role=\"img\" aria-label=\"I valori impostati qui "
@@ -55,7 +55,9 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
 msgid ""
 "<span class=\"o_form_label\">Project Roles</span>\n"
-"                                <span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-specific.\" role=\"img\" aria-label=\"Values set here are company-specific.\" groups=\"base.group_multi_company\"/>"
+"                                <span class=\"fa fa-lg fa-building-o\" title="
+"\"Values set here are company-specific.\" role=\"img\" aria-label=\"Values "
+"set here are company-specific.\" groups=\"base.group_multi_company\"/>"
 msgstr ""
 
 #. module: project_role
@@ -320,7 +322,6 @@ msgid "Please activate first parent role %s"
 msgstr ""
 
 #. module: project_role
-#: model:ir.model,name:project_role.model_project_project
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__project_id
 #: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
 msgid "Project"
@@ -437,6 +438,11 @@ msgstr ""
 #. module: project_role
 #: model:ir.model.constraint,message:project_role.constraint_project_assignment_nocompany_role_user_uniq
 msgid "User may be assigned per role only once!"
+msgstr ""
+
+#. module: project_role
+#: model:ir.model,name:project_role.model_project_project
+msgid "WBS element"
 msgstr ""
 
 #. module: project_role

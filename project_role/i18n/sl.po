@@ -78,7 +78,10 @@ msgid "Active"
 msgstr "Aktivno"
 
 #. module: project_role
+#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_form
+#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
 #: model_terms:ir.ui.view,arch_db:project_role.project_role_search
+#: model_terms:ir.ui.view,arch_db:project_role.project_role_view_form
 msgid "Archived"
 msgstr "Arhivirano"
 
@@ -166,7 +169,10 @@ msgstr "Opis"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__display_name
+#: model:ir.model.fields,field_description:project_role.field_project_project__display_name
 #: model:ir.model.fields,field_description:project_role.field_project_role__display_name
+#: model:ir.model.fields,field_description:project_role.field_res_company__display_name
+#: model:ir.model.fields,field_description:project_role.field_res_config_settings__display_name
 msgid "Display Name"
 msgstr "Prikazani naziv"
 
@@ -192,7 +198,10 @@ msgstr "Združi po"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__id
+#: model:ir.model.fields,field_description:project_role.field_project_project__id
 #: model:ir.model.fields,field_description:project_role.field_project_role__id
+#: model:ir.model.fields,field_description:project_role.field_res_company__id
+#: model:ir.model.fields,field_description:project_role.field_res_config_settings__id
 msgid "ID"
 msgstr "ID"
 
@@ -211,11 +220,6 @@ msgstr ""
 "dostavi."
 
 #. module: project_role
-#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
-msgid "Inactive"
-msgstr "Neaktivno"
-
-#. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_project__inherit_assignments
 msgid "Inherit assignments"
 msgstr "Deduj zadolžitve"
@@ -227,7 +231,10 @@ msgstr "Je sledilec"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment____last_update
+#: model:ir.model.fields,field_description:project_role.field_project_project____last_update
 #: model:ir.model.fields,field_description:project_role.field_project_role____last_update
+#: model:ir.model.fields,field_description:project_role.field_res_company____last_update
+#: model:ir.model.fields,field_description:project_role.field_res_config_settings____last_update
 msgid "Last Modified on"
 msgstr "Zadnjič spremenjeno"
 
@@ -324,7 +331,6 @@ msgid "Please activate first parent role %s"
 msgstr "Najprej aktivirajte nadrejeno vlogo %s"
 
 #. module: project_role
-#: model:ir.model,name:project_role.model_project_project
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__project_id
 #: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
 msgid "Project"
@@ -445,6 +451,11 @@ msgid "User may be assigned per role only once!"
 msgstr "Uporabniku se lahko dodeli določeno vlogo le enkrat!"
 
 #. module: project_role
+#: model:ir.model,name:project_role.model_project_project
+msgid "WBS element"
+msgstr "Projektni člen"
+
+#. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__website_message_ids
 msgid "Website Messages"
 msgstr "Spletna sporočila"
@@ -454,11 +465,11 @@ msgstr "Spletna sporočila"
 msgid "Website communication history"
 msgstr "Spletna kronologija komunikacij"
 
+#~ msgid "Inactive"
+#~ msgstr "Neaktivno"
+
 #~ msgid "If checked new messages require your attention."
 #~ msgstr "Če označeno pomeni, da nova sporočila zahtevajo vašo pozornost."
-
-#~ msgid "WBS element"
-#~ msgstr "Projektni člen"
 
 #~ msgid "You cannot create recursive roles."
 #~ msgstr "Rekurzivne vloge niso dovoljene."
