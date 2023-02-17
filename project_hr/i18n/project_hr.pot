@@ -84,11 +84,6 @@ msgid "Linked employee"
 msgstr ""
 
 #. module: project_hr
-#: model:ir.model,name:project_hr.model_project_project
-msgid "Project"
-msgstr ""
-
-#. module: project_hr
 #: model:ir.model,name:project_hr.model_project_task
 msgid "Task"
 msgstr ""
@@ -116,6 +111,11 @@ msgstr ""
 #. module: project_hr
 #: model:ir.model,name:project_hr.model_res_users
 msgid "Users"
+msgstr ""
+
+#. module: project_hr
+#: model:ir.model,name:project_hr.model_project_project
+msgid "WBS element"
 msgstr ""
 
 #. module: project_hr
