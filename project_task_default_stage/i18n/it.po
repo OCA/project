@@ -57,9 +57,21 @@ msgid "Development"
 msgstr "Sviluppo"
 
 #. module: project_task_default_stage
+#: model:ir.model.fields,field_description:project_task_default_stage.field_project_project__display_name
+#: model:ir.model.fields,field_description:project_task_default_stage.field_project_task_type__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_deployment
 msgid "Done"
 msgstr "Completato"
+
+#. module: project_task_default_stage
+#: model:ir.model.fields,field_description:project_task_default_stage.field_project_project__id
+#: model:ir.model.fields,field_description:project_task_default_stage.field_project_task_type__id
+msgid "ID"
+msgstr ""
 
 #. module: project_task_default_stage
 #: model:ir.model.fields,help:project_task_default_stage.field_project_task_type__case_default
@@ -83,14 +95,15 @@ msgid "In Progress"
 msgstr "In corso"
 
 #. module: project_task_default_stage
+#: model:ir.model.fields,field_description:project_task_default_stage.field_project_project____last_update
+#: model:ir.model.fields,field_description:project_task_default_stage.field_project_task_type____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_merge
 msgid "Merge"
 msgstr "Unisci"
-
-#. module: project_task_default_stage
-#: model:ir.model,name:project_task_default_stage.model_project_project
-msgid "Project"
-msgstr "Progetto"
 
 #. module: project_task_default_stage
 #: model_terms:ir.ui.view,arch_db:project_task_default_stage.edit_project
@@ -106,8 +119,8 @@ msgstr "Fasi Progetto"
 #: model:project.task.type,legend_done:project_task_default_stage.project_tt_merge
 #: model:project.task.type,legend_done:project_task_default_stage.project_tt_specification
 #: model:project.task.type,legend_done:project_task_default_stage.project_tt_testing
-msgid "Ready for Next Stage"
-msgstr "Pronto per la prossima fase"
+msgid "Ready"
+msgstr ""
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_specification
@@ -128,3 +141,14 @@ msgstr "Fasi lavori"
 #: model:project.task.type,name:project_task_default_stage.project_tt_testing
 msgid "Testing"
 msgstr "Testing"
+
+#. module: project_task_default_stage
+#: model:ir.model,name:project_task_default_stage.model_project_project
+msgid "WBS element"
+msgstr ""
+
+#~ msgid "Project"
+#~ msgstr "Progetto"
+
+#~ msgid "Ready for Next Stage"
+#~ msgstr "Pronto per la prossima fase"

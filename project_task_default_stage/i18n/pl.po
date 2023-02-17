@@ -58,9 +58,21 @@ msgid "Development"
 msgstr ""
 
 #. module: project_task_default_stage
+#: model:ir.model.fields,field_description:project_task_default_stage.field_project_project__display_name
+#: model:ir.model.fields,field_description:project_task_default_stage.field_project_task_type__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_deployment
 msgid "Done"
 msgstr "Wykonano"
+
+#. module: project_task_default_stage
+#: model:ir.model.fields,field_description:project_task_default_stage.field_project_project__id
+#: model:ir.model.fields,field_description:project_task_default_stage.field_project_task_type__id
+msgid "ID"
+msgstr ""
 
 #. module: project_task_default_stage
 #: model:ir.model.fields,help:project_task_default_stage.field_project_task_type__case_default
@@ -82,13 +94,14 @@ msgid "In Progress"
 msgstr ""
 
 #. module: project_task_default_stage
-#: model:project.task.type,name:project_task_default_stage.project_tt_merge
-msgid "Merge"
+#: model:ir.model.fields,field_description:project_task_default_stage.field_project_project____last_update
+#: model:ir.model.fields,field_description:project_task_default_stage.field_project_task_type____last_update
+msgid "Last Modified on"
 msgstr ""
 
 #. module: project_task_default_stage
-#: model:ir.model,name:project_task_default_stage.model_project_project
-msgid "Project"
+#: model:project.task.type,name:project_task_default_stage.project_tt_merge
+msgid "Merge"
 msgstr ""
 
 #. module: project_task_default_stage
@@ -105,7 +118,7 @@ msgstr ""
 #: model:project.task.type,legend_done:project_task_default_stage.project_tt_merge
 #: model:project.task.type,legend_done:project_task_default_stage.project_tt_specification
 #: model:project.task.type,legend_done:project_task_default_stage.project_tt_testing
-msgid "Ready for Next Stage"
+msgid "Ready"
 msgstr ""
 
 #. module: project_task_default_stage
@@ -126,4 +139,9 @@ msgstr ""
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_testing
 msgid "Testing"
+msgstr ""
+
+#. module: project_task_default_stage
+#: model:ir.model,name:project_task_default_stage.model_project_project
+msgid "WBS element"
 msgstr ""
