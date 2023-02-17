@@ -33,7 +33,7 @@ addon | version | maintainers | summary
 [project_parent_task_filter](project_parent_task_filter/) | 12.0.1.3.0 | [![emagdalenaC2i](https://github.com/emagdalenaC2i.png?size=30px)](https://github.com/emagdalenaC2i) | Add a filter to show the parent tasks
 [project_purchase_link](project_purchase_link/) | 12.0.1.1.1 |  | Project Purchase Link
 [project_recalculate](project_recalculate/) | 12.0.1.0.0 |  | Project Recalculate
-[project_risk](project_risk/) | 12.0.1.0.1 |  | MOR risk management method
+[project_risk](project_risk/) | 12.0.1.1.0 |  | MOR risk management method
 [project_role](project_role/) | 12.0.3.0.1 | [![alexey-pelykh](https://github.com/alexey-pelykh.png?size=30px)](https://github.com/alexey-pelykh) | Project role-based roster
 [project_stage_closed](project_stage_closed/) | 12.0.1.0.0 |  | Make the Closed flag on Task Stages available without installing sale_service
 [project_stage_state](project_stage_state/) | 12.0.1.0.0 |  | Restore State attribute removed from Project Stages in 8.0
