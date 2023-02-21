@@ -13,6 +13,8 @@ class ProjectTemplate(models.Model):
         self.ensure_one()
         res = super().create_project_from_template()
         project = self.env["project.project"].browse(res["res_id"])
+        for milestone in self.milestone_ids:
+            milestone.copy(default={"project_id": project.id})
         # LINK THE NEWLY CREATED TASKS TO THE NEWLY CREATED MILESTONES
         for new_task_record in project.task_ids:
             for new_milestone_record in project.milestone_ids:
