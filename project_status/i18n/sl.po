@@ -18,6 +18,16 @@ msgstr ""
 "X-Generator: Weblate 3.10\n"
 
 #. module: project_status
+#: model_terms:ir.ui.view,arch_db:project_status.project_view_kanban
+msgid "<span class=\"o_label\"> (</span>"
+msgstr ""
+
+#. module: project_status
+#: model_terms:ir.ui.view,arch_db:project_status.project_view_kanban
+msgid "<span class=\"o_label\">)</span>"
+msgstr ""
+
+#. module: project_status
 #: model_terms:ir.ui.view,arch_db:project_status.view_project_project_filter
 msgid "Closed"
 msgstr "Zaključeno"
@@ -48,7 +58,6 @@ msgid "Description"
 msgstr "Opis"
 
 #. module: project_status
-#: model:ir.model.fields,field_description:project_status.field_project_project__display_name
 #: model:ir.model.fields,field_description:project_status.field_project_status__display_name
 msgid "Display Name"
 msgstr "Prikazani naziv"
@@ -59,7 +68,6 @@ msgid "Folded"
 msgstr "Prepognjeno"
 
 #. module: project_status
-#: model:ir.model.fields,field_description:project_status.field_project_project__id
 #: model:ir.model.fields,field_description:project_status.field_project_status__id
 msgid "ID"
 msgstr "ID"
@@ -75,7 +83,6 @@ msgid "Is Closed Status"
 msgstr "V stanju zaključeno"
 
 #. module: project_status
-#: model:ir.model.fields,field_description:project_status.field_project_project____last_update
 #: model:ir.model.fields,field_description:project_status.field_project_status____last_update
 msgid "Last Modified on"
 msgstr "Zadnjič spremenjeno"
@@ -104,12 +111,6 @@ msgstr "Nezaključeno"
 #: model:project.status,name:project_status.project_status_pending
 msgid "Pending"
 msgstr "Na čakanju"
-
-#. module: project_status
-#: model:ir.model,name:project_status.model_project_project
-#, fuzzy
-msgid "Project"
-msgstr "Projektni status"
 
 #. module: project_status
 #: model:ir.model,name:project_status.model_project_status
@@ -153,5 +154,11 @@ msgstr "Določite, če je to zaključni status."
 msgid "Status"
 msgstr "Status"
 
-#~ msgid "WBS element"
-#~ msgstr "Projektni člen"
+#. module: project_status
+#: model:ir.model,name:project_status.model_project_project
+msgid "WBS element"
+msgstr "Projektni člen"
+
+#, fuzzy
+#~ msgid "Project"
+#~ msgstr "Projektni status"
