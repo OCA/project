@@ -18,28 +18,28 @@ msgstr ""
 "X-Generator: Weblate 3.10\n"
 
 #. module: project_role
+#: code:addons/project_role/models/project_assignment.py:0
+#, python-format
+msgid "%(USER)s as %(ROLE)s"
+msgstr ""
+
+#. module: project_role
+#: code:addons/project_role/models/project_assignment.py:0
+#, python-format
+msgid "%(USER)s as %(ROLE)s in %(PROJECT)s"
+msgstr ""
+
+#. module: project_role
+#: code:addons/project_role/models/project_assignment.py:0
+#, python-format
+msgid "%(USER)s as %(ROLE)s on %(PROJECT)s"
+msgstr ""
+
+#. module: project_role
 #: code:addons/project_role/models/project_role.py:0
 #, python-format
 msgid "%(parent)s / %(own)s"
 msgstr "%(parent)s / %(own)s"
-
-#. module: project_role
-#: code:addons/project_role/models/project_assignment.py:0
-#, python-format
-msgid "%s as %s"
-msgstr "%s kot %s"
-
-#. module: project_role
-#: code:addons/project_role/models/project_assignment.py:0
-#, python-format
-msgid "%s as %s in %s"
-msgstr "%s kot %s v %s"
-
-#. module: project_role
-#: code:addons/project_role/models/project_assignment.py:0
-#, python-format
-msgid "%s as %s on %s"
-msgstr "%s kot %s na %s"
 
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
@@ -78,15 +78,20 @@ msgid "Active"
 msgstr "Aktivno"
 
 #. module: project_role
+#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_form
+#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
 #: model_terms:ir.ui.view,arch_db:project_role.project_role_search
+#: model_terms:ir.ui.view,arch_db:project_role.project_role_view_form
 msgid "Archived"
 msgstr "Arhivirano"
 
 #. module: project_role
 #: code:addons/project_role/models/project_assignment.py:0
 #, python-format
-msgid "Assignment %s conflicts with another assignment: %s"
-msgstr "Zadolžitev %s je v konfliktu z zadolžitvijo: %s"
+msgid ""
+"Assignment %(ASSIGNMENT)s conflicts with another assignment: "
+"%(OTHER_ASSIGNMENT)s"
+msgstr ""
 
 #. module: project_role
 #: model:ir.actions.act_window,name:project_role.project_assignment_view_project_action
@@ -176,11 +181,6 @@ msgid "Followers"
 msgstr "Sledilci"
 
 #. module: project_role
-#: model:ir.model.fields,field_description:project_role.field_project_assignment__message_channel_ids
-msgid "Followers (Channels)"
-msgstr "Sledilci (kanali)"
-
-#. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_partner_ids
 msgid "Followers (Partners)"
 msgstr "Sledilci (partnerji)"
@@ -189,6 +189,11 @@ msgstr "Sledilci (partnerji)"
 #: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
 msgid "Group By"
 msgstr "Združi po"
+
+#. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__has_message
+msgid "Has Message"
+msgstr ""
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__id
@@ -211,14 +216,9 @@ msgstr ""
 "dostavi."
 
 #. module: project_role
-#: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
-msgid "Inactive"
-msgstr "Neaktivno"
-
-#. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_project__inherit_assignments
-msgid "Inherit assignments"
-msgstr "Deduj zadolžitve"
+msgid "Inherit Assignments"
+msgstr ""
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_is_follower
@@ -252,8 +252,8 @@ msgstr "Omeji projektne vloge na zadolžitve"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_project__limit_role_to_assignments
-msgid "Limit role to assignments"
-msgstr "Omeji vlogo na zadolžitve"
+msgid "Limit Role To Assignments"
+msgstr ""
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_main_attachment_id
@@ -324,7 +324,6 @@ msgid "Please activate first parent role %s"
 msgstr "Najprej aktivirajte nadrejeno vlogo %s"
 
 #. module: project_role
-#: model:ir.model,name:project_role.model_project_project
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__project_id
 #: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
 msgid "Project"
@@ -420,14 +419,14 @@ msgstr "Uporabnik"
 #. module: project_role
 #: code:addons/project_role/models/project_assignment.py:0
 #, python-format
-msgid "User %s can not be assigned to role %s on %s."
-msgstr "Uporabniku %s ni mogoče dodeliti vloge %s na %s."
+msgid "User %(USER)s can not be assigned to role %(ROLE)s on %(PROJECT)s."
+msgstr ""
 
 #. module: project_role
 #: code:addons/project_role/models/project_assignment.py:0
 #, python-format
-msgid "User %s can not be assigned to role %s."
-msgstr "Uporabniku %s ni mogoče dodeliti vloge %s."
+msgid "User %(USER)s can not be assigned to role %(ROLE)s."
+msgstr ""
 
 #. module: project_role
 #: model:ir.model.constraint,message:project_role.constraint_project_assignment_company_role_user_uniq
@@ -445,6 +444,11 @@ msgid "User may be assigned per role only once!"
 msgstr "Uporabniku se lahko dodeli določeno vlogo le enkrat!"
 
 #. module: project_role
+#: model:ir.model,name:project_role.model_project_project
+msgid "WBS element"
+msgstr "Projektni člen"
+
+#. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__website_message_ids
 msgid "Website Messages"
 msgstr "Spletna sporočila"
@@ -454,11 +458,44 @@ msgstr "Spletna sporočila"
 msgid "Website communication history"
 msgstr "Spletna kronologija komunikacij"
 
+#, python-format
+#~ msgid "%s as %s"
+#~ msgstr "%s kot %s"
+
+#, python-format
+#~ msgid "%s as %s in %s"
+#~ msgstr "%s kot %s v %s"
+
+#, python-format
+#~ msgid "%s as %s on %s"
+#~ msgstr "%s kot %s na %s"
+
+#, python-format
+#~ msgid "Assignment %s conflicts with another assignment: %s"
+#~ msgstr "Zadolžitev %s je v konfliktu z zadolžitvijo: %s"
+
+#~ msgid "Followers (Channels)"
+#~ msgstr "Sledilci (kanali)"
+
+#~ msgid "Inactive"
+#~ msgstr "Neaktivno"
+
+#~ msgid "Inherit assignments"
+#~ msgstr "Deduj zadolžitve"
+
+#~ msgid "Limit role to assignments"
+#~ msgstr "Omeji vlogo na zadolžitve"
+
+#, python-format
+#~ msgid "User %s can not be assigned to role %s on %s."
+#~ msgstr "Uporabniku %s ni mogoče dodeliti vloge %s na %s."
+
+#, python-format
+#~ msgid "User %s can not be assigned to role %s."
+#~ msgstr "Uporabniku %s ni mogoče dodeliti vloge %s."
+
 #~ msgid "If checked new messages require your attention."
 #~ msgstr "Če označeno pomeni, da nova sporočila zahtevajo vašo pozornost."
-
-#~ msgid "WBS element"
-#~ msgstr "Projektni člen"
 
 #~ msgid "You cannot create recursive roles."
 #~ msgstr "Rekurzivne vloge niso dovoljene."
