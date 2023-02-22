@@ -99,17 +99,6 @@ msgid "Destination Location"
 msgstr "Ubicazione di destinazione"
 
 #. module: project_stock
-#: model:ir.model.fields,field_description:project_stock.field_account_analytic_line__display_name
-#: model:ir.model.fields,field_description:project_stock.field_project_project__display_name
-#: model:ir.model.fields,field_description:project_stock.field_project_task__display_name
-#: model:ir.model.fields,field_description:project_stock.field_project_task_type__display_name
-#: model:ir.model.fields,field_description:project_stock.field_stock_move__display_name
-#: model:ir.model.fields,field_description:project_stock.field_stock_move_line__display_name
-#: model:ir.model.fields,field_description:project_stock.field_stock_scrap__display_name
-msgid "Display Name"
-msgstr "Nome da visualizzare"
-
-#. module: project_stock
 #: model:ir.model.fields.selection,name:project_stock.selection__project_task__stock_state__done
 msgid "Done"
 msgstr ""
@@ -126,22 +115,11 @@ msgid "Group"
 msgstr "Gruppo"
 
 #. module: project_stock
-#: model:ir.model.fields,field_description:project_stock.field_account_analytic_line__id
-#: model:ir.model.fields,field_description:project_stock.field_project_project__id
-#: model:ir.model.fields,field_description:project_stock.field_project_task__id
-#: model:ir.model.fields,field_description:project_stock.field_project_task_type__id
-#: model:ir.model.fields,field_description:project_stock.field_stock_move__id
-#: model:ir.model.fields,field_description:project_stock.field_stock_move_line__id
-#: model:ir.model.fields,field_description:project_stock.field_stock_scrap__id
-msgid "ID"
-msgstr "ID"
-
-#. module: project_stock
 #: model:ir.model.fields,help:project_stock.field_project_task__done_stock_moves
 #: model:ir.model.fields,help:project_stock.field_project_task_type__done_stock_moves
 msgid ""
-"If you check this box, when a task is in this state, you will not be able to"
-" add more stock moves but they can be viewed."
+"If you check this box, when a task is in this state, you will not be able to "
+"add more stock moves but they can be viewed."
 msgstr ""
 
 #. module: project_stock
@@ -162,17 +140,6 @@ msgstr ""
 #, python-format
 msgid "It is not possible to change this with reserved movements in tasks."
 msgstr ""
-
-#. module: project_stock
-#: model:ir.model.fields,field_description:project_stock.field_account_analytic_line____last_update
-#: model:ir.model.fields,field_description:project_stock.field_project_project____last_update
-#: model:ir.model.fields,field_description:project_stock.field_project_task____last_update
-#: model:ir.model.fields,field_description:project_stock.field_project_task_type____last_update
-#: model:ir.model.fields,field_description:project_stock.field_stock_move____last_update
-#: model:ir.model.fields,field_description:project_stock.field_stock_move_line____last_update
-#: model:ir.model.fields,field_description:project_stock.field_stock_scrap____last_update
-msgid "Last Modified on"
-msgstr "Ultima modifica il"
 
 #. module: project_stock
 #: model_terms:ir.ui.view,arch_db:project_stock.view_task_form2
@@ -214,11 +181,6 @@ msgstr ""
 #: model:ir.model,name:project_stock.model_stock_move_line
 msgid "Product Moves (Stock Move Line)"
 msgstr ""
-
-#. module: project_stock
-#: model:ir.model,name:project_stock.model_project_project
-msgid "Project"
-msgstr "Progetto"
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_account_analytic_line__stock_task_id
@@ -308,6 +270,17 @@ msgid "Task for material"
 msgstr ""
 
 #. module: project_stock
+#: model:project.project,name:project_stock.project_project_tm_test
+#: model:stock.picking.type,name:project_stock.stock_picking_type_tm_test
+msgid "Task material"
+msgstr ""
+
+#. module: project_stock
+#: model:project.project,label_tasks:project_stock.project_project_tm_test
+msgid "Tasks"
+msgstr ""
+
+#. module: project_stock
 #: model:ir.model.fields,help:project_stock.field_project_task__unreserve_visible
 msgid "Technical field to check when we can unreserve"
 msgstr ""
@@ -337,3 +310,20 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_stock.field_project_task_type__use_stock_moves
 msgid "Use Stock Moves"
 msgstr ""
+
+#. module: project_stock
+#: model:ir.model,name:project_stock.model_project_project
+msgid "WBS element"
+msgstr ""
+
+#~ msgid "Display Name"
+#~ msgstr "Nome da visualizzare"
+
+#~ msgid "ID"
+#~ msgstr "ID"
+
+#~ msgid "Last Modified on"
+#~ msgstr "Ultima modifica il"
+
+#~ msgid "Project"
+#~ msgstr "Progetto"
