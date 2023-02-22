@@ -47,6 +47,7 @@ addon | version | maintainers | summary
 [project_timeline](project_timeline/) | 15.0.1.1.0 |  | Timeline view for projects
 [project_timesheet_time_control](project_timesheet_time_control/) | 15.0.1.0.0 | [![ernestotejeda](https://github.com/ernestotejeda.png?size=30px)](https://github.com/ernestotejeda) | Project timesheet time control
 [project_type](project_type/) | 15.0.1.0.1 |  | Project Types
+[project_wbs](project_wbs/) | 15.0.1.0.0 |  | Apply Work Breakdown Structure
 
 [//]: # (end addons)
 
