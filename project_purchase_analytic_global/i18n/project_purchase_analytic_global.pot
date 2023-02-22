@@ -15,5 +15,5 @@ msgstr ""
 
 #. module: project_purchase_analytic_global
 #: model:ir.model,name:project_purchase_analytic_global.model_project_project
-msgid "Project"
+msgid "WBS element"
 msgstr ""
