@@ -17,6 +17,16 @@ msgstr ""
 "X-Generator: Weblate 4.3.2\n"
 
 #. module: project_status
+#: model_terms:ir.ui.view,arch_db:project_status.project_view_kanban
+msgid "<span class=\"o_label\"> (</span>"
+msgstr ""
+
+#. module: project_status
+#: model_terms:ir.ui.view,arch_db:project_status.project_view_kanban
+msgid "<span class=\"o_label\">)</span>"
+msgstr ""
+
+#. module: project_status
 #: model_terms:ir.ui.view,arch_db:project_status.view_project_project_filter
 msgid "Closed"
 msgstr "Fermé"
@@ -47,7 +57,6 @@ msgid "Description"
 msgstr ""
 
 #. module: project_status
-#: model:ir.model.fields,field_description:project_status.field_project_project__display_name
 #: model:ir.model.fields,field_description:project_status.field_project_status__display_name
 msgid "Display Name"
 msgstr "Nom affiché"
@@ -58,7 +67,6 @@ msgid "Folded"
 msgstr "Plié"
 
 #. module: project_status
-#: model:ir.model.fields,field_description:project_status.field_project_project__id
 #: model:ir.model.fields,field_description:project_status.field_project_status__id
 msgid "ID"
 msgstr ""
@@ -74,7 +82,6 @@ msgid "Is Closed Status"
 msgstr "Est un état fermé"
 
 #. module: project_status
-#: model:ir.model.fields,field_description:project_status.field_project_project____last_update
 #: model:ir.model.fields,field_description:project_status.field_project_status____last_update
 msgid "Last Modified on"
 msgstr "Dernière modification le"
@@ -103,11 +110,6 @@ msgstr "En cours"
 #: model:project.status,name:project_status.project_status_pending
 msgid "Pending"
 msgstr "En attente"
-
-#. module: project_status
-#: model:ir.model,name:project_status.model_project_project
-msgid "Project"
-msgstr "Projet"
 
 #. module: project_status
 #: model:ir.model,name:project_status.model_project_status
@@ -152,3 +154,11 @@ msgstr "Indiquez s'il s'agit d'un état fermé."
 #: model_terms:ir.ui.view,arch_db:project_status.view_project_project_filter
 msgid "Status"
 msgstr "État"
+
+#. module: project_status
+#: model:ir.model,name:project_status.model_project_project
+msgid "WBS element"
+msgstr ""
+
+#~ msgid "Project"
+#~ msgstr "Projet"
