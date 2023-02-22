@@ -89,11 +89,6 @@ msgid "Merge"
 msgstr "Zusammenführen"
 
 #. module: project_task_default_stage
-#: model:ir.model,name:project_task_default_stage.model_project_project
-msgid "Project"
-msgstr "Projekt"
-
-#. module: project_task_default_stage
 #: model_terms:ir.ui.view,arch_db:project_task_default_stage.edit_project
 msgid "Project Stages"
 msgstr "Projektstufen"
@@ -107,8 +102,8 @@ msgstr "Projektstufen"
 #: model:project.task.type,legend_done:project_task_default_stage.project_tt_merge
 #: model:project.task.type,legend_done:project_task_default_stage.project_tt_specification
 #: model:project.task.type,legend_done:project_task_default_stage.project_tt_testing
-msgid "Ready for Next Stage"
-msgstr "Bereit für die nächste Sufe"
+msgid "Ready"
+msgstr ""
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_specification
@@ -129,3 +124,14 @@ msgstr "Aufgabenstufen"
 #: model:project.task.type,name:project_task_default_stage.project_tt_testing
 msgid "Testing"
 msgstr "Testing"
+
+#. module: project_task_default_stage
+#: model:ir.model,name:project_task_default_stage.model_project_project
+msgid "WBS element"
+msgstr ""
+
+#~ msgid "Project"
+#~ msgstr "Projekt"
+
+#~ msgid "Ready for Next Stage"
+#~ msgstr "Bereit für die nächste Sufe"
