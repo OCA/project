@@ -42,7 +42,7 @@
         <field name="inherit_id" ref="project.view_task_form2" />
         <field name="arch" type="xml">
             <field name="name" position="before">
-                <field name="key" readonly="1" nolabel="1" class="oe_read_only" />
+                <field name="key" readonly="1" nolabel="1" class="oe_read_only mx-3" />
             </field>
         </field>
     </record>
