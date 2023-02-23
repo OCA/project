@@ -2,10 +2,10 @@
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 {
     "name": "Project Stage Management",
-    "version": "14.0.1.0.0",
+    "version": "15.0.1.0.0",
     "development_status": "Beta",
     "author": "ForgeFlow, Odoo Community Association (OCA)",
-    "summary": "Allows to assign and create stages on project creation wizard",
+    "summary": "Allows to assign and create task stages on project creation wizard",
     "website": "https://github.com/OCA/project",
     "category": "Project",
     "depends": ["project"],
