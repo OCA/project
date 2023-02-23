@@ -16,7 +16,7 @@
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.edit_project" />
         <field name="arch" type="xml">
-            <page name="description_page" position="after">
+            <page name="description" position="after">
                 <page name="stage" string="Stages">
                     <field name="type_ids">
                         <tree editable="bottom">
