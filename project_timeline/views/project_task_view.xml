@@ -57,9 +57,6 @@
             name="view_mode"
         >kanban,tree,form,calendar,timeline,pivot,graph,activity</field>
     </record>
-    <record id="project.action_project_task_user_tree" model="ir.actions.act_window">
-        <field name="view_mode">graph,pivot,timeline</field>
-    </record>
     <record
         id="project.act_res_users_2_project_task_opened"
         model="ir.actions.act_window"
