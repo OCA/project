@@ -38,6 +38,7 @@ addon | version | maintainers | summary
 [project_stage_closed](project_stage_closed/) | 12.0.1.0.0 |  | Make the Closed flag on Task Stages available without installing sale_service
 [project_stage_state](project_stage_state/) | 12.0.1.0.0 |  | Restore State attribute removed from Project Stages in 8.0
 [project_status](project_status/) | 12.0.1.1.1 | [![patrickrwilson](https://github.com/patrickrwilson.png?size=30px)](https://github.com/patrickrwilson) | Project Status
+[project_stock](project_stock/) | 12.0.1.0.0 | [![victoralmau](https://github.com/victoralmau.png?size=30px)](https://github.com/victoralmau) | Project Stock
 [project_stock_request](project_stock_request/) | 12.0.1.0.0 |  | Create stock requests from a projects and project tasks
 [project_tag](project_tag/) | 12.0.1.0.0 | [![patrickrwilson](https://github.com/patrickrwilson.png?size=30px)](https://github.com/patrickrwilson) | Project Tags
 [project_task_add_very_high](project_task_add_very_high/) | 12.0.1.0.2 | [![astirpe](https://github.com/astirpe.png?size=30px)](https://github.com/astirpe) | Adds extra options 'High' and 'Very High' on tasks
