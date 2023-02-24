@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_task_form2" model="ir.ui.view">
+        <field name="name">project.task.form</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2" />
+        <field name="groups_id" eval="[(4, ref('stock.group_stock_user'))]" />
+        <field name="arch" type="xml">
+            <xpath expr="///button[@name='action_subtask']" position="after">
+                <button
+                    name="%(action_project_task_moves)d"
+                    type="action"
+                    string="Product Moves"
+                    class="oe_stat_button"
+                    icon="fa-exchange"
+                    attrs="{'invisible': [('done_stock_moves', '=', False)]}"
+                />
+                <button
+                    class="oe_stat_button"
+                    name="action_see_move_scrap"
+                    type="object"
+                    icon="fa-arrows-v"
+                    attrs="{'invisible': [('scrap_count', '=', 0)]}"
+                >
+                    <field name="scrap_count" widget="statinfo" string="Scraps" />
+                </button>
+            </xpath>
+            <field name="project_id" position="after">
+                <field
+                    name="stock_analytic_account_id"
+                    groups="analytic.group_analytic_accounting"
+                    attrs="{'required': [('project_id', '=', False)], 'invisible': [('use_stock_moves', '=', False)]}"
+                />
+                <field
+                    name="stock_analytic_tag_ids"
+                    groups="analytic.group_analytic_tags"
+                    attrs="{'invisible': [('use_stock_moves', '=', False)]}"
+                    widget="many2many_tags"
+                />
+                <field name="stock_analytic_date" />
+            </field>
+            <field name="stage_id" position="before">
+                <button
+                    name="action_confirm"
+                    string="Confirm materials"
+                    type="object"
+                    class="oe_highlight"
+                    attrs="{'invisible':[('allow_moves_action_confirm','=',False)]}"
+                />
+                <button
+                    name="action_assign"
+                    string="Check availability materials"
+                    type="object"
+                    class="oe_highlight"
+                    attrs="{'invisible':[('allow_moves_action_assign','=',False)]}"
+                />
+                <button
+                    name="button_scrap"
+                    type="object"
+                    string="Scrap"
+                    attrs="{'invisible': ['|','|',('stock_state', '=', 'done'),('done_stock_moves', '=', False),('stock_moves_is_locked','=',False)]}"
+                />
+                <button
+                    name="button_unreserve"
+                    type="object"
+                    string="Unreserve"
+                    attrs="{'invisible': ['|','|','|', ('stock_state', '=', 'cancel'),('unreserve_visible', '=', False),('done_stock_moves', '=', False),('stock_moves_is_locked','=',False)]}"
+                />
+                <button
+                    name="action_cancel"
+                    type="object"
+                    string="Cancel Materials"
+                    attrs="{'invisible': ['|','|',('stock_state', 'in', ('draft', 'cancel')),('done_stock_moves', '=', False),('stock_moves_is_locked','=',False)]}"
+                />
+                <button
+                    name="action_done"
+                    type="object"
+                    string="Transfer Materials"
+                    attrs="{'invisible': ['|','|',('stock_state', '!=', 'assigned'),('done_stock_moves', '=', False),('stock_moves_is_locked', '=', False)]}"
+                    class="oe_highlight"
+                />
+                <button
+                    name="action_toggle_stock_moves_is_locked"
+                    attrs="{'invisible': ['|', '|', ('stock_state', 'in', ('draft','cancel')), ('stock_moves_is_locked', '=', False),('done_stock_moves', '=',False)]}"
+                    string="Unlock"
+                    groups="stock.group_stock_manager"
+                    type="object"
+                />
+                <button
+                    name="action_toggle_stock_moves_is_locked"
+                    attrs="{'invisible': ['|',('stock_moves_is_locked', '=', True),('done_stock_moves','=',False)]}"
+                    string="Lock"
+                    class="oe_highlight"
+                    groups="stock.group_stock_manager"
+                    type="object"
+                />
+            </field>
+            <xpath expr="///page[@name='extra_info']" position="before">
+                <page
+                    name="stock_info"
+                    string="Stock Info"
+                    attrs="{'invisible': [('use_stock_moves', '=', False)]}"
+                >
+                    <field name="use_stock_moves" invisible="1" />
+                    <field name="done_stock_moves" invisible="1" />
+                    <field name="stock_moves_is_locked" invisible="1" />
+                    <field name="stock_state" invisible="1" />
+                    <field name="allow_moves_action_confirm" invisible="1" />
+                    <field name="allow_moves_action_assign" invisible="1" />
+                    <field name="unreserve_visible" invisible="1" />
+                    <field
+                        name="move_ids"
+                        context="{'tree_view_ref': 'project_stock.view_stock_move_raw_tree', 'form_view_ref':'stock.view_move_form', 'default_company_id': company_id, 'default_state': 'draft', 'default_raw_material_task_id': id}"
+                        attrs="{'readonly': [('done_stock_moves', '=', True),('stock_moves_is_locked', '=', True)]}"
+                    />
+                </page>
+            </xpath>
+            <xpath expr="///page[@name='extra_info']/group[1]" position="inside">
+                <group
+                    string="Stock Info"
+                    name="stock_ifno_misc"
+                    groups="stock.group_stock_user"
+                    attrs="{'invisible': [('use_stock_moves', '=', False)]}"
+                >
+                    <field name="picking_type_id" />
+                    <field name="location_id" />
+                    <field name="location_dest_id" />
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>
