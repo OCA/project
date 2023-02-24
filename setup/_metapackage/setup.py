@@ -18,6 +18,7 @@ setuptools.setup(
         'odoo-addon-project_parent_task_filter>=15.0dev,<15.1dev',
         'odoo-addon-project_purchase_analytic_global>=15.0dev,<15.1dev',
         'odoo-addon-project_role>=15.0dev,<15.1dev',
+        'odoo-addon-project_stage_mgmt>=15.0dev,<15.1dev',
         'odoo-addon-project_status>=15.0dev,<15.1dev',
         'odoo-addon-project_stock>=15.0dev,<15.1dev',
         'odoo-addon-project_stock_product_set>=15.0dev,<15.1dev',
