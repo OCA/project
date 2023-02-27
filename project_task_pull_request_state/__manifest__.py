@@ -11,8 +11,9 @@
     "depends": [
         "project_task_pull_request",
     ],
-    "maintainers": ["InsanivimusOmnes", "CetmixGitDrone"],
+    "maintainers": ["isserver1", "CetmixGitDrone"],
     "data": [
-        "views/project_task_pull_request_state_view.xml",
+        "views/project_task_view.xml",
+        "views/project_project_view.xml",
     ],
 }

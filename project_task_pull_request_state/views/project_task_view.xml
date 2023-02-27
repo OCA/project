@@ -20,16 +20,13 @@
             <xpath expr="//field[@name='stage_id']" position="after">
                 <field name="pr_state"/>
             </xpath>
-        </field>
-    </record>
-
-    <record id="edit_project" model="ir.ui.view">
-        <field name="name">project.project.form</field>
-        <field name="model">project.project</field>
-        <field name="inherit_id" ref="project.edit_project"/>
-        <field name="arch" type="xml">
-            <xpath expr="//field[@name='partner_id']" position="after">
-                <field name="pr_state_default"/>
+            <xpath expr="//group[1]" position="before">
+                <separator/>
+                <filter string="Has PR" name="has_pr" domain="[('pr_uri','!=',False)]" />
+            </xpath>
+            <xpath expr="//group[1]" position="inside">
+                <separator/>
+                <filter string="PR State" context="{'group_by':'pr_state'}" />
             </xpath>
         </field>
     </record>

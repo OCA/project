@@ -5,66 +5,52 @@ class TestPullRequestState(TransactionCase):
     def setUp(self):
         super(TestPullRequestState, self).setUp()
 
-        ProjectProject = self.env["project.project"]
-        ProjectTask = self.env['project.task']
+        self.Project = self.env["project.project"]
+        self.Task = self.env['project.task']
+        self.Stage = self.env['project.task.type']
 
-        self.project_1 = ProjectProject.create({
-            'name': 'Test Project',
-            'pr_required_states': [(4, 6, 0)],
-            'key': 'ABC',
-            'pr_state_default': None
-
+        self.stage_draft = self.Stage.create({"name": "Draft"})
+        self.stage_progress = self.Stage.create({"name": "Progress"})
+        
+        self.project_1 = self.Project.create({
+            'name': 'Test Project 1',
+            "type_ids": [(4, self.stage_draft.id),(4, self.stage_progress.id)],
+            'pr_state_default': "draft"
         })
-        self.project_2 = ProjectProject.create({
-            'name': 'Test Project',
-            'pr_required_states': [(4, 6, 0), (4, 5, 0)],
-            'key': 'DEF',
-            'pr_state_default': 'draft'
+        self.project_2 = self.Project.create({
+            'name': 'Test Project 2',
+            "type_ids": [(4, self.stage_draft.id),(4, self.stage_progress.id)],
+            'pr_state_default': 'open'
         })
-        self.task_1 = ProjectTask.create({
-            'name': 'Test Task',
+        self.task_1 = self.Task.create({
+            'name': 'Test Task for project 1',
             'project_id': self.project_1.id,
-            'pr_uri': None
         })
-        self.task_2 = ProjectTask.create({
-            'name': 'Test Task',
+        self.task_2 = self.Task.create({
+            'name': 'Test Task for project 2',
             'project_id': self.project_2.id,
-            'pr_uri': False
+        })
+        self.task_3 = self.Task.create({
+            'name': 'Test Task without project',
         })
 
-    def test_pull_request_state(self):
-        """Testing project task pull request states"""
-        self.task_1.write({
-            'pr_uri': 'Test Pull Request'
-        })
-        self.assertEquals(self.task_1.pr_state, self.project_1.pr_state_default,
-                          msg='Pull Request State must be equal PR state in project')
-        self.task_2.pr_uri = False
-        self.assertEquals(self.task_2.pr_state, False,
-                          msg='Pull Request State must be equal False')
-        self.task_2.pr_uri = 'Test 2'
-        self.task_2.pr_state = 'merged'
-        self.assertEquals(self.task_2.pr_state, 'merged',
-                          msg='Pull Request State must be equal Merged')
-        task = self.env['project.task']
-        self.task_3 = task.create({
-            'name': 'Test Task',
-            'project_id': False,
-            'pr_uri': False
-        })
-        self.assertEquals(self.task_3.pr_state, False,
-                          msg='Pull Request State must be equal False')
-        self.task_4 = task.create({
-            'name': 'Test Task',
-            'project_id': False,
-            'pr_uri': 'Test URI'
-        })
-        self.assertEquals(self.task_4.pr_state, False,
-                          msg='Pull Request State must be equal False')
-        self.task_5 = task.create({
-            'name': 'Test Task',
-            'project_id': self.project_2.id,
-            'pr_uri': 'Test'
-        })
-        self.assertEquals(self.task_5.pr_state, 'draft',
-                          msg='Pull Request State must be equal Draft')
+    def test_pull_request_state_set_default(self):
+        """Set default PR state from project when PR URI is added to task"""
+
+        # Set to several existing tasks at once
+        tasks = self.Task.browse([self.task_1.id, self.task_2.id, self.task_3.id])
+        tasks.write({"pr_uri": "https://@my.pr.uri/pr"})
+
+        self.assertEqual(self.task_1.pr_state, "draft", "PR state must be 'draft")
+        self.assertEqual(self.task_2.pr_state, "open", "PR state must be 'open")
+        self.assertFalse(self.task_3.pr_state, "PR state must not be set")
+
+    def test_pull_request_state_set_explicit(self):
+        """Set PR state from vals when PR URI is added to task"""
+        # Set to several existing tasks at once
+        tasks = self.Task.browse([self.task_1.id, self.task_2.id, self.task_3.id])
+        tasks.write({"pr_uri": "https://@my.pr.uri/pr", "pr_state": "merged"})
+
+        self.assertEqual(self.task_1.pr_state, "merged", "PR state must be 'merged")
+        self.assertEqual(self.task_2.pr_state, "merged", "PR state must be 'merged")
+        self.assertEqual(self.task_3.pr_state, "merged", "PR state must be 'merged")
