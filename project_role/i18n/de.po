@@ -6,36 +6,36 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2019-11-13 14:34+0000\n"
-"Last-Translator: Maria Sparenberg <maria.sparenberg@gmx.net>\n"
+"PO-Revision-Date: 2023-03-03 09:15+0000\n"
+"Last-Translator: Nils Coenen <nils.coenen@nico-solutions.de>\n"
 "Language-Team: none\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.8\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #. module: project_role
 #. odoo-python
 #: code:addons/project_role/models/project_assignment.py:0
 #, python-format
 msgid "%(USER)s as %(ROLE)s"
-msgstr ""
+msgstr "%(USER)s als %(ROLE)s"
 
 #. module: project_role
 #. odoo-python
 #: code:addons/project_role/models/project_assignment.py:0
 #, python-format
 msgid "%(USER)s as %(ROLE)s in %(PROJECT)s"
-msgstr ""
+msgstr "%(USER)s als %(ROLE)s in %(PROJECT)s"
 
 #. module: project_role
 #. odoo-python
 #: code:addons/project_role/models/project_assignment.py:0
 #, python-format
 msgid "%(USER)s as %(ROLE)s on %(PROJECT)s"
-msgstr ""
+msgstr "%(USER)s als %(ROLE)s auf %(PROJECT)s"
 
 #. module: project_role
 #. odoo-python
@@ -96,6 +96,8 @@ msgid ""
 "Assignment %(ASSIGNMENT)s conflicts with another assignment: "
 "%(OTHER_ASSIGNMENT)s"
 msgstr ""
+"Zuweisung %(ASSIGNMENT)s hat einen Konflikt mit einer anderen Zuweisung: "
+"%(OTHER_ASSIGNMENT)s"
 
 #. module: project_role
 #: model:ir.actions.act_window,name:project_role.project_assignment_view_project_action
@@ -113,11 +115,15 @@ msgstr "Anhangsanzahl"
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
 msgid "Check to configure projects to inherit company assignments by default."
 msgstr ""
+"Aktivieren Sie diese Option, um Projekte so zu konfigurieren, dass sie "
+"Unternehmenszuweisungen standardmäßig erben."
 
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
 msgid "Check to configure projects to limit role to assignments by default."
 msgstr ""
+"Aktivieren Sie diese Option, um Projekte so zu konfigurieren, dass die Rolle "
+"standardmäßig auf Zuweisungen beschränkt wird."
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_role__child_ids
@@ -197,7 +203,7 @@ msgstr "Gruppieren nach"
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__has_message
 msgid "Has Message"
-msgstr ""
+msgstr "Hat Nachricht"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__id
@@ -220,7 +226,7 @@ msgstr ""
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_project__inherit_assignments
 msgid "Inherit Assignments"
-msgstr ""
+msgstr "Zuweisungen erben"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_is_follower
@@ -417,13 +423,15 @@ msgstr "Benutzer"
 #, python-format
 msgid "User %(USER)s can not be assigned to role %(ROLE)s on %(PROJECT)s."
 msgstr ""
+"Benutzer %(USER)s kann keiner Rolle zugeordnet werden: %(ROLE)s in "
+"%(PROJECT)s."
 
 #. module: project_role
 #. odoo-python
 #: code:addons/project_role/models/project_assignment.py:0
 #, python-format
 msgid "User %(USER)s can not be assigned to role %(ROLE)s."
-msgstr ""
+msgstr "Benutzer %(USER)s kann der Rolle nicht zugeordnet werden: %(ROLE)s."
 
 #. module: project_role
 #: model:ir.model.constraint,message:project_role.constraint_project_assignment_company_role_user_uniq
