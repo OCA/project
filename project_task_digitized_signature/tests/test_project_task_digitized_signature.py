@@ -4,7 +4,7 @@
 from odoo.tests import common
 
 
-class TestProjectTaskDigitizedSignature(common.SavepointCase):
+class TestProjectTaskDigitizedSignature(common.TransactionCase):
     @classmethod
     def setUpClass(cls):
         super(TestProjectTaskDigitizedSignature, cls).setUpClass()
