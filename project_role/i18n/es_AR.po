@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2022-02-06 20:59+0000\n"
+"PO-Revision-Date: 2023-03-04 18:23+0000\n"
 "Last-Translator: Ignacio Buioli <ibuioli@gmail.com>\n"
 "Language-Team: none\n"
 "Language: es_AR\n"
@@ -14,25 +14,25 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.3.2\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #. module: project_role
 #: code:addons/project_role/models/project_assignment.py:0
 #, python-format
 msgid "%(USER)s as %(ROLE)s"
-msgstr ""
+msgstr "%(USER)s como %(ROLE)s"
 
 #. module: project_role
 #: code:addons/project_role/models/project_assignment.py:0
 #, python-format
 msgid "%(USER)s as %(ROLE)s in %(PROJECT)s"
-msgstr ""
+msgstr "%(USER)s como %(ROLE)s en %(PROJECT)s"
 
 #. module: project_role
 #: code:addons/project_role/models/project_assignment.py:0
 #, python-format
 msgid "%(USER)s as %(ROLE)s on %(PROJECT)s"
-msgstr ""
+msgstr "%(USER)s como %(ROLE)s en %(PROJECT)s"
 
 #. module: project_role
 #: code:addons/project_role/models/project_role.py:0
@@ -92,6 +92,8 @@ msgid ""
 "Assignment %(ASSIGNMENT)s conflicts with another assignment: "
 "%(OTHER_ASSIGNMENT)s"
 msgstr ""
+"Asignación %(ASSIGNMENT)s tiene conflictos con otra asignación: "
+"%(OTHER_ASSIGNMENT)s"
 
 #. module: project_role
 #: model:ir.actions.act_window,name:project_role.project_assignment_view_project_action
@@ -197,7 +199,7 @@ msgstr "Agrupar Por"
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__has_message
 msgid "Has Message"
-msgstr ""
+msgstr "Tiene un Mensaje"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__id
@@ -220,7 +222,7 @@ msgstr "Si está seleccionado, algunos mensajes tienen error de entrega."
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_project__inherit_assignments
 msgid "Inherit Assignments"
-msgstr ""
+msgstr "Asignaciones Heredadas"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_is_follower
@@ -255,7 +257,7 @@ msgstr "Limitar el Rol del Proyecto a las Asignaciones"
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_project__limit_role_to_assignments
 msgid "Limit Role To Assignments"
-msgstr ""
+msgstr "Limitar Rol a las Asignaciones"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_main_attachment_id
@@ -420,13 +422,13 @@ msgstr "Usuario"
 #: code:addons/project_role/models/project_assignment.py:0
 #, python-format
 msgid "User %(USER)s can not be assigned to role %(ROLE)s on %(PROJECT)s."
-msgstr ""
+msgstr "Usuario %(USER)s no puede ser asignado al rol %(ROLE)s en %(PROJECT)s."
 
 #. module: project_role
 #: code:addons/project_role/models/project_assignment.py:0
 #, python-format
 msgid "User %(USER)s can not be assigned to role %(ROLE)s."
-msgstr ""
+msgstr "Usuario %(USER)s no puede ser asignado al rol %(ROLE)s."
 
 #. module: project_role
 #: model:ir.model.constraint,message:project_role.constraint_project_assignment_company_role_user_uniq
@@ -448,7 +450,7 @@ msgstr "¡El usuario puede ser asignado por rol solo una vez!"
 #. module: project_role
 #: model:ir.model,name:project_role.model_project_project
 msgid "WBS element"
-msgstr ""
+msgstr "Elemento WBS"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__website_message_ids
