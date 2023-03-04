@@ -178,7 +178,7 @@
              'user_invisible': True, 'search_default_timebox_id': 1}
         </field>
         <field name="domain">
-            [('user_id', '=', uid),
+            [('user_ids', '=', uid),
             '|', ('stage_id.sequence', '&lt;', 20), ('stage_id', '=', False)]
         </field>
         <field name="view_mode">kanban,tree,form,calendar,graph</field>

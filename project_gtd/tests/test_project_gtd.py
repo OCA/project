@@ -56,7 +56,7 @@ class TestProjectGtd(TransactionCase):
         """
         Check correct timebox after emptiying task.
         """
-        self.task.user_id = self.env.uid
+        self.task.partner_id = self.env.uid
         self.process()
         self.assertTrue(self.task.timebox_id == self.timebox_daily)
 
@@ -69,4 +69,4 @@ class TestProjectGtd(TransactionCase):
             ],
             "active_id": self.timebox_weekly.id,
         }
-        self.project_timebox_empty.with_context(context).process()
+        self.project_timebox_empty.with_context(**context).process()

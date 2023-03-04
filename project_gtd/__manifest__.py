@@ -4,7 +4,7 @@
 
 {
     "name": "Todo Lists",
-    "version": "14.0.1.0.0",
+    "version": "15.0.0.1.0",
     "category": "Project Management",
     "sequence": 100,
     "summary": "Personal Tasks, Contexts, Timeboxes",

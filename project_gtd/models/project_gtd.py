@@ -16,7 +16,6 @@ class ProjectGtdContext(models.Model):
 
     name = fields.Char("Context", required=True, translate=True)
     sequence = fields.Integer(
-        "Sequence",
         help="Gives the sequence order when displaying a list of contexts.",
         default=1,
     )
@@ -29,7 +28,6 @@ class ProjectGtdTimebox(models.Model):
 
     name = fields.Char("Timebox", size=64, required=True, index=1, translate=1)
     sequence = fields.Integer(
-        "Sequence",
         help="Gives the sequence order when displaying " "a list of timebox.",
     )
 

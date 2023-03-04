@@ -31,7 +31,7 @@ class ProjectTimeboxEmpty(models.TransientModel):
         tasks = task_model.search([("timebox_id", "=", self.env.context["active_id"])])
         for task in tasks:
             if (task.stage_id and task.stage_id.fold) or (
-                task.user_id.id != self.env.uid
+                task.partner_id.id != self.env.uid
             ):
                 close.append(task.id)
             else:
