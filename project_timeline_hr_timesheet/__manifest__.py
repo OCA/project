@@ -8,7 +8,7 @@
     "license": "AGPL-3",
     "website": "https://github.com/OCA/project",
     "category": "Project Management",
-    "version": "14.0.1.0.0",
+    "version": "14.0.1.0.1",
     "depends": ["project_timeline", "hr_timesheet"],
     "data": ["templates/assets.xml", "views/project_task_view.xml"],
     "installable": True,
