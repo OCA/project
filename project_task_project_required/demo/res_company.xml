@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!--
 Copyright (C) 2022 - Today: GRAP (http://www.grap.coop)
 @author: Sylvain LE GAL (https://twitter.com/legalsylvain)
@@ -10,7 +10,7 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 	to avoid error with other modules, when loading demo tasks
 	or executing tests -->
     <record id="base.main_company" model="res.company">
-        <field name="is_project_task_project_required" eval="False"/>
+        <field name="is_project_task_project_required" eval="False" />
     </record>
 
 </odoo>
