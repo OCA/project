@@ -6,9 +6,9 @@ License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 -->
 <odoo>
 
-	<!-- Disable the feature on the demo company
-	to avoid error with other modules, when loading demo tasks
-	or executing tests -->
+    <!-- Disable the feature on the demo company
+    to avoid error with other modules, when loading demo tasks
+    or executing tests -->
     <record id="base.main_company" model="res.company">
         <field name="is_project_task_project_required" eval="False" />
     </record>
