@@ -6,7 +6,7 @@
     "name": "Project: require Project on Task",
     "summary": """
         Set project on task as a mandatory field""",
-    "version": "12.0.1.1.0",
+    "version": "14.0.1.0.0",
     "license": "AGPL-3",
     "author": "CorporateHub, " "Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/project",
