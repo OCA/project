@@ -1,0 +1,1 @@
+odoo-addon-project_task_report@ git+https://github.com/oca/project-reporting@refs/pull/47/head#subdirectory=setup/project_task_report
