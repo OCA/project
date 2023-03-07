@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-19 07:00+0000\n"
-"PO-Revision-Date: 2023-01-18 11:55+0000\n"
+"PO-Revision-Date: 2023-03-07 19:26+0000\n"
 "Last-Translator: Francesco Foresti <francesco.foresti@ooops404.com>\n"
 "Language-Team: Italian (http://www.transifex.com/oca/OCA-project-8-0/"
 "language/it/)\n"
@@ -88,7 +88,7 @@ msgstr ""
 #. module: project_classification
 #: field:project.classification,create_uid:0
 msgid "Created by"
-msgstr "Created by"
+msgstr "Creato da"
 
 #. module: project_classification
 #: field:project.classification,create_date:0
