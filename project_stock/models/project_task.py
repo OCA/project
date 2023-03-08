@@ -1,4 +1,4 @@
-# Copyright 2022 Tecnativa - Víctor Martínez
+# Copyright 2022-2023 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
@@ -125,6 +125,14 @@ class ProjectTask(models.Model):
             already_reserved = item.mapped("move_ids.move_line_ids")
             any_quantity_done = any([m.quantity_done > 0 for m in item.move_ids])
             item.unreserve_visible = not any_quantity_done and already_reserved
+
+    def _set_procurement_group_id(self):
+        """We use this method to auto-set group_id always and use it in other addons."""
+        self.ensure_one()
+        if not self.group_id:
+            self.group_id = self.env["procurement.group"].create(
+                self._prepare_procurement_group_vals()
+            )
 
     @api.onchange("picking_type_id")
     def _onchange_picking_type_id(self):

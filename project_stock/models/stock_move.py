@@ -1,4 +1,4 @@
-# Copyright 2022 Tecnativa - Víctor Martínez
+# Copyright 2022-2023 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 from odoo import api, fields, models
 
@@ -93,10 +93,7 @@ class StockMove(models.Model):
             task = self.env["project.task"].browse(
                 self.env.context.get("default_raw_material_task_id")
             )
-            if not task.group_id:
-                task.group_id = self.env["procurement.group"].create(
-                    task._prepare_procurement_group_vals()
-                )
+            task._set_procurement_group_id()  # Define group_id only if necessary
             defaults.update(
                 {
                     "group_id": task.group_id.id,
