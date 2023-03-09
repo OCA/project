@@ -34,6 +34,7 @@ class ProductSetAddFromTask(models.TransientModel):
         if not self.task_id:
             return super().add_set()
         self._check_partner()
+        self.task_id._set_procurement_group_id()  # We make sure it is defined
         move_lines = self._prepare_stock_move_lines()
         if move_lines:
             self.task_id.write({"move_ids": move_lines})
