@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Moduon Team S.L.
+     License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0) -->
+<data noupdate="1">
+    <record id="seq_project_sequence" model="ir.sequence">
+        <field name="name">Project sequence</field>
+        <field name="code">project.sequence</field>
+        <field name="prefix">%(range_y)s-</field>
+        <field name="use_date_range">True</field>
+        <field name="padding">5</field>
+        <field name="company_id" eval="False" />
+    </record>
+</data>
