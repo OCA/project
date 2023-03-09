@@ -1,4 +1,4 @@
-# Copyright 2022 Tecnativa - Víctor Martínez
+# Copyright 2022-2023 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 from odoo import models
 
@@ -18,6 +18,7 @@ class ProductSetLine(models.Model):
             "location_dest_id": (
                 task.location_dest_id.id or task.project_id.location_dest_id.id
             ),
+            "group_id": task.group_id.id,
             "state": "draft",
             "raw_material_task_id": task.id,
             "picking_type_id": task.picking_type_id.id
