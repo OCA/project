@@ -1,0 +1,48 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_sequence
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-04-10 10:29+0000\n"
+"PO-Revision-Date: 2023-04-19 11:22+0200\n"
+"Last-Translator: Andrea Cattalani <andrea@moduon.team>\n"
+"Language-Team: \n"
+"Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.1.1\n"
+
+#. module: project_sequence
+#: model:ir.model.fields,field_description:project_sequence.field_project_project__code
+msgid "Code"
+msgstr "Código"
+
+#. module: project_sequence
+#: model:ir.model.fields,field_description:project_sequence.field_project_project__display_name
+msgid "Display Name"
+msgstr "Nombre"
+
+#. module: project_sequence
+#: model:ir.model.fields,field_description:project_sequence.field_project_project__id
+msgid "ID"
+msgstr "ID"
+
+#. module: project_sequence
+#: model:ir.model.fields,field_description:project_sequence.field_project_project____last_update
+msgid "Last Modified on"
+msgstr "Última modificación el"
+
+#. module: project_sequence
+#: model:ir.model.fields,field_description:project_sequence.field_project_project__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: project_sequence
+#: model:ir.model,name:project_sequence.model_project_project
+msgid "Project"
+msgstr "Proyecto"
