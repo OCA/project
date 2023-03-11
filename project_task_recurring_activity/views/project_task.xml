@@ -1,0 +1,33 @@
+<odoo>
+    <record model="ir.ui.view" id="view_recurring_activity_form">
+        <field name="name">project_task_recurring_activity_form</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2" />
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button
+                    string="Create Next Recurring Task"
+                    class="oe_highlight"
+                    groups="base.group_no_one"
+                    name="call_create_recurring_tasks"
+                    type="object"
+                    attrs="{'invisible': [('recurring_task','=',False)] }"
+                />
+            </xpath>
+            <xpath expr="//notebook/page[@name='recurrence']" position="inside">
+                <group name="activities" string="Activities" />
+                <field name="recurring_activity_ids">
+                <tree>
+                    <field name="user_id" />
+                    <field name="project_task_id" invisible='1' />
+                    <field name="activity_type_id" />
+                    <field name="summary" />
+                    <field name="description" />
+                    <field name="days_after_task_creation_date" />
+                </tree>
+                </field>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
