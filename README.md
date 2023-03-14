@@ -29,6 +29,7 @@ addon | version | maintainers | summary
 [project_task_default_stage](project_task_default_stage/) | 16.0.1.0.0 |  | Recovery default task stages for projects from v8
 [project_task_personal_stage_auto_fold](project_task_personal_stage_auto_fold/) | 16.0.1.0.0 |  | Moves task to the first fold personal stage when done
 [project_template](project_template/) | 16.0.1.0.0 | [![patrickrwilson](https://github.com/patrickrwilson.png?size=30px)](https://github.com/patrickrwilson) | Project Templates
+[project_timeline](project_timeline/) | 16.0.1.0.0 |  | Timeline view for projects
 [project_type](project_type/) | 16.0.1.0.0 |  | Project Types
 
 [//]: # (end addons)
