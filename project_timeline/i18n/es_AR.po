@@ -17,24 +17,9 @@ msgstr ""
 "X-Generator: Weblate 4.3.2\n"
 
 #. module: project_timeline
-#: model:ir.model.fields,field_description:project_timeline.field_project_task__display_name
-msgid "Display Name"
-msgstr "Mostrar Nombre"
-
-#. module: project_timeline
-#: model:ir.model.fields,field_description:project_timeline.field_project_task__id
-msgid "ID"
-msgstr "ID"
-
-#. module: project_timeline
-#: model:ir.model.fields,field_description:project_timeline.field_project_task____last_update
-msgid "Last Modified on"
-msgstr "Última modificación en"
-
-#. module: project_timeline
 #: model:ir.model.fields,field_description:project_timeline.field_project_task__date_start
-msgid "Starting Date"
-msgstr "Fecha de Inicio"
+msgid "Start Date"
+msgstr ""
 
 #. module: project_timeline
 #: model:ir.model,name:project_timeline.model_project_task
@@ -45,3 +30,15 @@ msgstr "Tarea"
 #: model_terms:ir.ui.view,arch_db:project_timeline.project_task_timeline
 msgid "User"
 msgstr "Usuario"
+
+#~ msgid "Display Name"
+#~ msgstr "Mostrar Nombre"
+
+#~ msgid "ID"
+#~ msgstr "ID"
+
+#~ msgid "Last Modified on"
+#~ msgstr "Última modificación en"
+
+#~ msgid "Starting Date"
+#~ msgstr "Fecha de Inicio"
