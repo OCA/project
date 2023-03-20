@@ -123,6 +123,9 @@ class HrTimesheetSwitch(models.TransientModel):
                 # error because time_stop - time_start must equal duration.
                 "time_start",
                 "time_stop",
+                # Field from hr_timesheet_sheet, not a dependency
+                # can cause interference and undesired behaviours
+                "sheet_id",
             }
             inherited.read(_fields)
             values = inherited._convert_to_write(inherited._cache)
