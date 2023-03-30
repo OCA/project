@@ -43,4 +43,58 @@
             </field>
         </field>
     </record>
+
+    <record id="project_task_code_sharing_kanban_view" model="ir.ui.view">
+        <field name="name">project.task.code.kanban</field>
+        <field name="model">project.task</field>
+        <field
+            name="inherit_id"
+            ref="project.project_sharing_project_task_view_kanban"
+        />
+        <field name="arch" type="xml">
+            <s position="before">
+                <field name="code" />
+            </s>
+        </field>
+    </record>
+
+    <record id="project_task_code_sharing_tree_view" model="ir.ui.view">
+        <field name="name">project.task.code.tree</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.project_sharing_project_task_view_tree" />
+        <field name="arch" type="xml">
+            <field name="name" position="before">
+                <field name="code" />
+            </field>
+        </field>
+    </record>
+
+    <record id="project_task_code_sharing_form_view" model="ir.ui.view">
+        <field name="name">project.task.code.form</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.project_sharing_project_task_view_form" />
+        <field name="arch" type="xml">
+            <field name="name" position="before">
+                <field name="code" class="oe_inline" />
+                <span class="oe_inline"> - </span>
+            </field>
+        </field>
+    </record>
+
+    <record id="project_task_code_sharing_search_view" model="ir.ui.view">
+        <field name="name">project.task.code.search</field>
+        <field name="model">project.task</field>
+        <field
+            name="inherit_id"
+            ref="project.project_sharing_project_task_view_search"
+        />
+        <field name="arch" type="xml">
+            <field name="name" position="attributes">
+                <attribute name="filter_domain">['|', ('name', 'ilike', self),
+                    ('code', 'ilike', self)]
+                </attribute>
+            </field>
+        </field>
+    </record>
+
 </odoo>
