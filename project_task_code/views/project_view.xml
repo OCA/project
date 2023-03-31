@@ -97,4 +97,18 @@
         </field>
     </record>
 
+	<template id="portal_tasks_list" inherit_id="project.portal_tasks_list">
+        <span t-esc="task.id" position="replace">
+            <span t-esc="task.code" />
+        </span>
+    </template>
+
+    <template id="portal_my_task" inherit_id="project.portal_my_task">
+        <span t-field="task.id" position="replace">
+            <span t-field="task.code" />
+        </span>
+    </template>
+
+
+
 </odoo>
