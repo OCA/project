@@ -4,13 +4,14 @@
 {
     "name": "Webhook for Gitlab",
     "summary": "Controllers needed to notify actions with gitlab",
-    "version": "15.0.1.0.1",
+    "version": "15.0.1.0.2",
     "category": "Development",
-    "author": "Jarsa Sistemas",
+    "author": "Jarsa",
     "website": "https://git.vauxoo.com/jarsa/jarsa",
     "license": "LGPL-3",
     "depends": [
         "project",
+        "queue_job_cron_jobrunner",
     ],
     "data": [
         "views/message_templates.xml",
