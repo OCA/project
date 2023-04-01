@@ -33,6 +33,7 @@ setuptools.setup(
         'odoo-addon-project_task_pull_request>=15.0dev,<15.1dev',
         'odoo-addon-project_task_stage_state>=15.0dev,<15.1dev',
         'odoo-addon-project_template>=15.0dev,<15.1dev',
+        'odoo-addon-project_template_milestone>=15.0dev,<15.1dev',
         'odoo-addon-project_timeline>=15.0dev,<15.1dev',
         'odoo-addon-project_timeline_hr_timesheet>=15.0dev,<15.1dev',
         'odoo-addon-project_timesheet_time_control>=15.0dev,<15.1dev',
