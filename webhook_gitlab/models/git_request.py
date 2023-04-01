@@ -282,9 +282,11 @@ class GitRequest(models.Model):
         return True
 
     @api.model
-    def _connect_gitlab(self, event):
+    def _connect_gitlab(self, event=None, url=None):
         """Connect to gitlab instance and return gitlab object"""
-        url = urljoin(event["project"]["web_url"], "../..")
+        if not url:
+            url = event["project"]["web_url"]
+        url = urljoin(url, "../..")
         token = self.env["ir.config_parameter"].sudo().get_param("webhook_gitlab.gitlab_token." + url)
         return gitlab.Gitlab(url, private_token=token)
 
