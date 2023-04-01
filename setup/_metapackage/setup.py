@@ -22,6 +22,7 @@ setuptools.setup(
         'odoo-addon-project_status>=15.0dev,<15.1dev',
         'odoo-addon-project_stock>=15.0dev,<15.1dev',
         'odoo-addon-project_stock_product_set>=15.0dev,<15.1dev',
+        'odoo-addon-project_stock_request>=15.0dev,<15.1dev',
         'odoo-addon-project_task_add_very_high>=15.0dev,<15.1dev',
         'odoo-addon-project_task_code>=15.0dev,<15.1dev',
         'odoo-addon-project_task_default_stage>=15.0dev,<15.1dev',
