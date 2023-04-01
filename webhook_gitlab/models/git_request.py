@@ -126,10 +126,8 @@ class GitRequest(models.Model):
         if not record:
             message = _(
                 "The %(type)s #%(id)s cannot be found in Odoo.",
-                {
-                    "tyoe": rec_type,
-                    "id": id_found["id"],
-                },
+                type=rec_type,
+                id=id_found["id"],
             )
             self._post_message(event, message)
             return False
@@ -153,11 +151,9 @@ class GitRequest(models.Model):
         url = record._notify_get_action_link("view")
         message = _(
             "Linked to Odoo %(type)s [#%(id)s](%(url)s)",
-            {
-                "type": rec_type,
-                "id": record.id,
-                "url": url,
-            },
+            type=rec_type,
+            id=record.id,
+            url=url,
         )
         self._post_message(event, message)
         return True
