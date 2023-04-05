@@ -111,7 +111,7 @@ class HrEmployeeForecastRole(models.Model):
                 date_end = rec.date_end
                 ForecastLine.search(
                     [
-                        ("res_id", "in", self.ids),
+                        ("res_id", "=", rec.id),
                         ("res_model", "=", self._name),
                         ("date_to", ">=", date_end),
                     ]
