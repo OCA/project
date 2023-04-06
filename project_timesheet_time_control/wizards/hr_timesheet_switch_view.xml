@@ -6,6 +6,8 @@
     <record id="hr_timesheet_switch_form" model="ir.ui.view">
         <field name="name">hr.timesheet.switch resume form</field>
         <field name="model">hr.timesheet.switch</field>
+        <!-- For resetting the value coming from previous version -->
+        <field name="inherit_id" />
         <field name="arch" type="xml">
             <form>
                 <sheet>
