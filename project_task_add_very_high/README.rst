@@ -54,6 +54,12 @@ and on Kanban:
 In case this module is uninstalled, all the tasks that were previously set as `High` or `Very High` priority will be
 converted to `Normal` priority.
 
+
+When the priority of the task changes, the message "priority:[old_priority] -> [new_priority]" is added to the chatter
+
+.. figure:: https://raw.githubusercontent.com/OCA/project/14.0/project_task_add_very_high/static/description/image_add_chatter.png
+   :alt: Add message to chatter
+
 **Table of contents**
 
 .. contents::
