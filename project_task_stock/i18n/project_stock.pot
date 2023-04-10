@@ -34,6 +34,11 @@ msgid "Analytic"
 msgstr ""
 
 #. module: project_stock
+#: model:ir.model.fields,field_description:project_stock.field_project_task__analytic_distribution_search
+msgid "Analytic Distribution Search"
+msgstr ""
+
+#. module: project_stock
 #: model:ir.model,name:project_stock.model_account_analytic_line
 msgid "Analytic Line"
 msgstr ""
