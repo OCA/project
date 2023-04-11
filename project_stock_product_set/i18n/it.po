@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-01-02 12:08+0000\n"
-"Last-Translator: Francesco Foresti <francesco.foresti@ooops404.com>\n"
+"PO-Revision-Date: 2023-04-17 22:55+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -19,13 +19,13 @@ msgstr ""
 #. module: project_stock_product_set
 #: model:ir.actions.act_window,name:project_stock_product_set.act_open_wizard_product_set_add_from_task
 msgid "Add a set in a project task"
-msgstr ""
+msgstr "Aggiungere un set in un lavoro del progetto"
 
 #. module: project_stock_product_set
 #: model_terms:ir.ui.view,arch_db:project_stock_product_set.product_set_add_from_task_form_view
 #: model_terms:ir.ui.view,arch_db:project_stock_product_set.view_task_form2
 msgid "Add set"
-msgstr ""
+msgstr "Aggiungi set"
 
 #. module: project_stock_product_set
 #: model_terms:ir.ui.view,arch_db:project_stock_product_set.product_set_add_from_task_form_view
@@ -35,12 +35,12 @@ msgstr "Annulla"
 #. module: project_stock_product_set
 #: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Creato da"
 
 #. module: project_stock_product_set
 #: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__create_date
 msgid "Created on"
-msgstr ""
+msgstr "Creato il"
 
 #. module: project_stock_product_set
 #: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__partner_id
@@ -49,7 +49,6 @@ msgstr "Cliente"
 
 #. module: project_stock_product_set
 #: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__display_name
-#: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_line__display_name
 msgid "Display Name"
 msgstr "Nome visualizzato"
 
@@ -58,16 +57,16 @@ msgstr "Nome visualizzato"
 msgid ""
 "Enable this to not add new lines for products already included in SO lines."
 msgstr ""
+"Abilitarlo per non aggiungere nuove righe per prodotti già inclusi nelle "
+"righe OV."
 
 #. module: project_stock_product_set
 #: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__id
-#: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_line__id
 msgid "ID"
 msgstr "ID"
 
 #. module: project_stock_product_set
 #: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task____last_update
-#: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_line____last_update
 msgid "Last Modified on"
 msgstr "Ultima modifica il"
 
@@ -84,18 +83,17 @@ msgstr "Ultimo aggiornamento il"
 #. module: project_stock_product_set
 #: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__product_set_id
 msgid "Product set"
-msgstr ""
+msgstr "Set prodotto"
 
 #. module: project_stock_product_set
 #: model:ir.model,name:project_stock_product_set.model_product_set_line
 msgid "Product set line"
-msgstr ""
+msgstr "Riga set prodotto"
 
 #. module: project_stock_product_set
 #: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__product_set_line_ids
-#: model_terms:ir.ui.view,arch_db:project_stock_product_set.product_set_add_from_task_form_view
 msgid "Product set lines"
-msgstr ""
+msgstr "Righe set prodotto"
 
 #. module: project_stock_product_set
 #: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__quantity
@@ -110,7 +108,7 @@ msgstr "Ordine di vendita"
 #. module: project_stock_product_set
 #: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__skip_existing_products
 msgid "Skip Existing Products"
-msgstr ""
+msgstr "Salta prodotti esistenti"
 
 #. module: project_stock_product_set
 #: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__task_id
