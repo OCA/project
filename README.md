@@ -31,6 +31,7 @@ addon | version | maintainers | summary
 [project_template](project_template/) | 16.0.1.0.0 | [![patrickrwilson](https://github.com/patrickrwilson.png?size=30px)](https://github.com/patrickrwilson) | Project Templates
 [project_timeline](project_timeline/) | 16.0.1.0.0 |  | Timeline view for projects
 [project_type](project_type/) | 16.0.1.0.0 |  | Project Types
+[project_task_pull_request](project_task_pull_request/) | 16.0.1.0.0 |  | Adds a field for a PR URI to project tasks
 
 [//]: # (end addons)
 
