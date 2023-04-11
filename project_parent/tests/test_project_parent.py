@@ -5,17 +5,18 @@ from odoo.tests.common import TransactionCase
 
 
 class TestProjectParent(TransactionCase):
-    def setUp(self):
-        super().setUp()
-        self.project_project_1 = self.browse_ref("project.project_project_1")
-        self.project_project_2 = self.browse_ref("project.project_project_2")
-        self.project_project_3 = self.env["project.project"].create(
-            {"name": "TestProject", "parent_id": self.project_project_1.id}
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.project_project_1 = cls.env.ref("project.project_project_1")
+        cls.project_project_2 = cls.env.ref("project.project_project_2")
+        cls.project_project_3 = cls.env["project.project"].create(
+            {"name": "TestProject", "parent_id": cls.project_project_1.id}
         )
 
     def test_parent_childs_project(self):
-        self.assertTrue(self.project_project_2 in self.project_project_1.child_ids)
-        self.assertTrue(self.project_project_3 in self.project_project_1.child_ids)
+        self.assertIn(self.project_project_2, self.project_project_1.child_ids)
+        self.assertIn(self.project_project_3, self.project_project_1.child_ids)
 
     def test_action_open_child_project(self):
         res = self.project_project_1.action_open_child_project()
