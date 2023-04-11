@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-04-11 09:41+0000\n"
+"PO-Revision-Date: 2023-04-11 12:24+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -226,7 +226,7 @@ msgstr "Compito previsionale del dipendente"
 #. module: project_forecast_line
 #: model:ir.model,name:project_forecast_line.model_forecast_role
 msgid "Employee role for task matching"
-msgstr "Compito del dipendente per corrispondenza lavoro"
+msgstr "Compito del dipendente per corrispondenza attività"
 
 #. module: project_forecast_line
 #: model:ir.actions.act_window,name:project_forecast_line.action_forecast_lines
@@ -564,7 +564,7 @@ msgstr "Sviluppatore software"
 #: model:ir.model,name:project_forecast_line.model_project_task
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__task_id
 msgid "Task"
-msgstr "Lavoro"
+msgstr "Attività"
 
 #. module: project_forecast_line
 #: model:project.project,label_tasks:project_forecast_line.software_project_1
