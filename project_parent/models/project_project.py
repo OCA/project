@@ -16,7 +16,7 @@ class Project(models.Model):
         comodel_name="project.project", inverse_name="parent_id", string="Sub-projects"
     )
 
-    parent_path = fields.Char(index=True)
+    parent_path = fields.Char(index="btree", unaccent=False)
 
     child_ids_count = fields.Integer(compute="_compute_child_ids_count", store=True)
 
