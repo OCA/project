@@ -11,6 +11,7 @@ setuptools.setup(
         'odoo-addon-project_department>=16.0dev,<16.1dev',
         'odoo-addon-project_hr>=16.0dev,<16.1dev',
         'odoo-addon-project_list>=16.0dev,<16.1dev',
+        'odoo-addon-project_parent>=16.0dev,<16.1dev',
         'odoo-addon-project_parent_task_filter>=16.0dev,<16.1dev',
         'odoo-addon-project_role>=16.0dev,<16.1dev',
         'odoo-addon-project_stock>=16.0dev,<16.1dev',
