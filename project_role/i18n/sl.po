@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2020-03-21 11:13+0000\n"
-"Last-Translator: Matjaz Mozetic <matjaz@matmoz.si>\n"
+"PO-Revision-Date: 2023-04-11 11:15+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: none\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
 "%100==4 ? 2 : 3;\n"
-"X-Generator: Weblate 3.10\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #. module: project_role
 #: code:addons/project_role/models/project_role.py:0
@@ -302,7 +302,7 @@ msgstr "Število napak"
 #. module: project_role
 #: model:ir.model.fields,help:project_role.field_project_assignment__message_needaction_counter
 msgid "Number of messages which requires an action"
-msgstr "Število sporočil, ki potrebujejo ukrepanje"
+msgstr "Število sporočil, kjer je potrebno ukrepati"
 
 #. module: project_role
 #: model:ir.model.fields,help:project_role.field_project_assignment__message_has_error_counter
@@ -458,12 +458,12 @@ msgstr "Projektni člen"
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__website_message_ids
 msgid "Website Messages"
-msgstr "Spletna sporočila"
+msgstr "Sporočila spletne strani"
 
 #. module: project_role
 #: model:ir.model.fields,help:project_role.field_project_assignment__website_message_ids
 msgid "Website communication history"
-msgstr "Spletna kronologija komunikacij"
+msgstr "Kronologija komunikacij spletne strani"
 
 #~ msgid "Inactive"
 #~ msgstr "Neaktivno"
