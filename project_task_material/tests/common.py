@@ -24,7 +24,7 @@ class TestProjectCases(TransactionCase):
         )
 
         # Refer to a task assigned to the project user
-        self.task = self.env.ref("project.project_task_2")
+        self.task = self.env.ref("project.project_1_task_2")
         self.product = self.env.ref("product.consu_delivery_03")
 
         # Refer to a action from the user created
