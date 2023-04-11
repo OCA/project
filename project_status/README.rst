@@ -14,7 +14,7 @@ Project Status
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fproject-lightgray.png?logo=github
-    :target: https://github.com/OCA/project/tree/15.0/project_status
+    :target: https://github.com/OCA/project/tree/16.0/project_status
     :alt: OCA/project
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
     :target: https://translation.odoo-community.org/projects/project-15-0/project-15-0-project_status
@@ -64,6 +64,7 @@ Contributors
 
 * Patrick Wilson <patrickraymondwilson@gmail.com>
 * Bhavesh Odedra <bodedra@opensourceintegrators.com>
+* Dhara Solanki <dhara.solanki@initos.com>
 * `Tecnativa <https://www.tecnativa.com>`__:
 
   * João Marques
@@ -89,6 +90,6 @@ Current `maintainer <https://odoo-community.org/page/maintainer-role>`__:
 
 |maintainer-patrickrwilson| 
 
-This module is part of the `OCA/project <https://github.com/OCA/project/tree/15.0/project_status>`_ project on GitHub.
+This module is part of the `OCA/project <https://github.com/OCA/project/tree/16.0/project_status>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
