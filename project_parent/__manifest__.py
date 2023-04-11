@@ -2,7 +2,7 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 {
     "name": "Project Parent",
-    "version": "13.0.1.0.0",
+    "version": "16.0.1.0.0",
     "license": "LGPL-3",
     "category": "project",
     "author": "Therp B.V., Elico Corp, Odoo Community Association (OCA)",
