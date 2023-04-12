@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-31 18:04+0000\n"
-"PO-Revision-Date: 2023-04-12 12:35+0000\n"
+"PO-Revision-Date: 2023-04-12 15:32+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (http://www.transifex.com/oca/OCA-project-8-0/"
 "language/it/)\n"
@@ -160,7 +160,7 @@ msgstr "Nome"
 #: code:addons/project_gtd/wizard/project_gtd_empty.py:29
 #, python-format
 msgid "No timebox child of this one!"
-msgstr ""
+msgstr "Non c'è una cronologia figlia!"
 
 #. module: project_gtd
 #: model:project.gtd.context,name:project_gtd.context_office
