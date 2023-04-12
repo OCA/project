@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2022-12-05 12:44+0000\n"
-"Last-Translator: Francesco Foresti <francesco.foresti@ooops404.com>\n"
+"PO-Revision-Date: 2023-04-12 12:32+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -19,13 +19,13 @@ msgstr ""
 #. module: project_stock_product_set
 #: model:ir.actions.act_window,name:project_stock_product_set.act_open_wizard_product_set_add_from_task
 msgid "Add a set in a project task"
-msgstr ""
+msgstr "Aggiungere un set in un lavoro del progetto"
 
 #. module: project_stock_product_set
 #: model_terms:ir.ui.view,arch_db:project_stock_product_set.product_set_add_from_task_form_view
 #: model_terms:ir.ui.view,arch_db:project_stock_product_set.view_task_form2
 msgid "Add set"
-msgstr ""
+msgstr "Aggiungi set"
 
 #. module: project_stock_product_set
 #: model_terms:ir.ui.view,arch_db:project_stock_product_set.product_set_add_from_task_form_view
@@ -58,6 +58,8 @@ msgstr "Nome visualizzato"
 msgid ""
 "Enable this to not add new lines for products already included in SO lines."
 msgstr ""
+"Abilitarlo per non aggiungere nuove righe per prodotti già inclusi nelle "
+"righe OV."
 
 #. module: project_stock_product_set
 #: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__id
@@ -84,18 +86,18 @@ msgstr "Ultimo aggiornamento il"
 #. module: project_stock_product_set
 #: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__product_set_id
 msgid "Product set"
-msgstr ""
+msgstr "Set prodotto"
 
 #. module: project_stock_product_set
 #: model:ir.model,name:project_stock_product_set.model_product_set_line
 msgid "Product set line"
-msgstr ""
+msgstr "Riga set prodotto"
 
 #. module: project_stock_product_set
 #: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__product_set_line_ids
 #: model_terms:ir.ui.view,arch_db:project_stock_product_set.product_set_add_from_task_form_view
 msgid "Product set lines"
-msgstr ""
+msgstr "Righe set prodotto"
 
 #. module: project_stock_product_set
 #: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__quantity
@@ -110,7 +112,7 @@ msgstr "Ordine di vendita"
 #. module: project_stock_product_set
 #: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__skip_existing_products
 msgid "Skip Existing Products"
-msgstr ""
+msgstr "Salta prodotti esistenti"
 
 #. module: project_stock_product_set
 #: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__task_id
