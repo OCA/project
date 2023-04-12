@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-04-11 12:24+0000\n"
+"PO-Revision-Date: 2023-04-12 14:34+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -206,7 +206,7 @@ msgstr "Dipendente"
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__employee_forecast_role_id
 msgid "Employee Forecast Role"
-msgstr "Compito previsionale del dipendente"
+msgstr "Ruolo previsionale del dipendente"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__employee_resource_consumption_ids
@@ -221,12 +221,12 @@ msgstr "Riga previsionale risorsa dipendente"
 #. module: project_forecast_line
 #: model:ir.model,name:project_forecast_line.model_hr_employee_forecast_role
 msgid "Employee forecast role"
-msgstr "Compito previsionale del dipendente"
+msgstr "Ruolo previsionale del dipendente"
 
 #. module: project_forecast_line
 #: model:ir.model,name:project_forecast_line.model_forecast_role
 msgid "Employee role for task matching"
-msgstr "Compito del dipendente per corrispondenza attività"
+msgstr "Ruolo del dipendente per corrispondenza attività"
 
 #. module: project_forecast_line
 #: model:ir.actions.act_window,name:project_forecast_line.action_forecast_lines
@@ -304,14 +304,14 @@ msgstr "Automatismo ricalcolo previsionale"
 #: model:ir.model.fields,field_description:project_forecast_line.field_product_template__forecast_role_id
 #: model:ir.model.fields,field_description:project_forecast_line.field_project_task__forecast_role_id
 msgid "Forecast Role"
-msgstr "Compito previsionale"
+msgstr "Ruolo previsionale"
 
 #. module: project_forecast_line
 #: model:ir.actions.act_window,name:project_forecast_line.action_forecast_roles
 #: model:ir.ui.menu,name:project_forecast_line.menu_forecast_role
 #: model_terms:ir.ui.view,arch_db:project_forecast_line.view_employee_form
 msgid "Forecast Roles"
-msgstr "Compiti previsionali"
+msgstr "Ruoli previsionali"
 
 #. module: project_forecast_line
 #: model:ir.actions.server,name:project_forecast_line.cron_forecast_lines_ir_actions_server
@@ -323,7 +323,7 @@ msgstr "Ricalcolo previsionale"
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__forecast_role_id
 msgid "Forecast role"
-msgstr "Compito previsionale"
+msgstr "Ruolo previsionale"
 
 #. module: project_forecast_line
 #: model_terms:ir.ui.view,arch_db:project_forecast_line.view_forecast_line_search
@@ -416,7 +416,7 @@ msgstr "Permesso"
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_hr_employee__main_role_id
 msgid "Main Role"
-msgstr "Compito principale"
+msgstr "Ruolo principale"
 
 #. module: project_forecast_line
 #: model:res.groups,name:project_forecast_line.group_forecast_line_on_quotation
@@ -521,7 +521,7 @@ msgstr "Dettaglio ferie risorsa"
 #: model:ir.model.fields,field_description:project_forecast_line.field_hr_job__role_id
 #: model_terms:ir.ui.view,arch_db:project_forecast_line.view_forecast_line_search
 msgid "Role"
-msgstr "Compito"
+msgstr "Ruolo"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__sale_id
