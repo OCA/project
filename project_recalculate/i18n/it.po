@@ -9,25 +9,25 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-01 03:31+0000\n"
-"PO-Revision-Date: 2020-05-30 12:19+0000\n"
-"Last-Translator: Sergio Zanchetta <primes2h@gmail.com>\n"
+"PO-Revision-Date: 2023-04-12 15:32+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.10\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #. module: project_recalculate
 #: model:ir.model.fields,help:project_recalculate.field_project_task__from_days
 msgid "Anticipation days from date begin or date end"
-msgstr ""
+msgstr "Giorni di anticipo dalla data di inizio o di fine"
 
 #. module: project_recalculate
 #: model_terms:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
 msgid "Are you sure?"
-msgstr ""
+msgstr "Si è sicuri?"
 
 #. module: project_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_project__calculation_type
@@ -47,12 +47,15 @@ msgid ""
 "Cannot recalculate project because your project doesn't have calculation "
 "type."
 msgstr ""
+"Non si può ricalcolare il progetto perché il progetto non ha un tipo di "
+"calcolo."
 
 #. module: project_recalculate
 #: code:addons/project_recalculate/models/project_project.py:0
 #, python-format
 msgid "Cannot recalculate project because your project doesn't have date end."
 msgstr ""
+"Non si può ricalcolare il progetto perché il progetto non ha una data fine."
 
 #. module: project_recalculate
 #: code:addons/project_recalculate/models/project_project.py:0
@@ -60,6 +63,7 @@ msgstr ""
 msgid ""
 "Cannot recalculate project because your project doesn't have date start."
 msgstr ""
+"Non si può ricalcolare il progetto perché il progetto non ha una data inizio."
 
 #. module: project_recalculate
 #: model_terms:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
@@ -89,7 +93,7 @@ msgstr "Data fine"
 #. module: project_recalculate
 #: model_terms:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
 msgid "Date reference"
-msgstr ""
+msgstr "Riferimento data"
 
 #. module: project_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_project__display_name
@@ -104,7 +108,7 @@ msgstr "Nome visualizzato"
 #: code:addons/project_recalculate/models/project_task.py:0
 #, python-format
 msgid "End Date field must be defined."
-msgstr ""
+msgstr "Il campo data fine deve essere definito."
 
 #. module: project_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_task__estimated_days
@@ -115,7 +119,7 @@ msgstr "Giorni stimati"
 #: code:addons/project_recalculate/models/project_task.py:0
 #, python-format
 msgid "Estimated days must be greater than 0."
-msgstr ""
+msgstr "I giorni stimati devono essere maggiori di 0."
 
 #. module: project_recalculate
 #: model:ir.model.fields,help:project_recalculate.field_project_task__estimated_days
@@ -125,7 +129,7 @@ msgstr "Giorni stimati alla chiusura"
 #. module: project_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_task__from_days
 msgid "From days"
-msgstr ""
+msgstr "Giorni dal"
 
 #. module: project_recalculate
 #: model:ir.model.fields,help:project_recalculate.field_project_project__calculation_type
@@ -134,6 +138,8 @@ msgid ""
 "How to calculate tasks, with date start or date end references. If not set, "
 "\"Recalculate project\" button is disabled."
 msgstr ""
+"Come calcolare un lavoro, con riferimento data inizio o data fine. Se non "
+"impostate il pulsante \"Ricalcola progetto\" è disabilitato."
 
 #. module: project_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_project__id
@@ -151,12 +157,15 @@ msgid ""
 "If you mark this check, tasks that are in this stage will be selectable for "
 "recalculating their dates when user click on 'Recalculate project' button."
 msgstr ""
+"Se si seleziona, i lavori che sono in questa fase potranno essere "
+"selezionabili per ricalcolare le date quando l'utente farà clic sul pulsante "
+"\"Ricalcola progetto\"."
 
 #. module: project_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_task__include_in_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_task_type__include_in_recalculate
 msgid "Include in project recalculate"
-msgstr ""
+msgstr "Includere nel ricalcolo progetto"
 
 #. module: project_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_project____last_update
@@ -211,18 +220,18 @@ msgstr "Ricalcola progetto"
 #. module: project_recalculate
 #: model:ir.model,name:project_recalculate.model_resource_calendar
 msgid "Resource Working Time"
-msgstr ""
+msgstr "Orario lavoro risorsa"
 
 #. module: project_recalculate
 #: code:addons/project_recalculate/models/project_task.py:0
 #, python-format
 msgid "Start Date field must be defined."
-msgstr ""
+msgstr "Il campo data inizio deve essere definito."
 
 #. module: project_recalculate
 #: model:ir.model.fields,field_description:project_recalculate.field_project_task__date_start
 msgid "Starting Date"
-msgstr ""
+msgstr "Data inizio"
 
 #. module: project_recalculate
 #: model:ir.model,name:project_recalculate.model_project_task
@@ -237,12 +246,12 @@ msgstr "Fase lavoro"
 #. module: project_recalculate
 #: model_terms:ir.ui.view,arch_db:project_recalculate.wizard_project_recalculate_form
 msgid "This Project task will be recalculated according reference date:"
-msgstr ""
+msgstr "Il progetto verrà ricalcolato in riferimento alla data:"
 
 #. module: project_recalculate
 #: model_terms:ir.ui.view,arch_db:project_recalculate.edit_project_recalculate
 msgid "Time Scheduling"
-msgstr ""
+msgstr "Pianificazione orario"
 
 #. module: project_recalculate
 #: model:ir.model,name:project_recalculate.model_project_project
