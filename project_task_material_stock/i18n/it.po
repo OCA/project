@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-10 02:50+0000\n"
-"PO-Revision-Date: 2023-04-11 12:24+0000\n"
+"PO-Revision-Date: 2023-04-12 16:33+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
@@ -194,7 +194,7 @@ msgstr "Fase Task"
 #. module: project_task_material_stock
 #: model_terms:ir.ui.view,arch_db:project_task_material_stock.view_project_task_form_material_stock
 msgid "Transfer Materials"
-msgstr "Materiali Trasferimento"
+msgstr "Trasferimento materiali"
 
 #. module: project_task_material_stock
 #: model:ir.model.fields,field_description:project_task_material_stock.field_project_task__picking_id
