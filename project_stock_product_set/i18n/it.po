@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-04-11 15:22+0000\n"
+"PO-Revision-Date: 2023-04-12 14:34+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -19,7 +19,7 @@ msgstr ""
 #. module: project_stock_product_set
 #: model:ir.actions.act_window,name:project_stock_product_set.act_open_wizard_product_set_add_from_task
 msgid "Add a set in a project task"
-msgstr "Aggiungere un set in una attività progetto"
+msgstr "Aggiungere un set in un lavoro del progetto"
 
 #. module: project_stock_product_set
 #: model_terms:ir.ui.view,arch_db:project_stock_product_set.product_set_add_from_task_form_view
