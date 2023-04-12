@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-01-03 12:45+0000\n"
-"Last-Translator: Francesco Foresti <francesco.foresti@ooops404.com>\n"
+"PO-Revision-Date: 2023-04-12 15:32+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -47,11 +47,13 @@ msgid ""
 "Follow this project to automatically track the events associated to tasks "
 "and issues of this project."
 msgstr ""
+"Seguire questo progetto per tracciare automaticamente gli eventi associati "
+"ai lavori e segnalazioni di questo progetto."
 
 #. module: project_mail_chatter
 #: model:ir.model.fields,help:project_mail_chatter.field_project_project__activity_type_icon
 msgid "Font awesome icon e.g. fa-tasks"
-msgstr ""
+msgstr "Icona font awesome es. fa-tasks"
 
 #. module: project_mail_chatter
 #: model:ir.model.fields,field_description:project_mail_chatter.field_project_project__id
@@ -66,7 +68,7 @@ msgstr "Icona"
 #. module: project_mail_chatter
 #: model:ir.model.fields,help:project_mail_chatter.field_project_project__activity_exception_icon
 msgid "Icon to indicate an exception activity."
-msgstr ""
+msgstr "Icona per indicare una attività eccezione."
 
 #. module: project_mail_chatter
 #: model:ir.model.fields,field_description:project_mail_chatter.field_project_project____last_update
@@ -76,12 +78,12 @@ msgstr "Ultima modifica il"
 #. module: project_mail_chatter
 #: model:ir.model.fields,field_description:project_mail_chatter.field_project_project__my_activity_date_deadline
 msgid "My Activity Deadline"
-msgstr ""
+msgstr "Scadenza mia attività"
 
 #. module: project_mail_chatter
 #: model:ir.model.fields,field_description:project_mail_chatter.field_project_project__activity_date_deadline
 msgid "Next Activity Deadline"
-msgstr ""
+msgstr "Scadenza attività successiva"
 
 #. module: project_mail_chatter
 #: model:ir.model.fields,field_description:project_mail_chatter.field_project_project__activity_summary
@@ -91,12 +93,12 @@ msgstr "Riepilogo prossima attività"
 #. module: project_mail_chatter
 #: model:ir.model.fields,field_description:project_mail_chatter.field_project_project__activity_type_id
 msgid "Next Activity Type"
-msgstr ""
+msgstr "Tipo attività successiva"
 
 #. module: project_mail_chatter
 #: model:ir.model.fields,field_description:project_mail_chatter.field_project_project__activity_user_id
 msgid "Responsible User"
-msgstr ""
+msgstr "Utente responsabile"
 
 #. module: project_mail_chatter
 #: model:ir.model.fields,help:project_mail_chatter.field_project_project__activity_state
@@ -106,16 +108,20 @@ msgid ""
 "Today: Activity date is today\n"
 "Planned: Future activities."
 msgstr ""
+"Stato in base alle attività\n"
+"Scaduto: la data richiesta è trascorsa\n"
+"Oggi: la data attività è oggi\n"
+"Pianificato: attività future."
 
 #. module: project_mail_chatter
 #: model:ir.model.fields,help:project_mail_chatter.field_project_project__activity_exception_decoration
 msgid "Type of the exception activity on record."
-msgstr ""
+msgstr "Tipo di attività eccezione sul record."
 
 #. module: project_mail_chatter
 #: model:ir.model,name:project_mail_chatter.model_project_project
 msgid "WBS element"
-msgstr ""
+msgstr "Elemento WBS"
 
 #~ msgid "Project"
 #~ msgstr "Progetto"
