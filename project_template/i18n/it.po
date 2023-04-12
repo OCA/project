@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2022-12-05 12:44+0000\n"
-"Last-Translator: Francesco Foresti <francesco.foresti@ooops404.com>\n"
+"PO-Revision-Date: 2023-04-12 12:32+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -19,12 +19,12 @@ msgstr ""
 #. module: project_template
 #: model_terms:ir.ui.view,arch_db:project_template.project_template_view_inherit_form
 msgid "Create Project From Template"
-msgstr ""
+msgstr "Crea progetto da modello"
 
 #. module: project_template
 #: model_terms:ir.ui.view,arch_db:project_template.project_template_view_inherit_kanban
 msgid "Create Project from Template"
-msgstr ""
+msgstr "Crea progetto da modello"
 
 #. module: project_template
 #: model:ir.model.fields,field_description:project_template.field_project_project__display_name
@@ -42,12 +42,12 @@ msgstr "ID"
 #: model:ir.model.fields,field_description:project_template.field_project_project__is_template
 #: model:ir.model.fields,field_description:project_template.field_project_task__is_template_task
 msgid "Is Template"
-msgstr ""
+msgstr "È un modello"
 
 #. module: project_template
 #: model_terms:ir.ui.view,arch_db:project_template.project_template_view_inherit_form
 msgid "Is Template?"
-msgstr ""
+msgstr "È un modello?"
 
 #. module: project_template
 #: model:ir.model.fields,field_description:project_template.field_project_project____last_update
@@ -58,12 +58,12 @@ msgstr "Ultima modifica il"
 #. module: project_template
 #: model_terms:ir.ui.view,arch_db:project_template.project_template_view_inherit_search
 msgid "Non-Templates"
-msgstr ""
+msgstr "Non modelli"
 
 #. module: project_template
 #: model_terms:ir.ui.view,arch_db:project_template.project_task_template_view_inherit_search
 msgid "Non-Templates Tasks"
-msgstr ""
+msgstr "Lavori non modelli"
 
 #. module: project_template
 #: model:ir.model,name:project_template.model_project_task
@@ -73,12 +73,12 @@ msgstr "Lavoro"
 #. module: project_template
 #: model_terms:ir.ui.view,arch_db:project_template.project_task_template_view_inherit_search
 msgid "Template Tasks"
-msgstr ""
+msgstr "Lavori modello"
 
 #. module: project_template
 #: model_terms:ir.ui.view,arch_db:project_template.project_template_view_inherit_search
 msgid "Templates"
-msgstr ""
+msgstr "Modelli"
 
 #. module: project_template
 #: model:ir.model,name:project_template.model_project_project
