@@ -6,13 +6,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2023-04-12 12:32+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #. module: project_timesheet_time_control_sale
 #: code:addons/project_timesheet_time_control_sale/wizards/hr_timesheet_switch.py:0
@@ -21,39 +23,41 @@ msgid ""
 "%d running timers found. Cannot know which one to stop. Please stop them "
 "manually."
 msgstr ""
+"Trovati %d timer in funzione. Non si può sapere quale fermare. Fermarlo "
+"manualmente."
 
 #. module: project_timesheet_time_control_sale
 #: model:ir.model,name:project_timesheet_time_control_sale.model_account_analytic_line
 msgid "Analytic Line"
-msgstr ""
+msgstr "Riga anlaitica"
 
 #. module: project_timesheet_time_control_sale
 #: model:ir.model.fields,field_description:project_timesheet_time_control_sale.field_account_analytic_line__display_name
 #: model:ir.model.fields,field_description:project_timesheet_time_control_sale.field_account_move_line__display_name
 #: model:ir.model.fields,field_description:project_timesheet_time_control_sale.field_hr_timesheet_switch__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nome visualizzato"
 
 #. module: project_timesheet_time_control_sale
 #: model:ir.model,name:project_timesheet_time_control_sale.model_hr_timesheet_switch
 msgid "Helper to quickly switch between timesheet lines"
-msgstr ""
+msgstr "Assistente per spostarsi velocemente tra righe del foglio ore"
 
 #. module: project_timesheet_time_control_sale
 #: model:ir.model.fields,field_description:project_timesheet_time_control_sale.field_account_analytic_line__id
 #: model:ir.model.fields,field_description:project_timesheet_time_control_sale.field_account_move_line__id
 #: model:ir.model.fields,field_description:project_timesheet_time_control_sale.field_hr_timesheet_switch__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_timesheet_time_control_sale
 #: model:ir.model,name:project_timesheet_time_control_sale.model_account_move_line
 msgid "Journal Item"
-msgstr ""
+msgstr "Movimento contabile"
 
 #. module: project_timesheet_time_control_sale
 #: model:ir.model.fields,field_description:project_timesheet_time_control_sale.field_account_analytic_line____last_update
 #: model:ir.model.fields,field_description:project_timesheet_time_control_sale.field_account_move_line____last_update
 #: model:ir.model.fields,field_description:project_timesheet_time_control_sale.field_hr_timesheet_switch____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Ultima modifica il"
