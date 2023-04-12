@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2022-12-05 12:44+0000\n"
-"Last-Translator: Francesco Foresti <francesco.foresti@ooops404.com>\n"
+"PO-Revision-Date: 2023-04-12 12:32+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 #. module: project_status
 #: model_terms:ir.ui.view,arch_db:project_status.view_project_project_filter
 msgid "Closed"
-msgstr ""
+msgstr "Chiuso"
 
 #. module: project_status
 #: model:ir.model.fields,field_description:project_status.field_project_status__company_id
@@ -29,7 +29,7 @@ msgstr "Azienda"
 #. module: project_status
 #: model:project.status,name:project_status.project_status_complete
 msgid "Complete"
-msgstr ""
+msgstr "Completo"
 
 #. module: project_status
 #: model:ir.model.fields,field_description:project_status.field_project_status__create_uid
@@ -71,7 +71,7 @@ msgstr "In corso"
 #. module: project_status
 #: model:ir.model.fields,field_description:project_status.field_project_status__is_closed
 msgid "Is Closed Status"
-msgstr ""
+msgstr "Stato chiuso"
 
 #. module: project_status
 #: model:ir.model.fields,field_description:project_status.field_project_project____last_update
@@ -97,12 +97,12 @@ msgstr "Nome"
 #. module: project_status
 #: model_terms:ir.ui.view,arch_db:project_status.view_project_project_filter
 msgid "Not Closed"
-msgstr ""
+msgstr "Non chiuso"
 
 #. module: project_status
 #: model:project.status,name:project_status.project_status_pending
 msgid "Pending"
-msgstr ""
+msgstr "In sospeso"
 
 #. module: project_status
 #: model:ir.model,name:project_status.model_project_status
@@ -124,12 +124,12 @@ msgstr "Il progetto è stato completato."
 #. module: project_status
 #: model:project.status,description:project_status.project_status_in_progress
 msgid "Project is currently initiated and being worked."
-msgstr ""
+msgstr "Il progetto è al momento iniziato e in lavorazione."
 
 #. module: project_status
 #: model:project.status,description:project_status.project_status_pending
 msgid "Project is new and being built. Has not been started yet."
-msgstr ""
+msgstr "Il progetto è nuovo e in costruzione. Non è ancora iniziato."
 
 #. module: project_status
 #: model:ir.model.fields,field_description:project_status.field_project_status__status_sequence
@@ -139,7 +139,7 @@ msgstr "Sequenza"
 #. module: project_status
 #: model:ir.model.fields,help:project_status.field_project_status__is_closed
 msgid "Specify if this is a closing status."
-msgstr ""
+msgstr "Indicare se questo è uno stato di chiusura."
 
 #. module: project_status
 #: model_terms:ir.ui.view,arch_db:project_status.view_project_project_filter
@@ -149,7 +149,7 @@ msgstr "Stato"
 #. module: project_status
 #: model:ir.model,name:project_status.model_project_project
 msgid "WBS element"
-msgstr ""
+msgstr "Elemento WBS"
 
 #~ msgid "Project"
 #~ msgstr "Progetto"
