@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-10 02:49+0000\n"
-"PO-Revision-Date: 2023-04-11 14:22+0000\n"
+"PO-Revision-Date: 2023-04-12 12:35+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
@@ -60,7 +60,7 @@ msgstr "Sviluppo"
 #: model:ir.model.fields,field_description:project_task_default_stage.field_project_project__display_name
 #: model:ir.model.fields,field_description:project_task_default_stage.field_project_task_type__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nome visualizzato"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_deployment
@@ -71,7 +71,7 @@ msgstr "Completato"
 #: model:ir.model.fields,field_description:project_task_default_stage.field_project_project__id
 #: model:ir.model.fields,field_description:project_task_default_stage.field_project_task_type__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_task_default_stage
 #: model:ir.model.fields,help:project_task_default_stage.field_project_task_type__case_default
@@ -98,7 +98,7 @@ msgstr "In corso"
 #: model:ir.model.fields,field_description:project_task_default_stage.field_project_project____last_update
 #: model:ir.model.fields,field_description:project_task_default_stage.field_project_task_type____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Ultima modifica il"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_merge
@@ -120,7 +120,7 @@ msgstr "Fasi Progetto"
 #: model:project.task.type,legend_done:project_task_default_stage.project_tt_specification
 #: model:project.task.type,legend_done:project_task_default_stage.project_tt_testing
 msgid "Ready"
-msgstr ""
+msgstr "Pronto"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_specification
@@ -145,7 +145,7 @@ msgstr "In test"
 #. module: project_task_default_stage
 #: model:ir.model,name:project_task_default_stage.model_project_project
 msgid "WBS element"
-msgstr ""
+msgstr "Elemento WBS"
 
 #~ msgid "Project"
 #~ msgstr "Progetto"
