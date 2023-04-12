@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-04-10 21:22+0000\n"
+"PO-Revision-Date: 2023-04-12 13:35+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -121,7 +121,7 @@ msgstr ""
 msgid "Check to configure projects to limit role to assignments by default."
 msgstr ""
 "Selezionare per configurare i progetti per limitare il ruolo agli incarichi "
-"modo predefinito."
+"in modo predefinito."
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_role__child_ids
@@ -321,7 +321,7 @@ msgstr "Ruolo padre"
 #: code:addons/project_role/models/project_role.py:0
 #, python-format
 msgid "Please activate first parent role %s"
-msgstr "Attivate prima il ruolo padre %s"
+msgstr "Attivare prima il ruolo padre %s"
 
 #. module: project_role
 #: model:ir.model,name:project_role.model_project_project
@@ -356,12 +356,12 @@ msgstr "Ruoli progetto"
 #: model:ir.model.fields,field_description:project_role.field_res_company__project_inherit_assignments
 #: model:ir.model.fields,field_description:project_role.field_res_config_settings__project_inherit_assignments
 msgid "Projects Inherit Assignments"
-msgstr "Progetti che ereditano incarichi"
+msgstr "Incarichi ereditati dal progetto"
 
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
 msgid "Projects inherit Company assignments"
-msgstr "Progetti che ereditano incarichi azienda"
+msgstr "I progetti ereditano gli incarichi azienda"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__role_id
