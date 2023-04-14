@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-28 08:33+0000\n"
-"PO-Revision-Date: 2023-04-12 12:32+0000\n"
+"PO-Revision-Date: 2023-04-14 14:33+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
@@ -41,12 +41,12 @@ msgstr "Ultima modifica il"
 #: model:ir.model.fields,field_description:project_task_pull_request.field_project_project__pr_required_states
 #: model:ir.model.fields,field_description:project_task_pull_request.field_project_task__pr_required_states
 msgid "PR Required States"
-msgstr "Stati PR Necessaria"
+msgstr "Stati richiesti da PR"
 
 #. module: project_task_pull_request
 #: model:ir.model.fields,field_description:project_task_pull_request.field_project_task__pr_uri
 msgid "PR URI"
-msgstr "PR URI"
+msgstr "URI PR"
 
 #. module: project_task_pull_request
 #: code:addons/project_task_pull_request/models/project_task.py:0
