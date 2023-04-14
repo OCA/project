@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-04-07 18:27+0000\n"
-"Last-Translator: Francesco Foresti <francesco.foresti@ooops404.com>\n"
+"PO-Revision-Date: 2023-04-14 14:33+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -53,7 +53,7 @@ msgstr "Chiuso"
 #: model:ir.model.fields,field_description:project_risk.field_project_risk_response__create_uid
 #: model:ir.model.fields,field_description:project_risk.field_project_risk_response_category__create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Creato da"
 
 #. module: project_risk
 #: model:ir.model.fields,field_description:project_risk.field_project_risk__create_date
@@ -61,7 +61,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_risk.field_project_risk_response__create_date
 #: model:ir.model.fields,field_description:project_risk.field_project_risk_response_category__create_date
 msgid "Created on"
-msgstr ""
+msgstr "Creato il"
 
 #. module: project_risk
 #: selection:project.risk,rating:0
@@ -96,7 +96,7 @@ msgstr "Estremo"
 #. module: project_risk
 #: model:ir.model.fields,field_description:project_risk.field_project_risk__message_follower_ids
 msgid "Followers"
-msgstr ""
+msgstr "Seguito da"
 
 #. module: project_risk
 #: model:ir.model.fields,field_description:project_risk.field_project_risk__message_channel_ids
@@ -311,12 +311,12 @@ msgstr "Categorie rischi di progetto"
 #. module: project_risk
 #: model:ir.model,name:project_risk.model_project_risk_response
 msgid "Project Risks Responses"
-msgstr ""
+msgstr "Risposte rischi progetto"
 
 #. module: project_risk
 #: model:ir.model,name:project_risk.model_project_risk_response_category
 msgid "Project Risks Responses Categories"
-msgstr ""
+msgstr "Categorie risposte rischi progetto"
 
 #. module: project_risk
 #: model:ir.model.fields,field_description:project_risk.field_project_risk__proximity
@@ -337,12 +337,12 @@ msgstr "Valutazione"
 #: model:ir.model.fields,field_description:project_risk.field_project_risk__project_risk_response_ids
 #: model_terms:ir.ui.view,arch_db:project_risk.project_risk_form_view
 msgid "Response"
-msgstr ""
+msgstr "Risposta"
 
 #. module: project_risk
 #: model:ir.model.fields,field_description:project_risk.field_project_risk__project_risk_response_category_id
 msgid "Response Category"
-msgstr ""
+msgstr "Categoria risposta"
 
 #. module: project_risk
 #: model:ir.actions.act_window,name:project_risk.project_risk_category_action
@@ -354,7 +354,7 @@ msgstr "Categorie di rischio"
 #: model:ir.actions.act_window,name:project_risk.project_risk_response_category_action
 #: model:ir.ui.menu,name:project_risk.project_risk_response_category_menu
 msgid "Risk Response Categories"
-msgstr ""
+msgstr "Categoria risposta rischio"
 
 #. module: project_risk
 #: model:ir.actions.act_window,name:project_risk.project_risk_action
