@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-04-12 12:32+0000\n"
+"PO-Revision-Date: 2023-04-14 14:33+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -113,8 +113,8 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
 msgid "Check to configure projects to limit role to assignments by default."
 msgstr ""
-"Selezionare per configurare i progetti per limitare il compito agli "
-"incarichi in modo predefinito."
+"Selezionare per configurare i progetti per limitare il ruolo agli incarichi "
+"in modo predefinito."
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_role__child_ids
@@ -151,7 +151,7 @@ msgstr "Impostazioni di configurazione"
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
 msgid "Configure set of roles, available on projects."
-msgstr "Configurare gruppi di compiti, disponibili nei progetti."
+msgstr "Configurare gruppi di ruoli, disponibili nei progetti."
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__create_uid
@@ -379,18 +379,17 @@ msgstr "Ruolo"
 #: code:addons/project_role/models/project_role.py:0
 #, python-format
 msgid "Role \"%s\" conflicts with another role due to same name."
-msgstr ""
-"Il compito \"%s\" è in conflitto con un altro compito con lo stesso nome."
+msgstr "Il ruolo \"%s\" è in conflitto con un altro ruolo con lo stesso nome."
 
 #. module: project_role
 #: model:ir.model.constraint,message:project_role.constraint_project_role_name_company_uniq
 msgid "Role with such name already exists in the company!"
-msgstr "Esiste già un compito con questo nome nell'azienda!"
+msgstr "Esiste già un ruolo con questo nome nell'azienda!"
 
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
 msgid "Roles &amp; Assignments"
-msgstr "Compiti &amp; incarichi"
+msgstr "Ruoli &amp; incarichi"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_has_sms_error
@@ -400,7 +399,7 @@ msgstr "Errore consegna SMS"
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
 msgid "Setup project roles"
-msgstr "Configura compiti progetto"
+msgstr "Configura ruoli progetto"
 
 #. module: project_role
 #: model:ir.model.constraint,message:project_role.constraint_project_role_name_nocompany_uniq
