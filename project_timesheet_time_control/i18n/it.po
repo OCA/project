@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-05-10 02:40+0000\n"
-"PO-Revision-Date: 2023-04-12 12:35+0000\n"
+"PO-Revision-Date: 2023-04-14 14:33+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
@@ -26,7 +26,7 @@ msgid ""
 "%d running timers found. Cannot know which one to stop. Please stop them "
 "manually."
 msgstr ""
-"%d timer in corso trovati. Non è chiaro quali fermare. Per favore, fermali "
+"Trovati %d timer in funzione. Non si può sapere quale fermare. Fermarli "
 "manualmente."
 
 #. module: project_timesheet_time_control
@@ -36,7 +36,7 @@ msgid ""
 "                        If you continue, it will be stopped with"
 msgstr ""
 ".\n"
-"                        Se continui, sarà fermato con"
+"                            Se si continua, si fermerà con"
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_kanban_account_analytic_line
@@ -109,7 +109,7 @@ msgid ""
 "Cannot stop timer %d because it is not running. Refresh the page and check "
 "again."
 msgstr ""
-"Non posso fermare il timer %d perchè non è in corso. Aggiornare la pagina e "
+"Non può fermare il timer %d perché non è in corso. Aggiornare la pagina e "
 "riprovare."
 
 #. module: project_timesheet_time_control
@@ -291,8 +291,8 @@ msgid ""
 "No running timer found in %(model)s %(record)s. Refresh the page and check "
 "again."
 msgstr ""
-"Nessun timer in corso trovato per %(model)s %(record)s. Aggiorna la pagina e "
-"verifica nuovamente."
+"Nessun timer in corso trovato per %(model)s %(record)s. Aggiornare la pagina "
+"e verifica nuovamente."
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__non_allow_billable
@@ -462,12 +462,12 @@ msgstr "Sono molte ore! Assicurarsi che sia corretto prima di salvare."
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
 msgid "The previous timer is old. Do you really want to stop it now?"
-msgstr "Il timer precedente è vecchio. Vuoi fermarlo veramente ora?"
+msgstr "Il timer precedente è vecchio. Lo si vuole veramente fermare adesso?"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,help:project_timesheet_time_control.field_hr_timesheet_switch__running_timer_id
 msgid "This timer is running and will be stopped"
-msgstr "Questo timer è in corso e verrà fermato"
+msgstr "Questo timer è in esecuzione e verrà fermato"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__product_uom_id
