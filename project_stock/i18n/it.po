@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-04-12 14:34+0000\n"
+"PO-Revision-Date: 2023-04-15 12:33+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -164,7 +164,7 @@ msgstr "Movimento etichette analitiche"
 #. module: project_stock
 #: model:ir.model.fields,help:project_stock.field_project_task__stock_analytic_account_id
 msgid "Move created will be assigned to this analytic account"
-msgstr "La movimentazione creata sarà assegnata a questo conto analitico"
+msgstr "Il movimento creato verrà assegnato a questo conto analitico"
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_project__picking_type_id
@@ -195,7 +195,7 @@ msgstr "Lavoro del progetto"
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_stock_move__task_id
 msgid "Related Task"
-msgstr "Attività correlata"
+msgstr "Lavoro correlato"
 
 #. module: project_stock
 #: model_terms:ir.ui.view,arch_db:project_stock.view_stock_move_raw_tree
@@ -267,7 +267,7 @@ msgstr "Attività"
 #. module: project_stock
 #: model:ir.model,name:project_stock.model_project_task_type
 msgid "Task Stage"
-msgstr "Fase attività"
+msgstr "Fase lavoro"
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_stock_move__raw_material_task_id
