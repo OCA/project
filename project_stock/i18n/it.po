@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-04-12 15:32+0000\n"
+"PO-Revision-Date: 2023-04-15 12:33+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -197,7 +197,7 @@ msgstr "Movimento etichette analitiche"
 #. module: project_stock
 #: model:ir.model.fields,help:project_stock.field_project_task__stock_analytic_account_id
 msgid "Move created will be assigned to this analytic account"
-msgstr "La movimentazione creata sarà assegnata a questo conto analitico"
+msgstr "Il movimento creato verrà assegnato a questo conto analitico"
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_project__picking_type_id
