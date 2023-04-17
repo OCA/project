@@ -144,6 +144,7 @@ class ProjectTask(models.Model):
         ForecastLine = self.env["forecast.line"].sudo()
         task_with_lines_to_clean = []
         for task in self:
+            task = task.with_company(task.company_id)
             if not task._should_have_forecast():
                 task_with_lines_to_clean.append(task.id)
                 continue
@@ -184,6 +185,7 @@ class ProjectTask(models.Model):
                         ("employee_id", "=", employee_id),
                     ]
                 )
+                ForecastLine = ForecastLine.with_company(employee_id.company_id)
                 forecast_vals += employee_lines._update_forecast_lines(
                     name=task.name,
                     date_from=date_start,
