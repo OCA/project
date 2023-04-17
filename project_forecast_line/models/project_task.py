@@ -165,8 +165,10 @@ class ProjectTask(models.Model):
 
             date_start = max(today, task.forecast_date_planned_start)
             date_end = max(today, task.forecast_date_planned_end)
-            employee_ids = task._get_task_employees().ids
-            if not employee_ids:
+            employees = task._get_task_employees()
+            employee_ids = employees.ids
+            if not employees:
+                employees = [False]
                 employee_ids = [False]
             _logger.debug(
                 "compute forecast for task %s: %s to %s %sh",
@@ -175,7 +177,7 @@ class ProjectTask(models.Model):
                 date_end,
                 task.remaining_hours,
             )
-            forecast_hours = task.remaining_hours / len(employee_ids)
+            forecast_hours = task.remaining_hours / len(employees)
             # remove lines for employees which are no longer assigned to the task
             ForecastLine.search(
                 [
@@ -184,7 +186,13 @@ class ProjectTask(models.Model):
                     ("employee_id", "not in", tuple(employee_ids)),
                 ]
             ).unlink()
-            for employee_id in employee_ids:
+            for employee in employees:
+                if employee:
+                    employee_id = employee.id
+                    company = employee.company_id
+                else:
+                    employee_id = False
+                    company = task.company_id
                 employee_lines = ForecastLine.search(
                     [
                         ("res_model", "=", self._name),
@@ -192,7 +200,7 @@ class ProjectTask(models.Model):
                         ("employee_id", "=", employee_id),
                     ]
                 )
-                ForecastLine = ForecastLine.with_company(employee_id.company_id)
+                ForecastLine = ForecastLine.with_company(company)
                 forecast_vals += employee_lines._update_forecast_lines(
                     name=task.name,
                     date_from=date_start,
