@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-08-10 02:50+0000\n"
-"PO-Revision-Date: 2023-04-15 12:34+0000\n"
+"PO-Revision-Date: 2023-04-17 17:33+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
@@ -114,7 +114,7 @@ msgstr "Il movimento creato verrà assegnato a questo conto analitico"
 #. module: project_task_material_stock
 #: model:ir.model.fields,field_description:project_task_material_stock.field_project_task__picking_type_id
 msgid "Operation Type"
-msgstr ""
+msgstr "Tipo di operazione"
 
 #. module: project_task_material_stock
 #: selection:project.task,stock_state:0
@@ -133,9 +133,8 @@ msgstr "Prodotti"
 
 #. module: project_task_material_stock
 #: model:ir.model.fields,field_description:project_task_material_stock.field_project_task__analytic_account_id
-#, fuzzy
 msgid "Project Analytic Account"
-msgstr "Conto Analitico Movimentazione"
+msgstr "Conto analitico del progetto"
 
 #. module: project_task_material_stock
 #: model:ir.model.fields,field_description:project_task_material_stock.field_account_analytic_line__task_material_id
