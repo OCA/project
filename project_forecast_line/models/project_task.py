@@ -108,6 +108,8 @@ class ProjectTask(models.Model):
         if not self.forecast_role_id:
             _logger.info("skip task %s: no forecast role", self)
             return False
+        elif not self.project_id:
+            _logger.info("skip task %s: no project", self)
         elif self.project_id.stage_id:
             forecast_type = self.project_id.stage_id.forecast_line_type
             if not forecast_type:
@@ -155,6 +157,11 @@ class ProjectTask(models.Model):
                     forecast_type = "confirmed"
                 else:
                     forecast_type = "forecast"
+            else:
+                _logger.warn(
+                    "strange case -> undefined forecast type for %s: skip", task
+                )
+                continue
 
             date_start = max(today, task.forecast_date_planned_start)
             date_end = max(today, task.forecast_date_planned_end)
