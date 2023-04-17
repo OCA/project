@@ -49,6 +49,7 @@ class HrLeave(models.Model):
                 continue
             else:
                 forecast_type = "forecast"
+            ForecastLine = ForecastLine.with_company(leave.employee_company_id)
             forecast_vals += ForecastLine._prepare_forecast_lines(
                 name=_("Leave"),
                 date_from=leave.date_from.date(),

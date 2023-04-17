@@ -107,6 +107,7 @@ class HrEmployeeForecastRole(models.Model):
         ).unlink()
         horizon_end = ForecastLine._company_horizon_end()
         for rec in self:
+            ForecastLine = ForecastLine.with_company(rec.company_id)
             if rec.date_end:
                 date_end = rec.date_end
                 ForecastLine.search(
