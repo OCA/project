@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-01-13 03:39+0000\n"
-"PO-Revision-Date: 2023-04-12 15:32+0000\n"
+"PO-Revision-Date: 2023-04-17 22:58+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
@@ -48,12 +48,12 @@ msgstr "Dipendenze"
 #. module: project_task_dependency
 #: model:ir.model.fields,field_description:project_task_dependency.field_project_task__dependent_tasks_count
 msgid "Dependent Tasks"
-msgstr "Lavori dipendenti"
+msgstr "Nr. lavori dipendenti"
 
 #. module: project_task_dependency
 #: model:ir.model.fields,field_description:project_task_dependency.field_project_task__depending_task_ids
 msgid "Depending Tasks"
-msgstr "Lavori da cui dipende"
+msgstr "Lavori dipendenti"
 
 #. module: project_task_dependency
 #: model:ir.model.fields,field_description:project_task_dependency.field_project_project__display_name
@@ -99,7 +99,7 @@ msgstr "Vecchio lavoro"
 #. module: project_task_dependency
 #: model_terms:ir.ui.view,arch_db:project_task_dependency.project_task_form
 msgid "Open Task"
-msgstr "Lavoro aperto"
+msgstr "Apri lavoro"
 
 #. module: project_task_dependency
 #: model:ir.model,name:project_task_dependency.model_project_task_copy_map
