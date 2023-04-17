@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-04-14 14:33+0000\n"
+"PO-Revision-Date: 2023-04-17 21:33+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -59,7 +59,7 @@ msgid ""
 msgstr ""
 "<span class=\"o_form_label\">Ruoli progetto</span>\n"
 "                                <span class=\"fa fa-lg fa-building-o\" title="
-"\"I valori impostati qui sono specifici per azienda\" role=\"img\" aria-"
+"\"I valori impostati qui sono specifici per azienda.\" role=\"img\" aria-"
 "label=\"I valori impostati qui sono specifici per azienda.\" groups=\"base."
 "group_multi_company\"/>"
 
@@ -114,7 +114,7 @@ msgstr ""
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_role__child_ids
 msgid "Child Roles"
-msgstr "Compiti figli"
+msgstr "Ruoli figli"
 
 #. module: project_role
 #: model:ir.model,name:project_role.model_res_company
