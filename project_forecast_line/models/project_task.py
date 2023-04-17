@@ -94,7 +94,7 @@ class ProjectTask(models.Model):
                 [("res_model", "=", self._name), ("res_id", "=", task.id)]
             )
             total_forecast = sum(forecast_lines.mapped("forecast_hours"))
-            if not forecast_lines or total_forecast:
+            if not forecast_lines or not total_forecast:
                 # no existing forecast lines, try to generate some using the
                 # normal flow
                 task._update_forecast_lines()
