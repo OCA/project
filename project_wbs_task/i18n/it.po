@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-11-13 07:39+0000\n"
-"PO-Revision-Date: 2020-05-31 10:09+0000\n"
-"Last-Translator: Sergio Zanchetta <primes2h@gmail.com>\n"
+"PO-Revision-Date: 2023-04-17 17:33+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: \n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.10\n"
+"X-Generator: Weblate 4.14.1\n"
 
 #. module: project_wbs_task
 #: model:ir.model.fields,field_description:project_wbs_task.field_project_task__project_complete_wbs_code
@@ -59,6 +59,8 @@ msgid ""
 "The full WBS code describes the full path of this component within the "
 "project WBS hierarchy"
 msgstr ""
+"Il codice WBS completo descrive il percorso completo del componente "
+"all'interno della gerarchia WBS"
 
 #. module: project_wbs_task
 #: model_terms:ir.ui.view,arch_db:project_wbs_task.view_task_search_form
