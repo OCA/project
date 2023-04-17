@@ -28,6 +28,7 @@ class SaleOrderLine(models.Model):
             [("res_id", "in", self.ids), ("res_model", "=", self._name)]
         ).unlink()
         for line in self:
+            ForecastLine = ForecastLine.with_company(line.company_id)
             if not line.product_id.forecast_role_id:
                 continue
             elif line.state in ("cancel", "sale"):
