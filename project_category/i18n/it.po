@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-04-17 21:33+0000\n"
-"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
+"PO-Revision-Date: 2023-04-18 19:33+0000\n"
+"Last-Translator: Francesco Foresti <francesco.foresti@ooops404.com>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -67,12 +67,12 @@ msgstr "ID"
 #. module: project_category
 #: model:ir.model.fields,field_description:project_category.field_project_type____last_update
 msgid "Last Modified on"
-msgstr "Ultima modica il"
+msgstr "Ultima modifica il"
 
 #. module: project_category
 #: model:ir.model.fields,field_description:project_category.field_project_type__write_uid
 msgid "Last Updated by"
-msgstr "Ultimo aggiormento di"
+msgstr "Ultimo aggiornamento di"
 
 #. module: project_category
 #: model:ir.model.fields,field_description:project_category.field_project_type__write_date
