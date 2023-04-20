@@ -48,6 +48,7 @@ addon | version | maintainers | summary
 [project_task_digitized_signature](project_task_digitized_signature/) | 14.0.1.0.0 |  | Project Task Digitized Signature
 [project_task_material](project_task_material/) | 14.0.1.0.0 |  | Record products spent in a Task
 [project_task_pull_request](project_task_pull_request/) | 14.0.1.1.0 |  | Adds a field for a PR URI to project tasks
+[project_task_recurring_activity](project_task_recurring_activity/) | 14.0.1.0.0 | [![dessanhemrayev](https://github.com/dessanhemrayev.png?size=30px)](https://github.com/dessanhemrayev) [![CetmixGitDrone](https://github.com/CetmixGitDrone.png?size=30px)](https://github.com/CetmixGitDrone) | Project Task Recurring Activity
 [project_task_send_by_mail](project_task_send_by_mail/) | 14.0.1.0.0 |  | Send task report by email
 [project_template](project_template/) | 14.0.1.2.0 | [![patrickrwilson](https://github.com/patrickrwilson.png?size=30px)](https://github.com/patrickrwilson) | Project Templates
 [project_template_milestone](project_template_milestone/) | 14.0.1.0.0 | [![patrickrwilson](https://github.com/patrickrwilson.png?size=30px)](https://github.com/patrickrwilson) | Adds function to copy of milestones when creating a project from template
