@@ -35,6 +35,7 @@ setuptools.setup(
         'odoo14-addon-project_task_digitized_signature',
         'odoo14-addon-project_task_material',
         'odoo14-addon-project_task_pull_request',
+        'odoo14-addon-project_task_recurring_activity',
         'odoo14-addon-project_task_send_by_mail',
         'odoo14-addon-project_template',
         'odoo14-addon-project_template_milestone',
