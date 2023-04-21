@@ -99,7 +99,10 @@ class ProjectTask(models.Model):
                 # normal flow
                 task._update_forecast_lines()
                 continue
-            ratio = task.remaining_hours / total_forecast
+            # caution: total_forecast is negative -> make sure we have a
+            # positive ratio, so that the multiplication does not change the
+            # sign of the forecast
+            ratio = abs(task.remaining_hours / total_forecast)
             for line in forecast_lines:
                 line.forecast_hours *= ratio
 
