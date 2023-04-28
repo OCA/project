@@ -22,7 +22,7 @@
                         <field name="date_time_end" />
                         <field name="project_id" required="1" />
                         <field name="task_id" />
-                        <field name="company_id" />
+                        <field name="company_id" groups="base.group_multi_company" />
                     </group>
                     <group
                         name="messages"
