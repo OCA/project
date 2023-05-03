@@ -27,6 +27,7 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
+[project_administrator_restricted_visibility](project_administrator_restricted_visibility/) | 13.0.1.0.0 |  | Adds a 'Project Administrator' access group with restricted visibility to 'Projects'
 [project_budget](project_budget/) | 13.0.1.0.0 | [![patrickrwilson](https://github.com/patrickrwilson.png?size=30px)](https://github.com/patrickrwilson) | Adds budget management to projects.
 [project_category](project_category/) | 13.0.1.2.0 |  | Project Types
 [project_custom_info](project_custom_info/) | 13.0.1.0.0 | [![Tardo](https://github.com/Tardo.png?size=30px)](https://github.com/Tardo) | Add custom info in projects
