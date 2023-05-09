@@ -10,7 +10,9 @@ class TestAccountPaymentTermSecurity(SavepointCase):
         cls.project_obj = cls.env["project.project"]
         cls.user_admin = cls.env.ref("base.user_admin")
         cls.user_user_padmin = new_test_user(
-            cls.env, login="project-user", groups="project.group_project_user",
+            cls.env,
+            login="project-user",
+            groups="project.group_project_user",
         )
         cls.user_restrcited_padmin = new_test_user(
             cls.env,
