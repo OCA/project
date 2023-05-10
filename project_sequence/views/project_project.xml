@@ -7,8 +7,17 @@
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.edit_project" />
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='partner_id']" position="after">
-                <field name="sequence_code" />
+            <xpath expr="//div[hasclass('oe_title')]//h1" position="after">
+                <div name="sequence_code">
+                    <div>
+                        <label
+                            for="sequence_code"
+                            class="oe_inline"
+                            string="Sequence code:"
+                        />
+                        <field name="sequence_code" class="oe_inline oe_input_align" />
+                    </div>
+                </div>
             </xpath>
         </field>
     </record>
