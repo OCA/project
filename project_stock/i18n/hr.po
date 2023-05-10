@@ -33,6 +33,16 @@ msgid "Allowed to Unreserve Inventory"
 msgstr "Dozvoli odrezervaciju stavaka"
 
 #. module: project_stock
+#: model:ir.model.fields,field_description:project_stock.field_project_task__analytic_distribution
+msgid "Analytic"
+msgstr ""
+
+#. module: project_stock
+#: model:ir.model.fields,field_description:project_stock.field_project_task__analytic_distribution_search
+msgid "Analytic Distribution Search"
+msgstr ""
+
+#. module: project_stock
 #: model:ir.model,name:project_stock.model_account_analytic_line
 msgid "Analytic Line"
 msgstr "Analitička stavka"
@@ -41,6 +51,11 @@ msgstr "Analitička stavka"
 #: model:ir.model.fields,field_description:project_stock.field_project_task__stock_analytic_line_ids
 msgid "Analytic Lines"
 msgstr "Analitičke stavke"
+
+#. module: project_stock
+#: model:ir.model.fields,field_description:project_stock.field_project_task__analytic_precision
+msgid "Analytic Precision"
+msgstr ""
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_project__stock_analytic_date
@@ -100,17 +115,6 @@ msgid "Destination Location"
 msgstr "Odredišna lokacija"
 
 #. module: project_stock
-#: model:ir.model.fields,field_description:project_stock.field_account_analytic_line__display_name
-#: model:ir.model.fields,field_description:project_stock.field_project_project__display_name
-#: model:ir.model.fields,field_description:project_stock.field_project_task__display_name
-#: model:ir.model.fields,field_description:project_stock.field_project_task_type__display_name
-#: model:ir.model.fields,field_description:project_stock.field_stock_move__display_name
-#: model:ir.model.fields,field_description:project_stock.field_stock_move_line__display_name
-#: model:ir.model.fields,field_description:project_stock.field_stock_scrap__display_name
-msgid "Display Name"
-msgstr "Prikazani naziv"
-
-#. module: project_stock
 #: model:ir.model.fields.selection,name:project_stock.selection__project_task__stock_state__done
 msgid "Done"
 msgstr "Završeno"
@@ -125,17 +129,6 @@ msgstr "Završena skladišna kretanja"
 #: model:ir.model.fields,field_description:project_stock.field_project_task__group_id
 msgid "Group"
 msgstr "Grupa"
-
-#. module: project_stock
-#: model:ir.model.fields,field_description:project_stock.field_account_analytic_line__id
-#: model:ir.model.fields,field_description:project_stock.field_project_project__id
-#: model:ir.model.fields,field_description:project_stock.field_project_task__id
-#: model:ir.model.fields,field_description:project_stock.field_project_task_type__id
-#: model:ir.model.fields,field_description:project_stock.field_stock_move__id
-#: model:ir.model.fields,field_description:project_stock.field_stock_move_line__id
-#: model:ir.model.fields,field_description:project_stock.field_stock_scrap__id
-msgid "ID"
-msgstr "ID"
 
 #. module: project_stock
 #: model:ir.model.fields,help:project_stock.field_project_task__done_stock_moves
@@ -163,22 +156,12 @@ msgid "Inventory Moves"
 msgstr "Kretanja inventure"
 
 #. module: project_stock
+#. odoo-python
 #: code:addons/project_stock/models/project_task.py:0
 #, python-format
 msgid "It is not possible to change this with reserved movements in tasks."
 msgstr ""
 "Ovo nije moguće mijenjati na rezerviranim skladišnim kretanjima u zadacima."
-
-#. module: project_stock
-#: model:ir.model.fields,field_description:project_stock.field_account_analytic_line____last_update
-#: model:ir.model.fields,field_description:project_stock.field_project_project____last_update
-#: model:ir.model.fields,field_description:project_stock.field_project_task____last_update
-#: model:ir.model.fields,field_description:project_stock.field_project_task_type____last_update
-#: model:ir.model.fields,field_description:project_stock.field_stock_move____last_update
-#: model:ir.model.fields,field_description:project_stock.field_stock_move_line____last_update
-#: model:ir.model.fields,field_description:project_stock.field_stock_scrap____last_update
-msgid "Last Modified on"
-msgstr "Zadnje modificirano"
 
 #. module: project_stock
 #: model_terms:ir.ui.view,arch_db:project_stock.view_task_form2
@@ -191,7 +174,7 @@ msgid "Move Analytic Account"
 msgstr "Analitički konto kretanja"
 
 #. module: project_stock
-#: model:ir.model.fields,field_description:project_stock.field_project_task__stock_analytic_tag_ids
+#: model:ir.model.fields,field_description:project_stock.field_project_task__stock_analytic_distribution
 msgid "Move Analytic Tags"
 msgstr "Oznake analitike kretanja"
 
@@ -242,6 +225,7 @@ msgid "Reserved"
 msgstr "Rezervirano"
 
 #. module: project_stock
+#. odoo-python
 #: code:addons/project_stock/models/project_task.py:0
 #: model:ir.model,name:project_stock.model_stock_scrap
 #: model_terms:ir.ui.view,arch_db:project_stock.view_task_form2
@@ -314,6 +298,17 @@ msgid "Task for material"
 msgstr "Zadatak za materijal"
 
 #. module: project_stock
+#: model:project.project,name:project_stock.project_project_tm_test
+#: model:stock.picking.type,name:project_stock.stock_picking_type_tm_test
+msgid "Task material"
+msgstr ""
+
+#. module: project_stock
+#: model:project.project,label_tasks:project_stock.project_project_tm_test
+msgid "Tasks"
+msgstr ""
+
+#. module: project_stock
 #: model:ir.model.fields,help:project_stock.field_project_task__unreserve_visible
 msgid "Technical field to check when we can unreserve"
 msgstr "Tehničko polje za provjeru kada možemo odrezervirati"
@@ -343,3 +338,12 @@ msgstr "Odrezerviraj"
 #: model:ir.model.fields,field_description:project_stock.field_project_task_type__use_stock_moves
 msgid "Use Stock Moves"
 msgstr "Koristi skladišna kretanja"
+
+#~ msgid "Display Name"
+#~ msgstr "Prikazani naziv"
+
+#~ msgid "ID"
+#~ msgstr "ID"
+
+#~ msgid "Last Modified on"
+#~ msgstr "Zadnje modificirano"
