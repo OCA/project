@@ -23,6 +23,7 @@ addon | version | maintainers | summary
 --- | --- | --- | ---
 [project_department](project_department/) | 16.0.1.0.0 |  | Project Department Categorization
 [project_list](project_list/) | 16.0.1.0.0 |  | Projects list view
+[project_parent_task_filter](project_parent_task_filter/) | 16.0.1.0.0 |  | Add a filter to show the parent tasks
 [project_role](project_role/) | 16.0.1.0.0 | [![alexey-pelykh](https://github.com/alexey-pelykh.png?size=30px)](https://github.com/alexey-pelykh) | Project role-based roster
 [project_stock](project_stock/) | 16.0.1.0.0 | [![victoralmau](https://github.com/victoralmau.png?size=30px)](https://github.com/victoralmau) | Project Stock
 [project_task_add_very_high](project_task_add_very_high/) | 16.0.1.0.0 | [![astirpe](https://github.com/astirpe.png?size=30px)](https://github.com/astirpe) | Adds extra options 'High' and 'Very High' on tasks
