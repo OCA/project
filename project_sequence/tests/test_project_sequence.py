@@ -93,3 +93,16 @@ class TestProjectSequence(SavepointCase):
         self.pjr_seq._get_current_sequence().number_next = 11
         with self.assertRaises(IntegrityError), self.env.cr.savepoint():
             proj1 = self.env["project.project"].create({"name": "two"})
+
+    @users("manager")
+    def test_project_without_sequence(self):
+        """Preexisting projects had no sequence, and they should display fine."""
+        proj1 = self.env["project.project"].create(
+            {"name": "one", "sequence_code": False}
+        )
+        self.assertEqual(proj1.display_name, "one")
+        self.assertFalse(proj1.sequence_code)
+        # Make sure that the sequence is not increased
+        proj2 = self.env["project.project"].create({"name": "two"})
+        self.assertEqual(proj2.sequence_code, "23-00011")
+        self.assertEqual(proj2.display_name, "23-00011 - two")
