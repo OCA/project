@@ -4,43 +4,39 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0+e\n"
+"Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-10 10:29+0000\n"
-"PO-Revision-Date: 2023-04-19 11:22+0200\n"
-"Last-Translator: Andrea Cattalani <andrea@moduon.team>\n"
+"Last-Translator: \n"
 "Language-Team: \n"
-"Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
 
 #. module: project_sequence
 #: model:ir.model.fields,field_description:project_sequence.field_project_project__display_name
 msgid "Display Name"
-msgstr "Nombre"
+msgstr ""
 
 #. module: project_sequence
 #: model:ir.model.fields,field_description:project_sequence.field_project_project__id
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
 #. module: project_sequence
 #: model:ir.model.fields,field_description:project_sequence.field_project_project____last_update
 msgid "Last Modified on"
-msgstr "Última modificación el"
+msgstr ""
 
 #. module: project_sequence
 #: model:ir.model.fields,field_description:project_sequence.field_project_project__name
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 #. module: project_sequence
 #: model:ir.model,name:project_sequence.model_project_project
 msgid "Project"
-msgstr "Proyecto"
+msgstr ""
 
 #. module: project_sequence
 #: model:ir.model.constraint,message:project_sequence.constraint_project_project_name_required
@@ -61,6 +57,3 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_sequence.project_sequence_form_view
 msgid "Sequence code:"
 msgstr ""
-
-#~ msgid "Code"
-#~ msgstr "Código"
