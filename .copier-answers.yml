@@ -14,7 +14,8 @@ include_wkhtmltopdf: false
 odoo_version: 14.0
 org_name: Odoo Community Association (OCA)
 org_slug: OCA
-rebel_module_groups: []
+rebel_module_groups:
+- project_sequence
 repo_description: 'TODO: add repo description.'
 repo_name: project
 repo_slug: project
