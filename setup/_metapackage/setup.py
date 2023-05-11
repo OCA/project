@@ -20,6 +20,7 @@ setuptools.setup(
         'odoo14-addon-project_parent_task_filter',
         'odoo14-addon-project_recalculate',
         'odoo14-addon-project_role',
+        'odoo14-addon-project_sequence',
         'odoo14-addon-project_stage_closed',
         'odoo14-addon-project_stage_mgmt',
         'odoo14-addon-project_stage_state',
