@@ -33,7 +33,7 @@ addon | version | maintainers | summary
 [project_parent_task_filter](project_parent_task_filter/) | 14.0.1.2.0 |  | Add filters to show the parent or non parent tasks
 [project_recalculate](project_recalculate/) | 14.0.1.0.0 |  | Project Recalculate
 [project_role](project_role/) | 14.0.1.0.0 | [![alexey-pelykh](https://github.com/alexey-pelykh.png?size=30px)](https://github.com/alexey-pelykh) | Project role-based roster
-[project_sequence](project_sequence/) | 14.0.0.1.0 | [![yajo](https://github.com/yajo.png?size=30px)](https://github.com/yajo) [![anddago78](https://github.com/anddago78.png?size=30px)](https://github.com/anddago78) | Add a sequence field to projects, filled automatically
+[project_sequence](project_sequence/) | 14.0.0.1.1 | [![yajo](https://github.com/yajo.png?size=30px)](https://github.com/yajo) [![anddago78](https://github.com/anddago78.png?size=30px)](https://github.com/anddago78) | Add a sequence field to projects, filled automatically
 [project_stage_closed](project_stage_closed/) | 14.0.2.0.0 |  | Project Task Stage Closed
 [project_stage_mgmt](project_stage_mgmt/) | 14.0.1.0.0 | [![DavidJForgeFlow](https://github.com/DavidJForgeFlow.png?size=30px)](https://github.com/DavidJForgeFlow) | Allows to assign and create stages on project creation wizard
 [project_stage_state](project_stage_state/) | 14.0.1.1.0 |  | Restore State attribute removed from Project Stages in 8.0
@@ -58,7 +58,7 @@ addon | version | maintainers | summary
 [project_timeline_task_dependency](project_timeline_task_dependency/) | 14.0.1.0.0 |  | Render arrows between dependencies.
 [project_timesheet_time_control](project_timesheet_time_control/) | 14.0.1.1.0 | [![ernestotejeda](https://github.com/ernestotejeda.png?size=30px)](https://github.com/ernestotejeda) | Project timesheet time control
 [project_timesheet_time_control_sale](project_timesheet_time_control_sale/) | 14.0.1.0.0 | [![eLBati](https://github.com/eLBati.png?size=30px)](https://github.com/eLBati) [![bosd](https://github.com/bosd.png?size=30px)](https://github.com/bosd) | Make 'Project timesheet time control' and 'Sales Timesheet' work together
-[project_wbs](project_wbs/) | 14.0.1.0.0 |  | Apply Work Breakdown Structure
+[project_wbs](project_wbs/) | 14.0.1.0.1 |  | Apply Work Breakdown Structure
 
 [//]: # (end addons)
 
