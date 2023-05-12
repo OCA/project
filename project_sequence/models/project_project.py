@@ -39,10 +39,21 @@ class ProjectProject(models.Model):
         """Prefix name with sequence code if they are different."""
         old_result = super().name_get()
         result = []
+        sequence_pattern = (
+            self.env["ir.config_parameter"]
+            .sudo()
+            .get_param(
+                "project_sequence.display_name_pattern",
+                default="%(sequence_code)s - %(name)s",
+            )
+        )
         for id_, name in old_result:
             project = self.browse(id_)
             if project.sequence_code and project.sequence_code != name:
-                name = "{} - {}".format(project.sequence_code, name)
+                name = sequence_pattern % {
+                    "name": name,
+                    "sequence_code": project.sequence_code,
+                }
             result.append((id_, name))
         return result
 
