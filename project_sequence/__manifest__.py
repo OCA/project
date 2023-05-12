@@ -17,5 +17,6 @@
     "data": [
         "data/ir_sequence.xml",
         "views/project_project.xml",
+        "wizards/res_config_settings_view.xml",
     ],
 }
