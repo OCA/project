@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-31 18:04+0000\n"
-"PO-Revision-Date: 2023-01-03 12:49+0000\n"
+"PO-Revision-Date: 2023-05-12 13:34+0000\n"
 "Last-Translator: Francesco Foresti <francesco.foresti@ooops404.com>\n"
 "Language-Team: Italian (http://www.transifex.com/oca/OCA-project-8-0/"
 "language/it/)\n"
@@ -131,7 +131,7 @@ msgstr "Last Updated on"
 #: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty_write_uid
 #: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_write_uid
 msgid "Last Updated by"
-msgstr "Last Updated by"
+msgstr "Ultimo aggiornamento di"
 
 #. module: project_gtd
 #: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context_write_date
