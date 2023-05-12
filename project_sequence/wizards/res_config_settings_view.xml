@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Moduon Team S.L.
+     License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0) -->
+<data>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">Configure project display name</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="project.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='tasks_management']" position="inside">
+                <div
+                    id="project_display_name_pattern"
+                    class="col-12 col-lg-6 o_setting_box"
+                >
+                    <div class="o_setting_right_pane" name="pad_project_right_pane">
+                        <label for="project_display_name_pattern" class="d-block" />
+                        <field name="project_display_name_pattern" />
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</data>
