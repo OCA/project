@@ -4,7 +4,7 @@
 {
     "name": "Project Sequence",
     "summary": "Add a sequence field to projects, filled automatically",
-    "version": "14.0.0.1.1",
+    "version": "14.0.0.2.0",
     "development_status": "Alpha",
     "category": "Services/Project",
     "website": "https://github.com/OCA/project",
