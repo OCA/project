@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-04-12 13:35+0000\n"
+"PO-Revision-Date: 2023-05-15 11:30+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -34,12 +34,12 @@ msgstr "Abilitato a rilasciare giacenze"
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_task__analytic_distribution
 msgid "Analytic"
-msgstr ""
+msgstr "Analitico"
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_task__analytic_distribution_search
 msgid "Analytic Distribution Search"
-msgstr ""
+msgstr "Ricerca distribuzione analitica"
 
 #. module: project_stock
 #: model:ir.model,name:project_stock.model_account_analytic_line
@@ -54,7 +54,7 @@ msgstr "Righe analitiche"
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_task__analytic_precision
 msgid "Analytic Precision"
-msgstr ""
+msgstr "Precisione analitica"
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_project__stock_analytic_date
@@ -300,12 +300,12 @@ msgstr "Lavoro per materiale"
 #: model:project.project,name:project_stock.project_project_tm_test
 #: model:stock.picking.type,name:project_stock.stock_picking_type_tm_test
 msgid "Task material"
-msgstr ""
+msgstr "Materiale lavoro"
 
 #. module: project_stock
 #: model:project.project,label_tasks:project_stock.project_project_tm_test
 msgid "Tasks"
-msgstr ""
+msgstr "Lavori"
 
 #. module: project_stock
 #: model:ir.model.fields,help:project_stock.field_project_task__unreserve_visible
