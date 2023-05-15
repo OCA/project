@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-04-17 22:55+0000\n"
+"PO-Revision-Date: 2023-05-15 11:30+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -278,7 +278,7 @@ msgstr "Lavoro per materiale"
 #: model:project.project,name:project_stock.project_project_tm_test
 #: model:stock.picking.type,name:project_stock.stock_picking_type_tm_test
 msgid "Task material"
-msgstr "Attività per materiale"
+msgstr "Materiale lavoro"
 
 #. module: project_stock
 #: model:project.project,label_tasks:project_stock.project_project_tm_test
