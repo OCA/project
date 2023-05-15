@@ -31,6 +31,7 @@ addon | version | maintainers | summary
 [project_parent_task_filter](project_parent_task_filter/) | 15.0.1.1.0 |  | Add a filter to show the parent tasks
 [project_purchase_analytic_global](project_purchase_analytic_global/) | 15.0.1.0.1 | [![yankinmax](https://github.com/yankinmax.png?size=30px)](https://github.com/yankinmax) | Project - Create Purchase Orders with Analytic Account
 [project_role](project_role/) | 15.0.1.0.1 | [![alexey-pelykh](https://github.com/alexey-pelykh.png?size=30px)](https://github.com/alexey-pelykh) | Project role-based roster
+[project_sequence](project_sequence/) | 15.0.0.2.0 | [![yajo](https://github.com/yajo.png?size=30px)](https://github.com/yajo) [![anddago78](https://github.com/anddago78.png?size=30px)](https://github.com/anddago78) | Add a sequence field to projects, filled automatically
 [project_stage_mgmt](project_stage_mgmt/) | 15.0.1.0.0 | [![DavidJForgeFlow](https://github.com/DavidJForgeFlow.png?size=30px)](https://github.com/DavidJForgeFlow) | Allows to assign and create task stages on project creation wizard
 [project_status](project_status/) | 15.0.1.0.0 | [![patrickrwilson](https://github.com/patrickrwilson.png?size=30px)](https://github.com/patrickrwilson) | Project Status
 [project_stock](project_stock/) | 15.0.1.0.4 | [![victoralmau](https://github.com/victoralmau.png?size=30px)](https://github.com/victoralmau) | Project Stock
