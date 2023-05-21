@@ -9,10 +9,5 @@
     > div {
         height: 100%;
         max-width: 100%;
-        background: theme-color("success");
-
-        &.danger {
-            background: theme-color("danger");
-        }
     }
 }
