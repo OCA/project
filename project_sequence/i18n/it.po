@@ -6,71 +6,73 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2023-05-22 11:10+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: project_sequence
 #: model:ir.model,name:project_sequence.model_res_config_settings
 msgid "Config Settings"
-msgstr ""
+msgstr "Impostazioni configurazione"
 
 #. module: project_sequence
 #: model:ir.model.fields,field_description:project_sequence.field_project_project__display_name
 #: model:ir.model.fields,field_description:project_sequence.field_res_config_settings__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nome visualizzato"
 
 #. module: project_sequence
 #: model:ir.model.fields,field_description:project_sequence.field_project_project__id
 #: model:ir.model.fields,field_description:project_sequence.field_res_config_settings__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_sequence
 #: model:ir.model.fields,field_description:project_sequence.field_project_project____last_update
 #: model:ir.model.fields,field_description:project_sequence.field_res_config_settings____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Ultima modifica il"
 
 #. module: project_sequence
 #: model:ir.model.fields,field_description:project_sequence.field_project_project__name
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 #. module: project_sequence
 #: model:ir.model,name:project_sequence.model_project_project
 msgid "Project"
-msgstr ""
+msgstr "Progetto"
 
 #. module: project_sequence
 #: model:ir.model.fields,field_description:project_sequence.field_res_config_settings__project_display_name_pattern
 msgid "Project Display Name Pattern"
-msgstr ""
+msgstr "Nome visualizzato schema progetto"
 
 #. module: project_sequence
 #: model:ir.model.constraint,message:project_sequence.constraint_project_project_name_required
 msgid "Project name is required"
-msgstr ""
+msgstr "È richiesto il nome progetto"
 
 #. module: project_sequence
 #: model:ir.model.fields,field_description:project_sequence.field_project_project__sequence_code
 msgid "Sequence Code"
-msgstr ""
+msgstr "Codice sequenza"
 
 #. module: project_sequence
 #: model:ir.model.constraint,message:project_sequence.constraint_project_project_sequence_code_unique
 msgid "Sequence code must be unique"
-msgstr ""
+msgstr "Il codice sequenza deve essere univoco"
 
 #. module: project_sequence
 #: model_terms:ir.ui.view,arch_db:project_sequence.project_sequence_form_view
 msgid "Sequence code:"
-msgstr ""
+msgstr "Codice sequenza:"
 
 #. module: project_sequence
 #: model:ir.model.fields,help:project_sequence.field_res_config_settings__project_display_name_pattern
@@ -78,3 +80,5 @@ msgid ""
 "Use %(sequence_code)s and %(name)s to include the sequence code and the name"
 " of the project in the display name."
 msgstr ""
+"Utilizzare %(sequence_code)s e %(name)s per includere il codice sequenza e "
+"il nome del progetto nel nome visualizzato."
