@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-10-17 13:09+0000\n"
-"PO-Revision-Date: 2023-05-18 19:35+0000\n"
-"Last-Translator: Francesco Foresti <francesco.foresti@ooops404.com>\n"
+"PO-Revision-Date: 2023-05-22 15:09+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (http://www.transifex.com/oca/OCA-project-8-0/"
 "language/it/)\n"
 "Language: it\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.16.4\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: project_task_materials_stock
 #: field:project.task.materials,analytic_line_id:0
@@ -76,7 +76,7 @@ msgstr "Materiali usati"
 #. module: project_task_materials_stock
 #: selection:project.task,stock_state:0
 msgid "Pending"
-msgstr "Attesa"
+msgstr "In attesa"
 
 #. module: project_task_materials_stock
 #: view:project.task:project_task_materials_stock.view_project_task_form_materials_stock
