@@ -84,7 +84,7 @@ class TestProjectHr(TransactionCase):
 
     def test_task(self):
         # check computed values on task
-        self.assertEqual(self.task.employee_id, self.employee)
+        self.assertEqual(self.task.employee_ids, self.employee)
         self.assertEqual(self.task.allowed_hr_category_ids, self.hr_category)
         self.assertEqual(self.task.allowed_assigned_user_ids, self.user1)
         self.project.hr_category_ids = [(4, self.hr_category_2.id)]
