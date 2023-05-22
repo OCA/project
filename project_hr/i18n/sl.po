@@ -23,7 +23,7 @@ msgid "Allowed HR categories"
 msgstr "Dovoljene kategorije kadrov"
 
 #. module: project_hr
-#: model:ir.model.fields,field_description:project_hr.field_project_task__allowed_user_ids
+#: model:ir.model.fields,field_description:project_hr.field_project_task__allowed_assigned_user_ids
 msgid "Allowed users"
 msgstr "Dovoljeni uporabniki"
 
@@ -64,9 +64,9 @@ msgstr ""
 "kategorijo."
 
 #. module: project_hr
-#: model:ir.model.fields,field_description:project_hr.field_project_task__employee_id
-msgid "Linked employee"
-msgstr "Povezani kader"
+#: model:ir.model.fields,field_description:project_hr.field_project_task__employee_ids
+msgid "Linked employees"
+msgstr ""
 
 #. module: project_hr
 #: model:ir.model,name:project_hr.model_project_project
@@ -88,7 +88,7 @@ msgstr ""
 "kategorije na projektnem nivoju."
 
 #. module: project_hr
-#: model:ir.model.fields,help:project_hr.field_project_task__allowed_user_ids
+#: model:ir.model.fields,help:project_hr.field_project_task__allowed_assigned_user_ids
 msgid ""
 "Technical field for computing allowed users according employee category."
 msgstr ""
@@ -106,19 +106,27 @@ msgstr ""
 
 #. module: project_hr
 #: model:ir.model,name:project_hr.model_res_users
-msgid "Users"
-msgstr "Uporabniki"
+msgid "User"
+msgstr ""
 
 #. module: project_hr
+#. odoo-python
 #: code:addons/project_hr/models/project_task.py:0
 #, python-format
 msgid "You can't assign a category that is not allowed at project level."
 msgstr "Kategorije, ki ni dovoljena na projektnem nivoju, ne morete dodeliti."
 
 #. module: project_hr
+#. odoo-python
 #: code:addons/project_hr/models/project_task.py:0
 #, python-format
 msgid ""
 "You can't assign a user not belonging to the selected employee category."
 msgstr ""
 "Ne morete dodeliti uporabnika, ki ne spada v izbrano kadrovsko kategorijo."
+
+#~ msgid "Linked employee"
+#~ msgstr "Povezani kader"
+
+#~ msgid "Users"
+#~ msgstr "Uporabniki"

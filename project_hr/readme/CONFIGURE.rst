@@ -2,7 +2,7 @@ For setting employee categories at project level:
 
 #. Go to *Project > Projects*.
 #. Click on the 3 vertical dots of one of the project kanban cards for
-   unfolding options and select "Edit".
+   unfolding options and select "Settings".
 #. Put the wanted employee categories on the field "Employee Categories".
 
 For setting employee categories:

@@ -25,7 +25,7 @@
                 >[('id', 'in', allowed_assigned_user_ids)]</attribute>
             </field>
             <field name="date_assign" position="after">
-                <field name="employee_id" />
+                <field name="employee_ids" widget="many2many_tags" />
             </field>
         </field>
     </record>

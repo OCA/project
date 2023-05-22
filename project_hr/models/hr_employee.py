@@ -7,9 +7,10 @@ from odoo import api, models
 class HrEmployee(models.Model):
     _inherit = "hr.employee"
 
-    @api.model
-    def create(self, vals):
-        employee = super().create(vals)
-        if employee.category_ids:
-            self.env["project.task"].invalidate_cache()
-        return employee
+    @api.model_create_multi
+    def create(self, vals_list):
+        res = super().create(vals_list)
+        for vals in vals_list:
+            if vals.get("category_ids"):
+                self.env["project.task"].invalidate_model()
+        return res

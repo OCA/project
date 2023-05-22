@@ -22,7 +22,7 @@ msgid "Allowed HR categories"
 msgstr "Categories de RRHH permeses"
 
 #. module: project_hr
-#: model:ir.model.fields,field_description:project_hr.field_project_task__allowed_user_ids
+#: model:ir.model.fields,field_description:project_hr.field_project_task__allowed_assigned_user_ids
 msgid "Allowed users"
 msgstr "Usuaris/àries permesos/es"
 
@@ -63,9 +63,9 @@ msgstr ""
 "assignats/ades a aquells que pertanyen a la categoria."
 
 #. module: project_hr
-#: model:ir.model.fields,field_description:project_hr.field_project_task__employee_id
-msgid "Linked employee"
-msgstr "Empleat/da relacionat/da"
+#: model:ir.model.fields,field_description:project_hr.field_project_task__employee_ids
+msgid "Linked employees"
+msgstr ""
 
 #. module: project_hr
 #: model:ir.model,name:project_hr.model_project_project
@@ -87,7 +87,7 @@ msgstr ""
 "a les categories establertes a nivell de projecte."
 
 #. module: project_hr
-#: model:ir.model.fields,help:project_hr.field_project_task__allowed_user_ids
+#: model:ir.model.fields,help:project_hr.field_project_task__allowed_assigned_user_ids
 msgid ""
 "Technical field for computing allowed users according employee category."
 msgstr ""
@@ -105,16 +105,19 @@ msgstr ""
 
 #. module: project_hr
 #: model:ir.model,name:project_hr.model_res_users
-msgid "Users"
-msgstr "Usuaris/àries"
+msgid "User"
+msgstr ""
 
 #. module: project_hr
+#. odoo-python
 #: code:addons/project_hr/models/project_task.py:0
 #, python-format
 msgid "You can't assign a category that is not allowed at project level."
-msgstr "No pot assignar una categoria que no està permesa a nivell de projecte."
+msgstr ""
+"No pot assignar una categoria que no està permesa a nivell de projecte."
 
 #. module: project_hr
+#. odoo-python
 #: code:addons/project_hr/models/project_task.py:0
 #, python-format
 msgid ""
@@ -122,3 +125,9 @@ msgid ""
 msgstr ""
 "No pot assignar un/a usuari/ària que no pertany a la categoria d'empleat/ada "
 "seleccionada."
+
+#~ msgid "Linked employee"
+#~ msgstr "Empleat/da relacionat/da"
+
+#~ msgid "Users"
+#~ msgstr "Usuaris/àries"
