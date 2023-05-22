@@ -41,8 +41,6 @@ class ProjectProject(models.Model):
                 "merge_requests_events": True,
                 "pipeline_events": True,
                 "enable_ssl_verification": True,
-                "token": self.env["ir.config_parameter"].sudo().get_param(
-                    "webhook_gitlab.authorization_token"
-                ),
+                "token": self.env["ir.config_parameter"].sudo().get_param("webhook_gitlab.authorization_token"),
             }
         )
