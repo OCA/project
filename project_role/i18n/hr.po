@@ -49,8 +49,8 @@ msgstr "%(parent)s / %(own)s"
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
 msgid ""
 "<span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-"
-"specific.\" role=\"img\" aria-label=\"Values set here are company-"
-"specific.\" groups=\"base.group_multi_company\"/>"
+"specific.\" role=\"img\" aria-label=\"Values set here are company-specific."
+"\" groups=\"base.group_multi_company\"/>"
 msgstr ""
 "<span class=\"fa fa-lg fa-building-o\" title=\"Ove vrijednosti su specifične "
 "za svaku tvrtku.\" role=\"img\" aria-label=\"Ove vrijednosti su specifične "
@@ -60,7 +60,9 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
 msgid ""
 "<span class=\"o_form_label\">Project Roles</span>\n"
-"                                <span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-specific.\" role=\"img\" aria-label=\"Values set here are company-specific.\" groups=\"base.group_multi_company\"/>"
+"                                <span class=\"fa fa-lg fa-building-o\" title="
+"\"Values set here are company-specific.\" role=\"img\" aria-label=\"Values "
+"set here are company-specific.\" groups=\"base.group_multi_company\"/>"
 msgstr ""
 "<span class=\"o_form_label\">Uloge na projektima</span>\n"
 "                                <span class=\"fa fa-lg fa-building-o\" title="
@@ -94,7 +96,8 @@ msgstr "Arhivirano"
 msgid ""
 "Assignment %(ASSIGNMENT)s conflicts with another assignment: "
 "%(OTHER_ASSIGNMENT)s"
-msgstr "Uloga %(ASSIGNMENT)s je u sukobu sa drugom ulogom: %(OTHER_ASSIGNMENT)s"
+msgstr ""
+"Uloga %(ASSIGNMENT)s je u sukobu sa drugom ulogom: %(OTHER_ASSIGNMENT)s"
 
 #. module: project_role
 #: model:ir.actions.act_window,name:project_role.project_assignment_view_project_action
@@ -116,7 +119,8 @@ msgstr "Označite, da bi projekti naslijedili zaduženja tvrtke kao zadane."
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
 msgid "Check to configure projects to limit role to assignments by default."
-msgstr "Označite za postavljanje projekata na ograničenje uloga za zaduživanje."
+msgstr ""
+"Označite za postavljanje projekata na ograničenje uloga za zaduživanje."
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_role__child_ids
@@ -293,8 +297,8 @@ msgstr "Broj grešaka"
 
 #. module: project_role
 #: model:ir.model.fields,help:project_role.field_project_assignment__message_needaction_counter
-msgid "Number of messages which requires an action"
-msgstr "Broj poruka koje zahtijevaju pažnju"
+msgid "Number of messages requiring action"
+msgstr ""
 
 #. module: project_role
 #: model:ir.model.fields,help:project_role.field_project_assignment__message_has_error_counter
@@ -441,3 +445,6 @@ msgstr "Poruke sa webstranica"
 #: model:ir.model.fields,help:project_role.field_project_assignment__website_message_ids
 msgid "Website communication history"
 msgstr "Povijest komunikacije webstranica"
+
+#~ msgid "Number of messages which requires an action"
+#~ msgstr "Broj poruka koje zahtijevaju pažnju"

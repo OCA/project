@@ -34,18 +34,24 @@ class ProjectProject(models.Model):
         )
         return company.project_limit_role_to_assignments
 
-    @api.model
-    def create(self, values):
-        company = None
-        if "company_id" in values:
-            company = self.env["res.company"].browse(values["company_id"])
+    def _project_role_create_assignment_values(self, vals_list):
+        """Complete values with default assignments from company"""
+        company_ids = [v["company_id"] for v in vals_list if v.get("company_id")]
+        companies = self.env["res.company"].browse(company_ids)
+        for values in vals_list:
+            company = None
+            if values.get("company_id"):
+                company = companies.filtered(lambda c: c.id == values["company_id"])
+            if company and "inherit_assignments" not in values:
+                values["inherit_assignments"] = company.project_inherit_assignments
 
-        if company and "inherit_assignments" not in values:
-            values["inherit_assignments"] = company.project_inherit_assignments
+            if company and "limit_role_to_assignments" not in values:
+                values[
+                    "limit_role_to_assignments"
+                ] = company.project_limit_role_to_assignments
+        return vals_list
 
-        if company and "limit_role_to_assignments" not in values:
-            values[
-                "limit_role_to_assignments"
-            ] = company.project_limit_role_to_assignments
-
-        return super().create(values)
+    @api.model_create_multi
+    def create(self, vals_list):
+        vals_list = self._project_role_create_assignment_values(vals_list)
+        return super().create(vals_list)

@@ -298,8 +298,8 @@ msgstr "Število napak"
 
 #. module: project_role
 #: model:ir.model.fields,help:project_role.field_project_assignment__message_needaction_counter
-msgid "Number of messages which requires an action"
-msgstr "Število sporočil, kjer je potrebno ukrepati"
+msgid "Number of messages requiring action"
+msgstr ""
 
 #. module: project_role
 #: model:ir.model.fields,help:project_role.field_project_assignment__message_has_error_counter
@@ -446,6 +446,9 @@ msgstr "Sporočila spletne strani"
 #: model:ir.model.fields,help:project_role.field_project_assignment__website_message_ids
 msgid "Website communication history"
 msgstr "Kronologija komunikacij spletne strani"
+
+#~ msgid "Number of messages which requires an action"
+#~ msgstr "Število sporočil, kjer je potrebno ukrepati"
 
 #, python-format
 #~ msgid "%s as %s"
