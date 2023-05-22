@@ -1,0 +1,90 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* project_budget
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2023-04-17 22:56+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
+"Language-Team: none\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.14.1\n"
+
+#. module: project_budget
+#: model:ir.model,name:project_budget.model_crossovered_budget
+#: model:ir.model.fields,field_description:project_budget.field_project_project__budget_id
+#: model_terms:ir.ui.view,arch_db:project_budget.project_budget_inherit_form
+msgid "Budget"
+msgstr "Budget"
+
+#. module: project_budget
+#: model:ir.model.fields,field_description:project_budget.field_project_project__budget_id_lines
+#: model_terms:ir.ui.view,arch_db:project_budget.project_budget_inherit_form
+msgid "Budget Lines"
+msgstr "Righe budget"
+
+#. module: project_budget
+#: model:ir.model.fields,field_description:project_budget.field_project_project__budget_state
+msgid "Budget Status"
+msgstr "Stato budget"
+
+#. module: project_budget
+#: model:ir.model.fields,field_description:project_budget.field_crossovered_budget__analytic_account_id
+msgid "Default Analytic Account"
+msgstr "Conto analitico predefinito"
+
+#. module: project_budget
+#: model:res.groups,name:project_budget.group_project_budget_manager
+msgid "Manager"
+msgstr "Responsabile"
+
+#. module: project_budget
+#: model_terms:ir.ui.view,arch_db:project_budget.project_budget_inherit_form
+msgid "Planned Amount"
+msgstr "Importo pianificato"
+
+#. module: project_budget
+#: model_terms:ir.ui.view,arch_db:project_budget.project_budget_inherit_form
+msgid "Practical Amount"
+msgstr "Importo effettivo"
+
+#. module: project_budget
+#: model:ir.model.fields,field_description:project_budget.field_crossovered_budget__project_id
+msgid "Project"
+msgstr "Progetto"
+
+#. module: project_budget
+#: model:ir.module.category,name:project_budget.module_category_project_budget
+msgid "Project Budget"
+msgstr "Budget progetto"
+
+#. module: project_budget
+#: model_terms:ir.ui.view,arch_db:project_budget.project_budget_inherit_form
+msgid "Project Period"
+msgstr "Periodo progetto"
+
+#. module: project_budget
+#: model_terms:ir.ui.view,arch_db:project_budget.project_budget_inherit_form
+msgid "Theoretical Amount"
+msgstr "Importo teorico"
+
+#. module: project_budget
+#: model:ir.module.category,description:project_budget.module_category_project_budget
+msgid "User access level for Project Budgets"
+msgstr "Livello accesso utente per i budget progetto"
+
+#. module: project_budget
+#: model:res.groups,name:project_budget.group_project_budget_viewer
+msgid "Viewer"
+msgstr "Visualizzatore"
+
+#. module: project_budget
+#: model:ir.model,name:project_budget.model_project_project
+msgid "WBS element"
+msgstr "Elemento WBS"
