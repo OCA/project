@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2018 Tecnativa - Pedro M. Baeza
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record model="ir.ui.view" id="edit_project">
+        <field name="name">Project form: Add employee categories</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project" />
+        <field name="arch" type="xml">
+            <field name="user_id" position="after">
+                <field name="hr_category_ids" widget="many2many_tags" />
+            </field>
+        </field>
+    </record>
+</odoo>
