@@ -23,7 +23,7 @@ msgid "Allowed HR categories"
 msgstr "Categorías RRHH permitidas"
 
 #. module: project_hr
-#: model:ir.model.fields,field_description:project_hr.field_project_task__allowed_user_ids
+#: model:ir.model.fields,field_description:project_hr.field_project_task__allowed_assigned_user_ids
 msgid "Allowed users"
 msgstr "Usuarios permitidos"
 
@@ -64,9 +64,9 @@ msgstr ""
 "que pertenezcan a la categoría."
 
 #. module: project_hr
-#: model:ir.model.fields,field_description:project_hr.field_project_task__employee_id
-msgid "Linked employee"
-msgstr "Empleado relacionado"
+#: model:ir.model.fields,field_description:project_hr.field_project_task__employee_ids
+msgid "Linked employees"
+msgstr ""
 
 #. module: project_hr
 #: model:ir.model,name:project_hr.model_project_project
@@ -88,7 +88,7 @@ msgstr ""
 "las categorías a nivel de proyecto."
 
 #. module: project_hr
-#: model:ir.model.fields,help:project_hr.field_project_task__allowed_user_ids
+#: model:ir.model.fields,help:project_hr.field_project_task__allowed_assigned_user_ids
 msgid ""
 "Technical field for computing allowed users according employee category."
 msgstr ""
@@ -106,10 +106,11 @@ msgstr ""
 
 #. module: project_hr
 #: model:ir.model,name:project_hr.model_res_users
-msgid "Users"
-msgstr "Usuarios"
+msgid "User"
+msgstr ""
 
 #. module: project_hr
+#. odoo-python
 #: code:addons/project_hr/models/project_task.py:0
 #, python-format
 msgid "You can't assign a category that is not allowed at project level."
@@ -117,6 +118,7 @@ msgstr ""
 "No puede asignar una categoría que no está permitida a nivel de proyecto."
 
 #. module: project_hr
+#. odoo-python
 #: code:addons/project_hr/models/project_task.py:0
 #, python-format
 msgid ""
@@ -124,3 +126,9 @@ msgid ""
 msgstr ""
 "No puede asignar un usuario que no pertenezca a la categoría de empleado "
 "seleccionada."
+
+#~ msgid "Linked employee"
+#~ msgstr "Empleado relacionado"
+
+#~ msgid "Users"
+#~ msgstr "Usuarios"
