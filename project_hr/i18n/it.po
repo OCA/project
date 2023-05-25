@@ -27,14 +27,6 @@ msgid "Allowed users"
 msgstr ""
 
 #. module: project_hr
-#: model:ir.model.fields,field_description:project_hr.field_hr_employee__display_name
-#: model:ir.model.fields,field_description:project_hr.field_project_project__display_name
-#: model:ir.model.fields,field_description:project_hr.field_project_task__display_name
-#: model:ir.model.fields,field_description:project_hr.field_res_users__display_name
-msgid "Display Name"
-msgstr "Nome visualizzato"
-
-#. module: project_hr
 #: model:ir.model,name:project_hr.model_hr_employee
 msgid "Employee"
 msgstr "Dipendente"
@@ -66,30 +58,9 @@ msgid ""
 msgstr ""
 
 #. module: project_hr
-#: model:ir.model.fields,field_description:project_hr.field_hr_employee__id
-#: model:ir.model.fields,field_description:project_hr.field_project_project__id
-#: model:ir.model.fields,field_description:project_hr.field_project_task__id
-#: model:ir.model.fields,field_description:project_hr.field_res_users__id
-msgid "ID"
-msgstr "ID"
-
-#. module: project_hr
-#: model:ir.model.fields,field_description:project_hr.field_hr_employee____last_update
-#: model:ir.model.fields,field_description:project_hr.field_project_project____last_update
-#: model:ir.model.fields,field_description:project_hr.field_project_task____last_update
-#: model:ir.model.fields,field_description:project_hr.field_res_users____last_update
-msgid "Last Modified on"
-msgstr "Ultima modifica il"
-
-#. module: project_hr
 #: model:ir.model.fields,field_description:project_hr.field_project_task__employee_ids
 msgid "Linked employee"
 msgstr "Dipendente collegato"
-
-#. module: project_hr
-#: model:ir.model,name:project_hr.model_project_project
-msgid "Project"
-msgstr "Progetto"
 
 #. module: project_hr
 #: model:ir.model,name:project_hr.model_project_task
@@ -122,6 +93,11 @@ msgid "Users"
 msgstr "Utenti"
 
 #. module: project_hr
+#: model:ir.model,name:project_hr.model_project_project
+msgid "WBS element"
+msgstr ""
+
+#. module: project_hr
 #: code:addons/project_hr/models/project_task.py:0
 #, python-format
 msgid "You can't assign a category that is not allowed at project level."
@@ -133,3 +109,15 @@ msgstr ""
 msgid ""
 "You can't assign a user not belonging to the selected employee category."
 msgstr ""
+
+#~ msgid "Display Name"
+#~ msgstr "Nome visualizzato"
+
+#~ msgid "ID"
+#~ msgstr "ID"
+
+#~ msgid "Last Modified on"
+#~ msgstr "Ultima modifica il"
+
+#~ msgid "Project"
+#~ msgstr "Progetto"

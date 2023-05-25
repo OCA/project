@@ -23,7 +23,7 @@ msgid "Allowed HR categories"
 msgstr "Dovoljene kategorije kadrov"
 
 #. module: project_hr
-#: model:ir.model.fields,field_description:project_hr.field_project_task__allowed_user_ids
+#: model:ir.model.fields,field_description:project_hr.field_project_task__allowed_assigned_user_ids
 msgid "Allowed users"
 msgstr "Dovoljeni uporabniki"
 
@@ -69,11 +69,6 @@ msgid "Linked employee"
 msgstr "Povezani kader"
 
 #. module: project_hr
-#: model:ir.model,name:project_hr.model_project_project
-msgid "Project"
-msgstr "Projekt"
-
-#. module: project_hr
 #: model:ir.model,name:project_hr.model_project_task
 msgid "Task"
 msgstr "Opravilo"
@@ -88,7 +83,7 @@ msgstr ""
 "kategorije na projektnem nivoju."
 
 #. module: project_hr
-#: model:ir.model.fields,help:project_hr.field_project_task__allowed_user_ids
+#: model:ir.model.fields,help:project_hr.field_project_task__allowed_assigned_user_ids
 msgid ""
 "Technical field for computing allowed users according employee category."
 msgstr ""
@@ -110,6 +105,11 @@ msgid "Users"
 msgstr "Uporabniki"
 
 #. module: project_hr
+#: model:ir.model,name:project_hr.model_project_project
+msgid "WBS element"
+msgstr ""
+
+#. module: project_hr
 #: code:addons/project_hr/models/project_task.py:0
 #, python-format
 msgid "You can't assign a category that is not allowed at project level."
@@ -122,3 +122,6 @@ msgid ""
 "You can't assign a user not belonging to the selected employee category."
 msgstr ""
 "Ne morete dodeliti uporabnika, ki ne spada v izbrano kadrovsko kategorijo."
+
+#~ msgid "Project"
+#~ msgstr "Projekt"
