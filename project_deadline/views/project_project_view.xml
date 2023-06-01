@@ -9,14 +9,23 @@
         <field name="arch" type="xml">
             <xpath expr="//span[@t-if='record.partner_id.value']" position="after">
                 <t
-                    t-if="record.date.raw_value and record.date.raw_value lt (new Date())"
+                    t-if="record.date.raw_value and record.date.raw_value lt (new Date().toISOString())"
                     t-set="red"
                 >oe_kanban_text_red</t>
-                <span t-attf-class="#{red || ''}">
-                    <i>
-                        <field name="date" />
-                    </i>
-                </span>
+                <t t-if="record.partner_id.value">
+                    <span style="margin-left: 10px;" t-attf-class="#{red || ''}">
+                        <i>
+                            <field name="date" />
+                        </i>
+                    </span>
+                </t>
+                <t t-else="">
+                    <span t-attf-class="#{red || ''}">
+                        <i>
+                            <field name="date" />
+                        </i>
+                    </span>
+                </t>
             </xpath>
         </field>
     </record>
