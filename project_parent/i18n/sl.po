@@ -1,0 +1,50 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * project_parent
+#
+# Translators:
+# Matjaž Mozetič <m.mozetic@matmoz.si>, 2018
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 10.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-02-02 01:51+0000\n"
+"PO-Revision-Date: 2018-02-02 01:51+0000\n"
+"Last-Translator: Matjaž Mozetič <m.mozetic@matmoz.si>, 2018\n"
+"Language-Team: Slovenian (https://www.transifex.com/oca/teams/23907/sl/)\n"
+"Language: sl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
+"%100==4 ? 2 : 3);\n"
+
+#. module: project_parent
+#: model:ir.model,name:project_parent.model_account_analytic_account
+msgid "Analytic Account"
+msgstr "Analitični konto"
+
+#. module: project_parent
+#: model:ir.ui.view,arch_db:project_parent.view_project_parent_edit_project
+msgid "Child Projects"
+msgstr ""
+
+#. module: project_parent
+#: model:ir.ui.view,arch_db:project_parent.view_project_parent_project_filter
+msgid "Parent"
+msgstr "Nadrejeni"
+
+#. module: project_parent
+#: model:ir.model.fields,field_description:project_parent.field_account_analytic_account_parent_project_id
+#: model:ir.model.fields,field_description:project_parent.field_project_project_parent_project_id
+msgid "Parent Project"
+msgstr "Nadrejeni projekt"
+
+#. module: project_parent
+#: model:ir.model,name:project_parent.model_project_project
+msgid "WBS element"
+msgstr ""
+
+#, fuzzy
+#~ msgid "Project"
+#~ msgstr "Nadrejeni projekt"
