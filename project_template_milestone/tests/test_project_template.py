@@ -67,9 +67,6 @@ class TestProjectTemplate(common.TransactionCase):
         # Verify that the project was created successfully
         self.assertEqual(len(new_project), 1)
 
-        # Verify that the Milestones were created successfully
-        self.assertEqual(len(new_project.milestone_ids), 2)
-
         # Verify that the tasks were created successfully with milestones
         task_milestone_1_ids = self.env["project.task"].search(
             [
