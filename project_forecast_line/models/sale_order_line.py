@@ -95,7 +95,6 @@ class SaleOrderLine(models.Model):
 
     @api.onchange("product_id")
     def product_id_change(self):
-        res = super().product_id_change()
         for line in self:
             if not line.product_id.forecast_role_id:
                 line.forecast_date_start = False
@@ -111,7 +110,6 @@ class SaleOrderLine(models.Model):
                     and line.order_id.default_forecast_date_end
                 ):
                     line.forecast_date_end = line.order_id.default_forecast_date_end
-        return res
 
     def _timesheet_create_task_prepare_values(self, project):
         values = super()._timesheet_create_task_prepare_values(project)
