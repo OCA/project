@@ -139,7 +139,7 @@
         <field name="arch" type="xml">
             <tree
                 default_order="rating desc,proximity desc"
-                decoration-danger="rating > 7"
+                decoration-danger="rating > '7'"
                 decoration-muted="state == 'draft'"
             >
                 <field name="project_id" />
