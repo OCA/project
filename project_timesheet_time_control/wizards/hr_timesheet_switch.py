@@ -205,11 +205,3 @@ class HrTimesheetSwitch(models.TransientModel):
                 "view_type": "form",
                 "views": [(form_view.id, "form")],
             }
-        # Close wizard and reload view
-        return {
-            "type": "ir.actions.act_multi",
-            "actions": [
-                {"type": "ir.actions.act_window_close"},
-                {"type": "ir.actions.act_view_reload"},
-            ],
-        }

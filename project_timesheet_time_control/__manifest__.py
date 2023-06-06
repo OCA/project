@@ -6,16 +6,13 @@
 
 {
     "name": "Project timesheet time control",
-    "version": "15.0.1.1.0",
+    "version": "16.0.1.0.0",
     "category": "Project",
     "author": "Tecnativa," "Odoo Community Association (OCA)",
     "maintainers": ["ernestotejeda"],
     "website": "https://github.com/OCA/project",
     "depends": [
-        "hr_timesheet_task_domain",
-        "hr_timesheet_task_stage",
-        "web_ir_actions_act_multi",
-        "web_ir_actions_act_view_reload",
+        "hr_timesheet",
     ],
     "data": [
         "security/ir.model.access.csv",
