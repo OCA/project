@@ -6,13 +6,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2023-06-06 14:08+0000\n"
+"Last-Translator: luis-ron <luis.ron@sygel.es>\n"
 "Language-Team: none\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project_kanban
@@ -23,7 +25,7 @@ msgstr ""
 #: model:ir.model,name:project_wbs.model_account_analytic_account
 #: model:ir.model.fields,field_description:project_wbs.field_project_project__analytic_account_id
 msgid "Analytic Account"
-msgstr ""
+msgstr "Cuenta analítica"
 
 #. module: project_wbs
 #: model:ir.model.fields,help:project_wbs.field_project_project__analytic_account_id
@@ -31,11 +33,15 @@ msgid ""
 "Analytic account to which this project is linked for financial management. "
 "Use an analytic account to record cost and revenue on your project."
 msgstr ""
+"Cuenta analítica a la que está vinculada este proyecto para la gestión "
+"financiera. Utilice una cuenta analítica para registrar los costes e "
+"ingresos de su proyecto."
 
 #. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.edit_project
 msgid "Append this project to another one using analytic accounts hierarchy"
 msgstr ""
+"Adjuntar este proyecto a otro utilizando la jerarquía de cuentas analíticas"
 
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_project_project__child_ids
@@ -56,19 +62,20 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project_project_filter
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project_project_group_filter
+#, fuzzy
 msgid "Class"
-msgstr ""
+msgstr "Clase"
 
 #. module: project_wbs
 #: model_terms:ir.actions.act_window,help:project_wbs.open_view_project_wbs
 msgid "Click to start a new project."
-msgstr ""
+msgstr "Haga clic para empezar un nuevo proyecto."
 
 #. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.edit_project
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project
 msgid "Code"
-msgstr ""
+msgstr "Código"
 
 #. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.edit_project
@@ -78,46 +85,48 @@ msgstr ""
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__partner_id
 msgid "Customer"
-msgstr ""
+msgstr "Cliente"
 
 #. module: project_wbs
 #: model:ir.model.fields.selection,name:project_wbs.selection__account_analytic_account__account_class__deliverable
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_account_analytic_account_search2
+#, fuzzy
 msgid "Deliverable"
-msgstr ""
+msgstr "Entregable"
 
 #. module: project_wbs
 #: model:ir.actions.act_window,name:project_wbs.open_view_project_deliverables
+#, fuzzy
 msgid "Deliverables"
-msgstr ""
+msgstr "Entregables"
 
 #. module: project_wbs
 #: code:addons/project_wbs/models/project_project.py:0
 #, python-format
 msgid "Details"
-msgstr ""
+msgstr "Detalles"
 
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__display_name
 #: model:ir.model.fields,field_description:project_wbs.field_project_project__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nombre mostrado"
 
 #. module: project_wbs
 #: code:addons/project_wbs/models/account_analytic_account.py:0
 #, python-format
 msgid "Duplicate the project instead of the Analytic Account"
-msgstr ""
+msgstr "Duplicar el proyecto en lugar de la cuenta analítica"
 
 #. module: project_wbs
 #: model:ir.actions.act_window,name:project_wbs.open_view_project_form
 msgid "Edit project"
-msgstr ""
+msgstr "Editar proyecto"
 
 #. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project
 msgid "End Date"
-msgstr ""
+msgstr "Fecha final"
 
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__complete_wbs_code
@@ -138,54 +147,58 @@ msgstr ""
 
 #. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project_kanban
+#, fuzzy
 msgid "Go Up"
-msgstr ""
+msgstr "Subir"
 
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_project_project__has_project_child_complete_ids
+#, fuzzy
 msgid "Has Project Child Complete"
-msgstr ""
+msgstr "Ha finalizado el proyecto hijo"
 
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__id
 #: model:ir.model.fields,field_description:project_wbs.field_project_project__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account____last_update
 #: model:ir.model.fields,field_description:project_wbs.field_project_project____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Última modificación el"
 
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__wbs_indent
 #: model:ir.model.fields,field_description:project_wbs.field_project_project__wbs_indent
 msgid "Level"
-msgstr ""
+msgstr "Nivel"
 
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__manager_id
 msgid "Manager"
-msgstr ""
+msgstr "Responsable"
 
 #. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_account_analytic_account_search2
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project_project_group_filter
 msgid "Master Project"
-msgstr ""
+msgstr "Proyecto principal"
 
 #. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project
+#, fuzzy
 msgid "Parent"
-msgstr ""
+msgstr "Padre"
 
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__parent_id
 #: model:ir.model.fields,field_description:project_wbs.field_project_project__parent_id
 #: model_terms:ir.ui.view,arch_db:project_wbs.edit_project
+#, fuzzy
 msgid "Parent Analytic Account"
-msgstr ""
+msgstr "Cuenta analítica padre"
 
 #. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project
@@ -195,39 +208,39 @@ msgstr ""
 #. module: project_wbs
 #: model:ir.model.fields.selection,name:project_wbs.selection__account_analytic_account__account_class__phase
 msgid "Phase"
-msgstr ""
+msgstr "Etapa"
 
 #. module: project_wbs
 #: model:ir.actions.act_window,name:project_wbs.open_view_project_phases
 msgid "Phases"
-msgstr ""
+msgstr "Etapas"
 
 #. module: project_wbs
 #: model:ir.model.fields.selection,name:project_wbs.selection__account_analytic_account__account_class__project
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_account_analytic_account_search2
 msgid "Project"
-msgstr ""
+msgstr "Proyecto"
 
 #. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project
 msgid "Project Form View"
-msgstr ""
+msgstr "Vista formulario del proyecto"
 
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_project_project__project_child_complete_ids
 msgid "Project Hierarchy"
-msgstr ""
+msgstr "Jerarquía de proyecto"
 
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__user_id
 msgid "Project Manager"
-msgstr ""
+msgstr "Responsable de proyecto"
 
 #. module: project_wbs
 #: model:ir.actions.act_window,name:project_wbs.group_project
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__project_ids
 msgid "Projects"
-msgstr ""
+msgstr "Proyectos"
 
 #. module: project_wbs
 #: model_terms:ir.actions.act_window,help:project_wbs.open_view_project_wbs
@@ -242,18 +255,19 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__code
 #: model:ir.model.fields,field_description:project_wbs.field_project_project__code
 msgid "Reference"
-msgstr ""
+msgstr "Referencia"
 
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__project_analytic_id
 #: model:ir.model.fields,field_description:project_wbs.field_project_project__project_analytic_id
+#, fuzzy
 msgid "Root Analytic Account"
-msgstr ""
+msgstr "Cuenta analítica principal"
 
 #. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project
 msgid "Start Date"
-msgstr ""
+msgstr "Fecha de inicio"
 
 #. module: project_wbs
 #: model:ir.model.fields,help:project_wbs.field_account_analytic_account__account_class
@@ -282,7 +296,7 @@ msgstr ""
 #: code:addons/project_wbs/models/project_project.py:0
 #, python-format
 msgid "Unknown Analytic Account"
-msgstr ""
+msgstr "Cuenta analítica desconocida"
 
 #. module: project_wbs
 #: model:ir.ui.menu,name:project_wbs.menu_project_wbs_project
@@ -344,12 +358,12 @@ msgstr ""
 #: model:ir.model.fields.selection,name:project_wbs.selection__account_analytic_account__account_class__work_package
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_account_analytic_account_search2
 msgid "Work Package"
-msgstr ""
+msgstr "Paquete de trabajo"
 
 #. module: project_wbs
 #: model:ir.actions.act_window,name:project_wbs.open_view_project_work_packages
 msgid "Work Packages"
-msgstr ""
+msgstr "Paquetes de trabajo"
 
 #. module: project_wbs
 #: model_terms:ir.actions.act_window,help:project_wbs.open_view_project_wbs
