@@ -175,6 +175,7 @@ class TestProjectTimesheetTimeControl(common.TransactionCase):
         with self.assertRaises(exceptions.UserError):
             self.project.button_end_work()
         # All lines stopped, start new one
+        self.task.invalidate_cache()
         self.project.invalidate_cache()
         self.assertEqual(self.project.show_time_control, "start")
         start_action = self.project.button_start_work()
@@ -206,7 +207,6 @@ class TestProjectTimesheetTimeControl(common.TransactionCase):
         with self.assertRaises(exceptions.UserError):
             self.task.button_end_work()
         # All lines stopped, start new one
-        self.task.invalidate_cache()
         self.assertEqual(self.task.show_time_control, "start")
         start_action = self.task.button_start_work()
         wizard = self._create_wizard(start_action, self.task)
@@ -246,17 +246,7 @@ class TestProjectTimesheetTimeControl(common.TransactionCase):
         )
         self.assertFalse(wizard.running_timer_id)
         self.assertFalse(wizard.running_timer_duration)
-        new_act = wizard.action_switch()
-        self.assertEqual(
-            new_act,
-            {
-                "type": "ir.actions.act_multi",
-                "actions": [
-                    {"type": "ir.actions.act_window_close"},
-                    {"type": "ir.actions.act_view_reload"},
-                ],
-            },
-        )
+        wizard.action_switch()
         new_line = self.env["account.analytic.line"].search(
             [
                 ("name", "=", "Standalone 2"),

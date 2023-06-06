@@ -4,14 +4,14 @@
         <field name="name">Add timesheet time controls</field>
         <field name="model">project.task</field>
         <field name="inherit_id" ref="hr_timesheet.view_task_form2_inherited" />
-        <field
-            name="groups_id"
-            eval="[(6, 0, [ref('hr_timesheet.group_hr_timesheet_user')])]"
-        />
         <field name="arch" type="xml">
             <!-- Main task form action buttons -->
             <div name="button_box" position="inside">
-                <field name="show_time_control" invisible="1" />
+                <field
+                    name="show_time_control"
+                    invisible="1"
+                    groups="hr_timesheet.group_hr_timesheet_user"
+                />
                 <button
                     name="button_start_work"
                     string="Start work"
@@ -20,6 +20,7 @@
                     attrs="{'invisible': [('show_time_control', '!=', 'start')]}"
                     class="oe_stat_button"
                     title="Start work"
+                    groups="hr_timesheet.group_hr_timesheet_user"
                 />
                 <button
                     name="button_end_work"
@@ -29,6 +30,7 @@
                     attrs="{'invisible': [('show_time_control', '!=', 'stop')]}"
                     class="oe_stat_button"
                     title="End work"
+                    groups="hr_timesheet.group_hr_timesheet_user"
                 />
             </div>
             <!-- Sub-tree view for timesheet_ids -->
@@ -54,6 +56,7 @@
                     icon="fa-play-circle text-success"
                     attrs="{'invisible': [('show_time_control', '!=', 'resume')]}"
                     class="oe_stat_button"
+                    groups="hr_timesheet.group_hr_timesheet_user"
                 />
                 <button
                     name="button_end_work"
@@ -63,6 +66,7 @@
                     icon="fa-stop-circle text-warning"
                     attrs="{'invisible': [('show_time_control', '!=', 'stop')]}"
                     class="oe_stat_button"
+                    groups="hr_timesheet.group_hr_timesheet_user"
                 />
             </xpath>
             <xpath expr="//field[@name='timesheet_ids']/tree" position="attributes">
@@ -85,7 +89,11 @@
                 expr="//field[@name='timesheet_ids']/kanban//templates//field[@name='unit_amount']"
                 position="after"
             >
-                <field name="show_time_control" invisible="1" />
+                <field
+                    name="show_time_control"
+                    invisible="1"
+                    groups="hr_timesheet.group_hr_timesheet_user"
+                />
                 <a
                     name="button_resume_work"
                     tabindex="-1"
@@ -94,6 +102,7 @@
                     attrs="{'invisible': [('show_time_control', '!=', 'resume')]}"
                     class="o_kanban_inline_block fa fa-lg fa-play-circle text-success"
                     title="Resume work"
+                    groups="hr_timesheet.group_hr_timesheet_user"
                 />
                 <a
                     name="button_end_work"
@@ -103,6 +112,7 @@
                     attrs="{'invisible': [('show_time_control', '!=', 'stop')]}"
                     class="o_kanban_inline_block fa fa-lg fa-stop-circle text-warning"
                     title="Stop work"
+                    groups="hr_timesheet.group_hr_timesheet_user"
                 />
             </xpath>
             <!-- Sub-form view for timesheet_ids -->
@@ -120,7 +130,11 @@
             </xpath>
             <xpath expr="//field[@name='timesheet_ids']/form/sheet/*" position="before">
                 <div class="oe_button_box" name="button_box">
-                    <field name="show_time_control" invisible="1" />
+                    <field
+                        name="show_time_control"
+                        invisible="1"
+                        groups="hr_timesheet.group_hr_timesheet_user"
+                    />
                     <button
                         name="button_resume_work"
                         tabindex="-1"
@@ -130,6 +144,7 @@
                         class="oe_stat_button"
                         context="{'show_created_timer': True}"
                         title="Resume work"
+                        groups="hr_timesheet.group_hr_timesheet_user"
                     />
                     <button
                         name="button_end_work"
@@ -139,6 +154,7 @@
                         attrs="{'invisible': [('show_time_control', '!=', 'stop')]}"
                         class="oe_stat_button"
                         title="Stop work"
+                        groups="hr_timesheet.group_hr_timesheet_user"
                     />
                 </div>
             </xpath>
@@ -148,13 +164,13 @@
         <field name="name">Add timesheet time controls</field>
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_kanban" />
-        <field
-            name="groups_id"
-            eval="[(6, 0, [ref('hr_timesheet.group_hr_timesheet_user')])]"
-        />
         <field name="arch" type="xml">
             <xpath expr="//*[hasclass('oe_kanban_bottom_left')]" position="inside">
-                <field name="show_time_control" invisible="1" />
+                <field
+                    name="show_time_control"
+                    invisible="1"
+                    groups="hr_timesheet.group_hr_timesheet_user"
+                />
                 <a
                     name="button_start_work"
                     attrs="{'invisible': [('show_time_control', '!=', 'start')]}"
@@ -162,6 +178,7 @@
                     tabindex="-1"
                     type="object"
                     title="Start work"
+                    groups="hr_timesheet.group_hr_timesheet_user"
                 />
                 <a
                     name="button_end_work"
@@ -170,6 +187,7 @@
                     tabindex="-1"
                     type="object"
                     title="Stop work"
+                    groups="hr_timesheet.group_hr_timesheet_user"
                 />
             </xpath>
         </field>
@@ -178,13 +196,13 @@
         <field name="name">Add timesheet time controls</field>
         <field name="model">project.task</field>
         <field name="inherit_id" ref="hr_timesheet.view_task_tree2_inherited" />
-        <field
-            name="groups_id"
-            eval="[(6, 0, [ref('hr_timesheet.group_hr_timesheet_user')])]"
-        />
         <field name="arch" type="xml">
             <tree position="inside">
-                <field name="show_time_control" invisible="1" />
+                <field
+                    name="show_time_control"
+                    invisible="1"
+                    groups="hr_timesheet.group_hr_timesheet_user"
+                />
                 <button
                     name="button_start_work"
                     string="Start work"
@@ -194,6 +212,7 @@
                     attrs="{'invisible': [('show_time_control', '!=', 'start')]}"
                     class="oe_stat_button"
                     title="Start work"
+                    groups="hr_timesheet.group_hr_timesheet_user"
                 />
                 <button
                     name="button_end_work"
@@ -204,6 +223,7 @@
                     attrs="{'invisible': [('show_time_control', '!=', 'stop')]}"
                     class="oe_stat_button"
                     title="End work"
+                    groups="hr_timesheet.group_hr_timesheet_user"
                 />
             </tree>
         </field>
