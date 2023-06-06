@@ -6,15 +6,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2019-11-07 18:02+0000\n"
-"Last-Translator: María Asunción Daza <mariaasuncion.daza@guadaltech.es>\n"
+"PO-Revision-Date: 2023-06-06 17:10+0000\n"
+"Last-Translator: luis-ron <luis.ron@sygel.es>\n"
 "Language-Team: none\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.8\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: project_template
 #: model_terms:ir.ui.view,arch_db:project_template.project_template_view_inherit_form
@@ -30,13 +30,13 @@ msgstr "Crear Proyecto desde Plantilla"
 #: model:ir.model.fields,field_description:project_template.field_project_project__display_name
 #: model:ir.model.fields,field_description:project_template.field_project_task__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nombre mostrado"
 
 #. module: project_template
 #: model:ir.model.fields,field_description:project_template.field_project_project__id
 #: model:ir.model.fields,field_description:project_template.field_project_task__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_template
 #: model:ir.model.fields,field_description:project_template.field_project_project__is_template
@@ -53,7 +53,7 @@ msgstr "¿Es Una Plantilla?"
 #: model:ir.model.fields,field_description:project_template.field_project_project____last_update
 #: model:ir.model.fields,field_description:project_template.field_project_task____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Última modificación"
 
 #. module: project_template
 #: model_terms:ir.ui.view,arch_db:project_template.project_template_view_inherit_search
@@ -63,17 +63,17 @@ msgstr "No son Plantillas"
 #. module: project_template
 #: model_terms:ir.ui.view,arch_db:project_template.project_task_template_view_inherit_search
 msgid "Non-Templates Tasks"
-msgstr ""
+msgstr "Tareas sin plantilla"
 
 #. module: project_template
 #: model:ir.model,name:project_template.model_project_task
 msgid "Task"
-msgstr ""
+msgstr "Tarea"
 
 #. module: project_template
 #: model_terms:ir.ui.view,arch_db:project_template.project_task_template_view_inherit_search
 msgid "Template Tasks"
-msgstr ""
+msgstr "Plantillas de tarea"
 
 #. module: project_template
 #: model_terms:ir.ui.view,arch_db:project_template.project_template_view_inherit_search
