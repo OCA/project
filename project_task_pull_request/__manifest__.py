@@ -1,10 +1,11 @@
 # Copyright 2017 Specialty Medical Drugstore
 # Copyright 2018 Tecnativa - Ernesto Tejeda
+# Copyright 2023 Victor Aljaro <victor.aljaro@qubiq.es>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 {
     "name": "Project Task Pull Request",
     "summary": "Adds a field for a PR URI to project tasks",
-    "version": "15.0.1.0.1",
+    "version": "16.0.1.0.1",
     "category": "Project Management",
     "website": "https://github.com/OCA/project",
     "author": "SMDrugstore, " "Tecnativa, " "Odoo Community Association (OCA)",

@@ -4,3 +4,4 @@
 
   * Ernesto Tejeda
   * Jairo Llopis
+* Victor Aljaro <victor.aljaro@qubiq.es>
