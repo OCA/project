@@ -1,14 +1,15 @@
-# Copyright 2022 Camptocamp SA
+# Copyright 2023 Camptocamp SA
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 {
     "name": "Project Forecast Lines",
     "summary": "Project Forecast Lines",
-    "version": "15.0.1.3.1",
+    "version": "16.0.1.3.1",
     "author": "Camptocamp SA, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "category": "Project",
     "website": "https://github.com/OCA/project",
-    "depends": ["sale_timesheet", "sale_project", "hr_holidays"],
+    "depends": ["sale_timesheet", "sale_project", "hr_holidays",
+                "hr_hourly_cost"],
     "data": [
         "security/forecast_line_security.xml",
         "security/ir.model.access.csv",
