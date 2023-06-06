@@ -73,7 +73,7 @@ class BaseForecastLineTest(TransactionCase):
                 "name": "development time and material",
                 "detailed_type": "service",
                 "service_tracking": "task_in_project",
-                "price": 95,
+                "list_price": 95,
                 "standard_price": 75,
                 "forecast_role_id": cls.role_developer.id,
                 "uom_id": cls.env.ref("uom.product_uom_hour").id,
@@ -85,7 +85,7 @@ class BaseForecastLineTest(TransactionCase):
                 "name": "consultant time and material",
                 "detailed_type": "service",
                 "service_tracking": "task_in_project",
-                "price": 100,
+                "list_price": 100,
                 "standard_price": 80,
                 "forecast_role_id": cls.role_consultant.id,
                 "uom_id": cls.env.ref("uom.product_uom_hour").id,
@@ -98,7 +98,7 @@ class BaseForecastLineTest(TransactionCase):
                 "name": "pm time and material",
                 "detailed_type": "service",
                 "service_tracking": "task_in_project",
-                "price": 120,
+                "list_price": 120,
                 "standard_price": 100,
                 "forecast_role_id": cls.role_consultant.id,
                 "uom_id": cls.env.ref("uom.product_uom_hour").id,
@@ -282,7 +282,6 @@ class TestForecastLineSales(BaseForecastLineTest):
     ):
         with Form(self.env["sale.order"]) as form:
             form.partner_id = self.customer
-            form.date_order = "2022-01-10 08:00:00"
             form.default_forecast_date_start = default_forecast_date_start
             form.default_forecast_date_end = default_forecast_date_end
             with form.order_line.new() as line:
@@ -424,7 +423,6 @@ class TestForecastLineTimesheet(BaseForecastLineTest):
         with freeze_time("2022-01-01"):
             with Form(self.env["sale.order"]) as form:
                 form.partner_id = self.customer
-                form.date_order = "2022-01-10 08:00:00"
                 form.default_forecast_date_start = "2022-02-14"
                 form.default_forecast_date_end = "2022-04-17"
                 with form.order_line.new() as line:
