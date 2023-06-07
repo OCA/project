@@ -56,4 +56,4 @@ class ProjectTaskMaterial(TestProjectCases):
         self.action.write(
             {"material_ids": [(0, 0, {"product_id": self.product.id, "quantity": 4.0})]}
         )
-        self.assertEqual(len(self.task.material_ids.ids), 1)
+        self.assertEqual(len(self.action.material_ids.ids), 1)

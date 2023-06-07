@@ -8,11 +8,9 @@ class TestProjectCases(TransactionCase):
     """Prepare data to test the module."""
 
     def setUp(self):
-        """Create user, task, project as well as refre action of the user."""
         super(TestProjectCases, self).setUp()
 
-        # Create new User
-        # Add it to the `project user` group
+        # Create a new project user
         self.project_user = self.env["res.users"].create(
             {
                 "company_id": self.env.ref("base.main_company").id,
@@ -23,9 +21,28 @@ class TestProjectCases(TransactionCase):
             }
         )
 
-        # Refer to a task assigned to the project user
-        self.task = self.env.ref("project.project_task_2")
-        self.product = self.env.ref("product.consu_delivery_03")
+        # Create a project
+        self.project = self.env["project.project"].create(
+            {
+                "company_id": self.env.ref("base.main_company").id,
+                "name": "Project for Test",
+            }
+        )
 
-        # Refer to a action from the user created
-        self.action = self.task.with_user(self.project_user.id)
+        # Create a project task
+        self.project_task = self.env["project.task"].create(
+            {
+                "project_id": self.project.id,
+                "name": "Task for Test",
+            }
+        )
+
+        # Create a product template
+        self.product = self.env["product.template"].create(
+            {
+                "name": "Product for Test",
+            }
+        )
+
+        # Set the user for the project task action
+        self.action = self.project_task.with_user(self.project_user.id)
