@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-01-11 03:42+0000\n"
-"PO-Revision-Date: 2023-06-07 13:16+0000\n"
+"PO-Revision-Date: 2023-06-07 17:10+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
@@ -79,7 +79,7 @@ msgstr "Ultima modifica il"
 #. module: project_issue_task
 #: model:ir.model.fields,field_description:project_issue_task.field_project_task_cause_write_uid
 msgid "Last Updated by"
-msgstr "Last Updated by"
+msgstr "Ultimo aggiornamento di"
 
 #. module: project_issue_task
 #: model:ir.model.fields,field_description:project_issue_task.field_project_task_cause_write_date
