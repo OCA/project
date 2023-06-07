@@ -2,6 +2,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 import odoo.tests.common as common
+from odoo.exceptions import UserError
 
 
 class TestProjectTaskCode(common.TransactionCase):
@@ -38,3 +39,12 @@ class TestProjectTaskCode(common.TransactionCase):
         )
         result = project_task.name_get()
         self.assertEqual(result[0][1], "[%s] Task Testing Get Name" % code)
+
+    def test_new_task_no_sequence(self):
+        self.ir_sequence_model.search([("code", "=", "project.task")]).unlink()
+        with self.assertRaises(UserError):
+            self.project_task_model.create(
+                {
+                    "name": "Task Testing Get Name",
+                }
+            )

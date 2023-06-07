@@ -21,13 +21,13 @@ def post_init_hook(cr, registry):
     """
     env = api.Environment(cr, SUPERUSER_ID, dict())
     task_obj = env["project.task"]
-    sequence_obj = env["ir.sequence"]
+    sequence_id = env.ref("project_task_code.sequence_task")
     tasks = task_obj.search([], order="id")
     for task_id in tasks.ids:
         cr.execute(
             "UPDATE project_task SET code = %s WHERE id = %s;",
             (
-                sequence_obj.next_by_code("project.task"),
+                sequence_id.next_by_id(),
                 task_id,
             ),
         )

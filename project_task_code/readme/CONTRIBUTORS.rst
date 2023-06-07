@@ -11,3 +11,4 @@
 * Saran Lim. <saranl@ecosoft.co.th>
 * Tharathip Chaweewongphan <tharathipc@ecosoft.co.th>
 * Ruchir Shukla <ruchir@bizzappdev.com>
+* Marcos Oitabén <marcos.oitaben@galvintec.com>
