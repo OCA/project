@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-31 18:04+0000\n"
-"PO-Revision-Date: 2023-05-12 13:34+0000\n"
-"Last-Translator: Francesco Foresti <francesco.foresti@ooops404.com>\n"
+"PO-Revision-Date: 2023-06-08 12:08+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (http://www.transifex.com/oca/OCA-project-8-0/"
 "language/it/)\n"
 "Language: it\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.1\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: project_gtd
 #: model:ir.ui.view,arch_db:project_gtd.view_project_gtd_fill
@@ -139,7 +139,7 @@ msgstr "Ultimo aggiornamento di"
 #: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty_write_date
 #: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_write_date
 msgid "Last Updated on"
-msgstr "Last Updated on"
+msgstr "Ultimo aggiornamento il"
 
 #. module: project_gtd
 #: model:project.gtd.timebox,name:project_gtd.timebox_lt
