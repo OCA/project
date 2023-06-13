@@ -1,9 +1,9 @@
 # Copyright 2023 Tecnativa - Ernesto Tejeda
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
-from odoo.tests.common import SavepointCase, new_test_user, users
+from odoo.tests.common import TransactionCase, new_test_user, users
 
 
-class TestAccountPaymentTermSecurity(SavepointCase):
+class TestAccountPaymentTermSecurity(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
