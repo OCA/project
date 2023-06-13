@@ -1,6 +1,6 @@
 {
     "name": "Project Administrator Restricted Visibility",
-    "version": "13.0.1.0.0",
+    "version": "15.0.1.0.0",
     "summary": "Adds a 'Project Administrator' access group "
     "with restricted visibility to 'Projects'",
     "author": "Tecnativa, Odoo Community Association (OCA)",
