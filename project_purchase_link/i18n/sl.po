@@ -33,6 +33,7 @@ msgid "Project"
 msgstr ""
 
 #. module: project_purchase_link
+#. odoo-python
 #: code:addons/project_purchase_link/models/project_project.py:0
 #, python-format
 msgid "Purchase Invoice Lines"
@@ -50,12 +51,14 @@ msgid "Purchase Invoices"
 msgstr "Prejeti računi"
 
 #. module: project_purchase_link
+#. odoo-python
 #: code:addons/project_purchase_link/models/project_project.py:0
 #, python-format
 msgid "Purchase Order"
 msgstr "Nabavni nalog"
 
 #. module: project_purchase_link
+#. odoo-python
 #: code:addons/project_purchase_link/models/project_project.py:0
 #, python-format
 msgid "Purchase Order Lines"
