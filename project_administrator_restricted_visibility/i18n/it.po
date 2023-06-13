@@ -18,5 +18,8 @@ msgstr ""
 
 #. module: project_administrator_restricted_visibility
 #: model:res.groups,name:project_administrator_restricted_visibility.group_full_project_manager
-msgid "Administrator"
-msgstr "Amministratore"
+msgid "Full Administrator"
+msgstr ""
+
+#~ msgid "Administrator"
+#~ msgstr "Amministratore"
