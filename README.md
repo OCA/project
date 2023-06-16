@@ -21,6 +21,7 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
+[project_administrator_restricted_visibility](project_administrator_restricted_visibility/) | 15.0.1.0.0 |  | Adds a 'Project Administrator' access group with restricted visibility to 'Projects'
 [project_department](project_department/) | 15.0.1.0.1 |  | Project Department Categorization
 [project_duplicate_subtask](project_duplicate_subtask/) | 15.0.1.0.0 |  | The module adds an action to duplicate tasks with the child subtasks
 [project_forecast_line](project_forecast_line/) | 15.0.1.3.1 |  | Project Forecast Lines
