@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-03-03 09:15+0000\n"
+"PO-Revision-Date: 2023-06-20 11:10+0000\n"
 "Last-Translator: Nils Coenen <nils.coenen@nico-solutions.de>\n"
 "Language-Team: none\n"
 "Language: de\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.1\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: project_role
 #. odoo-python
@@ -314,7 +314,7 @@ msgstr "Dies ist die Anzahl von Nachrichten mit einem Übertragungsfehler."
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_role__parent_path
 msgid "Parent Path"
-msgstr ""
+msgstr "Übergeordneter Pfad"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_role__parent_id
@@ -326,7 +326,7 @@ msgstr "Übergeordnete Rolle"
 #: code:addons/project_role/models/project_role.py:0
 #, python-format
 msgid "Please activate first parent role %s"
-msgstr "Bitte zuerst die übergeordnete Rolle %s aktivieren."
+msgstr "Bitte zuerst die übergeordnete Rolle %s aktivieren"
 
 #. module: project_role
 #: model:ir.model,name:project_role.model_project_project
