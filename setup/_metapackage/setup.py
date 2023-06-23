@@ -21,6 +21,7 @@ setuptools.setup(
         'odoo-addon-project_task_personal_stage_auto_fold>=16.0dev,<16.1dev',
         'odoo-addon-project_template>=16.0dev,<16.1dev',
         'odoo-addon-project_timeline>=16.0dev,<16.1dev',
+        'odoo-addon-project_timeline_hr_timesheet>=16.0dev,<16.1dev',
         'odoo-addon-project_type>=16.0dev,<16.1dev',
     ],
     classifiers=[
