@@ -15,6 +15,11 @@ class HrJob(models.Model):
 class HrEmployee(models.Model):
     _inherit = "hr.employee"
 
+    # NB: these fields need to be marked as groups="hr.groups_hr_user",
+    # because otherwise if a user with less privileges tries to read
+    # hr.employee.public, they'll get an AccessError on these fields.
+    # More info at: https://github.com/odoo/odoo/blob/d21887008b1ac7
+    # 69bd91d24e972323ffe936391a/addons/hr/models/hr_employee.py#L22
     role_ids = fields.One2many(
         "hr.employee.forecast.role",
         "employee_id",
