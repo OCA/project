@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-31 18:04+0000\n"
-"PO-Revision-Date: 2023-04-12 15:32+0000\n"
+"PO-Revision-Date: 2023-06-29 14:10+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (http://www.transifex.com/oca/OCA-project-8-0/"
 "language/it/)\n"
@@ -17,12 +17,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.1\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: project_gtd
 #: model:ir.ui.view,arch_db:project_gtd.view_project_gtd_fill
 msgid "Add to Timebox"
-msgstr "Aggiungi al Timebox"
+msgstr "Aggiungi al timebox"
 
 #. module: project_gtd
 #: model:project.gtd.context,name:project_gtd.context_car
@@ -86,22 +86,22 @@ msgstr "Nome visualizzato"
 #. module: project_gtd
 #: model:ir.actions.act_window,name:project_gtd.action_project_gtd_empty
 msgid "Empty Timebox"
-msgstr "Timebox Vuoti"
+msgstr "Timebox vuoti"
 
 #. module: project_gtd
 #: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_timebox_id
 msgid "Get from Timebox"
-msgstr "Recupera da Timebox"
+msgstr "Recupera da timebox"
 
 #. module: project_gtd
 #: model:ir.model.fields,help:project_gtd.field_project_gtd_context_sequence
 msgid "Gives the sequence order when displaying a list of contexts."
-msgstr "Fornisce l'ordinamento quando viene visualizzata una lista di contesti"
+msgstr "Fornisce l'ordinamento quando viene visualizzata una lista di contesti."
 
 #. module: project_gtd
 #: model:ir.model.fields,help:project_gtd.field_project_gtd_timebox_sequence
 msgid "Gives the sequence order when displaying a list of timebox."
-msgstr "Definizione della sequenza sulla lista del Timebox."
+msgstr "Definizione della sequenza sulla lista del timebox."
 
 #. module: project_gtd
 #: model:project.gtd.context,name:project_gtd.context_home
@@ -149,7 +149,7 @@ msgstr "Lungo periodo"
 #: model:ir.actions.act_window,name:project_gtd.open_gtd_task
 #: model:ir.ui.menu,name:project_gtd.menu_open_gtd_timebox_tree
 msgid "My Tasks (GTD)"
-msgstr "My Tasks (GTD)"
+msgstr "I miei lavori (GTD)"
 
 #. module: project_gtd
 #: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty_name
@@ -160,7 +160,7 @@ msgstr "Nome"
 #: code:addons/project_gtd/wizard/project_gtd_empty.py:29
 #, python-format
 msgid "No timebox child of this one!"
-msgstr "Non c'è una cronologia figlia!"
+msgstr "Non c'è un timebox figlio!"
 
 #. module: project_gtd
 #: model:project.gtd.context,name:project_gtd.context_office
@@ -170,17 +170,17 @@ msgstr "Ufficio"
 #. module: project_gtd
 #: model:ir.actions.act_window,name:project_gtd.action_project_gtd_fill
 msgid "Plannify Timebox"
-msgstr "Pianificazione da Timebox"
+msgstr "Pianificazione da timebox"
 
 #. module: project_gtd
 #: model:ir.model,name:project_gtd.model_project_timebox_empty
 msgid "Project Timebox Empty"
-msgstr "Svuota il Timebox progettuale"
+msgstr "Svuota il timebox progettuale"
 
 #. module: project_gtd
 #: model:ir.model,name:project_gtd.model_project_timebox_fill_plan
 msgid "Project Timebox Fill"
-msgstr "Riempi il Timebox progettuale"
+msgstr "Riempi il timebox progettuale"
 
 #. module: project_gtd
 #: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context_sequence
@@ -191,7 +191,7 @@ msgstr "Sequenza"
 #. module: project_gtd
 #: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_timebox_to_id
 msgid "Set to Timebox"
-msgstr "Imposta a Timebox"
+msgstr "Imposta a timebox"
 
 #. module: project_gtd
 #: model:ir.model,name:project_gtd.model_project_task
@@ -234,7 +234,7 @@ msgstr "Timebox"
 #. module: project_gtd
 #: model:ir.ui.view,arch_db:project_gtd.view_project_gtd_empty
 msgid "Timebox Empty Process Completed Successfully."
-msgstr "Processo di svuotamento del Timebox completato."
+msgstr "Processo di svuotamento del timebox completato."
 
 #. module: project_gtd
 #: model:ir.actions.act_window,name:project_gtd.open_gtd_timebox_tree
@@ -249,7 +249,7 @@ msgid ""
 "defines a period of time in order to categorize your tasks: today, this "
 "week, this month, long term."
 msgstr ""
-"I Timebox sono definiti nella metodologia \"Getting Things Done\". Un "
+"I timebox sono definiti nella metodologia \"Getting Things Done\". Un "
 "timebox definisce il periodo di tempo per poter organizzare le vostre "
 "attività: oggi, questa settimana, questo mese, lungo termine."
 
