@@ -56,7 +56,7 @@ addon | version | maintainers | summary
 [project_timeline](project_timeline/) | 14.0.1.4.0 |  | Timeline view for projects
 [project_timeline_hr_timesheet](project_timeline_hr_timesheet/) | 14.0.1.0.1 |  | Shows the progress of tasks on the timeline view.
 [project_timeline_task_dependency](project_timeline_task_dependency/) | 14.0.1.0.0 |  | Render arrows between dependencies.
-[project_timesheet_time_control](project_timesheet_time_control/) | 14.0.1.1.0 | [![ernestotejeda](https://github.com/ernestotejeda.png?size=30px)](https://github.com/ernestotejeda) | Project timesheet time control
+[project_timesheet_time_control](project_timesheet_time_control/) | 14.0.1.1.1 | [![ernestotejeda](https://github.com/ernestotejeda.png?size=30px)](https://github.com/ernestotejeda) | Project timesheet time control
 [project_timesheet_time_control_sale](project_timesheet_time_control_sale/) | 14.0.1.0.0 | [![eLBati](https://github.com/eLBati.png?size=30px)](https://github.com/eLBati) [![bosd](https://github.com/bosd.png?size=30px)](https://github.com/bosd) | Make 'Project timesheet time control' and 'Sales Timesheet' work together
 [project_wbs](project_wbs/) | 14.0.1.0.1 |  | Apply Work Breakdown Structure
 
