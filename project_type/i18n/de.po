@@ -6,15 +6,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2019-07-09 13:43+0000\n"
-"Last-Translator: Maria Sparenberg <maria.sparenberg@gmx.net>\n"
+"PO-Revision-Date: 2023-07-08 14:10+0000\n"
+"Last-Translator: Nils Coenen <nils.coenen@nico-solutions.de>\n"
 "Language-Team: none\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.7.1\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: project_type
 #: model_terms:ir.ui.view,arch_db:project_type.project_type_form
@@ -109,7 +109,7 @@ msgstr "Projekttyp"
 #: model:ir.actions.act_window,name:project_type.action_project_type
 #: model:ir.ui.menu,name:project_type.project_category
 msgid "Project Types"
-msgstr ""
+msgstr "Projekttypen"
 
 #. module: project_type
 #: model:ir.model.fields,field_description:project_type.field_project_type__child_ids
