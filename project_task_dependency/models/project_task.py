@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 # Copyright 2016-2018 Onestein (<http://www.onestein.eu>)
+# Copyright 2023 Simone Rubino - TAKOBI
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from odoo import _, api, fields, models
-from odoo.exceptions import ValidationError
+from odoo.exceptions import ValidationError, UserError
 
 
 class ProjectTask(models.Model):
@@ -19,7 +20,8 @@ class ProjectTask(models.Model):
     recursive_dependency_task_ids = fields.Many2many(
         string='Recursive Dependencies',
         comodel_name='project.task',
-        compute='_compute_dependency'
+        compute='_compute_dependency',
+        search='_search_recursive_dependency_task_ids',
     )
 
     depending_task_ids = fields.Many2many(
@@ -69,3 +71,20 @@ class ProjectTask(models.Model):
     def _check_recursion(self):
         if not self._check_m2m_recursion('dependency_task_ids'):
             raise ValidationError(_('You cannot create recursive tasks.'))
+
+    def _search_recursive_dependency_task_ids(self, operator, value):
+        if operator in ('in', 'not in'):
+            dependency_tasks = self.browse(value)
+            tasks = self.browse()
+            for dependency_task in dependency_tasks:
+                tasks |= self.get_depending_tasks(dependency_task, True)
+            return [
+                ('id', operator, tasks.ids),
+            ]
+        else:
+            raise UserError(
+                _("Operator {operator} not supported")
+                .format(
+                    operator=operator,
+                )
+            )

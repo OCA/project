@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 # Copyright 2016-2018 Onestein (<http://www.onestein.eu>)
+# Copyright 2023 Simone Rubino - TAKOBI
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from odoo.exceptions import ValidationError
@@ -39,3 +40,16 @@ class TestProjectTaskDependency(TransactionCase):
             self.task1.write({
                 'dependency_task_ids': [(6, 0, [self.task3.id])]
             })
+
+    def test_search_recursive_dependency(self):
+        result = self.env['project.task'].search([
+            ('recursive_dependency_task_ids', 'in', self.task1.ids),
+        ])
+        self.assertIn(self.task2, result)
+        self.assertIn(self.task3, result)
+
+        result = self.env['project.task'].search([
+            ('recursive_dependency_task_ids', 'not in', self.task1.ids),
+        ])
+        self.assertNotIn(self.task2, result)
+        self.assertNotIn(self.task3, result)
