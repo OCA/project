@@ -11,7 +11,7 @@
     'author': 'Antiun Ingeniería S.L., '
               'Serv. Tecnol. Avanzados - Pedro M. Baeza, '
               'Odoo Community Association (OCA)',
-    'website': 'http://www.antiun.com',
+    'website': 'https://github.com/OCA/project',
     'depends': [
         'analytic_partner',
         'project_timesheet',

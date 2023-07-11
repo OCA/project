@@ -10,7 +10,7 @@
     "version": "10.0.1.0.2",
     "author": "Tecnativa, "
               "Odoo Community Association (OCA)",
-    "website": "https://www.tecnativa.com",
+    "website": "https://github.com/OCA/project",
     "license": "AGPL-3",
     "category": "Project",
     "depends": [

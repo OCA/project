@@ -9,6 +9,8 @@
     'category': 'Project Management',
     'sequence': 100,
     'summary': 'Personal Tasks, Contexts, Timeboxes',
+    'website': 'https://github.com/OCA/project'
+               '/tree/10.0/project_gtd',
     'author': "Odoo SA, Odoo Community Association (OCA), ABF OSIELL",
     'license': 'AGPL-3',
     'depends': ['project'],

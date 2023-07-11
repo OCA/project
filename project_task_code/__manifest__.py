@@ -10,7 +10,7 @@
               "AvanzOSC, "
               "Tecnativa, "
               "Odoo Community Association (OCA)",
-    "website": "http://www.avanzosc.es",
+    "website": "https://github.com/OCA/project",
     "license": "AGPL-3",
     "contributors": [
         "Oihane Crucelaegui <oihanecrucelaegi@avanzosc.es>",

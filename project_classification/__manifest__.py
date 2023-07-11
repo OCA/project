@@ -24,7 +24,7 @@
     'version': '8.0.1.0',
     'category': 'Generic Modules/Projects & Services',
     'author': "Camptocamp,Odoo Community Association (OCA)",
-    'website': 'http://www.camptocamp.com',
+    'website': 'https://github.com/OCA/project',
     'license': 'AGPL-3',
     'depends': ['project',
                 'hr_timesheet_invoice',

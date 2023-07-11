@@ -113,7 +113,7 @@ Credits and Contributors
   * David Vignoni, author of the icon from the KDE 3.x Nuvola icon theme
 """,
     'author': "Daniel Reis,Odoo Community Association (OCA)",
-    'website': '',
+    'website': 'https://github.com/OCA/project',
     'license': 'AGPL-3',
     'depends': [
         'project_issue',

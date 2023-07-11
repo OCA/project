@@ -11,7 +11,7 @@
     'license': 'AGPL-3',
     'author': "Tecnativa, "
               "Odoo Community Association (OCA)",
-    'website': 'https://www.tecnativa.com',
+    'website': 'https://github.com/OCA/project',
     'depends': [
         'analytic_partner',
         'project_task_material_stock',

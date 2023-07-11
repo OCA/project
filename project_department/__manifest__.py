@@ -7,7 +7,7 @@
     "author": "Camptocamp, Daniel Reis,Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "category": "Generic Modules/Projects & Services",
-    "website": "http://camptocamp.com",
+    "website": "https://github.com/OCA/project",
     "depends": [
         "analytic_base_department",
         "project",

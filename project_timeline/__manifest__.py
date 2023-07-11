@@ -8,7 +8,7 @@
     "summary": "Timeline view for projects",
     "version": "10.0.1.1.0",
     "category": "Project Management",
-    "website": "https://www.tecnativa.com",
+    "website": "https://github.com/OCA/project",
     "author": "Tecnativa, "
               "Odoo Community Association (OCA)",
     "license": "AGPL-3",

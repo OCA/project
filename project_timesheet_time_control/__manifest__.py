@@ -10,7 +10,7 @@
     'category': 'Project',
     'author': 'Tecnativa,'
               'Odoo Community Association (OCA)',
-    'website': 'http://www.serviciosbaeza.com',
+    'website': 'https://github.com/OCA/project',
     'depends': [
         'hr_timesheet',
         'project_stage_closed',

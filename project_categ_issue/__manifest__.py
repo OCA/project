@@ -26,6 +26,8 @@
 Adds to Issues the ability to limit selectable Categories to a Proeject's
 specific list.
 """,
+    'website': 'https://github.com/OCA/project'
+               '/tree/10.0/project_categ_issue',
     'author': "Daniel Reis,Odoo Community Association (OCA)",
     'license': 'AGPL-3',
     'depends': [

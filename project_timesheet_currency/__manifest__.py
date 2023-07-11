@@ -8,7 +8,7 @@
     'version': '10.0.1.0.0',
     'license': 'AGPL-3',
     'author': 'Camptocamp,Odoo Community Association (OCA)',
-    'website': 'https://www.camptocamp.com',
+    'website': 'https://github.com/OCA/project',
     'depends': [
         'analytic',
         'sale_timesheet',

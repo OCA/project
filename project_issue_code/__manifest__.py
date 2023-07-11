@@ -7,7 +7,7 @@
     "version": "10.0.1.1.0",
     "summary": "Adding Field Code For Project Issue",
     "author": "OpenSynergy Indonesia,Odoo Community Association (OCA)",
-    "website": "https://opensynergy-indonesia.com",
+    "website": "https://github.com/OCA/project",
     "category": "Project Management",
     "depends": [
         "project_issue",

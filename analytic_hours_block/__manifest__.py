@@ -36,7 +36,7 @@ you can track and follow how much has been used.
  """,
     "author": "Camptocamp,Odoo Community Association (OCA)",
     "license": 'AGPL-3',
-    "website": "http://www.camptocamp.com",
+    "website": "https://github.com/OCA/project",
     "depends": [
         "account",
         "hr_timesheet_invoice",
