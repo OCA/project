@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="project_project_view_form" model="ir.ui.view">
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project" />
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button
+                    class="oe_stat_button"
+                    name="button_open_purchase_order"
+                    type="object"
+                    icon="fa-shopping-cart"
+                    attrs="{'invisible': [('purchase_count', '=', 0)]}"
+                >
+                    <field string="Purchases" name="purchase_count" widget="statinfo" />
+                </button>
+                <button
+                    class="oe_stat_button"
+                    name="button_open_purchase_order_line"
+                    type="object"
+                    icon="fa-shopping-cart"
+                    attrs="{'invisible': [('purchase_count', '=', 0)]}"
+                >
+                    <field
+                        string="Purchase Total"
+                        name="purchase_count"
+                        widget="statinfo"
+                    />
+                </button>
+                <button
+                    class="oe_stat_button"
+                    name="button_open_purchase_invoice"
+                    type="object"
+                    icon="fa-pencil-square-o"
+                    attrs="{'invisible': [('purchase_invoice_count', '=', 0)]}"
+                >
+                    <field
+                        string="PO Invoices"
+                        name="purchase_invoice_count"
+                        widget="statinfo"
+                    />
+                </button>
+                <button
+                    class="oe_stat_button"
+                    name="button_open_purchase_invoice_line"
+                    type="object"
+                    icon="fa-pencil-square-o"
+                    attrs="{'invisible': [('purchase_invoice_line_total', '=', 0)]}"
+                >
+                    <field
+                        string="PO Invoice Total"
+                        name="purchase_invoice_line_total"
+                        widget="statinfo"
+                    />
+                </button>
+            </div>
+        </field>
+    </record>
+</odoo>
