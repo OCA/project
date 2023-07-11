@@ -18,6 +18,7 @@ setuptools.setup(
         'odoo14-addon-project_mail_chatter',
         'odoo14-addon-project_milestone',
         'odoo14-addon-project_parent_task_filter',
+        'odoo14-addon-project_purchase_link',
         'odoo14-addon-project_recalculate',
         'odoo14-addon-project_role',
         'odoo14-addon-project_sequence',
