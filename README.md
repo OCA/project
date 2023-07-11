@@ -31,6 +31,7 @@ addon | version | maintainers | summary
 [project_mail_chatter](project_mail_chatter/) | 14.0.1.1.0 |  | Add message chatter on the Project form.
 [project_milestone](project_milestone/) | 14.0.1.3.0 | [![patrickrwilson](https://github.com/patrickrwilson.png?size=30px)](https://github.com/patrickrwilson) | Project Milestones
 [project_parent_task_filter](project_parent_task_filter/) | 14.0.1.2.0 |  | Add filters to show the parent or non parent tasks
+[project_purchase_link](project_purchase_link/) | 14.0.1.0.0 | [![udesai](https://github.com/udesai.png?size=30px)](https://github.com/udesai) [![OCA](https://github.com/OCA.png?size=30px)](https://github.com/OCA) | Project Purchase Link
 [project_recalculate](project_recalculate/) | 14.0.1.0.0 |  | Project Recalculate
 [project_role](project_role/) | 14.0.1.0.0 | [![alexey-pelykh](https://github.com/alexey-pelykh.png?size=30px)](https://github.com/alexey-pelykh) | Project role-based roster
 [project_sequence](project_sequence/) | 14.0.0.2.0 | [![yajo](https://github.com/yajo.png?size=30px)](https://github.com/yajo) [![anddago78](https://github.com/anddago78.png?size=30px)](https://github.com/anddago78) | Add a sequence field to projects, filled automatically
