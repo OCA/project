@@ -23,8 +23,13 @@ class TestProjectCases(TransactionCase):
             }
         )
 
-        # Refer to a task assigned to the project user
-        self.task = self.env.ref("project.project_task_2")
+        # Create new project
+        self.project = self.env["project.project"].create({"name": "Project Test"})
+
+        # Create new task
+        self.task = self.env["project.task"].create(
+            {"project_id": self.project.id, "name": "Task Test"}
+        )
         self.product = self.env.ref("product.consu_delivery_03")
 
         # Refer to a action from the user created
