@@ -3,6 +3,7 @@
 from datetime import date
 
 from odoo import exceptions
+from odoo.tests.common import Form
 
 from . import base
 
@@ -195,6 +196,28 @@ class TestProjectProjectBegin(base.BaseCase):
                         },
                     )
                     project.project_recalculate()
+
+    def test_wizard_default_get(self):
+        project = self.project_create(
+            0,
+            {
+                "calculation_type": self.calculation_type,
+                "name": "test",
+                "resource_calendar_id": False,
+                "date_start": date(2015, 8, 1),
+                "date": date(2015, 8, 3),
+            },
+        )
+        f = Form(
+            self.env["project.recalculate.wizard"].with_context(active_id=project.id)
+        )
+        result = f.save()
+        self.assertEqual(result.project_id.id, project.id)
+        self.assertEqual(result.calculation_type, self.calculation_type)
+        if project.calculation_type == "date_begin":
+            self.assertEqual(result.project_date, project.date_start)
+        else:
+            self.assertEqual(result.project_date, project.date)
 
 
 class TestProjectProjectEnd(TestProjectProjectBegin):
