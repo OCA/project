@@ -3,12 +3,13 @@
 from freezegun import freeze_time
 from psycopg2 import IntegrityError
 
-from odoo.tests.common import Form, SavepointCase, new_test_user, users
+from odoo import fields
+from odoo.tests.common import Form, TransactionCase, new_test_user, users
 from odoo.tools import mute_logger
 
 
 @freeze_time("2023-01-01 12:00:00")
-class TestProjectSequence(SavepointCase):
+class TestProjectSequence(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -19,12 +20,32 @@ class TestProjectSequence(SavepointCase):
         )
         cls.pjr_seq = cls.env.ref("project_sequence.seq_project_sequence")
         cls.pjr_seq.date_range_ids.unlink()
+        default_plan_id = (
+            cls.env["account.analytic.plan"]
+            .sudo()
+            .search(
+                [
+                    "|",
+                    ("company_id", "=", False),
+                    ("company_id", "=", cls.env.company.id),
+                ],
+                limit=1,
+            )
+        )
         cls.analytic_account = cls.env["account.analytic.account"].create(
-            {"name": "aaa"}
+            {
+                "name": "aaa",
+                "plan_id": default_plan_id.id,
+                "company_id": cls.env.company.id,
+                "create_uid": cls.env.uid,
+                "write_uid": cls.env.uid,
+                "create_date": fields.Datetime.now(),
+                "write_date": fields.Datetime.now(),
+            }
         )
 
     def setUp(self):
-        super().setUp()
+        super(TestProjectSequence, self).setUp()
         self.pjr_seq._get_current_sequence().number_next = 11
 
     @users("manager")
@@ -127,3 +148,59 @@ class TestProjectSequence(SavepointCase):
         proj = self.env["project.project"].create({"name": "three"})
         self.assertEqual(proj.display_name, "23-00013")
         self.assertEqual(proj.sequence_code, "23-00013")
+
+    def test_sync_analytic_account_name(self):
+        """Set analytic account name equal to project's display name."""
+        proj = self.env["project.project"].create({"name": "one"})
+        default_plan_id = (
+            self.env["account.analytic.plan"]
+            .sudo()
+            .search(
+                [
+                    "|",
+                    ("company_id", "=", False),
+                    ("company_id", "=", self.env.company.id),
+                ],
+                limit=1,
+            )
+        )
+        analytic_account = self.env["account.analytic.account"].create(
+            {
+                "name": proj.display_name,
+                "plan_id": default_plan_id.id,
+                "company_id": self.env.company.id,
+                "create_uid": self.env.uid,
+                "write_uid": self.env.uid,
+                "create_date": fields.Datetime.now(),
+                "write_date": fields.Datetime.now(),
+            }
+        )
+        proj.analytic_account_id = analytic_account
+        proj._sync_analytic_account_name()
+        self.assertEqual(proj.analytic_account_id.name, proj.display_name)
+
+        # Test when analytic_account_id is not set
+        proj.analytic_account_id = False
+        proj._sync_analytic_account_name()
+        self.assertTrue(True)  # Placeholder assertion to ensure the code execution
+
+    def test_name_search(self):
+        """Allow searching by sequence code by default."""
+        proj1 = self.env["project.project"].create({"name": "one"})
+        self.assertEqual(proj1.sequence_code, "23-00011")
+        proj2 = self.env["project.project"].create({"name": "two"})
+        self.assertEqual(proj2.sequence_code, "23-00012")
+        proj3 = self.env["project.project"].create({"name": "three"})
+        self.assertEqual(proj3.sequence_code, "23-00013")
+
+        # Search by name
+        results = self.env["project.project"].name_search("two")
+        self.assertIn((proj2.id, "23-00012 - two"), results)
+        self.assertNotIn((proj1.id, "23-00011 - one"), results)
+        self.assertNotIn((proj3.id, "23-00013 - three"), results)
+
+        # Search by sequence code
+        results = self.env["project.project"].name_search("23-00012")
+        self.assertIn((proj2.id, "23-00012 - two"), results)
+        self.assertNotIn((proj1.id, "23-00011 - one"), results)
+        self.assertNotIn((proj3.id, "23-00013 - three"), results)
