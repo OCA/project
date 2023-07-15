@@ -118,7 +118,7 @@ class ProjectTask(models.Model):
                 - company
         """
         self.ensure_one()
-        resource = False
+        resource = None
         if self.user_id:
             # Get first resource of assigned user
             resource = self.env["resource.resource"].search(

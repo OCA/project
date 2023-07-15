@@ -57,6 +57,7 @@ class TestProjectTaskBegin(base.BaseCase):
                 "resource_calendar_id": False,
             },
         )
+
         task = project.tasks[0]
         vals = {
             "date_start": datetime(2015, 8, 3, 8),
@@ -111,6 +112,82 @@ class TestProjectTaskBegin(base.BaseCase):
                 task_counter += 1
             project_counter += 1
 
+    def test_update_recalculated_dates_when_no_from_days_or_estimated_days(self):
+        """
+        @summary: Check _update_recalculate_dates when no from_days or estimated_days
+        """
+        project = self.project_create(
+            self.num_tasks,
+            {
+                "calculation_type": self.calculation_type,
+                "name": "Test project",
+                "date_start": date(2015, 8, 1),
+                "date": date(2015, 8, 31),
+                "resource_calendar_id": False,
+            },
+        )
+
+        # No end date
+        task = project.tasks[0]
+        task.date_end = False
+        vals = {
+            "date_start": datetime(2015, 8, 3, 8),
+        }
+        vals = task._update_recalculated_dates(vals)
+        self.assertTrue("from_days" not in vals, "FAIL: from_days assigned")
+        self.assertTrue("estimated_days" not in vals, "FAIL: estimated_days assigned")
+
+        # date_end < date_start
+        task = project.tasks[0]
+        vals = {
+            "date_start": datetime(2015, 8, 3, 8),
+            "date_end": datetime(2014, 8, 3, 8),
+        }
+        vals = task._update_recalculated_dates(vals)
+        # TODO: Maybe raise an error? Kept because consistency with 14.0
+        self.assertTrue("from_days" not in vals, "FAIL: from_days assigned")
+        self.assertTrue("estimated_days" not in vals, "FAIL: estimated_days assigned")
+
+        # calculation_type == "date_begin" and not self.project_id.date_start
+        project = self.project_create(
+            self.num_tasks,
+            {
+                "calculation_type": "date_begin",
+                "name": "Test project",
+                "date": date(2015, 8, 31),
+                "resource_calendar_id": False,
+            },
+        )
+        task = project.tasks[0]
+        vals = {
+            "date_end": datetime(2015, 8, 3, 8),
+            "date_start": datetime(2014, 8, 3, 8),
+        }
+        vals = task._update_recalculated_dates(vals)
+
+        self.assertTrue("from_days" not in vals, "FAIL: from_days assigned")
+        self.assertTrue("estimated_days" in vals, "FAIL: estimated_days not assigned")
+
+        # calculation_type != "date_begin" and not self.project_id.date
+        project = self.project_create(
+            self.num_tasks,
+            {
+                "calculation_type": "date_end",
+                "name": "Test project",
+                "date_start": date(2015, 8, 31),
+                "resource_calendar_id": False,
+            },
+        )
+        task = project.tasks[0]
+        vals = {
+            "date_end": datetime(2015, 8, 3, 8),
+            "date_start": datetime(2014, 8, 3, 8),
+        }
+        vals = task._update_recalculated_dates(vals)
+
+        self.assertTrue("from_days" not in vals, "FAIL: from_days assigned")
+        self.assertTrue("estimated_days" in vals, "FAIL: estimated_days not assigned")
+
     def test_estimated_days_check(self):
         """
         @summary: Check _estimated_days_check constraint
@@ -147,6 +224,83 @@ class TestProjectTaskBegin(base.BaseCase):
         for name, estimated_days in ok_cases:
             self.project_task_add(
                 project, {"name": name, "estimated_days": estimated_days}
+            )
+
+    def test_project_task_recalculate(self):
+
+        # No user_resource_calendar and user_id
+        project = self.project_create(
+            self.num_tasks,
+            {
+                "calculation_type": self.calculation_type,
+                "name": "Test project",
+                "date_start": date(2015, 8, 1),
+                "date": date(2015, 8, 31),
+                "resource_calendar_id": False,
+            },
+        )
+        for task in project.tasks:
+            if task.user_id:
+                resources = self.env["resource.resource"].search(
+                    [("user_id", "=", task.user_id.id)]
+                )
+                for resource in resources:
+                    resource.active = False
+
+        project.project_recalculate()
+
+        if project.calculation_type == "date_begin":
+            self.assertEqual(project.date, max(project.tasks.mapped("date_end")).date())
+        else:
+            self.assertEqual(
+                project.date_start, min(project.tasks.mapped("date_start")).date()
+            )
+
+        # No user_id
+        project = self.project_create(
+            self.num_tasks,
+            {
+                "calculation_type": self.calculation_type,
+                "name": "Test project",
+                "date_start": date(2015, 8, 1),
+                "date": date(2015, 8, 31),
+                "resource_calendar_id": False,
+            },
+        )
+
+        for task in project.tasks:
+            task.user_id = False
+        project.project_recalculate()
+
+        if project.calculation_type == "date_begin":
+            self.assertEqual(project.date, max(project.tasks.mapped("date_end")).date())
+        else:
+            self.assertEqual(
+                project.date_start, min(project.tasks.mapped("date_start")).date()
+            )
+
+        # No user_id and project_id.resource_calendar_id
+
+        resource_calendar_id = self.env.ref("resource.resource_calendar_std")
+        project = self.project_create(
+            self.num_tasks,
+            {
+                "calculation_type": self.calculation_type,
+                "name": "Test project",
+                "date_start": date(2015, 8, 1),
+                "date": date(2015, 8, 31),
+                "resource_calendar_id": resource_calendar_id.id,
+            },
+        )
+        for task in project.tasks:
+            task.user_id = False
+        project.project_recalculate()
+
+        if project.calculation_type == "date_begin":
+            self.assertEqual(project.date, max(project.tasks.mapped("date_end")).date())
+        else:
+            self.assertEqual(
+                project.date_start, min(project.tasks.mapped("date_start")).date()
             )
 
 
