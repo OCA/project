@@ -26,7 +26,7 @@
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.view_project" />
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='name']" position="after">
+            <xpath expr="//field[@name='display_name']" position="after">
                 <field name="sequence_code" optional="hide" />
             </xpath>
         </field>
@@ -36,13 +36,19 @@
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.view_project_kanban" />
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='name']" position="after">
-                <field name="display_name" />
+            <xpath expr="//field[@name='display_name']" position="after">
+                <field name="name" />
             </xpath>
-            <xpath expr="//span[t[@t-esc='record.name.value']]" position="attributes">
+            <xpath
+                expr="//span[t[@t-esc='record.display_name.value']]"
+                position="attributes"
+            >
                 <attribute name="invisible">1</attribute>
             </xpath>
-            <xpath expr="//span[t[@t-esc='record.name.value']]" position="after">
+            <xpath
+                expr="//span[t[@t-esc='record.display_name.value']]"
+                position="after"
+            >
                 <span><t t-esc="record.display_name.value" /></span>
             </xpath>
         </field>
