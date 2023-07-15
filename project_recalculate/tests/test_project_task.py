@@ -141,12 +141,12 @@ class TestProjectTaskBegin(base.BaseCase):
         with self.assertRaises(ValidationError):
             for name, estimated_days in error_cases:
                 self.project_task_add(
-                    project, {"name": name, "estimated_days": estimated_days,}
+                    project, {"name": name, "estimated_days": estimated_days}
                 )
         # OK cases
         for name, estimated_days in ok_cases:
             self.project_task_add(
-                project, {"name": name, "estimated_days": estimated_days,}
+                project, {"name": name, "estimated_days": estimated_days}
             )
 
 

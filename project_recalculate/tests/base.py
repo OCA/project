@@ -108,7 +108,7 @@ class BaseCase(TransactionCase):
         m_leaves = self.env["resource.calendar.leaves"]
         m_resource = self.env["resource.resource"]
         # Working calendar
-        calendar = m_calendar.create({"name": "Test calendar",})
+        calendar = m_calendar.create({"name": "Test calendar"})
         # Working days
         #   - L-V 8:00 to 18:00
         days = (
@@ -167,9 +167,7 @@ class BaseCase(TransactionCase):
                 }
             )
         else:
-            resource.write(
-                {"time_efficiency": 1.0, "calendar_id": calendar.id,}
-            )
+            resource.write({"time_efficiency": 1.0, "calendar_id": calendar.id})
 
     # Use case : Clean data after current test case
     def tearDown(self):
@@ -179,7 +177,7 @@ class BaseCase(TransactionCase):
     def project_task_add(self, project, vals=None):
         vals = vals or {}
         vals.update(
-            {"project_id": project.id if project else False, "user_id": self.uid,}
+            {"project_id": project.id if project else False, "user_id": self.uid}
         )
         return self.env["project.task"].create(vals)
 
@@ -188,9 +186,7 @@ class BaseCase(TransactionCase):
             for day in days:
                 task = project.tasks.filtered(lambda r: r.name == day[0])
                 if task:
-                    task.write(
-                        {"from_days": day[1], "estimated_days": day[2],}
-                    )
+                    task.write({"from_days": day[1], "estimated_days": day[2]})
 
     def project_task_dates_set(self, project, days):
         if project.tasks:
@@ -216,5 +212,5 @@ class BaseCase(TransactionCase):
         )
         if num_tasks > 0:
             for n in range(num_tasks):
-                self.project_task_add(project, {"name": "task_%d" % n,})
+                self.project_task_add(project, {"name": "task_%d" % n})
         return project

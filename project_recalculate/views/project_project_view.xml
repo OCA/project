@@ -30,7 +30,6 @@
         name="Project recalculate"
         res_model="project.recalculate.wizard"
         view_mode="form"
-        multi="True"
         target="new"
         id="wizard_project_recalculate"
     />

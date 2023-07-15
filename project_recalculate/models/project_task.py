@@ -20,13 +20,13 @@ class ProjectTask(models.Model):
         default=0,
     )
     estimated_days = fields.Integer(
-        string="Estimated days",
-        help="Estimated days to end",
-        default=1,
-        oldname="anticipation_days",
+        string="Estimated days", help="Estimated days to end", default=1,
     )
     include_in_recalculate = fields.Boolean(
         related="stage_id.include_in_recalculate", readonly=True,
+    )
+    date_start = fields.Datetime(
+        string="Starting Date", default=fields.Datetime.now, index=True, copy=False,
     )
 
     @api.constrains("estimated_days")
@@ -37,7 +37,6 @@ class ProjectTask(models.Model):
                     _("Estimated days must be greater than 0.")
                 )
 
-    @api.multi
     def _update_recalculated_dates(self, vals):
         """
             Try to calculate estimated_days and from_days fields
@@ -243,7 +242,6 @@ class ProjectTask(models.Model):
 
         return planned_dt or False
 
-    @api.multi
     def task_recalculate(self):
         """Recalculate task start date and end date depending on
         project calculation_type, estimated_days and from_days.
@@ -275,9 +273,9 @@ class ProjectTask(models.Model):
                         end_planned_dt, resource, calendar
                     )[1]
             if date_start:
-                date_start = date_start.astimezone(utc)
+                date_start = date_start.astimezone(utc).replace(tzinfo=None)
             if date_end:
-                date_end = date_end.astimezone(utc)
+                date_end = date_end.astimezone(utc).replace(tzinfo=None)
 
             task.with_context(task.env.context, task_recalculate=True).write(
                 {
@@ -288,7 +286,6 @@ class ProjectTask(models.Model):
             )
         return True
 
-    @api.multi
     def write(self, vals):
         for this in self:
             vals = this._update_recalculated_dates(vals)
