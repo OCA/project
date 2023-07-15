@@ -181,9 +181,9 @@ class TestProjectProjectBegin(base.BaseCase):
             ("pj_6", "date_end", False, False),
             ("pj_7", "date_end", date(2015, 8, 1), False),
         )
-        with self.assertRaises(exceptions.UserError):
-            for num_tasks in [0, 1, 5]:
-                for name, calculation_type, start, end in cases:
+        for num_tasks in [0, 1, 5]:
+            for name, calculation_type, start, end in cases:
+                with self.assertRaises(exceptions.UserError):
                     project = self.project_create(
                         num_tasks,
                         {

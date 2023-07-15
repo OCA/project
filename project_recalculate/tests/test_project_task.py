@@ -137,9 +137,9 @@ class TestProjectTaskBegin(base.BaseCase):
                 "resource_calendar_id": False,
             },
         )
-        # ValidationError cases
-        with self.assertRaises(ValidationError):
-            for name, estimated_days in error_cases:
+        for name, estimated_days in error_cases:
+            # ValidationError cases
+            with self.assertRaises(ValidationError):
                 self.project_task_add(
                     project, {"name": name, "estimated_days": estimated_days}
                 )
