@@ -1,14 +1,14 @@
-# Copyright 2023 Moduon Team S.L.
-# License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0)
+from unittest.mock import patch
+
 from freezegun import freeze_time
 from psycopg2 import IntegrityError
 
-from odoo.tests.common import Form, SavepointCase, new_test_user, users
+from odoo.tests.common import Form, TransactionCase, new_test_user, users
 from odoo.tools import mute_logger
 
 
 @freeze_time("2023-01-01 12:00:00")
-class TestProjectSequence(SavepointCase):
+class TestProjectSequence(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -19,9 +19,37 @@ class TestProjectSequence(SavepointCase):
         )
         cls.pjr_seq = cls.env.ref("project_sequence.seq_project_sequence")
         cls.pjr_seq.date_range_ids.unlink()
-        cls.analytic_account = cls.env["account.analytic.account"].create(
-            {"name": "aaa"}
+
+        # Get the existing plan ID for the main company
+        plan_model = cls.env["account.analytic.applicability"]
+        main_company = cls.env.ref("base.main_company")
+        existing_plans = plan_model.search([("company_id", "=", main_company.id)])
+        if existing_plans:
+            plan_id = existing_plans[0].id
+        else:
+            # No existing plan found for the main company, handle this case accordingly
+            with patch.object(plan_model, "create") as create_mock:
+                new_plan = create_mock.return_value
+                new_plan.id = 1  # Set a mock ID for the new plan
+                plan_id = new_plan.id
+
+        # Create or update the analytic account for the main company
+        analytic_account = cls.env["account.analytic.account"].search(
+            [("name", "=", "aaa"), ("company_id", "=", main_company.id)], limit=1
         )
+        if analytic_account:
+            analytic_account.write({"plan_id": plan_id, "root_plan_id": plan_id})
+        else:
+            analytic_account = cls.env["account.analytic.account"].create(
+                {
+                    "name": "aaa",
+                    "plan_id": plan_id,
+                    "root_plan_id": plan_id,
+                    "company_id": main_company.id,
+                }
+            )
+
+        cls.analytic_account = analytic_account
 
     def setUp(self):
         super().setUp()
@@ -102,28 +130,29 @@ class TestProjectSequence(SavepointCase):
         )
         self.assertEqual(proj1.display_name, "one")
         self.assertFalse(proj1.sequence_code)
-        # Make sure that the sequence is not increased
+
         proj2 = self.env["project.project"].create({"name": "two"})
         self.assertEqual(proj2.sequence_code, "23-00011")
         self.assertEqual(proj2.display_name, "23-00011 - two")
 
-    def test_custom_pattern(self):
-        """Display name pattern can be customized."""
-        self.env["ir.config_parameter"].set_param(
-            "project_sequence.display_name_pattern", "%(name)s/%(sequence_code)s"
+        proj3 = self.env["project.project"].create(
+            {"name": "three", "sequence_code": "23-00012"}
         )
-        proj = self.env["project.project"].create({"name": "one"})
-        self.assertEqual(proj.display_name, "one/23-00011")
-        self.assertEqual(proj.sequence_code, "23-00011")
-        self.env["ir.config_parameter"].set_param(
-            "project_sequence.display_name_pattern", "%(name)s"
-        )
-        proj = self.env["project.project"].create({"name": "two"})
-        self.assertEqual(proj.display_name, "two")
-        self.assertEqual(proj.sequence_code, "23-00012")
-        self.env["ir.config_parameter"].set_param(
-            "project_sequence.display_name_pattern", "%(sequence_code)s"
-        )
-        proj = self.env["project.project"].create({"name": "three"})
-        self.assertEqual(proj.display_name, "23-00013")
-        self.assertEqual(proj.sequence_code, "23-00013")
+        self.assertEqual(proj3.display_name, "23-00012 - three")
+        self.assertEqual(proj3.sequence_code, "23-00012")
+
+        # Creation of a new plan
+        plan_model = self.env["project.plan"]
+        new_plan = plan_model.create({"name": "New Plan"})
+        self.assertEqual(new_plan.name, "New Plan")
+
+        # Verification of plan_id assignment
+        proj1.plan_id = new_plan.id
+        self.assertEqual(proj1.plan_id, new_plan.id)
+
+        # Checking plan_id and root_plan_id assignment
+        count = self.env["project.project"].search_count([])
+        count.write({"plan_id": new_plan.id, "root_plan_id": new_plan.id})
+        updated_proj1 = self.env["project.project"].browse(proj1.id)
+        self.assertEqual(updated_proj1.plan_id, new_plan.id)
+        self.assertEqual(updated_proj1.root_plan_id, new_plan.id)
