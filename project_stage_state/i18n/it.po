@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-10-17 13:09+0000\n"
-"PO-Revision-Date: 2023-05-22 15:09+0000\n"
+"PO-Revision-Date: 2023-07-19 17:11+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (http://www.transifex.com/oca/OCA-project-8-0/"
 "language/it/)\n"
@@ -57,7 +57,7 @@ msgstr "Stato"
 #. module: project_stage_state
 #: model:ir.model,name:project_stage_state.model_project_task
 msgid "Task"
-msgstr "Attività"
+msgstr "Lavoro"
 
 #. module: project_stage_state
 #: model:ir.model,name:project_stage_state.model_project_task_type
