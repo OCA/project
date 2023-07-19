@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-07-15 06:34+0000\n"
-"PO-Revision-Date: 2023-06-08 12:09+0000\n"
+"PO-Revision-Date: 2023-07-19 17:11+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (http://www.transifex.com/oca/OCA-project-8-0/"
 "language/it/)\n"
@@ -120,7 +120,7 @@ msgstr "Sequenza"
 #. module: project_issue_task
 #: model:ir.model,name:project_issue_task.model_project_task
 msgid "Task"
-msgstr "Attività"
+msgstr "Lavoro"
 
 #. module: project_issue_task
 #: model:ir.actions.act_window,name:project_issue_task.open_task_cause_form
