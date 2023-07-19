@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-26 10:14+0000\n"
-"PO-Revision-Date: 2023-06-13 13:11+0000\n"
+"PO-Revision-Date: 2023-07-19 17:11+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (http://www.transifex.com/oca/OCA-project-8-0/"
 "language/it/)\n"
@@ -394,7 +394,7 @@ msgstr "Data inizio"
 #. module: project_sla
 #: model:ir.model,name:project_sla.model_project_task
 msgid "Task"
-msgstr "Attività"
+msgstr "Lavoro"
 
 #. module: project_sla
 #: field:project.sla,name:0 field:project.sla.line,name:0
