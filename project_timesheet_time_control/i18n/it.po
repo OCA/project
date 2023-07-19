@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-29 02:48+0000\n"
-"PO-Revision-Date: 2023-07-03 14:09+0000\n"
+"PO-Revision-Date: 2023-07-19 17:11+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
@@ -55,7 +55,7 @@ msgstr "Fine"
 #. module: project_timesheet_time_control
 #: model:ir.ui.view,arch_db:project_timesheet_time_control.account_analytic_line_search
 msgid "Task"
-msgstr "Attività"
+msgstr "Lavoro"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,help:project_timesheet_time_control.field_account_analytic_line_closed
