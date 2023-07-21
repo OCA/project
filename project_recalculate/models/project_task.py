@@ -141,7 +141,6 @@ class ProjectTask(models.Model):
             calendar = self.env["resource.calendar"].search(
                 [("company_id", "=", company.id)], limit=1
             )
-            # import wdb;wdb.set_trace()
         return resource, calendar
 
     def _from_days_enc(

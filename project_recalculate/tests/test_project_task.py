@@ -71,6 +71,29 @@ class TestProjectTaskBegin(base.BaseCase):
         self.assertTrue("from_days" not in vals, "FAIL: from_days assigned")
         self.assertTrue("estimated_days" not in vals, "FAIL: estimated_days assigned")
 
+    def test_update_recalculated_dates_when_no_calculation_type(self):
+        resource_calendar_id = self.env.ref("resource.resource_calendar_std")
+        project = self.project_create(
+            self.num_tasks,
+            {
+                "calculation_type": False,
+                "name": "Test project",
+                "date_start": date(2015, 8, 1),
+                "date": date(2015, 8, 31),
+                "resource_calendar_id": resource_calendar_id.id,
+            },
+        )
+
+        task = project.tasks[0]
+        vals = {
+            "date_start": datetime(2015, 8, 3, 8),
+            "date_end": datetime(2015, 8, 14, 18),
+        }
+        # Execute _update_recalculated_dates
+        vals = task._update_recalculated_dates(vals)
+        self.assertTrue("from_days" not in vals, "FAIL: from_days assigned")
+        self.assertTrue("estimated_days" in vals, "FAIL: estimated_days no assigned")
+
     def test_update_recalculate_dates(self):
         """
         @summary: Check _update_recalculate_dates
