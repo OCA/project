@@ -166,8 +166,6 @@ class BaseCase(TransactionCase):
                     "calendar_id": calendar.id,
                 }
             )
-        else:
-            resource.write({"time_efficiency": 1.0, "calendar_id": calendar.id})
 
     # Use case : Clean data after current test case
     def tearDown(self):

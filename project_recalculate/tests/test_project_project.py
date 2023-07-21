@@ -218,6 +218,7 @@ class TestProjectProjectBegin(base.BaseCase):
             self.assertEqual(result.project_date, project.date_start)
         else:
             self.assertEqual(result.project_date, project.date)
+        result.confirm_button()
 
 
 class TestProjectProjectEnd(TestProjectProjectBegin):

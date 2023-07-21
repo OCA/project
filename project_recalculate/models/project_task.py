@@ -141,6 +141,7 @@ class ProjectTask(models.Model):
             calendar = self.env["resource.calendar"].search(
                 [("company_id", "=", company.id)], limit=1
             )
+            # import wdb;wdb.set_trace()
         return resource, calendar
 
     def _from_days_enc(
@@ -211,11 +212,7 @@ class ProjectTask(models.Model):
         end_dt = datetime.combine(day_date, datetime.max.time())
         start_dt = self._resource_timezone(start_dt, resource)
         end_dt = self._resource_timezone(end_dt, resource)
-        if not calendar:
-            intervals = self._interval_default_get()
-            intervals -= self._leave_intervals(start_dt, end_dt, resource)
-        else:
-            intervals = calendar._work_intervals(start_dt, end_dt, resource)
+        intervals = calendar._work_intervals(start_dt, end_dt, resource)
 
         return intervals
 
@@ -228,8 +225,6 @@ class ProjectTask(models.Model):
         return (list(intervals)[-1:] or [False])[0]
 
     def _calendar_plan_days(self, days, day_date, resource=None, calendar=None):
-        if not day_date:
-            return False
         # date to datetime
         if days >= 0:
             day_dt = datetime.combine(day_date, datetime.min.time())
@@ -248,8 +243,6 @@ class ProjectTask(models.Model):
         """
         for task in self.filtered("include_in_recalculate"):
             resource, calendar = task._resource_calendar_select()
-            if not calendar:
-                continue
             increment, project_date, from_days = task._calculation_prepare()
             date_start = False
             date_end = False
