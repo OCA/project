@@ -154,6 +154,33 @@ class TestProjectTaskBegin(base.BaseCase):
                 },
             )
 
+    def test_project_recalculate_no_user_id_and_project_id_resource_calendar_id(self):
+        # No user_id and project_id.resource_calendar_id
+        resource_calendar_id = self.env.ref("resource.resource_calendar_std")
+        for name, start, end in self.project_init_dates:
+            project = self.project_create(
+                self.num_tasks,
+                {
+                    "calculation_type": self.calculation_type,
+                    "name": name,
+                    "date_start": start,
+                    "date": end,
+                    "resource_calendar_id": resource_calendar_id.id,
+                },
+            )
+            for task in project.tasks:
+                task.user_id = False
+            project.project_recalculate()
+
+            if project.calculation_type == "date_begin":
+                self.assertEqual(
+                    project.date, max(project.tasks.mapped("date_end")).date()
+                )
+            else:
+                self.assertEqual(
+                    project.date_start, min(project.tasks.mapped("date_start")).date()
+                )
+
 
 class TestProjectTaskEnd(TestProjectTaskBegin):
     calculation_type = "date_end"

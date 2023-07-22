@@ -3,6 +3,8 @@
 from datetime import datetime, timedelta
 from functools import partial
 
+from pytz import timezone
+
 from odoo import models
 
 from odoo.addons.resource.models.resource import make_aware
@@ -14,9 +16,13 @@ class ResourceCalendar(models.Model):
     def get_working_days_of_date(self, start_dt=None, end_dt=None, resource=None):
         self.ensure_one()
         if start_dt is None:
+            tz = timezone(self.tz)
             start_dt = datetime.now().replace(hour=0, minute=0, second=0)
+            start_dt = tz.localize(start_dt)
         if end_dt is None:
+            tz = timezone(self.tz)
             end_dt = datetime.now().replace(hour=23, minute=59, second=59)
+            end_dt = tz.localize(end_dt)
         days = 0
         current = start_dt
         while current <= end_dt:
