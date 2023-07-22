@@ -21,7 +21,7 @@ class ResourceCalendar(models.Model):
             start_dt = tz.localize(start_dt)
         if end_dt is None:
             tz = timezone(self.tz)
-            end_dt = datetime.now().replace(hour=0, minute=0, second=0)
+            end_dt = datetime.now().replace(hour=23, minute=59, second=59)
             end_dt = tz.localize(end_dt)
         days = 0
         current = start_dt
