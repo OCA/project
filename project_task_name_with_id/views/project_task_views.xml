@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_task_tree2" model="ir.ui.view">
+        <field name="name">project.task.tree</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_tree2" />
+        <field name="arch" type="xml">
+            <xpath expr="field[@name='name']" position="attributes">
+                <attribute name="optional">show</attribute>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_task_kanban" model="ir.ui.view">
+        <field name="name">project.task.kanban</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_kanban" />
+        <field name="arch" type="xml">
+            <!-- Show display_name (with id) instead of just name. -->
+            <xpath
+                expr="//strong[hasclass('o_kanban_record_title')]"
+                position="attributes"
+            >
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//strong[hasclass('o_kanban_record_title')]" position="after">
+                <strong class="o_kanban_record_title">
+                    <s t-if="!record.active.raw_value">
+                        <field name="display_name" widget="name_with_subtask_count" />
+                    </s>
+                    <t t-else="">
+                        <field name="display_name" widget="name_with_subtask_count" />
+                    </t>
+                </strong>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Sharing views -->
+
+    <record id="project_sharing_project_task_view_tree" model="ir.ui.view">
+        <field name="name">project.sharing.project.task.tree</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.project_sharing_project_task_view_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="field[@name='name']" position="before">
+                <field name="id" optional="show" />
+            </xpath>
+        </field>
+    </record>
+    <record id="project_sharing_project_task_view_kanban" model="ir.ui.view">
+        <field name="name">project.sharing.project.task.view.kanban</field>
+        <field name="model">project.task</field>
+        <field
+            name="inherit_id"
+            ref="project.project_sharing_project_task_view_kanban"
+        />
+        <field name="arch" type="xml">
+            <!-- Show display_name (with id) instead of just name. -->
+            <xpath
+                expr="//strong[hasclass('o_kanban_record_title')]"
+                position="attributes"
+            >
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//strong[hasclass('o_kanban_record_title')]" position="after">
+                <strong class="o_kanban_record_title">
+                    <s t-if="!record.active.raw_value">
+                        <field name="display_name" widget="name_with_subtask_count" />
+                    </s>
+                    <t t-else="">
+                        <field name="display_name" widget="name_with_subtask_count" />
+                    </t>
+                </strong>
+            </xpath>
+        </field>
+    </record>
+    <record id="project_sharing_project_task_view_search" model="ir.ui.view">
+        <field name="name">project.task.search.form</field>
+        <field name="model">project.task</field>
+        <field
+            name="inherit_id"
+            ref="project.project_sharing_project_task_view_search"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="field[@name='name']" position="attributes">
+                <attribute
+                    name="filter_domain"
+                >['|', ('name', 'ilike', self), ('id', 'ilike', self)]</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>
