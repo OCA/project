@@ -3,7 +3,7 @@
 {
     "name": "Project Forecast Lines",
     "summary": "Project Forecast Lines",
-    "version": "15.0.1.3.1",
+    "version": "15.0.1.3.2",
     "author": "Camptocamp SA, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "category": "Project",
