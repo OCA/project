@@ -94,12 +94,15 @@ class ProjectTask(models.Model):
                 [("res_model", "=", self._name), ("res_id", "=", task.id)]
             )
             total_forecast = sum(forecast_lines.mapped("forecast_hours"))
-            if not forecast_lines or total_forecast:
+            if not forecast_lines or not total_forecast:
                 # no existing forecast lines, try to generate some using the
                 # normal flow
                 task._update_forecast_lines()
                 continue
-            ratio = task.remaining_hours / total_forecast
+            # caution: total_forecast is negative -> make sure we have a
+            # positive ratio, so that the multiplication does not change the
+            # sign of the forecast
+            ratio = abs(task.remaining_hours / total_forecast)
             for line in forecast_lines:
                 line.forecast_hours *= ratio
 
@@ -108,6 +111,8 @@ class ProjectTask(models.Model):
         if not self.forecast_role_id:
             _logger.info("skip task %s: no forecast role", self)
             return False
+        elif not self.project_id:
+            _logger.info("skip task %s: no project", self)
         elif self.project_id.stage_id:
             forecast_type = self.project_id.stage_id.forecast_line_type
             if not forecast_type:
@@ -144,6 +149,7 @@ class ProjectTask(models.Model):
         ForecastLine = self.env["forecast.line"].sudo()
         task_with_lines_to_clean = []
         for task in self:
+            task = task.with_company(task.company_id)
             if not task._should_have_forecast():
                 task_with_lines_to_clean.append(task.id)
                 continue
@@ -154,11 +160,18 @@ class ProjectTask(models.Model):
                     forecast_type = "confirmed"
                 else:
                     forecast_type = "forecast"
+            else:
+                _logger.warn(
+                    "strange case -> undefined forecast type for %s: skip", task
+                )
+                continue
 
             date_start = max(today, task.forecast_date_planned_start)
             date_end = max(today, task.forecast_date_planned_end)
-            employee_ids = task._get_task_employees().ids
-            if not employee_ids:
+            employees = task._get_task_employees()
+            employee_ids = employees.ids
+            if not employees:
+                employees = [False]
                 employee_ids = [False]
             _logger.debug(
                 "compute forecast for task %s: %s to %s %sh",
@@ -167,7 +180,7 @@ class ProjectTask(models.Model):
                 date_end,
                 task.remaining_hours,
             )
-            forecast_hours = task.remaining_hours / len(employee_ids)
+            forecast_hours = task.remaining_hours / len(employees)
             # remove lines for employees which are no longer assigned to the task
             ForecastLine.search(
                 [
@@ -176,7 +189,13 @@ class ProjectTask(models.Model):
                     ("employee_id", "not in", tuple(employee_ids)),
                 ]
             ).unlink()
-            for employee_id in employee_ids:
+            for employee in employees:
+                if employee:
+                    employee_id = employee.id
+                    company = employee.company_id
+                else:
+                    employee_id = False
+                    company = task.company_id
                 employee_lines = ForecastLine.search(
                     [
                         ("res_model", "=", self._name),
@@ -184,6 +203,7 @@ class ProjectTask(models.Model):
                         ("employee_id", "=", employee_id),
                     ]
                 )
+                ForecastLine = ForecastLine.with_company(company)
                 forecast_vals += employee_lines._update_forecast_lines(
                     name=task.name,
                     date_from=date_start,
