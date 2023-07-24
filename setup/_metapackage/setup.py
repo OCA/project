@@ -9,6 +9,7 @@ setuptools.setup(
     version=version,
     install_requires=[
         'odoo-addon-project_department>=16.0dev,<16.1dev',
+        'odoo-addon-project_duplicate_subtask>=16.0dev,<16.1dev',
         'odoo-addon-project_hr>=16.0dev,<16.1dev',
         'odoo-addon-project_list>=16.0dev,<16.1dev',
         'odoo-addon-project_parent>=16.0dev,<16.1dev',
