@@ -8,7 +8,11 @@
             <field name="name" position="after">
                 <div class="oe_title">
                     <label for="type_ids" string="Task Stages" />
-                    <field name="type_ids" widget="many2many_tags" />
+                    <field
+                        name="type_ids"
+                        domain="[('user_id', '=', False)]"
+                        widget="many2many_tags"
+                    />
                 </div>
             </field>
         </field>
@@ -21,7 +25,7 @@
         <field name="arch" type="xml">
             <page name="description" position="after">
                 <page name="stage" string="Task Stages">
-                    <field name="type_ids">
+                    <field name="type_ids" domain="[('user_id', '=', False)]">
                         <tree editable="bottom">
                             <field name="sequence" widget="handle" optional="show" />
                             <field name="name" />
