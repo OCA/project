@@ -1,4 +1,4 @@
-# Copyright 2022 Tecnativa - Víctor Martínez
+# Copyright 2022-2023 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 from odoo import fields
 from odoo.tests import Form
@@ -232,6 +232,31 @@ class TestProjectStock(TestProjectStockBase):
         self.assertEqual(self.move_product_a.reserved_availability, 0)
         self.assertEqual(self.move_product_b.reserved_availability, 0)
         self.assertFalse(self.task.unreserve_visible)
+
+    def test_project_task_process_01(self):
+        """Product A move cancel + Product B move OK."""
+        self.task = self.env["project.task"].browse(self.task.id)
+        self.move_product_b.unlink()
+        self.assertEqual(self.move_product_a.state, "draft")
+        # Confirm + Edit to qty=0
+        self.task.action_confirm()
+        self.assertEqual(self.move_product_a.state, "assigned")
+        self.move_product_a.product_uom_qty = 0
+        self.task.action_done()
+        self.assertEqual(self.move_product_a.state, "cancel")
+        # Add extra line
+        task_form = Form(self.task)
+        with task_form.move_ids.new() as move_form:
+            move_form.product_id = self.product_b
+            move_form.product_uom_qty = 1
+        task_form.save()
+        self.move_product_b = self.task.move_ids.filtered(
+            lambda x: x.product_id == self.product_b
+        )
+        self.task.action_confirm()
+        self.assertEqual(self.move_product_b.state, "assigned")
+        self.task.action_done()
+        self.assertEqual(self.move_product_b.state, "done")
 
     @users("basic-user")
     def test_project_task_process_unreserve_basic_user(self):
