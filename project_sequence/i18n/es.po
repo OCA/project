@@ -23,27 +23,16 @@ msgid "Config Settings"
 msgstr ""
 
 #. module: project_sequence
-#: model:ir.model.fields,field_description:project_sequence.field_project_project__display_name
-#: model:ir.model.fields,field_description:project_sequence.field_res_config_settings__display_name
-msgid "Display Name"
-msgstr "Nombre"
-
-#. module: project_sequence
-#: model:ir.model.fields,field_description:project_sequence.field_project_project__id
-#: model:ir.model.fields,field_description:project_sequence.field_res_config_settings__id
-msgid "ID"
-msgstr "ID"
-
-#. module: project_sequence
-#: model:ir.model.fields,field_description:project_sequence.field_project_project____last_update
-#: model:ir.model.fields,field_description:project_sequence.field_res_config_settings____last_update
-msgid "Last Modified on"
-msgstr "Última modificación el"
-
-#. module: project_sequence
 #: model:ir.model.fields,field_description:project_sequence.field_project_project__name
 msgid "Name"
 msgstr "Nombre"
+
+#. module: project_sequence
+#: model:ir.model.fields,help:project_sequence.field_project_project__name
+msgid ""
+"Name of your project. It can be anything you want e.g. the name of a "
+"customer or a service."
+msgstr ""
 
 #. module: project_sequence
 #: model:ir.model,name:project_sequence.model_project_project
@@ -81,6 +70,15 @@ msgid ""
 "Use %(sequence_code)s and %(name)s to include the sequence code and the name "
 "of the project in the display name."
 msgstr ""
+
+#~ msgid "Display Name"
+#~ msgstr "Nombre"
+
+#~ msgid "ID"
+#~ msgstr "ID"
+
+#~ msgid "Last Modified on"
+#~ msgstr "Última modificación el"
 
 #~ msgid "Code"
 #~ msgstr "Código"
