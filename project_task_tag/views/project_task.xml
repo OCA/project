@@ -5,12 +5,11 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_form2" />
         <field name="arch" type="xml">
-            <field name="tag_ids" position="before">
-                <field name="allowed_tag_ids" widget="many2many_tags" invisible="1" />
-            </field>
             <field name="tag_ids" position="attributes">
-                <attribute name="domain">[('id','in',allowed_tag_ids)]</attribute>
-                <!-- make sure there is no project key in context -->
+                <attribute
+                    name="domain"
+                >['|', (not project_id and 1 or 0, '=', 1), ('project_ids', 'in', project_id)]</attribute>
+                <!-- make sure there is no project key in context, as it is used in name_search -->
                 <attribute name="context">{}</attribute>
             </field>
         </field>
