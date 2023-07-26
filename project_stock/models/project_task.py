@@ -215,7 +215,10 @@ class ProjectTask(models.Model):
         return True
 
     def action_done(self):
-        for move in self.mapped("move_ids"):
+        # Filter valid stock moves (avoiding those done and cancelled).
+        for move in self.mapped("move_ids").filtered(
+            lambda x: x.state not in ("done", "cancel")
+        ):
             move.quantity_done = move.reserved_availability
         self.mapped("move_ids")._action_done()
         # Use sudo to avoid error for users with no access to analytic
