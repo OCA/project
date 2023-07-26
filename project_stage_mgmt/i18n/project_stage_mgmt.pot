@@ -15,5 +15,6 @@ msgstr ""
 
 #. module: project_stage_mgmt
 #: model_terms:ir.ui.view,arch_db:project_stage_mgmt.project_project_view_form_inherit_stages
+#: model_terms:ir.ui.view,arch_db:project_stage_mgmt.project_project_view_form_simplified_stage
 msgid "Stages"
 msgstr ""
