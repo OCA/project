@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Moduon Team S.L.
+     License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0) -->
+<data>
+    <record id="project_sequence_form_view" model="ir.ui.view">
+        <field name="name">Project.sequence.project.edit</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('oe_title')]//h1" position="after">
+                <div name="sequence_code">
+                    <div>
+                        <label
+                            for="sequence_code"
+                            class="oe_inline"
+                            string="Sequence code:"
+                        />
+                        <field name="sequence_code" class="oe_inline oe_input_align" />
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+    <record id="project_sequence_tree_view" model="ir.ui.view">
+        <field name="name">Project_sequence_project_view</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='display_name']" position="after">
+                <field name="sequence_code" optional="hide" />
+            </xpath>
+        </field>
+    </record>
+    <record id="project_sequence_kanban_view" model="ir.ui.view">
+        <field name="name">Project.sequence.project.kanban</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project_kanban" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='display_name']" position="after">
+                <field name="name" />
+            </xpath>
+            <xpath
+                expr="//span[t[@t-esc='record.display_name.value']]"
+                position="attributes"
+            >
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath
+                expr="//span[t[@t-esc='record.display_name.value']]"
+                position="after"
+            >
+                <span><t t-esc="record.display_name.value" /></span>
+            </xpath>
+        </field>
+    </record>
+    <record id="project_sequence_search_view" model="ir.ui.view">
+        <field name="name">Project.sequence.project.view.search</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project_project_filter" />
+        <field name="arch" type="xml">
+            <field name="name" position="attributes">
+                <attribute
+                    name="filter_domain"
+                >['|', ('name', 'ilike', self), ('sequence_code', 'ilike', self)]</attribute>
+            </field>
+        </field>
+    </record>
+</data>
