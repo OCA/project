@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-# 	* project_stage_mgmt
+# 	* project_task_stage_mgmt
 #
 msgid ""
 msgstr ""
@@ -16,8 +16,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 4.14.1\n"
 
-#. module: project_stage_mgmt
-#: model_terms:ir.ui.view,arch_db:project_stage_mgmt.project_project_view_form_inherit_stages
-#: model_terms:ir.ui.view,arch_db:project_stage_mgmt.project_project_view_form_simplified_stage
-msgid "Stages"
-msgstr "Fasi"
+#. module: project_task_stage_mgmt
+#: model_terms:ir.ui.view,arch_db:project_task_stage_mgmt.project_project_view_form_inherit_stages
+#: model_terms:ir.ui.view,arch_db:project_task_stage_mgmt.project_project_view_form_simplified_stage
+msgid "Task Stages"
+msgstr "Fasi del compito"
