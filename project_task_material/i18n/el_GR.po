@@ -62,7 +62,6 @@ msgstr ""
 
 #. module: project_task_material
 #: model:ir.model.fields,field_description:project_task_material.field_project_task__material_ids
-#: model_terms:ir.ui.view,arch_db:project_task_material.view_project_task_form_material
 msgid "Material Used"
 msgstr ""
 
@@ -77,6 +76,7 @@ msgid "Quantity"
 msgstr "Ποσότητα"
 
 #. module: project_task_material
+#. odoo-python
 #: code:addons/project_task_material/models/project.py:0
 #, python-format
 msgid "Quantity of material consumed must be greater than 0."
