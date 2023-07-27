@@ -3,7 +3,7 @@
 
 {
     "name": "Project Task Digitized Signature",
-    "version": "14.0.1.0.0",
+    "version": "16.0.1.0.0",
     "author": "Tecnativa, " "Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/project",
     "category": "Project Management",
