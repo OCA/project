@@ -11,6 +11,10 @@ class HrLeave(models.Model):
     _name = "hr.leave"
     _inherit = ["hr.leave", "forecast.line.mixin"]
 
+    employee_company_id = fields.Many2one(
+        related="employee_id.company_id", readonly=True, store=True
+    )
+
     @api.model_create_multi
     def create(self, vals_list):
         leaves = super().create(vals_list)
