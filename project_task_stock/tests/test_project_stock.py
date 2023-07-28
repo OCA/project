@@ -258,6 +258,17 @@ class TestProjectStock(TestProjectStockBase):
         self.task.action_done()
         self.assertEqual(self.move_product_b.state, "done")
 
+    def test_project_task_process_02(self):
+        self.task.action_confirm()
+        self.assertEqual(self.move_product_a.state, "assigned")
+        self.assertEqual(self.move_product_b.state, "assigned")
+        self.task.action_done()
+        self.assertEqual(self.move_product_a.state, "done")
+        self.assertEqual(self.move_product_b.state, "done")
+        self.assertEqual(len(self.task.stock_analytic_line_ids), 2)
+        self.task.action_done()
+        self.assertEqual(len(self.task.stock_analytic_line_ids), 2)
+
     @users("basic-user")
     def test_project_task_process_unreserve_basic_user(self):
         self.test_project_task_process_unreserve()

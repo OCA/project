@@ -220,10 +220,10 @@ class ProjectTask(models.Model):
             lambda x: x.state not in ("done", "cancel")
         ):
             move.quantity_done = move.reserved_availability
-        self.mapped("move_ids")._action_done()
+        moves_todo = self.mapped("move_ids")._action_done()
         # Use sudo to avoid error for users with no access to analytic
         analytic_line_model = self.env["account.analytic.line"].sudo()
-        for move in self.move_ids.filtered(lambda x: x.state == "done"):
+        for move in moves_todo:
             vals = move._prepare_analytic_line_from_task()
             if vals:
                 analytic_line_model.create(vals)
