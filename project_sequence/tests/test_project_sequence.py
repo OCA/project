@@ -3,12 +3,12 @@
 from freezegun import freeze_time
 from psycopg2 import IntegrityError
 
-from odoo.tests.common import Form, SavepointCase, new_test_user, users
+from odoo.tests.common import Form, TransactionCase, new_test_user, users
 from odoo.tools import mute_logger
 
 
 @freeze_time("2023-01-01 12:00:00")
-class TestProjectSequence(SavepointCase):
+class TestProjectSequence(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
