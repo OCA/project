@@ -20,31 +20,38 @@ msgstr ""
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
 #. module: project_parent
-#: model:ir.model,name:project_parent.model_account_analytic_account
-msgid "Analytic Account"
-msgstr "Analitički konto"
+#: model:ir.model.fields,field_description:project_parent.field_project_project__child_ids_count
+msgid "Child Ids Count"
+msgstr ""
 
 #. module: project_parent
-#: model:ir.ui.view,arch_db:project_parent.view_project_parent_edit_project
+#: model_terms:ir.ui.view,arch_db:project_parent.edit_project
 msgid "Child Projects"
 msgstr ""
 
 #. module: project_parent
-#: model:ir.ui.view,arch_db:project_parent.view_project_parent_project_filter
-msgid "Parent"
-msgstr "Nadređeni"
+#: model:ir.model.fields,field_description:project_parent.field_project_project__parent_path
+msgid "Parent Path"
+msgstr ""
 
 #. module: project_parent
-#: model:ir.model.fields,field_description:project_parent.field_account_analytic_account_parent_project_id
-#: model:ir.model.fields,field_description:project_parent.field_project_project_parent_project_id
+#: model:ir.model.fields,field_description:project_parent.field_project_project__parent_id
 msgid "Parent Project"
 msgstr "Nadređeni projekt"
 
 #. module: project_parent
 #: model:ir.model,name:project_parent.model_project_project
-msgid "WBS element"
+#, fuzzy
+msgid "Project"
+msgstr "Nadređeni projekt"
+
+#. module: project_parent
+#: model:ir.model.fields,field_description:project_parent.field_project_project__child_ids
+msgid "Sub-projects"
 msgstr ""
 
-#, fuzzy
-#~ msgid "Project"
-#~ msgstr "Nadređeni projekt"
+#~ msgid "Analytic Account"
+#~ msgstr "Analitički konto"
+
+#~ msgid "Parent"
+#~ msgstr "Nadređeni"
