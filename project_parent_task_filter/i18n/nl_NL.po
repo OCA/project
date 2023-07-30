@@ -20,3 +20,8 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_parent_task_filter.view_task_search_form
 msgid "Parent tasks"
 msgstr "Bovenliggende taken"
+
+#. module: project_parent_task_filter
+#: model:ir.model,name:project_parent_task_filter.model_project_task
+msgid "Task"
+msgstr ""
