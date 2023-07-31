@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-04-14 14:33+0000\n"
+"PO-Revision-Date: 2023-07-31 12:10+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -14,12 +14,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.1\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: project_duplicate_subtask
 #: model:ir.actions.server,name:project_duplicate_subtask.action_server_duplicate_subtasks
 msgid "Duplicate with subtasks"
-msgstr "Duplica con i sotto lavori"
+msgstr "Duplica con sottolavori"
 
 #. module: project_duplicate_subtask
 #: model:ir.model,name:project_duplicate_subtask.model_project_task
