@@ -11,8 +11,8 @@ msgstr ""
 "POT-Creation-Date: 2017-04-29 02:48+0000\n"
 "PO-Revision-Date: 2023-02-22 16:12+0000\n"
 "Last-Translator: Ignacio Buioli <ibuioli@gmail.com>\n"
-"Language-Team: Spanish (Argentina) (https://www.transifex.com/oca/teams/"
-"23907/es_AR/)\n"
+"Language-Team: Spanish (Argentina) (https://www.transifex.com/oca/"
+"teams/23907/es_AR/)\n"
 "Language: es_AR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,6 +21,7 @@ msgstr ""
 "X-Generator: Weblate 4.14.1\n"
 
 #. module: project_timesheet_time_control
+#. odoo-python
 #: code:addons/project_timesheet_time_control/wizards/hr_timesheet_switch.py:0
 #, python-format
 msgid ""
@@ -89,6 +90,7 @@ msgid "Cancel"
 msgstr "Cancelar"
 
 #. module: project_timesheet_time_control
+#. odoo-python
 #: code:addons/project_timesheet_time_control/models/account_analytic_line.py:0
 #, python-format
 msgid ""
@@ -182,6 +184,7 @@ msgid "Mixin for records related with timesheet lines"
 msgstr "Mezcla los registros relacionados con las líneas de la hoja de tiempo"
 
 #. module: project_timesheet_time_control
+#. odoo-python
 #: code:addons/project_timesheet_time_control/models/hr_timesheet_time_control_mixin.py:0
 #, python-format
 msgid ""
@@ -213,6 +216,7 @@ msgid "Previous timer start"
 msgstr "Inicio del tiempo anterior"
 
 #. module: project_timesheet_time_control
+#: model:ir.model,name:project_timesheet_time_control.model_project_project
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__project_id
 msgid "Project"
 msgstr "Proyecto"
@@ -223,6 +227,7 @@ msgid "Resume"
 msgstr "Reanudar"
 
 #. module: project_timesheet_time_control
+#. odoo-python
 #: code:addons/project_timesheet_time_control/models/account_analytic_line.py:0
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.account_analytic_line_tree
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_line_form
@@ -259,6 +264,7 @@ msgid "Start new timer"
 msgstr "Inicio de nuevo tiempo"
 
 #. module: project_timesheet_time_control
+#. odoo-python
 #: code:addons/project_timesheet_time_control/models/hr_timesheet_time_control_mixin.py:0
 #: model:ir.actions.act_window,name:project_timesheet_time_control.hr_timesheet_switch_action
 #: model:ir.ui.menu,name:project_timesheet_time_control.hr_timesheet_switch_menu
@@ -326,11 +332,6 @@ msgid "This timer is running and will be stopped"
 msgstr "Este temporalizador se está ejecutando y será detenido"
 
 #. module: project_timesheet_time_control
-#: model:ir.model,name:project_timesheet_time_control.model_project_project
-msgid "WBS element"
-msgstr "Elemento WBS"
-
-#. module: project_timesheet_time_control
 #: model:ir.model.fields,help:project_timesheet_time_control.field_hr_timesheet_switch__running_timer_duration
 msgid "When the previous timer is stopped, it will save this duration."
 msgstr "Cuando el tiempo anterior es detenido, esto guardará su duración."
@@ -349,6 +350,9 @@ msgstr "e iniciado el"
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
 msgid "hour(s)."
 msgstr "hora(s)."
+
+#~ msgid "WBS element"
+#~ msgstr "Elemento WBS"
 
 #~ msgid ""
 #~ ".\n"
