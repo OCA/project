@@ -20,6 +20,7 @@ msgstr ""
 "X-Generator: Weblate 3.10\n"
 
 #. module: project_timesheet_time_control
+#. odoo-python
 #: code:addons/project_timesheet_time_control/wizards/hr_timesheet_switch.py:0
 #, python-format
 msgid ""
@@ -74,6 +75,7 @@ msgid "Cancel"
 msgstr "Abbrechen"
 
 #. module: project_timesheet_time_control
+#. odoo-python
 #: code:addons/project_timesheet_time_control/models/account_analytic_line.py:0
 #, python-format
 msgid ""
@@ -167,6 +169,7 @@ msgid "Mixin for records related with timesheet lines"
 msgstr ""
 
 #. module: project_timesheet_time_control
+#. odoo-python
 #: code:addons/project_timesheet_time_control/models/hr_timesheet_time_control_mixin.py:0
 #, python-format
 msgid ""
@@ -196,6 +199,7 @@ msgid "Previous timer start"
 msgstr ""
 
 #. module: project_timesheet_time_control
+#: model:ir.model,name:project_timesheet_time_control.model_project_project
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__project_id
 msgid "Project"
 msgstr ""
@@ -206,6 +210,7 @@ msgid "Resume"
 msgstr ""
 
 #. module: project_timesheet_time_control
+#. odoo-python
 #: code:addons/project_timesheet_time_control/models/account_analytic_line.py:0
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.account_analytic_line_tree
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_line_form
@@ -243,6 +248,7 @@ msgid "Start new timer"
 msgstr "Datum"
 
 #. module: project_timesheet_time_control
+#. odoo-python
 #: code:addons/project_timesheet_time_control/models/hr_timesheet_time_control_mixin.py:0
 #: model:ir.actions.act_window,name:project_timesheet_time_control.hr_timesheet_switch_action
 #: model:ir.ui.menu,name:project_timesheet_time_control.hr_timesheet_switch_menu
@@ -306,11 +312,6 @@ msgstr ""
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,help:project_timesheet_time_control.field_hr_timesheet_switch__running_timer_id
 msgid "This timer is running and will be stopped"
-msgstr ""
-
-#. module: project_timesheet_time_control
-#: model:ir.model,name:project_timesheet_time_control.model_project_project
-msgid "WBS element"
 msgstr ""
 
 #. module: project_timesheet_time_control
