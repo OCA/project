@@ -1,0 +1,3 @@
+- Go to a task.
+- Press the "Create purchase order" button.
+- It will create a new purchase order that will be linked to the task.

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="group_project_task_purchase" model="res.groups">
+        <field name="name">Allow to create purchase orders from tasks</field>
+        <field name="users" eval="[(4, ref('base.user_admin'))]" />
+    </record>
+
+</odoo>
