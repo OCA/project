@@ -52,8 +52,9 @@ class HrLeave(models.Model):
             if leave.state == "validate":
                 # will be handled by the resource.calendar.leaves
                 continue
+            else:
+                forecast_type = "forecast"
             ForecastLine = ForecastLine.with_company(leave.employee_company_id)
-            forecast_type = "forecast"
             forecast_vals += ForecastLine._prepare_forecast_lines(
                 name=_("Leave"),
                 date_from=leave.date_from.date(),

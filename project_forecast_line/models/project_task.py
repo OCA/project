@@ -41,7 +41,7 @@ class ProjectTask(models.Model):
             "forecast_date_planned_end",
             # "remaining_hours",
             "name",
-            "planned_time",
+            # "planned_time",
             "user_id",
             "project_id.project_status",
             "project_id.project_status.forecast_line_type",
@@ -113,6 +113,8 @@ class ProjectTask(models.Model):
         if not self.forecast_role_id:
             _logger.info("skip task %s: no forecast role", self)
             return False
+        elif not self.project_id:
+            _logger.info("skip task %s: no project", self)
         elif self.project_id.project_status:
             forecast_type = self.project_id.project_status.forecast_line_type
             if not forecast_type:
@@ -149,20 +151,14 @@ class ProjectTask(models.Model):
         ForecastLine = self.env["forecast.line"].sudo()
         task_with_lines_to_clean = []
         for task in self:
-            if not task.forecast_role_id:
-                _logger.info("skip task %s: no forecast role", task)
+            task = task.with_company(task.company_id)
+            if not task._should_have_forecast():
+                task_with_lines_to_clean.append(task.id)
                 continue
-            elif task.project_id.project_status:
+            if task.project_id.project_status:
                 forecast_type = task.project_id.project_status.forecast_line_type
-                if not forecast_type:
-                    _logger.info("skip task %s: no forecast for project state", task)
-                    continue  # closed / cancelled stage
             elif task.sale_line_id:
-                sale_state = task.sale_line_id.state
-                if sale_state == "cancel":
-                    _logger.info("skip task %s: cancelled sale", task)
-                    continue
-                elif sale_state == "sale":
+                if task.sale_line_id.state == "sale":
                     forecast_type = "confirmed"
                 else:
                     forecast_type = "forecast"
@@ -174,8 +170,10 @@ class ProjectTask(models.Model):
 
             date_start = max(today, task.forecast_date_planned_start)
             date_end = max(today, task.forecast_date_planned_end)
-            employee_ids = task.mapped("user_id.employee_id").ids
-            if not employee_ids:
+            employees = task._get_task_employees()
+            employee_ids = employees.ids
+            if not employees:
+                employees = [False]
                 employee_ids = [False]
             _logger.debug(
                 "compute forecast for task %s: %s to %s %sh",

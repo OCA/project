@@ -6,7 +6,6 @@ from odoo import models
 class ProjectProject(models.Model):
     _inherit = "project.project"
 
-
     # def _update_forecast_lines_trigger_fields(self):
     #     return ["stage_id"]
 

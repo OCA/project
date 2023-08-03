@@ -10,12 +10,3 @@ class ProjectStatus(models.Model):
         [("forecast", "Forecast"), ("confirmed", "Confirmed")],
         help="type of forecast lines created by the tasks of projects in that status",
     )
-
-    def write(self, values):
-        res = super().write(values)
-        if "forecast_line_type" in values:
-            projects = self.env["project.project"].search(
-                [("project_status", "in", self.ids)]
-            )
-            projects.mapped("task_ids")._update_forecast_lines()
-        return res
