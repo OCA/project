@@ -49,6 +49,7 @@ addon | version | maintainers | summary
 [project_task_dependency](project_task_dependency/) | 14.0.1.1.0 | [![astirpe](https://github.com/astirpe.png?size=30px)](https://github.com/astirpe) | Enables to define dependencies (other tasks) of a task
 [project_task_digitized_signature](project_task_digitized_signature/) | 14.0.1.0.0 |  | Project Task Digitized Signature
 [project_task_material](project_task_material/) | 14.0.1.0.0 |  | Record products spent in a Task
+[project_task_project_required](project_task_project_required/) | 14.0.1.0.0 |  | Set project on task as a mandatory field
 [project_task_pull_request](project_task_pull_request/) | 14.0.1.1.0 |  | Adds a field for a PR URI to project tasks
 [project_task_recurring_activity](project_task_recurring_activity/) | 14.0.1.0.0 | [![dessanhemrayev](https://github.com/dessanhemrayev.png?size=30px)](https://github.com/dessanhemrayev) [![CetmixGitDrone](https://github.com/CetmixGitDrone.png?size=30px)](https://github.com/CetmixGitDrone) | Project Task Recurring Activity
 [project_task_send_by_mail](project_task_send_by_mail/) | 14.0.1.0.0 |  | Send task report by email
