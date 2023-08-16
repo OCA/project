@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--
+Copyright (C) 2022 - Today: GRAP (http://www.grap.coop)
+@author: Sylvain LE GAL (https://twitter.com/legalsylvain)
+License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+-->
+<odoo>
+
+    <!-- Disable the feature on the demo company
+    to avoid error with other modules, when loading demo tasks
+    or executing tests -->
+    <record id="base.main_company" model="res.company">
+        <field name="is_project_task_project_required" eval="False" />
+    </record>
+
+</odoo>
