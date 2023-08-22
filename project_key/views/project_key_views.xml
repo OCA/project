@@ -103,10 +103,10 @@
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.view_project_kanban" />
         <field name="arch" type="xml">
-            <field name="name" position="after">
+            <field name="display_name" position="after">
                 <field name="key" />
             </field>
-            <xpath expr="//t[@t-esc='record.name.value']" position="before">
+            <xpath expr="//t[@t-esc='record.display_name.value']" position="before">
                 <t t-esc="record.key.value" />  -
             </xpath>
         </field>
