@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <!--
 # Copyright 2017 - 2018 Modoolar <info@modoolar.com>
 # License LGPLv3.0 or later (https://www.gnu.org/licenses/lgpl-3.0.en.html).
@@ -19,7 +19,7 @@
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.view_project" />
         <field name="arch" type="xml">
-            <field name="name" position="after">
+            <field name="display_name" position="after">
                 <field name="key" required="0" readonly="1" />
             </field>
         </field>
@@ -107,8 +107,7 @@
                 <field name="key" />
             </field>
             <xpath expr="//t[@t-esc='record.name.value']" position="before">
-                <t t-esc="record.key.value" />  -
-            </xpath>
+                <t t-esc="record.key.value" /> - </xpath>
         </field>
     </record>
 </odoo>
