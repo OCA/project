@@ -2,12 +2,12 @@
 # License LGPLv3.0 or later (https://www.gnu.org/licenses/lgpl-3.0.en.html).
 
 from odoo import _, api, fields, models
-from odoo.osv import expression
 from odoo.tools import config
 
 
 class Project(models.Model):
     _inherit = "project.project"
+    _rec_names_search = ["key", "name", "id"]
 
     task_key_sequence_id = fields.Many2one(
         comodel_name="ir.sequence", string="Key Sequence", ondelete="restrict"
@@ -30,16 +30,18 @@ class Project(models.Model):
             else:
                 rec.key = ""
 
-    @api.model
-    def create(self, vals):
-        if "key" not in vals:
-            vals["key"] = self.generate_project_key(vals["name"])
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            key = vals.get("key", False)
+            if not key:
+                vals["key"] = self.generate_project_key(vals["name"])
 
-        # Tasks must be created after the project.
-        if "task_ids" in vals:
-            task_vals = vals.pop("task_ids")
-        else:
-            task_vals = []
+            # Tasks must be created after the project.
+            if vals.get("task_ids", False):
+                task_vals = vals.pop("task_ids")
+            else:
+                task_vals = []
 
         # The key sequences to create stories and tasks with keys, created with
         # a project, must be linked to the project company to avoid security
@@ -82,22 +84,6 @@ class Project(models.Model):
             project.task_key_sequence_id = False
             sequence.sudo().unlink()
         return super(Project, self).unlink()
-
-    @api.model
-    def name_search(self, name, args=None, operator="ilike", limit=100):
-        res = super(Project, self).name_search(name, args, operator, limit)
-        if name:
-            domain = [
-                "|",
-                ("key", "ilike", name + "%"),
-                ("id", "in", [x[0] for x in res]),
-            ]
-            if operator in expression.NEGATIVE_TERM_OPERATORS:
-                domain = ["&", "!"] + domain[1:]
-            projects = self.search(domain + (args or []), limit=limit)
-            return projects.name_get()
-        else:
-            return res
 
     def create_sequence(self):
         """
@@ -188,7 +174,7 @@ class Project(models.Model):
         This method will update task keys of the current project.
         """
         self.ensure_one()
-        self.flush()
+        self.flush_model()
         reindex_query = """
         UPDATE project_task
         SET key = x.key
@@ -202,7 +188,7 @@ class Project(models.Model):
         """
 
         self.env.cr.execute(reindex_query, (self.id,))
-        self.env["project.task"].invalidate_cache(["key"], self.task_ids.ids)
+        self.env["project.task"].invalidate_model(["key"], self.task_ids.ids)
 
     @api.model
     def _set_default_project_key(self):
