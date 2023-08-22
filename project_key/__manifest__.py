@@ -2,7 +2,7 @@
 # License LGPLv3.0 or later (https://www.gnu.org/licenses/lgpl-3.0.en.html).
 
 {
-    "name": "Project key",
+    "name": "Project Key",
     "summary": "Module decorates projects and tasks with Project Key",
     "category": "Project",
     "version": "16.0.1.0.0",

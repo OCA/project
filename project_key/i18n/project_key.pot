@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 15.0\n"
+"Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -14,19 +14,8 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: project_key
-#: model:ir.model.fields,field_description:project_key.field_project_project__display_name
-#: model:ir.model.fields,field_description:project_key.field_project_task__display_name
-msgid "Display Name"
-msgstr ""
-
-#. module: project_key
-#: model:ir.model.fields,field_description:project_key.field_project_project__id
-#: model:ir.model.fields,field_description:project_key.field_project_task__id
-msgid "ID"
-msgstr ""
-
-#. module: project_key
 #: model:ir.model.fields,field_description:project_key.field_project_project__key
+#: model:ir.model.fields,field_description:project_key.field_project_task__key
 msgid "Key"
 msgstr ""
 
@@ -36,9 +25,8 @@ msgid "Key Sequence"
 msgstr ""
 
 #. module: project_key
-#: model:ir.model.fields,field_description:project_key.field_project_project____last_update
-#: model:ir.model.fields,field_description:project_key.field_project_task____last_update
-msgid "Last Modified on"
+#: model:ir.model,name:project_key.model_project_project
+msgid "Project"
 msgstr ""
 
 #. module: project_key
@@ -47,6 +35,7 @@ msgid "Project key must be unique"
 msgstr ""
 
 #. module: project_key
+#. odoo-python
 #: code:addons/project_key/models/project_project.py:0
 #, python-format
 msgid "Project task sequence for project"
@@ -65,14 +54,4 @@ msgstr ""
 #. module: project_key
 #: model:ir.model.fields,field_description:project_key.field_project_task__url
 msgid "URL"
-msgstr ""
-
-#. module: project_key
-#: model:ir.model,name:project_key.model_project_project
-msgid "WBS element"
-msgstr ""
-
-#. module: project_key
-#: model:ir.model.fields,field_description:project_key.field_project_task__key
-msgid "key"
 msgstr ""
