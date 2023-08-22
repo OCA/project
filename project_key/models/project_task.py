@@ -2,13 +2,13 @@
 # License LGPLv3.0 or later (https://www.gnu.org/licenses/lgpl-3.0.en.html).
 
 from odoo import api, fields, models
-from odoo.osv import expression
 
 TASK_URL = "/web#id=%s&view_type=form&model=project.task&action=%s"
 
 
 class Task(models.Model):
     _inherit = "project.task"
+    _rec_names_search = ["key", "name"]
 
     key = fields.Char(size=20, required=False, index=True)
 
@@ -61,17 +61,6 @@ class Task(models.Model):
                 for child in task.child_ids
             ]
         return data
-
-    @api.model
-    def name_search(self, name, args=None, operator="ilike", limit=100):
-        args = args or []
-        domain = []
-        if name:
-            domain = ["|", ("key", "=ilike", name + "%"), ("name", operator, name)]
-            if operator in expression.NEGATIVE_TERM_OPERATORS:
-                domain = ["&", "!"] + domain[1:]
-        tasks = self.search(domain + args, limit=limit)
-        return tasks.name_get()
 
     def name_get(self):
         result = []
