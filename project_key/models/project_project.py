@@ -7,7 +7,7 @@ from odoo.tools import config
 
 class Project(models.Model):
     _inherit = "project.project"
-    _rec_names_search = ["key", "id"]
+    _rec_names_search = ["key", "id", "name"]
 
     task_key_sequence_id = fields.Many2one(
         comodel_name="ir.sequence", string="Key Sequence", ondelete="restrict"
@@ -30,7 +30,7 @@ class Project(models.Model):
             else:
                 rec.key = ""
 
-    @api.model
+    @api.model_create_multi
     def create(self, vals):
         if "key" not in vals:
             vals["key"] = self.generate_project_key(vals["name"])
