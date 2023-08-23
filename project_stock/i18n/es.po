@@ -7,25 +7,25 @@ msgstr ""
 "Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-15 14:02+0000\n"
-"PO-Revision-Date: 2022-09-15 16:02+0200\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2023-09-03 13:36+0000\n"
+"Last-Translator: Ivorra78 <informatica@totmaterial.es>\n"
 "Language-Team: \n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: \n"
-"X-Generator: Poedit 3.0.1\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_task__allow_moves_action_assign
 msgid "Allow Moves Action Assign"
-msgstr ""
+msgstr "Permitir movimientos Asignar acción"
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_task__allow_moves_action_confirm
 msgid "Allow Moves Action Confirm"
-msgstr ""
+msgstr "Permitir movimientos Confirmar acción"
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_task__unreserve_visible
@@ -35,12 +35,12 @@ msgstr "Permitir anular reserva de inventario"
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_task__analytic_distribution
 msgid "Analytic"
-msgstr ""
+msgstr "Analítico"
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_task__analytic_distribution_search
 msgid "Analytic Distribution Search"
-msgstr ""
+msgstr "Búsqueda de Distribución Analítica"
 
 #. module: project_stock
 #: model:ir.model,name:project_stock.model_account_analytic_line
@@ -55,7 +55,7 @@ msgstr "Líneas analíticas"
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_task__analytic_precision
 msgid "Analytic Precision"
-msgstr ""
+msgstr "Precisión analítica"
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_project__stock_analytic_date
@@ -300,12 +300,12 @@ msgstr "Materiales usados en la tarea"
 #: model:project.project,name:project_stock.project_project_tm_test
 #: model:stock.picking.type,name:project_stock.stock_picking_type_tm_test
 msgid "Task material"
-msgstr ""
+msgstr "Material de trabajo"
 
 #. module: project_stock
 #: model:project.project,label_tasks:project_stock.project_project_tm_test
 msgid "Tasks"
-msgstr ""
+msgstr "Tareas"
 
 #. module: project_stock
 #: model:ir.model.fields,help:project_stock.field_project_task__unreserve_visible
