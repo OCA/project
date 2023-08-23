@@ -30,7 +30,7 @@ class Project(models.Model):
             else:
                 rec.key = ""
 
-    @api.model_create_multi
+    @api.model
     def create(self, vals):
         if "key" not in vals:
             vals["key"] = self.generate_project_key(vals["name"])
