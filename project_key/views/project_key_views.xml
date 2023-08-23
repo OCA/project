@@ -106,7 +106,7 @@
             <field name="display_name" position="after">
                 <field name="key" />
             </field>
-            <xpath expr="//t[@t-esc='record.name.value']" position="before">
+            <xpath expr="//t[@t-esc='record.display_name.value']" position="before">
                 <t t-esc="record.key.value" /> - </xpath>
         </field>
     </record>
