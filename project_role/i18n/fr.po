@@ -290,8 +290,8 @@ msgstr "Nombre d'erreurs"
 
 #. module: project_role
 #: model:ir.model.fields,help:project_role.field_project_assignment__message_needaction_counter
-msgid "Number of messages which requires an action"
-msgstr "Nombre de messages qui nécessitent une action"
+msgid "Number of messages requiring action"
+msgstr ""
 
 #. module: project_role
 #: model:ir.model.fields,help:project_role.field_project_assignment__message_has_error_counter
@@ -442,6 +442,9 @@ msgstr ""
 #: model:ir.model.fields,help:project_role.field_project_assignment__website_message_ids
 msgid "Website communication history"
 msgstr ""
+
+#~ msgid "Number of messages which requires an action"
+#~ msgstr "Nombre de messages qui nécessitent une action"
 
 #, python-format
 #~ msgid "Assignment %s conflicts with another assignment: %s"

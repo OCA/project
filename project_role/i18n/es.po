@@ -48,8 +48,8 @@ msgstr "%(parent)s / %(own)s"
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
 msgid ""
 "<span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-"
-"specific.\" role=\"img\" aria-label=\"Values set here are company-"
-"specific.\" groups=\"base.group_multi_company\"/>"
+"specific.\" role=\"img\" aria-label=\"Values set here are company-specific."
+"\" groups=\"base.group_multi_company\"/>"
 msgstr ""
 "<span class=\"fa fa-lg fa-building-o\" title=\"Los valores establecidos aquí "
 "son específicos de la empresa.\" role=\"img\" aria-label=\"Los valores "
@@ -60,13 +60,15 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
 msgid ""
 "<span class=\"o_form_label\">Project Roles</span>\n"
-"                                <span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-specific.\" role=\"img\" aria-label=\"Values set here are company-specific.\" groups=\"base.group_multi_company\"/>"
+"                                <span class=\"fa fa-lg fa-building-o\" title="
+"\"Values set here are company-specific.\" role=\"img\" aria-label=\"Values "
+"set here are company-specific.\" groups=\"base.group_multi_company\"/>"
 msgstr ""
 "<span class=\"o_form_label\">Roles del proyecto</span>\n"
 "                                <span class=\"fa fa-lg fa-building-o\" title="
-"\"Los valores establecidos aquí son específicos de la empresa.\" role=\"img\""
-" aria-label=\"Los valores establecidos aquí son específicos de la empresa.\" "
-"groups=\"base.group_multi_company\"/>"
+"\"Los valores establecidos aquí son específicos de la empresa.\" role=\"img"
+"\" aria-label=\"Los valores establecidos aquí son específicos de la empresa."
+"\" groups=\"base.group_multi_company\"/>"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_needaction
@@ -299,8 +301,8 @@ msgstr "Número de errores"
 
 #. module: project_role
 #: model:ir.model.fields,help:project_role.field_project_assignment__message_needaction_counter
-msgid "Number of messages which requires an action"
-msgstr "Número de mensajes que requieren una acción"
+msgid "Number of messages requiring action"
+msgstr ""
 
 #. module: project_role
 #: model:ir.model.fields,help:project_role.field_project_assignment__message_has_error_counter
@@ -413,7 +415,8 @@ msgstr "Usuario"
 #: code:addons/project_role/models/project_assignment.py:0
 #, python-format
 msgid "User %(USER)s can not be assigned to role %(ROLE)s on %(PROJECT)s."
-msgstr "El usuario %(USER)s no se puede asignar al rol %(ROLE)s en %(PROJECT)s."
+msgstr ""
+"El usuario %(USER)s no se puede asignar al rol %(ROLE)s en %(PROJECT)s."
 
 #. module: project_role
 #. odoo-python
@@ -448,3 +451,6 @@ msgstr "Mensajes del Sitio Web"
 #: model:ir.model.fields,help:project_role.field_project_assignment__website_message_ids
 msgid "Website communication history"
 msgstr "Historial de comunicación del Sitio Web"
+
+#~ msgid "Number of messages which requires an action"
+#~ msgstr "Número de mensajes que requieren una acción"
