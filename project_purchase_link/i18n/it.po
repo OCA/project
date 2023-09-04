@@ -6,84 +6,86 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2023-09-04 19:39+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: project_purchase_link
 #: model:ir.model.fields,field_description:project_purchase_link.field_project_project__purchase_count
 msgid "# Purchase"
-msgstr ""
+msgstr "N° acquisto"
 
 #. module: project_purchase_link
 #: model:ir.model.fields,field_description:project_purchase_link.field_project_project__purchase_invoice_count
 msgid "# Purchase Invoice"
-msgstr ""
+msgstr "N° fattura di acquisto"
 
 #. module: project_purchase_link
 #: model:ir.model.fields,field_description:project_purchase_link.field_project_project__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nome visualizzato"
 
 #. module: project_purchase_link
 #: model:ir.model.fields,field_description:project_purchase_link.field_project_project__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_purchase_link
 #: model:ir.model.fields,field_description:project_purchase_link.field_project_project____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Ultima modica il"
 
 #. module: project_purchase_link
 #: model_terms:ir.ui.view,arch_db:project_purchase_link.project_project_view_form
 msgid "PO Invoice Total"
-msgstr ""
+msgstr "Totale fattura OA"
 
 #. module: project_purchase_link
 #: model_terms:ir.ui.view,arch_db:project_purchase_link.project_project_view_form
 msgid "PO Invoices"
-msgstr ""
+msgstr "Fatture OA"
 
 #. module: project_purchase_link
 #: code:addons/project_purchase_link/models/project_project.py:0
 #, python-format
 msgid "Purchase Invoice Lines"
-msgstr ""
+msgstr "Righe fattura di acquisto"
 
 #. module: project_purchase_link
 #: model:ir.model.fields,field_description:project_purchase_link.field_project_project__purchase_invoice_line_total
 msgid "Purchase Invoice Total"
-msgstr ""
+msgstr "Totale fattura di acquisto"
 
 #. module: project_purchase_link
 #: code:addons/project_purchase_link/models/project_project.py:0
 #, python-format
 msgid "Purchase Order"
-msgstr ""
+msgstr "Ordine di acquisto"
 
 #. module: project_purchase_link
 #: code:addons/project_purchase_link/models/project_project.py:0
 #, python-format
 msgid "Purchase Order Lines"
-msgstr ""
+msgstr "Righe ordine di acquisto"
 
 #. module: project_purchase_link
 #: model:ir.model.fields,field_description:project_purchase_link.field_project_project__purchase_line_total
 #: model_terms:ir.ui.view,arch_db:project_purchase_link.project_project_view_form
 msgid "Purchase Total"
-msgstr ""
+msgstr "Totale acquisti"
 
 #. module: project_purchase_link
 #: model_terms:ir.ui.view,arch_db:project_purchase_link.project_project_view_form
 msgid "Purchases"
-msgstr ""
+msgstr "Acquisti"
 
 #. module: project_purchase_link
 #: model:ir.model,name:project_purchase_link.model_project_project
 msgid "WBS element"
-msgstr ""
+msgstr "Elemento WBS"
