@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-09-04 19:39+0000\n"
-"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
+"PO-Revision-Date: 2023-09-07 17:36+0000\n"
+"Last-Translator: Francesco Foresti <francesco.foresti@ooops404.com>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -39,17 +39,17 @@ msgstr "ID"
 #. module: project_purchase_link
 #: model:ir.model.fields,field_description:project_purchase_link.field_project_project____last_update
 msgid "Last Modified on"
-msgstr "Ultima modica il"
+msgstr "Ultima modifica il"
 
 #. module: project_purchase_link
 #: model_terms:ir.ui.view,arch_db:project_purchase_link.project_project_view_form
 msgid "PO Invoice Total"
-msgstr "Totale fattura OA"
+msgstr "Totale fattura PO"
 
 #. module: project_purchase_link
 #: model_terms:ir.ui.view,arch_db:project_purchase_link.project_project_view_form
 msgid "PO Invoices"
-msgstr "Fatture OA"
+msgstr "Fatture PO"
 
 #. module: project_purchase_link
 #: code:addons/project_purchase_link/models/project_project.py:0
