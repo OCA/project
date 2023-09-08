@@ -3,7 +3,7 @@
 from odoo import api, models
 
 
-class ForecastLineModelMixin(models.Model):
+class ForecastLineModelMixin(models.AbstractModel):
     _name = "forecast.line.mixin"
     _description = "mixin for models which generate forecast lines"
 
