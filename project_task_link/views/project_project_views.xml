@@ -20,7 +20,7 @@
                             <field name="task_count" />
                         </span>
                         <span class="o_label">
-                            <field name="label_tasks" readonly="1" />
+                            <field name="label_tasks_custom" readonly="1" />
                         </span>
                     </div>
                 </button>
