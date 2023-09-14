@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_project_form_inherit" model="ir.ui.view">
+        <field name="name">project.project.form.inherit</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project" />
+        <field name="arch" type="xml">
+            <xpath expr="//sheet//div[@class='oe_button_box']" position="inside">
+                <button
+                    name="%(project.act_project_project_2_project_task_all)d"
+                    type="action"
+                    class="oe_stat_button"
+                    icon="fa-tasks"
+                >
+                    <div
+                        class="o_field_widget o_stat_info"
+                        style="display: inline-flex;"
+                    >
+                        <span class="o_stat_value mr4">
+                            <field name="task_count" />
+                        </span>
+                        <span class="o_label">
+                            <field name="label_tasks_custom" readonly="1" />
+                        </span>
+                    </div>
+                </button>
+            </xpath>
+        </field>
+    </record>
+</odoo>
