@@ -74,7 +74,7 @@ class ProjectTask(models.Model):
         help="Move created will be assigned to this analytic account",
     )
     stock_analytic_distribution = fields.Json(
-        "Move Analytic Tags",
+        "Analytic Distribution",
         copy=True,
         readonly=False,
     )
