@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-12-23 03:43+0000\n"
-"PO-Revision-Date: 2023-07-19 17:10+0000\n"
+"PO-Revision-Date: 2023-09-22 08:37+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
@@ -80,7 +80,7 @@ msgstr "Quantità"
 #: code:addons/project_task_material/models/project.py:36
 #, python-format
 msgid "Quantity of material consumed must be greater than 0."
-msgstr ""
+msgstr "La quantità di materiale consumato deve essere maggiore di 0."
 
 #. module: project_task_material
 #: model:ir.model,name:project_task_material.model_project_task
