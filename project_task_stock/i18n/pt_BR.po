@@ -37,6 +37,11 @@ msgid "Analytic"
 msgstr "Analítico"
 
 #. module: project_stock
+#: model:ir.model.fields,field_description:project_stock.field_project_task__stock_analytic_distribution
+msgid "Analytic Distribution"
+msgstr ""
+
+#. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_task__analytic_distribution_search
 msgid "Analytic Distribution Search"
 msgstr "Pesquisa de Distribuição Analítica"
@@ -133,8 +138,8 @@ msgstr "Grupo"
 #: model:ir.model.fields,help:project_stock.field_project_task__done_stock_moves
 #: model:ir.model.fields,help:project_stock.field_project_task_type__done_stock_moves
 msgid ""
-"If you check this box, when a task is in this state, you will not be able to"
-" add more stock moves but they can be viewed."
+"If you check this box, when a task is in this state, you will not be able to "
+"add more stock moves but they can be viewed."
 msgstr ""
 "Se você marcar esta caixa, quando uma tarefa estiver neste estado, você não "
 "poderá adicionar mais movimentos de estoque, mas eles poderão ser "
@@ -171,11 +176,6 @@ msgstr "Trancar"
 #: model:ir.model.fields,field_description:project_stock.field_project_task__stock_analytic_account_id
 msgid "Move Analytic Account"
 msgstr "Conta Analítica do Movimento"
-
-#. module: project_stock
-#: model:ir.model.fields,field_description:project_stock.field_project_task__stock_analytic_distribution
-msgid "Move Analytic Tags"
-msgstr "Etiqueta Movimento Analítico"
 
 #. module: project_stock
 #: model:ir.model.fields,help:project_stock.field_project_task__stock_analytic_account_id
@@ -337,3 +337,6 @@ msgstr "Cancelar reserva"
 #: model:ir.model.fields,field_description:project_stock.field_project_task_type__use_stock_moves
 msgid "Use Stock Moves"
 msgstr "Usar Movimentos de Estoque"
+
+#~ msgid "Move Analytic Tags"
+#~ msgstr "Etiqueta Movimento Analítico"
