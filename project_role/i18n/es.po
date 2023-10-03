@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-09-20 21:08+0000\n"
+"PO-Revision-Date: 2023-10-09 07:43+0000\n"
 "Last-Translator: Ivorra78 <informatica@totmaterial.es>\n"
 "Language-Team: none\n"
 "Language: es\n"
@@ -451,7 +451,7 @@ msgstr "¡El usuario puede ser asignado por rol solo una vez!"
 #. module: project_role
 #: model:ir.model,name:project_role.model_project_project
 msgid "WBS element"
-msgstr ""
+msgstr "Elemento WBS"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__website_message_ids
