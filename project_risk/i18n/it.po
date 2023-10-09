@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* project_risk
+# 	* project_risk
 #
 msgid ""
 msgstr ""
@@ -27,8 +27,8 @@ msgid "Actionee"
 msgstr "Esecutore"
 
 #. module: project_risk
+#: model:ir.model.fields.selection,name:project_risk.selection__project_risk__state__active
 #: model_terms:ir.ui.view,arch_db:project_risk.project_risk_search_view
-#: selection:project.risk,state:0
 msgid "Active"
 msgstr "Attivo"
 
@@ -43,7 +43,8 @@ msgid "Category"
 msgstr "Categoria"
 
 #. module: project_risk
-#: selection:project.risk,state:0
+#: model:ir.model.fields.selection,name:project_risk.selection__project_risk__state__closed
+#: model_terms:ir.ui.view,arch_db:project_risk.project_risk_form_view
 msgid "Closed"
 msgstr "Chiuso"
 
@@ -64,7 +65,8 @@ msgid "Created on"
 msgstr "Creato il"
 
 #. module: project_risk
-#: selection:project.risk,rating:0
+#: model:ir.model.fields.selection,name:project_risk.selection__project_risk__rating__10
+#: model_terms:ir.ui.view,arch_db:project_risk.project_risk_form_view
 msgid "Critical"
 msgstr "Critica"
 
@@ -84,12 +86,13 @@ msgid "Display Name"
 msgstr "Nome visualizzato"
 
 #. module: project_risk
-#: selection:project.risk,state:0
+#: model:ir.model.fields.selection,name:project_risk.selection__project_risk__state__draft
+#: model_terms:ir.ui.view,arch_db:project_risk.project_risk_form_view
 msgid "Draft"
 msgstr "Bozza"
 
 #. module: project_risk
-#: selection:project.risk,impact:0
+#: model:ir.model.fields.selection,name:project_risk.selection__project_risk__impact__5
 msgid "Extreme"
 msgstr "Estremo"
 
@@ -114,8 +117,9 @@ msgid "Group By..."
 msgstr "Raggruppa per..."
 
 #. module: project_risk
-#: selection:project.risk,proximity:0
-#: selection:project.risk,rating:0
+#: model:ir.model.fields.selection,name:project_risk.selection__project_risk__proximity__4
+#: model:ir.model.fields.selection,name:project_risk.selection__project_risk__rating__8
+#: model_terms:ir.ui.view,arch_db:project_risk.project_risk_form_view
 msgid "High"
 msgstr "Alta"
 
@@ -128,22 +132,19 @@ msgid "ID"
 msgstr "ID"
 
 #. module: project_risk
-#: model:ir.model.fields,help:project_risk.field_project_risk__message_unread
-msgid "If checked new messages require your attention."
-msgstr "Se selezionata, nuovi messaggi richiedono attenzione."
-
-#. module: project_risk
 #: model:ir.model.fields,help:project_risk.field_project_risk__message_needaction
+#: model:ir.model.fields,help:project_risk.field_project_risk__message_unread
 msgid "If checked, new messages require your attention."
 msgstr "Se selezionata, nuovi messaggi richiedono attenzione."
 
 #. module: project_risk
 #: model:ir.model.fields,help:project_risk.field_project_risk__message_has_error
+#: model:ir.model.fields,help:project_risk.field_project_risk__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
 msgstr "Se selezionata, alcuni messaggi hanno un errore di consegna."
 
 #. module: project_risk
-#: selection:project.risk,proximity:0
+#: model:ir.model.fields.selection,name:project_risk.selection__project_risk__proximity__6
 msgid "Imminent"
 msgstr "Imminente"
 
@@ -182,18 +183,20 @@ msgid "Last Updated on"
 msgstr "Ultimo aggiornamento il"
 
 #. module: project_risk
-#: selection:project.risk,probability:0
+#: model:ir.model.fields.selection,name:project_risk.selection__project_risk__probability__4
 msgid "Likely"
 msgstr "Probabile"
 
 #. module: project_risk
-#: selection:project.risk,proximity:0
-#: selection:project.risk,rating:0
+#: model:ir.model.fields.selection,name:project_risk.selection__project_risk__proximity__2
+#: model:ir.model.fields.selection,name:project_risk.selection__project_risk__rating__4
+#: model_terms:ir.ui.view,arch_db:project_risk.project_risk_form_view
 msgid "Low"
 msgstr "Bassa"
 
 #. module: project_risk
-#: selection:project.risk,rating:0
+#: model:ir.model.fields.selection,name:project_risk.selection__project_risk__rating__5
+#: model_terms:ir.ui.view,arch_db:project_risk.project_risk_form_view
 msgid "Low-Medium"
 msgstr "Medio-bassa"
 
@@ -203,13 +206,15 @@ msgid "Main Attachment"
 msgstr "Allegato principale"
 
 #. module: project_risk
-#: selection:project.risk,proximity:0
-#: selection:project.risk,rating:0
+#: model:ir.model.fields.selection,name:project_risk.selection__project_risk__proximity__3
+#: model:ir.model.fields.selection,name:project_risk.selection__project_risk__rating__6
+#: model_terms:ir.ui.view,arch_db:project_risk.project_risk_form_view
 msgid "Medium"
 msgstr "Media"
 
 #. module: project_risk
-#: selection:project.risk,rating:0
+#: model:ir.model.fields.selection,name:project_risk.selection__project_risk__rating__7
+#: model_terms:ir.ui.view,arch_db:project_risk.project_risk_form_view
 msgid "Medium-High"
 msgstr "Medio-alta"
 
@@ -224,17 +229,17 @@ msgid "Messages"
 msgstr "Messaggi"
 
 #. module: project_risk
-#: selection:project.risk,impact:0
+#: model:ir.model.fields.selection,name:project_risk.selection__project_risk__impact__2
 msgid "Minor"
 msgstr "Minore"
 
 #. module: project_risk
-#: selection:project.risk,impact:0
+#: model:ir.model.fields.selection,name:project_risk.selection__project_risk__impact__3
 msgid "Moderate"
 msgstr "Moderato"
 
 #. module: project_risk
-#: selection:project.risk,rating:0
+#: model:ir.model.fields.selection,name:project_risk.selection__project_risk__rating__1
 msgid "N/A"
 msgstr "N/D"
 
@@ -252,8 +257,8 @@ msgstr "Numero di azioni"
 
 #. module: project_risk
 #: model:ir.model.fields,field_description:project_risk.field_project_risk__message_has_error_counter
-msgid "Number of error"
-msgstr "Numero di errori"
+msgid "Number of errors"
+msgstr ""
 
 #. module: project_risk
 #: model:ir.model.fields,help:project_risk.field_project_risk__message_needaction_counter
@@ -276,7 +281,7 @@ msgid "Owner"
 msgstr "Proprietario"
 
 #. module: project_risk
-#: selection:project.risk,probability:0
+#: model:ir.model.fields.selection,name:project_risk.selection__project_risk__probability__3
 msgid "Possible"
 msgstr "Possibile"
 
@@ -286,6 +291,7 @@ msgid "Probability"
 msgstr "Probabilità"
 
 #. module: project_risk
+#: model:ir.model,name:project_risk.model_project_project
 #: model:ir.model.fields,field_description:project_risk.field_project_risk__project_id
 #: model_terms:ir.ui.view,arch_db:project_risk.project_risk_search_view
 msgid "Project"
@@ -324,7 +330,7 @@ msgid "Proximity"
 msgstr "Prossimità"
 
 #. module: project_risk
-#: selection:project.risk,probability:0
+#: model:ir.model.fields.selection,name:project_risk.selection__project_risk__probability__1
 msgid "Rare"
 msgstr "Raro"
 
@@ -365,12 +371,17 @@ msgid "Risks"
 msgstr "Rischi"
 
 #. module: project_risk
+#: model:ir.model.fields,field_description:project_risk.field_project_risk__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr ""
+
+#. module: project_risk
 #: model:ir.model.fields,field_description:project_risk.field_project_risk_response__sequence
 msgid "Sequence"
 msgstr "Sequenza"
 
 #. module: project_risk
-#: selection:project.risk,impact:0
+#: model:ir.model.fields.selection,name:project_risk.selection__project_risk__impact__4
 msgid "Significant"
 msgstr "Significativo"
 
@@ -380,13 +391,14 @@ msgid "State"
 msgstr "Stato"
 
 #. module: project_risk
-#: selection:project.risk,impact:0
-#: selection:project.risk,rating:0
+#: model:ir.model.fields.selection,name:project_risk.selection__project_risk__impact__1
+#: model:ir.model.fields.selection,name:project_risk.selection__project_risk__rating__2
+#: model_terms:ir.ui.view,arch_db:project_risk.project_risk_form_view
 msgid "Trivial"
 msgstr "Irrilevante"
 
 #. module: project_risk
-#: selection:project.risk,probability:0
+#: model:ir.model.fields.selection,name:project_risk.selection__project_risk__probability__2
 msgid "Unlikely"
 msgstr "Improbabile"
 
@@ -401,30 +413,27 @@ msgid "Unread Messages Counter"
 msgstr "Numero messaggi non letti"
 
 #. module: project_risk
-#: selection:project.risk,proximity:0
-#: selection:project.risk,rating:0
+#: model:ir.model.fields.selection,name:project_risk.selection__project_risk__proximity__5
+#: model:ir.model.fields.selection,name:project_risk.selection__project_risk__rating__9
+#: model_terms:ir.ui.view,arch_db:project_risk.project_risk_form_view
 msgid "Very High"
 msgstr "Molto alta"
 
 #. module: project_risk
-#: selection:project.risk,rating:0
+#: model:ir.model.fields.selection,name:project_risk.selection__project_risk__rating__3
+#: model_terms:ir.ui.view,arch_db:project_risk.project_risk_form_view
 msgid "Very Low"
 msgstr "Molto bassa"
 
 #. module: project_risk
-#: selection:project.risk,probability:0
+#: model:ir.model.fields.selection,name:project_risk.selection__project_risk__probability__5
 msgid "Very likely"
 msgstr "Molto probabile"
 
 #. module: project_risk
-#: selection:project.risk,proximity:0
+#: model:ir.model.fields.selection,name:project_risk.selection__project_risk__proximity__1
 msgid "Very low"
 msgstr "Molto bassa"
-
-#. module: project_risk
-#: model:ir.model,name:project_risk.model_project_project
-msgid "WBS element"
-msgstr "Elemento WBS"
 
 #. module: project_risk
 #: model:ir.model.fields,field_description:project_risk.field_project_risk__website_message_ids
@@ -435,3 +444,12 @@ msgstr "Messaggi sito web"
 #: model:ir.model.fields,help:project_risk.field_project_risk__website_message_ids
 msgid "Website communication history"
 msgstr "Cronologia comunicazioni sito web"
+
+#~ msgid "If checked new messages require your attention."
+#~ msgstr "Se selezionata, nuovi messaggi richiedono attenzione."
+
+#~ msgid "Number of error"
+#~ msgstr "Numero di errori"
+
+#~ msgid "WBS element"
+#~ msgstr "Elemento WBS"
