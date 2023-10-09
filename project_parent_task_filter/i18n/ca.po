@@ -18,10 +18,13 @@ msgstr ""
 
 #. module: project_parent_task_filter
 #: model_terms:ir.ui.view,arch_db:project_parent_task_filter.view_task_search_form
-msgid "Parent task"
-msgstr "Tasca pare"
-
-#. module: project_parent_task_filter
-#: model_terms:ir.ui.view,arch_db:project_parent_task_filter.view_task_search_form
 msgid "Parent tasks"
 msgstr "Tasques pares"
+
+#. module: project_parent_task_filter
+#: model:ir.model,name:project_parent_task_filter.model_project_task
+msgid "Task"
+msgstr ""
+
+#~ msgid "Parent task"
+#~ msgstr "Tasca pare"
