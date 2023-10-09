@@ -32,7 +32,7 @@ addon | version | maintainers | summary
 [project_milestone](project_milestone/) | 15.0.1.0.1 | [![patrickrwilson](https://github.com/patrickrwilson.png?size=30px)](https://github.com/patrickrwilson) | Project Milestones
 [project_parent_task_filter](project_parent_task_filter/) | 15.0.1.1.0 |  | Add a filter to show the parent tasks
 [project_purchase_analytic_global](project_purchase_analytic_global/) | 15.0.1.0.1 | [![yankinmax](https://github.com/yankinmax.png?size=30px)](https://github.com/yankinmax) | Project - Create Purchase Orders with Analytic Account
-[project_role](project_role/) | 15.0.1.0.1 | [![alexey-pelykh](https://github.com/alexey-pelykh.png?size=30px)](https://github.com/alexey-pelykh) | Project role-based roster
+[project_role](project_role/) | 15.0.1.0.2 | [![alexey-pelykh](https://github.com/alexey-pelykh.png?size=30px)](https://github.com/alexey-pelykh) | Project role-based roster
 [project_sequence](project_sequence/) | 15.0.0.2.2 | [![yajo](https://github.com/yajo.png?size=30px)](https://github.com/yajo) [![anddago78](https://github.com/anddago78.png?size=30px)](https://github.com/anddago78) | Add a sequence field to projects, filled automatically
 [project_stage_mgmt](project_stage_mgmt/) | 15.0.1.0.0 | [![DavidJForgeFlow](https://github.com/DavidJForgeFlow.png?size=30px)](https://github.com/DavidJForgeFlow) | Allows to assign and create task stages on project creation wizard
 [project_status](project_status/) | 15.0.1.0.0 | [![patrickrwilson](https://github.com/patrickrwilson.png?size=30px)](https://github.com/patrickrwilson) | Project Status
@@ -50,7 +50,7 @@ addon | version | maintainers | summary
 [project_task_stage_state](project_task_stage_state/) | 15.0.1.0.1 |  | Restore State attribute removed from Project Stages in 8.0
 [project_template](project_template/) | 15.0.1.0.0 | [![patrickrwilson](https://github.com/patrickrwilson.png?size=30px)](https://github.com/patrickrwilson) | Project Templates
 [project_template_milestone](project_template_milestone/) | 15.0.1.0.0 | [![patrickrwilson](https://github.com/patrickrwilson.png?size=30px)](https://github.com/patrickrwilson) | Adds function to copy of milestones when creating a project from template
-[project_timeline](project_timeline/) | 15.0.1.2.0 |  | Timeline view for projects
+[project_timeline](project_timeline/) | 15.0.1.2.1 |  | Timeline view for projects
 [project_timeline_hr_timesheet](project_timeline_hr_timesheet/) | 15.0.1.0.0 |  | Shows the progress of tasks on the timeline view.
 [project_timesheet_time_control](project_timesheet_time_control/) | 15.0.1.1.1 | [![ernestotejeda](https://github.com/ernestotejeda.png?size=30px)](https://github.com/ernestotejeda) | Project timesheet time control
 [project_type](project_type/) | 15.0.1.0.1 |  | Project Types
