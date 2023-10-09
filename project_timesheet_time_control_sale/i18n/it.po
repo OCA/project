@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* project_timesheet_time_control_sale
+# 	* project_timesheet_time_control_sale
 #
 msgid ""
 msgstr ""
