@@ -112,7 +112,8 @@ msgstr "Usuaris/àries"
 #: code:addons/project_hr/models/project_task.py:0
 #, python-format
 msgid "You can't assign a category that is not allowed at project level."
-msgstr "No pot assignar una categoria que no està permesa a nivell de projecte."
+msgstr ""
+"No pot assignar una categoria que no està permesa a nivell de projecte."
 
 #. module: project_hr
 #: code:addons/project_hr/models/project_task.py:0
