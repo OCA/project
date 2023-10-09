@@ -18,7 +18,6 @@ msgstr ""
 
 #. module: project_forecast_line_bokeh_chart
 #: code:addons/project_forecast_line_bokeh_chart/report/forecast_line_reporting.py:0
-#: code:addons/project_forecast_line_bokeh_chart/report/forecast_line_reporting.py:0
 #, python-format
 msgid "Available"
 msgstr "Disponible"
@@ -107,9 +106,6 @@ msgstr "Meses Nb"
 
 #. module: project_forecast_line_bokeh_chart
 #: code:addons/project_forecast_line_bokeh_chart/report/forecast_line_reporting.py:0
-#: code:addons/project_forecast_line_bokeh_chart/report/forecast_line_reporting.py:0
-#: code:addons/project_forecast_line_bokeh_chart/report/forecast_line_reporting.py:0
-#: code:addons/project_forecast_line_bokeh_chart/report/forecast_line_reporting.py:0
 #, python-format
 msgid "Not assigned to an employee"
 msgstr "No asignado a un empleado"
@@ -121,7 +117,6 @@ msgid "Nothing to plot. Select some employees"
 msgstr "Nada que trazar. Seleccione algunos empleados"
 
 #. module: project_forecast_line_bokeh_chart
-#: code:addons/project_forecast_line_bokeh_chart/report/forecast_line_reporting.py:0
 #: code:addons/project_forecast_line_bokeh_chart/report/forecast_line_reporting.py:0
 #, python-format
 msgid "Overload"
