@@ -29,6 +29,13 @@ msgid "Analytic Account"
 msgstr "Analitični konto"
 
 #. module: project_wbs
+#: model:ir.model.fields,help:project_wbs.field_project_project__analytic_account_id
+msgid ""
+"Analytic account to which this project is linked for financial management. "
+"Use an analytic account to record cost and revenue on your project."
+msgstr ""
+
+#. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.edit_project
 msgid "Append this project to another one using analytic accounts hierarchy"
 msgstr "Obesi ta projekt pod drugega preko hierarhije analitičnih kontov"
@@ -77,7 +84,7 @@ msgid "Customer"
 msgstr "Stranka"
 
 #. module: project_wbs
-#: selection:account.analytic.account,account_class:0
+#: model:ir.model.fields.selection,name:project_wbs.selection__account_analytic_account__account_class__deliverable
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_account_analytic_account_search2
 msgid "Deliverable"
 msgstr "Dobavna postavka"
@@ -88,13 +95,19 @@ msgid "Deliverables"
 msgstr "Dobavne postavke"
 
 #. module: project_wbs
-#: code:addons/project_wbs/models/project_project.py:339
+#: code:addons/project_wbs/models/project_project.py:0
 #, python-format
 msgid "Details"
 msgstr "Podrobnosti"
 
 #. module: project_wbs
-#: code:addons/project_wbs/models/account_analytic_account.py:184
+#: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__display_name
+#: model:ir.model.fields,field_description:project_wbs.field_project_project__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: project_wbs
+#: code:addons/project_wbs/models/account_analytic_account.py:0
 #, python-format
 msgid "Duplicate the project instead of the Analytic Account"
 msgstr "Podvojite projekt namesto analitičnega konta"
@@ -127,26 +140,32 @@ msgid "Full path in the WBS hierarchy"
 msgstr "Polna pot v razčlenitveni hierarhiji"
 
 #. module: project_wbs
+#: model_terms:ir.ui.view,arch_db:project_wbs.view_project_kanban
+msgid "Go Up"
+msgstr ""
+
+#. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_project_project__has_project_child_complete_ids
 msgid "Has Project Child Complete"
 msgstr "Vsebuje dokončan podrejen projekt"
+
+#. module: project_wbs
+#: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__id
+#: model:ir.model.fields,field_description:project_wbs.field_project_project__id
+msgid "ID"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account____last_update
+#: model:ir.model.fields,field_description:project_wbs.field_project_project____last_update
+msgid "Last Modified on"
+msgstr ""
 
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__wbs_indent
 #: model:ir.model.fields,field_description:project_wbs.field_project_project__wbs_indent
 msgid "Level"
 msgstr "Nivo"
-
-#. module: project_wbs
-#: model:ir.model.fields,help:project_wbs.field_project_project__analytic_account_id
-msgid ""
-"Link this project to an analytic account if you need financial management on "
-"projects. It enables you to connect projects with budgets, planning, cost "
-"and revenue analysis, timesheets on projects, etc."
-msgstr ""
-"Če želite upravljanje stroškov na projektih, povežite ta projekt z "
-"analitičnim kontom. To omogoča povezavo projektov s proračuni, plani, "
-"analizo stroškov in prihodkov, časovnice, itd."
 
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__manager_id
@@ -177,7 +196,7 @@ msgid "Parent WBS element"
 msgstr "Nadrejeni člen"
 
 #. module: project_wbs
-#: selection:account.analytic.account,account_class:0
+#: model:ir.model.fields.selection,name:project_wbs.selection__account_analytic_account__account_class__phase
 msgid "Phase"
 msgstr "Faza"
 
@@ -187,7 +206,7 @@ msgid "Phases"
 msgstr "Faze"
 
 #. module: project_wbs
-#: selection:account.analytic.account,account_class:0
+#: model:ir.model.fields.selection,name:project_wbs.selection__account_analytic_account__account_class__project
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_account_analytic_account_search2
 msgid "Project"
 msgstr "Projekt"
@@ -217,15 +236,10 @@ msgstr "Projekti"
 #: model_terms:ir.actions.act_window,help:project_wbs.open_view_project_wbs
 msgid ""
 "Projects are used to organize your activities; plan\n"
-"              tasks, track issues, invoice timesheets. You can define\n"
-"              internal projects (R&amp;D, Improve Sales Process),\n"
-"              private projects (My Todos) or customer ones."
+"                tasks, track issues, invoice timesheets. You can define\n"
+"                internal projects (R&amp;D, Improve Sales Process),\n"
+"                private projects (My Todos) or customer ones."
 msgstr ""
-"Projekte se uporablja za organizacijo aktivnosti, planiranje\n"
-"              opravil, sledenje problematiki, obračun po času. Določite "
-"lahko\n"
-"              interne projekte (in izboljšate prodajne procese),\n"
-"              privatne projekte (seznami opravkov) ali projekte strank."
 
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__code
@@ -263,14 +277,14 @@ msgstr ""
 "razčlenitvene hierarhije projekta"
 
 #. module: project_wbs
-#: sql_constraint:account.analytic.account:0
-#: code:addons/project_wbs/models/account_analytic_account.py:233
+#: code:addons/project_wbs/models/account_analytic_account.py:0
+#: model:ir.model.constraint,message:project_wbs.constraint_account_analytic_account_analytic_unique_wbs_code
 #, python-format
 msgid "The full wbs code must be unique!"
 msgstr "Polna koda členitve mora biti unikatna!"
 
 #. module: project_wbs
-#: code:addons/project_wbs/models/project_project.py:141
+#: code:addons/project_wbs/models/project_project.py:0
 #, python-format
 msgid "Unknown Analytic Account"
 msgstr "Neznan konto"
@@ -332,7 +346,7 @@ msgid "Work Breakdown Structure"
 msgstr "Razčlenitvena struktura"
 
 #. module: project_wbs
-#: selection:account.analytic.account,account_class:0
+#: model:ir.model.fields.selection,name:project_wbs.selection__account_analytic_account__account_class__work_package
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_account_analytic_account_search2
 msgid "Work Package"
 msgstr "Paket opravil"
@@ -346,7 +360,33 @@ msgstr "Paketi opravil"
 #: model_terms:ir.actions.act_window,help:project_wbs.open_view_project_wbs
 msgid ""
 "You will be able collaborate with internal users on\n"
-"              projects or invite customers to share your activities."
+"                projects or invite customers to share your activities."
 msgstr ""
-"Omogočeno bo sodelovanje na projektih z internimi\n"
-"              uporabniki ali pa povabite stranke k souporabi aktivnosti."
+
+#~ msgid ""
+#~ "Link this project to an analytic account if you need financial management "
+#~ "on projects. It enables you to connect projects with budgets, planning, "
+#~ "cost and revenue analysis, timesheets on projects, etc."
+#~ msgstr ""
+#~ "Če želite upravljanje stroškov na projektih, povežite ta projekt z "
+#~ "analitičnim kontom. To omogoča povezavo projektov s proračuni, plani, "
+#~ "analizo stroškov in prihodkov, časovnice, itd."
+
+#~ msgid ""
+#~ "Projects are used to organize your activities; plan\n"
+#~ "              tasks, track issues, invoice timesheets. You can define\n"
+#~ "              internal projects (R&amp;D, Improve Sales Process),\n"
+#~ "              private projects (My Todos) or customer ones."
+#~ msgstr ""
+#~ "Projekte se uporablja za organizacijo aktivnosti, planiranje\n"
+#~ "              opravil, sledenje problematiki, obračun po času. Določite "
+#~ "lahko\n"
+#~ "              interne projekte (in izboljšate prodajne procese),\n"
+#~ "              privatne projekte (seznami opravkov) ali projekte strank."
+
+#~ msgid ""
+#~ "You will be able collaborate with internal users on\n"
+#~ "              projects or invite customers to share your activities."
+#~ msgstr ""
+#~ "Omogočeno bo sodelovanje na projektih z internimi\n"
+#~ "              uporabniki ali pa povabite stranke k souporabi aktivnosti."

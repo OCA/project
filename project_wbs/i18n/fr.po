@@ -28,6 +28,13 @@ msgid "Analytic Account"
 msgstr "Compte analytique"
 
 #. module: project_wbs
+#: model:ir.model.fields,help:project_wbs.field_project_project__analytic_account_id
+msgid ""
+"Analytic account to which this project is linked for financial management. "
+"Use an analytic account to record cost and revenue on your project."
+msgstr ""
+
+#. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.edit_project
 msgid "Append this project to another one using analytic accounts hierarchy"
 msgstr ""
@@ -78,7 +85,7 @@ msgid "Customer"
 msgstr "Client"
 
 #. module: project_wbs
-#: selection:account.analytic.account,account_class:0
+#: model:ir.model.fields.selection,name:project_wbs.selection__account_analytic_account__account_class__deliverable
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_account_analytic_account_search2
 msgid "Deliverable"
 msgstr "Livrable"
@@ -89,13 +96,19 @@ msgid "Deliverables"
 msgstr "Livrables"
 
 #. module: project_wbs
-#: code:addons/project_wbs/models/project_project.py:339
+#: code:addons/project_wbs/models/project_project.py:0
 #, python-format
 msgid "Details"
 msgstr "Détails"
 
 #. module: project_wbs
-#: code:addons/project_wbs/models/account_analytic_account.py:184
+#: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__display_name
+#: model:ir.model.fields,field_description:project_wbs.field_project_project__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: project_wbs
+#: code:addons/project_wbs/models/account_analytic_account.py:0
 #, python-format
 msgid "Duplicate the project instead of the Analytic Account"
 msgstr "Dupliquez le projet au lieu du compte analytique"
@@ -128,8 +141,25 @@ msgid "Full path in the WBS hierarchy"
 msgstr ""
 
 #. module: project_wbs
+#: model_terms:ir.ui.view,arch_db:project_wbs.view_project_kanban
+msgid "Go Up"
+msgstr ""
+
+#. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_project_project__has_project_child_complete_ids
 msgid "Has Project Child Complete"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__id
+#: model:ir.model.fields,field_description:project_wbs.field_project_project__id
+msgid "ID"
+msgstr ""
+
+#. module: project_wbs
+#: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account____last_update
+#: model:ir.model.fields,field_description:project_wbs.field_project_project____last_update
+msgid "Last Modified on"
 msgstr ""
 
 #. module: project_wbs
@@ -137,18 +167,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_wbs.field_project_project__wbs_indent
 msgid "Level"
 msgstr "Niveau"
-
-#. module: project_wbs
-#: model:ir.model.fields,help:project_wbs.field_project_project__analytic_account_id
-msgid ""
-"Link this project to an analytic account if you need financial management on "
-"projects. It enables you to connect projects with budgets, planning, cost "
-"and revenue analysis, timesheets on projects, etc."
-msgstr ""
-"Liez ce projet à un compte analytique si vous avez besoin d'une gestion "
-"financière des projets. Il vous permet de connecter les projets avec les "
-"budgets, la planification, l'analyse des coûts et des revenus, les feuilles "
-"de temps sur les projets, etc."
 
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__manager_id
@@ -179,7 +197,7 @@ msgid "Parent WBS element"
 msgstr "Élément SDP parent"
 
 #. module: project_wbs
-#: selection:account.analytic.account,account_class:0
+#: model:ir.model.fields.selection,name:project_wbs.selection__account_analytic_account__account_class__phase
 msgid "Phase"
 msgstr "Phase"
 
@@ -189,7 +207,7 @@ msgid "Phases"
 msgstr "Phases"
 
 #. module: project_wbs
-#: selection:account.analytic.account,account_class:0
+#: model:ir.model.fields.selection,name:project_wbs.selection__account_analytic_account__account_class__project
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_account_analytic_account_search2
 msgid "Project"
 msgstr "Projet"
@@ -217,19 +235,12 @@ msgstr "Projets"
 
 #. module: project_wbs
 #: model_terms:ir.actions.act_window,help:project_wbs.open_view_project_wbs
-#, fuzzy
 msgid ""
 "Projects are used to organize your activities; plan\n"
-"              tasks, track issues, invoice timesheets. You can define\n"
-"              internal projects (R&amp;D, Improve Sales Process),\n"
-"              private projects (My Todos) or customer ones."
+"                tasks, track issues, invoice timesheets. You can define\n"
+"                internal projects (R&amp;D, Improve Sales Process),\n"
+"                private projects (My Todos) or customer ones."
 msgstr ""
-"Les projets sont utilisés pour organiser vos activités; planifier\n"
-"              vos tâches, suivre les problèmes, les feuilles de temps de "
-"facturation. Vous pouvez définir\n"
-"              vos projets internes (R & amp; D, l'amélioration des processus "
-"de vente),\n"
-"              les projets privés (My Todos) ou clients."
 
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__code
@@ -269,14 +280,14 @@ msgstr ""
 "hiérarchie SDP du projet"
 
 #. module: project_wbs
-#: sql_constraint:account.analytic.account:0
-#: code:addons/project_wbs/models/account_analytic_account.py:233
+#: code:addons/project_wbs/models/account_analytic_account.py:0
+#: model:ir.model.constraint,message:project_wbs.constraint_account_analytic_account_analytic_unique_wbs_code
 #, python-format
 msgid "The full wbs code must be unique!"
 msgstr "Le code SDP complet doit être unique !"
 
 #. module: project_wbs
-#: code:addons/project_wbs/models/project_project.py:141
+#: code:addons/project_wbs/models/project_project.py:0
 #, python-format
 msgid "Unknown Analytic Account"
 msgstr "Compte analytique inconnu"
@@ -338,7 +349,7 @@ msgid "Work Breakdown Structure"
 msgstr "Structure de Découpage de Projet"
 
 #. module: project_wbs
-#: selection:account.analytic.account,account_class:0
+#: model:ir.model.fields.selection,name:project_wbs.selection__account_analytic_account__account_class__work_package
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_account_analytic_account_search2
 msgid "Work Package"
 msgstr "Lot de travaux"
@@ -352,7 +363,36 @@ msgstr "Lots de travaux"
 #: model_terms:ir.actions.act_window,help:project_wbs.open_view_project_wbs
 msgid ""
 "You will be able collaborate with internal users on\n"
-"              projects or invite customers to share your activities."
+"                projects or invite customers to share your activities."
 msgstr ""
-"Vous pourrez collaborer avec des utilisateurs internes sur\n"
-"              projets ou invitez des clients à partager vos activités."
+
+#~ msgid ""
+#~ "Link this project to an analytic account if you need financial management "
+#~ "on projects. It enables you to connect projects with budgets, planning, "
+#~ "cost and revenue analysis, timesheets on projects, etc."
+#~ msgstr ""
+#~ "Liez ce projet à un compte analytique si vous avez besoin d'une gestion "
+#~ "financière des projets. Il vous permet de connecter les projets avec les "
+#~ "budgets, la planification, l'analyse des coûts et des revenus, les "
+#~ "feuilles de temps sur les projets, etc."
+
+#, fuzzy
+#~ msgid ""
+#~ "Projects are used to organize your activities; plan\n"
+#~ "              tasks, track issues, invoice timesheets. You can define\n"
+#~ "              internal projects (R&amp;D, Improve Sales Process),\n"
+#~ "              private projects (My Todos) or customer ones."
+#~ msgstr ""
+#~ "Les projets sont utilisés pour organiser vos activités; planifier\n"
+#~ "              vos tâches, suivre les problèmes, les feuilles de temps de "
+#~ "facturation. Vous pouvez définir\n"
+#~ "              vos projets internes (R & amp; D, l'amélioration des "
+#~ "processus de vente),\n"
+#~ "              les projets privés (My Todos) ou clients."
+
+#~ msgid ""
+#~ "You will be able collaborate with internal users on\n"
+#~ "              projects or invite customers to share your activities."
+#~ msgstr ""
+#~ "Vous pourrez collaborer avec des utilisateurs internes sur\n"
+#~ "              projets ou invitez des clients à partager vos activités."
