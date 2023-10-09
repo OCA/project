@@ -19,8 +19,23 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n % 10 == 1 && n % 100 != 11) ? 0 : 1;\n"
 
 #. module: project_task_add_very_high
+#: model:ir.model.fields,field_description:project_task_add_very_high.field_project_task__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: project_task_add_very_high
 #: model:ir.model.fields.selection,name:project_task_add_very_high.selection__project_task__priority__2
 msgid "High"
+msgstr ""
+
+#. module: project_task_add_very_high
+#: model:ir.model.fields,field_description:project_task_add_very_high.field_project_task__id
+msgid "ID"
+msgstr ""
+
+#. module: project_task_add_very_high
+#: model:ir.model.fields,field_description:project_task_add_very_high.field_project_task____last_update
+msgid "Last Modified on"
 msgstr ""
 
 #. module: project_task_add_very_high
