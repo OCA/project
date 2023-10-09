@@ -33,7 +33,7 @@ addon | version | maintainers | summary
 [project_parent_task_filter](project_parent_task_filter/) | 14.0.1.2.0 |  | Add filters to show the parent or non parent tasks
 [project_purchase_link](project_purchase_link/) | 14.0.1.0.0 | [![udesai](https://github.com/udesai.png?size=30px)](https://github.com/udesai) [![OCA](https://github.com/OCA.png?size=30px)](https://github.com/OCA) | Project Purchase Link
 [project_recalculate](project_recalculate/) | 14.0.1.0.0 |  | Project Recalculate
-[project_role](project_role/) | 14.0.1.0.0 | [![alexey-pelykh](https://github.com/alexey-pelykh.png?size=30px)](https://github.com/alexey-pelykh) | Project role-based roster
+[project_role](project_role/) | 14.0.1.0.1 | [![alexey-pelykh](https://github.com/alexey-pelykh.png?size=30px)](https://github.com/alexey-pelykh) | Project role-based roster
 [project_sequence](project_sequence/) | 14.0.0.2.0 | [![yajo](https://github.com/yajo.png?size=30px)](https://github.com/yajo) [![anddago78](https://github.com/anddago78.png?size=30px)](https://github.com/anddago78) | Add a sequence field to projects, filled automatically
 [project_stage_closed](project_stage_closed/) | 14.0.2.0.0 |  | Project Task Stage Closed
 [project_stage_mgmt](project_stage_mgmt/) | 14.0.1.0.0 | [![DavidJForgeFlow](https://github.com/DavidJForgeFlow.png?size=30px)](https://github.com/DavidJForgeFlow) | Allows to assign and create stages on project creation wizard
