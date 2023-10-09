@@ -18,6 +18,11 @@ msgstr ""
 "X-Generator: Weblate 4.3.2\n"
 
 #. module: project_custom_info
+#: model:custom.info.category,name:project_custom_info.cat_analysis
+msgid "Analysis"
+msgstr ""
+
+#. module: project_custom_info
 #: model_terms:ir.ui.view,arch_db:project_custom_info.edit_project
 msgid "Custom Information"
 msgstr "Información Personalizada"
@@ -33,9 +38,39 @@ msgid "Custom Properties"
 msgstr "Propiedades Personalizadas"
 
 #. module: project_custom_info
-#: model:ir.model,name:project_custom_info.model_project_project
-msgid "WBS element"
-msgstr "Element WBS"
+#: model:custom.info.category,name:project_custom_info.cat_development
+msgid "Development"
+msgstr ""
 
-#~ msgid "Project"
-#~ msgstr "Proyecto"
+#. module: project_custom_info
+#: model:custom.info.property,name:project_custom_info.prop_time
+msgid "How long will development take?"
+msgstr ""
+
+#. module: project_custom_info
+#: model:custom.info.property,name:project_custom_info.prop_similar
+msgid "Is there a similar module?"
+msgstr ""
+
+#. module: project_custom_info
+#: model:custom.info.template,name:project_custom_info.tpl_module
+msgid "Module"
+msgstr ""
+
+#. module: project_custom_info
+#: model:ir.model,name:project_custom_info.model_project_project
+msgid "Project"
+msgstr "Proyecto"
+
+#. module: project_custom_info
+#: model:custom.info.property,name:project_custom_info.prop_name
+msgid "Search a name for module"
+msgstr ""
+
+#. module: project_custom_info
+#: model:project.project,label_tasks:project_custom_info.project_with_custom_info_demo
+msgid "Tasks"
+msgstr ""
+
+#~ msgid "WBS element"
+#~ msgstr "Element WBS"
