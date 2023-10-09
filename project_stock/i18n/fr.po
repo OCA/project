@@ -35,6 +35,11 @@ msgid "Analytic"
 msgstr ""
 
 #. module: project_stock
+#: model:ir.model.fields,field_description:project_stock.field_project_task__stock_analytic_distribution
+msgid "Analytic Distribution"
+msgstr ""
+
+#. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_task__analytic_distribution_search
 msgid "Analytic Distribution Search"
 msgstr ""
@@ -131,8 +136,8 @@ msgstr ""
 #: model:ir.model.fields,help:project_stock.field_project_task__done_stock_moves
 #: model:ir.model.fields,help:project_stock.field_project_task_type__done_stock_moves
 msgid ""
-"If you check this box, when a task is in this state, you will not be able to"
-" add more stock moves but they can be viewed."
+"If you check this box, when a task is in this state, you will not be able to "
+"add more stock moves but they can be viewed."
 msgstr ""
 
 #. module: project_stock
@@ -163,11 +168,6 @@ msgstr ""
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_task__stock_analytic_account_id
 msgid "Move Analytic Account"
-msgstr ""
-
-#. module: project_stock
-#: model:ir.model.fields,field_description:project_stock.field_project_task__stock_analytic_distribution
-msgid "Move Analytic Tags"
 msgstr ""
 
 #. module: project_stock

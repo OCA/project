@@ -37,6 +37,11 @@ msgid "Analytic"
 msgstr "Analitico"
 
 #. module: project_stock
+#: model:ir.model.fields,field_description:project_stock.field_project_task__stock_analytic_distribution
+msgid "Analytic Distribution"
+msgstr ""
+
+#. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_task__analytic_distribution_search
 msgid "Analytic Distribution Search"
 msgstr "Ricerca distribuzione analitica"
@@ -171,11 +176,6 @@ msgstr "Blocco"
 #: model:ir.model.fields,field_description:project_stock.field_project_task__stock_analytic_account_id
 msgid "Move Analytic Account"
 msgstr "Movimento conto analitico"
-
-#. module: project_stock
-#: model:ir.model.fields,field_description:project_stock.field_project_task__stock_analytic_distribution
-msgid "Move Analytic Tags"
-msgstr "Movimento etichette analitiche"
 
 #. module: project_stock
 #: model:ir.model.fields,help:project_stock.field_project_task__stock_analytic_account_id
@@ -337,6 +337,9 @@ msgstr "Rilascia"
 #: model:ir.model.fields,field_description:project_stock.field_project_task_type__use_stock_moves
 msgid "Use Stock Moves"
 msgstr "Utilizza movimenti di magazzino"
+
+#~ msgid "Move Analytic Tags"
+#~ msgstr "Movimento etichette analitiche"
 
 #~ msgid "Display Name"
 #~ msgstr "Nome visualizzato"
