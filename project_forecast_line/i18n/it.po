@@ -599,11 +599,11 @@ msgstr "mixin per modelli che generano righe previsionali"
 #. module: project_forecast_line
 #: model:ir.model.fields,help:project_forecast_line.field_forecast_line__employee_resource_forecast_line_id
 msgid ""
-"technical field giving the name of the resource "
-"(model=hr.employee.forecast.role) line for that employee and that period"
+"technical field giving the name of the resource (model=hr.employee.forecast."
+"role) line for that employee and that period"
 msgstr ""
-"campo tecnico che restituisce il nome della riga risorsa (modello=hr.employee"
-".forecast.role) per quel dipendente e quel periodo"
+"campo tecnico che restituisce il nome della riga risorsa (modello=hr."
+"employee.forecast.role) per quel dipendente e quel periodo"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,help:project_forecast_line.field_project_project_stage__forecast_line_type
