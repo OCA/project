@@ -60,7 +60,8 @@ msgstr "Nombre mostrado"
 
 #. module: project_stock_product_set
 #: model:ir.model.fields,help:project_stock_product_set.field_product_set_add_from_task__skip_existing_products
-msgid "Enable this to not add new lines for products already included in SO lines."
+msgid ""
+"Enable this to not add new lines for products already included in SO lines."
 msgstr ""
 
 #. module: project_stock_product_set
