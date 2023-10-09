@@ -600,8 +600,8 @@ msgstr "mezclador para modelos que generan líneas de previsión"
 #. module: project_forecast_line
 #: model:ir.model.fields,help:project_forecast_line.field_forecast_line__employee_resource_forecast_line_id
 msgid ""
-"technical field giving the name of the resource "
-"(model=hr.employee.forecast.role) line for that employee and that period"
+"technical field giving the name of the resource (model=hr.employee.forecast."
+"role) line for that employee and that period"
 msgstr ""
 "campo técnico que da el nombre de la línea de recursos (model=hr.employee."
 "forecast.role) para ese empleado y ese periodo"
