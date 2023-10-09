@@ -68,8 +68,8 @@ msgstr "Sequenzcode:"
 #. module: project_sequence
 #: model:ir.model.fields,help:project_sequence.field_res_config_settings__project_display_name_pattern
 msgid ""
-"Use %(sequence_code)s and %(name)s to include the sequence code and the name"
-" of the project in the display name."
+"Use %(sequence_code)s and %(name)s to include the sequence code and the name "
+"of the project in the display name."
 msgstr ""
 "Verwenden Sie %(sequence_code)s und %(name)s, um den Sequenzcode und den "
 "Namen des Projekts in den Anzeigenamen aufzunehmen."
