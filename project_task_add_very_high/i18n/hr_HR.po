@@ -27,7 +27,7 @@ msgstr ""
 
 #. module: project_task_add_very_high
 #: model:ir.model.fields,field_description:project_task_add_very_high.field_project_task__priority
-msgid "Priority"
+msgid "Starred"
 msgstr ""
 
 #. module: project_task_add_very_high
