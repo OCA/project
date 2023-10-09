@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* project_template_milestone
+# 	* project_template_milestone
 #
 msgid ""
 msgstr ""
