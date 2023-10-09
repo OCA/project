@@ -17,27 +17,6 @@ msgstr ""
 "X-Generator: Weblate 4.14.1\n"
 
 #. module: project_stock_request
-#: model:ir.model.fields,field_description:project_stock_request.field_project_project__display_name
-#: model:ir.model.fields,field_description:project_stock_request.field_project_task__display_name
-#: model:ir.model.fields,field_description:project_stock_request.field_stock_request_order__display_name
-msgid "Display Name"
-msgstr "Mostrar Nombre"
-
-#. module: project_stock_request
-#: model:ir.model.fields,field_description:project_stock_request.field_project_project__id
-#: model:ir.model.fields,field_description:project_stock_request.field_project_task__id
-#: model:ir.model.fields,field_description:project_stock_request.field_stock_request_order__id
-msgid "ID"
-msgstr "ID"
-
-#. module: project_stock_request
-#: model:ir.model.fields,field_description:project_stock_request.field_project_project____last_update
-#: model:ir.model.fields,field_description:project_stock_request.field_project_task____last_update
-#: model:ir.model.fields,field_description:project_stock_request.field_stock_request_order____last_update
-msgid "Last Modified on"
-msgstr "Última modificación en"
-
-#. module: project_stock_request
 #: model:ir.model.fields,field_description:project_stock_request.field_stock_request_order__project_id
 msgid "Project"
 msgstr "Proyecto"
@@ -69,3 +48,12 @@ msgstr "Tarea"
 #: model:ir.model,name:project_stock_request.model_project_project
 msgid "WBS element"
 msgstr "Elemento WBS"
+
+#~ msgid "Display Name"
+#~ msgstr "Mostrar Nombre"
+
+#~ msgid "ID"
+#~ msgstr "ID"
+
+#~ msgid "Last Modified on"
+#~ msgstr "Última modificación en"
