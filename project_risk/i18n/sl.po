@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* project_risk
+# 	* project_risk
 #
 msgid ""
 msgstr ""
@@ -115,8 +115,7 @@ msgid "Group By..."
 msgstr "Združi po..."
 
 #. module: project_risk
-#: selection:project.risk,proximity:0
-#: selection:project.risk,rating:0
+#: selection:project.risk,proximity:0 selection:project.risk,rating:0
 msgid "High"
 msgstr "Visoka"
 
@@ -190,8 +189,7 @@ msgid "Likely"
 msgstr "Verjetno"
 
 #. module: project_risk
-#: selection:project.risk,proximity:0
-#: selection:project.risk,rating:0
+#: selection:project.risk,proximity:0 selection:project.risk,rating:0
 msgid "Low"
 msgstr "Nizka"
 
@@ -206,8 +204,7 @@ msgid "Main Attachment"
 msgstr "Glavna priponka"
 
 #. module: project_risk
-#: selection:project.risk,proximity:0
-#: selection:project.risk,rating:0
+#: selection:project.risk,proximity:0 selection:project.risk,rating:0
 msgid "Medium"
 msgstr "Srednje"
 
@@ -383,8 +380,7 @@ msgid "State"
 msgstr "Stanje"
 
 #. module: project_risk
-#: selection:project.risk,impact:0
-#: selection:project.risk,rating:0
+#: selection:project.risk,impact:0 selection:project.risk,rating:0
 msgid "Trivial"
 msgstr "Trivialno"
 
@@ -404,8 +400,7 @@ msgid "Unread Messages Counter"
 msgstr "Št. neprebranih sporočil"
 
 #. module: project_risk
-#: selection:project.risk,proximity:0
-#: selection:project.risk,rating:0
+#: selection:project.risk,proximity:0 selection:project.risk,rating:0
 msgid "Very High"
 msgstr "Zelo visoka"
 
