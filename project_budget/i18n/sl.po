@@ -1,6 +1,6 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* project_budget
+# 	* project_budget
 #
 msgid ""
 msgstr ""
@@ -13,8 +13,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
-"n%100==4 ? 2 : 3;\n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
+"%100==4 ? 2 : 3;\n"
 "X-Generator: Weblate 3.10\n"
 
 #. module: project_budget
@@ -56,6 +56,7 @@ msgid "Practical Amount"
 msgstr "Dejanski znesek"
 
 #. module: project_budget
+#: model:ir.model,name:project_budget.model_project_project
 #: model:ir.model.fields,field_description:project_budget.field_crossovered_budget__project_id
 msgid "Project"
 msgstr "Projekt"
@@ -85,7 +86,5 @@ msgstr "Uporabniške dostopne pravice za projektne proračune"
 msgid "Viewer"
 msgstr "Gledalec"
 
-#. module: project_budget
-#: model:ir.model,name:project_budget.model_project_project
-msgid "WBS element"
-msgstr "Projektni člen"
+#~ msgid "WBS element"
+#~ msgstr "Projektni člen"
