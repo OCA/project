@@ -95,8 +95,8 @@ msgstr ""
 "\n"
 "    <br/>\n"
 "    <p>In caso di dubbi non esitate a contattarci.</p>\n"
-"    <p>Vi ringraziamo per aver scelto ${object.company_id.name or 'us'}!</p>"
-"\n"
+"    <p>Vi ringraziamo per aver scelto ${object.company_id.name or 'us'}!</"
+"p>\n"
 "    <br/>\n"
 "    <br/>\n"
 "    <div style=\"width: 375px; margin: 0px; padding: 0px; background-color: "
@@ -110,8 +110,8 @@ msgstr ""
 "    <div style=\"width: 347px; margin: 0px; padding: 5px 14px; line-height: "
 "16px; background-color: #F2F2F2;\">\n"
 "        <span style=\"color: #222; margin-bottom: 5px; display: block; \">\n"
-"            ${object.company_id.partner_id.sudo().with_context("
-"show_address=True, html_format=True).name_get()[0][1] | safe}\n"
+"            ${object.company_id.partner_id.sudo()."
+"with_context(show_address=True, html_format=True).name_get()[0][1] | safe}\n"
 "        </span>\n"
 "        % if object.company_id.phone:\n"
 "            <div style=\"margin-top: 0px; margin-right: 0px; margin-bottom: "
@@ -141,6 +141,21 @@ msgstr "${object.company_id.name} Lavoro (Rif. ${object.name or 'n/a'})"
 #, python-format
 msgid "Compose Email"
 msgstr "Componi Email"
+
+#. module: project_task_send_by_mail
+#: model:ir.model.fields,field_description:project_task_send_by_mail.field_project_task__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: project_task_send_by_mail
+#: model:ir.model.fields,field_description:project_task_send_by_mail.field_project_task__id
+msgid "ID"
+msgstr ""
+
+#. module: project_task_send_by_mail
+#: model:ir.model.fields,field_description:project_task_send_by_mail.field_project_task____last_update
+msgid "Last Modified on"
+msgstr ""
 
 #. module: project_task_send_by_mail
 #: model_terms:ir.ui.view,arch_db:project_task_send_by_mail.view_task_form2
