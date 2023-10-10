@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-10-09 08:28+0000\n"
+"PO-Revision-Date: 2023-10-10 12:41+0000\n"
 "Last-Translator: Wesley Oliveira <wesleygabrieldeoliveira@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
@@ -29,7 +29,7 @@ msgstr "Tarefa do Projeto"
 #. module: project_stock_request
 #: model:ir.model,name:project_stock_request.model_stock_request_order
 msgid "Stock Request Order"
-msgstr "Pedido de Requisição de Estoque"
+msgstr "Ordem de Requisição de Estoque"
 
 #. module: project_stock_request
 #: model:ir.model.fields,field_description:project_stock_request.field_project_project__stock_request_order_ids
@@ -37,7 +37,7 @@ msgstr "Pedido de Requisição de Estoque"
 #: model_terms:ir.ui.view,arch_db:project_stock_request.project_stock_request_order_view_form2
 #: model_terms:ir.ui.view,arch_db:project_stock_request.project_task_stock_request_order_view_form
 msgid "Stock Request Orders"
-msgstr "Pedidos de Requisição de Estoque"
+msgstr "Ordens de Requisição de Estoque"
 
 #. module: project_stock_request
 #: model:ir.model,name:project_stock_request.model_project_task
