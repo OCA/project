@@ -30,6 +30,7 @@ setuptools.setup(
         'odoo-addon-project_task_code>=15.0dev,<15.1dev',
         'odoo-addon-project_task_default_stage>=15.0dev,<15.1dev',
         'odoo-addon-project_task_dependency>=15.0dev,<15.1dev',
+        'odoo-addon-project_task_description_template>=15.0dev,<15.1dev',
         'odoo-addon-project_task_material>=15.0dev,<15.1dev',
         'odoo-addon-project_task_milestone>=15.0dev,<15.1dev',
         'odoo-addon-project_task_personal_stage_auto_fold>=15.0dev,<15.1dev',

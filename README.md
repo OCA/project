@@ -43,6 +43,7 @@ addon | version | maintainers | summary
 [project_task_code](project_task_code/) | 15.0.1.0.4 |  | Sequential Code for Tasks
 [project_task_default_stage](project_task_default_stage/) | 15.0.1.0.0 |  | Recovery default task stages for projects from v8
 [project_task_dependency](project_task_dependency/) | 15.0.1.0.0 | [![astirpe](https://github.com/astirpe.png?size=30px)](https://github.com/astirpe) | Enables to define dependencies (other tasks) of a task
+[project_task_description_template](project_task_description_template/) | 15.0.1.0.0 |  | Add a description template to project tasks
 [project_task_material](project_task_material/) | 15.0.1.0.0 |  | Record products spent in a Task
 [project_task_milestone](project_task_milestone/) | 15.0.1.0.0 | [![mantux11](https://github.com/mantux11.png?size=30px)](https://github.com/mantux11) | Project Task Milestones
 [project_task_personal_stage_auto_fold](project_task_personal_stage_auto_fold/) | 15.0.1.0.3 |  | Moves task to the first fold personal stage when done
