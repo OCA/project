@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-05-10 02:40+0000\n"
-"PO-Revision-Date: 2023-07-03 14:10+0000\n"
+"PO-Revision-Date: 2023-10-10 16:38+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
@@ -373,7 +373,7 @@ msgstr "Voce ordine di vendita"
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_project_project__show_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_project_task__show_time_control
 msgid "Show Time Control"
-msgstr "Mostra controllo tempo"
+msgstr "Visualizza controllo orario"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields.selection,name:project_timesheet_time_control.selection__hr_timesheet_time_control_mixin__show_time_control__start
