@@ -118,8 +118,8 @@ msgstr "Gruppo"
 #: model:ir.model.fields,help:project_stock.field_project_task__done_stock_moves
 #: model:ir.model.fields,help:project_stock.field_project_task_type__done_stock_moves
 msgid ""
-"If you check this box, when a task is in this state, you will not be able to"
-" add more stock moves but they can be viewed."
+"If you check this box, when a task is in this state, you will not be able to "
+"add more stock moves but they can be viewed."
 msgstr ""
 "Se si spunta questa opzione, quando un lavoro è in questo stato, non si "
 "potrà aggiungere altri movimenti di magazzino ma potranno essere "
