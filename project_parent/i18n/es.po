@@ -9,20 +9,20 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-02 01:51+0000\n"
-"PO-Revision-Date: 2021-03-30 09:46+0000\n"
-"Last-Translator: Daniel Martinez Vila <daniel.martinez@qubiq.es>\n"
+"PO-Revision-Date: 2023-10-12 15:38+0000\n"
+"Last-Translator: Ivorra78 <informatica@totmaterial.es>\n"
 "Language-Team: Spanish (https://www.transifex.com/oca/teams/23907/es/)\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.3.2\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: project_parent
 #: model:ir.model.fields,field_description:project_parent.field_project_project__child_ids_count
 msgid "Child Ids Count"
-msgstr ""
+msgstr "Recuento de ID de niños"
 
 #. module: project_parent
 #: model_terms:ir.ui.view,arch_db:project_parent.edit_project
@@ -32,7 +32,7 @@ msgstr "Proyectos Hijos"
 #. module: project_parent
 #: model:ir.model.fields,field_description:project_parent.field_project_project__parent_path
 msgid "Parent Path"
-msgstr ""
+msgstr "Ruta Parental"
 
 #. module: project_parent
 #: model:ir.model.fields,field_description:project_parent.field_project_project__parent_id
@@ -42,12 +42,12 @@ msgstr "Proyecto Padre"
 #. module: project_parent
 #: model:ir.model,name:project_parent.model_project_project
 msgid "Project"
-msgstr ""
+msgstr "Proyecto"
 
 #. module: project_parent
 #: model:ir.model.fields,field_description:project_parent.field_project_project__child_ids
 msgid "Sub-projects"
-msgstr ""
+msgstr "Sub-proyectos"
 
 #~ msgid "Analytic Account"
 #~ msgstr "Cuenta analítica"
