@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-04-12 15:32+0000\n"
+"PO-Revision-Date: 2023-10-13 14:36+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.1\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project_kanban
@@ -33,6 +33,9 @@ msgid ""
 "Analytic account to which this project is linked for financial management. "
 "Use an analytic account to record cost and revenue on your project."
 msgstr ""
+"Conto analitico a cui è collegato questo progetto per la gestione "
+"finanziaria. Utilizzare un conto analitico per registrare i costi e ricavi "
+"del progetto."
 
 #. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.edit_project
@@ -104,7 +107,7 @@ msgstr "Dettagli"
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__display_name
 #: model:ir.model.fields,field_description:project_wbs.field_project_project__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nome visualizzato"
 
 #. module: project_wbs
 #: code:addons/project_wbs/models/account_analytic_account.py:0
@@ -142,7 +145,7 @@ msgstr "Percorso completo nella gerarchia WBS"
 #. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project_kanban
 msgid "Go Up"
-msgstr ""
+msgstr "Va su"
 
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_project_project__has_project_child_complete_ids
@@ -153,13 +156,13 @@ msgstr "Ha il progetto figlio completato"
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__id
 #: model:ir.model.fields,field_description:project_wbs.field_project_project__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account____last_update
 #: model:ir.model.fields,field_description:project_wbs.field_project_project____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Ultima modifica il"
 
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__wbs_indent
@@ -240,6 +243,11 @@ msgid ""
 "                internal projects (R&amp;D, Improve Sales Process),\n"
 "                private projects (My Todos) or customer ones."
 msgstr ""
+"I progetti sono utilizzati per organizzare le attività; pianifica\n"
+"                i lavori, traccia le segnalazioni, fattura i fogli ore. Si "
+"possono definire\n"
+"                progetti interni (R&amp;S, miglioramento processo vendite),\n"
+"                progetti privati (i miei da fare) o del cliente."
 
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__code
@@ -364,6 +372,8 @@ msgid ""
 "You will be able collaborate with internal users on\n"
 "                projects or invite customers to share your activities."
 msgstr ""
+"Sarà possibile collaborare con utenti interni nei\n"
+"                progetti o invitare clienti a condividere le attività."
 
 #~ msgid ""
 #~ "Link this project to an analytic account if you need financial management "
