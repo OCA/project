@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-31 18:04+0000\n"
-"PO-Revision-Date: 2023-06-29 14:10+0000\n"
+"PO-Revision-Date: 2023-10-13 14:36+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (http://www.transifex.com/oca/OCA-project-8-0/"
 "language/it/)\n"
@@ -197,12 +197,12 @@ msgstr "Imposta a timebox"
 #. module: project_gtd
 #: model_terms:ir.ui.view,arch_db:project_gtd.view_project_gtd_empty
 msgid "Start Timebox Empty Process."
-msgstr ""
+msgstr "Avvia processo svuotamento timebox."
 
 #. module: project_gtd
 #: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty__state
 msgid "State"
-msgstr ""
+msgstr "Stato"
 
 #. module: project_gtd
 #: model:ir.model,name:project_gtd.model_project_task
@@ -284,12 +284,12 @@ msgstr "Viaggio"
 #. module: project_gtd
 #: model:ir.model.fields.selection,name:project_gtd.selection__project_timebox_empty__state__done
 msgid "done"
-msgstr ""
+msgstr "evaso"
 
 #. module: project_gtd
 #: model:ir.model.fields.selection,name:project_gtd.selection__project_timebox_empty__state__init
 msgid "init"
-msgstr ""
+msgstr "inizializza"
 
 #~ msgid "Name"
 #~ msgstr "Nome"
