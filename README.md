@@ -21,9 +21,10 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
+[project_administrator_restricted_visibility](project_administrator_restricted_visibility/) | 15.0.1.0.0 |  | Adds a 'Project Administrator' access group with restricted visibility to 'Projects'
 [project_department](project_department/) | 15.0.1.0.1 |  | Project Department Categorization
 [project_duplicate_subtask](project_duplicate_subtask/) | 15.0.1.0.0 |  | The module adds an action to duplicate tasks with the child subtasks
-[project_forecast_line](project_forecast_line/) | 15.0.1.3.1 |  | Project Forecast Lines
+[project_forecast_line](project_forecast_line/) | 15.0.1.3.3 |  | Project Forecast Lines
 [project_forecast_line_bokeh_chart](project_forecast_line_bokeh_chart/) | 15.0.1.0.2 |  | Project Forecast Lines Bokeh Chart
 [project_forecast_line_holidays_public](project_forecast_line_holidays_public/) | 15.0.1.1.0 |  | Project Forecast Lines taking public holidays into account
 [project_hr](project_hr/) | 15.0.1.0.0 | [![pedrobaeza](https://github.com/pedrobaeza.png?size=30px)](https://github.com/pedrobaeza) | Link HR with project
@@ -31,17 +32,18 @@ addon | version | maintainers | summary
 [project_milestone](project_milestone/) | 15.0.1.0.1 | [![patrickrwilson](https://github.com/patrickrwilson.png?size=30px)](https://github.com/patrickrwilson) | Project Milestones
 [project_parent_task_filter](project_parent_task_filter/) | 15.0.1.1.0 |  | Add a filter to show the parent tasks
 [project_purchase_analytic_global](project_purchase_analytic_global/) | 15.0.1.0.1 | [![yankinmax](https://github.com/yankinmax.png?size=30px)](https://github.com/yankinmax) | Project - Create Purchase Orders with Analytic Account
-[project_role](project_role/) | 15.0.1.0.1 | [![alexey-pelykh](https://github.com/alexey-pelykh.png?size=30px)](https://github.com/alexey-pelykh) | Project role-based roster
-[project_sequence](project_sequence/) | 15.0.0.2.1 | [![yajo](https://github.com/yajo.png?size=30px)](https://github.com/yajo) [![anddago78](https://github.com/anddago78.png?size=30px)](https://github.com/anddago78) | Add a sequence field to projects, filled automatically
+[project_role](project_role/) | 15.0.1.0.2 | [![alexey-pelykh](https://github.com/alexey-pelykh.png?size=30px)](https://github.com/alexey-pelykh) | Project role-based roster
+[project_sequence](project_sequence/) | 15.0.0.2.2 | [![yajo](https://github.com/yajo.png?size=30px)](https://github.com/yajo) [![anddago78](https://github.com/anddago78.png?size=30px)](https://github.com/anddago78) | Add a sequence field to projects, filled automatically
 [project_stage_mgmt](project_stage_mgmt/) | 15.0.1.0.0 | [![DavidJForgeFlow](https://github.com/DavidJForgeFlow.png?size=30px)](https://github.com/DavidJForgeFlow) | Allows to assign and create task stages on project creation wizard
 [project_status](project_status/) | 15.0.1.0.0 | [![patrickrwilson](https://github.com/patrickrwilson.png?size=30px)](https://github.com/patrickrwilson) | Project Status
-[project_stock](project_stock/) | 15.0.1.0.4 | [![victoralmau](https://github.com/victoralmau.png?size=30px)](https://github.com/victoralmau) | Project Stock
+[project_stock](project_stock/) | 15.0.1.0.6 | [![victoralmau](https://github.com/victoralmau.png?size=30px)](https://github.com/victoralmau) | Project Stock
 [project_stock_product_set](project_stock_product_set/) | 15.0.1.0.2 | [![victoralmau](https://github.com/victoralmau.png?size=30px)](https://github.com/victoralmau) | Project Stock Product Set
 [project_stock_request](project_stock_request/) | 15.0.1.0.0 |  | Create stock requests from a projects and project tasks
 [project_task_add_very_high](project_task_add_very_high/) | 15.0.1.0.0 | [![astirpe](https://github.com/astirpe.png?size=30px)](https://github.com/astirpe) | Adds extra options 'High' and 'Very High' on tasks
 [project_task_code](project_task_code/) | 15.0.1.0.4 |  | Sequential Code for Tasks
 [project_task_default_stage](project_task_default_stage/) | 15.0.1.0.0 |  | Recovery default task stages for projects from v8
 [project_task_dependency](project_task_dependency/) | 15.0.1.0.0 | [![astirpe](https://github.com/astirpe.png?size=30px)](https://github.com/astirpe) | Enables to define dependencies (other tasks) of a task
+[project_task_description_template](project_task_description_template/) | 15.0.1.0.0 |  | Add a description template to project tasks
 [project_task_material](project_task_material/) | 15.0.1.0.0 |  | Record products spent in a Task
 [project_task_milestone](project_task_milestone/) | 15.0.1.0.0 | [![mantux11](https://github.com/mantux11.png?size=30px)](https://github.com/mantux11) | Project Task Milestones
 [project_task_personal_stage_auto_fold](project_task_personal_stage_auto_fold/) | 15.0.1.0.3 |  | Moves task to the first fold personal stage when done
@@ -49,9 +51,9 @@ addon | version | maintainers | summary
 [project_task_stage_state](project_task_stage_state/) | 15.0.1.0.1 |  | Restore State attribute removed from Project Stages in 8.0
 [project_template](project_template/) | 15.0.1.0.0 | [![patrickrwilson](https://github.com/patrickrwilson.png?size=30px)](https://github.com/patrickrwilson) | Project Templates
 [project_template_milestone](project_template_milestone/) | 15.0.1.0.0 | [![patrickrwilson](https://github.com/patrickrwilson.png?size=30px)](https://github.com/patrickrwilson) | Adds function to copy of milestones when creating a project from template
-[project_timeline](project_timeline/) | 15.0.1.1.0 |  | Timeline view for projects
+[project_timeline](project_timeline/) | 15.0.1.2.1 |  | Timeline view for projects
 [project_timeline_hr_timesheet](project_timeline_hr_timesheet/) | 15.0.1.0.0 |  | Shows the progress of tasks on the timeline view.
-[project_timesheet_time_control](project_timesheet_time_control/) | 15.0.1.1.0 | [![ernestotejeda](https://github.com/ernestotejeda.png?size=30px)](https://github.com/ernestotejeda) | Project timesheet time control
+[project_timesheet_time_control](project_timesheet_time_control/) | 15.0.1.1.1 | [![ernestotejeda](https://github.com/ernestotejeda.png?size=30px)](https://github.com/ernestotejeda) | Project timesheet time control
 [project_type](project_type/) | 15.0.1.0.1 |  | Project Types
 [project_wbs](project_wbs/) | 15.0.1.0.0 |  | Apply Work Breakdown Structure
 

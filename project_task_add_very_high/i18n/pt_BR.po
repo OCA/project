@@ -11,8 +11,8 @@ msgstr ""
 "POT-Creation-Date: 2017-03-17 09:31+0000\n"
 "PO-Revision-Date: 2020-08-12 20:00+0000\n"
 "Last-Translator: Rodrigo Macedo <rmsolucoeseminformatic4@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/teams/"
-"23907/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/"
+"teams/23907/pt_BR/)\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -27,8 +27,8 @@ msgstr "Alto"
 
 #. module: project_task_add_very_high
 #: model:ir.model.fields,field_description:project_task_add_very_high.field_project_task__priority
-msgid "Priority"
-msgstr "Prioridade"
+msgid "Starred"
+msgstr ""
 
 #. module: project_task_add_very_high
 #: model:ir.model,name:project_task_add_very_high.model_project_task
@@ -39,3 +39,6 @@ msgstr "Tarefa"
 #: model:ir.model.fields.selection,name:project_task_add_very_high.selection__project_task__priority__3
 msgid "Very High"
 msgstr "Muito Alto"
+
+#~ msgid "Priority"
+#~ msgstr "Prioridade"

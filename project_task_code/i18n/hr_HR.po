@@ -21,6 +21,11 @@ msgstr ""
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
 #. module: project_task_code
+#: model_terms:ir.ui.view,arch_db:project_task_code.project_task_code_form_view
+msgid "<span class=\"oe_inline\"> - </span>"
+msgstr ""
+
+#. module: project_task_code
 #: model:ir.model,name:project_task_code.model_project_task
 msgid "Task"
 msgstr "Zadatak"

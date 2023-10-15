@@ -26,7 +26,7 @@
                             <t t-foreach="record.user_ids" t-as="user">
                                 <img
                                     t-if="record.user_ids"
-                                    t-attf-src="/web/image/res.users/#{user}/image_128/16x16"
+                                    t-attf-src="/web/image/res.users/#{user}/avatar_128/16x16"
                                     t-att-title="record.user"
                                     width="16"
                                     height="16"
@@ -56,6 +56,18 @@
         <field
             name="view_mode"
         >kanban,tree,form,calendar,timeline,pivot,graph,activity</field>
+    </record>
+    <record id="view_task_project_user_timeline" model="ir.ui.view">
+        <field name="model">report.project.task.user</field>
+        <field name="type">timeline</field>
+        <field name="arch" type="xml">
+            <timeline
+                date_start="date_assign"
+                date_stop="date_end"
+                default_group_by="project_id"
+                event_open_popup="true"
+            />
+        </field>
     </record>
     <record id="project.action_project_task_user_tree" model="ir.actions.act_window">
         <field name="view_mode">graph,pivot,timeline</field>

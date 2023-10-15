@@ -26,8 +26,8 @@ msgstr "Haute"
 
 #. module: project_task_add_very_high
 #: model:ir.model.fields,field_description:project_task_add_very_high.field_project_task__priority
-msgid "Priority"
-msgstr "Priorité"
+msgid "Starred"
+msgstr ""
 
 #. module: project_task_add_very_high
 #: model:ir.model,name:project_task_add_very_high.model_project_task
@@ -38,3 +38,6 @@ msgstr "Tâche"
 #: model:ir.model.fields.selection,name:project_task_add_very_high.selection__project_task__priority__3
 msgid "Very High"
 msgstr "Très haute"
+
+#~ msgid "Priority"
+#~ msgstr "Priorité"

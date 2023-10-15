@@ -20,6 +20,11 @@ msgstr ""
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #. module: project_task_code
+#: model_terms:ir.ui.view,arch_db:project_task_code.project_task_code_form_view
+msgid "<span class=\"oe_inline\"> - </span>"
+msgstr ""
+
+#. module: project_task_code
 #: model:ir.model,name:project_task_code.model_project_task
 msgid "Task"
 msgstr "مهمة"
