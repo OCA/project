@@ -114,7 +114,7 @@ class TestProjectTimesheetTimeControl(common.TransactionCase):
         # Open a new running AAL without wizard
         running_timer = self.line.copy({"unit_amount": False})
         # Use resume wizard
-        self.line.invalidate_cache()
+        self.line.invalidate_model()
         self.assertEqual(self.line.show_time_control, "resume")
         resume_action = self.line.button_resume_work()
         wizard = self._create_wizard(resume_action, self.line)
@@ -145,7 +145,7 @@ class TestProjectTimesheetTimeControl(common.TransactionCase):
         """If a line has no start date, can only resume it."""
         self.assertEqual(self.line.show_time_control, "stop")
         self.line.date_time = False
-        self.line.invalidate_cache()
+        self.line.invalidate_model()
         self.assertEqual(self.line.show_time_control, "resume")
 
     def test_error_multiple_running_timers(self):
@@ -168,15 +168,15 @@ class TestProjectTimesheetTimeControl(common.TransactionCase):
         self.assertFalse(self.project.show_time_control)
         # Stop line without task, now we see stop button
         line_without_task.button_end_work()
-        self.project.invalidate_cache()
+        self.project.invalidate_model()
         self.assertEqual(self.project.show_time_control, "stop")
         self.project.button_end_work()
         # No more running lines, cannot stop again
         with self.assertRaises(exceptions.UserError):
             self.project.button_end_work()
         # All lines stopped, start new one
-        self.task.invalidate_cache()
-        self.project.invalidate_cache()
+        self.task.invalidate_model()
+        self.project.invalidate_model()
         self.assertEqual(self.project.show_time_control, "start")
         start_action = self.project.button_start_work()
         wizard = self._create_wizard(start_action, self.project)
