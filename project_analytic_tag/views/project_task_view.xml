@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_task_form2" model="ir.ui.view">
+        <field name="name">project.task.form</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2" />
+        <field name="arch" type="xml">
+            <field name="analytic_account_id" position="after">
+                <field
+                    name="analytic_tag_ids"
+                    groups="account_analytic_tag.group_analytic_tags"
+                    widget="many2many_tags"
+                />
+            </field>
+        </field>
+    </record>
+</odoo>
