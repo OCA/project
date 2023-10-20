@@ -116,7 +116,7 @@ class ForecastLineReporting(models.TransientModel):
                 data_project[employee] = {}
                 data_overload[employee] = {}
             forecast = d["consolidated_forecast"]
-            date = d["__range"]["date_from"]["from"]
+            date = d["__range"]["date_from:%s" % self.granularity]["from"]
             project = d.get("project_id")
             if project:
                 project = project[1]._value
