@@ -21,7 +21,7 @@
                         colspan="4"
                         domain="[('product_set_id', '=', product_set_id)]"
                     >
-                        <tree string="Product set lines">
+                        <tree>
                             <field
                                 name="product_id"
                                 options="{'no_open': True, 'no_create': True}"
