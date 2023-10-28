@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-05-10 02:40+0000\n"
-"PO-Revision-Date: 2023-10-28 09:43+0000\n"
+"PO-Revision-Date: 2023-10-28 09:51+0000\n"
 "Last-Translator: Adriano Prado <adrianojprado@gmail.com>\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/teams/"
 "23907/pt_BR/)\n"
@@ -82,7 +82,7 @@ msgstr ""
 #. module: project_timesheet_time_control
 #: model:ir.model,name:project_timesheet_time_control.model_account_analytic_line
 msgid "Analytic Line"
-msgstr "Linhas Analíticas"
+msgstr "Linha Analítica"
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
@@ -244,7 +244,7 @@ msgstr "Retomar trabalho"
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_project_project__show_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_project_task__show_time_control
 msgid "Show Time Control"
-msgstr "Mostrar controle de tempo"
+msgstr "Mostrar Controle de Tempo"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields.selection,name:project_timesheet_time_control.selection__hr_timesheet_time_control_mixin__show_time_control__start
@@ -262,7 +262,7 @@ msgstr "Hora de início"
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
 msgid "Start new timer"
-msgstr "Data hora"
+msgstr "Iniciar novo cronômetro"
 
 #. module: project_timesheet_time_control
 #. odoo-python
@@ -307,7 +307,7 @@ msgstr "Pare o cronômetro antigo e comece o novo"
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_kanban
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_tree2_inherited
 msgid "Stop work"
-msgstr "Parar"
+msgstr "Pare o trabalho"
 
 #. module: project_timesheet_time_control
 #: model:ir.model,name:project_timesheet_time_control.model_project_task
@@ -324,31 +324,33 @@ msgstr "Isso é muito tempo! Certifique-se de que está tudo bem antes de salvar
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
 msgid "The previous timer is old. Do you really want to stop it now?"
 msgstr ""
+"O cronômetro anterior é antigo. Você realmente quer parar com isso agora?"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,help:project_timesheet_time_control.field_hr_timesheet_switch__running_timer_id
 msgid "This timer is running and will be stopped"
-msgstr ""
+msgstr "Este cronômetro está funcionando e será interrompido"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,help:project_timesheet_time_control.field_hr_timesheet_switch__running_timer_duration
 msgid "When the previous timer is stopped, it will save this duration."
 msgstr ""
+"Quando o cronômetro anterior for interrompido, ele salvará esta duração."
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
 msgid "You have a running timer called"
-msgstr ""
+msgstr "Você tem um cronômetro em execução chamado"
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
 msgid "and started at"
-msgstr ""
+msgstr "e começou em"
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
 msgid "hour(s)."
-msgstr ""
+msgstr "hora(s)."
 
 #, fuzzy
 #~ msgid "Analytic Account"
