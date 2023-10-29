@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="edit_project" model="ir.ui.view">
+        <field name="name">project.project.form</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project_task_pull_request.edit_project" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='pr_required_states']" position="after">
+                <field name="pr_state_default" />
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>
