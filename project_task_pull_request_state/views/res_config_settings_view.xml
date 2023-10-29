@@ -1,0 +1,31 @@
+<odoo>
+<record id="res_config_settings_view_form" model="ir.ui.view">
+    <field name="name">res.config.settings.view.form.pr.state</field>
+    <field name="model">res.config.settings</field>
+    <field name="inherit_id" ref="project.res_config_settings_view_form" />
+    <field name="arch" type="xml">
+        <xpath expr="//div[@data-key='project']" position="inside">
+            <h2>Project Task Pull Request</h2>
+            <div
+                    class="row mt16 o_settings_container"
+                    id="project_task_pull_request_state_settings"
+                    title="Srttings"
+                >
+                <div class="col-12 col-lg-6 o_setting_box">
+                    <div class="o_setting_right_pane">
+                        <label for="pr_state_default" />
+                        <div class="text-muted">
+                            Default PR state. Used in case default PR state is not defined in project
+                        </div>
+                        <div class="content-group">
+                            <div class="mt16">
+                                <field name="pr_state_default" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </field>
+</record>
+</odoo>
