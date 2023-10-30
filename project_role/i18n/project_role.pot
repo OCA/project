@@ -199,7 +199,6 @@ msgstr ""
 
 #. module: project_role
 #: model:ir.model.fields,help:project_role.field_project_assignment__message_has_error
-#: model:ir.model.fields,help:project_role.field_project_assignment__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
 msgstr ""
 
@@ -372,11 +371,6 @@ msgstr ""
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
 msgid "Roles &amp; Assignments"
-msgstr ""
-
-#. module: project_role
-#: model:ir.model.fields,field_description:project_role.field_project_assignment__message_has_sms_error
-msgid "SMS Delivery error"
 msgstr ""
 
 #. module: project_role
