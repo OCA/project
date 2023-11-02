@@ -4,7 +4,7 @@
 {
     "name": "Project Parent Task Filter",
     "summary": "Add filters to show the parent or non parent tasks",
-    "version": "14.0.1.2.0",
+    "version": "14.0.1.2.1",
     "category": "Project",
     "website": "https://github.com/OCA/project",
     "author": "C2i Change 2 improve, " "Odoo Community Association (OCA)",
