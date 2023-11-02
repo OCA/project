@@ -96,7 +96,6 @@ msgstr "Línea de conjunto de productos"
 
 #. module: project_stock_product_set
 #: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__product_set_line_ids
-#: model_terms:ir.ui.view,arch_db:project_stock_product_set.product_set_add_from_task_form_view
 msgid "Product set lines"
 msgstr "Línea de conjunto de productos"
 
