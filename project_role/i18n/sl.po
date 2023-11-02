@@ -213,7 +213,6 @@ msgstr "Če označeno pomeni, da nova sporočila zahtevajo vašo pozornost."
 
 #. module: project_role
 #: model:ir.model.fields,help:project_role.field_project_assignment__message_has_error
-#: model:ir.model.fields,help:project_role.field_project_assignment__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
 msgstr ""
 "Če označeno pomeni, da je pri nekaterih sporočilih prišlo do napake pri "
@@ -392,12 +391,6 @@ msgid "Roles &amp; Assignments"
 msgstr "Vloge in zadolžitve"
 
 #. module: project_role
-#: model:ir.model.fields,field_description:project_role.field_project_assignment__message_has_sms_error
-#, fuzzy
-msgid "SMS Delivery error"
-msgstr "Napaka ob dostavi sporočila"
-
-#. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
 msgid "Setup project roles"
 msgstr "Nastavi projektne vloge"
@@ -464,6 +457,10 @@ msgstr "Sporočila spletne strani"
 #: model:ir.model.fields,help:project_role.field_project_assignment__website_message_ids
 msgid "Website communication history"
 msgstr "Kronologija komunikacij spletne strani"
+
+#, fuzzy
+#~ msgid "SMS Delivery error"
+#~ msgstr "Napaka ob dostavi sporočila"
 
 #~ msgid "Inactive"
 #~ msgstr "Neaktivno"

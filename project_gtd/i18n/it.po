@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-31 18:04+0000\n"
-"PO-Revision-Date: 2023-06-29 14:10+0000\n"
+"PO-Revision-Date: 2023-10-13 14:36+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (http://www.transifex.com/oca/OCA-project-8-0/"
 "language/it/)\n"
@@ -20,7 +20,7 @@ msgstr ""
 "X-Generator: Weblate 4.17\n"
 
 #. module: project_gtd
-#: model:ir.ui.view,arch_db:project_gtd.view_project_gtd_fill
+#: model_terms:ir.ui.view,arch_db:project_gtd.view_project_gtd_fill
 msgid "Add to Timebox"
 msgstr "Aggiungi al timebox"
 
@@ -30,15 +30,16 @@ msgid "Car"
 msgstr "Macchina"
 
 #. module: project_gtd
-#: model:ir.ui.view,arch_db:project_gtd.view_project_gtd_empty
+#: model_terms:ir.ui.view,arch_db:project_gtd.view_project_gtd_empty
+#: model_terms:ir.ui.view,arch_db:project_gtd.view_project_gtd_fill
 msgid "Close"
 msgstr "Chiudi"
 
 #. module: project_gtd
 #: model:ir.model,name:project_gtd.model_project_gtd_context
-#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context_name
-#: model:ir.model.fields,field_description:project_gtd.field_project_task_context_id
-#: model:ir.ui.view,arch_db:project_gtd.view_task_gtd_search
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context__name
+#: model:ir.model.fields,field_description:project_gtd.field_project_task__context_id
+#: model_terms:ir.ui.view,arch_db:project_gtd.view_task_gtd_search
 msgid "Context"
 msgstr "Contesto"
 
@@ -49,7 +50,7 @@ msgid "Contexts"
 msgstr "Contesti"
 
 #. module: project_gtd
-#: model:ir.actions.act_window,help:project_gtd.open_gtd_context_tree
+#: model_terms:ir.actions.act_window,help:project_gtd.open_gtd_context_tree
 msgid ""
 "Contexts are defined in the \"Getting Things Done\" methodology. It allows "
 "you to categorize your tasks according to the context in which they have to "
@@ -60,46 +61,49 @@ msgstr ""
 "essere svolte: ufficio, casa, macchina, etc."
 
 #. module: project_gtd
-#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context_create_uid
-#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_timebox_create_uid
-#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty_create_uid
-#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_create_uid
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context__create_uid
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_timebox__create_uid
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty__create_uid
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan__create_uid
 msgid "Created by"
 msgstr "Creato da"
 
 #. module: project_gtd
-#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context_create_date
-#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_timebox_create_date
-#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty_create_date
-#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_create_date
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context__create_date
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_timebox__create_date
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty__create_date
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan__create_date
 msgid "Created on"
 msgstr "Creato il"
 
 #. module: project_gtd
-#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context_display_name
-#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_timebox_display_name
-#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty_display_name
-#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_display_name
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context__display_name
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_timebox__display_name
+#: model:ir.model.fields,field_description:project_gtd.field_project_task__display_name
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty__display_name
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan__display_name
 msgid "Display Name"
 msgstr "Nome visualizzato"
 
 #. module: project_gtd
 #: model:ir.actions.act_window,name:project_gtd.action_project_gtd_empty
+#: model_terms:ir.ui.view,arch_db:project_gtd.view_project_gtd_empty
 msgid "Empty Timebox"
 msgstr "Timebox vuoti"
 
 #. module: project_gtd
-#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_timebox_id
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan__timebox_id
 msgid "Get from Timebox"
 msgstr "Recupera da timebox"
 
 #. module: project_gtd
-#: model:ir.model.fields,help:project_gtd.field_project_gtd_context_sequence
+#: model:ir.model.fields,help:project_gtd.field_project_gtd_context__sequence
 msgid "Gives the sequence order when displaying a list of contexts."
-msgstr "Fornisce l'ordinamento quando viene visualizzata una lista di contesti."
+msgstr ""
+"Fornisce l'ordinamento quando viene visualizzata una lista di contesti."
 
 #. module: project_gtd
-#: model:ir.model.fields,help:project_gtd.field_project_gtd_timebox_sequence
+#: model:ir.model.fields,help:project_gtd.field_project_gtd_timebox__sequence
 msgid "Gives the sequence order when displaying a list of timebox."
 msgstr "Definizione della sequenza sulla lista del timebox."
 
@@ -109,34 +113,36 @@ msgid "Home"
 msgstr "Home"
 
 #. module: project_gtd
-#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context_id
-#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_timebox_id
-#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty_id
-#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_id
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context__id
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_timebox__id
+#: model:ir.model.fields,field_description:project_gtd.field_project_task__id
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty__id
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan__id
 msgid "ID"
 msgstr "ID"
 
 #. module: project_gtd
-#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context___last_update
-#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_timebox___last_update
-#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty___last_update
-#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan___last_update
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context____last_update
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_timebox____last_update
+#: model:ir.model.fields,field_description:project_gtd.field_project_task____last_update
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty____last_update
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan____last_update
 msgid "Last Modified on"
 msgstr "Ultima modifica il"
 
 #. module: project_gtd
-#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context_write_uid
-#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_timebox_write_uid
-#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty_write_uid
-#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_write_uid
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context__write_uid
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_timebox__write_uid
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty__write_uid
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan__write_uid
 msgid "Last Updated by"
 msgstr "Ultimo aggiornamento di"
 
 #. module: project_gtd
-#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context_write_date
-#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_timebox_write_date
-#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty_write_date
-#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_write_date
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context__write_date
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_timebox__write_date
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty__write_date
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan__write_date
 msgid "Last Updated on"
 msgstr "Ultimo aggiornamento il"
 
@@ -152,12 +158,7 @@ msgid "My Tasks (GTD)"
 msgstr "I miei lavori (GTD)"
 
 #. module: project_gtd
-#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty_name
-msgid "Name"
-msgstr "Nome"
-
-#. module: project_gtd
-#: code:addons/project_gtd/wizard/project_gtd_empty.py:29
+#: code:addons/project_gtd/wizard/project_gtd_empty.py:0
 #, python-format
 msgid "No timebox child of this one!"
 msgstr "Non c'è un timebox figlio!"
@@ -183,15 +184,25 @@ msgid "Project Timebox Fill"
 msgstr "Riempi il timebox progettuale"
 
 #. module: project_gtd
-#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context_sequence
-#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_timebox_sequence
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_context__sequence
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_timebox__sequence
 msgid "Sequence"
 msgstr "Sequenza"
 
 #. module: project_gtd
-#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_timebox_to_id
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan__timebox_to_id
 msgid "Set to Timebox"
 msgstr "Imposta a timebox"
+
+#. module: project_gtd
+#: model_terms:ir.ui.view,arch_db:project_gtd.view_project_gtd_empty
+msgid "Start Timebox Empty Process."
+msgstr "Avvia processo svuotamento timebox."
+
+#. module: project_gtd
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_empty__state
+msgid "State"
+msgstr "Stato"
 
 #. module: project_gtd
 #: model:ir.model,name:project_gtd.model_project_task
@@ -205,12 +216,12 @@ msgid "Tasks (GTD)"
 msgstr "Lavori (GTD)"
 
 #. module: project_gtd
-#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan_task_ids
+#: model:ir.model.fields,field_description:project_gtd.field_project_timebox_fill_plan__task_ids
 msgid "Tasks selection"
 msgstr "Selezione Attività"
 
 #. module: project_gtd
-#: model:ir.model.fields,help:project_gtd.field_project_task_context_id
+#: model:ir.model.fields,help:project_gtd.field_project_task__context_id
 msgid "The context place where user has to treat task"
 msgstr "Il contesto definisce il dove l'utente affronta l'attivita"
 
@@ -220,19 +231,20 @@ msgid "This Week"
 msgstr "Questa settimana"
 
 #. module: project_gtd
-#: model:ir.model.fields,help:project_gtd.field_project_task_timebox_id
+#: model:ir.model.fields,help:project_gtd.field_project_task__timebox_id
 msgid "Time-laps during which task has to be treated"
 msgstr "Lasso di tempo durante il quale l'attività deve essere trattata"
 
 #. module: project_gtd
-#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_timebox_name
-#: model:ir.model.fields,field_description:project_gtd.field_project_task_timebox_id
-#: model:ir.ui.view,arch_db:project_gtd.view_task_gtd_search
+#: model:ir.model,name:project_gtd.model_project_gtd_timebox
+#: model:ir.model.fields,field_description:project_gtd.field_project_gtd_timebox__name
+#: model:ir.model.fields,field_description:project_gtd.field_project_task__timebox_id
+#: model_terms:ir.ui.view,arch_db:project_gtd.view_task_gtd_search
 msgid "Timebox"
 msgstr "Timebox"
 
 #. module: project_gtd
-#: model:ir.ui.view,arch_db:project_gtd.view_project_gtd_empty
+#: model_terms:ir.ui.view,arch_db:project_gtd.view_project_gtd_empty
 msgid "Timebox Empty Process Completed Successfully."
 msgstr "Processo di svuotamento del timebox completato."
 
@@ -243,7 +255,7 @@ msgid "Timeboxes"
 msgstr "Timebox"
 
 #. module: project_gtd
-#: model:ir.actions.act_window,help:project_gtd.open_gtd_timebox_tree
+#: model_terms:ir.actions.act_window,help:project_gtd.open_gtd_timebox_tree
 msgid ""
 "Timeboxes are defined in the \"Getting Things Done\" methodology. A timebox "
 "defines a period of time in order to categorize your tasks: today, this "
@@ -254,8 +266,8 @@ msgstr ""
 "attività: oggi, questa settimana, questo mese, lungo termine."
 
 #. module: project_gtd
-#: model:ir.ui.view,arch_db:project_gtd.project_task
-#: model:ir.ui.view,arch_db:project_gtd.project_task_tree
+#: model_terms:ir.ui.view,arch_db:project_gtd.project_task
+#: model_terms:ir.ui.view,arch_db:project_gtd.project_task_tree
 msgid "Timeframe"
 msgstr "Periodo di tempo"
 
@@ -270,14 +282,23 @@ msgid "Travel"
 msgstr "Viaggio"
 
 #. module: project_gtd
-#: model:ir.ui.view,arch_db:project_gtd.view_project_gtd_fill
-msgid "or"
-msgstr "o"
+#: model:ir.model.fields.selection,name:project_gtd.selection__project_timebox_empty__state__done
+msgid "done"
+msgstr "evaso"
 
 #. module: project_gtd
-#: model:ir.model,name:project_gtd.model_project_gtd_timebox
-msgid "project.gtd.timebox"
-msgstr "project.gtd.timebox"
+#: model:ir.model.fields.selection,name:project_gtd.selection__project_timebox_empty__state__init
+msgid "init"
+msgstr "inizializza"
+
+#~ msgid "Name"
+#~ msgstr "Nome"
+
+#~ msgid "or"
+#~ msgstr "o"
+
+#~ msgid "project.gtd.timebox"
+#~ msgstr "project.gtd.timebox"
 
 #~ msgid "Cancel"
 #~ msgstr "Annulla"

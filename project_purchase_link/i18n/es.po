@@ -27,44 +27,50 @@ msgid "# Purchase Invoice"
 msgstr "N.º de facturas de compra"
 
 #. module: project_purchase_link
-#: model:ir.model,name:project_purchase_link.model_project_project
-msgid "Project"
-msgstr "Proyecto"
+#: model:ir.model.fields,field_description:project_purchase_link.field_project_project__display_name
+msgid "Display Name"
+msgstr ""
 
-#. module: project_purchase_utilities
-#: code:addons/project_purchase_utilities/models/project_project.py:86
-#: model:ir.ui.view,arch_db:project_purchase_utilities.project_project_view_form
+#. module: project_purchase_link
+#: model:ir.model.fields,field_description:project_purchase_link.field_project_project__id
+msgid "ID"
+msgstr ""
+
+#. module: project_purchase_link
+#: model:ir.model.fields,field_description:project_purchase_link.field_project_project____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: project_purchase_link
+#: model_terms:ir.ui.view,arch_db:project_purchase_link.project_project_view_form
+msgid "PO Invoice Total"
+msgstr ""
+
+#. module: project_purchase_link
+#: model_terms:ir.ui.view,arch_db:project_purchase_link.project_project_view_form
+msgid "PO Invoices"
+msgstr ""
+
+#. module: project_purchase_link
+#: code:addons/project_purchase_link/models/project_project.py:0
 #, python-format
 msgid "Purchase Invoice Lines"
 msgstr "Líneas de factura de compra"
 
 #. module: project_purchase_link
 #: model:ir.model.fields,field_description:project_purchase_link.field_project_project__purchase_invoice_line_total
-#: model_terms:ir.ui.view,arch_db:project_purchase_link.project_project_view_form
 #, fuzzy
 msgid "Purchase Invoice Total"
 msgstr "Facturas de compra"
 
 #. module: project_purchase_link
-#: model_terms:ir.ui.view,arch_db:project_purchase_link.project_project_view_form
-msgid "Purchase Invoices"
-msgstr "Facturas de compra"
-
-#. module: project_purchase_utilities
-#: model:ir.ui.view,arch_db:project_purchase_utilities.project_project_view_form
-msgid "Purchase Lines"
-msgstr "Líneas de compra"
-
-#. module: project_purchase_utilities
-#: code:addons/project_purchase_utilities/models/project_project.py:46
+#: code:addons/project_purchase_link/models/project_project.py:0
 #, python-format
 msgid "Purchase Order"
 msgstr "Pedido de compra"
 
 #. module: project_purchase_link
 #: code:addons/project_purchase_link/models/project_project.py:0
-#. module: project_purchase_utilities
-#: code:addons/project_purchase_utilities/models/project_project.py:59
 #, python-format
 msgid "Purchase Order Lines"
 msgstr "Líneas de pedido de compra"
@@ -80,3 +86,17 @@ msgstr "Compras"
 #: model_terms:ir.ui.view,arch_db:project_purchase_link.project_project_view_form
 msgid "Purchases"
 msgstr "Compras"
+
+#. module: project_purchase_link
+#: model:ir.model,name:project_purchase_link.model_project_project
+msgid "WBS element"
+msgstr ""
+
+#~ msgid "Project"
+#~ msgstr "Proyecto"
+
+#~ msgid "Purchase Invoices"
+#~ msgstr "Facturas de compra"
+
+#~ msgid "Purchase Lines"
+#~ msgstr "Líneas de compra"

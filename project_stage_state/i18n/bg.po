@@ -24,13 +24,31 @@ msgid "Cancelled"
 msgstr ""
 
 #. module: project_stage_state
+#: model:ir.model.fields,field_description:project_stage_state.field_project_task__display_name
+#: model:ir.model.fields,field_description:project_stage_state.field_project_task_type__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: project_stage_state
 #: model:ir.model.fields.selection,name:project_stage_state.selection__project_task_type__state__done
 msgid "Done"
 msgstr "Готово"
 
 #. module: project_stage_state
+#: model:ir.model.fields,field_description:project_stage_state.field_project_task__id
+#: model:ir.model.fields,field_description:project_stage_state.field_project_task_type__id
+msgid "ID"
+msgstr ""
+
+#. module: project_stage_state
 #: model:ir.model.fields.selection,name:project_stage_state.selection__project_task_type__state__open
 msgid "In Progress"
+msgstr ""
+
+#. module: project_stage_state
+#: model:ir.model.fields,field_description:project_stage_state.field_project_task____last_update
+#: model:ir.model.fields,field_description:project_stage_state.field_project_task_type____last_update
+msgid "Last Modified on"
 msgstr ""
 
 #. module: project_stage_state

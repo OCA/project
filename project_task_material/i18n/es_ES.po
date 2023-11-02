@@ -31,16 +31,19 @@ msgid "Created on"
 msgstr "Creado en"
 
 #. module: project_task_material
+#: model:ir.model.fields,field_description:project_task_material.field_project_task__display_name
 #: model:ir.model.fields,field_description:project_task_material.field_project_task_material__display_name
 msgid "Display Name"
 msgstr "Nombre para mostrar"
 
 #. module: project_task_material
+#: model:ir.model.fields,field_description:project_task_material.field_project_task__id
 #: model:ir.model.fields,field_description:project_task_material.field_project_task_material__id
 msgid "ID"
 msgstr "ID"
 
 #. module: project_task_material
+#: model:ir.model.fields,field_description:project_task_material.field_project_task____last_update
 #: model:ir.model.fields,field_description:project_task_material.field_project_task_material____last_update
 msgid "Last Modified on"
 msgstr "Última modificación en"
@@ -62,7 +65,6 @@ msgstr ""
 
 #. module: project_task_material
 #: model:ir.model.fields,field_description:project_task_material.field_project_task__material_ids
-#: model_terms:ir.ui.view,arch_db:project_task_material.view_project_task_form_material
 msgid "Material Used"
 msgstr ""
 

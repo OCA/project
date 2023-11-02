@@ -28,8 +28,28 @@ msgid "# Purchase Invoice"
 msgstr "# prejeti račun"
 
 #. module: project_purchase_link
-#: model:ir.model,name:project_purchase_link.model_project_project
-msgid "Project"
+#: model:ir.model.fields,field_description:project_purchase_link.field_project_project__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: project_purchase_link
+#: model:ir.model.fields,field_description:project_purchase_link.field_project_project__id
+msgid "ID"
+msgstr ""
+
+#. module: project_purchase_link
+#: model:ir.model.fields,field_description:project_purchase_link.field_project_project____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: project_purchase_link
+#: model_terms:ir.ui.view,arch_db:project_purchase_link.project_project_view_form
+msgid "PO Invoice Total"
+msgstr ""
+
+#. module: project_purchase_link
+#: model_terms:ir.ui.view,arch_db:project_purchase_link.project_project_view_form
+msgid "PO Invoices"
 msgstr ""
 
 #. module: project_purchase_link
@@ -40,14 +60,8 @@ msgstr "Postavke prejetega računa"
 
 #. module: project_purchase_link
 #: model:ir.model.fields,field_description:project_purchase_link.field_project_project__purchase_invoice_line_total
-#: model_terms:ir.ui.view,arch_db:project_purchase_link.project_project_view_form
 msgid "Purchase Invoice Total"
 msgstr "Prejeti račun skupaj"
-
-#. module: project_purchase_link
-#: model_terms:ir.ui.view,arch_db:project_purchase_link.project_project_view_form
-msgid "Purchase Invoices"
-msgstr "Prejeti računi"
 
 #. module: project_purchase_link
 #: code:addons/project_purchase_link/models/project_project.py:0
@@ -72,5 +86,10 @@ msgstr "Skupaj nabava"
 msgid "Purchases"
 msgstr "Nabave"
 
-#~ msgid "WBS element"
-#~ msgstr "Projektni člen"
+#. module: project_purchase_link
+#: model:ir.model,name:project_purchase_link.model_project_project
+msgid "WBS element"
+msgstr "Projektni člen"
+
+#~ msgid "Purchase Invoices"
+#~ msgstr "Prejeti računi"

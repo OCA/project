@@ -5,11 +5,11 @@
 
 {
     "name": "Project Task Stage Closed",
-    "summary": "Project Task Stage Closed" "",
-    "author": "ACSONE SA/NV," "Tecnativa," "Odoo Community Association (OCA)",
+    "summary": "Project Task Stage Closed",
+    "author": "ACSONE SA/NV,Tecnativa,Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/project",
     "category": "Project Management",
-    "version": "14.0.2.0.0",
+    "version": "14.0.2.0.1",
     "license": "AGPL-3",
     "depends": [
         "project",

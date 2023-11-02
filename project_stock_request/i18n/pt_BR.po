@@ -6,49 +6,51 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2023-10-06 13:52+0000\n"
+"Last-Translator: Wesley Oliveira <wesleygabrieldeoliveira@gmail.com>\n"
 "Language-Team: none\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: project_stock_request
 #: model:ir.model.fields,field_description:project_stock_request.field_project_project__display_name
 #: model:ir.model.fields,field_description:project_stock_request.field_project_task__display_name
 #: model:ir.model.fields,field_description:project_stock_request.field_stock_request_order__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nome exibido"
 
 #. module: project_stock_request
 #: model:ir.model.fields,field_description:project_stock_request.field_project_project__id
 #: model:ir.model.fields,field_description:project_stock_request.field_project_task__id
 #: model:ir.model.fields,field_description:project_stock_request.field_stock_request_order__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_stock_request
 #: model:ir.model.fields,field_description:project_stock_request.field_project_project____last_update
 #: model:ir.model.fields,field_description:project_stock_request.field_project_task____last_update
 #: model:ir.model.fields,field_description:project_stock_request.field_stock_request_order____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Última modificação em"
 
 #. module: project_stock_request
 #: model:ir.model.fields,field_description:project_stock_request.field_stock_request_order__project_id
 msgid "Project"
-msgstr ""
+msgstr "Projeto"
 
 #. module: project_stock_request
 #: model:ir.model.fields,field_description:project_stock_request.field_stock_request_order__project_task_id
 msgid "Project Task"
-msgstr ""
+msgstr "Tarefa do Projeto"
 
 #. module: project_stock_request
 #: model:ir.model,name:project_stock_request.model_stock_request_order
 msgid "Stock Request Order"
-msgstr ""
+msgstr "Ordem de Requisição de Estoque"
 
 #. module: project_stock_request
 #: model:ir.model.fields,field_description:project_stock_request.field_project_project__stock_request_order_ids
@@ -56,14 +58,14 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_stock_request.project_stock_request_order_view_form2
 #: model_terms:ir.ui.view,arch_db:project_stock_request.project_task_stock_request_order_view_form
 msgid "Stock Request Orders"
-msgstr ""
+msgstr "Ordens de Requisição de Estoque"
 
 #. module: project_stock_request
 #: model:ir.model,name:project_stock_request.model_project_task
 msgid "Task"
-msgstr ""
+msgstr "Tarefa"
 
 #. module: project_stock_request
 #: model:ir.model,name:project_stock_request.model_project_project
 msgid "WBS element"
-msgstr ""
+msgstr "Elemento WBS"
