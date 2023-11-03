@@ -61,6 +61,7 @@ addon | version | maintainers | summary
 [project_timesheet_time_control](project_timesheet_time_control/) | 14.0.1.1.1 | [![ernestotejeda](https://github.com/ernestotejeda.png?size=30px)](https://github.com/ernestotejeda) | Project timesheet time control
 [project_timesheet_time_control_sale](project_timesheet_time_control_sale/) | 14.0.1.0.0 | [![eLBati](https://github.com/eLBati.png?size=30px)](https://github.com/eLBati) [![bosd](https://github.com/bosd.png?size=30px)](https://github.com/bosd) | Make 'Project timesheet time control' and 'Sales Timesheet' work together
 [project_wbs](project_wbs/) | 14.0.1.0.2 |  | Apply Work Breakdown Structure
+[sale_project_service_tracking_copy_tasks](sale_project_service_tracking_copy_tasks/) | 14.0.1.0.1 | [![shide](https://github.com/shide.png?size=30px)](https://github.com/shide) [![EmilioPascual](https://github.com/EmilioPascual.png?size=30px)](https://github.com/EmilioPascual) | Copy tasks into sale order's project
 
 [//]: # (end addons)
 
