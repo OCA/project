@@ -4,7 +4,7 @@
 {
     "name": "Service tracking: Copy tasks in project",
     "summary": "Copy tasks into sale order's project",
-    "version": "14.0.1.0.0",
+    "version": "14.0.1.0.1",
     "author": "Moduon, Odoo Community Association (OCA)",
     "maintainers": ["shide", "EmilioPascual"],
     "website": "https://github.com/OCA/project",
