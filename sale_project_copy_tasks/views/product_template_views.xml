@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <!-- Copyright 2023 Moduon Team S.L.
-     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl-3.0) -->
+     License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0) -->
 <odoo>
     <record
-        id="product_template_form_view_service_tracking_copy_tasks_in_project"
+        id="product_template_form_inherit_service_tracking_copy_tasks"
         model="ir.ui.view"
     >
         <field
             name="name"
-        >product.template.service.tracking.copy.tasks.in.project.inherit</field>
+        >product.tempale.for.view.inherit.service.tracking.copy.tasks</field>
         <field name="model">product.template</field>
         <field
             name="inherit_id"

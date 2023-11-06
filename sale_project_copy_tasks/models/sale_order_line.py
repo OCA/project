@@ -1,5 +1,5 @@
 # Copyright 2023 Moduon Team S.L.
-# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl-3.0)
+# License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0)
 
 from odoo import models
 
@@ -11,10 +11,11 @@ class SaleOrderLine(models.Model):
         """Adds task inheritance from project_templates
 
         Creates the project in sale order if needed and copies tasks
-        from product project_template to order project"""
+        from product project_template to order project.
+        """
         so_model = self.env["sale.order"]
         mt_note = self.env.ref("mail.mt_note")
-        # Check lines that needs to inherit project template tasks
+        # Check lines that need to inherit project template tasks
         sol_copy_tasks = self.filtered(
             lambda sol: sol.is_service
             and sol.product_id.service_tracking == "copy_tasks_in_project"
