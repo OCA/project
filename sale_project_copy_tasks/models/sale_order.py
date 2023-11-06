@@ -1,5 +1,5 @@
 # Copyright 2023 Moduon Team S.L.
-# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl-3.0)
+# License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0)
 
 from odoo import api, models
 
@@ -9,18 +9,17 @@ class SaleOrder(models.Model):
 
     @api.depends("order_line.product_id.service_tracking")
     def _compute_visible_project(self):
-        """Users should be able to select a project_id on the order if
-        at least one order line has a product with
-        its service tracking configured as 'copy_tasks_in_project'"""
-        super()._compute_visible_project()
+        """Let users select a project on matching orders.
+
+        Affects orders where at least one line has a product with
+        its service tracking configured as 'copy_tasks_in_project'.
+        """
+        result = super()._compute_visible_project()
         for order in self:
-            if any(
-                service_tracking == "copy_tasks_in_project"
-                for service_tracking in order.order_line.mapped(
-                    "product_id.service_tracking"
-                )
-            ):
-                order.visible_project = True
+            order.visible_project = "copy_tasks_in_project" in order.order_line.mapped(
+                "product_id.service_tracking"
+            )
+        return result
 
     def _get_order_project_data(self):
         self.ensure_one()
@@ -39,15 +38,14 @@ class SaleOrder(models.Model):
         created_projects = pp_model.browse()
         for order in self:
             projects = order.mapped("order_line.product_id.project_template_id")
-            project_data = projects[0].copy_data(
-                default=dict(
+            new_project = projects[0].copy(
+                dict(
                     type_ids=projects.mapped("type_ids").ids,
-                    subtask_project_id=False,
                     active=True,
+                    tasks=False,
                     **order._get_order_project_data(),
                 )
             )
-            new_project = pp_model.create(project_data)
             created_projects |= new_project
             order.project_id = new_project
             new_project.analytic_account_id.partner_id = order.partner_id

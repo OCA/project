@@ -1,10 +1,10 @@
 # Copyright 2023 Moduon Team S.L.
-# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl-3.0)
+# License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0)
 
-from odoo.tests.common import SavepointCase
+from odoo.tests.common import TransactionCase
 
 
-class TestCopyTasks(SavepointCase):
+class TestCopyTasks(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
