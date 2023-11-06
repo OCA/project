@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Moduon Team S.L.
+     License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0) -->
+<odoo>
+    <record model="ir.ui.view" id="view_order_form_inherit_sale_project_copy_taks">
+        <field name="name">sale.order.form.inherit.sale.project.copy.tasks</field>
+        <field name="model">sale.order</field>
+        <field
+            name="inherit_id"
+            ref="sale_project.view_order_form_inherit_sale_project"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='project_id']" position="attributes">
+                <attribute name="options">{}</attribute>
+                <attribute
+                    name="context"
+                >{'default_partner_id': partner_id, 'default_sale_order_id': active_id}</attribute>
+                <attribute
+                    name="attrs"
+                >{'invisible': [('visible_project', '=', False)]}</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='order_line']//tree" position="inside">
+                <field string="Project" name="project_id" optional="hidden" />
+            </xpath>
+        </field>
+    </record>
+</odoo>
