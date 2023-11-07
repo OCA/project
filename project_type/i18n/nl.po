@@ -6,86 +6,88 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2023-11-07 11:39+0000\n"
+"Last-Translator: Thijs van Oers <thijsvanoers@yahoo.com>\n"
 "Language-Team: none\n"
 "Language: nl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: project_type
 #: model_terms:ir.ui.view,arch_db:project_type.project_type_form
 msgid "Add a description..."
-msgstr ""
+msgstr "Voeg een omschrijving toe.."
 
 #. module: project_type
 #: model:ir.model.fields,field_description:project_type.field_project_type__project_ok
 #: model_terms:ir.ui.view,arch_db:project_type.project_type_search
 msgid "Can be applied for projects"
-msgstr ""
+msgstr "Toepasbaar op projecten"
 
 #. module: project_type
 #: model:ir.model.fields,field_description:project_type.field_project_type__task_ok
 #: model_terms:ir.ui.view,arch_db:project_type.project_type_search
 msgid "Can be applied for tasks"
-msgstr ""
+msgstr "Toepasbaar voor taken"
 
 #. module: project_type
 #: model:ir.model.fields,field_description:project_type.field_project_type__code
 msgid "Code"
-msgstr ""
+msgstr "Code"
 
 #. module: project_type
 #: model:ir.model.fields,field_description:project_type.field_project_type__complete_name
 msgid "Complete Name"
-msgstr ""
+msgstr "Volledige naam"
 
 #. module: project_type
 #: model:ir.model.fields,field_description:project_type.field_project_type__create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Gemaakt door"
 
 #. module: project_type
 #: model:ir.model.fields,field_description:project_type.field_project_type__create_date
 msgid "Created on"
-msgstr ""
+msgstr "Gemaakt op"
 
 #. module: project_type
 #: model:ir.model.fields,field_description:project_type.field_project_type__description
 #: model_terms:ir.ui.view,arch_db:project_type.project_type_form
 msgid "Description"
-msgstr ""
+msgstr "Omschrijving"
 
 #. module: project_type
 #: model:ir.model.fields,field_description:project_type.field_project_type__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Naam"
 
 #. module: project_type
 #: model:ir.model.fields,field_description:project_type.field_project_type__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_type
 #: model:ir.model.fields,field_description:project_type.field_project_type____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Laatst bijgewerkt op"
 
 #. module: project_type
 #: model:ir.model.fields,field_description:project_type.field_project_type__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Laatst bijgewerkt door"
 
 #. module: project_type
 #: model:ir.model.fields,field_description:project_type.field_project_type__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Laatst bijgewerkt op"
 
 #. module: project_type
 #: model:ir.model.fields,field_description:project_type.field_project_type__name
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 #. module: project_type
 #: model:ir.model.fields,field_description:project_type.field_project_type__parent_id
@@ -107,7 +109,7 @@ msgstr ""
 #: model:ir.actions.act_window,name:project_type.action_project_type
 #: model:ir.ui.menu,name:project_type.project_category
 msgid "Project Types"
-msgstr ""
+msgstr "Projecttypes"
 
 #. module: project_type
 #: model:ir.model.fields,field_description:project_type.field_project_type__child_ids
@@ -118,7 +120,7 @@ msgstr ""
 #. module: project_type
 #: model:ir.model,name:project_type.model_project_task
 msgid "Task"
-msgstr ""
+msgstr "Taak"
 
 #. module: project_type
 #: model:ir.model.fields,field_description:project_type.field_project_project__type_id
@@ -127,11 +129,11 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_type.project_task_search
 #: model_terms:ir.ui.view,arch_db:project_type.project_type_search
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 #. module: project_type
 #. odoo-python
 #: code:addons/project_type/models/project_type.py:0
 #, python-format
 msgid "You cannot create recursive project types."
-msgstr ""
+msgstr "Je kunt geen recursieve projecttypes maken."
