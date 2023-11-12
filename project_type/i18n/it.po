@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-06-23 14:10+0000\n"
+"PO-Revision-Date: 2023-11-12 16:36+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -19,7 +19,7 @@ msgstr ""
 #. module: project_type
 #: model_terms:ir.ui.view,arch_db:project_type.project_type_form
 msgid "Add a description..."
-msgstr "Aggiungi una descrizione..."
+msgstr "Aggiungere una descrizione..."
 
 #. module: project_type
 #: model:ir.model.fields,field_description:project_type.field_project_type__project_ok
