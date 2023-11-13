@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Moduon Team S.L.
+     License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0) -->
+<odoo>
+    <record id="edit_project_inherit_project_sale_order_link" model="ir.ui.view">
+        <field name="name">edit.project.inherit.project.sale.order.link</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button
+                    class="d-none d-md-inline oe_stat_button"
+                    type="object"
+                    name="action_view_so_link"
+                    icon="fa-dollar"
+                    string="Sales Order Linked"
+                    groups="sales_team.group_sale_salesman"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>
