@@ -8,19 +8,21 @@ class ProductSetLine(models.Model):
 
     def _prepare_stock_move_values(self, task, quantity):
         self.ensure_one()
-        return {
+        values = {
             "name": self.product_id.display_name,
             "product_id": self.product_id.id,
             "product_uom_qty": self.quantity * quantity,
             "product_uom": self.product_id.uom_id.id,
-            # According to default values set from stock_move field in task form
-            "location_id": (task.location_id.id or task.project_id.location_id.id),
-            "location_dest_id": (
-                task.location_dest_id.id or task.project_id.location_dest_id.id
-            ),
-            "group_id": task.group_id.id,
             "state": "draft",
             "raw_material_task_id": task.id,
-            "picking_type_id": task.picking_type_id.id
-            or task.project_id.picking_type_id.id,
         }
+        # According to default values set from stock_move field in task form
+        stock_move_model = self.env["stock.move"].with_context(
+            default_raw_material_task_id=task.id
+        )
+        values.update(
+            stock_move_model.default_get(
+                ["group_id", "location_id", "location_dest_id", "picking_type_id"]
+            )
+        )
+        return values

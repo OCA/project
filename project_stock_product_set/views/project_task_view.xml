@@ -4,7 +4,6 @@
         <field name="name">project.task.form</field>
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project_stock.view_task_form2" />
-        <field name="groups_id" eval="[(4, ref('stock.group_stock_user'))]" />
         <field name="arch" type="xml">
             <xpath expr="//header" position="inside">
                 <button
@@ -14,6 +13,7 @@
                     icon="fa-cubes"
                     attrs="{'invisible': ['|', ('use_stock_moves','=',False), ('done_stock_moves', '=', True)]}"
                     string="Add set"
+                    groups="stock.group_stock_user"
                 />
             </xpath>
         </field>
