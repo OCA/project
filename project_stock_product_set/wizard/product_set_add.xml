@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="product_set_add_from_task_form_view" model="ir.ui.view">
+        <field name="name">product.set.add.from.taskform.view</field>
+        <field name="model">product.set.add.from.task</field>
+        <field name="arch" type="xml">
+            <form>
+                <group name="main" colspan="4">
+                    <field name="task_id" invisible="context.get('default_task_id')" />
+                    <field name="partner_id" invisible="1" />
+                    <field
+                        name="product_set_id"
+                        domain="['|',('partner_id', '=', False),('partner_id', '=', partner_id)]"
+                    />
+                    <field name="quantity" />
+                </group>
+                <group name="lines" colspan="4">
+                    <field
+                        name="product_set_line_ids"
+                        nolabel="1"
+                        colspan="4"
+                        domain="[('product_set_id', '=', product_set_id)]"
+                    >
+                        <tree>
+                            <field
+                                name="product_id"
+                                options="{'no_open': True, 'no_create': True}"
+                            />
+                        </tree>
+                    </field>
+                </group>
+                <footer>
+                    <button
+                        name="add_set"
+                        string="Add set"
+                        type="object"
+                        class="oe_highlight"
+                    />
+                    <button special="cancel" string="Cancel" class="oe_link" />
+                </footer>
+            </form>
+        </field>
+    </record>
+    <record
+        id="act_open_wizard_product_set_add_from_task"
+        model="ir.actions.act_window"
+    >
+        <field name="name">Add a set in a project task</field>
+        <field name="res_model">product.set.add.from.task</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="product_set_add_from_task_form_view" />
+        <field name="domain">[]</field>
+        <field name="context">{'default_task_id': active_id}</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

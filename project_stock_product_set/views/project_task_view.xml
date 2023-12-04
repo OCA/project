@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_task_form2" model="ir.ui.view">
+        <field name="name">project.task.form</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project_stock.view_task_form2" />
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button
+                    class="btn-primary"
+                    type="action"
+                    name="%(act_open_wizard_product_set_add_from_task)d"
+                    icon="fa-cubes"
+                    attrs="{'invisible': ['|', ('use_stock_moves','=',False), ('done_stock_moves', '=', True)]}"
+                    string="Add set"
+                    groups="stock.group_stock_user"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,122 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_task_material_set
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 13.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-10 10:27+0000\n"
+"PO-Revision-Date: 2022-08-10 12:28+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: \n"
+"X-Generator: Poedit 2.3\n"
+
+#. module: project_stock_product_set
+#: model:ir.actions.act_window,name:project_stock_product_set.act_open_wizard_product_set_add_from_task
+msgid "Add a set in a project task"
+msgstr "Añadir conjunto en la tarea"
+
+#. module: project_stock_product_set
+#: model_terms:ir.ui.view,arch_db:project_stock_product_set.product_set_add_from_task_form_view
+#: model_terms:ir.ui.view,arch_db:project_stock_product_set.view_task_form2
+msgid "Add set"
+msgstr "Añadir conjunto"
+
+#. module: project_stock_product_set
+#: model_terms:ir.ui.view,arch_db:project_stock_product_set.product_set_add_from_task_form_view
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: project_stock_product_set
+#: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: project_stock_product_set
+#: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: project_stock_product_set
+#: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__partner_id
+msgid "Customer"
+msgstr "Cliente"
+
+#. module: project_stock_product_set
+#: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: project_stock_product_set
+#: model:ir.model.fields,help:project_stock_product_set.field_product_set_add_from_task__skip_existing_products
+msgid ""
+"Enable this to not add new lines for products already included in SO lines."
+msgstr ""
+"Habilite esto para no agregar nuevas líneas para productos ya incluidos en "
+"las líneas SO."
+
+#. module: project_stock_product_set
+#: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__id
+msgid "ID"
+msgstr "ID"
+
+#. module: project_stock_product_set
+#: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: project_stock_product_set
+#: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: project_stock_product_set
+#: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: project_stock_product_set
+#: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__product_set_id
+msgid "Product set"
+msgstr "Línea de conjunto de productos"
+
+#. module: project_stock_product_set
+#: model:ir.model,name:project_stock_product_set.model_product_set_line
+msgid "Product set line"
+msgstr "Línea de conjunto de productos"
+
+#. module: project_stock_product_set
+#: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__product_set_line_ids
+msgid "Product set lines"
+msgstr "Línea de conjunto de productos"
+
+#. module: project_stock_product_set
+#: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__quantity
+msgid "Quantity"
+msgstr "Cantidad"
+
+#. module: project_stock_product_set
+#: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__order_id
+msgid "Sale Order"
+msgstr "Pedido de venta"
+
+#. module: project_stock_product_set
+#: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__skip_existing_products
+msgid "Skip Existing Products"
+msgstr "Omitir productos existentes"
+
+#. module: project_stock_product_set
+#: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__task_id
+msgid "Task"
+msgstr "Tarea"
+
+#. module: project_stock_product_set
+#: model:ir.model,name:project_stock_product_set.model_product_set_add_from_task
+msgid "product.set.add.from.task"
+msgstr "product.set.add.from.task"
