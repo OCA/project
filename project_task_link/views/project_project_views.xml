@@ -5,7 +5,7 @@
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.edit_project" />
         <field name="arch" type="xml">
-            <xpath expr="//sheet//div[@class='oe_button_box']" position="inside">
+            <xpath expr="//sheet//div[hasclass('oe_button_box')]" position="inside">
                 <button
                     name="%(project.act_project_project_2_project_task_all)d"
                     type="action"
