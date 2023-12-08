@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 {
     "name": "Project Task Link",
-    "version": "16.0.1.0.0",
+    "version": "16.0.1.0.1",
     "category": "Project",
     "website": "https://github.com/OCA/project",
     "author": "Quartile Limited, Odoo Community Association (OCA)",
