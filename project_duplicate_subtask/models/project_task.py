@@ -1,15 +1,27 @@
 # Copyright (C) 2021 ForgeFlow S.L.
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html)
 
-from odoo import models
+from odoo import api, models
 
 
 class ProjectTask(models.Model):
     _inherit = "project.task"
 
+    @api.model
+    def _extract_action_dict(self, action):
+        action = action.sudo()
+        return {
+            "name": action.name,
+            "res_model": action.res_model,
+            "view_mode": action.view_mode,
+            "context": action.context,
+            "domain": action.domain,
+            "search_view_id": action.search_view_id,
+            "help": action.help,
+        }
+
     def action_duplicate_subtasks(self):
-        action = self.env.ref("project.action_view_task")
-        result = action.read()[0]
+        action = self._extract_action_dict(self.env.ref("project.action_view_task"))
         task_created = self.env["project.task"]
         for task in self:
             new_task = task.copy()
@@ -27,13 +39,13 @@ class ProjectTask(models.Model):
 
         if len(task_created) == 1:
             res = self.env.ref("project.view_task_form2")
-            result["views"] = [(res and res.id or False, "form")]
-            result["res_id"] = new_task.id
+            action["views"] = [(res and res.id or False, "form")]
+            action["res_id"] = new_task.id
             action["context"] = {
                 "form_view_initial_mode": "edit",
                 "force_detailed_view": "true",
             }
 
         else:
-            result["domain"] = "[('id', 'in', " + str(task_created.ids) + ")]"
-        return result
+            action["domain"] = "[('id', 'in', " + str(task_created.ids) + ")]"
+        return action

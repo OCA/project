@@ -1,6 +1,7 @@
 # Copyright (C) 2021 ForgeFlow S.L.
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html)
 
+from odoo import Command
 from odoo.tests.common import TransactionCase
 
 
@@ -18,9 +19,18 @@ class TestProjectDuplicateSubtask(TransactionCase):
         self.subtask2 = self.env["project.task"].create(
             {"name": "3", "project_id": self.project1.id, "parent_id": self.task1.id}
         )
+        group = self.env.ref("project.group_project_manager")
+        self.user = self.env["res.users"].create(
+            {
+                "name": "PM User",
+                "login": "PM User",
+                "groups_id": [Command.link(group.id)],
+                "email": "tester@test.com",
+            }
+        )
 
     def test_check_subtasks(self):
-        self.task1.action_duplicate_subtasks()
+        self.task1.with_user(self.user).action_duplicate_subtasks()
 
         new_task = self.env["project.task"].search(
             [("name", "ilike", self.task1.name), ("name", "ilike", "copy")]
@@ -33,7 +43,7 @@ class TestProjectDuplicateSubtask(TransactionCase):
         self.sub_subtask1_1 = self.env["project.task"].create(
             {"name": "4", "project_id": self.project1.id, "parent_id": self.subtask1.id}
         )
-        self.task1.action_duplicate_subtasks()
+        self.task1.with_user(self.user).action_duplicate_subtasks()
 
         new_task = self.env["project.task"].search(
             [("name", "ilike", self.task1.name), ("name", "ilike", "copy")]
