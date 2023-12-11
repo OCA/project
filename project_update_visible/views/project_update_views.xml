@@ -1,0 +1,12 @@
+<odoo>
+  <record id="project_update" model="ir.ui.view">
+    <field name="name">project.update.inherit.view.form</field>
+    <field name="model">project.update</field>
+    <field name="inherit_id" ref="project.project_update_view_form" />
+    <field name="arch" type="xml">
+      <xpath expr="//field[@name='project_id']" position="attributes">
+        <attribute name="invisible">0</attribute>
+      </xpath>
+    </field>
+  </record>
+</odoo>

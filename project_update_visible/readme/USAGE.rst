@@ -1,0 +1,1 @@
+#. Go to *Project* > Manage > Project Updates, and then you can see project_id in form view.
