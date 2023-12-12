@@ -41,7 +41,9 @@ class ProjectProject(models.Model):
         for values in vals_list:
             company = None
             if values.get("company_id"):
-                company = companies.filtered(lambda c: c.id == values["company_id"])
+                company = companies.filtered(
+                    lambda c, v=values: c.id == v["company_id"]
+                )
             if company and "inherit_assignments" not in values:
                 values["inherit_assignments"] = company.project_inherit_assignments
 
