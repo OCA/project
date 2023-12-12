@@ -143,7 +143,8 @@ class ProjectAssignment(models.Model):
             ):
                 if assignment.project_id:
                     error = _(
-                        "User %(USER)s can not be assigned to role %(ROLE)s on %(PROJECT)s."
+                        "User %(USER)s can not be assigned to role %(ROLE)s on "
+                        "%(PROJECT)s."
                     ) % {
                         "USER": assignment.user_id.name,
                         "ROLE": assignment.role_id.name,
