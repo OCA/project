@@ -24,6 +24,16 @@
                     <field name="limit_role_to_assignments" />
                 </group>
             </page>
+            <notebook position="inside">
+                <page name="assignments" string="Assignments">
+                    <field name="assignment_ids">
+                        <tree>
+                            <field name="role_id" />
+                            <field name="user_id" />
+                        </tree>
+                    </field>
+                </page>
+            </notebook>
         </field>
     </record>
 </odoo>
