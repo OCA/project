@@ -112,6 +112,6 @@
     <record id="project_risk_action" model="ir.actions.act_window">
         <field name="name">Risks</field>
         <field name="res_model">project.risk</field>
-        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
     </record>
 </odoo>

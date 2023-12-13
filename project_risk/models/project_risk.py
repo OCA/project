@@ -4,30 +4,42 @@
 
 from odoo import api, fields, models
 
-PROBABILITY = {1: "Rare", 2: "Unlikely", 3: "Possible", 4: "Likely", 5: "Very likely"}
+PROBABILITY = {
+    "1": "Rare",
+    "2": "Unlikely",
+    "3": "Possible",
+    "4": "Likely",
+    "5": "Very likely",
+}
 
-IMPACT = {1: "Trivial", 2: "Minor", 3: "Moderate", 4: "Significant", 5: "Extreme"}
+IMPACT = {
+    "1": "Trivial",
+    "2": "Minor",
+    "3": "Moderate",
+    "4": "Significant",
+    "5": "Extreme",
+}
 
 RATING = {
-    1: "N/A",
-    2: "Trivial",
-    3: "Very Low",
-    4: "Low",
-    5: "Low-Medium",
-    6: "Medium",
-    7: "Medium-High",
-    8: "High",
-    9: "Very High",
-    10: "Critical",
+    "1": "N/A",
+    "2": "Trivial",
+    "3": "Very Low",
+    "4": "Low",
+    "5": "Low-Medium",
+    "6": "Medium",
+    "7": "Medium-High",
+    "8": "High",
+    "9": "Very High",
+    "10": "Critical",
 }
 
 PROXIMITY = {
-    1: "Very low",
-    2: "Low",
-    3: "Medium",
-    4: "High",
-    5: "Very High",
-    6: "Imminent",
+    "1": "Very low",
+    "2": "Low",
+    "3": "Medium",
+    "4": "High",
+    "5": "Very High",
+    "6": "Imminent",
 }
 
 
@@ -89,4 +101,6 @@ class ProjectRisk(models.Model):
     @api.depends("probability", "impact")
     def _compute_rating(self):
         for risk in self:
-            risk.rating = risk.probability + risk.impact
+            prob = int(risk.probability) or 1
+            imp = int(risk.impact) or 1
+            risk.rating = str(prob + imp)
