@@ -11,7 +11,7 @@
                         name="state"
                         widget="statusbar"
                         statusbar_visible="draft,active,closed"
-                        clickable="True"
+                        options="{'clickable': '1'}"
                     />
                 </header>
                 <sheet>

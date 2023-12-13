@@ -61,7 +61,7 @@ class ProjectRisk(models.Model):
     description = fields.Html()
 
     probability = fields.Selection(
-        required=True, selection=list(PROBABILITY.items()), track_visibility="onchange"
+        required=True, selection=list(PROBABILITY.items()), tracking=True
     )
 
     impact = fields.Selection(required=True, selection=list(IMPACT.items()))
@@ -70,9 +70,7 @@ class ProjectRisk(models.Model):
         compute="_compute_rating", store=True, selection=list(RATING.items())
     )
 
-    proximity = fields.Selection(
-        selection=list(PROXIMITY.items()), track_visibility="onchange"
-    )
+    proximity = fields.Selection(selection=list(PROXIMITY.items()), tracking=True)
 
     project_risk_response_category_id = fields.Many2one(
         comodel_name="project.risk.response.category", string="Response Category"
@@ -81,15 +79,13 @@ class ProjectRisk(models.Model):
     state = fields.Selection(
         selection=[("draft", "Draft"), ("active", "Active"), ("closed", "Closed")],
         default="draft",
-        track_visibility="onchange",
+        tracking=True,
     )
 
-    owner_id = fields.Many2one(
-        string="Owner", comodel_name="res.users", track_visibility="onchange"
-    )
+    owner_id = fields.Many2one(string="Owner", comodel_name="res.users", tracking=True)
 
     actionee_id = fields.Many2one(
-        string="Actionee", comodel_name="res.users", track_visibility="onchange"
+        string="Actionee", comodel_name="res.users", tracking=True
     )
 
     project_risk_response_ids = fields.One2many(

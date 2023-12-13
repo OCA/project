@@ -18,8 +18,8 @@ class TestProjectRisk(TransactionCase):
                 "name": "Risk X",
                 "project_id": self.project.id,
                 "project_risk_category_id": self.risk_category.id,
-                "probability": 2,
-                "impact": 2,
+                "probability": "2",
+                "impact": "2",
             }
         )
 
@@ -31,4 +31,4 @@ class TestProjectRisk(TransactionCase):
 
     def test_risk(self):
         self.risk.write({"actionee_id": self.env.user.id, "owner_id": self.env.user.id})
-        self.assertEqual(self.risk.rating, 4)
+        self.assertEqual(self.risk.rating, "4")
