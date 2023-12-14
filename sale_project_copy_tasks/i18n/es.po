@@ -17,35 +17,22 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 3.4\n"
 
-#. module: sale_project_service_tracking_copy_tasks
-#: model:ir.model.fields.selection,name:sale_project_service_tracking_copy_tasks.selection__product_template__service_tracking__copy_tasks_in_project
-msgid "Copy tasks into sales order's project"
+#. module: sale_project_copy_tasks
+#: model:ir.model.fields.selection,name:sale_project_copy_tasks.selection__product_template__service_tracking__copy_tasks_in_project
+#, fuzzy
+msgid "Copy tasks into sale order's project"
 msgstr "Copiar tareas en el proyecto del pedido de venta"
 
-#. module: sale_project_service_tracking_copy_tasks
-#: model:ir.model.fields,field_description:sale_project_service_tracking_copy_tasks.field_product_template__display_name
-#: model:ir.model.fields,field_description:sale_project_service_tracking_copy_tasks.field_sale_order__display_name
-#: model:ir.model.fields,field_description:sale_project_service_tracking_copy_tasks.field_sale_order_line__display_name
-msgid "Display Name"
-msgstr "Nombre mostrado"
+#. module: sale_project_copy_tasks
+#: model:ir.model.fields,field_description:sale_project_copy_tasks.field_product_product__service_tracking
+#: model:ir.model.fields,field_description:sale_project_copy_tasks.field_product_template__service_tracking
+#, fuzzy
+msgid "Create on Order"
+msgstr "Pedido de venta"
 
-#. module: sale_project_service_tracking_copy_tasks
-#: model:ir.model.fields,field_description:sale_project_service_tracking_copy_tasks.field_product_template__id
-#: model:ir.model.fields,field_description:sale_project_service_tracking_copy_tasks.field_sale_order__id
-#: model:ir.model.fields,field_description:sale_project_service_tracking_copy_tasks.field_sale_order_line__id
-msgid "ID"
-msgstr "Identificación"
-
-#. module: sale_project_service_tracking_copy_tasks
-#: model:ir.model.fields,field_description:sale_project_service_tracking_copy_tasks.field_product_template____last_update
-#: model:ir.model.fields,field_description:sale_project_service_tracking_copy_tasks.field_sale_order____last_update
-#: model:ir.model.fields,field_description:sale_project_service_tracking_copy_tasks.field_sale_order_line____last_update
-msgid "Last Modified on"
-msgstr "Última modificación el"
-
-#. module: sale_project_service_tracking_copy_tasks
-#: model:ir.model.fields,help:sale_project_service_tracking_copy_tasks.field_product_product__service_tracking
-#: model:ir.model.fields,help:sale_project_service_tracking_copy_tasks.field_product_template__service_tracking
+#. module: sale_project_copy_tasks
+#: model:ir.model.fields,help:sale_project_copy_tasks.field_product_product__service_tracking
+#: model:ir.model.fields,help:sale_project_copy_tasks.field_product_template__service_tracking
 msgid ""
 "On Sales order confirmation, this product can generate a project and/or "
 "task.         From those, you can track the service you are selling.\n"
@@ -61,28 +48,34 @@ msgstr ""
 "respaldo         para crear un nuevo proyecto basado en la plantilla "
 "seleccionada."
 
-#. module: sale_project_service_tracking_copy_tasks
-#: model:ir.model,name:sale_project_service_tracking_copy_tasks.model_product_template
+#. module: sale_project_copy_tasks
+#: model:ir.model,name:sale_project_copy_tasks.model_product_template
 msgid "Product Template"
 msgstr "Plantilla de producto"
 
-#. module: sale_project_service_tracking_copy_tasks
-#: model_terms:ir.ui.view,arch_db:sale_project_service_tracking_copy_tasks.view_order_form_inherit_sale_project
+#. module: sale_project_copy_tasks
+#: model_terms:ir.ui.view,arch_db:sale_project_copy_tasks.view_order_form_inherit_sale_project_copy_taks
 msgid "Project"
 msgstr "Proyecto"
 
-#. module: sale_project_service_tracking_copy_tasks
-#: model:ir.model,name:sale_project_service_tracking_copy_tasks.model_sale_order
+#. module: sale_project_copy_tasks
+#: model:ir.model,name:sale_project_copy_tasks.model_sale_order
 msgid "Sales Order"
 msgstr "Pedido de venta"
 
-#. module: sale_project_service_tracking_copy_tasks
-#: model:ir.model,name:sale_project_service_tracking_copy_tasks.model_sale_order_line
+#. module: sale_project_copy_tasks
+#: model:ir.model,name:sale_project_copy_tasks.model_sale_order_line
 msgid "Sales Order Line"
 msgstr "Línea de pedido de venta"
 
-#. module: sale_project_service_tracking_copy_tasks
-#: model:ir.model.fields,field_description:sale_project_service_tracking_copy_tasks.field_product_product__service_tracking
-#: model:ir.model.fields,field_description:sale_project_service_tracking_copy_tasks.field_product_template__service_tracking
-msgid "Service Tracking"
-msgstr "Seguimiento del servicio"
+#~ msgid "Display Name"
+#~ msgstr "Nombre mostrado"
+
+#~ msgid "ID"
+#~ msgstr "Identificación"
+
+#~ msgid "Last Modified on"
+#~ msgstr "Última modificación el"
+
+#~ msgid "Service Tracking"
+#~ msgstr "Seguimiento del servicio"
