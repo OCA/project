@@ -1,0 +1,74 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sale_project_service_tracking_copy_tasks
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sale_project_service_tracking_copy_tasks
+#: model:ir.model.fields.selection,name:sale_project_service_tracking_copy_tasks.selection__product_template__service_tracking__copy_tasks_in_project
+msgid "Copy tasks into sales order's project"
+msgstr ""
+
+#. module: sale_project_service_tracking_copy_tasks
+#: model:ir.model.fields,field_description:sale_project_service_tracking_copy_tasks.field_product_template__display_name
+#: model:ir.model.fields,field_description:sale_project_service_tracking_copy_tasks.field_sale_order__display_name
+#: model:ir.model.fields,field_description:sale_project_service_tracking_copy_tasks.field_sale_order_line__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: sale_project_service_tracking_copy_tasks
+#: model:ir.model.fields,field_description:sale_project_service_tracking_copy_tasks.field_product_template__id
+#: model:ir.model.fields,field_description:sale_project_service_tracking_copy_tasks.field_sale_order__id
+#: model:ir.model.fields,field_description:sale_project_service_tracking_copy_tasks.field_sale_order_line__id
+msgid "ID"
+msgstr ""
+
+#. module: sale_project_service_tracking_copy_tasks
+#: model:ir.model.fields,field_description:sale_project_service_tracking_copy_tasks.field_product_template____last_update
+#: model:ir.model.fields,field_description:sale_project_service_tracking_copy_tasks.field_sale_order____last_update
+#: model:ir.model.fields,field_description:sale_project_service_tracking_copy_tasks.field_sale_order_line____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: sale_project_service_tracking_copy_tasks
+#: model:ir.model.fields,help:sale_project_service_tracking_copy_tasks.field_product_product__service_tracking
+#: model:ir.model.fields,help:sale_project_service_tracking_copy_tasks.field_product_template__service_tracking
+msgid ""
+"On Sales order confirmation, this product can generate a project and/or task.         From those, you can track the service you are selling.\n"
+"         'In sale order's project': Will use the sale order's configured project if defined or fallback to         creating a new project based on the selected template."
+msgstr ""
+
+#. module: sale_project_service_tracking_copy_tasks
+#: model:ir.model,name:sale_project_service_tracking_copy_tasks.model_product_template
+msgid "Product Template"
+msgstr ""
+
+#. module: sale_project_service_tracking_copy_tasks
+#: model_terms:ir.ui.view,arch_db:sale_project_service_tracking_copy_tasks.view_order_form_inherit_sale_project
+msgid "Project"
+msgstr ""
+
+#. module: sale_project_service_tracking_copy_tasks
+#: model:ir.model,name:sale_project_service_tracking_copy_tasks.model_sale_order
+msgid "Sales Order"
+msgstr ""
+
+#. module: sale_project_service_tracking_copy_tasks
+#: model:ir.model,name:sale_project_service_tracking_copy_tasks.model_sale_order_line
+msgid "Sales Order Line"
+msgstr ""
+
+#. module: sale_project_service_tracking_copy_tasks
+#: model:ir.model.fields,field_description:sale_project_service_tracking_copy_tasks.field_product_product__service_tracking
+#: model:ir.model.fields,field_description:sale_project_service_tracking_copy_tasks.field_product_template__service_tracking
+msgid "Service Tracking"
+msgstr ""

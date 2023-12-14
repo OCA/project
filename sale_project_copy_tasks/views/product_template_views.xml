@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Moduon Team S.L.
+     License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0) -->
+<odoo>
+    <record
+        id="product_template_form_inherit_service_tracking_copy_tasks"
+        model="ir.ui.view"
+    >
+        <field
+            name="name"
+        >product.tempale.for.view.inherit.service.tracking.copy.tasks</field>
+        <field name="model">product.template</field>
+        <field
+            name="inherit_id"
+            ref="sale_project.product_template_form_view_invoice_policy_inherit_sale_project"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='project_template_id']" position="attributes">
+                <attribute
+                    name="attrs"
+                >{'invisible': [('service_tracking', 'not in', ['task_in_project', 'project_only', 'copy_tasks_in_project'])], 'required': [('service_tracking', 'in', ['copy_tasks_in_project'])]}</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>
