@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-11-02 10:36+0000\n"
+"PO-Revision-Date: 2023-12-18 10:34+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -230,7 +230,7 @@ msgstr "Prenotato"
 #: model_terms:ir.ui.view,arch_db:project_stock.view_task_form2
 #, python-format
 msgid "Scrap"
-msgstr "Scarta"
+msgstr "Scarto"
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_task__scrap_count
