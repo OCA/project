@@ -28,6 +28,7 @@ msgid "PR URI"
 msgstr "PR URI"
 
 #. module: project_task_pull_request
+#. odoo-python
 #: code:addons/project_task_pull_request/models/project_task.py:0
 #, python-format
 msgid ""
@@ -35,6 +36,11 @@ msgid ""
 msgstr ""
 "Por favor, agregue la URI para el pull request antes de mover la tarea a "
 "esta etapa."
+
+#. module: project_task_pull_request
+#: model:ir.model,name:project_task_pull_request.model_project_project
+msgid "Project"
+msgstr "Proyecto"
 
 #. module: project_task_pull_request
 #: model_terms:ir.ui.view,arch_db:project_task_pull_request.edit_project
@@ -46,10 +52,8 @@ msgstr "Pull Request URIs"
 msgid "Task"
 msgstr "Tarea"
 
-#. module: project_task_pull_request
-#: model:ir.model,name:project_task_pull_request.model_project_project
-msgid "WBS element"
-msgstr "Elemento WBS"
+#~ msgid "WBS element"
+#~ msgstr "Elemento WBS"
 
 #~ msgid "Display Name"
 #~ msgstr "Mostrar Nombre"
@@ -59,6 +63,3 @@ msgstr "Elemento WBS"
 
 #~ msgid "Last Modified on"
 #~ msgstr "Última modificación en"
-
-#~ msgid "Project"
-#~ msgstr "Proyecto"
