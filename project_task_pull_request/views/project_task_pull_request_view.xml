@@ -25,7 +25,7 @@
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.edit_project" />
         <field name="arch" type="xml">
-            <xpath expr="//group[@name='extra_settings']" position="inside">
+            <xpath expr="//group[@name='extra_settings']" position="before">
                 <group string="Pull Request URIs">
                     <field name="pr_required_states" widget="many2many_checkboxes" />
                 </group>
