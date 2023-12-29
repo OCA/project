@@ -38,3 +38,13 @@ class TestProjectTaskCode(common.TransactionCase):
         )
         result = project_task.name_get()
         self.assertEqual(result[0][1], "[%s] Task Testing Get Name" % code)
+
+    def test_name_search(self):
+        code = self.task_sequence.get()
+        project_task_code = self.project_task.code
+        result = self.project_task._name_search(name=code)
+
+        if code == project_task_code:
+            self.assertTrue(result, f"Expected task to be returned for code {code}")
+        else:
+            self.assertFalse(result, f"No task should be returned for code {code}")
