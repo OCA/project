@@ -48,4 +48,3 @@ class TestProjectTaskCode(common.TransactionCase):
             self.assertTrue(result, f"Expected task to be returned for code {code}")
         else:
             self.assertFalse(result, f"No task should be returned for code {code}")
-
