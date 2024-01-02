@@ -45,4 +45,4 @@ class TestProjectTaskCode(common.TransactionCase):
 
         self.assertTrue(
 +            result and len(result) > 0, f"No tasks containing code {code} were found"
-+        ) 
+        )
