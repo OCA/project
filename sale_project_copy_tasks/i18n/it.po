@@ -22,7 +22,6 @@ msgid "Copy tasks into sale order's project"
 msgstr "Copia lavori nel progetto dell'ordine di vendita"
 
 #. module: sale_project_copy_tasks
-#: model:ir.model.fields,field_description:sale_project_copy_tasks.field_product_product__service_tracking
 #: model:ir.model.fields,field_description:sale_project_copy_tasks.field_product_template__service_tracking
 msgid "Create on Order"
 msgstr "Crea un ordine"
