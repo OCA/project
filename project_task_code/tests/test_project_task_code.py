@@ -44,5 +44,5 @@ class TestProjectTaskCode(common.TransactionCase):
         result = self.project_task._name_search(name=code)
 
         self.assertTrue(
-+            result and len(result) > 0, f"No tasks containing code {code} were found"
+            result and len(result) > 0, f"No tasks containing code {code} were found"
         )
