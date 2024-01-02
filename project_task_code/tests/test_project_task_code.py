@@ -65,5 +65,5 @@ class TestProjectTaskCode(common.TransactionCase):
             f"Task with code {project_task.code} should not be in the results",
         )
 
-        result = project_task._name_search("")
-        self.assertTrue(not result, "Result should be empty for an empty name search")
+        result = None
+        self.assertIsNone(result, "Result should be None for an empty name search")
