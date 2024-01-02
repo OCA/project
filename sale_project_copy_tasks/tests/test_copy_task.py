@@ -8,9 +8,18 @@ class TestCopyTasks(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-
+        cls.plan = cls.env["account.analytic.plan"].create(
+            {
+                "name": "Projects Plan",
+                "company_id": False,
+            }
+        )
         cls.analytic_account_sale = cls.env["account.analytic.account"].create(
-            {"name": "Project for selling timesheet - AA", "code": "AA-2030"}
+            {
+                "name": "Project for selling timesheet - AA",
+                "code": "AA-2030",
+                "plan_id": cls.plan.id,
+            }
         )
 
         # Create projects
