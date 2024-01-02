@@ -43,4 +43,5 @@ class TestProjectTaskCode(common.TransactionCase):
         code = self.task_sequence.code
         result = self.project_task._name_search(name=code)
 
-        self.assertTrue(result, f"Expected task to be returned for code {code}")
+        self.assertTrue(result and len(result) > 0, f"No tasks containing code {code} were found")
+
