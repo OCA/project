@@ -66,4 +66,4 @@ class TestProjectTaskCode(common.TransactionCase):
         )
 
         result = project_task._name_search("")
-        self.assertFalse(result, "Result should be empty for an empty name search")
+        self.assertTrue(not result, "Result should be empty for an empty name search")
