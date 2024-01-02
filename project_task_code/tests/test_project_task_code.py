@@ -40,20 +40,15 @@ class TestProjectTaskCode(common.TransactionCase):
         self.assertEqual(result[0][1], "[%s] Task Testing Get Name" % code)
 
     def test_name_search(self):
-        project_task = self.env["project.task"].create(
-            {"name": "Test Task", "code": "TEST-123"}
-        )
+        project_task = self.env["project.task"].create({"name": "Test Task", "code": "TEST-123"})
+        result = project_task._name_search("TEST-123")
+        self.assertIn(project_task.id, result, f"Task with code {project_task.code} should be in the results")
 
         result = project_task._name_search("TEST")
-        self.assertIn(
-            project_task.id,
-            result,
-            f"Task with code {project_task.code} should be in the results",
-        )
+        self.assertIn(project_task.id, result, f"Task with code {project_task.code} should be in the results")
 
         result = project_task._name_search("NON_EXISTENT_CODE")
-        self.assertNotIn(
-            project_task.id,
-            result,
-            f"Task with code {project_task.code} should not be in the results",
-        )
+        self.assertNotIn(project_task.id, result, f"Task with code {project_task.code} should not be in the results")
+
+        result = project_task._name_search("")
+        self.assertFalse(result, "Result should be empty for an empty name search")
