@@ -8,5 +8,6 @@
     "website": "https://github.com/OCA/project",
     "license": "AGPL-3",
     "depends": ["project"],
+    "data": ["views/project_task_views.xml"],
     "installable": True,
 }
