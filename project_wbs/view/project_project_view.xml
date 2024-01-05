@@ -109,10 +109,6 @@
                 <field name="account_class" string="Class" />
                 <field name="child_ids" invisible="True" />
             </field>
-            <field name="user_id" position="after">
-                <field name="date_start" string="Start Date" />
-                <field name="date" string="End Date" />
-            </field>
         </field>
     </record>
 

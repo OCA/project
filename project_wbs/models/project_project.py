@@ -191,13 +191,11 @@ class Project(models.Model):
     )
     wbs_indent = fields.Char(
         related="analytic_account_id.wbs_indent",
-        readonly=False,
     )
     complete_wbs_code = fields.Char(
         related="analytic_account_id.complete_wbs_code",
         string="WBS Code",
         store=True,
-        readonly=False,
     )
     code = fields.Char(
         related="analytic_account_id.code",
@@ -205,7 +203,6 @@ class Project(models.Model):
     )
     complete_wbs_name = fields.Char(
         related="analytic_account_id.complete_wbs_name",
-        readonly=False,
     )
     project_analytic_id = fields.Many2one(
         related="analytic_account_id.project_analytic_id", readonly=True, store=True
