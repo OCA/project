@@ -115,11 +115,6 @@ msgid "Edit project"
 msgstr "Modifica progetto"
 
 #. module: project_wbs
-#: model_terms:ir.ui.view,arch_db:project_wbs.view_project
-msgid "End Date"
-msgstr "Data fine"
-
-#. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__complete_wbs_code
 msgid "Full WBS Code"
 msgstr "Codice WBS completo"
@@ -244,11 +239,6 @@ msgid "Root Analytic Account"
 msgstr "Conto analitico radice"
 
 #. module: project_wbs
-#: model_terms:ir.ui.view,arch_db:project_wbs.view_project
-msgid "Start Date"
-msgstr "Data inizio"
-
-#. module: project_wbs
 #: model:ir.model.fields,help:project_wbs.field_account_analytic_account__account_class
 #: model:ir.model.fields,help:project_wbs.field_project_project__account_class
 msgid ""
@@ -356,3 +346,9 @@ msgid ""
 msgstr ""
 "Sarà possibile collaborare con utenti interni nei\n"
 "                progetti o invitare clienti a condividere le attività."
+
+#~ msgid "End Date"
+#~ msgstr "Data fine"
+
+#~ msgid "Start Date"
+#~ msgstr "Data inizio"
