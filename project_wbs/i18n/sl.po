@@ -112,11 +112,6 @@ msgid "Edit project"
 msgstr "Uredi projekt"
 
 #. module: project_wbs
-#: model_terms:ir.ui.view,arch_db:project_wbs.view_project
-msgid "End Date"
-msgstr "Končni datum"
-
-#. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__complete_wbs_code
 msgid "Full WBS Code"
 msgstr "Polna koda členitve"
@@ -236,11 +231,6 @@ msgid "Root Analytic Account"
 msgstr "Temeljni konto"
 
 #. module: project_wbs
-#: model_terms:ir.ui.view,arch_db:project_wbs.view_project
-msgid "Start Date"
-msgstr "Začetni datum"
-
-#. module: project_wbs
 #: model:ir.model.fields,help:project_wbs.field_account_analytic_account__account_class
 #: model:ir.model.fields,help:project_wbs.field_project_project__account_class
 msgid ""
@@ -344,6 +334,12 @@ msgid ""
 "You will be able collaborate with internal users on\n"
 "                projects or invite customers to share your activities."
 msgstr ""
+
+#~ msgid "End Date"
+#~ msgstr "Končni datum"
+
+#~ msgid "Start Date"
+#~ msgstr "Začetni datum"
 
 #~ msgid ""
 #~ "Link this project to an analytic account if you need financial management "

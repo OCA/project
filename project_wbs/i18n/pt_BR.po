@@ -109,11 +109,6 @@ msgid "Edit project"
 msgstr ""
 
 #. module: project_wbs
-#: model_terms:ir.ui.view,arch_db:project_wbs.view_project
-msgid "End Date"
-msgstr ""
-
-#. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__complete_wbs_code
 msgid "Full WBS Code"
 msgstr ""
@@ -230,11 +225,6 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__project_analytic_id
 #: model:ir.model.fields,field_description:project_wbs.field_project_project__project_analytic_id
 msgid "Root Analytic Account"
-msgstr ""
-
-#. module: project_wbs
-#: model_terms:ir.ui.view,arch_db:project_wbs.view_project
-msgid "Start Date"
 msgstr ""
 
 #. module: project_wbs
