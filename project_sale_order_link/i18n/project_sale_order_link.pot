@@ -4,10 +4,8 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 15.0+e\n"
+"Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-11-13 15:39+0000\n"
-"PO-Revision-Date: 2023-11-13 15:39+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -21,11 +19,6 @@ msgid "Order Line Link"
 msgstr ""
 
 #. module: project_sale_order_link
-#: model:ir.model,name:project_sale_order_link.model_project_project
-msgid "Project"
-msgstr ""
-
-#. module: project_sale_order_link
 #: model:ir.model.fields,field_description:project_sale_order_link.field_project_project__sale_order_link_ids
 msgid "Sale Order Link"
 msgstr ""
@@ -33,4 +26,9 @@ msgstr ""
 #. module: project_sale_order_link
 #: model_terms:ir.ui.view,arch_db:project_sale_order_link.edit_project_inherit_project_sale_order_link
 msgid "Sales Order Linked"
+msgstr ""
+
+#. module: project_sale_order_link
+#: model:ir.model,name:project_sale_order_link.model_project_project
+msgid "WBS element"
 msgstr ""
