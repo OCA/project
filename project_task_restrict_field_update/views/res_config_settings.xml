@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="project.res_config_settings_view_form" />
+        <field name="priority">99</field>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='tasks_management']" position="inside">
+                <div
+                    class="col-lg-6 col-12 o_setting_box"
+                    id="default_bypass_restriction"
+                >
+                    <div class="o_setting_left_pane">
+                        <field name="bypass_restriction" />
+                    </div>
+                    <div class="o_setting_right_pane">
+                        <span class="o_form_label">Bypass for Task Creator</span>
+                        <div class="text-muted" />
+                    </div>
+                </div>
+                <div
+                    class="col-lg-6 col-12 o_setting_box"
+                    id="default_restricted_field_ids"
+                >
+                    <div class="o_setting_left_pane" />
+                    <div class="o_setting_right_pane">
+                        <span class="o_form_label">Restricted Fields</span>
+                        <div class="text-muted" />
+                        <field name="restricted_field_ids" widget="many2many_tags" />
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
