@@ -33,6 +33,7 @@ setuptools.setup(
         'odoo-addon-project_timesheet_time_control>=16.0dev,<16.1dev',
         'odoo-addon-project_type>=16.0dev,<16.1dev',
         'odoo-addon-project_update_visible>=16.0dev,<16.1dev',
+        'odoo-addon-sale_project_copy_tasks>=16.0dev,<16.1dev',
     ],
     classifiers=[
         'Programming Language :: Python',
