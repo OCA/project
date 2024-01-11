@@ -16,7 +16,11 @@ class ProjectTask(models.Model):
     )
 
     _sql_constraints = [
-        ("project_task_unique_code", "UNIQUE (code)", _("The code must be unique!")),
+        (
+            "project_task_unique_code",
+            "UNIQUE (company_id, code)",
+            _("The code must be unique!"),
+        ),
     ]
 
     @api.model_create_multi
