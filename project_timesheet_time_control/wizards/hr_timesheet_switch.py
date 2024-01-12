@@ -82,6 +82,15 @@ class HrTimesheetSwitch(models.TransientModel):
         help="When the previous timer is stopped, it will save this duration.",
     )
 
+    @api.model
+    def default_get(self, fields_list):
+        """Return defaults depending on the context where it is called."""
+        result = super().default_get(fields_list)
+        inherited = self._closest_suggestion()
+        if inherited:
+            result.update(self._prepare_default_values(inherited))
+        return result
+
     @api.depends("task_id", "task_id.project_id")
     def _compute_project_id(self):
         for line in self.filtered(lambda line: not line.project_id):
@@ -91,6 +100,17 @@ class HrTimesheetSwitch(models.TransientModel):
     def _compute_task_id(self):
         for line in self.filtered(lambda line: not line.project_id):
             line.task_id = False
+
+    @api.depends("date_time", "running_timer_id")
+    def _compute_running_timer_duration(self):
+        """Compute duration of running timer when stopped."""
+        for one in self:
+            one.running_timer_duration = 0.0
+            if one.running_timer_id:
+                one.running_timer_duration = one.running_timer_id._duration(
+                    one.running_timer_id.date_time,
+                    one.date_time,
+                )
 
     @api.model
     def _default_running_timer_id(self, employee=None):
@@ -115,17 +135,6 @@ class HrTimesheetSwitch(models.TransientModel):
                 % len(running)
             )
         return running
-
-    @api.depends("date_time", "running_timer_id")
-    def _compute_running_timer_duration(self):
-        """Compute duration of running timer when stopped."""
-        for one in self:
-            one.running_timer_duration = 0.0
-            if one.running_timer_id:
-                one.running_timer_duration = one.running_timer_id._duration(
-                    one.running_timer_id.date_time,
-                    one.date_time,
-                )
 
     @api.model
     def _closest_suggestion(self):
@@ -157,15 +166,6 @@ class HrTimesheetSwitch(models.TransientModel):
             "project_id": account_analytic_line.project_id.id,
             "task_id": account_analytic_line.task_id.id,
         }
-
-    @api.model
-    def default_get(self, fields_list):
-        """Return defaults depending on the context where it is called."""
-        result = super().default_get(fields_list)
-        inherited = self._closest_suggestion()
-        if inherited:
-            result.update(self._prepare_default_values(inherited))
-        return result
 
     def _prepare_copy_values(self, record):
         """Return the values that will be overwritten in new timesheet entry."""

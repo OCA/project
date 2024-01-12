@@ -44,6 +44,17 @@ class AccountAnalyticLine(models.Model):
             else:
                 record.date_time_end = record.date_time_end
 
+    @api.depends("employee_id", "unit_amount")
+    def _compute_show_time_control(self):
+        """Decide when to show time controls."""
+        for one in self:
+            if one.employee_id not in self.env.user.employee_ids:
+                one.show_time_control = False
+            elif one.unit_amount or not one.date_time:
+                one.show_time_control = "resume"
+            else:
+                one.show_time_control = "stop"
+
     def _inverse_date_time_end(self):
         hour_uom = self.env.ref("uom.product_uom_hour")
         for record in self.filtered(lambda x: x.date_time and x.date_time_end):
@@ -51,6 +62,13 @@ class AccountAnalyticLine(models.Model):
                 record.unit_amount = (
                     record.date_time_end - record.date_time
                 ).seconds / 3600
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        return super().create(list(map(self._eval_date, vals_list)))
+
+    def write(self, vals):
+        return super().write(self._eval_date(vals))
 
     @api.model
     def _eval_date(self, vals):
@@ -80,24 +98,6 @@ class AccountAnalyticLine(models.Model):
             return (end - start).total_seconds() / 3600
         except TypeError:
             return 0
-
-    @api.depends("employee_id", "unit_amount")
-    def _compute_show_time_control(self):
-        """Decide when to show time controls."""
-        for one in self:
-            if one.employee_id not in self.env.user.employee_ids:
-                one.show_time_control = False
-            elif one.unit_amount or not one.date_time:
-                one.show_time_control = "resume"
-            else:
-                one.show_time_control = "stop"
-
-    @api.model_create_multi
-    def create(self, vals_list):
-        return super().create(list(map(self._eval_date, vals_list)))
-
-    def write(self, vals):
-        return super().write(self._eval_date(vals))
 
     def button_resume_work(self):
         """Create a new record starting now, with a running timer."""

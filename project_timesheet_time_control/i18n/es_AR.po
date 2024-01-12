@@ -32,7 +32,7 @@ msgstr ""
 "Deténgalos manualmente."
 
 #. module: project_timesheet_time_control
-#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
+#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_view_form
 msgid ""
 ".\n"
 "                            If you continue, it will be stopped with"
@@ -85,7 +85,7 @@ msgid "Analytic Line"
 msgstr "Línea Analítica"
 
 #. module: project_timesheet_time_control
-#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
+#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_view_form
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -139,7 +139,7 @@ msgstr "Tiempo Final"
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.project_invoice_form
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_kanban_account_analytic_line
-#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_project_tree
+#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_project
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_form2_inherited
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_tree2_inherited
 msgid "End work"
@@ -201,7 +201,7 @@ msgstr "Línea de origen"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__running_timer_id
-#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
+#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_view_form
 msgid "Previous timer"
 msgstr "Tiempo anterior"
 
@@ -229,7 +229,7 @@ msgstr "Reanudar"
 #. module: project_timesheet_time_control
 #. odoo-python
 #: code:addons/project_timesheet_time_control/models/account_analytic_line.py:0
-#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.account_analytic_line_tree
+#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_line_tree
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_line_form
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_kanban_account_analytic_line
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_form2_inherited
@@ -259,7 +259,7 @@ msgid "Start Time"
 msgstr "Inicio del Tiempo"
 
 #. module: project_timesheet_time_control
-#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
+#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_view_form
 msgid "Start new timer"
 msgstr "Inicio de nuevo tiempo"
 
@@ -270,7 +270,7 @@ msgstr "Inicio de nuevo tiempo"
 #: model:ir.ui.menu,name:project_timesheet_time_control.hr_timesheet_switch_menu
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.project_invoice_form
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_kanban_account_analytic_line
-#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_project_tree
+#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_project
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_form2_inherited
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_kanban
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_tree2_inherited
@@ -287,21 +287,21 @@ msgid "Stop"
 msgstr "Detener"
 
 #. module: project_timesheet_time_control
-#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
+#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_view_form
 msgid "Stop previous timer and start the new one"
 msgstr "Detener tiempo anterior e iniciar uno nuevo"
 
 #. module: project_timesheet_time_control
-#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
+#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_view_form
 msgid "Stop that very old timer and start the new one"
 msgstr "Detener tiempo muy antiguo e iniciar uno nuevo"
 
 #. module: project_timesheet_time_control
-#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.account_analytic_line_tree
+#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_line_tree
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_line_form
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.project_invoice_form
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_kanban_account_analytic_line
-#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_project_tree
+#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_project
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_form2_inherited
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_kanban
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_tree2_inherited
@@ -315,12 +315,12 @@ msgid "Task"
 msgstr "Tarea"
 
 #. module: project_timesheet_time_control
-#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
+#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_view_form
 msgid "That is a lot of time! Make sure it is fine before saving."
 msgstr "¡Eso es mucho tiempo! Asegúrese de que está bien antes de guardar."
 
 #. module: project_timesheet_time_control
-#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
+#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_view_form
 msgid "The previous timer is old. Do you really want to stop it now?"
 msgstr ""
 "El tiempo anterior es viejo. ¿Está seguro que realmente quiere detenerlo "
@@ -337,17 +337,17 @@ msgid "When the previous timer is stopped, it will save this duration."
 msgstr "Cuando el tiempo anterior es detenido, esto guardará su duración."
 
 #. module: project_timesheet_time_control
-#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
+#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_view_form
 msgid "You have a running timer called"
 msgstr "Usted está ejecutando un temporalizador llamado"
 
 #. module: project_timesheet_time_control
-#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
+#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_view_form
 msgid "and started at"
 msgstr "e iniciado el"
 
 #. module: project_timesheet_time_control
-#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
+#: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_view_form
 msgid "hour(s)."
 msgstr "hora(s)."
 

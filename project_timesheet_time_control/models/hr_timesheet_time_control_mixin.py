@@ -15,18 +15,6 @@ class HrTimesheetTimeControlMixin(models.AbstractModel):
         help="Indicate which time control button to show, if any.",
     )
 
-    @api.model
-    def _relation_with_timesheet_line(self):
-        """Name of the field that relates this model with AAL."""
-        raise NotImplementedError
-
-    @api.model
-    def _timesheet_running_domain(self):
-        """Domain to find running timesheet lines."""
-        return self.env["account.analytic.line"]._running_domain() + [
-            (self._relation_with_timesheet_line(), "in", self.ids),
-        ]
-
     def _compute_show_time_control(self):
         """Decide which time control button to show, if any."""
         related_field = self._relation_with_timesheet_line()
@@ -45,6 +33,18 @@ class HrTimesheetTimeControlMixin(models.AbstractModel):
                 lines_per_record.get(record.id, 0),
                 False,
             )
+
+    @api.model
+    def _relation_with_timesheet_line(self):
+        """Name of the field that relates this model with AAL."""
+        raise NotImplementedError
+
+    @api.model
+    def _timesheet_running_domain(self):
+        """Domain to find running timesheet lines."""
+        return self.env["account.analytic.line"]._running_domain() + [
+            (self._relation_with_timesheet_line(), "in", self.ids),
+        ]
 
     def button_start_work(self):
         """Create a new record starting now, with a running timer."""
