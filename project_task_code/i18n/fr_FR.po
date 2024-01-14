@@ -17,18 +17,8 @@ msgstr ""
 "X-Generator: Weblate 4.3.2\n"
 
 #. module: project_task_code
-#: model:ir.model.fields,field_description:project_task_code.field_project_task__display_name
-msgid "Display Name"
-msgstr ""
-
-#. module: project_task_code
-#: model:ir.model.fields,field_description:project_task_code.field_project_task__id
-msgid "ID"
-msgstr ""
-
-#. module: project_task_code
-#: model:ir.model.fields,field_description:project_task_code.field_project_task____last_update
-msgid "Last Modified on"
+#: model_terms:ir.ui.view,arch_db:project_task_code.project_task_code_form_view
+msgid "<span class=\"oe_inline\"> - </span>"
 msgstr ""
 
 #. module: project_task_code
@@ -42,6 +32,7 @@ msgid "Task Number"
 msgstr "Numéro de la tâche"
 
 #. module: project_task_code
+#. odoo-python
 #: code:addons/project_task_code/models/project_task.py:0
 #: model:ir.model.constraint,message:project_task_code.constraint_project_task_project_task_unique_code
 #, python-format
