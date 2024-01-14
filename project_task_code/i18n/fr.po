@@ -19,6 +19,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #. module: project_task_code
+#: model_terms:ir.ui.view,arch_db:project_task_code.project_task_code_form_view
+msgid "<span class=\"oe_inline\"> - </span>"
+msgstr ""
+
+#. module: project_task_code
 #: model:ir.model,name:project_task_code.model_project_task
 msgid "Task"
 msgstr "Tâche"
@@ -29,6 +34,7 @@ msgid "Task Number"
 msgstr "Numéro de la tâche"
 
 #. module: project_task_code
+#. odoo-python
 #: code:addons/project_task_code/models/project_task.py:0
 #: model:ir.model.constraint,message:project_task_code.constraint_project_task_project_task_unique_code
 #, python-format
