@@ -17,19 +17,9 @@ msgstr ""
 "X-Generator: Weblate 4.3.2\n"
 
 #. module: project_task_code
-#: model:ir.model.fields,field_description:project_task_code.field_project_task__display_name
-msgid "Display Name"
-msgstr "Mostrar Nombre"
-
-#. module: project_task_code
-#: model:ir.model.fields,field_description:project_task_code.field_project_task__id
-msgid "ID"
-msgstr "ID"
-
-#. module: project_task_code
-#: model:ir.model.fields,field_description:project_task_code.field_project_task____last_update
-msgid "Last Modified on"
-msgstr "Última Modificación el"
+#: model_terms:ir.ui.view,arch_db:project_task_code.project_task_code_form_view
+msgid "<span class=\"oe_inline\"> - </span>"
+msgstr ""
 
 #. module: project_task_code
 #: model:ir.model,name:project_task_code.model_project_task
@@ -42,8 +32,18 @@ msgid "Task Number"
 msgstr "Número de Tarea"
 
 #. module: project_task_code
+#. odoo-python
 #: code:addons/project_task_code/models/project_task.py:0
 #: model:ir.model.constraint,message:project_task_code.constraint_project_task_project_task_unique_code
 #, python-format
 msgid "The code must be unique!"
 msgstr "¡El código debe ser único!"
+
+#~ msgid "Display Name"
+#~ msgstr "Mostrar Nombre"
+
+#~ msgid "ID"
+#~ msgstr "ID"
+
+#~ msgid "Last Modified on"
+#~ msgstr "Última Modificación el"
