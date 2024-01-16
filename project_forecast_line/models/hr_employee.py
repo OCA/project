@@ -36,11 +36,13 @@ class HrEmployee(models.Model):
         # can"t store as it depends on current date
         today = fields.Date.context_today(self)
         for rec in self:
-            rec.main_role_id = rec.role_ids.filtered(
-                lambda r: r.date_start <= today and (r.date_end >= today)
-                if r.date_end
-                else True
-            )[:1].role_id
+            rec.main_role_id = fields.first(
+                rec.role_ids.filtered(
+                    lambda r: r.date_start <= today and (r.date_end >= today)
+                    if r.date_end
+                    else True
+                )
+            ).role_id
 
     def write(self, values):
         values = self._check_job_role(values)

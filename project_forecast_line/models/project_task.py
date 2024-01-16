@@ -21,18 +21,6 @@ class ProjectTask(models.Model):
         help="Technical field used to trigger the forecast recomputation",
     )
 
-    @api.model_create_multi
-    def create(self, vals_list):
-        # compatibility with fields from project_enterprise
-        for vals in vals_list:
-            if vals.get("planned_date_begin"):
-                vals["forecast_date_planned_start"] = vals["planned_date_begin"]
-            if vals.get("planned_date_end"):
-                vals["forecast_date_planned_end"] = vals["planned_date_end"]
-        tasks = super().create(vals_list)
-        # tasks._update_forecast_lines()
-        return tasks
-
     def _update_forecast_lines_trigger_fields(self):
         return [
             # "sale_order_line_id",
@@ -52,14 +40,6 @@ class ProjectTask(models.Model):
         value = random.random()
         for rec in self:
             rec.forecast_recomputation_trigger = value
-
-    def write(self, values):
-        # compatibility with fields from project_enterprise
-        if "planned_date_begin" in values:
-            values["forecast_date_planned_start"] = values["planned_date_begin"]
-        if "planned_date_end" in values:
-            values["forecast_date_planned_end"] = values["planned_date_end"]
-        return super().write(values)
 
     def _write(self, values):
         res = super()._write(values)

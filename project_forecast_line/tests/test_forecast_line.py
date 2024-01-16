@@ -300,9 +300,11 @@ class TestForecastLineSales(BaseForecastLineTest):
         self.assertEqual(forecast_lines.cost, -10 * 8 * 75)
         self.assertEqual(forecast_lines.date_from, date(2022, 2, 1))
         self.assertEqual(forecast_lines.date_to, date(2022, 2, 28))
+        so.action_cancel()
 
     @freeze_time("2022-01-01")
     def test_sale_line_unlink(self):
+        project = self.env["project.project"].create({"name": "TestProjectReschedule"})
         so = self._create_sale("2022-02-07", "2022-02-20")
         line = so.order_line[0]
         forecast_lines = self.env["forecast.line"].search(
@@ -311,6 +313,10 @@ class TestForecastLineSales(BaseForecastLineTest):
                 ("res_model", "=", "sale.order.line"),
             ]
         )
+        # Check that project is automatically
+        # assigned to forecast lines too
+        so.write({"project_id": project.id})
+        self.assertEqual(project, forecast_lines.mapped("project_id"))
         line.unlink()
         self.assertFalse(forecast_lines.exists())
 
@@ -536,6 +542,31 @@ class TestForecastLineProjectReschedule(BaseForecastLineTest):
             # tests, outside of the context manager.
             cls.task.flush()
 
+    def test_onchange_user_id(self):
+        """Test onchange_user_id method"""
+        task = self.task
+        # Set role to false, to set it again
+        task.forecast_role_id = False
+        task.onchange_user_id()
+        self.assertFalse(task.forecast_role_id)
+        # set user to False, and try again
+        task.user_id = False
+        task.onchange_user_id()
+        self.assertFalse(task.forecast_role_id)
+        # this is still false, as current user
+        # does not have a main_role_id
+        self.assertFalse(task.forecast_role_id)
+        # set user to False, and try again
+        task.user_id = False
+        task.onchange_user_id()
+        self.assertFalse(task.forecast_role_id)
+        # Assign user with an active role_id
+        task.user_id = self.user_consultant
+        task.onchange_user_id()
+        self.assertEqual(
+            task.forecast_role_id, self.user_consultant.employee_id.main_role_id
+        )
+
     @freeze_time("2022-02-01 12:00:00")
     def test_task_unlink(self):
         task_forecast = self.env["forecast.line"].search(
@@ -621,6 +652,37 @@ class TestForecastLineProjectReschedule(BaseForecastLineTest):
         )
         self.assertEqual(task_forecast_after.mapped("forecast_hours"), [-12, -12])
         self.assertEqual(task_forecast.ids, task_forecast_after.ids)
+
+    def test_should_have_forecast(self):
+        """test _should_have_forecast method"""
+        # Manage to hit every line of the method
+        # by editing value of some fields
+        task = self.task
+        project = task.project_id
+        task.project_id = False
+        # no project
+        self.assertTrue(task._should_have_forecast())
+        task.project_id = project
+        forecast_line_type = task.project_id.project_status.forecast_line_type
+        task.project_id.project_status.forecast_line_type = False
+        # no forecast type for project
+        self.assertFalse(task._should_have_forecast())
+        task.project_id.project_status.forecast_line_type = forecast_line_type
+        date_start = task.forecast_date_planned_start
+        date_end = task.forecast_date_planned_end
+        task.forecast_date_planned_start = task.forecast_date_planned_end = False
+        # no dates for forecast in  task
+        self.assertFalse(task._should_have_forecast())
+        task.forecast_date_planned_start = date_start
+        task.forecast_date_planned_end = date_end
+        task.remaining_hours = 0
+        task._should_have_forecast()
+        # no forecasted hours
+        self.assertFalse(task._should_have_forecast())
+        task.remaining_hours = -500
+        task._should_have_forecast()
+        # negative forecasted hours
+        self.assertFalse(task._should_have_forecast())
 
 
 class TestForecastLineProject(BaseForecastLineTest):
