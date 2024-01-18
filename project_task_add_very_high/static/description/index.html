@@ -369,27 +369,23 @@ ul.auto-toc {
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !! source digest: sha256:1e55b57b59e430aa03bff87a496ce8b1b2ad7342e235172a715928a4961aa20d
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Production/Stable" src="https://img.shields.io/badge/maturity-Production%2FStable-green.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/licence-AGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/OCA/project/tree/16.0/project_task_add_very_high"><img alt="OCA/project" src="https://img.shields.io/badge/github-OCA%2Fproject-lightgray.png?logo=github" /></a> <a class="reference external image-reference" href="https://translation.odoo-community.org/projects/project-16-0/project-16-0-project_task_add_very_high"><img alt="Translate me on Weblate" src="https://img.shields.io/badge/weblate-Translate%20me-F47D42.png" /></a> <a class="reference external image-reference" href="https://runboat.odoo-community.org/builds?repo=OCA/project&amp;target_branch=16.0"><img alt="Try me on Runboat" src="https://img.shields.io/badge/runboat-Try%20me-875A7B.png" /></a></p>
-<p>This module extends the field <cite>priority</cite> in project tasks, adding two new levels of priority.
-The two new levels of priority are: <cite>High</cite> and <cite>Very High</cite>.</p>
-<p>On a task form, the priority widget is displayed with three stars instead of one:</p>
-<div class="figure">
-<img alt="On form, priority widget shows three stars instead of one" src="https://raw.githubusercontent.com/OCA/project/12.0/project_task_add_very_high/static/description/image.png" />
-</div>
-<p>On a Kanban view, the priority widget is displayed as well with three stars instead of one:</p>
-<div class="figure">
-<img alt="On kanban, priority widget shows three stars instead of one" src="https://raw.githubusercontent.com/OCA/project/12.0/project_task_add_very_high/static/description/image2.png" />
-</div>
-<p>Without having this module installed, on the form it would look like as that:</p>
-<div class="figure">
-<img alt="On form, priority widget shows one star" src="https://raw.githubusercontent.com/OCA/project/12.0/project_task_add_very_high/static/description/image_a.png" />
-</div>
+<p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Production/Stable" src="https://img.shields.io/badge/maturity-Production%2FStable-green.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/licence-AGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/OCA/project/tree/17.0/project_task_add_very_high"><img alt="OCA/project" src="https://img.shields.io/badge/github-OCA%2Fproject-lightgray.png?logo=github" /></a> <a class="reference external image-reference" href="https://translation.odoo-community.org/projects/project-17-0/project-17-0-project_task_add_very_high"><img alt="Translate me on Weblate" src="https://img.shields.io/badge/weblate-Translate%20me-F47D42.png" /></a> <a class="reference external image-reference" href="https://runboat.odoo-community.org/builds?repo=OCA/project&amp;target_branch=17.0"><img alt="Try me on Runboat" src="https://img.shields.io/badge/runboat-Try%20me-875A7B.png" /></a></p>
+<p>This module extends the field priority in project tasks, adding two new
+levels of priority. The two new levels of priority are: High and Very
+High.</p>
+<p>On a task form, the priority widget is displayed with three stars
+instead of one:</p>
+<p><img alt="image1" src="https://raw.githubusercontent.com/OCA/project/12.0/project_task_add_very_high/static/description/image.png" /></p>
+<p>On a Kanban view, the priority widget is displayed as well with three
+stars instead of one:</p>
+<p><img alt="image2" src="https://raw.githubusercontent.com/OCA/project/12.0/project_task_add_very_high/static/description/image2.png" /></p>
+<p>Without having this module installed, on the form it would look like as
+that:</p>
+<p><img alt="image3" src="https://raw.githubusercontent.com/OCA/project/12.0/project_task_add_very_high/static/description/image_a.png" /></p>
 <p>and on Kanban:</p>
-<div class="figure">
-<img alt="On kanban, priority widget shows one star" src="https://raw.githubusercontent.com/OCA/project/12.0/project_task_add_very_high/static/description/image2_a.png" />
-</div>
-<p>In case this module is uninstalled, all the tasks that were previously set as <cite>High</cite> or <cite>Very High</cite> priority will be
-converted to <cite>Normal</cite> priority.</p>
+<p><img alt="image4" src="https://raw.githubusercontent.com/OCA/project/12.0/project_task_add_very_high/static/description/image2_a.png" /></p>
+<p>In case this module is uninstalled, all the tasks that were previously
+set as High or Very High priority will be converted to Normal priority.</p>
 <p><strong>Table of contents</strong></p>
 <div class="contents local topic" id="contents">
 <ul class="simple">
@@ -409,8 +405,10 @@ converted to <cite>Normal</cite> priority.</p>
 <ol class="arabic simple">
 <li>Open a task or create a new one</li>
 <li>On the priority widget, three stars are displayed (instead of one)</li>
-<li>Click on the second star: the priority of this task is now set to <cite>High</cite></li>
-<li>Click on the third star: the priority of this task is now set to <cite>Very High</cite></li>
+<li>Click on the second star: the priority of this task is now set to
+High</li>
+<li>Click on the third star: the priority of this task is now set to Very
+High</li>
 </ol>
 </div>
 <div class="section" id="bug-tracker">
@@ -418,7 +416,7 @@ converted to <cite>Normal</cite> priority.</p>
 <p>Bugs are tracked on <a class="reference external" href="https://github.com/OCA/project/issues">GitHub Issues</a>.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-<a class="reference external" href="https://github.com/OCA/project/issues/new?body=module:%20project_task_add_very_high%0Aversion:%2016.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**">feedback</a>.</p>
+<a class="reference external" href="https://github.com/OCA/project/issues/new?body=module:%20project_task_add_very_high%0Aversion:%2017.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**">feedback</a>.</p>
 <p>Do not contact contributors directly about support or help with technical issues.</p>
 </div>
 <div class="section" id="credits">
@@ -444,7 +442,7 @@ mission is to support the collaborative development of Odoo features and
 promote its widespread use.</p>
 <p>Current <a class="reference external" href="https://odoo-community.org/page/maintainer-role">maintainer</a>:</p>
 <p><a class="reference external image-reference" href="https://github.com/astirpe"><img alt="astirpe" src="https://github.com/astirpe.png?size=40px" /></a></p>
-<p>This module is part of the <a class="reference external" href="https://github.com/OCA/project/tree/16.0/project_task_add_very_high">OCA/project</a> project on GitHub.</p>
+<p>This module is part of the <a class="reference external" href="https://github.com/OCA/project/tree/17.0/project_task_add_very_high">OCA/project</a> project on GitHub.</p>
 <p>You are welcome to contribute. To learn how please visit <a class="reference external" href="https://odoo-community.org/page/Contribute">https://odoo-community.org/page/Contribute</a>.</p>
 </div>
 </div>
