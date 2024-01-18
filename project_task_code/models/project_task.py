@@ -32,12 +32,7 @@ class ProjectTask(models.Model):
                 )
         return super().create(vals_list)
 
-    def name_get(self):
-        result = super().name_get()
-        new_result = []
-
-        for task in result:
-            rec = self.browse(task[0])
-            name = "[{}] {}".format(rec.code, task[1])
-            new_result.append((rec.id, name))
-        return new_result
+    @api.depends("name", "code")
+    def _compute_display_name(self):
+        for task in self:
+            task.display_name = f"[{task.code}] {task.name}" if task.code else task.name
