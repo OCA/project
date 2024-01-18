@@ -2,10 +2,9 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 
-def uninstall_hook(cr, registry):  # pragma: no cover
+def uninstall_hook(env):
     # Convert priority from High and Very High to Normal
     # to avoid inconsistency after the module is uninstalled
-    cr.execute(
-        "UPDATE project_task SET priority = '1' "
-        "WHERE priority like '2' or priority like '3'"
+    env["project.task"].sudo().search([("priority", "in", ["2", "3"])]).write(
+        {"priority": "1"}
     )
