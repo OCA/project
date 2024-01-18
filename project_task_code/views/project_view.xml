@@ -26,9 +26,14 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_kanban" />
         <field name="arch" type="xml">
-            <field name="name" position="before">
+            <xpath expr="//s/field[@name='name']" position="before">
                 <field name="code" />
-            </field>
+                <span>&amp;nbsp;</span>
+            </xpath>
+            <xpath expr="//t/field[@name='name']" position="before">
+                <field name="code" />
+                <span>&amp;nbsp;</span>
+            </xpath>
         </field>
     </record>
     <record id="project_task_code_search_view" model="ir.ui.view">
