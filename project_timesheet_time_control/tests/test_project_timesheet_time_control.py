@@ -3,7 +3,7 @@
 
 from datetime import date, datetime, timedelta
 
-from odoo import exceptions
+from odoo import exceptions, fields
 from odoo.tests import common
 from odoo.tools.float_utils import float_compare
 
@@ -121,7 +121,7 @@ class TestProjectTimesheetTimeControl(common.TransactionCase):
         wizard = self._create_wizard(resume_action, self.line)
         self.assertFalse(wizard.amount)
         self.assertLessEqual(wizard.date_time, datetime.now())
-        self.assertLessEqual(wizard.date, date.today())
+        self.assertLessEqual(wizard.date, fields.Date.context_today(wizard))
         self.assertFalse(wizard.is_task_closed)
         self.assertFalse(wizard.unit_amount)
         self.assertEqual(wizard.account_id, self.line.account_id)
@@ -187,7 +187,7 @@ class TestProjectTimesheetTimeControl(common.TransactionCase):
         wizard = self._create_wizard(start_action, self.project)
         self.assertFalse(wizard.amount)
         self.assertLessEqual(wizard.date_time, datetime.now())
-        self.assertLessEqual(wizard.date, date.today())
+        self.assertLessEqual(wizard.date, fields.Date.context_today(wizard))
         self.assertFalse(wizard.is_task_closed)
         self.assertFalse(wizard.unit_amount)
         self.assertEqual(wizard.account_id, self.project.analytic_account_id)
@@ -221,7 +221,7 @@ class TestProjectTimesheetTimeControl(common.TransactionCase):
         wizard = self._create_wizard(start_action, self.task)
         self.assertFalse(wizard.amount)
         self.assertLessEqual(wizard.date_time, datetime.now())
-        self.assertLessEqual(wizard.date, date.today())
+        self.assertLessEqual(wizard.date, fields.Date.context_today(wizard))
         self.assertFalse(wizard.is_task_closed)
         self.assertFalse(wizard.unit_amount)
         self.assertEqual(wizard.account_id, self.task.project_id.analytic_account_id)

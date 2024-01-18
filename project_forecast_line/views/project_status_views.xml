@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="project_status_view_list" model="ir.ui.view">
+        <field name="model">project.status</field>
+        <field name="inherit_id" ref="project_status.project_status_view_list" />
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="forecast_line_type" />
+            </field>
+        </field>
+    </record>
+
+</odoo>
