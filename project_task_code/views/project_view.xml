@@ -26,9 +26,18 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_kanban" />
         <field name="arch" type="xml">
-            <field name="name" position="before">
-                <field name="code" />
-            </field>
+            <xpath
+                expr="//strong[hasclass('o_kanban_record_title')]/t/field[@name='name']"
+                position="before"
+            >
+                <span>[<field name="code" />] </span>
+            </xpath>
+            <xpath
+                expr="//strong[hasclass('o_kanban_record_title')]/s/field[@name='name']"
+                position="before"
+            >
+                <span>[<field name="code" />] </span>
+            </xpath>
         </field>
     </record>
     <record id="project_task_code_search_view" model="ir.ui.view">
