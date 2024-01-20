@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-10-28 21:24+0000\n"
+"PO-Revision-Date: 2024-01-20 17:33+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -494,7 +494,7 @@ msgstr "Fase progetto"
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_hr_employee_forecast_role__rate
 msgid "Rate"
-msgstr "Valuta"
+msgstr "Valutazione"
 
 #. module: project_forecast_line
 #: model:project.task,legend_done:project_forecast_line.software_project_task_consultant
