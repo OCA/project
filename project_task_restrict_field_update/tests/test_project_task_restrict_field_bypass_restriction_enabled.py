@@ -27,7 +27,7 @@ class TestProjectTaskRestrictedFieldsEnabled(TestProjectTaskRestrictedFieldsComm
 
     def test_edit_task(self):
         """Check user edit restricted field"""
-        task_form = Form(self.task_1.with_user(self.user_2))
+        task_form = Form(self.task_1.with_user(self.user_2).sudo())
         field_name = self.task_1._fields.get("name").string
         msg = self._prepared_alert_message(field_name)
         with self.assertRaisesRegex(AccessError, msg):
@@ -36,7 +36,7 @@ class TestProjectTaskRestrictedFieldsEnabled(TestProjectTaskRestrictedFieldsComm
 
     def test_edit_task_description(self):
         # Not modify description
-        task_form = Form(self.task_1.with_user(self.user_2))
+        task_form = Form(self.task_1.with_user(self.user_2).sudo())
         task_form.description = "Test description"
         task_form.save()
 

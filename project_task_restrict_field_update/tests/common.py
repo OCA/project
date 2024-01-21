@@ -27,7 +27,6 @@ class TestProjectTaskRestrictedFieldsCommon(TransactionCase):
         cls.model_fields_obj = cls.env["ir.model.fields"].sudo()
         cls.config_parameter_obj = cls.env["ir.config_parameter"].sudo()
 
-        multi_company_group = cls.env.ref("base.group_multi_company")
         project_user_group = cls.env.ref("project.group_project_user")
 
         cls.partner_1 = res_partner_obj.create({"name": "Test Partner #1"})
@@ -44,7 +43,6 @@ class TestProjectTaskRestrictedFieldsCommon(TransactionCase):
                         0,
                         [
                             project_user_group.id,
-                            multi_company_group.id,
                         ],
                     )
                 ],
@@ -62,7 +60,6 @@ class TestProjectTaskRestrictedFieldsCommon(TransactionCase):
                         0,
                         [
                             project_user_group.id,
-                            multi_company_group.id,
                         ],
                     )
                 ],
@@ -80,7 +77,6 @@ class TestProjectTaskRestrictedFieldsCommon(TransactionCase):
                         0,
                         [
                             project_user_group.id,
-                            multi_company_group.id,
                         ],
                     )
                 ],
