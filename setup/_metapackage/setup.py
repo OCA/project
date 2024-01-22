@@ -17,6 +17,7 @@ setuptools.setup(
         'odoo-addon-project_purchase_link>=16.0dev,<16.1dev',
         'odoo-addon-project_role>=16.0dev,<16.1dev',
         'odoo-addon-project_sequence>=16.0dev,<16.1dev',
+        'odoo-addon-project_stage_extra_info>=16.0dev,<16.1dev',
         'odoo-addon-project_stock>=16.0dev,<16.1dev',
         'odoo-addon-project_stock_analytic_tag>=16.0dev,<16.1dev',
         'odoo-addon-project_stock_product_set>=16.0dev,<16.1dev',
