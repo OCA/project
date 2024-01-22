@@ -15,7 +15,7 @@ class TestTask(TestCommon):
         task_url = self.get_task_url(self.task11)
 
         self.task11._compute_task_url()
-        self.assertEqual(self.task11.url, task_url)
+        self.assertEqual(self.task11.task_url, task_url)
 
     def test_03_create_task_project_in_context(self):
         self.Task.with_context(

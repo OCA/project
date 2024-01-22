@@ -12,14 +12,25 @@ class Task(models.Model):
 
     key = fields.Char(size=20, required=False, index=True)
 
-    url = fields.Char(string="URL", compute="_compute_task_url")
+    parent_task_key = fields.Char(string="Parent task key", related="parent_id.key")
+
+    task_url = fields.Char(string="Task URL", compute="_compute_task_url")
+
+    parent_task_url = fields.Char(
+        string="Parent Task URL", compute="_compute_parent_task_url"
+    )
 
     _sql_constraints = [("task_key_unique", "UNIQUE(key)", "Task key must be unique!")]
 
     def _compute_task_url(self):
         action_id = self.env.ref("project.action_view_task").id
         for task in self:
-            task.url = TASK_URL % (task.id, action_id)
+            task.task_url = TASK_URL % (task.id, action_id)
+
+    def _compute_parent_task_url(self):
+        action_id = self.env.ref("project.action_view_task").id
+        for task in self:
+            task.parent_task_url = TASK_URL % (task.parent_id.id, action_id)
 
     @api.model_create_multi
     def create(self, vals_list):
