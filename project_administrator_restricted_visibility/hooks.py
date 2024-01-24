@@ -10,9 +10,13 @@ def uninstall_hook(cr, registry):
     # 'Project: Administrator' group (project.group_project_manager) to 'Administrator'
     # in order to avoid getting a SQL constraint error:
     # 'duplicate key value violates unique constraint "res_groups_name_uniq'"
-    env.ref(
+    group_full_project_manager = env.ref(
         "project_administrator_restricted_visibility.group_full_project_manager"
-    ).unlink()
+    )
+    env.ref("project.project_project_manager_rule").write(
+        {"groups": [(3, group_full_project_manager.id)]}
+    )
+    group_full_project_manager.unlink()
     # Rename the original 'Project: Administrator' access group back to 'Administrator'
     # and reassign the access rule for projects that it previously had.
     env.ref("project.group_project_manager").write(
