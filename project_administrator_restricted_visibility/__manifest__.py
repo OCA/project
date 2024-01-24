@@ -1,6 +1,6 @@
 {
     "name": "Project Administrator Restricted Visibility",
-    "version": "15.0.1.0.0",
+    "version": "16.0.1.0.0",
     "summary": "Adds a 'Project Administrator' access group "
     "with restricted visibility to 'Projects'",
     "author": "Tecnativa, Odoo Community Association (OCA)",
@@ -10,4 +10,5 @@
     "depends": ["project"],
     "data": ["security/project_security.xml"],
     "uninstall_hook": "uninstall_hook",
+    "maintainers": ["rafaelbn", "edlopen"],
 }
