@@ -6,7 +6,7 @@
     "summary": "Adds a field for a PR URI to project tasks",
     "version": "10.0.1.0.0",
     "category": "Project Management",
-    "website": "https://odoo-community.org/",
+    "website": "https://github.com/OCA/project",
     "author": "SMDrugstore, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "application": False,

@@ -9,6 +9,8 @@
     "summary": "Record products spent in a Task",
     "version": "10.0.1.0.0",
     "category": "Project Management",
+    "website": "https://github.com/OCA/project"
+               "/tree/10.0/project_task_material",
     "author": "Daniel Reis,"
               "Tecnativa,"
               "Odoo Community Association (OCA)",

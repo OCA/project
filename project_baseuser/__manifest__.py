@@ -23,6 +23,8 @@
     'version': '8.0.1.0.0',
     'category': 'Project Management',
     'summary': 'Extend Project user roles to support more complex use cases',
+    'website': 'https://github.com/OCA/project'
+               '/tree/10.0/project_baseuser',
     'author': "Daniel Reis,Odoo Community Association (OCA)",
     'license': 'AGPL-3',
     'depends': [

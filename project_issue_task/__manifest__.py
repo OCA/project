@@ -38,6 +38,8 @@ This module adds some usability improvements:
   * Make the Task also visible to all followers of the related Issue
 """,
     'author': "Daniel Reis,Odoo Community Association (OCA)",
+    'website': 'https://github.com/OCA/project'
+               '/tree/10.0/project_issue_task',
     'license': 'AGPL-3',
     'depends': [
         'project_issue',

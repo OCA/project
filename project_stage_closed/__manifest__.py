@@ -10,7 +10,7 @@
     'author': 'ACSONE SA/NV,'
               'Tecnativa,'
               'Odoo Community Association (OCA)',
-    'website': "http://acsone.eu",
+    'website': "https://github.com/OCA/project",
     'category': 'Project Management',
     'version': '10.0.1.0.0',
     'license': 'AGPL-3',

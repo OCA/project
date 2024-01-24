@@ -11,7 +11,7 @@
     'depends': [
         'project',
     ],
-    'website': 'https://www.akretion.com',
+    'website': 'https://github.com/OCA/project',
     'data': [
         'views/project_view.xml',
     ],

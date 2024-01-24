@@ -7,7 +7,7 @@
     "summary": "Define an alias for tasks and another alias for issues",
     "version": "10.0.1.0.1",
     "category": "Project management",
-    "website": "https://www.tecnativa.com/",
+    "website": "https://github.com/OCA/project",
     "author": "Tecnativa, "
               "Odoo Community Association (OCA)",
     "license": "AGPL-3",

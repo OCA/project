@@ -8,7 +8,7 @@
     'category': 'Project Management',
     'author': 'Tecnativa, '
               'Odoo Community Association (OCA)',
-    'website': 'http://www.serviciosbaeza.com',
+    'website': 'https://github.com/OCA/project',
     'depends': [
         'project_timesheet_time_control',
         'project_issue_sheet',

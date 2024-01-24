@@ -33,6 +33,8 @@ To setup:
 Now make this feature available on Issues or Tasks by installing the
 corresponding extension module.
 """,
+    'website': 'https://github.com/OCA/project'
+               '/tree/10.0/project_categ',
     'author': "Daniel Reis,Odoo Community Association (OCA)",
     'license': 'AGPL-3',
     'depends': [

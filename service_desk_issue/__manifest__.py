@@ -27,7 +27,7 @@ This module extends the ``service_desk`` module to also work with Issues.
 Please refer to that module's description.
 """,
     'author': "Daniel Reis,Odoo Community Association (OCA)",
-    'website': '',
+    'website': 'https://github.com/OCA/project',
     'license': 'AGPL-3',
     'depends': [
         'project_issue',

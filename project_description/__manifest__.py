@@ -7,7 +7,7 @@
     "summary": "Add a description to projects",
     "version": "10.0.1.0.0",
     "category": "Project Management",
-    "website": "https://www.tecnativa.com",
+    "website": "https://github.com/OCA/project",
     "author": "Antiun Ingeniería S.L., "
               "Tecnativa, "
               "Odoo Community Association (OCA)",

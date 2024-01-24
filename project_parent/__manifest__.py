@@ -8,7 +8,7 @@
     'license': 'AGPL-3',
     'category': 'project',
     'author': 'Elico Corp, Odoo Community Association (OCA)',
-    'website': 'https://www.elico-corp.com/',
+    'website': 'https://github.com/OCA/project',
     'depends': [
         'project',
     ],

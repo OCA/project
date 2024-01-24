@@ -9,7 +9,7 @@
     "author": "Onestein, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "category": "Project Management",
-    "website": "http://www.onestein.eu",
+    "website": "https://github.com/OCA/project",
     "depends": ["project"],
     "installable": True,
     "uninstall_hook": "uninstall_hook"

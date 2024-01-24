@@ -7,6 +7,8 @@
     'version': '10.0.1.0.1',
     'category': 'Project',
     'summary': 'Enables to define dependencies (other tasks) of a task',
+    'website': 'https://github.com/OCA/project'
+               '/tree/10.0/project_task_dependency',
     'author': "Onestein,Odoo Community Association (OCA)",
     'license': 'AGPL-3',
     'depends': [
