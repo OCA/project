@@ -106,7 +106,7 @@ class AccountAnalyticAccount(models.Model):
     @api.depends("account_class", "parent_id")
     def _compute_project_analytic_id(self):
         for analytic in self:
-            if analytic.parent_id:
+            if analytic.parent_id.filtered(lambda l: l.account_class == "project"):
                 current = analytic.parent_id
             else:
                 current = analytic
