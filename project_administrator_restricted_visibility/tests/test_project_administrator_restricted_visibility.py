@@ -3,7 +3,7 @@
 from odoo.tests.common import TransactionCase, new_test_user, users
 
 
-class TestAccountPaymentTermSecurity(TransactionCase):
+class TestProjectAdministratorRestrictedVisibility(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
