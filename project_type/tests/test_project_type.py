@@ -7,7 +7,7 @@ from odoo.tests.common import TransactionCase
 
 class TestProjectType(TransactionCase):
     def setUp(self):
-        super(TestProjectType, self).setUp()
+        super().setUp()
         self.cat = self.env["project.type"].create({"name": "General"})
         self.cat2 = self.env["project.type"].create({"name": "Discussion"})
 
