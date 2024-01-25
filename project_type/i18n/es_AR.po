@@ -70,11 +70,6 @@ msgid "ID"
 msgstr "ID"
 
 #. module: project_type
-#: model:ir.model.fields,field_description:project_type.field_project_type____last_update
-msgid "Last Modified on"
-msgstr "Última Modificación el"
-
-#. module: project_type
 #: model:ir.model.fields,field_description:project_type.field_project_type__write_uid
 msgid "Last Updated by"
 msgstr "Última actualización realizada por"
@@ -137,3 +132,6 @@ msgstr "Tipo"
 #, python-format
 msgid "You cannot create recursive project types."
 msgstr "No puede crear tipos de proyecto recursivos."
+
+#~ msgid "Last Modified on"
+#~ msgstr "Última Modificación el"
