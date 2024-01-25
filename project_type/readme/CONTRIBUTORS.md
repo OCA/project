@@ -1,0 +1,9 @@
+- ADHOC SA
+- [Tecnativa](https://www.tecnativa.com):
+  - Vicent Cubells
+- Nikul Chaudhary \<<nikulchaudhary2112@gmail.com>\>
+- [Onestein](https://www.onestein.nl):
+  - Dennis Sluijk
+- [Open Source Integrators](https://opensourceintegrators.com):
+  - Daniel Reis \<<dreis@opensourceintegrators.com>\>
+  - Murtaza Mithaiwala \<<mmithaiwala@opensourceintegrators.com>\>
