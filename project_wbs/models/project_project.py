@@ -224,6 +224,10 @@ class Project(models.Model):
                     self.analytic_account_id.get_child_accounts().keys()):
                 account._complete_wbs_code_calc()
                 account._complete_wbs_name_calc()
+        if 'user_id' in vals:
+            for account in self.env['account.analytic.account'].browse(
+                    self.analytic_account_id.get_child_accounts().keys()):
+                account.user_id = vals["user_id"]
         return res
 
     @api.multi
