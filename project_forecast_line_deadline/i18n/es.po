@@ -1,0 +1,42 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_forecast_line_deadline
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2024-03-26 20:35+0000\n"
+"Last-Translator: Ivorra78 <informatica@totmaterial.es>\n"
+"Language-Team: none\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.17\n"
+
+#. module: project_forecast_line_deadline
+#: model:ir.model.fields,field_description:project_forecast_line_deadline.field_project_task__display_name
+msgid "Display Name"
+msgstr "Mostrar Nombre"
+
+#. module: project_forecast_line_deadline
+#: model:ir.model.fields,field_description:project_forecast_line_deadline.field_project_task__id
+msgid "ID"
+msgstr "ID (identificación)"
+
+#. module: project_forecast_line_deadline
+#: model:ir.model.fields,field_description:project_forecast_line_deadline.field_project_task____last_update
+msgid "Last Modified on"
+msgstr "Última Modificación el"
+
+#. module: project_forecast_line_deadline
+#: model:ir.model.fields,field_description:project_forecast_line_deadline.field_project_task__forecast_date_planned_end
+msgid "Planned end date"
+msgstr "Fecha de finalización prevista"
+
+#. module: project_forecast_line_deadline
+#: model:ir.model,name:project_forecast_line_deadline.model_project_task
+msgid "Task"
+msgstr "Tarea"
