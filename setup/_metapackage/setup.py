@@ -8,6 +8,7 @@ setuptools.setup(
     description="Meta package for oca-project Odoo addons",
     version=version,
     install_requires=[
+        'odoo-addon-project_administrator_restricted_visibility>=16.0dev,<16.1dev',
         'odoo-addon-project_department>=16.0dev,<16.1dev',
         'odoo-addon-project_duplicate_subtask>=16.0dev,<16.1dev',
         'odoo-addon-project_hr>=16.0dev,<16.1dev',
