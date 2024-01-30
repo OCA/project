@@ -18,62 +18,44 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#. module: project_stage_state
-#: model:ir.model.fields.selection,name:project_stage_state.selection__project_task_type__state__cancelled
+#. module: project_task_stage_state
+#: model:ir.model.fields.selection,name:project_task_stage_state.selection__project_task_type__state__cancelled
 msgid "Cancelled"
 msgstr ""
 
-#. module: project_stage_state
-#: model:ir.model.fields,field_description:project_stage_state.field_project_task__display_name
-#: model:ir.model.fields,field_description:project_stage_state.field_project_task_type__display_name
-msgid "Display Name"
-msgstr ""
-
-#. module: project_stage_state
-#: model:ir.model.fields.selection,name:project_stage_state.selection__project_task_type__state__done
+#. module: project_task_stage_state
+#: model:ir.model.fields.selection,name:project_task_stage_state.selection__project_task_type__state__done
 msgid "Done"
 msgstr ""
 
-#. module: project_stage_state
-#: model:ir.model.fields,field_description:project_stage_state.field_project_task__id
-#: model:ir.model.fields,field_description:project_stage_state.field_project_task_type__id
-msgid "ID"
-msgstr ""
-
-#. module: project_stage_state
-#: model:ir.model.fields.selection,name:project_stage_state.selection__project_task_type__state__open
+#. module: project_task_stage_state
+#: model:ir.model.fields.selection,name:project_task_stage_state.selection__project_task_type__state__open
 msgid "In Progress"
 msgstr ""
 
-#. module: project_stage_state
-#: model:ir.model.fields,field_description:project_stage_state.field_project_task____last_update
-#: model:ir.model.fields,field_description:project_stage_state.field_project_task_type____last_update
-msgid "Last Modified on"
-msgstr ""
-
-#. module: project_stage_state
-#: model:ir.model.fields.selection,name:project_stage_state.selection__project_task_type__state__draft
+#. module: project_task_stage_state
+#: model:ir.model.fields.selection,name:project_task_stage_state.selection__project_task_type__state__draft
 msgid "New"
 msgstr ""
 
-#. module: project_stage_state
-#: model:ir.model.fields.selection,name:project_stage_state.selection__project_task_type__state__pending
+#. module: project_task_stage_state
+#: model:ir.model.fields.selection,name:project_task_stage_state.selection__project_task_type__state__pending
 msgid "Pending"
 msgstr ""
 
-#. module: project_stage_state
-#: model:ir.model.fields,field_description:project_stage_state.field_project_task__state
-#: model:ir.model.fields,field_description:project_stage_state.field_project_task_type__state
-#: model_terms:ir.ui.view,arch_db:project_stage_state.view_task_search_form
+#. module: project_task_stage_state
+#: model:ir.model.fields,field_description:project_task_stage_state.field_project_task__state
+#: model:ir.model.fields,field_description:project_task_stage_state.field_project_task_type__state
+#: model_terms:ir.ui.view,arch_db:project_task_stage_state.view_task_search_form
 msgid "State"
 msgstr ""
 
-#. module: project_stage_state
-#: model:ir.model,name:project_stage_state.model_project_task
+#. module: project_task_stage_state
+#: model:ir.model,name:project_task_stage_state.model_project_task
 msgid "Task"
 msgstr "Εργασία"
 
-#. module: project_stage_state
-#: model:ir.model,name:project_stage_state.model_project_task_type
+#. module: project_task_stage_state
+#: model:ir.model,name:project_task_stage_state.model_project_task_type
 msgid "Task Stage"
 msgstr ""

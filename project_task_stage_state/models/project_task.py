@@ -10,3 +10,7 @@ class ProjectTask(models.Model):
     _inherit = "project.task"
 
     state = fields.Selection(related="stage_id.state", store=True)
+
+    @property
+    def SELF_READABLE_FIELDS(self):
+        return super().SELF_READABLE_FIELDS | {"state"}

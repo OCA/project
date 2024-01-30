@@ -5,4 +5,4 @@ To use this module, you need to:
 #. Save your changes
 #. Go to Project -> Dashboard and click on a project
 #. Click on task in the stage you just edited
-#. Under the "Extra Info" tab, you can see the "State" field for that task
+#. Under the "Customer" field, you can see the "State" field for that task
