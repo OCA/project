@@ -17,20 +17,20 @@ Project timesheet time control
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fproject-lightgray.png?logo=github
-    :target: https://github.com/OCA/project/tree/16.0/project_timesheet_time_control
+    :target: https://github.com/OCA/project/tree/17.0/project_timesheet_time_control
     :alt: OCA/project
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/project-16-0/project-16-0-project_timesheet_time_control
+    :target: https://translation.odoo-community.org/projects/project-17-0/project-17-0-project_timesheet_time_control
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/project&target_branch=16.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/project&target_branch=17.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
-Allow to track the exact moment when a timesheet line is started (not only
-the day, but also the minute and second) and let users start and stop timers
-easily.
+Allow to track the exact moment when a timesheet line is started (not
+only the day, but also the minute and second) and let users start and
+stop timers easily.
 
 **Table of contents**
 
@@ -42,73 +42,78 @@ Installation
 
 This module depends on modules found in these repositories:
 
-* `OCA/timesheet <https://github.com/OCA/timesheet>`__
-* `OCA/web <https://github.com/OCA/web>`__
+-  `OCA/timesheet <https://github.com/OCA/timesheet>`__
+-  `OCA/web <https://github.com/OCA/web>`__
 
 Usage
 =====
 
 You can access via timesheets:
 
-#. Go to *Timesheets > Timesheet > All Timesheets*.
-#. Create a new record.
-#. You will see now that the *Date* field contains also time information.
-#. If you don't select any "project", you will be able to select any "task",
-   opened or not.
-#. Selecting a "task", the corresponding "project" is filled.
-#. Selecting a "project", tasks are filtered for only allow
-   to select opened tasks for that project. Remember that an opened task is
-   a task whose stage doesn't have "Closed" mark checked.
-#. At the end of the line, you will see a stop button.
-#. When you press this button, the difference between *Date* field and the
-   current time is saved in the "Duration" field.
-#. You can modify the *Date* field for altering the computation of the
-   duration.
-#. After a record is stopped, you see a *Resume* button, which will open a
-   wizard that inherits all relevant values from that timesheet line and lets
-   you duplicate it to indicate you start working in the same thing.
-#. If you didn't stop the timer, but still hit *Resume* in any other, the
-   wizard will tell you that you have a running timer and that starting a new
-   one will stop the other one that is running.
+1.  Go to *Timesheets > Timesheet > All Timesheets*.
+2.  Create a new record.
+3.  You will see now that the *Date* field contains also time
+    information.
+4.  If you don't select any "project", you will be able to select any
+    "task", opened or not.
+5.  Selecting a "task", the corresponding "project" is filled.
+6.  Selecting a "project", tasks are filtered for only allow to select
+    opened tasks for that project. Remember that an opened task is a
+    task whose stage doesn't have "Closed" mark checked.
+7.  At the end of the line, you will see a stop button.
+8.  When you press this button, the difference between *Date* field and
+    the current time is saved in the "Duration" field.
+9.  You can modify the *Date* field for altering the computation of the
+    duration.
+10. After a record is stopped, you see a *Resume* button, which will
+    open a wizard that inherits all relevant values from that timesheet
+    line and lets you duplicate it to indicate you start working in the
+    same thing.
+11. If you didn't stop the timer, but still hit *Resume* in any other,
+    the wizard will tell you that you have a running timer and that
+    starting a new one will stop the other one that is running.
 
 To access the wizard directly:
 
-#. Go to *Timesheet > Timesheet > Start work*.
-#. You will be able to enter a new timesheet line from scratch, but by using
-   this wizard, you avoid problems with old or duplicate running timers.
+1. Go to *Timesheet > Timesheet > Start work*.
+2. You will be able to enter a new timesheet line from scratch, but by
+   using this wizard, you avoid problems with old or duplicate running
+   timers.
 
 Or via projects:
 
-#. Go to *Project > Projects*.
-#. If a project has a running timesheet line, it will display a *Stop* button.
-#. Other projects that have enabled timesheets will display a *Start* button
-   that will open the same wizard as the timesheet lines, but duplicating
-   project's last timesheet line without a task.
-#. You can see the same in list and form views.
+1. Go to *Project > Projects*.
+2. If a project has a running timesheet line, it will display a *Stop*
+   button.
+3. Other projects that have enabled timesheets will display a *Start*
+   button that will open the same wizard as the timesheet lines, but
+   duplicating project's last timesheet line without a task.
+4. You can see the same in list and form views.
 
 Or via tasks:
 
-#. Go to *Project > All Tasks*.
-#. If a task has a running timesheet line, it will display a *Stop* button.
-#. Other tasks that have enabled timesheets will display a *Start* button
-   that will open the same wizard as the timesheet lines, duplicating task's
-   last timesheet line.
-#. You can see the same in list view.
-#. Click on any existing task or create a new one.
-#. You can see the same feature in the action buttons box.
-#. On the *Timesheets* page, you will be able to handle records the same way
-   as you do in the above explanation (except the task selection part, which
-   in this case doesn't appear as it's the current one).
+1. Go to *Project > All Tasks*.
+2. If a task has a running timesheet line, it will display a *Stop*
+   button.
+3. Other tasks that have enabled timesheets will display a *Start*
+   button that will open the same wizard as the timesheet lines,
+   duplicating task's last timesheet line.
+4. You can see the same in list view.
+5. Click on any existing task or create a new one.
+6. You can see the same feature in the action buttons box.
+7. On the *Timesheets* page, you will be able to handle records the same
+   way as you do in the above explanation (except the task selection
+   part, which in this case doesn't appear as it's the current one).
 
-Note: All the *Start/Resume/Stop* features are disabled if you don't belong to
-the *Timesheets/User* group or if you are viewing a timesheet that belongs
-to another user.
+Note: All the *Start/Resume/Stop* features are disabled if you don't
+belong to the *Timesheets/User* group or if you are viewing a timesheet
+that belongs to another user.
 
 Known issues / Roadmap
 ======================
 
-* Rename to ``hr_timesheet_time_control``.
-* Move to `OCA/timesheet <https://github.com/OCA/timesheet>`__.
+-  Rename to ``hr_timesheet_time_control``.
+-  Move to `OCA/timesheet <https://github.com/OCA/timesheet>`__.
 
 Bug Tracker
 ===========
@@ -116,7 +121,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/project/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/project/issues/new?body=module:%20project_timesheet_time_control%0Aversion:%2016.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/project/issues/new?body=module:%20project_timesheet_time_control%0Aversion:%2017.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -124,26 +129,26 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Tecnativa
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* `Tecnativa <https://www.tecnativa.com>`_:
+-  `Tecnativa <https://www.tecnativa.com>`__:
 
-    * Pedro M. Baeza
-    * Antonio Espinosa
-    * Carlos Dauden
-    * Sergio Teruel
-    * Luis M. ontalba
-    * Ernesto Tejeda
-    * Jairo Llopis
-    * Carlos Roca
+      -  Pedro M. Baeza
+      -  Antonio Espinosa
+      -  Carlos Dauden
+      -  Sergio Teruel
+      -  Luis M. ontalba
+      -  Ernesto Tejeda
+      -  Jairo Llopis
+      -  Carlos Roca
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is maintained by the OCA.
 
@@ -163,6 +168,6 @@ Current `maintainer <https://odoo-community.org/page/maintainer-role>`__:
 
 |maintainer-ernestotejeda| 
 
-This module is part of the `OCA/project <https://github.com/OCA/project/tree/16.0/project_timesheet_time_control>`_ project on GitHub.
+This module is part of the `OCA/project <https://github.com/OCA/project/tree/17.0/project_timesheet_time_control>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
