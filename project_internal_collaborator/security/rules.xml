@@ -1,0 +1,15 @@
+<odoo noupdate="1">
+    <!-- Project: Collaborators can see assigned projects -->
+    <record model="ir.rule" id="rule_project_collaborators">
+        <field name="name">Project: collaborators can see project</field>
+        <field name="model_id" ref="project.model_project_project" />
+        <field
+            name="domain_force"
+        >[('internal_collaborator_ids', 'in', [user.id])]</field>
+        <field name="groups" eval="[(4,ref('base.group_user'))]" />
+        <field name="perm_read" eval="1" />
+        <field name="perm_write" eval="0" />
+        <field name="perm_create" eval="0" />
+        <field name="perm_unlink" eval="0" />
+    </record>
+</odoo>
