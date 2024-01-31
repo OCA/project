@@ -7,32 +7,31 @@
         <field name="arch" type="xml">
             <div name="button_box" position="inside">
                 <field
-                    name="show_time_control"
-                    invisible="1"
                     groups="hr_timesheet.group_hr_timesheet_user"
+                    invisible="1"
+                    name="show_time_control"
                 />
                 <button
+                    class="oe_stat_button"
+                    groups="hr_timesheet.group_hr_timesheet_user"
+                    icon="fa-play-circle text-success"
+                    invisible="show_time_control != 'start'"
                     name="button_start_work"
                     string="Start work"
-                    type="object"
-                    icon="fa-play-circle text-success"
-                    attrs="{'invisible': [('show_time_control', '!=', 'start')]}"
-                    class="oe_stat_button"
                     title="Start work"
-                    groups="hr_timesheet.group_hr_timesheet_user"
+                    type="object"
                 />
                 <button
+                    class="oe_stat_button"
+                    groups="hr_timesheet.group_hr_timesheet_user"
+                    icon="fa-stop-circle text-warning"
+                    invisible="show_time_control != 'stop'"
                     name="button_end_work"
                     string="Stop work"
-                    type="object"
-                    icon="fa-stop-circle text-warning"
-                    attrs="{'invisible': [('show_time_control', '!=', 'stop')]}"
-                    class="oe_stat_button"
                     title="End work"
-                    groups="hr_timesheet.group_hr_timesheet_user"
+                    type="object"
                 />
-            </div>
-        </field>
+            </div></field>
     </record>
     <record id="view_project_kanban_inherited" model="ir.ui.view">
         <field name="name">Add timesheet time controls</field>
@@ -41,17 +40,17 @@
         <field name="arch" type="xml">
             <xpath expr="//*[hasclass('o_project_kanban_boxes')]" position="inside">
                 <field
-                    name="show_time_control"
-                    invisible="1"
                     groups="hr_timesheet.group_hr_timesheet_user"
+                    invisible="1"
+                    name="show_time_control"
                 />
                 <a
+                    class="o_project_kanban_box"
+                    groups="hr_timesheet.group_hr_timesheet_user"
+                    invisible="show_time_control != 'start'"
                     name="button_start_work"
                     tabindex="-1"
                     type="object"
-                    attrs="{'invisible': [('show_time_control', '!=', 'start')]}"
-                    class="o_project_kanban_box"
-                    groups="hr_timesheet.group_hr_timesheet_user"
                 >
                     <div>
                         <span class="o_label">
@@ -61,12 +60,12 @@
                     </div>
                 </a>
                 <a
+                    class="o_project_kanban_box"
+                    groups="hr_timesheet.group_hr_timesheet_user"
+                    invisible="show_time_control != 'stop'"
                     name="button_end_work"
                     tabindex="-1"
                     type="object"
-                    attrs="{'invisible': [('show_time_control', '!=', 'stop')]}"
-                    class="o_project_kanban_box"
-                    groups="hr_timesheet.group_hr_timesheet_user"
                 >
                     <div>
                         <span class="o_label">
@@ -75,8 +74,7 @@
                         </span>
                     </div>
                 </a>
-            </xpath>
-        </field>
+            </xpath></field>
     </record>
     <record id="view_project_tree" model="ir.ui.view">
         <field name="name">Add timesheet time controls</field>
@@ -85,33 +83,32 @@
         <field name="arch" type="xml">
             <tree position="inside">
                 <field
-                    name="show_time_control"
-                    invisible="1"
                     groups="hr_timesheet.group_hr_timesheet_user"
+                    invisible="1"
+                    name="show_time_control"
                 />
                 <button
+                    class="oe_stat_button"
+                    groups="hr_timesheet.group_hr_timesheet_user"
+                    icon="fa-play-circle text-success"
+                    invisible="show_time_control != 'start'"
                     name="button_start_work"
                     string="Start work"
                     tabindex="-1"
-                    type="object"
-                    icon="fa-play-circle text-success"
-                    attrs="{'invisible': [('show_time_control', '!=', 'start')]}"
-                    class="oe_stat_button"
                     title="Start work"
-                    groups="hr_timesheet.group_hr_timesheet_user"
+                    type="object"
                 />
                 <button
+                    class="oe_stat_button"
+                    groups="hr_timesheet.group_hr_timesheet_user"
+                    icon="fa-stop-circle text-warning"
+                    invisible="show_time_control != 'stop'"
                     name="button_end_work"
                     string="Stop work"
                     tabindex="-1"
-                    type="object"
-                    icon="fa-stop-circle text-warning"
-                    attrs="{'invisible': [('show_time_control', '!=', 'stop')]}"
-                    class="oe_stat_button"
                     title="End work"
-                    groups="hr_timesheet.group_hr_timesheet_user"
+                    type="object"
                 />
-            </tree>
-        </field>
+            </tree></field>
     </record>
 </odoo>

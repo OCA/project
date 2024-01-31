@@ -5,34 +5,30 @@
         <field name="inherit_id" ref="hr_timesheet.hr_timesheet_line_tree" />
         <field name="arch" type="xml">
             <field name="date" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </field>
+                <attribute name="invisible">1</attribute></field>
             <field name="date" position="after">
                 <field name="date_time" required="1" />
-                <field name="date_time_end" optional="hide" />
-            </field>
+                <field name="date_time_end" optional="hide" /></field>
             <field name="unit_amount" position="after">
-                <field name="show_time_control" invisible="1" />
+                <field invisible="1" name="show_time_control" />
                 <button
+                    class="oe_stat_button"
+                    icon="fa-play-circle text-success"
+                    invisible="show_time_control != 'resume'"
                     name="button_resume_work"
                     tabindex="-1"
-                    type="object"
-                    icon="fa-play-circle text-success"
-                    attrs="{'invisible': [('show_time_control', '!=', 'resume')]}"
-                    class="oe_stat_button"
                     title="Resume work"
+                    type="object"
                 />
                 <button
+                    class="oe_stat_button"
+                    icon="fa-stop-circle text-warning"
+                    invisible="show_time_control != 'stop'"
                     name="button_end_work"
                     tabindex="-1"
-                    type="object"
-                    icon="fa-stop-circle text-warning"
-                    attrs="{'invisible': [('show_time_control', '!=', 'stop')]}"
-                    class="oe_stat_button"
                     title="Stop work"
-                />
-            </field>
-        </field>
+                    type="object"
+                /></field></field>
     </record>
     <record id="hr_timesheet_line_form" model="ir.ui.view">
         <field name="name">account.analytic.line.form.inherit</field>
@@ -41,34 +37,31 @@
         <field name="arch" type="xml">
             <xpath expr="//sheet/group" position="before">
                 <div class="oe_button_box" name="button_box">
-                    <field name="show_time_control" invisible="1" />
+                    <field invisible="1" name="show_time_control" />
                     <button
-                        name="button_resume_work"
-                        type="object"
-                        icon="fa-play-circle text-success"
-                        attrs="{'invisible': [('show_time_control', '!=', 'resume')]}"
                         class="oe_stat_button"
                         context="{'show_created_timer': True}"
+                        icon="fa-play-circle text-success"
+                        invisible="show_time_control != 'resume'"
+                        name="button_resume_work"
                         title="Resume work"
+                        type="object"
                     />
                     <button
-                        name="button_end_work"
-                        type="object"
-                        icon="fa-stop-circle text-warning"
-                        attrs="{'invisible': [('show_time_control', '!=', 'stop')]}"
                         class="oe_stat_button"
+                        icon="fa-stop-circle text-warning"
+                        invisible="show_time_control != 'stop'"
+                        name="button_end_work"
                         title="Stop work"
+                        type="object"
                     />
                 </div>
             </xpath>
             <field name="date" position="attributes">
-                <attribute name="invisible">1</attribute>
-            </field>
+                <attribute name="invisible">1</attribute></field>
             <field name="date" position="after">
                 <field name="date_time" required="1" />
-                <field name="date_time_end" />
-            </field>
-        </field>
+                <field name="date_time_end" /></field></field>
     </record>
     <record id="view_kanban_account_analytic_line" model="ir.ui.view">
         <field name="name">account.analytic.line.kanban</field>
@@ -76,30 +69,29 @@
         <field name="inherit_id" ref="hr_timesheet.view_kanban_account_analytic_line" />
         <field name="arch" type="xml">
             <xpath expr="//templates//field[@name='unit_amount']" position="after">
-                <field name="show_time_control" invisible="1" />
+                <field invisible="1" name="show_time_control" />
                 <a
+                    class="o_kanban_inline_block fa fa-lg fa-play-circle text-success"
+                    invisible="show_time_control != 'resume'"
                     name="button_resume_work"
                     string="Resume work"
                     tabindex="-1"
-                    type="object"
-                    attrs="{'invisible': [('show_time_control', '!=', 'resume')]}"
-                    class="o_kanban_inline_block fa fa-lg fa-play-circle text-success"
                     title="Start work"
+                    type="object"
                 />
                 <a
+                    class="o_kanban_inline_block fa fa-lg fa-stop-circle text-warning"
+                    invisible="show_time_control != 'stop'"
                     name="button_end_work"
                     string="Stop work"
                     tabindex="-1"
-                    type="object"
-                    attrs="{'invisible': [('show_time_control', '!=', 'stop')]}"
-                    class="o_kanban_inline_block fa fa-lg fa-stop-circle text-warning"
                     title="End work"
+                    type="object"
                 />
             </xpath>
             <field name="date" position="after">
                 <field name="date_time" />
-                <field name="date_time_end" />
-            </field>
+                <field name="date_time_end" /></field>
             <xpath
                 expr="//templates//t[@t-esc='record.date.value']"
                 position="attributes"
@@ -110,10 +102,11 @@
                 <t t-esc="record.date_time.value" />
                 <t t-if="record.date_time_end.value">
                     <br />
-                    <span>to</span>
+                    <span>
+                        to
+                    </span>
                     <t t-esc="record.date_time_end.value" />
                 </t>
-            </xpath>
-        </field>
+            </xpath></field>
     </record>
 </odoo>

@@ -22,38 +22,38 @@
                         <field name="date_time_end" />
                         <field name="project_id" required="1" />
                         <field name="task_id" />
-                        <field name="company_id" groups="base.group_multi_company" />
-                        <field name="company_id" invisible="1" />
+                        <field groups="base.group_multi_company" name="company_id" />
+                        <field invisible="1" name="company_id" />
                     </group>
                     <group
+                        col="4"
+                        invisible="running_timer_id == False"
                         name="messages"
                         string="Previous timer"
-                        attrs="{'invisible': [('running_timer_id', '=', False)]}"
-                        col="4"
                     >
                         <p colspan="4">
                             You have a running timer called
                             <field
-                                name="running_timer_id"
                                 class="oe_inline"
                                 context="{'form_view_ref': 'hr_timesheet.hr_timesheet_line_form'}"
+                                name="running_timer_id"
                             />
                             and started at
-                            <field name="running_timer_start" class="oe_inline" />
+                            <field class="oe_inline" name="running_timer_start" />
                             .
                             If you continue, it will be stopped with
                             <strong>
                                 <field
-                                    name="running_timer_duration"
                                     class="oe_inline text-info"
+                                    invisible="running_timer_duration &gt;= 5"
+                                    name="running_timer_duration"
                                     widget="float_time"
-                                    attrs="{'invisible': [('running_timer_duration', '&gt;=', 5)]}"
                                 />
                                 <field
-                                    name="running_timer_duration"
                                     class="oe_inline text-warning"
+                                    invisible="running_timer_duration &lt; 5"
+                                    name="running_timer_duration"
                                     widget="float_time"
-                                    attrs="{'invisible': [('running_timer_duration', '&lt;', 5)]}"
                                 />
                                 hour(s).
                             </strong>
@@ -61,8 +61,8 @@
                         <div
                             class="alert alert-warning"
                             colspan="4"
+                            invisible="running_timer_duration &lt; 5"
                             role="alert"
-                            attrs="{'invisible': [('running_timer_duration', '&lt;', 5)]}"
                         >
                             That is a lot of time! Make sure it is fine before saving.
                         </div>
@@ -71,31 +71,30 @@
                 <!-- Footer buttons -->
                 <footer>
                     <button
+                        class="oe_highlight"
+                        invisible="running_timer_id != False"
                         name="action_switch"
-                        type="object"
-                        attrs="{'invisible': [('running_timer_id', '!=', False)]}"
                         string="Start new timer"
-                        class="oe_highlight"
+                        type="object"
                     />
                     <button
+                        class="oe_highlight"
+                        invisible="running_timer_id == False or running_timer_duration &gt;= 5"
                         name="action_switch"
-                        type="object"
-                        attrs="{'invisible': ['|', ('running_timer_id', '=', False), ('running_timer_duration', '&gt;=', 5)]}"
                         string="Stop previous timer and start the new one"
-                        class="oe_highlight"
+                        type="object"
                     />
                     <button
-                        name="action_switch"
-                        confirm="The previous timer is old. Do you really want to stop it now?"
-                        type="object"
-                        attrs="{'invisible': ['|', ('running_timer_id', '=', False), ('running_timer_duration', '&lt;', 5)]}"
-                        string="Stop that very old timer and start the new one"
                         class="btn-warning"
+                        confirm="The previous timer is old. Do you really want to stop it now?"
+                        invisible="running_timer_id == False or running_timer_duration &lt; 5"
+                        name="action_switch"
+                        string="Stop that very old timer and start the new one"
+                        type="object"
                     />
                     <button special="cancel" string="Cancel" />
                 </footer>
-            </form>
-        </field>
+            </form></field>
     </record>
     <record id="hr_timesheet_switch_action" model="ir.actions.act_window">
         <field name="name">Start work</field>
@@ -106,11 +105,11 @@
         <field name="context">{'show_created_timer': True}</field>
     </record>
     <menuitem
+        action="hr_timesheet_switch_action"
+        groups="hr_timesheet.group_hr_timesheet_user"
         id="hr_timesheet_switch_menu"
         name="Start work"
-        action="hr_timesheet_switch_action"
         parent="hr_timesheet.menu_hr_time_tracking"
-        groups="hr_timesheet.group_hr_timesheet_user"
         sequence="10"
     />
 </data>
