@@ -10,7 +10,7 @@ class TestProjectCaseDefault(TransactionCase):
     # Use case : Prepare some data for current test case
     @classmethod
     def setUpClass(cls):
-        super(TestProjectCaseDefault, cls).setUpClass()
+        super().setUpClass()
         cls.env = cls.env(context=dict(cls.env.context, **DISABLED_MAIL_CONTEXT))
         cls.project = cls.env["project.project"].create({"name": "Project Test"})
 
