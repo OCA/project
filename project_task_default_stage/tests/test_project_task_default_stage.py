@@ -7,7 +7,6 @@ from odoo.addons.base.tests.common import DISABLED_MAIL_CONTEXT
 
 
 class TestProjectCaseDefault(TransactionCase):
-
     # Use case : Prepare some data for current test case
     @classmethod
     def setUpClass(cls):
