@@ -25,18 +25,6 @@ msgid "Analysis"
 msgstr "Anàlisis"
 
 #. module: project_task_default_stage
-#: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_analysis
-#: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_cancel
-#: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_deployment
-#: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_design
-#: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_development
-#: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_merge
-#: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_specification
-#: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_testing
-msgid "Blocked"
-msgstr "Bloquejat"
-
-#. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_cancel
 msgid "Cancelled"
 msgstr "Cancel·lat"
@@ -71,18 +59,6 @@ msgstr ""
 "projecte nou. No s'assignarà aquesta etapa a projectes ja existents."
 
 #. module: project_task_default_stage
-#: model:project.task.type,legend_normal:project_task_default_stage.project_tt_analysis
-#: model:project.task.type,legend_normal:project_task_default_stage.project_tt_cancel
-#: model:project.task.type,legend_normal:project_task_default_stage.project_tt_deployment
-#: model:project.task.type,legend_normal:project_task_default_stage.project_tt_design
-#: model:project.task.type,legend_normal:project_task_default_stage.project_tt_development
-#: model:project.task.type,legend_normal:project_task_default_stage.project_tt_merge
-#: model:project.task.type,legend_normal:project_task_default_stage.project_tt_specification
-#: model:project.task.type,legend_normal:project_task_default_stage.project_tt_testing
-msgid "In Progress"
-msgstr "En progrés"
-
-#. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_merge
 msgid "Merge"
 msgstr "Fusionar"
@@ -96,18 +72,6 @@ msgstr "Projecte"
 #: model_terms:ir.ui.view,arch_db:project_task_default_stage.edit_project
 msgid "Project Stages"
 msgstr "Etapes del projecte"
-
-#. module: project_task_default_stage
-#: model:project.task.type,legend_done:project_task_default_stage.project_tt_analysis
-#: model:project.task.type,legend_done:project_task_default_stage.project_tt_cancel
-#: model:project.task.type,legend_done:project_task_default_stage.project_tt_deployment
-#: model:project.task.type,legend_done:project_task_default_stage.project_tt_design
-#: model:project.task.type,legend_done:project_task_default_stage.project_tt_development
-#: model:project.task.type,legend_done:project_task_default_stage.project_tt_merge
-#: model:project.task.type,legend_done:project_task_default_stage.project_tt_specification
-#: model:project.task.type,legend_done:project_task_default_stage.project_tt_testing
-msgid "Ready"
-msgstr ""
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_specification
@@ -128,6 +92,12 @@ msgstr "Fase de les tasques"
 #: model:project.task.type,name:project_task_default_stage.project_tt_testing
 msgid "Testing"
 msgstr "Testeig"
+
+#~ msgid "Blocked"
+#~ msgstr "Bloquejat"
+
+#~ msgid "In Progress"
+#~ msgstr "En progrés"
 
 #~ msgid "Ready for Next Stage"
 #~ msgstr "Llest per la propera etapa"

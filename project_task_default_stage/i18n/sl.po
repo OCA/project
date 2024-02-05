@@ -26,18 +26,6 @@ msgid "Analysis"
 msgstr "Analiza"
 
 #. module: project_task_default_stage
-#: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_analysis
-#: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_cancel
-#: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_deployment
-#: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_design
-#: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_development
-#: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_merge
-#: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_specification
-#: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_testing
-msgid "Blocked"
-msgstr ""
-
-#. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_cancel
 msgid "Cancelled"
 msgstr "Preklicano"
@@ -72,18 +60,6 @@ msgstr ""
 "Obstoječim projektom za stopnja ne bo dodeljena."
 
 #. module: project_task_default_stage
-#: model:project.task.type,legend_normal:project_task_default_stage.project_tt_analysis
-#: model:project.task.type,legend_normal:project_task_default_stage.project_tt_cancel
-#: model:project.task.type,legend_normal:project_task_default_stage.project_tt_deployment
-#: model:project.task.type,legend_normal:project_task_default_stage.project_tt_design
-#: model:project.task.type,legend_normal:project_task_default_stage.project_tt_development
-#: model:project.task.type,legend_normal:project_task_default_stage.project_tt_merge
-#: model:project.task.type,legend_normal:project_task_default_stage.project_tt_specification
-#: model:project.task.type,legend_normal:project_task_default_stage.project_tt_testing
-msgid "In Progress"
-msgstr ""
-
-#. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_merge
 msgid "Merge"
 msgstr "Združitev"
@@ -97,18 +73,6 @@ msgstr "Projekt"
 #: model_terms:ir.ui.view,arch_db:project_task_default_stage.edit_project
 msgid "Project Stages"
 msgstr "Projektne stopnje"
-
-#. module: project_task_default_stage
-#: model:project.task.type,legend_done:project_task_default_stage.project_tt_analysis
-#: model:project.task.type,legend_done:project_task_default_stage.project_tt_cancel
-#: model:project.task.type,legend_done:project_task_default_stage.project_tt_deployment
-#: model:project.task.type,legend_done:project_task_default_stage.project_tt_design
-#: model:project.task.type,legend_done:project_task_default_stage.project_tt_development
-#: model:project.task.type,legend_done:project_task_default_stage.project_tt_merge
-#: model:project.task.type,legend_done:project_task_default_stage.project_tt_specification
-#: model:project.task.type,legend_done:project_task_default_stage.project_tt_testing
-msgid "Ready"
-msgstr ""
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_specification
