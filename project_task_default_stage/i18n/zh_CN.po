@@ -25,18 +25,6 @@ msgid "Analysis"
 msgstr "分析"
 
 #. module: project_task_default_stage
-#: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_analysis
-#: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_cancel
-#: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_deployment
-#: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_design
-#: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_development
-#: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_merge
-#: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_specification
-#: model:project.task.type,legend_blocked:project_task_default_stage.project_tt_testing
-msgid "Blocked"
-msgstr ""
-
-#. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_cancel
 msgid "Cancelled"
 msgstr "已取消"
@@ -69,18 +57,6 @@ msgid ""
 msgstr ""
 
 #. module: project_task_default_stage
-#: model:project.task.type,legend_normal:project_task_default_stage.project_tt_analysis
-#: model:project.task.type,legend_normal:project_task_default_stage.project_tt_cancel
-#: model:project.task.type,legend_normal:project_task_default_stage.project_tt_deployment
-#: model:project.task.type,legend_normal:project_task_default_stage.project_tt_design
-#: model:project.task.type,legend_normal:project_task_default_stage.project_tt_development
-#: model:project.task.type,legend_normal:project_task_default_stage.project_tt_merge
-#: model:project.task.type,legend_normal:project_task_default_stage.project_tt_specification
-#: model:project.task.type,legend_normal:project_task_default_stage.project_tt_testing
-msgid "In Progress"
-msgstr ""
-
-#. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_merge
 msgid "Merge"
 msgstr "合并"
@@ -94,18 +70,6 @@ msgstr "项目"
 #: model_terms:ir.ui.view,arch_db:project_task_default_stage.edit_project
 msgid "Project Stages"
 msgstr "项目阶段"
-
-#. module: project_task_default_stage
-#: model:project.task.type,legend_done:project_task_default_stage.project_tt_analysis
-#: model:project.task.type,legend_done:project_task_default_stage.project_tt_cancel
-#: model:project.task.type,legend_done:project_task_default_stage.project_tt_deployment
-#: model:project.task.type,legend_done:project_task_default_stage.project_tt_design
-#: model:project.task.type,legend_done:project_task_default_stage.project_tt_development
-#: model:project.task.type,legend_done:project_task_default_stage.project_tt_merge
-#: model:project.task.type,legend_done:project_task_default_stage.project_tt_specification
-#: model:project.task.type,legend_done:project_task_default_stage.project_tt_testing
-msgid "Ready"
-msgstr ""
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_specification
