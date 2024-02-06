@@ -219,15 +219,16 @@ class Project(models.Model):
     @api.multi
     def write(self, vals):
         res = super(Project, self).write(vals)
-        if 'parent_id' in vals:
-            for account in self.env['account.analytic.account'].browse(
-                    self.analytic_account_id.get_child_accounts().keys()):
-                account._complete_wbs_code_calc()
-                account._complete_wbs_name_calc()
-        if 'user_id' in vals:
-            for account in self.env['account.analytic.account'].browse(
-                    self.analytic_account_id.get_child_accounts().keys()):
-                account.user_id = vals["user_id"]
+        for rec in self:
+            if 'parent_id' in vals:
+                for account in self.env['account.analytic.account'].browse(
+                        rec.analytic_account_id.get_child_accounts().keys()):
+                    account._complete_wbs_code_calc()
+                    account._complete_wbs_name_calc()
+            if 'user_id' in vals:
+                for account in self.env['account.analytic.account'].browse(
+                        rec.analytic_account_id.get_child_accounts().keys()):
+                    account.user_id = vals["user_id"]
         return res
 
     @api.multi
