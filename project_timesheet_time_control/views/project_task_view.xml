@@ -38,7 +38,7 @@
                 expr="//field[@name='timesheet_ids']/tree//field[@name='date']"
                 position="attributes"
             >
-                <attribute name="invisible">1</attribute>
+                <attribute name="column_invisible">1</attribute>
             </xpath>
             <xpath
                 expr="//field[@name='timesheet_ids']/tree//field[@name='date']"
