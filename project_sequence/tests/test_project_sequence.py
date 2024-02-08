@@ -20,18 +20,7 @@ class TestProjectSequence(TransactionCase):
         )
         cls.pjr_seq = cls.env.ref("project_sequence.seq_project_sequence")
         cls.pjr_seq.date_range_ids.unlink()
-        default_plan_id = (
-            cls.env["account.analytic.plan"]
-            .sudo()
-            .search(
-                [
-                    "|",
-                    ("company_id", "=", False),
-                    ("company_id", "=", cls.env.company.id),
-                ],
-                limit=1,
-            )
-        )
+        default_plan_id = cls.env["account.analytic.plan"].search([], limit=1)
         cls.analytic_account = cls.env["account.analytic.account"].create(
             {
                 "name": "aaa",
@@ -152,18 +141,7 @@ class TestProjectSequence(TransactionCase):
     def test_sync_analytic_account_name(self):
         """Set analytic account name equal to project's display name."""
         proj = self.env["project.project"].create({"name": "one"})
-        default_plan_id = (
-            self.env["account.analytic.plan"]
-            .sudo()
-            .search(
-                [
-                    "|",
-                    ("company_id", "=", False),
-                    ("company_id", "=", self.env.company.id),
-                ],
-                limit=1,
-            )
-        )
+        default_plan_id = self.env["account.analytic.plan"].search([], limit=1)
         analytic_account = self.env["account.analytic.account"].create(
             {
                 "name": proj.display_name,

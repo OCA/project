@@ -35,10 +35,9 @@ class ProjectProject(models.Model):
                 continue
             rec.analytic_account_id.name = rec.display_name
 
-    def name_get(self):
-        """Prefix name with sequence code if they are different."""
-        old_result = super().name_get()
-        result = []
+    @api.depends("sequence_code", "name")
+    def _compute_display_name(self):
+        res = super()._compute_display_name()
         sequence_pattern = (
             self.env["ir.config_parameter"]
             .sudo()
@@ -47,15 +46,14 @@ class ProjectProject(models.Model):
                 default="%(sequence_code)s - %(name)s",
             )
         )
-        for id_, name in old_result:
-            project = self.browse(id_)
-            if project.sequence_code and project.sequence_code != name:
-                name = sequence_pattern % {
-                    "name": name,
-                    "sequence_code": project.sequence_code,
-                }
-            result.append((id_, name))
-        return result
+        for project in self.filtered(
+            lambda pr: pr.sequence_code and pr.sequence_code != pr.name
+        ):
+            project.display_name = sequence_pattern % {
+                "name": project.name,
+                "sequence_code": project.sequence_code,
+            }
+        return res
 
     @api.model
     def name_search(self, name="", args=None, operator="ilike", limit=100):
