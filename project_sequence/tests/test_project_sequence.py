@@ -45,7 +45,7 @@ class TestProjectSequence(TransactionCase):
         )
 
     def setUp(self):
-        super(TestProjectSequence, self).setUp()
+        super().setUp()
         self.pjr_seq._get_current_sequence().number_next = 11
 
     @users("manager")
