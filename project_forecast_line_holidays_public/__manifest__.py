@@ -5,6 +5,7 @@
     "summary": "Project Forecast Lines taking public holidays into account",
     "version": "14.0.1.0.0",
     "author": "Camptocamp SA, Odoo Community Association (OCA)",
+    "maintainers": ["ntsirintanis"],
     "license": "AGPL-3",
     "category": "Project",
     "website": "https://github.com/OCA/project",
