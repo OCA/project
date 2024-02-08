@@ -17,21 +17,19 @@ Project Sequence
     :target: http://www.gnu.org/licenses/lgpl-3.0-standalone.html
     :alt: License: LGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fproject-lightgray.png?logo=github
-    :target: https://github.com/OCA/project/tree/16.0/project_sequence
+    :target: https://github.com/OCA/project/tree/17.0/project_sequence
     :alt: OCA/project
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/project-16-0/project-16-0-project_sequence
+    :target: https://translation.odoo-community.org/projects/project-17-0/project-17-0-project_sequence
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/project&target_branch=16.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/project&target_branch=17.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
-..  This file must be max 2-3 paragraphs, and is required.
-    It should explain *why* this module exists.
-
-Add a sequence field to projects, filled automatically and add a code sequence filter in tree view project.
+Add a sequence field to projects, filled automatically and add a code
+sequence filter in tree view project.
 
 .. IMPORTANT::
    This is an alpha version, the data model and design can change at any time without warning.
@@ -48,30 +46,23 @@ Configuration
 
 To change the project display name pattern, follow these steps:
 
-#. Go to *Project > Configuration > Settings*.
-#. Edit the *Project display name pattern* field.
+1. Go to *Project > Configuration > Settings*.
 
-   The default format is ``%(sequence_code)s - %(name)s``. You can use those
-   same placeholders to customize the pattern.
+2. Edit the *Project display name pattern* field.
+
+   The default format is ``%(sequence_code)s - %(name)s``. You can use
+   those same placeholders to customize the pattern.
 
 Usage
 =====
 
-..  This file must be present. It contains the usage instructions
-    for end-users. As all other rst files included in the README,
-    it MUST NOT contain reStructuredText sections
-    only body text (paragraphs, lists, tables, etc). Should you need
-    a more elaborate structure to explain the addon, please create a
-    Sphinx documentation (which may include this file as a "quick start"
-    section).
-
 To use this module, you need to:
 
-#. Go to the project icon.
-#. Click the button "create" to create a new project
-#. Fill in the field Project name and click the "create" button
-#. Now in the Kanban view see the project name when you are created
-#. Repeat this operation creating another project without the name.
+1. Go to the project icon.
+2. Click the button "create" to create a new project
+3. Fill in the field Project name and click the "create" button
+4. Now in the Kanban view see the project name when you are created
+5. Repeat this operation creating another project without the name.
 
 Bug Tracker
 ===========
@@ -79,7 +70,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/project/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/project/issues/new?body=module:%20project_sequence%0Aversion:%2016.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/project/issues/new?body=module:%20project_sequence%0Aversion:%2017.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -87,29 +78,26 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Moduon
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* Andrea Cattalani (`Moduon <https://www.moduon.team/>`__)
-* Jairo Llopis (`Moduon <https://www.moduon.team/>`__)
-* Nils Coenen <nils.coenen@nico-solutions.de>
+-  Andrea Cattalani (`Moduon <https://www.moduon.team/>`__)
+-  Jairo Llopis (`Moduon <https://www.moduon.team/>`__)
+-  Nils Coenen <nils.coenen@nico-solutions.de>
 
 Other credits
-~~~~~~~~~~~~~
-
-..  This file is optional and contains additional credits, other than
-    authors, contributors, and maintainers.
+-------------
 
 The development of this module has been financially supported by:
 
-* Moduon
+-  Moduon
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is maintained by the OCA.
 
@@ -132,6 +120,6 @@ Current `maintainers <https://odoo-community.org/page/maintainer-role>`__:
 
 |maintainer-yajo| |maintainer-anddago78| 
 
-This module is part of the `OCA/project <https://github.com/OCA/project/tree/16.0/project_sequence>`_ project on GitHub.
+This module is part of the `OCA/project <https://github.com/OCA/project/tree/17.0/project_sequence>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
