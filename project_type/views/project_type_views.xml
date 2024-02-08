@@ -44,6 +44,19 @@
             </form>
         </field>
     </record>
+    <record id="project_type_tree" model="ir.ui.view">
+        <field name="model">project.type</field>
+        <field name="arch" type="xml">
+            <tree string="Project Types">
+                <field name="sequence" widget="handle" />
+                <field name="code" />
+                <field name="name" />
+                <field name="project_ok" />
+                <field name="task_ok" />
+                <field name="parent_id" />
+            </tree>
+        </field>
+    </record>
     <record id="project_type_search" model="ir.ui.view">
         <field name="model">project.type</field>
         <field name="inherit_id" eval="False" />
