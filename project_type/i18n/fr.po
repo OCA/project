@@ -90,6 +90,11 @@ msgid "Name"
 msgstr "Nom"
 
 #. module: project_type
+#: model:ir.model.fields,field_description:project_type.field_project_type__sequence
+msgid "Order"
+msgstr "Ordre"
+
+#. module: project_type
 #: model:ir.model.fields,field_description:project_type.field_project_type__parent_id
 msgid "Parent Type"
 msgstr "Type Parent"
