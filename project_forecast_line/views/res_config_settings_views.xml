@@ -64,7 +64,9 @@
         <field name="res_model">res.config.settings</field>
         <field name="view_mode">form</field>
         <field name="target">inline</field>
-        <field name="context">{'module': 'forecast', 'bin_size': False}</field>
+        <field
+            name="context"
+        >{'module': 'project_forecast_line', 'bin_size': False}</field>
     </record>
 
     <menuitem
