@@ -10,3 +10,7 @@
 
   * Bhavesh Odedra <bodedra@opensourceintegrators.com>
   * Murtaza Mithaiwala <mmithaiwala@opensourceintegrators.com>
+
+* `INVITU <https://www.invitu.com>`_:
+
+  * Cyril VINH-TUNG <cyril@invitu.com>

@@ -12,11 +12,11 @@ class TestProjectTaskDigitizedSignature(common.TransactionCase):
 
     def test_task_digitized_signature(self):
         # We add signature and write.
-        self.task.customer_signature = (
+        self.task.signature = (
             "R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw =="
         )
         # We create a new one.
         sign = "R0lGODlhAQABAIAAAMLCwgAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw =="
         self.task = self.env["project.task"].create(
-            {"name": "Task test #2", "customer_signature": sign}
+            {"name": "Task test #2", "signature": sign}
         )

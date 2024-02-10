@@ -9,6 +9,11 @@
     "category": "Project Management",
     "license": "AGPL-3",
     "depends": ["project_task_report"],
-    "data": ["report/project_task_report.xml", "views/project_task_views.xml"],
+    "data": [
+        "security/project_task_digitized_signature_security.xml",
+        "views/res_config_settings_views.xml",
+        "report/project_task_report.xml",
+        "views/project_task_views.xml",
+    ],
     "installable": True,
 }
