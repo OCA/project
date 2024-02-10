@@ -12,7 +12,7 @@
                         <span t-if="o.customer_signature">
                             <img
                                 class="image"
-                                t-att-src="'data:image/png;base64,%s' % to_text(o.customer_signature)"
+                                t-att-src="image_data_uri(o.customer_signature)"
                                 style="border:auto;"
                             />
                         </span>
