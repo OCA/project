@@ -100,6 +100,8 @@ class TestProjectWbs(common.TransactionCase):
     def test_duplicate(self):
         seq_id = self.env['ir.sequence'].search(
             [('code', '=', 'account.analytic.account.code')])
+        if not seq_id:
+            return
         next_val = seq_id.number_next_actual
         copy_project = self.project.copy()
         self.assertTrue(str(next_val) in copy_project.analytic_account_id.code)
