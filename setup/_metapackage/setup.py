@@ -27,6 +27,7 @@ setuptools.setup(
         'odoo-addon-project_task_default_stage>=16.0dev,<16.1dev',
         'odoo-addon-project_task_link>=16.0dev,<16.1dev',
         'odoo-addon-project_task_material>=16.0dev,<16.1dev',
+        'odoo-addon-project_task_note>=16.0dev,<16.1dev',
         'odoo-addon-project_task_personal_stage_auto_fold>=16.0dev,<16.1dev',
         'odoo-addon-project_task_pull_request>=16.0dev,<16.1dev',
         'odoo-addon-project_task_pull_request_state>=16.0dev,<16.1dev',
