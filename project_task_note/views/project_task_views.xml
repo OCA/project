@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!--
+        Copyright 2024 Tecnativa Carolina Fernandez
+        License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
+    -->
+    <!-- Project Task form -->
+    <record id="view_task_form2" model="ir.ui.view">
+        <field name="name">project_task.form.note</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2" />
+        <field name="arch" type="xml">
+            <field name="description" position="after">
+                <group name="internal_notes_group" string="Internal notes">
+                    <field
+                        name="notes"
+                        type="html"
+                        nolabel="1"
+                        options="{'collaborative': true}"
+                    />
+                </group>
+            </field>
+        </field>
+    </record>
+</odoo>
