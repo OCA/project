@@ -11,14 +11,13 @@
         <field name="inherit_id" ref="project.view_task_form2" />
         <field name="arch" type="xml">
             <field name="description" position="after">
-                <group name="internal_notes_group" string="Internal notes">
-                    <field
-                        name="notes"
-                        type="html"
-                        nolabel="1"
-                        options="{'collaborative': true}"
-                    />
-                </group>
+                <label for="notes" />
+                <field
+                    name="notes"
+                    nolabel="1"
+                    type="html"
+                    options="{'collaborative': true, 'resizable': false}"
+                />
             </field>
         </field>
     </record>
