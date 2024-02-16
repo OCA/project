@@ -1,0 +1,77 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_task_pull_request_state
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2024-02-16 16:37+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
+"Language-Team: none\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.17\n"
+
+#. module: project_task_pull_request_state
+#: model:ir.model,name:project_task_pull_request_state.model_res_config_settings
+msgid "Config Settings"
+msgstr "Impostazioni configurazione"
+
+#. module: project_task_pull_request_state
+#: model:ir.model.fields,field_description:project_task_pull_request_state.field_project_project__pr_state_default
+#: model:ir.model.fields,field_description:project_task_pull_request_state.field_res_config_settings__pr_state_default
+msgid "Default PR State"
+msgstr "Stato PR predefinito"
+
+#. module: project_task_pull_request_state
+#: model:ir.model.fields,help:project_task_pull_request_state.field_project_project__pr_state_default
+#: model:ir.model.fields,help:project_task_pull_request_state.field_res_config_settings__pr_state_default
+msgid ""
+"Default PR state that will be set when PR URI is added to a task in this "
+"project"
+msgstr ""
+"Stato PR predefinito che verrà impostato quando l'URI del PR viene aggiunto "
+"ad un lavoro in questo progetto"
+
+#. module: project_task_pull_request_state
+#: model_terms:ir.ui.view,arch_db:project_task_pull_request_state.res_config_settings_view_form
+msgid ""
+"Default PR state. Used in case default PR state is not defined in project"
+msgstr ""
+"Stato predefinito PR. Utilizzato nel caso in cui lo stato PR predefinito non "
+"è definito nel progetto"
+
+#. module: project_task_pull_request_state
+#: model_terms:ir.ui.view,arch_db:project_task_pull_request_state.view_task_search_form
+msgid "Has PR"
+msgstr "Ha PR"
+
+#. module: project_task_pull_request_state
+#: model:ir.model.fields,field_description:project_task_pull_request_state.field_project_task__pr_state
+#: model_terms:ir.ui.view,arch_db:project_task_pull_request_state.view_task_search_form
+msgid "PR State"
+msgstr "Stato PR"
+
+#. module: project_task_pull_request_state
+#: model:ir.model,name:project_task_pull_request_state.model_project_project
+msgid "Project"
+msgstr "Progetto"
+
+#. module: project_task_pull_request_state
+#: model_terms:ir.ui.view,arch_db:project_task_pull_request_state.res_config_settings_view_form
+msgid "Project Task Pull Request"
+msgstr "Richiesta modifica lavoro progetto"
+
+#. module: project_task_pull_request_state
+#: model_terms:ir.ui.view,arch_db:project_task_pull_request_state.res_config_settings_view_form
+msgid "Srttings"
+msgstr "Impostazioni"
+
+#. module: project_task_pull_request_state
+#: model:ir.model,name:project_task_pull_request_state.model_project_task
+msgid "Task"
+msgstr "Lavoro"
