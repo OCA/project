@@ -41,3 +41,11 @@ class ProjectTask(models.Model):
             name = "[{}] {}".format(rec.code, task[1])
             new_result.append((rec.id, name))
         return new_result
+
+    @api.model
+    def name_search(self, name, args=None, operator="ilike", limit=100):
+        args = args or []
+        domain = [("code", operator, name)]
+        tasks = self.search(domain, limit=limit)
+        result = super().name_search(name, args=args, operator=operator, limit=limit)
+        return tasks.name_get() + result
