@@ -1,0 +1,74 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_forecast_line_holidays_public
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-09-12 09:37+0000\n"
+"PO-Revision-Date: 2021-09-10 14:59+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: project_forecast_line_holidays_public
+#: model_terms:ir.ui.view,arch_db:project_forecast_line_holidays_public.res_config_settings_view_form
+msgid ""
+"<span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-"
+"specific.\" aria-label=\"Values set here are company-specific.\" groups="
+"\"base.group_multi_company\" role=\"img\"/>"
+msgstr ""
+
+#. module: project_forecast_line_holidays_public
+#: model:ir.model,name:project_forecast_line_holidays_public.model_res_company
+msgid "Companies"
+msgstr ""
+
+#. module: project_forecast_line_holidays_public
+#: model_terms:ir.ui.view,arch_db:project_forecast_line_holidays_public.res_config_settings_view_form
+msgid "Compute forecast on public holidays creation"
+msgstr ""
+
+#. module: project_forecast_line_holidays_public
+#: model:ir.model,name:project_forecast_line_holidays_public.model_res_config_settings
+msgid "Config Settings"
+msgstr ""
+
+#. module: project_forecast_line_holidays_public
+#: model:ir.model,name:project_forecast_line_holidays_public.model_forecast_line
+msgid "Forecast"
+msgstr ""
+
+#. module: project_forecast_line_holidays_public
+#: model:ir.model.fields,help:project_forecast_line_holidays_public.field_res_company__immediate_compute_forecast_line
+#: model:ir.model.fields,help:project_forecast_line_holidays_public.field_res_config_settings__immediate_compute_forecast_line
+msgid ""
+"If checked will force forecast lines recomputation on public holidays "
+"creation."
+msgstr ""
+
+#. module: project_forecast_line_holidays_public
+#: model:ir.model,name:project_forecast_line_holidays_public.model_hr_holidays_public_line
+msgid "Public Holidays Lines"
+msgstr ""
+
+#. module: project_forecast_line_holidays_public
+#: model:ir.model.fields,field_description:project_forecast_line_holidays_public.field_res_company__immediate_compute_forecast_line
+#: model:ir.model.fields,field_description:project_forecast_line_holidays_public.field_res_config_settings__immediate_compute_forecast_line
+msgid "Recompute forecast lines immediately"
+msgstr ""
+
+#~ msgid "Display Name"
+#~ msgstr "Nom affiché"
+
+#~ msgid "Last Modified on"
+#~ msgstr "Dernière modification le"
+
+#, fuzzy
+#~ msgid "Last Updated on"
+#~ msgstr "Dernière modification le"
