@@ -27,15 +27,6 @@ msgid "Name"
 msgstr "Name"
 
 #. module: project_sequence
-#: model:ir.model.fields,help:project_sequence.field_project_project__name
-msgid ""
-"Name of your project. It can be anything you want e.g. the name of a "
-"customer or a service."
-msgstr ""
-"Name Ihres Projekts. Es kann alles sein, was Sie wollen, z.B. der Name eines "
-"Kunden oder einer Dienstleistung."
-
-#. module: project_sequence
 #: model:ir.model,name:project_sequence.model_project_project
 msgid "Project"
 msgstr "Projekt"
@@ -73,3 +64,10 @@ msgid ""
 msgstr ""
 "Verwenden Sie %(sequence_code)s und %(name)s, um den Sequenzcode und den "
 "Namen des Projekts in den Anzeigenamen aufzunehmen."
+
+#~ msgid ""
+#~ "Name of your project. It can be anything you want e.g. the name of a "
+#~ "customer or a service."
+#~ msgstr ""
+#~ "Name Ihres Projekts. Es kann alles sein, was Sie wollen, z.B. der Name "
+#~ "eines Kunden oder einer Dienstleistung."
