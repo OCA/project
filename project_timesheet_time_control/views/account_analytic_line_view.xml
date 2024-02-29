@@ -58,7 +58,7 @@
                 </div>
             </xpath>
             <field name="date" position="attributes">
-                <attribute name="invisible">1</attribute></field>
+                <attribute name="column_invisible">1</attribute></field>
             <field name="date" position="after">
                 <field name="date_time" required="1" />
                 <field name="date_time_end" /></field></field>
