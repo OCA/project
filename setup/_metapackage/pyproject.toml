@@ -1,0 +1,11 @@
+[project]
+name = "odoo-addons-oca-project"
+version = "17.0.20240229.0"
+dependencies = [
+    "odoo-addon-project_sequence>=17.0dev,<17.1dev",
+]
+classifiers=[
+    "Programming Language :: Python",
+    "Framework :: Odoo",
+    "Framework :: Odoo :: 17.0",
+]

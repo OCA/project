@@ -17,7 +17,11 @@ TODO: add repo description.
 
 [//]: # (addons)
 
-This part will be replaced when running the oca-gen-addons-table script from OCA/maintainer-tools.
+Available addons
+----------------
+addon | version | maintainers | summary
+--- | --- | --- | ---
+[project_sequence](project_sequence/) | 17.0.1.0.0 | [![yajo](https://github.com/yajo.png?size=30px)](https://github.com/yajo) [![anddago78](https://github.com/anddago78.png?size=30px)](https://github.com/anddago78) | Add a sequence field to projects, filled automatically
 
 [//]: # (end addons)
 
