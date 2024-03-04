@@ -6,366 +6,376 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2024-03-04 12:36+0000\n"
+"Last-Translator: Angel Moya - PESOL <amoyapardo@gmail.com>\n"
 "Language-Team: none\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: project_role
 #: code:addons/project_role/models/project_role.py:97
 #, python-format
 msgid "%(parent)s / %(own)s"
-msgstr ""
+msgstr "%(parent)s / %(own)s"
 
 #. module: project_role
 #: code:addons/project_role/models/project_assignment.py:94
 #, python-format
 msgid "%s as %s"
-msgstr ""
+msgstr "%s a %s"
 
 #. module: project_role
 #: code:addons/project_role/models/project_assignment.py:88
 #, python-format
 msgid "%s as %s in %s"
-msgstr ""
+msgstr "%s as %s in %s"
 
 #. module: project_role
 #: code:addons/project_role/models/project_assignment.py:82
 #, python-format
 msgid "%s as %s on %s"
-msgstr ""
+msgstr "%s a %s en %s"
 
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
 msgid "<span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-specific.\" role=\"img\" aria-label=\"Values set here are company-specific.\" groups=\"base.group_multi_company\"/>"
 msgstr ""
+"<span class=\"fa fa-lg fa-building-o\" title=\"Los valores indicados son "
+"especificos por compañía.\" role=\"img\" aria-label=\"Los valores indicados "
+"son especificos por compañía.\" groups=\"base.group_multi_company\"/>"
 
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
 msgid "<span class=\"o_form_label\">Project Roles</span>\n"
 "                                <span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-specific.\" role=\"img\" aria-label=\"Values set here are company-specific.\" groups=\"base.group_multi_company\"/>"
 msgstr ""
+"<span class=\"o_form_label\">Roles de proyecto</span>\n"
+"                                <span class=\"fa fa-lg fa-building-o\" title="
+"\"Los valores indicados son especificos por compañía.\" role=\"img\" aria-"
+"label=\"Los valores indicados son especificos por compañía.\" groups=\"base."
+"group_multi_company\"/>"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_needaction
 msgid "Action Needed"
-msgstr ""
+msgstr "Accion necesaria"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__active
 #: model:ir.model.fields,field_description:project_role.field_project_role__active
 msgid "Active"
-msgstr ""
+msgstr "Activo"
 
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.project_role_search
 msgid "Archived"
-msgstr ""
+msgstr "Archivado"
 
 #. module: project_role
 #: code:addons/project_role/models/project_assignment.py:127
 #, python-format
 msgid "Assignment %s conflicts with another assignment: %s"
-msgstr ""
+msgstr "Roles %s en conflicto con otros roles: %s"
 
 #. module: project_role
 #: model:ir.actions.act_window,name:project_role.project_assignment_view_project_action
 #: model:ir.ui.menu,name:project_role.menu_project_assignments
 #: model_terms:ir.ui.view,arch_db:project_role.edit_project
 msgid "Assignments"
-msgstr ""
+msgstr "Roles"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_attachment_count
 msgid "Attachment Count"
-msgstr ""
+msgstr "Número de adjuntos"
 
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
 msgid "Check to configure projects to inherit company assignments by default."
-msgstr ""
+msgstr "Heredar roles de compañía por defecto."
 
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
 msgid "Check to configure projects to limit role to assignments by default."
-msgstr ""
+msgstr "Limitar roles por defecto."
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_role__child_ids
 msgid "Child Roles"
-msgstr ""
+msgstr "Roles hijos"
 
 #. module: project_role
 #: model:ir.model,name:project_role.model_res_company
 msgid "Companies"
-msgstr ""
+msgstr "Compañías"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__company_id
 #: model:ir.model.fields,field_description:project_role.field_project_role__company_id
 #: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
 msgid "Company"
-msgstr ""
+msgstr "Compañía"
 
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
 msgid "Company-Wide"
-msgstr ""
+msgstr "Todas las compañías"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_role__complete_name
 msgid "Complete Name"
-msgstr ""
+msgstr "Nombre completo"
 
 #. module: project_role
 #: model:ir.model,name:project_role.model_res_config_settings
 msgid "Config Settings"
-msgstr ""
+msgstr "Ajustes"
 
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
 msgid "Configure set of roles, available on projects."
-msgstr ""
+msgstr "Configurar conjunto de roles disponibles en proyectos."
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__create_uid
 #: model:ir.model.fields,field_description:project_role.field_project_role__create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Creado por"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__create_date
 #: model:ir.model.fields,field_description:project_role.field_project_role__create_date
 msgid "Created on"
-msgstr ""
+msgstr "Fecha de creación"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_role__description
 msgid "Description"
-msgstr ""
+msgstr "Descripción"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__display_name
 #: model:ir.model.fields,field_description:project_role.field_project_role__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nombre"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_follower_ids
 msgid "Followers"
-msgstr ""
+msgstr "Seguidores"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_channel_ids
 msgid "Followers (Channels)"
-msgstr ""
+msgstr "Seguidores (Canales)"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_partner_ids
 msgid "Followers (Partners)"
-msgstr ""
+msgstr "Seguidores (Contactos)"
 
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
 msgid "Group By"
-msgstr ""
+msgstr "Agrupar por"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__id
 #: model:ir.model.fields,field_description:project_role.field_project_role__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_role
 #: model:ir.model.fields,help:project_role.field_project_assignment__message_unread
 msgid "If checked new messages require your attention."
-msgstr ""
+msgstr "Si está clickado, nuevos mensajes requieren tu atención."
 
 #. module: project_role
 #: model:ir.model.fields,help:project_role.field_project_assignment__message_needaction
 msgid "If checked, new messages require your attention."
-msgstr ""
+msgstr "Si está clickado, nuevos mensajes requieren tu atención."
 
 #. module: project_role
 #: model:ir.model.fields,help:project_role.field_project_assignment__message_has_error
 msgid "If checked, some messages have a delivery error."
-msgstr ""
+msgstr "Si está clickado, algun mensaje no se ha enviado correctamente."
 
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
 msgid "Inactive"
-msgstr ""
+msgstr "Inactivo"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_project__inherit_assignments
 msgid "Inherit assignments"
-msgstr ""
+msgstr "Heredar roles"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_is_follower
 msgid "Is Follower"
-msgstr ""
+msgstr "Es seguidor"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment____last_update
 #: model:ir.model.fields,field_description:project_role.field_project_role____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Fecha de última modificación"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__write_uid
 #: model:ir.model.fields,field_description:project_role.field_project_role__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Última modificación por"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__write_date
 #: model:ir.model.fields,field_description:project_role.field_project_role__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Fecha de última actualización"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_res_company__project_limit_role_to_assignments
 #: model:ir.model.fields,field_description:project_role.field_res_config_settings__project_limit_role_to_assignments
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
 msgid "Limit Project Role to Assignments"
-msgstr ""
+msgstr "Limitar roles del proyecto"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_project__limit_role_to_assignments
 msgid "Limit role to assignments"
-msgstr ""
+msgstr "Limitar roles"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_main_attachment_id
 msgid "Main Attachment"
-msgstr ""
+msgstr "Adjunto principal"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_has_error
 msgid "Message Delivery error"
-msgstr ""
+msgstr "Error en envío de mensaje"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_ids
 msgid "Messages"
-msgstr ""
+msgstr "Mensajes"
 
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
 msgid "My Assignments"
-msgstr ""
+msgstr "Mis roles"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__name
 #: model:ir.model.fields,field_description:project_role.field_project_role__name
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_needaction_counter
 msgid "Number of Actions"
-msgstr ""
+msgstr "Número de acciones"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_has_error_counter
 msgid "Number of error"
-msgstr ""
+msgstr "Número de errores"
 
 #. module: project_role
 #: model:ir.model.fields,help:project_role.field_project_assignment__message_needaction_counter
 msgid "Number of messages which requires an action"
-msgstr ""
+msgstr "Número de mensajes que requieren acción"
 
 #. module: project_role
 #: model:ir.model.fields,help:project_role.field_project_assignment__message_has_error_counter
 msgid "Number of messages with delivery error"
-msgstr ""
+msgstr "Número de mensajes con errores de envío"
 
 #. module: project_role
 #: model:ir.model.fields,help:project_role.field_project_assignment__message_unread_counter
 msgid "Number of unread messages"
-msgstr ""
+msgstr "Número de mensajes no leidos"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_role__parent_path
 msgid "Parent Path"
-msgstr ""
+msgstr "Padre"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_role__parent_id
 msgid "Parent Role"
-msgstr ""
+msgstr "Rol padre"
 
 #. module: project_role
 #: code:addons/project_role/models/project_role.py:112
 #, python-format
 msgid "Please activate first parent role %s"
-msgstr ""
+msgstr "Por favor activa primero el rol padre %s"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__project_id
 #: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
 msgid "Project"
-msgstr ""
+msgstr "Proyecto"
 
 #. module: project_role
 #: model:ir.model,name:project_role.model_project_assignment
 msgid "Project Assignment"
-msgstr ""
+msgstr "Roles de proyecto"
 
 #. module: project_role
 #: model:ir.actions.act_window,name:project_role.project_assignment_view_all_action
 #: model:ir.model.fields,field_description:project_role.field_project_project__assignment_ids
 msgid "Project Assignments"
-msgstr ""
+msgstr "Roles de proyecto"
 
 #. module: project_role
 #: model:ir.model,name:project_role.model_project_role
 msgid "Project Role"
-msgstr ""
+msgstr "Rol"
 
 #. module: project_role
 #: model:ir.actions.act_window,name:project_role.company_project_roles_action
 #: model:ir.ui.menu,name:project_role.project_menu_config_roles
 msgid "Project Roles"
-msgstr ""
+msgstr "Roles"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_res_company__project_inherit_assignments
 #: model:ir.model.fields,field_description:project_role.field_res_config_settings__project_inherit_assignments
 msgid "Projects Inherit Assignments"
-msgstr ""
+msgstr "Roles heredados"
 
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
 msgid "Projects inherit Company assignments"
-msgstr ""
+msgstr "Roles heredados de compañía"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__role_id
 #: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
 msgid "Role"
-msgstr ""
+msgstr "Rol"
 
 #. module: project_role
 #: code:addons/project_role/models/project_role.py:80
 #, python-format
 msgid "Role \"%s\" conflicts with another role due to same name."
-msgstr ""
+msgstr "Role \"%s\" en conflicto con otro rol con el mismo nombre."
 
 #. module: project_role
 #: sql_constraint:project.role:0
 msgid "Role with such name already exists in the company!"
-msgstr ""
+msgstr "¡Un rol con este nombre ya existe en esta compañía!"
 
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
 msgid "Roles &amp; Assignments"
-msgstr ""
+msgstr "Roles"
 
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
