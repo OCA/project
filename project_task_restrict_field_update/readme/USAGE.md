@@ -1,0 +1,1 @@
+When user who is not a project manager tries to update restricted fields
