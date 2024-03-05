@@ -12,7 +12,7 @@
                     type="object"
                     name="create_project_from_template"
                     class="oe_highlight"
-                    attrs="{'invisible': [('is_template', '=', False)]}"
+                    invisible="not is_template"
                 />
             </xpath>
             <xpath expr="//field[@name='label_tasks']/.." position="inside">
