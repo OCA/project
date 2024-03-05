@@ -1,5 +1,6 @@
 # Copyright 2019 Patrick Wilson <patrickraymondwilson@gmail.com>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+from datetime import datetime, timedelta
 
 from odoo.tests import common
 
@@ -15,9 +16,14 @@ class TestProjectTemplate(common.TransactionCase):
                 "partner_id": self.test_customer.id,
             }
         )
-        self.env["project.task"].create(
-            {"name": "TestTask", "project_id": self.test_project.id}
-        )
+        self.tasks = [
+            self.env["project.task"].create(
+                {"name": "TestTask", "project_id": self.test_project.id}
+            ),
+            self.env["project.task"].create(
+                {"name": "TestTask2", "project_id": self.test_project.id}
+            ),
+        ]
 
     # TEST 01: Set project to be a template and test name change
     def test_on_change_is_template(self):
@@ -61,3 +67,30 @@ class TestProjectTemplate(common.TransactionCase):
             [("name", "=", "TestProject(TEST) (COPY)")]
         )
         self.assertEqual(len(new_project), 1)
+
+    def test_create_project_from_template_duplicate_task_names(self):
+        project_01 = self.test_project
+        project_01.is_template = True
+        project_01.on_change_is_template()
+        # Set the same name on all tasks
+        dates = set()
+        now = datetime.now()
+        for i, task in enumerate(self.tasks):
+            date = now - timedelta(weeks=i)
+            task.name = "Same for all tasks"
+            dates.add(date)
+            task.date_end = date
+
+        # Create new Project from Template
+        project_01.create_project_from_template()
+        new_project = self.env["project.project"].search(
+            [("name", "=", "TestProject (COPY)")]
+        )
+        self.assertEqual(len(new_project), 1)
+        new_tasks = self.env["project.task"].search(
+            [
+                ("project_id", "=", new_project.id),
+            ]
+        )
+        self.assertEqual(len(new_tasks), len(self.tasks))
+        self.assertEqual(set(new_tasks.mapped("date_end")), dates)

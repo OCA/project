@@ -1,6 +1,9 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 from odoo import api, fields, models
 
+# See _map_tasks_default_valeus
+TASK_DEFAULT_COPY_CONTEXT_KEY = f"{__name__}.task_default_copy_context_key"
+
 
 class Project(models.Model):
     _inherit = "project.project"
@@ -13,16 +16,9 @@ class Project(models.Model):
             new_name = self.name.replace(" (TEMPLATE)", " (COPY)")
         else:
             new_name = self.name + " (COPY)"
-        new_project = self.copy(
+        new_project = self.with_context(**{TASK_DEFAULT_COPY_CONTEXT_KEY: True}).copy(
             default={"name": new_name, "active": True, "alias_name": False}
         )
-
-        # SINCE THE END DATE DOESN'T COPY OVER ON TASKS
-        # (Even when changed to copy=true), POPULATE END DATES ON THE TASK
-        for new_task_record in new_project.task_ids:
-            for old_task_record in self.task_ids:
-                if new_task_record.name == old_task_record.name:
-                    new_task_record.date_end = old_task_record.date_end
 
         # OPEN THE NEWLY CREATED PROJECT FORM
         return {
@@ -33,6 +29,15 @@ class Project(models.Model):
             "res_id": new_project.id,
             "type": "ir.actions.act_window",
         }
+
+    @api.model
+    def _map_tasks_default_valeus(self, task, project):
+        defaults = super()._map_tasks_default_valeus(task, project)
+        if self.env.context.get(TASK_DEFAULT_COPY_CONTEXT_KEY):
+            # date_end normally is not copied on tasks when a project is
+            # copied, but we want it when generating from template
+            defaults["date_end"] = task.date_end
+        return defaults
 
     # ADD "(TEMPLATE)" TO THE NAME WHEN PROJECT IS MARKED AS A TEMPLATE
     @api.onchange("is_template")
