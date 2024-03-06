@@ -2,6 +2,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import _, api, fields, models
+from odoo.osv import expression
 
 
 class ProjectTask(models.Model):
@@ -42,3 +43,20 @@ class ProjectTask(models.Model):
             name = "[{}] {}".format(rec.code, task[1])
             new_result.append((rec.id, name))
         return new_result
+
+    @api.model
+    def _name_search(self, name="", args=None, operator="ilike", limit=100):
+        """Allow searching by code by default."""
+        if name and operator in ["=", "ilike", "=ilike", "like", "=like"]:
+            args = (
+                expression.OR([[("code", operator, name)], args])
+                if args
+                # The parent method adds the Name to the search domain. As a
+                # consequence of this action, when the args parameter is empty in the
+                # inherited method, an incomplete OR term must be added. Without this
+                # addition, the search domain would default to using an AND operator.
+                else ["|", ("code", operator, name)]
+            )
+        return super()._name_search(
+            name=name, args=args, operator=operator, limit=limit
+        )
