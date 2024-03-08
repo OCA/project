@@ -44,8 +44,14 @@ class ProjectTask(models.Model):
 
     @api.model
     def name_search(self, name, args=None, operator="ilike", limit=100):
-        args = args or []
-        domain = [("code", operator, name)]
-        tasks = self.search(domain, limit=limit)
-        result = super().name_search(name, args=args, operator=operator, limit=limit)
-        return tasks.name_get() + result
+        result = []
+
+        if name:
+            domain = [("code", operator, name)]
+            tasks = self.search(domain, limit=limit)
+            result = tasks.name_get()
+
+        return (
+            super().name_search(name, args=args, operator=operator, limit=limit)
+            + result
+        )
