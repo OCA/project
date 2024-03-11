@@ -1,11 +1,30 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <record id="view_forecast_line_reporting" model="ir.ui.view">
+    <record id="forecast_line_reporting_tree" model="ir.ui.view">
+        <field name="model">forecast.line.reporting</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="project_ids" widget="many2many_tags" optional="show" />
+                <field
+                    name="employee_ids"
+                    widget="many2many_avatar_employee"
+                    optional="show"
+                />
+                <field name="nb_months" optional="show" />
+                <field name="granularity" optional="show" />
+            </tree>
+        </field>
+    </record>
+    <record id="forecast_line_reporting_form" model="ir.ui.view">
         <field name="model">forecast.line.reporting</field>
         <field name="arch" type="xml">
             <form>
                 <sheet>
-                    <h1>Forecast Reporting</h1>
+                    <div class="oe_title">
+                        <label for="name" />
+                        <h1><field name="name" class="oe_inline" /></h1>
+                    </div>
                     <group>
                         <group>
                             <field name="date_from" />
@@ -13,7 +32,11 @@
                             <field name="granularity" />
                         </group>
                         <group>
-                            <field name="employee_ids" widget="many2many_tags" />
+                            <field
+                                name="employee_ids"
+                                widget="many2many_avatar_employee"
+                                context="{'no_create_edit': True}"
+                            />
                             <field name="project_ids" widget="many2many_tags" />
                         </group>
                     </group>
@@ -23,11 +46,20 @@
             </form>
         </field>
     </record>
+    <record id="forecast_line_reporting_search" model="ir.ui.view">
+        <field name="model">forecast.line.reporting</field>
+        <field name="arch" type="xml">
+            <search string="Search Forecast report">
+                <field name="name" />
+            </search>
+        </field>
+    </record>
     <record id="action_forecast_lines_reporting" model="ir.actions.act_window">
         <field name="name">Forecast Reporting</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">forecast.line.reporting</field>
-        <field name="view_mode">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="forecast_line_reporting_search" />
     </record>
 
     <menuitem
