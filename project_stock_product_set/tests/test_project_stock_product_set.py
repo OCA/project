@@ -25,7 +25,7 @@ class TestProjectStockProductSet(TestProjectStockBase):
     def test_wizard_product_set_add_1(self):
         self.assertFalse(self.task.move_ids)
         wizard_form = Form(
-            self.env["product.set.add.from.task"].with_context(
+            self.env["project.stock.product.set.wizard"].with_context(
                 default_task_id=self.task.id
             )
         )
@@ -50,7 +50,7 @@ class TestProjectStockProductSet(TestProjectStockBase):
         self.assertTrue(self.task.group_id)
         # Wizard to add set
         wizard_form = Form(
-            self.env["product.set.add.from.task"].with_context(
+            self.env["project.stock.product.set.wizard"].with_context(
                 default_task_id=self.task.id
             )
         )
