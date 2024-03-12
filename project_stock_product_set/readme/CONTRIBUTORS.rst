@@ -2,3 +2,4 @@
 
   * Víctor Martínez
   * Pedro M. Baeza
+  * Pilar Vargas

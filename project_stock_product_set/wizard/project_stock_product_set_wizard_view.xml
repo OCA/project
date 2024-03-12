@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <record id="product_set_add_from_task_form_view" model="ir.ui.view">
-        <field name="name">product.set.add.from.taskform.view</field>
-        <field name="model">product.set.add.from.task</field>
+        <field name="name">project.stock.product.set.form.view</field>
+        <field name="model">project.stock.product.set.wizard</field>
         <field name="arch" type="xml">
             <form>
                 <group name="main" colspan="4">
@@ -46,7 +46,7 @@
         model="ir.actions.act_window"
     >
         <field name="name">Add a set in a project task</field>
-        <field name="res_model">product.set.add.from.task</field>
+        <field name="res_model">project.stock.product.set.wizard</field>
         <field name="view_mode">form</field>
         <field name="view_id" ref="product_set_add_from_task_form_view" />
         <field name="domain">[]</field>
