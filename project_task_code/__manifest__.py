@@ -11,6 +11,7 @@
     "Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/project",
     "license": "AGPL-3",
+    "maintainers": ["luisg123v"],
     "depends": [
         "project",
     ],

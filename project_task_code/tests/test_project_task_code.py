@@ -38,3 +38,25 @@ class TestProjectTaskCode(common.TransactionCase):
         )
         result = project_task.name_get()
         self.assertEqual(result[0][1], "[%s] Task Testing Get Name" % code)
+
+    def test_name_search(self):
+        number_next = self.task_sequence.number_next_actual
+        code = self.task_sequence.get_next_char(number_next)
+        project_task = self.project_task_model.create(
+            {
+                "name": "Task Testing Name Search",
+            }
+        )
+        result = project_task.name_search(name=code)
+        self.assertEqual(result[0][0], project_task.id)
+
+    def test_name_search_args_none(self):
+        number_next = self.task_sequence.number_next_actual
+        code = self.task_sequence.get_next_char(number_next)
+        project_task = self.project_task_model.create(
+            {
+                "name": "Task Testing Name Search",
+            }
+        )
+        result = project_task.name_search(name=code, args=None)
+        self.assertEqual(result[0][0], project_task.id)
