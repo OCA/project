@@ -41,7 +41,7 @@ addon | version | maintainers | summary
 [project_stock_product_set](project_stock_product_set/) | 15.0.1.0.2 | [![victoralmau](https://github.com/victoralmau.png?size=30px)](https://github.com/victoralmau) | Project Stock Product Set
 [project_stock_request](project_stock_request/) | 15.0.1.0.0 |  | Create stock requests from a projects and project tasks
 [project_task_add_very_high](project_task_add_very_high/) | 15.0.1.0.0 | [![astirpe](https://github.com/astirpe.png?size=30px)](https://github.com/astirpe) | Adds extra options 'High' and 'Very High' on tasks
-[project_task_code](project_task_code/) | 15.0.1.0.4 |  | Sequential Code for Tasks
+[project_task_code](project_task_code/) | 15.0.1.0.5 | [![luisg123v](https://github.com/luisg123v.png?size=30px)](https://github.com/luisg123v) | Sequential Code for Tasks
 [project_task_default_stage](project_task_default_stage/) | 15.0.1.0.1 |  | Recovery default task stages for projects from v8
 [project_task_dependency](project_task_dependency/) | 15.0.1.0.0 | [![astirpe](https://github.com/astirpe.png?size=30px)](https://github.com/astirpe) | Enables to define dependencies (other tasks) of a task
 [project_task_description_template](project_task_description_template/) | 15.0.1.0.0 |  | Add a description template to project tasks
