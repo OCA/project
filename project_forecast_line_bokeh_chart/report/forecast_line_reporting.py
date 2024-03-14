@@ -17,7 +17,10 @@ from odoo.tools import date_utils
 class ForecastLineReporting(models.TransientModel):
     _name = "forecast.line.reporting"
     _description = "Forecast reporting wizard"
+    # allow reports to exist for 12h
+    _transient_max_hours = 24.0
 
+    name = fields.Char(required=True)
     bokeh_chart = fields.Text(compute="_compute_bokeh_chart")
     date_from = fields.Date(default=fields.Date.today)
     nb_months = fields.Integer(default=2)
@@ -220,3 +223,9 @@ class ForecastLineReporting(models.TransientModel):
             p.add_layout(p.legend[0], "right")
             plots.append(p)
         return plots
+
+    @api.model
+    def _cron_update_date_from(self):
+        today = fields.Date.context_today(self)
+        forecast_reports = self.search([])
+        forecast_reports.write({"date_from": today})

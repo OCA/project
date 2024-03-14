@@ -58,7 +58,7 @@ msgstr ""
 #. module: project_forecast_line_bokeh_chart
 #: model:ir.actions.act_window,name:project_forecast_line_bokeh_chart.action_forecast_lines_reporting
 #: model:ir.ui.menu,name:project_forecast_line_bokeh_chart.menu_forecast_line_reporting
-#: model_terms:ir.ui.view,arch_db:project_forecast_line_bokeh_chart.view_forecast_line_reporting
+#: model_terms:ir.ui.view,arch_db:project_forecast_line_bokeh_chart.forecast_line_reporting_form
 msgid "Forecast Reporting"
 msgstr ""
 

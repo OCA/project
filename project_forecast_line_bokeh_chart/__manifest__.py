@@ -12,6 +12,7 @@
     "data": [
         "security/ir.model.access.csv",
         "report/forecast_line_reporting_views.xml",
+        "data/ir_cron.xml",
     ],
     "development_status": "Alpha",
     "installable": True,
