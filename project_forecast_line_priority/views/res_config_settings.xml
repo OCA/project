@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field
+            name="name"
+        >res.config.settings.view.form.inherit.forecast.priority</field>
+        <field name="model">res.config.settings</field>
+        <field
+            name="inherit_id"
+            ref="project_forecast_line.res_config_settings_view_form"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@data-string='Forecast']" position="inside">
+                <div>
+                    <h2>Forecast Task Priority Management</h2>
+                    <div
+                        class="row mt16 o_settings_container"
+                        id="forecast_priority_management"
+                    >
+                        <div
+                            class="col-12 col-lg-12 o_setting_box"
+                            id="forecast_line_priority_settings"
+                        >
+                            <div class="o_setting_right_pane text-muted">
+                                Use the below selection fields to set     per-priority values for forecast planned end date
+                            </div>
+                            <div class="o_setting_right_pane row">
+                                <div class="col-1 mt16">
+                                    <span
+                                        class="fa fa-star-o"
+                                        role="img"
+                                        title="priority 0"
+                                    />
+                                </div>
+                                <div class="col-6 mt16">
+                                    <field name="forecast_line_priority_0_selection" />
+                                    <field
+                                        name="forecast_line_priority_0_delta"
+                                        class="oe_inline ml8"
+                                        attrs="{'invisible':[('forecast_line_priority_0_selection','!=','delta')]}"
+                                    />
+                                    <field
+                                        name="forecast_line_priority_0_date"
+                                        class="oe_inline ml8"
+                                        attrs="{'invisible':[('forecast_line_priority_0_selection','!=','date')]}"
+                                        placeholder="Set Date"
+                                    />
+                                </div>
+                            </div>
+                            <div class="o_setting_right_pane row">
+                                <div class="col-1 mt8">
+                                    <span
+                                        class="fa fa-star"
+                                        role="img"
+                                        title="priority 1"
+                                    />
+                                </div>
+                                <div class="col-6 mt8">
+                                    <field name="forecast_line_priority_1_selection" />
+                                    <field
+                                        name="forecast_line_priority_1_delta"
+                                        class="oe_inline ml8"
+                                        attrs="{'invisible':[('forecast_line_priority_1_selection','!=','delta')]}"
+                                    />
+                                    <field
+                                        name="forecast_line_priority_1_date"
+                                        class="oe_inline ml8"
+                                        attrs="{'invisible':[('forecast_line_priority_1_selection','!=','date')]}"
+                                        placeholder="Set Date"
+                                    />
+                                </div>
+                            </div>
+                            <div class="o_setting_right_pane row">
+                                <div class="col-1 mt8">
+                                    <span
+                                        class="fa fa-star"
+                                        role="img"
+                                        title="priority 2"
+                                    />
+                                    <span
+                                        class="fa fa-star"
+                                        role="img"
+                                        title="priority 2"
+                                    />
+                                </div>
+                                <div class="col-6 mt8">
+                                    <field name="forecast_line_priority_2_selection" />
+                                    <field
+                                        name="forecast_line_priority_2_delta"
+                                        class="oe_inline ml8"
+                                        attrs="{'invisible':[('forecast_line_priority_2_selection','!=','delta')]}"
+                                    />
+                                    <field
+                                        name="forecast_line_priority_2_date"
+                                        class="oe_inline ml8"
+                                        attrs="{'invisible':[('forecast_line_priority_2_selection','!=','date')]}"
+                                        placeholder="Set Date"
+                                    />
+                                </div>
+                            </div>
+                            <div class="o_setting_right_pane row">
+                                <div class="col-1 mt8">
+                                    <span
+                                        class="fa fa-star"
+                                        role="img"
+                                        title="priority 3"
+                                    />
+                                    <span
+                                        class="fa fa-star"
+                                        role="img"
+                                        title="priority 3"
+                                    />
+                                    <span
+                                        class="fa fa-star"
+                                        role="img"
+                                        title="priority 3"
+                                    />
+                                </div>
+                                <div class="col-6 mt8">
+                                    <field name="forecast_line_priority_3_selection" />
+                                    <field
+                                        name="forecast_line_priority_3_delta"
+                                        class="oe_inline ml8"
+                                        attrs="{'invisible':[('forecast_line_priority_3_selection','!=','delta')]}"
+                                    />
+                                    <field
+                                        name="forecast_line_priority_3_date"
+                                        class="oe_inline ml8"
+                                        attrs="{'invisible':[('forecast_line_priority_3_selection','!=','date')]}"
+                                        placeholder="Set Date"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>
