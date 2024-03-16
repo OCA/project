@@ -3,12 +3,11 @@
 from odoo import fields, models
 
 
-class ProductSetAddFromTask(models.TransientModel):
-    _inherit = "product.set.add"
-    _name = "product.set.add.from.task"
-    _description = "product.set.add.from.task"
+class ProjectStockProductSetWizard(models.TransientModel):
+    _inherit = "product.set.wizard"
+    _name = "project.stock.product.set.wizard"
+    _description = "Wizard model to add product set into a task"
 
-    order_id = fields.Many2one(required=False)
     task_id = fields.Many2one(
         comodel_name="project.task",
         string="Task",
@@ -19,6 +18,14 @@ class ProductSetAddFromTask(models.TransientModel):
         ondelete="cascade",
     )
 
+    def _compute_product_set_line_ids(self):
+        res = super()._compute_product_set_line_ids()
+        for rec in self:
+            rec.product_set_line_ids = rec.product_set_id.set_line_ids.filtered(
+                "product_id"
+            )
+        return res
+
     def _prepare_stock_move_lines(self):
         move_lines = []
         for _seq, set_line in enumerate(self._get_lines(), start=1):
@@ -27,9 +34,9 @@ class ProductSetAddFromTask(models.TransientModel):
         return move_lines
 
     def add_set(self):
+        res = super().add_set()
         if not self.task_id:
-            return super().add_set()
-        self._check_partner()
+            return res
         move_lines = self._prepare_stock_move_lines()
         if move_lines:
             self.task_id.write({"move_ids": move_lines})

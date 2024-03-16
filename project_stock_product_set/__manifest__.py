@@ -7,11 +7,11 @@
     "website": "https://github.com/OCA/project",
     "author": "Tecnativa, Odoo Community Association (OCA)",
     "license": "AGPL-3",
-    "depends": ["project_stock", "sale_product_set"],
+    "depends": ["project_stock", "product_set"],
     "installable": True,
     "data": [
         "security/ir.model.access.csv",
-        "wizard/product_set_add.xml",
+        "wizard/project_stock_product_set_wizard_view.xml",
         "views/project_task_view.xml",
     ],
     "maintainers": ["victoralmau"],

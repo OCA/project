@@ -1,1 +1,1 @@
-from . import product_set_add
+from . import project_stock_product_set_wizard
