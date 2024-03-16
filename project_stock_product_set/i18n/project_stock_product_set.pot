@@ -30,53 +30,47 @@ msgid "Cancel"
 msgstr ""
 
 #. module: project_stock_product_set
-#: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__create_uid
+#: model:ir.model.fields,field_description:project_stock_product_set.field_project_stock_product_set_wizard__create_uid
 msgid "Created by"
 msgstr ""
 
 #. module: project_stock_product_set
-#: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__create_date
+#: model:ir.model.fields,field_description:project_stock_product_set.field_project_stock_product_set_wizard__create_date
 msgid "Created on"
 msgstr ""
 
 #. module: project_stock_product_set
-#: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__partner_id
-msgid "Customer"
-msgstr ""
-
-#. module: project_stock_product_set
-#: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__display_name
+#: model:ir.model.fields,field_description:project_stock_product_set.field_project_stock_product_set_wizard__display_name
 msgid "Display Name"
 msgstr ""
 
 #. module: project_stock_product_set
-#: model:ir.model.fields,help:project_stock_product_set.field_product_set_add_from_task__skip_existing_products
-msgid ""
-"Enable this to not add new lines for products already included in SO lines."
-msgstr ""
-
-#. module: project_stock_product_set
-#: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__id
+#: model:ir.model.fields,field_description:project_stock_product_set.field_project_stock_product_set_wizard__id
 msgid "ID"
 msgstr ""
 
 #. module: project_stock_product_set
-#: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task____last_update
+#: model:ir.model.fields,field_description:project_stock_product_set.field_project_stock_product_set_wizard____last_update
 msgid "Last Modified on"
 msgstr ""
 
 #. module: project_stock_product_set
-#: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__write_uid
+#: model:ir.model.fields,field_description:project_stock_product_set.field_project_stock_product_set_wizard__write_uid
 msgid "Last Updated by"
 msgstr ""
 
 #. module: project_stock_product_set
-#: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__write_date
+#: model:ir.model.fields,field_description:project_stock_product_set.field_project_stock_product_set_wizard__write_date
 msgid "Last Updated on"
 msgstr ""
 
 #. module: project_stock_product_set
-#: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__product_set_id
+#: model:ir.model.fields,field_description:project_stock_product_set.field_project_stock_product_set_wizard__partner_id
+msgid "Partner"
+msgstr ""
+
+#. module: project_stock_product_set
+#: model:ir.model.fields,field_description:project_stock_product_set.field_project_stock_product_set_wizard__product_set_id
 msgid "Product set"
 msgstr ""
 
@@ -86,31 +80,21 @@ msgid "Product set line"
 msgstr ""
 
 #. module: project_stock_product_set
-#: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__product_set_line_ids
+#: model:ir.model.fields,field_description:project_stock_product_set.field_project_stock_product_set_wizard__product_set_line_ids
 msgid "Product set lines"
 msgstr ""
 
 #. module: project_stock_product_set
-#: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__quantity
+#: model:ir.model.fields,field_description:project_stock_product_set.field_project_stock_product_set_wizard__quantity
 msgid "Quantity"
 msgstr ""
 
 #. module: project_stock_product_set
-#: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__order_id
-msgid "Sale Order"
-msgstr ""
-
-#. module: project_stock_product_set
-#: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__skip_existing_products
-msgid "Skip Existing Products"
-msgstr ""
-
-#. module: project_stock_product_set
-#: model:ir.model.fields,field_description:project_stock_product_set.field_product_set_add_from_task__task_id
+#: model:ir.model.fields,field_description:project_stock_product_set.field_project_stock_product_set_wizard__task_id
 msgid "Task"
 msgstr ""
 
 #. module: project_stock_product_set
-#: model:ir.model,name:project_stock_product_set.model_product_set_add_from_task
-msgid "product.set.add.from.task"
+#: model:ir.model,name:project_stock_product_set.model_project_stock_product_set_wizard
+msgid "Wizard model to add product set into a task"
 msgstr ""
