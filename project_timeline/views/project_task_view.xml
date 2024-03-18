@@ -15,7 +15,7 @@
                 date_stop="date_end"
                 default_group_by="project_id"
                 event_open_popup="true"
-                colors="white: user_ids == []; #2ecb71: kanban_state == 'done'; #ec7063: kanban_state == 'blocked'"
+                colors="white: user_ids == ''; #2ecb71: kanban_state == 'done'; #ec7063: kanban_state == 'blocked'"
                 dependency_arrow="depend_on_ids"
             >
                 <field name="user_ids" />
