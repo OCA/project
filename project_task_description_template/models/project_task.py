@@ -23,7 +23,7 @@ class ProjectTask(models.Model):
                 rec.stage_id
                 and rec.project_id
                 and template_task_type_ids
-                and rec.stage_id.id in template_task_type_ids.ids
+                and rec.stage_id in template_task_type_ids
             )
             rec.template_visible = visible
             if visible and rec.project_id.default_task_template_id:
