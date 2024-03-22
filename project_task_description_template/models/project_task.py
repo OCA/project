@@ -25,7 +25,11 @@ class ProjectTask(models.Model):
                 and rec.stage_id in rec.project_id.template_task_type_ids
             )
             rec.template_visible = visible
-            if visible and rec.project_id.default_task_template_id:
+            if (
+                visible
+                and rec.project_id.default_task_template_id
+                and not rec.task_template_id
+            ):
                 rec.task_template_id = rec.project_id.default_task_template_id
                 self._onchange_task_template_id()
 

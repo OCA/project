@@ -17,6 +17,7 @@ class TestProjectTaskTemplate(SavepointCase):
         cls.tag_white = tag_model.create({"name": "White"})
         cls.tag_yellow = tag_model.create({"name": "Yellow"})
         cls.stage_1 = cls.env["project.task.type"].create({"name": "Stage 1"})
+        cls.stage_2 = cls.env["project.task.type"].create({"name": "Stage 2"})
         # create res users model
         res_users_model = cls.env["res.users"]
         # create users: Bob, Mike, Kate
@@ -70,7 +71,7 @@ class TestProjectTaskTemplate(SavepointCase):
                 "name": "Project 1",
                 "task_template_ids": [cls.template_1.id, cls.template_2.id],
                 "default_task_template_id": cls.template_2.id,
-                "template_task_type_ids": cls.stage_1.ids,
+                "template_task_type_ids": [cls.stage_1.id, cls.stage_2.id],
                 "is_restrict_template_by_stages": True,
             }
         )
@@ -223,3 +224,31 @@ class TestProjectTaskTemplate(SavepointCase):
         self.project_2.task_template_ids = [self.template_1.id]
         self.project_2._onchange_task_template_ids()
         self.assertFalse(self.project_2.default_task_template_id, msg="Must be empty")
+
+    def test_change_stage(self):
+        """Test the behavior when changing the stage of a task."""
+
+        self.assertTrue(
+            self.test_project_2_task_1.task_template_id,
+            msg=f"The task template ID #{self.template_2.id} must be set",
+        )
+
+        self.assertEqual(
+            self.test_project_2_task_1.task_template_id.id,
+            self.project_2.default_task_template_id.id,
+            msg=(
+                "The task template ID must be equal"
+                "to the default template ID in project settings"
+            ),
+        )
+
+        self.test_project_2_task_1.stage_id = self.stage_2.id
+        self.test_project_2_task_1._compute_template_visible()
+        self.assertEqual(
+            self.test_project_2_task_1.task_template_id.id,
+            self.project_2.default_task_template_id.id,
+            msg=(
+                "The task template ID must be equal"
+                "to the default template ID in project settings"
+            ),
+        )
