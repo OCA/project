@@ -18,8 +18,8 @@ class ProjectProject(models.Model):
         string="Restrict template by stages"
     )
 
-    @api.constrains("task_template_ids")
-    def _check_task_template_ids(self):
+    @api.onchange("task_template_ids")
+    def _onchange_task_template_ids(self):
         for record in self:
             if record.default_task_template_id and (
                 record.default_task_template_id not in record.task_template_ids

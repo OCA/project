@@ -221,4 +221,5 @@ class TestProjectTaskTemplate(SavepointCase):
         )
 
         self.project_2.task_template_ids = [self.template_1.id]
+        self.project_2._onchange_task_template_ids()
         self.assertFalse(self.project_2.default_task_template_id, msg="Must be empty")

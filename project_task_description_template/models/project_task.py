@@ -17,13 +17,12 @@ class ProjectTask(models.Model):
 
     @api.depends("project_id", "stage_id")
     def _compute_template_visible(self):
-        template_task_type_ids = self.mapped("project_id.template_task_type_ids")
         for rec in self:
             visible = not rec.project_id.is_restrict_template_by_stages or (
                 rec.stage_id
                 and rec.project_id
                 and rec.project_id.template_task_type_ids
-                and rec.stage_id in template_task_type_ids
+                and rec.stage_id in rec.project_id.template_task_type_ids
             )
             rec.template_visible = visible
             if visible and rec.project_id.default_task_template_id:
@@ -36,7 +35,7 @@ class ProjectTask(models.Model):
             self.update(
                 {
                     "user_id": self.task_template_id.user_id.id,
-                    "tag_ids": self.task_template_id.tag_ids,
+                    "tag_ids": self.task_template_id.tag_ids.ids,
                     "description": self.task_template_id.description,
                 }
             )
