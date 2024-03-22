@@ -22,7 +22,7 @@ class ProjectTask(models.Model):
             visible = not rec.project_id.is_restrict_template_by_stages or (
                 rec.stage_id
                 and rec.project_id
-                and template_task_type_ids
+                and rec.project_id.template_task_type_ids
                 and rec.stage_id in template_task_type_ids
             )
             rec.template_visible = visible
