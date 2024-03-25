@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-06-06 14:08+0000\n"
-"Last-Translator: luis-ron <luis.ron@sygel.es>\n"
+"PO-Revision-Date: 2024-03-26 01:08+0000\n"
+"Last-Translator: Ivorra78 <informatica@totmaterial.es>\n"
 "Language-Team: none\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 #. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project_kanban
 msgid "(Parent:"
-msgstr ""
+msgstr "(Parental:"
 
 #. module: project_wbs
 #: model:ir.model,name:project_wbs.model_account_analytic_account
@@ -46,12 +46,12 @@ msgstr ""
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_project_project__child_ids
 msgid "Child Accounts"
-msgstr ""
+msgstr "Cuentas Hijas"
 
 #. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project
 msgid "Child WBS elements"
-msgstr ""
+msgstr "Elementos PEP secundarios"
 
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__account_class
@@ -62,7 +62,6 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project_project_filter
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project_project_group_filter
-#, fuzzy
 msgid "Class"
 msgstr "Clase"
 
@@ -80,7 +79,7 @@ msgstr "Código"
 #. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.edit_project
 msgid "Create child WBS element"
-msgstr ""
+msgstr "Crear elemento WBS hijo"
 
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__partner_id
@@ -90,13 +89,11 @@ msgstr "Cliente"
 #. module: project_wbs
 #: model:ir.model.fields.selection,name:project_wbs.selection__account_analytic_account__account_class__deliverable
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_account_analytic_account_search2
-#, fuzzy
 msgid "Deliverable"
 msgstr "Entregable"
 
 #. module: project_wbs
 #: model:ir.actions.act_window,name:project_wbs.open_view_project_deliverables
-#, fuzzy
 msgid "Deliverables"
 msgstr "Entregables"
 
@@ -131,29 +128,27 @@ msgstr "Fecha final"
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__complete_wbs_code
 msgid "Full WBS Code"
-msgstr ""
+msgstr "Código WBS completo"
 
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__complete_wbs_name
 #: model:ir.model.fields,field_description:project_wbs.field_project_project__complete_wbs_name
 msgid "Full WBS path"
-msgstr ""
+msgstr "Trayectoria completa de la EDT"
 
 #. module: project_wbs
 #: model:ir.model.fields,help:project_wbs.field_account_analytic_account__complete_wbs_name
 #: model:ir.model.fields,help:project_wbs.field_project_project__complete_wbs_name
 msgid "Full path in the WBS hierarchy"
-msgstr ""
+msgstr "Ruta completa en la jerarquía EDT"
 
 #. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project_kanban
-#, fuzzy
 msgid "Go Up"
 msgstr "Subir"
 
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_project_project__has_project_child_complete_ids
-#, fuzzy
 msgid "Has Project Child Complete"
 msgstr "Ha finalizado el proyecto hijo"
 
@@ -188,22 +183,20 @@ msgstr "Proyecto principal"
 
 #. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project
-#, fuzzy
 msgid "Parent"
-msgstr "Padre"
+msgstr "Parental"
 
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__parent_id
 #: model:ir.model.fields,field_description:project_wbs.field_project_project__parent_id
 #: model_terms:ir.ui.view,arch_db:project_wbs.edit_project
-#, fuzzy
 msgid "Parent Analytic Account"
 msgstr "Cuenta analítica padre"
 
 #. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project
 msgid "Parent WBS element"
-msgstr ""
+msgstr "Elemento PEP parental"
 
 #. module: project_wbs
 #: model:ir.model.fields.selection,name:project_wbs.selection__account_analytic_account__account_class__phase
@@ -250,6 +243,11 @@ msgid ""
 "                internal projects (R&amp;D, Improve Sales Process),\n"
 "                private projects (My Todos) or customer ones."
 msgstr ""
+"Los proyectos se utilizan para organizar sus actividades\n"
+"                planificar tareas, hacer un seguimiento de los problemas y "
+"facturar hojas de horas. Puede definir\n"
+"                proyectos internos (I+D, Mejorar el proceso de ventas),\n"
+"                proyectos privados (Mis Todos) o de clientes."
 
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__code
@@ -260,9 +258,8 @@ msgstr "Referencia"
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__project_analytic_id
 #: model:ir.model.fields,field_description:project_wbs.field_project_project__project_analytic_id
-#, fuzzy
 msgid "Root Analytic Account"
-msgstr "Cuenta analítica principal"
+msgstr "Cuenta analítica raíz"
 
 #. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project
@@ -276,6 +273,8 @@ msgid ""
 "The classification allows you to create a proper project Work Breakdown "
 "Structure"
 msgstr ""
+"La clasificación permite crear una estructura de desglose del trabajo del "
+"proyecto adecuada"
 
 #. module: project_wbs
 #: model:ir.model.fields,help:project_wbs.field_account_analytic_account__complete_wbs_code
@@ -284,13 +283,15 @@ msgid ""
 "The full WBS code describes the full path of this component within the "
 "project WBS hierarchy"
 msgstr ""
+"El código PEP completo describe la ruta completa de este componente dentro "
+"de la jerarquía PEP del proyecto"
 
 #. module: project_wbs
 #: code:addons/project_wbs/models/account_analytic_account.py:0
 #: model:ir.model.constraint,message:project_wbs.constraint_account_analytic_account_analytic_unique_wbs_code
 #, python-format
 msgid "The full wbs code must be unique!"
-msgstr ""
+msgstr "¡El código wbs completo debe ser único!"
 
 #. module: project_wbs
 #: code:addons/project_wbs/models/project_project.py:0
@@ -301,17 +302,17 @@ msgstr "Cuenta analítica desconocida"
 #. module: project_wbs
 #: model:ir.ui.menu,name:project_wbs.menu_project_wbs_project
 msgid "WBS"
-msgstr ""
+msgstr "WBS"
 
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_project_project__complete_wbs_code
 msgid "WBS Code"
-msgstr ""
+msgstr "Código WBS"
 
 #. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project_kanban
 msgid "WBS Elements:"
-msgstr ""
+msgstr "Elementos de la WBS:"
 
 #. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.edit_project
@@ -320,39 +321,39 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_account_analytic_account_search
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project_project_filter
 msgid "WBS code"
-msgstr ""
+msgstr "Código WBS"
 
 #. module: project_wbs
 #: model:ir.model,name:project_wbs.model_project_project
 msgid "WBS element"
-msgstr ""
+msgstr "Elemento WBS"
 
 #. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.edit_project
 msgid "WBS element name"
-msgstr ""
+msgstr "Nombre del elemento WBS"
 
 #. module: project_wbs
 #: model:ir.actions.act_window,name:project_wbs.create_wbs_element
 #: model:ir.actions.act_window,name:project_wbs.open_view_project_wbs
 #: model:ir.actions.act_window,name:project_wbs.open_view_wbs_kanban
 msgid "WBS elements"
-msgstr ""
+msgstr "Elementos WBS"
 
 #. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_account_analytic_account_search
 msgid "WBS name"
-msgstr ""
+msgstr "Nombre de la WBS"
 
 #. module: project_wbs
 #: model:ir.actions.act_window,name:project_wbs.open_view_wbs_tree
 msgid "WBS overview"
-msgstr ""
+msgstr "Resumen de la WBS"
 
 #. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.edit_project
 msgid "Work Breakdown Structure"
-msgstr ""
+msgstr "Estructura desglosada del trabajo"
 
 #. module: project_wbs
 #: model:ir.model.fields.selection,name:project_wbs.selection__account_analytic_account__account_class__work_package
@@ -371,3 +372,5 @@ msgid ""
 "You will be able collaborate with internal users on\n"
 "                projects or invite customers to share your activities."
 msgstr ""
+"Podrá colaborar con usuarios internos en\n"
+"                proyectos o invitar a clientes a compartir sus actividades."
