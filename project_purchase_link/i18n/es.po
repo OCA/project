@@ -7,14 +7,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2019-01-25 08:47+0000\n"
-"PO-Revision-Date: 2019-01-25 08:47+0000\n"
-"Last-Translator: <>\n"
+"PO-Revision-Date: 2024-03-26 01:08+0000\n"
+"Last-Translator: Ivorra78 <informatica@totmaterial.es>\n"
 "Language-Team: \n"
-"Language: \n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: project_purchase_link
 #: model:ir.model.fields,field_description:project_purchase_link.field_project_project__purchase_count
@@ -29,27 +30,27 @@ msgstr "N.º de facturas de compra"
 #. module: project_purchase_link
 #: model:ir.model.fields,field_description:project_purchase_link.field_project_project__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Mostrar Nombre"
 
 #. module: project_purchase_link
 #: model:ir.model.fields,field_description:project_purchase_link.field_project_project__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_purchase_link
 #: model:ir.model.fields,field_description:project_purchase_link.field_project_project____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Última Modificación el"
 
 #. module: project_purchase_link
 #: model_terms:ir.ui.view,arch_db:project_purchase_link.project_project_view_form
 msgid "PO Invoice Total"
-msgstr ""
+msgstr "Factura PO Total"
 
 #. module: project_purchase_link
 #: model_terms:ir.ui.view,arch_db:project_purchase_link.project_project_view_form
 msgid "PO Invoices"
-msgstr ""
+msgstr "Facturas de pedido"
 
 #. module: project_purchase_link
 #: code:addons/project_purchase_link/models/project_project.py:0
@@ -59,9 +60,8 @@ msgstr "Líneas de factura de compra"
 
 #. module: project_purchase_link
 #: model:ir.model.fields,field_description:project_purchase_link.field_project_project__purchase_invoice_line_total
-#, fuzzy
 msgid "Purchase Invoice Total"
-msgstr "Facturas de compra"
+msgstr "Total de facturas de compra"
 
 #. module: project_purchase_link
 #: code:addons/project_purchase_link/models/project_project.py:0
@@ -78,9 +78,8 @@ msgstr "Líneas de pedido de compra"
 #. module: project_purchase_link
 #: model:ir.model.fields,field_description:project_purchase_link.field_project_project__purchase_line_total
 #: model_terms:ir.ui.view,arch_db:project_purchase_link.project_project_view_form
-#, fuzzy
 msgid "Purchase Total"
-msgstr "Compras"
+msgstr "Total de compras"
 
 #. module: project_purchase_link
 #: model_terms:ir.ui.view,arch_db:project_purchase_link.project_project_view_form
@@ -90,7 +89,7 @@ msgstr "Compras"
 #. module: project_purchase_link
 #: model:ir.model,name:project_purchase_link.model_project_project
 msgid "WBS element"
-msgstr ""
+msgstr "Element WBS"
 
 #~ msgid "Project"
 #~ msgstr "Proyecto"
