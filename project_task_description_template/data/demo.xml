@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+    <record id="template_1_demo" model="project.task.template">
+        <field name="name">Template demo 1</field>
+        <field
+            name="tag_ids"
+            eval="[(6, 0, [
+                ref('project.project_tags_02')])]"
+        />
+        <field name="user_id" ref="base.user_demo" />
+        <field name="description">Template 1 Description!</field>
+        <field name="project_ids" eval="[(6, 0, [ref('project.project_project_1')])]" />
+    </record>
+    <record id="template_2_demo" model="project.task.template">
+        <field name="name">Template demo 2</field>
+        <field
+            name="tag_ids"
+            eval="[(6, 0, [
+            ref('project.project_tags_01')])]"
+        />
+        <field name="user_id" ref="base.user_root" />
+        <field name="description">Template 2 Description!</field>
+        <field name="project_ids" eval="[(6, 0, [ref('project.project_project_2')])]" />
+    </record>
+</odoo>
