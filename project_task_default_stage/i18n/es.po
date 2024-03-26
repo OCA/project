@@ -10,15 +10,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-21 03:42+0000\n"
-"PO-Revision-Date: 2019-02-11 12:50+0000\n"
-"Last-Translator: Marta Vázquez Rodríguez <vazrodmar@gmail.com>\n"
+"PO-Revision-Date: 2024-03-26 20:35+0000\n"
+"Last-Translator: Ivorra78 <informatica@totmaterial.es>\n"
 "Language-Team: Spanish (https://www.transifex.com/oca/teams/23907/es/)\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.4\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_analysis
@@ -61,7 +61,7 @@ msgstr "En desarrollo"
 #: model:ir.model.fields,field_description:project_task_default_stage.field_project_project__display_name
 #: model:ir.model.fields,field_description:project_task_default_stage.field_project_task_type__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Mostrar Nombre"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_deployment
@@ -72,7 +72,7 @@ msgstr "Realizado"
 #: model:ir.model.fields,field_description:project_task_default_stage.field_project_project__id
 #: model:ir.model.fields,field_description:project_task_default_stage.field_project_task_type__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_task_default_stage
 #: model:ir.model.fields,help:project_task_default_stage.field_project_task_type__case_default
@@ -99,7 +99,7 @@ msgstr "En progreso"
 #: model:ir.model.fields,field_description:project_task_default_stage.field_project_project____last_update
 #: model:ir.model.fields,field_description:project_task_default_stage.field_project_task_type____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Última Modificación el"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_merge
@@ -121,7 +121,7 @@ msgstr "Etapas del proyecto"
 #: model:project.task.type,legend_done:project_task_default_stage.project_tt_specification
 #: model:project.task.type,legend_done:project_task_default_stage.project_tt_testing
 msgid "Ready"
-msgstr ""
+msgstr "Listo"
 
 #. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_specification
@@ -146,7 +146,7 @@ msgstr "Testeo"
 #. module: project_task_default_stage
 #: model:ir.model,name:project_task_default_stage.model_project_project
 msgid "WBS element"
-msgstr ""
+msgstr "Elemento WBS"
 
 #~ msgid "Project"
 #~ msgstr "Proyecto"
