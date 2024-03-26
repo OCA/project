@@ -7,25 +7,25 @@ msgstr ""
 "Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-09-15 14:02+0000\n"
-"PO-Revision-Date: 2022-09-15 16:02+0200\n"
-"Last-Translator: \n"
+"PO-Revision-Date: 2024-03-26 20:35+0000\n"
+"Last-Translator: Ivorra78 <informatica@totmaterial.es>\n"
 "Language-Team: \n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: \n"
-"X-Generator: Poedit 3.0.1\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_task__allow_moves_action_assign
 msgid "Allow Moves Action Assign"
-msgstr ""
+msgstr "Permitir movimientos Asignar acción"
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_task__allow_moves_action_confirm
 msgid "Allow Moves Action Confirm"
-msgstr ""
+msgstr "Permitir Movimientos Confirmar Acción"
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_task__unreserve_visible
@@ -108,7 +108,7 @@ msgstr "Ubicación destino"
 #: model:ir.model.fields,field_description:project_stock.field_stock_move_line__display_name
 #: model:ir.model.fields,field_description:project_stock.field_stock_scrap__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Mostrar Nombre"
 
 #. module: project_stock
 #: model:ir.model.fields.selection,name:project_stock.selection__project_task__stock_state__done
@@ -135,7 +135,7 @@ msgstr "Grupo"
 #: model:ir.model.fields,field_description:project_stock.field_stock_move_line__id
 #: model:ir.model.fields,field_description:project_stock.field_stock_scrap__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_stock
 #: model:ir.model.fields,help:project_stock.field_project_task__done_stock_moves
@@ -177,7 +177,7 @@ msgstr "No es posible cambiar esto con movimientos reservados en tareas."
 #: model:ir.model.fields,field_description:project_stock.field_stock_move_line____last_update
 #: model:ir.model.fields,field_description:project_stock.field_stock_scrap____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Última Modificación el"
 
 #. module: project_stock
 #: model_terms:ir.ui.view,arch_db:project_stock.view_task_form2
@@ -341,7 +341,7 @@ msgstr "Usar movimientos de stock"
 #. module: project_stock
 #: model:ir.model,name:project_stock.model_project_project
 msgid "WBS element"
-msgstr ""
+msgstr "Elemento WBS"
 
 #~ msgid "Project"
 #~ msgstr "Proyecto"
