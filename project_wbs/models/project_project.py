@@ -150,6 +150,7 @@ class Project(models.Model):
             "company_id": vals.get("company_id", self.env.user.company_id.id),
             "partner_id": vals.get("partner_id"),
             "active": True,
+            "code": vals.get("code", ""),
         }
 
     def update_project_from_analytic_vals(self, vals):
