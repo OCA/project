@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2023-01-18 15:37+0000\n"
-"PO-Revision-Date: 2023-01-18 16:37+0100\n"
-"Last-Translator: Yves Le Doeuff <yld@alliasys.fr>\n"
+"PO-Revision-Date: 2024-03-29 08:13+0000\n"
+"Last-Translator: Vincent Hatakeyama <vincent+github@hatakeyama.fr>\n"
 "Language-Team: none\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Poedit 3.0.1\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: project_key
 #: model:ir.model.fields,field_description:project_key.field_project_project__key
@@ -53,12 +53,12 @@ msgstr "Tâche"
 #. module: project_key
 #: model:ir.model.constraint,message:project_key.constraint_project_task_task_key_unique
 msgid "Task key must be unique!"
-msgstr "La clé de tâche doit être unique !"
+msgstr "La clé de tâche doit être unique !"
 
 #. module: project_key
 #: model:ir.model.fields,field_description:project_key.field_project_task__url
 msgid "URL"
-msgstr ""
+msgstr "Adresse universelle"
 
 #~ msgid "key"
 #~ msgstr "Clé"
