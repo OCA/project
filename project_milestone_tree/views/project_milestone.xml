@@ -1,0 +1,12 @@
+<odoo>
+    <record id="project_milestone_tree_action" model="ir.actions.act_window">
+        <field name="name">Milestones</field>
+        <field name="res_model">project.milestone</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem
+        id="project_menu_config_milestone"
+        action="project_milestone_tree_action"
+        parent="project.menu_project_config"
+    />
+</odoo>
