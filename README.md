@@ -49,6 +49,7 @@ addon | version | maintainers | summary
 [project_task_code](project_task_code/) | 14.0.1.0.2 |  | Sequential Code for Tasks
 [project_task_default_stage](project_task_default_stage/) | 14.0.1.1.0 |  | Recovery default task stages for projects from v8
 [project_task_dependency](project_task_dependency/) | 14.0.1.1.0 | [![astirpe](https://github.com/astirpe.png?size=30px)](https://github.com/astirpe) | Enables to define dependencies (other tasks) of a task
+[project_task_description_template](project_task_description_template/) | 14.0.1.0.0 | [![aleuffre](https://github.com/aleuffre.png?size=30px)](https://github.com/aleuffre) [![renda-dev](https://github.com/renda-dev.png?size=30px)](https://github.com/renda-dev) | Module for Task Templates
 [project_task_digitized_signature](project_task_digitized_signature/) | 14.0.1.0.0 |  | Project Task Digitized Signature
 [project_task_material](project_task_material/) | 14.0.1.0.1 |  | Record products spent in a Task
 [project_task_project_required](project_task_project_required/) | 14.0.1.0.0 |  | Set project on task as a mandatory field
