@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="edit_project" model="ir.ui.view">
+        <field name="name">project.project.form</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="task_template_ids" widget="many2many_tags" />
+                <field
+                    name="default_task_template_id"
+                    domain="[('id', 'in', task_template_ids)]"
+                />
+                <field name="is_restrict_template_by_stages" />
+                <field
+                    name="template_task_type_ids"
+                    widget="many2many_tags"
+                    attrs="{'invisible': [('is_restrict_template_by_stages', '=', False)]}"
+                />
+            </xpath>
+        </field>
+    </record>
+    <record id="view_task_form2" model="ir.ui.view">
+        <field name="name">project.task.form</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="after">
+                <field name="template_visible" invisible="1" />
+                <field
+                    name="task_template_id"
+                    domain="[('project_ids','in', [project_id])]"
+                    attrs="{'invisible': [('template_visible', '=', False)]}"
+                    widget="onchange_confirm"
+                    string="Task Template"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>

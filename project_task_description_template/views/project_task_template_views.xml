@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="open_view_task_templates_all" model="ir.actions.act_window">
+        <field name="name">Task Templates</field>
+        <field name="res_model">project.task.template</field>
+        <field name="domain">[]</field>
+        <field name="view_mode">tree,kanban,form</field>
+    </record>
+    <record id="view_task_template_form" model="ir.ui.view">
+        <field name="name">project.task.template.form</field>
+        <field name="model">project.task.template</field>
+        <field name="arch" type="xml">
+            <form string="Task Template">
+                <sheet string="Task Template">
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" placeholder="Task Template" />
+                        </h1>
+                    </div>
+                    <notebook>
+                        <page name="settings" string="Information">
+                            <group name="main">
+                                <group>
+                                    <field name="user_id" string="Assigned to" />
+                                    <field name="tag_ids" widget="many2many_tags" />
+                                    <field name="project_ids" widget="many2many_tags" />
+                                </group>
+                            </group>
+                            <group name="desc">
+                                <field name="description" string="Description" />
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="view_task_templates" model="ir.ui.view">
+        <field name="name">project.task.template.tree</field>
+        <field name="model">project.task.template</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" />
+                <field name="user_id" />
+                <field name="tag_ids" widget="many2many_tags" />
+                <field name="project_ids" widget="many2many_tags" />
+                <field name="description" />
+            </tree>
+        </field>
+    </record>
+    <menuitem
+        action="open_view_task_templates_all"
+        id="menu_projects_config_task_templates"
+        name="Task Templates"
+        parent="project.menu_project_config"
+    />
+</odoo>
