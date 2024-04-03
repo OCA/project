@@ -4,7 +4,7 @@
 <odoo>
     <record id="project.project_1_task_9" model="project.task">
         <field
-            name="date_assign"
+            name="date_start"
             eval="(DateTime.today() - timedelta(days=13)).strftime('%Y-%m-%d 00:00:00')"
         />
         <field
@@ -14,7 +14,7 @@
     </record>
     <record id="project.project_1_task_2" model="project.task">
         <field
-            name="date_assign"
+            name="date_start"
             eval="(DateTime.today() - timedelta(days=1)).strftime('%Y-%m-%d 00:00:00')"
         />
         <field
@@ -24,7 +24,7 @@
     </record>
     <record id="project.project_1_task_3" model="project.task">
         <field
-            name="date_assign"
+            name="date_start"
             eval="(DateTime.today() - timedelta(days=2)).strftime('%Y-%m-%d 00:00:00')"
         />
         <field
@@ -34,7 +34,7 @@
     </record>
     <record id="project.project_1_task_8" model="project.task">
         <field
-            name="date_assign"
+            name="date_start"
             eval="(DateTime.today() - timedelta(days=10)).strftime('%Y-%m-%d 00:00:00')"
         />
         <field
@@ -44,7 +44,7 @@
     </record>
     <record id="project.project_1_task_6" model="project.task">
         <field
-            name="date_assign"
+            name="date_start"
             eval="(DateTime.today() - timedelta(days=9)).strftime('%Y-%m-%d 00:00:00')"
         />
         <field
@@ -54,7 +54,7 @@
     </record>
     <record id="project.project_1_task_7" model="project.task">
         <field
-            name="date_assign"
+            name="date_start"
             eval="(DateTime.today() - timedelta(days=7)).strftime('%Y-%m-%d 00:00:00')"
         />
         <field
@@ -64,7 +64,7 @@
     </record>
     <record id="project.project_1_task_5" model="project.task">
         <field
-            name="date_assign"
+            name="date_start"
             eval="(DateTime.today() - timedelta(days=6)).strftime('%Y-%m-%d 00:00:00')"
         />
         <field
@@ -74,7 +74,7 @@
     </record>
     <record id="project.project_2_task_7" model="project.task">
         <field
-            name="date_assign"
+            name="date_start"
             eval="(DateTime.today() - timedelta(days=1)).strftime('%Y-%m-%d 00:00:00')"
         />
         <field
@@ -84,7 +84,7 @@
     </record>
     <record id="project.project_2_task_9" model="project.task">
         <field
-            name="date_assign"
+            name="date_start"
             eval="(DateTime.today() - timedelta(days=1)).strftime('%Y-%m-%d 00:00:00')"
         />
         <field
@@ -94,7 +94,7 @@
     </record>
     <record id="project.project_2_task_5" model="project.task">
         <field
-            name="date_assign"
+            name="date_start"
             eval="(DateTime.today() + timedelta(days=13)).strftime('%Y-%m-%d 00:00:00')"
         />
         <field
@@ -104,7 +104,7 @@
     </record>
     <record id="project.project_2_task_4" model="project.task">
         <field
-            name="date_assign"
+            name="date_start"
             eval="(DateTime.today() + timedelta(days=13)).strftime('%Y-%m-%d 00:00:00')"
         />
         <field
@@ -114,7 +114,7 @@
     </record>
     <record id="project.project_2_task_3" model="project.task">
         <field
-            name="date_assign"
+            name="date_start"
             eval="(DateTime.today() + timedelta(days=1)).strftime('%Y-%m-%d 00:00:00')"
         />
         <field
@@ -124,7 +124,7 @@
     </record>
     <record id="project.project_2_task_2" model="project.task">
         <field
-            name="date_assign"
+            name="date_start"
             eval="(DateTime.today() + timedelta(days=1)).strftime('%Y-%m-%d 00:00:00')"
         />
         <field
@@ -134,7 +134,7 @@
     </record>
     <record id="project.project_2_task_6" model="project.task">
         <field
-            name="date_assign"
+            name="date_start"
             eval="(DateTime.today() + timedelta(days=11)).strftime('%Y-%m-%d 00:00:00')"
         />
         <field
@@ -144,7 +144,7 @@
     </record>
     <record id="project.project_2_task_8" model="project.task">
         <field
-            name="date_assign"
+            name="date_start"
             eval="(DateTime.today() + timedelta(days=12)).strftime('%Y-%m-%d 00:00:00')"
         />
         <field
@@ -154,7 +154,7 @@
     </record>
     <record id="project.project_2_task_1" model="project.task">
         <field
-            name="date_assign"
+            name="date_start"
             eval="(DateTime.today() + timedelta(days=20)).strftime('%Y-%m-%d 00:00:00')"
         />
         <field
@@ -164,7 +164,7 @@
     </record>
     <record id="project.project_1_task_4" model="project.task">
         <field
-            name="date_assign"
+            name="date_start"
             eval="(DateTime.today() + timedelta(days=30)).strftime('%Y-%m-%d 00:00:00')"
         />
         <field
@@ -174,7 +174,7 @@
     </record>
     <record id="project.project_1_task_1" model="project.task">
         <field
-            name="date_assign"
+            name="date_start"
             eval="(DateTime.today() + timedelta(days=30)).strftime('%Y-%m-%d 00:00:00')"
         />
         <field
@@ -184,7 +184,7 @@
     </record>
     <record id="project.project_2_task_10" model="project.task">
         <field
-            name="date_assign"
+            name="date_start"
             eval="(DateTime.today() + timedelta(days=20)).strftime('%Y-%m-%d 00:00:00')"
         />
         <field
