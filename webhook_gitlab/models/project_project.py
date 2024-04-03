@@ -54,7 +54,7 @@ class ProjectProject(models.Model):
             jobs = project.jobs.list(scope="success", get_all=False)
             latest_job = False
             for job in jobs:
-                if job.name == "odoo_sh_deploy" and not latest_job or job.created_at > latest_job.created_at:
+                if job.name == "odoo_sh_deploy" and latest_job and job.created_at > latest_job.created_at:
                     latest_job = job
             if latest_job:
                 latest_job.retry()
