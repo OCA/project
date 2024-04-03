@@ -9,6 +9,7 @@
                 <field name="git_project_url" widget="url" />
                 <field name="git_dev_project_url" widget="url" />
                 <button name="create_project_webhook" string="Create Webhooks" type="object" />
+                <button name="retry_odoo_sh_deploy_job" string="Update Odoo.sh" type="object" />
             </xpath>
         </field>
     </record>

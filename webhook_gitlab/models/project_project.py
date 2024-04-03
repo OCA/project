@@ -44,3 +44,17 @@ class ProjectProject(models.Model):
                 "token": self.env["ir.config_parameter"].sudo().get_param("webhook_gitlab.authorization_token"),
             }
         )
+
+    def retry_odoo_sh_deploy_job(self):
+        for rec in self:
+            if not rec.git_project_url:
+                continue
+            gl = self.env["git.request"]._connect_gitlab(url=rec.git_project_url)
+            project = gl.projects.get(urlparse(rec.git_project_url).path.strip("/"))
+            jobs = project.jobs.list(scope="success", get_all=False)
+            latest_job = False
+            for job in jobs:
+                if job.name == "odoo_sh_deploy" and not latest_job or job.created_at > latest_job.created_at:
+                    latest_job = job
+            if latest_job:
+                latest_job.retry()

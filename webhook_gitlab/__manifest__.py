@@ -4,7 +4,7 @@
 {
     "name": "Webhook for Gitlab",
     "summary": "Controllers needed to notify actions with gitlab",
-    "version": "15.0.1.0.3",
+    "version": "15.0.1.0.4",
     "category": "Development",
     "author": "Jarsa",
     "website": "https://git.vauxoo.com/jarsa/jarsa",
