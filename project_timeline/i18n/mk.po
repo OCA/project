@@ -24,6 +24,13 @@ msgid "Start Date"
 msgstr ""
 
 #. module: project_timeline
+#. odoo-python
+#: code:addons/project_timeline/models/project_task.py:0
+#, python-format
+msgid "Start Date is after End Date."
+msgstr ""
+
+#. module: project_timeline
 #: model:ir.model,name:project_timeline.model_project_task
 msgid "Task"
 msgstr "Задача"
