@@ -3,7 +3,9 @@
 
 from urllib.parse import urlparse
 
-from odoo import fields, models
+from odoo import _, fields, models
+from odoo.exceptions import UserError
+from gitlab.exceptions import GitlabJobRetryError
 
 
 class ProjectProject(models.Model):
@@ -53,8 +55,19 @@ class ProjectProject(models.Model):
             project = gl.projects.get(urlparse(rec.git_project_url).path.strip("/"))
             jobs = project.jobs.list(scope="success", get_all=False)
             latest_job = False
-            for job in jobs:
-                if job.name == "odoo_sh_deploy" and latest_job and job.created_at > latest_job.created_at:
+            for job in filter(lambda x: x.name == "odoo_sh_deploy", jobs):
+                if not latest_job or job.created_at > latest_job.created_at:
                     latest_job = job
             if latest_job:
-                latest_job.retry()
+                try:
+                    response = latest_job.retry()
+                except GitlabJobRetryError:
+                    raise UserError(_("Job cannot be retried, it is a job in progress"))
+                if response.get("web_url"):
+                    return {
+                        "type": "ir.actions.act_url",
+                        "url": response.get("web_url"),
+                        "target": "new",
+                    }
+                raise UserError(_("Job odoo_sh_deploy has been retried"))
+            raise UserError(_("No job odoo_sh_deploy found"))
