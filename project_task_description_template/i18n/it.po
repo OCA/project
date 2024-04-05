@@ -6,137 +6,139 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2024-04-05 12:34+0000\n"
+"Last-Translator: Francesco Foresti <francesco.foresti@ooops404.com>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: project_task_description_template
 #: model:ir.model.fields,field_description:project_task_description_template.field_project_task_template__user_id
 #: model_terms:ir.ui.view,arch_db:project_task_description_template.view_task_template_form
 msgid "Assigned to"
-msgstr ""
+msgstr "Assegnato a"
 
 #. module: project_task_description_template
 #. openerp-web
 #: code:addons/project_task_description_template/static/src/js/onchange_confirm_widget.js:0
 #, python-format
 msgid "Confirmation"
-msgstr ""
+msgstr "Conferma"
 
 #. module: project_task_description_template
 #: model:ir.model.fields,field_description:project_task_description_template.field_project_task_template__create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Creato da"
 
 #. module: project_task_description_template
 #: model:ir.model.fields,field_description:project_task_description_template.field_project_task_template__create_date
 msgid "Created on"
-msgstr ""
+msgstr "Creato il"
 
 #. module: project_task_description_template
 #: model:ir.model.fields,field_description:project_task_description_template.field_project_project__default_task_template_id
 msgid "Default Task Template"
-msgstr ""
+msgstr "Modello lavoro predefinito"
 
 #. module: project_task_description_template
 #: model:ir.model.fields,field_description:project_task_description_template.field_project_task_template__description
 #: model_terms:ir.ui.view,arch_db:project_task_description_template.view_task_template_form
 msgid "Description"
-msgstr ""
+msgstr "Descrizione"
 
 #. module: project_task_description_template
 #: model:ir.model.fields,field_description:project_task_description_template.field_project_project__display_name
 #: model:ir.model.fields,field_description:project_task_description_template.field_project_task__display_name
 #: model:ir.model.fields,field_description:project_task_description_template.field_project_task_template__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nome visualizzato"
 
 #. module: project_task_description_template
 #: model:ir.model.fields,field_description:project_task_description_template.field_project_project__id
 #: model:ir.model.fields,field_description:project_task_description_template.field_project_task__id
 #: model:ir.model.fields,field_description:project_task_description_template.field_project_task_template__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_task_description_template
 #: model_terms:ir.ui.view,arch_db:project_task_description_template.view_task_template_form
 msgid "Information"
-msgstr ""
+msgstr "Informazione"
 
 #. module: project_task_description_template
 #: model:ir.model.fields,field_description:project_task_description_template.field_project_project____last_update
 #: model:ir.model.fields,field_description:project_task_description_template.field_project_task____last_update
 #: model:ir.model.fields,field_description:project_task_description_template.field_project_task_template____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Ultima modifica il"
 
 #. module: project_task_description_template
 #: model:ir.model.fields,field_description:project_task_description_template.field_project_task_template__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Ultimo aggiornamento di"
 
 #. module: project_task_description_template
 #: model:ir.model.fields,field_description:project_task_description_template.field_project_task_template__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Ultimo aggiornamento il"
 
 #. module: project_task_description_template
 #: model:ir.model.fields,field_description:project_task_description_template.field_project_task_template__name
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 #. module: project_task_description_template
 #: model:ir.model.fields,field_description:project_task_description_template.field_project_task_template__project_ids
 msgid "Project"
-msgstr ""
+msgstr "Progetto"
 
 #. module: project_task_description_template
 #: model:ir.model,name:project_task_description_template.model_project_task_template
 msgid "Project Task Template"
-msgstr ""
+msgstr "Modello lavoro progetto"
 
 #. module: project_task_description_template
 #: model:ir.model.fields,field_description:project_task_description_template.field_project_project__is_restrict_template_by_stages
 msgid "Restrict template by stages"
-msgstr ""
+msgstr "Limita modelli per fase"
 
 #. module: project_task_description_template
 #: model:ir.model.fields,field_description:project_task_description_template.field_project_task_template__tag_ids
 msgid "Tag"
-msgstr ""
+msgstr "Etichetta"
 
 #. module: project_task_description_template
 #: model:ir.model,name:project_task_description_template.model_project_task
 msgid "Task"
-msgstr ""
+msgstr "Lavoro"
 
 #. module: project_task_description_template
 #: model:ir.model.fields,field_description:project_task_description_template.field_project_task__task_template_id
 #: model_terms:ir.ui.view,arch_db:project_task_description_template.view_task_form2
 #: model_terms:ir.ui.view,arch_db:project_task_description_template.view_task_template_form
 msgid "Task Template"
-msgstr ""
+msgstr "Modello lavoro"
 
 #. module: project_task_description_template
 #: model:ir.actions.act_window,name:project_task_description_template.open_view_task_templates_all
 #: model:ir.model.fields,field_description:project_task_description_template.field_project_project__task_template_ids
 #: model:ir.ui.menu,name:project_task_description_template.menu_projects_config_task_templates
 msgid "Task Templates"
-msgstr ""
+msgstr "Modelli lavoro"
 
 #. module: project_task_description_template
 #: model:ir.model.fields,field_description:project_task_description_template.field_project_task__template_visible
 msgid "Template Visible"
-msgstr ""
+msgstr "Modello visibile"
 
 #. module: project_task_description_template
 #: model:ir.model.fields,field_description:project_task_description_template.field_project_project__template_task_type_ids
 msgid "Templates allowed in stages"
-msgstr ""
+msgstr "Modelli permessi nelle fasi"
 
 #. module: project_task_description_template
 #. openerp-web
@@ -146,8 +148,10 @@ msgid ""
 "The record has been modified, your changes will be discarded. Do you want to"
 " proceed?"
 msgstr ""
+"Il record è stato modificato, le tue modifiche verranno annullate. Confermi "
+"di voler procedere?"
 
 #. module: project_task_description_template
 #: model:ir.model,name:project_task_description_template.model_project_project
 msgid "WBS element"
-msgstr ""
+msgstr "Elemento WBS"
