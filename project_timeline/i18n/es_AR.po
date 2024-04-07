@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-10-29 23:49+0000\n"
+"PO-Revision-Date: 2024-04-08 01:01+0000\n"
 "Last-Translator: Ignacio Buioli <ibuioli@gmail.com>\n"
 "Language-Team: none\n"
 "Language: es_AR\n"
@@ -26,7 +26,7 @@ msgstr "Fecha de Inicio"
 #: code:addons/project_timeline/models/project_task.py:0
 #, python-format
 msgid "Start Date is after End Date."
-msgstr ""
+msgstr "La Fecha de Inicio es después de la Fecha de Finalización."
 
 #. module: project_timeline
 #: model:ir.model,name:project_timeline.model_project_task
