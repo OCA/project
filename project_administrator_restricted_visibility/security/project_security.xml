@@ -9,6 +9,7 @@
             eval="[(3, ref('project.project_project_manager_rule'))]"
         />
     </record>
+
     <!-- Create a new 'Project Administrator' access group with
     the original 'Project Administrator' access rule for project -->
     <record id="group_full_project_manager" model="res.groups">
