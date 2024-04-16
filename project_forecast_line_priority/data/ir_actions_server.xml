@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo noupdate="1">
+    <record id="action_project_task_priority" model="ir.actions.server">
+        <field name="name">Project Task: Update forecast date end</field>
+        <field name="model_id" ref="project.model_project_task" />
+        <field name="binding_model_id" ref="project.model_project_task" />
+        <field name="binding_type">action</field>
+        <field name="state">code</field>
+        <field name="code">
+        model._action_update_forecast_date_end(records)
+        </field>
+    </record>
+</odoo>
