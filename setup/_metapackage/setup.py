@@ -13,6 +13,7 @@ setuptools.setup(
         'odoo14-addon-project_duplicate_subtask',
         'odoo14-addon-project_forecast_line',
         'odoo14-addon-project_forecast_line_deadline',
+        'odoo14-addon-project_forecast_line_priority',
         'odoo14-addon-project_gtd',
         'odoo14-addon-project_hr',
         'odoo14-addon-project_key',
