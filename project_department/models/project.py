@@ -10,7 +10,6 @@ class ProjectTask(models.Model):
         related="project_id.department_id",
         string="Project Department",
         store=True,
-        readonly=True,
     )
 
 

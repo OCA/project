@@ -68,6 +68,10 @@ Contributors
 
    -  Carlos Roca
 
+-  `Binhex <https://binhex.cloud//com>`__:
+
+   -  David Luis Mora <d.luis@binhex.cloud>
+
 Maintainers
 -----------
 
