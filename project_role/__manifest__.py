@@ -4,7 +4,7 @@
 
 {
     "name": "Project Roles",
-    "version": "16.0.1.0.3",
+    "version": "16.0.1.0.4",
     "category": "Project",
     "website": "https://github.com/OCA/project",
     "author": "CorporateHub, Odoo Community Association (OCA)",
