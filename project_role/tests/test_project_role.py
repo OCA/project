@@ -22,7 +22,7 @@ class TestProjectRole(common.TransactionCase):
         self.Project = self.env["project.project"]
         self.Role = self.env["project.role"]
         self.Assignment = self.env["project.assignment"]
-        self.company_id = self.env.user.company_id
+        self.company_id = self.env.company
 
     def test_create_assignment(self):
         user = self.ResUsers.sudo().create(
