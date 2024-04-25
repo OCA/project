@@ -6,3 +6,5 @@
 - Vaidehi Vasani \<<er.vaidehi.vasani@gmail.com>\>
 - [Tecnativa](https://www.tecnativa.com)
   - Carlos Roca
+- [Binhex](https://binhex.cloud//com):
+  - David Luis Mora \<<d.luis@binhex.cloud>\>
