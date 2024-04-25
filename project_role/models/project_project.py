@@ -23,14 +23,14 @@ class ProjectProject(models.Model):
     @api.model
     def _default_inherit_assignments(self):
         company = self.env["res.company"].browse(
-            self._context.get("company_id", self.env.user.company_id.id)
+            self._context.get("company_id", self.env.company.id)
         )
         return company.project_inherit_assignments
 
     @api.model
     def _default_limit_role_to_assignments(self):
         company = self.env["res.company"].browse(
-            self._context.get("company_id", self.env.user.company_id.id)
+            self._context.get("company_id", self.env.company.id)
         )
         return company.project_limit_role_to_assignments
 
