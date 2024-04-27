@@ -10,6 +10,8 @@ Adding WBS information to Odoo Projects
 * The complete WBS path name is shown in the analytic account and in the
   project
 * The WBS paths are concatenated with each other
+* Project Manager is propagated to the hierarchy, the Manager is Manager
+  for the WBS element only
 
 Searching and Browsing WBS
 

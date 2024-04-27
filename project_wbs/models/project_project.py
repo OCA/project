@@ -290,6 +290,11 @@ class Project(models.Model):
         if "active" in vals and vals["active"]:
             for project in self.filtered(lambda p: not p.analytic_account_id.active):
                 project.analytic_account_id.active = True
+        if "user_id" in vals:
+            for account in self.env["account.analytic.account"].browse(
+                self.analytic_account_id.get_child_accounts().keys()
+            ):
+                account.user_id = vals["user_id"]
         return res
 
     def action_open_parent_kanban_view(self):
