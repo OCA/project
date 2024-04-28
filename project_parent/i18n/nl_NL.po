@@ -36,6 +36,7 @@ msgstr ""
 
 #. module: project_parent
 #: model:ir.model.fields,field_description:project_parent.field_project_project__parent_id
+#: model_terms:ir.ui.view,arch_db:project_parent.view_project_project_filter
 msgid "Parent Project"
 msgstr ""
 
