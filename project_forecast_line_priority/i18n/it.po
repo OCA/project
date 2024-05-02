@@ -1,0 +1,194 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_forecast_line_priority
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: Automatically generated\n"
+"Language-Team: none\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#. module: project_forecast_line_priority
+#: model_terms:ir.ui.view,arch_db:project_forecast_line_priority.res_config_settings_view_form
+msgid "<span class=\"fa fa-star\" role=\"img\" title=\"priority 1\"/>"
+msgstr ""
+
+#. module: project_forecast_line_priority
+#: model_terms:ir.ui.view,arch_db:project_forecast_line_priority.res_config_settings_view_form
+msgid ""
+"<span class=\"fa fa-star\" role=\"img\" title=\"priority 2\"/>\n"
+"                                    <span class=\"fa fa-star\" role=\"img\" title=\"priority 2\"/>"
+msgstr ""
+
+#. module: project_forecast_line_priority
+#: model_terms:ir.ui.view,arch_db:project_forecast_line_priority.res_config_settings_view_form
+msgid ""
+"<span class=\"fa fa-star\" role=\"img\" title=\"priority 3\"/>\n"
+"                                    <span class=\"fa fa-star\" role=\"img\" title=\"priority 3\"/>\n"
+"                                    <span class=\"fa fa-star\" role=\"img\" title=\"priority 3\"/>"
+msgstr ""
+
+#. module: project_forecast_line_priority
+#: model_terms:ir.ui.view,arch_db:project_forecast_line_priority.res_config_settings_view_form
+msgid "<span class=\"fa fa-star-o\" role=\"img\" title=\"priority 0\"/>"
+msgstr ""
+
+#. module: project_forecast_line_priority
+#: model:ir.model,name:project_forecast_line_priority.model_res_company
+msgid "Companies"
+msgstr ""
+
+#. module: project_forecast_line_priority
+#: model:ir.model,name:project_forecast_line_priority.model_res_config_settings
+msgid "Config Settings"
+msgstr ""
+
+#. module: project_forecast_line_priority
+#: model:ir.model.fields.selection,name:project_forecast_line_priority.selection__res_company__forecast_line_priority_0_selection__date
+#: model:ir.model.fields.selection,name:project_forecast_line_priority.selection__res_company__forecast_line_priority_1_selection__date
+#: model:ir.model.fields.selection,name:project_forecast_line_priority.selection__res_company__forecast_line_priority_2_selection__date
+#: model:ir.model.fields.selection,name:project_forecast_line_priority.selection__res_company__forecast_line_priority_3_selection__date
+msgid "Date"
+msgstr ""
+
+#. module: project_forecast_line_priority
+#: model:ir.model.fields.selection,name:project_forecast_line_priority.selection__res_company__forecast_line_priority_0_selection__delta
+#: model:ir.model.fields.selection,name:project_forecast_line_priority.selection__res_company__forecast_line_priority_1_selection__delta
+#: model:ir.model.fields.selection,name:project_forecast_line_priority.selection__res_company__forecast_line_priority_2_selection__delta
+#: model:ir.model.fields.selection,name:project_forecast_line_priority.selection__res_company__forecast_line_priority_3_selection__delta
+msgid "Delta (in days)"
+msgstr ""
+
+#. module: project_forecast_line_priority
+#: model:ir.model.fields,field_description:project_forecast_line_priority.field_project_task__display_name
+#: model:ir.model.fields,field_description:project_forecast_line_priority.field_res_company__display_name
+#: model:ir.model.fields,field_description:project_forecast_line_priority.field_res_config_settings__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: project_forecast_line_priority
+#: model:ir.model.fields,field_description:project_forecast_line_priority.field_res_company__forecast_line_priority_0_date
+#: model:ir.model.fields,field_description:project_forecast_line_priority.field_res_config_settings__forecast_line_priority_0_date
+msgid "Forecast Line Priority 0 Date"
+msgstr ""
+
+#. module: project_forecast_line_priority
+#: model:ir.model.fields,field_description:project_forecast_line_priority.field_res_company__forecast_line_priority_0_delta
+#: model:ir.model.fields,field_description:project_forecast_line_priority.field_res_config_settings__forecast_line_priority_0_delta
+msgid "Forecast Line Priority 0 Delta"
+msgstr ""
+
+#. module: project_forecast_line_priority
+#: model:ir.model.fields,field_description:project_forecast_line_priority.field_res_company__forecast_line_priority_0_selection
+#: model:ir.model.fields,field_description:project_forecast_line_priority.field_res_config_settings__forecast_line_priority_0_selection
+msgid "Forecast Line Priority 0 Selection"
+msgstr ""
+
+#. module: project_forecast_line_priority
+#: model:ir.model.fields,field_description:project_forecast_line_priority.field_res_company__forecast_line_priority_1_date
+#: model:ir.model.fields,field_description:project_forecast_line_priority.field_res_config_settings__forecast_line_priority_1_date
+msgid "Forecast Line Priority 1 Date"
+msgstr ""
+
+#. module: project_forecast_line_priority
+#: model:ir.model.fields,field_description:project_forecast_line_priority.field_res_company__forecast_line_priority_1_delta
+#: model:ir.model.fields,field_description:project_forecast_line_priority.field_res_config_settings__forecast_line_priority_1_delta
+msgid "Forecast Line Priority 1 Delta"
+msgstr ""
+
+#. module: project_forecast_line_priority
+#: model:ir.model.fields,field_description:project_forecast_line_priority.field_res_company__forecast_line_priority_1_selection
+#: model:ir.model.fields,field_description:project_forecast_line_priority.field_res_config_settings__forecast_line_priority_1_selection
+msgid "Forecast Line Priority 1 Selection"
+msgstr ""
+
+#. module: project_forecast_line_priority
+#: model:ir.model.fields,field_description:project_forecast_line_priority.field_res_company__forecast_line_priority_2_date
+#: model:ir.model.fields,field_description:project_forecast_line_priority.field_res_config_settings__forecast_line_priority_2_date
+msgid "Forecast Line Priority 2 Date"
+msgstr ""
+
+#. module: project_forecast_line_priority
+#: model:ir.model.fields,field_description:project_forecast_line_priority.field_res_company__forecast_line_priority_2_delta
+#: model:ir.model.fields,field_description:project_forecast_line_priority.field_res_config_settings__forecast_line_priority_2_delta
+msgid "Forecast Line Priority 2 Delta"
+msgstr ""
+
+#. module: project_forecast_line_priority
+#: model:ir.model.fields,field_description:project_forecast_line_priority.field_res_company__forecast_line_priority_2_selection
+#: model:ir.model.fields,field_description:project_forecast_line_priority.field_res_config_settings__forecast_line_priority_2_selection
+msgid "Forecast Line Priority 2 Selection"
+msgstr ""
+
+#. module: project_forecast_line_priority
+#: model:ir.model.fields,field_description:project_forecast_line_priority.field_res_company__forecast_line_priority_3_date
+#: model:ir.model.fields,field_description:project_forecast_line_priority.field_res_config_settings__forecast_line_priority_3_date
+msgid "Forecast Line Priority 3 Date"
+msgstr ""
+
+#. module: project_forecast_line_priority
+#: model:ir.model.fields,field_description:project_forecast_line_priority.field_res_company__forecast_line_priority_3_delta
+#: model:ir.model.fields,field_description:project_forecast_line_priority.field_res_config_settings__forecast_line_priority_3_delta
+msgid "Forecast Line Priority 3 Delta"
+msgstr ""
+
+#. module: project_forecast_line_priority
+#: model:ir.model.fields,field_description:project_forecast_line_priority.field_res_company__forecast_line_priority_3_selection
+#: model:ir.model.fields,field_description:project_forecast_line_priority.field_res_config_settings__forecast_line_priority_3_selection
+msgid "Forecast Line Priority 3 Selection"
+msgstr ""
+
+#. module: project_forecast_line_priority
+#: model_terms:ir.ui.view,arch_db:project_forecast_line_priority.res_config_settings_view_form
+msgid "Forecast Task Priority Management"
+msgstr ""
+
+#. module: project_forecast_line_priority
+#: model:ir.model.fields,field_description:project_forecast_line_priority.field_project_task__id
+#: model:ir.model.fields,field_description:project_forecast_line_priority.field_res_company__id
+#: model:ir.model.fields,field_description:project_forecast_line_priority.field_res_config_settings__id
+msgid "ID"
+msgstr ""
+
+#. module: project_forecast_line_priority
+#: model:ir.model.fields,field_description:project_forecast_line_priority.field_project_task____last_update
+#: model:ir.model.fields,field_description:project_forecast_line_priority.field_res_company____last_update
+#: model:ir.model.fields,field_description:project_forecast_line_priority.field_res_config_settings____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: project_forecast_line_priority
+#: model:ir.model.fields.selection,name:project_forecast_line_priority.selection__res_company__forecast_line_priority_0_selection__none
+#: model:ir.model.fields.selection,name:project_forecast_line_priority.selection__res_company__forecast_line_priority_1_selection__none
+#: model:ir.model.fields.selection,name:project_forecast_line_priority.selection__res_company__forecast_line_priority_2_selection__none
+#: model:ir.model.fields.selection,name:project_forecast_line_priority.selection__res_company__forecast_line_priority_3_selection__none
+msgid "None"
+msgstr ""
+
+#. module: project_forecast_line_priority
+#: model:ir.actions.server,name:project_forecast_line_priority.action_project_task_priority
+msgid "Project Task: Update forecast date end"
+msgstr ""
+
+#. module: project_forecast_line_priority
+#: model_terms:ir.ui.view,arch_db:project_forecast_line_priority.res_config_settings_view_form
+msgid "Set Date"
+msgstr ""
+
+#. module: project_forecast_line_priority
+#: model:ir.model,name:project_forecast_line_priority.model_project_task
+msgid "Task"
+msgstr ""
+
+#. module: project_forecast_line_priority
+#: model_terms:ir.ui.view,arch_db:project_forecast_line_priority.res_config_settings_view_form
+msgid ""
+"Use the below selection fields to set     per-priority values for forecast "
+"planned end date"
+msgstr ""
