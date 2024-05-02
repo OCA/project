@@ -3,9 +3,10 @@
 
 from urllib.parse import urlparse
 
+from gitlab.exceptions import GitlabJobRetryError
+
 from odoo import _, fields, models
 from odoo.exceptions import UserError
-from gitlab.exceptions import GitlabJobRetryError
 
 
 class ProjectProject(models.Model):
