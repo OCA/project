@@ -4,10 +4,10 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 15.0+e\n"
+"Project-Id-Version: Odoo Server 17.0+e\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-03 18:50+0000\n"
-"PO-Revision-Date: 2024-04-03 12:51-0600\n"
+"POT-Creation-Date: 2024-05-03 12:09+0000\n"
+"PO-Revision-Date: 2024-05-03 06:11-0600\n"
 "Last-Translator: Jesús Alan Ramos Rodríguez <alan.ramos@jarsa.com>\n"
 "Language-Team: \n"
 "Language: es\n"
@@ -56,6 +56,7 @@ msgstr "<span>Producción:</span>"
 
 #. module: webhook_gitlab
 #: model:ir.model.fields,field_description:webhook_gitlab.field_git_request__approved
+#: model:project.tags,name:webhook_gitlab.project_tags_approved
 msgid "Approved"
 msgstr "Aprobada"
 
@@ -68,6 +69,41 @@ msgstr "Rama"
 #: model:ir.model.fields,field_description:webhook_gitlab.field_git_request__ci_status
 msgid "CI Status"
 msgstr "Estado CI"
+
+#. module: webhook_gitlab
+#: model:project.tags,name:webhook_gitlab.project_tags_canceled
+msgid "CI: Canceled"
+msgstr "CI: Cancelado"
+
+#. module: webhook_gitlab
+#: model:project.tags,name:webhook_gitlab.project_tags_failed
+msgid "CI: Failed"
+msgstr "IC: Fallido"
+
+#. module: webhook_gitlab
+#: model:project.tags,name:webhook_gitlab.project_tags_pending
+msgid "CI: Pending"
+msgstr "CI: Pendiente"
+
+#. module: webhook_gitlab
+#: model:project.tags,name:webhook_gitlab.project_tags_running
+msgid "CI: Running"
+msgstr "CI: Corriendo"
+
+#. module: webhook_gitlab
+#: model:project.tags,name:webhook_gitlab.project_tags_skipped
+msgid "CI: Skipped"
+msgstr "CI: Omitido"
+
+#. module: webhook_gitlab
+#: model:project.tags,name:webhook_gitlab.project_tags_success
+msgid "CI: Success"
+msgstr "CI: Éxito"
+
+#. module: webhook_gitlab
+#: model:project.tags,name:webhook_gitlab.project_tags_unknown
+msgid "CI: Unknown"
+msgstr "CI: Desconocido"
 
 #. module: webhook_gitlab
 #: model:ir.model.fields.selection,name:webhook_gitlab.selection__git_request__ci_status__canceled
@@ -140,14 +176,23 @@ msgid "Information for Pull/Merge Requests"
 msgstr "Información de solicitud de mezcla"
 
 #. module: webhook_gitlab
+#. odoo-python
+#: code:addons/webhook_gitlab/models/project_project.py:0
+#, python-format
+msgid "Job cannot be retried, it is a job in progress"
+msgstr "El trabajo no se puede volver a intentar, es un trabajo en progreso"
+
+#. module: webhook_gitlab
+#. odoo-python
+#: code:addons/webhook_gitlab/models/project_project.py:0
+#, python-format
+msgid "Job odoo_sh_deploy has been retried"
+msgstr "Se ha reintentado el trabajo odoo_sh_deploy"
+
+#. module: webhook_gitlab
 #: model:ir.model.fields,field_description:webhook_gitlab.field_git_request__last_commit
 msgid "Last Commit"
 msgstr "Último commit"
-
-#. module: webhook_gitlab
-#: model:ir.model.fields,field_description:webhook_gitlab.field_git_request____last_update
-msgid "Last Modified on"
-msgstr "Última modificación el"
 
 #. module: webhook_gitlab
 #: model:ir.model.fields,field_description:webhook_gitlab.field_git_request__write_uid
@@ -160,6 +205,7 @@ msgid "Last Updated on"
 msgstr "Ultima actualización en"
 
 #. module: webhook_gitlab
+#. odoo-python
 #: code:addons/webhook_gitlab/models/git_request.py:0
 #, python-format
 msgid "Linked to Odoo %(type)s [#%(id)s](%(url)s)"
@@ -171,6 +217,26 @@ msgid "Locked"
 msgstr "Bloqueado"
 
 #. module: webhook_gitlab
+#: model:project.tags,name:webhook_gitlab.project_tags_closed
+msgid "MR: Closed"
+msgstr "MR: Cerrado"
+
+#. module: webhook_gitlab
+#: model:project.tags,name:webhook_gitlab.project_tags_locked
+msgid "MR: Locked"
+msgstr "MR: Bloqueado"
+
+#. module: webhook_gitlab
+#: model:project.tags,name:webhook_gitlab.project_tags_merged
+msgid "MR: Merged"
+msgstr "MR: Fusionado"
+
+#. module: webhook_gitlab
+#: model:project.tags,name:webhook_gitlab.project_tags_opened
+msgid "MR: Opened"
+msgstr "MR: Abierto"
+
+#. module: webhook_gitlab
 #: model:ir.model.fields,field_description:webhook_gitlab.field_project_task__git_request_ids
 #: model_terms:ir.ui.view,arch_db:webhook_gitlab.project_task_form
 msgid "Merge Requests"
@@ -180,6 +246,13 @@ msgstr "Solicitudes de Mezcla"
 #: model:ir.model.fields.selection,name:webhook_gitlab.selection__git_request__state__merged
 msgid "Merged"
 msgstr "Mezclado"
+
+#. module: webhook_gitlab
+#. odoo-python
+#: code:addons/webhook_gitlab/models/project_project.py:0
+#, python-format
+msgid "No job odoo_sh_deploy found"
+msgstr "No se encontró ningún trabajo odoo_sh_deploy"
 
 #. module: webhook_gitlab
 #: model_terms:ir.ui.view,arch_db:webhook_gitlab.git_request_tree
@@ -250,6 +323,7 @@ msgstr ""
 "Gitlab"
 
 #. module: webhook_gitlab
+#. odoo-python
 #: code:addons/webhook_gitlab/models/git_request.py:0
 #, python-format
 msgid "The %(type)s #%(id)s cannot be found in Odoo."
@@ -283,10 +357,11 @@ msgstr "URL"
 
 #. module: webhook_gitlab
 #: model:ir.model,name:webhook_gitlab.model_res_users
-msgid "Users"
-msgstr "Usuarios"
+msgid "User"
+msgstr "Usuario"
 
 #. module: webhook_gitlab
 #: model:ir.model.fields,field_description:webhook_gitlab.field_git_request__wip
+#: model:project.tags,name:webhook_gitlab.project_tags_wip
 msgid "WIP"
 msgstr ""

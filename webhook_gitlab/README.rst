@@ -22,7 +22,7 @@ To configure this module, you need to:
 #. Go to System Parameters
 #. Set a token in 'webhook_gitlab.authorization_token' parameter.
 #. Define url of the Odoo instance as 'web.base.url' parameter.
-#. Define url of the Gitlab instance as 'webhook_gitlab.gitlab_url' parameter.
+#. Define url of the Gitlab instance as 'webhook_gitlab.gitlab_token' + url parameter.
 #. Obtain personal token from Gitlab and define it as 'webhook_gitlab.gitlab_token' parameter.
 
 In Gitlab:

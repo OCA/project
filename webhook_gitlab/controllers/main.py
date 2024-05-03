@@ -52,7 +52,7 @@ class WebhookGitlab(http.Controller):
         'object_kind', then it calls the function with the name
         _process_<object_kind>
         """
-        event = request.jsonrequest
+        event = request.get_json_data()
         request_obj = request.env["git.request"]
         try:
             if event.get("object_kind"):

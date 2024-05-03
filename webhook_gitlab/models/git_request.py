@@ -56,9 +56,9 @@ class GitRequest(models.Model):
             "url": self.url,
         }
 
-    @api.model
-    def create(self, vals):
-        rec = super().create(vals)
+    @api.model_create_multi
+    def create(self, vals_list):
+        rec = super().create(vals_list)
         rec.assing_tags()
         return rec
 
