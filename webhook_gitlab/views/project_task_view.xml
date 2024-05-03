@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="project.view_task_form2" />
         <field name="arch" type="xml">
             <xpath expr="//notebook" position="inside">
-                <page string="Merge Requests" attrs="{'invisible': [('git_request_ids', '=', [])]}">
+                <page string="Merge Requests" invisible="not git_request_ids">
                     <field name="git_request_ids" />
                 </page>
             </xpath>
