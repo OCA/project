@@ -18,9 +18,11 @@
                             />
                         </group>
                     </group>
-                    <group name="description_group" string="Description">
-                        <field name="description" nolabel="1" />
-                    </group>
+                    <notebook>
+                        <page name="description" string="Description">
+                            <field name="description" nolabel="1" />
+                        </page>
+                    </notebook>
                 </sheet>
             </form>
         </field>
