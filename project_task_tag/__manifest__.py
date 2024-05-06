@@ -4,7 +4,7 @@
 {
     "name": "Project Task default available tags",
     "summary": "Limit tags available on task",
-    "version": "16.0.1.0.0",
+    "version": "17.0.1.0.0",
     "category": "Project",
     "author": "Camptocamp, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/project",
