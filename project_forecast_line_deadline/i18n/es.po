@@ -17,21 +17,6 @@ msgstr ""
 "X-Generator: Weblate 4.17\n"
 
 #. module: project_forecast_line_deadline
-#: model:ir.model.fields,field_description:project_forecast_line_deadline.field_project_task__display_name
-msgid "Display Name"
-msgstr "Mostrar Nombre"
-
-#. module: project_forecast_line_deadline
-#: model:ir.model.fields,field_description:project_forecast_line_deadline.field_project_task__id
-msgid "ID"
-msgstr "ID (identificación)"
-
-#. module: project_forecast_line_deadline
-#: model:ir.model.fields,field_description:project_forecast_line_deadline.field_project_task____last_update
-msgid "Last Modified on"
-msgstr "Última Modificación el"
-
-#. module: project_forecast_line_deadline
 #: model:ir.model.fields,field_description:project_forecast_line_deadline.field_project_task__forecast_date_planned_end
 msgid "Planned end date"
 msgstr "Fecha de finalización prevista"
@@ -40,3 +25,12 @@ msgstr "Fecha de finalización prevista"
 #: model:ir.model,name:project_forecast_line_deadline.model_project_task
 msgid "Task"
 msgstr "Tarea"
+
+#~ msgid "Display Name"
+#~ msgstr "Mostrar Nombre"
+
+#~ msgid "ID"
+#~ msgstr "ID (identificación)"
+
+#~ msgid "Last Modified on"
+#~ msgstr "Última Modificación el"
