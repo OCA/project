@@ -26,6 +26,7 @@ addon | version | maintainers | summary
 [project_duplicate_subtask](project_duplicate_subtask/) | 14.0.1.0.0 |  | The module adds an action to duplicate tasks with the child subtasks
 [project_forecast_line](project_forecast_line/) | 14.0.1.0.4 | [![ntsirintanis](https://github.com/ntsirintanis.png?size=30px)](https://github.com/ntsirintanis) | Project Forecast Lines
 [project_forecast_line_deadline](project_forecast_line_deadline/) | 14.0.1.0.0 | [![ntsirintanis](https://github.com/ntsirintanis.png?size=30px)](https://github.com/ntsirintanis) | Project Forecast end date based on deadline of task.
+[project_forecast_line_milestone](project_forecast_line_milestone/) | 14.0.1.0.0 | [![ntsirintanis](https://github.com/ntsirintanis.png?size=30px)](https://github.com/ntsirintanis) | Project Forecast Line dates according to Milestone target date
 [project_forecast_line_priority](project_forecast_line_priority/) | 14.0.1.0.0 | [![ntsirintanis](https://github.com/ntsirintanis.png?size=30px)](https://github.com/ntsirintanis) | Project Forecast Line dates according to task priority
 [project_gtd](project_gtd/) | 14.0.1.0.1 |  | Personal Tasks, Contexts, Timeboxes
 [project_hr](project_hr/) | 14.0.1.0.0 | [![pedrobaeza](https://github.com/pedrobaeza.png?size=30px)](https://github.com/pedrobaeza) | Link HR with project
