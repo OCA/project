@@ -27,6 +27,7 @@ addon | version | maintainers | summary
 [project_hr](project_hr/) | 16.0.1.0.0 | [![pedrobaeza](https://github.com/pedrobaeza.png?size=30px)](https://github.com/pedrobaeza) | Link HR with project
 [project_key](project_key/) | 16.0.1.0.0 |  | Module decorates projects and tasks with Project Key
 [project_list](project_list/) | 16.0.1.0.0 |  | Projects list view
+[project_milestone_tree](project_milestone_tree/) | 16.0.1.0.0 |  | This module adds an access to the Milestone tree view.
 [project_parent](project_parent/) | 16.0.1.0.0 |  | Project Parent
 [project_parent_task_filter](project_parent_task_filter/) | 16.0.1.0.0 |  | Add a filter to show the parent tasks
 [project_purchase_link](project_purchase_link/) | 16.0.1.0.0 |  | Project Purchase Link
