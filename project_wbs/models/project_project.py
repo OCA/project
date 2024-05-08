@@ -145,12 +145,16 @@ class Project(models.Model):
         return None
 
     def prepare_analytics_vals(self, vals):
-        return {
+        analytic_vals = {
             "name": vals.get("name", _("Unknown Analytic Account")),
-            "company_id": vals.get("company_id", self.env.user.company_id.id),
+            "company_id": vals.get("company_id", self.env.company.id),
             "partner_id": vals.get("partner_id"),
             "active": True,
         }
+        code = vals.get("code", False)
+        if code:
+            analytic_vals.update({"code": code})
+        return analytic_vals
 
     def update_project_from_analytic_vals(self, vals):
         new_vals = vals
