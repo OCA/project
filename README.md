@@ -27,6 +27,7 @@ addon | version | maintainers | summary
 [project_task_add_very_high](project_task_add_very_high/) | 17.0.1.0.0 | [![astirpe](https://github.com/astirpe.png?size=30px)](https://github.com/astirpe) | Adds extra options 'High' and 'Very High' on tasks
 [project_task_default_stage](project_task_default_stage/) | 17.0.1.0.0 |  | Recovery default task stages for projects from v8
 [project_task_stage_mgmt](project_task_stage_mgmt/) | 17.0.1.0.0 | [![DavidJForgeFlow](https://github.com/DavidJForgeFlow.png?size=30px)](https://github.com/DavidJForgeFlow) | Allows to assign and create task stages on project creation wizard
+[project_task_tag](project_task_tag/) | 17.0.1.0.0 |  | Limit tags available on task
 [project_type](project_type/) | 17.0.1.0.0 |  | Project Types
 
 [//]: # (end addons)
