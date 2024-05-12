@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-04-17 22:55+0000\n"
+"PO-Revision-Date: 2024-05-12 12:36+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.1\n"
+"X-Generator: Weblate 4.17\n"
 
 #. module: project_type
 #: model_terms:ir.ui.view,arch_db:project_type.project_type_form
@@ -98,7 +98,7 @@ msgstr "Tipo padre"
 #: model:ir.model,name:project_type.model_project_type
 #: model_terms:ir.ui.view,arch_db:project_type.project_type_form
 msgid "Project Type"
-msgstr "Tipo Progetto"
+msgstr "Tipo progetto"
 
 #. module: project_type
 #: model:ir.actions.act_window,name:project_type.action_project_type
