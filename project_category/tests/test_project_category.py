@@ -6,10 +6,11 @@ from odoo.tests.common import TransactionCase
 
 
 class TestProjectCategory(TransactionCase):
-    def setUp(self):
-        super(TestProjectCategory, self).setUp()
-        self.cat = self.env["project.type"].create({"name": "General"})
-        self.cat2 = self.env["project.type"].create({"name": "Discussion"})
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.cat = cls.env["project.type"].create({"name": "General"})
+        cls.cat2 = cls.env["project.type"].create({"name": "Discussion"})
 
     def test_complete_name(self):
         self.cat2.parent_id = self.cat.id

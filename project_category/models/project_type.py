@@ -25,6 +25,7 @@ class ProjectType(models.Model):
     complete_name = fields.Char(
         compute="_compute_complete_name",
         store=True,
+        recursive=True,
     )
     description = fields.Text(translate=True)
     project_ok = fields.Boolean(
