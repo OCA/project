@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-11-12 16:36+0000\n"
+"PO-Revision-Date: 2024-05-12 12:36+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -92,7 +92,7 @@ msgstr "Nome"
 #. module: project_type
 #: model:ir.model.fields,field_description:project_type.field_project_type__parent_id
 msgid "Parent Type"
-msgstr "Tipo Genitore"
+msgstr "Tipo padre"
 
 #. module: project_type
 #: model:ir.model,name:project_type.model_project_project
@@ -103,13 +103,13 @@ msgstr "Progetto"
 #: model:ir.model,name:project_type.model_project_type
 #: model_terms:ir.ui.view,arch_db:project_type.project_type_form
 msgid "Project Type"
-msgstr "Tipo Progetto"
+msgstr "Tipo progetto"
 
 #. module: project_type
 #: model:ir.actions.act_window,name:project_type.action_project_type
 #: model:ir.ui.menu,name:project_type.project_category
 msgid "Project Types"
-msgstr "Tipi Progetto"
+msgstr "Tipi progetto"
 
 #. module: project_type
 #: model:ir.model.fields,field_description:project_type.field_project_type__child_ids
