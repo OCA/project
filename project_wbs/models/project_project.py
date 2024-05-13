@@ -10,7 +10,6 @@ from odoo import _, api, fields, models
 
 class Project(models.Model):
     _inherit = "project.project"
-    _description = "WBS element"
     _order = "complete_wbs_code"
 
     analytic_account_id = fields.Many2one(
