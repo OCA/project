@@ -459,6 +459,7 @@ msgid "Product Template"
 msgstr ""
 
 #. module: project_forecast_line
+#: model:ir.model,name:project_forecast_line.model_project_project
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__project_id
 #: model_terms:ir.ui.view,arch_db:project_forecast_line.view_forecast_line_search
 msgid "Project"
@@ -573,11 +574,6 @@ msgstr ""
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__type
 msgid "Type"
-msgstr ""
-
-#. module: project_forecast_line
-#: model:ir.model,name:project_forecast_line.model_project_project
-msgid "WBS element"
 msgstr ""
 
 #. module: project_forecast_line
