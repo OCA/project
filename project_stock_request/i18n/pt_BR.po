@@ -15,6 +15,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 
 #. module: project_stock_request
+#: model:ir.model,name:project_stock_request.model_project_project
 #: model:ir.model.fields,field_description:project_stock_request.field_stock_request_order__project_id
 msgid "Project"
 msgstr ""
@@ -40,9 +41,4 @@ msgstr ""
 #. module: project_stock_request
 #: model:ir.model,name:project_stock_request.model_project_task
 msgid "Task"
-msgstr ""
-
-#. module: project_stock_request
-#: model:ir.model,name:project_stock_request.model_project_project
-msgid "WBS element"
 msgstr ""
