@@ -213,6 +213,7 @@ msgid "Previous timer start"
 msgstr "Inicio del tiempo anterior"
 
 #. module: project_timesheet_time_control
+#: model:ir.model,name:project_timesheet_time_control.model_project_project
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__project_id
 msgid "Project"
 msgstr "Proyecto"
@@ -326,11 +327,6 @@ msgid "This timer is running and will be stopped"
 msgstr "Este temporalizador se está ejecutando y será detenido"
 
 #. module: project_timesheet_time_control
-#: model:ir.model,name:project_timesheet_time_control.model_project_project
-msgid "WBS element"
-msgstr "Elemento WBS"
-
-#. module: project_timesheet_time_control
 #: model:ir.model.fields,help:project_timesheet_time_control.field_hr_timesheet_switch__running_timer_duration
 msgid "When the previous timer is stopped, it will save this duration."
 msgstr "Cuando el tiempo anterior es detenido, esto guardará su duración."
@@ -349,6 +345,9 @@ msgstr "e iniciado el"
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
 msgid "hour(s)."
 msgstr "hora(s)."
+
+#~ msgid "WBS element"
+#~ msgstr "Elemento WBS"
 
 #~ msgid ""
 #~ ".\n"
