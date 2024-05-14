@@ -69,6 +69,11 @@ msgid "Linked employee"
 msgstr "Povezani kader"
 
 #. module: project_hr
+#: model:ir.model,name:project_hr.model_project_project
+msgid "Project"
+msgstr "Projekt"
+
+#. module: project_hr
 #: model:ir.model,name:project_hr.model_project_task
 msgid "Task"
 msgstr "Opravilo"
@@ -105,11 +110,6 @@ msgid "Users"
 msgstr "Uporabniki"
 
 #. module: project_hr
-#: model:ir.model,name:project_hr.model_project_project
-msgid "WBS element"
-msgstr ""
-
-#. module: project_hr
 #: code:addons/project_hr/models/project_task.py:0
 #, python-format
 msgid "You can't assign a category that is not allowed at project level."
@@ -122,6 +122,3 @@ msgid ""
 "You can't assign a user not belonging to the selected employee category."
 msgstr ""
 "Ne morete dodeliti uporabnika, ki ne spada v izbrano kadrovsko kategorijo."
-
-#~ msgid "Project"
-#~ msgstr "Projekt"
