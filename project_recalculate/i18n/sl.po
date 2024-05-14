@@ -191,6 +191,7 @@ msgid "Last Updated on"
 msgstr "Zadnjič posodobljeno"
 
 #. module: project_recalculate
+#: model:ir.model,name:project_recalculate.model_project_project
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__project_id
 msgid "Project"
 msgstr "Projekt"
@@ -257,10 +258,8 @@ msgstr "Ta projekt bo ponovno preračunan glede na referenčni datum:"
 msgid "Time Scheduling"
 msgstr ""
 
-#. module: project_recalculate
-#: model:ir.model,name:project_recalculate.model_project_project
-msgid "WBS element"
-msgstr "Projektni člen"
+#~ msgid "WBS element"
+#~ msgstr "Projektni člen"
 
 #~ msgid "Resource Calendar"
 #~ msgstr "Koledar virov"

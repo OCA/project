@@ -179,6 +179,7 @@ msgid "Last Updated on"
 msgstr "Zadnje ažuriranje"
 
 #. module: project_recalculate
+#: model:ir.model,name:project_recalculate.model_project_project
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__project_id
 msgid "Project"
 msgstr "Projekt"
@@ -245,11 +246,6 @@ msgstr ""
 #. module: project_recalculate
 #: model_terms:ir.ui.view,arch_db:project_recalculate.edit_project_recalculate
 msgid "Time Scheduling"
-msgstr ""
-
-#. module: project_recalculate
-#: model:ir.model,name:project_recalculate.model_project_project
-msgid "WBS element"
 msgstr ""
 
 #~ msgid "Resource Calendar"

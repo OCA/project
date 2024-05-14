@@ -192,6 +192,7 @@ msgid "Last Updated on"
 msgstr "Última actualización el"
 
 #. module: project_recalculate
+#: model:ir.model,name:project_recalculate.model_project_project
 #: model:ir.model.fields,field_description:project_recalculate.field_project_recalculate_wizard__project_id
 msgid "Project"
 msgstr "Proyecto"
@@ -259,7 +260,5 @@ msgstr ""
 msgid "Time Scheduling"
 msgstr "Tiempo Programado"
 
-#. module: project_recalculate
-#: model:ir.model,name:project_recalculate.model_project_project
-msgid "WBS element"
-msgstr "Elemento WBS"
+#~ msgid "WBS element"
+#~ msgstr "Elemento WBS"
