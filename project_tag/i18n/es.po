@@ -35,6 +35,11 @@ msgid "Last Modified on"
 msgstr "Última Modificación el"
 
 #. module: project_tag
+#: model:ir.model,name:project_tag.model_project_project
+msgid "Project"
+msgstr ""
+
+#. module: project_tag
 #: model:ir.model.fields,field_description:project_tag.field_project_project__tag_ids
 msgid "Tags"
 msgstr "Categorías"
@@ -55,7 +60,5 @@ msgstr "Etiquetas..."
 msgid "Task"
 msgstr "Tarea"
 
-#. module: project_tag
-#: model:ir.model,name:project_tag.model_project_project
-msgid "WBS element"
-msgstr "Element WBS"
+#~ msgid "WBS element"
+#~ msgstr "Element WBS"

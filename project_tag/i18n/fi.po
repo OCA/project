@@ -35,6 +35,11 @@ msgid "Last Modified on"
 msgstr "Viimeksi muokattu"
 
 #. module: project_tag
+#: model:ir.model,name:project_tag.model_project_project
+msgid "Project"
+msgstr ""
+
+#. module: project_tag
 #: model:ir.model.fields,field_description:project_tag.field_project_project__tag_ids
 msgid "Tags"
 msgstr "Tunnisteet"
@@ -55,7 +60,5 @@ msgstr "Tunnisteet..."
 msgid "Task"
 msgstr "Tehtävä"
 
-#. module: project_tag
-#: model:ir.model,name:project_tag.model_project_project
-msgid "WBS element"
-msgstr "Työnosituksen elementti"
+#~ msgid "WBS element"
+#~ msgstr "Työnosituksen elementti"
