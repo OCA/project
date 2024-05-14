@@ -184,6 +184,7 @@ msgid "Phases"
 msgstr "Phases"
 
 #. module: project_wbs
+#: model:ir.model,name:project_wbs.model_project_project
 #: model:ir.model.fields.selection,name:project_wbs.selection__account_analytic_account__account_class__project
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_account_analytic_account_search2
 msgid "Project"
@@ -289,11 +290,6 @@ msgid "WBS code"
 msgstr "Code SDP"
 
 #. module: project_wbs
-#: model:ir.model,name:project_wbs.model_project_project
-msgid "WBS element"
-msgstr "Élément SDP"
-
-#. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.edit_project
 msgid "WBS element name"
 msgstr "Nom de l'élément SDP"
@@ -337,6 +333,9 @@ msgid ""
 "You will be able collaborate with internal users on\n"
 "                projects or invite customers to share your activities."
 msgstr ""
+
+#~ msgid "WBS element"
+#~ msgstr "Élément SDP"
 
 #~ msgid "End Date"
 #~ msgstr "Date de fin"

@@ -180,6 +180,7 @@ msgid "Phases"
 msgstr ""
 
 #. module: project_wbs
+#: model:ir.model,name:project_wbs.model_project_project
 #: model:ir.model.fields.selection,name:project_wbs.selection__account_analytic_account__account_class__project
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_account_analytic_account_search2
 msgid "Project"
@@ -278,11 +279,6 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_account_analytic_account_search
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project_project_filter
 msgid "WBS code"
-msgstr ""
-
-#. module: project_wbs
-#: model:ir.model,name:project_wbs.model_project_project
-msgid "WBS element"
 msgstr ""
 
 #. module: project_wbs
