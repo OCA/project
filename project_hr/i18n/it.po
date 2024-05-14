@@ -92,6 +92,11 @@ msgid "Linked employee"
 msgstr "Dipendente collegato"
 
 #. module: project_hr
+#: model:ir.model,name:project_hr.model_project_project
+msgid "Project"
+msgstr "Progetto"
+
+#. module: project_hr
 #: model:ir.model,name:project_hr.model_project_task
 msgid "Task"
 msgstr "Lavoro"
@@ -128,11 +133,6 @@ msgid "Users"
 msgstr "Utenti"
 
 #. module: project_hr
-#: model:ir.model,name:project_hr.model_project_project
-msgid "WBS element"
-msgstr "Elemento WBS"
-
-#. module: project_hr
 #: code:addons/project_hr/models/project_task.py:0
 #, python-format
 msgid "You can't assign a category that is not allowed at project level."
@@ -147,5 +147,5 @@ msgstr ""
 "Impossibile assegnare un utente che non appartiene alla categoria dipendente "
 "selezionata."
 
-#~ msgid "Project"
-#~ msgstr "Progetto"
+#~ msgid "WBS element"
+#~ msgstr "Elemento WBS"
