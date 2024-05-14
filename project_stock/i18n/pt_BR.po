@@ -220,6 +220,11 @@ msgid "Product Moves (Stock Move Line)"
 msgstr "Movimentos do Produto (Linha do Movimento de Estoque)"
 
 #. module: project_stock
+#: model:ir.model,name:project_stock.model_project_project
+msgid "Project"
+msgstr "Projeto"
+
+#. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_account_analytic_line__stock_task_id
 msgid "Project Task"
 msgstr "Tarefa do Projeto"
@@ -336,11 +341,3 @@ msgstr "Cancelar Reserva"
 #: model:ir.model.fields,field_description:project_stock.field_project_task_type__use_stock_moves
 msgid "Use Stock Moves"
 msgstr "Usar Movimentos de Estoque"
-
-#. module: project_stock
-#: model:ir.model,name:project_stock.model_project_project
-msgid "WBS element"
-msgstr ""
-
-#~ msgid "Project"
-#~ msgstr "Projeto"

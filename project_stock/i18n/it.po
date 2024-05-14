@@ -221,6 +221,11 @@ msgid "Product Moves (Stock Move Line)"
 msgstr "Movimenti prodotto (riga movimento di magazzino)"
 
 #. module: project_stock
+#: model:ir.model,name:project_stock.model_project_project
+msgid "Project"
+msgstr "Progetto"
+
+#. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_account_analytic_line__stock_task_id
 msgid "Project Task"
 msgstr "Lavoro del progetto"
@@ -338,10 +343,5 @@ msgstr "Rilascia"
 msgid "Use Stock Moves"
 msgstr "Utilizza movimenti di magazzino"
 
-#. module: project_stock
-#: model:ir.model,name:project_stock.model_project_project
-msgid "WBS element"
-msgstr "Elemento WBS"
-
-#~ msgid "Project"
-#~ msgstr "Progetto"
+#~ msgid "WBS element"
+#~ msgstr "Elemento WBS"
