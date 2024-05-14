@@ -186,6 +186,7 @@ msgid "Phases"
 msgstr "Etapas"
 
 #. module: project_wbs
+#: model:ir.model,name:project_wbs.model_project_project
 #: model:ir.model.fields.selection,name:project_wbs.selection__account_analytic_account__account_class__project
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_account_analytic_account_search2
 msgid "Project"
@@ -296,11 +297,6 @@ msgid "WBS code"
 msgstr "Código WBS"
 
 #. module: project_wbs
-#: model:ir.model,name:project_wbs.model_project_project
-msgid "WBS element"
-msgstr "Elemento WBS"
-
-#. module: project_wbs
 #: model_terms:ir.ui.view,arch_db:project_wbs.edit_project
 msgid "WBS element name"
 msgstr "Nombre del elemento WBS"
@@ -346,6 +342,9 @@ msgid ""
 msgstr ""
 "Podrá colaborar con usuarios internos en\n"
 "                proyectos o invitar a clientes a compartir sus actividades."
+
+#~ msgid "WBS element"
+#~ msgstr "Elemento WBS"
 
 #~ msgid "End Date"
 #~ msgstr "fecha final"
