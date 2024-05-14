@@ -89,6 +89,11 @@ msgid "Merge"
 msgstr "Fusionar"
 
 #. module: project_task_default_stage
+#: model:ir.model,name:project_task_default_stage.model_project_project
+msgid "Project"
+msgstr "Proyecto"
+
+#. module: project_task_default_stage
 #: model_terms:ir.ui.view,arch_db:project_task_default_stage.edit_project
 msgid "Project Stages"
 msgstr "Etapas del proyecto"
@@ -125,13 +130,8 @@ msgstr "Fase de la tarea"
 msgid "Testing"
 msgstr "Testeo"
 
-#. module: project_task_default_stage
-#: model:ir.model,name:project_task_default_stage.model_project_project
-msgid "WBS element"
-msgstr "Elemento WBS"
-
-#~ msgid "Project"
-#~ msgstr "Proyecto"
+#~ msgid "WBS element"
+#~ msgstr "Elemento WBS"
 
 #~ msgid "Ready for Next Stage"
 #~ msgstr "Listo para la siguiente etapa"

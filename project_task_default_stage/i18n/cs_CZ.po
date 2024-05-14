@@ -88,6 +88,11 @@ msgid "Merge"
 msgstr "Jít"
 
 #. module: project_task_default_stage
+#: model:ir.model,name:project_task_default_stage.model_project_project
+msgid "Project"
+msgstr "Projekt"
+
+#. module: project_task_default_stage
 #: model_terms:ir.ui.view,arch_db:project_task_default_stage.edit_project
 msgid "Project Stages"
 msgstr "Projektové fáze"
@@ -124,14 +129,6 @@ msgstr "Úkolová fáze"
 #: model:project.task.type,name:project_task_default_stage.project_tt_testing
 msgid "Testing"
 msgstr "Testování"
-
-#. module: project_task_default_stage
-#: model:ir.model,name:project_task_default_stage.model_project_project
-msgid "WBS element"
-msgstr ""
-
-#~ msgid "Project"
-#~ msgstr "Projekt"
 
 #~ msgid "Ready for Next Stage"
 #~ msgstr "Připraveno pro další fázi"

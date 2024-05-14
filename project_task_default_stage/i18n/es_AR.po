@@ -85,6 +85,11 @@ msgid "Merge"
 msgstr "Mezclar"
 
 #. module: project_task_default_stage
+#: model:ir.model,name:project_task_default_stage.model_project_project
+msgid "Project"
+msgstr "Proyecto"
+
+#. module: project_task_default_stage
 #: model_terms:ir.ui.view,arch_db:project_task_default_stage.edit_project
 msgid "Project Stages"
 msgstr "Etapas del Proyecto"
@@ -121,10 +126,8 @@ msgstr "Etapas de la Tarea"
 msgid "Testing"
 msgstr "Evaluación"
 
-#. module: project_task_default_stage
-#: model:ir.model,name:project_task_default_stage.model_project_project
-msgid "WBS element"
-msgstr "Elemento WBS"
+#~ msgid "WBS element"
+#~ msgstr "Elemento WBS"
 
 #~ msgid "Display Name"
 #~ msgstr "Mostrar Nombre"
@@ -134,6 +137,3 @@ msgstr "Elemento WBS"
 
 #~ msgid "Last Modified on"
 #~ msgstr "Última Modificación el"
-
-#~ msgid "Project"
-#~ msgstr "Proyecto"

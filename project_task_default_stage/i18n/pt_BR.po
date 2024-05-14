@@ -90,6 +90,11 @@ msgid "Merge"
 msgstr "Mesclar"
 
 #. module: project_task_default_stage
+#: model:ir.model,name:project_task_default_stage.model_project_project
+msgid "Project"
+msgstr "Projeto"
+
+#. module: project_task_default_stage
 #: model_terms:ir.ui.view,arch_db:project_task_default_stage.edit_project
 msgid "Project Stages"
 msgstr "Estágios do Projeto"
@@ -125,14 +130,6 @@ msgstr "Estágio da Tarefa"
 #: model:project.task.type,name:project_task_default_stage.project_tt_testing
 msgid "Testing"
 msgstr "Testando"
-
-#. module: project_task_default_stage
-#: model:ir.model,name:project_task_default_stage.model_project_project
-msgid "WBS element"
-msgstr ""
-
-#~ msgid "Project"
-#~ msgstr "Projeto"
 
 #~ msgid "Ready for Next Stage"
 #~ msgstr "Pronto para o próximo estágio"
