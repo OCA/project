@@ -19,6 +19,11 @@ msgid "Order Line Link"
 msgstr ""
 
 #. module: project_sale_order_link
+#: model:ir.model,name:project_sale_order_link.model_project_project
+msgid "Project"
+msgstr ""
+
+#. module: project_sale_order_link
 #: model:ir.model.fields,field_description:project_sale_order_link.field_project_project__sale_order_link_ids
 msgid "Sale Order Link"
 msgstr ""
@@ -26,9 +31,4 @@ msgstr ""
 #. module: project_sale_order_link
 #: model_terms:ir.ui.view,arch_db:project_sale_order_link.edit_project_inherit_project_sale_order_link
 msgid "Sales Order Linked"
-msgstr ""
-
-#. module: project_sale_order_link
-#: model:ir.model,name:project_sale_order_link.model_project_project
-msgid "WBS element"
 msgstr ""
