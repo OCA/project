@@ -468,6 +468,7 @@ msgid "Product Template"
 msgstr "Plantilla del Producto"
 
 #. module: project_forecast_line
+#: model:ir.model,name:project_forecast_line.model_project_project
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__project_id
 #: model_terms:ir.ui.view,arch_db:project_forecast_line.view_forecast_line_search
 msgid "Project"
@@ -586,11 +587,6 @@ msgid "Type"
 msgstr "Tipo"
 
 #. module: project_forecast_line
-#: model:ir.model,name:project_forecast_line.model_project_project
-msgid "WBS element"
-msgstr "Elemento WBS"
-
-#. module: project_forecast_line
 #: model:ir.model.fields.selection,name:project_forecast_line.selection__res_company__forecast_line_granularity__week
 msgid "Week"
 msgstr "Semana"
@@ -603,8 +599,8 @@ msgstr "mezclador para modelos que generan líneas de previsión"
 #. module: project_forecast_line
 #: model:ir.model.fields,help:project_forecast_line.field_forecast_line__employee_resource_forecast_line_id
 msgid ""
-"technical field giving the name of the resource "
-"(model=hr.employee.forecast.role) line for that employee and that period"
+"technical field giving the name of the resource (model=hr.employee.forecast."
+"role) line for that employee and that period"
 msgstr ""
 "campo técnico que da el nombre de la línea de recursos (model=hr.employee."
 "forecast.role) para ese empleado y ese periodo"
@@ -615,3 +611,6 @@ msgid "type of forecast lines created by the tasks of projects in that status"
 msgstr ""
 "tipo de líneas de previsión creadas por las tareas de los proyectos en ese "
 "estado"
+
+#~ msgid "WBS element"
+#~ msgstr "Elemento WBS"
