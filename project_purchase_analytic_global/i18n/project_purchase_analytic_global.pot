@@ -14,11 +14,11 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: project_purchase_analytic_global
-#: model:ir.model,name:project_purchase_analytic_global.model_purchase_order_line
-msgid "Purchase Order Line"
+#: model:ir.model,name:project_purchase_analytic_global.model_project_project
+msgid "Project"
 msgstr ""
 
 #. module: project_purchase_analytic_global
-#: model:ir.model,name:project_purchase_analytic_global.model_project_project
-msgid "WBS element"
+#: model:ir.model,name:project_purchase_analytic_global.model_purchase_order_line
+msgid "Purchase Order Line"
 msgstr ""
