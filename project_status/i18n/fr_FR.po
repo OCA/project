@@ -112,6 +112,11 @@ msgid "Pending"
 msgstr "En attente"
 
 #. module: project_status
+#: model:ir.model,name:project_status.model_project_project
+msgid "Project"
+msgstr "Projet"
+
+#. module: project_status
 #: model:ir.model,name:project_status.model_project_status
 #: model:ir.model.fields,field_description:project_status.field_project_project__project_status
 msgid "Project Status"
@@ -154,11 +159,3 @@ msgstr "Indiquez s'il s'agit d'un état fermé."
 #: model_terms:ir.ui.view,arch_db:project_status.view_project_project_filter
 msgid "Status"
 msgstr "Etat"
-
-#. module: project_status
-#: model:ir.model,name:project_status.model_project_project
-msgid "WBS element"
-msgstr ""
-
-#~ msgid "Project"
-#~ msgstr "Projet"

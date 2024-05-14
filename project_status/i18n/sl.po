@@ -113,6 +113,12 @@ msgid "Pending"
 msgstr "Na čakanju"
 
 #. module: project_status
+#: model:ir.model,name:project_status.model_project_project
+#, fuzzy
+msgid "Project"
+msgstr "Projektni status"
+
+#. module: project_status
 #: model:ir.model,name:project_status.model_project_status
 #: model:ir.model.fields,field_description:project_status.field_project_project__project_status
 msgid "Project Status"
@@ -154,11 +160,5 @@ msgstr "Določite, če je to zaključni status."
 msgid "Status"
 msgstr "Status"
 
-#. module: project_status
-#: model:ir.model,name:project_status.model_project_project
-msgid "WBS element"
-msgstr "Projektni člen"
-
-#, fuzzy
-#~ msgid "Project"
-#~ msgstr "Projektni status"
+#~ msgid "WBS element"
+#~ msgstr "Projektni člen"
