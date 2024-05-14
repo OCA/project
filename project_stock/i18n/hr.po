@@ -188,6 +188,11 @@ msgid "Product Moves (Stock Move Line)"
 msgstr "Kretanja proizvoda (stavke skladišnog kretanja)"
 
 #. module: project_stock
+#: model:ir.model,name:project_stock.model_project_project
+msgid "Project"
+msgstr "Projekt"
+
+#. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_account_analytic_line__stock_task_id
 msgid "Project Task"
 msgstr "Projektni zadatak"
@@ -316,16 +321,8 @@ msgstr "Odrezerviraj"
 msgid "Use Stock Moves"
 msgstr "Koristi skladišna kretanja"
 
-#. module: project_stock
-#: model:ir.model,name:project_stock.model_project_project
-msgid "WBS element"
-msgstr ""
-
 #~ msgid "Display Name"
 #~ msgstr "Prikazani naziv"
 
 #~ msgid "ID"
 #~ msgstr "ID"
-
-#~ msgid "Project"
-#~ msgstr "Projekt"
