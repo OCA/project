@@ -89,6 +89,7 @@ msgid "Name"
 msgstr ""
 
 #. module: project_task_description_template
+#: model:ir.model,name:project_task_description_template.model_project_project
 #: model:ir.model.fields,field_description:project_task_description_template.field_project_task_template__project_ids
 msgid "Project"
 msgstr ""
@@ -144,9 +145,4 @@ msgstr ""
 msgid ""
 "The record has been modified, your changes will be discarded. Do you want to"
 " proceed?"
-msgstr ""
-
-#. module: project_task_description_template
-#: model:ir.model,name:project_task_description_template.model_project_project
-msgid "WBS element"
 msgstr ""
