@@ -28,6 +28,11 @@ msgid "Name"
 msgstr "Nombre"
 
 #. module: project_sequence
+#: model:ir.model,name:project_sequence.model_project_project
+msgid "Project"
+msgstr "Proyecto"
+
+#. module: project_sequence
 #: model:ir.model.fields,field_description:project_sequence.field_res_config_settings__project_display_name_pattern
 msgid "Project Display Name Pattern"
 msgstr "Patrón de nombre para mostrar del proyecto"
@@ -61,10 +66,8 @@ msgstr ""
 "Utilice %(sequence_code)s y %(name)s para incluir el código de secuencia y "
 "el nombre del proyecto en el nombre de visualización."
 
-#. module: project_sequence
-#: model:ir.model,name:project_sequence.model_project_project
-msgid "WBS element"
-msgstr "Elemento WBS"
+#~ msgid "WBS element"
+#~ msgstr "Elemento WBS"
 
 #~ msgid "Display Name"
 #~ msgstr "Nombre"
@@ -74,9 +77,6 @@ msgstr "Elemento WBS"
 
 #~ msgid "Last Modified on"
 #~ msgstr "Última modificación el"
-
-#~ msgid "Project"
-#~ msgstr "Proyecto"
 
 #~ msgid "Code"
 #~ msgstr "Código"
