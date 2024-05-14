@@ -18,5 +18,8 @@ msgstr ""
 
 #. module: project_template_milestone
 #: model:ir.model,name:project_template_milestone.model_project_project
-msgid "WBS element"
-msgstr "Elemento WBS"
+msgid "Project"
+msgstr ""
+
+#~ msgid "WBS element"
+#~ msgstr "Elemento WBS"
