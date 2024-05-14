@@ -26,6 +26,11 @@ msgid "Department"
 msgstr ""
 
 #. module: project_department
+#: model:ir.model,name:project_department.model_project_project
+msgid "Project"
+msgstr ""
+
+#. module: project_department
 #: model:ir.model.fields,field_description:project_department.field_project_project__department_id
 #: model:ir.model.fields,field_description:project_department.field_project_task__project_department_id
 #: model_terms:ir.ui.view,arch_db:project_department.view_task_search_form
@@ -36,8 +41,3 @@ msgstr ""
 #: model:ir.model,name:project_department.model_project_task
 msgid "Task"
 msgstr "Zadatak"
-
-#. module: project_department
-#: model:ir.model,name:project_department.model_project_project
-msgid "WBS element"
-msgstr ""
