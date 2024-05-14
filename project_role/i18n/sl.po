@@ -323,6 +323,7 @@ msgid "Please activate first parent role %s"
 msgstr "Najprej aktivirajte nadrejeno vlogo %s"
 
 #. module: project_role
+#: model:ir.model,name:project_role.model_project_project
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__project_id
 #: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
 msgid "Project"
@@ -437,11 +438,6 @@ msgid "User may be assigned per role only once!"
 msgstr "Uporabniku se lahko dodeli določeno vlogo le enkrat!"
 
 #. module: project_role
-#: model:ir.model,name:project_role.model_project_project
-msgid "WBS element"
-msgstr "Projektni člen"
-
-#. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__website_message_ids
 msgid "Website Messages"
 msgstr "Sporočila spletne strani"
@@ -450,6 +446,9 @@ msgstr "Sporočila spletne strani"
 #: model:ir.model.fields,help:project_role.field_project_assignment__website_message_ids
 msgid "Website communication history"
 msgstr "Kronologija komunikacij spletne strani"
+
+#~ msgid "WBS element"
+#~ msgstr "Projektni člen"
 
 #, fuzzy
 #~ msgid "SMS Delivery error"

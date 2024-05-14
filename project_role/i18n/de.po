@@ -322,6 +322,7 @@ msgid "Please activate first parent role %s"
 msgstr "Bitte zuerst die übergeordnete Rolle %s aktivieren."
 
 #. module: project_role
+#: model:ir.model,name:project_role.model_project_project
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__project_id
 #: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
 msgid "Project"
@@ -442,11 +443,6 @@ msgstr ""
 #: model:ir.model.constraint,message:project_role.constraint_project_assignment_nocompany_role_user_uniq
 msgid "User may be assigned per role only once!"
 msgstr "Der Benutzer sollte einer Rolle nur einmal zugewiesen sein!"
-
-#. module: project_role
-#: model:ir.model,name:project_role.model_project_project
-msgid "WBS element"
-msgstr ""
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__website_message_ids

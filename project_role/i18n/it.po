@@ -325,6 +325,7 @@ msgid "Please activate first parent role %s"
 msgstr "Attivare prima il ruolo padre %s"
 
 #. module: project_role
+#: model:ir.model,name:project_role.model_project_project
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__project_id
 #: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
 msgid "Project"
@@ -442,11 +443,6 @@ msgid "User may be assigned per role only once!"
 msgstr "Un utente può essere assegnato ad un ruolo alla volta!"
 
 #. module: project_role
-#: model:ir.model,name:project_role.model_project_project
-msgid "WBS element"
-msgstr "Elemento WBS"
-
-#. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__website_message_ids
 msgid "Website Messages"
 msgstr "Messaggi sito web"
@@ -455,6 +451,9 @@ msgstr "Messaggi sito web"
 #: model:ir.model.fields,help:project_role.field_project_assignment__website_message_ids
 msgid "Website communication history"
 msgstr "Cronologia comunicazioni sito web"
+
+#~ msgid "WBS element"
+#~ msgstr "Elemento WBS"
 
 #~ msgid "SMS Delivery error"
 #~ msgstr "Errore consegna SMS"
