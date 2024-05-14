@@ -95,6 +95,11 @@ msgid "Parent Type"
 msgstr "Übergeordneter Typ"
 
 #. module: project_type
+#: model:ir.model,name:project_type.model_project_project
+msgid "Project"
+msgstr "Projekt"
+
+#. module: project_type
 #: model:ir.model,name:project_type.model_project_type
 #: model_terms:ir.ui.view,arch_db:project_type.project_type_form
 msgid "Project Type"
@@ -127,15 +132,7 @@ msgid "Type"
 msgstr "Typ"
 
 #. module: project_type
-#: model:ir.model,name:project_type.model_project_project
-msgid "WBS element"
-msgstr ""
-
-#. module: project_type
 #: code:addons/project_type/models/project_type.py:0
 #, python-format
 msgid "You cannot create recursive project types."
 msgstr "Es können keine rekursiven Projekttypen erstellt werden."
-
-#~ msgid "Project"
-#~ msgstr "Projekt"
