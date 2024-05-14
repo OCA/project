@@ -22,6 +22,11 @@ msgid "Order Line Link"
 msgstr "Collegamento riga ordine"
 
 #. module: project_sale_order_link
+#: model:ir.model,name:project_sale_order_link.model_project_project
+msgid "Project"
+msgstr ""
+
+#. module: project_sale_order_link
 #: model:ir.model.fields,field_description:project_sale_order_link.field_project_project__sale_order_link_ids
 msgid "Sale Order Link"
 msgstr "Collegamnto ordine di vendita"
@@ -31,7 +36,5 @@ msgstr "Collegamnto ordine di vendita"
 msgid "Sales Order Linked"
 msgstr "Ordine di vendita collegato"
 
-#. module: project_sale_order_link
-#: model:ir.model,name:project_sale_order_link.model_project_project
-msgid "WBS element"
-msgstr "Elemento WBS"
+#~ msgid "WBS element"
+#~ msgstr "Elemento WBS"
