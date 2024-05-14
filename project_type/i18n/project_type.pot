@@ -92,6 +92,11 @@ msgid "Parent Type"
 msgstr ""
 
 #. module: project_type
+#: model:ir.model,name:project_type.model_project_project
+msgid "Project"
+msgstr ""
+
+#. module: project_type
 #: model:ir.model,name:project_type.model_project_type
 #: model_terms:ir.ui.view,arch_db:project_type.project_type_form
 msgid "Project Type"
@@ -121,11 +126,6 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_type.project_task_search
 #: model_terms:ir.ui.view,arch_db:project_type.project_type_search
 msgid "Type"
-msgstr ""
-
-#. module: project_type
-#: model:ir.model,name:project_type.model_project_project
-msgid "WBS element"
 msgstr ""
 
 #. module: project_type
