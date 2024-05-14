@@ -92,6 +92,7 @@ msgid "Name"
 msgstr "Nome"
 
 #. module: project_task_description_template
+#: model:ir.model,name:project_task_description_template.model_project_project
 #: model:ir.model.fields,field_description:project_task_description_template.field_project_task_template__project_ids
 msgid "Project"
 msgstr "Progetto"
@@ -145,13 +146,11 @@ msgstr "Modelli permessi nelle fasi"
 #: code:addons/project_task_description_template/static/src/js/onchange_confirm_widget.js:0
 #, python-format
 msgid ""
-"The record has been modified, your changes will be discarded. Do you want to"
-" proceed?"
+"The record has been modified, your changes will be discarded. Do you want to "
+"proceed?"
 msgstr ""
 "Il record è stato modificato, le tue modifiche verranno annullate. Confermi "
 "di voler procedere?"
 
-#. module: project_task_description_template
-#: model:ir.model,name:project_task_description_template.model_project_project
-msgid "WBS element"
-msgstr "Elemento WBS"
+#~ msgid "WBS element"
+#~ msgstr "Elemento WBS"
