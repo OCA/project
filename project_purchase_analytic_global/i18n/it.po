@@ -17,11 +17,14 @@ msgstr ""
 "X-Generator: Weblate 4.14.1\n"
 
 #. module: project_purchase_analytic_global
+#: model:ir.model,name:project_purchase_analytic_global.model_project_project
+msgid "Project"
+msgstr ""
+
+#. module: project_purchase_analytic_global
 #: model:ir.model,name:project_purchase_analytic_global.model_purchase_order_line
 msgid "Purchase Order Line"
 msgstr "Riga ordine di acquisto"
 
-#. module: project_purchase_analytic_global
-#: model:ir.model,name:project_purchase_analytic_global.model_project_project
-msgid "WBS element"
-msgstr "Elemento WBS"
+#~ msgid "WBS element"
+#~ msgstr "Elemento WBS"
