@@ -66,6 +66,11 @@ msgid "Non-Templates Tasks"
 msgstr "Tareas sin plantilla"
 
 #. module: project_template
+#: model:ir.model,name:project_template.model_project_project
+msgid "Project"
+msgstr "Proyecto"
+
+#. module: project_template
 #: model:ir.model,name:project_template.model_project_task
 msgid "Task"
 msgstr "Tarea"
@@ -80,10 +85,5 @@ msgstr "Plantillas de tarea"
 msgid "Templates"
 msgstr "Plantillas"
 
-#. module: project_template
-#: model:ir.model,name:project_template.model_project_project
-msgid "WBS element"
-msgstr "Elemento WBS"
-
-#~ msgid "Project"
-#~ msgstr "Proyecto"
+#~ msgid "WBS element"
+#~ msgstr "Elemento WBS"
