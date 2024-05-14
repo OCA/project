@@ -39,6 +39,11 @@ msgid ""
 msgstr "Molimo dodajte URL zahtijevu prije prebacivanja zadatka u ovu fazu"
 
 #. module: project_task_pull_request
+#: model:ir.model,name:project_task_pull_request.model_project_project
+msgid "Project"
+msgstr "Projekt"
+
+#. module: project_task_pull_request
 #: model_terms:ir.ui.view,arch_db:project_task_pull_request.edit_project
 msgid "Pull Request URIs"
 msgstr "Pull zahtjev URL"
@@ -47,11 +52,3 @@ msgstr "Pull zahtjev URL"
 #: model:ir.model,name:project_task_pull_request.model_project_task
 msgid "Task"
 msgstr "Zadatak"
-
-#. module: project_task_pull_request
-#: model:ir.model,name:project_task_pull_request.model_project_project
-msgid "WBS element"
-msgstr ""
-
-#~ msgid "Project"
-#~ msgstr "Projekt"

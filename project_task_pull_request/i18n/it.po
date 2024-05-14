@@ -40,6 +40,11 @@ msgstr ""
 "fase."
 
 #. module: project_task_pull_request
+#: model:ir.model,name:project_task_pull_request.model_project_project
+msgid "Project"
+msgstr ""
+
+#. module: project_task_pull_request
 #: model_terms:ir.ui.view,arch_db:project_task_pull_request.edit_project
 msgid "Pull Request URIs"
 msgstr "URI pull request"
@@ -49,7 +54,5 @@ msgstr "URI pull request"
 msgid "Task"
 msgstr "Lavoro"
 
-#. module: project_task_pull_request
-#: model:ir.model,name:project_task_pull_request.model_project_project
-msgid "WBS element"
-msgstr "Elemento WBS"
+#~ msgid "WBS element"
+#~ msgstr "Elemento WBS"

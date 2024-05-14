@@ -38,6 +38,11 @@ msgid ""
 msgstr ""
 
 #. module: project_task_pull_request
+#: model:ir.model,name:project_task_pull_request.model_project_project
+msgid "Project"
+msgstr "Projeto"
+
+#. module: project_task_pull_request
 #: model_terms:ir.ui.view,arch_db:project_task_pull_request.edit_project
 msgid "Pull Request URIs"
 msgstr ""
@@ -46,11 +51,3 @@ msgstr ""
 #: model:ir.model,name:project_task_pull_request.model_project_task
 msgid "Task"
 msgstr "Tarefa"
-
-#. module: project_task_pull_request
-#: model:ir.model,name:project_task_pull_request.model_project_project
-msgid "WBS element"
-msgstr ""
-
-#~ msgid "Project"
-#~ msgstr "Projeto"

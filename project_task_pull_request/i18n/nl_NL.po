@@ -40,6 +40,11 @@ msgstr ""
 "verplaatsen."
 
 #. module: project_task_pull_request
+#: model:ir.model,name:project_task_pull_request.model_project_project
+msgid "Project"
+msgstr "Project"
+
+#. module: project_task_pull_request
 #: model_terms:ir.ui.view,arch_db:project_task_pull_request.edit_project
 msgid "Pull Request URIs"
 msgstr "'Pull Request' URI's"
@@ -48,11 +53,3 @@ msgstr "'Pull Request' URI's"
 #: model:ir.model,name:project_task_pull_request.model_project_task
 msgid "Task"
 msgstr "Taak"
-
-#. module: project_task_pull_request
-#: model:ir.model,name:project_task_pull_request.model_project_project
-msgid "WBS element"
-msgstr ""
-
-#~ msgid "Project"
-#~ msgstr "Project"

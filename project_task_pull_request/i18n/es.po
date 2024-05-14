@@ -40,6 +40,11 @@ msgstr ""
 "etapa."
 
 #. module: project_task_pull_request
+#: model:ir.model,name:project_task_pull_request.model_project_project
+msgid "Project"
+msgstr "Proyecto"
+
+#. module: project_task_pull_request
 #: model_terms:ir.ui.view,arch_db:project_task_pull_request.edit_project
 msgid "Pull Request URIs"
 msgstr "URIs del Pull Request"
@@ -49,10 +54,5 @@ msgstr "URIs del Pull Request"
 msgid "Task"
 msgstr "Tarea"
 
-#. module: project_task_pull_request
-#: model:ir.model,name:project_task_pull_request.model_project_project
-msgid "WBS element"
-msgstr "Elemento WBS"
-
-#~ msgid "Project"
-#~ msgstr "Proyecto"
+#~ msgid "WBS element"
+#~ msgstr "Elemento WBS"
