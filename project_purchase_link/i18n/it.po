@@ -52,6 +52,11 @@ msgid "PO Invoices"
 msgstr "Fatture PO"
 
 #. module: project_purchase_link
+#: model:ir.model,name:project_purchase_link.model_project_project
+msgid "Project"
+msgstr ""
+
+#. module: project_purchase_link
 #: code:addons/project_purchase_link/models/project_project.py:0
 #, python-format
 msgid "Purchase Invoice Lines"
@@ -85,7 +90,5 @@ msgstr "Totale acquisti"
 msgid "Purchases"
 msgstr "Acquisti"
 
-#. module: project_purchase_link
-#: model:ir.model,name:project_purchase_link.model_project_project
-msgid "WBS element"
-msgstr "Elemento WBS"
+#~ msgid "WBS element"
+#~ msgstr "Elemento WBS"
