@@ -43,14 +43,11 @@ msgid "Non-Templates"
 msgstr "ללא תבנית"
 
 #. module: project_template
+#: model:ir.model,name:project_template.model_project_project
+msgid "Project"
+msgstr "פרויקט"
+
+#. module: project_template
 #: model_terms:ir.ui.view,arch_db:project_template.project_template_view_inherit_search
 msgid "Templates"
 msgstr "תבניות"
-
-#. module: project_template
-#: model:ir.model,name:project_template.model_project_project
-msgid "WBS element"
-msgstr ""
-
-#~ msgid "Project"
-#~ msgstr "פרויקט"

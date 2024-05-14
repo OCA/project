@@ -42,14 +42,14 @@ msgid "Non-Templates"
 msgstr "Icke-mallar"
 
 #. module: project_template
+#: model:ir.model,name:project_template.model_project_project
+msgid "Project"
+msgstr "Projekt"
+
+#. module: project_template
 #: model_terms:ir.ui.view,arch_db:project_template.project_template_view_inherit_search
 msgid "Templates"
 msgstr "Mallar"
-
-#. module: project_template
-#: model:ir.model,name:project_template.model_project_project
-msgid "WBS element"
-msgstr ""
 
 #~ msgid "Display Name"
 #~ msgstr "Visningsnamn"
@@ -59,6 +59,3 @@ msgstr ""
 
 #~ msgid "Last Modified on"
 #~ msgstr "Senast ändrad den"
-
-#~ msgid "Project"
-#~ msgstr "Projekt"

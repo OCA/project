@@ -42,15 +42,15 @@ msgid "Non-Templates"
 msgstr "N'est pas un modèle"
 
 #. module: project_template
+#: model:ir.model,name:project_template.model_project_project
+msgid "Project"
+msgstr "Projet"
+
+#. module: project_template
 #: model_terms:ir.ui.view,arch_db:project_template.project_template_view_inherit_search
 msgid "Templates"
 msgstr "Modèles"
 
-#. module: project_template
-#: model:ir.model,name:project_template.model_project_project
 #, fuzzy
-msgid "WBS element"
-msgstr "Élément SDP"
-
-#~ msgid "Project"
-#~ msgstr "Projet"
+#~ msgid "WBS element"
+#~ msgstr "Élément SDP"
