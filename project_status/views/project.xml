@@ -57,7 +57,7 @@
                 <xpath expr="//div[hasclass('o_primary')]" position="after">
                     <div>
                         <t t-if="record.project_status.raw_value">
-                            <span class="o_label"> (</span>
+                            <span class="o_label">(</span>
                             <span class="o_value">
                                 <field name="project_status" />
                             </span>
