@@ -65,3 +65,12 @@ class TestProjectMilestone(common.TransactionCase):
         with Form(Task) as task:
             task.project_id = self.test_project
             task.name = "SubTask"
+
+    def test_copy_project(self):
+        project = self.test_project.copy({})
+        tasks = project.with_context(active_test=False).task_ids
+        milestone = project.milestone_ids.filtered(
+            lambda milestone: "2" not in milestone.name
+        )
+        self.assertEqual(tasks[0].milestone_id, milestone)
+        self.assertEqual(tasks[1].milestone_id, milestone)
