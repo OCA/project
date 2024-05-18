@@ -48,6 +48,7 @@ msgid "Day"
 msgstr ""
 
 #. module: project_forecast_line_bokeh_chart
+#: model:ir.model.fields,field_description:project_forecast_line_bokeh_chart.field_forecast_line__display_name
 #: model:ir.model.fields,field_description:project_forecast_line_bokeh_chart.field_forecast_line_reporting__display_name
 msgid "Display Name"
 msgstr "Nom affiché"
@@ -55,6 +56,11 @@ msgstr "Nom affiché"
 #. module: project_forecast_line_bokeh_chart
 #: model:ir.model.fields,field_description:project_forecast_line_bokeh_chart.field_forecast_line_reporting__employee_ids
 msgid "Employee"
+msgstr ""
+
+#. module: project_forecast_line_bokeh_chart
+#: model:ir.model,name:project_forecast_line_bokeh_chart.model_forecast_line
+msgid "Forecast"
 msgstr ""
 
 #. module: project_forecast_line_bokeh_chart
@@ -75,11 +81,13 @@ msgid "Granularity"
 msgstr ""
 
 #. module: project_forecast_line_bokeh_chart
+#: model:ir.model.fields,field_description:project_forecast_line_bokeh_chart.field_forecast_line__id
 #: model:ir.model.fields,field_description:project_forecast_line_bokeh_chart.field_forecast_line_reporting__id
 msgid "ID"
 msgstr ""
 
 #. module: project_forecast_line_bokeh_chart
+#: model:ir.model.fields,field_description:project_forecast_line_bokeh_chart.field_forecast_line____last_update
 #: model:ir.model.fields,field_description:project_forecast_line_bokeh_chart.field_forecast_line_reporting____last_update
 msgid "Last Modified on"
 msgstr "Dernière modification le"
