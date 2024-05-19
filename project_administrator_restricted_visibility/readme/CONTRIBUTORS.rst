@@ -6,3 +6,8 @@
 * `Moduon <https://www.moduon.team>`_:
 
   * Eduardo López
+
+* `PT Solusi Aglis Indonesia <https://solusiaglis.co.id>`_:
+
+  * Panca Putra Pakpahan
+  
