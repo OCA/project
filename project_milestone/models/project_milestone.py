@@ -7,6 +7,7 @@ class ProjectMilestone(models.Model):
     _name = "project.milestone"
     _order = "project_id,sequence"
     _description = "Project Milestone"
+    _inherit = ["mail.thread", "mail.activity.mixin"]
 
     name = fields.Char(string="Milestone", required=True)
     target_date = fields.Date(help="The date when the Milestone should be complete.")
