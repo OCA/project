@@ -5,6 +5,7 @@ from odoo import models, fields, api
 
 class ProjectMilestone(models.Model):
     _name = 'project.milestone'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _order = 'project_id,sequence'
     _description = 'Project Milestone'
 
