@@ -8,7 +8,7 @@
         <field name="inherit_id" ref="project_timeline.project_task_timeline" />
         <field name="arch" type="xml">
             <xpath expr="//timeline" position="attributes">
-                <attribute name="dependency_arrow">dependency_task_ids</attribute>
+                <attribute name="dependency_arrow">depend_on_ids</attribute>
             </xpath>
         </field>
     </record>
