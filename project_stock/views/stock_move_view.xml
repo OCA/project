@@ -42,6 +42,13 @@
                 <field name="state" invisible="1" />
                 <field name="product_uom" groups="uom.group_uom" />
                 <field name="product_uom_qty" string="To Consume" />
+                <button
+                    name="action_task_product_forecast_report"
+                    type="object"
+                    icon="fa-area-chart"
+                    title="Forecasted Report"
+                    attrs="{'invisible': ['|', ('product_id', '=', False),('state', 'in', ['done', 'cancel'])]}"
+                />
                 <field name="product_uom_category_id" invisible="1" />
                 <field
                     name="reserved_availability"
