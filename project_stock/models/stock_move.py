@@ -99,6 +99,19 @@ class StockMove(models.Model):
             )
         return defaults
 
+    def action_task_product_forecast_report(self):
+        self.ensure_one()
+        action = self.product_id.action_product_forecast_report()
+        action["context"] = {
+            "active_id": self.product_id.id,
+            "active_model": "product.product",
+            "move_to_match_ids": self.ids,
+        }
+        warehouse = self.warehouse_id
+        if warehouse:
+            action["context"]["warehouse"] = warehouse.id
+        return action
+
 
 class StockMoveLine(models.Model):
     _inherit = "stock.move.line"
