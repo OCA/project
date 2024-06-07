@@ -4,7 +4,7 @@
 from odoo import fields, models
 
 
-class AccountAnalytic_line(models.Model):
+class AccountAnalyticLine(models.Model):
     _inherit = "account.analytic.line"
 
     milestone_id = fields.Many2one(
