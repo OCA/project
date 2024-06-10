@@ -128,6 +128,11 @@ msgid "Done Stock Moves"
 msgstr ""
 
 #. module: project_stock
+#: model_terms:ir.ui.view,arch_db:project_stock.view_stock_move_raw_tree
+msgid "Forecasted Report"
+msgstr ""
+
+#. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_task__group_id
 msgid "Group"
 msgstr ""
