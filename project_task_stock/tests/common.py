@@ -47,7 +47,7 @@ class TestProjectStockBase(common.TransactionCase):
         cls.stage_in_progress = cls.env.ref("project.project_stage_1")
         cls.stage_done = cls.env.ref("project.project_stage_2")
         group_stock_user = "stock.group_stock_user"
-        new_test_user(
+        cls.basic_user = new_test_user(
             cls.env,
             login="basic-user",
             groups="project.group_project_user,%s" % group_stock_user,
