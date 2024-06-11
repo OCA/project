@@ -11,7 +11,7 @@
     "category": "Project",
     "summary": """Add field Total Hours in milestones which display the sum
                 of all hours of tasks associated to the milestone""",
-    "depends": ["hr_timesheet", "project_milestone_enhanced"],
+    "depends": ["hr_timesheet", "project_milestone"],
     "data": [
         "views/project_milestone.xml",
         "views/project.xml",
