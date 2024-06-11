@@ -40,13 +40,14 @@
                 />
                 <field name="stock_analytic_date" />
             </field>
-            <field name="stage_id" position="before" groups="stock.group_stock_user">
+            <field name="stage_id" position="before">
                 <button
                     name="action_confirm"
                     string="Confirm materials"
                     type="object"
                     class="oe_highlight"
                     attrs="{'invisible':[('allow_moves_action_confirm','=',False)]}"
+                    groups="stock.group_stock_user"
                 />
                 <button
                     name="action_assign"
@@ -54,24 +55,28 @@
                     type="object"
                     class="oe_highlight"
                     attrs="{'invisible':[('allow_moves_action_assign','=',False)]}"
+                    groups="stock.group_stock_user"
                 />
                 <button
                     name="button_scrap"
                     type="object"
                     string="Scrap"
                     attrs="{'invisible': ['|','|',('stock_state', '=', 'done'),('done_stock_moves', '=', False),('stock_moves_is_locked','=',False)]}"
+                    groups="stock.group_stock_user"
                 />
                 <button
                     name="button_unreserve"
                     type="object"
                     string="Unreserve"
                     attrs="{'invisible': ['|','|','|', ('stock_state', '=', 'cancel'),('unreserve_visible', '=', False),('done_stock_moves', '=', False),('stock_moves_is_locked','=',False)]}"
+                    groups="stock.group_stock_user"
                 />
                 <button
                     name="action_cancel"
                     type="object"
                     string="Cancel Materials"
                     attrs="{'invisible': ['|','|',('stock_state', 'in', ('draft', 'cancel')),('done_stock_moves', '=', False),('stock_moves_is_locked','=',False)]}"
+                    groups="stock.group_stock_user"
                 />
                 <button
                     name="action_done"
@@ -79,6 +84,7 @@
                     string="Transfer Materials"
                     attrs="{'invisible': ['|','|',('stock_state', '!=', 'assigned'),('done_stock_moves', '=', False),('stock_moves_is_locked', '=', False)]}"
                     class="oe_highlight"
+                    groups="stock.group_stock_user"
                 />
                 <button
                     name="action_toggle_stock_moves_is_locked"
@@ -97,12 +103,14 @@
                 />
             </field>
             <xpath expr="///page[@name='extra_info']" position="before">
+                <!-- Field without groups used as domain in stock_analytic_* fields !-->
+                <field name="use_stock_moves" invisible="1" />
                 <page
                     name="stock_info"
                     string="Stock Info"
                     attrs="{'invisible': [('use_stock_moves', '=', False)]}"
+                    groups="stock.group_stock_user"
                 >
-                    <field name="use_stock_moves" invisible="1" />
                     <field name="done_stock_moves" invisible="1" />
                     <field name="stock_moves_is_locked" invisible="1" />
                     <field name="stock_state" invisible="1" />
@@ -113,7 +121,6 @@
                         name="move_ids"
                         context="{'tree_view_ref': 'project_stock.view_stock_move_raw_tree', 'form_view_ref':'stock.view_move_form', 'default_company_id': company_id, 'default_state': 'draft', 'default_raw_material_task_id': id}"
                         attrs="{'readonly': [('done_stock_moves', '=', True),('stock_moves_is_locked', '=', True)]}"
-                        groups="stock.group_stock_user"
                     />
                 </page>
             </xpath>

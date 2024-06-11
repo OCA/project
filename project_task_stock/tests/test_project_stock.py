@@ -1,8 +1,9 @@
-# Copyright 2022-2023 Tecnativa - Víctor Martínez
+# Copyright 2022-2024 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 from odoo import fields
 from odoo.tests import Form
 from odoo.tests.common import users
+from odoo.tools import mute_logger
 
 from .common import TestProjectStockBase
 
@@ -80,6 +81,15 @@ class TestProjectStock(TestProjectStockBase):
     @users("manager-user")
     def test_project_task_without_analytic_account_manager_user(self):
         self.test_project_task_without_analytic_account()
+
+    def test_project_task_user_access_without_stock_group(self):
+        self.basic_user.write(
+            {
+                "groups_id": [(6, 0, [self.env.ref("project.group_project_user").id])],
+            }
+        )
+        task_form = Form(self.task.with_user(self.basic_user))
+        self.assertEqual(task_form.project_id, self.project)
 
     def test_project_task_analytic_lines_without_tags(self):
         self.task = self.env["project.task"].browse(self.task.id)
@@ -173,6 +183,7 @@ class TestProjectStock(TestProjectStockBase):
     def test_project_task_process_done_basic_user(self):
         self.test_project_task_process_done()
 
+    @mute_logger("odoo.models.unlink")
     def test_project_task_process_cancel(self):
         self.task = self.env["project.task"].browse(self.task.id)
         self.assertEqual(self.move_product_a.state, "draft")
@@ -212,6 +223,7 @@ class TestProjectStock(TestProjectStockBase):
     def test_project_task_process_cancel_manager_user(self):
         self.test_project_task_process_cancel()
 
+    @mute_logger("odoo.models.unlink")
     def test_project_task_process_unreserve(self):
         self.task = self.env["project.task"].browse(self.task.id)
         self.assertEqual(self.move_product_a.state, "draft")
@@ -233,6 +245,7 @@ class TestProjectStock(TestProjectStockBase):
         self.assertEqual(self.move_product_b.reserved_availability, 0)
         self.assertFalse(self.task.unreserve_visible)
 
+    @mute_logger("odoo.models.unlink")
     def test_project_task_process_01(self):
         """Product A move cancel + Product B move OK."""
         self.task = self.env["project.task"].browse(self.task.id)
@@ -290,6 +303,7 @@ class TestProjectStock(TestProjectStockBase):
     def test_project_task_action_done_basic_user(self):
         self.test_project_task_action_done()
 
+    @mute_logger("odoo.models.unlink")
     def test_project_task_unlink(self):
         self.assertTrue(self.env["project.task"].browse(self.task.id).unlink())
 
@@ -297,6 +311,7 @@ class TestProjectStock(TestProjectStockBase):
     def test_project_task_unlink_basic_user(self):
         self.test_project_task_unlink()
 
+    @mute_logger("odoo.models.unlink")
     def test_project_project_onchange(self):
         new_type = self.env.ref("stock.picking_type_out")
         self.project.write({"picking_type_id": new_type.id})
