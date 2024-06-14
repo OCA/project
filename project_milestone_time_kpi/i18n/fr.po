@@ -1,0 +1,42 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* project_milestone_time_kpi
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 12.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-06-25 00:11+0000\n"
+"PO-Revision-Date: 2022-06-25 00:11+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: project_milestone_time_kpi
+#: model:ir.model,name:project_milestone_time_kpi.model_project_project
+msgid "Project"
+msgstr "Projet"
+
+#. module: project_milestone_time_kpi
+#: model:ir.model.fields,field_description:project_milestone_time_kpi.field_project_project__remaining_estimated_hours
+msgid "Remaining Estimated Hours"
+msgstr "Heures estimées restantes"
+
+#. module: project_milestone_time_kpi
+#: model:ir.model.fields,field_description:project_milestone_time_kpi.field_project_project__total_estimated_hours
+msgid "Total Estimated Hours"
+msgstr "Total heures estimés"
+
+#. module: project_milestone_time_kpi
+#: model:ir.model.fields,field_description:project_milestone_time_kpi.field_project_project__total_remaining_hours
+msgid "Total Remaining Work"
+msgstr "Total restant à faire"
+
+#. module: project_milestone_time_kpi
+#: model:ir.model.fields,field_description:project_milestone_time_kpi.field_project_project__total_spent_hours
+msgid "Total Spent Hours"
+msgstr "Total heures passées"
+
