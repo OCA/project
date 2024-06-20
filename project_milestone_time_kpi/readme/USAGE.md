@@ -1,5 +1,5 @@
 ## Usage
-As a user, from a project whose `Use milestones` box is checked, go to the tab of a project.
+As a user, from a project whose **Use milestones** box is checked, go to the tab of a project.
 
 1. Add 2 milestones: 
 * Analysis (estimated 10h)

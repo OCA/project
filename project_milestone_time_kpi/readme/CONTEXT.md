@@ -15,8 +15,8 @@ The module inherits two modules that have been added to allow to define an estim
 
 The module add 4 new fields to project:
 
-* `Total Estimated Hours`: Field calculated by taking into account the total of the 'Estimated hours' fields of each milestone associated with the project.
-* `Total Spent Hours`: Field calculated by taking into account the total of the 'Hours spent' fields of each milestone associated with the project.
-* `Remaining Estimated Hours`: Calculated field based on the following calculation: Total Estimated Hours - Total Hours Spent.
-* `Total Remaining Work`: Field calculated based on the total of the ‘Remaining hours’ fields of the tasks associated with a project.
+* **Total Estimated Hours**: Field calculated by taking into account the total of the 'Estimated hours' fields of each milestone associated with the project.
+* **Total Spent Hours**: Field calculated by taking into account the total of the 'Hours spent' fields of each milestone associated with the project.
+* **Remaining Estimated Hours**: Calculated field based on the following calculation: Total Estimated Hours - Total Hours Spent.
+* **Total Remaining Work**: Field calculated based on the total of the ‘Remaining hours’ fields of the tasks associated with a project.
 Total Estimated Hours, Total Spent Hours and Total Remaining Work are visible under the milestone tab in form view and visible in tree view after milestones column.
