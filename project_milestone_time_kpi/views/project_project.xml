@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="project_form" model="ir.ui.view">
+        <field name="name">Project: add milestone time kpi</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project_milestone.project_enhancement_milestone_view_inherit_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='milestone_ids']" position="inside">
+                <group name="milestone_time_kpi" class="oe_subtotal_footer oe_right" colspan="2">
+                    <field name="total_estimated_hours" widget="float_time"/>
+                    <field name="total_spent_hours" widget="float_time"/>
+                    <field name="remaining_estimated_hours" widget="float_time"/>
+                    <field name="total_remaining_hours" widget="float_time"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="project_list" model="ir.ui.view">
+        <field name="name">Project: add milestone time kpi</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project_milestone.project_milestone_view_inherit_list"/>
+        <field name="arch" type="xml">
+            <field name="milestone_ids" position="after">
+                <field name="total_estimated_hours" widget="float_time"/>
+                <field name="total_spent_hours" widget="float_time"/>
+                <field name="total_remaining_hours" widget="float_time"/>
+            </field>
+        </field>
+    </record>
+</odoo>
