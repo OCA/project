@@ -118,15 +118,34 @@ class TestProjectSequence(TransactionCase):
     @users("manager")
     def test_project_without_sequence(self):
         """Preexisting projects had no sequence, and they should display fine."""
-        proj1 = self.env["project.project"].create(
-            {"name": "one", "sequence_code": False}
+        proj1 = self.env["project.project"].search(
+            [
+                ("sequence_code", "=", False),
+            ],
+            limit=1,
         )
-        self.assertEqual(proj1.display_name, "one")
+        proj1.name = "one"
         self.assertFalse(proj1.sequence_code)
+        self.assertEqual(proj1.display_name, "one")
         # Make sure that the sequence is not increased
         proj2 = self.env["project.project"].create({"name": "two"})
         self.assertEqual(proj2.sequence_code, "23-00011")
         self.assertEqual(proj2.display_name, "23-00011 - two")
+
+    @users("manager")
+    def test_project_with_empty_sequence(self):
+        """Sequence is applied when creating project with an empty sequence"""
+        proj1 = self.env["project.project"].create(
+            {"name": "whatever", "sequence_code": ""}
+        )
+        self.assertEqual(proj1.sequence_code, "23-00011")
+        self.assertEqual(proj1.display_name, "23-00011 - whatever")
+        # Sequence is applied when creating project with sequence in False
+        proj2 = self.env["project.project"].create(
+            {"name": "whatever", "sequence_code": False}
+        )
+        self.assertEqual(proj2.sequence_code, "23-00012")
+        self.assertEqual(proj2.display_name, "23-00012 - whatever")
 
     def test_custom_pattern(self):
         """Display name pattern can be customized."""
