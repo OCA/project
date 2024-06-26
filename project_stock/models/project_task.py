@@ -44,9 +44,7 @@ class ProjectTask(models.Model):
         comodel_name="stock.picking.type",
         string="Operation Type",
         readonly=False,
-        domain="[('company_id', '=', company_id)]",
         index=True,
-        check_company=True,
     )
     location_id = fields.Many2one(
         comodel_name="stock.location",
@@ -63,11 +61,6 @@ class ProjectTask(models.Model):
         check_company=True,
     )
     stock_analytic_date = fields.Date(string="Analytic date")
-    unreserve_visible = fields.Boolean(
-        string="Allowed to Unreserve Inventory",
-        compute="_compute_unreserve_visible",
-        help="Technical field to check when we can unreserve",
-    )
     stock_analytic_account_id = fields.Many2one(
         comodel_name="account.analytic.account",
         string="Move Analytic Account",
@@ -86,6 +79,7 @@ class ProjectTask(models.Model):
     group_id = fields.Many2one(
         comodel_name="procurement.group",
     )
+    company_id = fields.Many2one(default=lambda self: self.env.company)
 
     def _compute_scrap_move_count(self):
         data = self.env["stock.scrap"].read_group(
@@ -120,13 +114,6 @@ class ProjectTask(models.Model):
                     if state in states:
                         task.stock_state = state
                         break
-
-    @api.depends("move_ids", "move_ids.quantity_done")
-    def _compute_unreserve_visible(self):
-        for item in self:
-            already_reserved = item.mapped("move_ids.move_line_ids")
-            any_quantity_done = any([m.quantity_done > 0 for m in item.move_ids])
-            item.unreserve_visible = not any_quantity_done and already_reserved
 
     @api.onchange("picking_type_id")
     def _onchange_picking_type_id(self):
@@ -189,23 +176,11 @@ class ProjectTask(models.Model):
             "target": "new",
         }
 
-    def do_unreserve(self):
-        for item in self:
-            item.move_ids.filtered(
-                lambda x: x.state not in ("done", "cancel")
-            )._do_unreserve()
-        return True
-
-    def button_unreserve(self):
-        self.ensure_one()
-        self.do_unreserve()
-        return True
-
     def action_cancel(self):
         """Cancel the stock moves and remove the analytic lines created from
         stock moves when cancelling the task.
         """
-        self.mapped("move_ids.move_line_ids").write({"qty_done": 0})
+        self.mapped("move_ids.move_line_ids").write({"quantity": 0})
         # Use sudo to avoid error for users with no access to analytic
         self.sudo().stock_analytic_line_ids.unlink()
         self.stock_moves_is_locked = True
@@ -217,15 +192,12 @@ class ProjectTask(models.Model):
         return True
 
     def action_done(self):
-        # Filter valid stock moves (avoiding those done and cancelled).
-        for move in self.mapped("move_ids").filtered(
-            lambda x: x.state not in ("done", "cancel")
-        ):
-            move.quantity_done = move.reserved_availability
-        moves_todo = self.mapped("move_ids")._action_done()
+        picking_ids = self.move_ids.picking_id
+        for picking in picking_ids:
+            picking.with_context(skip_sanity_check=True).button_validate()
         # Use sudo to avoid error for users with no access to analytic
         analytic_line_model = self.env["account.analytic.line"].sudo()
-        for move in moves_todo:
+        for move in self.move_ids:
             vals = move._prepare_analytic_line_from_task()
             if vals:
                 analytic_line_model.create(vals)

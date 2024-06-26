@@ -151,8 +151,8 @@ class TestProjectStock(TestProjectStockBase):
         self.task.write({"stage_id": self.stage_done.id})
         self.assertEqual(self.move_product_a.state, "assigned")
         self.assertEqual(self.move_product_b.state, "assigned")
-        self.assertEqual(self.move_product_a.reserved_availability, 2)
-        self.assertEqual(self.move_product_b.reserved_availability, 1)
+        self.assertEqual(self.move_product_a.quantity, 2)
+        self.assertEqual(self.move_product_b.quantity, 1)
         self.assertTrue(self.task.stock_moves_is_locked)
         self.task.action_toggle_stock_moves_is_locked()
         self.assertFalse(self.task.stock_moves_is_locked)
@@ -175,9 +175,9 @@ class TestProjectStock(TestProjectStockBase):
         self.task.action_done()
         self.assertEqual(self.move_product_a.state, "done")
         self.assertEqual(self.move_product_b.state, "done")
-        self.assertEqual(self.move_product_a.quantity_done, 2)
-        self.assertEqual(self.move_product_b.quantity_done, 1)
-        self.assertEqual(move_product_c.quantity_done, 1)
+        self.assertEqual(self.move_product_a.quantity, 2)
+        self.assertEqual(self.move_product_b.quantity, 1)
+        self.assertEqual(move_product_c.quantity, 1)
 
     @users("basic-user")
     def test_project_task_process_done_basic_user(self):
@@ -196,15 +196,15 @@ class TestProjectStock(TestProjectStockBase):
         self.task.action_done()
         self.assertEqual(self.move_product_a.state, "done")
         self.assertEqual(self.move_product_b.state, "done")
-        self.assertEqual(self.move_product_a.quantity_done, 2)
-        self.assertEqual(self.move_product_b.quantity_done, 1)
+        self.assertEqual(self.move_product_a.quantity, 2)
+        self.assertEqual(self.move_product_b.quantity, 1)
         self.assertTrue(self.task.sudo().stock_analytic_line_ids)
         # action_cancel
         self.task.action_cancel()
         self.assertEqual(self.move_product_a.state, "done")
         self.assertEqual(self.move_product_b.state, "done")
-        self.assertEqual(self.move_product_a.quantity_done, 0)
-        self.assertEqual(self.move_product_b.quantity_done, 0)
+        self.assertEqual(self.move_product_a.quantity, 0)
+        self.assertEqual(self.move_product_b.quantity, 0)
         self.assertFalse(self.task.stock_analytic_line_ids)
         quant_a = self.product_a.stock_quant_ids.filtered(
             lambda x: x.location_id == self.location
@@ -222,28 +222,6 @@ class TestProjectStock(TestProjectStockBase):
     @users("manager-user")
     def test_project_task_process_cancel_manager_user(self):
         self.test_project_task_process_cancel()
-
-    @mute_logger("odoo.models.unlink")
-    def test_project_task_process_unreserve(self):
-        self.task = self.env["project.task"].browse(self.task.id)
-        self.assertEqual(self.move_product_a.state, "draft")
-        self.assertEqual(self.move_product_b.state, "draft")
-        # Change task stage (auto-confirm + auto-assign)
-        self.task.write({"stage_id": self.stage_done.id})
-        self.assertTrue(self.move_product_a.move_line_ids)
-        self.assertEqual(self.move_product_a.move_line_ids.task_id, self.task)
-        self.assertEqual(self.move_product_a.state, "assigned")
-        self.assertEqual(self.move_product_b.state, "assigned")
-        self.assertEqual(self.move_product_a.reserved_availability, 2)
-        self.assertEqual(self.move_product_b.reserved_availability, 1)
-        self.assertTrue(self.task.unreserve_visible)
-        # button_unreserve
-        self.task.button_unreserve()
-        self.assertEqual(self.move_product_a.state, "confirmed")
-        self.assertEqual(self.move_product_b.state, "confirmed")
-        self.assertEqual(self.move_product_a.reserved_availability, 0)
-        self.assertEqual(self.move_product_b.reserved_availability, 0)
-        self.assertFalse(self.task.unreserve_visible)
 
     @mute_logger("odoo.models.unlink")
     def test_project_task_process_01(self):
@@ -282,10 +260,6 @@ class TestProjectStock(TestProjectStockBase):
         self.task.action_done()
         self.assertEqual(len(self.task.stock_analytic_line_ids), 2)
 
-    @users("basic-user")
-    def test_project_task_process_unreserve_basic_user(self):
-        self.test_project_task_process_unreserve()
-
     def test_project_task_action_cancel(self):
         self.assertTrue(self.env["project.task"].browse(self.task.id).action_cancel())
 
@@ -320,7 +294,6 @@ class TestProjectStock(TestProjectStockBase):
         self.assertEqual(
             self.project.location_dest_id, new_type.default_location_dest_id
         )
-        self.task.do_unreserve()
         self.task.write({"picking_type_id": new_type.id})
         self.task._onchange_picking_type_id()
         self.assertEqual(self.task.location_id, new_type.default_location_src_id)
