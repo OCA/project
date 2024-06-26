@@ -10,11 +10,11 @@
         <field name="model">res.config.settings</field>
         <field name="inherit_id" ref="project.res_config_settings_view_form" />
         <field name="arch" type="xml">
-            <xpath
-                expr="//div[@data-key='project']//div[@id='use_collaborative_pad']/.."
-                position="inside"
-            >
-                <div class="col-12 col-lg-6 o_setting_box">
+            <xpath expr="//div[@id='tasks_management']" position="inside">
+                <div
+                    class="col-12 col-lg-6 o_setting_box"
+                    id="project_task_project_required"
+                >
                     <div class="o_setting_left_pane">
                         <field name="is_project_task_project_required" />
                     </div>

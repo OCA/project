@@ -20,12 +20,12 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_task_project_required.res_config_settings_view_form
 msgid ""
 "<span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-"
-"specific.\" role=\"img\" aria-label=\"Values set here are company-"
-"specific.\" groups=\"base.group_multi_company\"/>"
+"specific.\" role=\"img\" aria-label=\"Values set here are company-specific."
+"\" groups=\"base.group_multi_company\"/>"
 msgstr ""
 "<span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-"
-"specific.\" role=\"img\" aria-label=\"Values set here are company-specific.\""
-" groups=\"base.group_multi_company\"/>"
+"specific.\" role=\"img\" aria-label=\"Values set here are company-specific."
+"\" groups=\"base.group_multi_company\"/>"
 
 #. module: project_task_project_required
 #: model:ir.model,name:project_task_project_required.model_res_company
@@ -38,30 +38,9 @@ msgid "Config Settings"
 msgstr "Ajustes Config"
 
 #. module: project_task_project_required
-#: model:ir.model.fields,field_description:project_task_project_required.field_project_task__display_name
-#: model:ir.model.fields,field_description:project_task_project_required.field_res_company__display_name
-#: model:ir.model.fields,field_description:project_task_project_required.field_res_config_settings__display_name
-msgid "Display Name"
-msgstr "Mostrar Nombre"
-
-#. module: project_task_project_required
-#: model:ir.model.fields,field_description:project_task_project_required.field_project_task__id
-#: model:ir.model.fields,field_description:project_task_project_required.field_res_company__id
-#: model:ir.model.fields,field_description:project_task_project_required.field_res_config_settings__id
-msgid "ID"
-msgstr "ID (identificación)"
-
-#. module: project_task_project_required
 #: model:ir.model.fields,field_description:project_task_project_required.field_project_task__is_project_required
 msgid "Is Project Required"
 msgstr "Es Necesario el Proyecto"
-
-#. module: project_task_project_required
-#: model:ir.model.fields,field_description:project_task_project_required.field_project_task____last_update
-#: model:ir.model.fields,field_description:project_task_project_required.field_res_company____last_update
-#: model:ir.model.fields,field_description:project_task_project_required.field_res_config_settings____last_update
-msgid "Last Modified on"
-msgstr "Última modificación el"
 
 #. module: project_task_project_required
 #: model:ir.model.fields,field_description:project_task_project_required.field_res_company__is_project_task_project_required
@@ -80,7 +59,17 @@ msgid "Task"
 msgstr "Tarea"
 
 #. module: project_task_project_required
+#. odoo-python
 #: code:addons/project_task_project_required/models/project_task.py:0
 #, python-format
 msgid "You must specify a project for the task."
 msgstr "Debe especificar un proyecto para la tarea."
+
+#~ msgid "Display Name"
+#~ msgstr "Mostrar Nombre"
+
+#~ msgid "ID"
+#~ msgstr "ID (identificación)"
+
+#~ msgid "Last Modified on"
+#~ msgstr "Última modificación el"
