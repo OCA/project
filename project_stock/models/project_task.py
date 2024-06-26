@@ -146,8 +146,10 @@ class ProjectTask(models.Model):
             location = item.location_id or item.project_id.location_id
             location_dest = item.location_dest_id or item.project_id.location_dest_id
             moves = item.move_ids.filtered(
-                lambda x: x.state not in ("cancel", "done")
-                and (x.location_id != location or x.location_dest_id != location_dest)
+                lambda x, loc=location, loc_dest=location_dest: (
+                    x.state not in ("cancel", "done")
+                    and (x.location_id != loc or x.location_dest_id != loc_dest)
+                )
             )
             moves.update(
                 {
