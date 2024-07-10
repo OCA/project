@@ -17,10 +17,25 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: project_task_note
+#: model:ir.model.fields,field_description:project_task_note.field_project_task__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: project_task_note
+#: model:ir.model.fields,field_description:project_task_note.field_project_task__id
+msgid "ID"
+msgstr ""
+
+#. module: project_task_note
 #: model:ir.model.fields,field_description:project_task_note.field_project_task__notes
 #: model_terms:ir.ui.view,arch_db:project_task_note.view_task_form2
 msgid "Internal notes"
 msgstr "Notas internas"
+
+#. module: project_task_note
+#: model:ir.model.fields,field_description:project_task_note.field_project_task____last_update
+msgid "Last Modified on"
+msgstr ""
 
 #. module: project_task_note
 #: model:ir.model,name:project_task_note.model_project_task
