@@ -42,6 +42,7 @@ setuptools.setup(
         'odoo14-addon-project_task_description_template',
         'odoo14-addon-project_task_digitized_signature',
         'odoo14-addon-project_task_material',
+        'odoo14-addon-project_task_note',
         'odoo14-addon-project_task_project_required',
         'odoo14-addon-project_task_pull_request',
         'odoo14-addon-project_task_recurring_activity',
