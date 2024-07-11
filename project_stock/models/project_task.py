@@ -154,7 +154,9 @@ class ProjectTask(models.Model):
 
     def action_confirm(self):
         self.move_ids._action_confirm()
-        self.move_ids.filtered(lambda move: move.state not in ('draft', 'cancel', 'done'))._trigger_scheduler()
+        self.move_ids.filtered(
+            lambda move: move.state not in ("draft", "cancel", "done")
+        )._trigger_scheduler()
 
     def action_assign(self):
         self.action_confirm()
