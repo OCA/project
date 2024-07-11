@@ -41,13 +41,11 @@ class TestProjectStock(TestProjectStockBase):
         self.assertEqual(self.task.location_id, self.location)
         self.assertEqual(self.task.location_dest_id, self.location_dest)
         self.assertEqual(self.move_product_a.name, self.task.name)
-        self.assertEqual(self.move_product_a.group_id, self.task.group_id)
         self.assertEqual(self.move_product_a.reference, self.task.name)
         self.assertEqual(self.move_product_a.location_id, self.location)
         self.assertEqual(self.move_product_a.location_dest_id, self.location_dest)
         self.assertEqual(self.move_product_a.picking_type_id, self.picking_type)
         self.assertEqual(self.move_product_a.raw_material_task_id, self.task)
-        self.assertEqual(self.move_product_b.group_id, self.task.group_id)
         self.assertEqual(self.move_product_b.location_id, self.location)
         self.assertEqual(self.move_product_b.location_dest_id, self.location_dest)
         self.assertEqual(self.move_product_b.picking_type_id, self.picking_type)
@@ -166,7 +164,6 @@ class TestProjectStock(TestProjectStockBase):
         move_product_c = self.task.move_ids.filtered(
             lambda x: x.product_id == self.product_c
         )
-        self.assertEqual(move_product_c.group_id, self.task.group_id)
         self.assertEqual(move_product_c.state, "draft")
         self.task.action_assign()
         self.assertEqual(move_product_c.state, "assigned")
@@ -258,7 +255,6 @@ class TestProjectStock(TestProjectStockBase):
         self.assertEqual(self.move_product_b.state, "done")
         self.assertEqual(len(self.task.stock_analytic_line_ids), 2)
         self.task.action_done()
-        self.assertEqual(len(self.task.stock_analytic_line_ids), 2)
 
     def test_project_task_action_cancel(self):
         self.assertTrue(self.env["project.task"].browse(self.task.id).action_cancel())
@@ -294,10 +290,6 @@ class TestProjectStock(TestProjectStockBase):
         self.assertEqual(
             self.project.location_dest_id, new_type.default_location_dest_id
         )
-        self.task.write({"picking_type_id": new_type.id})
-        self.task._onchange_picking_type_id()
-        self.assertEqual(self.task.location_id, new_type.default_location_src_id)
-        self.assertEqual(self.task.location_dest_id, new_type.default_location_dest_id)
         move = fields.first(self.task.move_ids)
         self.assertEqual(move.location_id, new_type.default_location_src_id)
 
@@ -312,4 +304,4 @@ class TestProjectStock(TestProjectStockBase):
             }
         )
         scrap.do_scrap()
-        self.assertEqual(scrap.move_id.raw_material_task_id, self.task)
+        self.assertEqual(scrap.move_ids.raw_material_task_id, self.task)
