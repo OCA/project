@@ -153,7 +153,8 @@ class ProjectTask(models.Model):
         return {"name": "Task-ID: %s" % self.id}
 
     def action_confirm(self):
-        self.mapped("move_ids")._action_confirm()
+        self.move_ids._action_confirm()
+        self.move_ids.filtered(lambda move: move.state not in ('draft', 'cancel', 'done'))._trigger_scheduler()
 
     def action_assign(self):
         self.action_confirm()
