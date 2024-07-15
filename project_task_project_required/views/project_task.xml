@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    Copyright 2019 Brainbean Apps (https://brainbeanapps.com)
+    License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+
+    <record model="ir.ui.view" id="view_task_tree2">
+        <field name="name">project.task.tree</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_tree2" />
+        <field name="arch" type="xml">
+            <field name="project_id" position="before">
+                <field name="is_project_required" invisible="1" />
+            </field>
+            <field name="project_id" position="attributes">
+                <attribute
+                    name="attrs"
+                >{'required':[('is_project_required','=',True)]}</attribute>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_task_form2">
+        <field name="name">project.task.form</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2" />
+        <field name="arch" type="xml">
+            <field name="project_id" position="before">
+                <field name="is_project_required" invisible="1" />
+            </field>
+            <field name="project_id" position="attributes">
+                <attribute
+                    name="attrs"
+                >{'required':[('is_project_required','=',True)]}</attribute>
+            </field>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="quick_create_task_form">
+        <field name="name">project.task.form.quick_create</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.quick_create_task_form" />
+        <field name="arch" type="xml">
+            <field name="name" position="before">
+                <field name="is_project_required" invisible="1" />
+                <field
+                    name="project_id"
+                    attrs="{'required':[('is_project_required','=',True)], 'invisible':[('is_project_required','=',False)]}"
+                />
+            </field>
+        </field>
+    </record>
+
+</odoo>
