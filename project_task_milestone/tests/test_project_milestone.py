@@ -17,7 +17,7 @@ class TestProjectMilestone(common.TransactionCase):
             {"name": "TestOpenStage"}
         )
         self.test_close_stage = self.env["project.task.type"].create(
-            {"name": "TestCloseStage", "is_closed": True}
+            {"name": "TestCloseStage", "fold": True}
         )
         self.test_task = self.env["project.task"].create(
             {
