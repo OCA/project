@@ -30,7 +30,7 @@
                 expr="//div[hasclass('o_kanban_card_manage_section')]"
                 position="inside"
             >
-                <field name="is_template" invisible="1"/>
+                <field name="is_template" invisible="1" />
                 <div t-if="record.is_template.raw_value" role="menuitem">
                     <a
                         name="create_project_from_template"
@@ -64,7 +64,7 @@
     <record model="ir.actions.act_window" id="project.open_view_project_all">
         <field name="name">Projects</field>
         <field name="res_model">project.project</field>
-        <field name="view_id" ref="project.view_project_kanban"/>
+        <field name="view_id" ref="project.view_project_kanban" />
         <field name="view_mode">kanban,form,tree</field>
         <field
             name="context"
