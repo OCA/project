@@ -147,6 +147,11 @@ Contributors
       -  Jairo Llopis
       -  Carlos Roca
 
+-  `Sygel <https://www.sygel.es>`__:
+
+      -  Valentín Vinagre
+      -  Roger Sans
+
 Maintainers
 -----------
 

@@ -28,7 +28,7 @@
                     <group
                         name="messages"
                         string="Previous timer"
-                        attrs="{'invisible': [('running_timer_id', '=', False)]}"
+                        invisible="running_timer_id == False"
                         col="4"
                     >
                         <p colspan="4">
@@ -47,13 +47,13 @@
                                     name="running_timer_duration"
                                     class="oe_inline text-info"
                                     widget="float_time"
-                                    attrs="{'invisible': [('running_timer_duration', '&gt;=', 5)]}"
+                                    invisible="running_timer_duration &gt;= 5"
                                 />
                                 <field
                                     name="running_timer_duration"
                                     class="oe_inline text-warning"
                                     widget="float_time"
-                                    attrs="{'invisible': [('running_timer_duration', '&lt;', 5)]}"
+                                    invisible="running_timer_duration &lt; 5"
                                 />
                                 hour(s).
                             </strong>
@@ -62,7 +62,7 @@
                             class="alert alert-warning"
                             colspan="4"
                             role="alert"
-                            attrs="{'invisible': [('running_timer_duration', '&lt;', 5)]}"
+                            invisible="running_timer_duration &lt; 5"
                         >
                             That is a lot of time! Make sure it is fine before saving.
                         </div>
@@ -73,14 +73,14 @@
                     <button
                         name="action_switch"
                         type="object"
-                        attrs="{'invisible': [('running_timer_id', '!=', False)]}"
+                        invisible="running_timer_id != False"
                         string="Start new timer"
                         class="oe_highlight"
                     />
                     <button
                         name="action_switch"
                         type="object"
-                        attrs="{'invisible': ['|', ('running_timer_id', '=', False), ('running_timer_duration', '&gt;=', 5)]}"
+                        invisible="running_timer_id == False or running_timer_duration &gt;= 5"
                         string="Stop previous timer and start the new one"
                         class="oe_highlight"
                     />
@@ -88,7 +88,7 @@
                         name="action_switch"
                         confirm="The previous timer is old. Do you really want to stop it now?"
                         type="object"
-                        attrs="{'invisible': ['|', ('running_timer_id', '=', False), ('running_timer_duration', '&lt;', 5)]}"
+                        invisible="running_timer_id == False or running_timer_duration &lt; 5"
                         string="Stop that very old timer and start the new one"
                         class="btn-warning"
                     />
