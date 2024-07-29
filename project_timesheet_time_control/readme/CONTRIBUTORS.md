@@ -8,3 +8,9 @@
   > - Ernesto Tejeda
   > - Jairo Llopis
   > - Carlos Roca
+
+- [Sygel](https://www.sygel.es):
+
+  > - Valentín Vinagre
+  > - Roger Sans
+

@@ -18,7 +18,7 @@
                     tabindex="-1"
                     type="object"
                     icon="fa-play-circle text-success"
-                    attrs="{'invisible': [('show_time_control', '!=', 'resume')]}"
+                    invisible="show_time_control != 'resume'"
                     class="oe_stat_button"
                     title="Resume work"
                 />
@@ -27,7 +27,7 @@
                     tabindex="-1"
                     type="object"
                     icon="fa-stop-circle text-warning"
-                    attrs="{'invisible': [('show_time_control', '!=', 'stop')]}"
+                    invisible="show_time_control != 'stop'"
                     class="oe_stat_button"
                     title="Stop work"
                 />
@@ -46,7 +46,7 @@
                         name="button_resume_work"
                         type="object"
                         icon="fa-play-circle text-success"
-                        attrs="{'invisible': [('show_time_control', '!=', 'resume')]}"
+                        invisible="show_time_control != 'resume'"
                         class="oe_stat_button"
                         context="{'show_created_timer': True}"
                         title="Resume work"
@@ -55,7 +55,7 @@
                         name="button_end_work"
                         type="object"
                         icon="fa-stop-circle text-warning"
-                        attrs="{'invisible': [('show_time_control', '!=', 'stop')]}"
+                        invisible="show_time_control != 'stop'"
                         class="oe_stat_button"
                         title="Stop work"
                     />
@@ -82,7 +82,7 @@
                     string="Resume work"
                     tabindex="-1"
                     type="object"
-                    attrs="{'invisible': [('show_time_control', '!=', 'resume')]}"
+                    invisible="show_time_control != 'resume'"
                     class="o_kanban_inline_block fa fa-lg fa-play-circle text-success"
                     title="Start work"
                 />
@@ -91,7 +91,7 @@
                     string="Stop work"
                     tabindex="-1"
                     type="object"
-                    attrs="{'invisible': [('show_time_control', '!=', 'stop')]}"
+                    invisible="show_time_control != 'stop'"
                     class="o_kanban_inline_block fa fa-lg fa-stop-circle text-warning"
                     title="End work"
                 />
