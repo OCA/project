@@ -22,7 +22,7 @@ class ProjectType(models.Model):
     project_ok = fields.Boolean(string="Can be applied for projects", default=True)
     task_ok = fields.Boolean(string="Can be applied for tasks")
     code = fields.Char(copy=False)
-    sequence = fields.Integer(string="Order")
+    sequence = fields.Integer(string="Priority")
 
     @api.constrains("parent_id")
     def check_parent_id(self):
