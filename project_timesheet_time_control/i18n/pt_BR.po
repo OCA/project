@@ -11,8 +11,8 @@ msgstr ""
 "POT-Creation-Date: 2017-05-10 02:40+0000\n"
 "PO-Revision-Date: 2023-10-28 09:51+0000\n"
 "Last-Translator: Adriano Prado <adrianojprado@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/teams/"
-"23907/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/"
+"teams/23907/pt_BR/)\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -53,14 +53,14 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_project_kanban_inherited
 msgid ""
 "<span class=\"o_label\">\n"
-"                            <i class=\"fa fa-lg fa-play-circle text-success"
-"\"/>\n"
+"                            <i class=\"fa fa-lg fa-play-circle text-"
+"success\"/>\n"
 "                            Start work\n"
 "                        </span>"
 msgstr ""
 "<span class=\"o_label\">\n"
-"                            <i class=\"fa fa-lg fa-play-circle text-success\""
-"/>\n"
+"                            <i class=\"fa fa-lg fa-play-circle text-"
+"success\"/>\n"
 "                            Começar a Trabalhar\n"
 "                        </span>"
 
@@ -68,8 +68,8 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_project_kanban_inherited
 msgid ""
 "<span class=\"o_label\">\n"
-"                            <i class=\"fa fa-lg fa-stop-circle text-warning"
-"\"/>\n"
+"                            <i class=\"fa fa-lg fa-stop-circle text-"
+"warning\"/>\n"
 "                            Stop work\n"
 "                        </span>"
 msgstr ""
@@ -163,11 +163,6 @@ msgstr "ID"
 #: model:ir.model.fields,help:project_timesheet_time_control.field_project_task__show_time_control
 msgid "Indicate which time control button to show, if any."
 msgstr "Indique qual botão de controle de tempo mostrar, se houver."
-
-#. module: project_timesheet_time_control
-#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch____last_update
-msgid "Last Modified on"
-msgstr "Última Modificação em"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__write_uid
@@ -318,7 +313,8 @@ msgstr "Tarefa"
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
 msgid "That is a lot of time! Make sure it is fine before saving."
-msgstr "Isso é muito tempo! Certifique-se de que está tudo bem antes de salvar."
+msgstr ""
+"Isso é muito tempo! Certifique-se de que está tudo bem antes de salvar."
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
@@ -351,6 +347,9 @@ msgstr "e começou em"
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
 msgid "hour(s)."
 msgstr "hora(s)."
+
+#~ msgid "Last Modified on"
+#~ msgstr "Última Modificação em"
 
 #, fuzzy
 #~ msgid "Analytic Account"

@@ -53,14 +53,14 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_project_kanban_inherited
 msgid ""
 "<span class=\"o_label\">\n"
-"                            <i class=\"fa fa-lg fa-play-circle text-success"
-"\"/>\n"
+"                            <i class=\"fa fa-lg fa-play-circle text-"
+"success\"/>\n"
 "                            Start work\n"
 "                        </span>"
 msgstr ""
 "<span class=\"o_label\">\n"
-"                            <i class=\"fa fa-lg fa-play-circle text-success"
-"\"/>\n"
+"                            <i class=\"fa fa-lg fa-play-circle text-"
+"success\"/>\n"
 "                            Comenzar trabajo\n"
 "                        </span>"
 
@@ -68,14 +68,14 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_project_kanban_inherited
 msgid ""
 "<span class=\"o_label\">\n"
-"                            <i class=\"fa fa-lg fa-stop-circle text-warning"
-"\"/>\n"
+"                            <i class=\"fa fa-lg fa-stop-circle text-"
+"warning\"/>\n"
 "                            Stop work\n"
 "                        </span>"
 msgstr ""
 "<span class=\"o_label\">\n"
-"                            <i class=\"fa fa-lg fa-stop-circle text-warning"
-"\"/>\n"
+"                            <i class=\"fa fa-lg fa-stop-circle text-"
+"warning\"/>\n"
 "                            Detener trabajo\n"
 "                        </span>"
 
@@ -164,11 +164,6 @@ msgid "Indicate which time control button to show, if any."
 msgstr ""
 "Indica qué botón de control del tiempo mostrar, si es que hay que mostrar "
 "alguno."
-
-#. module: project_timesheet_time_control
-#: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch____last_update
-msgid "Last Modified on"
-msgstr "Última modificación el"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__write_uid
@@ -353,3 +348,6 @@ msgstr "que comenzó el"
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
 msgid "hour(s)."
 msgstr "hora(s)."
+
+#~ msgid "Last Modified on"
+#~ msgstr "Última modificación el"
