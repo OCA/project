@@ -5,7 +5,7 @@
         <field name="model">project.stock.product.set.wizard</field>
         <field name="arch" type="xml">
             <form>
-                <group name="main" colspan="4">
+                <group name="main">
                     <field name="task_id" invisible="context.get('default_task_id')" />
                     <field name="partner_id" invisible="1" />
                     <field
@@ -14,11 +14,11 @@
                     />
                     <field name="quantity" />
                 </group>
-                <group name="lines" colspan="4">
+                <group name="lines">
                     <field
                         name="product_set_line_ids"
                         nolabel="1"
-                        colspan="4"
+                        colspan="2"
                         domain="[('product_set_id', '=', product_set_id)]"
                     >
                         <tree>
