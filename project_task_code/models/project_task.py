@@ -6,6 +6,7 @@ from odoo import _, api, fields, models
 
 class ProjectTask(models.Model):
     _inherit = "project.task"
+    _rec_names_search = ["name", "code"]
 
     code = fields.Char(
         string="Task Number",

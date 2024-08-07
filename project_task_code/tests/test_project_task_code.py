@@ -38,3 +38,36 @@ class TestProjectTaskCode(common.TransactionCase):
         )
         result = project_task.name_get()
         self.assertEqual(result[0][1], "[%s] Task Testing Get Name" % code)
+
+    def test_name_search(self):
+        project_task = self.env["project.task"].create(
+            {"name": "Such Much Task", "code": "TEST-123"}
+        )
+
+        result = project_task.name_search("TEST-123")
+        self.assertIn(
+            project_task.id,
+            map(lambda x: x[0], result),
+            f"Task with code {project_task.code} should be in the results",
+        )
+
+        result = project_task.name_search("TEST")
+        self.assertIn(
+            project_task.id,
+            map(lambda x: x[0], result),
+            f"Task with code {project_task.code} should be in the results",
+        )
+
+        result = project_task.name_search("much")
+        self.assertIn(
+            project_task.id,
+            map(lambda x: x[0], result),
+            f"Task with code {project_task.code} should be in the results",
+        )
+
+        result = project_task.name_search("20232")
+        self.assertNotIn(
+            project_task.id,
+            map(lambda x: x[0], result),
+            f"Task with code {project_task.code} should not be in the results",
+        )
