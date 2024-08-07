@@ -28,7 +28,7 @@ class ProjectTask(models.Model):
             forecast_date_planned_end = task._get_forecast_date_planned()
             if not forecast_date_planned_end:
                 continue
-            task.forecast_date_planned_end = forecast_date_planned_end
+            task.sudo().forecast_date_planned_end = forecast_date_planned_end
         return super()._update_forecast_lines()
 
     @api.model
