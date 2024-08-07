@@ -43,9 +43,4 @@ class ProjectTask(models.Model):
             new_result.append((rec.id, name))
         return new_result
 
-    @api.model
-    def _name_search(
-        self, name, args=None, operator="ilike", limit=100, name_get_uid=None
-    ):
-        new_args = expression.OR([args or [], [("code", operator, name)]])
-        return super()._name_search(name, new_args, operator, limit, name_get_uid)
+    _rec_names_search = ["name", "code"]
