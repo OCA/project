@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="group_project_sign_task" model="res.groups">
+        <field name="name">Require a signature on your project tasks</field>
+        <field name="category_id" ref="base.module_category_hidden" />
+    </record>
+</odoo>
