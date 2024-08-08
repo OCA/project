@@ -80,10 +80,10 @@ class ProjectTask(models.Model):
             )
         return result
 
-    @api.model
-    def create(self, val):
-        result = super().create(val)
-        for item in result:
+    @api.model_create_multi
+    def create(self, vals_list):
+        results = super().create(vals_list)
+        for item in results:
             item.create_date = item.recurrence_id.next_recurrence_date
             if item.recurring_task and item.custom_activity_ids:
                 item.message_subscribe(
@@ -99,4 +99,4 @@ class ProjectTask(models.Model):
                 item.recurring_activity_ids = self._forming_activity_data(
                     item, item.custom_activity_ids
                 )
-        return result
+        return results

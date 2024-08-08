@@ -18,13 +18,8 @@ class RecurringActivity(models.Model):
         index=True,
         required=True,
     )
-    summary = fields.Char(
-        string="Summary",
-    )
-    description = fields.Html(
-        string="Description",
-        sanitize_style=True,
-    )
+    summary = fields.Char()
+    description = fields.Html(sanitize_style=True)
     days_after_task_creation_date = fields.Integer()
     next_recurrence_date = fields.Date(
         string="next_date", compute="_compute_next_recurrence_date", store=True
@@ -77,7 +72,7 @@ class RecurringActivity(models.Model):
             self.user_id if self.user_id else self.activity_type_id.default_user_id
         )
         self.description = (
-            self.activity_type_id.default_description
+            self.activity_type_id.default_note
             if not self.description or self.description == "<p><br></p>"
             else self.description
         )
@@ -87,10 +82,10 @@ class RecurringActivity(models.Model):
     def delta_time(self, old, new):
         return (new - old).days
 
-    @api.model
-    def create(self, val):
-        result = super().create(val)
-        for item in result:
+    @api.model_create_multi
+    def create(self, vals_list):
+        results = super().create(vals_list)
+        for item in results:
             next_recurrence_date = (
                 item.project_task_id.recurrence_id.next_recurrence_date
             )
@@ -112,4 +107,4 @@ class RecurringActivity(models.Model):
                 else (next_recurrence_date - timedelta(days=delfa))
                 + timedelta(days=item.days_after_task_creation_date),
             )
-        return result
+        return results

@@ -4,10 +4,10 @@ from freezegun import freeze_time
 
 from odoo import _, fields
 from odoo.exceptions import UserError
-from odoo.tests.common import Form, SavepointCase
+from odoo.tests.common import Form, TransactionCase
 
 
-class TestProjectrecurrence(SavepointCase):
+class TestProjectrecurrence(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super(TestProjectrecurrence, cls).setUpClass()
@@ -19,7 +19,7 @@ class TestProjectrecurrence(SavepointCase):
 
         cls.demo_user = (
             cls.env["res.users"]
-            .with_context({"no_reset_password": True})
+            .with_context(no_reset_password=True)
             .create(
                 {
                     "name": "demo",
@@ -37,7 +37,7 @@ class TestProjectrecurrence(SavepointCase):
         )
         cls.demo_user2 = (
             cls.env["res.users"]
-            .with_context({"no_reset_password": True})
+            .with_context(no_reset_password=True)
             .create(
                 {
                     "name": "demo2",
@@ -58,7 +58,6 @@ class TestProjectrecurrence(SavepointCase):
                 "name": "activity_a",
                 "default_user_id": cls.demo_user.id,
                 "summary": "summary",
-                "default_description": "description",
             }
         )
         cls.mail_activity_b = cls.env["mail.activity.type"].create(
@@ -69,7 +68,7 @@ class TestProjectrecurrence(SavepointCase):
         )
         cls.project_recurring = (
             cls.env["project.project"]
-            .with_context({"mail_create_nolog": True})
+            .with_context(mail_create_nolog=True)
             .create(
                 {
                     "name": "Recurring",
@@ -84,7 +83,7 @@ class TestProjectrecurrence(SavepointCase):
 
         cls.project_recurring2 = (
             cls.env["project.project"]
-            .with_context({"mail_create_nolog": True})
+            .with_context(mail_create_nolog=True)
             .create(
                 {
                     "name": "Recurring",
