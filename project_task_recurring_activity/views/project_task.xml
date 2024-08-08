@@ -5,14 +5,16 @@
         <field name="inherit_id" ref="project.view_task_form2" />
         <field name="arch" type="xml">
             <xpath expr="//header" position="inside">
-                <button
-                    string="Create Next Recurring Task"
-                    class="oe_highlight"
-                    groups="base.group_no_one"
-                    name="call_create_recurring_tasks"
-                    type="object"
-                    attrs="{'invisible': [('recurring_task','=',False)] }"
-                />
+                <div groups="project.group_project_recurring_tasks">
+                    <button
+                        string="Create Next Recurring Task"
+                        class="oe_highlight"
+                        groups="base.group_no_one"
+                        name="call_create_recurring_tasks"
+                        type="object"
+                        attrs="{'invisible': [('recurring_task','=',False)] }"
+                    />
+                </div>
             </xpath>
             <xpath expr="//notebook/page[@name='recurrence']" position="inside">
                 <group name="activities" string="Activities" />
