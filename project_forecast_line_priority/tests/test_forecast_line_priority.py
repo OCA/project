@@ -91,3 +91,13 @@ class TestForecastLinePriotity(common.TransactionCase):
         self.assertEqual(
             fields.Date.to_string(task.forecast_date_planned_end), "2026-01-01"
         )
+        # reset task forecast end date
+        # to trigger _update_forecast_lines
+        tasks = task + other_task
+        date_task = task.forecast_date_planned_end
+        date_other_task = other_task.forecast_date_planned_end
+        # reset
+        tasks.write({"forecast_date_planned_end": False})
+        tasks._update_forecast_lines()
+        self.assertEqual(task.forecast_date_planned_end, date_task)
+        self.assertEqual(other_task.forecast_date_planned_end, date_other_task)
