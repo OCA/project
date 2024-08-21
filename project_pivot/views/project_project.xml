@@ -17,21 +17,6 @@
     <!-- As stated in the core -->
     <!-- Please update both act_window when modifying one (open_view_project_all or open_view_project_all_group_stage) -->
     <!-- as one or the other is used in the menu menu_project_config -->
-    <record id="open_view_project_all_pivot" model="ir.actions.act_window.view">
-        <field name="act_window_id" ref="project.open_view_project_all" />
-        <field name="view_mode">pivot</field>
-        <field name="sequence">4</field>
-        <field name="view_id" ref="project_pivot_view" />
-    </record>
-    <record
-        id="open_view_project_all_group_stage_pivot"
-        model="ir.actions.act_window.view"
-    >
-        <field name="act_window_id" ref="project.open_view_project_all_group_stage" />
-        <field name="view_mode">pivot</field>
-        <field name="sequence">5</field>
-        <field name="view_id" ref="project_pivot_view" />
-    </record>
     <record id="project.open_view_project_all" model="ir.actions.act_window">
         <field name="view_mode">kanban,tree,form,pivot</field>
     </record>
