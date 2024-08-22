@@ -38,7 +38,7 @@ This module introduces a pivot view for the projects, so that you can analyze ea
 Known issues / Roadmap
 ======================
 
-This module is not compatible with 'project_list'
+This module is not compatible with 'project_list' and 'project_timeline' because both modules replace the same actions.
 
 Bug Tracker
 ===========
