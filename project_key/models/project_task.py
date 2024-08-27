@@ -63,15 +63,29 @@ class Task(models.Model):
         return data
 
     @api.model
-    def name_search(self, name, args=None, operator="ilike", limit=100):
-        args = args or []
-        domain = []
+    def _name_search(
+        self, name="", args=None, operator="ilike", limit=100, name_get_uid=None
+    ):
         if name:
-            domain = ["|", ("key", "=ilike", name + "%"), ("name", operator, name)]
+            if operator in ["=", "ilike", "=ilike", "like", "=like"]:
+                args = (
+                    args + ["|", ("key", operator, name)]
+                    if args
+                    else ["|", ("key", operator, name)]
+                )
             if operator in expression.NEGATIVE_TERM_OPERATORS:
-                domain = ["&", "!"] + domain[1:]
-        tasks = self.search(domain + args, limit=limit)
-        return tasks.name_get()
+                args = (
+                    expression.AND([[("key", operator, name)], args])
+                    if args
+                    else [("key", operator, name)]
+                )
+        return super()._name_search(
+            name=name,
+            args=args,
+            operator=operator,
+            limit=limit,
+            name_get_uid=name_get_uid,
+        )
 
     def name_get(self):
         result = []
