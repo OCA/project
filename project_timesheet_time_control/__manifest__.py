@@ -6,7 +6,7 @@
 
 {
     "name": "Project timesheet time control",
-    "version": "16.0.1.0.1",
+    "version": "16.0.1.0.2",
     "category": "Project",
     "author": "Tecnativa," "Odoo Community Association (OCA)",
     "maintainers": ["ernestotejeda"],
