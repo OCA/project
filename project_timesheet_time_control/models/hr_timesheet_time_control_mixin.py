@@ -64,7 +64,7 @@ class HrTimesheetTimeControlMixin(models.AbstractModel):
             self._timesheet_running_domain(),
         )
         if not running_lines:
-            model = self.env["ir.model"].search([("model", "=", self._name)])
+            model = self.env["ir.model"].sudo().search([("model", "=", self._name)])
             message = _(
                 "No running timer found in %(model)s %(record)s. "
                 "Refresh the page and check again."
