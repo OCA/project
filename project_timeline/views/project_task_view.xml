@@ -11,8 +11,8 @@
         <field name="type">timeline</field>
         <field name="arch" type="xml">
             <timeline
-                date_start="date_start"
-                date_stop="date_end"
+                date_start="planned_date_start"
+                date_stop="planned_date_end"
                 default_group_by="project_id"
                 event_open_popup="true"
                 colors="white: user_ids == ''; #2ecb71: kanban_state == 'done'; #ec7063: kanban_state == 'blocked'"
@@ -62,8 +62,8 @@
         <field name="type">timeline</field>
         <field name="arch" type="xml">
             <timeline
-                date_start="date_assign"
-                date_stop="date_end"
+                date_start="planned_date_start"
+                date_stop="planned_date_end"
                 default_group_by="project_id"
                 event_open_popup="true"
             />
@@ -109,9 +109,40 @@
         <field name="inherit_id" ref="project.view_task_form2" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='date_assign']" position="after">
-                <field name="date_start" />
-                <field name="date_end" />
+                <label for="planned_date_start" string="Planned Dates" />
+                <div class="o_row">
+                    <field
+                        name="planned_date_start"
+                        widget="daterange"
+                        nolabel="1"
+                        class="oe_inline"
+                        options="{'related_end_date': 'planned_date_end'}"
+                    />
+                    <i
+                        class="fa fa-long-arrow-right mx-2"
+                        aria-label="Arrow icon"
+                        title="Arrow"
+                    />
+                    <field
+                        name="planned_date_end"
+                        widget="daterange"
+                        nolabel="1"
+                        class="oe_inline"
+                        options="{'related_start_date': 'planned_date_start'}"
+                    />
+                </div>
             </xpath>
+        </field>
+    </record>
+    <record id="view_task_tree2" model="ir.ui.view">
+        <field name="name">project.task.tree</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_tree2" />
+        <field name="arch" type="xml">
+            <field name="date_deadline" position="after">
+                <field name="planned_date_start" optional="hide" />
+                <field name="planned_date_end" optional="hide" />
+            </field>
         </field>
     </record>
 </odoo>
