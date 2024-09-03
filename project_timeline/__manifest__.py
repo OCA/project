@@ -6,7 +6,7 @@
 {
     "name": "Project timeline",
     "summary": "Timeline view for projects",
-    "version": "16.0.1.4.1",
+    "version": "16.0.2.0.0",
     "category": "Project Management",
     "website": "https://github.com/OCA/project",
     "author": "Tecnativa, Onestein, Odoo Community Association (OCA)",
@@ -17,7 +17,6 @@
         "views/project_task_view.xml",
     ],
     "demo": ["demo/project_project_demo.xml", "demo/project_task_demo.xml"],
-    "post_init_hook": "populate_date_start",
     "assets": {
         "web.assets_backend": [
             "/project_timeline/static/src/scss/project_timeline.scss"
