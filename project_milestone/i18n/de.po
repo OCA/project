@@ -17,9 +17,29 @@ msgstr ""
 "X-Generator: Weblate 3.7.1\n"
 
 #. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__message_needaction
+msgid "Action Needed"
+msgstr ""
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__activity_ids
+msgid "Activities"
+msgstr ""
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__activity_state
+msgid "Activity State"
+msgstr ""
+
+#. module: project_milestone
 #: model:ir.ui.menu,name:project_milestone.milestone_configuration_menu
 msgid "All Milestones"
 msgstr "Alle Meilensteine"
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__message_attachment_count
+msgid "Attachment Count"
+msgstr ""
 
 #. module: project_milestone
 #: model:ir.model.fields,field_description:project_milestone.field_project_milestone__create_uid
@@ -44,6 +64,21 @@ msgstr ""
 "Wenn der Haken gesetzt ist, werden Meilensteine für dieses Projekt verwendet."
 
 #. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__message_follower_ids
+msgid "Followers"
+msgstr ""
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__message_channel_ids
+msgid "Followers (Channels)"
+msgstr ""
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__message_partner_ids
+msgid "Followers (Partners)"
+msgstr ""
+
+#. module: project_milestone
 #: model_terms:ir.ui.view,arch_db:project_milestone.project_milestone_view_search
 msgid "Group By"
 msgstr "Gruppieren nach"
@@ -52,6 +87,26 @@ msgstr "Gruppieren nach"
 #: model:ir.model.fields,field_description:project_milestone.field_project_milestone__id
 msgid "ID"
 msgstr "ID"
+
+#. module: project_milestone
+#: model:ir.model.fields,help:project_milestone.field_project_milestone__message_unread
+msgid "If checked new messages require your attention."
+msgstr ""
+
+#. module: project_milestone
+#: model:ir.model.fields,help:project_milestone.field_project_milestone__message_needaction
+msgid "If checked, new messages require your attention."
+msgstr ""
+
+#. module: project_milestone
+#: model:ir.model.fields,help:project_milestone.field_project_milestone__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr ""
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__message_is_follower
+msgid "Is Follower"
+msgstr ""
 
 #. module: project_milestone
 #: model:ir.model.fields,field_description:project_milestone.field_project_milestone__fold
@@ -72,6 +127,21 @@ msgstr "Zuletzt aktualisiert von"
 #: model:ir.model.fields,field_description:project_milestone.field_project_milestone__write_date
 msgid "Last Updated on"
 msgstr "Zuletzt aktualisiert am"
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__message_main_attachment_id
+msgid "Main Attachment"
+msgstr ""
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__message_has_error
+msgid "Message Delivery error"
+msgstr ""
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__message_ids
+msgid "Messages"
+msgstr ""
 
 #. module: project_milestone
 #: model:ir.model.fields,field_description:project_milestone.field_project_milestone__name
@@ -102,10 +172,60 @@ msgid "Name"
 msgstr "Bezeichnung"
 
 #. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr ""
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__activity_summary
+msgid "Next Activity Summary"
+msgstr ""
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__activity_type_id
+msgid "Next Activity Type"
+msgstr ""
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__message_needaction_counter
+msgid "Number of Actions"
+msgstr ""
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__message_has_error_counter
+msgid "Number of error"
+msgstr ""
+
+#. module: project_milestone
+#: model:ir.model.fields,help:project_milestone.field_project_milestone__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr ""
+
+#. module: project_milestone
+#: model:ir.model.fields,help:project_milestone.field_project_milestone__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr ""
+
+#. module: project_milestone
+#: model:ir.model.fields,help:project_milestone.field_project_milestone__message_unread_counter
+msgid "Number of unread messages"
+msgstr ""
+
+#. module: project_milestone
+#: selection:project.milestone,activity_state:0
+msgid "Overdue"
+msgstr ""
+
+#. module: project_milestone
 #: model:ir.model.fields,help:project_milestone.field_project_milestone__progress
 msgid "Percentage of Completed Tasks vs Incomplete Tasks."
 msgstr ""
 "Die ist der prozentuale Anteil erledigter vs. nicht-erledigter Aufgaben."
+
+#. module: project_milestone
+#: selection:project.milestone,activity_state:0
+msgid "Planned"
+msgstr ""
 
 #. module: project_milestone
 #: model:ir.model.fields,field_description:project_milestone.field_project_milestone__progress
@@ -134,9 +254,23 @@ msgid "Project Tasks"
 msgstr "Projektaufgaben"
 
 #. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__activity_user_id
+msgid "Responsible User"
+msgstr ""
+
+#. module: project_milestone
 #: model:ir.model.fields,field_description:project_milestone.field_project_milestone__sequence
 msgid "Sequence"
 msgstr "Sequenz"
+
+#. module: project_milestone
+#: model:ir.model.fields,help:project_milestone.field_project_milestone__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
 
 #. module: project_milestone
 #: model:ir.model.fields,field_description:project_milestone.field_project_milestone__target_date
@@ -154,6 +288,21 @@ msgid "The date when the Milestone should be complete."
 msgstr "Das ist das Datum, an dem der Meilenstein erledigt sein sollte."
 
 #. module: project_milestone
+#: selection:project.milestone,activity_state:0
+msgid "Today"
+msgstr ""
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__message_unread
+msgid "Unread Messages"
+msgstr ""
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr ""
+
+#. module: project_milestone
 #: model:ir.model.fields,field_description:project_milestone.field_project_project__use_milestones
 #: model:ir.model.fields,field_description:project_milestone.field_project_task__use_milestones
 msgid "Use Milestones"
@@ -162,4 +311,14 @@ msgstr "Meilensteine verwenden"
 #. module: project_milestone
 #: model:ir.model,name:project_milestone.model_project_project
 msgid "WBS element"
+msgstr ""
+
+#. module: project_milestone
+#: model:ir.model.fields,field_description:project_milestone.field_project_milestone__website_message_ids
+msgid "Website Messages"
+msgstr ""
+
+#. module: project_milestone
+#: model:ir.model.fields,help:project_milestone.field_project_milestone__website_message_ids
+msgid "Website communication history"
 msgstr ""
