@@ -29,7 +29,7 @@ addon | version | maintainers | summary
 [project_key](project_key/) | 12.0.1.0.2 |  | Module decorates projects and tasks with Project Key
 [project_list](project_list/) | 12.0.1.0.0 |  | Projects list view
 [project_mail_chatter](project_mail_chatter/) | 12.0.1.0.0 |  | Add message chatter on the Project form.
-[project_milestone](project_milestone/) | 12.0.1.0.0 | [![patrickrwilson](https://github.com/patrickrwilson.png?size=30px)](https://github.com/patrickrwilson) | Project Milestones
+[project_milestone](project_milestone/) | 12.0.1.1.0 | [![patrickrwilson](https://github.com/patrickrwilson.png?size=30px)](https://github.com/patrickrwilson) | Project Milestones
 [project_parent_task_filter](project_parent_task_filter/) | 12.0.1.3.0 | [![emagdalenaC2i](https://github.com/emagdalenaC2i.png?size=30px)](https://github.com/emagdalenaC2i) | Add a filter to show the parent tasks
 [project_purchase_link](project_purchase_link/) | 12.0.1.1.1 |  | Project Purchase Link
 [project_recalculate](project_recalculate/) | 12.0.1.0.0 |  | Project Recalculate
