@@ -4,15 +4,6 @@ on:
   schedule:
     - cron: "0 12 * * 0"
 
-jobs:
-  stale:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Stale PRs and issues policy
-        uses: actions/stale@v9
-        with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
-          # General settings.
           ascending: true
           remove-stale-when-updated: true
           # Pull Requests settings.
