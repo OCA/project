@@ -4,7 +4,7 @@
 
 {
     "name": "Project Types",
-    "version": "16.0.1.0.0",
+    "version": "16.0.1.0.1",
     "category": "Project",
     "author": "ADHOC SA," "Tecnativa, " "Onestein, " "Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/project",
