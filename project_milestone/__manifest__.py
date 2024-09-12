@@ -6,7 +6,7 @@
     "author": "Patrick Wilson, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/project",
     "category": "Project Management",
-    "version": "14.0.1.4.0",
+    "version": "14.0.1.4.1",
     "license": "AGPL-3",
     "depends": ["mail", "project"],
     "data": [
