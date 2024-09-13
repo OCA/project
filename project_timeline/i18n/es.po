@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-05-31 01:34+0000\n"
-"PO-Revision-Date: 2023-06-06 17:10+0000\n"
-"Last-Translator: luis-ron <luis.ron@sygel.es>\n"
+"PO-Revision-Date: 2024-09-13 14:06+0000\n"
+"Last-Translator: Víctor Martínez <victor.martinez@tecnativa.com>\n"
 "Language-Team: Spanish (https://www.transifex.com/oca/teams/23907/es/)\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.17\n"
+"X-Generator: Weblate 5.6.2\n"
 
 #. module: project_timeline
 #: model_terms:ir.ui.view,arch_db:project_timeline.view_task_form2
@@ -44,17 +44,17 @@ msgstr "Última modificación"
 #. module: project_timeline
 #: model:ir.model.fields,field_description:project_timeline.field_project_task__planned_date_end
 msgid "Planned Date End"
-msgstr ""
+msgstr "Fecha final planificada"
 
 #. module: project_timeline
 #: model:ir.model.fields,field_description:project_timeline.field_project_task__planned_date_start
 msgid "Planned Date Start"
-msgstr ""
+msgstr "Fecha inicial planificada"
 
 #. module: project_timeline
 #: model_terms:ir.ui.view,arch_db:project_timeline.view_task_form2
 msgid "Planned Dates"
-msgstr ""
+msgstr "Fechas planificadas"
 
 #. module: project_timeline
 #: model:ir.model,name:project_timeline.model_project_task
@@ -65,12 +65,12 @@ msgstr "Tarea"
 #: code:addons/project_timeline/models/project_task.py:0
 #, python-format
 msgid "The end date must be after the start date."
-msgstr ""
+msgstr "La fecha de finalización debe ser posterior a la fecha de inicio."
 
 #. module: project_timeline
 #: model_terms:ir.ui.view,arch_db:project_timeline.project_task_timeline
 msgid "User"
-msgstr "Usuario"
+msgstr "User"
 
 #~ msgid "Starting Date"
 #~ msgstr "Fecha de inicio"
