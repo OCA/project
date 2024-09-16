@@ -188,7 +188,7 @@ class Project(models.Model):
         """
 
         self.env.cr.execute(reindex_query, (self.id,))
-        self.env["project.task"].invalidate_model(["key"], self.task_ids.ids)
+        self.task_ids.invalidate_model(["key"])
 
     @api.model
     def _set_default_project_key(self):
