@@ -220,6 +220,23 @@ class TestProjectrecurrence(TransactionCase):
         self.assertEqual(
             len(tasks.mapped("recurring_activity_ids")), 4, "Must be equal to 4"
         )
+        project_task = tasks[0]
+        activity = self.recurring_activity.search(
+            [("project_task_id", "=", project_task.id)]
+        )
+        self.assertEqual(activity.user_id, self.mail_activity_a.default_user_id)
+        self.assertEqual(activity.summary, project_task.activity_summary)
+        activity.write(
+            {
+                "description": "<p><br></p>",
+                "summary": None,
+                "activity_type_id": self.mail_activity_b.id,
+            }
+        )
+        activity._compute_on_activity_type_id()
+        self.assertEqual(activity.user_id, self.mail_activity_a.default_user_id)
+        self.assertEqual(activity.description, self.mail_activity_b.default_note)
+        self.assertEqual(activity.summary, self.mail_activity_b.summary)
 
     def test_create_recurring_tasks(self):
         """Check custom method dev"""
