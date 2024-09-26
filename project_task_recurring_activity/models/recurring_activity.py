@@ -17,9 +17,21 @@ class RecurringActivity(models.Model):
         string="Assigned to",
         index=True,
         required=True,
+        compute="_compute_on_activity_type_id",
+        store=True,
+        readonly=False,
     )
-    summary = fields.Char()
-    description = fields.Html(sanitize_style=True)
+    summary = fields.Char(
+        compute="_compute_on_activity_type_id",
+        store=True,
+        readonly=False,
+    )
+    description = fields.Html(
+        sanitize_style=True,
+        compute="_compute_on_activity_type_id",
+        store=True,
+        readonly=False,
+    )
     days_after_task_creation_date = fields.Integer()
     next_recurrence_date = fields.Date(
         string="next_date", compute="_compute_next_recurrence_date", store=True
@@ -66,17 +78,13 @@ class RecurringActivity(models.Model):
                     )
                 )
 
-    @api.onchange("activity_type_id")
-    def _onchange_activity_type_id(self):
-        self.user_id = (
-            self.user_id if self.user_id else self.activity_type_id.default_user_id
-        )
-        self.description = (
-            self.activity_type_id.default_note
-            if not self.description or self.description == "<p><br></p>"
-            else self.description
-        )
-        self.summary = self.summary if self.summary else self.activity_type_id.summary
+    @api.depends("activity_type_id")
+    def _compute_on_activity_type_id(self):
+        for activity in self:
+            if (not activity.description) or activity.description == "<p><br></p>":
+                activity.description = activity.activity_type_id.default_note
+            if not activity.summary:
+                activity.summary = activity.activity_type_id.summary
 
     @api.model
     def delta_time(self, old, new):
