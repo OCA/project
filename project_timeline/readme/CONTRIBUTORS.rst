@@ -8,6 +8,7 @@
   * Pedro M. Baeza
   * Carlos Dauden
   * Alexandre Díaz
+  * Juan José Seguí
 
 * `Open Source Integrators <https://www.opensourceintegrators.com>`_:
 
