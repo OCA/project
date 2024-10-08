@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="project_project_view_form_inherit" model="ir.ui.view">
+        <field name="name">project.project.view.form.inherit</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button
+                    class="oe_stat_button"
+                    name="action_sprints"
+                    type="object"
+                    groups="project.group_project_manager"
+                    icon="fa-hourglass"
+                >
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_value">
+                            <field name="sprint_count" nolabel="1" />
+                        </span>
+                        <span class="o_stat_text">
+                            Sprints
+                        </span>
+                    </div>
+                </button>
+                <button
+                    class="oe_stat_button"
+                    name="action_backlog"
+                    type="object"
+                    groups="project.group_project_manager"
+                    icon="fa-archive"
+                >
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_value">
+                            <field name="backlog_count" nolabel="1" />
+                        </span>
+                        <span class="o_stat_text">
+                            Backlog
+                        </span>
+                    </div>
+                </button>
+            </xpath>
+        </field>
+    </record>
+    <record id="project_project_view_kanban_inherit" model="ir.ui.view">
+        <field name="name">project.project.view.kanban.inherit</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project_kanban" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('o_kanban_manage_view')]" position="inside">
+                <div role="menuitem" groups="project.group_project_manager">
+                    <a name="action_sprints" type="object">Sprints</a>
+                </div>
+                <div role="menuitem" groups="project.group_project_manager">
+                    <a name="action_backlog" type="object">Backlog</a>
+                </div>
+            </xpath>
+            <xpath
+                expr="//div[hasclass('o_kanban_manage_reporting')]"
+                position="inside"
+            >
+                <div role="menuitem" groups="project.group_project_manager">
+                    <a name="action_sprint_timeline" type="object">Sprints Timeline</a>
+                </div>
+            </xpath>
+        </field>
+    </record>
+    <record id="project_task_inherit_form_view" model="ir.ui.view">
+        <field name="name">project.task.inherit.form.view</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='project_id']" position="after">
+                <field name="sprint_id" />
+            </xpath>
+        </field>
+    </record>
+    <record id="project_task_inherit_tree_view" model="ir.ui.view">
+        <field name="name">project.task.inherit.tree.view</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_tree2" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='project_id']" position="after">
+                <field name="sprint_id" />
+            </xpath>
+        </field>
+    </record>
+    <record id="project_task_inherit_search_view" model="ir.ui.view">
+        <field name="name">project.task.inherit.search.view</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_search_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//group" position="before">
+                <separator />
+                <filter
+                    name="sprint_in_progress_task"
+                    string="Sprint In Progress"
+                    domain="[('sprint_state', '=', 'in_progress')]"
+                />
+            </xpath>
+            <xpath expr="//group" position="inside">
+                <filter
+                    name="sprint_id"
+                    string="Sprint"
+                    context="{'group_by':'sprint_id'}"
+                />
+            </xpath>
+        </field>
+    </record>
+    <record id="view_task_timeline" model="ir.ui.view">
+        <field name="model">project.task</field>
+        <field name="type">timeline</field>
+        <field name="inherit_id" ref="project_timeline.project_task_timeline" />
+        <field name="arch" type="xml">
+            <xpath expr="//timeline" position="attributes">
+                <attribute name="default_group_by">sprint_id</attribute>
+                <attribute name="event_open_popup">False</attribute>
+                <attribute name="dependency_arrows">False</attribute>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>
