@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="project_tags_tree_view" model="ir.ui.view">
+        <field name="name">project.tags.tree</field>
+        <field name="model">project.tags</field>
+        <field name="inherit_id" ref="project.project_tags_tree_view" />
+        <field name="arch" type="xml">
+            <field name="color" position="after">
+                <field
+                    name="allowed_project_ids"
+                    widget="many2many_tags"
+                    placeholder="Empty for having all the projects allowed"
+                />
+            </field>
+        </field>
+    </record>
+    <record id="project_tags_form_view" model="ir.ui.view">
+        <field name="name">project.tags.form</field>
+        <field name="model">project.tags</field>
+        <field name="inherit_id" ref="project.project_tags_form_view" />
+        <field name="arch" type="xml">
+            <field name="color" position="after">
+                <field
+                    name="allowed_project_ids"
+                    widget="many2many_tags"
+                    placeholder="Empty for having all the projects allowed"
+                />
+            </field>
+        </field>
+    </record>
+</odoo>

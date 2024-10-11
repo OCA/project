@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="edit_project" model="ir.ui.view">
+        <field name="name">project.project.form</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project" />
+        <field name="arch" type="xml">
+            <field name="tag_ids" position="attributes">
+                <attribute
+                    name="domain"
+                >['|', ('allowed_project_ids', 'in', [id]),('allowed_project_ids', '=', False)]</attribute>
+            </field>
+        </field>
+    </record>
+</odoo>
