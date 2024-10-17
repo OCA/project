@@ -24,6 +24,7 @@
         "web.assets_backend": [
             "/project_timeline/static/src/scss/project_timeline.scss",
             "/project_timeline/static/src/js/project_timeline_item.js",
+            "/project_timeline/static/src/js/project_timeline_custom.js",
             "/project_timeline/static/src/xml/project_timeline_item_template.xml",
         ],
     },
@@ -31,4 +32,3 @@
     "application": False,
     "auto_install": False,
 }
-
