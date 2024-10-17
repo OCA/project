@@ -4,7 +4,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 {
-    "name": "Project timeline",
+    "name": "Project Timeline",
     "summary": "Timeline view for projects",
     "version": "17.0.1.0.0",
     "category": "Project Management",
@@ -16,10 +16,19 @@
         "views/project_project_view.xml",
         "views/project_task_view.xml",
     ],
-    "demo": ["demo/project_project_demo.xml", "demo/project_task_demo.xml"],
+    "demo": [
+        "demo/project_project_demo.xml",
+        "demo/project_task_demo.xml"
+    ],
     "assets": {
         "web.assets_backend": [
-            "/project_timeline/static/src/scss/project_timeline.scss"
-        ]
+            "/project_timeline/static/src/scss/project_timeline.scss",
+            "/project_timeline/static/src/js/project_timeline_item.js",
+            "/project_timeline/static/src/xml/project_timeline_item_template.xml",
+        ],
     },
+    "installable": True,
+    "application": False,
+    "auto_install": False,
 }
+
