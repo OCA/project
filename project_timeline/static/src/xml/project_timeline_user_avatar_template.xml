@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="project_timeline.UserAvatar">
+        <div class="o_project_timeline_user_avatars">
+            <t t-foreach="avatarUrls" t-as="avatar">
+                <img t-att-src="avatar.src"
+                     t-att-title="avatar.name"
+                     width="16"
+                     height="16"
+                     class="mr8"
+                     alt="User Avatar"/>
+            </t>
+        </div>
+    </t>
+</templates>
