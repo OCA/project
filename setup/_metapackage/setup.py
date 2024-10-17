@@ -28,6 +28,7 @@ setuptools.setup(
         'odoo-addon-project_stock_analytic_tag>=16.0dev,<16.1dev',
         'odoo-addon-project_stock_product_set>=16.0dev,<16.1dev',
         'odoo-addon-project_tag_hierarchy>=16.0dev,<16.1dev',
+        'odoo-addon-project_tag_security>=16.0dev,<16.1dev',
         'odoo-addon-project_task_add_very_high>=16.0dev,<16.1dev',
         'odoo-addon-project_task_code>=16.0dev,<16.1dev',
         'odoo-addon-project_task_default_stage>=16.0dev,<16.1dev',
