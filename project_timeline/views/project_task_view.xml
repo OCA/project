@@ -20,9 +20,7 @@
             >
                 <field name="user_ids"/>
                 <field name="allocated_hours"/>
-                <div>
-                    <t t-owl="project_timeline.ProjectTimelineItem" t-props="{'record': record}"/>
-                </div>
+                <!-- Lógica OWL eliminada de la vista XML -->
             </timeline>
         </field>
     </record>
