@@ -38,12 +38,12 @@
                                 <t t-esc="record.display_name" />
                             </span>
                             <small
-                                name="planned_hours"
+                                name="allocated_hours"
                                 class="text-info ml4"
-                                t-if="record.planned_hours"
+                                t-if="record.allocated_hours"
                             >
                                 <t
-                                    t-esc="field_utils.format.float_time(record.planned_hours)"
+                                    t-esc="field_utils.format.float_time(record.allocated_hours)"
                                 />
                             </small>
                         </div>
