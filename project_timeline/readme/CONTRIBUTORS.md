@@ -8,6 +8,7 @@
   - Carlos Dauden
   - Alexandre Díaz
   - Juan José Seguí
+  - Carlos López
 - [Open Source Integrators](https://www.opensourceintegrators.com):
   - Daniel Reis \<<dreis@opensourceintegrators.com>\>
 - [XCG Consulting](https://xcg-consulting.fr):
