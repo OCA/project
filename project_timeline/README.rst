@@ -86,6 +86,7 @@ Contributors
    -  Carlos Dauden
    -  Alexandre Díaz
    -  Juan José Seguí
+   -  Carlos López
 
 -  `Open Source Integrators <https://www.opensourceintegrators.com>`__:
 
