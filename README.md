@@ -34,7 +34,7 @@ addon | version | maintainers | summary
 [project_pivot](project_pivot/) | 16.0.1.0.1 |  | Pivot view for projects
 [project_purchase_link](project_purchase_link/) | 16.0.1.0.0 |  | Project Purchase Link
 [project_role](project_role/) | 16.0.1.0.4 | [![alexey-pelykh](https://github.com/alexey-pelykh.png?size=30px)](https://github.com/alexey-pelykh) | Project role-based roster
-[project_sequence](project_sequence/) | 16.0.1.0.0 | [![yajo](https://github.com/yajo.png?size=30px)](https://github.com/yajo) [![anddago78](https://github.com/anddago78.png?size=30px)](https://github.com/anddago78) | Add a sequence field to projects, filled automatically
+[project_sequence](project_sequence/) | 16.0.1.0.1 | [![yajo](https://github.com/yajo.png?size=30px)](https://github.com/yajo) [![anddago78](https://github.com/anddago78.png?size=30px)](https://github.com/anddago78) | Add a sequence field to projects, filled automatically
 [project_stage_extra_info](project_stage_extra_info/) | 16.0.1.0.0 |  | Project Stage Extra Info
 [project_stage_last_update_date](project_stage_last_update_date/) | 16.0.1.0.0 |  | Project Stage Last Update Date
 [project_stock](project_stock/) | 16.0.1.2.0 | [![victoralmau](https://github.com/victoralmau.png?size=30px)](https://github.com/victoralmau) | Project Stock
