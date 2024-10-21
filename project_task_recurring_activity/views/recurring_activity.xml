@@ -1,0 +1,27 @@
+<odoo>
+   <record id="recurring_activity_view_form" model="ir.ui.view">
+    <field name="name">recurring_activity_view_form</field>
+    <field name="model">recurring.activity</field>
+    <field name="arch" type="xml">
+        <form string="">
+            <sheet>
+                <group name="recurring_activity">
+                    <group name="main">
+                        <field name="user_id" readonly="0" />
+                        <field name="project_task_id" invisible='1' />
+                    </group>
+                    <group name="extra">
+                        <field name="activity_type_id" required="1" />
+                        <field name="days_after_task_creation_date" />
+                    </group>
+                </group>
+                <group name="summary">
+                    <field name="summary" readonly="0" />
+                </group>
+                <field name="description" readonly="0" />
+            </sheet>
+        </form>
+    </field>
+   </record>
+
+</odoo>
