@@ -39,6 +39,6 @@ class ProjectTask(models.Model):
 
         for task in result:
             rec = self.browse(task[0])
-            name = "[{}] {}".format(rec.code, task[1])
+            name = f"[{rec.code}] {task[1]}"
             new_result.append((rec.id, name))
         return new_result
