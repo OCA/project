@@ -20,13 +20,6 @@ msgstr ""
 "X-Generator: Weblate 4.17\n"
 
 #. module: project_timeline
-#: model_terms:ir.ui.view,arch_db:project_timeline.view_task_form2
-msgid ""
-"<i class=\"fa fa-long-arrow-right mx-2\" aria-label=\"Arrow icon\" "
-"title=\"Arrow\"/>"
-msgstr ""
-
-#. module: project_timeline
 #: model:ir.model.fields,field_description:project_timeline.field_project_task__planned_date_end
 msgid "Planned Date End"
 msgstr ""
