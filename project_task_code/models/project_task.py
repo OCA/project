@@ -3,10 +3,10 @@
 
 from odoo import _, api, fields, models
 
-
 PROJECT_TASK_WRITABLE_FIELDS = {
     "code",
 }
+
 
 class ProjectTask(models.Model):
     _inherit = "project.task"
