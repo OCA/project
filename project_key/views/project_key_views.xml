@@ -41,9 +41,10 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_form2" />
         <field name="arch" type="xml">
-            <field name="name" position="before">
-                <field name="key" readonly="1" nolabel="1" class="oe_read_only" />
-            </field>
+            <xpath
+                expr="//page[@name='sub_tasks_page']/field[@name='child_ids']/tree/field[@name='name']"
+                position="before"
+            ><field name="key" /></xpath>
         </field>
     </record>
     <record id="view_task_tree2_extend_with_key" model="ir.ui.view">
@@ -75,16 +76,22 @@
         <field name="inherit_id" ref="project.view_task_kanban" />
         <field name="arch" type="xml">
             <field name="color" position="after">
-                <field name="url" />
+                <field name="parent_task_url" />
                 <field name="key" />
+                <field name="parent_task_key" />
             </field>
+            <xpath expr="//div[@class='o_kanban_record_headings']" position="inside">
+                <field name="key" />
+            </xpath>
             <xpath
-                expr="//t[@t-name='kanban-box']//field[@name='name']/parent::s/parent::strong"
+                expr="//div[hasclass('oe_kanban_bottom_right')]/field[@name='kanban_state']"
                 position="before"
             >
-                <a t-att-href="record.url.raw_value">
-                    <field name="key" />
-                </a>
+                <a
+                    t-att-href="record.parent_task_url.raw_value"
+                    t-if="record.parent_task_key.value"
+                    style="margin-right:3px"
+                > <field name="parent_task_key" /></a>
             </xpath>
         </field>
     </record>
@@ -107,7 +114,9 @@
                 <field name="key" />
             </field>
             <xpath expr="//t[@t-esc='record.display_name.value']" position="before">
-                <t t-esc="record.key.value" />  -
+                <span t-if="record.key.value" style="margin-right:3px"> <t
+                        t-esc="record.key.value"
+                    /> - </span>
             </xpath>
         </field>
     </record>
