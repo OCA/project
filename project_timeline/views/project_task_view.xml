@@ -62,8 +62,8 @@
         <field name="type">timeline</field>
         <field name="arch" type="xml">
             <timeline
-                date_start="date_assign"
-                date_stop="date_end"
+                date_start="planned_date_start"
+                date_stop="planned_date_end"
                 default_group_by="project_id"
                 event_open_popup="true"
             />
