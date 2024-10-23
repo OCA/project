@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<odoo>
+    <template id="report_task_document" inherit_id="project_task_report.task_report">
+        <xpath expr="//span[@t-field='o.description']" position="after">
+            <div t-if="o.signature" class="mt32 ml64 mr4" name="signature">
+                <div class="offset-8">
+                    <strong>Signature</strong>
+                </div>
+                <div class="offset-8">
+                    <img
+                        t-att-src="image_data_uri(o.signature)"
+                        style="max-height: 4cm; max-width: 8cm;"
+                    />
+                </div>
+                <div class="offset-8 text-center">
+                    <p t-field="o.partner_id.name" />
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

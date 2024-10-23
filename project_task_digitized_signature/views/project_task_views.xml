@@ -1,0 +1,73 @@
+<?xml version="1.0" ?>
+<odoo>
+    <record id="view_task_tree_signed" model="ir.ui.view">
+        <field name="name">project.task.tree.signed</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_tree2" />
+        <field name="arch" type="xml">
+            <field name="kanban_state" position="after">
+                <field
+                    name="is_signed"
+                    string="Signed"
+                    optional="hide"
+                    groups="project_task_digitized_signature.group_project_sign_task"
+                />
+            </field>
+        </field>
+    </record>
+    <record id="view_task_signed" model="ir.ui.view">
+        <field name="name">project.task.form.signed</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2" />
+        <field name="arch" type="xml">
+            <header position="inside">
+                <widget
+                    name="signature"
+                    string="Sign"
+                    attrs="{'invisible': ['|', ('id', '=', False), ('is_signed', '=', True)]}"
+                    full_name="partner_id"
+                    groups="project_task_digitized_signature.group_project_sign_task"
+                />
+            </header>
+            <div name="button_box" position="after">
+                <field name="is_signed" invisible="1" />
+                <widget
+                    name="web_ribbon"
+                    title="Signed"
+                    attrs="{'invisible': [('is_signed', '!=', True)]}"
+                    groups="project_task_digitized_signature.group_project_sign_task"
+                />
+            </div>
+        </field>
+    </record>
+    <record id="view_task_kanban_signed" model="ir.ui.view">
+        <field name="name">project.task.kanban.signed</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_kanban" />
+        <field name="arch" type="xml">
+            <kanban position="inside">
+                <field name="is_signed" />
+            </kanban>
+            <xpath expr="//div[hasclass('oe_kanban_bottom_left')]" position="inside">
+                <b groups="project_task_digitized_signature.group_project_sign_task">
+                    <span
+                        style="font-weight:bold;"
+                        class="fa fa-fw mt4 fa-pencil text-success"
+                        t-if="record.is_signed.raw_value"
+                        title="Signed"
+                        role="img"
+                        aria-label="Signed"
+                    />
+                    <span
+                        style="font-weight:bold;"
+                        class="fa fa-fw mt4 fa-pencil text-danger"
+                        t-else=""
+                        title="Not Signed"
+                        role="img"
+                        aria-label="Not Signed"
+                    />
+                </b>
+            </xpath>
+        </field>
+    </record>
+</odoo>
