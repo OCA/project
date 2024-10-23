@@ -28,26 +28,31 @@ msgstr ""
 
 #. module: project_timeline
 #: model:ir.model.fields,field_description:project_timeline.field_project_task__display_name
+#: model:ir.model.fields,field_description:project_timeline.field_report_project_task_user__display_name
 msgid "Display Name"
 msgstr ""
 
 #. module: project_timeline
 #: model:ir.model.fields,field_description:project_timeline.field_project_task__id
+#: model:ir.model.fields,field_description:project_timeline.field_report_project_task_user__id
 msgid "ID"
 msgstr ""
 
 #. module: project_timeline
 #: model:ir.model.fields,field_description:project_timeline.field_project_task____last_update
+#: model:ir.model.fields,field_description:project_timeline.field_report_project_task_user____last_update
 msgid "Last Modified on"
 msgstr ""
 
 #. module: project_timeline
 #: model:ir.model.fields,field_description:project_timeline.field_project_task__planned_date_end
+#: model:ir.model.fields,field_description:project_timeline.field_report_project_task_user__planned_date_end
 msgid "Planned Date End"
 msgstr ""
 
 #. module: project_timeline
 #: model:ir.model.fields,field_description:project_timeline.field_project_task__planned_date_start
+#: model:ir.model.fields,field_description:project_timeline.field_report_project_task_user__planned_date_start
 msgid "Planned Date Start"
 msgstr ""
 
@@ -60,6 +65,11 @@ msgstr ""
 #: model:ir.model,name:project_timeline.model_project_task
 msgid "Task"
 msgstr "Zadatak"
+
+#. module: project_timeline
+#: model:ir.model,name:project_timeline.model_report_project_task_user
+msgid "Tasks Analysis"
+msgstr ""
 
 #. module: project_timeline
 #: code:addons/project_timeline/models/project_task.py:0
