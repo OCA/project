@@ -26,7 +26,11 @@
         <field name="inherit_id" ref="project.edit_project" />
         <field name="arch" type="xml">
             <xpath expr="//notebook" position="inside">
-                <page string="Project Stages" name="project_stages">
+                <page
+                    string="Project Stages"
+                    name="project_stages"
+                    groups="base.group_no_one"
+                >
                     <field name="type_ids">
                         <tree>
                             <field name="sequence" widget="handle" optional="show" />
