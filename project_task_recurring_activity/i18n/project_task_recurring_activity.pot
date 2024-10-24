@@ -1,0 +1,137 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_task_recurring_activity
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: project_task_recurring_activity
+#: model_terms:ir.ui.view,arch_db:project_task_recurring_activity.view_recurring_activity_form
+msgid "Activities"
+msgstr ""
+
+#. module: project_task_recurring_activity
+#: model:ir.model.fields,field_description:project_task_recurring_activity.field_recurring_activity__activity_type_id
+msgid "Activity Type"
+msgstr ""
+
+#. module: project_task_recurring_activity
+#: model:ir.model.fields,field_description:project_task_recurring_activity.field_recurring_activity__user_id
+msgid "Assigned to"
+msgstr ""
+
+#. module: project_task_recurring_activity
+#: model_terms:ir.ui.view,arch_db:project_task_recurring_activity.view_recurring_activity_form
+msgid "Create Next Recurring Task"
+msgstr ""
+
+#. module: project_task_recurring_activity
+#: model:ir.model.fields,field_description:project_task_recurring_activity.field_recurring_activity__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: project_task_recurring_activity
+#: model:ir.model.fields,field_description:project_task_recurring_activity.field_recurring_activity__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: project_task_recurring_activity
+#: model:ir.model.fields,field_description:project_task_recurring_activity.field_project_task__custom_activity_ids
+msgid "Custom Activity"
+msgstr ""
+
+#. module: project_task_recurring_activity
+#: model:ir.model.fields,field_description:project_task_recurring_activity.field_recurring_activity__days_after_task_creation_date
+msgid "Days After Task Creation Date"
+msgstr ""
+
+#. module: project_task_recurring_activity
+#: model:ir.model.fields,field_description:project_task_recurring_activity.field_recurring_activity__description
+msgid "Description"
+msgstr ""
+
+#. module: project_task_recurring_activity
+#: model:ir.model.fields,field_description:project_task_recurring_activity.field_project_task__display_name
+#: model:ir.model.fields,field_description:project_task_recurring_activity.field_project_task_recurrence__display_name
+#: model:ir.model.fields,field_description:project_task_recurring_activity.field_recurring_activity__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: project_task_recurring_activity
+#: model:ir.model.fields,field_description:project_task_recurring_activity.field_project_task__id
+#: model:ir.model.fields,field_description:project_task_recurring_activity.field_project_task_recurrence__id
+#: model:ir.model.fields,field_description:project_task_recurring_activity.field_recurring_activity__id
+msgid "ID"
+msgstr ""
+
+#. module: project_task_recurring_activity
+#: model:ir.model.fields,field_description:project_task_recurring_activity.field_project_task____last_update
+#: model:ir.model.fields,field_description:project_task_recurring_activity.field_project_task_recurrence____last_update
+#: model:ir.model.fields,field_description:project_task_recurring_activity.field_recurring_activity____last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: project_task_recurring_activity
+#: model:ir.model.fields,field_description:project_task_recurring_activity.field_recurring_activity__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: project_task_recurring_activity
+#: model:ir.model.fields,field_description:project_task_recurring_activity.field_recurring_activity__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: project_task_recurring_activity
+#: model:ir.model.fields,field_description:project_task_recurring_activity.field_project_task_recurrence__old_date_recurring_task
+msgid "Old Date Recurring Task"
+msgstr ""
+
+#. module: project_task_recurring_activity
+#: model:ir.model.fields,field_description:project_task_recurring_activity.field_recurring_activity__project_task_id
+msgid "Project Task"
+msgstr ""
+
+#. module: project_task_recurring_activity
+#: model:ir.actions.server,name:project_task_recurring_activity.ir_cron_recurring_activities_ir_actions_server
+#: model:ir.cron,cron_name:project_task_recurring_activity.ir_cron_recurring_activities
+#: model:ir.cron,name:project_task_recurring_activity.ir_cron_recurring_activities
+msgid "Project: Create Recurring Activities"
+msgstr ""
+
+#. module: project_task_recurring_activity
+#: model:ir.model,name:project_task_recurring_activity.model_recurring_activity
+msgid "Recurring activity"
+msgstr ""
+
+#. module: project_task_recurring_activity
+#: model:ir.model.fields,field_description:project_task_recurring_activity.field_recurring_activity__summary
+msgid "Summary"
+msgstr ""
+
+#. module: project_task_recurring_activity
+#: model:ir.model,name:project_task_recurring_activity.model_project_task
+msgid "Task"
+msgstr ""
+
+#. module: project_task_recurring_activity
+#: model:ir.model,name:project_task_recurring_activity.model_project_task_recurrence
+msgid "Task Recurrence"
+msgstr ""
+
+#. module: project_task_recurring_activity
+#: model:ir.model.fields,field_description:project_task_recurring_activity.field_project_task__recurring_activity_ids
+msgid "activity"
+msgstr ""
+
+#. module: project_task_recurring_activity
+#: model:ir.model.fields,field_description:project_task_recurring_activity.field_recurring_activity__next_recurrence_date
+msgid "next_date"
+msgstr ""
