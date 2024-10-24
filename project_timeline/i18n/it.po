@@ -25,16 +25,18 @@ msgid ""
 "<i class=\"fa fa-long-arrow-right mx-2\" aria-label=\"Arrow icon\" "
 "title=\"Arrow\"/>"
 msgstr ""
-"<i class=\"fa fa-long-arrow-right mx-2\" aria-label=\"Arrow icon\" title="
-"\"Freccia\"/>"
+"<i class=\"fa fa-long-arrow-right mx-2\" aria-label=\"Arrow icon\" "
+"title=\"Freccia\"/>"
 
 #. module: project_timeline
 #: model:ir.model.fields,field_description:project_timeline.field_project_task__planned_date_end
+#: model:ir.model.fields,field_description:project_timeline.field_report_project_task_user__planned_date_end
 msgid "Planned Date End"
 msgstr "Data fine pianificata"
 
 #. module: project_timeline
 #: model:ir.model.fields,field_description:project_timeline.field_project_task__planned_date_start
+#: model:ir.model.fields,field_description:project_timeline.field_report_project_task_user__planned_date_start
 msgid "Planned Date Start"
 msgstr "Data inizio pianificata"
 
@@ -47,6 +49,11 @@ msgstr "Date pianificate"
 #: model:ir.model,name:project_timeline.model_project_task
 msgid "Task"
 msgstr "Lavoro"
+
+#. module: project_timeline
+#: model:ir.model,name:project_timeline.model_report_project_task_user
+msgid "Tasks Analysis"
+msgstr ""
 
 #. module: project_timeline
 #. odoo-python
