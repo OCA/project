@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Rename old 'Project Administrator' access group name and unlink
+    the access rule for the projects -->
+    <record id="project.group_project_manager" model="res.groups">
+        <field name="name">Restricted Administrator</field>
+        <field
+            name="rule_groups"
+            eval="[(3, ref('project.project_project_manager_rule'))]"
+        />
+    </record>
+    <!-- Create a new 'Project Administrator' access group with
+    the original 'Project Administrator' access rule for project -->
+    <record id="group_full_project_manager" model="res.groups">
+        <field name="name">Full Administrator</field>
+        <field name="category_id" ref="base.module_category_services_project" />
+        <field name="implied_ids" eval="[(4, ref('project.group_project_manager'))]" />
+        <field
+            name="rule_groups"
+            eval="[(4, ref('project.project_project_manager_rule'))]"
+        />
+    </record>
+</odoo>
