@@ -3,11 +3,11 @@
 
 {
     "name": "Project task notes",
-    "version": "16.0.1.0.0",
+    "version": "17.0.1.0.0",
     "category": "Project Management",
     "summary": "Add notes in project tasks",
     "author": "Tecnativa, Odoo Community Association (OCA)",
-    "maintainers": ["carolina-fernandez"],
+    "maintainers": ["pilar-vargas"],
     "website": "https://github.com/OCA/project",
     "license": "AGPL-3",
     "installable": True,
