@@ -1,7 +1,8 @@
 # Copyright 2014 Daniel Reis
+# Copyright 2024 Tecnativa - Víctor Matínez
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
-from odoo import api, fields, models
+from odoo import fields, models
 
 
 class ProjectTaskType(models.Model):
@@ -9,14 +10,9 @@ class ProjectTaskType(models.Model):
 
     _inherit = "project.task.type"
 
-    @api.model
     def _get_task_states(self):
-        return [
-            ("draft", "New"),
-            ("open", "In Progress"),
-            ("pending", "Pending"),
-            ("done", "Done"),
-            ("cancelled", "Cancelled"),
+        return self.env["project.task"].fields_get(allfields=["state"])["state"][
+            "selection"
         ]
 
-    state = fields.Selection(selection="_get_task_states")
+    task_state = fields.Selection(selection="_get_task_states")
