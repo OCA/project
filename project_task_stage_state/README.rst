@@ -28,15 +28,8 @@ Add State field to Project Stages
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
-This module restores the state fields to Project Stages, removed in Odoo
-8.0.
-
-For some use cases it‘s necessary to be able to map the multiple Stages
-into a few broad groups.
-
-For example, this can allow to define automated actions and business
-logic for Tasks not yet “Started”, knowing that “Started” means
-different Stages in different Projects.
+This module associates a state to a stage, so that when the stage of a
+task is changed, the state is also changed..
 
 **Table of contents**
 
@@ -59,8 +52,7 @@ To use this module, you need to:
 3. Save your changes
 4. Go to Project -> Dashboard and click on a project
 5. Click on task in the stage you just edited
-6. Under the "Customer" field, you can see the "State" field for that
-   task
+6. Task state has changed.
 
 Bug Tracker
 ===========
@@ -89,6 +81,9 @@ Contributors
 -  Saran Lim. <saranl@ecosoft.co.th>
 -  Nattapol Sinsuphan<gamso321@gmail.com>
 -  Manuel Regidor <manuel.regidor@sygel.es>
+-  `Tecnativa <https://www.tecnativa.com>`__:
+
+   -  Víctor Martínez
 
 Maintainers
 -----------

@@ -6,5 +6,4 @@ To use this module, you need to:
 3.  Save your changes
 4.  Go to Project -\> Dashboard and click on a project
 5.  Click on task in the stage you just edited
-6.  Under the "Customer" field, you can see the "State" field for that
-    task
+6.  Task state has changed.

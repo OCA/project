@@ -57,12 +57,3 @@ msgstr "Tarea"
 #: model:ir.model,name:project_task_stage_state.model_project_task_type
 msgid "Task Stage"
 msgstr "Etapa de la Tarea"
-
-#~ msgid "Display Name"
-#~ msgstr "Mostrar Nombre"
-
-#~ msgid "ID"
-#~ msgstr "ID"
-
-#~ msgid "Last Modified on"
-#~ msgstr "Última Modificación el"

@@ -369,13 +369,8 @@ ul.auto-toc {
 !! source digest: sha256:386bce3b883f9ab43f569dec37e2e1b0e4d4a7565b7fb3cc3f74df914ad7c72e
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
 <p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Beta" src="https://img.shields.io/badge/maturity-Beta-yellow.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/licence-AGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/OCA/project/tree/17.0/project_task_stage_state"><img alt="OCA/project" src="https://img.shields.io/badge/github-OCA%2Fproject-lightgray.png?logo=github" /></a> <a class="reference external image-reference" href="https://translation.odoo-community.org/projects/project-17-0/project-17-0-project_task_stage_state"><img alt="Translate me on Weblate" src="https://img.shields.io/badge/weblate-Translate%20me-F47D42.png" /></a> <a class="reference external image-reference" href="https://runboat.odoo-community.org/builds?repo=OCA/project&amp;target_branch=17.0"><img alt="Try me on Runboat" src="https://img.shields.io/badge/runboat-Try%20me-875A7B.png" /></a></p>
-<p>This module restores the state fields to Project Stages, removed in Odoo
-8.0.</p>
-<p>For some use cases it‘s necessary to be able to map the multiple Stages
-into a few broad groups.</p>
-<p>For example, this can allow to define automated actions and business
-logic for Tasks not yet “Started”, knowing that “Started” means
-different Stages in different Projects.</p>
+<p>This module associates a state to a stage, so that when the stage of a
+task is changed, the state is also changed..</p>
 <p><strong>Table of contents</strong></p>
 <div class="contents local topic" id="contents">
 <ul class="simple">
@@ -404,8 +399,7 @@ dropdown “State” menu</li>
 <li>Save your changes</li>
 <li>Go to Project -&gt; Dashboard and click on a project</li>
 <li>Click on task in the stage you just edited</li>
-<li>Under the “Customer” field, you can see the “State” field for that
-task</li>
+<li>Task state has changed.</li>
 </ol>
 </div>
 <div class="section" id="bug-tracker">
@@ -433,6 +427,10 @@ If you spotted it first, help us to smash it by providing a detailed and welcome
 <li>Saran Lim. &lt;<a class="reference external" href="mailto:saranl&#64;ecosoft.co.th">saranl&#64;ecosoft.co.th</a>&gt;</li>
 <li>Nattapol Sinsuphan&lt;<a class="reference external" href="mailto:gamso321&#64;gmail.com">gamso321&#64;gmail.com</a>&gt;</li>
 <li>Manuel Regidor &lt;<a class="reference external" href="mailto:manuel.regidor&#64;sygel.es">manuel.regidor&#64;sygel.es</a>&gt;</li>
+<li><a class="reference external" href="https://www.tecnativa.com">Tecnativa</a>:<ul>
+<li>Víctor Martínez</li>
+</ul>
+</li>
 </ul>
 </div>
 <div class="section" id="maintainers">
