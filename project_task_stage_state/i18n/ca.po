@@ -20,36 +20,9 @@ msgstr ""
 "X-Generator: Weblate 3.7.1\n"
 
 #. module: project_task_stage_state
-#: model:ir.model.fields.selection,name:project_task_stage_state.selection__project_task_type__state__cancelled
-msgid "Cancelled"
-msgstr "Cancel·lat"
-
-#. module: project_task_stage_state
-#: model:ir.model.fields.selection,name:project_task_stage_state.selection__project_task_type__state__done
-msgid "Done"
-msgstr "Fet"
-
-#. module: project_task_stage_state
-#: model:ir.model.fields.selection,name:project_task_stage_state.selection__project_task_type__state__open
-msgid "In Progress"
-msgstr "En procés"
-
-#. module: project_task_stage_state
-#: model:ir.model.fields.selection,name:project_task_stage_state.selection__project_task_type__state__draft
-msgid "New"
-msgstr "Nou"
-
-#. module: project_task_stage_state
-#: model:ir.model.fields.selection,name:project_task_stage_state.selection__project_task_type__state__pending
-msgid "Pending"
-msgstr "Pendent"
-
-#. module: project_task_stage_state
-#: model:ir.model.fields,field_description:project_task_stage_state.field_project_task__state
-#: model:ir.model.fields,field_description:project_task_stage_state.field_project_task_type__state
-#: model_terms:ir.ui.view,arch_db:project_task_stage_state.view_task_search_form
-msgid "State"
-msgstr "Estat"
+#: model:ir.model.fields,field_description:project_task_stage_state.field_project_task__stage_id
+msgid "Stage"
+msgstr ""
 
 #. module: project_task_stage_state
 #: model:ir.model,name:project_task_stage_state.model_project_task
@@ -60,3 +33,26 @@ msgstr "Tasca"
 #: model:ir.model,name:project_task_stage_state.model_project_task_type
 msgid "Task Stage"
 msgstr "Estat de la Tasca"
+
+#. module: project_task_stage_state
+#: model:ir.model.fields,field_description:project_task_stage_state.field_project_task_type__task_state
+msgid "Task State"
+msgstr ""
+
+#~ msgid "Cancelled"
+#~ msgstr "Cancel·lat"
+
+#~ msgid "Done"
+#~ msgstr "Fet"
+
+#~ msgid "In Progress"
+#~ msgstr "En procés"
+
+#~ msgid "New"
+#~ msgstr "Nou"
+
+#~ msgid "Pending"
+#~ msgstr "Pendent"
+
+#~ msgid "State"
+#~ msgstr "Estat"
