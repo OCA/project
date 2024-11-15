@@ -51,15 +51,3 @@ msgstr "Pull Request URIs"
 #: model:ir.model,name:project_task_pull_request.model_project_task
 msgid "Task"
 msgstr "Tarea"
-
-#~ msgid "WBS element"
-#~ msgstr "Elemento WBS"
-
-#~ msgid "Display Name"
-#~ msgstr "Mostrar Nombre"
-
-#~ msgid "ID"
-#~ msgstr "ID"
-
-#~ msgid "Last Modified on"
-#~ msgstr "Última modificación en"
