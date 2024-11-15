@@ -11,12 +11,8 @@
                 expr="//page[@name='extra_info']//field[@name='sequence']"
                 position="before"
             >
-                <field name="pr_required_states" attrs="{'invisible':True}" />
-                <field
-                    name="pr_uri"
-                    widget="url"
-                    attrs="{'invisible':[('pr_required_states', '=', [])]}"
-                />
+                <field name="pr_required_states" invisible="1" />
+                <field name="pr_uri" widget="url" invisible="not pr_required_states" />
             </xpath>
         </field>
     </record>

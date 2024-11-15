@@ -54,6 +54,3 @@ msgstr "URIs del Pull Request"
 #: model:ir.model,name:project_task_pull_request.model_project_task
 msgid "Task"
 msgstr "Tarea"
-
-#~ msgid "WBS element"
-#~ msgstr "Elemento WBS"
