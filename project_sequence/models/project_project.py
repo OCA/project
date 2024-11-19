@@ -31,9 +31,9 @@ class ProjectProject(models.Model):
     def _sync_analytic_account_name(self):
         """Set analytic account name equal to project's display name."""
         for rec in self:
-            if not rec.analytic_account_id:
+            if not rec.account_id:
                 continue
-            rec.analytic_account_id.name = rec.display_name
+            rec.account_id.name = rec.display_name
 
     @api.depends("sequence_code", "name")
     def _compute_display_name(self):
@@ -58,11 +58,22 @@ class ProjectProject(models.Model):
     @api.model
     def name_search(self, name="", args=None, operator="ilike", limit=100):
         """Allow searching by sequence code by default."""
+        result = super().name_search(name, args, operator, limit)
         # Do not add any domain when user just clicked on search widget
         if not (name == "" and operator == "ilike"):
-            # The dangling | is needed to combine with the domain added by super()
-            args = (args or []) + ["|", ("sequence_code", operator, name)]
-        return super().name_search(name, args, operator, limit)
+            # We need additional search, as in super() method call expression
+            # `AND` is used and there is no easy way to add `OR` in the final domain
+            projects = self.search_fetch(
+                [
+                    ("sequence_code", operator, name),
+                    "!",
+                    ("display_name", operator, name),
+                ],
+                ["display_name"],
+                limit=limit,
+            ).mapped(lambda p: (p.id, p.display_name))
+            result.extend(projects)
+        return result
 
     @api.model_create_multi
     def create(self, vals_list):

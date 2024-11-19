@@ -4,7 +4,8 @@ from freezegun import freeze_time
 from psycopg2 import IntegrityError
 
 from odoo import fields
-from odoo.tests.common import Form, TransactionCase, new_test_user, users
+from odoo.tests import Form
+from odoo.tests.common import TransactionCase, new_test_user, users
 from odoo.tools import mute_logger
 
 
@@ -52,39 +53,39 @@ class TestProjectSequence(TransactionCase):
     def test_analytic_account_after_creation_no_name(self):
         """Project's analytic account is named like project's default name."""
         proj = self.env["project.project"].create(
-            {"analytic_account_id": self.analytic_account.id}
+            {"account_id": self.analytic_account.id}
         )
         self.assertEqual(proj.sequence_code, "23-00011")
         self.assertEqual(proj.name, "23-00011")
         self.assertEqual(proj.display_name, "23-00011")
-        self.assertEqual(proj.analytic_account_id.name, "23-00011")
+        self.assertEqual(proj.account_id.name, "23-00011")
 
     def test_analytic_account_after_creation_named(self):
         """Project's analytic account is named like project's display name."""
         proj = self.env["project.project"].create(
-            {"name": "whatever", "analytic_account_id": self.analytic_account.id}
+            {"name": "whatever", "account_id": self.analytic_account.id}
         )
         self.assertEqual(proj.sequence_code, "23-00011")
         self.assertEqual(proj.name, "whatever")
         self.assertEqual(proj.display_name, "23-00011 - whatever")
-        self.assertEqual(proj.analytic_account_id.name, "23-00011 - whatever")
+        self.assertEqual(proj.account_id.name, "23-00011 - whatever")
 
     @users("manager")
     def test_sequence_copied_to_name_if_emptied(self):
         """Sequence is copied to project name if user removes it."""
         proj = self.env["project.project"].create(
-            {"name": "whatever", "analytic_account_id": self.analytic_account.id}
+            {"name": "whatever", "account_id": self.analytic_account.id}
         )
         self.assertEqual(proj.name, "whatever")
         self.assertEqual(proj.sequence_code, "23-00011")
         self.assertEqual(proj.display_name, "23-00011 - whatever")
-        self.assertEqual(proj.analytic_account_id.name, "23-00011 - whatever")
+        self.assertEqual(proj.account_id.name, "23-00011 - whatever")
         with Form(proj) as prj_f:
             prj_f.name = False
         self.assertEqual(proj.name, "23-00011")
         self.assertEqual(proj.sequence_code, "23-00011")
         self.assertEqual(proj.display_name, "23-00011")
-        self.assertEqual(proj.analytic_account_id.name, "23-00011")
+        self.assertEqual(proj.account_id.name, "23-00011")
 
     @users("manager")
     def test_sequence_not_copied_to_another_project(self):
@@ -153,12 +154,12 @@ class TestProjectSequence(TransactionCase):
                 "write_date": fields.Datetime.now(),
             }
         )
-        proj.analytic_account_id = analytic_account
+        proj.account_id = analytic_account
         proj._sync_analytic_account_name()
-        self.assertEqual(proj.analytic_account_id.name, proj.display_name)
+        self.assertEqual(proj.account_id.name, proj.display_name)
 
         # Test when analytic_account_id is not set
-        proj.analytic_account_id = False
+        proj.account_id = False
         proj._sync_analytic_account_name()
         self.assertTrue(True)  # Placeholder assertion to ensure the code execution
 
