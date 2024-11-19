@@ -57,11 +57,6 @@ class ProjectTask(models.Model):
                         _("The end date must be after the start date.")
                     )
 
-    def update_date_end(self, stage_id):
-        res = super().update_date_end(stage_id)
-        res.pop("date_end", None)
-        return res
-
     def _auto_init(self):
         # Pre-create and fill planned_date_start and planned_date_end columns for
         # avoiding a costly computation and possible conflicts with the constraint
