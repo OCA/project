@@ -49,7 +49,9 @@
                 expr="//span[t[@t-esc='record.display_name.value']]"
                 position="after"
             >
-                <span><t t-esc="record.display_name.value" /></span>
+                <span>
+                    <t t-esc="record.display_name.value" />
+                </span>
             </xpath>
         </field>
     </record>
