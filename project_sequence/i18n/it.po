@@ -64,13 +64,3 @@ msgid ""
 msgstr ""
 "Utilizzare %(sequence_code)s e %(name)s per includere il codice sequenza e "
 "il nome del progetto nel nome visualizzato."
-
-#~ msgid ""
-#~ "Name of your project. It can be anything you want e.g. the name of a "
-#~ "customer or a service."
-#~ msgstr ""
-#~ "Nome del progetto. Può essere qualsiasi cosa es. il nome di un cliente o "
-#~ "di un servizio."
-
-#~ msgid "WBS element"
-#~ msgstr "Elemento WBS"

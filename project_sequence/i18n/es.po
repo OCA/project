@@ -65,22 +65,3 @@ msgid ""
 msgstr ""
 "Utilice %(sequence_code)s y %(name)s para incluir el código de secuencia y "
 "el nombre del proyecto en el nombre de visualización."
-
-#~ msgid ""
-#~ "Name of your project. It can be anything you want e.g. the name of a "
-#~ "customer or a service."
-#~ msgstr ""
-#~ "Nombre de su proyecto. Puede ser cualquier cosa, por ejemplo, el nombre "
-#~ "de un cliente o de un servicio."
-
-#~ msgid "Display Name"
-#~ msgstr "Nombre"
-
-#~ msgid "ID"
-#~ msgstr "ID"
-
-#~ msgid "Last Modified on"
-#~ msgstr "Última modificación el"
-
-#~ msgid "Code"
-#~ msgstr "Código"
