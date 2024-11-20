@@ -1,0 +1,8 @@
+- Go to *Project > Configuration > Settings*.
+- In the *Tasks Management* section, enable the *Recurring Tasks* checkbox.
+- Go to *Sales > Products > Products*.
+- Create a new product with the following options:
+  - Product Type: Service
+  - Create on Order: Task or Project & Task
+  - Check the box for Is Recurring Task.
+  - Fill in the recurrence fields.
