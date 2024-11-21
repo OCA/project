@@ -108,7 +108,7 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_form2" />
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='date_assign']" position="after">
+            <xpath expr="//label[@for='date_deadline']" position="before">
                 <field
                     name="planned_date_start"
                     widget="daterange"
