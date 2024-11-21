@@ -15,12 +15,12 @@
         </field>
     </record>
     <record id="project.open_view_project_all" model="ir.actions.act_window">
-        <field name="view_mode">kanban,timeline,form</field>
+        <field name="view_mode">kanban,tree,form,timeline</field>
     </record>
     <record
         id="project.open_view_project_all_group_stage"
         model="ir.actions.act_window"
     >
-        <field name="view_mode">kanban,timeline,form</field>
+        <field name="view_mode">kanban,tree,form,calendar,activity,timeline</field>
     </record>
 </odoo>
