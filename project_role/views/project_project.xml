@@ -27,10 +27,10 @@
             <notebook position="inside">
                 <page name="assignments" string="Assignments">
                     <field name="assignment_ids">
-                        <tree>
+                        <list>
                             <field name="role_id" />
                             <field name="user_id" />
-                        </tree>
+                        </list>
                     </field>
                 </page>
             </notebook>

@@ -48,9 +48,9 @@ class ProjectProject(models.Model):
                 values["inherit_assignments"] = company.project_inherit_assignments
 
             if company and "limit_role_to_assignments" not in values:
-                values[
-                    "limit_role_to_assignments"
-                ] = company.project_limit_role_to_assignments
+                values["limit_role_to_assignments"] = (
+                    company.project_limit_role_to_assignments
+                )
         return vals_list
 
     @api.model_create_multi
