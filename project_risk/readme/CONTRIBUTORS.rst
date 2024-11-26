@@ -3,3 +3,5 @@
 
   * Manuel Calero
   * Ernesto Tejeda
+
+* `Heliconia Solutions Pvt. Ltd. <https://www.heliconia.io>`_
