@@ -29,9 +29,7 @@
                 position="inside"
             >
                 <div>
-                    <a name="view_risk" type="object">
-                        Risks
-                    </a>
+                    <a name="view_risk" type="object">Risks</a>
                 </div>
             </xpath>
         </field>
