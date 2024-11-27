@@ -11,7 +11,7 @@
         </field>
     </record>
     <record id="task_type_tree" model="ir.ui.view">
-        <field name="name">project.task.type.tree.inherit</field>
+        <field name="name">project.task.type.list.inherit</field>
         <field name="model">project.task.type</field>
         <field name="inherit_id" ref="project.task_type_tree" />
         <field name="arch" type="xml">
@@ -28,15 +28,22 @@
             <xpath expr="//notebook" position="inside">
                 <page string="Project Stages" name="project_stages">
                     <field name="type_ids">
-                        <tree>
+                        <list>
                             <field name="sequence" widget="handle" optional="show" />
                             <field name="name" />
                             <field name="fold" optional="show" />
                             <field name="mail_template_id" optional="show" />
-                            <field name="rating_template_id" optional="show" />
-                            <field name="auto_validation_state" optional="hide" />
-                            <field name="description" optional="hide" />
-                        </tree>
+                            <field
+                                name="rating_template_id"
+                                optional="show"
+                                groups="project.group_project_rating"
+                            />
+                            <field
+                                name="auto_validation_state"
+                                optional="hide"
+                                groups="project.group_project_rating"
+                            />
+                        </list>
                     </field>
                 </page>
             </xpath>
