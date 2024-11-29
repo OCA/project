@@ -113,8 +113,8 @@ class Project(models.Model):
         values = {
             "name": "{} {}".format(_("Project task sequence for project"), self.name),
             "implementation": "standard",
-            "code": "project.task.key.{}".format(self.id),
-            "prefix": "{}-".format(self.key),
+            "code": f"project.task.key.{self.id}",
+            "prefix": f"{self.key}-",
             "use_date_range": False,
         }
 
