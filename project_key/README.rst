@@ -17,18 +17,19 @@ Project Key
     :target: http://www.gnu.org/licenses/lgpl-3.0-standalone.html
     :alt: License: LGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fproject-lightgray.png?logo=github
-    :target: https://github.com/OCA/project/tree/16.0/project_key
+    :target: https://github.com/OCA/project/tree/18.0/project_key
     :alt: OCA/project
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/project-16-0/project-16-0-project_key
+    :target: https://translation.odoo-community.org/projects/project-18-0/project-18-0-project_key
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/project&target_branch=16.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/project&target_branch=18.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
-This module provides functionality to uniquely identify projects and tasks by simple ``key`` field.
+This module provides functionality to uniquely identify projects and
+tasks by simple ``key`` field.
 
 **Table of contents**
 
@@ -44,34 +45,41 @@ On ``project.project`` level:
 
 In Kanban View:
 
-#. Go to Project > Dashboard
-#. Create
-#. Enter project name and use auto generated key or simply override value by entering your own key value.
+1. Go to Project > Dashboard
+2. Create
+3. Enter project name and use auto generated key or simply override
+   value by entering your own key value.
 
 In Tree View:
 
-#. Go to Project > Configuration > Projects
-#. Create
-#. Enter project name and use auto generated key or simply override value by entering your own key value.
+1. Go to Project > Configuration > Projects
+2. Create
+3. Enter project name and use auto generated key or simply override
+   value by entering your own key value.
 
 In form View:
 
-#. Go to Project > Dashboard
-#. Open the projects settings
-#. Modify the "key" value
-#. After modifying project key the key of any existing tasks related to that project will be updated automatically.
+1. Go to Project > Dashboard
+2. Open the projects settings
+3. Modify the "key" value
+4. After modifying project key the key of any existing tasks related to
+   that project will be updated automatically.
 
-When you create a project, under the hood a ir.sequence record gets creted with prefix: ``<project-key>-``.
+When you create a project, under the hood a ir.sequence record gets
+creted with prefix: ``<project-key>-``.
 
 On ``project.task`` level:
 
-#. Actually there is nothing to be done here
-#. Task keys are auto generated based on project key value with per project auto incremented number (i.e. PA-1, PA-2, etc)
+1. Actually there is nothing to be done here
+2. Task keys are auto generated based on project key value with per
+   project auto incremented number (i.e. PA-1, PA-2, etc)
 
 In browser address bar:
 
-#. Navigate to your project by entering following url: http://<<your-domain>>/projects/PROJECT-KEY
-#. Navigate to your task by entering following url: http://<<your-domain>>/tasks/TASK-KEY
+1. Navigate to your project by entering following url:
+   http://\ <<your-domain>>/projects/PROJECT-KEY
+2. Navigate to your task by entering following url:
+   http://\ <<your-domain>>/tasks/TASK-KEY
 
 Bug Tracker
 ===========
@@ -79,7 +87,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/project/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/project/issues/new?body=module:%20project_key%0Aversion:%2016.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/project/issues/new?body=module:%20project_key%0Aversion:%2018.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -87,24 +95,24 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Modoolar
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* Petar Najman <petar.najman@modoolar.com>
-* Sladjan Kantar <sladjan.kantar@modoolar.com>
-* `CorporateHub <https://corporatehub.eu/>`__
+-  Petar Najman <petar.najman@modoolar.com>
+-  Sladjan Kantar <sladjan.kantar@modoolar.com>
+-  `CorporateHub <https://corporatehub.eu/>`__
 
-  * Alexey Pelykh <alexey.pelykh@corphub.eu>
+   -  Alexey Pelykh <alexey.pelykh@corphub.eu>
 
-* Saran Lim. <saranl@ecosoft.co.th>
-* Tharathip Chaweewongphan <tharathipc@ecosoft.co.th>
+-  Saran Lim. <saranl@ecosoft.co.th>
+-  Tharathip Chaweewongphan <tharathipc@ecosoft.co.th>
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is maintained by the OCA.
 
@@ -116,6 +124,6 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
-This module is part of the `OCA/project <https://github.com/OCA/project/tree/16.0/project_key>`_ project on GitHub.
+This module is part of the `OCA/project <https://github.com/OCA/project/tree/18.0/project_key>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.

@@ -19,7 +19,6 @@ class TestProject(TestCommon):
         self.assertEqual(self.task12.key, "XXX-2")
 
     def test_03_name_search(self):
-
         projects = self.Project.name_search("ODO")
         self.assertEqual(len(projects), 1)
 
