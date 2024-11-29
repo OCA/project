@@ -4,7 +4,7 @@
 from odoo.tests.common import HttpCase, TransactionCase
 
 
-class TestMixin(object):
+class TestMixin:
     @staticmethod
     def _setup_records(class_or_instance):
         self = class_or_instance
@@ -29,9 +29,7 @@ class TestMixin(object):
         self.task30 = self.Task.create({"name": "3"})
 
     def get_record_url(self, record, model, action):
-        return "/web#id={}&view_type=form&model={}&action={}".format(
-            record.id, model, action
-        )
+        return f"/web#id={record.id}&view_type=form&model={model}&action={action}"
 
     def get_task_url(self, task):
         return self.get_record_url(task, task._name, self.task_action.id)

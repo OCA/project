@@ -16,9 +16,7 @@ class ProjectBrowser(http.Controller):
         record_id = records and records.id or -1
         action_id = env.ref(action_xml_id).id
 
-        return "/web#id={}&view_type=form&model={}&action={}".format(
-            record_id, model, action_id
-        )
+        return f"/web#id={record_id}&view_type=form&model={model}&action={action_id}"
 
     def get_task_url(self, key):
         return self.get_record_url(
