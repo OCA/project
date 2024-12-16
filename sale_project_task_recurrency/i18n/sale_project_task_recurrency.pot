@@ -20,6 +20,16 @@ msgid "# Repeats"
 msgstr ""
 
 #. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month__4
+msgid "April"
+msgstr ""
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month__8
+msgid "August"
+msgstr ""
+
+#. module: sale_project_task_recurrency
 #: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_start_date_method__current_date
 msgid "Current date"
 msgstr ""
@@ -27,6 +37,11 @@ msgstr ""
 #. module: sale_project_task_recurrency
 #: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_repeat_unit__day
 msgid "Days"
+msgstr ""
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month__12
+msgid "December"
 msgstr ""
 
 #. module: sale_project_task_recurrency
@@ -46,6 +61,17 @@ msgid "End of next period"
 msgstr ""
 
 #. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month__2
+msgid "February"
+msgstr ""
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields,field_description:sale_project_task_recurrency.field_product_product__task_force_month
+#: model:ir.model.fields,field_description:sale_project_task_recurrency.field_product_template__task_force_month
+msgid "Force Month"
+msgstr ""
+
+#. module: sale_project_task_recurrency
 #: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_repeat_type__forever
 msgid "Forever"
 msgstr ""
@@ -57,8 +83,43 @@ msgid "Is recurring task?"
 msgstr ""
 
 #. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month__1
+msgid "January"
+msgstr ""
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month__7
+msgid "July"
+msgstr ""
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month__6
+msgid "June"
+msgstr ""
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month__3
+msgid "March"
+msgstr ""
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month__5
+msgid "May"
+msgstr ""
+
+#. module: sale_project_task_recurrency
 #: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_repeat_unit__month
 msgid "Months"
+msgstr ""
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month__11
+msgid "November"
+msgstr ""
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month__10
+msgid "October"
 msgstr ""
 
 #. module: sale_project_task_recurrency
@@ -85,6 +146,11 @@ msgstr ""
 #. module: sale_project_task_recurrency
 #: model:ir.model,name:sale_project_task_recurrency.model_sale_order_line
 msgid "Sales Order Line"
+msgstr ""
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month__9
+msgid "September"
 msgstr ""
 
 #. module: sale_project_task_recurrency

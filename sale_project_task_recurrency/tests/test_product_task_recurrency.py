@@ -698,3 +698,52 @@ class TestProductTaskRecurrency(BaseCommon):
         last_task.state = "1_done"
         task.invalidate_recordset(["recurring_count"])
         self.assertEqual(task.recurring_count, 4)
+
+    @users("test-user")
+    @freeze_time("2024-11-15")
+    def test_task_recurrency_year_force_month(self):
+        """Every 1 year, force month to July"""
+        self.service_task_recurrency.task_repeat_interval = 1
+        self.service_task_recurrency.task_repeat_unit = "year"
+        self.service_task_recurrency.task_force_month = "6"
+        self.service_task_recurrency.task_repeat_type = "forever"
+        self.sale_order.action_confirm()
+        self.assertFalse(self.sol_no_task.task_id)
+        self.assertFalse(self.sol_task.task_id.recurring_task)
+        task = self.sol_task_recurrency.task_id
+        self.assertTrue(task.recurring_task)
+        self.assertEqual(task.repeat_interval, 1)
+        self.assertEqual(task.repeat_unit, "year")
+        self.assertEqual(task.repeat_type, "forever")
+        self.assertEqual(task.recurring_count, 1)
+        self.assertEqual(
+            task.date_deadline.date(), fields.Date.from_string("2024-06-15")
+        )
+        # start_this
+        self.service_task_recurrency.task_start_date_method = "start_this"
+        self._reprocess_sale_order()
+        task = self.sol_task_recurrency.task_id
+        self.assertEqual(
+            task.date_deadline.date(), fields.Date.from_string("2024-06-01")
+        )
+        # end_this
+        self.service_task_recurrency.task_start_date_method = "end_this"
+        self._reprocess_sale_order()
+        task = self.sol_task_recurrency.task_id
+        self.assertEqual(
+            task.date_deadline.date(), fields.Date.from_string("2024-06-30")
+        )
+        # start_next
+        self.service_task_recurrency.task_start_date_method = "start_next"
+        self._reprocess_sale_order()
+        task = self.sol_task_recurrency.task_id
+        self.assertEqual(
+            task.date_deadline.date(), fields.Date.from_string("2025-06-01")
+        )
+        # end_next
+        self.service_task_recurrency.task_start_date_method = "end_next"
+        self._reprocess_sale_order()
+        task = self.sol_task_recurrency.task_id
+        self.assertEqual(
+            task.date_deadline.date(), fields.Date.from_string("2025-06-30")
+        )

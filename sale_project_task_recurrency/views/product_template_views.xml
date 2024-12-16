@@ -63,6 +63,11 @@
                     required="recurring_task"
                     groups="project.group_project_recurring_tasks"
                 />
+                <field
+                    name="task_force_month"
+                    invisible="task_repeat_unit != 'year'"
+                    groups="project.group_project_recurring_tasks"
+                />
             </xpath>
         </field>
     </record>

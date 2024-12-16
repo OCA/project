@@ -56,6 +56,23 @@ class ProductTemplate(models.Model):
         and the period selected is 'Year(s)' the start date will be 2025/12/31.
         """,
     )
+    task_force_month = fields.Selection(
+        [
+            ("1", "January"),
+            ("2", "February"),
+            ("3", "March"),
+            ("4", "April"),
+            ("5", "May"),
+            ("6", "June"),
+            ("7", "July"),
+            ("8", "August"),
+            ("9", "September"),
+            ("10", "October"),
+            ("11", "November"),
+            ("12", "December"),
+        ],
+        "Force Month",
+    )
 
     @api.onchange("service_tracking")
     def _onchange_service_tracking(self):
