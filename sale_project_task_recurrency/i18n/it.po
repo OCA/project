@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2024-11-25 11:06+0000\n"
+"PO-Revision-Date: 2024-12-17 13:06+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -25,12 +25,12 @@ msgstr "N° ripetizioni"
 #. module: sale_project_task_recurrency
 #: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month__4
 msgid "April"
-msgstr ""
+msgstr "Aprile"
 
 #. module: sale_project_task_recurrency
 #: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month__8
 msgid "August"
-msgstr ""
+msgstr "Agosto"
 
 #. module: sale_project_task_recurrency
 #: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_start_date_method__current_date
@@ -45,7 +45,7 @@ msgstr "Giorni"
 #. module: sale_project_task_recurrency
 #: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month__12
 msgid "December"
-msgstr ""
+msgstr "Dicembre"
 
 #. module: sale_project_task_recurrency
 #: model:ir.model.fields,field_description:sale_project_task_recurrency.field_product_product__task_repeat_until
@@ -66,13 +66,13 @@ msgstr "Fine del periodo successivo"
 #. module: sale_project_task_recurrency
 #: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month__2
 msgid "February"
-msgstr ""
+msgstr "Febbraio"
 
 #. module: sale_project_task_recurrency
 #: model:ir.model.fields,field_description:sale_project_task_recurrency.field_product_product__task_force_month
 #: model:ir.model.fields,field_description:sale_project_task_recurrency.field_product_template__task_force_month
 msgid "Force Month"
-msgstr ""
+msgstr "Forza mese"
 
 #. module: sale_project_task_recurrency
 #: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_repeat_type__forever
@@ -88,27 +88,27 @@ msgstr "È un lavoro ricorrente?"
 #. module: sale_project_task_recurrency
 #: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month__1
 msgid "January"
-msgstr ""
+msgstr "Gennaio"
 
 #. module: sale_project_task_recurrency
 #: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month__7
 msgid "July"
-msgstr ""
+msgstr "Luglio"
 
 #. module: sale_project_task_recurrency
 #: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month__6
 msgid "June"
-msgstr ""
+msgstr "Giugno"
 
 #. module: sale_project_task_recurrency
 #: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month__3
 msgid "March"
-msgstr ""
+msgstr "Marzo"
 
 #. module: sale_project_task_recurrency
 #: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month__5
 msgid "May"
-msgstr ""
+msgstr "Maggio"
 
 #. module: sale_project_task_recurrency
 #: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_repeat_unit__month
@@ -118,12 +118,12 @@ msgstr "Mesi"
 #. module: sale_project_task_recurrency
 #: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month__11
 msgid "November"
-msgstr ""
+msgstr "Novembre"
 
 #. module: sale_project_task_recurrency
 #: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month__10
 msgid "October"
-msgstr ""
+msgstr "Ottobre"
 
 #. module: sale_project_task_recurrency
 #: model:ir.model,name:sale_project_task_recurrency.model_product_template
@@ -154,7 +154,7 @@ msgstr "Riga ordine di vendita"
 #. module: sale_project_task_recurrency
 #: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month__9
 msgid "September"
-msgstr ""
+msgstr "Settembre"
 
 #. module: sale_project_task_recurrency
 #: model:ir.model.fields,field_description:sale_project_task_recurrency.field_product_product__task_start_date_method
