@@ -59,13 +59,23 @@
                 </div>
                 <field
                     name="task_start_date_method"
-                    invisible="not recurring_task or task_repeat_unit not in ['month', 'year']"
+                    invisible="not recurring_task or task_repeat_unit in ['day', 'week']"
                     required="recurring_task"
                     groups="project.group_project_recurring_tasks"
                 />
                 <field
                     name="task_force_month"
                     invisible="task_repeat_unit != 'year'"
+                    groups="project.group_project_recurring_tasks"
+                />
+                <field
+                    name="task_force_month_quarter"
+                    invisible="task_repeat_unit != 'quarter'"
+                    groups="project.group_project_recurring_tasks"
+                />
+                <field
+                    name="task_force_month_semester"
+                    invisible="task_repeat_unit != 'semester'"
                     groups="project.group_project_recurring_tasks"
                 />
             </xpath>

@@ -330,6 +330,188 @@ class TestProductTaskRecurrency(BaseCommon):
 
     @users("test-user")
     @freeze_time("2024-11-15")
+    def test_task_recurrency_quarter(self):
+        """Every 1 quarter forever"""
+        self.service_task_recurrency.task_repeat_unit = "quarter"
+        self.service_task_recurrency.task_repeat_interval = 1
+        self.sale_order.action_confirm()
+        self.assertFalse(self.sol_no_task.task_id)
+        self.assertFalse(self.sol_task.task_id.recurring_task)
+        task = self.sol_task_recurrency.task_id
+        self.assertTrue(task.recurring_task)
+        # quarter is 3 months
+        self.assertEqual(task.repeat_interval, 3)
+        self.assertEqual(task.repeat_unit, "month")
+        self.assertEqual(task.repeat_type, "forever")
+        self.assertFalse(task.repeat_until)
+        self.assertEqual(
+            task.date_deadline.date(), fields.Date.from_string("2024-11-15")
+        )
+        self.assertEqual(task.recurring_count, 1)
+        task.state = "1_done"
+        task.invalidate_recordset(["recurring_count"])
+        self.assertEqual(task.recurring_count, 2)
+        last_task = self._get_last_task(task)
+        self.assertEqual(
+            last_task.date_deadline.date(), fields.Date.from_string("2025-02-15")
+        )
+        # start_date_method = "start_this"
+        # on November, the quarter start on October
+        self.service_task_recurrency.task_start_date_method = "start_this"
+        self._reprocess_sale_order()
+        task = self.sol_task_recurrency.task_id
+        self.assertEqual(
+            task.date_deadline.date(), fields.Date.from_string("2024-10-01")
+        )
+        self.assertEqual(task.recurring_count, 1)
+        task.state = "1_done"
+        task.invalidate_recordset(["recurring_count"])
+        self.assertEqual(task.recurring_count, 2)
+        last_task = self._get_last_task(task)
+        self.assertEqual(
+            last_task.date_deadline.date(), fields.Date.from_string("2025-01-01")
+        )
+        # start_date_method = "end_this"
+        # on November, the quarter ends on December
+        self.service_task_recurrency.task_start_date_method = "end_this"
+        self._reprocess_sale_order()
+        task = self.sol_task_recurrency.task_id
+        self.assertEqual(
+            task.date_deadline.date(), fields.Date.from_string("2024-12-31")
+        )
+        self.assertEqual(task.recurring_count, 1)
+        task.state = "1_done"
+        task.invalidate_recordset(["recurring_count"])
+        self.assertEqual(task.recurring_count, 2)
+        last_task = self._get_last_task(task)
+        self.assertEqual(
+            last_task.date_deadline.date(), fields.Date.from_string("2025-03-31")
+        )
+        # start_date_method = "start_next"
+        # on November, the next quarter starts on January
+        self.service_task_recurrency.task_start_date_method = "start_next"
+        self._reprocess_sale_order()
+        task = self.sol_task_recurrency.task_id
+        self.assertEqual(
+            task.date_deadline.date(), fields.Date.from_string("2025-01-01")
+        )
+        self.assertEqual(task.recurring_count, 1)
+        task.state = "1_done"
+        task.invalidate_recordset(["recurring_count"])
+        self.assertEqual(task.recurring_count, 2)
+        last_task = self._get_last_task(task)
+        self.assertEqual(
+            last_task.date_deadline.date(), fields.Date.from_string("2025-04-01")
+        )
+        # start_date_method = "end_next"
+        self.service_task_recurrency.task_start_date_method = "end_next"
+        self._reprocess_sale_order()
+        task = self.sol_task_recurrency.task_id
+        self.assertEqual(
+            task.date_deadline.date(), fields.Date.from_string("2025-03-31")
+        )
+        self.assertEqual(task.recurring_count, 1)
+        task.state = "1_done"
+        task.invalidate_recordset(["recurring_count"])
+        self.assertEqual(task.recurring_count, 2)
+        last_task = self._get_last_task(task)
+        self.assertEqual(
+            last_task.date_deadline.date(), fields.Date.from_string("2025-06-30")
+        )
+
+    @users("test-user")
+    @freeze_time("2024-11-15")
+    def test_task_recurrency_semester(self):
+        """Every 1 quarter forever"""
+        self.service_task_recurrency.task_repeat_unit = "semester"
+        self.service_task_recurrency.task_repeat_interval = 1
+        self.sale_order.action_confirm()
+        self.assertFalse(self.sol_no_task.task_id)
+        self.assertFalse(self.sol_task.task_id.recurring_task)
+        task = self.sol_task_recurrency.task_id
+        self.assertTrue(task.recurring_task)
+        # semester is 6 months
+        self.assertEqual(task.repeat_interval, 6)
+        self.assertEqual(task.repeat_unit, "month")
+        self.assertEqual(task.repeat_type, "forever")
+        self.assertFalse(task.repeat_until)
+        self.assertEqual(
+            task.date_deadline.date(), fields.Date.from_string("2024-11-15")
+        )
+        self.assertEqual(task.recurring_count, 1)
+        task.state = "1_done"
+        task.invalidate_recordset(["recurring_count"])
+        self.assertEqual(task.recurring_count, 2)
+        last_task = self._get_last_task(task)
+        self.assertEqual(
+            last_task.date_deadline.date(), fields.Date.from_string("2025-05-15")
+        )
+        # start_date_method = "start_this"
+        # on November, the semester start on July
+        self.service_task_recurrency.task_start_date_method = "start_this"
+        self._reprocess_sale_order()
+        task = self.sol_task_recurrency.task_id
+        self.assertEqual(
+            task.date_deadline.date(), fields.Date.from_string("2024-07-01")
+        )
+        self.assertEqual(task.recurring_count, 1)
+        task.state = "1_done"
+        task.invalidate_recordset(["recurring_count"])
+        self.assertEqual(task.recurring_count, 2)
+        last_task = self._get_last_task(task)
+        self.assertEqual(
+            last_task.date_deadline.date(), fields.Date.from_string("2025-01-01")
+        )
+        # start_date_method = "end_this"
+        # on November, the semester ends on December
+        self.service_task_recurrency.task_start_date_method = "end_this"
+        self._reprocess_sale_order()
+        task = self.sol_task_recurrency.task_id
+        self.assertEqual(
+            task.date_deadline.date(), fields.Date.from_string("2024-12-31")
+        )
+        self.assertEqual(task.recurring_count, 1)
+        task.state = "1_done"
+        task.invalidate_recordset(["recurring_count"])
+        self.assertEqual(task.recurring_count, 2)
+        last_task = self._get_last_task(task)
+        self.assertEqual(
+            last_task.date_deadline.date(), fields.Date.from_string("2025-06-30")
+        )
+        # start_date_method = "start_next"
+        # on November, the next semester starts on January
+        self.service_task_recurrency.task_start_date_method = "start_next"
+        self._reprocess_sale_order()
+        task = self.sol_task_recurrency.task_id
+        self.assertEqual(
+            task.date_deadline.date(), fields.Date.from_string("2025-01-01")
+        )
+        self.assertEqual(task.recurring_count, 1)
+        task.state = "1_done"
+        task.invalidate_recordset(["recurring_count"])
+        self.assertEqual(task.recurring_count, 2)
+        last_task = self._get_last_task(task)
+        self.assertEqual(
+            last_task.date_deadline.date(), fields.Date.from_string("2025-07-01")
+        )
+        # start_date_method = "end_next"
+        self.service_task_recurrency.task_start_date_method = "end_next"
+        self._reprocess_sale_order()
+        task = self.sol_task_recurrency.task_id
+        self.assertEqual(
+            task.date_deadline.date(), fields.Date.from_string("2025-06-30")
+        )
+        self.assertEqual(task.recurring_count, 1)
+        task.state = "1_done"
+        task.invalidate_recordset(["recurring_count"])
+        self.assertEqual(task.recurring_count, 2)
+        last_task = self._get_last_task(task)
+        self.assertEqual(
+            last_task.date_deadline.date(), fields.Date.from_string("2025-12-30")
+        )
+
+    @users("test-user")
+    @freeze_time("2024-11-15")
     def test_task_recurrency_year(self):
         """Every 1 year forever"""
         self.service_task_recurrency.task_repeat_unit = "year"
@@ -746,4 +928,216 @@ class TestProductTaskRecurrency(BaseCommon):
         task = self.sol_task_recurrency.task_id
         self.assertEqual(
             task.date_deadline.date(), fields.Date.from_string("2025-06-30")
+        )
+
+    @users("test-user")
+    @freeze_time("2024-11-15")
+    def test_task_recurrency_quarter_force_month(self):
+        # Force month to firts month of quarter: January, April, July, October
+        self.service_task_recurrency.task_repeat_interval = 1
+        self.service_task_recurrency.task_repeat_unit = "quarter"
+        self.service_task_recurrency.task_force_month_quarter = "1"
+        self.service_task_recurrency.task_repeat_type = "forever"
+        self.sale_order.action_confirm()
+        task = self.sol_task_recurrency.task_id
+        self.assertTrue(task.recurring_task)
+        self.assertEqual(task.repeat_interval, 3)
+        self.assertEqual(task.repeat_unit, "month")
+        self.assertEqual(task.repeat_type, "forever")
+        self.assertEqual(task.recurring_count, 1)
+        self.assertEqual(
+            task.date_deadline.date(), fields.Date.from_string("2024-10-15")
+        )
+        # start_this
+        self.service_task_recurrency.task_start_date_method = "start_this"
+        self._reprocess_sale_order()
+        task = self.sol_task_recurrency.task_id
+        self.assertEqual(
+            task.date_deadline.date(), fields.Date.from_string("2024-10-01")
+        )
+        # end_this
+        self.service_task_recurrency.task_start_date_method = "end_this"
+        self._reprocess_sale_order()
+        task = self.sol_task_recurrency.task_id
+        self.assertEqual(
+            task.date_deadline.date(), fields.Date.from_string("2024-10-31")
+        )
+        # start_next
+        self.service_task_recurrency.task_start_date_method = "start_next"
+        self._reprocess_sale_order()
+        task = self.sol_task_recurrency.task_id
+        self.assertEqual(
+            task.date_deadline.date(), fields.Date.from_string("2025-01-01")
+        )
+        # end_next
+        self.service_task_recurrency.task_start_date_method = "end_next"
+        self._reprocess_sale_order()
+        task = self.sol_task_recurrency.task_id
+        self.assertEqual(
+            task.date_deadline.date(), fields.Date.from_string("2025-01-31")
+        )
+        # Force month to second month of quarter: February, May, August, November
+        self.service_task_recurrency.task_force_month_quarter = "2"
+        self.service_task_recurrency.task_start_date_method = "current_date"
+        self._reprocess_sale_order()
+        task = self.sol_task_recurrency.task_id
+        self.assertTrue(task.recurring_task)
+        self.assertEqual(task.repeat_interval, 3)
+        self.assertEqual(task.repeat_unit, "month")
+        self.assertEqual(task.recurring_count, 1)
+        self.assertEqual(
+            task.date_deadline.date(), fields.Date.from_string("2024-11-15")
+        )
+        # start_this
+        self.service_task_recurrency.task_start_date_method = "start_this"
+        self._reprocess_sale_order()
+        task = self.sol_task_recurrency.task_id
+        self.assertEqual(
+            task.date_deadline.date(), fields.Date.from_string("2024-11-01")
+        )
+        # end_this
+        self.service_task_recurrency.task_start_date_method = "end_this"
+        self._reprocess_sale_order()
+        task = self.sol_task_recurrency.task_id
+        self.assertEqual(
+            task.date_deadline.date(), fields.Date.from_string("2024-11-30")
+        )
+        # start_next
+        self.service_task_recurrency.task_start_date_method = "start_next"
+        self._reprocess_sale_order()
+        task = self.sol_task_recurrency.task_id
+        self.assertEqual(
+            task.date_deadline.date(), fields.Date.from_string("2025-02-01")
+        )
+        # end_next
+        self.service_task_recurrency.task_start_date_method = "end_next"
+        self._reprocess_sale_order()
+        task = self.sol_task_recurrency.task_id
+        self.assertEqual(
+            task.date_deadline.date(), fields.Date.from_string("2025-02-28")
+        )
+        # Force month to third month of quarter: March, June, September, December
+        self.service_task_recurrency.task_force_month_quarter = "3"
+        self.service_task_recurrency.task_start_date_method = "current_date"
+        self._reprocess_sale_order()
+        task = self.sol_task_recurrency.task_id
+        self.assertTrue(task.recurring_task)
+        self.assertEqual(task.repeat_interval, 3)
+        self.assertEqual(task.repeat_unit, "month")
+        self.assertEqual(task.recurring_count, 1)
+        self.assertEqual(
+            task.date_deadline.date(), fields.Date.from_string("2024-12-15")
+        )
+        # start_this
+        self.service_task_recurrency.task_start_date_method = "start_this"
+        self._reprocess_sale_order()
+        task = self.sol_task_recurrency.task_id
+        self.assertEqual(
+            task.date_deadline.date(), fields.Date.from_string("2024-12-01")
+        )
+        # end_this
+        self.service_task_recurrency.task_start_date_method = "end_this"
+        self._reprocess_sale_order()
+        task = self.sol_task_recurrency.task_id
+        self.assertEqual(
+            task.date_deadline.date(), fields.Date.from_string("2024-12-31")
+        )
+        # start_next
+        self.service_task_recurrency.task_start_date_method = "start_next"
+        self._reprocess_sale_order()
+        task = self.sol_task_recurrency.task_id
+        self.assertEqual(
+            task.date_deadline.date(), fields.Date.from_string("2025-03-01")
+        )
+        # end_next
+        self.service_task_recurrency.task_start_date_method = "end_next"
+        self._reprocess_sale_order()
+        task = self.sol_task_recurrency.task_id
+        self.assertEqual(
+            task.date_deadline.date(), fields.Date.from_string("2025-03-31")
+        )
+
+    @users("test-user")
+    @freeze_time("2024-11-15")
+    def test_task_recurrency_semester_force_month(self):
+        # Force month to second month of semester
+        self.service_task_recurrency.task_repeat_interval = 1
+        self.service_task_recurrency.task_repeat_unit = "semester"
+        self.service_task_recurrency.task_force_month_semester = "2"
+        self.service_task_recurrency.task_repeat_type = "forever"
+        self.sale_order.action_confirm()
+        task = self.sol_task_recurrency.task_id
+        self.assertTrue(task.recurring_task)
+        self.assertEqual(task.repeat_interval, 6)
+        self.assertEqual(task.repeat_unit, "month")
+        self.assertEqual(task.repeat_type, "forever")
+        self.assertEqual(task.recurring_count, 1)
+        self.assertEqual(
+            task.date_deadline.date(), fields.Date.from_string("2024-08-15")
+        )
+        # start_this
+        self.service_task_recurrency.task_start_date_method = "start_this"
+        self._reprocess_sale_order()
+        task = self.sol_task_recurrency.task_id
+        self.assertEqual(
+            task.date_deadline.date(), fields.Date.from_string("2024-08-01")
+        )
+        # end_this
+        self.service_task_recurrency.task_start_date_method = "end_this"
+        self._reprocess_sale_order()
+        task = self.sol_task_recurrency.task_id
+        self.assertEqual(
+            task.date_deadline.date(), fields.Date.from_string("2024-08-31")
+        )
+        # start_next
+        self.service_task_recurrency.task_start_date_method = "start_next"
+        self._reprocess_sale_order()
+        task = self.sol_task_recurrency.task_id
+        self.assertEqual(
+            task.date_deadline.date(), fields.Date.from_string("2025-02-01")
+        )
+        # end_next
+        self.service_task_recurrency.task_start_date_method = "end_next"
+        self._reprocess_sale_order()
+        task = self.sol_task_recurrency.task_id
+        self.assertEqual(
+            task.date_deadline.date(), fields.Date.from_string("2025-02-28")
+        )
+        # Force month to four month of semester
+        self.service_task_recurrency.task_force_month_semester = "4"
+        self.service_task_recurrency.task_start_date_method = "current_date"
+        self._reprocess_sale_order()
+        task = self.sol_task_recurrency.task_id
+        self.assertTrue(task.recurring_task)
+        self.assertEqual(task.recurring_count, 1)
+        self.assertEqual(
+            task.date_deadline.date(), fields.Date.from_string("2024-10-15")
+        )
+        # start_this
+        self.service_task_recurrency.task_start_date_method = "start_this"
+        self._reprocess_sale_order()
+        task = self.sol_task_recurrency.task_id
+        self.assertEqual(
+            task.date_deadline.date(), fields.Date.from_string("2024-10-01")
+        )
+        # end_this
+        self.service_task_recurrency.task_start_date_method = "end_this"
+        self._reprocess_sale_order()
+        task = self.sol_task_recurrency.task_id
+        self.assertEqual(
+            task.date_deadline.date(), fields.Date.from_string("2024-10-31")
+        )
+        # start_next
+        self.service_task_recurrency.task_start_date_method = "start_next"
+        self._reprocess_sale_order()
+        task = self.sol_task_recurrency.task_id
+        self.assertEqual(
+            task.date_deadline.date(), fields.Date.from_string("2025-04-01")
+        )
+        # end_next
+        self.service_task_recurrency.task_start_date_method = "end_next"
+        self._reprocess_sale_order()
+        task = self.sol_task_recurrency.task_id
+        self.assertEqual(
+            task.date_deadline.date(), fields.Date.from_string("2025-04-30")
         )

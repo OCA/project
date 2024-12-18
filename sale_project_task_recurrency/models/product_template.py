@@ -13,6 +13,8 @@ class ProductTemplate(models.Model):
             ("day", "Days"),
             ("week", "Weeks"),
             ("month", "Months"),
+            ("quarter", "Quarters"),
+            ("semester", "Semesters"),
             ("year", "Years"),
         ],
         default="week",
@@ -72,6 +74,27 @@ class ProductTemplate(models.Model):
             ("12", "December"),
         ],
         "Force Month",
+    )
+    task_force_month_quarter = fields.Selection(
+        [
+            ("1", "First month"),
+            ("2", "Second month"),
+            ("3", "Third month"),
+        ],
+        "Force Month",
+        help="Force the month to be used inside the quarter",
+    )
+    task_force_month_semester = fields.Selection(
+        [
+            ("1", "First month"),
+            ("2", "Second month"),
+            ("3", "Third month"),
+            ("4", "Fourth month"),
+            ("5", "Fifth month"),
+            ("6", "Sixth month"),
+        ],
+        "Force Month",
+        help="Force the month to be used inside the semester",
     )
 
     @api.onchange("service_tracking")
