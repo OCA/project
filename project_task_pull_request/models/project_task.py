@@ -1,7 +1,7 @@
 # Copyright 2017 Specialty Medical Drugstore
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import _, api, exceptions, fields, models
+from odoo import api, exceptions, fields, models
 
 
 class ProjectTask(models.Model):
@@ -18,7 +18,7 @@ class ProjectTask(models.Model):
             is_stage_pr_req = task.stage_id in stages_pr_req
             if not task.pr_uri and stages_pr_req and is_stage_pr_req:
                 raise exceptions.ValidationError(
-                    _(
+                    self.env._(
                         "Please add the URI for the pull request "
                         "before moving the task to this stage."
                     )
