@@ -41,7 +41,7 @@ License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html). -->
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.view_project_kanban" />
         <field name="arch" type="xml">
-            <field name="rating_status" position="after">
+            <field name="rating_count" position="after">
                 <field name="parent_id" />
             </field>
             <xpath
