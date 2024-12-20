@@ -31,10 +31,10 @@
     </record>
 
     <record id="view_project" model="ir.ui.view">
-        <field name="name">project.project.tree</field>
+        <field name="name">project.project.list</field>
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.view_project" />
-        <field name="type">tree</field>
+        <field name="type">list</field>
         <field name="arch" type="xml">
             <field name="user_id" position="after">
                 <field name="department_id" readonly="True" />
