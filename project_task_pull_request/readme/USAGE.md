@@ -1,6 +1,6 @@
 To use this module, you need to:
 
-1.  Go to Project -\> Configuration -\> Project
+1.  Go to Project -\> Configuration -\> Projects
 2.  Select a project and, under "Pull Request URIs", select the stages
     where you would like a PR URI to be required
 3.  Go to Dashboard and select a project

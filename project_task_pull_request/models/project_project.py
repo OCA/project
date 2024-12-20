@@ -4,9 +4,8 @@
 from odoo import fields, models
 
 
-class Project(models.Model):
+class ProjectProject(models.Model):
     _inherit = "project.project"
-    _name = "project.project"
 
     pr_required_states = fields.Many2many(
         "project.task.type",

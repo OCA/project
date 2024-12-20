@@ -6,3 +6,4 @@
 - Cetmix \<<https://cetmix.com/>\>:
   - Ivan Sokolov
   - Vladimir Kalmykov
+- `Heliconia Solutions Pvt. Ltd. <https://www.heliconia.io>`_
