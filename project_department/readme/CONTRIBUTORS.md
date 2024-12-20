@@ -8,3 +8,4 @@
   - Carlos Roca
 - [Binhex](https://binhex.cloud//com):
   - David Luis Mora \<<d.luis@binhex.cloud>\>
+- `Heliconia Solutions Pvt. Ltd. <https://www.heliconia.io>`_
