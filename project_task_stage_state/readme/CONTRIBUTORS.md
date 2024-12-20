@@ -6,3 +6,6 @@
 - Manuel Regidor \<<manuel.regidor@sygel.es>\>
 - [Tecnativa](https://www.tecnativa.com):
   - Víctor Martínez
+- [Heliconia Solutions Pvt. Ltd.](https://www.heliconia.io)
+  - Bhavesh Heliconia
+
