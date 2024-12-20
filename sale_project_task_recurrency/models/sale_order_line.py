@@ -59,7 +59,7 @@ class SaleOrderLine(models.Model):
         forced_month = int(product.task_force_month or 0)
         if product.task_repeat_unit in ["quarter", "semester"]:
             forced_month = int(
-                product["task_force_month_%s" % product.task_repeat_unit] or 0
+                product[f"task_force_month_{product.task_repeat_unit}"] or 0
             )
         month_period = month = date_deadline.month
         month_nb = MONTH_NB_TASK_MAPPING.get(product.task_repeat_unit) or 0
