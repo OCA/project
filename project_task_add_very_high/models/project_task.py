@@ -8,5 +8,7 @@ class ProjectTask(models.Model):
     _inherit = "project.task"
 
     priority = fields.Selection(
-        selection_add=[("2", "Very High"), ("3", "Most Important")]
+        selection_add=[("2", "Very High"), ("3", "Most Important")],
+        ondelete={"priority": "set default"},
+        default="1",
     )
