@@ -1141,3 +1141,146 @@ class TestProductTaskRecurrency(BaseCommon):
         self.assertEqual(
             task.date_deadline.date(), fields.Date.from_string("2025-04-30")
         )
+
+    def test_service_tracking_onchange(self):
+        """Test the onchange behavior of service_tracking field for both
+        product.template and product.product models"""
+
+        # Test product.template onchange
+        template = self.service_task_recurrency.product_tmpl_id
+        self.assertTrue(template.recurring_task)
+
+        # Test changing to 'no' service tracking
+        template.service_tracking = "no"
+        template._onchange_service_tracking()
+        self.assertFalse(template.recurring_task)
+
+        # Test changing back to task_global_project
+        template.service_tracking = "task_global_project"
+        template._onchange_service_tracking()
+        # Note: changing service_tracking doesn't automatically re-enable recurring_task
+        self.assertFalse(template.recurring_task)
+
+        # Test changing to 'task_in_project'
+        template.recurring_task = True
+        template.service_tracking = "task_in_project"
+        template._onchange_service_tracking()
+        self.assertTrue(template.recurring_task)
+
+        # Test changing to 'project_only'
+        template.service_tracking = "project_only"
+        template._onchange_service_tracking()
+        self.assertFalse(template.recurring_task)
+
+        # Test product.product onchange
+        product = self.service_task_recurrency
+        product.recurring_task = True
+
+        # Test changing to 'no' service tracking
+        product.service_tracking = "no"
+        product._onchange_service_tracking()
+        self.assertFalse(product.recurring_task)
+
+        # Test changing back to task_global_project
+        product.service_tracking = "task_global_project"
+        product._onchange_service_tracking()
+        # Note: changing service_tracking doesn't automatically re-enable recurring_task
+        self.assertFalse(product.recurring_task)
+
+        # Test changing to 'task_in_project'
+        product.recurring_task = True
+        product.service_tracking = "task_in_project"
+        product._onchange_service_tracking()
+        self.assertTrue(product.recurring_task)
+
+        # Test changing to 'project_only'
+        product.service_tracking = "project_only"
+        product._onchange_service_tracking()
+        self.assertFalse(product.recurring_task)
+
+    def test_service_tracking_create_variants(self):
+        # Create a product attribute and value
+        attribute = self.env["product.attribute"].create(
+            {
+                "name": "Test Attribute",
+            }
+        )
+        val1 = self.env["product.attribute.value"].create(
+            {"name": "Value 1", "attribute_id": attribute.id}
+        )
+        val2 = self.env["product.attribute.value"].create(
+            {"name": "Value 2", "attribute_id": attribute.id}
+        )
+
+        # Create a product template with the service tracking and recurring task
+        template = self.env["product.template"].create(
+            {
+                "name": "Test Service with Variants",
+                "type": "service",
+                "service_tracking": "task_global_project",
+                "recurring_task": True,
+                "attribute_line_ids": [
+                    (
+                        0,
+                        0,
+                        {
+                            "attribute_id": attribute.id,
+                            "value_ids": [(6, 0, [val1.id, val2.id])],
+                        },
+                    )
+                ],
+            }
+        )
+
+        # Create product variants
+        variants = template.product_variant_ids
+
+        # Ensure recurring_task is set on variants
+        for variant in variants:
+            self.assertTrue(variant.recurring_task)
+
+        # Change service_tracking to task_in_project
+        variant = variants[0]  # Assuming the first variant
+        variant.service_tracking = "task_in_project"
+        variant._onchange_service_tracking()
+
+        # Assert that recurring_task is now True after service_tracking change
+        self.assertTrue(variant.recurring_task)
+
+    def test_service_tracking_edge_cases(self):
+        """Test edge cases and special scenarios for service tracking"""
+
+        product = self.service_task_recurrency
+
+        # Test rapid changes in service tracking
+        service_tracking_values = [
+            "no",
+            "task_global_project",
+            "project_only",
+            "task_in_project",
+        ]
+        for tracking in service_tracking_values:
+            product.recurring_task = True
+            product.service_tracking = tracking
+            product._onchange_service_tracking()
+            if tracking in ["task_global_project", "task_in_project"]:
+                self.assertTrue(product.recurring_task)
+            else:
+                self.assertFalse(product.recurring_task)
+
+        # Test changing service tracking with recurring task enabled/disabled
+        product.recurring_task = True
+        product.service_tracking = "task_global_project"
+        product._onchange_service_tracking()
+        self.assertTrue(product.recurring_task)
+
+        # Test disabling service tracking
+        product.service_tracking = "no"
+        product._onchange_service_tracking()
+        self.assertFalse(product.recurring_task)
+
+        # Test re-enabling service tracking
+        # Note: It should not automatically re-enable recurring_task
+        product.service_tracking = "task_global_project"
+        product._onchange_service_tracking()
+        self.assertFalse(product.recurring_task)

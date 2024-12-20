@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 17.0\n"
+"Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -78,12 +78,20 @@ msgstr ""
 
 #. module: sale_project_task_recurrency
 #: model:ir.model.fields,field_description:sale_project_task_recurrency.field_product_product__task_force_month
-#: model:ir.model.fields,field_description:sale_project_task_recurrency.field_product_product__task_force_month_quarter
-#: model:ir.model.fields,field_description:sale_project_task_recurrency.field_product_product__task_force_month_semester
 #: model:ir.model.fields,field_description:sale_project_task_recurrency.field_product_template__task_force_month
-#: model:ir.model.fields,field_description:sale_project_task_recurrency.field_product_template__task_force_month_quarter
-#: model:ir.model.fields,field_description:sale_project_task_recurrency.field_product_template__task_force_month_semester
 msgid "Force Month"
+msgstr ""
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields,field_description:sale_project_task_recurrency.field_product_product__task_force_month_quarter
+#: model:ir.model.fields,field_description:sale_project_task_recurrency.field_product_template__task_force_month_quarter
+msgid "Force Month Quarter"
+msgstr ""
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields,field_description:sale_project_task_recurrency.field_product_product__task_force_month_semester
+#: model:ir.model.fields,field_description:sale_project_task_recurrency.field_product_template__task_force_month_semester
+msgid "Force Month Semester"
 msgstr ""
 
 #. module: sale_project_task_recurrency
