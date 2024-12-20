@@ -31,7 +31,7 @@
         <field name="name">project.task.description.template.view.tree</field>
         <field name="model">project.task.description.template</field>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="name" />
                 <field name="description" optional="hide" />
                 <field
@@ -39,13 +39,13 @@
                     groups="base.group_multi_company"
                     optional="show"
                 />
-            </tree>
+            </list>
         </field>
     </record>
     <record id="project_task_description_template_action" model="ir.actions.act_window">
         <field name="name">Task Description template</field>
         <field name="res_model">project.task.description.template</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
         <field name="help" type="html">
             <p class="oe_view_nocontent_create">
                 Click to create a new description template.
