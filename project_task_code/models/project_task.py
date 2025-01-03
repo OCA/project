@@ -1,7 +1,7 @@
 # Copyright 2016 Tecnativa <vicent.cubells@tecnativa.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 
 PROJECT_TASK_WRITABLE_FIELDS = {
     "code",
@@ -24,7 +24,7 @@ class ProjectTask(models.Model):
         (
             "project_task_unique_code",
             "UNIQUE (company_id, code)",
-            _("The code must be unique!"),
+            "The code must be unique!",
         ),
     ]
 

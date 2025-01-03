@@ -37,7 +37,7 @@ class TestProjectTaskCode(common.TransactionCase):
             }
         )
         result = project_task.display_name
-        self.assertEqual(result, "[%s] Task Testing Get Name" % code)
+        self.assertEqual(result, f"[{code}] Task Testing Get Name")
 
     def test_name_search(self):
         project_task = self.env["project.task"].create(
