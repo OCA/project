@@ -11,7 +11,7 @@
                 <field name="progress" />
                 <field name="remaining_hours" />
             </field>
-            <xpath expr="//small[@name='planned_hours']" position="after">
+            <xpath expr="//small[@name='allocated_hours']" position="after">
                 <div t-attf-class="o_project_timeline_hr_timesheet_progress">
                     <div
                         t-attf-class="{{ record.remaining_hours &lt; 0 ? 'bg-danger ' : 'bg-success '}}"
