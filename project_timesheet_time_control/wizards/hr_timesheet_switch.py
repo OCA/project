@@ -12,7 +12,7 @@ class HrTimesheetSwitch(models.TransientModel):
 
     def _domain_project_id(self):
         domain = [("allow_timesheets", "=", True)]
-        if not self.user_has_groups("hr_timesheet.group_timesheet_manager"):
+        if not self.env.user.has_group("hr_timesheet.group_timesheet_manager"):
             return expression.AND(
                 [
                     domain,

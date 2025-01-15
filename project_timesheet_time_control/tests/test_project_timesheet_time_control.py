@@ -30,7 +30,7 @@ class TestProjectTimesheetTimeControl(common.TransactionCase):
         self.project_without_timesheets = self.env["project.project"].create(
             {"name": "Test project", "allow_timesheets": False}
         )
-        self.analytic_account = self.project.analytic_account_id
+        self.analytic_account = self.project.account_id
         self.task = self.env["project.task"].create(
             {"name": "Test task", "project_id": self.project.id}
         )
@@ -181,9 +181,7 @@ class TestProjectTimesheetTimeControl(common.TransactionCase):
         start_action = self.project.button_start_work()
         wizard = self._create_wizard(start_action, self.project)
         self.assertLessEqual(wizard.date_time, datetime.now())
-        self.assertEqual(
-            wizard.analytic_line_id.account_id, self.project.analytic_account_id
-        )
+        self.assertEqual(wizard.analytic_line_id.account_id, self.project.account_id)
         self.assertEqual(wizard.name, "No task here")
         self.assertEqual(wizard.project_id, self.project)
         self.assertFalse(wizard.running_timer_id, self.line)
@@ -212,7 +210,7 @@ class TestProjectTimesheetTimeControl(common.TransactionCase):
         wizard = self._create_wizard(start_action, self.task)
         self.assertLessEqual(wizard.date_time, datetime.now())
         self.assertEqual(
-            wizard.analytic_line_id.account_id, self.task.project_id.analytic_account_id
+            wizard.analytic_line_id.account_id, self.task.project_id.account_id
         )
         self.assertEqual(wizard.name, self.line.name)
         self.assertEqual(wizard.project_id, self.task.project_id)

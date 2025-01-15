@@ -100,18 +100,15 @@
                 <field name="date_time" />
                 <field name="date_time_end" />
             </field>
-            <xpath
-                expr="//templates//t[@t-esc='record.date.value']"
-                position="attributes"
-            >
+            <xpath expr="//templates//field[@name='date']" position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
-            <xpath expr="//templates//t[@t-esc='record.date.value']" position="after">
-                <t t-esc="record.date_time.value" />
-                <t t-if="record.date_time_end.value">
+            <xpath expr="//templates//field[@name='date']" position="after">
+                <field name="date_time" />
+                <t t-if="date_time_end">
                     <br />
                     <span>to</span>
-                    <t t-esc="record.date_time_end.value" />
+                    <field name="date_time_end" />
                 </t>
             </xpath>
         </field>

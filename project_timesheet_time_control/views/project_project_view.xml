@@ -83,7 +83,7 @@
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.view_project" />
         <field name="arch" type="xml">
-            <tree position="inside">
+            <list position="inside">
                 <field
                     name="show_time_control"
                     invisible="1"
@@ -111,7 +111,7 @@
                     title="End work"
                     groups="hr_timesheet.group_hr_timesheet_user"
                 />
-            </tree>
+            </list>
         </field>
     </record>
 </odoo>

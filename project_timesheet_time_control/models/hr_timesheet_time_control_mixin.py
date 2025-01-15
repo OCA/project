@@ -36,7 +36,7 @@ class HrTimesheetTimeControlMixin(models.AbstractModel):
             groupby=[related_field],
         )
         lines_per_record = {
-            group[related_field][0]: group["%s_count" % related_field]
+            group[related_field][0]: group[f"{related_field}_count"]
             for group in grouped
         }
         button_per_lines = {0: "start", 1: "stop"}
@@ -50,7 +50,7 @@ class HrTimesheetTimeControlMixin(models.AbstractModel):
         """Create a new record starting now, with a running timer."""
         related_field = self._relation_with_timesheet_line()
         return {
-            "context": {"default_%s" % related_field: self.id},
+            "context": {f"default_{related_field}": self.id},
             "name": _("Start work"),
             "res_model": "hr.timesheet.switch",
             "target": "new",

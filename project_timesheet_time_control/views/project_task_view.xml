@@ -35,18 +35,18 @@
             </div>
             <!-- Sub-tree view for timesheet_ids -->
             <xpath
-                expr="//field[@name='timesheet_ids']/tree//field[@name='date']"
+                expr="//field[@name='timesheet_ids']/list//field[@name='date']"
                 position="attributes"
             >
                 <attribute name="invisible">1</attribute>
             </xpath>
             <xpath
-                expr="//field[@name='timesheet_ids']/tree//field[@name='date']"
+                expr="//field[@name='timesheet_ids']/list//field[@name='date']"
                 position="after"
             >
                 <field name="date_time" string="Date" required="1" />
             </xpath>
-            <xpath expr="//field[@name='timesheet_ids']/tree" position="inside">
+            <xpath expr="//field[@name='timesheet_ids']/list" position="inside">
                 <field name="show_time_control" invisible="1" />
                 <button
                     name="button_resume_work"
@@ -69,18 +69,18 @@
                     groups="hr_timesheet.group_hr_timesheet_user"
                 />
             </xpath>
-            <xpath expr="//field[@name='timesheet_ids']/tree" position="attributes">
+            <xpath expr="//field[@name='timesheet_ids']/list" position="attributes">
                 <attribute name="default_order">date_time</attribute>
             </xpath>
             <!-- Sub-kanban view for timesheet_ids -->
             <xpath
-                expr="//field[@name='timesheet_ids']/kanban//*[@t-esc='record.date.value']"
+                expr="//field[@name='timesheet_ids']/kanban//*[@name='date']"
                 position="attributes"
             >
                 <attribute name="invisible">1</attribute>
             </xpath>
             <xpath
-                expr="//field[@name='timesheet_ids']/kanban//*[@t-esc='record.date.value']"
+                expr="//field[@name='timesheet_ids']/kanban//*[@name='date']"
                 position="after"
             >
                 <field name="date_time" required="1" />
@@ -165,7 +165,7 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_kanban" />
         <field name="arch" type="xml">
-            <xpath expr="//*[hasclass('oe_kanban_bottom_left')]" position="inside">
+            <xpath expr="//footer" position="inside">
                 <field
                     name="show_time_control"
                     invisible="1"
@@ -197,7 +197,7 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="hr_timesheet.view_task_tree2_inherited" />
         <field name="arch" type="xml">
-            <tree position="inside">
+            <list position="inside">
                 <field
                     name="show_time_control"
                     invisible="1"
@@ -225,7 +225,7 @@
                     title="End work"
                     groups="hr_timesheet.group_hr_timesheet_user"
                 />
-            </tree>
+            </list>
         </field>
     </record>
 </odoo>
