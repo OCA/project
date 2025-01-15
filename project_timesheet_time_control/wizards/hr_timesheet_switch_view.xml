@@ -34,27 +34,27 @@
                         <p colspan="4">
                             You have a running timer called
                             <field
-                                name="running_timer_id"
-                                class="oe_inline"
-                                context="{'form_view_ref': 'hr_timesheet.hr_timesheet_line_form'}"
-                            />
+                            name="running_timer_id"
+                            class="oe_inline"
+                            context="{'form_view_ref': 'hr_timesheet.hr_timesheet_line_form'}"
+                        />
                             and started at
                             <field name="running_timer_start" class="oe_inline" />
                             .
                             If you continue, it will be stopped with
                             <strong>
                                 <field
-                                    name="running_timer_duration"
-                                    class="oe_inline text-info"
-                                    widget="float_time"
-                                    invisible="running_timer_duration &gt;= 5"
-                                />
+                            name="running_timer_duration"
+                            class="oe_inline text-info"
+                            widget="float_time"
+                            invisible="running_timer_duration &gt;= 5"
+                        />
                                 <field
-                                    name="running_timer_duration"
-                                    class="oe_inline text-warning"
-                                    widget="float_time"
-                                    invisible="running_timer_duration &lt; 5"
-                                />
+                            name="running_timer_duration"
+                            class="oe_inline text-warning"
+                            widget="float_time"
+                            invisible="running_timer_duration &lt; 5"
+                        />
                                 hour(s).
                             </strong>
                         </p>
