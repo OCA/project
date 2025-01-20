@@ -10,6 +10,10 @@
             ref="sale_project.view_order_form_inherit_sale_project"
         />
         <field name="arch" type="xml">
+            <field name="project_id" position="before">
+                <field name="partner_id" invisible="1" />
+            </field>
+
             <xpath expr="//field[@name='project_id']" position="attributes">
                 <attribute name="options">{}</attribute>
                 <attribute
