@@ -2,15 +2,30 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 from datetime import date
 
-from odoo.tests import common
+from odoo.tests import TransactionCase, users
 
 
-class TestProjectConsumable(common.TransactionCase):
-    def setUp(self):
-        super().setUp()
-        self.product = self.env.ref("project_consumable.product_coffee_capsule")
-        self.project = self.env.ref("sale_timesheet.project_support")
-        self.employee = self.env.ref("hr.employee_qdp")
+class TestProjectConsumable(TransactionCase):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.product = cls.env.ref("project_consumable.product_coffee_capsule")
+        default_plan_id = cls.env["account.analytic.plan"].search([], limit=1)
+        cls.analytic_account = cls.env["account.analytic.account"].create(
+            {
+                "name": "Test",
+                "plan_id": default_plan_id.id,
+                "company_id": cls.env.company.id,
+            }
+        )
+        cls.project = cls.env["project.project"].create(
+            {
+                "name": "Test",
+                "analytic_account_id": cls.analytic_account.id,
+            }
+        )
+        cls.user_demo = cls.env.ref("base.user_demo")
+        cls.employee = cls.user_demo.employee_id
 
     def test_onchange_product_type_project_ok_to_be_true(self):
         self.product.project_ok = False
@@ -28,44 +43,31 @@ class TestProjectConsumable(common.TransactionCase):
         data = {
             "name": "collect test material",
             "project_id": self.project.id,
-            "account_id": None,  # automatically set
+            "account_id": None,
             "product_id": self.product.id,
             "unit_amount": 6,
-            # "employee_id": self.employee.id,
-            "product_uom_id": None,  # Should be set if not provided
+            "employee_id": self.employee.id,
+            "product_uom_id": self.product.uom_id.id,
             "task_id": None,
-            "amount": None,  # Should be computed
-            "date": None,  # Default should be today
-            "partner_id": None,  # no require here
-            # "timesheet_invoice_type": 'non_billable',  # maybe we needs to set it here
-            # "user_id": ,  # should be set with current user
-            # "company_id": ,  # should be set with current user
-            # "currency_id": ,  # should be set with current user
-            # "group_id": ,  #
-            # "general_account_id": ,  #
-            # "move_id": ,  #
-            # "code": ,  #
-            # "ref": ,  #
-            # "department_id": ,  #
-            # "so_line": ,  #
-            # "timesheet_invoice_id": ,  #
-            # "non_allow_billable": ,  #
-            # "is_so_line_edited": ,  #
+            "amount": None,
+            "date": None,
+            "partner_id": None,
         }
         data.update(**kwargs)
         return {k: v for k, v in data.items() if v is not None}
 
+    @users("demo")
     def test_no_employee(self):
         account_analytic_line = self.env["account.analytic.line"].create(
             self._prepare_consumable_line_data(employee_id=None)
         )
-        self.assertFalse(account_analytic_line.employee_id)
+        self.assertEqual(account_analytic_line.employee_id, self.employee)
 
     def test_user_id(self):
         account_analytic_line = self.env["account.analytic.line"].create(
             self._prepare_consumable_line_data(user_id=None)
         )
-        self.assertEqual(account_analytic_line.user_id.id, self.env.user.id)
+        self.assertEqual(account_analytic_line.user_id.id, self.user_demo.id)
 
     def test_date(self):
         account_analytic_line = self.env["account.analytic.line"].create(

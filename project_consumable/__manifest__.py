@@ -6,16 +6,16 @@
     "author": "Pierre Verkest, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/project",
     "category": "Project Management",
-    "version": "14.0.1.0.0",
+    "version": "17.0.1.0.0",
     "license": "AGPL-3",
     "depends": [
-        "sale_timesheet",
+        "account",
+        "hr_timesheet",
     ],
     "data": [
         "views/analytic_account_line.xml",
         "views/analytic_account_line_report.xml",
         "views/product.xml",
-        "views/project_overview_template.xml",
         "views/project_views.xml",
     ],
     "demo": [

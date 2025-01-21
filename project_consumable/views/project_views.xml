@@ -42,7 +42,7 @@
                     name="%(act_consumable_line_by_project)d"
                     type="action"
                     icon="fa-copy"
-                    attrs="{'invisible': [('allow_timesheets', '=', False)]}"
+                    invisible="not allow_timesheets"
                     groups="hr_timesheet.group_hr_timesheet_user"
                 >
                     <div class="o_field_widget o_stat_info">

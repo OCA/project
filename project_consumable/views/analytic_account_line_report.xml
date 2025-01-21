@@ -1,38 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <record id="hr_timesheet.act_hr_timesheet_report" model="ir.actions.act_window">
-        <field
-            name="domain"
-        >[('project_id', '!=', False), ('product_id', '=', False)]</field>
-    </record>
-
-    <record
-        id="hr_timesheet.timesheet_action_report_by_project"
-        model="ir.actions.act_window"
-    >
-        <field
-            name="domain"
-        >[('project_id', '!=', False), ('product_id', '=', False)]</field>
-    </record>
-
-    <record
-        id="hr_timesheet.timesheet_action_report_by_task"
-        model="ir.actions.act_window"
-    >
-        <field
-            name="domain"
-        >[('project_id', '!=', False), ('product_id', '=', False)]</field>
-    </record>
-
-    <record
-        id="sale_timesheet.timesheet_action_billing_report"
-        model="ir.actions.act_window"
-    >
-        <field
-            name="domain"
-        >[('project_id', '!=', False), ('product_id', '=', False)]</field>
-    </record>
-
 
     <record id="consumable_action_report_by_project" model="ir.actions.act_window">
         <field name="name">Material/Consumable By Project</field>
@@ -46,7 +13,7 @@
             <p class="o_view_nocontent_smiling_face">
             No activities found.
             </p><p>
-            Track your consumable products by projects every day and analyse associated cost.
+            Track your consumable products by projects every day and analyze associated cost.
             </p>
         </field>
     </record>

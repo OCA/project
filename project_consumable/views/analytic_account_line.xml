@@ -24,39 +24,12 @@
         >[('project_id', '!=', False), ('product_id', '=', False)]</field>
     </record>
 
-    <record
-        id="sale_timesheet.timesheet_action_from_sales_order"
-        model="ir.actions.act_window"
-    >
-        <field
-            name="domain"
-        >[('project_id', '!=', False), ('product_id', '=', False)]</field>
-    </record>
-
-    <record
-        id="sale_timesheet.timesheet_action_plan_pivot"
-        model="ir.actions.act_window"
-    >
-        <field
-            name="domain"
-        >[('project_id', '!=', False), ('product_id', '=', False)]</field>
-    </record>
-
-    <record
-        id="sale_timesheet.timesheet_action_from_plan"
-        model="ir.actions.act_window"
-    >
-        <field
-            name="domain"
-        >[('project_id', '!=', False), ('product_id', '=', False)]</field>
-    </record>
-
     <record id="project_consumable_product_line_tree" model="ir.ui.view">
         <field name="name">account.analytic.line.tree.project_consumable</field>
         <field name="model">account.analytic.line</field>
         <field name="arch" type="xml">
             <tree editable="top" sample="1">
-                <field name="user_id" invisible="1" />
+                <field name="user_id" column_invisible="True" />
                 <field name="date" />
                 <field
                     name="project_id"
@@ -80,8 +53,8 @@
                 <field name="name" optional="show" required="0" />
                 <field name="unit_amount" required="1" sum="Total" />
                 <field name="product_uom_id" optional="show" groups="uom.group_uom" />
-                <field name="product_uom_category_id" invisible="1" />
-                <field name="company_id" invisible="1" />
+                <field name="product_uom_category_id" column_invisible="True" />
+                <field name="company_id" column_invisible="True" />
             </tree>
         </field>
     </record>
@@ -308,7 +281,7 @@
                                 </div>
                                 <div class="col-2">
                                     <img
-                                        t-att-src="kanban_image('product.template', 'image_128', record.product_id.product_tmpl_id.raw_value)"
+                                        t-att-src="kanban_image('product.product', 'image_128', record.product_id.raw_value)"
                                         t-att-title="record.product_id.value"
                                         t-att-alt="record.product_id.value"
                                         class="o_image_40_cover float-right"

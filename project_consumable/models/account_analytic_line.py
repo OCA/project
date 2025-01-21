@@ -1,4 +1,4 @@
-# Copyright 2021 - Pierre Verkest
+# Copyright 2021-2025 - Pierre Verkest
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from odoo import models
@@ -7,16 +7,19 @@ from odoo import models
 class AccountAnalyticLine(models.Model):
     _inherit = "account.analytic.line"
 
-    def _timesheet_preprocess(self, vals):
+    def _timesheet_preprocess(self, vals_list):
         """Deduce other field values from the one given.
         Overrride this to compute on the fly some field that can not be computed fields.
         :param values: dict values for `create`or `write`.
         """
-        if all(v in vals for v in ["product_id", "project_id"]):
-            if "product_uom_id" not in vals:
-                product = self.env["product.product"].sudo().browse(vals["product_id"])
-                vals["product_uom_id"] = product.uom_id.id
-        return super()._timesheet_preprocess(vals)
+        for vals in vals_list:
+            if all(v in vals for v in ["product_id", "project_id"]):
+                if "product_uom_id" not in vals:
+                    product = (
+                        self.env["product.product"].sudo().browse(vals["product_id"])
+                    )
+                    vals["product_uom_id"] = product.uom_id.id
+        return super()._timesheet_preprocess(vals_list)
 
     def _timesheet_postprocess_values(self, values):
         """Get the addionnal values to write on record
