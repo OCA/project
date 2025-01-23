@@ -26,7 +26,7 @@
                 <field name="state" column_invisible="True" />
                 <field name="sequence" column_invisible="True" />
                 <field name="name" column_invisible="True" />
-                <field name="product_id" required="True" />
+                <field name="product_id" required="True" readonly="state != 'draft'"/>
                 <field
                     name="location_id"
                     optional="hide"
@@ -45,8 +45,8 @@
                     readonly="True"
                     force_save="1"
                 />
-                <field name="product_uom" groups="uom.group_uom" />
-                <field name="product_uom_qty" string="To Consume" />
+                <field name="product_uom" groups="uom.group_uom" readonly="state != 'draft'"/>
+                <field name="product_uom_qty" string="To Consume" readonly="state != 'draft'"/>
                 <button
                     name="action_task_product_forecast_report"
                     type="object"
