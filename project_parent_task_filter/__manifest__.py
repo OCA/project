@@ -4,13 +4,12 @@
 {
     "name": "Project Parent Task Filter",
     "summary": "Add a filter to show the parent tasks",
-    "version": "16.0.1.1.0",
+    "version": "17.0.1.0.0",
     "category": "Project",
     "website": "https://github.com/OCA/project",
     "author": "C2i Change 2 improve, " "Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "depends": ["project"],
-    "data": ["data/res_config_data.xml", "views/project_task.xml"],
+    "data": ["views/project_task.xml"],
     "installable": True,
-    "post_init_hook": "_add_task_display_project",
 }
