@@ -7,7 +7,6 @@ quantities and Unit of Mesure provided by users, analytic amount will be
 computed based on product cost.
 
 * Material & Consumable Menu
-* On task tab
 * Project tab
 
 ## Review consumable amount

@@ -1,4 +1,5 @@
-# Copyright 2021 - Pierre Verkest
+# Copyright 2021-2025 - Pierre Verkest
+# @author Pierre Verkest <pierre@verkest.fr>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 {
     "name": "Project consumable",
@@ -8,6 +9,7 @@
     "category": "Project Management",
     "version": "17.0.1.0.0",
     "license": "AGPL-3",
+    "maintainers": ["petrus-v"],
     "depends": [
         "account",
         "hr_timesheet",
@@ -17,6 +19,7 @@
         "views/analytic_account_line_report.xml",
         "views/product.xml",
         "views/project_views.xml",
+        "security/project_consumable_security.xml",
     ],
     "demo": [
         "demo/product-product.xml",
