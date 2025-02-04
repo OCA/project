@@ -1,1 +1,1 @@
-- Pierre Verkest \<<pierreverkest84@gmail.com>\>
+- Pierre Verkest \<<pierre@verkest.fr>\>

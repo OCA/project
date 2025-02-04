@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 14.0\n"
+"Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -14,8 +14,18 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: project_consumable
+#: model:uom.uom,name:project_consumable.uom_cat_coffee_capsule_unit
+msgid "1 capsule"
+msgstr ""
+
+#. module: project_consumable
+#: model:uom.uom,name:project_consumable.uom_cat_coffee_capsule_box_10
+msgid "10 capsules box"
+msgstr ""
+
+#. module: project_consumable
 #: model_terms:ir.ui.view,arch_db:project_consumable.project_consumable_product_line_kanban
-msgid "<i class=\"fa fa-calendar\" role=\"img\" aria-label=\"Date\" title=\"Date\"/>"
+msgid "<i class=\"fa fa-calendar me-1\" role=\"img\" aria-label=\"Date\" title=\"Date\"/>"
 msgstr ""
 
 #. module: project_consumable
@@ -45,11 +55,6 @@ msgid "Analytic Line"
 msgstr ""
 
 #. module: project_consumable
-#: model:ir.model.fields,field_description:project_consumable.field_project_project__timesheet_ids
-msgid "Associated Timesheets"
-msgstr ""
-
-#. module: project_consumable
 #: model:ir.model.fields,field_description:project_consumable.field_product_product__project_ok
 #: model:ir.model.fields,field_description:project_consumable.field_product_template__project_ok
 msgid "Available in projects"
@@ -71,14 +76,9 @@ msgid ""
 msgstr ""
 
 #. module: project_consumable
-#: code:addons/project_consumable/models/project_project.py:0
-#, python-format
-msgid "Consumable"
-msgstr ""
-
-#. module: project_consumable
-#: model:ir.model.fields,field_description:project_consumable.field_project_profitability_report__consumable_cost
-msgid "Consumable Cost"
+#: model:product.template,name:project_consumable.product_coffee_capsule_product_template
+#: model:uom.category,name:project_consumable.uom_category_coffee_capsule
+msgid "Coffee capsule"
 msgstr ""
 
 #. module: project_consumable
@@ -87,18 +87,8 @@ msgid "Consumable Count"
 msgstr ""
 
 #. module: project_consumable
-#: model_terms:ir.ui.view,arch_db:project_consumable.timesheet_plan
-msgid "Consumable costs"
-msgstr ""
-
-#. module: project_consumable
 #: model:ir.actions.act_window,name:project_consumable.act_consumable_line_by_project
 msgid "Consumables"
-msgstr ""
-
-#. module: project_consumable
-#: model_terms:ir.ui.view,arch_db:project_consumable.timesheet_plan
-msgid "Costs from consumable consumbed by the project."
 msgstr ""
 
 #. module: project_consumable
@@ -107,47 +97,8 @@ msgid "Date"
 msgstr ""
 
 #. module: project_consumable
-#: code:addons/project_consumable/models/project_project.py:0
-#, python-format
-msgid "Days"
-msgstr ""
-
-#. module: project_consumable
-#: model:ir.model.fields,field_description:project_consumable.field_account_analytic_line__display_name
-#: model:ir.model.fields,field_description:project_consumable.field_product_template__display_name
-#: model:ir.model.fields,field_description:project_consumable.field_project_profitability_report__display_name
-#: model:ir.model.fields,field_description:project_consumable.field_project_project__display_name
-#: model:ir.model.fields,field_description:project_consumable.field_project_task__display_name
-msgid "Display Name"
-msgstr ""
-
-#. module: project_consumable
 #: model_terms:ir.ui.view,arch_db:project_consumable.project_consumable_product_line_search
 msgid "Group By"
-msgstr ""
-
-#. module: project_consumable
-#: code:addons/project_consumable/models/project_project.py:0
-#, python-format
-msgid "Hours"
-msgstr ""
-
-#. module: project_consumable
-#: model:ir.model.fields,field_description:project_consumable.field_account_analytic_line__id
-#: model:ir.model.fields,field_description:project_consumable.field_product_template__id
-#: model:ir.model.fields,field_description:project_consumable.field_project_profitability_report__id
-#: model:ir.model.fields,field_description:project_consumable.field_project_project__id
-#: model:ir.model.fields,field_description:project_consumable.field_project_task__id
-msgid "ID"
-msgstr ""
-
-#. module: project_consumable
-#: model:ir.model.fields,field_description:project_consumable.field_account_analytic_line____last_update
-#: model:ir.model.fields,field_description:project_consumable.field_product_template____last_update
-#: model:ir.model.fields,field_description:project_consumable.field_project_profitability_report____last_update
-#: model:ir.model.fields,field_description:project_consumable.field_project_project____last_update
-#: model:ir.model.fields,field_description:project_consumable.field_project_task____last_update
-msgid "Last Modified on"
 msgstr ""
 
 #. module: project_consumable
@@ -166,11 +117,6 @@ msgstr ""
 #. module: project_consumable
 #: model_terms:ir.ui.view,arch_db:project_consumable.project_consumable_product_line_search
 msgid "Material by Date"
-msgstr ""
-
-#. module: project_consumable
-#: model_terms:ir.ui.view,arch_db:project_consumable.project_consumable_product_line_tree
-msgid "Material consumption"
 msgstr ""
 
 #. module: project_consumable
@@ -211,24 +157,15 @@ msgid "Number of consumable lines collected."
 msgstr ""
 
 #. module: project_consumable
+#: model:ir.model,name:project_consumable.model_product_template
 #: model_terms:ir.ui.view,arch_db:project_consumable.project_consumable_product_line_search
 msgid "Product"
-msgstr ""
-
-#. module: project_consumable
-#: model:ir.model,name:project_consumable.model_product_template
-msgid "Product Template"
 msgstr ""
 
 #. module: project_consumable
 #: model:ir.model,name:project_consumable.model_project_project
 #: model_terms:ir.ui.view,arch_db:project_consumable.project_consumable_product_line_search
 msgid "Project"
-msgstr ""
-
-#. module: project_consumable
-#: model:ir.model,name:project_consumable.model_project_profitability_report
-msgid "Project Profitability Report"
 msgstr ""
 
 #. module: project_consumable
@@ -242,29 +179,6 @@ msgid "Record a new activity"
 msgstr ""
 
 #. module: project_consumable
-#: code:addons/project_consumable/models/project_project.py:0
-#: code:addons/project_consumable/models/project_project.py:0
-#, python-format
-msgid "Recorded"
-msgstr ""
-
-#. module: project_consumable
-#: model:ir.model,name:project_consumable.model_project_task
-#: model_terms:ir.ui.view,arch_db:project_consumable.project_consumable_product_line_search
-msgid "Task"
-msgstr ""
-
-#. module: project_consumable
-#: model:ir.actions.act_window,name:project_consumable.material_action_task
-msgid "Task's Materials"
-msgstr ""
-
-#. module: project_consumable
-#: model:ir.model.fields,field_description:project_consumable.field_project_task__timesheet_ids
-msgid "Timesheets"
-msgstr ""
-
-#. module: project_consumable
 #: model_terms:ir.ui.view,arch_db:project_consumable.project_consumable_product_line_tree
 msgid "Total"
 msgstr ""
@@ -272,15 +186,15 @@ msgstr ""
 #. module: project_consumable
 #: model_terms:ir.actions.act_window,help:project_consumable.act_project_consumable_product_line
 msgid ""
-"Track consummed products by projects every day and analyse cost per "
+"Track consumed products by projects every day and analysis cost per "
 "projects."
 msgstr ""
 
 #. module: project_consumable
-#: model_terms:ir.actions.act_window,help:project_consumable.consumable_action_report_by_project
+#: model_terms:ir.actions.act_window,help:project_consumable.act_consumable_line_by_project
 msgid ""
-"Track your consumable products by projects every day and analyse associated "
-"cost."
+"Track your consumable by projects every day and invoice those materials to "
+"your customers."
 msgstr ""
 
 #. module: project_consumable
@@ -290,20 +204,15 @@ msgid ""
 msgstr ""
 
 #. module: project_consumable
-#: model_terms:ir.actions.act_window,help:project_consumable.act_consumable_line_by_project
+#: model_terms:ir.actions.act_window,help:project_consumable.consumable_action_report_by_project
 msgid ""
-"Track your working hours by projects every day and invoice this time to your"
-" customers."
+"Track your consumable products by projects every day and analyze associated "
+"cost."
 msgstr ""
 
 #. module: project_consumable
 #: model_terms:ir.ui.view,arch_db:project_consumable.project_consumable_product_line_search
 msgid "User"
-msgstr ""
-
-#. module: project_consumable
-#: model_terms:ir.ui.view,arch_db:project_consumable.timesheet_plan
-msgid "and consumable costs"
 msgstr ""
 
 #. module: project_consumable
