@@ -84,14 +84,12 @@ msgid "Task Stage"
 msgstr "Fase lavoro"
 
 #. module: project_task_default_stage
-#: model:ir.model.fields,field_description:project_task_default_stage.field_project_project__type_ids
-msgid "Tasks Stages"
-msgstr "Fasi lavori"
-
-#. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_testing
 msgid "Testing"
 msgstr "In test"
+
+#~ msgid "Tasks Stages"
+#~ msgstr "Fasi lavori"
 
 #~ msgid "Blocked"
 #~ msgstr "Bloccato"

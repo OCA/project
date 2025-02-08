@@ -81,14 +81,12 @@ msgid "Task Stage"
 msgstr "Etapa de la Tarea"
 
 #. module: project_task_default_stage
-#: model:ir.model.fields,field_description:project_task_default_stage.field_project_project__type_ids
-msgid "Tasks Stages"
-msgstr "Etapas de la Tarea"
-
-#. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_testing
 msgid "Testing"
 msgstr "Evaluación"
+
+#~ msgid "Tasks Stages"
+#~ msgstr "Etapas de la Tarea"
 
 #~ msgid "Blocked"
 #~ msgstr "Bloqueado"
