@@ -83,15 +83,13 @@ msgid "Task Stage"
 msgstr "Görev Aşamaları"
 
 #. module: project_task_default_stage
-#: model:ir.model.fields,field_description:project_task_default_stage.field_project_project__type_ids
-#, fuzzy
-msgid "Tasks Stages"
-msgstr "Görev Aşamaları"
-
-#. module: project_task_default_stage
 #: model:project.task.type,name:project_task_default_stage.project_tt_testing
 msgid "Testing"
 msgstr "Test yapmak"
+
+#, fuzzy
+#~ msgid "Tasks Stages"
+#~ msgstr "Görev Aşamaları"
 
 #~ msgid "Blocked"
 #~ msgstr "Engellendi"
