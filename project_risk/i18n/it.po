@@ -102,11 +102,6 @@ msgid "Followers"
 msgstr "Seguito da"
 
 #. module: project_risk
-#: model:ir.model.fields,field_description:project_risk.field_project_risk__message_channel_ids
-msgid "Followers (Channels)"
-msgstr "Seguito da (canali)"
-
-#. module: project_risk
 #: model:ir.model.fields,field_description:project_risk.field_project_risk__message_partner_ids
 msgid "Followers (Partners)"
 msgstr "Seguito da (partner)"
@@ -115,6 +110,11 @@ msgstr "Seguito da (partner)"
 #: model_terms:ir.ui.view,arch_db:project_risk.project_risk_search_view
 msgid "Group By..."
 msgstr "Raggruppa per..."
+
+#. module: project_risk
+#: model:ir.model.fields,field_description:project_risk.field_project_risk__has_message
+msgid "Has Message"
+msgstr ""
 
 #. module: project_risk
 #: model:ir.model.fields.selection,name:project_risk.selection__project_risk__proximity__4
@@ -133,13 +133,11 @@ msgstr "ID"
 
 #. module: project_risk
 #: model:ir.model.fields,help:project_risk.field_project_risk__message_needaction
-#: model:ir.model.fields,help:project_risk.field_project_risk__message_unread
 msgid "If checked, new messages require your attention."
 msgstr "Se selezionata, nuovi messaggi richiedono attenzione."
 
 #. module: project_risk
 #: model:ir.model.fields,help:project_risk.field_project_risk__message_has_error
-#: model:ir.model.fields,help:project_risk.field_project_risk__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
 msgstr "Se selezionata, alcuni messaggi hanno un errore di consegna."
 
@@ -262,18 +260,13 @@ msgstr "Numero di errori"
 
 #. module: project_risk
 #: model:ir.model.fields,help:project_risk.field_project_risk__message_needaction_counter
-msgid "Number of messages which requires an action"
-msgstr "Numero di messaggi che richiedono un'azione"
+msgid "Number of messages requiring action"
+msgstr ""
 
 #. module: project_risk
 #: model:ir.model.fields,help:project_risk.field_project_risk__message_has_error_counter
 msgid "Number of messages with delivery error"
 msgstr "Numero di messaggi con errore di consegna"
-
-#. module: project_risk
-#: model:ir.model.fields,help:project_risk.field_project_risk__message_unread_counter
-msgid "Number of unread messages"
-msgstr "Numero di messaggi non letti"
 
 #. module: project_risk
 #: model:ir.model.fields,field_description:project_risk.field_project_risk__owner_id
@@ -371,11 +364,6 @@ msgid "Risks"
 msgstr "Rischi"
 
 #. module: project_risk
-#: model:ir.model.fields,field_description:project_risk.field_project_risk__message_has_sms_error
-msgid "SMS Delivery error"
-msgstr "Errore consegna SMS"
-
-#. module: project_risk
 #: model:ir.model.fields,field_description:project_risk.field_project_risk_response__sequence
 msgid "Sequence"
 msgstr "Sequenza"
@@ -401,16 +389,6 @@ msgstr "Irrilevante"
 #: model:ir.model.fields.selection,name:project_risk.selection__project_risk__probability__2
 msgid "Unlikely"
 msgstr "Improbabile"
-
-#. module: project_risk
-#: model:ir.model.fields,field_description:project_risk.field_project_risk__message_unread
-msgid "Unread Messages"
-msgstr "Messaggi non letti"
-
-#. module: project_risk
-#: model:ir.model.fields,field_description:project_risk.field_project_risk__message_unread_counter
-msgid "Unread Messages Counter"
-msgstr "Numero messaggi non letti"
 
 #. module: project_risk
 #: model:ir.model.fields.selection,name:project_risk.selection__project_risk__proximity__5
@@ -444,6 +422,24 @@ msgstr "Messaggi sito web"
 #: model:ir.model.fields,help:project_risk.field_project_risk__website_message_ids
 msgid "Website communication history"
 msgstr "Cronologia comunicazioni sito web"
+
+#~ msgid "Followers (Channels)"
+#~ msgstr "Seguito da (canali)"
+
+#~ msgid "Number of messages which requires an action"
+#~ msgstr "Numero di messaggi che richiedono un'azione"
+
+#~ msgid "Number of unread messages"
+#~ msgstr "Numero di messaggi non letti"
+
+#~ msgid "SMS Delivery error"
+#~ msgstr "Errore consegna SMS"
+
+#~ msgid "Unread Messages"
+#~ msgstr "Messaggi non letti"
+
+#~ msgid "Unread Messages Counter"
+#~ msgstr "Numero messaggi non letti"
 
 #~ msgid "If checked new messages require your attention."
 #~ msgstr "Se selezionata, nuovi messaggi richiedono attenzione."
