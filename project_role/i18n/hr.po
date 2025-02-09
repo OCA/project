@@ -13,35 +13,31 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 4.14.1\n"
 
 #. module: project_role
 #. odoo-python
 #: code:addons/project_role/models/project_assignment.py:0
-#, python-format
 msgid "%(USER)s as %(ROLE)s"
 msgstr "%(USER)s kao %(ROLE)s"
 
 #. module: project_role
 #. odoo-python
 #: code:addons/project_role/models/project_assignment.py:0
-#, python-format
 msgid "%(USER)s as %(ROLE)s in %(PROJECT)s"
 msgstr "%(USER)s kao %(ROLE)s na %(PROJECT)s"
 
 #. module: project_role
 #. odoo-python
 #: code:addons/project_role/models/project_assignment.py:0
-#, python-format
 msgid "%(USER)s as %(ROLE)s on %(PROJECT)s"
 msgstr "%(USER)s kao %(ROLE)s na %(PROJECT)s"
 
 #. module: project_role
 #. odoo-python
 #: code:addons/project_role/models/project_role.py:0
-#, python-format
 msgid "%(parent)s / %(own)s"
 msgstr "%(parent)s / %(own)s"
 
@@ -60,14 +56,15 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
 msgid ""
 "<span class=\"o_form_label\">Project Roles</span>\n"
-"                                <span class=\"fa fa-lg fa-building-o\" title="
-"\"Values set here are company-specific.\" role=\"img\" aria-label=\"Values "
-"set here are company-specific.\" groups=\"base.group_multi_company\"/>"
+"                                <span class=\"fa fa-lg fa-building-o\" "
+"title=\"Values set here are company-specific.\" role=\"img\" aria-"
+"label=\"Values set here are company-specific.\" groups=\"base."
+"group_multi_company\"/>"
 msgstr ""
 "<span class=\"o_form_label\">Uloge na projektima</span>\n"
-"                                <span class=\"fa fa-lg fa-building-o\" title="
-"\"Ove vrijednosti su specifične za svaku tvrtku\" role=\"img\" aria-label="
-"\"Ove vrijednosti su specifične za svaku tvrtku\" groups=\"base."
+"                                <span class=\"fa fa-lg fa-building-o\" "
+"title=\"Ove vrijednosti su specifične za svaku tvrtku\" role=\"img\" aria-"
+"label=\"Ove vrijednosti su specifične za svaku tvrtku\" groups=\"base."
 "group_multi_company\"/>"
 
 #. module: project_role
@@ -92,7 +89,6 @@ msgstr "Arhivirano"
 #. module: project_role
 #. odoo-python
 #: code:addons/project_role/models/project_assignment.py:0
-#, python-format
 msgid ""
 "Assignment %(ASSIGNMENT)s conflicts with another assignment: "
 "%(OTHER_ASSIGNMENT)s"
@@ -215,6 +211,7 @@ msgstr "Ako je označeno, nove poruke traže vašu pažnju."
 
 #. module: project_role
 #: model:ir.model.fields,help:project_role.field_project_assignment__message_has_error
+#: model:ir.model.fields,help:project_role.field_project_assignment__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
 msgstr "Ako je označeno, neke poruke imaju greške pri isporuci."
 
@@ -227,12 +224,6 @@ msgstr "Nasljedi zaduženja"
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_is_follower
 msgid "Is Follower"
 msgstr "Je pratitelj"
-
-#. module: project_role
-#: model:ir.model.fields,field_description:project_role.field_project_assignment____last_update
-#: model:ir.model.fields,field_description:project_role.field_project_role____last_update
-msgid "Last Modified on"
-msgstr "Zadnje modificirano"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__write_uid
@@ -257,11 +248,6 @@ msgstr "Ograniči uloge na projektu na zaduženja"
 #: model:ir.model.fields,field_description:project_role.field_project_project__limit_role_to_assignments
 msgid "Limit Role To Assignments"
 msgstr "Ograniči uloge na zaduženja"
-
-#. module: project_role
-#: model:ir.model.fields,field_description:project_role.field_project_assignment__message_main_attachment_id
-msgid "Main Attachment"
-msgstr "Glavni prilog"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_has_error
@@ -317,7 +303,6 @@ msgstr "Nadređena uloga"
 #. module: project_role
 #. odoo-python
 #: code:addons/project_role/models/project_role.py:0
-#, python-format
 msgid "Please activate first parent role %s"
 msgstr "Molimo prije aktivirajte nadređenu ulogu %s"
 
@@ -362,6 +347,11 @@ msgid "Projects inherit Company assignments"
 msgstr "Projekti nasljeđuju zaduženja tvrtke"
 
 #. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__rating_ids
+msgid "Ratings"
+msgstr ""
+
+#. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__role_id
 #: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
 msgid "Role"
@@ -370,7 +360,6 @@ msgstr "Uloga"
 #. module: project_role
 #. odoo-python
 #: code:addons/project_role/models/project_role.py:0
-#, python-format
 msgid "Role \"%s\" conflicts with another role due to same name."
 msgstr "Uloga \"%s\" je u konfliktu sa drugom ulogom zbog istog naziva."
 
@@ -383,6 +372,11 @@ msgstr "Uloga istog imena već postoji unutar tvrtke!"
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
 msgid "Roles &amp; Assignments"
 msgstr "Uloge i Zaduženja"
+
+#. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "Greška isporuke SMSa"
 
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
@@ -403,7 +397,6 @@ msgstr "Korisnik"
 #. module: project_role
 #. odoo-python
 #: code:addons/project_role/models/project_assignment.py:0
-#, python-format
 msgid "User %(USER)s can not be assigned to role %(ROLE)s on %(PROJECT)s."
 msgstr ""
 "Korisniku %(USER)s nije moguće dodijeliti ulogu %(ROLE)s na %(PROJECT)s."
@@ -411,7 +404,6 @@ msgstr ""
 #. module: project_role
 #. odoo-python
 #: code:addons/project_role/models/project_assignment.py:0
-#, python-format
 msgid "User %(USER)s can not be assigned to role %(ROLE)s."
 msgstr "Korisniku %(USER)s nije moguće dodijeliti ulogu %(ROLE)s."
 
@@ -440,8 +432,11 @@ msgstr "Poruke sa webstranica"
 msgid "Website communication history"
 msgstr "Povijest komunikacije webstranica"
 
-#~ msgid "SMS Delivery error"
-#~ msgstr "Greška isporuke SMSa"
+#~ msgid "Last Modified on"
+#~ msgstr "Zadnje modificirano"
+
+#~ msgid "Main Attachment"
+#~ msgstr "Glavni prilog"
 
 #~ msgid "Number of messages which requires an action"
 #~ msgstr "Broj poruka koje zahtijevaju pažnju"

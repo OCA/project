@@ -19,28 +19,24 @@ msgstr ""
 #. module: project_role
 #. odoo-python
 #: code:addons/project_role/models/project_assignment.py:0
-#, python-format
 msgid "%(USER)s as %(ROLE)s"
 msgstr ""
 
 #. module: project_role
 #. odoo-python
 #: code:addons/project_role/models/project_assignment.py:0
-#, python-format
 msgid "%(USER)s as %(ROLE)s in %(PROJECT)s"
 msgstr ""
 
 #. module: project_role
 #. odoo-python
 #: code:addons/project_role/models/project_assignment.py:0
-#, python-format
 msgid "%(USER)s as %(ROLE)s on %(PROJECT)s"
 msgstr "%(USER)s als %(ROLE)s op %(PROJECT)s"
 
 #. module: project_role
 #. odoo-python
 #: code:addons/project_role/models/project_role.py:0
-#, python-format
 msgid "%(parent)s / %(own)s"
 msgstr ""
 
@@ -59,15 +55,16 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
 msgid ""
 "<span class=\"o_form_label\">Project Roles</span>\n"
-"                                <span class=\"fa fa-lg fa-building-o\" title="
-"\"Values set here are company-specific.\" role=\"img\" aria-label=\"Values "
-"set here are company-specific.\" groups=\"base.group_multi_company\"/>"
+"                                <span class=\"fa fa-lg fa-building-o\" "
+"title=\"Values set here are company-specific.\" role=\"img\" aria-"
+"label=\"Values set here are company-specific.\" groups=\"base."
+"group_multi_company\"/>"
 msgstr ""
 "<span class=\"o_form_label\">Projectrollen</span>\n"
-"                                <span class=\"fa fa-lg fa-building-o\" title="
-"\"De hier ingestelde waarden zijn bedrijfsspecifiek.\" role=\"img\" aria-"
-"label=\"De hier ingestelde waarden zijn bedrijfsspecifiek.\" groups=\"base."
-"group_multi_company\"/>"
+"                                <span class=\"fa fa-lg fa-building-o\" "
+"title=\"De hier ingestelde waarden zijn bedrijfsspecifiek.\" role=\"img\" "
+"aria-label=\"De hier ingestelde waarden zijn bedrijfsspecifiek.\" "
+"groups=\"base.group_multi_company\"/>"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_needaction
@@ -91,7 +88,6 @@ msgstr "Gearchiveerd"
 #. module: project_role
 #. odoo-python
 #: code:addons/project_role/models/project_assignment.py:0
-#, python-format
 msgid ""
 "Assignment %(ASSIGNMENT)s conflicts with another assignment: "
 "%(OTHER_ASSIGNMENT)s"
@@ -218,6 +214,7 @@ msgstr "Indien aangevinkt, vereisen nieuwe berichten uw aandacht."
 
 #. module: project_role
 #: model:ir.model.fields,help:project_role.field_project_assignment__message_has_error
+#: model:ir.model.fields,help:project_role.field_project_assignment__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
 msgstr "Indien aangevinkt, hebben sommige berichten een bezorgfout."
 
@@ -230,12 +227,6 @@ msgstr "Toewijzingen overnemen"
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_is_follower
 msgid "Is Follower"
 msgstr "Is volger"
-
-#. module: project_role
-#: model:ir.model.fields,field_description:project_role.field_project_assignment____last_update
-#: model:ir.model.fields,field_description:project_role.field_project_role____last_update
-msgid "Last Modified on"
-msgstr "Laatst gewijzigd op"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__write_uid
@@ -260,11 +251,6 @@ msgstr "Beperk de projectrol tot toewijzingen"
 #: model:ir.model.fields,field_description:project_role.field_project_project__limit_role_to_assignments
 msgid "Limit Role To Assignments"
 msgstr "Beperk de rol tot opdrachten"
-
-#. module: project_role
-#: model:ir.model.fields,field_description:project_role.field_project_assignment__message_main_attachment_id
-msgid "Main Attachment"
-msgstr "Hoofdbijlage"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_has_error
@@ -320,7 +306,6 @@ msgstr "Ouderrol"
 #. module: project_role
 #. odoo-python
 #: code:addons/project_role/models/project_role.py:0
-#, python-format
 msgid "Please activate first parent role %s"
 msgstr "Activeer alstublieft eerst de ouderrol %s"
 
@@ -365,6 +350,11 @@ msgid "Projects inherit Company assignments"
 msgstr "Projecten nemen bedrijfsopdrachten over"
 
 #. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__rating_ids
+msgid "Ratings"
+msgstr ""
+
+#. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__role_id
 #: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
 msgid "Role"
@@ -373,7 +363,6 @@ msgstr "Rol"
 #. module: project_role
 #. odoo-python
 #: code:addons/project_role/models/project_role.py:0
-#, python-format
 msgid "Role \"%s\" conflicts with another role due to same name."
 msgstr "Rol \"%s\" conflicteert met een andere rol vanwege dezelfde naam."
 
@@ -386,6 +375,11 @@ msgstr "Een functie met een dergelijke naam bestaat al in het bedrijf!"
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
 msgid "Roles &amp; Assignments"
 msgstr "Rollen &amp; Opdrachten"
+
+#. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "SMS-bezorgfout"
 
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
@@ -406,7 +400,6 @@ msgstr "Gebruiker"
 #. module: project_role
 #. odoo-python
 #: code:addons/project_role/models/project_assignment.py:0
-#, python-format
 msgid "User %(USER)s can not be assigned to role %(ROLE)s on %(PROJECT)s."
 msgstr ""
 "Gebruiker %(USER)s kan niet worden toegewezen aan de rol %(ROLE)s op "
@@ -415,7 +408,6 @@ msgstr ""
 #. module: project_role
 #. odoo-python
 #: code:addons/project_role/models/project_assignment.py:0
-#, python-format
 msgid "User %(USER)s can not be assigned to role %(ROLE)s."
 msgstr "Gebruiker %(USER)s kan niet worden toegewezen aan rol %(ROLE)s."
 
@@ -448,5 +440,8 @@ msgstr "Websiteberichten"
 msgid "Website communication history"
 msgstr "Communicatiegeschiedenis van websites"
 
-#~ msgid "SMS Delivery error"
-#~ msgstr "SMS-bezorgfout"
+#~ msgid "Last Modified on"
+#~ msgstr "Laatst gewijzigd op"
+
+#~ msgid "Main Attachment"
+#~ msgstr "Hoofdbijlage"

@@ -19,28 +19,24 @@ msgstr ""
 #. module: project_role
 #. odoo-python
 #: code:addons/project_role/models/project_assignment.py:0
-#, python-format
 msgid "%(USER)s as %(ROLE)s"
 msgstr "%(USER)s come %(ROLE)s"
 
 #. module: project_role
 #. odoo-python
 #: code:addons/project_role/models/project_assignment.py:0
-#, python-format
 msgid "%(USER)s as %(ROLE)s in %(PROJECT)s"
 msgstr "%(USER)s come %(ROLE)s in %(PROJECT)s"
 
 #. module: project_role
 #. odoo-python
 #: code:addons/project_role/models/project_assignment.py:0
-#, python-format
 msgid "%(USER)s as %(ROLE)s on %(PROJECT)s"
 msgstr "%(USER)s come %(ROLE)s in %(PROJECT)s"
 
 #. module: project_role
 #. odoo-python
 #: code:addons/project_role/models/project_role.py:0
-#, python-format
 msgid "%(parent)s / %(own)s"
 msgstr "%(parent)s / %(own)s"
 
@@ -59,15 +55,16 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
 msgid ""
 "<span class=\"o_form_label\">Project Roles</span>\n"
-"                                <span class=\"fa fa-lg fa-building-o\" title="
-"\"Values set here are company-specific.\" role=\"img\" aria-label=\"Values "
-"set here are company-specific.\" groups=\"base.group_multi_company\"/>"
+"                                <span class=\"fa fa-lg fa-building-o\" "
+"title=\"Values set here are company-specific.\" role=\"img\" aria-"
+"label=\"Values set here are company-specific.\" groups=\"base."
+"group_multi_company\"/>"
 msgstr ""
 "<span class=\"o_form_label\">Ruoli progetto</span>\n"
-"                                <span class=\"fa fa-lg fa-building-o\" title="
-"\"I valori impostati qui sono specifici per azienda.\" role=\"img\" aria-"
-"label=\"I valori impostati qui sono specifici per azienda.\" groups=\"base."
-"group_multi_company\"/>"
+"                                <span class=\"fa fa-lg fa-building-o\" "
+"title=\"I valori impostati qui sono specifici per azienda.\" role=\"img\" "
+"aria-label=\"I valori impostati qui sono specifici per azienda.\" "
+"groups=\"base.group_multi_company\"/>"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_needaction
@@ -91,7 +88,6 @@ msgstr "In archivio"
 #. module: project_role
 #. odoo-python
 #: code:addons/project_role/models/project_assignment.py:0
-#, python-format
 msgid ""
 "Assignment %(ASSIGNMENT)s conflicts with another assignment: "
 "%(OTHER_ASSIGNMENT)s"
@@ -218,6 +214,7 @@ msgstr "Se selezionata, nuovi messaggi richiedono attenzione."
 
 #. module: project_role
 #: model:ir.model.fields,help:project_role.field_project_assignment__message_has_error
+#: model:ir.model.fields,help:project_role.field_project_assignment__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
 msgstr "Se selezionata, alcuni messaggi hanno un errore di consegna."
 
@@ -230,12 +227,6 @@ msgstr "Eredita incarichi"
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_is_follower
 msgid "Is Follower"
 msgstr "Segue"
-
-#. module: project_role
-#: model:ir.model.fields,field_description:project_role.field_project_assignment____last_update
-#: model:ir.model.fields,field_description:project_role.field_project_role____last_update
-msgid "Last Modified on"
-msgstr "Ultima modifica il"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__write_uid
@@ -260,11 +251,6 @@ msgstr "Limita ruolo progetto agli incarichi"
 #: model:ir.model.fields,field_description:project_role.field_project_project__limit_role_to_assignments
 msgid "Limit Role To Assignments"
 msgstr "Limita il ruolo agli incarichi"
-
-#. module: project_role
-#: model:ir.model.fields,field_description:project_role.field_project_assignment__message_main_attachment_id
-msgid "Main Attachment"
-msgstr "Allegato principale"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_has_error
@@ -320,7 +306,6 @@ msgstr "Ruolo padre"
 #. module: project_role
 #. odoo-python
 #: code:addons/project_role/models/project_role.py:0
-#, python-format
 msgid "Please activate first parent role %s"
 msgstr "Attivare prima il ruolo padre %s"
 
@@ -365,6 +350,11 @@ msgid "Projects inherit Company assignments"
 msgstr "I progetti ereditano gli incarichi azienda"
 
 #. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__rating_ids
+msgid "Ratings"
+msgstr ""
+
+#. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__role_id
 #: model_terms:ir.ui.view,arch_db:project_role.project_assignment_search
 msgid "Role"
@@ -373,7 +363,6 @@ msgstr "Ruolo"
 #. module: project_role
 #. odoo-python
 #: code:addons/project_role/models/project_role.py:0
-#, python-format
 msgid "Role \"%s\" conflicts with another role due to same name."
 msgstr "Il ruolo \"%s\" è in conflitto con un altro ruolo con lo stesso nome."
 
@@ -386,6 +375,11 @@ msgstr "Esiste già un ruolo con questo nome nell'azienda!"
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
 msgid "Roles &amp; Assignments"
 msgstr "Ruoli &amp; incarichi"
+
+#. module: project_role
+#: model:ir.model.fields,field_description:project_role.field_project_assignment__message_has_sms_error
+msgid "SMS Delivery error"
+msgstr "Errore consegna SMS"
 
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
@@ -406,7 +400,6 @@ msgstr "Utente"
 #. module: project_role
 #. odoo-python
 #: code:addons/project_role/models/project_assignment.py:0
-#, python-format
 msgid "User %(USER)s can not be assigned to role %(ROLE)s on %(PROJECT)s."
 msgstr ""
 "L'utente %(USER)s non può essere assegnato al ruolo %(ROLE)s in %(PROJECT)s."
@@ -414,7 +407,6 @@ msgstr ""
 #. module: project_role
 #. odoo-python
 #: code:addons/project_role/models/project_assignment.py:0
-#, python-format
 msgid "User %(USER)s can not be assigned to role %(ROLE)s."
 msgstr "L'utente %(USER)s non può essere assegnato al ruolo %(ROLE)s."
 
@@ -445,8 +437,11 @@ msgstr "Messaggi sito web"
 msgid "Website communication history"
 msgstr "Storico comunicazioni sito web"
 
-#~ msgid "SMS Delivery error"
-#~ msgstr "Errore consegna SMS"
+#~ msgid "Last Modified on"
+#~ msgstr "Ultima modifica il"
+
+#~ msgid "Main Attachment"
+#~ msgstr "Allegato principale"
 
 #~ msgid "Number of messages which requires an action"
 #~ msgstr "Numero di messaggi che richiedono un'azione"
