@@ -104,11 +104,6 @@ msgid "Followers"
 msgstr ""
 
 #. module: project_risk
-#: model:ir.model.fields,field_description:project_risk.field_project_risk__message_channel_ids
-msgid "Followers (Channels)"
-msgstr ""
-
-#. module: project_risk
 #: model:ir.model.fields,field_description:project_risk.field_project_risk__message_partner_ids
 msgid "Followers (Partners)"
 msgstr ""
@@ -117,6 +112,11 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_risk.project_risk_search_view
 msgid "Group By..."
 msgstr "Agrupado por..."
+
+#. module: project_risk
+#: model:ir.model.fields,field_description:project_risk.field_project_risk__has_message
+msgid "Has Message"
+msgstr ""
 
 #. module: project_risk
 #: model:ir.model.fields.selection,name:project_risk.selection__project_risk__proximity__4
@@ -135,13 +135,11 @@ msgstr "ID"
 
 #. module: project_risk
 #: model:ir.model.fields,help:project_risk.field_project_risk__message_needaction
-#: model:ir.model.fields,help:project_risk.field_project_risk__message_unread
 msgid "If checked, new messages require your attention."
 msgstr ""
 
 #. module: project_risk
 #: model:ir.model.fields,help:project_risk.field_project_risk__message_has_error
-#: model:ir.model.fields,help:project_risk.field_project_risk__message_has_sms_error
 msgid "If checked, some messages have a delivery error."
 msgstr ""
 
@@ -264,17 +262,12 @@ msgstr ""
 
 #. module: project_risk
 #: model:ir.model.fields,help:project_risk.field_project_risk__message_needaction_counter
-msgid "Number of messages which requires an action"
+msgid "Number of messages requiring action"
 msgstr ""
 
 #. module: project_risk
 #: model:ir.model.fields,help:project_risk.field_project_risk__message_has_error_counter
 msgid "Number of messages with delivery error"
-msgstr ""
-
-#. module: project_risk
-#: model:ir.model.fields,help:project_risk.field_project_risk__message_unread_counter
-msgid "Number of unread messages"
 msgstr ""
 
 #. module: project_risk
@@ -378,11 +371,6 @@ msgid "Risks"
 msgstr "Riesgos"
 
 #. module: project_risk
-#: model:ir.model.fields,field_description:project_risk.field_project_risk__message_has_sms_error
-msgid "SMS Delivery error"
-msgstr ""
-
-#. module: project_risk
 #: model:ir.model.fields,field_description:project_risk.field_project_risk_response__sequence
 msgid "Sequence"
 msgstr "Secuencia"
@@ -408,16 +396,6 @@ msgstr "Trivial"
 #: model:ir.model.fields.selection,name:project_risk.selection__project_risk__probability__2
 msgid "Unlikely"
 msgstr "Improbable"
-
-#. module: project_risk
-#: model:ir.model.fields,field_description:project_risk.field_project_risk__message_unread
-msgid "Unread Messages"
-msgstr ""
-
-#. module: project_risk
-#: model:ir.model.fields,field_description:project_risk.field_project_risk__message_unread_counter
-msgid "Unread Messages Counter"
-msgstr ""
 
 #. module: project_risk
 #: model:ir.model.fields.selection,name:project_risk.selection__project_risk__proximity__5
