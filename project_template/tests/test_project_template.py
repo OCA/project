@@ -2,26 +2,27 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 from datetime import datetime, timedelta
 
-from odoo.tests import common
+from odoo.addons.base.tests.common import BaseCommon
 
 
-class TestProjectTemplate(common.TransactionCase):
-    def setUp(self):
-        super().setUp()
-        self.test_customer = self.env["res.partner"].create({"name": "TestCustomer"})
-        self.test_project = self.env["project.project"].create(
+class TestProjectTemplate(BaseCommon):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.test_customer = cls.env["res.partner"].create({"name": "TestCustomer"})
+        cls.test_project = cls.env["project.project"].create(
             {
                 "name": "TestProject",
                 "alias_name": "test_alias",
-                "partner_id": self.test_customer.id,
+                "partner_id": cls.test_customer.id,
             }
         )
-        self.tasks = [
-            self.env["project.task"].create(
-                {"name": "TestTask", "project_id": self.test_project.id}
+        cls.tasks = [
+            cls.env["project.task"].create(
+                {"name": "TestTask", "project_id": cls.test_project.id}
             ),
-            self.env["project.task"].create(
-                {"name": "TestTask2", "project_id": self.test_project.id}
+            cls.env["project.task"].create(
+                {"name": "TestTask2", "project_id": cls.test_project.id}
             ),
         ]
 

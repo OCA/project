@@ -30,15 +30,6 @@ class Project(models.Model):
             "type": "ir.actions.act_window",
         }
 
-    @api.model
-    def _map_tasks_default_valeus(self, task, project):
-        defaults = super()._map_tasks_default_valeus(task, project)
-        if self.env.context.get(TASK_DEFAULT_COPY_CONTEXT_KEY):
-            # date_end normally is not copied on tasks when a project is
-            # copied, but we want it when generating from template
-            defaults["date_end"] = task.date_end
-        return defaults
-
     # ADD "(TEMPLATE)" TO THE NAME WHEN PROJECT IS MARKED AS A TEMPLATE
     @api.onchange("is_template")
     def on_change_is_template(self):

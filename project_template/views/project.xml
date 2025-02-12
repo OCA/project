@@ -26,10 +26,7 @@
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.view_project_kanban" />
         <field name="arch" type="xml">
-            <xpath
-                expr="//div[hasclass('o_kanban_card_manage_section')]"
-                position="inside"
-            >
+            <xpath expr="//div[@name='card_menu_view']" position="inside">
                 <field name="is_template" invisible="1" />
                 <div t-if="record.is_template.raw_value" role="menuitem">
                     <a
@@ -61,13 +58,10 @@
             </filter>
         </field>
     </record>
+    <!-- Add default filter on non-templates -->
     <record model="ir.actions.act_window" id="project.open_view_project_all">
-        <field name="name">Projects</field>
-        <field name="res_model">project.project</field>
-        <field name="view_id" ref="project.view_project_kanban" />
-        <field name="view_mode">kanban,form,tree</field>
         <field
             name="context"
-        >{"search_default_projects":1, "search_default_not_closed":1}</field>
+        >{"display_milestone_deadline": True, "search_default_projects": True}</field>
     </record>
 </odoo>
