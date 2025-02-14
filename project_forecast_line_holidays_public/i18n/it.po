@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-06-13 14:09+0000\n"
+"PO-Revision-Date: 2025-02-14 17:06+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.17\n"
+"X-Generator: Weblate 5.6.2\n"
 
 #. module: project_forecast_line_holidays_public
 #: model_terms:ir.ui.view,arch_db:project_forecast_line_holidays_public.res_config_settings_view_form
@@ -35,7 +35,7 @@ msgstr "Aziende"
 #. module: project_forecast_line_holidays_public
 #: model_terms:ir.ui.view,arch_db:project_forecast_line_holidays_public.res_config_settings_view_form
 msgid "Compute forecast on public holidays creation"
-msgstr "Calcola previsionale alla creazione delle festività nazionali"
+msgstr "Calcola previsionale alla creazione dei giorni festivi"
 
 #. module: project_forecast_line_holidays_public
 #: model:ir.model,name:project_forecast_line_holidays_public.model_res_config_settings
@@ -55,7 +55,7 @@ msgid ""
 "creation."
 msgstr ""
 "Se selezionata forzerà il ricalcolo delle righe previsionali alla creazione "
-"delle festività nazionali."
+"dei giorni festivi."
 
 #. module: project_forecast_line_holidays_public
 #: model:ir.model,name:project_forecast_line_holidays_public.model_hr_holidays_public_line
