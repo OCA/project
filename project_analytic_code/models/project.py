@@ -7,25 +7,24 @@ from odoo import api, fields, models
 class Project(models.Model):
     _inherit = "project.project"
 
+    _rec_names_search = [
+        "name",
+        "analytic_account_code",
+    ]
+
     analytic_account_code = fields.Char(
         string="Analytic code",
         related="analytic_account_id.code",
         store=True,
-        index=True,
+        index="btree_not_null",
     )
 
-    @api.model
-    def name_search(self, name="", args=None, operator="ilike", limit=100):
-        args = list(args or [])
-        if name:
-            args += ["|", ("analytic_account_code", "=", name)]
-        return super().name_search(name=name, args=args, operator=operator, limit=limit)
-
-    def name_get(self):
-        result = super().name_get()
-        # Prepend analytic_account_code to display_name
-        for i, (res_item, project) in enumerate(zip(result, self)):
+    @api.depends("analytic_account_code")
+    def _compute_display_name(self):
+        # res is null but avoid noqa: W8110
+        res = super()._compute_display_name()
+        for project in self:
             code = project.analytic_account_code
             if code:
-                result[i] = (res_item[0], "[%s] %s" % (code, res_item[1]))
-        return result
+                project.display_name = f"[{code}] {project.display_name}"
+        return res
