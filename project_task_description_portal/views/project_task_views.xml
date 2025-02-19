@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_task_form2_inherit" model="ir.ui.view">
+        <field name="name">project.task.form.inherit.portal.description</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2" />
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='description_page']" position="inside">
+                <group>
+                    <field name="use_portal_description" />
+                </group>
+            </xpath>
+            <xpath expr="//page[@name='description_page']" position="after">
+                <page
+                    string="Portal Description"
+                    name="portal_description_page"
+                    attrs="{'invisible': [('use_portal_description', '=', False)]}"
+                >
+                    <field
+                        name="portal_description"
+                        placeholder="Add a description for portal users..."
+                    />
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
