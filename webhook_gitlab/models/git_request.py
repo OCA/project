@@ -131,7 +131,8 @@ class GitRequest(models.Model):
             )
             self._post_message(event, message)
             return False
-        if event.get("object_kind"):
+        event_source = event.get("source", "gitlab")
+        if event_source == "gitlab":
             project_id = event["project"]["id"]
             merge_request_id = event["object_attributes"]["iid"]
         else:
@@ -160,7 +161,8 @@ class GitRequest(models.Model):
 
     @api.model
     def _prepare_git_request(self, record, event):
-        if event.get("object_kind"):
+        event_source = event.get("source", "gitlab")
+        if event_source == "gitlab":
             vals = self._prepare_gilab_git_request(event)
         else:
             vals = self._prepare_github_git_request(event)
@@ -251,6 +253,12 @@ class GitRequest(models.Model):
         return self._link_record(event, id_found)
 
     @api.model
+    def _process_push(self, event):
+        """todo document method
+        """
+        pass
+
+    @api.model
     def _process_pipeline(self, event):
         """Process pipeline status and update git.request in task.
         The title must contain the type of registry and the ID preceded by a #
@@ -295,7 +303,8 @@ class GitRequest(models.Model):
     @api.model
     def _post_message(self, event, message):
         """Post a Message on Gitlab or Github"""
-        if event.get("object_kind"):
+        event_source = event.get("source", "gitlab")
+        if event_source == "gitlab":
             return self._post_gitlab_message(event, message)
         return self._post_github_message(event, message)
 

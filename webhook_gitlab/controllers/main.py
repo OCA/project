@@ -27,6 +27,7 @@ def token_authorization(function):
         gitlab_token = headers.get("X-Gitlab-Token")
         github_token = headers.get("X-Hub-Signature-256")
         token = request.env["ir.config_parameter"].sudo().get_param("webhook_gitlab.authorization_token")
+        kw["source"] = ""
         if github_token:
             expected_token = HMAC(
                 key=token.encode("utf-8"),
@@ -34,8 +35,10 @@ def token_authorization(function):
                 digestmod=sha256,
             ).hexdigest()
             authorization = compare_digest(github_token.split("sha256=")[-1].strip(), expected_token)
+            kw["source"] = "github"
         elif gitlab_token:
             authorization = consteq(gitlab_token, token)
+            kw["source"] = "gitlab"
         if not authorization:
             _logger.warning("Token is not the expected")
             return False
@@ -45,21 +48,55 @@ def token_authorization(function):
 
 
 class WebhookGitlab(http.Controller):
+
     @http.route("/webhook_gitlab/webhook/", type="json", auth="public", csrf=False)
     @token_authorization
-    def _process_webhook(self):
+    def _process_webhook(self, **kw):
         """Receive the request from Gitlab/Github and invoke functions based on
         'object_kind', then it calls the function with the name
         _process_<object_kind>
         """
         event = request.get_json_data()
+        event["source"] = kw.get("source", "")
+        event = self._parse_git_request_data(event=event)
         request_obj = request.env["git.request"]
         try:
             if event.get("object_kind"):
                 func = getattr(request_obj.with_delay(), "_process_%s" % event["object_kind"])
-            else:
+            elif event.get("source") == "gitlab":
                 func = request_obj.with_delay()._process_pull_request
         except AttributeError as error:
             _logger.warning(error)
             return error
         return func(event)
+
+    def _parse_git_request_data(self, event):
+        """The structure of a git request differ among different sources
+        (e.g. github vs gitlab). This method will fetch necessary data
+        accordingly to the current source, create a new 'common key' in
+        the request object and put the data inside it so it's easy to
+        retrieve it later despite the source."""
+
+        source = event.get("source")
+        if source == "github":
+            event = self._parse_request_github(event=event)
+        elif not source or source == "gitlab":
+            event = self._parse_request_gitlab(event=event)
+
+        return event
+
+    def _parse_request_gitlab(self, event):
+        event["repository_url"] = event.get("repository", {}).get("git_http_url")
+        return event
+
+    def _parse_request_github(self, event):
+        # Github doesn't have an explicit `object_kind` key.
+        # We guess the object kind by looking for specific events
+        # in the request.
+        if event.get("pull_request", {}):
+                event["object_kind"] = "pull_request"
+        elif event.get("pusher"):
+            event["object_kind"] = "push"
+        # set repo url
+        event["repository_url"] = event.get("repository", {}).get("html_url")
+        return event
