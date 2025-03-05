@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2019 Change 2 improve - Eduardo Magdalena
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+<odoo>
+    <record id="view_task_search_form" model="ir.ui.view">
+        <field name="name">Project Parent Tasks View Search Form</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_search_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='unassigned']" position="after">
+                <filter
+                    string="Parent tasks"
+                    name="parent_only"
+                    domain="[('parent_id','=',False)]"
+                />
+                <filter
+                    name="parent_task"
+                    string="Parent tasks"
+                    context="{'group_by' : 'parent_id'}"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>
