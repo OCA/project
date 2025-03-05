@@ -26,6 +26,7 @@ addon | version | maintainers | summary
 [project_group](project_group/) | 17.0.1.0.0 |  | Add groups for filtering on projects
 [project_key](project_key/) | 17.0.1.0.0 |  | Module decorates projects and tasks with Project Key
 [project_parent](project_parent/) | 17.0.1.0.0 |  | Project Parent
+[project_parent_task_filter](project_parent_task_filter/) | 17.0.1.0.0 |  | Add a filter to show the parent tasks
 [project_purchase_link](project_purchase_link/) | 17.0.1.0.0 |  | Project Purchase Link
 [project_role](project_role/) | 17.0.1.0.0 | [![alexey-pelykh](https://github.com/alexey-pelykh.png?size=30px)](https://github.com/alexey-pelykh) | Project role-based roster
 [project_sequence](project_sequence/) | 17.0.1.0.0 | [![yajo](https://github.com/yajo.png?size=30px)](https://github.com/yajo) [![anddago78](https://github.com/anddago78.png?size=30px)](https://github.com/anddago78) | Add a sequence field to projects, filled automatically
