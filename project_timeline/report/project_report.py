@@ -8,14 +8,14 @@ class ReportProjectTaskUser(models.Model):
     _inherit = "report.project.task.user"
 
     planned_date_start = fields.Datetime(readonly=True)
-    planned_date_end = fields.Datetime(readonly=True)
+    planned_date_end_custom = fields.Datetime(readonly=True)
 
     def _select(self):
         return (
             super()._select()
             + """,
             t.planned_date_start,
-            t.planned_date_end"""
+            t.planned_date_end AS planned_date_end_custom"""
         )
 
     def _group_by(self):
@@ -23,6 +23,6 @@ class ReportProjectTaskUser(models.Model):
             super()._group_by()
             + """,
             t.planned_date_start,
-            t.planned_date_end
+            t.planned_date_end_custom
             """
         )
