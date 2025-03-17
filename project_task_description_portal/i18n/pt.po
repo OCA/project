@@ -1,0 +1,56 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_task_description_portal
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2025-03-17 18:07+0000\n"
+"Last-Translator: Peter Romão <peterromao@yahoo.co.uk>\n"
+"Language-Team: none\n"
+"Language: pt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 5.10.2\n"
+
+#. module: project_task_description_portal
+#: model_terms:ir.ui.view,arch_db:project_task_description_portal.view_task_form2_inherit
+msgid "Add a description for portal users..."
+msgstr "Adicionar uma descrição para utilizadores de portal..."
+
+#. module: project_task_description_portal
+#: model:ir.model.fields,help:project_task_description_portal.field_project_task__portal_description
+msgid ""
+"Description that will be shown to portal users if 'Use Portal Description' "
+"is enabled"
+msgstr ""
+"Descrição que será exibida aos utilizadores de portal caso 'Utilizar "
+"Descrição de Portal' esteja habilitado"
+
+#. module: project_task_description_portal
+#: model:ir.model.fields,help:project_task_description_portal.field_project_task__use_portal_description
+msgid ""
+"If enabled, portal users will see the portal description instead of the "
+"standard one"
+msgstr ""
+"Se ativado, os utilizadores de portal verão a descrição para portal em vez "
+"da padrão"
+
+#. module: project_task_description_portal
+#: model:ir.model.fields,field_description:project_task_description_portal.field_project_task__portal_description
+#: model_terms:ir.ui.view,arch_db:project_task_description_portal.view_task_form2_inherit
+msgid "Portal Description"
+msgstr "Descrição de Portal"
+
+#. module: project_task_description_portal
+#: model:ir.model,name:project_task_description_portal.model_project_task
+msgid "Task"
+msgstr "Tarefa"
+
+#. module: project_task_description_portal
+#: model:ir.model.fields,field_description:project_task_description_portal.field_project_task__use_portal_description
+msgid "Use Portal Description"
+msgstr "Utilizar Descrição de Portal"
