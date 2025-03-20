@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="project_milestone_view_tree" model="ir.ui.view">
+        <field name="model">project.milestone</field>
+        <field name="inherit_id" ref="project.project_milestone_view_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field
+                    name="execution"
+                    widget="progressbar"
+                    decoration-danger="execution &lt; dedication"
+                    decoration-success="execution &gt; dedication"
+                />
+                <field
+                    name="dedication"
+                    widget="progressbar"
+                    decoration-danger="execution &lt; dedication"
+                    decoration-success="execution &gt; dedication"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>
