@@ -1,4 +1,4 @@
-# Copyright 2024 Tecnativa - Víctor Martínez
+# Copyright 2024-2025 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 from odoo import _, api, fields, models
 from odoo.exceptions import ValidationError
@@ -14,20 +14,19 @@ class ProjectTags(models.Model):
     child_ids = fields.One2many(
         comodel_name="project.tags", inverse_name="parent_id", string="Child Tags"
     )
-    parent_path = fields.Char(index=True, unaccent=False)
+    parent_path = fields.Char(index=True)
 
-    def name_get(self):
-        res = []
+    @api.depends("name", "parent_id")
+    def _compute_display_name(self):
         for tag in self:
             names = []
             current = tag
             while current:
                 names.append(current.name)
                 current = current.parent_id
-            res.append((tag.id, " / ".join(reversed(names))))
-        return res
+            tag.display_name = " / ".join(reversed(names))
 
     @api.constrains("parent_id")
     def _check_parent_id(self):
-        if not self._check_recursion():
+        if self._has_cycle():
             raise ValidationError(_("You can not create recursive tags."))
