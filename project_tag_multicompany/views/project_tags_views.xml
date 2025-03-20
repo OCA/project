@@ -5,9 +5,9 @@
         <field name="model">project.tags</field>
         <field name="inherit_id" ref="project.project_tags_tree_view" />
         <field name="arch" type="xml">
-            <tree position="inside">
+            <list position="inside">
                 <field name="company_id" groups="base.group_multi_company" />
-            </tree>
+            </list>
         </field>
     </record>
     <record id="project_tags_form_view" model="ir.ui.view">
