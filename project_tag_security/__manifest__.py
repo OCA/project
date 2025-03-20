@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 {
     "name": "Project Tag Security",
-    "version": "16.0.1.0.0",
+    "version": "18.0.1.0.0",
     "category": "Project Management",
     "website": "https://github.com/OCA/project",
     "author": "Tecnativa, Odoo Community Association (OCA)",
@@ -11,9 +11,7 @@
     "installable": True,
     "auto_install": True,
     "data": [
-        "views/project_project_views.xml",
         "views/project_tags_views.xml",
-        "views/project_task_views.xml",
     ],
     "maintainers": ["victoralmau"],
 }
