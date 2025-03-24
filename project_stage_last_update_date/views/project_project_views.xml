@@ -7,12 +7,12 @@
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.edit_project" />
         <field name="arch" type="xml">
-            <div name="dates" position="after">
+            <field name="date" position="after">
                 <field
                     name="stage_last_update_date"
-                    attrs="{'invisible':[('stage_last_update_date','=',False)]}"
+                    invisible="not stage_last_update_date"
                 />
-            </div>
+            </field>
         </field>
     </record>
     <record id="view_project" model="ir.ui.view">

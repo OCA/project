@@ -27,6 +27,3 @@ msgstr "Proyecto"
 #: model:ir.model.fields,field_description:project_stage_last_update_date.field_project_project__stage_last_update_date
 msgid "Stage Last Update Date"
 msgstr "Fecha de última actualización de etapa"
-
-#~ msgid "Last Update Date Stage"
-#~ msgstr "Fecha de última actualización de etapa"
