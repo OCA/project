@@ -15,15 +15,18 @@
         </field>
     </record>
     <!-- As stated in the core -->
-    <!-- Please update both act_window when modifying one (open_view_project_all or open_view_project_all_group_stage) -->
+    <!-- Please update both act_window when modifying one (open_view_project_all, open_view_project_all_config or open_view_project_all_group_stage) -->
     <!-- as one or the other is used in the menu menu_project_config -->
     <record id="project.open_view_project_all" model="ir.actions.act_window">
-        <field name="view_mode">kanban,tree,form,pivot</field>
+        <field name="view_mode">kanban,list,form,pivot</field>
+    </record>
+    <record id="project.open_view_project_all_config" model="ir.actions.act_window">
+        <field name="view_mode">list,kanban,form,pivot</field>
     </record>
     <record
         id="project.open_view_project_all_group_stage"
         model="ir.actions.act_window"
     >
-        <field name="view_mode">kanban,tree,form,calendar,pivot,activity</field>
+        <field name="view_mode">kanban,list,form,calendar,pivot,activity</field>
     </record>
 </odoo>
