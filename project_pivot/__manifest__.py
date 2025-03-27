@@ -3,7 +3,7 @@
 
 {
     "name": "Pivot view for projects",
-    "version": "16.0.1.0.1",
+    "version": "18.0.1.0.0",
     "category": "Project",
     "website": "https://github.com/OCA/project",
     "author": "Tecnativa, Odoo Community Association (OCA)",
@@ -12,4 +12,5 @@
     "application": False,
     "depends": ["project"],
     "data": ["views/project_project.xml"],
+    "maintainers": ["victoralmau"],
 }

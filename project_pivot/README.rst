@@ -67,6 +67,7 @@ Contributors
 -  Tecnativa (https://www.tecnativa.com):
 
    -  Carolina Fernandez
+   -  Víctor Martínez
 
 Maintainers
 -----------
@@ -80,6 +81,14 @@ This module is maintained by the OCA.
 OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
+
+.. |maintainer-victoralmau| image:: https://github.com/victoralmau.png?size=40px
+    :target: https://github.com/victoralmau
+    :alt: victoralmau
+
+Current `maintainer <https://odoo-community.org/page/maintainer-role>`__:
+
+|maintainer-victoralmau| 
 
 This module is part of the `OCA/project <https://github.com/OCA/project/tree/18.0/project_pivot>`_ project on GitHub.
 
