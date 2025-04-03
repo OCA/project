@@ -8,6 +8,7 @@
   > - Ernesto Tejeda
   > - Jairo Llopis
   > - Carlos Roca
+  > - David Bañón
 
 - [Sygel](https://www.sygel.es):
 
