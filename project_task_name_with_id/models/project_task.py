@@ -2,6 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo import api, models
+from odoo.osv import expression
 
 
 class ProjectTask(models.Model):
@@ -9,9 +10,10 @@ class ProjectTask(models.Model):
 
     @api.model
     def name_search(self, name, args=None, operator="ilike", limit=100):
-        recs = self.search(
-            ["|", ("name", operator, name), ("id", operator, name)], limit=limit
+        domain = expression.AND(
+            [args or [], ["|", ("name", operator, name), ("id", operator, name)]]
         )
+        recs = self.search(domain, limit=limit)
         return recs.name_get()
 
     def name_get(self):
