@@ -42,8 +42,8 @@ Installation
 
 This module depends on modules found in these repositories:
 
--  `OCA/timesheet <https://github.com/OCA/timesheet>`__
--  `OCA/web <https://github.com/OCA/web>`__
+- `OCA/timesheet <https://github.com/OCA/timesheet>`__
+- `OCA/web <https://github.com/OCA/web>`__
 
 Usage
 =====
@@ -112,8 +112,8 @@ that belongs to another user.
 Known issues / Roadmap
 ======================
 
--  Rename to ``hr_timesheet_time_control``.
--  Move to `OCA/timesheet <https://github.com/OCA/timesheet>`__.
+- Rename to ``hr_timesheet_time_control``.
+- Move to `OCA/timesheet <https://github.com/OCA/timesheet>`__.
 
 Bug Tracker
 ===========
@@ -136,21 +136,22 @@ Authors
 Contributors
 ------------
 
--  `Tecnativa <https://www.tecnativa.com>`__:
+- `Tecnativa <https://www.tecnativa.com>`__:
 
-      -  Pedro M. Baeza
-      -  Antonio Espinosa
-      -  Carlos Dauden
-      -  Sergio Teruel
-      -  Luis M. ontalba
-      -  Ernesto Tejeda
-      -  Jairo Llopis
-      -  Carlos Roca
+     - Pedro M. Baeza
+     - Antonio Espinosa
+     - Carlos Dauden
+     - Sergio Teruel
+     - Luis M. ontalba
+     - Ernesto Tejeda
+     - Jairo Llopis
+     - Carlos Roca
+     - David Bañón
 
--  `Sygel <https://www.sygel.es>`__:
+- `Sygel <https://www.sygel.es>`__:
 
-      -  Valentín Vinagre
-      -  Roger Sans
+     - Valentín Vinagre
+     - Roger Sans
 
 Maintainers
 -----------

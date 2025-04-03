@@ -12,7 +12,7 @@
                 <field name="date_time_end" optional="hide" />
             </field>
             <field name="unit_amount" position="after">
-                <field name="show_time_control" invisible="1" />
+                <field name="show_time_control" column_invisible="1" />
                 <button
                     name="button_resume_work"
                     tabindex="-1"
