@@ -15,3 +15,5 @@
   > - Valentín Vinagre
   > - Roger Sans
 
+- [Portailpro](https://www.portailpro.net):
+  > - Simon Leblanc

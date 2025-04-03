@@ -38,7 +38,7 @@
                 expr="//field[@name='timesheet_ids']/list//field[@name='date']"
                 position="attributes"
             >
-                <attribute name="invisible">1</attribute>
+                <attribute name="column_invisible">1</attribute>
             </xpath>
             <xpath
                 expr="//field[@name='timesheet_ids']/list//field[@name='date']"
@@ -47,7 +47,7 @@
                 <field name="date_time" string="Date" required="1" />
             </xpath>
             <xpath expr="//field[@name='timesheet_ids']/list" position="inside">
-                <field name="show_time_control" invisible="1" />
+                <field name="show_time_control" column_invisible="1" />
                 <button
                     name="button_resume_work"
                     title="Resume work"
