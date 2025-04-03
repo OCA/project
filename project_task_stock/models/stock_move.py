@@ -33,6 +33,9 @@ class StockMove(models.Model):
         )
         if not analytic_account:
             return False
+        # Apply sudo() in case there is any rule that does not allow access to
+        # the analytic account, for example with analytic_hr_department_restriction
+        analytic_account = analytic_account.sudo()
         res = {
             "date": (
                 task.stock_analytic_date
