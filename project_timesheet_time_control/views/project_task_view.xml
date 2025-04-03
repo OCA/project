@@ -9,7 +9,7 @@
             <div name="button_box" position="inside">
                 <field
                     name="show_time_control"
-                    invisible="1"
+                    column_invisible="1"
                     groups="hr_timesheet.group_hr_timesheet_user"
                 />
                 <button
@@ -200,7 +200,7 @@
             <list position="inside">
                 <field
                     name="show_time_control"
-                    invisible="1"
+                    column_invisible="1"
                     groups="hr_timesheet.group_hr_timesheet_user"
                 />
                 <button
