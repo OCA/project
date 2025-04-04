@@ -30,6 +30,14 @@ class Project(models.Model):
             else:
                 rec.key = ""
 
+    @api.depends("key", "name")
+    def _compute_display_name(self):
+        super()._compute_display_name()
+        for project in self:
+            if project.key:
+                project.display_name = f"[{project.key}] {project.display_name}"
+        return
+
     @api.model_create_multi
     def create(self, vals_list):
         new_projects = self.env["project.project"]
