@@ -62,11 +62,10 @@ class Task(models.Model):
             ]
         return data
 
-    @api.depends("key")
+    @api.depends("key", "name")
     def _compute_display_name(self):
+        super()._compute_display_name()
         for task in self:
-            task_name = []
             if task.key:
-                task_name.append(task.key)
-            task_name.append(task.name)
-            task.display_name = f"{task.id}{task_name}"
+                task.display_name = f"[{task.key}] {task.display_name}"
+        return
