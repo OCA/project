@@ -1,1 +1,3 @@
 - [Onestein](http://www.onestein.eu)
+- [APSL-Nagarro](<https://apsl.tech>):
+  - Antoni Marroig \<<amarroig@apsl.net>\>

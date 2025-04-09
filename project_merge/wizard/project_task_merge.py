@@ -1,4 +1,4 @@
-from odoo import _, fields, models
+from odoo import _, api, fields, models
 
 
 class ProjectTaskMerge(models.TransientModel):
@@ -64,6 +64,7 @@ class ProjectTaskMerge(models.TransientModel):
             partner_ids=(merged_tasks).mapped("message_partner_ids").ids
         )
 
+    @api.model
     def default_get(self, fields):
         result = super().default_get(fields)
         selected_tasks = self.env["project.task"].browse(
@@ -72,9 +73,9 @@ class ProjectTaskMerge(models.TransientModel):
         assigned_tasks = selected_tasks.filtered(lambda task: task.user_ids)
         result.update(
             {
-                "task_ids": selected_tasks.ids,
+                "task_ids": [(6, 0, selected_tasks.ids)],
                 "user_ids": assigned_tasks
-                and assigned_tasks.mapped("user_ids").ids
+                and [(6, 0, assigned_tasks.mapped("user_ids").ids)]
                 or False,
                 "dst_project_id": selected_tasks[0].project_id.id,
                 "dst_task_id": selected_tasks[0].id,
@@ -91,4 +92,4 @@ class ProjectTaskMerge(models.TransientModel):
         subject = "Merge project task"
         body = _(f"This project task has been merged {way} {task_names}")
 
-        task.message_post(body=body, subject=subject, content_subtype="plaintext")
+        task.message_post(body=body, subject=subject)

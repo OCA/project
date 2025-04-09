@@ -66,6 +66,9 @@ Contributors
 ------------
 
 -  `Onestein <http://www.onestein.eu>`__
+-  `APSL-Nagarro <https://apsl.tech>`__:
+
+   -  Antoni Marroig <amarroig@apsl.net>
 
 Maintainers
 -----------
