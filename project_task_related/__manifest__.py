@@ -4,7 +4,7 @@
 
 {
     "name": "Project Related Task",
-    "version": "17.0.1.0.1",
+    "version": "17.0.1.0.2",
     "category": "Project",
     "author": "Tecnativa," "Odoo Community Association (OCA)",
     "maintainers": ["david-banon-tecnativa"],
