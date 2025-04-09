@@ -54,8 +54,8 @@ class ProjectTaskMerge(models.TransientModel):
     def merge_description(self):
         return "<br/>".join(
             self.task_ids.filtered(lambda t: t.description).mapped(
-                lambda task: "Description from task <b>%s</b>:<br/>%s"
-                % (task.name, task.description)
+                lambda task: f"Description from task <b>{task.name}"
+                "</b>:<br/>{task.description}"
             )
         )
 
@@ -65,7 +65,7 @@ class ProjectTaskMerge(models.TransientModel):
         )
 
     def default_get(self, fields):
-        result = super(ProjectTaskMerge, self).default_get(fields)
+        result = super().default_get(fields)
         selected_tasks = self.env["project.task"].browse(
             self.env.context.get("active_ids", False)
         )
