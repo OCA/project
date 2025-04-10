@@ -49,7 +49,7 @@ msgid "Related Tasks"
 msgstr "Tareas Relacionadas"
 
 #. module: project_task_related
-#: model_terms:ir.ui.view,arch_db:project_task_related.view_project_task_search_inherit_same_client
+#: model_terms:ir.ui.view,arch_db:project_task_related.view_project_task_search_inherit_same_customer
 msgid "Same customer"
 msgstr "Mismo cliente"
 
