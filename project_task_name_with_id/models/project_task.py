@@ -8,19 +8,21 @@ from odoo.osv import expression
 class ProjectTask(models.Model):
     _inherit = "project.task"
 
-    @api.model
-    def name_search(self, name, args=None, operator="ilike", limit=100):
-        domain = expression.AND(
-            [args or [], ["|", ("name", operator, name), ("id", operator, name)]]
-        )
-        recs = self.search(domain, limit=limit)
-        return recs.name_get()
+    @api.depends("name")
+    def _compute_display_name(self):
+        for task in self:
+            parts = [f"[{task.id}]"]
+            if hasattr(task, "key") and task.key:
+                parts.append(task.key)
+            if task.name:
+                parts.append(task.name)
+            task.display_name = " ".join(parts)
 
-    def name_get(self):
-        result = super().name_get()
-        new_result = []
-        for task in result:
-            rec = self.browse(task[0])
-            name = f"[{rec.id}] {task[1]}"
-            new_result.append((rec.id, name))
-        return new_result
+    @api.model
+    def name_search(self, name="", args=None, operator="ilike", limit=100):
+        args = args or []
+        domain = expression.AND(
+            [args, ["|", ("name", operator, name), ("id", operator, name)]]
+        )
+        records = self.search(domain, limit=limit)
+        return [(rec.id, rec.display_name or "") for rec in records]

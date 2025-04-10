@@ -7,10 +7,11 @@ from odoo.tests.common import TransactionCase
 
 
 class TestProjectTaskID(TransactionCase):
-    def setUp(self):
-        super().setUp()
-        self.ProjectTask = self.env["project.task"]
-        self.project_task = self.ProjectTask.create(
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.ProjectTask = cls.env["project.task"]
+        cls.project_task = cls.ProjectTask.create(
             {
                 "name": "Test task",
             }
@@ -27,11 +28,9 @@ class TestProjectTaskID(TransactionCase):
         self.assertEqual(len(tasks), 1)
         self.assertEqual(tasks[0][0], self.project_task.id)
 
-    def test_name_get(self):
-        # Test the new name_get method
-        name_get = self.project_task.name_get()[0]
-        self.assertEqual(name_get[0], self.project_task.id)
+    def test_display_name(self):
+        display_name = self.project_task.display_name
         task_id = self.project_task.id
         # Checking for the task ID and "Test task" anywhere in the string
         pattern = re.compile(rf"\[{task_id}\].*Test task")
-        self.assertTrue(pattern.search(name_get[1]))
+        self.assertTrue(pattern.search(display_name))
