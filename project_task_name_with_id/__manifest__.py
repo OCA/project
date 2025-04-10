@@ -3,7 +3,7 @@
 {
     "name": "Project Task Name with ID",
     "category": "Project",
-    "version": "16.0.1.0.1",
+    "version": "17.0.1.0.0",
     "author": "Quartile Limited, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/project",
     "license": "AGPL-3",
