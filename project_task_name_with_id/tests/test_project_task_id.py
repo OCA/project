@@ -8,7 +8,7 @@ from odoo.tests.common import TransactionCase
 
 class TestProjectTaskID(TransactionCase):
     def setUp(self):
-        super(TestProjectTaskID, self).setUp()
+        super().setUp()
         self.ProjectTask = self.env["project.task"]
         self.project_task = self.ProjectTask.create(
             {
