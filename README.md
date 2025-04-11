@@ -45,6 +45,7 @@ addon | version | maintainers | summary
 [project_timeline_hr_timesheet](project_timeline_hr_timesheet/) | 17.0.1.0.0 |  | Shows the progress of tasks on the timeline view.
 [project_timesheet_time_control](project_timesheet_time_control/) | 17.0.1.1.1 | [![ernestotejeda](https://github.com/ernestotejeda.png?size=30px)](https://github.com/ernestotejeda) | Project timesheet time control
 [project_type](project_type/) | 17.0.1.0.2 |  | Project Types
+[project_version](project_version/) | 17.0.1.0.0 | [![lbarry-apsl](https://github.com/lbarry-apsl.png?size=30px)](https://github.com/lbarry-apsl) | Project Version
 [sale_project_reimbursement_cost](sale_project_reimbursement_cost/) | 17.0.1.0.0 |  | Display provisions and reimbursement costs in the Project Updates dashboard.
 [sale_project_task_recurrency](sale_project_task_recurrency/) | 17.0.1.2.0 |  | Configuring Task Recurrence from the Product Form.
 
