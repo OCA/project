@@ -26,6 +26,7 @@ addon | version | maintainers | summary
 [project_group](project_group/) | 17.0.1.0.0 |  | Add groups for filtering on projects
 [project_group_hr_timesheet](project_group_hr_timesheet/) | 17.0.1.0.0 |  | This module makes project group work properly with timesheets
 [project_key](project_key/) | 17.0.1.0.0 |  | Module decorates projects and tasks with Project Key
+[project_merge](project_merge/) | 17.0.1.0.0 |  | Wizard to merge project tasks
 [project_parent](project_parent/) | 17.0.1.0.0 |  | Project Parent
 [project_parent_task_filter](project_parent_task_filter/) | 17.0.1.0.0 |  | Add a filter to show the parent tasks
 [project_purchase_link](project_purchase_link/) | 17.0.1.0.0 |  | Project Purchase Link
