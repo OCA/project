@@ -54,7 +54,7 @@
     <record id="project.action_view_task" model="ir.actions.act_window">
         <field
             name="view_mode"
-        >kanban,tree,form,calendar,timeline,pivot,graph,activity</field>
+        >kanban,list,form,calendar,timeline,pivot,graph,activity</field>
     </record>
     <record id="view_task_project_user_timeline" model="ir.ui.view">
         <field name="model">report.project.task.user</field>
@@ -71,14 +71,10 @@
     <record id="project.action_project_task_user_tree" model="ir.actions.act_window">
         <field name="view_mode">graph,pivot,timeline</field>
     </record>
-    <record
-        id="project.act_res_users_2_project_task_opened"
-        model="ir.actions.act_window"
-    >
-        <field name="view_mode">tree,form,calendar,graph,timeline</field>
-    </record>
     <record id="project.project_task_action_from_partner" model="ir.actions.act_window">
-        <field name="view_mode">kanban,tree,form,timeline</field>
+        <field
+            name="view_mode"
+        >list,kanban,form,calendar,timeline,pivot,graph,activity</field>
     </record>
     <record
         id="project.act_project_project_2_project_task_all"
@@ -86,21 +82,21 @@
     >
         <field
             name="view_mode"
-        >kanban,tree,form,calendar,timeline,pivot,graph,activity</field>
+        >kanban,list,form,calendar,timeline,pivot,graph,activity</field>
     </record>
     <record id="project.action_view_all_task" model="ir.actions.act_window">
         <field
             name="view_mode"
-        >tree,kanban,form,calendar,timeline,pivot,graph,activity</field>
+        >list,kanban,form,calendar,timeline,pivot,graph,activity</field>
     </record>
     <record
         id="project.action_view_task_overpassed_draft"
         model="ir.actions.act_window"
     >
-        <field name="view_mode">tree,form,calendar,timeline,graph,kanban</field>
+        <field name="view_mode">list,form,calendar,timeline,graph,kanban</field>
     </record>
     <record id="project.dblc_proj" model="ir.actions.act_window">
-        <field name="view_mode">tree,form,calendar,timeline,graph,kanban</field>
+        <field name="view_mode">list,form,calendar,timeline,graph,kanban</field>
     </record>
     <record id="view_task_form2" model="ir.ui.view">
         <field name="name">project.task.form</field>
@@ -119,7 +115,7 @@
         </field>
     </record>
     <record id="view_task_tree2" model="ir.ui.view">
-        <field name="name">project.task.tree</field>
+        <field name="name">project.task.list</field>
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_tree2" />
         <field name="arch" type="xml">
