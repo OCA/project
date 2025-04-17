@@ -3,18 +3,30 @@ name: tests
 on:
   pull_request:
     branches:
+<<<<<<< HEAD
       - "18.0*"
   push:
     branches:
       - "18.0"
       - "18.0-ocabot-*"
+=======
+      - "16.0*"
+  push:
+    branches:
+      - "16.0"
+      - "16.0-ocabot-*"
+>>>>>>> Initialize 16.0 branch
 
 jobs:
   unreleased-deps:
     runs-on: ubuntu-latest
     name: Detect unreleased dependencies
     steps:
+<<<<<<< HEAD
       - uses: actions/checkout@v4
+=======
+      - uses: actions/checkout@v2
+>>>>>>> Initialize 16.0 branch
       - run: |
           for reqfile in requirements.txt test-requirements.txt ; do
               if [ -f ${reqfile} ] ; then
@@ -28,18 +40,30 @@ jobs:
               fi
           done
   test:
+<<<<<<< HEAD
     runs-on: ubuntu-22.04
+=======
+    runs-on: ubuntu-latest
+>>>>>>> Initialize 16.0 branch
     container: ${{ matrix.container }}
     name: ${{ matrix.name }}
     strategy:
       fail-fast: false
       matrix:
         include:
+<<<<<<< HEAD
           - container: ghcr.io/oca/oca-ci/py3.10-odoo18.0:latest
             name: test with Odoo
           - container: ghcr.io/oca/oca-ci/py3.10-ocb18.0:latest
             name: test with OCB
             makepot: "true"
+=======
+          - container: ghcr.io/oca/oca-ci/py3.10-odoo16.0:latest
+            makepot: "true"
+            name: test with Odoo
+          - container: ghcr.io/oca/oca-ci/py3.10-ocb16.0:latest
+            name: test with OCB
+>>>>>>> Initialize 16.0 branch
     services:
       postgres:
         image: postgres:12.0
@@ -49,10 +73,15 @@ jobs:
           POSTGRES_DB: odoo
         ports:
           - 5432:5432
+<<<<<<< HEAD
     env:
       OCA_ENABLE_CHECKLOG_ODOO: "1"
     steps:
       - uses: actions/checkout@v4
+=======
+    steps:
+      - uses: actions/checkout@v2
+>>>>>>> Initialize 16.0 branch
         with:
           persist-credentials: false
       - name: Install addons and dependencies
@@ -65,9 +94,13 @@ jobs:
         run: oca_init_test_database
       - name: Run tests
         run: oca_run_tests
+<<<<<<< HEAD
       - uses: codecov/codecov-action@v4
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+=======
+      - uses: codecov/codecov-action@v1
+>>>>>>> Initialize 16.0 branch
       - name: Update .pot files
         run: oca_export_and_push_pot https://x-access-token:${{ secrets.GIT_PUSH_TOKEN }}@github.com/${{ github.repository }}
         if: ${{ matrix.makepot == 'true' && github.event_name == 'push' && github.repository_owner == 'OCA' }}

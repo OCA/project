@@ -3,7 +3,10 @@ __pycache__/
 *.py[cod]
 /.venv
 /.pytest_cache
+<<<<<<< HEAD
 /.ruff_cache
+=======
+>>>>>>> Initialize 16.0 branch
 
 # C extensions
 *.so
@@ -25,6 +28,7 @@ var/
 *.egg
 *.eggs
 
+<<<<<<< HEAD
 # Windows installers
 *.msi
 
@@ -38,6 +42,8 @@ var/
 *.dmg
 *.pkg
 
+=======
+>>>>>>> Initialize 16.0 branch
 # Installer logs
 pip-log.txt
 pip-delete-this-directory.txt

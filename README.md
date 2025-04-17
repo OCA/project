@@ -1,15 +1,27 @@
 
+<<<<<<< HEAD
 [![Runboat](https://img.shields.io/badge/runboat-Try%20me-875A7B.png)](https://runboat.odoo-community.org/builds?repo=OCA/project&target_branch=18.0)
 [![Pre-commit Status](https://github.com/OCA/project/actions/workflows/pre-commit.yml/badge.svg?branch=18.0)](https://github.com/OCA/project/actions/workflows/pre-commit.yml?query=branch%3A18.0)
 [![Build Status](https://github.com/OCA/project/actions/workflows/test.yml/badge.svg?branch=18.0)](https://github.com/OCA/project/actions/workflows/test.yml?query=branch%3A18.0)
 [![codecov](https://codecov.io/gh/OCA/project/branch/18.0/graph/badge.svg)](https://codecov.io/gh/OCA/project)
 [![Translation Status](https://translation.odoo-community.org/widgets/project-18-0/-/svg-badge.svg)](https://translation.odoo-community.org/engage/project-18-0/?utm_source=widget)
+=======
+[![Runboat](https://img.shields.io/badge/runboat-Try%20me-875A7B.png)](https://runboat.odoo-community.org/builds?repo=OCA/project&target_branch=16.0)
+[![Pre-commit Status](https://github.com/OCA/project/actions/workflows/pre-commit.yml/badge.svg?branch=16.0)](https://github.com/OCA/project/actions/workflows/pre-commit.yml?query=branch%3A16.0)
+[![Build Status](https://github.com/OCA/project/actions/workflows/test.yml/badge.svg?branch=16.0)](https://github.com/OCA/project/actions/workflows/test.yml?query=branch%3A16.0)
+[![codecov](https://codecov.io/gh/OCA/project/branch/16.0/graph/badge.svg)](https://codecov.io/gh/OCA/project)
+[![Translation Status](https://translation.odoo-community.org/widgets/project-16-0/-/svg-badge.svg)](https://translation.odoo-community.org/engage/project-16-0/?utm_source=widget)
+>>>>>>> Initialize 16.0 branch
 
 <!-- /!\ do not modify above this line -->
 
 # project
 
+<<<<<<< HEAD
 project
+=======
+TODO: add repo description.
+>>>>>>> Initialize 16.0 branch
 
 <!-- /!\ do not modify below this line -->
 
@@ -17,6 +29,7 @@ project
 
 [//]: # (addons)
 
+<<<<<<< HEAD
 Available addons
 ----------------
 addon | version | maintainers | summary
@@ -34,6 +47,9 @@ addon | version | maintainers | summary
 [project_task_stage_state](project_task_stage_state/) | 18.0.1.0.0 |  | Restore State attribute removed from Project Stages in 8.0
 [project_timesheet_time_control](project_timesheet_time_control/) | 18.0.1.0.3 | [![ernestotejeda](https://github.com/ernestotejeda.png?size=30px)](https://github.com/ernestotejeda) | Project timesheet time control
 [project_type](project_type/) | 18.0.1.0.0 |  | Project Types
+=======
+This part will be replaced when running the oca-gen-addons-table script from OCA/maintainer-tools.
+>>>>>>> Initialize 16.0 branch
 
 [//]: # (end addons)
 
