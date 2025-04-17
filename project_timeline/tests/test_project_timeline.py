@@ -14,6 +14,7 @@ class TestProjectTimeline(BaseCommon):
         super().setUpClass()
         cls.project = cls.env.ref("project.project_project_1")
         cls.stage = cls.env.ref("project.project_stage_2")
+        cls.stage.write({"fold": True})
         cls.task = cls.env["project.task"].create(
             {"name": "test", "user_ids": False, "project_id": cls.project.id}
         )
