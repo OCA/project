@@ -9,7 +9,7 @@ class TestProjectCases(TransactionCase):
 
     def setUp(self):
         """Create user, task, project as well as refre action of the user."""
-        super(TestProjectCases, self).setUp()
+        super().setUp()
 
         # Create new User
         # Add it to the `project user` group
