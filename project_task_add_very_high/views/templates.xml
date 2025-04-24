@@ -1,0 +1,26 @@
+<odoo>
+    <template
+        id="portal_my_tasks_priority_widget_template"
+        inherit_id="project.portal_my_tasks_priority_widget_template"
+        priority="99"
+    >
+        <span position="replace">
+            <t t-set="priority" t-value="int(task.priority or 0)" />
+            <t
+                t-set="priority_selection"
+                t-value="dict(task.env['ir.model.fields'].get_field_selection(task._name, 'priority'))"
+            />
+            <div t-attf-title="Priority: {{priority_selection[task.priority or '0']}}">
+                <span
+                    t-attf-class="o_priority_star fa fa-star#{'' if priority &gt;= 1 else '-o'}"
+                />
+                <span
+                    t-attf-class="o_priority_star fa fa-star#{'' if priority &gt;= 2 else '-o'}"
+                />
+                <span
+                    t-attf-class="o_priority_star fa fa-star#{'' if priority &gt;= 3 else '-o'}"
+                />
+            </div>
+        </span>
+    </template>
+</odoo>
