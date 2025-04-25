@@ -15,7 +15,7 @@ class StockMove(models.Model):
         if self.task_id:
             self.location_id = self.task_id.move_raw_ids.filtered(
                 lambda x: x.state not in ("done", "cancel")
-            ) and (self.task_id.location_src_id.id or self.task_id.location_dest_id.id)
+            ) and (self.task_id.location_src_id or self.task_id.location_dest_id)
 
     def _prepare_move_values(self):
         vals = super()._prepare_move_values()

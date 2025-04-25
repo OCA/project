@@ -1,7 +1,8 @@
-# Copyright 2022 Tecnativa - Víctor Martínez
+# Copyright 2022-2025 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
+from odoo.tools import float_is_zero
 
 
 class ProjectTask(models.Model):
@@ -44,9 +45,8 @@ class ProjectTask(models.Model):
         comodel_name="stock.picking.type",
         string="Operation Type",
         readonly=False,
-        domain="[('company_id', '=', company_id)]",
+        domain="[('company_id', '=?', company_id)]",
         index=True,
-        check_company=True,
     )
     location_id = fields.Many2one(
         comodel_name="stock.location",
@@ -62,7 +62,7 @@ class ProjectTask(models.Model):
         index=True,
         check_company=True,
     )
-    stock_analytic_date = fields.Date(string="Analytic date")
+    stock_analytic_date = fields.Date()
     unreserve_visible = fields.Boolean(
         string="Allowed to Unreserve Inventory",
         compute="_compute_unreserve_visible",
@@ -74,14 +74,13 @@ class ProjectTask(models.Model):
         help="Move created will be assigned to this analytic account",
     )
     stock_analytic_distribution = fields.Json(
-        "Analytic Distribution",
         copy=True,
         readonly=False,
     )
     stock_analytic_line_ids = fields.One2many(
         comodel_name="account.analytic.line",
         inverse_name="stock_task_id",
-        string="Analytic Lines",
+        string="Stock Analytic Lines",
     )
     group_id = fields.Many2one(
         comodel_name="procurement.group",
@@ -121,11 +120,16 @@ class ProjectTask(models.Model):
                         task.stock_state = state
                         break
 
-    @api.depends("move_ids", "move_ids.quantity_done")
+    @api.depends("move_ids", "move_ids.quantity")
     def _compute_unreserve_visible(self):
         for item in self:
             already_reserved = item.mapped("move_ids.move_line_ids")
-            any_quantity_done = any([m.quantity_done > 0 for m in item.move_ids])
+            any_quantity_done = any(
+                [
+                    m.quantity > 0
+                    for m in item.move_ids.filtered(lambda x: x.state == "done")
+                ]
+            )
             item.unreserve_visible = not any_quantity_done and already_reserved
 
     @api.onchange("picking_type_id")
@@ -146,7 +150,8 @@ class ProjectTask(models.Model):
             location = item.location_id or item.project_id.location_id
             location_dest = item.location_dest_id or item.project_id.location_dest_id
             moves = item.move_ids.filtered(
-                lambda x: x.state not in ("cancel", "done")
+                lambda x, location=location, location_dest=location_dest: x.state
+                not in ("cancel", "done")
                 and (x.location_id != location or x.location_dest_id != location_dest)
             )
             moves.update(
@@ -161,7 +166,7 @@ class ProjectTask(models.Model):
 
     @api.model
     def _prepare_procurement_group_vals(self):
-        return {"name": "Task-ID: %s" % self.id}
+        return {"name": f"Task-ID: {self.id}"}
 
     def action_confirm(self):
         self.mapped("move_ids")._action_confirm()
@@ -203,7 +208,7 @@ class ProjectTask(models.Model):
         """Cancel the stock moves and remove the analytic lines created from
         stock moves when cancelling the task.
         """
-        self.mapped("move_ids.move_line_ids").write({"qty_done": 0})
+        self.mapped("move_ids.move_line_ids").write({"quantity": 0})
         # Use sudo to avoid error for users with no access to analytic
         self.sudo().stock_analytic_line_ids.unlink()
         self.stock_moves_is_locked = True
@@ -216,11 +221,18 @@ class ProjectTask(models.Model):
 
     def action_done(self):
         # Filter valid stock moves (avoiding those done and cancelled).
-        for move in self.mapped("move_ids").filtered(
-            lambda x: x.state not in ("done", "cancel")
+        price_dp = self.env["decimal.precision"].precision_get(
+            "Product Unit of Measure"
+        )
+        moves_to_skip = self.move_ids.filtered(lambda x: x.state in ("done", "cancel"))
+        moves_to_do = self.move_ids - moves_to_skip
+        for move in moves_to_do.filtered(
+            lambda x: float_is_zero(x.quantity, precision_digits=price_dp)
         ):
-            move.quantity_done = move.reserved_availability
-        moves_todo = self.mapped("move_ids")._action_done()
+            move.quantity = move.product_uom_qty
+        moves_to_do.picking_id.with_context(skip_sanity_check=True).button_validate()
+        moves_done = self.move_ids.filtered(lambda x: x.state == "done")
+        moves_todo = moves_done - moves_to_skip
         # Use sudo to avoid error for users with no access to analytic
         analytic_line_model = self.env["account.analytic.line"].sudo()
         for move in moves_todo:

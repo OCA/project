@@ -7,10 +7,7 @@
         <field name="arch" type="xml">
             <field name="fold" position="after">
                 <field name="use_stock_moves" />
-                <field
-                    name="done_stock_moves"
-                    attrs="{'invisible': [('use_stock_moves', '=', False)]}"
-                />
+                <field name="done_stock_moves" invisible="not use_stock_moves" />
             </field>
         </field>
     </record>
