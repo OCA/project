@@ -1,4 +1,4 @@
-# Copyright 2022-2024 Tecnativa - Víctor Martínez
+# Copyright 2022-2025 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 from odoo import fields
 from odoo.tests import Form
@@ -8,14 +8,14 @@ from odoo.tools import mute_logger
 from .common import TestProjectStockBase
 
 
-class TestProjectStock(TestProjectStockBase):
+class TestProjectTaskStock(TestProjectStockBase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls._create_stock_quant(cls, cls.product_a, cls.location, 2)
-        cls._create_stock_quant(cls, cls.product_b, cls.location, 1)
-        cls._create_stock_quant(cls, cls.product_c, cls.location, 1)
-        cls.task = cls._create_task(cls, [(cls.product_a, 2), (cls.product_b, 1)])
+        cls.quant_a = cls._create_stock_quant(cls.product_a, cls.location, 2)
+        cls.quant_b = cls._create_stock_quant(cls.product_b, cls.location, 1)
+        cls._create_stock_quant(cls.product_c, cls.location, 1)
+        cls.task = cls._create_task([(cls.product_a, 2), (cls.product_b, 1)])
         cls.move_product_a = cls.task.move_ids.filtered(
             lambda x: x.product_id == cls.product_a
         )
@@ -30,8 +30,9 @@ class TestProjectStock(TestProjectStockBase):
             }
         )
 
-    def _create_stock_quant(self, product, location, qty):
-        self.env["stock.quant"].create(
+    @classmethod
+    def _create_stock_quant(cls, product, location, qty):
+        return cls.env["stock.quant"].create(
             {"product_id": product.id, "location_id": location.id, "quantity": qty}
         )
 
@@ -73,19 +74,20 @@ class TestProjectStock(TestProjectStockBase):
         # Prevent error when hr_timesheet addon is installed.
         if "allow_timesheets" in self.task.project_id._fields:
             self.task.project_id.allow_timesheets = False
-        self.task.project_id.analytic_account_id = False
+        self.task.project_id.account_id = False
         self.task.write({"stage_id": self.stage_done.id})
         self.task.action_done()
-        self.assertFalse(self.task.stock_analytic_line_ids)
+        self.assertFalse(self.task.sudo().stock_analytic_line_ids)
 
     @users("manager-user")
     def test_project_task_without_analytic_account_manager_user(self):
         self.test_project_task_without_analytic_account()
 
     def test_project_task_user_access_without_stock_group(self):
+        project_user_group = self.env.ref("project.group_project_user")
         self.basic_user.write(
             {
-                "groups_id": [(6, 0, [self.env.ref("project.group_project_user").id])],
+                "groups_id": [(6, 0, [project_user_group.id])],
             }
         )
         task_form = Form(self.task.with_user(self.basic_user))
@@ -107,11 +109,7 @@ class TestProjectStock(TestProjectStockBase):
 
     def test_project_task_analytic_lines_with_tag_1(self):
         self.task = self.env["project.task"].browse(self.task.id)
-        self.task.write(
-            {
-                "stock_analytic_date": "1991-01-01",
-            }
-        )
+        self.task.write({"stock_analytic_date": "1991-01-01"})
         self.task.write({"stage_id": self.stage_done.id})
         self.task.action_done()
         self._test_task_analytic_lines_from_task(-40)
@@ -151,8 +149,8 @@ class TestProjectStock(TestProjectStockBase):
         self.task.write({"stage_id": self.stage_done.id})
         self.assertEqual(self.move_product_a.state, "assigned")
         self.assertEqual(self.move_product_b.state, "assigned")
-        self.assertEqual(self.move_product_a.reserved_availability, 2)
-        self.assertEqual(self.move_product_b.reserved_availability, 1)
+        self.assertEqual(self.move_product_a.quantity, 2)
+        self.assertEqual(self.move_product_b.quantity, 1)
         self.assertTrue(self.task.stock_moves_is_locked)
         self.task.action_toggle_stock_moves_is_locked()
         self.assertFalse(self.task.stock_moves_is_locked)
@@ -175,9 +173,9 @@ class TestProjectStock(TestProjectStockBase):
         self.task.action_done()
         self.assertEqual(self.move_product_a.state, "done")
         self.assertEqual(self.move_product_b.state, "done")
-        self.assertEqual(self.move_product_a.quantity_done, 2)
-        self.assertEqual(self.move_product_b.quantity_done, 1)
-        self.assertEqual(move_product_c.quantity_done, 1)
+        self.assertEqual(self.move_product_a.quantity, 2)
+        self.assertEqual(self.move_product_b.quantity, 1)
+        self.assertEqual(move_product_c.quantity, 1)
 
     @users("basic-user")
     def test_project_task_process_done_basic_user(self):
@@ -196,16 +194,16 @@ class TestProjectStock(TestProjectStockBase):
         self.task.action_done()
         self.assertEqual(self.move_product_a.state, "done")
         self.assertEqual(self.move_product_b.state, "done")
-        self.assertEqual(self.move_product_a.quantity_done, 2)
-        self.assertEqual(self.move_product_b.quantity_done, 1)
+        self.assertEqual(self.move_product_a.quantity, 2)
+        self.assertEqual(self.move_product_b.quantity, 1)
         self.assertTrue(self.task.sudo().stock_analytic_line_ids)
         # action_cancel
         self.task.action_cancel()
         self.assertEqual(self.move_product_a.state, "done")
         self.assertEqual(self.move_product_b.state, "done")
-        self.assertEqual(self.move_product_a.quantity_done, 0)
-        self.assertEqual(self.move_product_b.quantity_done, 0)
-        self.assertFalse(self.task.stock_analytic_line_ids)
+        self.assertEqual(self.move_product_a.quantity, 0)
+        self.assertEqual(self.move_product_b.quantity, 0)
+        self.assertFalse(self.task.sudo().stock_analytic_line_ids)
         quant_a = self.product_a.stock_quant_ids.filtered(
             lambda x: x.location_id == self.location
         )
@@ -234,15 +232,15 @@ class TestProjectStock(TestProjectStockBase):
         self.assertEqual(self.move_product_a.move_line_ids.task_id, self.task)
         self.assertEqual(self.move_product_a.state, "assigned")
         self.assertEqual(self.move_product_b.state, "assigned")
-        self.assertEqual(self.move_product_a.reserved_availability, 2)
-        self.assertEqual(self.move_product_b.reserved_availability, 1)
+        self.assertEqual(self.move_product_a.quantity, 2)
+        self.assertEqual(self.move_product_b.quantity, 1)
         self.assertTrue(self.task.unreserve_visible)
         # button_unreserve
         self.task.button_unreserve()
         self.assertEqual(self.move_product_a.state, "confirmed")
         self.assertEqual(self.move_product_b.state, "confirmed")
-        self.assertEqual(self.move_product_a.reserved_availability, 0)
-        self.assertEqual(self.move_product_b.reserved_availability, 0)
+        self.assertEqual(self.move_product_a.quantity, 0)
+        self.assertEqual(self.move_product_b.quantity, 0)
         self.assertFalse(self.task.unreserve_visible)
 
     @mute_logger("odoo.models.unlink")
@@ -257,6 +255,7 @@ class TestProjectStock(TestProjectStockBase):
         self.move_product_a.product_uom_qty = 0
         self.task.action_done()
         self.assertEqual(self.move_product_a.state, "cancel")
+        self.assertEqual(self.move_product_a.quantity, 0)
         # Add extra line
         task_form = Form(self.task)
         with task_form.move_ids.new() as move_form:
@@ -270,6 +269,7 @@ class TestProjectStock(TestProjectStockBase):
         self.assertEqual(self.move_product_b.state, "assigned")
         self.task.action_done()
         self.assertEqual(self.move_product_b.state, "done")
+        self.assertEqual(self.move_product_b.quantity, 1)
 
     def test_project_task_process_02(self):
         self.task.action_confirm()
@@ -313,6 +313,13 @@ class TestProjectStock(TestProjectStockBase):
 
     @mute_logger("odoo.models.unlink")
     def test_project_project_onchange(self):
+        # We do the unreserve first + unlink the quants, otherwise, changing the
+        # picking_type_id with the _onchange_picking_type_id() method will change
+        # the status of the stock move to "assigned" showing the error of the
+        # _check_tasks_with_pending_moves() method.
+        self.task.do_unreserve()
+        self.quant_a.unlink()
+        self.quant_b.unlink()
         new_type = self.env.ref("stock.picking_type_out")
         self.project.write({"picking_type_id": new_type.id})
         self.project._onchange_picking_type_id()
@@ -320,7 +327,6 @@ class TestProjectStock(TestProjectStockBase):
         self.assertEqual(
             self.project.location_dest_id, new_type.default_location_dest_id
         )
-        self.task.do_unreserve()
         self.task.write({"picking_type_id": new_type.id})
         self.task._onchange_picking_type_id()
         self.assertEqual(self.task.location_id, new_type.default_location_src_id)
@@ -338,5 +344,7 @@ class TestProjectStock(TestProjectStockBase):
                 "task_id": self.task.id,
             }
         )
-        scrap.do_scrap()
-        self.assertEqual(scrap.move_id.raw_material_task_id, self.task)
+        scrap.action_validate()
+        self.assertEqual(scrap.state, "done")
+        self.assertEqual(len(scrap.move_ids), 1)
+        self.assertEqual(scrap.move_ids.raw_material_task_id, self.task)
