@@ -369,7 +369,7 @@ ul.auto-toc {
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 !! source digest: sha256:aafc4036492f6faacca0761c1c017e3cfd7ddc22cb86dbb0b17be070750e2b58
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-<p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Beta" src="https://img.shields.io/badge/maturity-Beta-yellow.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/licence-AGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/OCA/project/tree/16.0/project_stock"><img alt="OCA/project" src="https://img.shields.io/badge/github-OCA%2Fproject-lightgray.png?logo=github" /></a> <a class="reference external image-reference" href="https://translation.odoo-community.org/projects/project-16-0/project-16-0-project_stock"><img alt="Translate me on Weblate" src="https://img.shields.io/badge/weblate-Translate%20me-F47D42.png" /></a> <a class="reference external image-reference" href="https://runboat.odoo-community.org/builds?repo=OCA/project&amp;target_branch=16.0"><img alt="Try me on Runboat" src="https://img.shields.io/badge/runboat-Try%20me-875A7B.png" /></a></p>
+<p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Beta" src="https://img.shields.io/badge/maturity-Beta-yellow.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/agpl-3.0-standalone.html"><img alt="License: AGPL-3" src="https://img.shields.io/badge/licence-AGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/OCA/project/tree/18.0/project_stock"><img alt="OCA/project" src="https://img.shields.io/badge/github-OCA%2Fproject-lightgray.png?logo=github" /></a> <a class="reference external image-reference" href="https://translation.odoo-community.org/projects/project-18-0/project-18-0-project_stock"><img alt="Translate me on Weblate" src="https://img.shields.io/badge/weblate-Translate%20me-F47D42.png" /></a> <a class="reference external image-reference" href="https://runboat.odoo-community.org/builds?repo=OCA/project&amp;target_branch=18.0"><img alt="Try me on Runboat" src="https://img.shields.io/badge/runboat-Try%20me-875A7B.png" /></a></p>
 <p>This module allows to consume products directly from a project task.</p>
 <p><strong>Table of contents</strong></p>
 <div class="contents local topic" id="contents">
@@ -389,60 +389,53 @@ ul.auto-toc {
 <h1><a class="toc-backref" href="#toc-entry-1">Configuration</a></h1>
 <p>To configure this module, you need to:</p>
 <ol class="arabic simple">
-<li>Go to <em>Inventory -&gt; Configuration -&gt; Settings</em> and check “Storage Locations” option.</li>
+<li>Go to <em>Inventory -&gt; Configuration -&gt; Settings</em> and check “Storage
+Locations” option.</li>
 <li>Go to <em>Inventory -&gt; Configuration -&gt; Operation types</em>.</li>
-<li><dl class="first docutils">
-<dt>Create a new operation type with the following options:</dt>
-<dd><ul class="first last">
-<li><cite>Operation type</cite>: Task material</li>
-<li><cite>Code</cite>: TM</li>
-<li><cite>Type of operation</cite>: Delivery</li>
-<li><cite>Default Source Location</cite>: WH/Stock</li>
-<li><cite>Default Destination Location</cite>: WH/Stock/Shelf 1</li>
+<li>Create a new operation type with the following options:<ul>
+<li>`Operation type`: Task material</li>
+<li>`Code`: TM</li>
+<li>`Type of operation`: Delivery</li>
+<li>`Default Source Location`: WH/Stock</li>
+<li>`Default Destination Location`: WH/Stock/Shelf 1</li>
 </ul>
-</dd>
-</dl>
 </li>
 <li>Go to <em>Project -&gt; Configuration -&gt; Projects</em>.</li>
-<li><dl class="first docutils">
-<dt>Create a new project with the following options:</dt>
-<dd><ul class="first last">
-<li><cite>Name</cite>: Task material</li>
-<li><cite>Operation type</cite>: Task material</li>
+<li>Create a new project with the following options:<ul>
+<li>`Name`: Task material</li>
+<li>`Operation type`: Task material</li>
 </ul>
-</dd>
-</dl>
 </li>
-<li><dl class="first docutils">
-<dt>Go to <em>Project -&gt; Configuration -&gt; Task Stages</em> and edit some records.</dt>
-<dd><ul class="first last">
-<li><cite>In progress</cite>: Check Use Stock Moves option and add the created project.</li>
-<li><cite>Done</cite>: Check Use Stock Moves option + Done Stock Moves and add the created project.</li>
+<li>Go to <em>Project -&gt; Configuration -&gt; Task Stages</em> and edit some
+records.<ul>
+<li>`In progress`: Check Use Stock Moves option and add the created
+project.</li>
+<li>`Done`: Check Use Stock Moves option + Done Stock Moves and add
+the created project.</li>
 </ul>
-</dd>
-</dl>
 </li>
 </ol>
 </div>
 <div class="section" id="usage">
 <h1><a class="toc-backref" href="#toc-entry-2">Usage</a></h1>
 <ol class="arabic simple">
-<li>Go to <em>Projects -&gt; Task material (project)</em> and create a task and edit it.</li>
-<li><em>Stock Info</em> is displayed in the <em>Extra info</em> tab with the same project information, but it can be modified.</li>
-<li>Add some product to <em>Stock Info</em> tab and set some initial demand (1 for example).</li>
+<li>Go to <em>Projects -&gt; Task material (project)</em> and create a task and
+edit it.</li>
+<li><em>Stock Info</em> is displayed in the <em>Extra info</em> tab with the same
+project information, but it can be modified.</li>
+<li>Add some product to <em>Stock Info</em> tab and set some initial demand (1
+for example).</li>
 <li>Click on the button <em>Confirm material</em> to confirm all moves.</li>
 <li>Change the stage to Done.</li>
-<li><dl class="first docutils">
-<dt><em>Stock Info</em> tab is readonly and some buttons show in header:</dt>
-<dd><ul class="first last">
-<li><cite>Check availability materials</cite>: Product availability will be checked.</li>
-<li><cite>Transfer Materials</cite>: Stock moves are confirmed and moved from one location to another.</li>
-<li><cite>Unreserve</cite>: Remove the reservation stock of the products.</li>
-<li><cite>Cancel Materials</cite>: Set the moves of the products as cancelled.</li>
-<li><cite>Scrap</cite>: Allows the defined products to be scrapped.</li>
+<li><em>Stock Info</em> tab is readonly and some buttons show in header:<ul>
+<li>`Check availability materials`: Product availability will be
+checked.</li>
+<li>`Transfer Materials`: Stock moves are confirmed and moved from
+one location to another.</li>
+<li>`Unreserve`: Remove the reservation stock of the products.</li>
+<li>`Cancel Materials`: Set the moves of the products as cancelled.</li>
+<li>`Scrap`: Allows the defined products to be scrapped.</li>
 </ul>
-</dd>
-</dl>
 </li>
 </ol>
 </div>
@@ -451,7 +444,7 @@ ul.auto-toc {
 <p>Bugs are tracked on <a class="reference external" href="https://github.com/OCA/project/issues">GitHub Issues</a>.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-<a class="reference external" href="https://github.com/OCA/project/issues/new?body=module:%20project_stock%0Aversion:%2016.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**">feedback</a>.</p>
+<a class="reference external" href="https://github.com/OCA/project/issues/new?body=module:%20project_stock%0Aversion:%2018.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**">feedback</a>.</p>
 <p>Do not contact contributors directly about support or help with technical issues.</p>
 </div>
 <div class="section" id="credits">
@@ -483,7 +476,7 @@ mission is to support the collaborative development of Odoo features and
 promote its widespread use.</p>
 <p>Current <a class="reference external" href="https://odoo-community.org/page/maintainer-role">maintainer</a>:</p>
 <p><a class="reference external image-reference" href="https://github.com/victoralmau"><img alt="victoralmau" src="https://github.com/victoralmau.png?size=40px" /></a></p>
-<p>This module is part of the <a class="reference external" href="https://github.com/OCA/project/tree/16.0/project_stock">OCA/project</a> project on GitHub.</p>
+<p>This module is part of the <a class="reference external" href="https://github.com/OCA/project/tree/18.0/project_stock">OCA/project</a> project on GitHub.</p>
 <p>You are welcome to contribute. To learn how please visit <a class="reference external" href="https://odoo-community.org/page/Contribute">https://odoo-community.org/page/Contribute</a>.</p>
 </div>
 </div>
