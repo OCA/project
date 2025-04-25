@@ -15,3 +15,7 @@
   > - Valentín Vinagre
   > - Roger Sans
 
+- [glueckkanja ag](https://www.glueckkanja.com):
+
+  > - Christopher Rogos
+

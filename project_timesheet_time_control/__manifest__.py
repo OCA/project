@@ -19,6 +19,7 @@
         "views/account_analytic_line_view.xml",
         "views/project_project_view.xml",
         "views/project_task_view.xml",
+        "views/res_config_settings_view.xml",
         "wizards/hr_timesheet_switch_view.xml",
     ],
     "license": "AGPL-3",

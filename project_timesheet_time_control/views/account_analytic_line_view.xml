@@ -65,6 +65,9 @@
                 <attribute name="invisible">1</attribute>
             </field>
             <field name="date" position="after">
+                <field name="product_uom_id" invisible="1" />
+                <field name="product_uom_category_id" invisible="1" />
+                <field name="unit_amount_hours" invisible="1" />
                 <field name="date_time" required="1" />
                 <field name="date_time_end" />
             </field>
