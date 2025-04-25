@@ -10,9 +10,8 @@ class ProjectProject(models.Model):
         comodel_name="stock.picking.type",
         string="Operation Type",
         readonly=False,
-        domain="[('company_id', '=', company_id)]",
+        domain="[('company_id', '=?', company_id)]",
         index=True,
-        check_company=True,
     )
     location_id = fields.Many2one(
         comodel_name="stock.location",
@@ -30,7 +29,7 @@ class ProjectProject(models.Model):
         check_company=True,
         help="Default location to which materials are consumed.",
     )
-    stock_analytic_date = fields.Date(string="Analytic date")
+    stock_analytic_date = fields.Date()
 
     @api.onchange("picking_type_id")
     def _onchange_picking_type_id(self):

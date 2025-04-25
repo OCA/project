@@ -28,9 +28,7 @@ class StockMove(models.Model):
         product = self.product_id
         company_id = self.env.company
         task = self.task_id or self.raw_material_task_id
-        analytic_account = (
-            task.stock_analytic_account_id or task.project_id.analytic_account_id
-        )
+        analytic_account = task.stock_analytic_account_id or task.project_id.account_id
         if not analytic_account:
             return False
         # Apply sudo() in case there is any rule that does not allow access to
@@ -43,18 +41,18 @@ class StockMove(models.Model):
                 or fields.date.today()
             ),
             "name": task.name + ": " + product.name,
-            "unit_amount": self.quantity_done,
+            "unit_amount": self.quantity,
             "account_id": analytic_account.id,
-            "user_id": self._uid,
+            "user_id": self.env.user.id,
             "product_uom_id": self.product_uom.id,
             "company_id": analytic_account.company_id.id or self.env.company.id,
             "partner_id": task.partner_id.id or task.project_id.partner_id.id or False,
             "stock_task_id": task.id,
         }
-        amount_unit = product.with_context(uom=self.product_uom.id).price_compute(
+        amount_unit = product.with_context(uom=self.product_uom.id)._price_compute(
             "standard_price"
         )[product.id]
-        amount = amount_unit * self.quantity_done or 0.0
+        amount = amount_unit * self.quantity or 0.0
         result = round(amount, company_id.currency_id.decimal_places) * -1
         vals = {"amount": result}
         analytic_line_fields = self.env["account.analytic.line"]._fields
