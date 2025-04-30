@@ -5,7 +5,7 @@
     "name": "Project task parent completion blocking",
     "version": "16.0.1.0.0",
     "category": "Project Management",
-    "summary": "Prevents a parent task from being completed if any children task isn't.",
+    "summary": "Prevents a task from being completed if any children task isn't.",
     "author": "Tecnativa, Odoo Community Association (OCA)",
     "maintainers": ["david-banon-tecnativa"],
     "website": "https://github.com/OCA/project",
