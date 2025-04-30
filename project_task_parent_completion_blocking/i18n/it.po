@@ -21,7 +21,6 @@ msgstr ""
 
 #. module: project_task_parent_completion_blocking
 #. odoo-python
-#: code:addons/project_task_parent_completion_blocking/models/project_task.py:0
-#, python-format
+#: code:addons/project_task_parent_completion_blocking/models/project_task.py
 msgid "You can't close this task because it has open subtasks."
 msgstr ""

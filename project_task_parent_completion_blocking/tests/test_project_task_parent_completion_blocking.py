@@ -1,31 +1,24 @@
 from odoo.exceptions import ValidationError
-from odoo.tests.common import TransactionCase
+
+from odoo.addons.base.tests.common import BaseCommon
 
 
-class TestParentChildBlock(TransactionCase):
+class TestParentChildBlock(BaseCommon):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.test_project = (
-            cls.env["project.project"]
-            .with_context(mail_create_nolog=True)
-            .create(
-                {
-                    "name": "Test Project",
-                    "privacy_visibility": "employees",
-                    "alias_name": "project+test",
-                }
-            )
+        cls.test_project = cls.env["project.project"].create(
+            {
+                "name": "Test Project",
+                "privacy_visibility": "employees",
+                "alias_name": "project+test",
+            }
         )
-        cls.parent_task = (
-            cls.env["project.task"]
-            .with_context(mail_create_nolog=True)
-            .create({"name": "Pigs UserTask", "project_id": cls.test_project.id})
+        cls.parent_task = cls.env["project.task"].create(
+            {"name": "Pigs UserTask", "project_id": cls.test_project.id}
         )
-        cls.child_task = (
-            cls.env["project.task"]
-            .with_context(mail_create_nolog=True)
-            .create({"name": "Pigs ManagerTask", "project_id": cls.test_project.id})
+        cls.child_task = cls.env["project.task"].create(
+            {"name": "Pigs ManagerTask", "project_id": cls.test_project.id}
         )
 
         cls.stage_pending = cls.env["project.task.type"].create(
@@ -41,15 +34,11 @@ class TestParentChildBlock(TransactionCase):
     def test_child_blocks_parent(self):
         with self.assertRaises(ValidationError):
             self.parent_task.stage_id = self.stage_done
-        extra_task = (
-            self.env["project.task"]
-            .with_context(mail_create_nolog=True)
-            .create(
-                {
-                    "name": "Test Task 3",
-                    "project_id": self.test_project.id,
-                }
-            )
+        extra_task = self.env["project.task"].create(
+            {
+                "name": "Test Task 3",
+                "project_id": self.test_project.id,
+            }
         )
         self.parent_task.child_ids += extra_task
         extra_task.stage_id = self.stage_done

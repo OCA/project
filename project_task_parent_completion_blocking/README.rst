@@ -28,8 +28,7 @@ Project task parent completion blocking
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
-Prevents a parent task from beeing completed if a child task isn't
-completed.
+Prevents a task from being completed if a child task isn't completed.
 
 **Table of contents**
 
