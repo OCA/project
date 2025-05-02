@@ -3,7 +3,7 @@
 
 {
     "name": "Project task parent due date auto",
-    "version": "16.0.1.0.0",
+    "version": "18.0.1.0.0",
     "category": "Project Management",
     "summary": "Recalculates parent task's due date when child task changes",
     "author": "Tecnativa, Odoo Community Association (OCA)",

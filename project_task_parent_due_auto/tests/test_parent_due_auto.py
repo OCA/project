@@ -1,47 +1,36 @@
 from dateutil import relativedelta
 
 from odoo import fields
-from odoo.tests.common import TransactionCase
+
+from odoo.addons.base.tests.common import BaseCommon
 
 
-class TestParentDueAuto(TransactionCase):
+class AnalyticCommon(BaseCommon):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.date_1 = fields.Date.today() + relativedelta.relativedelta(days=1)
-        cls.date_5 = fields.Date.today() + relativedelta.relativedelta(days=5)
-        cls.date_7 = fields.Date.today() + relativedelta.relativedelta(days=7)
-        cls.date_10 = fields.Date.today() + relativedelta.relativedelta(days=10)
-        cls.test_project = (
-            cls.env["project.project"]
-            .with_context(mail_create_nolog=True)
-            .create(
-                {
-                    "name": "Test Project",
-                    "privacy_visibility": "employees",
-                    "alias_name": "project+test",
-                }
-            )
+        cls.date_1 = fields.Datetime.today() + relativedelta.relativedelta(days=1)
+        cls.date_5 = fields.Datetime.today() + relativedelta.relativedelta(days=5)
+        cls.date_7 = fields.Datetime.today() + relativedelta.relativedelta(days=7)
+        cls.date_10 = fields.Datetime.today() + relativedelta.relativedelta(days=10)
+        cls.test_project = cls.env["project.project"].create(
+            {
+                "name": "Test Project",
+                "privacy_visibility": "employees",
+                "alias_name": "project+test",
+            }
         )
-        cls.task_1 = (
-            cls.env["project.task"]
-            .with_context(mail_create_nolog=True)
-            .create({"name": "Pigs UserTask", "project_id": cls.test_project.id})
+        cls.task_1 = cls.env["project.task"].create(
+            {"name": "Pigs UserTask", "project_id": cls.test_project.id}
         )
-        cls.task_2 = (
-            cls.env["project.task"]
-            .with_context(mail_create_nolog=True)
-            .create({"name": "Pigs ManagerTask", "project_id": cls.test_project.id})
+        cls.task_2 = cls.env["project.task"].create(
+            {"name": "Pigs ManagerTask", "project_id": cls.test_project.id}
         )
-        cls.task_3 = (
-            cls.env["project.task"]
-            .with_context(mail_create_nolog=True)
-            .create(
-                {
-                    "name": "Test Task 3",
-                    "project_id": cls.test_project.id,
-                }
-            )
+        cls.task_3 = cls.env["project.task"].create(
+            {
+                "name": "Test Task 3",
+                "project_id": cls.test_project.id,
+            }
         )
         cls.task_2.parent_id = cls.task_1
 
@@ -89,7 +78,7 @@ class TestParentDueAuto(TransactionCase):
         )
 
     def test_creating_child_with_due_date_updates_parent(self):
-        self.env["project.task"].with_context(mail_create_nolog=True).create(
+        self.env["project.task"].create(
             {
                 "name": "Child Task",
                 "project_id": self.test_project.id,
