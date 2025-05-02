@@ -7,7 +7,7 @@ class ProjectTask(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         tasks = super().create(vals_list)
-        for vals, task in zip(vals_list, tasks):
+        for vals, task in zip(vals_list, tasks, strict=False):
             if "date_deadline" in vals:
                 task.update_parent_task_dates()
         return tasks
