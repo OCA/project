@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <data>
+    <!-- Portal users see projects, if visibility = portal_internal -->
+    <record id="rule_portal_read_internal_projects" model="ir.rule">
+      <field name="name">Portal: read internal projects</field>
+      <field name="model_id" ref="project.model_project_project"/>
+      <field name="domain_force">[('privacy_visibility','=','portal_internal')]</field>
+      <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+      <field name="perm_read" eval="1"/>
+      <field name="perm_write" eval="0"/>
+      <field name="perm_create" eval="0"/>
+      <field name="perm_unlink" eval="0"/>
+    </record>
+
+    <!-- Portal users see tasks, if project.privacy_visibility = portal_internal -->
+    <record id="rule_portal_read_internal_tasks" model="ir.rule">
+      <field name="name">Portal: read tasks of internal projects</field>
+      <field name="model_id" ref="project.model_project_task"/>
+      <field name="domain_force">[('project_id.privacy_visibility','=','portal_internal')]</field>
+      <field name="groups" eval="[(4, ref('base.group_portal'))]"/>
+      <field name="perm_read" eval="1"/>
+      <field name="perm_write" eval="0"/>
+      <field name="perm_create" eval="0"/>
+      <field name="perm_unlink" eval="0"/>
+    </record>
+  </data>
+</odoo>
