@@ -1,12 +1,14 @@
 # Copyright 2019 Oihane Crucelaegui - AvanzOSC
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
+from odoo import Command
 from odoo.osv import expression
-from odoo.tests import common
 from odoo.tools.safe_eval import safe_eval
 
+from odoo.addons.base.tests.common import BaseCommon
 
-class TestProjectPurchaseUtilities(common.TransactionCase):
+
+class TestProjectPurchaseUtilities(BaseCommon):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -42,20 +44,16 @@ class TestProjectPurchaseUtilities(common.TransactionCase):
         self.purchase.write(
             {
                 "order_line": [
-                    (
-                        0,
-                        0,
+                    Command.create(
                         {
                             "name": "Test line",
-                            "analytic_distribution": {
-                                self.project.analytic_account_id.id: 100
-                            },
+                            "analytic_distribution": {self.project.account_id.id: 100},
                             "price_unit": 50,
                             "product_qty": 4,
                             "qty_received": 4,
                             "product_uom": self.product.uom_id.id,
                             "product_id": self.product.id,
-                        },
+                        }
                     )
                 ]
             }

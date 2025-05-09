@@ -1,7 +1,7 @@
 # Copyright 2019 Oihane Crucelaegui - AvanzOSC
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
-from odoo import _, fields, models
+from odoo import fields, models
 from odoo.osv import expression
 from odoo.tools.safe_eval import safe_eval
 
@@ -31,7 +31,7 @@ class ProjectProject(models.Model):
         # check if analytic_distribution contains id of analytic account
         query.add_where(
             "purchase_order_line.analytic_distribution ?| array[%s]",
-            [str(project.analytic_account_id.id) for project in self],
+            [str(project.account_id.id) for project in self],
         )
 
         query.order = None
@@ -54,7 +54,7 @@ class ProjectProject(models.Model):
         # check if analytic_distribution contains id of analytic account
         query.add_where(
             "purchase_order_line.analytic_distribution ?| array[%s]",
-            [str(project.analytic_account_id.id) for project in self],
+            [str(project.account_id.id) for project in self],
         )
 
         query.order = None
@@ -77,7 +77,7 @@ class ProjectProject(models.Model):
         # check if analytic_distribution contains id of analytic account
         query.add_where(
             "account_move_line.analytic_distribution ?| array[%s]",
-            [str(project.analytic_account_id.id) for project in self],
+            [str(project.account_id.id) for project in self],
         )
         query.order = None
         query_string, query_param = query.select(
@@ -100,7 +100,7 @@ class ProjectProject(models.Model):
         # check if analytic_distribution contains id of analytic account
         query.add_where(
             "account_move_line.analytic_distribution ?| array[%s]",
-            [str(project.analytic_account_id.id) for project in self],
+            [str(project.account_id.id) for project in self],
         )
         query.order = None
         query_string, query_param = query.select(
@@ -117,8 +117,8 @@ class ProjectProject(models.Model):
         for project in self:
             groups = self.env["purchase.order.line"].read_group(
                 project._domain_purchase_order_line(),
-                ["price_subtotal"],
                 ["order_id"],
+                ["price_subtotal"],
             )
             purchase_line_total = 0
             for group in groups:
@@ -142,39 +142,43 @@ class ProjectProject(models.Model):
     def button_open_purchase_order(self):
         self.ensure_one()
         return {
-            "name": _("Purchase Order"),
+            "name": self.env._("Purchase Order"),
             "domain": self._domain_purchase_order(),
             "type": "ir.actions.act_window",
-            "view_mode": "tree,form",
+            "view_mode": "list,form",
             "res_model": "purchase.order",
         }
 
     def button_open_purchase_order_line(self):
         self.ensure_one()
         return {
-            "name": _("Purchase Order Lines"),
+            "name": self.env._("Purchase Order Lines"),
             "domain": self._domain_purchase_order_line(),
             "type": "ir.actions.act_window",
-            "view_mode": "tree,form",
+            "view_mode": "list,form",
             "res_model": "purchase.order.line",
         }
 
     def button_open_purchase_invoice(self):
         self.ensure_one()
-        action = self.env.ref("account.action_move_in_invoice_type")
-        action_dict = action.sudo().read()[0] if action else {}
-        domain = expression.AND(
-            [safe_eval(action.domain or "[]"), self._domain_purchase_invoice()]
+        action = self.env["ir.actions.act_window"]._for_xml_id(
+            "account.action_move_in_invoice_type"
         )
-        action_dict.update({"domain": domain})
-        return action_dict
+        domain = expression.AND(
+            [
+                safe_eval(action.get("domain", "[]")),
+                self._domain_purchase_invoice(),
+            ]
+        )
+        action.update({"domain": domain})
+        return action
 
     def button_open_purchase_invoice_line(self):
         self.ensure_one()
         return {
-            "name": _("Purchase Invoice Lines"),
+            "name": self.env._("Purchase Invoice Lines"),
             "domain": self._domain_purchase_invoice_line(),
             "type": "ir.actions.act_window",
-            "view_mode": "tree,form",
+            "view_mode": "list,form",
             "res_model": "account.move.line",
         }
