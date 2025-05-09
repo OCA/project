@@ -1,4 +1,4 @@
-# Copyright 2022 Tecnativa - Víctor Martínez
+# Copyright 2022-2025 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 from odoo import api, fields, models
 
@@ -99,6 +99,17 @@ class StockMove(models.Model):
                 }
             )
         return defaults
+
+    def _action_done(self, cancel_backorder=False):
+        """Create the analytical notes for stock movements linked to tasks."""
+        moves_todo = super()._action_done(cancel_backorder)
+        # Use sudo to avoid error for users with no access to analytic
+        analytic_line_model = self.env["account.analytic.line"].sudo()
+        for move in moves_todo.filtered(lambda x: x.raw_material_task_id):
+            vals = move._prepare_analytic_line_from_task()
+            if vals:
+                analytic_line_model.create(vals)
+        return moves_todo
 
     def action_task_product_forecast_report(self):
         self.ensure_one()

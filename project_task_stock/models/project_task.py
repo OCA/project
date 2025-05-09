@@ -231,14 +231,6 @@ class ProjectTask(models.Model):
         ):
             move.quantity = move.product_uom_qty
         moves_to_do.picking_id.with_context(skip_sanity_check=True).button_validate()
-        moves_done = self.move_ids.filtered(lambda x: x.state == "done")
-        moves_todo = moves_done - moves_to_skip
-        # Use sudo to avoid error for users with no access to analytic
-        analytic_line_model = self.env["account.analytic.line"].sudo()
-        for move in moves_todo:
-            vals = move._prepare_analytic_line_from_task()
-            if vals:
-                analytic_line_model.create(vals)
 
     def action_see_move_scrap(self):
         self.ensure_one()
