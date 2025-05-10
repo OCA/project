@@ -1,3 +1,6 @@
+from dateutil.parser import isoparse
+from datetime import timezone
+
 from odoo import _, api, fields, models
 
 
@@ -19,5 +22,9 @@ class GitCommit(models.Model):
 
     @api.depends("full_sha")
     def _compute_sha(self):
+        
         for commit in self:
             commit.sha = commit.full_sha[:7] if commit.full_sha else ""
+
+    def parse_timestamp(self, timestamp):
+        return isoparse(timestamp).astimezone(timezone.utc).replace(tzinfo=None) if timestamp else False

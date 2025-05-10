@@ -63,8 +63,8 @@ class WebhookGitlab(http.Controller):
         try:
             if event.get("object_kind"):
                 func = getattr(request_obj.with_delay(), "_process_%s" % event["object_kind"])
-            elif event.get("source") == "gitlab":
-                func = request_obj.with_delay()._process_pull_request
+            else:
+                return True
         except AttributeError as error:
             _logger.warning(error)
             return error
