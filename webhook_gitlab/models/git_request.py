@@ -2,12 +2,18 @@
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 import re
+import logging
+
 from urllib.parse import urljoin
 
 import gitlab  # pylint: disable=W7935
 from github import Github
 
 from odoo import _, api, fields, models
+
+_logger = logging.getLogger(__name__)
+
+DEFAULT_TASK_NAME_SUBSTR_REGEX = r"\b[A-Z]+-\d+\b"
 
 
 class GitRequest(models.Model):
@@ -97,6 +103,19 @@ class GitRequest(models.Model):
                     "tag_ids": tags,
                 }
             )
+
+    @api.model
+    def _get_task_match_regex(self):
+        """Fetch regex pattern from ir.config_parameter or fallback to default."""
+        config = self.env["ir.config_parameter"].sudo()
+        pattern = config.get_param("webhook_gitlab.task_match_regex", default=DEFAULT_TASK_NAME_SUBSTR_REGEX)
+        try:
+            # Try compiling to validate the pattern
+            re.compile(pattern)
+            return pattern
+        except re.error as e:
+            _logger.warning("Invalid task match regex in config parameter: %s. Error: %s. Falling back to default.", pattern, e)
+            return DEFAULT_TASK_NAME_SUBSTR_REGEX
 
     @api.model
     def _get_record_type_and_id(self, title):
