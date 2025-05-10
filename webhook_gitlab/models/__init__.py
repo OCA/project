@@ -4,4 +4,7 @@
 from . import project_task
 from . import project_project
 from . import git_request
+from . import git_branch
+from . import git_commit
+from . import git_pull_request
 from . import res_users

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model='ir.ui.view' id='git_branch_tree'>
+        <field name='name'>git.branch.tree</field>
+        <field name='model'>git.branch</field>
+        <field name='arch' type='xml'>
+            <tree>
+                <field name="name" optional="show"/>
+                <field name="url" optional="show" widget="url"/>
+                <field name="task_id" optional="hide"/>
+                <field name="git_request_id" optional="hide"/>
+            </tree>
+        </field>
+    </record>
+
+    <record model='ir.ui.view' id='git_branch_form'>
+        <field name='name'>git.branch.form</field>
+        <field name='model'>git.branch</field>
+        <field name='arch' type='xml'>
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" readonly="1"/>
+                            <field name="url" readonly="1" widget="url"/>
+                            <field name="task_id" readonly="1"/>
+                            <field name="git_request_id" readonly="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Commits">
+                            <field name="git_commit_ids" string="Commits">
+                                <tree>
+                                    <field name="name" optional="show"/>
+                                    <field name="description" optional="show"/>
+                                    <field name="url" optional="show"/>
+                                    <field name="sha" optional="hide"/>
+                                    <field name="full_sha" optional="hide"/>
+                                    <field name="git_branch_id" optional="hide"/>
+                                    <field name="task_id" optional="hide"/>
+                                    <field name="git_request_id" optional="hide"/>
+                                    <field name="timestamp" optional="hide"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>
