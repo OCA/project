@@ -44,5 +44,7 @@ class ProjectTask(models.Model):
 
     @api.depends("name", "code")
     def _compute_display_name(self):
-        for task in self:
-            task.display_name = f"[{task.code}] {task.name}" if task.code else task.name
+        result = super()._compute_display_name()
+        for task in self.filtered("code"):
+            task.display_name = f"[{task.code}] {task.display_name}"
+        return result
