@@ -26,7 +26,7 @@ class ProjectMilestoneStatusCommon(TransactionCase):
                 "name": "name1",
                 "project_id": cls.project1.id,
                 "milestone_id": cls.milestone1.id,
-                "planned_hours": 5.0,
+                "allocated_hours": 5.0,
             }
         )
         cls.task2 = cls.env["project.task"].create(
@@ -34,6 +34,6 @@ class ProjectMilestoneStatusCommon(TransactionCase):
                 "name": "name2",
                 "project_id": cls.project1.id,
                 "milestone_id": cls.milestone1.id,
-                "planned_hours": 5.0,
+                "allocated_hours": 5.0,
             }
         )
