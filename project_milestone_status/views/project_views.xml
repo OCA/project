@@ -4,9 +4,9 @@
         <field name="name">Tasks</field>
         <field name="res_model">project.task</field>
         <field name="view_mode">tree,form</field>
-        <field name="domain">[('display_project_id', '=', active_id)]</field>
+        <field name="domain">[('display_project_id', '=', id)]</field>
         <field name="context">{
-            'default_project_id': active_id,
+            'default_project_id': id,
             'show_project_update': True,
         }</field>
         <field name="search_view_id" ref="project.view_task_search_form" />
