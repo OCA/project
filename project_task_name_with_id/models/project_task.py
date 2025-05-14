@@ -10,13 +10,10 @@ class ProjectTask(models.Model):
 
     @api.depends("name")
     def _compute_display_name(self):
+        super()._compute_display_name()
         for task in self:
-            parts = [f"[{task.id}]"]
-            if hasattr(task, "key") and task.key:
-                parts.append(task.key)
-            if task.name:
-                parts.append(task.name)
-            task.display_name = " ".join(parts)
+            task.display_name = f"[{task.id}] {task.display_name}"
+        return
 
     @api.model
     def name_search(self, name="", args=None, operator="ilike", limit=100):
