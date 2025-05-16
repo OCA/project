@@ -15,7 +15,7 @@
                 <div t-attf-class="o_project_timeline_hr_timesheet_progress">
                     <div
                         t-attf-class="{{ record.remaining_hours &lt; 0 ? 'bg-danger ' : 'bg-success '}}"
-                        t-attf-style="width: #{record.progress}%"
+                        t-attf-style="width: #{record.progress * 100}%"
                     />
                 </div>
             </xpath>
