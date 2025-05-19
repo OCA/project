@@ -3,12 +3,8 @@
     <record id="act_excuted_project_task" model="ir.actions.act_window">
         <field name="name">Tasks</field>
         <field name="res_model">project.task</field>
-        <field name="view_mode">tree,form</field>
-        <field name="domain">[('display_project_id', '=', id)]</field>
-        <field name="context">{
-            'default_project_id': id,
-            'show_project_update': True,
-        }</field>
+        <field name="view_mode">list,form</field>
+        <field name="path">executed_tasks</field>
         <field name="search_view_id" ref="project.view_task_search_form" />
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">

@@ -1,8 +1,9 @@
 from odoo.tests import new_test_user
-from odoo.tests.common import TransactionCase
+
+from odoo.addons.base.tests.common import BaseCommon
 
 
-class ProjectMilestoneStatusCommon(TransactionCase):
+class ProjectMilestoneStatusCommon(BaseCommon):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()

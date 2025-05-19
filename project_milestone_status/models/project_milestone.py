@@ -13,10 +13,10 @@ class ProjectMilestone(models.Model):
             executed_tasks = milestone.task_ids.filtered("stage_id.fold")
 
             total_allocated_hours = sum(milestone.task_ids.mapped("allocated_hours"))
-            total_excuted_hours = sum(executed_tasks.mapped("allocated_hours"))
+            total_executed_hours = sum(executed_tasks.mapped("allocated_hours"))
 
-            if total_excuted_hours and total_allocated_hours:
-                milestone.execution = total_excuted_hours * 100 / total_allocated_hours
+            if total_executed_hours and total_allocated_hours:
+                milestone.execution = total_executed_hours * 100 / total_allocated_hours
             else:
                 milestone.execution = 0
 
