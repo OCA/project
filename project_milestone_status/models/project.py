@@ -1,43 +1,33 @@
-import ast
 import json
 
-from odoo import _, models
+from odoo import models
 
 
 class Project(models.Model):
     _inherit = "project.project"
 
     def _get_execution(self):
-        all_tasks = self.env["project.task"].search(
-            [
-                ("project_id", "=", self.id),
-            ]
-        )
+        all_tasks = self.tasks
         executed_tasks = all_tasks.filtered("stage_id.fold")
 
         total_allocated_hours = sum(all_tasks.mapped("allocated_hours"))
-        total_excuted_hours = sum(executed_tasks.mapped("allocated_hours"))
+        total_executed_hours = sum(executed_tasks.mapped("allocated_hours"))
 
-        if total_excuted_hours and total_allocated_hours:
-            execution = total_excuted_hours * 100 / total_allocated_hours
+        if total_executed_hours and total_allocated_hours:
+            execution = total_executed_hours * 100 / total_allocated_hours
         else:
             execution = 0
 
         return {
             "all_task": len(all_tasks),
-            "excuted_task": len(executed_tasks),
-            "excuted": round(total_excuted_hours),
+            "executed_task": len(executed_tasks),
+            "executed": round(total_executed_hours),
             "percent": round(execution),
         }
 
     def _get_dedication(self):
-        all_tasks = self.env["project.task"].search(
-            [
-                ("project_id", "=", self.id),
-            ]
-        )
-        total_allocated_hours = sum(all_tasks.mapped("allocated_hours"))
-        total_dedicated_hours = sum(all_tasks.mapped("effective_hours"))
+        total_allocated_hours = sum(self.tasks.mapped("allocated_hours"))
+        total_dedicated_hours = sum(self.tasks.mapped("effective_hours"))
 
         if total_dedicated_hours and total_allocated_hours:
             dedication = total_dedicated_hours * 100 / total_allocated_hours
@@ -46,18 +36,28 @@ class Project(models.Model):
 
         return {"dedicated": round(total_dedicated_hours), "percent": round(dedication)}
 
-    def action_view_excuted_tasks(self):
-        action = (
-            self.env["ir.actions.act_window"]
-            .with_context(id=self.id)
-            ._for_xml_id("project_milestone_status.act_excuted_project_task")
+    def action_view_executed_tasks(self):
+        self.ensure_one()
+        action = self.env["ir.actions.act_window"]._for_xml_id(
+            "project_milestone_status.act_excuted_project_task"
         )
-        action["display_name"] = _("%(name)s", name=self.name)
-        context = action["context"].replace("id", str(self.id))
-        context = ast.literal_eval(context)
-        context.update({"create": self.active, "active_test": self.active})
-        action["context"] = context
-        action["domain"] = [("project_id", "=", self.id), ("stage_id.fold", "=", True)]
+        action.update(
+            {
+                "name": self.env._("%(name)s", name=self.name),
+                "domain": [
+                    ("project_id", "=", self.id),
+                    ("display_in_project", "=", True),
+                    ("stage_id.fold", "=", True),
+                ],
+                "context": {
+                    **self.env.context,
+                    "default_project_id": self.id,
+                    "show_project_update": True,
+                    "create": self.active,
+                    "active_test": self.active,
+                },
+            }
+        )
         return action
 
     def _get_stat_buttons(self):
@@ -65,23 +65,23 @@ class Project(models.Model):
         execution = self._get_execution()
         dedication = self._get_dedication()
 
-        if execution["excuted_task"] and execution["all_task"]:
+        if execution["executed_task"] and execution["all_task"]:
             percent_tasks = round(
-                execution["excuted_task"] * 100 / execution["all_task"]
+                execution["executed_task"] * 100 / execution["all_task"]
             )
         else:
             percent_tasks = 0
 
         buttons[0]["number"] = (
-            f"{execution['excuted_task']} / {execution['all_task']} ({percent_tasks}%)"
+            f"{execution['executed_task']} / {execution['all_task']} ({percent_tasks}%)"
         )
         buttons.append(
             {
                 "icon": "check-circle-o",
-                "text": _("Execution"),
-                "number": f"{execution['percent']}% ({execution['excuted']}h)",
+                "text": self.env._("Execution"),
+                "number": f"{execution['percent']}% ({execution['executed']}h)",
                 "action_type": "object",
-                "action": "action_view_excuted_tasks",
+                "action": "action_view_executed_tasks",
                 "show": True,
                 "sequence": 5,
             }
@@ -90,7 +90,7 @@ class Project(models.Model):
         buttons.append(
             {
                 "icon": "clock-o",
-                "text": _("Dedication"),
+                "text": self.env._("Dedication"),
                 "number": f"{dedication['percent']}% ({dedication['dedicated']}h)",
                 "action_type": "action",
                 "action": "hr_timesheet.act_hr_timesheet_line_by_project",
