@@ -72,9 +72,9 @@ class Project(models.Model):
         else:
             percent_tasks = 0
 
-        buttons[0][
-            "number"
-        ] = f"{execution['excuted_task']} / {execution['all_task']} ({percent_tasks}%)"
+        buttons[0]["number"] = (
+            f"{execution['excuted_task']} / {execution['all_task']} ({percent_tasks}%)"
+        )
         buttons.append(
             {
                 "icon": "check-circle-o",
