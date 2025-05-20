@@ -6,7 +6,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 {
     "name": "Project Work Breakdown Structure",
-    "version": "15.0.1.1.4",
+    "version": "15.0.1.2.0",
     "license": "AGPL-3",
     "author": "Matmoz d.o.o., "
     "Luxim d.o.o., "
