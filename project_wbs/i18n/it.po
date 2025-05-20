@@ -49,6 +49,7 @@ msgid "Child Accounts"
 msgstr "Conti figli"
 
 #. module: project_wbs
+#: model_terms:ir.ui.view,arch_db:project_wbs.edit_project
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project
 msgid "Child WBS elements"
 msgstr "Elementi WBS figli"
@@ -171,6 +172,7 @@ msgid "Parent Analytic Account"
 msgstr "Conto analitico padre"
 
 #. module: project_wbs
+#: model_terms:ir.ui.view,arch_db:project_wbs.edit_project
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project
 msgid "Parent WBS element"
 msgstr "Elemento WBS padre"
@@ -193,6 +195,7 @@ msgid "Project"
 msgstr "Progetto"
 
 #. module: project_wbs
+#: model_terms:ir.ui.view,arch_db:project_wbs.edit_project
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project
 msgid "Project Form View"
 msgstr "Vista modulo progetto"

@@ -49,6 +49,7 @@ msgid "Child Accounts"
 msgstr "Cuentas Hijas"
 
 #. module: project_wbs
+#: model_terms:ir.ui.view,arch_db:project_wbs.edit_project
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project
 msgid "Child WBS elements"
 msgstr "Elementos PEP secundarios"
@@ -171,6 +172,7 @@ msgid "Parent Analytic Account"
 msgstr "Cuenta analítica parental"
 
 #. module: project_wbs
+#: model_terms:ir.ui.view,arch_db:project_wbs.edit_project
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project
 msgid "Parent WBS element"
 msgstr "Elemento PEP parental"
@@ -193,6 +195,7 @@ msgid "Project"
 msgstr "Proyecto"
 
 #. module: project_wbs
+#: model_terms:ir.ui.view,arch_db:project_wbs.edit_project
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project
 msgid "Project Form View"
 msgstr "Vista del formulario del proyecto"
