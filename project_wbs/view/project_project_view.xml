@@ -228,9 +228,36 @@
                           }"
                         />
                     </group>
-                    <tree editable="bottom">
-                        <field name="project_child_complete_ids" nolabel="1" />
-                    </tree>
+
+                    <field name="project_child_complete_ids">
+                        <tree editable="bottom">
+                            <field name="complete_wbs_code" />
+                            <field name="wbs_indent" />
+                            <button
+                                title="Parent WBS element"
+                                name="action_open_parent_tree_view"
+                                type="object"
+                                icon="fa-arrow-up"
+                            />
+                            <button
+                                title="Child WBS elements"
+                                name="action_open_child_tree_view"
+                                type="object"
+                                icon="fa-arrow-down"
+                            />
+                            <button
+                                title="Project Form View"
+                                name="action_open_view_project_form"
+                                type="object"
+                                icon="fa-pencil-square-o"
+                            />
+                            <field name="name" />
+                            <field name="account_class" />
+                            <field name="date_start" />
+                            <field name="date" />
+                            <field name="user_id" widget="many2one_avatar_user" />
+                        </tree>
+                    </field>
                 </page>
 
             </notebook>

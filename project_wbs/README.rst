@@ -102,7 +102,7 @@ Authors
 * Matmoz d.o.o.
 * Luxim d.o.o.
 * Deneroteam
-* Eficent
+* ForgeFlow
 
 Contributors
 ~~~~~~~~~~~~
@@ -125,6 +125,14 @@ This module is maintained by the OCA.
 OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
+
+.. |maintainer-AaronHForgeFlow| image:: https://github.com/AaronHForgeFlow.png?size=40px
+    :target: https://github.com/AaronHForgeFlow
+    :alt: AaronHForgeFlow
+
+Current `maintainer <https://odoo-community.org/page/maintainer-role>`__:
+
+|maintainer-AaronHForgeFlow| 
 
 This module is part of the `OCA/project <https://github.com/OCA/project/tree/15.0/project_wbs>`_ project on GitHub.
 
