@@ -13,8 +13,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
-"%100==4 ? 2 : 3;\n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
+"n%100==4 ? 2 : 3;\n"
 "X-Generator: Weblate 4.14.1\n"
 
 #. module: project_wbs
@@ -46,6 +46,7 @@ msgid "Child Accounts"
 msgstr "Podrejeni konti"
 
 #. module: project_wbs
+#: model_terms:ir.ui.view,arch_db:project_wbs.edit_project
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project
 msgid "Child WBS elements"
 msgstr "Podrejeni členi"
@@ -168,6 +169,7 @@ msgid "Parent Analytic Account"
 msgstr "Nadrejeni konto"
 
 #. module: project_wbs
+#: model_terms:ir.ui.view,arch_db:project_wbs.edit_project
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project
 msgid "Parent WBS element"
 msgstr "Nadrejeni člen"
@@ -190,6 +192,7 @@ msgid "Project"
 msgstr "Projekt"
 
 #. module: project_wbs
+#: model_terms:ir.ui.view,arch_db:project_wbs.edit_project
 #: model_terms:ir.ui.view,arch_db:project_wbs.view_project
 msgid "Project Form View"
 msgstr "Projektni obrazec"
