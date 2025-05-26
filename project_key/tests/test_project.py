@@ -68,3 +68,8 @@ class TestProject(TestCommon):
     def test_10_generate_unique_key_with_counter(self):
         project = self.Project.create({"name": "OCA"})
         self.assertEqual(project.key, "OCA1")
+
+    def test_11_generate_unique_key_with_counter_inactive(self):
+        self.project_1.active = False
+        project = self.Project.create({"name": "OCA"})
+        self.assertEqual(project.key, "OCA1")

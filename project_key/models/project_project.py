@@ -162,13 +162,14 @@ class Project(models.Model):
         return self._generate_project_unique_key("".join(key))
 
     def _generate_project_unique_key(self, text):
+        self_context = self.with_context(active_test=False)
         res = text
         unique_key = False
         counter = 0
         while not unique_key:
             if counter != 0:
                 res = f"{text}{counter}"
-            unique_key = not bool(self.search([("key", "=", res)]))
+            unique_key = not bool(self_context.search([("key", "=", res)]))
             counter += 1
 
         return res
@@ -203,9 +204,7 @@ class Project(models.Model):
         installation.
         :return:
         """
-        for project in self.with_context(active_test=False).search(
-            [("key", "=", False)]
-        ):
+        for project in self.search([("key", "=", False)]):
             project.key = self.generate_project_key(project.name)
             project.create_sequence()
 
