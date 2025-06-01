@@ -7,9 +7,9 @@
             <page name="settings" position="before">
                 <page name="version" string="Version">
                     <field name="version_ids">
-                        <tree editable="bottom" create="true" delete="true">
+                        <list editable="bottom" create="true" delete="true">
                             <field name="name" />
-                        </tree>
+                        </list>
                     </field>
                 </page>
             </page>

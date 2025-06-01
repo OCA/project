@@ -24,16 +24,16 @@
         <field name="name">Project Version</field>
         <field name="model">project.version</field>
         <field name="arch" type="xml">
-            <tree>
+            <list>
                 <field name="name" />
                 <field name="project_id" />
-            </tree>
+            </list>
         </field>
     </record>
     <record id="action_project_version" model="ir.actions.act_window">
         <field name="name">Project Version</field>
         <field name="res_model">project.version</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">list,form</field>
     </record>
     <menuitem
         name="Project Version"
