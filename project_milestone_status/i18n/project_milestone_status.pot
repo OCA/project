@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 17.0\n"
+"Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -16,7 +16,6 @@ msgstr ""
 #. module: project_milestone_status
 #. odoo-python
 #: code:addons/project_milestone_status/models/project.py:0
-#, python-format
 msgid "%(name)s"
 msgstr ""
 
@@ -24,7 +23,6 @@ msgstr ""
 #. odoo-python
 #: code:addons/project_milestone_status/models/project.py:0
 #: model:ir.model.fields,field_description:project_milestone_status.field_project_milestone__dedication
-#, python-format
 msgid "Dedication"
 msgstr ""
 
@@ -32,7 +30,6 @@ msgstr ""
 #. odoo-python
 #: code:addons/project_milestone_status/models/project.py:0
 #: model:ir.model.fields,field_description:project_milestone_status.field_project_milestone__execution
-#, python-format
 msgid "Execution"
 msgstr ""
 
