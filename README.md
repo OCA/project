@@ -38,7 +38,7 @@ addon | version | maintainers | summary
 [project_task_default_stage](project_task_default_stage/) | 17.0.1.0.1 |  | Recovery default task stages for projects from v8
 [project_task_description_template](project_task_description_template/) | 17.0.1.0.0 |  | Add a description template to project tasks
 [project_task_material](project_task_material/) | 17.0.1.0.0 |  | Record products spent in a Task
-[project_task_name_with_id](project_task_name_with_id/) | 17.0.1.0.0 |  | Project Task Name with ID
+[project_task_name_with_id](project_task_name_with_id/) | 17.0.1.0.1 |  | Project Task Name with ID
 [project_task_note](project_task_note/) | 17.0.1.0.0 | [![pilar-vargas](https://github.com/pilar-vargas.png?size=30px)](https://github.com/pilar-vargas) | Add notes in project tasks
 [project_task_pull_request](project_task_pull_request/) | 17.0.1.0.0 |  | Adds a field for a PR URI to project tasks
 [project_task_related](project_task_related/) | 17.0.1.0.2 | [![david-banon-tecnativa](https://github.com/david-banon-tecnativa.png?size=30px)](https://github.com/david-banon-tecnativa) | Project Related Task
