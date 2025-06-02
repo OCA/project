@@ -18,9 +18,9 @@ class TestTask(TestCommon):
         self.assertEqual(self.task11.url, task_url)
 
     def test_03_create_task_project_in_context(self):
-        self.Task.with_context(
-            model="project.project", id=self.project_1.id
-        ).create({"name": "4"})
+        self.Task.with_context(model="project.project", id=self.project_1.id).create(
+            {"name": "4"}
+        )
 
     def test_04_no_switch_project(self):
         self.task11.write({"project_id": self.project_1.id})
