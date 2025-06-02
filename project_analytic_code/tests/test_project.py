@@ -25,10 +25,8 @@ class TestProject(TransactionCase):
         result = self.env["project.project"].name_search(
             name=self.project.analytic_account_id.code
         )
-        self.assertEqual(
-            result[0][1],
-            f"[{self.project.analytic_account_id.code}] {self.project.name}",
-        )
+        expected = f"[{self.project.analytic_account_id.code}] {self.project.name}"
+        self.assertEqual(result[0].display_name, expected)
 
     def test_project_display_name(self):
         self.assertEqual(
@@ -36,8 +34,4 @@ class TestProject(TransactionCase):
             f"[{self.project.analytic_account_id.code}] {self.project.name}",
         )
         self.project.analytic_account_id = False
-
-        self.assertEqual(
-            self.project.display_name,
-            f"{self.project.name}",
-        )
+        self.assertEqual(self.project.display_name, f"{self.project.name}")

@@ -1,1 +1,2 @@
 - Pierre Verkest \<<pierreverkest84@gmail.com>\>
+- Daniel Reis \<<dreis@opensourceintegrators.com>\>
