@@ -4,40 +4,27 @@
 import logging
 
 from odoo.exceptions import ValidationError
-from odoo.tests.common import TransactionCase
+from odoo.tests import new_test_user
+
+from odoo.addons.base.tests.common import BaseCommon
 
 _logger = logging.getLogger(__name__)
 
 
-class TestProjectHr(TransactionCase):
+class TestProjectHr(BaseCommon):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        user_group_employee = cls.env.ref("base.group_user")
-        user_group_project_user = cls.env.ref("project.group_project_user")
         # Test users to use through the various tests
-        Users = cls.env["res.users"].with_context(no_reset_password=True)
-        cls.user1 = Users.create(
-            {
-                "name": "Test User1",
-                "login": "user1",
-                "password": "user1",
-                "email": "user1.projecthr@example.com",
-                "groups_id": [
-                    (6, 0, [user_group_employee.id, user_group_project_user.id])
-                ],
-            }
+        cls.user1 = new_test_user(
+            cls.env,
+            login="test-user1",
+            groups="base.group_user,project.group_project_user",
         )
-        cls.user2 = Users.create(
-            {
-                "name": "Test User2",
-                "login": "user2",
-                "password": "user2",
-                "email": "user2.projecthr@example.com",
-                "groups_id": [
-                    (6, 0, [user_group_employee.id, user_group_project_user.id])
-                ],
-            }
+        cls.user2 = new_test_user(
+            cls.env,
+            login="test-user2",
+            groups="base.group_user,project.group_project_user",
         )
         cls.hr_category = cls.env["hr.employee.category"].create(
             {"name": "Test employee category"}
@@ -58,7 +45,11 @@ class TestProjectHr(TransactionCase):
             }
         )
         cls.project = cls.env["project.project"].create(
-            {"name": "Test project", "hr_category_ids": [(4, cls.hr_category.id)]}
+            {
+                "name": "Test project",
+                "hr_category_ids": [(4, cls.hr_category.id)],
+                "company_id": cls.env.company.id,
+            }
         )
         cls.task = cls.env["project.task"].create(
             {

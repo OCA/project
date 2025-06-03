@@ -19,5 +19,5 @@ class ResUsers(models.Model):
     def _compute_hr_category_ids(self):
         for user in self:
             user.hr_category_ids = user.employee_ids.filtered(
-                lambda x: x.company_id == user.company_id
+                lambda x, company_id=user.company_id: x.company_id == company_id
             )[:1].category_ids
