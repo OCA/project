@@ -1,0 +1,52 @@
+<odoo>
+  <record id="view_project_tags_tree_scoped_tags" model="ir.ui.view">
+    <field name="name">Projects tags - show projects using tags</field>
+    <field name="model">project.tags</field>
+    <field name="inherit_id" ref="project.project_tags_tree_view" />
+    <field name="arch" type="xml">
+      <xpath expr="//field[@name='color']" position="after">
+        <field name="globally_available" />
+        <field
+                    name="available_in_project_ids"
+                    widget="many2many_tags"
+                    options="{'no_create': True, 'no_create_edit': True}"
+                    context="{'form_view_initial_mode': 'edit'}"
+                    placeholder="Available in all projects"
+                />
+       </xpath>
+    </field>
+  </record>
+
+  <record id="view_project_tags_form_scoped" model="ir.ui.view">
+      <field name="name">project.tags.form.scoped</field>
+      <field name="model">project.tags</field>
+      <field name="inherit_id" ref="project.project_tags_form_view" />
+      <field name="arch" type="xml">
+          <xpath expr="//field[@name='color']" position="after">
+              <field
+                    name="available_in_project_ids"
+                    widget="many2many_tags"
+                    options="{'no_create': True, 'no_create_edit': True}"
+                    placeholder="Available in all projects"
+                    context="{'default_available_in_project_ids': active_id and [active_id] or []}"
+                    help="If empty, the tag is global and available for all projects."
+                />
+          </xpath>
+      </field>
+  </record>
+
+  <record id="view_project_tags_search_scoped_tags" model="ir.ui.view">
+      <field name="name">project.tags.search.scoped.tags</field>
+      <field name="model">project.tags</field>
+      <field name="inherit_id" ref="project.project_tags_search_view" />
+      <field name="arch" type="xml">
+          <xpath expr="//search" position="inside">
+              <field
+                    name="available_in_project_ids"
+                    string="Project"
+                    filter_domain="['|', ('globally_available', '=', True), ('available_in_project_ids', 'ilike', self)]"
+                />
+          </xpath>
+      </field>
+  </record>
+</odoo>
