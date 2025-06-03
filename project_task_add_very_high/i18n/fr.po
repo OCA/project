@@ -30,6 +30,11 @@ msgid "Priority"
 msgstr "Priorité"
 
 #. module: project_task_add_very_high
+#: model_terms:ir.ui.view,arch_db:project_task_add_very_high.portal_my_tasks_priority_widget_template
+msgid "Priority: {{priority_selection[task.priority or '0']}}"
+msgstr ""
+
+#. module: project_task_add_very_high
 #: model:ir.model,name:project_task_add_very_high.model_project_task
 msgid "Task"
 msgstr "Tâche"
