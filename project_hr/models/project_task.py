@@ -43,7 +43,8 @@ class ProjectTask(models.Model):
     def _compute_employee_ids(self):
         for task in self.filtered("user_ids"):
             task.employee_ids = task.user_ids.employee_ids.filtered(
-                lambda x: x.company_id == task.company_id
+                lambda x, company_id=task.company_id or self.env.company: x.company_id
+                == company_id
             )
 
     @api.depends("project_id", "project_id.hr_category_ids")
@@ -62,7 +63,11 @@ class ProjectTask(models.Model):
             domain = []
             if task.hr_category_ids:
                 domain = [
-                    ("employee_ids.company_id", "=", task.company_id.id),
+                    (
+                        "employee_ids.company_id",
+                        "=",
+                        (task.company_id.id or self.env.company.id),
+                    ),
                     ("employee_ids.category_ids", "in", task.hr_category_ids.ids),
                 ]
             task.allowed_assigned_user_ids = user_obj.search(domain)

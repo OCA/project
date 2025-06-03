@@ -6,3 +6,4 @@
 - [CorporateHub](https://corporatehub.eu/)
   - Alexey Pelykh \<alexey.pelykh@corphub.eu\>
 - Alfadil Tabar \<alfadil.tabar@gmail.com\>
+- Abraham Anes \<abrahamanes@gmail.com\>

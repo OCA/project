@@ -31,20 +31,20 @@ Project HR
 This is a technical module for adding some HR information to projects
 and provide technical fields with HR information:
 
-- Employee categories at project and task level.
-- Employee linked to the user assigned to a task.
-- Employee categories at user level.
+-  Employee categories at project and task level.
+-  Employee linked to the user assigned to a task.
+-  Employee categories at user level.
 
 These fields can be used later for extra features like task scheduling
 or security restrictions.
 
 It also provides some facilities on project management:
 
-- Limit selection of assigned users according selected employee category
-  at task level.
-- Limit selection of employee categories at task level depending on the
-  selected categories at project level. All are shown if no categories
-  at project level.
+-  Limit selection of assigned users according selected employee
+   category at task level.
+-  Limit selection of employee categories at task level depending on the
+   selected categories at project level. All are shown if no categories
+   at project level.
 
 **Table of contents**
 
@@ -82,9 +82,9 @@ Usage
 Known issues / Roadmap
 ======================
 
-- Limit project and task visibility according employee categories
-  through overriding security methods (as through record rules is not
-  possible without modifying existing ones).
+-  Limit project and task visibility according employee categories
+   through overriding security methods (as through record rules is not
+   possible without modifying existing ones).
 
 Bug Tracker
 ===========
@@ -107,18 +107,19 @@ Authors
 Contributors
 ------------
 
-- `Tecnativa <https://www.tecnativa.com>`__:
+-  `Tecnativa <https://www.tecnativa.com>`__:
 
-  - Pedro M. Baeza
-  - Victor M.M. Torres
-  - Ernesto Tejeda
-  - Pilar Vargas
+   -  Pedro M. Baeza
+   -  Victor M.M. Torres
+   -  Ernesto Tejeda
+   -  Pilar Vargas
 
-- `CorporateHub <https://corporatehub.eu/>`__
+-  `CorporateHub <https://corporatehub.eu/>`__
 
-  - Alexey Pelykh <alexey.pelykh@corphub.eu>
+   -  Alexey Pelykh <alexey.pelykh@corphub.eu>
 
-- Alfadil Tabar <alfadil.tabar@gmail.com>
+-  Alfadil Tabar <alfadil.tabar@gmail.com>
+-  Abraham Anes <abrahamanes@gmail.com>
 
 Maintainers
 -----------
