@@ -23,10 +23,10 @@ addon | version | maintainers | summary
 [project_category](project_category/) | 11.0.1.1.0 |  | Project Types
 [project_department](project_department/) | 11.0.1.0.0 |  | Project Department Categorization
 [project_description](project_description/) | 11.0.1.0.0 |  | Add a description to projects
-[project_hr](project_hr/) | 11.0.1.0.0 | [![pedrobaeza](https://github.com/pedrobaeza.png?size=30px)](https://github.com/pedrobaeza) | Link HR with project
+[project_hr](project_hr/) | 11.0.1.0.0 | <a href='https://github.com/pedrobaeza'><img src='https://github.com/pedrobaeza.png' width='32' height='32' style='border-radius:50%;' alt='pedrobaeza'/></a> | Link HR with project
 [project_key](project_key/) | 11.0.1.0.1 |  | Module decorates projects and tasks with ``key`` field
 [project_list](project_list/) | 11.0.1.0.0 |  | Projects list view
-[project_milestone](project_milestone/) | 11.0.1.0.0 | [![patrickrwilson](https://github.com/patrickrwilson.png?size=30px)](https://github.com/patrickrwilson) | Project Milestones
+[project_milestone](project_milestone/) | 11.0.1.0.0 | <a href='https://github.com/patrickrwilson'><img src='https://github.com/patrickrwilson.png' width='32' height='32' style='border-radius:50%;' alt='patrickrwilson'/></a> | Project Milestones
 [project_risk](project_risk/) | 11.0.1.0.1 |  | MOR risk management method
 [project_stage_closed](project_stage_closed/) | 11.0.1.0.0 |  | Make the Closed flag on Task Stages available without installing sale_service
 [project_stage_state](project_stage_state/) | 11.0.1.0.0 |  | Restore State attribute removed from Project Stages in 8.0
@@ -41,7 +41,7 @@ addon | version | maintainers | summary
 [project_task_pull_request](project_task_pull_request/) | 11.0.1.0.0 |  | Adds a field for a PR URI to project tasks
 [project_task_send_by_mail](project_task_send_by_mail/) | 11.0.1.0.0 |  | Send task report by email
 [project_task_type_active](project_task_type_active/) | 11.0.1.0.0 |  | Adds active field on project task type
-[project_template](project_template/) | 11.0.1.0.1 | [![patrickrwilson](https://github.com/patrickrwilson.png?size=30px)](https://github.com/patrickrwilson) | Project Templates
+[project_template](project_template/) | 11.0.1.0.1 | <a href='https://github.com/patrickrwilson'><img src='https://github.com/patrickrwilson.png' width='32' height='32' style='border-radius:50%;' alt='patrickrwilson'/></a> | Project Templates
 [project_timeline](project_timeline/) | 11.0.1.1.0 |  | Timeline view for projects
 [project_timeline_critical_path](project_timeline_critical_path/) | 11.0.1.0.0 |  | Highlight the critical paths of your projects.
 [project_timeline_hr_timesheet](project_timeline_hr_timesheet/) | 11.0.1.0.0 |  | Shows the progress of tasks on the timeline view.
