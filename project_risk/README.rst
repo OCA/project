@@ -101,6 +101,7 @@ Contributors
    -  Ernesto Tejeda
 
 -  `Heliconia Solutions Pvt. Ltd. <https://www.heliconia.io>`__
+-  Abraham Anes <abrahamanes@gmail.com>
 
 Maintainers
 -----------
