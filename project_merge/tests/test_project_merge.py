@@ -4,7 +4,7 @@ from odoo.addons.project.tests.test_project_base import TestProjectCommon
 class TestProjectMerge(TestProjectCommon):
     @classmethod
     def setUpClass(cls):
-        super(TestProjectMerge, cls).setUpClass()
+        super().setUpClass()
         cls.ProjectMerge = cls.env["project.task.merge"]
 
     def test_project_task_merge_create_new_task(self):

@@ -65,7 +65,7 @@ class ProjectTaskMerge(models.TransientModel):
         )
 
     def default_get(self, fields):
-        result = super(ProjectTaskMerge, self).default_get(fields)
+        result = super().default_get(fields)
         selected_tasks = self.env["project.task"].browse(
             self.env.context.get("active_ids", False)
         )
