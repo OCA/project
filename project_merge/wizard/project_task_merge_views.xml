@@ -15,25 +15,21 @@
                             <field name="create_new_task" />
                             <field
                                 name="dst_task_name"
-                                invisible="not create_new_task"
-                                required="create_new_task"
+                                attrs="{'invisible': [('create_new_task', '=', False)], 'required': [('create_new_task', '=', True)]}"
                             />
                             <field
                                 name="dst_project_id"
-                                invisible="not create_new_task"
-                                required="create_new_task"
+                                attrs="{'invisible': [('create_new_task', '=', False)], 'required': [('create_new_task', '=', True)]}"
                             />
                             <field
                                 name="dst_task_id"
-                                invisible="create_new_task"
-                                required="not create_new_task"
+                                attrs="{'invisible': [('create_new_task', '=', True)], 'required': [('create_new_task', '=', False)]}"
                             />
                         </group>
                     </group>
                     <span
                         class="text-muted"
-                    >NB: This will archive the selected tasks (Except the destination task)
-                    </span>
+                    >NB: This will archive the selected tasks (Except the destination task)</span>
                 </sheet>
                 <footer>
                     <button
