@@ -1,3 +1,3 @@
 To use this module, you need to:
 
-#. Merge Project Task
+1.  Merge Project Task
