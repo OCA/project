@@ -1,0 +1,127 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_hr
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2023-10-09 02:52+0000\n"
+"Last-Translator: \"Jan Tapper [Onestein]\" <j.tapper@onestein.nl>\n"
+"Language-Team: none\n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.17\n"
+
+#. module: project_hr
+#: model:ir.model.fields,field_description:project_hr.field_project_task__allowed_hr_category_ids
+msgid "Allowed HR categories"
+msgstr "Toegestane HR-categorieën"
+
+#. module: project_hr
+#: model:ir.model.fields,field_description:project_hr.field_project_task__allowed_assigned_user_ids
+msgid "Allowed users"
+msgstr "Toegestane gebruikers"
+
+#. module: project_hr
+#: model:ir.model,name:project_hr.model_hr_employee
+msgid "Employee"
+msgstr "Medewerker"
+
+#. module: project_hr
+#: model:ir.model.fields,field_description:project_hr.field_project_project__hr_category_ids
+#: model:ir.model.fields,field_description:project_hr.field_project_task__hr_category_ids
+msgid "Employee Categories"
+msgstr "Categorieën van werknemers"
+
+#. module: project_hr
+#: model:ir.model.fields,field_description:project_hr.field_res_users__hr_category_ids
+msgid "HR categories"
+msgstr "HR-categorieën"
+
+#. module: project_hr
+#: model:ir.model.fields,help:project_hr.field_project_project__hr_category_ids
+msgid ""
+"Here you can link the project to several employee categories, that will be "
+"the allowed in tasks."
+msgstr ""
+"Hier kunt u het project koppelen aan verschillende medewerkerscategorieën, "
+"die toegestaan zijn in taken."
+
+#. module: project_hr
+#: model:ir.model.fields,help:project_hr.field_project_task__hr_category_ids
+msgid ""
+"Here you can select the employee category suitable to perform this task, "
+"limiting the selectable users to be assigned to those that belongs to that "
+"category."
+msgstr ""
+"Hier kunt u de werknemerscategorie selecteren die geschikt is om deze taak "
+"uit te voeren, waardoor de selecteerbare gebruikers worden beperkt tot "
+"degenen die tot die categorie behoren."
+
+#. module: project_hr
+#: model:ir.model.fields,field_description:project_hr.field_project_task__employee_ids
+msgid "Linked employees"
+msgstr "Gekoppelde medewerkers"
+
+#. module: project_hr
+#: model:ir.model,name:project_hr.model_project_project
+msgid "Project"
+msgstr ""
+
+#. module: project_hr
+#: model:ir.model,name:project_hr.model_project_task
+msgid "Task"
+msgstr "Taak"
+
+#. module: project_hr
+#: model:ir.model.fields,help:project_hr.field_project_task__allowed_hr_category_ids
+msgid ""
+"Technical field for computing allowed employee categories according "
+"categories at project level."
+msgstr ""
+"Technisch veld voor het berekenen van toegestane werknemerscategorieën "
+"volgens categorieën op projectniveau."
+
+#. module: project_hr
+#: model:ir.model.fields,help:project_hr.field_project_task__allowed_assigned_user_ids
+msgid ""
+"Technical field for computing allowed users according employee category."
+msgstr ""
+"Technisch veld voor computers met toegestane gebruikers volgens "
+"werknemerscategorie."
+
+#. module: project_hr
+#: model:ir.model.fields,help:project_hr.field_res_users__hr_category_ids
+msgid ""
+"Technical field for computing dynamically employee categories linked to the "
+"user in the current company."
+msgstr ""
+"Technisch veld voor het dynamisch berekenen van werknemerscategorieën die "
+"zijn gekoppeld aan de gebruiker in het huidige bedrijf."
+
+#. module: project_hr
+#: model:ir.model,name:project_hr.model_res_users
+msgid "User"
+msgstr "Gebruiker"
+
+#. module: project_hr
+#. odoo-python
+#: code:addons/project_hr/models/project_task.py:0
+#, python-format
+msgid "You can't assign a category that is not allowed at project level."
+msgstr ""
+"U kunt geen categorie toekennen die niet is toegestaan op projectniveau."
+
+#. module: project_hr
+#. odoo-python
+#: code:addons/project_hr/models/project_task.py:0
+#, python-format
+msgid ""
+"You can't assign a user not belonging to the selected employee category."
+msgstr ""
+"U kunt geen gebruiker toewijzen die niet tot de geselecteerde "
+"werknemerscategorie behoort."
