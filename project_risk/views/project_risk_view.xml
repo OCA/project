@@ -19,67 +19,67 @@
                         name="web_ribbon"
                         title="Draft"
                         bg_color="bg-primary"
-                        attrs="{'invisible': [('state', '!=', 'draft')]}"
+                        invisible="state != 'draft'"
                     />
                     <widget
                         name="web_ribbon"
                         title="Trivial"
                         bg_color="bg-info"
-                        attrs="{'invisible': ['|', ('state', '!=', 'active'),('rating', '!=', '2')]}"
+                        invisible="state != 'active' or rating != '2'"
                     />
                     <widget
                         name="web_ribbon"
                         title="Very Low"
                         bg_color="bg-success"
-                        attrs="{'invisible': ['|', ('state', '!=', 'active'),('rating', '!=', '3')]}"
+                        invisible="state != 'active' or rating != '3'"
                     />
                     <widget
                         name="web_ribbon"
                         title="Low"
                         bg_color="bg-success"
-                        attrs="{'invisible': ['|', ('state', '!=', 'active'),('rating', '!=', '4')]}"
+                        invisible="state != 'active' or rating != '4'"
                     />
                     <widget
                         name="web_ribbon"
                         title="Low-Medium"
                         bg_color="bg-warning"
-                        attrs="{'invisible': ['|', ('state', '!=', 'active'),('rating', '!=', '5')]}"
+                        invisible="state != 'active' or rating != '5'"
                     />
                     <widget
                         name="web_ribbon"
                         title="Medium"
                         bg_color="bg-warning"
-                        attrs="{'invisible': ['|', ('state', '!=', 'active'),('rating', '!=', '6')]}"
+                        invisible="state != 'active' or rating != '6'"
                     />
                     <widget
                         name="web_ribbon"
                         title="Medium-High"
                         bg_color="bg-warning"
-                        attrs="{'invisible': ['|', ('state', '!=', 'active'),('rating', '!=', '7')]}"
+                        invisible="state != 'active' or rating != '7'"
                     />
                     <widget
                         name="web_ribbon"
                         title="High"
                         bg_color="bg-danger"
-                        attrs="{'invisible': ['|', ('state', '!=', 'active'),('rating', '!=', '8')]}"
+                        invisible="state != 'active' or rating != '8'"
                     />
                     <widget
                         name="web_ribbon"
                         title="Very High"
                         bg_color="bg-danger"
-                        attrs="{'invisible': ['|', ('state', '!=', 'active'),('rating', '!=', '9')]}"
+                        invisible="state != 'active' or rating != '9'"
                     />
                     <widget
                         name="web_ribbon"
                         title="Critical"
                         bg_color="bg-danger"
-                        attrs="{'invisible': ['|', ('state', '!=', 'active'),('rating', '!=', '10')]}"
+                        invisible="state != 'active' or rating != '10'"
                     />
                     <widget
                         name="web_ribbon"
                         title="Closed"
                         bg_color="bg-primary"
-                        attrs="{'invisible': [('state', '!=', 'closed')]}"
+                        invisible="state != 'closed'"
                     />
                     <div class="oe_title">
                         <label for="name" class="oe_edit_only" />
