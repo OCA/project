@@ -60,7 +60,7 @@ class ProjectTask(models.Model):
     def _compute_allowed_assigned_user_ids(self):
         user_obj = self.env["res.users"]
         for task in self:
-            domain = []
+            domain = [("share", "=", False), ("active", "=", True)]
             if task.hr_category_ids:
                 domain = [
                     (
