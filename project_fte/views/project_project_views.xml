@@ -1,0 +1,23 @@
+<!-- Copyright 2025 APSL-Nagarro Antoni Marroig
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record model="ir.ui.view" id="edit_project_inherit">
+        <field name="name">project.project.form.inherit</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project" />
+        <field name="arch" type="xml">
+            <xpath expr="///page[@name='settings']" position="before">
+                <page name="fte" string="FTE">
+                    <group>
+                        <field name="monthly_fte_ids">
+                            <tree editable="bottom" create="true" delete="true">
+                                <field name="month" />
+                                <field name="total_fte_hours" />
+                            </tree>
+                        </field>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
