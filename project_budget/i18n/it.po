@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-04-17 22:56+0000\n"
+"PO-Revision-Date: 2025-06-21 13:25+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.1\n"
+"X-Generator: Weblate 5.10.4\n"
 
 #. module: project_budget
 #: model:ir.model,name:project_budget.model_crossovered_budget
@@ -42,7 +42,7 @@ msgstr "Conto analitico predefinito"
 #. module: project_budget
 #: model:res.groups,name:project_budget.group_project_budget_manager
 msgid "Manager"
-msgstr "Responsabile"
+msgstr "Supervisore"
 
 #. module: project_budget
 #: model_terms:ir.ui.view,arch_db:project_budget.project_budget_inherit_form
