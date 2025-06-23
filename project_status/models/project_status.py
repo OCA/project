@@ -27,4 +27,4 @@ class ProjectStatus(models.Model):
     def create(self, vals):
         seq = self.env["ir.sequence"].next_by_code("project.status") or 0
         vals["status_sequence"] = seq
-        return super(ProjectStatus, self).create(vals)
+        return super().create(vals)
