@@ -15,6 +15,8 @@ class Project(models.Model):
 
     key = fields.Char(size=10, index=True, copy=False)
 
+    show_key_warning = fields.Boolean(store=False, compute="_compute_show_key_warning")
+
     _sql_constraints = [
         ("project_key_unique", "UNIQUE(key)", "Project key must be unique")
     ]
@@ -218,3 +220,7 @@ class Project(models.Model):
 
             for task in project.task_ids:
                 task.key = project.get_next_task_key()
+
+    @api.depends("key")
+    def _compute_show_key_warning(self):
+        self.show_key_warning = self.key and "-" in self.key
