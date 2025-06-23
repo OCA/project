@@ -73,3 +73,10 @@ class TestProject(TestCommon):
         self.project_1.active = False
         project = self.Project.create({"name": "OCA"})
         self.assertEqual(project.key, "OCA1")
+
+    def test_12_onchange_key(self):
+        project = self.Project.new({"name": "OCA", "key": "TEST"})
+        self.assertFalse(project.show_key_warning)
+
+        project.key = "TEST-1"
+        self.assertTrue(project.show_key_warning)
