@@ -9,8 +9,18 @@
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.edit_project" />
         <field name="arch" type="xml">
+            <field name="company_id" position="before">
+                <div
+                    class="alert alert-warning"
+                    role="alert"
+                    invisible="not show_key_warning"
+                >
+                    Using '-' in project keys is not recommended.
+                </div>
+            </field>
             <field name="partner_id" position="before">
-                <field name="key" required="True" />
+                <field name="key" required="1" />
+                <field name="show_key_warning" invisible="1" />
             </field>
         </field>
     </record>
@@ -42,7 +52,8 @@
         <field name="inherit_id" ref="project.view_task_form2" />
         <field name="arch" type="xml">
             <field name="name" position="before">
-                <field name="key" readonly="True" nolabel="1" class="oe_read_only" />
+                <field name="key" readonly="1" nolabel="1" class="oe_inline" />
+                <span class="oe_inline"> : </span>
             </field>
         </field>
     </record>
