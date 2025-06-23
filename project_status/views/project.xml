@@ -4,8 +4,6 @@
         <field name="name">project.status.tree</field>
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.view_project" />
-        <field name="type">tree</field>
-        <field name="field_parent">child_ids</field>
         <field name="arch" type="xml">
             <field name="user_id" position="after">
                 <field name="project_status" />
@@ -39,6 +37,7 @@
         <field name="arch" type="xml">
             <data>
                 <field name="name" position="after">
+                    <label for="project_status" string="Status" />
                     <field name="project_status" widget="selection" required="1" />
                 </field>
             </data>
@@ -87,13 +86,13 @@
                     domain="[('project_status.is_closed', '=', True)]"
                 />
             </xpath>
-            <filter name="Partner" position="after">
+            <xpath expr="//filter[@name='groupby_stage']" position="before">
                 <filter
                     string="Status"
                     name="project_status"
                     context="{'group_by': 'project_status'}"
                 />
-            </filter>
+            </xpath>
         </field>
     </record>
 </odoo>
