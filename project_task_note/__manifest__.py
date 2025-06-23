@@ -3,7 +3,7 @@
 
 {
     "name": "Project task notes",
-    "version": "18.0.1.0.1",
+    "version": "18.0.1.0.2",
     "category": "Project Management",
     "summary": "Add notes in project tasks",
     "author": "Tecnativa, Odoo Community Association (OCA)",
