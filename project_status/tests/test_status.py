@@ -1,7 +1,7 @@
-from odoo.tests.common import SavepointCase
+from odoo.addons.base.tests.common import BaseCommon
 
 
-class TestProjectStatus(SavepointCase):
+class TestProjectStatus(BaseCommon):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
