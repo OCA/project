@@ -42,8 +42,8 @@ Installation
 
 This module depends on modules found in these repositories:
 
-- `OCA/timesheet <https://github.com/OCA/timesheet>`__
-- `OCA/web <https://github.com/OCA/web>`__
+-  `OCA/timesheet <https://github.com/OCA/timesheet>`__
+-  `OCA/web <https://github.com/OCA/web>`__
 
 Usage
 =====
@@ -112,8 +112,8 @@ that belongs to another user.
 Known issues / Roadmap
 ======================
 
-- Rename to ``hr_timesheet_time_control``.
-- Move to `OCA/timesheet <https://github.com/OCA/timesheet>`__.
+-  Rename to ``hr_timesheet_time_control``.
+-  Move to `OCA/timesheet <https://github.com/OCA/timesheet>`__.
 
 Bug Tracker
 ===========
@@ -136,26 +136,26 @@ Authors
 Contributors
 ------------
 
-- `Tecnativa <https://www.tecnativa.com>`__:
+-  `Tecnativa <https://www.tecnativa.com>`__:
 
-     - Pedro M. Baeza
-     - Antonio Espinosa
-     - Carlos Dauden
-     - Sergio Teruel
-     - Luis M. ontalba
-     - Ernesto Tejeda
-     - Jairo Llopis
-     - Carlos Roca
-     - David Bañón
+      -  Pedro M. Baeza
+      -  Antonio Espinosa
+      -  Carlos Dauden
+      -  Sergio Teruel
+      -  Luis M. ontalba
+      -  Ernesto Tejeda
+      -  Jairo Llopis
+      -  Carlos Roca
+      -  David Bañón
 
-- `Sygel <https://www.sygel.es>`__:
+-  `Sygel <https://www.sygel.es>`__:
 
-     - Valentín Vinagre
-     - Roger Sans
+      -  Valentín Vinagre
+      -  Roger Sans
 
-- `Portailpro <https://www.portailpro.net>`__:
+-  `Portailpro <https://www.portailpro.net>`__:
 
-     - Simon Leblanc
+      -  Simon Leblanc
 
 Maintainers
 -----------
@@ -170,13 +170,13 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
-.. |maintainer-ernestotejeda| image:: https://github.com/ernestotejeda.png?size=40px
-    :target: https://github.com/ernestotejeda
-    :alt: ernestotejeda
+.. |maintainer-victoralmau| image:: https://github.com/victoralmau.png?size=40px
+    :target: https://github.com/victoralmau
+    :alt: victoralmau
 
 Current `maintainer <https://odoo-community.org/page/maintainer-role>`__:
 
-|maintainer-ernestotejeda| 
+|maintainer-victoralmau| 
 
 This module is part of the `OCA/project <https://github.com/OCA/project/tree/18.0/project_timesheet_time_control>`_ project on GitHub.
 

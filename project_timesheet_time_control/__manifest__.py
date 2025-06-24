@@ -9,7 +9,7 @@
     "version": "18.0.1.0.3",
     "category": "Project",
     "author": "Tecnativa," "Odoo Community Association (OCA)",
-    "maintainers": ["ernestotejeda"],
+    "maintainers": ["victoralmau"],
     "website": "https://github.com/OCA/project",
     "depends": [
         "hr_timesheet",
