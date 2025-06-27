@@ -9,7 +9,7 @@
                 <page name="related_taks_page" string="Related Tasks">
                     <field
                         name="related_task_ids"
-                        context="{'default_project_id': project_id, 'default_display_in_project': False, 'default_user_ids': user_ids, 'default_parent_id': id,
+                        context="{'default_project_id': project_id, 'default_display_in_project': False, 'default_user_ids': user_ids,
                                     'default_partner_id': partner_id, 'default_milestone_id': allow_milestones and milestone_id, 'search_default_same_customer': 1}"
                         widget="many2many"
                     >
@@ -26,7 +26,6 @@
                             />
                             <field name="sequence" widget="handle" />
                             <field name="id" optional="hide" />
-                            <field name="parent_id" column_invisible="True" />
                             <field
                                 name="priority"
                                 widget="priority"
