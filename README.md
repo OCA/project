@@ -42,7 +42,7 @@ addon | version | maintainers | summary
 [project_task_name_with_id](project_task_name_with_id/) | 17.0.1.0.1 |  | Project Task Name with ID
 [project_task_note](project_task_note/) | 17.0.1.0.0 | <a href='https://github.com/pilar-vargas'><img src='https://github.com/pilar-vargas.png' width='32' height='32' style='border-radius:50%;' alt='pilar-vargas'/></a> | Add notes in project tasks
 [project_task_pull_request](project_task_pull_request/) | 17.0.1.0.0 |  | Adds a field for a PR URI to project tasks
-[project_task_related](project_task_related/) | 17.0.1.0.2 | <a href='https://github.com/david-banon-tecnativa'><img src='https://github.com/david-banon-tecnativa.png' width='32' height='32' style='border-radius:50%;' alt='david-banon-tecnativa'/></a> | Project Related Task
+[project_task_related](project_task_related/) | 17.0.1.0.3 | <a href='https://github.com/david-banon-tecnativa'><img src='https://github.com/david-banon-tecnativa.png' width='32' height='32' style='border-radius:50%;' alt='david-banon-tecnativa'/></a> | Project Related Task
 [project_task_stage_mgmt](project_task_stage_mgmt/) | 17.0.1.0.0 | <a href='https://github.com/DavidJForgeFlow'><img src='https://github.com/DavidJForgeFlow.png' width='32' height='32' style='border-radius:50%;' alt='DavidJForgeFlow'/></a> | Allows to assign and create task stages on project creation wizard
 [project_task_stage_state](project_task_stage_state/) | 17.0.1.0.0 |  | Restore State attribute removed from Project Stages in 8.0
 [project_task_tag](project_task_tag/) | 17.0.1.0.0 |  | Limit tags available on task
