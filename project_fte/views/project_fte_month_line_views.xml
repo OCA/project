@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="project_fte_month_line_view_tree" model="ir.ui.view">
+        <field name="name">project.fte.month.line.view.tree</field>
+        <field name="model">project.fte.month.line</field>
+        <field name="arch" type="xml">
+            <tree default_order="year, month_int" create="0">
+                <field name="name" />
+                <field name="project_id" />
+                <field name="fte_hours" sum="Total Hours" />
+                <field name="executed_hours" sum="Executed Hours" />
+                <field name="fixed_hours" sum="Fixed Hours" optional="show" />
+                <field
+                    name="monthly_amount"
+                    sum="Total Amount"
+                    groups="project.group_project_manager"
+                />
+                <field name="currency_id" column_invisible="1" />
+                <field
+                    name="executed_percent"
+                    widget="progressbar"
+                    decoration-success="executed_percent &lt; 100"
+                    decoration-warning="executed_percent &gt; 90"
+                    decoration-danger="executed_percent &gt; 100"
+                />
+            </tree>
+        </field>
+    </record>
+
+    <record id="project_fte_month_line_view_form" model="ir.ui.view">
+        <field name="name">project.fte.month.line.view.form</field>
+        <field name="model">project.fte.month.line</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button
+                            class="oe_stat_button"
+                            name="action_view_timesheets"
+                            type="object"
+                            icon="fa-clock-o"
+                            string="Timesheets"
+                        />
+                    </div>
+                    <group>
+                        <group>
+                            <field name="project_id" />
+                            <field name="month" />
+                            <field name="year" />
+                        </group>
+                        <group>
+                            <field
+                                name="fte_hours"
+                                class="oe_subtotal_footer_separator"
+                            />
+                            <field name="currency_id" invisible="1" />
+                            <field name="fixed_hours" />
+                            <field
+                                name="fixed_hours_cost"
+                                groups="project.group_project_manager"
+                            />
+                            <field
+                                name="monthly_amount"
+                                groups="project.group_project_manager"
+                            />
+                        </group>
+                    </group>
+                    <div
+                        class="alert alert-info"
+                        role="alert"
+                        invisible="not fte_line_message"
+                    >
+                        <i class="fa fa-info-circle text-info" title="Info" />
+                        <field
+                            name="fte_line_message"
+                            colspan="4"
+                            nolabel="1"
+                            widget="html"
+                        />
+                    </div>
+                    <notebook>
+                        <page name="profile_distribution" string="Profile Distribution">
+                            <field name="profile_distribution_ids">
+                                <tree editable="bottom">
+                                    <field name="role_id" />
+                                    <field name="profile_hours" />
+                                    <field
+                                        name="profile_hours_percentage"
+                                        widget="percentage"
+                                    />
+                                    <field
+                                        name="profile_price_hour"
+                                        groups="project.group_project_manager"
+                                    />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" />
+                    <field name="message_ids" widget="mail_thread" />
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="project_fte_month_line_action" model="ir.actions.act_window">
+        <field name="name">FTE Month Lines</field>
+        <field name="res_model">project.fte.month.line</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('project_id', '=', active_id)]</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new FTE line for your project.
+            </p>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="project_project_view_form_inherit_fte" model="ir.ui.view">
+        <field name="name">project.project.view.form.inherit.fte</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project" />
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button
+                    name="%(project_fte.project_fte_mass_generator_action)d"
+                    string="Generate FTE Lines"
+                    type="action"
+                    class="oe_highlight"
+                    context="{'default_project_id': active_id}"
+                    groups="project.group_project_manager"
+                    invisible="is_fte_closed"
+                />
+                <button
+                    name="action_close_fte"
+                    type="object"
+                    string="Close FTE"
+                    class="btn btn-secondary"
+                    groups="project.group_project_manager"
+                    invisible="is_fte_closed"
+                />
+                <button
+                    name="action_reopen_fte"
+                    type="object"
+                    string="Reopen FTE"
+                    class="btn btn-secondary"
+                    groups="project.group_project_manager"
+                    invisible="not is_fte_closed"
+                />
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <field name="is_fte_closed" invisible="1" />
+                <page name="fte_lines" string="FTE">
+                    <field
+                        name="fte_month_line_ids"
+                        nolabel="1"
+                        readonly="is_fte_closed"
+                    >
+                        <tree create="0" default_order="year, month_int">
+                            <field name="month" />
+                            <field name="year" />
+                            <field
+                                name="fixed_hours"
+                                sum="Fixed Hours"
+                                optional="show"
+                            />
+                            <field
+                                name="fte_hours"
+                                string="FTE Hours"
+                                sum="FTE Hours"
+                            />
+                            <field name="executed_hours" sum="Executed Hours" />
+                            <field
+                                name="executed_percent"
+                                widget="progressbar"
+                                decoration-success="executed_percent &lt; 100"
+                                decoration-warning="executed_percent &gt; 90"
+                                decoration-danger="executed_percent &gt; 100"
+                            />
+                            <field
+                                name="monthly_amount"
+                                sum="Total Amount"
+                                groups="project.group_project_manager"
+                            />
+                            <field name="currency_id" column_invisible="1" />
+                            <button
+                                class="oe_stat_button"
+                                name="action_view_timesheets"
+                                type="object"
+                                icon="fa-clock-o"
+                                string="Timesheets"
+                            />
+                        </tree>
+                    </field>
+                    <div
+                        style="display: flex; justify-content: flex-end; margin-top: 1em; margin-bottom: 1em;"
+                    >
+                        <button
+                            name="action_copy_last_fte_line"
+                            type="object"
+                            string="Copy last FTE Line"
+                            class="btn btn-secondary"
+                            icon="fa-copy"
+                            invisible="is_fte_closed or not fte_month_line_ids"
+                            groups="project.group_project_manager"
+                        />
+                        <button
+                            name="action_delete_fte"
+                            type="object"
+                            string="Delete FTE"
+                            class="btn btn-secondary"
+                            icon="fa-trash"
+                            invisible="is_fte_closed or not fte_month_line_ids"
+                            groups="project.group_project_manager"
+                        />
+                    </div>
+                    <group groups="project.group_project_manager">
+
+                    <separator string="Amounts Summary" />
+                    <field name="discount" widget="percentage" readonly="1" />
+                    </group>
+                    <group groups="project.group_project_manager">
+                        <field name="currency_id" invisible="1" />
+                        <group>
+                            <separator string="Montly Summary" />
+                            <field
+                                name="monthly_raw_amount"
+                                widget="monetary"
+                                readonly="1"
+                            />
+                            <field
+                                name="monthly_discount_amount"
+                                widget="monetary"
+                                readonly="1"
+                            />
+
+                            <field
+                                name="monthly_amount"
+                                widget="monetary"
+                                readonly="1"
+                            />
+                        </group>
+                        <group>
+                            <separator string="Total Summary" />
+                            <field name="fte_months" />
+                            <field
+                                name="total_raw_amount"
+                                widget="monetary"
+                                readonly="1"
+                            />
+                            <field
+                                name="discount_amount"
+                                widget="monetary"
+                                readonly="1"
+                            />
+                            <field name="total_amount" widget="monetary" readonly="1" />
+                        </group>
+                    </group>
+                </page>
+                <page
+                    string="FTE Month Table"
+                    invisible="not monthly_html_table"
+                    groups="project.group_project_manager"
+                >
+                    <field name="monthly_html_table" />
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="project_project_view_kanban_inherit_fte" model="ir.ui.view">
+        <field name="name">project.project.view.kanban.inherit.fte</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project_kanban" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('o_kanban_manage_view')]" position="inside">
+                 <div role="menuitem" class="o_project_kanban_box">
+                    <a
+                        name="%(project_fte_month_line_action)d"
+                        type="action"
+                        context="{'default_project_id': id, 'search_default_project_id': id}"
+                    >
+                        <span>FTE</span>
+                    </a>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
