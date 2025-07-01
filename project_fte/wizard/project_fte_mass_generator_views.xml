@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="project_fte_mass_generator_form_view" model="ir.ui.view">
+        <field name="name">project.fte.mass.generator.form.view</field>
+        <field name="model">project.fte.mass.generator</field>
+        <field name="arch" type="xml">
+            <form string="Mass Generate FTE Lines">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="project_id" />
+                            <field name="date_from" />
+                            <field name="date_to" />
+                        </group>
+                        <group>
+                            <field name="fte_hours" readonly="0" />
+                            <field name="monthly_hours" />
+                            <field name="fixed_hours" />
+                            <field name="fixed_hours_cost" />
+                        </group>
+                    </group>
+                    <div
+                        class="alert alert-info"
+                        role="alert"
+                        invisible="not fte_message"
+                    >
+                        <i class="fa fa-info-circle text-info" title="Info" />
+                        <field
+                            name="fte_message"
+                            colspan="4"
+                            nolabel="1"
+                            widget="html"
+                        />
+                    </div>
+                    <separator string="Profile Distribution" />
+                    <button
+                        name="compute_profile_distribution_from_milestones"
+                        string="Load from Milestones"
+                        type="object"
+                        class="btn-primary"
+                    />
+                    <field name="profile_distribution_ids">
+                        <tree editable="bottom">
+                            <field name="role_id" />
+                            <field name="profile_hours" />
+                            <field
+                                name="profile_hours_percentage"
+                                widget="percentage"
+                            />
+                            <field name="profile_price_hour" />
+                            <field name="profile_price_amount" widget="monetary" />
+                            <field
+                                name="currency_id"
+                                column_invisible="1"
+                                readonly="1"
+                            />
+                        </tree>
+                    </field>
+                    <label for="discount">Discount</label>
+                    <field name="discount" widget="percentage" />
+                    <group>
+                        <field name="currency_id" invisible="1" />
+                        <group>
+                            <separator string="Montly Summary" />
+                            <field
+                                name="month_raw_amount"
+                                widget="monetary"
+                                readonly="1"
+                            />
+                            <field
+                                name="month_discount_amount"
+                                widget="monetary"
+                                readonly="1"
+                            />
+                            <field name="month_amount" widget="monetary" readonly="1" />
+                        </group>
+                        <group>
+                            <separator string="Total Summary" />
+                            <field name="fte_months" readonly="1" />
+                            <field
+                                name="total_raw_amount"
+                                widget="monetary"
+                                readonly="1"
+                            />
+                            <field
+                                name="discount_amount"
+                                widget="monetary"
+                                readonly="1"
+                            />
+                            <field name="total_amount" widget="monetary" readonly="1" />
+                        </group>
+                    </group>
+                </sheet>
+                <footer>
+                    <button
+                        name="action_generate_lines"
+                        type="object"
+                        string="Generate"
+                        class="oe_highlight"
+                    />
+                    <button
+                        string="Cancel"
+                        class="btn btn-secondary"
+                        special="cancel"
+                    />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="project_fte_mass_generator_action" model="ir.actions.act_window">
+        <field name="name">Generate FTE Lines</field>
+        <field name="res_model">project.fte.mass.generator</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

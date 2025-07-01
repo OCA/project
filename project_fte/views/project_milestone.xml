@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <record id="project_milestone_view_tree_inherit_project_fte" model="ir.ui.view">
+        <field name="name">project.milestone.view.tree.inherit</field>
+        <field name="model">project.milestone</field>
+        <field name="inherit_id" ref="project.project_milestone_view_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='is_reached']" position="after">
+                <field name="project_role_id" />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

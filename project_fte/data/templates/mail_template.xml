@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+
+    <!-- Template: FTE Execution Warning -->
+    <record id="mail_template_fte_execution_warning" model="mail.template">
+        <field name="name">FTE Execution Warning</field>
+        <field name="model_id" ref="project_fte.model_project_fte_month_line" />
+        <field name="subject">⚠ FTE Execution Alert: {{object.project_id.name}}</field>
+        <field name="email_from">{{object.project_id.company_id.email or ''}}</field>
+        <field name="email_to">{{object.project_id.user_id.email}}</field>
+        <field name="lang">{{object.project_id.user_id.lang}}</field>
+        <field name="body_html">
+            <![CDATA[
+            <t t-set="project_id" t-value="object.project_id.id"/>
+            <div style="font-family: Arial, sans-serif; background-color: #f5f6fa; padding: 40px 20px;">
+                <div style="max-width: 600px; margin: auto; background: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+
+                    <h2 style="color: #dc3545;">⚠ Low FTE Execution</h2>
+
+                    <p style="font-size: 15px; color: #333333;">Dear <strong><t t-out="object.project_id.user_id.name or 'User'"/></strong>,</p>
+
+                    <p style="font-size: 15px; color: #333;">
+                        The FTE execution for project <strong><t t-out="object.project_id.name"/></strong>
+                        in <strong><t t-out="object.month"/>/<t t-out="object.year"/></strong> is:
+                    </p>
+
+                    <ul style="font-size: 15px; color: #333; padding-left: 20px; margin: 0 0 10px 0;">
+                        <li><strong><t t-out="round(object.fte_hours, 2)"/></strong> expected hours</li>
+                        <li><strong><t t-out="round(object.executed_hours, 2)"/></strong> hours executed</li>
+                        <li><strong><t t-out="round(object.executed_percent)"/>%</strong> of execution</li>
+                    </ul>
+
+                    <p style="font-size: 15px;">This is below the expected progress. Please review the execution and make sure timesheets are properly filled in.</p>
+
+                    <div style="margin: 30px 0; text-align: center;">
+                        <a t-att-href="'/web#id=%s&model=project.project&view_type=form' % project_id"
+                           style="background-color: #007BFF; color: white; padding: 12px 25px; text-decoration: none; border-radius: 6px; display: inline-block;">
+                            🔍 View Project
+                        </a>
+                    </div>
+
+                    <p style="font-size: 14px; color: #666;">Best regards,<br/>Odoo System</p>
+                </div>
+            </div>
+            ]]>
+        </field>
+        <field name="auto_delete" eval="True" />
+    </record>
+
+    <!-- Template: FTE Execution Overload Warning -->
+    <record id="mail_template_fte_execution_overload" model="mail.template">
+        <field name="name">FTE Execution Overload Warning</field>
+        <field name="model_id" ref="project_fte.model_project_fte_month_line" />
+        <field name="subject">⚠ Excess FTE Execution: {{object.project_id.name}}</field>
+        <field name="email_from">{{object.project_id.company_id.email or ''}}</field>
+        <field name="email_to">{{object.project_id.user_id.email}}</field>
+        <field name="lang">{{object.project_id.user_id.lang}}</field>
+        <field name="body_html">
+            <![CDATA[
+            <t t-set="project_id" t-value="object.project_id.id"/>
+            <div style="font-family: Arial, sans-serif; background-color: #f5f6fa; padding: 40px 20px;">
+                <div style="max-width: 600px; margin: auto; background: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);">
+
+                    <h2 style="color: #c82333;">⚠ Excessive FTE Execution</h2>
+
+                    <p style="font-size: 15px; color: #333333;">Dear <strong><t t-out="object.project_id.user_id.name or 'User'"/></strong>,</p>
+
+                    <p style="font-size: 15px; color: #333;">
+                        The FTE execution for project <strong><t t-out="object.project_id.name"/></strong>
+                        in <strong><t t-out="object.month"/>/<t t-out="object.year"/></strong> is:
+                    </p>
+
+                    <ul style="font-size: 15px; color: #333; padding-left: 20px; margin: 0 0 10px 0;">
+                        <li><strong><t t-out="round(object.fte_hours, 2)"/></strong> expected hours</li>
+                        <li><strong><t t-out="round(object.executed_hours, 2)"/></strong> hours executed</li>
+                        <li><strong><t t-out="round(object.executed_percent)"/>%</strong> of execution</li>
+                    </ul>
+
+                    <p style="font-size: 15px;">This exceeds the expected progress. Please review the timesheets to confirm accurate reporting.</p>
+
+                    <div style="margin: 30px 0; text-align: center;">
+                        <a t-att-href="'/web#id=%s&model=project.project&view_type=form' % project_id"
+                           style="background-color: #007BFF; color: white; padding: 12px 25px; text-decoration: none; border-radius: 6px; display: inline-block;">
+                            🔍 View Project
+                        </a>
+                    </div>
+
+                    <p style="font-size: 14px; color: #666;">Best regards,<br/>Odoo System</p>
+                </div>
+            </div>
+            ]]>
+        </field>
+        <field name="auto_delete" eval="True" />
+    </record>
+
+</odoo>

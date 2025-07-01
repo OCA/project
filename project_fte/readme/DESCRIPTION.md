@@ -1,0 +1,1 @@
+With this module you can manage FTE (Full-Time Equivalent) contracts and evolution in projects.
