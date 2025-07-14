@@ -117,7 +117,7 @@
                 >
                     <field name="done_stock_moves" invisible="1" />
                     <field name="stock_moves_is_locked" invisible="1" />
-                    <field name="unreserve_visible" invisible="1"/>
+                    <field name="unreserve_visible" invisible="1" />
                     <field name="stock_state" invisible="1" />
                     <field name="allow_moves_action_confirm" invisible="1" />
                     <field name="allow_moves_action_assign" invisible="1" />

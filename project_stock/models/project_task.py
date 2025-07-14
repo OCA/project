@@ -125,7 +125,9 @@ class ProjectTask(models.Model):
     def _compute_unreserve_visible(self):
         for item in self:
             already_reserved = item.mapped("move_ids.move_line_ids")
-            any_quantity_done = any([m.state == 'done' and m.quantity > 0 for m in item.move_ids])
+            any_quantity_done = any(
+                [m.state == "done" and m.quantity > 0 for m in item.move_ids]
+            )
             item.unreserve_visible = not any_quantity_done and already_reserved
 
     @api.onchange("picking_type_id")
@@ -134,7 +136,6 @@ class ProjectTask(models.Model):
         self.location_dest_id = self.picking_type_id.default_location_dest_id.id
 
     def _check_tasks_with_pending_moves(self):
-        print(self.mapped("move_ids.state"))
         if self.move_ids and "assigned" in self.mapped("move_ids.state"):
             raise UserError(
                 _("It is not possible to change this with reserved movements in tasks.")
