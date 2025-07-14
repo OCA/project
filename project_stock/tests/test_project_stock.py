@@ -221,6 +221,28 @@ class TestProjectStock(TestProjectStockBase):
         self.test_project_task_process_cancel()
 
     @mute_logger("odoo.models.unlink")
+    def test_project_task_process_unreserve(self):
+        self.task = self.env["project.task"].browse(self.task.id)
+        self.assertEqual(self.move_product_a.state, "draft")
+        self.assertEqual(self.move_product_b.state, "draft")
+        # Change task stage (auto-confirm + auto-assign)
+        self.task.write({"stage_id": self.stage_done.id})
+        self.assertTrue(self.move_product_a.move_line_ids)
+        self.assertEqual(self.move_product_a.move_line_ids.task_id, self.task)
+        self.assertEqual(self.move_product_a.state, "assigned")
+        self.assertEqual(self.move_product_b.state, "assigned")
+        self.assertEqual(self.move_product_a.quantity, 2)
+        self.assertEqual(self.move_product_b.quantity, 1)
+        self.assertTrue(self.task.unreserve_visible)
+        # button_unreserve
+        self.task.button_unreserve()
+        self.assertEqual(self.move_product_a.state, "confirmed")
+        self.assertEqual(self.move_product_b.state, "confirmed")
+        self.assertEqual(self.move_product_a.quantity, 0)
+        self.assertEqual(self.move_product_b.quantity, 0)
+        self.assertFalse(self.task.unreserve_visible)
+
+    @mute_logger("odoo.models.unlink")
     def test_project_task_process_01(self):
         """Product A move cancel + Product B move OK."""
         self.task = self.env["project.task"].browse(self.task.id)
@@ -245,6 +267,10 @@ class TestProjectStock(TestProjectStockBase):
         self.assertEqual(self.move_product_b.state, "assigned")
         self.task.action_done()
         self.assertEqual(self.move_product_b.state, "done")
+
+    @users("basic-user")
+    def test_project_task_process_unreserve_basic_user(self):
+        self.test_project_task_process_unreserve()
 
     def test_project_task_process_02(self):
         self.task.action_confirm()
@@ -290,6 +316,11 @@ class TestProjectStock(TestProjectStockBase):
         self.assertEqual(
             self.project.location_dest_id, new_type.default_location_dest_id
         )
+        self.task.do_unreserve()
+        self.task.write({"picking_type_id": new_type.id})
+        self.task._onchange_picking_type_id()
+        self.assertEqual(self.task.location_id, new_type.default_location_src_id)
+        self.assertEqual(self.task.location_dest_id, new_type.default_location_dest_id)
         move = fields.first(self.task.move_ids)
         self.assertEqual(move.location_id, new_type.default_location_src_id)
 

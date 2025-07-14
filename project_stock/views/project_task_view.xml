@@ -69,6 +69,13 @@
                     groups="stock.group_stock_user"
                 />
                 <button
+                    name="button_unreserve"
+                    type="object"
+                    string="Unreserve"
+                    invisible="stock_state == 'cancel' or not unreserve_visible or not done_stock_moves or not stock_moves_is_locked"
+                    groups="stock.group_stock_user"
+                />
+                <button
                     name="action_cancel"
                     type="object"
                     string="Cancel Materials"
@@ -110,6 +117,7 @@
                 >
                     <field name="done_stock_moves" invisible="1" />
                     <field name="stock_moves_is_locked" invisible="1" />
+                    <field name="unreserve_visible" invisible="1"/>
                     <field name="stock_state" invisible="1" />
                     <field name="allow_moves_action_confirm" invisible="1" />
                     <field name="allow_moves_action_assign" invisible="1" />

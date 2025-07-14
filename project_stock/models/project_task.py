@@ -44,7 +44,9 @@ class ProjectTask(models.Model):
         comodel_name="stock.picking.type",
         string="Operation Type",
         readonly=False,
+        domain="[('company_id', '=', company_id)]",
         index=True,
+        check_company=True,
     )
     location_id = fields.Many2one(
         comodel_name="stock.location",
@@ -61,6 +63,11 @@ class ProjectTask(models.Model):
         check_company=True,
     )
     stock_analytic_date = fields.Date(string="Analytic date")
+    unreserve_visible = fields.Boolean(
+        string="Allowed to Unreserve Inventory",
+        compute="_compute_unreserve_visible",
+        help="Technical field to check when we can unreserve",
+    )
     stock_analytic_account_id = fields.Many2one(
         comodel_name="account.analytic.account",
         string="Move Analytic Account",
@@ -79,7 +86,6 @@ class ProjectTask(models.Model):
     group_id = fields.Many2one(
         comodel_name="procurement.group",
     )
-    company_id = fields.Many2one(default=lambda self: self.env.company)
 
     def _compute_scrap_move_count(self):
         data = self.env["stock.scrap"].read_group(
@@ -115,12 +121,20 @@ class ProjectTask(models.Model):
                         task.stock_state = state
                         break
 
+    @api.depends("move_ids")
+    def _compute_unreserve_visible(self):
+        for item in self:
+            already_reserved = item.mapped("move_ids.move_line_ids")
+            any_quantity_done = any([m.state == 'done' and m.quantity > 0 for m in item.move_ids])
+            item.unreserve_visible = not any_quantity_done and already_reserved
+
     @api.onchange("picking_type_id")
     def _onchange_picking_type_id(self):
         self.location_id = self.picking_type_id.default_location_src_id.id
         self.location_dest_id = self.picking_type_id.default_location_dest_id.id
 
     def _check_tasks_with_pending_moves(self):
+        print(self.mapped("move_ids.state"))
         if self.move_ids and "assigned" in self.mapped("move_ids.state"):
             raise UserError(
                 _("It is not possible to change this with reserved movements in tasks.")
@@ -154,9 +168,6 @@ class ProjectTask(models.Model):
 
     def action_confirm(self):
         self.move_ids._action_confirm()
-        self.move_ids.filtered(
-            lambda move: move.state not in ("draft", "cancel", "done")
-        )._trigger_scheduler()
 
     def action_assign(self):
         self.action_confirm()
@@ -178,6 +189,18 @@ class ProjectTask(models.Model):
             },
             "target": "new",
         }
+
+    def do_unreserve(self):
+        for item in self:
+            item.move_ids.filtered(
+                lambda x: x.state not in ("done", "cancel")
+            )._do_unreserve()
+        return True
+
+    def button_unreserve(self):
+        self.ensure_one()
+        self.do_unreserve()
+        return True
 
     def action_cancel(self):
         """Cancel the stock moves and remove the analytic lines created from
