@@ -3,7 +3,7 @@
 # Copyright 2016-2018 Tecnativa - Pedro M. Baeza
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
-from datetime import datetime
+from datetime import datetime, time
 
 from dateutil.relativedelta import relativedelta
 
@@ -56,6 +56,8 @@ class AccountAnalyticLine(models.Model):
     def _eval_date(self, vals):
         if vals.get("date_time"):
             return dict(vals, date=self._convert_datetime_to_date(vals["date_time"]))
+        elif vals.get("date"):
+            return dict(vals, date_time=datetime.combine(vals["date"], time(9, 0, 0)))
         return vals
 
     def _convert_datetime_to_date(self, datetime_):
