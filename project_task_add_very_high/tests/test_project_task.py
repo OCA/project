@@ -49,7 +49,7 @@ class TestProjectTaskPriority(BaseCommon):
         """Test updating task priority."""
         # Create a task with a default priority
         task = self.project_task_model.create({"name": "Test Task"})
-        self.assertEqual(task.priority, "1", "Default task priority should be '1'")
+        self.assertEqual(task.priority, "0", "Default task priority should be '0'")
 
         # Update the priority to "Very High"
         task.write({"priority": "2"})

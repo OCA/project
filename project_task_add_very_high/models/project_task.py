@@ -10,5 +10,4 @@ class ProjectTask(models.Model):
     priority = fields.Selection(
         selection_add=[("2", "Very High"), ("3", "Most Important")],
         ondelete={"priority": "set default"},
-        default="1",
     )
