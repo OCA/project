@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_project_task_type_form_restriction" model="ir.ui.view">
+        <field name="name">project.task.type.form.restriction</field>
+        <field name="model">project.task.type</field>
+        <field name="inherit_id" ref="project.task_type_edit" />
+        <field name="arch" type="xml">
+        <xpath expr="//form/sheet/group" position="after">
+            <group string="Stage Change Restriction">
+                <field
+                        name="allow_assigned_only"
+                        help="If enabled, only users assigned to the task can move it into this stage."
+                    />
+                <field
+                        name="allow_project_manager"
+                        help="If enabled, only the project manager can move tasks into this stage."
+                    />
+                <field
+                        name="allow_group_ids"
+                        widget="many2many_tags"
+                        help="Members of selected groups can move tasks into this stage."
+                    />
+            </group>
+        </xpath>
+        </field>
+    </record>
+</odoo>
