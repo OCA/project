@@ -1,6 +1,6 @@
 [project]
 name = "odoo-addons-oca-project"
-version = "17.0.20250613.0"
+version = "17.0.20250721.0"
 dependencies = [
     "odoo-addon-project_administrator_restricted_visibility>=17.0dev,<17.1dev",
     "odoo-addon-project_department>=17.0dev,<17.1dev",
@@ -15,6 +15,7 @@ dependencies = [
     "odoo-addon-project_purchase_link>=17.0dev,<17.1dev",
     "odoo-addon-project_role>=17.0dev,<17.1dev",
     "odoo-addon-project_sequence>=17.0dev,<17.1dev",
+    "odoo-addon-project_status>=17.0dev,<17.1dev",
     "odoo-addon-project_task_add_very_high>=17.0dev,<17.1dev",
     "odoo-addon-project_task_code>=17.0dev,<17.1dev",
     "odoo-addon-project_task_default_stage>=17.0dev,<17.1dev",
