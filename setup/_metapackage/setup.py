@@ -52,6 +52,7 @@ setuptools.setup(
         'odoo-addon-project_task_pull_request>=16.0dev,<16.1dev',
         'odoo-addon-project_task_pull_request_state>=16.0dev,<16.1dev',
         'odoo-addon-project_task_recurring_activity>=16.0dev,<16.1dev',
+        'odoo-addon-project_task_stage_change_restriction>=16.0dev,<16.1dev',
         'odoo-addon-project_task_stage_mgmt>=16.0dev,<16.1dev',
         'odoo-addon-project_task_stage_state>=16.0dev,<16.1dev',
         'odoo-addon-project_template>=16.0dev,<16.1dev',
