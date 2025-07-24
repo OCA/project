@@ -57,7 +57,12 @@ class AccountAnalyticLine(models.Model):
         if vals.get("date_time"):
             return dict(vals, date=self._convert_datetime_to_date(vals["date_time"]))
         elif vals.get("date"):
-            return dict(vals, date_time=datetime.combine(vals["date"], time(9, 0, 0)))
+            date_item = (
+                fields.Date.from_string(vals["date"])
+                if isinstance(vals["date"], str)
+                else vals["date"]
+            )
+            return dict(vals, date_time=datetime.combine(date_item, time(9, 0, 0)))
         return vals
 
     def _convert_datetime_to_date(self, datetime_):
