@@ -279,10 +279,22 @@ class TestProjectTimesheetTimeControl(common.TransactionCase):
         line.unit_amount = 500.0
         self.assertFalse(line.date_time_end)
 
-    def test_create_timesheet_analytic_line_with_date(self):
+    def test_create_timesheet_analytic_line_with_date_01(self):
         line = self.env["account.analytic.line"].create(
             {
                 "date": date(2020, 8, 1),
+                "project_id": self.project.id,
+                "account_id": self.analytic_account.id,
+                "name": "Test non-timesheet line",
+                "product_uom_id": self.env.ref("uom.product_uom_gram").id,
+            }
+        )
+        self.assertEqual(line.date_time, datetime(2020, 8, 1, 9, 0, 0))
+
+    def test_create_timesheet_analytic_line_with_date_02(self):
+        line = self.env["account.analytic.line"].create(
+            {
+                "date": "2020-08-01",
                 "project_id": self.project.id,
                 "account_id": self.analytic_account.id,
                 "name": "Test non-timesheet line",
