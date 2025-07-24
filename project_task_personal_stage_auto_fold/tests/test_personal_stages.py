@@ -55,7 +55,7 @@ class TestAutoFoldPersonalStages(TransactionCase):
                 {"sequence": 1, "name": "New"},
                 {"sequence": 2, "name": "In progress"},
                 {"sequence": 3, "name": "Finished", "fold": True},
-                {"sequence": 4, "name": "Canceled", "fold": True},
+                {"sequence": 4, "name": "Cancelled", "fold": True},
             ]
         )
         cls.project_pigs.type_ids = [(6, 0, cls.project_task_stages.ids)]

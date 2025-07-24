@@ -1,4 +1,4 @@
-The task stages "Done" and "Canceled" must match the same name as the
+The task stages "Done" and "Cancelled" must match the same name as the
 equivalent personal stages.
 
-The checkbox “Closing stage” must be checked in the stage configuration.
+The checkbox “Folded in Kanban” must be checked in the stage configuration.
