@@ -6,19 +6,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2025-07-28 09:25+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.10.4\n"
 
 #. module: project_task_stage_change_restriction
 #: model:ir.model.fields,field_description:project_task_stage_change_restriction.field_project_task_type__allow_assigned_only
 #: model:project.task.type,name:project_task_stage_change_restriction.demo_stage_assigned_only
 msgid "Assigned Only"
-msgstr ""
+msgstr "Solo assegnati"
 
 #. module: project_task_stage_change_restriction
 #: model:project.task.type,legend_blocked:project_task_stage_change_restriction.demo_stage_assigned_only
@@ -26,28 +28,32 @@ msgstr ""
 #: model:project.task.type,legend_blocked:project_task_stage_change_restriction.demo_stage_group_only
 #: model:project.task.type,legend_blocked:project_task_stage_change_restriction.demo_stage_pm_only
 msgid "Blocked"
-msgstr ""
+msgstr "Bloccato"
 
 #. module: project_task_stage_change_restriction
 #: model:project.task.type,name:project_task_stage_change_restriction.demo_stage_free
 msgid "Free"
-msgstr ""
+msgstr "Libero"
 
 #. module: project_task_stage_change_restriction
 #: model:ir.model.fields,field_description:project_task_stage_change_restriction.field_project_task_type__allow_group_ids
 msgid "Group Members"
-msgstr ""
+msgstr "Membri del gruppo"
 
 #. module: project_task_stage_change_restriction
 #: model_terms:ir.ui.view,arch_db:project_task_stage_change_restriction.view_project_task_type_form_restriction
 msgid "If enabled, only the project manager can move tasks into this stage."
 msgstr ""
+"Se abilitata, solo il responsabile del progetto può spostare i lavori tra le "
+"fasi."
 
 #. module: project_task_stage_change_restriction
 #: model_terms:ir.ui.view,arch_db:project_task_stage_change_restriction.view_project_task_type_form_restriction
 msgid ""
 "If enabled, only users assigned to the task can move it into this stage."
 msgstr ""
+"Se abilitata, solo gli utenti assegnati al lavoro possono spostarlo in "
+"questa fase."
 
 #. module: project_task_stage_change_restriction
 #: model:project.task.type,legend_normal:project_task_stage_change_restriction.demo_stage_assigned_only
@@ -55,27 +61,28 @@ msgstr ""
 #: model:project.task.type,legend_normal:project_task_stage_change_restriction.demo_stage_group_only
 #: model:project.task.type,legend_normal:project_task_stage_change_restriction.demo_stage_pm_only
 msgid "In Progress"
-msgstr ""
+msgstr "In lavoro"
 
 #. module: project_task_stage_change_restriction
 #: model_terms:ir.ui.view,arch_db:project_task_stage_change_restriction.view_project_task_type_form_restriction
 msgid "Members of selected groups can move tasks into this stage."
 msgstr ""
+"I membri dei gruppi selezionati possono spostare i lavori in questa fase."
 
 #. module: project_task_stage_change_restriction
 #: model:ir.model.fields,field_description:project_task_stage_change_restriction.field_project_task_type__allow_project_manager
 msgid "Project Manager"
-msgstr ""
+msgstr "Responsabile progetto"
 
 #. module: project_task_stage_change_restriction
 #: model:project.task.type,name:project_task_stage_change_restriction.demo_stage_pm_only
 msgid "Project Manager Only"
-msgstr ""
+msgstr "Solo responsabile progetto"
 
 #. module: project_task_stage_change_restriction
 #: model:project.task.type,name:project_task_stage_change_restriction.demo_stage_group_only
 msgid "Project Users Only"
-msgstr ""
+msgstr "Solo utenti progetto"
 
 #. module: project_task_stage_change_restriction
 #: model:project.task.type,legend_done:project_task_stage_change_restriction.demo_stage_assigned_only
@@ -83,12 +90,12 @@ msgstr ""
 #: model:project.task.type,legend_done:project_task_stage_change_restriction.demo_stage_group_only
 #: model:project.task.type,legend_done:project_task_stage_change_restriction.demo_stage_pm_only
 msgid "Ready"
-msgstr ""
+msgstr "Pronto"
 
 #. module: project_task_stage_change_restriction
 #: model:project.project,name:project_task_stage_change_restriction.demo_project_restricted
 msgid "Restricted Demo Project"
-msgstr ""
+msgstr "Progetto demo limitato"
 
 #. module: project_task_stage_change_restriction
 #. odoo-python
@@ -98,23 +105,25 @@ msgid ""
 "Sorry, you are not allowed to move the task '%(task)s' into the stage "
 "'%(stage)s'."
 msgstr ""
+"Non si è abilitati allo spostamento del lavoro '%(task)s' alla fase "
+"'%(stage)s'."
 
 #. module: project_task_stage_change_restriction
 #: model_terms:ir.ui.view,arch_db:project_task_stage_change_restriction.view_project_task_type_form_restriction
 msgid "Stage Change Restriction"
-msgstr ""
+msgstr "Limitazione modifica fase"
 
 #. module: project_task_stage_change_restriction
 #: model:ir.model,name:project_task_stage_change_restriction.model_project_task
 msgid "Task"
-msgstr ""
+msgstr "Lavoro"
 
 #. module: project_task_stage_change_restriction
 #: model:ir.model,name:project_task_stage_change_restriction.model_project_task_type
 msgid "Task Stage"
-msgstr ""
+msgstr "Fase lavoro"
 
 #. module: project_task_stage_change_restriction
 #: model:project.project,label_tasks:project_task_stage_change_restriction.demo_project_restricted
 msgid "Tasks"
-msgstr ""
+msgstr "Lavori"
