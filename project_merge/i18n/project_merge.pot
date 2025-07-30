@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 16.0\n"
+"Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -16,8 +16,8 @@ msgstr ""
 #. module: project_merge
 #: model_terms:ir.ui.view,arch_db:project_merge.project_task_merge_view_form
 msgid ""
-"<span class=\"text-muted\">NB: This will archive the selected tasks (Except "
-"the destination task)</span>"
+"<span class=\"text-muted\">NB: This will archive the selected tasks (Except the destination task)\n"
+"                    </span>"
 msgstr ""
 
 #. module: project_merge
@@ -58,11 +58,6 @@ msgstr ""
 #. module: project_merge
 #: model:ir.model.fields,field_description:project_merge.field_project_task_merge__id
 msgid "ID"
-msgstr ""
-
-#. module: project_merge
-#: model:ir.model.fields,field_description:project_merge.field_project_task_merge____last_update
-msgid "Last Modified on"
 msgstr ""
 
 #. module: project_merge
