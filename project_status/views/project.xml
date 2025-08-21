@@ -53,7 +53,10 @@
                 <xpath expr="/kanban" position="attributes">
                     <attribute name="default_group_by">project_status</attribute>
                 </xpath>
-                <xpath expr="//div[hasclass('o_primary')]" position="after">
+                <xpath
+                    expr="//div[hasclass('o_project_kanban_main')]"
+                    position="inside"
+                >
                     <div>
                         <t t-if="record.project_status.raw_value">
                             <span class="o_label">(</span>

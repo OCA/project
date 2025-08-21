@@ -23,8 +23,9 @@ class ProjectStatus(models.Model):
     )
     fold = fields.Boolean(string="Folded")
 
-    @api.model
-    def create(self, vals):
-        seq = self.env["ir.sequence"].next_by_code("project.status") or 0
-        vals["status_sequence"] = seq
-        return super().create(vals)
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            seq = self.env["ir.sequence"].next_by_code("project.status") or 0
+            vals["status_sequence"] = seq
+        return super().create(vals_list)
