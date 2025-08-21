@@ -23,12 +23,14 @@ class SaleOrder(models.Model):
 
     def _get_order_project_data(self):
         self.ensure_one()
-        if not self.analytic_account_id:
-            self._create_analytic_account()
         return dict(
             partner_id=self.partner_id.id,
             sale_order_id=self.id,
-            analytic_account_id=self.analytic_account_id.id,
+            account_id=self.env.context.get("project_account_id")
+            or self.project_account_id.id
+            or self.env["account.analytic.account"]
+            .create(self._prepare_analytic_account_data())
+            .id,
             name=self.name,
         )
 
@@ -48,11 +50,10 @@ class SaleOrder(models.Model):
             )
             created_projects |= new_project
             order.project_id = new_project
-            new_project.analytic_account_id.partner_id = order.partner_id
-            order._onchange_project_id()
-            new_project.sudo().message_post_with_view(
+            new_project.account_id.partner_id = order.partner_id
+            new_project.sudo().message_post_with_source(
                 "mail.message_origin_link",
-                values={"self": order.project_id, "origin": order},
-                subtype_id=self.env.ref("mail.mt_note").id,
+                render_values={"self": new_project, "origin": order},
+                subtype_xmlid="mail.mt_note",
             )
         return created_projects

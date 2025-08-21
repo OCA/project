@@ -8,5 +8,6 @@
     select project created in step 2.
 7.  Go to Sales \> Quotation \> Quotation.
 8.  Create quotation with products created in step 6.
+9.  Go the *Other Info* tab \> Project and select a project
 9.  Confirm the quotation. The tasks from project templates in products
     will be created in same project.

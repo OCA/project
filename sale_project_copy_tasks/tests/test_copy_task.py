@@ -11,7 +11,6 @@ class TestCopyTasks(TransactionCase):
         cls.plan = cls.env["account.analytic.plan"].create(
             {
                 "name": "Projects Plan",
-                "company_id": False,
             }
         )
         cls.analytic_account_sale = cls.env["account.analytic.account"].create(
@@ -19,6 +18,7 @@ class TestCopyTasks(TransactionCase):
                 "name": "Project for selling timesheet - AA",
                 "code": "AA-2030",
                 "plan_id": cls.plan.id,
+                "company_id": False,
             }
         )
 
@@ -114,13 +114,8 @@ class TestCopyTasks(TransactionCase):
             "SO1L1: Sale project different from line",
         )
         self.assertTrue(
-            sale_order_1.project_id.analytic_account_id,
+            sale_order_1.project_id.account_id,
             "SO1: Analytic account not created",
-        )
-        self.assertEqual(
-            sale_order_1.project_id.analytic_account_id,
-            sale_order_1.analytic_account_id,
-            "SO1: Different analytic accounts",
         )
         self.assertEqual(
             len(sale_order_1.project_id.task_ids),
@@ -160,7 +155,6 @@ class TestCopyTasks(TransactionCase):
                 "project_id": sale_order_1.project_id.id,  # Specify project
             }
         )
-        sale_order_2._onchange_project_id()
         so_2_line_1_copy_tasks = sol_model.create(
             {
                 "product_id": self.product_order_service1.id,

@@ -11,4 +11,5 @@ class ProductTemplate(models.Model):
         selection_add=[
             ("copy_tasks_in_project", "Copy tasks into sale order's project"),
         ],
+        ondelete={"copy_tasks_in_project": "set default"},
     )

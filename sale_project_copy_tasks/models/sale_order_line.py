@@ -1,11 +1,23 @@
 # Copyright 2023 Moduon Team S.L.
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0)
 
-from odoo import models
+from odoo import api, models
 
 
 class SaleOrderLine(models.Model):
     _inherit = "sale.order.line"
+
+    @api.model
+    def _prepare_task_order_values(self, sol_to_copy_task, order):
+        """Prepare values for task order creation/update"""
+        return {
+            "project_id": sol_to_copy_task.project_id.id,
+            "sale_line_id": sol_to_copy_task.id,
+            "sale_order_id": order.id,
+            "partner_id": order.partner_id.id,
+            "date_deadline": order.commitment_date,
+            "active": True,
+        }
 
     def _timesheet_service_generation(self):
         """Adds task inheritance from project_templates
@@ -14,7 +26,6 @@ class SaleOrderLine(models.Model):
         from product project_template to order project.
         """
         so_model = self.env["sale.order"]
-        mt_note = self.env.ref("mail.mt_note")
         # Check lines that need to inherit project template tasks
         sol_copy_tasks = self.filtered(
             lambda sol: sol.is_service
@@ -50,26 +61,18 @@ class SaleOrderLine(models.Model):
             sol_to_copy_task.project_id = target_project
             # Notify order on project
             if target_project not in new_projects and order not in orders_linked:
-                target_project.sudo().message_post_with_view(
+                target_project.sudo().message_post_with_source(
                     "mail.message_origin_link",
-                    values={"self": target_project, "origin": order},
-                    subtype_id=mt_note.id,
+                    render_values={"self": target_project, "origin": order},
+                    subtype_xmlid="mail.mt_note",
                 )
                 orders_linked |= order
-            default_task_data = {
-                "project_id": sol_to_copy_task.project_id.id,
-                "sale_line_id": sol_to_copy_task.id,
-                "sale_order_id": order.id,
-                "partner_id": order.partner_id.id,
-                "email_from": order.partner_id.email,
-                "date_deadline": order.commitment_date,
-                "active": True,
-            }
+            default_task_data = self._prepare_task_order_values(sol_to_copy_task, order)
             tasks = sol_to_copy_task.product_id.project_template_id.with_context(
                 active_test=False
             ).tasks
             for task in tasks:
-                task.copy(
+                task.with_context(copy_project=True).copy(
                     dict(
                         default_task_data,
                         name=task.name,

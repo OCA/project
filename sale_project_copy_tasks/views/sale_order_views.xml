@@ -17,13 +17,10 @@
                 <attribute name="options">{}</attribute>
                 <attribute
                     name="context"
-                >{'default_partner_id': partner_id, 'default_sale_order_id': active_id}</attribute>
-                <attribute
-                    name="attrs"
-                >{'invisible': [('visible_project', '=', False)]}</attribute>
+                >{'default_partner_id': partner_id, 'default_sale_order_id': id}</attribute>
+                <attribute name="invisible">not visible_project</attribute>
             </xpath>
-
-            <xpath expr="//field[@name='order_line']//tree" position="inside">
+            <xpath expr="//field[@name='order_line']//list" position="inside">
                 <field string="Project" name="project_id" optional="hidden" />
             </xpath>
         </field>
