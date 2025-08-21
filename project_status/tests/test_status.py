@@ -24,7 +24,5 @@ class TestProjectStatus(BaseCommon):
     def test_01_project_status(self):
         project = self._create_project()
         self.assertEqual(project.project_status.id, self.status.id)
-        statuses = project._read_group_status_ids(
-            project.project_status, [], "status_sequence"
-        )
+        statuses = project._read_group_status_ids(project.project_status, [])
         self.assertTrue(len(statuses) >= 1)
