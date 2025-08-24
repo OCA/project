@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!--
+        Copyright 2025 NICO SOLUTIONS - ENGINEERING & IT
+        License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
+    -->
+    <record id="project_edit_project_inherit_default_user" model="ir.ui.view">
+        <field name="name">project.edit.project.inherit.default.user</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project" />
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='settings']" position="after">
+                <page name="default_users" string="Default users">
+                    <group>
+                        <group>
+                            <field name="default_user_ids" widget="many2many_tags" />
+                            <field name="project_task_assignment_mode" />
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
