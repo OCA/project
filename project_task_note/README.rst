@@ -79,13 +79,13 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
-.. |maintainer-pilar-vargas| image:: https://github.com/pilar-vargas.png?size=40px
-    :target: https://github.com/pilar-vargas
-    :alt: pilar-vargas
+.. |maintainer-pilarvargas-tecnativa| image:: https://github.com/pilarvargas-tecnativa.png?size=40px
+    :target: https://github.com/pilarvargas-tecnativa
+    :alt: pilarvargas-tecnativa
 
 Current `maintainer <https://odoo-community.org/page/maintainer-role>`__:
 
-|maintainer-pilar-vargas| 
+|maintainer-pilarvargas-tecnativa| 
 
 This module is part of the `OCA/project <https://github.com/OCA/project/tree/17.0/project_task_note>`_ project on GitHub.
 
