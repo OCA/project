@@ -2,7 +2,7 @@
 # Copyright 2019 Brainbean Apps (https://brainbeanapps.com)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo import _, api, exceptions, fields, models
+from odoo import api, exceptions, fields, models
 
 
 class ProjectTask(models.Model):
@@ -17,27 +17,14 @@ class ProjectTask(models.Model):
     hr_category_ids = fields.Many2many(
         comodel_name="hr.employee.category",
         string="Employee Categories",
-        domain="[('id', 'in', allowed_hr_category_ids)]",
+        domain="domain_hr_category_ids",
         help="Here you can select the employee category suitable to perform "
         "this task, limiting the selectable users to be assigned to "
         "those that belongs to that category.",
     )
-    allowed_hr_category_ids = fields.Many2many(
-        comodel_name="hr.employee.category",
-        string="Allowed HR categories",
-        compute="_compute_allowed_hr_category_ids",
-        help="Technical field for computing allowed employee categories "
-        "according categories at project level.",
-    )
-    # This field could have been named allowed_user_ids but a field with
-    # that name already exists in the Odoo core 'project' module
-    allowed_assigned_user_ids = fields.Many2many(
-        comodel_name="res.users",
-        string="Allowed users",
-        compute="_compute_allowed_assigned_user_ids",
-        help="Technical field for computing allowed users according employee "
-        "category.",
-    )
+    domain_hr_category_ids = fields.Binary(compute="_compute_domain_hr_category_ids")
+    user_ids = fields.Many2many(domain="domain_user_ids")
+    domain_user_ids = fields.Binary(compute="_compute_domain_user_ids")
 
     @api.depends("user_ids", "company_id")
     def _compute_employee_ids(self):
@@ -48,17 +35,15 @@ class ProjectTask(models.Model):
             )
 
     @api.depends("project_id", "project_id.hr_category_ids")
-    def _compute_allowed_hr_category_ids(self):
-        hr_category_obj = self.env["hr.employee.category"]
+    def _compute_domain_hr_category_ids(self):
         for task in self:
+            domain = []
             if task.project_id.hr_category_ids:
-                task.allowed_hr_category_ids = task.project_id.hr_category_ids
-            else:
-                task.allowed_hr_category_ids = hr_category_obj.search([])
+                domain = [("id", "in", task.project_id.hr_category_ids.ids)]
+            task.domain_hr_category_ids = domain
 
     @api.depends("hr_category_ids", "company_id")
-    def _compute_allowed_assigned_user_ids(self):
-        user_obj = self.env["res.users"]
+    def _compute_domain_user_ids(self):
         for task in self:
             domain = [("share", "=", False), ("active", "=", True)]
             if task.hr_category_ids:
@@ -70,7 +55,7 @@ class ProjectTask(models.Model):
                     ),
                     ("employee_ids.category_ids", "in", task.hr_category_ids.ids),
                 ]
-            task.allowed_assigned_user_ids = user_obj.search(domain)
+            task.domain_user_ids = domain
 
     @api.constrains("hr_category_ids", "user_ids")
     def _check_employee_category_user(self):
@@ -80,7 +65,7 @@ class ProjectTask(models.Model):
                 x not in task.employee_ids.category_ids for x in task.hr_category_ids
             ):
                 raise exceptions.ValidationError(
-                    _(
+                    self.env._(
                         "You can't assign a user not belonging to the selected "
                         "employee category."
                     )
@@ -93,7 +78,7 @@ class ProjectTask(models.Model):
                 task.hr_category_ids - task.project_id.hr_category_ids
             ):
                 raise exceptions.ValidationError(
-                    _(
+                    self.env._(
                         "You can't assign a category that is not allowed at "
                         "project level."
                     )

@@ -125,9 +125,3 @@ msgid ""
 msgstr ""
 "No pot assignar un/a usuari/ària que no pertany a la categoria d'empleat/ada "
 "seleccionada."
-
-#~ msgid "Linked employee"
-#~ msgstr "Empleat/da relacionat/da"
-
-#~ msgid "Users"
-#~ msgstr "Usuaris/àries"

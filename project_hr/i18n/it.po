@@ -124,18 +124,3 @@ msgid ""
 msgstr ""
 "Impossibile assegnare un utente che non appartiene alla categoria dipendente "
 "selezionata."
-
-#~ msgid "Display Name"
-#~ msgstr "Nome visualizzato"
-
-#~ msgid "ID"
-#~ msgstr "ID"
-
-#~ msgid "Last Modified on"
-#~ msgstr "Ultima modifica il"
-
-#~ msgid "Linked employee"
-#~ msgstr "Dipendente collegato"
-
-#~ msgid "Users"
-#~ msgstr "Utenti"
