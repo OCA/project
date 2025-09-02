@@ -1,7 +1,3 @@
-.. image:: https://odoo-community.org/readme-banner-image
-   :target: https://odoo-community.org/get-involved?utm_source=readme
-   :alt: Odoo Community Association
-
 ==========
 Project HR
 ==========
@@ -17,17 +13,17 @@ Project HR
 .. |badge1| image:: https://img.shields.io/badge/maturity-Production%2FStable-green.png
     :target: https://odoo-community.org/page/development-status
     :alt: Production/Stable
-.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fproject-lightgray.png?logo=github
-    :target: https://github.com/OCA/project/tree/17.0/project_hr
+    :target: https://github.com/OCA/project/tree/18.0/project_hr
     :alt: OCA/project
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/project-17-0/project-17-0-project_hr
+    :target: https://translation.odoo-community.org/projects/project-18-0/project-18-0-project_hr
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/project&target_branch=17.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/project&target_branch=18.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
@@ -35,20 +31,20 @@ Project HR
 This is a technical module for adding some HR information to projects
 and provide technical fields with HR information:
 
-- Employee categories at project and task level.
-- Employee linked to the user assigned to a task.
-- Employee categories at user level.
+-  Employee categories at project and task level.
+-  Employee linked to the user assigned to a task.
+-  Employee categories at user level.
 
 These fields can be used later for extra features like task scheduling
 or security restrictions.
 
 It also provides some facilities on project management:
 
-- Limit selection of assigned users according selected employee category
-  at task level.
-- Limit selection of employee categories at task level depending on the
-  selected categories at project level. All are shown if no categories
-  at project level.
+-  Limit selection of assigned users according selected employee
+   category at task level.
+-  Limit selection of employee categories at task level depending on the
+   selected categories at project level. All are shown if no categories
+   at project level.
 
 **Table of contents**
 
@@ -86,9 +82,9 @@ Usage
 Known issues / Roadmap
 ======================
 
-- Limit project and task visibility according employee categories
-  through overriding security methods (as through record rules is not
-  possible without modifying existing ones).
+-  Limit project and task visibility according employee categories
+   through overriding security methods (as through record rules is not
+   possible without modifying existing ones).
 
 Bug Tracker
 ===========
@@ -96,7 +92,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/project/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/project/issues/new?body=module:%20project_hr%0Aversion:%2017.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/project/issues/new?body=module:%20project_hr%0Aversion:%2018.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -111,19 +107,19 @@ Authors
 Contributors
 ------------
 
-- `Tecnativa <https://www.tecnativa.com>`__:
+-  `Tecnativa <https://www.tecnativa.com>`__:
 
-  - Pedro M. Baeza
-  - Victor M.M. Torres
-  - Ernesto Tejeda
-  - Pilar Vargas
+   -  Pedro M. Baeza
+   -  Victor M.M. Torres
+   -  Ernesto Tejeda
+   -  Pilar Vargas
 
-- `CorporateHub <https://corporatehub.eu/>`__
+-  `CorporateHub <https://corporatehub.eu/>`__
 
-  - Alexey Pelykh <alexey.pelykh@corphub.eu>
+   -  Alexey Pelykh <alexey.pelykh@corphub.eu>
 
-- Alfadil Tabar <alfadil.tabar@gmail.com>
-- Abraham Anes <abrahamanes@gmail.com>
+-  Alfadil Tabar <alfadil.tabar@gmail.com>
+-  Abraham Anes <abrahamanes@gmail.com>
 
 Maintainers
 -----------
@@ -146,6 +142,6 @@ Current `maintainer <https://odoo-community.org/page/maintainer-role>`__:
 
 |maintainer-pedrobaeza| 
 
-This module is part of the `OCA/project <https://github.com/OCA/project/tree/17.0/project_hr>`_ project on GitHub.
+This module is part of the `OCA/project <https://github.com/OCA/project/tree/18.0/project_hr>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.

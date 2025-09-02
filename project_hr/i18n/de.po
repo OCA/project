@@ -125,9 +125,3 @@ msgid ""
 msgstr ""
 "Der Aufgabe darf kein Benutzer zugewiesen werden, der nicht zur gewählten "
 "Mitarbeiter-Kategorie gehört."
-
-#~ msgid "Linked employee"
-#~ msgstr "Zugehöriger Mitarbeiter"
-
-#~ msgid "Users"
-#~ msgstr "Benutzer"

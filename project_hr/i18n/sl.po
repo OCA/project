@@ -124,9 +124,3 @@ msgid ""
 "You can't assign a user not belonging to the selected employee category."
 msgstr ""
 "Ne morete dodeliti uporabnika, ki ne spada v izbrano kadrovsko kategorijo."
-
-#~ msgid "Linked employee"
-#~ msgstr "Povezani kader"
-
-#~ msgid "Users"
-#~ msgstr "Uporabniki"

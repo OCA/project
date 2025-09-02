@@ -126,9 +126,3 @@ msgid ""
 msgstr ""
 "No puede asignar un usuario que no pertenezca a la categoría de empleado "
 "seleccionada."
-
-#~ msgid "Linked employee"
-#~ msgstr "Empleado relacionado"
-
-#~ msgid "Users"
-#~ msgstr "Usuarios"
