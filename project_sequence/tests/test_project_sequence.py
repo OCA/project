@@ -223,3 +223,33 @@ class TestProjectSequence(TransactionCase):
         self.assertIn((proj2.id, "23-00012 - two"), results)
         self.assertNotIn((proj1.id, "23-00011 - one"), results)
         self.assertNotIn((proj3.id, "23-00013 - three"), results)
+
+    def test_name_search_by_key(self):
+        """Allow searching by key field."""
+        proj1 = self.env["project.project"].create({"name": "one", "key": "KEY1"})
+        self.assertEqual(proj1.sequence_code, "23-00011")
+        proj2 = self.env["project.project"].create({"name": "two", "key": "KEY2"})
+        self.assertEqual(proj2.sequence_code, "23-00012")
+        proj3 = self.env["project.project"].create({"name": "three", "key": "KEY3"})
+        self.assertEqual(proj3.sequence_code, "23-00013")
+
+        # Search by key
+        results = self.env["project.project"].name_search("KEY2")
+        self.assertIn((proj2.id, "23-00012 - two"), results)
+        self.assertNotIn((proj1.id, "23-00011 - one"), results)
+        self.assertNotIn((proj3.id, "23-00013 - three"), results)
+
+    def test_name_search_by_id(self):
+        """Allow searching by project ID when input is a digit."""
+        proj1 = self.env["project.project"].create({"name": "one"})
+        self.assertEqual(proj1.sequence_code, "23-00011")
+        proj2 = self.env["project.project"].create({"name": "two"})
+        self.assertEqual(proj2.sequence_code, "23-00012")
+        proj3 = self.env["project.project"].create({"name": "three"})
+        self.assertEqual(proj3.sequence_code, "23-00013")
+
+        # Search by project ID
+        results = self.env["project.project"].name_search(str(proj2.id))
+        self.assertIn((proj2.id, "23-00012 - two"), results)
+        self.assertNotIn((proj1.id, "23-00011 - one"), results)
+        self.assertNotIn((proj3.id, "23-00013 - three"), results)
