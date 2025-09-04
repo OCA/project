@@ -2,12 +2,34 @@
 # License LGPLv3.0 or later (https://www.gnu.org/licenses/lgpl-3.0.en.html).
 
 from odoo import _, api, fields, models
+from odoo.osv import expression
 from odoo.tools import config
 
 
 class Project(models.Model):
     _inherit = "project.project"
-    _rec_names_search = ["key", "name", "id"]
+    _rec_names_search = ["key", "name"]
+
+    @api.model
+    def _name_search(
+        self, name="", args=None, operator="ilike", limit=100, name_get_uid=None
+    ):
+        res = super()._name_search(name, args, operator, limit, name_get_uid)
+
+        if (
+            name
+            and name.isdigit()
+            and operator not in expression.NEGATIVE_TERM_OPERATORS
+        ):
+            args = list(args or [])
+            args.insert(0, ("id", "=", int(name)))
+            res_id = super()._name_search("", args, "ilike", limit, name_get_uid)
+            res = list(res)
+            res_ids = set(res)
+            res_id = [x for x in res_id if x not in res_ids]
+            res = (res_id + res)[:limit]
+
+        return res
 
     task_key_sequence_id = fields.Many2one(
         comodel_name="ir.sequence", string="Key Sequence", ondelete="restrict"
