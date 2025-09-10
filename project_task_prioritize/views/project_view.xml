@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    Copyright 2025 ForgeFlow S.L. (https://www.forgeflow.com)
+    License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+    <record model="ir.ui.view" id="leave_task_form_view">
+        <field name="name">project.task.form.view - prioritize</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2" />
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button
+                    name="%(project_task_prioritize.action_project_task_prioritizer)d"
+                    type="action"
+                    class="oe_highlight"
+                    string="Set Task Priority"
+                    invisible="state in ['cancel', 'done']"
+                />
+            </div>
+            <field name="user_ids" position="after">
+                <field name="prioritizer_value" />
+                <field name="allocated_hours" />
+            </field>
+        </field>
+    </record>
+    <record id="project_task_view_tree_main_base" model="ir.ui.view">
+        <field name="name">project.task.tree - prioritizer</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.project_task_view_tree_main_base" />
+        <field name="arch" type="xml">
+            <list position="inside">
+                <header>
+                    <button
+                        name="%(project_task_prioritize.action_project_task_prioritizer)d"
+                        type="action"
+                        class="oe_highlight"
+                        string="Set Task Priority"
+                    />
+                </header>
+            </list>
+            <field name="user_ids" position="after">
+                <field name="prioritizer_value" />
+            </field>
+        </field>
+    </record>
+
+    <record id="edit_project" model="ir.ui.view">
+        <field name="name">project.project.form - prioritize</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project" />
+        <field name="arch" type="xml">
+            <page name="description" position="after">
+                <page name="prioritizer" string="Prioritizer Configuration">
+                    <group>
+                        <field
+                            name="prioritizer_category_ids"
+                            widget="many2many_tags"
+                        />
+                        <field name="prioritizer_formula" widget="text_area" />
+                    </group>
+                </page>
+            </page>
+        </field>
+    </record>
+</odoo>

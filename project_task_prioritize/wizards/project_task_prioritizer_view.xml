@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    Copyright 2025 ForgeFlow S.L. (https://www.forgeflow.com)
+    License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+    <record id="project_task_prioritizer_form" model="ir.ui.view">
+        <field name="name">project.task.prioritizer.form</field>
+        <field name="model">project.task.prioritizer</field>
+        <field name="arch" type="xml">
+            <form>
+                <group name="serial_matrix" string="Task Prioritize Matrix">
+                    <p class="oe_grey" colspan="2">Fill each cell with the option</p>
+                    <br />
+                    <field
+                        name="line_ids"
+                        nolabel="1"
+                        widget="x2many_2d_matrix"
+                        field_x_axis="prioritizer_category_name"
+                        field_y_axis="task_name"
+                        field_value="prioritizer_category_line_id"
+                        colspan="2"
+                    >
+                        <list nolabel="1" limit="1000">
+                            <field name="task_name" />
+                            <field name="prioritizer_category_name" />
+                            <field
+                                name="prioritizer_category_line_id"
+                                options='{"no_create": True, "no_open": True}'
+                                domain="[('prioritizer_category_id','in', prioritizer_category_id)]"
+                            />
+                            <field name="task_id" invisible="1" />
+                            <field name="prioritizer_category_id" invisible="1" />
+                        </list>
+                    </field>
+                </group>
+                <footer>
+                    <button
+                        name="button_validate"
+                        string="Validate"
+                        type="object"
+                        class="oe_highlight"
+                    />
+                    <button string="Cancel" class="oe_link" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_project_task_prioritizer" model="ir.actions.act_window">
+        <field name="name">Task Prioritize Wizard</field>
+        <field name="res_model">project.task.prioritizer</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="view_id" ref="project_task_prioritizer_form" />
+    </record>
+</odoo>

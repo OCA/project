@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    Copyright 2025 ForgeFlow S.L. (https://www.forgeflow.com)
+    License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+-->
+<odoo>
+    <record id="prioritizer_category_list" model="ir.ui.view">
+        <field name="name">prioritizer.category.list</field>
+        <field name="model">prioritizer.category</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+                <field name="prioritizer_category_line_ids" widget="many2many_tags" />
+            </list>
+        </field>
+    </record>
+    <record id="prioritizer_category_line_list" model="ir.ui.view">
+        <field name="name">prioritizer.category.line.list</field>
+        <field name="model">prioritizer.category.line</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="prioritizer_category_id" />
+                <field name="name" />
+                <field name="value" />
+            </list>
+        </field>
+    </record>
+
+    <record id="action_prioritizer_category" model="ir.actions.act_window">
+        <field name="name">Prioritizer Category</field>
+        <field name="res_model">prioritizer.category</field>
+        <field name="view_mode">list,form</field>
+        <field name="target">main</field>
+        <field name="view_id" ref="prioritizer_category_list" />
+    </record>
+    <record id="action_prioritizer_category_line" model="ir.actions.act_window">
+        <field name="name">Prioritizer Category Line</field>
+        <field name="res_model">prioritizer.category.line</field>
+        <field name="view_mode">list,form</field>
+        <field name="target">main</field>
+        <field name="view_id" ref="prioritizer_category_line_list" />
+    </record>
+    <menuitem
+        id="menu_prioritizer"
+        parent="project.menu_project_config"
+        sequence="10"
+        name="Prioritizer"
+    />
+    <menuitem
+        id="menu_action_prioritizer_category"
+        parent="menu_prioritizer"
+        action="action_prioritizer_category"
+        sequence="1"
+    />
+    <menuitem
+        id="menu_action_prioritizer_category_line"
+        parent="menu_prioritizer"
+        action="action_prioritizer_category_line"
+        sequence="2"
+    />
+</odoo>

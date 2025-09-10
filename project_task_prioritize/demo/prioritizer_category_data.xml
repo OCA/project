@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+    Copyright 2025 ForgeFlow S.L. (https://www.forgeflow.com)
+    License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+-->
+<odoo noupdate="1">
+    <!-- Prioritizer Categories -->
+    <record id="pc_organizational_impact" model="prioritizer.category">
+        <field name="name">Organizational Impact</field>
+    </record>
+    <record id="pc_frequency_use" model="prioritizer.category">
+        <field name="name">Frequency of Use</field>
+    </record>
+    <record id="pc_risk" model="prioritizer.category">
+        <field name="name">Risk / Consequences of Not Doing It</field>
+    </record>
+    <record id="pc_strategic_value" model="prioritizer.category">
+        <field name="name">Strategic Value</field>
+    </record>
+    <record id="pc_productivity_benefit" model="prioritizer.category">
+        <field name="name">Productivity Benefit</field>
+    </record>
+
+    <!-- Prioritizer Categories Lines-->
+    <record id="pcl_organizational_impact_0" model="prioritizer.category.line">
+        <field name="prioritizer_category_id" ref="pc_organizational_impact" />
+        <field name="name">Affects only one user</field>
+        <field name="value">0</field>
+    </record>
+    <record id="pcl_organizational_impact_1" model="prioritizer.category.line">
+        <field name="prioritizer_category_id" ref="pc_organizational_impact" />
+        <field name="name">Affects one full department</field>
+        <field name="value">1</field>
+    </record>
+    <record id="pcl_organizational_impact_2" model="prioritizer.category.line">
+        <field name="prioritizer_category_id" ref="pc_organizational_impact" />
+        <field name="name">Affects multiple departments / customers</field>
+        <field name="value">2</field>
+    </record>
+    <record id="pcl_frequency_use_0" model="prioritizer.category.line">
+        <field name="prioritizer_category_id" ref="pc_frequency_use" />
+        <field name="name">Used sporadically (less than once a month)</field>
+        <field name="value">0</field>
+    </record>
+    <record id="pcl_frequency_use_1" model="prioritizer.category.line">
+        <field name="prioritizer_category_id" ref="pc_frequency_use" />
+        <field name="name">Used regularly (about once a week)</field>
+        <field name="value">1</field>
+    </record>
+    <record id="pcl_frequency_use_2" model="prioritizer.category.line">
+        <field name="prioritizer_category_id" ref="pc_frequency_use" />
+        <field name="name">Used daily</field>
+        <field name="value">2</field>
+    </record>
+    <record id="pcl_risk_0" model="prioritizer.category.line">
+        <field name="prioritizer_category_id" ref="pc_risk" />
+        <field name="name">Low risk, only minor inconvenience</field>
+        <field name="value">0</field>
+    </record>
+    <record id="pcl_risk_1" model="prioritizer.category.line">
+        <field name="prioritizer_category_id" ref="pc_risk" />
+        <field name="name">Medium risk, frequent errors or inefficiency</field>
+        <field name="value">1</field>
+    </record>
+    <record id="pcl_risk_2" model="prioritizer.category.line">
+        <field name="prioritizer_category_id" ref="pc_risk" />
+        <field name="name">High risk, affects finances, customers, or compliance</field>
+        <field name="value">2</field>
+    </record>
+    <record id="pcl_strategic_value_0" model="prioritizer.category.line">
+        <field name="prioritizer_category_id" ref="pc_strategic_value" />
+        <field name="name">Minor improvement, not related to strategic goals</field>
+        <field name="value">0</field>
+    </record>
+    <record id="pcl_strategic_value_1" model="prioritizer.category.line">
+        <field name="prioritizer_category_id" ref="pc_strategic_value" />
+        <field name="name">Aligned with internal improvement objectives</field>
+        <field name="value">1</field>
+    </record>
+    <record id="pcl_strategic_value_2" model="prioritizer.category.line">
+        <field name="prioritizer_category_id" ref="pc_strategic_value" />
+        <field name="name">Aligned with business strategic goals</field>
+        <field name="value">2</field>
+    </record>
+    <record id="pcl_productivity_benefit_0" model="prioritizer.category.line">
+        <field name="prioritizer_category_id" ref="pc_productivity_benefit" />
+        <field name="name">Savings &lt; 1h/month</field>
+        <field name="value">0</field>
+    </record>
+    <record id="pcl_productivity_benefit_1" model="prioritizer.category.line">
+        <field name="prioritizer_category_id" ref="pc_productivity_benefit" />
+        <field name="name">Savings 1–10h/month</field>
+        <field name="value">1</field>
+    </record>
+    <record id="pcl_productivity_benefit_2" model="prioritizer.category.line">
+        <field name="prioritizer_category_id" ref="pc_productivity_benefit" />
+        <field name="name">Savings > 10h/month</field>
+        <field name="value">2</field>
+    </record>
+</odoo>
