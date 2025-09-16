@@ -1,6 +1,8 @@
 # Copyright 2025 ForgeFlow S.L. (https://www.forgeflow.com)
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
+import datetime
+
 from odoo.tests import common
 
 
@@ -46,7 +48,7 @@ class TestProjectTask(common.TransactionCase):
             }
         )
 
-    def test_task_prioritizer_value(self):
+    def test_01_task_prioritizer_value(self):
         """Test computation of prioritizer_value"""
         # Create a task
         task = self.ProjectTask.create(
@@ -74,7 +76,7 @@ class TestProjectTask(common.TransactionCase):
         expected_value = (3 + 5) / (10 * (3 + 5 - (3 + 5) + 1))  # Default formula
         self.assertEqual(task.prioritizer_value, expected_value)
 
-    def test_custom_prioritizer_formula(self):
+    def test_02_custom_prioritizer_formula(self):
         """Test custom prioritizer formula"""
         # Set a custom formula
         custom_formula = "prioritizer_sum / allocated_hours"
@@ -103,7 +105,7 @@ class TestProjectTask(common.TransactionCase):
         # Test with custom formula (3 + 5) / 4 = 2.0
         self.assertEqual(task.prioritizer_value, 2.0)
 
-    def test_invalid_formula(self):
+    def test_03_invalid_formula(self):
         """Test behavior with invalid formula"""
         # Set an invalid formula
         self.project.write(
@@ -127,3 +129,33 @@ class TestProjectTask(common.TransactionCase):
 
         # Should default to 0 on error
         self.assertEqual(task.prioritizer_value, 0)
+
+    def test_04_using_today_value(self):
+        """Test custom prioritizer formula"""
+        # Set a custom formula
+        custom_formula = "(rec.date_deadline - today).days / allocated_hours"
+        self.project.write({"prioritizer_formula": custom_formula})
+
+        # Create a task
+        task = self.ProjectTask.create(
+            {
+                "name": "Custom Formula Task",
+                "project_id": self.project.id,
+                "allocated_hours": 4,
+                "date_deadline": datetime.datetime.today() + datetime.timedelta(days=8),
+            }
+        )
+
+        # Assign prioritizer lines (High importance = 3, High urgency = 5)
+        importance_high = self.category1.prioritizer_category_line_ids.filtered(
+            lambda x: x.name == "High"
+        )
+        urgency_high = self.category2.prioritizer_category_line_ids.filtered(
+            lambda x: x.name == "High"
+        )
+        task.write(
+            {"prioritizer_line_ids": [(6, 0, (importance_high + urgency_high).ids)]}
+        )
+
+        # Test with custom formula 7 / 4 = 1.75
+        self.assertEqual(task.prioritizer_value, 1.75)

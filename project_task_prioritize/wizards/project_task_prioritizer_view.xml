@@ -27,7 +27,7 @@
                             <field
                                 name="prioritizer_category_line_id"
                                 options='{"no_create": True, "no_open": True}'
-                                domain="[('prioritizer_category_id','in', prioritizer_category_id)]"
+                                domain="[('prioritizer_category_id','=', prioritizer_category_id)]"
                             />
                             <field name="task_id" invisible="1" />
                             <field name="prioritizer_category_id" invisible="1" />

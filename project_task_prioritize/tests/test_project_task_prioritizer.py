@@ -45,7 +45,7 @@ class TestProjectTaskPrioritizer(common.TransactionCase):
             }
         )
 
-    def test_prioritizer_wizard_default_get(self):
+    def test_01_prioritizer_wizard_default_get(self):
         """Test default_get method of the wizard"""
         # Create wizard with task context
         wizard = self.ProjectTaskPrioritizer.with_context(
@@ -58,7 +58,7 @@ class TestProjectTaskPrioritizer(common.TransactionCase):
         self.assertIn(self.task1, wizard.task_ids)
         self.assertIn(self.task2, wizard.task_ids)
 
-    def test_prioritizer_wizard_validate(self):
+    def test_02_prioritizer_wizard_validate(self):
         """Test button_validate method of the wizard"""
         # Get category lines
         importance_high = self.category1.prioritizer_category_line_ids.filtered(
@@ -87,7 +87,7 @@ class TestProjectTaskPrioritizer(common.TransactionCase):
         self.assertEqual(self.task1.prioritizer_line_ids, importance_high)
         self.assertEqual(self.task2.prioritizer_line_ids, importance_medium)
 
-    def test_prioritizer_wizard_no_tasks(self):
+    def test_03_prioritizer_wizard_no_tasks(self):
         """Test wizard with no tasks in context"""
         # Create wizard with no task context
         wizard = self.ProjectTaskPrioritizer.with_context(
@@ -98,7 +98,7 @@ class TestProjectTaskPrioritizer(common.TransactionCase):
         self.assertEqual(len(wizard.task_ids), 0)
         self.assertEqual(len(wizard.line_ids), 0)
 
-    def test_prioritizer_wizard_wrong_model(self):
+    def test_04_prioritizer_wizard_wrong_model(self):
         """Test wizard with wrong model in context"""
         # Should raise assertion for wrong model
         with self.assertRaises(AssertionError):
@@ -106,7 +106,7 @@ class TestProjectTaskPrioritizer(common.TransactionCase):
                 active_model="wrong.model", active_ids=[1, 2, 3]
             ).create({})
 
-    def test_prioritizer_wizard_line_creation(self):
+    def test_05_prioritizer_wizard_line_creation(self):
         """Test _get_matrix_lines method"""
         # Create a second category
         category2 = self.PrioritizerCategory.create(

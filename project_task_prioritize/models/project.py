@@ -14,6 +14,7 @@ class ProjectProject(models.Model):
             "# - prioritizer_sum: sum of prioritizer line values\n"
             "# - max_value: sum of max values from prioritizer categories\n"
             "# - allocated_hours: hours allocated to the project/task\n"
+            "# - today: datetime.datetime.today()\n"
             "# - rec: current record (project/task)\n"
             "\n"
             "# Example:\n"

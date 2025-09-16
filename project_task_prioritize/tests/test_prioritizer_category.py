@@ -10,7 +10,7 @@ class TestPrioritizerCategory(common.TransactionCase):
         self.PrioritizerCategory = self.env["prioritizer.category"]
         self.PrioritizerCategoryLine = self.env["prioritizer.category.line"]
 
-    def test_create_prioritizer_category(self):
+    def test_01_create_prioritizer_category(self):
         """Test creation of a prioritizer category with lines"""
         # Create a prioritizer category with lines
         category = self.PrioritizerCategory.create(
@@ -26,7 +26,7 @@ class TestPrioritizerCategory(common.TransactionCase):
         self.assertEqual(len(category.prioritizer_category_line_ids), 3)
         self.assertEqual(category.max_value, 3)
 
-    def test_compute_max_value(self):
+    def test_02_compute_max_value(self):
         """Test computation of max_value field"""
         # Create a prioritizer category with lines
         category = self.PrioritizerCategory.create(
@@ -50,7 +50,7 @@ class TestPrioritizerCategory(common.TransactionCase):
         )
         self.assertEqual(category.max_value, 15)
 
-    def test_empty_category(self):
+    def test_03_empty_category(self):
         """Test behavior with empty category"""
         category = self.PrioritizerCategory.create({"name": "Empty Category"})
         self.assertEqual(category.max_value, 1)  # Default value when no lines exist

@@ -14,15 +14,36 @@
             </list>
         </field>
     </record>
-    <record id="prioritizer_category_line_list" model="ir.ui.view">
-        <field name="name">prioritizer.category.line.list</field>
-        <field name="model">prioritizer.category.line</field>
+    <record id="prioritizer_category_form" model="ir.ui.view">
+        <field name="name">prioritizer.category.form</field>
+        <field name="model">prioritizer.category</field>
         <field name="arch" type="xml">
-            <list>
-                <field name="prioritizer_category_id" />
-                <field name="name" />
-                <field name="value" />
-            </list>
+            <form>
+                <sheet>
+                    <div class="oe_title">
+                        <h1 class="d-flex">
+                            <field name="name" placeholder="New Category" nolabel="1" />
+                        </h1>
+                    </div>
+                    <group>
+                        <field name="max_value" readonly="1" />
+                    </group>
+                    <notebook>
+                        <page name="category_lines" string="Category Lines">
+                            <field name="prioritizer_category_line_ids">
+                                <list editable="bottom">
+                                    <field name="name" />
+                                    <field name="value" />
+                                    <field
+                                        name="prioritizer_category_id"
+                                        invisible="1"
+                                    />
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
         </field>
     </record>
 
@@ -32,13 +53,6 @@
         <field name="view_mode">list,form</field>
         <field name="target">main</field>
         <field name="view_id" ref="prioritizer_category_list" />
-    </record>
-    <record id="action_prioritizer_category_line" model="ir.actions.act_window">
-        <field name="name">Prioritizer Category Line</field>
-        <field name="res_model">prioritizer.category.line</field>
-        <field name="view_mode">list,form</field>
-        <field name="target">main</field>
-        <field name="view_id" ref="prioritizer_category_line_list" />
     </record>
     <menuitem
         id="menu_prioritizer"
@@ -51,11 +65,5 @@
         parent="menu_prioritizer"
         action="action_prioritizer_category"
         sequence="1"
-    />
-    <menuitem
-        id="menu_action_prioritizer_category_line"
-        parent="menu_prioritizer"
-        action="action_prioritizer_category_line"
-        sequence="2"
     />
 </odoo>

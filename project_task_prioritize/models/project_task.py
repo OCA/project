@@ -1,7 +1,12 @@
 # Copyright 2025 ForgeFlow S.L. (https://www.forgeflow.com)
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
+import datetime
+import logging
+
 from odoo import api, fields, models
 from odoo.tools.safe_eval import safe_eval
+
+_logger = logging.getLogger(__name__)
 
 
 class ProjectTask(models.Model):
@@ -21,6 +26,7 @@ class ProjectTask(models.Model):
                 "prioritizer_sum": prioritizer_sum,
                 "max_value": max_value,
                 "allocated_hours": rec.allocated_hours,
+                "today": datetime.datetime.today(),
                 "rec": rec,
             }
             formula = rec.project_id.prioritizer_formula or "0"
