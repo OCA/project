@@ -36,7 +36,7 @@
                     </group>
                     <group name="budget_lines" string="Budget Lines">
                         <field name="budget_id_lines" nolabel="1">
-                            <tree
+                            <list
                                 decoration-success="planned_amount &gt; 0"
                                 decoration-danger="planned_amount &lt; 0"
                             >
@@ -55,7 +55,7 @@
                                     sum="Theoretical Amount"
                                 />
                                 <field name="percentage" widget="percentage" />
-                            </tree>
+                            </list>
                         </field>
                     </group>
                 </page>
