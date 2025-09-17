@@ -4,7 +4,10 @@
     <record id="project_account_budget_inherit_form" model="ir.ui.view">
         <field name="name">project.account.budget.inherit.form</field>
         <field name="model">crossovered.budget</field>
-        <field name="inherit_id" ref="account_budget_oca.crossovered_budget_view_form" />
+        <field
+            name="inherit_id"
+            ref="account_budget_oca.crossovered_budget_view_form"
+        />
         <field name="type">form</field>
         <field name="arch" type="xml">
             <field name="creating_user_id" position="after">

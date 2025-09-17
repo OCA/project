@@ -8,7 +8,11 @@
         <field name="type">form</field>
         <field name="arch" type="xml">
             <xpath expr="//page[@name='settings']" position="after">
-                <page name="budget" string="Budget" groups="project_budget.group_project_budget_viewer">
+                <page
+                    name="budget"
+                    string="Budget"
+                    groups="project_budget.group_project_budget_viewer"
+                >
                     <group>
                         <group name="budget_info">
                             <field
@@ -37,13 +41,19 @@
                                 decoration-danger="planned_amount &lt; 0"
                             >
                                 <field name="general_budget_id" />
-                                <field name="analytic_account_id" groups="analytic.group_analytic_accounting" />
+                                <field
+                                    name="analytic_account_id"
+                                    groups="analytic.group_analytic_accounting"
+                                />
                                 <field name="date_from" />
                                 <field name="date_to" />
                                 <field name="paid_date" groups="base.group_no_one" />
                                 <field name="planned_amount" sum="Planned Amount" />
                                 <field name="practical_amount" sum="Practical Amount" />
-                                <field name="theoretical_amount" sum="Theoretical Amount" />
+                                <field
+                                    name="theoretical_amount"
+                                    sum="Theoretical Amount"
+                                />
                                 <field name="percentage" widget="percentage" />
                             </tree>
                         </field>

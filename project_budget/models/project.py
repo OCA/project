@@ -10,6 +10,4 @@ class Project(models.Model):
     budget_id_lines = fields.One2many(
         related="budget_id.crossovered_budget_line_ids", string="Budget Lines"
     )
-    budget_state = fields.Selection(
-        related="budget_id.state", string="Budget Status"
-    )
+    budget_state = fields.Selection(related="budget_id.state", string="Budget Status")
