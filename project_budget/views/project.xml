@@ -17,11 +17,9 @@
                         <group name="budget_info">
                             <field
                                 name="budget_id"
-                                context="{'default_project_id': active_id,
-                                             'default_date_from': date_start,
+                                context="{'default_date_from': date_start,
                                              'default_date_to': date,
-                                             'default_user_id': user_id,
-                                             'default_analytic_account_id': analytic_account_id}"
+                                             'default_user_id': user_id}"
                             />
                             <field name="budget_state" readonly="1" />
                         </group>
