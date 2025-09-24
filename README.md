@@ -51,6 +51,7 @@ addon | version | maintainers | summary
 [project_task_add_very_high](project_task_add_very_high/) | 16.0.1.1.0 | <a href='https://github.com/astirpe'><img src='https://github.com/astirpe.png' width='32' height='32' style='border-radius:50%;' alt='astirpe'/></a> | Adds extra options 'High' and 'Very High' on tasks
 [project_task_code](project_task_code/) | 16.0.1.1.0 |  | Sequential Code for Tasks
 [project_task_code_portal](project_task_code_portal/) | 16.0.1.0.0 |  | Use custom task code in customer portal
+[project_task_creation_description_notification](project_task_creation_description_notification/) | 16.0.1.0.0 |  | Project task description in notifications
 [project_task_default_stage](project_task_default_stage/) | 16.0.1.0.2 |  | Recovery default task stages for projects from v8
 [project_task_description_portal](project_task_description_portal/) | 16.0.1.0.0 |  | Dedicated task description for portal users
 [project_task_description_template](project_task_description_template/) | 16.0.1.0.0 |  | Add a description template to project tasks

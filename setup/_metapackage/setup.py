@@ -38,6 +38,7 @@ setuptools.setup(
         'odoo-addon-project_task_add_very_high>=16.0dev,<16.1dev',
         'odoo-addon-project_task_code>=16.0dev,<16.1dev',
         'odoo-addon-project_task_code_portal>=16.0dev,<16.1dev',
+        'odoo-addon-project_task_creation_description_notification>=16.0dev,<16.1dev',
         'odoo-addon-project_task_default_stage>=16.0dev,<16.1dev',
         'odoo-addon-project_task_description_portal>=16.0dev,<16.1dev',
         'odoo-addon-project_task_description_template>=16.0dev,<16.1dev',
