@@ -178,7 +178,9 @@ class Project(models.Model):
         while not unique_key:
             if counter != 0:
                 res = "%s%s" % (text, counter)
-            unique_key = not bool(self.search([("key", "=", res)]))
+            unique_key = not bool(
+                self.with_context(active_test=False).search([("key", "=", res)])
+            )
             counter += 1
 
         return res
