@@ -59,26 +59,12 @@ class ProjectProject(models.Model):
 
     @api.model
     def name_search(self, name="", args=None, operator="ilike", limit=100):
-        """Allow searching by sequence_code, key, or name and return proper display names."""
-        args = list(args or [])
-        domain = []
-
-        if name and not (name == "" and operator == "ilike"):
-            search_domain = [
-                ("sequence_code", operator, name),
-                ("key", operator, name),
-                ("name", operator, name),
-            ]
-            if name.isdigit():
-                search_domain.append(("id", "=", int(name)))
-
-            if len(search_domain) > 1:
-                domain = ["|"] * (len(search_domain) - 1) + search_domain
-            else:
-                domain = search_domain
-
-        ids = self._search(domain + args, limit=limit)
-        return self.browse(ids).name_get()
+        """Allow searching by sequence code by default."""
+        # Do not add any domain when user just clicked on search widget
+        if not (name == "" and operator == "ilike"):
+            # The dangling | is needed to combine with the domain added by super()
+            args = (args or []) + ["|", ("sequence_code", operator, name)]
+        return super().name_search(name, args, operator, limit)
 
     @api.model_create_multi
     def create(self, vals_list):
