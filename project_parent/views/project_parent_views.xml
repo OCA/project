@@ -45,7 +45,7 @@ License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html). -->
                 <field name="parent_id" />
             </field>
             <xpath
-                expr="//div[hasclass('o_project_kanban_main')]/div[last()]"
+                expr="//main[hasclass('o_project_kanban_main')]/div[last()]"
                 position="inside"
             >
                 <div class="o_primary">
