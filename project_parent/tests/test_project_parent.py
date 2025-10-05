@@ -8,14 +8,14 @@ class TestProjectParent(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.project_project_1 = cls.env.ref("project.project_project_1")
-        cls.project_project_2 = cls.env.ref("project.project_project_2")
-        cls.project_project_3 = cls.env["project.project"].create(
+        Project = cls.env["project.project"]
+        cls.project_project_1 = Project.create({"name": "TestProject 1"})
+        cls.project_project_2 = Project.create({"name": "TestProject 2"})
+        cls.project_project_3 = Project.create(
             {"name": "TestProject", "parent_id": cls.project_project_1.id}
         )
 
     def test_parent_childs_project(self):
-        self.assertIn(self.project_project_2, self.project_project_1.child_ids)
         self.assertIn(self.project_project_3, self.project_project_1.child_ids)
 
     def test_action_open_child_project(self):
