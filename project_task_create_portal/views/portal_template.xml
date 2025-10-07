@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+    <template
+        id="portal_my_task_edit"
+        inherit_id="project.portal_my_task"
+        priority="20"
+    >
+        <xpath expr="//t[@t-set='entries']/ul" position="inside">
+            <li class="list-group-item" t-if="task.check_portal_edit_access()">
+                <div class="d-grid gap-2 mx-auto" id="portal_task_actions">
+                    <a
+                        t-att-href="'/my/projects/%s/task/%s/edit' % (task.project_id.id, task.id)"
+                        class="btn btn-secondary"
+                    >
+                        <i class="fa fa-edit" /> Edit
+                    </a>
+                </div>
+            </li>
+        </xpath>
+    </template>
+
+    <template
+        id="portal_create_task_searchbar"
+        inherit_id="project.portal_my_project"
+        priority="20"
+    >
+        <t t-call="portal.portal_searchbar" position="inside">
+            <div t-if="searchbar_create_task" class="ms-lg-2">
+                <div class="btn-group">
+                    <a
+                        t-att-href="'/my/projects/%s/task/new' % (project.id)"
+                        id="portal_searchbar_create_task"
+                        class="btn btn-success btn-sm"
+                    >
+                        <i class="fa fa-plus" /> Create New Task
+                    </a>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="portal_my_task_fields">
+        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()" />
+        <div t-if="error_message" class="alert alert-danger" role="alert">
+            <div class="col-lg-12">
+                <t t-foreach="error_message" t-as="err"><t t-esc="err" /><br /></t>
+            </div>
+        </div>
+        <div
+            t-attf-class="form-group #{error.get('name') and 'o_has_error' or ''} col-xl-6"
+        >
+            <label class="col-form-label" for="name">Name</label>
+            <input
+                type="text"
+                t-attf-class="form-control #{error.get('name') and 'is-invalid' or ''}"
+                name="name"
+                required="True"
+                t-att-value="name or ''"
+            />
+        </div>
+        <div
+            t-attf-class="form-group #{error.get('date_deadline') and 'o_has_error' or ''} col-xl-6"
+        >
+            <label class="col-form-label" for="date_deadline">Deadline Date</label>
+            <input
+                type="date"
+                t-attf-class="form-control #{error.get('date_deadline') and 'is-invalid' or ''}"
+                name="date_deadline"
+                id="date_deadline"
+                min="today"
+                t-att-value="date_deadline or ''"
+            />
+        </div>
+
+        <div
+            t-attf-class="form-group #{error.get('description') and 'o_has_error' or ''} col-xl-12"
+        >
+            <label class="col-form-label" for="description">Description</label>
+            <textarea
+                t-attf-class="form-control #{error.get('description') and 'is-invalid' or ''} o_wysiwyg_loader"
+                name="description"
+                rows="10"
+                required="True"
+                t-att-value="description or ''"
+                t-esc="description or ''"
+            />
+        </div>
+    </template>
+
+    <template
+        id="portal_layout"
+        name="Portal layout: project menu entry"
+        inherit_id="project.portal_layout"
+    >
+        <li
+            t-if="page_name in ['project_task', 'project_subtasks'] and project"
+            position="attributes"
+        >
+            <attribute name="t-if">
+                page_name in ['project_task', 'project_subtasks', 'task_creation', 'task_edit'] and project
+            </attribute>
+        </li>
+        <li
+            t-if="page_name == 'project_subtasks' and task and project"
+            position="attributes"
+        >
+            <attribute name="t-if">
+                page_name in ['project_subtasks', 'task_edit'] and task and project
+            </attribute>
+        </li>
+        <li t-elif="project" position="after">
+            <li
+                t-if="page_name == 'task_creation' and project"
+                t-attf-class="breadcrumb-item #{'active ' if not task else ''}"
+            >
+                New
+            </li>
+        </li>
+        <li t-elif="task" position="after">
+            <li
+                t-if="page_name == 'task_edit' and task and project"
+                t-attf-class="breadcrumb-item #{'active ' if not task else ''}"
+            >
+                Edit
+            </li>
+        </li>
+
+    </template>
+
+    <template id="portal_project_task_new">
+        <t t-call="portal.portal_layout">
+            <t t-set="additional_title">New Task</t>
+            <form action="" method="post" enctype="multipart/form-data">
+                <div class="row justify-content-center o_portal_details">
+                    <div class="col-lg-8">
+                        <div class="row pt-4 portal_task_crud mb-4">
+                            <t
+                                t-call="project_task_create_portal.portal_my_task_fields"
+                            />
+                        </div>
+                        <div class="clearfix">
+                            <button
+                                type="submit"
+                                class="btn btn-primary float-end mb32 "
+                            >
+                                <t t-esc="button" />
+                                <span class="fa fa-long-arrow-right" />
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </t>
+    </template>
+
+</odoo>
