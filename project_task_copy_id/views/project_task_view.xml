@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 Moduon Team S.L.
+     License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0) -->
+<data>
+    <record id="view_task_form2" model="ir.ui.view">
+        <field name="name">project.task.form</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2" />
+        <field name="priority" eval="99" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('oe_title')]/h1" position="inside">
+                <div
+                    class="d-flex justify-content-end ms-2"
+                    invisible="not custom_task_ref"
+                >
+                    <field name="custom_task_ref" widget="CopyClipboardButton" />
+                </div>
+            </xpath>
+        </field>
+    </record>
+</data>

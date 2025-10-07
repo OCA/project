@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 Moduon Team S.L.
+     License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0) -->
+<data>
+    <record id="project_task_copy_id_prefix" model="ir.config_parameter">
+        <field name="key">project_task_copy_id.prefix</field>
+        <field name="value">TASK-</field>
+    </record>
+</data>
