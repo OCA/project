@@ -69,13 +69,10 @@
             </xpath>
         </field>
     </record>
-    <record id="project_sharing_project_task_view_search" model="ir.ui.view">
+    <record id="view_task_search_form_project_base" model="ir.ui.view">
         <field name="name">project.task.search.form</field>
         <field name="model">project.task</field>
-        <field
-            name="inherit_id"
-            ref="project.project_sharing_project_task_view_search"
-        />
+        <field name="inherit_id" ref="project.view_task_search_form_project_base" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='name']" position="attributes">
                 <attribute

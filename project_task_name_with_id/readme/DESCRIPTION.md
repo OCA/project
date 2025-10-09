@@ -1,4 +1,4 @@
-This module extends the name_search() and name_get() methods of the
+This module extends the name_search() and _compute_display_name() methods of the
 project.task model to search for, and display the ID of the task in the
 name field.
 
