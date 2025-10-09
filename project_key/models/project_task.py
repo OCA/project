@@ -3,7 +3,7 @@
 
 from odoo import api, fields, models
 
-TASK_URL = "/web#id=%s&view_type=form&model=project.task&action=%s"
+TASK_URL = "/odoo/%s/%s"
 
 
 class Task(models.Model):
@@ -17,9 +17,8 @@ class Task(models.Model):
     _sql_constraints = [("task_key_unique", "UNIQUE(key)", "Task key must be unique!")]
 
     def _compute_task_url(self):
-        action_id = self.env.ref("project.action_view_task").id
         for task in self:
-            task.url = TASK_URL % (task.id, action_id)
+            task.url = TASK_URL % (task._name, task.id)
 
     @api.model_create_multi
     def create(self, vals_list):
