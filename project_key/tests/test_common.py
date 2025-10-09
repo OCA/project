@@ -28,14 +28,8 @@ class TestMixin:
 
         self.task30 = self.Task.create({"name": "3"})
 
-    def get_record_url(self, record, model, action):
-        return f"/web#id={record.id}&view_type=form&model={model}&action={action}"
-
     def get_task_url(self, task):
-        return self.get_record_url(task, task._name, self.task_action.id)
-
-    def get_project_url(self, project):
-        return self.get_record_url(project, project._name, self.project_action.id)
+        return f"/odoo/{task._name}/{task.id}"
 
 
 class TestCommon(TransactionCase, TestMixin):

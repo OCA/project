@@ -9,7 +9,7 @@
     "license": "LGPL-3",
     "author": "Modoolar, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/project",
-    "depends": ["project"],
+    "depends": ["portal", "project"],
     "data": ["views/project_key_views.xml"],
     "post_init_hook": "post_init_hook",
 }
