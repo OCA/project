@@ -14,7 +14,10 @@ class Task(models.Model):
 
     url = fields.Char(string="URL", compute="_compute_task_url")
 
-    _sql_constraints = [("task_key_unique", "UNIQUE(key)", "Task key must be unique!")]
+    _task_key_unique = models.Constraint(
+        "UNIQUE(key)",
+        "Task key must be unique!",
+    )
 
     def _compute_task_url(self):
         for task in self:

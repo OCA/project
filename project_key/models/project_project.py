@@ -17,9 +17,10 @@ class Project(models.Model):
 
     show_key_warning = fields.Boolean(store=False, compute="_compute_show_key_warning")
 
-    _sql_constraints = [
-        ("project_key_unique", "UNIQUE(key)", "Project key must be unique")
-    ]
+    _project_key_unique = models.Constraint(
+        "UNIQUE(key)",
+        "Project key must be unique",
+    )
 
     @api.onchange("name")
     def _onchange_project_name(self):
@@ -147,7 +148,7 @@ class Project(models.Model):
     def get_next_task_key(self):
         test_project_key = self.env.context.get("test_project_key")
         if (config["test_enable"] and not test_project_key) or (
-            config["demo"].get("project_key") and not test_project_key
+            config["with_demo"] and not test_project_key
         ):
             return False
         return self.sudo().task_key_sequence_id.next_by_id()
@@ -155,7 +156,7 @@ class Project(models.Model):
     def generate_project_key(self, text):
         test_project_key = self.env.context.get("test_project_key")
         if (config["test_enable"] and not test_project_key) or (
-            config["demo"].get("project_key") and not test_project_key
+            config["with_demo"] and not test_project_key
         ):
             return False
 

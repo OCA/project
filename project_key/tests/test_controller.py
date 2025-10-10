@@ -22,22 +22,20 @@ class TestController(HttpTestCommon):
         self.assertIn(f"{self.task11.id}", response.url)
 
     def test_03_project_browse_portal(self):
-        self.authenticate("portal", "portal")
+        self.authenticate(self.user_portal.login, self.user_portal.login)
         response = self.url_open("/projects/" + self.project_1.key)
         self.assertEqual(response.status_code, 200)
         self.assertTrue(f"/my/projects/{self.project_1.id}", response.url)
 
     def test_04_task_browse_portal(self):
-        portal_partner = self.env.ref("base.demo_user0").partner_id
-        self.authenticate("portal", "portal")
+        self.authenticate(self.user_portal.login, self.user_portal.login)
         project = self.task11.project_id
         self.assertEqual(project.privacy_visibility, "portal")
-        self.assertNotIn(self.task11.message_partner_ids, portal_partner)
+        self.assertNotIn(self.task11.message_partner_ids, self.portal_partner)
         response = self.url_open("/tasks/" + self.task11.key)
         self.assertEqual(response.status_code, 200)
         self.assertTrue(response.url.endswith("/my"))
-
-        self.task11.message_partner_ids += portal_partner
+        self.task11.message_partner_ids += self.portal_partner
         response = self.url_open("/tasks/" + self.task11.key)
         self.assertEqual(response.status_code, 200)
         self.assertIn(f"/my/tasks/{self.task11.id}", response.url)
