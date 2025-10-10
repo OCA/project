@@ -3,6 +3,8 @@
 
 from odoo.tests.common import HttpCase, TransactionCase
 
+from odoo.addons.base.tests.common import BaseCommon
+
 
 class TestMixin:
     @staticmethod
@@ -40,8 +42,11 @@ class TestCommon(TransactionCase, TestMixin):
         cls._setup_records(cls)
 
 
-class HttpTestCommon(HttpCase, TestMixin):
-    def setUp(self):
-        super().setUp()
-        self.env = self.env(context=dict(self.env.context, tracking_disable=True))
-        self._setup_records(self)
+class HttpTestCommon(BaseCommon, HttpCase, TestMixin):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
+        cls.env = cls.env(context=dict(cls.env.context, tracking_disable=True))
+        cls._setup_records(cls)
+        cls.user_portal = cls._create_new_portal_user()
+        cls.portal_partner = cls.user_portal.partner_id
