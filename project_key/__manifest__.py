@@ -10,6 +10,10 @@
     "author": "Modoolar, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/project",
     "depends": ["portal", "project"],
-    "data": ["views/project_key_views.xml"],
+    "data": [
+        "templates/project_project_templates.xml",
+        "templates/project_task_templates.xml",
+        "views/project_key_views.xml",
+    ],
     "post_init_hook": "post_init_hook",
 }

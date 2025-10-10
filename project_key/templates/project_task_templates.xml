@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template
+        id="portal_tasks_list"
+        name="Tasks List"
+        inherit_id="project.portal_tasks_list"
+    >
+        <xpath expr="//t[@t-if='grouped_tasks']//thead/tr/th[1]" position="after">
+            <th>Key</th>
+        </xpath>
+        <xpath expr="//t[@t-if='grouped_tasks']//tbody//tr/td[2]" position="after">
+            <td>
+                <a t-attf-href="/my/#{task_url}/#{task.id}?{{ keep_query() }}">
+                    <span t-field="task.key" />
+                </a>
+            </td>
+        </xpath>
+    </template>
+
+    <template id="portal_my_task" name="My Task" inherit_id="project.portal_my_task">
+        <xpath
+            expr="//div[@id='task_content']//div[@id='card_header']//span[@t-field='task.name']"
+            position="before"
+        >
+            <span t-field="task.key" /> -
+        </xpath>
+    </template>
+</odoo>
