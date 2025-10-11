@@ -7,15 +7,13 @@ from odoo import api, fields, models
 
 class ProjectProject(models.Model):
     _inherit = "project.project"
-    _sql_constraints = [
-        # Ensure compatibility with other modules that always expect a value in name
-        ("name_required", "CHECK(name IS NOT NULL)", "Project name is required"),
-        (
-            "sequence_code_unique",
-            "UNIQUE(sequence_code)",
-            "Sequence code must be unique",
-        ),
-    ]
+
+    _name_required = models.Constraint(
+        "CHECK(name IS NOT NULL)", "Project name is required"
+    )
+    _sequence_code_unique = models.Constraint(
+        "UNIQUE(sequence_code)", "Sequence code must be unique"
+    )
 
     sequence_code = fields.Char(
         copy=False,
@@ -56,9 +54,9 @@ class ProjectProject(models.Model):
         return res
 
     @api.model
-    def name_search(self, name="", args=None, operator="ilike", limit=100):
+    def name_search(self, name="", domain=None, operator="ilike", limit=100):
         """Allow searching by sequence code by default."""
-        result = super().name_search(name, args, operator, limit)
+        result = super().name_search(name, domain, operator, limit)
         # Do not add any domain when user just clicked on search widget
         if not (name == "" and operator == "ilike"):
             # We need additional search, as in super() method call expression

@@ -4,3 +4,4 @@
 - [360ERP](https://www.360erp.com):
   - Andrea Stirpe
 - Marcin Chechłacz <<marcin.chechlacz@braintec.com>>
+- Denis Roussel <<denis.roussel@acsone.eu>>
