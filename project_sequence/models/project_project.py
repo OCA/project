@@ -94,12 +94,12 @@ class ProjectProject(models.Model):
     def write(self, vals):
         """Sync name and analytic account name when name is changed."""
         # If name isn't changing, nothing special to do
-        if "name" not in vals and "sequence_name" not in vals:
+        if "name" not in vals:
             return super().write(vals)
         # When changing name, we need to update the analytic account name too
         for one in self:
             sequence_code = vals.get("sequence_code", one.sequence_code)
             name = vals.get("name") or sequence_code
-            super().write(dict(vals, name=name))
+            super(ProjectProject, one).write(dict(vals, name=name))
         self._sync_analytic_account_name()
         return True

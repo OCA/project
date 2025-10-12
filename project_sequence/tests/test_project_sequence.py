@@ -183,3 +183,15 @@ class TestProjectSequence(TransactionCase):
         self.assertIn((proj2.id, "23-00012 - two"), results)
         self.assertNotIn((proj1.id, "23-00011 - one"), results)
         self.assertNotIn((proj3.id, "23-00013 - three"), results)
+
+    def test_sequence_write(self):
+        proj1 = self.env["project.project"].create({"name": "one"})
+        self.assertEqual(proj1.sequence_code, "23-00011")
+        proj2 = self.env["project.project"].create({"name": "two"})
+        self.assertEqual(proj2.sequence_code, "23-00012")
+        (proj1 | proj2).write(
+            {
+                "name": False,
+            }
+        )
+        self.assertEqual(proj2.name, "23-00012")
