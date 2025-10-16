@@ -195,3 +195,133 @@ class TestProjectPortalTaskCreation(TestProjectPortalCommon, HttpCaseWithUserPor
                     "name": "Updated Task",
                 }
             )
+
+    def test_check_portal_fields_access(self):
+        """Test _check_portal_fields_access method returns correct fields."""
+        Task = self.env["project.task"]
+        allowed_fields = Task._check_portal_fields_access()
+
+        # Check that the method returns expected fields
+        self.assertIsInstance(allowed_fields, list)
+        self.assertIn("name", allowed_fields)
+        self.assertIn("description", allowed_fields)
+        self.assertIn("date_deadline", allowed_fields)
+        self.assertEqual(len(allowed_fields), 3)
+
+    def test_check_portal_edit_access_allowed(self):
+        """Test check_portal_edit_access when access is allowed."""
+        # Create task as portal user
+        task = (
+            self.env["project.task"]
+            .with_user(self.user_portal)
+            .sudo()
+            .create(
+                {
+                    "name": "Portal Task",
+                    "description": "Task created by portal user",
+                    "project_id": self.project.id,
+                }
+            )
+        )
+
+        # Check that portal user has edit access to their own task
+        self.assertTrue(task.with_user(self.user_portal).check_portal_edit_access())
+
+    def test_check_portal_edit_access_denied_no_portal_stage(self):
+        """Test check_portal_edit_access denied when project has no portal stage."""
+        # Create task as portal user
+        task = (
+            self.env["project.task"]
+            .with_user(self.user_portal)
+            .sudo()
+            .create(
+                {
+                    "name": "Portal Task",
+                    "description": "Task created by portal user",
+                    "project_id": self.project.id,
+                }
+            )
+        )
+
+        # Remove portal stage
+        self.project.portal_stage_id = False
+
+        # Check that portal user has no edit access
+        self.assertFalse(task.with_user(self.user_portal).check_portal_edit_access())
+
+    def test_check_portal_edit_access_denied_wrong_stage(self):
+        """Test check_portal_edit_access denied when task is in wrong stage."""
+        # Create task as portal user
+        task = (
+            self.env["project.task"]
+            .with_user(self.user_portal)
+            .sudo()
+            .create(
+                {
+                    "name": "Portal Task",
+                    "description": "Task created by portal user",
+                    "project_id": self.project.id,
+                }
+            )
+        )
+
+        # Move task to different stage
+        task.stage_id = self.stage_in_progress
+
+        # Check that portal user has no edit access
+        self.assertFalse(task.with_user(self.user_portal).check_portal_edit_access())
+
+    def test_check_portal_edit_access_denied_not_creator(self):
+        """Test check_portal_edit_access denied when user is not the creator."""
+        # Create task as admin
+        task = self.env["project.task"].create(
+            {
+                "name": "Admin Task",
+                "description": "Task created by admin",
+                "project_id": self.project.id,
+                "stage_id": self.stage_backlog.id,
+            }
+        )
+
+        # Check that portal user has no edit access to admin's task
+        self.assertFalse(
+            task.with_user(self.user_portal).sudo().check_portal_edit_access()
+        )
+
+    def test_create_task_as_portal_clears_assignees(self):
+        """Test that creating a task as portal user clears user_ids."""
+        admin_user = self.env.ref("base.user_admin")
+        # Create task as portal user with user_ids
+        task = (
+            self.env["project.task"]
+            .with_user(self.user_portal)
+            .sudo()
+            .create(
+                {
+                    "name": "Portal Task",
+                    "description": "Task created by portal user",
+                    "project_id": self.project.id,
+                    "user_ids": [(6, 0, [admin_user.id])],
+                }
+            )
+        )
+
+        # Check that user_ids is empty
+        self.assertFalse(task.user_ids)
+
+    def test_create_task_as_internal_user_keeps_assignees(self):
+        """Test that creating a task as internal user keeps user_ids."""
+        admin_user = self.env.ref("base.user_admin")
+        # Create task as internal user with user_ids
+        task = self.env["project.task"].create(
+            {
+                "name": "Admin Task",
+                "description": "Task created by admin",
+                "project_id": self.project.id,
+                "user_ids": [(6, 0, [admin_user.id])],
+            }
+        )
+
+        # Check that user_ids is preserved
+        self.assertTrue(task.user_ids)
+        self.assertIn(admin_user, task.user_ids)
