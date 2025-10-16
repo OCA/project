@@ -9,7 +9,6 @@
     "license": "AGPL-3",
     "depends": ["project"],
     "installable": True,
-    "auto_install": True,
     "data": [
         "security/project_tags_security.xml",
         "views/project_tags_views.xml",
