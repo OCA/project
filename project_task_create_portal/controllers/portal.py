@@ -175,3 +175,26 @@ class ProjectCustomerNewPortal(ProjectCustomerPortal):
             "searchbar_create_task"
         ] = project.sudo().is_portal_task_creation_allowed()
         return values
+
+    def _task_get_searchbar_groupby(self, milestones_allowed):
+        values = super()._task_get_searchbar_groupby(milestones_allowed)
+        values.update(
+            create_uid={"input": "create_uid", "label": _("Created by"), "order": 12}
+        )
+        return dict(sorted(values.items(), key=lambda item: item[1]["order"]))
+
+    def _task_get_searchbar_sortings(self, milestones_allowed):
+        values = super()._task_get_searchbar_sortings(milestones_allowed)
+        values.update(
+            create_date={
+                "label": _("Created by"),
+                "order": "create_uid desc",
+                "sequence": 12,
+            }
+        )
+        return values
+
+    def _task_get_groupby_mapping(self):
+        result = super()._task_get_groupby_mapping()
+        result.update(create_uid="create_uid")
+        return result

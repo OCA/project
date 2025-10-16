@@ -154,4 +154,55 @@
         </t>
     </template>
 
+    <template
+        id="portal_tasks_list"
+        inherit_id="project.portal_tasks_list"
+        priority="20"
+    >
+        <th
+            t-if="groupby != 'milestone' and allow_milestone"
+            name="project_portal_milestones"
+            position="before"
+        >
+            <th t-if="groupby != 'create_uid'">Created by</th>
+        </th>
+        <th t-if="groupby == 'milestone'" position="before">
+            <th
+                t-if="groupby == 'create_uid'"
+                t-attf-colspan="{{grouped_tasks_colspan}}"
+            >
+                <t t-set="group_create_uid" t-value="tasks[0].sudo().create_uid" />
+                <img
+                    class="rounded-circle o_portal_contact_img me-2 px-0"
+                    t-attf-src="#{image_data_uri(group_create_uid[:1].avatar_128)}"
+                    alt="User"
+                    style="width: 20px; height: 20px;"
+                />
+                <span class="text-truncate" t-field="group_create_uid.name" />
+            </th>
+        </th>
+        <td name="project_portal_milestones" position="before">
+            <t t-set="create_uid" t-value="task.sudo().create_uid" />
+            <td t-if="groupby != 'create_uid' and create_uid">
+                <div t-if="create_uid" class="row flex-nowrap ps-3">
+                    <img
+                        class="rounded-circle o_portal_contact_img me-2 px-0"
+                        t-attf-src="#{image_data_uri(create_uid[:1].avatar_128)}"
+                        alt="User"
+                        style="width: 20px; height: 20px;"
+                    />
+                    <span
+                        t-out="'%s%s' % (create_uid[:1].name, ' + %s others' % len(create_uid[1:]) if len(create_uid.user_ids) > 1 else '')"
+                        t-att-title="'\n'.join(create_uid.mapped('name'))"
+                    />
+                </div>
+            </td>
+        </td>
+        <xpath expr="//div[@t-if='assignees']" position="attributes">
+            <attribute
+                name="t-if"
+            >not task.project_id.portal_hide_assigned_users and assignees</attribute>
+        </xpath>
+    </template>
+
 </odoo>

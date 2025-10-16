@@ -41,7 +41,7 @@ class TestProjectPortalTaskCreation(TestProjectPortalCommon, HttpCaseWithUserPor
         cls.project.portal_stage_id = cls.stage_backlog
 
         # Set portal allowed users
-        cls.project.portal_allowed_user_ids = cls.user_portal
+        cls.project.portal_user_ids = cls.user_portal
 
     def test_project_portal_task_creation_stage_constraint(self):
         """Test that portal task creation stage must belong to the project."""
@@ -75,7 +75,7 @@ class TestProjectPortalTaskCreation(TestProjectPortalCommon, HttpCaseWithUserPor
         self.assertFalse(user_project.is_portal_task_creation_allowed())
 
         self.project.portal_stage_id = self.stage_backlog
-        self.project.portal_allowed_user_ids = False
+        self.project.portal_user_ids = False
         self.assertFalse(user_project.is_portal_task_creation_allowed())
 
     def test_task_portal_creation(self):
@@ -159,7 +159,7 @@ class TestProjectPortalTaskCreation(TestProjectPortalCommon, HttpCaseWithUserPor
             )
         )
 
-        self.project.portal_allowed_user_ids = False
+        self.project.portal_user_ids = False
 
         # Try to edit task as portal user
         with self.assertRaises(AccessError):

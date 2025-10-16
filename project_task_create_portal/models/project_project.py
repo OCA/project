@@ -10,7 +10,7 @@ class ProjectProject(models.Model):
         help="Stage from which portal users will be allowed to create and edit tasks.",
         domain="[('project_ids', 'in', [id])]",
     )
-    portal_allowed_user_ids = fields.Many2many(
+    portal_user_ids = fields.Many2many(
         "res.users",
         relation="portal_project_allowed_user_rel",
         column1="project_id",
@@ -18,6 +18,10 @@ class ProjectProject(models.Model):
         domain=lambda self: [
             ("groups_id", "in", self.env.ref("base.group_portal").ids)
         ],
+    )
+    portal_hide_assigned_users = fields.Boolean(
+        string="Hide Assigned User",
+        help="If enabled, the portal assigned users will not be displayed in the project.",
     )
 
     @api.constrains("portal_stage_id")
@@ -33,6 +37,4 @@ class ProjectProject(models.Model):
     def is_portal_task_creation_allowed(self):
         """Check if portal task creation is allowed for this project."""
         self.ensure_one()
-        return (
-            bool(self.portal_stage_id) and self.env.user in self.portal_allowed_user_ids
-        )
+        return bool(self.portal_stage_id) and self.env.user in self.portal_user_ids
