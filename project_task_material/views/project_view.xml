@@ -19,10 +19,10 @@
                     groups="project.group_project_user"
                 >
                     <field name="material_ids">
-                        <tree editable="top">
+                        <list editable="top">
                             <field name="product_id" />
                             <field name="quantity" />
-                        </tree>
+                        </list>
                     </field>
                 </page>
             </xpath>
