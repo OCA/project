@@ -18,6 +18,14 @@
                 </div>
             </li>
         </xpath>
+        <xpath
+            expr="//li[@t-if='task.user_ids or task.partner_id']/div[@t-if='task.user_ids']"
+            position="attributes"
+        >
+            <attribute
+                name="t-if"
+            >task.user_ids and not task.project_id.portal_hide_assigned_users</attribute>
+        </xpath>
     </template>
 
     <template
