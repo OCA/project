@@ -10,7 +10,7 @@ class TestHooks(TransactionCase):
         cls.rule = "project.project_task_rule_portal"
 
     def test_post_init_hook(self):
-        post_init_hook(self.env.cr, self.env.registry)
+        post_init_hook(self.env)
         self.assertFalse(self.env.ref(self.rule).active)
 
     def test_uninstall_hook(self):
