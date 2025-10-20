@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="project_portal_task_visibility" model="ir.rule">
+        <field name="name">Project/Task: portal users: portal and following task</field>
+        <field name="model_id" ref="project.model_project_task" />
+        <field name="domain_force">[
+        ('project_id.privacy_visibility', '=', 'portal'),
+        ('active', '=', True),
+        ('message_partner_ids', 'child_of', [user.partner_id.commercial_partner_id.id]),
+        ]</field>
+        <field name="perm_read" eval="True" />
+        <field name="perm_write" eval="False" />
+        <field name="perm_create" eval="False" />
+        <field name="perm_unlink" eval="False" />
+        <field name="groups" eval="[(4, ref('base.group_portal'))]" />
+    </record>
+</odoo>

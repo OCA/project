@@ -217,8 +217,11 @@ class TestPortalProjectTaskCode(TestProjectPortalCommon, HttpCaseWithUserPortal)
 
         cls.host = "127.0.0.1"
         cls.port = tools.config["http_port"]
-        cls.base_my_url = f"http://{cls.host}:{cls.port}/my"
+        cls.base_my_url = f"http://{cls.host}:{cls.port}/my"  # noqa: E231
         cls.base_projects_url = f"{cls.base_my_url}/projects"
+
+        # Force activation because some modules might disable this rule
+        cls.env.ref("project.project_task_rule_portal").write({"active": True})
 
     def test_portal_project_tasks_list_access(self):
         self.authenticate("portal", "portal")
