@@ -3,7 +3,7 @@
 {
     "name": "Project Task Code Portal",
     "summary": "Use custom task code in customer portal",
-    "version": "16.0.1.0.0",
+    "version": "16.0.1.1.0",
     "development_status": "Beta",
     "category": "Project",
     "website": "https://github.com/OCA/project",
