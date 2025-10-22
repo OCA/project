@@ -208,8 +208,11 @@ class ProjectTask(models.Model):
         """Cancel the stock moves and remove the analytic lines created from
         stock moves when cancelling the task.
         """
-        self.mapped("move_ids.move_line_ids").write({"quantity": 0})
+        for move in self.move_ids:
+            move.action_cancel_from_task()
         # Use sudo to avoid error for users with no access to analytic
+        # Although the action_cancel_from_task() method should have deleted
+        # all analytical entries, we want to make sure there are no old records left.
         self.sudo().stock_analytic_line_ids.unlink()
         self.stock_moves_is_locked = True
         return True
