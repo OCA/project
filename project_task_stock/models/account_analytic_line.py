@@ -9,6 +9,9 @@ class AccountAnalyticLine(models.Model):
     stock_task_id = fields.Many2one(
         comodel_name="project.task", string="Project Task", ondelete="cascade"
     )
+    stock_move_id = fields.Many2one(
+        comodel_name="stock.move", string="Stock Move", ondelete="cascade", copy=False
+    )
 
     def _timesheet_postprocess_values(self, values):
         """When hr_timesheet addon is installed, in the create() and write() methods,

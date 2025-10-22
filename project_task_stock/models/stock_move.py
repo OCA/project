@@ -1,6 +1,7 @@
 # Copyright 2022-2025 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 from odoo import api, fields, models
+from odoo.tools import float_is_zero
 
 
 class StockMove(models.Model):
@@ -14,6 +15,14 @@ class StockMove(models.Model):
     raw_material_task_id = fields.Many2one(
         comodel_name="project.task", string="Task for material", check_company=True
     )
+    analytic_line_ids = fields.One2many(
+        comodel_name="account.analytic.line",
+        inverse_name="stock_move_id",
+        string="Analytic Lines",
+    )
+    show_cancel_button_in_task = fields.Boolean(
+        compute="_compute_show_cancel_button_in_task"
+    )
 
     @api.onchange("product_id")
     def _onchange_product_id(self):
@@ -23,6 +32,59 @@ class StockMove(models.Model):
         if self.raw_material_task_id:
             self.name = self.raw_material_task_id.name
         return res
+
+    def _compute_show_cancel_button_in_task(self):
+        dp = self.env["decimal.precision"].precision_get("Product Unit of Measure")
+        for item in self:
+            item.show_cancel_button_in_task = bool(
+                item.raw_material_task_id
+                and item.raw_material_task_id.stock_moves_is_locked
+                and item.raw_material_task_id.done_stock_moves
+                and item.state not in ("draft", "cancel")
+                and (
+                    (
+                        item.state == "done"
+                        and not float_is_zero(item.quantity, precision_digits=dp)
+                    )
+                    or (
+                        item.state != "done"
+                        and not float_is_zero(item.product_uom_qty, precision_digits=dp)
+                    )
+                )
+            )
+
+    def action_cancel_from_task(self):
+        self.ensure_one()
+        if not self.show_cancel_button_in_task:
+            return
+        # Use sudo to avoid error for users with no access to analytic
+        analytic_lines = self.sudo().analytic_line_ids
+        task_analytic_lines = self.raw_material_task_id.sudo().stock_analytic_line_ids
+        if analytic_lines:
+            analytic_lines.unlink()
+        elif not analytic_lines and task_analytic_lines and self.state == "done":
+            # Previously, analytic lines were not linked to the stock_move_id field,
+            # so we have to deduce which ones were linked.
+            data = self._prepare_analytic_line_from_task()
+            if data:
+                # Depending on whether the account module is installed or not, it will
+                # be filtered by one field or another.
+                f_name = "product_id" if "product_id" in data else "name"
+                f_value = data[f_name]
+                if f_name == "product_id":
+                    f_value = self.env["product.product"].browse(f_value)
+                analytic_lines = task_analytic_lines.filtered(
+                    lambda x: x.unit_amount == data["unit_amount"]
+                    and x[f_name] == f_value
+                )
+                analytic_lines.unlink()
+        # It is important to do this process at the end, so that if
+        # the _prepare_analytic_line_from_task() method is used, it has the correct
+        # value.
+        if self.state == "done":
+            self.move_line_ids.write({"quantity": 0})
+        else:
+            self._action_cancel()
 
     def _prepare_analytic_line_from_task(self):
         product = self.product_id
@@ -47,6 +109,7 @@ class StockMove(models.Model):
             "product_uom_id": self.product_uom.id,
             "company_id": analytic_account.company_id.id or self.env.company.id,
             "partner_id": task.partner_id.id or task.project_id.partner_id.id or False,
+            "stock_move_id": self.id,
             "stock_task_id": task.id,
         }
         amount_unit = product.with_context(uom=self.product_uom.id)._price_compute(
