@@ -211,6 +211,9 @@ class TestProjectTaskStock(TestProjectStockBase):
         self.assertEqual(self.move_product_a.quantity, 2)
         self.assertEqual(self.move_product_b.quantity, 1)
         self.assertTrue(self.task.sudo().stock_analytic_line_ids)
+        # We do this to test the previous behavior (when an analytic
+        # lines was not linked to a stock move).
+        self.move_product_a.analytic_line_ids.stock_move_id = False
         # action_cancel
         self.task.action_cancel()
         self.assertEqual(self.move_product_a.state, "done")

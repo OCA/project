@@ -59,6 +59,15 @@
                 <field name="product_uom_category_id" column_invisible="1" />
                 <field name="quantity" string="Consumed" readonly="1" />
                 <field name="group_id" column_invisible="1" />
+                <field name="show_cancel_button_in_task" column_invisible="1" />
+                <button
+                    name="action_cancel_from_task"
+                    type="object"
+                    class="btn-secondary"
+                    string="Cancel"
+                    invisible="not show_cancel_button_in_task"
+                    confirm="Are you sure you want to proceed?"
+                />
             </list>
         </field>
     </record>
