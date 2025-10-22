@@ -9,20 +9,20 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-03-17 09:31+0000\n"
-"PO-Revision-Date: 2021-05-14 18:47+0000\n"
-"Last-Translator: Yves Le Doeuff <yld@alliasys.fr>\n"
+"PO-Revision-Date: 2025-10-22 09:28+0000\n"
+"Last-Translator: Quentin Mondot <quentin.mondot@elabore.coop>\n"
 "Language-Team: French (https://www.transifex.com/oca/teams/23907/fr/)\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.3.2\n"
+"X-Generator: Weblate 5.10.4\n"
 
 #. module: project_task_add_very_high
 #: model:ir.model.fields.selection,name:project_task_add_very_high.selection__project_task__priority__3
 msgid "Most Important"
-msgstr ""
+msgstr "La plus importante"
 
 #. module: project_task_add_very_high
 #: model:ir.model.fields,field_description:project_task_add_very_high.field_project_task__priority
@@ -32,7 +32,7 @@ msgstr "Priorité"
 #. module: project_task_add_very_high
 #: model_terms:ir.ui.view,arch_db:project_task_add_very_high.portal_my_tasks_priority_widget_template
 msgid "Priority: {{priority_selection[task.priority or '0']}}"
-msgstr ""
+msgstr "Priorité : {{priority_selection[task.priority or '0']}}"
 
 #. module: project_task_add_very_high
 #: model:ir.model,name:project_task_add_very_high.model_project_task
