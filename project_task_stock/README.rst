@@ -47,26 +47,26 @@ To configure this module, you need to:
 
 3. Create a new operation type with the following options:
 
-   - \`Operation type\`: Task material
-   - \`Code\`: TM
-   - \`Type of operation\`: Delivery
-   - \`Default Source Location\`: WH/Stock
-   - \`Default Destination Location\`: WH/Stock/Shelf 1
+   -  \`Operation type\`: Task material
+   -  \`Code\`: TM
+   -  \`Type of operation\`: Delivery
+   -  \`Default Source Location\`: WH/Stock
+   -  \`Default Destination Location\`: WH/Stock/Shelf 1
 
 4. Go to *Project -> Configuration -> Projects*.
 
 5. Create a new project with the following options:
 
-   - \`Name\`: Task material
-   - \`Operation type\`: Task material
+   -  \`Name\`: Task material
+   -  \`Operation type\`: Task material
 
 6. Go to *Project -> Configuration -> Task Stages* and edit some
    records.
 
-   - \`In progress\`: Check Use Stock Moves option and add the created
-     project.
-   - \`Done\`: Check Use Stock Moves option + Done Stock Moves and add
-     the created project.
+   -  \`In progress\`: Check Use Stock Moves option and add the created
+      project.
+   -  \`Done\`: Check Use Stock Moves option + Done Stock Moves and add
+      the created project.
 
 Usage
 =====
@@ -86,13 +86,19 @@ Usage
 
 6. *Stock Info* tab is readonly and some buttons show in header:
 
-   - \`Check availability materials\`: Product availability will be
-     checked.
-   - \`Transfer Materials\`: Stock moves are confirmed and moved from
-     one location to another.
-   - \`Unreserve\`: Remove the reservation stock of the products.
-   - \`Cancel Materials\`: Set the moves of the products as cancelled.
-   - \`Scrap\`: Allows the defined products to be scrapped.
+   -  \`Check availability materials\`: Product availability will be
+      checked.
+   -  \`Transfer Materials\`: Stock moves are confirmed and moved from
+      one location to another.
+   -  \`Unreserve\`: Remove the reservation stock of the products.
+   -  \`Cancel Materials\`: Set the moves of the products as cancelled.
+   -  \`Scrap\`: Allows the defined products to be scrapped.
+
+Known issues / Roadmap
+======================
+
+#. Lot compatibility (similar to what happens in pickings). #. Release
+stock reserves if the task is deleted.
 
 Bug Tracker
 ===========
@@ -115,10 +121,10 @@ Authors
 Contributors
 ------------
 
-- `Tecnativa <https://www.tecnativa.com>`__:
+-  `Tecnativa <https://www.tecnativa.com>`__:
 
-  - Víctor Martínez
-  - Pedro M. Baeza
+   -  Víctor Martínez
+   -  Pedro M. Baeza
 
 Maintainers
 -----------
