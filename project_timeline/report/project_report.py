@@ -1,6 +1,8 @@
 # Copyright 2024 Tecnativa - Carlos López
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
+import re
+
 from odoo import fields, models
 
 
@@ -11,18 +13,17 @@ class ReportProjectTaskUser(models.Model):
     planned_date_end = fields.Datetime(readonly=True)
 
     def _select(self):
-        return (
-            super()._select()
-            + """,
-            t.planned_date_start,
-            t.planned_date_end"""
-        )
+        query = super()._select()
+        if not re.search(r"\bt\.planned_date_start\b", query):
+            query += ", t.planned_date_start"
+        if not re.search(r"\bt\.planned_date_end\b", query):
+            query += ", t.planned_date_end"
+        return query
 
     def _group_by(self):
-        return (
-            super()._group_by()
-            + """,
-            t.planned_date_start,
-            t.planned_date_end
-            """
-        )
+        query = super()._group_by()
+        if not re.search(r"\bt\.planned_date_start\b", query):
+            query += ", t.planned_date_start"
+        if not re.search(r"\bt\.planned_date_end\b", query):
+            query += ", t.planned_date_end"
+        return query
