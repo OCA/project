@@ -71,6 +71,12 @@ Usage
     * `Cancel Materials`: Set the moves of the products as cancelled.
     * `Scrap`: Allows the defined products to be scrapped.
 
+Known issues / Roadmap
+======================
+
+#. Lot compatibility (similar to what happens in pickings).
+#. Release stock reserves if the task is deleted.
+
 Bug Tracker
 ===========
 
