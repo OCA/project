@@ -8,7 +8,7 @@
     "name": "Project timesheet time control",
     "version": "18.0.1.0.4",
     "category": "Project",
-    "author": "Tecnativa," "Odoo Community Association (OCA)",
+    "author": "Tecnativa,Odoo Community Association (OCA)",
     "maintainers": ["victoralmau"],
     "website": "https://github.com/OCA/project",
     "depends": [
