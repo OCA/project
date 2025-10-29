@@ -39,8 +39,9 @@ class ProjectTask(models.Model):
             description = self.description if self.description else ""
             update_dict = {
                 "description": description + self.task_template_id.description,
-                "tag_ids": self.task_template_id.tag_ids.ids,
             }
+            if self.task_template_id.tag_ids:
+                update_dict["tag_ids"] = self.task_template_id.tag_ids.ids
             # trigger write on user only if in template.
             if self.task_template_id.user_id:
                 update_dict["user_id"] = self.task_template_id.user_id.id

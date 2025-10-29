@@ -58,12 +58,8 @@ class TestProjectTaskTemplate(SavepointCase):
         )
         cls.template_3 = task_template_model.create(
             {
-                "name": "Template3 - no user",
-                "tag_ids": [
-                    cls.tag_blue.id,
-                    cls.tag_white.id,
-                ],
-                "description": "This is template 3 - no user_id",
+                "name": "Template3 - no user, no tags",
+                "description": "This is template 3 - no user_id, no tags",
             }
         )
         # create project model
@@ -254,6 +250,7 @@ class TestProjectTaskTemplate(SavepointCase):
             self.test_task_1.description if self.test_task_1.description else ""
         )
         prev_user_id = self.test_task_1.user_id
+        prev_tag_ids = self.test_task_1.tag_ids.ids
         # Set the task_template_id of test_task_1 to template_3.id,
         self.test_task_1.task_template_id = self.template_3.id
         # Trigger the _onchange_task_template_id method
@@ -269,8 +266,8 @@ class TestProjectTaskTemplate(SavepointCase):
         # Verify that the tag_ids of test_task_1 are equal to the tag_ids of template_3
         self.assertEqual(
             self.test_task_1.tag_ids.ids,
-            self.template_3.tag_ids.ids,
-            msg="The task 1 tag IDs must be equal to the template 1 tag IDs",
+            prev_tag_ids,
+            msg="The task 1 tags must remain unchanged",
         )
 
         # Verify that the description of test_task_1 is
