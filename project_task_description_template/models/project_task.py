@@ -36,10 +36,12 @@ class ProjectTask(models.Model):
     @api.onchange("task_template_id")
     def _onchange_task_template_id(self):
         if self.task_template_id:
-            self.update(
-                {
-                    "user_id": self.task_template_id.user_id.id,
-                    "tag_ids": self.task_template_id.tag_ids.ids,
-                    "description": self.task_template_id.description,
-                }
-            )
+            description = self.description if self.description else ""
+            update_dict = {
+                "description": description + self.task_template_id.description,
+                "tag_ids": self.task_template_id.tag_ids.ids,
+            }
+            # trigger write on user only if in template.
+            if self.task_template_id.user_id:
+                update_dict["user_id"] = self.task_template_id.user_id.id
+            self.update(update_dict)

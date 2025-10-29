@@ -56,6 +56,16 @@ class TestProjectTaskTemplate(SavepointCase):
                 "description": "This is template 2",
             }
         )
+        cls.template_3 = task_template_model.create(
+            {
+                "name": "Template3 - no user",
+                "tag_ids": [
+                    cls.tag_blue.id,
+                    cls.tag_white.id,
+                ],
+                "description": "This is template 3 - no user_id",
+            }
+        )
         # create project model
         project_model = cls.env["project.project"]
         # create projects : "Project 1" and add templates 1-2
@@ -105,8 +115,11 @@ class TestProjectTaskTemplate(SavepointCase):
     def test_task_1_template_1(self):
         """Test the behavior when choosing a template."""
         # Set the task_template_id of test_task_1 to template_1.id
+        prev_description = (
+            self.test_task_1.description if self.test_task_1.description else ""
+        )
         self.test_task_1.task_template_id = self.template_1.id
-
+        # saving previous description
         # Trigger the _onchange_task_template_id method
         self.test_task_1._onchange_task_template_id()
 
@@ -129,12 +142,16 @@ class TestProjectTaskTemplate(SavepointCase):
         # equal to the description of template_1
         self.assertEqual(
             self.test_task_1.description,
-            self.template_1.description,
-            msg="The task 1 description must be equal to the template 1 description",
+            prev_description + self.template_1.description,
+            msg="The task 1 desc must be = to '%s' with template 1 desc appended"
+            % prev_description,
         )
 
     def test_task_1_template_2(self):
         """Test the behavior when choosing a different template (template_2)."""
+        prev_description = (
+            self.test_task_1.description if self.test_task_1.description else ""
+        )
         # Set the task_template_id of test_task_1 to template_2.id
         self.test_task_1.task_template_id = self.template_2.id
 
@@ -160,14 +177,18 @@ class TestProjectTaskTemplate(SavepointCase):
         # equal to the description of template_2
         self.assertEqual(
             self.test_task_1.description,
-            self.template_2.description,
-            msg="The task 1 description must be equal to the template 2 description",
+            prev_description + self.template_2.description,
+            msg="The task 1 desc must be = to '%s' with template 2 desc appended"
+            % prev_description,
         )
 
     def test_task_1_template_false(self):
         """Test the behavior when setting task_template_id to False
         after choosing a template.
         """
+        prev_description = (
+            self.test_task_1.description if self.test_task_1.description else ""
+        )
         # Set the task_template_id of test_task_1 to template_2.id
         self.test_task_1.task_template_id = self.template_2.id
 
@@ -200,8 +221,9 @@ class TestProjectTaskTemplate(SavepointCase):
         # equal to the description of template_2
         self.assertEqual(
             self.test_task_1.description,
-            self.template_2.description,
-            msg="The task 1 description must be equal to the template 2 description",
+            prev_description + self.template_2.description,
+            msg="The task 1 desc must be = to '%s' with template 2 desc appended"
+            % prev_description,
         )
 
     def test_task_2_template_2(self):
@@ -224,6 +246,41 @@ class TestProjectTaskTemplate(SavepointCase):
         self.project_2.task_template_ids = [self.template_1.id]
         self.project_2._onchange_task_template_ids()
         self.assertFalse(self.project_2.default_task_template_id, msg="Must be empty")
+
+    def test_task_1_template_3(self):
+        """Test the behavior when choosing a template without user_id."""
+        # saving previous description
+        prev_description = (
+            self.test_task_1.description if self.test_task_1.description else ""
+        )
+        prev_user_id = self.test_task_1.user_id
+        # Set the task_template_id of test_task_1 to template_3.id,
+        self.test_task_1.task_template_id = self.template_3.id
+        # Trigger the _onchange_task_template_id method
+        self.test_task_1._onchange_task_template_id()
+        # Verify that the user_id of test_task_1 has remained the same.
+        # template3 has nor user_id and should not override or cancel user_id
+        self.assertEqual(
+            self.test_task_1.user_id.id,
+            prev_user_id.id,
+            msg="The task 1 user #id must be unchanged, template 3 has no user_id",
+        )
+
+        # Verify that the tag_ids of test_task_1 are equal to the tag_ids of template_3
+        self.assertEqual(
+            self.test_task_1.tag_ids.ids,
+            self.template_3.tag_ids.ids,
+            msg="The task 1 tag IDs must be equal to the template 1 tag IDs",
+        )
+
+        # Verify that the description of test_task_1 is
+        # equal to the description of template_3
+        self.assertEqual(
+            self.test_task_1.description,
+            prev_description + self.template_3.description,
+            msg="The task 1 desc must be = to '%s' with template 1 desc appended"
+            % prev_description,
+        )
 
     def test_change_stage(self):
         """Test the behavior when changing the stage of a task."""
