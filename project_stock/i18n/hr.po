@@ -13,8 +13,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 4.17\n"
 
 #. module: project_stock
@@ -54,6 +54,7 @@ msgstr "Analitička stavka"
 
 #. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_task__stock_analytic_line_ids
+#: model:ir.model.fields,field_description:project_stock.field_stock_move__analytic_line_ids
 msgid "Analytic Lines"
 msgstr "Analitičke stavke"
 
@@ -69,12 +70,18 @@ msgid "Analytic date"
 msgstr "Datum analitike"
 
 #. module: project_stock
+#: model_terms:ir.ui.view,arch_db:project_stock.view_stock_move_raw_tree
+msgid "Are you sure you want to proceed?"
+msgstr ""
+
+#. module: project_stock
 #: model:ir.model.fields.selection,name:project_stock.selection__project_task__stock_state__assigned
 msgid "Assigned"
 msgstr "Dodijeljeno"
 
 #. module: project_stock
 #: model:ir.model.fields.selection,name:project_stock.selection__project_task__stock_state__cancel
+#: model_terms:ir.ui.view,arch_db:project_stock.view_stock_move_raw_tree
 msgid "Cancel"
 msgstr "Otkaži"
 
@@ -250,6 +257,11 @@ msgid "Scraps"
 msgstr "Otpisi"
 
 #. module: project_stock
+#: model:ir.model.fields,field_description:project_stock.field_stock_move__show_cancel_button_in_task
+msgid "Show Cancel Button In Task"
+msgstr ""
+
+#. module: project_stock
 #: model:ir.model.fields,field_description:project_stock.field_project_project__location_id
 #: model:ir.model.fields,field_description:project_stock.field_project_task__location_id
 msgid "Source Location"
@@ -267,6 +279,7 @@ msgstr "Informacije o skladištu"
 
 #. module: project_stock
 #: model:ir.model,name:project_stock.model_stock_move
+#: model:ir.model.fields,field_description:project_stock.field_account_analytic_line__stock_move_id
 msgid "Stock Move"
 msgstr "Skladišno kretanje"
 
