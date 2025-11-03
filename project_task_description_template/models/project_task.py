@@ -1,5 +1,6 @@
 # Copyright (C) 2023 Cetmix OÜ
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/lgpl)
+import re
 
 from odoo import api, fields, models
 
@@ -36,9 +37,13 @@ class ProjectTask(models.Model):
     @api.onchange("task_template_id")
     def _onchange_task_template_id(self):
         if self.task_template_id:
-            description = self.description if self.description else ""
+            description = self.description or ""
+            template_desc = self.task_template_id.description or ""
+            # Avoid multiple template additions when multiple onchanges are triggered
+            if not re.search(rf"{re.escape(template_desc)}", description):
+                description += template_desc
             update_dict = {
-                "description": description + self.task_template_id.description,
+                "description": description,
             }
             if self.task_template_id.tag_ids:
                 update_dict["tag_ids"] = self.task_template_id.tag_ids.ids
