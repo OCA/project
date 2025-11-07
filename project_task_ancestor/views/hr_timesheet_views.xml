@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 Moduon Team S.L.
+     License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0) -->
+<odoo>
+    <record id="view_account_analytic_line_filter" model="ir.ui.view">
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_line_filter" />
+        <field name="arch" type="xml">
+            <field name="date" position="after">
+                <field name="partner_id" />
+                <field name="ancestor_task_id" />
+            </field>
+            <group position="inside">
+                <filter
+                    string="Ancestor Task"
+                    name="groupby_parent_task"
+                    domain="[]"
+                    context="{'group_by': 'ancestor_task_id'}"
+                />
+            </group>
+        </field>
+    </record>
+</odoo>
