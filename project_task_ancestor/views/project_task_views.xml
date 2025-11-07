@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 Moduon Team S.L.
+License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0) -->
+<odoo>
+    <record id="view_task_search_form" model="ir.ui.view">
+        <field name="inherit_id" ref="project.view_task_search_form" />
+        <field name="model">project.task</field>
+        <field name="arch" type="xml">
+            <field name="stage_id" position="after">
+                <field name="ancestor_id" />
+            </field>
+            <group position="inside">
+                <filter
+                    string="Ancestor Task"
+                    name="groupby_ancestor_task"
+                    context="{'group_by': 'ancestor_id'}"
+                />
+            </group>
+        </field>
+    </record>
+</odoo>
