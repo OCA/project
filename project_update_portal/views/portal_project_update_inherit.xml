@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Add breadcrumbs for updates -->
+    <template
+        id="portal_layout_updates"
+        name="Portal layout: updates breadcrumb"
+        inherit_id="project.portal_layout"
+        priority="50"
+    >
+        <!-- Adjust project name to not use col-8 col-lg-10 when in updates -->
+        <xpath expr="//li[@t-elif='project']" position="attributes">
+            <attribute
+                name="t-attf-class"
+            >breadcrumb-item #{'active ' if not project or page_name in ['project_updates', 'project_update'] else ''} text-truncate #{'col-8 col-lg-10' if page_name not in ['project_updates', 'project_update'] else ''}</attribute>
+        </xpath>
+
+        <!-- Add Updates after project name -->
+        <xpath expr="//li[@t-elif='project']" position="after">
+            <li
+                t-if="page_name in ['project_updates', 'project_update'] and project"
+                t-attf-class="breadcrumb-item #{'active ' if page_name == 'project_updates' else ''}"
+            >
+                <a
+                    t-if="page_name == 'project_update'"
+                    t-attf-href="/my/projects/{{ project.id }}/updates?{{ keep_query() }}"
+                >Updates</a>
+                <t t-else="">Updates</t>
+            </li>
+            <li
+                t-if="page_name == 'project_update' and update and project"
+                class="breadcrumb-item active text-truncate"
+            >
+                <span t-esc="update.name" />
+            </li>
+        </xpath>
+    </template>
+
+    <!-- Add link to updates on project page -->
+    <template
+        id="portal_my_project_updates_link"
+        name="Portal: Add Updates Link to Project"
+        inherit_id="project.portal_my_project"
+        priority="50"
+    >
+        <xpath expr="//t[@t-call='portal.portal_searchbar']" position="after">
+            <div class="mb-3">
+                <a
+                    t-attf-href="/my/projects/{{ project.id }}/updates"
+                    class="btn btn-primary"
+                >
+                    <i class="fa fa-list" /> View Updates
+                </a>
+            </div>
+        </xpath>
+    </template>
+</odoo>
