@@ -20,7 +20,7 @@ class ProjectTask(models.Model):
             return False
 
         # Portal users can only edit their own tasks
-        if self.create_uid != self.env.user:
+        if self.create_uid.id != self.env.context['uid']:
             return False
         return True
 
