@@ -37,8 +37,7 @@ class ProjectTask(models.Model):
         for vals in vals_list:
             if vals.get("code", "/") == "/":
                 vals["code"] = (
-                    # `sudo()` for portal users
-                    self.env["ir.sequence"].sudo().next_by_code("project.task") or "/"
+                    self.sudo().env["ir.sequence"].next_by_code("project.task") or "/"
                 )
         return super().create(vals_list)
 
