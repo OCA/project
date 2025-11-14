@@ -29,7 +29,7 @@ class ProjectTask(models.Model):
         for vals in vals_list:
             if vals.get("code", "/") == "/":
                 vals["code"] = (
-                    self.env["ir.sequence"].next_by_code("project.task") or "/"
+                    self.sudo().env["ir.sequence"].next_by_code("project.task") or "/"
                 )
         return super().create(vals_list)
 
