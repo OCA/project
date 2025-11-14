@@ -280,3 +280,23 @@ class TestPortalProjectTaskCode(TestProjectPortalCommon, HttpCaseWithUserPortal)
         url = f"{self.base_projects_url}/{other_project.id}/task/{task.code}"
         response = self.url_open(url)
         self.assertEqual(response.url, self.base_my_url)
+
+    def test_portal_url(self):
+        """Test that portal_url and portal_url_visible are correctly computed."""
+        other_project = self.env["project.project"].create(
+            {
+                "name": "Closed project",
+                "privacy_visibility": "portal",
+            }
+        )
+        task = self.env["project.task"].create(
+            {
+                "name": "Hidden task",
+                "project_id": other_project.id,
+                "code": "HIDDEN-CODE",
+            }
+        )
+        self.authenticate("portal", "portal")
+        url = f"{self.base_projects_url}/{other_project.id}/task/{task.code}"
+        self.assertEqual(task.portal_url_visible, True)
+        self.assertEqual(task.portal_url, url)

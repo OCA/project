@@ -14,5 +14,7 @@
     ],
     "data": [
         "templates/portal_templates.xml",
+        "views/project_sharing_views.xml",
+        "views/project_views.xml",
     ],
 }
