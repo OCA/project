@@ -71,6 +71,8 @@ class StockMove(models.Model):
                 # be filtered by one field or another.
                 f_name = "product_id" if "product_id" in data else "name"
                 f_value = data[f_name]
+                if f_name == "product_id":
+                    f_value = self.env["product.product"].browse(f_value)
                 analytic_lines = task_analytic_lines.filtered(
                     lambda x: x.unit_amount == data["unit_amount"]
                     and x[f_name] == f_value
