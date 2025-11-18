@@ -13,6 +13,15 @@ class ProjectTask(models.Model):
 
     @api.onchange("description_template_id")
     def _onchange_description_template_id(self):
-        if self.description_template_id:
-            description = self.description if self.description else ""
-            self.description = description + self.description_template_id.description
+        for task in self:
+            if not task.description_template_id:
+                continue
+            template_text = task.description_template_id.description or ""
+            # fields are html, str and compare them
+            template_text = str(template_text)
+            current = task.description or ""
+            current = str(current)
+            # Avoid duplicating the same template content ANYWHERE in the description
+            if current == template_text or template_text in current:
+                continue
+            task.description = current + template_text
