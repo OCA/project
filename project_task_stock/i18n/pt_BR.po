@@ -34,18 +34,8 @@ msgstr "Permite cancelar a Reserva de Inventário"
 
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__analytic_distribution
-msgid "Analytic"
-msgstr "Analítico"
-
-#. module: project_task_stock
-#: model:ir.model.fields,field_description:project_task_stock.field_project_task__stock_analytic_distribution
 msgid "Analytic Distribution"
 msgstr "Distribuição Analítica"
-
-#. module: project_task_stock
-#: model:ir.model.fields,field_description:project_task_stock.field_project_task__analytic_distribution_search
-msgid "Analytic Distribution Search"
-msgstr "Pesquisa de Distribuição Analítica"
 
 #. module: project_task_stock
 #: model:ir.model,name:project_task_stock.model_account_analytic_line
@@ -53,7 +43,7 @@ msgid "Analytic Line"
 msgstr "Linha Analítica"
 
 #. module: project_task_stock
-#: model:ir.model.fields,field_description:project_task_stock.field_project_task__stock_analytic_line_ids
+#: model:ir.model.fields,field_description:project_task_stock.field_stock_move__analytic_line_ids
 msgid "Analytic Lines"
 msgstr "Linhas Analíticas"
 
@@ -63,10 +53,9 @@ msgid "Analytic Precision"
 msgstr "Precisão Analítica"
 
 #. module: project_task_stock
-#: model:ir.model.fields,field_description:project_task_stock.field_project_project__stock_analytic_date
-#: model:ir.model.fields,field_description:project_task_stock.field_project_task__stock_analytic_date
-msgid "Analytic date"
-msgstr "Data Analítica"
+#: model_terms:ir.ui.view,arch_db:project_task_stock.view_stock_move_raw_list
+msgid "Are you sure you want to proceed?"
+msgstr ""
 
 #. module: project_task_stock
 #: model:ir.model.fields.selection,name:project_task_stock.selection__project_task__stock_state__assigned
@@ -75,6 +64,7 @@ msgstr "Atribuído"
 
 #. module: project_task_stock
 #: model:ir.model.fields.selection,name:project_task_stock.selection__project_task__stock_state__cancel
+#: model_terms:ir.ui.view,arch_db:project_task_stock.view_stock_move_raw_list
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -99,7 +89,7 @@ msgid "Confirmed"
 msgstr "Confirmado"
 
 #. module: project_task_stock
-#: model_terms:ir.ui.view,arch_db:project_task_stock.view_stock_move_raw_tree
+#: model_terms:ir.ui.view,arch_db:project_task_stock.view_stock_move_raw_list
 msgid "Consumed"
 msgstr "Consumido"
 
@@ -120,6 +110,11 @@ msgid "Destination Location"
 msgstr "Local de Destino"
 
 #. module: project_task_stock
+#: model:ir.model.fields,field_description:project_task_stock.field_project_task__distribution_analytic_account_ids
+msgid "Distribution Analytic Account"
+msgstr ""
+
+#. module: project_task_stock
 #: model:ir.model.fields.selection,name:project_task_stock.selection__project_task__stock_state__done
 msgid "Done"
 msgstr "Feito"
@@ -131,7 +126,7 @@ msgid "Done Stock Moves"
 msgstr "Movimentos de Estoque Feitos"
 
 #. module: project_task_stock
-#: model_terms:ir.ui.view,arch_db:project_task_stock.view_stock_move_raw_tree
+#: model_terms:ir.ui.view,arch_db:project_task_stock.view_stock_move_raw_list
 msgid "Forecasted Report"
 msgstr "Relatório Previsto"
 
@@ -169,7 +164,6 @@ msgstr "Movimentações de Inventário"
 #. module: project_task_stock
 #. odoo-python
 #: code:addons/project_task_stock/models/project_task.py:0
-#, python-format
 msgid "It is not possible to change this with reserved movements in tasks."
 msgstr "Não é possível alterar isso com movimentos reservados em tarefas."
 
@@ -225,16 +219,10 @@ msgid "Related Task"
 msgstr "Tarefa Relacionada"
 
 #. module: project_task_stock
-#: model_terms:ir.ui.view,arch_db:project_task_stock.view_stock_move_raw_tree
-msgid "Reserved"
-msgstr "Reservado"
-
-#. module: project_task_stock
 #. odoo-python
 #: code:addons/project_task_stock/models/project_task.py:0
 #: model:ir.model,name:project_task_stock.model_stock_scrap
 #: model_terms:ir.ui.view,arch_db:project_task_stock.view_task_form2
-#, python-format
 msgid "Scrap"
 msgstr "Sucatear"
 
@@ -250,6 +238,11 @@ msgid "Scraps"
 msgstr "Sucatas"
 
 #. module: project_task_stock
+#: model:ir.model.fields,field_description:project_task_stock.field_stock_move__show_cancel_button_in_task
+msgid "Show Cancel Button In Task"
+msgstr ""
+
+#. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_project_project__location_id
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__location_id
 msgid "Source Location"
@@ -261,12 +254,29 @@ msgid "Stock"
 msgstr "Estoque"
 
 #. module: project_task_stock
+#: model:ir.model.fields,field_description:project_task_stock.field_project_project__stock_analytic_date
+#: model:ir.model.fields,field_description:project_task_stock.field_project_task__stock_analytic_date
+msgid "Stock Analytic Date"
+msgstr ""
+
+#. module: project_task_stock
+#: model:ir.model.fields,field_description:project_task_stock.field_project_task__stock_analytic_distribution
+msgid "Stock Analytic Distribution"
+msgstr ""
+
+#. module: project_task_stock
+#: model:ir.model.fields,field_description:project_task_stock.field_project_task__stock_analytic_line_ids
+msgid "Stock Analytic Lines"
+msgstr ""
+
+#. module: project_task_stock
 #: model_terms:ir.ui.view,arch_db:project_task_stock.view_task_form2
 msgid "Stock Info"
 msgstr "Info Estoque"
 
 #. module: project_task_stock
 #: model:ir.model,name:project_task_stock.model_stock_move
+#: model:ir.model.fields,field_description:project_task_stock.field_account_analytic_line__stock_move_id
 msgid "Stock Move"
 msgstr "Mover Estoque"
 
@@ -319,7 +329,7 @@ msgid "Technical field to check when we can unreserve"
 msgstr "Campo técnico para verificar quando podemos cancelar a reserva"
 
 #. module: project_task_stock
-#: model_terms:ir.ui.view,arch_db:project_task_stock.view_stock_move_raw_tree
+#: model_terms:ir.ui.view,arch_db:project_task_stock.view_stock_move_raw_list
 msgid "To Consume"
 msgstr "Consumir"
 
@@ -343,3 +353,15 @@ msgstr "Cancelar reserva"
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task_type__use_stock_moves
 msgid "Use Stock Moves"
 msgstr "Usar Movimentos de Estoque"
+
+#~ msgid "Analytic"
+#~ msgstr "Analítico"
+
+#~ msgid "Analytic Distribution Search"
+#~ msgstr "Pesquisa de Distribuição Analítica"
+
+#~ msgid "Analytic date"
+#~ msgstr "Data Analítica"
+
+#~ msgid "Reserved"
+#~ msgstr "Reservado"

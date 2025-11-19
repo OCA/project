@@ -13,8 +13,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Generator: Weblate 4.17\n"
 
 #. module: project_task_stock
@@ -34,17 +34,7 @@ msgstr "Dozvoli odrezervaciju stavaka"
 
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__analytic_distribution
-msgid "Analytic"
-msgstr ""
-
-#. module: project_task_stock
-#: model:ir.model.fields,field_description:project_task_stock.field_project_task__stock_analytic_distribution
 msgid "Analytic Distribution"
-msgstr ""
-
-#. module: project_task_stock
-#: model:ir.model.fields,field_description:project_task_stock.field_project_task__analytic_distribution_search
-msgid "Analytic Distribution Search"
 msgstr ""
 
 #. module: project_task_stock
@@ -53,7 +43,7 @@ msgid "Analytic Line"
 msgstr "Analitička stavka"
 
 #. module: project_task_stock
-#: model:ir.model.fields,field_description:project_task_stock.field_project_task__stock_analytic_line_ids
+#: model:ir.model.fields,field_description:project_task_stock.field_stock_move__analytic_line_ids
 msgid "Analytic Lines"
 msgstr "Analitičke stavke"
 
@@ -63,10 +53,9 @@ msgid "Analytic Precision"
 msgstr ""
 
 #. module: project_task_stock
-#: model:ir.model.fields,field_description:project_task_stock.field_project_project__stock_analytic_date
-#: model:ir.model.fields,field_description:project_task_stock.field_project_task__stock_analytic_date
-msgid "Analytic date"
-msgstr "Datum analitike"
+#: model_terms:ir.ui.view,arch_db:project_task_stock.view_stock_move_raw_list
+msgid "Are you sure you want to proceed?"
+msgstr ""
 
 #. module: project_task_stock
 #: model:ir.model.fields.selection,name:project_task_stock.selection__project_task__stock_state__assigned
@@ -75,6 +64,7 @@ msgstr "Dodijeljeno"
 
 #. module: project_task_stock
 #: model:ir.model.fields.selection,name:project_task_stock.selection__project_task__stock_state__cancel
+#: model_terms:ir.ui.view,arch_db:project_task_stock.view_stock_move_raw_list
 msgid "Cancel"
 msgstr "Otkaži"
 
@@ -99,7 +89,7 @@ msgid "Confirmed"
 msgstr "Potvrđeno"
 
 #. module: project_task_stock
-#: model_terms:ir.ui.view,arch_db:project_task_stock.view_stock_move_raw_tree
+#: model_terms:ir.ui.view,arch_db:project_task_stock.view_stock_move_raw_list
 msgid "Consumed"
 msgstr "Utrošeno"
 
@@ -120,6 +110,11 @@ msgid "Destination Location"
 msgstr "Odredišna lokacija"
 
 #. module: project_task_stock
+#: model:ir.model.fields,field_description:project_task_stock.field_project_task__distribution_analytic_account_ids
+msgid "Distribution Analytic Account"
+msgstr ""
+
+#. module: project_task_stock
 #: model:ir.model.fields.selection,name:project_task_stock.selection__project_task__stock_state__done
 msgid "Done"
 msgstr "Završeno"
@@ -131,7 +126,7 @@ msgid "Done Stock Moves"
 msgstr "Završena skladišna kretanja"
 
 #. module: project_task_stock
-#: model_terms:ir.ui.view,arch_db:project_task_stock.view_stock_move_raw_tree
+#: model_terms:ir.ui.view,arch_db:project_task_stock.view_stock_move_raw_list
 msgid "Forecasted Report"
 msgstr ""
 
@@ -168,7 +163,6 @@ msgstr "Kretanja inventure"
 #. module: project_task_stock
 #. odoo-python
 #: code:addons/project_task_stock/models/project_task.py:0
-#, python-format
 msgid "It is not possible to change this with reserved movements in tasks."
 msgstr ""
 "Ovo nije moguće mijenjati na rezerviranim skladišnim kretanjima u zadacima."
@@ -225,16 +219,10 @@ msgid "Related Task"
 msgstr "Povezani zadatak"
 
 #. module: project_task_stock
-#: model_terms:ir.ui.view,arch_db:project_task_stock.view_stock_move_raw_tree
-msgid "Reserved"
-msgstr "Rezervirano"
-
-#. module: project_task_stock
 #. odoo-python
 #: code:addons/project_task_stock/models/project_task.py:0
 #: model:ir.model,name:project_task_stock.model_stock_scrap
 #: model_terms:ir.ui.view,arch_db:project_task_stock.view_task_form2
-#, python-format
 msgid "Scrap"
 msgstr "Otpis"
 
@@ -250,6 +238,11 @@ msgid "Scraps"
 msgstr "Otpisi"
 
 #. module: project_task_stock
+#: model:ir.model.fields,field_description:project_task_stock.field_stock_move__show_cancel_button_in_task
+msgid "Show Cancel Button In Task"
+msgstr ""
+
+#. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_project_project__location_id
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__location_id
 msgid "Source Location"
@@ -261,12 +254,29 @@ msgid "Stock"
 msgstr "Skladište"
 
 #. module: project_task_stock
+#: model:ir.model.fields,field_description:project_task_stock.field_project_project__stock_analytic_date
+#: model:ir.model.fields,field_description:project_task_stock.field_project_task__stock_analytic_date
+msgid "Stock Analytic Date"
+msgstr ""
+
+#. module: project_task_stock
+#: model:ir.model.fields,field_description:project_task_stock.field_project_task__stock_analytic_distribution
+msgid "Stock Analytic Distribution"
+msgstr ""
+
+#. module: project_task_stock
+#: model:ir.model.fields,field_description:project_task_stock.field_project_task__stock_analytic_line_ids
+msgid "Stock Analytic Lines"
+msgstr ""
+
+#. module: project_task_stock
 #: model_terms:ir.ui.view,arch_db:project_task_stock.view_task_form2
 msgid "Stock Info"
 msgstr "Informacije o skladištu"
 
 #. module: project_task_stock
 #: model:ir.model,name:project_task_stock.model_stock_move
+#: model:ir.model.fields,field_description:project_task_stock.field_account_analytic_line__stock_move_id
 msgid "Stock Move"
 msgstr "Skladišno kretanje"
 
@@ -319,7 +329,7 @@ msgid "Technical field to check when we can unreserve"
 msgstr "Tehničko polje za provjeru kada možemo odrezervirati"
 
 #. module: project_task_stock
-#: model_terms:ir.ui.view,arch_db:project_task_stock.view_stock_move_raw_tree
+#: model_terms:ir.ui.view,arch_db:project_task_stock.view_stock_move_raw_list
 msgid "To Consume"
 msgstr "Za utrošiti"
 
@@ -343,3 +353,9 @@ msgstr "Odrezerviraj"
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task_type__use_stock_moves
 msgid "Use Stock Moves"
 msgstr "Koristi skladišna kretanja"
+
+#~ msgid "Analytic date"
+#~ msgstr "Datum analitike"
+
+#~ msgid "Reserved"
+#~ msgstr "Rezervirano"
