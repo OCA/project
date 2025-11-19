@@ -43,9 +43,19 @@ msgid "Analytic Line"
 msgstr "Línea analítica"
 
 #. module: project_task_stock
+#: model:ir.model.fields,field_description:project_task_stock.field_stock_move__analytic_line_ids
+msgid "Analytic Lines"
+msgstr ""
+
+#. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__analytic_precision
 msgid "Analytic Precision"
 msgstr "Precisión analítica"
+
+#. module: project_task_stock
+#: model_terms:ir.ui.view,arch_db:project_task_stock.view_stock_move_raw_list
+msgid "Are you sure you want to proceed?"
+msgstr ""
 
 #. module: project_task_stock
 #: model:ir.model.fields.selection,name:project_task_stock.selection__project_task__stock_state__assigned
@@ -54,6 +64,7 @@ msgstr "Asignado"
 
 #. module: project_task_stock
 #: model:ir.model.fields.selection,name:project_task_stock.selection__project_task__stock_state__cancel
+#: model_terms:ir.ui.view,arch_db:project_task_stock.view_stock_move_raw_list
 msgid "Cancel"
 msgstr "Cancelar"
 
@@ -226,6 +237,11 @@ msgid "Scraps"
 msgstr "Desechos"
 
 #. module: project_task_stock
+#: model:ir.model.fields,field_description:project_task_stock.field_stock_move__show_cancel_button_in_task
+msgid "Show Cancel Button In Task"
+msgstr ""
+
+#. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_project_project__location_id
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__location_id
 msgid "Source Location"
@@ -259,6 +275,7 @@ msgstr "Información de stock"
 
 #. module: project_task_stock
 #: model:ir.model,name:project_task_stock.model_stock_move
+#: model:ir.model.fields,field_description:project_task_stock.field_account_analytic_line__stock_move_id
 msgid "Stock Move"
 msgstr "Movimiento de stock"
 
