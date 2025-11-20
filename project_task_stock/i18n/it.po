@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 14.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2024-06-14 17:43+0000\n"
+"PO-Revision-Date: 2025-11-20 16:42+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.17\n"
+"X-Generator: Weblate 5.10.4\n"
 
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__allow_moves_action_assign
@@ -54,7 +54,7 @@ msgstr "Precisione analitica"
 #. module: project_task_stock
 #: model_terms:ir.ui.view,arch_db:project_task_stock.view_stock_move_raw_list
 msgid "Are you sure you want to proceed?"
-msgstr ""
+msgstr "Si è sicuri di voler procedere?"
 
 #. module: project_task_stock
 #: model:ir.model.fields.selection,name:project_task_stock.selection__project_task__stock_state__assigned
@@ -111,7 +111,7 @@ msgstr "Ubicazione di destinazione"
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__distribution_analytic_account_ids
 msgid "Distribution Analytic Account"
-msgstr ""
+msgstr "Conto distribuzione analitica"
 
 #. module: project_task_stock
 #: model:ir.model.fields.selection,name:project_task_stock.selection__project_task__stock_state__done
@@ -239,7 +239,7 @@ msgstr "Scarti"
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_stock_move__show_cancel_button_in_task
 msgid "Show Cancel Button In Task"
-msgstr ""
+msgstr "Visualizza pulsante annulla nel task"
 
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_project_project__location_id
@@ -256,17 +256,17 @@ msgstr "Giacenza"
 #: model:ir.model.fields,field_description:project_task_stock.field_project_project__stock_analytic_date
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__stock_analytic_date
 msgid "Stock Analytic Date"
-msgstr ""
+msgstr "Data analitica magazzino"
 
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__stock_analytic_distribution
 msgid "Stock Analytic Distribution"
-msgstr ""
+msgstr "Distribuzione analitica magazzino"
 
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__stock_analytic_line_ids
 msgid "Stock Analytic Lines"
-msgstr ""
+msgstr "Righe analitiche magazzino"
 
 #. module: project_task_stock
 #: model_terms:ir.ui.view,arch_db:project_task_stock.view_task_form2
