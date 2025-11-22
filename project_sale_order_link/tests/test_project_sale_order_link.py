@@ -167,13 +167,11 @@ class TestProjectSaleOrderLink(TransactionCase):
         cls.employee_user = cls.env["hr.employee"].create(
             {
                 "name": "Employee User",
-                "timesheet_cost": 15,
             }
         )
         cls.employee_manager = cls.env["hr.employee"].create(
             {
                 "name": "Employee Manager",
-                "timesheet_cost": 45,
             }
         )
 
