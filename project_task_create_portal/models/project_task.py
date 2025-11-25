@@ -12,6 +12,7 @@ class ProjectTask(models.Model):
     def check_portal_edit_access(self):
         """Check if the current user has portal access to edit this task."""
         # Portal users can only access tasks in projects with portal task creation enabled
+        self.ensure_one()
         if not self.project_id.is_portal_task_creation_allowed():
             return False
 
@@ -20,7 +21,7 @@ class ProjectTask(models.Model):
             return False
 
         # Portal users can only edit their own tasks
-        if self.create_uid != self.env.user:
+        if self.create_uid.id != self.env.context.get("uid", self.env.user.id):
             return False
         return True
 

@@ -37,4 +37,8 @@ class ProjectProject(models.Model):
     def is_portal_task_creation_allowed(self):
         """Check if portal task creation is allowed for this project."""
         self.ensure_one()
-        return bool(self.portal_stage_id) and self.env.user in self.portal_user_ids
+        return (
+            bool(self.portal_stage_id)
+            and self.env.context.get("uid", self.env.user.id)
+            in self.portal_user_ids.ids
+        )

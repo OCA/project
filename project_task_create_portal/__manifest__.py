@@ -1,5 +1,5 @@
 {
-    "name": "Project Portal Task Creation",
+    "name": "Project Portal Own Task Management",
     "version": "16.0.1.0.0",
     "summary": "Allow portal users to create and edit their own tasks"
     "from the portal only in a project's pre-configured task stage.",

@@ -8,8 +8,8 @@
         <field name="arch" type="xml">
             <group name="extra_settings" position="before">
                 <group
-                    string="Allow Create Task In Portal"
-                    name="allow_create_task_in_portal"
+                    string="Allow Create and Edit Task In Portal"
+                    name="allow_create_and_edit_task_in_portal"
                 >
                     <field name="portal_stage_id" />
                     <field
