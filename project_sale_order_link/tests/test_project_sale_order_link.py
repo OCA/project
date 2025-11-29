@@ -175,6 +175,38 @@ class TestProjectSaleOrderLink(TransactionCase):
             }
         )
 
+    def _link_project_with_all_sale_sources(self):
+        """Helper that fills every compute dependency with distinct SO lines."""
+        self.sale_order1.action_confirm()
+        self.sale_order2.action_confirm()
+        self.sale_order3.action_confirm()
+        self.sale_order4.action_confirm()
+        self.project_test.sale_line_id = self.so_line_order2
+        self.project_test.write(
+            {
+                "sale_line_employee_ids": [
+                    (
+                        0,
+                        0,
+                        {
+                            "employee_id": self.employee_user.id,
+                            "sale_line_id": self.so_line_order3.id,
+                        },
+                    )
+                ]
+            }
+        )
+        self.env["account.analytic.line"].create(
+            {
+                "name": "Test Line",
+                "project_id": self.project_test.id,
+                "unit_amount": 5,
+                "employee_id": self.employee_manager.id,
+                "so_line": self.so_line_order4.id,
+            }
+        )
+        return self.project_test.sale_order_link_ids
+
     def test_project_sale_order_link(self):
         self.sale_order1.action_confirm()
         self.sale_order2.action_confirm()
@@ -222,3 +254,22 @@ class TestProjectSaleOrderLink(TransactionCase):
             self.project_test.sale_order_link_ids,
             self.sale_order1 | self.sale_order2 | self.sale_order3 | self.sale_order4,
         )
+
+    def test_action_view_so_link_multiple_orders(self):
+        linked_orders = self._link_project_with_all_sale_sources()
+        action = self.project_test.action_view_so_link()
+
+        self.assertEqual(action["type"], "ir.actions.act_window")
+        self.assertEqual(action["res_model"], "sale.order")
+        self.assertEqual(action["context"], {"create": False, "show_sale": True})
+        self.assertEqual(action["domain"], [["id", "in", linked_orders.ids]])
+        self.assertEqual(action["views"], [[False, "tree"], [False, "form"]])
+        self.assertNotIn("res_id", action)
+
+    def test_action_view_so_link_single_order(self):
+        self.sale_order1.action_confirm()
+        action = self.project_test.action_view_so_link()
+
+        self.assertEqual(action["domain"], [["id", "in", self.sale_order1.ids]])
+        self.assertEqual(action["views"], [[False, "form"]])
+        self.assertEqual(action["res_id"], self.sale_order1.id)
