@@ -49,7 +49,7 @@ addon | version | maintainers | summary
 [project_tag_multicompany](project_tag_multicompany/) | 16.0.1.0.1 | <a href='https://github.com/victoralmau'><img src='https://github.com/victoralmau.png' width='32' height='32' style='border-radius:50%;' alt='victoralmau'/></a> | Project Tag Multicompany
 [project_tag_security](project_tag_security/) | 16.0.1.0.1 | <a href='https://github.com/victoralmau'><img src='https://github.com/victoralmau.png' width='32' height='32' style='border-radius:50%;' alt='victoralmau'/></a> | Project Tag Security
 [project_task_add_very_high](project_task_add_very_high/) | 16.0.1.1.0 | <a href='https://github.com/astirpe'><img src='https://github.com/astirpe.png' width='32' height='32' style='border-radius:50%;' alt='astirpe'/></a> | Adds extra options 'High' and 'Very High' on tasks
-[project_task_code](project_task_code/) | 16.0.1.1.0 |  | Sequential Code for Tasks
+[project_task_code](project_task_code/) | 16.0.1.1.1 |  | Sequential Code for Tasks
 [project_task_code_portal](project_task_code_portal/) | 16.0.1.1.0 |  | Use custom task code in customer portal
 [project_task_creation_description_notification](project_task_creation_description_notification/) | 16.0.1.0.0 |  | Project task description in notifications
 [project_task_default_stage](project_task_default_stage/) | 16.0.1.0.2 |  | Recovery default task stages for projects from v8
