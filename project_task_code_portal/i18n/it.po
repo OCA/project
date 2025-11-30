@@ -17,11 +17,26 @@ msgstr ""
 "X-Generator: Weblate 5.10.4\n"
 
 #. module: project_task_code_portal
+#: model_terms:ir.ui.view,arch_db:project_task_code_portal.project_sharing_project_task_view_form
+msgid "<span class=\"oe_inline\"> - </span>"
+msgstr ""
+
+#. module: project_task_code_portal
 #. odoo-python
 #: code:addons/project_task_code_portal/controllers/portal.py:0
 #, python-format
 msgid "No task with this code."
 msgstr "Nessun lavoro con questo codice."
+
+#. module: project_task_code_portal
+#: model:ir.model.fields,field_description:project_task_code_portal.field_project_task__portal_url
+msgid "Portal Url"
+msgstr ""
+
+#. module: project_task_code_portal
+#: model:ir.model.fields,field_description:project_task_code_portal.field_project_task__portal_url_visible
+msgid "Portal Url Visible"
+msgstr ""
 
 #. module: project_task_code_portal
 #. odoo-python
@@ -34,3 +49,8 @@ msgstr "Ricerca nel codice lavoro"
 #: model:ir.model,name:project_task_code_portal.model_project_task
 msgid "Task"
 msgstr "Lavoro"
+
+#. module: project_task_code_portal
+#: model_terms:ir.ui.view,arch_db:project_task_code_portal.project_sharing_project_task_view_search
+msgid "Task Code"
+msgstr ""
