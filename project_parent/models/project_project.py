@@ -1,7 +1,8 @@
 # Copyright 2019 Therp BV <https://therp.nl>
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
 
-from odoo import api, fields, models
+from odoo import _, api, fields, models
+from odoo.exceptions import ValidationError
 
 
 class Project(models.Model):
@@ -19,6 +20,11 @@ class Project(models.Model):
     parent_path = fields.Char(index="btree", unaccent=False)
 
     child_ids_count = fields.Integer(compute="_compute_child_ids_count", store=True)
+
+    @api.constrains("parent_id")
+    def _check_parent_id(self):
+        if not self._check_recursion():
+            raise ValidationError(_("You cannot create recursive projects."))
 
     @api.depends("child_ids")
     def _compute_child_ids_count(self):

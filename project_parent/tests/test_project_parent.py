@@ -1,6 +1,7 @@
 # Copyright 2020 haulogy SA/NV
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
+from odoo.exceptions import ValidationError
 from odoo.tests.common import TransactionCase
 
 
@@ -26,3 +27,9 @@ class TestProjectParent(TransactionCase):
         self.assertEqual(
             res.get("context").get("default_parent_id"), self.project_project_1.id
         )
+
+    def test_project_recursion_check(self):
+        with self.assertRaisesRegex(
+            ValidationError, "Creating a cycle should raise ValidationError"
+        ):
+            self.project_project_1.parent_id = self.project_project_3.id
