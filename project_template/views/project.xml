@@ -15,28 +15,12 @@
                     invisible="not is_template"
                 />
             </xpath>
-            <xpath expr="//field[@name='label_tasks']/.." position="inside">
+            <xpath expr="//field[@name='partner_id']/.." position="inside">
                 <field name="is_template" class="oe_inline" string="Is Template?" />
             </xpath>
         </field>
     </record>
-    <!-- Kanban View -->
-    <record id="project_template_view_inherit_kanban" model="ir.ui.view">
-        <field name="name">project.template.kanban</field>
-        <field name="model">project.project</field>
-        <field name="inherit_id" ref="project.view_project_kanban" />
-        <field name="arch" type="xml">
-            <xpath expr="//div[@name='card_menu_view']" position="inside">
-                <field name="is_template" invisible="1" />
-                <div t-if="record.is_template.raw_value" role="menuitem">
-                    <a
-                        name="create_project_from_template"
-                        type="object"
-                    >Create Project from Template</a>
-                </div>
-            </xpath>
-        </field>
-    </record>
+
     <!-- Search View -->
     <record id="project_template_view_inherit_search" model="ir.ui.view">
         <field name="name">project.template.filter</field>

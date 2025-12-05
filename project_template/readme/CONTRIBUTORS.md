@@ -3,3 +3,5 @@
 - Mantas Šniukas \<<mantas@vialaurea.lt>\>
 - Atte Isopuro \<<atte.isopuro@avoin.systems>\>
 - Stefan Rijnhart \<<stefan@opener.amsterdam>\>
+- [Komit](https://komit-consulting.com):
+  - Vang Nguyen Phu
