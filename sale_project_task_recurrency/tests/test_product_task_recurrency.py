@@ -35,7 +35,6 @@ class TestProductTaskRecurrency(BaseCommon):
             "name": "Service",
             "type": "service",
             "uom_id": cls.uom_hour.id,
-            "uom_po_id": cls.uom_hour.id,
             "service_type": "manual",
             "service_tracking": "no",
         }

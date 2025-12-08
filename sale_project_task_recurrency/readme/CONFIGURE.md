@@ -1,4 +1,4 @@
-- Go to *Project > Configuration > Settings*.
+- Go to Project > Open an existing Project or Create a new one > *Settings Tab*
 - In the *Tasks Management* section, enable the *Recurring Tasks* checkbox.
 - Go to *Sales > Products > Products*.
 - Create a new product with the following options:
