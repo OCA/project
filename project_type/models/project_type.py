@@ -1,6 +1,6 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 from odoo.exceptions import ValidationError
 
 
@@ -25,7 +25,9 @@ class ProjectType(models.Model):
     @api.constrains("parent_id")
     def check_parent_id(self):
         if self._has_cycle():
-            raise ValidationError(_("You cannot create recursive project types."))
+            raise ValidationError(
+                self.env._("You cannot create recursive project types.")
+            )
 
     @api.depends("name", "parent_id.complete_name")
     def _compute_complete_name(self):
