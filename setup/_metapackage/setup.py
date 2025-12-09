@@ -57,6 +57,7 @@ setuptools.setup(
         'odoo-addon-project_task_stage_change_restriction>=16.0dev,<16.1dev',
         'odoo-addon-project_task_stage_mgmt>=16.0dev,<16.1dev',
         'odoo-addon-project_task_stage_state>=16.0dev,<16.1dev',
+        'odoo-addon-project_task_tag>=16.0dev,<16.1dev',
         'odoo-addon-project_template>=16.0dev,<16.1dev',
         'odoo-addon-project_timeline>=16.0dev,<16.1dev',
         'odoo-addon-project_timeline_hr_timesheet>=16.0dev,<16.1dev',

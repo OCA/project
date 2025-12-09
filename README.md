@@ -70,6 +70,7 @@ addon | version | maintainers | summary
 [project_task_stage_change_restriction](project_task_stage_change_restriction/) | 16.0.1.0.0 |  | Restrict project task stage
 [project_task_stage_mgmt](project_task_stage_mgmt/) | 16.0.1.0.0 | <a href='https://github.com/DavidJForgeFlow'><img src='https://github.com/DavidJForgeFlow.png' width='32' height='32' style='border-radius:50%;' alt='DavidJForgeFlow'/></a> | Allows to assign and create task stages on project creation wizard
 [project_task_stage_state](project_task_stage_state/) | 16.0.1.0.0 |  | Restore State attribute removed from Project Stages in 8.0
+[project_task_tag](project_task_tag/) | 16.0.1.0.0 |  | Limit tags available on task
 [project_template](project_template/) | 16.0.1.0.0 | <a href='https://github.com/patrickrwilson'><img src='https://github.com/patrickrwilson.png' width='32' height='32' style='border-radius:50%;' alt='patrickrwilson'/></a> | Project Templates
 [project_timeline](project_timeline/) | 16.0.2.2.0 |  | Timeline view for projects
 [project_timeline_hr_timesheet](project_timeline_hr_timesheet/) | 16.0.1.0.0 |  | Shows the progress of tasks on the timeline view.
