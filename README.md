@@ -38,6 +38,7 @@ addon | version | maintainers | summary
 [project_purchase_link](project_purchase_link/) | 16.0.1.0.0 |  | Project Purchase Link
 [project_risk](project_risk/) | 16.0.1.0.0 |  | MOR risk management method
 [project_role](project_role/) | 16.0.1.0.4 | <a href='https://github.com/alexey-pelykh'><img src='https://github.com/alexey-pelykh.png' width='32' height='32' style='border-radius:50%;' alt='alexey-pelykh'/></a> | Project role-based roster
+[project_sale_order_link](project_sale_order_link/) | 16.0.1.0.0 | <a href='https://github.com/EmilioPascual'><img src='https://github.com/EmilioPascual.png' width='32' height='32' style='border-radius:50%;' alt='EmilioPascual'/></a> | Sales order linked to project, tasks or employee map
 [project_sequence](project_sequence/) | 16.0.1.1.1 | <a href='https://github.com/yajo'><img src='https://github.com/yajo.png' width='32' height='32' style='border-radius:50%;' alt='yajo'/></a> <a href='https://github.com/anddago78'><img src='https://github.com/anddago78.png' width='32' height='32' style='border-radius:50%;' alt='anddago78'/></a> | Add a sequence field to projects, filled automatically
 [project_stage_extra_info](project_stage_extra_info/) | 16.0.1.0.0 |  | Project Stage Extra Info
 [project_stage_last_update_date](project_stage_last_update_date/) | 16.0.1.0.0 |  | Project Stage Last Update Date
