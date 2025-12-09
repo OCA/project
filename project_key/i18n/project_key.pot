@@ -14,6 +14,11 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: project_key
+#: model_terms:ir.ui.view,arch_db:project_key.view_task_form2_extend_with_key
+msgid "<span class=\"oe_inline\"> : </span>"
+msgstr ""
+
+#. module: project_key
 #: model:ir.model.fields,field_description:project_key.field_project_project__key
 #: model:ir.model.fields,field_description:project_key.field_project_task__key
 msgid "Key"
@@ -41,6 +46,11 @@ msgid "Project task sequence for project"
 msgstr ""
 
 #. module: project_key
+#: model:ir.model.fields,field_description:project_key.field_project_project__show_key_warning
+msgid "Show Key Warning"
+msgstr ""
+
+#. module: project_key
 #: model:ir.model,name:project_key.model_project_task
 msgid "Task"
 msgstr ""
@@ -53,4 +63,9 @@ msgstr ""
 #. module: project_key
 #: model:ir.model.fields,field_description:project_key.field_project_task__url
 msgid "URL"
+msgstr ""
+
+#. module: project_key
+#: model_terms:ir.ui.view,arch_db:project_key.edit_project_extend_with_key
+msgid "Using '-' in project keys is not recommended."
 msgstr ""
