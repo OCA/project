@@ -17,6 +17,16 @@ msgstr ""
 "X-Generator: Weblate 4.17\n"
 
 #. module: project_task_note
+#: model_terms:ir.ui.view,arch_db:project_task_note.view_task_form2
+msgid "Insert internal notes here"
+msgstr ""
+
+#. module: project_task_note
+#: model_terms:ir.ui.view,arch_db:project_task_note.view_task_form2
+msgid "Internal Notes"
+msgstr ""
+
+#. module: project_task_note
 #: model:ir.model.fields,field_description:project_task_note.field_project_task__notes
 msgid "Internal notes"
 msgstr "Note interne"
