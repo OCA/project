@@ -18,6 +18,11 @@ msgstr ""
 "X-Generator: Weblate 4.17\n"
 
 #. module: project_key
+#: model_terms:ir.ui.view,arch_db:project_key.view_task_form2_extend_with_key
+msgid "<span class=\"oe_inline\"> : </span>"
+msgstr ""
+
+#. module: project_key
 #: model:ir.model.fields,field_description:project_key.field_project_project__key
 #: model:ir.model.fields,field_description:project_key.field_project_task__key
 msgid "Key"
@@ -41,9 +46,13 @@ msgstr "La clé de projet doit être unique"
 #. module: project_key
 #. odoo-python
 #: code:addons/project_key/models/project_project.py:0
-#, python-format
 msgid "Project task sequence for project"
 msgstr "Séquence des tâches pour le projet"
+
+#. module: project_key
+#: model:ir.model.fields,field_description:project_key.field_project_project__show_key_warning
+msgid "Show Key Warning"
+msgstr ""
 
 #. module: project_key
 #: model:ir.model,name:project_key.model_project_task
@@ -59,6 +68,11 @@ msgstr "La clé de tâche doit être unique !"
 #: model:ir.model.fields,field_description:project_key.field_project_task__url
 msgid "URL"
 msgstr "Adresse universelle"
+
+#. module: project_key
+#: model_terms:ir.ui.view,arch_db:project_key.edit_project_extend_with_key
+msgid "Using '-' in project keys is not recommended."
+msgstr ""
 
 #~ msgid "key"
 #~ msgstr "Clé"

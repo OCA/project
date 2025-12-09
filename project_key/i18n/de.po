@@ -17,6 +17,11 @@ msgstr ""
 "X-Generator: Weblate 3.7.1\n"
 
 #. module: project_key
+#: model_terms:ir.ui.view,arch_db:project_key.view_task_form2_extend_with_key
+msgid "<span class=\"oe_inline\"> : </span>"
+msgstr ""
+
+#. module: project_key
 #: model:ir.model.fields,field_description:project_key.field_project_project__key
 #: model:ir.model.fields,field_description:project_key.field_project_task__key
 msgid "Key"
@@ -40,8 +45,12 @@ msgstr "Das Nummerierungsmuster für Projekte muss eindeutig sein."
 #. module: project_key
 #. odoo-python
 #: code:addons/project_key/models/project_project.py:0
-#, python-format
 msgid "Project task sequence for project"
+msgstr ""
+
+#. module: project_key
+#: model:ir.model.fields,field_description:project_key.field_project_project__show_key_warning
+msgid "Show Key Warning"
 msgstr ""
 
 #. module: project_key
@@ -58,6 +67,11 @@ msgstr "Aufgabennummerierung muss eindeutig sein!"
 #: model:ir.model.fields,field_description:project_key.field_project_task__url
 msgid "URL"
 msgstr "URL"
+
+#. module: project_key
+#: model_terms:ir.ui.view,arch_db:project_key.edit_project_extend_with_key
+msgid "Using '-' in project keys is not recommended."
+msgstr ""
 
 #~ msgid "key"
 #~ msgstr "Nummer"
