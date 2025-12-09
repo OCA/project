@@ -70,6 +70,7 @@ Contributors
 
 - Patrick Wilson <patrickraymondwilson@gmail.com>
 - Maxime Chambreuil <mchambreuil@opensourceintegrators.com>
+- Mathieu Benoit <mathben@technolibre.ca>
 
 Maintainers
 -----------
