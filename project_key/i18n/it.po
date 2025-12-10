@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-04-12 12:35+0000\n"
+"PO-Revision-Date: 2025-12-10 11:42+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -14,12 +14,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.1\n"
+"X-Generator: Weblate 5.10.4\n"
 
 #. module: project_key
 #: model_terms:ir.ui.view,arch_db:project_key.view_task_form2_extend_with_key
 msgid "<span class=\"oe_inline\"> : </span>"
-msgstr ""
+msgstr "<span class=\"oe_inline\"> : </span>"
 
 #. module: project_key
 #: model:ir.model.fields,field_description:project_key.field_project_project__key
@@ -51,7 +51,7 @@ msgstr "Sequenza lavoro per il progetto"
 #. module: project_key
 #: model:ir.model.fields,field_description:project_key.field_project_project__show_key_warning
 msgid "Show Key Warning"
-msgstr ""
+msgstr "Visualizza avviso chiave"
 
 #. module: project_key
 #: model:ir.model,name:project_key.model_project_task
@@ -71,7 +71,7 @@ msgstr "URL"
 #. module: project_key
 #: model_terms:ir.ui.view,arch_db:project_key.edit_project_extend_with_key
 msgid "Using '-' in project keys is not recommended."
-msgstr ""
+msgstr "L'utilizzo di '-' nella chiave progetto è sconsigliato."
 
 #~ msgid "Display Name"
 #~ msgstr "Nome visualizzato"
