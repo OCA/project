@@ -7,17 +7,46 @@ class TestProjectTaskStageState(BaseCommon):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.stage_new = cls.env.ref("project.project_stage_0")
-        cls.stage_in_progress = cls.env.ref("project.project_stage_1")
-        cls.stage_done = cls.env.ref("project.project_stage_2")
-        cls.stage_canceled = cls.env.ref("project.project_stage_3")
-        cls.stage_in_progress.write({"task_state": "01_in_progress"})
-        cls.stage_done.write({"task_state": "1_done"})
-        cls.stage_canceled.write({"task_state": "1_canceled"})
+        cls.project = cls.env["project.project"].create(
+            {
+                "name": "Test Project",
+            }
+        )
+
+        # Create stages manually instead of using demo data
+        cls.stage_new = cls.env["project.task.type"].create(
+            {
+                "name": "New",
+                "sequence": 1,
+            }
+        )
+        cls.stage_in_progress = cls.env["project.task.type"].create(
+            {
+                "name": "In Progress",
+                "sequence": 2,
+                "task_state": "01_in_progress",
+            }
+        )
+        cls.stage_done = cls.env["project.task.type"].create(
+            {
+                "name": "Done",
+                "sequence": 3,
+                "task_state": "1_done",
+            }
+        )
+        cls.stage_canceled = cls.env["project.task.type"].create(
+            {
+                "name": "Canceled",
+                "sequence": 4,
+                "task_state": "1_canceled",
+            }
+        )
+
+        # Create task manually instead of using demo data
         cls.task = cls.env["project.task"].create(
             {
                 "name": "Test task",
-                "project_id": cls.env.ref("project.project_project_1").id,
+                "project_id": cls.project.id,
                 "stage_id": cls.stage_new.id,
                 "state": "01_in_progress",
             }
