@@ -14,10 +14,30 @@ class TestProjectTaskPullRequest(BaseCommon):
         super().setUpClass()
         project_obj = cls.env["project.project"]
         task_obj = cls.env["project.task"]
-        cls.new_stage = cls.env.ref("project.project_stage_0")
-        cls.inprogress_stage = cls.env.ref("project.project_stage_1")
-        cls.done_stage = cls.env.ref("project.project_stage_2")
-        cls.cancel_stage = cls.env.ref("project.project_stage_3")
+        cls.new_stage = cls.env["project.task.type"].create(
+            {
+                "name": "New",
+                "sequence": 0,
+            }
+        )
+        cls.inprogress_stage = cls.env["project.task.type"].create(
+            {
+                "name": "In Progress",
+                "sequence": 10,
+            }
+        )
+        cls.done_stage = cls.env["project.task.type"].create(
+            {
+                "name": "Done",
+                "sequence": 20,
+            }
+        )
+        cls.cancel_stage = cls.env["project.task.type"].create(
+            {
+                "name": "Cancelled",
+                "sequence": 30,
+            }
+        )
         cls.project_1 = project_obj.create(
             {"name": "Test Project 1", "pr_required_states": [(4, cls.done_stage.id)]}
         )
