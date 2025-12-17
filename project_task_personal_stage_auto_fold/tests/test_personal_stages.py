@@ -22,7 +22,7 @@ class TestAutoFoldPersonalStages(TransactionCase):
                 "login": "armandel",
                 "password": "armandel",
                 "email": "armande.projectuser@example.com",
-                "groups_id": [
+                "group_ids": [
                     (6, 0, [user_group_employee.id, user_group_project_user.id])
                 ],
             }
@@ -32,7 +32,7 @@ class TestAutoFoldPersonalStages(TransactionCase):
                 "name": "Bastien ProjectManager",
                 "login": "bastien",
                 "email": "bastien.projectmanager@example.com",
-                "groups_id": [
+                "group_ids": [
                     (6, 0, [user_group_employee.id, user_group_project_manager.id])
                 ],
             }
