@@ -1,5 +1,6 @@
 # Copyright 2022-2025 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
+
 from odoo import api, fields, models
 from odoo.tools import float_is_zero
 
@@ -90,32 +91,39 @@ class StockMove(models.Model):
         product = self.product_id
         company_id = self.env.company
         task = self.task_id or self.raw_material_task_id
-        analytic_account = task.stock_analytic_account_id or task.project_id.account_id
+        project_id = task.project_id
+        analytic_account = task.stock_analytic_account_id or project_id.account_id
         if not analytic_account:
             return False
         # Apply sudo() in case there is any rule that does not allow access to
         # the analytic account, for example with analytic_hr_department_restriction
         analytic_account = analytic_account.sudo()
+        is_return = bool(
+            self.origin_returned_move_id
+            and self.location_id == project_id.location_dest_id
+            and self.location_dest_id == project_id.location_id
+        )
+        quantity_done = self.quantity * (-1 if is_return else 1)
         res = {
             "date": (
                 task.stock_analytic_date
-                or task.project_id.stock_analytic_date
+                or project_id.stock_analytic_date
                 or fields.date.today()
             ),
             "name": task.name + ": " + product.name,
-            "unit_amount": self.quantity,
+            "unit_amount": quantity_done,
             "account_id": analytic_account.id,
             "user_id": self.env.user.id,
             "product_uom_id": self.product_uom.id,
             "company_id": analytic_account.company_id.id or self.env.company.id,
-            "partner_id": task.partner_id.id or task.project_id.partner_id.id or False,
+            "partner_id": task.partner_id.id or project_id.partner_id.id or False,
             "stock_move_id": self.id,
             "stock_task_id": task.id,
         }
         amount_unit = product.with_context(uom=self.product_uom.id)._price_compute(
             "standard_price"
         )[product.id]
-        amount = amount_unit * self.quantity or 0.0
+        amount = amount_unit * quantity_done or 0.0
         result = round(amount, company_id.currency_id.decimal_places) * -1
         vals = {"amount": result}
         analytic_line_fields = self.env["account.analytic.line"]._fields
