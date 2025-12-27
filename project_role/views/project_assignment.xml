@@ -82,7 +82,7 @@
                             <div class="row">
                                 <div class="col-2">
                                     <img
-                                        t-att-src="kanban_image('res.users', 'avatar_128', record.user_id.raw_value)"
+                                        t-attf-src="/web/image/res.users/#{record.user_id.raw_value}/avatar_128"
                                         t-att-title="record.user_id.value"
                                         t-att-alt="record.user_id.value"
                                         width="40"
