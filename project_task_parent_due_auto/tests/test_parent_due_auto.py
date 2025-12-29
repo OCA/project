@@ -5,7 +5,7 @@ from odoo import fields
 from odoo.addons.base.tests.common import BaseCommon
 
 
-class AnalyticCommon(BaseCommon):
+class TestParentDueAuto(BaseCommon):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
