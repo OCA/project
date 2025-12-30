@@ -7,7 +7,7 @@
     "version": "18.0.1.0.0",
     "category": "Project Management",
     "website": "https://github.com/OCA/project",
-    "author": "SMDrugstore, " "Tecnativa, " "Odoo Community Association (OCA)",
+    "author": "SMDrugstore, Tecnativa, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "application": False,
     "installable": True,
