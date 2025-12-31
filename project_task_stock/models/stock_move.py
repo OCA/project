@@ -24,15 +24,6 @@ class StockMove(models.Model):
         compute="_compute_show_cancel_button_in_task"
     )
 
-    @api.onchange("product_id")
-    def _onchange_product_id(self):
-        """It is necessary to overwrite the name to prevent set product name
-        from being auto-defined."""
-        res = super()._onchange_product_id()
-        if self.raw_material_task_id:
-            self.name = self.raw_material_task_id.name
-        return res
-
     def _compute_show_cancel_button_in_task(self):
         dp = self.env["decimal.precision"].precision_get("Product Unit of Measure")
         for item in self:
@@ -100,7 +91,7 @@ class StockMove(models.Model):
             "date": (
                 task.stock_analytic_date
                 or task.project_id.stock_analytic_date
-                or fields.date.today()
+                or fields.Date.today()
             ),
             "name": task.name + ": " + product.name,
             "unit_amount": self.quantity,
@@ -143,13 +134,13 @@ class StockMove(models.Model):
             task = self.env["project.task"].browse(
                 self.env.context.get("default_raw_material_task_id")
             )
-            if not task.group_id:
-                task.group_id = self.env["procurement.group"].create(
-                    task._prepare_procurement_group_vals()
+            if not task.reference_ids:
+                task.reference_ids = self.env["stock.reference"].create(
+                    task._prepare_reference_vals()
                 )
             defaults.update(
                 {
-                    "group_id": task.group_id.id,
+                    "reference_ids": task.reference_ids.ids,
                     "location_id": (
                         task.location_id.id or task.project_id.location_id.id
                     ),

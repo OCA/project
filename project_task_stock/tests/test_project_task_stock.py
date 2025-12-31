@@ -24,7 +24,7 @@ class TestProjectTaskStock(TestProjectStockBase):
         )
         cls.env.ref("base.user_admin").write(
             {
-                "groups_id": [
+                "group_ids": [
                     (4, cls.env.ref("analytic.group_analytic_accounting").id),
                 ],
             }
@@ -37,18 +37,16 @@ class TestProjectTaskStock(TestProjectStockBase):
         )
 
     def test_project_task_misc(self):
-        self.assertTrue(self.task.group_id)
+        self.assertTrue(self.task.reference_ids)
         self.assertEqual(self.task.picking_type_id, self.picking_type)
         self.assertEqual(self.task.location_id, self.location)
         self.assertEqual(self.task.location_dest_id, self.location_dest)
-        self.assertEqual(self.move_product_a.name, self.task.name)
-        self.assertEqual(self.move_product_a.group_id, self.task.group_id)
-        self.assertEqual(self.move_product_a.reference, self.task.name)
+        self.assertEqual(self.move_product_a.reference_ids, self.task.reference_ids)
         self.assertEqual(self.move_product_a.location_id, self.location)
         self.assertEqual(self.move_product_a.location_dest_id, self.location_dest)
         self.assertEqual(self.move_product_a.picking_type_id, self.picking_type)
         self.assertEqual(self.move_product_a.raw_material_task_id, self.task)
-        self.assertEqual(self.move_product_b.group_id, self.task.group_id)
+        self.assertEqual(self.move_product_b.reference_ids, self.task.reference_ids)
         self.assertEqual(self.move_product_b.location_id, self.location)
         self.assertEqual(self.move_product_b.location_dest_id, self.location_dest)
         self.assertEqual(self.move_product_b.picking_type_id, self.picking_type)
@@ -88,8 +86,12 @@ class TestProjectTaskStock(TestProjectStockBase):
         picking.button_validate()
         self.assertEqual(picking.state, "done")
         self._test_task_analytic_lines_from_task(-40)
+        stock_analytic_line_ids = self.task.stock_analytic_line_ids
+        stock_analytic_line_id = next(
+            iter(stock_analytic_line_ids), stock_analytic_line_ids
+        )
         self.assertEqual(
-            fields.first(self.task.stock_analytic_line_ids).date,
+            stock_analytic_line_id.date,
             fields.Date.from_string("1990-01-01"),
         )
 
@@ -101,7 +103,7 @@ class TestProjectTaskStock(TestProjectStockBase):
         project_user_group = self.env.ref("project.group_project_user")
         self.basic_user.write(
             {
-                "groups_id": [(6, 0, [project_user_group.id])],
+                "group_ids": [(6, 0, [project_user_group.id])],
             }
         )
         task_form = Form(self.task.with_user(self.basic_user))
@@ -112,8 +114,12 @@ class TestProjectTaskStock(TestProjectStockBase):
         self.task.write({"stage_id": self.stage_done.id})
         self.task.action_done()
         self._test_task_analytic_lines_from_task(-40)
+        stock_analytic_line_ids = self.task.stock_analytic_line_ids
+        stock_analytic_line_id = next(
+            iter(stock_analytic_line_ids), stock_analytic_line_ids
+        )
         self.assertEqual(
-            fields.first(self.task.stock_analytic_line_ids).date,
+            stock_analytic_line_id.date,
             fields.Date.from_string("1990-01-01"),
         )
 
@@ -127,8 +133,12 @@ class TestProjectTaskStock(TestProjectStockBase):
         self.task.write({"stage_id": self.stage_done.id})
         self.task.action_done()
         self._test_task_analytic_lines_from_task(-40)
+        stock_analytic_line_ids = self.task.stock_analytic_line_ids
+        stock_analytic_line_id = next(
+            iter(stock_analytic_line_ids), stock_analytic_line_ids
+        )
         self.assertEqual(
-            fields.first(self.task.stock_analytic_line_ids).date,
+            stock_analytic_line_id.date,
             fields.Date.from_string("1991-01-01"),
         )
 
@@ -143,8 +153,13 @@ class TestProjectTaskStock(TestProjectStockBase):
         self.task.write({"stage_id": self.stage_done.id})
         self.task.action_done()
         self._test_task_analytic_lines_from_task(-40)
+        stock_analytic_line_ids = self.task.stock_analytic_line_ids
+        stock_analytic_line_id = next(
+            iter(stock_analytic_line_ids), stock_analytic_line_ids
+        )
         self.assertEqual(
-            fields.first(self.task.stock_analytic_line_ids).date, fields.date.today()
+            stock_analytic_line_id.date,
+            fields.Date.today(),
         )
 
     @users("manager-user")
@@ -178,7 +193,7 @@ class TestProjectTaskStock(TestProjectStockBase):
         move_product_c = self.task.move_ids.filtered(
             lambda x: x.product_id == self.product_c
         )
-        self.assertEqual(move_product_c.group_id, self.task.group_id)
+        self.assertEqual(move_product_c.reference_ids, self.task.reference_ids)
         self.assertEqual(move_product_c.state, "draft")
         self.task.action_assign()
         self.assertEqual(move_product_c.state, "assigned")
@@ -348,11 +363,13 @@ class TestProjectTaskStock(TestProjectStockBase):
         self.task._onchange_picking_type_id()
         self.assertEqual(self.task.location_id, new_type.default_location_src_id)
         self.assertEqual(self.task.location_dest_id, new_type.default_location_dest_id)
-        move = fields.first(self.task.move_ids)
+        move_ids = self.task.move_ids
+        move = next(iter(move_ids), move_ids)
         self.assertEqual(move.location_id, new_type.default_location_src_id)
 
     def test_project_task_scrap(self):
-        move = fields.first(self.task.move_ids)
+        move_ids = self.task.move_ids
+        move = next(iter(move_ids), move_ids)
         scrap = self.env["stock.scrap"].create(
             {
                 "product_id": move.product_id.id,

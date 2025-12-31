@@ -1,6 +1,6 @@
 # Copyright 2022-2025 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 from odoo.exceptions import UserError
 from odoo.tools import float_is_zero
 
@@ -20,7 +20,7 @@ class ProjectTask(models.Model):
         inverse_name="raw_material_task_id",
         string="Stock Moves",
         copy=False,
-        domain=[("scrapped", "=", False)],
+        domain=[("location_dest_usage", "!=", "inventory")],
     )
     use_stock_moves = fields.Boolean(related="stage_id.use_stock_moves")
     done_stock_moves = fields.Boolean(related="stage_id.done_stock_moves")
@@ -82,15 +82,22 @@ class ProjectTask(models.Model):
         inverse_name="stock_task_id",
         string="Stock Analytic Lines",
     )
-    group_id = fields.Many2one(
-        comodel_name="procurement.group",
+    reference_ids = fields.Many2many(
+        "stock.reference",
+        "stock_reference_task_rel",
+        "task_id",
+        "reference_id",
+        string="References",
+        copy=False,
     )
 
     def _compute_scrap_move_count(self):
-        data = self.env["stock.scrap"].read_group(
-            [("task_id", "in", self.ids)], ["task_id"], ["task_id"]
+        data = self.env["stock.scrap"].formatted_read_group(
+            [("task_id", "in", self.ids)],
+            ["task_id"],
+            ["__count"],
         )
-        count_data = {item["task_id"][0]: item["task_id_count"] for item in data}
+        count_data = {item["task_id"][0]: item["__count"] for item in data}
         for item in self:
             item.scrap_count = count_data.get(item.id, 0)
 
@@ -140,7 +147,10 @@ class ProjectTask(models.Model):
     def _check_tasks_with_pending_moves(self):
         if self.move_ids and "assigned" in self.mapped("move_ids.state"):
             raise UserError(
-                _("It is not possible to change this with reserved movements in tasks.")
+                self.env._(
+                    "It is not possible to change this with reserved movements "
+                    "in tasks."
+                )
             )
 
     def _update_moves_info(self):
@@ -165,7 +175,7 @@ class ProjectTask(models.Model):
         self.action_assign()
 
     @api.model
-    def _prepare_procurement_group_vals(self):
+    def _prepare_reference_vals(self):
         return {"name": f"Task-ID: {self.id}"}
 
     def action_confirm(self):
@@ -179,7 +189,7 @@ class ProjectTask(models.Model):
         self.ensure_one()
         move_items = self.move_ids.filtered(lambda x: x.state not in ("done", "cancel"))
         return {
-            "name": _("Scrap"),
+            "name": self.env._("Scrap"),
             "view_mode": "form",
             "res_model": "stock.scrap",
             "view_id": self.env.ref("stock.stock_scrap_form_view2").id,

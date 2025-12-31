@@ -35,7 +35,17 @@ class TestProjectStockBase(BaseCommon):
                 "standard_price": 0,
             }
         )
-        cls.picking_type = cls.env.ref("project_task_stock.stock_picking_type_tm_test")
+        cls.picking_type = cls.env["stock.picking.type"].create(
+            {
+                "name": "TM Test Picking Type",
+                "code": "outgoing",
+                "sequence_code": "TM",
+                "default_location_src_id": cls.env.ref("stock.stock_location_stock").id,
+                "default_location_dest_id": cls.env["stock.location"]
+                .create({"name": "Destination Location for TM"})
+                .id,
+            }
+        )
         cls.location = cls.picking_type.default_location_src_id
         cls.location_dest = cls.picking_type.default_location_dest_id
         cls.plan = cls.env["account.analytic.plan"].create({"name": "Projects Plan"})
@@ -53,10 +63,32 @@ class TestProjectStockBase(BaseCommon):
                 "company_id": False,
             }
         )
-        cls.project = cls.env.ref("project_task_stock.project_project_tm_test")
-        cls.project.account_id = cls.analytic_account
-        cls.stage_in_progress = cls.env.ref("project.project_stage_1")
-        cls.stage_done = cls.env.ref("project.project_stage_2")
+        cls.project = cls.env["project.project"].create(
+            {
+                "name": "Task material",
+                "picking_type_id": cls.picking_type.id,
+                "location_id": cls.location.id,
+                "location_dest_id": cls.location_dest.id,
+                "stock_analytic_date": "1990-01-01",
+                "account_id": cls.analytic_account.id,
+            }
+        )
+        cls.stage_in_progress = cls.env["project.task.type"].create(
+            {
+                "name": "In Progress",
+                "use_stock_moves": True,
+                "project_ids": [(4, cls.project.id)],
+            }
+        )
+
+        cls.stage_done = cls.env["project.task.type"].create(
+            {
+                "name": "Done",
+                "use_stock_moves": True,
+                "done_stock_moves": True,
+                "project_ids": [(4, cls.project.id)],
+            }
+        )
         group_stock_user = "stock.group_stock_user"
         cls.basic_user = new_test_user(
             cls.env,

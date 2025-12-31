@@ -104,20 +104,12 @@
                 />
             </field>
             <xpath expr="///page[@name='extra_info']" position="before">
-                <!-- Field without groups used as domain in stock_analytic_* fields !-->
-                <field name="use_stock_moves" invisible="1" />
                 <page
                     name="stock_info"
                     string="Stock Info"
                     invisible="not use_stock_moves"
                     groups="stock.group_stock_user"
                 >
-                    <field name="done_stock_moves" invisible="1" />
-                    <field name="stock_moves_is_locked" invisible="1" />
-                    <field name="stock_state" invisible="1" />
-                    <field name="allow_moves_action_confirm" invisible="1" />
-                    <field name="allow_moves_action_assign" invisible="1" />
-                    <field name="unreserve_visible" invisible="1" />
                     <field
                         name="move_ids"
                         context="{'list_view_ref': 'project_task_stock.view_stock_move_raw_list', 'form_view_ref':'stock.view_move_form', 'default_raw_material_task_id': id}"
