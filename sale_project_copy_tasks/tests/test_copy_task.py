@@ -71,7 +71,6 @@ class TestCopyTasks(TransactionCase):
                 "type": "service",
                 "invoice_policy": "order",
                 "uom_id": uom_hour.id,
-                "uom_po_id": uom_hour.id,
                 "default_code": "SERV-COPY-TASK",
                 "service_tracking": "copy_tasks_in_project",
                 "project_id": False,
@@ -96,7 +95,7 @@ class TestCopyTasks(TransactionCase):
                 "name": self.product_order_service1.name,
                 "product_id": self.product_order_service1.id,
                 "product_uom_qty": 1,
-                "product_uom": self.product_order_service1.uom_id.id,
+                "product_uom_id": self.product_order_service1.uom_id.id,
                 "price_unit": self.product_order_service1.list_price,
                 "order_id": sale_order_1.id,
             }
@@ -129,7 +128,7 @@ class TestCopyTasks(TransactionCase):
                 "name": self.product_order_service1.name,
                 "product_id": self.product_order_service1.id,
                 "product_uom_qty": 1,
-                "product_uom": self.product_order_service1.uom_id.id,
+                "product_uom_id": self.product_order_service1.uom_id.id,
                 "price_unit": self.product_order_service1.list_price,
                 "order_id": sale_order_1.id,
             }
@@ -159,7 +158,7 @@ class TestCopyTasks(TransactionCase):
             {
                 "product_id": self.product_order_service1.id,
                 "product_uom_qty": 1,
-                "product_uom": self.product_order_service1.uom_id.id,
+                "product_uom_id": self.product_order_service1.uom_id.id,
                 "price_unit": self.product_order_service1.list_price,
                 "order_id": sale_order_2.id,
             }

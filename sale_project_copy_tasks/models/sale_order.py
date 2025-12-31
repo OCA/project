@@ -34,7 +34,6 @@ class SaleOrder(models.Model):
             name=self.name,
         )
 
-    @api.returns("project.project")
     def create_order_project(self):
         pp_model = self.env["project.project"]
         created_projects = pp_model.browse()
