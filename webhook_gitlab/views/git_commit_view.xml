@@ -12,7 +12,6 @@
                 <field name="full_sha" optional="hide"/>
                 <field name="git_branch_id" optional="hide"/>
                 <field name="task_id" optional="hide"/>
-                <field name="git_request_id" optional="hide"/>
                 <field name="timestamp" optional="hide"/>
             </tree>
         </field>
@@ -33,7 +32,6 @@
                             <field name="full_sha" readonly="1"/>
                             <field name="git_branch_id" readonly="1"/>
                             <field name="task_id" readonly="1"/>
-                            <field name="git_request_id" readonly="1"/>
                             <field name="timestamp" readonly="1"/>
                         </group>
                     </group>

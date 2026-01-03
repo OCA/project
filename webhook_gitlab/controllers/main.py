@@ -1,4 +1,5 @@
 # Copyright 2018, Jarsa
+# Copyright 2026 Francesco Ballerini
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 import functools
@@ -59,10 +60,10 @@ class WebhookGitlab(http.Controller):
         event = request.get_json_data()
         event["source"] = kw.get("source", "")
         event = self._parse_git_request_data(event=event)
-        request_obj = request.env["git.request"]
+        git_event = request.env["git.event"]
         try:
             if event.get("object_kind"):
-                func = getattr(request_obj.with_delay(), "_process_%s" % event["object_kind"])
+                func = getattr(git_event.with_delay(), "_process_%s" % event["object_kind"])
             else:
                 return True
         except AttributeError as error:
@@ -86,7 +87,7 @@ class WebhookGitlab(http.Controller):
         return event
 
     def _parse_request_gitlab(self, event):
-        event["repository_url"] = event.get("repository", {}).get("git_http_url")
+        event["repository_url"] = event.get("project", {}).get("git_http_url")
         return event
 
     def _parse_request_github(self, event):

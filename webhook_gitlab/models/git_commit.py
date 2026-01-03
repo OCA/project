@@ -1,3 +1,7 @@
+# Copyright 2020, Jarsa
+# Copyright 2026 Francesco Ballerini
+# License LGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+
 from dateutil.parser import isoparse
 from datetime import timezone
 
@@ -18,7 +22,6 @@ class GitCommit(models.Model):
 
     git_branch_id = fields.Many2one(comodel_name="git.branch")
     task_id = fields.Many2one(comodel_name="project.task", ondelete="cascade")
-    git_request_id = fields.Many2one("git.request", string="Request related to the commit")
 
     @api.depends("full_sha")
     def _compute_sha(self):

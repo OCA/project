@@ -1,4 +1,8 @@
-from odoo import _, fields, models
+# Copyright 2020, Jarsa
+# Copyright 2026 Francesco Ballerini
+# License LGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+
+from odoo import _, api, fields, models
 
 
 class GitPullRequest(models.Model):
@@ -8,8 +12,55 @@ class GitPullRequest(models.Model):
     name = fields.Char(string="Title")
     description = fields.Text(string="Description")
     url = fields.Char(string="PR/MR URL")
-    task_id = fields.Many2one(comodel_name="project.task", string="Related Task")
-    git_request_id = fields.Many2one("git.request", string="Git Request")
+
+    id_request = fields.Integer(
+        string="Request ID",
+        help="Technical field used to track the merge request id"
+    )
+    id_project = fields.Integer(
+        string="Project ID",
+        help="Technical field used to track the project id in Gitlab",
+    )
+    source = fields.Selection(
+        [("gitlab", "GitLab"), ("github", "GitHub")],
+        string="Source Platform"
+    )
+
+    source_branch = fields.Char(string="Source Branch")
+    target_branch = fields.Char(string="Target Branch")
+
+    state = fields.Selection(
+        [
+            ("opened", "Opened"),
+            ("merged", "Merged"),
+            ("closed", "Closed"),
+            ("locked", "Locked"),
+        ]
+    )
+    ci_status = fields.Selection(
+        [
+            ("pending", "Pending"),
+            ("running", "Running"),
+            ("success", "Success"),
+            ("failed", "Failed"),
+            ("skipped", "Skipped"),
+            ("canceled", "Canceled"),
+            ("unknown", "Unknown"),
+        ],
+        default="pending",
+        string="CI Status",
+    )
+
+    wip = fields.Boolean(string="WIP")
+    approved = fields.Boolean()
+
+    last_commit = fields.Char()
+    user_id = fields.Many2one("res.users", string="Created by User")
+    task_id = fields.Many2one(
+        comodel_name="project.task",
+        string="Related Task",
+        ondelete="cascade"
+    )
 
     git_commit_ids = fields.Many2many(
         comodel_name="git.commit",
@@ -19,32 +70,54 @@ class GitPullRequest(models.Model):
         string="Commits",
     )
 
-    # I leave some fields here commented: at the moment we only
-    # link the PR to the task if match by task name pattern, by
-    # providing an URL so you can directly open the PR on github.
-    # In future we could store more information and keep the info
-    # synchronized with cron jobs
+    def open_merge_request(self):
+        self.ensure_one()
+        return {
+            "type": "ir.actions.act_url",
+            "url": self.url,
+        }
 
-    # source_branch = fields.Char(string="Source Branch")
-    # target_branch = fields.Char(string="Target Branch")
-    # full_sha = fields.Char(string="Commit SHA")  # final SHA after merge or from last commit
+    @api.model_create_multi
+    def create(self, vals_list):
+        rec = super().create(vals_list)
+        rec.assign_tags()
+        return rec
 
-    # state = fields.Selection([
-    #     ("opened", "Opened"),
-    #     ("closed", "Closed"),
-    #     ("merged", "Merged"),
-    # ], string="Status")
+    def write(self, vals):
+        res = super().write(vals)
+        self.assign_tags()
+        return res
 
-    # created_at = fields.Datetime(string="Created At")
-    # merged_at = fields.Datetime(string="Merged At")
-    # closed_at = fields.Datetime(string="Closed At")
-
-    # author_id = fields.Many2one("res.partner", string="Author")
-    # reviewer_ids = fields.Many2many("res.partner", string="Reviewers")
-
-    # git_commit_ids = fields.One2many("git.commit", "git_pull_request_id", string="Commits")
-
-    # id_request = fields.Char(string="External ID")  # eg: number of MR in GitLab
-    # project_id = fields.Char(string="External Project ID")
-    # repository_url = fields.Char(string="Repository URL")
-
+    def assign_tags(self):
+        for rec in self:
+            if not rec.task_id or not rec.state:
+                continue
+            tags = []
+            record = rec.task_id
+            tag_model = record.tag_ids._name
+            current_tags = self.env[tag_model]
+            current_tags |= record.tag_ids.filtered(lambda t: t.name.startswith("MR:") or t.name.startswith("CI:"))
+            for tag in current_tags:
+                tags.append((3, tag.id, 0))
+            # Create prefix to have a base to get the external ID.
+            # Possible values of prefix:
+            # 'webhook_gitlab.project_tags_'
+            prefix = "webhook_gitlab." + tag_model.replace(".", "_") + "_"
+            # Get CI status tag.
+            if rec.ci_status:
+                tags.append((4, self.env.ref(prefix + rec.ci_status).id, 0))
+            # Get MR state tag.
+            tags.append((4, self.env.ref(prefix + rec.state).id, 0))
+            if rec.approved:
+                tags.append((4, self.env.ref(prefix + "approved").id, 0))
+            else:
+                tags.append((3, self.env.ref(prefix + "approved").id, 0))
+            if rec.wip:
+                tags.append((4, self.env.ref(prefix + "wip").id, 0))
+            else:
+                tags.append((3, self.env.ref(prefix + "wip").id, 0))
+            record.write(
+                {
+                    "tag_ids": tags,
+                }
+            )

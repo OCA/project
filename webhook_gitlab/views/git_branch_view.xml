@@ -8,7 +8,6 @@
                 <field name="name" optional="show"/>
                 <field name="url" optional="show" widget="url"/>
                 <field name="task_id" optional="hide"/>
-                <field name="git_request_id" optional="hide"/>
             </tree>
         </field>
     </record>
@@ -24,7 +23,6 @@
                             <field name="name" readonly="1"/>
                             <field name="url" readonly="1" widget="url"/>
                             <field name="task_id" readonly="1"/>
-                            <field name="git_request_id" readonly="1"/>
                         </group>
                     </group>
                     <notebook>
@@ -38,7 +36,6 @@
                                     <field name="full_sha" optional="hide"/>
                                     <field name="git_branch_id" optional="hide"/>
                                     <field name="task_id" optional="hide"/>
-                                    <field name="git_request_id" optional="hide"/>
                                     <field name="timestamp" optional="hide"/>
                                 </tree>
                             </field>
