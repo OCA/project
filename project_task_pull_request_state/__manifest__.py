@@ -3,7 +3,7 @@
 {
     "name": "Project Task Pull Request State",
     "summary": "Track Pull Request state in tasks",
-    "version": "16.0.1.0.0",
+    "version": "18.0.1.0.0",
     "category": "Project Management",
     "website": "https://github.com/OCA/project",
     "author": "Cetmix, Odoo Community Association (OCA)",
