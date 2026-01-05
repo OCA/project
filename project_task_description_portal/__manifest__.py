@@ -1,7 +1,7 @@
 {
     "name": "Task Description Portal",
     "summary": "Dedicated task description for portal users",
-    "version": "16.0.1.0.0",
+    "version": "18.0.1.0.0",
     "category": "Project",
     "website": "https://github.com/OCA/project",
     "author": "Cetmix, Odoo Community Association (OCA)",
