@@ -6,10 +6,7 @@
         <field name="inherit_id" ref="project.view_task_form2" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='pr_uri']" position="after">
-                <field
-                    name="pr_state"
-                    attrs="{'invisible': [('pr_uri', '=', False)]}"
-                />
+                <field name="pr_state" invisible="pr_uri == False" />
             </xpath>
         </field>
     </record>
