@@ -17,23 +17,23 @@ Project Task Pull Request State
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fproject-lightgray.png?logo=github
-    :target: https://github.com/OCA/project/tree/16.0/project_task_pull_request_state
+    :target: https://github.com/OCA/project/tree/18.0/project_task_pull_request_state
     :alt: OCA/project
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/project-16-0/project-16-0-project_task_pull_request_state
+    :target: https://translation.odoo-community.org/projects/project-18-0/project-18-0-project_task_pull_request_state
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/project&target_branch=16.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/project&target_branch=18.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
-This module extends functionality of the project_task_pull_request module. It adds a
-"State" field to Task alongside with PR URI field.
+This module extends functionality of the project_task_pull_request
+module. It adds a "State" field to Task alongside with PR URI field.
 
-Following pre-defined states are available: "Draft", "Open", "Merged", "Closed". You can
-add or modify this list easily by overriding the "selection_pr_state" function in the
-"project.task" model
+Following pre-defined states are available: "Draft", "Open", "Merged",
+"Closed". You can add or modify this list easily by overriding the
+"selection_pr_state" function in the "project.task" model
 
 **Table of contents**
 
@@ -43,20 +43,21 @@ add or modify this list easily by overriding the "selection_pr_state" function i
 Use Cases / Context
 ===================
 
-This module is designed as a basis for further automation based on the pull
-request state of the task. For example one can use webhooks to set PR state
-in the task when it is updated in the GitHub. And use automated actions afterwards
-to update task status, assign and activity or do any other related actions.
+This module is designed as a basis for further automation based on the
+pull request state of the task. For example one can use webhooks to set
+PR state in the task when it is updated in the GitHub. And use automated
+actions afterwards to update task status, assign and activity or do any
+other related actions.
 
 Configuration
 =============
 
-#. In General Settings -> Project -> Project Task Pull Request section select default PR
-   State for all tasks
+1. In General Settings -> Project -> Project Task Pull Request section
+   select default PR State for all tasks
 
 To define custom default PR state for particular project:
 
-#. Select project -> Open "Settings" -> Set "Default PR State"
+1. Select project -> Open "Settings" -> Set "Default PR State"
 
 Bug Tracker
 ===========
@@ -64,7 +65,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/project/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/project/issues/new?body=module:%20project_task_pull_request_state%0Aversion:%2016.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/project/issues/new?body=module:%20project_task_pull_request_state%0Aversion:%2018.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -72,20 +73,20 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Cetmix
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* `Cetmix <https://cetmix.com/>`__
+- `Cetmix <https://cetmix.com/>`__
 
-  * Ivan Sokolov
-  * Vladimir Kalmykov
+  - Ivan Sokolov
+  - Vladimir Kalmykov
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is maintained by the OCA.
 
@@ -97,6 +98,6 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
-This module is part of the `OCA/project <https://github.com/OCA/project/tree/16.0/project_task_pull_request_state>`_ project on GitHub.
+This module is part of the `OCA/project <https://github.com/OCA/project/tree/18.0/project_task_pull_request_state>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
