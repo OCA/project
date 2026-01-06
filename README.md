@@ -57,7 +57,7 @@ addon | version | maintainers | summary
 [project_task_material](project_task_material/) | 14.0.1.0.1 |  | Record products spent in a Task
 [project_task_note](project_task_note/) | 14.0.1.0.0 | <a href='https://github.com/carolina-fernandez'><img src='https://github.com/carolina-fernandez.png' width='32' height='32' style='border-radius:50%;' alt='carolina-fernandez'/></a> | Add notes in project tasks
 [project_task_project_required](project_task_project_required/) | 14.0.1.0.0 |  | Set project on task as a mandatory field
-[project_task_pull_request](project_task_pull_request/) | 14.0.1.1.0 |  | Adds a field for a PR URI to project tasks
+[project_task_pull_request](project_task_pull_request/) | 14.0.1.2.0 |  | Adds a field for a PR URI to project tasks
 [project_task_recurring_activity](project_task_recurring_activity/) | 14.0.1.0.0 | <a href='https://github.com/dessanhemrayev'><img src='https://github.com/dessanhemrayev.png' width='32' height='32' style='border-radius:50%;' alt='dessanhemrayev'/></a> <a href='https://github.com/CetmixGitDrone'><img src='https://github.com/CetmixGitDrone.png' width='32' height='32' style='border-radius:50%;' alt='CetmixGitDrone'/></a> | Project Task Recurring Activity
 [project_task_send_by_mail](project_task_send_by_mail/) | 14.0.1.0.0 |  | Send task report by email
 [project_template](project_template/) | 14.0.1.2.0 | <a href='https://github.com/patrickrwilson'><img src='https://github.com/patrickrwilson.png' width='32' height='32' style='border-radius:50%;' alt='patrickrwilson'/></a> | Project Templates
