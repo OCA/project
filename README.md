@@ -21,6 +21,7 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
+[project_task_pull_request](project_task_pull_request/) | 19.0.1.0.0 |  | Adds a field for a PR URI to project tasks
 [project_task_stage_state](project_task_stage_state/) | 19.0.1.0.0 |  | Restore State attribute removed from Project Stages in 8.0
 
 [//]: # (end addons)
