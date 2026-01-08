@@ -1,10 +1,14 @@
 # Copyright 2024 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from odoo.addons.base.tests.common import BaseCommon
+from odoo.exceptions import UserError
+from odoo.tests import tagged
+
+from odoo.addons.base.tests.common import TransactionCase
 
 
-class TestProjectTagHierarchy(BaseCommon):
+@tagged("post_install", "-at_install")
+class TestProjectTagHierarchy(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
@@ -16,10 +20,11 @@ class TestProjectTagHierarchy(BaseCommon):
             {"name": "Tag 3", "parent_id": cls.tag_2.id}
         )
 
-    def test_project_tag_name_get(self):
-        tag_1_name = self.tag_1.name_get()
-        self.assertEqual(tag_1_name[0][1], "Tag 1")
-        tag_2_name = self.tag_2.name_get()
-        self.assertEqual(tag_2_name[0][1], "Tag 1 / Tag 2")
-        tag_3_name = self.tag_3.name_get()
-        self.assertEqual(tag_3_name[0][1], "Tag 1 / Tag 2 / Tag 3")
+    def test_project_tag_display_name(self):
+        self.assertEqual(self.tag_1.display_name, "Tag 1")
+        self.assertEqual(self.tag_2.display_name, "Tag 1 / Tag 2")
+        self.assertEqual(self.tag_3.display_name, "Tag 1 / Tag 2 / Tag 3")
+
+    def test_project_tag_recursion(self):
+        with self.assertRaises(UserError):
+            self.tag_1.parent_id = self.tag_3
