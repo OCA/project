@@ -71,7 +71,7 @@ Authors
 Contributors
 ------------
 
--  KMEE (`https://kmee.com.br/ <https://kmee.com.br/>`__):
+-  KMEE (https://kmee.com.br/):
 
    -  Tiago Amaral
 

@@ -53,17 +53,17 @@ class ProjectTask(models.Model):
 
     @api.constrains("stage_id")
     def _check_stage_id_(self):
-        for rec in self:
-            stage = self.env["project.task.type"].search([("id", "=", rec.stage_id.id)])
-            for s in stage:
+        for this in self:
+            stages = this.stage_id.filtered(lambda x: x.required_field_ids)
+            for stage in stages:
                 fields = (
-                    self.env["ir.model.fields"]
+                    this.env["ir.model.fields"]
                     .sudo()
-                    .search([("id", "in", s.required_field_ids.ids)])
+                    .search([("id", "in", stage.required_field_ids.ids)])
                 )
-                for field in fields:
-                    if hasattr(self, "%s" % field.name):
-                        if not getattr(self, "%s" % field.name):
+                for rec in this.filtered(lambda x: x.stage_id == stage):
+                    for field in fields:
+                        if hasattr(rec, field.name) and not getattr(rec, field.name):
                             raise UserError(
                                 _(
                                     "Field '%(field)s' is mandatory in stage '%(stage)s'."
@@ -71,7 +71,7 @@ class ProjectTask(models.Model):
                                 % (
                                     {
                                         "field": field.display_name.split(" (")[0],
-                                        "stage": s.display_name,
+                                        "stage": stage.display_name,
                                     }
                                 )
                             )
