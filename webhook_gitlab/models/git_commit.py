@@ -21,7 +21,13 @@ class GitCommit(models.Model):
     timestamp = fields.Datetime(string="Timestamp")
 
     git_branch_id = fields.Many2one(comodel_name="git.branch")
-    task_id = fields.Many2one(comodel_name="project.task", ondelete="cascade")
+    task_ids = fields.Many2many(
+        comodel_name="project.task",
+        relation="git_commit_project_task_rel",
+        column1="git_commit_id",
+        column2="project_task_id",
+        string="Related Tasks",
+    )
 
     @api.depends("full_sha")
     def _compute_sha(self):

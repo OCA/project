@@ -55,21 +55,20 @@ class WebhookGitlab(http.Controller):
     def _process_webhook(self, **kw):
         """Receive the request from Gitlab/Github and invoke functions based on
         'object_kind', then it calls the function with the name
-        _process_<object_kind>
-        """
+        _process_<object_kind>."""
         event = request.get_json_data()
         event["source"] = kw.get("source", "")
         event = self._parse_git_request_data(event=event)
         git_event = request.env["git.event"]
-        try:
-            if event.get("object_kind"):
-                func = getattr(git_event.with_delay(), "_process_%s" % event["object_kind"])
-            else:
-                return True
-        except AttributeError as error:
-            _logger.warning(error)
-            return error
-        return func(event)
+        object_kind = event.get("object_kind")
+        if not object_kind:
+            return True
+        method_name = "_process_%s" % object_kind
+        if not hasattr(git_event, method_name):
+            # Event kinds without a handler (e.g. note
+            # events) are skipped silently.
+            return True
+        return getattr(git_event.with_delay(), method_name)(event)
 
     def _parse_git_request_data(self, event):
         """The structure of a git request differ among different sources

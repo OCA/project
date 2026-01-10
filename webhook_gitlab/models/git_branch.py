@@ -12,7 +12,13 @@ class GitBranch(models.Model):
     name = fields.Char(string="Branch Name")
     url = fields.Char(string="Branch URL")
 
-    task_id = fields.Many2one(comodel_name="project.task", ondelete="cascade")
+    task_ids = fields.Many2many(
+        comodel_name="project.task",
+        relation="git_branch_project_task_rel",
+        column1="git_branch_id",
+        column2="project_task_id",
+        string="Related Tasks",
+    )
 
     git_commit_ids = fields.Many2many(
         comodel_name="git.commit",

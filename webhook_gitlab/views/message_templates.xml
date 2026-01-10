@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
 
-    <template id="gitlab_id_not_in_title" name="Gitlab: ID not found in title">
-        <t>**WARNING**: Could not link to Odoo task. Record ID not found in the title of the MR, supported formats:
-```
-{ record type }#{ number }
-```
-Available types: 'task#', 't#' (case insensitive)
+    <template id="no_task_reference_in_title" name="Git: no task reference in title">
+        <t>**WARNING**: Could not link this PR/MR to an Odoo task: no task reference found.
 
-_Examples_:
+Supported references:
 
-- task#123
+- explicit task id in the title: `task#123` or `t#123` (case insensitive)
 
-- i#123
+- task reference in the title or in the source branch name, matching the task title by configured regex (e.g. `ABC-123`)
         </t>
     </template>
 
