@@ -2,6 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 import ast
+import json
 
 from odoo.exceptions import UserError
 from odoo.tests.common import TransactionCase
@@ -74,8 +75,39 @@ class TestProjectRequiredFieldByStage(TransactionCase):
 
     def test_get_view_required_fields(self):
         arch, view = self.project_task_1._get_view(view_type="form")
+        # default  will be project.task_form_view2
         node = arch.xpath("//field[@name='user_ids']")
         self.assertTrue(node)
         attrs = ast.literal_eval(node[0].attrib.get("attrs", "{}"))
         self.assertIn("required", attrs)
         self.assertIn(self.project_task_type_2.id, attrs["required"][0][2])
+        # to cover all logical branches we need a view that has fields with an attrs
+        # without "required" and another with an attrs with "required", user_id has
+        # no attrs in view.
+        self.project_task_type_2.write(
+            {
+                "required_field_ids": [
+                    (4, self.env.ref("project.field_project_task__repeat_interval").id),
+                    (
+                        4,
+                        self.env.ref(
+                            "project.field_project_task__personal_stage_type_id"
+                        ).id,
+                    ),
+                ],
+            }
+        )
+        arch, view = self.project_task_1._get_view(view_type="form")
+        # repeat_interval has attrs with required, we verify injection after '|' operator
+        node2 = arch.xpath("//field[@name='repeat_interval']")
+        self.assertTrue(node2)
+        attrs2 = json.loads(node2[0].attrib.get("attrs", "{}"))
+        self.assertIn("required", attrs2)
+        self.assertEqual("|", attrs2["required"][0])
+        self.assertIn(self.project_task_type_2.id, attrs2["required"][1][2])
+        # personal_stage_type_id has attrs with no required, we verify injection
+        node3 = arch.xpath("//field[@name='personal_stage_type_id']")
+        self.assertTrue(node3)
+        attrs3 = json.loads(node3[0].attrib.get("attrs", "{}"))
+        self.assertIn("required", attrs3)
+        self.assertIn(self.project_task_type_2.id, attrs3["required"][0][2])
