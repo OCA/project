@@ -57,15 +57,23 @@ class ProjectTask(models.Model):
 
     @api.depends("hr_category_ids", "company_id")
     def _compute_allowed_assigned_user_ids(self):
-        user_obj = self.env["res.users"]
+        all_category_ids = self.mapped('hr_category_ids').ids
+        all_company_ids = self.mapped('company_id').ids
+        if not all_category_ids:
+            self.allowed_assigned_user_ids = False
+            return
+        all_users = self.env["res.users"].search([
+            ("employee_ids.company_id", "in", all_company_ids),
+            ("employee_ids.category_ids", "in", all_category_ids),
+        ])
         for task in self:
-            domain = []
             if task.hr_category_ids:
-                domain = [
-                    ("employee_ids.company_id", "=", task.company_id.id),
-                    ("employee_ids.category_ids", "in", task.hr_category_ids.ids),
-                ]
-            task.allowed_assigned_user_ids = user_obj.search(domain)
+                task.allowed_assigned_user_ids = all_users.filtered(
+                    lambda u: any(cat in task.hr_category_ids for cat in u.employee_ids.category_ids)
+                              and any(emp.company_id == task.company_id for emp in u.employee_ids)
+                )
+            else:
+                task.allowed_assigned_user_ids = False
 
     @api.constrains("hr_category_ids", "user_ids")
     def _check_employee_category_user(self):
