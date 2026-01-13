@@ -33,16 +33,8 @@
                             <field name="name" />
                             <field name="fold" optional="show" />
                             <field name="mail_template_id" optional="show" />
-                            <field
-                                name="rating_template_id"
-                                optional="show"
-                                groups="project.group_project_rating"
-                            />
-                            <field
-                                name="auto_validation_state"
-                                optional="hide"
-                                groups="project.group_project_rating"
-                            />
+                            <field name="rating_template_id" optional="show" />
+                            <field name="auto_validation_state" optional="hide" />
                         </list>
                     </field>
                 </page>
