@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_project_fte_month_line_manager,project.fte.month.line.manager,model_project_fte_month_line,project.group_project_manager,1,1,1,1
+access_project_fte_profile_distribution_manager,project.fte.profile.distribution.manager,model_project_fte_profile_distribution,project.group_project_manager,1,1,1,1
+access_project_fte_mass_generator_manager,project.fte.mass.generator.manager,model_project_fte_mass_generator,project.group_project_manager,1,1,1,1
+access_project_fte_mass_generator_profile_manager,project.fte.mass.generator.profile.manager,model_project_fte_mass_generator_profile,project.group_project_manager,1,1,1,1
+access_project_fte_month_line_user,project.fte.month.line user,model_project_fte_month_line,project.group_project_user,1,0,0,0
+access_project_fte_profile_distribution_user,project.fte.profile.distribution user,model_project_fte_profile_distribution,project.group_project_user,1,0,0,0
