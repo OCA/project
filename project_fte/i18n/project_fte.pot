@@ -6,11 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-11-26 08:27+0000\n"
-"PO-Revision-Date: 2025-11-26 08:27+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
@@ -22,109 +19,39 @@ msgid ""
 "\n"
 "            \n"
 "            <t t-set=\"project_id\" t-value=\"object.project_id.id\"/>\n"
-"            <div style=\"font-family: Arial, sans-serif; background-color: "
-"#f5f6fa; padding: 40px 20px;\">\n"
-"                <div style=\"max-width: 600px; margin: auto; background: "
-"#ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px "
-"rgba(0,0,0,0.05);\">\n"
+"            <div style=\"font-family: Arial, sans-serif; background-color: #f5f6fa; padding: 40px 20px;\">\n"
+"                <div style=\"max-width: 600px; margin: auto; background: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);\">\n"
 "\n"
-"                    <h2 style=\"color: #c82333;\">⚠ Excessive FTE Execution</"
-"h2>\n"
+"                    <h2 style=\"color: #c82333;\">⚠ Excessive FTE Execution</h2>\n"
 "\n"
-"                    <p style=\"font-size: 15px; color: #333333;\">Dear "
-"<strong><t t-out=\"object.project_id.user_id.name or 'User'\"/></strong>,</"
-"p>\n"
+"                    <p style=\"font-size: 15px; color: #333333;\">Dear <strong><t t-out=\"object.project_id.user_id.name or 'User'\"/></strong>,</p>\n"
 "\n"
 "                    <p style=\"font-size: 15px; color: #333;\">\n"
-"                        The FTE execution for project <strong><t t-"
-"out=\"object.project_id.name\"/></strong>\n"
-"                        in <strong><t t-out=\"object.month\"/>/<t t-"
-"out=\"object.year\"/></strong> is:\n"
+"                        The FTE execution for project <strong><t t-out=\"object.project_id.name\"/></strong>\n"
+"                        in <strong><t t-out=\"object.month\"/>/<t t-out=\"object.year\"/></strong> is:\n"
 "                    </p>\n"
 "\n"
-"                    <ul style=\"font-size: 15px; color: #333; padding-left: "
-"20px; margin: 0 0 10px 0;\">\n"
-"                        <li><strong><t t-out=\"round(object.fte_hours, 2)\"/"
-"></strong> expected hours</li>\n"
-"                        <li><strong><t t-out=\"round(object.executed_hours, "
-"2)\"/></strong> hours executed</li>\n"
-"                        <li><strong><t t-out=\"round(object."
-"executed_percent)\"/>%</strong> of execution</li>\n"
+"                    <ul style=\"font-size: 15px; color: #333; padding-left: 20px; margin: 0 0 10px 0;\">\n"
+"                        <li><strong><t t-out=\"round(object.fte_hours, 2)\"/></strong> expected hours</li>\n"
+"                        <li><strong><t t-out=\"round(object.executed_hours, 2)\"/></strong> hours executed</li>\n"
+"                        <li><strong><t t-out=\"round(object.executed_percent)\"/>%</strong> of execution</li>\n"
 "                    </ul>\n"
 "\n"
-"                    <p style=\"font-size: 15px;\">This exceeds the expected "
-"progress. Please review the timesheets to confirm accurate reporting.</p>\n"
+"                    <p style=\"font-size: 15px;\">This exceeds the expected progress. Please review the timesheets to confirm accurate reporting.</p>\n"
 "\n"
 "                    <div style=\"margin: 30px 0; text-align: center;\">\n"
-"                        <a t-att-href=\"'/web#id=%s&model=project."
-"project&view_type=form' % project_id\"\n"
-"                           style=\"background-color: #007BFF; color: white; "
-"padding: 12px 25px; text-decoration: none; border-radius: 6px; display: "
-"inline-block;\">\n"
+"                        <a t-att-href=\"'/web#id=%s&model=project.project&view_type=form' % project_id\"\n"
+"                           style=\"background-color: #007BFF; color: white; padding: 12px 25px; text-decoration: none; border-radius: 6px; display: inline-block;\">\n"
 "                            🔍 View Project\n"
 "                        </a>\n"
 "                    </div>\n"
 "\n"
-"                    <p style=\"font-size: 14px; color: #666;\">Best regards,"
-"<br/>Odoo System</p>\n"
+"                    <p style=\"font-size: 14px; color: #666;\">Best regards,<br/>Odoo System</p>\n"
 "                </div>\n"
 "            </div>\n"
 "            \n"
 "        "
 msgstr ""
-"\n"
-"            \n"
-"            <t t-set=\"project_id\" t-value=\"object.project_id.id\"/>\n"
-"            <div style=\"font-family: Arial, sans-serif; background-color: "
-"#f5f6fa; padding: 40px 20px;\">\n"
-"                <div style=\"max-width: 600px; margin: auto; background: "
-"#ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px "
-"rgba(0,0,0,0.05);\">\n"
-"                    \n"
-"                    <h2 style=\"color: #c82333;\">⚠ Ejecución de FTE "
-"Excesiva</h2>\n"
-"\n"
-"                    <p style=\"font-size: 15px; color: #333333;\">Estimado/a "
-"<strong><t t-out=\"object.project_id.user_id.name or 'Usuario'\"/></strong>,"
-"</p>\n"
-"\n"
-"                    <p style=\"font-size: 15px; color: #333;\">\n"
-"                        La ejecución de FTE para el proyecto <strong><t t-"
-"out=\"object.project_id.name\"/></strong>\n"
-"                        en <strong><t t-out=\"object.month\"/>/<t t-"
-"out=\"object.year\"/></strong> es:\n"
-"                    </p>\n"
-"\n"
-"                    <ul style=\"font-size: 15px; color: #333; padding-left: "
-"20px; margin: 0 0 10px 0;\">\n"
-"                        <li><strong><t t-out=\"round(object.fte_hours, 2)\"/"
-"></strong> horas esperadas</li>\n"
-"                        <li><strong><t t-out=\"round(object.executed_hours, "
-"2)\"/></strong> horas ejecutadas</li>\n"
-"                        <li><strong><t t-out=\"round(object."
-"executed_percent)\"/>%</strong> de ejecución</li>\n"
-"                    </ul>\n"
-"\n"
-"                    <p style=\"font-size: 15px;\">Esto excede el progreso "
-"esperado. Por favor, revise las hojas de tiempo para confirmar que los datos "
-"sean correctos.</p>\n"
-"\n"
-"                    <div style=\"margin: 30px 0; text-align: center;\">\n"
-"                        <a t-att-href=\"'/web#id=%s&model=project."
-"project&view_type=form' % project_id\"\n"
-"                           style=\"background-color: #007BFF; color: white; "
-"padding: 12px 25px; text-decoration: none; border-radius: 6px; display: "
-"inline-block;\">\n"
-"                            🔍 Ver Proyecto\n"
-"                        </a>\n"
-"                    </div>\n"
-"\n"
-"                    <p style=\"font-size: 14px; color: #666;\">Saludos "
-"cordiales,<br/>Sistema Odoo</p>\n"
-"                </div>\n"
-"            </div>\n"
-"            \n"
-"        "
 
 #. module: project_fte
 #: model:mail.template,body_html:project_fte.mail_template_fte_execution_warning
@@ -132,109 +59,39 @@ msgid ""
 "\n"
 "            \n"
 "            <t t-set=\"project_id\" t-value=\"object.project_id.id\"/>\n"
-"            <div style=\"font-family: Arial, sans-serif; background-color: "
-"#f5f6fa; padding: 40px 20px;\">\n"
-"                <div style=\"max-width: 600px; margin: auto; background: "
-"#ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px "
-"rgba(0,0,0,0.05);\">\n"
+"            <div style=\"font-family: Arial, sans-serif; background-color: #f5f6fa; padding: 40px 20px;\">\n"
+"                <div style=\"max-width: 600px; margin: auto; background: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);\">\n"
 "\n"
 "                    <h2 style=\"color: #dc3545;\">⚠ Low FTE Execution</h2>\n"
 "\n"
-"                    <p style=\"font-size: 15px; color: #333333;\">Dear "
-"<strong><t t-out=\"object.project_id.user_id.name or 'User'\"/></strong>,</"
-"p>\n"
+"                    <p style=\"font-size: 15px; color: #333333;\">Dear <strong><t t-out=\"object.project_id.user_id.name or 'User'\"/></strong>,</p>\n"
 "\n"
 "                    <p style=\"font-size: 15px; color: #333;\">\n"
-"                        The FTE execution for project <strong><t t-"
-"out=\"object.project_id.name\"/></strong>\n"
-"                        in <strong><t t-out=\"object.month\"/>/<t t-"
-"out=\"object.year\"/></strong> is:\n"
+"                        The FTE execution for project <strong><t t-out=\"object.project_id.name\"/></strong>\n"
+"                        in <strong><t t-out=\"object.month\"/>/<t t-out=\"object.year\"/></strong> is:\n"
 "                    </p>\n"
 "\n"
-"                    <ul style=\"font-size: 15px; color: #333; padding-left: "
-"20px; margin: 0 0 10px 0;\">\n"
-"                        <li><strong><t t-out=\"round(object.fte_hours, 2)\"/"
-"></strong> expected hours</li>\n"
-"                        <li><strong><t t-out=\"round(object.executed_hours, "
-"2)\"/></strong> hours executed</li>\n"
-"                        <li><strong><t t-out=\"round(object."
-"executed_percent)\"/>%</strong> of execution</li>\n"
+"                    <ul style=\"font-size: 15px; color: #333; padding-left: 20px; margin: 0 0 10px 0;\">\n"
+"                        <li><strong><t t-out=\"round(object.fte_hours, 2)\"/></strong> expected hours</li>\n"
+"                        <li><strong><t t-out=\"round(object.executed_hours, 2)\"/></strong> hours executed</li>\n"
+"                        <li><strong><t t-out=\"round(object.executed_percent)\"/>%</strong> of execution</li>\n"
 "                    </ul>\n"
 "\n"
-"                    <p style=\"font-size: 15px;\">This is below the expected "
-"progress. Please review the execution and make sure timesheets are properly "
-"filled in.</p>\n"
+"                    <p style=\"font-size: 15px;\">This is below the expected progress. Please review the execution and make sure timesheets are properly filled in.</p>\n"
 "\n"
 "                    <div style=\"margin: 30px 0; text-align: center;\">\n"
-"                        <a t-att-href=\"'/web#id=%s&model=project."
-"project&view_type=form' % project_id\"\n"
-"                           style=\"background-color: #007BFF; color: white; "
-"padding: 12px 25px; text-decoration: none; border-radius: 6px; display: "
-"inline-block;\">\n"
+"                        <a t-att-href=\"'/web#id=%s&model=project.project&view_type=form' % project_id\"\n"
+"                           style=\"background-color: #007BFF; color: white; padding: 12px 25px; text-decoration: none; border-radius: 6px; display: inline-block;\">\n"
 "                            🔍 View Project\n"
 "                        </a>\n"
 "                    </div>\n"
 "\n"
-"                    <p style=\"font-size: 14px; color: #666;\">Best regards,"
-"<br/>Odoo System</p>\n"
+"                    <p style=\"font-size: 14px; color: #666;\">Best regards,<br/>Odoo System</p>\n"
 "                </div>\n"
 "            </div>\n"
 "            \n"
 "        "
 msgstr ""
-"\n"
-"            \n"
-"            <t t-set=\"project_id\" t-value=\"object.project_id.id\"/>\n"
-"            <div style=\"font-family: Arial, sans-serif; background-color: "
-"#f5f6fa; padding: 40px 20px;\">\n"
-"                <div style=\"max-width: 600px; margin: auto; background: "
-"#ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 8px "
-"rgba(0,0,0,0.05);\">\n"
-"                    \n"
-"                    <h2 style=\"color: #dc3545;\">⚠ Ejecución FTE "
-"Insuficiente</h2>\n"
-"\n"
-"                    <p style=\"font-size: 15px; color: #333333;\">Estimado/a "
-"<strong><t t-out=\"object.project_id.user_id.name or 'Usuario'\"/></strong>,"
-"</p>\n"
-"\n"
-"                    <p style=\"font-size: 15px; color: #333;\">\n"
-"                        La ejecución de FTE para el proyecto <strong><t t-"
-"out=\"object.project_id.name\"/></strong>\n"
-"                        en <strong><t t-out=\"object.month\"/>/<t t-"
-"out=\"object.year\"/></strong> es:\n"
-"                    </p>\n"
-"\n"
-"                    <ul style=\"font-size: 15px; color: #333; padding-left: "
-"20px; margin: 0 0 10px 0;\">\n"
-"                        <li><strong><t t-out=\"round(object.fte_hours, 2)\"/"
-"></strong> horas esperadas</li>\n"
-"                        <li><strong><t t-out=\"round(object.executed_hours, "
-"2)\"/></strong> horas ejecutadas</li>\n"
-"                        <li><strong><t t-out=\"round(object."
-"executed_percent)\"/>%</strong> de ejecución</li>\n"
-"                    </ul>\n"
-"\n"
-"                    <p style=\"font-size: 15px;\">Esto está por debajo del "
-"progreso esperado. Por favor, revise la ejecución y asegúrese de que las "
-"hojas de tiempo estén correctamente completadas.</p>\n"
-"\n"
-"                    <div style=\"margin: 30px 0; text-align: center;\">\n"
-"                        <a t-att-href=\"'/web#id=%s&model=project."
-"project&view_type=form' % project_id\"\n"
-"                           style=\"background-color: #007BFF; color: white; "
-"padding: 12px 25px; text-decoration: none; border-radius: 6px; display: "
-"inline-block;\">\n"
-"                            🔍 Ver Proyecto\n"
-"                        </a>\n"
-"                    </div>\n"
-"\n"
-"                    <p style=\"font-size: 14px; color: #666;\">Saludos "
-"cordiales,<br/>Sistema Odoo</p>\n"
-"                </div>\n"
-"            </div>\n"
-"            \n"
-"        "
 
 #. module: project_fte
 #: model_terms:ir.ui.view,arch_db:project_fte.project_fte_mass_generator_form_view
@@ -247,34 +104,24 @@ msgstr ""
 #: code:addons/project_fte/models/project_fte_month_line.py:0
 #, python-format
 msgid ""
-"<p>This project has <b>%(fixed)s&nbsp;fixed hours</b> for the month.</p><p>A "
-"total of <b>%(total)s&nbsp;hours</b> have been recorded:</"
-"p><ul><li><b>%(fixed)s&nbsp;hours</b> are considered fixed hours.</"
-"li><li><b>%(fte)s&nbsp;hours</b> are additional hours that count as FTE "
-"hours and are used to calculate the execution percentage.</li></ul>"
+"<p>This project has <b>%(fixed)s&nbsp;fixed hours</b> for the month.</p><p>A"
+" total of <b>%(total)s&nbsp;hours</b> have been "
+"recorded:</p><ul><li><b>%(fixed)s&nbsp;hours</b> are considered fixed "
+"hours.</li><li><b>%(fte)s&nbsp;hours</b> are additional hours that count as "
+"FTE hours and are used to calculate the execution percentage.</li></ul>"
 msgstr ""
-"<p>Este proyecto tiene <b>%(fixed)s&nbsp;horas fijas</b> para el mes.</"
-"p><p>Se han registrado un total de <b>%(total)s&nbsp;horas</b>:</"
-"p><ul><li><b>%(fixed)s&nbsp;horas</b> se consideran horas fijas.</"
-"li><li><b>%(fte)s&nbsp;horas</b> son horas adicionales que cuentan como "
-"horas FTE y se utilizan para calcular el porcentaje de ejecución.</li></ul>"
 
 #. module: project_fte
 #. odoo-python
 #: code:addons/project_fte/models/project_fte_month_line.py:0
 #, python-format
 msgid ""
-"<p>This project has <b>%(fixed)s&nbsp;fixed hours</b> for the month.</"
-"p><p>The first <b>%(fixed)s&nbsp;hours</b> recorded are considered fixed "
-"hours and <b>do not count</b> toward the FTE execution percentage.</p><p>The "
-"execution percentage will start being calculated once those fixed hours have "
-"been exceeded.</p>"
+"<p>This project has <b>%(fixed)s&nbsp;fixed hours</b> for the "
+"month.</p><p>The first <b>%(fixed)s&nbsp;hours</b> recorded are considered "
+"fixed hours and <b>do not count</b> toward the FTE execution "
+"percentage.</p><p>The execution percentage will start being calculated once "
+"those fixed hours have been exceeded.</p>"
 msgstr ""
-"<p>Este proyecto tiene <b>%(fixed)s&nbsp;horas fijas</b> para el mes.</"
-"p><p>Las primeras <b>%(fixed)s&nbsp;horas</b> registradas se consideran "
-"horas fijas y <b>no cuentan</b> para el porcentaje de ejecución FTE.</"
-"p><p>El porcentaje de ejecución comenzará a calcularse una vez que se "
-"superen esas horas fijas.</p>"
 
 #. module: project_fte
 #: model_terms:ir.ui.view,arch_db:project_fte.project_project_view_kanban_inherit_fte
@@ -284,67 +131,67 @@ msgstr ""
 #. module: project_fte
 #: model:ir.model.constraint,message:project_fte.constraint_project_fte_month_line_project_month_year_uniq
 msgid "A line for this month and year already exists for this project."
-msgstr "En este proyecto ya existe una línea para este mes y año."
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__message_needaction
 msgid "Action Needed"
-msgstr "Acción Necesaria"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__activity_ids
 msgid "Activities"
-msgstr "Actividades"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__activity_exception_decoration
 msgid "Activity Exception Decoration"
-msgstr "Decoración de Excepción de Actividad"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__activity_state
 msgid "Activity State"
-msgstr "Estado de la Actividad"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__activity_type_icon
 msgid "Activity Type Icon"
-msgstr "Ícono del Tipo de Actividad"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_project__allocated_hours
 msgid "Allocated Hours"
-msgstr "Horas asignadas"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_mass_generator_profile__profile_price_amount
 msgid "Amount"
-msgstr "Importe"
+msgstr ""
 
 #. module: project_fte
 #: model_terms:ir.ui.view,arch_db:project_fte.project_project_view_form_inherit_fte
 msgid "Amounts Summary"
-msgstr "Resumen de Importes"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model,name:project_fte.model_account_analytic_line
 msgid "Analytic Line"
-msgstr "Línea analítica"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields.selection,name:project_fte.selection__project_fte_month_line__month__4
 msgid "April"
-msgstr "Abril"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__message_attachment_count
 msgid "Attachment Count"
-msgstr "Cantidad de Archivos Adjuntos"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields.selection,name:project_fte.selection__project_fte_month_line__month__8
 msgid "August"
-msgstr "Agosto"
+msgstr ""
 
 #. module: project_fte
 #. odoo-python
@@ -356,22 +203,22 @@ msgstr ""
 #. module: project_fte
 #: model_terms:ir.ui.view,arch_db:project_fte.project_fte_mass_generator_form_view
 msgid "Cancel"
-msgstr "Cancelar"
+msgstr ""
 
 #. module: project_fte
 #: model_terms:ir.ui.view,arch_db:project_fte.project_project_view_form_inherit_fte
 msgid "Close FTE"
-msgstr "Cerrar FTE"
+msgstr ""
 
 #. module: project_fte
 #: model_terms:ir.ui.view,arch_db:project_fte.project_project_view_form_inherit_fte
 msgid "Copy last FTE Line"
-msgstr "Copiar Última Línea FTE"
+msgstr ""
 
 #. module: project_fte
 #: model_terms:ir.actions.act_window,help:project_fte.project_fte_month_line_action
 msgid "Create a new FTE line for your project."
-msgstr "Crea una nueva línea de FTE para tu proyecto."
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_mass_generator__create_uid
@@ -379,7 +226,7 @@ msgstr "Crea una nueva línea de FTE para tu proyecto."
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__create_uid
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_profile_distribution__create_uid
 msgid "Created by"
-msgstr "Creado por"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_mass_generator__create_date
@@ -387,7 +234,7 @@ msgstr "Creado por"
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__create_date
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_profile_distribution__create_date
 msgid "Created on"
-msgstr "Creado el"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_mass_generator__currency_id
@@ -395,34 +242,34 @@ msgstr "Creado el"
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__currency_id
 #: model:ir.model.fields,field_description:project_fte.field_project_project__currency_id
 msgid "Currency"
-msgstr "Moneda"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields.selection,name:project_fte.selection__project_fte_month_line__month__12
 msgid "December"
-msgstr "Diciembre"
+msgstr ""
 
 #. module: project_fte
 #: model_terms:ir.ui.view,arch_db:project_fte.project_project_view_form_inherit_fte
 msgid "Delete FTE"
-msgstr "Eliminar FTE"
+msgstr ""
 
 #. module: project_fte
 #: model_terms:ir.ui.view,arch_db:project_fte.project_fte_mass_generator_form_view
 msgid "Discount"
-msgstr "Descuento"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_mass_generator__discount
 #: model:ir.model.fields,field_description:project_fte.field_project_project__discount
 msgid "Discount (%)"
-msgstr "Descuento (%)"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_mass_generator__discount_amount
 #: model:ir.model.fields,field_description:project_fte.field_project_project__discount_amount
 msgid "Discount Amount"
-msgstr "Importe del Descuento"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_mass_generator__display_name
@@ -430,39 +277,39 @@ msgstr "Importe del Descuento"
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__display_name
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_profile_distribution__display_name
 msgid "Display Name"
-msgstr "Nombre"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_mass_generator__date_to
 msgid "End Date"
-msgstr "Fecha de Fin"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__executed_hours
 #: model_terms:ir.ui.view,arch_db:project_fte.project_fte_month_line_view_tree
 #: model_terms:ir.ui.view,arch_db:project_fte.project_project_view_form_inherit_fte
 msgid "Executed Hours"
-msgstr "Horas Ejecutadas"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__executed_percent
 msgid "Executed Percent"
-msgstr "Porcentaje Ejecutado"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__high_usage_sent
 msgid "Execution High Usage Sent"
-msgstr "Notificación por Alta Ejecución Enviada"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__overload_sent
 msgid "Execution Overload Sent"
-msgstr "Notificación por Sobrecarga Enviada"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__warning_sent
 msgid "Execution Warning Sent"
-msgstr "Notificación por Baja Ejecución Enviada"
+msgstr ""
 
 #. module: project_fte
 #. odoo-python
@@ -481,49 +328,49 @@ msgstr ""
 #. module: project_fte
 #: model:ir.actions.server,name:project_fte.ir_cron_check_fte_execution_ir_actions_server
 msgid "FTE Execution Monitoring"
-msgstr "Monitoreo de Ejecución FTE"
+msgstr ""
 
 #. module: project_fte
 #: model:mail.template,name:project_fte.mail_template_fte_execution_overload
 msgid "FTE Execution Overload Warning"
-msgstr "Aviso de Sobrecarga en la Ejecución FTE"
+msgstr ""
 
 #. module: project_fte
 #: model:mail.template,name:project_fte.mail_template_fte_execution_warning
 msgid "FTE Execution Warning"
-msgstr "Aviso de Ejecución FTE Insuficiente"
+msgstr ""
 
 #. module: project_fte
 #: model_terms:ir.ui.view,arch_db:project_fte.project_project_view_form_inherit_fte
 msgid "FTE Hours"
-msgstr "Horas FTE"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_mass_generator_profile__wizard_id
 msgid "FTE Mass Generator Wizard"
-msgstr "Wizard de generación FTE Masivo"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.actions.act_window,name:project_fte.project_fte_month_line_action
 #: model:ir.model.fields,field_description:project_fte.field_project_project__fte_month_line_ids
 msgid "FTE Month Lines"
-msgstr "Líneas de Mes FTE"
+msgstr ""
 
 #. module: project_fte
 #: model_terms:ir.ui.view,arch_db:project_fte.project_project_view_form_inherit_fte
 msgid "FTE Month Table"
-msgstr "Tabla de mes FTE"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_mass_generator__fte_months
 #: model:ir.model.fields,field_description:project_fte.field_project_project__fte_months
 msgid "FTE Months"
-msgstr "Meses FTE"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields.selection,name:project_fte.selection__project_fte_month_line__month__2
 msgid "February"
-msgstr "Febrero"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_mass_generator__fixed_hours
@@ -532,34 +379,34 @@ msgstr "Febrero"
 #: model_terms:ir.ui.view,arch_db:project_fte.project_fte_month_line_view_tree
 #: model_terms:ir.ui.view,arch_db:project_fte.project_project_view_form_inherit_fte
 msgid "Fixed Hours"
-msgstr "Horas fijas"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_mass_generator__fixed_hours_cost
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__fixed_hours_cost
 #: model:ir.model.fields,field_description:project_fte.field_project_project__fixed_hours_cost
 msgid "Fixed Hours Cost"
-msgstr "Coste de horas fijas"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_mass_generator__fixed_hours_total
 msgid "Fixed Hours Total"
-msgstr "Total de horas fijas"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__message_follower_ids
 msgid "Followers"
-msgstr "Seguidores"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__message_partner_ids
 msgid "Followers (Partners)"
-msgstr "Seguidores (Contactos)"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,help:project_fte.field_project_fte_month_line__activity_type_icon
 msgid "Font awesome icon e.g. fa-tasks"
-msgstr "Ícono de font awesome, por ejemplo: fa-tasks"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__fte_line_message
@@ -574,18 +421,18 @@ msgstr ""
 #. module: project_fte
 #: model_terms:ir.ui.view,arch_db:project_fte.project_fte_mass_generator_form_view
 msgid "Generate"
-msgstr "Generar"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.actions.act_window,name:project_fte.project_fte_mass_generator_action
 #: model_terms:ir.ui.view,arch_db:project_fte.project_project_view_form_inherit_fte
 msgid "Generate FTE Lines"
-msgstr "Generar Líneas FTE"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__has_message
 msgid "Has Message"
-msgstr "Tiene Mensaje"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_mass_generator__id
@@ -598,12 +445,12 @@ msgstr ""
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__activity_exception_icon
 msgid "Icon"
-msgstr "Icono"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,help:project_fte.field_project_fte_month_line__activity_exception_icon
 msgid "Icon to indicate an exception activity."
-msgstr "Ícono que indica una actividad con excepción."
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,help:project_fte.field_project_fte_mass_generator__overwrite_existing
@@ -611,43 +458,41 @@ msgid ""
 "If checked, any existing FTE lines for the selected months will be deleted "
 "and recreated."
 msgstr ""
-"Si está marcado, cualquier Líne FTE existente para el mes seleccionado va a "
-"ser recreada."
 
 #. module: project_fte
 #: model:ir.model.fields,help:project_fte.field_project_fte_month_line__message_needaction
 msgid "If checked, new messages require your attention."
-msgstr "Si está marcado, hay mensajes nuevos que requieren tu atención."
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,help:project_fte.field_project_fte_month_line__message_has_error
 msgid "If checked, some messages have a delivery error."
-msgstr "Si está marcado, algunos mensajes tienen un error de entrega."
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__message_is_follower
 msgid "Is Follower"
-msgstr "Es seguidor"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_project__is_fte_closed
 msgid "Is Fte Closed"
-msgstr "Esta el FTE cerrado"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields.selection,name:project_fte.selection__project_fte_month_line__month__1
 msgid "January"
-msgstr "Enero"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields.selection,name:project_fte.selection__project_fte_month_line__month__7
 msgid "July"
-msgstr "Julio"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields.selection,name:project_fte.selection__project_fte_month_line__month__6
 msgid "June"
-msgstr "Junio"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_mass_generator__write_uid
@@ -655,7 +500,7 @@ msgstr "Junio"
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__write_uid
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_profile_distribution__write_uid
 msgid "Last Updated by"
-msgstr "Última Actualización por"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_mass_generator__write_date
@@ -663,37 +508,37 @@ msgstr "Última Actualización por"
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__write_date
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_profile_distribution__write_date
 msgid "Last Updated on"
-msgstr "Última Actualización el"
+msgstr ""
 
 #. module: project_fte
 #: model_terms:ir.ui.view,arch_db:project_fte.project_fte_mass_generator_form_view
 msgid "Load from Milestones"
-msgstr "Cargar desde Hitos"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields.selection,name:project_fte.selection__project_fte_month_line__month__3
 msgid "March"
-msgstr "Marzo"
+msgstr ""
 
 #. module: project_fte
 #: model_terms:ir.ui.view,arch_db:project_fte.project_fte_mass_generator_form_view
 msgid "Mass Generate FTE Lines"
-msgstr "Generar Líneas FTE Masivamente"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields.selection,name:project_fte.selection__project_fte_month_line__month__5
 msgid "May"
-msgstr "Mayo"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__message_has_error
 msgid "Message Delivery error"
-msgstr "Error en la entrega del mensaje"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__message_ids
 msgid "Messages"
-msgstr "Mensajes"
+msgstr ""
 
 #. module: project_fte
 #. odoo-python
@@ -708,84 +553,81 @@ msgstr ""
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__month
 msgid "Month"
-msgstr "Mes"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_mass_generator__month_amount
 msgid "Month Amount"
-msgstr "Total sin descuento"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_mass_generator__month_discount_amount
 msgid "Month Discount Amount"
-msgstr "Importe del Descuento"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_profile_distribution__month_line_id
 msgid "Month Line"
-msgstr "Línea de Mes"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__month_int
 msgid "Month Number"
-msgstr "Número de Mes"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_mass_generator__month_raw_amount
 msgid "Month Raw Amount"
-msgstr "Total sin descuento"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__monthly_amount
 #: model:ir.model.fields,field_description:project_fte.field_project_project__monthly_amount
 msgid "Monthly Amount"
-msgstr "Total mensual"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_project__monthly_discount_amount
 msgid "Monthly Discount Amount"
-msgstr "Descuento total por mes"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_project__monthly_html_table
 msgid "Monthly FTE Breakdown"
-msgstr "Desglose mensual de FTE"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_mass_generator__monthly_hours
 msgid "Monthly Hours"
-msgstr "Horas Mensuales"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_project__monthly_raw_amount
 msgid "Monthly Raw Amount"
-msgstr "Total sin descuento"
+msgstr ""
 
 #. module: project_fte
 #. odoo-python
 #: code:addons/project_fte/wizard/project_fte_mass_generator.py:0
-#, fuzzy, python-format
+#, python-format
 msgid "Monthly hours to allocate must be greater than zero."
 msgstr ""
-"Total de horas FTE a asignar al proyecto.\n"
-"        Las horas se basan inicialmente en las horas asignadas de las tareas "
-"del proyecto,        y pueden ajustarse manualmente posteriormente."
 
 #. module: project_fte
 #: model_terms:ir.ui.view,arch_db:project_fte.project_fte_mass_generator_form_view
 #: model_terms:ir.ui.view,arch_db:project_fte.project_project_view_form_inherit_fte
 msgid "Montly Summary"
-msgstr "Resumen Mensual"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__my_activity_date_deadline
 msgid "My Activity Deadline"
-msgstr "Fecha límite de mi actividad"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__name
 msgid "Name"
-msgstr "Nombre"
+msgstr ""
 
 #. module: project_fte
 #. odoo-python
@@ -797,110 +639,109 @@ msgstr ""
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__activity_date_deadline
 msgid "Next Activity Deadline"
-msgstr "Fecha límite de la próxima actividad"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__activity_summary
 msgid "Next Activity Summary"
-msgstr "Resumen de la próxima actividad"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__activity_type_id
 msgid "Next Activity Type"
-msgstr "Tipo de la próxima actividad"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields.selection,name:project_fte.selection__project_fte_month_line__month__11
 msgid "November"
-msgstr "Noviembre"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__message_needaction_counter
 msgid "Number of Actions"
-msgstr "Número de acciones"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__message_has_error_counter
 msgid "Number of errors"
-msgstr "Número de errores"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,help:project_fte.field_project_fte_month_line__message_needaction_counter
 msgid "Number of messages requiring action"
-msgstr "Número de mensajes que requieren acción"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,help:project_fte.field_project_fte_month_line__message_has_error_counter
 msgid "Number of messages with delivery error"
-msgstr "Número de mensajes con error de entrega"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,help:project_fte.field_project_fte_mass_generator__fte_months
 #: model:ir.model.fields,help:project_fte.field_project_project__fte_months
 msgid "Number of months for which FTE lines will be generated."
-msgstr "Número de meses para los que se generarán líneas FTE."
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,help:project_fte.field_project_fte_month_line__month_int
 msgid "Numeric value of the month for proper sorting."
-msgstr "Valor númerico del mes"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields.selection,name:project_fte.selection__project_fte_month_line__month__10
 msgid "October"
-msgstr "Octubre"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_mass_generator__overwrite_existing
 msgid "Overwrite Existing Lines"
-msgstr "Sobreescribir Líneas Existentes"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_mass_generator_profile__profile_hours_percentage
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_profile_distribution__profile_hours_percentage
 msgid "Percentage"
-msgstr "Porcentaje"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,help:project_fte.field_project_fte_mass_generator__discount
 #: model:ir.model.fields,help:project_fte.field_project_project__discount
 msgid "Percentage discount applied to the total amount."
-msgstr "Porcentaje de descuento aplicado al monto total."
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,help:project_fte.field_project_fte_month_line__executed_percent
 msgid "Percentage of executed hours compared to FTE hours."
 msgstr ""
-"Porcentaje de horas ejecutadas en relación con las horas FTE esperadas."
 
 #. module: project_fte
 #: model:ir.model.fields,help:project_fte.field_project_fte_mass_generator_profile__profile_hours_percentage
 #: model:ir.model.fields,help:project_fte.field_project_fte_profile_distribution__profile_hours_percentage
 msgid "Percentage of this profile's hours over the total for the month."
-msgstr "Porcentaje de las horas del perfil sobre el total del mes."
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_project__previous_monthly_hours
 msgid "Previous Monthly Hours"
-msgstr "Horas Mensuales Previas"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_mass_generator_profile__profile_price_hour
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_profile_distribution__profile_price_hour
 #: model:ir.model.fields,field_description:project_fte.field_project_role__price_hour
 msgid "Price per Hour"
-msgstr "Precio por hora"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,help:project_fte.field_project_fte_mass_generator_profile__profile_price_hour
 #: model:ir.model.fields,help:project_fte.field_project_fte_profile_distribution__profile_price_hour
 msgid "Price per hour for this profile."
-msgstr "Precio por hora para este perfil"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,help:project_fte.field_project_role__price_hour
 msgid "Price per hour for this role."
-msgstr "Precio por hora para este rol"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_mass_generator__profile_distribution_ids
@@ -908,77 +749,77 @@ msgstr "Precio por hora para este rol"
 #: model_terms:ir.ui.view,arch_db:project_fte.project_fte_mass_generator_form_view
 #: model_terms:ir.ui.view,arch_db:project_fte.project_fte_month_line_view_form
 msgid "Profile Distribution"
-msgstr "Distribución por Perfil"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model,name:project_fte.model_project_fte_mass_generator_profile
 msgid "Profile Distribution for Mass FTE Generator Wizard"
-msgstr "Distribución por Perfil para el Wizard de Generación Masiva de FTE"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_mass_generator_profile__profile_hours
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_profile_distribution__profile_hours
 msgid "Profile Hours"
-msgstr "Horas del Perfil"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_mass_generator_profile__role_id
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_profile_distribution__role_id
 msgid "Profile/Role"
-msgstr "Perfil / Rol"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model,name:project_fte.model_project_project
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_mass_generator__project_id
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__project_id
 msgid "Project"
-msgstr "Proyecto"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model,name:project_fte.model_project_fte_month_line
 msgid "Project FTE Month Line"
-msgstr "Línea FTE del Mes del proyecto"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model,name:project_fte.model_project_fte_profile_distribution
 msgid "Project FTE Profile Distribution"
-msgstr "Distribución FTE del Perfil por proyecto"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model,name:project_fte.model_project_milestone
 msgid "Project Milestone"
-msgstr "Hito de proyecto"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model,name:project_fte.model_project_role
 #: model:ir.model.fields,field_description:project_fte.field_project_milestone__project_role_id
 msgid "Project Role"
-msgstr "Rol del Proyecto"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__rating_ids
 msgid "Ratings"
-msgstr "Calificaciones"
+msgstr ""
 
 #. module: project_fte
 #: model_terms:ir.ui.view,arch_db:project_fte.project_project_view_form_inherit_fte
 msgid "Reopen FTE"
-msgstr "Reabrir FTE"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__activity_user_id
 msgid "Responsible User"
-msgstr "Responsable"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields.selection,name:project_fte.selection__project_fte_month_line__month__9
 msgid "September"
-msgstr "Septiembre"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_mass_generator__date_from
 msgid "Start Date"
-msgstr "Fecha de Inicio"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,help:project_fte.field_project_fte_month_line__activity_state
@@ -988,10 +829,6 @@ msgid ""
 "Today: Activity date is today\n"
 "Planned: Future activities."
 msgstr ""
-"Estado basado en actividades\n"
-"Vencida: La fecha de vencimiento ya ha pasado\n"
-"Hoy: La fecha de la actividad es hoy\n"
-"Planificada: Actividades futuras."
 
 #. module: project_fte
 #. odoo-python
@@ -1023,7 +860,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_fte.project_fte_month_line_view_form
 #: model_terms:ir.ui.view,arch_db:project_fte.project_project_view_form_inherit_fte
 msgid "Timesheets"
-msgstr "Partes de Horas"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_mass_generator__total_amount
@@ -1031,90 +868,87 @@ msgstr "Partes de Horas"
 #: model_terms:ir.ui.view,arch_db:project_fte.project_fte_month_line_view_tree
 #: model_terms:ir.ui.view,arch_db:project_fte.project_project_view_form_inherit_fte
 msgid "Total Amount"
-msgstr "Total"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_mass_generator__fte_hours
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__fte_hours
 msgid "Total FTE Hours"
-msgstr "Horas FTE Totales"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,help:project_fte.field_project_fte_mass_generator__fte_hours
 msgid "Total FTE hours to allocate for the project."
 msgstr ""
-"Total de horas FTE a asignar al proyecto.\n"
-"        Las horas se basan inicialmente en las horas asignadas de las tareas "
-"del proyecto,        y pueden ajustarse manualmente posteriormente."
 
 #. module: project_fte
 #: model_terms:ir.ui.view,arch_db:project_fte.project_fte_month_line_view_tree
 msgid "Total Hours"
-msgstr "Horas Totales"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_mass_generator__total_raw_amount
 #: model:ir.model.fields,field_description:project_fte.field_project_project__total_raw_amount
 msgid "Total Raw Amount"
-msgstr "Total sin descuento"
+msgstr ""
 
 #. module: project_fte
 #: model_terms:ir.ui.view,arch_db:project_fte.project_fte_mass_generator_form_view
 #: model_terms:ir.ui.view,arch_db:project_fte.project_project_view_form_inherit_fte
 msgid "Total Summary"
-msgstr "Resumen total"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,help:project_fte.field_project_fte_mass_generator__total_amount
 #: model:ir.model.fields,help:project_fte.field_project_project__total_amount
 msgid "Total amount"
-msgstr "Total"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,help:project_fte.field_project_fte_mass_generator__fixed_hours_total
 msgid "Total amount for fixed hours."
-msgstr "Importe total por horas fijas."
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,help:project_fte.field_project_fte_mass_generator__month_amount
 msgid "Total amount per month."
-msgstr "Total por mes"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,help:project_fte.field_project_fte_month_line__fte_hours
 msgid "Total contracted hours for this month."
-msgstr "Horas totales contratadas este mes."
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,help:project_fte.field_project_fte_mass_generator_profile__profile_price_amount
 msgid "Total cost for this profile in the month."
-msgstr "Coste total del perfil para este mes"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,help:project_fte.field_project_fte_mass_generator__discount_amount
 #: model:ir.model.fields,help:project_fte.field_project_project__discount_amount
 msgid "Total discount amount applied to the total."
-msgstr "Descuento total"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,help:project_fte.field_project_fte_mass_generator__month_discount_amount
 msgid "Total discount amount per month."
-msgstr "Descuento total por mes"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,help:project_fte.field_project_fte_month_line__executed_hours
 msgid "Total hours logged in timesheets for this month."
-msgstr "Total de horas registradas en las hojas de tiempo durante este mes."
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,help:project_fte.field_project_fte_month_line__monthly_amount
 msgid "Total monetary amount for this month's FTE."
-msgstr "Importe total del FTE del mes."
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,help:project_fte.field_project_project__monthly_discount_amount
 msgid "Total monthly discount amount"
-msgstr "Descuento total por mes"
+msgstr ""
 
 #. module: project_fte
 #. odoo-python
@@ -1126,7 +960,7 @@ msgstr ""
 #. module: project_fte
 #: model:ir.model.fields,help:project_fte.field_project_project__monthly_amount
 msgid "Total montlhy amount"
-msgstr "Monto total por mes"
+msgstr ""
 
 #. module: project_fte
 #. odoo-python
@@ -1139,22 +973,22 @@ msgstr ""
 #: model:ir.model.fields,help:project_fte.field_project_fte_mass_generator__total_raw_amount
 #: model:ir.model.fields,help:project_fte.field_project_project__total_raw_amount
 msgid "Total raw amount before applying the discount."
-msgstr "Importe bruto total antes de aplicar el descuento."
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,help:project_fte.field_project_fte_mass_generator__month_raw_amount
 msgid "Total raw amount per month before discount."
-msgstr "Importe bruto mensual total antes del descuento."
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,help:project_fte.field_project_project__monthly_raw_amount
 msgid "Total raw monthly amount before discount."
-msgstr "Importe bruto mensual antes del descuento."
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,help:project_fte.field_project_fte_month_line__activity_exception_decoration
 msgid "Type of the exception activity on record."
-msgstr "Tipo de actividad de excepción en el registro."
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,help:project_fte.field_project_project__previous_monthly_hours
@@ -1162,8 +996,6 @@ msgid ""
 "Used to validate that new profile distributions match previous monthly "
 "allocations."
 msgstr ""
-"Usado para validar que las nuevas distribuciones del perfil son iguales a "
-"las introducidas anteriormente."
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__website_message_ids
@@ -1178,19 +1010,19 @@ msgstr ""
 #. module: project_fte
 #: model:ir.model,name:project_fte.model_project_fte_mass_generator
 msgid "Wizard to Mass Generate Project FTE Lines"
-msgstr "Wizard para generar Líneas FTE masivamente"
+msgstr ""
 
 #. module: project_fte
 #: model:ir.model.fields,field_description:project_fte.field_project_fte_month_line__year
 msgid "Year"
-msgstr "Año"
+msgstr ""
 
 #. module: project_fte
 #: model:mail.template,subject:project_fte.mail_template_fte_execution_overload
 msgid "⚠ Excess FTE Execution: {{object.project_id.name}}"
-msgstr "⚠ Ejecución FTE Excesiva: {{object.project_id.name}}"
+msgstr ""
 
 #. module: project_fte
 #: model:mail.template,subject:project_fte.mail_template_fte_execution_warning
 msgid "⚠ FTE Execution Alert: {{object.project_id.name}}"
-msgstr "⚠ Alerta de Ejecución FTE: {{object.project_id.name}}"
+msgstr ""
