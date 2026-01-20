@@ -76,7 +76,7 @@ class ProjectProject(models.Model):
         # It is important to set sequence_code before calling super() because
         # other modules such as hr_timesheet expect the name to always have a value
         for vals in vals_list:
-            if not vals.get("sequence_code", False):
+            if "sequence_code" not in vals:
                 vals["sequence_code"] = self.env["ir.sequence"].next_by_code(
                     "project.sequence"
                 )
