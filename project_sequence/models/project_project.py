@@ -28,12 +28,16 @@ class ProjectProject(models.Model):
         required=False,
     )
 
-    def _sync_analytic_account_name(self):
-        """Set analytic account name equal to project's display name."""
+    def _sync_analytic_account(self):
+        """Set analytic account name & code equal to project's name & sequence"""
         for rec in self:
-            if not rec.analytic_account_id:
-                continue
-            rec.analytic_account_id.name = rec.display_name
+            if rec.analytic_account_id:
+                rec.analytic_account_id.write(
+                    {
+                        "name": rec.name,
+                        "code": rec.sequence_code,
+                    }
+                )
 
     def name_get(self):
         """Prefix name with sequence code if they are different."""
@@ -79,9 +83,7 @@ class ProjectProject(models.Model):
             if not vals.get("name"):
                 vals["name"] = vals["sequence_code"]
         res = super().create(vals_list)
-        # The analytic account is created with just the project name, but
-        # it is more useful to let it contain the project sequence too
-        res._sync_analytic_account_name()
+        res._sync_analytic_account()
         return res
 
     def write(self, vals):
@@ -94,5 +96,5 @@ class ProjectProject(models.Model):
             sequence_code = vals.get("sequence_code", one.sequence_code)
             name = vals.get("name") or sequence_code
             super().write(dict(vals, name=name))
-        self._sync_analytic_account_name()
+        self._sync_analytic_account()
         return True
