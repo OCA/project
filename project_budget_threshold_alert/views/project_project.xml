@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 ACSONE SA/NV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="edit_project_inherit" model="ir.ui.view">
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project" />
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page name="notification_manager" string="Manage notifications">
+                    <group>
+                        <group>
+                            <field name="budget_threshold" widget="percentage" />
+                            <field
+                                name="total_budget_amount_threshold"
+                                widget='monetary'
+                                invisible="not total_budget_amount or not budget_threshold"
+                            />
+                            <field name="force_notification_send" />
+                            <field name="create_activity_for_project_manager" />
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
