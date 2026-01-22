@@ -17,7 +17,7 @@
                 <field
                     name="notes"
                     nolabel="1"
-                    type="html"
+                    widget="html"
                     options="{'collaborative': true, 'resizable': false}"
                     placeholder="Insert internal notes here"
                 />
