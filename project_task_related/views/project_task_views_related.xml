@@ -124,7 +124,6 @@
                     </field>
                 </page>
             </xpath>
-
         </field>
     </record>
     <record id="view_project_task_search_inherit_same_customer" model="ir.ui.view">
