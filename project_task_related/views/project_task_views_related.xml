@@ -13,7 +13,7 @@
                                     'default_partner_id': partner_id, 'default_milestone_id': allow_milestones and milestone_id, 'search_default_same_customer': 1}"
                         widget="many2many"
                     >
-                        <tree
+                        <list
                             editable="bottom"
                             decoration-muted="state in ['1_done','1_canceled']"
                             open_form_view="True"
@@ -120,7 +120,7 @@
                                 optional="hide"
                                 context="{'default_project_id': project_id}"
                             />
-                        </tree>
+                        </list>
                     </field>
                 </page>
             </xpath>

@@ -1,7 +1,7 @@
 # Copyright 2024 Tecnativa Carolina Fernandez
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
-from odoo import api, fields, models
+from odoo import Command, api, fields, models
 
 
 class ProjectTask(models.Model):
@@ -43,6 +43,5 @@ class ProjectTask(models.Model):
 
     def _inverse_related_tasks(self):
         for task in self:
-            # Clear old relations
-            task.forward_related_task_ids = [(6, 0, task.related_task_ids.ids)]
-            task.reverse_related_task_ids = [(6, 0, task.related_task_ids.ids)]
+            task.forward_related_task_ids = [Command.set(task.related_task_ids.ids)]
+            task.reverse_related_task_ids = [Command.set(task.related_task_ids.ids)]
