@@ -9,15 +9,12 @@
             <xpath expr="//notebook" position="inside">
                 <page name="notification_manager" string="Manage notifications">
                     <group>
-                        <group>
-                            <field name="budget_threshold" widget="percentage" />
-                            <field
-                                name="total_budget_amount_threshold"
-                                widget='monetary'
-                                invisible="not total_budget_amount or not budget_threshold"
-                            />
-                            <field name="force_notification_send" />
-                            <field name="create_activity_for_project_manager" />
+                        <group string="Thresholds">
+                            <field name="costs_threshold" widget="percentage" />
+                        </group>
+                        <group string="Notifications">
+                            <field name="force_notification_send_cost_threshold" />
+                            <field name="create_activity" />
                         </group>
                     </group>
                 </page>

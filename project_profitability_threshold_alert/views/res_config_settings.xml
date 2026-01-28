@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 ACSONE SA/NV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="res_config_settings_view_form_inherit" model="ir.ui.view">
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="project.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//app[@name='project']" position="inside">
+                <block title="Notifications Management" name="project_notification">
+                    <setting id="costs_threshold">
+                        <div>
+                            <label for="project_costs_threshold" />
+                            <field
+                                name="project_costs_threshold"
+                                class="text-center"
+                                style="width: 3rem;"
+                                widget="percentage"
+                            />
+                            <span
+                                class="fa fa-lg fa-building-o p-2"
+                                title="Values set here are company-specific."
+                                groups="base.group_multi_company"
+                            />
+                        </div>
+                        <div class="text-muted">
+                            Percentage of project costs compared to project revenues that
+                            triggers an alert. For example, a value of 50 means an alert will be sent when project costs
+                            reach
+                            50% of the project revenues.
+                        </div>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>
