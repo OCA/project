@@ -7,12 +7,15 @@
         <field name="inherit_id" ref="project.res_config_settings_view_form" />
         <field name="arch" type="xml">
             <xpath expr="//app[@name='project']" position="inside">
-                <block title="Notifications Management" name="project_notification">
-                    <setting id="costs_threshold">
+                <block
+                    title="margin Notifications Management"
+                    name="project_margin_notification"
+                >
+                    <setting id="project_margin_threshold">
                         <div>
-                            <label for="project_costs_threshold" />
+                            <label for="project_margin_threshold" />
                             <field
-                                name="project_costs_threshold"
+                                name="project_margin_threshold"
                                 class="text-center"
                                 style="width: 3rem;"
                                 widget="percentage"
@@ -29,6 +32,22 @@
                             reach
                             50% of the project revenues.
                         </div>
+                    </setting>
+                    <setting id="project_threshold_email">
+                        <field name="project_margin_threshold_send_email" />
+                        <span
+                            class="fa fa-lg fa-building-o p-2"
+                            title="Values set here are company-specific."
+                            groups="base.group_multi_company"
+                        />
+                    </setting>
+                    <setting id="project_threshold_activity">
+                        <field name="project_margin_threshold_create_activity" />
+                        <span
+                            class="fa fa-lg fa-building-o p-2"
+                            title="Values set here are company-specific."
+                            groups="base.group_multi_company"
+                        />
                     </setting>
                 </block>
             </xpath>

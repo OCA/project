@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 {
-    "name": "Project Profitability Threshold Alert",
+    "name": "Project Minimum Margin Threshold Alert",
     "summary": """Send notification when project costs threshold is exceeded""",
     "version": "19.0.1.0.0",
     "license": "AGPL-3",
@@ -15,6 +15,7 @@
         "views/project_project.xml",
         "data/cron.xml",
         "data/mail_template.xml",
+        "data/activity_type.xml",
     ],
     "demo": [],
 }

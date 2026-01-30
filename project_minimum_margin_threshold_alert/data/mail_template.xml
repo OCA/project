@@ -2,8 +2,8 @@
 <!-- Copyright 2026 ACSONE SA/NV
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
-    <record id="project_costs_exceeded_template" model="mail.template">
-        <field name="name">Project: Costs threashold exceeded</field>
+    <record id="project_minimum_margin_exceeded_template" model="mail.template">
+        <field name="name">Project: Minimum Margin threashold exceeded</field>
         <field name="model_id" ref="project.model_project_project" />
         <field name="subject">{{ object.name }}: Costs Threashold Exceeded</field>
         <field

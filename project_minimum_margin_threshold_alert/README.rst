@@ -2,9 +2,9 @@
    :target: https://odoo-community.org/get-involved?utm_source=readme
    :alt: Odoo Community Association
 
-=====================================
-Project Profitability Threshold Alert
-=====================================
+======================================
+Project Minimum Margin Threshold Alert
+======================================
 
 .. 
    !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -21,10 +21,10 @@ Project Profitability Threshold Alert
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fproject-lightgray.png?logo=github
-    :target: https://github.com/OCA/project/tree/19.0/project_profitability_threshold_alert
+    :target: https://github.com/OCA/project/tree/19.0/project_minimum_margin_threshold_alert
     :alt: OCA/project
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/project-19-0/project-19-0-project_profitability_threshold_alert
+    :target: https://translation.odoo-community.org/projects/project-19-0/project-19-0-project_minimum_margin_threshold_alert
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
     :target: https://runboat.odoo-community.org/builds?repo=OCA/project&target_branch=19.0
@@ -33,19 +33,18 @@ Project Profitability Threshold Alert
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
 This module extends the Odoo Project application to support automatic
-profitability threshold alerts. It allows companies to define a default
-profitability limit (for example when project costs exceed a given
-percentage of revenues) and to apply it to projects that do not have a
-specific alert configuration. Each project can also define its own
-threshold.
+margin minimum threshold alerts. It allows companies to define a default
+margin limit (for example when project costs exceed a given percentage
+of revenues) and to apply it to projects that do not have a specific
+alert configuration. Each project can also define its own threshold.
 
-When the threshold is reached or exceeded, the system sends
+When the margin threshold is reached or exceeded, the system sends
 notifications to the project manager and to internal subscribers of the
 project. The notification method follows the user’s notification
 preferences, with an option to force the sending of an email even if the
 user is configured to receive only in-app notifications. This module
 helps project managers anticipate financial risks and improves internal
-communication around project profitability.
+communication around project margin.
 
 **Table of contents**
 
@@ -89,9 +88,9 @@ system automatically sends (via a cron)
 
 |screenshot2.png|
 
-.. |screenshot.png| image:: https://raw.githubusercontent.com/OCA/project/19.0/project_profitability_threshold_alert/static/description/screenshot.png
-.. |screenshot1.png| image:: https://raw.githubusercontent.com/OCA/project/19.0/project_profitability_threshold_alert/static/description/screenshot1.png
-.. |screenshot2.png| image:: https://raw.githubusercontent.com/OCA/project/19.0/project_profitability_threshold_alert/static/description/screenshot2.png
+.. |screenshot.png| image:: https://raw.githubusercontent.com/OCA/project/19.0/project_minimum_margin_threshold_alert/static/description/screenshot.png
+.. |screenshot1.png| image:: https://raw.githubusercontent.com/OCA/project/19.0/project_minimum_margin_threshold_alert/static/description/screenshot1.png
+.. |screenshot2.png| image:: https://raw.githubusercontent.com/OCA/project/19.0/project_minimum_margin_threshold_alert/static/description/screenshot2.png
 
 Bug Tracker
 ===========
@@ -99,7 +98,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/project/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/project/issues/new?body=module:%20project_profitability_threshold_alert%0Aversion:%2019.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/project/issues/new?body=module:%20project_minimum_margin_threshold_alert%0Aversion:%2019.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -129,6 +128,6 @@ OCA, or the Odoo Community Association, is a nonprofit organization whose
 mission is to support the collaborative development of Odoo features and
 promote its widespread use.
 
-This module is part of the `OCA/project <https://github.com/OCA/project/tree/19.0/project_profitability_threshold_alert>`_ project on GitHub.
+This module is part of the `OCA/project <https://github.com/OCA/project/tree/19.0/project_minimum_margin_threshold_alert>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.

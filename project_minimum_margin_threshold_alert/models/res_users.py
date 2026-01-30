@@ -6,8 +6,9 @@ from odoo import fields, models
 
 class ResUsers(models.Model):
     _inherit = "res.users"
-    receive_project_threshold_notification = fields.Boolean(
-        string="Activate notifications for projects",
-        help="Notify user about project costs threshold exceeding",
+
+    receive_project_margin_threshold_notification = fields.Boolean(
+        string="Activate minimum margin notifications for projects",
+        help="Notify user about project minimum margin threshold exceeding",
         default=True,
     )
