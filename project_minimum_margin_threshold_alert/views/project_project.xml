@@ -16,7 +16,7 @@
                 </div>
             </header>
             <xpath expr="//notebook" position="inside">
-                <page name="notification_manager" string="margin notifications">
+                <page name="notification_manager" string="Margin Notifications">
                     <group>
                         <group string="Thresholds">
                             <field name="margin_threshold" widget="percentage" />

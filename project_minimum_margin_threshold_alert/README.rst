@@ -54,17 +54,15 @@ communication around project margin.
 Configuration
 =============
 
-**1. Configure the default profitability threshold**
+**1. Configure the default minimum margin threshold**
 
 - Go to Settings > Project > Set the default threshold percentage
   |screenshot.png|
 
-**2. Configure a project-specific threshold (optional)**
+**2. Configure a project-specific minimum margin threshold (optional)**
 
 - Go to Project > Open a project > Manage notifications section > Define
-  a specific threshold for this project. If no value is defined, the
-  system will automatically use the global default threshold. (see
-  screenshot below)
+  a specific threshold for this project.
 
 **3. Manage notification recipients**
 
@@ -83,8 +81,8 @@ system automatically sends (via a cron)
 
 - An email to manager and internal user followers if the Force Email
   Notification option is enabled from the project.
-- An activity of type To-Do for the project manager if the Create
-  Activity option is enabled from the project.
+- An activity of type 'Minimum Margin Exceeded' for the project manager
+  if the Create Activity option is enabled from the project.
 
 |screenshot2.png|
 

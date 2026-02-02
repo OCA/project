@@ -108,7 +108,7 @@ class ProjectProject(models.Model):
             margin = float(margin_values["total"].get("margin_percentage", "0"))
             # Margin is set to 0 if no costs. Ignore it
             project.is_margin_threshold_exceeded = bool(
-                margin and (margin < project.margin_threshold)
+                margin and ((margin / 100) < project.margin_threshold)
             )
 
     def _post_message_to_partners(self, partners):

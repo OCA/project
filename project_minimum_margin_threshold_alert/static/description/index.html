@@ -402,17 +402,15 @@ communication around project margin.</p>
 </div>
 <div class="section" id="configuration">
 <h2><a class="toc-backref" href="#toc-entry-1">Configuration</a></h2>
-<p><strong>1. Configure the default profitability threshold</strong></p>
+<p><strong>1. Configure the default minimum margin threshold</strong></p>
 <ul class="simple">
 <li>Go to Settings &gt; Project &gt; Set the default threshold percentage
 <img alt="screenshot.png" src="https://raw.githubusercontent.com/OCA/project/19.0/project_minimum_margin_threshold_alert/static/description/screenshot.png" /></li>
 </ul>
-<p><strong>2. Configure a project-specific threshold (optional)</strong></p>
+<p><strong>2. Configure a project-specific minimum margin threshold (optional)</strong></p>
 <ul class="simple">
 <li>Go to Project &gt; Open a project &gt; Manage notifications section &gt; Define
-a specific threshold for this project. If no value is defined, the
-system will automatically use the global default threshold. (see
-screenshot below)</li>
+a specific threshold for this project.</li>
 </ul>
 <p><strong>3. Manage notification recipients</strong></p>
 <ul class="simple">
@@ -430,8 +428,8 @@ system automatically sends (via a cron)</p>
 <ul class="simple">
 <li>An email to manager and internal user followers if the Force Email
 Notification option is enabled from the project.</li>
-<li>An activity of type To-Do for the project manager if the Create
-Activity option is enabled from the project.</li>
+<li>An activity of type ‘Minimum Margin Exceeded’ for the project manager
+if the Create Activity option is enabled from the project.</li>
 </ul>
 <p><img alt="screenshot2.png" src="https://raw.githubusercontent.com/OCA/project/19.0/project_minimum_margin_threshold_alert/static/description/screenshot2.png" /></p>
 </div>

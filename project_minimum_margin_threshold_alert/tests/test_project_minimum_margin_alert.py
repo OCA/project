@@ -55,6 +55,14 @@ class TestProjectmarginAlert(BaseCommon):
             "revenues": {"data": [], "total": {"invoiced": 90.0, "to_invoice": 0.0}},
             "costs": {"data": [], "total": {"billed": -100.0, "to_bill": 0.0}},
         }
+        cls.project_margin_items_33 = {
+            "revenues": {"data": [], "total": {"invoiced": 100.0, "to_invoice": 0.0}},
+            "costs": {"data": [], "total": {"billed": -75.0, "to_bill": 0.0}},
+        }
+        cls.project_margin_items_15 = {
+            "revenues": {"data": [], "total": {"invoiced": 100.0, "to_invoice": 0.0}},
+            "costs": {"data": [], "total": {"billed": -90.0, "to_bill": 0.0}},
+        }
         cls.project_margin_items_75 = {
             "revenues": {"data": [], "total": {"invoiced": 75.0, "to_invoice": 0.0}},
             "costs": {"data": [], "total": {"billed": -100.0, "to_bill": 0.0}},
@@ -88,7 +96,7 @@ class TestProjectmarginAlert(BaseCommon):
             [("res_id", "=", project.id), ("model", "=", "project.project")]
         )
 
-    def test_margin_not_exceeded(self):
+    def test_margin_not_exceeded_zero(self):
         # Set threshold at 80%
         # Get 0.0 values of invoiced/billed
         # Threshold is not exceeded
@@ -99,6 +107,30 @@ class TestProjectmarginAlert(BaseCommon):
             self.project.margin_threshold = 0.2
             self.project._update_is_margin_threshold_exceeded()
             self.assertFalse(self.project.is_margin_threshold_exceeded)
+
+    def test_margin_not_exceeded_33(self):
+        # Set threshold at 80%
+        # Get 0.0 values of invoiced/billed
+        # Threshold is not exceeded
+        with mock.patch.object(
+            ProjectProject, "_get_profitability_items"
+        ) as margin_mock:
+            margin_mock.return_value = self.project_margin_items_33
+            self.project.margin_threshold = 0.2
+            self.project._update_is_margin_threshold_exceeded()
+            self.assertFalse(self.project.is_margin_threshold_exceeded)
+
+    def test_margin_not_exceeded_15(self):
+        # Set threshold at 80%
+        # Get 0.0 values of invoiced/billed
+        # Threshold is not exceeded
+        with mock.patch.object(
+            ProjectProject, "_get_profitability_items"
+        ) as margin_mock:
+            margin_mock.return_value = self.project_margin_items_15
+            self.project.margin_threshold = 0.2
+            self.project._update_is_margin_threshold_exceeded()
+            self.assertTrue(self.project.is_margin_threshold_exceeded)
 
     def test_margin_not_exceeded_no_costs(self):
         # Set threshold at 80%
@@ -130,7 +162,7 @@ class TestProjectmarginAlert(BaseCommon):
         # Threshold is exceeded
         # User a is follower of project
         # Send notifications
-        self.project.message_subscribe(self.user_a.partner_id)
+        self.project.message_subscribe(self.user_a.partner_id.ids)
         messages_before = self._get_project_messages()
         with mock.patch.object(
             ProjectProject, "_get_profitability_items"
