@@ -105,7 +105,7 @@ class ProjectProject(models.Model):
         """
         for project in self:
             margin_values, _show = project._get_profitability_values()
-            margin = float(margin_values["total"].get("margin_percentage", "0"))
+            margin = float(margin_values.get("expected_percentage", "0"))
             # Margin is set to 0 if no costs. Ignore it
             project.is_margin_threshold_exceeded = bool(
                 margin and ((margin / 100) < project.margin_threshold)
