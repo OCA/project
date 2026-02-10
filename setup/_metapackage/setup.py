@@ -23,6 +23,7 @@ setuptools.setup(
         'odoo-addon-project_pivot>=16.0dev,<16.1dev',
         'odoo-addon-project_portal_task_visibility>=16.0dev,<16.1dev',
         'odoo-addon-project_purchase_link>=16.0dev,<16.1dev',
+        'odoo-addon-project_reviewer>=16.0dev,<16.1dev',
         'odoo-addon-project_risk>=16.0dev,<16.1dev',
         'odoo-addon-project_role>=16.0dev,<16.1dev',
         'odoo-addon-project_sale_order_link>=16.0dev,<16.1dev',

@@ -36,6 +36,7 @@ addon | version | maintainers | summary
 [project_pivot](project_pivot/) | 16.0.1.0.1 |  | Pivot view for projects
 [project_portal_task_visibility](project_portal_task_visibility/) | 16.0.1.1.0 |  | Project Portal Task Visibility
 [project_purchase_link](project_purchase_link/) | 16.0.1.0.0 |  | Project Purchase Link
+[project_reviewer](project_reviewer/) | 16.0.1.0.0 |  | Add the possibility to assign reviewer to a task
 [project_risk](project_risk/) | 16.0.1.0.0 |  | MOR risk management method
 [project_role](project_role/) | 16.0.1.0.4 | <a href='https://github.com/alexey-pelykh'><img src='https://github.com/alexey-pelykh.png' width='32' height='32' style='border-radius:50%;' alt='alexey-pelykh'/></a> | Project role-based roster
 [project_sale_order_link](project_sale_order_link/) | 16.0.1.0.0 | <a href='https://github.com/EmilioPascual'><img src='https://github.com/EmilioPascual.png' width='32' height='32' style='border-radius:50%;' alt='EmilioPascual'/></a> | Sales order linked to project, tasks or employee map
