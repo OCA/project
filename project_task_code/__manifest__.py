@@ -5,10 +5,7 @@
     "name": "Sequential Code for Tasks",
     "version": "18.0.1.0.1",
     "category": "Project Management",
-    "author": "OdooMRP team, "
-    "AvanzOSC, "
-    "Tecnativa, "
-    "Odoo Community Association (OCA)",
+    "author": "OdooMRP team, AvanzOSC, Tecnativa, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/project",
     "license": "AGPL-3",
     "depends": [
