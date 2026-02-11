@@ -3,10 +3,6 @@
 
 from odoo import api, fields, models
 
-PROJECT_TASK_WRITABLE_FIELDS = {
-    "code",
-}
-
 
 class ProjectTask(models.Model):
     _inherit = "project.task"
@@ -20,17 +16,10 @@ class ProjectTask(models.Model):
         copy=False,
     )
 
-    _sql_constraints = [
-        (
-            "project_task_unique_code",
-            "UNIQUE (company_id, code)",
-            "The code must be unique!",
-        ),
-    ]
-
-    @property
-    def SELF_WRITABLE_FIELDS(self):
-        return super().SELF_WRITABLE_FIELDS | PROJECT_TASK_WRITABLE_FIELDS
+    _code_company_uniq = models.Constraint(
+        "unique (company_id, code)",
+        "The code must be unique!",
+    )
 
     @api.model_create_multi
     def create(self, vals_list):
@@ -44,6 +33,7 @@ class ProjectTask(models.Model):
     @api.depends("name", "code")
     def _compute_display_name(self):
         result = super()._compute_display_name()
-        for task in self.filtered("code"):
-            task.display_name = f"[{task.code}] {task.display_name}"
+        for task in self:
+            if task.code and task.code != "/" and task.display_name:
+                task.display_name = f"[{task.code}] {task.display_name}"
         return result
