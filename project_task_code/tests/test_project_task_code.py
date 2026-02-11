@@ -64,3 +64,11 @@ class TestProjectTaskCode(BaseCommon):
             map(lambda x: x[0], result),
             f"Task with code {project_task.code} should not be in the results",
         )
+
+    def test_name_get_on_create(self):
+        number_next = self.task_sequence.number_next_actual
+        code = self.task_sequence.get_next_char(number_next)
+        project_task = self.project_task_model.new({"name": "Test on create task"})
+        self.assertEqual(project_task.code, "/")
+        self.assertNotEqual(project_task.code, code)
+        self.assertEqual(project_task.display_name, "Test on create task")
