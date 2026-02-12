@@ -38,21 +38,29 @@ class ProjectProject(models.Model):
     @property
     def _default_margin_threshold(self):
         return float(
-            self.env["ir.config_parameter"].get_param(
-                "project_margin_threshold_alert.project_margin_threshold"
-            )
+            self.env["ir.config_parameter"]
+            .sudo()
+            .get_param("project_margin_threshold_alert.project_margin_threshold")
         )
 
     @property
     def _default_force_margin_threshold_notification(self):
-        return self.env["ir.config_parameter"].get_param(
-            "project_margin_threshold_alert.project_margin_threshold_send_email"
+        return (
+            self.env["ir.config_parameter"]
+            .sudo()
+            .get_param(
+                "project_margin_threshold_alert.project_margin_threshold_send_email"
+            )
         )
 
     @property
     def _default_create_margin_threshold_activity(self):
-        return self.env["ir.config_parameter"].get_param(
-            "project_margin_threshold_alert.project_margin_threshold_create_activity"
+        return (
+            self.env["ir.config_parameter"]
+            .sudo()
+            .get_param(
+                "project_margin_threshold_alert.project_margin_threshold_create_activity"
+            )
         )
 
     def _get_margin_threshold_to_notify_domain(self) -> list:
