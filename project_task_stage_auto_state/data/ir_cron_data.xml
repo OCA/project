@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+    <record id="ir_cron_auto_change_task_state" model="ir.cron">
+        <field name="name">Project: Auto-change task state by stage</field>
+        <field name="model_id" ref="project.model_project_task" />
+        <field name="state">code</field>
+        <field name="code">model.auto_change_task_state_by_stage()</field>
+        <field name="interval_type">days</field>
+        <field name="interval_number">1</field>
+        <field name="active">True</field>
+    </record>
+</odoo>
