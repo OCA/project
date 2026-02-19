@@ -12,22 +12,28 @@
                         groups="base.group_no_one"
                         name="call_create_recurring_tasks"
                         type="object"
-                        attrs="{'invisible': [('recurring_task','=',False)] }"
+                        invisible="not recurring_task"
                     />
                 </div>
             </xpath>
-            <xpath expr="//notebook/page[@name='recurrence']" position="inside">
-                <group name="activities" string="Activities" />
-                <field name="recurring_activity_ids">
-                <tree>
-                    <field name="user_id" />
-                    <field name="project_task_id" invisible='1' />
-                    <field name="activity_type_id" />
-                    <field name="summary" />
-                    <field name="description" />
-                    <field name="days_after_task_creation_date" />
-                </tree>
-                </field>
+            <xpath expr="//notebook" position="inside">
+                <page
+                    name="recurring_activities"
+                    string="Activities"
+                    groups="project.group_project_recurring_tasks"
+                    invisible="not recurring_task"
+                >
+                    <field name="recurring_activity_ids" nolabel="1">
+                        <tree editable="bottom">
+                            <field name="user_id" />
+                            <field name="project_task_id" invisible="1" />
+                            <field name="activity_type_id" />
+                            <field name="summary" />
+                            <field name="description" />
+                            <field name="days_after_task_creation_date" />
+                        </tree>
+                    </field>
+                </page>
             </xpath>
         </field>
     </record>
