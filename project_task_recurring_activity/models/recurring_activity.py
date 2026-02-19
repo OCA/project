@@ -67,9 +67,9 @@ class RecurringActivity(models.Model):
     def _check_user_id(self):
         for record in self:
             task = record.project_task_id
-            if not (
+            if (
                 record.user_id.partner_id.id
-                in task.message_follower_ids.mapped("partner_id").ids
+                not in task.message_follower_ids.mapped("partner_id").ids
             ):
                 raise UserError(
                     _(

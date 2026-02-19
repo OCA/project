@@ -10,7 +10,7 @@ from odoo.tests.common import Form, TransactionCase
 class TestProjectrecurrence(TransactionCase):
     @classmethod
     def setUpClass(cls):
-        super(TestProjectrecurrence, cls).setUpClass()
+        super().setUpClass()
 
         cls.env.user.groups_id += cls.env.ref("project.group_project_recurring_tasks")
         cls.recurring_activity = cls.env["recurring.activity"]
