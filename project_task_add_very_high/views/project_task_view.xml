@@ -6,7 +6,7 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_form2" />
         <field name="arch" type="xml">
-            <xpath expr="//div[hasclass('oe_title')]" position="before">
+            <xpath expr="//div[hasclass('justify-content-between')]" position="before">
                 <field name="priority" position="move" />
             </xpath>
         </field>
