@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="project_multi_department_rule" model="ir.rule">
+        <field name="name">Project Multi Department Rule</field>
+        <field name="model_id" ref="model_project_project" />
+        <field name="domain_force">[
+            '&amp;',
+            ('privacy_visibility', '!=', 'followers'),
+            '|',
+            ('department_ids', 'child_of', user.employee_id.department_id.ids ),
+            ('department_ids', '=', False )
+            ]</field>
+        <field name="groups" eval="[(4, ref('base.group_user'))]" />
+    </record>
+    <record id="project_task_multi_department_rule" model="ir.rule">
+        <field name="name">Project Task Multi Department Rule</field>
+        <field name="model_id" ref="model_project_task" />
+        <field name="domain_force">[
+            '&amp;',
+            ('project_id.privacy_visibility', '!=', 'followers'),
+            '|',
+            ('department_ids', 'child_of', user.employee_id.department_id.ids ),
+            ('department_ids', '=', False )
+            ]</field>
+        <field name="groups" eval="[(4, ref('base.group_user'))]" />
+    </record>
+</odoo>
