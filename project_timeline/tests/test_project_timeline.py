@@ -64,3 +64,37 @@ class TestProjectTimeline(BaseCommon):
             self.task.planned_date_end = fields.Datetime.subtract(
                 self.task.planned_date_start, days=1
             )
+
+    def test_uninstall_clean_action(self):
+        """Test uninstall hook cleans 'timeline' from view_mode of act_window actions.
+        - Case 1: action with multiple view modes: just remove 'timeline'
+        - Case 2: action with 'timeline' only: unlink action + related menus
+        """
+        # Test data
+        Action = self.env["ir.actions.act_window"]
+        Menu = self.env["ir.ui.menu"]
+        action1 = Action.create(
+            {
+                "name": "Test Action Multi",
+                "res_model": "project.task",
+                "view_mode": "tree,timeline,form",
+            }
+        )
+        action2 = action1.copy({"view_mode": "timeline"})
+        menu2 = Menu.create(
+            {
+                "name": "Test Menu Solo",
+                "action": "ir.actions.act_window,%d" % action2.id,
+            }
+        )
+
+        # Run the uninstall hook logic
+        from ..hooks import _clean_action_view_mode_timeline
+
+        _clean_action_view_mode_timeline(self.env)
+
+        # Case 1: 'timeline' removed, other modes preserved
+        self.assertEqual(action1.view_mode, "tree,form")
+        # Case 2: action and its menu are deleted
+        self.assertFalse(Action.browse(action2.id).exists())
+        self.assertFalse(Menu.browse(menu2.id).exists())
