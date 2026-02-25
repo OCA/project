@@ -1,4 +1,5 @@
 # Copyright 2018 Tecnativa - Pedro M. Baeza
+# Copyright 2026 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import Command
@@ -12,16 +13,22 @@ class TestProjectHr(BaseCommon):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
+        cls.company_a = cls.env.company
+        cls.company_b = cls.env["res.company"].create({"name": "Test company B"})
         # Test users to use through the various tests
         cls.user1 = new_test_user(
             cls.env,
             login="test-user1",
-            groups="base.group_user,project.group_project_user",
+            groups="project.group_project_user",
+            company_id=cls.company_a.id,
+            company_ids=[Command.set((cls.company_a + cls.company_b).ids)],
         )
         cls.user2 = new_test_user(
             cls.env,
             login="test-user2",
-            groups="base.group_user,project.group_project_user",
+            groups="project.group_project_user",
+            company_id=cls.company_a.id,
+            company_ids=[Command.set((cls.company_a + cls.company_b).ids)],
         )
         cls.hr_category = cls.env["hr.employee.category"].create(
             {"name": "Test employee category"}
@@ -37,6 +44,7 @@ class TestProjectHr(BaseCommon):
         cls.employee = cls.env["hr.employee"].create(
             {
                 "name": "Test employee",
+                "company_id": cls.company_a.id,
                 "user_id": cls.user1.id,
                 "category_ids": [Command.set(cls.hr_category.ids)],
             }
@@ -70,6 +78,47 @@ class TestProjectHr(BaseCommon):
             self.hr_category + self.hr_category_2 + self.hr_category_3,
         )
 
+    def test_user_multi_company(self):
+        # User with company A + allowed_company_ids=A: hr_category
+        user1_company_a = self.user1.with_company(self.company_a).with_context(
+            allowed_company_ids=self.company_a.ids
+        )
+        user1_company_a.invalidate_recordset(["employee_ids"])
+        self.assertIn(self.hr_category, user1_company_a.hr_category_ids)
+        self.assertNotIn(self.hr_category_3, user1_company_a.hr_category_ids)
+        self.assertNotIn(self.hr_category_3, user1_company_a.hr_category_ids)
+        # User with company B + allowed_company_ids=B: False
+        user1_company_b = self.user1.with_company(self.company_b).with_context(
+            allowed_company_ids=self.company_b.ids
+        )
+        user1_company_b.invalidate_recordset(["employee_ids"])
+        self.assertFalse(user1_company_b.hr_category_ids)
+        # create employee company b with hr_category_2
+        self.env["hr.employee"].create(
+            {
+                "name": "Test employee",
+                "company_id": self.company_b.id,
+                "user_id": self.user1.id,
+                "category_ids": [(6, 0, self.hr_category_2.ids)],
+            }
+        )
+        # User with company B + allowed_company_ids=B: hr_category_2
+        user1_company_b = self.user1.with_company(self.company_b).with_context(
+            allowed_company_ids=self.company_b.ids
+        )
+        user1_company_b.invalidate_recordset(["employee_ids"])
+        self.assertNotIn(self.hr_category, user1_company_b.hr_category_ids)
+        self.assertIn(self.hr_category_2, user1_company_b.hr_category_ids)
+        self.assertNotIn(self.hr_category_3, user1_company_b.hr_category_ids)
+        # User with company A + allowed_company_ids=A+B: hr_category
+        user1_company_b = self.user1.with_company(self.company_a).with_context(
+            allowed_company_ids=(self.company_a + self.company_b).ids
+        )
+        user1_company_b.invalidate_recordset(["employee_ids"])
+        self.assertIn(self.hr_category, user1_company_b.hr_category_ids)
+        self.assertNotIn(self.hr_category_2, user1_company_b.hr_category_ids)
+        self.assertNotIn(self.hr_category_3, user1_company_b.hr_category_ids)
+
     def test_task(self):
         # check computed values on task
         category_model = self.env["hr.employee.category"]
@@ -89,6 +138,7 @@ class TestProjectHr(BaseCommon):
             {
                 "name": "Test employee 2",
                 "user_id": self.user2.id,
+                "company_id": self.company_a.id,
                 "category_ids": [Command.set(self.hr_category.ids)],
             }
         )
