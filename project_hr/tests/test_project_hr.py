@@ -1,43 +1,33 @@
 # Copyright 2018 Tecnativa - Pedro M. Baeza
+# Copyright 2026 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-import logging
-
+from odoo import Command
 from odoo.exceptions import ValidationError
-from odoo.tests.common import TransactionCase
+from odoo.tests import new_test_user
 
-_logger = logging.getLogger(__name__)
+from odoo.addons.base.tests.common import BaseCommon
 
 
-class TestProjectHr(TransactionCase):
+class TestProjectHr(BaseCommon):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        user_group_employee = cls.env.ref("base.group_user")
-        user_group_project_user = cls.env.ref("project.group_project_user")
-        # Test users to use through the various tests
-        Users = cls.env["res.users"].with_context(no_reset_password=True)
-        cls.user1 = Users.create(
-            {
-                "name": "Test User1",
-                "login": "user1",
-                "password": "user1",
-                "email": "user1.projecthr@example.com",
-                "groups_id": [
-                    (6, 0, [user_group_employee.id, user_group_project_user.id])
-                ],
-            }
+        cls.company_a = cls.env.company
+        cls.company_b = cls.env["res.company"].create({"name": "Test company B"})
+        cls.user1 = new_test_user(
+            cls.env,
+            login="user1",
+            groups="project.group_project_user",
+            company_id=cls.company_a.id,
+            company_ids=[Command.set((cls.company_a + cls.company_b).ids)],
         )
-        cls.user2 = Users.create(
-            {
-                "name": "Test User2",
-                "login": "user2",
-                "password": "user2",
-                "email": "user2.projecthr@example.com",
-                "groups_id": [
-                    (6, 0, [user_group_employee.id, user_group_project_user.id])
-                ],
-            }
+        cls.user2 = new_test_user(
+            cls.env,
+            login="user2",
+            groups="project.group_project_user",
+            company_id=cls.company_a.id,
+            company_ids=[Command.set((cls.company_a + cls.company_b).ids)],
         )
         cls.hr_category = cls.env["hr.employee.category"].create(
             {"name": "Test employee category"}
@@ -53,6 +43,7 @@ class TestProjectHr(TransactionCase):
         cls.employee = cls.env["hr.employee"].create(
             {
                 "name": "Test employee",
+                "company_id": cls.company_a.id,
                 "user_id": cls.user1.id,
                 "category_ids": [(6, 0, cls.hr_category.ids)],
             }
@@ -82,6 +73,47 @@ class TestProjectHr(TransactionCase):
             self.hr_category + self.hr_category_2 + self.hr_category_3,
         )
 
+    def test_user_multi_company(self):
+        # User with company A + allowed_company_ids=A: hr_category
+        user1_company_a = self.user1.with_company(self.company_a).with_context(
+            allowed_company_ids=self.company_a.ids
+        )
+        user1_company_a.invalidate_recordset(["employee_ids"])
+        self.assertIn(self.hr_category, user1_company_a.hr_category_ids)
+        self.assertNotIn(self.hr_category_3, user1_company_a.hr_category_ids)
+        self.assertNotIn(self.hr_category_3, user1_company_a.hr_category_ids)
+        # User with company B + allowed_company_ids=B: False
+        user1_company_b = self.user1.with_company(self.company_b).with_context(
+            allowed_company_ids=self.company_b.ids
+        )
+        user1_company_b.invalidate_recordset(["employee_ids"])
+        self.assertFalse(user1_company_b.hr_category_ids)
+        # create employee company b with hr_category_2
+        self.env["hr.employee"].create(
+            {
+                "name": "Test employee",
+                "company_id": self.company_b.id,
+                "user_id": self.user1.id,
+                "category_ids": [(6, 0, self.hr_category_2.ids)],
+            }
+        )
+        # User with company B + allowed_company_ids=B: hr_category_2
+        user1_company_b = self.user1.with_company(self.company_b).with_context(
+            allowed_company_ids=self.company_b.ids
+        )
+        user1_company_b.invalidate_recordset(["employee_ids"])
+        self.assertNotIn(self.hr_category, user1_company_b.hr_category_ids)
+        self.assertIn(self.hr_category_2, user1_company_b.hr_category_ids)
+        self.assertNotIn(self.hr_category_3, user1_company_b.hr_category_ids)
+        # User with company A + allowed_company_ids=A+B: hr_category
+        user1_company_b = self.user1.with_company(self.company_a).with_context(
+            allowed_company_ids=(self.company_a + self.company_b).ids
+        )
+        user1_company_b.invalidate_recordset(["employee_ids"])
+        self.assertIn(self.hr_category, user1_company_b.hr_category_ids)
+        self.assertNotIn(self.hr_category_2, user1_company_b.hr_category_ids)
+        self.assertNotIn(self.hr_category_3, user1_company_b.hr_category_ids)
+
     def test_task(self):
         # check computed values on task
         self.assertEqual(self.task.employee_ids, self.employee)
@@ -95,6 +127,7 @@ class TestProjectHr(TransactionCase):
             {
                 "name": "Test employee 2",
                 "user_id": self.user2.id,
+                "company_id": self.company_a.id,
                 "category_ids": [(6, 0, self.hr_category.ids)],
             }
         )
