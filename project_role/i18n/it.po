@@ -42,29 +42,8 @@ msgstr "%(parent)s / %(own)s"
 
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
-msgid ""
-"<span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-"
-"specific.\" role=\"img\" aria-label=\"Values set here are company-specific."
-"\" groups=\"base.group_multi_company\"/>"
+msgid "<span class=\"o_form_label\">Project Roles</span>"
 msgstr ""
-"<span class=\"fa fa-lg fa-building-o\" title=\"I valori impostati qui sono "
-"specifici per azienda.\" role=\"img\" aria-label=\"I valori impostati qui "
-"sono specifici per azienda.\" groups=\"base.group_multi_company\"/>"
-
-#. module: project_role
-#: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
-msgid ""
-"<span class=\"o_form_label\">Project Roles</span>\n"
-"                                <span class=\"fa fa-lg fa-building-o\" "
-"title=\"Values set here are company-specific.\" role=\"img\" aria-"
-"label=\"Values set here are company-specific.\" groups=\"base."
-"group_multi_company\"/>"
-msgstr ""
-"<span class=\"o_form_label\">Ruoli progetto</span>\n"
-"                                <span class=\"fa fa-lg fa-building-o\" "
-"title=\"I valori impostati qui sono specifici per azienda.\" role=\"img\" "
-"aria-label=\"I valori impostati qui sono specifici per azienda.\" "
-"groups=\"base.group_multi_company\"/>"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_needaction
@@ -89,11 +68,11 @@ msgstr "In archivio"
 #. odoo-python
 #: code:addons/project_role/models/project_assignment.py:0
 msgid ""
-"Assignment %(ASSIGNMENT)s conflicts with another assignment: "
-"%(OTHER_ASSIGNMENT)s"
+"Assignment %(ASSIGNMENT)s conflicts with another assignment: %"
+"(OTHER_ASSIGNMENT)s"
 msgstr ""
-"L'incarico %(ASSIGNMENT)s è in conflitto con un altro incarico: "
-"%(OTHER_ASSIGNMENT)s"
+"L'incarico %(ASSIGNMENT)s è in conflitto con un altro incarico: %"
+"(OTHER_ASSIGNMENT)s"
 
 #. module: project_role
 #: model:ir.actions.act_window,name:project_role.project_assignment_view_project_action
@@ -422,6 +401,11 @@ msgid "User may be assigned per role only once!"
 msgstr "Un utente può essere assegnato ad un ruolo alla volta!"
 
 #. module: project_role
+#: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
+msgid "Values set here are company-specific."
+msgstr ""
+
+#. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__website_message_ids
 msgid "Website Messages"
 msgstr "Messaggi sito web"
@@ -430,6 +414,29 @@ msgstr "Messaggi sito web"
 #: model:ir.model.fields,help:project_role.field_project_assignment__website_message_ids
 msgid "Website communication history"
 msgstr "Storico comunicazioni sito web"
+
+#~ msgid ""
+#~ "<span class=\"fa fa-lg fa-building-o\" title=\"Values set here are "
+#~ "company-specific.\" role=\"img\" aria-label=\"Values set here are company-"
+#~ "specific.\" groups=\"base.group_multi_company\"/>"
+#~ msgstr ""
+#~ "<span class=\"fa fa-lg fa-building-o\" title=\"I valori impostati qui "
+#~ "sono specifici per azienda.\" role=\"img\" aria-label=\"I valori "
+#~ "impostati qui sono specifici per azienda.\" "
+#~ "groups=\"base.group_multi_company\"/>"
+
+#~ msgid ""
+#~ "<span class=\"o_form_label\">Project Roles</span>\n"
+#~ "                                <span class=\"fa fa-lg fa-building-o\" "
+#~ "title=\"Values set here are company-specific.\" role=\"img\" aria-"
+#~ "label=\"Values set here are company-specific.\" "
+#~ "groups=\"base.group_multi_company\"/>"
+#~ msgstr ""
+#~ "<span class=\"o_form_label\">Ruoli progetto</span>\n"
+#~ "                                <span class=\"fa fa-lg fa-building-o\" "
+#~ "title=\"I valori impostati qui sono specifici per azienda.\" role=\"img\" "
+#~ "aria-label=\"I valori impostati qui sono specifici per azienda.\" "
+#~ "groups=\"base.group_multi_company\"/>"
 
 #~ msgid "SMS Delivery error"
 #~ msgstr "Errore consegna SMS"

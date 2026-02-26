@@ -42,30 +42,8 @@ msgstr "%(parent)s / %(own)s"
 
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
-msgid ""
-"<span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-"
-"specific.\" role=\"img\" aria-label=\"Values set here are company-specific."
-"\" groups=\"base.group_multi_company\"/>"
+msgid "<span class=\"o_form_label\">Project Roles</span>"
 msgstr ""
-"<span class=\"fa fa-lg fa-building-o\" title=\"Los valores establecidos aquí "
-"son específicos de la empresa.\" role=\"img\" aria-label=\"Los valores "
-"establecidos aquí son específicos de la empresa.\" groups=\"base."
-"group_multi_company\"/>"
-
-#. module: project_role
-#: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
-msgid ""
-"<span class=\"o_form_label\">Project Roles</span>\n"
-"                                <span class=\"fa fa-lg fa-building-o\" "
-"title=\"Values set here are company-specific.\" role=\"img\" aria-"
-"label=\"Values set here are company-specific.\" groups=\"base."
-"group_multi_company\"/>"
-msgstr ""
-"<span class=\"o_form_label\">Roles del proyecto</span>\n"
-"                                <span class=\"fa fa-lg fa-building-o\" "
-"title=\"Los valores establecidos aquí son específicos de la empresa.\" "
-"role=\"img\" aria-label=\"Los valores establecidos aquí son específicos de "
-"la empresa.\" groups=\"base.group_multi_company\"/>"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_needaction
@@ -90,11 +68,11 @@ msgstr "Archivado"
 #. odoo-python
 #: code:addons/project_role/models/project_assignment.py:0
 msgid ""
-"Assignment %(ASSIGNMENT)s conflicts with another assignment: "
-"%(OTHER_ASSIGNMENT)s"
+"Assignment %(ASSIGNMENT)s conflicts with another assignment: %"
+"(OTHER_ASSIGNMENT)s"
 msgstr ""
-"La asignación %(ASSIGNMENT)s entra en conflicto con otra asignación: "
-"%(OTHER_ASSIGNMENT)s"
+"La asignación %(ASSIGNMENT)s entra en conflicto con otra asignación: %"
+"(OTHER_ASSIGNMENT)s"
 
 #. module: project_role
 #: model:ir.actions.act_window,name:project_role.project_assignment_view_project_action
@@ -423,6 +401,11 @@ msgid "User may be assigned per role only once!"
 msgstr "¡El usuario puede ser asignado por rol solo una vez!"
 
 #. module: project_role
+#: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
+msgid "Values set here are company-specific."
+msgstr ""
+
+#. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__website_message_ids
 msgid "Website Messages"
 msgstr "Mensajes del Sitio Web"
@@ -431,6 +414,29 @@ msgstr "Mensajes del Sitio Web"
 #: model:ir.model.fields,help:project_role.field_project_assignment__website_message_ids
 msgid "Website communication history"
 msgstr "Historial de comunicación del Sitio Web"
+
+#~ msgid ""
+#~ "<span class=\"fa fa-lg fa-building-o\" title=\"Values set here are "
+#~ "company-specific.\" role=\"img\" aria-label=\"Values set here are company-"
+#~ "specific.\" groups=\"base.group_multi_company\"/>"
+#~ msgstr ""
+#~ "<span class=\"fa fa-lg fa-building-o\" title=\"Los valores establecidos "
+#~ "aquí son específicos de la empresa.\" role=\"img\" aria-label=\"Los "
+#~ "valores establecidos aquí son específicos de la empresa.\" "
+#~ "groups=\"base.group_multi_company\"/>"
+
+#~ msgid ""
+#~ "<span class=\"o_form_label\">Project Roles</span>\n"
+#~ "                                <span class=\"fa fa-lg fa-building-o\" "
+#~ "title=\"Values set here are company-specific.\" role=\"img\" aria-"
+#~ "label=\"Values set here are company-specific.\" "
+#~ "groups=\"base.group_multi_company\"/>"
+#~ msgstr ""
+#~ "<span class=\"o_form_label\">Roles del proyecto</span>\n"
+#~ "                                <span class=\"fa fa-lg fa-building-o\" "
+#~ "title=\"Los valores establecidos aquí son específicos de la empresa.\" "
+#~ "role=\"img\" aria-label=\"Los valores establecidos aquí son específicos "
+#~ "de la empresa.\" groups=\"base.group_multi_company\"/>"
 
 #~ msgid "SMS Delivery error"
 #~ msgstr "Error de Entrega SMS"
