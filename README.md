@@ -26,7 +26,7 @@ addon | version | maintainers | summary
 [project_department](project_department/) | 17.0.1.0.0 |  | Project Department Categorization
 [project_group](project_group/) | 17.0.1.0.0 |  | Add groups for filtering on projects
 [project_group_hr_timesheet](project_group_hr_timesheet/) | 17.0.1.0.0 |  | This module makes project group work properly with timesheets
-[project_hr](project_hr/) | 17.0.1.0.1 | <a href='https://github.com/pedrobaeza'><img src='https://github.com/pedrobaeza.png' width='32' height='32' style='border-radius:50%;' alt='pedrobaeza'/></a> | Link HR with project
+[project_hr](project_hr/) | 17.0.1.0.2 | <a href='https://github.com/pedrobaeza'><img src='https://github.com/pedrobaeza.png' width='32' height='32' style='border-radius:50%;' alt='pedrobaeza'/></a> | Link HR with project
 [project_key](project_key/) | 17.0.1.1.1 |  | Module decorates projects and tasks with Project Key
 [project_merge](project_merge/) | 17.0.1.0.0 |  | Wizard to merge project tasks
 [project_milestone_status](project_milestone_status/) | 17.0.1.0.0 | <a href='https://github.com/lbarry-apsl'><img src='https://github.com/lbarry-apsl.png' width='32' height='32' style='border-radius:50%;' alt='lbarry-apsl'/></a> | Project Milestone Status
