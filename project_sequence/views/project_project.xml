@@ -31,30 +31,6 @@
             </xpath>
         </field>
     </record>
-    <record id="project_sequence_kanban_view" model="ir.ui.view">
-        <field name="name">Project.sequence.project.kanban</field>
-        <field name="model">project.project</field>
-        <field name="inherit_id" ref="project.view_project_kanban" />
-        <field name="arch" type="xml">
-            <xpath expr="//field[@name='display_name']" position="after">
-                <field name="name" />
-            </xpath>
-            <xpath
-                expr="//span[@t-att-title='record.display_name.value']"
-                position="attributes"
-            >
-                <attribute name="invisible">1</attribute>
-            </xpath>
-            <xpath
-                expr="//span[@t-att-title='record.display_name.value']"
-                position="after"
-            >
-                <span>
-                    <t t-esc="record.display_name.value" />
-                </span>
-            </xpath>
-        </field>
-    </record>
     <record id="project_sequence_search_view" model="ir.ui.view">
         <field name="name">Project.sequence.project.view.search</field>
         <field name="model">project.project</field>
