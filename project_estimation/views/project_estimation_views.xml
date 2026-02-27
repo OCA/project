@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- List View -->
+    <record id="view_project_estimation_list" model="ir.ui.view">
+        <field name="name">project.estimation.list</field>
+        <field name="model">project.estimation</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+                <field name="partner_id" />
+                <field name="date" />
+                <field name="user_id" widget="many2one_avatar_user" optional="show" />
+                <field
+                    name="company_id"
+                    groups="base.group_multi_company"
+                    optional="show"
+                />
+                <field name="currency_id" column_invisible="1" />
+                <field name="total_cost" />
+                <field name="target_margin" optional="show" />
+                <field name="target_sale_price" />
+                <field name="expected_profit" optional="show" />
+                <field
+                    name="state"
+                    widget="badge"
+                    decoration-info="state == 'draft'"
+                    decoration-success="state in ('confirm', 'approved', 'done')"
+                    decoration-danger="state == 'cancelled'"
+                />
+            </list>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_project_estimation_form" model="ir.ui.view">
+        <field name="name">project.estimation.form</field>
+        <field name="model">project.estimation</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button
+                        name="action_confirm"
+                        string="Confirm"
+                        type="object"
+                        class="oe_highlight"
+                        invisible="state != 'draft'"
+                    />
+                    <button
+                        name="action_approve"
+                        string="Approve"
+                        type="object"
+                        class="oe_highlight"
+                        invisible="state != 'confirm'"
+                    />
+                    <button
+                        id="action_create_sale_order_button_highlight"
+                        name="action_create_sale_order"
+                        string="Create Sale Order"
+                        type="object"
+                        class="oe_highlight"
+                        invisible="state != 'approved' or sale_order_ids"
+                    />
+                    <button
+                        id="action_create_sale_order_button"
+                        name="action_create_sale_order"
+                        string="Create Sale Order"
+                        type="object"
+                        invisible="state != 'approved' or not sale_order_ids"
+                    />
+                    <button
+                        id="action_done_button_highlight"
+                        name="action_done"
+                        string="Done"
+                        type="object"
+                        class="oe_highlight"
+                        invisible="state != 'approved' or not sale_order_ids"
+                        confirm="Are you sure you want to mark this estimation as done?"
+                    />
+                    <button
+                        id="action_done_button"
+                        name="action_done"
+                        string="Done"
+                        type="object"
+                        invisible="state != 'approved' or sale_order_ids"
+                        confirm="Are you sure you want to mark this estimation as done?"
+                    />
+                    <button
+                        name="action_cancel"
+                        string="Cancel"
+                        type="object"
+                        invisible="state not in ('draft', 'approved')"
+                    />
+                    <button
+                        name="action_draft"
+                        string="Reset to Draft"
+                        type="object"
+                        invisible="state not in ('confirm', 'approved', 'cancelled')"
+                    />
+                    <field
+                        name="state"
+                        widget="statusbar"
+                        statusbar_visible="draft,confirm,approved,done"
+                    />
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button
+                            name="action_view_sale_order"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-pencil-square-o"
+                            invisible="not sale_order_ids"
+                        >
+                            <field
+                                name="sale_order_ids"
+                                widget="statinfo"
+                                string="Sale Order"
+                            />
+                        </button>
+                        <button
+                            name="action_view_project"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-puzzle-piece"
+                            invisible="not project_id"
+                        >
+                            <field
+                                name="project_id"
+                                widget="statinfo"
+                                string="Project"
+                            />
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only" />
+                        <h1>
+                            <field name="name" readonly="1" />
+                        </h1>
+                    </div>
+                    <group name="main_info">
+                        <group>
+                            <field name="partner_id" readonly="state != 'draft'" />
+                            <field
+                                name="user_id"
+                                widget="many2one_avatar_user"
+                                readonly="state != 'draft'"
+                            />
+                        </group>
+                        <group>
+                            <field
+                                name="company_id"
+                                groups="base.group_multi_company"
+                            />
+                            <field name="currency_id" invisible="1" />
+                            <field
+                                name="currency_id"
+                                groups="base.group_multi_currency"
+                                readonly="state != 'draft'"
+                            />
+                            <field name="date" readonly="state != 'draft'" />
+                        </group>
+                    </group>
+                    <group name="target" string="Target">
+                        <group>
+                            <field name="target_margin" readonly="state != 'draft'" />
+                        </group>
+                        <group>
+                            <field name="target_sale_price" />
+                            <field name="expected_profit" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Estimation Lines" name="lines">
+                            <field
+                                name="line_ids"
+                                widget="section_and_note_one2many"
+                                readonly="state != 'draft'"
+                            >
+                                <list editable="bottom">
+                                    <control>
+                                        <create
+                                            name="add_line_control"
+                                            string="Add a line"
+                                        />
+                                        <create
+                                            name="add_section_control"
+                                            string="Add a section"
+                                            context="{'default_display_type': 'line_section'}"
+                                        />
+                                        <create
+                                            name="add_note_control"
+                                            string="Add a note"
+                                            context="{'default_display_type': 'line_note'}"
+                                        />
+                                    </control>
+                                    <field name="display_type" column_invisible="1" />
+                                    <field name="sequence" widget="handle" />
+                                    <field name="product_id" />
+                                    <field name="name" widget="section_and_note_text" />
+                                    <field name="cost_type" optional="show" />
+                                    <field name="product_uom_qty" />
+                                    <field
+                                        name="product_uom_id"
+                                        groups="uom.group_uom"
+                                        optional="show"
+                                    />
+                                    <field name="currency_id" column_invisible="1" />
+                                    <field name="price_unit" />
+                                    <field name="unit_cost" optional="show" />
+                                    <field name="margin" optional="show" />
+                                    <field
+                                        name="margin_percent"
+                                        optional="show"
+                                        widget="percentage"
+                                    />
+                                    <field
+                                        name="tax_id"
+                                        widget="many2many_tags"
+                                        options="{'no_create': True}"
+                                        context="{'search_view_ref': 'account.account_tax_view_search'}"
+                                        optional="show"
+                                        domain="[('type_tax_use', '=', 'sale'), ('company_id', '=', company_id)]"
+                                    />
+                                    <field name="cost_subtotal" optional="hide" />
+                                    <field name="price_subtotal" />
+                                </list>
+                            </field>
+                            <group col="12">
+                                <group colspan="8">
+                                    <field
+                                        name="note"
+                                        placeholder="Notes..."
+                                        nolabel="1"
+                                    />
+                                </group>
+                                <group colspan="4">
+                                    <group
+                                        name="cost_summary"
+                                        class="oe_subtotal_footer"
+                                    >
+                                        <field name="total_cost" />
+                                    </group>
+                                    <group
+                                        name="sale_summary"
+                                        class="oe_subtotal_footer"
+                                    >
+                                        <field name="amount_untaxed" />
+                                        <field name="amount_tax" />
+                                        <div
+                                            class="oe_subtotal_footer_separator oe_inline"
+                                        >
+                                            <label for="amount_total" />
+                                        </div>
+                                        <field
+                                            name="amount_total"
+                                            nolabel="1"
+                                            class="oe_subtotal_footer_separator"
+                                        />
+                                        <div class="d-flex float-end" colspan="2">
+                                            <label for="total_margin" />
+                                            <div>
+                                                <field
+                                                    name="total_margin"
+                                                    class="oe_inline"
+                                                />
+                                                <span class="oe_inline">
+                                                    (<field
+                                                    name="total_margin_percent"
+                                                    nolabel="1"
+                                                    class="oe_inline"
+                                                    widget="percentage"
+                                                />)
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </group>
+                                </group>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter />
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_project_estimation" model="ir.actions.act_window">
+        <field name="name">Estimations</field>
+        <field name="res_model">project.estimation</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <!-- Menu Items -->
+    <menuitem
+        id="menu_main_project_estimation"
+        name="Estimation"
+        parent="project.menu_main_pm"
+        sequence="30"
+    />
+    <menuitem
+        id="menu_project_estimation"
+        name="Estimations"
+        parent="menu_main_project_estimation"
+        action="action_project_estimation"
+        sequence="10"
+    />
+</odoo>

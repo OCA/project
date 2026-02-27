@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_project_estimation_create_sale_order_form" model="ir.ui.view">
+        <field name="name">project.estimation.create.sale.order.form</field>
+        <field name="model">project.estimation.create.sale.order</field>
+        <field name="arch" type="xml">
+            <form string="Create Sale Order">
+                <group>
+                    <field name="estimation_id" invisible="1" />
+                    <field name="partner_id" readonly="1" />
+                </group>
+                <notebook>
+                    <page string="Sale Order Lines">
+                        <field name="line_ids" widget="section_and_note_one2many">
+                            <list editable="bottom">
+                                <field name="display_type" column_invisible="1" />
+                                <field name="product_id" optional="show" />
+                                <field name="name" widget="section_and_note_text" />
+                                <field name="product_uom_qty" />
+                                <field name="price_unit" />
+                                <field
+                                    name="tax_id"
+                                    widget="many2many_tags"
+                                    optional="show"
+                                />
+                                <field name="price_subtotal" />
+                            </list>
+                        </field>
+                    </page>
+                </notebook>
+                <footer>
+                    <button
+                        name="action_create_sale_order"
+                        string="Create Sale Order"
+                        type="object"
+                        class="btn-primary"
+                    />
+                    <button string="Cancel" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
