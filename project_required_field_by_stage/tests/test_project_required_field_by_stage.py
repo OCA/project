@@ -31,7 +31,26 @@ class TestProjectRequiredFieldByStage(TransactionCase):
             {
                 "name": "Project Stage 2",
                 "required_field_ids": [
-                    (4, self.env.ref("project.field_project_task__user_ids").id)
+                    # integer
+                    (
+                        4,
+                        self.env.ref("project.field_project_task__planned_hours").id,
+                    ),
+                    # M2O
+                    (
+                        4,
+                        self.env.ref("project.field_project_task__project_id").id,
+                    ),
+                    # M2M
+                    (
+                        4,
+                        self.env.ref("project.field_project_task__user_ids").id,
+                    ),
+                    # bool
+                    (
+                        4,
+                        self.env.ref("project.field_project_task__active").id,
+                    ),
                 ],
                 "project_ids": [(4, self.project_project_1.id)],
             }
@@ -42,7 +61,9 @@ class TestProjectRequiredFieldByStage(TransactionCase):
                 "name": "Project Task 1",
                 "project_id": self.project_project_1.id,
                 "user_ids": False,
+                "planned_hours": 12,
                 "stage_id": self.project_task_type_1.id,
+                "active": True,
             }
         )
         self.res_users_1 = self.res_users_model.create(
@@ -104,10 +125,22 @@ class TestProjectRequiredFieldByStage(TransactionCase):
         attrs2 = json.loads(node2[0].attrib.get("attrs", "{}"))
         self.assertIn("required", attrs2)
         self.assertEqual("|", attrs2["required"][0])
-        self.assertIn(self.project_task_type_2.id, attrs2["required"][1][2])
+        self.assertIn(self.project_task_type_2.id, attrs2["required"][2][2])
         # personal_stage_type_id has attrs with no required, we verify injection
         node3 = arch.xpath("//field[@name='personal_stage_type_id']")
         self.assertTrue(node3)
         attrs3 = json.loads(node3[0].attrib.get("attrs", "{}"))
         self.assertIn("required", attrs3)
+        self.assertIn(self.project_task_type_2.id, attrs3["required"][0][2])
+        # integer field check
+        node4 = arch.xpath("//field[@name='planned_hours']")
+        self.assertTrue(node4)
+        attrs4 = json.loads(node4[0].attrib.get("attrs", "{}"))
+        self.assertIn("required", attrs4)
+        self.assertIn(self.project_task_type_2.id, attrs3["required"][0][2])
+        # m2o field check
+        node5 = arch.xpath("//field[@name='project_id']")
+        self.assertTrue(node5)
+        attrs5 = json.loads(node5[0].attrib.get("attrs", "{}"))
+        self.assertIn("required", attrs5)
         self.assertIn(self.project_task_type_2.id, attrs3["required"][0][2])
