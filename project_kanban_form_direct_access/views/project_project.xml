@@ -1,5 +1,4 @@
 <odoo>
-
     <record id="project_buttom_kanban_view" model="ir.ui.view">
         <field name="name">project.project.kanban</field>
         <field name="model">project.project</field>
@@ -7,9 +6,9 @@
         <field name="arch" type="xml">
             <xpath expr="//span[hasclass('o_text_overflow')]" position="after">
                 <a type="edit" groups="project.group_project_manager">
-                    <span class="o_text_overflow" style="font-size: 16px;"><t
-                            t-out="record.display_name.value"
-                        /></span>
+                    <span class="o_text_overflow" style="font-size: 16px;">
+                        <t t-out="record.display_name.value" />
+                    </span>
                 </a>
             </xpath>
             <xpath expr="//span[hasclass('o_text_overflow')]" position="attributes">
@@ -17,5 +16,4 @@
             </xpath>
         </field>
     </record>
-
 </odoo>
