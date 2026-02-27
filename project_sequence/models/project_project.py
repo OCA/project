@@ -57,10 +57,8 @@ class ProjectProject(models.Model):
     def name_search(self, name="", domain=None, operator="ilike", limit=100):
         """Allow searching by sequence code by default."""
         result = super().name_search(name, domain, operator, limit)
-        # Do not add any domain when user just clicked on search widget
-        if not (name == "" and operator == "ilike"):
-            # We need additional search, as in super() method call expression
-            # `AND` is used and there is no easy way to add `OR` in the final domain
+
+        if operator in ("ilike", "like", "=like", "=ilike", "=") and name:
             projects = self.search_fetch(
                 [
                     ("sequence_code", operator, name),
@@ -71,6 +69,7 @@ class ProjectProject(models.Model):
                 limit=limit,
             ).mapped(lambda p: (p.id, p.display_name))
             result.extend(projects)
+
         return result
 
     @api.model_create_multi
