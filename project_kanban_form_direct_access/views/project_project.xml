@@ -4,15 +4,17 @@
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.view_project_kanban" />
         <field name="arch" type="xml">
-            <xpath expr="//span[hasclass('o_text_overflow')]" position="after">
-                <a type="edit" groups="project.group_project_manager">
-                    <span class="o_text_overflow" style="font-size: 16px;">
-                        <t t-out="record.display_name.value" />
-                    </span>
+            <xpath expr="//span[hasclass('text-truncate')]" position="before">
+                <a
+                    type="open"
+                    class="text-truncate d-block fs-4 fw-bold text-primary"
+                    t-att-title="record.display_name.value"
+                >
+                    <field name="display_name" />
                 </a>
             </xpath>
-            <xpath expr="//span[hasclass('o_text_overflow')]" position="attributes">
-                <attribute name="groups">!project.group_project_manager</attribute>
+            <xpath expr="//span[hasclass('text-truncate')]" position="attributes">
+                <attribute name="invisible">1</attribute>
             </xpath>
         </field>
     </record>
