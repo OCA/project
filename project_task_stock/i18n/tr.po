@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-02-28 13:09+0000\n"
+"PO-Revision-Date: 2026-03-01 13:09+0000\n"
 "Last-Translator: Ömer KÜLAK <omer.kulak@kitayazilim.com>\n"
 "Language-Team: none\n"
 "Language: tr\n"
@@ -29,12 +29,12 @@ msgstr "Hareketleri Onaylamaya İzin Ver"
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__unreserve_visible
 msgid "Allowed to Unreserve Inventory"
-msgstr "Rezerveleri Kaldırmaya İzin Ver"
+msgstr "Rezerve Kaldırmasına İzin Verilen Stok"
 
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__analytic_distribution
 msgid "Analytic Distribution"
-msgstr "Analitik Dağıtım"
+msgstr "Analitik Dağılım"
 
 #. module: project_task_stock
 #: model:ir.model,name:project_task_stock.model_account_analytic_line
@@ -65,7 +65,7 @@ msgstr "Atanmış"
 #: model:ir.model.fields.selection,name:project_task_stock.selection__project_task__stock_state__cancel
 #: model_terms:ir.ui.view,arch_db:project_task_stock.view_stock_move_raw_list
 msgid "Cancel"
-msgstr "Iptal Et"
+msgstr "İptal Et"
 
 #. module: project_task_stock
 #: model_terms:ir.ui.view,arch_db:project_task_stock.view_task_form2
@@ -80,7 +80,7 @@ msgstr "Malzeme uygunluğu kontrolü"
 #. module: project_task_stock
 #: model_terms:ir.ui.view,arch_db:project_task_stock.view_task_form2
 msgid "Confirm materials"
-msgstr "Malzemeleri doğrula"
+msgstr "Malzemeleri Doğrula"
 
 #. module: project_task_stock
 #: model:ir.model.fields.selection,name:project_task_stock.selection__project_task__stock_state__confirmed
@@ -95,12 +95,12 @@ msgstr "Tüketildi"
 #. module: project_task_stock
 #: model:ir.model.fields,help:project_task_stock.field_project_project__location_id
 msgid "Default location from which materials are consumed."
-msgstr "Malzemelerin tüketildiği varsayılan konum."
+msgstr "Malzemelerin tüketildiği varsayılan kaynak konum."
 
 #. module: project_task_stock
 #: model:ir.model.fields,help:project_task_stock.field_project_project__location_dest_id
 msgid "Default location to which materials are consumed."
-msgstr "Malzemelerin tüketildiği varsayılan konum."
+msgstr "Malzemelerin tüketildiği varsayılan hedef konum."
 
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_project_project__location_dest_id
@@ -122,7 +122,7 @@ msgstr "Biten"
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__done_stock_moves
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task_type__done_stock_moves
 msgid "Done Stock Moves"
-msgstr "Biten Stok Hareketleri"
+msgstr "Hareketleri Engelle"
 
 #. module: project_task_stock
 #: model_terms:ir.ui.view,arch_db:project_task_stock.view_stock_move_raw_list
@@ -352,4 +352,4 @@ msgstr "Rezervi Kaldır"
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__use_stock_moves
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task_type__use_stock_moves
 msgid "Use Stock Moves"
-msgstr "Stok Hareketlerini Kullan"
+msgstr "Stok Hareketi Yap"
