@@ -12,8 +12,13 @@ class TestProjectTimeline(BaseCommon):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.project = cls.env.ref("project.project_project_1")
-        cls.stage = cls.env.ref("project.project_stage_2")
+        cls.project = cls.env["project.project"].create({"name": "Project Test"})
+        cls.stage_done = cls.env["project.task.type"].create(
+            {
+                "name": "Done",
+                "fold": True,
+            }
+        )
         cls.task = cls.env["project.task"].create(
             {"name": "test", "user_ids": False, "project_id": cls.project.id}
         )
@@ -25,7 +30,7 @@ class TestProjectTimeline(BaseCommon):
         self.assertFalse(self.task.planned_date_end)
         self.task.write(
             {
-                "stage_id": self.stage.id,
+                "stage_id": self.stage_done.id,
                 "date_end": fields.Datetime.add(self.task.planned_date_start, days=1),
             }
         )
@@ -44,7 +49,7 @@ class TestProjectTimeline(BaseCommon):
         self.assertEqual(
             task.planned_date_start, fields.Datetime.from_string("2018-05-01")
         )
-        task.stage_id = self.stage
+        task.stage_id = self.stage_done
         self.assertEqual(
             task.planned_date_end, fields.Datetime.from_string("2018-05-07")
         )
