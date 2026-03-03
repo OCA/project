@@ -19,7 +19,7 @@ from odoo.addons.project.tests.test_project_base import TestProjectCommon
 class TestProjectUpdatePortal(TestProjectCommon):
     @classmethod
     def setUpClass(cls):
-        super(TestProjectUpdatePortal, cls).setUpClass()
+        super().setUpClass()
         # Create project updates
         cls.project_update_1 = cls.env["project.update"].create(
             {
@@ -115,7 +115,10 @@ class TestProjectUpdatePortal(TestProjectCommon):
     @mute_logger("odoo.addons.base.models.ir_model", "odoo.addons.base.models.ir_rule")
     @users("Portal User")
     def test_portal_user_cannot_read_update_without_following(self):
-        """Portal user cannot read project update when not following project or update"""
+        """Portal user cannot read project update.
+
+        This happens when not following project or update.
+        """
         # Set project to portal visibility
         self.project_pigs.privacy_visibility = "portal"
         # Portal user should not be able to read the update
@@ -123,7 +126,7 @@ class TestProjectUpdatePortal(TestProjectCommon):
             AccessError,
             msg="Portal user should not be able to read update without following",
         ):
-            self.project_update_1.with_user(self.env.user).name
+            self.project_update_1.with_user(self.env.user).read(["name"])
         # Portal user should not be able to search updates (returns empty result set)
         updates = (
             self.env["project.update"]
@@ -137,7 +140,10 @@ class TestProjectUpdatePortal(TestProjectCommon):
     @mute_logger("odoo.addons.base.models.ir_model", "odoo.addons.base.models.ir_rule")
     @users("Portal User")
     def test_portal_user_cannot_read_update_when_project_not_portal(self):
-        """Portal user cannot read project update when project is not portal visibility"""
+        """Portal user cannot read project update.
+
+        This happens when project is not portal visibility.
+        """
         # Project is employees visibility by default
         # Subscribe portal user to project
         self.project_pigs.with_user(self.user_projectmanager).message_subscribe(
@@ -146,9 +152,12 @@ class TestProjectUpdatePortal(TestProjectCommon):
         # Portal user should not be able to read the update
         with self.assertRaises(
             AccessError,
-            msg="Portal user should not be able to read update when project is not portal",
+            msg=(
+                "Portal user should not be able to read update "
+                "when project is not portal"
+            ),
         ):
-            self.project_update_1.with_user(self.env.user).name
+            self.project_update_1.with_user(self.env.user).read(["name"])
 
     @mute_logger("odoo.addons.base.models.ir_model", "odoo.addons.base.models.ir_rule")
     @users("Portal User")
@@ -269,9 +278,8 @@ class TestProjectUpdatePortal(TestProjectCommon):
         self.project_pigs.privacy_visibility = "portal"
         # Compute access_url
         self.project_update_1._compute_access_url()
-        expected_url = "/my/projects/%s/update/%s" % (
-            self.project_pigs.id,
-            self.project_update_1.id,
+        expected_url = (
+            f"/my/projects/{self.project_pigs.id}" f"/update/{self.project_update_1.id}"
         )
         self.assertEqual(self.project_update_1.access_url, expected_url)
 
@@ -280,7 +288,7 @@ class TestProjectUpdatePortal(TestProjectCommon):
 class TestProjectUpdatePortalRoutes(TestProjectPortalCommon, HttpCaseWithUserPortal):
     @classmethod
     def setUpClass(cls):
-        super(TestProjectUpdatePortalRoutes, cls).setUpClass()
+        super().setUpClass()
         cls.project_pigs.privacy_visibility = "portal"
         cls.project_update = cls.env["project.update"].create(
             {
@@ -320,6 +328,19 @@ class TestProjectUpdatePortalRoutes(TestProjectPortalCommon, HttpCaseWithUserPor
         href = links[0].attrib["href"]
         expected_href = f"/my/projects/{project_id}/update/{self.project_update.id}"
         self.assertEqual(href, expected_href)
+
+    def test_portal_project_updates_list_no_access(self):
+        """Portal user is redirected to /my when no access to project."""
+        other_project = self.env["project.project"].create(
+            {
+                "name": "Closed project",
+                "privacy_visibility": "followers",
+            }
+        )
+        self.authenticate("portal", "portal")
+        url = f"{self.base_projects_url}/{other_project.id}/updates"
+        response = self.url_open(url)
+        self.assertEqual(response.url, self.base_my_url)
 
     def test_portal_project_update_detail_access(self):
         self.authenticate("portal", "portal")

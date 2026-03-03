@@ -13,8 +13,7 @@ class ProjectUpdate(models.Model):
         super()._compute_access_url()
         for update in self:
             if update.project_id:
-                update.access_url = "/my/projects/%s/update/%s" % (
-                    update.project_id.id,
-                    update.id,
+                update.access_url = (
+                    f"/my/projects/{update.project_id.id}/update/{update.id}"
                 )
         return

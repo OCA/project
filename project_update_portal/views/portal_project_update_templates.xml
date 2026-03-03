@@ -103,9 +103,9 @@
                                         <div
                                             class="d-flex w-100 justify-content-between"
                                         >
-                                            <h5 class="mb-1"><t
-                                                    t-esc="update.name"
-                                                /></h5>
+                                            <h5 class="mb-1">
+                                                <t t-esc="update.name" />
+                                            </h5>
                                             <small>
                                                 <span
                                                     t-attf-class="badge bg-{{ 'success' if update.status == 'on_track' else 'warning' if update.status == 'at_risk' else 'danger' if update.status == 'off_track' else 'info' }}"
@@ -119,8 +119,8 @@
                                         <p class="mb-1">
                                             <small>
                                                 <t t-esc="update.date" /> - <t
-                                                    t-esc="update.user_id.name"
-                                                />
+                                                t-esc="update.user_id.name"
+                                            />
                                             </small>
                                         </p>
                                         <div class="progress" style="height: 5px;">
@@ -131,8 +131,7 @@
                                                 t-attf-aria-valuenow="{{ update.progress }}"
                                                 aria-valuemin="0"
                                                 aria-valuemax="100"
-                                            >
-                                            </div>
+                                            />
                                         </div>
                                     </a>
                                 </t>

@@ -44,11 +44,11 @@ class ProjectUpdatePortal(ProjectCustomerPortal):
                 "project.update", update_id, access_token
             )
         except (AccessError, MissingError):
-            return request.redirect("/my/projects/%s" % project_id)
+            return request.redirect(f"/my/projects/{project_id}")
 
         # Check if update belongs to project
         if update_sudo.project_id.id != project_id:
-            return request.redirect("/my/projects/%s" % project_id)
+            return request.redirect(f"/my/projects/{project_id}")
 
         values = self._update_get_page_view_values(update_sudo, access_token, **kw)
         return request.render("project_update_portal.portal_my_project_update", values)
@@ -75,7 +75,7 @@ class ProjectUpdatePortal(ProjectCustomerPortal):
 
         # Pagination
         pager = portal_pager(
-            url="/my/projects/%s/updates" % project_id,
+            url=f"/my/projects/{project_id}/updates",
             url_args={},
             total=update_count,
             page=page,
