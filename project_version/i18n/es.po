@@ -1,0 +1,84 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_version
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2025-04-22 12:24+0000\n"
+"Last-Translator: Anna Martínez <anna080678@gmail.com>\n"
+"Language-Team: none\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.10.4\n"
+
+#. module: project_version
+#: model:ir.model.fields,field_description:project_version.field_project_version__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: project_version
+#: model:ir.model.fields,field_description:project_version.field_project_version__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: project_version
+#: model:ir.model.fields,field_description:project_version.field_project_version__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: project_version
+#: model:ir.model.fields,field_description:project_version.field_project_version__id
+msgid "ID"
+msgstr "ID"
+
+#. module: project_version
+#: model:ir.model.fields,field_description:project_version.field_project_version____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: project_version
+#: model:ir.model.fields,field_description:project_version.field_project_version__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: project_version
+#: model:ir.model.fields,field_description:project_version.field_project_version__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: project_version
+#: model:ir.model.fields,field_description:project_version.field_project_version__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: project_version
+#: model:ir.model,name:project_version.model_project_project
+#: model:ir.model.fields,field_description:project_version.field_project_version__project_id
+msgid "Project"
+msgstr "Proyecto"
+
+#. module: project_version
+#: model:ir.actions.act_window,name:project_version.action_project_version
+#: model:ir.model,name:project_version.model_project_version
+#: model:ir.ui.menu,name:project_version.menu_action_project_version
+#: model_terms:ir.ui.view,arch_db:project_version.project_version_form
+msgid "Project Version"
+msgstr "Versión del proyecto"
+
+#. module: project_version
+#: model:ir.model,name:project_version.model_project_task
+msgid "Task"
+msgstr "Tarea"
+
+#. module: project_version
+#: model:ir.model.fields,field_description:project_version.field_project_project__version_ids
+#: model:ir.model.fields,field_description:project_version.field_project_task__version_id
+#: model_terms:ir.ui.view,arch_db:project_version.project_project_version_form
+#: model_terms:ir.ui.view,arch_db:project_version.project_task_search
+msgid "Version"
+msgstr "Versión"

@@ -1,0 +1,76 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_version
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: project_version
+#: model:ir.model.fields,field_description:project_version.field_project_version__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: project_version
+#: model:ir.model.fields,field_description:project_version.field_project_version__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: project_version
+#: model:ir.model.fields,field_description:project_version.field_project_version__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: project_version
+#: model:ir.model.fields,field_description:project_version.field_project_version__id
+msgid "ID"
+msgstr ""
+
+#. module: project_version
+#: model:ir.model.fields,field_description:project_version.field_project_version__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: project_version
+#: model:ir.model.fields,field_description:project_version.field_project_version__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: project_version
+#: model:ir.model.fields,field_description:project_version.field_project_version__name
+msgid "Name"
+msgstr ""
+
+#. module: project_version
+#: model:ir.model,name:project_version.model_project_project
+#: model:ir.model.fields,field_description:project_version.field_project_version__project_id
+msgid "Project"
+msgstr ""
+
+#. module: project_version
+#: model:ir.actions.act_window,name:project_version.action_project_version
+#: model:ir.model,name:project_version.model_project_version
+#: model:ir.ui.menu,name:project_version.menu_action_project_version
+#: model_terms:ir.ui.view,arch_db:project_version.project_version_form
+msgid "Project Version"
+msgstr ""
+
+#. module: project_version
+#: model:ir.model,name:project_version.model_project_task
+msgid "Task"
+msgstr ""
+
+#. module: project_version
+#: model:ir.model.fields,field_description:project_version.field_project_project__version_ids
+#: model:ir.model.fields,field_description:project_version.field_project_task__version_id
+#: model_terms:ir.ui.view,arch_db:project_version.project_project_version_form
+#: model_terms:ir.ui.view,arch_db:project_version.project_task_search
+msgid "Version"
+msgstr ""

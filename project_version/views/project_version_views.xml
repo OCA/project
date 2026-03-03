@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="project_version_form" model="ir.ui.view">
+        <field name="model">project.version</field>
+        <field name="arch" type="xml">
+            <form string="Project Version">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only" />
+                        <h1>
+                            <field name="name" />
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="project_id" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="project_version_tree" model="ir.ui.view">
+        <field name="name">Project Version</field>
+        <field name="model">project.version</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+                <field name="project_id" />
+            </list>
+        </field>
+    </record>
+    <record id="action_project_version" model="ir.actions.act_window">
+        <field name="name">Project Version</field>
+        <field name="res_model">project.version</field>
+        <field name="view_mode">list,form</field>
+    </record>
+    <menuitem
+        name="Project Version"
+        id="menu_action_project_version"
+        parent="project.menu_project_config"
+        action="action_project_version"
+        sequence="20"
+    />
+</odoo>
