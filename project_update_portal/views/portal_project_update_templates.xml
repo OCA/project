@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="portal_my_project_update" name="Project Update Portal View">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True" />
+
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Project Update</t>
+            </t>
+
+            <div class="container mt-3">
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Update Card -->
+                        <div class="card">
+                            <div
+                                class="card-header d-flex justify-content-between align-items-center"
+                            >
+                                <h5 class="mb-0">
+                                    <t t-esc="update.name" />
+                                </h5>
+                                <span
+                                    t-attf-class="badge bg-{{ 'success' if update.status == 'on_track' else 'warning' if update.status == 'at_risk' else 'danger' if update.status == 'off_track' else 'info' }}"
+                                >
+                                    <t
+                                        t-esc="dict(update._fields['status']._description_selection(request.env)).get(update.status)"
+                                    />
+                                </span>
+                            </div>
+                            <div class="card-body">
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <strong>Date:</strong>
+                                        <t t-esc="update.date" />
+                                    </div>
+                                    <div class="col-md-6">
+                                        <strong>Author:</strong>
+                                        <t t-esc="update.user_id.name" />
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-12">
+                                        <strong>Progress:</strong>
+                                        <div class="progress mt-2">
+                                            <div
+                                                t-attf-class="progress-bar bg-{{ 'success' if update.status == 'on_track' else 'warning' if update.status == 'at_risk' else 'danger' if update.status == 'off_track' else 'info' }}"
+                                                t-attf-role="progressbar"
+                                                t-attf-style="width: {{ update.progress }}%"
+                                                t-attf-aria-valuenow="{{ update.progress }}"
+                                                aria-valuemin="0"
+                                                aria-valuemax="100"
+                                            >
+                                                <t t-esc="update.progress" />%
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-12">
+                                        <strong>Description:</strong>
+                                        <div
+                                            class="mt-2"
+                                            t-field="update.description"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <template id="portal_my_project_updates" name="Project Updates List Portal View">
+        <t t-call="portal.portal_layout">
+            <t t-set="breadcrumbs_searchbar" t-value="True" />
+
+            <t t-call="portal.portal_searchbar">
+                <t t-set="title">Project Updates</t>
+            </t>
+
+            <div class="container mt-3">
+                <div class="row">
+                    <div class="col-12">
+                        <h2>Updates for <t t-esc="project.name" /></h2>
+
+                        <t t-if="not updates">
+                            <div class="alert alert-warning mt-3" role="alert">
+                                There are no updates for this project.
+                            </div>
+                        </t>
+
+                        <t t-if="updates">
+                            <div class="list-group mt-3">
+                                <t t-foreach="updates" t-as="update">
+                                    <a
+                                        t-attf-href="/my/projects/{{ project.id }}/update/{{ update.id }}"
+                                        class="list-group-item list-group-item-action"
+                                    >
+                                        <div
+                                            class="d-flex w-100 justify-content-between"
+                                        >
+                                            <h5 class="mb-1"><t
+                                                    t-esc="update.name"
+                                                /></h5>
+                                            <small>
+                                                <span
+                                                    t-attf-class="badge bg-{{ 'success' if update.status == 'on_track' else 'warning' if update.status == 'at_risk' else 'danger' if update.status == 'off_track' else 'info' }}"
+                                                >
+                                                    <t
+                                                        t-esc="dict(update._fields['status']._description_selection(request.env)).get(update.status)"
+                                                    />
+                                                </span>
+                                            </small>
+                                        </div>
+                                        <p class="mb-1">
+                                            <small>
+                                                <t t-esc="update.date" /> - <t
+                                                    t-esc="update.user_id.name"
+                                                />
+                                            </small>
+                                        </p>
+                                        <div class="progress" style="height: 5px;">
+                                            <div
+                                                t-attf-class="progress-bar bg-{{ 'success' if update.status == 'on_track' else 'warning' if update.status == 'at_risk' else 'danger' if update.status == 'off_track' else 'info' }}"
+                                                t-attf-style="width: {{ update.progress }}%"
+                                                role="progressbar"
+                                                t-attf-aria-valuenow="{{ update.progress }}"
+                                                aria-valuemin="0"
+                                                aria-valuemax="100"
+                                            >
+                                            </div>
+                                        </div>
+                                    </a>
+                                </t>
+                            </div>
+
+                            <t t-if="pager['page_count'] > 1">
+                                <t t-call="portal.pager" />
+                            </t>
+                        </t>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>
