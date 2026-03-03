@@ -1,5 +1,5 @@
 # Copyright 2020 haulogy SA/NV
-# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+# License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
 from odoo.tests.common import TransactionCase
 
@@ -16,6 +16,7 @@ class TestProjectParent(TransactionCase):
         )
 
     def test_parent_childs_project(self):
+        self.assertNotIn(self.project_project_2, self.project_project_1.child_ids)
         self.assertIn(self.project_project_3, self.project_project_1.child_ids)
 
     def test_action_open_child_project(self):
