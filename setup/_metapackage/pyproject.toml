@@ -1,9 +1,10 @@
 [project]
 name = "odoo-addons-oca-project"
-version = "19.0.20260223.2"
+version = "19.0.20260303.0"
 dependencies = [
     "odoo-addon-project_department==19.0.*",
     "odoo-addon-project_task_default_stage==19.0.*",
+    "odoo-addon-project_task_name_with_id==19.0.*",
     "odoo-addon-project_task_note==19.0.*",
     "odoo-addon-project_task_pull_request==19.0.*",
     "odoo-addon-project_task_pull_request_state==19.0.*",
