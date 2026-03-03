@@ -50,7 +50,7 @@ License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html). -->
             >
                 <div class="o_primary">
                     <span>
-                        <t t-esc="record.parent_id.value" />
+                        <t t-out="record.parent_id.value" />
                     </span>
                 </div>
             </xpath>
