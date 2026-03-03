@@ -1,5 +1,5 @@
 # Copyright 2019 Therp BV <https://therp.nl>
-# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
+# License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
 from odoo import api, fields, models
 
@@ -32,7 +32,6 @@ class Project(models.Model):
         domain = [("parent_id", "=", self.id)]
         return {
             "type": "ir.actions.act_window",
-            "view_type": "form",
             "name": f"Children of {self.name}",
             "view_mode": "list,form,graph",
             "res_model": "project.project",
