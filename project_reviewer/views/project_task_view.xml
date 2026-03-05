@@ -14,12 +14,16 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_kanban" />
         <field name="arch" type="xml">
-            <field name="color" position="after">
+            <xpath expr="//field[@name='state']" position="after">
                 <field name="reviewer_ids" />
-            </field>
-            <div class="oe_kanban_bottom_right" position="inside">
-                <field name="reviewer_ids" widget="many2one_avatar_user" />
-            </div>
+            </xpath>
+            <xpath expr="//field[@name='user_ids']" position="before">
+                <field
+                    name="reviewer_ids"
+                    widget="many2many_avatar_user"
+                    class="me-1"
+                />
+            </xpath>
         </field>
     </record>
 
