@@ -6,8 +6,8 @@
 {
     "name": "Project Reviewer",
     "summary": "Add the possibility to assign reviewer to a task",
-    "version": "16.0.1.0.0",
-    "development_status": "Alpha",
+    "version": "18.0.1.0.0",
+    "development_status": "Beta",
     "category": "Project",
     "website": "https://github.com/OCA/project",
     "author": "Akretion, Odoo Community Association (OCA)",
