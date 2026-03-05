@@ -22,6 +22,7 @@ Available addons
 addon | version | maintainers | summary
 --- | --- | --- | ---
 [project_department](project_department/) | 19.0.1.0.0 |  | Project Department Categorization
+[project_key](project_key/) | 19.0.1.0.0 |  | Module decorates projects and tasks with Project Key
 [project_task_default_stage](project_task_default_stage/) | 19.0.1.0.0 |  | Recovery default task stages for projects from v8
 [project_task_description_template](project_task_description_template/) | 19.0.1.0.0 |  | Add a description template to project tasks
 [project_task_name_with_id](project_task_name_with_id/) | 19.0.1.1.0 |  | Project Task Name with ID
