@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_task_form2" model="ir.ui.view">
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2" />
+        <field name="arch" type="xml">
+            <field name="user_ids" position="after">
+                <field name="reviewer_ids" widget="many2many_tags" />
+            </field>
+        </field>
+    </record>
+
+    <record id="view_task_kanban" model="ir.ui.view">
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_kanban" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='state']" position="after">
+                <field name="reviewer_ids" />
+            </xpath>
+            <xpath expr="//field[@name='user_ids']" position="before">
+                <field
+                    name="reviewer_ids"
+                    widget="many2many_avatar_user"
+                    class="me-1"
+                />
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_task_search_form" model="ir.ui.view">
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_search_form" />
+        <field name="arch" type="xml">
+            <filter name="my_tasks" position="after">
+                <filter
+                    name="my_review"
+                    string="My review"
+                    domain="[('reviewer_ids', '=', uid)]"
+                />
+            </filter>
+        </field>
+    </record>
+</odoo>
