@@ -12,7 +12,7 @@
                 position="before"
             >
                 <field name="pr_required_states" invisible="1" />
-                <field name="pr_uri" widget="url" invisible="not pr_required_states" />
+                <field name="pr_uri" widget="url" />
             </xpath>
         </field>
     </record>
