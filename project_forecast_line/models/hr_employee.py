@@ -156,7 +156,7 @@ class HrEmployeeForecastRole(models.Model):
                 date_from=date_start,
                 date_to=date_end,
                 forecast_hours=forecast * rec.rate / 100.0,
-                unit_cost=rec.employee_id.timesheet_cost,  # XXX to check
+                unit_cost=rec.employee_id.hourly_cost,  # XXX to check
                 ttype="confirmed",
                 forecast_role_id=rec.role_id.id,
                 employee_id=rec.employee_id.id,

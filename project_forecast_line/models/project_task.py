@@ -21,18 +21,6 @@ class ProjectTask(models.Model):
         help="Technical field used to trigger the forecast recomputation",
     )
 
-    @api.model_create_multi
-    def create(self, vals_list):
-        # compatibility with fields from project_enterprise
-        for vals in vals_list:
-            if vals.get("planned_date_begin"):
-                vals["forecast_date_planned_start"] = vals["planned_date_begin"]
-            if vals.get("planned_date_end"):
-                vals["forecast_date_planned_end"] = vals["planned_date_end"]
-        tasks = super().create(vals_list)
-        # tasks._update_forecast_lines()
-        return tasks
-
     def _update_forecast_lines_trigger_fields(self):
         return [
             # "sale_order_line_id",
@@ -54,31 +42,40 @@ class ProjectTask(models.Model):
             rec.forecast_recomputation_trigger = value
 
     def write(self, values):
-        # compatibility with fields from project_enterprise
-        if "planned_date_begin" in values:
-            values["forecast_date_planned_start"] = values["planned_date_begin"]
-        if "planned_date_end" in values:
-            values["forecast_date_planned_end"] = values["planned_date_end"]
+        if "allocated_hours" in values:
+            for task in self:
+                forecast_lines = self.env["forecast.line"].search(
+                    [("task_id", "=", task.id)]
+                )
+                if forecast_lines:
+                    # Update each line based on the new total
+                    new_val = -(values["allocated_hours"] / len(forecast_lines))
+                    forecast_lines.write({"forecast_hours": new_val})
         return super().write(values)
 
-    def _write(self, values):
-        res = super()._write(values)
-        if "forecast_recomputation_trigger" in values:
-            self._update_forecast_lines()
-        elif "remaining_hours" in values:
-            self._quick_update_forecast_lines()
+    def _write_multi(self, values):
+        res = super()._write_multi(values)
+        if "forecast_recomputation_trigger" in values[0]:
+            for records in self:
+                records._update_forecast_lines()
+        elif "remaining_hours" in values[0]:
+            for records in self:
+                records._quick_update_forecast_lines()
         return res
 
     @api.onchange("user_ids")
     def onchange_user_ids(self):
         for task in self:
             if not task.user_ids:
+                task.forecast_role_id = False
                 continue
             if task.forecast_role_id:
                 continue
-            employees = task.mapped("user_ids.employee_id")
+            employees = self.env["hr.employee"].search(
+                [("user_id", "in", task.user_ids.ids)]
+            )  # noqa : E501
             for employee in employees:
-                if employee.main_role_id:
+                if employee.role_ids:
                     task.forecast_role_id = employee.main_role_id
                     break
 
@@ -142,6 +139,20 @@ class ProjectTask(models.Model):
             return False
         return True
 
+    def set_forecast_type(self):
+        forecast_type = "forecast"
+        if self.project_id.stage_id:
+            forecast_type = self.project_id.stage_id.forecast_line_type
+        elif self.sale_line_id:
+            if self.sale_line_id.state == "sale":
+                forecast_type = "confirmed"
+            else:
+                # sale_line_id which are in state draft cannot be assigned to a task.
+                return
+        else:
+            _logger.debug("strange case -> undefined forecast type for %s: skip", self)
+        return forecast_type
+
     def _update_forecast_lines(self):
         _logger.debug("update forecast lines %s", self)
         today = fields.Date.context_today(self)
@@ -153,19 +164,9 @@ class ProjectTask(models.Model):
             if not task._should_have_forecast():
                 task_with_lines_to_clean.append(task.id)
                 continue
-            if task.project_id.stage_id:
-                forecast_type = task.project_id.stage_id.forecast_line_type
-            elif task.sale_line_id:
-                if task.sale_line_id.state == "sale":
-                    forecast_type = "confirmed"
-                else:
-                    forecast_type = "forecast"
-            else:
-                _logger.warn(
-                    "strange case -> undefined forecast type for %s: skip", task
-                )
+            forecast_type = self.set_forecast_type()
+            if not forecast_type:
                 continue
-
             date_start = max(today, task.forecast_date_planned_start)
             date_end = max(today, task.forecast_date_planned_end)
             employees = task._get_task_employees()
