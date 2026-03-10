@@ -23,7 +23,7 @@ class SaleOrderLine(models.Model):
     def _update_forecast_lines(self):
         forecast_vals = []
         ForecastLine = self.env["forecast.line"].sudo()
-        # XXX try to be smarter and only unlink those needing unlinking, update the others
+        # XXX try to be smarter and only unlink those needing unlinking, update the rest
         ForecastLine.search(
             [("res_id", "in", self.ids), ("res_model", "=", self._name)]
         ).unlink()
@@ -32,7 +32,7 @@ class SaleOrderLine(models.Model):
             if not line.product_id.forecast_role_id:
                 continue
             elif line.state in ("cancel", "sale"):
-                # no forecast line for confirmed sales -> this is handled by projects and tasks
+                # no forecast line for confirmed sales.It is handled by projects & tasks
                 continue
             elif not (line.forecast_date_end and line.forecast_date_start):
                 _logger.info(
@@ -52,7 +52,8 @@ class SaleOrderLine(models.Model):
                 date_to=line.forecast_date_end,
                 ttype=forecast_type,
                 forecast_hours=-1 * quantity_hours,
-                unit_cost=line.product_id.standard_price,  # XXX currency + unit conversion
+                # XXX currency + unit conversion
+                unit_cost=line.product_id.standard_price,
                 forecast_role_id=line.product_id.forecast_role_id.id,
                 sale_line_id=line.id,
                 project_id=line.project_id.id,
@@ -95,8 +96,7 @@ class SaleOrderLine(models.Model):
         return res
 
     @api.onchange("product_id")
-    def product_id_change(self):
-        res = super().product_id_change()
+    def _onchange_product_id_change(self):
         for line in self:
             if not line.product_id.forecast_role_id:
                 line.forecast_date_start = False
@@ -112,7 +112,6 @@ class SaleOrderLine(models.Model):
                     and line.order_id.default_forecast_date_end
                 ):
                     line.forecast_date_end = line.order_id.default_forecast_date_end
-        return res
 
     def _timesheet_create_task_prepare_values(self, project):
         values = super()._timesheet_create_task_prepare_values(project)
@@ -132,7 +131,7 @@ class SaleOrderLine(models.Model):
                 {
                     "forecast_role_id": self.product_id.forecast_role_id.id,
                     "date_end": self.forecast_date_end,
-                    "date_planned_start": self.forecast_date_start,
+                    "forecast_date_planned_start": self.forecast_date_start,
                 }
             )
         return project

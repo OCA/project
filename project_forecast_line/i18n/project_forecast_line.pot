@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 15.0\n"
+"Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -16,15 +16,6 @@ msgstr ""
 #. module: project_forecast_line
 #: model_terms:ir.ui.view,arch_db:project_forecast_line.res_config_settings_view_form
 msgid "Allow to see forecast dates on quotations"
-msgstr ""
-
-#. module: project_forecast_line
-#: model:project.task,legend_blocked:project_forecast_line.software_project_task_consultant
-#: model:project.task,legend_blocked:project_forecast_line.software_project_task_consultant_cust_test
-#: model:project.task,legend_blocked:project_forecast_line.software_project_task_consultant_internal_test
-#: model:project.task,legend_blocked:project_forecast_line.software_project_task_dev
-#: model:project.task,legend_blocked:project_forecast_line.software_project_task_pm
-msgid "Blocked"
 msgstr ""
 
 #. module: project_forecast_line
@@ -76,7 +67,6 @@ msgid "Consolidated forecast for lines of type confirmed"
 msgstr ""
 
 #. module: project_forecast_line
-#: model:product.product,name:project_forecast_line.product_product_consultant
 #: model:product.template,name:project_forecast_line.product_product_consultant_product_template
 msgid "Consultant"
 msgstr ""
@@ -306,8 +296,6 @@ msgstr ""
 
 #. module: project_forecast_line
 #: model:ir.actions.server,name:project_forecast_line.cron_forecast_lines_ir_actions_server
-#: model:ir.cron,cron_name:project_forecast_line.cron_forecast_lines
-#: model:ir.cron,name:project_forecast_line.cron_forecast_lines
 msgid "Forecast recomputation"
 msgstr ""
 
@@ -319,16 +307,6 @@ msgstr ""
 #. module: project_forecast_line
 #: model_terms:ir.ui.view,arch_db:project_forecast_line.view_forecast_line_search
 msgid "Group By"
-msgstr ""
-
-#. module: project_forecast_line
-#: model:product.product,uom_name:project_forecast_line.product_product_consultant
-#: model:product.product,uom_name:project_forecast_line.product_product_dev
-#: model:product.product,uom_name:project_forecast_line.product_product_pm
-#: model:product.template,uom_name:project_forecast_line.product_product_consultant_product_template
-#: model:product.template,uom_name:project_forecast_line.product_product_dev_product_template
-#: model:product.template,uom_name:project_forecast_line.product_product_pm_product_template
-msgid "Hours"
 msgstr ""
 
 #. module: project_forecast_line
@@ -344,29 +322,8 @@ msgid "ID"
 msgstr ""
 
 #. module: project_forecast_line
-#: model:project.task,legend_normal:project_forecast_line.software_project_task_consultant
-#: model:project.task,legend_normal:project_forecast_line.software_project_task_consultant_cust_test
-#: model:project.task,legend_normal:project_forecast_line.software_project_task_consultant_internal_test
-#: model:project.task,legend_normal:project_forecast_line.software_project_task_dev
-#: model:project.task,legend_normal:project_forecast_line.software_project_task_pm
-msgid "In Progress"
-msgstr ""
-
-#. module: project_forecast_line
 #: model:ir.model,name:project_forecast_line.model_hr_job
 msgid "Job Position"
-msgstr ""
-
-#. module: project_forecast_line
-#: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line____last_update
-#: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line_mixin____last_update
-#: model:ir.model.fields,field_description:project_forecast_line.field_forecast_role____last_update
-#: model:ir.model.fields,field_description:project_forecast_line.field_hr_employee_forecast_role____last_update
-#: model:ir.model.fields,field_description:project_forecast_line.field_hr_leave____last_update
-#: model:ir.model.fields,field_description:project_forecast_line.field_project_task____last_update
-#: model:ir.model.fields,field_description:project_forecast_line.field_resource_calendar_leaves____last_update
-#: model:ir.model.fields,field_description:project_forecast_line.field_sale_order_line____last_update
-msgid "Last Modified on"
 msgstr ""
 
 #. module: project_forecast_line
@@ -398,9 +355,9 @@ msgid "Last Updated on"
 msgstr ""
 
 #. module: project_forecast_line
+#. odoo-python
 #: code:addons/project_forecast_line/models/hr_leave.py:0
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__hr_leave_id
-#, python-format
 msgid "Leave"
 msgstr ""
 
@@ -444,9 +401,15 @@ msgid "Odoo implementation"
 msgstr ""
 
 #. module: project_forecast_line
+#: model_terms:ir.ui.view,arch_db:project_forecast_line.res_config_settings_view_form
+msgid ""
+"Periodicity of the forecast that will be\n"
+"                                                    generated"
+msgstr ""
+
+#. module: project_forecast_line
 #: model:ir.model.fields,help:project_forecast_line.field_res_company__forecast_line_granularity
 #: model:ir.model.fields,help:project_forecast_line.field_res_config_settings__forecast_line_granularity
-#: model_terms:ir.ui.view,arch_db:project_forecast_line.res_config_settings_view_form
 msgid "Periodicity of the forecast that will be generated"
 msgstr ""
 
@@ -462,7 +425,7 @@ msgstr ""
 
 #. module: project_forecast_line
 #: model:ir.model,name:project_forecast_line.model_product_template
-msgid "Product Template"
+msgid "Product"
 msgstr ""
 
 #. module: project_forecast_line
@@ -472,7 +435,6 @@ msgid "Project"
 msgstr ""
 
 #. module: project_forecast_line
-#: model:product.product,name:project_forecast_line.product_product_pm
 #: model:product.template,name:project_forecast_line.product_product_pm_product_template
 msgid "Project Manager"
 msgstr ""
@@ -485,15 +447,6 @@ msgstr ""
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_hr_employee_forecast_role__rate
 msgid "Rate"
-msgstr ""
-
-#. module: project_forecast_line
-#: model:project.task,legend_done:project_forecast_line.software_project_task_consultant
-#: model:project.task,legend_done:project_forecast_line.software_project_task_consultant_cust_test
-#: model:project.task,legend_done:project_forecast_line.software_project_task_consultant_internal_test
-#: model:project.task,legend_done:project_forecast_line.software_project_task_dev
-#: model:project.task,legend_done:project_forecast_line.software_project_task_pm
-msgid "Ready"
 msgstr ""
 
 #. module: project_forecast_line
@@ -546,7 +499,6 @@ msgid "Settings"
 msgstr ""
 
 #. module: project_forecast_line
-#: model:product.product,name:project_forecast_line.product_product_dev
 #: model:product.template,name:project_forecast_line.product_product_dev_product_template
 msgid "Software Developer"
 msgstr ""
@@ -575,6 +527,19 @@ msgstr ""
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__type
 msgid "Type"
+msgstr ""
+
+#. module: project_forecast_line
+#: model:ir.model.fields,help:project_forecast_line.field_project_task__display_name
+msgid ""
+"Use these keywords in the title to set new tasks:\n"
+"\n"
+"        30h Allocate 30 hours to the task\n"
+"        #tags Set tags on the task\n"
+"        @user Assign the task to a user\n"
+"        ! Set the task a high priority\n"
+"\n"
+"        Make sure to use the right format and order e.g. Improve the configuration screen 5h #feature #v16 @Mitchell !"
 msgstr ""
 
 #. module: project_forecast_line

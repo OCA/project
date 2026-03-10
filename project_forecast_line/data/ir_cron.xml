@@ -8,7 +8,5 @@
         <field name="code">model._cron_recompute_all()</field>
         <field name="interval_number">1</field>
         <field name="interval_type">days</field>
-        <field name="numbercall">-1</field>
-        <field name="doall" eval="False" />
     </record>
 </odoo>
