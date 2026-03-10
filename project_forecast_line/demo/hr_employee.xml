@@ -8,7 +8,7 @@
         <field name="employee_id" ref="hr.employee_niv" />
         <field name="role_id" ref="forecast_role_dev" />
     </record>
-        <record id="role_employee_stw" model="hr.employee.forecast.role">
+    <record id="role_employee_stw" model="hr.employee.forecast.role">
         <field name="employee_id" ref="hr.employee_stw" />
         <field name="role_id" ref="forecast_role_dev" />
     </record>
@@ -62,5 +62,12 @@
         <field name="employee_id" ref="hr.employee_hne" />
         <field name="role_id" ref="forecast_role_consultant" />
     </record>
-
+    <record id="role_employee_al" model="hr.employee.forecast.role">
+        <field name="employee_id" ref="hr.employee_al" />
+        <field name="role_id" ref="forecast_role_dev" />
+    </record>
+    <record id="role_employee_admin" model="hr.employee.forecast.role">
+        <field name="employee_id" ref="hr.employee_admin" />
+        <field name="role_id" ref="forecast_role_pm" />
+    </record>
 </odoo>

@@ -28,7 +28,7 @@
                 />
             </xpath>
             <xpath
-                expr="//field[@name='order_line']/tree//field[@name='customer_lead']"
+                expr="//field[@name='order_line']/list//field[@name='customer_lead']"
                 position="after"
             >
                 <field
@@ -44,5 +44,4 @@
             </xpath>
         </field>
     </record>
-
 </odoo>

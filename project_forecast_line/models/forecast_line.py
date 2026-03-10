@@ -14,7 +14,8 @@ _logger = logging.getLogger(__name__)
 
 class ForecastLine(models.Model):
     """
-    we generate 1 forecast line per period defined on the current company (day, week, month).
+    we generate 1 forecast line per period;
+    defined on the current company (day, week, month).
     """
 
     _name = "forecast.line"
@@ -58,14 +59,14 @@ class ForecastLine(models.Model):
     )
     forecast_hours = fields.Float(
         "Forecast",
-        help="Forecast (in hours). Forecast is positive for resources which add forecast, "
+        help="Forecast (in hours). Forecast is positive for resources which add forecast, "  # noqa: E501
         "such as employees, and negative for things which consume forecast, such as "
         "holidays, sales, or tasks.",
     )
     cost = fields.Monetary(
-        help="Cost, in company currency. Cost is positive for things which add forecast, "
+        help="Cost, in company currency. Cost is positive for things which add forecast, "  # noqa: E501
         "such as employees and negative for things which consume forecast such as "
-        "holidays, sales, or tasks. ",
+        "holidays, sales, or tasks. "
     )
     consolidated_forecast = fields.Float(
         help="Consolidated forecast for lines of all types consumed",
@@ -195,6 +196,16 @@ class ForecastLine(models.Model):
             hours, to_convert_uom, round=False
         )
 
+    @api.depends("task_id.allocated_hours")
+    def _compute_forecast_hours(self):
+        for line in self:
+            if line.task_id and line.task_id.allocated_hours:
+                # Logic: Divide total hours by number of forecast lines for this task
+                count = self.search_count([("task_id", "=", line.task_id.id)])
+                line.forecast_hours = -(line.task_id.allocated_hours / (count or 1))
+            else:
+                line.forecast_hours = 0.0
+
     @api.depends("employee_resource_consumption_ids.forecast_hours", "forecast_hours")
     def _compute_consolidated_forecast(self):
         grouped_lines_values = self._get_grouped_line_values()
@@ -234,7 +245,7 @@ class ForecastLine(models.Model):
         unit_cost,
         res_model,
         res_id=0,
-        **kwargs
+        **kwargs,
     ):
         """this method is called on a recordset, it will update it so that all the
         lines in the set are correct, removing the ones which need removing and
@@ -249,7 +260,7 @@ class ForecastLine(models.Model):
             unit_cost,
             res_model=res_model,
             res_id=res_id,
-            **kwargs
+            **kwargs,
         )
         to_create = []
         self_by_start_date = {r.date_from: r for r in self}
@@ -279,7 +290,7 @@ class ForecastLine(models.Model):
         unit_cost,
         res_model="",
         res_id=0,
-        **kwargs
+        **kwargs,
     ):
         common_value_dict = {
             "company_id": self.env.company.id,
@@ -352,7 +363,7 @@ class ForecastLine(models.Model):
             # day after the period.
             # TODO future improvement: dump this on the
             # first day when the employee is not on holiday
-            _logger.warning(
+            _logger.info(
                 "resource %s has 0 forecast on period %s -> %s",
                 resource,
                 horiz_date_from,
@@ -364,8 +375,11 @@ class ForecastLine(models.Model):
                 "forecast_hours": forecast_hours,
                 "cost": forecast_hours * unit_cost,
             }
-            return
-        daily_forecast = forecast_hours / whole_period_forecast
+            # return
+        if whole_period_forecast == 0:
+            daily_forecast = 0
+        else:
+            daily_forecast = forecast_hours / whole_period_forecast
         if daily_forecast == 0:
             return
         while curr_date < horiz_date_to:

@@ -13,19 +13,17 @@ class HrLeave(models.Model):
 
     @api.model_create_multi
     def create(self, vals_list):
-        leaves = super().create(vals_list)
-        leaves._update_forecast_lines()
-        return leaves
+        self._update_forecast_lines()
+        return super().create(vals_list)
 
     def write(self, values):
-        res = super().write(values)
         self._update_forecast_lines()
-        return res
+        return super().write(values)
 
     def _update_forecast_lines(self):
         forecast_vals = []
         ForecastLine = self.env["forecast.line"].sudo()
-        # XXX try to be smarter and only unlink those needing unlinking, update the others
+        # XXX try to be smarter and only unlink those needing unlinking, update the rest
         ForecastLine.search(
             [("res_id", "in", self.ids), ("res_model", "=", self._name)]
         ).unlink()
@@ -38,7 +36,7 @@ class HrLeave(models.Model):
         # for more details see here: .../addons/hr/models/hr_employee.py#L22
         for leave in leaves.sudo():
             if not leave.employee_id.main_role_id:
-                _logger.warning(
+                _logger.info(
                     "No forecast role for employee %s (%s)",
                     leave.employee_id.name,
                     leave.employee_id,
@@ -58,7 +56,7 @@ class HrLeave(models.Model):
                 forecast_hours=ForecastLine.convert_days_to_hours(
                     -1 * leave.number_of_days
                 ),
-                unit_cost=leave.employee_id.timesheet_cost,
+                unit_cost=leave.employee_id.hourly_cost,
                 forecast_role_id=leave.employee_id.main_role_id.id,
                 hr_leave_id=leave.id,
                 employee_id=leave.employee_id.id,

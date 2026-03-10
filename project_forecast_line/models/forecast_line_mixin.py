@@ -9,7 +9,7 @@ class ForecastLineModelMixin(models.Model):
 
     def _get_forecast_lines(self, domain=None):
         self.ensure_one()
-        base_domain = [("res.model", "=", self._name), ("res_id", "=", self.id)]
+        base_domain = [("res_model", "=", self._name), ("res_id", "=", self.id)]
         if domain is not None:
             base_domain += domain
         return self.env["forecast.line"].search(base_domain)
