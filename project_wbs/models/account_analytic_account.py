@@ -41,7 +41,7 @@ class AccountAnalyticAccount(models.Model):
         return result
 
     def write(self, vals):
-        res = super(AccountAnalyticAccount, self).write(vals)
+        res = super().write(vals)
         if vals.get("parent_id"):
             for account in self.browse(self.get_child_accounts().keys()):
                 account._complete_wbs_code_calc()
@@ -189,7 +189,7 @@ class AccountAnalyticAccount(models.Model):
         default["code"] = self.env["ir.sequence"].next_by_code(
             "account.analytic.account.code"
         )
-        return super(AccountAnalyticAccount, self).copy(default)
+        return super().copy(default)
 
     @api.depends("code")
     def code_get(self):

@@ -31,8 +31,8 @@
                         UP-->
                         <div class="oe_wbs_navigation">
                             <div class="oe_tag"> (Parent: <field
-                                    name="parent_id"
-                                />) </div>
+                                name="parent_id"
+                            />) </div>
                             <div
                                 class="fa fa-level-up text-center parentheading oe_kanban_action_a"
                                 title="Go Up"
@@ -259,7 +259,6 @@
                         </tree>
                     </field>
                 </page>
-
             </notebook>
         </field>
     </record>
@@ -394,5 +393,4 @@
         parent="project.menu_main_pm"
         sequence="1"
     />
-
 </odoo>

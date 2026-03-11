@@ -226,7 +226,7 @@ class Project(models.Model):
             if not vals.get("code"):
                 vals.update({"code": aa.code})
             vals = self.update_project_from_analytic_vals(vals)
-        res = super(Project, self).create(vals)
+        res = super().create(vals)
         return res
 
     @api.model
@@ -283,7 +283,7 @@ class Project(models.Model):
         return res
 
     def write(self, vals):
-        res = super(Project, self).write(vals)
+        res = super().write(vals)
         if "parent_id" in vals:
             for account in self.env["account.analytic.account"].browse(
                 self.analytic_account_id.get_child_accounts().keys()

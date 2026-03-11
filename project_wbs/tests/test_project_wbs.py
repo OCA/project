@@ -10,7 +10,7 @@ from odoo.tests import common
 
 class TestProjectWbs(common.TransactionCase):
     def setUp(self):
-        super(TestProjectWbs, self).setUp()
+        super().setUp()
 
         self.project_project = self.env["project.project"]
 

@@ -17,41 +17,42 @@ Project Work Breakdown Structure
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fproject-lightgray.png?logo=github
-    :target: https://github.com/OCA/project/tree/15.0/project_wbs
+    :target: https://github.com/OCA/project/tree/18.0/project_wbs
     :alt: OCA/project
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/project-15-0/project-15-0-project_wbs
+    :target: https://translation.odoo-community.org/projects/project-18-0/project-18-0-project_wbs
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/project&target_branch=15.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/project&target_branch=18.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
 Adding WBS information to Odoo Projects
 
-* The hierarchy of a project is considered the WBS
-  (Work Breakdown Structure)
-* The analytic accounts in the project hierarchies are considered WBS
-  components
-* The analytic account code is shown in the project
-* The complete WBS path code is shown in the analytic account and in the
-  project
-* The complete WBS path name is shown in the analytic account and in the
-  project
-* The WBS paths are concatenated with each other
-* Project Manager is propagated to the hierarchy, the Manager is Manager
-  for the WBS element only
+-  The hierarchy of a project is considered the WBS (Work Breakdown
+   Structure)
+-  The analytic accounts in the project hierarchies are considered WBS
+   components
+-  The analytic account code is shown in the project
+-  The complete WBS path code is shown in the analytic account and in
+   the project
+-  The complete WBS path name is shown in the analytic account and in
+   the project
+-  The WBS paths are concatenated with each other
+-  Project Manager is propagated to the hierarchy, the Manager is
+   Manager for the WBS element only
 
 Searching and Browsing WBS
 
-* It is possible to search projects by complete WBS path code & name
-* It is possible to search tasks by project complete WBS path code & name
-* The WBS components can be classified as project, phase, deliverable,
-  work package.
-* The classification is shown in the project and analytic account views
-* A project stage attribute is incorporated in the analytic account and
-  displayed in the project and analytic account views.
+-  It is possible to search projects by complete WBS path code & name
+-  It is possible to search tasks by project complete WBS path code &
+   name
+-  The WBS components can be classified as project, phase, deliverable,
+   work package.
+-  The classification is shown in the project and analytic account views
+-  A project stage attribute is incorporated in the analytic account and
+   displayed in the project and analytic account views.
 
 **Table of contents**
 
@@ -63,25 +64,25 @@ Usage
 
 Create a new child:
 
-#. Go to Project > WBS
-#. Click on one existing project or create a new one
-#. Click on the form view to open the project.
-#. Go to Work Breakdown Structure to create a new child
+1. Go to Project > WBS
+2. Click on one existing project or create a new one
+3. Click on the form view to open the project.
+4. Go to Work Breakdown Structure to create a new child
 
 Navigation:
 
-* Level column indicates the child hierarchy: '>' means it is a child. '>>'
-  means it is a grandchild an so on.
-* Click on the up arrow to see the parent project.
-* Click on the down arrow to see children projects.
+-  Level column indicates the child hierarchy: '>' means it is a child.
+   '>>' means it is a grandchild an so on.
+-  Click on the up arrow to see the parent project.
+-  Click on the down arrow to see children projects.
 
 Known issues / Roadmap
 ======================
 
-* Actions for the different account class are implemented but menus for those
-  were not included. This is for inheritance purposes.
-* RTL-friendliness in Project codes and names
-* Do not show full names in children in Kanban View
+-  Actions for the different account class are implemented but menus for
+   those were not included. This is for inheritance purposes.
+-  RTL-friendliness in Project codes and names
+-  Do not show full names in children in Kanban View
 
 Bug Tracker
 ===========
@@ -89,7 +90,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/project/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/project/issues/new?body=module:%20project_wbs%0Aversion:%2015.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/project/issues/new?body=module:%20project_wbs%0Aversion:%2018.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -97,7 +98,7 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Matmoz d.o.o.
 * Luxim d.o.o.
@@ -105,16 +106,16 @@ Authors
 * ForgeFlow
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* Eficent <http://www.eficent.com>
-* Luxim d.o.o. <http://www.luxim.si>
-* Matmoz d.o.o. <http://www.matmoz.si>
-* Deneroteam. <dhaval@deneroteam.com>
-* SerpentCS <http://www.serpentcs.com>
+-  Eficent <http://www.eficent.com>
+-  Luxim d.o.o. <http://www.luxim.si>
+-  Matmoz d.o.o. <http://www.matmoz.si>
+-  Deneroteam. <dhaval@deneroteam.com>
+-  SerpentCS <http://www.serpentcs.com>
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is maintained by the OCA.
 
@@ -134,6 +135,6 @@ Current `maintainer <https://odoo-community.org/page/maintainer-role>`__:
 
 |maintainer-AaronHForgeFlow| 
 
-This module is part of the `OCA/project <https://github.com/OCA/project/tree/15.0/project_wbs>`_ project on GitHub.
+This module is part of the `OCA/project <https://github.com/OCA/project/tree/18.0/project_wbs>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
