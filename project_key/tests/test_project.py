@@ -81,3 +81,20 @@ class TestProject(TestCommon):
 
         project.key = "TEST-1"
         self.assertTrue(project.show_key_warning)
+
+    def test_13_search_by_string_and_id(self):
+        project = self.env["project.project"].create({"name": "Alpha", "key": "ALP"})
+        pid = project.id
+
+        res = self.env["project.project"].name_search("Alpha")
+        ids = [x[0] for x in res]
+        self.assertIn(pid, ids, "Should find project by name 'Alpha'")
+
+        res = self.env["project.project"].name_search(str(pid))
+        ids = [x[0] for x in res]
+        self.assertIn(pid, ids, "Should find project by ID '{}'".format(pid))
+
+        # Regression: non-numeric string must not raise (previously caused
+        # SQL errors when "id" was in _rec_names_search).
+        res = self.env["project.project"].name_search("inter")
+        self.assertIsInstance(res, list)
