@@ -30,29 +30,29 @@ Project Work Breakdown Structure
 
 Adding WBS information to Odoo Projects
 
--  The hierarchy of a project is considered the WBS (Work Breakdown
-   Structure)
--  The analytic accounts in the project hierarchies are considered WBS
-   components
--  The analytic account code is shown in the project
--  The complete WBS path code is shown in the analytic account and in
-   the project
--  The complete WBS path name is shown in the analytic account and in
-   the project
--  The WBS paths are concatenated with each other
--  Project Manager is propagated to the hierarchy, the Manager is
-   Manager for the WBS element only
+- The hierarchy of a project is considered the WBS (Work Breakdown
+  Structure)
+- The analytic accounts in the project hierarchies are considered WBS
+  components
+- The analytic account code is shown in the project
+- The complete WBS path code is shown in the analytic account and in the
+  project
+- The complete WBS path name is shown in the analytic account and in the
+  project
+- The WBS paths are concatenated with each other
+- Project Manager is propagated to the hierarchy, the Manager is Manager
+  for the WBS element only
 
 Searching and Browsing WBS
 
--  It is possible to search projects by complete WBS path code & name
--  It is possible to search tasks by project complete WBS path code &
-   name
--  The WBS components can be classified as project, phase, deliverable,
-   work package.
--  The classification is shown in the project and analytic account views
--  A project stage attribute is incorporated in the analytic account and
-   displayed in the project and analytic account views.
+- It is possible to search projects by complete WBS path code & name
+- It is possible to search tasks by project complete WBS path code &
+  name
+- The WBS components can be classified as project, phase, deliverable,
+  work package.
+- The classification is shown in the project and analytic account views
+- A project stage attribute is incorporated in the analytic account and
+  displayed in the project and analytic account views.
 
 **Table of contents**
 
@@ -71,18 +71,18 @@ Create a new child:
 
 Navigation:
 
--  Level column indicates the child hierarchy: '>' means it is a child.
-   '>>' means it is a grandchild an so on.
--  Click on the up arrow to see the parent project.
--  Click on the down arrow to see children projects.
+- Level column indicates the child hierarchy: '>' means it is a child.
+  '>>' means it is a grandchild an so on.
+- Click on the up arrow to see the parent project.
+- Click on the down arrow to see children projects.
 
 Known issues / Roadmap
 ======================
 
--  Actions for the different account class are implemented but menus for
-   those were not included. This is for inheritance purposes.
--  RTL-friendliness in Project codes and names
--  Do not show full names in children in Kanban View
+- Actions for the different account class are implemented but menus for
+  those were not included. This is for inheritance purposes.
+- RTL-friendliness in Project codes and names
+- Do not show full names in children in Kanban View
 
 Bug Tracker
 ===========
@@ -108,11 +108,15 @@ Authors
 Contributors
 ------------
 
--  Eficent <http://www.eficent.com>
--  Luxim d.o.o. <http://www.luxim.si>
--  Matmoz d.o.o. <http://www.matmoz.si>
--  Deneroteam. <dhaval@deneroteam.com>
--  SerpentCS <http://www.serpentcs.com>
+- Eficent <http://www.eficent.com>
+- Luxim d.o.o. <http://www.luxim.si>
+- Matmoz d.o.o. <http://www.matmoz.si>
+- Deneroteam. <dhaval@deneroteam.com>
+- SerpentCS <http://www.serpentcs.com>
+
+[APSL-Nagarro](https://apsl.tech):
+
+- Lansana Barry Sow <lbarry@apsl.net>
 
 Maintainers
 -----------

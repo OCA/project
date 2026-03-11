@@ -22,7 +22,7 @@ class TestProjectWbs(common.TransactionCase):
             {
                 "name": "Test project son",
                 "code": "01",
-                "parent_id": self.parent_account.id,
+                "wbs_parent_id": self.parent_account.id,
             }
         )
         self.son_account = self.project_son.analytic_account_id
@@ -30,7 +30,7 @@ class TestProjectWbs(common.TransactionCase):
             {
                 "name": "Test project grand son",
                 "code": "02",
-                "parent_id": self.son_account.id,
+                "wbs_parent_id": self.son_account.id,
             }
         )
         self.grand_son_account = self.project_grand_son.analytic_account_id
@@ -38,10 +38,12 @@ class TestProjectWbs(common.TransactionCase):
             {"name": "Test project 2", "code": "03"}
         )
         self.account2 = self.project2.analytic_account_id
+        default_plan = self.env["account.analytic.plan"].search([], limit=1)
 
         self.analytic_account = self.env["account.analytic.account"].create(
             {
                 "name": "Test analytic account",
+                "plan_id": default_plan.id,
             }
         )
 
@@ -75,9 +77,13 @@ class TestProjectWbs(common.TransactionCase):
 
     def test_view_context(self):
         res = self.project_project.with_context(
-            default_parent_id=self.project.id
+            default_wbs_parent_id=self.project.analytic_account_id.id
         )._resolve_analytic_account_id_from_context()
-        self.assertEqual(res, self.project.id, "Wrong Parent Project from context")
+        self.assertEqual(
+            res,
+            self.project.analytic_account_id.id,
+            "Wrong Parent Project from context",
+        )
         res = self.project_project._resolve_analytic_account_id_from_context()
         self.assertEqual(res, None, "Should not be anything in context")
 
@@ -110,7 +116,7 @@ class TestProjectWbs(common.TransactionCase):
         self.assertEqual(res["res_id"], self.project.id, "Wrong project form view")
 
     def test_onchange_parent(self):
-        self.project2.write({"parent_id": self.parent_account.id})
+        self.project2.write({"wbs_parent_id": self.parent_account.id})
         self.project2.on_change_parent()
         child_in = self.project2 in self.project.project_child_complete_ids
         self.assertTrue(child_in, "Child not added")

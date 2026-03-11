@@ -38,7 +38,7 @@ msgid "Append this project to another one using analytic accounts hierarchy"
 msgstr ""
 
 #. module: project_wbs
-#: model:ir.model.fields,field_description:project_wbs.field_project_project__child_ids
+#: model:ir.model.fields,field_description:project_wbs.field_project_project__wbs_child_ids
 msgid "Child Accounts"
 msgstr ""
 
@@ -160,7 +160,7 @@ msgstr ""
 
 #. module: project_wbs
 #: model:ir.model.fields,field_description:project_wbs.field_account_analytic_account__parent_id
-#: model:ir.model.fields,field_description:project_wbs.field_project_project__parent_id
+#: model:ir.model.fields,field_description:project_wbs.field_project_project__wbs_parent_id
 #: model_terms:ir.ui.view,arch_db:project_wbs.edit_project
 msgid "Parent Analytic Account"
 msgstr ""

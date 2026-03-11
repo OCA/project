@@ -49,7 +49,7 @@ class AccountAnalyticAccount(models.Model):
         if "active" in vals:
             for account in self:
                 account.project_ids.filtered(
-                    lambda p: p.active != account.active
+                    lambda p, a=account: p.active != a.active
                 ).write({"active": account.active})
         return res
 
@@ -106,7 +106,7 @@ class AccountAnalyticAccount(models.Model):
     @api.depends("account_class", "parent_id")
     def _compute_project_analytic_id(self):
         for analytic in self:
-            if analytic.parent_id.filtered(lambda l: l.account_class == "project"):
+            if analytic.parent_id.filtered(lambda acc: acc.account_class == "project"):
                 current = analytic.parent_id
             else:
                 current = analytic
@@ -146,7 +146,7 @@ class AccountAnalyticAccount(models.Model):
     )
     project_ids = fields.One2many(
         comodel_name="project.project",
-        inverse_name="analytic_account_id",
+        inverse_name="account_id",
         string="Projects",
     )
     project_analytic_id = fields.Many2one(
@@ -233,6 +233,6 @@ class AccountAnalyticAccount(models.Model):
         (
             "analytic_unique_wbs_code",
             "UNIQUE (complete_wbs_code)",
-            _("The full wbs code must be unique!"),
+            "The full wbs code must be unique!",
         ),
     ]

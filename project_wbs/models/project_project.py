@@ -14,10 +14,10 @@ class Project(models.Model):
 
     analytic_account_id = fields.Many2one(
         "account.analytic.account",
-        "Analytic Account",
-        required=True,
-        ondelete="restrict",
-        index=True,
+        "WBS Analytic Account",
+        related="account_id",
+        readonly=False,
+        store=True,
     )
 
     def _get_project_analytic_wbs(self):
@@ -133,21 +133,25 @@ class Project(models.Model):
     def _resolve_analytic_account_id_from_context(self):
         """
         Returns ID of parent analytic account based on the value of
-        'default_parent_id'
+        'default_wbs_parent_id'
         context key, or None if it cannot be resolved to a single
         account.analytic.account
         """
         context = self.env.context or {}
 
+        if isinstance(context.get("default_wbs_parent_id"), int):
+            return context["default_wbs_parent_id"]
         if isinstance(context.get("default_parent_id"), int):
             return context["default_parent_id"]
         return None
 
     def prepare_analytics_vals(self, vals):
+        project_plan, _other_plans = self.env["account.analytic.plan"]._get_all_plans()
         analytic_vals = {
             "name": vals.get("name", _("Unknown Analytic Account")),
             "company_id": vals.get("company_id", self.env.company.id),
             "partner_id": vals.get("partner_id"),
+            "plan_id": project_plan.id,
             "active": True,
         }
         code = vals.get("code", False)
@@ -157,10 +161,11 @@ class Project(models.Model):
 
     def update_project_from_analytic_vals(self, vals):
         new_vals = vals
-        if "parent_id" in vals and not vals["parent_id"]:
+        if "wbs_parent_id" in vals and not vals["wbs_parent_id"]:
             # it means it comes from a form
             parent = self.env["account.analytic.account"].browse(
-                self._context.get("default_parent_id", False)
+                self._context.get("default_wbs_parent_id")
+                or self._context.get("default_parent_id", False)
             )
             if parent:
                 account_analytic = self.env["account.analytic.account"].browse(
@@ -168,7 +173,7 @@ class Project(models.Model):
                 )
                 new_vals.update(
                     {
-                        "parent_id": parent.id,
+                        "wbs_parent_id": parent.id,
                         "code": account_analytic.code,
                         "project_analytic_id": parent.project_analytic_id.id,
                         "account_class": parent.account_class,
@@ -176,11 +181,11 @@ class Project(models.Model):
                 )
         return new_vals
 
-    parent_id = fields.Many2one(
+    wbs_parent_id = fields.Many2one(
         related="analytic_account_id.parent_id",
         readonly=False,
     )
-    child_ids = fields.One2many(
+    wbs_child_ids = fields.One2many(
         related="analytic_account_id.child_ids",
         readonly=False,
     )
@@ -217,17 +222,17 @@ class Project(models.Model):
         readonly=False,
     )
 
-    @api.model
-    def create(self, vals):
-        analytic_vals = self.prepare_analytics_vals(vals)
-        if "analytic_account_id" not in vals:
-            aa = self.env["account.analytic.account"].create(analytic_vals)
-            vals.update({"analytic_account_id": aa.id})
-            if not vals.get("code"):
-                vals.update({"code": aa.code})
-            vals = self.update_project_from_analytic_vals(vals)
-        res = super().create(vals)
-        return res
+    @api.model_create_multi
+    def create(self, vals_list):
+        for vals in vals_list:
+            analytic_vals = self.prepare_analytics_vals(vals)
+            if "analytic_account_id" not in vals:
+                aa = self.env["account.analytic.account"].create(analytic_vals)
+                vals.update({"analytic_account_id": aa.id})
+                if not vals.get("code"):
+                    vals.update({"code": aa.code})
+                self.update_project_from_analytic_vals(vals)
+        return super().create(vals_list)
 
     @api.model
     def action_open_child_view(self, act_window):
@@ -243,7 +248,7 @@ class Project(models.Model):
         for child_project_id in child_project_ids:
             project_ids.append(child_project_id.id)
         res["context"] = {
-            "default_parent_id": (
+            "default_wbs_parent_id": (
                 self.analytic_account_id and self.analytic_account_id.id or False
             ),
             "default_partner_id": (self.partner_id and self.partner_id.id or False),
@@ -276,15 +281,13 @@ class Project(models.Model):
                 [("analytic_account_id", "=", self.analytic_account_id.parent_id.id)]
             ):
                 analytic_account_ids.append(parent_project_id.id)
-        if analytic_account_ids:
-            domain.append(("id", "in", analytic_account_ids))
-            res.update({"domain": domain, "nodestroy": False})
-        res["display_name"] = self.name
+        domain.append(("id", "in", analytic_account_ids))
+        res.update({"display_name": self.name, "domain": domain, "nodestroy": False})
         return res
 
     def write(self, vals):
         res = super().write(vals)
-        if "parent_id" in vals:
+        if "wbs_parent_id" in vals:
             for account in self.env["account.analytic.account"].browse(
                 self.analytic_account_id.get_child_accounts().keys()
             ):
@@ -315,19 +318,18 @@ class Project(models.Model):
                 [("analytic_account_id", "=", self.analytic_account_id.parent_id.id)]
             ):
                 analytic_account_ids.append(parent_project_id.id)
-        if analytic_account_ids:
-            domain.append(("id", "in", analytic_account_ids))
-            res.update({"domain": domain, "nodestroy": False})
+        domain.append(("id", "in", analytic_account_ids))
+        res.update({"display_name": self.name, "domain": domain, "nodestroy": False})
         return res
 
-    @api.onchange("parent_id")
+    @api.onchange("wbs_parent_id")
     def on_change_parent(self):
         self.analytic_account_id._onchange_parent_id()
 
     def action_open_view_project_form(self):
         view = {
             "name": _("Details"),
-            "view_mode": "form,tree,kanban",
+            "view_mode": "form,list,kanban",
             "res_model": "project.project",
             "view_id": False,
             "type": "ir.actions.act_window",
