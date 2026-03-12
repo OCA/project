@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 ForgeFlow
+     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). -->
+<odoo>
+    <record id="view_task_form2_inherit" model="ir.ui.view">
+        <field name="name">project.task.form</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2" />
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <field name="customer_reference" />
+            </field>
+        </field>
+    </record>
+
+    <record id="view_task_all_tree_inherit" model="ir.ui.view">
+        <field name="name">project.task.list</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_tree2" />
+        <field name="arch" type="xml">
+            <field name="partner_id" position="after">
+                <field name="customer_reference" optional="hide" />
+            </field>
+        </field>
+    </record>
+</odoo>
