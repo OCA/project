@@ -35,9 +35,9 @@
             ref="project.project_sharing_project_task_view_kanban"
         />
         <field name="arch" type="xml">
-            <xpath expr="//div[hasclass('o_kanban_record_body')]" position="inside">
+            <field name="tag_ids" position="after">
                 <field name="portal_task_properties" widget="properties" />
-            </xpath>
+            </field>
         </field>
     </record>
 </odoo>
