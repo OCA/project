@@ -16,7 +16,7 @@ class PortalProperties(fields.Properties):
             record[self.name] = self._add_default_values(
                 record.env,
                 {
-                    self.name: record[self.properties or self.name],
+                    self.name: record.sudo()[self.properties or self.name],
                     self.definition_record: record[self.definition_record],
                 },
             )
