@@ -2,7 +2,6 @@
 <!-- Copyright 2025 Dixmit
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
-
     <record model="ir.ui.view" id="project_collaborator_search_view">
         <field name="model">project.collaborator</field>
         <field name="inherit_id" ref="project.project_collaborator_view_search" />
@@ -32,5 +31,4 @@
             </field>
         </field>
     </record>
-
 </odoo>
