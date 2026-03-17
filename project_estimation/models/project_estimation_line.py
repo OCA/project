@@ -50,10 +50,26 @@ class ProjectEstimationLine(models.Model):
         domain="[('category_id', '=', product_uom_category_id)]",
     )
     product_uom_category_id = fields.Many2one(related="product_id.uom_id.category_id")
-    price_unit = fields.Float(
-        compute="_compute_price_unit",
+    unit_cost = fields.Float(
+        string="Cost",
+        compute="_compute_unit_cost",
         min_display_digits="Product Price",
         store=True,
+        readonly=False,
+        copy=False,
+    )
+    cost_ratio = fields.Float(
+        string="Cost Ratio (%)",
+        inverse="_inverse_cost_ratio",
+        store=True,
+        copy=False,
+    )
+    price_unit = fields.Float(
+        string="Sale Price",
+        compute="_compute_price_unit",
+        inverse="_inverse_price_unit",
+        store=True,
+        min_display_digits="Product Price",
         readonly=False,
     )
     margin = fields.Float(
@@ -66,13 +82,14 @@ class ProjectEstimationLine(models.Model):
         compute="_compute_margin",
         store=True,
     )
-    unit_cost = fields.Float(
-        string="Cost",
-        compute="_compute_unit_cost",
-        min_display_digits="Product Price",
-        store=True,
-        readonly=False,
-        copy=False,
+    discount = fields.Float(
+        string="Disc.%",
+        digits="Discount",
+    )
+    discount_fixed = fields.Float(
+        string="Discount (Fixed)",
+        digits="Product Price",
+        help="Fixed amount discount.",
     )
     price_subtotal = fields.Monetary(
         string="Amount",
@@ -110,6 +127,11 @@ class ProjectEstimationLine(models.Model):
             )
             line.unit_cost = product_cost
 
+    def _inverse_cost_ratio(self):
+        for rec in self:
+            if rec.cost_ratio:
+                rec.price_unit = rec.unit_cost / rec.cost_ratio
+
     @api.depends("product_id", "company_id", "currency_id", "product_uom_id")
     def _compute_price_unit(self):
         for line in self:
@@ -125,10 +147,25 @@ class ProjectEstimationLine(models.Model):
             )
             line.price_unit = product_price
 
-    @api.depends("product_uom_qty", "price_unit")
+    def _inverse_price_unit(self):
+        for rec in self:
+            if rec.price_unit <= 0:
+                rec.cost_ratio = 0.0
+            else:
+                rec.cost_ratio = rec.unit_cost / rec.price_unit
+
+    @api.depends(
+        "product_uom_qty", "discount", "discount_fixed", "price_unit", "tax_id"
+    )
     def _compute_price_subtotal(self):
         for line in self:
-            line.price_subtotal = line.product_uom_qty * line.price_unit
+            base_line = line._prepare_base_line_for_taxes_computation()
+            self.env["account.tax"]._add_tax_details_in_base_line(
+                base_line, line.company_id
+            )
+            line.price_subtotal = base_line["tax_details"][
+                "raw_total_excluded_currency"
+            ]
 
     @api.depends("product_uom_qty", "unit_cost")
     def _compute_cost_subtotal(self):
@@ -142,6 +179,30 @@ class ProjectEstimationLine(models.Model):
             line.margin_percent = (
                 line.price_subtotal and line.margin / line.price_subtotal
             )
+
+    @api.onchange("discount_fixed")
+    def _onchange_discount_fixed(self):
+        for line in self:
+            if line.discount_fixed:
+                line.discount = 0.0
+
+    @api.onchange("discount")
+    def _onchange_discount(self):
+        for line in self:
+            if line.discount:
+                line.discount_fixed = 0.0
+
+    def _get_discount_from_fixed_discount(self):
+        """Calculate the discount percentage from the fixed discount amount."""
+        self.ensure_one()
+        if not self.discount_fixed:
+            return self.discount
+
+        return (
+            (self.price_unit != 0)
+            and ((self.discount_fixed) / self.price_unit) * 100
+            or 0.00
+        )
 
     def _prepare_base_line_for_taxes_computation(self, **kwargs):
         """Convert the current record to a dictionary in order to use the
@@ -159,6 +220,7 @@ class ProjectEstimationLine(models.Model):
                 "currency_id": self.estimation_id.currency_id
                 or self.estimation_id.company_id.currency_id,
                 # 'rate': self.estimation_id.currency_rate,
+                "discount": self._get_discount_from_fixed_discount(),
                 **kwargs,
             },
         )

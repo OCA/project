@@ -205,8 +205,13 @@
                                         optional="show"
                                     />
                                     <field name="currency_id" column_invisible="1" />
+                                    <field name="unit_cost" />
+                                    <field
+                                        name="cost_ratio"
+                                        optional="show"
+                                        widget="percentage"
+                                    />
                                     <field name="price_unit" />
-                                    <field name="unit_cost" optional="show" />
                                     <field name="margin" optional="show" />
                                     <field
                                         name="margin_percent"
@@ -220,6 +225,16 @@
                                         context="{'search_view_ref': 'account.account_tax_view_search'}"
                                         optional="show"
                                         domain="[('type_tax_use', '=', 'sale'), ('company_id', '=', company_id)]"
+                                    />
+                                    <field
+                                        name="discount_fixed"
+                                        optional="show"
+                                        groups="project_estimation.group_discount_project_estimation"
+                                    />
+                                    <field
+                                        name="discount"
+                                        optional="show"
+                                        groups="project_estimation.group_discount_project_estimation"
                                     />
                                     <field name="cost_subtotal" optional="hide" />
                                     <field name="price_subtotal" />
@@ -281,6 +296,49 @@
                 </sheet>
                 <chatter />
             </form>
+        </field>
+    </record>
+
+    <record id="view_project_estimation_search" model="ir.ui.view">
+        <field name="name">project.estimation.search</field>
+        <field name="model">project.estimation</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="partner_id" />
+                <field name="date" />
+                <separator />
+                <group string="Group By">
+                    <filter
+                        name="groupby_company"
+                        string="Company"
+                        context="{'group_by':'company_id'}"
+                        groups="base.group_multi_company"
+                    />
+                    <filter
+                        name="groupby_currency"
+                        string="Currency"
+                        context="{'group_by':'currency_id'}"
+                        groups="base.group_multi_currency"
+                    />
+                    <filter
+                        name="groupby_state"
+                        string="Status"
+                        context="{'group_by':'state'}"
+                    />
+                    <separator />
+                    <filter
+                        name="groupby_partner"
+                        string="Partner"
+                        context="{'group_by':'partner_id'}"
+                    />
+                    <filter
+                        name="groupby_user_id"
+                        string="Responsible"
+                        context="{'group_by':'user_id'}"
+                    />
+                </group>
+            </search>
         </field>
     </record>
 
