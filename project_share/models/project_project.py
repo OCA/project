@@ -10,7 +10,7 @@ class ProjectProject(models.Model):
     edit_collaborator_ids = fields.One2many(
         "project.collaborator",
         "project_id",
-        string="Collaborators",
+        string="Editing Collaborators",
         copy=False,
         domain=[("readonly", "=", False)],
     )
