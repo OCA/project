@@ -1,1 +1,2 @@
 -  Enric Tobella (`Dixmit <https://www.dixmit.com/>`__)
+- Xavier Bol \<<xavierbol@ik.me>\>

@@ -82,17 +82,17 @@ class TestProjectVisibility(BaseCommon):
             "privacy_visibility should be 'followers' initially",
         )
 
-        self.project_group_user.write({"groups_id": [Command.set([self.group2.id])]})
+        self.project_group_user.write({"group_ids": [Command.set([self.group2.id])]})
         self.assertNotIn(
-            self.project_group_user.id,
-            self.restricted_project.sudo().mapped("group_ids.users.id"),
+            self.project_group_user,
+            self.restricted_project.sudo().group_ids.all_user_ids,
             "User should not have access",
         )
 
-        self.project_group_user.write({"groups_id": [Command.set([self.group1.id])]})
+        self.project_group_user.write({"group_ids": [Command.set([self.group1.id])]})
         self.assertIn(
-            self.project_group_user.id,
-            self.restricted_project.sudo().mapped("group_ids.users.id"),
+            self.project_group_user,
+            self.restricted_project.sudo().group_ids.all_user_ids,
             "User should have access",
         )
 
