@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="project_task_type_form_view_inherit" model="ir.ui.view">
+        <field name="name">project.task.type.form.inherit.auto.state</field>
+        <field name="model">project.task.type</field>
+        <field name="inherit_id" ref="project.task_type_edit" />
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/group" position="inside">
+                <group>
+                    <group string="Auto-Done">
+                        <field name="auto_done_days" />
+                        <field
+                            name="allow_done_from_in_progress"
+                            invisible="not auto_done_days"
+                        />
+                        <field
+                            name="allow_done_from_changes_requested"
+                            invisible="not auto_done_days"
+                        />
+                        <field
+                            name="allow_done_from_approved"
+                            invisible="not auto_done_days"
+                        />
+                        <field
+                            name="allow_done_from_waiting"
+                            invisible="not auto_done_days"
+                        />
+                    </group>
+                    <group string="Auto-Cancel">
+                        <field name="auto_cancel_days" />
+                        <field
+                            name="allow_cancel_from_in_progress"
+                            invisible="not auto_cancel_days"
+                        />
+                        <field
+                            name="allow_cancel_from_changes_requested"
+                            invisible="not auto_cancel_days"
+                        />
+                        <field
+                            name="allow_cancel_from_approved"
+                            invisible="not auto_cancel_days"
+                        />
+                        <field
+                            name="allow_cancel_from_waiting"
+                            invisible="not auto_cancel_days"
+                        />
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="project_task_type_tree_view_inherit" model="ir.ui.view">
+        <field name="name">project.task.type.tree.inherit.auto.state</field>
+        <field name="model">project.task.type</field>
+        <field name="inherit_id" ref="project.task_type_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='fold']" position="after">
+                <field name="auto_done_days" optional="hide" />
+                <field name="auto_cancel_days" optional="hide" />
+            </xpath>
+        </field>
+    </record>
+</odoo>
