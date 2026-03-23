@@ -7,4 +7,4 @@ from odoo import fields, models
 class ProjectProject(models.Model):
     _inherit = "project.project"
 
-    group_ids = fields.Many2many("res.groups")
+    group_ids = fields.Many2many("res.groups", string="Groups")
