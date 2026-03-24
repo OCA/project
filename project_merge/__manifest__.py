@@ -3,7 +3,7 @@
 {
     "name": "Project Task Merge",
     "summary": "Wizard to merge project tasks",
-    "version": "18.0.1.0.0",
+    "version": "19.0.1.0.0",
     "author": "Onestein, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/project",
     "license": "AGPL-3",
