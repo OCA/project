@@ -1,0 +1,152 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_task_stage_auto_state
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2026-03-26 13:45+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
+"Language-Team: none\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2\n"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.fields,field_description:project_task_stage_auto_state.field_project_task_type__allow_cancel_from_approved
+msgid "Allow Cancel from Approved"
+msgstr "Consenti Annulla da Approvato"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.fields,field_description:project_task_stage_auto_state.field_project_task_type__allow_cancel_from_changes_requested
+msgid "Allow Cancel from Changes Requested"
+msgstr "Consenti Annulla da Richieste modifiche"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.fields,field_description:project_task_stage_auto_state.field_project_task_type__allow_cancel_from_in_progress
+msgid "Allow Cancel from In Progress"
+msgstr "Consenti Annulla da In corso"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.fields,field_description:project_task_stage_auto_state.field_project_task_type__allow_cancel_from_waiting
+msgid "Allow Cancel from Waiting"
+msgstr "Consenti Annulla da In attesa"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.fields,field_description:project_task_stage_auto_state.field_project_task_type__allow_done_from_approved
+msgid "Allow Done from Approved"
+msgstr "Consenti Evaso da Approvato"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.fields,field_description:project_task_stage_auto_state.field_project_task_type__allow_done_from_changes_requested
+msgid "Allow Done from Changes Requested"
+msgstr "Consenti Evaso da Richieste modifiche"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.fields,field_description:project_task_stage_auto_state.field_project_task_type__allow_done_from_in_progress
+msgid "Allow Done from In Progress"
+msgstr "Consenti Evaso da In corso"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.fields,field_description:project_task_stage_auto_state.field_project_task_type__allow_done_from_waiting
+msgid "Allow Done from Waiting"
+msgstr "Consenti Evaso da In attesa"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.constraint,message:project_task_stage_auto_state.constraint_project_task_type_check_auto_cancel_days
+msgid "Auto Cancel days must be non-negative."
+msgstr "Giorni Annulla automatico non deve essere negativo."
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.constraint,message:project_task_stage_auto_state.constraint_project_task_type_check_auto_done_days
+msgid "Auto Done days must be non-negative."
+msgstr "Giorni Evaso automatico non deve essere negativo."
+
+#. module: project_task_stage_auto_state
+#: model_terms:ir.ui.view,arch_db:project_task_stage_auto_state.project_task_type_form_view_inherit
+msgid "Auto-Cancel"
+msgstr "Auto-Annulla"
+
+#. module: project_task_stage_auto_state
+#: model_terms:ir.ui.view,arch_db:project_task_stage_auto_state.project_task_type_form_view_inherit
+msgid "Auto-Done"
+msgstr "Auto-Evaso"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.fields,field_description:project_task_stage_auto_state.field_project_task_type__auto_cancel_days
+msgid "Auto-cancel after days"
+msgstr "Auto-Annulla dopo giorni"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.fields,field_description:project_task_stage_auto_state.field_project_task_type__auto_done_days
+msgid "Auto-mark as done after days"
+msgstr "Segna Evaso automaticamente dopo giorni"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.fields,help:project_task_stage_auto_state.field_project_task_type__auto_cancel_days
+msgid ""
+"Automatically cancel tasks after staying in this stage for the specified "
+"number of days. Set to 0 to disable this feature."
+msgstr ""
+"Annulla automaticamente le attività dopo essere rimasta in questa fase per "
+"il numero di giorni specificato. Imposta su 0 per disabilitare questa "
+"funzione."
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.fields,help:project_task_stage_auto_state.field_project_task_type__auto_done_days
+msgid ""
+"Automatically mark tasks as done after staying in this stage for the "
+"specified number of days. Set to 0 to disable this feature."
+msgstr ""
+"Contrassegna automaticamente le attività come completate dopo essere rimaste "
+"in questa fase per il numero di giorni specificato. Imposta su 0 per "
+"disabilitare questa funzione."
+
+#. module: project_task_stage_auto_state
+#: model:ir.actions.server,name:project_task_stage_auto_state.ir_cron_auto_change_task_state_ir_actions_server
+msgid "Project: Auto-change task state by stage"
+msgstr "Progetto: cambio automatico dello stato dell'attività in base alla fase"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model,name:project_task_stage_auto_state.model_project_task
+msgid "Task"
+msgstr "Lavoro"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model,name:project_task_stage_auto_state.model_project_task_type
+msgid "Task Stage"
+msgstr "Fase lavoro"
+
+#. module: project_task_stage_auto_state
+#. odoo-python
+#: code:addons/project_task_stage_auto_state/models/project_task.py:0
+msgid "Task automatically %(mode)s after %(days)i days in stage '%(stage)s'."
+msgstr ""
+"L'attività viene eseguita automaticamente %(mode)s dopo %(days)i giorni "
+"nella fase '%(stage)s'."
+
+#. module: project_task_stage_auto_state
+#. odoo-python
+#: code:addons/project_task_stage_auto_state/models/project_task_type.py:0
+msgid ""
+"When 'Auto-cancel after days' is set for stage '%(stage)s', at least one "
+"state must be selected to allow auto-cancel."
+msgstr ""
+"Quando l'opzione 'Annullamento automatico dopo giorni' è impostata per la "
+"fase '%(fase)s', è necessario selezionare almeno uno stato per consentire "
+"l'annullamento automatico."
+
+#. module: project_task_stage_auto_state
+#. odoo-python
+#: code:addons/project_task_stage_auto_state/models/project_task_type.py:0
+msgid ""
+"When 'Auto-mark as done after days' is set for stage '%(stage)s', at least "
+"one state must be selected to allow marking as done."
+msgstr ""
+"Quando l'opzione \"Contrassegna automaticamente come completato dopo "
+"giorni\" è impostata per la fase \"%(fase)s\", è necessario selezionare "
+"almeno uno stato per consentire la marcatura come completata."
