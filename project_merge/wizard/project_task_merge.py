@@ -1,4 +1,6 @@
-from odoo import _, api, fields, models
+from markupsafe import Markup
+
+from odoo import Command, api, fields, models
 
 
 class ProjectTaskMerge(models.TransientModel):
@@ -21,8 +23,8 @@ class ProjectTaskMerge(models.TransientModel):
         if selected_task_ids:
             res.update(
                 {
-                    "task_ids": [(6, 0, selected_task_ids.ids)],
-                    "user_ids": [(6, 0, selected_task_ids.mapped("user_ids").ids)],
+                    "task_ids": [Command.set(selected_task_ids.ids)],
+                    "user_ids": [Command.set(selected_task_ids.user_ids.ids)],
                     "dst_project_id": selected_task_ids[0].project_id.id,
                     "dst_task_id": selected_task_ids[0].id,
                 }
@@ -30,16 +32,18 @@ class ProjectTaskMerge(models.TransientModel):
         return res
 
     def merge_tasks(self):
-        tag_ids = self.task_ids.mapped("tag_ids").ids
-        attachment_ids = self.task_ids.mapped("attachment_ids").ids
+        tag_ids = self.task_ids.tag_ids.ids
+        attachment_ids = self.task_ids.attachment_ids.ids
         values = {
             "description": self._get_merge_description(),
-            "tag_ids": [(4, tag_id) for tag_id in tag_ids],
-            "attachment_ids": [(4, attachment_id) for attachment_id in attachment_ids],
+            "tag_ids": [Command.link(tag_id) for tag_id in tag_ids],
+            "attachment_ids": [
+                Command.link(attachment_id) for attachment_id in attachment_ids
+            ],
             "user_ids": self.user_ids.ids,
         }
         if self.create_new_task:
-            partner_ids = self.task_ids.mapped("partner_id")
+            partner_ids = self.task_ids.partner_id
             priorities = self.task_ids.mapped("priority")
             values.update(
                 {
@@ -73,16 +77,16 @@ class ProjectTaskMerge(models.TransientModel):
         }
 
     def _get_merge_description(self):
-        return "<br/>".join(
-            self.task_ids.filtered(lambda t: t.description).mapped(
-                lambda task: f"Description from task <b>"
-                f"{task.name}</b>:<br/>{task.description}"
+        return Markup("<br/>").join(
+            self.task_ids.filtered("description").mapped(
+                lambda task: Markup("%s <b>%s</b>:<br/>%s")
+                % (self.env._("Description from task"), task.name, task.description)
             )
         )
 
     def _subscribe_merged_followers(self, merged_tasks):
         self.dst_task_id.message_subscribe(
-            partner_ids=(merged_tasks).mapped("message_partner_ids").ids
+            partner_ids=merged_tasks.message_partner_ids.ids
         )
 
     def _add_message(self, way, task_names, task):
@@ -92,9 +96,17 @@ class ProjectTaskMerge(models.TransientModel):
         :param task : the task where the message will be posted
         """
         if task.parent_id:
-            message = _(f"This project task has been moved {way} {task_names}")
+            message = self.env._(
+                "This project task has been moved %(way)s %(task_names)s",
+                way=way,
+                task_names=task_names,
+            )
         else:
-            message = _(f"This project task has been merged {way} {task_names}")
+            message = self.env._(
+                "This project task has been merged %(way)s %(task_names)s",
+                way=way,
+                task_names=task_names,
+            )
         task.message_post(
             body=message, message_type="comment", subtype_xmlid="mail.mt_note"
         )
