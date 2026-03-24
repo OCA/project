@@ -10,7 +10,6 @@ class HrEmployee(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         res = super().create(vals_list)
-        for vals in vals_list:
-            if vals.get("category_ids"):
-                self.env["project.task"].invalidate_model()
+        if any(vals.get("category_ids") for vals in vals_list):
+            self.env["project.task"].invalidate_model()
         return res
