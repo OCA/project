@@ -59,6 +59,7 @@
         <field name="res_model">project.task.merge</field>
         <field name="view_mode">form</field>
         <field name="binding_model_id" ref="project.model_project_task" />
+        <field name="binding_view_types">list,kanban,form</field>
         <field name="target">new</field>
     </record>
 </odoo>
