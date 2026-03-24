@@ -34,7 +34,7 @@ class ProjectTask(models.Model):
                 == company_id
             )
 
-    @api.depends("project_id", "project_id.hr_category_ids")
+    @api.depends("project_id.hr_category_ids")
     def _compute_domain_hr_category_ids(self):
         for task in self:
             domain = []
