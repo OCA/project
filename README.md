@@ -24,6 +24,7 @@ addon | version | maintainers | summary
 [project_department](project_department/) | 19.0.1.0.0 |  | Project Department Categorization
 [project_key](project_key/) | 19.0.1.0.0 |  | Module decorates projects and tasks with Project Key
 [project_parent_task_filter](project_parent_task_filter/) | 19.0.1.0.0 |  | Add a filter to show the parent tasks
+[project_sequence](project_sequence/) | 19.0.1.0.0 | <a href='https://github.com/yajo'><img src='https://github.com/yajo.png' width='32' height='32' style='border-radius:50%;' alt='yajo'/></a> <a href='https://github.com/anddago78'><img src='https://github.com/anddago78.png' width='32' height='32' style='border-radius:50%;' alt='anddago78'/></a> | Add a sequence field to projects, filled automatically
 [project_task_default_stage](project_task_default_stage/) | 19.0.1.0.0 |  | Recovery default task stages for projects from v8
 [project_task_description_template](project_task_description_template/) | 19.0.1.0.0 |  | Add a description template to project tasks
 [project_task_name_with_id](project_task_name_with_id/) | 19.0.1.1.0 |  | Project Task Name with ID
