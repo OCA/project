@@ -2,7 +2,6 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 import odoo.tests.common as common
-from odoo.exceptions import AccessError
 
 
 class TestProjectTaskCode(common.TransactionCase):
@@ -80,18 +79,23 @@ class TestProjectTaskCode(common.TransactionCase):
         self.assertIn("code", self.project_task_model.SELF_READABLE_FIELDS)
         self.assertIn("code", self.project_task_model.SELF_WRITABLE_FIELDS)
 
+    def test_portal_user_can_read_code_field(self):
+        portal_user = common.new_test_user(
+            self.env,
+            login="portal_project_task_code_read",
+            groups="base.group_portal",
+        )
+        fields = self.project_task_model.with_user(portal_user).SELF_READABLE_FIELDS
+        self.assertIn("code", fields)
+
     def test_portal_user_can_pass_code_self_write_check(self):
         portal_user = common.new_test_user(
             self.env,
-            login="portal_project_task_code",
+            login="portal_project_task_code_write",
             groups="base.group_portal",
         )
-
-        try:
-            self.project_task_model.with_user(portal_user)._ensure_fields_write(
-                {"name": "Portal Task", "code": "TASK-001"},
-                check_group_user=False,
-                defaults=True,
-            )
-        except AccessError as err:
-            self.fail("Portal self-write check should allow code field: %s" % err)
+        self.project_task_model.with_user(portal_user)._ensure_fields_write(
+            {"name": "Portal Task", "code": "TASK-001"},
+            check_group_user=False,
+            defaults=True,
+        )
