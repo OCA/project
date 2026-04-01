@@ -3,6 +3,10 @@
 
 from odoo import _, api, fields, models
 
+PROJECT_TASK_PORTAL_FIELDS = {
+    "code",
+}
+
 
 class ProjectTask(models.Model):
     _inherit = "project.task"
@@ -23,6 +27,14 @@ class ProjectTask(models.Model):
             _("The code must be unique!"),
         ),
     ]
+
+    @property
+    def SELF_READABLE_FIELDS(self):
+        return super().SELF_READABLE_FIELDS | PROJECT_TASK_PORTAL_FIELDS
+
+    @property
+    def SELF_WRITABLE_FIELDS(self):
+        return super().SELF_WRITABLE_FIELDS | PROJECT_TASK_PORTAL_FIELDS
 
     @api.model_create_multi
     def create(self, vals_list):
