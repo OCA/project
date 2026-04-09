@@ -202,6 +202,5 @@ class HrTimesheetSwitch(models.TransientModel):
                 "res_model": new._name,
                 "type": "ir.actions.act_window",
                 "view_mode": "form",
-                "view_type": "form",
                 "views": [(form_view.id, "form")],
             }

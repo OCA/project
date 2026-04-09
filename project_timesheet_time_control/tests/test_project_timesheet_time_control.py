@@ -62,7 +62,6 @@ class TestProjectTimesheetTimeControlBase(BaseCommon):
         self.assertEqual(action["target"], "new")
         self.assertEqual(action["type"], "ir.actions.act_window")
         self.assertEqual(action["view_mode"], "form")
-        self.assertEqual(action["view_type"], "form")
         wiz_form = Form(
             active_record.env[action["res_model"]].with_context(
                 active_id=active_record.id,
