@@ -32,7 +32,6 @@ class Project(models.Model):
         domain = [("parent_id", "=", self.id)]
         return {
             "type": "ir.actions.act_window",
-            "view_type": "form",
             "name": f"Children of {self.name}",
             "view_mode": "list,form,graph",
             "res_model": "project.project",
