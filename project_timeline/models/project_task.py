@@ -3,7 +3,7 @@
 # Copyright 2016-2024 Tecnativa - Pedro M. Baeza
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 from odoo.exceptions import ValidationError
 from odoo.tools.sql import column_exists, create_column
 
@@ -56,7 +56,7 @@ class ProjectTask(models.Model):
             if task.planned_date_start and task.planned_date_end:
                 if task.planned_date_end < task.planned_date_start:
                     raise ValidationError(
-                        _("The end date must be after the start date.")
+                        self.env._("The end date must be after the start date.")
                     )
 
     def _auto_init(self):
