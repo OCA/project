@@ -1,6 +1,6 @@
 # Copyright 2024-2025 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 from odoo.exceptions import ValidationError
 
 
@@ -29,4 +29,4 @@ class ProjectTags(models.Model):
     @api.constrains("parent_id")
     def _check_parent_id(self):
         if self._has_cycle():
-            raise ValidationError(_("You can not create recursive tags."))
+            raise ValidationError(self.env._("You can not create recursive tags."))
