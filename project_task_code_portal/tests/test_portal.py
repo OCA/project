@@ -2,6 +2,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 import re
+from urllib.parse import urlparse
 
 from lxml import html
 
@@ -47,7 +48,10 @@ class TestPortalTaskCode(TestProjectPortalCommon, HttpCaseWithUserPortal):
         link = tree.xpath(f"//td[a/span[contains(text(), '{self.task_1.name}')]]//a")[
             0
         ].attrib["href"]
-        self.assertEqual(link, self.url_task_code_pattern.format(self.task_1.code))
+        self.assertEqual(
+            urlparse(link),
+            urlparse(self.url_task_code_pattern.format(self.task_1.code)),
+        )
 
     def test_portal_task_access(self):
         self.authenticate("portal", "portal")
@@ -83,8 +87,10 @@ class TestPortalTaskCode(TestProjectPortalCommon, HttpCaseWithUserPortal):
             0
         ].attrib["href"]
         self.assertEqual(
-            link,
-            self.url_task_code_pattern.format(self.task_1.code)[:-1] + query_params,
+            urlparse(link),
+            urlparse(
+                self.url_task_code_pattern.format(self.task_1.code)[:-1] + query_params
+            ),
         )
 
     def test_portal_task_report(self):
@@ -265,7 +271,7 @@ class TestPortalProjectTaskCode(TestProjectPortalCommon, HttpCaseWithUserPortal)
             0
         ].attrib["href"]
         expected_link = f"/my/projects/{project_id}/task/{self.task_3.code}?"
-        self.assertEqual(link, expected_link)
+        self.assertEqual(urlparse(link), urlparse(expected_link))
 
     def test_portal_my_project_task_ok(self):
         self._project_share(access_mode="edit")
