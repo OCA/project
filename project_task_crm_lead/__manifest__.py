@@ -1,0 +1,17 @@
+# Copyright 2026 INVITU (<https://www.invitu.com>)
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+{
+    "name": "Project Task Crm Lead",
+    "summary": "This module add a link between project tasks and leads",
+    "version": "18.0.1.0.0",
+    "author": "INVITU, Odoo Community Association (OCA)",
+    "license": "AGPL-3",
+    "category": "Generic Modules/Projects & Services",
+    "website": "https://github.com/OCA/project",
+    "depends": [
+        "project",
+        "crm",
+    ],
+    "data": ["views/project_task_views.xml", "views/crm_lead_views.xml"],
+    "installable": True,
+}
