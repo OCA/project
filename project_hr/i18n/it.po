@@ -1,0 +1,126 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_hr
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2023-05-29 12:09+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
+"Language-Team: none\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.17\n"
+
+#. module: project_hr
+#: model:ir.model.fields,field_description:project_hr.field_project_task__allowed_hr_category_ids
+msgid "Allowed HR categories"
+msgstr "Categorie RU consentite"
+
+#. module: project_hr
+#: model:ir.model.fields,field_description:project_hr.field_project_task__allowed_assigned_user_ids
+msgid "Allowed users"
+msgstr "Utenti consentiti"
+
+#. module: project_hr
+#: model:ir.model,name:project_hr.model_hr_employee
+msgid "Employee"
+msgstr "Dipendente"
+
+#. module: project_hr
+#: model:ir.model.fields,field_description:project_hr.field_project_project__hr_category_ids
+#: model:ir.model.fields,field_description:project_hr.field_project_task__hr_category_ids
+msgid "Employee Categories"
+msgstr "Categorie dipendente"
+
+#. module: project_hr
+#: model:ir.model.fields,field_description:project_hr.field_res_users__hr_category_ids
+msgid "HR categories"
+msgstr "Categorie RU"
+
+#. module: project_hr
+#: model:ir.model.fields,help:project_hr.field_project_project__hr_category_ids
+msgid ""
+"Here you can link the project to several employee categories, that will be "
+"the allowed in tasks."
+msgstr ""
+"Qui è possibile collegare il progetto a diverse categorie dipendenti, che "
+"verranno abilitate nei lavori."
+
+#. module: project_hr
+#: model:ir.model.fields,help:project_hr.field_project_task__hr_category_ids
+msgid ""
+"Here you can select the employee category suitable to perform this task, "
+"limiting the selectable users to be assigned to those that belongs to that "
+"category."
+msgstr ""
+"Qui è possibile selezionare la categorie dipendente adeguata ad eseguire "
+"questo lavoro, limitando i dipendenti selezionabili a quelli che "
+"appartengono a quella categoria."
+
+#. module: project_hr
+#: model:ir.model.fields,field_description:project_hr.field_project_task__employee_ids
+msgid "Linked employees"
+msgstr "Dipendente collegato"
+
+#. module: project_hr
+#: model:ir.model,name:project_hr.model_project_project
+msgid "Project"
+msgstr "Progetto"
+
+#. module: project_hr
+#: model:ir.model,name:project_hr.model_project_task
+msgid "Task"
+msgstr "Lavoro"
+
+#. module: project_hr
+#: model:ir.model.fields,help:project_hr.field_project_task__allowed_hr_category_ids
+msgid ""
+"Technical field for computing allowed employee categories according "
+"categories at project level."
+msgstr ""
+"Campo tecnico per calcolare le categorie dipendenti autorizzate in accordo "
+"con le categorie a livello progetto."
+
+#. module: project_hr
+#: model:ir.model.fields,help:project_hr.field_project_task__allowed_assigned_user_ids
+msgid ""
+"Technical field for computing allowed users according employee category."
+msgstr ""
+"Campo tecnico per calcolare gli utenti abilitati in accordo alle categorie "
+"dipendenti."
+
+#. module: project_hr
+#: model:ir.model.fields,help:project_hr.field_res_users__hr_category_ids
+msgid ""
+"Technical field for computing dynamically employee categories linked to the "
+"user in the current company."
+msgstr ""
+"Campo tecnico per calcolare dinamicamente le categorie dipendenti collegate "
+"agli utenti nell'azienda attuale."
+
+#. module: project_hr
+#: model:ir.model,name:project_hr.model_res_users
+msgid "User"
+msgstr "Utente"
+
+#. module: project_hr
+#. odoo-python
+#: code:addons/project_hr/models/project_task.py:0
+#, python-format
+msgid "You can't assign a category that is not allowed at project level."
+msgstr "Impossibile assegnare una categoria non consentita a livello progetto."
+
+#. module: project_hr
+#. odoo-python
+#: code:addons/project_hr/models/project_task.py:0
+#, python-format
+msgid ""
+"You can't assign a user not belonging to the selected employee category."
+msgstr ""
+"Impossibile assegnare un utente che non appartiene alla categoria dipendente "
+"selezionata."
