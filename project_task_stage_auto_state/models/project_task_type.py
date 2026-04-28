@@ -1,7 +1,7 @@
 # Copyright 2026 Moduon Team S.L.
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0)
 
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 from odoo.exceptions import ValidationError
 
 
@@ -62,18 +62,14 @@ class ProjectTaskType(models.Model):
         default=False,
     )
 
-    _sql_constraints = [
-        (
-            "check_auto_done_days",
-            "CHECK(auto_done_days >= 0)",
-            "Auto Done days must be non-negative.",
-        ),
-        (
-            "check_auto_cancel_days",
-            "CHECK(auto_cancel_days >= 0)",
-            "Auto Cancel days must be non-negative.",
-        ),
-    ]
+    _auto_done_days_non_negative_check = models.Constraint(
+        "CHECK(auto_done_days >= 0)",
+        "Auto Done days must be non-negative.",
+    )
+    _auto_cancel_days_non_negative_check = models.Constraint(
+        "CHECK(auto_cancel_days >= 0)",
+        "Auto Cancel days must be non-negative.",
+    )
 
     def _get_auto_x_allowed_states(self, done_or_cancel):
         """Return the allowed states for the given action.
@@ -110,7 +106,7 @@ class ProjectTaskType(models.Model):
             if stage.auto_done_days > 0:
                 if not stage._get_auto_x_allowed_states("done"):
                     raise ValidationError(
-                        _(
+                        self.env._(
                             "When 'Auto-mark as done after days' is set for stage "
                             "'%(stage)s', at least one state must be selected "
                             "to allow marking as done.",
@@ -132,7 +128,7 @@ class ProjectTaskType(models.Model):
             if stage.auto_cancel_days > 0:
                 if not stage._get_auto_x_allowed_states("cancel"):
                     raise ValidationError(
-                        _(
+                        self.env._(
                             "When 'Auto-cancel after days' is set for stage "
                             "'%(stage)s', at least one state must be selected "
                             "to allow auto-cancel.",
