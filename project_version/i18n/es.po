@@ -27,19 +27,18 @@ msgid "Created on"
 msgstr "Creado el"
 
 #. module: project_version
+#: model:ir.model.fields,field_description:project_version.field_project_project__display_name
+#: model:ir.model.fields,field_description:project_version.field_project_task__display_name
 #: model:ir.model.fields,field_description:project_version.field_project_version__display_name
 msgid "Display Name"
 msgstr "Nombre mostrado"
 
 #. module: project_version
+#: model:ir.model.fields,field_description:project_version.field_project_project__id
+#: model:ir.model.fields,field_description:project_version.field_project_task__id
 #: model:ir.model.fields,field_description:project_version.field_project_version__id
 msgid "ID"
 msgstr "ID"
-
-#. module: project_version
-#: model:ir.model.fields,field_description:project_version.field_project_version____last_update
-msgid "Last Modified on"
-msgstr "Última modificación en"
 
 #. module: project_version
 #: model:ir.model.fields,field_description:project_version.field_project_version__write_uid
@@ -76,9 +75,28 @@ msgid "Task"
 msgstr "Tarea"
 
 #. module: project_version
+#: model:ir.model.fields,help:project_version.field_project_task__display_name
+msgid ""
+"Use these keywords in the title to set new tasks:\n"
+"\n"
+"        30h Allocate 30 hours to the task\n"
+"        #tags Set tags on the task\n"
+"        @user Assign the task to a user\n"
+"        ! Set the task a medium priority\n"
+"        !! Set the task a high priority\n"
+"        !!! Set the task a urgent priority\n"
+"\n"
+"        Make sure to use the right format and order e.g. Improve the "
+"configuration screen 5h #feature #v16 @Mitchell !"
+msgstr ""
+
+#. module: project_version
 #: model:ir.model.fields,field_description:project_version.field_project_project__version_ids
 #: model:ir.model.fields,field_description:project_version.field_project_task__version_id
 #: model_terms:ir.ui.view,arch_db:project_version.project_project_version_form
 #: model_terms:ir.ui.view,arch_db:project_version.project_task_search
 msgid "Version"
 msgstr "Versión"
+
+#~ msgid "Last Modified on"
+#~ msgstr "Última modificación en"
