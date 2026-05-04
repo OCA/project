@@ -1,0 +1,62 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * project_timeline
+#
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0c\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-05-31 01:34+0000\n"
+"PO-Revision-Date: 2023-06-20 11:10+0000\n"
+"Last-Translator: Nils Coenen <nils.coenen@nico-solutions.de>\n"
+"Language-Team: German (https://www.transifex.com/oca/teams/23907/de/)\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 4.17\n"
+
+#. module: project_timeline
+#: model:ir.model.fields,field_description:project_timeline.field_project_task__planned_date_end
+#: model:ir.model.fields,field_description:project_timeline.field_report_project_task_user__planned_date_end
+msgid "Planned Date End"
+msgstr ""
+
+#. module: project_timeline
+#: model:ir.model.fields,field_description:project_timeline.field_project_task__planned_date_start
+#: model:ir.model.fields,field_description:project_timeline.field_report_project_task_user__planned_date_start
+msgid "Planned Date Start"
+msgstr ""
+
+#. module: project_timeline
+#: model_terms:ir.ui.view,arch_db:project_timeline.view_task_form2
+msgid "Planned Dates"
+msgstr ""
+
+#. module: project_timeline
+#: model:ir.model,name:project_timeline.model_project_task
+msgid "Task"
+msgstr "Aufgabe"
+
+#. module: project_timeline
+#: model:ir.model,name:project_timeline.model_report_project_task_user
+msgid "Tasks Analysis"
+msgstr ""
+
+#. module: project_timeline
+#. odoo-python
+#: code:addons/project_timeline/models/project_task.py:0
+#, python-format
+msgid "The end date must be after the start date."
+msgstr ""
+
+#. module: project_timeline
+#: model_terms:ir.ui.view,arch_db:project_timeline.project_task_timeline
+msgid "User"
+msgstr "Benutzer"
+
+#~ msgid "Start Date"
+#~ msgstr "Startdatum"

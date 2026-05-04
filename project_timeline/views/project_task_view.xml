@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2016-2017 Tecnativa - Pedro M. Baeza
+     Copyright 2017 Tecnativa - Carlos Dauden
+     Copyright 2017 Doscaal - Alexandre Moreau
+     Copyright 2021 Open Source Integrators - Daniel Reis
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+<odoo>
+    <record id="project_task_timeline" model="ir.ui.view">
+        <field name="model">project.task</field>
+        <field name="type">timeline</field>
+        <field name="arch" type="xml">
+            <timeline
+                date_start="planned_date_start"
+                date_stop="planned_date_end"
+                default_group_by="project_id"
+                event_open_popup="true"
+                colors="white: user_ids == []; #2ecb71: state == '1_done'; #ec7063: state == '1_canceled'"
+                dependency_arrow="depend_on_ids"
+            >
+                <field name="user_ids" />
+                <field name="allocated_hours" />
+                <templates>
+                    <t t-name="timeline-item">
+                        <div class="o_project_timeline_item">
+                            <t t-foreach="record.user_ids" t-as="user" t-key="user.id">
+                                <img
+                                    t-if="record.user_ids"
+                                    t-attf-src="/web/image/res.users/#{user}/avatar_128/16x16"
+                                    t-att-title="record.user"
+                                    width="16"
+                                    height="16"
+                                    class="mr8"
+                                    alt="User"
+                                />
+                            </t>
+                            <span name="display_name">
+                                <t t-esc="record.display_name" />
+                            </span>
+                            <small
+                                name="allocated_hours"
+                                class="text-info ml4"
+                                t-if="record.allocated_hours"
+                            >
+                                <t
+                                    t-out="formatters.get('float_time')(record.allocated_hours)"
+                                />
+                            </small>
+                        </div>
+                    </t>
+                </templates>
+            </timeline>
+        </field>
+    </record>
+    <record id="project.action_view_task" model="ir.actions.act_window">
+        <field
+            name="view_mode"
+        >kanban,list,form,calendar,timeline,pivot,graph,activity</field>
+    </record>
+    <record id="view_task_project_user_timeline" model="ir.ui.view">
+        <field name="model">report.project.task.user</field>
+        <field name="type">timeline</field>
+        <field name="arch" type="xml">
+            <timeline
+                date_start="planned_date_start"
+                date_stop="planned_date_end"
+                default_group_by="project_id"
+                event_open_popup="true"
+            />
+        </field>
+    </record>
+    <record id="project.action_project_task_user_tree" model="ir.actions.act_window">
+        <field name="view_mode">graph,pivot,timeline</field>
+    </record>
+    <record id="project.project_task_action_from_partner" model="ir.actions.act_window">
+        <field
+            name="view_mode"
+        >list,kanban,form,calendar,timeline,pivot,graph,activity</field>
+    </record>
+    <record
+        id="project.act_project_project_2_project_task_all"
+        model="ir.actions.act_window"
+    >
+        <field
+            name="view_mode"
+        >kanban,list,form,calendar,timeline,pivot,graph,activity</field>
+    </record>
+    <record id="project.action_view_all_task" model="ir.actions.act_window">
+        <field
+            name="view_mode"
+        >list,kanban,form,calendar,timeline,pivot,graph,activity</field>
+    </record>
+    <record
+        id="project.action_view_task_overpassed_draft"
+        model="ir.actions.act_window"
+    >
+        <field name="view_mode">list,form,calendar,timeline,graph,kanban</field>
+    </record>
+    <record id="project.dblc_proj" model="ir.actions.act_window">
+        <field name="view_mode">list,form,calendar,timeline,graph,kanban</field>
+    </record>
+    <record id="view_task_form2" model="ir.ui.view">
+        <field name="name">project.task.form</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2" />
+        <field name="arch" type="xml">
+            <xpath expr="//label[@for='date_deadline']" position="before">
+                <field
+                    name="planned_date_start"
+                    widget="daterange"
+                    options="{'end_date_field': 'planned_date_end'}"
+                    string="Planned Dates"
+                />
+                <field name="planned_date_end" invisible="1" />
+            </xpath>
+        </field>
+    </record>
+    <record id="view_task_tree2" model="ir.ui.view">
+        <field name="name">project.task.list</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_tree2" />
+        <field name="arch" type="xml">
+            <field name="date_deadline" position="after">
+                <field name="planned_date_start" optional="hide" />
+                <field name="planned_date_end" optional="hide" />
+            </field>
+        </field>
+    </record>
+</odoo>
