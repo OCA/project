@@ -1,0 +1,2 @@
+- [NICO SOLUTIONS - ENGINEERING & IT](https://www.nico-solutions.de):
+  - Nils Coenen \<<nils.coenen@nico-solutions.de>\>
