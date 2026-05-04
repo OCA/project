@@ -27,10 +27,22 @@ msgid "Dedication"
 msgstr ""
 
 #. module: project_milestone_status
+#: model:ir.model.fields,field_description:project_milestone_status.field_project_milestone__display_name
+#: model:ir.model.fields,field_description:project_milestone_status.field_project_project__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: project_milestone_status
 #. odoo-python
 #: code:addons/project_milestone_status/models/project.py:0
 #: model:ir.model.fields,field_description:project_milestone_status.field_project_milestone__execution
 msgid "Execution"
+msgstr ""
+
+#. module: project_milestone_status
+#: model:ir.model.fields,field_description:project_milestone_status.field_project_milestone__id
+#: model:ir.model.fields,field_description:project_milestone_status.field_project_project__id
+msgid "ID"
 msgstr ""
 
 #. module: project_milestone_status
