@@ -54,19 +54,16 @@ msgid "Description Template"
 msgstr "Descripción Plantilla"
 
 #. module: project_task_description_template
+#: model:ir.model.fields,field_description:project_task_description_template.field_project_task__display_name
 #: model:ir.model.fields,field_description:project_task_description_template.field_project_task_description_template__display_name
 msgid "Display Name"
 msgstr "Nombre para mostrar"
 
 #. module: project_task_description_template
+#: model:ir.model.fields,field_description:project_task_description_template.field_project_task__id
 #: model:ir.model.fields,field_description:project_task_description_template.field_project_task_description_template__id
 msgid "ID"
 msgstr "ID"
-
-#. module: project_task_description_template
-#: model:ir.model.fields,field_description:project_task_description_template.field_project_task_description_template____last_update
-msgid "Last Modified on"
-msgstr "Última modificación el"
 
 #. module: project_task_description_template
 #: model:ir.model.fields,field_description:project_task_description_template.field_project_task_description_template__write_uid
@@ -102,3 +99,22 @@ msgstr "Plantillas de descripción de tareas"
 #: model:ir.actions.act_window,name:project_task_description_template.project_task_description_template_action
 msgid "Task Description template"
 msgstr "Plantilla de descripción de tareas"
+
+#. module: project_task_description_template
+#: model:ir.model.fields,help:project_task_description_template.field_project_task__display_name
+msgid ""
+"Use these keywords in the title to set new tasks:\n"
+"\n"
+"        30h Allocate 30 hours to the task\n"
+"        #tags Set tags on the task\n"
+"        @user Assign the task to a user\n"
+"        ! Set the task a medium priority\n"
+"        !! Set the task a high priority\n"
+"        !!! Set the task a urgent priority\n"
+"\n"
+"        Make sure to use the right format and order e.g. Improve the "
+"configuration screen 5h #feature #v16 @Mitchell !"
+msgstr ""
+
+#~ msgid "Last Modified on"
+#~ msgstr "Última modificación el"
