@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-28 08:33+0000\n"
-"PO-Revision-Date: 2024-01-02 11:37+0000\n"
+"PO-Revision-Date: 2026-05-05 14:45+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
@@ -17,19 +17,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.17\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: project_task_pull_request
 #: model:ir.model.fields,field_description:project_task_pull_request.field_project_project__display_name
 #: model:ir.model.fields,field_description:project_task_pull_request.field_project_task__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nome visualizzato"
 
 #. module: project_task_pull_request
 #: model:ir.model.fields,field_description:project_task_pull_request.field_project_project__id
 #: model:ir.model.fields,field_description:project_task_pull_request.field_project_task__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_task_pull_request
 #: model:ir.model.fields,field_description:project_task_pull_request.field_project_project__pr_required_states
@@ -81,3 +81,14 @@ msgid ""
 "        Make sure to use the right format and order e.g. Improve the "
 "configuration screen 5h #feature #v16 @Mitchell !"
 msgstr ""
+"Usare queste parole chiave nel titolo per impostare nuove attività:\n"
+"\n"
+"        30h: assegna 30 ore all'attività\n"
+"        #tag: imposta i tag sull'attività\n"
+"        @user: assegna l'attività a un utente\n"
+"        !: imposta l'attività con priorità media\n"
+"        !!: imposta l'attività con priorità alta\n"
+"        !!!: imposta l'attività con priorità urgente\n"
+"\n"
+"        Assicurarsi di utilizzare il formato e l'ordine corretti, es. "
+"migliora la schermata di configurazione 5h #feature #v16 @Mitchell !"
