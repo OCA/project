@@ -1,0 +1,98 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_task_default_user
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2026-05-12 08:45+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
+"Language-Team: none\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2\n"
+
+#. module: project_task_default_user
+#: model:ir.model.fields,field_description:project_task_default_user.field_project_project__default_user_ids
+msgid "Default Users for Tasks"
+msgstr "Utente predefinito per i lavori"
+
+#. module: project_task_default_user
+#: model:ir.model.fields,field_description:project_task_default_user.field_project_task_type__default_user_ids
+msgid "Default Users for this Stage"
+msgstr "Utente predefinito per questa fase"
+
+#. module: project_task_default_user
+#: model_terms:ir.ui.view,arch_db:project_task_default_user.project_edit_project_inherit_default_user
+msgid "Default users"
+msgstr "Utenti predefiniti"
+
+#. module: project_task_default_user
+#: model:ir.model.fields,help:project_task_default_user.field_project_project__project_task_assignment_mode
+#: model:ir.model.fields,help:project_task_default_user.field_project_task_type__stage_task_assignment_mode
+msgid ""
+"Defines how default users are applied:\n"
+"- Replace: overwrite existing users\n"
+"- Merge: add default users to existing ones\n"
+"\n"
+"Applied on task creation and stage changes."
+msgstr ""
+"Definisce come vengono applicati gli utenti predefiniti:\n"
+"- Sostituisci: sovrascrive gli utenti esistenti\n"
+"- Unisci: aggiunge gli utenti predefiniti a quelli esistenti\n"
+"\n"
+"Applicato alla creazione dell'attività e ai cambi di fase."
+
+#. module: project_task_default_user
+#: model:ir.model.fields,help:project_task_default_user.field_project_project__default_user_ids
+#: model:ir.model.fields,help:project_task_default_user.field_project_task_type__default_user_ids
+msgid ""
+"If set, tasks will automatically be assigned to these users. On new tasks, "
+"this applies if no users are set. On stage change, the users are replaced "
+"only if the new stage has default users."
+msgstr ""
+"Se impostati, i compiti verranno assegnati automaticamente a questi utenti. "
+"Per i nuovi compiti, questa impostazione si applica se non sono stati "
+"impostati utenti. In caso di cambio di fase, gli utenti vengono sostituiti "
+"solo se la nuova fase ha utenti predefiniti."
+
+#. module: project_task_default_user
+#: model:ir.model.fields.selection,name:project_task_default_user.selection__project_project__project_task_assignment_mode__merge
+#: model:ir.model.fields.selection,name:project_task_default_user.selection__project_task_type__stage_task_assignment_mode__merge
+msgid "Merge"
+msgstr "Unisci"
+
+#. module: project_task_default_user
+#: model:ir.model,name:project_task_default_user.model_project_project
+msgid "Project"
+msgstr "Progetto"
+
+#. module: project_task_default_user
+#: model:ir.model.fields,field_description:project_task_default_user.field_project_project__project_task_assignment_mode
+msgid "Project Task Assignment Mode"
+msgstr "Modo assegnazione lavoro progetto"
+
+#. module: project_task_default_user
+#: model:ir.model.fields.selection,name:project_task_default_user.selection__project_project__project_task_assignment_mode__replace
+#: model:ir.model.fields.selection,name:project_task_default_user.selection__project_task_type__stage_task_assignment_mode__replace
+msgid "Replace"
+msgstr "Sostituzione"
+
+#. module: project_task_default_user
+#: model:ir.model.fields,field_description:project_task_default_user.field_project_task_type__stage_task_assignment_mode
+msgid "Stage Task Assignment Mode"
+msgstr "Modo assegnazione lavoro fase"
+
+#. module: project_task_default_user
+#: model:ir.model,name:project_task_default_user.model_project_task
+msgid "Task"
+msgstr "Lavoro"
+
+#. module: project_task_default_user
+#: model:ir.model,name:project_task_default_user.model_project_task_type
+msgid "Task Stage"
+msgstr "Fase lavoro"
