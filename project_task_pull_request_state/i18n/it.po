@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2024-02-16 16:37+0000\n"
+"PO-Revision-Date: 2026-05-05 14:45+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.17\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: project_task_pull_request_state
 #: model:ir.model,name:project_task_pull_request_state.model_res_config_settings
@@ -50,7 +50,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_task_pull_request_state.field_project_task__display_name
 #: model:ir.model.fields,field_description:project_task_pull_request_state.field_res_config_settings__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nome Visualizzato"
 
 #. module: project_task_pull_request_state
 #: model_terms:ir.ui.view,arch_db:project_task_pull_request_state.view_task_search_form
@@ -62,7 +62,7 @@ msgstr "Ha PR"
 #: model:ir.model.fields,field_description:project_task_pull_request_state.field_project_task__id
 #: model:ir.model.fields,field_description:project_task_pull_request_state.field_res_config_settings__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_task_pull_request_state
 #: model:ir.model.fields,field_description:project_task_pull_request_state.field_project_task__pr_state
@@ -83,7 +83,7 @@ msgstr "Richiesta modifica lavoro progetto"
 #. module: project_task_pull_request_state
 #: model_terms:ir.ui.view,arch_db:project_task_pull_request_state.res_config_settings_view_form
 msgid "Settings"
-msgstr ""
+msgstr "Impostazioni"
 
 #. module: project_task_pull_request_state
 #: model:ir.model,name:project_task_pull_request_state.model_project_task
@@ -105,6 +105,17 @@ msgid ""
 "        Make sure to use the right format and order e.g. Improve the "
 "configuration screen 5h #feature #v16 @Mitchell !"
 msgstr ""
+"Usare queste parole chiave nel titolo per impostare nuove attività:\n"
+"\n"
+"        30h: assegna 30 ore all'attività\n"
+"        #tag: imposta i tag sull'attività\n"
+"        @user: assegna l'attività a un utente\n"
+"        !: imposta l'attività con priorità media\n"
+"        !!: imposta l'attività con priorità alta\n"
+"        !!!: imposta l'attività con priorità urgente\n"
+"\n"
+"        Assicurarsi di utilizzare il formato e l'ordine corretti, es. "
+"migliora la schermata di configurazione 5h #feature #v16 @Mitchell !"
 
 #~ msgid "Srttings"
 #~ msgstr "Impostazioni"
