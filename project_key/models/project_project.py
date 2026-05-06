@@ -194,7 +194,11 @@ class Project(models.Model):
         UPDATE project_task
         SET key = x.key
         FROM (
-          SELECT t.id, p.key || '-' || split_part(t.key, '-', 2) AS key
+          SELECT
+            t.id,
+            p.key || '-' || split_part(
+              t.key, '-', array_length(string_to_array(t.key, '-'), 1)
+            ) AS key
           FROM project_task t
           INNER JOIN project_project p ON t.project_id = p.id
           WHERE t.project_id = %s

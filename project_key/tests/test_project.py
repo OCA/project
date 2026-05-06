@@ -80,3 +80,12 @@ class TestProject(TestCommon):
 
         project.key = "TEST-1"
         self.assertTrue(project.show_key_warning)
+
+    def test_13_change_key_with_dash(self):
+        self.project_1.key = "PRJ-1"
+        self.assertEqual(self.task11.key, "PRJ-1-1")
+        self.assertEqual(self.task12.key, "PRJ-1-2")
+
+        self.project_1.key = "PRJ-2"
+        self.assertEqual(self.task11.key, "PRJ-2-1")
+        self.assertEqual(self.task12.key, "PRJ-2-2")
