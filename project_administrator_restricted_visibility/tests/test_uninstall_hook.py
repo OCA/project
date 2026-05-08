@@ -19,7 +19,7 @@ class TestUninstallHook(TransactionCase):
         # Checks Full Administrator Group has project manager rule
         self.assertTrue(any(set(full_group.rule_groups.ids) & set(manager_rule.ids)))
 
-        uninstall_hook(self.env.cr, False)
+        uninstall_hook(self.env)
 
         # Checks if the rules have been reset
         self.assertTrue(
