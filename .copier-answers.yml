@@ -1,5 +1,5 @@
 # Do NOT update manually; changes here will be overwritten by Copier
-_commit: v1.29
+_commit: v1.35
 _src_path: gh:oca/oca-addons-repo-template
 additional_ruff_rules: []
 ci: GitHub
@@ -17,7 +17,8 @@ odoo_test_flavor: Both
 odoo_version: 17.0
 org_name: Odoo Community Association (OCA)
 org_slug: OCA
-rebel_module_groups: []
+rebel_module_groups:
+- project_analytic_code
 repo_description: 'TODO: add repo description.'
 repo_name: project
 repo_slug: project

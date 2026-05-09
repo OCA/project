@@ -46,29 +46,8 @@ msgstr "%(parent)s / %(own)s"
 
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
-msgid ""
-"<span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-"
-"specific.\" role=\"img\" aria-label=\"Values set here are company-specific."
-"\" groups=\"base.group_multi_company\"/>"
+msgid "<span class=\"o_form_label\">Project Roles</span>"
 msgstr ""
-"<span class=\"fa fa-lg fa-building-o\" title=\"Die hier gesetzten Werte sind "
-"firmenspezifisch.\" role=\"img\" aria-label=\"Die hier gesetzten Werte sind "
-"firmenspezifisch.\" groups=\"base.group_multi_company\"/>"
-
-#. module: project_role
-#: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
-msgid ""
-"<span class=\"o_form_label\">Project Roles</span>\n"
-"                                <span class=\"fa fa-lg fa-building-o\" "
-"title=\"Values set here are company-specific.\" role=\"img\" aria-"
-"label=\"Values set here are company-specific.\" groups=\"base."
-"group_multi_company\"/>"
-msgstr ""
-"<span class=\"o_form_label\">Projektrollen</span>\n"
-"                                <span class=\"fa fa-lg fa-building-o\" "
-"title=\"Die hier gesetzten Werte sind firmenspezifisch.\" role=\"img\" aria-"
-"label=\"Die hier gesetzten Werte sind firmenspezifisch.\" groups=\"base."
-"group_multi_company\"/>"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_needaction
@@ -439,6 +418,11 @@ msgid "User may be assigned per role only once!"
 msgstr "Der Benutzer sollte einer Rolle nur einmal zugewiesen sein!"
 
 #. module: project_role
+#: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
+msgid "Values set here are company-specific."
+msgstr ""
+
+#. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__website_message_ids
 msgid "Website Messages"
 msgstr "Website-Nachrichten"
@@ -447,6 +431,28 @@ msgstr "Website-Nachrichten"
 #: model:ir.model.fields,help:project_role.field_project_assignment__website_message_ids
 msgid "Website communication history"
 msgstr "Website-Kommunikationshistorie"
+
+#~ msgid ""
+#~ "<span class=\"fa fa-lg fa-building-o\" title=\"Values set here are "
+#~ "company-specific.\" role=\"img\" aria-label=\"Values set here are company-"
+#~ "specific.\" groups=\"base.group_multi_company\"/>"
+#~ msgstr ""
+#~ "<span class=\"fa fa-lg fa-building-o\" title=\"Die hier gesetzten Werte "
+#~ "sind firmenspezifisch.\" role=\"img\" aria-label=\"Die hier gesetzten "
+#~ "Werte sind firmenspezifisch.\" groups=\"base.group_multi_company\"/>"
+
+#~ msgid ""
+#~ "<span class=\"o_form_label\">Project Roles</span>\n"
+#~ "                                <span class=\"fa fa-lg fa-building-o\" "
+#~ "title=\"Values set here are company-specific.\" role=\"img\" aria-"
+#~ "label=\"Values set here are company-specific.\" "
+#~ "groups=\"base.group_multi_company\"/>"
+#~ msgstr ""
+#~ "<span class=\"o_form_label\">Projektrollen</span>\n"
+#~ "                                <span class=\"fa fa-lg fa-building-o\" "
+#~ "title=\"Die hier gesetzten Werte sind firmenspezifisch.\" role=\"img\" "
+#~ "aria-label=\"Die hier gesetzten Werte sind firmenspezifisch.\" "
+#~ "groups=\"base.group_multi_company\"/>"
 
 #~ msgid "Last Modified on"
 #~ msgstr "Zuletzt geändert am"

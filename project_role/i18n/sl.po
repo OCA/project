@@ -47,29 +47,8 @@ msgstr "%(parent)s / %(own)s"
 
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
-msgid ""
-"<span class=\"fa fa-lg fa-building-o\" title=\"Values set here are company-"
-"specific.\" role=\"img\" aria-label=\"Values set here are company-specific."
-"\" groups=\"base.group_multi_company\"/>"
+msgid "<span class=\"o_form_label\">Project Roles</span>"
 msgstr ""
-"<span class=\"fa fa-lg fa-building-o\" title=\"Tukajšnje vrednosti so "
-"specifične za posamezno družbo.\" role=\"img\" aria-label=\"Tukajšnje "
-"vrednosti so specifične za posamezno družbo.\" groups=\"base."
-"group_multi_company\"/>"
-
-#. module: project_role
-#: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
-msgid ""
-"<span class=\"o_form_label\">Project Roles</span>\n"
-"                                <span class=\"fa fa-lg fa-building-o\" "
-"title=\"Values set here are company-specific.\" role=\"img\" aria-"
-"label=\"Values set here are company-specific.\" groups=\"base."
-"group_multi_company\"/>"
-msgstr ""
-"<span class=\"o_form_label\">Projektne vloge</span>\n"
-"                                <span class=\"fa fa-lg fa-building-o\" "
-"title=\"Vrednosti za posamezno družbo.\" role=\"img\" aria-label=\"Vrednosti "
-"za posamezno družbo.\" groups=\"base.group_multi_company\"/>"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_needaction
@@ -426,6 +405,11 @@ msgid "User may be assigned per role only once!"
 msgstr "Uporabniku se lahko dodeli določeno vlogo le enkrat!"
 
 #. module: project_role
+#: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
+msgid "Values set here are company-specific."
+msgstr ""
+
+#. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__website_message_ids
 msgid "Website Messages"
 msgstr "Sporočila spletne strani"
@@ -434,6 +418,29 @@ msgstr "Sporočila spletne strani"
 #: model:ir.model.fields,help:project_role.field_project_assignment__website_message_ids
 msgid "Website communication history"
 msgstr "Kronologija komunikacij spletne strani"
+
+#~ msgid ""
+#~ "<span class=\"fa fa-lg fa-building-o\" title=\"Values set here are "
+#~ "company-specific.\" role=\"img\" aria-label=\"Values set here are company-"
+#~ "specific.\" groups=\"base.group_multi_company\"/>"
+#~ msgstr ""
+#~ "<span class=\"fa fa-lg fa-building-o\" title=\"Tukajšnje vrednosti so "
+#~ "specifične za posamezno družbo.\" role=\"img\" aria-label=\"Tukajšnje "
+#~ "vrednosti so specifične za posamezno družbo.\" "
+#~ "groups=\"base.group_multi_company\"/>"
+
+#~ msgid ""
+#~ "<span class=\"o_form_label\">Project Roles</span>\n"
+#~ "                                <span class=\"fa fa-lg fa-building-o\" "
+#~ "title=\"Values set here are company-specific.\" role=\"img\" aria-"
+#~ "label=\"Values set here are company-specific.\" "
+#~ "groups=\"base.group_multi_company\"/>"
+#~ msgstr ""
+#~ "<span class=\"o_form_label\">Projektne vloge</span>\n"
+#~ "                                <span class=\"fa fa-lg fa-building-o\" "
+#~ "title=\"Vrednosti za posamezno družbo.\" role=\"img\" aria-"
+#~ "label=\"Vrednosti za posamezno družbo.\" "
+#~ "groups=\"base.group_multi_company\"/>"
 
 #~ msgid "Last Modified on"
 #~ msgstr "Zadnjič spremenjeno"
