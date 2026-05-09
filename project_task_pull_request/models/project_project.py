@@ -13,4 +13,5 @@ class ProjectProject(models.Model):
         "project_id",
         "state_id",
         "PR Required States",
+        domain="[('project_ids', 'in', [id])]",
     )
