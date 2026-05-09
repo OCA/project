@@ -6,15 +6,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2024-12-16 17:49+0000\n"
-"Last-Translator: Carlos Lopez <carlos.lopez@tecnativa.com>\n"
+"PO-Revision-Date: 2026-05-09 09:30+0000\n"
+"Last-Translator: Ed-Spain <eduamoros@gmail.com>\n"
 "Language-Team: none\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 5.6.2\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: sale_project_task_recurrency
 #: model:ir.model.fields,field_description:sale_project_task_recurrency.field_product_product__task_repeat_number
@@ -71,13 +71,13 @@ msgstr "Febrero"
 #. module: sale_project_task_recurrency
 #: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month_semester__5
 msgid "Fifth month"
-msgstr ""
+msgstr "Quinto mes"
 
 #. module: sale_project_task_recurrency
 #: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month_quarter__1
 #: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month_semester__1
 msgid "First month"
-msgstr ""
+msgstr "Primer mes"
 
 #. module: sale_project_task_recurrency
 #: model:ir.model.fields,field_description:sale_project_task_recurrency.field_product_product__task_force_month
@@ -93,13 +93,13 @@ msgstr "Forzar mes"
 #: model:ir.model.fields,help:sale_project_task_recurrency.field_product_product__task_force_month_quarter
 #: model:ir.model.fields,help:sale_project_task_recurrency.field_product_template__task_force_month_quarter
 msgid "Force the month to be used inside the quarter"
-msgstr ""
+msgstr "Forzar el mes que se utilice dentro del trimestre"
 
 #. module: sale_project_task_recurrency
 #: model:ir.model.fields,help:sale_project_task_recurrency.field_product_product__task_force_month_semester
 #: model:ir.model.fields,help:sale_project_task_recurrency.field_product_template__task_force_month_semester
 msgid "Force the month to be used inside the semester"
-msgstr ""
+msgstr "Forzar el mes que se utilice dentro del semestre"
 
 #. module: sale_project_task_recurrency
 #: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_repeat_type__forever
@@ -109,7 +109,7 @@ msgstr "Para siempre"
 #. module: sale_project_task_recurrency
 #: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month_semester__4
 msgid "Fourth month"
-msgstr ""
+msgstr "Cuarto mes"
 
 #. module: sale_project_task_recurrency
 #: model:ir.model.fields,field_description:sale_project_task_recurrency.field_product_product__recurring_task
@@ -170,7 +170,7 @@ msgstr "Variante"
 #. module: sale_project_task_recurrency
 #: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_repeat_unit__quarter
 msgid "Quarters"
-msgstr ""
+msgstr "Trimestres"
 
 #. module: sale_project_task_recurrency
 #: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_repeat_type__repeat
@@ -192,12 +192,12 @@ msgstr "Línea de orden de venta"
 #: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month_quarter__2
 #: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month_semester__2
 msgid "Second month"
-msgstr ""
+msgstr "Segundo mes"
 
 #. module: sale_project_task_recurrency
 #: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_repeat_unit__semester
 msgid "Semesters"
-msgstr ""
+msgstr "Semestres"
 
 #. module: sale_project_task_recurrency
 #: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month__9
@@ -207,7 +207,7 @@ msgstr "Septiembre"
 #. module: sale_project_task_recurrency
 #: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month_semester__6
 msgid "Sixth month"
-msgstr ""
+msgstr "Sexto mes"
 
 #. module: sale_project_task_recurrency
 #: model:ir.model.fields,field_description:sale_project_task_recurrency.field_product_product__task_start_date_method
@@ -235,7 +235,7 @@ msgstr "Repetir tarea hasta"
 #: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month_quarter__3
 #: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month_semester__3
 msgid "Third month"
-msgstr ""
+msgstr "Tercer mes"
 
 #. module: sale_project_task_recurrency
 #: model:ir.model.fields,help:sale_project_task_recurrency.field_product_product__task_start_date_method
