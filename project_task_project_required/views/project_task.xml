@@ -30,9 +30,10 @@
                 <field name="is_project_required" invisible="1" />
             </field>
             <field name="project_id" position="attributes">
+                <!-- The default odoo invisible attr is respected -->
                 <attribute
                     name="attrs"
-                >{'required':[('is_project_required','=',True)]}</attribute>
+                >{'invisible': [('parent_id', '!=', False)], 'required': [('is_project_required', '=', True)]}</attribute>
             </field>
         </field>
     </record>
