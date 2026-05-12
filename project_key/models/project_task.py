@@ -14,6 +14,14 @@ class Task(models.Model):
 
     url = fields.Char(string="URL", compute="_compute_task_url")
 
+    @property
+    def TASK_PORTAL_READABLE_FIELDS(self):
+        # Expose `key` so it's readable in portal & project sharing views
+        # (otherwise the JS kanban arch parser crashes when reading
+        # record.fields.key.type because the field is filtered out by
+        # the server response spec).
+        return super().TASK_PORTAL_READABLE_FIELDS | {"key"}
+
     _task_key_unique = models.Constraint(
         "UNIQUE(key)",
         "Task key must be unique!",
