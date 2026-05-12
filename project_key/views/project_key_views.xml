@@ -85,10 +85,10 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_kanban" />
         <field name="arch" type="xml">
-            <field name="color" position="after">
+            <xpath expr="//field[@name='stage_id']" position="after">
                 <field name="url" />
                 <field name="key" />
-            </field>
+            </xpath>
             <xpath expr="//t[@t-name='card']//field[@name='name']" position="before">
                 <a t-att-href="record.url.raw_value">
                     <field name="key" />
