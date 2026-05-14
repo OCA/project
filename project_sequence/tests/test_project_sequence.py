@@ -41,10 +41,14 @@ class TestProjectSequence(TransactionCase):
     @users("manager")
     def test_sequence_after_creation(self):
         """Sequence is applied only after project creation."""
-        prj_f = Form(self.env["project.project"])
-        self.assertFalse(prj_f.name)
-        self.assertFalse(prj_f.sequence_code)
-        proj = prj_f.save()
+        # Use new() instead of Form() so the test does not trigger unrelated
+        # onchanges from other installed modules (e.g. sale_project's
+        # _onchange_sale_line_id, which reads a field restricted to the
+        # sales group and would fail for a project-only manager user).
+        draft = self.env["project.project"].new({})
+        self.assertFalse(draft.name)
+        self.assertFalse(draft.sequence_code)
+        proj = self.env["project.project"].create({})
         self.assertTrue(proj.sequence_code)
         self.assertEqual(proj.name, proj.sequence_code)
         self.assertEqual(proj.sequence_code, "23-00011")
