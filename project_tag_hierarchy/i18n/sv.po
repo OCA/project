@@ -1,0 +1,43 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_tag_hierarchy
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2025-10-07 12:42+0000\n"
+"Last-Translator: jakobkrabbe <jakob@syscare.se>\n"
+"Language-Team: none\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.10.4\n"
+
+#. module: project_tag_hierarchy
+#: model:ir.model.fields,field_description:project_tag_hierarchy.field_project_tags__child_ids
+msgid "Child Tags"
+msgstr "Underliggande taggar"
+
+#. module: project_tag_hierarchy
+#: model:ir.model.fields,field_description:project_tag_hierarchy.field_project_tags__parent_path
+msgid "Parent Path"
+msgstr "Överliggande sökväg"
+
+#. module: project_tag_hierarchy
+#: model:ir.model.fields,field_description:project_tag_hierarchy.field_project_tags__parent_id
+msgid "Parent Tag"
+msgstr "Överliggande taggar"
+
+#. module: project_tag_hierarchy
+#: model:ir.model,name:project_tag_hierarchy.model_project_tags
+msgid "Project Tags"
+msgstr "Projekttaggar"
+
+#. module: project_tag_hierarchy
+#. odoo-python
+#: code:addons/project_tag_hierarchy/models/project_tags.py:0
+msgid "You can not create recursive tags."
+msgstr "Du kan inte skapa rekursiva taggar."
