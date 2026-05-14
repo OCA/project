@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="product_template_form_view_inherit_tasks" model="ir.ui.view">
+        <field name="name">product.template.form.inherit.tasks</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view" />
+
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button
+                    name="action_view_tasks"
+                    type="object"
+                    class="oe_stat_button"
+                    icon="fa-tasks"
+                    invisible="task_count == 0"
+                >
+                    <field name="task_count" widget="statinfo" string="Tasks" />
+                </button>
+            </xpath>
+        </field>
+    </record>
+</odoo>
