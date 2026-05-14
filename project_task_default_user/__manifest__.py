@@ -4,7 +4,7 @@
 {
     "name": "Project Task Default User",
     "summary": "Auto assign default users to tasks or when changing task stages",
-    "version": "18.0.1.0.0",
+    "version": "19.0.1.0.0",
     "category": "Project",
     "author": "NICO SOLUTIONS - ENGINEERING & IT, Odoo Community Association (OCA)",
     "maintainers": ["NICO-SOLUTIONS"],

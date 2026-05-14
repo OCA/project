@@ -1,3 +1,4 @@
+from odoo import Command
 from odoo.tests.common import TransactionCase
 
 
@@ -6,32 +7,46 @@ class TestProjectTaskDefaultUser(TransactionCase):
     def setUpClass(cls):
         super().setUpClass()
         env = cls.env
-
+        group_user = cls.env.ref("base.group_user")
+        group_project = cls.env.ref("project.group_project_user")
         cls.user1 = env["res.users"].create(
-            {"name": "User 1", "login": "user1", "email": "user1@example.com"}
+            {
+                "name": "User 1",
+                "login": "user1",
+                "email": "user1@example.com",
+                "group_ids": [
+                    Command.link(group_user.id),
+                    Command.link(group_project.id),
+                ],
+            }
         )
         cls.user2 = env["res.users"].create(
-            {"name": "User 2", "login": "user2", "email": "user2@example.com"}
+            {
+                "name": "User 2",
+                "login": "user2",
+                "email": "user2@example.com",
+                "group_ids": [
+                    Command.link(group_user.id),
+                    Command.link(group_project.id),
+                ],
+            }
         )
-
         cls.project_with_default = env["project.project"].create(
             {
                 "name": "Project with Default",
-                "default_user_ids": [(6, 0, [cls.user1.id])],
+                "default_user_ids": [Command.set([cls.user1.id])],
             }
         )
-
         cls.project_without_default = env["project.project"].create(
             {
                 "name": "Project without Default",
             }
         )
-
         cls.stage_with_default = env["project.task.type"].create(
             {
                 "name": "Stage with Default",
-                "default_user_ids": [(6, 0, [cls.user2.id])],
-                "project_ids": [(6, 0, [cls.project_with_default.id])],
+                "default_user_ids": [Command.link(cls.user2.id)],
+                "project_ids": [Command.link(cls.project_with_default.id)],
                 "stage_task_assignment_mode": "replace",
             }
         )
@@ -39,7 +54,7 @@ class TestProjectTaskDefaultUser(TransactionCase):
         cls.stage_without_default = env["project.task.type"].create(
             {
                 "name": "Stage without Default",
-                "project_ids": [(6, 0, [cls.project_with_default.id])],
+                "project_ids": [Command.link(cls.project_with_default.id)],
                 "stage_task_assignment_mode": "replace",
             }
         )
@@ -105,7 +120,7 @@ class TestProjectTaskDefaultUser(TransactionCase):
         task = self.env["project.task"].create(
             {
                 "name": "Merge With Existing",
-                "user_ids": [(6, 0, [self.user1.id])],
+                "user_ids": [Command.link(self.user1.id)],
                 "project_id": self.project_without_default.id,
                 "stage_id": self.stage_with_default.id,
             }

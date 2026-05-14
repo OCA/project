@@ -11,7 +11,11 @@ class ProjectTaskType(models.Model):
         "res.users",
         string="Default Users for this Stage",
         domain=lambda self: [
-            ("groups_id", "in", [self.env.ref("project.group_project_user").id])
+            (
+                "all_group_ids",
+                "in",
+                self.env.ref("project.group_project_user").id,
+            )
         ],
         help="If set, tasks will automatically be assigned to these users. "
         "On new tasks, this applies if no users are set. On stage change, "
