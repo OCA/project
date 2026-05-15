@@ -21,6 +21,11 @@ msgstr ""
 "n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
 
 #. module: project_task_pull_request
+#: model:ir.model,website_form_label:project_task_pull_request.model_project_task
+msgid "Create a Task"
+msgstr ""
+
+#. module: project_task_pull_request
 #: model:ir.model.fields,field_description:project_task_pull_request.field_project_project__display_name
 #: model:ir.model.fields,field_description:project_task_pull_request.field_project_task__display_name
 msgid "Display Name"
