@@ -19,6 +19,11 @@ msgid "<span class=\"oe_inline\"> - </span>"
 msgstr ""
 
 #. module: project_task_code
+#: model:ir.model,website_form_label:project_task_code.model_project_task
+msgid "Create a Task"
+msgstr ""
+
+#. module: project_task_code
 #: model:ir.model.fields,field_description:project_task_code.field_project_task__display_name
 msgid "Display Name"
 msgstr ""
