@@ -23,6 +23,11 @@ msgid "Assignees"
 msgstr ""
 
 #. module: project_hr
+#: model:ir.model,website_form_label:project_hr.model_project_task
+msgid "Create a Task"
+msgstr ""
+
+#. module: project_hr
 #: model:ir.model.fields,field_description:project_hr.field_hr_employee__display_name
 #: model:ir.model.fields,field_description:project_hr.field_project_project__display_name
 #: model:ir.model.fields,field_description:project_hr.field_project_task__display_name
