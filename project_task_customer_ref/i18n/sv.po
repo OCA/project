@@ -19,11 +19,59 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #. module: project_task_customer_ref
-#: model:ir.module.module,shortdesc:project_task_customer_ref.module_project_task_customer_ref
-msgid "Project Task Customer Reference"
-msgstr "Projektuppgift kundreferens"
+#: model:ir.model,website_form_label:project_task_customer_ref.model_project_task
+msgid "Create a Task"
+msgstr ""
+
+#. module: project_task_customer_ref
+#: model:ir.model.fields,field_description:project_task_customer_ref.field_project_task__display_name
+#: model:ir.model.fields,field_description:project_task_customer_ref.field_sale_order__display_name
+#: model:ir.model.fields,field_description:project_task_customer_ref.field_sale_order_line__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: project_task_customer_ref
+#: model:ir.model.fields,field_description:project_task_customer_ref.field_project_task__id
+#: model:ir.model.fields,field_description:project_task_customer_ref.field_sale_order__id
+#: model:ir.model.fields,field_description:project_task_customer_ref.field_sale_order_line__id
+msgid "ID"
+msgstr ""
 
 #. module: project_task_customer_ref
 #: model:ir.model.fields,field_description:project_task_customer_ref.field_project_task__customer_reference
 msgid "Order Customer Reference"
 msgstr "Kundens orderreferens"
+
+#. module: project_task_customer_ref
+#: model:ir.model,name:project_task_customer_ref.model_sale_order
+msgid "Sales Order"
+msgstr ""
+
+#. module: project_task_customer_ref
+#: model:ir.model,name:project_task_customer_ref.model_sale_order_line
+msgid "Sales Order Line"
+msgstr ""
+
+#. module: project_task_customer_ref
+#: model:ir.model,name:project_task_customer_ref.model_project_task
+msgid "Task"
+msgstr ""
+
+#. module: project_task_customer_ref
+#: model:ir.model.fields,help:project_task_customer_ref.field_project_task__display_name
+msgid ""
+"Use these keywords in the title to set new tasks:\n"
+"\n"
+"        30h Allocate 30 hours to the task\n"
+"        #tags Set tags on the task\n"
+"        @user Assign the task to a user\n"
+"        ! Set the task a medium priority\n"
+"        !! Set the task a high priority\n"
+"        !!! Set the task a urgent priority\n"
+"\n"
+"        Make sure to use the right format and order e.g. Improve the "
+"configuration screen 5h #feature #v16 @Mitchell !"
+msgstr ""
+
+#~ msgid "Project Task Customer Reference"
+#~ msgstr "Projektuppgift kundreferens"
