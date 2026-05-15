@@ -19,6 +19,11 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #. module: project_task_stage_state
+#: model:ir.model,website_form_label:project_task_stage_state.model_project_task
+msgid "Create a Task"
+msgstr ""
+
+#. module: project_task_stage_state
 #: model:ir.model.fields,field_description:project_task_stage_state.field_project_task__display_name
 #: model:ir.model.fields,field_description:project_task_stage_state.field_project_task_type__display_name
 msgid "Display Name"
