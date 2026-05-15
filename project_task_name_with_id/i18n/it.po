@@ -17,6 +17,11 @@ msgstr ""
 "X-Generator: Weblate 5.15.2\n"
 
 #. module: project_task_name_with_id
+#: model:ir.model,website_form_label:project_task_name_with_id.model_project_task
+msgid "Create a Task"
+msgstr ""
+
+#. module: project_task_name_with_id
 #: model:ir.model.fields,field_description:project_task_name_with_id.field_project_task__display_name
 msgid "Display Name"
 msgstr "Nome visualizzato"
