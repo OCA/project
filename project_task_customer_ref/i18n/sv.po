@@ -1,0 +1,29 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * project_task_customer_ref
+#
+# Translators:
+# ForgeFlow S.L., 2026
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-03-16 00:00+0000\n"
+"PO-Revision-Date: 2026-03-16 00:00+0000\n"
+"Last-Translator: ForgeFlow S.L.\n"
+"Language-Team: Swedish\n"
+"Language: sv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. module: project_task_customer_ref
+#: model:ir.module.module,shortdesc:project_task_customer_ref.module_project_task_customer_ref
+msgid "Project Task Customer Reference"
+msgstr "Projektuppgift kundreferens"
+
+#. module: project_task_customer_ref
+#: model:ir.model.fields,field_description:project_task_customer_ref.field_project_task__customer_reference
+msgid "Order Customer Reference"
+msgstr "Kundens orderreferens"

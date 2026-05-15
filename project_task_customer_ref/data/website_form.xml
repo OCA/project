@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 ForgeFlow
+     Part of ForgeFlow. See LICENSE file for full copyright and licensing details. -->
+<odoo noupdate="1">
+    <function model="ir.model.fields" name="formbuilder_whitelist">
+        <value>project.task</value>
+        <value eval="['customer_reference']" />
+    </function>
+</odoo>
