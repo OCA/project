@@ -15,6 +15,11 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 
 #. module: project_task_parent_due_auto
+#: model:ir.model,website_form_label:project_task_parent_due_auto.model_project_task
+msgid "Create a Task"
+msgstr ""
+
+#. module: project_task_parent_due_auto
 #: model:ir.model.fields,field_description:project_task_parent_due_auto.field_project_task__display_name
 msgid "Display Name"
 msgstr ""
