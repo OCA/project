@@ -17,6 +17,11 @@ msgstr ""
 "X-Generator: Weblate 5.10.4\n"
 
 #. module: project_version
+#: model:ir.model,website_form_label:project_version.model_project_task
+msgid "Create a Task"
+msgstr ""
+
+#. module: project_version
 #: model:ir.model.fields,field_description:project_version.field_project_version__create_uid
 msgid "Created by"
 msgstr "Creado por"
