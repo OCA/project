@@ -44,6 +44,11 @@ msgid "Complete Name"
 msgstr "Volledige naam"
 
 #. module: project_type
+#: model:ir.model,website_form_label:project_type.model_project_task
+msgid "Create a Task"
+msgstr ""
+
+#. module: project_type
 #: model:ir.model.fields,field_description:project_type.field_project_type__create_uid
 msgid "Created by"
 msgstr "Gemaakt door"
