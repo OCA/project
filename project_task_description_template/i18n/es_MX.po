@@ -33,6 +33,11 @@ msgid "Company"
 msgstr "Compañía"
 
 #. module: project_task_description_template
+#: model:ir.model,website_form_label:project_task_description_template.model_project_task
+msgid "Create a Task"
+msgstr ""
+
+#. module: project_task_description_template
 #: model:ir.model.fields,field_description:project_task_description_template.field_project_task_description_template__create_uid
 msgid "Created by"
 msgstr "Creado por"
