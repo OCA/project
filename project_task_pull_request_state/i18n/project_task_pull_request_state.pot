@@ -19,6 +19,11 @@ msgid "Config Settings"
 msgstr ""
 
 #. module: project_task_pull_request_state
+#: model:ir.model,website_form_label:project_task_pull_request_state.model_project_task
+msgid "Create a Task"
+msgstr ""
+
+#. module: project_task_pull_request_state
 #: model:ir.model.fields,field_description:project_task_pull_request_state.field_project_project__pr_state_default
 #: model:ir.model.fields,field_description:project_task_pull_request_state.field_res_config_settings__pr_state_default
 msgid "Default PR State"
