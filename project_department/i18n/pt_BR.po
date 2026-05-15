@@ -21,6 +21,11 @@ msgstr ""
 "X-Generator: Weblate 4.17\n"
 
 #. module: project_department
+#: model:ir.model,website_form_label:project_department.model_project_task
+msgid "Create a Task"
+msgstr ""
+
+#. module: project_department
 #: model_terms:ir.ui.view,arch_db:project_department.view_project_project_filter
 msgid "Department"
 msgstr "Departamento"
