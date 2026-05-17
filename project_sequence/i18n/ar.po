@@ -6,7 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-05-17 11:40+0000\n"
+"Last-Translator: Mohamed Essam Salem <mohamed.e.salem@protonmail.com>\n"
 "Language-Team: none\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
@@ -14,16 +15,17 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 ? 4 : 5;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: project_sequence
 #: model:ir.model,name:project_sequence.model_res_config_settings
 msgid "Config Settings"
-msgstr ""
+msgstr "تهيئة الإعدادات"
 
 #. module: project_sequence
 #: model:ir.model.fields,field_description:project_sequence.field_project_project__name
 msgid "Name"
-msgstr ""
+msgstr "الاسم"
 
 #. module: project_sequence
 #: model:ir.model,name:project_sequence.model_project_project
@@ -33,27 +35,27 @@ msgstr ""
 #. module: project_sequence
 #: model:ir.model.fields,field_description:project_sequence.field_res_config_settings__project_display_name_pattern
 msgid "Project Display Name Pattern"
-msgstr ""
+msgstr "نمط اسم عرض المشروع"
 
 #. module: project_sequence
 #: model:ir.model.constraint,message:project_sequence.constraint_project_project_name_required
 msgid "Project name is required"
-msgstr ""
+msgstr "اسم المشروع اجباري"
 
 #. module: project_sequence
 #: model:ir.model.fields,field_description:project_sequence.field_project_project__sequence_code
 msgid "Sequence Code"
-msgstr ""
+msgstr "الرقم المتسلسل"
 
 #. module: project_sequence
 #: model:ir.model.constraint,message:project_sequence.constraint_project_project_sequence_code_unique
 msgid "Sequence code must be unique"
-msgstr ""
+msgstr "الرقم المتسلسل يجب ان يكون مميز"
 
 #. module: project_sequence
 #: model_terms:ir.ui.view,arch_db:project_sequence.project_sequence_form_view
 msgid "Sequence code:"
-msgstr ""
+msgstr "الرقم المتسلسل:"
 
 #. module: project_sequence
 #: model:ir.model.fields,help:project_sequence.field_res_config_settings__project_display_name_pattern
@@ -61,3 +63,5 @@ msgid ""
 "Use %(sequence_code)s and %(name)s to include the sequence code and the name"
 " of the project in the display name."
 msgstr ""
+"استخدم %(sequence_code)s و%(name)s لتضمين رمز التسلسل والاسمللمشروع في اسم "
+"العرض."
