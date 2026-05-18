@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 18.0\n"
+"Project-Id-Version: Odoo Server 19.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -12,6 +12,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
+
+#. module: project_task_default_user
+#: model:ir.model,website_form_label:project_task_default_user.model_project_task
+msgid "Create a Task"
+msgstr ""
 
 #. module: project_task_default_user
 #: model:ir.model.fields,field_description:project_task_default_user.field_project_project__default_user_ids
@@ -37,6 +42,20 @@ msgid ""
 "- Merge: add default users to existing ones\n"
 "\n"
 "Applied on task creation and stage changes."
+msgstr ""
+
+#. module: project_task_default_user
+#: model:ir.model.fields,field_description:project_task_default_user.field_project_project__display_name
+#: model:ir.model.fields,field_description:project_task_default_user.field_project_task__display_name
+#: model:ir.model.fields,field_description:project_task_default_user.field_project_task_type__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: project_task_default_user
+#: model:ir.model.fields,field_description:project_task_default_user.field_project_project__id
+#: model:ir.model.fields,field_description:project_task_default_user.field_project_task__id
+#: model:ir.model.fields,field_description:project_task_default_user.field_project_task_type__id
+msgid "ID"
 msgstr ""
 
 #. module: project_task_default_user
@@ -83,4 +102,19 @@ msgstr ""
 #. module: project_task_default_user
 #: model:ir.model,name:project_task_default_user.model_project_task_type
 msgid "Task Stage"
+msgstr ""
+
+#. module: project_task_default_user
+#: model:ir.model.fields,help:project_task_default_user.field_project_task__display_name
+msgid ""
+"Use these keywords in the title to set new tasks:\n"
+"\n"
+"        30h Allocate 30 hours to the task\n"
+"        #tags Set tags on the task\n"
+"        @user Assign the task to a user\n"
+"        ! Set the task a medium priority\n"
+"        !! Set the task a high priority\n"
+"        !!! Set the task a urgent priority\n"
+"\n"
+"        Make sure to use the right format and order e.g. Improve the configuration screen 5h #feature #v16 @Mitchell !"
 msgstr ""
