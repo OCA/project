@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!--
+        Copyright 2025 NICO SOLUTIONS - ENGINEERING & IT
+        License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html).
+    -->
+    <record id="project_task_type_tree_inherit_default_user" model="ir.ui.view">
+        <field name="name">project.task.type.tree.inherit.default.user</field>
+        <field name="model">project.task.type</field>
+        <field name="inherit_id" ref="project.task_type_tree" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="default_user_ids" widget="many2many_tags" />
+                <field name="stage_task_assignment_mode" />
+            </xpath>
+        </field>
+    </record>
+    <record id="project_task_type_edit_inherit_default_user" model="ir.ui.view">
+        <field name="name">project.task.type.edit.inherit.default.user</field>
+        <field name="model">project.task.type</field>
+        <field name="inherit_id" ref="project.task_type_edit" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='sequence']" position="after">
+                <field name="default_user_ids" widget="many2many_tags" />
+                <field name="stage_task_assignment_mode" />
+            </xpath>
+        </field>
+    </record>
+</odoo>
