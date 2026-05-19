@@ -1,0 +1,89 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_task_product
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2026-05-19 13:46+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
+"Language-Team: none\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2\n"
+
+#. module: project_task_product
+#: model:ir.model,website_form_label:project_task_product.model_project_task
+msgid "Create a Task"
+msgstr "Crea un lavoro"
+
+#. module: project_task_product
+#: model:ir.model.fields,field_description:project_task_product.field_product_product__display_name
+#: model:ir.model.fields,field_description:project_task_product.field_product_template__display_name
+#: model:ir.model.fields,field_description:project_task_product.field_project_task__display_name
+msgid "Display Name"
+msgstr "Nome visualizzato"
+
+#. module: project_task_product
+#: model:ir.model.fields,field_description:project_task_product.field_product_product__id
+#: model:ir.model.fields,field_description:project_task_product.field_product_template__id
+#: model:ir.model.fields,field_description:project_task_product.field_project_task__id
+msgid "ID"
+msgstr "ID"
+
+#. module: project_task_product
+#: model:ir.model,name:project_task_product.model_product_template
+#: model:ir.model.fields,field_description:project_task_product.field_project_task__product_id
+msgid "Product"
+msgstr "Prodotto"
+
+#. module: project_task_product
+#: model:ir.model,name:project_task_product.model_product_product
+msgid "Product Variant"
+msgstr "Variante prodotto"
+
+#. module: project_task_product
+#: model:ir.model,name:project_task_product.model_project_task
+msgid "Task"
+msgstr "Lavoro"
+
+#. module: project_task_product
+#: model:ir.model.fields,field_description:project_task_product.field_product_product__task_count
+#: model:ir.model.fields,field_description:project_task_product.field_product_template__task_count
+msgid "Task Count"
+msgstr "Numero lavori"
+
+#. module: project_task_product
+#: model_terms:ir.ui.view,arch_db:project_task_product.product_template_form_view_inherit_tasks
+msgid "Tasks"
+msgstr "Lavori"
+
+#. module: project_task_product
+#: model:ir.model.fields,help:project_task_product.field_project_task__display_name
+msgid ""
+"Use these keywords in the title to set new tasks:\n"
+"\n"
+"        30h Allocate 30 hours to the task\n"
+"        #tags Set tags on the task\n"
+"        @user Assign the task to a user\n"
+"        ! Set the task a medium priority\n"
+"        !! Set the task a high priority\n"
+"        !!! Set the task a urgent priority\n"
+"\n"
+"        Make sure to use the right format and order e.g. Improve the configuration screen 5h #feature #v16 @Mitchell !"
+msgstr ""
+"Usare queste parole chiave nel titolo per impostare nuove attività:\n"
+"\n"
+"        30h: assegna 30 ore all'attività\n"
+"        #tag: imposta i tag sull'attività\n"
+"        @user: assegna l'attività a un utente\n"
+"        !: imposta l'attività con priorità media\n"
+"        !!: imposta l'attività con priorità alta\n"
+"        !!!: imposta l'attività con priorità urgente\n"
+"\n"
+"        Assicurarsi di utilizzare il formato e l'ordine corretti, es. "
+"migliora la schermata di configurazione 5h #feature #v16 @Mitchell !"
