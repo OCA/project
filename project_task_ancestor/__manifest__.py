@@ -3,14 +3,13 @@
 
 {
     "name": "Project Task Ancestor",
-    "version": "18.0.1.0.1",
+    "version": "19.0.1.0.0",
     "category": "Services/Project",
     "website": "https://github.com/OCA/project",
     "author": "Moduon, Odoo Community Association (OCA)",
     "license": "LGPL-3",
-    "application": False,
     "depends": ["hr_timesheet"],
-    "maintainers": ["rafaelbn", "chienandalu", "Andrii9090"],
+    "maintainers": ["rafaelbn", "chienandalu"],
     "data": [
         "views/hr_timesheet_views.xml",
         "views/project_task_views.xml",
