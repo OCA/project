@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 18.0\n"
+"Project-Id-Version: Odoo Server 19.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -16,6 +16,16 @@ msgstr ""
 #. module: project_tag_multicompany
 #: model:ir.model.fields,field_description:project_tag_multicompany.field_project_tags__company_id
 msgid "Company"
+msgstr ""
+
+#. module: project_tag_multicompany
+#: model:ir.model.fields,field_description:project_tag_multicompany.field_project_tags__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: project_tag_multicompany
+#: model:ir.model.fields,field_description:project_tag_multicompany.field_project_tags__id
+msgid "ID"
 msgstr ""
 
 #. module: project_tag_multicompany
