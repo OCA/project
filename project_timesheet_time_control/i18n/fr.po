@@ -9,15 +9,15 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-05-10 02:40+0000\n"
-"PO-Revision-Date: 2022-05-10 11:05+0000\n"
-"Last-Translator: Rémi <remi@le-filament.com>\n"
+"PO-Revision-Date: 2026-05-20 17:46+0000\n"
+"Last-Translator: risto42 <richard.palo@free.fr>\n"
 "Language-Team: French (https://www.transifex.com/oca/teams/23907/fr/)\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.3.2\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: project_timesheet_time_control
 #. odoo-python
@@ -27,7 +27,7 @@ msgid ""
 "%d running timers found. Cannot know which one to stop. Please stop them "
 "manually."
 msgstr ""
-"%d minuteurs en cours. Impossible de déterminer lequel arrêter. Merci de les "
+"%d minuteurs en cours. Impossible de déterminer lequel arrêter. Veuillez les "
 "arrêter manuellement."
 
 #. module: project_timesheet_time_control
@@ -36,6 +36,8 @@ msgid ""
 ".\n"
 "                            If you continue, it will be stopped with"
 msgstr ""
+".\n"
+"                            Si vous continuez, il sera arrêté avec"
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_kanban_account_analytic_line
@@ -95,7 +97,7 @@ msgid ""
 "again."
 msgstr ""
 "Impossible d'arrêter le minuteur %d parce qu'il n'est pas démarré. "
-"Rafraîchissez la page et essayez de nouveau."
+"Actualisez la page et réessayez."
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__company_id
@@ -120,7 +122,7 @@ msgstr "Date"
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__name
 msgid "Description"
-msgstr ""
+msgstr "Description"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__display_name
@@ -131,7 +133,7 @@ msgstr "Nom affiché"
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_account_analytic_line__date_time_end
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__date_time_end
 msgid "End Time"
-msgstr "Heure de Fin"
+msgstr "Heure de fin"
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.project_invoice_form
@@ -140,17 +142,17 @@ msgstr "Heure de Fin"
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_form2_inherited
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_tree2_inherited
 msgid "End work"
-msgstr ""
+msgstr "Terminer le travail"
 
 #. module: project_timesheet_time_control
 #: model:ir.model,name:project_timesheet_time_control.model_hr_timesheet_switch
 msgid "Helper to quickly switch between timesheet lines"
-msgstr "Assistant pour changer rapidement de ligne de temps"
+msgstr "Assistant pour basculer rapidement entre lignes de feuille de temps"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,help:project_timesheet_time_control.field_account_analytic_line__show_time_control
@@ -178,7 +180,7 @@ msgstr "Dernière mise à jour le"
 #. module: project_timesheet_time_control
 #: model:ir.model,name:project_timesheet_time_control.model_hr_timesheet_time_control_mixin
 msgid "Mixin for records related with timesheet lines"
-msgstr "Mixin pour les éléments liés aux lignes de temps"
+msgstr "Mixin pour enregistrements liés aux lignes de feuille de temps"
 
 #. module: project_timesheet_time_control
 #. odoo-python
@@ -188,13 +190,13 @@ msgid ""
 "No running timer found in %(model)s %(record)s. Refresh the page and check "
 "again."
 msgstr ""
-"Aucun minuteur en cours trouvé pour %(model)s %(record)s. Rafraîchissez la "
-"page et essayez de nouveau."
+"Aucun minuteur en cours trouvé pour %(model)s %(record)s. Actualisez la page "
+"et réessayez."
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__analytic_line_id
 msgid "Origin line"
-msgstr ""
+msgstr "Ligne d'origine"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__running_timer_id
@@ -240,7 +242,7 @@ msgstr "Reprendre le travail"
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_project_project__show_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_project_task__show_time_control
 msgid "Show Time Control"
-msgstr "Montrer les Minuteurs"
+msgstr "Afficher le contrôle du temps"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields.selection,name:project_timesheet_time_control.selection__hr_timesheet_time_control_mixin__show_time_control__start
@@ -281,7 +283,7 @@ msgstr "Démarrer le travail"
 #: model:ir.model.fields.selection,name:project_timesheet_time_control.selection__project_project__show_time_control__stop
 #: model:ir.model.fields.selection,name:project_timesheet_time_control.selection__project_task__show_time_control__stop
 msgid "Stop"
-msgstr "Arreter"
+msgstr "Arrêter"
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
@@ -314,7 +316,9 @@ msgstr "Tâche"
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
 msgid "That is a lot of time! Make sure it is fine before saving."
-msgstr "Ça fait long ! Assurez-vous que c'est OK avant de sauvegarder."
+msgstr ""
+"C'est une durée importante ! Vérifiez que tout est correct avant "
+"d'enregistrer."
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
