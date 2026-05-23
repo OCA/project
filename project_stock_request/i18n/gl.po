@@ -6,29 +6,31 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-05-23 18:33+0000\n"
+"Last-Translator: Pablo Castelo <pablocv@gmx.es>\n"
 "Language-Team: none\n"
 "Language: gl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: project_stock_request
 #: model:ir.model,name:project_stock_request.model_project_project
 #: model:ir.model.fields,field_description:project_stock_request.field_stock_request_order__project_id
 msgid "Project"
-msgstr ""
+msgstr "Proxecto"
 
 #. module: project_stock_request
 #: model:ir.model.fields,field_description:project_stock_request.field_stock_request_order__project_task_id
 msgid "Project Task"
-msgstr ""
+msgstr "Tarefa de Proxecto"
 
 #. module: project_stock_request
 #: model:ir.model,name:project_stock_request.model_stock_request_order
 msgid "Stock Request Order"
-msgstr ""
+msgstr "Solicitude de pedido de existencias"
 
 #. module: project_stock_request
 #: model:ir.model.fields,field_description:project_stock_request.field_project_project__stock_request_order_ids
@@ -36,9 +38,9 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_stock_request.project_stock_request_order_view_form2
 #: model_terms:ir.ui.view,arch_db:project_stock_request.project_task_stock_request_order_view_form
 msgid "Stock Request Orders"
-msgstr ""
+msgstr "Pedidos de solicitude de existencias"
 
 #. module: project_stock_request
 #: model:ir.model,name:project_stock_request.model_project_task
 msgid "Task"
-msgstr ""
+msgstr "Tarefa"
