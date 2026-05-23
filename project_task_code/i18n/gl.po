@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-31 18:04+0000\n"
-"PO-Revision-Date: 2019-02-11 12:50+0000\n"
-"Last-Translator: Marta Vázquez Rodríguez <vazrodmar@gmail.com>\n"
+"PO-Revision-Date: 2026-05-23 07:46+0000\n"
+"Last-Translator: Pablo Castelo <pablocv@gmx.es>\n"
 "Language-Team: Galician (http://www.transifex.com/oca/OCA-project-8-0/"
 "language/gl/)\n"
 "Language: gl\n"
@@ -17,12 +17,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.4\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: project_task_code
 #: model_terms:ir.ui.view,arch_db:project_task_code.project_task_code_form_view
 msgid "<span class=\"oe_inline\"> - </span>"
-msgstr ""
+msgstr "<span class=\"oe_inline\"> - </span>"
 
 #. module: project_task_code
 #: model:ir.model,name:project_task_code.model_project_task
