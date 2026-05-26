@@ -3,7 +3,7 @@
 
 {
     "name": "Project Task Ancestor",
-    "version": "19.0.1.0.0",
+    "version": "19.0.1.0.1",
     "category": "Services/Project",
     "website": "https://github.com/OCA/project",
     "author": "Moduon, Odoo Community Association (OCA)",
