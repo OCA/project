@@ -4,7 +4,7 @@
 {
     "name": "Project Task Stage Auto State",
     "summary": "Auto-change task state (done/canceled) after N days on selected stages",
-    "version": "19.0.1.0.0",
+    "version": "19.0.1.0.1",
     "development_status": "Alpha",
     "category": "Productivity/Project",
     "website": "https://github.com/OCA/project",

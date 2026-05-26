@@ -45,6 +45,7 @@ addon | version | maintainers | summary
 [project_task_product_stock](project_task_product_stock/) | 19.0.1.0.0 |  | Allows to specify in a project task, the lot or serial number of the task product.
 [project_task_pull_request](project_task_pull_request/) | 19.0.1.0.0 |  | Adds a field for a PR URI to project tasks
 [project_task_pull_request_state](project_task_pull_request_state/) | 19.0.1.0.0 |  | Track Pull Request state in tasks
+[project_task_stage_auto_state](project_task_stage_auto_state/) | 19.0.1.0.1 | <a href='https://github.com/Shide'><img src='https://github.com/Shide.png' width='32' height='32' style='border-radius:50%;' alt='Shide'/></a> <a href='https://github.com/rafaelbn'><img src='https://github.com/rafaelbn.png' width='32' height='32' style='border-radius:50%;' alt='rafaelbn'/></a> | Auto-change task state (done/canceled) after N days on selected stages
 [project_task_stage_mgmt](project_task_stage_mgmt/) | 19.0.1.0.0 | <a href='https://github.com/DavidJForgeFlow'><img src='https://github.com/DavidJForgeFlow.png' width='32' height='32' style='border-radius:50%;' alt='DavidJForgeFlow'/></a> | Allows to assign and create task stages on project creation wizard
 [project_task_stage_state](project_task_stage_state/) | 19.0.1.0.0 |  | Restore State attribute removed from Project Stages in 8.0
 [project_task_tag](project_task_tag/) | 19.0.1.0.0 |  | Limit tags available on task
