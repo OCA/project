@@ -1,0 +1,89 @@
+<odoo>
+    <!-- Inherit Form View to Modify it -->
+    <record id="project_project_view_form_inherited" model="ir.ui.view">
+        <field name="name">project.project.form.inherited</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project" />
+        <field name="arch" type="xml">
+            <!-- Add Smart Button inside button_box -->
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button
+                    name="action_view_planning"
+                    type="object"
+                    class="oe_stat_button"
+                    icon="fa-calendar"
+                >
+                    <div class="o_field_widget o_stat_info">
+                        <span
+                            class="o_stat_text"
+                            style="font-weight: bold;"
+                        >Planning</span>
+                        <span
+                            class="o_stat_value"
+                            style="font-size: 11px; white-space: nowrap;"
+                        >
+                                <field
+                            name="planning_planned_display"
+                            readonly="1"
+                        /> / <field name="planning_total_display" readonly="1" />
+                                (<field name="planning_pct_display" readonly="1" />)
+                            </span>
+                    </div>
+                </button>
+            </xpath>
+
+            <xpath expr="//notebook" position="inside">
+                <page string="Planning" name="task_planning">
+                    <group>
+                        <group string="Planning Limits">
+                            <field
+                                name="total_estimated_hours_override"
+                                widget="float_time"
+                            />
+                            <field name="allocated_hours" widget="float_time" />
+                            <field name="pending_to_plan_hours" widget="float_time" />
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Inherit Kanban View to add shortcut button -->
+    <record id="view_project_kanban_inherited" model="ir.ui.view">
+        <field name="name">project.project.kanban.inherited</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project_kanban" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('o_project_kanban_boxes')]" position="inside">
+                <a
+                    class="o_project_kanban_box me-1"
+                    name="action_view_planning"
+                    type="object"
+                    title="Task Planning"
+                >
+                    <div>
+                        <span class="fa fa-calendar me-1" />
+                        <span>Planning</span>
+                    </div>
+                </a>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Inherit list View to add columns -->
+    <record id="view_project_list_inherited" model="ir.ui.view">
+        <field name="name">project.project.list.inherited</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='stage_id']" position="after">
+                <field name="total_estimated_hours_override" optional="hide" />
+                <field name="allocated_hours" optional="hide" />
+                <field name="pending_to_allocated_hours" optional="hide" />
+                <field name="total_planned_hours" optional="hide" />
+                <field name="pending_to_plan_hours" optional="hide" />
+            </xpath>
+        </field>
+    </record>
+</odoo>
