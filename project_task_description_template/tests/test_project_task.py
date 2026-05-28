@@ -16,12 +16,13 @@ class TestDescriptionTemplate(BaseCommon):
         )
 
     def test_onchange_description_template_id(self):
-        record = self.model.new({"description": "<p>Existing Description</p>"})
+        existing = Markup("<p>Existing Description</p>")
+        record = self.model.new({"description": existing})
         record.description_template_id = self.description_template
         record._onchange_description_template_id()
         self.assertEqual(
             record.description,
-            Markup("<p>Existing Description</p><span>- Sample Description</span>"),
+            existing + self.description_template.description,
             "Onchange method failed to append description correctly.",
         )
 
@@ -31,6 +32,6 @@ class TestDescriptionTemplate(BaseCommon):
         record._onchange_description_template_id()
         self.assertEqual(
             record.description,
-            Markup("<span>- Sample Description</span>"),
+            self.description_template.description,
             "Onchange method failed with empty initial description.",
         )
