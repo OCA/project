@@ -22,7 +22,6 @@ class Project(models.Model):
 
         # OPEN THE NEWLY CREATED PROJECT FORM
         return {
-            "view_type": "form",
             "view_mode": "form",
             "res_model": "project.project",
             "target": "current",
