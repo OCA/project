@@ -1,0 +1,2 @@
+A project with privacy_visibility = 'portal' ("Invited portal users") lets any portal follower of the project or its tasks read it.
+Managers can share project/task data via the "Share Project" wizard and the "Share Task" public link.

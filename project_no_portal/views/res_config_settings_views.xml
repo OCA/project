@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field name="name">res.config.settings.form.inherit.project.no.portal</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="project.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//app[@name='project']" position="inside">
+                <block title="Portal Access" id="project_no_portal_access">
+                    <setting
+                        id="block_project_portal_access_setting"
+                        help="Prevent portal users from reading projects and tasks, block portal visibility, and disable the share actions."
+                    >
+                        <field name="block_project_portal_access" />
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>

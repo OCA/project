@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_task_kanban" model="ir.ui.view">
+        <field name="name">project.task.kanban.no.portal</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_kanban" />
+        <field name="arch" type="xml">
+            <!-- Field consumed by the "Share Task" link's t-if below. -->
+            <xpath expr="//field[@name='state']" position="after">
+                <field name="portal_share_blocked" />
+            </xpath>
+            <!-- Hide action kanban "Share Task" when the company blocks portal access. -->
+            <xpath
+                expr="//a[@name='%(portal.portal_share_action)d']"
+                position="attributes"
+            >
+                <attribute
+                    name="t-if"
+                >!record.portal_share_blocked.raw_value</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>
