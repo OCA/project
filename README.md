@@ -29,7 +29,7 @@ addon | version | maintainers | summary
 [project_key](project_key/) | 18.0.1.0.1 |  | Module decorates projects and tasks with Project Key
 [project_merge](project_merge/) | 18.0.1.0.0 |  | Wizard to merge project tasks
 [project_milestone_status](project_milestone_status/) | 18.0.1.0.0 | <a href='https://github.com/lbarry-apsl'><img src='https://github.com/lbarry-apsl.png' width='32' height='32' style='border-radius:50%;' alt='lbarry-apsl'/></a> | Project Milestone Status
-[project_parent](project_parent/) | 18.0.1.0.0 |  | Project Parent
+[project_parent](project_parent/) | 18.0.1.0.1 |  | Project Parent
 [project_parent_task_filter](project_parent_task_filter/) | 18.0.1.0.0 |  | Add a filter to show the parent tasks
 [project_pivot](project_pivot/) | 18.0.1.0.0 | <a href='https://github.com/victoralmau'><img src='https://github.com/victoralmau.png' width='32' height='32' style='border-radius:50%;' alt='victoralmau'/></a> | Pivot view for projects
 [project_portal_task_visibility](project_portal_task_visibility/) | 18.0.1.0.0 |  | Project Portal Task Visibility
@@ -69,10 +69,10 @@ addon | version | maintainers | summary
 [project_task_stock](project_task_stock/) | 18.0.1.1.1 | <a href='https://github.com/victoralmau'><img src='https://github.com/victoralmau.png' width='32' height='32' style='border-radius:50%;' alt='victoralmau'/></a> | Project Task Stock
 [project_task_stock_product_set](project_task_stock_product_set/) | 18.0.1.0.0 | <a href='https://github.com/victoralmau'><img src='https://github.com/victoralmau.png' width='32' height='32' style='border-radius:50%;' alt='victoralmau'/></a> | Project Task Stock Product Set
 [project_task_tag](project_task_tag/) | 18.0.1.0.0 |  | Limit tags available on task
-[project_template](project_template/) | 18.0.1.0.0 | <a href='https://github.com/patrickrwilson'><img src='https://github.com/patrickrwilson.png' width='32' height='32' style='border-radius:50%;' alt='patrickrwilson'/></a> | Project Templates
+[project_template](project_template/) | 18.0.1.0.1 | <a href='https://github.com/patrickrwilson'><img src='https://github.com/patrickrwilson.png' width='32' height='32' style='border-radius:50%;' alt='patrickrwilson'/></a> | Project Templates
 [project_timeline](project_timeline/) | 18.0.1.0.0 |  | Timeline view for projects
 [project_timeline_hr_timesheet](project_timeline_hr_timesheet/) | 18.0.1.0.0 |  | Shows the progress of tasks on the timeline view.
-[project_timesheet_time_control](project_timesheet_time_control/) | 18.0.1.0.6 | <a href='https://github.com/victoralmau'><img src='https://github.com/victoralmau.png' width='32' height='32' style='border-radius:50%;' alt='victoralmau'/></a> | Project timesheet time control
+[project_timesheet_time_control](project_timesheet_time_control/) | 18.0.1.0.7 | <a href='https://github.com/victoralmau'><img src='https://github.com/victoralmau.png' width='32' height='32' style='border-radius:50%;' alt='victoralmau'/></a> | Project timesheet time control
 [project_type](project_type/) | 18.0.1.0.0 |  | Project Types
 [project_update_portal](project_update_portal/) | 18.0.1.0.0 | <a href='https://github.com/marcelsavegnago'><img src='https://github.com/marcelsavegnago.png' width='32' height='32' style='border-radius:50%;' alt='marcelsavegnago'/></a> | Allows portal access for project and update followers
 [project_version](project_version/) | 18.0.1.0.0 | <a href='https://github.com/lbarry-apsl'><img src='https://github.com/lbarry-apsl.png' width='32' height='32' style='border-radius:50%;' alt='lbarry-apsl'/></a> | Project Version
