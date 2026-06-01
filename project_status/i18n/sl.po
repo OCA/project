@@ -6,16 +6,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2020-03-31 10:14+0000\n"
-"Last-Translator: Matjaz Mozetic <matjaz@matmoz.si>\n"
+"PO-Revision-Date: 2026-06-01 06:30+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: none\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
-"%100==4 ? 2 : 3;\n"
-"X-Generator: Weblate 3.10\n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
+"n%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: project_status
 #: model_terms:ir.ui.view,arch_db:project_status.view_project_project_filter
@@ -25,7 +25,7 @@ msgstr "Zaključeno"
 #. module: project_status
 #: model:ir.model.fields,field_description:project_status.field_project_status__company_id
 msgid "Company"
-msgstr ""
+msgstr "Družba"
 
 #. module: project_status
 #: model:project.status,name:project_status.project_status_complete
@@ -107,9 +107,8 @@ msgstr "Na čakanju"
 
 #. module: project_status
 #: model:ir.model,name:project_status.model_project_project
-#, fuzzy
 msgid "Project"
-msgstr "Projektni status"
+msgstr "Projekt"
 
 #. module: project_status
 #: model:ir.model,name:project_status.model_project_status
