@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-02 01:51+0000\n"
-"PO-Revision-Date: 2019-11-08 08:34+0000\n"
-"Last-Translator: Matjaz Mozetic <matjaz@matmoz.si>\n"
+"PO-Revision-Date: 2026-06-01 06:30+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: Slovenian (https://www.transifex.com/oca/teams/23907/sl/)\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3;\n"
-"X-Generator: Weblate 3.8\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: project_timesheet_time_control
 #. odoo-python
@@ -29,6 +29,8 @@ msgid ""
 "%d running timers found. Cannot know which one to stop. Please stop them "
 "manually."
 msgstr ""
+"Najdeno je %d zagnanih časovnikov. Ne vem, katere naj ustavim. Ustavite jih "
+"ročno, prosim."
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
@@ -36,6 +38,8 @@ msgid ""
 ".\n"
 "                            If you continue, it will be stopped with"
 msgstr ""
+".\n"
+"                            Če boste nadaljevali, bo ustavljeno z"
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_kanban_account_analytic_line
@@ -43,6 +47,8 @@ msgid ""
 "<br/>\n"
 "                    <span>to</span>"
 msgstr ""
+"<br/>\n"
+"                    <span>do</span>"
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_project_kanban_inherited
@@ -53,6 +59,11 @@ msgid ""
 "                            Start work\n"
 "                        </span>"
 msgstr ""
+"<span class=\"o_label\">\n"
+"                            <i class=\"fa fa-lg fa-play-circle text-"
+"success\"/>\n"
+"                            Začni z delom\n"
+"                        </span>"
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_project_kanban_inherited
@@ -63,6 +74,11 @@ msgid ""
 "                            Stop work\n"
 "                        </span>"
 msgstr ""
+"<span class=\"o_label\">\n"
+"                            <i class=\"fa fa-lg fa-stop-circle text-"
+"warning\"/>\n"
+"                            Končaj z delom\n"
+"                        </span>"
 
 #. module: project_timesheet_time_control
 #: model:ir.model,name:project_timesheet_time_control.model_account_analytic_line
@@ -72,7 +88,7 @@ msgstr "Analitična postavka"
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
 msgid "Cancel"
-msgstr ""
+msgstr "Prekliči"
 
 #. module: project_timesheet_time_control
 #. odoo-python
@@ -82,6 +98,8 @@ msgid ""
 "Cannot stop timer %d because it is not running. Refresh the page and check "
 "again."
 msgstr ""
+"Časovnika %d ne morem ustaviti, ker ni zagnan. Osvežite stran in ponovno "
+"preverite."
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__company_id
@@ -117,7 +135,7 @@ msgstr "Prikazani naziv"
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_account_analytic_line__date_time_end
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__date_time_end
 msgid "End Time"
-msgstr ""
+msgstr "Čas dokončanja"
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.project_invoice_form
@@ -126,7 +144,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_form2_inherited
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_tree2_inherited
 msgid "End work"
-msgstr ""
+msgstr "Dokončanje"
 
 #. module: project_timesheet_time_control
 #: model:ir.model,name:project_timesheet_time_control.model_hr_timesheet_switch
@@ -144,22 +162,22 @@ msgstr "ID"
 #: model:ir.model.fields,help:project_timesheet_time_control.field_project_project__show_time_control
 #: model:ir.model.fields,help:project_timesheet_time_control.field_project_task__show_time_control
 msgid "Indicate which time control button to show, if any."
-msgstr ""
+msgstr "Kaže katere gumbe časovne kontrole se prikazuje, če sploh katerega."
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Zadnji posodobil"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Zadnjič posodobljeno"
 
 #. module: project_timesheet_time_control
 #: model:ir.model,name:project_timesheet_time_control.model_hr_timesheet_time_control_mixin
 msgid "Mixin for records related with timesheet lines"
-msgstr ""
+msgstr "Mixin za zapise v zvezi s postavkami časovnice"
 
 #. module: project_timesheet_time_control
 #. odoo-python
@@ -169,38 +187,40 @@ msgid ""
 "No running timer found in %(model)s %(record)s. Refresh the page and check "
 "again."
 msgstr ""
+"Za %(model)s %(record)s ni najdenih zagnanih časovnikov. Osvežite stran in "
+"ponovno preverite."
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__analytic_line_id
 msgid "Origin line"
-msgstr ""
+msgstr "Izvorna postavka"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__running_timer_id
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
 msgid "Previous timer"
-msgstr ""
+msgstr "Prejšnji časovnik"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__running_timer_duration
 msgid "Previous timer duration"
-msgstr ""
+msgstr "Trajanje prejšnjega časovnika"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__running_timer_start
 msgid "Previous timer start"
-msgstr ""
+msgstr "Zagon prejšnjega časovnika"
 
 #. module: project_timesheet_time_control
 #: model:ir.model,name:project_timesheet_time_control.model_project_project
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__project_id
 msgid "Project"
-msgstr ""
+msgstr "Projekt"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields.selection,name:project_timesheet_time_control.selection__account_analytic_line__show_time_control__resume
 msgid "Resume"
-msgstr ""
+msgstr "Nadaljuj"
 
 #. module: project_timesheet_time_control
 #. odoo-python
@@ -211,7 +231,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_form2_inherited
 #, python-format
 msgid "Resume work"
-msgstr ""
+msgstr "Nadaljuj z delom"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_account_analytic_line__show_time_control
@@ -219,26 +239,25 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_project_project__show_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_project_task__show_time_control
 msgid "Show Time Control"
-msgstr ""
+msgstr "Prikaži časovno kontrolo"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields.selection,name:project_timesheet_time_control.selection__hr_timesheet_time_control_mixin__show_time_control__start
 #: model:ir.model.fields.selection,name:project_timesheet_time_control.selection__project_project__show_time_control__start
 #: model:ir.model.fields.selection,name:project_timesheet_time_control.selection__project_task__show_time_control__start
 msgid "Start"
-msgstr ""
+msgstr "Zagon"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_account_analytic_line__date_time
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__date_time
 msgid "Start Time"
-msgstr ""
+msgstr "Čas pričetka"
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
-#, fuzzy
 msgid "Start new timer"
-msgstr "Datum"
+msgstr "Zaženi nov časovnik"
 
 #. module: project_timesheet_time_control
 #. odoo-python
@@ -253,7 +272,7 @@ msgstr "Datum"
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_tree2_inherited
 #, python-format
 msgid "Start work"
-msgstr ""
+msgstr "Začni z delom"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields.selection,name:project_timesheet_time_control.selection__account_analytic_line__show_time_control__stop
@@ -266,12 +285,12 @@ msgstr "Stoj"
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
 msgid "Stop previous timer and start the new one"
-msgstr ""
+msgstr "Ustavi prejšnji časovnik in zaženi novega"
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
 msgid "Stop that very old timer and start the new one"
-msgstr ""
+msgstr "Ustavi tisti zelo star časovnik in zaženi novega"
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.account_analytic_line_tree
@@ -282,9 +301,8 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_form2_inherited
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_kanban
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_tree2_inherited
-#, fuzzy
 msgid "Stop work"
-msgstr "Stoj"
+msgstr "Ustavi delo"
 
 #. module: project_timesheet_time_control
 #: model:ir.model,name:project_timesheet_time_control.model_project_task
@@ -295,37 +313,37 @@ msgstr "Opravilo"
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
 msgid "That is a lot of time! Make sure it is fine before saving."
-msgstr ""
+msgstr "To je veliko časa! Preverite, če je vse v redu preden shranite."
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
 msgid "The previous timer is old. Do you really want to stop it now?"
-msgstr ""
+msgstr "Prejšnji časovnik je zelo star. Ga res želite zaustaviti?"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,help:project_timesheet_time_control.field_hr_timesheet_switch__running_timer_id
 msgid "This timer is running and will be stopped"
-msgstr ""
+msgstr "Ta časovnik je v teku in bo ustavljen"
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,help:project_timesheet_time_control.field_hr_timesheet_switch__running_timer_duration
 msgid "When the previous timer is stopped, it will save this duration."
-msgstr ""
+msgstr "Ko bo prejšnji časovnik ustavljen, bo shranjeno trajanje."
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
 msgid "You have a running timer called"
-msgstr ""
+msgstr "Imate zagnan časovnik"
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
 msgid "and started at"
-msgstr ""
+msgstr "zagnan ob"
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
 msgid "hour(s)."
-msgstr ""
+msgstr "uri."
 
 #~ msgid "Analytic Account"
 #~ msgstr "Analitični konto"
