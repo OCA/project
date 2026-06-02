@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 n
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record model="ir.ui.view" id="project_project_form_view">
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='privacy_visibility']/.." position="inside">
+                <field
+                    name="group_ids"
+                    invisible="privacy_visibility != 'followers'"
+                    widget="many2many_tags"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>
