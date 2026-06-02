@@ -1,0 +1,21 @@
+<odoo>
+    <record id="project_buttom_kanban_view" model="ir.ui.view">
+        <field name="name">project.project.kanban</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project_kanban" />
+        <field name="arch" type="xml">
+            <xpath expr="//span[hasclass('text-truncate')]" position="before">
+                <a
+                    type="open"
+                    class="text-truncate d-block fs-4 fw-bold text-primary"
+                    t-att-title="record.display_name.value"
+                >
+                    <field name="display_name" />
+                </a>
+            </xpath>
+            <xpath expr="//span[hasclass('text-truncate')]" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>
