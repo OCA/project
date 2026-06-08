@@ -12,6 +12,7 @@ class ProjectTask(models.Model):
         comodel_name="hr.employee",
         string="Linked employees",
         compute="_compute_employee_ids",
+        compute_sudo=True,
         store=True,
     )
     hr_category_ids = fields.Many2many(
@@ -22,7 +23,10 @@ class ProjectTask(models.Model):
         "this task, limiting the selectable users to be assigned to "
         "those that belongs to that category.",
     )
-    domain_hr_category_ids = fields.Binary(compute="_compute_domain_hr_category_ids")
+    domain_hr_category_ids = fields.Binary(
+        compute="_compute_domain_hr_category_ids",
+        compute_sudo=True,
+    )
     user_ids = fields.Many2many(domain="domain_user_ids")
     domain_user_ids = fields.Binary(compute="_compute_domain_user_ids")
 
