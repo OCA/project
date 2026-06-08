@@ -119,3 +119,4 @@ Current `maintainers <https://odoo-community.org/page/maintainer-role>`__:
 This module is part of the `OCA/project <https://github.com/OCA/project/tree/18.0/project_administrator_restricted_visibility>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
+Added by Student for GitHub practical
