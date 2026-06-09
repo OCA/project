@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_project_costs_revenues_pivot" model="ir.ui.view">
+        <field name="name">project.costs.revenues.pivot</field>
+        <field name="model">project.costs.revenues</field>
+        <field name="arch" type="xml">
+            <pivot string="Project Costs and Revenues" sample="1">
+                <field name="date" interval="month" type="row" />
+                <field name="amount_to_invoice" type="measure" />
+                <field name="amount_invoiced" type="measure" />
+                <field name="timesheet_cost" type="measure" />
+                <field name="timesheet_duration" type="measure" widget="float_time" />
+            </pivot>
+        </field>
+    </record>
+
+    <record id="view_project_costs_revenues_graph" model="ir.ui.view">
+        <field name="name">project.costs.revenues.graph</field>
+        <field name="model">project.costs.revenues</field>
+        <field name="arch" type="xml">
+            <graph string="Project Costs and Revenues" type="bar" sample="1">
+                <field name="date" interval="month" />
+                <field name="amount_to_invoice" type="measure" />
+                <field name="timesheet_cost" type="measure" />
+            </graph>
+        </field>
+    </record>
+
+    <record id="view_project_costs_revenues_list" model="ir.ui.view">
+        <field name="name">project.costs.revenues.list</field>
+        <field name="model">project.costs.revenues</field>
+        <field name="arch" type="xml">
+            <list string="Project Costs and Revenues" create="false" edit="false">
+                <field name="date" />
+                <field name="project_id" />
+                <field name="partner_id" optional="show" />
+                <field name="sale_order_id" optional="hide" />
+                <field name="product_id" optional="hide" />
+                <field name="employee_id" optional="hide" />
+                <field
+                    name="timesheet_duration"
+                    sum="Total Hours"
+                    widget="float_time"
+                />
+                <field name="timesheet_cost" sum="Total Cost" />
+                <field name="amount_to_invoice" sum="Total to Invoice" />
+                <field name="amount_invoiced" sum="Total Invoiced" />
+                <field name="currency_id" column_invisible="1" />
+            </list>
+        </field>
+    </record>
+
+    <record id="view_project_costs_revenues_search" model="ir.ui.view">
+        <field name="name">project.costs.revenues.search</field>
+        <field name="model">project.costs.revenues</field>
+        <field name="arch" type="xml">
+            <search string="Project Costs and Revenues">
+                <field name="project_id" />
+                <field name="partner_id" />
+                <field name="account_id" />
+                <field name="sale_order_id" />
+                <field name="product_id" />
+                <field name="project_user_id" />
+                <field name="employee_id" />
+                <filter
+                    name="hide_empty"
+                    string="Hide Empty Periods"
+                    domain="['|', ('amount_to_invoice', '!=', 0), ('timesheet_cost', '!=', 0)]"
+                />
+                <separator />
+                <filter
+                    name="to_invoice"
+                    string="To Invoice"
+                    domain="[('amount_to_invoice', '!=', 0)]"
+                />
+                <filter
+                    name="invoiced"
+                    string="Invoiced"
+                    domain="[('amount_invoiced', '!=', 0)]"
+                />
+                <separator />
+                <group expand="0" string="Group By">
+                    <filter
+                        name="group_project"
+                        string="Project"
+                        context="{'group_by': 'project_id'}"
+                    />
+                    <filter
+                        name="group_account"
+                        string="Analytic Account"
+                        context="{'group_by': 'account_id'}"
+                    />
+                    <filter
+                        name="group_partner"
+                        string="Customer"
+                        context="{'group_by': 'partner_id'}"
+                    />
+                    <filter
+                        name="group_manager"
+                        string="Project Manager"
+                        context="{'group_by': 'project_user_id'}"
+                    />
+                    <filter
+                        name="group_company"
+                        string="Project Company"
+                        context="{'group_by': 'company_id'}"
+                    />
+                    <filter
+                        name="group_product"
+                        string="Product"
+                        context="{'group_by': 'product_id'}"
+                    />
+                    <filter
+                        name="group_sale_order"
+                        string="Sale Order"
+                        context="{'group_by': 'sale_order_id'}"
+                    />
+                    <filter
+                        name="group_so_line"
+                        string="Sale Order Line"
+                        context="{'group_by': 'so_line_id'}"
+                    />
+                    <filter
+                        name="group_employee"
+                        string="Employee"
+                        context="{'group_by': 'employee_id'}"
+                    />
+                    <separator />
+                    <filter
+                        name="group_date_month"
+                        string="Date"
+                        context="{'group_by': 'date:month'}"
+                    />
+                    <filter
+                        name="group_so_date_month"
+                        string="Sales Order Confirmation Date"
+                        context="{'group_by': 'so_confirmation_date:month'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_project_costs_revenues" model="ir.actions.act_window">
+        <field name="name">Costs and Revenues</field>
+        <field name="res_model">project.costs.revenues</field>
+        <field name="view_mode">pivot,graph,list</field>
+        <field name="search_view_id" ref="view_project_costs_revenues_search" />
+        <field
+            name="context"
+        >{'search_default_group_date_month': 1, 'search_default_hide_empty': 1}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No timesheet data yet
+            </p>
+            <p>
+                This report aggregates timesheet hours and cost, plus the
+                billable value of your time, by period. Log some timesheets
+                on a project to see figures here.
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+        id="menu_project_costs_revenues"
+        name="Costs and Revenues"
+        parent="project.menu_project_report"
+        action="action_project_costs_revenues"
+        sequence="50"
+    />
+</odoo>
