@@ -9,20 +9,20 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-12-22 01:55+0000\n"
-"PO-Revision-Date: 2021-04-04 16:46+0000\n"
-"Last-Translator: Yves Le Doeuff <yld@alliasys.fr>\n"
+"PO-Revision-Date: 2026-06-11 15:58+0000\n"
+"Last-Translator: Yann Papouin <ypa@decgroupe.com>\n"
 "Language-Team: French (https://www.transifex.com/oca/teams/23907/fr/)\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 4.3.2\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: project_task_stage_state
 #: model:ir.model.fields,field_description:project_task_stage_state.field_project_task__stage_id
 msgid "Stage"
-msgstr ""
+msgstr "Étape"
 
 #. module: project_task_stage_state
 #: model:ir.model,name:project_task_stage_state.model_project_task
@@ -37,7 +37,7 @@ msgstr "Étape de la tâche"
 #. module: project_task_stage_state
 #: model:ir.model.fields,field_description:project_task_stage_state.field_project_task_type__task_state
 msgid "Task State"
-msgstr ""
+msgstr "État de la tâche"
 
 #~ msgid "Cancelled"
 #~ msgstr "Annulé"
