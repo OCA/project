@@ -55,7 +55,7 @@ class ProjectRole(models.Model):
         ),
         (
             "name_nocompany_uniq",
-            ("EXCLUDE (name WITH =) WHERE (" "    company_id IS NULL" ")"),
+            ("EXCLUDE (name WITH =) WHERE (    company_id IS NULL)"),
             "Shared role with such name already exists!",
         ),
     ]
