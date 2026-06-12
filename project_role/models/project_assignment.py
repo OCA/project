@@ -1,7 +1,7 @@
 # Copyright 2018-2019 Brainbean Apps (https://brainbeanapps.com)
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 from odoo.exceptions import ValidationError
 
 
@@ -42,33 +42,24 @@ class ProjectAssignment(models.Model):
         ondelete="restrict",
     )
 
-    _sql_constraints = [
+    _project_role_user_uniq = models.Constraint(
+        "UNIQUE (project_id, role_id, user_id)",
+        "User may be assigned per role only once within a project!",
+    )
+    _company_role_user_uniq = models.Constraint(
         (
-            "project_role_user_uniq",
-            "UNIQUE (project_id, role_id, user_id)",
-            "User may be assigned per role only once within a project!",
+            "EXCLUDE (company_id WITH =, role_id WITH =, user_id WITH =) "
+            "WHERE (project_id IS NULL)"
         ),
+        "User may be assigned per role only once within a company!",
+    )
+    _nocompany_role_user_uniq = models.Constraint(
         (
-            "company_role_user_uniq",
-            (
-                "EXCLUDE ("
-                "    company_id WITH =, role_id WITH =, user_id WITH ="
-                ") WHERE ("
-                "    project_id IS NULL"
-                ")"
-            ),
-            "User may be assigned per role only once within a company!",
+            "EXCLUDE (role_id WITH =, user_id WITH =) "
+            "WHERE (project_id IS NULL AND company_id IS NULL)"
         ),
-        (
-            "nocompany_role_user_uniq",
-            (
-                "EXCLUDE (role_id WITH =, user_id WITH =) WHERE ("
-                "    project_id IS NULL AND company_id IS NULL"
-                ")"
-            ),
-            "User may be assigned per role only once!",
-        ),
-    ]
+        "User may be assigned per role only once!",
+    )
 
     @api.depends(
         "company_id.name",
@@ -79,22 +70,25 @@ class ProjectAssignment(models.Model):
     def _compute_name(self):
         for assignment in self:
             if assignment.project_id:
-                assignment.name = _("%(USER)s as %(ROLE)s on %(PROJECT)s") % {
-                    "USER": assignment.user_id.name,
-                    "ROLE": assignment.role_id.name,
-                    "PROJECT": assignment.project_id.name,
-                }
+                assignment.name = self.env._(
+                    "%(USER)s as %(ROLE)s on %(PROJECT)s",
+                    USER=assignment.user_id.name,
+                    ROLE=assignment.role_id.name,
+                    PROJECT=assignment.project_id.name,
+                )
             elif assignment.company_id:
-                assignment.name = _("%(USER)s as %(ROLE)s in %(PROJECT)s") % {
-                    "USER": assignment.user_id.name,
-                    "ROLE": assignment.role_id.name,
-                    "PROJECT": assignment.company_id.name,
-                }
+                assignment.name = self.env._(
+                    "%(USER)s as %(ROLE)s in %(PROJECT)s",
+                    USER=assignment.user_id.name,
+                    ROLE=assignment.role_id.name,
+                    PROJECT=assignment.company_id.name,
+                )
             else:
-                assignment.name = _("%(USER)s as %(ROLE)s") % {
-                    "USER": assignment.user_id.name,
-                    "ROLE": assignment.role_id.name,
-                }
+                assignment.name = self.env._(
+                    "%(USER)s as %(ROLE)s",
+                    USER=assignment.user_id.name,
+                    ROLE=assignment.role_id.name,
+                )
 
     def _get_conflicting_domain(self):
         self.ensure_one()
@@ -129,30 +123,28 @@ class ProjectAssignment(models.Model):
             )
             if conflicting_assignment:
                 raise ValidationError(
-                    _(
+                    self.env._(
                         "Assignment %(ASSIGNMENT)s conflicts with another assignment: "
-                        "%(OTHER_ASSIGNMENT)s"
+                        "%(OTHER_ASSIGNMENT)s",
+                        ASSIGNMENT=assignment.name,
+                        OTHER_ASSIGNMENT=conflicting_assignment.name,
                     )
-                    % {
-                        "ASSIGNMENT": assignment.name,
-                        "OTHER_ASSIGNMENT": conflicting_assignment.name,
-                    }
                 )
             if not assignment.role_id.can_assign(
                 assignment.user_id, assignment.project_id
             ):
                 if assignment.project_id:
-                    error = _(
+                    error = self.env._(
                         "User %(USER)s can not be assigned to role %(ROLE)s on "
-                        "%(PROJECT)s."
-                    ) % {
-                        "USER": assignment.user_id.name,
-                        "ROLE": assignment.role_id.name,
-                        "PROJECT": assignment.project_id.name,
-                    }
+                        "%(PROJECT)s.",
+                        USER=assignment.user_id.name,
+                        ROLE=assignment.role_id.name,
+                        PROJECT=assignment.project_id.name,
+                    )
                 else:
-                    error = _("User %(USER)s can not be assigned to role %(ROLE)s.") % {
-                        "USER": assignment.user_id.name,
-                        "ROLE": assignment.role_id.name,
-                    }
+                    error = self.env._(
+                        "User %(USER)s can not be assigned to role %(ROLE)s.",
+                        USER=assignment.user_id.name,
+                        ROLE=assignment.role_id.name,
+                    )
                 raise ValidationError(error)

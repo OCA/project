@@ -1,7 +1,7 @@
 # Copyright 2018-2019 Brainbean Apps (https://brainbeanapps.com)
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 from odoo.exceptions import ValidationError
 from odoo.tools.translate import html_translate
 
@@ -47,18 +47,14 @@ class ProjectRole(models.Model):
         ondelete="cascade",
     )
 
-    _sql_constraints = [
-        (
-            "name_company_uniq",
-            "UNIQUE (name, company_id)",
-            "Role with such name already exists in the company!",
-        ),
-        (
-            "name_nocompany_uniq",
-            ("EXCLUDE (name WITH =) WHERE (    company_id IS NULL)"),
-            "Shared role with such name already exists!",
-        ),
-    ]
+    _name_company_uniq = models.Constraint(
+        "UNIQUE (name, company_id)",
+        "Role with such name already exists in the company!",
+    )
+    _name_nocompany_uniq = models.Constraint(
+        "EXCLUDE (name WITH =) WHERE (company_id IS NULL)",
+        "Shared role with such name already exists!",
+    )
 
     @api.constrains("name")
     def _check_name(self):
@@ -71,18 +67,21 @@ class ProjectRole(models.Model):
                 limit=1,
             ):
                 raise ValidationError(
-                    _('Role "%s" conflicts with another role due to same name.')
-                    % (role.name,)
+                    self.env._(
+                        'Role "%s" conflicts with another role due to same name.',
+                        role.name,
+                    )
                 )
 
     @api.depends("name", "parent_id.complete_name")
     def _compute_complete_name(self):
         for role in self:
             if role.parent_id:
-                role.complete_name = _("%(parent)s / %(own)s") % {
-                    "parent": role.parent_id.complete_name,
-                    "own": role.name,
-                }
+                role.complete_name = self.env._(
+                    "%(parent)s / %(own)s",
+                    parent=role.parent_id.complete_name,
+                    own=role.name,
+                )
             else:
                 role.complete_name = role.name
 
@@ -96,8 +95,10 @@ class ProjectRole(models.Model):
                 and not role.parent_id.active
             ):
                 raise ValidationError(
-                    _("Please activate first parent role %s")
-                    % (role.parent_id.complete_name,)
+                    self.env._(
+                        "Please activate first parent role %s",
+                        role.parent_id.complete_name,
+                    )
                 )
 
     def can_assign(self, user_id, project_id):

@@ -14,15 +14,16 @@ _project_role_class = _module_ns + ".models.project_role.ProjectRole"
 
 
 class TestProjectRole(common.TransactionCase):
-    def setUp(self):
-        super().setUp()
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
 
-        self.ResUsers = self.env["res.users"]
-        self.Company = self.env["res.company"]
-        self.Project = self.env["project.project"]
-        self.Role = self.env["project.role"]
-        self.Assignment = self.env["project.assignment"]
-        self.company_id = self.env.user.company_id
+        cls.ResUsers = cls.env["res.users"]
+        cls.Company = cls.env["res.company"]
+        cls.Project = cls.env["project.project"]
+        cls.Role = cls.env["project.role"]
+        cls.Assignment = cls.env["project.assignment"]
+        cls.company_id = cls.env.user.company_id
 
     def test_create_assignment(self):
         user = self.ResUsers.sudo().create(
