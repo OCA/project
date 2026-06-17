@@ -54,7 +54,7 @@
                     <attribute name="default_group_by">project_status</attribute>
                 </xpath>
                 <xpath
-                    expr="//div[hasclass('o_project_kanban_main')]"
+                    expr="//main[hasclass('o_project_kanban_main')]"
                     position="inside"
                 >
                     <div>

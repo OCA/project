@@ -6,7 +6,9 @@ class Project(models.Model):
 
     @api.model
     def _read_group_status_ids(self, states, domain):
-        return states.search([])
+        # Retrieve all statuses to display them as column headers in the Kanban view.
+        # limit=None is passed explicitly to avoid pylint W8163 (no-search-all).
+        return states.search([], limit=None)
 
     project_status = fields.Many2one(
         comodel_name="project.status",
