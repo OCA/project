@@ -19,7 +19,7 @@ class TestProjectCases(TransactionCase):
                 "name": "Carlos Project User",
                 "login": "cpu",
                 "email": "cpu@yourcompany.com",
-                "groups_id": [(6, 0, [self.ref("project.group_project_user")])],
+                "group_ids": [(6, 0, [self.ref("project.group_project_user")])],
             }
         )
 
@@ -30,7 +30,12 @@ class TestProjectCases(TransactionCase):
         self.task = self.env["project.task"].create(
             {"project_id": self.project.id, "name": "Task Test"}
         )
-        self.product = self.env.ref("product.consu_delivery_03")
+        self.product = self.env["product.product"].create(
+            {
+                "name": "Test Product",
+                "type": "consu",
+            }
+        )
 
         # Refer to a action from the user created
         self.action = self.task.with_user(self.project_user.id)

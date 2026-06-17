@@ -4,7 +4,7 @@
 # Copyright 2018 - Brain-tec AG - Carlos Jesus Cebrian
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl-3.0).
 
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 from odoo.exceptions import ValidationError
 
 
@@ -39,5 +39,5 @@ class ProjectTaskMaterial(models.Model):
         for material in self:
             if not material.quantity > 0.0:
                 raise ValidationError(
-                    _("Quantity of material consumed must be greater than 0.")
+                    self.env._("Quantity of material consumed must be greater than 0.")
                 )
