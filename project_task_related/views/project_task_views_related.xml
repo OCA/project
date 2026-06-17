@@ -107,8 +107,10 @@
                                 optional="hide"
                                 invisible="rating_last_text == 'none'"
                                 column_invisible="True"
-                                groups="project.group_project_rating"
                             />
+                            <!-- OCA upgrade: 'project.group_project_rating' was removed in Odoo 19
+                            Odoo has simplified the project rating feature. The rating fields
+                            (like rating_last_text) are no longer restricted to a specific security group.-->
                             <field
                                 name="tag_ids"
                                 widget="many2many_tags"
