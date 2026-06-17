@@ -7,7 +7,7 @@
             ('user_id', '=', user.id),
             ('project_id', '!=', False),
             ('project_id.privacy_visibility', '=', 'followers'),
-            ('project_id.group_ids', 'in', user.groups_id.ids)
+            ('project_id.group_ids', 'in', user.group_ids.ids)
         ]</field>
         <field
             name="groups"
@@ -21,7 +21,7 @@
         <field name="domain_force">[
             ('project_id', '!=', False),
             ('project_id.privacy_visibility', '=', 'followers'),
-            ('project_id.group_ids', 'in', user.groups_id.ids)
+            ('project_id.group_ids', 'in', user.group_ids.ids)
         ]</field>
         <field
             name="groups"
@@ -35,7 +35,7 @@
         <field name="domain_force">[
             ('user_id', '=', user.id),
             ('project_id.privacy_visibility', '=', 'followers'),
-            ('project_id.group_ids', 'in', user.groups_id.ids)
+            ('project_id.group_ids', 'in', user.group_ids.ids)
         ]</field>
         <field
             name="groups"
