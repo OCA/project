@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="project_task_view_tree_main_base" model="ir.ui.view">
+        <field name="name">project.task.view.list.main.base.create.date</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.project_task_view_tree_main_base" />
+        <field name="arch" type="xml">
+            <field name="id" position="after">
+                <field name="create_date" optional="hidden" />
+            </field>
+        </field>
+    </record>
+</odoo>
