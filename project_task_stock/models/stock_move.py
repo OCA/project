@@ -135,6 +135,8 @@ class StockMove(models.Model):
         # Prevent incoherence when hr_timesheet addon is installed.
         if "project_id" in analytic_line_fields:
             vals["project_id"] = False
+        if "task_id" in analytic_line_fields:
+            vals["task_id"] = task.id
         # distributions
         if task.stock_analytic_distribution:
             new_amount = 0
