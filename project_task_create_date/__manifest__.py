@@ -3,7 +3,7 @@
 {
     "name": "Project Task Create Date",
     "summary": """UX module that adds the date of creation to the task list view""",
-    "version": "18.0.1.0.0",
+    "version": "18.0.1.0.1",
     "development_status": "Beta",
     "category": "Project",
     "website": "https://github.com/OCA/project",
