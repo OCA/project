@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-06-01 06:30+0000\n"
+"PO-Revision-Date: 2026-06-27 11:21+0000\n"
 "Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: none\n"
 "Language: sl\n"
@@ -62,7 +62,7 @@ msgstr "Nabavni nalog"
 #: code:addons/project_purchase_link/models/project_project.py:0
 #, python-format
 msgid "Purchase Order Lines"
-msgstr "Postavke nabavnega naloga"
+msgstr "Nabavne postavke"
 
 #. module: project_purchase_link
 #: model:ir.model.fields,field_description:project_purchase_link.field_project_project__purchase_line_total
