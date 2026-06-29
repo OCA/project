@@ -9,5 +9,6 @@ class ResCompany(models.Model):
     immediate_compute_forecast_line = fields.Boolean(
         string="Recompute forecast lines immediately",
         default=True,
-        help="If checked will force forecast lines recomputation on public holidays creation.",
+        help="If checked will force forecast lines recomputation on public holidays "
+        "creation.",
     )
