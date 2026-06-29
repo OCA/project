@@ -17,8 +17,7 @@
                             <field name="project_ids" widget="many2many_tags" />
                         </group>
                     </group>
-                        <field name="bokeh_chart" widget="bokeh_chart" nolabel="1" />
-
+                    <field name="bokeh_chart" widget="bokeh_chart" nolabel="1" />
                 </sheet>
             </form>
         </field>
@@ -37,5 +36,4 @@
         name="Forecast Reporting"
         action="action_forecast_lines_reporting"
     />
-
 </odoo>

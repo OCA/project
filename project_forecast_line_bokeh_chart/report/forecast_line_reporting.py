@@ -171,7 +171,7 @@ class ForecastLineReporting(models.TransientModel):
         else:
             step = len(palettes.Turbo256) // len(projects)
             project_colors = palettes.Turbo256[::step][: len(projects)]
-        return dict(zip(projects, project_colors))
+        return dict(zip(projects, project_colors, strict=False))
 
     def _build_plots(self, height=300, width=1024):
         employees, projects, data, data_overload = self._prepare_bokeh_chart_data()
