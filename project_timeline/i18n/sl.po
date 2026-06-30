@@ -9,49 +9,50 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-05-31 01:34+0000\n"
-"PO-Revision-Date: 2017-05-31 01:34+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"PO-Revision-Date: 2026-06-30 07:13+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: Slovenian (https://www.transifex.com/oca/teams/23907/sl/)\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
-"n%100==4 ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
+"n%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: project_timeline
 #: model:ir.model,website_form_label:project_timeline.model_project_task
 msgid "Create a Task"
-msgstr ""
+msgstr "Ustvari opravilo"
 
 #. module: project_timeline
 #: model:ir.model.fields,field_description:project_timeline.field_project_task__display_name
 #: model:ir.model.fields,field_description:project_timeline.field_report_project_task_user__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Prikazani naziv"
 
 #. module: project_timeline
 #: model:ir.model.fields,field_description:project_timeline.field_project_task__id
 #: model:ir.model.fields,field_description:project_timeline.field_report_project_task_user__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_timeline
 #: model:ir.model.fields,field_description:project_timeline.field_project_task__planned_date_end
 #: model:ir.model.fields,field_description:project_timeline.field_report_project_task_user__planned_date_end
 msgid "Planned Date End"
-msgstr ""
+msgstr "Planirani končni datum"
 
 #. module: project_timeline
 #: model:ir.model.fields,field_description:project_timeline.field_project_task__planned_date_start
 #: model:ir.model.fields,field_description:project_timeline.field_report_project_task_user__planned_date_start
 msgid "Planned Date Start"
-msgstr ""
+msgstr "Planirani začetni datum"
 
 #. module: project_timeline
 #: model_terms:ir.ui.view,arch_db:project_timeline.view_task_form2
 msgid "Planned Dates"
-msgstr ""
+msgstr "Planirani datumi"
 
 #. module: project_timeline
 #: model:ir.model,name:project_timeline.model_project_task
@@ -61,13 +62,13 @@ msgstr "Opravilo"
 #. module: project_timeline
 #: model:ir.model,name:project_timeline.model_report_project_task_user
 msgid "Tasks Analysis"
-msgstr ""
+msgstr "Analiza opravil"
 
 #. module: project_timeline
 #. odoo-python
 #: code:addons/project_timeline/models/project_task.py:0
 msgid "The end date must be after the start date."
-msgstr ""
+msgstr "Končni datum mora biti po začetnem datumu."
 
 #. module: project_timeline
 #: model:ir.model.fields,help:project_timeline.field_project_task__display_name
@@ -84,8 +85,19 @@ msgid ""
 "        Make sure to use the right format and order e.g. Improve the "
 "configuration screen 5h #feature #v16 @Mitchell !"
 msgstr ""
+"Za nastavitev novih opravil uporabite te ključne besede v naslovu:\n"
+"\n"
+"        30h - dodelite nalogi 30 ur\n"
+"        #oznake - nastavite oznake za opravilo\n"
+"        @uporabnik - dodeli nalogo uporabniku\n"
+"        ! - nastavite opravilo na srednjo prioriteto\n"
+"        !! - nastavite opravilo na visoko prioriteto\n"
+"        !!! - nastavite opravilo na nujno prioriteto\n"
+"\n"
+"        Prepričajte se, da uporabljate pravilen format in vrstni red, npr. "
+"Izboljšajte konfiguracijski zaslon 5h #funkcija #v16 @Mitchell !"
 
 #. module: project_timeline
 #: model_terms:ir.ui.view,arch_db:project_timeline.project_task_timeline
 msgid "User"
-msgstr ""
+msgstr "Uporabnik"
