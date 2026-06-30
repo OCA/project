@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-06-30 07:03+0000\n"
+"PO-Revision-Date: 2026-06-30 07:05+0000\n"
 "Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: none\n"
 "Language: sl\n"
@@ -20,7 +20,7 @@ msgstr ""
 #. module: project_forecast_line
 #: model_terms:ir.ui.view,arch_db:project_forecast_line.res_config_settings_view_form
 msgid "Allow to see forecast dates on quotations"
-msgstr ""
+msgstr "Dovoli prikaz datumov napovedi na ponudbah"
 
 #. module: project_forecast_line
 #: model:ir.model,name:project_forecast_line.model_res_company
@@ -53,22 +53,22 @@ msgstr "Potrjeno"
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__confirmed_consolidated_forecast
 msgid "Confirmed lines consolidated forecast"
-msgstr ""
+msgstr "Konsolidirana napoved potrjenih postavk"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__consolidated_forecast
 msgid "Consolidated Forecast"
-msgstr ""
+msgstr "Konsolidirana napoved"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,help:project_forecast_line.field_forecast_line__consolidated_forecast
 msgid "Consolidated forecast for lines of all types consumed"
-msgstr ""
+msgstr "Konsolidirana napoved za porabljene postavke vseh tipov"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,help:project_forecast_line.field_forecast_line__confirmed_consolidated_forecast
 msgid "Consolidated forecast for lines of type confirmed"
-msgstr ""
+msgstr "Konsolidirana napoved za postavke tipa potrjeno"
 
 #. module: project_forecast_line
 #: model:product.template,name:project_forecast_line.product_product_consultant_product_template
@@ -152,7 +152,7 @@ msgstr "Datum od"
 #. module: project_forecast_line
 #: model:ir.model.fields,help:project_forecast_line.field_forecast_line__date_from
 msgid "Date of the period start for this line"
-msgstr ""
+msgstr "Datum začetka obdobja za to postavko"
 
 #. module: project_forecast_line
 #: model:ir.model.fields.selection,name:project_forecast_line.selection__res_company__forecast_line_granularity__day
@@ -162,12 +162,12 @@ msgstr "Dan"
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_sale_order__default_forecast_date_end
 msgid "Default Forecast Date End"
-msgstr ""
+msgstr "Privzeti končni datum napovedi"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_sale_order__default_forecast_date_start
 msgid "Default Forecast Date Start"
-msgstr ""
+msgstr "Privzeti začetni datum napovedi"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_role__description
@@ -197,27 +197,27 @@ msgstr "Kader"
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__employee_forecast_role_id
 msgid "Employee Forecast Role"
-msgstr ""
+msgstr "Napovedna vloga zaposlenega"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__employee_resource_consumption_ids
 msgid "Employee Resource Consumption"
-msgstr ""
+msgstr "Poraba vira zaposlenega"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__employee_resource_forecast_line_id
 msgid "Employee Resource Forecast Line"
-msgstr ""
+msgstr "Postavka napovedi vira zaposlenega"
 
 #. module: project_forecast_line
 #: model:ir.model,name:project_forecast_line.model_hr_employee_forecast_role
 msgid "Employee forecast role"
-msgstr ""
+msgstr "Napovedna vloga zaposlenega"
 
 #. module: project_forecast_line
 #: model:ir.model,name:project_forecast_line.model_forecast_role
 msgid "Employee role for task matching"
-msgstr ""
+msgstr "Vloga zaposlenega za ujemanje opravil"
 
 #. module: project_forecast_line
 #: model:ir.actions.act_window,name:project_forecast_line.action_forecast_lines
@@ -235,7 +235,7 @@ msgstr "Napoved"
 #. module: project_forecast_line
 #: model:ir.actions.act_window,name:project_forecast_line.action_forecast_lines_consolidated
 msgid "Forecast (Consolidated)"
-msgstr ""
+msgstr "Napoved (konsolidirana)"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,help:project_forecast_line.field_forecast_line__forecast_hours
@@ -244,72 +244,75 @@ msgid ""
 "such as employees, and negative for things which consume forecast, such as "
 "holidays, sales, or tasks."
 msgstr ""
+"Napoved (v urah). Napoved je pozitivna za vire, ki dodajajo napoved, kot so "
+"zaposleni, in negativna za stvari, ki porabljajo napoved, kot so prazniki, "
+"prodaja ali opravila."
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_sale_order_line__forecast_date_end
 msgid "Forecast Date End"
-msgstr ""
+msgstr "Končni datum napovedi"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_sale_order_line__forecast_date_start
 msgid "Forecast Date Start"
-msgstr ""
+msgstr "Začetni datum napovedi"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_res_company__forecast_line_granularity
 #: model:ir.model.fields,field_description:project_forecast_line.field_res_config_settings__forecast_line_granularity
 msgid "Forecast Line Granularity"
-msgstr ""
+msgstr "Granularnost postavke napovedi"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_res_company__forecast_line_horizon
 #: model:ir.model.fields,field_description:project_forecast_line.field_res_config_settings__forecast_line_horizon
 msgid "Forecast Line Horizon"
-msgstr ""
+msgstr "Obzorje postavke napovedi"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_project_project_stage__forecast_line_type
 msgid "Forecast Line Type"
-msgstr ""
+msgstr "Tip postavke napovedi"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_res_config_settings__group_forecast_line_on_quotation
 msgid "Forecast Line on Quotations"
-msgstr ""
+msgstr "Postavka napovedi na ponudbah"
 
 #. module: project_forecast_line
 #: model_terms:ir.ui.view,arch_db:project_forecast_line.res_config_settings_view_form
 msgid "Forecast Management"
-msgstr ""
+msgstr "Upravljanje napovedi"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_project_task__forecast_recomputation_trigger
 msgid "Forecast Recomputation Trigger"
-msgstr ""
+msgstr "Sprožilec ponovnega izračuna napovedi"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_product_product__forecast_role_id
 #: model:ir.model.fields,field_description:project_forecast_line.field_product_template__forecast_role_id
 #: model:ir.model.fields,field_description:project_forecast_line.field_project_task__forecast_role_id
 msgid "Forecast Role"
-msgstr ""
+msgstr "Napovedna vloga"
 
 #. module: project_forecast_line
 #: model:ir.actions.act_window,name:project_forecast_line.action_forecast_roles
 #: model:ir.ui.menu,name:project_forecast_line.menu_forecast_role
 #: model_terms:ir.ui.view,arch_db:project_forecast_line.view_employee_form
 msgid "Forecast Roles"
-msgstr ""
+msgstr "Napovedne vloge"
 
 #. module: project_forecast_line
 #: model:ir.actions.server,name:project_forecast_line.cron_forecast_lines_ir_actions_server
 msgid "Forecast recomputation"
-msgstr ""
+msgstr "Ponovni izračun napovedi"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__forecast_role_id
 msgid "Forecast role"
-msgstr ""
+msgstr "Napovedna vloga"
 
 #. module: project_forecast_line
 #: model_terms:ir.ui.view,arch_db:project_forecast_line.view_forecast_line_search
@@ -371,12 +374,12 @@ msgstr "Dopust"
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_hr_employee__main_role_id
 msgid "Main Role"
-msgstr ""
+msgstr "Glavna vloga"
 
 #. module: project_forecast_line
 #: model:res.groups,name:project_forecast_line.group_forecast_line_on_quotation
 msgid "Manage Forecast Dates on Quotations"
-msgstr ""
+msgstr "Upravljanje datumov napovedi na ponudbah"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__res_model
@@ -400,12 +403,12 @@ msgstr "Naziv"
 #: model:ir.model.fields,help:project_forecast_line.field_res_config_settings__forecast_line_horizon
 #: model_terms:ir.ui.view,arch_db:project_forecast_line.res_config_settings_view_form
 msgid "Number of month for the forecast planning"
-msgstr ""
+msgstr "Število mesecev za načrtovanje napovedi"
 
 #. module: project_forecast_line
 #: model:project.project,name:project_forecast_line.software_project_1
 msgid "Odoo implementation"
-msgstr ""
+msgstr "Implementacija Odoo"
 
 #. module: project_forecast_line
 #: model_terms:ir.ui.view,arch_db:project_forecast_line.res_config_settings_view_form
@@ -413,22 +416,24 @@ msgid ""
 "Periodicity of the forecast that will be\n"
 "                                                    generated"
 msgstr ""
+"Periodičnost napovedi, ki bo\n"
+"                                                    ustvarjena"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,help:project_forecast_line.field_res_company__forecast_line_granularity
 #: model:ir.model.fields,help:project_forecast_line.field_res_config_settings__forecast_line_granularity
 msgid "Periodicity of the forecast that will be generated"
-msgstr ""
+msgstr "Periodičnost napovedi, ki bo ustvarjena"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_project_task__forecast_date_planned_end
 msgid "Planned end date"
-msgstr ""
+msgstr "Načrtovani končni datum"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_project_task__forecast_date_planned_start
 msgid "Planned start date"
-msgstr ""
+msgstr "Načrtovani začetni datum"
 
 #. module: project_forecast_line
 #: model:ir.model,name:project_forecast_line.model_product_template
@@ -454,7 +459,7 @@ msgstr "Projektna stopnja"
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_hr_employee_forecast_role__rate
 msgid "Rate"
-msgstr ""
+msgstr "Stopnja"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__res_id
@@ -464,7 +469,7 @@ msgstr "ID zapisa"
 #. module: project_forecast_line
 #: model:ir.model,name:project_forecast_line.model_resource_calendar_leaves
 msgid "Resource Time Off Detail"
-msgstr ""
+msgstr "Podrobnosti odsotnosti vira"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_hr_employee__role_ids
@@ -508,7 +513,7 @@ msgstr "Nastavitve"
 #. module: project_forecast_line
 #: model:product.template,name:project_forecast_line.product_product_dev_product_template
 msgid "Software Developer"
-msgstr ""
+msgstr "Razvijalec programske opreme"
 
 #. module: project_forecast_line
 #: model:ir.model,name:project_forecast_line.model_project_task
@@ -524,7 +529,7 @@ msgstr "Opravila"
 #. module: project_forecast_line
 #: model:ir.model.fields,help:project_forecast_line.field_project_task__forecast_recomputation_trigger
 msgid "Technical field used to trigger the forecast recomputation"
-msgstr ""
+msgstr "Tehnično polje za sprožitev ponovnega izračuna napovedi"
 
 #. module: project_forecast_line
 #: model:ir.model,name:project_forecast_line.model_hr_leave
@@ -548,6 +553,15 @@ msgid ""
 "\n"
 "        Make sure to use the right format and order e.g. Improve the configuration screen 5h #feature #v16 @Mitchell !"
 msgstr ""
+"Uporabite te ključne besede v naslovu za nastavitev novih opravil:\n"
+"\n"
+"        30h Opravilu dodeli 30 ur\n"
+"        #oznake Nastavi oznake na opravilu\n"
+"        @uporabnik Dodeli opravilo uporabniku\n"
+"        ! Nastavi opravilu visoko prioriteto\n"
+"\n"
+"        Uporabite pravilno obliko in vrstni red, npr. Izboljšaj nastavitveni "
+"zaslon 5h #funkcija #v16 @Mitchell !"
 
 #. module: project_forecast_line
 #: model:ir.model.fields.selection,name:project_forecast_line.selection__res_company__forecast_line_granularity__week
@@ -557,7 +571,7 @@ msgstr "Teden"
 #. module: project_forecast_line
 #: model:ir.model,name:project_forecast_line.model_forecast_line_mixin
 msgid "mixin for models which generate forecast lines"
-msgstr ""
+msgstr "mixin za modele, ki ustvarjajo postavke napovedi"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,help:project_forecast_line.field_forecast_line__employee_resource_forecast_line_id
@@ -565,8 +579,10 @@ msgid ""
 "technical field giving the name of the resource "
 "(model=hr.employee.forecast.role) line for that employee and that period"
 msgstr ""
+"tehnično polje, ki poda ime postavke vira (model=hr.employee.forecast.role) "
+"za tega zaposlenega in to obdobje"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,help:project_forecast_line.field_project_project_stage__forecast_line_type
 msgid "type of forecast lines created by the tasks of projects in that stage"
-msgstr ""
+msgstr "tip postavk napovedi, ki jih ustvarijo opravila projektov v tej stopnji"
