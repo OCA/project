@@ -6,7 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-06-30 04:40+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: none\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -14,47 +15,48 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: project_version
 #: model:ir.model.fields,field_description:project_version.field_project_version__create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Ustvaril"
 
 #. module: project_version
 #: model:ir.model.fields,field_description:project_version.field_project_version__create_date
 msgid "Created on"
-msgstr ""
+msgstr "Ustvarjeno"
 
 #. module: project_version
 #: model:ir.model.fields,field_description:project_version.field_project_version__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Prikazani naziv"
 
 #. module: project_version
 #: model:ir.model.fields,field_description:project_version.field_project_version__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_version
 #: model:ir.model.fields,field_description:project_version.field_project_version__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Zadnji posodobil"
 
 #. module: project_version
 #: model:ir.model.fields,field_description:project_version.field_project_version__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Zadnjič posodobljeno"
 
 #. module: project_version
 #: model:ir.model.fields,field_description:project_version.field_project_version__name
 msgid "Name"
-msgstr ""
+msgstr "Naziv"
 
 #. module: project_version
 #: model:ir.model,name:project_version.model_project_project
 #: model:ir.model.fields,field_description:project_version.field_project_version__project_id
 msgid "Project"
-msgstr ""
+msgstr "Projekt"
 
 #. module: project_version
 #: model:ir.actions.act_window,name:project_version.action_project_version
@@ -62,12 +64,12 @@ msgstr ""
 #: model:ir.ui.menu,name:project_version.menu_action_project_version
 #: model_terms:ir.ui.view,arch_db:project_version.project_version_form
 msgid "Project Version"
-msgstr ""
+msgstr "Verzija projekta"
 
 #. module: project_version
 #: model:ir.model,name:project_version.model_project_task
 msgid "Task"
-msgstr ""
+msgstr "Opravilo"
 
 #. module: project_version
 #: model:ir.model.fields,field_description:project_version.field_project_project__version_ids
@@ -75,4 +77,4 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_version.project_project_version_form
 #: model_terms:ir.ui.view,arch_db:project_version.project_task_search
 msgid "Version"
-msgstr ""
+msgstr "Verzija"
