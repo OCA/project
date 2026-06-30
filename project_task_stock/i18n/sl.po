@@ -6,7 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-06-30 06:43+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: none\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -14,6 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__allow_moves_action_assign
@@ -33,22 +35,22 @@ msgstr ""
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__analytic_distribution
 msgid "Analytic Distribution"
-msgstr ""
+msgstr "Analitična porazdelitev"
 
 #. module: project_task_stock
 #: model:ir.model,name:project_task_stock.model_account_analytic_line
 msgid "Analytic Line"
-msgstr ""
+msgstr "Analitična postavka"
 
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_stock_move__analytic_line_ids
 msgid "Analytic Lines"
-msgstr ""
+msgstr "Analitične postavke"
 
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__analytic_precision
 msgid "Analytic Precision"
-msgstr ""
+msgstr "Analitična natančnost"
 
 #. module: project_task_stock
 #: model_terms:ir.ui.view,arch_db:project_task_stock.view_stock_move_raw_list
@@ -58,13 +60,13 @@ msgstr ""
 #. module: project_task_stock
 #: model:ir.model.fields.selection,name:project_task_stock.selection__project_task__stock_state__assigned
 msgid "Assigned"
-msgstr ""
+msgstr "Dodeljeno"
 
 #. module: project_task_stock
 #: model:ir.model.fields.selection,name:project_task_stock.selection__project_task__stock_state__cancel
 #: model_terms:ir.ui.view,arch_db:project_task_stock.view_stock_move_raw_list
 msgid "Cancel"
-msgstr ""
+msgstr "Prekliči"
 
 #. module: project_task_stock
 #: model_terms:ir.ui.view,arch_db:project_task_stock.view_task_form2
@@ -84,38 +86,38 @@ msgstr ""
 #. module: project_task_stock
 #: model:ir.model.fields.selection,name:project_task_stock.selection__project_task__stock_state__confirmed
 msgid "Confirmed"
-msgstr ""
+msgstr "Potrjeno"
 
 #. module: project_task_stock
 #: model_terms:ir.ui.view,arch_db:project_task_stock.view_stock_move_raw_list
 msgid "Consumed"
-msgstr ""
+msgstr "Porabljeno"
 
 #. module: project_task_stock
 #: model:ir.model.fields,help:project_task_stock.field_project_project__location_id
 msgid "Default location from which materials are consumed."
-msgstr ""
+msgstr "Privzeta lokacija, iz katere se material potroši."
 
 #. module: project_task_stock
 #: model:ir.model.fields,help:project_task_stock.field_project_project__location_dest_id
 msgid "Default location to which materials are consumed."
-msgstr ""
+msgstr "Privzeta lokacija, na katero se material potroši."
 
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_project_project__location_dest_id
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__location_dest_id
 msgid "Destination Location"
-msgstr ""
+msgstr "Ciljna lokacija"
 
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__distribution_analytic_account_ids
 msgid "Distribution Analytic Account"
-msgstr ""
+msgstr "Distribucijski analitični konto"
 
 #. module: project_task_stock
 #: model:ir.model.fields.selection,name:project_task_stock.selection__project_task__stock_state__done
 msgid "Done"
-msgstr ""
+msgstr "Opravljeno"
 
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__done_stock_moves
@@ -131,7 +133,7 @@ msgstr ""
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__group_id
 msgid "Group"
-msgstr ""
+msgstr "Skupina"
 
 #. module: project_task_stock
 #: model:ir.model.fields,help:project_task_stock.field_project_task__done_stock_moves
@@ -152,7 +154,7 @@ msgstr ""
 #. module: project_task_stock
 #: model:ir.actions.act_window,name:project_task_stock.action_project_task_moves
 msgid "Inventory Moves"
-msgstr ""
+msgstr "Premiki inventarja"
 
 #. module: project_task_stock
 #. odoo-python
@@ -163,7 +165,7 @@ msgstr ""
 #. module: project_task_stock
 #: model_terms:ir.ui.view,arch_db:project_task_stock.view_task_form2
 msgid "Lock"
-msgstr ""
+msgstr "Zakleni"
 
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__stock_analytic_account_id
@@ -173,43 +175,43 @@ msgstr ""
 #. module: project_task_stock
 #: model:ir.model.fields,help:project_task_stock.field_project_task__stock_analytic_account_id
 msgid "Move created will be assigned to this analytic account"
-msgstr ""
+msgstr "Ustvarjeni premik bo dodeljen temu analitičnemu kontu"
 
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_project_project__picking_type_id
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__picking_type_id
 msgid "Operation Type"
-msgstr ""
+msgstr "Tip operacije"
 
 #. module: project_task_stock
 #: model:ir.model.fields.selection,name:project_task_stock.selection__project_task__stock_state__pending
 msgid "Pending"
-msgstr ""
+msgstr "Na čakanju"
 
 #. module: project_task_stock
 #: model_terms:ir.ui.view,arch_db:project_task_stock.view_task_form2
 msgid "Product Moves"
-msgstr ""
+msgstr "Premiki proizvoda"
 
 #. module: project_task_stock
 #: model:ir.model,name:project_task_stock.model_stock_move_line
 msgid "Product Moves (Stock Move Line)"
-msgstr ""
+msgstr "Premiki proizvoda (postavka premika zaloge)"
 
 #. module: project_task_stock
 #: model:ir.model,name:project_task_stock.model_project_project
 msgid "Project"
-msgstr ""
+msgstr "Projekt"
 
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_account_analytic_line__stock_task_id
 msgid "Project Task"
-msgstr ""
+msgstr "Projektno opravilo"
 
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_stock_move__task_id
 msgid "Related Task"
-msgstr ""
+msgstr "Povezano opravilo"
 
 #. module: project_task_stock
 #. odoo-python
@@ -217,18 +219,18 @@ msgstr ""
 #: model:ir.model,name:project_task_stock.model_stock_scrap
 #: model_terms:ir.ui.view,arch_db:project_task_stock.view_task_form2
 msgid "Scrap"
-msgstr ""
+msgstr "Odpis"
 
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__scrap_count
 msgid "Scrap Move"
-msgstr ""
+msgstr "Premik odpisa"
 
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__scrap_ids
 #: model_terms:ir.ui.view,arch_db:project_task_stock.view_task_form2
 msgid "Scraps"
-msgstr ""
+msgstr "Odpisi"
 
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_stock_move__show_cancel_button_in_task
@@ -239,12 +241,12 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_task_stock.field_project_project__location_id
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__location_id
 msgid "Source Location"
-msgstr ""
+msgstr "Izvorna lokacija"
 
 #. module: project_task_stock
 #: model_terms:ir.ui.view,arch_db:project_task_stock.edit_project
 msgid "Stock"
-msgstr ""
+msgstr "Zaloga"
 
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_project_project__stock_analytic_date
@@ -265,18 +267,18 @@ msgstr ""
 #. module: project_task_stock
 #: model_terms:ir.ui.view,arch_db:project_task_stock.view_task_form2
 msgid "Stock Info"
-msgstr ""
+msgstr "Podatki o zalogi"
 
 #. module: project_task_stock
 #: model:ir.model,name:project_task_stock.model_stock_move
 #: model:ir.model.fields,field_description:project_task_stock.field_account_analytic_line__stock_move_id
 msgid "Stock Move"
-msgstr ""
+msgstr "Premik zaloge"
 
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__move_ids
 msgid "Stock Moves"
-msgstr ""
+msgstr "Premiki zaloge"
 
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__stock_moves_is_locked
@@ -286,19 +288,19 @@ msgstr ""
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__stock_state
 msgid "Stock State"
-msgstr ""
+msgstr "Stanje zalog"
 
 #. module: project_task_stock
 #: model:ir.model,name:project_task_stock.model_project_task
 #: model:ir.model.fields,field_description:project_task_stock.field_stock_move_line__task_id
 #: model:ir.model.fields,field_description:project_task_stock.field_stock_scrap__task_id
 msgid "Task"
-msgstr ""
+msgstr "Opravilo"
 
 #. module: project_task_stock
 #: model:ir.model,name:project_task_stock.model_project_task_type
 msgid "Task Stage"
-msgstr ""
+msgstr "Stopnja opravila"
 
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_stock_move__raw_material_task_id
@@ -314,7 +316,7 @@ msgstr ""
 #. module: project_task_stock
 #: model:project.project,label_tasks:project_task_stock.project_project_tm_test
 msgid "Tasks"
-msgstr ""
+msgstr "Opravila"
 
 #. module: project_task_stock
 #: model:ir.model.fields,help:project_task_stock.field_project_task__unreserve_visible
@@ -324,17 +326,17 @@ msgstr ""
 #. module: project_task_stock
 #: model_terms:ir.ui.view,arch_db:project_task_stock.view_stock_move_raw_list
 msgid "To Consume"
-msgstr ""
+msgstr "Za porabo"
 
 #. module: project_task_stock
 #: model_terms:ir.ui.view,arch_db:project_task_stock.view_task_form2
 msgid "Transfer Materials"
-msgstr ""
+msgstr "Premesti materiale"
 
 #. module: project_task_stock
 #: model_terms:ir.ui.view,arch_db:project_task_stock.view_task_form2
 msgid "Unlock"
-msgstr ""
+msgstr "Odkleni"
 
 #. module: project_task_stock
 #: model_terms:ir.ui.view,arch_db:project_task_stock.view_task_form2
