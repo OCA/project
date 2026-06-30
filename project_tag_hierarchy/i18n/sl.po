@@ -6,7 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 19.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-06-30 07:22+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: none\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -14,39 +15,40 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: project_tag_hierarchy
 #: model:ir.model.fields,field_description:project_tag_hierarchy.field_project_tags__child_ids
 msgid "Child Tags"
-msgstr ""
+msgstr "Podrejene oznake"
 
 #. module: project_tag_hierarchy
 #: model:ir.model.fields,field_description:project_tag_hierarchy.field_project_tags__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Prikazani naziv"
 
 #. module: project_tag_hierarchy
 #: model:ir.model.fields,field_description:project_tag_hierarchy.field_project_tags__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_tag_hierarchy
 #: model:ir.model.fields,field_description:project_tag_hierarchy.field_project_tags__parent_path
 msgid "Parent Path"
-msgstr ""
+msgstr "Nadrejena pot"
 
 #. module: project_tag_hierarchy
 #: model:ir.model.fields,field_description:project_tag_hierarchy.field_project_tags__parent_id
 msgid "Parent Tag"
-msgstr ""
+msgstr "Nadrejena oznaka"
 
 #. module: project_tag_hierarchy
 #: model:ir.model,name:project_tag_hierarchy.model_project_tags
 msgid "Project Tags"
-msgstr ""
+msgstr "Oznake projektov"
 
 #. module: project_tag_hierarchy
 #. odoo-python
 #: code:addons/project_tag_hierarchy/models/project_tags.py:0
 msgid "You can not create recursive tags."
-msgstr ""
+msgstr "Rekurzivnih oznak ni mogoče ustvariti."
