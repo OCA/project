@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-06-13 09:25+0000\n"
+"PO-Revision-Date: 2026-06-30 04:35+0000\n"
 "Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: none\n"
 "Language: sl\n"
@@ -120,7 +120,7 @@ msgstr "V sklopu družbe"
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_role__complete_name
 msgid "Complete Name"
-msgstr "Poln naziv"
+msgstr "Polni naziv"
 
 #. module: project_role
 #: model:ir.model,name:project_role.model_res_config_settings
