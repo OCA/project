@@ -6,7 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-06-30 09:46+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: none\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -14,84 +15,85 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: project_task_stock_product_set
 #: model:ir.actions.act_window,name:project_task_stock_product_set.act_open_wizard_product_set_add_from_task
 msgid "Add a set in a project task"
-msgstr ""
+msgstr "Dodaj komplet v projektno opravilo"
 
 #. module: project_task_stock_product_set
 #: model_terms:ir.ui.view,arch_db:project_task_stock_product_set.product_set_add_from_task_form_view
 #: model_terms:ir.ui.view,arch_db:project_task_stock_product_set.view_task_form2
 msgid "Add set"
-msgstr ""
+msgstr "Dodaj sklop"
 
 #. module: project_task_stock_product_set
 #: model_terms:ir.ui.view,arch_db:project_task_stock_product_set.product_set_add_from_task_form_view
 msgid "Cancel"
-msgstr ""
+msgstr "Prekliči"
 
 #. module: project_task_stock_product_set
 #: model:ir.model.fields,field_description:project_task_stock_product_set.field_project_task_stock_product_set_wizard__create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Ustvaril"
 
 #. module: project_task_stock_product_set
 #: model:ir.model.fields,field_description:project_task_stock_product_set.field_project_task_stock_product_set_wizard__create_date
 msgid "Created on"
-msgstr ""
+msgstr "Ustvarjeno"
 
 #. module: project_task_stock_product_set
 #: model:ir.model.fields,field_description:project_task_stock_product_set.field_project_task_stock_product_set_wizard__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Prikazani naziv"
 
 #. module: project_task_stock_product_set
 #: model:ir.model.fields,field_description:project_task_stock_product_set.field_project_task_stock_product_set_wizard__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_task_stock_product_set
 #: model:ir.model.fields,field_description:project_task_stock_product_set.field_project_task_stock_product_set_wizard__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Zadnji posodobil"
 
 #. module: project_task_stock_product_set
 #: model:ir.model.fields,field_description:project_task_stock_product_set.field_project_task_stock_product_set_wizard__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Zadnjič posodobljeno"
 
 #. module: project_task_stock_product_set
 #: model:ir.model.fields,field_description:project_task_stock_product_set.field_project_task_stock_product_set_wizard__partner_id
 msgid "Partner"
-msgstr ""
+msgstr "Partner"
 
 #. module: project_task_stock_product_set
 #: model:ir.model.fields,field_description:project_task_stock_product_set.field_project_task_stock_product_set_wizard__product_set_id
 msgid "Product set"
-msgstr ""
+msgstr "Sklop proizvodov"
 
 #. module: project_task_stock_product_set
 #: model:ir.model,name:project_task_stock_product_set.model_product_set_line
 msgid "Product set line"
-msgstr ""
+msgstr "Postavka sklopa proizvodov"
 
 #. module: project_task_stock_product_set
 #: model:ir.model.fields,field_description:project_task_stock_product_set.field_project_task_stock_product_set_wizard__product_set_line_ids
 msgid "Product set lines"
-msgstr ""
+msgstr "Postavke sklopov proizvodov"
 
 #. module: project_task_stock_product_set
 #: model:ir.model.fields,field_description:project_task_stock_product_set.field_project_task_stock_product_set_wizard__quantity
 msgid "Quantity"
-msgstr ""
+msgstr "Količina"
 
 #. module: project_task_stock_product_set
 #: model:ir.model.fields,field_description:project_task_stock_product_set.field_project_task_stock_product_set_wizard__task_id
 msgid "Task"
-msgstr ""
+msgstr "Opravilo"
 
 #. module: project_task_stock_product_set
 #: model:ir.model,name:project_task_stock_product_set.model_project_task_stock_product_set_wizard
 msgid "Wizard model to add product set into a task"
-msgstr ""
+msgstr "Model čarovnika za dodajanje sklopa izdelkov v opravilo"
