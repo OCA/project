@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-06-30 06:48+0000\n"
+"PO-Revision-Date: 2026-06-30 06:51+0000\n"
 "Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: none\n"
 "Language: sl\n"
@@ -23,11 +23,14 @@ msgid ""
 "<span class=\"text-muted\">NB: This will archive the selected tasks (Except the destination task)\n"
 "                    </span>"
 msgstr ""
+"<span class=\"text-muted\">Opomba: To bo arhiviralo izbrana opravila (razen "
+"ciljnega opravila)\n"
+"                    </span>"
 
 #. module: project_merge
 #: model:ir.model.fields,field_description:project_merge.field_project_task_merge__user_ids
 msgid "Assignees"
-msgstr ""
+msgstr "Dodeljene osebe"
 
 #. module: project_merge
 #: model_terms:ir.ui.view,arch_db:project_merge.project_task_merge_view_form
@@ -87,7 +90,7 @@ msgstr "Združi opravila"
 #. module: project_merge
 #: model:ir.model.fields,field_description:project_merge.field_project_task_merge__dst_task_id
 msgid "Merge into an existing task"
-msgstr ""
+msgstr "Združi v obstoječe opravilo"
 
 #. module: project_merge
 #: model:ir.model.fields,field_description:project_merge.field_project_task_merge__dst_task_name
@@ -97,9 +100,9 @@ msgstr "Naziv novega opravila"
 #. module: project_merge
 #: model:ir.model,name:project_merge.model_project_task_merge
 msgid "Project Task Merge"
-msgstr ""
+msgstr "Združevanje projektnih opravil"
 
 #. module: project_merge
 #: model:ir.model.fields,field_description:project_merge.field_project_task_merge__task_ids
 msgid "Tasks to Merge"
-msgstr ""
+msgstr "Opravila za združitev"
