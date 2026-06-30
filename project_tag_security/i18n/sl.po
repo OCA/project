@@ -6,7 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-06-30 04:25+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: none\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -14,35 +15,36 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: project_tag_security
 #: model:ir.model.fields,field_description:project_tag_security.field_project_tags__allowed_project_ids
 msgid "Allowed Projects"
-msgstr ""
+msgstr "Dovoljeni projekti"
 
 #. module: project_tag_security
 #: model_terms:ir.ui.view,arch_db:project_tag_security.project_tags_form_view
 #: model_terms:ir.ui.view,arch_db:project_tag_security.project_tags_tree_view
 msgid "Empty for having all the projects allowed"
-msgstr ""
+msgstr "Prazno, da so dovoljeni vsi projekti"
 
 #. module: project_tag_security
 #: model:ir.model,name:project_tag_security.model_project_project
 msgid "Project"
-msgstr ""
+msgstr "Projekt"
 
 #. module: project_tag_security
 #: model:ir.model,name:project_tag_security.model_project_tags
 msgid "Project Tags"
-msgstr ""
+msgstr "Oznake projektov"
 
 #. module: project_tag_security
 #: model:ir.model.fields,field_description:project_tag_security.field_project_project__tag_ids
 #: model:ir.model.fields,field_description:project_tag_security.field_project_task__tag_ids
 msgid "Tags"
-msgstr ""
+msgstr "Oznake"
 
 #. module: project_tag_security
 #: model:ir.model,name:project_tag_security.model_project_task
 msgid "Task"
-msgstr ""
+msgstr "Opravilo"
