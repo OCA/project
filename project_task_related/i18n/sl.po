@@ -6,7 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-06-30 04:47+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: none\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -14,49 +15,50 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: project_task_related
 #: model_terms:ir.ui.view,arch_db:project_task_related.view_task_form_inherit_related_tasks
 msgid "My Deadline"
-msgstr ""
+msgstr "Moj rok"
 
 #. module: project_task_related
 #: model_terms:ir.ui.view,arch_db:project_task_related.view_task_form_inherit_related_tasks
 msgid "Next Activity"
-msgstr ""
+msgstr "Naslednja aktivnost"
 
 #. module: project_task_related
 #: model:ir.model.fields,field_description:project_task_related.field_project_task__reverse_related_task_ids
 msgid "Other to self task relation"
-msgstr ""
+msgstr "Razmerje med drugim opravilom in tem opravilom"
 
 #. module: project_task_related
 #: model_terms:ir.ui.view,arch_db:project_task_related.view_task_form_inherit_related_tasks
 msgid "Project"
-msgstr ""
+msgstr "Projekt"
 
 #. module: project_task_related
 #: model_terms:ir.ui.view,arch_db:project_task_related.view_task_form_inherit_related_tasks
 msgid "Rating"
-msgstr ""
+msgstr "Ocena"
 
 #. module: project_task_related
 #: model:ir.model.fields,field_description:project_task_related.field_project_task__related_task_ids
 #: model_terms:ir.ui.view,arch_db:project_task_related.view_task_form_inherit_related_tasks
 msgid "Related Tasks"
-msgstr ""
+msgstr "Povezana opravila"
 
 #. module: project_task_related
 #: model_terms:ir.ui.view,arch_db:project_task_related.view_project_task_search_inherit_same_customer
 msgid "Same customer"
-msgstr ""
+msgstr "Isti kupec"
 
 #. module: project_task_related
 #: model:ir.model.fields,field_description:project_task_related.field_project_task__forward_related_task_ids
 msgid "Self to other task relation"
-msgstr ""
+msgstr "Razmerje med tem opravilom in drugim opravilom"
 
 #. module: project_task_related
 #: model:ir.model,name:project_task_related.model_project_task
 msgid "Task"
-msgstr ""
+msgstr "Opravilo"
