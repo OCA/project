@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-06-30 06:43+0000\n"
+"PO-Revision-Date: 2026-06-30 06:47+0000\n"
 "Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: none\n"
 "Language: sl\n"
@@ -20,17 +20,17 @@ msgstr ""
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__allow_moves_action_assign
 msgid "Allow Moves Action Assign"
-msgstr ""
+msgstr "Dovoli dodelitev premikov"
 
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__allow_moves_action_confirm
 msgid "Allow Moves Action Confirm"
-msgstr ""
+msgstr "Dovoli potrditev premikov"
 
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__unreserve_visible
 msgid "Allowed to Unreserve Inventory"
-msgstr ""
+msgstr "Dovoljeno sprostiti rezervacijo zaloge"
 
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__analytic_distribution
@@ -55,7 +55,7 @@ msgstr "Analitična natančnost"
 #. module: project_task_stock
 #: model_terms:ir.ui.view,arch_db:project_task_stock.view_stock_move_raw_list
 msgid "Are you sure you want to proceed?"
-msgstr ""
+msgstr "Ali ste prepričani, da želite nadaljevati?"
 
 #. module: project_task_stock
 #: model:ir.model.fields.selection,name:project_task_stock.selection__project_task__stock_state__assigned
@@ -71,17 +71,17 @@ msgstr "Prekliči"
 #. module: project_task_stock
 #: model_terms:ir.ui.view,arch_db:project_task_stock.view_task_form2
 msgid "Cancel Materials"
-msgstr ""
+msgstr "Prekliči materiale"
 
 #. module: project_task_stock
 #: model_terms:ir.ui.view,arch_db:project_task_stock.view_task_form2
 msgid "Check availability materials"
-msgstr ""
+msgstr "Preveri razpoložljivost materialov"
 
 #. module: project_task_stock
 #: model_terms:ir.ui.view,arch_db:project_task_stock.view_task_form2
 msgid "Confirm materials"
-msgstr ""
+msgstr "Potrdi materiale"
 
 #. module: project_task_stock
 #: model:ir.model.fields.selection,name:project_task_stock.selection__project_task__stock_state__confirmed
@@ -123,12 +123,12 @@ msgstr "Opravljeno"
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__done_stock_moves
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task_type__done_stock_moves
 msgid "Done Stock Moves"
-msgstr ""
+msgstr "Opravljeni premiki zaloge"
 
 #. module: project_task_stock
 #: model_terms:ir.ui.view,arch_db:project_task_stock.view_stock_move_raw_list
 msgid "Forecasted Report"
-msgstr ""
+msgstr "Poročilo napovedi"
 
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__group_id
@@ -142,6 +142,8 @@ msgid ""
 "If you check this box, when a task is in this state, you will not be able to"
 " add more stock moves but they can be viewed."
 msgstr ""
+"Če označite to polje, ko je opravilo v tem stanju, ne boste mogli dodajati "
+"novih premikov zaloge, vendar jih bo mogoče pregledovati."
 
 #. module: project_task_stock
 #: model:ir.model.fields,help:project_task_stock.field_project_task__use_stock_moves
@@ -150,6 +152,8 @@ msgid ""
 "If you mark this check, when a task goes to this state, it will use stock "
 "moves"
 msgstr ""
+"Če označite to možnost, bo opravilo ob prehodu v to stanje uporabljalo "
+"premike zaloge"
 
 #. module: project_task_stock
 #: model:ir.actions.act_window,name:project_task_stock.action_project_task_moves
@@ -160,7 +164,7 @@ msgstr "Premiki inventarja"
 #. odoo-python
 #: code:addons/project_task_stock/models/project_task.py:0
 msgid "It is not possible to change this with reserved movements in tasks."
-msgstr ""
+msgstr "Tega ni mogoče spremeniti pri rezerviranih premikih v opravilih."
 
 #. module: project_task_stock
 #: model_terms:ir.ui.view,arch_db:project_task_stock.view_task_form2
@@ -170,7 +174,7 @@ msgstr "Zakleni"
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__stock_analytic_account_id
 msgid "Move Analytic Account"
-msgstr ""
+msgstr "Analitični konto premika"
 
 #. module: project_task_stock
 #: model:ir.model.fields,help:project_task_stock.field_project_task__stock_analytic_account_id
@@ -235,7 +239,7 @@ msgstr "Odpisi"
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_stock_move__show_cancel_button_in_task
 msgid "Show Cancel Button In Task"
-msgstr ""
+msgstr "Prikaži gumb za preklic v opravilu"
 
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_project_project__location_id
@@ -252,17 +256,17 @@ msgstr "Zaloga"
 #: model:ir.model.fields,field_description:project_task_stock.field_project_project__stock_analytic_date
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__stock_analytic_date
 msgid "Stock Analytic Date"
-msgstr ""
+msgstr "Analitični datum zaloge"
 
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__stock_analytic_distribution
 msgid "Stock Analytic Distribution"
-msgstr ""
+msgstr "Analitična porazdelitev zaloge"
 
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__stock_analytic_line_ids
 msgid "Stock Analytic Lines"
-msgstr ""
+msgstr "Analitične postavke zaloge"
 
 #. module: project_task_stock
 #: model_terms:ir.ui.view,arch_db:project_task_stock.view_task_form2
@@ -283,7 +287,7 @@ msgstr "Premiki zaloge"
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__stock_moves_is_locked
 msgid "Stock Moves Is Locked"
-msgstr ""
+msgstr "Premiki zaloge so zaklenjeni"
 
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__stock_state
@@ -305,13 +309,13 @@ msgstr "Stopnja opravila"
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_stock_move__raw_material_task_id
 msgid "Task for material"
-msgstr ""
+msgstr "Opravilo za material"
 
 #. module: project_task_stock
 #: model:project.project,name:project_task_stock.project_project_tm_test
 #: model:stock.picking.type,name:project_task_stock.stock_picking_type_tm_test
 msgid "Task material"
-msgstr ""
+msgstr "Material opravila"
 
 #. module: project_task_stock
 #: model:project.project,label_tasks:project_task_stock.project_project_tm_test
@@ -321,7 +325,7 @@ msgstr "Opravila"
 #. module: project_task_stock
 #: model:ir.model.fields,help:project_task_stock.field_project_task__unreserve_visible
 msgid "Technical field to check when we can unreserve"
-msgstr ""
+msgstr "Tehnično polje za preverjanje, kdaj lahko sprostimo rezervacijo"
 
 #. module: project_task_stock
 #: model_terms:ir.ui.view,arch_db:project_task_stock.view_stock_move_raw_list
@@ -341,10 +345,10 @@ msgstr "Odkleni"
 #. module: project_task_stock
 #: model_terms:ir.ui.view,arch_db:project_task_stock.view_task_form2
 msgid "Unreserve"
-msgstr ""
+msgstr "Sprosti rezervacijo"
 
 #. module: project_task_stock
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task__use_stock_moves
 #: model:ir.model.fields,field_description:project_task_stock.field_project_task_type__use_stock_moves
 msgid "Use Stock Moves"
-msgstr ""
+msgstr "Uporabi premike zaloge"
