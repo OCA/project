@@ -6,7 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-06-30 04:27+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: none\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -14,40 +15,41 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: project_task_code_portal
 #: model_terms:ir.ui.view,arch_db:project_task_code_portal.project_sharing_project_task_view_form
 msgid "<span class=\"oe_inline\"> - </span>"
-msgstr ""
+msgstr "<span class=\"oe_inline\"> - </span>"
 
 #. module: project_task_code_portal
 #. odoo-python
 #: code:addons/project_task_code_portal/controllers/portal.py:0
 msgid "No task with this code."
-msgstr ""
+msgstr "Ni opravila s to kodo."
 
 #. module: project_task_code_portal
 #: model:ir.model.fields,field_description:project_task_code_portal.field_project_task__portal_url
 msgid "Portal Url"
-msgstr ""
+msgstr "URL portala"
 
 #. module: project_task_code_portal
 #: model:ir.model.fields,field_description:project_task_code_portal.field_project_task__portal_url_visible
 msgid "Portal Url Visible"
-msgstr ""
+msgstr "Viden URL portala"
 
 #. module: project_task_code_portal
 #. odoo-python
 #: code:addons/project_task_code_portal/controllers/portal.py:0
 msgid "Search in Task code"
-msgstr ""
+msgstr "Iskanje po kodi opravil"
 
 #. module: project_task_code_portal
 #: model:ir.model,name:project_task_code_portal.model_project_task
 msgid "Task"
-msgstr ""
+msgstr "Opravilo"
 
 #. module: project_task_code_portal
 #: model_terms:ir.ui.view,arch_db:project_task_code_portal.project_sharing_project_task_view_search
 msgid "Task Code"
-msgstr ""
+msgstr "Koda opravila"
