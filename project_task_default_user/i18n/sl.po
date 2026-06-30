@@ -6,7 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-06-30 06:55+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: none\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -14,21 +15,22 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: project_task_default_user
 #: model:ir.model.fields,field_description:project_task_default_user.field_project_project__default_user_ids
 msgid "Default Users for Tasks"
-msgstr ""
+msgstr "Privzeti uporabniki za opravila"
 
 #. module: project_task_default_user
 #: model:ir.model.fields,field_description:project_task_default_user.field_project_task_type__default_user_ids
 msgid "Default Users for this Stage"
-msgstr ""
+msgstr "Privzeti uporabniki za to stopnjo"
 
 #. module: project_task_default_user
 #: model_terms:ir.ui.view,arch_db:project_task_default_user.project_edit_project_inherit_default_user
 msgid "Default users"
-msgstr ""
+msgstr "Privzeti uporabniki"
 
 #. module: project_task_default_user
 #: model:ir.model.fields,help:project_task_default_user.field_project_project__project_task_assignment_mode
@@ -40,6 +42,11 @@ msgid ""
 "\n"
 "Applied on task creation and stage changes."
 msgstr ""
+"Določa, kako se uporabijo privzeti uporabniki:\n"
+"- Zamenjaj: prepiše obstoječe uporabnike\n"
+"- Združi: doda privzete uporabnike obstoječim\n"
+"\n"
+"Uporabi se pri ustvarjanju opravil in pri spremembah stopnje."
 
 #. module: project_task_default_user
 #: model:ir.model.fields,help:project_task_default_user.field_project_project__default_user_ids
@@ -49,40 +56,43 @@ msgid ""
 "this applies if no users are set. On stage change, the users are replaced "
 "only if the new stage has default users."
 msgstr ""
+"Če je nastavljeno, bodo opravila samodejno dodeljena tem uporabnikom. Pri "
+"novih opravilih to velja, če ni nastavljen noben uporabnik. Pri spremembi "
+"stopnje se uporabniki zamenjajo le, če ima nova stopnja privzete uporabnike."
 
 #. module: project_task_default_user
 #: model:ir.model.fields.selection,name:project_task_default_user.selection__project_project__project_task_assignment_mode__merge
 #: model:ir.model.fields.selection,name:project_task_default_user.selection__project_task_type__stage_task_assignment_mode__merge
 msgid "Merge"
-msgstr ""
+msgstr "Združitev"
 
 #. module: project_task_default_user
 #: model:ir.model,name:project_task_default_user.model_project_project
 msgid "Project"
-msgstr ""
+msgstr "Projekt"
 
 #. module: project_task_default_user
 #: model:ir.model.fields,field_description:project_task_default_user.field_project_project__project_task_assignment_mode
 msgid "Project Task Assignment Mode"
-msgstr ""
+msgstr "Način dodeljevanja projektnih opravil"
 
 #. module: project_task_default_user
 #: model:ir.model.fields.selection,name:project_task_default_user.selection__project_project__project_task_assignment_mode__replace
 #: model:ir.model.fields.selection,name:project_task_default_user.selection__project_task_type__stage_task_assignment_mode__replace
 msgid "Replace"
-msgstr ""
+msgstr "Zamenjaj"
 
 #. module: project_task_default_user
 #: model:ir.model.fields,field_description:project_task_default_user.field_project_task_type__stage_task_assignment_mode
 msgid "Stage Task Assignment Mode"
-msgstr ""
+msgstr "Način dodeljevanja po stopnjah opravil"
 
 #. module: project_task_default_user
 #: model:ir.model,name:project_task_default_user.model_project_task
 msgid "Task"
-msgstr ""
+msgstr "Opravilo"
 
 #. module: project_task_default_user
 #: model:ir.model,name:project_task_default_user.model_project_task_type
 msgid "Task Stage"
-msgstr ""
+msgstr "Stopnja opravila"
