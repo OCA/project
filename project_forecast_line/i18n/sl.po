@@ -6,7 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-06-30 07:03+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: none\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -14,6 +15,7 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: project_forecast_line
 #: model_terms:ir.ui.view,arch_db:project_forecast_line.res_config_settings_view_form
@@ -23,30 +25,30 @@ msgstr ""
 #. module: project_forecast_line
 #: model:ir.model,name:project_forecast_line.model_res_company
 msgid "Companies"
-msgstr ""
+msgstr "Družbe"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__company_id
 #: model:ir.model.fields,field_description:project_forecast_line.field_hr_employee_forecast_role__company_id
 msgid "Company"
-msgstr ""
+msgstr "Družba"
 
 #. module: project_forecast_line
 #: model:ir.model,name:project_forecast_line.model_res_config_settings
 msgid "Config Settings"
-msgstr ""
+msgstr "Nastavitve"
 
 #. module: project_forecast_line
 #: model:ir.ui.menu,name:project_forecast_line.menu_forecast_config
 msgid "Configuration"
-msgstr ""
+msgstr "Nastavitve"
 
 #. module: project_forecast_line
 #: model:ir.model.fields.selection,name:project_forecast_line.selection__forecast_line__type__confirmed
 #: model:ir.model.fields.selection,name:project_forecast_line.selection__project_project_stage__forecast_line_type__confirmed
 #: model_terms:ir.ui.view,arch_db:project_forecast_line.view_forecast_line_search
 msgid "Confirmed"
-msgstr ""
+msgstr "Potrjeno"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__confirmed_consolidated_forecast
@@ -71,12 +73,12 @@ msgstr ""
 #. module: project_forecast_line
 #: model:product.template,name:project_forecast_line.product_product_consultant_product_template
 msgid "Consultant"
-msgstr ""
+msgstr "Svetovalec"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__cost
 msgid "Cost"
-msgstr ""
+msgstr "Stroški"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,help:project_forecast_line.field_forecast_line__cost
@@ -85,11 +87,14 @@ msgid ""
 "such as employees and negative for things which consume forecast such as "
 "holidays, sales, or tasks. "
 msgstr ""
+"Stroški, v valuti družbe. Stroški so pozitivni za stvari, ki dodajajo "
+"napoved, kot so zaposleni, in negativni za stvari, ki porabljajo napoved, "
+"kot so prazniki, prodaja ali opravila. "
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_project_task__create_date
 msgid "Created On"
-msgstr ""
+msgstr "Ustvarjeno"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__create_uid
@@ -101,7 +106,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_forecast_line.field_resource_calendar_leaves__create_uid
 #: model:ir.model.fields,field_description:project_forecast_line.field_sale_order_line__create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Ustvaril"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__create_date
@@ -112,37 +117,37 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_forecast_line.field_resource_calendar_leaves__create_date
 #: model:ir.model.fields,field_description:project_forecast_line.field_sale_order_line__create_date
 msgid "Created on"
-msgstr ""
+msgstr "Ustvarjeno"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__currency_id
 msgid "Currency"
-msgstr ""
+msgstr "Valuta"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_hr_employee_forecast_role__date_end
 msgid "Date End"
-msgstr ""
+msgstr "Končni datum"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__date_from
 msgid "Date From"
-msgstr ""
+msgstr "Datum od"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_hr_employee_forecast_role__date_start
 msgid "Date Start"
-msgstr ""
+msgstr "Začetni datum"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__date_to
 msgid "Date To"
-msgstr ""
+msgstr "Datum do"
 
 #. module: project_forecast_line
 #: model_terms:ir.ui.view,arch_db:project_forecast_line.view_forecast_line_search
 msgid "Date from"
-msgstr ""
+msgstr "Datum od"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,help:project_forecast_line.field_forecast_line__date_from
@@ -152,7 +157,7 @@ msgstr ""
 #. module: project_forecast_line
 #: model:ir.model.fields.selection,name:project_forecast_line.selection__res_company__forecast_line_granularity__day
 msgid "Day"
-msgstr ""
+msgstr "Dan"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_sale_order__default_forecast_date_end
@@ -167,7 +172,7 @@ msgstr ""
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_role__description
 msgid "Description"
-msgstr ""
+msgstr "Opis"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__display_name
@@ -179,7 +184,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_forecast_line.field_resource_calendar_leaves__display_name
 #: model:ir.model.fields,field_description:project_forecast_line.field_sale_order_line__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Prikazani naziv"
 
 #. module: project_forecast_line
 #: model:ir.model,name:project_forecast_line.model_hr_employee
@@ -187,7 +192,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_forecast_line.field_hr_employee_forecast_role__employee_id
 #: model_terms:ir.ui.view,arch_db:project_forecast_line.view_forecast_line_search
 msgid "Employee"
-msgstr ""
+msgstr "Kader"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__employee_forecast_role_id
@@ -225,7 +230,7 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_forecast_line.res_config_settings_view_form
 #: model_terms:ir.ui.view,arch_db:project_forecast_line.view_forecast_line_search
 msgid "Forecast"
-msgstr ""
+msgstr "Napoved"
 
 #. module: project_forecast_line
 #: model:ir.actions.act_window,name:project_forecast_line.action_forecast_lines_consolidated
@@ -309,7 +314,7 @@ msgstr ""
 #. module: project_forecast_line
 #: model_terms:ir.ui.view,arch_db:project_forecast_line.view_forecast_line_search
 msgid "Group By"
-msgstr ""
+msgstr "Združi po"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__id
@@ -321,17 +326,17 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_forecast_line.field_resource_calendar_leaves__id
 #: model:ir.model.fields,field_description:project_forecast_line.field_sale_order_line__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_forecast_line
 #: model:ir.model,name:project_forecast_line.model_hr_job
 msgid "Job Position"
-msgstr ""
+msgstr "Delovno mesto"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_project_task__write_date
 msgid "Last Updated On"
-msgstr ""
+msgstr "Zadnjič posodobljeno"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__write_uid
@@ -343,7 +348,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_forecast_line.field_resource_calendar_leaves__write_uid
 #: model:ir.model.fields,field_description:project_forecast_line.field_sale_order_line__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Zadnji posodobil"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__write_date
@@ -354,14 +359,14 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_forecast_line.field_resource_calendar_leaves__write_date
 #: model:ir.model.fields,field_description:project_forecast_line.field_sale_order_line__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Zadnjič posodobljeno"
 
 #. module: project_forecast_line
 #. odoo-python
 #: code:addons/project_forecast_line/models/hr_leave.py:0
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__hr_leave_id
 msgid "Leave"
-msgstr ""
+msgstr "Dopust"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_hr_employee__main_role_id
@@ -377,18 +382,18 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__res_model
 #: model_terms:ir.ui.view,arch_db:project_forecast_line.view_forecast_line_search
 msgid "Model"
-msgstr ""
+msgstr "Model"
 
 #. module: project_forecast_line
 #: model:ir.model.fields.selection,name:project_forecast_line.selection__res_company__forecast_line_granularity__month
 msgid "Month"
-msgstr ""
+msgstr "Mesec"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__name
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_role__name
 msgid "Name"
-msgstr ""
+msgstr "Naziv"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,help:project_forecast_line.field_res_company__forecast_line_horizon
@@ -428,23 +433,23 @@ msgstr ""
 #. module: project_forecast_line
 #: model:ir.model,name:project_forecast_line.model_product_template
 msgid "Product"
-msgstr ""
+msgstr "Proizvod"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__project_id
 #: model_terms:ir.ui.view,arch_db:project_forecast_line.view_forecast_line_search
 msgid "Project"
-msgstr ""
+msgstr "Projekt"
 
 #. module: project_forecast_line
 #: model:product.template,name:project_forecast_line.product_product_pm_product_template
 msgid "Project Manager"
-msgstr ""
+msgstr "Upravitelj projekta"
 
 #. module: project_forecast_line
 #: model:ir.model,name:project_forecast_line.model_project_project_stage
 msgid "Project Stage"
-msgstr ""
+msgstr "Projektna stopnja"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_hr_employee_forecast_role__rate
@@ -454,7 +459,7 @@ msgstr ""
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__res_id
 msgid "Record ID"
-msgstr ""
+msgstr "ID zapisa"
 
 #. module: project_forecast_line
 #: model:ir.model,name:project_forecast_line.model_resource_calendar_leaves
@@ -467,38 +472,38 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_forecast_line.field_hr_job__role_id
 #: model_terms:ir.ui.view,arch_db:project_forecast_line.view_forecast_line_search
 msgid "Role"
-msgstr ""
+msgstr "Vloga"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__sale_id
 msgid "Sale"
-msgstr ""
+msgstr "Prodaja"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__sale_line_id
 msgid "Sale line"
-msgstr ""
+msgstr "Prodajna postavka"
 
 #. module: project_forecast_line
 #: model:ir.model,name:project_forecast_line.model_sale_order
 msgid "Sales Order"
-msgstr ""
+msgstr "Prodajni nalog"
 
 #. module: project_forecast_line
 #: model:ir.model,name:project_forecast_line.model_sale_order_line
 msgid "Sales Order Line"
-msgstr ""
+msgstr "Prodajna postavka"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_hr_employee_forecast_role__sequence
 msgid "Sequence"
-msgstr ""
+msgstr "Zaporedje"
 
 #. module: project_forecast_line
 #: model:ir.actions.act_window,name:project_forecast_line.forecast_config_settings_action
 #: model:ir.ui.menu,name:project_forecast_line.forecast_config_settings_menu_action
 msgid "Settings"
-msgstr ""
+msgstr "Nastavitve"
 
 #. module: project_forecast_line
 #: model:product.template,name:project_forecast_line.product_product_dev_product_template
@@ -509,12 +514,12 @@ msgstr ""
 #: model:ir.model,name:project_forecast_line.model_project_task
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__task_id
 msgid "Task"
-msgstr ""
+msgstr "Opravilo"
 
 #. module: project_forecast_line
 #: model:project.project,label_tasks:project_forecast_line.software_project_1
 msgid "Tasks"
-msgstr ""
+msgstr "Opravila"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,help:project_forecast_line.field_project_task__forecast_recomputation_trigger
@@ -524,12 +529,12 @@ msgstr ""
 #. module: project_forecast_line
 #: model:ir.model,name:project_forecast_line.model_hr_leave
 msgid "Time Off"
-msgstr ""
+msgstr "Odsotnost"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__type
 msgid "Type"
-msgstr ""
+msgstr "Tip"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,help:project_forecast_line.field_project_task__display_name
@@ -547,7 +552,7 @@ msgstr ""
 #. module: project_forecast_line
 #: model:ir.model.fields.selection,name:project_forecast_line.selection__res_company__forecast_line_granularity__week
 msgid "Week"
-msgstr ""
+msgstr "Teden"
 
 #. module: project_forecast_line
 #: model:ir.model,name:project_forecast_line.model_forecast_line_mixin
