@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-02-02 01:51+0000\n"
-"PO-Revision-Date: 2026-06-01 07:10+0000\n"
+"PO-Revision-Date: 2026-06-30 07:13+0000\n"
 "Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: Slovenian (https://www.transifex.com/oca/teams/23907/sl/)\n"
 "Language: sl\n"
@@ -24,19 +24,19 @@ msgstr ""
 #. module: project_task_pull_request
 #: model:ir.model,website_form_label:project_task_pull_request.model_project_task
 msgid "Create a Task"
-msgstr ""
+msgstr "Ustvari opravilo"
 
 #. module: project_task_pull_request
 #: model:ir.model.fields,field_description:project_task_pull_request.field_project_project__display_name
 #: model:ir.model.fields,field_description:project_task_pull_request.field_project_task__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Prikazani naziv"
 
 #. module: project_task_pull_request
 #: model:ir.model.fields,field_description:project_task_pull_request.field_project_project__id
 #: model:ir.model.fields,field_description:project_task_pull_request.field_project_task__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_task_pull_request
 #: model:ir.model.fields,field_description:project_task_pull_request.field_project_project__pr_required_states
@@ -86,3 +86,14 @@ msgid ""
 "        Make sure to use the right format and order e.g. Improve the "
 "configuration screen 5h #feature #v16 @Mitchell !"
 msgstr ""
+"Za nastavitev novih opravil uporabite te ključne besede v naslovu:\n"
+"\n"
+"        30h - dodelite nalogi 30 ur\n"
+"        #oznake - nastavite oznake za opravilo\n"
+"        @uporabnik - dodeli nalogo uporabniku\n"
+"        ! - nastavite opravilo na srednjo prioriteto\n"
+"        !! - nastavite opravilo na visoko prioriteto\n"
+"        !!! - nastavite opravilo na nujno prioriteto\n"
+"\n"
+"        Prepričajte se, da uporabljate pravilen format in vrstni red, npr. "
+"Izboljšajte konfiguracijski zaslon 5h #funkcija #v16 @Mitchell !"
