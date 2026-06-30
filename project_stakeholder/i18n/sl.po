@@ -6,7 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-06-30 04:33+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: none\n"
 "Language: sl\n"
 "MIME-Version: 1.0\n"
@@ -14,114 +15,115 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
 "n%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: project_stakeholder
 #: model:ir.model,name:project_stakeholder.model_res_partner
 msgid "Contact"
-msgstr ""
+msgstr "Stik"
 
 #. module: project_stakeholder
 #: model_terms:ir.actions.act_window,help:project_stakeholder.action_project_stakeholder_role
 msgid "Create a Stakeholder Role"
-msgstr ""
+msgstr "Ustvari vlogo deležnika"
 
 #. module: project_stakeholder
 #: model:ir.model.fields,field_description:project_stakeholder.field_project_stakeholder__create_uid
 #: model:ir.model.fields,field_description:project_stakeholder.field_project_stakeholder_role__create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Ustvaril"
 
 #. module: project_stakeholder
 #: model:ir.model.fields,field_description:project_stakeholder.field_project_stakeholder__create_date
 #: model:ir.model.fields,field_description:project_stakeholder.field_project_stakeholder_role__create_date
 msgid "Created on"
-msgstr ""
+msgstr "Ustvarjeno"
 
 #. module: project_stakeholder
 #: model:ir.model.fields,field_description:project_stakeholder.field_project_stakeholder__display_name
 #: model:ir.model.fields,field_description:project_stakeholder.field_project_stakeholder_role__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Prikazani naziv"
 
 #. module: project_stakeholder
 #: model:ir.model.fields,field_description:project_stakeholder.field_project_stakeholder__id
 #: model:ir.model.fields,field_description:project_stakeholder.field_project_stakeholder_role__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_stakeholder
 #: model:ir.model.fields,field_description:project_stakeholder.field_project_stakeholder__write_uid
 #: model:ir.model.fields,field_description:project_stakeholder.field_project_stakeholder_role__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Zadnji posodobil"
 
 #. module: project_stakeholder
 #: model:ir.model.fields,field_description:project_stakeholder.field_project_stakeholder__write_date
 #: model:ir.model.fields,field_description:project_stakeholder.field_project_stakeholder_role__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Zadnjič posodobljeno"
 
 #. module: project_stakeholder
 #: model_terms:ir.actions.act_window,help:project_stakeholder.action_project_stakeholder_role
 msgid "Manage Project Stakeholder Roles."
-msgstr ""
+msgstr "Upravljajte vloge deležnikov projekta."
 
 #. module: project_stakeholder
 #: model:ir.model.fields,field_description:project_stakeholder.field_project_stakeholder__note
 msgid "Note"
-msgstr ""
+msgstr "Opomba"
 
 #. module: project_stakeholder
 #: model:ir.model,name:project_stakeholder.model_project_project
 #: model:ir.model.fields,field_description:project_stakeholder.field_project_stakeholder__project_id
 msgid "Project"
-msgstr ""
+msgstr "Projekt"
 
 #. module: project_stakeholder
 #: model:ir.model,name:project_stakeholder.model_project_stakeholder
 msgid "Project Stakeholder"
-msgstr ""
+msgstr "Projektni deležnik"
 
 #. module: project_stakeholder
 #: model:ir.model,name:project_stakeholder.model_project_stakeholder_role
 msgid "Project Stakeholder Role"
-msgstr ""
+msgstr "Vloga projektnega deležnika"
 
 #. module: project_stakeholder
 #: model:ir.actions.act_window,name:project_stakeholder.action_project_stakeholder_role
 #: model_terms:ir.ui.view,arch_db:project_stakeholder.view_project_stakeholder_role_form
 msgid "Project Stakeholder Roles"
-msgstr ""
+msgstr "Vloge projektnih deležnikov"
 
 #. module: project_stakeholder
 #: model_terms:ir.ui.view,arch_db:project_stakeholder.edit_project
 msgid "Project Stakeholders"
-msgstr ""
+msgstr "Projektni deležniki"
 
 #. module: project_stakeholder
 #: model:ir.model.fields,field_description:project_stakeholder.field_project_stakeholder__partner_id
 msgid "Stakeholder"
-msgstr ""
+msgstr "Deležnik"
 
 #. module: project_stakeholder
 #: model:ir.model.fields,field_description:project_stakeholder.field_project_stakeholder__role_id
 #: model:ir.model.fields,field_description:project_stakeholder.field_project_stakeholder_role__name
 msgid "Stakeholder Role"
-msgstr ""
+msgstr "Vloga deležnika"
 
 #. module: project_stakeholder
 #: model:ir.ui.menu,name:project_stakeholder.menu_project_stakeholder_role
 msgid "Stakeholder Roles"
-msgstr ""
+msgstr "Vloge deležnikov"
 
 #. module: project_stakeholder
 #: model:ir.model.fields,field_description:project_stakeholder.field_res_partner__stakeholder_ids
 #: model:ir.model.fields,field_description:project_stakeholder.field_res_users__stakeholder_ids
 #: model_terms:ir.ui.view,arch_db:project_stakeholder.view_partner_form
 msgid "Stakeholder in Projects"
-msgstr ""
+msgstr "Deležnik v projektih"
 
 #. module: project_stakeholder
 #: model:ir.model.fields,field_description:project_stakeholder.field_project_project__stakeholder_ids
 msgid "Stakeholders"
-msgstr ""
+msgstr "Deležniki"
