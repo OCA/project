@@ -10,32 +10,34 @@ msgstr ""
 "Project-Id-Version: Odoo Server 19.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2026-03-16 00:00+0000\n"
-"PO-Revision-Date: 2026-03-16 00:00+0000\n"
-"Last-Translator: ForgeFlow S.L.\n"
+"PO-Revision-Date: 2026-07-01 17:46+0000\n"
+"Last-Translator: Laura V <laura.valls@forgeflow.com>\n"
 "Language-Team: Swedish\n"
 "Language: sv\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: project_task_customer_ref
 #: model:ir.model,website_form_label:project_task_customer_ref.model_project_task
 msgid "Create a Task"
-msgstr ""
+msgstr "Skapa en uppgift"
 
 #. module: project_task_customer_ref
 #: model:ir.model.fields,field_description:project_task_customer_ref.field_project_task__display_name
 #: model:ir.model.fields,field_description:project_task_customer_ref.field_sale_order__display_name
 #: model:ir.model.fields,field_description:project_task_customer_ref.field_sale_order_line__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Visningsnamn"
 
 #. module: project_task_customer_ref
 #: model:ir.model.fields,field_description:project_task_customer_ref.field_project_task__id
 #: model:ir.model.fields,field_description:project_task_customer_ref.field_sale_order__id
 #: model:ir.model.fields,field_description:project_task_customer_ref.field_sale_order_line__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_task_customer_ref
 #: model:ir.model.fields,field_description:project_task_customer_ref.field_project_task__customer_reference
@@ -45,17 +47,17 @@ msgstr "Kundens orderreferens"
 #. module: project_task_customer_ref
 #: model:ir.model,name:project_task_customer_ref.model_sale_order
 msgid "Sales Order"
-msgstr ""
+msgstr "Försäljningsorder"
 
 #. module: project_task_customer_ref
 #: model:ir.model,name:project_task_customer_ref.model_sale_order_line
 msgid "Sales Order Line"
-msgstr ""
+msgstr "Försäljningsorderlinje"
 
 #. module: project_task_customer_ref
 #: model:ir.model,name:project_task_customer_ref.model_project_task
 msgid "Task"
-msgstr ""
+msgstr "Uppgift"
 
 #. module: project_task_customer_ref
 #: model:ir.model.fields,help:project_task_customer_ref.field_project_task__display_name
@@ -72,6 +74,17 @@ msgid ""
 "        Make sure to use the right format and order e.g. Improve the "
 "configuration screen 5h #feature #v16 @Mitchell !"
 msgstr ""
+"Använd dessa nyckelord i titeln för att ställa in nya uppgifter:\n"
+"\n"
+"        30h Allokera 30 timmar till uppgiften\n"
+"        #tags Ange taggar på uppgiften\n"
+"        @user Tilldela uppgiften till en användare\n"
+"        ! Ställ in uppgiften på medelprioritering\n"
+"        !! Ställ in uppgiften på höga prioritering\n"
+"        !!! Ställ in uppgiften på brådskande prioritering\n"
+"\n"
+"        Se till att använda rätt format och ordning t.ex. Förbättra "
+"konfigurationsskärmen 5h #feature #v16 @Mitchell !"
 
 #~ msgid "Project Task Customer Reference"
 #~ msgstr "Projektuppgift kundreferens"
