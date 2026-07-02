@@ -113,10 +113,10 @@
                                 />
                             </group>
                             <field name="project_risk_response_ids">
-                                <tree editable="bottom">
+                                <list editable="bottom">
                                     <field name="sequence" widget="handle" />
                                     <field name="description" />
-                                </tree>
+                                </list>
                                 <form>
                                     <group>
                                         <field name="sequence" />
@@ -127,17 +127,14 @@
                         </page>
                     </notebook>
                 </sheet>
-                <div class="oe_chatter">
-                    <field name="message_follower_ids" widget="mail_followers" />
-                    <field name="message_ids" widget="mail_thread" />
-                </div>
+                <chatter />
             </form>
         </field>
     </record>
-    <record id="project_risk_tree_view" model="ir.ui.view">
+    <record id="project_risk_list_view" model="ir.ui.view">
         <field name="model">project.risk</field>
         <field name="arch" type="xml">
-            <tree
+            <list
                 default_order="rating desc,proximity desc"
                 decoration-danger="rating > 7"
                 decoration-muted="state == 'draft'"
@@ -147,7 +144,7 @@
                 <field name="rating" />
                 <field name="proximity" />
                 <field name="state" />
-            </tree>
+            </list>
         </field>
     </record>
     <record id="project_risk_search_view" model="ir.ui.view">
