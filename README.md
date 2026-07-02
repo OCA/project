@@ -32,6 +32,7 @@ addon | version | maintainers | summary
 [project_key](project_key/) | 18.0.1.0.1 |  | Module decorates projects and tasks with Project Key
 [project_merge](project_merge/) | 18.0.1.0.0 |  | Wizard to merge project tasks
 [project_milestone_status](project_milestone_status/) | 18.0.1.0.0 | <a href='https://github.com/lbarry-apsl'><img src='https://github.com/lbarry-apsl.png' width='32' height='32' style='border-radius:50%;' alt='lbarry-apsl'/></a> | Project Milestone Status
+[project_no_portal](project_no_portal/) | 18.0.1.0.0 | <a href='https://github.com/divad1196'><img src='https://github.com/divad1196.png' width='32' height='32' style='border-radius:50%;' alt='divad1196'/></a> | Block portal access on project.project and project.task
 [project_parent](project_parent/) | 18.0.1.0.1 |  | Project Parent
 [project_parent_task_filter](project_parent_task_filter/) | 18.0.1.0.0 |  | Add a filter to show the parent tasks
 [project_pivot](project_pivot/) | 18.0.1.0.0 | <a href='https://github.com/victoralmau'><img src='https://github.com/victoralmau.png' width='32' height='32' style='border-radius:50%;' alt='victoralmau'/></a> | Pivot view for projects
