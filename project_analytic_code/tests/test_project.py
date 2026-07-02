@@ -13,31 +13,35 @@ class TestProject(TransactionCase):
         cls.project = cls.env.ref("project.project_project_1")
         cls.project.name = "Test project name"
         cls.plan = cls.env["account.analytic.plan"].create({"name": "Test plan"})
-        cls.project.analytic_account_id = cls.env["account.analytic.account"].create(
+        cls.project.account_id = cls.env["account.analytic.account"].create(
             {
                 "name": "Test Analytic account name",
                 "code": "Test Weird code",
                 "plan_id": cls.plan.id,
             }
         )
+        cls.env.flush_all()
 
     def test_search_project_by_account_analytic_code(self):
+        self.env.flush_all()
         result = self.env["project.project"].name_search(
-            name=self.project.analytic_account_id.code
+            name=self.project.account_id.code
         )
         self.assertEqual(
             result[0][1],
-            f"[{self.project.analytic_account_id.code}] {self.project.name}",
+            f"[{self.project.account_id.code}] {self.project.name}",
         )
 
     def test_project_display_name(self):
+        original_account = self.project.account_id
         self.assertEqual(
             self.project.display_name,
-            f"[{self.project.analytic_account_id.code}] {self.project.name}",
+            f"[{self.project.account_id.code}] {self.project.name}",
         )
-        self.project.analytic_account_id = False
+        self.project.account_id = False
 
         self.assertEqual(
             self.project.display_name,
             f"{self.project.name}",
         )
+        self.project.account_id = original_account

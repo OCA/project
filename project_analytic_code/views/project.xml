@@ -14,7 +14,7 @@
                 <filter
                     string="Analytic account"
                     name="Analytic account"
-                    context="{'group_by': 'analytic_account_id'}"
+                    context="{'group_by': 'account_id'}"
                 />
             </xpath>
         </field>
