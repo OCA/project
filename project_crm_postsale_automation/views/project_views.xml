@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+  <!--  # Copyright 2026 Patryk Pyczko (Nagarro)<patryk.pyczko@nagarro.com>
+  # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+
+  <record id="view_project_postsale_form" model="ir.ui.view">
+    <field name="name">project.project.postsale.form</field>
+    <field name="model">project.project</field>
+    <field name="inherit_id" ref="project.edit_project" />
+    <field name="arch" type="xml">
+      <div name="button_box" position="inside">
+        <button
+                    class="oe_stat_button"
+                    type="object"
+                    name="action_view_postsale_leads"
+                    icon="fa-smile-o"
+                >
+          <field
+                        string="Post-sale Leads"
+                        name="postsale_lead_count"
+                        widget="statinfo"
+                    />
+        </button>
+      </div>
+
+      <header position="inside">
+        <button
+                    name="action_generate_postsale_opportunity"
+                    string="Generate Next Opportunity"
+                    type="object"
+                    groups="base.group_no_one"
+                    invisible="not postsale_active"
+                />
+      </header>
+
+      <notebook position="inside">
+        <page name="postsale" string="Post-sale Tracking">
+          <group>
+            <group name="postsale_config" string="Configuration">
+              <field name="postsale_active" widget="boolean_toggle" />
+              <field
+                                name="postsale_user_id"
+                                invisible="not postsale_active"
+                                required="postsale_active"
+                            />
+              <field name="postsale_partner_id" invisible="not postsale_active" />
+              <label for="postsale_interval" invisible="not postsale_active" />
+              <div invisible="not postsale_active" class="o_row">
+                <field
+                                    name="postsale_interval"
+                                    required="postsale_active"
+                                    class="oe_inline"
+                                />
+                <field
+                                    name="postsale_rule"
+                                    required="postsale_active"
+                                    class="oe_inline"
+                                />
+              </div>
+              <field
+                                name="postsale_day_of_month"
+                                invisible="not postsale_active or postsale_rule in ('days', 'weeks')"
+                                required="postsale_active and postsale_rule not in ('days', 'weeks')"
+                            />
+              <field
+                                name="postsale_name_template"
+                                invisible="not postsale_active"
+                                required="postsale_active"
+                            />
+              <field
+                                name="postsale_generate_tags"
+                                invisible="not postsale_active"
+                                widget="boolean_toggle"
+                            />
+            </group>
+
+            <group
+                            name="postsale_status"
+                            string="Status &amp; Forecasting"
+                            invisible="not postsale_active"
+                        >
+              <field name="postsale_last_date" readonly="1" />
+              <field name="postsale_next_date" required="postsale_active" />
+              <field name="postsale_next_executions" readonly="1" />
+            </group>
+          </group>
+
+          <separator
+                        string="Internal Notes"
+                        invisible="not postsale_active"
+                        class="mt-4"
+                    />
+          <div invisible="not postsale_active" class="oe_clear">
+            <field
+                            name="postsale_notes"
+                            placeholder="Describe instructions, terms or SLA targets to map directly onto the description of generated Leads..."
+                            options="{'collaborative': true}"
+                            nolabel="1"
+                        />
+          </div>
+        </page>
+      </notebook>
+    </field>
+  </record>
+</odoo>

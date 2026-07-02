@@ -1,0 +1,2 @@
+- [Nagarro](<https://www.nagarro.com>):
+  - Patryk Pyczko \<<patryk.pyczko@nagarro.com>\>
