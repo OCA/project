@@ -6,48 +6,48 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 12.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2019-07-12 15:43+0000\n"
-"Last-Translator: Maria Sparenberg <maria.sparenberg@gmx.net>\n"
+"PO-Revision-Date: 2026-07-03 19:38+0000\n"
+"Last-Translator: intero-chd <c.dominiak@intero-technologies.de>\n"
 "Language-Team: none\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 3.7.1\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: project_key
 #: model_terms:ir.ui.view,arch_db:project_key.view_task_form2_extend_with_key
 msgid "<span class=\"oe_inline\"> : </span>"
-msgstr ""
+msgstr "<span class=\"oe_inline\"> : </span>"
 
 #. module: project_key
 #: model:ir.model,website_form_label:project_key.model_project_task
 msgid "Create a Task"
-msgstr ""
+msgstr "Aufgabe erstellen"
 
 #. module: project_key
 #: model:ir.model.fields,field_description:project_key.field_project_project__display_name
 #: model:ir.model.fields,field_description:project_key.field_project_task__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Anzeigename"
 
 #. module: project_key
 #: model:ir.model.fields,field_description:project_key.field_project_project__id
 #: model:ir.model.fields,field_description:project_key.field_project_task__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_key
 #: model:ir.model.fields,field_description:project_key.field_project_project__key
 #: model:ir.model.fields,field_description:project_key.field_project_task__key
 msgid "Key"
-msgstr "Nummerierungsmuster"
+msgstr "Schlüssel"
 
 #. module: project_key
 #: model:ir.model.fields,field_description:project_key.field_project_project__task_key_sequence_id
 msgid "Key Sequence"
-msgstr "Musterfolge"
+msgstr "Schlüsselsequenz"
 
 #. module: project_key
 #: model:ir.model,name:project_key.model_project_project
@@ -57,18 +57,18 @@ msgstr "Projekt"
 #. module: project_key
 #: model:ir.model.constraint,message:project_key.constraint_project_project_project_key_unique
 msgid "Project key must be unique"
-msgstr "Das Nummerierungsmuster für Projekte muss eindeutig sein."
+msgstr "Der Projektschlüssel muss eindeutig sein"
 
 #. module: project_key
 #. odoo-python
 #: code:addons/project_key/models/project_project.py:0
 msgid "Project task sequence for project"
-msgstr ""
+msgstr "Ablauf der Projektaufgaben für das Projekt"
 
 #. module: project_key
 #: model:ir.model.fields,field_description:project_key.field_project_project__show_key_warning
 msgid "Show Key Warning"
-msgstr ""
+msgstr "Warnung für Schlüssel anzeigen"
 
 #. module: project_key
 #: model:ir.model,name:project_key.model_project_task
@@ -78,7 +78,7 @@ msgstr "Aufgabe"
 #. module: project_key
 #: model:ir.model.constraint,message:project_key.constraint_project_task_task_key_unique
 msgid "Task key must be unique!"
-msgstr "Aufgabennummerierung muss eindeutig sein!"
+msgstr "Die Aufgabennummerierung muss eindeutig sein!"
 
 #. module: project_key
 #: model:ir.model.fields,field_description:project_key.field_project_task__url
@@ -100,11 +100,23 @@ msgid ""
 "        Make sure to use the right format and order e.g. Improve the "
 "configuration screen 5h #feature #v16 @Mitchell !"
 msgstr ""
+"Verwende diese Stichwörter im Titel, um neue Aufgaben anzulegen:\n"
+"\n"
+"        30h 30 Stunden für die Aufgabe einplanen\n"
+"        #tags Stichwörter für die Aufgabe festlegen\n"
+"        @user Die Aufgabe einem Benutzer zuweisen\n"
+"        ! Weise der Aufgabe eine mittlere Priorität zu\n"
+"        !! Weisen Sie der Aufgabe eine hohe Priorität zu\n"
+"        !!! Weisen Sie der Aufgabe eine dringende Priorität zu\n"
+"\n"
+"        Achte darauf, das richtige Format und die richtige Reihenfolge zu "
+"verwenden, z. B.: Den Konfigurationsbildschirm verbessern 5h #feature #v16 "
+"@Mitchell !"
 
 #. module: project_key
 #: model_terms:ir.ui.view,arch_db:project_key.edit_project_extend_with_key
 msgid "Using '-' in project keys is not recommended."
-msgstr ""
+msgstr "Die Verwendung von „-“ in Projektschlüsseln wird nicht empfohlen."
 
 #~ msgid "key"
 #~ msgstr "Nummer"
