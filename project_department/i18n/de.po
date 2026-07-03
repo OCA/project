@@ -9,20 +9,20 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-06-17 02:52+0000\n"
-"PO-Revision-Date: 2023-03-03 09:15+0000\n"
-"Last-Translator: Nils Coenen <nils.coenen@nico-solutions.de>\n"
+"PO-Revision-Date: 2026-07-03 20:10+0000\n"
+"Last-Translator: intero-chd <c.dominiak@intero-technologies.de>\n"
 "Language-Team: German (https://www.transifex.com/oca/teams/23907/de/)\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.14.1\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: project_department
 #: model:ir.model,website_form_label:project_department.model_project_task
 msgid "Create a Task"
-msgstr ""
+msgstr "Aufgabe erstellen"
 
 #. module: project_department
 #: model_terms:ir.ui.view,arch_db:project_department.view_project_project_filter
@@ -33,13 +33,13 @@ msgstr "Abteilung"
 #: model:ir.model.fields,field_description:project_department.field_project_project__display_name
 #: model:ir.model.fields,field_description:project_department.field_project_task__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Anzeigename"
 
 #. module: project_department
 #: model:ir.model.fields,field_description:project_department.field_project_project__id
 #: model:ir.model.fields,field_description:project_department.field_project_task__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_department
 #: model:ir.model,name:project_department.model_project_project
@@ -73,3 +73,15 @@ msgid ""
 "        Make sure to use the right format and order e.g. Improve the "
 "configuration screen 5h #feature #v16 @Mitchell !"
 msgstr ""
+"Verwende diese Stichwörter im Titel, um neue Aufgaben anzulegen:\n"
+"\n"
+"        30h 30 Stunden für die Aufgabe einplanen\n"
+"        #tags Stichwörter für die Aufgabe festlegen\n"
+"        @user Die Aufgabe einem Benutzer zuweisen\n"
+"        ! Weise der Aufgabe eine mittlere Priorität zu\n"
+"        !! Weisen Sie der Aufgabe eine hohe Priorität zu\n"
+"        !!! Weisen Sie der Aufgabe eine dringende Priorität zu\n"
+"\n"
+"        Achte darauf, das richtige Format und die richtige Reihenfolge zu "
+"verwenden, z. B.: Den Konfigurationsbildschirm verbessern 5h #feature #v16 "
+"@Mitchell !"
