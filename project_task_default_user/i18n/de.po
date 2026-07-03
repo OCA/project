@@ -6,33 +6,35 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 19.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-07-03 19:49+0000\n"
+"Last-Translator: intero-chd <c.dominiak@intero-technologies.de>\n"
 "Language-Team: none\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: project_task_default_user
 #: model:ir.model,website_form_label:project_task_default_user.model_project_task
 msgid "Create a Task"
-msgstr ""
+msgstr "Aufgabe erstellen"
 
 #. module: project_task_default_user
 #: model:ir.model.fields,field_description:project_task_default_user.field_project_project__default_user_ids
 msgid "Default Users for Tasks"
-msgstr ""
+msgstr "Standardbenutzer auf Aufgaben"
 
 #. module: project_task_default_user
 #: model:ir.model.fields,field_description:project_task_default_user.field_project_task_type__default_user_ids
 msgid "Default Users for this Stage"
-msgstr ""
+msgstr "Standardbenutzer für diese Phase"
 
 #. module: project_task_default_user
 #: model_terms:ir.ui.view,arch_db:project_task_default_user.project_edit_project_inherit_default_user
 msgid "Default users"
-msgstr ""
+msgstr "Standardbenutzer"
 
 #. module: project_task_default_user
 #: model:ir.model.fields,help:project_task_default_user.field_project_project__project_task_assignment_mode
@@ -44,20 +46,25 @@ msgid ""
 "\n"
 "Applied on task creation and stage changes."
 msgstr ""
+"Legt fest, wie Standardbenutzer angewendet werden:\n"
+"- Ersetzen: Vorhandene Benutzer überschreiben\n"
+"- Zusammenführen: Standardbenutzer zu den vorhandenen Benutzern hinzufügen\n"
+"\n"
+"Wird bei der Erstellung von Aufgaben und bei Phasenwechseln angewendet."
 
 #. module: project_task_default_user
 #: model:ir.model.fields,field_description:project_task_default_user.field_project_project__display_name
 #: model:ir.model.fields,field_description:project_task_default_user.field_project_task__display_name
 #: model:ir.model.fields,field_description:project_task_default_user.field_project_task_type__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Anzeigename"
 
 #. module: project_task_default_user
 #: model:ir.model.fields,field_description:project_task_default_user.field_project_project__id
 #: model:ir.model.fields,field_description:project_task_default_user.field_project_task__id
 #: model:ir.model.fields,field_description:project_task_default_user.field_project_task_type__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_task_default_user
 #: model:ir.model.fields,help:project_task_default_user.field_project_project__default_user_ids
@@ -67,43 +74,47 @@ msgid ""
 "this applies if no users are set. On stage change, the users are replaced "
 "only if the new stage has default users."
 msgstr ""
+"Wenn diese Option aktiviert ist, werden Aufgaben automatisch diesen "
+"Benutzern zugewiesen. Bei neuen Aufgaben gilt dies, wenn keine Benutzer "
+"festgelegt sind. Bei einem Phasenwechsel werden die Benutzer nur dann "
+"ersetzt, wenn die neue Phase Standardbenutzer enthält."
 
 #. module: project_task_default_user
 #: model:ir.model.fields.selection,name:project_task_default_user.selection__project_project__project_task_assignment_mode__merge
 #: model:ir.model.fields.selection,name:project_task_default_user.selection__project_task_type__stage_task_assignment_mode__merge
 msgid "Merge"
-msgstr ""
+msgstr "Zusammenführen"
 
 #. module: project_task_default_user
 #: model:ir.model,name:project_task_default_user.model_project_project
 msgid "Project"
-msgstr ""
+msgstr "Projekt"
 
 #. module: project_task_default_user
 #: model:ir.model.fields,field_description:project_task_default_user.field_project_project__project_task_assignment_mode
 msgid "Project Task Assignment Mode"
-msgstr ""
+msgstr "Zuweisungsmodus für Projektaufgaben"
 
 #. module: project_task_default_user
 #: model:ir.model.fields.selection,name:project_task_default_user.selection__project_project__project_task_assignment_mode__replace
 #: model:ir.model.fields.selection,name:project_task_default_user.selection__project_task_type__stage_task_assignment_mode__replace
 msgid "Replace"
-msgstr ""
+msgstr "Ersetzen"
 
 #. module: project_task_default_user
 #: model:ir.model.fields,field_description:project_task_default_user.field_project_task_type__stage_task_assignment_mode
 msgid "Stage Task Assignment Mode"
-msgstr ""
+msgstr "Zuweisungsmodus für Aufgaben"
 
 #. module: project_task_default_user
 #: model:ir.model,name:project_task_default_user.model_project_task
 msgid "Task"
-msgstr ""
+msgstr "Aufgabe"
 
 #. module: project_task_default_user
 #: model:ir.model,name:project_task_default_user.model_project_task_type
 msgid "Task Stage"
-msgstr ""
+msgstr "Aufgabenphase"
 
 #. module: project_task_default_user
 #: model:ir.model.fields,help:project_task_default_user.field_project_task__display_name
@@ -119,3 +130,15 @@ msgid ""
 "\n"
 "        Make sure to use the right format and order e.g. Improve the configuration screen 5h #feature #v16 @Mitchell !"
 msgstr ""
+"Verwende diese Stichwörter im Titel, um neue Aufgaben anzulegen:\n"
+"\n"
+"        30h 30 Stunden für die Aufgabe einplanen\n"
+"        #tags Stichwörter für die Aufgabe festlegen\n"
+"        @user Die Aufgabe einem Benutzer zuweisen\n"
+"        ! Weise der Aufgabe eine mittlere Priorität zu\n"
+"        !! Weisen Sie der Aufgabe eine hohe Priorität zu\n"
+"        !!! Weisen Sie der Aufgabe eine dringende Priorität zu\n"
+"\n"
+"        Achte darauf, das richtige Format und die richtige Reihenfolge zu "
+"verwenden, z. B.: Den Konfigurationsbildschirm verbessern 5h #feature #v16 "
+"@Mitchell !"
