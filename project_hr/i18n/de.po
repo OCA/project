@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 11.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-07-03 20:10+0000\n"
+"PO-Revision-Date: 2026-07-03 20:52+0000\n"
 "Last-Translator: intero-chd <c.dominiak@intero-technologies.de>\n"
 "Language-Team: none\n"
 "Language: de\n"
@@ -37,12 +37,12 @@ msgstr "Anzeigename"
 #. module: project_hr
 #: model:ir.model.fields,field_description:project_hr.field_project_task__domain_hr_category_ids
 msgid "Domain Hr Category"
-msgstr ""
+msgstr "Kategorie Personalwesen Domain"
 
 #. module: project_hr
 #: model:ir.model.fields,field_description:project_hr.field_project_task__domain_user_ids
 msgid "Domain User"
-msgstr ""
+msgstr "Benutzerdomain"
 
 #. module: project_hr
 #: model:ir.model,name:project_hr.model_hr_employee
