@@ -6,29 +6,31 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 19.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-07-03 20:22+0000\n"
+"Last-Translator: intero-chd <c.dominiak@intero-technologies.de>\n"
 "Language-Team: none\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: project_task_pull_request_state
 #: model:ir.model,name:project_task_pull_request_state.model_res_config_settings
 msgid "Config Settings"
-msgstr ""
+msgstr "Konfigurationseinstellungen"
 
 #. module: project_task_pull_request_state
 #: model:ir.model,website_form_label:project_task_pull_request_state.model_project_task
 msgid "Create a Task"
-msgstr ""
+msgstr "Aufgabe erstellen"
 
 #. module: project_task_pull_request_state
 #: model:ir.model.fields,field_description:project_task_pull_request_state.field_project_project__pr_state_default
 #: model:ir.model.fields,field_description:project_task_pull_request_state.field_res_config_settings__pr_state_default
 msgid "Default PR State"
-msgstr ""
+msgstr "Standard PR Status"
 
 #. module: project_task_pull_request_state
 #: model:ir.model.fields,help:project_task_pull_request_state.field_project_project__pr_state_default
@@ -37,57 +39,61 @@ msgid ""
 "Default PR state that will be set when PR URI is added to a task in this "
 "project"
 msgstr ""
+"Standard-PR-Status, der festgelegt wird, wenn eine PR-URI zu einer Aufgabe "
+"in diesem Projekt hinzugefügt wird"
 
 #. module: project_task_pull_request_state
 #: model_terms:ir.ui.view,arch_db:project_task_pull_request_state.res_config_settings_view_form
 msgid ""
 "Default PR state. Used in case default PR state is not defined in project"
 msgstr ""
+"Standard-PR-Status. Wird verwendet, falls im Projekt kein Standard-PR-Status "
+"definiert ist"
 
 #. module: project_task_pull_request_state
 #: model:ir.model.fields,field_description:project_task_pull_request_state.field_project_project__display_name
 #: model:ir.model.fields,field_description:project_task_pull_request_state.field_project_task__display_name
 #: model:ir.model.fields,field_description:project_task_pull_request_state.field_res_config_settings__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Anzeigename"
 
 #. module: project_task_pull_request_state
 #: model_terms:ir.ui.view,arch_db:project_task_pull_request_state.view_task_search_form
 msgid "Has PR"
-msgstr ""
+msgstr "Hat PR"
 
 #. module: project_task_pull_request_state
 #: model:ir.model.fields,field_description:project_task_pull_request_state.field_project_project__id
 #: model:ir.model.fields,field_description:project_task_pull_request_state.field_project_task__id
 #: model:ir.model.fields,field_description:project_task_pull_request_state.field_res_config_settings__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_task_pull_request_state
 #: model:ir.model.fields,field_description:project_task_pull_request_state.field_project_task__pr_state
 #: model_terms:ir.ui.view,arch_db:project_task_pull_request_state.view_task_search_form
 msgid "PR State"
-msgstr ""
+msgstr "PR Status"
 
 #. module: project_task_pull_request_state
 #: model:ir.model,name:project_task_pull_request_state.model_project_project
 msgid "Project"
-msgstr ""
+msgstr "Projekt"
 
 #. module: project_task_pull_request_state
 #: model_terms:ir.ui.view,arch_db:project_task_pull_request_state.res_config_settings_view_form
 msgid "Project Task Pull Request"
-msgstr ""
+msgstr "Projektaufgaben Pull Request"
 
 #. module: project_task_pull_request_state
 #: model_terms:ir.ui.view,arch_db:project_task_pull_request_state.res_config_settings_view_form
 msgid "Settings"
-msgstr ""
+msgstr "Einstellungen"
 
 #. module: project_task_pull_request_state
 #: model:ir.model,name:project_task_pull_request_state.model_project_task
 msgid "Task"
-msgstr ""
+msgstr "Aufgabe"
 
 #. module: project_task_pull_request_state
 #: model:ir.model.fields,help:project_task_pull_request_state.field_project_task__display_name
@@ -103,3 +109,15 @@ msgid ""
 "\n"
 "        Make sure to use the right format and order e.g. Improve the configuration screen 5h #feature #v16 @Mitchell !"
 msgstr ""
+"Verwende diese Stichwörter im Titel, um neue Aufgaben anzulegen:\n"
+"\n"
+"        30h 30 Stunden für die Aufgabe einplanen\n"
+"        #tags Stichwörter für die Aufgabe festlegen\n"
+"        @user Die Aufgabe einem Benutzer zuweisen\n"
+"        ! Weise der Aufgabe eine mittlere Priorität zu\n"
+"        !! Weisen Sie der Aufgabe eine hohe Priorität zu\n"
+"        !!! Weisen Sie der Aufgabe eine dringende Priorität zu\n"
+"\n"
+"        Achte darauf, das richtige Format und die richtige Reihenfolge zu "
+"verwenden, z. B.: Den Konfigurationsbildschirm verbessern 5h #feature #v16 "
+"@Mitchell !"
