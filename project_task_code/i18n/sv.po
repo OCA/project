@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-31 18:04+0000\n"
-"PO-Revision-Date: 2021-11-16 10:36+0000\n"
-"Last-Translator: Simon S <simon.stromberg@vertel.se>\n"
+"PO-Revision-Date: 2026-07-06 15:46+0000\n"
+"Last-Translator: Laura V <laura.valls@forgeflow.com>\n"
 "Language-Team: Swedish (http://www.transifex.com/oca/OCA-project-8-0/"
 "language/sv/)\n"
 "Language: sv\n"
@@ -17,27 +17,27 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.3.2\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: project_task_code
 #: model_terms:ir.ui.view,arch_db:project_task_code.project_task_code_form_view
 msgid "<span class=\"oe_inline\"> - </span>"
-msgstr ""
+msgstr "<span class=\"oe_inline\"> - </span>"
 
 #. module: project_task_code
 #: model:ir.model,website_form_label:project_task_code.model_project_task
 msgid "Create a Task"
-msgstr ""
+msgstr "Skapa en uppgift"
 
 #. module: project_task_code
 #: model:ir.model.fields,field_description:project_task_code.field_project_task__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Visningsnamn"
 
 #. module: project_task_code
 #: model:ir.model.fields,field_description:project_task_code.field_project_task__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_task_code
 #: model:ir.model,name:project_task_code.model_project_task
@@ -69,3 +69,14 @@ msgid ""
 "        Make sure to use the right format and order e.g. Improve the "
 "configuration screen 5h #feature #v16 @Mitchell !"
 msgstr ""
+"Använd dessa nyckelord i titeln för att skapa nya uppgifter:\n"
+"\n"
+"        30h Tilldela 30 timmar till uppgiften\n"
+"        #tags Ange taggar på uppgiften\n"
+"        @användare Tilldela uppgiften till en användare\n"
+"        ! Sätt uppgiften till medelhög prioritet\n"
+"        !! Sätt uppgiften till hög prioritet\n"
+"        !!! Sätt uppgiften till brådskande prioritet\n"
+"\n"
+"        Se till att använda rätt format och ordning, t.ex. Förbättra "
+"konfigurationsskärmen 5h #feature #v16 @Mitchell !"
