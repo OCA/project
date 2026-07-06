@@ -3,3 +3,4 @@
 - Mantas Šniukas \<<mantas@vialaurea.lt>\>
 - Atte Isopuro \<<atte.isopuro@avoin.systems>\>
 - Stefan Rijnhart \<<stefan@opener.amsterdam>\>
+- Souheil Bejaoui <souheil.bejaoui@acsone.eu>

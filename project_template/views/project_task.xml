@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2026 ACSONE SA/NV
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html). -->
+<odoo>
+    <record id="project_template_task_view_form" model="ir.ui.view">
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='html_field_history_metadata']" position="after">
+                <field name="project_is_template" invisible="1" />
+            </xpath>
+            <xpath expr="//field[@name='tag_ids']" position="after">
+                <field name="is_template" invisible="not project_is_template" />
+                <field
+                    name="task_template_id"
+                    invisible="project_is_template or not project_id"
+                    options="{'no_create': True}"
+                />
+            </xpath>
+            <xpath
+                expr="//page[@name='sub_tasks_page']//list//field[@name='name']"
+                position="after"
+            >
+                <field
+                    name="is_template"
+                    optional="show"
+                    column_invisible="not parent.project_is_template"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>
