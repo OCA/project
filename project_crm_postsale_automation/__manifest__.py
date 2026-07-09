@@ -3,7 +3,7 @@
 
 {
     "name": "Project Post-sale Automation",
-    "version": "17.0.1.0.0",
+    "version": "18.0.1.0.0",
     "summary": "Automate recurring post-sale opportunities from projects",
     "website": "https://github.com/OCA/project",
     "author": "APSL-Nagarro, Odoo Community Association (OCA)",

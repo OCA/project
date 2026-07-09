@@ -2,6 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from datetime import date
+from unittest.mock import patch
 
 from odoo.exceptions import UserError
 from odoo.tests.common import TransactionCase
@@ -199,10 +200,12 @@ class TestProjectCrmPostsaleAutomation(TransactionCase):
         self.assertIn("<ul>", self.project.postsale_next_executions)
 
         # Force a localized user format to make sure format_date
-        # logic executes correctly
-        self.env.context = dict(self.env.context, lang="es_ES")
-        self.project._compute_postsale_next_executions()
-        self.assertTrue(bool(self.project.postsale_next_executions))
+        # logic executes correctly. Use with_context (non-mutating) so the
+        # lang override doesn't leak into the shared env of other tests.
+        self.env["res.lang"]._activate_lang("es_ES")
+        project_es = self.project.with_context(lang="es_ES")
+        project_es._compute_postsale_next_executions()
+        self.assertTrue(bool(project_es.postsale_next_executions))
 
         self.project.write({"postsale_active": False})
         self.project._compute_postsale_next_executions()
@@ -230,7 +233,7 @@ class TestProjectCrmPostsaleAutomation(TransactionCase):
 
         self.assertEqual(action["res_model"], "crm.lead")
         self.assertEqual(action["type"], "ir.actions.act_window")
-        self.assertEqual(action["view_mode"], "tree,form")
+        self.assertEqual(action["view_mode"], "list,form")
 
         expected_domain = [
             ("project_id", "=", self.project.id),
@@ -238,3 +241,50 @@ class TestProjectCrmPostsaleAutomation(TransactionCase):
         ]
         self.assertEqual(action["domain"], expected_domain)
         self.assertEqual(action["context"], {"default_project_id": self.project.id})
+
+    def test_11_next_executions_configuration_error(self):
+        """Test that the preview shows the configuration error message
+        for records that carry an invalid configuration (e.g. virtual
+        records not yet gone through the write constraints)."""
+        new_project = self.env["project.project"].new(
+            {
+                "name": "Invalid Config Project",
+                "postsale_active": True,
+                "postsale_next_date": date(2026, 7, 15),
+                "postsale_rule": "months",
+                "postsale_day_of_month": 32,
+            }
+        )
+        new_project._compute_postsale_next_executions()
+        self.assertIn("Configuration Error", new_project.postsale_next_executions)
+
+    def test_12_format_postsale_name_exception_fallback(self):
+        """Test the fallback naming when the template fails to render,
+        bypassing ORM constraints with a direct SQL update to simulate
+        a template that turned invalid after being saved."""
+        self.env.cr.execute(
+            "UPDATE project_project SET postsale_name_template = %s WHERE id = %s",
+            ("{invalid", self.project.id),
+        )
+        self.project.invalidate_recordset(["postsale_name_template"])
+        name = self.project._format_postsale_name(date(2026, 7, 15), "Q1")
+        self.assertEqual(name, f"Q1 2026 - {self.project.name}")
+
+    def test_13_cron_exception_handling_logs_error(self):
+        """Test that an unexpected error during generation is caught
+        and logged instead of interrupting the whole cron batch."""
+        self.project.write({"postsale_next_date": date(2026, 6, 1)})
+        with patch.object(
+            type(self.project),
+            "action_generate_postsale_opportunity",
+            side_effect=Exception("boom"),
+        ):
+            self.env["project.project"]._cron_generate_postsale_opportunities()
+
+        log_entry = (
+            self.env["ir.logging"]
+            .sudo()
+            .search([("func", "=", "_cron_generate_postsale_opportunities")], limit=1)
+        )
+        self.assertTrue(log_entry)
+        self.assertIn("boom", log_entry.message)

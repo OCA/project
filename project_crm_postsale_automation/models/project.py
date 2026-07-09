@@ -5,7 +5,7 @@ import calendar
 
 from dateutil.relativedelta import relativedelta
 
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 from odoo.exceptions import UserError
 from odoo.tools.misc import format_date
 
@@ -31,12 +31,12 @@ class Project(models.Model):
     postsale_interval = fields.Integer(string="Interval", default=1)
     postsale_rule = fields.Selection(
         [
-            ("days", _("Days")),
-            ("weeks", _("Weeks")),
-            ("months", _("Months")),
-            ("quarters", _("Quarters")),
-            ("semesters", _("Semesters")),
-            ("years", _("Years")),
+            ("days", "Days"),
+            ("weeks", "Weeks"),
+            ("months", "Months"),
+            ("quarters", "Quarters"),
+            ("semesters", "Semesters"),
+            ("years", "Years"),
         ],
         string="Unit",
         default="months",
@@ -77,12 +77,12 @@ class Project(models.Model):
         """Returns an error string if configuration is invalid, else False."""
         self.ensure_one()
         if self.postsale_interval <= 0:
-            return _("Periodicity must be greater than 0.")
+            return self.env._("Periodicity must be greater than 0.")
 
         if self.postsale_rule in ["months", "quarters", "semesters", "years"] and (
             self.postsale_day_of_month < 1 or self.postsale_day_of_month > 31
         ):
-            return _("Day of month must be between 1 and 31.")
+            return self.env._("Day of month must be between 1 and 31.")
 
         if self.postsale_name_template:
             try:
@@ -90,7 +90,7 @@ class Project(models.Model):
                     project_name="Test", period_label="Q1", year=2026
                 )
             except (ValueError, KeyError, IndexError):
-                return _(
+                return self.env._(
                     "Invalid Name Template syntax. Please check your "
                     "brackets {} and use only allowed variables:"
                     "{project_name}, {period_label}, {year}."
@@ -112,7 +112,7 @@ class Project(models.Model):
                 continue
 
             if not rec.postsale_user_id:
-                raise UserError(_("Please set a Post-sale Responsible."))
+                raise UserError(rec.env._("Please set a Post-sale Responsible."))
 
             error_msg = rec._get_postsale_configuration_error()
             if error_msg:
@@ -149,14 +149,14 @@ class Project(models.Model):
     def _compute_postsale_next_executions(self):
         for rec in self:
             if not rec.postsale_active or not rec.postsale_next_date:
-                rec.postsale_next_executions = _(
+                rec.postsale_next_executions = rec.env._(
                     "<p class='text-muted'>Not active or missing next date.</p>"
                 )
                 continue
 
             error_msg = rec._get_postsale_configuration_error()
             if error_msg:
-                rec.postsale_next_executions = _(
+                rec.postsale_next_executions = rec.env._(
                     "<p class='text-danger'><b>⚠️ Configuration Error:</b> "
                     "%(error_msg)s</p>",
                     error_msg=error_msg,
@@ -189,7 +189,7 @@ class Project(models.Model):
                     )
 
                     rec.message_post(
-                        body=_(
+                        body=rec.env._(
                             "Post-sale tracking ACTIVATED. Interval: "
                             "%(interval)s %(rule)s.",
                             interval=rec.postsale_interval,
@@ -197,7 +197,7 @@ class Project(models.Model):
                         )
                     )
                 else:
-                    rec.message_post(body=_("Post-sale tracking DEACTIVATED."))
+                    rec.message_post(body=rec.env._("Post-sale tracking DEACTIVATED."))
         return res
 
     def _calculate_next_date(self, base_date):
@@ -233,21 +233,21 @@ class Project(models.Model):
         period_label = ""
 
         if rule == "days":
-            period_label = _("Day %s", target_date.strftime("%d"))
+            period_label = self.env._("Day %s", target_date.strftime("%d"))
         elif rule == "weeks":
-            period_label = _("W%s", target_date.isocalendar()[1])
+            period_label = self.env._("W%s", target_date.isocalendar()[1])
         elif rule == "months":
             period_label = format_date(
                 self.env, target_date, date_format="MMMM"
             ).capitalize()
         elif rule == "quarters":
             quarter = (target_date.month - 1) // 3 + 1
-            period_label = _("Q%s", quarter)
+            period_label = self.env._("Q%s", quarter)
         elif rule == "semesters":
             semester = 1 if target_date.month <= 6 else 2
-            period_label = _("S%s", semester)
+            period_label = self.env._("S%s", semester)
         elif rule == "years":
-            period_label = _("Annual")
+            period_label = self.env._("Annual")
 
         return period_label
 
@@ -269,7 +269,7 @@ class Project(models.Model):
         if not self.postsale_generate_tags:
             return []
 
-        tag_format = _("%(period)s %(year)s - Postsale")
+        tag_format = self.env._("%(period)s %(year)s - Postsale")
         tag_name = tag_format % {
             "period": period_label,
             "year": target_date.year,
@@ -361,8 +361,8 @@ class Project(models.Model):
     def action_view_postsale_leads(self):
         self.ensure_one()
         return {
-            "name": _("Post-sale Opportunities"),
-            "view_mode": "tree,form",
+            "name": self.env._("Post-sale Opportunities"),
+            "view_mode": "list,form",
             "res_model": "crm.lead",
             "domain": [("project_id", "=", self.id), ("is_postsale", "=", True)],
             "type": "ir.actions.act_window",
