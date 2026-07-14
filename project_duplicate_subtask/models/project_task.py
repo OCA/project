@@ -12,18 +12,10 @@ class ProjectTask(models.Model):
         result = action.read()[0]
         task_created = self.env["project.task"]
         for task in self:
+            # Since 18.0, task.copy() natively duplicates the whole subtask
+            # tree, so no manual recursion is needed anymore.
             new_task = task.copy()
             task_created |= new_task
-            if task.child_ids:
-
-                def duplicate_childs(task, new_task):
-                    if task.child_ids:
-                        for child in task.child_ids:
-                            new_subtask = child.copy()
-                            new_subtask.write({"parent_id": new_task.id})
-                            duplicate_childs(child, new_subtask)
-
-                duplicate_childs(task, new_task)
 
         if len(task_created) == 1:
             res = self.env.ref("project.view_task_form2")

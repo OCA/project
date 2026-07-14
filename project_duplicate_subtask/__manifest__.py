@@ -3,7 +3,7 @@
 
 {
     "name": "Project Duplicate subtask",
-    "version": "16.0.1.0.0",
+    "version": "18.0.1.0.0",
     "category": "Project",
     "website": "https://github.com/OCA/project",
     "summary": "The module adds an action to duplicate tasks with the child subtasks",
