@@ -31,11 +31,9 @@ class ProjectTaskMerge(models.TransientModel):
 
     def merge_tasks(self):
         tag_ids = self.task_ids.mapped("tag_ids").ids
-        attachment_ids = self.task_ids.mapped("attachment_ids").ids
         values = {
             "description": self._get_merge_description(),
             "tag_ids": [(4, tag_id) for tag_id in tag_ids],
-            "attachment_ids": [(4, attachment_id) for attachment_id in attachment_ids],
             "user_ids": self.user_ids.ids,
         }
         if self.create_new_task:
@@ -56,6 +54,8 @@ class ProjectTaskMerge(models.TransientModel):
             self.dst_task_id.write(values)
         merged_tasks = self.task_ids - self.dst_task_id
         self._subscribe_merged_followers(merged_tasks)
+        self._merge_dependences_history(merged_tasks)
+        self._merge_dependences_attachments(merged_tasks)
         for task in merged_tasks:
             self._add_message("to", self.dst_task_id.name, task)
             if task.child_ids:
@@ -84,6 +84,54 @@ class ProjectTaskMerge(models.TransientModel):
         self.dst_task_id.message_subscribe(
             partner_ids=(merged_tasks).mapped("message_partner_ids").ids
         )
+
+    def _merge_dependences_history(self, merged_tasks):
+        """Move messages and activities from merged tasks to the destination
+        task, keeping track of their origin.
+        :param merged_tasks : recordset of tasks about to be archived
+        """
+        for task_su in merged_tasks.sudo():
+            for message_su in task_su.message_ids:
+                if message_su.subject:
+                    subject = _(
+                        "From %(source_name)s: %(source_subject)s",
+                        source_name=task_su.name,
+                        source_subject=message_su.subject,
+                    )
+                else:
+                    subject = _("From %(source_name)s", source_name=task_su.name)
+                message_su.write({"res_id": self.dst_task_id.id, "subject": subject})
+        merged_tasks.sudo().activity_ids.write({"res_id": self.dst_task_id.id})
+
+    def _merge_dependences_attachments(self, merged_tasks):
+        """Move attachments of the merged tasks to the destination task, and
+        rename them to keep track of their origin.
+        ir.attachment is reparented directly: project.task.attachment_ids
+        is a non-stored compute field, it can't be written through values.
+        :param merged_tasks : recordset of tasks about to be archived
+        """
+        all_attachments = (
+            self.env["ir.attachment"]
+            .sudo()
+            .search(
+                [
+                    ("res_model", "=", "project.task"),
+                    ("res_id", "in", merged_tasks.ids),
+                ]
+            )
+        )
+        task_name_per_id = {task.id: task.name for task in merged_tasks}
+        for attachment in all_attachments:
+            attachment.write(
+                {
+                    "res_id": self.dst_task_id.id,
+                    "name": _(
+                        "%(attach_name)s (from %(task_name)s)",
+                        attach_name=attachment.name,
+                        task_name=task_name_per_id[attachment.res_id][:20],
+                    ),
+                }
+            )
 
     def _add_message(self, way, task_names, task):
         """Send a message post with to advise the project task about the merge.

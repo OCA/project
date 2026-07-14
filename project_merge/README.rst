@@ -1,7 +1,3 @@
-.. image:: https://odoo-community.org/readme-banner-image
-   :target: https://odoo-community.org/get-involved?utm_source=readme
-   :alt: Odoo Community Association
-
 ==================
 Project Task Merge
 ==================
@@ -17,7 +13,7 @@ Project Task Merge
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fproject-lightgray.png?logo=github
@@ -36,6 +32,9 @@ This module adds a wizard to merge project tasks.
 
 A wizard that can be called from tree view of project task.
 
+Messages, activities and attachments from the merged tasks are also
+moved to the destination task.
+
 **Table of contents**
 
 .. contents::
@@ -47,6 +46,12 @@ Usage
 To use this module, you need to:
 
 1. Merge Project Task
+
+Known issues / Roadmap
+======================
+
+Task dependencies (Blocked by / Blocking, ``depend_on_ids`` /
+``dependent_ids``) are not transferred to the destination task on merge.
 
 Bug Tracker
 ===========
@@ -70,6 +75,7 @@ Contributors
 ------------
 
 - `Onestein <http://www.onestein.eu>`__
+- Cyril VINH-TUNG cyril@invitu.com
 
 Maintainers
 -----------
