@@ -1,0 +1,62 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sale_project_copy_tasks
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2026-05-23 18:47+0000\n"
+"Last-Translator: Pablo Castelo <pablocv@gmx.es>\n"
+"Language-Team: none\n"
+"Language: gl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2\n"
+
+#. module: sale_project_copy_tasks
+#: model:ir.model.fields.selection,name:sale_project_copy_tasks.selection__product_template__service_tracking__copy_tasks_in_project
+msgid "Copy tasks into sale order's project"
+msgstr "Copiar tarefas no proxecto da orde de venda"
+
+#. module: sale_project_copy_tasks
+#: model:ir.model.fields,field_description:sale_project_copy_tasks.field_product_product__service_tracking
+#: model:ir.model.fields,field_description:sale_project_copy_tasks.field_product_template__service_tracking
+msgid "Create on Order"
+msgstr "Crear sobre Pedido"
+
+#. module: sale_project_copy_tasks
+#: model:ir.model.fields,help:sale_project_copy_tasks.field_product_product__service_tracking
+#: model:ir.model.fields,help:sale_project_copy_tasks.field_product_template__service_tracking
+msgid ""
+"On Sales order confirmation, this product can generate a project and/or task.         From those, you can track the service you are selling.\n"
+"         'In sale order's project': Will use the sale order's configured project if defined or fallback to         creating a new project based on the selected template."
+msgstr ""
+"Na confirmación da orde de venda, este produto pode xerar un proxecto e / ou "
+"tarefa.         A partir deles, pode realizar un seguimento do servizo que "
+"está a vender.\n"
+"         'No proxecto da orde de venda': usará o proxecto configurado da "
+"orde de venda se está definido ou se utilizará como respaldo         para "
+"crear un novo proxecto baseado no modelo seleccionado."
+
+#. module: sale_project_copy_tasks
+#: model:ir.model,name:sale_project_copy_tasks.model_product_template
+msgid "Product"
+msgstr ""
+
+#. module: sale_project_copy_tasks
+#: model_terms:ir.ui.view,arch_db:sale_project_copy_tasks.view_order_form_inherit_sale_project_copy_taks
+msgid "Project"
+msgstr "Proxecto"
+
+#. module: sale_project_copy_tasks
+#: model:ir.model,name:sale_project_copy_tasks.model_sale_order
+msgid "Sales Order"
+msgstr "Pedido de venda"
+
+#. module: sale_project_copy_tasks
+#: model:ir.model,name:sale_project_copy_tasks.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Liña de pedido de venda"

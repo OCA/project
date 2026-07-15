@@ -1,0 +1,32 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_reviewer
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2026-02-12 12:09+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
+"Language-Team: none\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2\n"
+
+#. module: project_reviewer
+#: model_terms:ir.ui.view,arch_db:project_reviewer.view_task_search_form
+msgid "My review"
+msgstr "Mia revisione"
+
+#. module: project_reviewer
+#: model:ir.model.fields,field_description:project_reviewer.field_project_task__reviewer_ids
+msgid "Reviewers"
+msgstr "Revisori"
+
+#. module: project_reviewer
+#: model:ir.model,name:project_reviewer.model_project_task
+msgid "Task"
+msgstr "Lavoro"

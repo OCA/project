@@ -8,7 +8,6 @@ class TestProjectTaskCode(common.TransactionCase):
     def setUp(self):
         super().setUp()
         self.project_task_model = self.env["project.task"]
-        self.ir_sequence_model = self.env["ir.sequence"]
         self.task_sequence = self.env.ref("project_task_code.sequence_task")
         self.project_task = self.env.ref("project.project_1_task_1")
 
@@ -45,29 +44,58 @@ class TestProjectTaskCode(common.TransactionCase):
         )
 
         result = project_task.name_search("TEST-123")
+        result_ids = [item[0] for item in result]
         self.assertIn(
             project_task.id,
-            map(lambda x: x[0], result),
-            f"Task with code {project_task.code} should be in the results",
+            result_ids,
+            "Task with code %s should be in the results" % project_task.code,
         )
 
         result = project_task.name_search("TEST")
+        result_ids = [item[0] for item in result]
         self.assertIn(
             project_task.id,
-            map(lambda x: x[0], result),
-            f"Task with code {project_task.code} should be in the results",
+            result_ids,
+            "Task with code %s should be in the results" % project_task.code,
         )
 
         result = project_task.name_search("much")
+        result_ids = [item[0] for item in result]
         self.assertIn(
             project_task.id,
-            map(lambda x: x[0], result),
-            f"Task with code {project_task.code} should be in the results",
+            result_ids,
+            "Task with code %s should be in the results" % project_task.code,
         )
 
         result = project_task.name_search("20232")
+        result_ids = [item[0] for item in result]
         self.assertNotIn(
             project_task.id,
-            map(lambda x: x[0], result),
-            f"Task with code {project_task.code} should not be in the results",
+            result_ids,
+            "Task with code %s should not be in the results" % project_task.code,
+        )
+
+    def test_portal_self_fields_include_code(self):
+        self.assertIn("code", self.project_task_model.SELF_READABLE_FIELDS)
+        self.assertIn("code", self.project_task_model.SELF_WRITABLE_FIELDS)
+
+    def test_portal_user_can_read_code_field(self):
+        portal_user = common.new_test_user(
+            self.env,
+            login="portal_project_task_code_read",
+            groups="base.group_portal",
+        )
+        fields = self.project_task_model.with_user(portal_user).SELF_READABLE_FIELDS
+        self.assertIn("code", fields)
+
+    def test_portal_user_can_pass_code_self_write_check(self):
+        portal_user = common.new_test_user(
+            self.env,
+            login="portal_project_task_code_write",
+            groups="base.group_portal",
+        )
+        self.project_task_model.with_user(portal_user)._ensure_fields_write(
+            {"name": "Portal Task", "code": "TASK-001"},
+            check_group_user=False,
+            defaults=True,
         )

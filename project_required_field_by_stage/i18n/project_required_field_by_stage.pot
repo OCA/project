@@ -1,0 +1,41 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_required_field_by_stage
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: project_required_field_by_stage
+#. odoo-python
+#: code:addons/project_required_field_by_stage/models/project_task.py:0
+#, python-format
+msgid "Field '%(field)s' is mandatory in stage '%(stage)s'."
+msgstr ""
+
+#. module: project_required_field_by_stage
+#: model:ir.model.fields,help:project_required_field_by_stage.field_project_task_type__required_field_ids
+msgid "Fields that are required when the task is in this stage."
+msgstr ""
+
+#. module: project_required_field_by_stage
+#: model:ir.model.fields,field_description:project_required_field_by_stage.field_project_task_type__required_field_ids
+msgid "Required Field"
+msgstr ""
+
+#. module: project_required_field_by_stage
+#: model:ir.model,name:project_required_field_by_stage.model_project_task
+msgid "Task"
+msgstr ""
+
+#. module: project_required_field_by_stage
+#: model:ir.model,name:project_required_field_by_stage.model_project_task_type
+msgid "Task Stage"
+msgstr ""

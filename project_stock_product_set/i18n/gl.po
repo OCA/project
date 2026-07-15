@@ -1,0 +1,103 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_stock_product_set
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2026-05-23 18:47+0000\n"
+"Last-Translator: Pablo Castelo <pablocv@gmx.es>\n"
+"Language-Team: none\n"
+"Language: gl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2\n"
+
+#. module: project_stock_product_set
+#: model:ir.actions.act_window,name:project_stock_product_set.act_open_wizard_product_set_add_from_task
+msgid "Add a set in a project task"
+msgstr "Engadir conxunto na tarefa"
+
+#. module: project_stock_product_set
+#: model_terms:ir.ui.view,arch_db:project_stock_product_set.product_set_add_from_task_form_view
+#: model_terms:ir.ui.view,arch_db:project_stock_product_set.view_task_form2
+msgid "Add set"
+msgstr "Engadir conxunto"
+
+#. module: project_stock_product_set
+#: model_terms:ir.ui.view,arch_db:project_stock_product_set.product_set_add_from_task_form_view
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: project_stock_product_set
+#: model:ir.model.fields,field_description:project_stock_product_set.field_project_stock_product_set_wizard__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: project_stock_product_set
+#: model:ir.model.fields,field_description:project_stock_product_set.field_project_stock_product_set_wizard__create_date
+msgid "Created on"
+msgstr "Creado o"
+
+#. module: project_stock_product_set
+#: model:ir.model.fields,field_description:project_stock_product_set.field_project_stock_product_set_wizard__display_name
+msgid "Display Name"
+msgstr "Nome mostrado"
+
+#. module: project_stock_product_set
+#: model:ir.model.fields,field_description:project_stock_product_set.field_project_stock_product_set_wizard__id
+msgid "ID"
+msgstr "ID"
+
+#. module: project_stock_product_set
+#: model:ir.model.fields,field_description:project_stock_product_set.field_project_stock_product_set_wizard____last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: project_stock_product_set
+#: model:ir.model.fields,field_description:project_stock_product_set.field_project_stock_product_set_wizard__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: project_stock_product_set
+#: model:ir.model.fields,field_description:project_stock_product_set.field_project_stock_product_set_wizard__write_date
+msgid "Last Updated on"
+msgstr "Última actualización o"
+
+#. module: project_stock_product_set
+#: model:ir.model.fields,field_description:project_stock_product_set.field_project_stock_product_set_wizard__partner_id
+msgid "Partner"
+msgstr ""
+
+#. module: project_stock_product_set
+#: model:ir.model.fields,field_description:project_stock_product_set.field_project_stock_product_set_wizard__product_set_id
+msgid "Product set"
+msgstr "Liña de conxunto de produtos"
+
+#. module: project_stock_product_set
+#: model:ir.model,name:project_stock_product_set.model_product_set_line
+msgid "Product set line"
+msgstr "Liña de conxunto de produtos"
+
+#. module: project_stock_product_set
+#: model:ir.model.fields,field_description:project_stock_product_set.field_project_stock_product_set_wizard__product_set_line_ids
+msgid "Product set lines"
+msgstr "Liña de conxunto de produtos"
+
+#. module: project_stock_product_set
+#: model:ir.model.fields,field_description:project_stock_product_set.field_project_stock_product_set_wizard__quantity
+msgid "Quantity"
+msgstr "Cantidade"
+
+#. module: project_stock_product_set
+#: model:ir.model.fields,field_description:project_stock_product_set.field_project_stock_product_set_wizard__task_id
+msgid "Task"
+msgstr "Tarefa"
+
+#. module: project_stock_product_set
+#: model:ir.model,name:project_stock_product_set.model_project_stock_product_set_wizard
+msgid "Wizard model to add product set into a task"
+msgstr ""

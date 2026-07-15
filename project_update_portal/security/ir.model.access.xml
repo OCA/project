@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="0">
+    <!-- Update portal access rule to allow read access for project updates -->
+    <record id="project.access_project_update_portal" model="ir.model.access">
+        <field name="perm_read">1</field>
+    </record>
+</odoo>
