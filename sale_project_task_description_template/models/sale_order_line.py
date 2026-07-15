@@ -1,7 +1,7 @@
 # Copyright 2025 NICO SOLUTIONS - ENGINEERING & IT
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl.html)
 
-from odoo import _, models
+from odoo import models
 
 
 class SaleOrderLine(models.Model):
@@ -17,10 +17,11 @@ class SaleOrderLine(models.Model):
             values["description_template_id"] = template.id
 
         if product.include_sale_line_info_in_task:
-            product_info = _("%(product)s - Qty: %(qty)s") % {
-                "product": self.product_id.name,
-                "qty": self.product_uom_qty,
-            }
+            product_info = self.env._(
+                "%(product)s - Qty: %(qty)s",
+                product=self.product_id.name,
+                qty=self.product_uom_qty,
+            )
 
             if template and template.description:
                 values["description"] = f"{product_info}\n\n{template.description}"

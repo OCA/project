@@ -21,13 +21,13 @@ Sale Project Task Description Template
     :target: http://www.gnu.org/licenses/lgpl-3.0-standalone.html
     :alt: License: LGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fproject-lightgray.png?logo=github
-    :target: https://github.com/OCA/project/tree/18.0/sale_project_task_description_template
+    :target: https://github.com/OCA/project/tree/19.0/sale_project_task_description_template
     :alt: OCA/project
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/project-18-0/project-18-0-sale_project_task_description_template
+    :target: https://translation.odoo-community.org/projects/project-19-0/project-19-0-sale_project_task_description_template
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/project&target_branch=18.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/project&target_branch=19.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
@@ -43,12 +43,12 @@ context directly in the task description.
 
 Key Features:
 
-- New field on product: assign a Task Description Template for service
-  products with Service Tracking set to 'Task' or 'Project & Task'.
-- Optional boolean to include the sale order line info in the task
-  description.
-- Automatic application of the template (and optionally the sales line
-  info) when creating tasks from sales orders.
+-  New field on product: assign a Task Description Template for service
+   products with Service Tracking set to 'Task' or 'Project & Task'.
+-  Optional boolean to include the sale order line info in the task
+   description.
+-  Automatic application of the template (and optionally the sales line
+   info) when creating tasks from sales orders.
 
 **Table of contents**
 
@@ -60,31 +60,31 @@ Usage
 
 To use this module:
 
-- Create a Task Description Template
+-  Create a Task Description Template
 
-  - Go to Project → Configuration → Task Description Templates.
-  - Define a template with a name and description.
+   -  Go to Project → Configuration → Task Description Templates.
+   -  Define a template with a name and description.
 
-- Assign the Template to a Product.
+-  Assign the Template to a Product.
 
-  - Open a Product and set it as a Service.
-  - Ensure that Service Tracking is set to Task or Project & Task.
-  - Set the Task Description Template field.
-  - Optionally, enable the Include Sale Line Info in Task checkbox to
-    add product and quantity information above the template in generated
-    tasks.
+   -  Open a Product and set it as a Service.
+   -  Ensure that Service Tracking is set to Task or Project & Task.
+   -  Set the Task Description Template field.
+   -  Optionally, enable the Include Sale Line Info in Task checkbox to
+      add product and quantity information above the template in
+      generated tasks.
 
-- Create a Sale Order
+-  Create a Sale Order
 
-  - Add the product(s) with assigned templates to a sales order.
-  - Confirm the order.
+   -  Add the product(s) with assigned templates to a sales order.
+   -  Confirm the order.
 
-- Generated Project Tasks
+-  Generated Project Tasks
 
-  - The tasks created from the sales order lines will automatically
-    include the description from the assigned template.
-  - If enabled, the sales line info (product and quantity) will appear
-    above the template in the task description.
+   -  The tasks created from the sales order lines will automatically
+      include the description from the assigned template.
+   -  If enabled, the sales line info (product and quantity) will appear
+      above the template in the task description.
 
 Bug Tracker
 ===========
@@ -92,7 +92,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/project/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/project/issues/new?body=module:%20sale_project_task_description_template%0Aversion:%2018.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/project/issues/new?body=module:%20sale_project_task_description_template%0Aversion:%2019.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -107,7 +107,7 @@ Authors
 Contributors
 ------------
 
-- Nils Coenen <nils.coenen@nico-solutions.de>
+-  Nils Coenen <nils.coenen@nico-solutions.de>
 
 Maintainers
 -----------
@@ -130,6 +130,6 @@ Current `maintainer <https://odoo-community.org/page/maintainer-role>`__:
 
 |maintainer-NICO-SOLUTIONS| 
 
-This module is part of the `OCA/project <https://github.com/OCA/project/tree/18.0/sale_project_task_description_template>`_ project on GitHub.
+This module is part of the `OCA/project <https://github.com/OCA/project/tree/19.0/sale_project_task_description_template>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
