@@ -1,4 +1,5 @@
 # Copyright 2019 Oihane Crucelaegui - AvanzOSC
+# Copyright 2026 Solomon Prabu - CIT Services
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
 from odoo import fields, models
@@ -128,7 +129,7 @@ class ProjectProject(models.Model):
 
     def _compute_purchase_invoice_info(self):
         for project in self:
-            groups = self.env["account.move.line"].formattedformatted_read_group(
+            groups = self.env["account.move.line"].formatted_read_group(
                 project._domain_purchase_invoice_line(),
                 ["price_subtotal"],
                 ["move_id"],
