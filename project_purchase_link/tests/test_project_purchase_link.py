@@ -3,7 +3,7 @@
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
 from odoo import Command
-from odoo.osv import expression
+from odoo.fields import Domain
 from odoo.tools.safe_eval import safe_eval
 
 from odoo.addons.base.tests.common import BaseCommon
@@ -17,14 +17,14 @@ class TestProjectPurchaseUtilities(BaseCommon):
         cls.project_model = cls.env["project.project"]
         cls.project = cls.project_model.create({"name": "Test Project"})
         cls.purchase_model = cls.env["purchase.order"]
-        cls.partner = cls.env.ref("base.res_partner_2")
+        cls.partner = cls.env["res.partner"].create({"name": "Test Partner"})
         cls.product = cls.env["product.product"].create(
             {
                 "name": "Product Product 4",
                 "standard_price": 500.0,
                 "list_price": 750.0,
                 "type": "consu",
-                "categ_id": cls.env.ref("product.product_category_all").id,
+                "categ_id": cls.env["product.category"].search([], limit=1).id,
             }
         )
         cls.purchase = cls.purchase_model.create(
@@ -52,7 +52,7 @@ class TestProjectPurchaseUtilities(BaseCommon):
                             "price_unit": 50,
                             "product_qty": 4,
                             "qty_received": 4,
-                            "product_uom": self.product.uom_id.id,
+                            "product_uom_id": self.product.uom_id.id,
                             "product_id": self.product.id,
                         }
                     )
@@ -90,15 +90,16 @@ class TestProjectPurchaseUtilities(BaseCommon):
         purchase_domain = self.project._domain_purchase_order_line()
 
         lines = self.env["purchase.order.line"].search(purchase_domain)
-        order_domain = [("id", "in", lines.mapped("order_id").ids)]
+        order_domain = Domain([("id", "in", lines.mapped("order_id").ids)])
         purchase_dict = self.project.button_open_purchase_order()
         self.assertEqual(purchase_dict.get("domain"), order_domain)
         purchase_line_dict = self.project.button_open_purchase_order_line()
         self.assertEqual(purchase_line_dict.get("domain"), purchase_domain)
 
         action = self.env.ref("account.action_move_in_invoice_type")
-        invoice_domain = expression.AND(
-            [safe_eval(action.domain or "[]"), self.project._domain_purchase_invoice()]
+        invoice_domain = (
+            Domain(safe_eval(action.domain or "[]"))
+            & self.project._domain_purchase_invoice()
         )  # only one test invoice (line)
 
         invoice_dict = self.project.button_open_purchase_invoice()

@@ -36,10 +36,10 @@ class ProjectProject(models.Model):
         )
 
         query.order = None
-        query_string, query_param = query.select(
+        query_sql = query.select(
             "purchase_order_line.order_id as order_id",
         )
-        self.env.cr.execute(query_string, query_param)
+        self.env.cr.execute(query_sql.code, query_sql.params)
         purchase_lines_ids = [
             int(record.get("order_id")) for record in self.env.cr.dictfetchall()
         ]
@@ -59,10 +59,10 @@ class ProjectProject(models.Model):
         )
 
         query.order = None
-        query_string, query_param = query.select(
+        query_sql = query.select(
             "purchase_order_line.id as id",
         )
-        self.env.cr.execute(query_string, query_param)
+        self.env.cr.execute(query_sql.code, query_sql.params)
         purchase_lines_ids = [
             int(record.get("id")) for record in self.env.cr.dictfetchall()
         ]
@@ -81,10 +81,10 @@ class ProjectProject(models.Model):
             [str(project.account_id.id) for project in self],
         )
         query.order = None
-        query_string, query_param = query.select(
+        query_sql = query.select(
             "DISTINCT(account_move_line.move_id) as move_id",
         )
-        self.env.cr.execute(query_string, query_param)
+        self.env.cr.execute(query_sql.code, query_sql.params)
         purchase_invoice_ids = [
             int(record.get("move_id")) for record in self.env.cr.dictfetchall()
         ]
@@ -104,10 +104,10 @@ class ProjectProject(models.Model):
             [str(project.account_id.id) for project in self],
         )
         query.order = None
-        query_string, query_param = query.select(
+        query_sql = query.select(
             "account_move_line.id as id",
         )
-        self.env.cr.execute(query_string, query_param)
+        self.env.cr.execute(query_sql.code, query_sql.params)
         purchase_invoice_lines_ids = [
             int(record.get("id")) for record in self.env.cr.dictfetchall()
         ]
