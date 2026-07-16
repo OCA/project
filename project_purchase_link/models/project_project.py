@@ -122,7 +122,9 @@ class ProjectProject(models.Model):
                 ["price_subtotal:sum"],
             )
             project.purchase_count = len(groups)
-            project.purchase_line_total = sum(price_subtotal for _order_id, price_subtotal in groups)
+            project.purchase_line_total = sum(
+                price_subtotal for _order_id, price_subtotal in groups
+            )
 
     def _compute_purchase_invoice_info(self):
         for project in self:
@@ -132,7 +134,9 @@ class ProjectProject(models.Model):
                 ["price_subtotal:sum"],
             )
             project.purchase_invoice_count = len(groups)
-            project.purchase_invoice_line_total = sum(price_subtotal for _move_id, price_subtotal in groups)
+            project.purchase_invoice_line_total = sum(
+                price_subtotal for _move_id, price_subtotal in groups
+            )
 
     def button_open_purchase_order(self):
         self.ensure_one()
