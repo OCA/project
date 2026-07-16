@@ -2,7 +2,7 @@
 # License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
 from odoo import fields, models
-from odoo.osv import expression
+from odoo.fields import Domain
 from odoo.tools.safe_eval import safe_eval
 
 
@@ -38,11 +38,11 @@ class ProjectProject(models.Model):
         query_string, query_param = query.select(
             "purchase_order_line.order_id as order_id",
         )
-        self._cr.execute(query_string, query_param)
+        self.env.cr.execute(query_string, query_param)
         purchase_lines_ids = [
-            int(record.get("order_id")) for record in self._cr.dictfetchall()
+            int(record.get("order_id")) for record in self.env.cr.dictfetchall()
         ]
-        domain = [("id", "in", purchase_lines_ids)]
+        domain = Domain([("id", "in", purchase_lines_ids)])
         return domain
 
     def _domain_purchase_order_line(self):
@@ -61,11 +61,11 @@ class ProjectProject(models.Model):
         query_string, query_param = query.select(
             "purchase_order_line.id as id",
         )
-        self._cr.execute(query_string, query_param)
+        self.env.cr.execute(query_string, query_param)
         purchase_lines_ids = [
-            int(record.get("id")) for record in self._cr.dictfetchall()
+            int(record.get("id")) for record in self.env.cr.dictfetchall()
         ]
-        domain = [("id", "in", purchase_lines_ids)]
+        domain = Domain([("id", "in", purchase_lines_ids)])
         return domain
 
     def _domain_purchase_invoice(self):
@@ -83,11 +83,11 @@ class ProjectProject(models.Model):
         query_string, query_param = query.select(
             "DISTINCT(account_move_line.move_id) as move_id",
         )
-        self._cr.execute(query_string, query_param)
+        self.env.cr.execute(query_string, query_param)
         purchase_invoice_ids = [
-            int(record.get("move_id")) for record in self._cr.dictfetchall()
+            int(record.get("move_id")) for record in self.env.cr.dictfetchall()
         ]
-        domain = [("id", "in", purchase_invoice_ids)]
+        domain = Domain([("id", "in", purchase_invoice_ids)])
         return domain
 
     def _domain_purchase_invoice_line(self):
@@ -106,16 +106,16 @@ class ProjectProject(models.Model):
         query_string, query_param = query.select(
             "account_move_line.id as id",
         )
-        self._cr.execute(query_string, query_param)
+        self.env.cr.execute(query_string, query_param)
         purchase_invoice_lines_ids = [
-            int(record.get("id")) for record in self._cr.dictfetchall()
+            int(record.get("id")) for record in self.env.cr.dictfetchall()
         ]
-        domain = [("id", "in", purchase_invoice_lines_ids)]
+        domain = Domain([("id", "in", purchase_invoice_lines_ids)])
         return domain
 
     def _compute_purchase_info(self):
         for project in self:
-            groups = self.env["purchase.order.line"].read_group(
+            groups = self.env["purchase.order.line"]._read_group(
                 project._domain_purchase_order_line(),
                 ["order_id"],
                 ["price_subtotal"],
@@ -128,7 +128,7 @@ class ProjectProject(models.Model):
 
     def _compute_purchase_invoice_info(self):
         for project in self:
-            groups = self.env["account.move.line"].read_group(
+            groups = self.env["account.move.line"]._read_group(
                 project._domain_purchase_invoice_line(),
                 ["price_subtotal"],
                 ["move_id"],
@@ -164,12 +164,7 @@ class ProjectProject(models.Model):
         action = self.env["ir.actions.act_window"]._for_xml_id(
             "account.action_move_in_invoice_type"
         )
-        domain = expression.AND(
-            [
-                safe_eval(action.get("domain", "[]")),
-                self._domain_purchase_invoice(),
-            ]
-        )
+        domain = Domain(safe_eval(action.get("domain", "[]"))) & self._domain_purchase_invoice()
         action.update({"domain": domain})
         return action
 
