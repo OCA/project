@@ -115,7 +115,7 @@ class ProjectProject(models.Model):
 
     def _compute_purchase_info(self):
         for project in self:
-            groups = self.env["purchase.order.line"]._read_group(
+            groups = self.env["purchase.order.line"].formatted_read_group(
                 project._domain_purchase_order_line(),
                 ["order_id"],
                 ["price_subtotal"],
@@ -128,7 +128,7 @@ class ProjectProject(models.Model):
 
     def _compute_purchase_invoice_info(self):
         for project in self:
-            groups = self.env["account.move.line"]._read_group(
+            groups = self.env["account.move.line"].formattedformatted_read_group(
                 project._domain_purchase_invoice_line(),
                 ["price_subtotal"],
                 ["move_id"],
@@ -164,7 +164,10 @@ class ProjectProject(models.Model):
         action = self.env["ir.actions.act_window"]._for_xml_id(
             "account.action_move_in_invoice_type"
         )
-        domain = Domain(safe_eval(action.get("domain", "[]"))) & self._domain_purchase_invoice()
+        domain = (
+            Domain(safe_eval(action.get("domain", "[]")))
+            & self._domain_purchase_invoice()
+        )
         action.update({"domain": domain})
         return action
 
