@@ -116,29 +116,23 @@ class ProjectProject(models.Model):
 
     def _compute_purchase_info(self):
         for project in self:
-            groups = self.env["purchase.order.line"].formatted_read_group(
+            groups = self.env["purchase.order.line"]._read_group(
                 project._domain_purchase_order_line(),
                 ["order_id"],
-                ["price_subtotal"],
+                ["price_subtotal:sum"],
             )
-            purchase_line_total = 0
-            for group in groups:
-                purchase_line_total += group["price_subtotal"]
             project.purchase_count = len(groups)
-            project.purchase_line_total = purchase_line_total
+            project.purchase_line_total = sum(price_subtotal for _order_id, price_subtotal in groups)
 
     def _compute_purchase_invoice_info(self):
         for project in self:
-            groups = self.env["account.move.line"].formatted_read_group(
+            groups = self.env["account.move.line"]._read_group(
                 project._domain_purchase_invoice_line(),
-                ["price_subtotal"],
                 ["move_id"],
+                ["price_subtotal:sum"],
             )
-            purchase_invoice_line_total = 0
-            for group in groups:
-                purchase_invoice_line_total += group["price_subtotal"]
             project.purchase_invoice_count = len(groups)
-            project.purchase_invoice_line_total = purchase_invoice_line_total
+            project.purchase_invoice_line_total = sum(price_subtotal for _move_id, price_subtotal in groups)
 
     def button_open_purchase_order(self):
         self.ensure_one()
