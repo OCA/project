@@ -4,7 +4,7 @@
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 17.0\n"
+"Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
 "Last-Translator: \n"
 "Language-Team: \n"
@@ -16,14 +16,12 @@ msgstr ""
 #. module: project_crm_postsale_automation
 #. odoo-python
 #: code:addons/project_crm_postsale_automation/models/project.py:0
-#, python-format
 msgid "%(period)s %(year)s - Postsale"
 msgstr ""
 
 #. module: project_crm_postsale_automation
 #. odoo-python
 #: code:addons/project_crm_postsale_automation/models/project.py:0
-#, python-format
 msgid ""
 "<p class='text-danger'><b>⚠️ Configuration Error:</b> %(error_msg)s</p>"
 msgstr ""
@@ -31,7 +29,6 @@ msgstr ""
 #. module: project_crm_postsale_automation
 #. odoo-python
 #: code:addons/project_crm_postsale_automation/models/project.py:0
-#, python-format
 msgid "<p class='text-muted'>Not active or missing next date.</p>"
 msgstr ""
 
@@ -48,7 +45,6 @@ msgstr ""
 #. module: project_crm_postsale_automation
 #. odoo-python
 #: code:addons/project_crm_postsale_automation/models/project.py:0
-#, python-format
 msgid "Annual"
 msgstr ""
 
@@ -72,7 +68,6 @@ msgstr ""
 #. module: project_crm_postsale_automation
 #. odoo-python
 #: code:addons/project_crm_postsale_automation/models/project.py:0
-#, python-format
 msgid "Day %s"
 msgstr ""
 
@@ -84,7 +79,6 @@ msgstr ""
 #. module: project_crm_postsale_automation
 #. odoo-python
 #: code:addons/project_crm_postsale_automation/models/project.py:0
-#, python-format
 msgid "Day of month must be between 1 and 31."
 msgstr ""
 
@@ -96,10 +90,7 @@ msgid ""
 msgstr ""
 
 #. module: project_crm_postsale_automation
-#. odoo-python
-#: code:addons/project_crm_postsale_automation/models/project.py:0
 #: model:ir.model.fields.selection,name:project_crm_postsale_automation.selection__project_project__postsale_rule__days
-#, python-format
 msgid "Days"
 msgstr ""
 
@@ -148,7 +139,6 @@ msgstr ""
 #. module: project_crm_postsale_automation
 #. odoo-python
 #: code:addons/project_crm_postsale_automation/models/project.py:0
-#, python-format
 msgid ""
 "Invalid Name Template syntax. Please check your brackets {} and use only "
 "allowed variables:{project_name}, {period_label}, {year}."
@@ -170,10 +160,7 @@ msgid "Lead/Opportunity"
 msgstr ""
 
 #. module: project_crm_postsale_automation
-#. odoo-python
-#: code:addons/project_crm_postsale_automation/models/project.py:0
 #: model:ir.model.fields.selection,name:project_crm_postsale_automation.selection__project_project__postsale_rule__months
-#, python-format
 msgid "Months"
 msgstr ""
 
@@ -195,14 +182,12 @@ msgstr ""
 #. module: project_crm_postsale_automation
 #. odoo-python
 #: code:addons/project_crm_postsale_automation/models/project.py:0
-#, python-format
 msgid "Periodicity must be greater than 0."
 msgstr ""
 
 #. module: project_crm_postsale_automation
 #. odoo-python
 #: code:addons/project_crm_postsale_automation/models/project.py:0
-#, python-format
 msgid "Please set a Post-sale Responsible."
 msgstr ""
 
@@ -225,7 +210,6 @@ msgstr ""
 #. module: project_crm_postsale_automation
 #. odoo-python
 #: code:addons/project_crm_postsale_automation/models/project.py:0
-#, python-format
 msgid "Post-sale Opportunities"
 msgstr ""
 
@@ -242,14 +226,12 @@ msgstr ""
 #. module: project_crm_postsale_automation
 #. odoo-python
 #: code:addons/project_crm_postsale_automation/models/project.py:0
-#, python-format
 msgid "Post-sale tracking ACTIVATED. Interval: %(interval)s %(rule)s."
 msgstr ""
 
 #. module: project_crm_postsale_automation
 #. odoo-python
 #: code:addons/project_crm_postsale_automation/models/project.py:0
-#, python-format
 msgid "Post-sale tracking DEACTIVATED."
 msgstr ""
 
@@ -267,30 +249,22 @@ msgstr ""
 #. module: project_crm_postsale_automation
 #. odoo-python
 #: code:addons/project_crm_postsale_automation/models/project.py:0
-#, python-format
 msgid "Q%s"
 msgstr ""
 
 #. module: project_crm_postsale_automation
-#. odoo-python
-#: code:addons/project_crm_postsale_automation/models/project.py:0
 #: model:ir.model.fields.selection,name:project_crm_postsale_automation.selection__project_project__postsale_rule__quarters
-#, python-format
 msgid "Quarters"
 msgstr ""
 
 #. module: project_crm_postsale_automation
 #. odoo-python
 #: code:addons/project_crm_postsale_automation/models/project.py:0
-#, python-format
 msgid "S%s"
 msgstr ""
 
 #. module: project_crm_postsale_automation
-#. odoo-python
-#: code:addons/project_crm_postsale_automation/models/project.py:0
 #: model:ir.model.fields.selection,name:project_crm_postsale_automation.selection__project_project__postsale_rule__semesters
-#, python-format
 msgid "Semesters"
 msgstr ""
 
@@ -321,22 +295,15 @@ msgstr ""
 #. module: project_crm_postsale_automation
 #. odoo-python
 #: code:addons/project_crm_postsale_automation/models/project.py:0
-#, python-format
 msgid "W%s"
 msgstr ""
 
 #. module: project_crm_postsale_automation
-#. odoo-python
-#: code:addons/project_crm_postsale_automation/models/project.py:0
 #: model:ir.model.fields.selection,name:project_crm_postsale_automation.selection__project_project__postsale_rule__weeks
-#, python-format
 msgid "Weeks"
 msgstr ""
 
 #. module: project_crm_postsale_automation
-#. odoo-python
-#: code:addons/project_crm_postsale_automation/models/project.py:0
 #: model:ir.model.fields.selection,name:project_crm_postsale_automation.selection__project_project__postsale_rule__years
-#, python-format
 msgid "Years"
 msgstr ""
