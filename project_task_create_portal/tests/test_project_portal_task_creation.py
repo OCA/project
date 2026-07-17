@@ -19,6 +19,8 @@ class TestProjectPortalTaskCreation(TestProjectPortalCommon, HttpCaseWithUserPor
             {
                 "name": "Test Project",
                 "description": "Test project for portal task creation",
+                "privacy_visibility": "portal",
+                "message_partner_ids": [(4, cls.user_portal.partner_id.id)],
             }
         )
 
@@ -84,7 +86,6 @@ class TestProjectPortalTaskCreation(TestProjectPortalCommon, HttpCaseWithUserPor
         task = (
             self.env["project.task"]
             .with_user(self.user_portal)
-            .sudo()
             .create(
                 {
                     "name": "Portal Task",
@@ -107,7 +108,7 @@ class TestProjectPortalTaskCreation(TestProjectPortalCommon, HttpCaseWithUserPor
 
         # Try to create task as portal user
         with self.assertRaises(AccessError):
-            self.env["project.task"].with_user(self.user_portal).sudo().create(
+            self.env["project.task"].with_user(self.user_portal).create(
                 {
                     "name": "Portal Task",
                     "description": "Task created by portal user",
@@ -121,7 +122,6 @@ class TestProjectPortalTaskCreation(TestProjectPortalCommon, HttpCaseWithUserPor
         task = (
             self.env["project.task"]
             .with_user(self.user_portal)
-            .sudo()
             .create(
                 {
                     "name": "Portal Task",
@@ -132,7 +132,7 @@ class TestProjectPortalTaskCreation(TestProjectPortalCommon, HttpCaseWithUserPor
         )
 
         # Edit task as portal user
-        task.with_user(self.user_portal).sudo().write(
+        task.with_user(self.user_portal).write(
             {
                 "name": "Updated Portal Task",
                 "description": "Updated description",
@@ -143,13 +143,48 @@ class TestProjectPortalTaskCreation(TestProjectPortalCommon, HttpCaseWithUserPor
         self.assertEqual(task.name, "Updated Portal Task")
         self.assertIn("Updated description", task.description)
 
+    def test_task_portal_edit_rejects_forbidden_fields(self):
+        """Test that portal users can edit only fields exposed by the form."""
+        task = (
+            self.env["project.task"]
+            .with_user(self.user_portal)
+            .create(
+                {
+                    "name": "Portal Task",
+                    "description": "Task created by portal user",
+                    "project_id": self.project.id,
+                }
+            )
+        )
+
+        for field_name, value in (
+            ("stage_id", self.stage_in_progress.id),
+            ("project_id", False),
+            ("user_ids", [(6, 0, [self.env.ref("base.user_admin").id])]),
+        ):
+            with self.subTest(field_name=field_name), self.assertRaises(AccessError):
+                task.with_user(self.user_portal).write({field_name: value})
+
+    def test_task_portal_record_rule_rejects_other_users_task(self):
+        """Test the portal record rule restricts writes to tasks owned by the user."""
+        task = self.env["project.task"].create(
+            {
+                "name": "Internal Task",
+                "description": "Task created by an internal user",
+                "project_id": self.project.id,
+                "stage_id": self.stage_backlog.id,
+            }
+        )
+
+        with self.assertRaises(AccessError):
+            task.with_user(self.user_portal).check_access_rule("write")
+
     def test_task_portal_edit_other_user_task(self):
         """Test portal user trying to edit another user's task."""
         # Create task as internal user
         task = (
             self.env["project.task"]
             .with_user(self.user_portal)
-            .sudo()
             .create(
                 {
                     "name": "Internal Task",
@@ -163,7 +198,7 @@ class TestProjectPortalTaskCreation(TestProjectPortalCommon, HttpCaseWithUserPor
 
         # Try to edit task as portal user
         with self.assertRaises(AccessError):
-            task.with_user(self.user_portal).sudo().write(
+            task.with_user(self.user_portal).write(
                 {
                     "name": "Hacked Task",
                 }
@@ -175,7 +210,6 @@ class TestProjectPortalTaskCreation(TestProjectPortalCommon, HttpCaseWithUserPor
         task = (
             self.env["project.task"]
             .with_user(self.user_portal)
-            .sudo()
             .create(
                 {
                     "name": "Portal Task",
@@ -186,7 +220,7 @@ class TestProjectPortalTaskCreation(TestProjectPortalCommon, HttpCaseWithUserPor
         )
 
         # Move task to different stage
-        task.stage_id = self.stage_in_progress
+        task.sudo().stage_id = self.stage_in_progress
 
         # Try to edit task as portal user
         with self.assertRaises(AccessError):
@@ -214,7 +248,6 @@ class TestProjectPortalTaskCreation(TestProjectPortalCommon, HttpCaseWithUserPor
         task = (
             self.env["project.task"]
             .with_user(self.user_portal)
-            .sudo()
             .create(
                 {
                     "name": "Portal Task",
@@ -233,7 +266,6 @@ class TestProjectPortalTaskCreation(TestProjectPortalCommon, HttpCaseWithUserPor
         task = (
             self.env["project.task"]
             .with_user(self.user_portal)
-            .sudo()
             .create(
                 {
                     "name": "Portal Task",
@@ -255,7 +287,6 @@ class TestProjectPortalTaskCreation(TestProjectPortalCommon, HttpCaseWithUserPor
         task = (
             self.env["project.task"]
             .with_user(self.user_portal)
-            .sudo()
             .create(
                 {
                     "name": "Portal Task",
@@ -266,7 +297,7 @@ class TestProjectPortalTaskCreation(TestProjectPortalCommon, HttpCaseWithUserPor
         )
 
         # Move task to different stage
-        task.stage_id = self.stage_in_progress
+        task.sudo().stage_id = self.stage_in_progress
 
         # Check that portal user has no edit access
         self.assertFalse(task.with_user(self.user_portal).check_portal_edit_access())
@@ -291,11 +322,9 @@ class TestProjectPortalTaskCreation(TestProjectPortalCommon, HttpCaseWithUserPor
     def test_create_task_as_portal_clears_assignees(self):
         """Test that creating a task as portal user clears user_ids."""
         admin_user = self.env.ref("base.user_admin")
-        # Create task as portal user with user_ids
         task = (
             self.env["project.task"]
             .with_user(self.user_portal)
-            .sudo()
             .create(
                 {
                     "name": "Portal Task",
@@ -306,7 +335,6 @@ class TestProjectPortalTaskCreation(TestProjectPortalCommon, HttpCaseWithUserPor
             )
         )
 
-        # Check that user_ids is empty
         self.assertFalse(task.user_ids)
 
     def test_create_task_as_internal_user_keeps_assignees(self):

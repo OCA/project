@@ -28,6 +28,8 @@ class TestPortalController(TestProjectPortalCommon, HttpCaseWithUserPortal):
             {
                 "name": "Test Project",
                 "description": "Test project for portal task creation",
+                "privacy_visibility": "portal",
+                "message_partner_ids": [(4, cls.user_portal.partner_id.id)],
             }
         )
 
@@ -248,7 +250,6 @@ class TestPortalController(TestProjectPortalCommon, HttpCaseWithUserPortal):
         task = (
             self.env["project.task"]
             .with_user(self.user_portal)
-            .sudo()
             .create(
                 {
                     "name": "Portal Task",
@@ -270,7 +271,6 @@ class TestPortalController(TestProjectPortalCommon, HttpCaseWithUserPortal):
         task = (
             self.env["project.task"]
             .with_user(self.user_portal)
-            .sudo()
             .create(
                 {
                     "name": "Portal Task",
@@ -308,7 +308,6 @@ class TestPortalController(TestProjectPortalCommon, HttpCaseWithUserPortal):
         task = (
             self.env["project.task"]
             .with_user(self.user_portal)
-            .sudo()
             .create(
                 {
                     "name": "Portal Task",
@@ -348,7 +347,6 @@ class TestPortalController(TestProjectPortalCommon, HttpCaseWithUserPortal):
         task = (
             self.env["project.task"]
             .with_user(self.user_portal)
-            .sudo()
             .create(
                 {
                     "name": "Portal Task",

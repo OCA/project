@@ -13,8 +13,13 @@
         "portal",
     ],
     "data": [
+        "security/ir.model.access.csv",
+        "security/project_task_security.xml",
         "views/portal_template.xml",
         "views/project_project_views.xml",
+    ],
+    "demo": [
+        "demo/project_task_create_portal_demo.xml",
     ],
     "assets": {
         "web.assets_frontend": [

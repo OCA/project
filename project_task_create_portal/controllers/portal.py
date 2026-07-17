@@ -18,6 +18,7 @@ class ProjectCustomerNewPortal(ProjectCustomerPortal):
         return ["date_deadline"]
 
     def _validate_task_fields(self, data, task_creation=False) -> tuple:
+        """Validate task values submitted from the portal form."""
         error, error_message = dict(), []
 
         # Validation
@@ -89,12 +90,8 @@ class ProjectCustomerNewPortal(ProjectCustomerPortal):
             error, error_message = self._validate_task_fields(post)
             if not error:
                 values = self._prepare_task_values(post)
-                values.update(
-                    stage_id=project.portal_stage_id.id,
-                    partner_id=request.env.user.partner_id.id,
-                    project_id=project.id,
-                )
-                task = request.env["project.task"].sudo().create(values)
+                values["project_id"] = project.id
+                task = request.env["project.task"].create(values)
                 return request.redirect(f"/my/projects/{project_id}/task/{task.id}")
             values.update({"error": error, "error_message": error_message, **post})
         values.update({"page_name": "task_creation", "button": _("Create")})
@@ -115,14 +112,12 @@ class ProjectCustomerNewPortal(ProjectCustomerPortal):
         :param int task_id: project.task record id
         :param dict post: post values
         """
-        task = (
-            request.env["project.task"]
-            .sudo()
-            .search([("id", "=", task_id), ("project_id", "=", project_id)])
+        task = request.env["project.task"].search(
+            [("id", "=", task_id), ("project_id", "=", project_id)]
         )
         if not task:
             raise MissingError(_("Task not found!"))
-        if not task.project_id.is_portal_task_creation_allowed():
+        if not task.check_portal_edit_access():
             raise AccessError(_("You are not allowed to edit this task."))
         values = self._task_action_page_view_values(task.project_id)
         values.update(
@@ -137,7 +132,7 @@ class ProjectCustomerNewPortal(ProjectCustomerPortal):
         if post and request.httprequest.method == "POST":
             error, error_message = self._validate_task_fields(post)
             if not error:
-                task.sudo().write(self._prepare_task_values(post))
+                task.write(self._prepare_task_values(post))
                 return request.redirect(f"/my/projects/{project_id}/task/{task_id}")
             values.update({"error": error, "error_message": error_message, **post})
         values.update({"page_name": "task_edit"})
@@ -158,6 +153,7 @@ class ProjectCustomerNewPortal(ProjectCustomerPortal):
         groupby=None,
         **kwargs,
     ):
+        """Add portal task creation availability to project page values."""
         values = super()._project_get_page_view_values(
             project,
             access_token,
@@ -177,6 +173,7 @@ class ProjectCustomerNewPortal(ProjectCustomerPortal):
         return values
 
     def _task_get_searchbar_groupby(self, milestones_allowed):
+        """Add task creator to the available portal grouping options."""
         values = super()._task_get_searchbar_groupby(milestones_allowed)
         values.update(
             create_uid={"input": "create_uid", "label": _("Created by"), "order": 12}
@@ -184,9 +181,10 @@ class ProjectCustomerNewPortal(ProjectCustomerPortal):
         return dict(sorted(values.items(), key=lambda item: item[1]["order"]))
 
     def _task_get_searchbar_sortings(self, milestones_allowed):
+        """Add task creator to the available portal sorting options."""
         values = super()._task_get_searchbar_sortings(milestones_allowed)
         values.update(
-            create_date={
+            create_uid={
                 "label": _("Created by"),
                 "order": "create_uid desc",
                 "sequence": 12,
@@ -195,6 +193,7 @@ class ProjectCustomerNewPortal(ProjectCustomerPortal):
         return values
 
     def _task_get_groupby_mapping(self):
+        """Map the portal creator grouping option to ``create_uid``."""
         result = super()._task_get_groupby_mapping()
         result.update(create_uid="create_uid")
         return result
