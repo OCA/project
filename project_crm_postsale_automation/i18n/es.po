@@ -1,0 +1,363 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_crm_postsale_automation
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-03 10:27+0000\n"
+"PO-Revision-Date: 2026-07-03 10:27+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: project_crm_postsale_automation
+#. odoo-python
+#: code:addons/project_crm_postsale_automation/models/project.py:0
+#, python-format
+msgid "%(period)s %(year)s - Postsale"
+msgstr "%(period)s %(year)s - Posventa"
+
+#. module: project_crm_postsale_automation
+#. odoo-python
+#: code:addons/project_crm_postsale_automation/models/project.py:0
+#, python-format
+msgid ""
+"<p class='text-danger'><b>⚠️ Configuration Error:</b> %(error_msg)s</p>"
+msgstr ""
+"<p class='text-danger'><b>⚠️ Error de configuración:</b> %(error_msg)s</p>"
+
+#. module: project_crm_postsale_automation
+#. odoo-python
+#: code:addons/project_crm_postsale_automation/models/project.py:0
+#, python-format
+msgid "<p class='text-muted'>Not active or missing next date.</p>"
+msgstr "<p class='text-muted'>No está activo o falta la próxima fecha.</p>"
+
+#. module: project_crm_postsale_automation
+#: model:ir.model.fields,field_description:project_crm_postsale_automation.field_project_project__postsale_active
+msgid "Activate Post-sale"
+msgstr "Activar posventa"
+
+#. module: project_crm_postsale_automation
+#: model:ir.model.fields,help:project_crm_postsale_automation.field_project_project__postsale_name_template
+msgid "Allowed variables: {project_name}, {period_label}, {year}"
+msgstr "Variables permitidas: {project_name}, {period_label}, {year}"
+
+#. module: project_crm_postsale_automation
+#. odoo-python
+#: code:addons/project_crm_postsale_automation/models/project.py:0
+#, python-format
+msgid "Annual"
+msgstr "Anual"
+
+#. module: project_crm_postsale_automation
+#: model:ir.model.fields,help:project_crm_postsale_automation.field_project_project__postsale_generate_tags
+msgid ""
+"Automatically create and assign a tag like 'Q2 2026 - Postsale' to the lead."
+msgstr ""
+"Crear y asignar automáticamente una etiqueta como 'Q2 2026 - Postsale' a la "
+"oportunidad."
+
+#. module: project_crm_postsale_automation
+#: model_terms:ir.ui.view,arch_db:project_crm_postsale_automation.view_project_postsale_form
+msgid "Configuration"
+msgstr "Configuración"
+
+#. module: project_crm_postsale_automation
+#: model:ir.model.fields,help:project_crm_postsale_automation.field_project_project__postsale_partner_id
+msgid ""
+"Customer assigned to the generated leads. Defaults to the project customer."
+msgstr ""
+"Cliente asignado a las oportunidades generadas. Por defecto, el cliente del "
+"proyecto."
+
+#. module: project_crm_postsale_automation
+#. odoo-python
+#: code:addons/project_crm_postsale_automation/models/project.py:0
+#, python-format
+msgid "Day %s"
+msgstr "Día %s"
+
+#. module: project_crm_postsale_automation
+#: model:ir.model.fields,field_description:project_crm_postsale_automation.field_project_project__postsale_day_of_month
+msgid "Day of Month"
+msgstr "Día del mes"
+
+#. module: project_crm_postsale_automation
+#. odoo-python
+#: code:addons/project_crm_postsale_automation/models/project.py:0
+#, python-format
+msgid "Day of month must be between 1 and 31."
+msgstr "El día del mes debe estar entre 1 y 31."
+
+#. module: project_crm_postsale_automation
+#: model:ir.model.fields,help:project_crm_postsale_automation.field_project_project__postsale_day_of_month
+msgid ""
+"Day of the month to generate the opportunity (1-31). If the month has fewer "
+"days, the last day of that month will be used."
+msgstr ""
+"Día del mes para generar la oportunidad (1-31). Si el mes tiene menos días, "
+"se usará el último día de ese mes."
+
+#. module: project_crm_postsale_automation
+#. odoo-python
+#: code:addons/project_crm_postsale_automation/models/project.py:0
+#: model:ir.model.fields.selection,name:project_crm_postsale_automation.selection__project_project__postsale_rule__days
+#, python-format
+msgid "Days"
+msgstr "Días"
+
+#. module: project_crm_postsale_automation
+#: model_terms:ir.ui.view,arch_db:project_crm_postsale_automation.view_project_postsale_form
+msgid ""
+"Describe instructions, terms or SLA targets to map directly onto the "
+"description of generated Leads..."
+msgstr ""
+"Describe instrucciones, términos o objetivos de SLA para trasladarlos "
+"directamente a la descripción de las oportunidades generadas..."
+
+#. module: project_crm_postsale_automation
+#: model:ir.model.fields,field_description:project_crm_postsale_automation.field_project_project__postsale_generate_tags
+msgid "Generate CRM Tags"
+msgstr "Generar etiquetas de CRM"
+
+#. module: project_crm_postsale_automation
+#: model_terms:ir.ui.view,arch_db:project_crm_postsale_automation.view_project_postsale_form
+msgid "Generate Next Opportunity"
+msgstr "Generar próxima oportunidad"
+
+#. module: project_crm_postsale_automation
+#: model:ir.model.fields,field_description:project_crm_postsale_automation.field_project_project__postsale_notes
+#: model_terms:ir.ui.view,arch_db:project_crm_postsale_automation.view_project_postsale_form
+msgid "Internal Notes"
+msgstr "Notas internas"
+
+#. module: project_crm_postsale_automation
+#: model:ir.model.fields,help:project_crm_postsale_automation.field_project_project__postsale_notes
+msgid ""
+"Internal notes or description that will propagate directly into the "
+"generated CRM Lead description."
+msgstr ""
+"Notas internas o descripción que se propagará directamente en la descripción"
+" de la oportunidad CRM generada."
+
+#. module: project_crm_postsale_automation
+#: model:ir.model.fields,help:project_crm_postsale_automation.field_project_project__postsale_user_id
+msgid ""
+"Internal user responsible for the generated post-sale leads (must have a "
+"Sales Team assigned)."
+msgstr ""
+"Usuario interno responsable de las oportunidades posventa generadas (debe "
+"tener asignado un equipo de ventas)."
+
+#. module: project_crm_postsale_automation
+#: model:ir.model.fields,field_description:project_crm_postsale_automation.field_project_project__postsale_interval
+msgid "Interval"
+msgstr "Intervalo"
+
+#. module: project_crm_postsale_automation
+#. odoo-python
+#: code:addons/project_crm_postsale_automation/models/project.py:0
+#, python-format
+msgid ""
+"Invalid Name Template syntax. Please check your brackets {} and use only "
+"allowed variables:{project_name}, {period_label}, {year}."
+msgstr ""
+"Sintaxis de la plantilla de nombre inválida. Comprueba tus corchetes {} y "
+"usa solo las variables permitidas: {project_name}, {period_label}, {year}."
+
+#. module: project_crm_postsale_automation
+#: model:ir.model.fields,field_description:project_crm_postsale_automation.field_crm_lead__is_postsale
+msgid "Is a Post-sale Lead"
+msgstr "Es una oportunidad posventa"
+
+#. module: project_crm_postsale_automation
+#: model:ir.model.fields,field_description:project_crm_postsale_automation.field_project_project__postsale_last_date
+msgid "Last Generation Date"
+msgstr "Fecha de última generación"
+
+#. module: project_crm_postsale_automation
+#: model:ir.model,name:project_crm_postsale_automation.model_crm_lead
+msgid "Lead/Opportunity"
+msgstr "Lead/Oportunidad"
+
+#. module: project_crm_postsale_automation
+#. odoo-python
+#: code:addons/project_crm_postsale_automation/models/project.py:0
+#: model:ir.model.fields.selection,name:project_crm_postsale_automation.selection__project_project__postsale_rule__months
+#, python-format
+msgid "Months"
+msgstr "Meses"
+
+#. module: project_crm_postsale_automation
+#: model:ir.model.fields,field_description:project_crm_postsale_automation.field_project_project__postsale_name_template
+msgid "Name Template"
+msgstr "Plantilla de nombre"
+
+#. module: project_crm_postsale_automation
+#: model:ir.model.fields,field_description:project_crm_postsale_automation.field_project_project__postsale_next_executions
+msgid "Next Executions Preview"
+msgstr "Vista previa de próximas ejecuciones"
+
+#. module: project_crm_postsale_automation
+#: model:ir.model.fields,field_description:project_crm_postsale_automation.field_project_project__postsale_next_date
+msgid "Next Generation Date"
+msgstr "Fecha de próxima generación"
+
+#. module: project_crm_postsale_automation
+#. odoo-python
+#: code:addons/project_crm_postsale_automation/models/project.py:0
+#, python-format
+msgid "Periodicity must be greater than 0."
+msgstr "La periodicidad debe ser mayor que 0."
+
+#. module: project_crm_postsale_automation
+#. odoo-python
+#: code:addons/project_crm_postsale_automation/models/project.py:0
+#, python-format
+msgid "Please set a Post-sale Responsible."
+msgstr "Por favor, asigna un responsable posventa."
+
+#. module: project_crm_postsale_automation
+#: model:ir.model.fields,field_description:project_crm_postsale_automation.field_project_project__postsale_partner_id
+msgid "Post-sale Customer"
+msgstr "Cliente posventa"
+
+#. module: project_crm_postsale_automation
+#: model:ir.model.fields,field_description:project_crm_postsale_automation.field_crm_lead__postsale_cycle_date
+msgid "Post-sale Cycle Date"
+msgstr "Fecha del ciclo posventa"
+
+#. module: project_crm_postsale_automation
+#: model:ir.model.fields,field_description:project_crm_postsale_automation.field_project_project__postsale_lead_count
+#: model_terms:ir.ui.view,arch_db:project_crm_postsale_automation.view_project_postsale_form
+msgid "Post-sale Leads"
+msgstr "Oportunidades posventa"
+
+#. module: project_crm_postsale_automation
+#. odoo-python
+#: code:addons/project_crm_postsale_automation/models/project.py:0
+#, python-format
+msgid "Post-sale Opportunities"
+msgstr "Oportunidades posventa"
+
+#. module: project_crm_postsale_automation
+#: model:ir.model.fields,field_description:project_crm_postsale_automation.field_project_project__postsale_user_id
+msgid "Post-sale Responsible"
+msgstr "Responsable posventa"
+
+#. module: project_crm_postsale_automation
+#: model_terms:ir.ui.view,arch_db:project_crm_postsale_automation.view_project_postsale_form
+msgid "Post-sale Tracking"
+msgstr "Seguimiento posventa"
+
+#. module: project_crm_postsale_automation
+#. odoo-python
+#: code:addons/project_crm_postsale_automation/models/project.py:0
+#, python-format
+msgid "Post-sale tracking ACTIVATED. Interval: %(interval)s %(rule)s."
+msgstr "Seguimiento posventa ACTIVADO. Intervalo: %(interval)s %(rule)s."
+
+#. module: project_crm_postsale_automation
+#. odoo-python
+#: code:addons/project_crm_postsale_automation/models/project.py:0
+#, python-format
+msgid "Post-sale tracking DEACTIVATED."
+msgstr "Seguimiento posventa DESACTIVADO."
+
+#. module: project_crm_postsale_automation
+#: model:ir.model,name:project_crm_postsale_automation.model_project_project
+#: model:ir.model.fields,field_description:project_crm_postsale_automation.field_crm_lead__project_id
+msgid "Project"
+msgstr "Proyecto"
+
+#. module: project_crm_postsale_automation
+#: model:ir.actions.server,name:project_crm_postsale_automation.ir_cron_generate_postsale_opportunities_ir_actions_server
+msgid "Project: Generate Post-sale Opportunities"
+msgstr "Proyecto: Generar oportunidades posventa"
+
+#. module: project_crm_postsale_automation
+#. odoo-python
+#: code:addons/project_crm_postsale_automation/models/project.py:0
+#, python-format
+msgid "Q%s"
+msgstr "T%s"
+
+#. module: project_crm_postsale_automation
+#. odoo-python
+#: code:addons/project_crm_postsale_automation/models/project.py:0
+#: model:ir.model.fields.selection,name:project_crm_postsale_automation.selection__project_project__postsale_rule__quarters
+#, python-format
+msgid "Quarters"
+msgstr "Trimestres"
+
+#. module: project_crm_postsale_automation
+#. odoo-python
+#: code:addons/project_crm_postsale_automation/models/project.py:0
+#, python-format
+msgid "S%s"
+msgstr ""
+
+#. module: project_crm_postsale_automation
+#. odoo-python
+#: code:addons/project_crm_postsale_automation/models/project.py:0
+#: model:ir.model.fields.selection,name:project_crm_postsale_automation.selection__project_project__postsale_rule__semesters
+#, python-format
+msgid "Semesters"
+msgstr "Semestres"
+
+#. module: project_crm_postsale_automation
+#: model_terms:ir.ui.view,arch_db:project_crm_postsale_automation.view_project_postsale_form
+msgid "Status & Forecasting"
+msgstr "Estado y previsión"
+
+#. module: project_crm_postsale_automation
+#: model:ir.model.fields,help:project_crm_postsale_automation.field_crm_lead__is_postsale
+msgid ""
+"Technical field to identify leads generated automatically by the post-sale "
+"automation."
+msgstr ""
+"Campo técnico para identificar oportunidades generadas automáticamente por "
+"la automatización posventa."
+
+#. module: project_crm_postsale_automation
+#: model:ir.model.fields,help:project_crm_postsale_automation.field_crm_lead__postsale_cycle_date
+msgid ""
+"The logical date of the post-sale cycle this lead belongs to. Used to "
+"prevent duplicates."
+msgstr ""
+"La fecha lógica del ciclo posventa al que pertenece esta oportunidad. Se usa"
+" para evitar duplicados."
+
+#. module: project_crm_postsale_automation
+#: model:ir.model.fields,field_description:project_crm_postsale_automation.field_project_project__postsale_rule
+msgid "Unit"
+msgstr "Unidad"
+
+#. module: project_crm_postsale_automation
+#. odoo-python
+#: code:addons/project_crm_postsale_automation/models/project.py:0
+#, python-format
+msgid "W%s"
+msgstr ""
+
+#. module: project_crm_postsale_automation
+#. odoo-python
+#: code:addons/project_crm_postsale_automation/models/project.py:0
+#: model:ir.model.fields.selection,name:project_crm_postsale_automation.selection__project_project__postsale_rule__weeks
+#, python-format
+msgid "Weeks"
+msgstr "Semanas"
+
+#. module: project_crm_postsale_automation
+#. odoo-python
+#: code:addons/project_crm_postsale_automation/models/project.py:0
+#: model:ir.model.fields.selection,name:project_crm_postsale_automation.selection__project_project__postsale_rule__years
+#, python-format
+msgid "Years"
+msgstr "Años"

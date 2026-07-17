@@ -1,0 +1,3 @@
+- [Nagarro](<https://www.nagarro.com>):
+  - Patryk Pyczko \<<patryk.pyczko@nagarro.com>\>
+  - Paloma González-Ripoll Cano \<<paloma.gonzalez@nagarro.com>\>
