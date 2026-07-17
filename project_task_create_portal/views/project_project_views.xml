@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Project Project Form View -->
+    <record id="project_project_form_view_portal_task_creation" model="ir.ui.view">
+        <field name="name">project.project.form.portal.task.creation</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project" />
+        <field name="arch" type="xml">
+            <group name="extra_settings" position="before">
+                <group
+                    string="Allow Create and Edit Task In Portal"
+                    name="allow_create_and_edit_task_in_portal"
+                >
+                    <field name="portal_stage_id" />
+                    <field
+                        name="portal_user_ids"
+                        widget="many2many_tags_avatar"
+                        attrs="{'invisible': [('portal_stage_id', '=', False)]}"
+                    />
+                    <field name="portal_hide_assigned_users" />
+                </group>
+            </group>
+        </field>
+    </record>
+</odoo>
