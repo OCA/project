@@ -1,16 +1,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 
-from datetime import timedelta
-
 from odoo import api, fields, models
-
-WEEKS = {
-    "first": 1,
-    "second": 2,
-    "third": 3,
-    "last": 4,
-}
 
 
 class ProjectTask(models.Model):
@@ -20,7 +11,10 @@ class ProjectTask(models.Model):
         "recurring.activity", "project_task_id", string="activity", copy=True
     )
     custom_activity_ids = fields.Many2many(
-        "recurring.activity", compute="_compute_activity_ids", store=True, copy=True
+        "recurring.activity",
+        compute="_compute_activity_ids",
+        store=True,
+        copy=True,
     )
 
     @api.depends("recurring_activity_ids")
@@ -28,36 +22,9 @@ class ProjectTask(models.Model):
         for item in self:
             item.custom_activity_ids = item.recurring_activity_ids.ids
 
-    @api.model
-    def _get_recurring_fields(self):
-        return ["custom_activity_ids"] + super()._get_recurring_fields()
-
     def call_create_recurring_tasks(self):
-        self.recurrence_id.create_recurring_tasks()
-
-    def _get_new_next_date_recurring_task(self):
-        date = self.recurrence_id.next_recurrence_date
-        delta = self.repeat_interval if self.repeat_unit == "day" else 1
-        dates = self.recurrence_id._get_next_recurring_dates(
-            date + timedelta(days=delta),
-            self.repeat_interval,
-            self.repeat_unit,
-            self.repeat_type,
-            self.repeat_until,
-            self.repeat_on_month,
-            self.repeat_on_year,
-            self._get_weekdays(WEEKS.get(self.repeat_week)),
-            self.repeat_day,
-            self.repeat_week,
-            self.repeat_month,
-            count=1,
-        )
-        return dates[0]
-
-    def _get_recurrence_start_date(self):
-        if self.env.user.has_group("base.group_no_one"):
-            return self.recurrence_id.next_recurrence_date or fields.Datetime.now()
-        return super()._get_recurrence_start_date()
+        for task in self.filtered(lambda t: t.recurrence_id):
+            task.recurrence_id._create_next_occurrence(task)
 
     @api.model
     def _forming_activity_data(self, task, custom_activity_ids):
@@ -74,7 +41,9 @@ class ProjectTask(models.Model):
                         "user_id": item.user_id.id,
                         "summary": item.summary,
                         "description": item.description,
-                        "days_after_task_creation_date": item.days_after_task_creation_date,
+                        "days_after_task_creation_date": (
+                            item.days_after_task_creation_date
+                        ),
                     },
                 )
             )
@@ -84,8 +53,11 @@ class ProjectTask(models.Model):
     def create(self, vals_list):
         results = super().create(vals_list)
         for item in results:
-            item.create_date = item.recurrence_id.next_recurrence_date
-            if item.recurring_task and item.custom_activity_ids:
+            if (
+                item.recurring_task
+                and item.custom_activity_ids
+                and not self.env.context.get("copy_project")
+            ):
                 item.message_subscribe(
                     partner_ids=list(
                         set(
