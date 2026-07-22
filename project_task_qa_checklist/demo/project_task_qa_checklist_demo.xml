@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 - Jarsa
+     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl-3.0).
+
+     Example data only, so the module has something to run against. The real
+     criteria, tag mapping and QA stage are loaded per installation (see
+     CONFIGURE), never shipped with this OCA module. -->
+<odoo>
+    <!-- Flag an existing demo stage as a QA stage. -->
+    <record id="project.project_stage_1" model="project.task.type">
+        <field name="is_qa_stage" eval="True" />
+    </record>
+
+    <record
+        id="qa_checklist_template_demo_general"
+        model="project.task.qa.checklist.template"
+    >
+        <field name="name">User manual attached as evidence</field>
+        <field name="sequence">1</field>
+        <field name="always_applicable" eval="True" />
+        <field name="help_text">Applies to every task entering the QA stage.</field>
+    </record>
+
+    <record
+        id="qa_checklist_template_demo_tagged"
+        model="project.task.qa.checklist.template"
+    >
+        <field name="name">Feature works end to end</field>
+        <field name="sequence">2</field>
+        <field name="always_applicable" eval="False" />
+        <field name="tag_ids" eval="[Command.link(ref('project.project_tags_02'))]" />
+    </record>
+</odoo>
