@@ -1,4 +1,4 @@
-from odoo import _, api, models
+from odoo import api, models
 from odoo.exceptions import ValidationError
 
 
@@ -12,5 +12,7 @@ class ProjectTask(models.Model):
                 lambda t: not t.stage_id.fold
             ):
                 raise ValidationError(
-                    _("You can't close this task because it has open subtasks.")
+                    self.env._(
+                        "You can't close this task because it has open subtasks."
+                    )
                 )
