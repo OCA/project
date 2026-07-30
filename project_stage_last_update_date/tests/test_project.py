@@ -14,7 +14,7 @@ class TestProject(BaseCommon):
 
     @freeze_time("2024-08-19 08:00")
     def test_project_stage_last_update_date(self):
-        self.assertEqual(self.project.stage_last_update_date, False)
+        self.assertFalse(self.project.stage_last_update_date)
         self.project.write({"stage_id": self.stage.id})
         self.assertEqual(
             self.project.stage_last_update_date.strftime("%Y-%m-%d %H:%M"),
