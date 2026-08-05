@@ -1,0 +1,3 @@
+- Denis Leemann \<<denis.leemann@camptocamp.com>\>
+- Italo Lopes \<<italo.lopes@camptocamp.com>\>
+- Simone Orsi \<<simone.orsi@camptocamp.com>\>
