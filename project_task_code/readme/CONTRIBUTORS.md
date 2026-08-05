@@ -10,3 +10,4 @@
 - Tharathip Chaweewongphan \<<tharathipc@ecosoft.co.th>\>
 - Ruchir Shukla \<<ruchir@bizzappdev.com>\>
 - Nedas Žilinskas \<<nedas.zilinskas@avoin.systems>\>
+- Jasmin Solanki \<<jasmin.solanki@forgeflow.com>\>

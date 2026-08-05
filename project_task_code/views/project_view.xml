@@ -1,13 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
+    <record id="project_project_task_name_display_form_view" model="ir.ui.view">
+        <field name="name">project.project.form.task.name.display</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project" />
+        <field name="arch" type="xml">
+            <group name="extra_settings" position="inside">
+                <field name="task_name_display" widget="radio" />
+            </group>
+        </field>
+    </record>
     <record id="project_task_code_form_view" model="ir.ui.view">
         <field name="name">project.task.code.form</field>
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_form2" />
         <field name="arch" type="xml">
             <field name="name" position="before">
+                <field name="task_name_display" invisible="1" />
                 <field name="code" class="oe_inline" />
-                <span class="oe_inline"> - </span>
+                <span
+                    class="oe_inline"
+                    invisible="task_name_display == 'code'"
+                > - </span>
+            </field>
+            <!--
+                Projects displaying the number alone hide the title, so it
+                cannot be required there. The field itself is not required at
+                model level for that reason.
+            -->
+            <field name="name" position="attributes">
+                <attribute name="invisible">task_name_display == 'code'</attribute>
+                <attribute name="required">task_name_display != 'code'</attribute>
             </field>
         </field>
     </record>
@@ -35,6 +58,12 @@
             <!-- Move the name field inside the task_code div to ensure it appears after the code on a single line. -->
             <xpath expr="//div[@name='task_code']" position="inside">
                 <xpath expr="//field[@name='name']" position="move" />
+            </xpath>
+            <xpath
+                expr="//div[@name='task_code']/field[@name='name']"
+                position="attributes"
+            >
+                <attribute name="invisible">task_name_display == 'code'</attribute>
             </xpath>
         </field>
     </record>
