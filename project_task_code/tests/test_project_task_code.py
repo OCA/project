@@ -65,6 +65,51 @@ class TestProjectTaskCode(BaseCommon):
             f"Task with code {project_task.code} should not be in the results",
         )
 
+    def test_display_name_code_only_project(self):
+        project = self.env["project.project"].create(
+            {"name": "Code only", "task_name_display": "code"}
+        )
+        task = self.project_task_model.create(
+            {"name": "Testing task code", "project_id": project.id}
+        )
+        self.assertEqual(task.display_name, task.code)
+
+    def test_task_without_name_on_code_only_project(self):
+        project = self.env["project.project"].create(
+            {"name": "Code only", "task_name_display": "code"}
+        )
+        task = self.project_task_model.create({"project_id": project.id})
+        self.assertFalse(task.name)
+        self.assertEqual(task.display_name, task.code)
+
+    def test_duplicated_task_without_name_stays_untitled(self):
+        project = self.env["project.project"].create(
+            {"name": "Code only", "task_name_display": "code"}
+        )
+        task = self.project_task_model.create({"project_id": project.id})
+        copied = task.copy()
+        self.assertNotEqual(copied.code, task.code)
+        self.assertFalse(copied.name)
+        self.assertEqual(copied.display_name, copied.code)
+
+    def test_duplicated_task_with_name_keeps_the_copy_suffix(self):
+        task = self.project_task_model.create({"name": "Testing task code"})
+        copied = task.copy()
+        self.assertIn("(copy)", copied.name)
+
+    def test_display_name_falls_back_to_code_without_name(self):
+        project = self.env["project.project"].create({"name": "With titles"})
+        self.assertEqual(project.task_name_display, "code_name")
+        task = self.project_task_model.create({"project_id": project.id})
+        self.assertEqual(task.display_name, task.code)
+
+    def test_display_name_code_and_name_project(self):
+        project = self.env["project.project"].create({"name": "With titles"})
+        task = self.project_task_model.create(
+            {"name": "Testing task code", "project_id": project.id}
+        )
+        self.assertEqual(task.display_name, f"[{task.code}] Testing task code")
+
     def test_name_get_on_create(self):
         number_next = self.task_sequence.number_next_actual
         code = self.task_sequence.get_next_char(number_next)
