@@ -69,6 +69,38 @@ class TestProjectTaskStock(TestProjectStockBase):
         if "project_id" in self.task.stock_analytic_line_ids._fields:
             self.assertFalse(self.task.stock_analytic_line_ids.project_id)
 
+    @mute_logger("odoo.models.unlink")
+    def test_project_task_picked_flow(self):
+        self.move_product_b.unlink()
+        self.task.action_assign()
+        self.assertEqual(self.move_product_a.state, "assigned")
+        self.assertFalse(self.move_product_a.picked)
+        self.move_product_a.product_uom_qty = 4
+        self.task.action_assign()
+        self.assertEqual(self.move_product_a.state, "partially_available")
+        self.assertFalse(self.move_product_a.picked)
+        self.task.action_done()
+        self.assertEqual(self.move_product_a.state, "partially_available")
+        self.assertTrue(self.move_product_a.picked)
+        # new line
+        task_form = Form(self.task)
+        with task_form.move_ids.new() as move_form:
+            move_form.product_id = self.product_b
+            move_form.product_uom_qty = 1
+        task_form.save()
+        move_product_b = self.task.move_ids - self.move_product_a
+        self.move_product_a.product_uom_qty = 2
+        self.task.action_assign()
+        self.assertEqual(self.move_product_a.state, "assigned")
+        self.assertTrue(self.move_product_a.picked)
+        self.assertEqual(move_product_b.state, "assigned")
+        self.assertFalse(move_product_b.picked)
+        self.task.action_done()
+        self.assertEqual(self.move_product_a.state, "done")
+        self.assertTrue(self.move_product_a.picked)
+        self.assertEqual(move_product_b.state, "done")
+        self.assertTrue(move_product_b.picked)
+
     def test_project_task_without_analytic_account(self):
         self.task = self.env["project.task"].browse(self.task.id)
         # Prevent error when hr_timesheet addon is installed.
