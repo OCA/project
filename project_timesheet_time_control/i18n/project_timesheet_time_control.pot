@@ -23,34 +23,26 @@ msgstr ""
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
-msgid ""
-".\n"
-"                            If you continue, it will be stopped with"
+msgid ". If you continue, it will be stopped with"
 msgstr ""
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_kanban_account_analytic_line
-msgid ""
-"<br/>\n"
-"                    <span>to</span>"
+msgid "<span>to</span>"
 msgstr ""
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_project_kanban_inherited
 msgid ""
-"<span class=\"o_label\">\n"
-"                            <i class=\"fa fa-lg fa-play-circle text-success\"/>\n"
-"                            Start work\n"
-"                        </span>"
+"<span class=\"o_label\"><i class=\"fa fa-lg fa-play-circle text-success\"/> "
+"Start work</span>"
 msgstr ""
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_project_kanban_inherited
 msgid ""
-"<span class=\"o_label\">\n"
-"                            <i class=\"fa fa-lg fa-stop-circle text-warning\"/>\n"
-"                            Stop work\n"
-"                        </span>"
+"<span class=\"o_label\"><i class=\"fa fa-lg fa-stop-circle text-warning\"/> "
+"Stop work</span>"
 msgstr ""
 
 #. module: project_timesheet_time_control
