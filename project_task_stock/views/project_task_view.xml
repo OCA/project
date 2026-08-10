@@ -109,7 +109,7 @@
                 <page
                     name="stock_info"
                     string="Stock Info"
-                    invisible="not use_stock_moves"
+                    invisible="not use_stock_moves or not id"
                     groups="stock.group_stock_user"
                 >
                     <field name="done_stock_moves" invisible="1" />
