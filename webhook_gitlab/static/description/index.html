@@ -444,6 +444,13 @@ https://&lt;your-odoo-host&gt;/webhook_gitlab/webhook/
 </pre>
 <p>In the webhook settings, set a secret token: GitLab sends it in the
 <tt class="docutils literal"><span class="pre">X-Gitlab-Token</span></tt> header, GitHub signs the payload with it.</p>
+<p>On GitLab the webhook can also be deployed automatically: once the
+project is mapped (see below) and the system parameters are set, the
+<strong>Create Webhooks</strong> button on the Odoo project form registers a hook on
+the repository (push, merge request and pipeline events, secured with
+<tt class="docutils literal">webhook_gitlab.authorization_token</tt>). Deploying again replaces the
+hook, so the button can be reused after changing the Odoo base URL or
+the token.</p>
 </div>
 <div class="section" id="system-parameters">
 <h3><a class="toc-backref" href="#toc-entry-4">System parameters</a></h3>

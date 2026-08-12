@@ -8,6 +8,14 @@ merge/pull request, pipeline events) to:
 In the webhook settings, set a secret token: GitLab sends it in the
 `X-Gitlab-Token` header, GitHub signs the payload with it.
 
+On GitLab the webhook can also be deployed automatically: once the
+project is mapped (see below) and the system parameters are set, the
+**Create Webhooks** button on the Odoo project form registers a hook
+on the repository (push, merge request and pipeline events, secured
+with `webhook_gitlab.authorization_token`). Deploying again replaces
+the hook, so the button can be reused after changing the Odoo base
+URL or the token.
+
 ## System parameters
 
 - `webhook_gitlab.authorization_token`: the secret token set on the
