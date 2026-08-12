@@ -28,8 +28,8 @@
     ],
     "external_dependencies": {
         "python": [
-            "gitlab",
-            "github",
+            "python-gitlab",
+            "PyGithub",
         ],
     },
 }
