@@ -66,15 +66,21 @@ class GitEvent(models.Model):
     def _process_pull_request_event(self, event):
         """Common processing for GitLab MR and GitHub PR events.
 
-        Tasks are matched in two ways:
-        - pattern matching (task_match_regex) on the PR/MR title and on the
-          source branch name, restricted to the projects related to the
-          repository URL;
-        - legacy explicit reference in the title (e.g. "task#123").
+        Tasks are matched following the Jira referencing conventions
+        (each entity is linked by its own explicit reference only):
+        - the PR/MR is linked to the tasks matched (task_match_regex) by
+          its title, by its source branch name or by the message of any
+          of its commits, restricted to the projects related to the
+          repository URL — plus the legacy explicit reference in the
+          title (e.g. "task#123"), treated as a title match;
+        - the source branch is linked to the same tasks as the PR/MR
+          (Jira: a branch is linked when it is the source branch of a
+          linked PR/MR);
+        - each commit is linked only to the tasks its own message
+          mentions.
 
         The PR/MR and its source branch are single entities per event, so
-        they are created/updated once and linked to all matching tasks,
-        together with the PR/MR commits. If no task matches and the PR/MR
+        they are created/updated once. If no task matches and the PR/MR
         is not already tracked, nothing is created. Finally, every newly
         linked task is notified once with a message on the PR/MR, and
         broken/missing references are warned about (only on PR opening or
@@ -83,17 +89,27 @@ class GitEvent(models.Model):
         :return: the git.pull.request record (empty recordset if the
                  PR/MR is not tracked in Odoo)
         """
-        title = self._extract_pr_title_from_event(event)
+        pr_title = self._extract_pr_title_from_event(event)
         matching_tasks = self.env["project.task"].sudo()
+        commit_matches = []  # (commit, matching tasks) pairs
 
         repository_projects = self._get_related_projects_by_url(event=event)
         if repository_projects:
             source_branch = self._extract_branch_names_from_event(event)["source_branch"]
             matching_tasks |= self._find_matching_tasks(projects=repository_projects, pattern_text=source_branch)
-            matching_tasks |= self._find_matching_tasks(projects=repository_projects, pattern_text=title)
+            matching_tasks |= self._find_matching_tasks(projects=repository_projects, pattern_text=pr_title)
+            # Fetch all PR/MR commits via API (their messages are a
+            # matching source), falling back to the head commit carried
+            # by the event payload if the call fails
+            commits = self._fetch_pr_commits(event) or self._extract_pr_fallback_commits(event)
+            for commit in commits:
+                commit_matching_tasks = self._find_matching_tasks(projects=repository_projects, pattern_text=commit.get("message", ""))
+                if commit_matching_tasks:
+                    commit_matches.append((commit, commit_matching_tasks))
+                    matching_tasks |= commit_matching_tasks
 
         # Legacy flow: explicit "task#<id>" reference in the title
-        id_found = self._get_record_type_and_id(title)
+        id_found = self._get_record_type_and_id(pr_title)
         if id_found:
             matching_tasks |= self.env["project.task"].sudo().browse(int(id_found["id"])).exists()
 
@@ -101,11 +117,9 @@ class GitEvent(models.Model):
 
         if git_pull_request:
             self._create_or_update_branch(event=event, tasks=matching_tasks)
-            if matching_tasks:
-                # Fetch all PR/MR commits via API, falling back to the head
-                # commit carried by the event payload if the call fails
-                commits = self._fetch_pr_commits(event) or self._extract_pr_fallback_commits(event)
-                self._link_commits_to_tasks(tasks=matching_tasks, commits=commits, event=event)
+            # Each commit is linked to the tasks its own message mentions
+            for commit, commit_matching_tasks in commit_matches:
+                self._create_or_update_commit(commit=commit, event=event, tasks=commit_matching_tasks)
             git_pull_request._post_task_link_messages(event)
 
         self.env["git.pull.request"]._post_negative_match_messages(
@@ -219,23 +233,25 @@ class GitEvent(models.Model):
     def _find_matching_tasks(self, projects, pattern_text):
         """
         Find project tasks that match a given pattern in their name.
+        Every pattern occurrence in the text is considered, so a text
+        mentioning several tasks matches all of them (as in Jira).
         Returns flat project.task recordset.
         """
+        matching_tasks = self.env["project.task"]
         if not pattern_text:
-            return self.env["project.task"]
+            return matching_tasks
 
         regex = self._get_task_match_regex()
-        pattern_match = re.search(regex, pattern_text, re.IGNORECASE)
-        if not pattern_match:
-            return self.env["project.task"]
+        patterns = {
+            pattern_match.group(0).upper()
+            for pattern_match in re.finditer(regex, pattern_text, re.IGNORECASE)
+        }
 
-        pattern = pattern_match.group(0)
-        matching_tasks = self.env["project.task"]
-
-        for project in projects:
-            for task in project.task_ids:
-                if re.search(rf"\b{re.escape(pattern)}\b", task.name, re.IGNORECASE):
-                    matching_tasks |= task
+        for pattern in patterns:
+            for project in projects:
+                for task in project.task_ids:
+                    if re.search(rf"\b{re.escape(pattern)}\b", task.name, re.IGNORECASE):
+                        matching_tasks |= task
 
         return matching_tasks
 
@@ -390,21 +406,6 @@ class GitEvent(models.Model):
             git_branch.sudo().write({"task_ids": [(4, task.id) for task in tasks_to_link]})
 
         return git_branch
-
-    @api.model
-    def _link_commits_to_tasks(self, tasks, commits, event):
-        """
-        Given a list of commit dicts and the event, create/update the
-        `git.commit` records and link each of them to all the given tasks.
-        """
-        created_commits = self.env["git.commit"]
-        for commit in commits:
-            created_commits |= self._create_or_update_commit(
-                commit=commit,
-                event=event,
-                tasks=tasks
-            )
-        return created_commits
 
     @api.model
     def _convert_pygithub_commit_to_dict(self, commit):
@@ -586,32 +587,12 @@ class GitEvent(models.Model):
             self._process_commit_push(repository_projects, event)
 
     def _process_branch_creation(self, projects, event):
-        """Handle branch creation events
-
-        Searches for matching tasks both by branch name AND commit messages.
-        If at least one match is found (branch OR commits), links everything
-        (branch + all commits) to all matching tasks.
-        """
-
-        branch_names = self._extract_branch_names_from_event(event)
-        branch_name = branch_names["source_branch"]
+        """Handle branch creation events with granular task matching
+        (see _link_push_entities_to_tasks)."""
+        branch_name = self._extract_branch_names_from_event(event)["source_branch"]
         if not branch_name:
             return
-
-        matching_tasks = self._find_matching_tasks(projects=projects, pattern_text=branch_name)
-
-        commits = event.get("commits", [])
-        for commit in commits:
-            matching_tasks |= self._find_matching_tasks(projects=projects, pattern_text=commit.get("message", ""))
-
-        if not matching_tasks:
-            return
-
-        # The created branch is a single entity per event: create/update it
-        # once and link it to all matching tasks
-        self._create_or_update_branch(event=event, tasks=matching_tasks)
-        if commits:
-            self._link_commits_to_tasks(tasks=matching_tasks, commits=commits, event=event)
+        self._link_push_entities_to_tasks(projects, event)
 
     def _process_branch_deletion(self, projects, event):
         """Handle branch deletion events"""
@@ -623,38 +604,33 @@ class GitEvent(models.Model):
             pass
 
     def _process_commit_push(self, projects, event):
-        """
-        Handle regular commit push events.
-
-        Searches for matching tasks both by branch name AND commit messages.
-        Creates commits (and related branch if it doesn't exist) and links them
-        to all matching tasks.
-        """
-        commits = event.get("commits", [])
-        if not commits:
+        """Handle regular commit push events with granular task matching
+        (see _link_push_entities_to_tasks)."""
+        if not event.get("commits"):
             return
+        self._link_push_entities_to_tasks(projects, event)
 
-        branch_names = self._extract_branch_names_from_event(event)
-        branch_name = branch_names["source_branch"]
+    def _link_push_entities_to_tasks(self, projects, event):
+        """Link the branch and commits of a push-type event (commit push,
+        branch creation) to the matching tasks, following the Jira
+        referencing conventions (each entity is linked by its own
+        explicit reference only):
 
-        matching_tasks = self.env["project.task"].sudo()
-        if branch_name:
-            # If branch name contains pattern and matches with task
-            # also link all pushed commits (and branch) to the task,
-            # regardless of the commit matching
-            matching_tasks |= self._find_matching_tasks(projects=projects, pattern_text=branch_name)
+        - the branch is linked to the tasks its name mentions;
+        - each commit is linked only to the tasks its own message
+          mentions, so a task referenced on a shared branch (e.g.
+          "develop") is not polluted with unrelated resources.
+        """
+        branch_name = self._extract_branch_names_from_event(event)["source_branch"]
+        tasks_from_branch = self._find_matching_tasks(projects=projects, pattern_text=branch_name)
 
-        for commit in commits:
-            matching_tasks |= self._find_matching_tasks(projects=projects, pattern_text=commit.get("message", ""))
+        # The branch is a single entity per event: create/update it once
+        self._create_or_update_branch(event=event, tasks=tasks_from_branch)
 
-        if not matching_tasks:
-            return
-
-        # Found all matching tasks, now create the pushed commits and branch
-        # (single entity per event, created/updated once outside any loop)
-        # and link them to all matching tasks
-        self._create_or_update_branch(event=event, tasks=matching_tasks)
-        self._link_commits_to_tasks(tasks=matching_tasks, commits=commits, event=event)
+        for commit in event.get("commits", []):
+            commit_tasks = self._find_matching_tasks(projects=projects, pattern_text=commit.get("message", ""))
+            if commit_tasks:
+                self._create_or_update_commit(commit=commit, event=event, tasks=commit_tasks)
 
     @api.model
     def _process_pipeline(self, event):

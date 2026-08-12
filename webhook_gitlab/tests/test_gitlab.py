@@ -31,7 +31,10 @@ class TestGitlabPush(WebhookGitlabCase):
             "author": {"name": "Demo User", "email": "demo@example.com"},
         }
 
-    def test_push_branch_name_match_links_branch_and_all_commits(self):
+    def test_push_branch_name_match_links_branch_only(self):
+        # Jira convention: entities link by their own reference only. The
+        # branch name matches GL-100 but the commit messages mention no
+        # task: only the branch is linked, the commits are not tracked.
         commits = [
             self._commit("a" * 40, "generic commit one"),
             self._commit("b" * 40, "generic commit two"),
@@ -44,23 +47,18 @@ class TestGitlabPush(WebhookGitlabCase):
         self.assertEqual(len(branch), 1)
         self.assertEqual(branch.url, f"{GITLAB_REPO_URL}/-/tree/GL-100-feature")
         self.assertIn(branch.id, self.gl_task_100.git_branch_ids.ids)
-        self.assertEqual(
-            set(self.gl_task_100.git_commit_ids.mapped("full_sha")),
-            {"a" * 40, "b" * 40, "c" * 40},
-        )
+        self.assertFalse(self.gl_task_100.git_commit_ids)
+        for sha in ("a" * 40, "b" * 40, "c" * 40):
+            self.assertFalse(self._get_commit(sha))
         # Tasks not referenced by the branch name are untouched
         self.assertFalse(self.gl_task_115.git_branch_ids)
-        self.assertFalse(self.gl_task_115.git_commit_ids)
         self.assertFalse(self.gl_task_no_pattern.git_branch_ids)
-        self.assertFalse(self.gl_task_no_pattern.git_commit_ids)
 
-    def test_push_mixed_commit_messages_link_branch_and_all_commits(self):
+    def test_push_mixed_commit_messages_link_only_matching_commit(self):
         # Mixed push on a generic branch: one commit matches GL-115, the
-        # other two do not match anything.
-        # NOTE: current (pre granular-matching) behavior: a single matching
-        # commit message links the branch AND every pushed commit to the task.
-        # With granular matching only the matching commit must be linked
-        # (and no branch): update the assertions accordingly.
+        # other two do not match anything. Granular matching: only the
+        # matching commit is linked to the task; the generic branch and
+        # the unrelated commits are not tracked at all.
         commits = [
             self._commit("a" * 40, "GL-115 fix the bug"),
             self._commit("b" * 40, "unrelated commit"),
@@ -69,13 +67,11 @@ class TestGitlabPush(WebhookGitlabCase):
         payload = self._push_payload(ref="refs/heads/develop", commits=commits)
         self._dispatch(payload, "gitlab")
 
-        branch = self._get_branch("develop")
-        self.assertEqual(len(branch), 1)
-        self.assertIn(branch.id, self.gl_task_115.git_branch_ids.ids)
-        self.assertEqual(
-            set(self.gl_task_115.git_commit_ids.mapped("full_sha")),
-            {"a" * 40, "b" * 40, "c" * 40},
-        )
+        self.assertFalse(self._get_branch("develop"))
+        self.assertFalse(self.gl_task_115.git_branch_ids)
+        self.assertEqual(self.gl_task_115.git_commit_ids.mapped("full_sha"), ["a" * 40])
+        self.assertFalse(self._get_commit("b" * 40))
+        self.assertFalse(self._get_commit("c" * 40))
         # Tasks never referenced stay untouched
         self.assertFalse(self.gl_task_100.git_commit_ids)
         self.assertFalse(self.gl_task_no_pattern.git_commit_ids)
@@ -83,10 +79,8 @@ class TestGitlabPush(WebhookGitlabCase):
     def test_push_commits_matching_different_tasks(self):
         # Push on a non-matching branch: two commits reference GL-100
         # (doubled to catch singleton errors in the matching logic), one
-        # references GL-115, one references nothing.
-        # NOTE: current (pre granular-matching) behavior: every matching task
-        # gets the branch and ALL pushed commits. With granular matching each
-        # task must be linked only to its own commit(s), without branch.
+        # references GL-115, one references nothing. Granular matching:
+        # each task is linked only to its own commit(s), without branch.
         commits = [
             self._commit("a" * 40, "GL-100 part one"),
             self._commit("b" * 40, "GL-100 part two"),
@@ -96,12 +90,15 @@ class TestGitlabPush(WebhookGitlabCase):
         payload = self._push_payload(ref="refs/heads/develop", commits=commits)
         self._dispatch(payload, "gitlab")
 
-        all_shas = {"a" * 40, "b" * 40, "c" * 40, "d" * 40}
-        for task in (self.gl_task_100, self.gl_task_115):
-            self.assertEqual(set(task.git_commit_ids.mapped("full_sha")), all_shas)
-            self.assertIn(
-                self._get_branch("develop").id, task.git_branch_ids.ids
-            )
+        self.assertFalse(self._get_branch("develop"))
+        self.assertEqual(
+            set(self.gl_task_100.git_commit_ids.mapped("full_sha")),
+            {"a" * 40, "b" * 40},
+        )
+        self.assertFalse(self.gl_task_100.git_branch_ids)
+        self.assertEqual(self.gl_task_115.git_commit_ids.mapped("full_sha"), ["c" * 40])
+        self.assertFalse(self.gl_task_115.git_branch_ids)
+        self.assertFalse(self._get_commit("d" * 40))
         self.assertFalse(self.gl_task_no_pattern.git_commit_ids)
 
     def test_push_without_match_creates_nothing(self):
@@ -123,20 +120,20 @@ class TestGitlabPush(WebhookGitlabCase):
 
         self.assertFalse(self._get_branch("GL-100-feature"))
 
-    def test_push_multiple_patterns_only_first_is_matched(self):
-        # NOTE: current behavior: only the first regex occurrence in the text
-        # is considered, so a commit mentioning two tasks links only the first.
+    def test_push_commit_mentioning_two_tasks_links_both(self):
+        # Every pattern occurrence in a text is matched (as in Jira), so a
+        # commit message mentioning two tasks links the commit to both.
         commits = [self._commit("a" * 40, "GL-100 GL-115 combined fix")]
         payload = self._push_payload(ref="refs/heads/develop", commits=commits)
         self._dispatch(payload, "gitlab")
 
         self.assertEqual(self.gl_task_100.git_commit_ids.mapped("full_sha"), ["a" * 40])
-        self.assertFalse(self.gl_task_115.git_commit_ids)
+        self.assertEqual(self.gl_task_115.git_commit_ids.mapped("full_sha"), ["a" * 40])
 
     def test_push_is_idempotent(self):
         commits = [
-            self._commit("a" * 40, "generic commit one"),
-            self._commit("b" * 40, "generic commit two"),
+            self._commit("a" * 40, "GL-100 commit one"),
+            self._commit("b" * 40, "GL-100 commit two"),
         ]
         payload = self._push_payload(ref="refs/heads/GL-100-feature", commits=commits)
         self._dispatch(payload, "gitlab")
@@ -163,8 +160,9 @@ class TestGitlabPush(WebhookGitlabCase):
     def test_branch_creation_mixed_commits_links_branch_and_commits(self):
         # Branch creation carrying 4 commits: branch name matches GL-100,
         # two commits reference GL-100 (doubled to catch singleton errors),
-        # one references GL-115, one references nothing.
-        # Current behavior: branch + ALL commits linked to every matching task.
+        # one references GL-115, one references nothing. Each entity links
+        # by its own reference: GL-100 gets the branch and its own commits,
+        # GL-115 gets its commit only, the unrelated commit is not tracked.
         commits = [
             self._commit("a" * 40, "GL-100 part one"),
             self._commit("b" * 40, "GL-100 part two"),
@@ -178,10 +176,14 @@ class TestGitlabPush(WebhookGitlabCase):
 
         branch = self._get_branch("GL-100-feature")
         self.assertEqual(len(branch), 1)
-        all_shas = {"a" * 40, "b" * 40, "c" * 40, "d" * 40}
-        for task in (self.gl_task_100, self.gl_task_115):
-            self.assertIn(branch.id, task.git_branch_ids.ids)
-            self.assertEqual(set(task.git_commit_ids.mapped("full_sha")), all_shas)
+        self.assertIn(branch.id, self.gl_task_100.git_branch_ids.ids)
+        self.assertEqual(
+            set(self.gl_task_100.git_commit_ids.mapped("full_sha")),
+            {"a" * 40, "b" * 40},
+        )
+        self.assertFalse(self.gl_task_115.git_branch_ids)
+        self.assertEqual(self.gl_task_115.git_commit_ids.mapped("full_sha"), ["c" * 40])
+        self.assertFalse(self._get_commit("d" * 40))
         self.assertFalse(self.gl_task_no_pattern.git_commit_ids)
 
     def test_branch_creation_without_match_creates_nothing(self):
@@ -249,29 +251,35 @@ class TestGitlabMergeRequest(WebhookGitlabCase):
         self.assertEqual(branch.url, f"{GITLAB_REPO_URL}/-/tree/merge-req-branch")
         self.assertIn(branch.id, self.gl_task_100.git_branch_ids.ids)
 
-        # All the MR commits are linked to the task matched by the title
+        # Commits link by their own message only: the title-matched task
+        # gets just the commits that mention it
         self.assertEqual(
             set(self.gl_task_100.git_commit_ids.mapped("full_sha")),
-            {"c" * 40, "d" * 40, "e" * 40, "f" * 40},
+            {"c" * 40, "d" * 40},
         )
-        # The matched task is notified once on the MR with its Odoo link
-        merge_request.discussions.create.assert_called_once()
-        message_body = merge_request.discussions.create.call_args[0][0]["body"]
-        self.assertIn("Linked to Odoo task", message_body)
+        self.assertFalse(self._get_commit("f" * 40))
+        # Each matched task (GL-100 by title, GL-115 by commit message) is
+        # notified once on the MR with its Odoo link
+        self.assertEqual(merge_request.discussions.create.call_count, 2)
+        for call in merge_request.discussions.create.call_args_list:
+            self.assertIn("Linked to Odoo task", call[0][0]["body"])
 
-    def test_mr_commit_message_matches_are_ignored(self):
-        # MR/PR flow only matches on title and source branch: a fetched
-        # commit referencing GL-115 must NOT link anything to that task
-        # (rationale: MRs can contain many commits, single-commit matches
-        # would link whole unrelated MRs - see analysis doc, section 5.2).
+    def test_mr_commit_message_match_links_mr_branch_and_commit(self):
+        # A fetched commit referencing GL-115 links the MR and that commit
+        # to the task, plus the source branch (Jira conventions: a PR is
+        # linked when one of its commits mentions the issue, and a branch
+        # is linked when it is the source branch of a linked PR). The
+        # other MR commits stay unrelated to GL-115.
         payload = self._mr_payload(title="GL-100 add new file")
         patcher, _merge_request = self._mock_gitlab_client(commits=self.MIXED_MR_COMMITS)
         with patcher:
             self._dispatch(payload, "gitlab")
 
-        self.assertFalse(self.gl_task_115.git_pull_request_ids)
-        self.assertFalse(self.gl_task_115.git_branch_ids)
-        self.assertFalse(self.gl_task_115.git_commit_ids)
+        pull_request = self._get_pull_request(payload["object_attributes"]["url"])
+        self.assertIn(pull_request.id, self.gl_task_115.git_pull_request_ids.ids)
+        branch = self._get_branch("merge-req-branch")
+        self.assertIn(branch.id, self.gl_task_115.git_branch_ids.ids)
+        self.assertEqual(self.gl_task_115.git_commit_ids.mapped("full_sha"), ["e" * 40])
         self.assertFalse(self.gl_task_no_pattern.git_pull_request_ids)
 
     def test_mr_pattern_match_on_source_branch(self):
@@ -286,7 +294,9 @@ class TestGitlabMergeRequest(WebhookGitlabCase):
         self.assertIn(pull_request.id, self.gl_task_115.git_pull_request_ids.ids)
         branch = self._get_branch("GL-115-fix")
         self.assertIn(branch.id, self.gl_task_115.git_branch_ids.ids)
-        self.assertEqual(self.gl_task_115.git_commit_ids.mapped("full_sha"), ["c" * 40])
+        # The MR commit does not mention any task: it is not tracked
+        self.assertFalse(self.gl_task_115.git_commit_ids)
+        self.assertFalse(self._get_commit("c" * 40))
         # The other tasks are untouched
         self.assertFalse(self.gl_task_100.git_pull_request_ids)
 
@@ -307,7 +317,11 @@ class TestGitlabMergeRequest(WebhookGitlabCase):
         self.assertIn("Linked to Odoo task", message_body)
 
     def test_mr_commit_fetch_failure_falls_back_to_last_commit(self):
+        # When the commit fetch fails, the head commit carried by the
+        # payload is the only message-matching source left: here it
+        # mentions GL-115, so it gets linked to that task.
         payload = self._mr_payload(title="GL-100 add new file")
+        payload["object_attributes"]["last_commit"]["message"] = "GL-115 hotfix"
         patcher, merge_request = self._mock_gitlab_client()
         merge_request.commits.side_effect = Exception("API not available")
         with patcher:
@@ -315,8 +329,9 @@ class TestGitlabMergeRequest(WebhookGitlabCase):
 
         last_commit_sha = payload["object_attributes"]["last_commit"]["id"]
         self.assertEqual(
-            self.gl_task_100.git_commit_ids.mapped("full_sha"), [last_commit_sha]
+            self.gl_task_115.git_commit_ids.mapped("full_sha"), [last_commit_sha]
         )
+        self.assertFalse(self.gl_task_100.git_commit_ids)
 
     def test_mr_processed_twice_does_not_duplicate_records(self):
         payload = self._mr_payload(title="GL-100 add new file")
@@ -328,11 +343,13 @@ class TestGitlabMergeRequest(WebhookGitlabCase):
         pull_request = self._get_pull_request(payload["object_attributes"]["url"])
         self.assertEqual(len(pull_request), 1)
         self.assertEqual(len(self._get_branch("merge-req-branch")), 1)
-        for sha in ("c" * 40, "d" * 40, "e" * 40, "f" * 40):
+        for sha in ("c" * 40, "d" * 40, "e" * 40):
             self.assertEqual(len(self._get_commit(sha)), 1)
-        self.assertEqual(len(self.gl_task_100.git_commit_ids), 4)
-        # The task link message is posted only once (anti-spam tracking)
-        merge_request.discussions.create.assert_called_once()
+        self.assertFalse(self._get_commit("f" * 40))
+        self.assertEqual(len(self.gl_task_100.git_commit_ids), 2)
+        # The task link message is posted only once per matched task
+        # (GL-100 by title, GL-115 by commit message - anti-spam tracking)
+        self.assertEqual(merge_request.discussions.create.call_count, 2)
 
     def test_mr_state_tags_are_assigned_to_task(self):
         payload = self._mr_payload(title="GL-100 add new file")

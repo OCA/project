@@ -43,28 +43,35 @@ class TestGithubPullRequest(WebhookGitlabCase):
         self.assertEqual(branch.url, f"{GITHUB_REPO_URL}/tree/test-merge-2")
         self.assertIn(branch.id, self.gh_task_100.git_branch_ids.ids)
 
-        # All the PR commits are linked to the task matched by the title
+        # Commits link by their own message only: the title-matched task
+        # gets just the commits that mention it
         self.assertEqual(
             set(self.gh_task_100.git_commit_ids.mapped("full_sha")),
-            {"c" * 40, "d" * 40, "e" * 40, "f" * 40},
+            {"c" * 40, "d" * 40},
         )
-        # The matched task is notified once on the PR with its Odoo link
-        pull.create_issue_comment.assert_called_once()
-        message_body = pull.create_issue_comment.call_args[0][0]
-        self.assertIn("Linked to Odoo task", message_body)
+        self.assertFalse(self._get_commit("f" * 40))
+        # Each matched task (GH-100 by title, GH-115 by commit message) is
+        # notified once on the PR with its Odoo link
+        self.assertEqual(pull.create_issue_comment.call_count, 2)
+        for call in pull.create_issue_comment.call_args_list:
+            self.assertIn("Linked to Odoo task", call[0][0])
 
-    def test_pr_commit_message_matches_are_ignored(self):
-        # PR/MR flow only matches on title and source branch: a fetched
-        # commit referencing GH-115 must NOT link anything to that task
-        # (see analysis doc, section 5.2).
+    def test_pr_commit_message_match_links_pr_branch_and_commit(self):
+        # A fetched commit referencing GH-115 links the PR and that commit
+        # to the task, plus the source branch (Jira conventions: a PR is
+        # linked when one of its commits mentions the issue, and a branch
+        # is linked when it is the source branch of a linked PR). The
+        # other PR commits stay unrelated to GH-115.
         payload = self._pr_payload(title="GH-100 update readme")
         patcher, _pull = self._mock_github_client(commits=self.MIXED_PR_COMMITS)
         with patcher:
             self._dispatch(payload, "github")
 
-        self.assertFalse(self.gh_task_115.git_pull_request_ids)
-        self.assertFalse(self.gh_task_115.git_branch_ids)
-        self.assertFalse(self.gh_task_115.git_commit_ids)
+        pull_request = self._get_pull_request(payload["pull_request"]["html_url"])
+        self.assertIn(pull_request.id, self.gh_task_115.git_pull_request_ids.ids)
+        branch = self._get_branch("test-merge-2")
+        self.assertIn(branch.id, self.gh_task_115.git_branch_ids.ids)
+        self.assertEqual(self.gh_task_115.git_commit_ids.mapped("full_sha"), ["e" * 40])
         self.assertFalse(self.gh_task_no_pattern.git_pull_request_ids)
 
     def test_pr_pattern_match_on_source_branch(self):
@@ -79,7 +86,9 @@ class TestGithubPullRequest(WebhookGitlabCase):
         self.assertIn(pull_request.id, self.gh_task_115.git_pull_request_ids.ids)
         branch = self._get_branch("GH-115-docs")
         self.assertIn(branch.id, self.gh_task_115.git_branch_ids.ids)
-        self.assertEqual(self.gh_task_115.git_commit_ids.mapped("full_sha"), ["c" * 40])
+        # The PR commit does not mention any task: it is not tracked
+        self.assertFalse(self.gh_task_115.git_commit_ids)
+        self.assertFalse(self._get_commit("c" * 40))
         self.assertFalse(self.gh_task_100.git_pull_request_ids)
 
     def test_pr_legacy_task_id_in_title_links_pr_and_posts_message(self):
@@ -98,6 +107,9 @@ class TestGithubPullRequest(WebhookGitlabCase):
         self.assertIn("Linked to Odoo task", message_body)
 
     def test_pr_commit_fetch_failure_falls_back_to_head_sha(self):
+        # When the commit fetch fails, the synthetic head commit built
+        # from the payload embeds the PR title in its message, so it
+        # matches (and links to) the same task as the title.
         payload = self._pr_payload(title="GH-100 update readme")
         patcher, pull = self._mock_github_client()
         pull.get_commits.side_effect = Exception("API not available")
@@ -183,7 +195,10 @@ class TestGithubPush(WebhookGitlabCase):
             },
         }
 
-    def test_push_branch_name_match_links_branch_and_all_commits(self):
+    def test_push_branch_name_match_links_branch_only(self):
+        # Jira convention: entities link by their own reference only. The
+        # branch name matches GH-100 but the commit messages mention no
+        # task: only the branch is linked, the commits are not tracked.
         commits = [
             self._commit("a" * 40, "generic commit one"),
             self._commit("b" * 40, "generic commit two"),
@@ -196,17 +211,16 @@ class TestGithubPush(WebhookGitlabCase):
         self.assertEqual(len(branch), 1)
         self.assertEqual(branch.url, f"{GITHUB_REPO_URL}/tree/GH-100-readme")
         self.assertIn(branch.id, self.gh_task_100.git_branch_ids.ids)
-        self.assertEqual(
-            set(self.gh_task_100.git_commit_ids.mapped("full_sha")),
-            {"a" * 40, "b" * 40, "c" * 40},
-        )
-        self.assertFalse(self.gh_task_115.git_commit_ids)
-        self.assertFalse(self.gh_task_no_pattern.git_commit_ids)
+        self.assertFalse(self.gh_task_100.git_commit_ids)
+        for sha in ("a" * 40, "b" * 40, "c" * 40):
+            self.assertFalse(self._get_commit(sha))
+        self.assertFalse(self.gh_task_115.git_branch_ids)
+        self.assertFalse(self.gh_task_no_pattern.git_branch_ids)
 
-    def test_push_mixed_commit_messages_link_branch_and_all_commits(self):
-        # Mirror of the GitLab mixed push scenario.
-        # NOTE: current (pre granular-matching) behavior: a single matching
-        # commit message links the branch AND every pushed commit to the task.
+    def test_push_mixed_commit_messages_link_only_matching_commit(self):
+        # Mirror of the GitLab mixed push scenario. Granular matching:
+        # only the matching commit is linked to the task; the generic
+        # branch and the unrelated commit are not tracked at all.
         commits = [
             self._commit("a" * 40, "GH-115 fix the docs"),
             self._commit("b" * 40, "unrelated commit"),
@@ -214,21 +228,18 @@ class TestGithubPush(WebhookGitlabCase):
         payload = self._push_payload(ref="refs/heads/develop", commits=commits)
         self._dispatch(payload, "github")
 
-        branch = self._get_branch("develop")
-        self.assertEqual(len(branch), 1)
-        self.assertIn(branch.id, self.gh_task_115.git_branch_ids.ids)
-        self.assertEqual(
-            set(self.gh_task_115.git_commit_ids.mapped("full_sha")),
-            {"a" * 40, "b" * 40},
-        )
+        self.assertFalse(self._get_branch("develop"))
+        self.assertFalse(self.gh_task_115.git_branch_ids)
+        self.assertEqual(self.gh_task_115.git_commit_ids.mapped("full_sha"), ["a" * 40])
+        self.assertFalse(self._get_commit("b" * 40))
         self.assertFalse(self.gh_task_100.git_commit_ids)
 
     def test_push_commits_matching_different_tasks(self):
         # Push on a non-matching branch: two commits reference GH-100
         # (doubled to catch singleton errors in the matching logic), one
-        # references GH-115, one references nothing.
-        # Current behavior: every matching task gets the branch and ALL
-        # pushed commits (see the GitLab mirror test).
+        # references GH-115, one references nothing. Granular matching:
+        # each task is linked only to its own commit(s), without branch
+        # (see the GitLab mirror test).
         commits = [
             self._commit("a" * 40, "GH-100 part one"),
             self._commit("b" * 40, "GH-100 part two"),
@@ -238,19 +249,23 @@ class TestGithubPush(WebhookGitlabCase):
         payload = self._push_payload(ref="refs/heads/develop", commits=commits)
         self._dispatch(payload, "github")
 
-        all_shas = {"a" * 40, "b" * 40, "c" * 40, "d" * 40}
-        for task in (self.gh_task_100, self.gh_task_115):
-            self.assertEqual(set(task.git_commit_ids.mapped("full_sha")), all_shas)
-            self.assertIn(
-                self._get_branch("develop").id, task.git_branch_ids.ids
-            )
+        self.assertFalse(self._get_branch("develop"))
+        self.assertEqual(
+            set(self.gh_task_100.git_commit_ids.mapped("full_sha")),
+            {"a" * 40, "b" * 40},
+        )
+        self.assertFalse(self.gh_task_100.git_branch_ids)
+        self.assertEqual(self.gh_task_115.git_commit_ids.mapped("full_sha"), ["c" * 40])
+        self.assertFalse(self.gh_task_115.git_branch_ids)
+        self.assertFalse(self._get_commit("d" * 40))
         self.assertFalse(self.gh_task_no_pattern.git_commit_ids)
 
     def test_branch_creation_mixed_commits_links_branch_and_commits(self):
         # Branch creation carrying 4 commits: branch name matches GH-100,
         # two commits reference GH-100 (doubled to catch singleton errors),
-        # one references GH-115, one references nothing.
-        # Current behavior: branch + ALL commits linked to every matching task.
+        # one references GH-115, one references nothing. Each entity links
+        # by its own reference: GH-100 gets the branch and its own commits,
+        # GH-115 gets its commit only, the unrelated commit is not tracked.
         commits = [
             self._commit("a" * 40, "GH-100 part one"),
             self._commit("b" * 40, "GH-100 part two"),
@@ -264,10 +279,14 @@ class TestGithubPush(WebhookGitlabCase):
 
         branch = self._get_branch("GH-100-feature")
         self.assertEqual(len(branch), 1)
-        all_shas = {"a" * 40, "b" * 40, "c" * 40, "d" * 40}
-        for task in (self.gh_task_100, self.gh_task_115):
-            self.assertIn(branch.id, task.git_branch_ids.ids)
-            self.assertEqual(set(task.git_commit_ids.mapped("full_sha")), all_shas)
+        self.assertIn(branch.id, self.gh_task_100.git_branch_ids.ids)
+        self.assertEqual(
+            set(self.gh_task_100.git_commit_ids.mapped("full_sha")),
+            {"a" * 40, "b" * 40},
+        )
+        self.assertFalse(self.gh_task_115.git_branch_ids)
+        self.assertEqual(self.gh_task_115.git_commit_ids.mapped("full_sha"), ["c" * 40])
+        self.assertFalse(self._get_commit("d" * 40))
         self.assertFalse(self.gh_task_no_pattern.git_commit_ids)
 
     def test_push_without_match_creates_nothing(self):
