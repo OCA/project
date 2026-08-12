@@ -542,7 +542,7 @@ class GitEvent(models.Model):
         """
         commit_list = []
         try:
-            gl = self._connect_gitlab(event=event)
+            gl = self._connect_gitlab(url=event["project"]["web_url"])
 
             project_id = event["project"]["id"]
             mr_iid = event["object_attributes"]["iid"]
@@ -950,10 +950,14 @@ class GitEvent(models.Model):
         return git_pull_request
 
     @api.model
-    def _connect_gitlab(self, event=None, url=None):
-        """Connect to gitlab instance and return gitlab object"""
-        if not url:
-            url = event["project"]["web_url"]
+    def _connect_gitlab(self, url):
+        """Connect to the gitlab instance hosting the given project URL
+        and return the gitlab client object.
+
+        :param str url: a project-level URL (e.g. project web_url); the
+            instance root is derived from it, and selects the per-instance
+            token sysparam (webhook_gitlab.gitlab_token.<instance root>)
+        """
         url = urljoin(url, "../..")
         token = self.env["ir.config_parameter"].sudo().get_param("webhook_gitlab.gitlab_token." + url)
         return gitlab.Gitlab(url, private_token=token)

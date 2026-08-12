@@ -197,14 +197,21 @@ class GitPullRequest(models.Model):
         return True
 
     def _post_gitlab_message(self, message, event=None):
-        """Post a comment (discussion) on the GitLab merge request"""
+        """Post a comment (discussion) on the GitLab merge request.
+
+        The event, when available, is the preferred source for the GitLab
+        instance base URL (project.web_url is authoritative on any GitLab
+        version). Without an event the URL falls back to the record MR
+        URL, assuming the modern ``/-/merge_requests/`` layout.
+        """
         if self:
             self.ensure_one()
             project_id, request_id = self.id_project, self.id_request
         else:
             project_id = event["project"]["id"]
             request_id = event["object_attributes"]["iid"]
-        gitlab_client = self.env["git.event"]._connect_gitlab(event=event)
+        web_url = event["project"]["web_url"] if event else self.url.split("/-/")[0]
+        gitlab_client = self.env["git.event"]._connect_gitlab(url=web_url)
         project = gitlab_client.projects.get(project_id)
         merge_request = project.mergerequests.get(request_id)
         merge_request.discussions.create({"body": message})

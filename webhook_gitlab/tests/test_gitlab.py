@@ -343,6 +343,29 @@ class TestGitlabMergeRequest(WebhookGitlabCase):
         tag_names = self.gl_task_100.tag_ids.mapped("name")
         self.assertIn("MR: Opened", tag_names)
 
+    def test_post_message_without_event_connects_via_record_url(self):
+        # Without an event the GitLab connection URL falls back to the
+        # record MR URL (modern /-/merge_requests/ layout); the event,
+        # when present, stays the preferred source.
+        pull_request = self.env["git.pull.request"].create(
+            {
+                "name": "GL-100 fallback",
+                "source": "gitlab",
+                "url": f"{GITLAB_REPO_URL}/-/merge_requests/7",
+                "id_request": 7,
+                "id_project": 1001,
+                "state": "opened",
+            }
+        )
+        patcher, merge_request = self._mock_gitlab_client()
+        with patcher as connect_gitlab:
+            pull_request._post_message("fallback message")
+
+        self.assertEqual(connect_gitlab.call_args.kwargs.get("url"), GITLAB_REPO_URL)
+        merge_request.discussions.create.assert_called_once_with(
+            {"body": "fallback message"}
+        )
+
     def test_mr_unrelated_repository_skips_pattern_matching(self):
         payload = self._mr_payload(title="GL-100 add new file")
         payload["project"]["git_http_url"] = "https://gitlab.example.com/other/repo.git"

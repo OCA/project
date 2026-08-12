@@ -13,6 +13,10 @@ from odoo.tools import consteq
 
 _logger = logging.getLogger(__name__)
 
+# Values of webhook_gitlab.authorization_token that must never authorize a
+# webhook: the default shipped by the module demo data is publicly known.
+INSECURE_AUTHORIZATION_TOKENS = ("token",)
+
 
 def token_authorization(function):
     """Decorator for controllers with token authorization.
@@ -29,6 +33,13 @@ def token_authorization(function):
         github_token = headers.get("X-Hub-Signature-256")
         token = request.env["ir.config_parameter"].sudo().get_param("webhook_gitlab.authorization_token")
         kw["source"] = ""
+        authorization = False
+        if not token or token in INSECURE_AUTHORIZATION_TOKENS:
+            _logger.warning(
+                "webhook_gitlab.authorization_token is not configured "
+                "(or still set to an insecure default)"
+            )
+            return False
         if github_token:
             expected_token = HMAC(
                 key=token.encode("utf-8"),
