@@ -10,30 +10,28 @@ class GitPullRequest(models.Model):
     _description = "Git Pull/Merge Request"
 
     name = fields.Char(string="Title")
-    description = fields.Text(string="Description")
+    description = fields.Text()
     url = fields.Char(string="PR/MR URL")
 
     id_request = fields.Integer(
-        string="Request ID",
-        help="Technical field used to track the merge request id"
+        string="Request ID", help="Technical field used to track the merge request id"
     )
     id_project = fields.Integer(
         string="Project ID",
         help="Technical field used to track the project id in Gitlab",
     )
     source = fields.Selection(
-        [("gitlab", "GitLab"), ("github", "GitHub")],
-        string="Source Platform"
+        [("gitlab", "GitLab"), ("github", "GitHub")], string="Source Platform"
     )
 
-    source_branch = fields.Char(string="Source Branch")
-    target_branch = fields.Char(string="Target Branch")
+    source_branch = fields.Char()
+    target_branch = fields.Char()
     source_branch_id = fields.Many2one(
         comodel_name="git.branch",
         string="Source Branch Record",
         help="The tracked git.branch record of the source branch, when "
-             "the branch is tracked in Odoo (target branches are never "
-             "tracked, so they stay as plain names).",
+        "the branch is tracked in Odoo (target branches are never "
+        "tracked, so they stay as plain names).",
     )
 
     state = fields.Selection(
@@ -78,7 +76,7 @@ class GitPullRequest(models.Model):
         column2="project_task_id",
         string="Notified Tasks",
         help="Tasks whose link has already been posted as a message on the "
-             "PR/MR, used to avoid posting the same task link twice.",
+        "PR/MR, used to avoid posting the same task link twice.",
     )
 
     git_commit_ids = fields.Many2many(
@@ -129,7 +127,9 @@ class GitPullRequest(models.Model):
             )
             git_pull_request._post_message(message, event)
         if tasks_to_notify:
-            git_pull_request.notified_task_ids = [(4, task.id) for task in tasks_to_notify]
+            git_pull_request.notified_task_ids = [
+                (4, task.id) for task in tasks_to_notify
+            ]
         return tasks_to_notify
 
     @api.model
@@ -149,7 +149,9 @@ class GitPullRequest(models.Model):
         return is_opening or title_changed
 
     @api.model
-    def _post_negative_match_messages(self, event, matching_tasks, title_task_references, repository_projects):
+    def _post_negative_match_messages(
+        self, event, matching_tasks, title_task_references, repository_projects
+    ):
         """Warn on the PR/MR about broken or missing task references.
 
         - explicit "taskid#<id>" title reference(s) to tasks that do not
@@ -177,7 +179,9 @@ class GitPullRequest(models.Model):
             )
             self._post_message(message, event)
         elif not matching_tasks and repository_projects:
-            message = self.env["ir.qweb"]._render("webhook_gitlab.no_task_reference_in_title")
+            message = self.env["ir.qweb"]._render(
+                "webhook_gitlab.no_task_reference_in_title"
+            )
             self._post_message(message, event)
 
     def _post_message(self, message, event=None):
@@ -246,7 +250,9 @@ class GitPullRequest(models.Model):
         tags = []
         tag_model = task.tag_ids._name
         current_tags = self.env[tag_model]
-        current_tags |= task.tag_ids.filtered(lambda t: t.name.startswith("MR:") or t.name.startswith("CI:"))
+        current_tags |= task.tag_ids.filtered(
+            lambda t: t.name.startswith("MR:") or t.name.startswith("CI:")
+        )
         for tag in current_tags:
             tags.append((3, tag.id, 0))
         # Create prefix to have a base to get the external ID.

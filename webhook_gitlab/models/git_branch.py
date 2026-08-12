@@ -2,7 +2,7 @@
 # Copyright 2026 Francesco Ballerini
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
-from odoo import _, fields, models
+from odoo import fields, models
 
 
 class GitBranch(models.Model):

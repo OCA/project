@@ -5,10 +5,14 @@
         <field name='model'>git.branch</field>
         <field name='arch' type='xml'>
             <tree>
-                <field name="name" optional="show"/>
-                <field name="url" optional="show" widget="url"/>
-                <field name="git_pull_request_ids" widget="many2many_tags" optional="show"/>
-                <field name="task_ids" widget="many2many_tags" optional="hide"/>
+                <field name="name" optional="show" />
+                <field name="url" optional="show" widget="url" />
+                <field
+                    name="git_pull_request_ids"
+                    widget="many2many_tags"
+                    optional="show"
+                />
+                <field name="task_ids" widget="many2many_tags" optional="hide" />
             </tree>
         </field>
     </record>
@@ -21,23 +25,35 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="name" readonly="1"/>
-                            <field name="url" readonly="1" widget="url"/>
-                            <field name="task_ids" widget="many2many_tags" readonly="1"/>
+                            <field name="name" readonly="1" />
+                            <field name="url" readonly="1" widget="url" />
+                            <field
+                                name="task_ids"
+                                widget="many2many_tags"
+                                readonly="1"
+                            />
                         </group>
                     </group>
                     <notebook>
                         <page string="Commits">
                             <field name="git_commit_ids" string="Commits">
                                 <tree>
-                                    <field name="name" optional="show"/>
-                                    <field name="description" optional="show"/>
-                                    <field name="url" optional="show"/>
-                                    <field name="sha" optional="hide"/>
-                                    <field name="full_sha" optional="hide"/>
-                                    <field name="git_branch_ids" widget="many2many_tags" optional="hide"/>
-                                    <field name="task_ids" widget="many2many_tags" optional="hide"/>
-                                    <field name="timestamp" optional="hide"/>
+                                    <field name="name" optional="show" />
+                                    <field name="description" optional="show" />
+                                    <field name="url" optional="show" />
+                                    <field name="sha" optional="hide" />
+                                    <field name="full_sha" optional="hide" />
+                                    <field
+                                        name="git_branch_ids"
+                                        widget="many2many_tags"
+                                        optional="hide"
+                                    />
+                                    <field
+                                        name="task_ids"
+                                        widget="many2many_tags"
+                                        optional="hide"
+                                    />
+                                    <field name="timestamp" optional="hide" />
                                 </tree>
                             </field>
                         </page>

@@ -1,17 +1,17 @@
 {
-    "object_kind": "pipeline",
-    "object_attributes": {
-        "id": 7001,
-        "ref": "merge-req-branch",
-        "sha": "feedfacefeedfacefeedfacefeedfacefeedface",
-        "status": "success"
-    },
-    "project": {
-        "id": 1001,
-        "name": "demo-repo",
-        "web_url": "https://gitlab.example.com/acme/demo-repo",
-        "git_http_url": "https://gitlab.example.com/acme/demo-repo.git",
-        "path_with_namespace": "acme/demo-repo",
-        "default_branch": "main"
-    }
+  "object_kind": "pipeline",
+  "object_attributes": {
+    "id": 7001,
+    "ref": "merge-req-branch",
+    "sha": "feedfacefeedfacefeedfacefeedfacefeedface",
+    "status": "success"
+  },
+  "project": {
+    "id": 1001,
+    "name": "demo-repo",
+    "web_url": "https://gitlab.example.com/acme/demo-repo",
+    "git_http_url": "https://gitlab.example.com/acme/demo-repo.git",
+    "path_with_namespace": "acme/demo-repo",
+    "default_branch": "main"
+  }
 }

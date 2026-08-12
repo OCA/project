@@ -1,45 +1,45 @@
 {
-    "object_kind": "merge_request",
-    "event_type": "merge_request",
-    "user": {
-        "id": 42,
+  "object_kind": "merge_request",
+  "event_type": "merge_request",
+  "user": {
+    "id": 42,
+    "name": "Demo User",
+    "username": "demo-user"
+  },
+  "project": {
+    "id": 1001,
+    "name": "demo-repo",
+    "web_url": "https://gitlab.example.com/acme/demo-repo",
+    "git_http_url": "https://gitlab.example.com/acme/demo-repo.git",
+    "path_with_namespace": "acme/demo-repo",
+    "default_branch": "main"
+  },
+  "object_attributes": {
+    "id": 5001,
+    "iid": 1,
+    "title": "Add new file",
+    "description": "",
+    "source_branch": "merge-req-branch",
+    "target_branch": "main",
+    "state": "opened",
+    "action": "open",
+    "work_in_progress": false,
+    "url": "https://gitlab.example.com/acme/demo-repo/-/merge_requests/1",
+    "last_commit": {
+      "id": "feedfacefeedfacefeedfacefeedfacefeedface",
+      "message": "Add new file",
+      "title": "Add new file",
+      "timestamp": "2026-03-01T21:31:20+00:00",
+      "url": "https://gitlab.example.com/acme/demo-repo/-/commit/feedfacefeedfacefeedfacefeedfacefeedface",
+      "author": {
         "name": "Demo User",
-        "username": "demo-user"
-    },
-    "project": {
-        "id": 1001,
-        "name": "demo-repo",
-        "web_url": "https://gitlab.example.com/acme/demo-repo",
-        "git_http_url": "https://gitlab.example.com/acme/demo-repo.git",
-        "path_with_namespace": "acme/demo-repo",
-        "default_branch": "main"
-    },
-    "object_attributes": {
-        "id": 5001,
-        "iid": 1,
-        "title": "Add new file",
-        "description": "",
-        "source_branch": "merge-req-branch",
-        "target_branch": "main",
-        "state": "opened",
-        "action": "open",
-        "work_in_progress": false,
-        "url": "https://gitlab.example.com/acme/demo-repo/-/merge_requests/1",
-        "last_commit": {
-            "id": "feedfacefeedfacefeedfacefeedfacefeedface",
-            "message": "Add new file",
-            "title": "Add new file",
-            "timestamp": "2026-03-01T21:31:20+00:00",
-            "url": "https://gitlab.example.com/acme/demo-repo/-/commit/feedfacefeedfacefeedfacefeedfacefeedface",
-            "author": {
-                "name": "Demo User",
-                "email": "demo@example.com"
-            }
-        }
-    },
-    "repository": {
-        "name": "demo-repo",
-        "url": "git@gitlab.example.com:acme/demo-repo.git",
-        "homepage": "https://gitlab.example.com/acme/demo-repo"
+        "email": "demo@example.com"
+      }
     }
+  },
+  "repository": {
+    "name": "demo-repo",
+    "url": "git@gitlab.example.com:acme/demo-repo.git",
+    "homepage": "https://gitlab.example.com/acme/demo-repo"
+  }
 }

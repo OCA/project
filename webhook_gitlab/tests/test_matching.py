@@ -15,9 +15,7 @@ class TestTaskMatching(WebhookGitlabCase):
         # users find it ready to customize; an existing (possibly
         # customized) value is never overwritten
         config = self.env["ir.config_parameter"].sudo()
-        config.search(
-            [("key", "=", "webhook_gitlab.task_name_match_regex")]
-        ).unlink()
+        config.search([("key", "=", "webhook_gitlab.task_name_match_regex")]).unlink()
         self.git_event._init_task_name_match_regex_param()
         self.assertEqual(
             config.get_param("webhook_gitlab.task_name_match_regex"),

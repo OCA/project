@@ -2,7 +2,8 @@
 <odoo>
 
     <template id="no_task_reference_in_title" name="Git: no task reference in title">
-        <t>**WARNING**: Could not link this PR/MR to an Odoo task: no task reference found.
+        <t
+        >**WARNING**: Could not link this PR/MR to an Odoo task: no task reference found.
 
 Supported references, in the PR/MR title, in the source branch name or in the commit messages:
 

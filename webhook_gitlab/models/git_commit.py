@@ -2,10 +2,11 @@
 # Copyright 2026 Francesco Ballerini
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
-from dateutil.parser import isoparse
 from datetime import timezone
 
-from odoo import _, api, fields, models
+from dateutil.parser import isoparse
+
+from odoo import api, fields, models
 
 
 class GitCommit(models.Model):
@@ -14,11 +15,11 @@ class GitCommit(models.Model):
     _order = "timestamp desc,id"
 
     name = fields.Char(string="Title")
-    description = fields.Char(string="Description")
+    description = fields.Char()
     url = fields.Char(string="Commit URL")
     full_sha = fields.Char(string="Full SHA")
     sha = fields.Char(string="SHA", compute="_compute_sha", store=True)
-    timestamp = fields.Datetime(string="Timestamp")
+    timestamp = fields.Datetime()
 
     task_ids = fields.Many2many(
         comodel_name="project.task",
@@ -44,9 +45,12 @@ class GitCommit(models.Model):
 
     @api.depends("full_sha")
     def _compute_sha(self):
-        
         for commit in self:
             commit.sha = commit.full_sha[:7] if commit.full_sha else ""
 
     def parse_timestamp(self, timestamp):
-        return isoparse(timestamp).astimezone(timezone.utc).replace(tzinfo=None) if timestamp else False
+        return (
+            isoparse(timestamp).astimezone(timezone.utc).replace(tzinfo=None)
+            if timestamp
+            else False
+        )

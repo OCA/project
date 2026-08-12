@@ -32,9 +32,9 @@ class ProjectProject(models.Model):
         gl = self.env["git.request"]._connect_gitlab(url=project_url)
         project = gl.projects.get(urlparse(project_url).path.strip("/"))
         hooks = project.hooks.list()
-        odoo_url = "%s/webhook_gitlab/webhook/" % self.env["ir.config_parameter"].sudo().get_param(
-            "web.base.url"
-        ).strip("/")
+        odoo_url = "%s/webhook_gitlab/webhook/" % self.env[
+            "ir.config_parameter"
+        ].sudo().get_param("web.base.url").strip("/")
         for hook in hooks:
             if hook.url == odoo_url:
                 hook.delete()
@@ -44,7 +44,9 @@ class ProjectProject(models.Model):
                 "merge_requests_events": True,
                 "pipeline_events": True,
                 "enable_ssl_verification": True,
-                "token": self.env["ir.config_parameter"].sudo().get_param("webhook_gitlab.authorization_token"),
+                "token": self.env["ir.config_parameter"]
+                .sudo()
+                .get_param("webhook_gitlab.authorization_token"),
             }
         )
 
@@ -62,8 +64,10 @@ class ProjectProject(models.Model):
             if latest_job:
                 try:
                     response = latest_job.retry()
-                except GitlabJobRetryError:
-                    raise UserError(_("Job cannot be retried, it is a job in progress"))
+                except GitlabJobRetryError as err:
+                    raise UserError(
+                        _("Job cannot be retried, it is a job in progress")
+                    ) from err
                 if response.get("web_url"):
                     return {
                         "type": "ir.actions.act_url",

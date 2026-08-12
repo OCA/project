@@ -31,7 +31,11 @@ def token_authorization(function):
         headers = request.httprequest.headers
         gitlab_token = headers.get("X-Gitlab-Token")
         github_token = headers.get("X-Hub-Signature-256")
-        token = request.env["ir.config_parameter"].sudo().get_param("webhook_gitlab.authorization_token")
+        token = (
+            request.env["ir.config_parameter"]
+            .sudo()
+            .get_param("webhook_gitlab.authorization_token")
+        )
         kw["source"] = ""
         authorization = False
         if not token or token in INSECURE_AUTHORIZATION_TOKENS:
@@ -46,7 +50,9 @@ def token_authorization(function):
                 msg=request.httprequest.data,
                 digestmod=sha256,
             ).hexdigest()
-            authorization = compare_digest(github_token.split("sha256=")[-1].strip(), expected_token)
+            authorization = compare_digest(
+                github_token.split("sha256=")[-1].strip(), expected_token
+            )
             kw["source"] = "github"
         elif gitlab_token:
             authorization = consteq(gitlab_token, token)
@@ -60,7 +66,6 @@ def token_authorization(function):
 
 
 class WebhookGitlab(http.Controller):
-
     @http.route("/webhook_gitlab/webhook/", type="json", auth="public", csrf=False)
     @token_authorization
     def _process_webhook(self, **kw):
@@ -105,7 +110,7 @@ class WebhookGitlab(http.Controller):
         # We guess the object kind by looking for specific events
         # in the request.
         if event.get("pull_request", {}):
-                event["object_kind"] = "pull_request"
+            event["object_kind"] = "pull_request"
         elif event.get("pusher"):
             event["object_kind"] = "push"
         # set repo url

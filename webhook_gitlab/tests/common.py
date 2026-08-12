@@ -52,7 +52,11 @@ class WebhookGitlabCase(TransactionCase):
         # from manual testing in the devel database) so they cannot interfere
         # with repository matching. Rolled back at the end of the test class.
         Project.search(
-            ["|", ("git_project_url", "!=", False), ("git_dev_project_url", "!=", False)]
+            [
+                "|",
+                ("git_project_url", "!=", False),
+                ("git_dev_project_url", "!=", False),
+            ]
         ).write({"git_project_url": False, "git_dev_project_url": False})
         # Snapshot pre-existing git entities (devel database leftovers) so
         # the state helpers only ever see records created by the tests.

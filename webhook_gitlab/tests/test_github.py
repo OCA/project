@@ -57,9 +57,7 @@ class TestGithubPullRequest(WebhookGitlabCase):
         self.assertEqual(
             set(pull_request.git_commit_ids.mapped("full_sha")), tracked_shas
         )
-        self.assertEqual(
-            set(branch.git_commit_ids.mapped("full_sha")), tracked_shas
-        )
+        self.assertEqual(set(branch.git_commit_ids.mapped("full_sha")), tracked_shas)
         # Each matched task (GH-100 by title, GH-115 by commit message) is
         # notified once on the PR with its Odoo link
         self.assertEqual(pull.create_issue_comment.call_count, 2)
@@ -126,9 +124,7 @@ class TestGithubPullRequest(WebhookGitlabCase):
             self._dispatch(payload, "github")
 
         head_sha = payload["pull_request"]["head"]["sha"]
-        self.assertEqual(
-            self.gh_task_100.git_commit_ids.mapped("full_sha"), [head_sha]
-        )
+        self.assertEqual(self.gh_task_100.git_commit_ids.mapped("full_sha"), [head_sha])
 
     def test_pr_without_match_creates_nothing_but_warns_once(self):
         # Known repository but no reference anywhere: the PR is
@@ -150,7 +146,9 @@ class TestGithubPullRequest(WebhookGitlabCase):
     def test_pr_task_id_reference_not_found_warns_once(self):
         # Explicit taskid#<id> reference to a non-existent task: the broken
         # reference is warned about on opening only, and nothing is created.
-        missing_id = self.env["project.task"].search([], order="id desc", limit=1).id + 1000
+        missing_id = (
+            self.env["project.task"].search([], order="id desc", limit=1).id + 1000
+        )
         payload = self._pr_payload(title=f"update readme taskid#{missing_id}")
         patcher, pull = self._mock_github_client()
         with patcher:

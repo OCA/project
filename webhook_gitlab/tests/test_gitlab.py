@@ -5,7 +5,9 @@ from .common import GITLAB_REPO_URL, NULL_SHA, WebhookGitlabCase
 
 
 class TestGitlabPush(WebhookGitlabCase):
-    def _push_payload(self, ref="refs/heads/main", commits=None, before=None, after=None):
+    def _push_payload(
+        self, ref="refs/heads/main", commits=None, before=None, after=None
+    ):
         payload = self._load_payload("gitlab_push.json")
         payload["ref"] = ref
         if commits is not None:
@@ -198,7 +200,9 @@ class TestGitlabPush(WebhookGitlabCase):
         )
 
     def test_branch_creation_without_match_creates_nothing(self):
-        payload = self._push_payload(ref="refs/heads/develop", commits=[], before=NULL_SHA)
+        payload = self._push_payload(
+            ref="refs/heads/develop", commits=[], before=NULL_SHA
+        )
         payload["after"] = "a" * 40
         self._dispatch(payload, "gitlab")
 
@@ -344,9 +348,7 @@ class TestGitlabMergeRequest(WebhookGitlabCase):
         self.assertEqual(
             set(pull_request.git_commit_ids.mapped("full_sha")), tracked_shas
         )
-        self.assertEqual(
-            set(branch.git_commit_ids.mapped("full_sha")), tracked_shas
-        )
+        self.assertEqual(set(branch.git_commit_ids.mapped("full_sha")), tracked_shas)
         # Each matched task (GL-100 by title, GL-115 by commit message) is
         # notified once on the MR with its Odoo link
         self.assertEqual(merge_request.discussions.create.call_count, 2)
@@ -359,7 +361,9 @@ class TestGitlabMergeRequest(WebhookGitlabCase):
         # its commits mentions the task, and the source branch follows the
         # linked PR). The other MR commits stay unrelated to GL-115.
         payload = self._mr_payload(title="GL-100 add new file")
-        patcher, _merge_request = self._mock_gitlab_client(commits=self.MIXED_MR_COMMITS)
+        patcher, _merge_request = self._mock_gitlab_client(
+            commits=self.MIXED_MR_COMMITS
+        )
         with patcher:
             self._dispatch(payload, "gitlab")
 
@@ -393,7 +397,9 @@ class TestGitlabMergeRequest(WebhookGitlabCase):
         self.assertFalse(self.gl_task_100.git_pull_request_ids)
 
     def test_mr_task_id_reference_in_title_links_pr_and_posts_message(self):
-        payload = self._mr_payload(title=f"Add new file taskid#{self.gl_task_no_pattern.id}")
+        payload = self._mr_payload(
+            title=f"Add new file taskid#{self.gl_task_no_pattern.id}"
+        )
         patcher, merge_request = self._mock_gitlab_client()
         with patcher:
             self._dispatch(payload, "gitlab")
@@ -401,9 +407,7 @@ class TestGitlabMergeRequest(WebhookGitlabCase):
         pull_request = self._get_pull_request(payload["object_attributes"]["url"])
         self.assertEqual(len(pull_request), 1)
         self.assertEqual(pull_request.task_ids, self.gl_task_no_pattern)
-        self.assertIn(
-            pull_request.id, self.gl_task_no_pattern.git_pull_request_ids.ids
-        )
+        self.assertIn(pull_request.id, self.gl_task_no_pattern.git_pull_request_ids.ids)
         merge_request.discussions.create.assert_called_once()
         message_body = merge_request.discussions.create.call_args[0][0]["body"]
         self.assertIn("Linked to Odoo task", message_body)
@@ -441,7 +445,9 @@ class TestGitlabMergeRequest(WebhookGitlabCase):
         self.assertEqual(len(self.gl_task_100.git_commit_ids), 2)
         # Entity correlations are not duplicated either
         self.assertEqual(len(pull_request.git_commit_ids), 3)
-        self.assertEqual(pull_request.source_branch_id, self._get_branch("merge-req-branch"))
+        self.assertEqual(
+            pull_request.source_branch_id, self._get_branch("merge-req-branch")
+        )
         # The task link message is posted only once per matched task
         # (GL-100 by title, GL-115 by commit message - anti-spam tracking)
         self.assertEqual(merge_request.discussions.create.call_count, 2)
@@ -527,7 +533,9 @@ class TestGitlabMergeRequest(WebhookGitlabCase):
     def test_mr_task_id_reference_not_found_warns_once(self):
         # Explicit taskid#<id> reference to a non-existent task: the broken
         # reference is warned about on opening only, and nothing is created.
-        missing_id = self.env["project.task"].search([], order="id desc", limit=1).id + 1000
+        missing_id = (
+            self.env["project.task"].search([], order="id desc", limit=1).id + 1000
+        )
         payload = self._mr_payload(title=f"Add new file taskid#{missing_id}")
         patcher, merge_request = self._mock_gitlab_client()
         with patcher:
