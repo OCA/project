@@ -13,11 +13,12 @@ from .common import GITLAB_REPO_URL, WebhookGitlabCase
 
 ODOO_BASE_URL = "https://odoo.example.com"
 WEBHOOK_TOKEN = "webhook-secret-token"
+GITHUB_COM_REPO_URL = "https://github.com/acme/webhook-demo"
 
 
 class TestProjectWebhookDeploy(WebhookGitlabCase):
-    """Webhook deployment on the GitLab repo and Odoo.sh deploy job retry,
-    both triggered from the Odoo project form."""
+    """Webhook deployment on the GitLab/GitHub repo and Odoo.sh deploy job
+    retry, both triggered from the Odoo project form."""
 
     def setUp(self):
         super().setUp()
@@ -25,6 +26,11 @@ class TestProjectWebhookDeploy(WebhookGitlabCase):
         config.set_param("web.base.url", ODOO_BASE_URL)
         config.set_param("webhook_gitlab.authorization_token", WEBHOOK_TOKEN)
         self.expected_hook_url = f"{ODOO_BASE_URL}/webhook_gitlab/webhook/"
+        # Platform detection is by host: the deploy runs against the GitHub
+        # API only for github.com URLs (the fixture host is a GitLab one)
+        self.githubcom_project = self.env["project.project"].create(
+            {"name": "GitHub.com Repo", "git_project_url": GITHUB_COM_REPO_URL}
+        )
 
     def _mock_gitlab_for_project(self, hooks=(), jobs=()):
         """Return (patcher, gitlab client mock) with hook/job fixtures
@@ -36,10 +42,24 @@ class TestProjectWebhookDeploy(WebhookGitlabCase):
         patcher = patch.object(GitEvent, "_connect_gitlab", return_value=client)
         return patcher, client
 
+    def _mock_github_for_project(self, hooks=()):
+        """Return (patcher, github client mock) with hook fixtures
+        installed on the mocked GitHub repository."""
+        client = MagicMock(name="github_client")
+        client.get_repo.return_value.get_hooks.return_value = list(hooks)
+        patcher = patch.object(GitEvent, "_connect_github", return_value=client)
+        return patcher, client
+
     @staticmethod
     def _hook_stub(url):
         hook = MagicMock(name="gitlab_hook")
         hook.url = url
+        return hook
+
+    @staticmethod
+    def _github_hook_stub(url):
+        hook = MagicMock(name="github_hook")
+        hook.config = {"url": url, "content_type": "json"}
         return hook
 
     @staticmethod
@@ -99,6 +119,38 @@ class TestProjectWebhookDeploy(WebhookGitlabCase):
             self.gitlab_project.create_project_webhook()
         connect_gitlab.assert_not_called()
 
+    def test_create_webhook_github_creates_hook_with_events(self):
+        gitlab_patcher, _gitlab_client = self._mock_gitlab_for_project()
+        github_patcher, github_client = self._mock_github_for_project()
+        with gitlab_patcher as connect_gitlab, github_patcher:
+            self.githubcom_project.create_project_webhook()
+        # github.com URL: the GitHub API is used, not the GitLab one
+        connect_gitlab.assert_not_called()
+        github_client.get_repo.assert_called_once_with("acme/webhook-demo")
+        github_client.get_repo.return_value.create_hook.assert_called_once_with(
+            name="web",
+            config={
+                "url": self.expected_hook_url,
+                "content_type": "json",
+                "secret": WEBHOOK_TOKEN,
+                "insecure_ssl": "0",
+            },
+            events=["push", "pull_request"],
+            active=True,
+        )
+
+    def test_create_webhook_github_replaces_existing_hook(self):
+        stale_hook = self._github_hook_stub(self.expected_hook_url)
+        foreign_hook = self._github_hook_stub("https://ci.example.com/hook")
+        patcher, github_client = self._mock_github_for_project(
+            hooks=[stale_hook, foreign_hook]
+        )
+        with patcher:
+            self.githubcom_project.create_project_webhook()
+        stale_hook.delete.assert_called_once_with()
+        foreign_hook.delete.assert_not_called()
+        github_client.get_repo.return_value.create_hook.assert_called_once()
+
     # ---- retry_odoo_sh_deploy_job ----
 
     def test_retry_deploy_job_retries_latest(self):
@@ -121,6 +173,13 @@ class TestProjectWebhookDeploy(WebhookGitlabCase):
                 "target": "new",
             },
         )
+
+    def test_retry_deploy_job_skips_github_url(self):
+        # The CI job retry is GitLab-only: github.com URLs are skipped
+        patcher, _client = self._mock_gitlab_for_project()
+        with patcher as connect_gitlab:
+            self.githubcom_project.retry_odoo_sh_deploy_job()
+        connect_gitlab.assert_not_called()
 
     def test_retry_deploy_job_without_match_raises(self):
         patcher, _client = self._mock_gitlab_for_project(

@@ -14,11 +14,11 @@ class ProjectProject(models.Model):
 
     git_project_url = fields.Char(
         string="Git Project URL",
-        help="URL of the project in GitLab",
+        help="URL of the repository (GitLab or GitHub)",
     )
     git_dev_project_url = fields.Char(
         string="Git Dev Project URL",
-        help="URL of the project in GitLab",
+        help="URL of the repository (GitLab or GitHub)",
     )
 
     def create_project_webhook(self):
@@ -30,19 +30,33 @@ class ProjectProject(models.Model):
         return True
 
     @api.model
-    def _gitlab_project_path(self, project_url):
-        """Namespace path of the project as expected by the GitLab API,
-        tolerating URLs with a trailing ``.git``."""
+    def _git_project_path(self, project_url):
+        """Namespace path of the repository as expected by the platform
+        API, tolerating URLs with a trailing ``.git``."""
         return urlparse(project_url).path.strip("/").removesuffix(".git")
 
-    def _create_project_webhook(self, project_url):
-        gl = self.env["git.event"]._connect_gitlab(url=project_url)
-        gitlab_project = gl.projects.get(self._gitlab_project_path(project_url))
-        hooks = gitlab_project.hooks.list()
-        odoo_url = "%s/webhook_gitlab/webhook/" % self.env[
+    @api.model
+    def _is_github_url(self, project_url):
+        # The GitHub connection supports github.com only (no Enterprise
+        # base URL): any other host is treated as a GitLab instance.
+        return urlparse(project_url).netloc in ("github.com", "www.github.com")
+
+    def _get_webhook_url(self):
+        return "%s/webhook_gitlab/webhook/" % self.env[
             "ir.config_parameter"
         ].sudo().get_param("web.base.url").strip("/")
-        for hook in hooks:
+
+    def _create_project_webhook(self, project_url):
+        if self._is_github_url(project_url):
+            self._create_github_project_webhook(project_url)
+        else:
+            self._create_gitlab_project_webhook(project_url)
+
+    def _create_gitlab_project_webhook(self, project_url):
+        gl = self.env["git.event"]._connect_gitlab(url=project_url)
+        gitlab_project = gl.projects.get(self._git_project_path(project_url))
+        odoo_url = self._get_webhook_url()
+        for hook in gitlab_project.hooks.list():
             if hook.url == odoo_url:
                 hook.delete()
         gitlab_project.hooks.create(
@@ -58,13 +72,39 @@ class ProjectProject(models.Model):
             }
         )
 
+    def _create_github_project_webhook(self, project_url):
+        github_client = self.env["git.event"]._connect_github()
+        github_repo = github_client.get_repo(self._git_project_path(project_url))
+        odoo_url = self._get_webhook_url()
+        for hook in github_repo.get_hooks():
+            if hook.config.get("url") == odoo_url:
+                hook.delete()
+        github_repo.create_hook(
+            # The secret signs the payload (X-Hub-Signature-256), which is
+            # how the controller authorizes and recognizes GitHub events
+            name="web",
+            config={
+                "url": odoo_url,
+                "content_type": "json",
+                "secret": self.env["ir.config_parameter"]
+                .sudo()
+                .get_param("webhook_gitlab.authorization_token"),
+                "insecure_ssl": "0",
+            },
+            events=["push", "pull_request"],
+            active=True,
+        )
+
     def retry_odoo_sh_deploy_job(self):
         for project in self:
-            if not project.git_project_url:
+            # The CI job retry is a GitLab-only feature
+            if not project.git_project_url or self._is_github_url(
+                project.git_project_url
+            ):
                 continue
             gl = self.env["git.event"]._connect_gitlab(url=project.git_project_url)
             gitlab_project = gl.projects.get(
-                self._gitlab_project_path(project.git_project_url)
+                self._git_project_path(project.git_project_url)
             )
             jobs = gitlab_project.jobs.list(scope="success", get_all=False)
             latest_job = False
