@@ -1,13 +1,16 @@
 # Copyright 2018, Jarsa
-# License LGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+# License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
 {
     "name": "Webhook for Gitlab",
-    "summary": "Controllers needed to notify actions with gitlab",
+    "summary": "Link GitHub/GitLab commits, branches and pull requests"
+    " to project tasks through webhooks",
     "version": "17.0.1.0.0",
     "category": "Development",
-    "author": "Jarsa, Francesco Ballerini",
-    "website": "https://git.vauxoo.com/jarsa/jarsa",
+    "author": "Jarsa, Francesco Ballerini, Odoo Community Association (OCA)",
+    "website": "https://github.com/OCA/project",
+    "maintainers": ["FrancescoBallerini"],
+    "development_status": "Beta",
     "license": "LGPL-3",
     "depends": [
         "project",

@@ -1,6 +1,6 @@
 # Copyright 2020, Jarsa
 # Copyright 2026 Francesco Ballerini
-# License LGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
+# License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
 from odoo import _, api, fields, models
 
