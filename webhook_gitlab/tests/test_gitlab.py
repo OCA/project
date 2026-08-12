@@ -475,6 +475,63 @@ class TestGitlabMergeRequest(WebhookGitlabCase):
         tag_names = self.gl_task_100.tag_ids.mapped("name")
         self.assertIn("MR: Opened", tag_names)
 
+    def test_mr_merge_event_updates_state_and_tags(self):
+        payload = self._mr_payload(title="GL-100 add new file")
+        patcher, _merge_request = self._mock_gitlab_client()
+        with patcher:
+            self._dispatch(payload, "gitlab")
+            self.assertIn("MR: Opened", self.gl_task_100.tag_ids.mapped("name"))
+            payload["object_attributes"]["action"] = "merge"
+            payload["object_attributes"]["state"] = "merged"
+            self._dispatch(payload, "gitlab")
+
+        pull_request = self._get_pull_request(payload["object_attributes"]["url"])
+        self.assertEqual(pull_request.state, "merged")
+        # The state tag is replaced, not accumulated
+        tag_names = self.gl_task_100.tag_ids.mapped("name")
+        self.assertIn("MR: Merged", tag_names)
+        self.assertNotIn("MR: Opened", tag_names)
+
+    def test_mr_approval_sets_approved_flag_and_tag(self):
+        payload = self._mr_payload(title="GL-100 add new file")
+        patcher, _merge_request = self._mock_gitlab_client()
+        with patcher:
+            self._dispatch(payload, "gitlab")
+            payload["object_attributes"]["action"] = "approved"
+            self._dispatch(payload, "gitlab")
+
+        pull_request = self._get_pull_request(payload["object_attributes"]["url"])
+        self.assertTrue(pull_request.approved)
+        self.assertIn("Approved", self.gl_task_100.tag_ids.mapped("name"))
+
+    def test_mr_wip_flag_sets_tag(self):
+        payload = self._mr_payload(title="GL-100 add new file")
+        payload["object_attributes"]["work_in_progress"] = True
+        patcher, _merge_request = self._mock_gitlab_client()
+        with patcher:
+            self._dispatch(payload, "gitlab")
+
+        pull_request = self._get_pull_request(payload["object_attributes"]["url"])
+        self.assertTrue(pull_request.wip)
+        self.assertIn("WIP", self.gl_task_100.tag_ids.mapped("name"))
+
+    def test_mr_user_mapping_by_gitlab_username(self):
+        gitlab_user = self.env["res.users"].create(
+            {
+                "name": "GitLab Webhook User",
+                "login": "gitlab-webhook-user@example.com",
+                "gitlab_username": "gl-webhook-demo-user",
+            }
+        )
+        payload = self._mr_payload(title="GL-100 add new file")
+        payload["user"]["username"] = "gl-webhook-demo-user"
+        patcher, _merge_request = self._mock_gitlab_client()
+        with patcher:
+            self._dispatch(payload, "gitlab")
+
+        pull_request = self._get_pull_request(payload["object_attributes"]["url"])
+        self.assertEqual(pull_request.user_id, gitlab_user)
+
     def test_post_message_without_event_connects_via_record_url(self):
         # Without an event the GitLab connection URL falls back to the
         # record MR URL (modern /-/merge_requests/ layout); the event,
@@ -564,8 +621,9 @@ class TestGitlabMergeRequest(WebhookGitlabCase):
 
 
 class TestGitlabPipeline(WebhookGitlabCase):
-    def test_pipeline_updates_pull_request_ci_status(self):
-        pull_request = self.env["git.pull.request"].create(
+    def _create_pull_request(self):
+        """PR fixture matching the ref/sha of the pipeline payload."""
+        return self.env["git.pull.request"].create(
             {
                 "name": "GL-100 add new file",
                 "url": f"{GITLAB_REPO_URL}/-/merge_requests/1",
@@ -579,6 +637,9 @@ class TestGitlabPipeline(WebhookGitlabCase):
                 "task_ids": [(4, self.gl_task_100.id)],
             }
         )
+
+    def test_pipeline_updates_pull_request_ci_status(self):
+        pull_request = self._create_pull_request()
         self.assertEqual(pull_request.ci_status, "pending")
 
         payload = self._load_payload("gitlab_pipeline.json")
@@ -586,22 +647,41 @@ class TestGitlabPipeline(WebhookGitlabCase):
 
         self.assertEqual(pull_request.ci_status, "success")
 
+    def test_pipeline_success_replaces_ci_tag_on_task(self):
+        self._create_pull_request()
+        self.assertIn("CI: Pending", self.gl_task_100.tag_ids.mapped("name"))
+
+        payload = self._load_payload("gitlab_pipeline.json")
+        self._dispatch(payload, "gitlab")
+
+        tag_names = self.gl_task_100.tag_ids.mapped("name")
+        self.assertIn("CI: Success", tag_names)
+        self.assertNotIn("CI: Pending", tag_names)
+
+    def test_pipeline_failed_status_updates_pull_request(self):
+        pull_request = self._create_pull_request()
+
+        payload = self._load_payload("gitlab_pipeline.json")
+        payload["object_attributes"]["status"] = "failed"
+        self._dispatch(payload, "gitlab")
+
+        self.assertEqual(pull_request.ci_status, "failed")
+        self.assertIn("CI: Failed", self.gl_task_100.tag_ids.mapped("name"))
+
     def test_pipeline_without_matching_pull_request_does_nothing(self):
-        pull_request = self.env["git.pull.request"].create(
-            {
-                "name": "GL-100 add new file",
-                "url": f"{GITLAB_REPO_URL}/-/merge_requests/1",
-                "id_request": 1,
-                "id_project": 1001,
-                "source": "gitlab",
-                "source_branch": "merge-req-branch",
-                "state": "opened",
-                "last_commit": "feedfacefeedfacefeedfacefeedfacefeedface",
-                "task_ids": [(4, self.gl_task_100.id)],
-            }
-        )
+        pull_request = self._create_pull_request()
         payload = self._load_payload("gitlab_pipeline.json")
         payload["object_attributes"]["ref"] = "unknown-branch"
+        self._dispatch(payload, "gitlab")
+
+        self.assertEqual(pull_request.ci_status, "pending")
+
+    def test_pipeline_sha_mismatch_does_not_update(self):
+        # The pipeline is matched to a PR by ref AND head sha: a pipeline
+        # of another commit of the same branch must not update the PR
+        pull_request = self._create_pull_request()
+        payload = self._load_payload("gitlab_pipeline.json")
+        payload["object_attributes"]["sha"] = "ba5eba11" * 5
         self._dispatch(payload, "gitlab")
 
         self.assertEqual(pull_request.ci_status, "pending")

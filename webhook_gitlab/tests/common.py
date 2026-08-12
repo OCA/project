@@ -30,12 +30,15 @@ class WebhookGitlabCase(TransactionCase):
     down to the keys the module consumes. They are normalized through the
     actual controller parsing helpers and dispatched synchronously to the
     git.event handlers, so the whole processing chain runs except
-    HTTP transport, authentication and the job queue.
+    HTTP transport, authentication and the job queue (those layers are
+    covered with real requests in test_controller.py).
     Outbound API traffic (python-gitlab / PyGithub) is mocked.
 
     Tests assert the resulting state (entities created and their links),
     not the internal call flow, so they should survive refactorings that
-    keep behavior unchanged.
+    keep behavior unchanged. Within that style, the suite aims to cover
+    every code area of the module: controller authorization, event
+    handlers and state transitions, matching and configuration edge cases.
     """
 
     @classmethod

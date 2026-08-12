@@ -161,6 +161,40 @@ class TestGithubPullRequest(WebhookGitlabCase):
         message_body = pull.create_issue_comment.call_args[0][0]
         self.assertIn("cannot be found", str(message_body))
 
+    def test_pr_closed_event_updates_state_and_tags(self):
+        payload = self._pr_payload(title="GH-100 update readme")
+        patcher, _pull = self._mock_github_client()
+        with patcher:
+            self._dispatch(payload, "github")
+            self.assertIn("MR: Opened", self.gh_task_100.tag_ids.mapped("name"))
+            payload["action"] = "closed"
+            payload["pull_request"]["state"] = "closed"
+            self._dispatch(payload, "github")
+
+        pull_request = self._get_pull_request(payload["pull_request"]["html_url"])
+        self.assertEqual(pull_request.state, "closed")
+        # The state tag is replaced, not accumulated
+        tag_names = self.gh_task_100.tag_ids.mapped("name")
+        self.assertIn("MR: Closed", tag_names)
+        self.assertNotIn("MR: Opened", tag_names)
+
+    def test_pr_user_mapping_by_github_username(self):
+        github_user = self.env["res.users"].create(
+            {
+                "name": "GitHub Webhook User",
+                "login": "github-webhook-user@example.com",
+                "github_username": "gh-webhook-demo-user",
+            }
+        )
+        payload = self._pr_payload(title="GH-100 update readme")
+        payload["pull_request"]["user"]["login"] = "gh-webhook-demo-user"
+        patcher, _pull = self._mock_github_client()
+        with patcher:
+            self._dispatch(payload, "github")
+
+        pull_request = self._get_pull_request(payload["pull_request"]["html_url"])
+        self.assertEqual(pull_request.user_id, github_user)
+
     def test_pr_commit_message_is_split_in_title_and_description(self):
         long_title = "GH-100 " + "x" * 80
         payload = self._pr_payload(title="GH-100 update readme")
@@ -176,7 +210,9 @@ class TestGithubPullRequest(WebhookGitlabCase):
 
 
 class TestGithubPush(WebhookGitlabCase):
-    def _push_payload(self, ref="refs/heads/main", commits=None, before=None):
+    def _push_payload(
+        self, ref="refs/heads/main", commits=None, before=None, after=None
+    ):
         payload = self._load_payload("github_push.json")
         payload["ref"] = ref
         if commits is not None:
@@ -186,6 +222,8 @@ class TestGithubPush(WebhookGitlabCase):
                 payload["head_commit"] = commits[-1]
         if before is not None:
             payload["before"] = before
+        if after is not None:
+            payload["after"] = after
         return payload
 
     @staticmethod
@@ -312,3 +350,32 @@ class TestGithubPush(WebhookGitlabCase):
         self.assertFalse(self._get_branch("develop"))
         self.assertFalse(self._get_commit("a" * 40))
         self.assertFalse(self._get_commit("b" * 40))
+
+    def test_push_unrelated_repository_creates_nothing(self):
+        commits = [self._commit("a" * 40, "GH-100 part one")]
+        payload = self._push_payload(ref="refs/heads/GH-100-readme", commits=commits)
+        payload["repository"]["html_url"] = "https://github.example.com/other/repo"
+        self._dispatch(payload, "github")
+
+        self.assertFalse(self._get_branch("GH-100-readme"))
+        self.assertFalse(self._get_commit("a" * 40))
+
+    def test_branch_deletion_keeps_branch_record(self):
+        creation = self._push_payload(
+            ref="refs/heads/GH-100-feature",
+            commits=[],
+            before=NULL_SHA,
+            after="a" * 40,
+        )
+        self._dispatch(creation, "github")
+        self.assertEqual(len(self._get_branch("GH-100-feature")), 1)
+
+        deletion = self._push_payload(
+            ref="refs/heads/GH-100-feature", commits=[], before="a" * 40, after=NULL_SHA
+        )
+        self._dispatch(deletion, "github")
+
+        # Current behavior: the branch record is kept on deletion
+        branch = self._get_branch("GH-100-feature")
+        self.assertEqual(len(branch), 1)
+        self.assertIn(branch.id, self.gh_task_100.git_branch_ids.ids)
