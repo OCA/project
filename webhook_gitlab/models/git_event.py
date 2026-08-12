@@ -15,7 +15,8 @@ from odoo import api, models
 
 _logger = logging.getLogger(__name__)
 
-DEFAULT_TASK_NAME_SUBSTR_REGEX = r"\b[A-Z]+-\d+\b"
+DEFAULT_TASK_NAME_MATCH_REGEX = r"\b[A-Z][A-Z]+-\d+\b"
+TASK_ID_REFERENCE_REGEX = r"\b(?:task|t)id#(?P<id>\d+)\b"
 
 
 class GitEvent(models.Model):
@@ -23,34 +24,43 @@ class GitEvent(models.Model):
     _description = "Git Webhook Event Processor"
 
     @api.model
-    def _get_task_match_regex(self):
+    def _init_task_name_match_regex_param(self):
+        """Seed the task_name_match_regex sysparam with the default pattern
+        when missing."""
+        config = self.env["ir.config_parameter"].sudo()
+        if not config.get_param("webhook_gitlab.task_name_match_regex"):
+            config.set_param("webhook_gitlab.task_name_match_regex", DEFAULT_TASK_NAME_MATCH_REGEX)
+
+    @api.model
+    def _get_task_name_match_regex(self):
         """Fetch regex pattern from ir.config_parameter or fallback to default."""
         config = self.env["ir.config_parameter"].sudo()
-        regex = config.get_param("webhook_gitlab.task_match_regex", default=DEFAULT_TASK_NAME_SUBSTR_REGEX)
+        regex = config.get_param("webhook_gitlab.task_name_match_regex", default=DEFAULT_TASK_NAME_MATCH_REGEX)
         try:
             # Try compiling to validate the pattern
             re.compile(regex)
             return regex
         except re.error as e:
             _logger.warning("Invalid task match regex in config parameter: %s. Error: %s. Falling back to default.", regex, e)
-            return DEFAULT_TASK_NAME_SUBSTR_REGEX
+            return DEFAULT_TASK_NAME_MATCH_REGEX
 
     @api.model
-    def _get_record_type_and_id(self, title):
-        """Searches in the title of the MR for the task ID with the
-        correct format and returns the type of record and id if it can find it.
+    def _extract_task_id_references(self, text):
+        """Extract the explicit task id references ("taskid#123" or
+        "tid#123", case-insensitive) from a text. Every occurrence is
+        considered.
 
-        :param title: Title of the MR
-        :type: string
-        :return: Dictionary with the type of record and ID obtained from the
-        title or False if the title does not contain a correct format.
-        :rtype: dictionary or boolean
+        :param str text: any text carried by the event (PR/MR title,
+            branch name, commit message)
+        :return: list of referenced task ids
+        :rtype: list(int)
         """
-        exp = r"^(.*[ \(\[\<])?(?P<type>t(ask)?)#?(?P<id>\d+)([\)\]\>:=, \.,].*)?$"
-        match = re.match(exp, title, re.IGNORECASE)
-        if match:
-            return match.groupdict()
-        return False
+        if not text:
+            return []
+        return [
+            int(task_id)
+            for task_id in re.findall(TASK_ID_REFERENCE_REGEX, text, re.IGNORECASE)
+        ]
 
     @api.model
     def _process_merge_request(self, event):
@@ -66,18 +76,28 @@ class GitEvent(models.Model):
     def _process_pull_request_event(self, event):
         """Common processing for GitLab MR and GitHub PR events.
 
-        Tasks are matched following the Jira referencing conventions
-        (each entity is linked by its own explicit reference only):
-        - the PR/MR is linked to the tasks matched (task_match_regex) by
-          its title, by its source branch name or by the message of any
-          of its commits, restricted to the projects related to the
-          repository URL — plus the legacy explicit reference in the
-          title (e.g. "task#123"), treated as a title match;
+        Every entity is linked to a task by its own explicit reference:
+        a task_name_match_regex pattern (searched in the names of the tasks
+        of the projects related to the repository URL) or an explicit
+        "taskid#<id>"/"tid#<id>" reference (resolved globally by id,
+        no repository mapping needed). Case by case:
+
+        - the PR/MR is linked to a task when the task is referenced in
+          its title, in its source branch name, or in the message of
+          any of its commits;
         - the source branch is linked to the same tasks as the PR/MR
-          (Jira: a branch is linked when it is the source branch of a
-          linked PR/MR);
-        - each commit is linked only to the tasks its own message
-          mentions.
+          (a branch is linked when it is the source branch of a linked
+          PR/MR);
+        - a commit is linked to a task only when its own message
+          references it; the other PR/MR commits are not tracked.
+
+            task reference found in | PR/MR | branch | commit
+            ------------------------+-------+--------+-------
+            PR/MR title             |   X   |   X    |
+            source branch name      |   X   |   X    |
+            PR/MR commit message    |   X   |   X    |   X
+
+            ("commit" means the referencing commit only)
 
         The PR/MR and its source branch are single entities per event, so
         they are created/updated once. If no task matches and the PR/MR
@@ -90,28 +110,22 @@ class GitEvent(models.Model):
                  PR/MR is not tracked in Odoo)
         """
         pr_title = self._extract_pr_title_from_event(event)
+        source_branch = self._extract_branch_names_from_event(event)["source_branch"]
         matching_tasks = self.env["project.task"].sudo()
         commit_matches = []  # (commit, matching tasks) pairs
 
         repository_projects = self._get_related_projects_by_url(event=event)
-        if repository_projects:
-            source_branch = self._extract_branch_names_from_event(event)["source_branch"]
-            matching_tasks |= self._find_matching_tasks(projects=repository_projects, pattern_text=source_branch)
-            matching_tasks |= self._find_matching_tasks(projects=repository_projects, pattern_text=pr_title)
-            # Fetch all PR/MR commits via API (their messages are a
-            # matching source), falling back to the head commit carried
-            # by the event payload if the call fails
-            commits = self._fetch_pr_commits(event) or self._extract_pr_fallback_commits(event)
-            for commit in commits:
-                commit_matching_tasks = self._find_matching_tasks(projects=repository_projects, pattern_text=commit.get("message", ""))
-                if commit_matching_tasks:
-                    commit_matches.append((commit, commit_matching_tasks))
-                    matching_tasks |= commit_matching_tasks
-
-        # Legacy flow: explicit "task#<id>" reference in the title
-        id_found = self._get_record_type_and_id(pr_title)
-        if id_found:
-            matching_tasks |= self.env["project.task"].sudo().browse(int(id_found["id"])).exists()
+        matching_tasks |= self._find_matching_tasks(projects=repository_projects, pattern_text=source_branch)
+        matching_tasks |= self._find_matching_tasks(projects=repository_projects, pattern_text=pr_title)
+        # Fetch all PR/MR commits via API (their messages are a
+        # matching source), falling back to the head commit carried
+        # by the event payload if the call fails
+        commits = self._fetch_pr_commits(event) or self._extract_pr_fallback_commits(event)
+        for commit in commits:
+            commit_matching_tasks = self._find_matching_tasks(projects=repository_projects, pattern_text=commit.get("message", ""))
+            if commit_matching_tasks:
+                commit_matches.append((commit, commit_matching_tasks))
+                matching_tasks |= commit_matching_tasks
 
         git_pull_request = self._create_or_update_pull_request(event=event, tasks=matching_tasks)
 
@@ -131,7 +145,7 @@ class GitEvent(models.Model):
         self.env["git.pull.request"]._post_negative_match_messages(
             event,
             matching_tasks=matching_tasks,
-            id_found=id_found,
+            title_task_references=self._extract_task_id_references(pr_title),
             repository_projects=repository_projects,
         )
         return git_pull_request
@@ -238,19 +252,38 @@ class GitEvent(models.Model):
     @api.model
     def _find_matching_tasks(self, projects, pattern_text):
         """
-        Find project tasks that match a given pattern in their name.
-        Every pattern occurrence in the text is considered, so a text
-        mentioning several tasks matches all of them (as in Jira).
+        Find the project tasks referenced by a given text (PR/MR title,
+        branch name, commit message). Two always-active mechanisms, with
+        every occurrence considered (a text referencing several tasks
+        matches all of them):
+
+        - explicit task id reference ("taskid#123" or "tid#123"):
+          resolved globally by database id, regardless of the given
+          projects (an explicit id needs no repository mapping);
+          references to non-existent tasks are silently skipped;
+        - task_name_match_regex pattern: every extracted occurrence is
+          searched in the names of the tasks of the given projects (the
+          projects related to the repository URL).
+
+        The pattern extraction is case-sensitive (avoids false positives
+        such as "utf-8"; a custom regex can relax it with an inline
+        "(?i)"); the extracted pattern is then searched in the task
+        names case-insensitively, as a task naming tolerance.
         Returns flat project.task recordset.
         """
         matching_tasks = self.env["project.task"]
         if not pattern_text:
             return matching_tasks
 
-        regex = self._get_task_match_regex()
+        # Explicit id references: global, not restricted to the projects
+        # (a reference to a non-existent task resolves to an empty set)
+        for task_id in self._extract_task_id_references(pattern_text):
+            matching_tasks |= self.env["project.task"].browse(task_id).exists()
+
+        regex = self._get_task_name_match_regex()
         patterns = {
-            pattern_match.group(0).upper()
-            for pattern_match in re.finditer(regex, pattern_text, re.IGNORECASE)
+            pattern_match.group(0)
+            for pattern_match in re.finditer(regex, pattern_text)
         }
 
         for pattern in patterns:
@@ -576,12 +609,14 @@ class GitEvent(models.Model):
         - Branch creation
         - Branch deletion
 
-        Links commits and branches to matching project tasks based on pattern matching.
+        Links commits and branches to the matching project tasks. The
+        repository->project mapping only scopes the pattern matching
+        (explicit "taskid#"/"tid#" references work without it): events
+        from unmapped repositories are processed too, and simply create
+        nothing unless they carry explicit id references.
         """
 
         repository_projects = self._get_related_projects_by_url(event=event)
-        if not repository_projects:
-            return
 
         push_type = self._classify_push_event(event=event)
 
@@ -618,14 +653,17 @@ class GitEvent(models.Model):
 
     def _link_push_entities_to_tasks(self, projects, event):
         """Link the branch and commits of a push-type event (commit push,
-        branch creation) to the matching tasks, following the Jira
-        referencing conventions (each entity is linked by its own
-        explicit reference only):
+        branch creation) to the matching tasks. Every entity is linked
+        by its own explicit reference (a task_name_match_regex pattern or a
+        "taskid#<id>"/"tid#<id>" reference). Case by case:
 
-        - the branch is linked to the tasks its name mentions;
-        - each commit is linked only to the tasks its own message
-          mentions, so a task referenced on a shared branch (e.g.
-          "develop") is not polluted with unrelated resources.
+        - the branch is linked to the tasks referenced in its name.
+          The commits it carries are not: untracked commits stay one
+          click away through the branch link;
+        - a commit is linked to the tasks referenced in its own
+          message, and the link stops there: the branch it was pushed
+          to (e.g. a shared "develop") and the other commits of the
+          push are not linked.
         """
         branch_name = self._extract_branch_names_from_event(event)["source_branch"]
         tasks_from_branch = self._find_matching_tasks(projects=projects, pattern_text=branch_name)

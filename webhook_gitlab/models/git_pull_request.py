@@ -149,22 +149,31 @@ class GitPullRequest(models.Model):
         return is_opening or title_changed
 
     @api.model
-    def _post_negative_match_messages(self, event, matching_tasks, id_found, repository_projects):
+    def _post_negative_match_messages(self, event, matching_tasks, title_task_references, repository_projects):
         """Warn on the PR/MR about broken or missing task references.
 
-        - explicit "task#<id>" reference to a task that does not exist;
+        - explicit "taskid#<id>" title reference(s) to tasks that do not
+          exist;
         - no task reference at all (only for repositories related to an
           Odoo project, to avoid commenting unrelated repositories).
         Posted only on PR opening or title change (anti-spam). Model
         method: in these cases the PR/MR is usually not tracked in Odoo,
         so the message posting relies on the event for identification.
+
+        :param list(int) title_task_references: task ids referenced in
+            the PR/MR title (see _extract_task_id_references)
         """
         if not self._is_pr_opening_or_title_change(event):
             return
-        if id_found and not self.env["project.task"].sudo().browse(int(id_found["id"])).exists():
+        missing_task_ids = [
+            task_id
+            for task_id in title_task_references
+            if not self.env["project.task"].sudo().browse(task_id).exists()
+        ]
+        if missing_task_ids:
             message = _(
-                "The task #%(id)s cannot be found in Odoo.",
-                id=id_found["id"],
+                "The task id(s) %(ids)s cannot be found in Odoo.",
+                ids=", ".join(f"#{task_id}" for task_id in missing_task_ids),
             )
             self._post_message(message, event)
         elif not matching_tasks and repository_projects:

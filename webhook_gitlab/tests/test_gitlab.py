@@ -32,9 +32,9 @@ class TestGitlabPush(WebhookGitlabCase):
         }
 
     def test_push_branch_name_match_links_branch_only(self):
-        # Jira convention: entities link by their own reference only. The
-        # branch name matches GL-100 but the commit messages mention no
-        # task: only the branch is linked, the commits are not tracked.
+        # Entities link by their own reference only: the branch name
+        # matches GL-100 but the commit messages mention no task, so only
+        # the branch is linked and the commits are not tracked.
         commits = [
             self._commit("a" * 40, "generic commit one"),
             self._commit("b" * 40, "generic commit two"),
@@ -121,8 +121,8 @@ class TestGitlabPush(WebhookGitlabCase):
         self.assertFalse(self._get_branch("GL-100-feature"))
 
     def test_push_commit_mentioning_two_tasks_links_both(self):
-        # Every pattern occurrence in a text is matched (as in Jira), so a
-        # commit message mentioning two tasks links the commit to both.
+        # Every pattern occurrence in a text is matched, so a commit
+        # message mentioning two tasks links the commit to both.
         commits = [self._commit("a" * 40, "GL-100 GL-115 combined fix")]
         payload = self._push_payload(ref="refs/heads/develop", commits=commits)
         self._dispatch(payload, "gitlab")
@@ -222,6 +222,74 @@ class TestGitlabPush(WebhookGitlabCase):
         self.assertEqual(len(branch), 1)
         self.assertIn(branch.id, self.gl_task_100.git_branch_ids.ids)
 
+    def test_push_invalid_key_formats_do_not_match(self):
+        # The default extraction follows the key format: two or more
+        # UPPERCASE letters, a hyphen, digits. A lowercase key, a
+        # single-letter key and a technical token like "utf-8" extract no
+        # pattern - even when a task name contains the same token.
+        self.env["project.task"].create(
+            {
+                "name": "GL-130 utf-8 export support",
+                "project_id": self.gitlab_project.id,
+            }
+        )
+        commits = [
+            self._commit("a" * 40, "convert export to utf-8"),
+            self._commit("b" * 40, "T-34 single letter key"),
+            self._commit("c" * 40, "gl-100 lowercase key"),
+        ]
+        payload = self._push_payload(ref="refs/heads/develop", commits=commits)
+        self._dispatch(payload, "gitlab")
+
+        for sha in ("a" * 40, "b" * 40, "c" * 40):
+            self.assertFalse(self._get_commit(sha))
+        self.assertFalse(self.gl_task_100.git_commit_ids)
+
+    def test_push_commit_task_id_reference_links_commit(self):
+        # An explicit taskid#/tid# reference resolves by database id: it
+        # links a task with no pattern in its name, following the same
+        # granular rules (only the referencing commit, no branch)
+        commits = [
+            self._commit("a" * 40, f"tid#{self.gl_task_no_pattern.id} quick fix"),
+            self._commit("b" * 40, "unrelated commit"),
+        ]
+        payload = self._push_payload(ref="refs/heads/develop", commits=commits)
+        self._dispatch(payload, "gitlab")
+
+        self.assertEqual(
+            self.gl_task_no_pattern.git_commit_ids.mapped("full_sha"), ["a" * 40]
+        )
+        self.assertFalse(self.gl_task_no_pattern.git_branch_ids)
+        self.assertFalse(self._get_commit("b" * 40))
+
+    def test_push_task_id_reference_ignores_repository_mapping(self):
+        # The id reference is global: it links tasks of projects not
+        # related to the repository, and keeps working even when the
+        # repository is not mapped to any Odoo project at all.
+        commits = [
+            self._commit("a" * 40, f"taskid#{self.gh_task_no_pattern.id} cross fix")
+        ]
+        payload = self._push_payload(ref="refs/heads/develop", commits=commits)
+        payload["project"]["git_http_url"] = "https://gitlab.example.com/other/repo.git"
+        self._dispatch(payload, "gitlab")
+
+        self.assertEqual(
+            self.gh_task_no_pattern.git_commit_ids.mapped("full_sha"), ["a" * 40]
+        )
+
+    def test_branch_creation_task_id_reference_links_branch(self):
+        payload = self._push_payload(
+            ref=f"refs/heads/tid#{self.gl_task_no_pattern.id}-fix",
+            commits=[],
+            before=NULL_SHA,
+        )
+        payload["after"] = "a" * 40
+        self._dispatch(payload, "gitlab")
+
+        branch = self._get_branch(f"tid#{self.gl_task_no_pattern.id}-fix")
+        self.assertEqual(len(branch), 1)
+        self.assertIn(branch.id, self.gl_task_no_pattern.git_branch_ids.ids)
+
 
 class TestGitlabMergeRequest(WebhookGitlabCase):
     # Standard set of commits returned by the mocked MR commit fetch:
@@ -287,10 +355,9 @@ class TestGitlabMergeRequest(WebhookGitlabCase):
 
     def test_mr_commit_message_match_links_mr_branch_and_commit(self):
         # A fetched commit referencing GL-115 links the MR and that commit
-        # to the task, plus the source branch (Jira conventions: a PR is
-        # linked when one of its commits mentions the issue, and a branch
-        # is linked when it is the source branch of a linked PR). The
-        # other MR commits stay unrelated to GL-115.
+        # to the task, plus the source branch (a PR is linked when one of
+        # its commits mentions the task, and the source branch follows the
+        # linked PR). The other MR commits stay unrelated to GL-115.
         payload = self._mr_payload(title="GL-100 add new file")
         patcher, _merge_request = self._mock_gitlab_client(commits=self.MIXED_MR_COMMITS)
         with patcher:
@@ -325,8 +392,8 @@ class TestGitlabMergeRequest(WebhookGitlabCase):
         # The other tasks are untouched
         self.assertFalse(self.gl_task_100.git_pull_request_ids)
 
-    def test_mr_legacy_task_id_in_title_links_pr_and_posts_message(self):
-        payload = self._mr_payload(title=f"Add new file task#{self.gl_task_no_pattern.id}")
+    def test_mr_task_id_reference_in_title_links_pr_and_posts_message(self):
+        payload = self._mr_payload(title=f"Add new file taskid#{self.gl_task_no_pattern.id}")
         patcher, merge_request = self._mock_gitlab_client()
         with patcher:
             self._dispatch(payload, "gitlab")
@@ -424,7 +491,7 @@ class TestGitlabMergeRequest(WebhookGitlabCase):
         merge_request.discussions.create.assert_not_called()
 
     def test_mr_without_match_creates_nothing_but_warns_once(self):
-        # Known repository but no pattern nor task#ID anywhere: the MR is
+        # Known repository but no reference anywhere: the MR is
         # not tracked and the "no task reference" warning is posted on
         # opening only, never again on later update events (anti-spam).
         payload = self._mr_payload(title="Generic title")
@@ -440,11 +507,28 @@ class TestGitlabMergeRequest(WebhookGitlabCase):
         message_body = merge_request.discussions.create.call_args[0][0]["body"]
         self.assertIn("WARNING", str(message_body))
 
-    def test_mr_legacy_task_id_not_found_warns_once(self):
-        # Explicit task#<id> reference to a non-existent task: the broken
+    def test_mr_old_reference_formats_are_not_supported(self):
+        # "task#<id>"/"t#<id>" belonged to the old title-only reference
+        # format: they are no longer recognized (single unified format:
+        # taskid#/tid#), so the MR is not tracked and the missing
+        # reference warning is posted.
+        payload = self._mr_payload(
+            title=f"Add new file task#{self.gl_task_no_pattern.id}"
+        )
+        patcher, merge_request = self._mock_gitlab_client()
+        with patcher:
+            self._dispatch(payload, "gitlab")
+
+        self.assertFalse(self._get_pull_request(payload["object_attributes"]["url"]))
+        self.assertFalse(self.gl_task_no_pattern.git_pull_request_ids)
+        message_body = merge_request.discussions.create.call_args[0][0]["body"]
+        self.assertIn("WARNING", str(message_body))
+
+    def test_mr_task_id_reference_not_found_warns_once(self):
+        # Explicit taskid#<id> reference to a non-existent task: the broken
         # reference is warned about on opening only, and nothing is created.
         missing_id = self.env["project.task"].search([], order="id desc", limit=1).id + 1000
-        payload = self._mr_payload(title=f"Add new file task#{missing_id}")
+        payload = self._mr_payload(title=f"Add new file taskid#{missing_id}")
         patcher, merge_request = self._mock_gitlab_client()
         with patcher:
             self._dispatch(payload, "gitlab")

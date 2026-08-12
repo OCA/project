@@ -12,7 +12,7 @@ from odoo.tests.common import TransactionCase
 
 from odoo.addons.webhook_gitlab.controllers.main import WebhookGitlab
 from odoo.addons.webhook_gitlab.models.git_event import (
-    DEFAULT_TASK_NAME_SUBSTR_REGEX,
+    DEFAULT_TASK_NAME_MATCH_REGEX,
     GitEvent,
 )
 
@@ -44,7 +44,7 @@ class WebhookGitlabCase(TransactionCase):
         cls.env = cls.env(context=dict(cls.env.context, tracking_disable=True))
         cls.git_event = cls.env["git.event"]
         cls.env["ir.config_parameter"].sudo().set_param(
-            "webhook_gitlab.task_match_regex", DEFAULT_TASK_NAME_SUBSTR_REGEX
+            "webhook_gitlab.task_name_match_regex", DEFAULT_TASK_NAME_MATCH_REGEX
         )
         Project = cls.env["project.project"]
         Task = cls.env["project.task"]

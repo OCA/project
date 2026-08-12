@@ -68,10 +68,9 @@ class TestGithubPullRequest(WebhookGitlabCase):
 
     def test_pr_commit_message_match_links_pr_branch_and_commit(self):
         # A fetched commit referencing GH-115 links the PR and that commit
-        # to the task, plus the source branch (Jira conventions: a PR is
-        # linked when one of its commits mentions the issue, and a branch
-        # is linked when it is the source branch of a linked PR). The
-        # other PR commits stay unrelated to GH-115.
+        # to the task, plus the source branch (a PR is linked when one of
+        # its commits mentions the task, and the source branch follows the
+        # linked PR). The other PR commits stay unrelated to GH-115.
         payload = self._pr_payload(title="GH-100 update readme")
         patcher, _pull = self._mock_github_client(commits=self.MIXED_PR_COMMITS)
         with patcher:
@@ -101,9 +100,9 @@ class TestGithubPullRequest(WebhookGitlabCase):
         self.assertFalse(self._get_commit("c" * 40))
         self.assertFalse(self.gh_task_100.git_pull_request_ids)
 
-    def test_pr_legacy_task_id_in_title_links_pr_and_posts_message(self):
+    def test_pr_task_id_reference_in_title_links_pr_and_posts_message(self):
         payload = self._pr_payload(
-            title=f"update readme task#{self.gh_task_no_pattern.id}"
+            title=f"update readme tid#{self.gh_task_no_pattern.id}"
         )
         patcher, pull = self._mock_github_client()
         with patcher:
@@ -132,7 +131,7 @@ class TestGithubPullRequest(WebhookGitlabCase):
         )
 
     def test_pr_without_match_creates_nothing_but_warns_once(self):
-        # Known repository but no pattern nor task#ID anywhere: the PR is
+        # Known repository but no reference anywhere: the PR is
         # not tracked and the "no task reference" warning is posted on
         # opening only, never again on later update events (anti-spam).
         payload = self._pr_payload(title="Generic title")
@@ -148,11 +147,11 @@ class TestGithubPullRequest(WebhookGitlabCase):
         message_body = pull.create_issue_comment.call_args[0][0]
         self.assertIn("WARNING", str(message_body))
 
-    def test_pr_legacy_task_id_not_found_warns_once(self):
-        # Explicit task#<id> reference to a non-existent task: the broken
+    def test_pr_task_id_reference_not_found_warns_once(self):
+        # Explicit taskid#<id> reference to a non-existent task: the broken
         # reference is warned about on opening only, and nothing is created.
         missing_id = self.env["project.task"].search([], order="id desc", limit=1).id + 1000
-        payload = self._pr_payload(title=f"update readme task#{missing_id}")
+        payload = self._pr_payload(title=f"update readme taskid#{missing_id}")
         patcher, pull = self._mock_github_client()
         with patcher:
             self._dispatch(payload, "github")
@@ -206,9 +205,9 @@ class TestGithubPush(WebhookGitlabCase):
         }
 
     def test_push_branch_name_match_links_branch_only(self):
-        # Jira convention: entities link by their own reference only. The
-        # branch name matches GH-100 but the commit messages mention no
-        # task: only the branch is linked, the commits are not tracked.
+        # Entities link by their own reference only: the branch name
+        # matches GH-100 but the commit messages mention no task, so only
+        # the branch is linked and the commits are not tracked.
         commits = [
             self._commit("a" * 40, "generic commit one"),
             self._commit("b" * 40, "generic commit two"),
