@@ -44,6 +44,7 @@
                             <field name="id_request" readonly="1"/>
                             <field name="user_id" readonly="1"/>
                             <field name="source_branch" readonly="1"/>
+                            <field name="source_branch_id" readonly="1"/>
                             <field name="target_branch" readonly="1"/>
                             <field name="state" readonly="1"/>
                             <field name="ci_status" readonly="1"/>
@@ -61,7 +62,7 @@
                                     <field name="url" optional="show" widget="url"/>
                                     <field name="sha" optional="hide"/>
                                     <field name="full_sha" optional="hide"/>
-                                    <field name="git_branch_id" optional="hide"/>
+                                    <field name="git_branch_ids" widget="many2many_tags" optional="hide"/>
                                     <field name="task_ids" widget="many2many_tags" optional="hide"/>
                                     <field name="timestamp" optional="hide"/>
                                 </tree>

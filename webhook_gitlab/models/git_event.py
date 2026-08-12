@@ -116,10 +116,16 @@ class GitEvent(models.Model):
         git_pull_request = self._create_or_update_pull_request(event=event, tasks=matching_tasks)
 
         if git_pull_request:
-            self._create_or_update_branch(event=event, tasks=matching_tasks)
+            git_branch = self._create_or_update_branch(event=event, tasks=matching_tasks)
             # Each commit is linked to the tasks its own message mentions
+            tracked_commits = self.env["git.commit"].sudo()
             for commit, commit_matching_tasks in commit_matches:
-                self._create_or_update_commit(commit=commit, event=event, tasks=commit_matching_tasks)
+                tracked_commits |= self._create_or_update_commit(commit=commit, event=event, tasks=commit_matching_tasks)
+            # Correlate the tracked entities with each other
+            git_pull_request.git_commit_ids |= tracked_commits
+            if git_branch:
+                git_pull_request.source_branch_id = git_branch
+                git_branch.git_commit_ids |= tracked_commits
             git_pull_request._post_task_link_messages(event)
 
         self.env["git.pull.request"]._post_negative_match_messages(
@@ -625,12 +631,18 @@ class GitEvent(models.Model):
         tasks_from_branch = self._find_matching_tasks(projects=projects, pattern_text=branch_name)
 
         # The branch is a single entity per event: create/update it once
-        self._create_or_update_branch(event=event, tasks=tasks_from_branch)
+        git_branch = self._create_or_update_branch(event=event, tasks=tasks_from_branch)
 
+        tracked_commits = self.env["git.commit"].sudo()
         for commit in event.get("commits", []):
             commit_tasks = self._find_matching_tasks(projects=projects, pattern_text=commit.get("message", ""))
             if commit_tasks:
-                self._create_or_update_commit(commit=commit, event=event, tasks=commit_tasks)
+                tracked_commits |= self._create_or_update_commit(commit=commit, event=event, tasks=commit_tasks)
+
+        # Correlate the tracked commits with their branch (a pre-existing
+        # branch record is enriched even without new name matches)
+        if git_branch:
+            git_branch.git_commit_ids |= tracked_commits
 
     @api.model
     def _process_pipeline(self, event):

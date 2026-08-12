@@ -28,6 +28,13 @@ class GitPullRequest(models.Model):
 
     source_branch = fields.Char(string="Source Branch")
     target_branch = fields.Char(string="Target Branch")
+    source_branch_id = fields.Many2one(
+        comodel_name="git.branch",
+        string="Source Branch Record",
+        help="The tracked git.branch record of the source branch, when "
+             "the branch is tracked in Odoo (target branches are never "
+             "tracked, so they stay as plain names).",
+    )
 
     state = fields.Selection(
         [

@@ -139,11 +139,17 @@ class TestGitlabPush(WebhookGitlabCase):
         self._dispatch(payload, "gitlab")
         self._dispatch(payload, "gitlab")
 
-        self.assertEqual(len(self._get_branch("GL-100-feature")), 1)
+        branch = self._get_branch("GL-100-feature")
+        self.assertEqual(len(branch), 1)
         self.assertEqual(len(self._get_commit("a" * 40)), 1)
         self.assertEqual(len(self._get_commit("b" * 40)), 1)
         self.assertEqual(len(self.gl_task_100.git_commit_ids), 2)
         self.assertEqual(len(self.gl_task_100.git_branch_ids), 1)
+        # Entity correlations are established once, without duplicates
+        self.assertEqual(
+            set(branch.git_commit_ids.mapped("full_sha")), {"a" * 40, "b" * 40}
+        )
+        self.assertEqual(self._get_commit("a" * 40).git_branch_ids, branch)
 
     def test_branch_creation_with_branch_name_match(self):
         payload = self._push_payload(
@@ -185,6 +191,11 @@ class TestGitlabPush(WebhookGitlabCase):
         self.assertEqual(self.gl_task_115.git_commit_ids.mapped("full_sha"), ["c" * 40])
         self.assertFalse(self._get_commit("d" * 40))
         self.assertFalse(self.gl_task_no_pattern.git_commit_ids)
+        # The tracked commits are correlated to their branch record
+        self.assertEqual(
+            set(branch.git_commit_ids.mapped("full_sha")),
+            {"a" * 40, "b" * 40, "c" * 40},
+        )
 
     def test_branch_creation_without_match_creates_nothing(self):
         payload = self._push_payload(ref="refs/heads/develop", commits=[], before=NULL_SHA)
@@ -258,6 +269,16 @@ class TestGitlabMergeRequest(WebhookGitlabCase):
             {"c" * 40, "d" * 40},
         )
         self.assertFalse(self._get_commit("f" * 40))
+        # The tracked entities are correlated with each other: the MR with
+        # its source branch record and every tracked commit with both
+        self.assertEqual(pull_request.source_branch_id, branch)
+        tracked_shas = {"c" * 40, "d" * 40, "e" * 40}
+        self.assertEqual(
+            set(pull_request.git_commit_ids.mapped("full_sha")), tracked_shas
+        )
+        self.assertEqual(
+            set(branch.git_commit_ids.mapped("full_sha")), tracked_shas
+        )
         # Each matched task (GL-100 by title, GL-115 by commit message) is
         # notified once on the MR with its Odoo link
         self.assertEqual(merge_request.discussions.create.call_count, 2)
@@ -281,6 +302,10 @@ class TestGitlabMergeRequest(WebhookGitlabCase):
         self.assertIn(branch.id, self.gl_task_115.git_branch_ids.ids)
         self.assertEqual(self.gl_task_115.git_commit_ids.mapped("full_sha"), ["e" * 40])
         self.assertFalse(self.gl_task_no_pattern.git_pull_request_ids)
+        # The commit-matched commit is correlated to the MR and the branch
+        git_commit = self._get_commit("e" * 40)
+        self.assertEqual(git_commit.git_pull_request_ids, pull_request)
+        self.assertEqual(git_commit.git_branch_ids, branch)
 
     def test_mr_pattern_match_on_source_branch(self):
         payload = self._mr_payload(source_branch="GL-115-fix")
@@ -347,6 +372,9 @@ class TestGitlabMergeRequest(WebhookGitlabCase):
             self.assertEqual(len(self._get_commit(sha)), 1)
         self.assertFalse(self._get_commit("f" * 40))
         self.assertEqual(len(self.gl_task_100.git_commit_ids), 2)
+        # Entity correlations are not duplicated either
+        self.assertEqual(len(pull_request.git_commit_ids), 3)
+        self.assertEqual(pull_request.source_branch_id, self._get_branch("merge-req-branch"))
         # The task link message is posted only once per matched task
         # (GL-100 by title, GL-115 by commit message - anti-spam tracking)
         self.assertEqual(merge_request.discussions.create.call_count, 2)

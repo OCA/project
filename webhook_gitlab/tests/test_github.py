@@ -50,6 +50,16 @@ class TestGithubPullRequest(WebhookGitlabCase):
             {"c" * 40, "d" * 40},
         )
         self.assertFalse(self._get_commit("f" * 40))
+        # The tracked entities are correlated with each other: the PR with
+        # its source branch record and every tracked commit with both
+        self.assertEqual(pull_request.source_branch_id, branch)
+        tracked_shas = {"c" * 40, "d" * 40, "e" * 40}
+        self.assertEqual(
+            set(pull_request.git_commit_ids.mapped("full_sha")), tracked_shas
+        )
+        self.assertEqual(
+            set(branch.git_commit_ids.mapped("full_sha")), tracked_shas
+        )
         # Each matched task (GH-100 by title, GH-115 by commit message) is
         # notified once on the PR with its Odoo link
         self.assertEqual(pull.create_issue_comment.call_count, 2)
@@ -288,6 +298,11 @@ class TestGithubPush(WebhookGitlabCase):
         self.assertEqual(self.gh_task_115.git_commit_ids.mapped("full_sha"), ["c" * 40])
         self.assertFalse(self._get_commit("d" * 40))
         self.assertFalse(self.gh_task_no_pattern.git_commit_ids)
+        # The tracked commits are correlated to their branch record
+        self.assertEqual(
+            set(branch.git_commit_ids.mapped("full_sha")),
+            {"a" * 40, "b" * 40, "c" * 40},
+        )
 
     def test_push_without_match_creates_nothing(self):
         commits = [

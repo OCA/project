@@ -20,6 +20,7 @@
         "views/git_branch_view.xml",
         "views/git_commit_view.xml",
         "views/git_pull_request_view.xml",
+        "views/git_menu.xml",
         "views/project_task_view.xml",
         "views/project_project_view.xml",
         "views/res_users_view.xml",

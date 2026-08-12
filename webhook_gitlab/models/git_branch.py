@@ -27,3 +27,8 @@ class GitBranch(models.Model):
         column2="git_commit_id",
         string="Commits",
     )
+    git_pull_request_ids = fields.One2many(
+        comodel_name="git.pull.request",
+        inverse_name="source_branch_id",
+        string="Pull Requests",
+    )

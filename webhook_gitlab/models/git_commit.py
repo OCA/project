@@ -20,13 +20,26 @@ class GitCommit(models.Model):
     sha = fields.Char(string="SHA", compute="_compute_sha", store=True)
     timestamp = fields.Datetime(string="Timestamp")
 
-    git_branch_id = fields.Many2one(comodel_name="git.branch")
     task_ids = fields.Many2many(
         comodel_name="project.task",
         relation="git_commit_project_task_rel",
         column1="git_commit_id",
         column2="project_task_id",
         string="Related Tasks",
+    )
+    git_branch_ids = fields.Many2many(
+        comodel_name="git.branch",
+        relation="git_branch_git_commit_rel",
+        column1="git_commit_id",
+        column2="git_branch_id",
+        string="Branches",
+    )
+    git_pull_request_ids = fields.Many2many(
+        comodel_name="git.pull.request",
+        relation="git_pull_request_git_commit_rel",
+        column1="git_commit_id",
+        column2="git_pull_request_id",
+        string="Pull Requests",
     )
 
     @api.depends("full_sha")

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.actions.act_window" id="action_git_pull_request">
+        <field name="name">Pull Requests</field>
+        <field name="res_model">git.pull.request</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_git_branch">
+        <field name="name">Branches</field>
+        <field name="res_model">git.branch</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="action_git_commit">
+        <field name="name">Commits</field>
+        <field name="res_model">git.commit</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="menu_git_root"
+        name="Git"
+        parent="project.menu_main_pm"
+        sequence="90"
+    />
+    <menuitem
+        id="menu_git_pull_request"
+        action="action_git_pull_request"
+        parent="menu_git_root"
+        sequence="10"
+    />
+    <menuitem
+        id="menu_git_branch"
+        action="action_git_branch"
+        parent="menu_git_root"
+        sequence="20"
+    />
+    <menuitem
+        id="menu_git_commit"
+        action="action_git_commit"
+        parent="menu_git_root"
+        sequence="30"
+    />
+</odoo>
