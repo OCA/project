@@ -1,20 +1,43 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-    <record model="ir.ui.view" id="project_task_form">
-        <field name="name">project_task.form</field>
+    <record model="ir.ui.view" id="view_project_task_form">
+        <field name="name">project.task.form.inherit.webhook.gitlab</field>
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_form2" />
         <field name="arch" type="xml">
-            <xpath expr="//notebook" position="inside">
-                <page string="Pull Requests" invisible="not git_pull_request_ids">
-                    <field name="git_pull_request_ids" />
-                </page>
-                <page string="Branches" invisible="not git_branch_ids">
-                    <field name="git_branch_ids" />
-                </page>
-                <page string="Commits" invisible="not git_commit_ids">
-                    <field name="git_commit_ids" />
-                </page>
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button
+                    name="action_view_git_pull_requests"
+                    type="object"
+                    class="oe_stat_button"
+                    icon="fa-random"
+                >
+                    <field
+                        name="git_pull_request_count"
+                        widget="statinfo"
+                        string="Pull Requests"
+                    />
+                </button>
+                <button
+                    name="action_view_git_branches"
+                    type="object"
+                    class="oe_stat_button"
+                    icon="fa-code-fork"
+                >
+                    <field
+                        name="git_branch_count"
+                        widget="statinfo"
+                        string="Branches"
+                    />
+                </button>
+                <button
+                    name="action_view_git_commits"
+                    type="object"
+                    class="oe_stat_button"
+                    icon="fa-code"
+                >
+                    <field name="git_commit_count" widget="statinfo" string="Commits" />
+                </button>
             </xpath>
         </field>
     </record>

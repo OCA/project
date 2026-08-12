@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <odoo>
-    <record id="project_project_view_form" model="ir.ui.view">
-        <field name="name">project.project.view.form</field>
+    <record id="view_project_project_form" model="ir.ui.view">
+        <field name="name">project.project.form.inherit.webhook.gitlab</field>
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.edit_project" />
         <field name="arch" type="xml">
@@ -21,8 +21,8 @@
             </xpath>
         </field>
     </record>
-    <record id="project_project_view_kanban" model="ir.ui.view">
-        <field name="name">project.project.view.kanban</field>
+    <record id="view_project_project_kanban" model="ir.ui.view">
+        <field name="name">project.project.kanban.inherit.webhook.gitlab</field>
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.view_project_kanban" />
         <field name="arch" type="xml">

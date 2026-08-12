@@ -4,18 +4,21 @@
         <field name="name">Pull Requests</field>
         <field name="res_model">git.pull.request</field>
         <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_git_pull_request_search" />
     </record>
 
     <record model="ir.actions.act_window" id="action_git_branch">
         <field name="name">Branches</field>
         <field name="res_model">git.branch</field>
         <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_git_branch_search" />
     </record>
 
     <record model="ir.actions.act_window" id="action_git_commit">
         <field name="name">Commits</field>
         <field name="res_model">git.commit</field>
         <field name="view_mode">tree,form</field>
+        <field name="search_view_id" ref="view_git_commit_search" />
     </record>
 
     <menuitem

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-    <record model='ir.ui.view' id='git_branch_tree'>
-        <field name='name'>git.branch.tree</field>
-        <field name='model'>git.branch</field>
-        <field name='arch' type='xml'>
+    <record model="ir.ui.view" id="view_git_branch_tree">
+        <field name="name">git.branch.tree</field>
+        <field name="model">git.branch</field>
+        <field name="arch" type="xml">
             <tree>
                 <field name="name" optional="show" />
                 <field name="url" optional="show" widget="url" />
@@ -17,49 +17,67 @@
         </field>
     </record>
 
-    <record model='ir.ui.view' id='git_branch_form'>
-        <field name='name'>git.branch.form</field>
-        <field name='model'>git.branch</field>
-        <field name='arch' type='xml'>
+    <record model="ir.ui.view" id="view_git_branch_form">
+        <field name="name">git.branch.form</field>
+        <field name="model">git.branch</field>
+        <field name="arch" type="xml">
             <form>
                 <sheet>
                     <group>
                         <group>
                             <field name="name" readonly="1" />
                             <field name="url" readonly="1" widget="url" />
-                            <field
-                                name="task_ids"
-                                widget="many2many_tags"
-                                readonly="1"
-                            />
                         </group>
                     </group>
                     <notebook>
                         <page string="Commits">
-                            <field name="git_commit_ids" string="Commits">
+                            <field name="git_commit_ids" readonly="1">
                                 <tree>
                                     <field name="name" optional="show" />
                                     <field name="description" optional="show" />
-                                    <field name="url" optional="show" />
-                                    <field name="sha" optional="hide" />
+                                    <field name="url" optional="show" widget="url" />
+                                    <field name="sha" optional="show" />
                                     <field name="full_sha" optional="hide" />
-                                    <field
-                                        name="git_branch_ids"
-                                        widget="many2many_tags"
-                                        optional="hide"
-                                    />
-                                    <field
-                                        name="task_ids"
-                                        widget="many2many_tags"
-                                        optional="hide"
-                                    />
                                     <field name="timestamp" optional="hide" />
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Pull Requests">
+                            <field name="git_pull_request_ids" readonly="1">
+                                <tree>
+                                    <field name="id_request" optional="show" />
+                                    <field name="name" optional="show" />
+                                    <field name="state" optional="show" />
+                                    <field name="ci_status" optional="show" />
+                                    <field name="url" optional="hide" widget="url" />
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Tasks">
+                            <field name="task_ids" readonly="1">
+                                <tree>
+                                    <field name="name" />
+                                    <field name="project_id" />
+                                    <field name="stage_id" optional="show" />
                                 </tree>
                             </field>
                         </page>
                     </notebook>
                 </sheet>
             </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_git_branch_search">
+        <field name="name">git.branch.search</field>
+        <field name="model">git.branch</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="task_ids" />
+                <field name="git_pull_request_ids" />
+                <field name="git_commit_ids" />
+            </search>
         </field>
     </record>
 
