@@ -412,6 +412,20 @@ class TestGitlabMergeRequest(WebhookGitlabCase):
         message_body = merge_request.discussions.create.call_args[0][0]["body"]
         self.assertIn("Linked to Odoo task", message_body)
 
+    def test_mr_without_last_commit_is_tracked(self):
+        # A MR opened with no commits yet (e.g. source branch identical
+        # to the target) carries last_commit: null in the payload
+        payload = self._mr_payload(title="GL-100 empty branch")
+        payload["object_attributes"]["last_commit"] = None
+        patcher, _merge_request = self._mock_gitlab_client()
+        with patcher:
+            self._dispatch(payload, "gitlab")
+
+        pull_request = self._get_pull_request(payload["object_attributes"]["url"])
+        self.assertEqual(len(pull_request), 1)
+        self.assertFalse(pull_request.last_commit)
+        self.assertIn(pull_request.id, self.gl_task_100.git_pull_request_ids.ids)
+
     def test_mr_commit_fetch_failure_falls_back_to_last_commit(self):
         # When the commit fetch fails, the head commit carried by the
         # payload is the only message-matching source left: here it

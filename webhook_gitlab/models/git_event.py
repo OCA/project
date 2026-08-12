@@ -877,6 +877,8 @@ class GitEvent(models.Model):
         approved = False
         if event["object_attributes"]["action"] == "approved":
             approved = True
+        # A MR without commits yet carries last_commit: null
+        last_commit = event["object_attributes"].get("last_commit") or {}
         user = (
             self.env["res.users"]
             .sudo()
@@ -895,7 +897,7 @@ class GitEvent(models.Model):
             "wip": event["object_attributes"]["work_in_progress"],
             "state": event["object_attributes"]["state"],
             "approved": approved,
-            "last_commit": event["object_attributes"]["last_commit"]["id"],
+            "last_commit": last_commit.get("id", ""),
             "user_id": user.id,
         }
 
