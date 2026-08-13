@@ -16,11 +16,11 @@ class TestHooks(TransactionCase):
     def test_post_init_hook(self):
         views = self.views
         self.assertTrue(views)
-        post_init_hook(self.env.cr, self.env.registry)
+        post_init_hook(self.env)
         self.assertTrue(all(not v.active for v in views))
 
     def test_uninstall_hook(self):
         views = self.views
         self.assertTrue(views)
-        uninstall_hook(self.env.cr, self.env.registry)
+        uninstall_hook(self.env)
         self.assertTrue(all(v.active for v in views))

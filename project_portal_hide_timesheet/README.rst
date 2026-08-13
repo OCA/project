@@ -60,7 +60,8 @@ Contributors
 - `PyTech <https://pytech.it>`__:
 
   - Quirino Leone <quirino.leone@pytech.it>
-  - Alessandro Uffreduzzi <alessandro.uffreduzzi@pytech.it>
+  - Melody Uffreduzzi <melody.uffreduzzi@pytech.it>
+  - Simone Rubino <simone.rubino@pytech.it>
 
 Maintainers
 -----------

@@ -1,7 +1,5 @@
 import logging
 
-from odoo import SUPERUSER_ID, api
-
 _logger = logging.getLogger(__name__)
 
 views_to_switch = [
@@ -12,14 +10,12 @@ views_to_switch = [
 ]
 
 
-def post_init_hook(cr, registry):
-    env = api.Environment(cr, SUPERUSER_ID, {})
+def post_init_hook(env):
     _logger.info("Turning off views")
     env["ir.ui.view"].search([("key", "in", views_to_switch)]).write({"active": False})
 
 
-def uninstall_hook(cr, registry):
-    env = api.Environment(cr, SUPERUSER_ID, {})
+def uninstall_hook(env):
     _logger.info("Turning on views")
     env["ir.ui.view"].search(
         [("key", "in", views_to_switch), ("active", "=", False)]
