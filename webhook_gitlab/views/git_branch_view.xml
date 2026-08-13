@@ -25,13 +25,13 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="name" readonly="1" />
-                            <field name="url" readonly="1" widget="url" />
+                            <field name="name" />
+                            <field name="url" widget="url" />
                         </group>
                     </group>
                     <notebook>
                         <page string="Commits">
-                            <field name="git_commit_ids" readonly="1">
+                            <field name="git_commit_ids">
                                 <tree>
                                     <field name="name" optional="show" />
                                     <field name="description" optional="show" />
@@ -43,7 +43,7 @@
                             </field>
                         </page>
                         <page string="Pull Requests">
-                            <field name="git_pull_request_ids" readonly="1">
+                            <field name="git_pull_request_ids">
                                 <tree>
                                     <field name="id_request" optional="show" />
                                     <field name="name" optional="show" />
@@ -54,7 +54,7 @@
                             </field>
                         </page>
                         <page string="Tasks">
-                            <field name="task_ids" readonly="1">
+                            <field name="task_ids">
                                 <tree>
                                     <field name="name" />
                                     <field name="project_id" />

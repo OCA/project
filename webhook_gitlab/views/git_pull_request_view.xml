@@ -39,27 +39,27 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="name" readonly="1" />
-                            <field name="description" readonly="1" />
-                            <field name="url" readonly="1" widget="url" />
-                            <field name="source" readonly="1" />
+                            <field name="name" />
+                            <field name="description" />
+                            <field name="url" widget="url" />
+                            <field name="source" />
                         </group>
                         <group>
-                            <field name="id_request" readonly="1" />
-                            <field name="user_id" readonly="1" />
-                            <field name="source_branch" readonly="1" />
-                            <field name="source_branch_id" readonly="1" />
-                            <field name="target_branch" readonly="1" />
-                            <field name="state" readonly="1" />
-                            <field name="ci_status" readonly="1" />
-                            <field name="wip" readonly="1" />
-                            <field name="approved" readonly="1" />
-                            <field name="last_commit" readonly="1" />
+                            <field name="id_request" />
+                            <field name="user_id" />
+                            <field name="source_branch" />
+                            <field name="source_branch_id" />
+                            <field name="target_branch" />
+                            <field name="state" />
+                            <field name="ci_status" />
+                            <field name="wip" />
+                            <field name="approved" />
+                            <field name="last_commit" />
                         </group>
                     </group>
                     <notebook>
                         <page string="Commits">
-                            <field name="git_commit_ids" readonly="1">
+                            <field name="git_commit_ids">
                                 <tree>
                                     <field name="name" optional="show" />
                                     <field name="description" optional="show" />
@@ -71,7 +71,7 @@
                             </field>
                         </page>
                         <page string="Tasks">
-                            <field name="task_ids" readonly="1">
+                            <field name="task_ids">
                                 <tree>
                                     <field name="name" />
                                     <field name="project_id" />
@@ -80,7 +80,7 @@
                             </field>
                         </page>
                         <page string="Notified Tasks">
-                            <field name="notified_task_ids" readonly="1">
+                            <field name="notified_task_ids">
                                 <tree>
                                     <field name="name" />
                                     <field name="project_id" />

@@ -25,19 +25,19 @@
                 <sheet>
                     <group>
                         <group>
-                            <field name="name" readonly="1" />
-                            <field name="description" readonly="1" />
-                            <field name="url" readonly="1" widget="url" />
+                            <field name="name" />
+                            <field name="description" />
+                            <field name="url" widget="url" />
                         </group>
                         <group>
-                            <field name="sha" readonly="1" />
-                            <field name="full_sha" readonly="1" />
-                            <field name="timestamp" readonly="1" />
+                            <field name="sha" />
+                            <field name="full_sha" />
+                            <field name="timestamp" />
                         </group>
                     </group>
                     <notebook>
                         <page string="Branches">
-                            <field name="git_branch_ids" readonly="1">
+                            <field name="git_branch_ids">
                                 <tree>
                                     <field name="name" />
                                     <field name="url" optional="show" widget="url" />
@@ -45,7 +45,7 @@
                             </field>
                         </page>
                         <page string="Pull Requests">
-                            <field name="git_pull_request_ids" readonly="1">
+                            <field name="git_pull_request_ids">
                                 <tree>
                                     <field name="id_request" optional="show" />
                                     <field name="name" optional="show" />
@@ -56,7 +56,7 @@
                             </field>
                         </page>
                         <page string="Tasks">
-                            <field name="task_ids" readonly="1">
+                            <field name="task_ids">
                                 <tree>
                                     <field name="name" />
                                     <field name="project_id" />
