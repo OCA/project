@@ -98,7 +98,10 @@ class TestWebhookController(HttpCase):
         jobs_before = self._job_count("_process_commit_push")
         self._post_webhook(
             payload,
-            headers={"X-Hub-Signature-256": self._github_signature(payload)},
+            headers={
+                "X-GitHub-Event": "push",
+                "X-Hub-Signature-256": self._github_signature(payload),
+            },
         )
         self.assertEqual(self._job_count("_process_commit_push"), jobs_before + 1)
 
@@ -106,7 +109,10 @@ class TestWebhookController(HttpCase):
         jobs_before = self._job_count("_process_commit_push")
         result = self._post_webhook(
             self._load_payload("github_push.json"),
-            headers={"X-Hub-Signature-256": f"sha256={'0' * 64}"},
+            headers={
+                "X-GitHub-Event": "push",
+                "X-Hub-Signature-256": f"sha256={'0' * 64}",
+            },
         )
         self.assertIs(result, False)
         self.assertEqual(self._job_count("_process_commit_push"), jobs_before)
@@ -148,16 +154,18 @@ class TestWebhookController(HttpCase):
             self.env["queue.job"].sudo().search_count([]), jobs_total_before
         )
 
-    def test_github_event_without_known_kind_is_skipped(self):
-        # GitHub events are classified by their keys (pull_request /
-        # pusher): anything else (e.g. the ping event) gets no
-        # project_git_event_type and is acknowledged without enqueueing
-        # anything
+    def test_github_event_without_handler_is_skipped(self):
+        # GitHub events are classified by their X-GitHub-Event header:
+        # types without a _process_* handler (e.g. the ping event sent
+        # on hook creation) are acknowledged without enqueueing anything
         payload = {"zen": "Design for failure.", "hook_id": 1, "repository": {}}
         jobs_total_before = self.env["queue.job"].sudo().search_count([])
         result = self._post_webhook(
             payload,
-            headers={"X-Hub-Signature-256": self._github_signature(payload)},
+            headers={
+                "X-GitHub-Event": "ping",
+                "X-Hub-Signature-256": self._github_signature(payload),
+            },
         )
         self.assertIs(result, True)
         self.assertEqual(

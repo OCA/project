@@ -68,7 +68,9 @@ class WebhookGitlab(http.Controller):
         function with the name _process_<project_git_event_type>."""
         event = request.get_json_data()
         event["source"] = kw.get("source", "")
-        event = self._parse_git_request_data(event=event)
+        event = self._parse_git_request_data(
+            event=event, headers=request.httprequest.headers
+        )
         git_event = request.env["git.event"]
         event_type = event.get("project_git_event_type")
         if not event_type:
@@ -109,7 +111,7 @@ class WebhookGitlab(http.Controller):
         ).hexdigest()
         return compare_digest(signature.split("sha256=")[-1].strip(), expected_token)
 
-    def _parse_git_request_data(self, event):
+    def _parse_git_request_data(self, event, headers=None):
         """The structure of a git request differ among different sources
         (e.g. github vs gitlab). This method dispatches to the
         source-specific parser, which fetches necessary data, creates a
@@ -117,18 +119,22 @@ class WebhookGitlab(http.Controller):
         it so it's easy to retrieve it later despite the source.
 
         The event type lands in the module-owned
-        'project_git_event_type' key (each parser maps its native
-        discriminator onto it), and push events are then refined into
-        their concrete type (branch_creation, branch_deletion,
-        commit_push), so that project_git_event_type always names the
-        git.event handler to invoke."""
+        'project_git_event_type' key: each parser maps the
+        authoritative discriminator of its platform onto it (GitLab
+        carries it in the payload, GitHub in a request header — hence
+        the headers argument). Push events are then refined into their
+        concrete type (branch_creation, branch_deletion, commit_push),
+        so that project_git_event_type always names the git.event
+        handler to invoke."""
 
         if not hasattr(self, "_parse_request_%s" % event.get("source")):
             _logger.warning(
                 "No request parser implementation for source %r", event.get("source")
             )
             return event
-        event = getattr(self, "_parse_request_%s" % event.get("source"))(event=event)
+        event = getattr(self, "_parse_request_%s" % event.get("source"))(
+            event=event, headers=headers
+        )
         if event.get("project_git_event_type") == "push":
             event["project_git_event_type"] = self._classify_push_event(event)
         return event
@@ -157,21 +163,19 @@ class WebhookGitlab(http.Controller):
             return "commit_push"
         return ""
 
-    def _parse_request_gitlab(self, event):
-        # GitLab carries its own event discriminator in the payload:
-        # map it onto the module-owned key
+    def _parse_request_gitlab(self, event, headers=None):
+        # GitLab carries its authoritative event discriminator in the
+        # payload: map it onto the module-owned key (headers unused)
         event["project_git_event_type"] = event.get("object_kind")
         event["repository_url"] = event.get("project", {}).get("git_http_url")
         return event
 
-    def _parse_request_github(self, event):
-        # Github carries the event type in the X-GitHub-Event header,
-        # not in the payload: we derive it by looking for specific
-        # keys in the request.
-        if event.get("pull_request", {}):
-            event["project_git_event_type"] = "pull_request"
-        elif event.get("pusher"):
-            event["project_git_event_type"] = "push"
+    def _parse_request_github(self, event, headers=None):
+        # Github carries its authoritative event discriminator in the
+        # X-GitHub-Event request header, not in the payload; event
+        # types without a git.event handler (e.g. ping) are then
+        # skipped by the dispatch
+        event["project_git_event_type"] = (headers or {}).get("X-GitHub-Event", "")
         # set repo url
         event["repository_url"] = event.get("repository", {}).get("html_url")
         return event

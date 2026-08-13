@@ -99,12 +99,19 @@ class WebhookGitlabCase(TransactionCase):
         with open(os.path.join(RES_DIR, name), encoding="utf-8") as payload_file:
             return json.load(payload_file)
 
-    def _dispatch(self, payload, source):
+    def _dispatch(self, payload, source, headers=None):
         """Normalize the payload like the controller does, then run the
-        matching ``_process_*`` handler synchronously."""
+        matching ``_process_*`` handler synchronously.
+
+        For GitHub the event type travels in the X-GitHub-Event header:
+        when not given explicitly, the header a real delivery would
+        carry is derived from the payload shape."""
         event = deepcopy(payload)
         event["source"] = source
-        event = WebhookGitlab()._parse_git_request_data(event=event)
+        if headers is None and source == "github":
+            event_name = "pull_request" if payload.get("pull_request") else "push"
+            headers = {"X-GitHub-Event": event_name}
+        event = WebhookGitlab()._parse_git_request_data(event=event, headers=headers)
         handler = getattr(
             self.git_event, "_process_%s" % event["project_git_event_type"]
         )
