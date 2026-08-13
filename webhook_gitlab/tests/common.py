@@ -12,7 +12,6 @@ from odoo.tests.common import TransactionCase
 
 from odoo.addons.webhook_gitlab.controllers.main import WebhookGitlab
 from odoo.addons.webhook_gitlab.models.git_auth import GitAuth
-from odoo.addons.webhook_gitlab.models.git_utils import DEFAULT_TASK_NAME_MATCH_REGEX
 
 RES_DIR = os.path.join(os.path.dirname(__file__), "res")
 
@@ -44,9 +43,6 @@ class WebhookGitlabCase(TransactionCase):
         super().setUpClass()
         cls.env = cls.env(context=dict(cls.env.context, tracking_disable=True))
         cls.git_event = cls.env["git.event"]
-        cls.env["ir.config_parameter"].sudo().set_param(
-            "webhook_gitlab.task_name_match_regex", DEFAULT_TASK_NAME_MATCH_REGEX
-        )
         Project = cls.env["project.project"]
         Task = cls.env["project.task"]
         # Neutralize pre-existing projects pointing to git repos (leftovers

@@ -1,45 +1,12 @@
 # Copyright 2026 Francesco Ballerini
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
-from odoo.addons.webhook_gitlab.models.git_utils import DEFAULT_TASK_NAME_MATCH_REGEX
-
 from .common import GITHUB_REPO_URL, GITLAB_REPO_URL, WebhookGitlabCase
 
 
 class TestTaskMatching(WebhookGitlabCase):
     """Platform-agnostic tests for the task matching logic and its
     configuration (no webhook payload involved)."""
-
-    def test_task_name_match_regex_param_seeded_but_never_overwritten(self):
-        # The pattern regex sysparam is seeded on install/update so that
-        # users find it ready to customize; an existing (possibly
-        # customized) value is never overwritten
-        config = self.env["ir.config_parameter"].sudo()
-        config.search([("key", "=", "webhook_gitlab.task_name_match_regex")]).unlink()
-        self.env["git.utils"]._init_task_name_match_regex_param()
-        self.assertEqual(
-            config.get_param("webhook_gitlab.task_name_match_regex"),
-            DEFAULT_TASK_NAME_MATCH_REGEX,
-        )
-        config.set_param("webhook_gitlab.task_name_match_regex", r"CUSTOM-\d+")
-        self.env["git.utils"]._init_task_name_match_regex_param()
-        self.assertEqual(
-            config.get_param("webhook_gitlab.task_name_match_regex"), r"CUSTOM-\d+"
-        )
-
-    def test_invalid_pattern_regex_falls_back_to_default(self):
-        # A broken custom regex must not kill the webhook processing:
-        # the matching falls back to the default pattern with a warning
-        self.env["ir.config_parameter"].sudo().set_param(
-            "webhook_gitlab.task_name_match_regex", "[invalid"
-        )
-        with self.assertLogs(
-            "odoo.addons.webhook_gitlab.models.git_utils", level="WARNING"
-        ):
-            matching_tasks = self.git_event._find_matching_tasks(
-                projects=self.gitlab_project, pattern_text="GL-100 fix the export"
-            )
-        self.assertEqual(matching_tasks, self.gl_task_100)
 
     def test_task_id_reference_to_missing_task_is_ignored(self):
         # Outside PR/MR titles (which warn on the platform), a broken
@@ -93,3 +60,19 @@ class TestTaskMatching(WebhookGitlabCase):
             projects=self.gitlab_project, pattern_text="GL-140 fix the export"
         )
         self.assertEqual(matching_tasks, lowercase_task)
+
+    def test_closed_tasks_are_matched(self):
+        # A key referencing a done/canceled task still links the git
+        # activity: pushing further commits on a task already marked
+        # as done is a common human pipeline slip
+        done_task = self.env["project.task"].create(
+            {
+                "name": "GL-155 already done task",
+                "project_id": self.gitlab_project.id,
+                "state": "1_done",
+            }
+        )
+        matching_tasks = self.git_event._find_matching_tasks(
+            projects=self.gitlab_project, pattern_text="GL-155 hotfix after close"
+        )
+        self.assertEqual(matching_tasks, done_task)

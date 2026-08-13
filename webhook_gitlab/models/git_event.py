@@ -7,6 +7,7 @@ import re
 import time
 
 from odoo import api, models
+from odoo.osv import expression
 
 _logger = logging.getLogger(__name__)
 
@@ -46,7 +47,7 @@ class GitEvent(models.Model):
         """Common processing for GitLab MR and GitHub PR events.
 
         Every entity is linked to a task by its own explicit reference:
-        a task_name_match_regex pattern (searched in the names of the tasks
+        an issue key pattern (searched in the names of the tasks
         of the projects related to the repository URL) or an explicit
         "taskid#<id>"/"tid#<id>" reference (resolved globally by id,
         no repository mapping needed). Case by case:
@@ -249,14 +250,15 @@ class GitEvent(models.Model):
           resolved globally by database id, regardless of the given
           projects (an explicit id needs no repository mapping);
           references to non-existent tasks are silently skipped;
-        - task_name_match_regex pattern: every extracted occurrence is
-          searched in the names of the tasks of the given projects (the
-          projects related to the repository URL).
 
-        The pattern extraction is case-sensitive (avoids false positives
-        such as "utf-8"; a custom regex can relax it with an inline
-        "(?i)"); the extracted pattern is then searched in the task
-        names case-insensitively, as a task naming tolerance.
+        - issue key pattern: every extracted occurrence is searched in
+          the names of the tasks of the given projects (the projects
+          related to the repository URL), whatever the task state: a
+          reference to a closed task still links the git activity.
+
+        The key extraction is case-sensitive (avoids false positives
+        such as "utf-8"); the extracted key is then searched in the
+        task names case-insensitively, as a task naming tolerance.
         Returns flat project.task recordset.
         """
         matching_tasks = self.env["project.task"]
@@ -273,13 +275,29 @@ class GitEvent(models.Model):
             pattern_match.group(0) for pattern_match in re.finditer(regex, pattern_text)
         }
 
-        for pattern in patterns:
-            for project in projects:
-                for task in project.task_ids:
-                    if re.search(
-                        rf"\b{re.escape(pattern)}\b", task.name, re.IGNORECASE
-                    ):
-                        matching_tasks |= task
+        if not (patterns and projects):
+            return matching_tasks
+
+        # DB-side prefilter: candidate tasks whose name contains any
+        # key, substring case-insensitive (the extracted keys carry no
+        # LIKE wildcard). A whole-word match is always a substring
+        # match, so no true match can be lost here.
+        ilike_domains = [[("name", "ilike", pattern)] for pattern in patterns]
+        candidate_tasks = self.env["project.task"].search(
+            expression.AND(
+                [[("project_id", "in", projects.ids)], expression.OR(ilike_domains)]
+            )
+        )
+        # Python refinement on the candidates: the whole-word match
+        # (\b) is the one check ilike cannot express. Given the key
+        # "AZ-123", the task "az-123 customer request.." is kept,
+        # while "XAZ-1234 customer request.." is discarded
+        for task in candidate_tasks:
+            if any(
+                re.search(rf"\b{re.escape(pattern)}\b", task.name, re.IGNORECASE)
+                for pattern in patterns
+            ):
+                matching_tasks |= task
 
         return matching_tasks
 
@@ -656,7 +674,7 @@ class GitEvent(models.Model):
     def _link_push_entities_to_tasks(self, projects, event):
         """Link the branch and commits of a push-type event (commit push,
         branch creation) to the matching tasks. Every entity is linked
-        by its own explicit reference (a task_name_match_regex pattern or a
+        by its own explicit reference (an issue key pattern or a
         "taskid#<id>"/"tid#<id>" reference). Case by case:
 
         - the branch is linked to the tasks referenced in its name.

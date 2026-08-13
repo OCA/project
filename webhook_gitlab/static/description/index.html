@@ -469,18 +469,13 @@ commit carried by the MR payload).</li>
 one parameter per GitLab instance. The key is the instance root URL
 <strong>with a trailing slash</strong>, e.g.
 <tt class="docutils literal"><span class="pre">webhook_gitlab.gitlab_token.https://gitlab.com/</span></tt>.</li>
-<li><tt class="docutils literal">webhook_gitlab.task_name_match_regex</tt>: regex used to extract issue
-keys from commit messages, branch names and PR/MR titles. Seeded on
-install/update with the Jira-strict default <tt class="docutils literal"><span class="pre">\b[A-Z][A-Z]+-\d+\b</span></tt>
-and never overwritten once present. Extraction is case-sensitive;
-prepend <tt class="docutils literal"><span class="pre">(?i)</span></tt> to relax it. The extracted key is searched
-case-insensitively in the task names.</li>
 </ul>
 </div>
 <div class="section" id="project-mapping">
 <h3><a class="toc-backref" href="#toc-entry-5">Project mapping</a></h3>
-<p>To restrict the pattern-based matching to the tasks of a given project,
-set the repository URL in the <strong>Git Project URL</strong> field of the project.
+<p>Pattern-based matching only searches the tasks of the projects mapped to
+the repository: set the repository URL in the <strong>Git Project URL</strong> field
+of the project. Without a mapped project, pattern keys match nothing.
 Explicit <tt class="docutils literal">taskid#</tt>/<tt class="docutils literal">tid#</tt> references resolve globally and need no
 mapping.</p>
 </div>
@@ -506,20 +501,20 @@ in your development
 work</a>):
 if you are used to linking Jira issues from git, you already know how
 this works.</p>
-<p>An <strong>issue key</strong> is any text extracted by the
-<tt class="docutils literal">webhook_gitlab.task_name_match_regex</tt> regex — with the default
-pattern, Jira-style keys such as <tt class="docutils literal"><span class="pre">ABC-123</span></tt> (see <em>Configure</em>). The
-matching works in two steps:</p>
+<p>An <strong>issue key</strong> is a Jira-style key: two or more uppercase letters, a
+dash and a number, such as <tt class="docutils literal"><span class="pre">ABC-123</span></tt>. The matching works in two steps:</p>
 <ol class="arabic simple">
 <li><strong>Extraction</strong>: every key occurrence is extracted from the text, so a
 text mentioning several keys references all of them. Extraction is
 case-sensitive: <tt class="docutils literal"><span class="pre">ABC-123</span> <span class="pre">abc-124:</span> fix login</tt> yields <tt class="docutils literal"><span class="pre">ABC-123</span></tt>
-only (prepend <tt class="docutils literal"><span class="pre">(?i)</span></tt> to the regex to relax this).</li>
+only.</li>
 <li><strong>Task lookup</strong>: each key is searched — as a whole word,
 case-insensitively — in the names of the tasks of the projects mapped
 to the repository (see <em>Project mapping</em> in <em>Configure</em>): <tt class="docutils literal"><span class="pre">ABC-123</span></tt>
 links both “ABC-123 fix login” and “Login page (abc-123)”. Without a
-mapped project, pattern keys match nothing.</li>
+mapped project, pattern keys match nothing. The task state does not
+matter: a reference to a <strong>Done</strong> task still links the git activity,
+since late commits on a closed task are common.</li>
 </ol>
 <p>Explicit <tt class="docutils literal"><span class="pre">taskid#&lt;id&gt;</span></tt>/<tt class="docutils literal"><span class="pre">tid#&lt;id&gt;</span></tt> references skip both steps: they
 resolve globally by database id, so they need no project mapping and no

@@ -117,18 +117,13 @@ System parameters
   one parameter per GitLab instance. The key is the instance root URL
   **with a trailing slash**, e.g.
   ``webhook_gitlab.gitlab_token.https://gitlab.com/``.
-- ``webhook_gitlab.task_name_match_regex``: regex used to extract issue
-  keys from commit messages, branch names and PR/MR titles. Seeded on
-  install/update with the Jira-strict default ``\b[A-Z][A-Z]+-\d+\b``
-  and never overwritten once present. Extraction is case-sensitive;
-  prepend ``(?i)`` to relax it. The extracted key is searched
-  case-insensitively in the task names.
 
 Project mapping
 ---------------
 
-To restrict the pattern-based matching to the tasks of a given project,
-set the repository URL in the **Git Project URL** field of the project.
+Pattern-based matching only searches the tasks of the projects mapped to
+the repository: set the repository URL in the **Git Project URL** field
+of the project. Without a mapped project, pattern keys match nothing.
 Explicit ``taskid#``/``tid#`` references resolve globally and need no
 mapping.
 
@@ -157,20 +152,20 @@ work <https://support.atlassian.com/jira-software-cloud/docs/reference-issues-in
 if you are used to linking Jira issues from git, you already know how
 this works.
 
-An **issue key** is any text extracted by the
-``webhook_gitlab.task_name_match_regex`` regex — with the default
-pattern, Jira-style keys such as ``ABC-123`` (see *Configure*). The
-matching works in two steps:
+An **issue key** is a Jira-style key: two or more uppercase letters, a
+dash and a number, such as ``ABC-123``. The matching works in two steps:
 
 1. **Extraction**: every key occurrence is extracted from the text, so a
    text mentioning several keys references all of them. Extraction is
    case-sensitive: ``ABC-123 abc-124: fix login`` yields ``ABC-123``
-   only (prepend ``(?i)`` to the regex to relax this).
+   only.
 2. **Task lookup**: each key is searched — as a whole word,
    case-insensitively — in the names of the tasks of the projects mapped
    to the repository (see *Project mapping* in *Configure*): ``ABC-123``
    links both "ABC-123 fix login" and "Login page (abc-123)". Without a
-   mapped project, pattern keys match nothing.
+   mapped project, pattern keys match nothing. The task state does not
+   matter: a reference to a **Done** task still links the git activity,
+   since late commits on a closed task are common.
 
 Explicit ``taskid#<id>``/``tid#<id>`` references skip both steps: they
 resolve globally by database id, so they need no project mapping and no
