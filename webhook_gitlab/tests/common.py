@@ -105,7 +105,9 @@ class WebhookGitlabCase(TransactionCase):
         event = deepcopy(payload)
         event["source"] = source
         event = WebhookGitlab()._parse_git_request_data(event=event)
-        handler = getattr(self.git_event, "_process_%s" % event["object_kind"])
+        handler = getattr(
+            self.git_event, "_process_%s" % event["project_git_event_type"]
+        )
         handler(event)
         return event
 

@@ -2,12 +2,15 @@
 # Copyright 2026 Francesco Ballerini
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
+import logging
 from urllib.parse import urlparse
 
 from gitlab.exceptions import GitlabJobRetryError
 
 from odoo import _, api, fields, models
 from odoo.exceptions import UserError
+
+_logger = logging.getLogger(__name__)
 
 
 class ProjectProject(models.Model):
@@ -37,10 +40,16 @@ class ProjectProject(models.Model):
         return urlparse(project_url).path.strip("/").removesuffix(".git")
 
     @api.model
-    def _is_github_url(self, project_url):
-        # The GitHub connection supports github.com only (no Enterprise
-        # base URL): any other host is treated as a GitLab instance.
-        return urlparse(project_url).netloc in ("github.com", "www.github.com")
+    def _get_url_platform(self, project_url):
+        """Platform hosting the given repository URL.
+
+        GitHub claims its specific host (the GitHub connection supports
+        github.com only, no Enterprise base URL); any other host is
+        treated as a GitLab instance (catch-all claim).
+        """
+        if urlparse(project_url).netloc in ("github.com", "www.github.com"):
+            return "github"
+        return "gitlab"
 
     def _get_webhook_url(self):
         return "%s/webhook_gitlab/webhook/" % self.env[
@@ -48,12 +57,15 @@ class ProjectProject(models.Model):
         ].sudo().get_param("web.base.url").strip("/")
 
     def _create_project_webhook(self, project_url):
-        if self._is_github_url(project_url):
-            self._create_github_project_webhook(project_url)
-        else:
-            self._create_gitlab_project_webhook(project_url)
+        platform = self._get_url_platform(project_url)
+        if not hasattr(self, "_create_project_webhook_%s" % platform):
+            _logger.warning(
+                "No webhook deployment implementation for platform %r", platform
+            )
+            return
+        getattr(self, "_create_project_webhook_%s" % platform)(project_url)
 
-    def _create_gitlab_project_webhook(self, project_url):
+    def _create_project_webhook_gitlab(self, project_url):
         gl = self.env["git.auth"]._connect_gitlab(url=project_url)
         gitlab_project = gl.projects.get(self._git_project_path(project_url))
         odoo_url = self._get_webhook_url()
@@ -73,7 +85,7 @@ class ProjectProject(models.Model):
             }
         )
 
-    def _create_github_project_webhook(self, project_url):
+    def _create_project_webhook_github(self, project_url):
         github_client = self.env["git.auth"]._connect_github()
         github_repo = github_client.get_repo(self._git_project_path(project_url))
         odoo_url = self._get_webhook_url()
@@ -99,8 +111,9 @@ class ProjectProject(models.Model):
     def retry_odoo_sh_deploy_job(self):
         for project in self:
             # The CI job retry is a GitLab-only feature
-            if not project.git_project_url or self._is_github_url(
-                project.git_project_url
+            if (
+                not project.git_project_url
+                or self._get_url_platform(project.git_project_url) != "gitlab"
             ):
                 continue
             gl = self.env["git.auth"]._connect_gitlab(url=project.git_project_url)

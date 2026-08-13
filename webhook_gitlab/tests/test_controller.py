@@ -68,69 +68,72 @@ class TestWebhookController(HttpCase):
         )
 
     def test_request_without_auth_headers_is_rejected(self):
-        jobs_before = self._job_count("_process_push")
+        jobs_before = self._job_count("_process_commit_push")
         result = self._post_webhook(self._load_payload("gitlab_push.json"))
         self.assertIs(result, False)
-        self.assertEqual(self._job_count("_process_push"), jobs_before)
+        self.assertEqual(self._job_count("_process_commit_push"), jobs_before)
 
     def test_gitlab_wrong_token_is_rejected(self):
-        jobs_before = self._job_count("_process_push")
+        jobs_before = self._job_count("_process_commit_push")
         result = self._post_webhook(
             self._load_payload("gitlab_push.json"),
-            headers={"X-Gitlab-Token": "not-the-right-token"},
+            headers={
+                "X-Gitlab-Event": "Push Hook",
+                "X-Gitlab-Token": "not-the-right-token",
+            },
         )
         self.assertIs(result, False)
-        self.assertEqual(self._job_count("_process_push"), jobs_before)
+        self.assertEqual(self._job_count("_process_commit_push"), jobs_before)
 
     def test_gitlab_valid_token_enqueues_job(self):
-        jobs_before = self._job_count("_process_push")
+        jobs_before = self._job_count("_process_commit_push")
         self._post_webhook(
             self._load_payload("gitlab_push.json"),
-            headers={"X-Gitlab-Token": TEST_TOKEN},
+            headers={"X-Gitlab-Event": "Push Hook", "X-Gitlab-Token": TEST_TOKEN},
         )
-        self.assertEqual(self._job_count("_process_push"), jobs_before + 1)
+        self.assertEqual(self._job_count("_process_commit_push"), jobs_before + 1)
 
     def test_github_valid_signature_enqueues_job(self):
         payload = self._load_payload("github_push.json")
-        jobs_before = self._job_count("_process_push")
+        jobs_before = self._job_count("_process_commit_push")
         self._post_webhook(
             payload,
             headers={"X-Hub-Signature-256": self._github_signature(payload)},
         )
-        self.assertEqual(self._job_count("_process_push"), jobs_before + 1)
+        self.assertEqual(self._job_count("_process_commit_push"), jobs_before + 1)
 
     def test_github_invalid_signature_is_rejected(self):
-        jobs_before = self._job_count("_process_push")
+        jobs_before = self._job_count("_process_commit_push")
         result = self._post_webhook(
             self._load_payload("github_push.json"),
             headers={"X-Hub-Signature-256": f"sha256={'0' * 64}"},
         )
         self.assertIs(result, False)
-        self.assertEqual(self._job_count("_process_push"), jobs_before)
+        self.assertEqual(self._job_count("_process_commit_push"), jobs_before)
 
     def test_missing_token_param_rejects_requests(self):
         # Without a configured authorization token every request is
         # rejected, even when its headers would otherwise match
         self.config.set_param("webhook_gitlab.authorization_token", False)
-        jobs_before = self._job_count("_process_push")
+        jobs_before = self._job_count("_process_commit_push")
         result = self._post_webhook(
             self._load_payload("gitlab_push.json"),
-            headers={"X-Gitlab-Token": TEST_TOKEN},
+            headers={"X-Gitlab-Event": "Push Hook", "X-Gitlab-Token": TEST_TOKEN},
         )
         self.assertIs(result, False)
-        self.assertEqual(self._job_count("_process_push"), jobs_before)
+        self.assertEqual(self._job_count("_process_commit_push"), jobs_before)
 
     def test_insecure_default_token_rejects_requests(self):
         # The demo default "token" is publicly known: a webhook sending
         # the matching header must be rejected anyway
         self.config.set_param("webhook_gitlab.authorization_token", "token")
-        jobs_before = self._job_count("_process_push")
+        jobs_before = self._job_count("_process_commit_push")
         result = self._post_webhook(
             self._load_payload("gitlab_push.json"),
-            headers={"X-Gitlab-Token": "token"},
+            headers={"X-Gitlab-Event": "Push Hook", "X-Gitlab-Token": "token"},
         )
         self.assertIs(result, False)
-        self.assertEqual(self._job_count("_process_push"), jobs_before)
+        self.assertEqual(self._job_count("_process_commit_push"), jobs_before)
 
     def test_gitlab_event_without_handler_is_skipped(self):
         # Authorized event kinds without a _process_* handler (e.g. note
@@ -138,7 +141,7 @@ class TestWebhookController(HttpCase):
         jobs_total_before = self.env["queue.job"].sudo().search_count([])
         result = self._post_webhook(
             {"object_kind": "note", "project": {}},
-            headers={"X-Gitlab-Token": TEST_TOKEN},
+            headers={"X-Gitlab-Event": "Note Hook", "X-Gitlab-Token": TEST_TOKEN},
         )
         self.assertIs(result, True)
         self.assertEqual(
@@ -147,8 +150,9 @@ class TestWebhookController(HttpCase):
 
     def test_github_event_without_known_kind_is_skipped(self):
         # GitHub events are classified by their keys (pull_request /
-        # pusher): anything else (e.g. the ping event) has no object_kind
-        # and is acknowledged without enqueueing anything
+        # pusher): anything else (e.g. the ping event) gets no
+        # project_git_event_type and is acknowledged without enqueueing
+        # anything
         payload = {"zen": "Design for failure.", "hook_id": 1, "repository": {}}
         jobs_total_before = self.env["queue.job"].sudo().search_count([])
         result = self._post_webhook(

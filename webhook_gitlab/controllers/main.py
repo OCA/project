@@ -20,46 +20,40 @@ INSECURE_AUTHORIZATION_TOKENS = ("token",)
 
 def token_authorization(function):
     """Decorator for controllers with token authorization.
-    it allows only requests with X-Gitlab-Token or X-Hub-Signature-256 header present.
 
-    Will returns an unsuccessful response whenever the token
-    is invalid.
+    The event source is recognized from the request headers
+    (_detect_event_source), then the request is authorized by the
+    source-specific _verify_webhook_token_<source> method. Requests from
+    unrecognized sources or with an invalid token get an unsuccessful
+    response.
     """
 
     @functools.wraps(function)
     def wrapper(self, *args, **kw):
-        headers = request.httprequest.headers
-        gitlab_token = headers.get("X-Gitlab-Token")
-        github_token = headers.get("X-Hub-Signature-256")
         token = (
             request.env["ir.config_parameter"]
             .sudo()
             .get_param("webhook_gitlab.authorization_token")
         )
-        kw["source"] = ""
-        authorization = False
         if not token or token in INSECURE_AUTHORIZATION_TOKENS:
             _logger.warning(
                 "webhook_gitlab.authorization_token is not configured "
                 "(or still set to an insecure default)"
             )
             return False
-        if github_token:
-            expected_token = HMAC(
-                key=token.encode("utf-8"),
-                msg=request.httprequest.data,
-                digestmod=sha256,
-            ).hexdigest()
-            authorization = compare_digest(
-                github_token.split("sha256=")[-1].strip(), expected_token
+        source = self._detect_event_source(request.httprequest.headers)
+        if not source:
+            _logger.warning(
+                "Unrecognized webhook source (no platform header claims the request)"
             )
-            kw["source"] = "github"
-        elif gitlab_token:
-            authorization = consteq(gitlab_token, token)
-            kw["source"] = "gitlab"
-        if not authorization:
-            _logger.warning("Token is not the expected")
             return False
+        authorization = False
+        if hasattr(self, "_verify_webhook_token_%s" % source):
+            authorization = getattr(self, "_verify_webhook_token_%s" % source)(token)
+        if not authorization:
+            _logger.warning("Token is not the expected for source %r", source)
+            return False
+        kw["source"] = source
         return function(self, *args, **kw)
 
     return wrapper
@@ -70,49 +64,114 @@ class WebhookGitlab(http.Controller):
     @token_authorization
     def _process_webhook(self, **kw):
         """Receive the request from Gitlab/Github and invoke functions based on
-        'object_kind', then it calls the function with the name
-        _process_<object_kind>."""
+        the normalized 'project_git_event_type' key, then it calls the
+        function with the name _process_<project_git_event_type>."""
         event = request.get_json_data()
         event["source"] = kw.get("source", "")
         event = self._parse_git_request_data(event=event)
         git_event = request.env["git.event"]
-        object_kind = event.get("object_kind")
-        if not object_kind:
+        event_type = event.get("project_git_event_type")
+        if not event_type:
             return True
-        method_name = "_process_%s" % object_kind
+        method_name = "_process_%s" % event_type
         if not hasattr(git_event, method_name):
             # Event kinds without a handler (e.g. note
             # events) are skipped silently.
             return True
         return getattr(git_event.with_delay(), method_name)(event)
 
+    def _detect_event_source(self, headers):
+        """Recognize the source platform of a request from its headers.
+
+        Each platform claims its own specific header; requests that no
+        platform claims map to an empty source (and are then rejected by
+        the token authorization).
+        """
+        if headers.get("X-Gitlab-Event"):
+            return "gitlab"
+        if headers.get("X-Hub-Signature-256"):
+            return "github"
+        return ""
+
+    def _verify_webhook_token_gitlab(self, token):
+        """GitLab sends the webhook token verbatim in a request header."""
+        gitlab_token = request.httprequest.headers.get("X-Gitlab-Token", "")
+        return consteq(gitlab_token, token)
+
+    def _verify_webhook_token_github(self, token):
+        """GitHub signs the request body with the webhook secret
+        (HMAC-SHA256) instead of sending the secret itself."""
+        signature = request.httprequest.headers.get("X-Hub-Signature-256", "")
+        expected_token = HMAC(
+            key=token.encode("utf-8"),
+            msg=request.httprequest.data,
+            digestmod=sha256,
+        ).hexdigest()
+        return compare_digest(signature.split("sha256=")[-1].strip(), expected_token)
+
     def _parse_git_request_data(self, event):
         """The structure of a git request differ among different sources
-        (e.g. github vs gitlab). This method will fetch necessary data
-        accordingly to the current source, create a new 'common key' in
-        the request object and put the data inside it so it's easy to
-        retrieve it later despite the source."""
+        (e.g. github vs gitlab). This method dispatches to the
+        source-specific parser, which fetches necessary data, creates a
+        new 'common key' in the request object and puts the data inside
+        it so it's easy to retrieve it later despite the source.
 
-        source = event.get("source")
-        if source == "github":
-            event = self._parse_request_github(event=event)
-        elif not source or source == "gitlab":
-            event = self._parse_request_gitlab(event=event)
+        The event type lands in the module-owned
+        'project_git_event_type' key (each parser maps its native
+        discriminator onto it), and push events are then refined into
+        their concrete type (branch_creation, branch_deletion,
+        commit_push), so that project_git_event_type always names the
+        git.event handler to invoke."""
 
+        if not hasattr(self, "_parse_request_%s" % event.get("source")):
+            _logger.warning(
+                "No request parser implementation for source %r", event.get("source")
+            )
+            return event
+        event = getattr(self, "_parse_request_%s" % event.get("source"))(event=event)
+        if event.get("project_git_event_type") == "push":
+            event["project_git_event_type"] = self._classify_push_event(event)
         return event
 
+    def _classify_push_event(self, event):
+        """
+        Classify push event type based on before/after SHA values.
+        Returns: 'branch_creation', 'branch_deletion', 'commit_push', or
+        an empty string for degenerate pushes (both SHAs null), which
+        are then dropped by the explicit no-type guard of the dispatch.
+
+        The null-SHA convention on before/after is git's own push
+        schema, not a platform convention: platforms usually carry it
+        verbatim in their push payloads, so the classification is
+        shared by every source.
+        """
+        NULL_SHA = "0000000000000000000000000000000000000000"
+        before = event.get("before", "")
+        after = event.get("after", "")
+
+        if before == NULL_SHA and after != NULL_SHA:
+            return "branch_creation"
+        elif before != NULL_SHA and after == NULL_SHA:
+            return "branch_deletion"
+        elif before != NULL_SHA and after != NULL_SHA:
+            return "commit_push"
+        return ""
+
     def _parse_request_gitlab(self, event):
+        # GitLab carries its own event discriminator in the payload:
+        # map it onto the module-owned key
+        event["project_git_event_type"] = event.get("object_kind")
         event["repository_url"] = event.get("project", {}).get("git_http_url")
         return event
 
     def _parse_request_github(self, event):
-        # Github doesn't have an explicit `object_kind` key.
-        # We guess the object kind by looking for specific events
-        # in the request.
+        # Github carries the event type in the X-GitHub-Event header,
+        # not in the payload: we derive it by looking for specific
+        # keys in the request.
         if event.get("pull_request", {}):
-            event["object_kind"] = "pull_request"
+            event["project_git_event_type"] = "pull_request"
         elif event.get("pusher"):
-            event["object_kind"] = "push"
+            event["project_git_event_type"] = "push"
         # set repo url
         event["repository_url"] = event.get("repository", {}).get("html_url")
         return event

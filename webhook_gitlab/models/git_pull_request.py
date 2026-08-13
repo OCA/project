@@ -2,7 +2,11 @@
 # Copyright 2026 Francesco Ballerini
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
+import logging
+
 from odoo import _, api, fields, models
+
+_logger = logging.getLogger(__name__)
 
 
 class GitPullRequest(models.Model):
@@ -139,14 +143,21 @@ class GitPullRequest(models.Model):
         These are the only moments when title-based feedback is
         actionable: PR/MR events fire on every update, so negative-result
         messages must not be reposted each time.
+
+        The title change check (changes.title) is common to every
+        platform; the opening detection is per-source.
         """
-        event_source = event.get("source", "gitlab")
-        if event_source == "gitlab":
-            is_opening = event.get("object_attributes", {}).get("action") == "open"
-        else:
-            is_opening = event.get("action") == "opened"
+        is_opening = False
+        if hasattr(self, "_is_pr_opening_%s" % event.get("source")):
+            is_opening = getattr(self, "_is_pr_opening_%s" % event.get("source"))(event)
         title_changed = bool(event.get("changes", {}).get("title"))
         return is_opening or title_changed
+
+    def _is_pr_opening_gitlab(self, event):
+        return event.get("object_attributes", {}).get("action") == "open"
+
+    def _is_pr_opening_github(self, event):
+        return event.get("action") == "opened"
 
     @api.model
     def _post_negative_match_messages(
@@ -197,12 +208,13 @@ class GitPullRequest(models.Model):
             self.ensure_one()
             source = self.source
         else:
-            source = (event or {}).get("source", "gitlab")
-        if source == "gitlab":
-            return self._post_gitlab_message(message, event)
-        return self._post_github_message(message, event)
+            source = (event or {}).get("source")
+        if hasattr(self, "_post_message_%s" % source):
+            return getattr(self, "_post_message_%s" % source)(message, event)
+        _logger.warning("No _post_message implementation for source %r", source)
+        return False
 
-    def _post_github_message(self, message, event=None):
+    def _post_message_github(self, message, event=None):
         """Post a comment on the GitHub pull request"""
         if self:
             self.ensure_one()
@@ -216,7 +228,7 @@ class GitPullRequest(models.Model):
         pull.create_issue_comment(message)
         return True
 
-    def _post_gitlab_message(self, message, event=None):
+    def _post_message_gitlab(self, message, event=None):
         """Post a comment (discussion) on the GitLab merge request.
 
         The event, when available, is the preferred source for the GitLab

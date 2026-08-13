@@ -16,6 +16,22 @@ class GitEvent(models.Model):
     _description = "Git Webhook Event Processor"
 
     @api.model
+    def _dispatch_by_source(self, event, method_name, *args, mandatory=True, **kwargs):
+        """Route a call to the platform-specific implementation
+        (<method_name>_<source>) based on event["source"].
+
+        With mandatory=True a missing implementation is warned about
+        (dispatched methods); with mandatory=False it is silently
+        skipped (optional per-source hooks of generic methods).
+        """
+        source = event.get("source")
+        if hasattr(self, f"{method_name}_{source}"):
+            return getattr(self, f"{method_name}_{source}")(event, *args, **kwargs)
+        if mandatory:
+            _logger.warning("No %s implementation for source %r", method_name, source)
+        return None
+
+    @api.model
     def _process_merge_request(self, event):
         """Process a GitLab Merge Request event."""
         return self._process_pull_request_event(event)
@@ -118,25 +134,6 @@ class GitEvent(models.Model):
         return git_pull_request
 
     @api.model
-    def _classify_push_event(self, event):
-        """
-        Classify push event type based on before/after SHA values.
-        Returns: 'branch_creation', 'branch_deletion', 'commit_push', or 'unknown'
-        """
-        NULL_SHA = "0000000000000000000000000000000000000000"
-        before = event.get("before", "")
-        after = event.get("after", "")
-
-        if before == NULL_SHA and after != NULL_SHA:
-            return "branch_creation"
-        elif before != NULL_SHA and after == NULL_SHA:
-            return "branch_deletion"
-        elif before != NULL_SHA and after != NULL_SHA:
-            return "commit_push"
-        else:
-            return "unknown"
-
-    @api.model
     def _extract_branch_names_from_event(self, event):
         """Extract source and target branch names from the event.
 
@@ -150,35 +147,53 @@ class GitEvent(models.Model):
         :return: dict with 'source_branch' and 'target_branch' keys
             (empty strings if not present)
         """
-        event_source = event.get("source", "gitlab")
-        result = {
+        return self._dispatch_by_source(event, "_extract_branch_names_from_event") or {
             "source_branch": "",
             "target_branch": "",
         }
 
-        # Check if it's a MR/PR event (has both source and target branches)
-        if event_source == "gitlab" and "object_attributes" in event:
-            # GitLab Merge Request
-            obj_attrs = event.get("object_attributes", {})
-            result["source_branch"] = obj_attrs.get("source_branch", "")
-            result["target_branch"] = obj_attrs.get("target_branch", "")
-        elif event_source == "github" and "pull_request" in event:
-            # GitHub Pull Request
-            pr_data = event.get("pull_request", {})
-            result["source_branch"] = pr_data.get("head", {}).get("ref", "")
-            result["target_branch"] = pr_data.get("base", {}).get("ref", "")
-        elif "ref" in event:
-            # Push event (branch creation/deletion/commit push)
-            # Extract branch name from ref (e.g., 'refs/heads/feature' -> 'feature')
-            ref = event.get("ref", "")
-            if ref and ref.startswith("refs/heads/"):
-                branch_name = ref.replace("refs/heads/", "")
-            else:
-                branch_name = ref
-            result["source_branch"] = branch_name
-            # No target_branch for push events
+    @api.model
+    def _extract_branch_names_from_ref(self, event):
+        """Extract the branch names of a push-type event (branch
+        creation/deletion, commit push) from its ref field.
 
-        return result
+        The 'refs/heads/<branch>' layout is git's own ref schema, not a
+        platform convention: platforms usually carry it verbatim in
+        their push payloads, so the per-source implementations can
+        share this extraction.
+        """
+        # Extract branch name from ref (e.g., 'refs/heads/feature' -> 'feature')
+        ref = event.get("ref", "")
+        if ref and ref.startswith("refs/heads/"):
+            branch_name = ref.replace("refs/heads/", "")
+        else:
+            branch_name = ref
+        # No target_branch for push events
+        return {
+            "source_branch": branch_name,
+            "target_branch": "",
+        }
+
+    def _extract_branch_names_from_event_gitlab(self, event):
+        if event.get("project_git_event_type") == "merge_request":
+            obj_attrs = event.get("object_attributes", {})
+            return {
+                "source_branch": obj_attrs.get("source_branch", ""),
+                "target_branch": obj_attrs.get("target_branch", ""),
+            }
+        # push events carry the git-native ref
+        return self._extract_branch_names_from_ref(event)
+
+    def _extract_branch_names_from_event_github(self, event):
+        """GitHub Pull Request form; push events carry the git-native ref."""
+        if event.get("project_git_event_type") == "pull_request":
+            pr_data = event.get("pull_request", {})
+            return {
+                "source_branch": pr_data.get("head", {}).get("ref", ""),
+                "target_branch": pr_data.get("base", {}).get("ref", ""),
+            }
+        # push events carry the git-native ref
+        return self._extract_branch_names_from_ref(event)
 
     @api.model
     def _extract_pr_title_from_event(self, event):
@@ -187,9 +202,12 @@ class GitEvent(models.Model):
         :param dict event: The webhook event
         :return: title string (empty string if not present)
         """
-        event_source = event.get("source", "gitlab")
-        if event_source == "gitlab":
-            return event.get("object_attributes", {}).get("title", "")
+        return self._dispatch_by_source(event, "_extract_pr_title_from_event") or ""
+
+    def _extract_pr_title_from_event_gitlab(self, event):
+        return event.get("object_attributes", {}).get("title", "")
+
+    def _extract_pr_title_from_event_github(self, event):
         return event.get("pull_request", {}).get("title", "")
 
     @api.model
@@ -202,10 +220,14 @@ class GitEvent(models.Model):
         :return: list with a single commit dict in webhook format (empty
                  list if the event carries no head commit)
         """
-        event_source = event.get("source", "gitlab")
-        if event_source == "gitlab":
-            last_commit = event.get("object_attributes", {}).get("last_commit")
-            return [last_commit] if last_commit else []
+        return self._dispatch_by_source(event, "_extract_pr_fallback_commits") or []
+
+    def _extract_pr_fallback_commits_gitlab(self, event):
+        # A MR without commits yet carries last_commit: null
+        last_commit = event.get("object_attributes", {}).get("last_commit")
+        return [last_commit] if last_commit else []
+
+    def _extract_pr_fallback_commits_github(self, event):
         pr_data = event.get("pull_request", {})
         head_sha = pr_data.get("head", {}).get("sha", "")
         if not head_sha:
@@ -316,30 +338,30 @@ class GitEvent(models.Model):
         """
         if not branch_name:
             return ""
+        return self._dispatch_by_source(event, "_build_branch_url", branch_name) or ""
 
-        event_source = event.get("source", "gitlab")
+    def _build_branch_url_gitlab(self, event, branch_name):
+        web_url = event.get("project", {}).get("web_url", "")
+        if not web_url:
+            return ""
+        # GitLab format: https://gitlab.com/owner/repo/-/tree/branch-name
+        return f"{web_url}/-/tree/{branch_name}"
 
-        if event_source == "gitlab":
-            web_url = event.get("project", {}).get("web_url", "")
-            if web_url:
-                # GitLab format: https://gitlab.com/owner/repo/-/tree/branch-name
-                return f"{web_url}/-/tree/{branch_name}"
-        elif event_source == "github":
-            # Try to get from pull_request.head.repo first (PR events)
-            html_url = (
-                event.get("pull_request", {})
-                .get("head", {})
-                .get("repo", {})
-                .get("html_url", "")
-            )
-            if not html_url:
-                # Fallback to repository (push events)
-                html_url = event.get("repository", {}).get("html_url", "")
-            if html_url:
-                # GitHub format: https://github.com/owner/repo/tree/branch-name
-                return f"{html_url}/tree/{branch_name}"
-
-        return ""
+    def _build_branch_url_github(self, event, branch_name):
+        # Try to get from pull_request.head.repo first (PR events)
+        html_url = (
+            event.get("pull_request", {})
+            .get("head", {})
+            .get("repo", {})
+            .get("html_url", "")
+        )
+        if not html_url:
+            # Fallback to repository (push events)
+            html_url = event.get("repository", {}).get("html_url", "")
+        if not html_url:
+            return ""
+        # GitHub format: https://github.com/owner/repo/tree/branch-name
+        return f"{html_url}/tree/{branch_name}"
 
     @api.model
     def _get_or_create_commit(
@@ -366,7 +388,7 @@ class GitEvent(models.Model):
         tasks = tasks if tasks is not None else self.env["project.task"]
 
         create_or_upd_vals = self._prepare_commit_vals(
-            commit=commit, event=event, values=values
+            event=event, commit=commit, values=values
         )
 
         # Search existing commit by full_sha (globally unique)
@@ -462,7 +484,7 @@ class GitEvent(models.Model):
         }
 
     @api.model
-    def _fetch_github_pr_commits(self, event):
+    def _fetch_pr_commits_github(self, event):
         """Fetch all commits from a GitHub PR and return a list(dict)
         containing commits data.
 
@@ -494,21 +516,13 @@ class GitEvent(models.Model):
 
     @api.model
     def _fetch_pr_commits(self, event):
-        """Unified dispatcher that calls source-specific implementation
-        in order to fetch all commits from PR/MR.
+        """Fetch all commits from the PR/MR through the source-specific
+        platform API.
 
         :param dict event: The webhook event
-        :return: list of commits (PyGithub objects for GitHub, dicts for GitLab)
+        :return: list of commit dicts (same format as webhook)
         """
-        event_source = event.get("source", "gitlab")
-
-        if event_source == "github":
-            return self._fetch_github_pr_commits(event)
-        elif event_source == "gitlab":
-            return self._fetch_gitlab_mr_commits(event)
-
-        _logger.warning(f"Unknown event source for PR commit fetch: {event_source}")
-        return []
+        return self._dispatch_by_source(event, "_fetch_pr_commits") or []
 
     @api.model
     def _convert_gitlab_commit_to_dict(self, commit, project=None):
@@ -584,7 +598,7 @@ class GitEvent(models.Model):
         }
 
     @api.model
-    def _fetch_gitlab_mr_commits(self, event):
+    def _fetch_pr_commits_gitlab(self, event):
         """Fetch all commits from a GitLab MR and return a list(dict)
         containing commits data.
 
@@ -615,40 +629,17 @@ class GitEvent(models.Model):
         return commit_list
 
     @api.model
-    def _process_push(self, event):
-        """
-        Process push events with unified logic for:
-        - Regular commit pushes
-        - Branch creation
-        - Branch deletion
-
-        Links commits and branches to the matching project tasks. The
-        repository->project mapping only scopes the pattern matching
-        (explicit "taskid#"/"tid#" references work without it): events
-        from unmapped repositories are processed too, and simply create
-        nothing unless they carry explicit id references.
-        """
-
-        repository_projects = self._get_related_projects_by_url(event=event)
-
-        push_type = self._classify_push_event(event=event)
-
-        if push_type == "branch_creation":
-            self._process_branch_creation(repository_projects, event)
-        elif push_type == "branch_deletion":
-            self._process_branch_deletion(repository_projects, event)
-        elif push_type == "commit_push":
-            self._process_commit_push(repository_projects, event)
-
-    def _process_branch_creation(self, projects, event):
+    def _process_branch_creation(self, event):
         """Handle branch creation events with granular task matching
         (see _link_push_entities_to_tasks)."""
         branch_name = self._extract_branch_names_from_event(event)["source_branch"]
         if not branch_name:
             return
-        self._link_push_entities_to_tasks(projects, event)
+        repository_projects = self._get_related_projects_by_url(event=event)
+        self._link_push_entities_to_tasks(repository_projects, event)
 
-    def _process_branch_deletion(self, projects, event):
+    @api.model
+    def _process_branch_deletion(self, event):
         """Handle branch deletion events"""
         # Search for existing branch using the standardized helper (searches by URL)
         existing_branch = self._search_existing_branch(event=event)
@@ -657,12 +648,14 @@ class GitEvent(models.Model):
             # For now we keep the record but we could add a 'deleted' tag or unlink here
             pass
 
-    def _process_commit_push(self, projects, event):
+    @api.model
+    def _process_commit_push(self, event):
         """Handle regular commit push events with granular task matching
         (see _link_push_entities_to_tasks)."""
         if not event.get("commits"):
             return
-        self._link_push_entities_to_tasks(projects, event)
+        repository_projects = self._get_related_projects_by_url(event=event)
+        self._link_push_entities_to_tasks(repository_projects, event)
 
     def _link_push_entities_to_tasks(self, projects, event):
         """Link the branch and commits of a push-type event (commit push,
@@ -677,6 +670,11 @@ class GitEvent(models.Model):
           message, and the link stops there: the branch it was pushed
           to (e.g. a shared "develop") and the other commits of the
           push are not linked.
+
+        The repository->project mapping only scopes the pattern
+        matching (explicit "taskid#"/"tid#" references work without
+        it): events from unmapped repositories are processed too, and
+        simply create nothing unless they carry explicit id references.
         """
         branch_name = self._extract_branch_names_from_event(event)["source_branch"]
         tasks_from_branch = self._find_matching_tasks(
@@ -729,55 +727,52 @@ class GitEvent(models.Model):
         return True
 
     @api.model
-    def _prepare_commit_vals(self, commit, event, values=None):
+    def _prepare_commit_vals(self, event, commit, values=None):
         """Prepare commit values from commit for ORM write/create.
 
+        The event comes first, as in every dispatched/hook signature.
         Commit param is always a dict (normalized format) regardless of source:
         - Webhook events: already dict
         - GitHub API: converted via _convert_pygithub_commit_to_dict()
         - GitLab API: already dict from python-gitlab
 
-        :param dict commit: Commit dict with 'id', 'message', 'url', 'timestamp', etc.
         :param dict event: The webhook event (used to extract event source)
+        :param dict commit: Commit dict with 'id', 'message', 'url', 'timestamp', etc.
         :param dict values: Optional dict with values to override/merge (e.g. "task_id")
         :return: dict of commit values ready for create/write
         """
         values_by_arg = values or {}
 
-        # Extract event source from event
-        event_source = event.get("source", "gitlab")
-
-        default_vals = {}
-        timestamp = self.env["git.commit"].parse_timestamp(commit.get("timestamp", ""))
-
-        if event_source == "gitlab":
-            default_vals.update(
-                {
-                    "name": commit.get("title", ""),
-                    "description": commit.get("message", ""),
-                    "url": commit.get("url", ""),
-                    "full_sha": commit.get("id", ""),
-                    "timestamp": timestamp,
-                }
-            )
-        elif event_source == "github":
-            commit_text_lines = commit.get("message", "").split("\n", 1)
-            commit_title = commit_text_lines[0][:60]
-            commit_description = (
-                commit_text_lines[1] if len(commit_text_lines) > 1 else ""
-            )
-            default_vals.update(
-                {
-                    "name": commit_title,
-                    "description": commit_description,
-                    "url": commit.get("url", ""),
-                    "full_sha": commit.get("id", ""),
-                    "timestamp": timestamp,
-                }
-            )
+        default_vals = {
+            "url": commit.get("url", ""),
+            "full_sha": commit.get("id", ""),
+            "timestamp": self.env["git.commit"].parse_timestamp(
+                commit.get("timestamp", "")
+            ),
+        }
+        # name/description come from platform-specific commit fields
+        source_vals = self._dispatch_by_source(
+            event, "_prepare_commit_vals", commit, mandatory=False
+        )
+        default_vals.update(source_vals or {})
 
         # Merge with values_by_arg (task_id, etc.)
         return {**default_vals, **values_by_arg}
+
+    def _prepare_commit_vals_gitlab(self, event, commit):
+        # GitLab carries the commit title as its own field
+        return {
+            "name": commit.get("title", ""),
+            "description": commit.get("message", ""),
+        }
+
+    def _prepare_commit_vals_github(self, event, commit):
+        # GitHub only carries the full message: derive title/description
+        commit_text_lines = commit.get("message", "").split("\n", 1)
+        return {
+            "name": commit_text_lines[0][:60],
+            "description": commit_text_lines[1] if len(commit_text_lines) > 1 else "",
+        }
 
     @api.model
     def _prepare_branch_vals(self, event, values=None):
@@ -813,7 +808,7 @@ class GitEvent(models.Model):
         return {**default_vals, **values_by_arg}
 
     @api.model
-    def _prepare_gitlab_merge_request_vals(self, event, values=None):
+    def _prepare_pull_request_vals_gitlab(self, event, values=None):
         """Prepare GitLab merge request values from event for ORM write/create.
 
         :param dict event: The webhook event
@@ -853,7 +848,7 @@ class GitEvent(models.Model):
         return {**default_vals, **values_by_arg}
 
     @api.model
-    def _prepare_github_pull_request_vals(self, event, values=None):
+    def _prepare_pull_request_vals_github(self, event, values=None):
         """Prepare GitHub pull request values from event for ORM write/create.
 
         :param dict event: The webhook event
@@ -903,28 +898,22 @@ class GitEvent(models.Model):
         :return: dict of pull request values ready for create/write
         """
         values = values or {}
-        event_source = event.get("source", "gitlab")
-        if event_source == "gitlab":
-            return self._prepare_gitlab_merge_request_vals(event, values=values)
-        elif event_source == "github":
-            return self._prepare_github_pull_request_vals(event, values=values)
-        return values
+        return (
+            self._dispatch_by_source(event, "_prepare_pull_request_vals", values=values)
+            or values
+        )
 
     @api.model
     def _search_existing_pull_request(self, event):
         """Search for existing pr by id_request/id_project (might check by url)
         :param dict event: git event
         :return: existing pull request or empty recordset"""
-        git_pull_request = self.env["git.pull.request"]
-        event_source = event.get("source", "gitlab")
-        if event_source == "gitlab":
-            project_id = event["project"]["id"]
-            request_id = event["object_attributes"]["iid"]
-        else:
-            project_id = event["repository"]["id"]
-            request_id = event["number"]
+        pr_identifiers = self._dispatch_by_source(event, "_extract_pr_identifiers")
+        if not pr_identifiers:
+            return self.env["git.pull.request"]
+        project_id, request_id = pr_identifiers
 
-        git_pull_request = (
+        return (
             self.env["git.pull.request"]
             .sudo()
             .search(
@@ -935,7 +924,14 @@ class GitEvent(models.Model):
                 limit=1,
             )
         )
-        return git_pull_request
+
+    def _extract_pr_identifiers_gitlab(self, event):
+        """Return the (id_project, id_request) pair identifying the MR."""
+        return event["project"]["id"], event["object_attributes"]["iid"]
+
+    def _extract_pr_identifiers_github(self, event):
+        """Return the (id_project, id_request) pair identifying the PR."""
+        return event["repository"]["id"], event["number"]
 
     @api.model
     def _search_existing_commit(self, commit):
