@@ -2,24 +2,26 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 
 from odoo.exceptions import ValidationError
-from odoo.tests import TransactionCase
+
+from odoo.addons.base.tests.common import BaseCommon
 
 
-class TestProjectTaskProjectRequired(TransactionCase):
-    def setUp(self):
-        super().setUp()
+class TestProjectTaskProjectRequired(BaseCommon):
+    @classmethod
+    def setUpClass(cls):
+        super().setUpClass()
 
-        self.Project = self.env["project.project"]
-        self.ProjectTask = self.env["project.task"]
+        cls.Project = cls.env["project.project"]
+        cls.ProjectTask = cls.env["project.task"]
 
-        self.project = self.Project.create(
+        cls.project = cls.Project.create(
             {
                 "name": "Project",
             }
         )
 
     def test_project_required(self):
-        self.env.user.company_id.is_project_task_project_required = True
+        self.env.company.is_project_task_project_required = True
         with self.assertRaises(ValidationError):
             self.ProjectTask.create(
                 {
@@ -34,7 +36,7 @@ class TestProjectTaskProjectRequired(TransactionCase):
         )
 
     def test_project_not_required(self):
-        self.env.user.company_id.is_project_task_project_required = False
+        self.env.company.is_project_task_project_required = False
         self.ProjectTask.create(
             {
                 "name": "Task A",

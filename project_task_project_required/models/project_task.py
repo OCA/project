@@ -9,9 +9,18 @@ class ProjectTask(models.Model):
     _inherit = "project.task"
 
     is_project_required = fields.Boolean(
-        string="Is Project Required",
-        related="company_id.is_project_task_project_required",
+        compute="_compute_is_project_required",
     )
+
+    @api.depends_context("company")
+    @api.depends(
+        "company_id.is_project_task_project_required",
+    )
+    def _compute_is_project_required(self):
+        current_company = self.env.company
+        for task in self:
+            company = task.company_id or current_company
+            task.is_project_required = company.is_project_task_project_required
 
     @api.constrains("project_id")
     def _check_project_id(self):

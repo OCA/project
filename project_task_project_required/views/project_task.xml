@@ -5,17 +5,12 @@
 -->
 <odoo>
     <record model="ir.ui.view" id="view_task_tree2">
-        <field name="name">project.task.tree</field>
+        <field name="name">project.task.list</field>
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_tree2" />
         <field name="arch" type="xml">
-            <field name="project_id" position="before">
-                <field name="is_project_required" invisible="1" />
-            </field>
             <field name="project_id" position="attributes">
-                <attribute
-                    name="attrs"
-                >{'required':[('is_project_required','=',True)]}</attribute>
+                <attribute name="required">is_project_required</attribute>
             </field>
         </field>
     </record>
@@ -25,14 +20,8 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_form2" />
         <field name="arch" type="xml">
-            <field name="project_id" position="before">
-                <field name="is_project_required" invisible="1" />
-            </field>
             <field name="project_id" position="attributes">
-                <!-- The default odoo invisible attr is respected -->
-                <attribute
-                    name="attrs"
-                >{'invisible': [('parent_id', '!=', False)], 'required': [('is_project_required', '=', True)]}</attribute>
+                <attribute name="required">is_project_required</attribute>
             </field>
         </field>
     </record>
@@ -42,11 +31,12 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.quick_create_task_form" />
         <field name="arch" type="xml">
-            <field name="name" position="before">
-                <field name="is_project_required" invisible="1" />
-                <field
-                    name="project_id"
-                    attrs="{'required':[('is_project_required','=',True)], 'invisible':[('is_project_required','=',False)]}"
+            <field name="project_id" position="attributes">
+                <attribute name="required">is_project_required</attribute>
+                <attribute
+                    name="invisible"
+                    separator=" and "
+                    add="not is_project_required"
                 />
             </field>
         </field>
