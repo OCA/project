@@ -5,71 +5,15 @@
 import logging
 import re
 import time
-from urllib.parse import urljoin
-
-import gitlab  # pylint: disable=W7935
-from github import Github
 
 from odoo import api, models
 
 _logger = logging.getLogger(__name__)
 
-DEFAULT_TASK_NAME_MATCH_REGEX = r"\b[A-Z][A-Z]+-\d+\b"
-TASK_ID_REFERENCE_REGEX = r"\b(?:task|t)id#(?P<id>\d+)\b"
-
 
 class GitEvent(models.Model):
     _name = "git.event"
     _description = "Git Webhook Event Processor"
-
-    @api.model
-    def _init_task_name_match_regex_param(self):
-        """Seed the task_name_match_regex sysparam with the default pattern
-        when missing."""
-        config = self.env["ir.config_parameter"].sudo()
-        if not config.get_param("webhook_gitlab.task_name_match_regex"):
-            config.set_param(
-                "webhook_gitlab.task_name_match_regex", DEFAULT_TASK_NAME_MATCH_REGEX
-            )
-
-    @api.model
-    def _get_task_name_match_regex(self):
-        """Fetch regex pattern from ir.config_parameter or fallback to default."""
-        config = self.env["ir.config_parameter"].sudo()
-        regex = config.get_param(
-            "webhook_gitlab.task_name_match_regex",
-            default=DEFAULT_TASK_NAME_MATCH_REGEX,
-        )
-        try:
-            # Try compiling to validate the pattern
-            re.compile(regex)
-            return regex
-        except re.error as e:
-            _logger.warning(
-                "Invalid task match regex in config parameter: %s."
-                " Error: %s. Falling back to default.",
-                regex,
-                e,
-            )
-            return DEFAULT_TASK_NAME_MATCH_REGEX
-
-    @api.model
-    def _extract_task_id_references(self, text):
-        """Extract the explicit task id references ("taskid#123" or
-        "tid#123", case-insensitive) from a text. Every occurrence is
-        considered.
-
-        :param str text: any text carried by the event (PR/MR title,
-            branch name, commit message)
-        :return: list of referenced task ids
-        :rtype: list(int)
-        """
-        if not text:
-            return []
-        return [
-            int(task_id)
-            for task_id in re.findall(TASK_ID_REFERENCE_REGEX, text, re.IGNORECASE)
-        ]
 
     @api.model
     def _process_merge_request(self, event):
@@ -144,18 +88,16 @@ class GitEvent(models.Model):
                 commit_matches.append((commit, commit_matching_tasks))
                 matching_tasks |= commit_matching_tasks
 
-        git_pull_request = self._create_or_update_pull_request(
+        git_pull_request = self._get_or_create_pull_request(
             event=event, tasks=matching_tasks
         )
 
         if git_pull_request:
-            git_branch = self._create_or_update_branch(
-                event=event, tasks=matching_tasks
-            )
+            git_branch = self._get_or_create_branch(event=event, tasks=matching_tasks)
             # Each commit is linked to the tasks its own message mentions
             tracked_commits = self.env["git.commit"].sudo()
             for commit, commit_matching_tasks in commit_matches:
-                tracked_commits |= self._create_or_update_commit(
+                tracked_commits |= self._get_or_create_commit(
                     commit=commit, event=event, tasks=commit_matching_tasks
                 )
             # Correlate the tracked entities with each other
@@ -168,7 +110,9 @@ class GitEvent(models.Model):
         self.env["git.pull.request"]._post_negative_match_messages(
             event,
             matching_tasks=matching_tasks,
-            title_task_references=self._extract_task_id_references(pr_title),
+            title_task_references=self.env["git.utils"]._extract_task_id_references(
+                pr_title
+            ),
             repository_projects=repository_projects,
         )
         return git_pull_request
@@ -303,10 +247,10 @@ class GitEvent(models.Model):
 
         # Explicit id references: global, not restricted to the projects
         # (a reference to a non-existent task resolves to an empty set)
-        for task_id in self._extract_task_id_references(pattern_text):
+        for task_id in self.env["git.utils"]._extract_task_id_references(pattern_text):
             matching_tasks |= self.env["project.task"].browse(task_id).exists()
 
-        regex = self._get_task_name_match_regex()
+        regex = self.env["git.utils"]._get_task_name_match_regex()
         patterns = {
             pattern_match.group(0) for pattern_match in re.finditer(regex, pattern_text)
         }
@@ -398,13 +342,14 @@ class GitEvent(models.Model):
         return ""
 
     @api.model
-    def _create_or_update_commit(
+    def _get_or_create_commit(
         self, commit, event, values=None, tasks=None, update_existing=True
     ):
         """
-        Create or update a git.commit from commit data.
+        Get or create a git.commit from commit data, linking it to tasks.
 
-        The commit is identified by full_sha (globally unique).
+        The commit is identified by full_sha (globally unique); an existing
+        record is refreshed with the event data unless update_existing=False.
 
         :param dict commit: commit data with 'id' (full SHA), 'message', 'url', etc.
         :param dict event: The webhook event (used to extract event_source)
@@ -446,11 +391,14 @@ class GitEvent(models.Model):
         return git_commit
 
     @api.model
-    def _create_or_update_branch(
+    def _get_or_create_branch(
         self, event, values=None, tasks=None, update_existing=True
     ):
         """
-        Create or update a git.branch from event.
+        Get or create a git.branch from event, linking it to tasks.
+
+        The branch is identified by URL; an existing record is refreshed
+        with the event data unless update_existing=False.
 
         :param dict event: The webhook event
         :param dict values: Optional dict with additional values to override/merge
@@ -522,7 +470,7 @@ class GitEvent(models.Model):
         :return: list of commit dicts (same format as webhook)
         """
         try:
-            github = self._connect_github()
+            github = self.env["git.auth"]._connect_github()
 
             repo_full_name = event["repository"]["full_name"]  # "owner/repo"
             pr_number = event["number"]
@@ -645,7 +593,7 @@ class GitEvent(models.Model):
         """
         commit_list = []
         try:
-            gl = self._connect_gitlab(url=event["project"]["web_url"])
+            gl = self.env["git.auth"]._connect_gitlab(url=event["project"]["web_url"])
 
             project_id = event["project"]["id"]
             mr_iid = event["object_attributes"]["iid"]
@@ -735,8 +683,8 @@ class GitEvent(models.Model):
             projects=projects, pattern_text=branch_name
         )
 
-        # The branch is a single entity per event: create/update it once
-        git_branch = self._create_or_update_branch(event=event, tasks=tasks_from_branch)
+        # The branch is a single entity per event: get/create it once
+        git_branch = self._get_or_create_branch(event=event, tasks=tasks_from_branch)
 
         tracked_commits = self.env["git.commit"].sudo()
         for commit in event.get("commits", []):
@@ -744,7 +692,7 @@ class GitEvent(models.Model):
                 projects=projects, pattern_text=commit.get("message", "")
             )
             if commit_tasks:
-                tracked_commits |= self._create_or_update_commit(
+                tracked_commits |= self._get_or_create_commit(
                     commit=commit, event=event, tasks=commit_tasks
                 )
 
@@ -1037,11 +985,15 @@ class GitEvent(models.Model):
         return self.env["git.branch"]
 
     @api.model
-    def _create_or_update_pull_request(
+    def _get_or_create_pull_request(
         self, event, values=None, tasks=None, update_existing=True
     ):
         """
-        Create or update a git.pull.request from a webhook event.
+        Get or create a git.pull.request from a webhook event, linking it
+        to tasks.
+
+        An existing record is refreshed with the event data unless
+        update_existing=False.
 
         :param event: The webhook event dict
         :param values: Optional dict with additional values to override/merge
@@ -1075,30 +1027,3 @@ class GitEvent(models.Model):
             )
 
         return git_pull_request
-
-    @api.model
-    def _connect_gitlab(self, url):
-        """Connect to the gitlab instance hosting the given project URL
-        and return the gitlab client object.
-
-        :param str url: a project-level URL (e.g. project web_url); the
-            instance root is derived from it, and selects the per-instance
-            token sysparam (webhook_gitlab.gitlab_token.<instance root>)
-        """
-        url = urljoin(url, "../..")
-        token = (
-            self.env["ir.config_parameter"]
-            .sudo()
-            .get_param("webhook_gitlab.gitlab_token." + url)
-        )
-        return gitlab.Gitlab(url, private_token=token)
-
-    @api.model
-    def _connect_github(self):
-        """Connect to github instance and return github object"""
-        token = (
-            self.env["ir.config_parameter"]
-            .sudo()
-            .get_param("webhook_gitlab.github_token")
-        )
-        return Github(token)

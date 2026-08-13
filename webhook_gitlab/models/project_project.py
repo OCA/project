@@ -1,4 +1,5 @@
 # Copyright 2018, Jarsa
+# Copyright 2026 Francesco Ballerini
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
 from urllib.parse import urlparse
@@ -53,7 +54,7 @@ class ProjectProject(models.Model):
             self._create_gitlab_project_webhook(project_url)
 
     def _create_gitlab_project_webhook(self, project_url):
-        gl = self.env["git.event"]._connect_gitlab(url=project_url)
+        gl = self.env["git.auth"]._connect_gitlab(url=project_url)
         gitlab_project = gl.projects.get(self._git_project_path(project_url))
         odoo_url = self._get_webhook_url()
         for hook in gitlab_project.hooks.list():
@@ -73,7 +74,7 @@ class ProjectProject(models.Model):
         )
 
     def _create_github_project_webhook(self, project_url):
-        github_client = self.env["git.event"]._connect_github()
+        github_client = self.env["git.auth"]._connect_github()
         github_repo = github_client.get_repo(self._git_project_path(project_url))
         odoo_url = self._get_webhook_url()
         for hook in github_repo.get_hooks():
@@ -102,7 +103,7 @@ class ProjectProject(models.Model):
                 project.git_project_url
             ):
                 continue
-            gl = self.env["git.event"]._connect_gitlab(url=project.git_project_url)
+            gl = self.env["git.auth"]._connect_gitlab(url=project.git_project_url)
             gitlab_project = gl.projects.get(
                 self._git_project_path(project.git_project_url)
             )

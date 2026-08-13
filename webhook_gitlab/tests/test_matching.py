@@ -1,7 +1,7 @@
 # Copyright 2026 Francesco Ballerini
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
-from odoo.addons.webhook_gitlab.models.git_event import DEFAULT_TASK_NAME_MATCH_REGEX
+from odoo.addons.webhook_gitlab.models.git_utils import DEFAULT_TASK_NAME_MATCH_REGEX
 
 from .common import GITHUB_REPO_URL, GITLAB_REPO_URL, WebhookGitlabCase
 
@@ -16,13 +16,13 @@ class TestTaskMatching(WebhookGitlabCase):
         # customized) value is never overwritten
         config = self.env["ir.config_parameter"].sudo()
         config.search([("key", "=", "webhook_gitlab.task_name_match_regex")]).unlink()
-        self.git_event._init_task_name_match_regex_param()
+        self.env["git.utils"]._init_task_name_match_regex_param()
         self.assertEqual(
             config.get_param("webhook_gitlab.task_name_match_regex"),
             DEFAULT_TASK_NAME_MATCH_REGEX,
         )
         config.set_param("webhook_gitlab.task_name_match_regex", r"CUSTOM-\d+")
-        self.git_event._init_task_name_match_regex_param()
+        self.env["git.utils"]._init_task_name_match_regex_param()
         self.assertEqual(
             config.get_param("webhook_gitlab.task_name_match_regex"), r"CUSTOM-\d+"
         )
@@ -34,7 +34,7 @@ class TestTaskMatching(WebhookGitlabCase):
             "webhook_gitlab.task_name_match_regex", "[invalid"
         )
         with self.assertLogs(
-            "odoo.addons.webhook_gitlab.models.git_event", level="WARNING"
+            "odoo.addons.webhook_gitlab.models.git_utils", level="WARNING"
         ):
             matching_tasks = self.git_event._find_matching_tasks(
                 projects=self.gitlab_project, pattern_text="GL-100 fix the export"

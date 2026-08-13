@@ -11,10 +11,8 @@ from unittest.mock import MagicMock, patch
 from odoo.tests.common import TransactionCase
 
 from odoo.addons.webhook_gitlab.controllers.main import WebhookGitlab
-from odoo.addons.webhook_gitlab.models.git_event import (
-    DEFAULT_TASK_NAME_MATCH_REGEX,
-    GitEvent,
-)
+from odoo.addons.webhook_gitlab.models.git_auth import GitAuth
+from odoo.addons.webhook_gitlab.models.git_utils import DEFAULT_TASK_NAME_MATCH_REGEX
 
 RES_DIR = os.path.join(os.path.dirname(__file__), "res")
 
@@ -156,7 +154,7 @@ class WebhookGitlabCase(TransactionCase):
         merge_request.commits.return_value = [
             self._gitlab_commit_stub(**commit) for commit in commits
         ]
-        patcher = patch.object(GitEvent, "_connect_gitlab", return_value=client)
+        patcher = patch.object(GitAuth, "_connect_gitlab", return_value=client)
         return patcher, merge_request
 
     def _mock_github_client(self, commits=()):
@@ -171,7 +169,7 @@ class WebhookGitlabCase(TransactionCase):
         pull.get_commits.return_value = [
             self._github_commit_stub(**commit) for commit in commits
         ]
-        patcher = patch.object(GitEvent, "_connect_github", return_value=client)
+        patcher = patch.object(GitAuth, "_connect_github", return_value=client)
         return patcher, pull
 
     # ---- state helpers ----

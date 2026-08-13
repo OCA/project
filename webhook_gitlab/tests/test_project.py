@@ -7,7 +7,7 @@ from gitlab.exceptions import GitlabJobRetryError
 
 from odoo.exceptions import UserError
 
-from odoo.addons.webhook_gitlab.models.git_event import GitEvent
+from odoo.addons.webhook_gitlab.models.git_auth import GitAuth
 
 from .common import GITLAB_REPO_URL, WebhookGitlabCase
 
@@ -39,7 +39,7 @@ class TestProjectWebhookDeploy(WebhookGitlabCase):
         gitlab_project = client.projects.get.return_value
         gitlab_project.hooks.list.return_value = list(hooks)
         gitlab_project.jobs.list.return_value = list(jobs)
-        patcher = patch.object(GitEvent, "_connect_gitlab", return_value=client)
+        patcher = patch.object(GitAuth, "_connect_gitlab", return_value=client)
         return patcher, client
 
     def _mock_github_for_project(self, hooks=()):
@@ -47,7 +47,7 @@ class TestProjectWebhookDeploy(WebhookGitlabCase):
         installed on the mocked GitHub repository."""
         client = MagicMock(name="github_client")
         client.get_repo.return_value.get_hooks.return_value = list(hooks)
-        patcher = patch.object(GitEvent, "_connect_github", return_value=client)
+        patcher = patch.object(GitAuth, "_connect_github", return_value=client)
         return patcher, client
 
     @staticmethod

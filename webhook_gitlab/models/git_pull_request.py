@@ -163,7 +163,7 @@ class GitPullRequest(models.Model):
         so the message posting relies on the event for identification.
 
         :param list(int) title_task_references: task ids referenced in
-            the PR/MR title (see _extract_task_id_references)
+            the PR/MR title (see git.utils._extract_task_id_references)
         """
         if not self._is_pr_opening_or_title_change(event):
             return
@@ -210,7 +210,7 @@ class GitPullRequest(models.Model):
         else:
             repository_id = event["repository"]["id"]
             request_id = event["number"]
-        github = self.env["git.event"]._connect_github()
+        github = self.env["git.auth"]._connect_github()
         repo = github.get_repo(repository_id)
         pull = repo.get_pull(request_id)
         pull.create_issue_comment(message)
@@ -231,7 +231,7 @@ class GitPullRequest(models.Model):
             project_id = event["project"]["id"]
             request_id = event["object_attributes"]["iid"]
         web_url = event["project"]["web_url"] if event else self.url.split("/-/")[0]
-        gitlab_client = self.env["git.event"]._connect_gitlab(url=web_url)
+        gitlab_client = self.env["git.auth"]._connect_gitlab(url=web_url)
         project = gitlab_client.projects.get(project_id)
         merge_request = project.mergerequests.get(request_id)
         merge_request.discussions.create({"body": message})

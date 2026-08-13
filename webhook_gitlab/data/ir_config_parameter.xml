@@ -13,5 +13,5 @@
         </record>
     </data>
 
-    <function model="git.event" name="_init_task_name_match_regex_param" />
+    <function model="git.utils" name="_init_task_name_match_regex_param" />
 </odoo>
