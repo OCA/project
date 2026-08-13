@@ -113,18 +113,21 @@ class TestGithubPullRequest(WebhookGitlabCase):
         message_body = pull.create_issue_comment.call_args[0][0]
         self.assertIn("Linked to Odoo task", message_body)
 
-    def test_pr_commit_fetch_failure_falls_back_to_head_sha(self):
-        # When the commit fetch fails, the synthetic head commit built
-        # from the payload embeds the PR title in its message, so it
-        # matches (and links to) the same task as the title.
+    def test_pr_commit_fetch_failure_tracks_no_commits(self):
+        # When the commit fetch fails, GitHub has no honest fallback
+        # (the payload only carries the head sha): no commit is
+        # tracked, while the PR stays linked through its own title
+        # reference.
         payload = self._pr_payload(title="GH-100 update readme")
         patcher, pull = self._mock_github_client()
         pull.get_commits.side_effect = Exception("API not available")
         with patcher:
             self._dispatch(payload, "github")
 
-        head_sha = payload["pull_request"]["head"]["sha"]
-        self.assertEqual(self.gh_task_100.git_commit_ids.mapped("full_sha"), [head_sha])
+        pull_request = self._get_pull_request(payload["pull_request"]["html_url"])
+        self.assertEqual(pull_request.task_ids, self.gh_task_100)
+        self.assertFalse(pull_request.git_commit_ids)
+        self.assertFalse(self.gh_task_100.git_commit_ids)
 
     def test_pr_without_match_creates_nothing_but_warns_once(self):
         # Known repository but no reference anywhere: the PR is

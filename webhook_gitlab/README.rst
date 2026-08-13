@@ -110,7 +110,9 @@ System parameters
   missing or still set to the demo default.
 - ``webhook_gitlab.github_token``: GitHub personal access token, used by
   Odoo to call the GitHub API (fetch PR commits, post messages on the
-  PR).
+  PR). PR commit tracking relies entirely on this fetch: without the
+  token no PR commit is tracked (GitLab, instead, falls back to the head
+  commit carried by the MR payload).
 - ``webhook_gitlab.gitlab_token.<instance-url>/``: GitLab access token,
   one parameter per GitLab instance. The key is the instance root URL
   **with a trailing slash**, e.g.

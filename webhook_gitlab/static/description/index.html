@@ -462,7 +462,9 @@ webhooks. Incoming requests are rejected when this parameter is
 missing or still set to the demo default.</li>
 <li><tt class="docutils literal">webhook_gitlab.github_token</tt>: GitHub personal access token, used by
 Odoo to call the GitHub API (fetch PR commits, post messages on the
-PR).</li>
+PR). PR commit tracking relies entirely on this fetch: without the
+token no PR commit is tracked (GitLab, instead, falls back to the head
+commit carried by the MR payload).</li>
 <li><tt class="docutils literal"><span class="pre">webhook_gitlab.gitlab_token.&lt;instance-url&gt;/</span></tt>: GitLab access token,
 one parameter per GitLab instance. The key is the instance root URL
 <strong>with a trailing slash</strong>, e.g.

@@ -214,32 +214,28 @@ class GitEvent(models.Model):
     def _extract_pr_fallback_commits(self, event):
         """Extract the PR/MR head commit carried by the event payload itself.
 
-        Used as fallback when the full commit list cannot be fetched via API.
+        Used as fallback when the full commit list cannot be fetched
+        via API (e.g. missing platform token). The per-source
+        implementation is an optional hook: platforms whose payload
+        carries no honest head-commit data (GitHub events only bring
+        the head sha) simply do not implement it, and their PR commit
+        tracking relies on the API fetch alone.
 
         :param dict event: The webhook event
         :return: list with a single commit dict in webhook format (empty
                  list if the event carries no head commit)
         """
-        return self._dispatch_by_source(event, "_extract_pr_fallback_commits") or []
+        return (
+            self._dispatch_by_source(
+                event, "_extract_pr_fallback_commits", mandatory=False
+            )
+            or []
+        )
 
     def _extract_pr_fallback_commits_gitlab(self, event):
         # A MR without commits yet carries last_commit: null
         last_commit = event.get("object_attributes", {}).get("last_commit")
         return [last_commit] if last_commit else []
-
-    def _extract_pr_fallback_commits_github(self, event):
-        pr_data = event.get("pull_request", {})
-        head_sha = pr_data.get("head", {}).get("sha", "")
-        if not head_sha:
-            return []
-        return [
-            {
-                "id": head_sha,
-                "message": f"HEAD commit from PR: {pr_data.get('title', '')}",
-                "url": f"{pr_data.get('html_url', '')}/commits/{head_sha}",
-                "timestamp": pr_data.get("updated_at", ""),
-            }
-        ]
 
     @api.model
     def _find_matching_tasks(self, projects, pattern_text):
