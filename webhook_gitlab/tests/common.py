@@ -112,10 +112,12 @@ class WebhookGitlabCase(TransactionCase):
             event_name = "pull_request" if payload.get("pull_request") else "push"
             headers = {"X-GitHub-Event": event_name}
         event = WebhookGitlab()._parse_git_request_data(event=event, headers=headers)
-        handler = getattr(
-            self.git_event, "_process_%s" % event["project_git_event_type"]
-        )
-        handler(event)
+        # Event types without a handler (e.g. tag_push) are skipped,
+        # like the controller does
+        if hasattr(self.git_event, "_process_%s" % event["project_git_event_type"]):
+            getattr(self.git_event, "_process_%s" % event["project_git_event_type"])(
+                event
+            )
         return event
 
     # ---- outbound API mocks ----

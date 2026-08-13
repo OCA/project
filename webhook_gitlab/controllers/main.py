@@ -176,6 +176,14 @@ class WebhookGitlab(http.Controller):
         # types without a git.event handler (e.g. ping) are then
         # skipped by the dispatch
         event["project_git_event_type"] = (headers or {}).get("X-GitHub-Event", "")
+        # GitHub delivers tag pushes as regular push events: remap them
+        # onto the handlerless tag_push type (the one GitLab tag pushes
+        # carry natively), so they are skipped instead of being tracked
+        # as branches
+        if event["project_git_event_type"] == "push" and not event.get(
+            "ref", ""
+        ).startswith("refs/heads/"):
+            event["project_git_event_type"] = "tag_push"
         # set repo url
         event["repository_url"] = event.get("repository", {}).get("html_url")
         return event

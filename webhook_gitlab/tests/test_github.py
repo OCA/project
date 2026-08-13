@@ -240,6 +240,19 @@ class TestGithubPush(WebhookGitlabCase):
             },
         }
 
+    def test_tag_push_is_skipped(self):
+        # GitHub delivers tag pushes as regular push events: even when
+        # the tag name and the commit messages reference tasks, nothing
+        # must be tracked (the parser remaps them onto the handlerless
+        # tag_push type, the one GitLab tag pushes carry natively)
+        commits = [self._commit("d" * 40, "GH-100 commit carried by the tag")]
+        payload = self._push_payload(ref="refs/tags/GH-100-rc1", commits=commits)
+        event = self._dispatch(payload, "github")
+
+        self.assertEqual(event["project_git_event_type"], "tag_push")
+        self.assertFalse(self._get_branch("refs/tags/GH-100-rc1"))
+        self.assertFalse(self._get_commit("d" * 40))
+
     def test_push_branch_name_match_links_branch_only(self):
         # Entities link by their own reference only: the branch name
         # matches GH-100 but the commit messages mention no task, so only

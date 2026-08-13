@@ -33,6 +33,19 @@ class TestGitlabPush(WebhookGitlabCase):
             "author": {"name": "Demo User", "email": "demo@example.com"},
         }
 
+    def test_tag_push_is_skipped(self):
+        # GitLab tag pushes carry their own object_kind (tag_push),
+        # which has no handler: even when the tag name and the commit
+        # messages reference tasks, nothing must be tracked
+        commits = [self._commit("d" * 40, "GL-100 commit carried by the tag")]
+        payload = self._push_payload(ref="refs/tags/GL-100-tag", commits=commits)
+        payload["object_kind"] = "tag_push"
+        event = self._dispatch(payload, "gitlab")
+
+        self.assertEqual(event["project_git_event_type"], "tag_push")
+        self.assertFalse(self._get_branch("refs/tags/GL-100-tag"))
+        self.assertFalse(self._get_commit("d" * 40))
+
     def test_push_branch_name_match_links_branch_only(self):
         # Entities link by their own reference only: the branch name
         # matches GL-100 but the commit messages mention no task, so only
