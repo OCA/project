@@ -90,6 +90,15 @@ class ProjectGitPullRequest(models.Model):
         string="Commits",
     )
 
+    _sql_constraints = [
+        (
+            "source_project_request_unique",
+            "unique(source, id_project, id_request)",
+            "A pull request with the same identifiers is already tracked"
+            " for this platform.",
+        )
+    ]
+
     def open_merge_request(self):
         self.ensure_one()
         return {

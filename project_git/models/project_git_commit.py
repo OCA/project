@@ -43,6 +43,14 @@ class ProjectGitCommit(models.Model):
         string="Pull Requests",
     )
 
+    _sql_constraints = [
+        (
+            "full_sha_unique",
+            "unique(full_sha)",
+            "A commit with the same SHA is already tracked.",
+        )
+    ]
+
     @api.depends("full_sha")
     def _compute_sha(self):
         for commit in self:

@@ -32,3 +32,11 @@ class ProjectGitBranch(models.Model):
         inverse_name="source_branch_id",
         string="Pull Requests",
     )
+
+    _sql_constraints = [
+        (
+            "url_unique",
+            "unique(url)",
+            "A branch with the same URL is already tracked.",
+        )
+    ]

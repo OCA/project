@@ -1,7 +1,10 @@
 # Copyright 2026 Francesco Ballerini
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
+from psycopg2 import IntegrityError
+
 from odoo.exceptions import ValidationError
+from odoo.tools import mute_logger
 
 from .common import GITLAB_REPO_URL, NULL_SHA, ProjectGitlabCase
 
@@ -511,6 +514,26 @@ class TestGitlabMergeRequest(ProjectGitlabCase):
         )
         self.assertFalse(foreign_pull_request.source)
         self.assertFalse(foreign_pull_request.task_ids)
+
+    def test_mr_identifiers_unique_within_platform(self):
+        # SQL constraint guarding the search-then-create dedup of the
+        # event flow against concurrent jobs on the same MR
+        payload = self._mr_payload()
+        pull_request_vals = {
+            "name": "GitLab MR",
+            "source": "gitlab",
+            "id_project": payload["project"]["id"],
+            "id_request": payload["object_attributes"]["iid"],
+        }
+        self.env["project.git.pull.request"].create(pull_request_vals)
+        with (
+            self.assertRaises(IntegrityError),
+            mute_logger("odoo.sql_db"),
+            self.env.cr.savepoint(),
+        ):
+            self.env["project.git.pull.request"].create(
+                dict(pull_request_vals, name="GitLab MR duplicate")
+            )
 
     def test_mr_state_tags_are_assigned_to_task(self):
         payload = self._mr_payload(title="GL-100 add new file")
