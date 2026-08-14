@@ -55,7 +55,6 @@ class ProjectGitPullRequest(models.Model):
             ("canceled", "Canceled"),
             ("unknown", "Unknown"),
         ],
-        default="pending",
         string="CI Status",
     )
 

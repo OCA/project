@@ -533,6 +533,8 @@ class TestGitlabMergeRequest(ProjectGitlabCase):
 
         tag_names = self.gl_task_100.tag_ids.mapped("name")
         self.assertIn("MR: Opened", tag_names)
+        # No CI tag until a real pipeline event is tracked
+        self.assertFalse([tag for tag in tag_names if tag.startswith("CI:")])
 
     def test_mr_merge_event_updates_state_and_tags(self):
         payload = self._mr_payload(title="GL-100 add new file")
@@ -691,6 +693,9 @@ class TestGitlabPipeline(ProjectGitlabCase):
                 "source_branch": "merge-req-branch",
                 "target_branch": "main",
                 "state": "opened",
+                # Explicit CI status: a real pipeline event has already
+                # been tracked for this PR
+                "ci_status": "pending",
                 "last_commit": "feedfacefeedfacefeedfacefeedfacefeedface",
                 "task_ids": [(4, self.gl_task_100.id)],
             }

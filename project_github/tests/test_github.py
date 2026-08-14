@@ -210,6 +210,8 @@ class TestGithubPullRequest(ProjectGithubCase):
         tag_names = self.gh_task_100.tag_ids.mapped("name")
         self.assertIn("MR: Closed", tag_names)
         self.assertNotIn("MR: Opened", tag_names)
+        # No CI events are tracked on GitHub: never a CI tag
+        self.assertFalse([tag for tag in tag_names if tag.startswith("CI:")])
 
     def test_pr_merged_event_updates_state_and_tags(self):
         payload = self._pr_payload(title="GH-100 update readme")
