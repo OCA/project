@@ -129,11 +129,17 @@ class ProjectGitEvent(models.Model):
                 ]
             )
         )
+        # GitHub reports the merge with the "merged" boolean: a merged PR
+        # still arrives with state "closed"
         map_state = {
             "open": "opened",
             "closed": "closed",
-            "merged": "merged",
         }
+        pr_state = (
+            "merged"
+            if event["pull_request"].get("merged")
+            else map_state[event["pull_request"]["state"]]
+        )
 
         default_vals = {
             "id_request": event["number"],
@@ -144,7 +150,7 @@ class ProjectGitEvent(models.Model):
             "url": event["pull_request"]["html_url"],
             "source_branch": event["pull_request"]["head"]["ref"],
             "target_branch": event["pull_request"]["base"]["ref"],
-            "state": map_state[event["pull_request"]["state"]],
+            "state": pr_state,
             "last_commit": event["pull_request"]["head"]["sha"],
             "user_id": user.id,
         }

@@ -181,6 +181,26 @@ class TestGithubPullRequest(ProjectGithubCase):
         self.assertIn("MR: Closed", tag_names)
         self.assertNotIn("MR: Opened", tag_names)
 
+    def test_pr_merged_event_updates_state_and_tags(self):
+        payload = self._pr_payload(title="GH-100 update readme")
+        patcher, _pull = self._mock_github_client()
+        with patcher:
+            self._dispatch(payload, "github")
+            payload["action"] = "closed"
+            payload["pull_request"]["state"] = "closed"
+            # GitHub has no "merged" state: a merged PR arrives as a closed
+            # event with the "merged" boolean set, and must be tracked as
+            # merged, not closed
+            payload["pull_request"]["merged"] = True
+            self._dispatch(payload, "github")
+
+        pull_request = self._get_pull_request(payload["pull_request"]["html_url"])
+        self.assertEqual(pull_request.state, "merged")
+        tag_names = self.gh_task_100.tag_ids.mapped("name")
+        self.assertIn("MR: Merged", tag_names)
+        self.assertNotIn("MR: Opened", tag_names)
+        self.assertNotIn("MR: Closed", tag_names)
+
     def test_pr_user_mapping_by_github_username(self):
         github_user = self.env["res.users"].create(
             {
