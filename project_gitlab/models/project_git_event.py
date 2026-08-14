@@ -201,7 +201,7 @@ class ProjectGitEvent(models.Model):
         user = (
             self.env["res.users"]
             .sudo()
-            .search([("gitlab_username", "=", event["user"]["username"])])
+            .search([("gitlab_username", "=", event["user"]["username"])], limit=1)
         )
 
         default_vals = {

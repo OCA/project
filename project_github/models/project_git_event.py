@@ -126,7 +126,8 @@ class ProjectGitEvent(models.Model):
             .search(
                 [
                     ("github_username", "=", event["pull_request"]["user"]["login"]),
-                ]
+                ],
+                limit=1,
             )
         )
         # GitHub reports the merge with the "merged" boolean: a merged PR

@@ -1,6 +1,8 @@
 # Copyright 2026 Francesco Ballerini
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
+from odoo.exceptions import ValidationError
+
 from .common import GITHUB_REPO_URL, NULL_SHA, ProjectGithubCase
 
 
@@ -247,6 +249,25 @@ class TestGithubPullRequest(ProjectGithubCase):
 
         pull_request = self._get_pull_request(payload["pull_request"]["html_url"])
         self.assertEqual(pull_request.user_id, github_user)
+
+    def test_github_username_must_be_unique(self):
+        # The PR author matching picks one user per username: a
+        # duplicate github_username is rejected (Python constraint)
+        self.env["res.users"].create(
+            {
+                "name": "GitHub User One",
+                "login": "github-user-one@example.com",
+                "github_username": "gh-duplicate-user",
+            }
+        )
+        with self.assertRaises(ValidationError):
+            self.env["res.users"].create(
+                {
+                    "name": "GitHub User Two",
+                    "login": "github-user-two@example.com",
+                    "github_username": "gh-duplicate-user",
+                }
+            )
 
     def test_pr_commit_message_is_split_in_title_and_description(self):
         long_title = "GH-100 " + "x" * 80
