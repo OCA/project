@@ -550,6 +550,28 @@ class TestGitlabMergeRequest(ProjectGitlabCase):
         self.assertTrue(pull_request.approved)
         self.assertIn("Approved", self.gl_task_100.tag_ids.mapped("name"))
 
+    def test_mr_approval_survives_later_events_until_unapproved(self):
+        # Only approval actions write the approved flag: a later update
+        # event (e.g. a title edit) must not reset it, while an
+        # unapproved action clears it
+        payload = self._mr_payload(title="GL-100 add new file")
+        patcher, _merge_request = self._mock_gitlab_client()
+        with patcher:
+            payload["object_attributes"]["action"] = "approved"
+            self._dispatch(payload, "gitlab")
+            payload["object_attributes"]["action"] = "update"
+            self._dispatch(payload, "gitlab")
+
+            pull_request = self._get_pull_request(payload["object_attributes"]["url"])
+            self.assertTrue(pull_request.approved)
+            self.assertIn("Approved", self.gl_task_100.tag_ids.mapped("name"))
+
+            payload["object_attributes"]["action"] = "unapproved"
+            self._dispatch(payload, "gitlab")
+
+        self.assertFalse(pull_request.approved)
+        self.assertNotIn("Approved", self.gl_task_100.tag_ids.mapped("name"))
+
     def test_mr_wip_flag_sets_tag(self):
         payload = self._mr_payload(title="GL-100 add new file")
         payload["object_attributes"]["work_in_progress"] = True

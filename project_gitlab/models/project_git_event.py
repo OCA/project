@@ -193,9 +193,7 @@ class ProjectGitEvent(models.Model):
         """
         values_by_arg = values or {}
 
-        approved = False
-        if event["object_attributes"]["action"] == "approved":
-            approved = True
+        action = event["object_attributes"].get("action")
         # A MR without commits yet carries last_commit: null
         last_commit = event["object_attributes"].get("last_commit") or {}
         user = (
@@ -215,10 +213,14 @@ class ProjectGitEvent(models.Model):
             "target_branch": event["object_attributes"]["target_branch"],
             "wip": event["object_attributes"]["work_in_progress"],
             "state": event["object_attributes"]["state"],
-            "approved": approved,
             "last_commit": last_commit.get("id", ""),
             "user_id": user.id,
         }
+        # Only approval actions carry approval information: an
+        # unrelated event (e.g. a title edit) must not reset the
+        # approval state of an approved MR
+        if action in ("approved", "unapproved"):
+            default_vals["approved"] = action == "approved"
 
         # Merge with values_by_arg (task_id, etc.)
         return {**default_vals, **values_by_arg}
