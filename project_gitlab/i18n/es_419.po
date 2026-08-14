@@ -1,0 +1,83 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_gitlab
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-14 17:28+0000\n"
+"PO-Revision-Date: 2026-08-14 17:28+0000\n"
+"Last-Translator: Jesús Alan Ramos Rodríguez <alan.ramos@jarsa.com>\n"
+"Language-Team: \n"
+"Language: es_419\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: project_gitlab
+#: model:ir.model,name:project_gitlab.model_project_git_auth
+msgid "Git Platform Authentication"
+msgstr ""
+
+#. module: project_gitlab
+#: model:ir.model,name:project_gitlab.model_project_git_pull_request
+msgid "Git Pull/Merge Request"
+msgstr ""
+
+#. module: project_gitlab
+#: model:ir.model,name:project_gitlab.model_project_git_event
+msgid "Git Webhook Event Processor"
+msgstr ""
+
+#. module: project_gitlab
+#: model:ir.model.fields.selection,name:project_gitlab.selection__project_git_pull_request__source__gitlab
+msgid "GitLab"
+msgstr ""
+
+#. module: project_gitlab
+#: model:ir.model.fields,field_description:project_gitlab.field_res_users__gitlab_username
+msgid "Gitlab Username"
+msgstr "Usuario de Gitlab"
+
+#. module: project_gitlab
+#. odoo-python
+#: code:addons/project_gitlab/models/project_project.py:0
+#, python-format
+msgid "Job cannot be retried, it is a job in progress"
+msgstr "El trabajo no se puede volver a intentar, es un trabajo en progreso"
+
+#. module: project_gitlab
+#. odoo-python
+#: code:addons/project_gitlab/models/project_project.py:0
+#, python-format
+msgid "Job odoo_sh_deploy has been retried"
+msgstr "Se ha reintentado el trabajo odoo_sh_deploy"
+
+#. module: project_gitlab
+#. odoo-python
+#: code:addons/project_gitlab/models/project_project.py:0
+#, python-format
+msgid "No job odoo_sh_deploy found"
+msgstr "No se encontró ningún trabajo odoo_sh_deploy"
+
+#. module: project_gitlab
+#: model:ir.model,name:project_gitlab.model_project_project
+msgid "Project"
+msgstr "Proyecto"
+
+#. module: project_gitlab
+#: model:ir.model.fields,field_description:project_gitlab.field_project_git_pull_request__source
+msgid "Source Platform"
+msgstr ""
+
+#. module: project_gitlab
+#: model_terms:ir.ui.view,arch_db:project_gitlab.view_project_project_form
+msgid "Update Odoo.sh"
+msgstr "Actualizar Odoo.sh"
+
+#. module: project_gitlab
+#: model:ir.model,name:project_gitlab.model_res_users
+msgid "User"
+msgstr "Usuario"

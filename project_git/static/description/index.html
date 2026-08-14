@@ -1,0 +1,781 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="Docutils: https://docutils.sourceforge.io/" />
+<title>README.rst</title>
+<style type="text/css">
+
+/*
+:Author: David Goodger (goodger@python.org)
+:Id: $Id: html4css1.css 9511 2024-01-13 09:50:07Z milde $
+:Copyright: This stylesheet has been placed in the public domain.
+
+Default cascading style sheet for the HTML output of Docutils.
+Despite the name, some widely supported CSS2 features are used.
+
+See https://docutils.sourceforge.io/docs/howto/html-stylesheets.html for how to
+customize this style sheet.
+*/
+
+/* used to remove borders from tables and images */
+.borderless, table.borderless td, table.borderless th {
+  border: 0 }
+
+table.borderless td, table.borderless th {
+  /* Override padding for "table.docutils td" with "! important".
+     The right padding separates the table cells. */
+  padding: 0 0.5em 0 0 ! important }
+
+.first {
+  /* Override more specific margin styles with "! important". */
+  margin-top: 0 ! important }
+
+.last, .with-subtitle {
+  margin-bottom: 0 ! important }
+
+.hidden {
+  display: none }
+
+.subscript {
+  vertical-align: sub;
+  font-size: smaller }
+
+.superscript {
+  vertical-align: super;
+  font-size: smaller }
+
+a.toc-backref {
+  text-decoration: none ;
+  color: black }
+
+blockquote.epigraph {
+  margin: 2em 5em ; }
+
+dl.docutils dd {
+  margin-bottom: 0.5em }
+
+object[type="image/svg+xml"], object[type="application/x-shockwave-flash"] {
+  overflow: hidden;
+}
+
+/* Uncomment (and remove this text!) to get bold-faced definition list terms
+dl.docutils dt {
+  font-weight: bold }
+*/
+
+div.abstract {
+  margin: 2em 5em }
+
+div.abstract p.topic-title {
+  font-weight: bold ;
+  text-align: center }
+
+div.admonition, div.attention, div.caution, div.danger, div.error,
+div.hint, div.important, div.note, div.tip, div.warning {
+  margin: 2em ;
+  border: medium outset ;
+  padding: 1em }
+
+div.admonition p.admonition-title, div.hint p.admonition-title,
+div.important p.admonition-title, div.note p.admonition-title,
+div.tip p.admonition-title {
+  font-weight: bold ;
+  font-family: sans-serif }
+
+div.attention p.admonition-title, div.caution p.admonition-title,
+div.danger p.admonition-title, div.error p.admonition-title,
+div.warning p.admonition-title, .code .error {
+  color: red ;
+  font-weight: bold ;
+  font-family: sans-serif }
+
+/* Uncomment (and remove this text!) to get reduced vertical space in
+   compound paragraphs.
+div.compound .compound-first, div.compound .compound-middle {
+  margin-bottom: 0.5em }
+
+div.compound .compound-last, div.compound .compound-middle {
+  margin-top: 0.5em }
+*/
+
+div.dedication {
+  margin: 2em 5em ;
+  text-align: center ;
+  font-style: italic }
+
+div.dedication p.topic-title {
+  font-weight: bold ;
+  font-style: normal }
+
+div.figure {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+div.footer, div.header {
+  clear: both;
+  font-size: smaller }
+
+div.line-block {
+  display: block ;
+  margin-top: 1em ;
+  margin-bottom: 1em }
+
+div.line-block div.line-block {
+  margin-top: 0 ;
+  margin-bottom: 0 ;
+  margin-left: 1.5em }
+
+div.sidebar {
+  margin: 0 0 0.5em 1em ;
+  border: medium outset ;
+  padding: 1em ;
+  background-color: #ffffee ;
+  width: 40% ;
+  float: right ;
+  clear: right }
+
+div.sidebar p.rubric {
+  font-family: sans-serif ;
+  font-size: medium }
+
+div.system-messages {
+  margin: 5em }
+
+div.system-messages h1 {
+  color: red }
+
+div.system-message {
+  border: medium outset ;
+  padding: 1em }
+
+div.system-message p.system-message-title {
+  color: red ;
+  font-weight: bold }
+
+div.topic {
+  margin: 2em }
+
+h1.section-subtitle, h2.section-subtitle, h3.section-subtitle,
+h4.section-subtitle, h5.section-subtitle, h6.section-subtitle {
+  margin-top: 0.4em }
+
+h1.title {
+  text-align: center }
+
+h2.subtitle {
+  text-align: center }
+
+hr.docutils {
+  width: 75% }
+
+img.align-left, .figure.align-left, object.align-left, table.align-left {
+  clear: left ;
+  float: left ;
+  margin-right: 1em }
+
+img.align-right, .figure.align-right, object.align-right, table.align-right {
+  clear: right ;
+  float: right ;
+  margin-left: 1em }
+
+img.align-center, .figure.align-center, object.align-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+table.align-center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.align-left {
+  text-align: left }
+
+.align-center {
+  clear: both ;
+  text-align: center }
+
+.align-right {
+  text-align: right }
+
+/* reset inner alignment in figures */
+div.align-right {
+  text-align: inherit }
+
+/* div.align-center * { */
+/*   text-align: left } */
+
+.align-top    {
+  vertical-align: top }
+
+.align-middle {
+  vertical-align: middle }
+
+.align-bottom {
+  vertical-align: bottom }
+
+ol.simple, ul.simple {
+  margin-bottom: 1em }
+
+ol.arabic {
+  list-style: decimal }
+
+ol.loweralpha {
+  list-style: lower-alpha }
+
+ol.upperalpha {
+  list-style: upper-alpha }
+
+ol.lowerroman {
+  list-style: lower-roman }
+
+ol.upperroman {
+  list-style: upper-roman }
+
+p.attribution {
+  text-align: right ;
+  margin-left: 50% }
+
+p.caption {
+  font-style: italic }
+
+p.credits {
+  font-style: italic ;
+  font-size: smaller }
+
+p.label {
+  white-space: nowrap }
+
+p.rubric {
+  font-weight: bold ;
+  font-size: larger ;
+  color: maroon ;
+  text-align: center }
+
+p.sidebar-title {
+  font-family: sans-serif ;
+  font-weight: bold ;
+  font-size: larger }
+
+p.sidebar-subtitle {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+p.topic-title {
+  font-weight: bold }
+
+pre.address {
+  margin-bottom: 0 ;
+  margin-top: 0 ;
+  font: inherit }
+
+pre.literal-block, pre.doctest-block, pre.math, pre.code {
+  margin-left: 2em ;
+  margin-right: 2em }
+
+pre.code .ln { color: gray; } /* line numbers */
+pre.code, code { background-color: #eeeeee }
+pre.code .comment, code .comment { color: #5C6576 }
+pre.code .keyword, code .keyword { color: #3B0D06; font-weight: bold }
+pre.code .literal.string, code .literal.string { color: #0C5404 }
+pre.code .name.builtin, code .name.builtin { color: #352B84 }
+pre.code .deleted, code .deleted { background-color: #DEB0A1}
+pre.code .inserted, code .inserted { background-color: #A3D289}
+
+span.classifier {
+  font-family: sans-serif ;
+  font-style: oblique }
+
+span.classifier-delimiter {
+  font-family: sans-serif ;
+  font-weight: bold }
+
+span.interpreted {
+  font-family: sans-serif }
+
+span.option {
+  white-space: nowrap }
+
+span.pre {
+  white-space: pre }
+
+span.problematic, pre.problematic {
+  color: red }
+
+span.section-subtitle {
+  /* font-size relative to parent (h1..h6 element) */
+  font-size: 80% }
+
+table.citation {
+  border-left: solid 1px gray;
+  margin-left: 1px }
+
+table.docinfo {
+  margin: 2em 4em }
+
+table.docutils {
+  margin-top: 0.5em ;
+  margin-bottom: 0.5em }
+
+table.footnote {
+  border-left: solid 1px black;
+  margin-left: 1px }
+
+table.docutils td, table.docutils th,
+table.docinfo td, table.docinfo th {
+  padding-left: 0.5em ;
+  padding-right: 0.5em ;
+  vertical-align: top }
+
+table.docutils th.field-name, table.docinfo th.docinfo-name {
+  font-weight: bold ;
+  text-align: left ;
+  white-space: nowrap ;
+  padding-left: 0 }
+
+/* "booktabs" style (no vertical lines) */
+table.docutils.booktabs {
+  border: 0px;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  border-collapse: collapse;
+}
+table.docutils.booktabs * {
+  border: 0px;
+}
+table.docutils.booktabs th {
+  border-bottom: thin solid;
+  text-align: left;
+}
+
+h1 tt.docutils, h2 tt.docutils, h3 tt.docutils,
+h4 tt.docutils, h5 tt.docutils, h6 tt.docutils {
+  font-size: 100% }
+
+ul.auto-toc {
+  list-style-type: none }
+
+</style>
+</head>
+<body>
+<div class="document">
+
+
+<a class="reference external image-reference" href="https://odoo-community.org/get-involved?utm_source=readme">
+<img alt="Odoo Community Association" src="https://odoo-community.org/readme-banner-image" />
+</a>
+<div class="section" id="project-git">
+<h1>Project Git</h1>
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!! This file is generated by oca-gen-addon-readme !!
+!! changes will be overwritten.                   !!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!! source digest: sha256:755d88a9dedbf89cd4aca844306ab54b6846d29dbfb467264d46fa1464732de3
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+<p><a class="reference external image-reference" href="https://odoo-community.org/page/development-status"><img alt="Beta" src="https://img.shields.io/badge/maturity-Beta-yellow.png" /></a> <a class="reference external image-reference" href="http://www.gnu.org/licenses/lgpl-3.0-standalone.html"><img alt="License: LGPL-3" src="https://img.shields.io/badge/license-LGPL--3-blue.png" /></a> <a class="reference external image-reference" href="https://github.com/OCA/project/tree/17.0/project_git"><img alt="OCA/project" src="https://img.shields.io/badge/github-OCA%2Fproject-lightgray.png?logo=github" /></a> <a class="reference external image-reference" href="https://translation.odoo-community.org/projects/project-17-0/project-17-0-project_git"><img alt="Translate me on Weblate" src="https://img.shields.io/badge/weblate-Translate%20me-F47D42.png" /></a> <a class="reference external image-reference" href="https://runboat.odoo-community.org/builds?repo=OCA/project&amp;target_branch=17.0"><img alt="Try me on Runboat" src="https://img.shields.io/badge/runboat-Try%20me-875A7B.png" /></a></p>
+<p>This module connects the Odoo <tt class="docutils literal">project</tt> app with git hosting
+platforms.</p>
+<p>It listens to webhooks (pushes, merge/pull requests, branch
+creation/deletion, CI pipelines), records the involved git entities
+(commits, branches, pull requests) and links them to the referenced
+project tasks, following the Jira-style referencing rules: each entity
+is linked to a task only by its own explicit reference (commit message,
+branch name, PR/MR title).</p>
+<p>This is the base module: install one bridge module per platform to
+actually connect it (<tt class="docutils literal">project_github</tt>, <tt class="docutils literal">project_gitlab</tt>). Without a
+bridge the base module does nothing on its own and requires no git
+Python library.</p>
+<p>Main features:</p>
+<ul>
+<li><p class="first">track commits, branches and pull/merge requests as Odoo records,
+browsable from the <strong>Project &gt; Git</strong> menu and from the related tasks</p>
+</li>
+<li><p class="first">match tasks by explicit database id (<tt class="docutils literal">taskid#123</tt> / <tt class="docutils literal">tid#123</tt>) or
+by a Jira-style issue-key pattern (e.g. <tt class="docutils literal"><span class="pre">ABC-123</span></tt>).</p>
+<p>The id matches anywhere (commit message, branch name, PR/MR title);
+the key is searched in the task names</p>
+</li>
+<li><p class="first">post a message on the pull/merge request with a link to the related
+task(s)</p>
+</li>
+<li><p class="first">tag the related tasks with the pull/merge request status and the CI
+pipeline status</p>
+</li>
+</ul>
+<p><strong>Table of contents</strong></p>
+<div class="contents local topic" id="contents">
+<ul class="simple">
+<li><a class="reference internal" href="#installation" id="toc-entry-1">Installation</a></li>
+<li><a class="reference internal" href="#configuration" id="toc-entry-2">Configuration</a><ul>
+<li><a class="reference internal" href="#webhook-endpoint" id="toc-entry-3">Webhook endpoint</a></li>
+<li><a class="reference internal" href="#system-parameters" id="toc-entry-4">System parameters</a></li>
+<li><a class="reference internal" href="#project-mapping" id="toc-entry-5">Project mapping</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#usage" id="toc-entry-6">Usage</a><ul>
+<li><a class="reference internal" href="#how-the-matching-works" id="toc-entry-7">How the matching works</a><ul>
+<li><a class="reference internal" href="#matching-by-issue-key" id="toc-entry-8">Matching by issue key</a></li>
+<li><a class="reference internal" href="#examples" id="toc-entry-9">Examples</a></li>
+<li><a class="reference internal" href="#which-entity-gets-linked" id="toc-entry-10">Which entity gets linked</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a class="reference internal" href="#development" id="toc-entry-11">Development</a><ul>
+<li><a class="reference internal" href="#writing-a-platform-bridge" id="toc-entry-12">Writing a platform bridge</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#known-issues-roadmap" id="toc-entry-13">Known issues / Roadmap</a></li>
+<li><a class="reference internal" href="#bug-tracker" id="toc-entry-14">Bug Tracker</a></li>
+<li><a class="reference internal" href="#credits" id="toc-entry-15">Credits</a><ul>
+<li><a class="reference internal" href="#authors" id="toc-entry-16">Authors</a></li>
+<li><a class="reference internal" href="#contributors" id="toc-entry-17">Contributors</a></li>
+<li><a class="reference internal" href="#maintainers" id="toc-entry-18">Maintainers</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="installation">
+<h2><a class="toc-backref" href="#toc-entry-1">Installation</a></h2>
+<p>This module has no Python dependency of its own, but it does nothing on
+its own: install one bridge module per platform you want to connect
+(<tt class="docutils literal">project_github</tt> for GitHub, <tt class="docutils literal">project_gitlab</tt> for GitLab). Each
+bridge installs the Python library of its platform.</p>
+</div>
+<div class="section" id="configuration">
+<h2><a class="toc-backref" href="#toc-entry-2">Configuration</a></h2>
+<div class="section" id="webhook-endpoint">
+<h3><a class="toc-backref" href="#toc-entry-3">Webhook endpoint</a></h3>
+<p>Configure your repositories to send webhooks (push, merge/pull request,
+pipeline events) to:</p>
+<pre class="literal-block">
+https://&lt;your-odoo-host&gt;/project_git/webhook/
+</pre>
+<p>In the webhook settings of the repository, set a secret token: incoming
+requests are authorized against it (each platform bridge implements the
+verification method of its platform, e.g. a token header or a payload
+signature; the exact repository pages are documented in the bridges).</p>
+<p>The webhook can also be deployed automatically: once the project is
+mapped (see below) and the system parameters are set, the <strong>Create
+Webhooks</strong> button on the Odoo project form (<strong>Project &gt; Configuration &gt;
+Projects</strong>, open the project) creates the webhook on the repository
+through the platform bridge. Deploying again replaces the webhook, so
+the button can be reused after changing the Odoo base URL or the token.</p>
+</div>
+<div class="section" id="system-parameters">
+<h3><a class="toc-backref" href="#toc-entry-4">System parameters</a></h3>
+<p>With the developer mode activated, go to <strong>Settings &gt; Technical &gt;
+Parameters &gt; System Parameters</strong> and set:</p>
+<ul class="simple">
+<li><tt class="docutils literal">project_git.authorization_token</tt>: the secret token set on the
+webhooks. Incoming requests are rejected when this parameter is
+missing or still set to the demo default.</li>
+</ul>
+<p>The API tokens used by Odoo to call the platforms are configured on the
+bridge modules (see their documentation).</p>
+</div>
+<div class="section" id="project-mapping">
+<h3><a class="toc-backref" href="#toc-entry-5">Project mapping</a></h3>
+<p>Go to <strong>Project &gt; Configuration &gt; Projects</strong>, open the project and set
+the repository home page URL (e.g.
+<tt class="docutils literal"><span class="pre">https://gitlab.com/mygroup/myrepo</span></tt>) in the <strong>Git Project URL</strong> field
+of the <strong>Settings</strong> tab; a trailing <tt class="docutils literal">.git</tt> is tolerated.</p>
+<p>A second repository (e.g. a separate development repo) can be mapped in
+the <strong>Git Dev Project URL</strong> field: it behaves the same for matching, and
+the <strong>Create Webhooks</strong> button deploys the webhook on both.</p>
+<p>Pattern-based matching only searches the tasks of the mapped projects:
+without a mapped project, pattern keys match nothing. Explicit
+<tt class="docutils literal">taskid#</tt>/<tt class="docutils literal">tid#</tt> references resolve globally and need no mapping.</p>
+</div>
+</div>
+<div class="section" id="usage">
+<h2><a class="toc-backref" href="#toc-entry-6">Usage</a></h2>
+<p>Link your git activity to a task, step by step:</p>
+<ol class="arabic">
+<li><p class="first"><strong>Map the Odoo project to the repository</strong> (see <em>Configure</em>).</p>
+<p>This is the prerequisite for issue-key matching; skip it only if you
+plan to use explicit <tt class="docutils literal">taskid#</tt> references exclusively.</p>
+</li>
+<li><p class="first"><strong>Put an issue key in the task name</strong>, e.g. rename the task to
+<tt class="docutils literal"><span class="pre">ABC-123</span> fix login</tt>. The key is the handle your git references will
+point to.</p>
+<p>To reference the task by database id instead, skip this step:
+explicit ids need no naming convention.</p>
+</li>
+<li><p class="first"><strong>Mention the reference in your git activity</strong>: write the issue key
+(<tt class="docutils literal"><span class="pre">ABC-123</span></tt>), or the explicit id (<tt class="docutils literal"><span class="pre">taskid#&lt;id&gt;</span></tt> / <tt class="docutils literal"><span class="pre">tid#&lt;id&gt;</span></tt>),
+in a commit message, a branch name or a PR/MR title.</p>
+</li>
+<li><p class="first"><strong>Trigger the event</strong>: push the commits, create the branch, open or
+update the PR/MR.</p>
+<p>The webhook fires and the module records the git entities and links
+them to the referenced tasks.</p>
+</li>
+<li><p class="first"><strong>Check the result on the task</strong>: open the task and follow the
+PR/branch/commit smart buttons, or browse every recorded entity from
+the <strong>Project &gt; Git</strong> menu (<strong>Pull Requests</strong>, <strong>Branches</strong>,
+<strong>Commits</strong>).</p>
+</li>
+</ol>
+<p>When a task is linked to a PR/MR (typically on opening), a message with
+the task link is posted on the PR/MR, and the task tags track the PR/MR
+and CI pipeline status.</p>
+<p>Entities referencing no task are not recorded at all, so unrelated
+repositories can safely share the same webhook endpoint.</p>
+<div class="section" id="how-the-matching-works">
+<h3><a class="toc-backref" href="#toc-entry-7">How the matching works</a></h3>
+<p>A reference written in your git activity (a commit message, a branch
+name, a PR/MR title) can point to a task in <strong>two different ways</strong>:</p>
+<ul>
+<li><p class="first"><strong>By issue key</strong>: you write a Jira-style key (e.g. <tt class="docutils literal"><span class="pre">ABC-123</span></tt>) both
+in the task name and in your git activity, and the module matches the
+two.</p>
+<p>This is the everyday way, and it needs the project mapping.</p>
+</li>
+<li><p class="first"><strong>By database id</strong>: you write <tt class="docutils literal"><span class="pre">taskid#&lt;id&gt;</span></tt> or <tt class="docutils literal"><span class="pre">tid#&lt;id&gt;</span></tt> (the id
+of the task in the Odoo database, e.g. <tt class="docutils literal">taskid#42</tt>) in your git
+activity.</p>
+<p>This points straight to one task, with no project mapping and no task
+naming convention needed; references to non-existent ids are silently
+ignored.</p>
+</li>
+</ul>
+<div class="section" id="matching-by-issue-key">
+<h4><a class="toc-backref" href="#toc-entry-8">Matching by issue key</a></h4>
+<p>The referencing conventions mirror the Jira ones (see <a class="reference external" href="https://confluence.atlassian.com/jirasoftware/referencing-issues-in-your-development-work-1688898766.html">Referencing
+issues in your development
+work</a>):
+if you are used to linking Jira issues from git, you already know how
+this works.</p>
+<p>An <strong>issue key</strong> is a Jira-style key: two or more uppercase letters, a
+dash and a number, such as <tt class="docutils literal"><span class="pre">ABC-123</span></tt>. The matching works in two steps:</p>
+<ol class="arabic">
+<li><p class="first"><strong>Key detection, on the git side</strong>: the module scans the text where
+you wrote the reference — the commit message, the branch name, the
+PR/MR title — and picks up every occurrence of the key format above,
+so a text mentioning several keys references all of them.</p>
+<p>The detection is case-sensitive: the key must be written in uppercase
+to be picked up, so <tt class="docutils literal"><span class="pre">ABC-123</span> <span class="pre">abc-124:</span> fix login</tt> detects
+<tt class="docutils literal"><span class="pre">ABC-123</span></tt> only.</p>
+</li>
+<li><p class="first"><strong>Task lookup, on the Odoo side</strong>: each detected key is searched — as
+a whole word, case-insensitively — in the names of the tasks of the
+projects mapped to the repository (see <em>Project mapping</em> in
+<em>Configure</em>): <tt class="docutils literal"><span class="pre">ABC-123</span></tt> links both “ABC-123 fix login” and “Login
+page (abc-123)”. Without a mapped project, issue keys match nothing.</p>
+<p>The task state does not matter: a reference to a <strong>Done</strong> task still
+links the git activity, since late commits on a closed task are
+common.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="examples">
+<h4><a class="toc-backref" href="#toc-entry-9">Examples</a></h4>
+<p>With a task named <tt class="docutils literal"><span class="pre">ABC-123</span> fix login</tt> in a project mapped to the
+repository:</p>
+<ul class="simple">
+<li>commit message <tt class="docutils literal"><span class="pre">ABC-123</span> handle the empty password case</tt> → links the
+commit to the task</li>
+<li>branch named <tt class="docutils literal"><span class="pre">ABC-123-login-fix</span></tt> → links the branch to the task</li>
+<li>MR titled <tt class="docutils literal">Login fixes for <span class="pre">ABC-123</span></tt> → links the MR (and its source
+branch) to the task</li>
+<li>commit message <tt class="docutils literal"><span class="pre">abc-123</span> handle the empty password case</tt> → links
+nothing: the key detection is case-sensitive</li>
+</ul>
+<p>With any task, whatever its name, whose database id is 42:</p>
+<ul class="simple">
+<li>commit message <tt class="docutils literal">taskid#42 handle the empty password case</tt> → links
+the commit to the task</li>
+<li>branch named <tt class="docutils literal"><span class="pre">tid#42-login-fix</span></tt> → links the branch to the task</li>
+<li>PR titled <tt class="docutils literal">Login fixes for tid#42</tt> → links the PR (and its source
+branch) to the task</li>
+</ul>
+</div>
+<div class="section" id="which-entity-gets-linked">
+<h4><a class="toc-backref" href="#toc-entry-10">Which entity gets linked</a></h4>
+<p>Each entity is linked through its own references only — a commit never
+links a task just because it was pushed on a matching branch:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="28%" />
+<col width="27%" />
+<col width="28%" />
+<col width="16%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">A key found in…</th>
+<th class="head">links the commit</th>
+<th class="head">the branch</th>
+<th class="head">the PR/MR</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>a commit message
+(push event)</td>
+<td>✓ (that commit)</td>
+<td>—</td>
+<td>—</td>
+</tr>
+<tr><td>the branch name
+(push event)</td>
+<td>—</td>
+<td>✓</td>
+<td>—</td>
+</tr>
+<tr><td>a commit message
+(PR/MR event)</td>
+<td>✓ (that commit)</td>
+<td>✓ (only source
+branch)</td>
+<td>✓</td>
+</tr>
+<tr><td>the source branch
+name (PR/MR
+event)</td>
+<td>—</td>
+<td>✓ (only source
+branch)</td>
+<td>✓</td>
+</tr>
+<tr><td>the PR/MR title
+(PR/MR event)</td>
+<td>—</td>
+<td>✓ (only source
+branch)</td>
+<td>✓</td>
+</tr>
+</tbody>
+</table>
+<p>On PR/MR events the source branch inherits every task linked to the
+PR/MR itself.</p>
+</div>
+</div>
+</div>
+<div class="section" id="development">
+<h2><a class="toc-backref" href="#toc-entry-11">Development</a></h2>
+<div class="section" id="writing-a-platform-bridge">
+<h3><a class="toc-backref" href="#toc-entry-12">Writing a platform bridge</a></h3>
+<p>A bridge module (see <tt class="docutils literal">project_github</tt> / <tt class="docutils literal">project_gitlab</tt> as
+references) connects one git hosting platform to this base. It provides:</p>
+<ol class="arabic">
+<li><p class="first"><strong>A controller child</strong> extending <tt class="docutils literal">ProjectGitWebhook</tt>:</p>
+<ul class="simple">
+<li><tt class="docutils literal">_detect_event_source(headers)</tt>: claim the requests of your
+platform by their specific header and return your source name; fall
+through to <tt class="docutils literal">super()</tt> otherwise. Chain rule: a <em>specific</em> claim
+comes <strong>before</strong> <tt class="docutils literal">super()</tt>, a <em>catch-all</em> claim (accepting e.g.
+any self-hosted instance) comes <strong>after</strong> it, so the MRO order
+between bridges never matters.</li>
+<li><tt class="docutils literal"><span class="pre">_verify_webhook_token_&lt;source&gt;(token)</span></tt>: authorize the request
+the way your platform does (verbatim token header, payload
+signature, …).</li>
+<li><tt class="docutils literal"><span class="pre">_parse_request_&lt;source&gt;(event,</span> headers)</tt>: normalize the payload.
+The parser must set the common keys <tt class="docutils literal">source</tt>, <tt class="docutils literal">repository_url</tt>
+and <tt class="docutils literal">project_git_event_type</tt> (mapped from the authoritative event
+discriminator of your platform; <tt class="docutils literal">push</tt> events are then refined by
+the base into
+<tt class="docutils literal">branch_creation</tt>/<tt class="docutils literal">branch_deletion</tt>/<tt class="docutils literal">commit_push</tt> via the
+git-native null-SHA schema).</li>
+</ul>
+</li>
+<li><p class="first"><strong>Model extensions on ``project.git.event``</strong> with the per-source
+naming convention <tt class="docutils literal">&lt;method&gt;_&lt;source&gt;</tt>:</p>
+<ul class="simple">
+<li>mandatory dispatched implementations (<tt class="docutils literal">_dispatch_by_source</tt> warns
+when missing): <tt class="docutils literal">_extract_pr_title_from_event_&lt;source&gt;</tt>,
+<tt class="docutils literal">_extract_branch_names_from_event_&lt;source&gt;</tt>,
+<tt class="docutils literal">_build_branch_url_&lt;source&gt;</tt>, <tt class="docutils literal">_fetch_pr_commits_&lt;source&gt;</tt>,
+<tt class="docutils literal">_prepare_pull_request_vals_&lt;source&gt;</tt>,
+<tt class="docutils literal">_extract_pr_identifiers_&lt;source&gt;</tt>;</li>
+<li>optional hooks of generic methods (silently skipped when missing):
+<tt class="docutils literal">_prepare_commit_vals_&lt;source&gt;</tt> (per-platform name/description),
+<tt class="docutils literal">_extract_pr_fallback_commits_&lt;source&gt;</tt> (implement only if your
+payload carries honest head-commit data);</li>
+<li>the <tt class="docutils literal">_process_&lt;event type&gt;</tt> handlers that only exist on your
+platform (e.g. a pipeline event).</li>
+</ul>
+<p><strong>Normalized commit format</strong>: every commit dict crossing the pipeline
+(webhook payload or API conversion) carries <tt class="docutils literal">id</tt> (full sha),
+<tt class="docutils literal">message</tt>, <tt class="docutils literal">url</tt>, <tt class="docutils literal">timestamp</tt>. A platform whose payload
+diverges maps it at the boundary (parser or API converter of the
+bridge), never by reimplementing the generic methods.</p>
+</li>
+<li><p class="first"><strong>The platform API client</strong> on <tt class="docutils literal">project.git.auth</tt>
+(<tt class="docutils literal">_connect_&lt;source&gt;</tt>), together with the Python library dependency,
+and the per-source hooks of <tt class="docutils literal">project.git.pull.request</tt>
+(<tt class="docutils literal">_post_message_&lt;source&gt;</tt>, <tt class="docutils literal">_is_pr_opening_&lt;source&gt;</tt>) plus a
+<tt class="docutils literal">selection_add</tt> on its <tt class="docutils literal">source</tt> field.</p>
+</li>
+<li><p class="first">Optionally, a <tt class="docutils literal">_create_project_webhook_&lt;source&gt;</tt> implementation on
+<tt class="docutils literal">project.project</tt> (automatic webhook deployment) claiming its URLs
+in <tt class="docutils literal">_get_url_platform</tt> with the same chain rule as above.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="known-issues-roadmap">
+<h2><a class="toc-backref" href="#toc-entry-13">Known issues / Roadmap</a></h2>
+<ul class="simple">
+<li>Pipeline tracking is currently GitLab-only; GitHub Actions support
+could be added in the same way (the CI status and tags already live in
+this base module).</li>
+<li>Platform issues are not tracked: the module processes pushes (commits
+and branches), pull/merge requests and CI pipelines only. Both
+platforms deliver issue events on their webhooks, so issue tracking
+could be added in the same way.</li>
+<li>Task references are only evaluated when the platform delivers the
+event: there is no automatic recovery for events missed while Odoo was
+unreachable. Missed deliveries can be resent manually from the webhook
+page of the repository (GitLab keeps the last two days of deliveries
+and disables a webhook after repeated failures — re-enable it if Odoo
+was down for long; on GitHub failed deliveries can also be redelivered
+via API script). Every git entity is created idempotently — matched by
+its sha or platform identifier — so redelivering an already-processed
+event is safe.</li>
+</ul>
+</div>
+<div class="section" id="bug-tracker">
+<h2><a class="toc-backref" href="#toc-entry-14">Bug Tracker</a></h2>
+<p>Bugs are tracked on <a class="reference external" href="https://github.com/OCA/project/issues">GitHub Issues</a>.
+In case of trouble, please check there if your issue has already been reported.
+If you spotted it first, help us to smash it by providing a detailed and welcomed
+<a class="reference external" href="https://github.com/OCA/project/issues/new?body=module:%20project_git%0Aversion:%2017.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**">feedback</a>.</p>
+<p>Do not contact contributors directly about support or help with technical issues.</p>
+</div>
+<div class="section" id="credits">
+<h2><a class="toc-backref" href="#toc-entry-15">Credits</a></h2>
+<div class="section" id="authors">
+<h3><a class="toc-backref" href="#toc-entry-16">Authors</a></h3>
+<ul class="simple">
+<li>Jarsa</li>
+<li>Francesco Ballerini</li>
+</ul>
+</div>
+<div class="section" id="contributors">
+<h3><a class="toc-backref" href="#toc-entry-17">Contributors</a></h3>
+<ul class="simple">
+<li>Jesús Alan Ramos Rodríguez &lt;<a class="reference external" href="mailto:alan.ramos&#64;jarsa.com.mx">alan.ramos&#64;jarsa.com.mx</a>&gt;</li>
+<li>Francesco Ballerini &lt;<a class="reference external" href="mailto:francescobl.lavoro&#64;gmail.com">francescobl.lavoro&#64;gmail.com</a>&gt;</li>
+</ul>
+</div>
+<div class="section" id="maintainers">
+<h3><a class="toc-backref" href="#toc-entry-18">Maintainers</a></h3>
+<p>This module is maintained by the OCA.</p>
+<a class="reference external image-reference" href="https://odoo-community.org">
+<img alt="Odoo Community Association" src="https://odoo-community.org/logo.png" />
+</a>
+<p>OCA, or the Odoo Community Association, is a nonprofit organization whose
+mission is to support the collaborative development of Odoo features and
+promote its widespread use.</p>
+<p>Current <a class="reference external" href="https://odoo-community.org/page/maintainer-role">maintainer</a>:</p>
+<p><a class="reference external image-reference" href="https://github.com/FrancescoBallerini"><img alt="FrancescoBallerini" src="https://github.com/FrancescoBallerini.png?size=40px" /></a></p>
+<p>This module is part of the <a class="reference external" href="https://github.com/OCA/project/tree/17.0/project_git">OCA/project</a> project on GitHub.</p>
+<p>You are welcome to contribute. To learn how please visit <a class="reference external" href="https://odoo-community.org/page/Contribute">https://odoo-community.org/page/Contribute</a>.</p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

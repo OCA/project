@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="view_project_git_pull_request_tree">
+        <field name="name">project.git.pull.request.tree</field>
+        <field name="model">project.git.pull.request</field>
+        <field name="arch" type="xml">
+            <tree
+                decoration-danger="ci_status=='failed'"
+                decoration-info="ci_status=='pending'"
+                decoration-success="ci_status=='success'"
+                decoration-muted="ci_status in ['skipped', 'canceled']"
+                decoration-primary="ci_status=='running'"
+            >
+                <field name="id_request" optional="show" />
+                <field name="user_id" optional="show" />
+                <field name="source_branch" optional="show" />
+                <field name="name" optional="show" />
+                <field name="wip" optional="hide" />
+                <field name="approved" optional="hide" />
+                <field name="state" optional="show" />
+                <field name="ci_status" optional="show" />
+                <field name="url" optional="hide" />
+                <field name="task_ids" widget="many2many_tags" optional="hide" />
+                <button
+                    name="open_merge_request"
+                    icon="fa-external-link"
+                    string="Open PR/MR"
+                    type="object"
+                />
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_project_git_pull_request_form">
+        <field name="name">project.git.pull.request.form</field>
+        <field name="model">project.git.pull.request</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="description" />
+                            <field name="url" widget="url" />
+                            <field name="source" />
+                        </group>
+                        <group>
+                            <field name="id_request" />
+                            <field name="user_id" />
+                            <field name="source_branch" />
+                            <field name="source_branch_id" />
+                            <field name="target_branch" />
+                            <field name="state" />
+                            <field name="ci_status" />
+                            <field name="wip" />
+                            <field name="approved" />
+                            <field name="last_commit" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Commits">
+                            <field name="git_commit_ids">
+                                <tree>
+                                    <field name="name" optional="show" />
+                                    <field name="description" optional="show" />
+                                    <field name="url" optional="show" widget="url" />
+                                    <field name="sha" optional="show" />
+                                    <field name="full_sha" optional="hide" />
+                                    <field name="timestamp" optional="hide" />
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Tasks">
+                            <field name="task_ids">
+                                <tree>
+                                    <field name="name" />
+                                    <field name="project_id" />
+                                    <field name="stage_id" optional="show" />
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Notified Tasks">
+                            <field name="notified_task_ids">
+                                <tree>
+                                    <field name="name" />
+                                    <field name="project_id" />
+                                    <field name="stage_id" optional="show" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_project_git_pull_request_search">
+        <field name="name">project.git.pull.request.search</field>
+        <field name="model">project.git.pull.request</field>
+        <field name="arch" type="xml">
+            <search>
+                <field
+                    name="name"
+                    filter_domain="['|', ('name', 'ilike', self), ('description', 'ilike', self)]"
+                />
+                <field name="id_request" />
+                <field name="user_id" />
+                <field
+                    name="source_branch"
+                    filter_domain="['|', ('source_branch', 'ilike', self), ('target_branch', 'ilike', self)]"
+                />
+                <field name="task_ids" />
+                <filter
+                    name="filter_opened"
+                    string="Opened"
+                    domain="[('state', '=', 'opened')]"
+                />
+                <filter
+                    name="filter_merged"
+                    string="Merged"
+                    domain="[('state', '=', 'merged')]"
+                />
+                <filter
+                    name="filter_closed"
+                    string="Closed"
+                    domain="[('state', '=', 'closed')]"
+                />
+                <separator />
+                <filter
+                    name="filter_wip"
+                    string="Work in Progress"
+                    domain="[('wip', '=', True)]"
+                />
+                <group expand="0" string="Group By">
+                    <filter
+                        name="group_by_state"
+                        string="State"
+                        context="{'group_by': 'state'}"
+                    />
+                    <filter
+                        name="group_by_ci_status"
+                        string="CI Status"
+                        context="{'group_by': 'ci_status'}"
+                    />
+                    <filter
+                        name="group_by_source"
+                        string="Source Platform"
+                        context="{'group_by': 'source'}"
+                    />
+                    <filter
+                        name="group_by_user"
+                        string="Created by"
+                        context="{'group_by': 'user_id'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+
+</odoo>

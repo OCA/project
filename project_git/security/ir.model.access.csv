@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_project_git_event,access_project_git_event,model_project_git_event,base.group_user,1,0,0,0
+access_project_git_branch,access_project_git_branch,model_project_git_branch,base.group_user,1,0,0,0
+access_project_git_commit,access_project_git_commit,model_project_git_commit,base.group_user,1,0,0,0
+access_project_git_pull_request,access_project_git_pull_request,model_project_git_pull_request,base.group_user,1,0,0,0
+access_project_git_branch_system,access_project_git_branch_system,model_project_git_branch,base.group_system,1,1,1,1
+access_project_git_commit_system,access_project_git_commit_system,model_project_git_commit,base.group_system,1,1,1,1
+access_project_git_pull_request_system,access_project_git_pull_request_system,model_project_git_pull_request,base.group_system,1,1,1,1
