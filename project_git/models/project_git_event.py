@@ -584,7 +584,8 @@ class ProjectGitEvent(models.Model):
 
     @api.model
     def _search_existing_pull_request(self, event):
-        """Search for existing pr by id_request/id_project (might check by url)
+        """Search for an existing pr of the same platform by
+        id_request/id_project (identifiers are only unique per platform)
         :param dict event: git event
         :return: existing pull request or empty recordset"""
         pr_identifiers = self._dispatch_by_source(event, "_extract_pr_identifiers")
@@ -597,6 +598,7 @@ class ProjectGitEvent(models.Model):
             .sudo()
             .search(
                 [
+                    ("source", "=", event.get("source")),
                     ("id_request", "=", request_id),
                     ("id_project", "=", project_id),
                 ],

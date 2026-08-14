@@ -479,6 +479,37 @@ class TestGitlabMergeRequest(ProjectGitlabCase):
         # (GL-100 by title, GL-115 by commit message - anti-spam tracking)
         self.assertEqual(merge_request.discussions.create.call_count, 2)
 
+    def test_mr_does_not_reuse_pr_of_another_platform(self):
+        # (id_project, id_request) pairs are only unique per platform: a
+        # PR of another platform sharing the identifiers (plausible with
+        # the small ids of a self-hosted GitLab) must not be picked up
+        # and overwritten by the MR event. The foreign PR is simulated
+        # with an unset source, so the test does not depend on the
+        # selection value of another installed bridge.
+        payload = self._mr_payload(title="GL-100 add new file")
+        foreign_pull_request = self.env["project.git.pull.request"].create(
+            {
+                "name": "Same identifiers on another platform",
+                "id_project": payload["project"]["id"],
+                "id_request": payload["object_attributes"]["iid"],
+                "url": "https://other-platform.example.com/acme/demo-repo/pull/1",
+            }
+        )
+        patcher, _merge_request = self._mock_gitlab_client()
+        with patcher:
+            self._dispatch(payload, "gitlab")
+
+        pull_request = self._get_pull_request(payload["object_attributes"]["url"])
+        self.assertEqual(len(pull_request), 1)
+        self.assertNotEqual(pull_request, foreign_pull_request)
+        self.assertEqual(pull_request.source, "gitlab")
+        # The foreign record is left untouched
+        self.assertEqual(
+            foreign_pull_request.name, "Same identifiers on another platform"
+        )
+        self.assertFalse(foreign_pull_request.source)
+        self.assertFalse(foreign_pull_request.task_ids)
+
     def test_mr_state_tags_are_assigned_to_task(self):
         payload = self._mr_payload(title="GL-100 add new file")
         patcher, _merge_request = self._mock_gitlab_client()

@@ -164,6 +164,36 @@ class TestGithubPullRequest(ProjectGithubCase):
         message_body = pull.create_issue_comment.call_args[0][0]
         self.assertIn("cannot be found", str(message_body))
 
+    def test_pr_does_not_reuse_pr_of_another_platform(self):
+        # (id_project, id_request) pairs are only unique per platform: a
+        # PR of another platform sharing the identifiers must not be
+        # picked up and overwritten by the PR event. The foreign PR is
+        # simulated with an unset source, so the test does not depend on
+        # the selection value of another installed bridge.
+        payload = self._pr_payload(title="GH-100 update readme")
+        foreign_pull_request = self.env["project.git.pull.request"].create(
+            {
+                "name": "Same identifiers on another platform",
+                "id_project": payload["repository"]["id"],
+                "id_request": payload["number"],
+                "url": "https://other-platform.example.com/acme/demo-repo/-/merge_requests/2",
+            }
+        )
+        patcher, _pull = self._mock_github_client()
+        with patcher:
+            self._dispatch(payload, "github")
+
+        pull_request = self._get_pull_request(payload["pull_request"]["html_url"])
+        self.assertEqual(len(pull_request), 1)
+        self.assertNotEqual(pull_request, foreign_pull_request)
+        self.assertEqual(pull_request.source, "github")
+        # The foreign record is left untouched
+        self.assertEqual(
+            foreign_pull_request.name, "Same identifiers on another platform"
+        )
+        self.assertFalse(foreign_pull_request.source)
+        self.assertFalse(foreign_pull_request.task_ids)
+
     def test_pr_closed_event_updates_state_and_tags(self):
         payload = self._pr_payload(title="GH-100 update readme")
         patcher, _pull = self._mock_github_client()
