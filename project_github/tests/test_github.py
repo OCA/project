@@ -199,7 +199,7 @@ class TestGithubPullRequest(ProjectGithubCase):
         patcher, _pull = self._mock_github_client()
         with patcher:
             self._dispatch(payload, "github")
-            self.assertIn("MR: Opened", self.gh_task_100.tag_ids.mapped("name"))
+            self.assertIn("PR: Opened", self.gh_task_100.tag_ids.mapped("name"))
             payload["action"] = "closed"
             payload["pull_request"]["state"] = "closed"
             self._dispatch(payload, "github")
@@ -208,10 +208,28 @@ class TestGithubPullRequest(ProjectGithubCase):
         self.assertEqual(pull_request.state, "closed")
         # The state tag is replaced, not accumulated
         tag_names = self.gh_task_100.tag_ids.mapped("name")
-        self.assertIn("MR: Closed", tag_names)
-        self.assertNotIn("MR: Opened", tag_names)
+        self.assertIn("PR: Closed", tag_names)
+        self.assertNotIn("PR: Opened", tag_names)
         # No CI events are tracked on GitHub: never a CI tag
         self.assertFalse([tag for tag in tag_names if tag.startswith("CI:")])
+
+    def test_pr_tags_do_not_touch_other_platform_tags(self):
+        # Each source manages only its own tag namespace: a task tag
+        # of another platform (e.g. a GitLab "MR:" one) survives the
+        # GitHub tag alignment. The tag is searched first: the other
+        # bridge may own it when installed alongside.
+        foreign_tag = self.env["project.tags"].search(
+            [("name", "=", "MR: Opened")], limit=1
+        ) or self.env["project.tags"].create({"name": "MR: Opened"})
+        self.gh_task_100.tag_ids = [(4, foreign_tag.id)]
+        payload = self._pr_payload(title="GH-100 update readme")
+        patcher, _pull = self._mock_github_client()
+        with patcher:
+            self._dispatch(payload, "github")
+
+        tag_names = self.gh_task_100.tag_ids.mapped("name")
+        self.assertIn("MR: Opened", tag_names)
+        self.assertIn("PR: Opened", tag_names)
 
     def test_pr_merged_event_updates_state_and_tags(self):
         payload = self._pr_payload(title="GH-100 update readme")
@@ -229,9 +247,9 @@ class TestGithubPullRequest(ProjectGithubCase):
         pull_request = self._get_pull_request(payload["pull_request"]["html_url"])
         self.assertEqual(pull_request.state, "merged")
         tag_names = self.gh_task_100.tag_ids.mapped("name")
-        self.assertIn("MR: Merged", tag_names)
-        self.assertNotIn("MR: Opened", tag_names)
-        self.assertNotIn("MR: Closed", tag_names)
+        self.assertIn("PR: Merged", tag_names)
+        self.assertNotIn("PR: Opened", tag_names)
+        self.assertNotIn("PR: Closed", tag_names)
 
     def test_pr_user_mapping_by_github_username(self):
         github_user = self.env["res.users"].create(

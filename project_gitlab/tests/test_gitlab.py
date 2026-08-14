@@ -536,6 +536,24 @@ class TestGitlabMergeRequest(ProjectGitlabCase):
         # No CI tag until a real pipeline event is tracked
         self.assertFalse([tag for tag in tag_names if tag.startswith("CI:")])
 
+    def test_mr_tags_do_not_touch_other_platform_tags(self):
+        # Each source manages only its own tag namespace: a task tag
+        # of another platform (e.g. a GitHub "PR:" one) survives the
+        # GitLab tag alignment. The tag is searched first: the other
+        # bridge may own it when installed alongside.
+        foreign_tag = self.env["project.tags"].search(
+            [("name", "=", "PR: Opened")], limit=1
+        ) or self.env["project.tags"].create({"name": "PR: Opened"})
+        self.gl_task_100.tag_ids = [(4, foreign_tag.id)]
+        payload = self._mr_payload(title="GL-100 add new file")
+        patcher, _merge_request = self._mock_gitlab_client()
+        with patcher:
+            self._dispatch(payload, "gitlab")
+
+        tag_names = self.gl_task_100.tag_ids.mapped("name")
+        self.assertIn("PR: Opened", tag_names)
+        self.assertIn("MR: Opened", tag_names)
+
     def test_mr_merge_event_updates_state_and_tags(self):
         payload = self._mr_payload(title="GL-100 add new file")
         patcher, _merge_request = self._mock_gitlab_client()

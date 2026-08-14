@@ -337,8 +337,17 @@ references) connects one git hosting platform to this base. It provides:
 3. **The platform API client** on ``project.git.auth``
    (``_connect_<source>``), together with the Python library dependency,
    and the per-source hooks of ``project.git.pull.request``
-   (``_post_message_<source>``, ``_is_pr_opening_<source>``) plus a
-   ``selection_add`` on its ``source`` field.
+   (``_post_message_<source>``, ``_is_pr_opening_<source>``,
+   ``_assign_tags_to_task_<source>``) plus a ``selection_add`` on its
+   ``source`` field.
+
+   **Task tags**: the bridge owns its whole tagging process — it ships
+   its own ``project.tags`` master-data for the states it populates and
+   its ``_assign_tags_to_task_<source>`` manages only its own tag
+   namespace (wipe and re-add via the generic ``_replace_task_tags``
+   helper). Tag names must be platform-specific (e.g. ``PR:`` vs ``MR:``
+   prefixes): ``project.tags`` names are unique database-wide, and the
+   tags of the other platforms must survive your alignment.
 
 4. Optionally, a ``_create_project_webhook_<source>`` implementation on
    ``project.project`` (automatic webhook deployment) claiming its URLs

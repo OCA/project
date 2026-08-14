@@ -39,8 +39,24 @@ msgid "<span>Prod: </span>"
 msgstr "<span>Producción:</span>"
 
 #. module: project_git
+#: model:ir.model.constraint,message:project_git.constraint_project_git_branch_url_unique
+msgid "A branch with the same URL is already tracked."
+msgstr ""
+
+#. module: project_git
+#: model:ir.model.constraint,message:project_git.constraint_project_git_commit_full_sha_unique
+msgid "A commit with the same SHA is already tracked."
+msgstr ""
+
+#. module: project_git
+#: model:ir.model.constraint,message:project_git.constraint_project_git_pull_request_source_project_request_unique
+msgid ""
+"A pull request with the same identifiers is already tracked for this "
+"platform."
+msgstr ""
+
+#. module: project_git
 #: model:ir.model.fields,field_description:project_git.field_project_git_pull_request__approved
-#: model:project.tags,name:project_git.project_tags_approved
 msgid "Approved"
 msgstr "Aprobada"
 
@@ -69,41 +85,6 @@ msgstr ""
 #: model_terms:ir.ui.view,arch_db:project_git.view_project_git_pull_request_search
 msgid "CI Status"
 msgstr "Estado CI"
-
-#. module: project_git
-#: model:project.tags,name:project_git.project_tags_canceled
-msgid "CI: Canceled"
-msgstr "CI: Cancelado"
-
-#. module: project_git
-#: model:project.tags,name:project_git.project_tags_failed
-msgid "CI: Failed"
-msgstr "IC: Fallido"
-
-#. module: project_git
-#: model:project.tags,name:project_git.project_tags_pending
-msgid "CI: Pending"
-msgstr "CI: Pendiente"
-
-#. module: project_git
-#: model:project.tags,name:project_git.project_tags_running
-msgid "CI: Running"
-msgstr "CI: Corriendo"
-
-#. module: project_git
-#: model:project.tags,name:project_git.project_tags_skipped
-msgid "CI: Skipped"
-msgstr "CI: Omitido"
-
-#. module: project_git
-#: model:project.tags,name:project_git.project_tags_success
-msgid "CI: Success"
-msgstr "CI: Éxito"
-
-#. module: project_git
-#: model:project.tags,name:project_git.project_tags_unknown
-msgid "CI: Unknown"
-msgstr "CI: Desconocido"
 
 #. module: project_git
 #: model:ir.model.fields.selection,name:project_git.selection__project_git_pull_request__ci_status__canceled
@@ -276,7 +257,6 @@ msgstr "Ultima actualización en"
 #. module: project_git
 #. odoo-python
 #: code:addons/project_git/models/project_git_pull_request.py:0
-#, python-format
 msgid "Linked to Odoo task [#%(id)s](%(url)s)"
 msgstr "Vinculado a la tarea de Odoo [#%(id)s](%(url)s)"
 
@@ -284,26 +264,6 @@ msgstr "Vinculado a la tarea de Odoo [#%(id)s](%(url)s)"
 #: model:ir.model.fields.selection,name:project_git.selection__project_git_pull_request__state__locked
 msgid "Locked"
 msgstr "Bloqueado"
-
-#. module: project_git
-#: model:project.tags,name:project_git.project_tags_closed
-msgid "MR: Closed"
-msgstr "MR: Cerrado"
-
-#. module: project_git
-#: model:project.tags,name:project_git.project_tags_locked
-msgid "MR: Locked"
-msgstr "MR: Bloqueado"
-
-#. module: project_git
-#: model:project.tags,name:project_git.project_tags_merged
-msgid "MR: Merged"
-msgstr "MR: Fusionado"
-
-#. module: project_git
-#: model:project.tags,name:project_git.project_tags_opened
-msgid "MR: Opened"
-msgstr "MR: Abierto"
 
 #. module: project_git
 #: model:ir.model.fields.selection,name:project_git.selection__project_git_pull_request__state__merged
@@ -457,7 +417,6 @@ msgstr "Campo técnico utilizado para rastrear la identificación del proyecto e
 #. module: project_git
 #. odoo-python
 #: code:addons/project_git/models/project_git_auth.py:0
-#, python-format
 msgid ""
 "The %s system parameter is missing or still set to the insecure demo "
 "default: configure a real API token."
@@ -466,7 +425,6 @@ msgstr ""
 #. module: project_git
 #. odoo-python
 #: code:addons/project_git/models/project_git_pull_request.py:0
-#, python-format
 msgid "The task id(s) %(ids)s cannot be found in Odoo."
 msgstr ""
 
@@ -501,7 +459,6 @@ msgstr "Desconocido"
 
 #. module: project_git
 #: model:ir.model.fields,field_description:project_git.field_project_git_pull_request__wip
-#: model:project.tags,name:project_git.project_tags_wip
 msgid "WIP"
 msgstr ""
 

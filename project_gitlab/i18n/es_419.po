@@ -17,6 +17,46 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: project_gitlab
+#: model:project.tags,name:project_gitlab.project_tags_approved
+msgid "Approved"
+msgstr "Aprobada"
+
+#. module: project_gitlab
+#: model:project.tags,name:project_gitlab.project_tags_canceled
+msgid "CI: Canceled"
+msgstr "CI: Cancelado"
+
+#. module: project_gitlab
+#: model:project.tags,name:project_gitlab.project_tags_failed
+msgid "CI: Failed"
+msgstr "IC: Fallido"
+
+#. module: project_gitlab
+#: model:project.tags,name:project_gitlab.project_tags_pending
+msgid "CI: Pending"
+msgstr "CI: Pendiente"
+
+#. module: project_gitlab
+#: model:project.tags,name:project_gitlab.project_tags_running
+msgid "CI: Running"
+msgstr "CI: Corriendo"
+
+#. module: project_gitlab
+#: model:project.tags,name:project_gitlab.project_tags_skipped
+msgid "CI: Skipped"
+msgstr "CI: Omitido"
+
+#. module: project_gitlab
+#: model:project.tags,name:project_gitlab.project_tags_success
+msgid "CI: Success"
+msgstr "CI: Éxito"
+
+#. module: project_gitlab
+#: model:project.tags,name:project_gitlab.project_tags_unknown
+msgid "CI: Unknown"
+msgstr "CI: Desconocido"
+
+#. module: project_gitlab
 #: model:ir.model,name:project_gitlab.model_project_git_auth
 msgid "Git Platform Authentication"
 msgstr ""
@@ -37,6 +77,12 @@ msgid "GitLab"
 msgstr ""
 
 #. module: project_gitlab
+#. odoo-python
+#: code:addons/project_gitlab/models/res_users.py:0
+msgid "GitLab username \"%(username)s\" is already assigned to user %(user)s."
+msgstr ""
+
+#. module: project_gitlab
 #: model:ir.model.fields,field_description:project_gitlab.field_res_users__gitlab_username
 msgid "Gitlab Username"
 msgstr "Usuario de Gitlab"
@@ -44,21 +90,38 @@ msgstr "Usuario de Gitlab"
 #. module: project_gitlab
 #. odoo-python
 #: code:addons/project_gitlab/models/project_project.py:0
-#, python-format
 msgid "Job cannot be retried, it is a job in progress"
 msgstr "El trabajo no se puede volver a intentar, es un trabajo en progreso"
 
 #. module: project_gitlab
 #. odoo-python
 #: code:addons/project_gitlab/models/project_project.py:0
-#, python-format
 msgid "Job odoo_sh_deploy has been retried"
 msgstr "Se ha reintentado el trabajo odoo_sh_deploy"
 
 #. module: project_gitlab
+#: model:project.tags,name:project_gitlab.project_tags_closed
+msgid "MR: Closed"
+msgstr "MR: Cerrado"
+
+#. module: project_gitlab
+#: model:project.tags,name:project_gitlab.project_tags_locked
+msgid "MR: Locked"
+msgstr "MR: Bloqueado"
+
+#. module: project_gitlab
+#: model:project.tags,name:project_gitlab.project_tags_merged
+msgid "MR: Merged"
+msgstr "MR: Fusionado"
+
+#. module: project_gitlab
+#: model:project.tags,name:project_gitlab.project_tags_opened
+msgid "MR: Opened"
+msgstr "MR: Abierto"
+
+#. module: project_gitlab
 #. odoo-python
 #: code:addons/project_gitlab/models/project_project.py:0
-#, python-format
 msgid "No job odoo_sh_deploy found"
 msgstr "No se encontró ningún trabajo odoo_sh_deploy"
 
@@ -81,3 +144,8 @@ msgstr "Actualizar Odoo.sh"
 #: model:ir.model,name:project_gitlab.model_res_users
 msgid "User"
 msgstr "Usuario"
+
+#. module: project_gitlab
+#: model:project.tags,name:project_gitlab.project_tags_wip
+msgid "WIP"
+msgstr ""

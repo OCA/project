@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!-- Master-data for the PR states the GitHub bridge populates.
+         CI tags will follow with the CI events support (see ROADMAP). -->
+    <record id="project_tags_opened" model="project.tags">
+        <field name="name">PR: Opened</field>
+        <field name="color">8</field>
+    </record>
+    <record id="project_tags_merged" model="project.tags">
+        <field name="name">PR: Merged</field>
+        <field name="color">10</field>
+    </record>
+    <record id="project_tags_closed" model="project.tags">
+        <field name="name">PR: Closed</field>
+        <field name="color">2</field>
+    </record>
+</odoo>

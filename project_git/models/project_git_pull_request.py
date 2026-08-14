@@ -218,42 +218,33 @@ class ProjectGitPullRequest(models.Model):
         return False
 
     def assign_tags(self):
+        """Align the state tags of the related tasks.
+
+        The whole tagging process is per-source (each bridge owns its
+        master-data, its tag namespace and the fields it populates):
+        the bridges implement _assign_tags_to_task_<source>. Records
+        without an implementation (e.g. created by hand without a
+        source) are skipped.
+        """
         for git_pull_request in self:
             if not git_pull_request.state:
                 continue
+            method_name = "_assign_tags_to_task_%s" % git_pull_request.source
+            if not hasattr(git_pull_request, method_name):
+                _logger.warning(
+                    "No _assign_tags_to_task implementation for source %r",
+                    git_pull_request.source,
+                )
+                continue
             for task in git_pull_request.task_ids:
-                git_pull_request._assign_tags_to_task(task)
+                getattr(git_pull_request, method_name)(task)
 
-    def _assign_tags_to_task(self, task):
-        """Align the MR/CI state tags of a single related task."""
-        self.ensure_one()
-        tags = []
-        tag_model = task.tag_ids._name
-        current_tags = self.env[tag_model]
-        current_tags |= task.tag_ids.filtered(
-            lambda t: t.name.startswith("MR:") or t.name.startswith("CI:")
-        )
-        for tag in current_tags:
-            tags.append((3, tag.id, 0))
-        # Create prefix to have a base to get the external ID.
-        # Possible values of prefix:
-        # 'project_git.project_tags_'
-        prefix = "project_git." + tag_model.replace(".", "_") + "_"
-        # Get CI status tag.
-        if self.ci_status:
-            tags.append((4, self.env.ref(prefix + self.ci_status).id, 0))
-        # Get MR state tag.
-        tags.append((4, self.env.ref(prefix + self.state).id, 0))
-        if self.approved:
-            tags.append((4, self.env.ref(prefix + "approved").id, 0))
-        else:
-            tags.append((3, self.env.ref(prefix + "approved").id, 0))
-        if self.wip:
-            tags.append((4, self.env.ref(prefix + "wip").id, 0))
-        else:
-            tags.append((3, self.env.ref(prefix + "wip").id, 0))
+    def _replace_task_tags(self, task, tags_to_remove, tags_to_add):
+        """Replace a set of tags on a task in a single write (removals
+        first, then additions)."""
         task.write(
             {
-                "tag_ids": tags,
+                "tag_ids": [(3, tag.id) for tag in tags_to_remove]
+                + [(4, tag.id) for tag in tags_to_add],
             }
         )

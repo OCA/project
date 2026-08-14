@@ -13,6 +13,14 @@ class ProjectGitPullRequest(models.Model):
     def _is_pr_opening_github(self, event):
         return event.get("action") == "opened"
 
+    def _assign_tags_to_task_github(self, task):
+        """Align the PR state tag of a single related task (the bridge
+        tracks no CI/approval/draft state yet, see ROADMAP)."""
+        self.ensure_one()
+        managed_tags = task.tag_ids.filtered(lambda t: t.name.startswith("PR:"))
+        tags_to_add = self.env.ref("project_github.project_tags_" + self.state)
+        self._replace_task_tags(task, managed_tags, tags_to_add)
+
     def _post_message_github(self, message, event=None):
         """Post a comment on the GitHub pull request"""
         if self:

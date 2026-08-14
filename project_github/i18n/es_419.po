@@ -37,9 +37,30 @@ msgid "GitHub"
 msgstr ""
 
 #. module: project_github
+#. odoo-python
+#: code:addons/project_github/models/res_users.py:0
+msgid "GitHub username \"%(username)s\" is already assigned to user %(user)s."
+msgstr ""
+
+#. module: project_github
 #: model:ir.model.fields,field_description:project_github.field_res_users__github_username
 msgid "Github Username"
 msgstr "Nombre de usuario de Github"
+
+#. module: project_github
+#: model:project.tags,name:project_github.project_tags_closed
+msgid "PR: Closed"
+msgstr ""
+
+#. module: project_github
+#: model:project.tags,name:project_github.project_tags_merged
+msgid "PR: Merged"
+msgstr ""
+
+#. module: project_github
+#: model:project.tags,name:project_github.project_tags_opened
+msgid "PR: Opened"
+msgstr ""
 
 #. module: project_github
 #: model:ir.model,name:project_github.model_project_project

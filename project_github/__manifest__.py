@@ -17,6 +17,7 @@
     ],
     "data": [
         "data/ir_config_parameter.xml",
+        "data/project_tags_data.xml",
         "views/res_users_view.xml",
     ],
     "external_dependencies": {

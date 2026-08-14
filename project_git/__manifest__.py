@@ -20,7 +20,6 @@
     "data": [
         "data/message_templates.xml",
         "data/ir_config_parameter.xml",
-        "data/project_tags_data.xml",
         "views/project_git_branch_view.xml",
         "views/project_git_commit_view.xml",
         "views/project_git_pull_request_view.xml",

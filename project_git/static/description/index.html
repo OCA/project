@@ -711,8 +711,16 @@ bridge), never by reimplementing the generic methods.</p>
 <li><p class="first"><strong>The platform API client</strong> on <tt class="docutils literal">project.git.auth</tt>
 (<tt class="docutils literal">_connect_&lt;source&gt;</tt>), together with the Python library dependency,
 and the per-source hooks of <tt class="docutils literal">project.git.pull.request</tt>
-(<tt class="docutils literal">_post_message_&lt;source&gt;</tt>, <tt class="docutils literal">_is_pr_opening_&lt;source&gt;</tt>) plus a
-<tt class="docutils literal">selection_add</tt> on its <tt class="docutils literal">source</tt> field.</p>
+(<tt class="docutils literal">_post_message_&lt;source&gt;</tt>, <tt class="docutils literal">_is_pr_opening_&lt;source&gt;</tt>,
+<tt class="docutils literal">_assign_tags_to_task_&lt;source&gt;</tt>) plus a <tt class="docutils literal">selection_add</tt> on its
+<tt class="docutils literal">source</tt> field.</p>
+<p><strong>Task tags</strong>: the bridge owns its whole tagging process — it ships
+its own <tt class="docutils literal">project.tags</tt> master-data for the states it populates and
+its <tt class="docutils literal">_assign_tags_to_task_&lt;source&gt;</tt> manages only its own tag
+namespace (wipe and re-add via the generic <tt class="docutils literal">_replace_task_tags</tt>
+helper). Tag names must be platform-specific (e.g. <tt class="docutils literal">PR:</tt> vs <tt class="docutils literal">MR:</tt>
+prefixes): <tt class="docutils literal">project.tags</tt> names are unique database-wide, and the
+tags of the other platforms must survive your alignment.</p>
 </li>
 <li><p class="first">Optionally, a <tt class="docutils literal">_create_project_webhook_&lt;source&gt;</tt> implementation on
 <tt class="docutils literal">project.project</tt> (automatic webhook deployment) claiming its URLs
