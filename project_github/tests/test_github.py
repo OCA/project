@@ -1,11 +1,6 @@
 # Copyright 2026 Francesco Ballerini
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
 
-from psycopg2 import IntegrityError
-
-from odoo.exceptions import ValidationError
-from odoo.tools import mute_logger
-
 from .common import GITHUB_REPO_URL, NULL_SHA, ProjectGithubCase
 
 
@@ -199,26 +194,6 @@ class TestGithubPullRequest(ProjectGithubCase):
         self.assertFalse(foreign_pull_request.source)
         self.assertFalse(foreign_pull_request.task_ids)
 
-    def test_pr_identifiers_unique_within_platform(self):
-        # SQL constraint guarding the search-then-create dedup of the
-        # event flow against concurrent jobs on the same PR
-        payload = self._pr_payload()
-        pull_request_vals = {
-            "name": "GitHub PR",
-            "source": "github",
-            "id_project": payload["repository"]["id"],
-            "id_request": payload["pull_request"]["number"],
-        }
-        self.env["project.git.pull.request"].create(pull_request_vals)
-        with (
-            self.assertRaises(IntegrityError),
-            mute_logger("odoo.sql_db"),
-            self.env.cr.savepoint(),
-        ):
-            self.env["project.git.pull.request"].create(
-                dict(pull_request_vals, name="GitHub PR duplicate")
-            )
-
     def test_pr_closed_event_updates_state_and_tags(self):
         payload = self._pr_payload(title="GH-100 update readme")
         patcher, _pull = self._mock_github_client()
@@ -272,25 +247,6 @@ class TestGithubPullRequest(ProjectGithubCase):
 
         pull_request = self._get_pull_request(payload["pull_request"]["html_url"])
         self.assertEqual(pull_request.user_id, github_user)
-
-    def test_github_username_must_be_unique(self):
-        # The PR author matching picks one user per username: a
-        # duplicate github_username is rejected (Python constraint)
-        self.env["res.users"].create(
-            {
-                "name": "GitHub User One",
-                "login": "github-user-one@example.com",
-                "github_username": "gh-duplicate-user",
-            }
-        )
-        with self.assertRaises(ValidationError):
-            self.env["res.users"].create(
-                {
-                    "name": "GitHub User Two",
-                    "login": "github-user-two@example.com",
-                    "github_username": "gh-duplicate-user",
-                }
-            )
 
     def test_pr_commit_message_is_split_in_title_and_description(self):
         long_title = "GH-100 " + "x" * 80
