@@ -15,7 +15,7 @@
     "license": "LGPL-3",
     "depends": [
         "project",
-        "queue_job_cron_jobrunner",
+        "queue_job",
     ],
     "data": [
         "data/message_templates.xml",

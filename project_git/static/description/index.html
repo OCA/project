@@ -439,10 +439,15 @@ pipeline status</p>
 </div>
 <div class="section" id="installation">
 <h2><a class="toc-backref" href="#toc-entry-1">Installation</a></h2>
-<p>This module has no Python dependency of its own, but it does nothing on
-its own: install one bridge module per platform you want to connect
+<p>This module requires no git platform Python library, but it does nothing
+by itself: install one bridge module per platform you want to connect
 (<tt class="docutils literal">project_github</tt> for GitHub, <tt class="docutils literal">project_gitlab</tt> for GitLab). Each
 bridge installs the Python library of its platform.</p>
+<p>Webhook processing relies on the <tt class="docutils literal">queue_job</tt> module, from the
+<a class="reference external" href="https://github.com/OCA/queue">OCA/queue</a> repository. On hostings
+where the standard queue_job jobrunner cannot run (e.g. Odoo.sh), also
+install <tt class="docutils literal">queue_job_cron_jobrunner</tt> (same repository) to process the
+jobs from a cron instead.</p>
 </div>
 <div class="section" id="configuration">
 <h2><a class="toc-backref" href="#toc-entry-2">Configuration</a></h2>
