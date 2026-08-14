@@ -409,6 +409,21 @@ class TestGitlabMergeRequest(ProjectGitlabCase):
         # The other tasks are untouched
         self.assertFalse(self.gl_task_100.git_pull_request_ids)
 
+    def test_mr_from_fork_builds_branch_url_on_fork(self):
+        # A MR opened from a fork carries the fork project as
+        # object_attributes.source: the source branch URL must point to
+        # the fork, not to the target repository
+        payload = self._mr_payload(title="GL-100 add new file")
+        fork_url = "https://gitlab.example.com/fork-owner/demo-repo"
+        payload["object_attributes"]["source"] = {"web_url": fork_url}
+        patcher, _merge_request = self._mock_gitlab_client()
+        with patcher:
+            self._dispatch(payload, "gitlab")
+
+        branch = self._get_branch("merge-req-branch")
+        self.assertEqual(len(branch), 1)
+        self.assertEqual(branch.url, f"{fork_url}/-/tree/merge-req-branch")
+
     def test_mr_task_id_reference_in_title_links_pr_and_posts_message(self):
         payload = self._mr_payload(
             title=f"Add new file taskid#{self.gl_task_no_pattern.id}"

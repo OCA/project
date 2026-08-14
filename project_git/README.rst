@@ -317,7 +317,8 @@ references) connects one git hosting platform to this base. It provides:
    - mandatory dispatched implementations (``_dispatch_by_source`` warns
      when missing): ``_extract_pr_title_from_event_<source>``,
      ``_extract_branch_names_from_event_<source>``,
-     ``_build_branch_url_<source>``, ``_fetch_pr_commits_<source>``,
+     ``_build_source_branch_url_<source>``,
+     ``_fetch_pr_commits_<source>``,
      ``_prepare_pull_request_vals_<source>``,
      ``_extract_pr_identifiers_<source>``;
    - optional hooks of generic methods (silently skipped when missing):

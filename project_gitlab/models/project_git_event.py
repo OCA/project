@@ -63,8 +63,14 @@ class ProjectGitEvent(models.Model):
         last_commit = event.get("object_attributes", {}).get("last_commit")
         return [last_commit] if last_commit else []
 
-    def _build_branch_url_gitlab(self, event, branch_name):
-        web_url = event.get("project", {}).get("web_url", "")
+    def _build_source_branch_url_gitlab(self, event, branch_name):
+        # Try to get from object_attributes.source first (MR events,
+        # where the source branch may live in a fork)
+        source_project = event.get("object_attributes", {}).get("source") or {}
+        web_url = source_project.get("web_url", "")
+        if not web_url:
+            # Fallback to project (push events)
+            web_url = event.get("project", {}).get("web_url", "")
         if not web_url:
             return ""
         # GitLab format: https://gitlab.com/owner/repo/-/tree/branch-name

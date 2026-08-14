@@ -301,24 +301,24 @@ class ProjectGitEvent(models.Model):
         return repository_projects
 
     @api.model
-    def _build_branch_url(self, event, branch_name):
+    def _build_source_branch_url(self, event, branch_name):
         """
-        Build branch URL based on event data and branch name.
+        Build the URL of the event source branch.
+
+        Each platform resolves the repository hosting the source
+        branch (the fork, for a PR/MR opened from one). The branch
+        name is passed by the callers, which already extract it.
 
         :param dict event: The webhook event
         :param str branch_name: Branch name (required)
         :return: branch URL string (empty string if cannot be built)
-
-        Note: This method intentionally requires branch_name as explicit arg
-        to avoid ambiguity in PR/MR events (which have 2 branches: source
-        and destination). For more flexibility, it could call
-        _extract_branch_names_from_event locally and accept a branch_type
-        arg ('source'/'target') or return both URLs in a dict, but this
-        was avoided to keep the API simple and unambiguous.
         """
         if not branch_name:
             return ""
-        return self._dispatch_by_source(event, "_build_branch_url", branch_name) or ""
+        return (
+            self._dispatch_by_source(event, "_build_source_branch_url", branch_name)
+            or ""
+        )
 
     @api.model
     def _get_or_create_commit(
@@ -557,7 +557,9 @@ class ProjectGitEvent(models.Model):
         # Get URL from values or build from event
         branch_url = values_by_arg.get("url")
         if not branch_url:
-            branch_url = self._build_branch_url(event=event, branch_name=branch_name)
+            branch_url = self._build_source_branch_url(
+                event=event, branch_name=branch_name
+            )
 
         # Build base vals
         default_vals = {
@@ -641,7 +643,7 @@ class ProjectGitEvent(models.Model):
             branch_name = branch_names["source_branch"]
             if branch_name:
                 # Build URL from event
-                url_to_search = self._build_branch_url(
+                url_to_search = self._build_source_branch_url(
                     event=event, branch_name=branch_name
                 )
 
