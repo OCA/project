@@ -53,6 +53,12 @@ name, a PR/MR title) can point to a task in **two different ways**:
   naming convention needed; references to non-existent ids are silently
   ignored.
 
+  Mind the intrinsic limits of database ids before adopting them as
+  your everyday convention: a wrong-but-existing id links the wrong
+  task with no error to catch it, and ids are not portable across
+  databases (the same task carries different ids on staging and
+  production).
+
 ### Matching by issue key
 
 The referencing conventions mirror the Jira ones (see [Referencing

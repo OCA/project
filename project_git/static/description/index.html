@@ -409,30 +409,31 @@ pipeline status</p>
 <ul class="simple">
 <li><a class="reference internal" href="#installation" id="toc-entry-1">Installation</a></li>
 <li><a class="reference internal" href="#configuration" id="toc-entry-2">Configuration</a><ul>
-<li><a class="reference internal" href="#webhook-endpoint" id="toc-entry-3">Webhook endpoint</a></li>
-<li><a class="reference internal" href="#system-parameters" id="toc-entry-4">System parameters</a></li>
-<li><a class="reference internal" href="#project-mapping" id="toc-entry-5">Project mapping</a></li>
+<li><a class="reference internal" href="#configuration-at-a-glance" id="toc-entry-3">Configuration at a glance</a></li>
+<li><a class="reference internal" href="#webhook-endpoint" id="toc-entry-4">Webhook endpoint</a></li>
+<li><a class="reference internal" href="#system-parameters" id="toc-entry-5">System parameters</a></li>
+<li><a class="reference internal" href="#project-mapping" id="toc-entry-6">Project mapping</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#usage" id="toc-entry-6">Usage</a><ul>
-<li><a class="reference internal" href="#how-the-matching-works" id="toc-entry-7">How the matching works</a><ul>
-<li><a class="reference internal" href="#matching-by-issue-key" id="toc-entry-8">Matching by issue key</a></li>
-<li><a class="reference internal" href="#examples" id="toc-entry-9">Examples</a></li>
-<li><a class="reference internal" href="#which-entity-gets-linked" id="toc-entry-10">Which entity gets linked</a></li>
+<li><a class="reference internal" href="#usage" id="toc-entry-7">Usage</a><ul>
+<li><a class="reference internal" href="#how-the-matching-works" id="toc-entry-8">How the matching works</a><ul>
+<li><a class="reference internal" href="#matching-by-issue-key" id="toc-entry-9">Matching by issue key</a></li>
+<li><a class="reference internal" href="#examples" id="toc-entry-10">Examples</a></li>
+<li><a class="reference internal" href="#which-entity-gets-linked" id="toc-entry-11">Which entity gets linked</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a class="reference internal" href="#development" id="toc-entry-11">Development</a><ul>
-<li><a class="reference internal" href="#writing-a-platform-bridge" id="toc-entry-12">Writing a platform bridge</a></li>
+<li><a class="reference internal" href="#development" id="toc-entry-12">Development</a><ul>
+<li><a class="reference internal" href="#writing-a-platform-bridge" id="toc-entry-13">Writing a platform bridge</a></li>
 </ul>
 </li>
-<li><a class="reference internal" href="#known-issues-roadmap" id="toc-entry-13">Known issues / Roadmap</a></li>
-<li><a class="reference internal" href="#bug-tracker" id="toc-entry-14">Bug Tracker</a></li>
-<li><a class="reference internal" href="#credits" id="toc-entry-15">Credits</a><ul>
-<li><a class="reference internal" href="#authors" id="toc-entry-16">Authors</a></li>
-<li><a class="reference internal" href="#contributors" id="toc-entry-17">Contributors</a></li>
-<li><a class="reference internal" href="#maintainers" id="toc-entry-18">Maintainers</a></li>
+<li><a class="reference internal" href="#known-issues-roadmap" id="toc-entry-14">Known issues / Roadmap</a></li>
+<li><a class="reference internal" href="#bug-tracker" id="toc-entry-15">Bug Tracker</a></li>
+<li><a class="reference internal" href="#credits" id="toc-entry-16">Credits</a><ul>
+<li><a class="reference internal" href="#authors" id="toc-entry-17">Authors</a></li>
+<li><a class="reference internal" href="#contributors" id="toc-entry-18">Contributors</a></li>
+<li><a class="reference internal" href="#maintainers" id="toc-entry-19">Maintainers</a></li>
 </ul>
 </li>
 </ul>
@@ -444,15 +445,44 @@ by itself: install one bridge module per platform you want to connect
 (<tt class="docutils literal">project_github</tt> for GitHub, <tt class="docutils literal">project_gitlab</tt> for GitLab). Each
 bridge installs the Python library of its platform.</p>
 <p>Webhook processing relies on the <tt class="docutils literal">queue_job</tt> module, from the
-<a class="reference external" href="https://github.com/OCA/queue">OCA/queue</a> repository. On hostings
-where the standard queue_job jobrunner cannot run (e.g. Odoo.sh), also
-install <tt class="docutils literal">queue_job_cron_jobrunner</tt> (same repository) to process the
-jobs from a cron instead.</p>
+<a class="reference external" href="https://github.com/OCA/queue">OCA/queue</a> repository: the events are
+processed asynchronously by its jobrunner, which must be active — add
+<tt class="docutils literal">queue_job</tt> to the <tt class="docutils literal">server_wide_modules</tt> of your instance (see the
+<tt class="docutils literal">queue_job</tt> documentation). On hostings where the standard jobrunner
+cannot run (e.g. Odoo.sh), also install <tt class="docutils literal">queue_job_cron_jobrunner</tt>
+(same repository) to process the jobs from a cron instead.</p>
 </div>
 <div class="section" id="configuration">
 <h2><a class="toc-backref" href="#toc-entry-2">Configuration</a></h2>
+<div class="section" id="configuration-at-a-glance">
+<h3><a class="toc-backref" href="#toc-entry-3">Configuration at a glance</a></h3>
+<p>The complete setup, end to end — each step is detailed in the sections
+below or in the platform bridge documentation:</p>
+<ol class="arabic simple">
+<li><strong>Install the platform bridge</strong> of your platform (<tt class="docutils literal">project_github</tt>,
+<tt class="docutils literal">project_gitlab</tt>, or both): this base module alone processes no
+event.</li>
+<li><strong>Set the shared webhook secret</strong> in the
+<tt class="docutils literal">project_git.authorization_token</tt> system parameter: incoming
+webhook requests are authorized against it.</li>
+<li><strong>Set the platform API token</strong> system parameter of the bridge
+(<tt class="docutils literal">project_github.token</tt> /
+<tt class="docutils literal"><span class="pre">project_gitlab.token.&lt;instance-url&gt;/</span></tt>): it lets Odoo call the
+platform API.</li>
+<li><strong>Map the repository</strong> on the Odoo project: paste the repository home
+page URL (e.g. <tt class="docutils literal"><span class="pre">https://github.com/myorg/myrepo</span></tt>) in the <strong>Git
+Project URL</strong> field of the project form.</li>
+<li><strong>Deploy the webhook</strong> with the <strong>Create Webhooks</strong> button on the
+same form (the endpoint URL is built from <tt class="docutils literal">web.base.url</tt>), or
+configure it by hand on the repository pointing to
+<tt class="docutils literal"><span class="pre">https://&lt;your-odoo-host&gt;/project_git/webhook/</span></tt>.</li>
+<li>Done: reference your tasks from git — an issue key like <tt class="docutils literal"><span class="pre">ABC-123</span></tt>
+or an explicit <tt class="docutils literal"><span class="pre">taskid#&lt;id&gt;</span></tt> in branch names, commit messages and
+PR/MR titles — and the git activity shows up on the tasks.</li>
+</ol>
+</div>
 <div class="section" id="webhook-endpoint">
-<h3><a class="toc-backref" href="#toc-entry-3">Webhook endpoint</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-4">Webhook endpoint</a></h3>
 <p>Configure your repositories to send webhooks (push, merge/pull request,
 pipeline events) to:</p>
 <pre class="literal-block">
@@ -470,7 +500,7 @@ through the platform bridge. Deploying again replaces the webhook, so
 the button can be reused after changing the Odoo base URL or the token.</p>
 </div>
 <div class="section" id="system-parameters">
-<h3><a class="toc-backref" href="#toc-entry-4">System parameters</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-5">System parameters</a></h3>
 <p>With the developer mode activated, go to <strong>Settings &gt; Technical &gt;
 Parameters &gt; System Parameters</strong> and set:</p>
 <ul class="simple">
@@ -482,7 +512,7 @@ missing or still set to the demo default.</li>
 bridge modules (see their documentation).</p>
 </div>
 <div class="section" id="project-mapping">
-<h3><a class="toc-backref" href="#toc-entry-5">Project mapping</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-6">Project mapping</a></h3>
 <p>Go to <strong>Project &gt; Configuration &gt; Projects</strong>, open the project and set
 the repository home page URL (e.g.
 <tt class="docutils literal"><span class="pre">https://gitlab.com/mygroup/myrepo</span></tt>) in the <strong>Git Project URL</strong> field
@@ -496,7 +526,7 @@ without a mapped project, pattern keys match nothing. Explicit
 </div>
 </div>
 <div class="section" id="usage">
-<h2><a class="toc-backref" href="#toc-entry-6">Usage</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-7">Usage</a></h2>
 <p>Link your git activity to a task, step by step:</p>
 <ol class="arabic">
 <li><p class="first"><strong>Map the Odoo project to the repository</strong> (see <em>Configure</em>).</p>
@@ -530,7 +560,7 @@ and CI pipeline status.</p>
 <p>Entities referencing no task are not recorded at all, so unrelated
 repositories can safely share the same webhook endpoint.</p>
 <div class="section" id="how-the-matching-works">
-<h3><a class="toc-backref" href="#toc-entry-7">How the matching works</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-8">How the matching works</a></h3>
 <p>A reference written in your git activity (a commit message, a branch
 name, a PR/MR title) can point to a task in <strong>two different ways</strong>:</p>
 <ul>
@@ -545,10 +575,14 @@ activity.</p>
 <p>This points straight to one task, with no project mapping and no task
 naming convention needed; references to non-existent ids are silently
 ignored.</p>
+<p>Mind the intrinsic limits of database ids before adopting them as your
+everyday convention: a wrong-but-existing id links the wrong task with
+no error to catch it, and ids are not portable across databases (the
+same task carries different ids on staging and production).</p>
 </li>
 </ul>
 <div class="section" id="matching-by-issue-key">
-<h4><a class="toc-backref" href="#toc-entry-8">Matching by issue key</a></h4>
+<h4><a class="toc-backref" href="#toc-entry-9">Matching by issue key</a></h4>
 <p>The referencing conventions mirror the Jira ones (see <a class="reference external" href="https://confluence.atlassian.com/jirasoftware/referencing-issues-in-your-development-work-1688898766.html">Referencing
 issues in your development
 work</a>):
@@ -577,7 +611,7 @@ common.</p>
 </ol>
 </div>
 <div class="section" id="examples">
-<h4><a class="toc-backref" href="#toc-entry-9">Examples</a></h4>
+<h4><a class="toc-backref" href="#toc-entry-10">Examples</a></h4>
 <p>With a task named <tt class="docutils literal"><span class="pre">ABC-123</span> fix login</tt> in a project mapped to the
 repository:</p>
 <ul class="simple">
@@ -599,7 +633,7 @@ branch) to the task</li>
 </ul>
 </div>
 <div class="section" id="which-entity-gets-linked">
-<h4><a class="toc-backref" href="#toc-entry-10">Which entity gets linked</a></h4>
+<h4><a class="toc-backref" href="#toc-entry-11">Which entity gets linked</a></h4>
 <p>Each entity is linked through its own references only — a commit never
 links a task just because it was pushed on a matching branch:</p>
 <table border="1" class="docutils">
@@ -659,9 +693,9 @@ PR/MR itself.</p>
 </div>
 </div>
 <div class="section" id="development">
-<h2><a class="toc-backref" href="#toc-entry-11">Development</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-12">Development</a></h2>
 <div class="section" id="writing-a-platform-bridge">
-<h3><a class="toc-backref" href="#toc-entry-12">Writing a platform bridge</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-13">Writing a platform bridge</a></h3>
 <p>A bridge module (see <tt class="docutils literal">project_github</tt> / <tt class="docutils literal">project_gitlab</tt> as
 references) connects one git hosting platform to this base. It provides:</p>
 <ol class="arabic">
@@ -730,7 +764,7 @@ in <tt class="docutils literal">_get_url_platform</tt> with the same chain rule 
 </div>
 </div>
 <div class="section" id="known-issues-roadmap">
-<h2><a class="toc-backref" href="#toc-entry-13">Known issues / Roadmap</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-14">Known issues / Roadmap</a></h2>
 <ul class="simple">
 <li>Pipeline tracking is currently GitLab-only; GitHub Actions support
 could be added in the same way (the CI status and tags already live in
@@ -751,7 +785,7 @@ event is safe.</li>
 </ul>
 </div>
 <div class="section" id="bug-tracker">
-<h2><a class="toc-backref" href="#toc-entry-14">Bug Tracker</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-15">Bug Tracker</a></h2>
 <p>Bugs are tracked on <a class="reference external" href="https://github.com/OCA/project/issues">GitHub Issues</a>.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
@@ -759,23 +793,23 @@ If you spotted it first, help us to smash it by providing a detailed and welcome
 <p>Do not contact contributors directly about support or help with technical issues.</p>
 </div>
 <div class="section" id="credits">
-<h2><a class="toc-backref" href="#toc-entry-15">Credits</a></h2>
+<h2><a class="toc-backref" href="#toc-entry-16">Credits</a></h2>
 <div class="section" id="authors">
-<h3><a class="toc-backref" href="#toc-entry-16">Authors</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-17">Authors</a></h3>
 <ul class="simple">
 <li>Jarsa</li>
 <li>Francesco Ballerini</li>
 </ul>
 </div>
 <div class="section" id="contributors">
-<h3><a class="toc-backref" href="#toc-entry-17">Contributors</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-18">Contributors</a></h3>
 <ul class="simple">
 <li>Jesús Alan Ramos Rodríguez &lt;<a class="reference external" href="mailto:alan.ramos&#64;jarsa.com.mx">alan.ramos&#64;jarsa.com.mx</a>&gt;</li>
 <li>Francesco Ballerini &lt;<a class="reference external" href="mailto:francescobl.lavoro&#64;gmail.com">francescobl.lavoro&#64;gmail.com</a>&gt;</li>
 </ul>
 </div>
 <div class="section" id="maintainers">
-<h3><a class="toc-backref" href="#toc-entry-18">Maintainers</a></h3>
+<h3><a class="toc-backref" href="#toc-entry-19">Maintainers</a></h3>
 <p>This module is maintained by the OCA.</p>
 <a class="reference external image-reference" href="https://odoo-community.org">
 <img alt="Odoo Community Association" src="https://odoo-community.org/logo.png" />

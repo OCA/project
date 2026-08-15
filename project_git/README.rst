@@ -78,13 +78,42 @@ by itself: install one bridge module per platform you want to connect
 bridge installs the Python library of its platform.
 
 Webhook processing relies on the ``queue_job`` module, from the
-`OCA/queue <https://github.com/OCA/queue>`__ repository. On hostings
-where the standard queue_job jobrunner cannot run (e.g. Odoo.sh), also
-install ``queue_job_cron_jobrunner`` (same repository) to process the
-jobs from a cron instead.
+`OCA/queue <https://github.com/OCA/queue>`__ repository: the events are
+processed asynchronously by its jobrunner, which must be active — add
+``queue_job`` to the ``server_wide_modules`` of your instance (see the
+``queue_job`` documentation). On hostings where the standard jobrunner
+cannot run (e.g. Odoo.sh), also install ``queue_job_cron_jobrunner``
+(same repository) to process the jobs from a cron instead.
 
 Configuration
 =============
+
+Configuration at a glance
+-------------------------
+
+The complete setup, end to end — each step is detailed in the sections
+below or in the platform bridge documentation:
+
+1. **Install the platform bridge** of your platform (``project_github``,
+   ``project_gitlab``, or both): this base module alone processes no
+   event.
+2. **Set the shared webhook secret** in the
+   ``project_git.authorization_token`` system parameter: incoming
+   webhook requests are authorized against it.
+3. **Set the platform API token** system parameter of the bridge
+   (``project_github.token`` /
+   ``project_gitlab.token.<instance-url>/``): it lets Odoo call the
+   platform API.
+4. **Map the repository** on the Odoo project: paste the repository home
+   page URL (e.g. ``https://github.com/myorg/myrepo``) in the **Git
+   Project URL** field of the project form.
+5. **Deploy the webhook** with the **Create Webhooks** button on the
+   same form (the endpoint URL is built from ``web.base.url``), or
+   configure it by hand on the repository pointing to
+   ``https://<your-odoo-host>/project_git/webhook/``.
+6. Done: reference your tasks from git — an issue key like ``ABC-123``
+   or an explicit ``taskid#<id>`` in branch names, commit messages and
+   PR/MR titles — and the git activity shows up on the tasks.
 
 Webhook endpoint
 ----------------
@@ -195,6 +224,11 @@ name, a PR/MR title) can point to a task in **two different ways**:
   This points straight to one task, with no project mapping and no task
   naming convention needed; references to non-existent ids are silently
   ignored.
+
+  Mind the intrinsic limits of database ids before adopting them as your
+  everyday convention: a wrong-but-existing id links the wrong task with
+  no error to catch it, and ids are not portable across databases (the
+  same task carries different ids on staging and production).
 
 Matching by issue key
 ~~~~~~~~~~~~~~~~~~~~~
