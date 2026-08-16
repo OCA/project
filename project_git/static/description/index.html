@@ -653,7 +653,7 @@ links a task just because it was pushed on a matching branch:</p>
 <tbody valign="top">
 <tr><td>a commit message
 (push event)</td>
-<td>✓ (that commit)</td>
+<td>✓</td>
 <td>—</td>
 <td>—</td>
 </tr>
@@ -665,7 +665,7 @@ links a task just because it was pushed on a matching branch:</p>
 </tr>
 <tr><td>a commit message
 (PR/MR event)</td>
-<td>✓ (that commit)</td>
+<td>✓</td>
 <td>✓ (only source
 branch)</td>
 <td>✓</td>
@@ -700,41 +700,75 @@ PR/MR itself.</p>
 references) connects one git hosting platform to this base. It provides:</p>
 <ol class="arabic">
 <li><p class="first"><strong>A controller child</strong> extending <tt class="docutils literal">ProjectGitWebhook</tt>:</p>
-<ul class="simple">
-<li><tt class="docutils literal">_detect_event_source(headers)</tt>: claim the requests of your
-platform by their specific header and return your source name; fall
-through to <tt class="docutils literal">super()</tt> otherwise. Chain rule: a <em>specific</em> claim
-comes <strong>before</strong> <tt class="docutils literal">super()</tt>, a <em>catch-all</em> claim (accepting e.g.
-any self-hosted instance) comes <strong>after</strong> it, so the MRO order
-between bridges never matters.</li>
-<li><tt class="docutils literal"><span class="pre">_verify_webhook_token_&lt;source&gt;(token)</span></tt>: authorize the request
+<ul>
+<li><p class="first"><tt class="docutils literal">_detect_event_source(headers)</tt>: claim the requests of your
+platform by their specific header, falling through to <tt class="docutils literal">super()</tt>
+otherwise. Every bridge claims only what is unmistakably its own,
+so the chain order between bridges never matters. The GitHub
+bridge, for example:</p>
+<pre class="code python literal-block">
+<span class="k">def</span><span class="w"> </span><span class="nf">_detect_event_source</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">headers</span><span class="p">):</span><span class="w">
+</span>    <span class="k">if</span> <span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;X-Hub-Signature-256&quot;</span><span class="p">):</span><span class="w">
+</span>        <span class="k">return</span> <span class="s2">&quot;github&quot;</span><span class="w">
+</span>    <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">_detect_event_source</span><span class="p">(</span><span class="n">headers</span><span class="p">)</span>
+</pre>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">_verify_webhook_token_&lt;source&gt;(token)</span></tt>: authorize the request
 the way your platform does (verbatim token header, payload
-signature, …).</li>
-<li><tt class="docutils literal"><span class="pre">_parse_request_&lt;source&gt;(event,</span> headers)</tt>: normalize the payload.
-The parser must set the common keys <tt class="docutils literal">source</tt>, <tt class="docutils literal">repository_url</tt>
-and <tt class="docutils literal">project_git_event_type</tt> (mapped from the authoritative event
-discriminator of your platform; <tt class="docutils literal">push</tt> events are then refined by
-the base into
+signature, …).</p>
+</li>
+<li><p class="first"><tt class="docutils literal"><span class="pre">_parse_git_request_data_&lt;source&gt;(event,</span> headers)</tt>: normalize the
+payload. The parser must set the common keys <tt class="docutils literal">source</tt>,
+<tt class="docutils literal">repository_url</tt> and <tt class="docutils literal">project_git_event_type</tt> (mapped from the
+authoritative event discriminator of your platform; <tt class="docutils literal">push</tt> events
+are then refined by the base into
 <tt class="docutils literal">branch_creation</tt>/<tt class="docutils literal">branch_deletion</tt>/<tt class="docutils literal">commit_push</tt> via the
-git-native null-SHA schema).</li>
+git-native null-SHA schema).</p>
+</li>
 </ul>
 </li>
 <li><p class="first"><strong>Model extensions on ``project.git.event``</strong> with the per-source
-naming convention <tt class="docutils literal">&lt;method&gt;_&lt;source&gt;</tt>:</p>
-<ul class="simple">
-<li>mandatory dispatched implementations (<tt class="docutils literal">_dispatch_by_source</tt> warns
-when missing): <tt class="docutils literal">_extract_pr_title_from_event_&lt;source&gt;</tt>,
+naming convention <tt class="docutils literal">&lt;method&gt;_&lt;source&gt;</tt>.</p>
+<p>Git platforms deliver similar payloads, so the whole connector flow
+(task matching, entity tracking and correlation, messaging) is
+already implemented by the sourceless <tt class="docutils literal">_process_*_event</tt> helpers of
+the base (pull request, commit push, branch creation/deletion). The
+helpers cover the residual per-platform differences by dispatching
+hooks by source. A bridge provides:</p>
+<ul>
+<li><p class="first">the <tt class="docutils literal">_process_&lt;event type&gt;_&lt;source&gt;</tt> entrypoints invoked by the
+controller dispatch: one explicit binding for every event your
+platform handles (an event with no binding for its source is
+skipped silently). Delegating to a <tt class="docutils literal">_process_*_event</tt> helper is a
+one-liner:</p>
+<pre class="code python literal-block">
+<span class="nd">&#64;api</span><span class="o">.</span><span class="n">model</span><span class="w">
+</span><span class="k">def</span><span class="w"> </span><span class="nf">_process_pull_request_github</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span><span class="w">
+</span>    <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_process_pull_request_event</span><span class="p">(</span><span class="n">event</span><span class="p">)</span>
+</pre>
+<p>For an event the base has no helper for (e.g. a pipeline event,
+which only exists on some platforms) the entrypoint implements the
+whole logic itself.</p>
+</li>
+<li><p class="first">the hooks required by the helpers you delegate to
+(<tt class="docutils literal">_dispatch_by_source</tt> warns when one is missing):
+<tt class="docutils literal">_extract_pr_title_from_event_&lt;source&gt;</tt>,
 <tt class="docutils literal">_extract_branch_names_from_event_&lt;source&gt;</tt>,
 <tt class="docutils literal">_build_source_branch_url_&lt;source&gt;</tt>,
 <tt class="docutils literal">_fetch_pr_commits_&lt;source&gt;</tt>,
 <tt class="docutils literal">_prepare_pull_request_vals_&lt;source&gt;</tt>,
-<tt class="docutils literal">_extract_pr_identifiers_&lt;source&gt;</tt>;</li>
-<li>optional hooks of generic methods (silently skipped when missing):
+<tt class="docutils literal">_extract_pr_identifiers_&lt;source&gt;</tt>. Each one maps a platform
+detail onto the shared flow, e.g.:</p>
+<pre class="code python literal-block">
+<span class="k">def</span><span class="w"> </span><span class="nf">_extract_pr_title_from_event_github</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">event</span><span class="p">):</span><span class="w">
+</span>    <span class="k">return</span> <span class="n">event</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;pull_request&quot;</span><span class="p">,</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;title&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+</pre>
+</li>
+<li><p class="first">the optional hooks (silently skipped when missing):
 <tt class="docutils literal">_prepare_commit_vals_&lt;source&gt;</tt> (per-platform name/description),
 <tt class="docutils literal">_extract_pr_fallback_commits_&lt;source&gt;</tt> (implement only if your
-payload carries honest head-commit data);</li>
-<li>the <tt class="docutils literal">_process_&lt;event type&gt;</tt> handlers that only exist on your
-platform (e.g. a pipeline event).</li>
+payload carries honest head-commit data).</p>
+</li>
 </ul>
 <p><strong>Normalized commit format</strong>: every commit dict crossing the pipeline
 (webhook payload or API conversion) carries <tt class="docutils literal">id</tt> (full sha),
@@ -758,7 +792,8 @@ tags of the other platforms must survive your alignment.</p>
 </li>
 <li><p class="first">Optionally, a <tt class="docutils literal">_create_project_webhook_&lt;source&gt;</tt> implementation on
 <tt class="docutils literal">project.project</tt> (automatic webhook deployment) claiming its URLs
-in <tt class="docutils literal">_get_url_platform</tt> with the same chain rule as above.</p>
+in <tt class="docutils literal">_get_url_platform</tt> with the same claim-or-<tt class="docutils literal">super()</tt> pattern
+as above.</p>
 </li>
 </ol>
 </div>

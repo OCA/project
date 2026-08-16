@@ -17,16 +17,16 @@ class TestWebhookController(ProjectGitControllerCase):
         # No platform header claims the request: the source stays
         # unrecognized and the request is rejected even with a valid
         # token configured
-        jobs_before = self._job_count("_process_commit_push")
+        jobs_before = self._job_count()
         result = self._post_webhook({"object_kind": "push"})
         self.assertIs(result, False)
-        self.assertEqual(self._job_count("_process_commit_push"), jobs_before)
+        self.assertEqual(self._job_count(), jobs_before)
 
     def test_missing_token_param_rejects_requests(self):
         # Without a configured authorization token every request is
         # rejected before any source detection
         self.config.set_param("project_git.authorization_token", False)
-        jobs_before = self._job_count("_process_commit_push")
+        jobs_before = self._job_count()
         result = self._post_webhook({"object_kind": "push"})
         self.assertIs(result, False)
-        self.assertEqual(self._job_count("_process_commit_push"), jobs_before)
+        self.assertEqual(self._job_count(), jobs_before)

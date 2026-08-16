@@ -55,9 +55,9 @@ class ProjectProject(models.Model):
 
     def _create_project_webhook(self, project_url):
         platform = self._get_url_platform(project_url)
-        if not hasattr(self, "_create_project_webhook_%s" % platform):
+        if not hasattr(self, f"_create_project_webhook_{platform}"):
             _logger.warning(
                 "No webhook deployment implementation for platform %r", platform
             )
             return
-        getattr(self, "_create_project_webhook_%s" % platform)(project_url)
+        getattr(self, f"_create_project_webhook_{platform}")(project_url)

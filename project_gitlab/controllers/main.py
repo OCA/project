@@ -20,7 +20,7 @@ class ProjectGitlabWebhook(ProjectGitWebhook):
         gitlab_token = request.httprequest.headers.get("X-Gitlab-Token", "")
         return consteq(gitlab_token, token)
 
-    def _parse_request_gitlab(self, event, headers=None):
+    def _parse_git_request_data_gitlab(self, event, headers=None):
         # GitLab carries its authoritative event discriminator in the
         # payload: map it onto the module-owned key (headers unused)
         event["project_git_event_type"] = event.get("object_kind")

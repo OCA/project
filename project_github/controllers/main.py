@@ -28,7 +28,7 @@ class ProjectGithubWebhook(ProjectGitWebhook):
         ).hexdigest()
         return compare_digest(signature.split("sha256=")[-1].strip(), expected_token)
 
-    def _parse_request_github(self, event, headers=None):
+    def _parse_git_request_data_github(self, event, headers=None):
         # Github carries its authoritative event discriminator in the
         # X-GitHub-Event request header, not in the payload; event
         # types without a project.git.event handler (e.g. ping) are

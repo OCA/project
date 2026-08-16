@@ -43,8 +43,8 @@ def token_authorization(function):
             )
             return False
         authorization = False
-        if hasattr(self, "_verify_webhook_token_%s" % source):
-            authorization = getattr(self, "_verify_webhook_token_%s" % source)(token)
+        if hasattr(self, f"_verify_webhook_token_{source}"):
+            authorization = getattr(self, f"_verify_webhook_token_{source}")(token)
         if not authorization:
             _logger.warning("Token is not the expected for source %r", source)
             return False
@@ -58,9 +58,11 @@ class ProjectGitWebhook(http.Controller):
     @http.route("/project_git/webhook/", type="json", auth="public", csrf=False)
     @token_authorization
     def _process_webhook(self, **kw):
-        """Receive the request from the git platform and invoke functions
-        based on the normalized 'project_git_event_type' key, then it
-        calls the function with the name _process_<project_git_event_type>."""
+        """Receive the request from the git platform and invoke the
+        per-source handler named after the normalized
+        'project_git_event_type' key and the event source:
+        _process_<project_git_event_type>_<source>. Each platform
+        bridge explicitly binds every event it handles."""
         event = request.get_json_data()
         event["source"] = kw.get("source", "")
         event = self._parse_git_request_data(
@@ -70,10 +72,10 @@ class ProjectGitWebhook(http.Controller):
         event_type = event.get("project_git_event_type")
         if not event_type:
             return True
-        method_name = "_process_%s" % event_type
+        method_name = f"_process_{event_type}_{event['source']}"
         if not hasattr(git_event, method_name):
-            # Event kinds without a handler (e.g. note
-            # events) are skipped silently.
+            # Event kinds the source bridge binds no handler for
+            # (e.g. note events) are skipped silently.
             return True
         return getattr(git_event.with_delay(), method_name)(event)
 
@@ -99,15 +101,15 @@ class ProjectGitWebhook(http.Controller):
         platforms carry it in the payload, others in a request header
         — hence the headers argument). Push events are then refined into their
         concrete type (branch_creation, branch_deletion, commit_push),
-        so that project_git_event_type always names the
-        project.git.event handler to invoke."""
+        so that project_git_event_type, together with the source,
+        always names the project.git.event handler to invoke."""
 
-        if not hasattr(self, "_parse_request_%s" % event.get("source")):
+        if not hasattr(self, f"_parse_git_request_data_{event.get('source')}"):
             _logger.warning(
                 "No request parser implementation for source %r", event.get("source")
             )
             return event
-        event = getattr(self, "_parse_request_%s" % event.get("source"))(
+        event = getattr(self, f"_parse_git_request_data_{event.get('source')}")(
             event=event, headers=headers
         )
         if event.get("project_git_event_type") == "push":

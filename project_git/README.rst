@@ -297,13 +297,13 @@ links a task just because it was pushed on a matching branch:
 +-------------------+------------------+-------------------+-----------+
 | A key found in…   | links the commit | the branch        | the PR/MR |
 +===================+==================+===================+===========+
-| a commit message  | ✓ (that commit)  | —                 | —         |
+| a commit message  | ✓                | —                 | —         |
 | (push event)      |                  |                   |           |
 +-------------------+------------------+-------------------+-----------+
 | the branch name   | —                | ✓                 | —         |
 | (push event)      |                  |                   |           |
 +-------------------+------------------+-------------------+-----------+
-| a commit message  | ✓ (that commit)  | ✓ (only source    | ✓         |
+| a commit message  | ✓                | ✓ (only source    | ✓         |
 | (PR/MR event)     |                  | branch)           |           |
 +-------------------+------------------+-------------------+-----------+
 | the source branch | —                | ✓ (only source    | ✓         |
@@ -329,38 +329,75 @@ references) connects one git hosting platform to this base. It provides:
 1. **A controller child** extending ``ProjectGitWebhook``:
 
    - ``_detect_event_source(headers)``: claim the requests of your
-     platform by their specific header and return your source name; fall
-     through to ``super()`` otherwise. Chain rule: a *specific* claim
-     comes **before** ``super()``, a *catch-all* claim (accepting e.g.
-     any self-hosted instance) comes **after** it, so the MRO order
-     between bridges never matters.
+     platform by their specific header, falling through to ``super()``
+     otherwise. Every bridge claims only what is unmistakably its own,
+     so the chain order between bridges never matters. The GitHub
+     bridge, for example:
+
+     .. code:: python
+
+        def _detect_event_source(self, headers):
+            if headers.get("X-Hub-Signature-256"):
+                return "github"
+            return super()._detect_event_source(headers)
+
    - ``_verify_webhook_token_<source>(token)``: authorize the request
      the way your platform does (verbatim token header, payload
      signature, ...).
-   - ``_parse_request_<source>(event, headers)``: normalize the payload.
-     The parser must set the common keys ``source``, ``repository_url``
-     and ``project_git_event_type`` (mapped from the authoritative event
-     discriminator of your platform; ``push`` events are then refined by
-     the base into
+
+   - ``_parse_git_request_data_<source>(event, headers)``: normalize the
+     payload. The parser must set the common keys ``source``,
+     ``repository_url`` and ``project_git_event_type`` (mapped from the
+     authoritative event discriminator of your platform; ``push`` events
+     are then refined by the base into
      ``branch_creation``/``branch_deletion``/``commit_push`` via the
      git-native null-SHA schema).
 
 2. **Model extensions on ``project.git.event``** with the per-source
-   naming convention ``<method>_<source>``:
+   naming convention ``<method>_<source>``.
 
-   - mandatory dispatched implementations (``_dispatch_by_source`` warns
-     when missing): ``_extract_pr_title_from_event_<source>``,
+   Git platforms deliver similar payloads, so the whole connector flow
+   (task matching, entity tracking and correlation, messaging) is
+   already implemented by the sourceless ``_process_*_event`` helpers of
+   the base (pull request, commit push, branch creation/deletion). The
+   helpers cover the residual per-platform differences by dispatching
+   hooks by source. A bridge provides:
+
+   - the ``_process_<event type>_<source>`` entrypoints invoked by the
+     controller dispatch: one explicit binding for every event your
+     platform handles (an event with no binding for its source is
+     skipped silently). Delegating to a ``_process_*_event`` helper is a
+     one-liner:
+
+     .. code:: python
+
+        @api.model
+        def _process_pull_request_github(self, event):
+            return self._process_pull_request_event(event)
+
+     For an event the base has no helper for (e.g. a pipeline event,
+     which only exists on some platforms) the entrypoint implements the
+     whole logic itself.
+
+   - the hooks required by the helpers you delegate to
+     (``_dispatch_by_source`` warns when one is missing):
+     ``_extract_pr_title_from_event_<source>``,
      ``_extract_branch_names_from_event_<source>``,
      ``_build_source_branch_url_<source>``,
      ``_fetch_pr_commits_<source>``,
      ``_prepare_pull_request_vals_<source>``,
-     ``_extract_pr_identifiers_<source>``;
-   - optional hooks of generic methods (silently skipped when missing):
+     ``_extract_pr_identifiers_<source>``. Each one maps a platform
+     detail onto the shared flow, e.g.:
+
+     .. code:: python
+
+        def _extract_pr_title_from_event_github(self, event):
+            return event.get("pull_request", {}).get("title", "")
+
+   - the optional hooks (silently skipped when missing):
      ``_prepare_commit_vals_<source>`` (per-platform name/description),
      ``_extract_pr_fallback_commits_<source>`` (implement only if your
-     payload carries honest head-commit data);
-   - the ``_process_<event type>`` handlers that only exist on your
-     platform (e.g. a pipeline event).
+     payload carries honest head-commit data).
 
    **Normalized commit format**: every commit dict crossing the pipeline
    (webhook payload or API conversion) carries ``id`` (full sha),
@@ -385,7 +422,8 @@ references) connects one git hosting platform to this base. It provides:
 
 4. Optionally, a ``_create_project_webhook_<source>`` implementation on
    ``project.project`` (automatic webhook deployment) claiming its URLs
-   in ``_get_url_platform`` with the same chain rule as above.
+   in ``_get_url_platform`` with the same claim-or-``super()`` pattern
+   as above.
 
 Known issues / Roadmap
 ======================

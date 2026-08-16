@@ -432,9 +432,10 @@ class ProjectGitEvent(models.Model):
         return self._dispatch_by_source(event, "_fetch_pr_commits") or []
 
     @api.model
-    def _process_branch_creation(self, event):
-        """Handle branch creation events with granular task matching
-        (see _link_push_entities_to_tasks)."""
+    def _process_branch_creation_event(self, event):
+        """Common processing for branch creation events, shared by the
+        per-source _process_* handlers of the platform bridges, with
+        granular task matching (see _link_push_entities_to_tasks)."""
         branch_name = self._extract_branch_names_from_event(event)["source_branch"]
         if not branch_name:
             return
@@ -442,8 +443,9 @@ class ProjectGitEvent(models.Model):
         self._link_push_entities_to_tasks(repository_projects, event)
 
     @api.model
-    def _process_branch_deletion(self, event):
-        """Handle branch deletion events"""
+    def _process_branch_deletion_event(self, event):
+        """Common processing for branch deletion events, shared by the
+        per-source _process_* handlers of the platform bridges."""
         # Search for existing branch using the standardized helper (searches by URL)
         existing_branch = self._search_existing_branch(event=event)
 
@@ -452,9 +454,10 @@ class ProjectGitEvent(models.Model):
             pass
 
     @api.model
-    def _process_commit_push(self, event):
-        """Handle regular commit push events with granular task matching
-        (see _link_push_entities_to_tasks)."""
+    def _process_commit_push_event(self, event):
+        """Common processing for regular commit push events, shared by
+        the per-source _process_* handlers of the platform bridges, with
+        granular task matching (see _link_push_entities_to_tasks)."""
         if not event.get("commits"):
             return
         repository_projects = self._get_related_projects_by_url(event=event)

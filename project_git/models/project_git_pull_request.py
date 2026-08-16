@@ -157,8 +157,8 @@ class ProjectGitPullRequest(models.Model):
         platform; the opening detection is per-source.
         """
         is_opening = False
-        if hasattr(self, "_is_pr_opening_%s" % event.get("source")):
-            is_opening = getattr(self, "_is_pr_opening_%s" % event.get("source"))(event)
+        if hasattr(self, f"_is_pr_opening_{event.get('source')}"):
+            is_opening = getattr(self, f"_is_pr_opening_{event.get('source')}")(event)
         title_changed = bool(event.get("changes", {}).get("title"))
         return is_opening or title_changed
 
@@ -212,8 +212,8 @@ class ProjectGitPullRequest(models.Model):
             source = self.source
         else:
             source = (event or {}).get("source")
-        if hasattr(self, "_post_message_%s" % source):
-            return getattr(self, "_post_message_%s" % source)(message, event)
+        if hasattr(self, f"_post_message_{source}"):
+            return getattr(self, f"_post_message_{source}")(message, event)
         _logger.warning("No _post_message implementation for source %r", source)
         return False
 
@@ -229,7 +229,7 @@ class ProjectGitPullRequest(models.Model):
         for git_pull_request in self:
             if not git_pull_request.state:
                 continue
-            method_name = "_assign_tags_to_task_%s" % git_pull_request.source
+            method_name = f"_assign_tags_to_task_{git_pull_request.source}"
             if not hasattr(git_pull_request, method_name):
                 _logger.warning(
                     "No _assign_tags_to_task implementation for source %r",

@@ -32,7 +32,7 @@ class TestGithubWebhookController(ProjectGitControllerCase):
 
     def test_github_valid_signature_enqueues_job(self):
         payload = self._load_payload("github_push.json")
-        jobs_before = self._job_count("_process_commit_push")
+        jobs_before = self._job_count("_process_commit_push_github")
         self._post_webhook(
             payload,
             headers={
@@ -40,10 +40,12 @@ class TestGithubWebhookController(ProjectGitControllerCase):
                 "X-Hub-Signature-256": self._github_signature(payload),
             },
         )
-        self.assertEqual(self._job_count("_process_commit_push"), jobs_before + 1)
+        self.assertEqual(
+            self._job_count("_process_commit_push_github"), jobs_before + 1
+        )
 
     def test_github_invalid_signature_is_rejected(self):
-        jobs_before = self._job_count("_process_commit_push")
+        jobs_before = self._job_count("_process_commit_push_github")
         result = self._post_webhook(
             self._load_payload("github_push.json"),
             headers={
@@ -52,14 +54,14 @@ class TestGithubWebhookController(ProjectGitControllerCase):
             },
         )
         self.assertIs(result, False)
-        self.assertEqual(self._job_count("_process_commit_push"), jobs_before)
+        self.assertEqual(self._job_count("_process_commit_push_github"), jobs_before)
 
     def test_github_event_without_handler_is_skipped(self):
         # GitHub events are classified by their X-GitHub-Event header:
         # types without a _process_* handler (e.g. the ping event sent
         # on hook creation) are acknowledged without enqueueing anything
         payload = {"zen": "Design for failure.", "hook_id": 1, "repository": {}}
-        jobs_total_before = self.env["queue.job"].sudo().search_count([])
+        jobs_total_before = self._job_count()
         result = self._post_webhook(
             payload,
             headers={
@@ -68,6 +70,4 @@ class TestGithubWebhookController(ProjectGitControllerCase):
             },
         )
         self.assertIs(result, True)
-        self.assertEqual(
-            self.env["queue.job"].sudo().search_count([]), jobs_total_before
-        )
+        self.assertEqual(self._job_count(), jobs_total_before)

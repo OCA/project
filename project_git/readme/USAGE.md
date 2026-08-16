@@ -123,9 +123,9 @@ links a task just because it was pushed on a matching branch:
 
 | A key found in…                       | links the commit | the branch             | the PR/MR |
 | ------------------------------------- | ---------------- | ---------------------- | --------- |
-| a commit message (push event)         | ✓ (that commit)  | —                      | —         |
+| a commit message (push event)         | ✓                | —                      | —         |
 | the branch name (push event)          | —                | ✓                      | —         |
-| a commit message (PR/MR event)        | ✓ (that commit)  | ✓ (only source branch) | ✓         |
+| a commit message (PR/MR event)        | ✓                | ✓ (only source branch) | ✓         |
 | the source branch name (PR/MR event)  | —                | ✓ (only source branch) | ✓         |
 | the PR/MR title (PR/MR event)         | —                | ✓ (only source branch) | ✓         |
 

@@ -40,12 +40,11 @@ class ProjectGithubCase(ProjectGitCase):
         event = ProjectGithubWebhook()._parse_git_request_data(
             event=event, headers=headers
         )
-        # Event types without a handler (e.g. tag_push) are skipped,
-        # like the controller does
-        if hasattr(self.git_event, "_process_%s" % event["project_git_event_type"]):
-            getattr(self.git_event, "_process_%s" % event["project_git_event_type"])(
-                event
-            )
+        # Event types the source binds no handler for (e.g. tag_push)
+        # are skipped, like the controller does
+        method_name = f"_process_{event['project_git_event_type']}_{source}"
+        if hasattr(self.git_event, method_name):
+            getattr(self.git_event, method_name)(event)
         return event
 
     # ---- outbound API mocks ----

@@ -13,9 +13,24 @@ class ProjectGitEvent(models.Model):
     _inherit = "project.git.event"
 
     @api.model
-    def _process_pull_request(self, event):
+    def _process_pull_request_github(self, event):
         """Process a GitHub Pull Request event."""
         return self._process_pull_request_event(event)
+
+    @api.model
+    def _process_commit_push_github(self, event):
+        """Process a GitHub commit push event."""
+        return self._process_commit_push_event(event)
+
+    @api.model
+    def _process_branch_creation_github(self, event):
+        """Process a GitHub branch creation event."""
+        return self._process_branch_creation_event(event)
+
+    @api.model
+    def _process_branch_deletion_github(self, event):
+        """Process a GitHub branch deletion event."""
+        return self._process_branch_deletion_event(event)
 
     def _extract_branch_names_from_event_github(self, event):
         """GitHub Pull Request form; push events carry the git-native ref."""

@@ -144,9 +144,9 @@ class ProjectGitControllerCase(PayloadCaseMixin, HttpCase):
         )
         return response_data.get("result")
 
-    def _job_count(self, method_name):
-        return (
-            self.env["queue.job"]
-            .sudo()
-            .search_count([("method_name", "=", method_name)])
-        )
+    def _job_count(self, method_name=None):
+        """Count the queue jobs enqueued for a handler (all jobs when no
+        method name is given, e.g. asserting that a rejected or skipped
+        request enqueued nothing at all)."""
+        domain = [("method_name", "=", method_name)] if method_name else []
+        return self.env["queue.job"].sudo().search_count(domain)

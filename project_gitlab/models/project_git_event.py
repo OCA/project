@@ -14,12 +14,27 @@ class ProjectGitEvent(models.Model):
     _inherit = "project.git.event"
 
     @api.model
-    def _process_merge_request(self, event):
+    def _process_merge_request_gitlab(self, event):
         """Process a GitLab Merge Request event."""
         return self._process_pull_request_event(event)
 
     @api.model
-    def _process_pipeline(self, event):
+    def _process_commit_push_gitlab(self, event):
+        """Process a GitLab commit push event."""
+        return self._process_commit_push_event(event)
+
+    @api.model
+    def _process_branch_creation_gitlab(self, event):
+        """Process a GitLab branch creation event."""
+        return self._process_branch_creation_event(event)
+
+    @api.model
+    def _process_branch_deletion_gitlab(self, event):
+        """Process a GitLab branch deletion event."""
+        return self._process_branch_deletion_event(event)
+
+    @api.model
+    def _process_pipeline_gitlab(self, event):
         """Process pipeline status and update project.git.pull.request.
         The title must contain the type of registry and the ID preceded by a #
         sign.
