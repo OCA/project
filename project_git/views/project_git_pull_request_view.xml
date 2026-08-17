@@ -12,14 +12,14 @@
                 decoration-primary="ci_status=='running'"
             >
                 <field name="id_request" optional="show" />
-                <field name="user_id" optional="show" />
-                <field name="source_branch" optional="show" />
                 <field name="name" optional="show" />
                 <field name="wip" optional="hide" />
                 <field name="approved" optional="hide" />
                 <field name="state" optional="show" />
                 <field name="ci_status" optional="show" />
-                <field name="url" optional="hide" />
+                <field name="url" optional="hide" widget="url" />
+                <field name="user_id" optional="show" />
+                <field name="source_branch" optional="show" />
                 <field name="task_ids" widget="many2many_tags" optional="hide" />
                 <button
                     name="open_merge_request"
@@ -47,7 +47,7 @@
                         <group>
                             <field name="id_request" />
                             <field name="user_id" />
-                            <field name="source_branch" />
+                            <field name="source_branch" invisible="source_branch_id" />
                             <field name="source_branch_id" />
                             <field name="target_branch" />
                             <field name="state" />
