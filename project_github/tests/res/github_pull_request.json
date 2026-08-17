@@ -1,0 +1,32 @@
+{
+  "action": "opened",
+  "number": 2,
+  "pull_request": {
+    "number": 2,
+    "state": "open",
+    "title": "Update readme.md",
+    "body": "demo pull request body",
+    "html_url": "https://github.example.com/acme/webhook-demo/pull/2",
+    "user": {
+      "login": "demo-user"
+    },
+    "created_at": "2026-08-24T01:00:57Z",
+    "updated_at": "2026-08-24T01:00:57Z",
+    "head": {
+      "ref": "test-merge-2",
+      "sha": "deadbeefdeadbeefdeadbeefdeadbeefdeadbeef",
+      "repo": {
+        "html_url": "https://github.example.com/acme/webhook-demo"
+      }
+    },
+    "base": {
+      "ref": "main"
+    }
+  },
+  "repository": {
+    "id": 2002,
+    "name": "webhook-demo",
+    "full_name": "acme/webhook-demo",
+    "html_url": "https://github.example.com/acme/webhook-demo"
+  }
+}
