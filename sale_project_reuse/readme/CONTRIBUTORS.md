@@ -1,0 +1,1 @@
+- Christoph Rogos ([glueckkanja AG](https://www.glueckkanja.com/))
