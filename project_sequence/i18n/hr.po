@@ -6,7 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-08-21 15:46+0000\n"
+"Last-Translator: vladimiruvid <vladimir@uvid.hr>\n"
 "Language-Team: none\n"
 "Language: hr\n"
 "MIME-Version: 1.0\n"
@@ -14,46 +15,47 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: project_sequence
 #: model:ir.model,name:project_sequence.model_res_config_settings
 msgid "Config Settings"
-msgstr ""
+msgstr "Postavke konfiguracije"
 
 #. module: project_sequence
 #: model:ir.model.fields,field_description:project_sequence.field_project_project__name
 msgid "Name"
-msgstr ""
+msgstr "Naziv"
 
 #. module: project_sequence
 #: model:ir.model,name:project_sequence.model_project_project
 msgid "Project"
-msgstr ""
+msgstr "Projekt"
 
 #. module: project_sequence
 #: model:ir.model.fields,field_description:project_sequence.field_res_config_settings__project_display_name_pattern
 msgid "Project Display Name Pattern"
-msgstr ""
+msgstr "Uzorak prikazanog naziva projekta"
 
 #. module: project_sequence
 #: model:ir.model.constraint,message:project_sequence.constraint_project_project_name_required
 msgid "Project name is required"
-msgstr ""
+msgstr "Naziv projekta je obavezan"
 
 #. module: project_sequence
 #: model:ir.model.fields,field_description:project_sequence.field_project_project__sequence_code
 msgid "Sequence Code"
-msgstr ""
+msgstr "Oznaka slijeda"
 
 #. module: project_sequence
 #: model:ir.model.constraint,message:project_sequence.constraint_project_project_sequence_code_unique
 msgid "Sequence code must be unique"
-msgstr ""
+msgstr "Oznaka slijeda mora biti jedinstvena"
 
 #. module: project_sequence
 #: model_terms:ir.ui.view,arch_db:project_sequence.project_sequence_form_view
 msgid "Sequence code:"
-msgstr ""
+msgstr "Oznaka slijeda:"
 
 #. module: project_sequence
 #: model:ir.model.fields,help:project_sequence.field_res_config_settings__project_display_name_pattern
@@ -61,3 +63,5 @@ msgid ""
 "Use %(sequence_code)s and %(name)s to include the sequence code and the name"
 " of the project in the display name."
 msgstr ""
+"Upotrijebite %(sequence_code)s i %(name)s da biste u prikazani naziv "
+"uključili oznaku slijeda i naziv projekta."
