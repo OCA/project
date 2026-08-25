@@ -77,7 +77,7 @@ addon | version | maintainers | summary
 [project_task_stock_product_set](project_task_stock_product_set/) | 18.0.1.0.0 | <a href='https://github.com/victoralmau'><img src='https://github.com/victoralmau.png' width='32' height='32' style='border-radius:50%;' alt='victoralmau'/></a> | Project Task Stock Product Set
 [project_task_tag](project_task_tag/) | 18.0.1.0.0 |  | Limit tags available on task
 [project_template](project_template/) | 18.0.1.0.1 | <a href='https://github.com/patrickrwilson'><img src='https://github.com/patrickrwilson.png' width='32' height='32' style='border-radius:50%;' alt='patrickrwilson'/></a> | Project Templates
-[project_timeline](project_timeline/) | 18.0.1.0.0 |  | Timeline view for projects
+[project_timeline](project_timeline/) | 18.0.1.0.1 |  | Timeline view for projects
 [project_timeline_hr_timesheet](project_timeline_hr_timesheet/) | 18.0.1.0.0 |  | Shows the progress of tasks on the timeline view.
 [project_timesheet_time_control](project_timesheet_time_control/) | 18.0.1.0.7 | <a href='https://github.com/victoralmau'><img src='https://github.com/victoralmau.png' width='32' height='32' style='border-radius:50%;' alt='victoralmau'/></a> | Project timesheet time control
 [project_type](project_type/) | 18.0.1.0.0 |  | Project Types
