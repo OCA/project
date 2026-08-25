@@ -22,4 +22,5 @@
             "/project_timeline/static/src/scss/project_timeline.scss"
         ]
     },
+    "uninstall_hook": "uninstall_hook",
 }
