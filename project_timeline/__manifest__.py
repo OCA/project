@@ -6,7 +6,7 @@
 {
     "name": "Project timeline",
     "summary": "Timeline view for projects",
-    "version": "19.0.1.0.0",
+    "version": "19.0.1.0.1",
     "category": "Project Management",
     "website": "https://github.com/OCA/project",
     "author": "Tecnativa, Onestein, Odoo Community Association (OCA)",
@@ -22,4 +22,5 @@
             "/project_timeline/static/src/scss/project_timeline.scss"
         ]
     },
+    "uninstall_hook": "uninstall_hook",
 }
