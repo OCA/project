@@ -2,7 +2,7 @@ from openupgradelib import openupgrade
 
 
 @openupgrade.migrate()
-def migrate(env, version):
+def migrate(cr, version):
     xml_ids = [
         "project_task_default_stage.project_tt_analysis",
         "project_task_default_stage.project_tt_specification",
@@ -14,6 +14,6 @@ def migrate(env, version):
         "project_task_default_stage.project_tt_cancel",
     ]
     for xml_id in xml_ids:
-        task_type = env.ref(xml_id, raise_if_not_found=False)
+        task_type = cr.ref(xml_id, raise_if_not_found=False)
         if task_type:
             task_type.user_id = False
