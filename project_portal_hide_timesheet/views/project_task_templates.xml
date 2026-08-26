@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="portal_tasks_list" inherit_id="project.portal_tasks_list">
+        <xpath expr="//th[@t-if=&quot;groupby != 'state'&quot;]" position="inside">
+            Status
+        </xpath>
+        <xpath expr="//th[@t-if=&quot;groupby != 'state'&quot;]" position="attributes">
+            <attribute name="class">text-end</attribute>
+        </xpath>
+    </template>
+</odoo>
