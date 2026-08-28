@@ -1,5 +1,5 @@
 # Copyright 2024 Tecnativa - Carolina Fernandez
-# License LGPLv3.0 or later (https://www.gnu.org/licenses/lgpl-3.0.en.html).
+# License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 from odoo import fields, models
 
 
