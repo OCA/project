@@ -334,3 +334,55 @@ class TestProjectMerge(TestProjectCommon):
             len(self.task_merge_2.dst_task_id._get_all_subtasks()),
             "Should have 18 subtasks",
         )
+
+    def test_merge_moves_messages_and_activities(self):
+        """messages, activities and attachments of the merged task are
+        moved to the destination task, with a mention of their origin
+        task"""
+        task_A = self.env["project.task"].create(
+            {"name": "Task A", "project_id": self.project_goats.id}
+        )
+        task_B = self.env["project.task"].create(
+            {"name": "Task B", "project_id": self.project_goats.id}
+        )
+        attachment_direct = self.env["ir.attachment"].create(
+            {
+                "name": "doc.txt",
+                "res_model": "project.task",
+                "res_id": task_B.id,
+                "raw": b"some content",
+            }
+        )
+        attachment_message = self.env["ir.attachment"].create(
+            {
+                "name": "message_doc.txt",
+                "res_model": "project.task",
+                "res_id": task_B.id,
+                "raw": b"some content",
+            }
+        )
+        message_B = task_B.message_post(
+            body="Some note on task B",
+            subject="B note",
+            message_type="comment",
+            subtype_xmlid="mail.mt_note",
+            attachment_ids=[attachment_message.id],
+        )
+        activity_B = task_B.activity_schedule(
+            "mail.mail_activity_data_todo", summary="Follow up on task B"
+        )
+
+        task_merge = (
+            self.env["project.task.merge"]
+            .with_context(active_ids=[task_A.id, task_B.id])
+            .create({})
+        )
+        task_merge.merge_tasks()
+
+        self.assertEqual(message_B.res_id, task_merge.dst_task_id.id)
+        self.assertEqual(message_B.subject, "From Task B: B note")
+        self.assertEqual(activity_B.res_id, task_merge.dst_task_id.id)
+        self.assertEqual(attachment_direct.res_id, task_merge.dst_task_id.id)
+        self.assertEqual(attachment_direct.name, "doc.txt (from Task B)")
+        self.assertEqual(attachment_message.res_id, task_merge.dst_task_id.id)
+        self.assertEqual(attachment_message.name, "message_doc.txt (from Task B)")
