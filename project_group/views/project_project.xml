@@ -6,7 +6,7 @@
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.edit_project" />
         <field name="arch" type="xml">
-            <xpath expr="//field[@name='privacy_visibility']/.." position="inside">
+            <xpath expr="//page[@name='settings']//field[@name='privacy_visibility']/.." position="inside">
                 <field
                     name="group_ids"
                     invisible="privacy_visibility != 'followers'"
