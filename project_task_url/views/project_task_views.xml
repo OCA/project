@@ -1,0 +1,25 @@
+<odoo>
+    <record id="view_task_form2" model="ir.ui.view">
+        <field name="name">project.task.form.url</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2" />
+        <field name="type">form</field>
+        <field name="priority" eval="100" />
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page name="url_page" string="External Links">
+                    <field name="url_ids" mode="list">
+                        <list editable="bottom" open_form_view="False">
+                            <field name="name" />
+                            <field name="url_link" widget="url" />
+                            <field name="create_date" optional="hide" />
+                            <field name="create_uid" optional="hide" />
+                            <field name="write_date" optional="hide" />
+                            <field name="write_uid" optional="hide" />
+                        </list>
+                    </field>
+                </page>
+            </notebook>
+        </field>
+    </record>
+</odoo>
