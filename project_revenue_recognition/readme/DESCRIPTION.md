@@ -1,0 +1,1 @@
+This module automatically calculates earned revenue based on project progress percentage and compares it with posted invoices. When a difference is detected, the system generates adjustment Journal Entries to align accounting revenue with project progress.
