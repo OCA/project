@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="res_config_settings_view_form" model="ir.ui.view">
+        <field
+            name="name"
+        >res.config.settings.view.form.inherit.project.type.analytic.plan</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="account.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//block[@id='analytic']" position="after">
+                <block
+                    title="Project Type to Analytic Plan Synchronization"
+                    id="project_type_to_analytic_plan"
+                    groups="account.group_account_user"
+                >
+                    <setting
+                        id="project_types_root_analytic_plan_setting"
+                        string="Root Analytic Plan"
+                        help="Configure the root analytic plan for project types synchronization"
+                    >
+                        <field name="project_types_root_analytic_plan_id" />
+                        <div
+                            class="mt8"
+                            invisible="not project_types_root_analytic_plan_id"
+                        >
+                            <button
+                                name="action_synchronize_project_types_with_plans"
+                                string="Synchronize Project Types with Analytic Plans"
+                                type="object"
+                                class="btn-primary"
+                            />
+                        </div>
+                        <div
+                            class="text-muted mt8"
+                            invisible="not project_types_root_analytic_plan_id"
+                        >
+                            This will delete existing plans under the root plan and
+                            recreate them based on the project types tree. Projects
+                            will be automatically linked to their corresponding
+                            analytic plans.
+                        </div>
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>
