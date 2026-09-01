@@ -22,8 +22,10 @@ msgstr ""
 
 #. module: project_task_code
 #: model_terms:ir.ui.view,arch_db:project_task_code.project_task_code_form_view
-msgid "<span class=\"oe_inline\"> - </span>"
-msgstr "<span class=\"oe_inline\"> - </span>"
+msgid ""
+"<span class=\"oe_inline\" invisible=\"task_name_display == 'code'\"> - </"
+"span>"
+msgstr ""
 
 #. module: project_task_code
 #: model:ir.model,website_form_label:project_task_code.model_project_task
@@ -31,19 +33,52 @@ msgid "Create a Task"
 msgstr "Crea un lavoro"
 
 #. module: project_task_code
+#: model:ir.model.fields,field_description:project_task_code.field_project_project__display_name
 #: model:ir.model.fields,field_description:project_task_code.field_project_task__display_name
 msgid "Display Name"
 msgstr "Nome visualizzato"
 
 #. module: project_task_code
+#: model:ir.model.fields,help:project_task_code.field_project_project__task_name_display
+#: model:ir.model.fields,help:project_task_code.field_project_task__task_name_display
+msgid ""
+"How the tasks of this project are identified:\n"
+"- Number and Title: the task number followed by its title.\n"
+"- Number only: the task number alone; titles are kept but not displayed, and "
+"are not required."
+msgstr ""
+
+#. module: project_task_code
+#: model:ir.model.fields,field_description:project_task_code.field_project_project__id
 #: model:ir.model.fields,field_description:project_task_code.field_project_task__id
 msgid "ID"
 msgstr "ID"
 
 #. module: project_task_code
+#: model:ir.model.fields.selection,name:project_task_code.selection__project_project__task_name_display__code_name
+msgid "Number and Title"
+msgstr ""
+
+#. module: project_task_code
+#: model:ir.model.fields.selection,name:project_task_code.selection__project_project__task_name_display__code
+msgid "Number only"
+msgstr ""
+
+#. module: project_task_code
+#: model:ir.model,name:project_task_code.model_project_project
+msgid "Project"
+msgstr ""
+
+#. module: project_task_code
 #: model:ir.model,name:project_task_code.model_project_task
 msgid "Task"
 msgstr "Lavoro"
+
+#. module: project_task_code
+#: model:ir.model.fields,field_description:project_task_code.field_project_project__task_name_display
+#: model:ir.model.fields,field_description:project_task_code.field_project_task__task_name_display
+msgid "Task Name Display"
+msgstr ""
 
 #. module: project_task_code
 #: model:ir.model.fields,field_description:project_task_code.field_project_task__code
@@ -54,6 +89,11 @@ msgstr "Numero lavoro"
 #: model:ir.model.constraint,message:project_task_code.constraint_project_task_code_company_uniq
 msgid "The code must be unique!"
 msgstr "Il codice deve essere univoco!"
+
+#. module: project_task_code
+#: model:ir.model.fields,field_description:project_task_code.field_project_task__name
+msgid "Title"
+msgstr ""
 
 #. module: project_task_code
 #: model:ir.model.fields,help:project_task_code.field_project_task__display_name
@@ -81,3 +121,6 @@ msgstr ""
 "\n"
 "        Assicurarsi di utilizzare il formato e l'ordine corretti, es. "
 "migliora la schermata di configurazione 5h #feature #v16 @Mitchell !"
+
+#~ msgid "<span class=\"oe_inline\"> - </span>"
+#~ msgstr "<span class=\"oe_inline\"> - </span>"
