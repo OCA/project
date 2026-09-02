@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Copyright 2025 NICO SOLUTIONS - ENGINEERING & IT
+     License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0) -->
+<odoo>
+    <record id="product_template_form_inherit_task_template" model="ir.ui.view">
+        <field name="name">product.template.form.inherit.task.template</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='project_template_id']" position="after">
+                <field
+                    name="task_description_template_id"
+                    string="Task Description Template"
+                    invisible="type != 'service' or (service_tracking != 'task_global_project' and service_tracking != 'task_in_project')"
+                />
+                <field
+                    name="include_sale_line_info_in_task"
+                    invisible="type != 'service' or (service_tracking != 'task_global_project' and service_tracking != 'task_in_project')"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>
