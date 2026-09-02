@@ -1,0 +1,311 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sale_project_task_recurrency
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2025-08-02 14:55+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
+"Language-Team: none\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.10.4\n"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields,field_description:sale_project_task_recurrency.field_product_product__task_repeat_number
+#: model:ir.model.fields,field_description:sale_project_task_recurrency.field_product_template__task_repeat_number
+msgid "# Repeats"
+msgstr "N° ripetizioni"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month__4
+msgid "April"
+msgstr "Aprile"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month__8
+msgid "August"
+msgstr "Agosto"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_start_date_method__current_date
+msgid "Current date"
+msgstr "Data attuale"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_repeat_unit__day
+msgid "Days"
+msgstr "Giorni"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month__12
+msgid "December"
+msgstr "Dicembre"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields,field_description:sale_project_task_recurrency.field_product_product__task_repeat_until
+#: model:ir.model.fields,field_description:sale_project_task_recurrency.field_product_template__task_repeat_until
+msgid "End Date"
+msgstr "Data fine"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_start_date_method__end_this
+msgid "End of current period"
+msgstr "Fine periodo attuale"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_start_date_method__end_next
+msgid "End of next period"
+msgstr "Fine del periodo successivo"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month__2
+msgid "February"
+msgstr "Febbraio"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month_semester__5
+msgid "Fifth month"
+msgstr "Quinto mese"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month_quarter__1
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month_semester__1
+msgid "First month"
+msgstr "Primo mese"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields,field_description:sale_project_task_recurrency.field_product_product__task_force_month
+#: model:ir.model.fields,field_description:sale_project_task_recurrency.field_product_product__task_force_month_quarter
+#: model:ir.model.fields,field_description:sale_project_task_recurrency.field_product_product__task_force_month_semester
+#: model:ir.model.fields,field_description:sale_project_task_recurrency.field_product_template__task_force_month
+#: model:ir.model.fields,field_description:sale_project_task_recurrency.field_product_template__task_force_month_quarter
+#: model:ir.model.fields,field_description:sale_project_task_recurrency.field_product_template__task_force_month_semester
+msgid "Force Month"
+msgstr "Forza mese"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields,help:sale_project_task_recurrency.field_product_product__task_force_month_quarter
+#: model:ir.model.fields,help:sale_project_task_recurrency.field_product_template__task_force_month_quarter
+msgid "Force the month to be used inside the quarter"
+msgstr "Forze il mese da utilizzare nel trimestre"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields,help:sale_project_task_recurrency.field_product_product__task_force_month_semester
+#: model:ir.model.fields,help:sale_project_task_recurrency.field_product_template__task_force_month_semester
+msgid "Force the month to be used inside the semester"
+msgstr "Forse il mese da utilizzare nel semestre"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_repeat_type__forever
+msgid "Forever"
+msgstr "Per sempre"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month_semester__4
+msgid "Fourth month"
+msgstr "Quarto mese"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields,field_description:sale_project_task_recurrency.field_product_product__recurring_task
+#: model:ir.model.fields,field_description:sale_project_task_recurrency.field_product_template__recurring_task
+msgid "Is recurring task?"
+msgstr "È un lavoro ricorrente?"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month__1
+msgid "January"
+msgstr "Gennaio"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month__7
+msgid "July"
+msgstr "Luglio"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month__6
+msgid "June"
+msgstr "Giugno"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month__3
+msgid "March"
+msgstr "Marzo"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month__5
+msgid "May"
+msgstr "Maggio"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_repeat_unit__month
+msgid "Months"
+msgstr "Mesi"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month__11
+msgid "November"
+msgstr "Novembre"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month__10
+msgid "October"
+msgstr "Ottobre"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model,name:sale_project_task_recurrency.model_product_template
+msgid "Product"
+msgstr "Prodotto"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model,name:sale_project_task_recurrency.model_product_product
+msgid "Product Variant"
+msgstr "Variante prodotto"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_repeat_unit__quarter
+msgid "Quarters"
+msgstr "Trimestri"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_repeat_type__repeat
+msgid "Repeat"
+msgstr "Ripeti"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields,field_description:sale_project_task_recurrency.field_product_product__task_repeat_interval
+#: model:ir.model.fields,field_description:sale_project_task_recurrency.field_product_template__task_repeat_interval
+msgid "Repeat Every"
+msgstr "Ripeti ogni"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model,name:sale_project_task_recurrency.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Riga ordine di vendita"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month_quarter__2
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month_semester__2
+msgid "Second month"
+msgstr "Secondo mese"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_repeat_unit__semester
+msgid "Semesters"
+msgstr "Semestri"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month__9
+msgid "September"
+msgstr "Settembre"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month_semester__6
+msgid "Sixth month"
+msgstr "Sesto mese"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields,field_description:sale_project_task_recurrency.field_product_product__task_start_date_method
+#: model:ir.model.fields,field_description:sale_project_task_recurrency.field_product_template__task_start_date_method
+msgid "Start Date Method"
+msgstr "Metodo data inizio"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_start_date_method__start_this
+msgid "Start of current period"
+msgstr "Inizio periodo attuale"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_start_date_method__start_next
+msgid "Start of next period"
+msgstr "Inizio del periodo successivo"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields,field_description:sale_project_task_recurrency.field_product_product__task_repeat_unit
+#: model:ir.model.fields,field_description:sale_project_task_recurrency.field_product_template__task_repeat_unit
+msgid "Task Repeat Unit"
+msgstr "Unità ripetizione lavoro"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month_quarter__3
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_force_month_semester__3
+msgid "Third month"
+msgstr "Terzo mese"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields,help:sale_project_task_recurrency.field_product_product__task_start_date_method
+#: model:ir.model.fields,help:sale_project_task_recurrency.field_product_template__task_start_date_method
+msgid ""
+"This field allows to define how the start date of the task will\n"
+"        be calculated:\n"
+"\n"
+"        - Current date: The start date will be Current date.\n"
+"        - Start of current period: The start date will be the first day of "
+"the actual\n"
+"        period selected. Example: If we are on 2024/08/27\n"
+"        and the period selected is 'Year(s)' the start date will be "
+"2024/01/01.\n"
+"        - End of current period: The start date will be the last day of the "
+"actual\n"
+"        period selected. Example: If we are on 2024/08/27\n"
+"        and the period selected is 'Year(s)' the start date will be "
+"2024/12/31.\n"
+"        - Start of next period: The start date will be the first day of the "
+"next\n"
+"        period selected. Example: If we are on 2024/08/27\n"
+"        and the period selected is 'Year(s)' the start date will be "
+"2025/01/01.\n"
+"        - End of next period: The start date will be the last day of the "
+"actual\n"
+"        period selected. Example: If we are on 2024/08/27\n"
+"        and the period selected is 'Year(s)' the start date will be "
+"2025/12/31.\n"
+"        "
+msgstr ""
+"Questo campo consente di definire come verrà calcolata la data \n"
+"        di inizio dell'attività:\n"
+"\n"
+"        - Data corrente: la data di inizio sarà la data corrente.\n"
+"        - Inizio del periodo corrente: la data di inizio sarà il primo "
+"giorno del periodo effettivo\n"
+"        selezionato. Esempio: se siamo al 27/08/2024\n"
+"        e il periodo selezionato è \"Anno/i\", la data di inizio sarà il "
+"01/01/2024.\n"
+"        - Fine del periodo corrente: la data di inizio sarà l'ultimo giorno "
+"del periodo effettivo\n"
+"        selezionato. Esempio: se siamo al 27/08/2024\n"
+"        e il periodo selezionato è \"Anno/i\", la data di inizio sarà il "
+"31/12/2024.\n"
+"        - Inizio del periodo successivo: la data di inizio sarà il primo "
+"giorno del periodo successivo\n"
+"        selezionato. Esempio: se siamo al 27/08/2024\n"
+"        e il periodo selezionato è \"Anno/i\", la data di inizio sarà il "
+"01/01/2025. \n"
+"        - Fine del periodo successivo: la data di inizio sarà l'ultimo "
+"giorno del periodo effettivo\n"
+"        selezionato. Esempio: se siamo al 27/08/2024\n"
+"        e il periodo selezionato è \"Anno/i\", la data di inizio sarà il "
+"31/12/2025.\n"
+"        "
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields,field_description:sale_project_task_recurrency.field_product_product__task_repeat_type
+#: model:ir.model.fields,field_description:sale_project_task_recurrency.field_product_template__task_repeat_type
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_repeat_type__until
+msgid "Until"
+msgstr "Fino a"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_repeat_unit__week
+msgid "Weeks"
+msgstr "Settimane"
+
+#. module: sale_project_task_recurrency
+#: model:ir.model.fields.selection,name:sale_project_task_recurrency.selection__product_template__task_repeat_unit__year
+msgid "Years"
+msgstr "Anni"
