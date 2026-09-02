@@ -1,0 +1,36 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_task_planning
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-22 08:00+0000\n"
+"PO-Revision-Date: 2026-05-22 08:00+0000\n"
+"Last-Translator: Antigravity <antigravity@gemini>\n"
+"Language-Team: Spanish\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
+
+#. module: project_task_planning
+#: model:ir.model.fields,field_description:project_task_planning.field_hr_employee_bucket__utilization_rate
+msgid "Utilization Rate (%)"
+msgstr "Tasa de utilización (%)"
+
+#. module: project_task_planning
+#: model:ir.model.fields,help:project_task_planning.field_hr_employee_bucket__utilization_rate
+msgid "Percentage of working hours that are planned."
+msgstr "Porcentaje de horas laborables que están planificadas."
+
+#. module: project_task_planning
+#: model:ir.model.fields,field_description:project_task_planning.field_hr_employee__disable_planning
+msgid "Disable Planning"
+msgstr "Deshabilitar planificación"
+
+#. module: project_task_planning
+#: model:ir.model.fields,help:project_task_planning.field_hr_employee__disable_planning
+msgid "Disable planning and capacity buckets for this employee."
+msgstr "Deshabilita la planificación y los cubos de capacidad para este empleado."
