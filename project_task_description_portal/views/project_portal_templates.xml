@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template id="portal_my_task" inherit_id="project.portal_my_task" priority="100">
+        <xpath expr="//div[@t-field='task.description']" position="replace">
+            <t t-if="task.use_portal_description">
+                <div
+                    class="py-1 px-2 bg-100 small table-responsive"
+                    t-field="task.portal_description"
+                />
+            </t>
+            <t t-else="">
+                <div
+                    class="py-1 px-2 bg-100 small table-responsive"
+                    t-field="task.description"
+                />
+            </t>
+        </xpath>
+    </template>
+</odoo>
