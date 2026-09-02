@@ -106,3 +106,37 @@ class TestProjectVisibility(BaseCommon):
             "employees",
             "privacy_visibility should be 'employees' after update",
         )
+
+    def test_03_invited_users_group_access(self):
+        """Group members get access on 'invited_users' projects."""
+        invited_project = self.ProjectObj.create(
+            {
+                "name": "Invited Users Project",
+                "privacy_visibility": "invited_users",
+                "group_ids": [Command.set([self.group1.id])],
+            }
+        )
+        self.project_group_user.write({"group_ids": [Command.link(self.group2.id)]})
+        self.assertNotIn(
+            invited_project,
+            self.ProjectObj.with_user(self.project_group_user).search(
+                [("id", "=", invited_project.id)]
+            ),
+            "User outside the project groups should not see the project",
+        )
+
+        self.project_group_user.write(
+            {
+                "group_ids": [
+                    Command.unlink(self.group2.id),
+                    Command.link(self.group1.id),
+                ]
+            }
+        )
+        self.assertIn(
+            invited_project,
+            self.ProjectObj.with_user(self.project_group_user).search(
+                [("id", "=", invited_project.id)]
+            ),
+            "User in a project group should see the 'invited_users' project",
+        )
