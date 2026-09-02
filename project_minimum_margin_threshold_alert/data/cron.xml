@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 ACSONE SA/NV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="ir_cron_project_margin_exceeded" model="ir.cron">
+        <field name="name">Project: Manage Projects with minimum margin exceeded</field>
+        <field name="model_id" ref="model_project_project" />
+        <field name="state">code</field>
+        <field name="code">model._cron_margin_threshold_exceeded()</field>
+        <field name="interval_number">1</field>
+        <field name="interval_type">days</field>
+    </record>
+</odoo>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 ACSONE SA/NV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="res_config_settings_view_form_inherit" model="ir.ui.view">
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="project.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//app[@name='project']" position="inside">
+                <block
+                    title="Margin Notifications Management"
+                    name="project_margin_notification"
+                >
+                    <setting id="project_margin_threshold">
+                        <div>
+                            <label for="project_margin_threshold" />
+                            <field
+                                name="project_margin_threshold"
+                                class="text-center"
+                                style="width: 3rem;"
+                                widget="percentage"
+                            />
+                            <span
+                                class="fa fa-lg fa-building-o p-2"
+                                title="Values set here are company-specific."
+                                groups="base.group_multi_company"
+                            />
+                        </div>
+                        <div class="text-muted">
+                            Percentage of project costs compared to project revenues that
+                            triggers an alert. For example, a value of 50 means an alert will be sent when project costs
+                            reach
+                            50% of the project revenues.
+                        </div>
+                    </setting>
+                    <setting id="project_threshold_email">
+                        <field name="project_margin_threshold_send_email" />
+                        <span
+                            class="fa fa-lg fa-building-o p-2"
+                            title="Values set here are company-specific."
+                            groups="base.group_multi_company"
+                        />
+                    </setting>
+                    <setting id="project_threshold_activity">
+                        <field name="project_margin_threshold_create_activity" />
+                        <span
+                            class="fa fa-lg fa-building-o p-2"
+                            title="Values set here are company-specific."
+                            groups="base.group_multi_company"
+                        />
+                    </setting>
+                </block>
+            </xpath>
+        </field>
+    </record>
+</odoo>

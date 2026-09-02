@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 ACSONE SA/NV
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="edit_project_inherit" model="ir.ui.view">
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project" />
+        <field name="arch" type="xml">
+            <header position="before">
+                <div
+                    class="alert alert-info"
+                    role="alert"
+                    invisible="not is_margin_threshold_exceeded"
+                >
+                    The margin is exceeded!
+                </div>
+            </header>
+            <xpath expr="//notebook" position="inside">
+                <page name="notification_manager" string="Margin Notifications">
+                    <group>
+                        <group string="Thresholds">
+                            <field name="margin_threshold" widget="percentage" />
+                        </group>
+                        <group string="Notifications">
+                            <field name="force_margin_threshold_notification" />
+                            <field name="create_margin_threshold_activity" />
+                        </group>
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_project_project_filter" model="ir.ui.view">
+        <field name="name">project.project.select</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project_project_filter" />
+        <field name="arch" type="xml">
+            <filter name="end_date" position="after">
+                <separator />
+                <filter
+                    string="Minimum Margin Exceeded"
+                    name="margin_exceeded"
+                    domain="[('is_margin_threshold_exceeded', '=', True)]"
+                />
+                <filter
+                    string="Minimum Margin Notification Sent"
+                    name="is_margin_threshold_exceeded_notfication_sent"
+                    domain="[('is_margin_threshold_exceeded_notfication_sent', '=', True)]"
+                />
+            </filter>
+        </field>
+    </record>
+</odoo>

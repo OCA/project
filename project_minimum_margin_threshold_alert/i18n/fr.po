@@ -1,0 +1,274 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_minimum_margin_threshold_alert
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-02-02 13:23+0000\n"
+"PO-Revision-Date: 2026-02-02 13:23+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: project_minimum_margin_threshold_alert
+#: model:mail.template,body_html:project_minimum_margin_threshold_alert.project_minimum_margin_exceeded_template
+msgid ""
+"<p>Hello,</p>\n"
+"            <br/>\n"
+"            <p>\n"
+"                This is an automated notification to inform you that the costs threshold for the project\n"
+"                <strong>\n"
+"                <t t-out=\"object.name\"/>\n"
+"            </strong> has been exceeded.\n"
+"            </p>\n"
+"            <p>\n"
+"                Please review the project and take any necessary actions.\n"
+"            </p>\n"
+"            <br/>\n"
+"            <br/>\n"
+"            <p>\n"
+"                Best regards,\n"
+"                <br/>\n"
+"                <t t-out=\"object.company_id.name\"/>\n"
+"            </p>\n"
+"        "
+msgstr ""
+"<p>Bonjour,</p>\n"
+"            <br/>\n"
+"            <p>\n"
+"                Ceci est une notification automatique pour vous informer que le seuil des coûts du projet\n"
+"                <strong>\n"
+"                <t t-out=\"object.name\"/>\n"
+"            </strong> a été dépassé.\n"
+"            </p>\n"
+"            <p>\n"
+"                Veuillez examiner le projet et prendre les mesures nécessaires.\n"
+"            </p>\n"
+"            <br/>\n"
+"            <br/>\n"
+"            <p>\n"
+"                Cordialement,\n"
+"                <br/>\n"
+"                <t t-out=\"object.company_id.name\"/>\n"
+"            </p>\n"
+"        "
+
+#. module: project_minimum_margin_threshold_alert
+#: model_terms:ir.ui.view,arch_db:project_minimum_margin_threshold_alert.res_config_settings_view_form_inherit
+msgid ""
+"<span class=\"fa fa-lg fa-building-o p-2\" title=\"Values set here are "
+"company-specific.\" groups=\"base.group_multi_company\"/>"
+msgstr ""
+
+#. module: project_minimum_margin_threshold_alert
+#: model:ir.model.fields,field_description:project_minimum_margin_threshold_alert.field_res_users__receive_project_margin_threshold_notification
+msgid "Activate minimum margin notifications for projects"
+msgstr "Activer les notifications sur les marges minimum pour les projets"
+
+#. module: project_minimum_margin_threshold_alert
+#: model:mail.template,description:project_minimum_margin_threshold_alert.project_minimum_margin_exceeded_template
+msgid ""
+"Automated notification sent to the project subscribers to inform about project Costs vs Revenues\n"
+"            threshold exceeding\n"
+"        "
+msgstr ""
+"Notification automatique envoyée aux abonnés du projet pour les informer du "
+"dépassement du seuil des coûts par rapport aux revenus"
+
+#. module: project_minimum_margin_threshold_alert
+#: model:ir.model.fields,help:project_minimum_margin_threshold_alert.field_project_project__force_margin_threshold_notification
+msgid "Check this if you want to send emails when margin is exceeded."
+msgstr "Cochez ceci si vous voulez envoyer des emails quand la marge est dépassée."
+
+#. module: project_minimum_margin_threshold_alert
+#: model:ir.model.fields,help:project_minimum_margin_threshold_alert.field_project_project__create_margin_threshold_activity
+msgid ""
+"Check this in order to create activities for users with that parameter "
+"activated when margin threshold is exceeded."
+msgstr ""
+"Cochez ceci pour créer des activités pour les utilisateurs dont le paramètre"
+"est activé afin de créer des activités quand le seuil de marge est dépassé."
+
+#. module: project_minimum_margin_threshold_alert
+#: model:ir.model.fields,help:project_minimum_margin_threshold_alert.field_res_config_settings__project_margin_threshold
+msgid "Check this to define a default margin"
+msgstr "Cochez ceci pour définir une marge par défaut"
+
+#. module: project_minimum_margin_threshold_alert
+#: model:ir.model.fields,help:project_minimum_margin_threshold_alert.field_res_config_settings__project_margin_threshold_create_activity
+msgid ""
+"Check this to enable by default the creation of activityfor dedicated "
+"project manager when project margin threshold (minimum) is ."
+msgstr ""
+"Cochez ceci pour activer par défaut la création d'activité pour le"
+"gestionnaire de projet lorsque le seuil de marge est dépassé."
+
+#. module: project_minimum_margin_threshold_alert
+#: model:ir.model.fields,help:project_minimum_margin_threshold_alert.field_res_config_settings__project_margin_threshold_send_email
+msgid ""
+"Check this to enable by default the sending of emailsto internal users when "
+"project margin is exceeded."
+msgstr ""
+"Cochez ceci pour activer par défaut l'envoi des emails aux utilsateurs"
+"internes quand la marge du projet est dépassée."
+
+#. module: project_minimum_margin_threshold_alert
+#: model:ir.model,name:project_minimum_margin_threshold_alert.model_res_config_settings
+msgid "Config Settings"
+msgstr "Paramètres de configuration"
+
+#. module: project_minimum_margin_threshold_alert
+#: model:ir.model.fields,field_description:project_minimum_margin_threshold_alert.field_project_project__create_margin_threshold_activity
+msgid "Create Margin Threshold Activity"
+msgstr "Créer une activité pour le seuil d'alerte sur les marges"
+
+#. module: project_minimum_margin_threshold_alert
+#: model:ir.model.fields,field_description:project_minimum_margin_threshold_alert.field_project_project__display_name
+#: model:ir.model.fields,field_description:project_minimum_margin_threshold_alert.field_res_config_settings__display_name
+#: model:ir.model.fields,field_description:project_minimum_margin_threshold_alert.field_res_users__display_name
+msgid "Display Name"
+msgstr "Nom d'affichage"
+
+#. module: project_minimum_margin_threshold_alert
+#: model:ir.model.fields,field_description:project_minimum_margin_threshold_alert.field_project_project__force_margin_threshold_notification
+msgid "Force email notification sending (margin)"
+msgstr "Forcer la notification par envoi d'email (marges)"
+
+#. module: project_minimum_margin_threshold_alert
+#: model:ir.model.fields,field_description:project_minimum_margin_threshold_alert.field_project_project__id
+#: model:ir.model.fields,field_description:project_minimum_margin_threshold_alert.field_res_config_settings__id
+#: model:ir.model.fields,field_description:project_minimum_margin_threshold_alert.field_res_users__id
+msgid "ID"
+msgstr ""
+
+#. module: project_minimum_margin_threshold_alert
+#: model:ir.model.fields,field_description:project_minimum_margin_threshold_alert.field_project_project__is_margin_threshold_exceeded
+msgid "Is Margin Threshold Exceeded"
+msgstr "Seuil de Marge Dépassé"
+
+#. module: project_minimum_margin_threshold_alert
+#: model:ir.model.fields,field_description:project_minimum_margin_threshold_alert.field_project_project__is_margin_threshold_exceeded_notfication_sent
+msgid "Is Margin Threshold Exceeded Notfication Sent"
+msgstr "Notification sur les seuils d'alerte de marge envoyée"
+
+#. module: project_minimum_margin_threshold_alert
+#: model_terms:ir.ui.view,arch_db:project_minimum_margin_threshold_alert.edit_project_inherit
+msgid "Margin Notifications"
+msgstr "Notifications sur les marges"
+
+#. module: project_minimum_margin_threshold_alert
+#: model_terms:ir.ui.view,arch_db:project_minimum_margin_threshold_alert.res_config_settings_view_form_inherit
+msgid "Margin Notifications Management"
+msgstr "Notifications de marge"
+
+#. module: project_minimum_margin_threshold_alert
+#: model:ir.model.fields,field_description:project_minimum_margin_threshold_alert.field_project_project__margin_threshold
+msgid "Margin Threshold"
+msgstr "Seuil de Marge"
+
+#. module: project_minimum_margin_threshold_alert
+#: model:mail.activity.type,name:project_minimum_margin_threshold_alert.mail_activity_type_margin_threshold
+#: model_terms:ir.ui.view,arch_db:project_minimum_margin_threshold_alert.view_project_project_filter
+msgid "Minimum Margin Exceeded"
+msgstr "Marge Minimum dépassée"
+
+#. module: project_minimum_margin_threshold_alert
+#: model_terms:ir.ui.view,arch_db:project_minimum_margin_threshold_alert.view_project_project_filter
+msgid "Minimum Margin Notification Sent"
+msgstr "Notification de Marge Minimum Envoyée"
+
+#. module: project_minimum_margin_threshold_alert
+#: model_terms:ir.ui.view,arch_db:project_minimum_margin_threshold_alert.edit_project_inherit
+msgid "Notifications"
+msgstr ""
+
+#. module: project_minimum_margin_threshold_alert
+#: model:ir.model.fields,help:project_minimum_margin_threshold_alert.field_res_users__receive_project_margin_threshold_notification
+msgid "Notify user about project minimum margin threshold exceeding"
+msgstr "Notifier l'utilisateur des dépassements "
+
+#. module: project_minimum_margin_threshold_alert
+#: model_terms:ir.ui.view,arch_db:project_minimum_margin_threshold_alert.res_config_settings_view_form_inherit
+msgid ""
+"Percentage of project costs compared to project revenues that\n"
+"                            triggers an alert. For example, a value of 50 means an alert will be sent when project costs\n"
+"                            reach\n"
+"                            50% of the project revenues."
+msgstr ""
+"Pourcentage des coûts du projet par rapport aux revenus du projet qui\n"
+"                            déclenche une alerte. Par exemple, une valeur de 50 signifie qu’une alerte sera envoyée lorsque les coûts du projet\n"
+"                            atteignent\n"
+"                            50 % des revenus du projet."
+
+#. module: project_minimum_margin_threshold_alert
+#: model:ir.model.fields,help:project_minimum_margin_threshold_alert.field_project_project__margin_threshold
+msgid ""
+"Percentage of project costs compared to project revenues that triggers an "
+"alert"
+msgstr ""
+"Pourcentage des coûts de projet comparé aux revenus qui vont lancer une alerte"
+
+#. module: project_minimum_margin_threshold_alert
+#: model:ir.model,name:project_minimum_margin_threshold_alert.model_project_project
+msgid "Project"
+msgstr "Projet"
+
+#. module: project_minimum_margin_threshold_alert
+#: model:ir.model.fields,field_description:project_minimum_margin_threshold_alert.field_res_config_settings__project_margin_threshold
+msgid "Project Margin Threshold"
+msgstr "Seuil de Marge sur les Projets"
+
+#. module: project_minimum_margin_threshold_alert
+#: model:ir.model.fields,field_description:project_minimum_margin_threshold_alert.field_res_config_settings__project_margin_threshold_create_activity
+msgid "Project Margin Threshold Create Activity"
+msgstr "Créer une Activité sur les Seuils de Marge des Projets"
+
+#. module: project_minimum_margin_threshold_alert
+#: model:ir.model.fields,field_description:project_minimum_margin_threshold_alert.field_res_config_settings__project_margin_threshold_send_email
+msgid "Project Margin Threshold Send Email"
+msgstr "Envoyer un mail sur les seuils de Marge des Projets"
+
+#. module: project_minimum_margin_threshold_alert
+#: model:mail.activity.type,summary:project_minimum_margin_threshold_alert.mail_activity_type_margin_threshold
+msgid "Project margin threshold exceeded"
+msgstr "Le seuil de marge dépassé"
+
+#. module: project_minimum_margin_threshold_alert
+#: model:ir.actions.server,name:project_minimum_margin_threshold_alert.ir_cron_project_margin_exceeded_ir_actions_server
+msgid "Project: Manage Projects with minimum margin exceeded"
+msgstr "Projet: Gérer les Projets avec les marges dépassées"
+
+#. module: project_minimum_margin_threshold_alert
+#: model:mail.template,name:project_minimum_margin_threshold_alert.project_minimum_margin_exceeded_template
+msgid "Project: Minimum Margin threashold exceeded"
+msgstr "Projet: Dépassement du seuil de marge minimum"
+
+#. module: project_minimum_margin_threshold_alert
+#: model_terms:ir.ui.view,arch_db:project_minimum_margin_threshold_alert.edit_project_inherit
+msgid "The margin is exceeded!"
+msgstr "La marge est dépassée!"
+
+#. module: project_minimum_margin_threshold_alert
+#: model:ir.model.fields,help:project_minimum_margin_threshold_alert.field_project_project__is_margin_threshold_exceeded
+msgid "This is set if margin is exceeded from threshold"
+msgstr "Ceci est défini si la marge est dépassée depuis le seuil"
+
+#. module: project_minimum_margin_threshold_alert
+#: model_terms:ir.ui.view,arch_db:project_minimum_margin_threshold_alert.edit_project_inherit
+msgid "Thresholds"
+msgstr "Seuils"
+
+#. module: project_minimum_margin_threshold_alert
+#: model:ir.model,name:project_minimum_margin_threshold_alert.model_res_users
+msgid "User"
+msgstr "Utilisateur"
+
+#. module: project_minimum_margin_threshold_alert
+#: model:mail.template,subject:project_minimum_margin_threshold_alert.project_minimum_margin_exceeded_template
+msgid "{{ object.name }}: Costs Threashold Exceeded"
+msgstr "{{ object.name }} : Seuil des coûts dépassé"
