@@ -14,16 +14,23 @@ class HrExpense(models.Model):
         domain="[('project_id', '=', project_id)]",
     )
 
-    @api.depends("project_id")
+    @api.depends("project_id", "task_id")
     def _compute_analytic_distribution(self):
         """Compute the analytic distribution based on the project linked to the expense
-        report. Will remove the line if we remove the project.
+        report.
+
+        If a task is selected, use the task analytic distribution as source of
+        truth so task-specific plans (e.g. Succursales / Metiers) are propagated
+        to the expense.
         """
         res = super()._compute_analytic_distribution()
         for expense in self:
-            expense.analytic_distribution = (
-                expense.project_id._get_analytic_distribution()
-            )
+            if expense.task_id:
+                expense.analytic_distribution = expense.task_id._get_analytic_distribution()
+            else:
+                expense.analytic_distribution = (
+                    expense.project_id._get_analytic_distribution()
+                )
         return res
 
     @api.constrains("project_id", "task_id")
