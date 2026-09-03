@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-12-23 03:43+0000\n"
-"PO-Revision-Date: 2026-05-19 13:46+0000\n"
+"PO-Revision-Date: 2026-09-03 09:54+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: Italian (https://www.transifex.com/oca/teams/23907/it/)\n"
 "Language: it\n"
@@ -26,6 +26,8 @@ msgid ""
 "<span class=\"oe_inline\" invisible=\"task_name_display == 'code'\"> - </"
 "span>"
 msgstr ""
+"<span class=\"oe_inline\" invisible=\"task_name_display == 'code'\"> - </"
+"span>"
 
 #. module: project_task_code
 #: model:ir.model,website_form_label:project_task_code.model_project_task
@@ -47,6 +49,10 @@ msgid ""
 "- Number only: the task number alone; titles are kept but not displayed, and "
 "are not required."
 msgstr ""
+"Modalità di identificazione delle attività di questo progetto:\n"
+"- Numero e titolo: il numero dell'attività seguito dal suo titolo.\n"
+"- Solo numero: solo il numero dell'attività; i titoli vengono conservati ma "
+"non visualizzati e non sono obbligatori."
 
 #. module: project_task_code
 #: model:ir.model.fields,field_description:project_task_code.field_project_project__id
@@ -57,17 +63,17 @@ msgstr "ID"
 #. module: project_task_code
 #: model:ir.model.fields.selection,name:project_task_code.selection__project_project__task_name_display__code_name
 msgid "Number and Title"
-msgstr ""
+msgstr "Numero e titolo"
 
 #. module: project_task_code
 #: model:ir.model.fields.selection,name:project_task_code.selection__project_project__task_name_display__code
 msgid "Number only"
-msgstr ""
+msgstr "Solo numero"
 
 #. module: project_task_code
 #: model:ir.model,name:project_task_code.model_project_project
 msgid "Project"
-msgstr ""
+msgstr "Progetto"
 
 #. module: project_task_code
 #: model:ir.model,name:project_task_code.model_project_task
@@ -78,7 +84,7 @@ msgstr "Lavoro"
 #: model:ir.model.fields,field_description:project_task_code.field_project_project__task_name_display
 #: model:ir.model.fields,field_description:project_task_code.field_project_task__task_name_display
 msgid "Task Name Display"
-msgstr ""
+msgstr "Nome visualizzato lavoro"
 
 #. module: project_task_code
 #: model:ir.model.fields,field_description:project_task_code.field_project_task__code
@@ -93,7 +99,7 @@ msgstr "Il codice deve essere univoco!"
 #. module: project_task_code
 #: model:ir.model.fields,field_description:project_task_code.field_project_task__name
 msgid "Title"
-msgstr ""
+msgstr "Titolo"
 
 #. module: project_task_code
 #: model:ir.model.fields,help:project_task_code.field_project_task__display_name
