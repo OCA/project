@@ -1,0 +1,27 @@
+.o_kanban_renderer .o_kanban_counter_progress {
+    .progress-bar.bg-pstx-0 {
+        background-color: $gray-400 !important;
+    }
+
+    @for $index from 1 through length($o-colors) - 1 {
+        .progress-bar.bg-pstx-#{$index} {
+            background-color: nth($o-colors, $index + 1) !important;
+        }
+    }
+
+    .progress-bar.bg-pstx-20 {
+        background-color: $o-success !important;
+    }
+
+    .progress-bar.bg-pstx-21 {
+        background-color: $o-info !important;
+    }
+
+    .progress-bar.bg-pstx-22 {
+        background-color: $o-warning !important;
+    }
+
+    .progress-bar.bg-pstx-23 {
+        background-color: $o-danger !important;
+    }
+}
