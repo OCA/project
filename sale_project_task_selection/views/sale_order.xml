@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="sale_order_form" model="ir.ui.view">
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//field[@name='order_line']/list//field[@name='name']"
+                position="after"
+            >
+                <field
+                    name="project_id"
+                    string="Project"
+                    optional="show"
+                    domain="[
+                        ('allow_billable', '=', True),
+                        '|', ('sale_order_id', '=', False), ('sale_order_id', '=', parent.id),
+                        '|', ('sale_line_id', '=', False), ('sale_line_id', '=', id),
+                        '|', ('company_id', '=', False), ('company_id', '=', parent.company_id)
+                    ]"
+                    readonly="parent.state not in ('draft', 'sent')"
+                    invisible="not is_project_service_tracking_line"
+                    column_invisible="not parent.has_project_service_tracking_lines"
+                />
+                <field
+                    name="task_id"
+                    string="Task"
+                    optional="show"
+                    domain="[
+                        ('project_id', '=?', project_id),
+                        ('allow_billable', '=', True),
+                        '|', ('sale_order_id', '=', False), ('sale_order_id', '=', parent.id),
+                        '|', ('sale_line_id', '=', False), ('sale_line_id', '=', id),
+                        '|', ('company_id', '=', False), ('company_id', '=', parent.company_id),
+                    ]"
+                    readonly="parent.state not in ('draft', 'sent')"
+                    invisible="not is_project_service_tracking_line"
+                    column_invisible="not parent.has_project_service_tracking_lines"
+                />
+            </xpath>
+            <xpath
+                expr="//field[@name='order_line']/form//field[@name='product_id']/parent::div"
+                position="after"
+            >
+                <label
+                    for="project_id"
+                    string="Project"
+                    invisible="not is_project_service_tracking_line"
+                />
+                <field
+                    name="project_id"
+                    invisible="not is_project_service_tracking_line"
+                    readonly="parent.state not in ('draft', 'sent')"
+                    domain="[
+                        ('allow_billable', '=', True),
+                        '|', ('sale_order_id', '=', False), ('sale_order_id', '=', parent.id),
+                        '|', ('sale_line_id', '=', False), ('sale_line_id', '=', id),
+                        '|', ('company_id', '=', False), ('company_id', '=', parent.company_id)
+                    ]"
+                />
+                <label
+                    for="task_id"
+                    string="Task"
+                    invisible="not is_project_service_tracking_line"
+                />
+                <field
+                    name="task_id"
+                    invisible="not is_project_service_tracking_line"
+                    readonly="parent.state not in ('draft', 'sent')"
+                    domain="[
+                        ('project_id', '=?', project_id),
+                        ('allow_billable', '=', True),
+                        '|', ('sale_order_id', '=', False), ('sale_order_id', '=', parent.id),
+                        '|', ('sale_line_id', '=', False), ('sale_line_id', '=', id),
+                        '|', ('company_id', '=', False), ('company_id', '=', parent.company_id),
+                    ]"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>
