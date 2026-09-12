@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="project_project_view_form" model="ir.ui.view">
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project" />
+        <field name="arch" type="xml">
+            <div name="button_box" position="inside">
+                <button
+                    class="oe_stat_button"
+                    name="button_open_purchase_order"
+                    type="object"
+                    icon="fa-shopping-cart"
+                >
+                    <field string="Purchases" name="purchase_count" widget="statinfo" />
+                </button>
+                <button
+                    class="oe_stat_button"
+                    name="button_open_purchase_order_line"
+                    type="object"
+                    icon="fa-shopping-cart"
+                >
+                    <field
+                        string="Purchase Total"
+                        name="purchase_line_total"
+                        widget="statinfo"
+                    />
+                </button>
+                <button
+                    class="oe_stat_button"
+                    name="button_open_purchase_invoice"
+                    type="object"
+                    icon="fa-pencil-square-o"
+                >
+                    <field
+                        string="Purchase Invoices"
+                        name="purchase_invoice_count"
+                        widget="statinfo"
+                    />
+                </button>
+                <button
+                    class="oe_stat_button"
+                    name="button_open_purchase_invoice_line"
+                    type="object"
+                    icon="fa-pencil-square-o"
+                >
+                    <field
+                        string="Purchase Invoice Total"
+                        name="purchase_invoice_line_total"
+                        widget="statinfo"
+                    />
+                </button>
+            </div>
+        </field>
+    </record>
+</odoo>
