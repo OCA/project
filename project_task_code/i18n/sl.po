@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Odoo Server 9.0c\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-12-23 03:43+0000\n"
-"PO-Revision-Date: 2026-06-30 07:13+0000\n"
+"PO-Revision-Date: 2026-09-12 05:23+0000\n"
 "Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
 "Language-Team: Slovenian (https://www.transifex.com/oca/teams/23907/sl/)\n"
 "Language: sl\n"
@@ -26,6 +26,8 @@ msgid ""
 "<span class=\"oe_inline\" invisible=\"task_name_display == 'code'\"> - </"
 "span>"
 msgstr ""
+"<span class=\"oe_inline\" invisible=\"task_name_display == 'code'\"> - </"
+"span>"
 
 #. module: project_task_code
 #: model:ir.model,website_form_label:project_task_code.model_project_task
@@ -47,6 +49,10 @@ msgid ""
 "- Number only: the task number alone; titles are kept but not displayed, and "
 "are not required."
 msgstr ""
+"Kako se opredeljujejo opravila tega projekta:\n"
+"- Številka in naslov: številka opravila, ki ji sledi naslov.\n"
+"- Samo številka: samo številka opravila; naslovi se shranijo, vendar se ne "
+"prikažejo in niso obvezni."
 
 #. module: project_task_code
 #: model:ir.model.fields,field_description:project_task_code.field_project_project__id
@@ -57,17 +63,17 @@ msgstr "ID"
 #. module: project_task_code
 #: model:ir.model.fields.selection,name:project_task_code.selection__project_project__task_name_display__code_name
 msgid "Number and Title"
-msgstr ""
+msgstr "Številka in naslov"
 
 #. module: project_task_code
 #: model:ir.model.fields.selection,name:project_task_code.selection__project_project__task_name_display__code
 msgid "Number only"
-msgstr ""
+msgstr "Samo številka"
 
 #. module: project_task_code
 #: model:ir.model,name:project_task_code.model_project_project
 msgid "Project"
-msgstr ""
+msgstr "Projekt"
 
 #. module: project_task_code
 #: model:ir.model,name:project_task_code.model_project_task
@@ -78,7 +84,7 @@ msgstr "Opravilo"
 #: model:ir.model.fields,field_description:project_task_code.field_project_project__task_name_display
 #: model:ir.model.fields,field_description:project_task_code.field_project_task__task_name_display
 msgid "Task Name Display"
-msgstr ""
+msgstr "Prikaz naziva opravila"
 
 #. module: project_task_code
 #: model:ir.model.fields,field_description:project_task_code.field_project_task__code
@@ -93,7 +99,7 @@ msgstr "Koda mora biti unikatna!"
 #. module: project_task_code
 #: model:ir.model.fields,field_description:project_task_code.field_project_task__name
 msgid "Title"
-msgstr ""
+msgstr "Naslov"
 
 #. module: project_task_code
 #: model:ir.model.fields,help:project_task_code.field_project_task__display_name
