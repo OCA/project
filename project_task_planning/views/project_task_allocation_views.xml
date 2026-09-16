@@ -1,0 +1,176 @@
+<odoo>
+    <record id="view_project_task_allocation_form" model="ir.ui.view">
+        <field name="name">project.task.allocation.form</field>
+        <field name="model">project.task.allocation</field>
+        <field name="arch" type="xml">
+            <form string="Task Allocation">
+                <sheet>
+                    <group>
+                        <group string="Allocation Settings">
+                            <field name="task_id" invisible="1" />
+                            <field name="employee_id" />
+                            <field
+                                name="block_participation_percentage"
+                                invisible="1"
+                            />
+                            <field
+                                name="participation_percentage"
+                                readonly="block_participation_percentage"
+                                force_save="1"
+                            />
+                            <field
+                                name="date_start"
+                                widget="daterange"
+                                options="{'end_date_field': 'date_end'}"
+                                string="Allocation Dates"
+                            />
+                            <field name="date_end" invisible="1" />
+                        </group>
+                        <group string="Calculated Hours">
+                            <field
+                                name="estimated_hours"
+                                widget="float_time"
+                                readonly="1"
+                            />
+                            <field
+                                name="total_planned_hours"
+                                widget="float_time"
+                                readonly="1"
+                            />
+                            <field
+                                name="pending_to_plan_hours"
+                                widget="float_time"
+                                readonly="1"
+                            />
+                            <div colspan="2">
+                                <button
+                                    name="action_generate_planning"
+                                    type="object"
+                                    string="Generate Planning"
+                                    class="oe_highlight"
+                                    force_save="1"
+                                />
+                            </div>
+                        </group>
+                    </group>
+                    <group string="Planning">
+                        <field name="planning_ids" nolabel="1" colspan="2">
+                            <list editable="bottom">
+                                <field name="blocked" />
+                                <field name="bucket" readonly="1" />
+                                <field
+                                    name="date_start"
+                                    widget="daterange"
+                                    options="{'end_date_field': 'date_end'}"
+                                    readonly="blocked"
+                                    force_save="1"
+                                    string="Planning Dates"
+                                    optional="hide"
+                                />
+                                <field name="date_end" column_invisible="True" />
+                                <field
+                                    name="planned_hours"
+                                    widget="float_time"
+                                    readonly="blocked"
+                                    force_save="1"
+                                    optional="show"
+                                />
+                            </list>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_project_task_allocation_list" model="ir.ui.view">
+        <field name="name">project.task.allocation.list</field>
+        <field name="model">project.task.allocation</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="employee_id" />
+                <field name="participation_percentage" />
+                <field
+                    name="date_start"
+                    widget="daterange"
+                    options="{'end_date_field': 'date_end'}"
+                    string="Allocation Dates"
+                />
+                <field name="date_end" column_invisible="True" />
+                <field name="estimated_hours" widget="float_time" />
+                <field name="total_planned_hours" widget="float_time" />
+                <field name="pending_to_plan_hours" widget="float_time" />
+            </list>
+        </field>
+    </record>
+
+    <record id="view_project_task_allocation_pivot" model="ir.ui.view">
+        <field name="name">project.task.allocation.pivot</field>
+        <field name="model">project.task.allocation</field>
+        <field name="arch" type="xml">
+            <pivot string="Allocation Analysis">
+                <field name="employee_id" type="row" />
+                <field name="task_id" type="row" />
+                <field name="date_start" type="col" />
+                <field name="estimated_hours" type="measure" string="Estimated Hours" />
+                <field
+                    name="total_planned_hours"
+                    type="measure"
+                    string="Planned Hours"
+                />
+                <field
+                    name="pending_to_plan_hours"
+                    type="measure"
+                    string="Pending to Plan Hours"
+                />
+            </pivot>
+        </field>
+    </record>
+
+    <record id="search_project_task_allocation" model="ir.ui.view">
+        <field name="name">project.task.allocation.search</field>
+        <field name="model">project.task.allocation</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="employee_id" />
+                <field name="task_id" />
+                <field name="date_start" />
+                <field name="date_end" />
+                <separator />
+                <filter
+                    string="Project"
+                    name="group_by_project"
+                    context="{'group_by':'project_id'}"
+                />
+                <filter
+                    string="Task"
+                    name="group_by_task"
+                    context="{'group_by':'task_id'}"
+                />
+                <filter
+                    string="Employee"
+                    name="group_by_employee"
+                    context="{'group_by':'employee_id'}"
+                />
+            </search>
+        </field>
+    </record>
+
+    <record id="action_project_task_allocation_pivot" model="ir.actions.act_window">
+        <field name="name">Project Task Allocations</field>
+        <field name="res_model">project.task.allocation</field>
+        <field name="view_mode">list,pivot,form</field>
+        <field name="search_view_id" ref="search_project_task_allocation" />
+        <field
+            name="context"
+        >{'search_default_group_by_project': 1, 'search_default_group_by_task': 1}</field>
+    </record>
+
+    <menuitem
+        name="Project Task Allocations"
+        sequence="20"
+        parent="project.menu_project_report"
+        id="action_project_task_allocation_pivot_menu"
+        action="action_project_task_allocation_pivot"
+    />
+</odoo>

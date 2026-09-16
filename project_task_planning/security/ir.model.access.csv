@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_project_task_allocation,access_project_task_allocation,model_project_task_allocation,base.group_user,1,1,1,1
+access_project_task_planning,access_project_task_planning,model_project_task_planning,base.group_user,1,1,1,1
+access_hr_employee_bucket,access_hr_employee_bucket,model_hr_employee_bucket,base.group_user,1,1,1,1
+access_project_bucket,access_project_bucket,model_project_bucket,base.group_user,1,1,1,1

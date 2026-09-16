@@ -1,0 +1,27 @@
+<odoo>
+    <!-- Inherit Employee Form View to add Smart Button -->
+    <record id="view_employee_form_inherited" model="ir.ui.view">
+        <field name="name">hr.employee.form.inherited</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button
+                    name="action_view_bucket_capacity"
+                    type="object"
+                    class="oe_stat_button"
+                    icon="fa-calendar"
+                >
+                    <field
+                        name="bucket_capacity_count"
+                        widget="statinfo"
+                        string="Employee Bucket"
+                    />
+                </button>
+            </xpath>
+            <xpath expr="//field[@name='resource_calendar_id']" position="after">
+                <field name="disable_planning" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

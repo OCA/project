@@ -1,0 +1,23 @@
+<odoo noupdate="1">
+    <record id="planning_bucket_parameter" model="ir.config_parameter">
+        <field name="key">project_task_planning.planning_bucket</field>
+        <field name="value">weekly</field>
+    </record>
+    <record
+        id="theoretical_capacity_months_forward_parameter"
+        model="ir.config_parameter"
+    >
+        <field
+            name="key"
+        >project_task_planning.theoretical_capacity_months_forward</field>
+        <field name="value">6</field>
+    </record>
+    <record id="lower_planning_limit_parameter" model="ir.config_parameter">
+        <field name="key">project_task_planning.lower_planning_limit</field>
+        <field name="value">80.0</field>
+    </record>
+    <record id="upper_planning_limit_parameter" model="ir.config_parameter">
+        <field name="key">project_task_planning.upper_planning_limit</field>
+        <field name="value">100.0</field>
+    </record>
+</odoo>
