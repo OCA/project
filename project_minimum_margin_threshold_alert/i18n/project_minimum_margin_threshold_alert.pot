@@ -203,7 +203,7 @@ msgstr ""
 
 #. module: project_minimum_margin_threshold_alert
 #: model:mail.template,name:project_minimum_margin_threshold_alert.project_minimum_margin_exceeded_template
-msgid "Project: Minimum Margin threashold exceeded"
+msgid "Project: Minimum Margin threshold exceeded"
 msgstr ""
 
 #. module: project_minimum_margin_threshold_alert
@@ -238,5 +238,5 @@ msgstr ""
 
 #. module: project_minimum_margin_threshold_alert
 #: model:mail.template,subject:project_minimum_margin_threshold_alert.project_minimum_margin_exceeded_template
-msgid "{{ object.name }}: Costs Threashold Exceeded"
+msgid "{{ object.name }}: Costs Threshold Exceeded"
 msgstr ""

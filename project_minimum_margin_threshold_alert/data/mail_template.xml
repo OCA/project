@@ -3,9 +3,9 @@
      License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
 <odoo>
     <record id="project_minimum_margin_exceeded_template" model="mail.template">
-        <field name="name">Project: Minimum Margin threashold exceeded</field>
+        <field name="name">Project: Minimum Margin threshold exceeded</field>
         <field name="model_id" ref="project.model_project_project" />
-        <field name="subject">{{ object.name }}: Costs Threashold Exceeded</field>
+        <field name="subject">{{ object.name }}: Costs threshold Exceeded</field>
         <field
             name="description"
         >Automated notification sent to the project subscribers to inform about project Costs vs Revenues

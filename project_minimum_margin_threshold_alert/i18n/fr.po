@@ -245,7 +245,7 @@ msgstr "Projet: Gérer les Projets avec les marges dépassées"
 
 #. module: project_minimum_margin_threshold_alert
 #: model:mail.template,name:project_minimum_margin_threshold_alert.project_minimum_margin_exceeded_template
-msgid "Project: Minimum Margin threashold exceeded"
+msgid "Project: Minimum Margin threshold exceeded"
 msgstr "Projet: Dépassement du seuil de marge minimum"
 
 #. module: project_minimum_margin_threshold_alert
@@ -270,5 +270,5 @@ msgstr "Utilisateur"
 
 #. module: project_minimum_margin_threshold_alert
 #: model:mail.template,subject:project_minimum_margin_threshold_alert.project_minimum_margin_exceeded_template
-msgid "{{ object.name }}: Costs Threashold Exceeded"
+msgid "{{ object.name }}: Costs Threshold Exceeded"
 msgstr "{{ object.name }} : Seuil des coûts dépassé"
