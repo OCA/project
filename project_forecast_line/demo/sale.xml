@@ -19,7 +19,7 @@
         <field name="order_id" ref="sale_order_software_project" />
         <field name="product_id" ref="project_forecast_line.product_product_pm" />
         <field name="product_uom_qty">30</field>
-        <field name="product_uom" ref="uom.product_uom_hour" />
+        <field name="product_uom_id" ref="uom.product_uom_hour" />
         <field name="price_unit">295.00</field>
         <field
             name="forecast_date_start"
@@ -38,7 +38,7 @@
             ref="project_forecast_line.product_product_consultant"
         />
         <field name="product_uom_qty">300</field>
-        <field name="product_uom" ref="uom.product_uom_hour" />
+        <field name="product_uom_id" ref="uom.product_uom_hour" />
         <field name="price_unit">200.00</field>
         <field
             name="forecast_date_start"
@@ -54,7 +54,7 @@
         <field name="order_id" ref="sale_order_software_project" />
         <field name="product_id" ref="project_forecast_line.product_product_dev" />
         <field name="product_uom_qty">200</field>
-        <field name="product_uom" ref="uom.product_uom_hour" />
+        <field name="product_uom_id" ref="uom.product_uom_hour" />
         <field name="price_unit">200.00</field>
         <field
             name="forecast_date_start"

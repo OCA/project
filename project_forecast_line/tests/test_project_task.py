@@ -212,9 +212,11 @@ class TestProjectTask(BaseForecastRoleTest):
 
         # Changing a trigger field (e.g. forecast_date_planned_end) causes the
         # computed field forecast_recomputation_trigger to be recomputed and
-        # stored via _write, which must call _update_forecast_lines().
+        # stored via _write_multi, which queues _update_forecast_lines() to
+        # run on the next precommit -- use cr.flush() (not just flush_all())
+        # to also drain that precommit queue.
         task.write({"forecast_date_planned_end": "2022-02-15"})
-        self.env.flush_all()
+        self.env.cr.flush()
         self.env.invalidate_all()
 
         lines_after = self.env["forecast.line"].search(
@@ -254,9 +256,11 @@ class TestProjectTask(BaseForecastRoleTest):
         self.assertEqual(len(lines), 1)
         self.assertAlmostEqual(lines[0].forecast_hours, -8.0)
 
-        # Directly call _write with remaining_hours to simulate ORM internal path
+        # Directly call _write with remaining_hours to simulate ORM internal path.
+        # _write_multi queues _quick_update_forecast_lines() on the next
+        # precommit -- use cr.flush() (not just flush_all()) to drain it.
         task._write({"remaining_hours": 4.0})
-        self.env.flush_all()
+        self.env.cr.flush()
         self.env.invalidate_all()
 
         # _quick_update_forecast_lines applies ratio: 4 / 8 = 0.5 → -4.0 h
@@ -265,6 +269,64 @@ class TestProjectTask(BaseForecastRoleTest):
             -4.0,
             msg="_quick_update_forecast_lines should scale forecast_hours by ratio",
         )
+
+    @freeze_time("2022-02-14 12:00:00")
+    def test_write_trigger_multiple_tasks_deferred_to_single_precommit(self):
+        """_write_multi's cascade is queued per task across separate writes,
+        and a single cr.flush() must still update every one of them.
+
+        This covers the aggregation in _queue_forecast_lines_update(): the
+        cascade used to run synchronously inside _write_multi() (called from
+        Odoo's own flush of the stored forecast_recomputation_trigger
+        field), which could nest another flush while sibling, not-yet-
+        flushed records were still mid-flush. It's now deferred to a single
+        precommit callback instead.
+        """
+        project = self.ProjectProject.create({"name": "TestWriteMultipleTasks"})
+        project.stage_id = self.env.ref("project.project_project_stage_1")
+        tasks = self.ProjectTask.create(
+            [
+                {
+                    "name": f"Multi Trigger Task {i}",
+                    "project_id": project.id,
+                    "forecast_role_id": self.role_consultant.id,
+                    "forecast_date_planned_start": "2022-02-14",
+                    "forecast_date_planned_end": "2022-02-14",
+                    "allocated_hours": 8,
+                    "remaining_hours": 8,
+                }
+                for i in range(3)
+            ]
+        )
+        tasks.user_ids = self.user_consultant
+        tasks._update_forecast_lines()
+        self.env.cr.flush()
+        self.env.invalidate_all()
+
+        for task in tasks:
+            self.assertTrue(
+                self.env["forecast.line"].search_count(
+                    [("res_model", "=", "project.task"), ("res_id", "=", task.id)]
+                ),
+                "Forecast lines should exist before the write",
+            )
+
+        # Write the trigger field on each task one at a time, without
+        # flushing in between, so all three cascades queue onto the same
+        # precommit key before it's drained.
+        for task in tasks:
+            task.write({"forecast_date_planned_end": "2022-02-15"})
+        self.env.cr.flush()
+        self.env.invalidate_all()
+
+        for task in tasks:
+            self.assertTrue(
+                self.env["forecast.line"].search_count(
+                    [("res_model", "=", "project.task"), ("res_id", "=", task.id)]
+                ),
+                "_update_forecast_lines should have regenerated forecast lines "
+                "for every queued task, not just the last one written",
+            )
 
     @freeze_time("2022-02-14 12:00:00")
     def test_write_unrelated_field_leaves_forecast_lines_unchanged(self):
@@ -411,6 +473,44 @@ class TestProjectTask(BaseForecastRoleTest):
             [-8.0],
             "Created line should carry the full remaining_hours as a negative value",
         )
+
+    @freeze_time("2022-02-14 12:00:00")
+    def test_update_forecast_lines_uses_each_task_forecast_type(self):
+        """Mixed task recordsets must not reuse another task's forecast type."""
+        sale_task, sale_order = self._make_task_with_sale_line(
+            "MixedSaleTask", so_state="sale", project_stage_id=False
+        )
+        self.assertEqual(sale_order.state, "sale")
+
+        # stage_0 -> forecast_line_type "forecast" (see data/project_data.xml);
+        # stage_1 is "confirmed", same as sale_task below, which wouldn't
+        # exercise the "each task keeps its own type" fix this test covers.
+        project = self.ProjectProject.create({"name": "MixedStageProject"})
+        project.stage_id = self.env.ref("project.project_project_stage_0")
+        staged_task = self.ProjectTask.create(
+            {
+                "name": "Mixed Stage Task",
+                "project_id": project.id,
+                "forecast_role_id": self.role_consultant.id,
+                "forecast_date_planned_start": "2022-02-14",
+                "forecast_date_planned_end": "2022-02-14",
+                "allocated_hours": 8,
+                "remaining_hours": 8,
+            }
+        )
+
+        (sale_task | staged_task)._update_forecast_lines()
+        self.env.flush_all()
+        self.env.invalidate_all()
+
+        sale_lines = self.env["forecast.line"].search(
+            [("res_model", "=", "project.task"), ("res_id", "=", sale_task.id)]
+        )
+        staged_lines = self.env["forecast.line"].search(
+            [("res_model", "=", "project.task"), ("res_id", "=", staged_task.id)]
+        )
+        self.assertEqual(sale_lines.mapped("type"), ["confirmed"])
+        self.assertEqual(staged_lines.mapped("type"), ["forecast"])
 
     @freeze_time("2022-02-14 12:00:00")
     def test_update_forecast_lines_no_cleanup_when_all_tasks_qualify(self):
@@ -622,8 +722,9 @@ class TestProjectTask(BaseForecastRoleTest):
             }
         )
 
-        partner = self.env.ref("base.res_partner_1")
-        sale_order = self.env["sale.order"].create({"partner_id": partner.id})
+        # ``self.customer`` is created by BaseForecastRoleTest.setUpClass: do
+        # not rely on ``base`` demo data, which is absent on OCA CI.
+        sale_order = self.env["sale.order"].create({"partner_id": self.customer.id})
         sale_line = self.env["sale.order.line"].create(
             {
                 "order_id": sale_order.id,
@@ -727,7 +828,7 @@ class TestProjectTask(BaseForecastRoleTest):
         forecast_type = task_3.set_forecast_type()
         self.assertIsNone(
             forecast_type,
-            "set_forecast_type must return None when sale_line_id " "is in draft state",
+            "set_forecast_type must return None when sale_line_id is in draft state",
         )
 
         # Condition 4: No stage and no sale line → "forecast" (else branch)

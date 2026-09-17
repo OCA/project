@@ -4,8 +4,15 @@ import logging
 import random
 
 from odoo import api, fields, models
+from odoo.fields import Domain
 
 _logger = logging.getLogger(__name__)
+
+# precommit.data keys used to defer the forecast-lines cascades triggered by
+# _write_multi() below, one per cascade so an unrelated write doesn't
+# collapse them together.
+_FULL_UPDATE_PRECOMMIT_KEY = "project_forecast_line.full_update_task_ids"
+_QUICK_UPDATE_PRECOMMIT_KEY = "project_forecast_line.quick_update_task_ids"
 
 
 class ProjectTask(models.Model):
@@ -45,7 +52,7 @@ class ProjectTask(models.Model):
         if "allocated_hours" in values:
             for task in self:
                 forecast_lines = self.env["forecast.line"].search(
-                    [("task_id", "=", task.id)]
+                    Domain("task_id", "=", task.id)
                 )
                 if forecast_lines:
                     # Update each line based on the new total
@@ -56,12 +63,51 @@ class ProjectTask(models.Model):
     def _write_multi(self, values):
         res = super()._write_multi(values)
         if "forecast_recomputation_trigger" in values[0]:
-            for records in self:
-                records._update_forecast_lines()
+            self._queue_forecast_lines_update(
+                _FULL_UPDATE_PRECOMMIT_KEY, "_update_forecast_lines"
+            )
         elif "remaining_hours" in values[0]:
-            for records in self:
-                records._quick_update_forecast_lines()
+            self._queue_forecast_lines_update(
+                _QUICK_UPDATE_PRECOMMIT_KEY, "_quick_update_forecast_lines"
+            )
         return res
+
+    def _queue_forecast_lines_update(self, precommit_key, method_name):
+        """Defer a forecast-lines cascade outside of the ORM flush that triggered it.
+
+        _write_multi() is called both by write()/_write() and by Odoo's own
+        flush of stored computed fields -- forecast_recomputation_trigger
+        and remaining_hours (from hr_timesheet) are both `store=True,
+        compute=...`. Running the cascade synchronously here nests another
+        flush while sibling, not-yet-flushed records of that same field are
+        still mid-flush, corrupting Odoo's flush bookkeeping::
+
+            AssertionError: Could not find all values of project.task(...) to flush them
+
+        `env.cr.precommit` defers it to run once, right before the real
+        transaction commits, well outside any flush() call stack -- and it
+        never fires during onchange (which never commits), so a virtual
+        preview can't create/unlink real forecast.line records.
+        """
+        real_ids = [rec.id for rec in self if rec.id]
+        if not real_ids:
+            return
+        pending = self.env.cr.precommit.data.setdefault(precommit_key, set())
+        if not pending:
+            self.env.cr.precommit.add(
+                lambda: self._run_queued_forecast_lines_update(
+                    precommit_key, method_name
+                )
+            )
+        pending.update(real_ids)
+
+    def _run_queued_forecast_lines_update(self, precommit_key, method_name):
+        ids = self.env.cr.precommit.data.pop(precommit_key, None)
+        if ids:
+            # sudo(): `self` is whichever recordset first queued this key, so
+            # its env's user/company may not have access to tasks queued
+            # later by another user/company in the same transaction.
+            getattr(self.sudo().browse(ids).exists(), method_name)()
 
     @api.onchange("user_ids")
     def onchange_user_ids(self):
@@ -72,7 +118,7 @@ class ProjectTask(models.Model):
             if task.forecast_role_id:
                 continue
             employees = self.env["hr.employee"].search(
-                [("user_id", "in", task.user_ids.ids)]
+                Domain("user_id", "in", task.user_ids.ids)
             )  # noqa : E501
             for employee in employees:
                 if employee.role_ids:
@@ -88,7 +134,7 @@ class ProjectTask(models.Model):
         ForecastLine = self.env["forecast.line"].sudo()
         for task in self:
             forecast_lines = ForecastLine.search(
-                [("res_model", "=", self._name), ("res_id", "=", task.id)]
+                Domain("res_model", "=", self._name) & Domain("res_id", "=", task.id)
             )
             total_forecast = sum(forecast_lines.mapped("forecast_hours"))
             if not forecast_lines or not total_forecast:
@@ -164,7 +210,7 @@ class ProjectTask(models.Model):
             if not task._should_have_forecast():
                 task_with_lines_to_clean.append(task.id)
                 continue
-            forecast_type = self.set_forecast_type()
+            forecast_type = task.set_forecast_type()
             if not forecast_type:
                 continue
             date_start = max(today, task.forecast_date_planned_start)
@@ -184,11 +230,9 @@ class ProjectTask(models.Model):
             forecast_hours = task.remaining_hours / len(employees)
             # remove lines for employees which are no longer assigned to the task
             ForecastLine.search(
-                [
-                    ("res_model", "=", self._name),
-                    ("res_id", "=", task.id),
-                    ("employee_id", "not in", tuple(employee_ids)),
-                ]
+                Domain("res_model", "=", self._name)
+                & Domain("res_id", "=", task.id)
+                & Domain("employee_id", "not in", tuple(employee_ids))
             ).unlink()
             for employee in employees:
                 if employee:
@@ -198,11 +242,9 @@ class ProjectTask(models.Model):
                     employee_id = False
                     company = task.company_id
                 employee_lines = ForecastLine.search(
-                    [
-                        ("res_model", "=", self._name),
-                        ("res_id", "=", task.id),
-                        ("employee_id", "=", employee_id),
-                    ]
+                    Domain("res_model", "=", self._name)
+                    & Domain("res_id", "=", task.id)
+                    & Domain("employee_id", "=", employee_id)
                 )
                 ForecastLine = ForecastLine.with_company(company)
                 forecast_vals += employee_lines._update_forecast_lines(
@@ -223,10 +265,8 @@ class ProjectTask(models.Model):
                 )
         if task_with_lines_to_clean:
             to_clean = ForecastLine.search(
-                [
-                    ("res_model", "=", self._name),
-                    ("res_id", "in", tuple(task_with_lines_to_clean)),
-                ]
+                Domain("res_model", "=", self._name)
+                & Domain("res_id", "in", tuple(task_with_lines_to_clean))
             )
             if to_clean:
                 to_clean.unlink()
@@ -239,12 +279,10 @@ class ProjectTask(models.Model):
         if force_company_id:
             companies = self.env["res.company"].browse(force_company_id)
         else:
-            companies = self.env["res.company"].search([])
+            companies = self.env["res.company"].search(Domain.TRUE)
         for company in companies:
             to_update = self.with_company(company).search(
-                [
-                    ("forecast_date_planned_end", ">=", today),
-                    ("company_id", "=", company.id),
-                ]
+                Domain("forecast_date_planned_end", ">=", today)
+                & Domain("company_id", "=", company.id)
             )
             to_update._update_forecast_lines()

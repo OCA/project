@@ -2,7 +2,8 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 import logging
 
-from odoo import _, api, fields, models
+from odoo import api, fields, models
+from odoo.fields import Domain
 
 _logger = logging.getLogger(__name__)
 
@@ -25,9 +26,9 @@ class HrLeave(models.Model):
         ForecastLine = self.env["forecast.line"].sudo()
         # XXX try to be smarter and only unlink those needing unlinking, update the rest
         ForecastLine.search(
-            [("res_id", "in", self.ids), ("res_model", "=", self._name)]
+            Domain("res_id", "in", self.ids) & Domain("res_model", "=", self._name)
         ).unlink()
-        leaves = self.filtered_domain([("state", "!=", "refuse")])
+        leaves = self.filtered_domain(Domain("state", "!=", "refuse"))
         # we need to use sudo here, because forecast line creation
         # requires access to fields declared on hr.employee
         # we don't want to restrict them with `groups="hr.group_hr_user"`
@@ -49,7 +50,7 @@ class HrLeave(models.Model):
                 forecast_type = "forecast"
             ForecastLine = ForecastLine.with_company(leave.employee_company_id)
             forecast_vals += ForecastLine._prepare_forecast_lines(
-                name=_("Leave"),
+                name=self.env._("Leave"),
                 date_from=leave.date_from.date(),
                 date_to=leave.date_to.date(),
                 ttype=forecast_type,
@@ -71,13 +72,11 @@ class HrLeave(models.Model):
         if force_company_id:
             companies = self.env["res.company"].browse(force_company_id)
         else:
-            companies = self.env["res.company"].search([])
+            companies = self.env["res.company"].search(Domain.TRUE)
         for company in companies:
             to_update = self.with_company(company).search(
-                [
-                    ("date_to", ">=", today),
-                    ("employee_company_id", "=", company.id),
-                ]
+                Domain("date_to", ">=", today)
+                & Domain("employee_company_id", "=", company.id)
             )
             to_update._update_forecast_lines()
 
