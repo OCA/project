@@ -25,7 +25,7 @@ class TestForecastLineMixin(BaseForecastRoleTest):
 
         # Test retrieving lines with an extra domain
         lines = self.ProjectTasks._get_forecast_lines(
-            domain=[("forecast_role_id", "=", 1)]
+            domain=[("forecast_role_id", "=", self.role_developer.id)]
         )
         self.assertIn(
             self.forecast_line_one,

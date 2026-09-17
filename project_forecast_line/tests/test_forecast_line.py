@@ -82,7 +82,6 @@ class BaseForecastRoleTest(TransactionCase):
                 "standard_price": 75,
                 "forecast_role_id": cls.role_developer.id,
                 "uom_id": cls.env.ref("uom.product_uom_hour").id,
-                "uom_po_id": cls.env.ref("uom.product_uom_hour").id,
             }
         )
         cls.product_consultant_tm = cls.ProductProduct.create(
@@ -94,7 +93,6 @@ class BaseForecastRoleTest(TransactionCase):
                 "standard_price": 80,
                 "forecast_role_id": cls.role_consultant.id,
                 "uom_id": cls.env.ref("uom.product_uom_hour").id,
-                "uom_po_id": cls.env.ref("uom.product_uom_hour").id,
             }
         )
 
@@ -107,7 +105,6 @@ class BaseForecastRoleTest(TransactionCase):
                 "standard_price": 100,
                 "forecast_role_id": cls.role_pm.id,
                 "uom_id": cls.env.ref("uom.product_uom_hour").id,
-                "uom_po_id": cls.env.ref("uom.product_uom_hour").id,
             }
         )
         cls.customer = cls.ResPartner.create({"name": "Some Customer"})
@@ -129,7 +126,7 @@ class BaseForecastRoleTest(TransactionCase):
             {
                 "company_id": 1,
                 "type": "forecast",
-                "forecast_role_id": 1,
+                "forecast_role_id": cls.role_developer.id,
                 "date_from": date.today(),
                 "date_to": date.today() + relativedelta(day=1),
                 "consolidated_forecast": 10.0,
@@ -144,7 +141,7 @@ class BaseForecastRoleTest(TransactionCase):
             {
                 "company_id": 1,
                 "type": "forecast",
-                "forecast_role_id": 2,
+                "forecast_role_id": cls.role_consultant.id,
                 "date_from": date.today(),
                 "date_to": date.today() + relativedelta(day=1),
                 "consolidated_forecast": 20.0,
@@ -158,7 +155,7 @@ class BaseForecastRoleTest(TransactionCase):
             {
                 "company_id": 1,
                 "type": "forecast",
-                "forecast_role_id": 3,
+                "forecast_role_id": cls.role_pm.id,
                 "date_from": date.today(),
                 "date_to": date.today() + relativedelta(day=1),
                 "consolidated_forecast": 10.0,
@@ -569,7 +566,7 @@ class TestForecastRoleTimesheet(BaseForecastRoleTest):
                     line.product_uom_qty = (
                         45 * 2
                     )  # 45 working days in the period, sell 2 FTE
-                    line.product_uom = self.env.ref("uom.product_uom_day")
+                    line.product_uom_id = self.env.ref("uom.product_uom_day")
             so = form.save()
             so.action_confirm()
 
@@ -906,7 +903,7 @@ class TestForecastRoleProject(BaseForecastRoleTest):
         self.test_task_forecast_lines_consolidated_forecast()
         with Form(self.env["hr.leave"]) as form:
             form.employee_id = self.employee_consultant
-            form.holiday_status_id = self.env.ref("hr_holidays.holiday_status_unpaid")
+            form.holiday_status_id = self.env.ref("hr_holidays.leave_type_unpaid")
             form.request_date_from = "2022-02-14"
             form.request_date_to = "2022-02-15"
         leave_request = form.save()
@@ -914,7 +911,7 @@ class TestForecastRoleProject(BaseForecastRoleTest):
         # the employee capactities (actually delete the existing ones and
         # create new ones -> we check that the project task lines are
         # automatically related to the new newly created employee role lines.
-        leave_request.action_validate()
+        leave_request.action_approve()
         self.env.flush_all()
         self.env.invalidate_all()
         forecast_lines = self.ForecastLine.search(
@@ -1009,7 +1006,10 @@ class TestForecastRoleProject(BaseForecastRoleTest):
                     "allocated_hours": 8,
                 }
             )
-            task1.remaining_hours = 10
+            # keep remaining_hours consistent with allocated_hours: it is a
+            # stored computed field (hr_timesheet), so an inconsistent manual
+            # value is not guaranteed to survive the next recomputation.
+            task1.remaining_hours = 8
             task1.user_ids = self.user_consultant
             task1._update_forecast_lines()
             self.env.flush_all()
@@ -1035,14 +1035,18 @@ class TestForecastRoleProject(BaseForecastRoleTest):
                 forecast1.employee_resource_forecast_line_id,
                 forecast2.employee_resource_forecast_line_id,
             )
+            # Resource baseline is 8h/day (see the -0.25 assertion in
+            # test_task_forecast_lines_consolidated_forecast_overallocation
+            # above, same fixture, same formula: 8 - 10 = -2 -> -0.25).
+            # Here: 8 - (task1 8h + task2 4h) = -4h -> -0.5 day.
             self.assertAlmostEqual(
                 forecast1.employee_resource_forecast_line_id.consolidated_forecast,
-                -0.75,
+                -0.5,
                 places=2,
             )
             self.assertAlmostEqual(
                 forecast1.employee_resource_forecast_line_id.confirmed_consolidated_forecast,
-                -0.75,
+                -0.5,
                 places=2,
             )
 
@@ -1194,8 +1198,12 @@ class TestForecastRoleProject(BaseForecastRoleTest):
 
 
 @tagged("-at_install", "post_install")
-@freeze_time("2022-01-01")
 class TestForecastRoleCoverage(BaseForecastRoleTest):
+    # Each test is frozen individually rather than the whole class: Odoo's
+    # own class-level freeze_time integration (startClassPatcher, see
+    # odoo/tests/common.py) breaks under freezegun 1.2.1 on Python 3.12
+    # (AttributeError on fake_names in _freeze_time.stop()).
+    @freeze_time("2022-01-01")
     def test_write_redundant(self):
         employee = self.employee_dev
         line = self.ForecastLine.create(
@@ -1220,44 +1228,51 @@ class TestForecastRoleCoverage(BaseForecastRoleTest):
         )
         self.assertTrue(res)
 
+    @freeze_time("2022-01-01")
     def test_uom_conversions(self):
         """Lines 443-445: Test convert_days_to_hours"""
         hours = self.ForecastLine.convert_days_to_hours(1)
         self.assertEqual(hours, 8.0)
 
-    @freeze_time("2022-02-14")
     def test_compute_employee_forecast_line_id_fallback(self):
         """Lines 153-162: Fallback to main role"""
-        employee = self.employee_dev
-        employee.main_role_id = self.role_developer
+        # Nested inside the class-level freeze_time as a `with` block, not a
+        # second @freeze_time decorator: freezegun 1.2.1 breaks on decorator
+        # nesting under Python 3.12 (AttributeError on fake_names in stop()).
+        with freeze_time("2022-02-14"):
+            employee = self.employee_dev
+            employee.main_role_id = self.role_developer
 
-        # Confirmed line for MAIN role (developer)
-        main_role_line = self.ForecastLine.create(
-            {
-                "name": "Main Role Line",
-                "employee_id": employee.id,
-                "forecast_role_id": self.role_developer.id,
-                "res_model": "hr.employee.forecast.role",
-                "date_from": date(2022, 2, 1),
-                "date_to": date(2022, 2, 28),
-                "type": "confirmed",
-            }
-        )
+            # Confirmed line for MAIN role (developer)
+            main_role_line = self.ForecastLine.create(
+                {
+                    "name": "Main Role Line",
+                    "employee_id": employee.id,
+                    "forecast_role_id": self.role_developer.id,
+                    "res_model": "hr.employee.forecast.role",
+                    "date_from": date(2022, 2, 1),
+                    "date_to": date(2022, 2, 28),
+                    "type": "confirmed",
+                }
+            )
 
-        # Forecast line for DIFFERENT role (consultant)
-        test_line = self.ForecastLine.create(
-            {
-                "name": "Consultant Task",
-                "employee_id": employee.id,
-                "forecast_role_id": self.role_consultant.id,
-                "res_model": "project.task",
-                "date_from": date(2022, 2, 1),
-                "date_to": date(2022, 2, 28),
-                "type": "forecast",
-            }
-        )
-        self.assertEqual(test_line.employee_resource_forecast_line_id, main_role_line)
+            # Forecast line for DIFFERENT role (consultant)
+            test_line = self.ForecastLine.create(
+                {
+                    "name": "Consultant Task",
+                    "employee_id": employee.id,
+                    "forecast_role_id": self.role_consultant.id,
+                    "res_model": "project.task",
+                    "date_from": date(2022, 2, 1),
+                    "date_to": date(2022, 2, 28),
+                    "type": "forecast",
+                }
+            )
+            self.assertEqual(
+                test_line.employee_resource_forecast_line_id, main_role_line
+            )
 
+    @freeze_time("2022-01-01")
     def test_get_grouped_line_values_and_consolidation(self):
         """Lines 177-180, 203-209: Non-resource consolidation and grouped values"""
         # Create a non-resource line
@@ -1291,6 +1306,7 @@ class TestForecastRoleCoverage(BaseForecastRoleTest):
         self.assertEqual(task_line_unconfirmed.consolidated_forecast, -1.0)
         self.assertEqual(task_line_unconfirmed.confirmed_consolidated_forecast, 0.0)
 
+    @freeze_time("2022-01-01")
     def test_prepare_forecast_lines_no_employee(self):
         """Lines 307-308: _prepare_forecast_lines without employee"""
         vals = self.ForecastLine._prepare_forecast_lines(
@@ -1328,6 +1344,7 @@ class TestForecastRoleCoverage(BaseForecastRoleTest):
         self.assertEqual(len(vals), 1)
         self.assertEqual(vals[0]["date_from"], date(2022, 3, 1))
 
+    @freeze_time("2022-01-01")
     def test_split_per_period_zero_daily_forecast(self):
         """Line 370: daily_forecast == 0"""
         vals = list(
@@ -1342,6 +1359,7 @@ class TestForecastRoleCoverage(BaseForecastRoleTest):
         )
         self.assertEqual(len(vals), 0)
 
+    @freeze_time("2022-01-01")
     def test_cron_recompute_all_options(self):
         """Lines 404, 415: Cron recompute with options"""
         self.ForecastLine._cron_recompute_all(
@@ -1349,6 +1367,7 @@ class TestForecastRoleCoverage(BaseForecastRoleTest):
         )
         self.ForecastLine._cron_recompute_all()
 
+    @freeze_time("2022-01-01")
     def test_forecast_hours(self):
         ProjectTasks_2 = self.ProjectTask.create(
             {

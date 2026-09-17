@@ -1,6 +1,7 @@
 # Copyright 2022 Camptocamp SA
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 from odoo import fields, models
+from odoo.fields import Domain
 
 
 class SaleOrder(models.Model):
@@ -28,6 +29,6 @@ class SaleOrder(models.Model):
         res = super().write(values)
         if self and "project_id" in values:
             self.env["forecast.line"].sudo().search(
-                [("sale_id", "in", self.ids)]
+                Domain("sale_id", "in", self.ids)
             ).write({"project_id": values["project_id"]})
         return res

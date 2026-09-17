@@ -22,7 +22,7 @@ class TestForecastRoleSales(BaseForecastRoleTest):
             with form.order_line.new() as line:
                 line.product_id = self.product_dev_tm
                 line.product_uom_qty = uom_qty  # 1 FTE sold
-                line.product_uom = self.env.ref("uom.product_uom_day")
+                line.product_uom_id = self.env.ref("uom.product_uom_day")
         so = form.save()
         self.env.flush_all()
         return so
@@ -203,7 +203,6 @@ class TestForecastRoleSales(BaseForecastRoleTest):
                 "project_template_id": template.id,
                 "forecast_role_id": self.role_developer.id,
                 "uom_id": self.env.ref("uom.product_uom_hour").id,
-                "uom_po_id": self.env.ref("uom.product_uom_hour").id,
                 "standard_price": 75,
             }
         )
@@ -220,7 +219,7 @@ class TestForecastRoleSales(BaseForecastRoleTest):
             with form.order_line.new() as line:
                 line.product_id = product
                 line.product_uom_qty = 10
-                line.product_uom = self.env.ref("uom.product_uom_hour")
+                line.product_uom_id = self.env.ref("uom.product_uom_hour")
         so = form.save()
         so.action_confirm()
         self.env.flush_all()
@@ -270,7 +269,6 @@ class TestForecastRoleSales(BaseForecastRoleTest):
                 "project_template_id": template.id,
                 # forecast_role_id intentionally omitted
                 "uom_id": self.env.ref("uom.product_uom_hour").id,
-                "uom_po_id": self.env.ref("uom.product_uom_hour").id,
                 "standard_price": 75,
             }
         )
@@ -284,7 +282,7 @@ class TestForecastRoleSales(BaseForecastRoleTest):
             with form.order_line.new() as line:
                 line.product_id = product_no_role
                 line.product_uom_qty = 10
-                line.product_uom = self.env.ref("uom.product_uom_hour")
+                line.product_uom_id = self.env.ref("uom.product_uom_hour")
         so = form.save()
         so.action_confirm()
         self.env.flush_all()

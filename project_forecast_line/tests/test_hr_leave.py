@@ -30,7 +30,7 @@ class TestHrLeave(BaseForecastRoleTest):
         leave_type = self.env["hr.leave.type"].create(
             {
                 "name": "Test Leave Type",
-                "requires_allocation": "no",
+                "requires_allocation": False,
             }
         )
         leave = (
@@ -57,8 +57,7 @@ class TestHrLeave(BaseForecastRoleTest):
         )
         self.assertFalse(
             forecast_lines,
-            "No forecast lines must be created when the employee "
-            "has no main_role_id",
+            "No forecast lines must be created when the employee has no main_role_id",
         )
 
     @freeze_time("2022-01-01 12:00:00")
@@ -76,7 +75,7 @@ class TestHrLeave(BaseForecastRoleTest):
         leave_type = self.env["hr.leave.type"].create(
             {
                 "name": "Test Leave Type 2",
-                "requires_allocation": "no",
+                "requires_allocation": False,
             }
         )
         leave = (

@@ -1,9 +1,9 @@
 # Copyright 2022 Camptocamp SA
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
-
 from dateutil.relativedelta import relativedelta
 
 from odoo import api, fields, models
+from odoo.fields import Domain
 
 
 class HrJob(models.Model):
@@ -47,7 +47,6 @@ class HrEmployee(models.Model):
         return super().write(values)
 
     @api.model_create_multi
-    @api.returns("self", lambda value: value.id)
     def create(self, values):
         values = [self._check_job_role(val) for val in values]
         return super().create(values)
@@ -102,20 +101,16 @@ class HrEmployeeForecastRole(models.Model):
         if not self:
             return ForecastLine
         leaves = self.env["hr.leave"].search(
-            [
-                ("employee_id", "in", self.mapped("employee_id").ids),
-                ("state", "!=", "cancel"),
-                ("date_to", ">=", min(self.mapped("date_start"))),
-            ]
+            Domain("employee_id", "in", self.mapped("employee_id").ids)
+            & Domain("state", "!=", "cancel")
+            & Domain("date_to", ">=", min(self.mapped("date_start")))
         )
         leaves._update_forecast_lines()
         forecast_vals = []
         ForecastLine.search(
-            [
-                ("res_id", "in", self.ids),
-                ("res_model", "=", self._name),
-                ("date_from", "<", today),
-            ]
+            Domain("res_id", "in", self.ids)
+            & Domain("res_model", "=", self._name)
+            & Domain("date_from", "<", today)
         ).unlink()
         horizon_end = ForecastLine._company_horizon_end()
         for rec in self:
@@ -123,11 +118,9 @@ class HrEmployeeForecastRole(models.Model):
             if rec.date_end:
                 date_end = rec.date_end
                 ForecastLine.search(
-                    [
-                        ("res_id", "=", rec.id),
-                        ("res_model", "=", self._name),
-                        ("date_to", ">=", date_end),
-                    ]
+                    Domain("res_id", "=", rec.id)
+                    & Domain("res_model", "=", self._name)
+                    & Domain("date_to", ">=", date_end)
                 ).unlink()
             else:
                 date_end = horizon_end - relativedelta(days=1)
@@ -143,16 +136,16 @@ class HrEmployeeForecastRole(models.Model):
                 date_start, date_end, resource, calendar, force_granularity=True
             )
             forecast_lines = ForecastLine.search(
-                [
-                    ("res_model", "=", self._name),
-                    ("res_id", "in", rec.ids),
-                    ("date_from", "<=", date_end),
-                    ("date_to", ">=", date_start),
-                ]
+                Domain("res_model", "=", self._name)
+                & Domain("res_id", "in", rec.ids)
+                & Domain("date_from", "<=", date_end)
+                & Domain("date_to", ">=", date_start)
             )
             forecast_vals += forecast_lines._update_forecast_lines(
-                name="Employee %s as %s (%d%%)"
-                % (rec.employee_id.name, rec.role_id.name, rec.rate),
+                name=(
+                    f"Employee {rec.employee_id.name} as "
+                    f"{rec.role_id.name} ({rec.rate}%)"
+                ),
                 date_from=date_start,
                 date_to=date_end,
                 forecast_hours=forecast * rec.rate / 100.0,
@@ -172,14 +165,10 @@ class HrEmployeeForecastRole(models.Model):
         if force_company_id:
             companies = self.env["res.company"].browse(force_company_id)
         else:
-            companies = self.env["res.company"].search([])
+            companies = self.env["res.company"].search(Domain.TRUE)
         for company in companies:
             to_update = self.with_company(company).search(
-                [
-                    "|",
-                    ("date_end", "=", False),
-                    ("date_end", ">=", today),
-                    ("company_id", "=", company.id),
-                ]
+                (Domain("date_end", "=", False) | Domain("date_end", ">=", today))
+                & Domain("company_id", "=", company.id)
             )
             to_update._update_forecast_lines()

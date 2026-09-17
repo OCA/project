@@ -3,6 +3,7 @@
 from dateutil.relativedelta import relativedelta
 
 from odoo import api, models
+from odoo.fields import Domain
 
 
 class ResourceCalendarLeaves(models.Model):
@@ -23,13 +24,15 @@ class ResourceCalendarLeaves(models.Model):
     def _get_resource_roles(self):
         resources = self.mapped("resource_id")
         if resources:
-            employees = self.env["hr.employee"].search([("id", "in", resources.ids)])
+            employees = self.env["hr.employee"].search(
+                Domain("id", "in", resources.ids)
+            )
         else:
             employees = self.env["hr.employee"].search(
-                [("company_id", "in", self.mapped("company_id").ids)]
+                Domain("company_id", "in", self.mapped("company_id").ids)
             )
         roles = self.env["hr.employee.forecast.role"].search(
-            [("employee_id", "in", employees.ids)]
+            Domain("employee_id", "in", employees.ids)
         )
         return roles
 

@@ -19,7 +19,7 @@
                     domain="[('type', '=', 'confirmed')]"
                     name="forecast_confirmed_filter"
                 />
-                <group expand="0" string="Group By">
+                <group>
                     <filter
                         string="Project"
                         name="project"
