@@ -9,16 +9,11 @@ class Project(models.Model):
 
     def action_open_project_purchase_orders(self):
         action_window = super().action_open_project_purchase_orders()
-        purchase_orders = self.env["purchase.order"].search(action_window["domain"])
-        action_window.update(
-            {
-                "context": {
-                    "create": True,
-                    "default_account_analytic_id": self.analytic_account_id.id,
-                }
-            }
-        )
-        if len(purchase_orders) == 1:
-            action_window.update({"views": [[False, "tree"], [False, "form"]]})
-            action_window.update({"res_id": None})
+        context = action_window.setdefault("context", {})
+        context["create"] = True
+        if self.account_id:
+            context["default_analytic_distribution"] = {str(self.account_id.id): 100.0}
+        if action_window.get("res_id"):
+            action_window["views"] = [[False, "list"], [False, "form"]]
+            action_window["res_id"] = False
         return action_window
