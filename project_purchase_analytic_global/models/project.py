@@ -14,7 +14,7 @@ class Project(models.Model):
             {
                 "context": {
                     "create": True,
-                    "default_account_analytic_id": self.analytic_account_id.id,
+                    "default_analytic_distribution": {self.account_id.id: 100.0},
                 }
             }
         )
