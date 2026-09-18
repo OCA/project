@@ -1,0 +1,181 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_forecast_line_bokeh_chart
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-08-09 13:06+0000\n"
+"PO-Revision-Date: 2021-09-10 14:59+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: project_forecast_line_bokeh_chart
+#: code:addons/project_forecast_line_bokeh_chart/report/forecast_line_reporting.py:0
+#, python-format
+msgid "Available"
+msgstr ""
+
+#. module: project_forecast_line_bokeh_chart
+#: model:ir.model.fields,field_description:project_forecast_line_bokeh_chart.field_forecast_line_reporting__bokeh_chart
+msgid "Bokeh Chart"
+msgstr ""
+
+#. module: project_forecast_line_bokeh_chart
+#: model:ir.model.fields,field_description:project_forecast_line_bokeh_chart.field_forecast_line_reporting__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: project_forecast_line_bokeh_chart
+#: model:ir.model.fields,field_description:project_forecast_line_bokeh_chart.field_forecast_line_reporting__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: project_forecast_line_bokeh_chart
+#: model:ir.model.fields,field_description:project_forecast_line_bokeh_chart.field_forecast_line_reporting__date_from
+msgid "Date From"
+msgstr ""
+
+#. module: project_forecast_line_bokeh_chart
+#: model:ir.model.fields.selection,name:project_forecast_line_bokeh_chart.selection__forecast_line_reporting__granularity__day
+msgid "Day"
+msgstr ""
+
+#. module: project_forecast_line_bokeh_chart
+#: model:ir.model.fields,field_description:project_forecast_line_bokeh_chart.field_forecast_line_reporting__display_name
+msgid "Display Name"
+msgstr "Nom affiché"
+
+#. module: project_forecast_line_bokeh_chart
+#: model:ir.model.fields,field_description:project_forecast_line_bokeh_chart.field_forecast_line_reporting__employee_ids
+msgid "Employee"
+msgstr ""
+
+#. module: project_forecast_line_bokeh_chart
+#: model:ir.actions.act_window,name:project_forecast_line_bokeh_chart.action_forecast_lines_reporting
+#: model:ir.ui.menu,name:project_forecast_line_bokeh_chart.menu_forecast_line_reporting
+#: model_terms:ir.ui.view,arch_db:project_forecast_line_bokeh_chart.view_forecast_line_reporting
+msgid "Forecast Reporting"
+msgstr ""
+
+#. module: project_forecast_line_bokeh_chart
+#: model:ir.model,name:project_forecast_line_bokeh_chart.model_forecast_line_reporting
+msgid "Forecast reporting wizard"
+msgstr ""
+
+#. module: project_forecast_line_bokeh_chart
+#: model:ir.model.fields,field_description:project_forecast_line_bokeh_chart.field_forecast_line_reporting__granularity
+msgid "Granularity"
+msgstr ""
+
+#. module: project_forecast_line_bokeh_chart
+#: model:ir.model.fields,field_description:project_forecast_line_bokeh_chart.field_forecast_line_reporting__id
+msgid "ID"
+msgstr ""
+
+#. module: project_forecast_line_bokeh_chart
+#: model:ir.model.fields,field_description:project_forecast_line_bokeh_chart.field_forecast_line_reporting____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: project_forecast_line_bokeh_chart
+#: model:ir.model.fields,field_description:project_forecast_line_bokeh_chart.field_forecast_line_reporting__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: project_forecast_line_bokeh_chart
+#: model:ir.model.fields,field_description:project_forecast_line_bokeh_chart.field_forecast_line_reporting__write_date
+#, fuzzy
+msgid "Last Updated on"
+msgstr "Dernière modification le"
+
+#. module: project_forecast_line_bokeh_chart
+#: model:ir.model.fields.selection,name:project_forecast_line_bokeh_chart.selection__forecast_line_reporting__granularity__month
+msgid "Month"
+msgstr ""
+
+#. module: project_forecast_line_bokeh_chart
+#: model:ir.model.fields,field_description:project_forecast_line_bokeh_chart.field_forecast_line_reporting__nb_months
+msgid "Nb Months"
+msgstr ""
+
+#. module: project_forecast_line_bokeh_chart
+#: code:addons/project_forecast_line_bokeh_chart/report/forecast_line_reporting.py:0
+#, python-format
+msgid "Not assigned to an employee"
+msgstr ""
+
+#. module: project_forecast_line_bokeh_chart
+#: code:addons/project_forecast_line_bokeh_chart/report/forecast_line_reporting.py:0
+#, python-format
+msgid "Nothing to plot. Select some employees"
+msgstr ""
+
+#. module: project_forecast_line_bokeh_chart
+#: code:addons/project_forecast_line_bokeh_chart/report/forecast_line_reporting.py:0
+#, python-format
+msgid "Overload"
+msgstr ""
+
+#. module: project_forecast_line_bokeh_chart
+#: model:ir.model.fields,field_description:project_forecast_line_bokeh_chart.field_forecast_line_reporting__project_ids
+msgid "Project"
+msgstr ""
+
+#. module: project_forecast_line_bokeh_chart
+#: model:ir.model.fields,help:project_forecast_line_bokeh_chart.field_forecast_line_reporting__project_ids
+msgid ""
+"Setting this will automatically add all employees assigned to tasks on the "
+"project"
+msgstr ""
+
+#. module: project_forecast_line_bokeh_chart
+#: model:ir.model.fields.selection,name:project_forecast_line_bokeh_chart.selection__forecast_line_reporting__granularity__week
+msgid "Week"
+msgstr ""
+
+#, fuzzy
+#~ msgid "Sale line"
+#~ msgstr "Bon de commande"
+
+#~ msgid "Sales Order"
+#~ msgstr "Bon de commande"
+
+#, fuzzy
+#~ msgid "Sales Order Line"
+#~ msgstr "Bon de commande"
+
+#~ msgid "Indicate if a signed contract has been received for this SO"
+#~ msgstr "Indique si un contrat signé a été reçu pour cette commande"
+
+#~ msgid "Log reception of signed contract"
+#~ msgstr "Enregistrer la réception d'un contrat signé"
+
+#~ msgid "Missing contract"
+#~ msgstr "Contrat manquant"
+
+#~ msgid "Record when the SO has (most recently) been marked as signed "
+#~ msgstr ""
+#~ "Enregistre quand la commande a été marquée comme signée (le plus "
+#~ "récemment)"
+
+#~ msgid "Signed Date"
+#~ msgstr "Date de signature"
+
+#~ msgid "Signed Status"
+#~ msgstr "Statut signature"
+
+#~ msgid ""
+#~ "You are not allowed to change the signed status of Sales Orders.\n"
+#~ "Only members of the 'Log reception of signed contract' group can."
+#~ msgstr ""
+#~ "Vous n'êtes pas autorisé à changer le statut de signature des commandes "
+#~ "de vente.\n"
+#~ "Seuls les membres du goupe 'Enregistrer la réception d'un contrat signé' "
+#~ "le peuvent."
