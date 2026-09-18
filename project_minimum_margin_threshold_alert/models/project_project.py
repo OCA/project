@@ -2,8 +2,6 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 from odoo import api, fields, models
 
-from odoo.addons.base.models.res_users import ResUsers
-
 
 class ProjectProject(models.Model):
     _inherit = "project.project"
@@ -139,7 +137,7 @@ class ProjectProject(models.Model):
                 }
             )
 
-    def _get_internal_users_for_margin_threshold(self) -> ResUsers:
+    def _get_internal_users_for_margin_threshold(self):
         """
         Returns the internal followers and the project manager (user_id)
         """
