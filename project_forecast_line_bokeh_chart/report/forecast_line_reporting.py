@@ -1,8 +1,8 @@
 # Copyright 2022 Camptocamp SA
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 import json
+from datetime import timedelta
 
-# pylint: disable=W7936
 from bokeh import palettes
 from bokeh.embed import components
 from bokeh.layouts import column
@@ -10,8 +10,9 @@ from bokeh.models import ColumnDataSource, FactorRange
 from bokeh.plotting import figure
 from dateutil.relativedelta import relativedelta
 
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 from odoo.tools import date_utils
+from odoo.tools.misc import get_lang
 
 
 class ForecastLineReporting(models.TransientModel):
@@ -50,10 +51,11 @@ class ForecastLineReporting(models.TransientModel):
         # employee, the chart displays the consolidated_forecast field
         # grouped by project on which the employee is planned for a given
         # period.
-        plots = self._build_plots()
-        grid = column(*plots)
-        script, div = components(grid, wrap_script=False)
-        self.bokeh_chart = json.dumps({"div": div, "script": script})
+        for rec in self:
+            plots = rec._build_plots()
+            grid = column(*plots)
+            script, div = components(grid, wrap_script=False)
+            rec.bokeh_chart = json.dumps({"div": div, "script": script})
 
     def _prepare_bokeh_chart_data(self):
         """compute the data that will be plotted.
@@ -93,54 +95,48 @@ class ForecastLineReporting(models.TransientModel):
                 domain += [("employee_id", "in", self.employee_ids.ids)]
         else:
             domain.append(("employee_id", "=", False))
-        groups = [
-            "date_from:%s" % self.granularity,
-            "employee_id",
-            "project_id",
-        ]
-        groupdata = self.env["forecast.line"].read_group(
-            domain, ["consolidated_forecast"], groups, lazy=False
+        date_spec = f"date_from:{self.granularity}"
+        groupdata = self.env["forecast.line"]._read_group(
+            domain,
+            groupby=[date_spec, "employee_id", "project_id"],
+            aggregates=["consolidated_forecast:sum"],
         )
         employees = set()
         projects = set()
         data_project = {}
         data_overload = {}
-        for d in groupdata:
-            employee = d.get("employee_id")
-            if employee:
-                employee = employee[1]._value
-            else:
-                employee = _("Not assigned to an employee")
+        not_assigned = self.env._("Not assigned to an employee")
+        available = self.env._("Available")
+        overload = self.env._("Overload")
+        for date, employee_rec, project_rec, forecast in groupdata:
+            employee = employee_rec.name if employee_rec else not_assigned
             employees.add(employee)
             if employee not in data_project:
                 data_project[employee] = {}
                 data_overload[employee] = {}
-            forecast = d["consolidated_forecast"]
-            date = d["__range"]["date_from"]["from"]
-            project = d.get("project_id")
-            if project:
-                project = project[1]._value
+            if project_rec:
+                project = project_rec.name
                 data = data_project
             elif forecast >= 0:
-                project = _("Available")
+                project = available
                 data = data_project
             else:
-                project = _("Overload")
+                project = overload
                 data = data_overload
             projects.add(project)
             if project not in data[employee]:
                 data[employee][project] = {}
-            x_key = date
+            x_key = date.strftime("%Y-%m-%d")
             data[employee][project][x_key] = forecast
         employees = list(employees)
         employees.sort()
-        if _("Not assigned to an employee") in employees:
+        if not_assigned in employees:
             # make sure it is the last one
-            employees.remove(_("Not assigned to an employee"))
-            employees.append(_("Not assigned to an employee"))
+            employees.remove(not_assigned)
+            employees.append(not_assigned)
         projects = list(projects)
         projects.sort()
-        for name in [_("Available"), _("Overload")]:
+        for name in [available, overload]:
             if name in projects:
                 # make sure these two get in the first tow positions
                 projects.remove(name)
@@ -151,7 +147,19 @@ class ForecastLineReporting(models.TransientModel):
         end_date = self.date_from + relativedelta(months=self.nb_months)
         dates = []
         granularity = self.granularity
-        date = self.date_from
+        # start from the truncated period start, matching the DB-side
+        # date_trunc() done by the date_from:<granularity> groupby, so the
+        # x-axis keys line up with the group keys for week/month too.
+        # _read_group's week grouping is anchored on the language's first
+        # day of the week (res.lang.week_start, Sunday for en_US), not on
+        # the ISO/Monday convention date_utils.start_of() always uses.
+        if granularity == "week":
+            first_week_day = int(get_lang(self.env).week_start) - 1
+            date = self.date_from - timedelta(
+                days=(self.date_from.weekday() - first_week_day) % 7
+            )
+        else:
+            date = date_utils.start_of(self.date_from, granularity)
         delta = date_utils.get_timedelta(1, granularity)
         while date < end_date:
             dates.append(date.strftime("%Y-%m-%d"))
@@ -161,7 +169,7 @@ class ForecastLineReporting(models.TransientModel):
     def _build_empty_plot(self, height=300, width=1024):
         dates = self._get_time_range()
         p = figure(height=height, width=width, x_range=FactorRange(*dates))
-        p.title.text = _("Nothing to plot. Select some employees")
+        p.title.text = self.env._("Nothing to plot. Select some employees")
         return [p]
 
     def _get_palette(self, projects):
