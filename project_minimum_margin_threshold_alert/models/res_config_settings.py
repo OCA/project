@@ -18,6 +18,6 @@ class ResConfigSettings(models.TransientModel):
     )
     project_margin_threshold_create_activity = fields.Boolean(
         config_parameter="project_margin_threshold_alert.project_margin_threshold_create_activity",
-        help="Check this to enable by default the creation of activity"
-        "for dedicated project manager when project margin threshold (minimum) is .",
+        help="Check this to enable by default the creation of activity "
+        "for dedicated project manager when project margin threshold is exceeded.",
     )

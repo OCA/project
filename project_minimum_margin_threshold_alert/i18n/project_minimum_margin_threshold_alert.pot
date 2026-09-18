@@ -79,8 +79,8 @@ msgstr ""
 #. module: project_minimum_margin_threshold_alert
 #: model:ir.model.fields,help:project_minimum_margin_threshold_alert.field_res_config_settings__project_margin_threshold_create_activity
 msgid ""
-"Check this to enable by default the creation of activityfor dedicated "
-"project manager when project margin threshold (minimum) is ."
+"Check this to enable by default the creation of activity for dedicated "
+"project manager when project margin threshold is exceeded."
 msgstr ""
 
 #. module: project_minimum_margin_threshold_alert
