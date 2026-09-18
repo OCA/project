@@ -152,8 +152,8 @@ msgid "Is Margin Threshold Exceeded"
 msgstr "Seuil de Marge Dépassé"
 
 #. module: project_minimum_margin_threshold_alert
-#: model:ir.model.fields,field_description:project_minimum_margin_threshold_alert.field_project_project__is_margin_threshold_exceeded_notfication_sent
-msgid "Is Margin Threshold Exceeded Notfication Sent"
+#: model:ir.model.fields,field_description:project_minimum_margin_threshold_alert.field_project_project__is_margin_threshold_exceeded_notification_sent
+msgid "Is Margin Threshold Exceeded Notification Sent"
 msgstr "Notification sur les seuils d'alerte de marge envoyée"
 
 #. module: project_minimum_margin_threshold_alert

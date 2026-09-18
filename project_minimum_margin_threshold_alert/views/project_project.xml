@@ -45,8 +45,8 @@
                 />
                 <filter
                     string="Minimum Margin Notification Sent"
-                    name="is_margin_threshold_exceeded_notfication_sent"
-                    domain="[('is_margin_threshold_exceeded_notfication_sent', '=', True)]"
+                    name="is_margin_threshold_exceeded_notification_sent"
+                    domain="[('is_margin_threshold_exceeded_notification_sent', '=', True)]"
                 />
             </filter>
         </field>

@@ -16,8 +16,8 @@ class ProjectProject(models.Model):
         help="This is set if margin is exceeded from threshold",
         tracking=True,
     )
-    is_margin_threshold_exceeded_notfication_sent = fields.Boolean(
-        compute="_compute_is_margin_threshold_exceeded_notfication_sent",
+    is_margin_threshold_exceeded_notification_sent = fields.Boolean(
+        compute="_compute_is_margin_threshold_exceeded_notification_sent",
         store=True,
         index=True,
         tracking=True,
@@ -67,7 +67,7 @@ class ProjectProject(models.Model):
         partners and users about margin threshold exceed.
         """
         return [
-            ("is_margin_threshold_exceeded_notfication_sent", "=", False),
+            ("is_margin_threshold_exceeded_notification_sent", "=", False),
             ("is_margin_threshold_exceeded", "=", True),
         ]
 
@@ -90,7 +90,7 @@ class ProjectProject(models.Model):
 
             if project.create_margin_threshold_activity:
                 project._create_margin_threshold_activity_for_manager(project.user_id)
-        projects.is_margin_threshold_exceeded_notfication_sent = True
+        projects.is_margin_threshold_exceeded_notification_sent = True
 
     def _send_margin_threshold_notifications(self, users_to_notify):
         self.message_notify(
@@ -148,8 +148,8 @@ class ProjectProject(models.Model):
         return internal_user_followers
 
     @api.depends("margin_threshold")
-    def _compute_is_margin_threshold_exceeded_notfication_sent(self):
+    def _compute_is_margin_threshold_exceeded_notification_sent(self):
         """
         Threshold has been changed -> reset the notification is sent field
         """
-        self.is_margin_threshold_exceeded_notfication_sent = False
+        self.is_margin_threshold_exceeded_notification_sent = False
