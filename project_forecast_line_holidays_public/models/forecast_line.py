@@ -6,9 +6,26 @@ from odoo import models
 class ForecastLine(models.Model):
     _inherit = "forecast.line"
 
-    def prepare_forecast_lines(self, *args, **kwargs):
-        self = self.with_context(exclude_public_holidays=True)
-        return super().prepare_forecast_lines(*args, **kwargs)
+    def _number_of_hours(self, date_from, date_to, resource, calendar, *args, **kwargs):
+        if not resource:
+            return super()._number_of_hours(
+                date_from, date_to, resource, calendar, *args, **kwargs
+            )
+        employee = resource.employee_id[:1]
+        context = {"exclude_public_holidays": True}
+        # hr_holidays_public reads the employee through hr.employee.public, a
+        # view joining hr_version on current_version_id: while the employee
+        # is being created, it has no row there yet.
+        if employee and self.env["hr.employee.public"].browse(employee.id).exists():
+            context["employee_id"] = employee.id
+        return super()._number_of_hours(
+            date_from,
+            date_to,
+            resource,
+            calendar.with_context(**context),
+            *args,
+            **kwargs,
+        )
 
     def _cron_recompute_all(self, force_company_id=None, force_delete=False):
         self = self.with_context(exclude_public_holidays=True)

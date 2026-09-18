@@ -3,8 +3,8 @@
 from odoo import api, models
 
 
-class HrHolidaysPublicLine(models.Model):
-    _inherit = "hr.holidays.public.line"
+class CalendarPublicHolidayLine(models.Model):
+    _inherit = "calendar.public.holiday.line"
 
     @api.model_create_multi
     def create(self, values):
