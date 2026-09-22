@@ -233,6 +233,10 @@ class ProjectTask(models.Model):
             lambda x: float_is_zero(x.quantity, precision_digits=price_dp)
         ):
             move.quantity = move.product_uom_qty
+        # It is important to set picked=True to avoid inconsistencies between
+        # picked=True and picked=False` operations that prevent the picking process
+        # from being completed.
+        moves_to_do.picked = True
         moves_to_do.picking_id.with_context(skip_sanity_check=True).button_validate()
 
     def action_see_move_scrap(self):
