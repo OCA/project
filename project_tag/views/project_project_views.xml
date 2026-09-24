@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2019 Patrick Wilson <patrickraymondwilson@gmail.com>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="project_tags_view_inherit_form" model="ir.ui.view">
+        <field name="name">project.project.form - project_tag</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project" />
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='group_tasks_managment']/div" position="inside">
+                <setting
+                    class="col-lg-12"
+                    id="tags_required_setting"
+                    help="Tasks of this project must have at least one tag"
+                >
+                    <field name="tags_required" />
+                </setting>
+            </xpath>
+        </field>
+    </record>
+    <record id="project_tags_view_inherit_simple" model="ir.ui.view">
+        <field name="name">project.project.view.form.simplified - project_tag</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.project_project_view_form_simplified" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('oe_title')]" position="after">
+                <group>
+                    <field
+                        name="tag_ids"
+                        widget="many2many_tags"
+                        options="{'color_field': 'color'}"
+                    />
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

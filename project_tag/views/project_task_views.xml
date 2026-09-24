@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="tag_quick_create_task_form" model="ir.ui.view">
+        <field name="name">project.task.form.quick_create - project_tag</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.quick_create_task_form" />
+        <field name="arch" type="xml">
+            <field name="user_ids" position="after">
+                <field
+                    name="tag_ids"
+                    widget="many2many_tags"
+                    options="{'color_field': 'color', 'no_create_edit': True}"
+                    context="{'project_id': project_id}"
+                    required="tags_required"
+                />
+            </field>
+        </field>
+    </record>
+    <record id="view_task_enhancement_tags_form" model="ir.ui.view">
+        <field name="name">project.task.form - project_tag</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2" />
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/group//field[@name='tag_ids']" position="attributes">
+                <attribute name="required">tags_required</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>
