@@ -1,3 +1,7 @@
+.. image:: https://odoo-community.org/readme-banner-image
+   :target: https://odoo-community.org/get-involved?utm_source=readme
+   :alt: Odoo Community Association
+
 ============
 Project Tags
 ============
@@ -13,22 +17,29 @@ Project Tags
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fproject-lightgray.png?logo=github
-    :target: https://github.com/OCA/project/tree/14.0/project_tag
+    :target: https://github.com/OCA/project/tree/19.0/project_tag
     :alt: OCA/project
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/project-14-0/project-14-0-project_tag
+    :target: https://translation.odoo-community.org/projects/project-19-0/project-19-0-project_tag
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/project&target_branch=14.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/project&target_branch=19.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
-This module add the task tags to the project.
+This module allows to make tags required on the tasks of a project.
+
+Since Odoo 15.0, tags on projects are part of the standard ``project``
+module, as well as the propagation of the parent task tags to its
+subtasks. This module keeps the remaining feature: a *Tags Required*
+option on the project that makes the *Tags* field mandatory on the forms
+of its tasks. It also adds the project tags to the simplified project
+creation form.
 
 **Table of contents**
 
@@ -40,8 +51,11 @@ Usage
 
 To use this module, you need to:
 
-#. Have Manager rights for Project group to create tags.
-#. Go to the project form or use the field from the kanban and add the necessary tags.
+1. Go to *Project > Configuration > Projects* and open a project.
+2. In the *Settings* tab, section *Tasks Management*, enable *Tags
+   Required*.
+3. When creating or editing a task of this project, the *Tags* field is
+   required.
 
 Bug Tracker
 ===========
@@ -49,7 +63,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/project/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/project/issues/new?body=module:%20project_tag%0Aversion:%2014.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/project/issues/new?body=module:%20project_tag%0Aversion:%2019.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -57,25 +71,26 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Patrick Wilson
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* Patrick Wilson <patrickraymondwilson@gmail.com>
-* `Ecosoft <http://ecosoft.co.th>`_:
+- Patrick Wilson <patrickraymondwilson@gmail.com>
+- `Ecosoft <http://ecosoft.co.th>`__:
 
-    * Saran Lim. <saranl@ecosoft.co.th>
-    * Tharathip Chaweewongphan <tharathipc@ecosoft.co.th>
-* Nattapol Sinsuphan <gamso321@gmail.com>
-* `Ooops <https://www.ooops404.com>`_:
+  - Saran Lim. <saranl@ecosoft.co.th>
+  - Tharathip Chaweewongphan <tharathipc@ecosoft.co.th>
 
-  * Ashish Hirpara
+- Nattapol Sinsuphan <gamso321@gmail.com>
+- `Ooops <https://www.ooops404.com>`__:
+
+  - Ashish Hirpara
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is maintained by the OCA.
 
@@ -95,6 +110,6 @@ Current `maintainer <https://odoo-community.org/page/maintainer-role>`__:
 
 |maintainer-patrickrwilson| 
 
-This module is part of the `OCA/project <https://github.com/OCA/project/tree/14.0/project_tag>`_ project on GitHub.
+This module is part of the `OCA/project <https://github.com/OCA/project/tree/19.0/project_tag>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
