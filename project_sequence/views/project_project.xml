@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!-- Copyright 2023 Moduon Team S.L.
      License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0) -->
 <data>
@@ -34,7 +34,7 @@
     <record id="project_sequence_kanban_view" model="ir.ui.view">
         <field name="name">Project.sequence.project.kanban</field>
         <field name="model">project.project</field>
-        <field name="inherit_id" ref="project.view_project_kanban" />
+        <field name="inherit_id" ref="project.view_project_card" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='display_name']" position="after">
                 <field name="name" />
@@ -50,7 +50,7 @@
                 position="after"
             >
                 <span>
-                    <t t-esc="record.display_name.value" />
+                    <t t-out="record.display_name.value" />
                 </span>
             </xpath>
         </field>

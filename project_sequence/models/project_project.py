@@ -39,7 +39,7 @@ class ProjectProject(models.Model):
         sequence_pattern = (
             self.env["ir.config_parameter"]
             .sudo()
-            .get_param(
+            .get_str(
                 "project_sequence.display_name_pattern",
                 default="%(sequence_code)s - %(name)s",
             )
