@@ -5,3 +5,5 @@
   - Andrea Stirpe
 - Marcin Chechłacz <<marcin.chechlacz@braintec.com>>
 - Denis Roussel <<denis.roussel@acsone.eu>>
+- Sudhir Arya\<<sudhir@erpharbor.com>\>
+  

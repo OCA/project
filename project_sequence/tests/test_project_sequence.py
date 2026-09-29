@@ -124,19 +124,19 @@ class TestProjectSequence(TransactionCase):
 
     def test_custom_pattern(self):
         """Display name pattern can be customized."""
-        self.env["ir.config_parameter"].set_param(
+        self.env["ir.config_parameter"].set_str(
             "project_sequence.display_name_pattern", "%(name)s/%(sequence_code)s"
         )
         proj = self.env["project.project"].create({"name": "one"})
         self.assertEqual(proj.display_name, "one/23-00011")
         self.assertEqual(proj.sequence_code, "23-00011")
-        self.env["ir.config_parameter"].set_param(
+        self.env["ir.config_parameter"].set_str(
             "project_sequence.display_name_pattern", "%(name)s"
         )
         proj = self.env["project.project"].create({"name": "two"})
         self.assertEqual(proj.display_name, "two")
         self.assertEqual(proj.sequence_code, "23-00012")
-        self.env["ir.config_parameter"].set_param(
+        self.env["ir.config_parameter"].set_str(
             "project_sequence.display_name_pattern", "%(sequence_code)s"
         )
         proj = self.env["project.project"].create({"name": "three"})
