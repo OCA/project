@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <record id="project_type_form" model="ir.ui.view">
         <field name="model">project.type</field>
@@ -70,8 +70,8 @@
         <field name="view_mode">list,form</field>
     </record>
     <menuitem
-        name="Project Types"
         id="project_category"
+        name="Project Types"
         parent="project.menu_project_config"
         action="action_project_type"
         sequence="20"
