@@ -1,11 +1,10 @@
 {
     "name": "Project Stage Extra Info",
-    "summary": """
-        Project Stage Extra Info""",
+    "summary": "Project Stage Extra Info",
     "author": "InitOS GmbH, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/project",
     "category": "Project Management",
-    "version": "19.0.1.0.0",
+    "version": "20.0.1.0.0",
     "license": "AGPL-3",
     "depends": ["project"],
     "data": [
