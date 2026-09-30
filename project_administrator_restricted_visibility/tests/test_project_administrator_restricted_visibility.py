@@ -33,13 +33,31 @@ class TestProjectAdministratorRestrictedVisibility(TransactionCase):
                 "message_partner_ids": [(6, 0, cls.user_admin.ids)],
             }
         )
+        cls.own_project = cls.env["project.project"].create(
+            {
+                "name": "Own project",
+                "privacy_visibility": "followers",
+                "user_id": cls.user_restrcited_padmin.id,
+                # Only admin follows it: visibility comes from ownership.
+                "message_partner_ids": [(6, 0, cls.user_admin.partner_id.ids)],
+            }
+        )
 
     @users("restricted-project-admin", "project-admin")
     def test_create_new_project(self):
         """'Restricted project administrator' can create
         projects like a 'Project administrator'.
         """
-        self.project_obj.create({"name": "Another project"})
+        project = self.project_obj.create(
+            {
+                "name": "Another project",
+                "privacy_visibility": "invited_users",
+                "user_id": self.env.user.id,
+            }
+        )
+        self.assertIn(project, self.project_obj.search([]))
+        project.write({"name": "Updated project"})
+        project.unlink()
 
     @users("restricted-project-admin", "project-user")
     def test_cant_see_restricted_projects(self):
@@ -48,3 +66,11 @@ class TestProjectAdministratorRestrictedVisibility(TransactionCase):
         """
         all_project = self.env["project.project"].search([])
         self.assertNotIn(self.restricted_project, all_project)
+
+    @users("restricted-project-admin")
+    def test_can_manage_own_project(self):
+        """A restricted administrator can manage their own project."""
+        project = self.env["project.project"].browse(self.own_project.id)
+        self.assertTrue(project.exists())
+        project.write({"name": "Updated own project"})
+        project.unlink()
