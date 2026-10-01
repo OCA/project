@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 - TODAY, Kaynnan Lemes  <kaynnan.lemes@escodoo.com.br>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <!-- Form View -->
+    <record id="project_state_custom_view_form" model="ir.ui.view">
+        <field name="name">project.state.extend.form</field>
+        <field name="model">project.state.extend</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="technical_name" />
+                        </group>
+                        <group>
+                            <field name="color" widget="color_picker" />
+                            <field name="sequence" />
+                            <field name="active" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Help">
+                            <div class="alert alert-info" role="alert">
+                                <h4>Creating Custom Project States</h4>
+                                <ul>
+                                    <li><strong
+                                        >Name:</strong> The display name that users will see</li>
+                                    <li><strong
+                                        >Technical Name:</strong> A unique identifier used internally (lowercase, no spaces)</li>
+                                    <li><strong
+                                        >Color:</strong> Choose a color index from 0 to 11 for the status bubble</li>
+                                    <li><strong
+                                        >Sequence:</strong> Lower numbers appear first in selection lists</li>
+                                </ul>
+                                <p>
+                                    After creating custom states, they will be available in the
+                                    Project status selection widgets.
+                                </p>
+                            </div>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <!-- Tree View -->
+    <record id="project_state_custom_view_tree" model="ir.ui.view">
+        <field name="name">project.state.extend.tree</field>
+        <field name="model">project.state.extend</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sequence" widget="handle" />
+                <field name="name" />
+                <field name="technical_name" />
+                <field name="color" widget="color_picker" />
+                <field name="active" />
+            </tree>
+        </field>
+    </record>
+    <!-- Search View -->
+    <record id="project_state_custom_view_search" model="ir.ui.view">
+        <field name="name">project.state.extend.search</field>
+        <field name="model">project.state.extend</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name" />
+                <field name="technical_name" />
+                <filter
+                    string="Archived"
+                    name="inactive"
+                    domain="[('active', '=', False)]"
+                />
+                <group expand="0" string="Group By">
+                    <filter
+                        string="Active"
+                        name="group_by_active"
+                        domain="[]"
+                        context="{'group_by': 'active'}"
+                    />
+                </group>
+            </search>
+        </field>
+    </record>
+    <!-- Action -->
+    <record id="project_state_custom_action" model="ir.actions.act_window">
+        <field name="name">Custom Project States</field>
+        <field name="res_model">project.state.extend</field>
+        <field name="view_mode">tree,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a new Custom Project State
+            </p>
+            <p>
+                Define custom states that can be assigned to projects and tasks,
+                providing additional status options beyond the standard ones.
+            </p>
+        </field>
+    </record>
+    <!-- Menu -->
+    <menuitem
+        id="project_state_custom_menu"
+        name="Custom States"
+        parent="project.menu_project_config"
+        action="project_state_custom_action"
+        sequence="51"
+    />
+</odoo>
