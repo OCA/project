@@ -60,7 +60,7 @@ addon | version | maintainers | summary
 [project_task_description_portal](project_task_description_portal/) | 18.0.1.0.0 |  | Dedicated task description for portal users
 [project_task_description_template](project_task_description_template/) | 18.0.1.0.0 |  | Add a description template to project tasks
 [project_task_material](project_task_material/) | 18.0.1.0.0 |  | Record products spent in a Task
-[project_task_name_with_id](project_task_name_with_id/) | 18.0.1.0.0 |  | Project Task Name with ID
+[project_task_name_with_id](project_task_name_with_id/) | 18.0.1.0.1 |  | Project Task Name with ID
 [project_task_note](project_task_note/) | 18.0.1.0.2 | <a href='https://github.com/pilarvargas-tecnativa'><img src='https://github.com/pilarvargas-tecnativa.png' width='32' height='32' style='border-radius:50%;' alt='pilarvargas-tecnativa'/></a> | Add notes in project tasks
 [project_task_parent_completion_blocking](project_task_parent_completion_blocking/) | 18.0.1.0.0 | <a href='https://github.com/david-banon-tecnativa'><img src='https://github.com/david-banon-tecnativa.png' width='32' height='32' style='border-radius:50%;' alt='david-banon-tecnativa'/></a> | Prevents a task from being completed if any children task isn't.
 [project_task_parent_due_auto](project_task_parent_due_auto/) | 18.0.1.0.1 | <a href='https://github.com/david-banon-tecnativa'><img src='https://github.com/david-banon-tecnativa.png' width='32' height='32' style='border-radius:50%;' alt='david-banon-tecnativa'/></a> | Recalculates parent task's due date when child task changes
