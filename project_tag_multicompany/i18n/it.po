@@ -1,0 +1,27 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_tag_multicompany
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2024-10-21 10:06+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
+"Language-Team: none\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.6.2\n"
+
+#. module: project_tag_multicompany
+#: model:ir.model.fields,field_description:project_tag_multicompany.field_project_tags__company_id
+msgid "Company"
+msgstr "Azienda"
+
+#. module: project_tag_multicompany
+#: model:ir.model,name:project_tag_multicompany.model_project_tags
+msgid "Project Tags"
+msgstr "Etichette progetto"
