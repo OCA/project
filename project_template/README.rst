@@ -1,7 +1,3 @@
-.. image:: https://odoo-community.org/readme-banner-image
-   :target: https://odoo-community.org/get-involved?utm_source=readme
-   :alt: Odoo Community Association
-
 =================
 Project Templates
 =================
@@ -17,7 +13,7 @@ Project Templates
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fproject-lightgray.png?logo=github
@@ -32,7 +28,8 @@ Project Templates
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
-This module adds templates for projects.
+This module adds templates for projects and reusable project task
+structures.
 
 **Table of contents**
 
@@ -52,6 +49,12 @@ To use this module, you need to:
 4. Use the "Create Project from Template" link in the drop down menu on
    each template while in the Kanban view or the button on the project
    template form.
+5. Select a project template on a new project to copy its settings and
+   reusable tasks.
+6. Mark tasks that should be copied or reused with the "Is Template"
+   field.
+7. Use the "Task Template" field on a task to create subtasks from a
+   template task.
 
 Bug Tracker
 ===========
@@ -70,6 +73,7 @@ Authors
 -------
 
 * Patrick Wilson
+* ACSONE SA/NV
 
 Contributors
 ------------
@@ -79,6 +83,7 @@ Contributors
 - Mantas Šniukas <mantas@vialaurea.lt>
 - Atte Isopuro <atte.isopuro@avoin.systems>
 - Stefan Rijnhart <stefan@opener.amsterdam>
+- Souheil Bejaoui souheil.bejaoui@acsone.eu
 
 Maintainers
 -----------
@@ -96,10 +101,13 @@ promote its widespread use.
 .. |maintainer-patrickrwilson| image:: https://github.com/patrickrwilson.png?size=40px
     :target: https://github.com/patrickrwilson
     :alt: patrickrwilson
+.. |maintainer-sbejaoui| image:: https://github.com/sbejaoui.png?size=40px
+    :target: https://github.com/sbejaoui
+    :alt: sbejaoui
 
-Current `maintainer <https://odoo-community.org/page/maintainer-role>`__:
+Current `maintainers <https://odoo-community.org/page/maintainer-role>`__:
 
-|maintainer-patrickrwilson| 
+|maintainer-patrickrwilson| |maintainer-sbejaoui| 
 
 This module is part of the `OCA/project <https://github.com/OCA/project/tree/18.0/project_template>`_ project on GitHub.
 
