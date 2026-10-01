@@ -58,6 +58,7 @@
                 <attribute name="invisible">1</attribute>
             </xpath>
             <xpath expr="//field[@name='name']" position="after">
+                <field name="active" invisible="1" />
                 <span class="fw-bold fs-5">
                     <s t-if="!record.active.raw_value">
                         <field name="display_name" widget="name_with_subtask_count" />
