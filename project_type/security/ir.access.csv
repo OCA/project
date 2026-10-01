@@ -1,0 +1,3 @@
+id,name,model_id,group_id/id,operation,domain
+access_project_type_all,project.type all,project.type,project.group_project_user,r,
+access_project_type_manager,project.type manager,project.type,project.group_project_manager,crud,
