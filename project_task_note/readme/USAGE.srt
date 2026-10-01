@@ -1,0 +1,4 @@
+To use this module, you need to:
+
+#. Go to menu Project > Search > Tasks and create/edit task
+#. Inside Description page on project task form, you will see internal notes to fill in
