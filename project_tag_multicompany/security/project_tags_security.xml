@@ -1,8 +1,9 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-    <record id="rule_multi_company_project_tags" model="ir.rule">
+    <record id="rule_multi_company_project_tags" model="ir.access">
         <field name="name">Project Tags Multi Company</field>
         <field name="model_id" ref="project.model_project_tags" />
-        <field name="domain_force">[('company_id', 'in', company_ids + [False])]</field>
+        <field name="operation">crud</field>
+        <field name="domain">[('company_id', 'in', company_ids + [False])]</field>
     </record>
 </odoo>
