@@ -7,7 +7,6 @@ class TestProjectAdministratorRestrictedVisibility(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.project_obj = cls.env["project.project"]
         cls.user_admin = cls.env.ref("base.user_admin")
         cls.user_user_padmin = new_test_user(
             cls.env,
@@ -33,12 +32,28 @@ class TestProjectAdministratorRestrictedVisibility(TransactionCase):
             }
         )
 
+    def _create_defaults(self):
+        """Define default field values"""
+        self.env["ir.default"].sudo().create(
+            {
+                "field_id": self.env.ref(
+                    "project.field_project_project__privacy_visibility"
+                ).id,
+                "json_value": '"followers"',
+                "user_id": self.env.user.id,
+            }
+        )
+
     @users("restricted-project-admin", "project-admin")
     def test_create_new_project(self):
         """'Restricted project administrator' can create
         projects like a 'Project administrator'.
         """
-        self.project_obj.create({"name": "Another project"})
+        self._create_defaults()
+        project = self.env["project.project"].create({"name": "Another project"})
+        self.assertEqual(project.privacy_visibility, "followers")
+        project.write({"name": "Another test project"})
+        project.unlink()
 
     @users("restricted-project-admin", "project-user")
     def test_cant_see_restricted_projects(self):
@@ -47,3 +62,9 @@ class TestProjectAdministratorRestrictedVisibility(TransactionCase):
         """
         all_project = self.env["project.project"].search([])
         self.assertNotIn(self.restricted_project, all_project)
+
+    @users("project-admin")
+    def test_can_see_all_projects(self):
+        """'Full project administrator' can see all projects."""
+        all_project = self.env["project.project"].search([])
+        self.assertIn(self.restricted_project, all_project)
