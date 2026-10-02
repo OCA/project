@@ -60,7 +60,7 @@
     <record id="view_task_tree2_extend_with_key" model="ir.ui.view">
         <field name="name">project.task.list</field>
         <field name="model">project.task</field>
-        <field name="inherit_id" ref="project.view_task_tree2" />
+        <field name="inherit_id" ref="project.project_task_view_tree_main_base" />
         <field eval="2" name="priority" />
         <field name="arch" type="xml">
             <field name="name" position="before">
@@ -71,7 +71,7 @@
     <record id="view_task_search_key" model="ir.ui.view">
         <field name="name">project.task.search.key</field>
         <field name="model">project.task</field>
-        <field name="inherit_id" ref="project.view_task_search_form" />
+        <field name="inherit_id" ref="project.view_task_search_form_base" />
         <field name="arch" type="xml">
             <field name="name" position="attributes">
                 <attribute
@@ -85,14 +85,13 @@
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_kanban" />
         <field name="arch" type="xml">
-            <field name="color" position="after">
-                <field name="url" />
+            <xpath expr="//kanban/field[@name='stage_id']" position="after">
                 <field name="key" />
-            </field>
+            </xpath>
             <xpath expr="//t[@t-name='card']//field[@name='name']" position="before">
-                <a t-att-href="record.url.raw_value">
-                    <field name="key" />
-                </a>
+                <div t-if="record.key" class="mb-1">
+                    <span class="badge text-bg-light" t-out="record.key.raw_value" />
+                </div>
             </xpath>
         </field>
     </record>
@@ -106,4 +105,61 @@
             </div>
         </field>
     </record>
+    <record id="view_task_kanban_key_project_sharing" model="ir.ui.view">
+        <field name="name">project.sharing.project.task.kanban.key</field>
+        <field name="model">project.task</field>
+        <field
+            name="inherit_id"
+            ref="project.project_sharing_project_task_view_kanban"
+        />
+        <field name="active" eval="True" />
+        <field name="arch" type="xml">
+            <xpath expr="//kanban/field[@name='state']" position="after">
+                <field name="key" />
+            </xpath>
+            <xpath expr="//t[@t-name='card']//field[@name='name']" position="before">
+                <div t-if="record.key" class="mb-1">
+                    <span class="badge text-bg-light" t-out="record.key.raw_value" />
+                </div>
+            </xpath>
+        </field>
+    </record>
+    <record id="view_task_form_key_project_sharing" model="ir.ui.view">
+        <field name="name">project.sharing.project.task.form.key</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.project_sharing_project_task_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//h1//field[@name='name']" position="before">
+                <field name="key" readonly="1" nolabel="1" class="oe_inline" />
+                <span class="oe_inline"> : </span>
+            </xpath>
+        </field>
+    </record>
+    <template
+        id="portal_tasks_list_key"
+        name="Project Key: portal tasks list"
+        inherit_id="project.portal_tasks_list"
+    >
+        <xpath expr="//tr/td[span[@t-esc='task.id']]" position="attributes">
+            <attribute name="t-if">not task.key</attribute>
+        </xpath>
+        <xpath expr="//tr/td[span[@t-esc='task.id']]" position="after">
+            <td t-if="task.key" class="text-start">
+                <span t-esc="task.key" />
+            </td>
+        </xpath>
+    </template>
+    <template
+        id="portal_my_task_key"
+        name="Project Key: portal task page"
+        inherit_id="project.portal_my_task"
+    >
+        <xpath expr="//h3/span[@t-field='task.name']" position="before">
+            <span
+                t-if="task.key"
+                class="badge text-bg-secondary me-2"
+                t-esc="task.key"
+            />
+        </xpath>
+    </template>
 </odoo>
