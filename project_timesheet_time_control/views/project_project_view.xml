@@ -54,10 +54,9 @@
                     groups="hr_timesheet.group_hr_timesheet_user"
                 >
                     <div>
-                        <span class="o_label">
-                            <i class="fa fa-lg fa-play-circle text-success" />
-                            Start work
-                        </span>
+                        <span class="o_label"><i
+                            class="fa fa-lg fa-play-circle text-success"
+                        /> Start work</span>
                     </div>
                 </a>
                 <a
@@ -69,10 +68,9 @@
                     groups="hr_timesheet.group_hr_timesheet_user"
                 >
                     <div>
-                        <span class="o_label">
-                            <i class="fa fa-lg fa-stop-circle text-warning" />
-                            Stop work
-                        </span>
+                        <span class="o_label"><i
+                            class="fa fa-lg fa-stop-circle text-warning"
+                        /> Stop work</span>
                     </div>
                 </a>
             </xpath>
