@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Project Task Code Portal</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      line-height: 1.6;
+      color: #333;
+    }
+    h1, h2 {
+      color: #2c3e50;
+    }
+    ul {
+      margin-left: 20px;
+    }
+    code {
+      background-color: #f4f4f4;
+      padding: 2px 4px;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Project Task Code Portal</h1>
+  <p>
+    This module implements task codes in the portal by replacing internal task IDs with human-readable codes.
+    It enhances the customer portal by providing clear task references and improving overall usability.
+  </p>
+  
+  <h2>Key Features</h2>
+  <ul>
+    <li>Use task codes instead of IDs in portal URLs</li>
+    <li>Search for tasks by their unique code in portal filters</li>
+    <li>Display task codes in both task list and detailed views</li>
+    <li>Maintains backward compatibility with existing ID-based routes</li>
+    <li>Includes comprehensive documentation for configuration and usage</li>
+  </ul>
+  
+  <h2>Usage</h2>
+  <p>
+    Once installed and configured, the module modifies portal URLs as follows:
+  </p>
+  <ul>
+    <li><strong>Before:</strong> <code>https://example.com/my/tasks/&lt;task_id&gt;</code></li>
+    <li><strong>After:</strong> <code>https://example.com/my/tasks/&lt;task_code&gt;</code></li>
+  </ul>
+  <p>
+    Portal users can now easily share and reference tasks using meaningful codes rather than numerical IDs.
+  </p>
+  
+  <h2>Installation &amp; Configuration</h2>
+  <p>
+    To install the module, copy it into your Odoo <code>addons</code> directory, ensure that all dependencies are met (e.g., <code>project_task_code</code> and <code>portal</code>), and restart the Odoo server.
+    Detailed configuration instructions are provided in the module documentation.
+  </p>
+  
+  <h2>Context</h2>
+  <p>
+    This module addresses the need for client-friendly task references in the portal. It was developed to overcome the limitations of using non-intuitive task IDs by introducing unique, human-readable task codes.
+    This results in improved communication, easier task tracking, and enhanced navigation for end users.
+  </p>
+</body>
+</html>
