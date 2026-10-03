@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="view_project_git_commit_tree">
+        <field name="name">project.git.commit.tree</field>
+        <field name="model">project.git.commit</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name" optional="show" />
+                <field name="description" optional="show" />
+                <field name="url" optional="show" widget="url" />
+                <field name="sha" optional="hide" />
+                <field name="full_sha" optional="hide" />
+                <field name="git_branch_ids" widget="many2many_tags" optional="hide" />
+                <field name="task_ids" widget="many2many_tags" optional="hide" />
+                <field name="timestamp" optional="hide" />
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_project_git_commit_form">
+        <field name="name">project.git.commit.form</field>
+        <field name="model">project.git.commit</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name" />
+                            <field name="description" />
+                            <field name="url" widget="url" />
+                        </group>
+                        <group>
+                            <field name="sha" />
+                            <field name="full_sha" />
+                            <field name="timestamp" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Branches">
+                            <field name="git_branch_ids">
+                                <tree>
+                                    <field name="name" />
+                                    <field name="url" optional="show" widget="url" />
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Pull Requests">
+                            <field name="git_pull_request_ids">
+                                <tree>
+                                    <field name="id_request" optional="show" />
+                                    <field name="name" optional="show" />
+                                    <field name="state" optional="show" />
+                                    <field name="ci_status" optional="show" />
+                                    <field name="url" optional="hide" widget="url" />
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Tasks">
+                            <field name="task_ids">
+                                <tree>
+                                    <field name="name" />
+                                    <field name="project_id" />
+                                    <field name="stage_id" optional="show" />
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_project_git_commit_search">
+        <field name="name">project.git.commit.search</field>
+        <field name="model">project.git.commit</field>
+        <field name="arch" type="xml">
+            <search>
+                <field
+                    name="name"
+                    filter_domain="['|', ('name', 'ilike', self), ('description', 'ilike', self)]"
+                />
+                <field
+                    name="full_sha"
+                    string="SHA"
+                    filter_domain="['|', ('full_sha', 'ilike', self), ('sha', 'ilike', self)]"
+                />
+                <field name="task_ids" />
+                <field name="git_branch_ids" />
+                <field name="git_pull_request_ids" />
+            </search>
+        </field>
+    </record>
+
+</odoo>
