@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <template
+        id="task_submitted"
+        inherit_id="website_project.task_submitted"
+        name="Show Product Code in Submitted Task"
+        customize_show="True"
+    >
+        <xpath expr="//a/span[@t-field='task.id']" position="attributes">
+            <attribute name="t-field">task.sudo().code</attribute>
+        </xpath>
+        <xpath expr="//t/span[@t-field='task.id']" position="attributes">
+            <attribute name="t-field">task.sudo().code</attribute>
+        </xpath>
+    </template>
+</odoo>
