@@ -1,0 +1,7 @@
+- Eric Caudal \<<eric.caudal@elico-corp.com>\>
+- Giovanni Francesco Capalbo \<<giovanni@therp.nl>\>
+- Thomas Fossoul \<<thomas.fossoul@haulogy.net>\>
+- `Heliconia Solutions Pvt. Ltd. <https://www.heliconia.io>`_
+- Henrik Norlin
+- Sudhir Arya\<<sudhir@erpharbor.com>\>
+
