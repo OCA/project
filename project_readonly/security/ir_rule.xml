@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="project_project_rule_group_readonly" model="ir.rule">
+        <field name="name">Project Readonly: All Documents</field>
+        <field name="model_id" ref="project.model_project_project" />
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field
+            name="groups"
+            eval="[(4, ref('project_readonly.group_project_readonly'))]"
+        />
+        <field name="perm_write" eval="False" />
+        <field name="perm_create" eval="False" />
+        <field name="perm_unlink" eval="False" />
+    </record>
+
+    <record id="project_task_rule_group_readonly" model="ir.rule">
+        <field name="name">Task Readonly: All Documents</field>
+        <field name="model_id" ref="project.model_project_task" />
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field
+            name="groups"
+            eval="[(4, ref('project_readonly.group_project_readonly'))]"
+        />
+        <field name="perm_write" eval="False" />
+        <field name="perm_create" eval="False" />
+        <field name="perm_unlink" eval="False" />
+    </record>
+
+    <record id="report_project_task_user_rule_group_readonly" model="ir.rule">
+        <field name="name">Task Analysis Readonly: All Documents</field>
+        <field name="model_id" ref="project.model_report_project_task_user" />
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field
+            name="groups"
+            eval="[(4, ref('project_readonly.group_project_readonly'))]"
+        />
+        <field name="perm_write" eval="False" />
+        <field name="perm_create" eval="False" />
+        <field name="perm_unlink" eval="False" />
+    </record>
+</odoo>
