@@ -4,6 +4,11 @@ from odoo.addons.base.tests.common import BaseCommon
 
 
 class ProjectMilestoneStatusCommon(BaseCommon):
+    _test_user_groups = (
+        "project.group_project_manager",
+        "hr_timesheet.group_hr_timesheet_approver",
+    )
+
     @classmethod
     def setUpClass(cls):
         super().setUpClass()

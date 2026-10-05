@@ -7,7 +7,7 @@ class ProjectMilestone(models.Model):
     execution = fields.Integer(compute="_compute_execution")
     dedication = fields.Integer(compute="_compute_dedication")
 
-    @api.depends("task_ids")
+    @api.depends("task_ids.stage_id.fold", "task_ids.allocated_hours")
     def _compute_execution(self):
         for milestone in self:
             executed_tasks = milestone.task_ids.filtered("stage_id.fold")
@@ -20,7 +20,7 @@ class ProjectMilestone(models.Model):
             else:
                 milestone.execution = 0
 
-    @api.depends("task_ids")
+    @api.depends("task_ids.allocated_hours", "task_ids.effective_hours")
     def _compute_dedication(self):
         for milestone in self:
             total_allocated_hours = sum(milestone.task_ids.mapped("allocated_hours"))

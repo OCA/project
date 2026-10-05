@@ -1,10 +1,13 @@
-import json
-
-from odoo import models
+from odoo import api, fields, models
 
 
 class Project(models.Model):
     _inherit = "project.project"
+
+    execution_percent = fields.Integer(compute="_compute_execution_stats")
+    execution_hours = fields.Integer(compute="_compute_execution_stats")
+    dedication_percent = fields.Integer(compute="_compute_dedication_stats")
+    dedication_hours = fields.Integer(compute="_compute_dedication_stats")
 
     def _get_execution(self):
         all_tasks = self.tasks
@@ -36,6 +39,20 @@ class Project(models.Model):
 
         return {"dedicated": round(total_dedicated_hours), "percent": round(dedication)}
 
+    @api.depends("tasks.stage_id.fold", "tasks.allocated_hours")
+    def _compute_execution_stats(self):
+        for project in self:
+            execution = project._get_execution()
+            project.execution_percent = execution["percent"]
+            project.execution_hours = execution["executed"]
+
+    @api.depends("tasks.allocated_hours", "tasks.effective_hours")
+    def _compute_dedication_stats(self):
+        for project in self:
+            dedication = project._get_dedication()
+            project.dedication_percent = dedication["percent"]
+            project.dedication_hours = dedication["dedicated"]
+
     def action_view_executed_tasks(self):
         self.ensure_one()
         action = self.env["ir.actions.act_window"]._for_xml_id(
@@ -59,48 +76,3 @@ class Project(models.Model):
             }
         )
         return action
-
-    def _get_stat_buttons(self):
-        buttons = super()._get_stat_buttons()
-        execution = self._get_execution()
-        dedication = self._get_dedication()
-
-        if execution["executed_task"] and execution["all_task"]:
-            percent_tasks = round(
-                execution["executed_task"] * 100 / execution["all_task"]
-            )
-        else:
-            percent_tasks = 0
-
-        buttons[0]["number"] = (
-            f"{execution['executed_task']} / {execution['all_task']} ({percent_tasks}%)"
-        )
-        buttons.append(
-            {
-                "icon": "check-circle-o",
-                "text": self.env._("Execution"),
-                "number": f"{execution['percent']}% ({execution['executed']}h)",
-                "action_type": "object",
-                "action": "action_view_executed_tasks",
-                "show": True,
-                "sequence": 5,
-            }
-        )
-
-        buttons.append(
-            {
-                "icon": "clock-o",
-                "text": self.env._("Dedication"),
-                "number": f"{dedication['percent']}% ({dedication['dedicated']}h)",
-                "action_type": "action",
-                "action": "hr_timesheet.act_hr_timesheet_line_by_project",
-                "additional_context": json.dumps(
-                    {
-                        "id": self.id,
-                    }
-                ),
-                "show": True,
-                "sequence": 6,
-            }
-        )
-        return buttons
