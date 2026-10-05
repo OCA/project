@@ -29,6 +29,8 @@ class TestProjectTagHierarchy(BaseCommon):
             self.tag_1.parent_id = self.tag_3.id
 
     def test_check_parent_id_raises_validation_error(self):
-        with patch.object(type(self.tag_1), "_has_cycle", return_value=True):
-            with self.assertRaises(ValidationError):
-                self.tag_1._check_parent_id()
+        with (
+            patch.object(type(self.tag_1), "_has_cycle", return_value=True),
+            self.assertRaises(ValidationError),
+        ):
+            self.tag_1._check_parent_id()
