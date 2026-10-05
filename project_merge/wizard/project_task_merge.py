@@ -79,8 +79,10 @@ class ProjectTaskMerge(models.TransientModel):
     def _get_merge_description(self):
         return Markup("<br/>").join(
             self.task_ids.filtered("description").mapped(
-                lambda task: Markup("%s <b>%s</b>:<br/>%s")
-                % (self.env._("Description from task"), task.name, task.description)
+                lambda task: (
+                    Markup("%s <b>%s</b>:<br/>%s")
+                    % (self.env._("Description from task"), task.name, task.description)
+                )
             )
         )
 

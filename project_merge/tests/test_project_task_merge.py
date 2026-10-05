@@ -29,7 +29,7 @@ class TestProjectMerge(TestProjectCommon):
                 "project_id": self.project_goats.id,
             }
         )
-        child_1, child_2, child_3, child_4 = self.env["project.task"].create(
+        child_1, _, _, _ = self.env["project.task"].create(
             [
                 {
                     "name": "child 1",
@@ -97,7 +97,7 @@ class TestProjectMerge(TestProjectCommon):
                 "project_id": self.project_goats.id,
             }
         )
-        child_5, child_6, child_7, child_8 = self.env["project.task"].create(
+        child_5, _, _, child_8 = self.env["project.task"].create(
             [
                 {
                     "name": "child 5",
