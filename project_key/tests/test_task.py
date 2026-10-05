@@ -64,7 +64,12 @@ class TestTask(TestCommon):
             {
                 "privacy_visibility": "portal",
                 "collaborator_ids": [
-                    Command.create({"partner_id": portal_user.partner_id.id})
+                    Command.create(
+                        {
+                            "partner_id": portal_user.partner_id.id,
+                            "access_mode": "edit",
+                        }
+                    )
                 ],
             }
         )

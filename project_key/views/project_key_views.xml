@@ -18,10 +18,10 @@
                     Using '-' in project keys is not recommended.
                 </div>
             </field>
-            <field name="partner_id" position="before">
+            <xpath expr="//group/group[1]" position="inside">
                 <field name="key" required="1" />
                 <field name="show_key_warning" invisible="1" />
-            </field>
+            </xpath>
         </field>
     </record>
     <record id="view_project_extend_with_key" model="ir.ui.view">
@@ -83,14 +83,14 @@
     <record id="view_task_kanban_key" model="ir.ui.view">
         <field name="name">project.task.kanban.key</field>
         <field name="model">project.task</field>
-        <field name="inherit_id" ref="project.view_task_kanban" />
+        <field name="inherit_id" ref="project.view_task_card" />
         <field name="arch" type="xml">
-            <field name="color" position="after">
+            <templates position="before">
                 <field name="url" />
                 <field name="key" />
-            </field>
+            </templates>
             <xpath expr="//t[@t-name='card']//field[@name='name']" position="before">
-                <a t-att-href="record.url.raw_value">
+                <a t-att-href="record.url.raw_value" class="me-1">
                     <field name="key" />
                 </a>
             </xpath>

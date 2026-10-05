@@ -18,14 +18,22 @@ class TestController(HttpTestCommon):
         response = self.url_open("/tasks/" + self.task11.key)
         self.assertEqual(response.status_code, 200)
         self.assertIn("/odoo/", response.url)
-        self.assertIn(f"{self.task11._name}", response.url)
-        self.assertIn(f"{self.task11.id}", response.url)
+        self.assertIn(f"/tasks/{self.task11.id}", response.url)
 
     def test_03_project_browse_portal(self):
         self.authenticate(self.user_portal.login, self.user_portal.login)
         response = self.url_open("/projects/" + self.project_1.key)
         self.assertEqual(response.status_code, 200)
-        self.assertTrue(f"/my/projects/{self.project_1.id}", response.url)
+        self.assertTrue(response.url.endswith("/my"))
+        self.env["project.collaborator"].sudo().create(
+            {
+                "project_id": self.project_1.id,
+                "partner_id": self.portal_partner.id,
+            }
+        )
+        response = self.url_open("/projects/" + self.project_1.key)
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(f"/my/projects/{self.project_1.id}", response.url)
 
     def test_04_task_browse_portal(self):
         self.authenticate(self.user_portal.login, self.user_portal.login)
@@ -35,7 +43,7 @@ class TestController(HttpTestCommon):
         response = self.url_open("/tasks/" + self.task11.key)
         self.assertEqual(response.status_code, 200)
         self.assertTrue(response.url.endswith("/my"))
-        self.task11.message_partner_ids += self.portal_partner
+        self.task11.sudo().message_partner_ids += self.portal_partner
         response = self.url_open("/tasks/" + self.task11.key)
         self.assertEqual(response.status_code, 200)
         self.assertIn(f"/my/tasks/{self.task11.id}", response.url)
