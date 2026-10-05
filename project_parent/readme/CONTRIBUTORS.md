@@ -3,4 +3,5 @@
 - Thomas Fossoul \<<thomas.fossoul@haulogy.net>\>
 - `Heliconia Solutions Pvt. Ltd. <https://www.heliconia.io>`_
 - Henrik Norlin
+- Sudhir Arya\<<sudhir@erpharbor.com>\>
 
