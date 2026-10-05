@@ -1,0 +1,111 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_merge
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2024-09-16 12:06+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
+"Language-Team: none\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.6.2\n"
+
+#. module: project_merge
+#: model_terms:ir.ui.view,arch_db:project_merge.project_task_merge_view_form
+msgid ""
+"<span class=\"text-muted\">NB: This will archive the selected tasks (Except "
+"the destination task)</span>"
+msgstr ""
+"<span class=\"text-muted\">NB: questo archivierà i lavori selezionati ("
+"tranne il lavoro di destinazione)</span>"
+
+#. module: project_merge
+#: model:ir.model.fields,field_description:project_merge.field_project_task_merge__user_ids
+msgid "Assignees"
+msgstr "Assegnatari"
+
+#. module: project_merge
+#: model_terms:ir.ui.view,arch_db:project_merge.project_task_merge_view_form
+msgid "Cancel"
+msgstr "Annulla"
+
+#. module: project_merge
+#: model:ir.model.fields,field_description:project_merge.field_project_task_merge__create_new_task
+msgid "Create a new task"
+msgstr "Crea un nuovo lavoro"
+
+#. module: project_merge
+#: model:ir.model.fields,field_description:project_merge.field_project_task_merge__create_uid
+msgid "Created by"
+msgstr "Creato da"
+
+#. module: project_merge
+#: model:ir.model.fields,field_description:project_merge.field_project_task_merge__create_date
+msgid "Created on"
+msgstr "Creato il"
+
+#. module: project_merge
+#: model:ir.model.fields,field_description:project_merge.field_project_task_merge__dst_project_id
+msgid "Destination Project"
+msgstr "Progetto di destinazione"
+
+#. module: project_merge
+#: model:ir.model.fields,field_description:project_merge.field_project_task_merge__display_name
+msgid "Display Name"
+msgstr "Nome visualizzato"
+
+#. module: project_merge
+#: model:ir.model.fields,field_description:project_merge.field_project_task_merge__id
+msgid "ID"
+msgstr "ID"
+
+#. module: project_merge
+#: model:ir.model.fields,field_description:project_merge.field_project_task_merge____last_update
+msgid "Last Modified on"
+msgstr "Ultima modifica il"
+
+#. module: project_merge
+#: model:ir.model.fields,field_description:project_merge.field_project_task_merge__write_uid
+msgid "Last Updated by"
+msgstr "Ultimo aggiornamento di"
+
+#. module: project_merge
+#: model:ir.model.fields,field_description:project_merge.field_project_task_merge__write_date
+msgid "Last Updated on"
+msgstr "Ultimo aggiornamento il"
+
+#. module: project_merge
+#: model:ir.actions.act_window,name:project_merge.action_project_task_merge
+msgid "Merge Project Tasks"
+msgstr "Unisci lavori progetto"
+
+#. module: project_merge
+#: model_terms:ir.ui.view,arch_db:project_merge.project_task_merge_view_form
+msgid "Merge Tasks"
+msgstr "Unisci lavori"
+
+#. module: project_merge
+#: model:ir.model.fields,field_description:project_merge.field_project_task_merge__dst_task_id
+msgid "Merge into an existing task"
+msgstr "Unisci in un lavoro esistente"
+
+#. module: project_merge
+#: model:ir.model.fields,field_description:project_merge.field_project_task_merge__dst_task_name
+msgid "New task name"
+msgstr "Nome nuovo lavoro"
+
+#. module: project_merge
+#: model:ir.model,name:project_merge.model_project_task_merge
+msgid "Project Task Merge"
+msgstr "Unione lavoro progetto"
+
+#. module: project_merge
+#: model:ir.model.fields,field_description:project_merge.field_project_task_merge__task_ids
+msgid "Tasks to Merge"
+msgstr "Lavori da unite"
