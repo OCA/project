@@ -47,12 +47,12 @@ class Project(models.Model):
         for vals in vals_list:
             key = vals.get("key", False)
             if not key:
-                vals["key"] = self.generate_project_key(vals["name"])
+                vals["key"] = self.generate_project_key(vals.get("name", ""))
 
             # Tasks must be created after the project.
             task_vals = vals.pop("task_ids", [])
 
-            new_project = super().create(vals)
+            new_project = super().create([vals])
             new_projects |= new_project
 
             # The key sequences to create stories and tasks with keys, created with
