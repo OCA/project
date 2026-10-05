@@ -8,7 +8,7 @@ TASK_URL = "/odoo/%s/%s"
 
 class Task(models.Model):
     _inherit = "project.task"
-    _rec_names_search = ["key", "name"]
+    _rec_names_search = ("key", "name")
 
     key = fields.Char(size=20, index=True)
 
@@ -66,8 +66,8 @@ class Task(models.Model):
 
     @api.depends("key", "name")
     def _compute_display_name(self):
-        super()._compute_display_name()
+        res = super()._compute_display_name()
         for task in self:
             if task.key:
                 task.display_name = f"[{task.key}] {task.display_name}"
-        return
+        return res
