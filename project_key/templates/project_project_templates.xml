@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <template
+        id="portal_my_projects"
+        name="My Projects"
+        inherit_id="project.portal_my_projects"
+    >
+        <xpath expr="//tr[@t-foreach='projects']/td[1]" position="before">
+            <td>
+                <a t-attf-href="/my/projects/#{project.id}?{{ keep_query() }}"><span
+                        t-field="project.key"
+                    /></a>
+            </td>
+        </xpath>
+    </template>
+</odoo>
