@@ -3,7 +3,7 @@
 
 
 def uninstall_hook(env):
-    """Restore project.project_project_manager_rule"""
+    """Restore the original project and task manager rules."""
     # Removing the 'group_full_project_manager' group before renaming the original
     # 'Project: Administrator' group (project.group_project_manager) to 'Administrator'
     # in order to avoid getting a SQL constraint error:
@@ -11,15 +11,16 @@ def uninstall_hook(env):
     group_full_project_manager = env.ref(
         "project_administrator_restricted_visibility.group_full_project_manager"
     )
-    env.ref("project.project_project_manager_rule").write(
-        {"groups": [(3, group_full_project_manager.id)]}
-    )
+    group_full_project_manager.write({"rule_groups": [(5, 0, 0)]})
     group_full_project_manager.unlink()
     # Rename the original 'Project: Administrator' access group back to 'Administrator'
-    # and reassign the access rule for projects that it previously had.
+    # and reassign the access rules for projects and tasks that it previously had.
     env.ref("project.group_project_manager").write(
         {
             "name": "Administrator",
-            "rule_groups": [(4, env.ref("project.project_project_manager_rule").id)],
+            "rule_groups": [
+                (4, env.ref("project.project_project_manager_rule").id),
+                (4, env.ref("project.project_manager_all_project_tasks_rule").id),
+            ],
         }
     )
