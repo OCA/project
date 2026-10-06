@@ -12,6 +12,11 @@ class TestUninstallHook(TransactionCase):
             "project_administrator_restricted_visibility.group_full_project_manager"
         )
         manager_rule = self.env.ref("project.project_project_manager_rule")
+        task_manager_rule = self.env.ref(
+            "project.project_manager_all_project_tasks_rule"
+        )
+        self.assertNotIn(task_manager_rule, restricted_group.rule_groups)
+        self.assertIn(task_manager_rule, full_group.rule_groups)
         # Checks Restricted Administrator Group has not project manager rule
         self.assertFalse(
             any(set(restricted_group.rule_groups.ids) & set(manager_rule.ids))
@@ -22,6 +27,7 @@ class TestUninstallHook(TransactionCase):
         uninstall_hook(self.env)
 
         # Checks if the rules have been reset
+        self.assertIn(task_manager_rule, restricted_group.rule_groups)
         self.assertTrue(
             any(set(restricted_group.rule_groups.ids) & set(manager_rule.ids))
         )
