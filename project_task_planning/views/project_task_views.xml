@@ -1,0 +1,139 @@
+<odoo>
+    <!-- Server Action for Generate Allocations -->
+    <record id="action_server_generate_allocation" model="ir.actions.server">
+        <field name="name">Generate Allocations</field>
+        <field name="model_id" ref="project.model_project_task" />
+        <field name="binding_model_id" ref="project.model_project_task" />
+        <field name="binding_view_types">form</field>
+        <field name="state">code</field>
+        <field name="code">
+                action = records.action_generate_allocation()
+            </field>
+    </record>
+
+    <!-- Server Action for Generate Planning -->
+    <record id="action_server_generate_planning" model="ir.actions.server">
+        <field name="name">Generate Planning</field>
+        <field name="model_id" ref="project.model_project_task" />
+        <field name="binding_model_id" ref="project.model_project_task" />
+        <field name="binding_view_types">form</field>
+        <field name="state">code</field>
+        <field name="code">
+                action = records.action_generate_planning()
+            </field>
+    </record>
+
+    <!-- Inherit Form View to Modify it -->
+    <record id="project_task_view_form_inherited" model="ir.ui.view">
+        <field name="name">project.task.form.inherited</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2" />
+        <field name="arch" type="xml">
+            <!-- Add Smart Button inside button_box -->
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button
+                    name="action_view_planning"
+                    type="object"
+                    class="oe_stat_button"
+                    icon="fa-calendar"
+                >
+                    <div class="o_field_widget o_stat_info">
+                        <span
+                            class="o_stat_text"
+                            style="font-weight: bold;"
+                        >Planning</span>
+                        <span
+                            class="o_stat_value"
+                            style="font-size: 11px; white-space: nowrap;"
+                        >
+                                <field
+                            name="planning_planned_display"
+                            readonly="1"
+                        /> / <field name="planning_total_display" readonly="1" />
+                                (<field name="planning_pct_display" readonly="1" />)
+                            </span>
+                    </div>
+                </button>
+            </xpath>
+
+            <!-- Modify Notebook inside task planning tab -->
+            <xpath expr="//notebook" position="inside">
+                <page string="Planning" name="task_planning">
+                    <group>
+                        <group string="Planning" name="planning_allocation">
+                            <field
+                                name="percentage_of_project_hours"
+                                widget="float_time"
+                            />
+                            <field
+                                name="project_percentage"
+                                widget="percentage"
+                                readonly="1"
+                                force_save="1"
+                            />
+                            <field name="allocated_hours" widget="float_time" />
+                            <field name="pending_to_plan_hours" widget="float_time" />
+                        </group>
+                    </group>
+                    <group string="Allocations" name="technician_allocations">
+                        <field
+                            name="planned_date_start"
+                            widget="daterange"
+                            options="{'end_date_field': 'planned_date_end'}"
+                            string="Planned Dates"
+                        />
+                        <field name="planned_date_end" invisible="1" />
+                        <field
+                            name="allocation_ids"
+                            nolabel="1"
+                            colspan="2"
+                            context="{'default_task_id': id, 'default_date_start': planned_date_start, 'default_date_end': planned_date_end}"
+                        />
+                    </group>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Inherit List View to Modify it -->
+    <record id="project_task_view_list_inherited" model="ir.ui.view">
+        <field name="name">project.task.list.inherited</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.project_task_view_tree_main_base" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_ids']" position="after">
+                <field
+                    name="percentage_of_project_hours"
+                    widget="float_time"
+                    optional="hide"
+                />
+                <field name="project_percentage" widget="percentage" optional="hide" />
+                <field name="allocated_hours" widget="float_time" optional="hide" />
+                <field
+                    name="pending_to_plan_hours"
+                    widget="float_time"
+                    optional="hide"
+                />
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Inherit Kanban View to add Planning button -->
+    <record id="view_task_kanban_inherited" model="ir.ui.view">
+        <field name="name">project.task.kanban.inherited</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_kanban" />
+        <field name="arch" type="xml">
+            <xpath expr="//footer//field[@name='activity_ids']" position="before">
+                <a
+                    name="action_view_planning"
+                    type="object"
+                    class="text-muted me-2"
+                    title="Planning"
+                >
+                    <i class="fa fa-calendar text-primary" />
+                </a>
+            </xpath>
+        </field>
+    </record>
+</odoo>
