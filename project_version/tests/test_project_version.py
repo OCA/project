@@ -1,10 +1,11 @@
-from odoo.addons.base.tests.common import BaseCommon
+from odoo.tests.common import TransactionCase
 
 
-class TestProjectVersion(BaseCommon):
+class TestProjectVersion(TransactionCase):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
+        cls.env = cls.env(context=dict(cls.env.context, tracking_disable=True))
         cls.Project = cls.env["project.project"]
         cls.Task = cls.env["project.task"]
         cls.Version = cls.env["project.version"]

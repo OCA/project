@@ -6,6 +6,4 @@ class ProjectVersion(models.Model):
     _description = "Project Version"
 
     name = fields.Char(required=True)
-    project_id = fields.Many2one(
-        string="Project", comodel_name="project.project", required=True
-    )
+    project_id = fields.Many2one(comodel_name="project.project", required=True)

@@ -2,7 +2,7 @@
 # License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl).
 {
     "name": "Project Version",
-    "version": "19.0.1.0.0",
+    "version": "20.0.1.0.0",
     "category": "Project",
     "website": "https://github.com/OCA/project",
     "author": "Lansana Barry Sow, APSL-Nagarro, Odoo Community Association (OCA)",
@@ -14,7 +14,7 @@
         "project",
     ],
     "data": [
-        "security/ir.model.access.csv",
+        "security/ir.access.csv",
         "views/project_project_views.xml",
         "views/project_task_views.xml",
         "views/project_version_views.xml",
