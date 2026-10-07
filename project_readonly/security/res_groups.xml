@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="group_project_readonly" model="res.groups">
+        <field name="name">Readonly</field>
+        <field name="sequence">5</field>
+        <field name="privilege_id" ref="project.res_groups_privilege_project" />
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]" />
+        <field name="comment">the user has a read-only access to project
+            documents (projects, tasks and their details).</field>
+    </record>
+</odoo>
