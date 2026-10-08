@@ -1,0 +1,49 @@
+{
+  "object_kind": "push",
+  "event_name": "push",
+  "before": "1111111111111111111111111111111111111111",
+  "after": "8765432109fedcba8765432109fedcba87654321",
+  "ref": "refs/heads/main",
+  "checkout_sha": "8765432109fedcba8765432109fedcba87654321",
+  "user_username": "demo-user",
+  "project_id": 1001,
+  "project": {
+    "id": 1001,
+    "name": "demo-repo",
+    "web_url": "https://gitlab.example.com/acme/demo-repo",
+    "git_http_url": "https://gitlab.example.com/acme/demo-repo.git",
+    "path_with_namespace": "acme/demo-repo",
+    "default_branch": "main"
+  },
+  "commits": [
+    {
+      "id": "1234567890abcdef1234567890abcdef12345678",
+      "message": "Generic commit message one\n\nLonger description\n",
+      "title": "Generic commit message one",
+      "timestamp": "2026-05-18T00:17:37+02:00",
+      "url": "https://gitlab.example.com/acme/demo-repo/-/commit/1234567890abcdef1234567890abcdef12345678",
+      "author": {
+        "name": "Demo User",
+        "email": "demo@example.com"
+      }
+    },
+    {
+      "id": "8765432109fedcba8765432109fedcba87654321",
+      "message": "Generic commit message two\n\nLonger description\n",
+      "title": "Generic commit message two",
+      "timestamp": "2026-05-18T00:19:02+02:00",
+      "url": "https://gitlab.example.com/acme/demo-repo/-/commit/8765432109fedcba8765432109fedcba87654321",
+      "author": {
+        "name": "Demo User",
+        "email": "demo@example.com"
+      }
+    }
+  ],
+  "total_commits_count": 2,
+  "repository": {
+    "name": "demo-repo",
+    "url": "git@gitlab.example.com:acme/demo-repo.git",
+    "homepage": "https://gitlab.example.com/acme/demo-repo",
+    "git_http_url": "https://gitlab.example.com/acme/demo-repo.git"
+  }
+}
