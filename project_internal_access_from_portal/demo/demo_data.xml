@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+  <record id="demo_portal_internal_project" model="project.project">
+    <field name="name">Demo Internal/Portal Project</field>
+    <field name="privacy_visibility">portal_internal</field>
+    <field name="message_partner_ids" eval="[(4, ref('base.partner_demo_portal'))]" />
+  </record>
+
+  <record id="demo_portal_internal_task1" model="project.task">
+    <field name="name">Demo Task 1</field>
+    <field name="project_id" ref="demo_portal_internal_project" />
+    <field name="message_partner_ids" eval="[(4, ref('base.partner_demo_portal'))]" />
+  </record>
+
+  <record id="demo_portal_internal_task2" model="project.task">
+    <field name="name">Demo Task 2</field>
+    <field name="project_id" ref="demo_portal_internal_project" />
+    <field name="message_partner_ids" eval="[(4, ref('base.partner_demo_portal'))]" />
+  </record>
+</odoo>

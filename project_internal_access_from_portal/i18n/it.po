@@ -1,0 +1,90 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_internal_access_from_portal
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2025-06-25 09:25+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
+"Language-Team: none\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.10.4\n"
+
+#. module: project_internal_access_from_portal
+#: model:project.project,name:project_internal_access_from_portal.demo_portal_internal_project
+msgid "Demo Internal/Portal Project"
+msgstr "Progetto demo interno/portale"
+
+#. module: project_internal_access_from_portal
+#: model:ir.model.fields.selection,name:project_internal_access_from_portal.selection__project_project__privacy_visibility__portal_internal
+msgid "Invited internal/portal users"
+msgstr "Utenti interni/portale invitati"
+
+#. module: project_internal_access_from_portal
+#: model:ir.model.fields,help:project_internal_access_from_portal.field_project_project__privacy_visibility
+msgid ""
+"People to whom this project and its tasks will be visible.\n"
+"\n"
+"- Invited internal users: when following a project, internal users will get access to all of its tasks without distinction. Otherwise, they will only get access to the specific tasks they are following.\n"
+" A user with the project > administrator access right level can still access this project and its tasks, even if they are not explicitly part of the followers.\n"
+"\n"
+"- All internal users: all internal users can access the project and all of its tasks without distinction.\n"
+"\n"
+"- Invited portal users and all internal users: all internal users can access the project and all of its tasks without distinction.\n"
+"When following a project, portal users will get access to all of its tasks without distinction. Otherwise, they will only get access to the specific tasks they are following.\n"
+"\n"
+"When a project is shared in read-only, the portal user is redirected to their portal. They can view the tasks, but not edit them.\n"
+"When a project is shared in edit, the portal user is redirected to the kanban and list views of the tasks. They can modify a selected number of fields on the tasks.\n"
+"\n"
+"In any case, an internal user with no project access rights can still access a task, provided that they are given the corresponding URL (and that they are part of the followers if the project is private)."
+msgstr ""
+"Persone a cui questo progetto e le sue attività saranno visibili.\n"
+"\n"
+"- Utenti interni invitati: quando seguono un progetto, gli utenti interni "
+"avranno accesso a tutte le sue attività indistintamente. In caso contrario, "
+"avranno accesso solo alle attività specifiche che stanno seguendo.\n"
+"Un utente con il livello di accesso \"progetto > amministratore\" può "
+"comunque accedere a questo progetto e alle sue attività, anche se non fa "
+"esplicitamente parte dei follower.\n"
+"\n"
+"- Tutti gli utenti interni: tutti gli utenti interni possono accedere al "
+"progetto e a tutte le sue attività indistintamente.\n"
+"\n"
+"- Utenti del portale invitati e tutti gli utenti interni: tutti gli utenti "
+"interni possono accedere al progetto e a tutte le sue attività "
+"indistintamente.\n"
+"Quando seguono un progetto, gli utenti del portale avranno accesso a tutte "
+"le sue attività indistintamente. In caso contrario, avranno accesso solo "
+"alle attività specifiche che stanno seguendo.\n"
+"\n"
+"Quando un progetto è condiviso in sola lettura, l'utente del portale viene "
+"reindirizzato al proprio portale. Può visualizzare le attività, ma non "
+"modificarle.\n"
+"Quando un progetto è condiviso in modalità di modifica, l'utente del portale "
+"viene reindirizzato alle viste Kanban e Elenco delle attività. Possono "
+"modificare un numero selezionato di campi nelle attività.\n"
+"\n"
+"In ogni caso, un utente interno senza diritti di accesso al progetto può "
+"comunque accedere a un'attività, a condizione che gli venga fornito l'URL "
+"corrispondente (e che faccia parte dei follower se il progetto è privato)."
+
+#. module: project_internal_access_from_portal
+#: model:ir.model,name:project_internal_access_from_portal.model_project_project
+msgid "Project"
+msgstr "Progetto"
+
+#. module: project_internal_access_from_portal
+#: model:project.project,label_tasks:project_internal_access_from_portal.demo_portal_internal_project
+msgid "Tasks"
+msgstr "Lavori"
+
+#. module: project_internal_access_from_portal
+#: model:ir.model.fields,field_description:project_internal_access_from_portal.field_project_project__privacy_visibility
+msgid "Visibility"
+msgstr "Visibilità"
