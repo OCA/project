@@ -6,13 +6,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 17.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-10-08 14:46+0000\n"
+"Last-Translator: difbit <timo.kekalainen@hotmail.com>\n"
 "Language-Team: none\n"
 "Language: fi\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: project_key
 #: model_terms:ir.ui.view,arch_db:project_key.view_task_form2_extend_with_key
@@ -23,22 +25,22 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_key.field_project_project__key
 #: model:ir.model.fields,field_description:project_key.field_project_task__key
 msgid "Key"
-msgstr ""
+msgstr "Numero"
 
 #. module: project_key
 #: model:ir.model.fields,field_description:project_key.field_project_project__task_key_sequence_id
 msgid "Key Sequence"
-msgstr ""
+msgstr "Numerosarja"
 
 #. module: project_key
 #: model:ir.model,name:project_key.model_project_project
 msgid "Project"
-msgstr ""
+msgstr "Projekti"
 
 #. module: project_key
 #: model:ir.model.constraint,message:project_key.constraint_project_project_project_key_unique
 msgid "Project key must be unique"
-msgstr ""
+msgstr "Projektinumeron on oltava yksilöllinen"
 
 #. module: project_key
 #. odoo-python
@@ -50,17 +52,17 @@ msgstr ""
 #. module: project_key
 #: model:ir.model.fields,field_description:project_key.field_project_project__show_key_warning
 msgid "Show Key Warning"
-msgstr ""
+msgstr "Näytä varoitus numerolle"
 
 #. module: project_key
 #: model:ir.model,name:project_key.model_project_task
 msgid "Task"
-msgstr ""
+msgstr "Tehtävä"
 
 #. module: project_key
 #: model:ir.model.constraint,message:project_key.constraint_project_task_task_key_unique
 msgid "Task key must be unique!"
-msgstr ""
+msgstr "Tehtävänumeron on oltava yksilöllinen!"
 
 #. module: project_key
 #: model:ir.model.fields,field_description:project_key.field_project_task__url
