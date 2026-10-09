@@ -3,12 +3,10 @@
 
 {
     "name": "Project Kanban Form Direct Access",
-    "summary": """
-        Project form view can now be accessed directly by clicking the project name.
-    """,
+    "summary": "Project form view can now be accessed directly by clicking the project",
     "author": "Solvos, Odoo Community Association (OCA)",
     "license": "AGPL-3",
-    "version": "19.0.1.0.0",
+    "version": "20.0.1.0.0",
     "category": "Project",
     "website": "https://github.com/OCA/project",
     "depends": ["project"],
