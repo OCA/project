@@ -3,7 +3,7 @@
 
 {
     "name": "Project HR Expense Analytic",
-    "version": "19.0.1.0.0",
+    "version": "20.0.1.0.0",
     "author": "Camptocamp, Odoo Community Association (OCA)",
     "license": "AGPL-3",
     "category": "Accounting",
