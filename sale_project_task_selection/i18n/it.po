@@ -1,0 +1,68 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sale_project_task_selection
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2025-12-01 11:42+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
+"Language-Team: none\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.10.4\n"
+
+#. module: sale_project_task_selection
+#: model:ir.model.fields,field_description:sale_project_task_selection.field_sale_order__has_project_service_tracking_lines
+msgid "Has Project Service Tracking Lines"
+msgstr "Ha righe tracciamento servizio progetto"
+
+#. module: sale_project_task_selection
+#: model:ir.model.fields,field_description:sale_project_task_selection.field_sale_order_line__is_project_service_tracking_line
+msgid "Is Project Service Tracking Line"
+msgstr "È riga tracciamento servizio progetto"
+
+#. module: sale_project_task_selection
+#: model_terms:ir.ui.view,arch_db:sale_project_task_selection.sale_order_form
+msgid "Project"
+msgstr "Progetto"
+
+#. module: sale_project_task_selection
+#: model:ir.model,name:sale_project_task_selection.model_sale_order
+msgid "Sales Order"
+msgstr "Ordine di vendita"
+
+#. module: sale_project_task_selection
+#: model:ir.model,name:sale_project_task_selection.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Riga ordine di vendita"
+
+#. module: sale_project_task_selection
+#: model_terms:ir.ui.view,arch_db:sale_project_task_selection.sale_order_form
+msgid "Task"
+msgstr "Lavoro"
+
+#. module: sale_project_task_selection
+#. odoo-python
+#: code:addons/sale_project_task_selection/models/sale_order_line.py:0
+msgid ""
+"The task %(task)s is already linked to another line (%(order)s: "
+"%(product)s)."
+msgstr ""
+"Il lavoro %(task)s è già collegato ad un'altra riga (%(order)s: %(product)s)."
+
+#. module: sale_project_task_selection
+#. odoo-python
+#: code:addons/sale_project_task_selection/models/sale_order_line.py:0
+msgid "The task %(task)s is already linked to another order (%(order)s)."
+msgstr "Il lavoro %(task)s è già collegato ad un altro ordine (%(order)s)."
+
+#. module: sale_project_task_selection
+#. odoo-python
+#: code:addons/sale_project_task_selection/models/sale_order_line.py:0
+msgid "The task %(task)s is already linked to another project (%(project)s)."
+msgstr "Il lavoro %(task)s è già collegato ad un altro progetto (%(project)s)."
