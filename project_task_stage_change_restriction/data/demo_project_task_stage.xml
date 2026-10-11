@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Stages -->
+    <record id="demo_stage_free" model="project.task.type">
+        <field name="name">Free</field>
+        <field name="sequence">5</field>
+    </record>
+    <record id="demo_stage_assigned_only" model="project.task.type">
+        <field name="name">Assigned Only</field>
+        <field name="sequence">10</field>
+        <field name="allow_assigned_only">1</field>
+    </record>
+    <record id="demo_stage_pm_only" model="project.task.type">
+        <field name="name">Project Manager Only</field>
+        <field name="sequence">15</field>
+        <field name="allow_project_manager">1</field>
+    </record>
+    <record id="demo_stage_group_only" model="project.task.type">
+        <field name="name">Project Users Only</field>
+        <field name="sequence">20</field>
+        <field
+            name="allow_group_ids"
+            eval="[(6, 0, [ref('project.group_project_user')])]"
+        />
+    </record>
+    <!-- Project -->
+    <record id="demo_project_restricted" model="project.project">
+        <field name="name">Restricted Demo Project</field>
+        <field name="user_id" ref="base.user_admin" />
+        <field
+            name="type_ids"
+            eval="[(6, 0, [
+            ref('project_task_stage_change_restriction.demo_stage_free'),
+            ref('project_task_stage_change_restriction.demo_stage_assigned_only'),
+            ref('project_task_stage_change_restriction.demo_stage_pm_only'),
+            ref('project_task_stage_change_restriction.demo_stage_group_only')
+        ])]"
+        />
+    </record>
+    <!-- Tasks -->
+    <record id="demo_task_dev" model="project.task">
+        <field name="name">Dev Task</field>
+        <field name="project_id" ref="demo_project_restricted" />
+        <field name="user_ids" eval="[(6, 0, [ref('base.user_demo')])]" />
+        <field name="stage_id" ref="demo_stage_free" />
+    </record>
+    <record id="demo_task_pm" model="project.task">
+        <field name="name">PM Task</field>
+        <field name="project_id" ref="demo_project_restricted" />
+        <field name="user_ids" eval="[(6, 0, [ref('base.user_admin')])]" />
+        <field name="stage_id" ref="demo_stage_free" />
+    </record>
+</odoo>
