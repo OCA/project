@@ -31,6 +31,26 @@ class TestProjectTaskStageState(BaseCommon):
         self.task.write({"stage_id": self.stage_in_progress.id})
         self.assertEqual(self.task.state, "01_in_progress")
 
+    def test_closing_task_state_is_applied_to_existing_tasks(self):
+        self.stage_done.write({"task_state": False})
+        self.task.write({"stage_id": self.stage_done.id})
+        self.assertEqual(self.task.state, "01_in_progress")
+        self.stage_done.write({"task_state": "1_done"})
+        self.assertEqual(self.task.state, "1_done")
+
+    def test_open_task_state_is_not_applied_to_existing_tasks(self):
+        self.task.write({"stage_id": self.stage_in_progress.id})
+        self.task.write({"state": "03_approved"})
+        self.stage_in_progress.write({"task_state": False})
+        self.stage_in_progress.write({"task_state": "01_in_progress"})
+        self.assertEqual(self.task.state, "03_approved")
+
+    def test_closing_task_state_is_not_applied_to_closed_tasks(self):
+        self.stage_done.write({"task_state": False})
+        self.task.write({"stage_id": self.stage_done.id, "state": "1_canceled"})
+        self.stage_done.write({"task_state": "1_done"})
+        self.assertEqual(self.task.state, "1_canceled")
+
     def test_task_states_dynamic_selection(self):
         expected_states = dict(
             self.env["project.task"].fields_get(allfields=["state"])["state"][
