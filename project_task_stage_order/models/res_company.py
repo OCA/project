@@ -1,3 +1,5 @@
+# Copyright 2026 ForgeFlow S.L.
+# License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 from odoo import fields, models
 
 
@@ -6,7 +8,7 @@ class ResCompany(models.Model):
 
     task_stage_order_enabled = fields.Boolean(
         string="Per-Project Task Stage Order",
-        help="Si está activado, esta empresa puede dar a cada uno de sus "
-        "proyectos un orden de etapas independiente. Si está desactivado, "
-        "todos los proyectos comparten el mismo orden de etapas.",
+        help="If activated, this company can give each of its projects "
+        "an independent task stage order. If deactivated, all projects "
+        "share the same task stage order.",
     )

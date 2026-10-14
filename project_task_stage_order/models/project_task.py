@@ -1,3 +1,5 @@
+# Copyright 2026 ForgeFlow S.L.
+# License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 from odoo import api, models
 
 
@@ -7,15 +9,16 @@ class ProjectTask(models.Model):
     @api.model
     def _read_group_stage_ids(self, stages, domain):
         stages = super()._read_group_stage_ids(stages, domain)
-        enabled = self.env.company.task_stage_order_enabled
-        if not enabled:
+        if not self.env.company.task_stage_order_enabled:
             return stages
         project_id = self.env.context.get("default_project_id")
         if project_id:
-            orders = self.env["project.task.type.sequence"].search([
-                ("project_id", "=", project_id),
-                ("stage_id", "in", stages.ids),
-            ])
+            orders = self.env["project.task.type.sequence"].search(
+                [
+                    ("project_id", "=", project_id),
+                    ("stage_id", "in", stages.ids),
+                ]
+            )
             order_map = {o.stage_id.id: o.sequence for o in orders}
             stages = stages.sorted(key=lambda s: order_map.get(s.id, 9999))
         return stages
