@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 - Jarsa
+     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl-3.0). -->
+<odoo>
+    <record id="view_task_form2" model="ir.ui.view">
+        <field name="name">project.task.form.qa.checklist</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2" />
+        <field name="arch" type="xml">
+            <page name="description_page" position="after">
+                <page
+                    name="qa_checklist_page"
+                    string="Internal QA"
+                    invisible="not qa_checklist_line_ids and not is_qa_stage"
+                >
+                    <field name="qa_checklist_state" invisible="1" />
+                    <field name="is_qa_stage" invisible="1" />
+                    <button
+                        name="action_generate_qa_checklist"
+                        type="object"
+                        string="Generate/Update Checklist"
+                        class="btn-secondary mb-2"
+                        icon="fa-refresh"
+                    />
+                    <div
+                        class="alert alert-warning"
+                        role="alert"
+                        invisible="qa_checklist_state != 'in_progress'"
+                    >
+                        The QA checklist is not complete yet.
+                    </div>
+                    <div
+                        class="alert alert-danger"
+                        role="alert"
+                        invisible="qa_checklist_state != 'complete_with_failures'"
+                    >
+                        The QA checklist is complete but has failed criteria.
+                    </div>
+                    <field name="qa_checklist_line_ids">
+                        <tree
+                            editable="bottom"
+                            create="0"
+                            delete="0"
+                            decoration-muted="state == 'pending'"
+                            decoration-success="state == 'passed'"
+                            decoration-danger="state == 'failed'"
+                            decoration-info="state == 'not_applicable'"
+                        >
+                            <field name="sequence" widget="handle" />
+                            <field name="name" readonly="1" />
+                            <field name="state" />
+                            <field name="notes" />
+                            <field name="reviewed_by" optional="show" />
+                            <field name="reviewed_date" optional="hide" />
+                        </tree>
+                    </field>
+                    <group>
+                        <group string="QA Evidence">
+                            <field name="qa_evidence_url" widget="url" />
+                        </group>
+                        <group string="Attachments">
+                            <field
+                                name="qa_evidence_ids"
+                                widget="many2many_binary"
+                                nolabel="1"
+                            />
+                        </group>
+                    </group>
+                </page>
+            </page>
+        </field>
+    </record>
+
+    <record id="view_task_kanban" model="ir.ui.view">
+        <field name="name">project.task.kanban.qa.checklist</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_kanban" />
+        <field name="arch" type="xml">
+            <field name="tag_ids" position="before">
+                <field name="qa_checklist_progress" />
+                <span
+                    class="badge rounded-pill text-bg-secondary"
+                    invisible="not qa_checklist_progress"
+                    title="QA checklist progress"
+                >
+                    QA <field name="qa_checklist_progress" />
+                </span>
+            </field>
+        </field>
+    </record>
+</odoo>
