@@ -13,8 +13,14 @@ class ProjectTask(models.Model):
             return stages
         project_id = self.env.context.get("default_project_id")
         if project_id:
-            stages = self.env["project.task.type.sequence"].search([
-                ("project_id", "=", project_id),
-                ("stage_id", "in", stages.ids),
-            ]).mapped("stage_id")
+            stages = (
+                self.env["project.task.type.sequence"]
+                .search(
+                    [
+                        ("project_id", "=", project_id),
+                        ("stage_id", "in", stages.ids),
+                    ]
+                )
+                .mapped("stage_id")
+            )
         return stages
