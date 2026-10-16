@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_project_stakeholder_role_list" model="ir.ui.view">
+        <field name="name">project.stakeholder.role.list</field>
+        <field name="model">project.stakeholder.role</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+            </list>
+        </field>
+    </record>
+
+    <record id="view_project_stakeholder_role_form" model="ir.ui.view">
+        <field name="name">project.stakeholder.role.form</field>
+        <field name="model">project.stakeholder.role</field>
+        <field name="arch" type="xml">
+            <form string="Project Stakeholder Roles">
+                <sheet>
+                    <group col="4">
+                        <field name="name" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_project_stakeholder_role" model="ir.actions.act_window">
+        <field name="name">Project Stakeholder Roles</field>
+        <field name="res_model">project.stakeholder.role</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create a Stakeholder Role
+            </p>
+            <p>
+                Manage Project Stakeholder Roles.
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+        id="menu_project_stakeholder_role"
+        action="action_project_stakeholder_role"
+        name="Stakeholder Roles"
+        parent="project.menu_project_config"
+        groups="project.group_project_manager"
+        sequence="2"
+    />
+</odoo>
