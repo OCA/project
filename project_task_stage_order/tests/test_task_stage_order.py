@@ -65,3 +65,64 @@ class TestTaskStageOrder(TestTaskStageOrderCommon):
         row = self._sequence_for(project_only, stage_only)
         row.unlink()
         self.assertFalse(stage_only.exists())
+
+    def test_stage_unlink_redirects_when_multiple_projects(self):
+        self.stage_new.with_context(default_project_id=self.project_a.id).unlink()
+        self.assertTrue(self.stage_new.exists())
+        self.assertNotIn(self.project_a, self.stage_new.project_ids)
+        self.assertIn(self.project_b, self.stage_new.project_ids)
+
+    def test_stage_unlink_deletes_when_only_project(self):
+        project_only = self.Project.create({"name": "Test Project Only Delete"})
+        stage_only = self.Stage.create(
+            {
+                "name": "Test Solo Stage",
+                "project_ids": [(6, 0, [project_only.id])],
+            }
+        )
+        stage_only.with_context(default_project_id=project_only.id).unlink()
+        self.assertFalse(stage_only.exists())
+
+    def test_stage_unlink_archives_when_tasks_exist(self):
+        project_only = self.Project.create({"name": "Test Project With Task"})
+        stage_only = self.Stage.create(
+            {
+                "name": "Test Stage With Task",
+                "project_ids": [(6, 0, [project_only.id])],
+            }
+        )
+        self.Task.create(
+            {
+                "name": "Test Task",
+                "project_id": project_only.id,
+                "stage_id": stage_only.id,
+            }
+        )
+        stage_only.with_context(default_project_id=project_only.id).unlink()
+        self.assertTrue(stage_only.exists())
+        self.assertFalse(stage_only.active)
+
+    def test_removing_project_from_stage_cleans_up_sequence_row(self):
+        self.stage_new.write({"project_ids": [(3, self.project_b.id)]})
+        row_b = self._sequence_for(self.project_b, self.stage_new)
+        self.assertFalse(row_b)
+        self.assertNotIn(self.project_b, self.stage_new.project_ids)
+
+    def test_create_sequence_row_directly_links_project_to_stage(self):
+        project_d = self.Project.create({"name": "Test Project D"})
+        self.Sequence.create(
+            {
+                "project_id": project_d.id,
+                "stage_id": self.stage_new.id,
+                "sequence": 5,
+            }
+        )
+        self.assertIn(project_d, self.stage_new.project_ids)
+
+    def test_kanban_order_reflects_project_sequence(self):
+        self._sequence_for(self.project_a, self.stage_new).sequence = 100
+        self._sequence_for(self.project_a, self.stage_done).sequence = 1
+        ordered = self.Task.with_context(
+            default_project_id=self.project_a.id
+        )._read_group_stage_ids(self.stage_new | self.stage_done, [])
+        self.assertEqual(list(ordered), [self.stage_done, self.stage_new])
