@@ -3,6 +3,6 @@
     <record id="project_task_type_sequence_comp_rule" model="ir.rule">
         <field name="name">Project Task Stage Order: single company</field>
         <field name="model_id" ref="model_project_task_type_sequence" />
-        <field name="domain_force">[('company_id', 'in', [company_id, False])]</field>
+        <field name="domain_force">[('company_id', 'in', company_ids + [False])]</field>
     </record>
 </odoo>

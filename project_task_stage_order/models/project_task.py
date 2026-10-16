@@ -13,12 +13,8 @@ class ProjectTask(models.Model):
             return stages
         project_id = self.env.context.get("default_project_id")
         if project_id:
-            orders = self.env["project.task.type.sequence"].search(
-                [
-                    ("project_id", "=", project_id),
-                    ("stage_id", "in", stages.ids),
-                ]
-            )
-            order_map = {o.stage_id.id: o.sequence for o in orders}
-            stages = stages.sorted(key=lambda s: order_map.get(s.id, 9999))
+            stages = self.env["project.task.type.sequence"].search([
+                ("project_id", "=", project_id),
+                ("stage_id", "in", stages.ids),
+            ]).mapped("stage_id")
         return stages

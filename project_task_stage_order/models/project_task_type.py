@@ -35,7 +35,7 @@ class ProjectTaskType(models.Model):
                 lambda row, linked=linked_project_ids: row.project_id.id not in linked
             )
             if rows_no_longer_linked:
-                rows_no_longer_linked.with_context(skip_task_check=True).unlink()
+                rows_no_longer_linked.unlink()
 
     def _push_sequence_to_projects(self, new_sequence):
         Sequence = self.env["project.task.type.sequence"]
@@ -75,42 +75,40 @@ class ProjectTaskType(models.Model):
     @api.model_create_multi
     def create(self, values_list):
         enabled = self._is_order_feature_enabled()
-        project_id = self.env.context.get("default_project_id")
-        stages = self.browse()
 
-        for values in values_list:
-            existing_stage = self.browse()
-            if values.get("name") and not values.get("user_id"):
+        stages = super().create(values_list)
+
+        final_stages = self.env["project.task.type"]
+        for stage in stages:
+            existing_stage = self.env["project.task.type"]
+            if stage.name and not stage.user_id:
                 existing_stage = self.search(
                     [
-                        ("name", "=", values["name"]),
+                        ("name", "=", stage.name),
                         ("user_id", "=", False),
+                        ("id", "!=", stage.id),
                     ],
                     limit=1,
                 )
-
             if existing_stage:
-                if project_id and project_id not in existing_stage.project_ids.ids:
-                    existing_stage.project_ids = [(4, project_id)]
-                stages |= existing_stage
+                new_projects = stage.project_ids - existing_stage.project_ids
+                if new_projects:
+                    existing_stage.project_ids |= new_projects
+                stage.unlink()
+                final_stages |= existing_stage
             else:
-                if enabled and "sequence" not in values:
-                    last = self.search(
-                        [("user_id", "=", False)], order="sequence desc", limit=1
-                    )
-                    values["sequence"] = last.sequence + 1 if last else 1
-                stages |= super().create([values])
+                final_stages |= stage
 
         if enabled:
-            stages._sync_task_stage_order()
-        return stages
+            final_stages._sync_task_stage_order()
+        return final_stages
 
     def unlink(self):
         project_id = self.env.context.get("default_project_id")
         if not project_id or not self._is_order_feature_enabled():
             return super().unlink()
 
-        stages_to_fully_delete = self.browse()
+        stages_to_fully_delete = self.env["project.task.type"]
         for stage in self:
             if project_id in stage.project_ids.ids and len(stage.project_ids) > 1:
                 stage.project_ids = [(3, project_id)]

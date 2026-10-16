@@ -28,30 +28,29 @@ class ProjectTaskTypeSequence(models.Model):
         return rows
 
     def unlink(self):
-        if not self.env.context.get("skip_task_check"):
-            project_ids = self.mapped("project_id").ids
-            stage_ids = self.mapped("stage_id").ids
-            task_counts = self.env["project.task"]._read_group(
-                [("project_id", "in", project_ids), ("stage_id", "in", stage_ids)],
-                ["project_id", "stage_id"],
-                ["__count"],
-            )
-            counts_by_pair = {
-                (project.id, stage.id): count for project, stage, count in task_counts
-            }
-            for row in self:
-                count = counts_by_pair.get((row.project_id.id, row.stage_id.id), 0)
-                if count:
-                    raise UserError(
-                        _(
-                            'You cannot remove stage "%(stage)s" from project '
-                            '"%(project)s" because it still has %(count)s task(s). '
-                            "Please move or delete those tasks first.",
-                            stage=row.stage_id.name,
-                            project=row.project_id.name,
-                            count=count,
-                        )
+        project_ids = self.mapped("project_id").ids
+        stage_ids = self.mapped("stage_id").ids
+        task_counts = self.env["project.task"]._read_group(
+            [("project_id", "in", project_ids), ("stage_id", "in", stage_ids)],
+            ["project_id", "stage_id"],
+            ["__count"],
+        )
+        counts_by_pair = {
+            (project.id, stage.id): count for project, stage, count in task_counts
+        }
+        for row in self:
+            count = counts_by_pair.get((row.project_id.id, row.stage_id.id), 0)
+            if count:
+                raise UserError(
+                    _(
+                        'You cannot remove stage "%(stage)s" from project '
+                        '"%(project)s" because it still has %(count)s task(s). '
+                        "Please move or delete those tasks first.",
+                        stage=row.stage_id.name,
+                        project=row.project_id.name,
+                        count=count,
                     )
+                )
 
         projects_by_stage = {}
         for row in self:
