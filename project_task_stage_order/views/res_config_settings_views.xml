@@ -1,0 +1,20 @@
+<odoo>
+    <record id="res_config_settings_view_form_task_stage_order" model="ir.ui.view">
+        <field
+            name="name"
+        >res.config.settings.view.form.inherit.task.stage.order</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="project.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <block id="tasks_management" position="inside">
+                <setting
+                    id="task_stage_order_setting"
+                    string="Per-Project Task Stage Order"
+                    help="Allow each project to have its own independent task stage order"
+                >
+                    <field name="task_stage_order_enabled" />
+                </setting>
+            </block>
+        </field>
+    </record>
+</odoo>
