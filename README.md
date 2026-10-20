@@ -37,6 +37,7 @@ addon | version | maintainers | summary
 [project_parent](project_parent/) | 18.0.1.0.1 |  | Project Parent
 [project_parent_task_filter](project_parent_task_filter/) | 18.0.1.0.0 |  | Add a filter to show the parent tasks
 [project_pivot](project_pivot/) | 18.0.1.0.0 | <a href='https://github.com/victoralmau'><img src='https://github.com/victoralmau.png' width='32' height='32' style='border-radius:50%;' alt='victoralmau'/></a> | Pivot view for projects
+[project_portal_properties](project_portal_properties/) | 18.0.1.0.0 |  | Show project properties in Portal
 [project_portal_task_visibility](project_portal_task_visibility/) | 18.0.1.0.0 |  | Project Portal Task Visibility
 [project_purchase_link](project_purchase_link/) | 18.0.1.0.0 |  | Project Purchase Link
 [project_reviewer](project_reviewer/) | 18.0.1.0.0 |  | Add the possibility to assign reviewer to a task
