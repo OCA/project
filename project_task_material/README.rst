@@ -82,6 +82,7 @@ Contributors
 - Carlos Jesus Cebrian <carlos.cebrian-sanchez@braintec-group.org>
 - Anand Kansagra <kansagraanand@hotmail.com>
 - Ruchir Shukla <ruchir@bizzappdev.com>
+- Mario Castillo López <@mcastillol14>
 
 Maintainers
 -----------

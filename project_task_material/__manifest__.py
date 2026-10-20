@@ -3,6 +3,7 @@
 # Copyright 2016 - Tecnativa - Vicent Cubells
 # Copyright 2017 - Tecnativa - David Vidal
 # Copyright 2018 - Brain-tec AG - Carlos Jesus Cebrian
+# Copyright 2026 Mario Castillo López <@mcastillol14>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl-3.0).
 {
     "name": "Project Task Material",

@@ -1,5 +1,6 @@
 # Copyright 2016 Tecnativa - Vicent Cubells
 # Copyright 2018 - Brain-tec AG - Carlos Jesus Cebrian
+# Copyright 2026 Mario Castillo López <@mcastillol14>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl-3.0).
 
 from odoo.exceptions import ValidationError
@@ -9,14 +10,8 @@ from .common import TestProjectCases
 
 class ProjectTaskMaterial(TestProjectCases):
     def test_manager_add_task_material_wrong(self):
-        """
-        TEST CASE 1
-        The user is adding some materials in the task
-        with different wrong values
-
-        """
+        """Adding a material with quantity 0 or negative must fail."""
         try:
-            # Material with `quantity = 0.0`
             self.action.write(
                 {
                     "material_ids": [
@@ -31,7 +26,6 @@ class ProjectTaskMaterial(TestProjectCases):
             )
 
         try:
-            # Material with `negative quantity`
             self.action.write(
                 {
                     "material_ids": [
@@ -46,13 +40,7 @@ class ProjectTaskMaterial(TestProjectCases):
             )
 
     def test_manager_add_task_material_right(self):
-        """
-        TEST CASE 2
-        The user is adding some materials in the task
-        with right values
-
-        """
-        # Material with `quantity = 1.0`
+        """Adding a material with a valid quantity must succeed."""
         self.action.write(
             {"material_ids": [(0, 0, {"product_id": self.product.id, "quantity": 4.0})]}
         )
