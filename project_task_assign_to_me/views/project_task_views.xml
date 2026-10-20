@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 Tecnativa - Sergio Teruel
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl.html). -->
+<odoo>
+    <record id="view_task_form2" model="ir.ui.view">
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2" />
+        <field name="arch" type="xml">
+            <xpath expr="//header/field[@name='stage_id']" position="before">
+                <!-- Highlighted while nobody works on the task -->
+                <button
+                    name="action_assign_to_me"
+                    string="Assign to Me"
+                    type="object"
+                    class="oe_highlight"
+                    invisible="user_ids"
+                    data-hotkey="q"
+                />
+                <button
+                    name="action_assign_to_me"
+                    string="Assign to Me"
+                    type="object"
+                    invisible="not user_ids or uid in user_ids"
+                    data-hotkey="q"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>
