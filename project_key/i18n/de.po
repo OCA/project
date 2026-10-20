@@ -18,6 +18,7 @@ msgstr ""
 
 #. module: project_key
 #: model_terms:ir.ui.view,arch_db:project_key.view_task_form2_extend_with_key
+#: model_terms:ir.ui.view,arch_db:project_key.view_task_form_key_project_sharing
 msgid "<span class=\"oe_inline\"> : </span>"
 msgstr "<span class=\"oe_inline\"> : </span>"
 
@@ -64,6 +65,12 @@ msgstr "Der Projektschlüssel muss eindeutig sein"
 #: code:addons/project_key/models/project_project.py:0
 msgid "Project task sequence for project"
 msgstr "Ablauf der Projektaufgaben für das Projekt"
+
+#. module: project_key
+#. odoo-python
+#: code:addons/project_key/controllers/portal.py:0
+msgid "Search in Key"
+msgstr ""
 
 #. module: project_key
 #: model:ir.model.fields,field_description:project_key.field_project_project__show_key_warning
