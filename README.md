@@ -91,6 +91,7 @@ addon | version | maintainers | summary
 [sale_project_task_description_template](sale_project_task_description_template/) | 18.0.1.0.0 | <a href='https://github.com/NICO-SOLUTIONS'><img src='https://github.com/NICO-SOLUTIONS.png' width='32' height='32' style='border-radius:50%;' alt='NICO-SOLUTIONS'/></a> | Apply task description templates from products to tasks, with optional sale info
 [sale_project_task_recurrency](sale_project_task_recurrency/) | 18.0.1.0.0 |  | Configuring Task Recurrence from the Product Form.
 [sale_project_task_selection](sale_project_task_selection/) | 18.0.1.0.1 | <a href='https://github.com/ivantodorovich'><img src='https://github.com/ivantodorovich.png' width='32' height='32' style='border-radius:50%;' alt='ivantodorovich'/></a> | Manually select the Task or Project for a Sale Order Line
+[website_project_task_code](website_project_task_code/) | 18.0.1.0.1 |  | Show task code in project task creation in website
 
 [//]: # (end addons)
 
