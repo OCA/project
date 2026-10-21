@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-05-19 13:46+0000\n"
+"PO-Revision-Date: 2026-10-21 15:46+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -70,7 +70,7 @@ msgstr "Sequenza lavoro per il progetto"
 #. odoo-python
 #: code:addons/project_key/controllers/portal.py:0
 msgid "Search in Key"
-msgstr ""
+msgstr "Cerca nella chiave"
 
 #. module: project_key
 #: model:ir.model.fields,field_description:project_key.field_project_project__show_key_warning
