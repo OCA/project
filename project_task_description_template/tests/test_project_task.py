@@ -34,3 +34,12 @@ class TestDescriptionTemplate(BaseCommon):
             Markup("<p>- Sample Description</p>"),
             "Onchange method failed with empty initial description.",
         )
+
+    def test_template_stored(self):
+        task = self.model.create(
+            {
+                "name": "Task",
+                "description_template_id": self.description_template.id,
+            }
+        )
+        self.assertEqual(task.description_template_id, self.description_template)

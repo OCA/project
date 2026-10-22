@@ -1,7 +1,3 @@
-.. image:: https://odoo-community.org/readme-banner-image
-   :target: https://odoo-community.org/get-involved?utm_source=readme
-   :alt: Odoo Community Association
-
 =================================
 Project Task Description Template
 =================================
@@ -17,7 +13,7 @@ Project Task Description Template
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/license-LGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/licence-LGPL--3-blue.png
     :target: http://www.gnu.org/licenses/lgpl-3.0-standalone.html
     :alt: License: LGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fproject-lightgray.png?logo=github
@@ -45,7 +41,8 @@ Usage
 
 To use this module:
 
-Select the description template you want to use in a task.
+Select the description template you want to use in a task. Its content
+is added to the task description.
 
 Bug Tracker
 ===========
@@ -68,8 +65,11 @@ Authors
 Contributors
 ------------
 
-- Alan Ramos <alan.ramos@jarsa.com>
-- ``Heliconia Solutions Pvt. Ltd. <https://www.heliconia.io>``\ \_
+-  Alan Ramos <alan.ramos@jarsa.com>
+-  ``Heliconia Solutions Pvt. Ltd. <https://www.heliconia.io>``\ \_
+-  `ForgeFlow <https://www.forgeflow.com>`__:
+
+   -  Thiago Mulero <thiago.mulero@forgeflow.com>
 
 Maintainers
 -----------
