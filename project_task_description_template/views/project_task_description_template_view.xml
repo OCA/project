@@ -9,6 +9,7 @@
                     <group>
                         <group>
                             <field name="name" />
+                            <field name="project_ids" widget="many2many_tags" />
                         </group>
                         <group>
                             <field name="active" />
@@ -33,6 +34,7 @@
         <field name="arch" type="xml">
             <list>
                 <field name="name" />
+                <field name="project_ids" widget="many2many_tags" optional="show" />
                 <field name="description" optional="hide" />
                 <field
                     name="company_id"
