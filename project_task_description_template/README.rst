@@ -31,7 +31,10 @@ Project Task Description Template
 This module allow to define description templates for a task and use
 them to generate the description of the task.
 
-Templates can be restricted to some projects.
+Templates can be restricted to some projects, and portal users can use
+the templates of their projects when they create tasks from the project
+sharing views. A project can also require portal users to select a
+template on every new task.
 
 **Table of contents**
 
@@ -46,7 +49,11 @@ To configure this module:
 -  Go to **Project > Configuration > Task Description Templates** and
    create the templates.
 -  Set **Projects** on a template to restrict it to those projects. A
-   template without projects is available in all projects.
+   template without projects is available in all projects for internal
+   users. Portal users only see the templates linked to their projects.
+-  In the project settings, enable **Require Description Template on
+   Portal Tasks** to force portal users to select a template when they
+   create a task.
 
 Usage
 =====
@@ -55,6 +62,9 @@ To use this module:
 
 Select the description template you want to use in a task. Its content
 is added to the task description.
+
+Portal users can also select a template when they create a task from the
+project sharing views.
 
 Bug Tracker
 ===========

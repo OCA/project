@@ -11,4 +11,15 @@
         <field name="perm_create" eval="True" />
         <field name="perm_unlink" eval="True" />
     </record>
+    <record id="project_task_description_template_portal_rule" model="ir.rule">
+        <field name="name">Project Task Description Template: portal users</field>
+        <field name="model_id" ref="model_project_task_description_template" />
+        <field name="domain_force">[
+            ('project_ids', 'any', [
+                ('privacy_visibility', '=', 'portal'),
+                ('collaborator_ids.partner_id', 'in', [user.partner_id.id]),
+            ]),
+        ]</field>
+        <field name="groups" eval="[(4, ref('base.group_portal'))]" />
+    </record>
 </odoo>
