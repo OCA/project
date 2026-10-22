@@ -1,0 +1,692 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_task_planning
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0-20260513\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-05-25 11:04+0000\n"
+"PO-Revision-Date: 2026-05-25 11:04+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: project_task_planning
+#: model_terms:ir.ui.view,arch_db:project_task_planning.view_project_kanban_inherited
+msgid ""
+"<span class=\"fa fa-calendar me-1\"/>\n"
+"                            <span>Planning</span>"
+msgstr ""
+
+#. module: project_task_planning
+#: model_terms:ir.ui.view,arch_db:project_task_planning.project_project_view_form_inherited
+#: model_terms:ir.ui.view,arch_db:project_task_planning.project_task_view_form_inherited
+msgid "<span class=\"o_stat_text\" style=\"font-weight: bold;\">Planning</span>"
+msgstr ""
+
+#. module: project_task_planning
+#: model_terms:ir.ui.view,arch_db:project_task_planning.search_project_task_planning
+msgid "Active/Unblocked"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,field_description:project_task_planning.field_project_project__allocated_hours
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task__allocated_hours
+msgid "Allocated Time"
+msgstr ""
+
+#. module: project_task_planning
+#: model_terms:ir.ui.view,arch_db:project_task_planning.view_project_task_allocation_pivot
+msgid "Allocation Analysis"
+msgstr ""
+
+#. module: project_task_planning
+#: model_terms:ir.ui.view,arch_db:project_task_planning.view_project_task_allocation_form
+msgid "Allocation Dates"
+msgstr ""
+
+#. module: project_task_planning
+#: model_terms:ir.ui.view,arch_db:project_task_planning.view_project_task_allocation_form
+msgid "Allocation Settings"
+msgstr ""
+
+#. module: project_task_planning
+#: model_terms:ir.ui.view,arch_db:project_task_planning.project_task_view_form_inherited
+msgid "Allocations"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.constraint,message:project_task_planning.constraint_project_task_planning_allocation_bucket_uniq
+msgid ""
+"An employee can only have one planning entry per bucket for the same task "
+"allocation."
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task_allocation__estimated_hours
+msgid "Assigned Hours"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task_allocation__block_participation_percentage
+msgid "Block Participation %"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task_planning__blocked
+#: model_terms:ir.ui.view,arch_db:project_task_planning.search_project_task_planning
+msgid "Blocked"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,field_description:project_task_planning.field_hr_employee_bucket__bucket
+#: model_terms:ir.ui.view,arch_db:project_task_planning.search_hr_employee_bucket
+msgid "Bucket"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,field_description:project_task_planning.field_project_bucket__name
+msgid "Bucket Name"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,field_description:project_task_planning.field_project_bucket__bucket_type
+msgid "Bucket Type"
+msgstr ""
+
+#. module: project_task_planning
+#: model_terms:ir.ui.view,arch_db:project_task_planning.view_project_task_allocation_form
+msgid "Calculated Hours"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,help:project_task_planning.field_project_task_allocation__pending_to_plan_hours
+msgid "Calculated hours that are pending to be planned for this allocation."
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,help:project_task_planning.field_project_task__pending_to_plan_hours
+msgid "Calculated hours that are pending to be planned for this task."
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,field_description:project_task_planning.field_hr_employee__bucket_capacity_count
+msgid "Capacity Count"
+msgstr ""
+
+#. module: project_task_planning
+#: model_terms:ir.ui.view,arch_db:project_task_planning.view_hr_employee_bucket_form
+msgid "Capacity Hours"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,help:project_task_planning.field_hr_employee_bucket__relative_index
+#: model:ir.model.fields,help:project_task_planning.field_project_bucket__relative_index
+msgid ""
+"Chronological distance from the current period (0 for today's period, "
+"positive for future, negative for past)."
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,field_description:project_task_planning.field_hr_employee_bucket__create_uid
+#: model:ir.model.fields,field_description:project_task_planning.field_project_bucket__create_uid
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task_allocation__create_uid
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task_planning__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,field_description:project_task_planning.field_hr_employee_bucket__create_date
+#: model:ir.model.fields,field_description:project_task_planning.field_project_bucket__create_date
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task_allocation__create_date
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task_planning__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: project_task_planning
+#: model_terms:ir.ui.view,arch_db:project_task_planning.search_hr_employee_bucket
+msgid "Current Period"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,help:project_task_planning.field_hr_employee_bucket__planning_status
+msgid "Current planning load status of the employee based on the limits."
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields.selection,name:project_task_planning.selection__project_bucket__bucket_type__daily
+msgid "Daily"
+msgstr ""
+
+#. module: project_task_planning
+#: model_terms:ir.ui.view,arch_db:project_task_planning.view_hr_employee_bucket_form
+msgid "Dates"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,field_description:project_task_planning.field_hr_employee__disable_planning
+msgid "Disable Planning"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,help:project_task_planning.field_hr_employee__disable_planning
+msgid "Disable planning and capacity buckets for this employee."
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,field_description:project_task_planning.field_hr_employee__display_name
+#: model:ir.model.fields,field_description:project_task_planning.field_hr_employee_bucket__display_name
+#: model:ir.model.fields,field_description:project_task_planning.field_hr_leave__display_name
+#: model:ir.model.fields,field_description:project_task_planning.field_project_bucket__display_name
+#: model:ir.model.fields,field_description:project_task_planning.field_project_project__display_name
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task__display_name
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task_allocation__display_name
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task_planning__display_name
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task_type__display_name
+#: model:ir.model.fields,field_description:project_task_planning.field_resource_calendar_leaves__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model,name:project_task_planning.model_hr_employee
+#: model:ir.model.fields,field_description:project_task_planning.field_hr_employee_bucket__employee_id
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task_allocation__employee_id
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task_planning__employee_id
+#: model_terms:ir.ui.view,arch_db:project_task_planning.search_hr_employee_bucket
+#: model_terms:ir.ui.view,arch_db:project_task_planning.search_project_task_allocation
+#: model_terms:ir.ui.view,arch_db:project_task_planning.search_project_task_planning
+msgid "Employee"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model,name:project_task_planning.model_hr_employee_bucket
+#: model_terms:ir.ui.view,arch_db:project_task_planning.view_employee_form_inherited
+#: model_terms:ir.ui.view,arch_db:project_task_planning.view_hr_employee_bucket_form
+msgid "Employee Bucket"
+msgstr ""
+
+#. module: project_task_planning
+#: model_terms:ir.ui.view,arch_db:project_task_planning.view_hr_employee_bucket_pivot
+msgid "Employee Bucket Analysis"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.actions.act_window,name:project_task_planning.action_hr_employee_bucket
+#: model:ir.ui.menu,name:project_task_planning.action_hr_employee_bucket_menu
+#: model:ir.ui.menu,name:project_task_planning.menu_project_planning_employee_buckets
+msgid "Employee Buckets"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task_planning__employee_bucket_id
+msgid "Employee Capacity Bucket"
+msgstr ""
+
+#. module: project_task_planning
+#: model_terms:ir.ui.view,arch_db:project_task_planning.view_hr_employee_bucket_form
+msgid "Employee Info"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,field_description:project_task_planning.field_hr_employee_bucket__date_end
+#: model:ir.model.fields,field_description:project_task_planning.field_project_bucket__date_end
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task_allocation__date_end
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task_planning__date_end
+msgid "End Date"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task_type__end
+msgid "End Status"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task__percentage_of_project_hours
+#: model_terms:ir.ui.view,arch_db:project_task_planning.view_project_task_allocation_pivot
+msgid "Estimated Hours"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,help:project_task_planning.field_project_task_allocation__estimated_hours
+msgid ""
+"Estimated hours for this employee on this task. Calculated from task "
+"percentage of project hours and participation %, can be adjusted."
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,help:project_task_planning.field_project_task__percentage_of_project_hours
+msgid "Estimated hours for this task."
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.actions.server,name:project_task_planning.action_server_generate_allocation
+msgid "Generate Allocations"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.actions.server,name:project_task_planning.action_server_generate_planning
+#: model_terms:ir.ui.view,arch_db:project_task_planning.view_project_task_allocation_form
+msgid "Generate Planning"
+msgstr ""
+
+#. module: project_task_planning
+#: model_terms:ir.ui.view,arch_db:project_task_planning.view_hr_employee_bucket_form
+msgid "Hours Overview"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,field_description:project_task_planning.field_hr_employee__id
+#: model:ir.model.fields,field_description:project_task_planning.field_hr_employee_bucket__id
+#: model:ir.model.fields,field_description:project_task_planning.field_hr_leave__id
+#: model:ir.model.fields,field_description:project_task_planning.field_project_bucket__id
+#: model:ir.model.fields,field_description:project_task_planning.field_project_project__id
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task__id
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task_allocation__id
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task_planning__id
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task_type__id
+#: model:ir.model.fields,field_description:project_task_planning.field_resource_calendar_leaves__id
+msgid "ID"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,help:project_task_planning.field_project_task_allocation__block_participation_percentage
+msgid "If checked, the participation percentage cannot be modified."
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,help:project_task_planning.field_project_task_planning__blocked
+msgid "Indicates if the planning entry is blocked from further modifications."
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,field_description:project_task_planning.field_hr_employee_bucket__write_uid
+#: model:ir.model.fields,field_description:project_task_planning.field_project_bucket__write_uid
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task_allocation__write_uid
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task_planning__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,field_description:project_task_planning.field_hr_employee_bucket__write_date
+#: model:ir.model.fields,field_description:project_task_planning.field_project_bucket__write_date
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task_allocation__write_date
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task_planning__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields.selection,name:project_task_planning.selection__project_bucket__bucket_type__monthly
+msgid "Monthly"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.actions.act_window,name:project_task_planning.action_my_planning
+#: model:ir.ui.menu,name:project_task_planning.menu_project_planning_my
+msgid "My Planning"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields.selection,name:project_task_planning.selection__hr_employee_bucket__planning_status__optimal
+msgid "Optimal"
+msgstr ""
+
+#. module: project_task_planning
+#: model_terms:ir.ui.view,arch_db:project_task_planning.search_hr_employee_bucket
+msgid "Over-planned"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields.selection,name:project_task_planning.selection__hr_employee_bucket__planning_status__overplanned
+msgid "Overplanned"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task_allocation__participation_percentage
+msgid "Participation (%)"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,field_description:project_task_planning.field_project_project__pending_to_plan_hours
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task__pending_to_plan_hours
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task_allocation__pending_to_plan_hours
+#: model_terms:ir.ui.view,arch_db:project_task_planning.view_project_task_allocation_pivot
+msgid "Pending to Plan Hours"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,help:project_task_planning.field_project_task_allocation__participation_percentage
+msgid "Percentage of this task's effort assigned to this employee."
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,help:project_task_planning.field_hr_employee_bucket__utilization_rate
+msgid "Percentage of working hours that are planned."
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,help:project_task_planning.field_project_task__project_percentage
+msgid "Percentage this task represents for the project."
+msgstr ""
+
+#. module: project_task_planning
+#: model_terms:ir.ui.view,arch_db:project_task_planning.view_hr_employee_bucket_form
+msgid "Period"
+msgstr ""
+
+#. module: project_task_planning
+#: model_terms:ir.ui.view,arch_db:project_task_planning.view_project_task_planning_form
+msgid "Period & Hours"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,field_description:project_task_planning.field_hr_employee_bucket__planned_hours
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task_planning__planned_hours
+#: model_terms:ir.ui.view,arch_db:project_task_planning.view_project_task_allocation_pivot
+msgid "Planned Hours"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,field_description:project_task_planning.field_hr_employee_bucket__task_planning_ids
+#: model_terms:ir.ui.view,arch_db:project_task_planning.view_hr_employee_bucket_form
+msgid "Planned Hours Details"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task_allocation__planning_ids
+#: model:ir.ui.menu,name:project_task_planning.menu_project_planning
+#: model_terms:ir.ui.view,arch_db:project_task_planning.project_project_view_form_inherited
+#: model_terms:ir.ui.view,arch_db:project_task_planning.project_task_view_form_inherited
+#: model_terms:ir.ui.view,arch_db:project_task_planning.view_project_task_allocation_form
+#: model_terms:ir.ui.view,arch_db:project_task_planning.view_task_kanban_inherited
+msgid "Planning"
+msgstr ""
+
+#. module: project_task_planning
+#: model_terms:ir.ui.view,arch_db:project_task_planning.view_project_task_planning_pivot
+msgid "Planning Analysis"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model,name:project_task_planning.model_project_bucket
+#: model:ir.model.fields,field_description:project_task_planning.field_hr_employee_bucket__bucket_id
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task_planning__bucket_id
+#: model_terms:ir.ui.view,arch_db:project_task_planning.search_project_task_planning
+msgid "Planning Bucket"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task_planning__bucket
+msgid "Planning Bucket Name"
+msgstr ""
+
+#. module: project_task_planning
+#: model_terms:ir.ui.view,arch_db:project_task_planning.view_project_task_planning_form
+msgid "Planning Dates"
+msgstr ""
+
+#. module: project_task_planning
+#: model_terms:ir.ui.view,arch_db:project_task_planning.view_project_task_planning_form
+msgid "Planning Info"
+msgstr ""
+
+#. module: project_task_planning
+#: model_terms:ir.ui.view,arch_db:project_task_planning.project_project_view_form_inherited
+msgid "Planning Limits"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,field_description:project_task_planning.field_project_project__planning_pct_display
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task__planning_pct_display
+msgid "Planning Percentage Display"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,field_description:project_task_planning.field_project_project__planning_planned_display
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task__planning_planned_display
+msgid "Planning Planned Display"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,field_description:project_task_planning.field_hr_employee_bucket__planning_status
+msgid "Planning Status"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,field_description:project_task_planning.field_project_project__planning_total_display
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task__planning_total_display
+msgid "Planning Total Display"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model,name:project_task_planning.model_project_project
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task_allocation__project_id
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task_planning__project_id
+#: model_terms:ir.ui.view,arch_db:project_task_planning.search_project_task_allocation
+#: model_terms:ir.ui.view,arch_db:project_task_planning.search_project_task_planning
+msgid "Project"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task__project_percentage
+msgid "Project Percentage"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model,name:project_task_planning.model_project_task_allocation
+msgid "Project Task Allocation"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.actions.act_window,name:project_task_planning.action_project_task_allocation_pivot
+#: model:ir.ui.menu,name:project_task_planning.action_project_task_allocation_pivot_menu
+msgid "Project Task Allocations"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model,name:project_task_planning.model_project_task_planning
+msgid "Project Task Weekly Planning"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,field_description:project_task_planning.field_hr_employee_bucket__relative_index
+#: model:ir.model.fields,field_description:project_task_planning.field_project_bucket__relative_index
+msgid "Relative Index"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,field_description:project_task_planning.field_hr_employee_bucket__remaining_hours
+msgid "Remaining Hours"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,help:project_task_planning.field_hr_employee_bucket__remaining_hours
+msgid "Remaining working capacity hours in this bucket."
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model,name:project_task_planning.model_resource_calendar_leaves
+msgid "Resource Time Off Detail"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,help:project_task_planning.field_project_project__total_estimated_hours_override
+msgid ""
+"Set the target total estimated hours for this project. This will be used to "
+"scale and distribute hours to tasks."
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,field_description:project_task_planning.field_hr_employee_bucket__date_start
+#: model:ir.model.fields,field_description:project_task_planning.field_project_bucket__date_start
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task_allocation__date_start
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task_planning__date_start
+msgid "Start Date"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,help:project_task_planning.field_project_project__allocated_hours
+msgid "Sum of allocated hours from all tasks in the project."
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,help:project_task_planning.field_project_task__allocated_hours
+msgid "Sum of estimated hours from all technician allocations."
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,help:project_task_planning.field_project_project__pending_to_plan_hours
+msgid "Sum of pending to plan hours from all tasks in the project."
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,help:project_task_planning.field_project_task_allocation__total_planned_hours
+msgid "Sum of planned hours from all planning entries."
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,help:project_task_planning.field_project_project__total_planned_hours
+msgid "Sum of planned hours from all tasks in the project."
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,help:project_task_planning.field_project_task__total_planned_hours
+msgid "Sum of planned hours from all technician allocations."
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model,name:project_task_planning.model_project_task
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task_allocation__task_id
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task_planning__task_id
+#: model_terms:ir.ui.view,arch_db:project_task_planning.search_project_task_allocation
+#: model_terms:ir.ui.view,arch_db:project_task_planning.search_project_task_planning
+msgid "Task"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task_planning__allocation_id
+#: model_terms:ir.ui.view,arch_db:project_task_planning.view_project_task_allocation_form
+msgid "Task Allocation"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.ui.menu,name:project_task_planning.menu_project_planning_task_allocation
+msgid "Task Allocations"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.actions.act_window,name:project_task_planning.action_project_task_planning
+#: model:ir.ui.menu,name:project_task_planning.action_project_task_planning_menu
+#: model:ir.ui.menu,name:project_task_planning.menu_project_planning_task_planning
+#: model_terms:ir.ui.view,arch_db:project_task_planning.view_project_kanban_inherited
+#: model_terms:ir.ui.view,arch_db:project_task_planning.view_project_task_planning_form
+msgid "Task Planning"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model,name:project_task_planning.model_project_task_type
+msgid "Task Stage"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task__allocation_ids
+msgid "Technician Allocations"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.constraint,message:project_task_planning.constraint_project_bucket_name_uniq
+msgid "The bucket name must be unique."
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.constraint,message:project_task_planning.constraint_hr_employee_bucket_employee_bucket_uniq
+msgid ""
+"Theoretical capacity for an employee can only be defined once per bucket."
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model,name:project_task_planning.model_hr_leave
+msgid "Time Off"
+msgstr ""
+
+#. module: project_task_planning
+#: model_terms:ir.ui.view,arch_db:project_task_planning.view_hr_employee_bucket_list
+msgid "Total Capacity"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,field_description:project_task_planning.field_project_project__total_estimated_hours_override
+msgid "Total Estimated Target Hours"
+msgstr ""
+
+#. module: project_task_planning
+#: model_terms:ir.ui.view,arch_db:project_task_planning.view_hr_employee_bucket_form
+#: model_terms:ir.ui.view,arch_db:project_task_planning.view_hr_employee_bucket_list
+msgid "Total Planned"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,field_description:project_task_planning.field_project_project__total_planned_hours
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task__total_planned_hours
+#: model:ir.model.fields,field_description:project_task_planning.field_project_task_allocation__total_planned_hours
+msgid "Total Planned Hours"
+msgstr ""
+
+#. module: project_task_planning
+#: model_terms:ir.ui.view,arch_db:project_task_planning.view_hr_employee_bucket_list
+msgid "Total Remaining"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,help:project_task_planning.field_hr_employee_bucket__planned_hours
+msgid "Total planned hours for the employee in this bucket."
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,help:project_task_planning.field_hr_employee_bucket__working_hours
+msgid ""
+"Total working hours for the employee in this bucket after subtracting "
+"leaves."
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields.selection,name:project_task_planning.selection__hr_employee_bucket__planning_status__underplanned
+msgid "Underplanned"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.actions.server,name:project_task_planning.ir_cron_update_employee_capacity_by_bucket_ir_actions_server
+msgid "Update Employee Bucket Capacity"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,help:project_task_planning.field_project_task__display_name
+msgid ""
+"Use these keywords in the title to set new tasks:\n"
+"\n"
+"            #tags Set tags on the task\n"
+"            @user Assign the task to a user\n"
+"            ! Set the task a medium priority\n"
+"            !! Set the task a high priority\n"
+"            !!! Set the task a urgent priority\n"
+"\n"
+"            Make sure to use the right format and order e.g. Improve the configuration screen #feature #v16 @Mitchell !"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,field_description:project_task_planning.field_hr_employee_bucket__utilization_rate
+msgid "Utilization Rate (%)"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields.selection,name:project_task_planning.selection__project_bucket__bucket_type__weekly
+msgid "Weekly"
+msgstr ""
+
+#. module: project_task_planning
+#: model:ir.model.fields,field_description:project_task_planning.field_hr_employee_bucket__working_hours
+msgid "Working Hours"
+msgstr ""
