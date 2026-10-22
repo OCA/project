@@ -18,5 +18,19 @@ class ProjectTaskDescriptionTemplate(models.Model):
         "template_id",
         "project_id",
         string="Projects",
-        help="Leave empty to make the template available in all projects.",
+        help="Leave empty to make the template available in all projects. "
+        "Portal users only see the templates linked to their projects.",
     )
+
+    def write(self, vals):
+        projects = self.project_ids
+        res = super().write(vals)
+        if "project_ids" in vals or "active" in vals:
+            projects._check_portal_task_description_template_required()
+        return res
+
+    def unlink(self):
+        projects = self.project_ids
+        res = super().unlink()
+        projects._check_portal_task_description_template_required()
+        return res
