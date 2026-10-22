@@ -1,17 +1,44 @@
 from markupsafe import Markup
 
-from odoo.addons.base.tests.common import BaseCommon
+from odoo import Command
+from odoo.tests import tagged
+from odoo.tools.safe_eval import safe_eval
+
+from odoo.addons.project.tests.test_project_sharing import TestProjectSharingCommon
 
 
-class TestDescriptionTemplate(BaseCommon):
+@tagged("post_install", "-at_install")
+class TestDescriptionTemplate(TestProjectSharingCommon):
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
         cls.model = cls.env["project.task"]
-        cls.description_template = cls.env["project.task.description.template"].create(
+        cls.Template = cls.env["project.task.description.template"]
+        cls.description_template = cls.Template.create(
             {
                 "name": "Test Template",
                 "description": " - Sample Description",
+            }
+        )
+        cls.template_portal = cls.Template.create(
+            {
+                "name": "Portal Template",
+                "description": "<p>Steps to reproduce</p>",
+                "project_ids": [Command.link(cls.project_portal.id)],
+            }
+        )
+        cls.template_cows = cls.Template.create(
+            {
+                "name": "Cows Template",
+                "description": "<p>Cows</p>",
+                "project_ids": [Command.link(cls.project_cows.id)],
+            }
+        )
+        cls.template_other = cls.Template.create(
+            {
+                "name": "Other Template",
+                "description": "<p>Other</p>",
+                "project_ids": [Command.link(cls.project_no_collabo.id)],
             }
         )
 
@@ -43,3 +70,18 @@ class TestDescriptionTemplate(BaseCommon):
             }
         )
         self.assertEqual(task.description_template_id, self.description_template)
+
+    def test_templates_by_project(self):
+        domain = self.model._fields["description_template_id"].domain
+        templates = self.Template.search(
+            safe_eval(domain, {"project_id": self.project_portal.id})
+        )
+        self.assertIn(self.template_portal, templates)
+        self.assertIn(self.description_template, templates)
+        self.assertNotIn(self.template_other, templates)
+        self.assertEqual(
+            self.project_portal.task_description_template_ids, self.template_portal
+        )
+        templates = self.Template.search(safe_eval(domain, {"project_id": False}))
+        self.assertIn(self.description_template, templates)
+        self.assertNotIn(self.template_portal, templates)

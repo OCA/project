@@ -31,10 +31,22 @@ Project Task Description Template
 This module allow to define description templates for a task and use
 them to generate the description of the task.
 
+Templates can be restricted to some projects.
+
 **Table of contents**
 
 .. contents::
    :local:
+
+Configuration
+=============
+
+To configure this module:
+
+-  Go to **Project > Configuration > Task Description Templates** and
+   create the templates.
+-  Set **Projects** on a template to restrict it to those projects. A
+   template without projects is available in all projects.
 
 Usage
 =====
