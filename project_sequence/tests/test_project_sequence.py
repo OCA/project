@@ -20,18 +20,7 @@ class TestProjectSequence(TransactionCase):
         )
         cls.pjr_seq = cls.env.ref("project_sequence.seq_project_sequence")
         cls.pjr_seq.date_range_ids.unlink()
-        default_plan_id = (
-            cls.env["account.analytic.plan"]
-            .sudo()
-            .search(
-                [
-                    "|",
-                    ("company_id", "=", False),
-                    ("company_id", "=", cls.env.company.id),
-                ],
-                limit=1,
-            )
-        )
+        default_plan_id = cls.env.company.analytic_plan_id
         cls.analytic_account = cls.env["account.analytic.account"].create(
             {
                 "name": "aaa",
@@ -69,6 +58,7 @@ class TestProjectSequence(TransactionCase):
         self.assertEqual(proj.name, "23-00011")
         self.assertEqual(proj.display_name, "23-00011")
         self.assertEqual(proj.analytic_account_id.name, "23-00011")
+        self.assertEqual(proj.analytic_account_id.code, "23-00011")
 
     def test_analytic_account_after_creation_named(self):
         """Project's analytic account is named like project's display name."""
@@ -78,7 +68,8 @@ class TestProjectSequence(TransactionCase):
         self.assertEqual(proj.sequence_code, "23-00011")
         self.assertEqual(proj.name, "whatever")
         self.assertEqual(proj.display_name, "23-00011 - whatever")
-        self.assertEqual(proj.analytic_account_id.name, "23-00011 - whatever")
+        self.assertEqual(proj.analytic_account_id.name, "whatever")
+        self.assertEqual(proj.analytic_account_id.code, "23-00011")
 
     @users("manager")
     def test_sequence_copied_to_name_if_emptied(self):
@@ -89,13 +80,15 @@ class TestProjectSequence(TransactionCase):
         self.assertEqual(proj.name, "whatever")
         self.assertEqual(proj.sequence_code, "23-00011")
         self.assertEqual(proj.display_name, "23-00011 - whatever")
-        self.assertEqual(proj.analytic_account_id.name, "23-00011 - whatever")
+        self.assertEqual(proj.analytic_account_id.name, "whatever")
+        self.assertEqual(proj.analytic_account_id.code, "23-00011")
         with Form(proj) as prj_f:
             prj_f.name = False
         self.assertEqual(proj.name, "23-00011")
         self.assertEqual(proj.sequence_code, "23-00011")
         self.assertEqual(proj.display_name, "23-00011")
         self.assertEqual(proj.analytic_account_id.name, "23-00011")
+        self.assertEqual(proj.analytic_account_id.code, "23-00011")
 
     @users("manager")
     def test_sequence_not_copied_to_another_project(self):
@@ -118,34 +111,15 @@ class TestProjectSequence(TransactionCase):
     @users("manager")
     def test_project_without_sequence(self):
         """Preexisting projects had no sequence, and they should display fine."""
-        proj1 = self.env["project.project"].search(
-            [
-                ("sequence_code", "=", False),
-            ],
-            limit=1,
+        proj1 = self.env["project.project"].create(
+            {"name": "one", "sequence_code": False}
         )
-        proj1.name = "one"
-        self.assertFalse(proj1.sequence_code)
         self.assertEqual(proj1.display_name, "one")
+        self.assertFalse(proj1.sequence_code)
         # Make sure that the sequence is not increased
         proj2 = self.env["project.project"].create({"name": "two"})
         self.assertEqual(proj2.sequence_code, "23-00011")
         self.assertEqual(proj2.display_name, "23-00011 - two")
-
-    @users("manager")
-    def test_project_with_empty_sequence(self):
-        """Sequence is applied when creating project with an empty sequence"""
-        proj1 = self.env["project.project"].create(
-            {"name": "whatever", "sequence_code": ""}
-        )
-        self.assertEqual(proj1.sequence_code, "23-00011")
-        self.assertEqual(proj1.display_name, "23-00011 - whatever")
-        # Sequence is applied when creating project with sequence in False
-        proj2 = self.env["project.project"].create(
-            {"name": "whatever", "sequence_code": False}
-        )
-        self.assertEqual(proj2.sequence_code, "23-00012")
-        self.assertEqual(proj2.display_name, "23-00012 - whatever")
 
     def test_custom_pattern(self):
         """Display name pattern can be customized."""
@@ -168,21 +142,10 @@ class TestProjectSequence(TransactionCase):
         self.assertEqual(proj.display_name, "23-00013")
         self.assertEqual(proj.sequence_code, "23-00013")
 
-    def test_sync_analytic_account_name(self):
+    def test_sync_analytic_account(self):
         """Set analytic account name equal to project's display name."""
         proj = self.env["project.project"].create({"name": "one"})
-        default_plan_id = (
-            self.env["account.analytic.plan"]
-            .sudo()
-            .search(
-                [
-                    "|",
-                    ("company_id", "=", False),
-                    ("company_id", "=", self.env.company.id),
-                ],
-                limit=1,
-            )
-        )
+        default_plan_id = self.env.company.analytic_plan_id
         analytic_account = self.env["account.analytic.account"].create(
             {
                 "name": proj.display_name,
@@ -195,12 +158,13 @@ class TestProjectSequence(TransactionCase):
             }
         )
         proj.analytic_account_id = analytic_account
-        proj._sync_analytic_account_name()
-        self.assertEqual(proj.analytic_account_id.name, proj.display_name)
+        proj._sync_analytic_account()
+        self.assertEqual(proj.analytic_account_id.name, proj.name)
+        self.assertEqual(proj.analytic_account_id.code, proj.sequence_code)
 
         # Test when analytic_account_id is not set
         proj.analytic_account_id = False
-        proj._sync_analytic_account_name()
+        proj._sync_analytic_account()
         self.assertTrue(True)  # Placeholder assertion to ensure the code execution
 
     def test_name_search(self):
