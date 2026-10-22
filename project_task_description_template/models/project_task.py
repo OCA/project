@@ -7,7 +7,10 @@ from odoo import api, fields, models
 class ProjectTask(models.Model):
     _inherit = "project.task"
 
-    description_template_id = fields.Many2one("project.task.description.template")
+    description_template_id = fields.Many2one(
+        "project.task.description.template",
+        domain="['|', ('project_ids', '=', False), ('project_ids', 'in', project_id)]",
+    )
 
     @api.onchange("description_template_id")
     def _onchange_description_template_id(self):
