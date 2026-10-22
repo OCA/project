@@ -45,7 +45,8 @@ Usage
 
 To use this module:
 
-Select the description template you want to use in a task.
+Select the description template you want to use in a task. Its content
+is added to the task description.
 
 Bug Tracker
 ===========
@@ -71,6 +72,9 @@ Contributors
 - Alan Ramos <alan.ramos@jarsa.com>
 - ``Heliconia Solutions Pvt. Ltd. <https://www.heliconia.io>``\ \_
 - Nils Coenen <nils.coenen@nico-solutions.de>
+- `ForgeFlow <https://www.forgeflow.com>`__:
+
+  - Thiago Mulero <thiago.mulero@forgeflow.com>
 
 Maintainers
 -----------
