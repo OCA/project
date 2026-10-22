@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 - TODAY, Kaynnan Lemes  <kaynnan.lemes@escodoo.com.br>
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <!-- Custom State: Pending Review -->
+    <record id="state_pending_review" model="project.state.extend">
+        <field name="name">Pending Review</field>
+        <field name="technical_name">pending_review</field>
+        <field name="color">5</field>
+        <!-- Purple -->
+        <field name="sequence">10</field>
+    </record>
+    <!-- Custom State: Blocked -->
+    <record id="state_blocked" model="project.state.extend">
+        <field name="name">Blocked</field>
+        <field name="technical_name">blocked</field>
+        <field name="color">1</field>
+        <!-- Red -->
+        <field name="sequence">20</field>
+    </record>
+    <!-- Custom State: Waiting Client -->
+    <record id="state_waiting_client" model="project.state.extend">
+        <field name="name">Waiting Client</field>
+        <field name="technical_name">waiting_client</field>
+        <field name="color">3</field>
+        <!-- Yellow/Orange -->
+        <field name="sequence">30</field>
+    </record>
+    <!-- Custom State: Ready to Deploy -->
+    <record id="state_ready_deploy" model="project.state.extend">
+        <field name="name">Ready to Deploy</field>
+        <field name="technical_name">ready_deploy</field>
+        <field name="color">10</field>
+        <!-- Green -->
+        <field name="sequence">40</field>
+    </record>
+    <!-- Custom State: In Testing -->
+    <record id="state_in_testing" model="project.state.extend">
+        <field name="name">In Testing</field>
+        <field name="technical_name">in_testing</field>
+        <field name="color">4</field>
+        <!-- Light Blue -->
+        <field name="sequence">50</field>
+    </record>
+</odoo>
