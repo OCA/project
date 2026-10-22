@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="project_sharing_project_task_view_kanban" model="ir.ui.view">
+        <field name="name">project.sharing.project.task.view.kanban</field>
+        <field name="model">project.task</field>
+        <field
+            name="inherit_id"
+            ref="project.project_sharing_project_task_view_kanban"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="before">
+                <span>[<field name="code" />] </span>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="project_sharing_project_task_view_tree" model="ir.ui.view">
+        <field name="name">project.sharing.project.task.tree</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.project_sharing_project_task_view_tree" />
+        <field name="arch" type="xml">
+            <field name="name" position="before">
+                <field name="code" />
+            </field>
+        </field>
+    </record>
+
+    <record id="project_sharing_project_task_view_form" model="ir.ui.view">
+        <field name="name">project.sharing.project.task.view.form</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.project_sharing_project_task_view_form" />
+        <field name="arch" type="xml">
+            <field name="name" position="before">
+                <field name="code" class="oe_inline" />
+                <span class="oe_inline"> - </span>
+            </field>
+            <field name="tag_ids" position="after">
+                <field name="portal_url_visible" invisible="1" />
+                <field
+                    name="portal_url"
+                    widget="CopyClipboardChar"
+                    options="{'string': 'Copy'}"
+                    invisible="not portal_url_visible"
+                />
+            </field>
+        </field>
+    </record>
+
+    <record id="project_sharing_project_task_view_search" model="ir.ui.view">
+        <field name="name">project.task.search.form</field>
+        <field name="model">project.task</field>
+        <field
+            name="inherit_id"
+            ref="project.project_sharing_project_task_view_search"
+        />
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="code" string="Task Code" />
+            </field>
+        </field>
+    </record>
+</odoo>
