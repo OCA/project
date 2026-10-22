@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_project_revenue_recognition_list" model="ir.ui.view">
+        <field name="name">project.revenue.recognition.list</field>
+        <field name="model">project.revenue.recognition</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name" />
+                <field name="project_id" />
+                <field name="journal_id" optional="show" />
+                <field name="date" optional="show" />
+                <field name="compare_with" />
+                <field name="amount_diff" />
+                <field
+                    name="company_id"
+                    groups="base.group_multi_company"
+                    optional="show"
+                />
+                <field name="currency_id" column_invisible="1" />
+                <field
+                    name="state"
+                    widget="badge"
+                    decoration-info="state == 'draft'"
+                    decoration-success="state in ('confirm', 'done')"
+                    decoration-danger="state == 'reverse'"
+                />
+            </list>
+        </field>
+    </record>
+
+    <record id="view_project_revenue_recognition_form" model="ir.ui.view">
+        <field name="name">project.revenue.recognition.form</field>
+        <field name="model">project.revenue.recognition</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button
+                        name="action_confirm"
+                        string="Confirm"
+                        type="object"
+                        class="oe_highlight"
+                        invisible="state != 'draft'"
+                    />
+                    <button
+                        name="action_adjust_cost"
+                        string="Adjust Cost"
+                        type="object"
+                        class="oe_highlight"
+                        invisible="state != 'confirm'"
+                    />
+                    <button
+                        name="action_reverse_cost"
+                        string="Reverse Cost"
+                        type="object"
+                        class="oe_highlight"
+                        invisible="state != 'done'"
+                    />
+                    <button
+                        name="action_cancel"
+                        string="Cancel"
+                        type="object"
+                        invisible="state != 'draft'"
+                    />
+                    <button
+                        name="action_draft"
+                        string="Reset to Draft"
+                        type="object"
+                        invisible="state != 'confirm'"
+                    />
+                    <field
+                        name="state"
+                        widget="statusbar"
+                        statusbar_visible="draft,confirm,done"
+                    />
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button
+                            name="action_view_move"
+                            type="object"
+                            class="oe_stat_button"
+                            icon="fa-list-ul"
+                            invisible="move_count == 0"
+                        >
+                            <field name="move_count" widget="statinfo" string="Moves" />
+                        </button>
+                    </div>
+                    <div class="oe_title">
+                        <label for="name" class="oe_edit_only" />
+                        <h1>
+                            <field name="name" readonly="1" />
+                        </h1>
+                    </div>
+                    <group name="main_info">
+                        <group>
+                            <field name="project_id" readonly="state != 'draft'" />
+                        </group>
+                        <group>
+                            <field
+                                name="company_id"
+                                groups="base.group_multi_company"
+                                readonly="state != 'draft'"
+                            />
+                            <field name="currency_id" invisible="1" />
+                            <field
+                                name="journal_id"
+                                domain="[('type', '=', 'general')]"
+                                readonly="state != 'draft'"
+                            />
+                            <field name="date" readonly="state != 'draft'" />
+                            <field name="auto_post" readonly="state != 'draft'" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="lines" string="Lines">
+                            <button
+                                name="action_compare_amount"
+                                string="Compare Amount"
+                                type="object"
+                                class="oe_highlight"
+                                invisible="state != 'draft'"
+                            />
+                            <group class="mt16">
+                                <field
+                                    name="compare_with"
+                                    required="1"
+                                    readonly="state != 'draft'"
+                                />
+                                <field name="amount_diff" />
+                            </group>
+                            <field name="line_ids" readonly="1">
+                                <list editable="bottom">
+                                    <field name="source_model" />
+                                    <field name="percent" widget="percentage" />
+                                    <field name="source_amount" />
+                                    <field name="amount" />
+                                    <field name="currency_id" column_invisible="1" />
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <chatter />
+            </form>
+        </field>
+    </record>
+
+    <record id="action_project_revenue_recognition" model="ir.actions.act_window">
+        <field name="name">Revenue Recognition</field>
+        <field name="res_model">project.revenue.recognition</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem
+        id="menu_main_project_revenue_recognition"
+        name="Revenue Recognition"
+        parent="project.menu_main_pm"
+        sequence="40"
+    />
+    <menuitem
+        id="menu_project_revenue_recognition"
+        name="Revenue Recognition"
+        parent="menu_main_project_revenue_recognition"
+        action="action_project_revenue_recognition"
+        sequence="40"
+    />
+</odoo>
