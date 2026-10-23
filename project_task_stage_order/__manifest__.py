@@ -11,7 +11,6 @@
     "depends": ["project_task_stage_mgmt"],
     "data": [
         "security/ir.model.access.csv",
-        "security/project_task_type_sequence_security.xml",
         "views/project_views.xml",
         "views/res_config_settings_views.xml",
     ],
