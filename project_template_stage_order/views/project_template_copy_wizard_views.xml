@@ -1,0 +1,24 @@
+<odoo>
+    <record id="project_template_copy_wizard_view_form" model="ir.ui.view">
+        <field name="name">project.template.copy.wizard.form</field>
+        <field name="model">project.template.copy.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="template_id" invisible="1" />
+                    <field name="name" />
+                    <field name="link_to_template" />
+                </group>
+                <footer>
+                    <button
+                        string="Create"
+                        type="object"
+                        name="action_confirm"
+                        class="btn-primary"
+                    />
+                    <button string="Cancel" special="cancel" />
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>
