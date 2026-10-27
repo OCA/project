@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-10-21 15:44+0000\n"
+"PO-Revision-Date: 2026-10-27 15:46+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -34,7 +34,7 @@ msgstr "Progetto"
 #. module: project_portal_properties
 #: model:ir.model,name:project_portal_properties.model_project_task
 msgid "Task"
-msgstr "Attività"
+msgstr "Lavoro"
 
 #. module: project_portal_properties
 #: model:ir.model.fields,field_description:project_portal_properties.field_project_project__task_properties_definition
