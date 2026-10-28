@@ -5,7 +5,7 @@
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.edit_project" />
         <field name="arch" type="xml">
-            <group name="extra_settings" position="inside">
+            <group name="other_section" position="inside">
                 <field name="task_name_display" widget="radio" />
             </group>
         </field>
@@ -44,25 +44,16 @@
             </field>
         </field>
     </record>
-    <record id="project_task_code_kanban_view" model="ir.ui.view">
-        <field name="name">project.task.code.kanban</field>
+    <record id="project_task_code_card_view" model="ir.ui.view">
+        <field name="name">project.task.code.card</field>
         <field name="model">project.task</field>
-        <field name="inherit_id" ref="project.view_task_kanban" />
+        <field name="inherit_id" ref="project.view_task_card" />
         <field name="priority" eval="100" />
         <field name="arch" type="xml">
             <xpath expr="//field[@name='name']" position="before">
-                <div class="fw-bold fs-5" name="task_code">
-                    [<field name="code" class="oe_inline" />]
-                </div>
+                <span class="fw-bold fs-5 me-1">[<field name="code" />]</span>
             </xpath>
-            <!-- Move the name field inside the task_code div to ensure it appears after the code on a single line. -->
-            <xpath expr="//div[@name='task_code']" position="inside">
-                <xpath expr="//field[@name='name']" position="move" />
-            </xpath>
-            <xpath
-                expr="//div[@name='task_code']/field[@name='name']"
-                position="attributes"
-            >
+            <xpath expr="//field[@name='name']" position="attributes">
                 <attribute name="invisible">task_name_display == 'code'</attribute>
             </xpath>
         </field>
