@@ -6,19 +6,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-10-28 23:30+0000\n"
+"Last-Translator: Ben Brich <b.brich@humanilog.org>\n"
 "Language-Team: none\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: project_no_portal
 #: model:ir.model.fields,field_description:project_no_portal.field_res_company__block_project_portal_access
 #: model:ir.model.fields,field_description:project_no_portal.field_res_config_settings__block_project_portal_access
 msgid "Block portal access to projects and tasks"
-msgstr ""
+msgstr "Zugriff auf Projekte und Aufgaben über das Portal sperren"
 
 #. module: project_no_portal
 #: model:ir.model,name:project_no_portal.model_res_company
