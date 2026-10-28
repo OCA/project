@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <!-- Rename old 'Project Administrator' access group name and unlink
     the access rules for projects and tasks -->
