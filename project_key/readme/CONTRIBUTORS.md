@@ -1,0 +1,8 @@
+- Petar Najman \<<petar.najman@modoolar.com>\>
+- Sladjan Kantar \<<sladjan.kantar@modoolar.com>\>
+- [CorporateHub](https://corporatehub.eu/)
+  - Alexey Pelykh \<<alexey.pelykh@corphub.eu>\>
+- Saran Lim. \<<saranl@ecosoft.co.th>\>
+- Tharathip Chaweewongphan \<<tharathipc@ecosoft.co.th>\>
+- [Heliconia Solutions Pvt. Ltd.](https://www.heliconia.io)
+  - Bhavesh Heliconia
