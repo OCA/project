@@ -6,23 +6,25 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-10-28 23:30+0000\n"
+"Last-Translator: Ben Brich <b.brich@humanilog.org>\n"
 "Language-Team: none\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: project_stakeholder
 #: model:ir.model,name:project_stakeholder.model_res_partner
 msgid "Contact"
-msgstr ""
+msgstr "Kontakt"
 
 #. module: project_stakeholder
 #: model_terms:ir.actions.act_window,help:project_stakeholder.action_project_stakeholder_role
 msgid "Create a Stakeholder Role"
-msgstr ""
+msgstr "Stakeholder Rolle erstellen"
 
 #. module: project_stakeholder
 #: model:ir.model.fields,field_description:project_stakeholder.field_project_stakeholder__create_uid
