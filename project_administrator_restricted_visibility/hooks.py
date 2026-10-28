@@ -3,24 +3,8 @@
 
 
 def uninstall_hook(env):
-    """Restore the original project and task manager rules."""
-    # Removing the 'group_full_project_manager' group before renaming the original
-    # 'Project: Administrator' group (project.group_project_manager) to 'Administrator'
-    # in order to avoid getting a SQL constraint error:
-    # 'duplicate key value violates unique constraint "res_groups_name_uniq'"
-    group_full_project_manager = env.ref(
-        "project_administrator_restricted_visibility.group_full_project_manager"
-    )
-    group_full_project_manager.write({"rule_groups": [(5, 0, 0)]})
-    group_full_project_manager.unlink()
-    # Rename the original 'Project: Administrator' access group back to 'Administrator'
-    # and reassign the access rules for projects and tasks that it previously had.
-    env.ref("project.group_project_manager").write(
-        {
-            "name": "Administrator",
-            "rule_groups": [
-                (4, env.ref("project.project_project_manager_rule").id),
-                (4, env.ref("project.project_manager_all_project_tasks_rule").id),
-            ],
-        }
-    )
+    """Restore the original project administrator group name."""
+    # The access restrictions and the 'group_full_project_manager' group are module
+    # data, so they are removed on uninstall. Only the renamed 'Project:
+    # Administrator' access group (project.group_project_manager) needs restoring.
+    env.ref("project.group_project_manager").write({"name": "Administrator"})
