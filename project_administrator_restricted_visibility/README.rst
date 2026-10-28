@@ -21,13 +21,13 @@ Project Administrator Restricted Visibility
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fproject-lightgray.png?logo=github
-    :target: https://github.com/OCA/project/tree/19.0/project_administrator_restricted_visibility
+    :target: https://github.com/OCA/project/tree/20.0/project_administrator_restricted_visibility
     :alt: OCA/project
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/project-19-0/project-19-0-project_administrator_restricted_visibility
+    :target: https://translation.odoo-community.org/projects/project-20-0/project-20-0-project_administrator_restricted_visibility
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/project&target_branch=19.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/project&target_branch=20.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
@@ -58,13 +58,32 @@ The new group has the same access rights as the administrator (and see
 the same menus), but project and task visibility is restricted as a
 project user.
 
+Known issues / Roadmap
+======================
+
+Since 20.0, visibility is limited by two ``ir.access`` restrictions
+(records without a group) whose domain only applies to users in
+*Restricted Administrator* but not in *Full Administrator*, using
+``user.has_groups()``. Restrictions are combined with every permission,
+so they also limit the "see all" permissions that other modules grant to
+project administrators (e.g. ``hr_timesheet``, ``project_todo``).
+Archiving or overriding the core permissions would not cover those.
+
+Limitations:
+
+- The restrictions are evaluated for every user. Users outside the
+  restricted group get an empty domain, so their queries are unchanged.
+- Restricted administrators can only create, edit or delete projects and
+  tasks they can see. They can't create a private project managed by
+  someone else.
+
 Bug Tracker
 ===========
 
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/project/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/project/issues/new?body=module:%20project_administrator_restricted_visibility%0Aversion:%2019.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/project/issues/new?body=module:%20project_administrator_restricted_visibility%0Aversion:%2020.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -108,14 +127,14 @@ promote its widespread use.
 .. |maintainer-rafaelbn| image:: https://github.com/rafaelbn.png?size=40px
     :target: https://github.com/rafaelbn
     :alt: rafaelbn
-.. |maintainer-edlopen| image:: https://github.com/edlopen.png?size=40px
-    :target: https://github.com/edlopen
-    :alt: edlopen
+.. |maintainer-chienandalu| image:: https://github.com/chienandalu.png?size=40px
+    :target: https://github.com/chienandalu
+    :alt: chienandalu
 
 Current `maintainers <https://odoo-community.org/page/maintainer-role>`__:
 
-|maintainer-rafaelbn| |maintainer-edlopen| 
+|maintainer-rafaelbn| |maintainer-chienandalu| 
 
-This module is part of the `OCA/project <https://github.com/OCA/project/tree/19.0/project_administrator_restricted_visibility>`_ project on GitHub.
+This module is part of the `OCA/project <https://github.com/OCA/project/tree/20.0/project_administrator_restricted_visibility>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
