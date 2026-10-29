@@ -6,15 +6,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 13.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-07-08 14:10+0000\n"
-"Last-Translator: Nils Coenen <nils.coenen@nico-solutions.de>\n"
+"PO-Revision-Date: 2026-10-29 17:46+0000\n"
+"Last-Translator: Ben Brich <b.brich@humanilog.org>\n"
 "Language-Team: none\n"
 "Language: de\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.17\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: project_role
 #. odoo-python
@@ -43,7 +43,7 @@ msgstr "%(parent)s / %(own)s"
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
 msgid "<span class=\"o_form_label\">Project Roles</span>"
-msgstr ""
+msgstr "<span class=\"o_form_label\">Projekt Rollen</span>"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__message_needaction
@@ -265,12 +265,12 @@ msgstr "Anzahl der Fehler"
 #. module: project_role
 #: model:ir.model.fields,help:project_role.field_project_assignment__message_needaction_counter
 msgid "Number of messages requiring action"
-msgstr ""
+msgstr "Anzahl der Nachrichten die eine Aktivität erfordern"
 
 #. module: project_role
 #: model:ir.model.fields,help:project_role.field_project_assignment__message_has_error_counter
 msgid "Number of messages with delivery error"
-msgstr "Dies ist die Anzahl von Nachrichten mit einem Übertragungsfehler."
+msgstr "Anzahl der Nachrichten mit einem Übertragungsfehler"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_role__parent_path
@@ -333,7 +333,7 @@ msgstr "Projekt-Rollenzuweisungen"
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__rating_ids
 msgid "Ratings"
-msgstr ""
+msgstr "Bewertungen"
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__role_id
@@ -411,7 +411,7 @@ msgstr "Der Benutzer sollte einer Rolle nur einmal zugewiesen sein!"
 #. module: project_role
 #: model_terms:ir.ui.view,arch_db:project_role.res_config_settings_view_form
 msgid "Values set here are company-specific."
-msgstr ""
+msgstr "Die hier festgelegten Werte sind unternehmensspezifisch."
 
 #. module: project_role
 #: model:ir.model.fields,field_description:project_role.field_project_assignment__website_message_ids
