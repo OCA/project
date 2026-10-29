@@ -1,2 +1,4 @@
 - Alan Ramos \<<alan.ramos@jarsa.com>\>
 - `Heliconia Solutions Pvt. Ltd. <https://www.heliconia.io>`_
+- [ForgeFlow](https://www.forgeflow.com):
+  - Thiago Mulero \<<thiago.mulero@forgeflow.com>\>

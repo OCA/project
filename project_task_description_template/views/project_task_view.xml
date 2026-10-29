@@ -10,4 +10,35 @@
             </xpath>
         </field>
     </record>
+    <record id="project_sharing_project_task_view_form" model="ir.ui.view">
+        <field name="name">project.sharing.project.task.view.form</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.project_sharing_project_task_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='tag_ids']" position="after">
+                <field
+                    name="description_template_id"
+                    required="not id and portal_description_template_required"
+                    options="{'no_create': True, 'no_open': True}"
+                />
+            </xpath>
+        </field>
+    </record>
+    <record id="project_sharing_quick_create_task_form" model="ir.ui.view">
+        <field name="name">project.task.form.quick_create</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.project_sharing_quick_create_task_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="project_id" invisible="1" />
+                <field name="description" invisible="1" />
+                <field
+                    name="description_template_id"
+                    invisible="not portal_description_template_required"
+                    required="portal_description_template_required"
+                    options="{'no_create': True, 'no_open': True}"
+                />
+            </xpath>
+        </field>
+    </record>
 </odoo>
