@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-10-28 23:30+0000\n"
+"PO-Revision-Date: 2026-10-29 17:46+0000\n"
 "Last-Translator: Ben Brich <b.brich@humanilog.org>\n"
 "Language-Team: none\n"
 "Language: de\n"
@@ -25,17 +25,19 @@ msgstr "Zugriff auf Projekte und Aufgaben über das Portal sperren"
 #. module: project_no_portal
 #: model:ir.model,name:project_no_portal.model_res_company
 msgid "Companies"
-msgstr ""
+msgstr "Unternehmen"
 
 #. module: project_no_portal
 #: model:ir.model,name:project_no_portal.model_res_config_settings
 msgid "Config Settings"
-msgstr ""
+msgstr "Konfiguration"
 
 #. module: project_no_portal
 #: model:ir.model,name:project_no_portal.model_project_portal_block_mixin
 msgid "Deny portal users access for companies that block it"
 msgstr ""
+"Portalbenutzern von Unternehmen, die den Zugriff blockieren, den Zugriff "
+"verweigern"
 
 #. module: project_no_portal
 #: model:ir.model.fields,help:project_no_portal.field_project_project__privacy_visibility
@@ -55,21 +57,49 @@ msgid ""
 "\n"
 "In any case, an internal user with no project access rights can still access a task, provided that they are given the corresponding URL (and that they are part of the followers if the project is private)."
 msgstr ""
+"Personen, für die dieses Projekt und seine Aufgaben sichtbar sind.\n"
+"\n"
+"- Eingeladene interne Benutzer: Wenn interne Benutzer einem Projekt folgen, "
+"erhalten sie uneingeschränkten Zugriff auf alle dessen Aufgaben. Andernfalls "
+"erhalten sie nur Zugriff auf die spezifischen Aufgaben, denen sie folgen.\n"
+" Ein Benutzer mit der Zugriffsberechtigungsstufe „Projekt > Administrator“ "
+"kann weiterhin auf dieses Projekt und seine Aufgaben zugreifen, auch wenn er "
+"nicht ausdrücklich zu den Followern gehört.\n"
+"\n"
+"- Alle internen Nutzer: Alle internen Nutzer können uneingeschränkt auf das "
+"Projekt und alle seine Aufgaben zugreifen.\n"
+"\n"
+"- Eingeladene Portalnutzer und alle internen Nutzer: Alle internen Nutzer "
+"können uneingeschränkt auf das Projekt und alle seine Aufgaben zugreifen.\n"
+"Wenn Portalnutzer einem Projekt folgen, erhalten sie nur Zugriff auf die "
+"spezifischen Aufgaben, denen sie folgen.\n"
+"\n"
+"Wird ein Projekt im schreibgeschützten Modus freigegeben, wird der "
+"Portalnutzer zu seinem Portal weitergeleitet. Er kann die Aufgaben, denen er "
+"folgt, einsehen, aber nicht bearbeiten.\n"
+"Wird ein Projekt mit Bearbeitungsrechten freigegeben, wird der "
+"Portalbenutzer zu den Kanban- und Listenansichten der Aufgaben "
+"weitergeleitet. Er kann eine ausgewählte Anzahl von Feldern der Aufgaben "
+"ändern.\n"
+"\n"
+"In jedem Fall kann ein interner Benutzer ohne Projektzugriffsrechte dennoch "
+"auf eine Aufgabe zugreifen, sofern ihm die entsprechende URL mitgeteilt wird "
+"(und er zu den Followern gehört, falls das Projekt privat ist)."
 
 #. module: project_no_portal
 #: model_terms:ir.ui.view,arch_db:project_no_portal.res_config_settings_view_form
 msgid "Portal Access"
-msgstr ""
+msgstr "Portal Zugriff"
 
 #. module: project_no_portal
 #: model:ir.model.fields,field_description:project_no_portal.field_project_task__portal_share_blocked
 msgid "Portal Share Blocked"
-msgstr ""
+msgstr "Portal Freigabe gesperrt"
 
 #. module: project_no_portal
 #: model:ir.model,name:project_no_portal.model_portal_share
 msgid "Portal Sharing"
-msgstr ""
+msgstr "Portal Freigabe"
 
 #. module: project_no_portal
 #. odoo-python
@@ -78,6 +108,8 @@ msgid ""
 "Portal visibility is disabled for company %(company)s: portal users can not "
 "access its projects or tasks."
 msgstr ""
+"Die Sichtbarkeit des Portals ist für das Unternehmen %(company) deaktiviert: "
+"Portalbenutzer können nicht auf dessen Projekte oder Aufgaben zugreifen."
 
 #. module: project_no_portal
 #: model_terms:ir.ui.view,arch_db:project_no_portal.res_config_settings_view_form
@@ -85,11 +117,14 @@ msgid ""
 "Prevent portal users from reading projects and tasks, block portal "
 "visibility, and disable the share actions."
 msgstr ""
+"Verhindern Sie, dass Portalbenutzer Projekte und Aufgaben einsehen können, "
+"sperren Sie die Sichtbarkeit im Portal und deaktivieren Sie die "
+"Freigabefunktionen."
 
 #. module: project_no_portal
 #: model:ir.model,name:project_no_portal.model_project_project
 msgid "Project"
-msgstr ""
+msgstr "Projekt"
 
 #. module: project_no_portal
 #. odoo-python
@@ -99,16 +134,19 @@ msgid ""
 "Sharing is disabled for company %(company)s: portal users can not access its"
 " projects or tasks. An administrator can allow it in Settings > Project."
 msgstr ""
+"Die Freigabe ist für das Unternehmen %(company) deaktiviert: Portalbenutzer "
+"können nicht auf dessen Projekte oder Aufgaben zugreifen. Ein Administrator "
+"kann dies unter „Einstellungen > Projekt“ aktivieren."
 
 #. module: project_no_portal
 #: model:ir.model,name:project_no_portal.model_project_task
 msgid "Task"
-msgstr ""
+msgstr "Aufgabe"
 
 #. module: project_no_portal
 #: model:ir.model.fields,field_description:project_no_portal.field_project_project__privacy_visibility
 msgid "Visibility"
-msgstr ""
+msgstr "Sichtbarkeit"
 
 #. module: project_no_portal
 #: model:ir.model.fields,help:project_no_portal.field_res_config_settings__block_project_portal_access
@@ -116,6 +154,9 @@ msgid ""
 "When enabled, portal users of the selected company cannot read its projects "
 "or tasks, and portal visibility cannot be set on them."
 msgstr ""
+"Wenn diese Option aktiviert ist, können Portalbenutzer des ausgewählten "
+"Unternehmens dessen Projekte oder Aufgaben nicht einsehen, und es kann keine "
+"Sichtbarkeit im Portal für diese festgelegt werden."
 
 #. module: project_no_portal
 #: model:ir.model.fields,help:project_no_portal.field_res_company__block_project_portal_access
@@ -123,3 +164,6 @@ msgid ""
 "When enabled, portal users of this company cannot read its projects or "
 "tasks, and portal visibility cannot be set on them."
 msgstr ""
+"Wenn diese Option aktiviert ist, können Portalbenutzer dieses Unternehmens "
+"dessen Projekte oder Aufgaben nicht einsehen, und es kann keine Sichtbarkeit "
+"für diese festgelegt werden."
