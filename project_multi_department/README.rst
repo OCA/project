@@ -1,7 +1,3 @@
-.. image:: https://odoo-community.org/readme-banner-image
-   :target: https://odoo-community.org/get-involved?utm_source=readme
-   :alt: Odoo Community Association
-
 =======================================
 Project Multi Department Classification
 =======================================
@@ -17,7 +13,7 @@ Project Multi Department Classification
 .. |badge1| image:: https://img.shields.io/badge/maturity-Beta-yellow.png
     :target: https://odoo-community.org/page/development-status
     :alt: Beta
-.. |badge2| image:: https://img.shields.io/badge/license-AGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/licence-AGPL--3-blue.png
     :target: http://www.gnu.org/licenses/agpl-3.0-standalone.html
     :alt: License: AGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fproject-lightgray.png?logo=github
@@ -32,9 +28,12 @@ Project Multi Department Classification
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
-This module allows to assign Departments to Projects. The default
-security rules allow members of departments to access the department
-related projects and tasks
+This module allows to assign Departments to Projects.
+
+Internal users, project administrators included, only see a project with
+departments, and its tasks, if their employee belongs to one of these
+departments. Private projects, portal users, the project manager and
+task assignees (for their tasks) are not restricted.
 
 If you want to assign only one department to projects you might like
 project_department module
