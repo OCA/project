@@ -19,11 +19,13 @@
                     type="object"
                     icon="fa-shopping-cart"
                 >
-                    <field
-                        string="Purchase Total"
-                        name="purchase_line_total"
-                        widget="statinfo"
-                    />
+                    <div class="o_form_field o_stat_info">
+                        <span class="o_stat_value">
+                            <field name="currency_id" invisible="1" />
+                            <field name="purchase_line_total" />
+                        </span>
+                        <span class="o_stat_text">Purchase Total</span>
+                    </div>
                 </button>
                 <button
                     class="oe_stat_button"
@@ -43,11 +45,12 @@
                     type="object"
                     icon="fa-pencil-square-o"
                 >
-                    <field
-                        string="Purchase Invoice Total"
-                        name="purchase_invoice_line_total"
-                        widget="statinfo"
-                    />
+                    <div class="o_form_field o_stat_info">
+                        <span class="o_stat_value">
+                            <field name="purchase_invoice_line_total" />
+                        </span>
+                        <span class="o_stat_text">Purchase Invoice Total</span>
+                    </div>
                 </button>
             </div>
         </field>
