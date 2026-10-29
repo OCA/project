@@ -22,6 +22,7 @@ Available addons
 ----------------
 addon | version | maintainers | summary
 --- | --- | --- | ---
+[project_analytic_code](project_analytic_code/) | 14.0.1.0.0 |  | Search projects by analytic account code.
 [project_category](project_category/) | 14.0.1.0.0 |  | Project Types
 [project_deadline](project_deadline/) | 14.0.1.0.0 |  | Start date and deadline of projects.
 [project_duplicate_subtask](project_duplicate_subtask/) | 14.0.1.0.0 |  | The module adds an action to duplicate tasks with the child subtasks
