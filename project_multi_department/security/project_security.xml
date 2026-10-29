@@ -25,4 +25,50 @@
             ('project_id.department_ids.member_ids.user_id', '=', user.id),
         ]</field>
     </record>
+    <record id="report_project_task_user_multi_department_global_rule" model="ir.rule">
+        <field name="name">Tasks Analysis: department members only</field>
+        <field name="model_id" ref="project.model_report_project_task_user" />
+        <field name="domain_force">[(1, '=', 1)] if user.share else [
+            '|', '|', '|', '|',
+            ('project_id.privacy_visibility', '=', 'followers'),
+            ('project_id.department_ids', '=', False),
+            ('project_id.user_id', '=', user.id),
+            ('user_ids', 'in', user.id),
+            ('project_id.department_ids.member_ids.user_id', '=', user.id),
+        ]</field>
+    </record>
+    <record id="burndown_chart_multi_department_global_rule" model="ir.rule">
+        <field name="name">Burndown chart: department members only</field>
+        <field name="model_id" ref="project.model_project_task_burndown_chart_report" />
+        <!-- Rows are aggregated per project and stage: no task assignee to check -->
+        <field name="domain_force">[(1, '=', 1)] if user.share else [
+            '|', '|', '|',
+            ('project_id.privacy_visibility', '=', 'followers'),
+            ('project_id.department_ids', '=', False),
+            ('project_id.user_id', '=', user.id),
+            ('project_id.department_ids.member_ids.user_id', '=', user.id),
+        ]</field>
+    </record>
+    <record id="project_update_multi_department_global_rule" model="ir.rule">
+        <field name="name">Project/Update: department members only</field>
+        <field name="model_id" ref="project.model_project_update" />
+        <field name="domain_force">[(1, '=', 1)] if user.share else [
+            '|', '|', '|',
+            ('project_id.privacy_visibility', '=', 'followers'),
+            ('project_id.department_ids', '=', False),
+            ('project_id.user_id', '=', user.id),
+            ('project_id.department_ids.member_ids.user_id', '=', user.id),
+        ]</field>
+    </record>
+    <record id="project_milestone_multi_department_global_rule" model="ir.rule">
+        <field name="name">Project/Milestone: department members only</field>
+        <field name="model_id" ref="project.model_project_milestone" />
+        <field name="domain_force">[(1, '=', 1)] if user.share else [
+            '|', '|', '|',
+            ('project_id.privacy_visibility', '=', 'followers'),
+            ('project_id.department_ids', '=', False),
+            ('project_id.user_id', '=', user.id),
+            ('project_id.department_ids.member_ids.user_id', '=', user.id),
+        ]</field>
+    </record>
 </odoo>

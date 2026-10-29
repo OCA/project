@@ -107,6 +107,36 @@ class TestProjectMultiDepartment(TransactionCase):
             self._visible(self.user_b, self.task_internal), self.task_internal
         )
         self.assertFalse(self._visible(self.user_b, self.project_internal))
+        self.env.flush_all()
+        report = self.env["report.project.task.user"].with_user(self.user_b)
+        self.assertTrue(report.search([("task_id", "=", self.task_internal.id)]))
+
+    def test_reports(self):
+        project = self.project_internal
+        self.task_internal.stage_id = self.env["project.task.type"].create(
+            {"name": "New", "project_ids": [(4, project.id)]}
+        )
+        self.env["project.milestone"].create({"name": "M", "project_id": project.id})
+        self.env["project.update"].create(
+            {"name": "U", "status": "on_track", "project_id": project.id}
+        )
+        self.env.flush_all()
+        domain = [("project_id", "=", project.id)]
+        for model in (
+            "report.project.task.user",
+            "project.milestone",
+            "project.update",
+        ):
+            self.assertTrue(self.env[model].with_user(self.user_a).search(domain))
+            self.assertFalse(self.env[model].with_user(self.user_b).search(domain))
+        burndown = self.env["project.task.burndown.chart.report"]
+        groupby = ["date:month", "stage_id"]
+        self.assertTrue(
+            burndown.with_user(self.user_a)._read_group(domain, groupby, ["__count"])
+        )
+        self.assertFalse(
+            burndown.with_user(self.user_b)._read_group(domain, groupby, ["__count"])
+        )
 
     def test_project_administrator(self):
         admin = new_test_user(
