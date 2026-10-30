@@ -1,45 +1,30 @@
 # Copyright 2024 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
+from odoo import Command
+
 from odoo.addons.base.tests.common import BaseCommon
 
 
 class TestProjectTaskStageState(BaseCommon):
+    _test_user_groups = None
+
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
-        cls.project = cls.env["project.project"].create(
-            {
-                "name": "Test Project",
-            }
-        )
+        cls.project = cls.env["project.project"].create({"name": "Test Project"})
 
         # Create stages manually instead of using demo data
         cls.stage_new = cls.env["project.task.type"].create(
-            {
-                "name": "New",
-                "sequence": 1,
-            }
+            {"name": "New", "sequence": 1}
         )
         cls.stage_in_progress = cls.env["project.task.type"].create(
-            {
-                "name": "In Progress",
-                "sequence": 2,
-                "task_state": "01_in_progress",
-            }
+            {"name": "In Progress", "sequence": 2, "task_state": "01_in_progress"}
         )
         cls.stage_done = cls.env["project.task.type"].create(
-            {
-                "name": "Done",
-                "sequence": 3,
-                "task_state": "1_done",
-            }
+            {"name": "Done", "sequence": 3, "task_state": "1_done"}
         )
         cls.stage_canceled = cls.env["project.task.type"].create(
-            {
-                "name": "Canceled",
-                "sequence": 4,
-                "task_state": "1_canceled",
-            }
+            {"name": "Canceled", "sequence": 4, "task_state": "1_canceled"}
         )
 
         # Create task manually instead of using demo data
@@ -128,3 +113,14 @@ class TestProjectTaskStageState(BaseCommon):
         finally:
             # Restore the original selection after the test
             self.env["project.task"]._fields["state"].selection = original_selection
+
+    def test_stage_changes_requested(self):
+        stage = self.env["project.task.type"].create(
+            {
+                "name": "Changes Requested",
+                "task_state": "02_changes_requested",
+                "project_ids": [Command.link(self.project.id)],
+            }
+        )
+        self.task.stage_id = stage.id
+        self.assertEqual(self.task.state, "02_changes_requested")

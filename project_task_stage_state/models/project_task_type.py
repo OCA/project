@@ -32,4 +32,4 @@ class ProjectTaskType(models.Model):
                 ("stage_id", "in", stages.ids),
                 ("state", "not in", list(CLOSED_STATES)),
             ]
-        )._inverse_stage_id()
+        )._set_task_state()
