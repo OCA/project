@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-05-12 08:45+0000\n"
+"PO-Revision-Date: 2026-10-30 14:46+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -45,7 +45,7 @@ msgstr ""
 "- Sostituisci: sovrascrive gli utenti esistenti\n"
 "- Unisci: aggiunge gli utenti predefiniti a quelli esistenti\n"
 "\n"
-"Applicato alla creazione dell'attività e ai cambi di fase."
+"Applicato alla creazione del lavoro e ai cambi di fase."
 
 #. module: project_task_default_user
 #: model:ir.model.fields,help:project_task_default_user.field_project_project__default_user_ids
