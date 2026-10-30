@@ -167,3 +167,25 @@ class TestProjectHr(BaseCommon):
         self.assertIn(self.hr_category_2, task_categories)
         # This operation shouldn't give error
         self.task.hr_category_ids = [Command.link(self.hr_category.id)]
+
+    def test_task_assign_as_regular_user(self):
+        """A project user without HR access must be able to assign a task that
+        has an employee category.
+
+        Only `hr.group_hr_user` can read `hr.employee`, so neither the assignee
+        domain nor the constraint may traverse employees as the current user.
+        """
+        self.assertFalse(self.user1.has_group("hr.group_hr_user"))
+        task = self.task.with_user(self.user1)
+        # The web client evaluates the domain as the current user when
+        # searching assignees
+        users = self.env["res.users"].with_user(self.user1).search(task.domain_user_ids)
+        self.assertIn(self.user1, users)
+        self.assertNotIn(self.user2, users)
+        # Unassign and assign again as the regular user
+        task.user_ids = [Command.clear()]
+        task.user_ids = [Command.set(self.user1.ids)]
+        self.assertEqual(task.employee_ids, self.employee)
+        # A user not belonging to the category is still rejected
+        with self.assertRaises(ValidationError):
+            task.user_ids = [Command.set(self.user2.ids)]
