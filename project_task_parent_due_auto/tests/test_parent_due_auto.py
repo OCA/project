@@ -91,3 +91,11 @@ class AnalyticCommon(BaseCommon):
             self.date_10,
             "Creating child with deadline should update parent",
         )
+
+    def test_closing_child_updates_parent(self):
+        self.task_3.parent_id = self.task_1
+        self.task_2.date_deadline = self.date_1
+        self.task_3.date_deadline = self.date_5
+        self.assertEqual(self.task_1.date_deadline, self.date_1)
+        self.task_2.state = "1_done"
+        self.assertEqual(self.task_1.date_deadline, self.date_5)
