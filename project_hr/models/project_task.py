@@ -51,23 +51,34 @@ class ProjectTask(models.Model):
         for task in self:
             domain = [("share", "=", False), ("active", "=", True)]
             if task.hr_category_ids:
-                domain = [
-                    (
-                        "employee_ids.company_id",
-                        "=",
-                        (task.company_id.id or self.env.company.id),
-                    ),
-                    ("employee_ids.category_ids", "in", task.hr_category_ids.ids),
-                ]
+                # Regular users have no read access to hr.employee and its category_ids
+                # field is restricted to HR officers, so the search would raise an
+                # AccessError for them. Resolve the allowed users with sudo and
+                # expose only their ids.
+                employees = (
+                    self.env["hr.employee"]
+                    .sudo()
+                    .search(
+                        [
+                            (
+                                "company_id",
+                                "=",
+                                (task.company_id.id or self.env.company.id),
+                            ),
+                            ("category_ids", "in", task.hr_category_ids.ids),
+                            ("user_id", "!=", False),
+                        ]
+                    )
+                )
+                domain = [("id", "in", employees.user_id.ids)]
             task.domain_user_ids = domain
 
     @api.constrains("hr_category_ids", "user_ids")
     def _check_employee_category_user(self):
         """Check user's employee belong to the selected category."""
         for task in self.filtered(lambda x: x.hr_category_ids and x.user_ids):
-            if any(
-                x not in task.employee_ids.category_ids for x in task.hr_category_ids
-            ):
+            employee_categories = task.employee_ids.sudo().category_ids
+            if any(x not in employee_categories for x in task.hr_category_ids):
                 raise exceptions.ValidationError(
                     self.env._(
                         "You can't assign a user not belonging to the selected "
