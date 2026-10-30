@@ -6,34 +6,36 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-10-30 14:46+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: project_no_portal
 #: model:ir.model.fields,field_description:project_no_portal.field_res_company__block_project_portal_access
 #: model:ir.model.fields,field_description:project_no_portal.field_res_config_settings__block_project_portal_access
 msgid "Block portal access to projects and tasks"
-msgstr ""
+msgstr "Blocca l’accesso tramite portale a progetti e lavori"
 
 #. module: project_no_portal
 #: model:ir.model,name:project_no_portal.model_res_company
 msgid "Companies"
-msgstr ""
+msgstr "Aziende"
 
 #. module: project_no_portal
 #: model:ir.model,name:project_no_portal.model_res_config_settings
 msgid "Config Settings"
-msgstr ""
+msgstr "Impostazioni di configurazione"
 
 #. module: project_no_portal
 #: model:ir.model,name:project_no_portal.model_project_portal_block_mixin
 msgid "Deny portal users access for companies that block it"
-msgstr ""
+msgstr "Nega agli utenti del portale l’accesso alle aziende che lo bloccano"
 
 #. module: project_no_portal
 #: model:ir.model.fields,help:project_no_portal.field_project_project__privacy_visibility
@@ -53,21 +55,49 @@ msgid ""
 "\n"
 "In any case, an internal user with no project access rights can still access a task, provided that they are given the corresponding URL (and that they are part of the followers if the project is private)."
 msgstr ""
+"Persone alle quali questo progetto e i relativi lavori saranno visibili.\n"
+"\n"
+"- Utenti interni invitati: quando seguono un progetto, gli utenti interni "
+"ottengono accesso a tutti i suoi lavori senza distinzione. In caso "
+"contrario, avranno accesso solo ai lavori specifici che stanno seguendo.\n"
+" Un utente con livello di accesso progetto > amministratore può comunque "
+"accedere a questo progetto e ai suoi lavori, anche se non fa esplicitamente "
+"parte dei follower.\n"
+"\n"
+"- Tutti gli utenti interni: tutti gli utenti interni possono accedere al "
+"progetto e a tutti i sui lavori senza distinzione.\n"
+"\n"
+"- Utenti del portale invitati e tutti gli utenti interni: tutti gli utenti "
+"interni possono accedere al progetto e a tutti i suoi lavori senza "
+"distinzione.\n"
+"Quando seguono un progetto, gli utenti del portale avranno accesso solo ai "
+"lavori specifici che stanno seguendo.\n"
+"\n"
+"Quando un progetto viene condiviso in sola lettura, l’utente del portale "
+"viene reindirizzato al proprio portale. Può visualizzare i lavori che sta "
+"seguendo, ma non modificarle.\n"
+"Quando un progetto viene condiviso in modalità modifica, l’utente del "
+"portale viene reindirizzato alle viste kanban ed elenco dei lavori. Può "
+"modificare un numero selezionato di campi dei lavori.\n"
+"\n"
+"In ogni caso, un utente interno senza diritti di accesso ai progetti può "
+"comunque accedere a un lavori, a condizione che gli venga fornito il "
+"relativo URL (e che faccia parte dei follower se il progetto è privato)."
 
 #. module: project_no_portal
 #: model_terms:ir.ui.view,arch_db:project_no_portal.res_config_settings_view_form
 msgid "Portal Access"
-msgstr ""
+msgstr "Accesso al portale"
 
 #. module: project_no_portal
 #: model:ir.model.fields,field_description:project_no_portal.field_project_task__portal_share_blocked
 msgid "Portal Share Blocked"
-msgstr ""
+msgstr "Condivisione portale bloccata"
 
 #. module: project_no_portal
 #: model:ir.model,name:project_no_portal.model_portal_share
 msgid "Portal Sharing"
-msgstr ""
+msgstr "Condivisione portale"
 
 #. module: project_no_portal
 #. odoo-python
@@ -76,6 +106,8 @@ msgid ""
 "Portal visibility is disabled for company %(company)s: portal users can not "
 "access its projects or tasks."
 msgstr ""
+"La visibilità sul portale è disabilitata per l’azienda %(company)s: gli "
+"utenti del portale non possono accedere ai suoi progetti o ai suoi lavori."
 
 #. module: project_no_portal
 #: model_terms:ir.ui.view,arch_db:project_no_portal.res_config_settings_view_form
@@ -83,11 +115,13 @@ msgid ""
 "Prevent portal users from reading projects and tasks, block portal "
 "visibility, and disable the share actions."
 msgstr ""
+"Impedisce agli utenti del portale di visualizzare progetti e lavori, blocca "
+"la visibilità sul portale e disabilita le azioni di condivisione."
 
 #. module: project_no_portal
 #: model:ir.model,name:project_no_portal.model_project_project
 msgid "Project"
-msgstr ""
+msgstr "Progetto"
 
 #. module: project_no_portal
 #. odoo-python
@@ -97,16 +131,19 @@ msgid ""
 "Sharing is disabled for company %(company)s: portal users can not access its"
 " projects or tasks. An administrator can allow it in Settings > Project."
 msgstr ""
+"La condivisione è disabilitata per l’azienda %(company)s: gli utenti del "
+"portale non possono accedere ai suoi progetti o ai suoi lavori. Un "
+"amministratore può abilitarla in Impostazioni > Progetto."
 
 #. module: project_no_portal
 #: model:ir.model,name:project_no_portal.model_project_task
 msgid "Task"
-msgstr ""
+msgstr "Lavoro"
 
 #. module: project_no_portal
 #: model:ir.model.fields,field_description:project_no_portal.field_project_project__privacy_visibility
 msgid "Visibility"
-msgstr ""
+msgstr "Visibilità"
 
 #. module: project_no_portal
 #: model:ir.model.fields,help:project_no_portal.field_res_config_settings__block_project_portal_access
@@ -114,6 +151,9 @@ msgid ""
 "When enabled, portal users of the selected company cannot read its projects "
 "or tasks, and portal visibility cannot be set on them."
 msgstr ""
+"Quando è attiva, gli utenti del portale dell’azienda selezionata non possono "
+"visualizzare i relativi progetti o i relativi lavori e non è possibile "
+"impostarne la visibilità sul portale."
 
 #. module: project_no_portal
 #: model:ir.model.fields,help:project_no_portal.field_res_company__block_project_portal_access
@@ -121,3 +161,6 @@ msgid ""
 "When enabled, portal users of this company cannot read its projects or "
 "tasks, and portal visibility cannot be set on them."
 msgstr ""
+"Quando è attiva, gli utenti del portale di questa azienda non possono "
+"visualizzare i relativi progetti o i relativi lavori e non è possibile "
+"impostarne la visibilità sul portale."
