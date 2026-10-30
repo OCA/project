@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2026-03-26 13:45+0000\n"
+"PO-Revision-Date: 2026-10-30 14:46+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -92,9 +92,8 @@ msgid ""
 "Automatically cancel tasks after staying in this stage for the specified "
 "number of days. Set to 0 to disable this feature."
 msgstr ""
-"Annulla automaticamente le attività dopo essere rimasta in questa fase per "
-"il numero di giorni specificato. Imposta su 0 per disabilitare questa "
-"funzione."
+"Annulla automaticamente i lavori dopo essere rimasta in questa fase per il "
+"numero di giorni specificato. Imposta su 0 per disabilitare questa funzione."
 
 #. module: project_task_stage_auto_state
 #: model:ir.model.fields,help:project_task_stage_auto_state.field_project_task_type__auto_done_days
@@ -102,14 +101,14 @@ msgid ""
 "Automatically mark tasks as done after staying in this stage for the "
 "specified number of days. Set to 0 to disable this feature."
 msgstr ""
-"Contrassegna automaticamente le attività come completate dopo essere rimaste "
-"in questa fase per il numero di giorni specificato. Imposta su 0 per "
+"Contrassegna automaticamente i lavori come completate dopo essere rimaste in "
+"questa fase per il numero di giorni specificato. Imposta su 0 per "
 "disabilitare questa funzione."
 
 #. module: project_task_stage_auto_state
 #: model:ir.actions.server,name:project_task_stage_auto_state.ir_cron_auto_change_task_state_ir_actions_server
 msgid "Project: Auto-change task state by stage"
-msgstr "Progetto: cambio automatico dello stato dell'attività in base alla fase"
+msgstr "Progetto: cambio automatico dello stato del lavoro in base alla fase"
 
 #. module: project_task_stage_auto_state
 #: model:ir.model,name:project_task_stage_auto_state.model_project_task
@@ -126,8 +125,8 @@ msgstr "Fase lavoro"
 #: code:addons/project_task_stage_auto_state/models/project_task.py:0
 msgid "Task automatically %(mode)s after %(days)i days in stage '%(stage)s'."
 msgstr ""
-"L'attività viene eseguita automaticamente %(mode)s dopo %(days)i giorni "
-"nella fase '%(stage)s'."
+"Il lavoro viene eseguito automaticamente %(mode)s dopo %(days)i giorni nella "
+"fase '%(stage)s'."
 
 #. module: project_task_stage_auto_state
 #. odoo-python
