@@ -14,7 +14,7 @@ class ProjectTask(models.Model):
 
     def write(self, vals):
         res = super().write(vals)
-        if "date_deadline" in vals:
+        if "date_deadline" in vals or "state" in vals:
             self.update_parent_task_dates()
         return res
 
@@ -22,7 +22,9 @@ class ProjectTask(models.Model):
         for task in self:
             parent = task.parent_id
             if parent:
-                children = parent.child_ids.filtered("date_deadline")
+                children = parent.child_ids.filtered(
+                    lambda child: not child.is_closed and child.date_deadline
+                )
                 deadline = children and min(children.mapped("date_deadline"))
                 if deadline and parent.date_deadline != deadline:
                     parent.date_deadline = deadline
