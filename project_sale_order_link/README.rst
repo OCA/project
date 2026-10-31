@@ -1,7 +1,3 @@
-.. image:: https://odoo-community.org/readme-banner-image
-   :target: https://odoo-community.org/get-involved?utm_source=readme
-   :alt: Odoo Community Association
-
 =======================
 Project Sale Order Link
 =======================
@@ -17,24 +13,26 @@ Project Sale Order Link
 .. |badge1| image:: https://img.shields.io/badge/maturity-Alpha-red.png
     :target: https://odoo-community.org/page/development-status
     :alt: Alpha
-.. |badge2| image:: https://img.shields.io/badge/license-LGPL--3-blue.png
+.. |badge2| image:: https://img.shields.io/badge/licence-LGPL--3-blue.png
     :target: http://www.gnu.org/licenses/lgpl-3.0-standalone.html
     :alt: License: LGPL-3
 .. |badge3| image:: https://img.shields.io/badge/github-OCA%2Fproject-lightgray.png?logo=github
-    :target: https://github.com/OCA/project/tree/16.0/project_sale_order_link
+    :target: https://github.com/OCA/project/tree/18.0/project_sale_order_link
     :alt: OCA/project
 .. |badge4| image:: https://img.shields.io/badge/weblate-Translate%20me-F47D42.png
-    :target: https://translation.odoo-community.org/projects/project-16-0/project-16-0-project_sale_order_link
+    :target: https://translation.odoo-community.org/projects/project-18-0/project-18-0-project_sale_order_link
     :alt: Translate me on Weblate
 .. |badge5| image:: https://img.shields.io/badge/runboat-Try%20me-875A7B.png
-    :target: https://runboat.odoo-community.org/builds?repo=OCA/project&target_branch=16.0
+    :target: https://runboat.odoo-community.org/builds?repo=OCA/project&target_branch=18.0
     :alt: Try me on Runboat
 
 |badge1| |badge2| |badge3| |badge4| |badge5|
 
-This module is glue module that allow you to see all order linked to project, project tasks or employee map.
+This module is glue module that allow you to see all order linked to
+project, project tasks or employee map.
 
-Now you have 2 available fields referencing related sale orders and sale order lines on each project.
+Now you have 2 available fields referencing related sale orders and sale
+order lines on each project.
 
 .. IMPORTANT::
    This is an alpha version, the data model and design can change at any time without warning.
@@ -49,23 +47,25 @@ Now you have 2 available fields referencing related sale orders and sale order l
 Use Cases / Context
 ===================
 
-Currently a sales order can be linked to a project in the following ways:
+Currently a sales order can be linked to a project in the following
+ways:
 
-  * A sale order item is selected in project.
-  * A sale order item is selected in project task.
-  * A sale order item is selected in timesheet.
-  * A sale order item is selected in sale line/Employee map
+   - A sale order item is selected in project.
+   - A sale order item is selected in project task.
+   - A sale order item is selected in timesheet.
+   - A sale order item is selected in sale line/Employee map
 
-But in the project you can only see the selected order in the project itself.
+But in the project you can only see the selected order in the project
+itself.
 
 Usage
 =====
 
 To use this module, you need to:
 
-#. Go to Project > Configuration > Projects.
-#. Click on a project.
-#. Click on Smartbutton to see sale orders linked.
+1. Go to Project > Configuration > Projects.
+2. Click on a project.
+3. Click on Smartbutton to see sale orders linked.
 
 Bug Tracker
 ===========
@@ -73,7 +73,7 @@ Bug Tracker
 Bugs are tracked on `GitHub Issues <https://github.com/OCA/project/issues>`_.
 In case of trouble, please check there if your issue has already been reported.
 If you spotted it first, help us to smash it by providing a detailed and welcomed
-`feedback <https://github.com/OCA/project/issues/new?body=module:%20project_sale_order_link%0Aversion:%2016.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
+`feedback <https://github.com/OCA/project/issues/new?body=module:%20project_sale_order_link%0Aversion:%2018.0%0A%0A**Steps%20to%20reproduce**%0A-%20...%0A%0A**Current%20behavior**%0A%0A**Expected%20behavior**>`_.
 
 Do not contact contributors directly about support or help with technical issues.
 
@@ -81,18 +81,18 @@ Credits
 =======
 
 Authors
-~~~~~~~
+-------
 
 * Moduon
 
 Contributors
-~~~~~~~~~~~~
+------------
 
-* Emilio Pascual (`Moduon <https://www.moduon.team/>`__)
-* Rafael Blasco (`Moduon <https://www.moduon.team/>`__)
+- Emilio Pascual (`Moduon <https://www.moduon.team/>`__)
+- Rafael Blasco (`Moduon <https://www.moduon.team/>`__)
 
 Maintainers
-~~~~~~~~~~~
+-----------
 
 This module is maintained by the OCA.
 
@@ -112,6 +112,6 @@ Current `maintainer <https://odoo-community.org/page/maintainer-role>`__:
 
 |maintainer-EmilioPascual| 
 
-This module is part of the `OCA/project <https://github.com/OCA/project/tree/16.0/project_sale_order_link>`_ project on GitHub.
+This module is part of the `OCA/project <https://github.com/OCA/project/tree/18.0/project_sale_order_link>`_ project on GitHub.
 
 You are welcome to contribute. To learn how please visit https://odoo-community.org/page/Contribute.
