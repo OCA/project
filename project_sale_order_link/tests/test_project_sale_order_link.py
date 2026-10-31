@@ -263,7 +263,7 @@ class TestProjectSaleOrderLink(TransactionCase):
         self.assertEqual(action["res_model"], "sale.order")
         self.assertEqual(action["context"], {"create": False, "show_sale": True})
         self.assertEqual(action["domain"], [["id", "in", linked_orders.ids]])
-        self.assertEqual(action["views"], [[False, "tree"], [False, "form"]])
+        self.assertEqual(action["views"], [[False, "list"], [False, "form"]])
         self.assertNotIn("res_id", action)
 
     def test_action_view_so_link_single_order(self):

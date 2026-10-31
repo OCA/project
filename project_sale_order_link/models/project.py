@@ -48,7 +48,7 @@ class Project(models.Model):
             "type": "ir.actions.act_window",
             "res_model": "sale.order",
             "name": "Sales Order",
-            "views": [[False, "tree"], [False, "form"]],
+            "views": [[False, "list"], [False, "form"]],
             "context": {"create": False, "show_sale": True},
             "domain": [["id", "in", so_ids]],
         }
