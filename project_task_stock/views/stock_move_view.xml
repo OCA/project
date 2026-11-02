@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-    <record model="ir.actions.act_window" id="action_project_task_moves">
+    <record id="action_project_task_moves" model="ir.actions.act_window">
         <field name="name">Inventory Moves</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">stock.move.line</field>
@@ -12,7 +12,7 @@
     <record id="view_stock_move_raw_list" model="ir.ui.view">
         <field name="name">stock.move.raw.list</field>
         <field name="model">stock.move</field>
-        <field name="priority">1000</field>
+        <field name="priority" eval="1000" />
         <field name="arch" type="xml">
             <list
                 editable="bottom"

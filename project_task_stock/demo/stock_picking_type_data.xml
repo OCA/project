@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo noupdate="1">
     <record id="stock_picking_type_tm_test" model="stock.picking.type">
         <field name="name">Task material</field>

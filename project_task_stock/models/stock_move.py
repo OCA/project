@@ -75,8 +75,9 @@ class StockMove(models.Model):
                 if f_name == "product_id":
                     f_value = self.env["product.product"].browse(f_value)
                 analytic_lines = task_analytic_lines.filtered(
-                    lambda x: x.unit_amount == data["unit_amount"]
-                    and x[f_name] == f_value
+                    lambda x: (
+                        x.unit_amount == data["unit_amount"] and x[f_name] == f_value
+                    )
                 )
                 analytic_lines.unlink()
         # It is important to do this process at the end, so that if
