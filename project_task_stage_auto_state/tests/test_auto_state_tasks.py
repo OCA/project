@@ -142,10 +142,8 @@ class TestAutoStateDoneCancel(TransactionCase):
         self.assertGreater(len(task.message_ids), len(previous_messages))
         self.assertTrue(
             any(
-                [
-                    "task automatically" in message.body.lower()
-                    for message in task.message_ids
-                ]
+                "task automatically" in message.body.lower()
+                for message in task.message_ids
             )
         )
 
