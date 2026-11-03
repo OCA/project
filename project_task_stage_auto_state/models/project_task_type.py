@@ -103,16 +103,17 @@ class ProjectTaskType(models.Model):
         """Check if the auto-done days are set and if at least one state
         is selected to allow marking as done."""
         for stage in self:
-            if stage.auto_done_days > 0:
-                if not stage._get_auto_x_allowed_states("done"):
-                    raise ValidationError(
-                        self.env._(
-                            "When 'Auto-mark as done after days' is set for stage "
-                            "'%(stage)s', at least one state must be selected "
-                            "to allow marking as done.",
-                            stage=stage.name,
-                        )
+            if stage.auto_done_days > 0 and not stage._get_auto_x_allowed_states(
+                "done"
+            ):
+                raise ValidationError(
+                    self.env._(
+                        "When 'Auto-mark as done after days' is set for stage "
+                        "'%(stage)s', at least one state must be selected "
+                        "to allow marking as done.",
+                        stage=stage.name,
                     )
+                )
 
     @api.constrains(
         "auto_cancel_days",
@@ -125,13 +126,14 @@ class ProjectTaskType(models.Model):
         """Check if the auto-cancel days are set and if at least one state
         is selected to allow auto-cancel."""
         for stage in self:
-            if stage.auto_cancel_days > 0:
-                if not stage._get_auto_x_allowed_states("cancel"):
-                    raise ValidationError(
-                        self.env._(
-                            "When 'Auto-cancel after days' is set for stage "
-                            "'%(stage)s', at least one state must be selected "
-                            "to allow auto-cancel.",
-                            stage=stage.name,
-                        )
+            if stage.auto_cancel_days > 0 and not stage._get_auto_x_allowed_states(
+                "cancel"
+            ):
+                raise ValidationError(
+                    self.env._(
+                        "When 'Auto-cancel after days' is set for stage "
+                        "'%(stage)s', at least one state must be selected "
+                        "to allow auto-cancel.",
+                        stage=stage.name,
                     )
+                )
