@@ -1,6 +1,7 @@
 # Copyright 2025 Moduon Team S.L.
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0)
 from odoo import api, fields, models
+from odoo.tools import SQL
 
 
 class ReportProjectTaskUser(models.Model):
@@ -11,12 +12,7 @@ class ReportProjectTaskUser(models.Model):
 
     @api.model
     def _select(self):
-        return (
-            super()._select()
-            + """,
-            t.ancestor_id as ancestor_id
-        """
-        )
+        return SQL("%s, t.ancestor_id AS ancestor_id", super()._select())
 
     def _group_by(self):
-        return super()._group_by() + ", t.ancestor_id"
+        return SQL("%s, t.ancestor_id", super()._group_by())
