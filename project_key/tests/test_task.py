@@ -1,6 +1,9 @@
 # Copyright 2017 - 2018 Modoolar <info@modoolar.com>
 # License LGPLv3.0 or later (https://www.gnu.org/licenses/lgpl-3.0.en.html).
 
+from odoo import Command
+from odoo.tests.common import new_test_user
+
 from .test_common import TestCommon
 
 
@@ -52,3 +55,23 @@ class TestTask(TestCommon):
 
     def test_08_create_new_company(self):
         self.env["res.company"].create({"name": "New company"})
+
+    def test_create_task_portal_user(self):
+        portal_user = new_test_user(
+            self.env, login="project_key_portal", groups="base.group_portal"
+        )
+        self.project_1.write(
+            {
+                "privacy_visibility": "portal",
+                "collaborator_ids": [
+                    Command.create({"partner_id": portal_user.partner_id.id})
+                ],
+            }
+        )
+        self.project_1.message_subscribe(partner_ids=portal_user.partner_id.ids)
+        task = (
+            self.Task.with_user(portal_user)
+            .with_context(default_project_id=self.project_1.id)
+            .create({"name": "Portal task"})
+        )
+        self.assertEqual(task.sudo().key, "OCA-3")
