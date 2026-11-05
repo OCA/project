@@ -14,6 +14,13 @@ msgstr ""
 "Plural-Forms: \n"
 
 #. module: project_task_description_template
+#. odoo-python
+#: code:addons/project_task_description_template/models/project_task.py:0
+msgid ""
+"A description template is required to create tasks in project %(project)s."
+msgstr ""
+
+#. module: project_task_description_template
 #: model:ir.model.fields,field_description:project_task_description_template.field_project_task_description_template__active
 msgid "Active"
 msgstr ""
@@ -55,6 +62,11 @@ msgid "Display Name"
 msgstr ""
 
 #. module: project_task_description_template
+#: model:ir.model.fields,field_description:project_task_description_template.field_project_task__has_description_templates
+msgid "Has Description Templates"
+msgstr ""
+
+#. module: project_task_description_template
 #: model:ir.model.fields,field_description:project_task_description_template.field_project_task_description_template__id
 msgid "ID"
 msgstr ""
@@ -70,8 +82,34 @@ msgid "Last Updated on"
 msgstr ""
 
 #. module: project_task_description_template
+#: model:ir.model.fields,help:project_task_description_template.field_project_task_description_template__project_ids
+msgid ""
+"Leave empty to make the template available in all projects. Portal users "
+"only see the templates linked to their projects."
+msgstr ""
+
+#. module: project_task_description_template
 #: model:ir.model.fields,field_description:project_task_description_template.field_project_task_description_template__name
 msgid "Name"
+msgstr ""
+
+#. module: project_task_description_template
+#: model_terms:ir.ui.view,arch_db:project_task_description_template.edit_project
+msgid ""
+"Portal users must select a description template when they create a task"
+msgstr ""
+
+#. module: project_task_description_template
+#: model:ir.model,name:project_task_description_template.model_project_project
+msgid "Project"
+msgstr ""
+
+#. module: project_task_description_template
+#. odoo-python
+#: code:addons/project_task_description_template/models/project_project.py:0
+msgid ""
+"Project %(project)s requires a description template on portal tasks, so it "
+"must have at least one template."
 msgstr ""
 
 #. module: project_task_description_template
@@ -80,16 +118,44 @@ msgid "Project Task Description Template"
 msgstr ""
 
 #. module: project_task_description_template
+#: model:ir.model.fields,field_description:project_task_description_template.field_project_task_description_template__project_ids
+msgid "Projects"
+msgstr ""
+
+#. module: project_task_description_template
+#: model:ir.model.fields,field_description:project_task_description_template.field_project_project__portal_task_description_template_required
+#: model:ir.model.fields,field_description:project_task_description_template.field_project_task__portal_description_template_required
+msgid "Require Description Template on Portal Tasks"
+msgstr ""
+
+#. module: project_task_description_template
 #: model:ir.model,name:project_task_description_template.model_project_task
 msgid "Task"
 msgstr ""
 
 #. module: project_task_description_template
+#: model:ir.model.fields,field_description:project_task_description_template.field_project_project__task_description_template_ids
 #: model:ir.ui.menu,name:project_task_description_template.project_task_description_template_menu
+#: model_terms:ir.ui.view,arch_db:project_task_description_template.edit_project
 msgid "Task Description Templates"
 msgstr ""
 
 #. module: project_task_description_template
 #: model:ir.actions.act_window,name:project_task_description_template.project_task_description_template_action
 msgid "Task Description template"
+msgstr ""
+
+#. module: project_task_description_template
+#: model:ir.model.fields,help:project_task_description_template.field_project_project__task_description_template_ids
+msgid ""
+"Templates available for the tasks of this project. Templates without "
+"projects are also available for internal users."
+msgstr ""
+
+#. module: project_task_description_template
+#. odoo-python
+#: code:addons/project_task_description_template/models/project_task.py:0
+msgid ""
+"The description template %(template)s is not available in project "
+"%(project)s."
 msgstr ""
