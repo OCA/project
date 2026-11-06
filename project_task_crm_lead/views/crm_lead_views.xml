@@ -1,0 +1,25 @@
+<odoo>
+    <record id="crm_lead_view_form_project_task" model="ir.ui.view">
+        <field name="name">crm.lead.view.form.project.task</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='Misc']" position="inside">
+                <field name="task_id" />
+            </xpath>
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button
+                    name="action_view_task"
+                    type="object"
+                    class="oe_stat_button"
+                    icon="fa-pencil"
+                    invisible="not task_id"
+                >
+                    <div class="o_stat_info">
+                        <span class="o_stat_text">Linked Task</span>
+                    </div>
+                </button>
+            </xpath>
+        </field>
+    </record>
+</odoo>

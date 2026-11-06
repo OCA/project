@@ -1,0 +1,35 @@
+<odoo>
+    <record id="view_task_form2_crm_lead" model="ir.ui.view">
+        <field name="name">project.task.view.form.inherit.project.task.crm.lead</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <field
+                    name="lead_ids"
+                    invisible="1"
+                    groups="sales_team.group_sale_salesman"
+                />
+                <button
+                    name="action_view_leads"
+                    type="object"
+                    class="oe_stat_button"
+                    groups="sales_team.group_sale_salesman"
+                    icon="fa-star"
+                >
+                    <div class="o_stat_info">
+                        <field name="lead_count" class="o_stat_value" />
+                        <span
+                            class="o_stat_text"
+                            invisible="lead_count &lt; 2"
+                        >Leads</span>
+                        <span
+                            class="o_stat_text"
+                            invisible="lead_count &gt; 1"
+                        >Lead</span>
+                    </div>
+                </button>
+            </xpath>
+        </field>
+    </record>
+</odoo>
