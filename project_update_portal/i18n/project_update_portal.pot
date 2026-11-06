@@ -49,6 +49,16 @@ msgid "Customer Portal URL"
 msgstr ""
 
 #. module: project_update_portal
+#: model:ir.model.fields,field_description:project_update_portal.field_project_update__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: project_update_portal
+#: model:ir.model.fields,field_description:project_update_portal.field_project_update__id
+msgid "ID"
+msgstr ""
+
+#. module: project_update_portal
 #: model:ir.model.fields,field_description:project_update_portal.field_project_update__access_url
 msgid "Portal Access URL"
 msgstr ""
