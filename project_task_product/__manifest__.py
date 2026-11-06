@@ -4,7 +4,7 @@
 {
     "name": "Project Task Product",
     "summary": "Allows to specify in a project task, the product the task relates to.",
-    "version": "19.0.1.0.0",
+    "version": "20.0.1.0.0",
     "category": "Project",
     "website": "https://github.com/OCA/project",
     "author": "ForgeFlow, Odoo Community Association (OCA)",
