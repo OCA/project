@@ -169,7 +169,7 @@ class TestPullRequestState(TransactionCase):
         ).execute()
 
         # Verify that the parameter has been set to the desired value
-        pr_state_default_param = self.env["ir.config_parameter"].get_param(
+        pr_state_default_param = self.env["ir.config_parameter"].get_str(
             "project_task_pull_request_state.pr_state_default"
         )
         self.assertEqual(
