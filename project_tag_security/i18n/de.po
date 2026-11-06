@@ -1,0 +1,95 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_tag_security
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2026-07-03 20:01+0000\n"
+"Last-Translator: intero-chd <c.dominiak@intero-technologies.de>\n"
+"Language-Team: none\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2\n"
+
+#. module: project_tag_security
+#: model:ir.model.fields,field_description:project_tag_security.field_project_tags__allowed_project_ids
+msgid "Allowed Projects"
+msgstr "Erlaubte Projekte"
+
+#. module: project_tag_security
+#: model:ir.model,website_form_label:project_tag_security.model_project_task
+msgid "Create a Task"
+msgstr "Aufgabe erstellen"
+
+#. module: project_tag_security
+#: model:ir.model.fields,field_description:project_tag_security.field_project_project__display_name
+#: model:ir.model.fields,field_description:project_tag_security.field_project_tags__display_name
+#: model:ir.model.fields,field_description:project_tag_security.field_project_task__display_name
+msgid "Display Name"
+msgstr "Anzeigename"
+
+#. module: project_tag_security
+#: model_terms:ir.ui.view,arch_db:project_tag_security.project_tags_form_view
+#: model_terms:ir.ui.view,arch_db:project_tag_security.project_tags_tree_view
+msgid "Empty for having all the projects allowed"
+msgstr "Leer, damit alle Projekte angezeigt werden"
+
+#. module: project_tag_security
+#: model:ir.model.fields,field_description:project_tag_security.field_project_project__id
+#: model:ir.model.fields,field_description:project_tag_security.field_project_tags__id
+#: model:ir.model.fields,field_description:project_tag_security.field_project_task__id
+msgid "ID"
+msgstr "ID"
+
+#. module: project_tag_security
+#: model:ir.model,name:project_tag_security.model_project_project
+msgid "Project"
+msgstr "Projekt"
+
+#. module: project_tag_security
+#: model:ir.model,name:project_tag_security.model_project_tags
+msgid "Project Tags"
+msgstr "Projektstichwörter"
+
+#. module: project_tag_security
+#: model:ir.model.fields,field_description:project_tag_security.field_project_project__tag_ids
+#: model:ir.model.fields,field_description:project_tag_security.field_project_task__tag_ids
+msgid "Tags"
+msgstr "Stichwörter"
+
+#. module: project_tag_security
+#: model:ir.model,name:project_tag_security.model_project_task
+msgid "Task"
+msgstr "Aufgabe"
+
+#. module: project_tag_security
+#: model:ir.model.fields,help:project_tag_security.field_project_task__display_name
+msgid ""
+"Use these keywords in the title to set new tasks:\n"
+"\n"
+"        30h Allocate 30 hours to the task\n"
+"        #tags Set tags on the task\n"
+"        @user Assign the task to a user\n"
+"        ! Set the task a medium priority\n"
+"        !! Set the task a high priority\n"
+"        !!! Set the task a urgent priority\n"
+"\n"
+"        Make sure to use the right format and order e.g. Improve the configuration screen 5h #feature #v16 @Mitchell !"
+msgstr ""
+"Verwende diese Stichwörter im Titel, um neue Aufgaben anzulegen:\n"
+"\n"
+"        30h 30 Stunden für die Aufgabe einplanen\n"
+"        #tags Stichwörter für die Aufgabe festlegen\n"
+"        @user Die Aufgabe einem Benutzer zuweisen\n"
+"        ! Weise der Aufgabe eine mittlere Priorität zu\n"
+"        !! Weisen Sie der Aufgabe eine hohe Priorität zu\n"
+"        !!! Weisen Sie der Aufgabe eine dringende Priorität zu\n"
+"\n"
+"        Achte darauf, das richtige Format und die richtige Reihenfolge zu "
+"verwenden, z. B.: Den Konfigurationsbildschirm verbessern 5h #feature #v16 "
+"@Mitchell !"
