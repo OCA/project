@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright (C) 2025 Cetmix OÜ
+    License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <template id="portal_tasks_list_override" inherit_id="project.portal_tasks_list">
+        <xpath
+            expr="//td[hasclass('text-start')]/span[@t-esc='task.id']"
+            position="attributes"
+        >
+            <attribute name="t-esc">task.code</attribute>
+        </xpath>
+        <xpath expr="//a[contains(@t-attf-href, '/my/')]" position="attributes">
+            <attribute
+                name="t-attf-href"
+            >/my/#{task_url}/#{task.code}?{{ keep_query() }}</attribute>
+        </xpath>
+    </template>
+
+    <template id="portal_my_task_override" inherit_id="project.portal_my_task">
+        <xpath
+            expr="//small[hasclass('text-muted')]/span[@t-field='task.id']"
+            position="attributes"
+        >
+            <attribute name="t-field">task.code</attribute>
+        </xpath>
+    </template>
+</odoo>
