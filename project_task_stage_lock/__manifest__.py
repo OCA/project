@@ -4,10 +4,10 @@
     "name": "Project Task Stage Lock",
     "version": "19.0.1.0.0",
     "author": "ForgeFlow, Odoo Community Association (OCA)",
-    "summary": """
-    Locks the Stages in the Kanban view of the project task
-    to avoid modification of the stages in other projects.
-    """,
+    "summary": (
+        "Locks the Stages in the Kanban view of the project task "
+        "to avoid modification of the stages in other projects."
+    ),
     "website": "https://github.com/OCA/project",
     "category": "Project",
     "depends": ["project"],
