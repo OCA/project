@@ -1,0 +1,140 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_task_stage_auto_state
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-02-24 09:52+0000\n"
+"PO-Revision-Date: 2026-02-24 09:52+0000\n"
+"Last-Translator: \n"
+"Language-Team: Spanish\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.fields,field_description:project_task_stage_auto_state.field_project_task_type__allow_cancel_from_approved
+msgid "Allow Cancel from Approved"
+msgstr "Permitir cancelar desde Aprobado"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.fields,field_description:project_task_stage_auto_state.field_project_task_type__allow_cancel_from_changes_requested
+msgid "Allow Cancel from Changes Requested"
+msgstr "Permitir cancelar desde Cambios Solicitados"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.fields,field_description:project_task_stage_auto_state.field_project_task_type__allow_cancel_from_in_progress
+msgid "Allow Cancel from In Progress"
+msgstr "Permitir cancelar desde En Progreso"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.fields,field_description:project_task_stage_auto_state.field_project_task_type__allow_cancel_from_waiting
+msgid "Allow Cancel from Waiting"
+msgstr "Permitir cancelar desde Esperando"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.fields,field_description:project_task_stage_auto_state.field_project_task_type__allow_done_from_approved
+msgid "Allow Done from Approved"
+msgstr "Permitir hacer desde Aprobado"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.fields,field_description:project_task_stage_auto_state.field_project_task_type__allow_done_from_changes_requested
+msgid "Allow Done from Changes Requested"
+msgstr "Permitir hacer desde Cambios Solicitados"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.fields,field_description:project_task_stage_auto_state.field_project_task_type__allow_done_from_in_progress
+msgid "Allow Done from In Progress"
+msgstr "Permitir hacer desde En Progreso"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.fields,field_description:project_task_stage_auto_state.field_project_task_type__allow_done_from_waiting
+msgid "Allow Done from Waiting"
+msgstr "Permitir hacer desde Esperando"
+
+#. module: project_task_stage_auto_state
+#: model_terms:ir.ui.view,arch_db:project_task_stage_auto_state.project_task_type_form_view_inherit
+msgid "Auto-Cancel"
+msgstr "Auto-Cancelar"
+
+#. module: project_task_stage_auto_state
+#: model_terms:ir.ui.view,arch_db:project_task_stage_auto_state.project_task_type_form_view_inherit
+msgid "Auto-Done"
+msgstr "Auto-Hecho"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.fields,field_description:project_task_stage_auto_state.field_project_task_type__auto_cancel_days
+msgid "Auto-cancel after days"
+msgstr "Auto-cancelar después de días"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.fields,field_description:project_task_stage_auto_state.field_project_task_type__auto_done_days
+msgid "Auto-mark as done after days"
+msgstr "Auto-marcar como hecha después de días"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.fields,help:project_task_stage_auto_state.field_project_task_type__auto_cancel_days
+msgid ""
+"Automatically cancel tasks after staying in this stage for the specified "
+"number of days. Set to 0 to disable this feature."
+msgstr ""
+"Cancelar automáticamente las tareas después de permanecer en esta "
+"etapa durante el número especificado de días. Establecer a 0 para desactivar "
+"esta funcionalidad."
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.fields,help:project_task_stage_auto_state.field_project_task_type__auto_done_days
+msgid ""
+"Automatically mark tasks as done after staying in this stage for the "
+"specified number of days. Set to 0 to disable this feature."
+msgstr ""
+"Marcar automáticamente las tareas como hechas después de permanecer en esta "
+"etapa durante el número especificado de días. Establecer a 0 para desactivar "
+"esta funcionalidad."
+
+#. module: project_task_stage_auto_state
+#: model:ir.actions.server,name:project_task_stage_auto_state.ir_cron_auto_change_task_state_ir_actions_server
+msgid "Project: Auto-change task state by stage"
+msgstr "Proyecto: Auto-cambiar estado de tareas por etapa"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model,name:project_task_stage_auto_state.model_project_task
+msgid "Task"
+msgstr "Tarea"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model,name:project_task_stage_auto_state.model_project_task_type
+msgid "Task Stage"
+msgstr "Etapa de Tarea"
+
+#. module: project_task_stage_auto_state
+#. odoo-python
+#: code:addons/project_task_stage_auto_state/models/project_task.py:0
+msgid "Task automatically %(mode)s after %(days)i days in stage '%(stage)s'."
+msgstr "Tarea automáticamente %(mode)s después de %(days)i días en la etapa '%(stage)s'."
+
+#. module: project_task_stage_auto_state
+#. odoo-python
+#: code:addons/project_task_stage_auto_state/models/project_task_type.py:0
+msgid ""
+"When 'Auto-cancel after days' is set for stage '%(stage)s', at least one "
+"state must be selected to allow auto-cancel."
+msgstr ""
+"Cuando 'Auto-cancelar después de días' está establecido para la etapa "
+"'%(stage)s', al menos un estado debe ser seleccionado para permitir "
+"auto-cancelar."
+
+#. module: project_task_stage_auto_state
+#. odoo-python
+#: code:addons/project_task_stage_auto_state/models/project_task_type.py:0
+msgid ""
+"When 'Auto-mark as done after days' is set for stage '%(stage)s', at least "
+"one state must be selected to allow marking as done."
+msgstr ""
+"Cuando 'Auto-marcar como hecha después de días' está establecido para la "
+"etapa '%(stage)s', al menos un estado debe ser seleccionado para permitir "
+"marcar como hecho."

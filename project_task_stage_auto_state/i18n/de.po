@@ -1,0 +1,198 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_task_stage_auto_state
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2026-07-03 20:52+0000\n"
+"Last-Translator: intero-chd <c.dominiak@intero-technologies.de>\n"
+"Language-Team: none\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2\n"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.fields,field_description:project_task_stage_auto_state.field_project_task_type__allow_cancel_from_approved
+msgid "Allow Cancel from Approved"
+msgstr "„Abbrechen“ aus „Genehmigt“ zulassen"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.fields,field_description:project_task_stage_auto_state.field_project_task_type__allow_cancel_from_changes_requested
+msgid "Allow Cancel from Changes Requested"
+msgstr "„Abbrechen“ bei angeforderten Änderungen zulassen"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.fields,field_description:project_task_stage_auto_state.field_project_task_type__allow_cancel_from_in_progress
+msgid "Allow Cancel from In Progress"
+msgstr "„Abbrechen“ aus „In Bearbeitung“ zulassen"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.fields,field_description:project_task_stage_auto_state.field_project_task_type__allow_cancel_from_waiting
+msgid "Allow Cancel from Waiting"
+msgstr "„Abbrechen“ aus \"Wartend\" zulassen"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.fields,field_description:project_task_stage_auto_state.field_project_task_type__allow_done_from_approved
+msgid "Allow Done from Approved"
+msgstr "„Erledigt“ aus „Genehmigt“ zulassen"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.fields,field_description:project_task_stage_auto_state.field_project_task_type__allow_done_from_changes_requested
+msgid "Allow Done from Changes Requested"
+msgstr "„Erledigt“ bei angeforderten Änderungen zulassen"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.fields,field_description:project_task_stage_auto_state.field_project_task_type__allow_done_from_in_progress
+msgid "Allow Done from In Progress"
+msgstr "„Erledigt“ aus „In Bearbeitung“ zulassen"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.fields,field_description:project_task_stage_auto_state.field_project_task_type__allow_done_from_waiting
+msgid "Allow Done from Waiting"
+msgstr "„Erledigt“ aus „Wartend“ zulassen"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.constraint,message:project_task_stage_auto_state.constraint_project_task_type_auto_cancel_days_non_negative_check
+msgid "Auto Cancel days must be non-negative."
+msgstr ""
+"Die Anzahl an Tagen für den automatischen Abbruch darf nicht negativ sein."
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.constraint,message:project_task_stage_auto_state.constraint_project_task_type_auto_done_days_non_negative_check
+msgid "Auto Done days must be non-negative."
+msgstr ""
+"Die Anzahl an Tagen für die automatische Genehmigung darf nicht negativ sein."
+
+#. module: project_task_stage_auto_state
+#: model_terms:ir.ui.view,arch_db:project_task_stage_auto_state.project_task_type_form_view_inherit
+msgid "Auto-Cancel"
+msgstr "Automatischer Abbruch"
+
+#. module: project_task_stage_auto_state
+#: model_terms:ir.ui.view,arch_db:project_task_stage_auto_state.project_task_type_form_view_inherit
+msgid "Auto-Done"
+msgstr "Automatische Erledigung"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.fields,field_description:project_task_stage_auto_state.field_project_task_type__auto_cancel_days
+msgid "Auto-cancel after days"
+msgstr "Automatischer Abbruch nach Tagen"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.fields,field_description:project_task_stage_auto_state.field_project_task_type__auto_done_days
+msgid "Auto-mark as done after days"
+msgstr "Automatische Genehmigung nach Tagen"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.fields,help:project_task_stage_auto_state.field_project_task_type__auto_cancel_days
+msgid ""
+"Automatically cancel tasks after staying in this stage for the specified "
+"number of days. Set to 0 to disable this feature."
+msgstr ""
+"Aufgaben werden automatisch storniert, nachdem sie sich die angegebene "
+"Anzahl von Tagen in dieser Phase befunden haben. Setzen Sie den Wert auf 0, "
+"um diese Funktion zu deaktivieren."
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.fields,help:project_task_stage_auto_state.field_project_task_type__auto_done_days
+msgid ""
+"Automatically mark tasks as done after staying in this stage for the "
+"specified number of days. Set to 0 to disable this feature."
+msgstr ""
+"Aufgaben werden automatisch als erledigt markiert, nachdem sie sich für die "
+"angegebene Anzahl von Tagen in dieser Phase befunden haben. Setzen Sie den "
+"Wert auf 0, um diese Funktion zu deaktivieren."
+
+#. module: project_task_stage_auto_state
+#: model:ir.model,website_form_label:project_task_stage_auto_state.model_project_task
+msgid "Create a Task"
+msgstr "Aufgabe erstellen"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.fields,field_description:project_task_stage_auto_state.field_project_task__display_name
+#: model:ir.model.fields,field_description:project_task_stage_auto_state.field_project_task_type__display_name
+msgid "Display Name"
+msgstr "Anzeigename"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.fields,field_description:project_task_stage_auto_state.field_project_task__id
+#: model:ir.model.fields,field_description:project_task_stage_auto_state.field_project_task_type__id
+msgid "ID"
+msgstr "ID"
+
+#. module: project_task_stage_auto_state
+#: model:ir.actions.server,name:project_task_stage_auto_state.ir_cron_auto_change_task_state_ir_actions_server
+msgid "Project: Auto-change task state by stage"
+msgstr "Projekt: Automatische Änderung des Aufgabenstatus je nach Phase"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model,name:project_task_stage_auto_state.model_project_task
+msgid "Task"
+msgstr "Aufgabe"
+
+#. module: project_task_stage_auto_state
+#: model:ir.model,name:project_task_stage_auto_state.model_project_task_type
+msgid "Task Stage"
+msgstr "Aufgabenphase"
+
+#. module: project_task_stage_auto_state
+#. odoo-python
+#: code:addons/project_task_stage_auto_state/models/project_task.py:0
+msgid "Task automatically %(mode)s after %(days)i days in stage '%(stage)s'."
+msgstr ""
+"Die Aufgabe wird nach %(days)i Tagen in der Phase „%(stage)s“ automatisch %"
+"(mode)s."
+
+#. module: project_task_stage_auto_state
+#: model:ir.model.fields,help:project_task_stage_auto_state.field_project_task__display_name
+msgid ""
+"Use these keywords in the title to set new tasks:\n"
+"\n"
+"        30h Allocate 30 hours to the task\n"
+"        #tags Set tags on the task\n"
+"        @user Assign the task to a user\n"
+"        ! Set the task a medium priority\n"
+"        !! Set the task a high priority\n"
+"        !!! Set the task a urgent priority\n"
+"\n"
+"        Make sure to use the right format and order e.g. Improve the configuration screen 5h #feature #v16 @Mitchell !"
+msgstr ""
+"Verwende diese Stichwörter im Titel, um neue Aufgaben anzulegen:\n"
+"\n"
+"        30h 30 Stunden für die Aufgabe einplanen\n"
+"        #tags Stichwörter für die Aufgabe festlegen\n"
+"        @user Die Aufgabe einem Benutzer zuweisen\n"
+"        ! Weise der Aufgabe eine mittlere Priorität zu\n"
+"        !! Weisen Sie der Aufgabe eine hohe Priorität zu\n"
+"        !!! Weisen Sie der Aufgabe eine dringende Priorität zu\n"
+"\n"
+"        Achte darauf, das richtige Format und die richtige Reihenfolge zu "
+"verwenden, z. B.: Den Konfigurationsbildschirm verbessern 5h #feature #v16 "
+"@Mitchell !"
+
+#. module: project_task_stage_auto_state
+#. odoo-python
+#: code:addons/project_task_stage_auto_state/models/project_task_type.py:0
+msgid ""
+"When 'Auto-cancel after days' is set for stage '%(stage)s', at least one "
+"state must be selected to allow auto-cancel."
+msgstr ""
+"Wenn für die Phase „%(stage)s“ die Option „Automatischer Abbruch nach Tagen“ "
+"eingestellt ist, muss mindestens ein Status ausgewählt werden, damit der "
+"automatische Abbruch möglich ist."
+
+#. module: project_task_stage_auto_state
+#. odoo-python
+#: code:addons/project_task_stage_auto_state/models/project_task_type.py:0
+msgid ""
+"When 'Auto-mark as done after days' is set for stage '%(stage)s', at least "
+"one state must be selected to allow marking as done."
+msgstr ""
+"Wenn für die Phase „%(stage)s“ die Option „Automatische Genehmigung nach "
+"Tagen“ eingestellt ist, muss mindestens ein Status ausgewählt werden, damit "
+"die automatische Genehmigung möglich ist."
