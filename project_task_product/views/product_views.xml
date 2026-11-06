@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <record id="product_template_form_view_inherit_tasks" model="ir.ui.view">
         <field name="name">product.template.form.inherit.tasks</field>

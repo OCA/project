@@ -7,6 +7,4 @@ from odoo import fields, models
 class ProjectTask(models.Model):
     _inherit = "project.task"
 
-    product_id = fields.Many2one(
-        "product.product", string="Product", check_company=True, index=True
-    )
+    product_id = fields.Many2one("product.product", check_company=True, index=True)
