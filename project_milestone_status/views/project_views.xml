@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="act_excuted_project_task" model="ir.actions.act_window">
+        <field name="name">Tasks</field>
+        <field name="res_model">project.task</field>
+        <field name="view_mode">list,form</field>
+        <field name="path">executed_tasks</field>
+        <field name="search_view_id" ref="project.view_task_search_form" />
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No tasks found. Let's create one!
+            </p>
+            <p>
+                Keep track of the progress of your tasks from creation to completion.<br
+            />
+                Collaborate efficiently by chatting in real-time or via email.
+            </p>
+        </field>
+    </record>
+
+    <record id="project_project_form_inherit_milestone_status" model="ir.ui.view">
+        <field name="name">project.project.form.milestone.status</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button
+                    class="oe_stat_button"
+                    type="object"
+                    name="action_view_executed_tasks"
+                    icon="check"
+                >
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_text">Execution</span>
+                        <span class="o_stat_value">
+                            <field name="execution_percent" />
+                            <span class="o_field_widget">%</span>
+                            <span class="o_field_widget ps-1">(</span>
+                            <field name="execution_hours" />
+                            <span class="o_field_widget">h)</span>
+                        </span>
+                    </div>
+                </button>
+                <button
+                    class="oe_stat_button"
+                    type="action"
+                    name="%(hr_timesheet.act_hr_timesheet_line_by_project)d"
+                    icon="schedule"
+                >
+                    <div class="o_field_widget o_stat_info">
+                        <span class="o_stat_text">Dedication</span>
+                        <span class="o_stat_value">
+                            <field name="dedication_percent" />
+                            <span class="o_field_widget">%</span>
+                            <span class="o_field_widget ps-1">(</span>
+                            <field name="dedication_hours" />
+                            <span class="o_field_widget">h)</span>
+                        </span>
+                    </div>
+                </button>
+            </xpath>
+        </field>
+    </record>
+</odoo>

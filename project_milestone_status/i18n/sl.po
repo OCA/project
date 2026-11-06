@@ -1,0 +1,80 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_milestone_status
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2026-06-30 07:30+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
+"Language-Team: none\n"
+"Language: sl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
+"n%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 5.15.2\n"
+
+#. module: project_milestone_status
+#. odoo-python
+#: code:addons/project_milestone_status/models/project.py:0
+msgid "%(name)s"
+msgstr "%(name)s"
+
+#. module: project_milestone_status
+#. odoo-python
+#: code:addons/project_milestone_status/models/project.py:0
+#: model:ir.model.fields,field_description:project_milestone_status.field_project_milestone__dedication
+msgid "Dedication"
+msgstr "Predanost"
+
+#. module: project_milestone_status
+#: model:ir.model.fields,field_description:project_milestone_status.field_project_milestone__display_name
+#: model:ir.model.fields,field_description:project_milestone_status.field_project_project__display_name
+msgid "Display Name"
+msgstr "Prikazani naziv"
+
+#. module: project_milestone_status
+#. odoo-python
+#: code:addons/project_milestone_status/models/project.py:0
+#: model:ir.model.fields,field_description:project_milestone_status.field_project_milestone__execution
+msgid "Execution"
+msgstr "Izvedba"
+
+#. module: project_milestone_status
+#: model:ir.model.fields,field_description:project_milestone_status.field_project_milestone__id
+#: model:ir.model.fields,field_description:project_milestone_status.field_project_project__id
+msgid "ID"
+msgstr "ID"
+
+#. module: project_milestone_status
+#: model_terms:ir.actions.act_window,help:project_milestone_status.act_excuted_project_task
+msgid ""
+"Keep track of the progress of your tasks from creation to completion.<br>\n"
+"                Collaborate efficiently by chatting in real-time or via email."
+msgstr ""
+"Spremljajte napredovanje svojih opravil od nastanka do zaključka.<br>\n"
+"                Učinkovito sodelujte s klepetom v realnem času ali po e-"
+"pošti."
+
+#. module: project_milestone_status
+#: model_terms:ir.actions.act_window,help:project_milestone_status.act_excuted_project_task
+msgid "No tasks found. Let's create one!"
+msgstr "Ni najdenih opravil. Ustvarimo eno!"
+
+#. module: project_milestone_status
+#: model:ir.model,name:project_milestone_status.model_project_project
+msgid "Project"
+msgstr "Projekt"
+
+#. module: project_milestone_status
+#: model:ir.model,name:project_milestone_status.model_project_milestone
+msgid "Project Milestone"
+msgstr "Projektni mejnik"
+
+#. module: project_milestone_status
+#: model:ir.actions.act_window,name:project_milestone_status.act_excuted_project_task
+msgid "Tasks"
+msgstr "Opravila"
