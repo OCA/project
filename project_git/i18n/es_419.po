@@ -1,0 +1,468 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_git
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-08-14 17:28+0000\n"
+"PO-Revision-Date: 2026-08-14 17:28+0000\n"
+"Last-Translator: Jesús Alan Ramos Rodríguez <alan.ramos@jarsa.com>\n"
+"Language-Team: \n"
+"Language: es_419\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: project_git
+#: model_terms:ir.ui.view,arch_db:project_git.no_task_reference_in_title
+msgid ""
+"**WARNING**: Could not link this PR/MR to an Odoo task: no task reference found.\n"
+"\n"
+"Supported references, in the PR/MR title, in the source branch name or in the commit messages:\n"
+"\n"
+"- explicit task id: `taskid#123` or `tid#123` (case insensitive)\n"
+"\n"
+"- task key matching the task name by configured regex (e.g. `ABC-123`, uppercase)"
+msgstr ""
+
+#. module: project_git
+#: model_terms:ir.ui.view,arch_db:project_git.view_project_project_kanban
+msgid "<span>Dev: </span>"
+msgstr "<span>Desarrollador:</span>"
+
+#. module: project_git
+#: model_terms:ir.ui.view,arch_db:project_git.view_project_project_kanban
+msgid "<span>Prod: </span>"
+msgstr "<span>Producción:</span>"
+
+#. module: project_git
+#: model:ir.model.constraint,message:project_git.constraint_project_git_branch_url_unique
+msgid "A branch with the same URL is already tracked."
+msgstr ""
+
+#. module: project_git
+#: model:ir.model.constraint,message:project_git.constraint_project_git_commit_full_sha_unique
+msgid "A commit with the same SHA is already tracked."
+msgstr ""
+
+#. module: project_git
+#: model:ir.model.constraint,message:project_git.constraint_project_git_pull_request_source_project_request_unique
+msgid ""
+"A pull request with the same identifiers is already tracked for this "
+"platform."
+msgstr ""
+
+#. module: project_git
+#: model:ir.model.fields,field_description:project_git.field_project_git_pull_request__approved
+msgid "Approved"
+msgstr "Aprobada"
+
+#. module: project_git
+#: model:ir.model.fields,field_description:project_git.field_project_git_branch__name
+msgid "Branch Name"
+msgstr ""
+
+#. module: project_git
+#: model:ir.model.fields,field_description:project_git.field_project_git_branch__url
+msgid "Branch URL"
+msgstr ""
+
+#. module: project_git
+#: model:ir.actions.act_window,name:project_git.action_project_git_branch
+#: model:ir.model.fields,field_description:project_git.field_project_git_commit__git_branch_ids
+#: model:ir.model.fields,field_description:project_git.field_project_task__git_branch_ids
+#: model:ir.ui.menu,name:project_git.menu_project_git_branch
+#: model_terms:ir.ui.view,arch_db:project_git.view_project_git_commit_form
+#: model_terms:ir.ui.view,arch_db:project_git.view_project_task_form
+msgid "Branches"
+msgstr ""
+
+#. module: project_git
+#: model:ir.model.fields,field_description:project_git.field_project_git_pull_request__ci_status
+#: model_terms:ir.ui.view,arch_db:project_git.view_project_git_pull_request_search
+msgid "CI Status"
+msgstr "Estado CI"
+
+#. module: project_git
+#: model:ir.model.fields.selection,name:project_git.selection__project_git_pull_request__ci_status__canceled
+msgid "Canceled"
+msgstr "Cancelado"
+
+#. module: project_git
+#: model:ir.model.fields.selection,name:project_git.selection__project_git_pull_request__state__closed
+#: model_terms:ir.ui.view,arch_db:project_git.view_project_git_pull_request_search
+msgid "Closed"
+msgstr "Cerrado"
+
+#. module: project_git
+#: model:ir.model.fields,field_description:project_git.field_project_git_commit__url
+msgid "Commit URL"
+msgstr ""
+
+#. module: project_git
+#: model:ir.actions.act_window,name:project_git.action_project_git_commit
+#: model:ir.model.fields,field_description:project_git.field_project_git_branch__git_commit_ids
+#: model:ir.model.fields,field_description:project_git.field_project_git_pull_request__git_commit_ids
+#: model:ir.model.fields,field_description:project_git.field_project_task__git_commit_ids
+#: model:ir.ui.menu,name:project_git.menu_project_git_commit
+#: model_terms:ir.ui.view,arch_db:project_git.view_project_git_branch_form
+#: model_terms:ir.ui.view,arch_db:project_git.view_project_git_pull_request_form
+#: model_terms:ir.ui.view,arch_db:project_git.view_project_task_form
+msgid "Commits"
+msgstr ""
+
+#. module: project_git
+#: model_terms:ir.ui.view,arch_db:project_git.view_project_project_form
+msgid "Create Webhooks"
+msgstr "Crear webhooks"
+
+#. module: project_git
+#: model:ir.model.fields,field_description:project_git.field_project_git_branch__create_uid
+#: model:ir.model.fields,field_description:project_git.field_project_git_commit__create_uid
+#: model:ir.model.fields,field_description:project_git.field_project_git_event__create_uid
+#: model:ir.model.fields,field_description:project_git.field_project_git_pull_request__create_uid
+#: model_terms:ir.ui.view,arch_db:project_git.view_project_git_pull_request_search
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: project_git
+#: model:ir.model.fields,field_description:project_git.field_project_git_pull_request__user_id
+msgid "Created by User"
+msgstr "Creado por Usuario"
+
+#. module: project_git
+#: model:ir.model.fields,field_description:project_git.field_project_git_branch__create_date
+#: model:ir.model.fields,field_description:project_git.field_project_git_commit__create_date
+#: model:ir.model.fields,field_description:project_git.field_project_git_event__create_date
+#: model:ir.model.fields,field_description:project_git.field_project_git_pull_request__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: project_git
+#: model:ir.model.fields,field_description:project_git.field_project_git_commit__description
+#: model:ir.model.fields,field_description:project_git.field_project_git_pull_request__description
+msgid "Description"
+msgstr ""
+
+#. module: project_git
+#: model:ir.model.fields,field_description:project_git.field_project_git_branch__display_name
+#: model:ir.model.fields,field_description:project_git.field_project_git_commit__display_name
+#: model:ir.model.fields,field_description:project_git.field_project_git_event__display_name
+#: model:ir.model.fields,field_description:project_git.field_project_git_pull_request__display_name
+msgid "Display Name"
+msgstr "Nombre para mostrar"
+
+#. module: project_git
+#: model:ir.model.fields.selection,name:project_git.selection__project_git_pull_request__ci_status__failed
+msgid "Failed"
+msgstr "Falló"
+
+#. module: project_git
+#: model:ir.model.fields,field_description:project_git.field_project_git_commit__full_sha
+msgid "Full SHA"
+msgstr ""
+
+#. module: project_git
+#: model:ir.ui.menu,name:project_git.menu_project_git_root
+msgid "Git"
+msgstr ""
+
+#. module: project_git
+#: model:ir.model,name:project_git.model_project_git_branch
+msgid "Git Branch"
+msgstr ""
+
+#. module: project_git
+#: model:ir.model.fields,field_description:project_git.field_project_task__git_branch_count
+msgid "Git Branch Count"
+msgstr ""
+
+#. module: project_git
+#: model:ir.model,name:project_git.model_project_git_commit
+msgid "Git Commit"
+msgstr ""
+
+#. module: project_git
+#: model:ir.model.fields,field_description:project_git.field_project_task__git_commit_count
+msgid "Git Commit Count"
+msgstr ""
+
+#. module: project_git
+#: model:ir.model.fields,field_description:project_git.field_project_project__git_dev_project_url
+msgid "Git Dev Project URL"
+msgstr "URL del proyecto de desarrollo de Git"
+
+#. module: project_git
+#: model:ir.model,name:project_git.model_project_git_auth
+msgid "Git Platform Authentication"
+msgstr ""
+
+#. module: project_git
+#: model:ir.model.fields,field_description:project_git.field_project_project__git_project_url
+msgid "Git Project URL"
+msgstr "URL del proyecto Git"
+
+#. module: project_git
+#: model:ir.model.fields,field_description:project_git.field_project_task__git_pull_request_count
+msgid "Git Pull Request Count"
+msgstr ""
+
+#. module: project_git
+#: model:ir.model,name:project_git.model_project_git_pull_request
+msgid "Git Pull/Merge Request"
+msgstr ""
+
+#. module: project_git
+#: model:ir.model,name:project_git.model_project_git_event
+msgid "Git Webhook Event Processor"
+msgstr ""
+
+#. module: project_git
+#: model_terms:ir.ui.view,arch_db:project_git.view_project_git_pull_request_search
+msgid "Group By"
+msgstr ""
+
+#. module: project_git
+#: model:ir.model.fields,field_description:project_git.field_project_git_branch__id
+#: model:ir.model.fields,field_description:project_git.field_project_git_commit__id
+#: model:ir.model.fields,field_description:project_git.field_project_git_event__id
+#: model:ir.model.fields,field_description:project_git.field_project_git_pull_request__id
+msgid "ID"
+msgstr "Identificación"
+
+#. module: project_git
+#: model:ir.model.fields,field_description:project_git.field_project_git_pull_request__last_commit
+msgid "Last Commit"
+msgstr "Último commit"
+
+#. module: project_git
+#: model:ir.model.fields,field_description:project_git.field_project_git_branch__write_uid
+#: model:ir.model.fields,field_description:project_git.field_project_git_commit__write_uid
+#: model:ir.model.fields,field_description:project_git.field_project_git_event__write_uid
+#: model:ir.model.fields,field_description:project_git.field_project_git_pull_request__write_uid
+msgid "Last Updated by"
+msgstr "Última modificación por"
+
+#. module: project_git
+#: model:ir.model.fields,field_description:project_git.field_project_git_branch__write_date
+#: model:ir.model.fields,field_description:project_git.field_project_git_commit__write_date
+#: model:ir.model.fields,field_description:project_git.field_project_git_event__write_date
+#: model:ir.model.fields,field_description:project_git.field_project_git_pull_request__write_date
+msgid "Last Updated on"
+msgstr "Ultima actualización en"
+
+#. module: project_git
+#. odoo-python
+#: code:addons/project_git/models/project_git_pull_request.py:0
+msgid "Linked to Odoo task [#%(id)s](%(url)s)"
+msgstr "Vinculado a la tarea de Odoo [#%(id)s](%(url)s)"
+
+#. module: project_git
+#: model:ir.model.fields.selection,name:project_git.selection__project_git_pull_request__state__locked
+msgid "Locked"
+msgstr "Bloqueado"
+
+#. module: project_git
+#: model:ir.model.fields.selection,name:project_git.selection__project_git_pull_request__state__merged
+#: model_terms:ir.ui.view,arch_db:project_git.view_project_git_pull_request_search
+msgid "Merged"
+msgstr "Mezclado"
+
+#. module: project_git
+#: model:ir.model.fields,field_description:project_git.field_project_git_pull_request__notified_task_ids
+#: model_terms:ir.ui.view,arch_db:project_git.view_project_git_pull_request_form
+msgid "Notified Tasks"
+msgstr ""
+
+#. module: project_git
+#: model_terms:ir.ui.view,arch_db:project_git.view_project_git_pull_request_tree
+msgid "Open PR/MR"
+msgstr ""
+
+#. module: project_git
+#: model:ir.model.fields.selection,name:project_git.selection__project_git_pull_request__state__opened
+#: model_terms:ir.ui.view,arch_db:project_git.view_project_git_pull_request_search
+msgid "Opened"
+msgstr "Abierto"
+
+#. module: project_git
+#: model:ir.model.fields,field_description:project_git.field_project_git_pull_request__url
+msgid "PR/MR URL"
+msgstr ""
+
+#. module: project_git
+#: model:ir.model.fields.selection,name:project_git.selection__project_git_pull_request__ci_status__pending
+msgid "Pending"
+msgstr "Pendiente"
+
+#. module: project_git
+#: model:ir.model,name:project_git.model_project_project
+msgid "Project"
+msgstr "Proyecto"
+
+#. module: project_git
+#: model:ir.model,name:project_git.model_project_git_utils
+msgid "Project Git Webhook Utilities"
+msgstr ""
+
+#. module: project_git
+#: model:ir.model.fields,field_description:project_git.field_project_git_pull_request__id_project
+msgid "Project ID"
+msgstr "ID de proyecto"
+
+#. module: project_git
+#: model:ir.actions.act_window,name:project_git.action_project_git_pull_request
+#: model:ir.model.fields,field_description:project_git.field_project_git_branch__git_pull_request_ids
+#: model:ir.model.fields,field_description:project_git.field_project_git_commit__git_pull_request_ids
+#: model:ir.model.fields,field_description:project_git.field_project_task__git_pull_request_ids
+#: model:ir.ui.menu,name:project_git.menu_project_git_pull_request
+#: model_terms:ir.ui.view,arch_db:project_git.view_project_git_branch_form
+#: model_terms:ir.ui.view,arch_db:project_git.view_project_git_commit_form
+#: model_terms:ir.ui.view,arch_db:project_git.view_project_task_form
+msgid "Pull Requests"
+msgstr ""
+
+#. module: project_git
+#: model:ir.model.fields,field_description:project_git.field_project_git_branch__task_ids
+#: model:ir.model.fields,field_description:project_git.field_project_git_commit__task_ids
+#: model:ir.model.fields,field_description:project_git.field_project_git_pull_request__task_ids
+msgid "Related Tasks"
+msgstr ""
+
+#. module: project_git
+#: model:ir.model.fields,field_description:project_git.field_project_git_pull_request__id_request
+msgid "Request ID"
+msgstr "ID Solicitud"
+
+#. module: project_git
+#: model:ir.model.fields.selection,name:project_git.selection__project_git_pull_request__ci_status__running
+msgid "Running"
+msgstr "En proceso"
+
+#. module: project_git
+#: model:ir.model.fields,field_description:project_git.field_project_git_commit__sha
+#: model_terms:ir.ui.view,arch_db:project_git.view_project_git_commit_search
+msgid "SHA"
+msgstr ""
+
+#. module: project_git
+#: model:ir.model.fields.selection,name:project_git.selection__project_git_pull_request__ci_status__skipped
+msgid "Skipped"
+msgstr "Omitido"
+
+#. module: project_git
+#: model:ir.model.fields,field_description:project_git.field_project_git_pull_request__source_branch
+msgid "Source Branch"
+msgstr ""
+
+#. module: project_git
+#: model:ir.model.fields,field_description:project_git.field_project_git_pull_request__source_branch_id
+msgid "Source Branch Record"
+msgstr ""
+
+#. module: project_git
+#: model:ir.model.fields,field_description:project_git.field_project_git_pull_request__source
+#: model_terms:ir.ui.view,arch_db:project_git.view_project_git_pull_request_search
+msgid "Source Platform"
+msgstr ""
+
+#. module: project_git
+#: model:ir.model.fields,field_description:project_git.field_project_git_pull_request__state
+#: model_terms:ir.ui.view,arch_db:project_git.view_project_git_pull_request_search
+msgid "State"
+msgstr "Estado"
+
+#. module: project_git
+#: model:ir.model.fields.selection,name:project_git.selection__project_git_pull_request__ci_status__success
+msgid "Success"
+msgstr "Éxito"
+
+#. module: project_git
+#: model:ir.model.fields,field_description:project_git.field_project_git_pull_request__target_branch
+msgid "Target Branch"
+msgstr ""
+
+#. module: project_git
+#: model:ir.model,name:project_git.model_project_task
+msgid "Task"
+msgstr "Tarea"
+
+#. module: project_git
+#: model_terms:ir.ui.view,arch_db:project_git.view_project_git_branch_form
+#: model_terms:ir.ui.view,arch_db:project_git.view_project_git_commit_form
+#: model_terms:ir.ui.view,arch_db:project_git.view_project_git_pull_request_form
+msgid "Tasks"
+msgstr ""
+
+#. module: project_git
+#: model:ir.model.fields,help:project_git.field_project_git_pull_request__notified_task_ids
+msgid ""
+"Tasks whose link has already been posted as a message on the PR/MR, used to "
+"avoid posting the same task link twice."
+msgstr ""
+
+#. module: project_git
+#: model:ir.model.fields,help:project_git.field_project_git_pull_request__id_request
+msgid "Technical field used to track the merge request id"
+msgstr "Campo técnico utilizado para rastrear el ID de solicitud de mezcla"
+
+#. module: project_git
+#: model:ir.model.fields,help:project_git.field_project_git_pull_request__id_project
+msgid "Technical field used to track the project id on the platform"
+msgstr "Campo técnico utilizado para rastrear la identificación del proyecto en la plataforma"
+
+#. module: project_git
+#. odoo-python
+#: code:addons/project_git/models/project_git_auth.py:0
+msgid ""
+"The %s system parameter is missing or still set to the insecure demo "
+"default: configure a real API token."
+msgstr ""
+
+#. module: project_git
+#. odoo-python
+#: code:addons/project_git/models/project_git_pull_request.py:0
+msgid "The task id(s) %(ids)s cannot be found in Odoo."
+msgstr ""
+
+#. module: project_git
+#: model:ir.model.fields,help:project_git.field_project_git_pull_request__source_branch_id
+msgid ""
+"The tracked branch record of the source branch, when the branch is tracked "
+"in Odoo (target branches are never tracked, so they stay as plain names)."
+msgstr ""
+
+#. module: project_git
+#: model:ir.model.fields,field_description:project_git.field_project_git_commit__timestamp
+msgid "Timestamp"
+msgstr ""
+
+#. module: project_git
+#: model:ir.model.fields,field_description:project_git.field_project_git_commit__name
+#: model:ir.model.fields,field_description:project_git.field_project_git_pull_request__name
+msgid "Title"
+msgstr "Título"
+
+#. module: project_git
+#: model:ir.model.fields,help:project_git.field_project_project__git_dev_project_url
+#: model:ir.model.fields,help:project_git.field_project_project__git_project_url
+msgid "URL of the repository on the git hosting platform"
+msgstr ""
+
+#. module: project_git
+#: model:ir.model.fields.selection,name:project_git.selection__project_git_pull_request__ci_status__unknown
+msgid "Unknown"
+msgstr "Desconocido"
+
+#. module: project_git
+#: model:ir.model.fields,field_description:project_git.field_project_git_pull_request__wip
+msgid "WIP"
+msgstr ""
+
+#. module: project_git
+#: model_terms:ir.ui.view,arch_db:project_git.view_project_git_pull_request_search
+msgid "Work in Progress"
+msgstr ""

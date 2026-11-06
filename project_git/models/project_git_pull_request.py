@@ -1,0 +1,250 @@
+# Copyright 2020, Jarsa
+# Copyright 2026 Francesco Ballerini
+# License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl.html).
+
+import logging
+
+from odoo import _, api, fields, models
+
+_logger = logging.getLogger(__name__)
+
+
+class ProjectGitPullRequest(models.Model):
+    _name = "project.git.pull.request"
+    _description = "Git Pull/Merge Request"
+
+    name = fields.Char(string="Title")
+    description = fields.Text()
+    url = fields.Char(string="PR/MR URL")
+
+    id_request = fields.Integer(
+        string="Request ID", help="Technical field used to track the merge request id"
+    )
+    id_project = fields.Integer(
+        string="Project ID",
+        help="Technical field used to track the project id on the platform",
+    )
+    # Each platform bridge adds its own value with selection_add
+    source = fields.Selection([], string="Source Platform")
+
+    source_branch = fields.Char()
+    target_branch = fields.Char()
+    source_branch_id = fields.Many2one(
+        comodel_name="project.git.branch",
+        string="Source Branch Record",
+        help="The tracked branch record of the source branch, when "
+        "the branch is tracked in Odoo (target branches are never "
+        "tracked, so they stay as plain names).",
+    )
+
+    state = fields.Selection(
+        [
+            ("opened", "Opened"),
+            ("merged", "Merged"),
+            ("closed", "Closed"),
+            ("locked", "Locked"),
+        ]
+    )
+    ci_status = fields.Selection(
+        [
+            ("pending", "Pending"),
+            ("running", "Running"),
+            ("success", "Success"),
+            ("failed", "Failed"),
+            ("skipped", "Skipped"),
+            ("canceled", "Canceled"),
+            ("unknown", "Unknown"),
+        ],
+        string="CI Status",
+    )
+
+    wip = fields.Boolean(string="WIP")
+    approved = fields.Boolean()
+
+    last_commit = fields.Char()
+    user_id = fields.Many2one("res.users", string="Created by User")
+
+    task_ids = fields.Many2many(
+        comodel_name="project.task",
+        relation="project_git_pull_request_task_rel",
+        column1="pull_request_id",
+        column2="task_id",
+        string="Related Tasks",
+    )
+    notified_task_ids = fields.Many2many(
+        comodel_name="project.task",
+        relation="project_git_pull_request_notified_task_rel",
+        column1="pull_request_id",
+        column2="task_id",
+        string="Notified Tasks",
+        help="Tasks whose link has already been posted as a message on the "
+        "PR/MR, used to avoid posting the same task link twice.",
+    )
+
+    git_commit_ids = fields.Many2many(
+        comodel_name="project.git.commit",
+        relation="project_git_pull_request_commit_rel",
+        column1="pull_request_id",
+        column2="commit_id",
+        string="Commits",
+    )
+
+    _sql_constraints = [
+        (
+            "source_project_request_unique",
+            "unique(source, id_project, id_request)",
+            "A pull request with the same identifiers is already tracked"
+            " for this platform.",
+        )
+    ]
+
+    def open_merge_request(self):
+        self.ensure_one()
+        return {
+            "type": "ir.actions.act_url",
+            "url": self.url,
+        }
+
+    @api.model_create_multi
+    def create(self, vals_list):
+        rec = super().create(vals_list)
+        rec.assign_tags()
+        return rec
+
+    def write(self, vals):
+        res = super().write(vals)
+        self.assign_tags()
+        return res
+
+    def _post_task_link_messages(self, event):
+        """Post a message on the PR/MR with the link to each related task.
+
+        Already notified tasks are tracked in notified_task_ids so that
+        each task link is posted only once per pull request (avoids message
+        spam, since PR/MR events fire on every update).
+
+        :param dict event: The webhook event (passed down to the
+            per-source _post_message implementations, e.g. for the
+            platform connection)
+        :return: recordset of the tasks notified by this call
+        """
+        self.ensure_one()
+        git_pull_request = self.sudo()
+        tasks_to_notify = git_pull_request.task_ids - git_pull_request.notified_task_ids
+        for task in tasks_to_notify:
+            url = task._notify_get_action_link("view")
+            message = _(
+                "Linked to Odoo task [#%(id)s](%(url)s)",
+                id=task.id,
+                url=url,
+            )
+            git_pull_request._post_message(message, event)
+        if tasks_to_notify:
+            git_pull_request.notified_task_ids = [
+                (4, task.id) for task in tasks_to_notify
+            ]
+        return tasks_to_notify
+
+    @api.model
+    def _is_pr_opening_or_title_change(self, event):
+        """Return True when the PR/MR is being opened or its title edited.
+
+        These are the only moments when title-based feedback is
+        actionable: PR/MR events fire on every update, so negative-result
+        messages must not be reposted each time.
+
+        The title change check (changes.title) is common to every
+        platform; the opening detection is per-source.
+        """
+        is_opening = False
+        if hasattr(self, f"_is_pr_opening_{event.get('source')}"):
+            is_opening = getattr(self, f"_is_pr_opening_{event.get('source')}")(event)
+        title_changed = bool(event.get("changes", {}).get("title"))
+        return is_opening or title_changed
+
+    @api.model
+    def _post_negative_match_messages(
+        self, event, matching_tasks, title_task_references, repository_projects
+    ):
+        """Warn on the PR/MR about broken or missing task references.
+
+        - explicit "taskid#<id>" title reference(s) to tasks that do not
+          exist;
+        - no task reference at all (only for repositories related to an
+          Odoo project, to avoid commenting unrelated repositories).
+        Posted only on PR opening or title change (anti-spam). Model
+        method: in these cases the PR/MR is usually not tracked in Odoo,
+        so the message posting relies on the event for identification.
+
+        :param list(int) title_task_references: task ids referenced in
+            the PR/MR title (see
+            project.git.utils._extract_task_id_references)
+        """
+        if not self._is_pr_opening_or_title_change(event):
+            return
+        missing_task_ids = [
+            task_id
+            for task_id in title_task_references
+            if not self.env["project.task"].sudo().browse(task_id).exists()
+        ]
+        if missing_task_ids:
+            message = _(
+                "The task id(s) %(ids)s cannot be found in Odoo.",
+                ids=", ".join(f"#{task_id}" for task_id in missing_task_ids),
+            )
+            self._post_message(message, event)
+        elif not matching_tasks and repository_projects:
+            message = self.env["ir.qweb"]._render(
+                "project_git.no_task_reference_in_title"
+            )
+            self._post_message(message, event)
+
+    def _post_message(self, message, event=None):
+        """Post a message on the PR/MR on its source platform.
+
+        Works either on a single record (its fields identify the PR/MR)
+        or on an empty recordset with the event as identification
+        fallback (e.g. warnings for PRs not tracked in Odoo). The
+        per-source implementations live in the platform bridges.
+        """
+        if self:
+            self.ensure_one()
+            source = self.source
+        else:
+            source = (event or {}).get("source")
+        if hasattr(self, f"_post_message_{source}"):
+            return getattr(self, f"_post_message_{source}")(message, event)
+        _logger.warning("No _post_message implementation for source %r", source)
+        return False
+
+    def assign_tags(self):
+        """Align the state tags of the related tasks.
+
+        The whole tagging process is per-source (each bridge owns its
+        master-data, its tag namespace and the fields it populates):
+        the bridges implement _assign_tags_to_task_<source>. Records
+        without an implementation (e.g. created by hand without a
+        source) are skipped.
+        """
+        for git_pull_request in self:
+            if not git_pull_request.state:
+                continue
+            method_name = f"_assign_tags_to_task_{git_pull_request.source}"
+            if not hasattr(git_pull_request, method_name):
+                _logger.warning(
+                    "No _assign_tags_to_task implementation for source %r",
+                    git_pull_request.source,
+                )
+                continue
+            for task in git_pull_request.task_ids:
+                getattr(git_pull_request, method_name)(task)
+
+    def _replace_task_tags(self, task, tags_to_remove, tags_to_add):
+        """Replace a set of tags on a task in a single write (removals
+        first, then additions)."""
+        task.write(
+            {
+                "tag_ids": [(3, tag.id) for tag in tags_to_remove]
+                + [(4, tag.id) for tag in tags_to_add],
+            }
+        )

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="view_project_project_form" model="ir.ui.view">
+        <field name="name">project.project.form.inherit.project.gitlab</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project_git.view_project_project_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='create_project_webhook']" position="after">
+                <button
+                    name="retry_odoo_sh_deploy_job"
+                    string="Update Odoo.sh"
+                    type="object"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>
