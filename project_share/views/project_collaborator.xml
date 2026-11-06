@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 Dixmit
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record model="ir.ui.view" id="project_share_wizard_view_form">
+        <field name="model">project.share.wizard</field>
+        <field name="inherit_id" ref="project.project_share_wizard_view_form" />
+        <field name="arch" type="xml">
+            <field name="send_invitation" position="after">
+                <field
+                    name="readonly"
+                    widget="boolean_toggle"
+                    readonly="access_mode == 'read'"
+                />
+            </field>
+        </field>
+    </record>
+</odoo>
