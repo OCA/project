@@ -90,7 +90,7 @@
                 <field name="key" />
             </field>
             <xpath expr="//t[@t-name='card']//field[@name='name']" position="before">
-                <a t-att-href="record.url.raw_value">
+                <a type="open">
                     <field name="key" />
                 </a>
             </xpath>
