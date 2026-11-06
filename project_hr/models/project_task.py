@@ -28,7 +28,14 @@ class ProjectTask(models.Model):
         compute_sudo=True,
     )
     user_ids = fields.Many2many(domain="domain_user_ids")
-    domain_user_ids = fields.Binary(compute="_compute_domain_user_ids")
+    domain_user_ids = fields.Binary(
+        compute="_compute_domain_user_ids",
+        compute_sudo=True,
+    )
+
+    @property
+    def TASK_PORTAL_READABLE_FIELDS(self):
+        return super().TASK_PORTAL_READABLE_FIELDS | {"domain_user_ids"}
 
     @api.depends("user_ids", "company_id")
     def _compute_employee_ids(self):
