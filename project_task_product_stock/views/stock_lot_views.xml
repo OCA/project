@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <record id="view_production_lot_form_inherit_tasks" model="ir.ui.view">
         <field name="name">stock.lot.form.inherit.tasks</field>
