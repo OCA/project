@@ -1,4 +1,5 @@
 from odoo import Command
+from odoo.tests import new_test_user
 from odoo.tests.common import TransactionCase
 
 
@@ -142,3 +143,28 @@ class TestProjectTaskDefaultUser(TransactionCase):
             }
         )
         self.assertEqual(set(task.user_ids.ids), {self.user2.id})
+
+    def test_portal_create_task_and_change_stage(self):
+        portal_user = new_test_user(
+            self.env, login="default_user_portal", groups="base.group_portal"
+        )
+        self.project_with_default.write(
+            {
+                "privacy_visibility": "portal",
+                "collaborator_ids": [
+                    Command.create({"partner_id": portal_user.partner_id.id})
+                ],
+            }
+        )
+        self.project_with_default.message_subscribe(
+            partner_ids=portal_user.partner_id.ids
+        )
+        task = (
+            self.env["project.task"]
+            .with_user(portal_user)
+            .with_context(default_project_id=self.project_with_default.id)
+            .create({"name": "Portal task", "stage_id": self.stage_without_default.id})
+        )
+        self.assertEqual(task.user_ids.ids, [self.user1.id])
+        task.stage_id = self.stage_with_default
+        self.assertEqual(task.user_ids.ids, [self.user2.id])
