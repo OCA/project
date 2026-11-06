@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 - Jarsa
+     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl-3.0). -->
+<odoo>
+    <record id="project_task_qa_checklist_template_view_tree" model="ir.ui.view">
+        <field name="name">project.task.qa.checklist.template.tree</field>
+        <field name="model">project.task.qa.checklist.template</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="sequence" widget="handle" />
+                <field name="name" />
+                <field name="always_applicable" />
+                <field
+                    name="tag_ids"
+                    widget="many2many_tags"
+                    options="{'no_create': True}"
+                />
+                <field name="help_text" optional="hide" />
+                <field name="active" column_invisible="1" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="project_task_qa_checklist_template_view_form" model="ir.ui.view">
+        <field name="name">project.task.qa.checklist.template.form</field>
+        <field name="model">project.task.qa.checklist.template</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <widget
+                        name="web_ribbon"
+                        title="Archived"
+                        bg_color="text-bg-danger"
+                        invisible="active"
+                    />
+                    <group>
+                        <field name="name" />
+                        <field name="sequence" />
+                        <field name="always_applicable" />
+                        <field
+                            name="tag_ids"
+                            widget="many2many_tags"
+                            invisible="always_applicable"
+                        />
+                        <field name="active" invisible="1" />
+                    </group>
+                    <group string="Tester Guidance">
+                        <field name="help_text" nolabel="1" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record
+        id="project_task_qa_checklist_template_action"
+        model="ir.actions.act_window"
+    >
+        <field name="name">QA Checklist Criteria</field>
+        <field name="res_model">project.task.qa.checklist.template</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+        id="project_task_qa_checklist_template_menu"
+        name="QA Checklist Criteria"
+        parent="project.menu_project_config"
+        action="project_task_qa_checklist_template_action"
+        sequence="90"
+    />
+</odoo>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 - Jarsa
+     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl-3.0). -->
+<odoo>
+    <record id="mail_activity_qa_checklist_review" model="mail.activity.type">
+        <field name="name">Review QA checklist</field>
+        <field name="category">default</field>
+        <field name="res_model">project.task</field>
+        <field name="delay_count">0</field>
+    </record>
+</odoo>

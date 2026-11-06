@@ -1,0 +1,4 @@
+"id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_qa_checklist_template_manager","qa.checklist.template.manager","model_project_task_qa_checklist_template","project.group_project_manager",1,1,1,1
+"access_qa_checklist_template_user","qa.checklist.template.user","model_project_task_qa_checklist_template","project.group_project_user",1,0,0,0
+"access_qa_checklist_line_user","qa.checklist.line.user","model_project_task_qa_checklist_line","project.group_project_user",1,1,1,1
