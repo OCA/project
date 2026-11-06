@@ -4,7 +4,7 @@
 
 from odoo import Command
 from odoo.exceptions import ValidationError
-from odoo.tests import new_test_user
+from odoo.tests import Form, new_test_user
 
 from odoo.addons.base.tests.common import BaseCommon
 
@@ -167,3 +167,23 @@ class TestProjectHr(BaseCommon):
         self.assertIn(self.hr_category_2, task_categories)
         # This operation shouldn't give error
         self.task.hr_category_ids = [Command.link(self.hr_category.id)]
+
+    def test_portal_project_sharing_task(self):
+        portal_user = new_test_user(
+            self.env, login="project_hr_portal", groups="base.group_portal"
+        )
+        self.project.write(
+            {
+                "privacy_visibility": "portal",
+                "collaborator_ids": [
+                    Command.create({"partner_id": portal_user.partner_id.id})
+                ],
+            }
+        )
+        self.project.message_subscribe(partner_ids=portal_user.partner_id.ids)
+        with Form(
+            self.task.with_user(portal_user),
+            view="project.project_sharing_project_task_view_form",
+        ) as form:
+            form.name = "Portal task"
+        self.assertEqual(self.task.name, "Portal task")
