@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
     <!-- Form View -->
     <record id="project_template_view_inherit_form" model="ir.ui.view">
@@ -17,6 +18,11 @@
             </xpath>
             <xpath expr="//field[@name='label_tasks']/.." position="inside">
                 <field name="is_template" class="oe_inline" string="Is Template?" />
+                <field
+                    name="project_template_id"
+                    invisible="id or is_template"
+                    options="{'no_create': True}"
+                />
             </xpath>
         </field>
     </record>
@@ -59,9 +65,27 @@
         </field>
     </record>
     <!-- Add default filter on non-templates -->
-    <record model="ir.actions.act_window" id="project.open_view_project_all">
+    <record id="project.open_view_project_all" model="ir.actions.act_window">
         <field
             name="context"
         >{"display_milestone_deadline": True, "search_default_projects": True}</field>
     </record>
+
+    <record id="project_template_action" model="ir.actions.act_window">
+        <field name="name">Project Templates</field>
+        <field name="res_model">project.project</field>
+        <field name="view_mode">kanban,list,form</field>
+        <field name="domain">[("is_template", "=", True)]</field>
+        <field
+            name="context"
+        >{"default_is_template": True, "search_default_templates": True}</field>
+    </record>
+
+    <menuitem
+        id="project_template_menu"
+        name="Project Templates"
+        action="project_template_action"
+        parent="project.menu_project_config"
+        sequence="20"
+    />
 </odoo>
