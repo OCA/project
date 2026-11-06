@@ -1,0 +1,4 @@
+- [PyTech](https://pytech.it):
+  - Quirino Leone \<quirino.leone@pytech.it\>
+  - Melody Uffreduzzi \<melody.uffreduzzi@pytech.it\>
+  - Simone Rubino \<simone.rubino@pytech.it\>
