@@ -23,7 +23,6 @@ msgstr ""
 #. module: project_timesheet_time_control
 #. odoo-python
 #: code:addons/project_timesheet_time_control/wizards/hr_timesheet_switch.py:0
-#, python-format
 msgid ""
 "%d running timers found. Cannot know which one to stop. Please stop them "
 "manually."
@@ -33,30 +32,33 @@ msgstr ""
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
-msgid ""
-".\n"
-"                            If you continue, it will be stopped with"
+#, fuzzy
+#| msgid ""
+#| ".\n"
+#| "                            If you continue, it will be stopped with"
+msgid ". If you continue, it will be stopped with"
 msgstr ""
 ".\n"
 "                            Si continúa, se detendrá con"
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_kanban_account_analytic_line
-msgid ""
-"<br/>\n"
-"                    <span>to</span>"
-msgstr ""
-"<br/>\n"
-"                    <span>hasta</span>"
+#, fuzzy
+msgid "<span>to</span>"
+msgstr "<span>hasta</span>"
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_project_kanban_inherited
+#, fuzzy
+#| msgid ""
+#| "<span class=\"o_label\">\n"
+#| "                            <i class=\"fa fa-lg fa-play-circle text-"
+#| "success\"/>\n"
+#| "                            Start work\n"
+#| "                        </span>"
 msgid ""
-"<span class=\"o_label\">\n"
-"                            <i class=\"fa fa-lg fa-play-circle text-"
-"success\"/>\n"
-"                            Start work\n"
-"                        </span>"
+"<span class=\"o_label\"><i class=\"fa fa-lg fa-play-circle text-success\"/> "
+"Start work</span>"
 msgstr ""
 "<span class=\"o_label\">\n"
 "                            <i class=\"fa fa-lg fa-play-circle text-"
@@ -66,12 +68,16 @@ msgstr ""
 
 #. module: project_timesheet_time_control
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_project_kanban_inherited
+#, fuzzy
+#| msgid ""
+#| "<span class=\"o_label\">\n"
+#| "                            <i class=\"fa fa-lg fa-stop-circle text-"
+#| "warning\"/>\n"
+#| "                            Stop work\n"
+#| "                        </span>"
 msgid ""
-"<span class=\"o_label\">\n"
-"                            <i class=\"fa fa-lg fa-stop-circle text-"
-"warning\"/>\n"
-"                            Stop work\n"
-"                        </span>"
+"<span class=\"o_label\"><i class=\"fa fa-lg fa-stop-circle text-warning\"/> "
+"Stop work</span>"
 msgstr ""
 "<span class=\"o_label\">\n"
 "                            <i class=\"fa fa-lg fa-stop-circle text-"
@@ -92,7 +98,6 @@ msgstr "Cancelar"
 #. module: project_timesheet_time_control
 #. odoo-python
 #: code:addons/project_timesheet_time_control/models/account_analytic_line.py:0
-#, python-format
 msgid ""
 "Cannot stop timer %d because it is not running. Refresh the page and check "
 "again."
@@ -183,13 +188,12 @@ msgstr "Mixin para registros relacionados con líneas de parte de horas"
 #. module: project_timesheet_time_control
 #. odoo-python
 #: code:addons/project_timesheet_time_control/models/hr_timesheet_time_control_mixin.py:0
-#, python-format
 msgid ""
 "No running timer found in %(model)s %(record)s. Refresh the page and check "
 "again."
 msgstr ""
-"No se ha encontrado ningún cronómetro corriendo en el/la %(model)s "
-"%(record)s. Refresque la página y pruebe de nuevo."
+"No se ha encontrado ningún cronómetro corriendo en el/la %(model)s %"
+"(record)s. Refresque la página y pruebe de nuevo."
 
 #. module: project_timesheet_time_control
 #: model:ir.model.fields,field_description:project_timesheet_time_control.field_hr_timesheet_switch__analytic_line_id
@@ -230,7 +234,6 @@ msgstr "Continuar"
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_line_form
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_kanban_account_analytic_line
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_form2_inherited
-#, python-format
 msgid "Resume work"
 msgstr "Continuar trabajo"
 
@@ -271,7 +274,6 @@ msgstr "Comenzar nuevo cronómetro"
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_form2_inherited
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_kanban
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.view_task_tree2_inherited
-#, python-format
 msgid "Start work"
 msgstr "Comenzar trabajo"
 
@@ -348,6 +350,13 @@ msgstr "que comenzó el"
 #: model_terms:ir.ui.view,arch_db:project_timesheet_time_control.hr_timesheet_switch_form
 msgid "hour(s)."
 msgstr "hora(s)."
+
+#~ msgid ""
+#~ "<br/>\n"
+#~ "                    <span>to</span>"
+#~ msgstr ""
+#~ "<br/>\n"
+#~ "                    <span>hasta</span>"
 
 #~ msgid "Last Modified on"
 #~ msgstr "Última modificación el"
