@@ -1,0 +1,1 @@
+odoo-addon-project_task_pull_request @ git+https://github.com/OCA/project.git@refs/pull/1870/head#subdirectory=project_task_pull_request
