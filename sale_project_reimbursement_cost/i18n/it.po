@@ -1,0 +1,89 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sale_project_reimbursement_cost
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2025-01-30 13:06+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
+"Language-Team: none\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.6.2\n"
+
+#. module: sale_project_reimbursement_cost
+#. odoo-javascript
+#: code:addons/sale_project_reimbursement_cost/static/src/components/project_right_side_panel/project_right_side_panel.xml:0
+#, python-format
+msgid "Amount"
+msgstr "Valore"
+
+#. module: sale_project_reimbursement_cost
+#. odoo-javascript
+#: code:addons/sale_project_reimbursement_cost/static/src/components/project_right_side_panel/project_right_side_panel.xml:0
+#, python-format
+msgid "Date"
+msgstr "Data"
+
+#. module: sale_project_reimbursement_cost
+#: model:ir.model,name:sale_project_reimbursement_cost.model_account_move_line
+msgid "Journal Item"
+msgstr "Movimento contabile"
+
+#. module: sale_project_reimbursement_cost
+#: model:ir.model,name:sale_project_reimbursement_cost.model_product_template
+msgid "Product"
+msgstr "Prodotto"
+
+#. module: sale_project_reimbursement_cost
+#: model:ir.model,name:sale_project_reimbursement_cost.model_project_project
+msgid "Project"
+msgstr "Progetto"
+
+#. module: sale_project_reimbursement_cost
+#. odoo-javascript
+#: code:addons/sale_project_reimbursement_cost/static/src/components/project_right_side_panel/project_right_side_panel.xml:0
+#: model:product.template,name:sale_project_reimbursement_cost.product_provision_product_template
+#, python-format
+msgid "Provision"
+msgstr "Provvigione"
+
+#. module: sale_project_reimbursement_cost
+#: model:ir.model.fields,field_description:sale_project_reimbursement_cost.field_product_product__provision_product_id
+#: model:ir.model.fields,field_description:sale_project_reimbursement_cost.field_product_template__provision_product_id
+msgid "Provision Product"
+msgstr "Prodotto provvigione"
+
+#. module: sale_project_reimbursement_cost
+#. odoo-javascript
+#: code:addons/sale_project_reimbursement_cost/static/src/components/project_right_side_panel/project_right_side_panel.xml:0
+#, python-format
+msgid "Provisions"
+msgstr "Provvigioni"
+
+#. module: sale_project_reimbursement_cost
+#: model:product.template,name:sale_project_reimbursement_cost.product_reimbursement_product_template
+msgid "Reimbursement"
+msgstr "Rimborso"
+
+#. module: sale_project_reimbursement_cost
+#: model:ir.actions.act_window,name:sale_project_reimbursement_cost.sol_reimbursement_cost_action
+msgid "Reimbursement cost"
+msgstr "Costo rimborso"
+
+#. module: sale_project_reimbursement_cost
+#: model:product.template,name:sale_project_reimbursement_cost.product_service_task_product_template
+msgid "Service task"
+msgstr "Lavoro servizio"
+
+#. module: sale_project_reimbursement_cost
+#. odoo-javascript
+#: code:addons/sale_project_reimbursement_cost/static/src/components/project_right_side_panel/project_right_side_panel.xml:0
+#, python-format
+msgid "Total"
+msgstr "Totale"
