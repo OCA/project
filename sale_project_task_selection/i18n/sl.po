@@ -1,0 +1,69 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sale_project_task_selection
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2026-06-30 04:54+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
+"Language-Team: none\n"
+"Language: sl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
+"n%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 5.15.2\n"
+
+#. module: sale_project_task_selection
+#: model:ir.model.fields,field_description:sale_project_task_selection.field_sale_order__has_project_service_tracking_lines
+msgid "Has Project Service Tracking Lines"
+msgstr "Ima postavke sledenja projektnih storitev"
+
+#. module: sale_project_task_selection
+#: model:ir.model.fields,field_description:sale_project_task_selection.field_sale_order_line__is_project_service_tracking_line
+msgid "Is Project Service Tracking Line"
+msgstr "Je postavka sledenja projektnih storitev"
+
+#. module: sale_project_task_selection
+#: model_terms:ir.ui.view,arch_db:sale_project_task_selection.sale_order_form
+msgid "Project"
+msgstr "Projekt"
+
+#. module: sale_project_task_selection
+#: model:ir.model,name:sale_project_task_selection.model_sale_order
+msgid "Sales Order"
+msgstr "Prodajni nalog"
+
+#. module: sale_project_task_selection
+#: model:ir.model,name:sale_project_task_selection.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Prodajna postavka"
+
+#. module: sale_project_task_selection
+#: model_terms:ir.ui.view,arch_db:sale_project_task_selection.sale_order_form
+msgid "Task"
+msgstr "Opravilo"
+
+#. module: sale_project_task_selection
+#. odoo-python
+#: code:addons/sale_project_task_selection/models/sale_order_line.py:0
+msgid ""
+"The task %(task)s is already linked to another line (%(order)s: "
+"%(product)s)."
+msgstr ""
+"Opravilo %(task)s je že povezano z drugo postavko (%(order)s: %(product)s)."
+
+#. module: sale_project_task_selection
+#. odoo-python
+#: code:addons/sale_project_task_selection/models/sale_order_line.py:0
+msgid "The task %(task)s is already linked to another order (%(order)s)."
+msgstr "Opravilo %(task)s je že povezano z drugim nalogom (%(order)s)."
+
+#. module: sale_project_task_selection
+#. odoo-python
+#: code:addons/sale_project_task_selection/models/sale_order_line.py:0
+msgid "The task %(task)s is already linked to another project (%(project)s)."
+msgstr "Opravilo %(task)s je že povezano z drugim projektom (%(project)s)."
