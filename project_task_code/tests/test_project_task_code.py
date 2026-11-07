@@ -1,6 +1,9 @@
 # Copyright 2016 Tecnativa <vicent.cubells@tecnativa.com>
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
+from odoo import Command
+from odoo.tests import new_test_user
+
 from odoo.addons.base.tests.common import BaseCommon
 
 
@@ -22,6 +25,29 @@ class TestProjectTaskCode(BaseCommon):
         code = self.task_sequence.get_next_char(number_next)
         project_task = self.project_task_model.create({"name": "Testing task code"})
         self.assertNotEqual(project_task.code, "/")
+        self.assertEqual(project_task.code, code)
+
+    def test_portal_task_code_assign(self):
+        portal_user = new_test_user(
+            self.env, login="project_task_code_portal", groups="base.group_portal"
+        )
+        project = self.env["project.project"].create(
+            {
+                "name": "Portal project",
+                "privacy_visibility": "portal",
+                "collaborator_ids": [
+                    Command.create({"partner_id": portal_user.partner_id.id})
+                ],
+            }
+        )
+        project.message_subscribe(partner_ids=portal_user.partner_id.ids)
+        number_next = self.task_sequence.number_next_actual
+        code = self.task_sequence.get_next_char(number_next)
+        project_task = (
+            self.project_task_model.with_user(portal_user)
+            .with_context(default_project_id=project.id)
+            .create({"name": "Portal task"})
+        )
         self.assertEqual(project_task.code, code)
 
     def test_name_get(self):
