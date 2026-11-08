@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-10-13 15:37+0000\n"
+"PO-Revision-Date: 2026-11-08 16:03+0000\n"
 "Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
@@ -14,7 +14,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.17\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: project_task_description_template
 #. odoo-python
@@ -22,6 +22,8 @@ msgstr ""
 msgid ""
 "A description template is required to create tasks in project %(project)s."
 msgstr ""
+"Per creare attività nel progetto %(project)s è necessario un modello di "
+"descrizione."
 
 #. module: project_task_description_template
 #: model:ir.model.fields,field_description:project_task_description_template.field_project_task_description_template__active
@@ -67,7 +69,7 @@ msgstr "Nome visualizzato"
 #. module: project_task_description_template
 #: model:ir.model.fields,field_description:project_task_description_template.field_project_task__has_description_templates
 msgid "Has Description Templates"
-msgstr ""
+msgstr "Ha modelli descrizione"
 
 #. module: project_task_description_template
 #: model:ir.model.fields,field_description:project_task_description_template.field_project_task_description_template__id
@@ -90,6 +92,8 @@ msgid ""
 "Leave empty to make the template available in all projects. Portal users "
 "only see the templates linked to their projects."
 msgstr ""
+"Lasciare vuoto per rendere il modello disponibile in tutti i progetti. Gli "
+"utenti del portale visualizzano solo i modelli collegati ai propri progetti."
 
 #. module: project_task_description_template
 #: model:ir.model.fields,field_description:project_task_description_template.field_project_task_description_template__name
@@ -100,11 +104,13 @@ msgstr "Nome"
 #: model_terms:ir.ui.view,arch_db:project_task_description_template.edit_project
 msgid "Portal users must select a description template when they create a task"
 msgstr ""
+"Gli utenti del portale devono selezionare un modello di descrizione quando "
+"creano un'attività"
 
 #. module: project_task_description_template
 #: model:ir.model,name:project_task_description_template.model_project_project
 msgid "Project"
-msgstr ""
+msgstr "Progetto"
 
 #. module: project_task_description_template
 #. odoo-python
@@ -113,6 +119,8 @@ msgid ""
 "Project %(project)s requires a description template on portal tasks, so it "
 "must have at least one template."
 msgstr ""
+"Il progetto %(project)s richiede un modello di descrizione per le attività "
+"del portale; pertanto, deve disporre di almeno un modello."
 
 #. module: project_task_description_template
 #: model:ir.model,name:project_task_description_template.model_project_task_description_template
@@ -122,13 +130,13 @@ msgstr "Modello descrizione lavoro progetto"
 #. module: project_task_description_template
 #: model:ir.model.fields,field_description:project_task_description_template.field_project_task_description_template__project_ids
 msgid "Projects"
-msgstr ""
+msgstr "Progetti"
 
 #. module: project_task_description_template
 #: model:ir.model.fields,field_description:project_task_description_template.field_project_project__portal_task_description_template_required
 #: model:ir.model.fields,field_description:project_task_description_template.field_project_task__portal_description_template_required
 msgid "Require Description Template on Portal Tasks"
-msgstr ""
+msgstr "Richiede un modello di descrizione nelle attività del portale"
 
 #. module: project_task_description_template
 #: model:ir.model,name:project_task_description_template.model_project_task
@@ -153,6 +161,8 @@ msgid ""
 "Templates available for the tasks of this project. Templates without "
 "projects are also available for internal users."
 msgstr ""
+"Sono disponibili modelli per le attività di questo progetto. Per gli utenti "
+"interni sono inoltre disponibili modelli non associati ad alcun progetto."
 
 #. module: project_task_description_template
 #. odoo-python
@@ -161,6 +171,8 @@ msgid ""
 "The description template %(template)s is not available in project %"
 "(project)s."
 msgstr ""
+"Il modello di descrizione %(template)s non è disponibile nel progetto %"
+"(project)s."
 
 #~ msgid "Last Modified on"
 #~ msgstr "Ultima modifica il"
