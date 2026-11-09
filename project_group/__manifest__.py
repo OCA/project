@@ -4,7 +4,7 @@
 {
     "name": "Project Group",
     "summary": """Add groups for filtering on projects""",
-    "version": "19.0.1.0.0",
+    "version": "19.0.1.0.1",
     "license": "AGPL-3",
     "author": "Dixmit, Odoo Community Association (OCA)",
     "website": "https://github.com/OCA/project",
