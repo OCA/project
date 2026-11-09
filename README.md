@@ -23,6 +23,7 @@ Available addons
 addon | version | maintainers | summary
 --- | --- | --- | ---
 [project_department](project_department/) | 20.0.1.0.0 |  | Project Department Categorization
+[project_key](project_key/) | 20.0.1.0.0 |  | Module decorates projects and tasks with Project Key
 [project_task_default_stage](project_task_default_stage/) | 20.0.1.0.0 |  | Recovery default task stages for projects from v8
 [project_task_product](project_task_product/) | 20.0.1.0.0 |  | Allows to specify in a project task, the product the task relates to.
 [project_task_pull_request](project_task_pull_request/) | 20.0.1.0.0 |  | Adds a field for a PR URI to project tasks
