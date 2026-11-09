@@ -10,7 +10,7 @@ class ProjectTask(models.Model):
     @api.model_create_multi
     def create(self, vals_list):
         tasks = super().create(vals_list)
-        for task in tasks:
+        for task in tasks.sudo():
             default_users, mode = task._get_default_users_and_mode()
             if default_users:
                 task._apply_default_users(default_users, mode)
@@ -20,7 +20,7 @@ class ProjectTask(models.Model):
     def write(self, vals):
         res = super().write(vals)
         if "stage_id" in vals:
-            for task in self:
+            for task in self.sudo():
                 default_users, mode = task._get_default_users_and_mode()
                 if default_users:
                     task._apply_default_users(default_users, mode)
