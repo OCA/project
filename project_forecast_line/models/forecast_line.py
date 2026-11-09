@@ -34,16 +34,12 @@ class ForecastLine(models.Model):
         index=True,
         ondelete="restrict",
     )
-    employee_id = fields.Many2one("hr.employee", string="Employee", ondelete="cascade")
+    employee_id = fields.Many2one("hr.employee", ondelete="cascade")
     employee_forecast_role_id = fields.Many2one(
-        "hr.employee.forecast.role", string="Employee Forecast Role", ondelete="cascade"
+        "hr.employee.forecast.role", ondelete="cascade"
     )
-    project_id = fields.Many2one(
-        "project.project", index=True, string="Project", ondelete="cascade"
-    )
-    task_id = fields.Many2one(
-        "project.task", index=True, string="Task", ondelete="cascade"
-    )
+    project_id = fields.Many2one("project.project", index=True, ondelete="cascade")
+    task_id = fields.Many2one("project.task", index=True, ondelete="cascade")
     sale_id = fields.Many2one(
         "sale.order",
         related="sale_line_id.order_id",
