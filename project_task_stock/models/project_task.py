@@ -1,6 +1,6 @@
 # Copyright 2022-2025 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 from odoo.exceptions import UserError
 from odoo.tools import float_is_zero
 
@@ -10,7 +10,10 @@ class ProjectTask(models.Model):
     _inherit = ["project.task", "analytic.mixin"]
 
     scrap_ids = fields.One2many(
-        comodel_name="stock.scrap", inverse_name="task_id", string="Scraps"
+        comodel_name="stock.move",
+        inverse_name="task_id",
+        string="Scraps",
+        domain=[("is_scrap", "=", True)],
     )
     scrap_count = fields.Integer(
         compute="_compute_scrap_move_count", string="Scrap Move"
@@ -20,7 +23,7 @@ class ProjectTask(models.Model):
         inverse_name="raw_material_task_id",
         string="Stock Moves",
         copy=False,
-        domain=[("scrapped", "=", False)],
+        domain=[("is_scrap", "=", False)],
     )
     use_stock_moves = fields.Boolean(related="stage_id.use_stock_moves")
     done_stock_moves = fields.Boolean(related="stage_id.done_stock_moves")
@@ -82,17 +85,17 @@ class ProjectTask(models.Model):
         inverse_name="stock_task_id",
         string="Stock Analytic Lines",
     )
-    group_id = fields.Many2one(
-        comodel_name="procurement.group",
-    )
+    reference_id = fields.Many2one(comodel_name="stock.reference")
 
     def _compute_scrap_move_count(self):
-        data = self.env["stock.scrap"].read_group(
-            [("task_id", "in", self.ids)], ["task_id"], ["task_id"]
+        data = self.env["stock.move"]._read_group(
+            domain=[("task_id", "in", self.ids), ("is_scrap", "=", True)],
+            groupby=["task_id"],
+            aggregates=["__count"],
         )
-        count_data = {item["task_id"][0]: item["task_id_count"] for item in data}
-        for item in self:
-            item.scrap_count = count_data.get(item.id, 0)
+        data = dict(data)
+        for task in self:
+            task.scrap_count = data.get(task, 0)
 
     @api.depends("move_ids", "move_ids.state")
     def _compute_allow_moves_action_confirm(self):
@@ -124,11 +127,8 @@ class ProjectTask(models.Model):
     def _compute_unreserve_visible(self):
         for item in self:
             already_reserved = item.mapped("move_ids.move_line_ids")
-            any_quantity_done = any(
-                [
-                    m.quantity > 0
-                    for m in item.move_ids.filtered(lambda x: x.state == "done")
-                ]
+            any_quantity_done = bool(
+                item.move_ids.filtered(lambda x: x.state == "done" and x.quantity > 0)
             )
             item.unreserve_visible = not any_quantity_done and already_reserved
 
@@ -140,7 +140,10 @@ class ProjectTask(models.Model):
     def _check_tasks_with_pending_moves(self):
         if self.move_ids and "assigned" in self.mapped("move_ids.state"):
             raise UserError(
-                _("It is not possible to change this with reserved movements in tasks.")
+                self.env._(
+                    "It is not possible to change this with "
+                    "reserved movements in tasks."
+                )
             )
 
     def _update_moves_info(self):
@@ -168,7 +171,7 @@ class ProjectTask(models.Model):
         self.action_assign()
 
     @api.model
-    def _prepare_procurement_group_vals(self):
+    def _prepare_stock_reference_vals(self):
         return {"name": f"Task-ID: {self.id}"}
 
     def action_confirm(self):
@@ -181,16 +184,20 @@ class ProjectTask(models.Model):
     def button_scrap(self):
         self.ensure_one()
         move_items = self.move_ids.filtered(lambda x: x.state not in ("done", "cancel"))
+        source_location = self.location_id or self.project_id.location_id
         return {
-            "name": _("Scrap"),
+            "name": self.env._("Scrap"),
             "view_mode": "form",
-            "res_model": "stock.scrap",
-            "view_id": self.env.ref("stock.stock_scrap_form_view2").id,
+            "res_model": "stock.move",
+            "view_id": self.env.ref("stock.view_scrap_move_form").id,
             "type": "ir.actions.act_window",
             "context": {
                 "default_task_id": self.id,
+                "default_is_scrap": True,
                 "product_ids": move_items.mapped("product_id").ids,
                 "default_company_id": self.company_id.id,
+                "default_location_id": source_location.id,
+                "default_location_dest_id": (self.company_id.scrap_location_id.id),
             },
             "target": "new",
         }
@@ -227,9 +234,7 @@ class ProjectTask(models.Model):
 
     def action_done(self):
         # Filter valid stock moves (avoiding those done and cancelled).
-        price_dp = self.env["decimal.precision"].precision_get(
-            "Product Unit of Measure"
-        )
+        price_dp = self.env["decimal.precision"].precision_get("Product Unit")
         moves_to_skip = self.move_ids.filtered(lambda x: x.state in ("done", "cancel"))
         moves_to_do = self.move_ids - moves_to_skip
         for move in moves_to_do.filtered(
@@ -244,7 +249,9 @@ class ProjectTask(models.Model):
 
     def action_see_move_scrap(self):
         self.ensure_one()
-        action = self.env["ir.actions.actions"]._for_xml_id("stock.action_stock_scrap")
+        action = self.env["ir.actions.actions"]._for_xml_id(
+            "stock.stock_scrapped_moves_action"
+        )
         action["domain"] = [("task_id", "=", self.id)]
         action["context"] = dict(self._context, default_origin=self.name)
         return action

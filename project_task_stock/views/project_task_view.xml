@@ -11,7 +11,7 @@
                     type="action"
                     string="Product Moves"
                     class="oe_stat_button"
-                    icon="fa-exchange"
+                    icon="sync_alt"
                     invisible="not done_stock_moves"
                     groups="stock.group_stock_user"
                 />
@@ -19,7 +19,7 @@
                     class="oe_stat_button"
                     name="action_see_move_scrap"
                     type="object"
-                    icon="fa-arrows-v"
+                    icon="swap_vert"
                     invisible="scrap_count==0"
                     groups="stock.group_stock_user"
                 >

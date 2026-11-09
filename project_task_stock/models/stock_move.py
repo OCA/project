@@ -1,7 +1,7 @@
 # Copyright 2022-2025 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
 
-from odoo import api, fields, models
+from odoo import Command, api, fields, models
 from odoo.tools import float_is_zero
 
 
@@ -19,23 +19,27 @@ class StockMove(models.Model):
     analytic_line_ids = fields.One2many(
         comodel_name="account.analytic.line",
         inverse_name="stock_move_id",
-        string="Analytic Lines",
     )
     show_cancel_button_in_task = fields.Boolean(
         compute="_compute_show_cancel_button_in_task"
     )
 
-    @api.onchange("product_id")
-    def _onchange_product_id(self):
-        """It is necessary to overwrite the name to prevent set product name
+    @api.depends(
+        "picking_id.name",
+        "is_inventory",
+        "inventory_name",
+        "raw_material_task_id.name",
+    )
+    def _compute_reference(self):
+        """It is necessary to overwrite the reference to prevent set product name
         from being auto-defined."""
-        res = super()._onchange_product_id()
-        if self.raw_material_task_id:
-            self.name = self.raw_material_task_id.name
+        res = super()._compute_reference()
+        for move in self.filtered("raw_material_task_id"):
+            move.reference = move.raw_material_task_id.name
         return res
 
     def _compute_show_cancel_button_in_task(self):
-        dp = self.env["decimal.precision"].precision_get("Product Unit of Measure")
+        dp = self.env["decimal.precision"].precision_get("Product Unit")
         for item in self:
             item.show_cancel_button_in_task = bool(
                 item.raw_material_task_id
@@ -109,19 +113,19 @@ class StockMove(models.Model):
             "date": (
                 task.stock_analytic_date
                 or project_id.stock_analytic_date
-                or fields.date.today()
+                or fields.Date.today()
             ),
             "name": task.name + ": " + product.name,
             "unit_amount": quantity_done,
             "account_id": analytic_account.id,
             "user_id": self.env.user.id,
-            "product_uom_id": self.product_uom.id,
+            "product_uom_id": self.uom_id.id,
             "company_id": analytic_account.company_id.id or self.env.company.id,
             "partner_id": task.partner_id.id or project_id.partner_id.id or False,
             "stock_move_id": self.id,
             "stock_task_id": task.id,
         }
-        amount_unit = product.with_context(uom=self.product_uom.id)._price_compute(
+        amount_unit = product.with_context(uom=self.uom_id.id)._price_compute(
             "standard_price"
         )[product.id]
         amount = amount_unit * quantity_done or 0.0
@@ -152,13 +156,13 @@ class StockMove(models.Model):
             task = self.env["project.task"].browse(
                 self.env.context.get("default_raw_material_task_id")
             )
-            if not task.group_id:
-                task.group_id = self.env["procurement.group"].create(
-                    task._prepare_procurement_group_vals()
+            if not task.reference_id:
+                task.reference_id = self.env["stock.reference"].create(
+                    task._prepare_stock_reference_vals()
                 )
             defaults.update(
                 {
-                    "group_id": task.group_id.id,
+                    "reference_ids": [Command.link(task.reference_id.id)],
                     "location_id": (
                         task.location_id.id or task.project_id.location_id.id
                     ),
@@ -196,13 +200,19 @@ class StockMove(models.Model):
             action["context"]["warehouse"] = warehouse.id
         return action
 
+    def _prepare_scrap_move_vals(self):
+        vals = super()._prepare_scrap_move_vals()
+        if self.task_id:
+            vals["raw_material_task_id"] = self.task_id.id
+            vals["origin"] = self.origin or self.task_id.name
+        return vals
+
 
 class StockMoveLine(models.Model):
     _inherit = "stock.move.line"
 
     task_id = fields.Many2one(
         comodel_name="project.task",
-        string="Task",
         compute="_compute_task_id",
         store=True,
     )

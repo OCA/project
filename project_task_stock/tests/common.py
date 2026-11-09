@@ -1,6 +1,7 @@
 # Copyright 2022-2025 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
+from odoo import Command
 from odoo.tests import Form
 from odoo.tests.common import new_test_user
 
@@ -35,7 +36,23 @@ class TestProjectStockBase(BaseCommon):
                 "standard_price": 0,
             }
         )
-        cls.picking_type = cls.env.ref("project_task_stock.stock_picking_type_tm_test")
+        cls.stock_location_components = cls.env["stock.location"].create(
+            {
+                "name": "Shelf 1",
+                "barcode": "SHELF1",
+                "location_id": cls.env.ref("stock.warehouse0").lot_stock_id.id,
+            }
+        )
+        cls.picking_type = cls.env["stock.picking.type"].create(
+            {
+                "name": "Task material",
+                "sequence_code": "TM",
+                "code": "outgoing",
+                "warehouse_id": cls.env.ref("stock.warehouse0").id,
+                "default_location_src_id": cls.env.ref("stock.stock_location_stock").id,
+                "default_location_dest_id": cls.stock_location_components.id,
+            }
+        )
         cls.location = cls.picking_type.default_location_src_id
         cls.location_dest = cls.picking_type.default_location_dest_id
         cls.plan = cls.env["account.analytic.plan"].create({"name": "Projects Plan"})
@@ -53,10 +70,31 @@ class TestProjectStockBase(BaseCommon):
                 "company_id": False,
             }
         )
-        cls.project = cls.env.ref("project_task_stock.project_project_tm_test")
+        cls.project = cls.env["project.project"].create(
+            {
+                "name": "Task material",
+                "picking_type_id": cls.picking_type.id,
+                "location_id": cls.env.ref("stock.stock_location_stock").id,
+                "location_dest_id": cls.stock_location_components.id,
+                "stock_analytic_date": "1990-01-01",
+            }
+        )
         cls.project.account_id = cls.analytic_account
-        cls.stage_in_progress = cls.env.ref("project.project_stage_1")
-        cls.stage_done = cls.env.ref("project.project_stage_2")
+        cls.stage_in_progress = cls.env["project.task.type"].create(
+            {
+                "name": "In progress",
+                "use_stock_moves": True,
+                "project_ids": [Command.link(cls.project.id)],
+            }
+        )
+        cls.stage_done = cls.env["project.task.type"].create(
+            {
+                "name": "Done",
+                "use_stock_moves": True,
+                "done_stock_moves": True,
+                "project_ids": [Command.link(cls.project.id)],
+            }
+        )
         group_stock_user = "stock.group_stock_user"
         cls.basic_user = new_test_user(
             cls.env,
@@ -91,7 +129,7 @@ class TestProjectStockBase(BaseCommon):
             cls.env["project.task"].with_context(**cls._prepare_context_task())
         )
         task_form.name = "Test task"
-        # Save task to use default_get() correctlly in stock.moves
+        # Save task to use default_get() correctly in stock.moves
         task_form.save()
         for product in products:
             with task_form.move_ids.new() as move_form:
