@@ -6,13 +6,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 16.0\n"
 "Report-Msgid-Bugs-To: \n"
-"Last-Translator: Automatically generated\n"
+"PO-Revision-Date: 2026-11-11 00:49+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
 "Language-Team: none\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: project_state_extend
 #: model_terms:ir.ui.view,arch_db:project_state_extend.project_state_custom_view_form
@@ -20,17 +22,21 @@ msgid ""
 "<strong>Color:</strong> Choose a color index from 0 to 11 for the status "
 "bubble"
 msgstr ""
+"<strong>Colore:</strong> Scegliere un indice colore da 0 a 11 per la bolla "
+"di stato"
 
 #. module: project_state_extend
 #: model_terms:ir.ui.view,arch_db:project_state_extend.project_state_custom_view_form
 msgid "<strong>Name:</strong> The display name that users will see"
-msgstr ""
+msgstr "<strong>Nome:</strong> Il nome visualizzato che vedranno gli utenti"
 
 #. module: project_state_extend
 #: model_terms:ir.ui.view,arch_db:project_state_extend.project_state_custom_view_form
 msgid ""
 "<strong>Sequence:</strong> Lower numbers appear first in selection lists"
 msgstr ""
+"<strong>Sequenza:</strong> I numeri più bassi compaiono per primi negli "
+"elenchi di selezione"
 
 #. module: project_state_extend
 #: model_terms:ir.ui.view,arch_db:project_state_extend.project_state_custom_view_form
@@ -38,12 +44,14 @@ msgid ""
 "<strong>Technical Name:</strong> A unique identifier used internally "
 "(lowercase, no spaces)"
 msgstr ""
+"<strong>Nome tecnico:</strong> Un identificativo univoco usato internamente "
+"(minuscolo, senza spazi)"
 
 #. module: project_state_extend
 #: model:ir.model.fields,field_description:project_state_extend.field_project_state_extend__active
 #: model_terms:ir.ui.view,arch_db:project_state_extend.project_state_custom_view_search
 msgid "Active"
-msgstr ""
+msgstr "Attivo"
 
 #. module: project_state_extend
 #: model_terms:ir.ui.view,arch_db:project_state_extend.project_state_custom_view_form
@@ -51,16 +59,19 @@ msgid ""
 "After creating custom states, they will be available in the\n"
 "                                    Project status selection widgets."
 msgstr ""
+"Dopo aver creato stati personalizzati, saranno disponibili nei\n"
+"                                    widget di selezione dello stato del "
+"progetto."
 
 #. module: project_state_extend
 #: model_terms:ir.ui.view,arch_db:project_state_extend.project_state_custom_view_search
 msgid "Archived"
-msgstr ""
+msgstr "Archiviato"
 
 #. module: project_state_extend
 #: model:project.state.extend,name:project_state_extend.state_blocked
 msgid "Blocked"
-msgstr ""
+msgstr "Bloccato"
 
 #. module: project_state_extend
 #. odoo-python
@@ -70,46 +81,48 @@ msgid ""
 "Cannot delete '%(name)s' because it is used in %(projects)s project(s) and "
 "%(updates)s update(s)."
 msgstr ""
+"Impossibile eliminare '%(name)s' perché è usato in %(projects)s progetto/i e "
+"%(updates)s aggiornamento/i."
 
 #. module: project_state_extend
 #: model:ir.model.fields,field_description:project_state_extend.field_project_state_extend__color
 msgid "Color Index"
-msgstr ""
+msgstr "Indice colore"
 
 #. module: project_state_extend
 #: model:ir.model.fields,help:project_state_extend.field_project_state_extend__color
 msgid "Color index for the status bubble (0-11)"
-msgstr ""
+msgstr "Indice colore per la bolla di stato (0-11)"
 
 #. module: project_state_extend
 #: model_terms:ir.actions.act_window,help:project_state_extend.project_state_custom_action
 msgid "Create a new Custom Project State"
-msgstr ""
+msgstr "Crea un nuovo stato personalizzato del progetto"
 
 #. module: project_state_extend
 #: model:ir.model.fields,field_description:project_state_extend.field_project_state_extend__create_uid
 msgid "Created by"
-msgstr ""
+msgstr "Creato da"
 
 #. module: project_state_extend
 #: model:ir.model.fields,field_description:project_state_extend.field_project_state_extend__create_date
 msgid "Created on"
-msgstr ""
+msgstr "Creato il"
 
 #. module: project_state_extend
 #: model_terms:ir.ui.view,arch_db:project_state_extend.project_state_custom_view_form
 msgid "Creating Custom Project States"
-msgstr ""
+msgstr "Creazione di stati personalizzati del progetto"
 
 #. module: project_state_extend
 #: model:ir.actions.act_window,name:project_state_extend.project_state_custom_action
 msgid "Custom Project States"
-msgstr ""
+msgstr "Stati personalizzati del progetto"
 
 #. module: project_state_extend
 #: model:ir.ui.menu,name:project_state_extend.project_state_custom_menu
 msgid "Custom States"
-msgstr ""
+msgstr "Stati personalizzati"
 
 #. module: project_state_extend
 #: model_terms:ir.actions.act_window,help:project_state_extend.project_state_custom_action
@@ -117,108 +130,111 @@ msgid ""
 "Define custom states that can be assigned to projects and tasks,\n"
 "                providing additional status options beyond the standard ones."
 msgstr ""
+"Definisce stati personalizzati che possono essere assegnati a progetti e "
+"attività,\n"
+"                fornendo opzioni di stato aggiuntive oltre a quelle standard."
 
 #. module: project_state_extend
 #: model:ir.model.fields,field_description:project_state_extend.field_project_state_extend__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nome visualizzato"
 
 #. module: project_state_extend
 #: model:ir.model,name:project_state_extend.model_project_state_extend
 msgid "Extended Project State"
-msgstr ""
+msgstr "Stato progetto esteso"
 
 #. module: project_state_extend
 #: model_terms:ir.ui.view,arch_db:project_state_extend.project_state_custom_view_search
 msgid "Group By"
-msgstr ""
+msgstr "Raggruppa per"
 
 #. module: project_state_extend
 #: model_terms:ir.ui.view,arch_db:project_state_extend.project_state_custom_view_form
 msgid "Help"
-msgstr ""
+msgstr "Aiuto"
 
 #. module: project_state_extend
 #: model:ir.model.fields,field_description:project_state_extend.field_project_state_extend__id
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: project_state_extend
 #: model:project.state.extend,name:project_state_extend.state_in_testing
 msgid "In Testing"
-msgstr ""
+msgstr "In test"
 
 #. module: project_state_extend
 #: model:ir.model.fields,field_description:project_state_extend.field_project_state_extend____last_update
 msgid "Last Modified on"
-msgstr ""
+msgstr "Ultima modifica il"
 
 #. module: project_state_extend
 #: model:ir.model.fields,field_description:project_state_extend.field_project_project__last_update_status
 msgid "Last Update Status"
-msgstr ""
+msgstr "Stato ultimo aggiornamento"
 
 #. module: project_state_extend
 #: model:ir.model.fields,field_description:project_state_extend.field_project_state_extend__write_uid
 msgid "Last Updated by"
-msgstr ""
+msgstr "Ultimo aggiornamento di"
 
 #. module: project_state_extend
 #: model:ir.model.fields,field_description:project_state_extend.field_project_state_extend__write_date
 msgid "Last Updated on"
-msgstr ""
+msgstr "Ultimo aggiornamento il"
 
 #. module: project_state_extend
 #: model:ir.model.fields,field_description:project_state_extend.field_project_state_extend__name
 msgid "Name"
-msgstr ""
+msgstr "Nome"
 
 #. module: project_state_extend
 #: model:project.state.extend,name:project_state_extend.state_pending_review
 msgid "Pending Review"
-msgstr ""
+msgstr "In attesa di revisione"
 
 #. module: project_state_extend
 #: model:ir.model,name:project_state_extend.model_project_project
 msgid "Project"
-msgstr ""
+msgstr "Progetto"
 
 #. module: project_state_extend
 #: model:ir.model,name:project_state_extend.model_project_update
 msgid "Project Update"
-msgstr ""
+msgstr "Aggiornamento progetto"
 
 #. module: project_state_extend
 #: model:project.state.extend,name:project_state_extend.state_ready_deploy
 msgid "Ready to Deploy"
-msgstr ""
+msgstr "Pronto per il rilascio"
 
 #. module: project_state_extend
 #: model:ir.model.fields,field_description:project_state_extend.field_project_state_extend__sequence
 msgid "Sequence"
-msgstr ""
+msgstr "Sequenza"
 
 #. module: project_state_extend
 #: model:ir.model.fields,help:project_state_extend.field_project_state_extend__sequence
 msgid "Sequence for ordering. Lower values appear first."
-msgstr ""
+msgstr "Sequenza per l'ordinamento. I valori più bassi compaiono per primi."
 
 #. module: project_state_extend
 #: model:ir.model.fields,field_description:project_state_extend.field_project_update__status
 msgid "Status"
-msgstr ""
+msgstr "Stato"
 
 #. module: project_state_extend
 #: model:ir.model.fields,field_description:project_state_extend.field_project_state_extend__technical_name
 msgid "Technical Name"
-msgstr ""
+msgstr "Nome tecnico"
 
 #. module: project_state_extend
 #. odoo-python
 #: code:addons/project_state_extend/models/project_state_extend.py:0
 #, python-format
 msgid "Technical name '%s' is reserved by native project states."
-msgstr ""
+msgstr "Il nome tecnico '%s' è riservato agli stati nativi del progetto."
 
 #. module: project_state_extend
 #. odoo-python
@@ -228,18 +244,20 @@ msgid ""
 "Technical name must be lowercase, start with a letter, and contain only "
 "letters, numbers, and underscores."
 msgstr ""
+"Il nome tecnico deve essere minuscolo, iniziare con una lettera e contenere "
+"solo lettere, numeri e trattini bassi."
 
 #. module: project_state_extend
 #: model:ir.model.constraint,message:project_state_extend.constraint_project_state_extend_technical_name_uniq
 msgid "Technical name must be unique!"
-msgstr ""
+msgstr "Il nome tecnico deve essere univoco!"
 
 #. module: project_state_extend
 #: model:ir.model.fields,help:project_state_extend.field_project_state_extend__technical_name
 msgid "Technical name used internally. Must be unique and lowercase."
-msgstr ""
+msgstr "Nome tecnico usato internamente. Deve essere univoco e minuscolo."
 
 #. module: project_state_extend
 #: model:project.state.extend,name:project_state_extend.state_waiting_client
 msgid "Waiting Client"
-msgstr ""
+msgstr "In attesa del cliente"
