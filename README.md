@@ -27,6 +27,7 @@ addon | version | maintainers | summary
 [project_task_default_stage](project_task_default_stage/) | 20.0.1.0.0 |  | Recovery default task stages for projects from v8
 [project_task_product](project_task_product/) | 20.0.1.0.0 |  | Allows to specify in a project task, the product the task relates to.
 [project_task_pull_request](project_task_pull_request/) | 20.0.1.0.0 |  | Adds a field for a PR URI to project tasks
+[project_task_stage_auto_state](project_task_stage_auto_state/) | 20.0.1.0.0 | <a href='https://github.com/Shide'><img src='https://github.com/Shide.png' width='32' height='32' style='border-radius:50%;' alt='Shide'/></a> <a href='https://github.com/rafaelbn'><img src='https://github.com/rafaelbn.png' width='32' height='32' style='border-radius:50%;' alt='rafaelbn'/></a> | Auto-change task state (done/canceled) after N days on selected stages
 
 [//]: # (end addons)
 
