@@ -20,7 +20,16 @@
                             <field
                                 name="task_description_template_ids"
                                 widget="many2many_tags"
+                                required="privacy_visibility == 'portal' and portal_task_description_template_required"
                             />
+                        </setting>
+                        <setting
+                            class="col-lg-12"
+                            id="portal_task_description_template_required_setting"
+                            help="Portal users must select a description template when they create a task"
+                            invisible="privacy_visibility != 'portal'"
+                        >
+                            <field name="portal_task_description_template_required" />
                         </setting>
                     </div>
                 </group>
