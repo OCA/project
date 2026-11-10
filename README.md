@@ -26,7 +26,7 @@ addon | version | maintainers | summary
 [project_crm_postsale_automation](project_crm_postsale_automation/) | 18.0.1.0.0 | <a href='https://github.com/ppyczko'><img src='https://github.com/ppyczko.png' width='32' height='32' style='border-radius:50%;' alt='ppyczko'/></a> | Automate recurring post-sale opportunities from projects
 [project_department](project_department/) | 18.0.1.0.0 |  | Project Department Categorization
 [project_forecast_line](project_forecast_line/) | 18.0.1.0.0 |  | Project Forecast Lines
-[project_group](project_group/) | 18.0.1.0.0 |  | Add groups for filtering on projects
+[project_group](project_group/) | 18.0.1.0.1 |  | Add groups for filtering on projects
 [project_group_hr_timesheet](project_group_hr_timesheet/) | 18.0.1.0.0 |  | This module makes project group work properly with timesheets
 [project_hr](project_hr/) | 18.0.1.0.3 | <a href='https://github.com/pedrobaeza'><img src='https://github.com/pedrobaeza.png' width='32' height='32' style='border-radius:50%;' alt='pedrobaeza'/></a> | Link HR with project
 [project_kanban_form_direct_access](project_kanban_form_direct_access/) | 18.0.1.0.0 |  | Project form view can now be accessed directly by clicking the project name.
