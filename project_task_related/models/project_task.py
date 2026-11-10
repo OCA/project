@@ -37,9 +37,6 @@ class ProjectTask(models.Model):
     def _compute_related_tasks(self):
         for task in self:
             task.related_task_ids = task.forward_related_task_ids
-            task.related_task_ids += self.env["project.task"].search(
-                [("reverse_related_task_ids", "in", [task.id])]
-            )
 
     def _inverse_related_tasks(self):
         for task in self:

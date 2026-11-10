@@ -10,7 +10,8 @@
                     <field
                         name="related_task_ids"
                         context="{'default_project_id': project_id, 'default_display_in_project': False, 'default_user_ids': user_ids,
-                                    'default_partner_id': partner_id, 'default_milestone_id': allow_milestones and milestone_id, 'search_default_same_customer': 1}"
+                                    'default_partner_id': partner_id, 'default_milestone_id': allow_milestones and milestone_id, 'search_default_same_customer': 1,
+                                    'default_is_template': is_template, 'render_task_templates': False}"
                         widget="many2many"
                     >
                         <list
@@ -107,7 +108,6 @@
                                 optional="hide"
                                 invisible="rating_last_text == 'none'"
                                 column_invisible="True"
-                                groups="project.group_project_rating"
                             />
                             <field
                                 name="tag_ids"

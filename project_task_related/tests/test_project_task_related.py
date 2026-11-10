@@ -1,4 +1,4 @@
-from odoo.tests import tagged
+from odoo.tests import Form, tagged
 
 from odoo.addons.project.tests.test_project_base import TestProjectCommon
 
@@ -63,3 +63,13 @@ class TestTaskRelated(TestProjectCommon):
             self.task_1.related_task_ids.ids,
             "Deleted unrelated pairing",
         )
+
+    def test_create_task_from_form(self):
+        task_form = Form(
+            self.env["project.task"].with_context(
+                default_project_id=self.project_pigs.id
+            )
+        )
+        task_form.name = "Task created from the form view"
+        task = task_form.save()
+        self.assertFalse(task.related_task_ids)
