@@ -7,6 +7,5 @@ class ProjectProject(models.Model):
     version_ids = fields.One2many(
         comodel_name="project.version",
         inverse_name="project_id",
-        string="Version",
         copy=True,
     )
