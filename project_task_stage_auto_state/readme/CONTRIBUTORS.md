@@ -1,0 +1,2 @@
+- Shide ([Moduon](https://www.moduon.team/))
+- rafaelbn ([Moduon](https://www.moduon.team/))
