@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!-- Copyright 2016-2017 Tecnativa - Pedro M. Baeza
      Copyright 2017 Tecnativa - Carlos Dauden
      Copyright 2017 Doscaal - Alexandre Moreau
@@ -25,11 +25,11 @@
                             <t t-foreach="record.user_ids" t-as="user" t-key="user.id">
                                 <img
                                     t-if="record.user_ids"
+                                    class="mr8"
                                     t-attf-src="/web/image/res.users/#{user}/avatar_128/16x16"
                                     t-att-title="record.user"
                                     width="16"
                                     height="16"
-                                    class="mr8"
                                     alt="User"
                                 />
                             </t>
@@ -37,9 +37,9 @@
                                 <t t-esc="record.display_name" />
                             </span>
                             <small
-                                name="allocated_hours"
-                                class="text-info ml4"
                                 t-if="record.allocated_hours"
+                                class="text-info ml4"
+                                name="allocated_hours"
                             >
                                 <t
                                     t-out="formatters.get('float_time')(record.allocated_hours)"
