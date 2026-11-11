@@ -10,26 +10,35 @@ class ProjectTask(models.Model):
     _inherit = ["project.task", "analytic.mixin"]
 
     scrap_ids = fields.One2many(
-        comodel_name="stock.scrap", inverse_name="task_id", string="Scraps"
+        comodel_name="stock.scrap",
+        inverse_name="task_id",
+        string="Scraps",
     )
     scrap_count = fields.Integer(
-        compute="_compute_scrap_move_count", string="Scrap Move"
+        compute="_compute_scrap_move_count",
+        string="Scrap Move",
     )
     move_ids = fields.One2many(
         comodel_name="stock.move",
         inverse_name="raw_material_task_id",
         string="Stock Moves",
         copy=False,
-        domain=[("scrapped", "=", False)],
+        domain=[("scrap_id", "=", False)],
     )
-    use_stock_moves = fields.Boolean(related="stage_id.use_stock_moves")
-    done_stock_moves = fields.Boolean(related="stage_id.done_stock_moves")
-    stock_moves_is_locked = fields.Boolean(default=True)
+    use_stock_moves = fields.Boolean(
+        related="stage_id.use_stock_moves",
+    )
+    done_stock_moves = fields.Boolean(
+        related="stage_id.done_stock_moves",
+    )
+    stock_moves_is_locked = fields.Boolean(
+        default=True,
+    )
     allow_moves_action_confirm = fields.Boolean(
-        compute="_compute_allow_moves_action_confirm"
+        compute="_compute_allow_moves_action_confirm",
     )
     allow_moves_action_assign = fields.Boolean(
-        compute="_compute_allow_moves_action_assign"
+        compute="_compute_allow_moves_action_assign",
     )
     stock_state = fields.Selection(
         selection=[
@@ -82,13 +91,15 @@ class ProjectTask(models.Model):
         inverse_name="stock_task_id",
         string="Stock Analytic Lines",
     )
-    group_id = fields.Many2one(
-        comodel_name="procurement.group",
+    reference_id = fields.Many2one(
+        comodel_name="stock.reference",
     )
 
     def _compute_scrap_move_count(self):
-        data = self.env["stock.scrap"].read_group(
-            [("task_id", "in", self.ids)], ["task_id"], ["task_id"]
+        data = self.env["stock.scrap"]._read_group(
+            domain=[("task_id", "in", self.ids)],
+            groupby=["task_id"],
+            aggregates=["__count"],
         )
         count_data = {item["task_id"][0]: item["task_id_count"] for item in data}
         for item in self:

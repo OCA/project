@@ -1,6 +1,6 @@
 # Copyright 2022-2025 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
-from odoo import fields
+from odoo import Command, fields
 from odoo.tests import Form
 from odoo.tests.common import users
 from odoo.tools import mute_logger
@@ -24,8 +24,8 @@ class TestProjectTaskStock(TestProjectStockBase):
         )
         cls.env.ref("base.user_admin").write(
             {
-                "groups_id": [
-                    (4, cls.env.ref("analytic.group_analytic_accounting").id),
+                "group_ids": [
+                    Command.link(cls.env.ref("analytic.group_analytic_accounting").id),
                 ],
             }
         )
@@ -37,18 +37,17 @@ class TestProjectTaskStock(TestProjectStockBase):
         )
 
     def test_project_task_misc(self):
-        self.assertTrue(self.task.group_id)
+        self.assertTrue(self.task.reference_id)
         self.assertEqual(self.task.picking_type_id, self.picking_type)
         self.assertEqual(self.task.location_id, self.location)
         self.assertEqual(self.task.location_dest_id, self.location_dest)
-        self.assertEqual(self.move_product_a.name, self.task.name)
-        self.assertEqual(self.move_product_a.group_id, self.task.group_id)
+        self.assertEqual(self.move_product_a.reference_ids, self.task.reference_id)
         self.assertEqual(self.move_product_a.reference, self.task.name)
         self.assertEqual(self.move_product_a.location_id, self.location)
         self.assertEqual(self.move_product_a.location_dest_id, self.location_dest)
         self.assertEqual(self.move_product_a.picking_type_id, self.picking_type)
         self.assertEqual(self.move_product_a.raw_material_task_id, self.task)
-        self.assertEqual(self.move_product_b.group_id, self.task.group_id)
+        self.assertEqual(self.move_product_b.reference_ids, self.task.reference_id)
         self.assertEqual(self.move_product_b.location_id, self.location)
         self.assertEqual(self.move_product_b.location_dest_id, self.location_dest)
         self.assertEqual(self.move_product_b.picking_type_id, self.picking_type)
@@ -121,7 +120,7 @@ class TestProjectTaskStock(TestProjectStockBase):
         self.assertEqual(picking.state, "done")
         self._test_task_analytic_lines_from_task(-40)
         self.assertEqual(
-            fields.first(self.task.stock_analytic_line_ids).date,
+            self.task.stock_analytic_line_ids[:1].date,
             fields.Date.from_string("1990-01-01"),
         )
 
@@ -131,11 +130,7 @@ class TestProjectTaskStock(TestProjectStockBase):
 
     def test_project_task_user_access_without_stock_group(self):
         project_user_group = self.env.ref("project.group_project_user")
-        self.basic_user.write(
-            {
-                "groups_id": [(6, 0, [project_user_group.id])],
-            }
-        )
+        self.basic_user.write({"group_ids": [Command.set(project_user_group.ids)]})
         task_form = Form(self.task.with_user(self.basic_user))
         self.assertEqual(task_form.project_id, self.project)
 
@@ -145,7 +140,7 @@ class TestProjectTaskStock(TestProjectStockBase):
         self.task.action_done()
         self._test_task_analytic_lines_from_task(-40)
         self.assertEqual(
-            fields.first(self.task.stock_analytic_line_ids).date,
+            self.task.stock_analytic_line_ids[:1].date,
             fields.Date.from_string("1990-01-01"),
         )
 
@@ -160,7 +155,7 @@ class TestProjectTaskStock(TestProjectStockBase):
         self.task.action_done()
         self._test_task_analytic_lines_from_task(-40)
         self.assertEqual(
-            fields.first(self.task.stock_analytic_line_ids).date,
+            self.task.stock_analytic_line_ids[:1].date,
             fields.Date.from_string("1991-01-01"),
         )
 
@@ -176,7 +171,7 @@ class TestProjectTaskStock(TestProjectStockBase):
         self.task.action_done()
         self._test_task_analytic_lines_from_task(-40)
         self.assertEqual(
-            fields.first(self.task.stock_analytic_line_ids).date, fields.date.today()
+            self.task.stock_analytic_line_ids[:1].date, fields.Date.today()
         )
 
     def test_project_task_analytic_lines_with_returned_picking(self):
@@ -249,7 +244,7 @@ class TestProjectTaskStock(TestProjectStockBase):
         move_product_c = self.task.move_ids.filtered(
             lambda x: x.product_id == self.product_c
         )
-        self.assertEqual(move_product_c.group_id, self.task.group_id)
+        self.assertEqual(move_product_c.reference_ids, self.task.reference_id)
         self.assertEqual(move_product_c.state, "draft")
         self.task.action_assign()
         self.assertEqual(move_product_c.state, "assigned")
@@ -419,11 +414,12 @@ class TestProjectTaskStock(TestProjectStockBase):
         self.task._onchange_picking_type_id()
         self.assertEqual(self.task.location_id, new_type.default_location_src_id)
         self.assertEqual(self.task.location_dest_id, new_type.default_location_dest_id)
-        move = fields.first(self.task.move_ids)
-        self.assertEqual(move.location_id, new_type.default_location_src_id)
+        self.assertEqual(
+            self.task.move_ids[:1].location_id, new_type.default_location_src_id
+        )
 
     def test_project_task_scrap(self):
-        move = fields.first(self.task.move_ids)
+        move = self.task.move_ids[:1]
         scrap = self.env["stock.scrap"].create(
             {
                 "product_id": move.product_id.id,
