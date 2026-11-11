@@ -3,6 +3,7 @@
 
 import re
 
+from odoo.service.model import call_kw
 from odoo.tests.common import TransactionCase
 
 
@@ -27,6 +28,22 @@ class TestProjectTaskID(TransactionCase):
         tasks = self.ProjectTask.name_search(str(self.project_task.id))
         self.assertEqual(len(tasks), 1)
         self.assertEqual(tasks[0][0], self.project_task.id)
+
+    def test_name_search_domain_keyword(self):
+        """The web client passes the domain by keyword (Search More, search bar)"""
+        other_task = self.ProjectTask.create({"name": "Test task other"})
+        tasks = call_kw(
+            self.ProjectTask,
+            "name_search",
+            [],
+            {
+                "name": "Test task",
+                "domain": [("id", "!=", other_task.id)],
+                "operator": "ilike",
+                "limit": 8,
+            },
+        )
+        self.assertEqual([task_id for task_id, _name in tasks], self.project_task.ids)
 
     def test_display_name(self):
         display_name = self.project_task.display_name
