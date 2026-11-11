@@ -7,7 +7,8 @@ class StockMove(models.Model):
     _inherit = "stock.scrap"
 
     task_id = fields.Many2one(
-        comodel_name="project.task", string="Task", check_company=True
+        comodel_name="project.task",
+        check_company=True,
     )
 
     @api.onchange("task_id")

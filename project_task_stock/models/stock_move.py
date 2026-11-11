@@ -201,7 +201,6 @@ class StockMoveLine(models.Model):
 
     task_id = fields.Many2one(
         comodel_name="project.task",
-        string="Task",
         compute="_compute_task_id",
         store=True,
     )

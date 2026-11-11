@@ -1,6 +1,6 @@
 # Copyright 2022-2025 Tecnativa - Víctor Martínez
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl)
-from odoo import _, api, fields, models
+from odoo import api, fields, models
 from odoo.exceptions import UserError
 from odoo.tools import float_is_zero
 
@@ -140,7 +140,10 @@ class ProjectTask(models.Model):
     def _check_tasks_with_pending_moves(self):
         if self.move_ids and "assigned" in self.mapped("move_ids.state"):
             raise UserError(
-                _("It is not possible to change this with reserved movements in tasks.")
+                self.env._(
+                    "It is not possible to change this with reserved movements "
+                    "in tasks."
+                )
             )
 
     def _update_moves_info(self):
@@ -179,7 +182,7 @@ class ProjectTask(models.Model):
         self.ensure_one()
         move_items = self.move_ids.filtered(lambda x: x.state not in ("done", "cancel"))
         return {
-            "name": _("Scrap"),
+            "name": self.env._("Scrap"),
             "view_mode": "form",
             "res_model": "stock.scrap",
             "view_id": self.env.ref("stock.stock_scrap_form_view2").id,

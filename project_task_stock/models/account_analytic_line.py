@@ -7,10 +7,14 @@ class AccountAnalyticLine(models.Model):
     _inherit = "account.analytic.line"
 
     stock_task_id = fields.Many2one(
-        comodel_name="project.task", string="Project Task", ondelete="cascade"
+        comodel_name="project.task",
+        string="Project Task",
+        ondelete="cascade",
     )
     stock_move_id = fields.Many2one(
-        comodel_name="stock.move", string="Stock Move", ondelete="cascade", copy=False
+        comodel_name="stock.move",
+        ondelete="cascade",
+        copy=False,
     )
 
     def _timesheet_postprocess_values(self, values):
