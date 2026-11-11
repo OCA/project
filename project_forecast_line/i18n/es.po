@@ -6,15 +6,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 15.0\n"
 "Report-Msgid-Bugs-To: \n"
-"PO-Revision-Date: 2023-10-09 07:43+0000\n"
-"Last-Translator: Ivorra78 <informatica@totmaterial.es>\n"
+"PO-Revision-Date: 2026-11-11 12:46+0000\n"
+"Last-Translator: Carlos Dauden <carlos.dauden@tecnativa.com>\n"
 "Language-Team: none\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 4.17\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: project_forecast_line
 #: model_terms:ir.ui.view,arch_db:project_forecast_line.res_config_settings_view_form
@@ -96,7 +96,7 @@ msgid ""
 "such as employees and negative for things which consume forecast such as "
 "holidays, sales, or tasks. "
 msgstr ""
-"Coste, en divisa de la compañía. El coste es positivo para las cosas que "
+"Coste, en moneda de la compañía. El coste es positivo para las cosas que "
 "añaden previsiones, como los empleados, y negativo para las cosas que "
 "consumen previsiones, como las vacaciones, las ventas o las tareas. "
 
@@ -131,7 +131,7 @@ msgstr "Creado el"
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_forecast_line__currency_id
 msgid "Currency"
-msgstr "Divisa"
+msgstr "Moneda"
 
 #. module: project_forecast_line
 #: model:ir.model.fields,field_description:project_forecast_line.field_hr_employee_forecast_role__date_end
