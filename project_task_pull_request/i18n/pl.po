@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Odoo Server 10.0\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2017-04-28 08:33+0000\n"
-"PO-Revision-Date: 2017-04-28 08:33+0000\n"
-"Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2017\n"
+"PO-Revision-Date: 2026-11-11 13:46+0000\n"
+"Last-Translator: leszekszczepkowski <leszekszczepkowski@gmail.com>\n"
 "Language-Team: Polish (https://www.transifex.com/oca/teams/23907/pl/)\n"
 "Language: pl\n"
 "MIME-Version: 1.0\n"
@@ -19,6 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && "
 "(n%100<12 || n%100>=14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && "
 "n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"X-Generator: Weblate 5.15.2\n"
 
 #. module: project_task_pull_request
 #: model:ir.model,website_form_label:project_task_pull_request.model_project_task
@@ -29,7 +30,7 @@ msgstr ""
 #: model:ir.model.fields,field_description:project_task_pull_request.field_project_project__display_name
 #: model:ir.model.fields,field_description:project_task_pull_request.field_project_task__display_name
 msgid "Display Name"
-msgstr ""
+msgstr "Nazwa wyświetlana"
 
 #. module: project_task_pull_request
 #: model:ir.model.fields,field_description:project_task_pull_request.field_project_project__id
@@ -58,7 +59,7 @@ msgstr ""
 #. module: project_task_pull_request
 #: model:ir.model,name:project_task_pull_request.model_project_project
 msgid "Project"
-msgstr ""
+msgstr "Projekt"
 
 #. module: project_task_pull_request
 #: model_terms:ir.ui.view,arch_db:project_task_pull_request.edit_project
