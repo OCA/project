@@ -1,0 +1,23 @@
+id,name,model_id,group_id/id,operation,domain
+project_restricted_manager_rule,Project: restricted administrators: visible or own projects,project.project,,crud,"[
+            '|',
+                '|',
+                    ('privacy_visibility', 'in', ['employees', 'portal']),
+                    ('allowed_internal_user_ids', 'in', user.id),
+                ('user_id', '=', user.id),
+        ] if user.has_groups(
+            'project.group_project_manager,'
+            '!project_administrator_restricted_visibility.group_full_project_manager'
+        ) else []"
+task_restricted_manager_rule,Project/Task: restricted administrators: tasks visible as a project user,project.task,,crud,"[
+            '|',
+                '|',
+                    ('project_id', '=', False),
+                    ('project_id', 'access', 'read'),
+                '|',
+                    ('message_partner_ids', 'in', [user.partner_id.id]),
+                    ('user_ids', 'in', user.id),
+        ] if user.has_groups(
+            'project.group_project_manager,'
+            '!project_administrator_restricted_visibility.group_full_project_manager'
+        ) else []"
