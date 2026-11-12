@@ -25,7 +25,7 @@
                             <t t-foreach="record.user_ids" t-as="user" t-key="user.id">
                                 <img
                                     t-if="record.user_ids"
-                                    class="mr8"
+                                    class="me-2"
                                     t-attf-src="/web/image/res.users/#{user}/avatar_128/16x16"
                                     t-att-title="record.user"
                                     width="16"
@@ -34,11 +34,11 @@
                                 />
                             </t>
                             <span name="display_name">
-                                <t t-esc="record.display_name" />
+                                <t t-out="record.display_name" />
                             </span>
                             <small
                                 t-if="record.allocated_hours"
-                                class="text-info ml4"
+                                class="text-info ms-1"
                                 name="allocated_hours"
                             >
                                 <t

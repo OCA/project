@@ -53,11 +53,14 @@ class ProjectTask(models.Model):
     @api.constrains("planned_date_start", "planned_date_end")
     def _check_planned_dates(self):
         for task in self:
-            if task.planned_date_start and task.planned_date_end:
-                if task.planned_date_end < task.planned_date_start:
-                    raise ValidationError(
-                        self.env._("The end date must be after the start date.")
-                    )
+            if (
+                task.planned_date_start
+                and task.planned_date_end
+                and task.planned_date_end < task.planned_date_start
+            ):
+                raise ValidationError(
+                    self.env._("The end date must be after the start date.")
+                )
 
     def _auto_init(self):
         # Pre-create and fill planned_date_start and planned_date_end columns for

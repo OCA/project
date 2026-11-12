@@ -2,6 +2,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 from odoo import fields, models
+from odoo.tools import SQL
 
 
 class ReportProjectTaskUser(models.Model):
@@ -11,18 +12,19 @@ class ReportProjectTaskUser(models.Model):
     planned_date_end = fields.Datetime(readonly=True)
 
     def _select(self):
-        return (
-            super()._select()
-            + """,
+        return SQL(
+            """%s,
             t.planned_date_start,
-            t.planned_date_end"""
+            t.planned_date_end
+            """,
+            super()._select(),
         )
 
     def _group_by(self):
-        return (
-            super()._group_by()
-            + """,
+        return SQL(
+            """%s,
             t.planned_date_start,
             t.planned_date_end
-            """
+            """,
+            super()._group_by(),
         )
