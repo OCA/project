@@ -1,0 +1,1 @@
+odoo-addon-web_portal_properties @ git+https://github.com/OCA/web.git@refs/pull/3746/head#subdirectory=web_portal_properties
