@@ -1,0 +1,104 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * project_timeline
+#
+# Translators:
+# OCA Transbot <transbot@odoo-community.org>, 2017
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 9.0c\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-05-31 01:34+0000\n"
+"PO-Revision-Date: 2026-11-11 13:46+0000\n"
+"Last-Translator: leszekszczepkowski <leszekszczepkowski@gmail.com>\n"
+"Language-Team: Polish (https://www.transifex.com/oca/teams/23907/pl/)\n"
+"Language: pl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : (n%10>=2 && n%10<=4) && "
+"(n%100<12 || n%100>=14) ? 1 : n!=1 && (n%10>=0 && n%10<=1) || (n%10>=5 && "
+"n%10<=9) || (n%100>=12 && n%100<=14) ? 2 : 3);\n"
+"X-Generator: Weblate 5.15.2\n"
+
+#. module: project_timeline
+#: model:ir.model,website_form_label:project_timeline.model_project_task
+msgid "Create a Task"
+msgstr "Utwórz zadanie"
+
+#. module: project_timeline
+#: model:ir.model.fields,field_description:project_timeline.field_project_task__display_name
+#: model:ir.model.fields,field_description:project_timeline.field_report_project_task_user__display_name
+msgid "Display Name"
+msgstr "Nazwa wyświetlana"
+
+#. module: project_timeline
+#: model:ir.model.fields,field_description:project_timeline.field_project_task__id
+#: model:ir.model.fields,field_description:project_timeline.field_report_project_task_user__id
+msgid "ID"
+msgstr "ID"
+
+#. module: project_timeline
+#: model:ir.model.fields,field_description:project_timeline.field_project_task__planned_date_end
+#: model:ir.model.fields,field_description:project_timeline.field_report_project_task_user__planned_date_end
+msgid "Planned Date End"
+msgstr "Planowana data zakończenia"
+
+#. module: project_timeline
+#: model:ir.model.fields,field_description:project_timeline.field_project_task__planned_date_start
+#: model:ir.model.fields,field_description:project_timeline.field_report_project_task_user__planned_date_start
+msgid "Planned Date Start"
+msgstr "Planowana data rozpoczęcia"
+
+#. module: project_timeline
+#: model_terms:ir.ui.view,arch_db:project_timeline.view_task_form2
+msgid "Planned Dates"
+msgstr "Planowane daty"
+
+#. module: project_timeline
+#: model:ir.model,name:project_timeline.model_project_task
+msgid "Task"
+msgstr "Zadanie"
+
+#. module: project_timeline
+#: model:ir.model,name:project_timeline.model_report_project_task_user
+msgid "Tasks Analysis"
+msgstr "Analiza zadań"
+
+#. module: project_timeline
+#. odoo-python
+#: code:addons/project_timeline/models/project_task.py:0
+msgid "The end date must be after the start date."
+msgstr "Data zakończenia musi być późniejsza niż data rozpoczęcia."
+
+#. module: project_timeline
+#: model:ir.model.fields,help:project_timeline.field_project_task__display_name
+msgid ""
+"Use these keywords in the title to set new tasks:\n"
+"\n"
+"        30h Allocate 30 hours to the task\n"
+"        #tags Set tags on the task\n"
+"        @user Assign the task to a user\n"
+"        ! Set the task a medium priority\n"
+"        !! Set the task a high priority\n"
+"        !!! Set the task a urgent priority\n"
+"\n"
+"        Make sure to use the right format and order e.g. Improve the "
+"configuration screen 5h #feature #v16 @Mitchell !"
+msgstr ""
+"Użyj tych słów kluczowych w tytule, aby ustawić nowe zadania:\n"
+"\n"
+"        30h Przydziel 30 godzin na wykonanie zadania\n"
+"        #tagi Ustaw tagi dla zadania\n"
+"        @użytkownik Przypisz zadanie do użytkownika\n"
+"        ! Ustaw średni priorytet zadania\n"
+"        !! Ustaw wysoki priorytet zadania\n"
+"        !!! Ustaw pilny priorytet zadania\n"
+"\n"
+"        Pamiętaj, aby używać właściwego formatu i kolejności, np. Popraw "
+"ekran konfiguracji 5h #funkcja #v16 @Maciej !!"
+
+#. module: project_timeline
+#: model_terms:ir.ui.view,arch_db:project_timeline.project_task_timeline
+msgid "User"
+msgstr "Użytkownik"
