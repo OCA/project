@@ -223,4 +223,5 @@ class Project(models.Model):
 
     @api.depends("key")
     def _compute_show_key_warning(self):
-        self.show_key_warning = self.key and "-" in self.key
+        for project in self:
+            project.show_key_warning = bool(project.key and "-" in project.key)
