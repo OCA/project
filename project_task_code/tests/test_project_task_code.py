@@ -50,6 +50,29 @@ class TestProjectTaskCode(BaseCommon):
         )
         self.assertEqual(project_task.code, code)
 
+    def test_portal_task_display_name(self):
+        """A portal user reads the name of the tasks of a shared project"""
+        portal_user = new_test_user(
+            self.env, login="project_task_code_portal_read", groups="base.group_portal"
+        )
+        project = self.env["project.project"].create(
+            {
+                "name": "Portal project",
+                "privacy_visibility": "portal",
+                "collaborator_ids": [
+                    Command.create({"partner_id": portal_user.partner_id.id})
+                ],
+            }
+        )
+        project.message_subscribe(partner_ids=portal_user.partner_id.ids)
+        task = self.project_task_model.create(
+            {"name": "Portal task", "project_id": project.id}
+        )
+        task.invalidate_recordset()
+        self.assertEqual(
+            task.with_user(portal_user).display_name, f"[{task.code}] Portal task"
+        )
+
     def test_name_get(self):
         number_next = self.task_sequence.number_next_actual
         code = self.task_sequence.get_next_char(number_next)
