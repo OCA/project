@@ -80,3 +80,9 @@ class TestProject(TestCommon):
 
         project.key = "TEST-1"
         self.assertTrue(project.show_key_warning)
+
+    def test_13_show_key_warning_several_projects(self):
+        self.project_2.key = "ODOO-1"
+        projects = self.project_1 + self.project_2
+        projects.invalidate_recordset(["show_key_warning"])
+        self.assertEqual(projects.mapped("show_key_warning"), [False, True])
