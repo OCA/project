@@ -1,0 +1,169 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_type
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2026-06-30 07:20+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
+"Language-Team: none\n"
+"Language: sl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
+"n%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 5.15.2\n"
+
+#. module: project_type
+#: model_terms:ir.ui.view,arch_db:project_type.project_type_form
+msgid "Add a description..."
+msgstr "Dodaj opis..."
+
+#. module: project_type
+#: model:ir.model.fields,field_description:project_type.field_project_type__project_ok
+#: model_terms:ir.ui.view,arch_db:project_type.project_type_search
+msgid "Can be applied for projects"
+msgstr "Lahko se uporabi za projekte"
+
+#. module: project_type
+#: model:ir.model.fields,field_description:project_type.field_project_type__task_ok
+#: model_terms:ir.ui.view,arch_db:project_type.project_type_search
+msgid "Can be applied for tasks"
+msgstr "Lahko se uporabi za opravila"
+
+#. module: project_type
+#: model:ir.model.fields,field_description:project_type.field_project_type__code
+msgid "Code"
+msgstr "Koda"
+
+#. module: project_type
+#: model:ir.model.fields,field_description:project_type.field_project_type__complete_name
+msgid "Complete Name"
+msgstr "Polni naziv"
+
+#. module: project_type
+#: model:ir.model,website_form_label:project_type.model_project_task
+msgid "Create a Task"
+msgstr "Ustvari opravilo"
+
+#. module: project_type
+#: model:ir.model.fields,field_description:project_type.field_project_type__create_uid
+msgid "Created by"
+msgstr "Ustvaril"
+
+#. module: project_type
+#: model:ir.model.fields,field_description:project_type.field_project_type__create_date
+msgid "Created on"
+msgstr "Ustvarjeno"
+
+#. module: project_type
+#: model:ir.model.fields,field_description:project_type.field_project_type__description
+#: model_terms:ir.ui.view,arch_db:project_type.project_type_form
+msgid "Description"
+msgstr "Opis"
+
+#. module: project_type
+#: model:ir.model.fields,field_description:project_type.field_project_project__display_name
+#: model:ir.model.fields,field_description:project_type.field_project_task__display_name
+#: model:ir.model.fields,field_description:project_type.field_project_type__display_name
+msgid "Display Name"
+msgstr "Prikazani naziv"
+
+#. module: project_type
+#: model:ir.model.fields,field_description:project_type.field_project_project__id
+#: model:ir.model.fields,field_description:project_type.field_project_task__id
+#: model:ir.model.fields,field_description:project_type.field_project_type__id
+msgid "ID"
+msgstr "ID"
+
+#. module: project_type
+#: model:ir.model.fields,field_description:project_type.field_project_type__write_uid
+msgid "Last Updated by"
+msgstr "Zadnji posodobil"
+
+#. module: project_type
+#: model:ir.model.fields,field_description:project_type.field_project_type__write_date
+msgid "Last Updated on"
+msgstr "Zadnjič posodobljeno"
+
+#. module: project_type
+#: model:ir.model.fields,field_description:project_type.field_project_type__name
+msgid "Name"
+msgstr "Naziv"
+
+#. module: project_type
+#: model:ir.model.fields,field_description:project_type.field_project_type__parent_id
+msgid "Parent Type"
+msgstr "Nadrejeni tip"
+
+#. module: project_type
+#: model:ir.model,name:project_type.model_project_project
+msgid "Project"
+msgstr "Projekt"
+
+#. module: project_type
+#: model:ir.model,name:project_type.model_project_type
+#: model_terms:ir.ui.view,arch_db:project_type.project_type_form
+msgid "Project Type"
+msgstr "Tip projekta"
+
+#. module: project_type
+#: model:ir.actions.act_window,name:project_type.action_project_type
+#: model:ir.ui.menu,name:project_type.project_category
+msgid "Project Types"
+msgstr "Tipi projektov"
+
+#. module: project_type
+#: model:ir.model.fields,field_description:project_type.field_project_type__child_ids
+#: model_terms:ir.ui.view,arch_db:project_type.project_type_form
+msgid "Subtypes"
+msgstr "Podtipi"
+
+#. module: project_type
+#: model:ir.model,name:project_type.model_project_task
+msgid "Task"
+msgstr "Opravilo"
+
+#. module: project_type
+#: model:ir.model.fields,field_description:project_type.field_project_project__type_id
+#: model:ir.model.fields,field_description:project_type.field_project_task__type_id
+#: model_terms:ir.ui.view,arch_db:project_type.project_search
+#: model_terms:ir.ui.view,arch_db:project_type.project_task_search
+#: model_terms:ir.ui.view,arch_db:project_type.project_type_search
+msgid "Type"
+msgstr "Tip"
+
+#. module: project_type
+#: model:ir.model.fields,help:project_type.field_project_task__display_name
+msgid ""
+"Use these keywords in the title to set new tasks:\n"
+"\n"
+"        30h Allocate 30 hours to the task\n"
+"        #tags Set tags on the task\n"
+"        @user Assign the task to a user\n"
+"        ! Set the task a medium priority\n"
+"        !! Set the task a high priority\n"
+"        !!! Set the task a urgent priority\n"
+"\n"
+"        Make sure to use the right format and order e.g. Improve the configuration screen 5h #feature #v16 @Mitchell !"
+msgstr ""
+"Za nastavitev novih opravil uporabite te ključne besede v naslovu:\n"
+"\n"
+"        30h - dodelite nalogi 30 ur\n"
+"        #oznake - nastavite oznake za opravilo\n"
+"        @uporabnik - dodeli nalogo uporabniku\n"
+"        ! - nastavite opravilo na srednjo prioriteto\n"
+"        !! - nastavite opravilo na visoko prioriteto\n"
+"        !!! - nastavite opravilo na nujno prioriteto\n"
+"\n"
+"        Prepričajte se, da uporabljate pravilen format in vrstni red, npr. "
+"Izboljšajte konfiguracijski zaslon 5h #funkcija #v16 @Mitchell !"
+
+#. module: project_type
+#. odoo-python
+#: code:addons/project_type/models/project_type.py:0
+msgid "You cannot create recursive project types."
+msgstr "Rekurzivni tipi projektov niso dovoljeni."
