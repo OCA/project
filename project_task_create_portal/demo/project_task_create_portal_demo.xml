@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo noupdate="1">
+    <record id="project_task_type_portal_inbox_demo" model="project.task.type">
+        <field name="name">Portal Inbox</field>
+        <field name="sequence">1</field>
+    </record>
+
+    <record id="project_task_type_in_progress_demo" model="project.task.type">
+        <field name="name">In Progress</field>
+        <field name="sequence">2</field>
+    </record>
+
+    <record id="project_portal_task_demo" model="project.project">
+        <field name="name">Portal Task Management Demo</field>
+        <field name="privacy_visibility">portal</field>
+        <field name="portal_user_ids" eval="[(6, 0, [ref('base.demo_user0')])]" />
+        <field
+            name="type_ids"
+            eval="[(6, 0, [
+                ref('project_task_type_portal_inbox_demo'),
+                ref('project_task_type_in_progress_demo'),
+            ])]"
+        />
+        <field name="portal_stage_id" ref="project_task_type_portal_inbox_demo" />
+        <field
+            name="message_partner_ids"
+            eval="[(4, ref('base.partner_demo_portal'))]"
+        />
+    </record>
+
+    <record id="project_task_portal_editable_demo" model="project.task">
+        <field name="name">Portal Editable Demo Task</field>
+        <field name="description">This task can be edited from the portal.</field>
+        <field name="project_id" ref="project_portal_task_demo" />
+        <field name="stage_id" ref="project_task_type_portal_inbox_demo" />
+        <field name="partner_id" ref="base.partner_demo_portal" />
+        <field name="create_uid" ref="base.demo_user0" />
+        <field
+            name="message_partner_ids"
+            eval="[(4, ref('base.partner_demo_portal'))]"
+        />
+    </record>
+
+    <record id="project_task_portal_readonly_demo" model="project.task">
+        <field name="name">Portal Read-only Demo Task</field>
+        <field
+            name="description"
+        >This task remains visible but cannot be edited from the portal.</field>
+        <field name="project_id" ref="project_portal_task_demo" />
+        <field name="stage_id" ref="project_task_type_in_progress_demo" />
+        <field name="partner_id" ref="base.partner_demo_portal" />
+        <field name="create_uid" ref="base.demo_user0" />
+        <field
+            name="message_partner_ids"
+            eval="[(4, ref('base.partner_demo_portal'))]"
+        />
+    </record>
+</odoo>
