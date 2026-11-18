@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="task_type_edit_sync_state_to_stage" model="ir.ui.view">
+        <field name="name">task_type_edit_sync_state_to_stage</field>
+        <field name="model">project.task.type</field>
+        <field name="inherit_id" ref="project.task_type_edit" />
+        <field name="arch" type="xml">
+            <field name="task_state" position="after">
+                <field name="sync_state_to_stage" invisible="not task_state" />
+            </field>
+        </field>
+    </record>
+</odoo>
