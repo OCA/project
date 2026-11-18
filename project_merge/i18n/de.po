@@ -1,0 +1,125 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_merge
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2026-07-03 19:56+0000\n"
+"Last-Translator: intero-chd <c.dominiak@intero-technologies.de>\n"
+"Language-Team: none\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2\n"
+
+#. module: project_merge
+#: model_terms:ir.ui.view,arch_db:project_merge.project_task_merge_view_form
+msgid ""
+"<span class=\"text-muted\">NB: This will archive the selected tasks (Except the destination task)\n"
+"                    </span>"
+msgstr ""
+"<span class=\"text-muted\">Hinweis: Dadurch werden die ausgewählten Aufgaben "
+"archiviert (mit Ausnahme der Zielaufgabe).\n"
+"                    </span>"
+
+#. module: project_merge
+#: model:ir.model.fields,field_description:project_merge.field_project_task_merge__user_ids
+msgid "Assignees"
+msgstr "Zugewiesen an"
+
+#. module: project_merge
+#: model_terms:ir.ui.view,arch_db:project_merge.project_task_merge_view_form
+msgid "Cancel"
+msgstr "Abbrechen"
+
+#. module: project_merge
+#: model:ir.model.fields,field_description:project_merge.field_project_task_merge__create_new_task
+msgid "Create a new task"
+msgstr "Aufgabe erstellen"
+
+#. module: project_merge
+#: model:ir.model.fields,field_description:project_merge.field_project_task_merge__create_uid
+msgid "Created by"
+msgstr "Erstellt von"
+
+#. module: project_merge
+#: model:ir.model.fields,field_description:project_merge.field_project_task_merge__create_date
+msgid "Created on"
+msgstr "Erstellt am"
+
+#. module: project_merge
+#. odoo-python
+#: code:addons/project_merge/wizard/project_task_merge.py:0
+msgid "Description from task"
+msgstr "Aufgabenbeschreibung"
+
+#. module: project_merge
+#: model:ir.model.fields,field_description:project_merge.field_project_task_merge__dst_project_id
+msgid "Destination Project"
+msgstr "Zielprojekt"
+
+#. module: project_merge
+#: model:ir.model.fields,field_description:project_merge.field_project_task_merge__display_name
+msgid "Display Name"
+msgstr "Anzeigename"
+
+#. module: project_merge
+#: model:ir.model.fields,field_description:project_merge.field_project_task_merge__id
+msgid "ID"
+msgstr "ID"
+
+#. module: project_merge
+#: model:ir.model.fields,field_description:project_merge.field_project_task_merge__write_uid
+msgid "Last Updated by"
+msgstr "Zuletzt geändert von"
+
+#. module: project_merge
+#: model:ir.model.fields,field_description:project_merge.field_project_task_merge__write_date
+msgid "Last Updated on"
+msgstr "Zuletzt geändert am"
+
+#. module: project_merge
+#: model:ir.actions.act_window,name:project_merge.action_project_task_merge
+msgid "Merge Project Tasks"
+msgstr "Zusammenführen von Projektaufgaben"
+
+#. module: project_merge
+#: model_terms:ir.ui.view,arch_db:project_merge.project_task_merge_view_form
+msgid "Merge Tasks"
+msgstr "Aufgaben zusammenführen"
+
+#. module: project_merge
+#: model:ir.model.fields,field_description:project_merge.field_project_task_merge__dst_task_id
+msgid "Merge into an existing task"
+msgstr "In eine bestehende Aufgabe zusammenführen"
+
+#. module: project_merge
+#: model:ir.model.fields,field_description:project_merge.field_project_task_merge__dst_task_name
+msgid "New task name"
+msgstr "Neuer Aufgabenname"
+
+#. module: project_merge
+#: model:ir.model,name:project_merge.model_project_task_merge
+msgid "Project Task Merge"
+msgstr "Zusammenführen von Projektaufgaben"
+
+#. module: project_merge
+#: model:ir.model.fields,field_description:project_merge.field_project_task_merge__task_ids
+msgid "Tasks to Merge"
+msgstr "Aufgaben zum Zusammenführen"
+
+#. module: project_merge
+#. odoo-python
+#: code:addons/project_merge/wizard/project_task_merge.py:0
+msgid "This project task has been merged %(way)s %(task_names)s"
+msgstr "Diese Projektaufgabe wurde mit %(way)s %(task_names)s zusammengeführt"
+
+#. module: project_merge
+#. odoo-python
+#: code:addons/project_merge/wizard/project_task_merge.py:0
+msgid "This project task has been moved %(way)s %(task_names)s"
+msgstr "Diese Projektaufgabe wurde %(way)s %(task_names)s verschoben"
