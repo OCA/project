@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="edit_project" model="ir.ui.view">
+        <field name="name">project.project.form</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project" />
+        <field name="arch" type="xml">
+            <group name="group_tasks_managment" position="after">
+                <group
+                    name="group_task_description_template"
+                    string="Task Description Templates"
+                    col="1"
+                    class="row mt16 o_settings_container"
+                >
+                    <div>
+                        <setting
+                            class="col-lg-12"
+                            id="task_description_template_ids_setting"
+                        >
+                            <field
+                                name="task_description_template_ids"
+                                widget="many2many_tags"
+                                required="privacy_visibility == 'portal' and portal_task_description_template_required"
+                            />
+                        </setting>
+                        <setting
+                            class="col-lg-12"
+                            id="portal_task_description_template_required_setting"
+                            help="Portal users must select a description template when they create a task"
+                            invisible="privacy_visibility != 'portal'"
+                        >
+                            <field name="portal_task_description_template_required" />
+                        </setting>
+                    </div>
+                </group>
+            </group>
+        </field>
+    </record>
+</odoo>
