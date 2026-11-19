@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_project_project_readonly,project.project readonly,project.model_project_project,group_project_readonly,1,0,0,0
+access_project_task_readonly,project.task readonly,project.model_project_task,group_project_readonly,1,0,0,0
+access_project_role_readonly,project.role readonly,project.model_project_role,group_project_readonly,1,0,0,0
+access_project_collaborator_readonly,project.collaborator readonly,project.model_project_collaborator,group_project_readonly,1,0,0,0
+access_report_project_task_user_readonly,report.project.task.user readonly,project.model_report_project_task_user,group_project_readonly,1,0,0,0

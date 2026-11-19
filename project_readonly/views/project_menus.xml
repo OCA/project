@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="project.menu_main_pm" model="ir.ui.menu">
+        <field name="group_ids" eval="[Command.link(ref('group_project_readonly'))]" />
+    </record>
+</odoo>
