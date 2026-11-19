@@ -12,7 +12,7 @@
             >
                 <field
                     name="group_ids"
-                    invisible="privacy_visibility != 'followers'"
+                    invisible="privacy_visibility not in ('followers', 'invited_users')"
                     widget="many2many_tags"
                 />
             </xpath>
