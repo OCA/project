@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2026 glueckkanja AG
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl-3.0) -->
+<odoo>
+    <record id="view_partner_form_inherit_sale_project_reuse" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.sale.project.reuse</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="arch" type="xml">
+            <group name="sale" position="inside">
+                <!-- The project is read from the commercial partner, so it is only
+                     configurable there. -->
+                <field
+                    name="reuse_project_id"
+                    groups="project.group_project_user"
+                    invisible="parent_id and not is_company"
+                />
+            </group>
+        </field>
+    </record>
+</odoo>
