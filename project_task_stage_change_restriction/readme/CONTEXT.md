@@ -1,0 +1,1 @@
+There may be cases where you want to prevent certain users from moving a task into specific stages. For example, developers can move tasks to the "Review" stage, but only a project manager can move a task to the "Done" or "Cancel" stages.
