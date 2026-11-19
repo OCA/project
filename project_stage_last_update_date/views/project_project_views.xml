@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2024 Tecnativa - Carolina Fernandez
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record model="ir.ui.view" id="edit_project">
+        <field name="name">Project form: Add project stage last update date</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project" />
+        <field name="arch" type="xml">
+            <field name="date" position="after">
+                <field
+                    name="stage_last_update_date"
+                    invisible="not stage_last_update_date"
+                />
+            </field>
+        </field>
+    </record>
+    <record id="view_project" model="ir.ui.view">
+        <field name="name">project.project.tree</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project" />
+        <field name="arch" type="xml">
+            <field name="stage_id" position="before">
+                <field name="stage_last_update_date" optional="hide" />
+            </field>
+        </field>
+    </record>
+</odoo>
