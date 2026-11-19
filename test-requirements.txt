@@ -1,0 +1,1 @@
+odoo-addon-purchase-analytic-global @ git+https://github.com/OCA/purchase-workflow@refs/pull/2886/head#subdirectory=purchase_analytic_global
