@@ -1,0 +1,57 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sale_project_task_description_template
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sale_project_task_description_template
+#. odoo-python
+#: code:addons/sale_project_task_description_template/models/sale_order_line.py:0
+msgid "%(product)s - Qty: %(qty)s"
+msgstr ""
+
+#. module: sale_project_task_description_template
+#: model:ir.model.fields,help:sale_project_task_description_template.field_product_product__task_description_template_id
+#: model:ir.model.fields,help:sale_project_task_description_template.field_product_template__task_description_template_id
+msgid "Applies automatically when creating tasks"
+msgstr ""
+
+#. module: sale_project_task_description_template
+#: model:ir.model.fields,help:sale_project_task_description_template.field_product_product__include_sale_line_info_in_task
+#: model:ir.model.fields,help:sale_project_task_description_template.field_product_template__include_sale_line_info_in_task
+msgid ""
+"If enabled, the sale order line details (e.g., product and quantity) will be"
+" added to the task description before the template content."
+msgstr ""
+
+#. module: sale_project_task_description_template
+#: model:ir.model.fields,field_description:sale_project_task_description_template.field_product_product__include_sale_line_info_in_task
+#: model:ir.model.fields,field_description:sale_project_task_description_template.field_product_template__include_sale_line_info_in_task
+msgid "Include Sale Line Info in Task description"
+msgstr ""
+
+#. module: sale_project_task_description_template
+#: model:ir.model,name:sale_project_task_description_template.model_product_template
+msgid "Product"
+msgstr ""
+
+#. module: sale_project_task_description_template
+#: model:ir.model,name:sale_project_task_description_template.model_sale_order_line
+msgid "Sales Order Line"
+msgstr ""
+
+#. module: sale_project_task_description_template
+#: model:ir.model.fields,field_description:sale_project_task_description_template.field_product_product__task_description_template_id
+#: model:ir.model.fields,field_description:sale_project_task_description_template.field_product_template__task_description_template_id
+#: model_terms:ir.ui.view,arch_db:sale_project_task_description_template.product_template_form_inherit_task_template
+msgid "Task Description Template"
+msgstr ""
