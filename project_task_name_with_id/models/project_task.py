@@ -18,10 +18,9 @@ class ProjectTask(models.Model):
         return
 
     @api.model
-    def name_search(self, name="", args=None, operator="ilike", limit=100):
-        args = args or []
+    def name_search(self, name="", domain=None, operator="ilike", limit=100):
         domain = Domain.AND(
-            [args, ["|", ("name", operator, name), ("id", operator, name)]]
+            [domain or [], ["|", ("name", operator, name), ("id", operator, name)]]
         )
         records = self.search(domain, limit=limit)
         return [(rec.id, rec.display_name or "") for rec in records]
