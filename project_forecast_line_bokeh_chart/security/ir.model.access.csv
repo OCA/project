@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+project_forecast_line_bokeh_chart.access_forecast_line_reporting,access_forecast_line_reporting,project_forecast_line_bokeh_chart.model_forecast_line_reporting,base.group_user,1,1,1,1
