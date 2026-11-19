@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2025 Dixmit
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+    <record id="view_task_form2" model="ir.ui.view">
+        <field name="name">project.task.view.inherit</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2" />
+        <field name="arch" type="xml">
+            <field name="task_properties" position="attributes">
+                <attribute name="widget">portal_properties</attribute>
+                <attribute name="class">o_field_properties</attribute>
+            </field>
+        </field>
+    </record>
+    <record id="project_sharing_project_task_view_form" model="ir.ui.view">
+        <field name="name">project.task.view.tree.inherit</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.project_sharing_project_task_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='project_id']/../.." position="after">
+                <field
+                    name="portal_task_properties"
+                    widget="portal_properties"
+                    class="o_field_properties"
+                />
+            </xpath>
+        </field>
+    </record>
+    <record id="project_sharing_project_task_view_kanban" model="ir.ui.view">
+        <field name="name">project.sharing.project.task.view.kanban</field>
+        <field name="model">project.task</field>
+        <field
+            name="inherit_id"
+            ref="project.project_sharing_project_task_view_kanban"
+        />
+        <field name="arch" type="xml">
+            <field name="tag_ids" position="after">
+                <field name="portal_task_properties" widget="properties" />
+            </field>
+        </field>
+    </record>
+</odoo>
