@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="project_project_view_form_simplified" model="ir.ui.view">
+        <field name="name">project.sequence.type.form.simplified</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.project_project_view_form_simplified" />
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('oe_title')]" position="after">
+                <group>
+                    <field name="type_id" />
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>
