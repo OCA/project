@@ -1,0 +1,25 @@
+<odoo>
+    <record id="edit_project" model="ir.ui.view">
+        <field name="name">project.project.form.progress</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project" />
+        <field name="priority" eval="100" />
+        <field name="arch" type="xml">
+            <field name="user_id" position="after">
+                <field name="manual_progress" widget="progressbar" />
+            </field>
+        </field>
+    </record>
+
+    <record id="view_project" model="ir.ui.view">
+        <field name="name">project.project.list.progress</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project" />
+        <field name="priority" eval="100" />
+        <field name="arch" type="xml">
+            <field name="user_id" position="after">
+                <field name="manual_progress" readonly="True" widget="progressbar" />
+            </field>
+        </field>
+    </record>
+</odoo>
