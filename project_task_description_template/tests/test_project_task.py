@@ -42,15 +42,14 @@ class TestDescriptionTemplate(TestProjectSharingCommon):
                 "project_ids": [Command.link(cls.project_no_collabo.id)],
             }
         )
-        collaborator_vals = {
-            "collaborator_ids": [
-                Command.create({"partner_id": cls.user_portal.partner_id.id})
-            ]
-        }
-        cls.project_portal.write(
-            dict(collaborator_vals, portal_task_description_template_required=True)
-        )
-        cls.project_cows.write(collaborator_vals)
+        # The portal partner of project_portal is already a "view" collaborator
+        cls.project_portal.collaborator_ids.access_mode = "edit"
+        cls.project_portal.portal_task_description_template_required = True
+        cls.project_cows.collaborator_ids = [
+            Command.create(
+                {"partner_id": cls.user_portal.partner_id.id, "access_mode": "edit"}
+            )
+        ]
         cls.project_cows.message_subscribe(partner_ids=cls.user_portal.partner_id.ids)
         cls.PortalTask = (
             cls.env["project.task"]
@@ -228,3 +227,30 @@ class TestDescriptionTemplate(TestProjectSharingCommon):
         self.project_portal.privacy_visibility = "followers"
         self.template_portal.project_ids = False
         self.assertFalse(self.project_portal.task_description_template_ids)
+
+    def test_template_access(self):
+        Template = self.Template.with_user(self.user_projectuser)
+        self.assertIn(self.description_template, Template.search([]))
+        with self.assertRaises(AccessError):
+            Template.create({"name": "User Template", "description": "<p>x</p>"})
+        template = self.Template.with_user(self.user_projectmanager).create(
+            {"name": "Manager Template", "description": "<p>x</p>"}
+        )
+        self.assertEqual(template.company_id, self.env.company)
+        other_company = self.env["res.company"].create({"name": "Other Company"})
+        template.company_id = other_company
+        self.assertNotIn(template, Template.search([]))
+        self.template_other.unlink()
+        self.assertFalse(self.template_other.exists())
+
+    def test_invited_users_project(self):
+        self.project_cows.privacy_visibility = "invited_users"
+        portal_templates = self.Template.with_user(self.user_portal).search([])
+        self.assertIn(self.template_cows, portal_templates)
+        with self.assertRaises(ValidationError):
+            self.project_cows.write(
+                {
+                    "portal_task_description_template_required": True,
+                    "task_description_template_ids": [Command.clear()],
+                }
+            )

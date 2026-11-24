@@ -3,3 +3,4 @@
 - Nils Coenen \<<nils.coenen@nico-solutions.de>\>
 - [ForgeFlow](https://www.forgeflow.com):
   - Thiago Mulero \<<thiago.mulero@forgeflow.com>\>
+- Ayush Patel \<<patelayush2021@gmail.com>\>

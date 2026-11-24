@@ -28,7 +28,7 @@ class ProjectProject(models.Model):
     def _check_portal_task_description_template_required(self):
         for project in self:
             if (
-                project.privacy_visibility == "portal"
+                project.privacy_visibility in ["invited_users", "portal"]
                 and project.portal_task_description_template_required
                 and not project.task_description_template_ids
             ):
