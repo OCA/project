@@ -41,8 +41,9 @@ class ProjectTask(models.Model):
     def _compute_employee_ids(self):
         for task in self.filtered("user_ids"):
             task.employee_ids = task.user_ids.employee_ids.filtered(
-                lambda x, company_id=task.company_id or self.env.company: x.company_id
-                == company_id
+                lambda x, company_id=task.company_id or self.env.company: (
+                    x.company_id == company_id
+                )
             )
 
     @api.depends("project_id.hr_category_ids")
