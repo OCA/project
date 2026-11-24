@@ -44,10 +44,10 @@
             </field>
         </field>
     </record>
-    <record id="view_task_kanban" model="ir.ui.view">
-        <field name="name">project.task.kanban</field>
+    <record id="view_task_card" model="ir.ui.view">
+        <field name="name">project.task.card</field>
         <field name="model">project.task</field>
-        <field name="inherit_id" ref="project.view_task_kanban" />
+        <field name="inherit_id" ref="project.view_task_card" />
         <field name="arch" type="xml">
             <field name="user_ids" position="before">
                 <field name="domain_user_ids" invisible="1" />

@@ -9,3 +9,4 @@
 - [Tesseratech](https://tesseratech.es):
   - Abraham Anes \<abraham@tesseratech.es\>
 - Xavier Bol \<<xavierbol@ik.me>\>
+- Ayush Patel \<<patelayush2021@gmail.com>\>

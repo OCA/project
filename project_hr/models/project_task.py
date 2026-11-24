@@ -3,6 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import api, exceptions, fields, models
+from odoo.fields import Domain
 
 
 class ProjectTask(models.Model):
@@ -23,12 +24,12 @@ class ProjectTask(models.Model):
         "this task, limiting the selectable users to be assigned to "
         "those that belongs to that category.",
     )
-    domain_hr_category_ids = fields.Binary(
+    domain_hr_category_ids = fields.Json(
         compute="_compute_domain_hr_category_ids",
         compute_sudo=True,
     )
     user_ids = fields.Many2many(domain="domain_user_ids")
-    domain_user_ids = fields.Binary(
+    domain_user_ids = fields.Json(
         compute="_compute_domain_user_ids",
         compute_sudo=True,
     )
@@ -49,7 +50,9 @@ class ProjectTask(models.Model):
     @api.depends("project_id.hr_category_ids")
     def _compute_domain_hr_category_ids(self):
         for task in self:
-            domain = []
+            # A Json field stores an empty list as False, which the web client
+            # cannot parse as a domain
+            domain = list(Domain.TRUE)
             if task.project_id.hr_category_ids:
                 domain = [("id", "in", task.project_id.hr_category_ids.ids)]
             task.domain_hr_category_ids = domain

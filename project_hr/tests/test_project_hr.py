@@ -10,11 +10,14 @@ from odoo.addons.base.tests.common import BaseCommon
 
 
 class TestProjectHr(BaseCommon):
+    _test_user_groups = ("project.group_project_manager", "hr.group_hr_user")
+
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
         cls.company_a = cls.env.company
         cls.company_b = cls.env["res.company"].create({"name": "Test company B"})
+        cls._test_user.company_ids += cls.company_b
         # Test users to use through the various tests
         cls.user1 = new_test_user(
             cls.env,
@@ -176,7 +179,9 @@ class TestProjectHr(BaseCommon):
             {
                 "privacy_visibility": "portal",
                 "collaborator_ids": [
-                    Command.create({"partner_id": portal_user.partner_id.id})
+                    Command.create(
+                        {"partner_id": portal_user.partner_id.id, "access_mode": "edit"}
+                    )
                 ],
             }
         )
@@ -205,7 +210,8 @@ class TestProjectHr(BaseCommon):
         # Unassign and assign again as the regular user
         task.user_ids = [Command.clear()]
         task.user_ids = [Command.set(self.user1.ids)]
-        self.assertEqual(task.employee_ids, self.employee)
+        # Since 20.0, x2many fields only return the records the user can read
+        self.assertEqual(task.sudo().employee_ids, self.employee)
         # A user not belonging to the category is still rejected
         with self.assertRaises(ValidationError):
             task.user_ids = [Command.set(self.user2.ids)]
