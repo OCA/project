@@ -16,6 +16,11 @@ class Task(models.Model):
 
     _sql_constraints = [("task_key_unique", "UNIQUE(key)", "Task key must be unique!")]
 
+    @property
+    def SELF_READABLE_FIELDS(self):
+        # Expose `key` to portal users: the display name of a task depends on it
+        return super().SELF_READABLE_FIELDS | {"key"}
+
     def _compute_task_url(self):
         for task in self:
             task.url = TASK_URL % (task._name, task.id)
