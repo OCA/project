@@ -1,0 +1,6 @@
+- Alan Ramos \<<alan.ramos@jarsa.com>\>
+- `Heliconia Solutions Pvt. Ltd. <https://www.heliconia.io>`_
+- Nils Coenen \<<nils.coenen@nico-solutions.de>\>
+- [ForgeFlow](https://www.forgeflow.com):
+  - Thiago Mulero \<<thiago.mulero@forgeflow.com>\>
+- Ayush Patel \<<patelayush2021@gmail.com>\>

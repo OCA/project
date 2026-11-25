@@ -1,0 +1,10 @@
+id,name,model_id,group_id/id,operation,domain
+access_model_project_task_description_template,access_model_project_task_description_template,project.task.description.template,project.group_project_manager,crud,
+access_model_project_task_description_template_user,access_model_project_task_description_template_user,project.task.description.template,project.group_project_user,r,
+access_model_project_task_description_template_portal,Project Task Description Template: portal users,project.task.description.template,base.group_portal,r,"[
+    ('project_ids', 'any', [
+        ('privacy_visibility', 'in', ['invited_users', 'portal']),
+        ('collaborator_ids.partner_id', 'in', [user.partner_id.id]),
+    ]),
+]"
+project_task_description_template_company_ruyle,Project Task Description Template Company Rule,project.task.description.template,,crud,"['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]"
