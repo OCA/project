@@ -1,0 +1,140 @@
+<odoo>
+    <record id="project_template_view_inherit_form_link" model="ir.ui.view">
+        <field name="name">project.template.form.link</field>
+        <field name="model">project.project</field>
+        <field
+            name="inherit_id"
+            ref="project_template.project_template_view_inherit_form"
+        />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//button[@name='create_project_from_template']"
+                position="attributes"
+            >
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath
+                expr="//button[@name='create_project_from_template']"
+                position="after"
+            >
+                <button
+                    string="Create Copy"
+                    type="object"
+                    name="action_open_template_copy_wizard"
+                    class="oe_highlight"
+                    invisible="not is_template"
+                />
+            </xpath>
+            <xpath
+                expr="//button[@name='action_open_share_project_wizard']"
+                position="after"
+            >
+                <button
+                    string="Link to Another Project"
+                    type="object"
+                    name="action_open_link_template_wizard"
+                    class="btn-secondary"
+                    invisible="not task_stage_order_enabled or is_template or template_id"
+                    groups="project.group_project_manager"
+                />
+            </xpath>
+            <xpath expr="//page[@name='stage']" position="after">
+                <page
+                    name="linked_projects"
+                    string="Linked Projects"
+                    invisible="not task_stage_order_enabled or (not template_id and not template_child_ids)"
+                >
+                    <table class="table table-sm mb-3" invisible="not template_id">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th />
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <field
+                                        name="template_id"
+                                        readonly="1"
+                                        nolabel="1"
+                                    />
+                                </td>
+                                <td class="text-end">
+                                    <button
+                                        name="action_unlink_from_template"
+                                        type="object"
+                                        string="Unlink"
+                                        icon="fa-chain-broken"
+                                        confirm="Are you sure you want to unlink this project from its template?"
+                                        groups="project.group_project_manager"
+                                    />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <field
+                        name="template_child_ids"
+                        invisible="not template_child_ids"
+                        readonly="1"
+                    >
+                        <list>
+                            <field name="name" />
+                            <button
+                                name="action_unlink_from_template"
+                                type="object"
+                                string="Unlink"
+                                icon="fa-chain-broken"
+                                confirm="Are you sure you want to unlink this project from its template?"
+                                groups="project.group_project_manager"
+                            />
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+    <record id="project_template_view_inherit_kanban_link" model="ir.ui.view">
+        <field name="name">project.template.kanban.link</field>
+        <field name="model">project.project</field>
+        <field name="priority" eval="99" />
+        <field
+            name="inherit_id"
+            ref="project_template.project_template_view_inherit_kanban"
+        />
+        <field name="arch" type="xml">
+            <xpath
+                expr="//a[@name='create_project_from_template']/.."
+                position="replace"
+            >
+                <div t-if="record.is_template.raw_value" role="menuitem">
+                    <a
+                        name="action_open_template_copy_wizard"
+                        type="object"
+                    >Create Copy</a>
+                </div>
+            </xpath>
+        </field>
+    </record>
+    <record model="ir.actions.act_window" id="project.open_view_project_all">
+        <field name="context">{"display_milestone_deadline": True}</field>
+    </record>
+    <record
+        id="project_project_view_form_inherit_stage_order_readonly"
+        model="ir.ui.view"
+    >
+        <field
+            name="name"
+        >project.project.view.form.inherit.stage.order.readonly</field>
+        <field name="model">project.project</field>
+        <field
+            name="inherit_id"
+            ref="project_task_stage_order.project_project_view_form_inherit_stage_order"
+        />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='task_stage_order_ids']" position="attributes">
+                <attribute name="readonly">template_id</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>
