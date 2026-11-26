@@ -12,13 +12,13 @@ class ProjectProject(models.Model):
     purchase_count = fields.Integer(
         compute="_compute_purchase_info", string="# Purchase"
     )
-    purchase_line_total = fields.Integer(
+    purchase_line_total = fields.Monetary(
         compute="_compute_purchase_info", string="Purchase Total"
     )
     purchase_invoice_count = fields.Integer(
         compute="_compute_purchase_invoice_info", string="# Purchase Invoice"
     )
-    purchase_invoice_line_total = fields.Float(
+    purchase_invoice_line_total = fields.Monetary(
         compute="_compute_purchase_invoice_info", string="Purchase Invoice Total"
     )
 
@@ -122,7 +122,8 @@ class ProjectProject(models.Model):
             )
             purchase_line_total = 0
             for group in groups:
-                purchase_line_total += group["price_subtotal"]
+                order = self.env["purchase.order"].browse(group["order_id"][0])
+                purchase_line_total += group["price_subtotal"] / order.currency_rate
             project.purchase_count = len(groups)
             project.purchase_line_total = purchase_line_total
 
@@ -135,7 +136,13 @@ class ProjectProject(models.Model):
             )
             purchase_invoice_line_total = 0
             for group in groups:
-                purchase_invoice_line_total += group["price_subtotal"]
+                move = self.env["account.move"].browse(group["move_id"][0])
+                purchase_invoice_line_total += move.currency_id._convert(
+                    group["price_subtotal"],
+                    move.company_currency_id,
+                    move.company_id,
+                    move.invoice_date or move.date,
+                )
             project.purchase_invoice_count = len(groups)
             project.purchase_invoice_line_total = purchase_invoice_line_total
 
