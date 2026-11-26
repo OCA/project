@@ -1,0 +1,71 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_milestone_status
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2025-05-10 14:23+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
+"Language-Team: none\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.10.4\n"
+
+#. module: project_milestone_status
+#. odoo-python
+#: code:addons/project_milestone_status/models/project.py:0
+#, python-format
+msgid "%(name)s"
+msgstr "%(name)s"
+
+#. module: project_milestone_status
+#. odoo-python
+#: code:addons/project_milestone_status/models/project.py:0
+#: model:ir.model.fields,field_description:project_milestone_status.field_project_milestone__dedication
+#, python-format
+msgid "Dedication"
+msgstr "Dedizione"
+
+#. module: project_milestone_status
+#. odoo-python
+#: code:addons/project_milestone_status/models/project.py:0
+#: model:ir.model.fields,field_description:project_milestone_status.field_project_milestone__execution
+#, python-format
+msgid "Execution"
+msgstr "Esecuzione"
+
+#. module: project_milestone_status
+#: model_terms:ir.actions.act_window,help:project_milestone_status.act_excuted_project_task
+msgid ""
+"Keep track of the progress of your tasks from creation to completion.<br>\n"
+"                Collaborate efficiently by chatting in real-time or via email."
+msgstr ""
+"Tiene traccia dell'avanzamento dei propri lavori dalla creazione al "
+"completamento.<br>\n"
+"                Collabora efficientemente dialogando in tempo reale o per "
+"e-mail."
+
+#. module: project_milestone_status
+#: model_terms:ir.actions.act_window,help:project_milestone_status.act_excuted_project_task
+msgid "No tasks found. Let's create one!"
+msgstr "Nessun lavoro trovato! Creiamone uno!"
+
+#. module: project_milestone_status
+#: model:ir.model,name:project_milestone_status.model_project_project
+msgid "Project"
+msgstr "Progetto"
+
+#. module: project_milestone_status
+#: model:ir.model,name:project_milestone_status.model_project_milestone
+msgid "Project Milestone"
+msgstr "Milestone progetto"
+
+#. module: project_milestone_status
+#: model:ir.actions.act_window,name:project_milestone_status.act_excuted_project_task
+msgid "Tasks"
+msgstr "Lavori"
