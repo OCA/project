@@ -1,0 +1,2 @@
+id,name,model_id,group_id/id,operation,domain
+project_version,project.version,project.version,base.group_user,crud,
