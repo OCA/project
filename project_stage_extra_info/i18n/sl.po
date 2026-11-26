@@ -1,0 +1,58 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_stage_extra_info
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 19.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2026-06-30 07:34+0000\n"
+"Last-Translator: Matjaz Mozetic <matjaz@luxim.si>\n"
+"Language-Team: none\n"
+"Language: sl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=4; plural=n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || "
+"n%100==4 ? 2 : 3;\n"
+"X-Generator: Weblate 5.15.2\n"
+
+#. module: project_stage_extra_info
+#: model_terms:ir.ui.view,arch_db:project_stage_extra_info.view_project_project_filter
+msgid "Closed"
+msgstr "Zaključeno"
+
+#. module: project_stage_extra_info
+#: model:ir.model.fields,field_description:project_stage_extra_info.field_project_project_stage__description
+msgid "Description"
+msgstr "Opis"
+
+#. module: project_stage_extra_info
+#: model:ir.model.fields,field_description:project_stage_extra_info.field_project_project_stage__display_name
+msgid "Display Name"
+msgstr "Prikazani naziv"
+
+#. module: project_stage_extra_info
+#: model:ir.model.fields,field_description:project_stage_extra_info.field_project_project_stage__id
+msgid "ID"
+msgstr "ID"
+
+#. module: project_stage_extra_info
+#: model:ir.model.fields,field_description:project_stage_extra_info.field_project_project_stage__is_closed
+msgid "Is Closed Stage"
+msgstr "Je zaključna stopnja"
+
+#. module: project_stage_extra_info
+#: model_terms:ir.ui.view,arch_db:project_stage_extra_info.view_project_project_filter
+msgid "Not Closed"
+msgstr "Nezaključeno"
+
+#. module: project_stage_extra_info
+#: model:ir.model,name:project_stage_extra_info.model_project_project_stage
+msgid "Project Stage"
+msgstr "Projektna stopnja"
+
+#. module: project_stage_extra_info
+#: model:ir.model.fields,help:project_stage_extra_info.field_project_project_stage__is_closed
+msgid "Specify if this is a closing stage."
+msgstr "Navedite, ali gre za zaključno stopnjo."
