@@ -1,0 +1,3 @@
+- [XXP](https://xxp-odoo.com):
+    - Maksim Shurupov
+    - Mike Lapin
