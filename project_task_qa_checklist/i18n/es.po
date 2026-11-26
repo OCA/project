@@ -1,0 +1,333 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_task_qa_checklist
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-07-22 22:58+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: project_task_qa_checklist
+#: model:ir.model.fields,field_description:project_task_qa_checklist.field_project_task_qa_checklist_template__active
+msgid "Active"
+msgstr "Activo"
+
+#. module: project_task_qa_checklist
+#: model:ir.model.fields,field_description:project_task_qa_checklist.field_project_task_qa_checklist_template__always_applicable
+msgid "Always Applicable"
+msgstr "Siempre aplicable"
+
+#. module: project_task_qa_checklist
+#: model_terms:ir.ui.view,arch_db:project_task_qa_checklist.project_task_qa_checklist_template_view_form
+msgid "Archived"
+msgstr "Archivado"
+
+#. module: project_task_qa_checklist
+#: model_terms:ir.ui.view,arch_db:project_task_qa_checklist.view_task_form2
+msgid "Attachments"
+msgstr "Adjuntos"
+
+#. module: project_task_qa_checklist
+#: model:ir.model.fields.selection,name:project_task_qa_checklist.selection__project_task__qa_checklist_state__complete
+msgid "Complete"
+msgstr "Completo"
+
+#. module: project_task_qa_checklist
+#: model:ir.model.fields.selection,name:project_task_qa_checklist.selection__project_task__qa_checklist_state__complete_with_failures
+msgid "Complete with Failures"
+msgstr "Completo con fallos"
+
+#. module: project_task_qa_checklist
+#: model:ir.model.fields,field_description:project_task_qa_checklist.field_project_task_qa_checklist_line__create_uid
+#: model:ir.model.fields,field_description:project_task_qa_checklist.field_project_task_qa_checklist_template__create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: project_task_qa_checklist
+#: model:ir.model.fields,field_description:project_task_qa_checklist.field_project_task_qa_checklist_line__create_date
+#: model:ir.model.fields,field_description:project_task_qa_checklist.field_project_task_qa_checklist_template__create_date
+msgid "Created on"
+msgstr "Creado el"
+
+#. module: project_task_qa_checklist
+#: model:ir.model.fields,field_description:project_task_qa_checklist.field_project_task_qa_checklist_line__template_id
+msgid "Criterion Template"
+msgstr "Plantilla de criterio"
+
+#. module: project_task_qa_checklist
+#: model:ir.model.fields,field_description:project_task_qa_checklist.field_project_task_qa_checklist_line__display_name
+#: model:ir.model.fields,field_description:project_task_qa_checklist.field_project_task_qa_checklist_template__display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: project_task_qa_checklist
+#: model:ir.model.fields,help:project_task_qa_checklist.field_project_task__qa_evidence_url
+msgid ""
+"External evidence link (e.g. a screen recording on Drive/Loom). Preferred "
+"over attaching heavy video files to the database."
+msgstr ""
+"Enlace externo de evidencia (p. ej. una grabación de pantalla en Drive/"
+"Loom). Preferible a adjuntar archivos de video pesados a la base de datos."
+
+#. module: project_task_qa_checklist
+#: model:ir.model.fields.selection,name:project_task_qa_checklist.selection__project_task_qa_checklist_line__state__failed
+msgid "Failed"
+msgstr "Fallido"
+
+#. module: project_task_qa_checklist
+#: model:project.task.qa.checklist.template,name:project_task_qa_checklist.qa_checklist_template_demo_tagged
+msgid "Feature works end to end"
+msgstr "La funcionalidad opera de principio a fin"
+
+#. module: project_task_qa_checklist
+#: model_terms:ir.ui.view,arch_db:project_task_qa_checklist.view_task_form2
+msgid "Generate/Update Checklist"
+msgstr "Generar/actualizar checklist"
+
+#. module: project_task_qa_checklist
+#: model:ir.model.fields,field_description:project_task_qa_checklist.field_project_task_qa_checklist_template__help_text
+msgid "Help Text"
+msgstr "Texto de ayuda"
+
+#. module: project_task_qa_checklist
+#: model:ir.model.fields,field_description:project_task_qa_checklist.field_project_task_qa_checklist_line__id
+#: model:ir.model.fields,field_description:project_task_qa_checklist.field_project_task_qa_checklist_template__id
+msgid "ID"
+msgstr "ID"
+
+#. module: project_task_qa_checklist
+#: model:ir.model.fields,help:project_task_qa_checklist.field_project_task_qa_checklist_template__tag_ids
+msgid ""
+"If any of these tags is on the task, this criterion is generated. Ignored "
+"when 'Always Applicable' is set."
+msgstr ""
+"Si la tarea tiene alguno de estos tags, se genera este criterio. Se ignora "
+"cuando 'Siempre aplicable' está activo."
+
+#. module: project_task_qa_checklist
+#: model:ir.model.fields,help:project_task_qa_checklist.field_project_task_qa_checklist_template__always_applicable
+msgid ""
+"If set, this criterion applies to every task entering a QA stage, regardless "
+"of its tags."
+msgstr ""
+"Si se activa, este criterio aplica a toda tarea que entra a una etapa de QA, "
+"sin importar sus tags."
+
+#. module: project_task_qa_checklist
+#: model:ir.model.fields.selection,name:project_task_qa_checklist.selection__project_task__qa_checklist_state__in_progress
+msgid "In Progress"
+msgstr "En progreso"
+
+#. module: project_task_qa_checklist
+#: model:ir.model.fields,field_description:project_task_qa_checklist.field_project_task__is_qa_stage
+msgid "In QA Stage"
+msgstr "En etapa de QA"
+
+#. module: project_task_qa_checklist
+#: model_terms:ir.ui.view,arch_db:project_task_qa_checklist.view_task_form2
+msgid "Internal QA"
+msgstr "Pruebas internas (QA)"
+
+#. module: project_task_qa_checklist
+#: model:ir.model.fields,field_description:project_task_qa_checklist.field_project_task_qa_checklist_line__write_uid
+#: model:ir.model.fields,field_description:project_task_qa_checklist.field_project_task_qa_checklist_template__write_uid
+msgid "Last Updated by"
+msgstr "Última actualización por"
+
+#. module: project_task_qa_checklist
+#: model:ir.model.fields,field_description:project_task_qa_checklist.field_project_task_qa_checklist_line__write_date
+#: model:ir.model.fields,field_description:project_task_qa_checklist.field_project_task_qa_checklist_template__write_date
+msgid "Last Updated on"
+msgstr "Última actualización el"
+
+#. module: project_task_qa_checklist
+#: model:ir.model.fields,help:project_task_qa_checklist.field_project_task__is_qa_stage
+#: model:ir.model.fields,help:project_task_qa_checklist.field_project_task_type__is_qa_stage
+msgid ""
+"Mark this stage as an internal testing / QA stage. A task's QA checklist is "
+"generated when it enters a stage flagged here, and a warning is raised if it "
+"leaves such a stage with an incomplete checklist."
+msgstr ""
+"Marca esta etapa como etapa de pruebas internas / QA. El checklist de QA de "
+"una tarea se genera cuando entra a una etapa marcada aquí, y se advierte si "
+"sale de dicha etapa con el checklist incompleto."
+
+#. module: project_task_qa_checklist
+#: model:ir.model.fields,field_description:project_task_qa_checklist.field_project_task_qa_checklist_line__name
+#: model:ir.model.fields,field_description:project_task_qa_checklist.field_project_task_qa_checklist_template__name
+msgid "Name"
+msgstr "Nombre"
+
+#. module: project_task_qa_checklist
+#. odoo-python
+#: code:addons/project_task_qa_checklist/models/project_task.py:0
+#, python-format
+msgid "No QA evidence loaded"
+msgstr "No se cargó evidencia de QA"
+
+#. module: project_task_qa_checklist
+#: model:ir.model.fields.selection,name:project_task_qa_checklist.selection__project_task_qa_checklist_line__state__not_applicable
+msgid "Not Applicable"
+msgstr "No aplica"
+
+#. module: project_task_qa_checklist
+#: model:ir.model.fields.selection,name:project_task_qa_checklist.selection__project_task__qa_checklist_state__not_started
+msgid "Not Started"
+msgstr "Sin iniciar"
+
+#. module: project_task_qa_checklist
+#: model:ir.model.fields,field_description:project_task_qa_checklist.field_project_task_qa_checklist_line__notes
+msgid "Notes"
+msgstr "Notas"
+
+#. module: project_task_qa_checklist
+#: model:ir.model.fields,help:project_task_qa_checklist.field_project_task_qa_checklist_template__help_text
+msgid "Optional guidance shown to the tester."
+msgstr "Guía opcional que se muestra al tester."
+
+#. module: project_task_qa_checklist
+#: model:ir.model.fields.selection,name:project_task_qa_checklist.selection__project_task_qa_checklist_line__state__passed
+msgid "Passed"
+msgstr "Aprobado"
+
+#. module: project_task_qa_checklist
+#: model:ir.model.fields.selection,name:project_task_qa_checklist.selection__project_task_qa_checklist_line__state__pending
+msgid "Pending"
+msgstr "Pendiente"
+
+#. module: project_task_qa_checklist
+#: model_terms:ir.ui.view,arch_db:project_task_qa_checklist.view_task_kanban
+msgid "QA"
+msgstr "QA"
+
+#. module: project_task_qa_checklist
+#: model:ir.model.fields,field_description:project_task_qa_checklist.field_project_task__qa_checklist_line_ids
+msgid "QA Checklist"
+msgstr "Checklist de QA"
+
+#. module: project_task_qa_checklist
+#: model:ir.actions.act_window,name:project_task_qa_checklist.project_task_qa_checklist_template_action
+#: model:ir.ui.menu,name:project_task_qa_checklist.project_task_qa_checklist_template_menu
+msgid "QA Checklist Criteria"
+msgstr "Criterios del checklist de QA"
+
+#. module: project_task_qa_checklist
+#: model:ir.model,name:project_task_qa_checklist.model_project_task_qa_checklist_template
+msgid "QA Checklist Criterion Template"
+msgstr "Plantilla de criterio del checklist de QA"
+
+#. module: project_task_qa_checklist
+#: model:ir.model,name:project_task_qa_checklist.model_project_task_qa_checklist_line
+msgid "QA Checklist Line"
+msgstr "Línea del checklist de QA"
+
+#. module: project_task_qa_checklist
+#: model:ir.model.fields,field_description:project_task_qa_checklist.field_project_task__qa_evidence_ids
+#: model_terms:ir.ui.view,arch_db:project_task_qa_checklist.view_task_form2
+msgid "QA Evidence"
+msgstr "Evidencia de QA"
+
+#. module: project_task_qa_checklist
+#: model:ir.model.fields,field_description:project_task_qa_checklist.field_project_task__qa_evidence_url
+msgid "QA Evidence Link"
+msgstr "Enlace de evidencia de QA"
+
+#. module: project_task_qa_checklist
+#: model:ir.model.fields,field_description:project_task_qa_checklist.field_project_task_type__is_qa_stage
+msgid "QA Stage"
+msgstr "Etapa de QA"
+
+#. module: project_task_qa_checklist
+#: model_terms:ir.ui.view,arch_db:project_task_qa_checklist.view_task_kanban
+msgid "QA checklist progress"
+msgstr "Avance del checklist de QA"
+
+#. module: project_task_qa_checklist
+#: model:ir.model.fields,field_description:project_task_qa_checklist.field_project_task__qa_checklist_progress
+msgid "Qa Checklist Progress"
+msgstr "Avance del checklist de QA"
+
+#. module: project_task_qa_checklist
+#: model:ir.model.fields,field_description:project_task_qa_checklist.field_project_task__qa_checklist_state
+msgid "Qa Checklist State"
+msgstr "Estado del checklist de QA"
+
+#. module: project_task_qa_checklist
+#. odoo-python
+#: code:addons/project_task_qa_checklist/models/project_task.py:0
+#: model:mail.activity.type,name:project_task_qa_checklist.mail_activity_qa_checklist_review
+#, python-format
+msgid "Review QA checklist"
+msgstr "Revisar checklist de QA"
+
+#. module: project_task_qa_checklist
+#: model:ir.model.fields,field_description:project_task_qa_checklist.field_project_task_qa_checklist_line__reviewed_by
+msgid "Reviewed By"
+msgstr "Revisado por"
+
+#. module: project_task_qa_checklist
+#: model:ir.model.fields,field_description:project_task_qa_checklist.field_project_task_qa_checklist_line__reviewed_date
+msgid "Reviewed Date"
+msgstr "Fecha de revisión"
+
+#. module: project_task_qa_checklist
+#: model:ir.model.fields,field_description:project_task_qa_checklist.field_project_task_qa_checklist_line__sequence
+#: model:ir.model.fields,field_description:project_task_qa_checklist.field_project_task_qa_checklist_template__sequence
+msgid "Sequence"
+msgstr "Secuencia"
+
+#. module: project_task_qa_checklist
+#: model:ir.model.fields,field_description:project_task_qa_checklist.field_project_task_qa_checklist_line__state
+msgid "State"
+msgstr "Estado"
+
+#. module: project_task_qa_checklist
+#: model:ir.model.fields,field_description:project_task_qa_checklist.field_project_task_qa_checklist_template__tag_ids
+msgid "Tags"
+msgstr "Etiquetas"
+
+#. module: project_task_qa_checklist
+#: model:ir.model,name:project_task_qa_checklist.model_project_task
+#: model:ir.model.fields,field_description:project_task_qa_checklist.field_project_task_qa_checklist_line__task_id
+msgid "Task"
+msgstr "Tarea"
+
+#. module: project_task_qa_checklist
+#: model:ir.model,name:project_task_qa_checklist.model_project_task_type
+msgid "Task Stage"
+msgstr "Etapa de tarea"
+
+#. module: project_task_qa_checklist
+#: model_terms:ir.ui.view,arch_db:project_task_qa_checklist.project_task_qa_checklist_template_view_form
+msgid "Tester Guidance"
+msgstr "Guía para el tester"
+
+#. module: project_task_qa_checklist
+#: model_terms:ir.ui.view,arch_db:project_task_qa_checklist.view_task_form2
+msgid "The QA checklist is complete but has failed criteria."
+msgstr "El checklist de QA está completo pero tiene criterios con fallo."
+
+#. module: project_task_qa_checklist
+#: model_terms:ir.ui.view,arch_db:project_task_qa_checklist.view_task_form2
+msgid "The QA checklist is not complete yet."
+msgstr "El checklist de QA aún no está completo."
+
+#. module: project_task_qa_checklist
+#. odoo-python
+#: code:addons/project_task_qa_checklist/models/project_task.py:0
+#, python-format
+msgid "This task left a QA stage with:"
+msgstr "Esta tarea salió de una etapa de QA con:"
+
+#. module: project_task_qa_checklist
+#: model:project.task.qa.checklist.template,name:project_task_qa_checklist.qa_checklist_template_demo_general
+msgid "User manual attached as evidence"
+msgstr "Manual de usuario adjunto como evidencia"
