@@ -1,3 +1,7 @@
+.vis-item-content:has(.o_project_timeline_hr_timesheet_progress) {
+    width: 100%;
+}
+
 .o_project_timeline_hr_timesheet_progress {
     height: 7px;
     background-color: #fff;
