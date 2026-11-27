@@ -1,0 +1,12 @@
+- [Tecnativa](https://www.tecnativa.com):
+  - Pedro M. Baeza
+  - Victor M.M. Torres
+  - Ernesto Tejeda
+  - Pilar Vargas
+- [CorporateHub](https://corporatehub.eu/)
+  - Alexey Pelykh \<alexey.pelykh@corphub.eu\>
+- Alfadil Tabar \<alfadil.tabar@gmail.com\>
+- [Tesseratech](https://tesseratech.es):
+  - Abraham Anes \<abraham@tesseratech.es\>
+- Xavier Bol \<<xavierbol@ik.me>\>
+- Ayush Patel \<<patelayush2021@gmail.com>\>

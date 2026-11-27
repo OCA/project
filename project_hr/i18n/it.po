@@ -1,0 +1,179 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* project_hr
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"PO-Revision-Date: 2026-10-30 15:46+0000\n"
+"Last-Translator: mymage <stefano.consolaro@mymage.it>\n"
+"Language-Team: none\n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 5.15.2\n"
+
+#. module: project_hr
+#: model:ir.model.fields,field_description:project_hr.field_project_task__user_ids
+msgid "Assignees"
+msgstr "Assegnatari"
+
+#. module: project_hr
+#: model:ir.model,website_form_label:project_hr.model_project_task
+msgid "Create a Task"
+msgstr "Crea un lavoro"
+
+#. module: project_hr
+#: model:ir.model.fields,field_description:project_hr.field_hr_employee__display_name
+#: model:ir.model.fields,field_description:project_hr.field_project_project__display_name
+#: model:ir.model.fields,field_description:project_hr.field_project_task__display_name
+#: model:ir.model.fields,field_description:project_hr.field_res_users__display_name
+msgid "Display Name"
+msgstr "Nome visualizzato"
+
+#. module: project_hr
+#: model:ir.model.fields,field_description:project_hr.field_project_task__domain_hr_category_ids
+msgid "Domain Hr Category"
+msgstr "Dominio categoria RU"
+
+#. module: project_hr
+#: model:ir.model.fields,field_description:project_hr.field_project_task__domain_user_ids
+msgid "Domain User"
+msgstr "Utente dominio"
+
+#. module: project_hr
+#: model:ir.model,name:project_hr.model_hr_employee
+msgid "Employee"
+msgstr "Dipendente"
+
+#. module: project_hr
+#: model:ir.model.fields,field_description:project_hr.field_project_project__hr_category_ids
+#: model:ir.model.fields,field_description:project_hr.field_project_task__hr_category_ids
+msgid "Employee Categories"
+msgstr "Categorie dipendente"
+
+#. module: project_hr
+#: model:ir.model.fields,field_description:project_hr.field_res_users__hr_category_ids
+msgid "HR categories"
+msgstr "Categorie RU"
+
+#. module: project_hr
+#: model:ir.model.fields,help:project_hr.field_project_project__hr_category_ids
+msgid ""
+"Here you can link the project to several employee categories, that will be "
+"the allowed in tasks."
+msgstr ""
+"Qui è possibile collegare il progetto a diverse categorie dipendenti, che "
+"verranno abilitate nei lavori."
+
+#. module: project_hr
+#: model:ir.model.fields,help:project_hr.field_project_task__hr_category_ids
+msgid ""
+"Here you can select the employee category suitable to perform this task, "
+"limiting the selectable users to be assigned to those that belongs to that "
+"category."
+msgstr ""
+"Qui è possibile selezionare la categorie dipendente adeguata ad eseguire "
+"questo lavoro, limitando i dipendenti selezionabili a quelli che "
+"appartengono a quella categoria."
+
+#. module: project_hr
+#: model:ir.model.fields,field_description:project_hr.field_hr_employee__id
+#: model:ir.model.fields,field_description:project_hr.field_project_project__id
+#: model:ir.model.fields,field_description:project_hr.field_project_task__id
+#: model:ir.model.fields,field_description:project_hr.field_res_users__id
+msgid "ID"
+msgstr "ID"
+
+#. module: project_hr
+#: model:ir.model.fields,field_description:project_hr.field_project_task__employee_ids
+msgid "Linked employees"
+msgstr "Dipendente collegato"
+
+#. module: project_hr
+#: model:ir.model,name:project_hr.model_project_project
+msgid "Project"
+msgstr "Progetto"
+
+#. module: project_hr
+#: model:ir.model,name:project_hr.model_project_task
+msgid "Task"
+msgstr "Lavoro"
+
+#. module: project_hr
+#: model:ir.model.fields,help:project_hr.field_res_users__hr_category_ids
+msgid ""
+"Technical field for computing dynamically employee categories linked to the "
+"user in the current company."
+msgstr ""
+"Campo tecnico per calcolare dinamicamente le categorie dipendenti collegate "
+"agli utenti nell'azienda attuale."
+
+#. module: project_hr
+#: model:ir.model.fields,help:project_hr.field_project_task__display_name
+msgid ""
+"Use these keywords in the title to set new tasks:\n"
+"\n"
+"        30h Allocate 30 hours to the task\n"
+"        #tags Set tags on the task\n"
+"        @user Assign the task to a user\n"
+"        ! Set the task a medium priority\n"
+"        !! Set the task a high priority\n"
+"        !!! Set the task a urgent priority\n"
+"\n"
+"        Make sure to use the right format and order e.g. Improve the "
+"configuration screen 5h #feature #v16 @Mitchell !"
+msgstr ""
+"Usare queste parole chiave nel titolo per impostare nuovi lavori:\n"
+"\n"
+"        30h: assegna 30 ore al lavoro\n"
+"        #tag: imposta i tag sul lavoro\n"
+"        @user: assegna il lavoro a un utente\n"
+"        !: imposta il lavoro con priorità media\n"
+"        !!: imposta il lavoro con priorità alta\n"
+"        !!!: impostai l lavoro con priorità urgente\n"
+"\n"
+"        Assicurarsi di utilizzare il formato e l'ordine corretti, es. "
+"migliora la schermata di configurazione 5h #feature #v16 @Mitchell !"
+
+#. module: project_hr
+#: model:ir.model,name:project_hr.model_res_users
+msgid "User"
+msgstr "Utente"
+
+#. module: project_hr
+#. odoo-python
+#: code:addons/project_hr/models/project_task.py:0
+msgid "You can't assign a category that is not allowed at project level."
+msgstr "Impossibile assegnare una categoria non consentita a livello progetto."
+
+#. module: project_hr
+#. odoo-python
+#: code:addons/project_hr/models/project_task.py:0
+msgid ""
+"You can't assign a user not belonging to the selected employee category."
+msgstr ""
+"Impossibile assegnare un utente che non appartiene alla categoria dipendente "
+"selezionata."
+
+#~ msgid "Allowed HR categories"
+#~ msgstr "Categorie RU consentite"
+
+#~ msgid "Allowed users"
+#~ msgstr "Utenti consentiti"
+
+#~ msgid ""
+#~ "Technical field for computing allowed employee categories according "
+#~ "categories at project level."
+#~ msgstr ""
+#~ "Campo tecnico per calcolare le categorie dipendenti autorizzate in "
+#~ "accordo con le categorie a livello progetto."
+
+#~ msgid ""
+#~ "Technical field for computing allowed users according employee category."
+#~ msgstr ""
+#~ "Campo tecnico per calcolare gli utenti abilitati in accordo alle "
+#~ "categorie dipendenti."
