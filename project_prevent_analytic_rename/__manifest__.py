@@ -4,7 +4,7 @@
 {
     "name": "Project Prevent Analytic Rename",
     "summary": "Prevent renaming analytic name when changing project name",
-    "version": "18.0.1.0.0",
+    "version": "20.0.1.0.0",
     "development_status": "Alpha",
     "category": "Productivity",
     "website": "https://github.com/OCA/project",

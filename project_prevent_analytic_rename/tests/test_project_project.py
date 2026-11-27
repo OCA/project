@@ -1,9 +1,12 @@
 # Copyright 2026 Moduon Team S.L.
 # License LGPL-3.0 or later (https://www.gnu.org/licenses/lgpl-3.0)
-from odoo.tests import common
+from odoo.addons.base.tests.common import BaseCommon
 
 
-class TestProjectProjectAnalyticAccountName(common.TransactionCase):
+class TestProjectProjectAnalyticAccountName(BaseCommon):
+    # The test does not check permissions: keep running as the superuser.
+    _test_user_groups = None
+
     @classmethod
     def setUpClass(cls):
         super().setUpClass()
